@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991118"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035144"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
@@ -103,28 +103,27 @@ Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
 Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatelé a skupiny** a přiřaďte uživatele k přístupu k této aplikaci.
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>Krok 3: Udělení Power BI Mobile přístupu ke službám sestav
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Krok 3: Úprava identifikátoru URI odpovědi pro aplikaci
 
-Předtím, než se může mobilní aplikace Power BI připojit a získat přístup ke službám sestav, se musíte v Azure AD správně zaregistrovat.  
+Předtím, než se může mobilní aplikace Power BI připojit a získat přístup ke službám sestav, musíte nakonfigurovat registraci aplikace, která byla vytvořena automaticky v kroku 2. 
 
 1. Na stránce **přehled** Azure Active Directory vyberte možnost **Registrace aplikací**.
 2. Na kartě **všechny aplikace** vyhledejte aplikaci, kterou jste vytvořili v kroku 2.
 3. Vyberte aplikaci a pak vyberte **ověřování**.
 4. Přidejte následující identifikátory URI přesměrování na základě vámi používané platformy.
 
-   Při registraci aplikace pro Power BI Mobile **iOS**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
+   Při konfiguraci aplikace pro Power BI Mobile **iOS**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Při registraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
+   Při konfiguraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > Aby aplikace fungovala správně, musí být přidávané identifikátory URI pro přesměrování. Pokud konfigurujete pro iOS i Android, stačí jenom zaregistrovat **jednu** aplikaci a přidat identifikátory URI pro přesměrování pro iOS i Android. Pokud pro každou platformu požadujete samostatné aplikace, budete muset zahrnout identifikátor URI přesměrování: `mspbi-adal://com.microsoft.powerbimobile` pro obě aplikace.
-
-2. Teď, když jste zaregistrovali nativní aplikaci, můžete dát IT přístup k dalším aplikacím v adresáři, v tomto případě pro přístup ke službám sestav publikovaným pomocí proxy aplikací. Postupujte podle kroků v [části Krok 3: Udělte přístup k aplikaci](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)proxy.
+   > Aby aplikace fungovala správně, musí být přidávané identifikátory URI pro přesměrování. Pokud konfigurujete aplikaci pro Power BI Mobile iOS i Android, přidejte následující identifikátor URI přesměrování typu Public Client (mobilní & Desktop) do seznamu identifikátorů URI pro přesměrování nakonfigurovaných pro iOS: `urn:ietf:wg:oauth:2.0:oob`.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Krok 4: Připojení z aplikace Power BI Mobile
 
@@ -156,7 +155,7 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 
 Pokud aplikace vrátí chybovou stránku po pokusu o načtení sestavy déle než několik minut, může být nutné změnit nastavení časového limitu. Ve výchozím nastavení podporuje proxy aplikací aplikace, které na žádost zabírají až 85 sekund. **Pokud** chcete toto nastavení prodloužit na 180 sekund, vyberte časový limit back-endu na stránce nastavení proxy aplikace pro danou aplikaci. Tipy k vytváření rychlých a spolehlivých sestav najdete v tématu [Power BI osvědčené postupy](https://docs.microsoft.com/power-bi/power-bi-reports-performance).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
 - [Zobrazení sestav na místních serverech sestav a klíčových ukazatelů výkonu v Power BI Mobile Apps](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

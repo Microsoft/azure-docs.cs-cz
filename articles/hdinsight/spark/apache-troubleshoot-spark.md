@@ -1,62 +1,54 @@
 ---
-title: Řešení potíží s Spark v Azure HDInsight
+title: Řešení potíží s Apache Spark ve službě Azure HDInsight
 description: Získejte odpovědi na běžné dotazy týkající se práce s Apache Spark a Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543173"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049534"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
-Další informace o nejčastější problémy a jejich řešení při práci s [Apache Spark](https://spark.apache.org/) datové části v [Apache Ambari](https://ambari.apache.org/).
+Přečtěte si o hlavních problémech a jejich řešení při práci s Apache Sparkmi datovými částmi v [Apache Ambari](https://ambari.apache.org/).
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Apache Ambari v clusterech?
 
-### <a name="resolution-steps"></a>Postup řešení
+Hodnoty konfigurace Sparku je možné vyladit tak, aby `OutofMemoryError` se zabránilo výjimce Apache Spark aplikace. Následující kroky ukazují výchozí hodnoty konfigurace Sparku ve službě Azure HDInsight:
 
-Hodnoty konfigurace Sparku je možné vyladit tak, aby nedošlo k výjimce Apache Spark aplikace OutofMemoryError. Následující kroky ukazují výchozí hodnoty konfigurace Sparku ve službě Azure HDInsight: 
+1. Přihlaste se k `https://CLUSTERNAME.azurehdidnsight.net` Ambari s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
 
-1. Vyberte v seznamu clusterů **Spark2**.
-
-    ![Vyberte cluster ze seznamu](./media/apache-troubleshoot-spark/update-config-1.png)
-
-2. Vyberte **Configs** kartu.
+1. Přejděte do**Konfigurace** **Spark2** > .
 
     ![Vyberte kartu Konfigurace](./media/apache-troubleshoot-spark/update-config-2.png)
 
-3. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**.
+1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults**.
 
-    ![Vyberte výchozí nastavení vlastní spark](./media/apache-troubleshoot-spark/update-config-3.png)
+1. Vyhledejte nastavení hodnoty, které je potřeba upravit, jako například **spark.executor.memory**. V tomto případě je hodnota **9728m** příliš vysoká.
 
-4. Vyhledejte nastavení hodnoty, které je potřeba upravit, jako například **spark.executor.memory**. V takovém případě hodnota **4608m** je příliš vysoká.
+    ![Vyberte výchozí nastavení vlastní spark](./media/apache-troubleshoot-spark/update-config-4.png)
 
-    ![Vyberte pole spark.executor.memory](./media/apache-troubleshoot-spark/update-config-4.png)
+1. Nastavte hodnotu na doporučené nastavení. Hodnota **2048m** se doporučuje pro toto nastavení.
 
-5. Nastavte hodnotu na doporučené nastavení. Hodnota **2048m** se doporučuje pro toto nastavení.
+1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Uložit**.
 
-    ![Změňte hodnotu na 2 048 m](./media/apache-troubleshoot-spark/update-config-5.png)
-
-6. Uložte hodnotu a pak konfiguraci uložte. Na panelu nástrojů vyberte **Uložit**.
-
-    ![Uložte nastavení a konfigurace](./media/apache-troubleshoot-spark/update-config-6a.png)
-
-    Pokud žádné konfigurace, které je potřeba věnovat pozornost, se zobrazí oznámení. Položky a potom vyberte **i přesto pokračovat**. 
-
-    ![Vyberte přesto pokračovat](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Změňte hodnotu na 2 048 m](./media/apache-troubleshoot-spark/update-config-6a.png)
 
     Zápis poznámky o změnách konfigurace a pak vyberte **Uložit**.
 
     ![Zadejte poznámku o provedené změny](./media/apache-troubleshoot-spark/update-config-6c.png)
 
-7. Pokaždé, když je uložen na konfiguraci, budete vyzváni k restartování služby. Vyberte **restartovat**.
+    Pokud žádné konfigurace, které je potřeba věnovat pozornost, se zobrazí oznámení. Položky a potom vyberte **i přesto pokračovat**.
+
+    ![Vyberte přesto pokračovat](./media/apache-troubleshoot-spark/update-config-6b.png)
+
+1. Pokaždé, když je uložen na konfiguraci, budete vyzváni k restartování služby. Vyberte **restartovat**.
 
     ![Vyberte možnost restartování](./media/apache-troubleshoot-spark/update-config-7a.png)
 
@@ -68,66 +60,41 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby nedošlo k výjimce Apach
 
     ![Zkontrolujte spuštěné procesy](./media/apache-troubleshoot-spark/update-config-7c.png)
 
-8. Můžete přidat konfigurace. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**a pak vyberte **přidat vlastnost**.
+1. Můžete přidat konfigurace. Vyberte v seznamu konfigurací **výchozí hodnoty vlastní spark2**a pak vyberte **přidat vlastnost**.
 
     ![Výběr možnosti Přidat vlastnost](./media/apache-troubleshoot-spark/update-config-8.png)
 
-9. Definování nové vlastnosti. Pomocí dialogového okna pro konkrétní nastavení, jako je datový typ, můžete definovat jednu vlastnost. Nebo můžete definovat více vlastností pomocí jednu definici na řádek. 
+1. Definování nové vlastnosti. Pomocí dialogového okna pro konkrétní nastavení, jako je datový typ, můžete definovat jednu vlastnost. Nebo můžete definovat více vlastností pomocí jednu definici na řádek.
 
     V tomto příkladu **spark.driver.memory** vlastnost je definována s hodnotou **4g**.
 
     ![Definovat nové vlastnosti](./media/apache-troubleshoot-spark/update-config-9.png)
 
-10. Uložte konfiguraci a potom restartujte službu, jak je popsáno v kroku 6 a 7.
+1. Uložte konfiguraci a potom restartujte službu, jak je popsáno v kroku 6 a 7.
 
 Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání úlohy Spark.
 
-### <a name="additional-reading"></a>Další čtení
-
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Poznámkový blok Jupyter v clusterech?
 
-### <a name="resolution-steps"></a>Postup řešení
+V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
 
-1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace.
-
-2. V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
-
-    ![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
-
-### <a name="additional-reading"></a>Další čtení
-
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+![Přidat konfiguraci](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Spark pomocí Apache Livy v clusterech?
 
-### <a name="resolution-steps"></a>Postup řešení
+Odeslání aplikace Spark na Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
 
-1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace. 
-
-2. Odeslání aplikace Spark na Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
-
-    ```apache
-    curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
-    ```
-
-### <a name="additional-reading"></a>Další čtení
-
-[Odeslání úlohy Apache Spark v clusterech HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+```apache
+curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
+```
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak nakonfigurovat aplikaci s použitím skriptu spark-submit Apache Spark v clusterech?
 
-### <a name="resolution-steps"></a>Postup řešení
+Spusťte prostředí sparku s využitím příkaz podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace:
 
-1. Pokud chcete zjistit, které konfigurace Sparku je potřeba nastavit, a určit jejich hodnoty, přečtěte si téma Co způsobuje výjimku Apache Spark OutofMemoryError aplikace.
-
-2. Spusťte prostředí sparku s využitím příkaz podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace: 
-
-    ```apache
-    spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
-    ```
+```apache
+spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
+```
 
 ### <a name="additional-reading"></a>Další čtení
 

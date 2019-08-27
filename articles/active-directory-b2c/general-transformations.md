@@ -1,67 +1,67 @@
 ---
-title: Obecná deklarace identity transformace příklady Identity prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
-description: Obecná deklarace identity transformace příklady Identity prostředí Framework schéma z Azure Active Directory B2C.
+title: Příklady základních transformací deklarací identit pro schéma rozhraní Azure Active Directory B2C prostředí identity
+description: Příklady základních transformací deklarací identity pro schéma rozhraní Azure Active Directory B2C prostředí identit.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510988"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032903"
 ---
-# <a name="general-claims-transformations"></a>Obecná deklarace identity transformace
+# <a name="general-claims-transformations"></a>Obecné transformace deklarací identity
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek obsahuje příklady použití obecné deklarace identity transformace schématu architekturu rozhraní identit v Azure Active Directory (Azure AD) B2C. Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
+Tento článek popisuje příklady použití obecných transformací identity schématu rozhraní identity Experience v Azure Active Directory B2C (Azure AD B2C). Další informace najdete v tématu [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Ověří, zda **inputClaim** neexistuje nebo není a nastaví **outputClaim** na hodnotu true nebo false odpovídajícím způsobem.
+Kontroluje, zda **inputClaim** existuje nebo není, a nastaví **outputClaim** na hodnotu true nebo false.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim |Jakýkoli | Vstupní deklarací, jejichž existence je potřeba ověřit. |
-| outputClaim | outputClaim | Boolean | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
+| InputClaim | inputClaim |Any | Vstupní deklarace identity, jejíž existence je potřeba ověřit. |
+| OutputClaim | outputClaim | boolean | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
-Použijte Tato transformace na zkontrolujte, jestli deklarace identity existuje, nebo obsahuje všechny hodnoty deklarací identity. Vrácená hodnota je logická hodnota určující, zda existuje deklarace identity. Následující příklad zkontroluje, jestli existuje e-mailovou adresu.
+Pomocí této transformace deklarací identity ověřte, zda deklarace identity existuje nebo obsahuje libovolnou hodnotu. Vrácená hodnota je logická hodnota, která označuje, zda existuje deklarace identity. Následující příklad zkontroluje, jestli tato e-mailová adresa existuje.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isEmailPresent" TransformationClaimType="outputClaim" />
   </OutputClaims>
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-  - **inputClaim**: someone@contoso.com
-- Výstupní deklarace identit: 
-    - **outputClaim**: true
+  - **inputClaim**:someone@contoso.com
+- Deklarace výstupů:
+  - **outputClaim**: true
 
-## <a name="hash"></a>Hodnota hash
+## <a name="hash"></a>Hash
 
-Hash – zadaná jako prostý text pomocí sůl a tajný klíč.
+Vytvoří hodnotu hash zadaného prostého textu pomocí soli a tajného klíče. Použitý algoritmus hash je SHA-256.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | ve formátu prostého textu | string | Vstupní deklaraci identity šifrování |
-| InputClaim | Hodnota Salt | string | Parametr řetězce salt. Můžete vytvořit náhodnou hodnotu pomocí `CreateRandomString` transformace deklarací identity. |
-| InputParameter | randomizerSecret | string | Odkazuje na existující Azure AD B2C **klíče zásad**. Chcete-li vytvořit nový: Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C > architekturu rozhraní identit**. Vyberte **klíče zásad** zobrazíte klíče, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. Pro **možnosti**vyberte **ruční**. Zadejte název (Zadaná předpona B2C_1A_ mohou být přidány automaticky.). V dialogovém okně tajného kódu zadejte jakékoli tajný klíč, který chcete použít, jako je například 1234567890. Použití klíče, vyberte **tajný klíč**. Vyberte **Vytvořit**. |
-| outputClaim | Hodnota hash | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity. Deklarace identity gurovaný `plaintext` inputClaim. |
+| InputClaim | prostý | řetězec | Vstupní deklarace identity, která se má zašifrovat |
+| InputClaim | sůl | řetězec | Parametr Salt. Pomocí `CreateRandomString` transformace deklarací identity můžete vytvořit náhodnou hodnotu. |
+| InputParameter | randomizerSecret | řetězec | Odkazuje na existující **klíč zásad**Azure AD B2C. Vytvoření nového klíče zásad: Ve vašem tenantovi Azure AD B2C v části **Spravovat**vyberte **Architektura prostředí identity**. Vyberte **klíče zásad** pro zobrazení klíčů, které jsou k dispozici ve vašem tenantovi. Vyberte **Přidat**. V případě **možností**vyberte možnost **ručně**. Zadejte název (předponu *B2C_1A_* je možné přidat automaticky.) Do textového pole **tajný kód** zadejte libovolný tajný klíč, který chcete použít, například 1234567890. V případě **použití klíče**vyberte možnost **podpis**. Vyberte **Vytvořit**. |
+| OutputClaim | kontrole | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. Deklarace identity konfigurovaná v `plaintext` inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -78,14 +78,11 @@ Hash – zadaná jako prostý text pomocí sůl a tajný klíč.
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
-    - **ve formátu prostého textu**: MyPass@word1
-    - **řetězce Salt**: 487624568
-    - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Výstupní deklarace identit: 
-    - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
-
-
-
+  - **prostý text**:MyPass@word1
+  - **sůl**: 487624568
+  - **randomizerSecret**: B2C_1A_AccountTransformSecret
+- Deklarace výstupů:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

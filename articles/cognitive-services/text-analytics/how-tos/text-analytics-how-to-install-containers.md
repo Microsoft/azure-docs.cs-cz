@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ff0be2e9dada758cce96ba7c5eebbf03b00f56c6
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971445"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051281"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýza textu
 
@@ -48,54 +48,38 @@ Před použitím kontejnerů pro analýzu textu, musí splňovat následující 
 
 Následující tabulka popisuje minimální a doporučené Procesorových jader a aspoň 2.6 gigahertz (GHz) nebo rychlejší a paměti v gigabajtech (GB), přidělit pro každý kontejner pro analýzu textu.
 
-| Kontejner | Minimální | Doporučené | TPS<br>(Minimum, maximum)|
-|-----------|---------|-------------|--|
-|Extrakce klíčových frází | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
-|Rozpoznávání jazyka | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
-|Analýza mínění | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |15, 30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * TPS-transakcí za sekundu
 
 Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
-Ze služby Microsoft Container Registry jsou dostupné Image kontejneru pro analýzu textu.
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| Kontejner | Úložiště |
-|-----------|------------|
-|Extrakce klíčových frází | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Analýza mínění| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu si stáhněte image kontejneru z Microsoft Container Registry.
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-Úplný popis dostupných značek pro kontejnery pro analýzu textu naleznete v následujících kontejnerech na úložiště Docker Hub:
+#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
 
-* [Extrakce klíčových frází](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [Rozpoznávání jazyka](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [Analýza subjektivního hodnocení](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) Pomocí příkazu Stáhněte image kontejneru.
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Stažení Docker pro kontejner extrakce klíčových frází
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>Vyžádané čtení Docker pro kontejner rozpoznávání jazyka
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>Stažení Docker pro kontejner mínění
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 K dispozici jsou [Příklady](../text-analytics-resource-container-config.md#example-docker-run-commands) příkazů.`docker run`
 
-### <a name="run-container-example-of-docker-run-command"></a>Příklad spuštění kontejneru příkazu Docker run
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-Tento příkaz:
+#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
-* Spustí kontejner klíčové fráze z image kontejneru.
-* Přiděluje jedno PROCESORové jádro a 4 gigabajty (GB) paměti.
-* Zpřístupňuje TCP port 5000 a přiděluje pseudo-TTY pro kontejner
-* Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing).

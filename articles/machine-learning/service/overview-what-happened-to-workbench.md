@@ -11,18 +11,18 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1bac6a2ec5657f3304e52fb328895a4f5aa94529
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 40a2f8716b438837cf3efe300286ab9053fc8b07
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996771"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035815"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
-Aplikace Azure Machine Learning Workbench a některé další úvodní funkce byly zastaralé a nahrazené vydáním září 2018, aby bylo možné zlepšit architekturu. [](concept-azure-machine-learning-architecture.md) 
+Aplikace Azure Machine Learning Workbench a některé další úvodní funkce byly zastaralé a nahrazené vydáním září 2018, aby bylo možné zlepšit architekturu. [](concept-azure-machine-learning-architecture.md)
 
-Pro zlepšení prostředí vydaná verze obsahuje mnoho důležitých aktualizací, které se na základě zpětné vazby od zákazníků zobrazí. Základní funkce z experimentu se spouští do nasazení modelu se nezměnily. Teď ale můžete využít robustní <a href="https://aka.ms/aml-sdk" target="_blank">sadu SDK</a> a rozhraní příkazového [řádku Azure](reference-azure-machine-learning-cli.md) , abyste mohli provádět úlohy a kanály pro strojové učení.  
+Pro zlepšení prostředí vydaná verze obsahuje mnoho důležitých aktualizací, které se na základě zpětné vazby od zákazníků zobrazí. Základní funkce z experimentu se spouští do nasazení modelu se nezměnily. Teď ale můžete využít robustní <a href="https://aka.ms/aml-sdk" target="_blank">sadu SDK</a> a rozhraní příkazového [řádku Azure](reference-azure-machine-learning-cli.md) , abyste mohli provádět úlohy a kanály pro strojové učení.
 
 Většina artefaktů, které byly vytvořeny ve starší verzi služby Azure Machine Learning, jsou uloženy ve vašem místním nebo cloudovém úložišti. Tyto artefakty se vám nikdy neztratí.
 
@@ -48,13 +48,13 @@ I když v aktuální verzi existují nové vylepšené klienty rozhraní CLI a s
 
 ## <a name="support-timeline"></a>Časový plán podpory
 
-9\. ledna 2019 podpora pro Machine Learning Workbench, účty Experimentování ve službě Azure Machine Learning a Správa modelů a jejich přidružená sada SDK a rozhraní příkazového řádku skončila. 
+9\. ledna 2019 podpora pro Machine Learning Workbench, účty Experimentování ve službě Azure Machine Learning a Správa modelů a jejich přidružená sada SDK a rozhraní příkazového řádku skončila.
 
 Všechny nejnovější možnosti jsou k dispozici pomocí této <a href="https://aka.ms/aml-sdk" target="_blank">sady SDK</a>, rozhraní příkazového [řádku](reference-azure-machine-learning-cli.md)a [portálu](how-to-manage-workspace.md).
 
 ## <a name="what-about-run-histories"></a>Co se stane s historií spuštění?
 
-Starší historie spuštění už nejsou dostupné, jak se vaše běhy pořád zobrazují v nejnovější verzi. 
+Starší historie spuštění už nejsou dostupné, jak se vaše běhy pořád zobrazují v nejnovější verzi.
 
 Historie spuštění se teď nazývají **experimenty**. Můžete shromáždit experimenty modelu a prozkoumat je pomocí sady SDK, rozhraní příkazového řádku nebo Azure Portal.
 
@@ -66,11 +66,9 @@ Začněte trénování modelů a sledování historie spuštění pomocí novéh
 
 ## <a name="can-i-still-prep-data"></a>Můžu dál připravovat data?
 
-Již existující soubory pro přípravu dat nejsou přenosné na nejnovější verzi, protože už Machine Learning Workbench ještě nemáte. Můžete ale stále připravit jakoukoli datovou sadu pro modelování.   
+Již existující soubory pro přípravu dat nejsou přenosné na nejnovější verzi, protože už Machine Learning Workbench ještě nemáte. Můžete ale stále připravit jakoukoli datovou sadu pro modelování.
 
-S datovými sadami libovolné velikosti můžete použít [balíček pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk) k rychlé přípravě dat před modelováním pomocí psaní kódu Pythonu. 
-
-V [tomto kurzu](tutorial-data-prep.md) se dozvíte víc o tom, jak používat sadu Azure Machine Learning SDK pro přípravu dat.
+S datovými sadami libovolné velikosti můžete použít [balíček pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk) k rychlé přípravě dat před modelováním pomocí psaní kódu Pythonu.
 
 ## <a name="will-projects-persist"></a>Vydrží mi moje projekty?
 
@@ -86,7 +84,7 @@ run = exp.submit(source_directory=script_folder,
 
 ## <a name="what-about-my-registered-models-and-images"></a>K čemu se zaregistrovaly modely a image?
 
-Modely, které jste zaregistrovali v registru starý model se musí migrovat na nový pracovní prostor, pokud chcete dál používat. Pokud chcete migrovat modely, Stáhněte si modely a znovu je Zaregistrujte v novém pracovním prostoru. 
+Modely, které jste zaregistrovali v registru starý model se musí migrovat na nový pracovní prostor, pokud chcete dál používat. Pokud chcete migrovat modely, Stáhněte si modely a znovu je Zaregistrujte v novém pracovním prostoru.
 
 Image, které jste vytvořili v původním registru imagí, nejde přímo migrovat do nového pracovního prostoru. Ve většině případů je možné model nasadit bez nutnosti vytvářet image. V případě potřeby můžete vytvořit obrázek pro model v novém pracovním prostoru. Další informace najdete v tématu [Správa, registrace, nasazení a monitorování modelů strojového učení](concept-model-management-and-deployment.md).
 
@@ -94,7 +92,7 @@ Image, které jste vytvořili v původním registru imagí, nejde přímo migrov
 
 Teď, když už skončila podpora pro staré rozhraní příkazového řádku, už nebudete moct znovu nasazovat modely ani spravovat webové služby, které jste původně nasadili s vaším účtem Správa modelů. Tyto webové služby však bude i nadále fungovat tak dlouho, dokud je Azure Container Service (ACS) stále podporovány.
 
-V nejnovější verzi jsou nasazení modelů jako webové služby do clusteru Azure Container Instances (ACI) nebo Azure Kubernetes Service (AKS). Můžete také nasadit na FPGA a Azure IoT Edge. 
+V nejnovější verzi jsou nasazení modelů jako webové služby do clusteru Azure Container Instances (ACI) nebo Azure Kubernetes Service (AKS). Můžete také nasadit na FPGA a Azure IoT Edge.
 
 Další informace najdete v těchto článcích:
 + [Kde a jak nasadit modely](how-to-deploy-and-where.md)
@@ -118,10 +116,10 @@ Balíčky domény pro počítačové zpracování obrazu, Text Analytics a progn
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si o [nejnovější architektuře služby Azure Machine Learning Service](concept-azure-machine-learning-architecture.md). 
+Přečtěte si o [nejnovější architektuře služby Azure Machine Learning Service](concept-azure-machine-learning-architecture.md).
 
 Přehled služby najdete v článku [co je služba Azure Machine Learning?](overview-what-is-azure-ml.md).
 
 Vytvoření prvního experimentu pomocí dvoufázové příručky pro [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md) a [výuka vašeho prvního modelu](tutorial-1st-experiment-sdk-train.md)
 
-Podrobnější informace o tomto pracovním postupu najdete v [kurzu pro celou délku](tutorial-train-models-with-aml.md) , který obsahuje podrobné kroky pro školení a nasazení modelů pomocí služby Azure Machine Learning. 
+Podrobnější informace o tomto pracovním postupu najdete v [kurzu pro celou délku](tutorial-train-models-with-aml.md) , který obsahuje podrobné kroky pro školení a nasazení modelů pomocí služby Azure Machine Learning.

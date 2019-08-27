@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: c41ab1c3309243fa3a96d907f620ffeff10376a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6ad7f32704d8cb73999a6e3cf60cb2a238268242
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626259"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034550"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Pokyny pro přesun síťových prostředků
 
@@ -23,10 +23,6 @@ Při přesunu virtuální síť, musíte také přesunout její závislé prost�
 
 Chcete-li přesunout virtuální počítač pomocí síťové karty, je nutné přesunout všechny závislé prostředky. Přesuňte virtuální síť pro síťovou kartu, všechny ostatní síťové karty virtuální sítě a brány VPN.
 
-## <a name="state-of-dependent-resources"></a>Stav závislých prostředků
-
-Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, při přesunu se zkontrolují stavy všech závislých prostředků pro virtuální síť. Pokud některý z těchto prostředků je ve stavu selhání, přesun se zablokuje. Pokud třeba virtuální počítač, který používá virtuální síť, selhal, přesun se zablokuje. Přesunutí je blokováno i v případě, že virtuální počítač není jedním z přesouvaných prostředků a není v jedné ze skupin prostředků pro přesunutí. Pokud se chcete tomuto problému vyhnout, přesuňte prostředky do skupiny prostředků, která nemá virtuální síť.
-
 ## <a name="peered-virtual-network"></a>Virtuální síť s partnerským vztahem
 
 Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat, partnerský vztah virtuální sítě. Jakmile zakázaná, můžete přesunout virtuální sítě. Po přesunutí znovu povolte partnerský vztah virtuální sítě.
@@ -35,6 +31,6 @@ Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat,
 
 Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální síť obsahuje podsítě pomocí navigačních odkazů. Například pokud Azure pro prostředek Redis Cache se nasazuje do podsítě, má této podsíti navigační odkaz prostředku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](../resource-group-move-resources.md)předplatného.

@@ -1,184 +1,184 @@
 ---
-title: Rozšíření Azure IoT Central pomocí vlastní analytics | Dokumentace Microsoftu
-description: Jako vývojář řešení konfigurace aplikace IoT Central provedete vlastní analýzy a vizualizace. Toto řešení využívá Azure Databricks.
+title: Rozšiřování Azure IoT Central s využitím vlastních analýz | Microsoft Docs
+description: Jako vývojář řešení můžete nakonfigurovat aplikaci IoT Central, aby vlastní analýzy a vizualizace. Toto řešení používá Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e039e2b8d9c183b5bfee1bee47e4addc4c873bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743437"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049166"
 ---
-# <a name="extend-azure-iot-central-with-custom-analytics"></a>Rozšíření Azure IoT Central pomocí vlastní analytics
+# <a name="extend-azure-iot-central-with-custom-analytics"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz
 
-Tato příručka ukazuje, jako vývojář řešení rozšíření IoT Central aplikace s vlastní analýzy a vizualizace. V příkladu se používá [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) pracovní prostor pro analýzu telemetrie stream IoT Central a k vytvoření vizualizace například [pole vykreslení](https://wikipedia.org/wiki/Box_plot).
+V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Centralovou aplikaci s využitím vlastních analýz a vizualizací. V tomto příkladu se používá pracovní prostor [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) k analýze IoT Centralho datového proudu telemetrie a k vygenerování vizualizací, jako je například [krabicový graf](https://wikipedia.org/wiki/Box_plot).
 
-Tato příručka ukazuje, jak rozšířit nad rámec jeho již přínosech s IoT Central [integrovaných analytických nástrojů](howto-create-analytics.md).
+V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s integrovanými [analytickými nástroji](howto-create-analytics.md)udělat.
 
-V této příručce s postupy se dozvíte, jak:
+V této příručce se dozvíte, jak:
 
-* Stream telemetrická data z aplikace IoT Central s využitím *nepřetržitý export dat*.
-* Vytvoření prostředí Azure Databricks k analýze a zobrazit telemetrii zařízení.
+* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Vytvořte prostředí Azure Databricks pro analýzu a vykreslení telemetrie zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v této příručce s postupy, budete potřebovat aktivní předplatné Azure.
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-### <a name="iot-central-application"></a>Aplikace IoT Central
+### <a name="iot-central-application"></a>IoT Central aplikace
 
-Vytvořit aplikace IoT Central [Azure IoT Central – Moje aplikace](https://aka.ms/iotcentral) stránka s následujícím nastavením:
+Vytvořte aplikaci IoT Central ze stránky [Azure IoT Central – moje aplikace](https://aka.ms/iotcentral) s následujícím nastavením:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ------- | ----- |
-| Plán plateb | Průběžné platby |
-| Šablona aplikace | Sample Contoso (Ukázka Contoso) |
-| Název aplikace | Přijměte výchozí adresář nebo zvolte svůj vlastní název |
-| zprostředkovatele identity | Přijměte výchozí adresář nebo zvolte vlastní jedinečnou předponu adresy URL |
+| Platební plán | Průběžné platby |
+| Šablona aplikace | Ukázka Contoso |
+| Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
+| URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
-| Oblast | USA – východ |
+| Oblast | East US |
 
-Příklady a snímky obrazovky v tomto článku používají **USA – východ** oblasti. Vyberte umístění blízko vás a ujistěte se, že vytváření všech vašich prostředků ve stejné oblasti.
+Příklady a snímky obrazovky v tomto článku používají oblast **východní USA** . Vyberte umístění, které chcete zavřít, a ujistěte se, že jste vytvořili všechny prostředky ve stejné oblasti.
 
-### <a name="resource-group"></a>Skupina prostředků
+### <a name="resource-group"></a>Resource group
 
-Použití [webu Azure portal vytvořte skupinu prostředků](https://portal.azure.com/#create/Microsoft.ResourceGroup) volá **IoTCentralAnalysis** tak, aby obsahovala další prostředky, které vytvoříte. Vytvoření prostředků Azure ve stejném umístění jako aplikace IoT Central.
+Pomocí [Azure Portal vytvořte skupinu prostředků](https://portal.azure.com/#create/Microsoft.ResourceGroup) s názvem **IoTCentralAnalysis** , která bude obsahovat další prostředky, které vytvoříte. Vytvořte prostředky Azure ve stejném umístění jako vaše aplikace IoT Central.
 
 ### <a name="event-hubs-namespace"></a>Obor názvů služby Event Hubs
 
-Použití [webu Azure portal vytvořte obor názvů služby Event Hubs](https://portal.azure.com/#create/Microsoft.EventHub) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.com/#create/Microsoft.EventHub) s následujícím nastavením:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ------- | ----- |
-| Název    | Vyberte název vašeho oboru názvů |
+| Name    | Zvolit název oboru názvů |
 | Cenová úroveň | Basic |
-| Předplatné | Vaše předplatné |
-| Skupina prostředků | IoTCentralAnalysis |
-| Location | USA – východ |
+| Subscription | Vaše předplatné |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Jednotky propustnosti | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Pracovní prostor Azure Databricks
 
-Použití [webu Azure portal k vytvoření služby Azure Databricks](https://portal.azure.com/#create/Microsoft.Databricks) s následujícím nastavením:
+Pomocí [Azure Portal vytvořte službu Azure Databricks](https://portal.azure.com/#create/Microsoft.Databricks) s následujícím nastavením:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ------- | ----- |
-| Název pracovního prostoru    | Vyberte název vašeho pracovního prostoru |
-| Předplatné | Vaše předplatné |
-| Skupina prostředků | IoTCentralAnalysis |
-| Location | USA – východ |
+| Název pracovního prostoru    | Volba názvu pracovního prostoru |
+| Subscription | Vaše předplatné |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Cenová úroveň | Standard |
 
-Pokud jste vytvořili požadované prostředky, vaše **IoTCentralAnalysis** skupiny prostředků vypadá jako na následujícím snímku obrazovky:
+Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **IoTCentralAnalysis** jako na následujícím snímku obrazovky:
 
-![Skupina prostředků analýzy IoT Central](media/howto-create-custom-analytics/resource-group.png)
+![Skupina prostředků IoT Central Analysis](media/howto-create-custom-analytics/resource-group.png)
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Můžete nakonfigurovat aplikace IoT Central můžete průběžně exportovat telemetrii do centra událostí. V této části vytvoříte Centrum událostí pro příjem telemetrických dat z vaší aplikace IoT Central. Centrum událostí přináší telemetrie vaší úlohy Stream Analytics ke zpracování.
+IoT Central aplikaci můžete nakonfigurovat tak, aby průběžně exportovali telemetrii do centra událostí. V této části vytvoříte centrum událostí pro příjem telemetrie z vaší aplikace IoT Central. Centrum událostí doručí telemetrii do vaší Stream Analytics úlohy ke zpracování.
 
-1. Na webu Azure Portal, přejděte do svého oboru názvů služby Event Hubs a vyberte **+ Centrum událostí**.
-1. Název vašeho centra událostí **centralexport**a vyberte **vytvořit**.
-1. V seznamu event hubs v oboru názvů vyberte **centralexport**. Klikněte na tlačítko **zásady sdíleného přístupu**.
-1. Vyberte **+ Přidat**. Vytvoření zásady s názvem **naslouchání** s **naslouchání** deklarací identity.
-1. Jakmile zásadu připravený, vyberte v seznamu a zkopírujte **připojovací řetězec – primární klíč** hodnotu.
-1. Poznamenejte si tento připojovací řetězec, můžete použít později při konfiguraci Poznámkový blok Databricks pro čtení z centra událostí.
+1. V Azure Portal přejděte na obor názvů Event Hubs a vyberte **+ centrum událostí**.
+1. Pojmenujte centrum událostí **centralexport**a vyberte **vytvořit**.
+1. V seznamu Center událostí v oboru názvů vyberte **centralexport**. Pak zvolte **zásady sdíleného přístupu**.
+1. Vyberte **+ Přidat**. Vytvořte zásadu s názvem s deklarací **naslouchání** .
+1. Když je zásada připravená, vyberte ji v seznamu a potom zkopírujte hodnotu **připojovací řetězec – primární klíč** .
+1. Poznamenejte si tento připojovací řetězec, budete ho později používat při konfiguraci poznámkového bloku datacihly pro čtení z centra událostí.
 
-Váš obor názvů služby Event Hubs bude vypadat jako na následujícím snímku obrazovky:
+Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 ![Obor názvů služby Event Hubs](media/howto-create-custom-analytics/event-hubs-namespace.png)
 
-## <a name="configure-export-in-iot-central"></a>Nakonfigurovat export v IoT Central
+## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
 
-Přejděte [aplikace IoT Central](https://aka.ms/iotcentral) vytvoříte pomocí šablony Contoso. V této části nakonfigurujete aplikaci, aby datový proud telemetrie ze své simulovaných zařízení do vašeho centra událostí. Postup konfigurace exportu:
+Přejděte do [IoT Central aplikace](https://aka.ms/iotcentral) , kterou jste vytvořili v šabloně společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
-1. Přejděte **průběžný Export dat** stránce **+ nový**a potom **Azure Event Hubs**.
-1. Použijte následující nastavení konfigurace exportu a pak vyberte **Uložit**:
+1. Přejděte na stránku **průběžné exportu dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
+1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
 
-    | Nastavení | Hodnota |
+    | Nastavení | Value |
     | ------- | ----- |
-    | Zobrazované jméno | Export do služby Event Hubs |
+    | Zobrazovaný název | Exportovat do služby Event Hubs |
     | Enabled | Zapnuto |
-    | Obor názvů služby Event Hubs | Název vašeho oboru názvů služby Event Hubs |
+    | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
     | Centrum událostí | centralexport |
     | Měření | Zapnuto |
     | Zařízení | Vypnuto |
     | Šablony zařízení | Vypnuto |
 
-![Souvislá datová exportovat konfiguraci](media/howto-create-custom-analytics/cde-configuration.png)
+![Konfigurace kontinuálního exportu dat](media/howto-create-custom-analytics/cde-configuration.png)
 
-Počkejte, dokud je stav exportu **systémem** předtím, než budete pokračovat.
+Než budete pokračovat, počkejte, než se **spustí** stav exportu.
 
-## <a name="configure-databricks-workspace"></a>Konfigurovat pracovní prostor Databricks
+## <a name="configure-databricks-workspace"></a>Konfigurace pracovního prostoru datacihly
 
-Na webu Azure Portal, přejděte k vaší službě Azure Databricks a vyberte **spustit pracovní prostor**. Na nové kartě se otevře v prohlížeči a přihlášení do pracovního prostoru.
+V Azure Portal přejděte do služby Azure Databricks a vyberte **Spustit pracovní prostor**. V prohlížeči se otevře nová karta a přihlásí vás k pracovnímu prostoru.
 
 ### <a name="create-a-cluster"></a>Vytvoření clusteru
 
-Na **Azure Databricks** stránky, v seznamu běžných úloh vyberte **nový Cluster**.
+Na stránce **Azure Databricks** v seznamu běžných úloh vyberte **nový cluster**.
 
-Vytvoření clusteru použijte informace v následující tabulce:
+K vytvoření clusteru použijte informace v následující tabulce:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ------- | ----- |
 | Název clusteru | centralanalysis |
 | Režim clusteru | Standard |
-| Verze modulu Runtime Databricks | 5.3 (Scala 2.11, Spark 2.4.0) |
-| Python Version | 3 |
+| Verze Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Verze Pythonu | 3 |
 | Povolení automatického škálování | Ne |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
 | Pracovní procesy | 1 |
-| Typ ovladače | Stejný jako pracovní proces |
+| Typ ovladače | Stejné jako pracovní proces |
 
-Vytvoření clusteru může trvat několik minut, počkejte na dokončení předtím, než budete pokračovat vytváření clusteru.
+Vytvoření clusteru může trvat několik minut, než budete pokračovat, počkejte na dokončení vytváření clusteru.
 
-### <a name="install-libraries"></a>Instalace knihoven
+### <a name="install-libraries"></a>Instalovat knihovny
 
-Na **clustery** stránce, počkejte, dokud je stav clusteru **systémem**.
+Na stránce **clustery** počkejte, dokud nebude **spuštěn**stav clusteru.
 
-Následující kroky ukazují, jak importovat knihovny musí svou ukázku do clusteru:
+Následující kroky ukazují, jak importovat knihovnu, kterou vaše ukázka potřebuje, do clusteru:
 
-1. Na **clustery** stránce, počkejte, dokud se stav **centralanalysis** interaktivní clusteru je **systémem**.
+1. Na stránce **clustery** počkejte, než se **spustí**stav interaktivního clusteru **centralanalysis** .
 
-1. Vyberte cluster a klikněte na tlačítko **knihovny** kartu.
+1. Vyberte cluster a pak zvolte kartu **knihovny** .
 
-1. Na **knihovny** kartě **nainstalovat nový**.
+1. Na kartě **knihovny** klikněte na možnost **instalovat nové**.
 
-1. Na **nainstalujte knihovnu** zvolte **Maven** jako zdroj knihovny.
+1. Na stránce **instalovat knihovnu** vyberte jako zdroj knihovny možnost **Maven** .
 
-1. V **koordinuje** textového pole zadejte následující hodnotu: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. Do textového pole **souřadnice** zadejte následující hodnotu:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
-1. Zvolte **nainstalovat** ji nainstalovat na clusteru.
+1. Kliknutím na **nainstalovat** nainstalujte knihovnu na cluster.
 
-1. Stav knihovny je nyní **nainstalováno**:
+1. Stav knihovny je nyní **nainstalován**:
 
-    ![Nainstalovanou knihovnu](media/howto-create-custom-analytics/cluster-libraries.png)
+    ![Knihovna je nainstalovaná.](media/howto-create-custom-analytics/cluster-libraries.png)
 
-### <a name="import-a-databricks-notebook"></a>Import poznámkového bloku Databricks
+### <a name="import-a-databricks-notebook"></a>Import poznámkového bloku datacihly
 
-Následující kroky použijte pro import poznámkového bloku Databricks, který obsahuje kód Pythonu pro analýzu a vizualizaci telemetrických dat IoT Central:
+Pomocí následujících kroků importujte Poznámkový blok datacihly, který obsahuje kód Pythonu pro analýzu a vizualizaci IoT Central telemetrie:
 
-1. Přejděte **pracovní prostor** stránku ve svém prostředí Databricks. Vyberte rozevírací nabídku vedle názvu účtu a klikněte na tlačítko **Import**.
+1. V prostředí datacihly přejděte na stránku **pracovní prostor** . Vyberte rozevírací seznam vedle názvu účtu a pak zvolte **importovat**.
 
-1. Zvolte možnost importovat z adresy URL a zadejte následující adresu: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Vyberte Import z adresy URL a zadejte následující adresu:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
-1. Chcete-li importovat Poznámkový blok, zvolte **importovat**.
+1. Chcete-li importovat Poznámkový blok, klikněte na tlačítko **importovat**.
 
-1. Vyberte **pracovní prostor** Chcete-li zobrazit importované Poznámkový blok:
+1. Vyberte **pracovní prostor** , ve kterém chcete zobrazit importovaný Poznámkový blok:
 
-    ![Importované poznámkového bloku](media/howto-create-custom-analytics/import-notebook.png)
+    ![Importovaný Poznámkový blok](media/howto-create-custom-analytics/import-notebook.png)
 
-1. Úpravy kódu přidat připojovací řetězec služby Event Hubs, kterou jste si předtím uložili do první buňky Pythonu:
+1. Upravte kód v první buňce Pythonu přidáním připojovacího řetězce Event Hubs, který jste předtím uložili:
 
     ```python
     from pyspark.sql.functions import *
@@ -190,43 +190,43 @@ Následující kroky použijte pro import poznámkového bloku Databricks, kter�
     }
     ```
 
-## <a name="run-analysis"></a>Spuštění analýzy
+## <a name="run-analysis"></a>Analýza spuštění
 
-Spustit analýzu, musíte připojit poznámkového bloku do clusteru:
+Ke spuštění analýzy musíte ke clusteru připojit Poznámkový blok:
 
-1. Vyberte **Detached** a pak vyberte **centralanalysis** clusteru.
-1. Pokud není spuštěná clusteru, spusťte ji.
-1. Spusťte Poznámkový blok, vyberte tlačítko pro spuštění.
+1. Vyberte možnost odpojeno a pak vyberte cluster **centralanalysis** .
+1. Pokud cluster neběží, spusťte ho.
+1. Chcete-li spustit Poznámkový blok, vyberte tlačítko Spustit.
 
-Může se zobrazit chyba do poslední buňky. Pokud ano, zkontrolujte, že běží předchozí buněk, Počkejte minutu pro některá data k zápisu do úložiště a poté znovu spusťte poslední buňku.
+V poslední buňce se může zobrazit chyba. Pokud ano, zkontrolujte, jestli jsou předchozí buňky spuštěné, počkejte minutu, než se data zapisují do úložiště, a pak znovu spusťte poslední buňku.
 
-### <a name="view-smoothed-data"></a>Data zobrazení vyhlazené
+### <a name="view-smoothed-data"></a>Zobrazit hladká data
 
-V poznámkovém bloku posuňte se dolů buňky 14 zobrazíte vykreslení postupné průměrná vlhkost podle typu zařízení. Tento diagram se průběžně aktualizuje, když dorazí datových proudů telemetrie:
+V poznámkovém bloku přejděte dolů na buňku 14, aby se zobrazilo vykreslení průměrného vlhkosti podle typu zařízení. Tento graf se průběžně aktualizuje, protože telemetrie streamování dorazí:
 
-![Vyhlazené vykreslení telemetrie](media/howto-create-custom-analytics/telemetry-plot.png)
+![Vyhladit vykreslení telemetrie](media/howto-create-custom-analytics/telemetry-plot.png)
 
-Změnit velikost grafu v poznámkovém bloku.
+Můžete změnit velikost grafu v poznámkovém bloku.
 
-### <a name="view-box-plots"></a>Vykreslí zobrazení pole
+### <a name="view-box-plots"></a>Zobrazit pole
 
-V poznámkovém bloku, posuňte se dolů buňky 20 zobrazíte [pole vykreslení](https://en.wikipedia.org/wiki/Box_plot). Vykreslení pole jsou založeny na statická data, tak k aktualizaci je třeba znovu spustit buňku:
+V poznámkovém bloku přejděte dolů na buňku 20 a podívejte se, že je [pole](https://en.wikipedia.org/wiki/Box_plot)zobrazeno. Pole se zobrazuje na základě statických dat, aby je bylo možné aktualizovat, je nutné znovu spustit buňku:
 
-![Vytvoří pole](media/howto-create-custom-analytics/box-plots.png)
+![Krabicový graf](media/howto-create-custom-analytics/box-plots.png)
 
-Změnit velikost vykreslení v poznámkovém bloku.
+Můžete změnit velikost pozemků v poznámkovém bloku.
 
-## <a name="tidy-up"></a>Pořádek
+## <a name="tidy-up"></a>Uklizený nahoru
 
-Po tomto postupy pořádek a vyhnout se zbytečné náklady, odstranit **IoTCentralAnalysis** skupinu prostředků na webu Azure Portal.
+Pokud se chcete uklizený po tomto postupu a vyhnout se zbytečným nákladům, odstraňte skupinu prostředků **IoTCentralAnalysis** v Azure Portal.
 
-Můžete odstranit z aplikace IoT Central **správu** stránky v aplikaci.
+Aplikaci IoT Central můžete odstranit ze stránky **pro správu** v rámci aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
-V této příručce s postupy jste zjistili, jak:
+V této příručce se naučíte:
 
-* Stream telemetrická data z aplikace IoT Central s využitím *nepřetržitý export dat*.
-* Vytvoření prostředí Azure Databricks k analýze a zobrazit telemetrická data.
+* Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
+* Vytvořte prostředí Azure Databricks pro analýzu a vykreslení dat telemetrie.
 
-Teď, když víte, jak vytvořit vlastní analytics, navrhované dalším krokem je další postupy [vizualizovat a analyzovat data v řídicím panelu Power BI Azure IoT Central](howto-connect-powerbi.md).
+Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [vizualizovat a analyzovat data Azure IoT Central v řídicím panelu Power BI](howto-connect-powerbi.md).

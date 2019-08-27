@@ -1,6 +1,6 @@
 ---
-title: Portál OMS do Azure | Dokumentace Microsoftu
-description: Na portálu OMS se ještě sunsetted se všemi funkcemi přesouvá na portál Azure portal. Tento článek poskytuje podrobné informace o tomto přechodu.
+title: Přesun portálu OMS do Azure | Microsoft Docs
+description: Portál OMS se sunsetted se všemi funkcemi, které se přesunou do Azure Portal. Tento článek poskytuje podrobné informace o tomto přechodu.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,105 +10,105 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 80c4fa5fad574f1d6efe476df90a8396fa5cb4f3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 126d96cbd85f4e91de5a6393be02a15240b51ade
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205637"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035589"
 ---
-# <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
+# <a name="oms-portal-moving-to-azure"></a>Přesun portálu OMS do Azure
 
 > [!NOTE]
-> Tento článek se týká veřejného cloudu Azure i v cloudu pro státní správu není uvedeno jinak.
+> Tento článek se týká cloudového i veřejného cloudu Azure, s výjimkou případů, kdy je uvedeno jinak.
 
-**Na portálu OMS pro veřejný cloud Azure je oficiálně vyřazený. Na portálu OMS pro Azure US Government cloud byl oficiálně dostupné jenom do 15. května 2019.** Jsme nadšeni, přejděte na webu Azure portal a očekávají, že přechod na snadno. Ale chápeme změny je složité a můžou působit rušivě. Zbývající část tohoto článku prochází přes klíčové scénáře a plán pro tento přechod.
+**Portál OMS pro veřejný cloud Azure byl oficiálně vyřazený. Portál OMS pro státní správu Azure USA byl oficiálně vyřazený z 15. května 2019.** Jsme rádi, že se přesunete do Azure Portal a očekáváme, že přechod bude snadný. Chápeme ale, že změny jsou obtížné a můžou být rušivé. Zbývající část tohoto článku se nachází v rámci klíčových scénářů a plánu pro tento přechod.
 
-Na webu Azure portal je Centrum pro všechny služby Azure a nabízí bohaté možnosti správy prostředí s funkcemi, jako jsou řídicí panely pro Připnutí prostředků, inteligentní vyhledávání, vyhledání prostředků a označí pro správu prostředků. Ke konsolidaci a zjednodušte pracovní postupy monitorování a správu, bodu jsme začali přidávat možnosti portálu OMS na web Azure Portal. Všechny funkce na portálu OMS jsou teď součástí na webu Azure portal. Ve skutečnosti některé nové funkce, jako je například analýza provozu jsou k dispozici pouze na webu Azure Portal. Budete moct provádět vše, co jste dělali v portálu OMS pomocí webu Azure portal a dalších. Pokud jste tak již neučinili, měli byste začít pomocí webu Azure portal ještě dnes!
+Azure Portal je centrum pro všechny služby Azure a nabízí bohatší prostředí pro správu s funkcemi, jako jsou řídicí panely pro připnutí prostředků, inteligentní hledání pro hledání prostředků a označování pro správu prostředků. Pokud chcete konsolidovat a zefektivnit pracovní postup monitorování a správy, začali jsme do Azure Portal přidávat možnosti portálu OMS. Všechny funkce portálu OMS jsou teď součástí Azure Portal. Některé nové funkce, například Analýza provozu, jsou k dispozici pouze v Azure Portal. Všechno, co jste na portálu OMS prováděli, budete moct provádět s Azure Portal a dalšími. Pokud jste to ještě neudělali, měli byste začít používat Azure Portal ještě dnes!
 
 ## <a name="what-is-changing"></a>Co se mění? 
-Tyto změny jsou právě oznámili vyřazení podpory na portálu OMS. Každá z těchto změn je popsána podrobněji v následujících částech.
+Následující změny jsou oznámeny vyřazením portálu OMS. Každá z těchto změn je podrobněji popsána v níže uvedených částech.
 
-- Můžete vytvořit nová [pouze pracovní prostory](#new-workspaces) na webu Azure Portal.
-- Nové prostředí pro správu výstrah [nahradí řešení pro správu upozornění](#changes-to-alerts).
-- [Správa přístupu uživatelů](#user-access-and-role-migration) teď provádí na webu Azure Portal pomocí řízení přístupu na základě rolí Azure.
-- [Application Insights Connector se už nevyžaduje](#application-insights-connector-and-solution) od stejné funkce je povolená díky dotazy napříč pracovního prostoru.
-- [Mobilní aplikaci OMS](#oms-mobile-app) je zastaralé. 
-- [Řešení NSG se nahrazuje](#azure-network-security-group-analytics) s vylepšené funkce, které jsou k dispozici prostřednictvím řešení pro analýzu provozu.
-- Nové připojení z nástroje System Center Operations Manager ke službě Log Analytics vyžadují [aktualizovat sady management Pack](#system-center-operations-manager).
-- V tématu [proveďte migraci vašich nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) pro podrobnosti o změnách [Update Management](../../automation/automation-update-management.md).
+- Nové [pracovní prostory](#new-workspaces) můžete vytvořit pouze v Azure Portal.
+- Nové prostředí pro správu výstrah [nahrazuje Alert Management řešení](#changes-to-alerts).
+- [Správa přístupu uživatele](#user-access-and-role-migration) se teď provádí v Azure Portal pomocí řízení přístupu na základě role v Azure.
+- [Application Insights Connector už není potřeba](#application-insights-connector-and-solution) , protože stejné funkce jsou povolené prostřednictvím dotazů napříč pracovními prostory.
+- [Mobilní aplikace OMS](#oms-mobile-app) je zastaralá. 
+- [Řešení NSG se nahrazuje](#azure-network-security-group-analytics) vylepšenými funkcemi dostupnými prostřednictvím řešení Analýza provozu.
+- Nová připojení z System Center Operations Manager pro Log Analytics vyžadují [aktualizované sady Management Pack](#system-center-operations-manager).
+- Podrobnosti o změnách [Update Management](../../automation/automation-update-management.md)najdete v tématu [migrace nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) .
 
 
-## <a name="what-should-i-do-now"></a>Co mám teď?
-Zatímco většina funkcí budou nadále fungovat bez provádění jakékoli migrace, musíte provést následující úkoly:
+## <a name="what-should-i-do-now"></a>Co mám dělat?
+I když většina funkcí bude i nadále fungovat bez provedení migrace, musíte provést následující úlohy:
 
-- Je potřeba [migrovat vaše uživatelská oprávnění](#user-access-and-role-migration) k webu Azure portal.
-- Zobrazit [proveďte migraci vašich nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) podrobnosti týkající se přechodu řešení Update Management.
+- Musíte [migrovat vaše uživatelská oprávnění](#user-access-and-role-migration) do Azure Portal.
+- Podrobnosti o přechodu Update Management řešení najdete v tématu [migrace nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) .
 
-Odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](oms-portal-faq.md) informace o tom, jak přechod na webu Azure portal. 
+Přečtěte si [Nejčastější dotazy k přechodu z portálu OMS na Azure Portal pro Log Analytics uživatele](oms-portal-faq.md) , kde najdete informace o tom, jak přejít na Azure Portal. 
 
-## <a name="user-access-and-role-migration"></a>Migrace přístup a role uživatele
-Správa přístupu na portálu Azure je bohatší a výkonnější než správu přístupu na portálu OMS. Zobrazit [Správa pracovních prostorů](manage-access.md#manage-accounts-and-users) podrobné řízení přístupu ve službě Log Analytics.
+## <a name="user-access-and-role-migration"></a>Přístup uživatelů a migrace rolí
+Správa přístupu Azure Portal je bohatší a výkonnější než Správa přístupu na portálu OMS. Podrobnosti o správě přístupu v Log Analytics najdete v tématu [návrh pracovního prostoru Azure Monitorch protokolů] návrh-protokoly-deployment.md).
 
 > [!NOTE]
-> Předchozí verze tohoto článku je uvedeno, že oprávnění by automaticky převést z portálu OMS na webu Azure portal. Tento automatický převod se už plánované a je třeba provést převod, sami.
+> Předchozí verze tohoto článku uvedly, že oprávnění by se automaticky převedla z portálu OMS na Azure Portal. Tento automatický převod již není plánován a je nutné provést převod sami.
 
-Možná už máte správný přístup na webu Azure Portal v takovém případě nemusíte nic měnit. Existuje několik případů, kdy nemusí mít odpovídající přístup v takovém případě správce musíte přiřadit jste oprávnění.
+V Azure Portal už možná máte odpovídající přístup. v takovém případě nemusíte dělat žádné změny. K dispozici je několik případů, kdy nemáte odpovídající přístup v takovém případě, že vám správce musí přiřadit oprávnění.
 
-- Máte oprávnění jen pro čtení na portálu OMS, ale žádná oprávnění na webu Azure Portal. 
-- Máte oprávnění přispěvatele na portálu OMS, ale čtečky přístup jenom na webu Azure Portal.
+- Na portálu OMS nemáte oprávnění uživatele jen pro čtení, ale v Azure Portal žádná oprávnění. 
+- Máte oprávnění přispěvatele na portálu OMS, ale jenom přístup čtenář v Azure Portal.
  
-V obou těchto případech musí správce ručně přiřadit vám příslušné role z následující tabulky. Doporučujeme, abyste přiřadili této role na úrovni skupiny nebo předplatného resource.  Podrobnější pokyny bude poskytována krátce obou těchto případech.
+V obou těchto případech musí správce ručně přiřadit příslušnou roli z následující tabulky. Tuto roli doporučujeme přiřadit na úrovni skupiny prostředků nebo předplatného.  V tuto chvíli budou k dispozici další doporučené doprovodné materiály pro obě tyto případy.
 
-| Oprávnění na portálu OMS | Azure Role |
+| Oprávnění portálu OMS | Role Azure |
 |:---|:---|
 | ReadOnly | Čtenář Log Analytics |
 | Přispěvatel | Přispěvatel Log Analytics |
-| Správce | Vlastník | 
+| Správce | Owner | 
  
 
 ## <a name="new-workspaces"></a>Nové pracovní prostory
-Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../learn/quick-create-workspace.md) vytvořte nový pracovní prostor na webu Azure Portal.
+Pomocí portálu OMS už nebudete moct vytvářet nové pracovní prostory. Podle pokynů v části [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../learn/quick-create-workspace.md) vytvořte nový pracovní prostor v Azure Portal.
 
 ## <a name="changes-to-alerts"></a>Změny výstrah
 
-### <a name="alert-extension"></a>Oznámení rozšíření  
+### <a name="alert-extension"></a>Rozšíření výstrahy  
 
-Byl [rozšíří do portálu Azure portal](alerts-extend.md) budou existující upozornění dál zobrazovat na portálu OMS, ale můžete je spravovat pouze na webu Azure portal. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
+Výstrahy se rozšířily na [Azure Portal](alerts-extend.md) existující výstrahy budou dál uvedené na portálu OMS, ale můžete je spravovat jenom v Azure Portal. Pokud k upozorněním přistupujete programově pomocí Log Analytics výstrahy REST API nebo šablony prostředků výstrah Log Analytics, budete muset místo akcí v volání rozhraní API, šablonách Azure Resource Manager a příkazech PowerShellu používat skupiny akcí.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
-Jako změny z předchozí oznámení [řešení Alert managementu](alert-management-solution.md) budou nadále dostupné a plně se podporuje na webu Azure Portal. Můžete pokračovat v instalaci řešení z Azure Marketplace.
+V rámci změny z předchozího oznámení bude [řešení pro správu výstrah](alert-management-solution.md) dál dostupné a plně podporované v Azure Portal. Řešení můžete dál instalovat z Azure Marketplace.
 
-I když řešení pro správu výstrah zůstává k dispozici, doporučujeme vám použít [unified Azure Monitor výstrah rozhraní](alerts-overview.md) vizualizovat a spravovat všechna upozornění v Azure. Toto nové prostředí nativně agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Pokud používáte jednotné rozhraní výstrahy monitorování Azure, pak do řešení pro správu výstrah je potřeba jenom povolení integrace výstrah ze System Center Operation Manageru do Azure. V jednotném rozhraní výstrahy monitorování Azure naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazení výstrah napříč několika předplatnými při použití filtrů bohaté. Budoucí rozvoj při správě výstrah primárně budou k dispozici tyto nové možnosti. 
+I když je řešení pro správu výstrah stále k dispozici, doporučujeme vám používat [jednotné rozhraní pro upozorňování Azure monitor](alerts-overview.md) k vizualizaci a správě všech výstrah v Azure. Toto nové prostředí nativně agreguje výstrahy z více zdrojů v rámci Azure, včetně výstrah protokolu z Log Analytics. Pokud používáte jednotné rozhraní pro upozorňování Azure Monitor, řešení správy výstrah se vyžaduje jenom k tomu, aby se aktivovaly jenom integrace výstrah z nástroje System Center Operations Manager do Azure. V rámci sjednoceného rozhraní pro upozorňování Azure Monitor se můžete podívat na distribuce výstrah, využívat automatizované seskupení souvisejících výstrah prostřednictvím inteligentních skupin a zobrazovat výstrahy mezi několika předplatnými a přitom používat syté filtry. Z tohoto nového prostředí budou primárně dostupné budoucí zálohy ve správě výstrah. 
 
-Údaje shromážděné tímto řešením Správa výstrah (záznamů s typem upozornění) i nadále v Log Analytics, dokud je řešení nainstalováno pro pracovní prostor. 
+Data shromážděná řešením pro správu výstrah (záznamy s typem výstrahy) se nadále nacházejí v Log Analytics, pokud je řešení nainstalováno pro pracovní prostor. 
 
-## <a name="oms-mobile-app"></a>Mobilní aplikaci OMS
-Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní aplikaci OMS přístup k informacím o vašich IT infrastruktury, řídicí panely a uložené dotazy, můžete přistupovat na webu Azure portal přímo z prohlížeče v mobilním zařízení. Abyste mohli dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](action-groups.md) pro příjem oznámení ve formě SMS nebo hlasový hovor
+## <a name="oms-mobile-app"></a>Mobilní aplikace OMS
+Mobilní aplikace OMS se sunsetted spolu s portálem OMS. Místo mobilní aplikace OMS pro přístup k informacím o vaší infrastruktuře IT, řídicím panelu a uložených dotazech můžete k Azure Portal přistupovat přímo z prohlížeče v mobilním zařízení. Pokud chcete dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](action-groups.md) tak, aby přijímaly oznámení ve formě SMS nebo hlasového hovoru.
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector a řešení
-[Application Insights Connector](app-insights-connector.md) poskytuje způsob, jak zahrnout data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací. Rozšířená podpora uchovávání dat v březnu. května 2019 Application Insights a schopnost provádět [dotazy napříč prostředky](../log-query/cross-workspace-query.md) vedle možnosti [zobrazení více prostředků služby Azure Monitor Application Insights ](../log-query/unify-app-resource-data.md), není nutné duplikovat data z vašich prostředků Application Insights a odesílat do Log Analytics. Kromě toho konektor odešle podmnožinu vlastností aplikace ke službě Log Analytics, zatímco dotazy napříč prostředky poskytuje lepší flexibilitu.  
+[Application Insights Connector](app-insights-connector.md) poskytuje způsob, jak zahrnout Application Insights data do log Analyticsho pracovního prostoru. Tato duplikace dat byla nutná k umožnění viditelnosti napříč daty infrastruktury a aplikací. Díky Application Insights podpoře rozšířeného uchovávání dat v březnu 2019 a možnost provádět dotazy na více [prostředků](../log-query/cross-workspace-query.md) , aby bylo možné [zobrazit více prostředků Azure monitor Application Insights](../log-query/unify-app-resource-data.md), není nutné nic duplikovat. data z vašich Application Insightsch prostředků a odeslat je do Log Analytics. Konektor navíc pošle podmnožinu vlastností aplikace do Log Analytics, zatímco dotazy na více prostředků poskytují lepší flexibilitu.  
 
-V důsledku toho byla Application Insights Connector zastaralé a odebrat z webu Azure Marketplace spolu s vyřazení portálu OMS na 30. března 2019. Existující připojení budou nadále fungovat až do 30. června 2019. S vyřazení portálu OMS neexistuje žádný způsob, jak nakonfigurovat a odeberte existující připojení z portálu. Tato funkčnost bude podporovaná pomocí rozhraní REST API, která bude k dispozici v lednu, 2019 a oznámení se publikuje na [aktualizace Azure](https://azure.microsoft.com/updates/). 
+V takovém případě je Application Insights Connector zastaralá a odebrána z Azure Marketplace společně s vyřazením portálu OMS do 30. března 2019. Stávající připojení budou fungovat i do 30. června 2019. V případě zastaralého portálu OMS neexistuje způsob, jak nakonfigurovat a odebrat existující připojení z portálu. Tato akce bude podporována pomocí REST API, která bude k dispozici v lednu 2019. oznámení budou odeslána na [Aktualizace Azure](https://azure.microsoft.com/updates/). 
 
 ## <a name="azure-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě Azure
-[Řešení analýzy skupin zabezpečení sítě Azure](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) nahradí s nedávno uvedená [analýzu provozu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) který poskytuje přehled o aktivitě uživatelů a aplikací v cloudových sítích. Analýza provozu umožňuje auditovat aktivitu sítě vaší organizace, zabezpečených aplikací a dat, optimalizovat výkon úloh a zajistěte dodržování předpisů. 
+[Řešení Azure Network Security Group Analytics](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) bude nahrazeno nedávno spuštěným [Analýza provozu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) , které poskytuje přehled o aktivitách uživatelů a aplikací v cloudových sítích. Analýza provozu vám pomůže auditovat síťové aktivity vaší organizace, zabezpečit aplikace a data, optimalizovat výkon úloh a zachovat vyhovující předpisy. 
 
-Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následující.
+Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následujících položkách.
 
-- Provoz probíhá mezi vaší sítí mezi Azure a Internet, veřejných cloudových oblastech, virtuálních sítí a podsítí.
-- Aplikace a protokoly ve vaší síti bez potřeby vyhrazených tok kolekce zařízení nebo zjištění je snazší.
-- Hlavní vyjádření, přetížení aplikací, konverzace virtuálního počítače v cloudu, hotspotům provoz.
-- Zdroje a cíle provozu mezi virtuálními sítěmi, vzájemných vztahů mezi nejdůležitější obchodní služby a aplikace.
-- Zabezpečení, včetně škodlivý provoz, porty otevřené pro Internet, aplikace nebo virtuální počítače pokusu o přístup k Internetu.
-- Využití kapacity, která pomáhá eliminovat problémy průběhu zřizování nebo nízkého využití.
+- Přenos toků mezi vašimi sítěmi mezi Azure a internetem, oblastmi veřejných cloudů, virtuální sítě a podsítěmi.
+- Aplikace a protokoly ve vaší síti, aniž by to mělo být třeba pro nástroje pro sledování a zařízení pro sběr vyhrazených toků.
+- Hlavní mluvčí, aplikace v konverzaci, konverzace virtuálních počítačů v cloudu, provozní hotspoty.
+- Zdroje a cíle provozu mezi virtuální sítě a mezi důležitými obchodními službami a aplikacemi.
+- Zabezpečení, včetně škodlivých přenosů, portů otevřených v Internetu, aplikací nebo virtuálních počítačů, které se pokoušejí o přístup k Internetu
+- Využití kapacity, které pomáhá eliminovat problémy přes zřizování nebo nevyužití.
 
-Můžete nadále závisí na nastavení diagnostiky pro odesílání protokolů skupiny zabezpečení sítě ke službě Log Analytics, takže stávající uložit hledání, upozornění, řídicí panely se budou nadále fungovat. Zákazníci, kteří už jste nainstalovali řešení můžete ho nadále používat až do dalšího upozornění. Od 5. září se řešení analýzy skupin zabezpečení sítě budou odebrány z webu marketplace a k dispozici prostřednictvím komunity jako [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
+Můžete se i nadále spoléhat na nastavení diagnostiky a odesílat protokoly NSG, aby bylo možné Log Analytics, takže stávající uložená hledání, upozornění a řídicí panely budou fungovat i nadále. Zákazníci, kteří už toto řešení nainstalovali, ho můžou dál používat, dokud si nevšimnete. Od 5. září se řešení analýzy skupin zabezpečení sítě odebere z webu Marketplace a zpřístupní se prostřednictvím komunity jako [Šablona Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Pokud jste [připojené skupině pro správu Operations Manageru k Log Analytics](om-agents.md), bude dál fungovat beze změny. Pro nová připojení, je nutné postupovat podle pokynů v [Microsoft System Center Operations Manager Management Pack nakonfigurovat Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Pokud jste [Log Analytics skupinu pro správu Operations Manager k](om-agents.md), bude i nadále fungovat bez jakýchkoli změn. V případě nových připojení je potřeba při konfiguraci Operations Management Suite postupovat podle pokynů v sadě [Microsoft System Center Operations Manager Management Pack](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
 
-## <a name="next-steps"></a>Další postup
-- Zobrazit [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](oms-portal-faq.md) pro doprovodné materiály k přesunutí z portálu OMS na webu Azure portal.
+## <a name="next-steps"></a>Další kroky
+- V tématu [běžné otázky týkající se přechodu z portálu OMS na Azure Portal Log Analytics uživatele](oms-portal-faq.md) , kde najdete pokyny k přesunu z portálu oms do Azure Portal.

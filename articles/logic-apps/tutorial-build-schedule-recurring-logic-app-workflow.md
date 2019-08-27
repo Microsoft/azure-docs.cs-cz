@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507211"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051744"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Kontrola provozu podle plánu pomocí Azure Logic Apps
 
@@ -35,17 +36,17 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Aplikace logiky na základní úrovni](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Pokud ještě nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a> před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * E-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tento rychlý start používá účet Outlook.com. Pokud používáte jiný e-mailový účet, zůstává obecný postup stejný, ale vaše uživatelské rozhraní může vypadat trochu jinak.
 
-* K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">postupu získání klíče k Mapám Bing</a>. 
+* K získání doby trvání cesty pro nějakou trasu potřebujete přístupový klíč k rozhraní API Map Bing. Pokud chcete tento klíč získat, řiďte se kroky [postupu získání klíče k Mapám Bing](https://msdn.microsoft.com/library/ff428642.aspx). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
@@ -60,9 +61,9 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | Nastavení | Hodnota | Popis | 
    | ------- | ----- | ----------- | 
    | **Název** | LA-dobacesty | Název vaší aplikace logiky | 
-   | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
+   | **Předplatné** | <*your-Azure-subscription-name*> | Název vašeho předplatného Azure | 
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k uspořádání souvisejících prostředků | 
-   | **Umístění** | Východní USA 2 | Oblast, kam se mají ukládat informace o vaší aplikaci logiky | 
+   | **Location** | Východní USA 2 | Oblast, kam se mají ukládat informace o vaší aplikaci logiky | 
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    |||| 
 
@@ -74,11 +75,11 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 ## <a name="add-scheduler-trigger"></a>Přidání triggeru do Scheduleru
 
-1. V návrháři zadejte do vyhledávacího pole „opakování“. Vyberte tento trigger: **Plán – opakování**
+1. V návrháři zadejte do vyhledávacího pole „opakování“. Vyberte tuto aktivační událost: **Plán – opakování**
 
    ![Nalezení a přidání triggeru Plán – Opakování](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** (**...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s tímto popisem: ```Check travel time every weekday morning```
+2. Ve tvaru **Opakování** vyberte tlačítko **tři tečky** ( **...** ) a zvolte **Přejmenovat**. Přejmenujte trigger s tímto popisem: ```Check travel time every weekday morning```
 
    ![Přejmenování triggeru](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -92,8 +93,8 @@ Dál přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
    | ------- | ----- | ----------- | 
    | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami | 
    | **Frekvence** | Týden | Jednotka času pro opakování | 
-   | **Časové pásmo** | Žádný | Platí jenom v případě, že zadáte čas spuštění. Vhodné při zadání jiného časového pásma, než je místní. | 
-   | **Čas spuštění** | Žádný | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
+   | **Časové pásmo** | Žádné | Platí jenom v případě, že zadáte čas spuštění. Vhodné při zadání jiného časového pásma, než je místní. | 
+   | **Čas spuštění** | Žádné | Odloží opakování na určité datum a čas. Další informace najdete v tématu [Plánování pravidelně spouštěných úloh a pracovních postupů](../connectors/connectors-native-recurrence.md). | 
    | **V tyto dny** | Pondělí, úterý, středa, čtvrtek, pátek | Dostupné, pouze pokud je **Frekvence** nastavená na Týden. | 
    | **V těchto hodinách** | 7,8,9 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte hodiny, kdy se v průběhu dne spustí toto opakování. Tento příklad se spustí v celou 7., 8. a 9. hodinu. | 
    | **V těchto minutách** | 0,15,30,45 | Dostupné, pouze pokud je **Frekvence** nastavená na Týden nebo Den. Vyberte minuty, kdy se v průběhu dne spustí toto opakování. Tento příklad se spouští každých 15 minut od nulté celé hodiny. | 
@@ -117,7 +118,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
 
 1. V Návrháři pro Logic Apps pod daným triggerem zvolte **+ Nový krok** > **Přidat akci**.
 
-2. Vyhledejte "mapy" a vyberte tuto akci: **Mapy Bing – získat trasu**
+2. Vyhledejte "Maps" a vyberte tuto akci: **Mapy Bing – získat trasu**
 
 3. Pokud nemáte připojení k Mapám Bing, budete vyzváni k jeho vytvoření. Zadejte podrobnosti připojení a zvolte **Vytvořit**.
 
@@ -126,7 +127,7 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
    | **Název připojení** | PřipojeníMapyBing | Zadejte název připojení. | 
-   | **Klíč rozhraní API** | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">jak získat klíč</a>. | 
+   | **Klíč rozhraní API** | <*klíč-služby-Mapy-Bing*> | Zadejte klíč Map Bing, který jste dříve dostali. Pokud nemáte k dispozici klíč služby Mapy Bing, přečtěte si, [jak získat klíč](https://msdn.microsoft.com/library/ff428642.aspx). | 
    | | | |  
 
 4. Přejmenujte akci s tímto popisem: ```Get route and travel time with traffic```
@@ -139,12 +140,12 @@ Teď, když máte trigger, přidejte [akci](../logic-apps/logic-apps-overview.md
    | ------- | ----- | ----------- |
    | **Bod na trase 1** | <*start*> | Počátek vaší cesty | 
    | **Bod na trase 2** | <*cíl*> | Cíl vaší trasy | 
-   | **Vyloučit** | Žádný | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
+   | **Vyloučit** | Žádné | Všechny položky, kterým je třeba se na trase vyhnout, jako je například dálnice, mýtné atd. | 
    | **Optimalizovat** | timeWithTraffic | Parametr k optimalizaci vaší trasy, jako je například vzdálenost, doba trvání cesty včetně dopravní situace atd. Vyberte tento parametr: timeWithTraffic | 
-   | **Jednotka vzdálenosti** | <*vaše-volba*> | Jednotka vzdálenosti použitá pro trasu. V tomto článku se používá tato jednotka: "Míli"  | 
-   | **Způsob cestování** | Autem | Způsob cestování pro danou trasu. Vyberte tento režim: "Řízení" | 
-   | **Datum a čas přejezdu** | Žádný | Platí pouze při přejezdech | 
-   | **Typ datum a čas**  | Žádný | Platí pouze při přejezdech | 
+   | **Jednotka vzdálenosti** | <*vaše-volba*> | Jednotka vzdálenosti použitá pro trasu. Tento článek používá tuto jednotku: Vzdálenost  | 
+   | **Způsob cestování** | Autem | Způsob cestování pro danou trasu. Vyberte tento režim: Řidič | 
+   | **Datum a čas přejezdu** | Žádné | Platí pouze při přejezdech | 
+   | **Typ datum a čas** | Žádné | Platí pouze při přejezdech | 
    |||| 
 
    Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
@@ -194,7 +195,7 @@ Ve výchozím nastavení vrátí předchozí akce **Získat trasu** aktuální �
 
       ![Zadejte tento výraz: div(,60)](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. Umístěte kurzor dovnitř výrazu mezi levou závorku (**(**) a čárku (**,**). 
+   3. Umístěte kurzor dovnitř výrazu mezi levou závorku ( **(** ) a čárku ( **,** ). 
    Zvolte **Dynamický obsah**.
 
       ![Umístění kurzoru, volba Dynamický obsah](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
@@ -283,7 +284,7 @@ Nyní přidáte akci, která odešle e-mail, pokud doba trvání cesty překroč
 
       ![Zadání výrazu k výpočtu minut navíc z doby trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. Umístěte kurzor dovnitř výrazu mezi levou závorku (**(**) a čárku (**,**). Zvolte **Dynamický obsah**.
+   4. Umístěte kurzor dovnitř výrazu mezi levou závorku ( **(** ) a čárku ( **,** ). Zvolte **Dynamický obsah**.
 
       ![Další vytváření výrazu k výpočtu minut navíc z doby trvání cesty](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 

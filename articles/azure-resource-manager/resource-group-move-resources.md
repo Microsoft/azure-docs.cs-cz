@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624561"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035550"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -35,8 +35,6 @@ Před přesunutím prostředku je třeba provést několik důležitých kroků.
    * [Pokyny k přesunu sítě](./move-limitations/networking-move-limitations.md)
    * [Pokyny pro přesunutí Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Pokyny pro přesunutí Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-
-   Pokud cílová skupina prostředků obsahuje virtuální síť, může přesunutí blokovat stav svých závislých prostředků, a to i v případě, že se tyto prostředky nepodílejí na přesunu. Další informace najdete v tématu [pokyny k přesunu sítě](./move-limitations/virtual-network-move-limitations.md).
 
 1. Zdrojové a cílové odběry musí být aktivní. Pokud máte potíže s povolením zakázaného účtu, [vytvořte žádost o podporu Azure](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
 
@@ -189,7 +187,7 @@ Po jeho dokončení budete informováni o výsledek.
 
 Pokud se zobrazí chyba, přečtěte si téma [řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo](troubleshoot-move.md)předplatného.
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 Pokud chcete přesunout existující prostředky do jiné skupiny prostředků nebo předplatného, použijte příkaz [Move-AzResource](/powershell/module/az.resources/move-azresource) . Následující příklad ukazuje, jak přesunout několik prostředků do nové skupiny prostředků.
 

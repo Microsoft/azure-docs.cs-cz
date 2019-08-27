@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 40d888da214bad079c665c8d0e6095e8762a131e
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.author: v-mohabe
+ms.openlocfilehash: 7ab42fdb03209173c61b70fdf498aa77b39a1c23
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990633"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036384"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Sestava analýzy hrozeb v Azure Security Center
 Tento dokument vysvětluje, jakým způsobem vám mohou sestavy analýzy hrozeb v Azure Security Center pomoci zjistit více o hrozbě, který vygenerovala výstrahu zabezpečení.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Co je sestava analýzy hrozeb?
-Detekce hrozeb v Security Center funguje tak, že monitoruje informace o zabezpečení z prostředků Azure, ze sítě a připojených partnerských řešení. Za účelem identifikace hrozeb služba tyto informace analyzuje a často přitom koreluje data z různých zdrojů. Tento proces je součástí [možností detekce](security-center-detection-capabilities.md) v Security Center.
+Detekce hrozeb v Security Center funguje tak, že monitoruje informace o zabezpečení z prostředků Azure, ze sítě a připojených partnerských řešení. Za účelem identifikace hrozeb služba tyto informace analyzuje a často přitom koreluje data z různých zdrojů. Další informace najdete v tématu [jak Azure Security Center detekuje hrozby a reaguje na](security-center-alerts-overview.md#detect-threats)ně.
 
 Když Security Center identifikuje hrozbu, aktivuje [výstrahu zabezpečení](security-center-managing-and-responding-alerts.md), která obsahuje podrobné informace týkající se konkrétní události, včetně návrhů na odstranění problémů. Pokud chcete pomoct týmům pro reakci na incidenty, prozkoumat a napravit hrozby, Security Center obsahuje sestavu analýzy hrozeb, která obsahuje informace o zjištěné hrozbě, včetně informací, jako jsou:
 
@@ -70,7 +70,6 @@ Odtud si můžete stáhnout soubor PDF pro tuto sestavu a přečíst si více o 
 V tomto dokumentu jste se dozvěděli, jak mohou sestavy analýzy hrozeb v Azure Security Center pomoci během vyšetřování výstrah zabezpečení. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
-* [Možnosti detekce v Azure Security Center](security-center-detection-capabilities.md)
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md). Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md). Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
 * [Řešení bezpečnostních incidentů v Azure Security Center](security-center-incident.md)

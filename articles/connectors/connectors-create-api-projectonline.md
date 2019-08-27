@@ -1,6 +1,6 @@
 ---
-title: Připojení k Projectu Online v Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace pracovních postupů, které monitorování, vytvářet a spravovat projekty Projectu Online, úloh a prostředků pomocí Azure Logic Apps
+title: Připojte se k Projectu Online z Azure Logic Apps | Microsoft Docs
+description: Automatizujte pracovní postupy, které sledují, vytvářejí a spravují projektové online projekty, úkoly a prostředky pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,64 +11,64 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105626"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050858"
 ---
-# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Spravovat projekty Projectu Online, úloh a prostředků pomocí Azure Logic Apps
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Správa projektů, úloh a prostředků Projectu Online pomocí Azure Logic Apps
 
-S Azure Logic Apps a Projectu Online connector můžete vytvořit automatizovaných úloh a pracovních postupů pro projekty, úkoly a prostředky v Projectu Online prostřednictvím Office 365. Vaše pracovní postupy můžete provést tyto akce a další, například:
+Pomocí Azure Logic Apps a konektoru služby Project Online můžete vytvářet automatizované úlohy a pracovní postupy pro vaše projekty, úlohy a prostředky v Projectu Online prostřednictvím sady Office 365. Pracovní postupy mohou provádět tyto akce a další, například:
 
-* Monitorování při vytváření nových projektů, úkolů nebo prostředky. Nebo sledování, se publikují nové projekty.
+* Monitorování při vytváření nových projektů, úkolů nebo prostředků. Nebo sledujte, kdy se publikují nové projekty.
 * Vytvořte nové projekty, úkoly nebo prostředky.
-* Seznam existujících projektů nebo úlohy.
-* Podívejte se, vrátit se změnami nebo publikovat projekty.
+* Vypíše existující projekty nebo úkoly.
+* Rezervace, vrácení se změnami nebo publikování projektů.
 
-Project Online umožňuje plánovat, určit prioritu a správa projektů a investic do portfolia projektů z téměř odkudkoli na téměř jakémkoli zařízení tím, že poskytuje možnosti správy výkonné projektu. Můžete použít Projectu Online aktivačních událostí, které odpovědi z Projectu Online a zpřístupnit výstup dalších akcí. Akce ve svých aplikacích logiky můžete provádět různé úlohy v Projectu Online. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Project Online pomáhá plánovat, upřednostňovat a spravovat projekty a investice do portfolia projektů prakticky odkudkoli a na téměř jakémkoli zařízení tím, že poskytuje výkonné funkce řízení projektů. Můžete použít triggery služby Project Online, které získávají odpovědi z Projectu Online a zpřístupňují výstup ostatním akcím. Akce v aplikacích logiky můžete použít k provádění různých úloh v Projectu Online. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Project Online, dostupná prostřednictvím [účet Office 365](https://www.office.com/), 
+* Project Online, k dispozici prostřednictvím [účtu Office 365](https://www.office.com/), 
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přistupovat ke svým datům Projectu Online. Spustit s triggerem Projectu Online [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít Projectu Online akce, spusťte svou aplikaci logiky s další aktivační události, například, **opakování** aktivační události.
+* Aplikace logiky, kde chcete získat přístup k datům projektu online. Pokud chcete začít s triggerem Projectu Online, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akce Projectu Online, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
-## <a name="connect-to-project-online"></a>Připojte se k Project Online
+## <a name="connect-to-project-online"></a>Připojit k Projectu Online
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Zvolte cestu: 
+1. Zvolit cestu: 
 
-   * V případě prázdné logic apps do vyhledávacího pole zadejte "Projectu Online" jako filtr. 
-   V seznamu triggerů vyberte trigger, který chcete. 
+   * Pro prázdné aplikace logiky zadejte do vyhledávacího pole "Project Online" jako filtr. 
+   V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
      -nebo-
 
-   * Pro existující aplikace logiky, v části krok, ve které chcete přidat akci, zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "Projectu Online". V seznamu akcí vyberte požadovanou akci.
+   * Pro existující aplikace logiky v kroku, kde chcete přidat akci, vyberte možnost **Nový krok**. Do vyhledávacího pole zadejte jako filtr "Project Online". V seznamu akce vyberte akci, kterou chcete.
 
-1. Pokud se zobrazí výzva k přihlášení k Projectu Online, přihlaste se hned.
+1. Pokud budete vyzváni k přihlášení k Projectu Online, přihlaste se.
 
-   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení k Projectu Online a přístup k vašim datům.
+   Vaše přihlašovací údaje opravňují aplikaci logiky vytvořit připojení k Projectu Online a přistupovat k datům.
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/projectonline/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/projectonline/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

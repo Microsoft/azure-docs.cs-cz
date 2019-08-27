@@ -1,6 +1,6 @@
 ---
-title: Nastavení oznámení údržby pro virtuální počítače s Windows v Azure | Microsoft Docs
-description: Přečtěte si, jak nastavit plánovaná oznámení údržby pro virtuální počítače Azure.
+title: Monitorování naplánovaných událostí pro virtuální počítače s Windows v Azure | Microsoft Docs
+description: Naučte se monitorovat virtuální počítače Azure pro plánované události.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657408"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051858"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>Nastavení oznámení o údržbě ovlivňující váš virtuální počítač
+# <a name="monitoring-scheduled-events"></a>Scheduled Events monitorování
 
 Aktualizace se každý den aplikují na různé části Azure, aby byly služby v nich spuštěné v bezpečí a aktuální. Kromě plánovaných aktualizací může dojít také k neplánovaným událostem. Například pokud dojde k selhání nějakého hardwarového snížení nebo chyby, služby Azure můžou potřebovat neplánovanou údržbu. Pomocí migrace za provozu, zachovávání paměti při zachovávání aktualizací a obecně udržuje striktní pruh o dopadu aktualizací. ve většině případů jsou tyto události téměř transparentní pro zákazníky a nemají žádný dopad nebo většinou způsobují několik sekund zablokování virtuálního počítače. U některých aplikací ale může dojít k ovlivnění i několika sekund zablokování virtuálního počítače. Důležité informace o nadcházející údržbě Azure jsou důležité, aby se zajistilo, že budou tyto aplikace co nejlepší. [Služba Scheduled Events](scheduled-events.md) poskytuje programové rozhraní, které bude dostávat oznámení o nadcházející údržbě, a umožňuje provádět řádné zpracování údržby. 
 

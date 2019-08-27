@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534569"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035222"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -36,7 +36,7 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
 > [!IMPORTANT]
 > K přidání Application Insights JavaScript SDK do aplikace stačí použít jednu z níže uvedených metod. Použijete-li instalaci založenou na NPM, nepoužívejte instalaci založenou na fragmentu. To samé platí pro reverzní scénář při použití přístupu založeného na fragmentech, nepoužívejte také instalaci založenou na NPM. 
 
-### <a name="npm-based-setup"></a>Nastavení založené na NPM 
+### <a name="npm-based-setup"></a>Nastavení založené na NPM
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ Minifikovaného zásobník volání telemetrie výjimek může být unminified v
 2. Určete, která zdrojová mapování odpovídají tomuto zásobníku volání. Zdrojová mapa musí odpovídat zdrojovému souboru rámce zásobníku, ale má příponu.`.map`
 3. Přetáhněte zdrojové mapy do zásobníku volání v Azure Portal![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights web Basic
+### <a name="application-insights-web-basic"></a>Application Insights web Basic
 
 Pro zjednodušené prostředí můžete místo toho nainstalovat základní verzi Application Insights
 ```

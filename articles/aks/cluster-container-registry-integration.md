@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: ec017901e36a01042485e9aeca2431c8a6838ab8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536752"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034973"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Preview – ověření pomocí Azure Container Registry služby Azure Kubernetes
 
@@ -46,11 +46,15 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Vytvoření nového clusteru AKS s integrací ACR
 
-Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku vytvoří ACR ve skupině prostředků, kterou zadáte, a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Pokud *název ACR* neexistuje, automaticky `aks<resource-group>acr` se vytvoří výchozí ACR název.  Zadejte platné hodnoty pro následující parametry.  Parametry v hranatých závorkách jsou volitelné.
+Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku vytvoří ACR ve skupině prostředků, kterou zadáte, a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Pokud *název ACR* ve skupině prostředků, kterou zadáte, neexistuje, automaticky `aks<resource-group>acr` se vytvoří výchozí ACR název.  Zadejte platné hodnoty pro následující parametry.  Parametry v hranatých závorkách jsou volitelné.
 ```azurecli
 az login
 az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
 ```
+\* * ID prostředku ACR má následující formát: 
+
+/Subscriptions/< předplatné-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/<name> 
+  
 Dokončení tohoto kroku může trvat několik minut.
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>Vytvoření integrace ACR pro existující clustery AKS

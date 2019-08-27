@@ -1,45 +1,48 @@
 ---
-title: Připojení k Facebooku – Azure Logic Apps | Dokumentace Microsoftu
-description: Umožňuje spravovat vaše časové osy a stránku Facebooku REST API a Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Připojení k Facebooku – Azure Logic Apps
+description: Správa časové osy a stránky pomocí rozhraní REST API pro Facebook a Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83431184d7e9c5970ece6af143ee9b5166da96d5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105970"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050950"
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Začínáme s konektor pro Facebook
-Připojení k Facebooku a příspěvků na timeline, získání kanálů stránek a dalších akcí. Pomocí Facebooku můžete:
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Správa časové osy a stránky Facebooku pomocí Azure Logic Apps
 
-* Vytvoření obchodní toku na základě dat, které získáte ze sítě Facebook. 
-* Pomocí aktivační události při přijetí nového příspěvku.
-* Použití akce, které příspěvek na vaší časové ose, získejte kanálů stránek a mnoho dalšího. Tyto akce získat odpověď a poté zpřístupní výstup pro další akce. Například po nový příspěvek na vaší časové ose můžete využít tohoto příspěvku a push na váš informační kanál Twitteru. 
+Připojení k Facebooku a odeslání na časovou osu, získání informačního kanálu stránky a dalších. Pomocí Facebooku můžete:
 
-Můžete začít tak, že teď vytvoříte aplikaci logiky, najdete v článku [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Sestavte svůj obchodní tok na základě dat, která získáte z Facebooku. 
+* Při přijetí nového příspěvku použijte Trigger.
+* Použijte akce, které se účtují na časovou osu, Získejte kanál stránky a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. Například když je na časové ose nový příspěvek, můžete tento příspěvek přenést a vložit ho do svého informačního kanálu Twitteru. 
+
+Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-facebook"></a>Vytvoření připojení k Facebooku
-Při přidání tohoto konektoru logic Apps, musíte se autorizovat logic apps pro připojení k vaší službě Facebook.
 
-1. Přihlaste se ke svému Facebookovému účtu
-2. Vyberte **Authorize**a povolit aplikace logiky pro připojení a použití vaší sítě Facebook. 
+Když přidáte tento konektor do vašich aplikací logiky, musíte autorizovat aplikace logiky pro připojení k Facebooku.
+
+1. Přihlaste se k účtu Facebook.
+
+2. Vyberte **autorizovat**a umožněte vašim aplikacím logiky připojení a používání Facebooku. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/facebook/).
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/facebook/).
+## <a name="next-steps"></a>Další kroky
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

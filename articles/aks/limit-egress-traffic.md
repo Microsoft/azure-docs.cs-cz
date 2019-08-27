@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639785"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034949"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Preview – omezení odchozího provozu pro uzly clusteru a řízení přístupu k požadovaným portům a službám ve službě Azure Kubernetes Service (AKS)
 
@@ -85,15 +85,13 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 |----------------------------|-----------|----------|
 | *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. Umístění nahraďte *\<oblastí, ve které je nasazený cluster AKS.\>* |
 | *.tun. \<Location\>. azmk8s.IO | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod serveru rozhraní API. Umístění nahraďte *\<oblastí, ve které je nasazený cluster AKS.\>* |
-| aksrepos.azurecr.io        | HTTPS:443 | Tato adresa je vyžadována pro přístup k obrázkům v Azure Container Registry (ACR). |
+| aksrepos.azurecr.io        | HTTPS:443 | Tato adresa je vyžadována pro přístup k obrázkům v Azure Container Registry (ACR). Tento registr obsahuje image a grafy třetích stran (například server metrik, základní DNS atd.), které se vyžadují pro fungování clusteru během upgradu a škálování clusteru.|
 | *.blob.core.windows.net    | HTTPS:443 | Tato adresa je back-end úložiště imagí uložených v ACR. |
-| mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). |
+| mcr.microsoft.com          | HTTPS:443 | Tato adresa je nutná pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje soubory a grafy první strany (například Moby atd.), které se vyžadují pro fungování clusteru během upgradu a škálování clusteru. |
 | *.cdn.mscr.io              | HTTPS:443 | Tato adresa je vyžadována pro MCR úložiště zajištěné službou Azure Content Delivery Network (CDN). |
 | management.azure.com       | HTTPS:443 | Tato adresa je vyžadována pro Kubernetes operace GET/PUT. |
 | login.microsoftonline.com  | HTTPS:443 | Tato adresa je vyžadována pro Azure Active Directory ověřování. |
-| api.snapcraft.io           | HTTPS:443, HTTP:80 | Tato adresa se vyžaduje pro instalaci balíčků snap na uzlech se systémem Linux. |
 | ntp.ubuntu.com             | UDP:123   | Tato adresa se vyžaduje pro synchronizaci času NTP na uzlech se systémem Linux. |
-| *.docker.io                | HTTPS:443 | Tato adresa je nutná k vyžádání požadovaných imagí kontejneru pro front-Tunnel. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Volitelné Doporučené adresy a porty pro clustery AKS
 
@@ -103,7 +101,7 @@ Pro správné fungování clusterů AKS se doporučuje následující plně kval
 
 | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
-| *. ubuntu.com                            | HTTP:80   | Tato adresa umožní uzlům clusteru se systémem Linux stáhnout požadované opravy a aktualizace zabezpečení. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP:80   | Tato adresa umožní uzlům clusteru se systémem Linux stáhnout požadované opravy a aktualizace zabezpečení. |
 | packages.microsoft.com                  | HTTPS:443 | Tato adresa je úložiště balíčků Microsoftu používané pro operace *apt-get* uložené v mezipaměti. |
 | dc.services.visualstudio.com            | HTTPS:443 | Doporučuje se pro správné metriky a monitorování pomocí Azure Monitor. |
 | *.opinsights.azure.com                  | HTTPS:443 | Doporučuje se pro správné metriky a monitorování pomocí Azure Monitor. |
@@ -112,7 +110,7 @@ Pro správné fungování clusterů AKS se doporučuje následující plně kval
 | apt.dockerproject.org                   | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
 | nvidia.github.io                        | HTTPS:443 | Tato adresa se používá pro správnou instalaci ovladače a operaci na uzlech založených na GPU. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jaké porty a adresy se mají povolit, pokud omezíte odchozí přenosy clusteru. Můžete také definovat, jak můžou částice a jaká omezení v clusteru komunikovat. Další informace najdete v tématu [zabezpečení provozu mezi lusky pomocí zásad sítě v AKS][network-policy].
 

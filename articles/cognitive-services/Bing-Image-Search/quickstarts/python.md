@@ -1,26 +1,26 @@
 ---
-title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a Python'
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu REST API a Python'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí Pythonu a přijímat odpověďmi ve formátu JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí Pythonu a přijímat odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 59c7a85ae564981029163bf99a8e44e72237f709
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383657"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034626"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Pythonu
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý start: Hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Pythonu
 
-V tomto rychlém startu můžete zahájit odesílání požadavků hledání rozhraní API Bingu pro vyhledávání obrázků. Tuto aplikaci v Pythonu odešle vyhledávací dotaz na rozhraní API a adresu URL první obrázek se zobrazí ve výsledcích. Zatímco tato aplikace je napsaný v Pythonu, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace Python odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v Pythonu, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu:
 
@@ -32,15 +32,15 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python 2.x nebo 3.x](https://www.python.org/)
-* [Python vytvořením bitové kopie knihovny (PIL)](https://pillow.readthedocs.io/en/stable/index.html)
+* [Python 2. x nebo 3. x](https://www.python.org/)
+* [Knihovna pil (Python Imaging Library)](https://pillow.readthedocs.io/en/stable/index.html)
 * [matplotlib](https://matplotlib.org/) 
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový soubor Pythonu ve vašich oblíbených prostředím IDE nebo editorem a importovat následující moduly. Vytvořte proměnnou pro váš klíč předplatného, Hledat koncový bod a hledané výrazy.
+1. V oblíbených IDE nebo editoru vytvořte nový soubor Pythonu a naimportujte následující moduly. Vytvořte proměnnou pro klíč předplatného, koncový bod hledání a hledaný termín.
 
     ```python
     import requests
@@ -53,21 +53,21 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     search_term = "puppies"
     ```
 
-2. Přidat klíč předplatného. Chcete `Ocp-Apim-Subscription-Key` záhlaví vytvořením slovník a přidáním klíč jako hodnotu. 
+2. Přidejte klíč předplatného do `Ocp-Apim-Subscription-Key` záhlaví tak, že vytvoříte slovník a přidáte klíč jako hodnotu. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     ```
 
-## <a name="create-and-send-a-search-request"></a>Vytvořit a odeslat žádost o vyhledávání
+## <a name="create-and-send-a-search-request"></a>Vytvoření a odeslání žádosti o vyhledávání
 
-1. Parametry žádosti o vytvoření slovníku pro hledání. Přidat hledaný termín `q` parametru. Použití "public" `license` parametr pro hledání obrázků ve veřejné domény. Použití "fotografii" pro `imageType` prohledával pouze fotografie.
+1. Vytvořte slovník pro parametry vyhledávacího požadavku. Přidejte hledaný termín do `q` parametru. Použijte Public pro `license` parametr pro hledání imagí ve veřejné doméně. Použijte fotografii pro hledání v `imageType` případě fotek.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Použití `requests` knihovny pro volání rozhraní API Bingu pro vyhledávání obrázků. K žádosti o přidat záhlaví a parametry a vrací odpověď jako objekt JSON. 
+2. `requests` Použijte knihovnu pro volání rozhraní API Bingu pro vyhledávání obrázků. Přidejte do žádosti hlavičku a parametry a vraťte odpověď jako objekt JSON. 
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -75,11 +75,11 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
     search_results = response.json()
     ```
 
-## <a name="view-the-response"></a>Zobrazení odpovědi
+## <a name="view-the-response"></a>Zobrazit odpověď
 
-1. Vytvořte nový obrázek se čtyřmi sloupci a čtyři řádky pomocí knihovny matplotlib. 
+1. Vytvoří nový obrázek se čtyřmi sloupci a čtyřmi řádky pomocí knihovny matplotlib. 
 
-2. Iterovat přes řádky a sloupce na obrázku a použít knihovnu PIL `Image.open()` metodu pro přidání do každého prostoru miniatura obrázku. 
+2. Iterujte pomocí řádků a sloupců na obrázku a pomocí `Image.open()` metody knihovny pil přidejte k jednotlivým prostorům miniaturu obrázku. 
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -92,9 +92,9 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
             axes[i][j].axis("off")
     ```
 
-3. Použití `plt.show()` nakreslete obrázek a zobrazí obrázky.
+3. Slouží `plt.show()` k vykreslení obrázku a zobrazení obrázků.
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -147,7 +147,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 > [!div class="nextstepaction"]
 > [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-* [Co je API pro vyhledávání obrázků Bingu?](../overview.md)  
+* [Co je rozhraní API Bingu pro vyhledávání obrázků?](../overview.md)  
 * [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)

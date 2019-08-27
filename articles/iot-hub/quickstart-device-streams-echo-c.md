@@ -1,38 +1,40 @@
 ---
-title: Komunikace na zařízení aplikaci v jazyce C prostřednictvím datových proudů zařízení Azure IoT Hub (preview) | Dokumentace Microsoftu
-description: V tomto rychlém startu spustíte aplikace na straně zařízení jazyka C, který komunikuje s zařízení IoT prostřednictvím datového proudu zařízení.
+title: Komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení v Azure IoT Hub (Preview) | Microsoft Docs
+description: V tomto rychlém startu spustíte aplikaci na straně zařízení v jazyce C, která komunikuje se zařízením IoT přes datový proud zařízení.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 4b6f987c68f9fe3ef95c82017b7d8be1d83083ea
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446132"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050168"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace na zařízení aplikaci v jazyce C prostřednictvím datových proudů zařízení služby IoT Hub (preview)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý start: Komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Datové proudy zařízení jako v současné době podporuje služba Azure IoT Hub [funkce ve verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Datové proudy zařízení služby IoT Hub](iot-hub-device-streams-overview.md) povolit zařízení a služeb aplikacím komunikovat způsobem, firewallem procházející a zabezpečené. Ve verzi public preview SDK pro jazyk C podporuje datové proudy zařízení na straně zařízení. V důsledku toho tento rychlý start popisuje pokyny ke spuštění jenom aplikace na straně zařízení. Ke spuštění doprovodné aplikace na straně služby, naleznete v tématu:
- 
-   * [Komunikaci s aplikací pro zařízení v C# prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-csharp.md)
-   * [Komunikaci s aplikací pro zařízení v Node.js prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-nodejs.md)
+[IoT Hub datové proudy zařízení](iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. V rámci verze Public Preview podporuje sada C SDK streamy zařízení jenom na straně zařízení. V důsledku toho tento rychlý Start popisuje pokyny pro spuštění pouze aplikace na straně zařízení. Chcete-li spustit odpovídající aplikaci na straně služby, přečtěte si tyto články:
 
-Aplikace C straně zařízení v rámci tohoto rychlého startu má následující funkce:
+* [Komunikace s aplikacemi zařízení v C# přes IoT Hub proudy zařízení](./quickstart-device-streams-echo-csharp.md)
 
-* Vytvořte datový proud zařízení na zařízení IoT.
-* Příjem dat, které se odesílá z aplikace na straně služby a odezvu ji zpět.
+* [Komunikace s aplikacemi pro zařízení v Node. js prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-nodejs.md)
 
-Kód ukazuje proces zahájení zařízení datového proudu, jakož i jak používat odesílat a přijímat data.
+Aplikace C na straně zařízení v tomto rychlém startu má následující funkce:
+
+* Vytvořte datový proud zařízení pro zařízení IoT.
+
+* Přijímá data odeslaná z aplikace na straně služby a vrací je zpět.
+
+Kód ukazuje proces iniciace datového proudu zařízení a také způsob, jak ho použít k posílání a přijímání dat.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -40,46 +42,50 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ve verzi preview streamovaných zařízení je momentálně podporována pouze pro IoT hub, které jsou vytvořeny v těchto oblastech:
+Potřebujete následující požadavky:
 
-  * Střední USA
-  * Střed USA – EUAP
-
-* Nainstalujte [Visual Studio 2017](https://www.visualstudio.com/vs/) s [vývoj desktopových aplikací pomocí C++ ](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) povolenou sadu funkcí.
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) s povoleným zatížením pro **desktopový vývoj C++**  .
 
 * Nainstalujte nejnovější verzi [Git](https://git-scm.com/download/).
 
-* Spusťte následující příkaz pro přidání rozšíření Azure IoT pro Azure CLI do instance služby Cloud Shell. Přidá rozšíření IOT služby IoT Hub, IoT Edge a IoT zařízení zřizování služby (DPS)-konkrétní příkazy rozhraní příkazového řádku Azure.
+* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
    ```
 
+Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
+
+* Střed USA
+
+* Střední USA – EUAP
+
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
-Pro účely tohoto rychlého startu použijete [zařízení Azure IoT SDK pro jazyk C](iot-hub-device-sdk-c-intro.md). Příprava prostředí pro vývoj klonovat a vytvářet [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) z Githubu. Sada SDK na Githubu zahrnuje ukázkový kód, který se používá v rámci tohoto rychlého startu.
+V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md). Připravíte vývojové prostředí, které se používá k klonování a sestavení [sady Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) z GitHubu. Sada SDK na GitHubu obsahuje vzorový kód, který se používá v tomto rychlém startu.
 
-1. Stáhněte si [sestavovací systém CMake](https://cmake.org/download/).
+   > [!NOTE]
+   > Než začnete s tímto postupem, ujistěte se, že je Visual Studio nainstalovaná s desktopovým vývojem, a to **s C++**  využitím úlohy.
 
-    Před zahájením instalace CMake, je důležité, který požadavky sady Visual Studio (Visual Studio a *vývoj desktopových aplikací pomocí C++*  úloh) jsou na vašem počítači nainstalovaný. Poté, co jsou požadavky na místě a ověříte, stahování, můžete nainstalovat sestavovací systém CMake.
+1. Nainstalujte [systém sestavení cmake](https://cmake.org/download/) , jak je popsáno na stránce pro stažení.
 
-2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
+1. Otevřete prostředí příkazového řádku nebo Git Bash. Spuštěním následujícího příkazu naklonujte úložiště GitHub pro [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
-    ```
+    ```cmd
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
     Tato operace by měla trvat několik minut.
 
-3. Vytvoření *cmake* podadresáře v kořenovém adresáři úložiště Git, jak je vidět v následujícím příkazu, pak přejděte do této složky.
+1. Vytvořte adresář *cmake* v kořenovém adresáři úložiště Git, jak je znázorněno v následujícím příkazu, a pak přejít do této složky.
 
-    ```
+    ```cmd
     cd azure-iot-sdk-c
     mkdir cmake
     cd cmake
     ```
 
-4. Spusťte následující příkazy z *cmake* adresář pro sestavení verze sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj.
+1. Spuštěním následujících příkazů z adresáře *cmake* sestavíte verzi sady SDK, která je specifická pro vaši platformu vašeho vývojového klienta.
 
    * V systému Linux:
 
@@ -88,7 +94,7 @@ Pro účely tohoto rychlého startu použijete [zařízení Azure IoT SDK pro ja
       make -j
       ```
 
-   * Ve Windows spusťte následující příkazy v Developer Command Prompt pro sadu Visual Studio 2015 nebo 2017. Řešení sady Visual Studio pro simulované zařízení bude vygenerován ve *cmake* adresáře.
+   * V systému Windows otevřete [Developer Command Prompt pro Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs). Spusťte příkaz pro vaši verzi sady Visual Studio. V tomto rychlém startu se používá Visual Studio 2019. Tyto příkazy vytvoří řešení sady Visual Studio pro simulované zařízení v adresáři *cmake* .
 
       ```cmd
       rem For VS2015
@@ -96,6 +102,9 @@ Pro účely tohoto rychlého startu použijete [zařízení Azure IoT SDK pro ja
 
       rem Or for VS2017
       cmake .. -G "Visual Studio 15 2017"
+
+      rem Or for VS2019
+      cmake .. -G "Visual Studio 16 2019"
 
       rem Then build the project
       cmake --build . -- /m /p:Configuration=Release
@@ -107,47 +116,47 @@ Pro účely tohoto rychlého startu použijete [zařízení Azure IoT SDK pro ja
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Předtím, než se může připojit, zaregistrujte zařízení pomocí služby IoT hub. V této části můžete použít Azure Cloud Shell s [rozšíření IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) zaregistrovat simulované zařízení.
+Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s rozšířením [IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
-1. K vytvoření identity zařízení, spusťte následující příkaz ve službě Cloud Shell:
+1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 
    > [!NOTE]
-   > * Nahradit *YourIoTHubName* zástupný symbol název, který zvolíte pro službu IoT hub.
-   > * Použití *Mojezařízení*, jak je znázorněno. Jedná se o název pro registrovaná zařízení. Pokud zvolíte jiný název pro vaše zařízení, použijte tento název v rámci tohoto článku a aktualizujte název zařízení v ukázkové aplikace před spuštěním je.
+   > * Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
+   > * Použijte *mojezařízení*, jak je znázorněno na obrázku. Je to název zadaný pro registrované zařízení. Pokud pro své zařízení zvolíte jiný název, použijte tento název v celém rámci tohoto článku a aktualizujte název zařízení v ukázkových aplikacích ještě předtím, než je spustíte.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
-2. Chcete-li získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte následující příkazy ve službě Cloud Shell:
+1. Pokud chcete získat *připojovací řetězec zařízení* pro zařízení, které jste právě zaregistrovali, spusťte v Cloud Shell následující příkaz:
 
    > [!NOTE]
-   > Nahradit *YourIoTHubName* zástupný symbol název, který zvolíte pro službu IoT hub.
+   > Zástupný text *YourIoTHubName* nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení pro pozdější použití v rámci tohoto rychlého startu. Soubor bude vypadat jako v následujícím příkladu:
+    Poznamenejte si připojovací řetězec zařízení pro pozdější použití v tomto rychlém startu. Soubor bude vypadat jako v následujícím příkladu:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Komunikaci mezi zařízením a služby prostřednictvím datových proudů zařízení
+## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Komunikace mezi zařízením a službou prostřednictvím datových proudů zařízení
 
-V této části spuštění aplikace straně zařízení a aplikace straně služby a komunikaci mezi nimi.
+V této části spustíte jak aplikaci na straně zařízení, tak aplikaci na straně služby a komunikujete mezi nimi.
 
-### <a name="run-the-device-side-application"></a>Spuštění aplikace straně zařízení
+### <a name="run-the-device-side-application"></a>Spuštění aplikace na straně zařízení
 
-Ke spuštění aplikace straně zařízení, postupujte takto:
+Chcete-li spustit aplikaci na straně zařízení, postupujte podle následujících kroků:
 
-1. Zadejte svoje přihlašovací údaje zařízení tak, že upravíte *iothub_client_c2d_streaming_sample.c* zdrojový soubor v *iothub_client/samples/iothub_client_c2d_streaming_sample* složku a pak zadají připojovací řetězec zařízení.
+1. Zadejte přihlašovací údaje pro své zařízení úpravou zdrojového souboru *iothub_client_c2d_streaming_sample. c* ve složce *iothub_client/Samples/iothub_client_c2d_streaming_sample* a zadáním připojovacího řetězce zařízení.
 
    ```C
    /* Paste in your iothub connection string  */
    static const char* connectionString = "[device connection string]";
    ```
 
-2. Kompilujte kód následujícím způsobem:
+1. Zkompilujte kód následujícím způsobem:
 
    ```bash
    # In Linux
@@ -161,7 +170,7 @@ Ke spuštění aplikace straně zařízení, postupujte takto:
    cmake --build . -- /m /p:Configuration=Release
    ```
 
-3. Spusťte zkompilovaný program:
+1. Spusťte kompilovaný program:
 
    ```bash
    # In Linux
@@ -175,12 +184,13 @@ Ke spuštění aplikace straně zařízení, postupujte takto:
    iothub_client_c2d_streaming_sample.exe
    ```
 
-### <a name="run-the-service-side-application"></a>Spuštění aplikace straně služby
+### <a name="run-the-service-side-application"></a>Spuštění aplikace na straně služby
 
-Jak už bylo zmíněno dříve, sady SDK IoT Hub C podporuje datové proudy zařízení na straně zařízení. Sestavení a spuštění aplikace straně služby, postupujte podle pokynů v jednom z následujících šablon rychlý start:
+Jak již bylo uvedeno výše, sada IoT Hub C SDK podporuje pouze datové proudy zařízení na straně zařízení. Pokud chcete sestavit a spustit aplikaci na straně služby, postupujte podle pokynů v některém z následujících rychlých startů:
 
-* [Pro aplikace pro zařízení v komunikaci C# prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-csharp.md)
-* [Komunikace na zařízení aplikaci v Node.js prostřednictvím datových proudů zařízení služby IoT Hub](./quickstart-device-streams-echo-nodejs.md)
+* [Komunikace s aplikacemi v C# zařízení prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md)
+
+* [Komunikace s aplikací v Node. js pomocí IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-nodejs.md)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -188,9 +198,9 @@ Jak už bylo zmíněno dříve, sady SDK IoT Hub C podporuje datové proudy zař
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste nastavení služby IoT hub, zaregistrovali zařízení, vytvořit datový proud zařízení mezi C aplikací na zařízení a jiná aplikace na straně služby a používají datového proudu k odesílání dat vpřed a zpět mezi těmito aplikacemi.
+V tomto rychlém startu jste nastavili službu IoT Hub, zaregistrovali zařízení, navázali jste datový proud zařízení mezi aplikací jazyka C na zařízení a jinou aplikací na straně služby a pomocí tohoto datového proudu odesíláte data mezi aplikacemi a zpátky mezi ně.
 
-Další informace o zařízení datových proudů, naleznete v tématu:
+Další informace o datových proudech zařízení najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Přehled datových proudů zařízení](./iot-hub-device-streams-overview.md)
+> [Přehled streamů zařízení](./iot-hub-device-streams-overview.md)

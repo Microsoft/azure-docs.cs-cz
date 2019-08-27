@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312078"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035249"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -44,7 +44,7 @@ Další informace o různých funkcích podporovaných nástrojem [Network Perfo
 ## <a name="supported-regions"></a>Podporované oblasti
 NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části světa, a to z pracovního prostoru hostovaného v jedné z následujících oblastí:
 * Západní Evropa
-* Středozápadní USA
+* Západní střed USA
 * East US
 * Východní Japonsko
 * Jihovýchodní Asie
@@ -71,7 +71,7 @@ Základní procesy použijte k instalaci agentů na adrese [připojení počíta
 
 * **Monitorování připojení služby**: Na každý uzel, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby, nainstalujte agenta Log Analytics. Příkladem je, že chcete monitorovat síťové připojení k Office 365 z webů Office označených jako O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel každý v umístění O1, O2 a O3. 
 
-* **ExpressRoute monitor**: Ve službě Azure Virtual Network nainstalujte aspoň jednoho agenta Log Analytics. Nainstalujte také alespoň jednoho agenta do místní podsítě, který je připojen prostřednictvím privátního partnerského vztahu ExpressRoute.  
+* **ExpressRoute monitor**: Ve službě Azure Virtual Network nainstalujte aspoň jednoho agenta Log Analytics. Nainstalujte také alespoň jednoho agenta do místní podsítě, který je připojen prostřednictvím privátního partnerského vztahu ExpressRoute.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování 
 
@@ -105,7 +105,7 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 
 1. Přidejte řešení Network Performance Monitor do svého pracovního prostoru z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete také použít proces popsaný v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md). 
 2. Otevřete pracovní prostor Log Analytics a vyberte dlaždici s přehledem. 
-3. Vyberte dlaždici **Network Performance Monitor** s řešením zpráv *vyžaduje další konfiguraci*.
+3. Vyberte dlaždici **Network Performance Monitor** s řešením zpráv *vyžaduje další konfiguraci*.
 
    ![Dlaždice Network Performance Monitor](media/network-performance-monitor/npm-config.png)
 
@@ -133,7 +133,7 @@ Po dokončení instalace bude trvat 30 minut až hodinu, než se data naplní. I
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Úprava nastavení monitorování pro podsítě a uzly 
 
-Všechny podsítě s alespoň jedním nainstalovaným agentem jsou uvedeny na kartě **podsítě**na stránce konfigurace. 
+Všechny podsítě s alespoň jedním nainstalovaným agentem jsou uvedeny na kartě **podsítě** na stránce konfigurace. 
 
 
 Povolení nebo zakázání monitorování konkrétních podsítí:
@@ -203,9 +203,9 @@ Po povolení řešení Network Performance Monitor poskytuje dlaždice řešení
 
 ### <a name="drill-down-for-depth"></a>Přechod k podrobnostem pro hloubku 
 
-Můžete vybrat různé odkazy na řídicím panelu řešení a přejít k podrobnostem v jakékoli oblasti zájmu. Pokud se například na řídicím panelu zobrazí výstraha nebo není síťové propojení v pořádku, vyberte ho pro další prošetření. Stránka obsahuje seznam všech odkazů na podsítě pro konkrétní síťové propojení. Můžete zobrazit informace o ztrátě, latenci a stavu jednotlivých propojení mezi sítěmi. Můžete rychle zjistit, které propojení v síti způsobuje problémy. Výběrem **Zobrazit odkazy** na uzel zobrazíte všechna propojení uzlů pro odkaz není v pořádku. Pak můžete zobrazit jednotlivá propojení mezi uzly a najít odkazy uzlů, které nejsou v pořádku. 
+Můžete vybrat různé odkazy na řídicím panelu řešení a přejít k podrobnostem v jakékoli oblasti zájmu. Pokud se například na řídicím panelu zobrazí výstraha nebo není síťové propojení v pořádku, vyberte ho pro další prošetření. Stránka obsahuje seznam všech odkazů na podsítě pro konkrétní síťové propojení. Můžete zobrazit informace o ztrátě, latenci a stavu jednotlivých propojení mezi sítěmi. Můžete rychle zjistit, které propojení v síti způsobuje problémy. Výběrem **Zobrazit odkazy na uzel** zobrazíte všechna propojení uzlů pro odkaz není v pořádku. Pak můžete zobrazit jednotlivá propojení mezi uzly a najít odkazy uzlů, které nejsou v pořádku. 
 
-Vyberte **Zobrazit topologii** pro zobrazení topologie směrování po směrování tras mezi zdrojovým a cílovým uzlem. Trasy, které nejsou v pořádku, se zobrazí červeně. Můžete zobrazit latenci, kterou přispěly jednotlivé segmenty směrování, abyste mohli problém rychle identifikovat na určitou část sítě.
+Vyberte **Zobrazit topologii** pro zobrazení topologie směrování po směrování tras mezi zdrojovým a cílovým uzlem. Trasy, které nejsou v pořádku, se zobrazí červeně. Můžete zobrazit latenci, kterou přispěly jednotlivé segmenty směrování, abyste mohli problém rychle identifikovat na určitou část sítě.
 
  
 
@@ -245,7 +245,7 @@ Topologie zobrazená v mapě je topologie vrstvy 3 a neobsahuje zařízení a p�
 
 ## <a name="log-queries-in-azure-monitor"></a>Dotazy protokolu v Azure Monitor
 
-Všechna data, která jsou zveřejněna prostřednictvím řídicího panelu Network Performance Monitor a stránky s přehledem podrobností, jsou také k dispozici v [protokolových dotazech](../log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a exportovat data do aplikace Excel, Power BI nebo odkaz Shared. Oblast **Common dotazů** na řídicím panelu obsahuje několik užitečných dotazů, které můžete použít jako výchozí bod k vytváření vlastních dotazů a sestav. 
+Všechna data, která jsou zveřejněna prostřednictvím řídicího panelu Network Performance Monitor a stránky s přehledem podrobností, jsou také k dispozici v [protokolových dotazech](../log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a exportovat data do aplikace Excel, Power BI nebo odkaz Shared. Oblast **Common dotazů** na řídicím panelu obsahuje několik užitečných dotazů, které můžete použít jako výchozí bod k vytváření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Upozornění
 
@@ -277,7 +277,7 @@ Informace o cenách jsou k dispozici [online](network-performance-monitor-pricin
 
 * **UserVoice:** Můžete publikovat své nápady pro Network Performance Monitor funkce, na kterých chceme pracovat. Navštivte [stránku UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Připojte se k našemu kohorta:** Vždycky se zajímá, že noví zákazníci se k naší kohorta připojí. V rámci tohoto řešení získáte předběžný přístup k novým funkcím a příležitostí, které nám pomohou vylepšit Network Performance Monitor. Pokud se zajímáte o připojení, vyplňte tento [rychlý průzkum](https://aka.ms/npmcohort). 
+* **Připojte se k našemu kohorta:** Vždycky se zajímá, že noví zákazníci se k naší kohorta připojí. V rámci tohoto řešení získáte předběžný přístup k novým funkcím a příležitostí, které nám pomohou vylepšit Network Performance Monitor. Pokud se zajímáte o připojení, vyplňte tento [rychlý průzkum](https://aka.ms/npmcohort). 
 
 ## <a name="next-steps"></a>Další postup 
 Přečtěte si další informace o [monitorování výkonu](network-performance-monitor-performance-monitor.md), [monitorování připojení služby](network-performance-monitor-performance-monitor.md)a [monitorování ExpressRoute](network-performance-monitor-expressroute.md). 

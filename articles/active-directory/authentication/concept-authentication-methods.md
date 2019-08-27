@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561317"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051443"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
-Jako správce zvolte metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR). doporučuje se, abyste uživatelům vyžadovali registraci více metod ověřování. Pokud není metoda ověřování pro uživatele k dispozici, může se rozhodnout ověřit jinou metodu.
+Jako správce vyberte metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR). doporučuje se, abyste uživatelům vyžadovali registraci více metod ověřování. Pokud není metoda ověřování pro uživatele k dispozici, může se rozhodnout ověřit jinou metodu.
 
-Správci můžou v zásadách definovat, které metody ověřování jsou dostupné pro uživatele SSPR a MFA. Některé metody ověřování nemusí být k dispozici pro všechny funkce. Další informace o konfiguraci zásad najdete v článcích [postup úspěšného zavedení samoobslužného resetování hesla](howto-sspr-deployment.md) a [plánování cloudového ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md) .
+Správci můžou v zásadách definovat, které metody ověřování jsou dostupné pro uživatele SSPR a MFA. Některé metody ověřování nemusí být k dispozici pro všechny funkce. Další informace o konfiguraci zásad najdete v článcích [postup úspěšného zavedení samoobslužného resetování hesla](howto-sspr-deployment.md) a [plánování cloudového Multi-Factor Authentication Azure](howto-mfa-getstarted.md) .
 
 Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat více než minimální požadovaný počet metod ověřování v případě, že k tomu nemají přístup.
 
@@ -60,41 +60,41 @@ Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojen
 
 ### <a name="predefined-questions"></a>Předdefinované otázky
 
-* Ve kterém městě jste se seznámili s prvním manželem či manželkou (případně partnerem či partnerkou)?
-* Ve kterém městě se seznámili vaši rodiče?
-* Ve kterém městě žije váš sourozenec, kterého máte nejblíže?
-* Ve kterém městě se narodil váš otec?
-* Ve kterém městě jste vykonávali své první zaměstnání?
-* Ve kterém městě se narodila vaše matka?
-* Ve kterém městě jste byli na Nový rok 2000?
-* Uveďte příjmení svého nejoblíbenějšího učitele na střední škole.
-* Jak se nazývá vysoká škola, na kterou jste se hlásili, ale pak na ni nenastoupili?
-* Jak se nazývá místo, kde se konala vaše první svatební oslava?
-* Jaké je druhé křestní jméno vašeho otce?
-* Jaké je vaše oblíbené jídlo?
-* Uveďte celé jméno své babičky ze strany matky.
-* Jaké je druhé křestní jméno vaší matky?
+* V jakém městě jste se vyplnili jako první manželka/partner?
+* V jakém městě se vaše rodiče naplnily?
+* V jakém městě je vaše nejbližší na stejné úrovni jako v reálném čase?
+* V jakém městě se narodil váš otce?
+* V jakém městě jste měli první úlohu?
+* V jakém městě se narodila vaše matka?
+* V jakém městě jste byli na novém roce 2000?
+* Jaký je příjmení vašeho oblíbeného učitele v rámci střední školy?
+* Jaký je název školy, na kterou jste použili, ale neúčastnili jste se?
+* Jaký je název místa, ve kterém jste si podrželi svou první svatbu?
+* Co je prostřední jméno vašeho otce?
+* Co je vaše oblíbená jídla?
+* Co je jméno a příjmení babičkye jméno?
+* Jaké je prostřední jméno matky?
 * Kolik je měsíc a rok narození na stejné úrovni? (např. listopadu 1985)
 * Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
-* Uveďte celé jméno svého dědečka ze strany otce.
-* Jaké je druhé křestní jméno vašeho nejmladšího sourozence?
-* Do které školy jste chodili v šestém ročníku?
-* Uveďte celé jméno svého nejlepšího kamaráda nebo kamarádky z dětství.
-* Uveďte celé jméno svého prvního partnera nebo partnerky.
-* Uveďte příjmení svého nejoblíbenějšího učitele na prvním stupni.
-* Uveďte značku a model svého prvního auta nebo motocyklu.
-* Jak se jmenovala první škola, do které jste docházeli?
-* Uveďte název nemocnice, ve které jste se narodili.
-* Na jaké ulici jste bydleli v dětství v úplně prvním bydlišti?
-* Jak se jmenoval váš dětský hrdina?
-* Jak se jmenuje váš nejoblíbenější plyšák?
-* Jak se jmenoval váš první domácí mazlíček?
-* Jakou jste měli v dětství přezdívku?
-* Jaký byl váš oblíbený sport na střední škole?
-* Co bylo vaším prvním zaměstnáním?
-* Uveďte poslední čtyři číslice telefonního čísla, které jste používali v dětství?
-* Čím jste jako dítě chtěli být, až vyrostete?
-* Uveďte nejslavnějšího člověka, se kterým jste se v životě setkali.
+* Co je jméno a příjmení dědečkae dědečka?
+* Jaké je prostřední jméno na stejné úrovni nejmladšího sourozence?
+* Jakou školu jste se účastnili pro šestou třídu?
+* Jak se jednalo o křestní jméno a příjmení nejlepšího přítele v dětství?
+* Jak se jednalo o první a poslední jméno vašeho prvního
+* Jak se jednalo o příjmení vašeho oblíbeného učitele na úrovni školy?
+* Jaká byla značka a model vašeho prvního automobilu nebo motocyklu?
+* Jak se jednalo o název první školy, na kterou jste navštěvovali?
+* Jak se jednalo o název nemocnice, ve které jste se narodili?
+* Jak se jednalo o název ulice vaší první dětství v dětství?
+* Jak se jednalo o název vaší dětství Hero?
+* Jaký byl název vašeho oblíbeného zvířete?
+* Jaký byl název vaší první PET?
+* Jaká byla vaše dětská Přezdívka?
+* Jaký byl váš oblíbený sport ve vysoké škole?
+* Jaká byla vaše první úloha?
+* Jaké byly poslední čtyři číslice telefonního čísla v dětství?
+* Když jste byli mladí, co byste chtěli mít v době, kdy jste ho rozrostli?
+* Kdo je to nejvíc slavnýchá osoba, kterou jste dřív splnili?
 
 Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizovány do úplné sady jazyků Office 365 na základě národního prostředí prohlížeče uživatele.
 
@@ -195,6 +195,8 @@ Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCod
 >
 > Resetování hesla nepodporuje telefonní linky. I ve formátu + 1 4255551234X12345 jsou rozšíření odebrána před tím, než je volání umístěno.
 
+Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů může společnost Microsoft kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Společnost Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
+
 #### <a name="text-message"></a>Zpráva SMS
 
 SMS se pošle na číslo mobilního telefonu obsahující ověřovací kód. Pokračujte zadáním ověřovacího kódu, který je k dispozici v přihlašovacím rozhraní.
@@ -245,7 +247,7 @@ Běžné problémy související s metodami ověřování pomocí telefonního �
 
 Některé neprohlížečové aplikace nepodporují službu Multi-Factor Authentication, pokud byl uživatel povolen pro vícefaktorové ověřování a pokusí se použít neprohlížečové aplikace, nejde ověřit. Heslo aplikace umožňuje uživatelům pokračovat v ověřování.
 
-Pokud vynutili vícefaktorové ověřování prostřednictvím zásad podmíněného přístupu, nikoli prostřednictvím VÍCEFAKTOROVÉHO ověřování pro jednotlivé uživatele, nemůžete vytvářet hesla aplikací. Aplikace, které používají zásady podmíněného přístupu k řízení přístupu, nepotřebují hesla aplikací.
+Pokud vynutilte Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu, ne přes MFA pro jednotlivé uživatele, nemůžete vytvářet hesla aplikací. Aplikace, které používají zásady podmíněného přístupu k řízení přístupu, nepotřebují hesla aplikací.
 
 Pokud je vaše organizace federované pro jednotné přihlašování pomocí Azure AD a budete používat Azure MFA, pamatujte na tyto podrobnosti:
 

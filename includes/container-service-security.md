@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175560"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036682"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(NEPOUŽÍVANÉ) Zabezpečení kontejnerů Dockeru v Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>ZASTARALÉ Zabezpečení kontejnerů Docker v Azure Container Service
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -34,7 +34,7 @@ Podnikům velmi záleží na zabezpečení a za účelem ochrany před útoky na
 
 I v případě, že používáte privátní registr, je vhodné použít řešení kontroly imagí pro zajištění dalšího ověřování zabezpečení. Každá vrstva softwaru v imagi kontejneru je potenciálně náchylná k ohrožením zabezpečení nezávisle na ostatních vrstvách v imagi kontejneru. S tím, jak společnosti začínají nasazovat produkční úlohy založené na technologiích kontejnerů, se stává důležitou kontrola imagí k zajištění prevence bezpečnostních hrozeb pro jejich organizace. 
 
-Pomocí řešení monitorování a kontroly zabezpečení, jako jsou mimo jiné [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) a [Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), je možné kontrolovat image kontejnerů v privátním registru a identifikovat potenciální ohrožení zabezpečení. Je důležité pochopit, jakou hloubku kontroly různá řešení poskytují. Některá řešení například můžou u vrstev image křížově ověřovat jenom výskyt známých ohrožení zabezpečení. Tato řešení nemusí být schopná ověřit na vrstvě image software vytvořený prostřednictvím určitého softwaru správce balíčků. Jiná řešení mají hlubší integraci kontroly a můžou najít ohrožení zabezpečení v jakémkoli zabaleném softwaru.
+Pomocí řešení monitorování a kontroly zabezpečení, jako jsou mimo jiné [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) a [Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), je možné kontrolovat image kontejnerů v privátním registru a identifikovat potenciální ohrožení zabezpečení. Je důležité pochopit, jakou hloubku kontroly různá řešení poskytují. Některá řešení například můžou u vrstev image křížově ověřovat jenom výskyt známých ohrožení zabezpečení. Tato řešení nemusí být schopná ověřit na vrstvě image software vytvořený prostřednictvím určitého softwaru správce balíčků. Jiná řešení mají hlubší integraci kontroly a můžou najít ohrožení zabezpečení v jakémkoli zabaleném softwaru.
 
 ### <a name="production-deployment-rules-and-audit"></a>Pravidla a audit produkčního nasazení
 Jakmile je aplikace nasazená v produkčním prostředí, je velmi důležité nastavit nakolik pravidel, která zajistí, že image používané v produkčních prostředích jsou zabezpečené a neobsahují žádná ohrožení zabezpečení.
@@ -62,7 +62,7 @@ Další informace o zabezpečení specifické pro orchestrátor najdete v násle
 
 * **DC/OS**: [Zabezpečení clusteru](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **Docker Swarm**: [Zabezpečení dockeru](https://www.docker.com/docker-security)
+* **Docker Swarm**: [Zabezpečení Docker](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>Další postup
 

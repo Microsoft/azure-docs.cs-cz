@@ -1,6 +1,6 @@
 ---
-title: Zpracování výstrah zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument vám pomůže používat funkce služby Azure Security Center k řešení bezpečnostních incidentů.
+title: Správa incidentů zabezpečení v Azure Security Center | Microsoft Docs
+description: Tento dokument vám pomůže s použitím Azure Security Center ke správě incidentů zabezpečení.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,53 +12,62 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704080"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047602"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>Řešení bezpečnostních incidentů v Azure Security Center
-Třídění a prošetřování výstrah zabezpečení může být časově náročné i pro nejzkušenější analytiky zabezpečení, a mnoho z nich dokonce ani pořádně neví, kde začít. Služba Security Center pomocí [analýzy](security-center-detection-capabilities.md) spojuje informace mezi odlišnými [výstrahami zabezpečení](security-center-managing-and-responding-alerts.md) a dokáže vám tak poskytnout ucelený přehled o útočné kampani a všech souvisejících výstrahách. Vy tak rychle porozumíte, jaké akce útočník podniká a které prostředky byly zasaženy.
+# <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
-Tento dokument popisuje, jak vám funkce výstrah zabezpečení služby Security Center mohou pomoci řešit bezpečnostní incidenty.
+Třídění a vyšetřování výstrah zabezpečení může být časově náročné i pro ty z těch nejpravděpodobnějších analytiků zabezpečení a u mnoha míst je těžké i na tom, kde začít. Služba Security Center pomocí [analýzy](security-center-detection-capabilities.md) spojuje informace mezi odlišnými [výstrahami zabezpečení](security-center-managing-and-responding-alerts.md) a dokáže vám tak poskytnout ucelený přehled o útočné kampani a všech souvisejících výstrahách. Vy tak rychle porozumíte, jaké akce útočník podniká a které prostředky byly zasaženy.
+
+Toto téma vysvětluje informace o incidentech v Security Center a o tom, jak používat nápravné výstrahy.
 
 ## <a name="what-is-a-security-incident"></a>Co je bezpečnostní incident?
-Ve službě Security Center představuje bezpečnostní incident souhrn všech výstrah pro určitý prostředek, které odpovídají schématům [modelu kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Incidenty se zobrazí na dlaždici a v okně [Výstrahy zabezpečení](security-center-managing-and-responding-alerts.md). Incident odhalí seznam souvisejících výstrah, který vám umožní získat další informace o každém výskytu.
+
+Ve službě Security Center představuje bezpečnostní incident souhrn všech výstrah pro určitý prostředek, které odpovídají schématům [modelu kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/). Incidenty se zobrazí v seznamu [výstrahy zabezpečení](security-center-managing-and-responding-alerts.md) . Kliknutím na běžícího incidentu zobrazíte související výstrahy, které vám umožní získat další informace o každém výskytu.
 
 ## <a name="managing-security-incidents"></a>Správa incidentů zabezpečení
-Aktuální incidenty zabezpečení můžete zkontrolovat jejich prohlížením na dlaždici Výstrahy zabezpečení. Přejděte na web Azure Portal a podle následujících pokynů zobrazte podrobnosti o jednotlivých incidentech zabezpečení:
 
-1. Na řídicím panelu Security Center uvidíte dlaždici **Výstrahy zabezpečení**.
+1. Na řídicím panelu Security Center klikněte na dlaždici **výstrahy zabezpečení** . Zobrazí se incidenty a výstrahy. Popis incidentu zabezpečení má v porovnání s ostatními výstrahami jinou ikonu.
 
-    ![Dlaždice Výstrahy zabezpečení ve službě Security Center](./media/security-center-incident/security-center-incident-fig1.png)
+    ![Zobrazit incidenty zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. Klikněte na tuto dlaždici a rozbalte ji. Pokud je zjištěn incident zabezpečení, zobrazí se v grafu výstrah zabezpečení, jak vidíte níže:
+1. Chcete-li zobrazit podrobnosti, klikněte na incident. V okně **zjištěné incidenty zabezpečení** se zobrazí další podrobnosti. Oddíl **Obecné informace** může nabídnout přehled o tom, co aktivovalo výstrahu zabezpečení. Zobrazuje informace, jako je cílový prostředek, zdrojová IP adresa (Pokud je k dispozici), pokud je výstraha stále aktivní, a doporučení k nápravě.  
 
-    ![Incident zabezpečení](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Reakce na incidenty zabezpečení v Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-3. Popis incidentu zabezpečení má v porovnání s ostatními výstrahami jinou ikonu. Po kliknutí na ikonu se zobrazí podrobnosti o daném incidentu.
+1. Chcete-li získat další informace o jednotlivých výstrahách, klikněte na výstrahu. Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. 
 
-    ![Incident zabezpečení](./media/security-center-incident/security-center-incident-fig3.png)
+   > [!NOTE]
+   > Stejná výstraha může existovat jako součást incidentu a také bude viditelná jako samostatná výstraha.
 
-4. Na dlaždici **Incident** se zobrazí další podrobnosti o daném incidentu zabezpečení, které obsahují úplný popis, závažnost (která je v tomto případě vysoká), aktuální stav (v tomto případě je stále *aktivní*, což naznačuje, že uživatel ještě nepodnikl žádné akce – to lze provést kliknutím pravým tlačítkem na incident v okně **Výstrahy zabezpečení**), napadené prostředky (v tomto případě *VM1*), postup nápravy incidentu a v dolním podokně se nachází výstrahy, které byly součástí tohoto incidentu. Pokud chcete získat další informace o jednotlivých výstrahách, klikněte na ně a otevře se další okno, jak vidíte níže:
+    ![Podrobnosti upozornění](./media/security-center-incident/security-center-incident-alert.png)
 
-    ![Incident zabezpečení](./media/security-center-incident/security-center-incident-fig4.png)
+1. Postupujte podle kroků nápravy, které jsou pro každou výstrahu vydány.
 
-Informace v tomto okně se budou lišit podle výstrah. Další informace o řešení těchto výstrah najdete v tématu [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md). Některé důležité informace týkající se této funkce:
+Další informace o výstrahách, [správě a reakci na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md).
 
-* Nový filtr umožňuje přizpůsobit zobrazení na Pouze incident, Pouze výstrahy nebo obojí.
-* Stejná výstraha může existovat jako součást incidentu (pokud se to na ni vztahuje) a zároveň může být viditelná jako samostatná výstraha.
+Následující témata vás provedou různými výstrahami v závislosti na typech prostředků:
 
-## <a name="see-also"></a>Další informace najdete v tématech
+* [Výstrahy IaaS virtuální počítače a servery](security-center-alerts-iaas.md)
+* [Nativní výpočetní výstrahy](security-center-alerts-compute.md)
+* [Výstrahy datových služeb](security-center-alerts-data-services.md)
+
+Následující témata vysvětlují, jak Security Center používá jinou telemetrii, kterou shromažďuje z integrace s infrastrukturou Azure, aby bylo možné použít další vrstvy ochrany pro prostředky nasazené v Azure:
+
+* [Výstrahy vrstvy služeb](security-center-alerts-service-layer.md)
+* [Integrace s produkty zabezpečení Azure](security-center-alerts-integration.md)
+
+## <a name="see-also"></a>Viz také:
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center používat funkci incidentů zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Funkce detekce ve službě Azure Security Center](security-center-detection-capabilities.md)
+* [Výstrahy zabezpečení v Azure Security Center](security-center-alerts-overview.md).
+* [Správa výstrah zabezpečení](security-center-managing-and-responding-alerts.md)
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

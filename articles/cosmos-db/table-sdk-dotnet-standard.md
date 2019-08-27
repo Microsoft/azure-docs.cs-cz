@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900254"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034587"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Rozhraní API pro Azure Cosmos DB .NET Standard tabulky: Poznámky ke stažení a verzi
 > [!div class="op_single_selector"]
@@ -33,7 +33,14 @@ ms.locfileid: "69900254"
 |**Aktuální podporované architektury**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Nahlásit problém**|[Nahlásit problém](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes-for-200-series"></a>Poznámky k verzi pro řady 2.0.0
+2.0.0 Series přebírá závislost na [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)s vylepšeními výkonu a konsolidací oboru názvů na Cosmos DB koncový bod.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
+* počáteční verze Preview sady 2.0.0 Table SDK, která přebírá závislost na [Microsoft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)s vylepšeními výkonu a konsolidací oboru názvů na Cosmos DB koncový bod. Veřejné rozhraní API zůstává stejné.
+
+## <a name="release-notes-for-100-series"></a>Poznámky k verzi pro řady 1.0.0
+1.0.0 Series přebírá závislost na [Microsoft. Azure. DocumentDB. Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5 – Preview
 * Opravy chyb
@@ -77,6 +84,12 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 
 Tato knihovna .NET Standard knihovně [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) nahradí knihovnu .NET Framework [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).
 
+### <a name="200-series"></a>řada 2.0.0
+| Version | Datum vydání | Datum vyřazení z provozu |
+| --- | --- | --- |
+| [2.0.0 – Preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
+
+### <a name="100-series"></a>řada 1.0.0
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [1.0.5 – Preview](#1.0.5-preview) |Auguest 20, 2019 |--- |

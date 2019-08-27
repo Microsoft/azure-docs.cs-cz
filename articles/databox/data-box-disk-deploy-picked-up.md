@@ -6,17 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 08/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012918"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035709"
 ---
+::: zone target="chromeless"
+
+# <a name="return-azure-data-box-disk"></a>Vrátit Azure Data Box Disk 
+
+::: zone-end
+
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Kurz: Vrátit Azure Data Box Disk 
@@ -29,13 +34,14 @@ V tomto kurzu se naučíte, jak:
 > * Odeslání Data Box Disku do Microsoftu
 > * Výběr Data Box Disk v různých oblastech
 
-
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že jste dokončili [kurz: Zkopírujte data Azure Data Box Disk a ověřte](data-box-disk-deploy-copy-data.md).
 
 
 ## <a name="ship-data-box-disk-back"></a>Odeslání Data Box Disku zpátky
+
+::: zone-end
 
 1. Po dokončení ověření dat odpojte disky. Odeberte propojovací kabely.
 2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu. Poplatky mohou platit, pokud chybí příslušenství.
@@ -45,15 +51,25 @@ Než začnete, ujistěte se, že jste dokončili [kurz: Zkopírujte data Azure D
 
 Další kroky určíte tak, že zařízení vracíte.
 
+
+
+- [Naplánujte si vyzvednutí v případě, že zařízení vrátíte v USA a Kanadě](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+- [Naplánujte si vyzvednutí v rámci DHL pro Evropu](data-box-disk-deploy-picked-up.md#pick-up-in-europe) návštěvou svého webu a zadáním čísla faktury zpátečního.
+- [Naplánování výdeje v Austrálii](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
+- [Naplánujte vyzvednutí pro země v Asii](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , jako je Japonsko, Korea a Singapur.
+
+::: zone target="chromeless"
+
+Po zvednutí disků vaším operátorem se zobrazí stav objednávky na portálu a zobrazí se ID sledování.
+
+::: zone-end
+
 ## <a name="pick-up-in-us-canada"></a>Projměte v USA, Kanadě
 
 Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
 1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud je popisek poškozený nebo ztracený:
     - Přejděte na **přehled > Stáhněte si expediční štítek** a stáhněte zpáteční dodací štítek.
-
-        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Připevněte popisek na zařízení.
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
@@ -64,33 +80,20 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Pokud sledovací číslo není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
     - Místo plánování vyzvednutí můžete také Data Box Disk umístit na nejbližší místo pro vyřazení.
 
-
 ## <a name="pick-up-in-europe"></a>Vyzvednout v Evropě
 
 Pokud se zařízení vrátí do Evropy, proveďte následující kroky.
 
 1. Použijte zpáteční expediční štítek v průhledném plastovém obalu připevněném k tomuto boxu. Pokud je popisek poškozený nebo ztracený:
     - Přejděte na **přehled > Stáhněte si expediční štítek** a stáhněte zpáteční dodací štítek.
-
-        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Připevněte popisek na zařízení.
 
 2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
 3. Pokud zařízení vracíte v Evropě prostřednictvím DHL, vyžádejte si vyzvednutí tak, že navštívíte web DHL a zadáte číslo přepravního lístku.
-4. Přejít na web země/oblast DHL Express a vyberte **kniha, > kterou chcete použít pro eReturnou dodávku**.
-
-    ![Dodávka vratek do DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Přejít na web země/oblast DHL Express a vyberte **kniha, > kterou chcete použít pro eReturnou dodávku**.    
 3. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
-      ![Naplánovat vyzvednutí](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-## <a name="pick-up-in-asia-pacific"></a>Vyzvednout v Asii – Tichomoří
-
-Tato oblast obsahuje pokyny pro výdej v Japonsku, Koreji, Austrálii a Singapuru.
-
-### <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
+## <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít rozšířené oznámení. Pro vyzvednutí v Austrálii proveďte následující kroky.
 
@@ -100,6 +103,10 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
     - Název objednávky
     - Adresa
     - Jméno kontaktu
+
+## <a name="pick-up-in-asia"></a>Vyzvednout v Asii
+
+Pokyny pro vyzvednutí se liší v případě Japonska, Koreje a Singapuru.
 
 ### <a name="pick-up-in-japan"></a>Vyzvednout v Japonsku
 
@@ -159,6 +166,8 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 3. Předají se na Courier. 
 
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
@@ -175,24 +184,5 @@ Přejděte k dalšímu postupu, kde se dozvíte, jak ověřit nahrávání dat z
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-to-azure"></a>Vrátit disk do Azure
-
-1. Po dokončení ověření dat odpojte disky. Odeberte propojovací kabely.
-2. Zabalte všechny disky a propojovací kabely do bublinkové fólie a vložte je do přepravního boxu. Poplatky mohou platit, pokud chybí příslušenství.
-    - Opětovné použití balíčku z prvotní dodávky  
-    - Doporučujeme zabalit disky pomocí dobře zabezpečeného zalomení.
-    - Ujistěte se, že je přizpůsobení Snug, aby se snížilo jakékoli přesuny v rámci pole.
-
-3. Další kroky určíte tak, že zařízení vracíte.
-
-    - [Naplánujte si vyzvednutí v případě, že zařízení vrátíte v USA a Kanadě](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-    - [Naplánujte si vyzvednutí v rámci DHL pro Evropu](data-box-disk-deploy-picked-up.md#pick-up-in-europe) návštěvou svého webu a zadáním čísla faktury zpátečního.
-    - [Naplánování výdeje pro země v oblasti Austrálie – Tichomoří](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) , jako je Austrálie, Japonsko, Korea a Singapur.
-
-Po zvednutí disků vaším operátorem se zobrazí stav objednávky na portálu a zobrazí se ID sledování.
-
-::: zone-end
 
 

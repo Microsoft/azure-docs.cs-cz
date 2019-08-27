@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/14/2019
+ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4395105c66756c4743373707309a88e2afa96b7
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 57d34bb170c0ff86f3d3c42a25184d8af71c0270
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534818"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036206"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasazení modelu klasifikace imagí v Azure Container Instances
 
@@ -223,7 +223,7 @@ def run(raw_data):
 Dále vytvořte soubor prostředí s názvem **MyENV. yml**, který určuje všechny závislosti balíčků daného skriptu. Tento soubor se používá k tomu, aby se zajistilo, že jsou všechny tyto závislosti nainstalované v imagi Docker. Tento model potřebuje `scikit-learn` a `azureml-sdk`:
 
 ```python
-from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.conda_dependencies import CondaDependencies 
 
 myenv = CondaDependencies()
 myenv.add_conda_package("scikit-learn")
@@ -245,9 +245,9 @@ Vytvořte konfigurační soubor nasazení. Zadejte počet procesorů a gigabajt�
 ```python
 from azureml.core.webservice import AciWebservice
 
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
-                                               memory_gb=1,
-                                               tags={"data": "MNIST",
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  
                                                      "method": "sklearn"},
                                                description='Predict MNIST with sklearn')
 ```
@@ -270,18 +270,17 @@ Nakonfigurujte image a nasaďte ji. Následující kód provede tyto kroky:
 ```python
 %%time
 from azureml.core.webservice import Webservice
-from azureml.core.image import ContainerImage
+from azureml.core.model import InferenceConfig
 
-# configure the image
-image_config = ContainerImage.image_configuration(execution_script="score.py", 
-                                                  runtime="python", 
-                                                  conda_file="myenv.yml")
+inference_config = InferenceConfig(runtime= "python", 
+                                   entry_script="score.py",
+                                   conda_file="myenv.yml")
 
-service = Webservice.deploy_from_model(workspace=ws,
-                                       name='sklearn-mnist-svc',
-                                       deployment_config=aciconfig,
-                                       models=[model],
-                                       image_config=image_config)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc',
+                       models=[model], 
+                       inference_config=inference_config,
+                       deployment_config=aciconfig)
 
 service.wait_for_deployment(show_output=True)
 ```
@@ -327,14 +326,14 @@ for s in sample_indices:
     plt.subplot(1, n, i + 1)
     plt.axhline('')
     plt.axvline('')
-
+    
     # use different color for misclassified sample
     font_color = 'red' if y_test[s] != result[i] else 'black'
     clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
-
+    
     plt.text(x=10, y=-10, s=result[i], fontsize=18, color=font_color)
     plt.imshow(X_test[s].reshape(28, 28), cmap=clr_map)
-
+    
     i = i + 1
 plt.show()
 ```
@@ -356,7 +355,7 @@ headers = {'Content-Type': 'application/json'}
 
 # for AKS deployment you'd need to the service key in the header as well
 # api_key = service.get_key()
-# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)}
+# headers = {'Content-Type':'application/json',  'Authorization':('Bearer '+ api_key)} 
 
 resp = requests.post(service.scoring_uri, input_data, headers=headers)
 
@@ -377,7 +376,7 @@ service.delete()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si o všech [možnostech nasazení Azure Machine Learning služby](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Úkoly konfigurace po připojení k hybridní službě Azure AD | Dokumentace Microsoftu'
-description: Tento dokument podrobně popisuje úkoly po konfiguraci potřebné k dokončení připojení k hybridní službě Azure AD
+title: 'Azure AD Connect: Úlohy konfigurace příspěvků v hybridní službě Azure AD | Microsoft Docs'
+description: Tento dokument podrobně popisuje úlohy konfigurace, které jsou potřeba k dokončení připojení k hybridní službě Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,85 +16,85 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244583"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032697"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
-Po spuštění služby Azure AD Connect ke konfiguraci vaší organizaci pro připojení k hybridní službě Azure AD existuje několik dalších kroků, které je třeba provést pro dokončení této instalace.  Proveďte pouze kroky, které platí pro vaše zařízení.
+Po spuštění Azure AD Connect ke konfiguraci vaší organizace pro připojení k hybridní službě Azure AD existuje několik dalších kroků, které je potřeba dokončit, aby bylo možné instalaci dokončit.  Proveďte kroky, které platí pro vaše zařízení.
 
-## <a name="1-configure-controlled-rollout-optional"></a>1. Konfigurace řízeně uvádět (volitelné)
-Všechna zařízení připojená k doméně s Windows 10 a Windows serveru 2016 automaticky zaregistrovat v Azure AD po dokončení všech kroků konfigurace. Pokud dáváte přednost řízeně uvádět, nikoli automatickou registraci, můžete použít zásady skupiny výběrově povolit nebo zakázat automatické zavedení.  Tyto zásady skupiny by měl nastavit před spuštěním další konfigurační kroky: Azure AD
-* Vytvoření objektu zásad skupiny ve službě Active Directory.
-* Pojmenujte ho (ex – hybridní službě Azure AD join).
-* Upravit & Přejít na:  Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení.
+## <a name="1-configure-controlled-rollout-optional"></a>1. Konfigurovat řízené zavedení (volitelné)
+Všechna zařízení připojená k doméně se systémem Windows 10 a Windows Server 2016 se po dokončení všech kroků konfigurace automaticky zaregistrují ve službě Azure AD. Pokud upřednostňujete řízené zavedení místo této automatické registrace, můžete pomocí zásad skupiny selektivně povolit nebo zakázat automatické zavedení.  Tyto zásady skupiny by měly být nastavené před zahájením dalších kroků konfigurace:
+* Vytvořte objekt zásad skupiny ve službě Active Directory.
+* Pojmenujte ji (připojení ke službě Azure AD Hybrid).
+* Upravit & Přejít na:  Konfigurace počítačů > zásady > Šablony pro správu > součásti systému Windows > registrace zařízení.
 
 >[!NOTE]
->Pro 2012R2 nastavení zásad jsou v **konfigurace počítače > zásady > šablony pro správu > součásti Windows > připojení k pracovní ploše > automaticky klientské počítače se připojení k síti na pracovišti**
+>2012R2 nastavení zásad v části **Konfigurace počítače zásady > > Šablony pro správu > součásti systému Windows > Workplace Join > automatické připojení klientských počítačů k síti** na pracovišti
 
-* Toto nastavení zakážete:  Počítače připojené k doméně můžete zaregistrujte jako zařízení.
-* Použít a klikněte na tlačítko OK.
-* Propojte objekt zásad skupiny do umístění podle vašeho výběru (organizační jednotky, zabezpečení, skupiny, nebo do domény pro všechna zařízení).
+* Zakázat toto nastavení:  Zaregistrujte počítače připojené k doméně jako zařízení.
+* Použijte a klikněte na OK.
+* Propojte objekt zásad skupiny s vámi zvoleným umístěním (organizační jednotka, skupina zabezpečení nebo doména pro všechna zařízení).
 
-## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Konfigurace sítě s koncovými body registrace zařízení
-Ujistěte se, že jsou přístupné z počítače uvnitř sítě vaší organizace pro registraci do služby Azure AD následující adresy URL:
+## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Konfigurace sítě pomocí koncových bodů registrace zařízení
+Ujistěte se, že k registraci do služby Azure AD jsou dostupné následující adresy URL z počítačů v síti vaší organizace:
 
 * https://enterpriseregistration.windows.net
 * https://login.microsoftonline.com
 * https://device.login.microsoftonline.com 
 
-## <a name="3-implement-wpad-for-windows-10-devices"></a>3. Implementace zařízení WPAD pro Windows 10
-Pokud vaše organizace má přístup k Internetu prostřednictvím odchozího proxy serveru, implementujte Proxy Auto-Discovery WPAD (Web) umožňující počítače s Windows 10 k registraci do služby Azure AD.
+## <a name="3-implement-wpad-for-windows-10-devices"></a>3. Implementace protokolu WPAD pro zařízení s Windows 10
+Pokud vaše organizace přistupuje k Internetu prostřednictvím odchozího proxy serveru, implementujte automatické zjišťování webových proxy serveru (WPAD), aby se počítače s Windows 10 mohly registrovat do Azure AD.
 
-## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Konfigurace spojovacího bodu služby ve všech doménových strukturách, které nebyly nakonfigurovány pomocí služby Azure AD Connect 
+## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Konfigurace spojovacího bodu služby v jakékoli doménové struktuře, která nebyla nakonfigurovaná pomocí Azure AD Connect 
 
-Spojovací bod služby (SCP) obsahuje informace o tenantovi Azure AD, který se použije pro automatickou registraci zařízení.  Spusťte skript prostředí PowerShell, ConfigureSCP.ps1, který jste stáhli ze služby Azure AD Connect.
+Spojovací bod služby (SCP) obsahuje informace o tenantovi Azure AD, které budou vaše zařízení používat k automatické registraci.  Spusťte skript prostředí PowerShell ConfigureSCP. ps1, který jste si stáhli z Azure AD Connect.
 
-## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Nakonfigurujte federační služby, který nebyl nakonfigurován pomocí služby Azure AD Connect
+## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Konfigurace jakékoli federační služby, která nebyla nakonfigurovaná pomocí Azure AD Connect
 
-Pokud vaše organizace používá pro přihlášení k Azure AD službou federation service, pravidla deklarace identity ve vztahu důvěryhodnosti přijímající strany Azure AD, musíte povolit ověřování zařízení. Pokud používáte federační službou AD FS, přejděte na [nápovědy k AD FS](https://aka.ms/aadrptclaimrules) generovat pravidla deklarací identity. Pokud používáte řešení federace jiného subjektu než Microsoft, požádejte o pokyny daného poskytovatele.  
+Pokud vaše organizace používá pro přihlášení ke službě Azure AD službu Federation Service, musí pravidla deklarace identity ve vztahu důvěryhodnosti předávající strany Azure AD umožňovat ověřování zařízení. Pokud používáte federaci s AD FS, přečtěte si v [tématu AD FS Help](https://aka.ms/aadrptclaimrules) , kde můžete vygenerovat pravidla deklarace identity. Pokud používáte federační řešení od jiného výrobce než Microsoftu, kontaktujte tohoto poskytovatele s pokyny.  
 
 >[!NOTE]
->Pokud máte zařízení Windows nižší úrovně, služba musí podporovat vystavování deklarací identity authenticationmethod a wiaormultiauthn při přijímání požadavků na vztah důvěryhodnosti Azure AD. Ve službě AD FS měli byste přidat pravidel transformace pro vystavování, která předá prostřednictvím metody ověřování.
+>Pokud máte zařízení Windows nižší úrovně, musí služba při přijímání požadavků na vztah důvěryhodnosti služby Azure AD podporovat vydávání deklarací authenticationmethod a wiaormultiauthn. V AD FS byste měli přidat pravidlo transformace vystavování, které projde metodou ověřování.
 
-## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Povolení zařízením s Azure AD bezproblémové jednotné přihlašování pro Windows nižší úrovně
+## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Povolení služby Azure AD bezproblémové jednotné přihlašování pro zařízení se systémem Windows nižší úrovně
 
-Pokud vaše organizace používá synchronizaci hodnot Hash hesel nebo předávací ověřování pro přihlášení k Azure AD, jednotné přihlašování Azure AD bezproblémové pomocí této metody přihlašování k ověřování zařízení Windows nižší úrovně: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Pokud vaše organizace používá synchronizaci hodnot hash hesel nebo předávací ověřování pro přihlášení ke službě Azure AD, povolte Azure AD bez problémů pomocí jednotného přihlašování s touto metodou přihlášení k ověření zařízení se systémem Windows nižší https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso úrovně:. 
 
-## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Nastavení zásad služby Azure AD pro zařízení s Windows nižší úrovně
+## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Nastavení zásad Azure AD pro zařízení s nižší úrovní Windows
 
-K registraci zařízení s Windows nižší úrovně, budete muset Ujistěte se, že zásady služby Azure AD umožňuje uživatelům zaregistrovat zařízení. 
+Pokud chcete zaregistrovat zařízení Windows na nižší úrovni, musíte zajistit, aby zásady služby Azure AD umožňovaly uživatelům registrovat zařízení. 
 
-* Přihlášení ke svému účtu na webu Azure Portal.
+* Přihlaste se ke svému účtu v Azure Portal.
 * Přejít na:  Azure Active Directory > zařízení > Nastavení zařízení
-* Ke všem nastavte "Uživatelé můžou registrovat svoje zařízení s Azure AD".
+* Nastavte možnost Uživatelé můžou svá zařízení zaregistrovat do služby Azure AD.
 * Kliknutí na Uložit
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Přidání koncového bodu Azure AD do zařízení Windows nižší úrovně
 
-Koncový bod ověřování zařízení Azure AD přidejte do zóny místního intranetu v zařízeních Windows nižší úrovně se vyhnout výzev ohledně certifikátů při ověřování zařízení: https://device.login.microsoftonline.com 
+Přidejte koncový bod ověřování zařízení Azure AD do zón místního intranetu na zařízeních nižší úrovně Windows, abyste se vyhnuli zobrazování výzev k certifikátu při ověřování zařízení: https://device.login.microsoftonline.com 
 
-Pokud používáte [bezproblémového jednotného přihlašování](how-to-connect-sso.md), také povolit "Povolit aktualizace stavového řádku prostřednictvím skriptu" v této zóně a přidejte následující koncový bod: https://autologon.microsoftazuread-sso.com 
+Pokud používáte [bezproblémové přihlašování (SSO](how-to-connect-sso.md)), povolte taky možnost povolit aktualizace stavového řádku prostřednictvím skriptu v této zóně a přidat následující koncový bod: https://autologon.microsoftazuread-sso.com 
 
-## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Nainstalujte Microsoft síti na pracovišti na zařízeních s Windows nižší úrovně
+## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Instalace aplikace Microsoft Workplace Join na zařízeních Windows nižší úrovně
 
-Tento instalační program vytvoří naplánovanou úlohu v systému zařízení, která běží v kontextu uživatele. Úloha se aktivuje, když uživatel přihlásí do Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování Windows. Stažení softwaru je v https://www.microsoft.com/download/details.aspx?id=53554. 
+Tento instalační program vytvoří v systému zařízení naplánovanou úlohu, která běží v kontextu uživatele. Úkol se aktivuje, když se uživatel přihlásí k Windows. Úloha se tiše připojí k zařízení pomocí Azure AD s přihlašovacími údaji uživatele po ověření pomocí integrovaného ověřování systému Windows. Stažení softwaru je v https://www.microsoft.com/download/details.aspx?id=53554. 
 
-## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Nakonfigurovat zásady skupiny pro povolení registrace zařízení
+## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurace zásad skupiny pro povolení registrace zařízení
 
-* Vytvoření objektu zásad skupiny ve službě Active Directory – Pokud ještě není vytvořena.
-* Pojmenujte ho (ex – hybridní službě Azure AD join).
-* Upravit & Přejít na:  Konfigurace počítače > zásady > šablony pro správu > součásti Windows > registrace zařízení
-* Povolte:  Zaregistrujte se jako zařízení připojených k doméně počítače
-* Použít a klikněte na tlačítko OK.
-* Propojte objekt zásad skupiny do umístění podle vašeho výběru (organizační jednotky, zabezpečení, skupiny, nebo do domény pro všechna zařízení).
+* Vytvořte objekt zásad skupiny ve službě Active Directory – Pokud ještě není vytvořený.
+* Pojmenujte ji (připojení ke službě Azure AD Hybrid).
+* Upravit & Přejít na:  Konfigurace počítače zásady > > Šablony pro správu > součásti systému Windows > registrace zařízení
+* Aby  Registrace počítačů připojených k doméně jako zařízení
+* Použijte a klikněte na OK.
+* Propojte objekt zásad skupiny s vámi zvoleným umístěním (organizační jednotka, skupina zabezpečení nebo doména pro všechna zařízení).
 
 >[!NOTE]
->Pro 2012R2 nastavení zásad jsou v **konfigurace počítače > zásady > šablony pro správu > součásti Windows > připojení k pracovní ploše > automaticky klientské počítače se připojení k síti na pracovišti**
+>2012R2 nastavení zásad v části **Konfigurace počítače zásady > > Šablony pro správu > součásti systému Windows > Workplace Join > automatické připojení klientských počítačů k síti** na pracovišti
 
 ## <a name="next-steps"></a>Další postup
-[Nakonfigurujte zpětný zápis zařízení](how-to-connect-device-writeback.md)
+[Konfigurace zpětného zápisu zařízení](how-to-connect-device-writeback.md)

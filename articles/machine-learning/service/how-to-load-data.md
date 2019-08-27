@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bd60d9f9bee55ef1342fe344e8b4f2f64e313331
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4bd6605a6a217d6bcdd243ff1d4f7bb6017ca0ef
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360985"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036055"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Načtení a čtení dat pomocí sady Azure Machine Learning SDK pro přípravu dat
 V tomto článku se seznámíte s různými metodami načítání dat pomocí sady Azure Machine Learning SDK pro přípravu dat.  Sada SDK podporuje různé funkce příjem dat, včetně:
@@ -319,6 +319,6 @@ dflow.to_pandas_dataframe().head()
 |3|1009364|106 S. hlavní ulice Farmářům trhu|http://thetownofsixmile.wordpress.com/ |106 S. hlavní ulice|Šest míle|||
 |4|1010691|Ulice 10 Farmářům trh|https://agrimissouri.com/... |Ulice 10 a topolů|Lamar|Barton|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Příklad řešení konkrétního scénáře najdete v [kurzu](tutorial-data-prep.md) Azure Machine Learning data PREP SDK.
+* Další podrobnosti najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) k sadě Azure Machine Learning data PREP SDK.

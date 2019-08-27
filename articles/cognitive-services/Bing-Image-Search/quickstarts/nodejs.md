@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a Node.js'
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu REST API a Node. js'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API prostřednictvím JavaScriptu a přijímat odpověďmi ve formátu JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí JavaScriptu a přijímat odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 20db928d0664a94887a6dbeec38815fc02d433c2
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 737927aa725c117158ea867e007ecc0cedde50aa
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383858"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034652"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Node.js
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Rychlý start: Hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Node. js
 
-V tomto rychlém startu můžete zahájit odesílání požadavků hledání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace JavaScript odešle vyhledávací dotaz na rozhraní API a adresu URL první obrázek se zobrazí ve výsledcích. Zatímco tato aplikace je napsána v jazyce Javascript, je rozhraní API RESTful webová služba, která je kompatibilní s Většina programovacích jazyků.
+V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) s dalším zpracováním chyb a poznámkami.
 
@@ -29,7 +29,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
-* [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)  
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)  
   [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
@@ -53,7 +53,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Hledaný výraz musí být kódovaná adresou URL před odesláním do rozhraní API.
+1. Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro žádost rozhraní API. Před odesláním do rozhraní API musí být hledaný výraz zakódovaný pomocí adresy URL.
 
     ```javascript
     let request_params = {
@@ -74,7 +74,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 
 ## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. Proveďte následující kroky v rámci této funkce:
+1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. V rámci této funkce proveďte následující kroky:
 
     1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
         ```javascript
@@ -90,7 +90,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
         });
         ```
 
-    3. Když **end** signalizován příznak, získat výsledek první odpovědi JSON. Tisk adresu URL pro první image, společně s celkový počtem vrácených imagí.
+    3. Když je příznak **ukončení** signálem, získá první výsledek z odpovědi JSON. Vytiskne adresu URL prvního obrázku spolu s celkovým počtem vrácených imagí.
 
         ```javascript
         response.on('end', function () {
@@ -101,7 +101,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
          });
         ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -154,7 +154,7 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 > [!div class="nextstepaction"]
 > [Vytvoření jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 

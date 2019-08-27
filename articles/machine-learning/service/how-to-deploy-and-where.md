@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7f856c0b69788c3d0b711d567777aba6cb4c6918
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997939"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036098"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -78,12 +78,29 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
 
 + **Používání sady SDK**
 
-  ```python
-  model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-  print(model.name, model.id, model.version, sep='\t')
-  ```
+  Při použití sady SDK k vytvoření výukového modelu můžete v závislosti na způsobu, jakým jste si model vypracovali, získat buď objekt [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) nebo [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) . Každý objekt lze použít k registraci modelu vytvořeného spuštěním experimentu.
 
-  `model_path` Odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory.
+  + Registrace modelu z `azureml.core.Run` objektu:
+ 
+    ```python
+    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    print(model.name, model.id, model.version, sep='\t')
+    ```
+
+    `model_path` Odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na adresář, který obsahuje soubory. Další informace najdete v referenčních informacích ke [spuštění. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) .
+
+  + Registrace modelu z `azureml.train.automl.run.AutoMLRun` objektu:
+
+    ```python
+        description = 'My AutoML Model'
+        model = run.register_model(description = description)
+
+        print(run.model_id)
+    ```
+
+    V tomto příkladu `metric` nejsou zadány `iteration` parametry a, což způsobí, že iterace s nejlepší primární metrikou bude registrována. `model_id` Hodnota vrácená z běhu se používá místo názvu modelu.
+
+    Další informace najdete v referenčních informacích k [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) .
 
 + **Použití rozhraní příkazového řádku**
 
@@ -184,6 +201,9 @@ Skript obsahuje dvě funkce, které načítají a spouštějí model:
 Při registraci modelu zadáte název modelu, který se používá pro správu modelu v registru. Tento název použijete s [modelem. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro načtení cesty k souborům modelů v místním systému souborů. Pokud zaregistrujete složku nebo kolekci souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
 
 Při registraci modelu mu dáte název, který odpovídá umístění modelu, a to buď místně, nebo během nasazování služby.
+
+> [!IMPORTANT]
+> Pokud jste model nanaučili pomocí automatizovaného strojového `model_id` učení, použije se jako název modelu hodnota. Příklad registrace a nasazení modelu vyškolený pomocí automatizovaného ml najdete v tématu [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment).
 
 Následující příklad vrátí cestu k jednomu souboru s názvem `sklearn_mnist_model.pkl` (který byl registrován s názvem `sklearn_mnist`):
 

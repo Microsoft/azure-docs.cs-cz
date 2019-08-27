@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3f45389cd4cef160f8778ea6ba6e530a970dac07
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a601792198b6efb1b3c24e3a3270c3faf78f2635
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908036"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036349"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití Azure Security Center k monitorování virtuálních počítačů s Windows
 
@@ -105,7 +105,7 @@ Když se doporučení napraví, označí se jako vyřešená.
 
 ## <a name="view-detected-threats"></a>Zobrazení zjištěných hrozeb
 
-Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb v Security Center najdete v tématu [Možnosti detekce v Azure Security Center](../../security-center/security-center-detection-capabilities.md).
+Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb Security Center najdete v tématu [jak Security Center detekuje hrozby?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Po přechodu na tuto vyšší cenovou úroveň bude k dispozici **bezplatná zkušební verze** . 
 
@@ -124,7 +124,7 @@ Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hr
 
 ![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

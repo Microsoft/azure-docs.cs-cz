@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7a31337888dcdc2a8f8b95c5203cc659882b038
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927869"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036177"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -384,6 +384,6 @@ Příklady bran firewall webových aplikací, které jsou k dispozici v Azure Ma
 
 ## <a name="next-steps"></a>Další postup
 
-- [Možnosti detekce Azure Security Center](../../security-center/security-center-detection-capabilities.md): Pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
+- [Reakce na dnešní hrozby](../../security-center/security-center-alerts-overview.md#respond-threats): Pomáhá identifikovat aktivní hrozby, které cílí na vaše prostředky Azure, a poskytuje přehledy, které potřebujete k rychlé reakci.
 
 - [Azure SQL Database detekce hrozeb](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): Pomáhá řešit vaše obavy týkající se potenciálních hrozeb pro vaše databáze.

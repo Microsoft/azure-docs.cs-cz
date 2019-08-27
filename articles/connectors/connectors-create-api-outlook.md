@@ -1,6 +1,6 @@
 ---
-title: Připojte se k Outlook.com – Azure Logic Apps | Dokumentace Microsoftu
-description: Správa e-mailu, kalendáře a kontaktů Outlook.com rozhraní REST API a Azure Logic Apps
+title: Připojení k Outlook.com-Azure Logic Apps | Microsoft Docs
+description: Správa e-mailů, kalendářů a kontaktů pomocí rozhraní REST API Outlook.com a Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,34 +11,34 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fd6836451a73551487b8f97903594154a2efc894
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4586255e96647267bc913f2bc054610163e16bd3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105798"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050875"
 ---
-# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>Spravovat e-mailu, kalendáře a kontakty na Outlook.com s Azure Logic Apps
+# <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>Správa e-mailů, kalendářů a kontaktů v Outlook.com pomocí Azure Logic Apps
 
-Tento článek popisuje, jak můžete vytvořit a spravovat váš účet Outlook.com v aplikaci logiky s konektorem pole. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro váš účet Outlook.com, například:
+Tento článek ukazuje, jak můžete vytvořit a spravovat účet Outlook.com uvnitř aplikace logiky pomocí konektoru box. Tímto způsobem můžete vytvářet aplikace logiky, které automatizují úlohy a pracovní postupy pro svůj účet Outlook.com, například:
 
-* Odeslání e-mailu. 
+* Odeslat e-mail. 
 * Plánování schůzek.
-* Přidáte kontakty. 
+* Přidat kontakty. 
 
-Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Účet Outlook.com](https://outlook.live.com/owa/)
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Aplikace logiky, kde má přístup ke svému účtu Outlook.com. Spuštění aplikace logiky se aktivační událost Outlooku, je nutné [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikace logiky, ke které chcete získat přístup k účtu Outlook.com. Pokud chcete aplikaci logiky spustit pomocí triggeru Outlooku, budete potřebovat [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="connect-to-outlookcom"></a>Připojte se k Outlook.com
+## <a name="connect-to-outlookcom"></a>Připojení k Outlook.com
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -46,13 +46,13 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/outlook/). 
+Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](/connectors/outlook/). 
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

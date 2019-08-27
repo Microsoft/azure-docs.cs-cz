@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697620"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032677"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -81,9 +81,9 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 ## <a name="data-limits"></a>Omezení dat
 
-Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků. Pokud budete přesto potřebovat vyšší limit, [kontaktujte nás](https://azure.microsoft.com/overview/sales-number/), abychom mohli projednat vaše požadavky.
+Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků.
 
-| Omezení | Hodnota |
+| Omezení | Value |
 |------------------------|---------------|
 | Maximální velikost jednoho dokumentu | 5 120 znaků měřených podle [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |
@@ -93,7 +93,7 @@ Vaše omezení četnosti se bude lišit od cenové úrovně.
 
 | Vrstva          | Počet požadavků za sekundu | Žádosti za minutu |
 |---------------|---------------------|---------------------|
-| Více služeb | 1000                | 1000                |
+| S/více službami | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

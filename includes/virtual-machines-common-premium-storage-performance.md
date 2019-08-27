@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817208"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036025"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -111,7 +111,7 @@ Přečtěte si další informace o [iostat](https://linux.die.net/man/1/iostat) 
 
 Hlavní faktory ovlivňující výkon aplikace běžící na Premium Storage jsou povahou vstupně-výstupních požadavků, velikosti virtuálních počítačů, velikosti disků, počtu disků, ukládání do mezipaměti disku, multithreading a hloubka fronty. Některé z těchto faktorů můžete řídit pomocí knoflíků poskytovaných systémem. Většina aplikací vám nemusí dát možnost změnit přímo velikost vstupně-výstupních operací a hloubku fronty. Pokud například používáte SQL Server, nemůžete zvolit velikost vstupně-výstupních operací a hloubku fronty. Pro dosažení maximálního výkonu SQL Server zvolí optimální velikost vstupně-výstupních operací a hodnoty hloubky fronty. Je důležité pochopit účinky obou typů faktorů na výkon aplikace, abyste mohli zřídit vhodné prostředky pro splnění požadavků na výkon.
 
-V této části najdete kontrolní seznam požadavků aplikace, který jste vytvořili, abyste identifikovali, kolik potřebujete k optimalizaci výkonu aplikace. V závislosti na tom budete moct určit, které faktory z této části budete muset ladit. Chcete-li nastavit důsledky pro vliv každého faktoru na výkon aplikace, spusťte nástroje srovnávacích testů v nastavení aplikace. Postup pro spuštění běžných nástrojů pro srovnávací testy na virtuálních počítačích s Windows a Linuxem najdete v části srovnávací testy na konci tohoto článku.
+V této části najdete kontrolní seznam požadavků aplikace, který jste vytvořili, abyste identifikovali, kolik potřebujete k optimalizaci výkonu aplikace. V závislosti na tom budete moct určit, které faktory z této části budete muset ladit. Chcete-li nastavit důsledky pro vliv každého faktoru na výkon aplikace, spusťte nástroje srovnávacích testů v nastavení aplikace. Postup pro spuštění běžných nástrojů pro srovnávací testy na virtuálních počítačích s Windows a Linux najdete v článku o srovnávacích testech propojených na konci.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Rychlé optimalizace vstupně-výstupních operací, propustnosti a latence
 
@@ -166,7 +166,7 @@ Pokud chcete získat vstupně-výstupní operace a šířku pásma větší než
 > [!NOTE]
 > Při navýšení počtu IOPS nebo propustnosti se druhá taky zvýší a ujistěte se, že při zvyšování počtu vstupně-výstupních operací disku nebo virtuálního počítače nejste dosáhli limitu propustnosti nebo IOPS.
 
-Chcete-li nastavit vliv velikosti vstupně-výstupních operací na výkon aplikace, můžete spustit nástroje pro srovnávací testy na virtuálních počítačích a discích. Vytvoření více testovacích běhů a použití jiné velikosti v/v pro každý běh pro zobrazení dopadu. Další podrobnosti najdete v části srovnávací testy na konci tohoto článku.
+Chcete-li nastavit vliv velikosti vstupně-výstupních operací na výkon aplikace, můžete spustit nástroje pro srovnávací testy na virtuálních počítačích a discích. Vytvoření více testovacích běhů a použití jiné velikosti v/v pro každý běh pro zobrazení dopadu. Další podrobnosti najdete v článku o srovnávacích testech propojených na konci.
 
 ## <a name="high-scale-vm-sizes"></a>Velikosti virtuálních počítačů s vysokou škálou
 
@@ -326,7 +326,7 @@ Když je virtuální počítač s vysokým škálováním připojený k několik
 
 Ve Windows můžete pomocí prostorů úložiště prokládat disky společně. Pro každý disk ve fondu musíte nakonfigurovat jeden sloupec. V opačném případě může být celkový výkon prokládaného svazku nižší, než bylo očekáváno, vzhledem k nerovnoměrné distribuci provozu mezi disky.
 
-Důležité upozornění: Pomocí Správce serveru uživatelského rozhraní můžete pro prokládaný svazek nastavit celkový počet sloupců o velikosti až 8. Při připojování více než osmi disků použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell můžete nastavit počet sloupců, které se rovnají počtu disků. Například pokud je v jedné sadě Stripe nastavený 16 disků; v parametru *NumberOfColumns* rutiny *New-VirtualDisk* prostředí PowerShell zadejte 16 sloupců.
+Důležité: Pomocí Správce serveru uživatelského rozhraní můžete pro prokládaný svazek nastavit celkový počet sloupců o velikosti až 8. Při připojování více než osmi disků použijte PowerShell k vytvoření svazku. Pomocí prostředí PowerShell můžete nastavit počet sloupců, které se rovnají počtu disků. Například pokud je v jedné sadě Stripe nastavený 16 disků; v parametru *NumberOfColumns* rutiny *New-VirtualDisk* prostředí PowerShell zadejte 16 sloupců.
 
 V systému Linux pomocí nástroje MDADM propojte disky společně. Podrobný postup pro proložení disků v systému Linux najdete v tématu [Konfigurace softwarového pole RAID v systému Linux](../articles/virtual-machines/linux/configure-raid.md).
 
@@ -387,11 +387,3 @@ Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o dostupných typech disků:
-
-* [Vybrat typ disku](../articles/virtual-machines/windows/disks-types.md)  
-
-Informace o SQL Server uživatelů najdete v článcích o osvědčených postupech výkonu pro SQL Server:
-
-* [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage poskytuje nejvyšší výkon pro SQL Server na virtuálním počítači Azure.](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

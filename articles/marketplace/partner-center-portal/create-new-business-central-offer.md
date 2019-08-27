@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900165"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033267"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Vytvoření nové nabídky Business Central v Dynamics 365
 
@@ -354,7 +354,7 @@ Možnost **výpisu na webu Marketplace** , která se nachází na kartě **testo
 
 ## <a name="supplemental-content"></a>Doplňkový obsah
 
-Tato stránka vám umožní zadat další požadované informace o vaší nabídce.
+Tato stránka vám umožní zadat další informace o vaší nabídce, které nám pomůžou vaši nabídku ověřit. Tyto informace se zákazníkům nezobrazují ani nepublikují na webu Marketplace.
 
 ### <a name="target-release"></a>Cílová verze
 
@@ -362,15 +362,15 @@ Určete, která verze Microsoft Dynamics Business Central vaše řešení cílí
 
 ### <a name="supported-editions"></a>Podporované edice
 
-Určete, jestli vaše řešení podporuje edici Microsoft Dynamics 365 Business Central pro Essentials nebo Premium. Musí být vybrána alespoň jedna hodnota.
+Pokud vaše nabídka vyžaduje edici Premium z Microsoft Dynamics 365 Business Central, vyberte jenom **Premium** . V opačném případě vyberte možnost **základy** i **Premium**.
 
 ### <a name="key-usage-scenario"></a>Scénář použití klíče
 
-Nahrajte `.pdf` soubor, ve kterém jsou uvedené klíčové scénáře použití vaší nabídky v dokumentu (formát PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
+Musíte odesílat `.pdf` soubor, ve kterém jsou uvedené klíčové scénáře použití vaší nabídky v dokumentu (formát PDF). Všechny uvedené scénáře mohou být ověřeny týmem ověřování, než schválíme vaši nabídku na webu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatizace testů aplikací
 
-Také sem nahrajte soubor **Automation Tests pro aplikace** (. app).
+Volitelně můžete nahrát soubor **testů aplikace** sem (. app).
 
 ### <a name="test-accounts"></a>Testovací účty
 

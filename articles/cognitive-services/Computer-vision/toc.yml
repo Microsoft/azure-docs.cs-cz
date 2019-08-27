@@ -147,6 +147,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: Konfigurace kontejnerů
           href: computer-vision-resource-container-config.md
+        - name: Použití s Kubernetes a Helmem
+          href: deploy-computer-vision-on-premises.md
         - name: Použití instancí kontejneru
           href: deploy-computer-vision-on-container-instances.md
     - name: Použití připojené služby počítačového zpracování obrazu

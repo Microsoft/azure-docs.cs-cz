@@ -3,26 +3,27 @@ title: Pokyny pro branding aplikací | Microsoft Docs
 description: Komplexní průvodce prostředky služby Azure Active Directory určenými pro vývojáře
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47068726"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70053244"
 ---
 # <a name="branding-guidelines-for-applications"></a>Pokyny pro branding aplikací
 
@@ -59,9 +60,9 @@ Ve starší verzi těchto pokynů jsme doporučovali používat piktogram modré
 
 Vaše aplikace může nabízet jiné prostředí pro registraci i přihlášení a v následujících částech najdete vizuální pokyny pro oba scénáře.
 
-**Pokud vaše aplikace podporuje registrace koncových uživatelů (např. při přechodu z bezplatné na zkušební verzi nebo v rámci modelu freemium):** Můžete zobrazit tlačítko pro **přihlášení**, které uživatelům umožní získat přístup k vaší aplikaci pomocí pracovního nebo osobního účtu. Při prvním přístupu k vaší aplikaci jim Azure AD zobrazí dialogové okno pro vyjádření souhlasu.
+**Pokud vaše aplikace podporuje registraci koncového uživatele (například bezplatnou zkušební verzi nebo model freemium)** : Můžete zobrazit tlačítko pro **přihlášení** , které uživatelům umožní přístup k aplikaci pomocí svého pracovního účtu nebo svého osobního účtu. Při prvním přístupu k vaší aplikaci jim Azure AD zobrazí dialogové okno pro vyjádření souhlasu.
 
-**Pokud vaše aplikace vyžaduje oprávnění, která můžou odsouhlasit pouze správci, nebo pokud vaše aplikace vyžaduje licencování organizace:** Oddělte získávání správců od přihlašování uživatelů. **Tlačítko pro získání aplikace** přesměruje správce na přihlášení a pak se jim zobrazí výzva k udělení souhlasu jménem uživatelů v jejich organizaci. Další výhodou tohoto přístupu je potlačení dialogových oken pro vyjádření souhlasu koncového uživatele ve vaší aplikaci.
+**Pokud vaše aplikace vyžaduje oprávnění, ke kterým můžou souhlasit jenom správci, nebo pokud vaše aplikace vyžaduje licencování organizace**: Oddělení od přihlášení uživatele oddělte. **Tlačítko pro získání aplikace** přesměruje správce na přihlášení a pak se jim zobrazí výzva k udělení souhlasu jménem uživatelů v jejich organizaci. Další výhodou tohoto přístupu je potlačení dialogových oken pro vyjádření souhlasu koncového uživatele ve vaší aplikaci.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Vizuální pokyny pro pořizování aplikace
 
@@ -69,7 +70,7 @@ Váš odkaz na získání aplikace musí uživatele přesměrovat na stránku Az
 
 Jakmile správce vyjádří souhlas s vaší aplikací, může ji uživatelům přidat do spouštěče aplikací Office 365 (ten je přístupný z dlaždice a na adrese [https://portal.office.com/myapps](https://portal.office.com/myapps)). Pokud chcete tuto možnost inzerovat, můžete použít termíny jako „Přidejte si tuto aplikaci do vaší organizace“ a zobrazit tlačítko jako v následujícím příkladu:
 
-![Typy aplikací a scénáře](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![Tlačítko, které zobrazuje text loga Microsoftu a "Přidat k mojí organizaci"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Doporučujeme však nespoléhat na tlačítka a napsat vysvětlující text. Příklad:
 
@@ -79,7 +80,7 @@ Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální logo Micr
 
 | Prostředek                                | Formát PNG | Formát SVG |
 | ------------------------------------ | ---------- | ---------- |
-| Logo Microsoftu  | ![Logo Microsoftu (PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Logo Microsoftu (SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Logo Microsoftu  | ![Stažení loga Microsoftu ve formátu PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Stažení loga Microsoftu ve formátu SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Vizuální pokyny pro přihlášení
 
@@ -91,16 +92,16 @@ Spojení loga Microsoftu s termínem „Přihlásit se účtem Microsoft“ jedn
 
 Následující diagram ukazuje ochranná pásma, která Microsoft doporučuje dodržovat při používání těchto prostředků v aplikaci. Ochranná pásma platí pro text „Přihlásit se účtem Microsoft“ i zkrácenou verzi „Přihlásit se“.
 
-![Ochranná pásma textu „Přihlásit se účtem Microsoft“](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![Zobrazuje Přihlásit se účtem Microsoft redlines](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Pokud si pro použití ve vaší aplikaci chcete stáhnout oficiální obrázky, klikněte pravým tlačítkem na obrázek, který chcete použít, a uložte si ho do počítače.
 
 | Prostředek                                | Formát PNG | Formát SVG |
 | ------------------------------------ | ---------- | ---------- |
-| Přihlásit se účtem Microsoft (tmavý motiv)  | ![Tlačítko Přihlásit se (tmavý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Tlačítko Přihlásit se účtem Microsoft (tmavý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Přihlásit se účtem Microsoft (světlý motiv) | ![Tlačítko Přihlásit se (světlý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Tlačítko Přihlásit se účtem Microsoft (světlý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Přihlásit se (tmavý motiv)                 | ![Krátké tlačítko Přihlásit se (tmavý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Krátké tlačítko Přihlásit se (tmavý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Přihlásit se (světlý motiv)                | ![Krátké tlačítko Přihlásit se (světlý motiv, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Krátké tlačítko Přihlásit se (světlý motiv, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Přihlásit se účtem Microsoft (tmavý motiv)  | ![Možnost stažení "Přihlásit se účtem Microsoft" tmavého motivu na tlačítku pro formát PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Možnost stažení "Přihlásit se účtem Microsoft" tmavého motivu na tlačítku SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Přihlásit se účtem Microsoft (světlý motiv) | ![Soubor ke stažení s motivem "Přihlásit se účtem Microsoft" na obrázku PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Stažení "Přihlásit se účtem Microsoft" na světlý motiv SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Přihlásit se (tmavý motiv)                 | ![Ke stažení: "přihlašování" – tmavý motiv krátkého tlačítka PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Stažení "přihlášení" krátkého motivu tmavého tlačítka SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Přihlásit se (světlý motiv)                | ![Ke stažení "přihlášení" krátkého tlačítka světlý motiv PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Stáhnout "přihlášení" krátkého tlačítka světlého motivu SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Branding – Co dělat a nedělat
 

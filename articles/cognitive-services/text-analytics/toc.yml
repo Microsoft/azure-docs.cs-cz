@@ -69,15 +69,9 @@
         - name: Konfigurace kontejnerů
           href: text-analytics-resource-container-config.md
         - name: Použití instancí kontejneru
-          items:
-            - name: Analýza mínění
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Použití služby Kubernetes (AKS)
-          items:
-            - name: Rozpoznávání jazyka
-              href: how-tos/use-language-detection-on-aks.md
-            - name: Analýza mínění
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: Použití připojené služby analýzy textu
       href: vs-text-connected-service.md
 - name: Referenční informace

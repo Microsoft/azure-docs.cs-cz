@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515277"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035727"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (Preview)
 
@@ -136,7 +136,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 |Kopírování databáze|Vytvoří databázi jako kopii.<br>Exportujte do souboru BACPAC.|
 |Synchronizace dat SQL|Synchronizace mezi centrem a členskými databázemi, které se spouští podle konfigurovatelného plánu, nebo se provádí ručně|
 |Úprava určitých metadat databáze|Přidávání nových značek databáze.<br>Změna maximálního virtuální jádra, minimální virtuální jádra nebo prodlevy při autopauze.|
-|SQL Server Management Studio (SSMS)|Když použijete SSMS verze 18 a otevřete nové okno dotazu pro všechny databáze na serveru, obnoví se všechny automaticky pozastavené databáze na stejném serveru. K tomuto chování nedochází, pokud používáte SSMS verze 17.9.1 s vypnutou technologií IntelliSense.|
+|SQL Server Management Studio (SSMS)|Při použití verzí SSMS starších než 18,1 a otevření nového okna dotazu pro všechny databáze na serveru bude obnovena veškerá automaticky pozastavená databáze na stejném serveru. K tomuto chování nedochází, pokud používáte SSMS verze 18,1 nebo novější.|
 
 Automatické obnovení se také aktivuje při nasazení některých aktualizací služby, které vyžadují, aby byla databáze online.
 
@@ -165,7 +165,7 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
    |Parametr|Volby hodnoty|Výchozí hodnota|
    |---|---|---|---|
    |Minimální počet virtuálních jader|Libovolný z těchto {0,5, 1, 2, 4} nepřekračuje maximum virtuální jádra|0,5 virtuální jádra|
-   |Prodleva při autopauze|Minimum: 60 minut (1 hodina)<br>Maximum: 10080 minut (7 dní)<br>Zvýší 60 minut<br>Zakázat automatického pozastavení:-1|60 minut|
+   |Prodleva při autopauze|Minimálně 60 minut (1 hodina)<br>Velikosti 10080 minut (7 dní)<br>Zvýší 60 minut<br>Zakázat automatického pozastavení:-1|60 minut|
 
 > [!NOTE]
 > Použití jazyka T-SQL k přesunu existující databáze do bez serveru nebo změna její velikosti se momentálně nepodporuje, ale můžete ji provádět pomocí Azure Portal nebo PowerShellu.
@@ -321,7 +321,7 @@ Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda. 
 
 Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou těchto oblastí: Austrálie – střed, Čína – východ, Čína – sever, Francie – jih, Německo – střed, Německo – západ, Indie – jih, Korea – jih, Jižní Afrika – západ, Velká Británie – sever, Velká Británie – jih, Velká Británie – západ a Středozápadní USA.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o tom, jak [začít, najdete v tématu rychlý Start: Pomocí Azure Portal](sql-database-single-database-get-started.md)vytvořte v Azure SQL Database jednu databázi.
 - Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

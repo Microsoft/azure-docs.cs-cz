@@ -1,6 +1,6 @@
 ---
-title: Připojení k Trello z Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovních postupů, které monitorovat a spravovat seznamy, tabulí a karty v Trellu projektech s využitím Azure Logic Apps
+title: Připojte se k Trello z Azure Logic Apps | Microsoft Docs
+description: Automatizace úloh a pracovních postupů, které sledují a spravují seznamy, panely a karty v projektech Trello pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,61 +11,61 @@ ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae77488df6ce58d8cab61933f50d24edec35b1ab
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106163"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050723"
 ---
-# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Monitorování a správa Trello s Azure Logic Apps
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Monitorování a Správa Trello pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektor Trello můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorovat a spravovat seznam Trello, karty, panely, členové týmu a tak dále, například:
+Pomocí Azure Logic Apps a konektoru Trello můžete vytvářet automatizované úlohy a pracovní postupy, které sledují a spravují seznamy Trello, karty, panely, členy týmu atd. například:
 
-* Monitorování při přidání nové karty do tabulí a seznamy. 
-* Vytvoření, získání a spravovat panely karet a seznamy.
-* Přidejte komentáře a členy na karty.
-* Seznam panely, panel popisky, karty na panely, komentáře karta, Karta Členové, členové týmu a týmů, kterých jste členem. 
+* Monitorování při přidání nových karet do panelů a seznamů 
+* Vytváření, získávání a Správa desek, karet a seznamů.
+* Přidejte komentáře a členy do karet.
+* Seznam panelů, štítků na panelu, karet na panelech, komentářů karet, členů karty, členů týmu a týmů, ve kterých jste členem. 
 * Získejte týmy.
 
-Můžete použít aktivační události, které odpovědi z vašeho účtu Trello a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy s vaším účtem Trello. Také můžete mít další akce pomocí výstupu z akce Trello. Například při přidání nové karty na panelu nebo seznam, můžete odesílat zprávy s konektoru Slack. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít triggery, které získávají odpovědi z vašeho účtu Trello, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s účtem Trello. Můžete také použít jiné akce výstup z akcí Trello. Například když je přidána nová karta do panelu nebo seznamu, můžete odeslat zprávy pomocí konektoru časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Váš účet a uživatelské přihlašovací údaje k Trellu
+* Účet Trello a přihlašovací údaje uživatele
 
-  Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Trello.
+  Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu Trello.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu Trello. Spustit s triggerem Trello [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použít akci Trello, spuštění aplikace logiky s triggerem, například, **opakování** aktivační události.
+* Aplikace logiky, ke které chcete získat přístup k účtu Trello. Pokud chcete začít s triggerem Trello, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci Trello, spusťte aplikaci logiky s triggerem, například triggerem **opakování** .
 
 ## <a name="connect-to-trello"></a>Připojení k Trello
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "trello". V seznamu triggerů vyberte trigger, který chcete. 
+1. Pro prázdné Logic Apps do vyhledávacího pole zadejte "Trello" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
    -nebo-
 
-   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
-   Do vyhledávacího pole zadejte jako filtr "trello". 
-   V seznamu akcí vyberte požadovanou akci.
+   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. 
+   Do vyhledávacího pole zadejte "Trello" jako filtr. 
+   V seznamu akce vyberte akci, kterou chcete.
 
-   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Pokud se zobrazí výzva k přihlášení k Trellu, autorizaci přístupu pro aplikaci logiky a přihlaste se.
+1. Pokud budete vyzváni k přihlášení k Trello, autorizujte přístup pro vaši aplikaci logiky a přihlaste se.
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/trello/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/trello/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -74,4 +74,4 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

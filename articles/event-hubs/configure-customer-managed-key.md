@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 794f8f136521acbb51139b9e781a30c71a1560e6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992754"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035910"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat Azure Event Hubs v klidovém formátu pomocí Azure Portal
 Azure Event Hubs poskytuje šifrování neaktivních dat pomocí šifrování služby Azure Storage (Azure SSE). Event Hubs spoléhá na Azure Storage uložení dat a ve výchozím nastavení se všechna data uložená pomocí Azure Storage šifrují pomocí klíčů spravovaných Microsoftem. 
@@ -170,7 +170,7 @@ Níže jsou uvedené běžné kódy chyb, které se hledají, když je povolené
 > Pokud chcete povolit geografickou možnost DR na oboru názvů, který používá šifrování BYOK, sekundární obor názvů pro párování musí být v vyhrazeném clusteru a musí mít povolenou spravovanou identitu přiřazenou systémem. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!NOTE]
-> Pro BYOK Event Hubs šifrované obory názvů, koncové body služby Virtual Network (VNet) nejsou ve verzi Preview podporované. 
+> Pokud jsou koncové body služby virtuální sítě (VNet) nakonfigurovány na Azure Key Vault pro obor názvů Event Hubs, BYOK se nepodporuje. 
 
 
 ## <a name="next-steps"></a>Další postup

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c2ff2c745ebed8385df0d351c6d43faf5ab1b9d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854822"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050056"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spuštění kontejnerů detektoru anomálií
 
@@ -98,7 +98,7 @@ Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použij
 
 Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{API_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů detektoru anomálií Azure Portal.  |
 |{ENDPOINT_URI} | Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled rozpoznávání anomálií Azure Portal.|
@@ -156,7 +156,7 @@ Každý další kontejner by měl být na jiném portu.
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Pro rozhraní API kontejneru https://localhost:5000 použijte hostitele.
+Pro rozhraní API kontejneru http://localhost:5000 použijte hostitele.
 
 <!--  ## Validate container is running -->
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302250"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034757"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Vysvětlení fungování nástroje pro migraci
 
@@ -32,9 +32,9 @@ I když nástroj může migrovat téměř všechna [klasická pravidla výstrah]
 
 - Klasická pravidla upozornění na metriky hostů virtuálních počítačů (Windows i Linux). Přečtěte si [pokyny k opětovnému vytvoření těchto pravidel upozornění v nových výstrahách metriky](#guest-metrics-on-virtual-machines) dále v tomto článku.
 - Klasická pravidla upozornění na klasických metrikách úložiště Podívejte se na [pokyny pro monitorování účtů klasického úložiště](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klasická pravidla výstrah pro některé metriky účtu úložiště. Další informace najdete [v části dále](#storage-account-metrics) v tomto článku.
-- Pravidla pro klasické výstrahy pro některé metriky Cosmos DB. Další informace najdete [v části dále](#cosmos-db-metrics) v tomto článku.
-- Klasická pravidla pro upozornění na všechny klasické virtuální počítače a metriky Cloud Services (Microsoft. ClassicCompute/virtualMachines a Microsoft. ClassicCompute/domainNames/sloty/role). Další informace najdete [v části dále](#classic-compute-metrics) v tomto článku.
+- Klasická pravidla výstrah pro některé metriky účtu úložiště. Další [](#storage-account-metrics) informace najdete v části dále v tomto článku.
+- Pravidla pro klasické výstrahy pro některé metriky Cosmos DB. Další [](#cosmos-db-metrics) informace najdete v části dále v tomto článku.
+- Klasická pravidla pro upozornění na všechny klasické virtuální počítače a metriky Cloud Services (Microsoft. ClassicCompute/virtualMachines a Microsoft. ClassicCompute/domainNames/sloty/role). Další [](#classic-compute-metrics) informace najdete v části dále v tomto článku.
 
 Pokud má vaše předplatné nějaká pravidla klasického modelu, je nutné je ručně migrovat. Vzhledem k tomu, že nemůžeme poskytnout automatickou migraci, všechny existující klasické výstrahy metriky těchto typů budou i nadále fungovat do června 2020. Toto rozšíření vám dává čas přejít na nové výstrahy. Žádné nové klasické výstrahy však nelze vytvořit po 2019. srpna.
 
@@ -217,7 +217,7 @@ Pro Cosmos DB se používají ekvivalentní metriky, jak je znázorněno níže:
 | Poplatek za požadavek na dotaz na Mongo | MongoRequestCharge s dimenzí "Command." = "Find"||
 | Frekvence požadavků na dotaz Mongo | MongoRequestsCount s dimenzí "Command." = "Find"||
 | Poplatek za žádost o aktualizaci Mongo | MongoRequestCharge s dimenzí "Command." = "Update"||
-| Služba není k dispozici| ServiceAvailability||
+| Služba není dostupná| ServiceAvailability||
 | TotalRequestUnits | TotalRequestUnits||
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Způsob vytvoření ekvivalentních skupin akcí
@@ -256,13 +256,20 @@ Migraci může aktivovat libovolný uživatel, který má integrovanou roli Při
 
 Po [aktivaci migrace](alerts-using-migration-tool.md)obdržíte e-mailovou adresu, kterou jste zadali, a upozorní vás, že migrace je dokončená, nebo jestli je potřeba provést nějakou akci. Tato část popisuje některé běžné problémy a jejich řešení.
 
-### <a name="validation-failed"></a>Neúspěšné ověření
+### <a name="validation-failed"></a>Ověření se nepovedlo
 
-Vzhledem k nějakým nedávným změnám pravidel výstrah v rámci vašeho předplatného není možné migrovat předplatné. Tento problém je dočasný. Po přesunutí stavu **migrace do několika** dnů můžete migraci restartovat znovu.
+Vzhledem k nějakým nedávným změnám pravidel výstrah v rámci vašeho předplatného není možné migrovat předplatné. Tento problém je dočasný. Po přesunutí stavu migrace do několika dnů můžete migraci restartovat znovu .
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Zámek zásady nebo oboru brání v migraci vašich pravidel.
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Zámek oboru brání migraci vašich pravidel.
 
-V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Je ale potřeba, aby nám zámek zásad nebo rozsahu zabránil vytváření prostředků. V závislosti na uzamčení zásady nebo oboru se některá nebo všechna pravidla nedala migrovat. Tento problém můžete vyřešit tak, že dočasně odeberete uzamčení oboru nebo zásadu a znovu aktivujete migraci.
+V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Zámek oboru ale může zabránit vytváření a odstraňování prostředků. V závislosti na zámku oboru nelze některá nebo všechna pravidla migrovat. Tento problém můžete vyřešit tak, že odeberete zámek oboru pro předplatné, skupinu prostředků nebo prostředek, který je uvedený v nástroji pro [migraci](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel), a znovu spustíte migraci. Zámek oboru nelze zakázat a je třeba jej odebrat po dobu trvání procesu migrace. [Přečtěte si další informace o správě zámků oboru](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Zásady s efektem odepření nám brání v migraci vašich pravidel.
+
+V rámci migrace se vytvoří nové výstrahy metriky a nové skupiny akcí a pak se odstraní klasická pravidla výstrah. Zásady ale můžou zabránit v vytváření prostředků. V závislosti na zásadách se některá nebo všechna pravidla nedala migrovat. Zásady blokující proces jsou uvedeny v [nástroji pro migraci](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Vyřešte tento problém jedním z těchto problémů:
+
+- Vyloučení předplatných nebo skupin prostředků po dobu trvání procesu migrace z přiřazení zásad. [Přečtěte si další informace o správě rozsahu vyloučení zásad](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- Odebrání nebo změna efektu na audit nebo připojení (což může například vyřešit problémy týkající se chybějících značek). [Přečtěte si další informace o správě účinku zásad](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Další kroky
 

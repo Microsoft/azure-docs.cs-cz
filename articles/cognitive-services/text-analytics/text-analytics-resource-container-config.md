@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552254"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051114"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurace kontejnerů Docker Analýza textu
 
@@ -43,7 +43,7 @@ Toto nastavení najdete na následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-Nastavení určuje identifikátor URI koncového bodu analýza textu prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner.  `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro objekt __Analýza textu_ prostředku v Azure. Kontejner hlásí využití každých 10 až 15 minut.
+Nastavení určuje identifikátor URI koncového bodu analýza textu prostředku v Azure, který se používá pro informace o fakturaci pro daný kontejner. `Billing` Je nutné zadat hodnotu pro toto nastavení konfigurace a tato hodnota musí být platným identifikátorem URI koncového bodu pro objekt __Analýza textu_ prostředku v Azure. Kontejner hlásí využití každých 10 až 15 minut.
 
 Toto nastavení najdete na následujícím místě:
 
@@ -93,60 +93,26 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
-|{API_KEY} | Klíč koncového bodu prostředku `Text Analytics` , který je k dispozici na stránce klíčů Azure. `Text Analytics` |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-|{ENDPOINT_URI} | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Text Analytics` .|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | Klíč koncového bodu prostředku `Text Analytics` , který je k dispozici na stránce klíčů Azure. `Text Analytics` |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Hodnota fakturačního koncového bodu je k dispozici na stránce Přehled Azure `Text Analytics` .| Explicitní příklady najdete v tématu [shromažďování požadovaných parametrů](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) . |
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Hodnota ApiKey je **klíč** ze stránky klíče prostředků Azure `Text Analytics` . 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>Příklady Docker kontejneru pro extrakci klíčových frází
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Extrakce klíčových frází](#tab/keyphrase)
 
-Následující příklady Docker jsou pro kontejner extrakce klíčových frází. 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>Základní příklad 
+#### <a name="language-detectiontablanguage"></a>[Rozpoznávání jazyka](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>Příklad protokolování 
+#### <a name="sentiment-analysistabsentiment"></a>[Analýza subjektivního hodnocení](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>Příklady pro Docker kontejneru rozpoznávání jazyka
-
-Následující příklady Docker jsou pro kontejner rozpoznávání jazyka. 
-
-### <a name="basic-example"></a>Základní příklad
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Příklad protokolování
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>Příklady mínění kontejneru analýzy
-
-Následující příklady Docker jsou pro kontejner analýzy mínění. 
-
-### <a name="basic-example"></a>Základní příklad
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Příklad protokolování
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>Další postup
 

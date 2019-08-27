@@ -1,94 +1,103 @@
 ---
-title: Správa zařízení Azure IoT Hub cloudové zasílání zpráv pomocí Průzkumníka cloudu sady Visual Studio | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí Průzkumníka cloudu pro sadu Visual Studio můžete monitorovat zařízení, aby zprávy typu cloud a cloud posílat zprávy zařízení ve službě Azure IoT Hub.
+title: Správa zasílání zpráv ze zařízení Azure IoT Hub cloudu pomocí Cloud Exploreru pro Visual Studio | Microsoft Docs
+description: Naučte se používat Cloud Explorer pro Visual Studio k monitorování zpráv ze zařízení do cloudu a posílání cloudu na zprávy zařízení v Azure IoT Hub.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440626"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050268"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Pomocí Průzkumníka cloudu sady Visual Studio k odesílání a příjem zpráv mezi zařízením a centrem IoT
+# <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití Průzkumníka cloudu pro Visual Studio k posílání a přijímání zpráv mezi zařízením a IoT Hub
 
-![Diagram začátku do konce](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
+![Komplexní diagram](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
 
-[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečná rozšíření sady Visual Studio, která umožňuje zobrazit vaše prostředky Azure, zkoumání jejich vlastností a provádění klíčových vývojářských úkonů ze sady Visual Studio. Tento článek se zaměřuje na tom, jak pomocí Průzkumníka cloudu můžete odesílání a příjem zpráv mezi zařízením a centrem IoT.
+[Průzkumník cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) je užitečnou příponou sady Visual Studio, která umožňuje zobrazit prostředky Azure, kontrolovat jejich vlastnosti a provádět klíčové vývojářské akce v rámci sady Visual Studio. Tento článek se zaměřuje na použití Průzkumníka cloudu k posílání a přijímání zpráv mezi zařízením a vaším rozbočovačem.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>Co se dozvíte
+## <a name="what-you-learn"></a>Co se naučíte
 
-Se dozvíte, jak pomocí Průzkumníka cloudu sady Visual Studio pro monitorování zpráv typu zařízení cloud a odesílat zprávy typu cloud zařízení. Zprávy typu zařízení cloud může být data ze senzorů, který shromažďuje vaše zařízení a pak odešle do služby IoT Hub. Zprávy typu cloud zařízení může být příkazy, které služby IoT Hub odesílá do vašeho zařízení. Například blikání kontrolku LED, která je připojená k zařízení.
+V tomto článku se dozvíte, jak používat Průzkumníka cloudu pro Visual Studio k monitorování zpráv ze zařízení do cloudu a k posílání zpráv z cloudu na zařízení. Zprávy ze zařízení do cloudu můžou být senzorem dat, která vaše zařízení shromažďuje a odesílá IoT Hub. Zprávy z cloudu na zařízení můžou být příkazy, které váš IoT Hub posílá do vašeho zařízení. Například blikající indikátory LED, který je připojen k vašemu zařízení.
 
-## <a name="what-you-will-do"></a>Co budete dělat
+## <a name="what-you-do"></a>Co dělat
 
-- Pomocí Průzkumníka cloudu sady Visual Studio pro monitorování zpráv typu zařízení cloud.
-- Pomocí Průzkumníka cloudu sady Visual Studio můžete odesílat zprávy typu cloud zařízení.
+V tomto článku provedete následující úlohy:
+
+- Pomocí Průzkumníka cloudu pro Visual Studio můžete monitorovat zprávy ze zařízení do cloudu.
+
+- Použijte Průzkumníka cloudu pro Visual Studio k posílání zpráv z cloudu na zařízení.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
+Potřebujete následující požadavky:
+
 - Aktivní předplatné Azure.
-- Službu Azure IoT Hub v rámci vašeho předplatného.
-- Microsoft Visual Studio 2017 Update 8 nebo novější
-- Cloud Explorer komponenty z instalačního programu Visual Studio (zadáno ve výchozím nastavení se sadou Azure)
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Průzkumník cloudu aktualizace na nejnovější verzi
+- IoT Hub Azure v rámci vašeho předplatného.
 
-Průzkumník cloudu komponenty z instalačního programu sady Visual Studio podporuje pouze monitorování zpráv typu zařízení cloud a cloud zařízení. Aby bylo možné odesílat zprávy do zařízení nebo v cloudu, stáhněte a nainstalujte nejnovější [Průzkumníka cloudu](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
+- Microsoft Visual Studio 2017 Update 9 nebo novější. Tento článek používá [Visual Studio 2019](https://www.visualstudio.com/vs/).
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se ke službě IoT Hub
+- Součást Průzkumníka cloudu z Instalační program pro Visual Studio, která je ve výchozím nastavení vybrána s úlohou Azure.
 
-1. V sadě Visual Studio **Průzkumníka cloudu** okna, klikněte na ikonu Správa účtů. Můžete otevřít okno Průzkumníka cloudu ze **zobrazení** > **Průzkumníka cloudu** nabídky.
+## <a name="update-cloud-explorer-to-latest-version"></a>Aktualizovat Průzkumníka cloudu na nejnovější verzi
 
-    ![Klikněte na Správa účtů](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visual Studio 2017 podporuje pouze monitorování zpráv ze zařízení do cloudu a z cloudu na zařízení. Pokud chcete použít Visual Studio 2017, Stáhněte a nainstalujte si nejnovější [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
 
+## <a name="sign-in-to-access-your-hub"></a>Přihlaste se, abyste měli přístup ke svému centru.
 
-2. Klikněte na tlačítko **spravovat účty** v Průzkumníku cloudu.
+Chcete-li získat přístup k centru, postupujte podle následujících kroků:
 
-3. Klikněte na tlačítko **přidat účet...**  v novém okně pro přihlášení do Azure poprvé.
+1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
 
-4. Po přihlášení, zobrazí se seznam vašich předplatných Azure. Vyberte předplatná Azure, kterou chcete zobrazit a klikněte na tlačítko **použít**.
+1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
 
-5. Rozbalte **předplatného** > **centra IoT hub** > **váš IoT Hub**, zobrazí se seznam zařízení uzlu služby IoT Hub.
+    ![Ikona správy účtů](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-    ![Seznam zařízení](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
+1. Pokud jste přihlášeni k Azure, zobrazí se vaše účty. Pokud se chcete přihlásit k Azure poprvé, vyberte **Přidat účet**.
 
-## <a name="monitor-device-to-cloud-messages"></a>Monitorování zpráv typu zařízení cloud
+1. Vyberte předplatná Azure, která chcete použít, a klikněte na **použít**.
 
-Pokud chcete monitorovat zprávy odeslané ze zařízení do služby IoT Hub, postupujte takto:
+1. Rozbalte své předplatné a potom rozbalte položku **centra IoT**.  V rámci každého centra si můžete zobrazit vaše zařízení pro toto centrum.
 
-1. Klikněte pravým tlačítkem na zařízení nebo službu IoT Hub a vyberte **spustit monitorování zpráv D2C**.
+    ![Seznam zařízení](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
 
-    ![Začněte s monitorováním D2C zprávy](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
+## <a name="monitor-device-to-cloud-messages"></a>Monitorování zpráv ze zařízení do cloudu
 
-2. Sledované zprávy zobrazí ve **služby IoT Hub** podokno výstup.
+Pokud chcete monitorovat zprávy odesílané ze svého zařízení do vašeho IoT Hub, postupujte podle následujících kroků:
 
-    ![Zpráva výsledku monitorování D2C](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
+1. Klikněte pravým tlačítkem na IoT Hub nebo zařízení a vyberte **Spustit monitorování zpráva D2C**.
 
-3. Chcete zastavit monitorování, klikněte pravým tlačítkem na jakékoli zařízení nebo službu IoT Hub a vyberte **zastavit monitorování zpráv D2C**.
+    ![Spustit monitorování zprávy D2C](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message-vs2019.png)
+
+1. Monitorované zprávy se zobrazí v části **výstup**.
+
+    ![Monitorování výsledku zprávy D2C](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result-vs2019.png)
+
+1. Pokud chcete sledování zastavit, klikněte pravým tlačítkem na libovolné IoT Hub nebo zařízení a vyberte **zastavit monitorování zpráva D2C**.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
-Odeslat zprávu na vaše zařízení ze služby IoT Hub, postupujte podle těchto kroků:
+Pokud chcete poslat zprávu z IoT Hub do zařízení, postupujte podle těchto kroků:
 
-1. Klikněte pravým tlačítkem na zařízení a vyberte **poslat zprávu C2D**.
+1. Klikněte pravým tlačítkem na zařízení a vyberte **Odeslat zprávu C2D**.
 
-    ![Odeslat zprávu C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
+1. Do vstupního pole zadejte zprávu.
 
-2. Zadejte zprávu vstupního pole.
+    ![Poslat zprávu C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-test.png)
 
-3. Výsledky se zobrazí v **služby IoT Hub** podokno výstup.
+    Výsledky se zobrazí v části **výstup**.
 
-    ![Odeslat C2D výsledek zprávy](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
+    ![Odeslat výsledek zprávy C2D](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Jste zjistili, jak pro monitorování zpráv typu zařízení cloud a odesílání zpráv typu cloud zařízení mezi zařízení IoT a Azure IoT Hub.
+Zjistili jste, jak monitorovat zprávy ze zařízení do cloudu a jak odesílat zprávy z cloudu na zařízení mezi zařízením IoT a službou Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

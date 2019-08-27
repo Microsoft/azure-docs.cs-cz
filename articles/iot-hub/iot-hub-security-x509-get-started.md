@@ -1,102 +1,103 @@
 ---
-title: Kurz pro X.509 zabezpečení ve službě Azure IoT Hub | Dokumentace Microsoftu
-description: Začít používat založená na X.509 zabezpečení ve službě Azure IoT hub v simulovaném prostředí.
+title: Kurz pro zabezpečení X. 509 v Azure IoT Hub | Microsoft Docs
+description: Začněte využívat zabezpečení na základě X. 509 ve službě Azure IoT Hub v simulovaném prostředí.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
-ms.openlocfilehash: 0bfb66f54ec09e86b46a41499211e93a0083e8d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/20/2019
+ms.openlocfilehash: 03ac9f878f0869ef33d22f50c6bdba4276bd4d3c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779914"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048294"
 ---
-# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavit X.509 zabezpečení ve službě Azure IoT hub
+# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X. 509 ve službě Azure IoT Hub
 
-Tento kurz simuluje kroky nutné k zabezpečení pomocí Azure IoT hub *ověřování pomocí certifikátu X.509*. Pro účely ilustrace vám ukážeme, jak vytvářet certifikáty místně na svém počítači Windows pomocí open source nástroj OpenSSL. Doporučujeme použít tento kurz pouze pro účely testování. Pro produkční prostředí, byste si zakoupit certifikáty vydané *kořenové certifikační autority (CA)* .
+V tomto kurzu se dozvíte o krocích, které potřebujete k zabezpečení služby Azure IoT Hub pomocí *ověřování certifikátu X. 509*. Pro účely ilustrace používáme open source nástroj OpenSSL k vytváření certifikátů místně na vašem počítači s Windows. Doporučujeme použít tento kurz pouze pro účely testování. V produkčním prostředí byste měli koupit certifikáty od kořenové certifikační *autority (CA)* .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz vyžaduje, že máte připraveno následující prostředky:
+Tento kurz vyžaduje, abyste měli připraveny tyto prostředky:
 
-* Vytvořili jste službu IoT hub ve vašem předplatném Azure. Zobrazit [vytvoření služby IoT hub přes portál](iot-hub-create-through-portal.md) podrobné pokyny.
+* Vytvořili jste službu IoT Hub s vaším předplatným Azure. Podrobné pokyny najdete v tématu [vytvoření centra IoT prostřednictvím portálu](iot-hub-create-through-portal.md) .
 
-* Máte [Visual Studio 2017 nebo Visual Studio 2019](https://www.visualstudio.com/vs/) na vašem počítači nainstalovaný.
+* Máte nainstalovanou [aplikaci Visual studio 2017 nebo Visual studio 2019](https://www.visualstudio.com/vs/) .
 
-## <a name="get-x509-ca-certificates"></a>Získání certifikátů webu X.509
+## <a name="get-x509-ca-certificates"></a>Získání certifikátů certifikační autority X. 509
 
-Zabezpečení pomocí certifikátů X.509 ve službě IoT Hub je nutné začít s [řetěz certifikátů X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), který obsahuje kořenový certifikát, stejně jako všechny zprostředkující certifikáty až listový certifikát.
+Zabezpečení založené na certifikátech X. 509 v IoT Hub vyžaduje, abyste začali s řetězem [certifikátů x. 509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), který zahrnuje kořenový certifikát i všechny zprostředkující certifikáty až po listový certifikát.
 
-Můžete zvolit jednu z následujících způsobů, jak získat certifikáty:
+Pro získání certifikátů můžete zvolit některý z následujících způsobů:
 
-* Zakoupení certifikátů X.509 z *kořenové certifikační autority (CA)* . To se doporučuje pro produkční prostředí.
+* Zakupte certifikáty X. 509 od *kořenové certifikační autority (CA)* . Tato metoda se doporučuje pro produkční prostředí.
 
-* Vytvořit vlastní certifikáty X.509 pomocí nástroje třetích stran, jako [OpenSSL](https://www.openssl.org/). To bude bez problémů pro vývoj a testování účely. Zobrazit [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) informace o generování testovací certifikáty certifikační Autority pomocí prostředí PowerShell nebo Bash. Zbývající části tohoto kurzu používá testovací certifikační Autority certifikáty generované infrastrukturou podle pokynů v [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+* Vytvářejte vlastní certifikáty X. 509 pomocí nástroje třetí strany, jako je například [OpenSSL](https://www.openssl.org/). Tato technika je pro účely testování a vývoje vhodná. V tématu [Správa certifikátů testovací CA najdete ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) pro informace o generování certifikátů TESTOVACÍch certifikačních autorit pomocí PowerShellu nebo bash. Zbytek tohoto kurzu používá certifikáty testovací CA vygenerované podle pokynů v tématu [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-* Generování [certifikát X.509 zprostředkující certifikační Autority](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) podepsány existující certifikát kořenové certifikační Autority a nahrajte ho do služby IoT Hub. Jakmile zprostředkující certifikát je nahraný a ověřit podle pokynů níže, lze použít místo certifikátu kořenové certifikační Autority uvedených níže. Nástroje, jako je OpenSSL ([openssl No](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) a [certifikační autority openssl](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) lze použít k vygenerování a podepisování certifikátem zprostředkující certifikační Autority.
+* Vygenerujte [certifikát zprostředkující certifikační autority X. 509](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) podepsaný stávajícím certifikátem kořenové certifikační autority a nahrajte ho do centra. Po nahrání a ověření zprostředkujícího certifikátu, jak je uvedeno níže, se dá použít místo certifikátu kořenové certifikační autority uvedeného níže. K vygenerování a podepsání zprostředkujícího certifikátu certifikační autority se dají použít nástroje jako OpenSSL ([OpenSSL REQ](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) a [OpenSSL CA](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)).
 
+## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Registrace certifikátů certifikační autority X. 509 do služby IoT Hub
 
-## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Zaregistrovat certifikáty webu X.509 do služby IoT hub
+Tyto kroky ukazují, jak přidat novou certifikační autoritu do služby IoT Hub prostřednictvím portálu.
 
-Tyto kroky ukazují, jak přidat nové certifikační autority do služby IoT hub pomocí portálu.
+1. V Azure Portal přejděte do svého centra IoT a vyberte **Nastavení** > **certifikáty** pro centrum.
 
-1. Na webu Azure Portal, přejděte do služby IoT hub a otevřete **nastavení** > **certifikáty** nabídky.
+1. Vyberte **Přidat** a přidejte nový certifikát.
 
-2. Klikněte na tlačítko **přidat** přidat nový certifikát.
+1. Do pole **název certifikátu**zadejte popisný zobrazovaný název a vyberte soubor certifikátu, který jste vytvořili v předchozí části počítače.
 
-3. Zadejte popisný Zobrazovaný název vašeho certifikátu. Vyberte soubor kořenového certifikátu s názvem *RootCA.cer* vytvořili v předchozí části, z vašeho počítače. Klikněte na **Odeslat**.
+1. Jakmile dostanete oznámení, že se váš certifikát úspěšně nahrál, vyberte **Uložit**.
 
-4. Jakmile obdržíte oznámení, že váš certifikát se úspěšně nahraje, klikněte na tlačítko **Uložit**.
+    ![Nahrát certifikát](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
-    ![Nahrání certifikátu](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
+   Váš certifikát se zobrazí v seznamu certifikáty se stavemNeověřeno.
 
-   Tím se zobrazí váš certifikát v **Průzkumník certifikátů** seznamu. Poznámka: **stav** tento certifikát je *neověřené*.
+1. Vyberte certifikát, který jste právě přidali k zobrazení **podrobností o certifikátu**, a pak vyberte **Generovat ověřovací kód**.
 
-5. Klikněte na certifikát, který jste přidali v předchozím kroku.
+   ![Ověřit certifikát](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
-6. V **podrobnosti o certifikátu** okna, klikněte na tlačítko **vygenerovat ověřovací kód**.
+1. Zkopírujte **ověřovací kód** do schránky. Použijete ji k ověření vlastnictví certifikátu.
 
-7. Vytvoří **ověřovací kód** k ověření vlastnictví certifikátu. Zkopírujte kód do schránky.
+1. Postupujte podle kroků 3 v částech [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).  Tento proces podepíše ověřovací kód s privátním klíčem přidruženým k certifikátu CA X. 509, který generuje podpis. K dispozici jsou nástroje pro provádění tohoto procesu podepisování, například OpenSSL. Tento proces se označuje jako [důkaz o vlastnictví](https://tools.ietf.org/html/rfc5280#section-3.1).
 
-   ![Ověření certifikátu](./media/iot-hub-security-x509-get-started/verify-cert.png)  
+1. V části **Podrobnosti o certifikátu**v části **soubor ověřovacího certifikátu. pem nebo. cer**Najděte a otevřete soubor signatury. Pak vyberte **ověřit**.
 
-8. Teď, budete muset přihlásit to *ověřovací kód* s privátní klíč spojený s vaší certifikátu webu X.509, který generuje podpis. Nejsou k dispozici pro tento proces podepisování, například OpenSSL provést nástroje. To se označuje jako [doklad o vlastnictví](https://tools.ietf.org/html/rfc5280#section-3.1). Krok 3 v [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) generuje kód pro ověření.
+   Stav certifikátu se změní na **ověřený**. Pokud se certifikát automaticky neaktualizuje, vyberte **aktualizovat** .
 
-9. Nahrajte výsledný podpis z kroku 8 do služby IoT hub v portálu. V **podrobnosti o certifikátu** okna na webu Azure portal, přejděte **soubor .pem nebo .cer ověřovacího certifikátu**a vyberte požadovaný podpis, například *VerifyCert4.cer*vytvořené pomocí příkazu Powershellu ukázkový _Průzkumníka souborů_ ikonu kromě ho.
+## <a name="create-an-x509-device-for-your-iot-hub"></a>Vytvoření zařízení X. 509 pro Centrum IoT
 
-10. Po úspěšném nahrání certifikátu klikněte na tlačítko **ověřte**. **Stav** změn certifikát **_ověřeno_** v **certifikáty** okno. Klikněte na tlačítko **aktualizovat** Pokud neaktualizuje automaticky.
+1. V Azure Portal přejděte do svého centra IoT a pak vyberte **Průzkumník** > **zařízení IoT**.
 
-    ![Nahrajte certifikát ověření](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
+1. Pokud chcete přidat nové zařízení, vyberte **Nový** .
 
-## <a name="create-an-x509-device-for-your-iot-hub"></a>Vytvoření zařízení X.509 pro službu IoT hub
+1. Do **ID zařízení**zadejte popisný název zobrazení. Jako **typ ověřování**zvolte **podepsaná certifikační autorita X. 509**a pak vyberte **Uložit**.
 
-1. Na webu Azure Portal, přejděte do služby IoT hub **Průzkumníci > zařízení IoT** stránky.
+   ![Vytvoření zařízení X. 509 na portálu](./media/iot-hub-security-x509-get-started/new-x509-device.png)
 
-2. Klikněte na tlačítko **+ přidat** přidat nové zařízení.
+## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Ověření zařízení X. 509 pomocí certifikátů X. 509
 
-3. Zadejte popisný Zobrazovaný název pro **ID zařízení**a vyberte **_X.509 podepsaný certifikační Autority_** jako **typ ověřování**. Klikněte na **Uložit**.
+Abyste mohli ověřit zařízení X. 509, musíte nejdřív podepsat zařízení certifikátem certifikační autority. Přihlášení na listových zařízeních se obvykle provádí v výrobním závodě, kde jsou odpovídajícím způsobem povoleny výrobní nástroje. Jak zařízení přechází z jednoho výrobce do jiného, je akce podepisování každého výrobce zachycena jako zprostředkující certifikát v rámci řetězce. Výsledkem je řetěz certifikátů z certifikátu certifikační autority k certifikátu na listech zařízení. Krok 4 ve [správě certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) generují certifikát zařízení.
 
-   ![Vytvoření zařízení X.509 na portálu](./media/iot-hub-security-x509-get-started/create-x509-device.png)
+V dalším kroku vám ukážeme, jak vytvořit C# aplikaci, která simuluje zařízení X. 509 zaregistrované ve službě IoT Hub. Hodnoty teploty a vlhkosti se z simulovaného zařízení pošle do vašeho středu. V tomto kurzu vytvoříme jenom aplikaci zařízení. K vytvoření aplikace IoT Hub služby, která odešle odpověď na události odesílané simulovaným zařízením, je ponecháno cvičení pro čtenáře. C# Aplikace předpokládá, že jste postupovali podle kroků v části [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Ověření zařízení X.509 pomocí certifikátů X.509
+1. Otevřete Visual Studio, vyberte **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Vyberte **Další**.
 
-Pokud chcete ověřit vaše zařízení X.509, budete muset nejprve podepište zařízení pomocí certifikátu certifikační Autority. Podepisování zařízení typu list se obvykle provádí ve výrobních závodů, kde výrobní nástroje byly povoleny odpovídajícím způsobem. Jak zařízení přejde od jednoho výrobce do druhého, zaznamená v podobě zprostředkující certifikát v řetězu podpisový akce jednotlivých výrobců. Konečný výsledek je řetěz certifikátů z certifikační Autority certifikátu listový certifikát zařízení. Krok 4 v [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) vytvoří i certifikát zařízení.
+1. V části **Konfigurovat nový projekt**pojmenujte projekt *SimulateX509Device*a pak vyberte **vytvořit**.
 
-V dalším kroku vám ukážeme, jak vytvořit aplikaci v C# simulovat zařízení X.509 pro službu IoT hub. Pošleme hodnoty teploty a vlhkosti ze simulovaného zařízení k centru. Všimněte si, že v tomto kurzu vytvoříme pouze aplikace, zařízení. Jako cvičení je ponecháno na čtenáři k vytvoření aplikace služby IoT Hub, který odešle odpověď na události odeslané toto simulované zařízení. Aplikace v C# se předpokládá, že jste udělali kroky v [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+   ![Vytvoření projektu zařízení X. 509 v aplikaci Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. V sadě Visual Studio vytvořte nový Visual C# Windows klasický desktopový projekt pomocí šablony projektu konzolové aplikace. Pojmenujte projekt **SimulateX509Device**.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateX509Device** a pak vyberte **Spravovat balíčky NuGet**.
 
-   ![Vytvoření projektu zařízení X.509 v sadě Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project.png)
+1. V okně **Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **SimulateX509Device** projektu a pak klikněte na tlačítko **spravovat balíčky NuGet...** . V okně Správce balíčků NuGet vyberte **Procházet** a vyhledejte **microsoft.azure.devices.client**. Vyberte **nainstalovat** k instalaci **Microsoft.Azure.Devices.Client** balíček a přijměte podmínky použití. Tento postup stáhne, nainstaluje a přidá odkaz na balíček NuGet sady SDK pro zařízení Azure IoT a jeho závislosti.
+   ![Přidat balíček NuGet sady SDK pro zařízení v sadě Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-   ![Přidejte balíček NuGet sady SDK pro zařízení v sadě Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
+    Tento krok stáhne a nainstaluje balíček NuGet sady SDK pro zařízení Azure IoT a jeho závislosti a přidá se na něj odkaz.
 
-3. Přidejte následující řádky kódu v horní části *Program.cs* souboru:
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
     ```CSharp
         using Microsoft.Azure.Devices.Client;
@@ -104,7 +105,7 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v C# simulovat zařízen
         using System.Security.Cryptography.X509Certificates;
     ```
 
-4. Přidejte následující řádky kódu uvnitř **Program** třídy:
+1. Do třídy **program** přidejte následující pole:
 
     ```CSharp
         private static int MESSAGE_COUNT = 5;
@@ -115,9 +116,9 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v C# simulovat zařízen
         private static Random rnd = new Random();
     ```
 
-     Použití zařízení popisný název jste použili v předchozí části místo _< your_device_id >_ zástupný symbol.
+    Místo _< your_device_id >_ použijte popisný název zařízení, který jste použili v předchozí části.
 
-5. Přidejte následující funkci, která vytvořit náhodných čísel pro teploty a vlhkosti a tyto hodnoty odešle do centra:
+1. Přidejte následující funkci pro vytvoření náhodných čísel pro teplotu a vlhkost a odeslání těchto hodnot do centra:
 
     ```CSharp
     static async Task SendEvent(DeviceClient deviceClient)
@@ -139,7 +140,7 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v C# simulovat zařízen
     }
     ```
 
-6. Nakonec přidejte následující řádky kódu **hlavní** funkce zástupné texty _id zařízení_, _your-iot-hub-name_ a  _Absolute-path-to-your-Device-PFX-File_ podle požadavků vašeho nastavení.
+1. Nakonec do funkce **Main** přidejte následující řádky kódu, kterým nahradíte zástupné symboly _ID zařízení_, _název-IoT-Hub-Name_a _absolutní cesta k souboru_ .
 
     ```CSharp
     try
@@ -166,14 +167,25 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v C# simulovat zařízen
     }
     ```
 
-   Tento kód se připojí ke službě IoT hub vytvořením připojovacím řetězcem pro vaše zařízení X.509. Po úspěšném připojení, potom odešle do centra události teploty a vlhkosti a čeká na odpověď. 
-7. Protože má přístup k této aplikaci *.pfx* souboru, je nutné spustit v *správce* režimu. Sestavte řešení sady Visual Studio. Otevřete nové okno příkazového řádku jako **správce**a přejděte do složky obsahující tato řešení. Přejděte *bin/Debug* cestu ve složce řešení. Spusťte aplikaci **SimulateX509Device.exe** z _správce_ příkazové okno. Měli byste vidět vaše zařízení úspěšně připojení k centru a odesílá události. 
+   Tento kód se připojí ke službě IoT Hub vytvořením připojovacího řetězce pro vaše zařízení X. 509. Po úspěšném připojení odešle do centra události teploty a vlhkosti a počká na jeho odpověď.
 
-   ![Spuštění aplikace pro zařízení](./media/iot-hub-security-x509-get-started/device-app-success.png)
+1. Spusťte aplikaci. Vzhledem k tomu, že tato aplikace přistupuje k souboru *. pfx* , možná budete muset tuto aplikaci spustit jako správce.
 
-## <a name="next-steps"></a>Další postup
+   1. Sestavte řešení sady Visual Studio.
 
-Další informace o zabezpečení řešení IoT najdete v tématu:
+   1. Otevřete nové okno příkazového řádku pomocí příkazu **Spustit jako správce**.  
+
+   1. Přejděte do složky, která obsahuje vaše řešení, a pak přejděte na *přihrádku/cestu ladění* ve složce řešení.
+
+   1. Spusťte aplikaci **SimulateX509Device. exe** z příkazového řádku.
+
+   Měli byste vidět, že vaše zařízení se úspěšně připojilo k centru a odesílá události.
+
+   ![Spustit aplikaci pro zařízení](./media/iot-hub-security-x509-get-started/device-app-success.png)
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o zabezpečení řešení IoT najdete v těchto tématech:
 
 * [Osvědčené postupy zabezpečení IoT](../iot-fundamentals/iot-security-best-practices.md)
 
@@ -181,6 +193,6 @@ Další informace o zabezpečení řešení IoT najdete v tématu:
 
 * [Zabezpečení nasazení IoT](../iot-fundamentals/iot-security-deployment.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

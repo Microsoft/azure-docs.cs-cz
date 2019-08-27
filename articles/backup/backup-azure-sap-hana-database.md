@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735541"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034568"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Zálohování databáze SAP HANA do Azure
 
@@ -106,9 +106,9 @@ Nyní povolte zálohování.
 
 1. V kroku 2 klikněte na **Konfigurovat zálohu**.
 2. V části **Vyberte položky, které chcete zálohovat**vyberte všechny databáze, které chcete chránit > **OK**.
-3. V části **zásady** > zálohování**vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze, a to v souladu s pokyny uvedenými níže.
+3. V části **zásady** > zálohování**vyberte zásady zálohování**, vytvořte nové zásady zálohování pro databáze, a to v souladu s pokyny uvedenými níže.
 4. Po vytvoření zásady klikněte v nabídce **zálohování** na **Povolit zálohování**.
-5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
+5. Sledujte průběh konfigurace zálohování v oblasti **oznámení** na portálu.
 
 ### <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit zobrazení, která analyzuje data protokolů ve službě Azure Monitor | Dokumentace Microsoftu
-description: Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit vlastní zobrazení, které se zobrazují na webu Azure Portal a obsahovat nejrůznější vizualizace dat v pracovním prostoru Log Analytics. Tento článek obsahuje základní informace o návrháři zobrazení a uvede postupy pro vytváření a úpravu vlastní zobrazení.
+title: Vytváření zobrazení k analýze dat protokolu v Azure Monitor | Microsoft Docs
+description: Pomocí návrháře zobrazení v Azure Monitor můžete vytvořit vlastní zobrazení, která jsou zobrazena v Azure Portal a obsahují celou řadu vizualizací dat v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a prezentuje postupy pro vytváření a úpravy vlastních zobrazení.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,103 +13,103 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33930823fbeb42011d8e2a368d17c9a21070a243
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61342011"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035596"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení ve službě Azure Monitor
-Pomocí návrháře zobrazení ve službě Azure Monitor můžete vytvořit řadu vlastních zobrazení na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
+Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Další informace o návrháři zobrazení najdete v tématu:
+Další informace o návrháři zobrazení najdete v těchto tématech:
 
-* [Dlaždice odkaz](view-designer-tiles.md): Poskytuje referenční příručka k nastavení všech dlaždic dostupných do vlastních zobrazení.
-* [Referenční informace k části vizualizace](view-designer-parts.md): Poskytuje referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
+* [Odkaz](view-designer-tiles.md)na dlaždici: Poskytuje referenční příručku k nastavením pro každý z dostupných dlaždic ve vlastních zobrazeních.
+* [Odkaz na součást vizualizace](view-designer-parts.md): Poskytuje referenční příručku k nastavením pro části vizualizace, které jsou k dispozici ve vlastních zobrazeních.
 
 
 ## <a name="concepts"></a>Koncepty
-Zobrazení se zobrazí ve službě Azure Monitor **přehled** stránky na webu Azure Portal. Otevřete tuto stránku z **Azure Monitor** nabídky kliknutím **Další** pod **Insights** oddílu. Dlaždice v každém vlastní zobrazení se zobrazují podle abecedy a dlaždic pro řešení monitorování jsou nainstalovány stejného pracovního prostoru.
+Zobrazení se zobrazí na stránce **přehled** Azure Monitor v Azure Portal. Tuto stránku otevřete z nabídky **Azure monitor** kliknutím na **Další** v části **přehledy** . Dlaždice v každém vlastním zobrazení se zobrazují abecedně a dlaždice pro řešení monitorování jsou nainstalovány do stejného pracovního prostoru.
 
-![Stránka s přehledem](media/view-designer/overview-page.png)
+![Stránka Přehled](media/view-designer/overview-page.png)
 
-Zobrazení, které vytvoříte pomocí návrháře zobrazení obsahovat prvky, které jsou popsány v následující tabulce:
+Zobrazení, která vytvoříte pomocí návrháře zobrazení, obsahují prvky, které jsou popsány v následující tabulce:
 
-| Část | Popis |
+| Částí | Popis |
 |:--- |:--- |
-| Dlaždice | Jsou zobrazeny v Azure Monitor **přehled** stránky. Každé dlaždici se zobrazí vizuální přehled, který představuje vlastní zobrazení. Každý typ dlaždice obsahuje vizualizaci různých záznamů. Můžete vybrat příslušnou dlaždici a vlastní zobrazení. |
-| Vlastní zobrazení | Zobrazí, když vyberete dlaždici. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
-| Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [protokolu dotazy](../log-query/log-query-overview.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části o provedení dotazu protokolu, která poskytuje podrobné záznamy. |
+| Dlaždice | Se zobrazí na stránce s **přehledem** Azure monitor. Každá dlaždice zobrazuje vizuální souhrn vlastního zobrazení, které představuje. Každý typ dlaždice poskytuje jinou vizualizaci záznamů. Výběrem dlaždice zobrazíte vlastní zobrazení. |
+| Vlastní zobrazení | Zobrazí se při výběru dlaždice. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
+| Části vizualizace | Prezentovat vizualizaci dat v pracovním prostoru Log Analytics v závislosti na jednom nebo několika [dotazech protokolu](../log-query/log-query-overview.md). Většina částí zahrnuje hlavičku, která poskytuje vizualizaci na nejvyšší úrovni a seznam, který zobrazuje nejvyšší výsledky. Každý typ součásti poskytuje jinou vizualizaci záznamů v pracovním prostoru Log Analytics. V části vyberete prvky pro provedení dotazu protokolu, který poskytuje podrobné záznamy. |
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-Budete potřebovat alespoň [oprávnění na úrovni Přispěvatel](manage-access.md#manage-accounts-and-users) v pracovním prostoru Log Analytics, vytvoření nebo úprava zobrazení. Pokud toto oprávnění nemáte, nebude možnost Návrhář zobrazení zobrazí v nabídce.
+Pro vytváření nebo úpravy zobrazení potřebujete alespoň [oprávnění na úrovni přispěvatele](manage-access.md#manage-access-using-azure-permissions) v pracovním prostoru Log Analytics. Pokud toto oprávnění nemáte, v nabídce se nezobrazí možnost Návrhář zobrazení.
 
 
-## <a name="work-with-an-existing-view"></a>Práce s existující zobrazení
-Zobrazení, které byly vytvořeny pomocí návrháře zobrazení zobrazí následující možnosti:
+## <a name="work-with-an-existing-view"></a>Práce s existujícím zobrazením
+Zobrazení, která byla vytvořena pomocí návrháře zobrazení, zobrazují následující možnosti:
 
-![Přehled nabídky](media/view-designer/overview-menu.png)
+![Nabídka přehled](media/view-designer/overview-menu.png)
 
-Tyto možnosti jsou popsány v následující tabulce:
+Možnosti jsou popsány v následující tabulce:
 
 | Možnost | Popis |
 |:--|:--|
-| Obnovení   | Aktualizuje zobrazení s nejnovější data. | 
-| Protokoly      | Otevře [Log Analytics](../log-query/portals.md) k analýze dat pomocí dotazů na protokoly. |
-| Upravit       | Otevře se zobrazení v Návrháři zobrazení k úpravě jeho obsah a konfiguraci.  |
-| Klon      | Vytvoří nové zobrazení a otevře v zobrazení návrhu. Název nového zobrazení je stejný jako původní název, ale s *kopírování* připojí k němu. |
-| Rozsah dat | Nastavte filtr rozsahu data a času pro data, která je zahrnutá v zobrazení. Tento rozsah je použit před všechny rozsahy kalendářních dat nastavit v dotazech v zobrazení.  |
+| Aktualizovat   | Aktualizuje zobrazení o nejnovější data. | 
+| Logs      | Otevře [Log Analytics](../log-query/portals.md) pro analýzu dat pomocí dotazů protokolu. |
+| Upravit       | Otevře zobrazení v Návrháři zobrazení, kde můžete upravit jeho obsah a konfiguraci.  |
+| Klon      | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným kopírováním. |
+| Rozsah dat | U dat obsažených v zobrazení nastavte filtr rozsahu data a času. Tento rozsah kalendářních dat se použije před všemi rozsahy dat nastavenými v dotazech v zobrazení.  |
 | +          | Definujte vlastní filtr, který je definován pro zobrazení. |
 
 
 ## <a name="create-a-new-view"></a>Vytvoření nového zobrazení
-Můžete vytvořit nové zobrazení v Návrháři zobrazení tak, že vyberete **Návrhář zobrazení** v nabídce pracovního prostoru Log Analytics.
+Nové zobrazení můžete vytvořit v Návrháři zobrazení tak, že v nabídce pracovního prostoru Log Analytics vyberete **zobrazení Návrhář** .
 
-![Dlaždici Návrhář zobrazení](media/view-designer/view-designer-tile.png)
+![Dlaždice návrháře zobrazení](media/view-designer/view-designer-tile.png)
 
 
-## <a name="work-with-view-designer"></a>Práce s Návrhář zobrazení
-Návrhář zobrazení použít k vytvoření nového zobrazení nebo upravovat stávající. 
+## <a name="work-with-view-designer"></a>Práce s návrhářem zobrazení
+Pomocí návrháře zobrazení můžete vytvářet nová zobrazení nebo upravovat existující. 
 
 Návrhář zobrazení má tři podokna: 
-* **Návrh**: Obsahuje vlastní zobrazení, které jste vytvoření nebo úpravy. 
-* **Ovládací prvky**: Obsahuje dlaždice a části, které přidáte **návrhu** podokně. 
-* **Vlastnosti**: Zobrazí vlastnosti dlaždice nebo vybraných částí.
+* **Návrh**: Obsahuje vlastní zobrazení, které vytváříte nebo upravujete. 
+* **Ovládací prvky**: Obsahuje dlaždice a části, které přidáte do podokna **Návrh** . 
+* **Vlastnosti**: Zobrazí vlastnosti dlaždic nebo vybraných částí.
 
 ![Návrhář zobrazení](media/view-designer/view-designer-screenshot.png)
 
-### <a name="configure-the-view-tile"></a>Nakonfigurujte dlaždici zobrazení
-Vlastní zobrazení může mít pouze jednu dlaždici. Chcete-li zobrazit aktuální dlaždice nebo vyberte některý z alternativních, vyberte **dlaždici** kartu **ovládací prvek** podokně. **Vlastnosti** podokně se zobrazí vlastnosti aktuální dlaždice. 
+### <a name="configure-the-view-tile"></a>Konfigurovat dlaždici zobrazení
+Vlastní zobrazení může mít pouze jednu dlaždici. Chcete-li zobrazit aktuální dlaždici nebo vybrat jinou, vyberte v podokně **ovládací** okno kartu **dlaždice** . V podokně **vlastnosti** se zobrazí vlastnosti aktuální dlaždice. 
 
-Můžete nakonfigurovat vlastnosti dlaždice podle informací v [dlaždici odkaz](view-designer-tiles.md) a potom klikněte na tlačítko **použít** a uložte změny.
+Můžete nakonfigurovat vlastnosti dlaždice podle informací v [odkazu dlaždice](view-designer-tiles.md) a potom kliknutím na **použít** Uložit změny.
 
 ### <a name="configure-the-visualization-parts"></a>Konfigurovat části vizualizace
-Zobrazení může obsahovat libovolný počet části vizualizace. Chcete-li přidat součásti do zobrazení, vyberte **zobrazení** kartu a pak vyberte části vizualizace. **Vlastnosti** podokně se zobrazí vlastnosti vybrané části. 
+Zobrazení může obsahovat libovolný počet částí vizualizace. Chcete-li přidat části do zobrazení, vyberte kartu **zobrazení** a potom vyberte součást vizualizace. V podokně **vlastnosti** se zobrazí vlastnosti vybrané části. 
 
-Můžete nakonfigurovat vlastnosti zobrazení podle informací v [referenční informace k části vizualizace](view-designer-parts.md) a potom klikněte na tlačítko **použít** a uložte změny.
+Můžete nakonfigurovat vlastnosti zobrazení podle informací v [odkazu na součást vizualizace](view-designer-parts.md) a potom kliknutím na tlačítko **použít** Uložit změny.
 
-Zobrazení je k dispozici pouze jeden řádek z vizualizace částí. Existující části lze uspořádat přetažením do nového umístění.
+Zobrazení mají pouze jeden řádek částí vizualizace. Existující části můžete změnit jejich přetažením na nové místo.
 
-Části vizualizace můžete odebrat ze zobrazení tak, že vyberete **X** v horní části přímo z část.
+Část vizualizace můžete ze zobrazení odebrat výběrem **X** v pravém horním rohu části.
 
 
 ### <a name="menu-options"></a>Možnosti nabídky
-Možnosti práce se zobrazeními v režimu úprav jsou popsány v následující tabulce.
+Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následující tabulce.
 
-![Upravit nabídku](media/view-designer/edit-menu.png)
+![Nabídka upravit](media/view-designer/edit-menu.png)
 
 | Možnost | Popis |
 |:--|:--|
-| Uložení        | Uloží změny a zavře zobrazení. |
-| Zrušit      | Zruší změny a zavře zobrazení. |
+| Uložit        | Uloží změny a zavře zobrazení. |
+| Zrušit      | Zahodí vaše změny a zavře zobrazení. |
 | Odstranit zobrazení | Odstraní zobrazení. |
-| Export      | Exportuje zobrazení tak, aby [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) , který můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a nemá *omsview* rozšíření. |
-| Import      | Importuje *omsview* soubor, který jste vyexportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávající zobrazení. |
-| Klon       | Vytvoří nové zobrazení a otevře v zobrazení návrhu. Název nového zobrazení je stejný jako původní název, ale s *kopírování* připojí k němu. |
+| Export      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
+| Import      | Importuje soubor *omsview* , který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávajícího zobrazení. |
+| Klon       | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným kopírováním. |
 
-## <a name="next-steps"></a>Další postup
-* Přidat [dlaždice](view-designer-tiles.md) do vlastních zobrazení.
-* Přidat [části vizualizace](view-designer-parts.md) do vlastních zobrazení.
+## <a name="next-steps"></a>Další kroky
+* Přidejte [dlaždice](view-designer-tiles.md) do vlastního zobrazení.
+* Přidejte do vlastního zobrazení [části vizualizace](view-designer-parts.md) .

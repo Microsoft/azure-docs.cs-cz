@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558636"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050610"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují umístit jakékoli prostředky Azure do sítě, ve které není Internet směrovatelné, ke kterým budete mít přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -140,7 +140,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 + **Předávání SMTP**: Odchozí připojení k síti pro přenos SMTP, které se řeší v rámci `smtpi-co1.msn.com`hostitele `smtpi-ch1.msn.com` `smtpi-db3.msn.com`, `smtpi-sin.msn.com` , a`ies.global.microsoft.com`
 
-+ **CAPTCHA portálu pro vývojáře**: Odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v rámci `client.hip.live.com`hostitele.
++ **CAPTCHA portálu pro vývojáře**: Odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v `client.hip.live.com` hostitelích `partner.hip.live.com`a.
 
 + **Diagnostika Azure Portal**: Pokud chcete povolit tok diagnostických protokolů z Azure Portal při použití rozšíření API Management v rámci Virtual Network, je vyžadován odchozí přístup k `dc.services.visualstudio.com` portu 443. To pomáhá při řešení problémů, se kterými se můžete setkat při používání rozšíření.
 

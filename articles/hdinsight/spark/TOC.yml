@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Porovnání možností úložiště
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru

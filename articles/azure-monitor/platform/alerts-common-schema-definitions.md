@@ -1,6 +1,6 @@
 ---
-title: Běžné definice upozornění schémat pro Webhooky a Logic Apps nebo Azure funkce/automatizace sady Runbook
-description: Vysvětlení běžných definice upozornění schémat pro Webhooky a Logic Apps nebo Azure funkce/automatizace sady Runbook
+title: Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky
+description: Porozumění běžným definicím schématu výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: c37ecfbadd7345fea347ff488895f16ba505c818
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594383"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034806"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
-Tento článek popisuje [běžné definice upozornění schémat](https://aka.ms/commonAlertSchemaDocs) pro Webhooky a Logic Apps nebo Azure funkce/automatizace sady Runbook. 
+Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Webhooky/Runbooky Logic Apps/Azure Functions/Automation. 
 
 ## <a name="overview"></a>Přehled
 
-Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **příčiny výstrahy**, a tyto instance jsou popsané ve společném schématu v následujících částech:
-* **Základy**: Sada **standardizované pole**běžného napříč všemi typy výstrah, které popisují **jaký prostředek** je výstrahy v společně s další běžné výstrah metadata (například závažnost nebo popis). 
-* **Kontext výstrahy**: Sadu polí, které popisují **způsobit, že výstrahy**, vložením polí, která se liší **podle typu výstrahy**. Upozornění na metriku by například mít pole, jako jsou název metriky a hodnota metriky v kontextu výstrahy, že upozornění protokolu aktivit, bude mít informace o události, které upozornění vygenerovalo. 
+Jakákoli instance výstrahy popisuje **prostředek, který byl ovlivněn** , a **příčinu výstrahy**. tyto instance jsou popsány v běžném schématu v následujících částech:
+* **Základy**: Sada standardizovaných **polí**společných pro všechny typy výstrah, které popisují, k **jakým prostředkům** se tato výstraha používá společně s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
+* **Kontext výstrahy**: Sada polí, která popisují příčinu **výstrahy**, s poli, která se liší **v závislosti na typu výstrahy**. Například výstraha metriky by měla obsahovat pole jako název metriky a hodnotu metriky v kontextu výstrahy, zatímco výstraha protokolu aktivit by měla obsahovat informace o události, která výstrahu vygenerovala. 
 
-##### <a name="sample-alert-payload"></a>Ukázkovou datovou část výstrahy
+##### <a name="sample-alert-payload"></a>Ukázková datová část výstrahy
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,23 +74,23 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
-## <a name="essentials-fields"></a>Pole 'essentials.
+## <a name="essentials-fields"></a>Pole Essentials
 
 | Pole | Popis|
 |:---|:---|
-| alertId | Identifikátor GUID jedinečným způsobem identifikuje instanci výstrahy. |
-| alertRule | Název pravidla výstrahy, které vygenerovalo instanci výstrahy. |
-| severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Identifikuje signál, na kterém byl definován pravidlo upozornění. Možné hodnoty: Metriky protokolů, protokolu aktivit |
-| monitorCondition | Když se aktivuje upozornění, stav monitorování výstraha nastavena na "Fired". Pokud základní stav, který způsobil výstrahu, kterou chcete aktivovat vymaže, stav monitorování nastavena na "Vyřešeno".   |
-| monitoringService | Monitorování služby nebo řešení, které upozornění vygenerovalo. Služba monitorování vyplývají z pole pro kontext výstrahy. |
-| alertTargetIds | Seznam cílů ARM ID všech ovlivněných výstrahy. Upozornění na protokol definované v pracovním prostoru Log Analytics nebo instanci Application Insights je příslušné pracovní prostor/aplikace. |
-| originAlertId | ID instance výstrahy jako nevygenerovala služba monitorování jej generuje. |
-| firedDateTime | Když se vyvolala instanci výstrahy ve standardu UTC, datum a čas |
-| resolvedDateTime | Pokud se stav monitorování pro instanci výstrahy nastavená na "Vyřešeno" ve standardu UTC, datum čas. Aktuálně platí jenom pro upozornění na metriku.|
-| description | Popis, jak je definováno v pravidle výstrahy |
-|essentialsVersion| Číslo verze částí základní údaje.|
-|alertContextVersion | Číslo verze pro oddíl alertContext |
+| alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy |
+| alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
+| severity | Závažnost výstrahy Možné hodnoty: Sev0, Sev1, Sev2, Sev3, Sev4 |
+| signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: Metrika, protokol, protokol aktivit |
+| monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na aktivováno. Pokud je podkladová podmínka, která způsobila výstrahu, vyhodnocena jako nejasná, je stav monitorování nastaven na hodnotu "Vyřešeno".   |
+| monitoringService | Služba monitorování nebo řešení, které výstrahu vygenerovalo. Pole pro kontext výstrahy určuje služba monitorování. |
+| alertTargetIds | Seznam ID ARM všech ovlivněných cílů výstrahy. Pro výstrahu protokolu definovanou v Log Analytics pracovním prostoru nebo v Application Insights instance se jedná o příslušný pracovní prostor nebo aplikaci. |
+| originAlertId | ID instance výstrahy vygenerované službou monitorování, kterou vygenerovala. |
+| firedDateTime | Datum a čas, kdy byla instance výstrahy vyvolána v UTC |
+| resolvedDateTime | Datum a čas, kdy je podmínka monitorování instance výstrahy nastavena na hodnotu vyřešený v UTC. V současné době platí jenom pro výstrahy metriky.|
+| description | Popis definovaný v pravidle výstrahy |
+|essentialsVersion| Číslo verze oddílu základy|
+|alertContextVersion | Číslo verze oddílu alertContext |
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -114,11 +114,11 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
-## <a name="alert-context-fields"></a>Pole "kontext výstrahy.
+## <a name="alert-context-fields"></a>Pole kontext výstrahy
 
-### <a name="metric-alerts"></a>Upozornění metrik
+### <a name="metric-alerts"></a>Upozornění metriky
 
-#### <a name="monitoringservice--platform"></a>monitoringService = "platformy.
+#### <a name="monitoringservice--platform"></a>monitoringService = Platform
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -151,13 +151,13 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
-### <a name="log-alerts"></a>Upozornění protokolů
+### <a name="log-alerts"></a>Výstrahy protokolu
 
 > [!NOTE]
-> + Upozornění protokolů, kde byl definován vlastní datovou část JSON povolení ve společném schématu produktu se vraťte schématu datové části je popsáno níže.
-> + Výstrahy se společným schématem povolený mají limit horní velikost 256 kB k výstraze. **Výsledky hledání nejsou součástí datové části výstrahy protokolu pokud způsobují upozornění velikost mezi touto prahovou hodnotou.** To se dá určit tak, že zkontrolujete příznak "IncludedSearchResults". Ve scénářích, kde nejsou zahrnuty výsledky hledání, doporučujeme použít ve spojení s vyhledávací dotaz [rozhraní API služby Log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> + V případě výstrah protokolu, kde byla definována vlastní datová část JSON, je povolením společného schématu obnoveno schéma datové části na hodnotu, která je popsána níže.
+> + Výstrahy s povoleným společným schématem mají omezení horní velikosti 256KB na výstrahu. **Výsledky hledání nejsou vloženy do datové části upozornění protokolu, pokud způsobí velikost výstrahy pro překročení této prahové hodnoty.** To lze určit zaškrtnutím příznaku ' IncludedSearchResults '. Ve scénářích, kdy nejsou zahrnuty výsledky hledání, doporučujeme použít vyhledávací dotaz ve spojení s [rozhraním Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics.
+#### <a name="monitoringservice--log-analytics"></a>monitoringService = ' Log Analytics '
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -224,7 +224,7 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = 'Application Insights'
+#### <a name="monitoringservice--application-insights"></a>monitoringService = ' Application Insights '
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -289,7 +289,7 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 
 ### <a name="activity-log-alerts"></a>Upozornění protokolu aktivit
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = "protokol aktivit – pro správu.
+#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = ' protokol aktivit – Správa '
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -316,22 +316,118 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = ' protokol aktivit – zásada '
+
+##### <a name="sample-values"></a>Ukázkové hodnoty
+```json
+{
+  "alertContext": {
+    "authorization": {
+      "action": "Microsoft.Resources/checkPolicyCompliance/read",
+      "scope": "/subscriptions/<GUID>"
+    },
+    "channels": "Operation",
+    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "caller": "<GUID>",
+    "correlationId": "<GUID>",
+    "eventSource": "Policy",
+    "eventTimestamp": "2019-08-25T11:11:34.2269098+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Warning",
+    "operationName": "Microsoft.Authorization/policies/audit/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "isComplianceCheck": "True",
+      "resourceLocation": "eastus2",
+      "ancestors": "<GUID>",
+      "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
+    },
+    "status": "Succeeded",
+    "subStatus": "",
+    "submissionTimestamp": "2019-08-25T11:12:46.1557298+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = ' protokol aktivit – automatické škálování '
+
+##### <a name="sample-values"></a>Ukázkové hodnoty
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "claims": "{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"}",
+    "caller": "Microsoft.Insights/autoscaleSettings",
+    "correlationId": "<GUID>",
+    "eventSource": "Autoscale",
+    "eventTimestamp": "2019-08-21T16:17:47.1551167+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Insights/AutoscaleSettings/Scaleup/Action",
+    "operationId": "<GUID>",
+    "properties": {
+      "description": "The autoscale engine attempting to scale resource '/subscriptions/d<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS' from 9 instances count to 10 instances count.",
+      "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
+      "oldInstancesCount": "9",
+      "newInstancesCount": "10",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
+    },
+    "status": "Succeeded",
+    "submissionTimestamp": "2019-08-21T16:17:47.2410185+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---security"></a>monitoringService = ' protokol aktivit – zabezpečení '
+
+##### <a name="sample-values"></a>Ukázkové hodnoty
+```json
+{
+  "alertContext": {
+    "channels": "Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "Security",
+    "eventTimestamp": "2019-08-26T08:34:14+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Security/locations/alerts/activate/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "threatStatus": "Quarantined",
+      "category": "Virus",
+      "threatID": "2147519003",
+      "filePath": "C:\\AlertGeneration\\test.eicar",
+      "protectionType": "Windows Defender",
+      "actionTaken": "Blocked",
+      "resourceType": "Virtual Machine",
+      "severity": "Low",
+      "compromisedEntity": "testVM",
+      "remediationSteps": "[\"No user action is necessary\"]",
+      "attackedResourceType": "Virtual Machine"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-08-26T09:28:58.3019107+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--servicehealth"></a>monitoringService = ' ServiceHealth '
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
 {
   "alertContext": {
     "authorization": null,
-    "channels": "Admin",
+    "channels": 1,
     "claims": null,
     "caller": null,
     "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
-    "eventSource": "ServiceHealth",
+    "eventSource": 2,
     "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
     "httpRequest": null,
     "eventDataId": "<GUID>",
-    "level": "Informational",
+    "level": 3,
     "operationName": "Microsoft.ServiceHealth/maintenance/action",
     "operationId": "<GUID>",
     "properties": {
@@ -355,11 +451,12 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
     },
     "status": "Active",
     "subStatus": null,
-    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00"
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00",
+    "ResourceType": null
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = "Resource Health.
+#### <a name="monitoringservice--resource-health"></a>monitoringService = ' Resource Health '
 
 ##### <a name="sample-values"></a>Ukázkové hodnoty
 ```json
@@ -388,8 +485,8 @@ Popisuje instanci jakékoli výstrahy **prostředek, který ovlivněných** a **
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Další informace o ve společném schématu produktu výstrah](https://aka.ms/commonAlertSchemaDocs)
-- [Zjistěte, jak vytvořit aplikaci logiky, které využívá připojení ve společném schématu produktu výstrah pro zpracování všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Další informace o běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs)
+- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 

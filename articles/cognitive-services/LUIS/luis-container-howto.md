@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563896"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050077"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
  
@@ -200,7 +200,7 @@ Pokud si chcete stáhnout vyškolený balíček, přečtěte si [tady dokumentac
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Příkaz používá následující parametry:
 
-| Zástupný symbol | Hodnota |
+| Zástupný symbol | Value |
 |-------------|-------|
 |{API_KEY} | Tento klíč se používá ke spuštění kontejneru. Nepoužívejte počáteční klíč. |
 |{ENDPOINT_URI} | Hodnota koncového bodu je k dispozici na `Cognitive Services` stránce Přehled Azure Portal. |
@@ -248,7 +248,7 @@ V kontejneru jsou k dispozici verze rozhraní API v2 i [V3 (Preview)](luis-migra
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. Koncové body pro publikované (pracovní nebo produkční) aplikace mají _jinou_ trasu než koncové body pro školené aplikace. 
 
-Pro rozhraní API kontejneru `https://localhost:5000`použijte hostitele. 
+Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele. 
 
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|
@@ -274,7 +274,7 @@ curl -X GET \
 "http://localhost:5000/luis/v2.0/apps/{APPLICATION_ID}?q=turn%20on%20the%20lights&staging=false&timezoneOffset=0&verbose=false&log=true" \
 -H "accept: application/json"
 ```
-Chcete-li provést dotazy  do přípravného prostředí, změňte hodnotu parametru řetězce **pracovního** dotazu na hodnotu true: 
+Chcete-li provést dotazy do přípravného prostředí, změňte hodnotu parametru řetězce **pracovního** dotazu na hodnotu true: 
 
 `staging=true`
 
@@ -337,7 +337,7 @@ Nejnovější kontejner vydaný v 2019 Build bude podporovat:
 
 Pokud vaše aplikace LUIS obsahuje nepodporované závislosti, nebudete moct [Exportovat pro kontejner](#export-packaged-app-from-luis) , dokud neodeberete nepodporované funkce. Při pokusu o export do kontejneru nahlásí portál LUIS nepodporované funkce, které je třeba odebrat.
 
-Aplikaci LUIS můžete použít, pokud **neobsahuje žádnou z** následujících závislostí:
+Aplikaci LUIS můžete použít, pokud neobsahuje žádnou z následujících závislostí:
 
 Nepodporované konfigurace aplikací|Podrobnosti|
 |--|--|
@@ -363,7 +363,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instal
 > [!IMPORTANT]
 > Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data (například obrázek nebo analyzovaný text) společnosti Microsoft.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Kontrola [konfigurace kontejnery](luis-container-configuration.md) nastavení konfigurace
 * Problémy související s LUIS funkcemi najdete v tématu [řešení potíží](troubleshooting.md) .

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369539"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036125"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -82,7 +82,7 @@ ThinPrint je poskytovatel služeb s přidanými hodnotami pro virtuální počí
 ThinPrint řešení ezeep rozšiřuje hodnotu virtuální plochy Windows tím, že umožňuje připojení ke stávající podnikové infrastruktuře tisku. ezeep zajišťuje uživatelům kontrolu nad tiskem v podniku bez ohledu na to, kde jsou. Pomocí ezeep můžou uživatelé přemostění mezi virtuálními počítači s Windows a tiskovým hardwarem.
 
 - [Podívejte se na stručné řešení.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Přejít na web partnera.](http://www.ezeep.com/wvd-printing)
+- [Přejít na web partnera.](https://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 

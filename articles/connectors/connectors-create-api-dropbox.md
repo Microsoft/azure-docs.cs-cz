@@ -1,79 +1,75 @@
 ---
-title: Připojte se k Dropboxu – Azure Logic Apps
-description: Odesílat a spravovat soubory pomocí rozhraní REST API Dropboxu a Azure Logic Apps
+title: Připojení k Dropboxu – Azure Logic Apps
+description: Nahrávání a Správa souborů pomocí rozhraní REST API Dropboxu a Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e0689454ec074348fcbc775373a48d6825cfac4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60312535"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050975"
 ---
-# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Odesílat a spravovat soubory v Dropboxu pomocí Azure Logic Apps
+# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Nahrávání a Správa souborů v Dropboxu pomocí Azure Logic Apps
 
-Konektor Dropbox a Azure Logic Apps můžete vytvářet automatizované pracovní postupy, které odesílat a spravovat soubory v účtu Dropbox. 
+Pomocí konektoru Dropboxu a Azure Logic Apps můžete vytvářet automatizované pracovní postupy, které odesílají a spravují soubory ve vašem účtu Dropboxu. 
 
-Tento článek popisuje, jak se připojit k Dropboxu vaší aplikace logiky a pak přidejte Dropboxu **při vytvoření souboru** aktivační události nebo Dropbox **získat obsah souboru pomocí cesty** akce.
+Tento článek ukazuje, jak se připojit k Dropboxu z vaší aplikace logiky a pak přidat Dropbox **při vytvoření souboru a když** Dropbox **získá obsah souboru pomocí akce cesta** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* A [účtu Dropbox](https://www.dropbox.com/), které můžete se zaregistrovat zadarmo. Svoje přihlašovací údaje jsou nezbytné pro vytvoření připojení mezi vaší aplikace logiky a účtu Dropbox.
+* [Účet Dropboxu](https://www.dropbox.com/), který si můžete zaregistrovat zdarma. Přihlašovací údaje k účtu jsou nezbytné pro vytvoření připojení mezi vaší aplikací logiky a vaším účtem Dropbox.
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). V tomto příkladu je třeba prázdné aplikace logiky.
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) V tomto příkladu potřebujete prázdnou aplikaci logiky.
 
-## <a name="add-trigger"></a>Přidání triggeru
+## <a name="add-trigger"></a>Přidat trigger
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Pod vyhledávacím polem vyberte **všechny**. Do vyhledávacího pole zadejte jako filtr "dropboxu".
-Ze seznamu triggerů vyberte tento trigger: **Když se vytvoří soubor**
+1. V poli Hledat vyberte možnost **vše**. Do vyhledávacího pole zadejte jako filtr "Dropbox".
+V seznamu triggery vyberte tuto aktivační událost: **Při vytvoření souboru**
 
-   ![Vyberte trigger Dropboxu](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
+   ![Výběr triggeru Dropboxu](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
 
-1. Přihlaste se pomocí přihlašovacích údajů k účtu Dropbox a autorizaci přístupu k vašim datům Dropboxu pro Azure Logic Apps.
+1. Přihlaste se pomocí přihlašovacích údajů k účtu Dropboxu a udělte přístup k datům Dropboxu pro Azure Logic Apps.
 
-1. Zadejte požadované informace pro trigger. 
+1. Zadejte požadované informace pro aktivační událost. 
 
-   V tomto příkladu vyberte složku, ve které chcete sledovat vytváření souborů. Procházení složek, zvolte ikonu složky vedle **složky** pole.
+   V tomto příkladu vyberte složku, ve které chcete sledovat vytvoření souboru. Chcete-li procházet složky, klikněte na ikonu složky vedle pole **Složka** .
 
 ## <a name="add-action"></a>Přidat akci
 
 Teď přidejte akci, která získá obsah z libovolného nového souboru.
 
-1. Pod triggerem zvolte **další krok**. 
+1. V části Trigger klikněte na **Další krok**. 
 
-1. Pod vyhledávacím polem vyberte **všechny**. Do vyhledávacího pole zadejte jako filtr "dropboxu".
-Ze seznamu akcí vyberte tuto akci: **Získat obsah souboru pomocí cesty**
+1. V poli Hledat vyberte možnost **vše**. Do vyhledávacího pole zadejte jako filtr "Dropbox".
+V seznamu akce vyberte tuto akci: **Získání obsahu souboru pomocí cesty**
 
-1. Pokud již nejsou oprávnění Azure Logic Apps pro přístup k Dropboxu, autorizujete přístup k nyní.
+1. Pokud jste ještě nepovolili Azure Logic Apps přístup k Dropboxu, udělte se teď oprávnění k přístupu.
 
-1. Přejděte k souboru na cestě, kterou chcete použít, vedle položky **cesta k souboru** vyberte symbol tří teček ( **...** ) tlačítko. 
+1. Chcete-li přejít k cestě k souboru, kterou chcete použít, klikněte vedle pole **cesta k souboru** na tlačítko se třemi tečkami ( **...** ). 
 
-   Můžete také kliknout na uvnitř **cesta k souboru** a ze seznamu dynamického obsahu vyberte **cesta k souboru**, jehož hodnota je k dispozici jako výstup z aktivační události, které jste přidali v předchozí části.
+   Můžete také kliknout do pole **cesta k souboru** a ze seznamu dynamického obsahu vybrat možnost cesta k **souboru**, jejíž hodnota je k dispozici jako výstup z aktivační události, kterou jste přidali v předchozí části.
 
-1. Jakmile budete hotovi, uložte svou aplikaci logiky.
+1. Až budete hotovi, uložte aplikaci logiky.
 
-1. Pokud chcete aktivovat svou aplikaci logiky, vytvořte nový soubor v Dropboxu.
+1. Pokud chcete aktivovat aplikaci logiky, vytvořte nový soubor v Dropboxu.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru OpenAPI (dříve Swagger) souboru, najdete v článku [konektoru referenční stránce](/connectors/dropbox/).
-
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/dropbox/).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

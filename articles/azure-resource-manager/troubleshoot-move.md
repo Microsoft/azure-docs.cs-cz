@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624306"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035518"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunutím prostředků Azure do nové skupiny prostředků nebo předplatného
 
@@ -43,7 +43,9 @@ Pokud je to možné, přerušení velké přesune do operací přesunu samostatn
 
 ## <a name="resource-not-in-succeeded-state"></a>Prostředek není v úspěšném stavu.
 
-Pokud se zobrazí chybová zpráva s informacemi o tom, že prostředek nelze přesunout, protože není v úspěšném stavu, může se jednat o závislý prostředek, který tento přesun blokuje. Viz [stav závislých prostředků](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+Když se zobrazí chybová zpráva s informacemi o tom, že prostředek nelze přesunout, protože není v úspěšném stavu, může se jednat o závislý prostředek, který tento přesun blokuje.
+
+Pokud zdrojová nebo cílová skupina prostředků obsahuje virtuální síť, při přesunu se zkontrolují stavy všech závislých prostředků pro virtuální síť. Pokud některý z těchto prostředků je ve stavu selhání, přesun se zablokuje. Pokud třeba virtuální počítač, který používá virtuální síť, selhal, přesun se zablokuje. Přesunutí je blokováno i v případě, že virtuální počítač není jedním z přesouvaných prostředků a není v jedné ze skupin prostředků pro přesunutí. Pokud se chcete tomuto problému vyhnout, přesuňte prostředky do skupiny prostředků, která nemá virtuální síť.
 
 ## <a name="next-steps"></a>Další postup
 

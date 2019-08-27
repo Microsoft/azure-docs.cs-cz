@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900106"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033223"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Vytvoření nové nabídky Dynamics 365 for Operations
 
@@ -339,11 +339,11 @@ Možnost **výpisu na webu Marketplace** , která se nachází na kartě **testo
 
 ## <a name="supplemental-content"></a>Doplňkový obsah
 
-Tato stránka vám umožní zadat další požadované informace o vaší nabídce.
+Tato stránka vám umožní zadat další informace o vaší nabídce, které nám pomůžou vaši nabídku ověřit. Tyto informace se zákazníkům nezobrazují ani nepublikují na webu Marketplace.
 
-### <a name="validation-assets"></a>Assety ověřování
+### <a name="validation-assets"></a>Prostředky ověřování
 
-V této části je nutné nahrát sestavu analýzy přizpůsobení (auto). Tato sestava je vygenerována analýzou modelů přizpůsobení a rozšíření na základě předdefinované sady pravidel osvědčených postupů.
+V této části je nutné nahrát [sestavu analýzy přizpůsobení (auto)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) . Tato sestava je vygenerována analýzou modelů přizpůsobení a rozšíření na základě předdefinované sady pravidel osvědčených postupů.
 
 Tento soubor musí být ve formátu. xls nebo. xlsx. Pokud máte více než jednu sestavu, můžete nahrát soubor. zip obsahující všechny sestavy.
 
@@ -370,6 +370,6 @@ Pokud tuto nabídku publikujete poprvé, můžete:
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra a vybrali možnost pro publikování nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](./update-existing-offer.md)

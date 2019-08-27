@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/16/2019
-ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575789"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035773"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -280,6 +280,9 @@ Při nastavování skupiny převzetí služeb při selhání mezi primárními a
 
 7. Sekundární instance je nakonfigurovaná se správným ID zóny DNS. Zóna DNS je vlastnost spravované instance a její ID je zahrnuté v adrese názvu hostitele. ID zóny se generuje jako náhodný řetězec, když se v každé virtuální síti vytvoří první spravovaná instance a stejné ID se přiřadí ke všem ostatním instancím ve stejné podsíti. Po přiřazení se zóna DNS nedá změnit. Spravované instance zahrnuté do stejné skupiny převzetí služeb při selhání musí sdílet zónu DNS. Toho dosáhnete tak, že při vytváření sekundární instance předáte ID zóny primární instance jako hodnotu parametru DnsZonePartner. 
 
+   > [!NOTE]
+   > Podrobný kurz týkající se konfigurace skupin převzetí služeb při selhání pomocí spravované instance najdete v tématu [Přidání spravované instance do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md).
+
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade nebo downgrade primární databáze
 
 Primární databázi můžete upgradovat nebo downgradovat na jinou výpočetní velikost (v rámci stejné úrovně služby, ne mezi Pro obecné účely a Pro důležité obchodní informace), aniž byste museli odpojit sekundární databáze. Při upgradu doporučujeme nejdřív upgradovat všechny sekundární databáze a potom upgradovat primární. Když se downgrade, obrátí se pořadí: nejprve nastavte downgrade primární databáze a pak vytvořte downgrade všech sekundárních databází. Když provedete upgrade nebo downgrade databáze na jinou úroveň služby, toto doporučení se vynutilo.
@@ -376,7 +379,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte skupinu převzetí služeb při selhání. |
 | [Seznam skupin převzetí služeb při selhání – seznam podle umístění](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Podrobné pokyny najdete v tématu.
     - [Přidání jedné databáze do skupiny převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md)

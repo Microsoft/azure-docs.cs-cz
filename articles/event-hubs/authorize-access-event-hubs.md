@@ -1,5 +1,5 @@
 ---
-title: Autorizace přístupu k Azure Event Hubs
+title: Autorizace přístupu ke službě Azure Event Hubs
 description: Tento článek poskytuje informace o různých možnostech pro autorizaci přístupu k prostředkům Azure Event Hubs.
 services: event-hubs
 ms.service: event-hubs
@@ -8,14 +8,14 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9847f2f51da57526f84a7fcb3929e95ae267546c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992546"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035872"
 ---
-# <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu k Azure Event Hubs
+# <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 
 
 Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k zabezpečeným prostředkům:
@@ -23,7 +23,10 @@ Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k z
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Integrace služby Azure Active Directory (Azure AD) pro prostředky Event Hubs poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Event Hubs.
 
-Další informace o ověřování ve službě Azure AD najdete v tématu [ověřování požadavků do azure Event Hubs pomocí Azure Active Directory](authenticate-application.md). Další informace o autorizaci se službou Azure AD najdete v tématu [autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md).
+Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
+
+- [Ověřování požadavků do Azure Event Hubs pomocí Azure Active Directory](authenticate-application.md)
+- [Autorizujte přístup k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md).
 
 ## <a name="share-access-signatures"></a>Sdílení přístupových podpisů 
 Sdílené přístupové podpisy (SAS) pro prostředky Event Hubs poskytují omezený delegovaný přístup k prostředkům Event Hubs. Přidávání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě prostředků. Další informace najdete v tématu [ověřování pomocí sdílených přístupových podpisů (SAS)](authenticate-shared-access-signature.md). 

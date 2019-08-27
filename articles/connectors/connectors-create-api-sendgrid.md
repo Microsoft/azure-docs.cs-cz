@@ -1,6 +1,6 @@
 ---
-title: Připojení k Sendgridu v Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovních postupů, které odesílání e-mailů a spravovat seznamy adresátů SendGrid pomocí Azure Logic Apps
+title: Připojte se k SendGrid z Azure Logic Apps | Microsoft Docs
+description: Automatizace úloh a pracovních postupů, které odesílají e-maily a spravují poštovní seznamy v SendGrid pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,64 +11,64 @@ ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105730"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050811"
 ---
-# <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Odeslání e-mailů a spravovat seznamy adresátů SendGrid pomocí Azure Logic Apps
+# <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Posílání e-mailů a Správa poštovních seznamů v SendGrid pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektor SendGrid můžete vytvořit automatizovaných úloh a pracovních postupů, které odesílání e-mailů a spravovat vaše seznamy příjemců, například:
+Pomocí Azure Logic Apps a konektoru SendGrid můžete vytvářet automatizované úlohy a pracovní postupy, které odesílají e-maily a spravují seznamy příjemců, například:
 
-* Odeslání e-mailu.
-* Přidáte příjemce do seznamu.
-* Získat, přidávat a spravovat globálního potlačení.
+* Odeslat e-mail.
+* Přidejte příjemce do seznamů.
+* Získejte, přidejte a spravujte globální potlačení.
 
-SendGrid akce ve službě logic apps můžete použít k provedení těchto úloh. Také můžete mít další akce pomocí výstupu z akce SendGrid. 
+K provedení těchto úloh můžete použít akce SendGrid ve svých aplikacích logiky. Můžete také použít jiné akce výstup z akcí SendGrid. 
 
-Tento konektor zajišťuje jenom akce, takže ke spuštění aplikace logiky použít samostatné aktivační událost, například **opakování** aktivační události. Pokud pravidelně přidat příjemce do seznamů, můžete například odeslat e-mailu o příjemci a seznamy pomocí konektoru Office 365 Outlook nebo konektor Outlook.com.
-Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Tento konektor nabízí jenom akce, takže můžete spustit aplikaci logiky pomocí samostatné triggeru, jako je například Trigger **opakování** . Pokud například do seznamů často přidáte příjemce, můžete odeslat e-maily o příjemci a seznamech pomocí konektoru Office 365 Outlook Connector nebo konektoru Outlook.com.
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* A [účtu SendGrid](https://www.sendgrid.com/) a [klíč rozhraní API SendGrid](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
+* [Účet SendGrid](https://www.sendgrid.com/) a [klíč rozhraní SendGrid API](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
-   Klíč rozhraní API povolí aplikace logiky k vytvoření připojení a přístup k vašemu účtu SendGrid.
+   Klíč rozhraní API autorizuje vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu SendGrid.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu SendGrid. Použít akci SendGrid, spuštění aplikace logiky s jinou aktivační událost, například, **opakování** aktivační události.
+* Aplikace logiky, ke které chcete získat přístup k účtu SendGrid. Pokud chcete použít akci SendGrid, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
-## <a name="connect-to-sendgrid"></a>Připojení k Sendgridu
+## <a name="connect-to-sendgrid"></a>Připojení k SendGrid
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Zvolte cestu: 
+1. Zvolit cestu: 
 
-   * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+   * V posledním kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. 
 
      -nebo-
 
-   * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "sendgrid". V seznamu akcí vyberte požadovanou akci.
+1. Do vyhledávacího pole zadejte "SendGrid" jako filtr. V seznamu akce vyberte akci, kterou chcete.
 
 1. Zadejte název připojení. 
 
-1. Zadejte klíč rozhraní API SendGrid a klikněte na tlačítko **vytvořit**.
+1. Zadejte svůj klíč rozhraní API SendGrid a pak zvolte **vytvořit**.
 
-1. Zadejte potřebné podrobnosti pro vybranou akci a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybranou akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/sendgrid/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/sendgrid/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -77,4 +77,4 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -7,50 +7,54 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: absha
-ms.openlocfilehash: 7baadfb549b19bb12757c82d723578202b5cf8ad
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 4b233117bc0f967368aeac7baec8c4875aa16826
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347877"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051423"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Řešení potíží s App Service v Application Gateway
 
-Naučte se diagnostikovat a řešit problémy zjištěné při použití aplikačního serveru jako cíle back-endu s Application Gateway
+Naučte se diagnostikovat a řešit problémy, se kterými se můžete setkat při použití Azure App Service jako cíle back-endu s využitím Azure Application Gateway.
 
 ## <a name="overview"></a>Přehled
 
 V tomto článku se dozvíte, jak řešit následující problémy:
 
 > [!div class="checklist"]
-> * Adresa URL App Service, která se zveřejňuje v prohlížeči v případě, že dojde k přesměrování
-> * App Service doména souborů cookie ARRAffinity nastavenou na App Service název hostitele (example.azurewebsites.net) místo původního hostitele.
+> * Adresa URL služby App Service se zveřejňuje v prohlížeči, když dojde k přesměrování.
+> * Doména souborů cookie ARRAffinity App Service je nastavená na název hostitele App Service (example.azurewebsites.net) místo původního hostitele.
 
-Když aplikace back-end pošle odezvu přesměrování, může být vhodné přesměrovat klienta na jinou adresu URL, než která je určena v back-endové aplikaci. Můžete to třeba udělat, když je služba App Service hostována za aplikační bránou a vyžaduje, aby klient provedl přesměrování na jeho relativní cestu. (Například přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2.) Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Proto klient provede požadavek přímo na contoso.azurewebsites.net/path2 namísto průchodu přes Aplikační bránu (contoso.com/path2). Obcházení aplikační brány není žádoucí.
+Když aplikace back-end pošle odezvu přesměrování, může být vhodné přesměrovat klienta na jinou adresu URL, než která je určena v back-endové aplikaci. To může být vhodné, pokud je služba App Service hostována za aplikační bránou a vyžaduje, aby klient provedl přesměrování na jeho relativní cestu. Příkladem je přesměrování z contoso.azurewebsites.net/path1 na contoso.azurewebsites.net/path2. 
+
+Když služba App Service pošle odezvu přesměrování, používá stejný název hostitele v hlavičce umístění odpovědi jako v žádosti, kterou přijímá z aplikační brány. Například klient provede požadavek přímo na contoso.azurewebsites.net/path2 místo průchodu contoso.com/path2 služby Application Gateway. Nechcete bránu Application Gateway obejít.
 
 K tomuto problému může dojít z následujících hlavních důvodů:
 
-- Nakonfigurovali jste přesměrování na App Service. Přesměrování může být stejně jednoduché jako přidání koncového lomítka do požadavku.
-- Máte ověřování Azure AD, které způsobuje přesměrování.
+- Ve službě App Service jste nakonfigurovali přesměrování. Přesměrování může být stejně jednoduché jako přidání koncového lomítka do požadavku.
+- Máte Azure Active Directory ověřování, což způsobí přesměrování.
 
-Pokud používáte App Services za Application Gateway, název domény přidružené k Application Gateway (example.com) se liší od názvu domény App Service (říká example.azurewebsites.net), protože si všimnete, že Hodnota domény pro soubor cookie ARRAffinity nastavená App Service bude mít název domény "example.azurewebsites.net", který není žádoucí. Původní název hostitele (example.com) by měl být hodnota názvu domény v souboru cookie.
+I když používáte App Services za aplikační bránou, název domény přidružený k aplikační bráně (example.com) se liší od názvu domény služby App Service (například example.azurewebsites.net). Hodnota domény pro soubor cookie ARRAffinity nastavená službou App Service přenáší název domény example.azurewebsites.net, což není žádoucí. Původní název hostitele example.com by měl být hodnota názvu domény v souboru cookie.
 
 ## <a name="sample-configuration"></a>Ukázková konfigurace
 
 - Naslouchací proces HTTP: Basic nebo Multi-Site
-- Fond back-end adres: App Service
-- Nastavení HTTP: "Výběr názvu hostitele z back-endu adresy" povolen
-- Testu "Výběr názvu hostitele z nastavení HTTP" povoleno
+- Fond back-endové adresy: App Service
+- Nastavení HTTP: **Vybrat název hostitele z back-endu adresy** povoleno
+- Testu **Vyberte název hostitele z nastavení http** povoleno.
 
 ## <a name="cause"></a>Příčina
 
-Vzhledem k tomu, že App Service je víceklientské služba, používá v žádosti hlavičku hostitele ke směrování požadavku na správný koncový bod. Výchozí název domény služby App Services, *. azurewebsites.net (říká contoso.azurewebsites.net), se ale liší od názvu domény služby Application Gateway (řekněme contoso.com). Vzhledem k tomu, že původní požadavek od klienta má název domény služby Application Gateway (contoso.com) jako název hostitele, je třeba nakonfigurovat službu Application Gateway tak, aby při směrování požadavku na název hostitele služby App Service změnila název hostitele v původní žádosti na hostitele. back-end služby App Service.  Dosáhnete toho použitím přepínače "vybrat název hostitele z back-endu adresy" v konfiguraci nastavení HTTP Application Gateway a přepínač "vybrat název hostitele z nastavení HTTP back-endu" v konfiguraci sondy stavu.
+App Service je víceklientská služba, takže používá hlavičku hostitele v žádosti ke směrování požadavku do správného koncového bodu. Výchozí název domény App Services, *. azurewebsites.net (například contoso.azurewebsites.net), se liší od názvu domény služby Application Gateway (říká se contoso.com). 
+
+Původní požadavek od klienta má jako název hostitele název domény služby Application Gateway (contoso.com). Službu Application Gateway musíte nakonfigurovat tak, aby při směrování žádosti do back-endu služby App Service změnila název hostitele v původní žádosti na název hostitele App Service. V konfiguraci nastavení HTTP služby Application Gateway použijte přepínač **Vybrat název hostitele z back-endu adresy** . V konfiguraci testu stavu použijte přepínač **Vybrat název hostitele z nastavení http back-endu** .
 
 
 
-![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
+![Aplikační brána změní název hostitele](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-Z tohoto důvodu, když App Service provede přesměrování, používá přepsaný název hostitele "contoso.azurewebsites.net" v hlavičce umístění namísto původního názvu hostitele "contoso.com", pokud není nakonfigurováno jinak. V níže uvedeném příkladu můžete zaškrtnout následující hlavičky žádosti a odpovědi.
+Když služba App Service přesměruje, použije přepsaný název hostitele contoso.azurewebsites.net v hlavičce umístění místo původního názvu hostitele contoso.com, pokud není nakonfigurovaný jinak. Podívejte se na následující příklady hlaviček požadavků a odpovědí.
 ```
 ## Request headers to Application Gateway:
 
@@ -72,43 +76,43 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-V předchozím příkladu si všimněte, že hlavička odpovědi má stavový kód 301 pro přesměrování a záhlaví umístění má název hostitele App Service místo původního názvu hostitele "www.contoso.com".
+V předchozím příkladu si všimněte, že hlavička odpovědi má stavový kód 301 pro přesměrování. Hlavička umístění má místo původního názvu hostitele www.contoso.com název hostitele App Service.
 
-## <a name="solution-rewrite-the-location-header"></a>Řešení: Přepsat hlavičku umístění
+## <a name="solution-rewrite-the-location-header"></a>Řešení Přepsat hlavičku umístění
 
-Název hostitele budete muset nastavit v hlavičce umístění na název domény služby Application Gateway. Provedete to tak, že vytvoříte [pravidlo přepsání](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.NET a provede akci pro přepsání hlavičky umístění, která má název hostitele aplikační brány.  Projděte si pokyny, [jak přepsat hlavičku umístění](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
+Nastavte název hostitele v hlavičce umístění na název domény služby Application Gateway. Provedete to tak, že vytvoříte [pravidlo přepsání](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.NET. Musí také provést akci, která přepíše hlavičku umístění, aby měl název hostitele služby Application Gateway. Další informace najdete v pokynech k [přepsání hlavičky umístění](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
 
 > [!NOTE]
-> Podpora přepisování hlaviček protokolu HTTP je k dispozici pouze pro Application Gateway [SKU Standard_V2 a WAF_v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) . V případě, že používáte SKU V1, důrazně doporučujeme, abyste provedli [migraci z verze V1 na verzi v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2) , aby bylo možné používat přepis a další [Pokročilé možnosti](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) dostupné s SKU verze 2.
+> Podpora přepisování hlaviček HTTP je dostupná jenom pro Application Gateway [SKU Standard_v2 a WAF_v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) . Pokud používáte SKU V1, doporučujeme [migrovat z verze V1 na verzi v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). Chcete použít přepis a další [Pokročilé funkce](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) , které jsou k dispozici s SKU v2.
 
-## <a name="alternate-solution-use-app-services-custom-domain-instead-of-default-domain-name"></a>Alternativní řešení: Místo výchozího názvu domény použijte vlastní doménu App Service.
+## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativní řešení: Použít vlastní název domény
 
-Pokud používáte SKU verze V1, nebudete moci přepsat hlavičku umístění, protože tato funkce je k dispozici pouze pro SKU v2. Proto je potřeba předat stejný název hostitele, který Application Gateway obdrží App Service a místo toho, aby se provádělo přepsání hostitele, aby bylo možné problém s přesměrováním vyřešit.
+Pokud použijete SKU V1, nemůžete přepsat hlavičku umístění. Tato funkce je k dispozici pouze pro SKU v2. Chcete-li vyřešit problém s přesměrováním, předejte stejný název hostitele, který služba Application Gateway přijímá službě App Service, a nikoli přepsání hostitele.
 
-Jakmile to uděláte, App Service provede přesměrování (pokud existuje) ve stejné původní hlavičce hostitele, která odkazuje na Application Gateway a ne na svou vlastní.
+App Service teď provádí přesměrování (pokud existuje) ve stejné původní hlavičce hostitele, která odkazuje na aplikační bránu, a ne na svou vlastní.
 
-Chcete-li toho dosáhnout, musíte vlastnit vlastní doménu a postupovat podle níže uvedeného postupu.
+Musíte vlastnit vlastní doménu a postupovat podle tohoto postupu:
 
-- Zaregistrujte doménu do seznamu vlastních domén App Service. V takovém případě musíte mít v vlastní doméně záznam CNAME odkazující na plně kvalifikovaný název domény App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+- Zaregistrujte doménu do seznamu vlastních domén služby App Service. V vlastní doméně musíte mít záznam CNAME, který odkazuje na plně kvalifikovaný název domény služby App Service. Další informace najdete v tématu [Mapování existujícího vlastního názvu DNS na Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
 
-![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+    ![Seznam vlastních domén služby App Service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Až to bude hotové, App Service je připravený přijmout název hostitele "www.contoso.com". Teď změňte položku CNAME v DNS tak, aby odkazovala zpátky na plně kvalifikovaný název domény Application Gateway. Například "appgw.eastus.cloudapp.azure.com".
+- Vaše služba App Service je připravena přijmout název hostitele www.contoso.com. Změňte položku CNAME v DNS tak, aby odkazovala zpátky na plně kvalifikovaný název domény služby Application Gateway, například appgw.eastus.cloudapp.azure.com.
 
-- Ujistěte se, že se vaše doména "www.contoso.com" překládá na plně kvalifikovaný název domény Application Gateway v případě, že provedete dotaz DNS.
+- Ujistěte se, že se doména www.contoso.com překládá na plně kvalifikovaný název domény služby Application Gateway, když provedete dotaz DNS.
 
-- Nastavením vlastního testu zakážete možnost "vybrat název hostitele z back-endu HTTP nastavení". To lze provést z portálu zrušením zaškrtnutí políčka v nastavení sondy a v PowerShellu tak, že v příkazu set-AzApplicationGatewayProbeConfig nepoužijete přepínač-PickHostNameFromBackendHttpSettings. Do pole název hostitele testu zadejte plně kvalifikovaný název domény App Service example.azurewebsites.net, protože požadavky testu odeslané z Application Gateway jsou v hlavičce hostitele.
+- Nastavením vlastního testu zakážete možnost **Vybrat název hostitele z nastavení http back-endu**. V Azure Portal zrušte zaškrtnutí políčka v nastavení sondy. V prostředí PowerShell nepoužívejte v příkazu **set-AzApplicationGatewayProbeConfig** přepínač **-PickHostNameFromBackendHttpSettings** . Do pole název hostitele testu zadejte plně kvalifikovaný název domény služby App Service, example.azurewebsites.net. Požadavky testu odeslané z aplikační brány přenesou tento plně kvalifikovaný název domény v hlavičce hostitele.
 
   > [!NOTE]
-  > Při provádění dalšího kroku se ujistěte, že vlastní test paměti není přidružený k nastavení HTTP back-endu, protože v tomto okamžiku má vaše nastavení HTTP stále povolený přepínač Vybrat název hostitele z back-endu adresy.
+  > V dalším kroku se ujistěte, že váš vlastní test paměti není přidružený k vašemu nastavení back-endu HTTP. V tomto okamžiku má vaše nastavení HTTP stále povolený přepínač **Vybrat název hostitele z back-endu adresy** .
 
-- Nastavením nastavení HTTP Application Gateway zakážete možnost vybrat název hostitele z back-endu adresy. To lze provést z portálu zrušením zaškrtnutí políčka a v PowerShellu tak, že v příkazu set-AzApplicationGatewayBackendHttpSettings nepoužijete přepínač-PickHostNameFromBackendAddress.
+- Nastavte nastavení HTTP služby Application Gateway tak, aby se zakázalo **výběr názvu hostitele z back-endu adresy**. V Azure Portal zrušte zaškrtnutí políčka. V prostředí PowerShell nepoužívejte v příkazu **set-AzApplicationGatewayBackendHttpSettings** přepínač **-PickHostNameFromBackendAddress** .
 
-- Přidružte vlastní test zpátky k nastavení HTTP back-endu a ověřte stav back-endu, pokud je v pořádku.
+- Přidružte vlastní test zpět k nastavení HTTP back-endu a ověřte, jestli je back-end v pořádku.
 
-- Až to uděláte, Application Gateway by teď měl přesměrovat stejný název hostitele "www.contoso.com" do App Service a přesměrování proběhne na stejném názvu hostitele. V níže uvedeném příkladu můžete zaškrtnout následující hlavičky žádosti a odpovědi.
+- Služba Application Gateway by teď měla předejte stejný název hostitele www.contoso.com službě App Service. Přesměrování proběhne na stejném názvu hostitele. Podívejte se na následující příklady hlaviček požadavků a odpovědí.
 
-Postup implementace kroků uvedených výše pomocí prostředí PowerShell pro existující instalaci získáte pomocí ukázkového skriptu PowerShellu. Všimněte si, že jsme v konfiguraci testu a nastavení HTTP nepoužívali přepínače-PickHostname.
+K implementaci předchozích kroků pomocí prostředí PowerShell pro existující instalaci použijte ukázkový skript PowerShellu, který následuje. Všimněte si, že jsme v konfiguraci testu a nastavení HTTP nepoužívali přepínače **-PickHostname** .
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
@@ -138,6 +142,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
   X-Powered-By: ASP.NET
   ```
-  ## <a name="next-steps"></a>Další postup
+  ## <a name="next-steps"></a>Další kroky
 
-Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
+Pokud předchozí kroky problém nevyřešily, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

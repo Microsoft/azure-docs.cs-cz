@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.localizationpriority: high
-ms.date: 02/26/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012882"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035638"
 ---
 ::: zone target="docs"
 
@@ -65,6 +64,7 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 
 - V tomto [kurzu jste nastavili vaši objednávku pro data box disk: Pořadí Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.
+- Kontrolovali jste počet disků, které jste dostali, a máte jeden připojený kabel na disk.
 - Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
 
     - Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
@@ -157,7 +157,7 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožňuje importovat data do Azure. Další informace o správě Azure Data Box Disku získáte v následujícímu kurzu:
 

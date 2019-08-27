@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980800"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032082"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD) B2C generuje několik typů tokenů zabezpečení při zpracovávání každého [toku ověřování](active-directory-b2c-apps.md). Tento dokument popisuje formát, charakteristiky zabezpečení a obsah každého typu tokenu.
+Azure Active Directory B2C (Azure AD B2C) emituje několik typů tokenů zabezpečení při zpracovávání každého [toku ověřování](active-directory-b2c-apps.md). Tento dokument popisuje formát, charakteristiky zabezpečení a obsah každého typu tokenu.
 
 ## <a name="token-types"></a>Typy tokenů
 
@@ -40,7 +40,7 @@ Při komunikaci s Azure AD B2C se používají následující tokeny:
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet `/token` z `/authorize` koncových bodů nebo. Pokud jsou tokeny ID získány `/authorize` z koncového bodu, jsou provedeny pomocí [implicitního toku](active-directory-b2c-reference-spa.md), který se často používá pro uživatele přihlašování do webových aplikací založených na JavaScriptu. Když se tokeny ID získávají z `/token` koncového bodu, provedou se tak, aby používaly [tok důvěrného kódu](active-directory-b2c-reference-oidc.md), který udržuje token skrytý v prohlížeči.
+Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet `/token` z `/authorize` koncových bodů nebo. Pokud jsou tokeny ID získány `/authorize` z koncového bodu, je provedeno pomocí [implicitního toku](active-directory-b2c-reference-spa.md), který se často používá pro uživatele přihlašování k webovým aplikacím založeným na jazyce JavaScript. Když se tokeny ID získávají z `/token` koncového bodu, provádí se pomocí [toku autorizačního kódu](active-directory-b2c-reference-oidc.md#get-a-token), který tento token udržuje v prohlížeči skrytý.
 
 ## <a name="claims"></a>Deklarace identity
 

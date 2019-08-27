@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782569"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051487"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection pro Azure Storage
 
@@ -111,7 +111,7 @@ E-mail obsahuje také podrobnosti o možných příčinách a doporučené akce 
 
 ![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts)Azure Security Center. Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro zkoumání aktuální hrozby a vyřešení budoucích hrozeb.
+Aktuální výstrahy zabezpečení můžete zkontrolovat a spravovat z [dlaždice výstrahy zabezpečení](../../security-center/security-center-managing-and-responding-alerts.md)Azure Security Center. Kliknutím na konkrétní výstrahu získáte podrobnosti a akce pro zkoumání aktuální hrozby a vyřešení budoucích hrozeb.
 
 ![Azure Storage e-mailové výstrahy rozšířené ochrany před internetovými útoky](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 

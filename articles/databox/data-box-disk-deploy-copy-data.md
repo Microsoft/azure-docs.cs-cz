@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5b9054f0be9b3098d853164e1ccf52df451f8165
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 796335fddf6107284b589d70094ff4f5a0e3acd5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012976"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050003"
 ---
 ::: zone target="docs"
 
@@ -302,14 +301,12 @@ K připojení a zkopírování dat z počítače do Data Box Disk proveďte nás
 1. Zobrazte obsah odemknuté jednotky. Seznam předdefinovaných složek a podsložek v jednotce se liší v závislosti na možnostech vybraných při umístění Data Box Diskho pořadí.
 2. Zkopírujte data do složek odpovídajících příslušnému formátu dat. Zkopírujte například nestrukturovaná data do složky pro složku *BlockBlob* , data VHD nebo VHDX do složky *PageBlob* a soubory do *AzureFile*. Pokud formát dat neodpovídá příslušné složce (typu úložiště), pak se v pozdějším kroku nahrávání dat do Azure nezdařila.
 
+    - Zajistěte, aby všechny kontejnery, objekty BLOB a soubory splňovaly [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) a [omezení velikosti objektů Azure](data-box-disk-limits.md#azure-object-size-limits). Pokud tato pravidla nebo omezení nedodržují, nahrávání dat do Azure se nezdaří.
     - V účtu služby Azure Storage se pro každou podsložku ve složkách BlockBlob a PageBlob vytvoří zvláštní kontejner. Všechny soubory v rámci složek *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru $root pod účtem Azure Storage. 
     - Všechny soubory v kontejneru $root jsou vždy odeslány jako objekty blob bloku.
     - Zkopírujte soubory do složky ve složce *AzureFile* . Podsložka v rámci složky *AzureFile* vytvoří sdílenou složku. Soubory zkopírované přímo do složky *AzureFile* selžou a nahrají se jako objekty blob bloku.
     - Pokud jsou v kořenovém adresáři nějaké soubory a složky, před zahájením kopírování dat je potřeba je přesunout do jiné složky.
     - Pokud se vaše objednávka Managed Disks jako jedna z cílů úložiště, přečtěte si téma zásady vytváření názvů pro [spravované disky](data-box-disk-limits.md#managed-disk-naming-conventions).
-
-    > [!IMPORTANT]
-    > Všechny kontejnery, objekty BLOB a soubor by měly splňovat [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) a [omezení velikosti objektů Azure](data-box-disk-limits.md#azure-object-size-limits). Pokud tato pravidla nebo omezení nedodržují, nahrávání dat do Azure se nezdaří.
 
 3. K kopírování dat použijte funkci přetažení pomocí Průzkumníka souborů nebo jakéhokoli nástroje pro kopírování souborů kompatibilního s protokolem SMB, jako je například Robocopy. Pomocí následujícího příkazu lze iniciovat více úloh kopírování:
 
@@ -327,6 +324,6 @@ Při ověřování dat proveďte následující kroky.
 1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
 2. Pomocí možnosti 2 Ověřte soubory a vygenerujte kontrolní součty. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
-    Pokud se během ověřování zobrazí chyby, přečtěte si téma [řešení chyb při ověřování](data-box-disk-troubleshoot.md).
+    Další informace o ověření dat naleznete v tématu [Validate data](data-box-disk-deploy-copy-data.md#validate-data). Pokud při ověřování dojde k chybě, přečtěte si téma [řešení chyb při ověřování](data-box-disk-troubleshoot.md).
 
 ::: zone-end

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1431a46bf0981ee7ca3ecd06be9d7ebc35f05982
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011676"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032733"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -35,7 +35,7 @@ Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k p
 V tomto článku se předpokládá, že jste obeznámeni se seznámkou se [správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
 > [!NOTE]
-> Minimální požadavky na úroveň funkčnosti domény a doménové struktury pro připojení k hybridní službě Azure AD ve Windows 10 jsou Windows Server 2008 R2.
+> Minimální požadovaná verze řadiče domény pro připojení k hybridní službě Azure AD ve Windows 10 je Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>Plánování implementace
 
@@ -152,7 +152,7 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | Balíček | Spravovaní | Nepodporuje se | |
 | Bez směrování | Spravovaní | Nepodporuje se | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Konfigurace hybridního Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)

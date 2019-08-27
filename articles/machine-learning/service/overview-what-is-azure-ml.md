@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dea5e174c66685f889595ab15b3edf57dd02493
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: a8e19c89cec00bba05eb74e752268e1da43a1ac0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018228"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035862"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -103,13 +103,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerpání si můžete účet ponechat a používat [bezplatné služby Azure](https://azure.microsoft.com/free/). Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby. Nebo můžete [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), které vám každý měsíc poskytnou kredity, které můžete použít pro placené služby Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Začněte tím, [že vytvoříte pracovní prostor služby Machine Learning](how-to-manage-workspace.md) .
 
 - Sledujte kurzy s plnou délkou:
+  + [Vytvoření pracovního prostoru a výuka prvního modelu ML](tutorial-1st-experiment-sdk-setup.md)
   + [Výuka modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md)
-  + [Příprava dat a použití automatizovaného strojového učení k automatickému výuce regresního modelu](tutorial-data-prep.md)
+
 
 - Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
 

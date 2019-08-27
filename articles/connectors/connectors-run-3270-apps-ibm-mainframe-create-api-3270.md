@@ -1,6 +1,6 @@
 ---
-title: Připojte se k aplikacím 3270 na sálové počítače IBM s Azure – Azure Logic Apps
-description: Integrujte a Automatizujte 3270 aplikací založených na obrazovce pomocí Azure s využitím konektoru Azure Logic Apps a IBM 3270
+title: Připojení k 3270 aplikacím v sálových počítačích IBM pomocí Azure-Azure Logic Apps
+description: Integrace a automatizace 3270 aplikací řízených obrazovkou pomocí Azure pomocí Azure Logic Apps a konektoru IBM 3270
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,414 +10,408 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60538796"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050671"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integraci 3270 aplikace řízené modelem obrazovky na sálové počítače IBM v Azure s využitím konektoru Azure Logic Apps a IBM 3270
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace 3270 aplikací řízených obrazovkou na sálové počítače IBM s Azure pomocí Azure Logic Apps a konektoru IBM 3270
 
 > [!NOTE]
-> Tento konektor je v [ *ve verzi public preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Tento konektor je ve [*verzi Public Preview*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-S Azure Logic Apps a konektor IBM 3270 můžete přístup a spustit IBM mainframových aplikací, obvykle ovládající tak, že přejdete prostřednictvím 3270 emulátor obrazovky. Tímto způsobem IBM mainframových aplikací můžete integrovat s Azure, Microsoft a další aplikace, služby a systémy tak, že vytvoříte automatizované pracovní postupy s Azure Logic Apps. Konektor s sálové počítače IBM komunikuje pomocí protokolu TN3270 a je k dispozici ve všech oblastech Azure Logic Apps s výjimkou Azure Government a Azure China 21Vianet. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Pomocí Azure Logic Apps a konektoru IBM 3270 můžete používat a spouštět aplikace IBM sálové sami, které obvykle provedete tak, že přejdete na obrazovky emulátoru 3270. Tímto způsobem můžete své aplikace IBM pro sálové počítače integrovat s Azure, Microsoftem a dalšími aplikacemi, službami a systémy tím, že vytvoříte automatizované pracovní postupy s Azure Logic Apps. Konektor komunikuje s sálovými počítače IBM pomocí protokolu TN3270 a je k dispozici ve všech oblastech Azure Logic Apps s výjimkou Azure Government a Azure Čína 21Vianet. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Tento článek popisuje tyto aspekty pro použití konektoru 3270: 
+Tento článek popisuje tyto aspekty použití konektoru 3270: 
 
-* Proč používat konektor IBM 3270 v Azure Logic Apps a vykonávání 3270 aplikace řízené modelem obrazovky konektoru
+* Důvody použití konektoru IBM 3270 v Azure Logic Apps a způsobu, jakým konektor spouští 3270 aplikace řízené obrazovkami
 
 * Požadavky a nastavení pro použití konektoru 3270
 
-* Postup přidání akce 3270 konektor do aplikace logiky
+* Postup přidání akcí konektoru 3270 do aplikace logiky
 
 ## <a name="why-use-this-connector"></a>Proč používat tento konektor?
 
-Pro přístup k aplikacím na sálové počítače IBM, obvykle použijete 3270 emulaci terminálu, často označované jako "zelené obrazovka". Tato metoda je nabízí způsob, ale má omezení. I když nemusí být možné Host Integration serveru (HIS) pomáhá při práci přímo s těmito aplikacemi, v některých případech oddělení obrazovky a obchodní logiky. Nebo možná už máte informace o fungování hostování aplikací.
+Pro přístup k aplikacím na sálových počítačích IBM obvykle používáte emulátor terminálu 3270, který se často nazývá "zelená obrazovka". Tato metoda je časově testována, ale má omezení. I když Host Integration Server (jeho) pomáhá pracovat přímo s těmito aplikacemi, někdy nemusí být oddělení obrazovky a obchodní logiky možné. Nebo možná nebudete již mít informace o fungování hostitelských aplikací.
 
-Pro rozšíření scénářů, konektor IBM 3270 v Azure Logic Apps pracuje s 3270 návrhářský nástroj, který použijete k záznamu, nebo "zachytávání", hostitel obrazovky používané pro specifické úlohy, definují tok navigace pro tuto úlohu prostřednictvím vaší aplikace mainframových a definovat metody s vstupní a výstupní parametry pro tuto úlohu. Návrhářský nástroj převádí metadata, která při volání akce, která představuje tuto úlohu z aplikace logiky používá konektor 3270 těchto informací.
+Aby se tyto scénáře rozšířily, konektor IBM 3270 v Azure Logic Apps funguje s nástrojem pro návrh 3270, který použijete k záznamu nebo zachycení, na hostitelských obrazovkách použitých pro konkrétní úlohu, k definování toku navigace pro daný úkol v rámci aplikace v rámci sálového počítače a definování metody se vstupními a výstupními parametry pro daný úkol. Nástroj pro návrh převede tyto informace na metadata, která konektor 3270 používá při volání akce, která představuje tuto úlohu z vaší aplikace logiky.
 
-Po vytvoření souboru metadat z nástroje pro návrh, přidejte tento soubor do účtu pro integraci v Azure. Tímto způsobem, aplikace logiky můžete získat přístup k vaší aplikace metadatům při přidání akce konektor 3270. Konektor přečte soubor metadat z účtu pro integraci zpracovává navigaci 3270 obrazovek a dynamicky uvede parametry pro akce 3270 konektoru. Potom můžete zadat data pro hostitelskou aplikaci a konektor vrátí výsledky do aplikace logiky. Tímto způsobem můžete integrovat starší verze aplikací s Azure, Microsoft a další aplikace, služby a systémy, které podporuje Azure Logic Apps.
+Po vygenerování souboru metadat z nástroje pro návrh můžete tento soubor přidat do účtu pro integraci v Azure. Aplikace logiky tak bude mít přístup k metadatům vaší aplikace, když přidáte akci konektoru 3270. Tento konektor přečte soubor metadat z účtu integrace, zpracovává navigaci přes obrazovky 3270 a dynamicky prezentuje parametry pro akci konektoru 3270. Potom můžete poskytnout data do hostitelské aplikace a konektor vrátí výsledky do vaší aplikace logiky. Tímto způsobem můžete své starší aplikace integrovat s Azure, Microsoftem a dalšími aplikacemi, službami a systémy, které Azure Logic Apps podporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Doporučené: [Prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
+* Doporučené: [Prostředí služby Integration Service (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
-  Vyberte toto prostředí jako umístění pro vytvoření a spuštění aplikace logiky. ISE zajišťuje přístup z aplikace logiky k prostředkům, které jsou chráněné uvnitř virtuální sítě Azure.
+  Toto prostředí můžete vybrat jako umístění pro vytvoření a spuštění aplikace logiky. ISE poskytuje přístup z vaší aplikace logiky k prostředkům chráněným v rámci virtuálních sítí Azure.
 
-* Aplikace logiky pro automatizaci a vaší aplikaci řízenou obrazovky 3270
+* Aplikace logiky, která se má použít pro automatizaci a spuštění aplikace řízené obrazovkou 3270
 
-  Konektor IBM 3270 nemá aktivačních událostí, proto použít jinou aktivační událost pro spuštění aplikace logiky, jako **opakování** aktivační události. Poté můžete přidat akce 3270 konektorů. Abyste mohli začít, [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
-  Pokud používáte ISE, vyberte tento ISE jako umístění aplikace logiky.
+  Konektor IBM 3270 nemá triggery, proto použijte jiný Trigger ke spuštění aplikace logiky, jako je například Trigger **opakování** . Pak můžete přidat akce konektoru 3270. Začněte tím, [že vytvoříte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Pokud používáte ISE, vyberte tuto ISE jako umístění vaší aplikace logiky.
 
-* [Stáhněte a nainstalujte návrhářský nástroj 3270](https://aka.ms/3270-design-tool-download).
-Jediným předpokladem je [rozhraní Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-download).
+* [Stáhněte a nainstalujte nástroj pro návrh 3270](https://aka.ms/3270-design-tool-download).
+Jediným předpokladem je [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-download).
 
-  Tento nástroj pomůže záznam obrazovky, navigačních cesty, metody a parametry pro úkoly v aplikaci pro přidávání a spustit jako 3270 akce konektorů. Nástroj vygeneruje soubor hostitele Integration návrháře XML (HIDX), který poskytuje nezbytných metadat pro konektor nekonfigurovali používání za zvyšování mainframových aplikací.
+  Tento nástroj vám pomůže nahrávat obrazovky, cesty navigace, metody a parametry pro úlohy ve vaší aplikaci, které přidáte a spouštíte jako akce konektoru 3270. Nástroj vygeneruje soubor XML návrháře integrace (HIDX) hostitele, který poskytuje nezbytná metadata pro konektor, který se má použít k řízení vaší sálové aplikace.
   
-  Po stažení a instalaci tohoto nástroje, postupujte podle těchto kroků pro připojení k hostiteli:
+  Po stažení a instalaci tohoto nástroje postupujte podle těchto kroků a připojte se k hostiteli:
 
-  1. Otevřete nástroj 3270 návrhu. Z **relace** nabídce vyberte možnost **hostitele relace**.
+  1. Otevřete nástroj pro návrh 3270. V nabídce **relace** vyberte možnost **hostitelové relace**.
   
-  1. Zadejte hostitele TN3270 informace o serveru.
+  1. Zadejte informace o hostitelském serveru TN3270.
 
-* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), což je místo, které budete ukládat svůj soubor HIDX jako mapování tak, aby vaše aplikace logiky může přístup definice metadat a metoda v tomto souboru. 
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), což je místo, kam uložíte soubor HIDX jako mapu, takže vaše aplikace logiky má přístup k metadatům a definicím metod v tomto souboru. 
 
-  Ujistěte se, že váš účet pro integraci je propojený na aplikaci logiky, které používáte. Navíc pokud použijete ISE, ujistěte se, že umístění účtu integrace je stejný ISE, který používá vaše aplikace logiky.
+  Ujistěte se, že je váš účet pro integraci propojený s aplikací logiky, kterou používáte. Pokud používáte ISE, ujistěte se, že je umístění účtu pro integraci stejné ISE, jakou používá aplikace logiky.
 
-* Přístup k TN3270 serveru, který je hostitelem aplikace sálového počítače
+* Přístup k serveru TN3270, který je hostitelem vaší sálové aplikace
 
 <a name="define-app-metadata"></a>
 
-## <a name="create-metadata-overview"></a>Vytvoření přehled metadat
+## <a name="create-metadata-overview"></a>Přehled vytvoření metadat
 
-V 3270 řízené obrazovky aplikace obrazovky a datová pole jsou jedinečné pro vaše scénáře, takže konektoru 3270 musí tyto informace o aplikaci, která můžete zadat jako metadata. Tato metadata popisují informace, které pomáhá identifikovat a rozpoznat obrazovky aplikace logiky, popisuje, jak navigace mezi obrazovkami, kam se vstupní data a kde mají očekávat výsledky. K určení a generovat tato metadata, použijete nástroj 3270 návrh, který vás provede tyto specifické *režimy*, nebo fáze, jak je popsáno dále v další podrobnosti:
+V aplikaci řízené obrazovkou 3270 jsou obrazovky a datová pole pro vaše scénáře jedinečné, takže konektor 3270 potřebuje tyto informace o vaší aplikaci, které můžete zadat jako metadata. Tato metadata popisují informace, které pomáhají vaší aplikaci logiky identifikovat a rozpoznávat obrazovky, popisuje, jak přecházet mezi obrazovkami, kde můžete zadávat data a kde očekávat výsledky. Chcete-li zadat a vygenerovat tato metadata, použijte nástroj pro návrh 3270, který vás provede těmito konkrétními *režimy*nebo fázemi, jak je popsáno dále ve více podrobnostech:
 
-* **Zachycení**: V tomto režimu záznamu obrazovky potřebné k dokončení konkrétních úkolů s mainframových aplikací, například získání Bankovní zůstatek.
+* **Zachytit**: V tomto režimu si zaznamenáte obrazovky, které jsou potřeba k dokončení konkrétní úlohy, pomocí své aplikace v rámci sálového počítače, například získání zůstatku bank.
 
-* **Navigace**: V tomto režimu je třeba zadat plán nebo cestu k tom, jak procházet vaše mainframových aplikací obrazovky pro konkrétní úlohu.
+* **Navigace**: V tomto režimu určíte plán nebo cestu, jak procházet obrazovky vaší sálové aplikace pro konkrétní úkol.
 
-* **metody**: V tomto režimu můžete například definovat metodu, `GetBalance`, popisující obrazovky navigační cestu. Můžete také zvolit pole na každou obrazovku, která označuje jako metody vstupní a výstupní parametry.
+* **Metody**: V tomto režimu definujete metodu, například `GetBalance`, která popisuje cestu k navigaci obrazovky. Můžete také zvolit pole na každé obrazovce, která se stanou vstupními a výstupními parametry metody.
 
 ### <a name="unsupported-elements"></a>Nepodporované elementy
 
-Návrhářský nástroj nepodporuje tyto prvky:
+Nástroj pro návrh nepodporuje tyto prvky:
 
-* Mapy částečná podpora základní mapování na IBM (MS): Při importu mapy MS, ignoruje návrhářský nástroj definice částečné obrazovky.
-* V vstupně-výstupní parametry: Nelze definovat parametry In nebo Out.
-* Zpracování nabídky: Není podporováno ve verzi preview
-* Zpracování pole: Není podporováno ve verzi preview
+* Částečná mapování BMS (IBM Basic Mapping support): Pokud importujete mapu BMS, nástroj pro návrh ignoruje definice částečné obrazovky.
+* Vstupně-výstupní parametry: Nemůžete definovat vstupně-výstupní parametry.
+* Zpracování nabídky: Nepodporováno během verze Preview
+* Zpracování pole: Nepodporováno během verze Preview
 
 <a name="capture-screens"></a>
 
-## <a name="capture-screens"></a>Zachycení obrazovky
+## <a name="capture-screens"></a>Zachytit obrazovky
 
-V tomto režimu se označit položku na každý 3270 obrazovky, který jednoznačně identifikuje této obrazovce. Můžete například určit řádek textu nebo složitější sadu podmínek, jako je například určitý text a prázdné pole. Můžete zaznamenat tyto obrazovky přes živé připojení k serveru hostitele, nebo importovat tyto informace z mapování podporu základní mapování na IBM (MS). Živé připojení používá TN3270 emulátor pro připojení k hostiteli. Každý konektor akce musí být namapovaný na jednu úlohu, která začíná s připojením k relaci a končí odpojení z relace.
+V tomto režimu označíte položku na všech obrazovkách 3270, které tuto obrazovku jedinečně identifikují. Můžete například zadat řádek textu nebo složitější sadu podmínek, například konkrétní text a neprázdné pole. Tyto obrazovky můžete nahrát přes živé připojení k hostitelskému serveru, nebo tyto informace naimportovat z mapy podpory BMS (IBM Basic Mapping support). Živé připojení používá emulátor TN3270 pro připojení k hostiteli. Každá akce konektoru musí být namapována na jeden úkol, který začíná připojením k vaší relaci a končí odpojením od relace.
 
-1. Pokud jste to ještě neudělali, otevřete 3270 návrhářský nástroj. Na panelu nástrojů zvolte **zachycení** tak, že zadáte režim zachycení.
+1. Pokud jste to ještě neudělali, otevřete nástroj pro návrh 3270. Na panelu nástrojů vyberte možnost **zachytit** , abyste zadávali režim zachytávání.
 
-1. Záznam spustíte stisknutím klávesy F5 nebo **záznam** nabídce vyberte možnost **spustit záznam**. 
+1. Chcete-li spustit záznam, stiskněte klávesu F5 nebo v nabídce **záznamu** vyberte možnost **Spustit záznam**. 
 
-1. Z **relace** nabídce vyberte možnost **připojit**.
+1. V nabídce **relace** vyberte **připojit**.
 
-1. V **zachycení** podokno, počínaje první obrazovky ve vaší aplikaci, krokovat aplikaci pro konkrétní úlohu, která nahráváte.
+1. V podokně **zachycení** začněte v aplikaci pro konkrétní úlohu, kterou právě zaznamenáte, na první obrazovce.
 
-1. Po dokončení úlohy se odhlaste z aplikace jako obvykle.
+1. Po dokončení úlohy se z aplikace odhlaste obvyklým způsobem.
 
-1. Z **relace** nabídce vyberte možnost **odpojit**.
+1. V nabídce **relace** vyberte **Odpojit**.
 
-1. Chcete-li ukončit nahrávání, stiskněte klávesy Shift + F5 klíče, nebo z **záznam** nabídce vyberte možnost **zastavit záznam**.
+1. Pokud chcete zastavit nahrávání, stiskněte klávesy Shift + F5 nebo v nabídce **nahrávání** vyberte **zastavit nahrávání**.
 
-   Po zachycení obrazovky pro úlohu, zobrazí nástroj Návrhář miniatury, které představují těchto obrazovek. Několik poznámek o tyto miniatury:
+   Po zachycení obrazovek pro úlohu zobrazí nástroj Návrhář miniatury, které tyto obrazovky reprezentují. Některé poznámky k těmto miniaturám:
 
-   * Součástí zachycené obrazovek, máte obrazovky s názvem "Prázdný".
+   * Máte obrazovku s názvem "Empty", která je součástí vašich zachycených obrazovek.
 
-     Když se poprvé připojíte ke [CICS](https://www.ibm.com/it-infrastructure/z/cics), musíte poslat klíči "Clear", než budete moct zadat název transakce, kterou chcete spustit. Obrazovka, kam poslat klíči "Clear" neobsahovalo žádné *rozpoznávání atributy*, jako je například název obrazovky, které můžete přidat pomocí editoru obrazovky rozpoznávání. K reprezentaci této obrazovce, zahrnuje miniatury obrazovky s názvem "Prázdný". Později můžete tuto obrazovku představující obrazovky ve kterém zadáte název transakce.
+     Když se poprvé připojíte k [CICS](https://www.ibm.com/it-infrastructure/z/cics), je nutné před zadáním názvu transakce, kterou chcete spustit, odeslat klíč "Clear". Obrazovka, na které jste odeslali klíč "Clear", nemá žádné *atributy rozpoznávání*, jako je například název obrazovky, který můžete přidat pomocí editoru pro rozpoznávání obrazovky. Pro reprezentaci této obrazovky miniatury obsahuje obrazovku s názvem "Empty". Tuto obrazovku můžete později použít k reprezentaci obrazovky, na které jste zadali název transakce.
 
-   * Ve výchozím nastavení používá název pro zachycené obrazovku první slovo na obrazovce. Pokud tento název už existuje, připojí návrhářský nástroj název symbol podtržítka a číslo, například "WBGB" a "WBGB_1".
+   * Ve výchozím nastavení používá název zaznamenané obrazovky první slovo na obrazovce. Pokud tento název již existuje, nástroj pro návrh připojí název podtržítkem a číslem, například "WBGB" a "WBGB_1".
 
-1. Zachycené obrazovky poskytnout smysluplnějšího názvu, postupujte podle těchto kroků:
+1. K získání smysluplného názvu pro zaznamenanou obrazovku použijte následující postup:
 
-   1. V **hostitele obrazovky** podokně, vyberte obrazovku, kterou chcete přejmenovat.
+   1. V podokně **hostitelské obrazovky** vyberte obrazovku, kterou chcete přejmenovat.
 
-   1. V podokně stejné dole v podokně stejné najít **název obrazovky** vlastnost.
+   1. Ve stejném podokně poblíž dolního okraje ve stejném podokně najděte vlastnost **Název obrazovky** .
 
-   1. Změňte název aktuální obrazovky do více popisný název.
+   1. Změňte název aktuální obrazovky na výstižnější název.
 
-1. Teď zadejte pole k identifikaci jednotlivých obrazovek.
+1. Nyní zadejte pole pro identifikaci každé obrazovky.
 
-   S 3270 datový proud obrazovky nemají výchozí identifikátory, proto je nutné vybrat jedinečný text na jednotlivých obrazovkách. Pro komplexní scénáře můžete zadat více podmínek, například jedinečný text a pole s určitou podmínku.
+   S datovým proudem 3270 mají obrazovky výchozí identifikátory, takže musíte na každé obrazovce vybrat jedinečný text. U složitých scénářů můžete zadat více podmínek, například jedinečný text a pole s konkrétní podmínkou.
 
-Po dokončení výběru polí rozpoznávání přesuňte do dalšího režimu.
+Po dokončení výběru polí rozpoznávání přejděte k dalšímu režimu.
 
-### <a name="conditions-for-identifying-repeated-screens"></a>Podmínky pro identifikaci opakované obrazovky
+### <a name="conditions-for-identifying-repeated-screens"></a>Podmínky identifikace opakujících se obrazovek
 
-Konektor k navigaci a pro rozlišení obrazovky obvykle najít jedinečnou text na obrazovku, která můžete použít jako identifikátor mezi zachycené obrazovky. Pro opakované obrazovek může být nutné další metody identifikace. Předpokládejme například, že máte dvě obrazovky, které vypadají stejně, s výjimkou jednu obrazovku vrátí platnou hodnotu, zatímco jiné obrazovky vrátí chybovou zprávu.
+Aby konektor mohl procházet a rozlišovat mezi obrazovkami, obvykle se na obrazovce nachází jedinečný text, který můžete použít jako identifikátor mezi zachycenými obrazovkami. Pro opakované obrazovky možná budete potřebovat více metod identifikace. Předpokládejme například, že máte dvě obrazovky, které vypadají stejně, kromě jedné obrazovky, vrátí platnou hodnotu, zatímco druhá obrazovka vrátí chybovou zprávu.
 
-V nástroji návrhu můžete přidat *rozpoznávání atributy*, například název obrazovky jako je například "Získat zůstatek na účtu", pomocí editoru obrazovky rozpoznávání. Pokud máte rozvětvené cesty a vrácení obou větví na stejné obrazovce, ale s různé výsledky, budete potřebovat další atributy rozpoznávání. V době běhu konektor používá tyto atributy pro určení aktuální větev a větve. Tady jsou podmínky, které můžete použít:
+V nástroji pro návrh můžete přidat *atributy rozpoznávání*, například název obrazovky, jako je například "získání zůstatku účtu", pomocí editoru rozpoznávání obrazovky. Pokud máte rozvětvenou cestu a obě větve vrací stejnou obrazovku, ale s různými výsledky, budete potřebovat další atributy rozpoznávání. V době běhu konektor používá tyto atributy k určení aktuální větve a rozvětvení. Tady jsou podmínky, které můžete použít:
 
-* Konkrétní hodnota: Tato hodnota odpovídá zadaného řetězce v zadaném umístění.
-* Konkrétní hodnota: Tato hodnota se neshoduje zadaného řetězce v zadaném umístění.
-* Prázdný: Toto pole je prázdné.
-* Obsahuje hodnoty: Toto pole není prázdné.
+* Konkrétní hodnota: Tato hodnota odpovídá zadanému řetězci v zadaném umístění.
+* Nejedná se o konkrétní hodnotu: Tato hodnota se neshoduje se zadaným řetězcem v zadaném umístění.
+* Obsahovat Toto pole je prázdné.
+* Neprázdné: Toto pole není prázdné.
 
-Další informace najdete v tématu [příklad navigace plán](#example-plan) dále v tomto tématu.
+Další informace najdete v [příkladu navigační plán](#example-plan) dále v tomto tématu.
 
 <a name="define-navigation"></a>
 
-## <a name="define-navigation-plans"></a>Definujte plány navigace
+## <a name="define-navigation-plans"></a>Definování plánů navigace
 
-V tomto režimu definujete, toku nebo kroky pro navigaci v aplikaci mainframových obrazovky pro konkrétní úlohu. Například v některých případech může mít více než jednu cestu, která vaše aplikace může trvat, kde jedna cesta vytvoří správný výsledek, zatímco jiné cesty dojde k chybě. Pro každou obrazovku, určete nezbytné pro přechod na další obrazovce například stisknutí kláves `CICSPROD <enter>`.
+V tomto režimu definujete tok nebo kroky pro navigaci na obrazovkách vaší aplikace pro konkrétní úlohu. Například může být třeba mít více než jednu cestu, kterou může aplikace převzít, když jedna cesta vytvoří správný výsledek, zatímco druhá cesta vytvoří chybu. Pro každou obrazovku určete stisknutí kláves nutných pro přechod na další obrazovku, `CICSPROD <enter>`jako je například.
 
 > [!TIP]
-> Pokud používáte automatizaci několik úloh, které používají stejné připojení a odpojení obrazovek, návrhářský nástroj poskytuje zvláštní typy schémat připojit a odpojit. Při definování tyto plány, přidáte je do plánu navigace začátek a konec.
+> Pokud automatizujete několik úloh, které používají stejné obrazovky připojení a odpojení, poskytuje nástroj pro návrh speciální typy plánů připojení a odpojení. Při definování těchto plánů je můžete přidat do začátku a koncem svého navigačního plánu.
 
-### <a name="guidelines-for-plan-definitions"></a>Pokyny pro definice plánu
+### <a name="guidelines-for-plan-definitions"></a>Pokyny pro definice plánů
 
-* Zahrnout všechny obrazovky, počínaje připojení a konče odpojení.
+* Zahrňte všechny obrazovky počínaje připojením a ukončením odpojení.
 
-* Můžete vytvořit samostatný plán nebo použít připojit a odpojit plány, které umožňují opakované použití řadou obrazovek, které jsou společné pro všechny transakce.
+* Můžete vytvořit samostatný plán nebo použít plány připojení a odpojení, které vám umožní znovu použít řadu obrazovek společných pro všechny vaše transakce.
 
-  * Poslední obrazovka v plánu připojit musí být na stejné obrazovce jako první obrazovky ve vašem plánu navigace.
+  * Poslední obrazovka v plánu připojení musí být stejná jako první obrazovka v plánu navigace.
 
-  * První obrazovka v plánu odpojit musí být stejné obrazovce jako poslední obrazovky ve vašem plánu navigace.
+  * První obrazovka v plánu odpojení musí být stejná jako poslední obrazovka v plánu navigace.
 
-* Zachycené obrazovky může obsahují mnoho opakovaných obrazovky, proto vyberte a použijte pouze jednu instanci libovolné opakované obrazovky ve vašem plánu. Tady je několik příkladů opakované obrazovky:
+* Vaše zachycené obrazovky mohou obsahovat mnoho opakovaných obrazovek, takže vyberte a používejte pouze jednu instanci všech opakovaných obrazovek v plánu. Tady je několik příkladů opakujících se obrazovek:
 
-  * Přihlašovací obrazovka, například **MSG 10** obrazovky
-  * Uvítací obrazovce CICS
-  * "Vymazat" nebo **prázdný** obrazovky
+  * Přihlašovací obrazovka, například obrazovka **zpráva-10**
+  * Úvodní obrazovka pro CICS
+  * Obrazovka "Clear" nebo **prázdná** obrazovka
 
 <a name="create-plans"></a>
 
-### <a name="create-plans"></a>Vytváření plánů
+### <a name="create-plans"></a>Vytvoření plánů
 
-1. Na panelu nástrojů 3270 návrhářský nástroj, zvolte **navigace** tak, že zadáte navigační režim.
+1. Na panelu nástrojů nástroje pro návrh 3270 vyberte možnost **Navigace** , takže zadáte navigační režim.
 
-1. Ve spuštění vašeho plánu **navigace** podokně zvolte **nový plán**.
+1. Chcete-li zahájit plán, v **navigačním** podokně vyberte možnost **Nový plán**.
 
-1. V části **zvolte nový název plánu**, zadejte název pro váš plán. Z **typ** vyberte typ plánu:
+1. V části **zvolit název nového plánu**zadejte název vašeho plánu. V seznamu **typ** vyberte typ plánu:
 
    | Typ plánu | Popis |
    |-----------|-------------|
-   | **Proces** | Pro samostatnou službu nebo kombinované plány |
-   | **Připojení** | Pro plány Connect |
-   | **Odpojení** | Pro odpojení plány |
+   | **Přihlášení** | Pro samostatné nebo kombinované plány |
+   | **Připojení** | Pro plány připojení |
+   | **Dobu** | Pro plány odpojení |
    |||
 
-1. Z **hostitele obrazovky** podokno, přetáhněte zachycené miniatury k plánu navigace plochu v **navigace** podokně.
+1. Z podokna **hostitelské obrazovky** přetáhněte zachycené miniatury na plochu navigačního plánu v **navigačním** podokně.
 
-   Chcete-li představují prázdnou obrazovku, kde zadejte název transakce, použijte "Prázdný" obrazovku.
+   Pro reprezentaci prázdné obrazovky, kde zadáváte název transakce, použijte obrazovku "prázdné".
 
-1. Uspořádejte obrazovek v pořadí, ve kterém popisuje úlohy, které definujete.
+1. Uspořádejte obrazovky v pořadí, které popisuje úlohu, kterou definujete.
 
-1. Chcete-li definovat cesty toku mezi obrazovkami, včetně rozvětvení a spojení na návrhářský nástroj nástrojů, zvolte **toku**.
+1. Chcete-li definovat cestu toku mezi obrazovkami, včetně rozvětvení a spojení, na panelu nástrojů pro návrh vyberte možnost **tok**.
 
-1. Vyberte první obrazovku v toku. Přetáhněte a vykreslení připojení na další obrazovce v toku.
+1. Vyberte první obrazovku v toku. Přetáhněte připojení k další obrazovce v toku a nakreslete ho.
 
-1. Pro každou obrazovku, zadejte hodnoty pro **klíč podpory** vlastnosti (pozornost Identifier) a **pevný Text** vlastnost, která tok přesune na další obrazovce.
+1. Pro každou obrazovku zadejte hodnoty vlastnosti **klíče podpory** (identifikátor upozornění) a vlastnost **fixed text** , která posune tok na další obrazovku.
 
-   Můžete mít jenom klíč podpory nebo podporu klíč i pevného textu.
+   Můžete mít jenom klávesu s podporou, nebo i klávesu s podporou a pevný text.
 
-Po dokončení plánu navigace, můžete [definovat metody v režimu Další](#define-method).
+Po dokončení plánu navigace můžete [metody definovat v dalším režimu](#define-method).
 
 <a name="example-plan"></a>
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-V tomto příkladu předpokládejme, že spustíte CICS transakci s názvem "WBGB", který obsahuje tyto kroky: 
+V tomto příkladu Předpokládejme, že spustíte transakci CICS s názvem "WBGB", která má tyto kroky: 
 
-* Na první obrazovce zadejte název a účet.
-* Na druhé obrazovce získáte zůstatek na účtu.
-* Ukončení "Prázdný" obrazovku.
-* Odhlášení od CICS na obrazovku "MSG-10".
+* Na první obrazovce zadejte jméno a účet.
+* Na druhé obrazovce získáte zůstatek účtu.
+* Skončíte na obrazovku "prázdná".
+* Odhlásíte se z CICS na obrazovku "MSG-10".
 
-Předpokládejme také, že tento postup opakujte, ale zadejte nesprávná data tak lze zachytit obrazovku, která zobrazí chybu. Tady jsou obrazovky, které zaznamenáte:
+Předpokládejme také, že tento postup zopakujete, ale zadáte nesprávná data, abyste mohli zachytit obrazovku, která zobrazuje chybu. Tady jsou obrazovky, které zachytíte:
 
 * MSG-10
-* Vítejte CICS
-* prázdný
+* CICS Welcome
+* Prázdné
 * WBGB_1 (vstup)
 * WBGB_2 (chyba)
 * Empty_1
 * MSG-10_1
 
-Některé obrazovky se stejnou obrazovku, například "MSG-10" a "Prázdný" to ale jedinečné názvy mnoha obrazovkách tady získáte. Pro opakované obrazovku, pouze jedna instance používala pro tuto obrazovku v plánu. Tady jsou příklady, které ukazují, jak může vypadat samostatný plán, připojit plánu, plán odpojit a kombinované plán:
+I když mnoho obrazovek získá jedinečné názvy, některé obrazovky jsou stejné obrazovky, například "MSG-10" a "Empty". Pro opakovanou obrazovku použijte pro tuto obrazovku v plánu jenom jednu instanci. Tady jsou příklady, které ukazují, jak může vypadat samostatný plán, plán připojení, plán odpojení a kombinovaný plán:
 
 * Samostatný plán
 
-  ![Samostatný plán navigace](./media/connectors-create-api-3270/standalone-plan.png)
+  ![Samostatný navigační plán](./media/connectors-create-api-3270/standalone-plan.png)
 
-* Připojení plánu
+* Připojit plán
 
-  ![Připojení plánu](./media/connectors-create-api-3270/connect-plan.png)
+  ![Připojit plán](./media/connectors-create-api-3270/connect-plan.png)
 
-* Odpojit plán
+* Plán odpojení
 
-  ![Odpojit plán](./media/connectors-create-api-3270/disconnect-plan.png)
+  ![Plán odpojení](./media/connectors-create-api-3270/disconnect-plan.png)
 
-* Kombinované plán
+* Kombinovaný plán
 
-  ![Kombinované plán](./media/connectors-create-api-3270/combined-plan.png)
+  ![Kombinovaný plán](./media/connectors-create-api-3270/combined-plan.png)
 
-#### <a name="example-identify-repeated-screens"></a>Příklad: Identifikujte opakované obrazovky
+#### <a name="example-identify-repeated-screens"></a>Příklad: Identifikovat opakované obrazovky
 
-Konektor k navigaci a pro rozlišení obrazovky obvykle najít jedinečný text na obrazovku, která můžete použít jako identifikátor na zachycené obrazovkách. Pro opakované obrazovek může být nutné další metody identifikace. Příklad plánu má fork, kde můžete získat obrazovek, které se podobají. Jednu obrazovku vrátí zůstatek na účtu, zatímco jiné obrazovky vrátí chybovou zprávu.
+Aby konektor mohl navigovat a odlišit obrazovky, obvykle se na obrazovce nachází jedinečný text, který můžete použít jako identifikátor napříč zachycenými obrazovkami. Pro opakované obrazovky možná budete potřebovat více metod identifikace. Vzorový plán obsahuje rozvětvení, kde můžete získat obrazovky, které vypadají podobně. Jedna obrazovka vrátí zůstatek účtu a druhá obrazovka vrátí chybovou zprávu.
 
-Návrhářský nástroj umožňuje přidat rozpoznávání atributy, například název obrazovky s názvem "Get zůstatek na účtu", pomocí rozpoznávání obrazovky editoru. V tomto případě podobné obrazovky budete potřebovat další atributy. V době běhu konektor používá tyto atributy pro určení větev a větve.
+Nástroj pro návrh umožňuje přidat atributy rozpoznávání, například název obrazovky s názvem "získat zůstatek účtu" pomocí editoru pro rozpoznávání obrazovky. V případě podobných obrazovek budete potřebovat další atributy. V době běhu konektor používá tyto atributy k určení větve a rozvětvení.
 
-* Ve větvi, která vrací platný vstup, který je na obrazovce s zůstatek na účtu, můžete přidat pole, která má podmínku "neprázdné".
+* Ve větvi, která vrací platný vstup, což je obrazovka se zůstatkem účtu, můžete přidat pole, které má podmínku "neprázdné".
 
-* Ve větvi, která vrátí chybu můžete přidat pole, která má podmínku "prázdný".
+* Ve větvi, která se vrátí k chybě, můžete přidat pole, které má podmínku "Empty".
 
 <a name="define-method"></a>
 
-## <a name="define-methods"></a>Definování metody
+## <a name="define-methods"></a>Definovat metody
 
-V tomto režimu definujete metodu, která je přidružená k plánu navigace. Pro každý parametr metody zadejte datový typ, jako je řetězec, celé číslo, datum nebo čas a tak dále. Jakmile budete hotovi, můžete otestovat metodu na hostiteli za provozu a potvrďte, že metoda funguje podle očekávání. Potom generovat soubor metadat nebo Host Integration návrháře XML (HIDX) soubor, který má teď definice metod pro vytváření a spouštění akce pro konektor IBM 3270.
+V tomto režimu definujete metodu, která je přidružena k vašemu navigačnímu plánu. Pro každý parametr metody zadáte datový typ, například řetězec, celé číslo, datum nebo čas a tak dále. Až budete hotovi, můžete otestovat svou metodu na hostiteli v reálném čase a potvrdit, že metoda funguje podle očekávání. Pak vygenerujete soubor metadat nebo soubor XML pro návrháře Integration Designer (HIDX), který nyní obsahuje definice metod, které se mají použít pro vytvoření a spuštění akce pro konektor IBM 3270.
 
-1. Na panelu nástrojů 3270 návrhářský nástroj, zvolte **metody** tak, aby metody režimu. 
+1. Na panelu nástrojů nástroje pro návrh 3270 vyberte **metody** , takže zadáte režim metody. 
 
-1. V **navigace** podokně, vyberte obrazovku, která má vstupních polí má.
+1. V **navigačním** podokně vyberte obrazovku, která má vstupní pole, která chcete.
 
-1. Chcete-li přidat první vstupního parametru pro metodu, postupujte takto:
+1. Chcete-li přidat první vstupní parametr pro metodu, postupujte podle těchto kroků:
 
-   1. V **zachycení** podokně na obrazovce emulátoru 3270 zvolte celé pole, nikoli pouze text v poli, který má jako první vstup.
-
-      > [!TIP]
-      > Zobrazit všechna pole a ujistěte se, že vyberete pole, na **zobrazení** nabídce vyberte možnost **všechna pole**.
-
-   1. Na panelu nástrojů návrhářský nástroj, zvolte **vstupní pole**. 
-
-   Chcete-li přidat více vstupními parametry, opakujte předchozí kroky pro každý parametr.
-
-1. Chcete-li přidat první výstupního parametru pro metodu, postupujte takto:
-
-   1. V **zachycení** podokně na obrazovce emulátoru 3270 zvolte celé pole, nikoli pouze text v poli, který má jako první výstup.
+   1. V podokně **zachycení** na obrazovce emulátoru 3270 vyberte celé pole, ne pouze text v poli, které chcete jako první vstup.
 
       > [!TIP]
-      > Zobrazit všechna pole a ujistěte se, že vyberete pole, na **zobrazení** nabídce vyberte možnost **všechna pole**.
+      > Chcete-li zobrazit všechna pole a ujistit se, že jste vybrali pole Dokončeno, v nabídce **zobrazení** vyberte možnost **všechna pole**.
 
-   1. Na panelu nástrojů návrhářský nástroj, zvolte **výstupního pole pro**.
+   1. Na panelu nástrojů návrhového nástroje vyberte **vstupní pole**. 
 
-   Chcete-li přidat další výstupní parametry, opakujte předchozí kroky pro každý parametr.
+   Chcete-li přidat více vstupních parametrů, opakujte předchozí kroky pro každý parametr.
 
-1. Po přidání všech vašich parametrů metody definují tyto vlastnosti pro každý parametr:
+1. Chcete-li přidat první výstupní parametr pro metodu, postupujte podle těchto kroků:
+
+   1. V podokně **zachycení** na obrazovce emulátoru 3270 vyberte celé pole, ne pouze text v poli, které chcete jako první výstup.
+
+      > [!TIP]
+      > Chcete-li zobrazit všechna pole a ujistit se, že jste vybrali pole Dokončeno, v nabídce **zobrazení** vyberte možnost **všechna pole**.
+
+   1. Na panelu nástrojů nástroje pro návrh vyberte **výstupní pole**.
+
+   Chcete-li přidat více výstupních parametrů, opakujte předchozí kroky pro každý parametr.
+
+1. Po přidání všech parametrů metody definujte tyto vlastnosti pro každý parametr:
 
    | Název vlastnosti | Možné hodnoty | 
    |---------------|-----------------|
-   | **Datový typ** | Byte, datum a čas, Decimal, Int, Long, Short, řetězce |
-   | **Metoda výplň pole** | Parametry podporují tyto typy výplně vyplnění pomocí prázdných hodnot v případě potřeby: <p><p>- **Typ**: Zadejte postupně znaků do pole. <p>- **Vyplnit**: Nahraďte obsah pole znaků vyplnění pomocí prázdných hodnot v případě potřeby. <p>- **EraseEofType**: Zrušte zaškrtnutí políčka a pak zadejte postupně do pole znaků. |
-   | **Formátovací řetězec** | Některé datové typy parametrů použijte řetězec formátu, která informuje o konektoru 3270 jak převést text z obrazovky na datový typ .NET: <p><p>- **Datum a čas**: Následuje řetězec formátu data a času [řetězce formátu .NET vlastní data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Například datum `06/30/2019` používá řetězec formátu `MM/dd/yyyy`. <p>- **Desetinné**: Řetězec formátu desítkové soustavy používá [COBOL obrázek klauzule](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Například číslo `100.35` používá řetězec formátu `999V99`. |
+   | **Datový typ** | Byte, datum a čas, desetinné číslo, int, Long, Short, řetězec |
+   | **Technika vyplňování polí** | Parametry podporují tyto typy výplně a v případě potřeby plní prázdné hodnoty: <p><p>- **Zadejte**: Zadejte do pole postupně znaky. <p>- **Vyplnit**: V případě potřeby nahraďte obsah pole znaky, a to tak, že vyplníte prázdné znaky. <p>- **EraseEofType**: Vymažte pole a potom do pole zadejte postupně znaky. |
+   | **Řetězec formátu** | Některé typy dat parametrů používají formátovací řetězec, který informuje konektor 3270, jak převést text z obrazovky na datový typ .NET: <p><p>- **Datum a čas**: Řetězec formátu data a času následuje za [řetězci vlastního formátu data a času rozhraní .NET](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Datum `06/30/2019` například používá řetězec `MM/dd/yyyy`formátu. <p>- **Desetinné číslo**: Řetězec formátu Decimal používá [klauzuli obrázku COBOL](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html). Číslo `100.35` například používá řetězec `999V99`formátu. |
    |||
 
-## <a name="save-and-view-metadata"></a>Uložit a zobrazit metadata
+## <a name="save-and-view-metadata"></a>Uložení a zobrazení metadat
 
-Potom co definujete metodu, ale před testováním metodu, uložte všechny informace, které jste definovali, zatím k souboru pro autorizaci prostředků (.rap).
-Kdykoli během libovolném jiném režimu, můžete uložit do tohoto souboru pro autorizaci prostředků. Návrhářský nástroj také zahrnuje ukázkový soubor pro autorizaci prostředků, které můžete otevřít a zkontrolovat tak, že přejdete do instalační složky návrhářský nástroj na tomto místě a otevírání souboru "WoodgroveBank.rap":
+Po definování metody, ale před otestováním metody, uložte všechny informace, které jste dosud definovali, do souboru RAP (. rap).
+Do tohoto souboru RAP se můžete kdykoli uložit v jakémkoli režimu. Nástroj pro návrh zahrnuje také ukázkový soubor RAP, který můžete otevřít a zkontrolovat tak, že v tomto umístění přejdete do instalační složky nástroje pro návrh a otevřete soubor WoodgroveBank. rap:
 
 `..\Program Files\Microsoft Host Integration Server - 3270 Design Tool\SDK\WoodgroveBank.rap`
 
-Pokud se pokusíte ukládání změn do ukázkového souboru pro autorizaci prostředků nebo generování souboru HIDX z ukázkového souboru pro autorizaci prostředků, zatímco soubor zůstane v instalační složce Nástroje návrhu, ale pravděpodobně dojde k chybě "přístup byl odepřen". Ve výchozím nastavení nainstaluje nástroj návrhu ve složce Program Files bez zvýšenou úroveň oprávnění. Pokud dojde k chybě, zkuste použijte jeden z těchto řešení:
+Pokud se ale pokusíte uložit změny do ukázkového souboru RAP nebo vygenerovat soubor HIDX ze vzorového souboru RAP, zatímco soubor zůstane v instalační složce Nástroje pro návrh, může se zobrazit chyba "přístup byl odepřen". Ve výchozím nastavení se nástroj pro návrh nainstaluje do složky Program Files bez zvýšených oprávnění. Pokud se zobrazí chyba, zkuste jedno z následujících řešení:
 
-* Ukázkový soubor zkopírujte do jiného umístění.
-* Návrhářský nástroj spusťte jako správce.
-* Stát vlastníkem složky sady SDK.
+* Zkopírujte ukázkový soubor do jiného umístění.
+* Spusťte nástroj pro návrh jako správce.
+* Nastavte vlastníka složky sady SDK sami.
 
-## <a name="test-your-method"></a>Testovací metodu
+## <a name="test-your-method"></a>Otestování metody
 
-1. Tím spustíte metodu živé hostitele, zatímco jste pořád v režimu metody, stiskněte klávesu F5 nebo z návrhářský nástroj nástrojů, zvolte **spustit**.
+1. Chcete-li spustit metodu proti aktivnímu hostiteli, a to i v režimu metod, stiskněte klávesu F5 nebo z panelu nástrojů pro návrh vyberte možnost **Spustit**.
 
    > [!TIP]
-   > Režimy můžete kdykoli změnit. Na **souboru** nabídce vyberte možnost **režimu**a potom vyberte požadovaný režim.
+   > Režimy můžete kdykoli změnit. V nabídce **soubor** vyberte možnost **režim**a potom vyberte požadovaný režim.
 
-1. Zadejte hodnoty parametrů a zvolte **OK**.
+1. Zadejte hodnoty Parameters a klikněte na **tlačítko OK**.
 
-1. Chcete-li pokračovat na další obrazovku, zvolte **Další**.
+1. Chcete-li pokračovat na další obrazovku, klikněte na tlačítko **Další**.
 
-1. Až budete hotovi, zvolte **provádí**, které ukazuje všechny hodnoty výstupních parametrů.
+1. Až budete hotovi, vyberte **Hotovo**, které zobrazuje vaše výstupní hodnoty parametrů.
 
 <a name="add-metadata-integration-account"></a>
 
-## <a name="generate-and-upload-hidx-file"></a>Generování a nahrávání souboru HIDX
+## <a name="generate-and-upload-hidx-file"></a>Generování a nahrání souboru HIDX
 
-Jakmile budete připraveni, vygenerujte soubor HIDX tak můžete nahrát do účtu pro integraci. Návrhářský nástroj 3270 vytvoří soubor HIDX v novou podsložku, kam jste uložili soubor pro autorizaci prostředků.
+Až budete připraveni, vygenerujte soubor HIDX, abyste ho mohli nahrát na účet pro integraci. Nástroj pro návrh 3270 vytvoří soubor HIDX v nové podsložce, kam jste uložili soubor RAP.
 
-1. Na panelu nástrojů 3270 návrhářský nástroj, zvolte **generovat kód**.
+1. Na panelu nástrojů nástroje pro návrh 3270 vyberte možnost **generovat kód**.
 
-1. Přejděte do složky, která obsahuje váš soubor pro autorizaci prostředků a otevřete podsložku, kterou vytvořili nástroj po vygenerování souboru HIDX. Ověřte, že nástroj vytvoření souboru HIDX.
+1. Přejít do složky, která obsahuje soubor RAP, a otevřete podsložku, kterou nástroj vytvořil po vygenerování souboru HIDX. Potvrďte, že nástroj vytvořil soubor HIDX.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a vyhledejte svůj účet integrace.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a Najděte účet pro integraci.
 
-1. Přidat váš soubor HIDX jako mapa k účtu pro integraci pomocí [tyto podobným způsobem pro přidání mapy](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), ale když vyberete typ mapy, vyberte **HIDX**.
+1. Přidejte soubor HIDX jako mapu k účtu pro integraci, a to pomocí [těchto podobných kroků pro přidání map](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), ale když vyberete typ mapy, vyberte **HIDX**.
 
-Dále v tomto tématu přidáte akci IBM 3270 do aplikace logiky poprvé, budete vyzváni k vytvoření připojení mezi vaší aplikace logiky a server hostitele tím, že poskytuje informace o připojení, jako jsou názvy pro integrační účet a hostitelů serveru . Po vytvoření připojení můžete vyberte dříve přidaný soubor HIDX způsob spuštění a parametry se mají použít.
+Později v tomto tématu když do aplikace logiky přidáte akci IBM 3270 poprvé, budete vyzváni k vytvoření připojení mezi aplikací logiky a hostitelským serverem poskytnutím informací o připojení, jako jsou názvy pro účet pro integraci a hostitelský server. . Po vytvoření připojení můžete vybrat dříve přidaný soubor HIDX, metodu, kterou chcete spustit, a parametry, které chcete použít.
 
-Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplikaci logiky pro připojení k IBM mainframových, jednotky obrazovky pro vaši aplikaci, zadejte data, vrátí výsledky a podobně. Také můžete pokračovat v přidávání dalších akcí do aplikace logiky pro integraci s jinými aplikací, služeb a systémů.
+Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte v aplikaci logiky pro připojení k vašemu sálovému počítači IBM, diskovou obrazovku pro vaši aplikaci, zadat data, vrátit výsledky atd. Můžete také pokračovat v přidávání dalších akcí do aplikace logiky pro integraci s jinými aplikacemi, službami a systémy.
 
 <a name="run-action"></a>
 
-## <a name="run-ibm-3270-actions"></a>Spustit akce IBM 3270
+## <a name="run-ibm-3270-actions"></a>Spuštění akcí IBM 3270
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**a vyberte **přidat akci**. 
+1. V posledním kroku, kam chcete přidat akci, zvolte **Nový krok**a vyberte **přidat akci**. 
 
-1. Pod vyhledávacím polem vyberte **Enterprise**. Do vyhledávacího pole zadejte jako filtr "3270". Ze seznamu akcí vyberte tuto akci: **Spustí program sálové počítače přes připojení TN3270**
+1. V poli Hledat vyberte možnost **Enterprise**. Do vyhledávacího pole zadejte jako filtr "3270". V seznamu akce vyberte tuto akci: **Spustí sálový program přes připojení TN3270.**
 
-   ![Vyberte akci 3270](./media/connectors-create-api-3270/select-3270-action.png)
+   ![Vybrat akci 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
-   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Pokud ještě neexistuje žádné připojení, zadejte informace potřebné pro připojení a zvolte **vytvořit**.
+1. Pokud žádné připojení ještě neexistuje, zadejte pro připojení potřebné informace a klikněte na **vytvořit**.
 
-   | Vlastnost | Požaduje se | Value | Popis |
+   | Vlastnost | Požadováno | Value | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Ano | <*Název připojení*> | Název připojení |
-   | **ID účtu pro integraci** | Ano | <*integration-account-name*> | Název účtu integrace |
-   | **Adresa URL SAS účtu integrace** | Ano | <*integration-account-SAS-URL*> | Účet integrace sdíleného přístupového podpisu (SAS) adresu URL, která můžete vygenerovat z nastavení vašeho účtu integrace na webu Azure Portal. <p>1. Na vaše integrační účet nabídce v části **nastavení**vyberte **adresu URL zpětného volání**. <br>2. V pravém podokně zkopírujte **vygeneruje adresu URL zpětného volání** hodnotu. |
+   | **Název připojení** | Ano | <*název připojení*> | Název připojení |
+   | **ID účtu pro integraci** | Ano | <*integration-account-name*> | Název vašeho účtu pro integraci |
+   | **Adresa URL SAS účtu pro integraci** | Ano | <*integration-account-SAS-URL*> | Adresa URL sdíleného přístupového podpisu (SAS) vašeho účtu pro integraci, kterou můžete vygenerovat z nastavení účtu integrace v Azure Portal. <p>1. V nabídce účtu pro integraci vyberte v části **Nastavení**možnost **Adresa URL zpětného volání**. <br>2. V pravém podokně zkopírujte vygenerovanou hodnotu **URL zpětného volání** . |
    | **Server** | Ano | <*TN3270-server-name*> | Název serveru pro vaši službu TN3270 |
-   | **Port** | Ne | <*TN3270-server-port*> | Port používaný serverem služby TN3270. Pokud je ponecháno prázdné, konektor používá `23` jako výchozí hodnotu. |
-   | **Typ zařízení** | Ne | <*IBM-terminal-model*> | Název modelu nebo číslo pro Terminálové IBM k emulaci. Pokud je ponecháno prázdné, konektor používá výchozí hodnoty. |
-   | **Znaková stránka** | Ne | <*code-page-number*> | Číslo stránky kód pro hostitele. Pokud je ponecháno prázdné, konektor používá `37` jako výchozí hodnotu. |
-   | **Název logické jednotky** | Ne | <*Logický název jednotky*> | Název konkrétní logické jednotky k vyžádání z hostitele |
-   | **Povolit SSL?** | Ne | Zapnutí nebo vypnutí | Zapnutí nebo vypnutí šifrování SSL. |
-   | **Ověření certifikátu ssl hostitele?** | Ne | Zapnutí nebo vypnutí | Zapnout nebo vypnout ověřování certifikátu serveru. |
+   | **Port** | Ne | <*TN3270-server-port*> | Port používaný serverem TN3270 Pokud necháte pole prázdné, použije `23` konektor jako výchozí hodnotu. |
+   | **Typ zařízení** | Ne | <*IBM-Terminal-model*> | Název nebo číslo modelu terminálu IBM pro emulaci. Pokud necháte pole prázdné, použije konektor výchozí hodnoty. |
+   | **Znaková stránka** | Ne | <*číslo stránky kódu*> | Číslo kódové stránky pro hostitele Pokud necháte pole prázdné, použije `37` konektor jako výchozí hodnotu. |
+   | **Název logické jednotky** | Ne | <*logická jednotka – název*> | Název konkrétní logické jednotky, která se má požadovat od hostitele |
+   | **Povolit SSL?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte šifrování SSL. |
+   | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
    ||||
 
    Příklad:
 
    ![Vlastnosti připojení](./media/connectors-create-api-3270/connection-properties.png)
 
-1. Zadejte informace potřebné pro akce:
+1. Zadejte potřebné informace pro tuto akci:
 
-   | Vlastnost | Požaduje se | Value | Popis |
+   | Vlastnost | Požadováno | Value | Popis |
    |----------|----------|-------|-------------|
-   | **Název Hidx** | Ano | <*HIDX-file-name*> | Vyberte soubor HIDX 3270, který chcete použít. |
-   | **Název metody** | Ano | <*Název metody*> | Vyberte metodu v HIDX souboru, který chcete použít. Po výběru metody, **přidat nový parametr** seznamu se zobrazí, takže můžete vybrat parametry se mají použít s danou metodu. |
+   | **Název HIDX** | Ano | <*HIDX-název souboru*> | Vyberte soubor HIDX 3270, který chcete použít. |
+   | **Název metody** | Ano | <*název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
    ||||
 
    Příklad:
 
-   **Vyberte soubor HIDX**
+   **Vybrat soubor HIDX**
 
-   ![Vyberte soubor HIDX](./media/connectors-create-api-3270/select-hidx-file.png)
+   ![Vybrat soubor HIDX](./media/connectors-create-api-3270/select-hidx-file.png)
 
    **Vyberte metodu**
 
-   ![Vyberte metodu](./media/connectors-create-api-3270/select-method.png)
+   ![Vybrat metodu](./media/connectors-create-api-3270/select-method.png)
 
    **Vyberte parametry**
 
-   ![Vyberte parametry](./media/connectors-create-api-3270/add-parameters.png)
+   ![Vybrat parametry](./media/connectors-create-api-3270/add-parameters.png)
 
-1. Jakmile budete hotovi, uložte a spusťte aplikaci logiky.
+1. Až skončíte, uložte a spusťte aplikaci logiky.
 
-   Po svoji logiku aplikace dokončí spuštěné, kroky z běhu jsou zobrazeny. 
-   Úspěšný postup značky zaškrtnutí při neúspěšné kroky ukazují písmeno "X".
+   Po dokončení běhu aplikace logiky se zobrazí kroky z tohoto spuštění. 
+   Úspěšné kroky zobrazují značky zaškrtnutí, zatímco neúspěšné kroky ukazují písmeno "X".
 
-1. Zkontrolujte vstupy a výstupy jednotlivých kroků, rozbalte položku tohoto kroku.
+1. Chcete-li zkontrolovat vstupy a výstupy pro jednotlivé kroky, rozbalte tento krok.
 
-1. Chcete-li zkontrolovat výstupy, zvolte **zobrazit nezpracované výstupy**.
+1. Chcete-li zkontrolovat výstupy, vyberte možnost **Zobrazit nezpracované výstupy**.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o limitu, akce a aktivačních událostí, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, zkontrolujte [konektoru referenční stránce](/connectors/si3270/).
-
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/si3270/).
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

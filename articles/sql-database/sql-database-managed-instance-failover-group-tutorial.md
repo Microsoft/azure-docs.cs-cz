@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981373"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035789"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -29,7 +29,9 @@ Přidejte SQL Database spravovanou instanci do skupiny převzetí služeb při s
 > - Testovací převzetí služeb při selhání
 
   > [!NOTE]
-  > Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance](sql-database-managed-instance.md#managed-instance-management-operations). Používání skupin převzetí služeb při selhání se spravovanými instancemi je aktuálně ve verzi Preview. 
+  > - Při procházení tohoto kurzu se ujistěte, že konfigurujete prostředky s [požadavky pro nastavení skupin převzetí služeb při selhání pro spravovanou instanci](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
+  > - Vytvoření spravované instance může trvat poměrně dlouhou dobu. V důsledku toho může dokončení tohoto kurzu trvat několik hodin. Další informace o časech zřizování najdete v tématu [operace správy spravované instance](sql-database-managed-instance.md#managed-instance-management-operations). 
+  > - Používání skupin převzetí služeb při selhání se spravovanými instancemi je aktuálně ve verzi Preview. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +98,7 @@ Vaše druhá spravovaná instance musí:
 
 K vytvoření sekundární spravované instance použijte následující postup: 
 
-1. V [Azure Portal](http://portal.azure.com)vyberte **vytvořit prostředek** a vyhledejte *spravovanou instanci Azure SQL*. 
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** a vyhledejte *spravovanou instanci Azure SQL*. 
 1. Vyberte možnost **Azure SQL Managed instance** publikovanou Microsoftem a pak na další stránce vyberte **vytvořit** .
 1. Na kartě **základy** na stránce **vytvořit Azure SQL Database spravované instance** vyplňte požadovaná pole pro konfiguraci sekundární spravované instance. 
 
@@ -245,7 +247,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravovanou instanci, potom
 1. Odstraňte všechny zbývající prostředky. Do `yes` textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny `myResourceGroup`prostředků a pak výběrem možnosti **Odstranit**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi. Naučili jste se tyto postupy:
 

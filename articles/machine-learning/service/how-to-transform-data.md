@@ -12,19 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 339a4f93d45b3d3b3e242aa735ce4b737a9292f0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694308"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035957"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
 V tomto článku se seznámíte s různými metodami transformace dat pomocí `azureml-dataprep` balíčku. Balíček nabízí funkce, které zjednodušují přidávání sloupců, filtrování nechtěných řádků nebo sloupců a imputace chybějících hodnot. Prohlédněte si úplnou referenční dokumentaci [balíčku AzureML-dataprep](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Pokud vytváříte nové řešení, vyzkoušejte [Azure Machine Learning datové sady](how-to-explore-prepare-data.md) (Preview), abyste mohli transformovat data, data snímků a ukládat definice datových sad s verzemi. Datové sady jsou další verzí sady SDK pro přípravu dat, která nabízí rozšířené funkce pro správu datových sad v řešeních AI. Použijete `azureml-dataprep` -li balíček k vytvoření datového toku s transformacemi namísto `azureml-datasets` použití balíčku k vytvoření datové sady, nebudete moci později použít snímky nebo datové sady s verzemi.
+> Pokud vytváříte nové řešení, vyzkoušejte [Azure Machine Learning datové sady](how-to-explore-prepare-data.md) (Preview), abyste mohli transformovat data, data snímků a ukládat definice datových sad s verzemi. Datové sady jsou další verzí sady SDK pro přípravu dat, která nabízí rozšířené funkce pro správu datových sad v řešeních AI.
+> Použijete `azureml-dataprep` -li balíček k vytvoření datového toku s transformacemi namísto `azureml-datasets` použití balíčku k vytvoření datové sady, nebudete moci později použít snímky nebo datové sady s verzemi.
 
 Tento postup ukazuje příklady pro následující úlohy:
 
@@ -345,7 +346,7 @@ Tvůrce výrazů `col`, zadejte název sloupce jako argument řetězec `col('col
 
 V tomto příkladu `dflow.filter(col('Tip_amount') > 0)` vrátí nového toku dat s řádky, ve kterém hodnotu `Tip_amount` je větší než 0.
 
-> [!NOTE] 
+> [!NOTE]
 > `Tip_amount` nejprve převeden na číselnou hodnotu, která umožňuje vytvářet výrazu porovnání oproti dalších číselných hodnot.
 
 ```python
@@ -517,4 +518,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Další postup
 
-* Příklad řešení konkrétního scénáře najdete v [kurzu](tutorial-data-prep.md) Azure Machine Learning data PREP SDK.
+* Další podrobnosti najdete v [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) k sadě Azure Machine Learning data PREP SDK.

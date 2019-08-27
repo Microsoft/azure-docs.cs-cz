@@ -8,18 +8,18 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: cc94f2705f044c3674432f31b63d630be8afbf7d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011882"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035885"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
-Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
+Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Přehled
-Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o přístup k prostředku Event Hubs, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
+Když se objekt zabezpečení (uživatel nebo aplikace) pokusí o přístup k prostředku Event Hubs, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
 
  1. Nejprve je ověřená identita objektu zabezpečení a je vrácen token OAuth 2,0. 
  1. V dalším kroku se token předává jako součást požadavku služby Event Hubs k autorizaci přístupu k zadanému prostředku.
@@ -33,7 +33,7 @@ Nativní aplikace a webové aplikace, které vytvářejí požadavky na Event Hu
 ## <a name="assign-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md). Azure Event Hubs definuje sadu integrovaných rolí RBAC, které zahrnují společné sady oprávnění používaných pro přístup k datům centra událostí, a můžete také definovat vlastní role pro přístup k datům.
 
-Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků, oboru názvů Event Hubs nebo jakéhokoli prostředku. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků, oboru názvů Event Hubs nebo jakéhokoli prostředku. Objekt zabezpečení služby Azure AD může být uživatel nebo instanční objekt nebo [spravovaná identita pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Předdefinované role RBAC pro Azure Event Hubs
 Azure poskytuje následující předdefinované role RBAC pro autorizaci přístupu k Event Hubs datům pomocí Azure AD a OAuth:

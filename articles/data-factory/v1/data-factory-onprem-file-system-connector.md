@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do a ze systému souborů pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data do a z v místním systému souborů pomocí služby Azure Data Factory.
+title: Kopírování dat do a ze systému souborů pomocí Azure Data Factory | Microsoft Docs
+description: Naučte se, jak kopírovat data do a z místního systému souborů pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,84 +13,84 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4d3816eebe85f01301c770a50a618142bcbfbb21
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 92274f63db78d53bdd0fa3fd440977422be3b4a1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839974"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036285"
 ---
-# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z v místním systému souborů pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-file-system-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-file-system.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektoru systému souborů ve verzi V2](../connector-file-system.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor systému souborů ve verzi v2](../connector-file-system.md).
 
 
-Tento článek vysvětluje, jak použít aktivitu kopírování ke kopírování dat do a z v místním systému souborů ve službě Azure Data Factory. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
+Tento článek vysvětluje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data do nebo z místního systému souborů. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Může kopírovat data **systému souborů v místním** ukládá následující data:
+Data **z místního systému souborů** můžete kopírovat do následujících úložišť dat:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Může kopírovat data z následujících datových skladů **na systém souborů v místním**:
+Data z následujících úložišť dat můžete kopírovat **do místního systému souborů**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Aktivita kopírování nedojde k odstranění zdrojového souboru, co se úspěšně zkopíruje do cíle. Pokud je potřeba odstranit zdrojový soubor po úspěšném kopírování, vytvoření vlastní aktivity a stejný soubor odstranit také pomocí aktivity v kanálu.
+> Aktivita kopírování neodstraní zdrojový soubor po úspěšném zkopírování do cíle. Pokud potřebujete zdrojový soubor po úspěšné kopii odstranit, vytvořte vlastní aktivitu k odstranění tohoto souboru a použijte aktivitu v kanálu.
 
 ## <a name="enabling-connectivity"></a>Povolení připojení
-Data Factory podporuje připojení do a z v místním systému souborů prostřednictvím **brána správy dat**. Musíte nainstalovat bránu správy dat v místním prostředí pro službu Data Factory se připojit k jakékoli úložiště dat podporovaných místních včetně systému souborů. Další informace o bráně pro správu dat a zobrazit podrobné pokyny pro nastavení brány najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](data-factory-move-data-between-onprem-and-cloud.md). Kromě Brána pro správu dat není třeba žádné binární soubory ke komunikaci do a z v místním systému souborů. Musíte nainstalovat a používat bránu správy dat i v případě, že systém souborů je na virtuálním počítači Azure IaaS. Podrobné informace o bráně, naleznete v tématu [brána správy dat](data-factory-data-management-gateway.md).
+Data Factory podporuje připojení k místnímu systému souborů přes **bránu Správa dat**a z něj. Bránu Správa dat musíte nainstalovat do místního prostředí, aby se služba Data Factory připojovala k jakémukoli podporovanému místnímu úložišti dat, včetně systému souborů. Další informace o službě Správa dat Gateway a podrobné pokyny k nastavení brány najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](data-factory-move-data-between-onprem-and-cloud.md). Kromě Správa dat brány není nutné instalovat žádné další binární soubory pro komunikaci s místním systémem souborů a z něj. Bránu Správa dat musíte nainstalovat a používat i v případě, že je systém souborů na virtuálním počítači Azure s IaaS. Podrobné informace o bráně najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md).
 
-Použití sdílené složky Linux, instalace [Samba](https://www.samba.org/) na serveru Linux a instalace brány pro správu dat na Windows serveru. Instalace brány pro správu dat na Linuxovém serveru se nepodporuje.
+Pokud chcete použít sdílenou složku se systémem Linux, nainstalujte na server Linux Server [Samba](https://www.samba.org/) a nainstalujte Správa dat bránu na Windows Server. Instalace brány Správa dat na serveru Linux není podporována.
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze systému souborů pomocí různých nástrojů a rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do nebo ze systému souborů pomocí různých nástrojů/rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [kurz: Vytvoření kanálu pomocí průvodce](data-factory-copy-data-wizard-tutorial.md) kopírováním pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, rozhraní **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů.
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory. Pokud jsou kopírování dat z Azure blob storage na systém souborů na místě, například vytvoříte dvě propojené služby k propojení vaší místní systém souborů a účet úložiště Azure pro vytváření dat. Vlastnosti propojené služby, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnostem propojených služeb](#linked-service-properties) oddílu.
-3. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu uvedených v posledním kroku vytvoříte datovou sadu, která zadejte kontejner objektů blob a složku obsahující vstupní data. A vytvořte jinou datovou sadu, která zadejte složku a název souboru (volitelné) v systému souborů. Vlastnosti datové sady, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnosti datové sady](#dataset-properties) oddílu.
-4. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V příkladu již bylo zmíněno dříve pomocí BlobSource jako zdroj a FileSystemSink jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z místního systému souborů do úložiště objektů Blob Azure, můžete použít FileSystemSource a BlobSink v aktivitě kopírování. Kopírovat vlastnosti aktivity, které jsou specifické pro systém souborů v místním, naleznete v tématu [vlastnosti aktivity kopírování](#copy-activity-properties) oddílu. Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku klikněte na odkaz v předchozí části datového úložiště.
+1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů.
+2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud jsou kopírování dat z Azure blob storage na systém souborů na místě, například vytvoříte dvě propojené služby k propojení vaší místní systém souborů a účet úložiště Azure pro vytváření dat. Vlastnosti propojené služby, které jsou specifické pro místní systém souborů, najdete v části [vlastnosti propojených služeb](#linked-service-properties) .
+3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje vstupní data. A vytvoříte další datovou sadu pro určení složky a názvu souboru (volitelné) v systému souborů. Vlastnosti datové sady, které jsou specifické pro místní systém souborů, najdete v části [Vlastnosti datové sady](#dataset-properties) .
+4. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování BlobSource jako zdroj a FileSystemSink. Podobně pokud kopírujete z místního systému souborů do služby Azure Blob Storage, v aktivitě kopírování použijete FileSystemSource a BlobSink. Vlastnosti aktivity kopírování, které jsou specifické pro místní systém souborů, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) . Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte kliknutím na odkaz v předchozí části úložiště dat.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Ukázky s definicemi JSON entit služby Data Factory, které se používají ke kopírování dat do a ze systému souborů najdete v tématu [JSON příklady](#json-examples-for-copying-data-to-and-from-file-system) části tohoto článku.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázky s definicemi JSON pro Entity Data Factory, které se používají ke kopírování dat do a ze systému souborů, najdete v části [Příklady JSON](#json-examples-for-copying-data-to-and-from-file-system) tohoto článku.
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory, které jsou specifické pro systém souborů:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factorych entit specifických pro systém souborů:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Systém souborů v místním můžete propojit s Azure data factory s **s místními souborového serveru** propojenou službu. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro souborový Server On-Premises propojenou službu.
+Místní systém souborů můžete propojit s objektem pro vytváření dat Azure pomocí místní propojené služby **souborového serveru** . Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu místního souborového serveru.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Zkontrolujte, že vlastnost type je nastavená na **OnPremisesFileServer**. |Ano |
-| host |Určuje kořenová cesta ke složce, která chcete kopírovat. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady. |Ano |
-| userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (když zvolíte encryptedCredential) |
-| password |Zadejte heslo pro uživatele (ID uživatele). |Ne (když zvolíte encryptedCredential |
-| encryptedCredential |Zadejte zašifrované přihlašovací údaje, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (když se rozhodnete zadat ID uživatele a heslo jako prostý text) |
-| gatewayName |Určuje název brány, které služby Data Factory měla použít pro připojení k serveru v místním souboru. |Ano |
+| type |Ujistěte se, že vlastnost Type je nastavená na **OnPremisesFileServer**. |Ano |
+| host |Určuje kořenová cesta ke složce, která chcete kopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady. |Ano |
+| userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (Pokud zvolíte encryptedCredential) |
+| password |Zadejte heslo pro uživatele (ID uživatele). |Ne (Pokud zvolíte encryptedCredential |
+| encryptedCredential |Zadání šifrovaných přihlašovacích údajů, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (Pokud se rozhodnete zadat ID uživatele a heslo jako prostý text) |
+| gatewayName |Určuje název brány, kterou Data Factory použít pro připojení k místnímu souborovému serveru. |Ano |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázkové propojené služby a definicích datových sad
-| Scénář | Hostování v definici propojené služby | folderPath v definici datové sady |
+| Scénář | Hostitel v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
-| Místní složka na počítači brány pro správu dat: <br/><br/>Příklady: D:\\ \* nebo D:\folder\subfolder\\* |D:\\ \\ (pro Data Management Gateway 2.0 a novější) <br/><br/> místního hostitele (pro starší verze než Data Management Gateway 2.0) |. \\ \\ nebo složky\\\\podsložku (pro Data Management Gateway 2.0 a novější) <br/><br/>D:\\ \\ nebo D:\\\\složky\\\\podsložku (pro brány verze nižší než 2.0) |
-| Vzdálené sdílené složky: <br/><br/>Příklady: \\ \\myserver\\sdílet\\ \* nebo \\ \\myserver\\sdílet\\složky\\podsložky\\* |\\\\\\\\myserver\\\\sdílet |. \\ \\ nebo složky\\\\podsložky |
+| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\\* |D:\\ \\ (pro Správa dat Gateway 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |. nebo podsložeksložky\\(pro Správa dat bránu 2,0 a novější verze)\\ \\ \\ <br/><br/>D:\\ \\ nebo d:\\podsložkasložky\\(\\pro verzi brány nižší než 2,0)\\ |
+| Vzdálené sdílené složky: <br/><br/>Příklady: \\ \\MyServershare\\ *nebo\\MyServer sdílenásložkasložky\\\\\\ \\\\\\\\* |\\\\\\\\\\MyServer\\sdílená složka |. nebo podsložeksložky\\\\ \\ \\ |
 
 >[!NOTE]
 >Při vytváření prostřednictvím uživatelského rozhraní, není nutné zadat dvojité zpětné lomítko (`\\`) k uvození stejným způsobem jako prostřednictvím formátu JSON, zadejte jedno zpětné lomítko.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: Pomocí uživatelského jména a hesla v prostém textu
+### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: Použití uživatelského jména a hesla v prostém textu
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Příklad: Pomocí encryptedcredential
+### <a name="example-using-encryptedcredential"></a>Příklad: Použití encryptedcredential
 
 ```JSON
 {
@@ -124,28 +124,28 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [vytváření datových sad](data-factory-create-datasets.md). Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datové sady.
+Úplný seznam sekcí a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [vytváření datových sad](data-factory-create-datasets.md). Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad.
 
-V části typeProperties se liší pro každý typ datové sady. Poskytuje informace, jako je například umístění a formát dat v úložišti. TypeProperties části datové sady typu **sdílení souborů** má následující vlastnosti:
+Oddíl typeProperties se liší pro každý typ datové sady. Poskytuje informace, jako je umístění a formát dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** má následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
-| folderPath |Určuje dílčí cestou ke složce. Použijte řídicí znak "\' pro zvláštní znaky v řetězci. Filtr zástupných znaků není podporován. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v aktivita jímky název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
-| fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "fileFilter": "* .log"<br/>Příklad 2: "fileFilter": 2014 - 1-?. TXT"<br/><br/>Všimněte si, že fileFilter se dá použít pro vstupní datovou sadu sdílení souborů. |Ne |
-| partitionedBy |PartitionedBy můžete použít k určení dynamické folderPath/fileName pro data časových řad. Příkladem je folderPath s parametry pro každou hodinu data. |Ne |
-| format | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| folderPath |Určuje podcestu ke složce. Použijte řídicí znak\' pro speciální znaky v řetězci. Filtr zástupných znaků není podporován. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
+| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt`Případě Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
+| fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "FileFilter": "*. log"<br/>Příklad 2: "FileFilter": 2014-1-?. txt<br/><br/>Všimněte si, že tento filtr souborů je použitelný pro sadu vstupních souborů Shared. |Ne |
+| partitionedBy |Pomocí partitionedBy můžete zadat dynamický folderPath/fileName pro data časových řad. Příkladem je folderPath parametrizované pro každou hodinu dat. |Ne |
+| format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **Gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **Optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
-> Název souboru a fileFilter nelze současně použít.
+> Nemůžete současně použít fileName a FileFilter.
 
-### <a name="using-partitionedby-property"></a>Vlastnost partitionedBy
-Jak je uvedeno v předchozí části, můžete zadat dynamické folderPath a název souboru pro data časových řad s **partitionedBy** vlastnost [funkce Data Factory a systémové proměnné](data-factory-functions-variables.md).
+### <a name="using-partitionedby-property"></a>Použití vlastnosti partitionedBy
+Jak je uvedeno v předchozí části, můžete zadat dynamický folderPath a filename pro data časových řad pomocí vlastnosti **partitionedBy** , [Data Factory funkcí a systémových proměnných](data-factory-functions-variables.md).
 
-Další informace o časových řad datové sady, plánování a řezy najdete v tématu [vytváření datových sad](data-factory-create-datasets.md), [plánování a provádění](data-factory-scheduling-and-execution.md), a [vytváření kanálů](data-factory-create-pipelines.md).
+Další informace o datových sadách časových řad, plánování a řezech najdete v tématu [vytváření datových sad](data-factory-create-datasets.md), [plánování a spouštění](data-factory-scheduling-and-execution.md)a [vytváření kanálů](data-factory-create-pipelines.md).
 
-#### <a name="sample-1"></a>Příklad 1:
+#### <a name="sample-1"></a>Ukázka 1:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -155,9 +155,9 @@ Další informace o časových řad datové sady, plánování a řezy najdete v
 ],
 ```
 
-V tomto příkladu {řez} se nahradí hodnotu proměnné systému služby Data Factory SliceStart ve formátu (YYYYMMDDHH). Vlastnosti SliceStart odkazuje na počáteční čas řezu. V cestě folderPath se liší pro každý řez. Příklad: wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.
+V tomto příkladu je {Slice} nahrazen hodnotou Data Factory systémové proměnné vlastnosti slicestart ve formátu (YYYYMMDDHH). Vlastnosti slicestart odkazuje na počáteční čas řezu. FolderPath se u každého řezu liší. Příklad: wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>Příklad 2:
+#### <a name="sample-2"></a>Ukázka 2:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -171,57 +171,57 @@ V tomto příkladu {řez} se nahradí hodnotu proměnné systému služby Data F
 ],
 ```
 
-V tomto příkladu rok, měsíc, den a čas z vlastnosti SliceStart extrahován do samostatných proměnné, které používají vlastnosti folderPath a název souboru.
+V tomto příkladu jsou roky, měsíc, den a čas vlastnosti slicestart extrahovány do samostatných proměnných, které používají vlastnosti folderPath a fileName.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, jako je název, popis, vstupní a výstupní datové sady a zásady jsou k dispozici pro všechny typy aktivit. Vzhledem k tomu, k dispozici ve vlastnosti **typeProperties** části aktivity se liší s jednotlivými typu aktivity.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní datové sady a zásady. V takovém případě se vlastnosti dostupné v části **typeProperties** v aktivitě liší podle typu aktivity.
 
-Pro aktivitu kopírování se liší v závislosti na typy zdroje a jímky. Pokud přesouváte data z v místním systému souborů, nastavíte typ zdroje v aktivitě kopírování do **FileSystemSource**. Podobně pokud přesouváte data v místním systému souborů, nastavíte typ jímky v aktivitě kopírování do **FileSystemSink**. Tato část obsahuje seznam podporovaných FileSystemSource a FileSystemSink vlastností.
+U aktivity kopírování se liší v závislosti na typech zdrojů a jímky. Pokud přesouváte data z místního systému souborů, nastavte typ zdroje v aktivitě kopírování na **FileSystemSource**. Podobně Pokud přesouváte data do místního systému souborů, nastavíte typ jímky v aktivitě kopírování na **FileSystemSink**. V této části najdete seznam vlastností podporovaných FileSystemSource a FileSystemSink.
 
 **FileSystemSource** podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| recursive |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |Hodnota TRUE, False (výchozí) |Ne |
+| recursive |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |True, false (výchozí) |Ne |
 
 **FileSystemSink** podporuje následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požadováno |
 | --- | --- | --- | --- |
-| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |**PreserveHierarchy:** Zachová hierarchií souborů v cílové složce. To znamená relativní cestu ke zdrojové složce zdrojový soubor je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název nebo objekt blob název souboru, název sloučený soubor je zadaný název. V opačném případě je název automaticky generovaného souboru. |Ne |
+| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |Ne |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzivní a copyBehavior příklady
-Tato část popisuje výsledné chování pro různé kombinace hodnot pro vlastnosti rekurzivní a copyBehavior operace kopírování.
+Tato část popisuje výsledné chování operace kopírování pro různé kombinace hodnot pro rekurzivní a copyBehavior vlastnosti.
 
-| rekurzivní hodnota | Hodnota copyBehavior | Výsledné chování |
+| rekurzivní hodnota | hodnota copyBehavior | Výsledné chování |
 | --- | --- | --- |
-| true (pravda) |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 se vytvoří s stejnou strukturu jako zdroj:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true (pravda) |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
-| true (pravda) |mergeFiles |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cíl složku1 se vytvoří s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 File2 + soubor3 + File4 + 5 souboru obsahu jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor. |
-| false |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false (nepravda) |mergeFiles |Pro zdrojové složky složku1 s následující strukturou,<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 se vytvoří s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| true |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
+| true (pravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Obsah soubor1 + soubor2 + file3 + file4 + soubor 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
+| false |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| false |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Obsah soubor1 + soubor2 se sloučí do jednoho souboru s automaticky generovaným názvem souboru.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky vygenerovaný název pro Soubor1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
-Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek věnovaný tomu podrobnosti.
+Podrobnosti najdete v článku o [formátech souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .
 
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Příklady JSON pro kopírování dat do a ze systému souborů
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat do a z úložiště objektů Blob v Azure a služby v místním systému souborů. Však můžete zkopírovat data *přímo* z libovolného zdroje do libovolné jímky uvedené v [zdroje a jímky podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
+V následujících příkladech jsou uvedeny ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z místního systému souborů a do úložiště objektů BLOB v Azure. Data však můžete kopírovat *přímo* z libovolného zdroje do kterékoli z jímky uvedených v části [podporované zdroje a jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Příklad: Kopírování dat z v místním systému souborů do úložiště objektů Blob v Azure
-Tato ukázka předvádí, jak kopírovat data ze v místním systému souborů do úložiště objektů Blob v Azure. Ukázka obsahuje následující entity služby Data Factory:
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Příklad: Kopírování dat z místního systému souborů do Azure Blob Storage
+V této ukázce se dozvíte, jak kopírovat data z místního systému souborů do úložiště objektů BLOB v Azure. Ukázka má následující Data Factory entit:
 
-* Propojené služby typu [OnPremisesFileServer](#linked-service-properties).
-* Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [sdílení souborů](#dataset-properties).
-* Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [FileSystemSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Propojená služba typu [OnPremisesFileServer](#linked-service-properties).
+* Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Vstupní [datová sada](data-factory-create-datasets.md) typu [sdílení](#dataset-properties)souborů.
+* Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+* [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [FileSystemSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Následující příklad zkopíruje dat časových řad ze v místním systému souborů do úložiště objektů Blob v Azure každou hodinu. Vlastnosti JSON, které se používají v těchto ukázkách jsou popsané v částech po ukázky.
+Následující ukázka kopíruje data časových řad z místního systému souborů do úložiště objektů BLOB v Azure každou hodinu. Vlastnosti JSON používané v těchto ukázkách jsou popsány v částech po ukázkách.
 
-Jako první krok, nastavte si bránu správy dat, podle pokynů v [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](data-factory-move-data-between-onprem-and-cloud.md).
+Jako první krok nastavte Správa dat bránu podle pokynů v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](data-factory-move-data-between-onprem-and-cloud.md).
 
-**Souborový Server On-Premises propojené služby:**
+**Místní propojená služba souborového serveru:**
 
 ```JSON
 {
@@ -238,7 +238,7 @@ Jako první krok, nastavte si bránu správy dat, podle pokynů v [přesun dat m
 }
 ```
 
-Doporučujeme použít **encryptedCredential** vlastnost místo toho **userid** a **heslo** vlastnosti. Zobrazit [souborového serveru propojená služba](#linked-service-properties) podrobnosti o této propojené službě.
+Místo vlastností **UserID** a **Password** doporučujeme použít vlastnost **encryptedCredential** . Podrobnosti o této propojené službě najdete v tématu [propojená služba souborového serveru](#linked-service-properties) .
 
 **Propojená služba Azure Storage:**
 
@@ -254,11 +254,11 @@ Doporučujeme použít **encryptedCredential** vlastnost místo toho **userid** 
 }
 ```
 
-**V místním souboru systému vstupní datové sady:**
+**Místní vstupní datová sada systému souborů:**
 
-Data je převzata z nového souboru každou hodinu. Vlastnosti folderPath a název souboru se určují podle času spuštění řezu.
+Data se při každé hodinu vybírají z nového souboru. Vlastnosti folderPath a fileName jsou určeny na základě počátečního času řezu.
 
-Nastavení `"external": "true"` služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+Nastavení `"external": "true"` INFORMS Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {
@@ -320,9 +320,9 @@ Nastavení `"external": "true"` služby Data Factory informuje, že datová sada
 }
 ```
 
-**Azure Blob storage výstupní datovou sadu:**
+**Výstupní datová sada Azure Blob Storage:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob se dynamicky vyhodnocuje na základě doby spuštění řez, který se právě zpracovává. Cesta ke složce používá rok, měsíc, den a hodina části čas spuštění.
+Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt BLOB je dynamicky vyhodnocována na základě počátečního času zpracovávaného řezu. Cesta ke složce používá část roku, měsíce, dne a hodiny počátečního času.
 
 ```JSON
 {
@@ -380,9 +380,9 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 }
 ```
 
-**Aktivita kopírování v kanálu pomocí systému souborů zdroje a jímky objektu Blob:**
+**Aktivita kopírování v kanálu se zdrojem systému souborů a jímkou objektů BLOB:**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **FileSystemSource**, a **jímky** je typ nastaven na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **FileSystemSource**a typ **jímky** je nastavený na **BlobSink**.
 
 ```JSON
 {
@@ -430,18 +430,18 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Příklad: Kopírování dat ze služby Azure SQL Database v místním systému souborů
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Příklad: Kopírování dat z Azure SQL Database do místního systému souborů
 Následující příklad ukazuje:
 
-* Propojené služby typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
-* Propojené služby typu [OnPremisesFileServer](#linked-service-properties).
+* Propojená služba typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
+* Propojená služba typu [OnPremisesFileServer](#linked-service-properties).
 * Vstupní datová sada typu [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
-* Výstupní datová sada typu [sdílení souborů](#dataset-properties).
+* Výstupní datová sada typu [sdílení](#dataset-properties)souborů.
 * Kanál s aktivitou kopírování, která používá [SqlSource](data-factory-azure-sql-connector.md##copy-activity-properties) a [FileSystemSink](#copy-activity-properties).
 
-Ukázka zkopíruje data časových řad z tabulky Azure SQL na systém souborů v místním každou hodinu. Vlastnosti JSON, které se používají v těchto ukázkách jsou popsány v částech po ukázky.
+Ukázka kopíruje data časových řad z tabulky Azure SQL do místního systému souborů každou hodinu. Vlastnosti JSON, které jsou používány v těchto ukázkách, jsou popsány v částech po ukázkách.
 
-**Azure SQL Database propojené služby:**
+**Propojená služba Azure SQL Database:**
 
 ```JSON
 {
@@ -455,7 +455,7 @@ Ukázka zkopíruje data časových řad z tabulky Azure SQL na systém souborů 
 }
 ```
 
-**Souborový Server On-Premises propojené služby:**
+**Místní propojená služba souborového serveru:**
 
 ```JSON
 {
@@ -472,13 +472,13 @@ Ukázka zkopíruje data časových řad z tabulky Azure SQL na systém souborů 
 }
 ```
 
-Doporučujeme použít **encryptedCredential** vlastnosti namísto použití **userid** a **heslo** vlastnosti. Zobrazit [systému souborů propojená služba](#linked-service-properties) podrobnosti o této propojené službě.
+Namísto použití vlastností **UserID** a **Password** doporučujeme použít vlastnost **encryptedCredential** . Podrobnosti o této propojené službě najdete v tématu [propojená služba systému souborů](#linked-service-properties) .
 
 **Vstupní datová sada Azure SQL:**
 
-Ukázka předpokládá, že jste vytvořili tabulku "MyTable" ve službě Azure SQL a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad.
+Ukázka předpokládá, že jste v Azure SQL vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad.
 
-Nastavení ``“external”: ”true”`` služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+Nastavení ``“external”: ”true”`` INFORMS Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {
@@ -505,9 +505,9 @@ Nastavení ``“external”: ”true”`` služby Data Factory informuje, že da
 }
 ```
 
-**V místním souboru systému výstupní datovou sadu:**
+**Výstupní datová sada místního systému souborů:**
 
-Data zkopírována do nového souboru každou hodinu. FolderPath a název souboru pro tento objekt blob se určují podle času spuštění řezu.
+Data se zkopírují do nového souboru každou hodinu. FolderPath a fileName pro objekt BLOB se určují na základě počátečního času řezu.
 
 ```JSON
 {
@@ -569,9 +569,9 @@ Data zkopírována do nového souboru každou hodinu. FolderPath a název soubor
 }
 ```
 
-**Aktivita kopírování v kanálu s SQL zdroje a jímky systému souborů:**
+**Aktivita kopírování v kanálu se zdrojovým objektem SQL a jímkuí systému souborů:**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **SqlSource**a **jímky** je typ nastaven na **FileSystemSink**. Dotaz SQL, který je určen pro **SqlReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady, a je naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **SqlSource**a typ **jímky** je nastavený na **FileSystemSink**. Dotaz SQL, který je zadán pro vlastnost **SqlReaderQuery** , vybere data za uplynulou hodinu ke zkopírování.
 
 ```JSON
 {
@@ -620,7 +620,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 }
 ```
 
-Můžete také namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
+Sloupce můžete také namapovat ze zdrojové datové sady na sloupce z datové sady jímky v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
- Další informace o klíčových faktorů, které ovlivňují výkon přesouvání dat (aktivita kopírování) ve službě Azure Data Factory a různé způsoby, jak optimalizovat, najdete v článku [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).
+ Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v [Průvodci výkonem a optimalizací aktivity kopírování](data-factory-copy-activity-performance.md).

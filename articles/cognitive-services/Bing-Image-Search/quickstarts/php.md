@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a PHP'
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu REST API a PHP'
 titleSuffix: Azure Cognitive Services
-description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí PHP a přijímat odpověďmi ve formátu JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API pomocí PHP a přijímat odpovědi JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,17 +9,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 2/12/2019
+ms.date: 8/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e8257f04df038d3706fe2a5e66fc6cd96ec8cd7d
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a875a234836cc04ef1b6a52b1087a9dd70dbe4e4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550890"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034414"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a PHP
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Hledání imagí pomocí Vyhledávání obrázků Bingu REST API a PHP
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 
@@ -49,9 +49,9 @@ Tuto aplikaci spustíte následujícím postupem.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>Vytvoření a provedení požadavku HTTP
+   ## <a name="construct-and-perform-an-http-request"></a>Konstrukce a provedení požadavku HTTP
 
-1. Proměnné z poslední krok slouží k přípravě požadavek HTTP do rozhraní API pro vyhledávání obrázků.
+1. Pomocí proměnných z posledního kroku Připravte požadavek HTTP na rozhraní Vyhledávání obrázků API.
 
     ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
@@ -59,7 +59,7 @@ Tuto aplikaci spustíte následujícím postupem.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Odeslat webové žádosti a získejte odpověď JSON.
+2. Odešlete webový požadavek a získejte odpověď JSON.
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ Zpracujte a zobrazte vrácenou odpověď JSON.
         return array($headers, $result);
     ```
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: dbc0829adc29848c9047368295a2ade589834e8b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620121"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70031861"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -60,12 +60,12 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
 * Kanada – střed
-* Středozápadní USA
+* Západní střed USA
 * East US
 * Východní USA 2
-* Středoseverní USA
-* Středojižní USA
-* Střední USA
+* Střed USA – sever
+* Střed USA – jih
+* Střed USA
 * USA – západ
 * USA – západ 2
 * Francie – střed
@@ -89,13 +89,13 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
-* Středozápadní USA
+* Západní střed USA
 * East US
 * Východní USA 2
-* Středojižní USA
+* Střed USA – jih
 * Západ USA
 * USA – západ 2
-* Střední USA
+* Střed USA
 * Francie – střed
 * Severní Evropa
 * Západní Evropa
@@ -174,10 +174,12 @@ New-AzStorageAccount `
 
 Vyberte následující možnosti, jak je znázorněno na obrázku:
 
-1. Vybrat *pro* **stav**
+1. Vybrat pro **stav**
 2. Vyberte *verzi 2* pro **protokol toků verze**. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
 3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true. Protokoly toku NSG se taky nedají Uložit do účtu úložiště s bránou firewall. 
 4. Nastavte dobu **uchování** na počet dní, pro které chcete ukládat data.
+> [!IMPORTANT]
+> V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).
 5. Pro **Analýza provozu stav**vyberte zapnuto.
 6. Vyberte interval zpracování. Na základě vašeho výběru budou protokoly toků shromažďovány z účtu úložiště a zpracovány Analýza provozu. Můžete zvolit interval zpracování každé 1 hodiny nebo každých 10 minut.
 7. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

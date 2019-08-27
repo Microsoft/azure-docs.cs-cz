@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534795"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036197"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: Analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Vytvoření nebo připojení existujícího výpočetního prostředku
+### <a name="create-or-attach-an-existing-compute-target"></a>Vytvořit nebo připojit existující cíl služby COMPUTE
 
 Pomocí Azure Machine Learning výpočetní služby, spravované služby, mohou odborníci na data poučení modely strojového učení v clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte Azure Machine Learning COMPUTE jako školicí prostředí. Následující kód vytvoří výpočetní clustery za vás, pokud už ve vašem pracovním prostoru neexistují.
 
- **Vytváření výpočetních operací trvá přibližně pět minut.** Pokud je výpočetní prostředí již v pracovním prostoru, kód ho použije a přeskočí proces vytváření.
+ **Vytvoření cíle výpočtů trvá asi pět minut.** Pokud je výpočetní prostředek již v pracovním prostoru, kód ho použije a přeskočí proces vytváření.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ Nyní máte představu o tom, jak tyto obrázky vypadají, a o očekávaném vý
 
 ### <a name="upload-data-to-the-cloud"></a>Nahrání dat do cloudu
 
-Data teď zpřístupníte vzdáleně tím, že tato data z místního počítače nahrajete do Azure. Pro vzdálené školení se pak dá použít. Úložiště dat je pohodlný konstruktor přidružený k vašemu pracovnímu prostoru, ve kterém můžete nahrávat nebo stahovat data. Můžete s ním také pracovat ze vzdálených výpočetních cílů. Je zajištěný účtem služby Azure Blob Storage.
+Data školení jste stáhli a použili v počítači, na kterém je spuštěný váš Poznámkový blok.  V další části budete zaškolovat model na vzdáleném Azure Machine Learning Compute.  Vzdálený výpočetní prostředek bude také potřebovat přístup k vašim datům. Pokud chcete poskytnout přístup, nahrajte data do centralizovaného úložiště dat přidruženého k vašemu pracovnímu prostoru. Toto úložiště dat poskytuje rychlý přístup k vašim datům při použití vzdálených výpočetních cílů v cloudu, stejně jako v datacentru Azure.
 
-Soubory mnist ručně zapsaných se nahrají do adresáře s názvem `mnist` v kořenovém adresáři úložiště dat:
+Soubory mnist ručně zapsaných nahrajte do adresáře s názvem `mnist` v kořenovém adresáři úložiště dat. Další informace najdete v tématu [přístup k datům z úložiště dat](how-to-access-data.md) .
 
 ```python
 ds = ws.get_default_datastore()

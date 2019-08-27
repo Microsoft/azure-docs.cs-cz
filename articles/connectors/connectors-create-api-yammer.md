@@ -1,6 +1,6 @@
 ---
-title: Připojení k Yammeru z Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovní postupy monitorování, publikovat a spravovat zprávy, informační kanály a další v Yammeru pomocí Azure Logic Apps
+title: Připojení k Yammeru z Azure Logic Apps | Microsoft Docs
+description: Automatizujte úlohy a pracovní postupy, které sledují, účtují a spravují zprávy, informační kanály a další ve službě Yammer pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,73 +11,73 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104727"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050638"
 ---
-# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Monitorovat a spravovat váš účet Yammeru pomocí Azure Logic Apps
+# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Monitorování a Správa účtu Yammer pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektor Yammer můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorování a správa zprávy, informační kanály a informace ve vašem účtu Yammeru, společně s další akce, například:
+Pomocí Azure Logic Apps a konektoru služby Yammer můžete vytvářet automatizované úlohy a pracovní postupy, které sledují a spravují zprávy, informační kanály a další informace ve vašem účtu Yammer, a také další akce, například:
 
-* Sleduje nové zprávy zobrazí ve sledované kanály a skupiny.
-* Získání zprávy, skupiny, sítě, uživatelů, podrobnosti a další.
-* Publikovat a zpráv.
+* Sledovat, když se v sledovaných kanálech a skupinách zobrazí nové zprávy.
+* Získejte zprávy, skupiny, sítě, podrobnosti uživatelů a další.
+* Zprávy post a like.
 
-Můžete použít aktivační události, které odpovědi z vašeho účtu Yammeru a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy s vaším účtem Yammeru. Také můžete mít další akce pomocí výstupu z akce Yammeru. Například při nové zprávy se zobrazují v informačních kanálů nebo skupin, můžete nasdílet zprávy Slack konektoru. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít triggery, které získávají odpovědi z vašeho účtu Yammer, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s vaším účtem Yammeru. V akcích služby Yammer můžete také použít další akce. Například když se nové zprávy zobrazí v části informační kanály nebo skupiny, můžete tyto zprávy sdílet s konektorem časové rezervy. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Váš účet a uživatelské přihlašovací údaje k Yammeru
+* Váš účet služby Yammer a přihlašovací údaje uživatele
 
-   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Yammeru.
+   Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu Yammer.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu Yammeru. Spustit s triggerem Yammeru [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použít akci Yammeru, začněte svou aplikaci logiky s další trigger, například, **opakování** aktivační události.
+* Aplikace logiky, ve které chcete získat přístup k vašemu účtu Yammer. Pokud chcete začít s triggerem Yammeru, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci Yammeru, spusťte aplikaci logiky s jinou triggerem, například triggerem **opakování** .
 
 ## <a name="connect-to-yammer"></a>Připojení k Yammeru
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Zvolte cestu: 
+1. Zvolit cestu: 
 
-   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "yammer". 
-   V seznamu triggerů vyberte trigger, který chcete. 
+   * Pro prázdné aplikace logiky zadejte do vyhledávacího pole "Yammer" jako filtr. 
+   V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
      -nebo-
 
    * Pro existující aplikace logiky: 
    
-     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+     * V posledním kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. 
 
        -nebo-
 
-     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-     Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+     * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
      
-       Do vyhledávacího pole zadejte jako filtr "yammer". 
-       V seznamu akcí vyberte požadovanou akci.
+       Do vyhledávacího pole zadejte jako filtr "Yammer". 
+       V seznamu akce vyberte akci, kterou chcete.
 
-1. Pokud se zobrazí výzva k přihlášení na Yammer, přihlaste se teď přihlašování istrovat hned, můžete povolit přístup.
+1. Pokud se zobrazí výzva, abyste se přihlásili ke službě Yammer, přihlaste se hned, abyste mohli povolený přístup.
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/yammer/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/yammer/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

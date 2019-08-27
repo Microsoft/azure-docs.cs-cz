@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175654"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032353"
 ---
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-K vytvoření instančního objektu s přístupem do vašeho registru kontejneru, spusťte následující skript [Azure Cloud Shell](../articles/cloud-shell/overview.md) nebo místní instalaci [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). Skript formátována pro prostředí Bash.
+Pokud chcete vytvořit instanční objekt s přístupem k registru kontejneru, spusťte následující skript v [Azure Cloud Shell](../articles/cloud-shell/overview.md) nebo místní instalaci rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Skript je naformátován pro prostředí bash shell.
 
-Před spuštěním skriptu, aktualizujte `ACR_NAME` proměnné s názvem vašeho registru kontejneru. `SERVICE_PRINCIPAL_NAME` Hodnota musí být jedinečný v rámci vašeho tenanta Azure Active Directory. Pokud se zobrazí "`'http://acr-service-principal' already exists.`" Chyba, zadejte jiný název pro instanční objekt.
+Před spuštěním skriptu aktualizujte `ACR_NAME` proměnnou názvem registru kontejneru. `SERVICE_PRINCIPAL_NAME` Hodnota musí být jedinečná v rámci vašeho tenanta Azure Active Directory. Pokud se zobrazí`'http://acr-service-principal' already exists.`chyba, zadejte jiný název instančního objektu.
 
-Volitelně můžete upravit `--role` hodnotu [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] příkazu, pokud budete chtít udělit jiná oprávnění. Úplný seznam rolí, najdete v části [ACR role a oprávnění](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
+V případě, že chcete `--role` udělit různá oprávnění, můžete volitelně upravit hodnotu v příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Úplný seznam rolí najdete v tématu [ACR role a oprávnění](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
 
-Po spuštění skriptu, poznamenejte si hodnotu objektu služby **ID** a **heslo**. Jakmile budete mít svoje přihlašovací údaje, můžete nakonfigurovat aplikace a služby pro ověření do vašeho registru kontejneru jako instanční objekt služby.
+Po spuštění skriptu si poznamenejte **ID** a **heslo**instančního objektu. Jakmile budete mít své přihlašovací údaje, můžete nakonfigurovat své aplikace a služby pro ověřování v registru kontejneru jako instanční objekt.
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
 [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-## <a name="use-an-existing-service-principal"></a>Použít existující instanční objekt služby
+### <a name="use-an-existing-service-principal"></a>Použití existujícího instančního objektu
 
-Pokud chcete udělit přístup k registru do existujícího instančního objektu, musíte přiřadit nové role pro instanční objekt. Stejně jako u vytváření nového instančního objektu, můžete udělit o přijetí změn, push a pull a přístup vlastníka, mimo jiné.
+Chcete-li udělit přístup k registru existujícímu instančnímu objektu, je nutné objektu služby přiřadit novou roli. Stejně jako u vytváření nového instančního objektu můžete udělit přístup pro vyžádání, nabízení a vyžádání a přístup k vlastníkovi mimo jiné.
 
-Následující skript pomocí [vytvořit přiřazení role az] [ az-role-assignment-create] příkaz *o přijetí změn* oprávnění instančnímu objektu služby, který jste zadali v `SERVICE_PRINCIPAL_ID` proměnné. Upravit `--role` hodnotu, pokud byste chtěli poskytnout různé úrovně přístupu.
+Následující skript pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] udělí oprávnění k vyžádanému objektu služby, který `SERVICE_PRINCIPAL_ID` zadáte v proměnné. Pokud chcete udělit jinou úroveň přístupu, upravte hodnotu.`--role`
 
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->

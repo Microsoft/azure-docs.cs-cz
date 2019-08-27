@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bf63a9fb552b2a41ce7b9945faeda362592d8efb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558790"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048586"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 
@@ -25,11 +25,11 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
 1. Na kartě **základy** vyplňte pole následujícím způsobem:
 
-   - **Předplatné**: Vyberte předplatné, které chcete použít pro vaše centrum.
+   - **Předplatné:** Vyberte předplatné, které chcete použít pro vaše centrum.
 
    - **Skupina prostředků**: Vyberte skupinu prostředků nebo vytvořte novou. Pokud chcete vytvořit nový, vyberte **vytvořit novou** a vyplňte název, který chcete použít. Pokud chcete použít existující skupinu prostředků, vyberte tuto skupinu prostředků. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../articles/azure-resource-manager/manage-resource-groups-portal.md).
 
-   - **Oblast**: Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže.
+   - **Oblast:** Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže.
 
    - **Název IoT Hub**: Zadejte název svého rozbočovače. Tento název musí být globálně jedinečný. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
@@ -43,7 +43,7 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
     Tato obrazovka vám umožní nastavit následující hodnoty:
 
-    - **Úroveň cen a škálování**: Vybraná úroveň. Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkcí potřebujete, a kolik zpráv odesíláte v rámci řešení za den. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu IoT Hub na úrovni Free.
+    - **Úroveň cen a škálování**: Vybraná úroveň. Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkcí potřebujete, a kolik zpráv odesíláte prostřednictvím řešení za den. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu IoT Hub na úrovni Free.
 
     - **IoT Hub jednotky**: Počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
     Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).

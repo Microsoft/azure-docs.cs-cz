@@ -1,6 +1,6 @@
 ---
-title: Škálovatelnost služeb Service Fabric | Dokumentace Microsoftu
-description: Popisuje postup škálování služby Service Fabric
+title: Škálovatelnost služeb Service Fabric Services | Microsoft Docs
+description: Popisuje, jak škálovat služby Service Fabric Services.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -12,31 +12,31 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/18/2017
+ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781111"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035923"
 ---
 # <a name="scaling-in-service-fabric"></a>Škálování v Service Fabric
-Azure Service Fabric umožňuje snadno vytvářet škálovatelné aplikace tím, že spravuje služby, oddíly a repliky na uzlech clusteru. Mnoho úloh na stejném hardwaru umožňuje využití maximální prostředků, ale také poskytuje flexibilitu z hlediska zvoleném způsobu škálovat úlohy. Toto video na Channel 9 popisuje, jak se dají vytvářet škálovatelné mikroslužbových aplikací:
+Azure Service Fabric usnadňuje vytváření škálovatelných aplikací tím, že spravuje služby, oddíly a repliky na uzlech clusteru. Spouštění mnoha úloh na stejném hardwaru umožňuje maximální využití prostředků, ale také nabízí flexibilitu při volbě škálování úloh. Tento video pro kanál 9 popisuje, jak můžete vytvářet škálovatelné aplikace mikroslužeb:
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T116/player]
 
-Škálování v Service Fabric je lze provést několika různými způsoby:
+Škálování v Service Fabric se provádí několika různými způsoby:
 
-1. Škálování vytvořením nebo odebíráním instancí bezstavové služby
-2. Škálování vytvořením nebo nové odebírání s názvem služby
-3. Škálování vytvořením nebo nové odebírání pojmenované instance aplikace
-4. Škálování oddílů služby
-5. Škálování podle přidávání a odebírání uzlů z clusteru 
-6. Škálování pomocí Cluster Resource Manageru metriky
+1. Škálování vytvořením nebo odebráním bezstavových instancí služby
+2. Škálování vytvořením nebo odebráním nových pojmenovaných služeb
+3. Škálování vytvořením nebo odebráním nových instancí s názvem aplikace
+4. Škálování pomocí dělených služeb
+5. Škálování přidáváním a odebíráním uzlů z clusteru 
+6. Škálování pomocí Správce prostředků metriky clusterů
 
-## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Škálování vytvořením nebo odebíráním instancí bezstavové služby
-Jeden z nejjednodušších způsobů škálování v Service Fabric funguje s bezstavové služby. Když vytvoříte bezstavovou službu, získáte možnost definovat `InstanceCount`. `InstanceCount` Určuje, kolik kopií spuštěné této služby v kódu jsou vytvořeny při spuštění služby. Řekněme například, že je 100 uzlů v clusteru. Také Předpokládejme, že služba je vytvořená pomocí `InstanceCount` 10. Za běhu těchto 10 běžící kopie kód všechny stát příliš zaneprázdněn a nemůže (nebo může není dostatečně zaneprázdněn). Chcete-li změnit počet instancí, které je jeden způsob, jak škálovat úlohy. Například některá část kódu, sledování a správu můžete změnit stávající počet instancí, 50 nebo 5, v závislosti na tom, jestli zatížení je potřeba horizontální snížení nebo navýšení kapacity na základě zatížení. 
+## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Škálování vytvořením nebo odebráním bezstavových instancí služby
+Jedním z nejjednodušších způsobů, jak škálovat v rámci Service Fabric fungují bez bezstavových služeb. Když vytvoříte bezstavovou službu, získáte možnost definovat `InstanceCount`. `InstanceCount`definuje, kolik spuštěných kopií kódu této služby se vytvoří při spuštění služby. Řekněme například, že cluster obsahuje 100 uzlů. Řekněme také, že je služba vytvořená s `InstanceCount` 10. Během běhu by tyto 10 běžící kopie kódu mohly být příliš zaneprázdněné (nebo nemusí být dostatečně zaneprázdněné). Jedním ze způsobů, jak tuto úlohu škálovat, je změna počtu instancí. Například část kódu pro monitorování nebo správu může změnit stávající počet instancí na 50 nebo na 5 v závislosti na tom, zda zatížení musí na základě zatížení nebo na základě zatížení škálovat. 
 
 C#:
 
@@ -46,13 +46,13 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-Powershell:
+Prostředí
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
 ```
-### <a name="using-dynamic-instance-count"></a>Použití dynamické počet instancí
-Konkrétně pro bezstavové služby Service Fabric nabízí automatické způsob, jak změnit počet instancí. To umožňuje službě dynamicky škálovat počet uzlů, které jsou k dispozici. Způsob, jak začít používat toto chování je nastavit počet instancí = -1. InstanceCount = -1 je instrukce do Service Fabric s textem "Spustit tuto bezstavovou službu na všech uzlech." Pokud se změní z počtu uzlů, Service Fabric automaticky změní počet instancí tak, aby odpovídaly, zajištění, že služba běží na všech uzlech platný. 
+### <a name="using-dynamic-instance-count"></a>Použití dynamického počtu instancí
+Service Fabric pro bezstavové služby konkrétně nabízí automatický způsob, jak změnit počet instancí. Díky tomu je možné službu dynamicky škálovat s počtem uzlů, které jsou k dispozici. Způsob, jak se vyjádřit k tomuto chování, je nastavení počtu instancí =-1. InstanceCount =-1 je pokyn Service Fabric, který říká "spuštění této bezstavové služby na všech uzlech". Pokud se počet uzlů změní, Service Fabric automaticky změní počet instancí tak, aby odpovídal, aby služba běžela na všech platných uzlech. 
 
 C#:
 
@@ -63,90 +63,94 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Powershell:
+Prostředí
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
 ```
 
-## <a name="scaling-by-creating-or-removing-new-named-services"></a>Škálování vytvořením nebo nové odebírání s názvem služby
-Pojmenované instanci služby je konkrétní instance daného typu služby (viz [životního cyklu aplikace Service Fabric](service-fabric-application-lifecycle.md)) v rámci některé instance s názvem aplikace v clusteru. 
+## <a name="scaling-by-creating-or-removing-new-named-services"></a>Škálování vytvořením nebo odebráním nových pojmenovaných služeb
+Pojmenovaná instance služby je konkrétní instance typu služby (viz [Service Fabric životní cyklus aplikací](service-fabric-application-lifecycle.md)) v rámci některé pojmenované instance aplikace v clusteru. 
 
-Nové instance s názvem služby můžou vytvořit (nebo odebrání) jako služba stane více nebo méně zaneprázdněn. To umožňuje požadavky na možné rozdělit do více instancí služby, obvykle umožňuje na stávající služby ke snížení zatížení. Při vytváření služby Service Fabric Cluster Resource Manager umístí služeb v clusteru distribuované způsobem. Přesné rozhodnutí, která se vztahují [metriky](service-fabric-cluster-resource-manager-metrics.md) v clusteru a další pravidla pro umístění. Služby lze vytvořit několika různými způsoby, ale nejčastěji používané jsou buď prostřednictvím akce správy, jako je někdo volání [ `New-ServiceFabricService` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), nebo kód volal [ `CreateServiceAsync` ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync` Můžete dokonce možné volat v rámci další služby spuštěné v clusteru.
+Nově pojmenované instance služby je možné vytvořit (nebo odebrat), protože služby jsou zaneprázdněné nebo menší. To umožňuje, aby se požadavky rozšířily mezi další instance služby, což obvykle umožňuje zatížení stávajících služeb. Při vytváření služeb Cluster Service Fabric Správce prostředků umístí služby v clusteru distribuovaným způsobem. Přesná rozhodnutí se řídí metrikami v [](service-fabric-cluster-resource-manager-metrics.md) clusteru a dalšími pravidly umístění. Služby je možné vytvořit několika různými způsoby, ale nejběžnější jsou buď prostřednictvím akcí správy, jako je volaná [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)osoba nebo voláním [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)kódu. `CreateServiceAsync`lze dokonce volat v rámci jiných služeb spuštěných v clusteru.
 
-Vytváření služby dynamicky lze použít v všechny možné druhy scénářů a je běžný vzor. Představte si třeba stavové služby, který představuje určitý pracovní postup. Volání představující práci se chystáte zobrazí pro tuto službu a tato služba bude provádět kroky pro tento průběh pracovního postupu a záznam. 
+Dynamické vytváření služeb se dá použít v nejrůznějších scénářích a je to běžný vzor. Zvažte například stavovou službu, která představuje konkrétní pracovní postup. Volání, která představují práci, se budou zobrazovat až k této službě a tato služba bude provádět kroky tohoto pracovního postupu a zaznamenat průběh. 
 
-Jak by provedete škálování této konkrétní služby? Služba může být více tenantů v nějaké podobě a přijímat volání a aktivovat kroky pro mnoho různých instancí stejného pracovního postupu všechny najednou. Však, který může provádět kód složitější, protože teď má se starat o mnoho různých instancí stejného pracovního postupu, všechno v různých fázích a z různých zákazníků. Navíc zpracování více pracovních postupů ve stejnou dobu škálování problém nevyřeší. Je to proto, že v určitém okamžiku tato služba bude využívat příliš mnoho prostředků a nevejde se na konkrétní počítač. Mnoho služeb není pro tento model sestavený na prvním místě i nastat potíže kvůli některé vlastní kritickým bodem nebo zpomalení ve svém kódu. Tyto druhy problémů, že bude služba nechcete pracovat tak dobře, když počet souběžných pracovních postupů, které je sledování získá větší.  
+Jak provedete tuto konkrétní škálu služeb? Služba může mít více tenantů v některém formuláři a přijímat volání a odkázat na mnoho různých instancí stejného pracovního postupu najednou. To však může udělat složitější kód, protože se teď musí zabývat spoustou různých instancí stejného pracovního postupu, a to vše v různých fázích a od různých zákazníků. Také zpracování více pracovních postupů ve stejnou dobu neřeší problém škálování. Důvodem je, že v určitém okamžiku bude tato služba spotřebovávat příliš mnoho prostředků, aby se vešly na konkrétní počítač. Mnoho služeb, které nejsou pro tento model sestavené, na prvním místě, taky dochází k potížím kvůli nějakému kritickému kritickému bodu nebo zpomalení kódu. Tyto typy problémů způsobují nefunkčnost služby, i když je počet souběžných pracovních postupů, které sledování sleduje, větší.  
 
-Řešení je k vytvoření instance této služby pro každou jinou instanci pracovního postupu, který chcete sledovat. To je skvělé model a funguje, zda je Bezstavová nebo stavová služba. Pro tohoto modelu chcete pracovat je obvykle jiné službě, která funguje jako "Správce úloh služby". Úloha této služby je pro příjem požadavků a směrovat požadavky do dalších služeb. Správce může dynamicky vytvářet instance služby pracovního vytížení, pokud obdrží zprávu a pak předejte u požadavků na tyto služby. Manager service může také přijímat zpětná volání, po dokončení jeho úlohy služby daného pracovního postupu. Přijetí tato zpětná volání správce ji může odstranit tuto instanci služby pracovního postupu nebo necháte, pokud se očekává, že další volání. 
+Řešením je vytvořit instanci této služby pro každou jinou instanci pracovního postupu, kterou chcete sledovat. Toto je skvělý vzor a funguje bez stavu nebo stav služby. Aby tento model fungoval, obvykle se jedná o jinou službu, která funguje jako "služba Správce úloh". Úkolem této služby je přijímat požadavky a směrovat tyto požadavky na jiné služby. Správce může dynamicky vytvořit instanci služby úlohy, když obdrží zprávu, a pak předávat požadavky na tyto služby. Služba Správce může také přijímat zpětná volání, když daná služba pracovního postupu dokončí svou úlohu. Když správce obdrží tato zpětná volání, může odstranit tuto instanci služby pracovního postupu nebo ji nechat v případě, že je očekáváno více volání. 
 
-Pokročilé verze tohoto typu správce, můžete také vytvořit fondy služby, které spravuje. Fond pomáhá zajistit, že při příchodu novou žádost o to nemusí čekat na zprovoznění služby. Místo toho je správce můžete pouze výběr služby pracovního postupu, který není aktuálně zaneprázdněn z fondu nebo směrovat náhodně. Udržování fondu služeb dostupných díky zpracování nových žádostí o rychleji, protože je méně pravděpodobné, že žádost musí počkat na novou službu, chcete-li být spuštěné. Vytváření nových služeb je rychlé, ale není zdarma nebo okamžité. Fond pomáhá minimalizovat čas, kdy má požadavek se má čekat před probíhá údržba. Tento správce a vzor fondu zobrazí často po dobu odezvy, na kterých záleží nejvíce. Služba Řízení front žádosti a vytvoření služby na pozadí a _pak_ předáním je také oblíbené správce vzor, jako je vytváření a odstraňování služby podle některých sledování množství práce tuto službu momentálně má čekající na vyřízení . 
+Rozšířené verze tohoto typu správce mohou dokonce vytvořit fondy služeb, které spravuje. Fond pomáhá zajistit, že pokud se nová žádost dostane do, nemusí počkat, až se služba vytočí. Místo toho může správce vybrat pouze službu pracovního postupu, která není aktuálně zaneprázdněná z fondu, nebo se dá náhodně směrovat. Udržování dostupného fondu služeb zajišťuje rychlejší zpracování nových požadavků, protože je méně pravděpodobný, že požadavek čeká na vyřízení nové služby. Vytváření nových služeb je rychlé, ale ne bezplatné nebo okamžité. Tento fond pomáhá minimalizovat dobu, po kterou musí požadavek čekat, než se obsluhuje. Často se vám zobrazí tento model manažer a fond, pokud se v něm nejvíce vyskytují doby odezvy. Zařazení požadavku do fronty a vytvoření služby na pozadí a jejich předání na je také oblíbený vzor správce, který vytváří a odstraňuje služby na základě určitého sledování množství práce, které služba aktuálně čeká. 
 
-## <a name="scaling-by-creating-or-removing-new-named-application-instances"></a>Škálování vytvořením nebo nové odebírání pojmenované instance aplikace
-Vytváření a odstraňování instance celá aplikace je podobný vzorec, podle kterého vytváření a odstraňování služby. Pro tento model je některé Správce služby, který provádí rozhodnutí na základě požadavků, které se zobrazují a informace, že přijímá od ostatních služeb v clusteru. 
+## <a name="scaling-by-creating-or-removing-new-named-application-instances"></a>Škálování vytvořením nebo odebráním nových instancí s názvem aplikace
+Vytváření a odstraňování instancí celé aplikace se podobá vzorům vytváření a odstraňování služeb. Pro tento model je k dispozici některá služba manažera, která provádí rozhodnutí na základě požadavků, které vidí, a informací, které přijímá od ostatních služeb v rámci clusteru. 
 
-Kdy je vhodné vytvořit novou instanci s názvem aplikace používat místo vytvoření nové instance služby s názvem v některé již existující aplikaci? Existuje několik případů:
+Kdy by se měl místo vytvoření nové instance pojmenované služby v některé z již existujících aplikací vytvořit nová pojmenovaná aplikace? Existuje několik případů:
 
-  * Nová instance aplikace je pro zákazníky, jejíž kód je potřeba spustit některé konkrétní identit nebo nastavení zabezpečení.
-    * Service Fabric umožňuje definovat balíčky odlišný kód ke spuštění v rámci konkrétní identity. Pokud chcete spustit balíček kódu v rámci různých identit, aktivace musí se provést v různé instance aplikace. Představte si případ, kdy máte stávající zákazník úloh nasazených. Ty mohou být spuštěné pod určitou identitou, vám umožní monitorovat a řídit jeho přístup k jiné prostředky, jako jsou vzdálené databáze nebo jiných systémů. V takovém případě Pokud nový zákazník zaregistruje, pravděpodobně nechcete aktivujte svůj kód ve stejném kontextu (procesního prostoru). Přestože lze to ztěžuje kódu služby tak, aby fungoval v kontextu konkrétní identitu. Obvykle potřebujete další zabezpečení, izolace a kód pro správu identit. Místo použití různých pojmenované instance služby v rámci stejné instance aplikace a proto stejný proces místa, můžete použít různé pojmenované instance aplikace Service Fabric. To usnadňuje definování kontextů jiná identita.
-  * Nová instance aplikace slouží také jako způsob konfigurace
-    * Ve výchozím nastavení všechny instance služby s názvem typu konkrétní služby v rámci instancí aplikace poběží v rámci stejného procesu v daném uzlu. To znamená, že když každá instance služby můžete nakonfigurovat různě, takový postup je složitější. Služby musíte mít některé token, které používají pro vyhledání jejich konfigurace v rámci konfiguračního balíčku. To je obvykle pouze název služby. To funguje správně, ale jeho páry v odstupu konfiguraci na názvy jednotlivých služeb pojmenované instance v rámci této instance aplikace. To může být matoucí a náročná na správu, protože konfigurace je obvykle artefaktem návrhu dobu s určitými hodnotami instance aplikace. Vytvoření další služby vždy znamená více upgradů aplikací, chcete-li změnit informace v rámci balíčky konfigurace nebo k nasazení nové tak, aby nové služby můžete vyhledat jejich konkrétní informace. Často je snazší vytvářet zcela novou aplikaci s názvem instance. Pak můžete použít parametry aplikace nastavení jakékoli konfigurace je nezbytná pro služby. Tímto způsobem všechny služby, které jsou vytvořeny v rámci, které s názvem instance aplikace může zdědit nastavení konkrétní konfiguraci. Například namísto toho, aby jeden konfigurační soubor s nastavením a vlastní nastavení pro každý zákazník, jako je například tajné kódy, nebo za omezení prostředků na zákazníka, by místo toho máte jinou aplikaci instanci pro každého zákazníka s těmito nastaveními přepsat. 
-  * Nová aplikace slouží jako hranice upgradu
-    * V Service Fabric různé pojmenované instance aplikace slouží jako hranice pro upgrade. Upgrade jedné instance s názvem aplikace neovlivní kód, který je spuštěna jiná instance s názvem aplikace. Různé aplikace skončí s různými verzemi stejného kódu na stejné uzly. Pokud je třeba provést škálování rozhodnutí, protože můžete zvolit, jestli se nový kód postupujte podle stejného upgrady jako jiné služby v nebo Ne, může to být faktor. Řekněme například, že volání dorazí na správce služby, která odpovídá škálovat úlohy pro konkrétní zákazníky díky vytváření a odstraňování služby dynamicky. V tomto případě však volání je pro zatížení související s _nové_ zákazníka. Většina zákazníků jako navzájem izolované nejen z důvodů zabezpečení a konfigurace uvedených výše, ale protože nabízí větší flexibilitu z hlediska s konkrétní verzí softwaru a zvolíte, když se upgraduje. Může také vytvořit novou instanci aplikace a vytvořte službu existuje jednoduše do oddílu dalších množství služby, které bude touch jeden upgradu. Instance samostatné aplikace poskytují větší členitost při provádění upgrady aplikací a také povolit A / B testování a modrozelené nasazení. 
-  * Existující instance aplikace je plná
-    * V Service Fabric [kapacity aplikace](service-fabric-cluster-resource-manager-application-groups.md) je koncept, můžete použít k řízení množství prostředků, které jsou k dispozici pro konkrétní aplikaci instance. Například můžete rozhodnout, že uvedená služba musí mít jiná instance vytvořené ke škálování služby. Tato instance aplikace však je mimo kapacitu pro určité metriky. Pokud tohoto konkrétního zákazníka nebo úloha stále mají udělit další prostředky, pak vám může zvýšit existující kapacitu pro danou aplikaci nebo vytvořte novou aplikaci. 
+  * Nová instance aplikace je určena pro zákazníky, jejichž kód musí běžet s určitou konkrétní identitou nebo nastavením zabezpečení.
+    * Service Fabric umožňuje definovat různé balíčky kódu, které se mají spustit pod konkrétními identitami. Aby bylo možné spustit stejný balíček kódu pod různými identitami, musí být aktivace provedena v různých instancích aplikace. Vezměte v úvahu případ, kdy jste nasadili stávající úlohy zákazníka. Ty mohou být spuštěny pod určitou identitou, takže můžete monitorovat a řídit jejich přístup k jiným prostředkům, jako jsou vzdálené databáze nebo jiné systémy. V takovém případě, když se nový zákazník zaregistruje, pravděpodobně nebudete chtít aktivovat kód ve stejném kontextu (místo procesu). I když to může být obtížnější, aby kód služby fungoval v kontextu konkrétní identity. Obvykle musíte mít více zabezpečení, izolaci a kód správy identit. Namísto použití různých pojmenovaných instancí služby v rámci stejné instance aplikace a tedy stejného prostoru procesu můžete použít různé pojmenované Service Fabric instance aplikace. To usnadňuje definování různých kontextů identity.
+  * Nová instance aplikace slouží také jako způsob konfigurace.
+    * Ve výchozím nastavení se všechny pojmenované instance služby konkrétního typu služby v rámci instance aplikace spustí ve stejném procesu na daném uzlu. To znamená, že zatímco každou instanci služby můžete nakonfigurovat odlišně, je to tak komplikované. Služby musí mít nějaký token, který používají k vyhledání konfigurace v rámci konfiguračního balíčku. Obvykle je to pouze název služby. To funguje dobře, ale Couples konfiguraci na názvy jednotlivých instancí služby v rámci dané instance aplikace. To může být matoucí a obtížné spravovat, protože konfigurace je obvykle artefaktem doby návrhu s hodnotami specifickými pro instanci aplikace. Vytváření dalších služeb vždy znamená více upgradů aplikace, aby bylo možné změnit informace v konfiguračních balíčcích nebo nasadit nové, aby nové služby mohly vyhledat konkrétní informace. Často je snazší vytvořit celou novou pojmenovanou instanci aplikace. Pak můžete použít parametry aplikace k nastavení libovolné konfigurace, která je pro služby nezbytná. Tímto způsobem mohou všechny služby, které jsou vytvořeny v rámci této pojmenované instance aplikace, dědit konkrétní nastavení konfigurace. Například namísto použití jednoho konfiguračního souboru s nastavením a přizpůsobením pro každého zákazníka, jako jsou tajná klíčová a zákaznická omezení, byste měli pro každého zákazníka s těmito nastaveními použít jinou instanci aplikace. přetížen. 
+  * Nová aplikace slouží jako hranice upgradu.
+    * V rámci Service Fabric slouží jako hranice pro upgrade různé pojmenované instance aplikace. Upgrade jedné pojmenované instance aplikace nebude mít vliv na kód, na kterém je spuštěná jiná pojmenovaná instance aplikace. Různé aplikace ukončí provoz různých verzí stejného kódu na stejných uzlech. To může být faktor, pokud potřebujete udělat rozhodnutí o škálování, protože si můžete vybrat, jestli se má nový kód řídit stejnými upgrady jako jiná služba nebo ne. Řekněme například, že se volání dorazí na službu manažera, která zodpovídá za to, že se budou škálovat konkrétní úlohy zákazníka tím, že se dynamicky vytvoří a odstraní služby. V tomto případě je však volání pro úlohu přidruženou k novému zákazníkovi . Většina zákazníků, jako je izolace od sebe navzájem, není pouze pro výše uvedené důvody zabezpečení a konfigurace, protože poskytuje větší flexibilitu při spuštění konkrétních verzí softwaru a výběr při jejich upgradu. Můžete také vytvořit novou instanci aplikace a vytvořit službu. stačí k dalšímu rozdělení množství služeb, na které se bude upgradovat jiný upgrade. Samostatné instance aplikace poskytují větší členitost při provádění upgradů aplikace a také umožňují testování/B a nasazení Blue/zelený. 
+  * Existující instance aplikace je plná.
+    * V Service Fabric je [kapacita aplikace](service-fabric-cluster-resource-manager-application-groups.md) koncept, který můžete použít k řízení množství prostředků dostupných pro konkrétní instance aplikace. Například se můžete rozhodnout, že daná služba musí mít vytvořenou jinou instanci, aby mohla škálovat. Tato instance aplikace je ale pro určitou metriku mimo kapacitu. Pokud by měl tomuto konkrétnímu zákazníkovi nebo úlohám být stále přiděleno více prostředků, můžete buď zvýšit stávající kapacitu této aplikace, nebo vytvořit novou aplikaci. 
 
 ## <a name="scaling-at-the-partition-level"></a>Škálování na úrovni oddílu
-Service Fabric podporuje dělení. Dělení služby rozdělí na několik logické a fyzické oddíly, z nichž každý pracuje nezávisle na sobě. To je užitečný v případě stavové služby, protože nikdo sady replik musí zpracovat všechna volání a manipulaci se všemi stavu najednou. [Dělení přehled](service-fabric-concepts-partitioning.md) poskytuje informace o typech schémata dělení, které jsou podporovány. Repliky každý oddíl jsou rozdělené mezi uzly v clusteru, distribuci zatížení tuto službu a zajištění, že žádná služba jako celek ani oddíl má jediný bod selhání. 
+Service Fabric podporuje dělení. Dělení rozdělí službu do několika logických a fyzických sekcí, z nichž každý funguje nezávisle. To je užitečné u stavových služeb, protože žádná jedna sada replik nesmí zpracovávat všechna volání a manipulovat se všemi stavy najednou. [Přehled dělení](service-fabric-concepts-partitioning.md) poskytuje informace o typech podporovaných schémat dělení. Repliky jednotlivých oddílů jsou rozloženy mezi uzly v clusteru a distribuují se zatížení této služby a zajišťují, že žádná služba jako celek nebo oddíl není v jednom bodě selhání. 
 
-Vezměte v úvahu služba, která používá ranged schéma rozdělení oddílů s dolní klíč 0, vysoká hodnota klíče 99 a počet oddílů 4. V třemi uzly clusteru může služba rozloží s čtyři replik, které sdílejí prostředky na každém uzlu, jak je znázorněno zde:
+Vezměte v úvahu službu, která používá schéma dělení na oddíly s nízkým klíčem 0, vysokým klíčem 99 a počtem oddílů 4. V clusteru se třemi uzly může být služba rozložená se čtyřmi replikami, které sdílejí prostředky na jednotlivých uzlech, jak je znázorněno zde:
 
 <center>
 
 ![Rozložení oddílů se třemi uzly](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
-Pokud zvýšíte počet uzlů, Service Fabric se přesunout některé z existujících replik. Například Řekněme Dejme tomu, že počet uzlů zvýšení čtyři, tak i repliky získat znovu distribuovat. Služba teď má teď tří replik spuštěných v jednotlivých uzlech, každý patřící do různých oddílů. To umožňuje lepší využití prostředků, protože nový uzel není úplné. Obvykle také zlepšuje výkon jako každá služba má k dispozici více prostředků.
+Pokud zvýšíte počet uzlů, Service Fabric přesunou některé z existujících replik. Řekněme například, že počet uzlů se zvyšuje na čtyři a repliky se znovu distribuují. Teď služba má teď na každém uzlu spuštěné tři repliky, z nichž každá patří do různých oddílů. To umožňuje lepší využití prostředků, protože nový uzel není studen. Obvykle vylepšuje výkon, protože každá služba má k dispozici více prostředků.
 
 <center>
 
 ![Rozložení oddílů se čtyřmi uzly](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
-## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Škálování s využitím Service Fabric Cluster Resource Manager a metriky
-[Metriky](service-fabric-cluster-resource-manager-metrics.md) se, jak služby express jejich spotřeba prostředků se Service Fabric. Cluster Resource Manager pomocí metrik dává příležitost uspořádat a optimalizovat rozložení clusteru. Například může být spousta prostředků v clusteru, ale nemusí být přiděleny ke službám, které aktuálně provádějí práci. Použití metrik umožňuje Cluster Resource Manageru pro změnu uspořádání clusteru a ujistěte se, že služby mají přístup k prostředkům, k dispozici. 
+## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Škálování pomocí Service Fabric Správce prostředků clusteru a metrik
+[Metrikami](service-fabric-cluster-resource-manager-metrics.md) je způsob, jakým služby vyjadřují spotřebu prostředků Service Fabric. Použití metrik poskytuje clusteru Správce prostředků příležitost k reorganizaci a optimalizaci rozložení clusteru. V clusteru může být například dostatek prostředků, ale nemusí být přidělena službám, které aktuálně pracují. Použití metrik umožňuje Správce prostředků clusteru reorganizovat cluster, aby bylo zajištěno, že služby budou mít přístup k dostupným prostředkům. 
 
 
-## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Škálování podle přidávání a odebírání uzlů z clusteru 
-Další možností pro škálování s využitím Service Fabric je ke změně velikosti clusteru. Změna velikosti clusteru znamená přidávání nebo odebírání uzlů pro jeden nebo více typy uzlů v clusteru. Zvažte například případ, ve kterém jsou všechny uzly v clusteru hot. To znamená, že prostředky clusteru téměř všechny využívat. Přidání dalších uzlů do clusteru v tomto případě je nejlepší způsob, jak škálovat. Po nových uzlů připojit ke clusteru Service Fabric Cluster Resource Manager přejde služeb, což vede k méně celková zátěž existujících uzlů. Bezstavové služby se počet instancí = -1, další služby, automaticky se vytvářejí instance. To umožňuje několik volání pro přesun z existujících uzlů do nových uzlů. 
+## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Škálování přidáváním a odebíráním uzlů z clusteru 
+Další možností pro škálování pomocí Service Fabric je změna velikosti clusteru. Změna velikosti clusteru znamená přidání nebo odebrání uzlů pro jeden nebo více typů uzlů v clusteru. Zvažte například případ, kdy jsou všechny uzly v clusteru horké. To znamená, že prostředky clusteru jsou skoro spotřebovány. V takovém případě je nejlepším způsobem, jak škálovat, přidání dalších uzlů do clusteru. Jakmile se nové uzly připojí ke clusteru, Cluster Service Fabric Správce prostředků přesune služby na ně, což vede k menšímu celkovému zatížení u stávajících uzlů. U bezstavových služeb s počtem instancí =-1 se automaticky vytvoří více instancí služby. To umožňuje, aby některá volání byla přesunuta z existujících uzlů do nových uzlů. 
 
-Další informace najdete v tématu [škálování clusterů](service-fabric-cluster-scaling.md).
+Další informace najdete v tématu [škálování clusteru](service-fabric-cluster-scaling.md).
+
+## <a name="choosing-a-platform"></a>Výběr platformy
+
+Kvůli rozdílům v implementaci mezi operačními systémy může být použití Service Fabric se systémem Windows nebo Linux důležitou součástí škálování aplikace. Jednou z možných bariér je to, jak se provádí dvoufázové protokolování. Service Fabric v systému Windows používá ovladač jádra pro protokol jednoho počítače, který je sdílen mezi replikami stavové služby. Tento protokol se vyváží přibližně o 8 GB. Linux na druhé straně používá pracovní protokol 256 MB pro každou repliku, takže je méně ideální pro aplikace, které chtějí maximalizovat počet nenáročných replik služby spuštěných v daném uzlu. Tyto rozdíly v požadavcích na dočasné úložiště by mohly potenciálně informovat o požadované platformě nasazení clusteru Service Fabric.
 
 ## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
-Pojďme se na všechny nápady, které jsme probrali tady a komunikovat prostřednictvím příklad. Vezměte v úvahu následující služby: Pokoušíte se vytvořit službu, která funguje jako adresář, udržuje názvy a kontaktní údaje. 
+Pojďme pořizovat všechny nápady, které tady probereme, a promluvit si příklad. Vezměte v úvahu následující službu: Pokoušíte se vytvořit službu, která funguje jako adresář, a podržet se na jména a kontaktní údaje. 
 
-Přímo před jeho zahájením máte spoustu pro otázky týkající se škálování: Počet uživatelů, kteří budou mít? Kolik kontakty se každý uživatel uložit? To vše na lámete když jsou připraveni instalace služby poprvé je obtížné. Řekněme, že se chystáte přejděte s jednou službou statické s počtem konkrétního oddílu. Důsledky výběr počtu oddílů nesprávné může vést k problémů škálování později. Podobně i v případě, že vyberete správný počet, nemusí mít všechny informace budete potřebovat. Například máte také rozhodnout velikost clusteru ještě před zahájením, z hlediska počtu uzlů a jejich velikosti. Je obvykle těžké předpovědět, kolik prostředků služba bude využívat za dobu života. Také může být obtížné vědět předem, provoz vzor, který služba zobrazí ve skutečnosti. Možná uživatelé přidávat a odebírat si kontakty pouze první thing ráno nebo možná ji jsou rovnoměrně v průběhu dne. Na základě toho, které možná budete muset dynamicky vertikálně navýšení nebo snížení kapacity. Možná se můžete naučit předvídá, jestli budete muset vertikálně navýšení nebo snížení kapacity, ale v obou případech pravděpodobně budete muset reagovat na měnící se spotřeby prostředků vaší službou. To může zahrnovat změny velikosti clusteru, aby bylo možné poskytnout další prostředky při reorganizace použití existujících prostředků není k dispozici dostatek. 
+Hned nahoru máte spoustu otázek souvisejících se škálováním: Kolik uživatelů budete mít? Kolik kontaktů budou jednotliví uživatelé ukládat? Při prvním navýšení vaší služby je obtížné se pokusit vše nahlásit. Řekněme, že jste přešli na jednu statickou službu s konkrétním počtem oddílů. Důsledky vybírání chybného počtu oddílů můžou způsobit problémy s škálováním později. Podobně i v případě, že vyberete správný počet, nebudete mít k dispozici všechny informace, které potřebujete. Například musíte také určit velikost clusteru předem, a to jak v závislosti na počtu uzlů, tak i na jejich velikosti. Je obvykle obtížné odhadnout, kolik prostředků bude služba spotřebovávat během své životnosti. Může být také obtížné znát čas, který se ve službě skutečně zobrazuje. Například může lidé přidat a odebrat své kontakty pouze první věc ráno, nebo je možné je v průběhu dne distribuovat rovnoměrně. Na základě toho může být nutné horizontální navýšení kapacity a dynamické navýšení kapacity. Možná se naučíte, jak předpovídat, když budete potřebovat horizontální navýšení kapacity a navýšení, ale buď budete chtít reagovat na změnu spotřeby prostředků vaší službou. To může zahrnovat změnu velikosti clusteru, aby bylo možné poskytnout více prostředků při reorganizaci používání stávajících prostředků, a to není dostatečné. 
 
-Ale Proč se ani nepokusí k výběru jednoho oddílu schéma pro všechny uživatele? Proč omezit pouze na jednu službu a jedna statická clusteru? Reálné situace je obvykle dynamičtější. 
+Ale proč se dokonce snažím vybrat schéma jednoho oddílu pro všechny uživatele? Proč omezit na jednu službu a jeden statický cluster? Skutečná situace je obvykle dynamičtější. 
 
-Při sestavování pro škálování, vezměte v úvahu následující dynamický vzorek. Je třeba ji přizpůsobili své situaci:
+Při sestavování škály zvažte následující dynamický vzor. Možná budete muset přizpůsobit svou situaci:
 
-1. Namísto pokusu o vyberte schéma rozdělení oddílů pro každého ještě před zahájením, vytvářejte "manager service".
-2. Úlohy ve službě správce můžete se podívat na informace o zákaznících při registraci pro vaši službu. V závislosti na těchto informací ve službě správce vytvořit instanci vaší _skutečné_ službu storage kontakt _jenom pro tohoto zákazníka_. Pokud se vyžadují konkrétní konfiguraci, izolaci nebo upgrady, můžete také rozhodnout zprovoznění instance aplikace pro tohoto zákazníka. 
+1. Místo toho, abyste se snažili vybrat schéma vytváření oddílů pro všechny uživatele, vytvořte službu správce.
+2. Úkolem služby manažera je podívat se na informace o zákaznících při registraci služby. V závislosti na těchto informacích vytvoří služba Správce instanci vaší _skutečné_ služby kontaktu – úložiště _, která je pro daného zákazníka pouze_. Pokud vyžadují konkrétní konfiguraci, izolaci nebo upgrady, můžete se také rozhodnout pro tohoto zákazníka aktivovat instanci aplikace. 
 
-Tato dynamické vytváření vzorku řadu výhod:
+Tento vzor dynamického vytváření přináší mnoho výhod:
 
-  - Nepokoušíte odhadnout počet správné oddílů pro všechny uživatele ještě před zahájením nebo vytvoření jedné služby, který je neomezeně škálovatelné všechny sama o sobě. 
-  - Různí uživatelé nemusí mít stejný počet oddílů, počet replik, omezení umístění, metriky, načítání výchozí, názvy služeb, nastavení dns nebo všechny ostatní vlastnosti zadaný na úrovni služby nebo aplikace. 
-  - Můžete získat další data segmentace. Každý zákazník má své vlastní kopii služby
-    - Každý zákazník služby můžete nakonfigurovat různě a uděleno více nebo méně prostředků s více nebo méně oddílů nebo repliky podle potřeby podle jejich očekávaného rozsahu.
-      - Například Řekněme, že zákazník platili za "Zlatá" vrstva - může dostanou více replik nebo větší počet oddílů a potenciálně prostředků vyhrazených ke službám prostřednictvím kapacity metriky a aplikace.
-      - Nebo Řekněme, že se za předpokladu, že informace o tom počet kontakty, které v případě potřeby zapíná se "Malá" – pouze několik oddílů byste získali, nebo dokonce možné zařadit do fondu sdílených služeb s jinými zákazníky.
-  - Zatímco čekáte pro zákazníky, kteří se zobrazí nespouštíte spoustu instance služby ani repliky
-  - Pokud zákazník jenom na chvíli, jeho informace o odebrání služby je stejně jednoduché jako správci odstranit tuto službu nebo aplikaci, která je vytvořená.
+  - Nepokoušíte se odhadnout správný počet oddílů pro všechny uživatele nahoru nebo vytvořit jednu službu, která má nekonečně škálovatelnou škálovatelnost. 
+  - Různí uživatelé nemusí mít stejný počet oddílů, počet replik, omezení umístění, metriky, výchozí zatížení, názvy služeb, nastavení DNS nebo jakékoli jiné vlastnosti zadané na úrovni služby nebo aplikace. 
+  - Získáte další segmentaci dat. Každý zákazník má svou vlastní kopii služby.
+    - Každou zákaznickou službu je možné nakonfigurovat odlišně a udělit více nebo méně prostředků, a to podle toho, co je potřeba, podle jejich očekávaného měřítka.
+      - Řekněme například, že zákazník zaplatil za "zlatou" úroveň – může získat více replik nebo větší počet oddílů a potenciálně prostředky vyhrazené pro své služby prostřednictvím metrik a kapacity aplikací.
+      - Nebo označují, že jsou k dispozici informace indikující, že počet kontaktů, které potřebovali, byl "malý", získá jenom několik oddílů nebo by se mohl do sdíleného fondu služeb umístit i s ostatními zákazníky.
+  - Nepoužíváte spoustu instancí služby nebo replik, zatímco čekáte na zobrazení zákazníků.
+  - Pokud zákazník odejde z provozu, je odebrání informací z vaší služby snadné, protože správce odstraní tuto službu nebo aplikaci, kterou vytvořil.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o konceptech Service Fabric najdete v následujících článcích:
+Další informace o Service Fabric konceptech najdete v následujících článcích:
 
-* [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)
-* [Dělení služeb Service Fabric](service-fabric-concepts-partitioning.md)
+* [Dostupnost služeb Service Fabric Services](service-fabric-availability-services.md)
+* [Dělení Service Fabric služeb](service-fabric-concepts-partitioning.md)

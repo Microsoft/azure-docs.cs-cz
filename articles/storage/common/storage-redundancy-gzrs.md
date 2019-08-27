@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516131"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036336"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Vytváření vysoce dostupných Azure Storage aplikací s geograficky redundantním úložištěm (GZRS) (Preview)
 
@@ -70,7 +70,7 @@ Když je zóna dostupnosti nedostupná, Azure si neuvolní síťové aktualizace
 Pokud při selhání dojde k ovlivnění celé primární oblasti, Microsoft se nejdřív pokusí obnovit primární oblast. Pokud není možné obnovení, pak Microsoft převezme služby při selhání sekundární oblastí, aby se sekundární oblast stala novou primární oblastí. Pokud má účet úložiště povolenou možnost RA-GZRS, aplikace navržené pro tento scénář můžou číst ze sekundární oblasti při čekání na převzetí služeb při selhání. Pokud účet úložiště nemá povolené RA-GZRS, aplikace se nebudou moct číst ze sekundárního nástroje, dokud se převzetí služeb při selhání nedokončí.
 
 > [!NOTE]
-> GZRS a RA-GZRS jsou momentálně ve verzi Preview jenom v USA – východ 2 oblasti. Převzetí služeb při selhání účtu spravovaného zákazníkem (Preview) ještě není v USA – východ 2 dostupné, takže zákazníci teď nemůžou spravovat události převzetí služeb při selhání účtu s GZRS a RA-GZRS účty. V průběhu verze Preview bude společnost Microsoft spravovat všechny události převzetí služeb při selhání, které mají vliv na účty GZRS a RA-GZRS.
+> GZRS a RA-GZRS jsou momentálně ve verzi Preview jenom v USA – východ oblasti. Převzetí služeb při selhání účtu spravovaného zákazníkem (Preview) ještě není v USA – východ 2 dostupné, takže zákazníci teď nemůžou spravovat události převzetí služeb při selhání účtu s GZRS a RA-GZRS účty. V průběhu verze Preview bude společnost Microsoft spravovat všechny události převzetí služeb při selhání, které mají vliv na účty GZRS a RA-GZRS.
 
 Vzhledem k tomu, že data jsou replikována do sekundární oblasti asynchronně, selhání ovlivňující primární oblast může způsobit ztrátu dat, pokud nelze obnovit primární oblast. Interval mezi nejnovějšími zápisy do primární oblasti a posledním zápisem do sekundární oblasti se označuje jako cíl bodu obnovení (RPO). RPO označuje bod v čase, do kterého lze obnovit data. Azure Storage obvykle má RPO méně než 15 minut, ale v současné době není k dispozici žádná smlouva SLA, jak dlouho trvá replikace dat do sekundární oblasti.
 

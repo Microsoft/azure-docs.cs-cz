@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82fe80e098ee95c09c4a1400068ab813910e0e1a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: a55cba27c676b283a4da490f05dd6fc672e10d49
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309837"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032394"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Docker
 
 Existuje několik způsobů, jak ověřit pomocí služby Azure Container Registry, z nichž každá je platná pro jeden nebo více scénářů použití registru.
 
-K registru se můžete přihlašovat přímo prostřednictvím [individuálního přihlášení](#individual-login-with-azure-ad), nebo můžou vaše aplikace a orchestrace kontejnerů provádět bezobslužné nebo "nezabezpečené" ověřování pomocí [instančního objektu služby](#service-principal)Azure Active Directory (Azure AD).
+Mezi doporučené způsoby patří ověřování v registru přímo přes [jednotlivé přihlašovací údaje](#individual-login-with-azure-ad), nebo vaše aplikace a orchestrace kontejnerů můžou provádět bezobslužné nebo nezabezpečené ověřování pomocí služby Azure Active Directory (Azure AD). [ objekt zabezpečení](#service-principal)
 
 ## <a name="individual-login-with-azure-ad"></a>Individuální přihlášení pomocí Azure AD
 
@@ -50,32 +50,14 @@ K dispozici jsou role pro registr kontejnerů:
 
 Úplný seznam rolí najdete v tématu [Azure Container Registry role a oprávnění](container-registry-roles.md).
 
-Pro skripty rozhraní příkazového řádku pro vytvoření ID a hesla aplikace instančního objektu pro ověřování pomocí služby Azure Container registry nebo pro použití existujícího instančního objektu si přečtěte téma [Azure Container Registry ověřování s instančními objekty](container-registry-auth-service-principal.md).
-
-Instanční objekty umožňují v rámci scénářů pro vyžádání obsahu a nabízených oznámení, jako jsou tyto možnosti, povolit bezdrátové připojení k registru.
-
-  * *Vyžádání*obsahu: Nasaďte kontejnery z registru do systémů orchestrace, včetně Kubernetes, DC/OS a Docker Swarm. Z registrů kontejnerů můžete také získat související služby Azure, jako je [Služba Azure Kubernetes](container-registry-auth-aks.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/)a další.
-
-  * *Nabízení*: Vytvářejte image kontejnerů a nahrajte je do registru pomocí řešení pro kontinuální integraci a nasazení, jako je Azure Pipelines nebo Jenkinse.
-
-Můžete se také přihlásit přímo s instančním objektem. Když spustíte následující příkaz, po zobrazení výzvy interaktivně poskytněte identifikátor appID (Username) instančního objektu (Username) a heslo. Osvědčené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) :
-
-```
-docker login myregistry.azurecr.io
-```
-
-Po přihlášení Docker uloží přihlašovací údaje do mezipaměti, takže nemusíte pamatovat na ID aplikace.
-
-> [!TIP]
-> Heslo instančního objektu můžete znovu vygenerovat spuštěním příkazu [AZ AD SP Reset-Credentials](/cli/azure/ad/sp?view=azure-cli-latest) .
->
+Pokud chcete, aby skripty rozhraní příkazového řádku vytvořily instanční objekt pro ověřování pomocí služby Azure Container registry a pokyny k používání instančního objektu, přečtěte si téma [Azure Container Registry ověřování s instančními objekty](container-registry-auth-service-principal.md).
 
 ## <a name="admin-account"></a>Účet správce
 
 Každý registr kontejnerů obsahuje účet uživatele správce, který je ve výchozím nastavení zakázaný. Můžete povolit uživatele správce a spravovat jeho přihlašovací údaje v Azure Portal nebo pomocí Azure CLI nebo jiných nástrojů Azure.
 
 > [!IMPORTANT]
-> Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce s více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
+> Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
 >
 
 Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete při zobrazení výzvy k zadání základního ověřování do registru předat `docker login` uživatelské jméno a heslo k příkazu. Příklad:
@@ -84,6 +66,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 docker login myregistry.azurecr.io 
 ```
 
+Osvědčené postupy pro správu přihlašovacích údajů najdete v tématu Reference k příkazům [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 Pokud chcete povolit uživatele s oprávněními správce pro existující registr, můžete použít `--admin-enabled` parametr příkazu [AZ ACR Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) v rozhraní příkazového řádku Azure CLI:
 

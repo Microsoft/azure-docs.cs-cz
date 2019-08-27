@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: b5acfa8da3df45745c86b1c06fd416229c6fdb89
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877595"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70052005"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -222,6 +222,6 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
    ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Kontejnery profilů FSLogix můžete použít k nastavení sdílené složky profilu uživatele. Informace o tom, jak vytvořit sdílené složky profilů uživatelů pomocí nových kontejnerů, najdete v tématu [vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a otestování zařízení Azure IoT technologie Plug and Play Preview | Microsoft Docs
+title: Vytvoření a otestování zařízení IoT technologie Plug and Play Preview | Microsoft Docs
 description: Jako vývojář zařízení se dozvíte, jak pomocí VS Code vytvořit a otestovat nový model schopností zařízení pro zařízení technologie Plug and Play ve verzi Preview.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878072"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047972"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Kurz: Vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code
 
@@ -365,7 +365,7 @@ Když kód spustíte, připojí se k IoT Hub a spustí odesílání ukázkových
 
 1. Pomocí nástroje Azure IoT Explorer můžete komunikovat se zařízením IoT technologie Plug and Play připojeném ke službě IoT Hub. Další informace najdete v tématu [instalace a použití Azure IoT Exploreru](./howto-install-iot-explorer.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste vytvořili IoT technologie Plug and Play připraveni k certifikaci, se naučíte:
 

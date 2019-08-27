@@ -1,76 +1,72 @@
 ---
-title: Připojení k Excelu Online – Azure Logic Apps
-description: Správa dat pomocí aplikace Excel Online rozhraní REST API a Azure Logic Apps
+title: Připojení k Excelu online – Azure Logic Apps
+description: Správa dat pomocí rozhraní REST API Excelu online a Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-tags: connectors
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
-ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+tags: connectors
+ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311960"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050911"
 ---
-# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Spravovat data aplikace Excel Online s Azure Logic Apps
+# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Správa dat v Excelu online pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektoru Excelu Online můžete vytvořit automatizovaných úloh a pracovní postupy založené na vašich dat v Excelu Online pro firmy nebo OneDrive. Tento konektor zajišťuje akce, které vám pomohou pracovat s vašimi daty a spravovat tabulky, například:
+Pomocí Azure Logic Apps a konektoru Excelu online můžete vytvářet automatizované úkoly a pracovní postupy na základě vašich dat v Excelu online pro firmy nebo OneDrive. Tento konektor poskytuje akce, které vám pomůžou pracovat s daty a spravovat tabulky, například:
 
-* Vytvoření nových listů a tabulky.
-* Získání a správě listy, tabulky a řádky.
-* Přidáte jednoho řádky a sloupce klíče.
+* Vytvořte nové listy a tabulky.
+* Získat a spravovat listy, tabulky a řádky.
+* Přidejte jednotlivé řádky a klíčové sloupce.
 
-Pak můžete výstup z těchto akcí s akcemi pro ostatní služby. Například pokud použijete akci, která se vytvoří každý týden listy, můžete použít jinou akci, která odešle e-mail s potvrzením pomocí konektoru Office 365 Outlook.
+Pak můžete použít výstupy z těchto akcí s akcemi pro jiné služby. Pokud například použijete akci, která vytvoří listy každý týden, můžete použít jinou akci, která odešle potvrzovací e-mail pomocí konektoru Office 365 Outlook.
 
-Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> [Excelu Online pro firmy](/connectors/excelonlinebusiness/) a [Excelu Online, Onedrivu](/connectors/excelonline/) konektory fungují s Azure Logic Apps a se liší od [konektor aplikace Excel pro PowerApps](/connectors/excel/).
+> [Aplikace Excel Online pro firmy](/connectors/excelonlinebusiness/) a [Excel Online pro](/connectors/excelonline/) konektory OneDrive funguje s Azure Logic Apps a liší se od [konektoru aplikace Excel pro PowerApps](/connectors/excel/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Účet Office 365](https://www.office.com/) pro váš pracovní účet nebo osobní účet Microsoft
 
-  Data aplikace Excel může existovat jako soubor hodnot oddělených čárkami (CSV) ve složce úložiště, třeba ve Onedrivu. 
-  Můžete také použít stejný soubor CSV s [plochého souboru konektoru](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+  Data Excelu můžou existovat jako textový soubor s oddělovači (CSV) ve složce úložiště, například na OneDrivu. 
+  Můžete také použít stejný soubor CSV s konektorem s [plochými soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přistupovat k datům v Excelu Online. Tento konektor zajišťuje jenom akce, takže ke spuštění aplikace logiky vyberte samostatné aktivační událost, například, **opakování** aktivační události.
+* Aplikace logiky, ve které chcete získat přístup k datům Excelu online Tento konektor nabízí pouze akce, takže můžete spustit aplikaci logiky, vybrat samostatnou aktivační událost, například Trigger **opakování** .
 
-## <a name="add-excel-action"></a>Přidání akce aplikace Excel
+## <a name="add-excel-action"></a>Přidat akci aplikace Excel
 
-1. V [webu Azure portal](https://portal.azure.com), otevření aplikace logiky v návrháři aplikace logiky, pokud není otevřen.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky, pokud ještě není otevřená.
 
-1. Pod triggerem zvolte **nový krok**.
+1. V části Trigger vyberte **Nový krok**.
 
-1. Do vyhledávacího pole zadejte jako filtr "excel". V seznamu akcí vyberte požadovanou akci.
+1. Do vyhledávacího pole zadejte jako filtr slovo "Excel". V seznamu akce vyberte akci, kterou chcete.
 
-1. Pokud se zobrazí výzva k přihlášení ke svému účtu Office 365, zvolte **přihlášení**.
+1. Pokud se zobrazí výzva, přihlaste se ke svému účtu Office 365.
 
-   Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení k Excelu Online a přístup k vašim datům.
+   Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení k Excelu online a měla přístup k vašim datům.
 
-1. Pokračujte v poskytování nezbytné podrobnosti pro vybranou akci a vytváření pracovního postupu aplikace logiky.
+1. Pokračujte zadáním potřebných podrobností pro vybranou akci a vytvořením pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v konektoru OpenAPI (dříve Swagger) soubory, naleznete v tématu tyto stránky s referenčními informacemi konektoru:
+Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souborech OpenAPI konektoru (dříve Swagger), najdete v těchto referenčních stránkách konektoru:
 
 * [Excel Online pro firmy](/connectors/excelonlinebusiness/)
 * [Excel Online pro OneDrive](/connectors/excelonline/)
 
-## <a name="get-support"></a>Získat podporu
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
-
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

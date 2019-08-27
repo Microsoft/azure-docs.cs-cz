@@ -1,6 +1,6 @@
 ---
-title: Připojení k informačním kanálům RSS z Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovní postupy monitorování a Správa informačních kanálů RSS s využitím Azure Logic Apps
+title: Připojení k informačním kanálům RSS z Azure Logic Apps | Microsoft Docs
+description: Automatizace úloh a pracovních postupů, které sledují a spravují kanály RSS pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,57 +11,57 @@ ms.topic: article
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204846"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050848"
 ---
-# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Správa informačních kanálů RSS s využitím Azure Logic Apps
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Správa kanálů RSS pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektor RSS můžete vytvořit automatizovaných úloh a pracovních postupů pro jakékoli RSS kanálu, například:
+Pomocí Azure Logic Apps a konektoru RSS můžete vytvářet automatizované úlohy a pracovní postupy pro všechny kanály RSS, například:
 
-* Monitorování při publikování položky informačního kanálu RSS.
-* Zobrazí všechny položky informačního kanálu RSS.
+* Monitorování při publikování položek informačního kanálu RSS.
+* Vypíše všechny položky informačního kanálu RSS.
 
-RSS (Rich Site Summary), také nazývané Really Simple Syndication, je známý formát pro web syndikace a slouží k publikování pravidelně aktualizovaného obsahu, jako jsou příspěvky blogu a titulky. Mnoho vydavatelů obsahu poskytuje informačního kanálu, uživatelé se mohou přihlásit do tohoto obsahu. 
+RSS (Rich web Summary), označované taky jako Really Simple Syndication, je oblíbený formát pro webovou syndikaci a používá se k publikování často aktualizovaného obsahu, jako jsou blogové příspěvky a titulky zpráv. Mnoho vydavatelů obsahu poskytuje informační kanál RSS, aby se uživatelé mohli přihlásit k odběru tohoto obsahu. 
 
-Můžete použít aktivační událost RSS, který získává odpovědi z informačního kanálu RSS a zpřístupní výstup do jiné akce. Akce RSS ve svých aplikacích logiky můžete použít k provádění úlohy s informačním kanálu RSS. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít Trigger RSS, který získá odpovědi z informačního kanálu RSS a zpřístupní výstup ostatním akcím. Pomocí akce RSS v aplikacích logiky můžete provést úlohu s informačním kanálem RSS. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
 * Adresa URL informačního kanálu RSS
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k RSS informačního kanálu. Spuštění pomocí aktivační událost RSS [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci RSS, spusťte svou aplikaci logiky s další aktivační události, například, **opakování** aktivační události.
+* Aplikace logiky, ke které chcete získat přístup k informačnímu kanálu RSS. Pokud chcete začít s triggerem RSS, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci RSS, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
-## <a name="connect-to-an-rss-feed"></a>Připojte se k informačním kanálu RSS
+## <a name="connect-to-an-rss-feed"></a>Připojení k informačnímu kanálu RSS
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. Zvolte cestu: 
+1. Zvolit cestu: 
 
-   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "rss". V seznamu triggerů vyberte trigger, který chcete. 
+   * Pro prázdné aplikace logiky zadejte do vyhledávacího pole "RSS" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
      -nebo-
 
-   * Pro existující aplikace logiky, v části krok, ve které chcete přidat akci, zvolte **nový krok**. Při filtrování do pole hledání zadejte „rss“. V seznamu akcí vyberte požadovanou akci.
+   * Pro existující aplikace logiky v kroku, kde chcete přidat akci, vyberte možnost **Nový krok**. Při filtrování do pole hledání zadejte „rss“. V seznamu akce vyberte akci, kterou chcete.
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/rss/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/rss/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

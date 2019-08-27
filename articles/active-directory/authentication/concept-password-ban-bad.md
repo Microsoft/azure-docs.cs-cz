@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853051"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032880"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminujte chybná hesla ve vaší organizaci.
 
@@ -121,7 +121,7 @@ V normalizovaném hesle se používá přibližná shoda k identifikaci, zda obs
 
 Příklad: Předpokládejme, že heslo "ABCDEF" je zakázané a uživatel se pokusí změnit heslo na jednu z následujících možností:
 
-' abcdeg '    *(poslední znak se změnil z ' f ' na ' g ')* ' abcdefg '   *' (g ' připojeno ke konci)* ' abcde '     *(koncová ' f ' byla odstraněna z elementu end)*
+' abcdeg ' *(poslední znak se změnil z ' f ' na ' g ')* ' abcdefg ' *' (g ' připojeno ke konci)* ' abcde ' *(koncová ' f ' byla odstraněna z elementu end)*
 
 Každé z výše uvedených hesel se konkrétně neshoduje se zakázaným heslem "ABCDEF". Vzhledem k tomu, že každý příklad je v rámci úpravy vzdálenosti 1 zakázaného termínu "ABCDEF", jsou všechny považovány za shodné s "ABCDEF".
 

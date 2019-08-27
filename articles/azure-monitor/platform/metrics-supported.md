@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019053"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051821"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -52,9 +52,9 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |QuotaBlocked|Paměť: Kvóta blokována|Count|Average|Aktuální počet požadavků na kvótu, které jsou blokovány, dokud nebudou uvolněny jiné kvóty paměti.|ServerResourceType|
 |VertiPaqNonpaged|Paměť: VertiPaq – nestránkované|B|Average|Počet bajtů paměti uzamčených v pracovní sadě pro použití modulem v paměti.|ServerResourceType|
 |VertiPaqPaged|Paměť: VertiPaq na straně|B|Average|Počet bajtů stránkované paměti používaných pro data v paměti.|ServerResourceType|
-|RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Average|Rychlost čtení řádků ze všech relačních databází.|ServerResourceType|
-|RowsConvertedPerSec|Zpracování: Počet převedených řádků za sekundu|CountPerSecond|Average|Rychlost převodu řádků během zpracování.|ServerResourceType|
-|RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Average|Rychlost zápisu řádků během zpracování.|ServerResourceType|
+|RowsReadPerSec|Zpracováván Počet přečtených řádků za sekundu|CountPerSecond|Average|Rychlost čtení řádků ze všech relačních databází.|ServerResourceType|
+|RowsConvertedPerSec|Zpracováván Počet převedených řádků za sekundu|CountPerSecond|Average|Rychlost převodu řádků během zpracování.|ServerResourceType|
+|RowsWrittenPerSec|Zpracováván Počet zapsaných řádků za sekundu|CountPerSecond|Average|Rychlost zápisu řádků během zpracování.|ServerResourceType|
 |CommandPoolBusyThreads|Vláken Zaneprázdněná vlákna fondu příkazů|Count|Average|Počet zaneprázdněných vláken ve fondu vláken příkazů.|ServerResourceType|
 |CommandPoolIdleThreads|Vláken Nečinné podprocesy fondu příkazů|Count|Average|Počet nečinných vláken ve fondu vláken příkazů.|ServerResourceType|
 |LongParsingBusyThreads|Vláken Dlouhá vlákna s dlouhou analýzou|Count|Average|Počet zaneprázdněných vláken ve fondu vláken dlouhého analýzy.|ServerResourceType|
@@ -324,46 +324,46 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |cacheRead9|Čtení z mezipaměti (horizontálních oddílů 9)|BytesPerSecond|Maximum||Žádné dimenze|
 |percentProcessorTime9|PROCESOR (horizontálních oddílů 9)|Percent|Maximum||Žádné dimenze|
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Average|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
-|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
-|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
-|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Average|Průměrný počet bajtů přečtený z disku během období sledování|Žádné dimenze|
-|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Average|Průměrný počet bajtů zapsaný na disk během období sledování|Žádné dimenze|
-|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Average|Čtení z disku – IOPS|Žádné dimenze|
-|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Average|Zápis na disk – IOPS|Žádné dimenze|
+|Procento CPU|Procento CPU|Procento|Average|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|Žádné dimenze|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|Žádné dimenze|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz).|Žádné dimenze|
+|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Average|Průměrný počet bajtů přečtených z disku během období monitorování|Žádné dimenze|
+|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Average|Průměrný počet bajtů zapsaných na disk během období monitorování|Žádné dimenze|
+|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Average|Čtení z disku – IOPS|Žádné dimenze|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Average|Zápis na disk – IOPS|Žádné dimenze|
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento CPU|Procento CPU|Procento|Average|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|RoleInstanceId|
-|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|RoleInstanceId|
-|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|RoleInstanceId|
-|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Average|Průměrný počet bajtů přečtený z disku během období sledování|RoleInstanceId|
-|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Average|Průměrný počet bajtů zapsaný na disk během období sledování|RoleInstanceId|
-|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Average|Čtení z disku – IOPS|RoleInstanceId|
-|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Average|Zápis na disk – IOPS|RoleInstanceId|
+|Procento CPU|Procento CPU|Procento|Average|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|RoleInstanceId|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|RoleInstanceId|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz).|RoleInstanceId|
+|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Average|Průměrný počet bajtů přečtených z disku během období monitorování|RoleInstanceId|
+|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Average|Průměrný počet bajtů zapsaných na disk během období monitorování|RoleInstanceId|
+|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Average|Čtení z disku – IOPS|RoleInstanceId|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Average|Zápis na disk – IOPS|RoleInstanceId|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalCalls|Celkem volání|Count|Celkem|Celkový počet volání|ApiName, OperationName, oblast|
-|SuccessfulCalls|Úspěšná volání|Count|Celkem|Počet úspěšných volání|ApiName, OperationName, oblast|
-|TotalErrors|Celkem chyb|Count|Celkem|Celkový počet volání s chybovou odpovědí (kód odpovědi HTTP 4xx nebo 5xx)|ApiName, OperationName, oblast|
-|BlockedCalls|Blokovaná volání|Count|Celkem|Počet volání nad limit vyplývající ze sazby nebo kvóty|ApiName, OperationName, oblast|
-|ServerErrors|Chyby serveru|Count|Celkem|Počet volání s vnitřní chybou služby (kód odpovědi HTTP 5xx)|ApiName, OperationName, oblast|
-|ClientErrors|Chyby klientů|Count|Celkem|Počet volání s chybou na straně klienta (kód odpovědi HTTP 4xx)|ApiName, OperationName, oblast|
+|TotalCalls|Celkem volání|Count|Celkem|Celkový počet volání.|ApiName, OperationName, oblast|
+|SuccessfulCalls|Úspěšná volání|Count|Celkem|Počet úspěšných volání.|ApiName, OperationName, oblast|
+|TotalErrors|Celkem chyb|Count|Celkem|Celkový počet volání s chybovou odpovědí (kód odpovědi HTTP 4xx nebo 5xx).|ApiName, OperationName, oblast|
+|BlockedCalls|Blokovaná volání|Count|Celkem|Počet volání, která překročily limit nebo kvótu.|ApiName, OperationName, oblast|
+|ServerErrors|Chyby serveru|Count|Celkem|Počet volání s interní chybou služby (kód odpovědi HTTP 5xx).|ApiName, OperationName, oblast|
+|ClientErrors|Chyby klientů|Count|Celkem|Počet volání s chybou na straně klienta (kód odpovědi HTTP 4xx).|ApiName, OperationName, oblast|
 |DataIn|Vstupní data|B|Celkem|Velikost příchozích dat v bajtech|ApiName, OperationName, oblast|
 |Data|Výstupní data|B|Celkem|Velikost odchozích dat v bajtech|ApiName, OperationName, oblast|
 |Latence|Latence|Milisekund|Average|Latence v milisekundách|ApiName, OperationName, oblast|
-|CharactersTranslated|Přeložené znaky|Count|Celkem|Celkový počet znaků v příchozí textové žádosti|ApiName, OperationName, oblast|
+|CharactersTranslated|Přeložené znaky|Count|Celkem|Celkový počet znaků v příchozím textovém požadavku.|ApiName, OperationName, oblast|
 |CharactersTrained|Vyškolené znaky|Count|Celkem|Celkový počet vyškolených znaků|ApiName, OperationName, oblast|
-|SpeechSessionDuration|Doba trvání řečové relace|Sekundy|Celkem|Celková doba trvání řečové relace v sekundách|ApiName, OperationName, oblast|
+|SpeechSessionDuration|Doba trvání řečové relace|Sekundy|Celkem|Celková doba trvání relace řeči v sekundách.|ApiName, OperationName, oblast|
 |TotalTransactions|Transakce celkem|Count|Celkem|Celkový počet transakcí|Žádné dimenze|
 |TotalTokenCalls|Celkem volání tokenů|Count|Celkem|Celkový počet volání tokenů|ApiName, OperationName, oblast|
 
@@ -373,43 +373,43 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
 |Síťové vstupy|Fakturovatelný příchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
-|Síťové výstupy|Fakturovatelný odchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
-|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Počet bajtů přečtených z disku během monitorování|Žádné dimenze|
-|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Počet bajtů zapsaných na disk během monitorování|Žádné dimenze|
-|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Average|Čtení z disku – IOPS|Žádné dimenze|
-|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Average|Zápis na disk – IOPS|Žádné dimenze|
-|Zbývající kredity CPU|Zbývající kredity CPU|Count|Average|Celkové množství kreditu, které se dá využít|Žádné dimenze|
-|Spotřebované kredity CPU|Spotřebované kredity CPU|Count|Average|Celkové množství kreditu, které spotřeboval virtuální počítač|Žádné dimenze|
-|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
-|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
-|Operace čtení podle disku za sekundu|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování|SlotId|
-|Operace zápisu podle disku za sekundu|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování|SlotId|
-|HF podle disku|HF datového disku (zastaralé)|Count|Average|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace čtení v operačním systému podle disku za sekundu|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace zápisu v operačním systému podle disku za sekundu|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|HF v operačním systému podle disku|HF disku s operačním systémem (zastaralé)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|Síťové výstupy|Fakturovatelný odchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Bajty přečtené z disku během období monitorování|Žádné dimenze|
+|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Bajty zapsané na disk během období monitorování|Žádné dimenze|
+|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Average|Čtení z disku – IOPS|Žádné dimenze|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Average|Zápis na disk – IOPS|Žádné dimenze|
+|Zbývající kredity CPU|Zbývající kredity CPU|Count|Average|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Spotřebované kredity CPU|Spotřebované kredity CPU|Count|Average|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
+|Přečtené bajty podle disku/s|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
+|Bajty zápisu na disk/s|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
+|Operace čtení na disk/s|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování|SlotId|
+|Operace zápisu na disk/s|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování|SlotId|
+|HF podle disku|Datový disk hloubka fronty (zastaralé)|Count|Average|Hloubka fronty datových disků (nebo délka fronty)|SlotId|
+|Přečtené bajty v operačním systému na disk/s|Bajty přečtené z disku s operačním systémem/s (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Bajty zapsané v operačním systému na disk/s|Bajty zápisu na disk s operačním systémem/s (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace čtení z operačního systému na disk/s|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace zápisu v operačním systému na disk/s|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|HF v operačním systému podle disku|Disk s operačním systémem hloubka fronty (zastaralé)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 |Bajty přečtené z datového disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Bajty zapsané na datový disk za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Operace zápisu na datový disk za sekundu|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
-|Hloubka fronty datového disku|Hloubka fronty datového disku (Preview)|Count|Average|Hloubka fronty datového disku (nebo délka fronty)|LOGICKÉ JEDNOTKY|
-|Bajty přečtené z disku s operačním systémem za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Bajty zapsané na disk s operačním systémem za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Hloubka fronty disku s operačním systémem|Hloubka fronty disku s operačním systémem (Preview)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
-|Příchozí toky|Příchozí toky (Preview)|Count|Average|Příchozí toky jsou počet aktuálních toků v příchozím směru (provoz přicházející do virtuálního počítače).|Žádné dimenze|
-|Odchozí toky|Odchozí toky (Preview)|Count|Average|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz odcházející z virtuálního počítače).|Žádné dimenze|
-|Maximální rychlost vytváření příchozích toků|Maximální rychlost vytváření příchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření příchozích toků (provoz do virtuálního počítače)|Žádné dimenze|
-|Maximální rychlost vytváření odchozích toků|Maximální rychlost vytváření odchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření odchozích toků (provoz z virtuálního počítače)|Žádné dimenze|
-|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Average|Úspěšné čtení z mezipaměti datového disku úrovně Premium|LOGICKÉ JEDNOTKY|
-|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Average|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|LOGICKÉ JEDNOTKY|
-|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Average|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
-|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Average|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Žádné dimenze|
+|Bajty zapsané na datový disk/s|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LOGICKÉ JEDNOTKY|
+|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
+|Operace zápisu na datový disk/s|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování|LOGICKÉ JEDNOTKY|
+|Hloubka fronty datového disku|Hloubka fronty datových disků (Preview)|Count|Average|Hloubka fronty datových disků (nebo délka fronty)|LOGICKÉ JEDNOTKY|
+|Bajty přečtené z disku s operačním systémem/s|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Bajty zápisu na disk s operačním systémem/s|Bajty zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (Preview)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|Příchozí toky|Příchozí toky (Preview)|Count|Average|Příchozí toky představují počet současných toků v příchozím směru (provoz směřující do virtuálního počítače).|Žádné dimenze|
+|Odchozí toky|Odchozí toky (Preview)|Count|Average|Odchozí toky představují počet současných toků v odchozím směru (provoz, který se odchází z virtuálního počítače).|Žádné dimenze|
+|Maximální rychlost vytváření příchozích toků|Míra vytváření maximálního počtu příchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření příchozích toků (provoz, který do virtuálního počítače směřuje)|Žádné dimenze|
+|Maximální rychlost vytváření odchozích toků|Frekvence maximálního vytváření odchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření odchozích toků (provoz, který se odchází z virtuálního počítače)|Žádné dimenze|
+|Počet přístupů do mezipaměti pro datový disk úrovně Premium|Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)|Percent|Average|Počet přístupů do mezipaměti pro datový disk úrovně Premium|LOGICKÉ JEDNOTKY|
+|Neúspěšné čtení mezipaměti datových disků Premium|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Percent|Average|Neúspěšné čtení mezipaměti datových disků Premium|LOGICKÉ JEDNOTKY|
+|Počet přístupů do mezipaměti disku s operačním systémem Premium|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Percent|Average|Počet přístupů do mezipaměti disku s operačním systémem Premium|Žádné dimenze|
+|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Percent|Average|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Žádné dimenze|
 |Celkový příchozí síťový provoz|Celkový příchozí síťový provoz|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
-|Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -417,52 +417,52 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|VMName|
 |Síťové vstupy|Fakturovatelný příchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|VMName|
-|Síťové výstupy|Fakturovatelný odchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
-|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Počet bajtů přečtených z disku během monitorování|VMName|
-|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Počet bajtů zapsaných na disk během monitorování|VMName|
-|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Average|Čtení z disku – IOPS|VMName|
-|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Average|Zápis na disk – IOPS|VMName|
-|Zbývající kredity CPU|Zbývající kredity CPU|Count|Average|Celkové množství kreditu, které se dá využít|Žádné dimenze|
-|Spotřebované kredity CPU|Spotřebované kredity CPU|Count|Average|Celkové množství kreditu, které spotřeboval virtuální počítač|Žádné dimenze|
-|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
-|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
-|Operace čtení podle disku za sekundu|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování|SlotId|
-|Operace zápisu podle disku za sekundu|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování|SlotId|
-|HF podle disku|HF datového disku (zastaralé)|Count|Average|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace čtení v operačním systému podle disku za sekundu|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|Operace zápisu v operačním systému podle disku za sekundu|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|HF v operačním systému podle disku|HF disku s operačním systémem (zastaralé)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|Síťové výstupy|Fakturovatelný odchozí síťový provoz|B|Celkem|Počet fakturovatelných bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
+|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Bajty přečtené z disku během období monitorování|VMName|
+|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Bajty zapsané na disk během období monitorování|VMName|
+|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Average|Čtení z disku – IOPS|VMName|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Average|Zápis na disk – IOPS|VMName|
+|Zbývající kredity CPU|Zbývající kredity CPU|Count|Average|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
+|Spotřebované kredity CPU|Spotřebované kredity CPU|Count|Average|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
+|Přečtené bajty podle disku/s|Bajty přečtené z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
+|Bajty zápisu na disk/s|Bajty zapsané na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
+|Operace čtení na disk/s|Operace čtení z datového disku za sekundu (zastaralé)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování|SlotId|
+|Operace zápisu na disk/s|Operace zápisu na datový disk za sekundu (zastaralé)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování|SlotId|
+|HF podle disku|Datový disk hloubka fronty (zastaralé)|Count|Average|Hloubka fronty datových disků (nebo délka fronty)|SlotId|
+|Přečtené bajty v operačním systému na disk/s|Bajty přečtené z disku s operačním systémem/s (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Bajty zapsané v operačním systému na disk/s|Bajty zápisu na disk s operačním systémem/s (zastaralé)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace čtení z operačního systému na disk/s|Operace čtení z disku s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Operace zápisu v operačním systému na disk/s|Operace zápisu na disk s operačním systémem za sekundu (zastaralé)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|HF v operačním systému podle disku|Disk s operačním systémem hloubka fronty (zastaralé)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 |Bajty přečtené z datového disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování|LUN, VMName|
-|Bajty zapsané na datový disk za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LUN, VMName|
-|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování|LUN, VMName|
-|Operace zápisu na datový disk za sekundu|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování|LUN, VMName|
-|Hloubka fronty datového disku|Hloubka fronty datového disku (Preview)|Count|Average|Hloubka fronty datového disku (nebo délka fronty)|LUN, VMName|
-|Bajty přečtené z disku s operačním systémem za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Bajty zapsané na disk s operačním systémem za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|VMName|
-|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|IOPS čtení z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|IOPS zápisu z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
-|Hloubka fronty disku s operačním systémem|Hloubka fronty disku s operačním systémem (Preview)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|VMName|
-|Příchozí toky|Příchozí toky (Preview)|Count|Average|Příchozí toky jsou počet aktuálních toků v příchozím směru (provoz přicházející do virtuálního počítače).|VMName|
-|Odchozí toky|Odchozí toky (Preview)|Count|Average|Odchozí toky jsou počet aktuálních toků v odchozím směru (provoz odcházející z virtuálního počítače).|VMName|
-|Maximální rychlost vytváření příchozích toků|Maximální rychlost vytváření příchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření příchozích toků (provoz do virtuálního počítače)|VMName|
-|Maximální rychlost vytváření odchozích toků|Maximální rychlost vytváření odchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření odchozích toků (provoz z virtuálního počítače)|VMName|
-|Úspěšné čtení z mezipaměti datového disku úrovně Premium|Úspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Average|Úspěšné čtení z mezipaměti datového disku úrovně Premium|LUN, VMName|
-|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|Neúspěšné čtení z mezipaměti datového disku úrovně Premium (Preview)|Percent|Average|Neúspěšné čtení z mezipaměti datového disku úrovně Premium|LUN, VMName|
-|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Average|Úspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
-|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium (Preview)|Percent|Average|Neúspěšné čtení z mezipaměti disku s operačním systémem úrovně Premium|VMName|
+|Bajty zapsané na datový disk/s|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování|LUN, VMName|
+|Operace čtení z datového disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování|LUN, VMName|
+|Operace zápisu na datový disk/s|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování|LUN, VMName|
+|Hloubka fronty datového disku|Hloubka fronty datových disků (Preview)|Count|Average|Hloubka fronty datových disků (nebo délka fronty)|LUN, VMName|
+|Bajty přečtené z disku s operačním systémem/s|Počet přečtených bajtů disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
+|Bajty zápisu na disk s operačním systémem/s|Bajty zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|VMName|
+|Operace čtení z disku s operačním systémem za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Čtení IOPS z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
+|Operace zápisu na disk s operačním systémem za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Average|Zápis IOPS z jednoho disku během období monitorování pro disk s operačním systémem|VMName|
+|Hloubka fronty disku s operačním systémem|Hloubka fronty disku operačního systému (Preview)|Count|Average|Hloubka fronty disku s operačním systémem (nebo délka fronty)|VMName|
+|Příchozí toky|Příchozí toky (Preview)|Count|Average|Příchozí toky představují počet současných toků v příchozím směru (provoz směřující do virtuálního počítače).|VMName|
+|Odchozí toky|Odchozí toky (Preview)|Count|Average|Odchozí toky představují počet současných toků v odchozím směru (provoz, který se odchází z virtuálního počítače).|VMName|
+|Maximální rychlost vytváření příchozích toků|Míra vytváření maximálního počtu příchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření příchozích toků (provoz, který do virtuálního počítače směřuje)|VMName|
+|Maximální rychlost vytváření odchozích toků|Frekvence maximálního vytváření odchozích toků (Preview)|CountPerSecond|Average|Maximální rychlost vytváření odchozích toků (provoz, který se odchází z virtuálního počítače)|VMName|
+|Počet přístupů do mezipaměti pro datový disk úrovně Premium|Počet přístupů do mezipaměti pro datový disk úrovně Premium (Preview)|Percent|Average|Počet přístupů do mezipaměti pro datový disk úrovně Premium|LUN, VMName|
+|Neúspěšné čtení mezipaměti datových disků Premium|Neúspěšné čtení mezipaměti datových disků Premium (Preview)|Percent|Average|Neúspěšné čtení mezipaměti datových disků Premium|LUN, VMName|
+|Počet přístupů do mezipaměti disku s operačním systémem Premium|Pozice pro čtení mezipaměti disku s operačním systémem Premium (Preview)|Percent|Average|Počet přístupů do mezipaměti disku s operačním systémem Premium|VMName|
+|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|Neúspěšné čtení mezipaměti disku s operačním systémem Premium (Preview)|Percent|Average|Neúspěšné čtení mezipaměti disku s operačním systémem Premium|VMName|
 |Celkový příchozí síťový provoz|Celkový příchozí síťový provoz|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|VMName|
-|Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
+|Celkový odchozí síťový provoz|Celkový odchozí síťový provoz|B|Celkem|Počet bajtů vycházejících ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|VMName|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuUsage|Využití procesoru|Count|Average|Využití procesoru u všech jader v jednotkách millicore|containerName|
+|CpuUsage|Využití procesoru|Count|Average|Využití CPU na všech jádrech v millicores.|containerName|
 |MemoryUsage|Využití paměti|B|Average|Celkové využití paměti v bajtech|containerName|
-|NetworkBytesReceivedPerSecond|Bajty přijaté přes síť za sekundu|B|Average|Bajty přijaté přes síť za sekundu|Žádné dimenze|
-|NetworkBytesTransmittedPerSecond|Bajty přenesené přes síť za sekundu|B|Average|Bajty přenesené přes síť za sekundu|Žádné dimenze|
+|NetworkBytesReceivedPerSecond|Bajty přijaté přes síť za sekundu|B|Average|Počet přijatých bajtů sítě za sekundu.|Žádné dimenze|
+|NetworkBytesTransmittedPerSecond|Bajty přenesené přes síť za sekundu|B|Average|Počet bajtů přenášených sítí za sekundu.|Žádné dimenze|
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
@@ -523,18 +523,18 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|NICReadThroughput|Propustnost čtení (síť)|BytesPerSecond|Average|Propustnost čtení síťového rozhraní na zařízení v období vykazování pro všechny svazky v bráně|InstanceName|
-|NICWriteThroughput|Propustnost zápisu (síť)|BytesPerSecond|Average|Propustnost zápisu síťového rozhraní na zařízení v období vykazování pro všechny svazky v bráně|InstanceName|
-|CloudReadThroughputPerShare|Propustnost stahování cloudu (sdílená složka)|BytesPerSecond|Average|Propustnost při stahování ze sdílené složky do Azure během období vykazování|Sdílení|
-|CloudUploadThroughputPerShare|Propustnost nahrávání cloudu (sdílená složka)|BytesPerSecond|Average|Propustnost při nahrávání ze sdílené složky do Azure během období vykazování|Sdílení|
-|BytesUploadedToCloudPerShare|Nahrané cloudové bajty (sdílená složka)|B|Average|Celkový počet bajtů, který se nahrál do Azure ze sdílené složky během období vykazování|Sdílení|
+|NICReadThroughput|Propustnost čtení (síť)|BytesPerSecond|Average|Propustnost čtení síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
+|NICWriteThroughput|Propustnost zápisu (síť)|BytesPerSecond|Average|Propustnost zápisu síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
+|CloudReadThroughputPerShare|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Average|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílení|
+|CloudUploadThroughputPerShare|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Average|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílení|
+|BytesUploadedToCloudPerShare|Odeslané bajty v cloudu (sdílená složka)|B|Average|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílení|
 |Úložiště|Celková kapacita|B|Average|Celková kapacita|Žádné dimenze|
-|Availablecapacity;)|Dostupná kapacita|B|Average|Dostupná kapacita v bajtech během období vykazování|Žádné dimenze|
-|CloudUploadThroughput|Propustnost nahrávání cloudu|BytesPerSecond|Average|Propustnost cloudu při nahrávání do Azure během období vykazování|Žádné dimenze|
-|CloudReadThroughput|Propustnost cloudu při stahování|BytesPerSecond|Average|Propustnost cloudu při stahování do Azure během období vykazování|Žádné dimenze|
-|BytesUploadedToCloud|Nahrané cloudové bajty (zařízení)|B|Average|Celkový počet bajtů, který se nahrál do Azure ze zařízení během období vykazování|Žádné dimenze|
-|HyperVVirtualProcessorUtilization|Výpočetní funkce Edge – procento využití procesoru|Percent|Average|Využití procesoru v procentech|InstanceName|
-|HyperVMemoryUtilization|Výpočetní funkce Edge – využití paměti|Percent|Average|Množství využité paměti RAM|InstanceName|
+|Availablecapacity;)|Dostupná kapacita|B|Average|Dostupná kapacita v bajtech během období generování sestav.|Žádné dimenze|
+|CloudUploadThroughput|Propustnost nahrávání cloudu|BytesPerSecond|Average|Propustnost nahrávání do cloudu do Azure během období generování sestav.|Žádné dimenze|
+|CloudReadThroughput|Propustnost cloudu při stahování|BytesPerSecond|Average|Propustnost stahování cloudu do Azure během období generování sestav.|Žádné dimenze|
+|BytesUploadedToCloud|Odeslané bajty v cloudu (zařízení)|B|Average|Celkový počet bajtů odeslaných do Azure ze zařízení během období generování sestav.|Žádné dimenze|
+|HyperVVirtualProcessorUtilization|Výpočetní prostředí Edge – procento využití procesoru|Percent|Average|Využití procesoru v procentech|InstanceName|
+|HyperVMemoryUtilization|Výpočet využití paměti na hraničních zařízeních|Percent|Average|Množství využité paměti RAM|InstanceName|
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
 
@@ -785,23 +785,23 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Úspěšné požadavky|Count|Celkem|Úspěšné požadavky pro Microsoft.EventHub|EntityName |
-|ServerErrors|Chyby serveru|Count|Celkem|Chyby serveru pro Microsoft.EventHub|EntityName |
-|UserErrors|Chyby uživatele|Count|Celkem|Chyby uživatele pro Microsoft.EventHub|EntityName |
-|QuotaExceededErrors|Chyby překročení kvóty|Count|Celkem|Chyby překročení kvóty pro Microsoft.EventHub|EntityName |
-|ThrottledRequests|Omezené požadavky|Count|Celkem|Omezené požadavky pro Microsoft.EventHub|EntityName |
-|IncomingRequests|Příchozí požadavky|Count|Celkem|Příchozí požadavky pro Microsoft.EventHub|EntityName|
-|IncomingMessages|Příchozí zprávy|Count|Celkem|Příchozí zprávy pro Microsoft.EventHub|EntityName|
-|OutgoingMessages|Odchozí zprávy|Count|Celkem|Odchozí zprávy pro Microsoft.EventHub|EntityName|
-|IncomingBytes|Příchozí bajty|B|Celkem|Příchozí bajty pro Microsoft.EventHub|EntityName|
-|OutgoingBytes|Odchozí bajty|B|Celkem|Odchozí bajty pro Microsoft.EventHub|EntityName|
-|ActiveConnections|ActiveConnections|Count|Average|Celkový počet aktivních připojení pro Microsoft.EventHub|Žádné dimenze|
-|ConnectionsOpened|Otevřená připojení|Count|Average|Otevřená připojení pro Microsoft.EventHub|EntityName|
-|ConnectionsClosed|Ukončená připojení|Count|Average|Ukončená připojení pro Microsoft.EventHub|EntityName|
-|CaptureBacklog|Zachytit backlog|Count|Celkem|Zachytit backlog pro Microsoft.EventHub|EntityName|
-|CapturedMessages|Zachycené zprávy|Count|Celkem|Zachycené zprávy pro Microsoft.EventHub|EntityName|
-|CapturedBytes|Zachycené bajty|B|Celkem|Zachycené bajty pro Microsoft.EventHub|EntityName|
-|Size|Size|B|Average|Velikost centra událostí v bajtech|EntityName|
+|SuccessfulRequests|Úspěšné požadavky|Count|Celkem|Úspěšné požadavky pro Microsoft. EventHub|EntityName |
+|ServerErrors|Chyby serveru.|Count|Celkem|Chyby serveru pro Microsoft. EventHub|EntityName |
+|UserErrors|Chyby uživatele.|Count|Celkem|Chyby uživatele pro Microsoft. EventHub|EntityName |
+|QuotaExceededErrors|Chyby překročení kvóty|Count|Celkem|Při překročení kvóty se vyskytly chyby pro Microsoft. EventHub.|EntityName |
+|ThrottledRequests|Omezené požadavky.|Count|Celkem|Omezené požadavky pro Microsoft. EventHub|EntityName |
+|IncomingRequests|Příchozí požadavky|Count|Celkem|Příchozí požadavky pro Microsoft. EventHub|EntityName|
+|IncomingMessages|Příchozí zprávy|Count|Celkem|Příchozí zprávy pro Microsoft. EventHub|EntityName|
+|OutgoingMessages|Odchozí zprávy|Count|Celkem|Odchozí zprávy pro Microsoft. EventHub|EntityName|
+|IncomingBytes|Příchozí bajty.|B|Celkem|Příchozí bajty pro Microsoft. EventHub|EntityName|
+|OutgoingBytes|Odchozí bajty|B|Celkem|Odchozí bajty pro Microsoft. EventHub|EntityName|
+|ActiveConnections|ActiveConnections|Count|Average|Celkový počet aktivních připojení pro Microsoft. EventHub|Žádné dimenze|
+|ConnectionsOpened|Otevřená připojení.|Count|Average|Otevřená připojení pro Microsoft. EventHub|EntityName|
+|ConnectionsClosed|Uzavřená připojení.|Count|Average|Otevřená připojení pro Microsoft. EventHub|EntityName|
+|CaptureBacklog|Zachyťte nevyřízené položky.|Count|Celkem|Zachyťte nevyřízené položky pro Microsoft. EventHub.|EntityName|
+|CapturedMessages|Zachycené zprávy.|Count|Celkem|Zachycené zprávy pro Microsoft. EventHub|EntityName|
+|CapturedBytes|Zachycené bajty.|B|Celkem|Zachycené bajty pro Microsoft. EventHub|EntityName|
+|Size|Size|B|Average|Velikost centra EventHub v bajtech|EntityName|
 |INREQS|Příchozí požadavky (zastaralé)|Count|Celkem|Celkový počet příchozích žádostí o odeslání pro obor názvů (zastaralé)|Žádné dimenze|
 |SUCCREQ|Úspěšné požadavky (zastaralé)|Count|Celkem|Celkový počet úspěšných žádostí pro obor názvů (zastaralé)|Žádné dimenze|
 |FAILREQ|Neúspěšné žádosti (zastaralé)|Count|Celkem|Celkový počet neúspěšných žádostí pro obor názvů (zastaralé)|Žádné dimenze|
@@ -824,24 +824,24 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Úspěšné požadavky (Preview)|Count|Celkem|Úspěšné požadavky pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|ServerErrors|Chyby serveru (Preview)|Count|Celkem|Chyby serveru pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|UserErrors|Chyby uživatele (Preview)|Count|Celkem|Chyby uživatele pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|QuotaExceededErrors|Chyby překročení kvóty (Preview)|Count|Celkem|Chyby překročení kvóty pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|ThrottledRequests|Omezené požadavky (Preview)|Count|Celkem|Omezené požadavky pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|IncomingRequests|Příchozí žádosti (Preview)|Count|Celkem|Příchozí požadavky pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|IncomingMessages|Příchozí zprávy (Preview)|Count|Celkem|Příchozí zprávy pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|OutgoingMessages|Odchozí zprávy (Preview)|Count|Celkem|Odchozí zprávy pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|IncomingBytes|Příchozí bajty (Preview)|B|Celkem|Příchozí bajty pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|OutgoingBytes|Odchozí bajty (Preview)|B|Celkem|Odchozí bajty pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|ActiveConnections|ActiveConnections (Preview)|Count|Average|Celkový počet aktivních připojení pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|ConnectionsOpened|Otevřená připojení (Preview)|Count|Average|Otevřená připojení pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|ConnectionsClosed|Ukončená připojení (Preview)|Count|Average|Ukončená připojení pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|CaptureBacklog|Zachytit backlog (Preview)|Count|Celkem|Zachytit backlog pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|CapturedMessages|Zachycené zprávy (Preview)|Count|Celkem|Zachycené zprávy pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|CapturedBytes|Zachycené bajty (Preview)|B|Celkem|Zachycené bajty pro Microsoft.EventHub (Preview)|Žádné dimenze|
-|Procesor|PROCESOR (Preview)|Percent|Maximum|Využití procesoru pro cluster centra událostí v procentech|Role|
-|AvailableMemory|Dostupná paměť (Preview)|Count|Maximum|Paměť dostupná clusteru centra událostí v bajtech|Role|
+|SuccessfulRequests|Úspěšné požadavky (Preview)|Count|Celkem|Úspěšné požadavky pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|ServerErrors|Chyby serveru. (Preview)|Count|Celkem|Chyby serveru pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|UserErrors|Chyby uživatele. (Preview)|Count|Celkem|Chyby uživatele pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|QuotaExceededErrors|Chyby překročení kvóty (Preview)|Count|Celkem|Při překročení kvóty se vyskytly chyby pro Microsoft. EventHub. (Preview)|Žádné dimenze|
+|ThrottledRequests|Omezené požadavky. (Preview)|Count|Celkem|Omezené požadavky pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|IncomingRequests|Příchozí žádosti (Preview)|Count|Celkem|Příchozí požadavky pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|IncomingMessages|Příchozí zprávy (Preview)|Count|Celkem|Příchozí zprávy pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|OutgoingMessages|Odchozí zprávy (Preview)|Count|Celkem|Odchozí zprávy pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|IncomingBytes|Příchozí bajty. (Preview)|B|Celkem|Příchozí bajty pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|OutgoingBytes|Odchozí bajty (Preview)|B|Celkem|Odchozí bajty pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|ActiveConnections|ActiveConnections (Preview)|Count|Average|Celkový počet aktivních připojení pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|ConnectionsOpened|Otevřená připojení. (Preview)|Count|Average|Otevřená připojení pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|ConnectionsClosed|Uzavřená připojení. (Preview)|Count|Average|Otevřená připojení pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|CaptureBacklog|Zachyťte nevyřízené položky. (Preview)|Count|Celkem|Zachyťte nevyřízené položky pro Microsoft. EventHub. (Preview)|Žádné dimenze|
+|CapturedMessages|Zachycené zprávy. (Preview)|Count|Celkem|Zachycené zprávy pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|CapturedBytes|Zachycené bajty. (Preview)|B|Celkem|Zachycené bajty pro Microsoft. EventHub (Preview)|Žádné dimenze|
+|Procesor|PROCESOR (Preview)|Percent|Maximum|Využití CPU pro cluster centra událostí jako procento|Role|
+|AvailableMemory|Dostupná paměť (Preview)|Count|Maximum|Dostupná paměť pro cluster centra událostí v bajtech|Role|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
@@ -855,10 +855,10 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Zjištěná hodnota metriky|Count|Average|Hodnota vypočítaná automatickým škálováním při jeho spuštění|MetricTriggerSource|
-|MetricThreshold|Mezní hodnota metriky|Count|Average|Konfigurovaná mezní hodnota automatického škálování, když se automatické škálování spustilo|MetricTriggerRule|
-|ObservedCapacity|Zjištěná kapacita|Count|Average|Kapacita ohlášená automatickému škálování při jeho spuštění|Žádné dimenze|
-|ScaleActionsInitiated|Zahájené akce škálování|Count|Celkem|Směr operace škálování|ScaleDirection|
+|ObservedMetricValue|Zjištěná hodnota metriky|Count|Average|Hodnota vypočítaná AutoScale při spuštění|MetricTriggerSource|
+|MetricThreshold|Mezní hodnota metriky|Count|Average|Nakonfigurované prahové hodnoty automatického škálování, když se spustilo automatické škálování.|MetricTriggerRule|
+|ObservedCapacity|Zjištěná kapacita|Count|Average|Kapacita nahlášená pro automatické škálování při jejím spuštění.|Žádné dimenze|
+|ScaleActionsInitiated|Zahájené akce škálování|Count|Celkem|Směr operace škálování.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
@@ -871,25 +871,25 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |availabilityResults/doba trvání|Doba trvání testu dostupnosti|Milisekund|Average|Doba trvání testu dostupnosti|availabilityResult/název, availabilityResult/umístění, availabilityResult/úspěch|
 |browserTimings/networkDuration|Čas síťového připojení při stahování stránky|Milisekund|Average|Doba mezi požadavkem uživatele a připojením k síti. Zahrnuje vyhledávání DNS a přenosové připojení.|Žádné dimenze|
 |browserTimings/processingDuration|Čas klientského zpracování|Milisekund|Average|Doba mezi přijetím posledního bajtu dokumentu, dokud není načten DOM. Je možné, že se stále zpracovávají asynchronní požadavky.|Žádné dimenze|
-|browserTimings/receiveDuration|Čas přijetí odezvy|Milisekund|Average|Doba mezi prvním a posledním bajtem nebo do odpojení|Žádné dimenze|
-|browserTimings/sendDuration|Čas odeslání žádosti|Milisekund|Average|Doba mezi síťovým připojením a přijetím prvního bajtu|Žádné dimenze|
-|browserTimings/totalDuration|Čas načítání stránky prohlížeče|Milisekund|Average|Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků|Žádné dimenze|
+|browserTimings/receiveDuration|Čas přijetí odezvy|Milisekund|Average|Čas mezi prvním a posledním bajtů nebo až do odpojení|Žádné dimenze|
+|browserTimings/sendDuration|Čas odeslání žádosti|Milisekund|Average|Doba mezi síťovým připojením a přijetím prvního bajtu.|Žádné dimenze|
+|browserTimings/totalDuration|Čas načítání stránky prohlížeče|Milisekund|Average|Čas od žádosti uživatele do načtení DOM, šablon stylů, skriptů a imagí.|Žádné dimenze|
 |závislosti/počet|Volání závislostí|Count|Count|Počet volání prováděných aplikací vůči externím prostředkům|závislost/typ, závislost/performanceBucket, závislost/úspěch, provoz/syntetická, Cloud/roleInstance, Cloud/roleName|
 |závislosti/doba trvání|Doba trvání závislosti|Milisekund|Average|Doba trvání volání prováděných aplikací vůči externím prostředkům|závislost/typ, závislost/performanceBucket, závislost/úspěch, provoz/syntetická, Cloud/roleInstance, Cloud/roleName|
 |závislosti/selhání|Chyby při volání závislostí|Count|Count|Počet neúspěšných volání závislostí prováděných aplikací vůči externím prostředkům|závislost/typ, Dependency/performanceBucket, provoz/syntetické, Cloud/roleInstance, Cloud/roleName|
-|pageViews/Count|Zobrazení stránek|Count|Count|Počet zobrazení stránky|operace/syntetické|
+|pageViews/Count|Zobrazení stránek|Count|Count|Počet zobrazení stránek|operace/syntetické|
 |pageViews/doba trvání|Doba načtení zobrazení stránky|Milisekund|Average|Doba načtení zobrazení stránky|operace/syntetické|
-|Čítače výkonu/requestExecutionTime|Doba provádění požadavku HTTP|Milisekund|Average|Doba provádění nejnovější žádosti|Cloud/roleInstance|
-|performanceCounters/requestsInQueue|Požadavky HTTP ve frontě aplikací|Count|Average|Délka fronty žádostí na aplikace|Cloud/roleInstance|
-|performanceCounters/requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Average|Počet všech žádostí na aplikaci za sekundu z ASP.NET|Cloud/roleInstance|
-|performanceCounters/exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Average|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET|Cloud/roleInstance|
-|performanceCounters/processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Average|Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu|Cloud/roleInstance|
+|Čítače výkonu/requestExecutionTime|Doba provádění požadavku HTTP|Milisekund|Average|Čas provedení posledního požadavku.|Cloud/roleInstance|
+|performanceCounters/requestsInQueue|Požadavky HTTP ve frontě aplikací|Count|Average|Délka fronty požadavků aplikace|Cloud/roleInstance|
+|performanceCounters/requestsPerSecond|Četnost požadavků HTTP|CountPerSecond|Average|Míra všech požadavků na aplikaci za sekundu z ASP.NET.|Cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|Frekvence výjimek|CountPerSecond|Average|Počet zpracovaných a nezpracovaných výjimek hlášených systému Windows, včetně výjimek .NET a nespravovaných výjimek převedených na výjimky .NET.|Cloud/roleInstance|
+|performanceCounters/processIOBytesPerSecond|Frekvence V/V procesu|BytesPerSecond|Average|Celkový počet bajtů za sekundu přečtených a zapsaných do souborů, sítě a zařízení.|Cloud/roleInstance|
 |Čítače výkonu/processCpuPercentage|Proces – procesor|Percent|Average|Procentuální hodnota uplynulého času, který všechny podprocesy procesu používají k provádění instrukcí. Může se lišit od 0 do 100. Tato metrika indikuje výkon samotného procesu W3wp.|Cloud/roleInstance|
-|Čítače výkonu/processorCpuPercentage|Čas procesoru|Percent|Average|Procento času, které procesor stráví na nečinných vláknech|Cloud/roleInstance|
-|Čítače výkonu/memoryAvailableBytes|Dostupná paměť|B|Average|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|Cloud/roleInstance|
-|performanceCounters/processPrivateBytes|Privátní bajty procesu|B|Average|Paměť exkluzivně přiřazená k procesům monitorované aplikace|Cloud/roleInstance|
-|žádosti/doba trvání|Doba odezvy serveru|Milisekund|Average|Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
-|požadavky/počet|Požadavky serveru|Count|Count|Počet dokončených žádostí HTTP|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
+|Čítače výkonu/processorCpuPercentage|Čas procesoru|Percent|Average|Procento času, které procesor stráví v nečinných vláknech|Cloud/roleInstance|
+|Čítače výkonu/memoryAvailableBytes|Dostupná paměť|B|Average|Fyzická paměť je okamžitě k dispozici pro přidělení procesu nebo pro použití systémem.|Cloud/roleInstance|
+|performanceCounters/processPrivateBytes|Privátní bajty procesu|B|Average|Paměť exkluzivně přiřazená k procesům monitorovaných aplikací.|Cloud/roleInstance|
+|žádosti/doba trvání|Doba odezvy serveru|Milisekund|Average|Doba mezi přijetím požadavku HTTP a dokončením odesílání odpovědi|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
+|požadavky/počet|Požadavky serveru|Count|Count|Počet dokončených požadavků HTTP|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
 |požadavky/selhání|Neúspěšné požadavky|Count|Count|Počet požadavků HTTP označených jako neúspěšné Ve většině případů se jedná o žádosti s kódem odpovědi > = 400 a nerovná se 401.|Request/performanceBucket, Request/resultCode, Operational/syntetické, Cloud/roleInstance, Cloud/roleName|
 |žádosti/rychlost|Počet požadavků serveru|CountPerSecond|Average|Frekvence požadavků serveru za sekundu|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
 |výjimky/počet|Výjimky|Count|Count|Kombinovaný počet všech nezachycených výjimek.|Cloud/roleName, Cloud/roleInstance, klient/typ|
@@ -903,7 +903,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |---|---|---|---|---|---|
 |ServiceApiHit|Celkem přístupů k rozhraní API služby|Count|Count|Celkový počet přístupů k rozhraní API služby|ActivityType, Activity|
 |ServiceApiLatency|Celková latence rozhraní API služby|Milisekundy|Average|Celková latence požadavků na rozhraní API služby|ActivityType, Activity, StatusCode|
-|ServiceApiResult|Celkem výsledků rozhraní API služby|Count|Count|Celkový počet výsledků rozhraní API služby|ActivityType, Activity, StatusCode|
+|ServiceApiResult|Celkem výsledků rozhraní API služby|Count|Count|Počet celkových výsledků rozhraní API služby|ActivityType, Activity, StatusCode|
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
@@ -933,15 +933,15 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RunsStarted|Spuštěné běhy|Count|Celkem|Počet spuštěných běhů pracovního postupu.|Žádné dimenze|
+|RunsStarted|Spuštěné běhy|Count|Celkem|Počet spuštěných pracovních postupů|Žádné dimenze|
 |RunsCompleted|Dokončené běhy|Count|Celkem|Počet dokončených běhů pracovního postupu.|Žádné dimenze|
 |RunsSucceeded|Úspěšné běhy|Count|Celkem|Počet úspěšných běhů pracovního postupu.|Žádné dimenze|
-|RunsFailed|Neúspěšné běhy|Count|Celkem|Počet neúspěšných běhů pracovního postupu.|Žádné dimenze|
+|RunsFailed|Neúspěšné běhy|Count|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádné dimenze|
 |RunsCancelled|Zrušené běhy|Count|Celkem|Počet zrušených běhů pracovního postupu.|Žádné dimenze|
 |RunLatency|Latence běhu|Sekundy|Average|Latence dokončených běhů pracovního postupu.|Žádné dimenze|
-|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Average|Latence úspěšných běhů pracovního postupu.|Žádné dimenze|
-|RunThrottledEvents|Omezené události běhu|Count|Celkem|Počet akcí pracovního postupu nebo omezených událostí triggeru.|Žádné dimenze|
-|RunFailurePercentage|Procento selhání spuštění|Percent|Celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
+|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Average|Latence úspěšných spuštění pracovního postupu.|Žádné dimenze|
+|RunThrottledEvents|Omezené události běhu|Count|Celkem|Počet akcí pracovního postupu nebo omezené události triggeru|Žádné dimenze|
+|RunFailurePercentage|Procento selhání spuštění|Percent|Celkem|Procento běhu pracovního postupu se nezdařilo.|Žádné dimenze|
 |ActionsStarted|Spuštěné akce |Count|Celkem|Počet spuštěných akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Dokončené akce |Count|Celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsSucceeded|Úspěšné akce |Count|Celkem|Počet úspěšných akcí pracovního postupu.|Žádné dimenze|
@@ -949,41 +949,41 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |ActionsSkipped|Vynechané akce |Count|Celkem|Počet vynechaných akcí pracovního postupu.|Žádné dimenze|
 |ActionLatency|Latence akcí |Sekundy|Average|Latence dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionSuccessLatency|Latence úspěšných akcí |Sekundy|Average|Latence úspěšných akcí pracovního postupu.|Žádné dimenze|
-|ActionThrottledEvents|Omezené události akcí|Count|Celkem|Počet omezených událostí akcí pracovního postupu.|Žádné dimenze|
+|ActionThrottledEvents|Omezené události akcí|Count|Celkem|Počet omezených událostí akcí pracovního postupu...|Žádné dimenze|
 |TriggersStarted|Spuštěné triggery |Count|Celkem|Počet spuštěných triggerů pracovního postupu.|Žádné dimenze|
 |TriggersCompleted|Dokončené triggery |Count|Celkem|Počet dokončených triggerů pracovního postupu.|Žádné dimenze|
-|TriggersSucceeded|Úspěšné triggery |Count|Celkem|Počet úspěšných triggerů pracovního postupu.|Žádné dimenze|
+|TriggersSucceeded|Úspěšné triggery |Count|Celkem|Počet úspěšných triggerů pracovního postupu|Žádné dimenze|
 |TriggersFailed|Neúspěšné triggery |Count|Celkem|Počet neúspěšných triggerů pracovního postupu.|Žádné dimenze|
 |TriggersSkipped|Vynechané triggery|Count|Celkem|Počet vynechaných triggerů pracovního postupu.|Žádné dimenze|
-|TriggersFired|Vyvolané triggery |Count|Celkem|Počet aktivovaných triggerů pracovního postupu.|Žádné dimenze|
+|TriggersFired|Vyvolané triggery |Count|Celkem|Počet vyvolaných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerLatency|Latence triggeru |Sekundy|Average|Latence dokončených triggerů pracovního postupu.|Žádné dimenze|
 |TriggerFireLatency|Latence při vyvolání triggeru |Sekundy|Average|Latence aktivovaných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerSuccessLatency|Latence úspěšného triggeru |Sekundy|Average|Latence úspěšných triggerů pracovního postupu.|Žádné dimenze|
-|TriggerThrottledEvents|Omezené události triggeru|Count|Celkem|Počet omezených událostí triggeru pracovního postupu.|Žádné dimenze|
+|TriggerThrottledEvents|Omezené události triggeru|Count|Celkem|Počet neomezených událostí triggeru pracovního postupu.|Žádné dimenze|
 |BillableActionExecutions|Fakturovatelné operace provedení akce|Count|Celkem|Počet fakturovaných provedení akcí pracovního postupu|Žádné dimenze|
-|BillableTriggerExecutions|Fakturovatelné operace provedení aktivačních událostí|Count|Celkem|Počet fakturovaných provedení aktivačních událostí pracovního postupu|Žádné dimenze|
+|BillableTriggerExecutions|Fakturovatelné operace provedení aktivačních událostí|Count|Celkem|Počet fakturovaných provedení triggerů pracovního postupu|Žádné dimenze|
 |TotalBillableExecutions|Fakturovatelné operace provedení celkem|Count|Celkem|Počet fakturovaných provedení pracovního postupu|Žádné dimenze|
-|BillingUsageNativeOperation|Fakturace za použití provedení nativních operací|Count|Celkem|Počet fakturovaných provedení nativních operací|Žádné dimenze|
-|BillingUsageStandardConnector|Fakturace za použití provedení standardních konektorů|Count|Celkem|Počet fakturovaných provedení standardních konektorů|Žádné dimenze|
-|BillingUsageStorageConsumption|Fakturace za použití provedení využití úložiště|Count|Celkem|Počet fakturovaných provedení využití úložiště|Žádné dimenze|
-|BillingUsageNativeOperation|Fakturace za použití provedení nativních operací|Count|Celkem|Počet fakturovaných provedení nativních operací|Žádné dimenze|
-|BillingUsageStandardConnector|Fakturace za použití provedení standardních konektorů|Count|Celkem|Počet fakturovaných provedení standardních konektorů|Žádné dimenze|
-|BillingUsageStorageConsumption|Fakturace za použití provedení využití úložiště|Count|Celkem|Počet fakturovaných provedení využití úložiště|Žádné dimenze|
+|BillingUsageNativeOperation|Využití fakturace pro provádění nativních operací|Count|Celkem|Počet fakturovaných provedení nativních operací|Žádné dimenze|
+|BillingUsageStandardConnector|Využití fakturace pro spuštění standardních konektorů|Count|Celkem|Počet fakturovaných spuštění standardních konektorů|Žádné dimenze|
+|BillingUsageStorageConsumption|Využití fakturace pro provádění spotřeby úložiště|Count|Celkem|Počet fakturovaných spuštění spotřeby úložiště|Žádné dimenze|
+|BillingUsageNativeOperation|Využití fakturace pro provádění nativních operací|Count|Celkem|Počet fakturovaných provedení nativních operací|Žádné dimenze|
+|BillingUsageStandardConnector|Využití fakturace pro spuštění standardních konektorů|Count|Celkem|Počet fakturovaných spuštění standardních konektorů|Žádné dimenze|
+|BillingUsageStorageConsumption|Využití fakturace pro provádění spotřeby úložiště|Count|Celkem|Počet fakturovaných spuštění spotřeby úložiště|Žádné dimenze|
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|RunsStarted|Spuštěné běhy|Count|Celkem|Počet spuštěných běhů pracovního postupu.|Žádné dimenze|
+|RunsStarted|Spuštěné běhy|Count|Celkem|Počet spuštěných pracovních postupů|Žádné dimenze|
 |RunsCompleted|Dokončené běhy|Count|Celkem|Počet dokončených běhů pracovního postupu.|Žádné dimenze|
 |RunsSucceeded|Úspěšné běhy|Count|Celkem|Počet úspěšných běhů pracovního postupu.|Žádné dimenze|
-|RunsFailed|Neúspěšné běhy|Count|Celkem|Počet neúspěšných běhů pracovního postupu.|Žádné dimenze|
+|RunsFailed|Neúspěšné běhy|Count|Celkem|Počet spuštění pracovního postupu se nezdařil.|Žádné dimenze|
 |RunsCancelled|Zrušené běhy|Count|Celkem|Počet zrušených běhů pracovního postupu.|Žádné dimenze|
 |RunLatency|Latence běhu|Sekundy|Average|Latence dokončených běhů pracovního postupu.|Žádné dimenze|
-|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Average|Latence úspěšných běhů pracovního postupu.|Žádné dimenze|
-|RunThrottledEvents|Omezené události běhu|Count|Celkem|Počet akcí pracovního postupu nebo omezených událostí triggeru.|Žádné dimenze|
-|RunStartThrottledEvents|Omezené události spuštění|Count|Celkem|Počet omezených událostí spuštění pracovního postupu|Žádné dimenze|
-|RunFailurePercentage|Procento selhání spuštění|Percent|Celkem|Procento neúspěšných spuštění pracovních postupů|Žádné dimenze|
+|RunSuccessLatency|Latence úspěšných běhů|Sekundy|Average|Latence úspěšných spuštění pracovního postupu.|Žádné dimenze|
+|RunThrottledEvents|Omezené události běhu|Count|Celkem|Počet akcí pracovního postupu nebo omezené události triggeru|Žádné dimenze|
+|RunStartThrottledEvents|Omezené události spuštění|Count|Celkem|Počet neomezených událostí spuštění pracovního postupu.|Žádné dimenze|
+|RunFailurePercentage|Procento selhání spuštění|Percent|Celkem|Procento běhu pracovního postupu se nezdařilo.|Žádné dimenze|
 |ActionsStarted|Spuštěné akce |Count|Celkem|Počet spuštěných akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Dokončené akce |Count|Celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsSucceeded|Úspěšné akce |Count|Celkem|Počet úspěšných akcí pracovního postupu.|Žádné dimenze|
@@ -991,21 +991,21 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |ActionsSkipped|Vynechané akce |Count|Celkem|Počet vynechaných akcí pracovního postupu.|Žádné dimenze|
 |ActionLatency|Latence akcí |Sekundy|Average|Latence dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionSuccessLatency|Latence úspěšných akcí |Sekundy|Average|Latence úspěšných akcí pracovního postupu.|Žádné dimenze|
-|ActionThrottledEvents|Omezené události akcí|Count|Celkem|Počet omezených událostí akcí pracovního postupu.|Žádné dimenze|
+|ActionThrottledEvents|Omezené události akcí|Count|Celkem|Počet omezených událostí akcí pracovního postupu...|Žádné dimenze|
 |TriggersStarted|Spuštěné triggery |Count|Celkem|Počet spuštěných triggerů pracovního postupu.|Žádné dimenze|
 |TriggersCompleted|Dokončené triggery |Count|Celkem|Počet dokončených triggerů pracovního postupu.|Žádné dimenze|
-|TriggersSucceeded|Úspěšné triggery |Count|Celkem|Počet úspěšných triggerů pracovního postupu.|Žádné dimenze|
+|TriggersSucceeded|Úspěšné triggery |Count|Celkem|Počet úspěšných triggerů pracovního postupu|Žádné dimenze|
 |TriggersFailed|Neúspěšné triggery |Count|Celkem|Počet neúspěšných triggerů pracovního postupu.|Žádné dimenze|
 |TriggersSkipped|Vynechané triggery|Count|Celkem|Počet vynechaných triggerů pracovního postupu.|Žádné dimenze|
-|TriggersFired|Vyvolané triggery |Count|Celkem|Počet aktivovaných triggerů pracovního postupu.|Žádné dimenze|
+|TriggersFired|Vyvolané triggery |Count|Celkem|Počet vyvolaných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerLatency|Latence triggeru |Sekundy|Average|Latence dokončených triggerů pracovního postupu.|Žádné dimenze|
 |TriggerFireLatency|Latence při vyvolání triggeru |Sekundy|Average|Latence aktivovaných triggerů pracovního postupu.|Žádné dimenze|
 |TriggerSuccessLatency|Latence úspěšného triggeru |Sekundy|Average|Latence úspěšných triggerů pracovního postupu.|Žádné dimenze|
-|TriggerThrottledEvents|Omezené události triggeru|Count|Celkem|Počet omezených událostí triggeru pracovního postupu.|Žádné dimenze|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integrační služby|Percent|Average|Využití procesoru pracovního postupu pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti pracovního postupu pro prostředí integrační služby|Percent|Average|Využití paměti pracovního postupu pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí integrační služby|Percent|Average|Využití procesoru konektoru pro prostředí integrační služby|Žádné dimenze|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí integrační služby|Percent|Average|Využití paměti konektoru pro prostředí integrační služby|Žádné dimenze|
+|TriggerThrottledEvents|Omezené události triggeru|Count|Celkem|Počet neomezených událostí triggeru pracovního postupu.|Žádné dimenze|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Využití procesoru pracovního postupu pro prostředí integrační služby|Percent|Average|Využití procesoru pracovního postupu pro prostředí integrační služby.|Žádné dimenze|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Využití paměti workflowu pro prostředí integrační služby|Percent|Average|Využití paměti pracovního postupu pro prostředí integrační služby.|Žádné dimenze|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Využití procesoru konektoru pro prostředí integrační služby|Percent|Average|Využití procesoru konektoru pro prostředí integrační služby.|Žádné dimenze|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Využití paměti konektoru pro prostředí integrační služby|Percent|Average|Využití paměti konektoru pro prostředí integrační služby.|Žádné dimenze|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
@@ -1207,12 +1207,12 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|registrace. vše|Registrace – operace|Count|Celkem|Počet všech úspěšných operací s registrací (vytvoření, aktualizace, dotazy a odstranění) |Žádné dimenze|
-|registration.create|Registrace – vytvořit operace|Count|Celkem|Počet všech úspěšných vytvoření registrací|Žádné dimenze|
-|registration.update|Registrace – aktualizovat operace|Count|Celkem|Počet všech úspěšných aktualizací registrací|Žádné dimenze|
-|registration.get|Registrace – přečíst operace|Count|Celkem|Počet všech úspěšných dotazů registrací|Žádné dimenze|
-|registration.delete|Registrace – odstranit operace|Count|Celkem|Počet všech úspěšných odstranění registrací|Žádné dimenze|
-|přijíman|Příchozí zprávy|Count|Celkem|Počet všech úspěšných volání rozhraní API, pomocí kterých se odesílají data |Žádné dimenze|
+|registrace. vše|Registrace – operace|Count|Celkem|Počet všech úspěšných operací registrace (vytváření dotazů a odstraňování aktualizací). |Žádné dimenze|
+|registration.create|Registrace – vytvořit operace|Count|Celkem|Počet všech úspěšných vytvoření registrace.|Žádné dimenze|
+|registration.update|Registrace – aktualizovat operace|Count|Celkem|Počet všech úspěšných aktualizací registrace.|Žádné dimenze|
+|registration.get|Registrace – přečíst operace|Count|Celkem|Počet všech úspěšných dotazů na registraci.|Žádné dimenze|
+|registration.delete|Registrace – odstranit operace|Count|Celkem|Počet všech úspěšných odstranění registrací.|Žádné dimenze|
+|přijíman|Příchozí zprávy|Count|Celkem|Počet všech úspěšných volání rozhraní API pro odeslání. |Žádné dimenze|
 |incoming.scheduled|Odeslaná plánovaná nabízená oznámení|Count|Celkem|Plánovaná nabízená oznámení zrušena|Žádné dimenze|
 |incoming.scheduled.cancel|Plánovaná nabízená oznámení zrušena|Count|Celkem|Plánovaná nabízená oznámení zrušena|Žádné dimenze|
 |naplánováno. čeká na|Čekající plánovaná oznámení|Count|Celkem|Čekající plánovaná oznámení|Žádné dimenze|
@@ -1222,33 +1222,33 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |instalace. patch|Opravit operace instalace|Count|Celkem|Opravit operace instalace|Žádné dimenze|
 |installation.delete|Operace odstranění instalace|Count|Celkem|Operace odstranění instalace|Žádné dimenze|
 |odchozí. allpns. úspěch|Úspěšná oznámení|Count|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
-|odchozí. allpns. invalidpayload|Chyby datové části|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy vrátil chybu, která se týká chybné datové části|Žádné dimenze|
-|odchozí. allpns. pnserror|Chyby externího systému oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože při komunikaci se systémem oznámení platformy došlo k problému (nezahrnuje problémy s ověřováním)|Žádné dimenze|
-|outgoing.allpns.channelerror|Chyby kanálů|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože kanál nebyl platný nebo přidružený ke správné aplikaci, byl omezený, nebo jeho platnost vypršela|Žádné dimenze|
-|outgoing.allpns.badorexpiredchannel|Chyby – chybný kanál nebo vypršení časového limitu kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože v registraci vypršel nebo není platný kanál, token nebo ID registrace|Žádné dimenze|
+|odchozí. allpns. invalidpayload|Chyby datové části|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS vrátil chybnou datovou část.|Žádné dimenze|
+|odchozí. allpns. pnserror|Chyby externího systému oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože došlo k potížím při komunikaci s PNS (nezahrnuje problémy s ověřováním).|Žádné dimenze|
+|outgoing.allpns.channelerror|Chyby kanálů|Count|Celkem|Počet nabízených oznámení, která selhala, protože kanál byl neplatný, ale není přidružený ke správné aplikaci nebo vypršela její platnost.|Žádné dimenze|
+|outgoing.allpns.badorexpiredchannel|Chyby – chybný kanál nebo vypršení časového limitu kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože v registraci vypršela platnost kanálu/tokenu nebo registrationId, nebo je neplatná.|Žádné dimenze|
 |odchozí. WNS. úspěch|WNS – úspěšná oznámení|Count|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
-|odchozí. WNS. invalidcredentials|WNS – chyby autorizace (neplatné přihlašovací údaje)|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy nepřijal poskytnuté přihlašovací údaje, nebo jsou přihlašovací údaje blokované (Windows Live nerozpoznává přihlašovací údaje.)|Žádné dimenze|
+|odchozí. WNS. invalidcredentials|WNS – chyby autorizace (neplatné přihlašovací údaje)|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované. (Windows Live nerozpoznává přihlašovací údaje.)|Žádné dimenze|
 |outgoing.wns.badchannel|WNS – chyba špatného kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci nebyl rozpoznán (stav WNS: 404 nebyl nalezen).|Žádné dimenze|
 |outgoing.wns.expiredchannel|WNS – chyba vypršení časového limitu kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože platnost parametr channeluri vypršela (stav WNS: 410 zmizelo).|Žádné dimenze|
 |odchozí. WNS. omezení|WNS – omezená oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože WNS omezuje tuto aplikaci (stav WNS: 406 není přijatelné).|Žádné dimenze|
-|outgoing.wns.tokenproviderunreachable|WNS – chyby autorizace (nedostupné)|Count|Celkem|Služby Windows Live nejsou dostupné.|Žádné dimenze|
+|outgoing.wns.tokenproviderunreachable|WNS – chyby autorizace (nedostupné)|Count|Celkem|Systém Windows Live není dostupný.|Žádné dimenze|
 |odchozí. WNS. invalidtoken|WNS – chyby autorizace (neplatný token)|Count|Celkem|Token poskytnutý pro WNS není platný (stav WNS: 401 Neautorizováno).|Žádné dimenze|
-|outgoing.wns.wrongtoken|WNS – chyby autorizace (chybný token)|Count|Celkem|Token poskytnutý pro WNS je platný, ale pro jinou aplikaci (stav WNS: 403 zakázáno). K tomu může dojít, pokud je parametr channeluri v registraci přidružen k jiné aplikaci. Ověřte, že je klientská aplikace přidružená ke stejné aplikaci, jejíž přihlašovací údaje jsou v centru oznámení.|Žádné dimenze|
+|outgoing.wns.wrongtoken|WNS chyby autorizace (špatný token)|Count|Celkem|Token poskytnutý pro WNS je platný, ale pro jinou aplikaci (stav WNS: 403 zakázáno). K tomu může dojít, pokud je parametr channeluri v registraci přidružen k jiné aplikaci. Ověřte, že je klientská aplikace přidružená ke stejné aplikaci, jejíž přihlašovací údaje jsou v centru oznámení.|Žádné dimenze|
 |odchozí. WNS. invalidnotificationformat|WNS – neplatný formát oznámení|Count|Celkem|Formát oznámení je neplatný (stav WNS: 400). Všimněte si, že WNS neumožňuje odmítat všechny neplatné datové části.|Žádné dimenze|
 |odchozí. WNS. invalidnotificationsize|WNS – chyba neplatné velikosti oznámení|Count|Celkem|Datová část oznámení je příliš velká (stav WNS: 413).|Žádné dimenze|
 |outgoing.wns.channelthrottled|WNS – omezený kanál|Count|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (hlavička odpovědi WNS: X-WNS-NotificationStatus: channelThrottled).|Žádné dimenze|
 |odchozí. WNS. channeldisconnected|WNS – odpojený kanál|Count|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (hlavička odpovědi WNS: X-WNS-DeviceConnectionStatus: odpojeno).|Žádné dimenze|
-|outgoing.wns.dropped|WNS – vynechaná oznámení|Count|Celkem|Oznámení se ignoruje, protože v registraci se omezuje parametr ChannelURI (X-WNS-NotificationStatus: dropped, ale ne X-WNS-DeviceConnectionStatus: disconnected).|Žádné dimenze|
-|odchozí. WNS. pnserror|WNS – chyby|Count|Celkem|Oznámení se nedoručilo kvůli chybám při komunikaci se Službou nabízených oznámení Windows.|Žádné dimenze|
-|outgoing.wns.authenticationerror|WNS – chyby ověřování|Count|Celkem|Oznámení se nedoručilo kvůli chybám při komunikaci s Windows Live, neplatným přihlašovacím údajům, nebo chybnému tokenu.|Žádné dimenze|
+|outgoing.wns.dropped|WNS – vynechaná oznámení|Count|Celkem|Oznámení bylo vyřazeno, protože parametr channeluri v registraci je omezené (X-WNS-NotificationStatus: vyřazeno, ale ne X-WNS-DeviceConnectionStatus: odpojeno).|Žádné dimenze|
+|odchozí. WNS. pnserror|WNS – chyby|Count|Celkem|Oznámení nebylo doručeno kvůli chybám při komunikaci s WNS.|Žádné dimenze|
+|outgoing.wns.authenticationerror|WNS – chyby ověřování|Count|Celkem|Oznámení nebylo doručeno kvůli chybám při komunikaci s Windows Live neplatné přihlašovací údaje nebo chybný token.|Žádné dimenze|
 |outgoing.apns.success|APNS – úspěšná oznámení|Count|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
-|outgoing.apns.invalidcredentials|Chyby autorizace APNs|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy nepřijal poskytnuté přihlašovací údaje, nebo jsou přihlašovací údaje blokované|Žádné dimenze|
+|outgoing.apns.invalidcredentials|Chyby autorizace APNs|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné dimenze|
 |outgoing.apns.badchannel|Chyba APNS – špatný kanál|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože token je neplatný (kód stavu binárního protokolu APNS: 8. Stavový kód protokolu HTTP služby APN: 400 s "BadDeviceToken").|Žádné dimenze|
-|outgoing.apns.expiredchannel|Chyba APNS – kanálu vypršel časový limit|Count|Celkem|Počet tokenů, kterým kanál zpětné vazby APNs zrušil platnost|Žádné dimenze|
+|outgoing.apns.expiredchannel|Chyba APNS – kanálu vypršel časový limit|Count|Celkem|Počet tokenů, u kterých se zrušila platnost kanálu zpětné vazby APNS.|Žádné dimenze|
 |odchozí. APNs. invalidnotificationsize|APNS – chyba neplatné velikosti oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část byla příliš velká (Stavový kód binárního protokolu APNS: 7).|Žádné dimenze|
-|outgoing.apns.pnserror|APNS – chyby|Count|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s APNs|Žádné dimenze|
+|outgoing.apns.pnserror|APNS – chyby|Count|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s APNS.|Žádné dimenze|
 |outgoing.gcm.success|GCM – úspěšná oznámení|Count|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
-|odchozí. GCM. invalidcredentials|GCM – chyby autorizace (neplatné přihlašovací údaje)|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy nepřijal poskytnuté přihlašovací údaje, nebo jsou přihlašovací údaje blokované|Žádné dimenze|
+|odchozí. GCM. invalidcredentials|GCM – chyby autorizace (neplatné přihlašovací údaje)|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné dimenze|
 |outgoing.gcm.badchannel|GCM – chyba špatného kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože registrationId v registraci nebyl rozpoznán (výsledek GCM: Neplatná registrace.|Žádné dimenze|
 |outgoing.gcm.expiredchannel|GCM – chyba vypršení časového limitu kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože vypršela platnost registrationId v registraci (výsledek GCM: NotRegistered).|Žádné dimenze|
 |odchozí. GCM. omezení|GCM – omezená oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože aplikace GCM omezila tuto aplikaci (Stavový kód GCM: 501-599 nebo výsledek: nedostupný)|Žádné dimenze|
@@ -1258,17 +1258,17 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |outgoing.gcm.pnserror|GCM – chyby|Count|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s GCM|Žádné dimenze|
 |outgoing.gcm.authenticationerror|Chyby ověřování GCM|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje. přihlašovací údaje jsou blokované nebo SenderId není v aplikaci správně nakonfigurovaný (výsledek GCM: MismatchedSenderId).|Žádné dimenze|
 |outgoing.mpns.success|MPNS – úspěšná oznámení|Count|Celkem|Počet všech úspěšných oznámení|Žádné dimenze|
-|outgoing.mpns.invalidcredentials|MPNS – neplatné přihlašovací údaje|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy nepřijal poskytnuté přihlašovací údaje, nebo jsou přihlašovací údaje blokované|Žádné dimenze|
+|outgoing.mpns.invalidcredentials|MPNS – neplatné přihlašovací údaje|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné dimenze|
 |outgoing.mpns.badchannel|MPNS – chyba špatného kanálu|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci nebyl rozpoznán (stav MPNS: 404 nebyl nalezen).|Žádné dimenze|
 |outgoing.mpns.throttled|MPNS – omezená oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože MPNS omezuje tuto aplikaci (WNS MPNS: 406 není přijatelné).|Žádné dimenze|
-|odchozí. MPNS. invalidnotificationformat|MPNS – neplatný formát oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část v oznámení byla moc velká|Žádné dimenze|
+|odchozí. MPNS. invalidnotificationformat|MPNS – neplatný formát oznámení|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože datová část oznámení byla příliš velká.|Žádné dimenze|
 |outgoing.mpns.channeldisconnected|MPNS – odpojený kanál|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože parametr channeluri v registraci byl odpojen (stav MPNS: 412 nebyl nalezen).|Žádné dimenze|
 |outgoing.mpns.dropped|MPNS – vynechaná oznámení|Count|Celkem|Počet nabídek, které byly vyřazeny pomocí MPNS (hlavička odpovědi MPNS: X-NotificationStatus: QueueFull nebo potlačeno).|Žádné dimenze|
 |outgoing.mpns.pnserror|MPNS – chyby|Count|Celkem|Počet nabídek, které nebyly úspěšné kvůli chybám při komunikaci s MPNS|Žádné dimenze|
-|outgoing.mpns.authenticationerror|MPNS – chyby ověřování|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože systém oznámení platformy nepřijal poskytnuté přihlašovací údaje, nebo jsou přihlašovací údaje blokované|Žádné dimenze|
+|outgoing.mpns.authenticationerror|MPNS – chyby ověřování|Count|Celkem|Počet nabídek, které nebyly úspěšné, protože PNS nepřijal zadané přihlašovací údaje nebo jsou přihlašovací údaje blokované.|Žádné dimenze|
 |notificationhub. push|Všechna odchozí oznámení|Count|Celkem|Všechna odchozí oznámení centra oznámení|Žádné dimenze|
-|incoming.all.requests|Všechny příchozí požadavky|Count|Celkem|Celkový počet příchozích požadavků pro centrum oznámení|Žádné dimenze|
-|příchozí. All. failedrequests|Všechny neúspěšné příchozí požadavky|Count|Celkem|Celkový počet neúspěšných příchozích požadavků pro centrum oznámení|Žádné dimenze|
+|incoming.all.requests|Všechny příchozí požadavky|Count|Celkem|Celkový počet příchozích požadavků pro Centrum oznámení|Žádné dimenze|
+|příchozí. All. failedrequests|Všechny neúspěšné příchozí požadavky|Count|Celkem|Celkový počet příchozích neúspěšných žádostí pro Centrum oznámení|Žádné dimenze|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
@@ -1360,19 +1360,19 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|ListenerConnections-Success|ListenerConnections-Success|Count|Celkem|Úspěšná připojení ListenerConnections pro Microsoft.Relay|EntityName|
-|ListenerConnections-ClientError|ListenerConnections-ClientError|Count|Celkem|ClientError v ListenerConnections pro Microsoft.Relay|EntityName|
-|ListenerConnections-ServerError|ListenerConnections-ServerError|Count|Celkem|ServerError na ListenerConnections pro Microsoft.Relay|EntityName|
-|SenderConnections-Success|SenderConnections-Success|Count|Celkem|Úspěšná připojení SenderConnections pro Microsoft.Relay|EntityName|
-|SenderConnections-ClientError|SenderConnections-ClientError|Count|Celkem|ClientError v SenderConnections pro Microsoft.Relay|EntityName|
-|SenderConnections-ServerError|SenderConnections-ServerError|Count|Celkem|ServerError na SenderConnections pro Microsoft.Relay|EntityName|
-|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Celkem|ListenerConnections celkem pro Microsoft.Relay|EntityName|
-|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Celkem|Celkem žádostí SenderConnections pro Microsoft.Relay|EntityName|
-|ActiveConnections|ActiveConnections|Count|Celkem|ActiveConnections celkem pro Microsoft.Relay|EntityName|
-|ActiveListeners|ActiveListeners|Count|Celkem|ActiveListeners celkem pro Microsoft.Relay|EntityName|
-|BytesTransferred|BytesTransferred|Count|Celkem|BytesTransferred celkem pro Microsoft.Relay|EntityName|
-|ListenerDisconnects|ListenerDisconnects|Count|Celkem|ListenerDisconnects celkem pro Microsoft.Relay|EntityName|
-|SenderDisconnects|SenderDisconnects|Count|Celkem|SenderDisconnects celkem pro Microsoft.Relay|EntityName|
+|ListenerConnections – úspěch|ListenerConnections – úspěch|Count|Celkem|Úspěšně se ListenerConnections pro Microsoft. Relay.|EntityName|
+|ListenerConnections-ClientError|ListenerConnections-ClientError|Count|Celkem|ClientError v ListenerConnections pro Microsoft. Relay|EntityName|
+|ListenerConnections-ServerError|ListenerConnections-ServerError|Count|Celkem|ServerError v ListenerConnections pro Microsoft. Relay|EntityName|
+|SenderConnections – úspěch|SenderConnections – úspěch|Count|Celkem|Úspěšně se SenderConnections pro Microsoft. Relay.|EntityName|
+|SenderConnections – ClientError|SenderConnections – ClientError|Count|Celkem|ClientError v SenderConnections pro Microsoft. Relay|EntityName|
+|SenderConnections-ServerError|SenderConnections-ServerError|Count|Celkem|ServerError v SenderConnections pro Microsoft. Relay|EntityName|
+|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Celkem|Total ListenerConnections for Microsoft. Relay|EntityName|
+|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Celkem|Požadavky SenderConnections (celkem) pro Microsoft. Relay|EntityName|
+|ActiveConnections|ActiveConnections|Count|Celkem|Total ActiveConnections for Microsoft. Relay|EntityName|
+|ActiveListeners|ActiveListeners|Count|Celkem|Total ActiveListeners for Microsoft. Relay|EntityName|
+|BytesTransferred|BytesTransferred|Count|Celkem|Total BytesTransferred for Microsoft. Relay|EntityName|
+|ListenerDisconnects|ListenerDisconnects|Count|Celkem|Total ListenerDisconnects for Microsoft. Relay|EntityName|
+|SenderDisconnects|SenderDisconnects|Count|Celkem|Total SenderDisconnects for Microsoft. Relay|EntityName|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -1387,20 +1387,20 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Úspěšné požadavky (Preview)|Count|Celkem|Celkový počet úspěšných žádostí pro obor názvů (Preview)|EntityName|
-|ServerErrors|Chyby serveru (Preview)|Count|Celkem|Chyby serveru pro Microsoft.ServiceBus (Preview)|EntityName|
-|UserErrors|Chyby uživatele (Preview)|Count|Celkem|Chyby uživatele pro Microsoft.ServiceBus (Preview)|EntityName|
-|ThrottledRequests|Omezené požadavky (Preview)|Count|Celkem|Omezené požadavky pro Microsoft.ServiceBus (Preview)|EntityName|
-|IncomingRequests|Příchozí žádosti (Preview)|Count|Celkem|Příchozí požadavky pro Microsoft.ServiceBus (Preview)|EntityName|
-|IncomingMessages|Příchozí zprávy (Preview)|Count|Celkem|Příchozí zprávy pro Microsoft.ServiceBus (Preview)|EntityName|
-|OutgoingMessages|Odchozí zprávy (Preview)|Count|Celkem|Odchozí zprávy pro Microsoft.ServiceBus (Preview)|EntityName|
-|ActiveConnections|ActiveConnections (Preview)|Count|Celkem|Celkový počet aktivních připojení pro Microsoft.ServiceBus (Preview)|Žádné dimenze|
+|ServerErrors|Chyby serveru. (Preview)|Count|Celkem|Chyby serveru pro Microsoft. ServiceBus (Preview)|EntityName|
+|UserErrors|Chyby uživatele. (Preview)|Count|Celkem|Chyby uživatele pro Microsoft. ServiceBus (Preview)|EntityName|
+|ThrottledRequests|Omezené požadavky. (Preview)|Count|Celkem|Omezené požadavky pro Microsoft. ServiceBus (Preview)|EntityName|
+|IncomingRequests|Příchozí žádosti (Preview)|Count|Celkem|Příchozí požadavky pro Microsoft. ServiceBus (Preview)|EntityName|
+|IncomingMessages|Příchozí zprávy (Preview)|Count|Celkem|Příchozí zprávy pro Microsoft. ServiceBus (Preview)|EntityName|
+|OutgoingMessages|Odchozí zprávy (Preview)|Count|Celkem|Odchozí zprávy pro Microsoft. ServiceBus (Preview)|EntityName|
+|ActiveConnections|ActiveConnections (Preview)|Count|Celkem|Celkový počet aktivních připojení pro Microsoft. ServiceBus (Preview)|Žádné dimenze|
 |Size|Velikost (Preview)|B|Average|Velikost fronty nebo tématu v bajtech (Preview)|EntityName|
-|Zprávy|Počet zpráv ve frontě nebo tématu (Preview)|Count|Average|Počet zpráv ve frontě nebo tématu (Preview)|EntityName|
-|ActiveMessages|Počet aktivních zpráv ve frontě nebo tématu (Preview)|Count|Average|Počet aktivních zpráv ve frontě nebo tématu (Preview)|EntityName|
+|Zprávy|Počet zpráv ve frontě nebo tématu. (Preview)|Count|Average|Počet zpráv ve frontě nebo tématu. (Preview)|EntityName|
+|ActiveMessages|Počet aktivních zpráv ve frontě nebo tématu. (Preview)|Count|Average|Počet aktivních zpráv ve frontě nebo tématu. (Preview)|EntityName|
 |DeadletteredMessages|Počet nedoručených zpráv ve frontě nebo tématu (Preview)|Count|Average|Počet nedoručených zpráv ve frontě nebo tématu (Preview)|EntityName|
-|ScheduledMessages|Počet plánovaných zpráv ve frontě nebo tématu (Preview)|Count|Average|Počet plánovaných zpráv ve frontě nebo tématu (Preview)|EntityName|
-|CPUXNS|Využití CPU na obor názvů|Percent|Maximum|Metrika využití procesoru v oboru názvů služby Service Bus na úrovni Premium|Žádné dimenze|
-|WSXNS|Využití paměti na obor názvů|Percent|Maximum|Metrika využití paměti v oboru názvů služby Service Bus na úrovni Premium|Žádné dimenze|
+|ScheduledMessages|Počet naplánovaných zpráv ve frontě nebo tématu. (Preview)|Count|Average|Počet naplánovaných zpráv ve frontě nebo tématu. (Preview)|EntityName|
+|CPUXNS|Využití CPU na obor názvů|Percent|Maximum|Metrika využití procesoru oboru názvů služby Service Bus úrovně Premium|Žádné dimenze|
+|WSXNS|Využití paměti na obor názvů|Percent|Maximum|Metrika využití paměti oboru názvů služby Service Bus Premium|Žádné dimenze|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1435,33 +1435,33 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |---|---|---|---|---|---|
 |cpu_percent|Procentuální využití procesoru|Percent|Average|Procentuální využití procesoru|Žádné dimenze|
 |physical_data_read_percent|Procento V/V dat|Percent|Average|Procento V/V dat|Žádné dimenze|
-|log_write_percent|Procento V/V protokolu|Percent|Average|Procento V/V protokolu|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Percent|Average|Procento DTU|Žádné dimenze|
-|úložiště|Využitý datový prostor|B|Maximum|Celková velikost databáze|Žádné dimenze|
+|log_write_percent|Procento V/V protokolu|Percent|Average|Procentní hodnota protokolu v/v. Neplatí pro datové sklady.|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Percent|Average|Procento DTU Platí pro databáze založené na DTU.|Žádné dimenze|
+|úložiště|Využitý datový prostor|B|Maximum|Celková velikost databáze Neplatí pro datové sklady.|Žádné dimenze|
 |connection_successful|Úspěšná připojení|Count|Celkem|Úspěšná připojení|Žádné dimenze|
 |connection_failed|Chyba připojení|Count|Celkem|Chyba připojení|Žádné dimenze|
 |blocked_by_firewall|Blokováno bránou firewall|Count|Celkem|Blokováno bránou firewall|Žádné dimenze|
-|ukončení|Zablokování|Count|Celkem|Zablokování|Žádné dimenze|
-|storage_percent|Procento využitého datového prostoru|Percent|Maximum|Procento velikosti databáze|Žádné dimenze|
-|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Percent|Average|Procentuální hodnota úložiště OLTP v paměti|Žádné dimenze|
-|workers_percent|Procento prac. procesů|Percent|Average|Procento prac. procesů|Žádné dimenze|
-|sessions_percent|Procento relací|Percent|Average|Procento relací|Žádné dimenze|
-|dtu_limit|Limit DTU|Count|Average|Limit DTU|Žádné dimenze|
-|dtu_used|Využité DTU|Count|Average|Využité DTU|Žádné dimenze|
-|cpu_limit|Limit procesoru|Count|Average|Limit procesoru|Žádné dimenze|
-|cpu_used|Využitý procesor|Count|Average|Využitý procesor|Žádné dimenze|
-|dwu_limit|DWU limit|Count|Maximum|DWU limit|Žádné dimenze|
-|dwu_consumption_percent|Procento DWU|Percent|Maximum|Procento DWU|Žádné dimenze|
-|dwu_used|DWU použito|Count|Maximum|DWU použito|Žádné dimenze|
+|ukončení|Zablokování|Count|Celkem|Zablokování. Neplatí pro datové sklady.|Žádné dimenze|
+|storage_percent|Procento využitého datového prostoru|Percent|Maximum|Procento velikosti databáze. Neplatí pro datové sklady nebo databáze na úrovni dat.|Žádné dimenze|
+|xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Percent|Average|Procentuální hodnota úložiště OLTP v paměti Neplatí pro datové sklady.|Žádné dimenze|
+|workers_percent|Procento prac. procesů|Percent|Average|Procento pracovních procesů Neplatí pro datové sklady.|Žádné dimenze|
+|sessions_percent|Procento relací|Percent|Average|Procento relací Neplatí pro datové sklady.|Žádné dimenze|
+|dtu_limit|Limit DTU|Count|Average|Limit DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
+|dtu_used|Využité DTU|Count|Average|Používá se DTU. Platí pro databáze založené na DTU.|Žádné dimenze|
+|cpu_limit|Limit procesoru|Count|Average|Limit procesoru. Platí pro databáze založené na vCore.|Žádné dimenze|
+|cpu_used|Využitý procesor|Count|Average|Využitý procesor. Platí pro databáze založené na vCore.|Žádné dimenze|
+|dwu_limit|DWU limit|Count|Maximum|DWU limit. Platí jenom pro datové sklady.|Žádné dimenze|
+|dwu_consumption_percent|Procento DWU|Percent|Maximum|Procento DWU Platí jenom pro datové sklady.|Žádné dimenze|
+|dwu_used|DWU použito|Count|Maximum|DWU použito. Platí jenom pro datové sklady.|Žádné dimenze|
 |dw_cpu_percent|Procento CPU na úrovni uzlu DW|Percent|Average|Procento CPU na úrovni uzlu DW|DwLogicalNodeId|
 |dw_physical_data_read_percent|Procento vstupně-výstupních operací dat na úrovni uzlu DW|Percent|Average|Procento vstupně-výstupních operací dat na úrovni uzlu DW|DwLogicalNodeId|
-    |cache_hit_percent|Procento přístupů do mezipaměti|Percent|Maximum|Procento přístupů do mezipaměti|Žádné dimenze|
-|cache_used_percent|Procento využité mezipaměti|Percent|Maximum|Procento využité mezipaměti|Žádné dimenze|
-|local_tempdb_usage_percent|Místní procento databáze tempdb|Percent|Average|Místní procento databáze tempdb|Žádné dimenze|
-|app_cpu_billed|Aplikace fakturovaná podle procesoru|Count|Celkem|Aplikace fakturovaná podle procesoru|Žádné dimenze|
-|app_cpu_percent|Procento využití procesoru aplikací|Percent|Average|Procento využití procesoru aplikací|Žádné dimenze|
-|app_memory_percent|Procento využité paměti aplikace|Percent|Average|Procento využité paměti aplikace|Žádné dimenze|
-|allocated_data_storage|Přidělený datový prostor|B|Average|Přidělený datový prostor|Žádné dimenze|
+|cache_hit_percent|Procento přístupů do mezipaměti|Percent|Maximum|Procento přístupů do mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
+|cache_used_percent|Procento využité mezipaměti|Percent|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádné dimenze|
+|local_tempdb_usage_percent|Místní procento databáze tempdb|Percent|Average|Místní procento databáze tempdb. Platí jenom pro datové sklady.|Žádné dimenze|
+|app_cpu_billed|Aplikace fakturovaná podle procesoru|Count|Celkem|CPU aplikace se fakturuje. Platí pro databáze bez serveru.|Žádné dimenze|
+|app_cpu_percent|Procento využití procesoru aplikací|Percent|Average|Procento využití procesoru aplikací Platí pro databáze bez serveru.|Žádné dimenze|
+|app_memory_percent|Procento využité paměti aplikace|Percent|Average|Procento využité paměti aplikace Platí pro databáze bez serveru.|Žádné dimenze|
+|allocated_data_storage|Přidělený datový prostor|B|Average|Přidělené datové místo Neplatí pro datové sklady.|Žádné dimenze|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -1470,17 +1470,17 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |cpu_percent|Procentuální využití procesoru|Percent|Average|Procentuální využití procesoru|Žádné dimenze|
 |physical_data_read_percent|Procento V/V dat|Percent|Average|Procento V/V dat|Žádné dimenze|
 |log_write_percent|Procento V/V protokolu|Percent|Average|Procento V/V protokolu|Žádné dimenze|
-|dtu_consumption_percent|Procento DTU|Percent|Average|Procento DTU|Žádné dimenze|
+|dtu_consumption_percent|Procento DTU|Percent|Average|Procento DTU Platí pro elastické fondy založené na DTU.|Žádné dimenze|
 |storage_percent|Procento využitého datového prostoru||Percent|Average|Procento úložiště|Žádné dimenze|
 |workers_percent|Procento prac. procesů|Percent|Average|Procento prac. procesů|Žádné dimenze|
 |sessions_percent|Procento relací|Percent|Average|Procento relací|Žádné dimenze|
-|eDTU_limit|limit eDTU|Count|Average|limit eDTU|Žádné dimenze|
+|eDTU_limit|limit eDTU|Count|Average|limit eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
 |storage_limit|Maximální velikost dat|B|Average|Omezení úložiště|Žádné dimenze|
-|eDTU_used|využité eDTU|Count|Average|využité eDTU|Žádné dimenze|
+|eDTU_used|využité eDTU|Count|Average|používá se eDTU. Platí pro elastické fondy založené na DTU.|Žádné dimenze|
 |storage_used|Využitý datový prostor|B|Average|Využité úložiště|Žádné dimenze|
 |xtp_storage_percent|Procentuální hodnota úložiště OLTP v paměti|Percent|Average|Procentuální hodnota úložiště OLTP v paměti|Žádné dimenze|
-|cpu_limit|Limit procesoru|Count|Average|Limit procesoru|Žádné dimenze|
-|cpu_used|Využitý procesor|Count|Average|Využitý procesor|Žádné dimenze|
+|cpu_limit|Limit procesoru|Count|Average|Limit procesoru. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
+|cpu_used|Využitý procesor|Count|Average|Využitý procesor. Platí pro elastické fondy založené na vCore.|Žádné dimenze|
 |allocated_data_storage|Přidělený datový prostor|B|Average|Přidělený datový prostor|Žádné dimenze|
 |allocated_data_storage_percent|Procentuální hodnota přiděleného datového prostoru|Percent|Maximum|Procentuální hodnota přiděleného datového prostoru|Žádné dimenze|
 
@@ -1515,7 +1515,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |BlobCapacity|Kapacita služby Blob|B|Average|Velikost úložiště využitá službou Blob Service účtu úložiště v bajtech|BlobType, úroveň|
 |BlobCount|Počet objektů blob|Počet|Celkem|Počet objektů blob ve službě Blob Service účtu úložiště|BlobType|       |BlobCount|Počet objektů blob|Count|Average|Počet objektů blob ve službě Blob Service účtu úložiště|BlobType, úroveň|
 |ContainerCount|Počet kontejnerů služby Blob|Počet|Průměr|Počet kontejnerů ve službě Blob Service účtu úložiště|Žádné dimenze|
-|IndexCapacity|Kapacita indexu|B|Average|Množství úložiště v bajtech, které používá index ADLS Gen2 (Hierarchical)|Žádné dimenze|
+|IndexCapacity|Kapacita indexu|B|Average|Velikost úložiště, kterou používá ADLS Gen2 (hierarchický) index v bajtech|Žádné dimenze|
 |Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
 |Příchozí přenos dat|Příchozí přenos dat|B|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
 |Výchozí přenos|Výchozí přenos|B|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -1528,8 +1528,8 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Kapacita zařízení|Kapacita služby File|B|Average|Velikost úložiště využitá službou File účtu úložiště v bajtech|Žádné dimenze|
-|FileCount|Počet souborů|Count|Average|Počet souborů ve službě File účtu úložiště|Žádné dimenze|
-|FileShareCount|Počet sdílených složek služby File|Count|Average|Počet sdílených složek ve službě File účtu úložiště|Žádné dimenze|
+|FileCount|Počet souborů|Count|Average|Počet souborů v Souborové službě účtu úložiště.|Žádné dimenze|
+|FileShareCount|Počet sdílených složek služby File|Count|Average|Počet sdílených souborů v Souborové službě účtu úložiště.|Žádné dimenze|
 |Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a požadavky, které došlo k chybě. Hodnota ResponseType dimenzi používejte pro počet různých typů odpovědi.|ResponseType, typ, ApiName, ověřování|
 |Příchozí přenos dat|Příchozí přenos dat|B|Celkem|Množství příchozích dat v bajtech. Toto číslo zahrnuje příchozí přenos dat z externího klienta do služby Azure Storage i příchozí přenos dat v rámci Azure.|Typ, ApiName, ověřování|
 |Výchozí přenos|Výchozí přenos|B|Celkem|Objem odchozích přenosů dat v bajtech. Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -1635,8 +1635,8 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celková propustnost disku v důsledku operací zápisu v období vzorkování.|Žádné dimenze|
 |DiskReadOperations|Operace čtení z disku|Count|Celkem|Počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
 |DiskWriteOperations|Operace zápisu na disk|Count|Celkem|Počet operací zápisu v/v v předchozím období vzorkování. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
-|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Average|Průměrný počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
-|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Average|Průměrný počet operací zápisu v/v v předchozím období vzorkování. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
+|Operace čtení z disku/s|Operace čtení z disku/s|CountPerSecond|Average|Průměrný počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
+|Operace zápisu na disk/s|Operace zápisu na disk/s|CountPerSecond|Average|Průměrný počet operací zápisu v/v v předchozím období vzorkování. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
 |DiskReadLatency|Latence čtení disku|Milisekundy|Average|Celková latence čtení Součet latencí čtení zařízení a jádra.|Žádné dimenze|
 |DiskWriteLatency|Latence zápisu na disk|Milisekundy|Average|Celková latence zápisu Součet latencí zápisu zařízení a jádra.|Žádné dimenze|
 |NetworkInBytesPerSecond|Síť v bajtech/s|BytesPerSecond|Average|Průměrná propustnost sítě pro přijatý provoz.|Žádné dimenze|
@@ -1801,7 +1801,7 @@ Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně j
 |CpuPercentage|Procento CPU|Percent|Average|Procento CPU|instance|
 |MemoryPercentage|Procento paměti|Percent|Average|Procento paměti|instance|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Přečtěte si o metrikách v Azure Monitor](data-platform.md)
 * [Vytváření upozornění na metriky](alerts-overview.md)
 * [Exportovat metriky do úložiště, centra událostí nebo Log Analytics](diagnostic-logs-overview.md)

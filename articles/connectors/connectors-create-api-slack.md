@@ -1,6 +1,6 @@
 ---
-title: Připojení k Slack z Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovních postupů, které soubory monitorování a Správa kanálů, skupin a zprávy v účtu Slack s využitím Azure Logic Apps
+title: Připojení k časové rezervě z Azure Logic Apps | Microsoft Docs
+description: Automatizujte úlohy a pracovní postupy, které sledují soubory a spravují kanály, skupiny a zprávy v účtu časové rezervy pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,66 +11,66 @@ ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105645"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050793"
 ---
-# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorování a správa Slack s Azure Logic Apps
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorování a Správa časové rezervy pomocí Azure Logic Apps
 
-S Azure Logic Apps a Slack konektor můžete vytvořit automatizovaných úloh a pracovních postupů, které soubory Slack monitorování a Správa kanálů Slack, zprávy, skupiny a tak dále, například:
+Pomocí Azure Logic Apps a konektoru časové rezervy můžete vytvářet automatizované úlohy a pracovní postupy, které sledují soubory časové rezervy a spravují vaše časové rezervy, zprávy, skupiny atd. například:
 
-* Sleduje, vytvoří se nové soubory.
-* Vytváření, výpisu a připojte se k kanály 
-* Odesílání zpráv.
-* Vytváření skupin a sada Nerušit.
+* Monitorování při vytváření nových souborů.
+* Vytváření, výpis a spojování kanálů 
+* Odešle zprávy.
+* Vytvořte skupiny a nastavte Nerušit.
 
-Můžete použít aktivační události, které odpovědi ze svého účtu Slack a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy pomocí svého účtu Slack. Také můžete mít další akce pomocí výstupu z akce Slack. Například když je vytvořen nový soubor, můžete odesílat e-mailu s konektorem Office 365 Outlook. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít triggery, které získávají odpovědi z účtu časové rezervy, a zpřístupnit výstup ostatním akcím. Můžete použít akce, které provádějí úlohy s vaším účtem časové rezervy. Můžete také použít jiné akce výstup z akcí časové rezervy. Když se například vytvoří nový soubor, můžete poslat e-mail pomocí konektoru Office 365 Outlooku. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Vaše [Slack](https://slack.com/) přihlašovací údaje pro účet a uživatele
+* Účet [časové rezervy](https://slack.com/) a přihlašovací údaje uživatele
 
-  Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Slack.
+  Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu časové rezervy.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu Slack. Spustit s triggerem Slack [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít Slack akci, spusťte svou aplikaci logiky s triggerem, například Slack aktivační události nebo jiné aktivační události, jako **opakování** aktivační události.
+* Aplikace logiky, ke které chcete získat přístup k účtu časové rezervy Pokud chcete začít s triggerem časové rezervy, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci časové rezervy, spusťte aplikaci logiky s triggerem, například triggerem časové rezervy nebo jinou triggerem, jako je například Trigger **opakování** .
 
-## <a name="connect-to-slack"></a>Připojte se k Slack
+## <a name="connect-to-slack"></a>Připojit k časové rezervě
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "slack". V seznamu triggerů vyberte trigger, který chcete. 
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole "časová rezerva" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
    -nebo-
 
-   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
-   Do vyhledávacího pole zadejte jako filtr "slack". 
-   V seznamu akcí vyberte požadovanou akci.
+   Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. 
+   Do vyhledávacího pole zadejte jako filtr "časová rezerva". 
+   V seznamu akce vyberte akci, kterou chcete.
 
-   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Pokud se zobrazí výzva k přihlášení na Slack, přihlaste se do pracovního prostoru Slack. 
+1. Pokud budete vyzváni k přihlášení k časové rezervě, přihlaste se k pracovnímu prostoru časové rezervy. 
 
-   ![Přihlaste se k Slack pracovního prostoru](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+   ![Přihlášení k pracovnímu prostoru časové rezervy](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
 
-1. Povolit přístup pro aplikaci logiky.
+1. Autorizovat přístup pro vaši aplikaci logiky.
 
-   ![Autorizace přístupu k Slack](./media/connectors-create-api-slack/slack-authorize-access.png)
+   ![Autorizovat přístup k časové rezervě](./media/connectors-create-api-slack/slack-authorize-access.png)
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce. Chcete-li pokračovat ve vytváření pracovní postup aplikace logiky, přidáte další akce.
+1. Zadejte potřebné podrobnosti pro zvolenou aktivační událost nebo akci. Pokud chcete pokračovat v sestavování pracovního postupu aplikace logiky, přidejte další akce.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/slack/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/slack/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -79,4 +79,4 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

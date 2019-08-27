@@ -1,32 +1,32 @@
 ---
-title: 'Rychlý start: Vyhledání imagí - API REST pro vyhledávání obrázků Bingu aC#'
+title: 'Rychlý start: Hledání imagí – Vyhledávání obrázků Bingu REST API aC#'
 titleSuffix: Azure Cognitive Services
-description: Používat tento rychlý start k odesílání žádostí o hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu C#a přijímat odpověďmi ve formátu JSON.
+description: Pomocí tohoto rychlého startu můžete odesílat žádosti o vyhledávání obrázků do Vyhledávání obrázků Bingu REST API C#pomocí a přijímat odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: a931ecb255d20199dca13b60aa70a54d9d0fc85f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b369dc82e98dff58a42b63b9733e7b786593d534
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383713"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034670"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý start: Vyhledávání obrázků s využitím REST API pro vyhledávání Bingu obrázků aC#
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý start: Hledání imagí pomocí Vyhledávání obrázků Bingu REST API aC#
 
-V tomto rychlém startu můžete zahájit odesílání požadavků hledání rozhraní API Bingu pro vyhledávání obrázků. To C# aplikace odešle vyhledávací dotaz na rozhraní API a adresu URL první obrázek se zobrazí ve výsledcích. Zatímco tato aplikace je napsána v C#, rozhraní API je kompatibilní s Většina programovacích jazyků rozhraní RESTful webová služba.
+V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato C# aplikace pošle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) s dalším zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Požadavky
-* Libovolná edice [sady Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
+* Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
-* Pokud používáte Linux nebo MacOS, bude možné spustit tuto aplikaci pomocí [Mono](https://www.mono-project.com/).
+* Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -97,7 +97,7 @@ namespace BingSearchApisQuickstart
 
 V metodě `BingImageSearch` proveďte následující kroky.
 
-1. Sestavte URI pro žádost o vyhledávání. Hledaný termín `SearchTerm` musí být ve formátu, než se připojí na řetězec.
+1. Sestavte URI pro žádost o vyhledávání. Hledaný termín `SearchTerm` musí být před připojením k řetězci zformátován.
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -106,7 +106,7 @@ V metodě `BingImageSearch` proveďte následující kroky.
     //...
     ```
 
-2. Odeslat webové žádosti a získejte odpovědi jako řetězec formátu JSON.
+2. Odešlete webový požadavek a získejte odpověď jako řetězec JSON.
 
     ```csharp
     WebRequest request = WebRequest.Create(uriQuery);
@@ -153,7 +153,7 @@ V metodě `BingImageSearch` proveďte následující kroky.
     ```  
 
 
-## <a name="example-json-response"></a>Příklad JSON odpovědi
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 

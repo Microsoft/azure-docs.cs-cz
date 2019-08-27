@@ -1,20 +1,20 @@
 ---
-title: Nástroje pro práci s Azure Storage | Microsoft Docs
+title: Nástroje pro práci s Azure Storage
 description: Seznam nástrojů, které vám umožní zobrazit data Azure Storage a pracovat s nimi.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 08/26/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 11838a50d70d1b9a0216505e9ef0958d3b18bdac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665734"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035268"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
 Uživatelé Azure Storage často chtějí pomocí Azure Storage klientského nástroje zobrazit data a pracovat s nimi. V níže uvedených tabulkách uvádíme několik nástrojů, které vám to umožňují. "X" vložte do každého bloku, pokud nabízí možnost výčtu a/nebo přístupu k abstrakci dat. Tabulka také ukazuje, jestli jsou nástroje bezplatné nebo ne. "Zkušební" znamená, že je k dispozici bezplatná zkušební verze, ale plný produkt není bezplatný. "Y/N" označuje, že je verze dostupná zdarma, ale k nákupu je k dispozici odlišná verze.
@@ -122,20 +122,6 @@ Neověřili jsme funkčnost ani kvalitu, které požadovaly následující nást
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate Průzkumník Azure</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>Ano</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
     <td><a href="https://github.com/sebagomez/azurestorageexplorer">Web Azure Průzkumník služby Storage</a></td>
     <td>X</td>
     <td>X</td>
@@ -157,7 +143,7 @@ Neověřili jsme funkčnost ani kvalitu, které požadovaly následující nást
     <td></td>
     <td></td>
     <td>X</td>
-    <td>A/N</td>
+    <td>Ano / Ne</td>
     <td></td>
     <td>X</td>
     <td></td>

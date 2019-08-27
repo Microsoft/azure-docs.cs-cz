@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543045"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035620"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -47,11 +47,11 @@ Než začnete, přečtěte si následující požadavky.
 * Azure Monitor podporuje jenom System Center Operations Manager 2016 nebo novější, Operations Manager 2012 SP1 UR6 nebo novější a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Integrace System Center Operations Manager 2016 s cloudem pro státní správu USA vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 2 nebo novější. System Center Operations Manager 2012 R2 vyžaduje aktualizovaný poradce Management Pack, který je součástí kumulativní aktualizace 3 nebo novější.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že agenti mají minimální aktualizaci, jinak komunikace s agentem Windows se nemusí zdařit a generovat chyby v protokolu událostí Operations Manager.
-* Pracovní prostor Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
-* Pomocí účtu, který je členem [role přispěvatel Log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users), se ověříte na Azure.
+* Pracovní prostor Log Analytics. Další informace najdete v článku [přehled Log Analytics pracovního prostoru](design-logs-deployment.md). 
+* Pomocí účtu, který je členem [role přispěvatel Log Analytics](manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
 
 * Podporované oblasti: System Center Operations Manager pro připojení k pracovnímu prostoru Log Analytics podporuje jenom následující oblasti Azure:
-    - Středozápadní USA
+    - Západní střed USA
     - Austrálie – jihovýchod
     - Západní Evropa
     - East US

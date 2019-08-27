@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175564"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036683"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>(NEPOUŽÍVANÉ) Container Service – nejčastější dotazy
+# <a name="deprecated-container-service-frequently-asked-questions"></a>ZASTARALÉ Nejčastější dotazy ke službě kontejneru
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -37,7 +37,7 @@ V závislosti na scénáři můžete také vytvořit a spravovat vlastní řeše
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaký je rozdíl mezi službou Azure Container Service a modulem ACS? 
 Azure Container Service je služba Azure, na kterou se vztahuje smlouva SLA, s funkcemi na webu Azure Portal, nástroji příkazového řádku Azure a rozhraními API Azure. Služba umožňuje rychlou implementaci a správu clusterů se standardními nástroji pro orchestraci kontejnerů a poskytuje poměrně málo možností konfigurace. 
 
-[Modul ACS](http://github.com/Azure/acs-engine) je open source projekt, který umožňuje zkušeným uživatelům přizpůsobení konfigurace clusteru na všech úrovních. Možnost změny konfigurace infrastruktury i softwaru znamená, že pro modul ACS nenabízíme žádnou smlouvu SLA. Podpora probíhá prostřednictvím open source projektu na GitHubu, nikoli přes oficiální kanály Microsoftu. 
+[Modul ACS](https://github.com/Azure/acs-engine) je open source projekt, který umožňuje zkušeným uživatelům přizpůsobení konfigurace clusteru na všech úrovních. Možnost změny konfigurace infrastruktury i softwaru znamená, že pro modul ACS nenabízíme žádnou smlouvu SLA. Podpora probíhá prostřednictvím open source projektu na GitHubu, nikoli přes oficiální kanály Microsoftu. 
 
 Další podrobnosti najdete v našich [zásadách podpory pro kontejnery](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers).
 
@@ -79,9 +79,9 @@ Běžně používané adresy URL pro váš cluster najdete na webu Azure Portal,
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Jak zjistím, která verze orchestrátoru je spuštěna v mém clusteru?
 
-* DC/OS: Zobrazit [dokumentaci Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
-* Docker Swarm: Spusťte `docker version`.
-* Kubernetes: Spusťte `kubectl version`.
+* DC/OS: Další informace najdete v [dokumentaci k Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/) .
+* Docker Swarm: Spustit `docker version`
+* Kubernetes: Spustit `kubectl version`
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Jak můžu upgradovat orchestrátor po nasazení?
 
@@ -117,7 +117,7 @@ Ve Windows existuje několik známých problémů s DNS, které se postupně st�
 | Přístup k virtuální IP adrese služby nefunguje. | Nakonfigurujte kontroler [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby vždy udržoval spuštěný jeden normální (neprivilegovaný) pod. |
 |Když se uzel, na kterém je kontejner spuštěný, stane nedostupným, dotazy DNS můžou selhat a vytvářet negativní položky mezipaměti. | Uvnitř ovlivněných kontejnerů spusťte následující: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Pokud se tím problém nevyřeší, zkuste zakázat ukládání do mezipaměti DNS úplně: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o službě Azure Container Service.
 * Nasazení clusteru služby kontejneru pomocí [portálu](../articles/container-service/dcos-swarm/container-service-deployment.md) nebo [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)

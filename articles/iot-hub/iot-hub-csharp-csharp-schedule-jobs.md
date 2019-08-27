@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 3594828ff3a79242e1cfd4663c415d8de502a329
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4847a69e7ffaefca8e0c738aee6e1077f421ec62
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872773"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049037"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Úlohy plánování a vysílání (.NET)
 
@@ -22,7 +22,9 @@ ms.locfileid: "69872773"
 Pomocí Azure IoT Hub můžete plánovat a sledovat úlohy, které aktualizují miliony zařízení. Úlohy můžete použít k těmto akcím:
 
 * Aktualizace požadovaných vlastností
+
 * Aktualizovat značky
+
 * Vyvolání přímých metod
 
 Úloha zalomí jednu z těchto akcí a sleduje spuštění proti sadě zařízení, které jsou definovány dotazem s dvojitým použitím zařízení. Například aplikace back-end může použít úlohu k vyvolání přímé metody na zařízeních 10 000, která zařízení restartuje. Zadáte sadu zařízení se zdvojeným dotazem zařízení a naplánujete, aby úloha běžela v budoucím čase. Tato úloha sleduje průběh, protože každé zařízení přijímá a provádí metodu restartování přímo.
@@ -37,21 +39,21 @@ Další informace o jednotlivých možnostech najdete v těchto tématech:
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvořte aplikaci zařízení, která implementuje přímou metodu nazvanou **LockDoor** , kterou může volat back-end aplikace.
+* Vytvořte aplikaci zařízení, která implementuje přímou metodu nazvanou **LockDoor**, kterou může volat back-end aplikace.
 
 * Vytvořte aplikaci back-end, která vytvoří úlohu pro volání přímé metody **LockDoor** na více zařízeních. Jiná úloha odešle požadované aktualizace vlastností do více zařízení.
 
 Na konci tohoto kurzu máte dvě konzolové aplikace .NET (C#):
 
-**SimulateDeviceMethods** , které se připojují ke službě IoT Hub a implementují metodu **LockDoor** Direct.
+* **SimulateDeviceMethods**. Tato aplikace se připojí ke službě IoT Hub a implementuje metodu **LockDoor** Direct.
 
-**ScheduleJob** , který používá úlohy k volání přímé metody **LockDoor** a k aktualizaci požadovaných vlastností zařízení na více zařízeních.
+* **ScheduleJob**. Tato aplikace používá úlohy pro volání přímé metody **LockDoor** a aktualizaci požadovaných vlastností zařízení na více zařízeních.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Visual Studio. V tomto kurzu se používá Visual Studio 2017.
+* Visual Studio.
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
@@ -67,17 +69,21 @@ Pro absolvování tohoto kurzu potřebujete:
 
 V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou metodu volanou back-endu řešení.
 
-1. V aplikaci Visual Studio přidejte klasický desktopový projekt pro Visual C# Windows do nového nebo existujícího řešení pomocí šablony projektu **Konzolová aplikace** . Pojmenujte projekt **SimulateDeviceMethods**.
+1. V aplikaci Visual Studio vyberte možnost **vytvořit nový projekt**a pak zvolte šablonu projektu **Konzolová aplikace (.NET Framework)** . Pokračujte výběrem tlačítka **Next** (Další).
 
-    ![Nová aplikace C# Visual v klasickém zařízení s Windows](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
+1. V části **Konfigurovat nový projekt**pojmenujte projekt *SimulateDeviceMethods*a pak vyberte **vytvořit**.
 
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateDeviceMethods** a pak vyberte **Spravovat balíčky NuGet...** .
+    ![Konfigurace projektu SimulateDeviceMethods](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
-3. V okně **Správce balíčků NuGet** vyberte **Procházet** a vyhledejte **Microsoft. Azure. Devices. Client**. Vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices. Client** a přijměte podmínky použití. Tímto postupem se stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateDeviceMethods** a pak vyberte **Spravovat balíčky NuGet**.
+
+1. V **nástroji Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
 
     ![Klientská aplikace okna Správce balíčků NuGet](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
-4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
+
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -85,14 +91,14 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
     using Newtonsoft.Json;
     ```
 
-5. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v předchozí části:
+1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v předchozí části:
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
     ```
 
-6. Přidejte následující pro implementaci přímé metody na zařízení:
+1. Přidejte následující kód k implementaci přímé metody v zařízení:
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -106,7 +112,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
     }
     ```
 
-7. Přidejte následující pro implementaci naslouchacího procesu vláken zařízení na zařízení:
+1. Přidejte následující metodu pro implementaci naslouchacího procesu vláken zařízení na zařízení:
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -117,7 +123,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
     }
     ```
 
-8. Nakonec do metody **Main** přidejte následující kód, který otevře připojení ke službě IoT Hub a inicializuje naslouchací proces metody:
+1. Nakonec do metody **Main** přidejte následující kód, který otevře připojení ke službě IoT Hub a inicializuje naslouchací proces metody:
 
     ```csharp
     try
@@ -144,10 +150,10 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
     }
     ```
 
-9. Uložte svoji práci a sestavte své řešení.
+1. Uložte svoji práci a sestavte své řešení.
 
 > [!NOTE]
-> Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například opakování připojení), jak je navrženo v článku, [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
+> V tomto kurzu neimplementují žádné zásady opakování. V produkčním kódu byste měli implementovat zásady opakování (například opakování připojení), jak je navrženo při [zpracování přechodných chyb](/azure/architecture/best-practices/transient-faults).
 >
 
 ## <a name="get-the-iot-hub-connection-string"></a>Získání připojovacího řetězce centra IoT Hub
@@ -160,31 +166,33 @@ V této části vytvoříte konzolovou aplikaci .NET, která reaguje na přímou
 
 V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která používá úlohy pro volání přímé metody **LockDoor** a odeslání požadovaných aktualizací vlastností do více zařízení.
 
-1. V sadě Visual Studio přidejte k stávajícímu řešení klasický desktopový projekt Visual C# pro systém Windows pomocí šablony projektu **Konzolová aplikace**. Pojmenujte projekt **ScheduleJob**.
+1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-    ![Nový klasický desktopový projekt Visual C# pro systém Windows](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
+1. V části **Konfigurovat nový projekt**pojmenujte projekt *ScheduleJob*. V případě **řešení**zvolte možnost **Přidat do řešení**a pak vyberte **vytvořit**.
 
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ScheduleJob** a pak vyberte **Spravovat balíčky NuGet...** .
+    ![Název a konfigurace projektu ScheduleJob](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
-3. V okně **Správce balíčků NuGet** vyberte **Procházet**, vyhledejte **Microsoft. Azure. Devices**, vyberte **instalovat** a nainstalujte balíček **Microsoft. Azure. Devices** a přijměte podmínky použití. Tento krok stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá odkaz na něj.
+1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ScheduleJob** a pak vyberte **Spravovat balíčky NuGet**.
 
-    ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
+1. V okně **Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a zvolte **Microsoft. Azure. Devices**a pak vyberte **nainstalovat**.
 
-4. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+   Tento krok stáhne a nainstaluje balíček NuGet [sady SDK služby Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) a jeho závislosti a přidá odkaz na něj.
+
+1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. Přidejte následující `using` příkaz, pokud ve výchozích příkazech ještě neexistují.
+1. Přidejte následující `using` příkaz, pokud ve výchozích příkazech ještě neexistují.
 
     ```csharp
     using System.Threading;
     using System.Threading.Tasks;
     ```
 
-6. Do třídy **Program** přidejte následující pole. Zástupné symboly nahraďte připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce služby IoT Hub](#get-the-iot-hub-connection-string) a názvu vašeho zařízení.
+1. Do třídy **Program** přidejte následující pole. Zástupné symboly nahraďte připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce služby IoT Hub](#get-the-iot-hub-connection-string) a názvu vašeho zařízení.
 
     ```csharp
     static JobClient jobClient;
@@ -192,7 +200,7 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která použ�
     static string deviceId = "<yourDeviceId>";
     ```
 
-7. Přidejte následující metodu do třídy **Program**:
+1. Přidejte následující metodu do třídy **Program**:
 
     ```csharp
     public static async Task MonitorJob(string jobId)
@@ -208,7 +216,7 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která použ�
     }
     ```
 
-8. Přidejte následující metodu do třídy **Program**:
+1. Přidejte následující metodu do třídy **Program**:
 
     ```csharp
     public static async Task StartMethodJob(string jobId)
@@ -227,7 +235,7 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která použ�
     }
     ```
 
-9. Přidejte další metodu do třídy **program** :
+1. Přidejte další metodu do třídy **program** :
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -255,7 +263,7 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která použ�
     > Další informace o syntaxi dotazů naleznete v tématu [IoT Hub dotazovací jazyk](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
     >
 
-10. Nakonec do metody **Main** přidejte následující řádky:
+1. Nakonec do metody **Main** přidejte následující řádky:
 
     ```csharp
     Console.WriteLine("Press ENTER to start running jobs.");
@@ -278,24 +286,28 @@ V této části vytvoříte konzolovou aplikaci .NET (pomocí C#), která použ�
     Console.ReadLine();
     ```
 
-11. Uložte svoji práci a sestavte své řešení.
+1. Uložte svoji práci a sestavte své řešení.
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
 Nyní jste připraveni aplikaci spustit.
 
-1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**. Pak vyberte **více projektů po spuštění**. Ujistěte se, že **SimulateDeviceMethods** je v horní části seznamu následovaných **ScheduleJob**. Nastavte obě akce na **Start** a vyberte **OK**.
+1. V sadě Visual Studio Průzkumník řešení klikněte pravým tlačítkem na své řešení a pak vyberte **nastavit projekty po spuštění**.
 
-2. Spusťte projekty výběrem možnosti **Spustit** nebo v nabídce **ladění** a výběrem možnosti **Spustit ladění**.
+1. Vyberte **společné vlastnosti** > **spouštěný projekt**a potom vyberte **více projektů po spuštění**.
 
-3. Zobrazí se výstup ze zařízení i z back-endové aplikace.
+1. Ujistěte se `SimulateDeviceMethods` , že je na začátku seznamu `ScheduleJob`a následuje. Nastavte obě akce na **Start** a vyberte **OK**.
 
-    ![Spuštění aplikací pro plánování úloh](./media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png)
+1. Spusťte projekty kliknutím na tlačítko **Start** nebo přejděte do nabídky **ladění** a klikněte na tlačítko **Spustit ladění**.
+
+   Uvidíte výstup jak v zařízení, tak i v back-endové aplikaci.
+
+    ![Spuštění aplikací pro plánování úloh](./media/iot-hub-csharp-csharp-schedule-jobs/schedule-jobs-console-results.png)
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 
-Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace [firmwaru Air, přečtěte si kurz: Postup při aktualizaci](tutorial-firmware-update.md)firmwaru.
+* Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace [firmwaru Air, přečtěte si kurz: Postup při aktualizaci](tutorial-firmware-update.md)firmwaru.
 
-Další informace o nasazování AI do hraničních zařízení pomocí Azure IoT Edge najdete v tématu [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+* Další informace o nasazování AI do hraničních zařízení pomocí Azure IoT Edge najdete v tématu [Začínáme s IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

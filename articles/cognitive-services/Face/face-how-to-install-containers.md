@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 93a6d0a42d6d7f07dd8947ce9f8ae99a39d44475
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564146"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050034"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spuštění kontejnerů obličeje
 
@@ -118,7 +118,7 @@ K [](./face-resource-container-config.md#example-docker-run-commands) dispozici 
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Pro rozhraní API kontejneru `https://localhost:5000`použijte hostitele.
+Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
 
 
 <!--  ## Validate container is running -->

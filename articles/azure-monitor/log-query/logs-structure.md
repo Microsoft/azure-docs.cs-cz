@@ -5,14 +5,14 @@ services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/16/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813850"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034873"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -46,7 +46,7 @@ union withsource = table *
 Podrobnosti o tabulkách, které vytvoří, najdete v dokumentaci k jednotlivým zdrojům dat. Mezi příklady patří články pro [zdroje dat agenta](../platform/agent-data-sources.md), [diagnostické protokoly](../platform/diagnostic-logs-schema.md)a [řešení monitorování](../insights/solutions-inventory.md).
 
 ### <a name="workspace-permissions"></a>Oprávnění k pracovnímu prostoru
-Podrobnosti o tom, jak zajistit přístup k datům v pracovním prostoru, najdete v tématu [oprávnění a obor v pracovním prostoru](../platform/manage-access.md#manage-accounts-and-users) . Kromě udělení přístupu k samotnému pracovnímu prostoru můžete omezit přístup k jednotlivým tabulkám pomocí [RBAC na úrovni tabulky](../platform/manage-access.md#table-level-rbac).
+Informace o strategii řízení přístupu a doporučeních k tomu, jak poskytnout přístup k datům v pracovním prostoru, najdete v tématu [navrhování Azure monitor protokolů nasazení](../platform/design-logs-deployment.md) . Kromě udělení přístupu k samotnému pracovnímu prostoru můžete omezit přístup k jednotlivým tabulkám pomocí [RBAC na úrovni tabulky](../platform/manage-access.md#table-level-rbac).
 
 ## <a name="application-insights-application"></a>Application Insights aplikace
 Když vytvoříte aplikaci v Application Insights, automaticky se vytvoří odpovídající aplikace v protokolech Azure Monitor. Ke shromažďování dat není nutná žádná konfigurace a aplikace bude automaticky zapisovat data monitorování, například zobrazení stránky, požadavky a výjimky.
@@ -81,6 +81,6 @@ Zatímco každá tabulka v protokolech Azure Monitor má vlastní schéma, exist
 | _IsBillable   |            | Určuje, zda jsou příjemovaná data fakturovatelná. |
 | _BilledSize   |            | Určuje velikost (v bajtech) dat, která se budou fakturovat. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si o použití [Log Analytics k vytváření a úpravám prohledávání protokolů](../log-query/portals.md).
 - Projděte si [kurz psaní dotazů](../log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.

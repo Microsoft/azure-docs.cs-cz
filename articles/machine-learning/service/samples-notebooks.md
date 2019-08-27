@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772578"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035949"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning službu pomocí poznámkových bloků Jupyter
 
@@ -61,10 +61,10 @@ Na [Azure Notebooks](https://notebooks.azure.com/)je sada SDK a notebook server 
 
 Pokud chcete získat přístup k ukázkovému úložišti na Azure Notebooks, přejděte přes [Azure Portal](https://portal.azure.com)k pracovnímu prostoru Azure Machine Learning. V části **Přehled** vyberte začínáme **v Azure Notebooks**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) , abyste zjistili, co může služba Azure Machine Learning provést, nebo vyzkoušejte tyto kurzy:
 
 - [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
 
-- [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-data-prep.md)
+- [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-auto-train-models.md)

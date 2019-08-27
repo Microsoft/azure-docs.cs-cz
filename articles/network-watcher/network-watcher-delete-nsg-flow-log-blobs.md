@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6b6227827e8d1efbb1d20899cd08315c4cbb0150
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875191"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036293"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Odstranit objekty blob úložiště protokolu toku skupiny zabezpečení sítě v Network Watcher
 
@@ -134,6 +134,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+- Zákazníci můžou pomocí [Azure Scheduleru](https://azure.microsoft.com/services/scheduler/) nebo [Azure Automation](https://azure.microsoft.com/services/automation/) automatizovat spouštění skriptu.
 - Další informace o protokolování NSG najdete v tématu [protokoly pro skupiny zabezpečení sítě (skupin zabezpečení sítě) v protokolu Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

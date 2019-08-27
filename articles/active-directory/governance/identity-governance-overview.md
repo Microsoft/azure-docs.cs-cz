@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499665"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033322"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -42,7 +42,7 @@ Konkrétně je určena k tomu, aby organizacím pomáhaly řešit tyto čtyři k
 
 ## <a name="identity-lifecycle"></a>Životní cyklus identity
 
-Řízení identit pomáhá organizacím dosáhnout rovnováhy  mezi produktivitou – jak rychle může osoba získat přístup k potřebným prostředkům, například když se připojí k mojí organizaci? A *zabezpečení* – jak se má v průběhu času měnit přístup, například kvůli změnám stavu zaměstnanosti této osoby?  Správa životního cyklu identit je základem pro řízení identit a efektivní řízení škálování vyžaduje modernizaci infrastrukturu správy životního cyklu identit pro aplikace.
+Řízení identit pomáhá organizacím dosáhnout rovnováhy mezi produktivitou – jak rychle může osoba získat přístup k potřebným prostředkům, například když se připojí k mojí organizaci? A *zabezpečení* – jak se má v průběhu času měnit přístup, například kvůli změnám stavu zaměstnanosti této osoby?  Správa životního cyklu identit je základem pro řízení identit a efektivní řízení škálování vyžaduje modernizaci infrastrukturu správy životního cyklu identit pro aplikace.
 
 ![Životní cyklus identity](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -81,7 +81,9 @@ Můžete si také prohlédnout kartu Začínáme se zásadami **správného ří
 
 ![Začínáme se zásadami správného řízení identity](./media/identity-governance-overview/getting-started.png)
 
-## <a name="next-steps"></a>Další postup
+Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klikněte na získat zpětnou vazbu **?** v Azure Portal odešlete svůj názor. Tým pravidelně kontroluje vaše názory.
+
+## <a name="next-steps"></a>Další kroky
 
 - [Co je Správa nároků Azure AD? (Preview)](entitlement-management-overview.md)
 - [Co jsou kontroly přístupu Azure AD?](access-reviews-overview.md)

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574961"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051649"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -36,7 +36,7 @@ Než budete moct použít virtuální počítač s Linuxem datové vědy, musít
 
 * **Předplatného Azure**. Pokud není ještě nemáte, přečtěte si téma [vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).
 * A [ **pro datovou vědu VM pro Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování tohoto virtuálního počítače, naleznete v tématu [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **X2Go klienta**, naleznete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **klienta X2Go**najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
 * Pro posouvání plynulost přepnout příznak gfx.xrender.enabled v o: konfigurace v prohlížeči FireFox virtuálních počítačů. [Najdete v článku najdete tady. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Také vzít v úvahu při přepínání *mousewheel.enable_pixel_scrolling* na hodnotu False. [Pokyny v tomto poli.](https://support.mozilla.org/questions/981140)
 * **AzureML účet**. Pokud již nemáte, zaregistrujte si novou na [domovskou stránku Azure ml](https://studio.azureml.net/). Je bezplatné využití vrstvu vám pomůžou začít.
 

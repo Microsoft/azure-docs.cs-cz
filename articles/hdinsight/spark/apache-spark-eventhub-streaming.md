@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489808"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049491"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Kurz: Zpracování tweety pomocí Azure Event Hubs a Apache Spark v HDInsight
 
@@ -44,7 +44,7 @@ Pro příjem streamovaných tweetů je potřeba vytvořit aplikaci na Twitteru. 
 
 1. Zadejte následující hodnoty:
 
-    |Vlastnost |Hodnota |
+    |Vlastnost |Value |
     |---|---|
     |Name|Zadejte název aplikace. Hodnota použitá v tomto kurzu je **HDISparkStreamApp0423**. Tento název musí být jedinečný název.|
     |Popis|Zadejte krátký popis aplikace. Hodnota použitá v tomto kurzu je **Jednoduchá aplikace pro streamování HDInsight Spark**.|
@@ -135,7 +135,7 @@ Vytvořte Poznámkový blok Jupyter a pojmenujte ho **SendTweetsToEventHub**.
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. Upravte kód níže nahrazením `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>`a `<TOKEN SECRET>` příslušnými hodnotami. Spusťte upravený kód pro odeslání tweety do centra událostí:
@@ -217,7 +217,7 @@ Vytvořte další Poznámkový blok Jupyter a pojmenujte ho **ReadTweetsFromEven
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. Úpravou kódu níže nahraďte `<Event hub name>`a `<Event hub namespace connection string>` příslušné hodnoty. Spusťte upravený kód pro čtení tweety z centra událostí:
@@ -256,7 +256,7 @@ Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak vytvořit aplikaci pro streamování Apache Spark pro odeslání tweety do centra událostí Azure a vytvořit další aplikaci pro čtení tweety z centra událostí.  V dalším článku se dozvíte, jak můžete vytvořit aplikaci Machine Learning.
 

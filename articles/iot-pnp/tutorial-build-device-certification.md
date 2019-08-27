@@ -1,5 +1,5 @@
 ---
-title: Sestavte si zařízení Azure IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci | Microsoft Docs
+title: Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci | Microsoft Docs
 description: Jako vývojář zařízení se dozvíte, jak můžete vytvořit zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878093"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047904"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci
 
@@ -124,7 +124,7 @@ Aby zařízení bylo možné certifikovat, musí povolit zřizování prostředn
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>Implementace informací o modelu a informačních rozhraní SDK
 
-Sada SDK pro zařízení Azure IoT implementuje rozhraní informace o modelu a informace o sadě SDK. Pokud použijete funkci generování kódu v VS Code, váš kód zařízení používá sadu SDK pro zařízení Azure IoT technologie Plug and Play.
+Sada SDK pro zařízení Azure IoT implementuje rozhraní informace o modelu a informace o sadě SDK. Pokud použijete funkci generování kódu v VS Code, váš kód zařízení používá sadu SDK pro zařízení IoT technologie Plug and Play.
 
 Pokud se rozhodnete nepoužívat sadu SDK pro zařízení Azure IoT, můžete použít zdrojový kód sady SDK jako referenci pro vlastní implementaci.
 

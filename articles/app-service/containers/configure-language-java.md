@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647248"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034909"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -402,7 +402,7 @@ Nakonec umístěte jar ovladače do cesty pro Tomcat a restartujte App Service.
 
     Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při získávání přihlašovacích údajů k FTP](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)postupujte podle těchto pokynů.
 
-2. Pokud jste vytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service Linux. Tomcat se obnoví `CATALINA_HOME` `/home/tomcat/conf` a použije aktualizovanou konfiguraci.
+2. Pokud jste vytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service Linux. Tomcat se obnoví `CATALINA_BASE` `/home/tomcat` a použije aktualizovanou konfiguraci.
 
 ### <a name="spring-boot"></a>Spring Boot
 
@@ -794,7 +794,7 @@ Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile b
 
 Pokud bude vyřazení podporované běhové prostředí Java, budou se vývojáři Azure, kteří používají modul runtime, předávat oznámení o zastaralosti alespoň šest měsíců před vyřazením modulu runtime.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Na webu [Azure pro vývojáře v jazyce Java](/java/azure/) najdete informace o rychlých startech, kurzech a referenční dokumentaci Java pro Azure.
 

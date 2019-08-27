@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972504"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051633"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
@@ -33,7 +33,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter otevřeném na konci části. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+V této části kurzu spustíte kód v ukázkovém poznámkovém bloku `tutorials/tutorial-1st-experiment-sdk-train.ipynb` Jupyter otevřeném na konci části. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
@@ -41,6 +41,8 @@ Naimportujte `config.json`třídua načtěte informace o předplatném ze soubor
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
 
+> [!TIP]
+> Pokud s Jupyter poznámkami začínáte, spusťte kód tak, že kliknete na buňku kódu a zapnete **SHIFT + ENTER** , aby se buňky spouštěly po jednom. Pokud chcete spustit celý Poznámkový blok najednou, klikněte na **buňku** v horním řádku nabídky a pak klikněte na **Spustit vše**.
 
 ```python
 from azureml.core import Workspace

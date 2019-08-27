@@ -1,6 +1,6 @@
 ---
-title: Připojení k Sharepointu z Azure Logic Apps | Dokumentace Microsoftu
-description: Automatizace úloh a pracovní postupy monitorování a správě prostředků v Sharepointu Online nebo SharePoint serveru v místním prostředí pomocí Azure Logic Apps
+title: Připojení k SharePointu z Azure Logic Apps | Microsoft Docs
+description: Automatizace úloh a pracovních postupů, které sledují a spravují prostředky na SharePointu Online nebo na SharePointovém serveru pomocí Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,74 +11,74 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a34ee4e90b551da35aff8802c8badc0d74ff539
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60450739"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050782"
 ---
-# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorování a Správa prostředků služby SharePoint pomocí Azure Logic Apps
+# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorování a Správa prostředků SharePointu pomocí Azure Logic Apps
 
-S Azure Logic Apps a konektor služby SharePoint můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorovat a spravovat prostředky, jako jsou soubory, složky, seznamy, položky, osoby, a tak dále do Sharepointu Online nebo SharePoint serveru v místním prostředí, například:
+Pomocí Azure Logic Apps a SharePointového konektoru můžete vytvářet automatizované úlohy a pracovní postupy, které sledují a spravují prostředky, jako jsou soubory, složky, seznamy, položky, osoby a tak dále, v SharePointu Online nebo na SharePointovém serveru v místním prostředí, například:
 
-* Monitorování souborů nebo položky vytvořené, změněné ani odstraněné.
+* Monitorování při vytvoření, změně nebo odstranění souborů nebo položek.
 * Vytvořit, získat, aktualizovat nebo odstranit položky.
-* Přidání, získání nebo odstranění přílohy. Získáte obsah z příloh.
-* Vytváření, kopírování, aktualizovat a odstraňovat soubory. 
-* Aktualizujte vlastnosti souboru. Získáte obsah, metadata nebo vlastnosti souboru.
-* Seznam nebo výpis složky.
-* Získáte seznam nebo seznamy.
+* Přidat, získat nebo odstranit přílohy. Získat obsah z příloh
+* Vytváření, kopírování, aktualizace nebo odstraňování souborů. 
+* Aktualizovat vlastnosti souboru. Získání obsahu, metadat nebo vlastností souboru.
+* Vypíše nebo extrahuje složky.
+* Získá seznamy nebo zobrazení seznamu.
 * Nastaví stav schválení obsahu.
 * Vyřešte osoby.
-* Odešlete požadavky HTTP na server SharePoint.
-* Načíst hodnoty entit.
+* Odesílat požadavky HTTP na službu SharePoint.
+* Získá hodnoty entit.
 
-Můžete použít aktivační události, které odpovědi ze Sharepointu a zpřístupnit výstup dalších akcí. Akce ve službě logic apps můžete použít k provádění úloh v Sharepointu. Také můžete mít další akce pomocí výstupu z akce Sharepointu. Například pokud pravidelně Načtení souborů ze Sharepointu, může odesílání zpráv do vašeho týmu pomocí konektoru systému Slack.
-Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Můžete použít triggery, které získávají odpovědi ze SharePointu a zpřístupnit výstup ostatním akcím. Akce v aplikaci Logic Apps můžete použít k provádění úloh v SharePointu. Můžete také použít jiné akce výstup z akcí SharePointu. Například pokud pravidelně načítáte soubory ze SharePointu, můžete odesílat zprávy do svého týmu pomocí konektoru časové rezervy.
+Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+* Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Pověření SharePoint serveru adresa a uživatel
+* Vaše adresa SharePointového webu a přihlašovací údaje uživatele
 
-  Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu služby SharePoint. 
+  Vaše přihlašovací údaje autorizují vaši aplikaci logiky, aby vytvořila připojení a měl přístup k vašemu účtu služby SharePoint. 
 
-* Předtím, než aplikace logiky můžete připojit k místním systémům, jako je SharePoint Server, budete muset [instalace a nastavení místní brány dat](../logic-apps/logic-apps-gateway-install.md). Díky tomu můžete při vytváření připojení k serveru SharePoint pro vaši aplikaci logiky použít instalaci brány.
+* Předtím, než budete moci připojit Logic Apps k místním systémům, jako je například server SharePoint, je třeba [nainstalovat a nastavit místní bránu dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete nastavit, aby se instalace brány používala při vytváření připojení k serveru SharePoint pro vaši aplikaci logiky.
 
-* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikace logiky, ve které chcete přístup k vašemu účtu služby SharePoint. Spustit s triggerem SharePoint [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akce Sharepointu, spusťte aplikaci logiky s triggerem, například aktivační událost Salesforce, pokud již máte účet služby Salesforce.
+* Aplikace logiky, ke které chcete získat přístup k účtu služby SharePoint. Pokud chcete začít s triggerem služby SharePoint, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci SharePointu, spusťte aplikaci logiky s triggerem, jako je například Trigger Salesforce, pokud máte účet Salesforce.
 
-  Například můžete spustit aplikaci logiky s **při vytvoření záznamu** aktivační události Salesforce. 
-  Tento trigger se spustí pokaždé, když se v Salesforce vytvoří nový záznam, jako je například nový zájemce. 
-  Potom postupujte podle této aktivační události pomocí služby SharePoint **vytvořit soubor** akce. Tímto způsobem, když se vytvoří nový záznam, aplikace logiky vytvoří soubor v Sharepointu s informacemi o tohoto nového záznamu.
+  Aplikaci logiky můžete například spustit pomocí triggeru **při vytvoření záznamu** Salesforce. 
+  Tato aktivační událost se aktivuje pokaždé, když se v Salesforce vytvoří nový záznam, třeba zájemce. 
+  Tuto aktivační událost pak můžete sledovat pomocí akce **vytvořit soubor** v SharePointu. Tímto způsobem vaše aplikace logiky vytvoří soubor na SharePointu s informacemi o tomto novém záznamu, když se vytvoří nový záznam.
 
 ## <a name="connect-to-sharepoint"></a>Připojení k SharePointu
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky, pokud už není otevřený.
 
-1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "sharepoint". V seznamu triggerů vyberte trigger, který chcete. 
+1. Pro prázdné aplikace logiky zadejte do vyhledávacího pole "SharePoint" jako filtr. V seznamu triggery vyberte aktivační událost, kterou chcete. 
 
    -nebo-
 
-   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akce Sharepointu, zvolte **nový krok**. 
-   Do vyhledávacího pole zadejte jako filtr "sharepoint". 
-   V seznamu akcí vyberte požadovanou akci.
+   U existujících aplikací logiky klikněte v posledním kroku na místo, kam chcete přidat akci služby SharePoint, na možnost **Nový krok**. 
+   Do vyhledávacího pole zadejte "SharePoint" jako filtr. 
+   V seznamu akce vyberte akci, kterou chcete.
 
-   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
-1. Po zobrazení výzvy k přihlášení, zadejte připojovací údaje. Pokud používáte SharePoint Server, ujistěte se, že vyberete **připojit přes místní bránu dat**. Jakmile budete hotoví, vyberte **Vytvořit**.
+1. Jakmile budete vyzváni k přihlášení, zadejte potřebné informace o připojení. Pokud používáte SharePoint Server, ujistěte se, že jste vybrali **připojit přes místní bránu dat**. Jakmile budete hotoví, vyberte **Vytvořit**.
 
-1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+1. Zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/sharepoint/).
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/sharepoint/)konektoru.
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -87,4 +87,4 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

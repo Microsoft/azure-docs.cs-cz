@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.subservice: develop
+ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ec2c65e33e5c07988b01c40d735f2d34c2196087
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: bb43127deea26f427dac58b1717368b0c2d8dbd5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014206"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035492"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integrace správy zdrojového kódu pro Azure SQL Data Warehouse
 
@@ -79,7 +79,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
 4. (**Volitelné**) Použijte porovnání schématu a aktualizujte změny svého cílového datového skladu pomocí SSDT, abyste zajistili, že definice objektů v úložišti úložiště Azure a místním úložišti odráží váš datový sklad.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vývoj pro Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-develop.md)
 

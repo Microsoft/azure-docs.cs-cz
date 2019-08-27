@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: aad42ea891b671bd481322d8b499d375ca06a7dc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512641"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036373"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center a Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -59,8 +59,6 @@ Zásady zabezpečení definují sadu ovládacích prvků doporučenou pro prost�
 
 > [!NOTE]
 > Další informace o jednotlivých dostupných **Zásadách prevence** najdete v článku [Nastavení zásad zabezpečení](tutorial-security-policy.md).
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>Správa doporučení zabezpečení
 Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provedou procesem konfigurace potřebných kontrol.
@@ -90,7 +88,7 @@ Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky
 ![Stav zabezpečení](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Správa a reakce na výstrahy zabezpečení
-Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení (jako jsou brány firewall a řešení ochrany koncových bodů), aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Díky využívání různorodých [možností detekce](security-center-detection-capabilities.md) je služba Security Center schopna generovat výstrahy zabezpečení seřazené podle priority a tím vám pomáhá rychle prozkoumat problém a poskytuje doporučení k napravení možných útoků.
+Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení (jako jsou brány firewall a řešení ochrany koncových bodů), aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Díky využívání různorodých [možností detekce](security-center-alerts-overview.md#detect-threats) je služba Security Center schopna generovat výstrahy zabezpečení seřazené podle priority a tím vám pomáhá rychle prozkoumat problém a poskytuje doporučení k napravení možných útoků.
 
 ![Výstrahy zabezpečení](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

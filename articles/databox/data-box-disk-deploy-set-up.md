@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 483288869e0eda20010108b8293c5964ff9571c2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012907"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049975"
 ---
 ::: zone target="docs"
 
@@ -30,6 +29,16 @@ V tomto kurzu se naučíte:
 > * Připojení k diskům a získání klíče
 > * Odemknout disky v klientovi pro Windows
 > * Odemknutí disků v klientovi pro Linux
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Rozbalení, připojení a odemknutí Azure Data Box Disk
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -283,7 +292,7 @@ Pokud narazíte na problémy při odemykání disků, přečtěte si téma [ře�
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Zadejte klíč, který jste získali z **obecného > Podrobnosti o zařízení** v Azure Portal. Zobrazí se písmeno jednotky přiřazené k danému disku. 
+    -  Získejte klíč z **obecných > podrobností o zařízení** v Azure Portal a poskytněte ho tady. Zobrazí se písmeno jednotky přiřazené k danému disku. 
 4. Chcete-li odemknout disky v klientském počítači se systémem Linux, otevřete terminál. Přejít do složky, do které jste stáhli software. Zadáním následujících příkazů změňte oprávnění k souboru, abyste mohli spustit tyto soubory: 
 
     ```
@@ -295,7 +304,7 @@ Pokud narazíte na problémy při odemykání disků, přečtěte si téma [ře�
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Spusťte odemykací nástroj Data Box Disku. Zadejte klíč z Azure Portal, a to tak, že v části **obecné > informace o zařízení**. Volitelně můžete zadat seznam svazků šifrovaných BitLockerem v jednoduchých uvozovkách k odemknutí.
+    Spusťte odemykací nástroj Data Box Disku. Získejte klíč z **obecných > podrobností o zařízení** v Azure Portal a poskytněte ho tady. Volitelně můžete zadat seznam svazků šifrovaných BitLockerem v jednoduchých uvozovkách k odemknutí.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
@@ -310,7 +319,7 @@ Další informace o tom, jak nastavit a odemknout disky, najdete [v kurzu: Rozba
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 

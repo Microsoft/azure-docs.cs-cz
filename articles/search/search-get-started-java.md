@@ -3,21 +3,22 @@ title: 'Rychlý Start Java: Vytváření, načítání a dotazování indexů v 
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API pro Azure Search.
 author: lisaleib
 manager: cgronlun
-ms.author: v-lilei
+ms.author: jjed
 tags: azure-portal
 services: search
 ms.service: search
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.openlocfilehash: b7e5986ad156fe09dc3caa07d952abf85896c5ba
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: eff5674f2675d7764a068f72f7d7aa35660b62e4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019225"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047659"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java"></a>Rychlý start: Vytvoření indexu Azure Search v jazyce Java
+# <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Rychlý start: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API pomocí Java
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)

@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1be6e2354a87bfb0de87b85fe46a1feb42100c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878254"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048002"
 ---
-# <a name="what-is-azure-iot-plug-and-play-preview"></a>Co je Azure IoT technologie Plug and Play Preview?
+# <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT technologie Plug and Play Preview?
 
 IoT technologie Plug and Play Preview umožňuje vývojářům řešení integrovat zařízení s jejich řešeními bez psaní vloženého kódu. V jádru IoT technologie Plug and Play je schéma _modelu schopností zařízení_ , které popisuje možnosti zařízení. Toto schéma je dokument JSON strukturovaný jako sada rozhraní, která zahrnují definice:
 
@@ -81,7 +81,7 @@ Ve verzi Public Preview je IoT technologie Plug and Play k dispozici v oblastech
 ## <a name="message-quotas-in-iot-hub"></a>Kvóty zpráv v IoT Hub
 Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší [kvóty zpráv](../iot-hub/iot-hub-devguide-quotas-throttling.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
 
