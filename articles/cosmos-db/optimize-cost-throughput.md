@@ -4,14 +4,14 @@ description: Tento článek vysvětluje, jak optimalizovat náklady na propustno
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/26/2019
 ms.author: rimman
-ms.openlocfilehash: 8829c2534184bc14e82dfbf30d2170a7a1b8add0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614993"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020105"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizujte zřízené náklady na propustnost v Azure Cosmos DB
 
@@ -65,7 +65,7 @@ Díky zajištění propustnosti na různých úrovních můžete optimalizovat n
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizace pomocí hodnocení – omezení vašich požadavků
 
-Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server bude žádost bez jakýchkoli požadavků RequestRateTooLarge (kód stavu HTTP 429) a vrátí `x-ms-retry-after-ms` hlavičku udávající, jak dlouho (v milisekundách) musí uživatel čekat, než bude požadavek opakovat. 
+Pro úlohy, které nejsou citlivé na latenci, můžete zřídit menší propustnost a nechat aplikaci omezit rychlost, když Skutečná propustnost překročí zřízenou propustnost. Server bude žádost bez `RequestRateTooLarge` jakýchkoli požadavků (kód stavu HTTP 429) a `x-ms-retry-after-ms` vrátí hlavičku udávající, jak dlouho (v milisekundách) musí uživatel čekat, než bude požadavek opakovat. 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 Nativní sady SDK (.NET/.NET Core, Java, Node. js a Python) implicitně zachytí tuto odpověď, a to s ohledem na server, který je zadaný na základě opakování, a zkuste požadavek zopakovat. Pokud k účtu nebudete mít souběžně více klientů, další pokus bude úspěšný.
 
-Pokud máte více než jednoho klienta, který je v současné době trvale spuštěný nad sazbou požadavků, výchozí počet opakování aktuálně nastavený na 9 nemusí být dostatečný. V takovém případě klient vyvolá `DocumentClientException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení se DocumentClientException se stavovým kódem 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
+Pokud máte více než jednoho klienta, který je v současné době trvale spuštěný nad sazbou požadavků, výchozí počet opakování aktuálně nastavený na 9 nemusí být dostatečný. V takovém případě klient vyvolá `DocumentClientException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením `RetryOptions` v instanci ConnectionPolicy. Ve výchozím nastavení `DocumentClientException` se stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
-[](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)MaxRetryAttemptsOnThrottledRequests je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti pro kolekci, operace požadavku se třikrát pokusí vyvoláním výjimky pro použití.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)  je nastavená na 60, takže pokud se v tomto případě kumulativní opakování počká v sekundách, protože první požadavek přesáhne 60 sekund, vyvolá se výjimka.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 
@@ -175,7 +173,7 @@ Následující kroky vám pomůžou zajistit, aby vaše řešení byla při pou�
 
 10. Díky Azure Cosmos DB rezervované kapacity můžete pro tři roky získat až 65% významné slevy. Model rezervované kapacity Azure Cosmos DB je předem stanovený závazek na jednotky požadavků, které jsou potřeba v průběhu času. Tyto slevy jsou vrstveny, takže čím více jednotek požadavků budete používat v delší době, tím déle bude vaše sleva. Tyto slevy se projeví okamžitě. Všechny ru použité nad zřízené hodnoty se účtují na základě nerezervovaných nákladů na kapacitu. Další podrobnosti najdete v tématu [Cosmos DB rezervovanou kapacitu](cosmos-db-reserved-capacity.md)). Zvažte zakoupení rezervované kapacity k dalšímu snížení nákladů na náklady na zajištění propustnosti.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následujících článcích:
 

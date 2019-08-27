@@ -1,6 +1,6 @@
 ---
-title: Konfigurace automatického škálování instance Azure API Management | Dokumentace Microsoftu
-description: Toto téma popisuje postup nastavení chování automatického škálování pro instance Azure API Management.
+title: Konfigurace automatického škálování instance služby Azure API Management | Microsoft Docs
+description: Toto téma popisuje, jak nastavit chování automatického škálování pro instanci Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,120 +11,123 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123463"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018293"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
 
-Azure API Management, které instanci služby můžete škálovat automaticky na základě sady pravidel. Toto chování lze povolit a nakonfigurovat pomocí Azure monitoru a je podporován pouze v **standardní** a **Premium** úrovně služby Azure API Management.
+Instance služby Azure API Management se může automaticky škálovat na základě sady pravidel. Toto chování se dá povolit a nakonfigurovat prostřednictvím Azure Monitor a podporuje se jenom na úrovních **Standard** a **Premium** služby Azure API Management.
 
-Tento článek vás provede procesem konfigurace automatického škálování a navrhne optimální konfigurace pravidla automatického škálování.
+Tento článek vás provede procesem konfigurace automatického škálování a navrhuje optimální konfiguraci pravidel automatického škálování.
+
+> [!NOTE]
+> Služba API Management se v úrovni **spotřeby** automaticky škáluje na základě provozu – bez nutnosti jakékoli další konfigurace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Postupujte podle kroků v tomto článku, musíte:
+Pokud chcete postupovat podle kroků v tomto článku, musíte:
 
 + Máte aktivní předplatné Azure.
-+ Žádná instance Azure API Management. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Vysvětlení konceptu [kapacity instance Azure API Management](api-management-capacity.md).
-+ Vysvětlení [ruční škálování procesu instance Azure API Management](upgrade-and-scale.md), včetně nákladů důsledky.
++ Mít instanci Azure API Management. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
++ Pochopení konceptu [kapacity instance služby Azure API Management](api-management-capacity.md).
++ Pochopení [procesu ručního škálování instance služby Azure API Management](upgrade-and-scale.md), včetně ovlivnění nákladů.
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
-## <a name="azure-api-management-autoscale-limitations"></a>Omezení automatického škálování služby Azure API Management
+## <a name="azure-api-management-autoscale-limitations"></a>Omezení automatického škálování v Azure API Management
 
-Určitá omezení a důsledků škálování rozhodnutí třeba zvážit před konfigurací chování automatického škálování.
+Určitá omezení a důsledky rozhodnutí o škálování je třeba zvážit před konfigurací chování automatického škálování.
 
-+ Automatické škálování se dá nastavit jenom pro **standardní** a **Premium** úrovně služby Azure API Management.
-+ Cenové úrovně zadejte také maximální počet jednotek pro instance služby.
-+ Škálování procesu bude trvat nejméně 20 minut.
-+ Pokud služba je uzamčen jiná operace, žádost o škálování se nezdařily a opakovat automaticky.
-+ V případě služby u nasazení ve více oblastí, pouze jednotek **primární umístění** je možné škálovat. Nejde škálovat jednotky v jiných umístěních.
++ Automatické škálování se dá povolit jenom pro úrovně **Standard** a **Premium** služby Azure API Management.
++ Cenové úrovně také určují maximální počet jednotek pro instanci služby.
++ Škálování procesu bude trvat aspoň 20 minut.
++ Pokud je služba zamčená jinou operací, požadavek na škálování selže a znovu se spustí automaticky.
++ V případě služby s více oblastmi nasazení lze škálovat pouze jednotky v **primárním umístění** . Jednotky v jiných umístěních nelze škálovat.
 
 ## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Povolení a konfigurace automatického škálování pro službu Azure API Management
 
-Podle následujících pokynů ke konfiguraci automatického škálování pro službu Azure API Management:
+Při konfiguraci automatického škálování pro službu Azure API Management použijte následující postup:
 
-1. Přejděte do **monitorování** instance na webu Azure Portal.
+1. V Azure Portal přejděte na instanci **monitorování** .
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
-2. Vyberte **automatického škálování** z nabídky na levé straně.
+2. V nabídce vlevo vyberte **Automatické škálování** .
 
-    ![Automatické škálování prostředků Azure monitoru](media/api-management-howto-autoscale/02.png)
+    ![Azure Monitor prostředek automatického škálování](media/api-management-howto-autoscale/02.png)
 
-3. Vyhledání služby Azure API Management na základě filtrů v rozevíracích nabídek.
+3. Vyhledejte službu Azure API Management v závislosti na filtrech v rozevíracích nabídkách.
 4. Vyberte požadovanou instanci služby Azure API Management.
-5. V nově otevřeném části, klikněte **povolit automatické škálování** tlačítko.
+5. V nově otevřené části klikněte na tlačítko **Povolit automatické škálování** .
 
-    ![Povolit automatické škálování Azure monitoru](media/api-management-howto-autoscale/03.png)
+    ![Povolit automatické škálování Azure Monitor](media/api-management-howto-autoscale/03.png)
 
-6. V **pravidla** klikněte na tlačítko **+ přidat pravidlo**.
+6. V části **pravidla** klikněte na **+ Přidat pravidlo**.
 
-    ![Přidání pravidla pro automatické škálování služby Azure Monitor](media/api-management-howto-autoscale/04.png)
+    ![Azure Monitor pravidlo přidání automatického škálování](media/api-management-howto-autoscale/04.png)
 
-7. Definujte nový horizontální navýšení kapacity pravidlo.
+7. Definujte nové pravidlo horizontálního navýšení kapacity.
 
-   Například s horizontálním navýšením kapacity pravidlo by mohly aktivovat doplněk jednotky Azure API Management, když průměrné kapacity metriky za posledních 30 minut překročí 80 %. Následující tabulka obsahuje konfiguraci pro toto pravidlo.
+   Pravidlo horizontálního navýšení kapacity může například aktivovat Přidání jednotky Azure API Management, když průměrná metrika kapacity za posledních 30 minut překračuje 80%. Následující tabulka poskytuje konfiguraci pro toto pravidlo.
 
-    | Parametr             | Hodnota             | Poznámky                                                                                                                                                                                                                                                                           |
+    | Parametr             | Value             | Poznámky                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Zdroj metriky         | Aktuální prostředek  | Definujte pravidla na základě aktuální metrik prostředků Azure API Management.                                                                                                                                                                                                     |
+    | Zdroj metriky         | Aktuální prostředek  | Definujte pravidlo na základě aktuální metriky prostředků Azure API Management.                                                                                                                                                                                                     |
     | *Kritéria*            |                   |                                                                                                                                                                                                                                                                                 |
-    | Časová agregace      | Průměr           |                                                                                                                                                                                                                                                                                 |
-    | Název metriky           | Kapacita          | Kapacitní metriky je metriku Azure API Management odráží využití prostředků, instance Azure API Management.                                                                                                                                                            |
-    | Statistika agregačního intervalu  | Průměr           |                                                                                                                                                                                                                                                                                 |
-    | Operátor              | Větší než      |                                                                                                                                                                                                                                                                                 |
-    | Prahová hodnota             | 80 %               | Prahové hodnoty pro metriku průměrné kapacity.                                                                                                                                                                                                                                 |
-    | Doba trvání (v minutách) | 30                | Časový interval pro výpočet průměru metriku kapacity přes je specifický pro vzorce používání. Čím delší je doba, tím hladší bude reakce – krátkodobých špiček bude mít menší dopad na rozhodnutí horizontální navýšení kapacity. Ale také způsobí zpoždění aktivační událost horizontální navýšení kapacity. |
+    | Časová agregace      | Average           |                                                                                                                                                                                                                                                                                 |
+    | Název metriky           | Kapacita          | Metrika kapacity je metrika Azure API Management, která odráží využití prostředků instance Azure API Management.                                                                                                                                                            |
+    | Statistika agregačního intervalu  | Average           |                                                                                                                                                                                                                                                                                 |
+    | Operator              | Je větší než      |                                                                                                                                                                                                                                                                                 |
+    | Prahová hodnota             | 80 %               | Prahová hodnota pro průměrnou metriku kapacity.                                                                                                                                                                                                                                 |
+    | Doba trvání (v minutách) | 30                | Hodnota TimeSpan pro průměrnou metriku kapacity je specifická pro vzorce použití. Čím delší je časové období, hladší reakce bude mít za následek méně vliv na rozhodnutí o škálování na více instancí. Dojde ale také ke zpoždění triggeru škálování na více instancí. |
     | *Akce*              |                   |                                                                                                                                                                                                                                                                                 |
     | Operace             | Zvýšit počet o |                                                                                                                                                                                                                                                                                 |
-    | Počet instancí        | 1                 | Horizontální navýšení kapacity instance Azure API Management 1 jednotku.                                                                                                                                                                                                                          |
-    | Přestávka (minuty)   | 60                | Trvá aspoň 20 minut pro službu Azure API Management pro horizontální navýšení kapacity. Ve většině případů nástrojů snížit dobu 60 minut zabraňuje aktivací mnoho škálování činnostem.                                                                                                  |
+    | Počet instancí        | 1                 | Horizontální navýšení kapacity instance služby Azure API Management o 1 jednotku.                                                                                                                                                                                                                          |
+    | Doba vychladnutí (minuty)   | 60                | Škálování služby Azure API Management pro horizontální navýšení kapacity trvá déle než 20 minut. Ve většině případů se doba trvání vypíná od 60 minut neaktivuje z aktivace řady škálování.                                                                                                  |
 
-8. Klikněte na tlačítko **přidat** uložíte pravidlo.
+8. Kliknutím na tlačítko **Přidat** uložte pravidlo.
 
-    ![Azure Monitor Horizontální navýšení kapacity pravidlo](media/api-management-howto-autoscale/05.png)
+    ![Azure Monitor pravidlo horizontálního navýšení kapacity](media/api-management-howto-autoscale/05.png)
 
-9. Klikněte znovu na **+ přidat pravidlo**.
+9. Klikněte znovu na **+ Přidat pravidlo**.
 
-    Tentokrát škálování v pravidle musí být definován. To zajistí, že prostředky nejsou se ztraceny, pokud snižuje využití rozhraní API.
+    Tentokrát je potřeba definovat měřítko v pravidle. Tím zajistíte, že se prostředky neprojeví, když se využití rozhraní API sníží.
 
-10. Definujte novou škálovací v pravidle.
+10. Definujte nové měřítko v pravidle.
 
-    Například škálování v pravidle způsobovat společně s Azure API Management jednotky, po nižší než 35 % průměrná kapacity metriky za posledních 30 minut. Následující tabulka obsahuje konfiguraci pro toto pravidlo.
+    Například škála v pravidle může aktivovat odebrání jednotky Azure API Management, když průměrná metrika kapacity za posledních 30 minut byla nižší než 35%. Následující tabulka poskytuje konfiguraci pro toto pravidlo.
 
-    | Parametr             | Hodnota             | Poznámky                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | Parametr             | Value             | Poznámky                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Zdroj metriky         | Aktuální prostředek  | Definujte pravidla na základě aktuální metrik prostředků Azure API Management.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Zdroj metriky         | Aktuální prostředek  | Definujte pravidlo na základě aktuální metriky prostředků Azure API Management.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Kritéria*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Časová agregace      | Průměr           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Název metriky           | Kapacita          | Stejné metriky, jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | Statistika agregačního intervalu  | Průměr           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operátor              | Je menší než         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Prahová hodnota             | 35%               | Podobně pro horizontální navýšení kapacity pravidla, tato hodnota silně závisí na vzory používání služby Azure API Management. |
-    | Doba trvání (v minutách) | 30                | Stejnou hodnotu jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Časová agregace      | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Název metriky           | Kapacita          | Stejná metrika jako ta, která se používá pro pravidlo horizontálního navýšení kapacity.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | Statistika agregačního intervalu  | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Operator              | Je menší než         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Prahová hodnota             | 35%               | Podobně jako pravidlo horizontálního navýšení kapacity Tato hodnota velmi závisí na vzorech využití API Management Azure. |
+    | Doba trvání (v minutách) | 30                | Stejná hodnota jako ta, která se používá pro pravidlo horizontálního navýšení kapacity.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Akce*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operace             | Snížit počet o | Než jaký se použil pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | Počet instancí        | 1                 | Stejnou hodnotu jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Přestávka (minuty)   | 90                | Horizontální snížení kapacity by mělo být konzervativnější než horizontální navýšení kapacity, aby nástrojů dolů období by měl být delší.                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | Operace             | Snížit počet o | Protiklad k tomu, co bylo použito pro pravidlo horizontálního navýšení kapacity.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | Počet instancí        | 1                 | Stejná hodnota jako ta, která se používá pro pravidlo horizontálního navýšení kapacity.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Doba vychladnutí (minuty)   | 90                | Horizontální navýšení kapacity by mělo být více konzervativní než horizontální navýšení kapacity, takže doba trvání musí být delší.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-11. Klikněte na tlačítko **přidat** uložíte pravidlo.
+11. Kliknutím na tlačítko **Přidat** uložte pravidlo.
 
-    ![Škálování Azure monitoru v pravidle](media/api-management-howto-autoscale/06.png)
+    ![Azure Monitor škálování v pravidle](media/api-management-howto-autoscale/06.png)
 
 12. Nastavte **maximální** počet jednotek Azure API Management.
 
     > [!NOTE]
-    > Azure API Management má limit jednotek, které instance můžete horizontální navýšení kapacity na. Omezení závisí na vrstvu služby.
+    > Azure API Management má limit jednotek, na které může instance navýšit horizontální navýšení kapacity. Limit závisí na úrovni služby.
 
-    ![Škálování Azure monitoru v pravidle](media/api-management-howto-autoscale/07.png)
+    ![Azure Monitor škálování v pravidle](media/api-management-howto-autoscale/07.png)
 
-13. Klikněte na **Uložit**. Vaše automatické škálování není nakonfigurovaná.
+13. Klikněte na **Uložit**. Vaše automatické škálování je nakonfigurované.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7de3dd016700d10ef5fac97fada5cd23c2f4e1cb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 926e2004207472d16a195ceba2ecf3f2a4590885
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558315"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019143"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -66,7 +66,7 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-    > Zkontrolujte prosím, jestli balíček už existuje, a teprve potom ho nainstalujte, abyste se vyhnuli opakované instalaci. Podobně `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` jako v příkladu výše vzorového kódu. Opakování instalace může způsobit vypršení časového limitu požadavku webové služby.     
+  > Zkontrolujte prosím, jestli balíček už existuje, a teprve potom ho nainstalujte, abyste se vyhnuli opakované instalaci. Podobně `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` jako v příkladu výše vzorového kódu. Opakování instalace může způsobit vypršení časového limitu požadavku webové služby.     
 
 ## <a name="how-to-configure-execute-r-script"></a>Jak nakonfigurovat skript spouštěný v jazyce R
 
@@ -401,6 +401,6 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8 – 6      | 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

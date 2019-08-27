@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 08/22/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611901"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019023"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>On-Board Azure Sentinel Preview
 
@@ -59,7 +59,8 @@ Po připojení zdrojů dat si můžete vybrat z Galerie expertů vytvořených �
 
    >[!NOTE] 
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
-   > - V pracovních prostorech, které jsou nasazené v některé z těchto oblastí, můžete spustit Azure Sentinel:  Austrálie – jihovýchod, Kanada – střed, Střed Indie, Východní USA, Východní USA 2 EUAP (Kanárské), Japonsko – východ, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
+   > - V pracovních prostorech, které jsou nasazené v některé z těchto oblastí, můžete spustit Azure Sentinel: Austrálie – východ, Austrálie – jihovýchod, Kanada – střed, Střed Indie, Východní USA, Východní USA 2 EUAP (Kanárské), Japonsko – východ, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2, Středozápadní USA, Francie – střed, Korea – střed, Severní Evropa, Východní USA 2, východní Asie, Západní USA, Střed USA, Střed USA – jih.
+
 
 6. Klikněte na **Přidat Sentinel Azure**.
   
@@ -77,7 +78,7 @@ Po připojení zdrojů dat začnou vaše data zasílat Stream do Azure Sentinel 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste se seznámili s připojením zdrojů dat ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).

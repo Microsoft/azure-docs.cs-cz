@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609988"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020237"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Agregace schématu a dat v Analýza provozu
 
@@ -32,7 +32,7 @@ Analýza provozu je cloudové řešení, které poskytuje přehled o aktivitách
 
 ### <a name="data-aggregation"></a>Agregace dat
 
-1. Všechny protokoly toků v NSG mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t" jsou zachyceny v jednom minutovém účtu úložiště jako objekty blob, aby je bylo možno zpracovávat pomocí Analýza provozu. 
+1. Všechny protokoly toků v NSG mezi "FlowIntervalStartTime_t" a "FlowIntervalEndTime_t" jsou zachyceny v jednom minutovém účtu úložiště jako objekty blob, aby je bylo možno zpracovávat pomocí Analýza provozu.
 2. Výchozí interval zpracování Analýza provozu je 60 minut. To znamená, že každých 60 minut Analýza provozu z úložiště vybírá objekty blob pro agregaci. Pokud je zvolený interval zpracování 10 minut, Analýza provozu po každých 10 minutách vybírat objekty BLOB z účtu úložiště.
 3. Toky, které mají stejnou zdrojovou IP adresu, cílovou IP adresu, cílový port, název NSG, pravidlo NSG, směr toku a protokol Transport Layer (TCP nebo UDP) (Poznámka: Zdrojový port je vyloučený pro agregaci) jsou clubbed do jediného toku Analýza provozu
 4. Tento jediný záznam je upraven (podrobnosti v níže uvedené části) a ingestuje Log Analytics Analýza provozu. Tento proces může trvat maximálně jednu hodinu.
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Pole používaná ve schématu Analýza provozu
+  > [!IMPORTANT]
+  > Analýza provozu schéma bylo aktualizováno v 22 srpna 2019. Nové schéma poskytuje zdrojové a cílové IP adresy samostatně, takže je potřeba analyzovat pole FlowDirection a zjednodušit tak dotazy. </br>
+  > FASchemaVersion_s se aktualizovala z 1 na 2. </br>
+  > Zastaralá pole: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Nová pole: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Zastaralá pole budou k dispozici do 22 listopadu 2019.
 
 Analýza provozu je postavená na Log Analytics, takže můžete spouštět vlastní dotazy na data dekorovaná Analýza provozu a nastavovat výstrahy na stejné úrovni.
 
@@ -94,7 +100,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabulka pro data Analýza provozu
 | SubType_s | FlowLog | Podtyp pro protokoly toku. Použijte pouze "FlowLog", jiné hodnoty SubType_s jsou pro interní práci s produktem. |
-| FASchemaVersion_s |   1   | Verze schématu Nereflektuje verzi protokolu toku NSG. |
+| FASchemaVersion_s |   2   | Verze schématu Nereflektuje verzi protokolu toku NSG. |
 | TimeProcessed_t   | Datum a čas ve standardu UTC  | Čas, kdy Analýza provozu zpracoval protokoly nezpracovaných toků z účtu úložiště |
 | FlowIntervalStartTime_t | Datum a čas ve standardu UTC |  Počáteční čas intervalu zpracování protokolu toku. Toto je čas, od kterého se měří interval toku. |
 | FlowIntervalEndTime_t | Datum a čas ve standardu UTC | Čas ukončení intervalu zpracování protokolu toku |
@@ -111,7 +117,8 @@ Níže jsou uvedené pole ve schématu a co značí.
 | FlowDirection_s | * I = příchozí<br> * O = odchozí | Směr toku v/v NSG podle protokolu na jeden tok |
 | FlowStatus_s  | * A = povoleno pravidlem NSG <br> * D = zamítnuto podle NSG pravidla  | Stav toku povolených/nblockedch podle NSG na protokol toku |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | Skupina zabezpečení sítě (NSG) přidružená k toku |
-| NSGRules_s | \<Hodnota indexu 0) > < NSG_RULENAME >\<směr toku >\<stav toku >\<FlowCount ProcessedByRule > |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
+| NSGRules_s | \<Hodnota indexu 0) >\|\<NSG_RULENAME >\|\<směr toku >\|stavtoku\|>\<FlowCountProcessedByRule>\< |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
+| NSGRule_s | NSG_RULENAME |  Pravidlo NSG, které povoluje nebo zakázalo tento tok |
 | NSGRuleType_s | * Definováno uživatelem * výchozí |   Typ pravidla NSG používaného tokem |
 | MACAddress_s | Adresa MAC | Adresa MAC síťového adaptéru, na kterém byl tok zachycen |
 | Subscription_s | V tomto poli se naplní předplatné virtuální sítě Azure/síťové rozhraní/virtuální počítač. | Platí jenom pro typy toků FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow a UnknownPrivate (typy toků, kde je jenom jedna strana Azure). |
@@ -151,6 +158,8 @@ Níže jsou uvedené pole ve schématu a co značí.
 | OutboundBytes_d | Počet odeslaných bajtů zaznamenaných v síťovém rozhraní, kde bylo použito pravidlo NSG | Tento údaj se naplní jenom na verzi 2 schématu protokolu toku NSG. |
 | CompletedFlows_d  |  | Tato hodnota se vyplní nenulovou hodnotou jenom pro schéma protokolu NSG Flow verze 2. |
 | PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS >\|\<\<\| \<OUTBOUND_BYTES>\|INBOUND_BYTES>\< | Položky oddělené řádky |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\< >\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | Položky oddělené řádky |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\< PAKETY >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | Položky oddělené řádky |
 
 ### <a name="notes"></a>Poznámky
 
@@ -165,7 +174,7 @@ Níže jsou uvedené pole ve schématu a co značí.
 1. MaliciousFlow – jedna z IP adres patří do služby Azure Virtual Network, zatímco druhá IP adresa je veřejná IP adresa, která není v Azure, a je v informačních kanálech ASC nahlášená jako škodlivá, která Analýza provozu spotřebovává interval zpracování mezi. FlowIntervalStartTime_t "a" FlowIntervalEndTime_t ".
 1. UnknownPrivate – jedna z IP adres patří do Azure Virtual Network a druhá IP adresa patří do rozsahu privátních IP adres, jak je definováno v dokumentu RFC 1918 a nelze ji namapovat pomocí Analýza provozu na web vlastněné zákazníkem nebo na Azure Virtual Network.
 1. Neznámé – nepovedlo se namapovat jednu z IP adres v tocích s topologií zákazníka v Azure i v místním prostředí (Web).
-1. K některým názvům polí se připojí _s nebo _D. Neoznačují zdroj a cíl.
+1. Některé názvy polí jsou doplněny s \_nebo \_d. Tyto hodnoty neznamenají zdroj a cíl, ale označují datový typ String a Decimal.
 
 ### <a name="next-steps"></a>Další kroky
 Odpovědi na nejčastější dotazy najdete v tématu [Nejčastější dotazy k analýze provozu](traffic-analytics-faq.md) a zobrazení podrobností o funkcích najdete v tématu [dokumentace k analýze provozu](traffic-analytics.md) .

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9824e1468604763834e37abe94290d68d81077ab
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815151"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020125"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: Vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK 
 
@@ -120,22 +120,6 @@ Teď k této aplikaci MVC přidejme modely, zobrazení a kontrolery:
    
    Data uložená ve službě Azure Cosmos DB se přenesou a uloží jako dokumenty JSON. Chcete-li určit způsob, jakým jsou objekty serializovány/deserializovány pomocí JSON.NET, můžete použít atribut **JsonProperty** , jak je znázorněno ve třídě **Item** , kterou jste vytvořili. Nejenom můžete řídit formát názvu vlastnosti, který se nachází ve formátu JSON, můžete také přejmenovat vlastnosti .NET tak, jako jste to udělali s vlastností **dokončeno** . 
 
-### <a name="add-a-controller"></a>Přidání kontroleru
-
-1. Z **Průzkumníka řešení**, klikněte pravým tlačítkem na **řadiče** složky, vyberte **přidat**a pak vyberte **řadič**. Zobrazí se dialogové okno **Přidat vygenerované uživatelské rozhraní**.
-
-1. Vyberte **kontroler MVC – prázdné** a vyberte **Přidat**.
-
-   ![Snímek obrazovky dialogového okna Přidat generování uživatelského rozhraní s kontrolérem MVC – prázdná možnost – zvýraznění](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-
-1. Pojmenujte nový kontroler, **ItemController**a nahraďte kód v tomto souboru následujícím kódem:
-
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
-
-   **ValidateAntiForgeryToken** atributů se tady používá k pomohl zabezpečit tuto aplikace před útoky proti padělání žádosti více webů. Existuje více než jen přidat tento atribut, zobrazení by měla fungovat s tímto tokenem proti padělání také. Další informace o tomto předmětu a příklady, jak to provést správně, najdete v tématu [prevence padělání požadavků mezi weby][Preventing Cross-Site Request Forgery]. Zdrojový kód dostupný na [GitHubu][GitHub] má toto plně implementováno.
-
-   Použijeme také **svázat** atribut u parametru metody a pomáhá chránit před útoky typu overpost over-pass-the. Další podrobnosti najdete [v tématu základní operace CRUD v ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
-
 ### <a name="add-views"></a>Přidání zobrazení
 
 V dalším kroku vytvoříme následující tři zobrazení: 
@@ -190,6 +174,22 @@ A nakonec přidání zobrazení upravit položku pomocí následujících kroků
    * Vyberte **Přidat**.
 
 Až to uděláte, zavřete všechny dokumenty cshtml v sadě Visual Studio, protože později vrátit k těmto zobrazením.
+
+### <a name="add-a-controller"></a>Přidání kontroleru
+
+1. Z **Průzkumníka řešení**, klikněte pravým tlačítkem na **řadiče** složky, vyberte **přidat**a pak vyberte **řadič**. Zobrazí se dialogové okno **Přidat vygenerované uživatelské rozhraní**.
+
+1. Vyberte **kontroler MVC – prázdné** a vyberte **Přidat**.
+
+   ![Snímek obrazovky dialogového okna Přidat generování uživatelského rozhraní s kontrolérem MVC – prázdná možnost – zvýraznění](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. Pojmenujte nový kontroler, **ItemController**a nahraďte kód v tomto souboru následujícím kódem:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   **ValidateAntiForgeryToken** atributů se tady používá k pomohl zabezpečit tuto aplikace před útoky proti padělání žádosti více webů. Existuje více než jen přidat tento atribut, zobrazení by měla fungovat s tímto tokenem proti padělání také. Další informace o tomto předmětu a příklady, jak to provést správně, najdete v tématu [prevence padělání požadavků mezi weby][Preventing Cross-Site Request Forgery]. Zdrojový kód dostupný na [GitHubu][GitHub] má toto plně implementováno.
+
+   Použijeme také **svázat** atribut u parametru metody a pomáhá chránit před útoky typu overpost over-pass-the. Další podrobnosti najdete [v tématu základní operace CRUD v ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
 ## <a name="connect-to-cosmosdb"></a>Krok 5: Připojení ke službě Azure Cosmos DB 
 

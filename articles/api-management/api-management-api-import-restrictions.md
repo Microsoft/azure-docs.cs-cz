@@ -1,6 +1,6 @@
 ---
-title: Omezení a známé problémy v rozhraní API služby Azure API Management importovat | Dokumentace Microsoftu
-description: Podrobnosti o známých problémech a omezení pro import do Azure API Management pomocí formáty Open API, WSDL nebo WADL.
+title: Omezení a známé problémy v Azure API Management API importování | Microsoft Docs
+description: Podrobnosti o známých problémech a omezeních pro import do Azure API Management s využitím formátů Open API, WSDL nebo WADL.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,57 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: af550d3cdf359fc79b3cc2c799e531e5ec491c4e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bf39e508b8e4c883934b51fdc99eaef96caf1235
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613633"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018216"
 ---
-# <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
+# <a name="api-import-restrictions-and-known-issues"></a>Omezení importu rozhraní API a známé problémy
 
-## <a name="about-this-list"></a>Informace o tomto seznamu
+## <a name="about-this-list"></a>O tomto seznamu
 
-Při importu rozhraní API, může setkat určitá omezení nebo identifikovat problémy, které je potřeba opravit, bylo možné úspěšně naimportovat. Tento článek dokumenty, uspořádány podle formát importu rozhraní API.
+Při importu rozhraní API se můžete setkat s určitými omezeními nebo určit problémy, které je potřeba opravit, než budete moct úspěšně naimportovat. Tento článek popisuje tyto dokumenty, seřazené podle formátu importu rozhraní API.
 
-## <a name="open-api"> </a>OpenAPI/Swagger
+## <a name="open-api"> </a>Openapi/Swagger
 
-Pokud se zobrazuje chyby importu OpenAPI dokumentu, ujistěte se, že jste se ověřili předem. Můžete to udělat buď pomocí návrháře na webu Azure Portal (Editor specifikace OpenAPI návrhu - front-endu -) nebo pomocí nástroje třetích stran, jako <a href="https://editor.swagger.io">editoru Swagger</a>.
+Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho předem ověřili. Můžete to udělat buď pomocí návrháře v Azure Portal (Editor specifikace front-end-OpenAPI Specification), nebo pomocí nástroje třetí strany, jako je <a href="https://editor.swagger.io">Editor Swagger</a>.
 
 ### <a name="open-api-general"> </a>Obecné
 
--   Požadované parametry napříč cestu a dotaz musí mít jedinečné názvy. (V OpenAPI název parametru pouze musí být jedinečný v rámci umístění, třeba cestu, dotaz, záhlaví. Ale ve službě API Management jsme umožní operace, které mají být rozlišované cestu a dotaz parametry (které OpenAPI nepodporuje). That's důvod, proč požadujeme, aby názvy parametrů být jedinečný v rámci celou adresu URL šablony.)
--   **\$REF** ukazatelé nemohou odkazovat na externí soubory.
--   **x-ms cesty** a **servery x** jsou jediné podporované přípony.
--   Vlastní rozšíření jsou ignorovány při importu a nejsou uloženy ani zachovají pro export.
--   **Rekurze** – API Management nepodporuje rekurzivní definice (například schémata odkazující na sebe).
--   Adresa URL souboru zdroje (Pokud je k dispozici) se použije pro relativní serverové adresy URL.
+-   Požadované parametry v obou cestách i dotazech musí mít jedinečné názvy. (V OpenAPI musí být název parametru jedinečný jenom v rámci umístění, například cesta, dotaz, záhlaví. V API Management ale povolujeme, aby byly operace rozlišené pomocí cest i parametrů dotazů (které OpenAPI nepodporuje). To je důvod, proč potřebujeme, aby názvy parametrů byly jedinečné v rámci celé šablony URL.)
+-   ukazatele ref nemůžou odkazovat na externí soubory.  **\$**
+-   jedinou podporovanou příponou jsou **x-MS-Paths** a **x-servery** .
+-   Vlastní rozšíření se při importu ignorují a neukládají se ani neuchovávají pro export.
+-   Rekurze – API Management nepodporuje definice, které jsou definovány rekurzivně (například schémata odkazující samy na sebe).
+-   Adresa URL zdrojového souboru (je-li k dispozici) se použije na relativní adresy URL serveru.
+-   Definice zabezpečení jsou ignorovány.
 
-### <a name="open-api-v2"> </a>OpenAPI verze 2
+### <a name="open-api-v2"> </a>Openapi verze 2
 
--   Je podporován jen formát JSON.
+-   Podporován je pouze formát JSON.
 
-### <a name="open-api-v3"> </a>OpenAPI verze 3
+### <a name="open-api-v3"> </a>Openapi verze 3
 
--   Pokud mnoho **servery** nejsou zadány, API Management se pokusí vyberte první adresa URL protokolu HTTPs. Pokud nejsou k dispozici žádné adresy URL HTTPs - první adresa URL protokolu HTTP. Pokud nejsou k dispozici žádné adresy URL protokolu HTTP – adresa URL serveru bude prázdný.
--   **Příklady** není podporován, ale **příklad** je.
--   **Multipart/formulář data** se nepodporuje.
+-   Pokud je zadáno mnoho **serverů** , API Management se pokusí vybrat první adresu URL https. Pokud nejsou žádné adresy URL protokolu HTTPs, první adresa URL protokolu HTTP. Pokud neexistují žádné adresy URL protokolu HTTP, adresa URL serveru bude prázdná.
+-   **Příklady** nejsou podporované, ale **příklad** je.
+-   **Multipart/form-data** nejsou podporována.
 
 > [!IMPORTANT]
 > Důležité informace a tipy týkající se importu OpenAPI najdete v tomto [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/).
 
 ## <a name="wsdl"> </a>WSDL
 
-Soubory WSDL se používají k vytváření průchod SOAP a rozhraní API protokolu SOAP do REST.
+Soubory WSDL slouží k vytváření předávacích rozhraní SOAP a rozhraní SOAP-REST API.
 
--   **Vazby SOAP** – jsou podporovány pouze SOAP vazby styl "dokumentu" a "literál" kódování. Není dostupná podpora pro styl "rpc" nebo kódování SOAP.
--   **WSDL: import** – tento atribut se nepodporuje. Zákazníci by měl sloučení importů do jednoho dokumentu.
--   **Zprávy s více částmi** – tyto typy zpráv, které nejsou podporovány.
--   **WCF wsHttpBinding** -SOAP služby vytvořené pomocí Windows Communication Foundation by měl používat basicHttpBinding – wsHttpBinding nepodporuje.
--   **MTOM** – služby pomocí MTOM <em>může</em> fungovat. V tuto chvíli není dostupná podpora oficiální.
--   **Rekurze** – typy, které jsou definované rekurzivně (například odkazovat na pole samy o sobě) nejsou podporovány APIM.
--   **Více oborů názvů** – více oborů názvů, je možné ve schématu, ale jenom cílový obor názvů lze definovat části zprávy. Obory názvů než je cíl, které se používají k definování dalších vstupních nebo výstupních prvky nejsou zachovány. I když je možné importovat dokument WSDL, při exportu všechny části zprávy bude mít cílový obor názvů schématu WSDL.
--   **Pole** – SOAP do REST transformace podporuje pouze zabalené pole je znázorněno v následujícím příkladu:
+-   **Vazby SOAP** : podporovány jsou pouze vazby SOAP stylu "Document" a "Literal" Encoding. Neexistuje žádná podpora pro styl RPC ani pro kódování SOAP.
+-   **WSDL: import** – tento atribut není podporován. Zákazníci by měli sloučit importy do jednoho dokumentu.
+-   **Zprávy s více částmi** – tyto typy zpráv nejsou podporovány.
+-   **WCF WSHttpBinding** – služby SOAP vytvořené pomocí Windows Communication Foundation by měly používat BasicHttpBinding-WSHttpBinding, se nepodporuje.
+-   **MTOM** -služby, které používají MTOM, <em>můžou</em> fungovat. Oficiální podpora není v tuto chvíli nabídnutá.
+-   Typy rekurze, které jsou definovány rekurzivně (například odkaz na pole sebe sama), nejsou podporovány v APIM.
+-   **Více oborů názvů** – ve schématu lze použít více oborů názvů, ale k definování částí zprávy lze použít pouze cílový obor názvů. Jiné obory názvů, než je cíl, který slouží k definování jiných vstupních nebo výstupních prvků, nejsou zachovány. I když takový dokument WSDL lze importovat, v části Export všech částí zprávy bude mít cílový obor názvů WSDL.
+-   **Pole** – transformace SOAP na REST podporuje pouze zabalená pole zobrazená v následujícím příkladu:
 
 ```xml
     <complexType name="arrayTypeName">
@@ -83,4 +84,4 @@ Soubory WSDL se používají k vytváření průchod SOAP a rozhraní API protok
 
 ## <a name="wadl"> </a>WADL
 
-V současné době nejsou žádné známé problémy při importu WADL.
+V současné době nejsou k dispozici žádné známé problémy s WADL importu.

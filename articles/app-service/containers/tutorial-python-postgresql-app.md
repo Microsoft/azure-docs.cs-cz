@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951910"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020192"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Vytvoření webové aplikace Python (Django) s PostgreSQL v Azure App Service
 
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-V prohlížeči přejděte na `http://localhost:8000`. Měla by se zobrazit zpráva `No polls are available.`. 
+V prohlížeči `http://localhost:8000` přejdete na. Měla by se zobrazit zpráva `No polls are available.`. 
 
-Přejděte na `http://localhost:8000/admin` adresu a přihlaste se pomocí uživatele s rolí správce, kterého jste vytvořili v posledním kroku. Klikněte na tlačítko **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
+Přejít na `http://localhost:8000/admin` adresu a přihlaste se pomocí uživatele s rolí správce, kterého jste vytvořili v posledním kroku. Vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Přejděte na `http://localhost:8000` adresu znovu a podívejte se na zobrazenou otázku dotazování.
+`http://localhost:8000` Přejděte znovu a podívejte se na zobrazenou otázku dotazování.
 
 Ukázková aplikace Django ukládá uživatelská data do databáze. Pokud jste při přidávání otázky na dotazování úspěšně přidali otázku dotazování, aplikace zapisuje data do místní databáze PostgreSQL.
 
@@ -269,13 +269,13 @@ Po vytvoření uživatele s oprávněními správce spusťte server Django.
 python manage.py runserver
 ```
 
-Znovu přejděte `http://localhost:8000` na. Měla by se zobrazit zpráva `No polls are available.` znovu. 
+Znovu přejít `http://localhost:8000` na. Měla by se zobrazit zpráva `No polls are available.` znovu. 
 
-Přejděte na `http://localhost:8000/admin` adresu a přihlaste se pomocí vámi vytvořeného uživatele pro správu a vytvořte otázku dotazování, jako byste předtím.
+Přihlaste se `http://localhost:8000/admin` a přihlaste se pomocí vámi vytvořeného správce a vytvořte otázku dotazování podobným způsobem.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Přejděte na `http://localhost:8000` adresu znovu a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
+`http://localhost:8000` Přejděte znovu a podívejte se na zobrazenou otázku dotazování. Vaše aplikace teď zapisuje data do databáze v Azure.
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
@@ -386,7 +386,7 @@ Měla by se zobrazit otázka pro dotazování, kterou jste vytvořili dříve.
 
 App Service detekuje projekt Django v úložišti tím, že hledá _WSGI.py_ v každém podadresáři, který je vytvořen `manage.py startproject` ve výchozím nastavení. Když soubor najde, načte webovou aplikaci Django. Další informace o tom, jak App Service načítají aplikace v Pythonu, najdete v tématu [Konfigurace integrované image Pythonu](how-to-configure-python.md).
 
-Přejděte na `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného vytvořeného uživatele správce, kterého jste vytvořili. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
+Pokračujte a `<app-name>.azurewebsites.net` Přihlaste se pomocí stejného vytvořeného uživatele správce. Pokud chcete, zkuste vytvořit další otázky pro dotazování.
 
 ![Místně spuštěná aplikace Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ Přejděte na `<app-name>.azurewebsites.net` a přihlaste se pomocí stejného v
 
 Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure Portal](https://portal.azure.com) .
 
-V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
+V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-python-postgresql-app/app-resource.png)
 
@@ -410,7 +410,7 @@ Ve výchozím nastavení se na portálu zobrazí stránka s **přehledem** vaš�
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c7306de4af7f958ef8f89dac41a5e08209916432
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996847"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020209"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -37,7 +37,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 ## <a name="download-the-sample-locally"></a>Místní stažení ukázky
 
-V okně terminálu naklonujte spuštěním následujících příkazů ukázkovou aplikaci do místního počítače a přejděte do adresáře s ukázkovým kódem.
+V okně terminálu spuštěním následujících příkazů naklonujte ukázkovou aplikaci do místního počítače a přejděte do adresáře s ukázkovým kódem.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -65,7 +65,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Otevřete webový prohlížeč a přejděte do ukázkové aplikace na adrese `http://localhost:5000/`.
+Otevřete webový prohlížeč a v `http://localhost:5000/`části použijte ukázkovou aplikaci.
 
 Na stránce se zobrazí zpráva **Hello World!** z ukázkové aplikace.
 
@@ -158,7 +158,7 @@ Vzorový kód Pythonu je spuštěný v App Service v systému Linux s integrovan
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
-V Cloud Shell zadejte `code application.py` , aby se otevřel Editor Cloud Shell.
+Do Cloud Shell `code application.py` otevřete Editor Cloud Shell.
 
 ![Application.py kódu](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +184,7 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
 
-V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
+V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/quickstart-python/app-service-list.png)
 

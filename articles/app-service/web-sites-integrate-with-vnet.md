@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740895"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018257"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (Virtuální sítě) vám umožní umístit spoustu prostředků Azure do sítě směrovatelné do jiné než internetové sítě.  
@@ -84,8 +84,9 @@ Tato funkce je ve verzi Preview, ale podporuje se pro produkční úlohy aplikac
 * Aplikace a virtuální síť musí být ve stejné oblasti.
 * Virtuální síť nejde odstranit pomocí integrované aplikace. Nejdřív musíte odebrat integraci. 
 * Pro každý App Service plán můžete mít jenom jednu místní integraci virtuální sítě. Víc aplikací ve stejném plánu App Service může používat stejnou virtuální síť. 
+* Pokud máte aplikaci, která používá místní integraci virtuální sítě, nemůžete změnit předplatné aplikace ani plán App Service.
 
-Pro každou instanci App Service plánu se používá jedna adresa. Pokud jste svoji aplikaci škálovat na 5 instancí, používá se 5 adres. Vzhledem k tomu, že velikost podsítě po přiřazení nelze změnit, je nutné použít podsíť, která je dostatečně velká, aby mohla pojmout libovolné škálování vaší aplikace. A/27 s 32 adresami je doporučená velikost, která by vyhovovala plánu Premium App Service, který se škáluje na 20 instancí.
+Pro každou instanci App Service plánu se používá jedna adresa. Pokud jste aplikaci škálovat na 5 instancí, použijí se 5 adres. Vzhledem k tomu, že velikost podsítě po přiřazení nelze změnit, je nutné použít podsíť, která je dostatečně velká, aby mohla pojmout libovolné škálování vaší aplikace. Doporučená velikost je a/26 s 64 adresami. A/27 s 32 adresami by vyhovovaly instancím Premium App Service Plan 20, pokud jste nezměnili velikost plánu App Service. Při horizontálním navýšení nebo zmenšení plánu App Service budete potřebovat dvakrát několik adres po krátkou dobu. 
 
 Pokud chcete, aby vaše aplikace v jiném App Service naplánovaly přístup k virtuální síti, ke které už aplikace v jiném plánu App Service existuje, musíte vybrat jinou podsíť, než kterou používá již existující integrace virtuální sítě.  
 
@@ -102,6 +103,8 @@ Tato funkce je také ve verzi Preview pro Linux. Pokud chcete použít funkci In
    ![Vyberte virtuální síť a podsíť.][7]
 
 Jakmile se vaše aplikace integruje do vaší virtuální sítě, bude používat stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. 
+
+Regionální integrace virtuální sítě vyžaduje, aby vaše podsíť integrace byla delegovaná na Microsoft. Web.  Uživatelské rozhraní integrace virtuální sítě bude podsíť delegovat na Microsoft. Web automaticky. Pokud váš účet nemá dostatečná síťová oprávnění k nastavení, budete potřebovat někoho, kdo může nastavit atributy v podsíti Integration pro delegování podsítě. Pokud chcete integrační podsíť manuálně delegovat, vyhledejte v uživatelském rozhraní podsítě Azure Virtual Network a nastavte delegování pro Microsoft. Web.
 
 Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím dojde k restartování vaší webové aplikace. 
 
@@ -249,7 +252,7 @@ Existují tři související poplatky za použití funkce integrace virtuální 
 
 
 ## <a name="troubleshooting"></a>Řešení potíží
-I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. To je totéž jako při přechodu na [název_webu]. SCM. azurewebsites. NET. Po otevření přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
+I když se tato funkce dá snadno nastavit, neznamená to, že vaše zkušenosti budou bez problémů. Pokud máte problémy s přístupem k požadovanému koncovému bodu, můžete použít některé nástroje, pomocí kterých můžete testovat připojení z konzoly aplikace. Můžete použít dvě konzoly. Jedním z nich je konzola Kudu a druhá je konzola v Azure Portal. Pokud se chcete připojit ke konzole Kudu z vaší aplikace, použijte nástroje-> Kudu. Ke konzole Kudo se můžete dostat i na adrese [název_webu]. SCM. azurewebsites. NET. Po načtení webu přejdete na kartu ladit konzolu. Pokud se chcete dostat do Azure Portal hostované konzoly, pak z aplikace přejdete do konzoly nástroje->. 
 
 #### <a name="tools"></a>Nástroje
 **Příkazy příkazového testu**a nástroje **nslookup** a **tracert** nebudou prostřednictvím konzoly fungovat z důvodu omezení zabezpečení. K vyplnění void se přidaly dva samostatné nástroje. K otestování funkcí DNS jsme přidali nástroj s názvem nameresolver. exe. Syntaxe je následující:

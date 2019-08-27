@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: a7950d80bd5aa21b26a7724845f10515a65c033d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: cbf039a932c16269f703818e9f0ffef4ce852686
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512705"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018744"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DB prostředků rozhraní SQL API
 
@@ -190,6 +190,7 @@ namespace todo
         public Child[] Children { get; set; }
         public Address Address { get; set; }
         public bool IsRegistered { get; set; }
+        // The ToString() method is used to format the output, it's used for demo purpose only. It's not required by Azure Cosmos DB
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
@@ -479,7 +480,7 @@ Pokud už je nepotřebujete, můžete k odebrání účtu Azure Cosmos a odpoví
 az group delete -g "myResourceGroup" -l "southcentralus"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, vytvoření databáze a kontejneru pomocí aplikace .NET Core. Teď můžete do svého účtu Azure Cosmos importovat další data pomocí pokynů v následujícím článku. 
 

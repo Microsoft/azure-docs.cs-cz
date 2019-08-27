@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: b388c600e5eb9331fe22d1a8e9aac8f47edb3ef2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 4c8e17cec4ff3595945225dbceb909f8f054a08b
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849604"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018865"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Zpracování oznámení o plánované údržbě pro virtuální počítače s Windows
 
@@ -27,13 +27,13 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 - Pokud údržba nevyžaduje restart, Azure pomocí místní migrace pozastaví virtuální počítač v době, kdy se hostitel aktualizuje. Tyto operace údržby, které nejsou restartováním, používají doménu selhání podle domény selhání a průběh se zastaví, pokud dojde k přijetí jakýchkoli signálů stavu upozornění. 
 
-- Pokud údržba vyžaduje restart, dostanete oznámení o tom, kdy se údržba plánuje. V těchto případech máte časový interval, který je obvykle 30 dní, kdy můžete zahájit údržbu sami, když to bude fungovat.
+- Pokud údržba vyžaduje restart, dostanete oznámení o tom, kdy se údržba plánuje. V těchto případech máte časový interval, který je obvykle 35 dní, kdy je možné zahájit údržbu sami, když to bude fungovat.
 
 
 Plánovaná údržba, která vyžaduje restart, je naplánována na vlny. Každý vlna má jiný obor (oblasti).
 
 - Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení pošle vlastníkovi předplatného a spoluvlastníkům. K oznámením pomocí [výstrah protokolu aktivit](../../azure-monitor/platform/activity-logs-overview.md)Azure můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
-- V okamžiku oznámení se zpřístupní *samoobslužné okno* . Během tohoto okna, které je obvykle 30 dní, můžete zjistit, které z vašich virtuálních počítačů jsou součástí tohoto Wave a proaktivně zahájit údržbu podle vašich potřeb plánování.
+- V okamžiku oznámení se zpřístupní *samoobslužné okno* . Během tohoto okna, které je obvykle 35 dní, můžete zjistit, které z vašich virtuálních počítačů jsou součástí tohoto Wave a proaktivně zahájit údržbu podle vašich potřeb plánování.
 - Po samoobslužném okně začne *plánované časové období údržby* . V určitém okamžiku v tomto okně Azure plánuje a na virtuálním počítači aplikuje požadovanou údržbu. 
 
 Cílem v aplikaci je mít dvě okna, abyste měli dostatek času na spuštění údržby a restartování virtuálního počítače s vědomím, kdy bude Azure automaticky spouštět údržbu.
@@ -62,7 +62,7 @@ Nepoužívejte samoobslužnou údržbu v následujících scénářích:
 - Pro případy, kdy se virtuální počítač často mění, protože by mohl vrátit stav údržby.
 - Pokud jste přijali naplánované události, které umožní proaktivní převzetí služeb při selhání nebo řádné vypnutí úlohy, 15 minut před vypnutím údržby
 
-**Samoobslužná** údržba – Pokud plánujete, že váš virtuální počítač bude během plánované fáze údržby nepřerušený, a žádná z výše uvedených údajů není platná. 
+Samoobslužná údržba – Pokud plánujete, že váš virtuální počítač bude během plánované fáze údržby nepřerušený, a žádná z výše uvedených údajů není platná. 
 
 Služba samoobslužná údržba se doporučuje používat v následujících případech:
 
@@ -212,6 +212,6 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 4.  Pro virtuální počítač je zapnuté **Automatické vypnutí**
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si, jak můžete registrovat události údržby z virtuálního počítače pomocí [Scheduled Events](scheduled-events.md).

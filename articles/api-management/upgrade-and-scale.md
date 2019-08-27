@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774947"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018240"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Upgrade a škálování instance služby Azure API Management  
 
@@ -53,8 +53,11 @@ Můžete si vybrat ze čtyř vrstev: **Developer**, **Basic**, **Standard** a **
 
 Můžete upgradovat a downgradovat z libovolné úrovně a z ní. Upozorňujeme, že upgrade nebo downgrading může odebrat některé funkce (například virtuální sítě nebo nasazení ve více oblastech), když se downgrade na úroveň Standard nebo Basic z úrovně Premium.
 
->[!NOTE]
->Upgrade nebo určený počet číslic proces může trvat 15 až 45 minut použít. Po dokončení se zobrazí oznámení.
+> [!NOTE]
+> Upgrade nebo určený počet číslic proces může trvat 15 až 45 minut použít. Po dokončení se zobrazí oznámení.
+
+> [!NOTE]
+> Služba API Management se v úrovni **spotřeby** automaticky škáluje podle provozu.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Použití Azure Portal k upgradu a škálování
 

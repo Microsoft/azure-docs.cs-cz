@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: aecad80bb1b1e95b07b9df4105547406ff76b84c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991539"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018788"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -76,7 +76,9 @@ Jak je uvedeno v úvodu, procesor Change feed může distribuovat výpočty nap�
 
 Pokud platí tyto tři podmínky, bude procesor změn pomocí stejného distribučního algoritmu distribuovat všechna zapůjčení do kontejneru zapůjčení ve všech spuštěných instancích a paralelizovat Compute. Jednu zapůjčenou adresu může vlastnit jenom jedna instance v daném okamžiku, takže maximální počet instancí se rovná počtu zapůjčení.
 
-Instance se můžou zvětšovat a zmenšovat a procesor změn kanálu bude dynamicky upravovat zatížení tím, že je odpovídajícím způsobem znovu distribuován.
+Počet instancí se může zvětšovat a zmenšovat a procesor změn bude dynamicky upravovat zatížení tím, že je odpovídajícím způsobem distribuován.
+
+Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škálované z důvodu zvýšení propustnosti nebo úložiště. Když se Váš kontejner rozroste, procesor Change feed transparentně tyto scénáře zpracovává tím, že dynamicky zvyšuje zapůjčení a distribuuje nové zapůjčení mezi stávajícími instancemi.
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Změnit kanál a zřízenou propustnost
 

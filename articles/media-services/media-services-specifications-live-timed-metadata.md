@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991783"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019087"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace při živém streamování vyprší metadata 
 
@@ -98,7 +98,7 @@ Následující dokumenty obsahují pravidla, která prostřednictvím odkazu v t
 
 Azure Media Services podporuje místní metadata v reálném čase pro protokoly [RTMP] i Smooth Streaming [MS-SSTR-ingestovat]. Metadata v reálném čase lze použít k definování vlastních událostí s vlastními jedinečnými vlastními schématy (JSON, binary, XML), jakož i s definovanými formáty, jako je ID3, nebo SCTE-35 pro signalizaci reklamy ve vysílání datového proudu. 
 
-Tento článek poskytuje podrobné informace o tom, jak odesílat vlastní časované signály metadat pomocí podporovaných protokolů ingestování Media Services. Článek také vysvětluje, jakým způsobem jsou manifesty pro HLS, POMLČKu a Smooth Streaming upraveny pomocí signálů s časovým limitem a způsobu jejich přemístění, když je obsah dodán pomocí CMAF (fragmenty MP4) nebo segmentů přenosu dat (TS) pro HLS. 
+Tento článek poskytuje podrobné informace o tom, jak odesílat vlastní časované signály metadat pomocí podporovaných protokolů ingestování Azure Media Services. Článek také vysvětluje, jakým způsobem jsou manifesty pro HLS, POMLČKu a Smooth Streaming upraveny pomocí signálů s časovým limitem a způsobu jejich přemístění, když je obsah dodán pomocí CMAF (fragmenty MP4) nebo segmentů přenosu dat (TS) pro HLS. 
 
 Běžné scénáře použití pro časované metadata zahrnují:
 
@@ -122,7 +122,7 @@ Azure Media Services živé události a balírna je schopná přijímat tyto ča
 
 Protokol [RTMP] umožňuje odeslat časované signály metadat pro různé scénáře, jako jsou vlastní metadata a signály AD SCTE-35. 
 
-Reklamní signály (startovací zprávy) se odesílají jako startovací zprávy [AMF0] vložené do datového proudu [RTMP]. Zprávy s oznámením mohou být odeslány na nějakou dobu před samotným signálem pro spojení AD události nebo [SCTE35] AD. Pro podporu tohoto scénáře je skutečný čas události odeslán v rámci zprávy upozornění. Další informace najdete v tématu [AMF0].
+Reklamní signály (startovací zprávy) se odesílají jako startovací zprávy [AMF0] vložené do datového proudu [RTMP]. Zprávy s oznámením mohou být odeslány na nějakou dobu před samotným signálem pro spojení AD události nebo [SCTE35] AD. Pro podporu tohoto scénáře se v rámci zprávy hromádky pošle skutečné časové razítko události. Další informace najdete v tématu [AMF0].
 
 Azure Media Services podporuje následující příkazy [AMF0] pro ingestování RTMP:
 
@@ -139,8 +139,8 @@ Název zprávy [AMF0] lze použít k odlišení více proudů událostí stejné
 
 Pokud chcete poskytnout vlastní kanály metadat z nadřazeného kodéru, kamery IP, pomocí dronů nebo zařízení pomocí protokolu RTMP, použijte typ příkazu "onUserDataEvent" [AMF0] data Message.
 
-Příkaz **"onUserDataEvent"** data Message musí obsahovat datovou část zprávy s následující definicí, kterou má zachytit Media Services a zabalené do formátu HLS, pomlčky a vyhlazení.
-Doporučuje se odesílat zprávy s vypršenou platností – zprávy s metadaty nejsou častěji než každých 0,5 sekund (500 ms). Každá zpráva by mohla agregovat metadata z více snímků, pokud potřebujete zadat metadata na úrovni rámce. Pokud posíláte datové proudy s více přenosovými rychlostmi, doporučujeme, abyste zároveň poskytovali metadata jenom pro jednu přenosovou rychlost, abyste snížili šířku pásma a nedocházelo k rušivému zpracování videa nebo zvuku. 
+Příkaz **"onUserDataEvent"** data Message musí obsahovat datovou část zprávy s následující definicí, kterou má zachytit Media Services a zabalené do formátu HLS, pomlčka a Smooth Streaming.
+Doporučuje se odesílat zprávy s vypršenou platností – zprávy s metadaty nejsou častěji než jednou za 0,5 sekund (500 ms) nebo mohou nastat problémy se stabilitou živého datového proudu. Každá zpráva by mohla agregovat metadata z více snímků, pokud potřebujete zadat metadata na úrovni rámce. Pokud posíláte datové proudy s více přenosovými rychlostmi, doporučujeme, abyste zároveň poskytovali metadata jenom pro jednu přenosovou rychlost, abyste snížili šířku pásma a nedocházelo k rušivému zpracování videa nebo zvuku. 
 
 Datová část pro **"onUserDataEvent"** by měla být zpráva formátu [MPEGDASH] EventStream XML. Díky tomu je snadné předat vlastní definovaná schémata, která se dají přenášet v EMSG datových vytíženích pro CMAF [MPEGCMAF] obsah, který se doručuje přes protokoly HLS nebo POMLČKy. Každá zpráva streamování událostí obsahuje schemeIdUri, který funguje jako identifikátor schématu zprávy URN a definuje datovou část zprávy. Některá schémata, jako je https://aomedia.org/emsg/ID3 například "" pro [ID3v2] nebo **urn: scte: scte35:2013: bin** pro [scte-35], jsou standardizovány v oboru pro interoperabilitu. Libovolný poskytovatel aplikace může definovat vlastní schéma pomocí adresy URL, kterou řídí (vlastní doména), a v případě potřeby může zadat specifikaci na této adrese URL. Pokud hráč má obslužnou rutinu pro definované schéma, pak to je jediná součást, která potřebuje pochopit datovou část a protokol.
 
@@ -226,7 +226,7 @@ Jednotlivé události nebo jejich datová data se neúčtují přímo v manifest
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>Další informativní omezení a výchozí hodnoty pro události onUserDataEvent
 
-- Pokud v elementu EventStream není nastavená časová osa, ve výchozím nastavení se použije časová osa RTMP 1Khz.
+- Pokud v elementu EventStream není nastavená časová osa, ve výchozím nastavení se použije časová osa RTMP 1 kHz.
 - Doručení zprávy onUserDataEvent je omezeno na každý 500 ms max. Pokud události odesíláte častěji, může to mít vliv na šířku pásma a stabilitu živého kanálu.
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 upozornění na hromádku služby RTMP pro AD pomocí "onCuePoint"
@@ -599,7 +599,7 @@ Při testování vaší implementace s Azure Media Services platformou Nejdřív
 | 07/2/19  | Revidovaná podpora pro ingestování RTMP pro SCTE35, přidání RTMP "onCuePoint" pro živé prvky | 
 | 08/22/19 | Aktualizováno, aby se přidala OnUserDataEvent do RTMP pro vlastní metadata                         |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zobrazení Media Servicesch cest výuky.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

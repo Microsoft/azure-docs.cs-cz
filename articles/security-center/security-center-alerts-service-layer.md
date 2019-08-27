@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/18/2019
+ms.date: 8/25/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 5458d26172123f0f6cb9914a04ec05b3163a084f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013277"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018168"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Detekce hrozeb pro vrstvu služby Azure v Azure Security Center
 
@@ -52,7 +52,7 @@ Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFI
 Informace o tom, jak Security Center můžou použít signály související se sítí pro použití ochrany před hrozbami, najdete [v tématu heuristické detekce služby DNS v Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 >[!NOTE]
->Výstrahy detekce hrozby síťové vrstvy Azure se v Azure Security Center negenerují během první hodiny po vytvoření virtuálního počítače.
+>Výstrahy detekce hrozby síťové vrstvy Azure v Azure Security Center se generují jenom pro virtuální počítače, kterým se přiřadila stejná IP adresa pro celou hodinu, během které se nastavila podezřelá komunikace. To platí pro virtuální počítače i pro virtuální počítače, které jsou vytvořené v rámci předplatného zákazníka, jako součást spravované služby (např. AKS, datacihly).
 
 ## Vrstva správy Azure (Azure Resource Manager) (Preview)<a name ="management-layer"></a>
 

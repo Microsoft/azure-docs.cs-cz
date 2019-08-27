@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036254"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019112"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -71,6 +71,12 @@ Následující poznámky k verzi jsou pro 7.0.0.0 agenta Azure File Sync (vydan�
 
 - Podpora větších velikostí sdílení souborů
     - S verzí Preview větších sdílených složek Azure zvyšujeme také naše limity podpory pro synchronizaci souborů. V tomto prvním kroku teď Azure File Sync podporuje až 25TB a 50million soubory v jednom, synchronizovaném oboru názvů. Chcete-li použít pro velkou verzi Preview sdílení souborů, vyplňte tento https://aka.ms/azurefilesatscalesurvey formulář. 
+- Podpora nastavení brány firewall a virtuální sítě pro účty úložiště
+    - Azure File Sync teď podporuje nastavení brány firewall a virtuální sítě v účtech úložiště. Pokud chcete nakonfigurovat nasazení tak, aby fungovalo s nastavením brány firewall a virtuální sítě, přečtěte si téma [Konfigurace nastavení brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+- Rutina PowerShellu pro okamžitou synchronizaci souborů změněných ve sdílené složce Azure
+    - K okamžité synchronizaci souborů, které se změnily ve sdílené složce Azure, se dá použít rutina PowerShellu Invoke-AzStorageSyncChangeDetection k ručnímu spuštění rozpoznávání změn ve sdílené složce Azure. Tato rutina je určená pro scénáře, kdy nějaký typ automatizovaného procesu provádí změny ve sdílené složce Azure nebo že tyto změny provádí správce (například přesunutí souborů a adresářů do sdílené složky). V případě změn koncového uživatele doporučujeme nainstalovat agenta Azure File Sync do virtuálního počítače IaaS a nechat koncové uživatele přistupovat ke sdílené složce prostřednictvím virtuálního počítače IaaS. Tímto způsobem budou všechny změny rychle synchronizovány s ostatními agenty bez nutnosti používat rutinu Invoke-AzStorageSyncChangeDetection. Další informace najdete v dokumentaci k [vyvolání metody Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) .
+- Vylepšené prostředí portálu, pokud se setkáte se soubory, které se nesynchronizují
+    - Pokud máte soubory, které se nedaří synchronizovat, teď na portálu rozlišujeme přechodné a trvalé chyby. Přechodné chyby se obvykle vyřeší bez nutnosti zásahu správce. Například soubor, který se právě používá, nebude synchronizován, dokud nebude popisovač souboru zavřen. V případě trvalých chyb nyní zobrazujeme počet souborů ovlivněných každou chybou. Počet trvalých chyb se zobrazí také ve sloupci nesynchronizované soubory všech koncových bodů serveru ve skupině synchronizace.
 - Vylepšené obnovení Azure Backup na úrovni souborů
     - Jednotlivé soubory obnovené pomocí Azure Backup jsou nyní zjištěny a synchronizovány na koncový bod serveru rychleji.
 - Vylepšená spolehlivost rutiny pro vracení cloudových vrstev 

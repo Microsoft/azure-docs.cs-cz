@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569044"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018964"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
-Klasifikace & Discovery dat (aktuálně ve verzi Preview) poskytuje pokročilé funkce, které jsou integrované do **Azure SQL Database pro zjišťování** & , **klasifikaci**a **označování** **ochrany** citlivých dat v databáze.
+Klasifikace & Discovery dat poskytuje pokročilé funkce integrované do Azure SQL Database prozjišťování, **klasifikaci** & a označování**ochrany** citlivých dat ve vašich databázích.
 Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, identifikovatelné osobní údaje) a podobně.) mohou hrát pivotovou roli ve vaší organizaci stature Information Protection. Může sloužit jako infrastruktura pro:
 
 - Pomoc se splněním standardů ochrany osobních údajů a požadavků na dodržování legislativních předpisů.
@@ -76,7 +76,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 
-2. V záhlaví zabezpečení v podokně Azure SQL Database přejděte na **Rozšířené zabezpečení dat** . Kliknutím povolíte rozšířené zabezpečení dat a potom kliknete na kartu **zjišťování & klasifikace dat (Preview)** .
+2. V záhlaví zabezpečení v podokně Azure SQL Database přejděte na **Rozšířené zabezpečení dat** . Kliknutím povolíte rozšířené zabezpečení dat a potom kliknete na kartu **klasifikace & zjišťování dat** .
 
    ![Kontrola databáze](./media/sql-data-discovery-and-classification/data_classification.png)
 
