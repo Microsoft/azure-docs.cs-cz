@@ -1,6 +1,6 @@
 ---
-title: Odpojení datového disku z virtuálního počítače s Windows – Azure | Dokumentace Microsoftu
-description: Odpojení datového disku z virtuálního počítače v Azure s využitím modelu nasazení Resource Manager.
+title: Odpojení datového disku od virtuálního počítače s Windows – Azure | Microsoft Docs
+description: Odpojte datový disk z virtuálního počítače v Azure pomocí modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,34 +11,33 @@ ms.assetid: 13180343-ac49-4a3a-85d8-0ead95e2028c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ca9a4478249e935afb6a52520c77d9df159fe9e7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: efbb6ccef9096ed89f6ccd16f8d3b37c9a97b278
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718738"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103211"
 ---
-# <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Windows
+# <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Odpojení datového disku od virtuálního počítače s Windows
 
-Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Odebrání disku z virtuálního počítače, ale neodebere se z úložiště.
+Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete ho jednoduše odpojit. Tím se disk z virtuálního počítače odebere, ale neodebere se z úložiště.
 
 > [!WARNING]
-> Pokud odpojíte disk není automaticky odstraněn. Pokud odběru jste přihlášeni do Premium storage, budou dál účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití služby Premium Storage](disks-types.md#billing).
+> Pokud disk odpojíte, nedojde k jeho automatickému odstranění. Pokud jste se přihlásili k odběru služby Premium Storage, bude se vám nadále účtovat poplatky za úložiště pro disk. Další informace najdete v tématu [ceny a fakturace při použití Premium Storage](disks-types.md#billing).
 
 Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="detach-a-data-disk-using-powershell"></a>Odpojení datového disku pomocí Powershellu
+## <a name="detach-a-data-disk-using-powershell"></a>Odpojení datového disku pomocí PowerShellu
 
-Je možné *horké* odebrání datového disku pomocí prostředí PowerShell, ale ujistěte se, že nic aktivně používá disk před odpojením z virtuálního počítače.
+Pomocí PowerShellu můžete odstranit datový disk *za chodu* , ale zajistěte, aby tento disk aktivně nepoužívali předtím, než ho odpojíte od virtuálního počítače.
 
-V tomto příkladu jsme odebrat disk s názvem **myDisk** z virtuálního počítače **myVM** v **myResourceGroup** skupinu prostředků. Nejprve odebrat disk pomocí [odebrat AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) rutiny. Pak aktualizujte stav virtuálního počítače pomocí [rutiny Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) rutiny dokončete proces odebrání datového disku.
+V tomto příkladu odebereme z virtuálního počítače **myVM** ve skupině prostředků **myResourceGroup** disk s názvem **myDisk** . Nejdřív disk odeberete pomocí rutiny [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) . Pak aktualizujete stav virtuálního počítače pomocí rutiny [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) , abyste mohli dokončit proces odebrání datového disku.
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -46,20 +45,20 @@ Remove-AzVMDataDisk -VM $VirtualMachine -Name "myDisk"
 Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 ```
 
-Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Odpojení datového disku pomocí portálu
 
-1. V nabídce vlevo vyberte **virtuálních počítačů**.
-2. Vyberte virtuální počítač, který má datový disk, který chcete odpojit a klikněte na tlačítko **Zastavit** pro zrušení přidělení virtuálního počítače.
+1. V nabídce vlevo vyberte **Virtual Machines**.
+2. Vyberte virtuální počítač s datovým diskem, který chcete odpojit, a kliknutím na **zastavit** zrušte přidělení virtuálního počítače.
 3. V podokně virtuální počítač vyberte **disky**.
-4. V horní části **disky** vyberte **upravit**.
-5. V **disky** podokno na pravé straně datový disk, který chcete odpojit, klikněte na tlačítko ![obrázek tlačítka odpojení](./media/detach-disk/detach.png) odpojit tlačítko.
-5. Po odebrání disku klikněte na tlačítko **Uložit** horní části podokna.
-6. V podokně virtuální počítač, klikněte na tlačítko **přehled** a potom klikněte na tlačítko **Start** tlačítko v horní části podokna restartování virtuálního počítače.
+4. V horní části podokna **disky** vyberte **Upravit**.
+5. V podokně **disky** klikněte na úplně vpravo od datového disku, který chcete odpojit, a klikněte ![na tlačítko Odpojit obrázek](./media/detach-disk/detach.png) tlačítka odpojit.
+5. Po odebrání disku klikněte na **Uložit** v horní části podokna.
+6. V podokně virtuální počítač klikněte na **Přehled** a potom kliknutím na tlačítko **Start** v horní části podokna restartujte virtuální počítač.
 
-Disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
+Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete znovu použít datový disk, jste právě [připojit k jinému virtuálnímu počítači](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Pokud chcete znovu použít datový disk, můžete [ho jednoduše připojit k jinému virtuálnímu počítači](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .

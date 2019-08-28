@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312211"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102894"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -28,7 +28,7 @@ Vizualizace závislostí v nástroji vyhodnocování serveru umožňuje vytvoři
 
 - Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru.
-- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: Posouzení serveru. [Další informace](migrate-appliance.md).
+- Ujistěte se, že jste počítače zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md) nebo [Hyper-V](how-to-set-up-appliance-hyper-v.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: Hodnocení serverů. [Další informace](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
@@ -55,11 +55,11 @@ Azure Migrate používá řešení [Service map](../operations-management-suite/
 
     ![Přejít Log Analytics pracovní prostor](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Chcete-li použít vizualizaci závislostí, je třeba stáhnout a nainstalovat agenty na každý místní počítač, který chcete analyzovat.  
+Pokud chcete používat vizualizaci závislostí, potřebujete si stáhnout a nainstalovat agenty na každý místní počítač, který chcete analyzovat.  
 
 - Na každém počítači je potřeba nainstalovat [agenta Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) o tom, jak nainstalovat agenta MMA.
-- Na každém počítači je potřeba nainstalovat [agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) o tom, jak nainstalovat agenta závislostí.
-- Kromě toho, pokud máte počítače bez připojení k Internetu, je potřeba stáhnout a nainstalovat Log Analytics bránu.
+- Na každém počítači je potřeba nainstalovat [agenta závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent) . [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) o tom, jak nainstalovat agenta závislostí.
+- Pokud navíc máte počítače bez připojení k internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.
 
 Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty na počítačích, které chcete vyhodnotit.
 

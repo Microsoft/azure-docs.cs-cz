@@ -11,17 +11,16 @@ ms.assetid: dcee199e-fa25-44d5-9b25-df564cee9b45
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4f49030d479e85b749db28c59fd2e2462ff405f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e08d0e2084f2310623391a3b20f0f09df4c419e8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013588"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103524"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Vertikální škálování virtuálního počítače Azure Linux pomocí Azure Automation
 Vertikální škálování je proces zvýšení nebo snížení počtu prostředků počítače v reakci na zatížení. V Azure to můžete dosáhnout změnou velikosti virtuálního počítače. To může pomáhat v následujících scénářích:

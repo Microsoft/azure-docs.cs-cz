@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 501aeb60eba1d94b4c5882a7c6cbfa8d0359e44d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033916"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114410"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Tento článek popisuje některá omezení a koncepty operačního systému pro 
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Omezení pro Windows Server v Kubernetes
 
-Kontejnery Windows serveru musí běžet na hostiteli kontejneru založeném na systému Windows. Pokud chcete spouštět kontejnery Windows serveru v AKS, můžete [vytvořit fond uzlů, na kterém běží Windows Server][windows-node-cli] , jako hostovaný operační systém. Podpora fondu uzlů serveru oken zahrnuje některá omezení, která jsou součástí nadřazeného Windows serveru v projektu Kubernetes. Tato omezení nejsou specifická pro AKS. Další informace o této nadřazené podpoře pro Windows Server v Kubernetes najdete v tématu [kontejnery Windows serveru v omezeních Kubernetes](https://docs.microsoft.com/azure/aks/windows-node-limitations).
+Kontejnery Windows serveru musí běžet na hostiteli kontejneru založeném na systému Windows. Pokud chcete spouštět kontejnery Windows serveru v AKS, můžete [vytvořit fond uzlů, na kterém běží Windows Server][windows-node-cli] , jako hostovaný operační systém. Podpora fondu uzlů serveru oken zahrnuje některá omezení, která jsou součástí nadřazeného Windows serveru v projektu Kubernetes. Tato omezení nejsou specifická pro AKS. Další informace o této nadřazené podpoře pro Windows Server v Kubernetes najdete v tématu [kontejnery Windows serveru v omezeních Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations).
 
 Pro AKS se vztahují následující omezení nadřazeného datového proudu pro kontejnery Windows serveru v Kubernetes:
 
@@ -71,7 +71,7 @@ Kubernetes je historicky zaměřený na Linux. Mnohé příklady, které se pou�
 - **Cesty k souborům** – konvence ve Windows serveru slouží jako místo/.
     - V části pod specifikacemi, které připojovat svazky, zadejte cestu pro kontejnery Windows serveru správně. Například místo přípojného bodu */mnt/Volume* v kontejneru Linux zadejte písmeno jednotky a umístění, jako je například */K/Volume* , které chcete připojit jako jednotku *k:* .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, na kterém běží Windows Server v AKS][windows-node-cli].
 

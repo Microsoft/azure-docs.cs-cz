@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Linuxem – předchozí generace | Dokumentace Microsoftu
-description: Zobrazí seznam předchozí generace dostupných velikostí pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure Linux – předchozí generace | Microsoft Docs
+description: Uvádí předchozí generace velikostí dostupné pro virtuální počítače Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,30 +9,29 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: e20d351fa33ae432e184addcd1729b2663dbb490
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e56fb938ca8d45a148700a0a6b91e22a4f9034c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708795"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100851"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Velikosti virtuálních počítačů předchozí generace
+# <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Starší generace škálu velikostí virtuálních počítačů
+## <a name="older-generations-of-virtual-machine-sizes"></a>Starší generace velikostí virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>Další velikosti
+## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
 - [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
@@ -43,4 +42,4 @@ ms.locfileid: "67708795"
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -10,16 +10,15 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527452"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073561"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Přidání ukládání do mezipaměti ke zlepšení výkonu služby Azure API Management
 
@@ -38,11 +37,11 @@ Naučíte se:
 ## <a name="availability"></a>Dostupnost
 
 > [!NOTE]
-> Interní mezipaměť není k dispozici v **spotřeby** úroveň služby Azure API Management. Je možné [účely externí mezipamětí Azure Redis](api-management-howto-cache-external.md) místo.
+> Interní mezipaměť není k dispozici v úrovni **spotřeby** služby Azure API Management. Místo toho můžete [použít externí mezipaměť Azure pro Redis](api-management-howto-cache-external.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 + [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 + [Import a publikování rozhraní API](import-and-publish.md)
@@ -57,7 +56,7 @@ S použitím zásad ukládání do mezipaměti zobrazených v tomto příkladu v
 4. V seznamu rozhraní API klikněte na **Demo Conference API**.
 5. Vyberte **GetSpeakers**.
 6. V horní části obrazovky vyberte kartu **Návrh**.
-7. V **zpracování příchozích** klikněte na tlačítko **</>** ikonu.
+7. V části **příchozí zpracování** klikněte na **</>** ikonu.
 
     ![editor kódu](media/api-management-howto-cache/code-editor.png)
 
@@ -76,7 +75,7 @@ S použitím zásad ukládání do mezipaměti zobrazených v tomto příkladu v
     **Doba trvání** určuje dobu vypršení uložení odpovědí v mezipaměti. V tomto příkladu je délka intervalu **20** sekund.
 
 > [!TIP]
-> Pokud používáte externí mezipamětí, jak je popsáno v [účely externí mezipamětí Azure Redis ve službě Azure API Management](api-management-howto-cache-external.md), možná budete chtít zadat `caching-type` atribut zásad ukládání do mezipaměti. Zobrazit [zásady ukládání do mezipaměti API Management](api-management-caching-policies.md) další podrobnosti.
+> Pokud používáte externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md), možná budete chtít zadat `caching-type` atribut zásad ukládání do mezipaměti. Další podrobnosti najdete v tématu [zásady ukládání do mezipaměti API Management](api-management-caching-policies.md) .
 
 ## <a name="test-operation"></a>Volání operace a testování ukládání do mezipaměti
 Abyste viděli ukládání do mezipaměti v akci, vyvolejte operaci z portálu pro vývojáře.
@@ -89,9 +88,9 @@ Abyste viděli ukládání do mezipaměti v akci, vyvolejte operaci z portálu p
 6. Stiskněte **Odeslat**.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o zásadách ukládání do mezipaměti najdete v části [Zásady ukládání do mezipaměti][Caching policies] v článku [Zásady API managementu][API Management policy reference].
+* Další informace o zásadách ukládání do mezipaměti najdete v části [Zásady ukládání do mezipaměti][Caching policies] v článku [Zásady API Managementu][API Management policy reference].
 * Informace o ukládání položek do mezipaměti podle klíče pomocí výrazů zásad najdete v článku [Vlastní ukládání do mezipaměti ve službě Azure API Management](api-management-sample-cache-by-key.md).
-* Další informace o použití externí mezipamětí Azure Redis najdete v tématu [účely externí mezipamětí Azure Redis ve službě Azure API Management](api-management-howto-cache-external.md).
+* Další informace o použití externí mezipaměti Azure pro Redis najdete v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

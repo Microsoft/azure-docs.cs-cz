@@ -1,6 +1,6 @@
 ---
-title: Nastavit Key Vault pro Windows virtuálních počítačů v Azure Resource Manageru | Dokumentace Microsoftu
-description: Jak nastavit službu Key Vault pro použití s virtuálním počítači s Azure Resource Manageru.
+title: Nastavení Key Vault pro virtuální počítače s Windows v Azure Resource Manager | Microsoft Docs
+description: Jak nastavit Key Vault pro použití s virtuálním počítačem s Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -11,53 +11,52 @@ ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 671d825300581796320542e09b8c9c4562097eb0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e92ccacbcdc49ae5ea9496c9c8ac7fa90a05e20c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079234"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení služby Key Vault pro virtuální počítače v Azure Resource Manageru
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Nastavení Key Vault pro virtuální počítače v Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-V zásobníku Azure Resource Manageru jsou tajné kódy a certifikáty nemodelují jako prostředky, které jsou k dispozici přes poskytovatele prostředků služby Key Vault. Další informace o službě Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md)
+V Azure Resource Managerovém zásobníku se tajné klíče a certifikáty modelují jako prostředky poskytované poskytovatelem prostředků Key Vault. Další informace o Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md)
 
 > [!NOTE]
-> 1. V pořadí pro službu Key Vault pro použití s virtuálními počítači Azure Resource Manageru **EnabledForDeployment** vlastnost o službě Key Vault musí být nastavena na hodnotu true. Můžete to provést v různých klientech.
-> 2. Key Vault je potřeba vytvořit ve stejném předplatném a umístění jako virtuální počítač.
+> 1. Aby bylo možné Key Vault použít s Azure Resource Manager virtuálními počítači, musí být vlastnost **EnabledForDeployment** v Key Vault nastavena na hodnotu true. To můžete provést v různých klientech.
+> 2. Key Vault se musí vytvořit ve stejném předplatném a umístění jako virtuální počítač.
 >
 >
 
-## <a name="use-powershell-to-set-up-key-vault"></a>Nastavení služby Key Vault pomocí Powershellu
-Vytvoření služby key vault pomocí Powershellu najdete v tématu [sadu a získání tajného klíče ze služby Azure Key Vault pomocí Powershellu](../../key-vault/quick-create-powershell.md).
+## <a name="use-powershell-to-set-up-key-vault"></a>Použití PowerShellu k nastavení Key Vault
+Pokud chcete vytvořit Trezor klíčů pomocí PowerShellu, přečtěte si téma [nastavení a načtení tajného klíče z Azure Key Vault pomocí PowerShellu](../../key-vault/quick-create-powershell.md).
 
-Pro nové trezory klíčů můžete použít tuto rutinu Powershellu:
+Pro nové trezory klíčů můžete použít tuto rutinu PowerShellu:
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-Pro stávající trezory klíčů můžete použít tuto rutinu Powershellu:
+Pro existující trezory klíčů můžete použít tuto rutinu PowerShellu:
 
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="use-cli-to-set-up-key-vault"></a>Nastavení služby Key Vault pomocí rozhraní příkazového řádku
-Vytvoření služby key vault pomocí rozhraní příkazového řádku (CLI), najdete v tématu [Správa služby Key Vault pomocí rozhraní příkazového řádku](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="use-cli-to-set-up-key-vault"></a>K nastavení Key Vault použijte CLI.
+Informace o vytvoření trezoru klíčů pomocí rozhraní příkazového řádku (CLI) najdete v tématu [správa Key Vault pomocí](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault)rozhraní příkazového řádku (CLI).
 
-Pro rozhraní příkazového řádku budete muset vytvořit trezor klíčů, než přiřadíte zásady nasazení. Můžete to provést pomocí následujícího příkazu:
+Pro rozhraní příkazového řádku je nutné před přiřazením zásad nasazení vytvořit Trezor klíčů. Můžete to provést pomocí následujícího příkazu:
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-Potom povolte služby Key Vault pro použití s šablonu nasazení, spusťte následující příkaz:
+Pak pokud chcete povolit Key Vault pro použití s nasazením šablony, spusťte následující příkaz:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
-## <a name="use-templates-to-set-up-key-vault"></a>Použijte šablony k nastavení služby Key Vault
-Při použití šablony, je nutné nastavit `enabledForDeployment` vlastnost `true` prostředku služby Key Vault.
+## <a name="use-templates-to-set-up-key-vault"></a>Použití šablon k nastavení Key Vault
+Při použití šablony je nutné nastavit `enabledForDeployment` vlastnost na `true` hodnotu pro prostředek Key Vault.
 
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -71,4 +70,4 @@ Při použití šablony, je nutné nastavit `enabledForDeployment` vlastnost `tr
       }
     }
 
-Další možnosti, které můžete konfigurovat při vytvoření trezoru klíčů pomocí šablon najdete v tématu [vytvořit trezor klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+Další možnosti, které můžete nakonfigurovat při vytváření trezoru klíčů pomocí šablon, najdete v tématu [Vytvoření trezoru klíčů](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

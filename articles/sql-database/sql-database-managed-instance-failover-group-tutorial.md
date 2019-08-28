@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035789"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103088"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -40,13 +40,15 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 - Předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) , pokud ho ještě nemáte. 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1\. Vytvoření skupiny prostředků a primární spravované instance
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1\. Vytvoření skupiny prostředků a primární spravované instance
 V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci pro skupinu převzetí služeb při selhání pomocí Azure Portal. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-1. Vyberte možnost **vytvořit prostředek** v levém horním rohu Azure Portal. 
-1. Do `managed instance` vyhledávacího pole zadejte a vyberte možnost pro spravovanou instanci Azure SQL. 
-1. Výběrem **vytvořit** spusťte stránku pro vytvoření **spravované instance SQL** . 
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici databáze vyberete Zobrazit podrobnosti.
+1. Na dlaždici **spravované instance SQL** vyberte **vytvořit** . 
+
+    ![Vybrat spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Na stránce **Vytvoření spravované Instance Azure SQL Database** na kartě **základy**
     1. V části **Podrobnosti o projektu**vyberte v rozevíracím seznamu své **předplatné** a pak zvolte **vytvořit novou** skupinu prostředků. Zadejte název vaší skupiny prostředků, `myResourceGroup`jako je například. 
     1. V části **Podrobnosti spravované instance**zadejte název spravované instance a oblast, do které chcete nasadit spravovanou instanci. Ve službě **COMPUTE + Storage** ponechte výchozí hodnoty. 
@@ -98,8 +100,12 @@ Vaše druhá spravovaná instance musí:
 
 K vytvoření sekundární spravované instance použijte následující postup: 
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek** a vyhledejte *spravovanou instanci Azure SQL*. 
-1. Vyberte možnost **Azure SQL Managed instance** publikovanou Microsoftem a pak na další stránce vyberte **vytvořit** .
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici databáze vyberete Zobrazit podrobnosti.
+1. Na dlaždici **spravované instance SQL** vyberte **vytvořit** . 
+
+    ![Vybrat spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Na kartě **základy** na stránce **vytvořit Azure SQL Database spravované instance** vyplňte požadovaná pole pro konfiguraci sekundární spravované instance. 
 
    Následující tabulka uvádí hodnoty nutné pro sekundární spravovanou instanci:
@@ -209,9 +215,8 @@ K nakonfigurování připojení použijte následující postup:
 ## <a name="7---create-a-failover-group"></a>7\. Vytvoření skupiny převzetí služeb při selhání
 V tomto kroku vytvoříte skupinu převzetí služeb při selhání a přidáte do ní obě spravované instance. 
 
-1. V [Azure Portal](https://portal.azure.com)přejdete do části **všechny služby** `managed instance` a do vyhledávacího pole zadejte. 
-1. Volitelné Vyberte hvězdičku vedle **spravovaných instancí SQL** a přidejte spravované instance jako zástupce pro levý navigační panel. 
-1. Vyberte **spravované instance SQL** a vyberte svou primární spravovanou instanci, třeba `sql-mi-primary`. 
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Vyberte primární spravovanou instanci, kterou jste vytvořili v první části, například `sql-mi-primary`. 
 1. V části **Nastavení**přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** a otevřete stránku **skupiny převzetí služeb při selhání instance** . 
 
    ![Přidat skupinu převzetí služeb při selhání](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
@@ -247,7 +252,7 @@ Vyčistěte prostředky tak, že nejprve odstraníte spravovanou instanci, potom
 1. Odstraňte všechny zbývající prostředky. Do `yes` textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny `myResourceGroup`prostředků a pak výběrem možnosti **Odstranit**. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali skupinu převzetí služeb při selhání mezi dvěma spravovanými instancemi. Naučili jste se tyto postupy:
 

@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1de2d40e107c03db8c0e406a7bb1a12c15d5c736
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1df278c67c8f84648d2fc7ab3818656cfb9de74a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100705"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
 
@@ -155,12 +154,12 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| Type                     | Běžné velikosti           |    Popis       |
+| type                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2          | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
 | [Optimalizované z hlediska paměti](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Vysoký poměr paměti k jádrům. Velmi vhodné pro relační databáze, střední a velké mezipaměti a analýzu v paměti.                 |
-| [Optimalizované z hlediska úložiště](sizes-storage.md)      | Lsv2, Ls              | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
+| [Optimalizované z hlediska úložiště](sizes-storage.md)      | Lsv2, LS              | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa.       |
 | [Vysoký výkon](sizes-hpc.md) | H        | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
@@ -262,7 +261,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení. Tento 
 | Přidělení zrušeno | Označuje, že virtuální počítač je odebraný z hypervisoru, ale stále je dostupný v rovině řízení. Za virtuální počítače ve stavu zrušeného přidělení se poplatky za výpočetní výkon neúčtují. |
 | - | Označuje, že stav napájení virtuálního počítače není známý. |
 
-### <a name="find-the-power-state"></a>Zjištění stavu napájení
+### <a name="find-the-power-state"></a>Vyhledání stavu napájení
 
 Pokud chcete zjistit stav konkrétního virtuálního počítače, použijte příkaz [az vm get-instance-view](/cli/azure/vm). Nezapomeňte zadat platný název virtuálního počítače a skupiny prostředků. 
 
@@ -305,7 +304,7 @@ az vm stop --resource-group myResourceGroupVM --name myVM
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
-### <a name="delete-resource-group"></a>Odstranění skupiny prostředků
+### <a name="delete-resource-group"></a>Odstranit skupinu prostředků
 
 Odstraněním skupiny prostředků se také odstraní všechny prostředky v ní obsažené, například virtuální počítač, virtuální síť a disk. Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 

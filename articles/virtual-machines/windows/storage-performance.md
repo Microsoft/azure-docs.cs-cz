@@ -1,102 +1,101 @@
 ---
-title: Optimalizace výkonu na virtuální počítače Azure řady Lsv2 – Storage | Dokumentace Microsoftu
-description: Zjistěte, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2.
+title: Optimalizace výkonu u virtuálních počítačů Azure Lsv2-Series – Storage | Microsoft Docs
+description: Přečtěte si, jak optimalizovat výkon pro vaše řešení na virtuálních počítačích řady Lsv2-Series.
 services: virtual-machines-windows
 author: laurenhughes
 manager: gwallace
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 7e96fb6fc7b3e581d058ef0f96124959189d0f4e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709808"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101783"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2-Series
 
-Virtuální počítače řady Lsv2 podporují celou řadu úloh, které potřebují k zajištění široké škály aplikací a obory vysoké vstupně-výstupních operací a propustnosti na místní úložiště.  Lsv2-series je ideální pro velké objemy dat, SQL, NoSQL databáze, datových skladů a velké transakční databáze, včetně Cassandra, MongoDB, Cloudera a Redis.
+Virtuální počítače řady Lsv2-series podporují nejrůznější úlohy, které vyžadují vysokou vstupně-výstupní operace a propustnost v místním úložišti napříč širokou škálou aplikací a oborů.  Lsv2-Series je ideální pro velké objemy dat, SQL, NoSQL databáze, datové sklady a velké transakční databáze, včetně Cassandra, MongoDB, Cloudera a Redis.
 
-Návrh Lsv2-series virtuálních počítačů (VM) maximalizuje procesor AMD EPYC 7551™, který poskytovat nejlepší výkon mezi procesoru, paměti, zařízení NVMe a virtuální počítače. Kromě dosažení maximálního výkonu hardwaru, jsou virtuální počítače řady Lsv2 navrženy pro práci s potřebami operačních systémů Windows a Linux pro lepší výkon pomocí hardwaru a softwaru.
+Návrh Lsv2-Series Virtual Machines (virtuální počítače) maximalizuje procesor AMD EPYC™ 7551, který poskytuje nejlepší výkon mezi procesorem, pamětí, NVMe zařízeními a virtuálními počítači. Kromě maximalizace hardwarového výkonu jsou virtuální počítače Lsv2-Series navržené tak, aby lépe fungovaly s hardwarem a softwarem pro lepší výkon operačního systému Windows a Linux.
 
-Ladění softwarových a hardwarových výsledkem optimalizovanou verzi [systému Windows Server. 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), kterou jsme vydali v rané fázi prosince 2018 na webu Azure Marketplace, který podporuje maximální výkon u zařízení NVMe řady Lsv2 Virtuální počítače.
+Výsledkem optimalizace softwaru a hardwaru je optimalizovaná verze [Windows serveru 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)vydaná do začátku od 2018 do Azure Marketplace, která podporuje maximální výkon na zařízeních NVMe ve virtuálních počítačích Lsv2-Series.
 
-Tento článek poskytuje tipy a návrhy, aby úlohy a aplikace dosáhnout maximálního výkonu, které jsou navržené k virtuálním počítačům. Informace na této stránce se průběžně aktualizuje při přidání další Lsv2 optimalizované Image na webu Azure Marketplace.
+Tento článek poskytuje tipy a návrhy, které zajistí, aby vaše úlohy a aplikace dosáhly maximálního výkonu, který je pro virtuální počítače určený. Informace na této stránce budou průběžně aktualizovány, protože do Azure Marketplace jsou přidány další optimalizované obrázky Lsv2.
 
 ## <a name="amd-eypc-chipset-architecture"></a>Architektura čipové sady AMD EYPC™
 
-Virtuální počítače řady Lsv2 používají procesory AMD EYPC™ serveru podle mikroarchitekturu Zen. AMD mimo jiné vyvinuto nekonečno prostředků infrastruktury (Pokud) pro EYPC™ škálovatelné propojení pro svůj model NUMA, která se dá použít pro komunikaci na kostka na balíček a více balíčků. Ve srovnání s QPI (cesta rychlé vzájemné propojení) a UPI (propojení Ultra-Path) používá u moderních monolitické kostka procesorů Intel, AMD n NUMA (krátkodobé používání) – kostka architektura zpřístupněte i výkon výhody i výzvy. Skutečný dopad omezení šířky pásma a čekací doba paměti může lišit v závislosti na typu úlohy spuštěné.
+Virtuální počítače řady Lsv2-Series používají procesory AMD EYPC™ serveru založené na mikroarchitektuře Zen. Technologie AMD vyvinula nekonečno Fabric (pokud) pro EYPC™ jako škálovatelné propojení pro svůj model NUMA, které by bylo možné použít pro komunikaci na Die, na balíčku a komunikaci s více balíčky. V porovnání s QPI (rychlá cesta propojení) a UPI (Ultra-Path Interconnect), která se používá pro moderní monolitické procesory Intel, může architektura pro procesory AMD řady NUMA přinést jak výhody výkonu, tak i problémy. Skutečný dopad omezení šířky pásma paměti a latence se může lišit v závislosti na typu spuštěných úloh.
 
-## <a name="tips-for-maximizing-performance"></a>Tipy pro dosažení maximálního výkonu
+## <a name="tips-for-maximizing-performance"></a>Tipy pro maximalizaci výkonu
 
-* Hardware, který využívá virtuální počítače řady Lsv2 využívá zařízení NVMe s osmi s páry fronty vstupně-výstupních operací (QP). Každé zařízení vstupně-výstupní operace fronty NVMe je ve skutečnosti pár: fronty odesílání a dokončení fronty. Ovladač NVMe nastaven k optimalizaci využití těchto osm QPs vstupně-výstupních operací díky distribuci můžu / naplánovat vstupů a do kruhové dotazování. Pokud chcete získat maximální výkon, spusťte osm úloh na zařízení tak, aby odpovídaly.
+* Hardware, který využívá virtuální počítače řady Lsv2-Series, používá zařízení NVMe s dvojicemi páry vstupně-výstupních front (QP) s. Každá fronta NVMe zařízení v/v je ve skutečnosti páry: fronta pro odesílání a fronta pro doplňování. Ovladač NVMe je nastavený tak, aby optimalizoval využití těchto osmi vstupně-výstupních QPsů tím, že distribuuje vstupně-výstupní operace v plánu kruhového dotazování. Chcete-li získat maximální výkon, spusťte osm úloh na zařízení, které chcete porovnat.
 
-* Nekombinujte NVMe správce příkazů (například NVMe INTELIGENTNÍ informace o dotazu, atd.) pomocí příkazů NVMe vstupně-výstupních operací během aktivní úlohy. Zařízení Lsv2 NVMe využívají technologie Hyper-V NVMe přímé, přepnout režim"pomalé" pokaždé, když se všechny příkazy Správce NVMe čekají na vyřízení. Lsv2 uživatelům může zobrazit výrazné výkon pokles NVMe vstupně-výstupní výkon, pokud k tomu dojde.
+* Vyhněte se kombinování příkazů pro správu NVMe (například dotazování INTELIGENTNÍch informací NVMe atd.) s příkazy NVMe vstupu/výstupu během aktivních úloh. Zařízení NVMe Lsv2 jsou založená na technologii Hyper-V NVMe Direct, která přepne do pomalého režimu při každém čekání na příkazy správce NVMe. Lsv2 uživatelé můžou v případě, že se to stane, zvýšit výkon v/v výkonu NVMe.
 
-* Lsv2 uživatelé neměli byste tedy spoléhat na technologii NUMA informace o zařízení (všechny 0) ze zaznamenaný v rámci virtuálního počítače pro datové jednotky rozhodnout spřažení NUMA pro své aplikace. Doporučený způsob pro lepší výkon je rozdělíte úlohy mezi procesory, pokud je to možné. 
+* Lsv2 uživatelé by neměli spoléhat na informace NUMA zařízení (všechny 0) hlášené v rámci virtuálního počítače, aby se pro své aplikace rozhodly spřažení NUMA. Doporučený způsob, jak zajistit lepší výkon, je rozložit úlohy napříč procesory, pokud je to možné. 
 
-* Hloubka maximální podporované fronty na vstupně-výstupní operace fronty pár zařízení NVMe Lsv2 virtuálního počítače je 1024 (vs. Amazon i3 hloubka fronty 32 limit). Lsv2 uživatelé měli omezit jejich (syntetické) srovnávací testy úloh do hloubky fronty 1024 nebo nižší neměl spouštět podmínkách plného fronty, které může snížit výkon.
+* Maximální podporovaná hloubka fronty na dvojici v/v fronty pro Lsv2 virtuálního počítače NVMe je 1024 (vs. I3 hloubka fronty pro Amazon – 32). Lsv2 uživatelé by měli omezit své (syntetické) úlohy srovnávacích testů na hloubku fronty 1024 nebo nižší, aby nedocházelo k vystavování úplných podmínek zařazování do fronty, což může snížit výkon.
 
-## <a name="utilizing-local-nvme-storage"></a>Použití místního úložiště NVMe
+## <a name="utilizing-local-nvme-storage"></a>Využití místního úložiště NVMe
 
-Místní úložiště na disku NVMe 1.92 TB na všech virtuálních počítačích Lsv2 je dočasný. Při úspěšném standardní restartování virtuálního počítače se bude uchovávat data na místním disku NVMe. Data nezachovají na NVMe, pokud dojde znovu nasadil, zrušit přidělení nebo odstranění virtuálního počítače. Data nezachovají, pokud jiný problém způsobí, že se virtuální počítač nebo hardwaru, který je spuštěn na serveru, přestane není v pořádku. Pokud k tomu dojde, všechna data na staré hostitele je bezpečně vymaže.
+Místní úložiště na disku s 1,92 TB NVMe na všech virtuálních počítačích Lsv2 je dočasné. Během úspěšného standardního restartování virtuálního počítače se zachovají data na místním disku NVMe. Pokud se virtuální počítač znovu nasadí, zruší jeho přidělení nebo odstraněné data NVMe. Data nebudou zachovaná, pokud jiný problém způsobí, že virtuální počítač nebo hardware, na kterém je spuštěný, nebude v pořádku. V takovém případě budou všechna data na původním hostiteli bezpečně smazána.
 
-Existuje také občas budete virtuální počítač se musí přesunout na jiný hostitelský počítač, například během operace plánované údržby. Operace plánované údržby a některá selhání hardwaru můžete očekávat s [Scheduled Events](scheduled-events.md). Naplánované události by měla sloužit k aktualizace žádné operace obnovení a prediktivní Údržba.
+Existují taky případy, kdy je potřeba virtuální počítač přesunout na jiný hostitelský počítač, například během plánované operace údržby. Plánované operace údržby a některé chyby hardwaru je možné očekávat [Scheduled Events](scheduled-events.md). Scheduled Events by se měla použít pro průběžnou aktualizaci na jakékoli předpovězené operace údržby a obnovení.
 
-V případě, že události plánované údržby vyžaduje virtuální počítač znovu vytvořit na nového hostitele se prázdný místní disky bude potřeba data Opakovaná synchronizace (znovu, s daty na staré hostiteli se bezpečně vymaže). K tomu dochází, protože virtuální počítače řady Lsv2 na místním disku NVMe aktuálně nepodporují migraci za provozu.
+V případě, že plánovaná událost údržby vyžaduje, aby se virtuální počítač znovu vytvořil na novém hostiteli s prázdnými místními disky, bude nutné znovu synchronizovat data (znovu s veškerými daty na starém hostiteli, která se bezpečně maže). K tomu dochází, protože virtuální počítače řady Lsv2-Series v současné době nepodporují migraci za provozu na místním disku NVMe.
 
-Existují dva režimy pro plánované údržby.
+Existují dva režimy pro plánovanou údržbu.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standardní řízené zákazníka Údržba virtuálního počítače
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standardní údržba se správou zákazníka na síti
 
-- Virtuální počítač se přesune na aktualizovaném hostiteli během časového období 30 dnů.
-- Lsv2 místního úložiště dat by mohly být ztraceny, proto doporučujeme zálohování dat před události.
+- Virtuální počítač se přesune na aktualizovaného hostitele během 30denní okna.
+- Data místního úložiště Lsv2 se mohla ztratit, takže se doporučuje zálohovat data před událostí.
 
 ### <a name="automatic-maintenance"></a>Automatická údržba
 
-- Nastane, pokud zákazník nespustí řízené zákazníka údržby nebo v případě nouzové postupy, jako je zabezpečení události nultého dne.
-- Určený pro zachování zákaznická data, ale se malé riziku zablokování virtuálních počítačů nebo restartovat počítač.
-- Lsv2 místního úložiště dat by mohly být ztraceny, proto doporučujeme zálohování dat před události.
+- Vyvolá se v případě, že zákazník neprovede údržbu řízenou zákazníkem nebo v případě nouzových postupů, jako je například událost nulového zabezpečení.
+- Cílem je zachovat zákaznická data, ale dojde k malému riziku při zablokování nebo restartování virtuálního počítače.
+- Data místního úložiště Lsv2 se mohla ztratit, takže se doporučuje zálohovat data před událostí.
 
-Pro všechny události připravovanou službu pomocí procesu řízené údržby můžete vybrat vždy nejvhodnější pro aktualizaci. Před událostí může zálohovat data ve službě premium storage. Po dokončení události údržby můžete vrátit data aktualizovat virtuální počítače Lsv2 místní NVMe úložiště.
+U všech nadcházejících událostí služby použijte řízený proces údržby a vyberte čas, který je pro aktualizaci pro vás nejpohodlnější. Před touto událostí můžete data zálohovat v Premium Storage. Po dokončení události údržby můžete vrátit data do aktualizovaných virtuálních počítačů s Lsv2 v místním úložišti NVMe.
 
-Mezi scénáře, které udržují data na místní disky NVMe patří:
+Mezi scénáře, které udržují data na místních NVMe discích, patří:
 
-- Je virtuální počítač běží a je v pořádku.
-- Virtuální počítač restartuje na místě (podle musíte nebo Azure).
-- Virtuální počítač je pozastavený (zastavené bez vyhovělo).
-- Většina plánované údržby pro obsluhu operace.
+- Virtuální počítač je spuštěný a v pořádku.
+- Virtuální počítač se restartuje na místě (vámi nebo v Azure).
+- Virtuální počítač je pozastavený (zastavený bez přidělení).
+- Většina plánovaných operací údržby údržby
 
-Scénáře, které bezpečně odstranit data určená k ochraně zákazník patří:
+Mezi scénáře, které bezpečně maže data k ochraně zákazníka, patří:
 
-- Nové nasazení virtuálního počítače zastaveno (přidělení zrušeno), nebo odstranit, (vy).
-- Virtuální počítač nebude v pořádku a má službě opravy do jiného uzlu kvůli problému hardwaru.
-- Malý počet plánované údržby operací údržby, které vyžaduje virtuální počítač, aby znovu přidělit do jiného hostitele pro obsluhu.
+- Virtuální počítač se znovu nasadí, zastaví (zruší přidělení) nebo se odstraní (vámi).
+- Virtuální počítač se nemění v pořádku a musí kvůli problému s hardwarem zaretušovat ho na jiný uzel.
+- Malý počet plánovaných operací údržby údržby, které vyžadují, aby se virtuální počítač znovu dělil jinému hostiteli pro obsluhu.
 
-Další informace o možnostech zálohování dat v místním úložišti, najdete v článku [zálohování a zotavení po havárii pro disky Azure IaaS](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Další informace o možnostech zálohování dat v místním úložišti najdete v tématu [zálohování a zotavení po havárii pro disky Azure s IaaS](backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-* **Jak můžu začít nasazovat virtuální počítače řady Lsv2?**  
-   Podobně jako jakýkoli jiný virtuální počítač, použijte [portál](quick-create-portal.md), [rozhraní příkazového řádku Azure](quick-create-cli.md), nebo [Powershellu](quick-create-powershell.md) vytvoření virtuálního počítače.
+* **Návody začít nasazovat virtuální počítače řady Lsv2-Series?**  
+   Podobně jako u všech ostatních virtuálních počítačů můžete vytvořit virtuální počítač pomocí [portálu](quick-create-portal.md), rozhraní příkazového [řádku Azure](quick-create-cli.md)nebo [PowerShellu](quick-create-powershell.md) .
 
-* **Selhání jednoho disku NVMe způsobí, že všechny virtuální počítače na hostiteli selhání?**  
-   Když je v uzlu hardware selhání disku, hardwarové je ve stavu selhání. V tomto případě jsou všechny virtuální počítače na uzlu automaticky zrušit přidělení a přesunout do uzlu v pořádku. Pro virtuální počítače řady Lsv2 to znamená, data zákazníka v uzlu selhání je také bezpečně vymaže a bude nutné znovu vytvořit zákazník na novém uzlu. Jak je uvedeno, než bude k dispozici na Lsv2 migrace za provozu, data v uzlu selhání proaktivně přesunou se s virtuálními počítači jako se přesunou do jiného uzlu.
+* **Dojde k selhání jednoho NVMe disku k selhání všech virtuálních počítačů v hostiteli?**  
+   Pokud je v uzlu hardwaru zjištěna chyba disku, je hardware ve stavu selhání. V takovém případě jsou všechny virtuální počítače v uzlu automaticky nepřiděleny a přesunuty do uzlu v pořádku. U virtuálních počítačů Lsv2-Series to znamená, že data zákazníka v neúspěšném uzlu jsou také bezpečně smazána a bude nutné je znovu vytvořit zákazníkem na novém uzlu. Jak je uvedeno dříve, než bude migrace za provozu na Lsv2 k dispozici, data v neúspěšném uzlu se proaktivně přesunou s virtuálními počítači, když se přenesou do jiného uzlu.
 
-* **Je potřeba provést úpravy dotazování ve Windows ve Windows serveru 2012 nebo Windows serveru 2016?**  
-   NVMe cyklického dotazování je dostupný jenom u 2019 systému Windows Server v Azure.  
+* **Musím v systému Windows Server 2012 nebo Windows Server 2016 dělat úpravy dotazování?**  
+   Cyklické dotazování NVMe je k dispozici pouze v systému Windows Server 2019 v Azure.  
 
-* **Můžu přejít zpět na model rutiny (ISR) tradiční přerušení služby?**  
-   Virtuální počítače Lsv2-series jsou optimalizované pro NVMe cyklického dotazování. Aktualizace jsou nepřetržitě k dispozici pro zvýšení výkonu dotazování.
+* **Můžu přejít zpátky na tradiční model ISR (Interrupt Service rutiny)?**  
+   Virtuální počítače řady Lsv2-Series jsou optimalizované pro cyklické dotazování NVMe. Pro zlepšení výkonu cyklického dotazování jsou průběžně poskytovány aktualizace.
 
-* **Můžete upravit nastavení cyklického dotazování v systému Windows Server 2019?**  
-   Nastavení cyklického dotazování nejsou uživatelsky měnitelné.
+* **Je možné upravit nastavení cyklického dotazování ve Windows serveru 2019?**  
+   Nastavení cyklického dotazování není uživatelsky seřiditelné.
    
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* V tématu Specifikace pro všechny [virtuální počítače optimalizované pro výkon úložiště](sizes-storage.md) v Azure
+* Podívejte se na specifikace pro všechny [virtuální počítače optimalizované pro výkon úložiště](sizes-storage.md) v Azure.

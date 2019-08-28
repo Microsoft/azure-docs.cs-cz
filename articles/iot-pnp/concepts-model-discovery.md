@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4ab1d45e27762ef05ab7ec74c98ab0b0b934cbf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880550"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114273"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementace zjišťování modelu IoT technologie Plug and Play Preview v řešení IoT
 
@@ -24,13 +24,13 @@ Existují dvě široké kategorie řešení IoT: účelově vytvořená řešen�
 
 Tento článek konceptu popisuje, jak implementovat zjišťování modelu v obou typech řešení.
 
-## <a name="model-discovery"></a>Zjišťování modelu
+## <a name="model-discovery"></a>Zjišťování modelů
 
 Když se zařízení IoT technologie Plug and Play poprvé připojí ke službě IoT Hub, pošle zprávu o modelu informace o telemetrie. Tato zpráva obsahuje ID rozhraní, které zařízení implementuje. Aby vaše řešení fungovalo se zařízením, musí tyto identifikátory vyřešit a načíst definice pro každé rozhraní.
 
 Tady jsou kroky, které zařízení IoT technologie Plug and Play přijímá, když používá službu Device Provisioning (DPS) pro připojení k centru:
 
-1. Když je zařízení zapnuté, připojí se ke globálnímu koncovému bodu pro DPS a ověří pomocí jedné z povolených metod.
+1. Když je zařízení zapnuté, připojí se ke globálnímu koncovému bodu pro DPS a ověří se pomocí jedné z povolených metod.
 1. DPS pak ověří zařízení a vyhledá pravidlo, které oznamuje, ke kterému centru IoT se má zařízení přiřadit. DPS pak zařízení zaregistruje do tohoto centra.
 1. DPS vrátí IoT Hub připojovací řetězec k zařízení.
 1. Zařízení pak pošle zprávu o telemetrie zjišťování do vašeho IoT Hub. Zpráva telemetrie zjišťování obsahuje ID rozhraní, které zařízení implementuje.
@@ -69,12 +69,12 @@ Když vaše řešení obdrží oznámení pro nové připojení zařízení, pos
 1. Přečtěte si zprávu telemetrie zjišťování, která načte ID modelu schopností a rozhraní implementovaná zařízením.
 1. Pro každé ID si přečtěte úplný soubor JSON, ve kterém najdete funkce zařízení.
 1. Zkontrolujte, jestli se každé rozhraní nachází v mezipamětech, které jste vytvořili pro ukládání souborů JSON načtených dříve v rámci vašeho řešení.
-1. Potom zkontrolujte, zda je rozhraní s tímto ID v úložišti globálních modelů. Další informace najdete v tématu [úložiště globálních modelů](howto-manage-models.md).
-1. Pokud rozhraní není v úložišti globálních modelů, zkuste ho vyhledat v jakýchkoli úložištích privátních modelů známých ve vašem řešení. Pro přístup k úložišti privátních modelů potřebujete připojovací řetězec. Další informace najdete v tématu [úložiště privátních modelů](howto-manage-models.md).
-1. Pokud nemůžete najít všechna rozhraní v úložišti globálních modelů nebo v úložišti privátních modelů, můžete zjistit, zda zařízení může definici rozhraní poskytnout. Zařízení může implementovat standardní rozhraní [ModelDefinition](concepts-common-interfaces.md) pro publikování informací o tom, jak načítat soubory rozhraní pomocí příkazu.
+1. Potom zkontrolujte, zda se v úložišti veřejného modelu nachází rozhraní s tímto ID. Další informace najdete v tématu [úložiště veřejného modelu](howto-manage-models.md).
+1. Pokud rozhraní není k dispozici v úložišti veřejného modelu, zkuste ho vyhledat v jakýchkoli úložištích modelů společnosti známých ve vašem řešení. Potřebujete připojovací řetězec pro přístup k úložišti podnikového modelu. Další informace najdete v tématu [úložiště modelu společnosti](howto-manage-models.md).
+1. Pokud nemůžete najít všechna rozhraní buď v úložišti veřejného modelu, nebo v úložišti podnikového modelu, můžete zjistit, jestli zařízení může definici rozhraní poskytnout. Zařízení může implementovat standardní rozhraní [ModelDefinition](concepts-common-interfaces.md) pro publikování informací o tom, jak načítat soubory rozhraní pomocí příkazu.
 1. Pokud jste našli soubory JSON pro každé rozhraní implementované zařízením, můžete vytvořit výčet možností zařízení. Pomocí logiky, kterou jste napsali dříve, můžete uživatelům umožnit interakci se zařízením.
 1. V každém okamžiku můžete zavolat rozhraní API digitálního vlákna a načíst ID modelu schopností a ID rozhraní pro dané zařízení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se dozvěděli o zjišťování modelů v řešení IoT, se dozvíte víc o [platformě Azure IoT](overview-iot-plug-and-play.md) , která využívá další možnosti pro vaše řešení.

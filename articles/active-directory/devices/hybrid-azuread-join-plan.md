@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1431a46bf0981ee7ca3ecd06be9d7ebc35f05982
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6c6980d11fa5fe3733e351923d058d1ad0a1677e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032733"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084924"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -64,7 +64,7 @@ V případě zařízení s desktopovým operačním systémem Windows je podporo
 ### <a name="windows-down-level-devices"></a>Zařízení se škálováním na nižší úrovni Windows
 
 - Windows 8.1
-- Windows 7. Informace o podpoře v systému Windows 7 najdete v tomto článku [o ukončení podpory pro systém Windows 7](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support) .
+- Windows 7. Informace o podpoře v systému Windows 7 najdete v tomto článku [o ukončení podpory pro systém Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support) .
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2

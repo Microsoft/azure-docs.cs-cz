@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7cd278143ffe482cb51f76b1019413e97a777a3a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 23b0990be7f215d9cc443c5549ae38de86826d17
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981819"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114623"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Automatizace sestavení imagí kontejneru, když se v registru kontejnerů Azure aktualizuje základní image 
 
@@ -72,7 +72,16 @@ Když se základní image aktualizuje, budete muset znovu sestavit jakékoli ima
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>Úlohy aktivované aktualizací základní image
 
-* V současné době pro sestavení imagí z souboru Dockerfile úlohy ACR detekuje závislosti základních imagí ve stejném registru kontejneru Azure, veřejné úložiště Docker Hub nebo veřejné úložiště v Microsoft Container Registry. Pokud se základní bitová kopie zadaná `FROM` v příkazu nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu vytvoří, kdykoli se aktualizuje její základ.
+* Pro sestavení imagí z souboru Dockerfile úloha ACR detekuje závislosti základních imagí v následujících umístěních:
+
+  * Stejný registr kontejneru Azure, ve kterém se úloha spouští
+  * Další Azure Container Registry ve stejné oblasti 
+  * Veřejné úložiště v Docker Hub 
+  * Veřejné úložiště v Microsoft Container Registry
+
+   Pokud se základní bitová kopie zadaná `FROM` v příkazu nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu vytvoří, kdykoli se aktualizuje její základ.
+
+* V současné době ACR úlohy pouze sleduje základní aktualizace obrázků pro aplikace (*běhové*image). Nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi.  
 
 * Když vytvoříte úlohu ACR pomocí příkazu [AZ ACR Task Create][az-acr-task-create] , ve výchozím nastavení je úloha povolená pro aktivaci pomocí základní aktualizace image. To znamená, `base-image-trigger-enabled` že vlastnost je nastavena na hodnotu true. Pokud chcete toto chování v úloze zakázat, aktualizujte vlastnost na false. Například spusťte následující příkaz [AZ ACR Task Update][az-acr-task-update] :
 
@@ -262,7 +271,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení imagí kontejnerů při aktualizaci základní image. Teď se přesuneme k informacím o ověřování registru kontejneru.
 

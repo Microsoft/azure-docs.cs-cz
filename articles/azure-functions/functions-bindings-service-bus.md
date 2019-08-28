@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774698"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114383"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -715,14 +714,19 @@ V jazyce C# a skript jazyka C# můžete použít následující typy parametrů 
 * `out T paramName` - `T` může být libovolný typ serializovat na JSON. Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce vytvoří zprávu s objekt s hodnotou null.
 * `out string` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
 * `out byte[]` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
-* `out BrokeredMessage` – Pokud hodnota parametru má hodnotu null při ukončení funkce, funkce nevytváří zprávu.
+* `out BrokeredMessage`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
+* `out Message`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x).
 * `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
 
-V asynchronních funkcí, použijte vrácenou hodnotu nebo `IAsyncCollector` místo `out` parametru.
+Při práci s C# funkcemi:
 
-Tyto parametry jsou pro Azure Functions verzi 1.x; 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
+* Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-V jazyce JavaScript, přístup k frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) můžete přiřadit k `context.binding.<name>`.
+* Chcete-li získat přístup k ID relace, [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) Připojte se k typu `sessionId` a použijte vlastnost.
+
+V jazyce JavaScript, přístup k frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON) do `context.binding.<name>`.
+
+Pokud chcete poslat zprávu do fronty s povolenými relacemi v jinýchC# jazycích než, použijte [sadu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , nikoli integrovanou výstupní vazbu.
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 

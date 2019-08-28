@@ -1,6 +1,6 @@
 ---
-title: Vytvoření spravovaných virtuálních počítačů Azure z virtuální pevný disk zobecněný místní | Dokumentace Microsoftu
-description: Nahrání generalizovaného virtuálního pevného disku do Azure a použít ho k vytvoření nové virtuální počítače v modelu nasazení Resource Manager.
+title: Vytvoření spravovaného virtuálního počítače Azure z zobecněného místního virtuálního pevného disku | Microsoft Docs
+description: Nahrajte zobecněný virtuální pevný disk do Azure a použijte ho k vytvoření nových virtuálních počítačů v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,59 +11,58 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707940"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101562"
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrání generalizovaného virtuálního pevného disku a použít ho k vytvoření nové virtuální počítače v Azure
+# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nových virtuálních počítačů v Azure.
 
-Tento článek vás provede pomocí prostředí PowerShell k nahrání virtuálního pevného disku z generalizovaného virtuálního počítače do Azure, vytvoření image z virtuálního pevného disku a vytvoření nového virtuálního počítače z této image. Můžete nahrát virtuální pevný disk exportovat z nástroj virtualization místní nebo v jiném cloudu. Pomocí [Managed Disks](managed-disks-overview.md) pro nový virtuální počítač ve skupinách usnadňuje správu virtuálních počítačů a poskytuje lepší dostupnost v případě, že virtuální počítač je umístěn ve skupině dostupnosti. 
+Tento článek vás provede použitím prostředí PowerShell k nahrání virtuálního pevného disku pro zobecněný virtuální počítač do Azure, vytvoření image z virtuálního pevného disku a vytvoření nového virtuálního počítače z této image. Můžete nahrát virtuální pevný disk exportovaný z místního nástroje virtualizace nebo z jiného cloudu. Použití [Managed disks](managed-disks-overview.md) pro nový virtuální počítač zjednodušuje správu virtuálních počítačů a zajišťuje lepší dostupnost při umístění virtuálního počítače do skupiny dostupnosti. 
 
-Vzorový skript najdete v tématu [ukázkový skript k nahrání virtuálního pevného disku do Azure a vytvořit nový virtuální počítač](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
+Vzorový skript najdete v tématu [ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-- Před odesláním jakéhokoli virtuálního pevného disku do Azure, měli byste postupovat podle [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Kontrola [naplánovat migraci do služby Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) před zahájením migrace na [Managed Disks](managed-disks-overview.md).
+- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Než začnete s migrací do [Managed disks](managed-disks-overview.md), přečtěte si téma [plánování migrace na Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) .
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
-## <a name="generalize-the-source-vm-by-using-sysprep"></a>Zobecněte zdrojového virtuálního počítače pomocí nástroje Sysprep
+## <a name="generalize-the-source-vm-by-using-sysprep"></a>Generalizace zdrojového virtuálního počítače pomocí nástroje Sysprep
 
-Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Podrobnosti o nástroji Sysprep najdete v tématu [přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Podrobnosti o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomocí nástroje Sysprep. Další informace najdete v tématu [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Pokud chcete spustit nástroj Sysprep před nahráním vašeho virtuálního pevného disku do Azure poprvé, ujistěte se, že máte [připravit virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+> Pokud máte v úmyslu před prvním nahráním virtuálního pevného disku do Azure spustit nástroj Sysprep, ujistěte se, že jste připravili [virtuální](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)počítač. 
 > 
 > 
 
-1. Přihlaste se k virtuálnímu počítači Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na % windir%\system32\sysprep a pak spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogu **zadejte systému Out-of-Box zapnutí**a ujistěte se, že **generalizace** zaškrtávací políčko je dostupné.
-4. Pro **možnosti vypnutí**vyberte **vypnutí**.
+1. Přihlaste se k virtuálnímu počítači s Windows.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe`.
+3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost spustit **systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtávací políčko **generalize** povoleno.
+4. V **Možnosti vypnutí**vyberte **vypnout**.
 5. Vyberte **OK**.
    
-    ![Spustit Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Po dokončení programu Sysprep vypne virtuální počítač. Virtuální počítač nerestartuje.
+    ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Po dokončení programu Sysprep vypne virtuální počítač. Nerestartujte virtuální počítač.
 
 
-## <a name="get-a-storage-account"></a>Získat účet úložiště.
+## <a name="get-a-storage-account"></a>Získání účtu úložiště
 
-Budete potřebovat účet úložiště v Azure k uložení této odeslané image virtuálního počítače. Můžete použít existující účet úložiště nebo vytvořte novou. 
+K uložení nahrané image virtuálního počítače budete potřebovat účet úložiště v Azure. Můžete buď použít existující účet úložiště, nebo vytvořit nový. 
 
-Pokud budete používat virtuální pevný disk k vytvoření spravovaného disku pro virtuální počítač, umístění účtu úložiště musí být na stejném umístění, ve kterém vytvoříte virtuální počítač.
+Pokud k vytvoření spravovaného disku pro virtuální počítač použijete virtuální pevný disk, umístění účtu úložiště musí být stejné jako místo, ve kterém budete virtuální počítač vytvářet.
 
-Pokud chcete zobrazit účty úložiště k dispozici, zadejte:
+Pokud chcete zobrazit dostupné účty úložiště, zadejte:
 
 ```azurepowershell
 Get-AzStorageAccount | Format-Table
@@ -71,7 +70,7 @@ Get-AzStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště
 
-Použití [přidat AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) rutiny k nahrání virtuálního pevného disku do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD.vhd* z *C:\Users\Public\Documents\Virtual pevné disky\\*  na účet úložiště s názvem *mystorageaccount* v *myResourceGroup* skupinu prostředků. Soubor se umístí do kontejneru s názvem *mycontainer* a nový název souboru bude *myUploadedVHD.vhd*.
+Pomocí rutiny [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) nahrajte VHD do kontejneru v účtu úložiště. Tento příklad nahraje soubor *myVHD. VHD* z *\\ pevných disků C:\Users\Public\Documents\Virtual* do účtu úložiště s názvem *mystorageaccount* ve skupině prostředků *myResourceGroup* . Soubor se umístí do kontejneru s názvem *myContainer* a nový název souboru bude *myUploadedVHD. VHD*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -81,7 +80,7 @@ Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-V případě úspěchu se získat odpověď bude vypadat nějak takto:
+V případě úspěchu získáte odpověď, která vypadá nějak takto:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -95,39 +94,39 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tohoto příkazu může trvat dobu.
+V závislosti na připojení k síti a velikosti souboru VHD může dokončení tohoto příkazu chvíli trvat.
 
-### <a name="other-options-for-uploading-a-vhd"></a>Další možnosti pro nahrání virtuálního pevného disku
+### <a name="other-options-for-uploading-a-vhd"></a>Další možnosti pro nahrání VHD
  
-Můžete také nahrát VHD do účtu úložiště pomocí jedné z následujících akcí:
+Virtuální pevný disk můžete také nahrát do svého účtu úložiště pomocí jedné z následujících akcí:
 
 - [AzCopy](https://aka.ms/downloadazcopy)
-- [Objekt Blob úložiště Azure kopírování rozhraní API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Objekty BLOB služby Azure Storage Explorer nahrávání](https://azurestorageexplorer.codeplex.com/)
-- [Reference k rozhraní API REST úložiště importu/exportu služby](https://msdn.microsoft.com/library/dn529096.aspx)
--   Doporučujeme používat službu Import/Export, pokud odhadované nahrávání doba je delší než 7 dní. Můžete použít [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) pro odhad doby z jednotky pro velikost a přenos dat. 
-    Import/Export je možné zkopírovat do účtu úložiště úrovně standard. Bude nutné zkopírovat ze standard storage do účtu služby premium storage pomocí některého nástroje, například AzCopy.
+- [Azure Storage kopírovat rozhraní BLOB API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+- [Průzkumník služby Azure Storage nahrávání objektů BLOB](https://azurestorageexplorer.codeplex.com/)
+- [Referenční informace o REST API služby Import/Export úložiště](https://msdn.microsoft.com/library/dn529096.aspx)
+-   Službu import/export doporučujeme používat, pokud je odhadovaný čas odeslání delší než 7 dní. Pomocí [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) můžete odhadnout čas od velikosti dat a jednotky přenosu. 
+    Import/export se dá použít ke zkopírování do standardního účtu úložiště. Pomocí nástroje, jako je AzCopy, budete muset zkopírovat ze standardního úložiště na účet Premium Storage.
 
 > [!IMPORTANT]
-> Pokud používáte AzCopy pro nahrání vašeho virtuálního pevného disku do Azure, ujistěte se, že jste nastavili [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) před spuštěním skriptu nahrávání. Pokud není tato možnost zadána, cíl je objekt blob ve výchozím nastavení AzCopy vytvoří objekt blob bloku.
+> Pokud používáte AzCopy k nahrání virtuálního pevného disku do Azure, ujistěte se, že jste před spuštěním skriptu pro nahrávání nastavili [**stránku/BlobType:** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) . Pokud je cílem objekt BLOB a tato možnost není zadaná, ve výchozím nastavení AzCopy vytvoří objekt blob bloku.
 > 
 > 
 
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Vytvoření spravované image z nahraných virtuálního pevného disku 
+## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Vytvoření spravované image z nahraného virtuálního pevného disku 
 
-Vytvoření spravované image z zobecněný virtuální pevný disk operačního systému. Tyto hodnoty nahraďte svými vlastními informacemi.
+Vytvořte spravovanou image z zobecněného virtuálního pevného disku s operačním systémem. Nahraďte následující hodnoty vlastními informacemi.
 
 
-Nejprve nastavte některé parametry:
+Nejdřív nastavte některé parametry:
 
 ```powershell
 $location = "East US" 
 $imageName = "myImage"
 ```
 
-Vytvoření image Pomocí zobecněný virtuální pevný disk operačního systému.
+Vytvořte Image pomocí zobecněného virtuálního pevného disku s operačním systémem.
 
 ```powershell
 $imageConfig = New-AzImageConfig `
@@ -166,5 +165,5 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Další postup
 
-Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

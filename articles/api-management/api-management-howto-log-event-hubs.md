@@ -1,6 +1,6 @@
 ---
-title: Jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management.
+title: Jak protokolovat události do Azure Event Hubs v Azure API Management | Microsoft Docs
+description: Naučte se protokolovat události do Azure Event Hubs v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,45 +10,44 @@ ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 646d9206ec82d5f35ccab9365e76276ff779d225
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657539"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073483"
 ---
-# <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management
-Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Služba Event Hubs slouží jako "předních dveří" pro kanál událostí, a jakmile jsou data shromážděna do centra událostí, je možné transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase nebo adaptérů dávkování/úložišť. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
+# <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
+Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
 
-Tento článek, který je k [integrovat Azure API managementu s využitím služby Event Hubs](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) videa a popisuje, jak protokolovat události správy rozhraní API pomocí služby Azure Event Hubs.
+V tomto článku se dozvíte, jak [integrovat API Management Azure s Event Hubsm](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) videem, a popisuje, jak protokolovat API Management události pomocí Event Hubs Azure.
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure
 
-Podrobné pokyny o tom, jak vytvořit Centrum událostí a připojovací řetězce, které potřebujete k odesílání a příjmu událostí z centra událostí a získání najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+Podrobné informace o tom, jak vytvořit centrum událostí a jak získat připojovací řetězce, které potřebujete k odesílání a příjmu událostí do a z centra událostí, najdete v tématu [vytvoření Event Hubs oboru názvů a centra událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-## <a name="create-an-api-management-logger"></a>Vytvoření API Management protokolovací nástroj
-Teď, když máte Centrum událostí, dalším krokem je konfigurace [protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) ve službě API Management service tak, aby mohl zaprotokolovat události do centra událostí.
+## <a name="create-an-api-management-logger"></a>Vytvoření protokolovacího nástroje API Management
+Teď, když máte centrum událostí, je dalším krokem konfigurace protokolovacího nástroje ve [](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) službě API Management, aby mohla protokolovat události do centra událostí.
 
-Protokolovací nástroje API Management se konfiguruje pomocí [REST API služby API Management](https://aka.ms/smapi). Před prvním použitím rozhraní REST API, projděte si [požadavky](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest) a ujistěte se, že máte [povolený přístup k rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
+API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](https://aka.ms/smapi). Než poprvé použijete REST API, přečtěte si [požadavky](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest) a ujistěte se, že máte [povolený přístup k REST API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
 
-Pokud chcete vytvořit protokolovací nástroj, ujistěte se, požadavek HTTP PUT pomocí následující šablony adresy URL:
+Pokud chcete vytvořit protokolovací nástroj, vytvořte požadavek HTTP PUT pomocí následující šablony URL:
 
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
-* Nahraďte `{your service}` s názvem vaší instance služby API Management.
-* Nahraďte `{new logger name}` s požadovaný název pro nový protokolovací nástroj. Při konfiguraci se odkazovat tento název [protokolu eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) zásad
+* Nahraďte `{your service}` názvem vaší instance služby API Management.
+* Nahraďte `{new logger name}` požadovaným názvem pro nový protokolovací nástroj. Tento název se odkazuje při konfiguraci zásad [protokolu na eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) .
 
-Přidejte následující hlavičky požadavku:
+Do žádosti přidejte následující hlavičky:
 
-* Typ obsahu: application/json
-* Autorizace: SharedAccessSignature 58...
-  * Pokyny pro generování `SharedAccessSignature` naleznete v tématu [Azure API Management REST API ověřování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
+* Content-Type: Application/JSON
+* Udělován SharedAccessSignature 58...
+  * Pokyny k vygenerování `SharedAccessSignature` najdete v tématu [ověřování Azure API Management REST API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
 
-Určení těla požadavku pomocí následující šablony:
+Text žádosti určete pomocí následující šablony:
 
 ```json
 {
@@ -61,11 +60,11 @@ Určení těla požadavku pomocí následující šablony:
 }
 ```
 
-* `loggerType` musí být nastaveno na `AzureEventHub`.
-* `description` poskytuje volitelný popis protokolovacího nástroje a může být řetězec nulové délky v případě potřeby.
-* `credentials` obsahuje `name` a `connectionString` vaše Centrum událostí Azure.
+* `loggerType`musí být nastaven na `AzureEventHub`hodnotu.
+* `description`poskytuje volitelný popis protokolovacího nástroje a v případě potřeby může být řetězec s nulovou délkou.
+* `credentials``name` obsahuje a `connectionString` v centru událostí Azure.
 
-Když nastavíte požadavku, pokud protokolovací nástroj se vytvoří, stavový kód `201 Created` je vrácena. Ukázková odpověď na základě výše uvedené ukázkové žádosti je uveden níže.
+Při vytvoření tohoto požadavku se v případě, že je vytvořen protokolovací nástroj, vrátí stavový kód `201 Created` . Ukázková odpověď založená na výše uvedené žádosti o ukázku je uvedená níže.
 
 ```json
 {
@@ -82,45 +81,45 @@ Když nastavíte požadavku, pokud protokolovací nástroj se vytvoří, stavov�
 ```
 
 > [!NOTE]
-> Další možné návratové kódy a důvodech najdete v tématu [vytvořit protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT). Jak provádět další operace, jako je například seznam, aktualizace a odstranění najdete v tématu [protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) dokumentace entity.
+> Další možné návratové kódy a jejich důvody najdete v tématu [Vytvoření protokolovacího](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity#PUT)nástroje. Informace o tom, jak provádět jiné operace, jako je například seznam, aktualizace a odstranění, [](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) najdete v dokumentaci k entitě protokolovacího nástroje.
 >
 >
 
-## <a name="configure-log-to-eventhubs-policies"></a>Konfigurace zásad protokolu eventhubs
+## <a name="configure-log-to-eventhubs-policies"></a>Konfigurace zásad přihlášení k eventhubs
 
-Jakmile vaše protokolovacího nástroje je nakonfigurovaná ve službě API Management, můžete nakonfigurovat zásady protokolu eventhubs protokolovat požadované události. Zásady protokolu eventhubs je možné v části příchozí zásady nebo části outbound zásady.
+Po nakonfigurování protokolovacího nástroje v API Management můžete nakonfigurovat zásady přihlášení k eventhubs, které budou protokolovat požadované události. Zásady log-to-eventhubs se dají použít v oddílu příchozí zásady nebo v části odchozí zásady.
 
 1. Přejděte k vaší instanci APIM.
 2. Vyberte kartu rozhraní API.
-3. Vyberte rozhraní API, ke kterému chcete přidat zásady. V tomto příkladu přidáváme zásadu, která **rozhraní Echo API** v **Unlimited** produktu.
+3. Vyberte rozhraní API, ke kterému chcete zásadu přidat. V tomto příkladu přidáme do neomezeného produktu zásadu pro **rozhraní API echo** .
 4. Vyberte **Všechny operace**.
-5. Horní části obrazovky vyberte kartu Návrh.
-6. V okně zpracování příchozí nebo odchozí klikněte na trojúhelník (vedle tužky).
-7. Vyberte editor kódu. Další informace najdete v tématu [postupy nastavení nebo úprava zásad](set-edit-policies.md).
-8. Umístěte kurzor do `inbound` nebo `outbound` části zásady.
-9. V okně na pravé straně vyberte **pokročilé zásady** > **protokolu k centru EventHub**. Vloží `log-to-eventhub` příkaz šablonu zásad.
+5. V horní části obrazovky vyberte kartu Návrh.
+6. V okně příchozí nebo odchozí zpracování klikněte na trojúhelník (vedle tužky).
+7. Vyberte Editor kódu. Další informace najdete v tématu [jak nastavit nebo upravit zásady](set-edit-policies.md).
+8. Umístěte kurzor do `inbound` části zásady nebo `outbound` .
+9. V okně na pravé straně vyberte Upřesnit protokol **zásad** > **do centra EventHub**. Tím se vloží `log-to-eventhub` šablona prohlášení o zásadách.
 
 ```xml
 <log-to-eventhub logger-id ='logger-id'>
   @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
 </log-to-eventhub>
 ```
-Nahraďte `logger-id` s hodnotou, které jste použili pro `{new logger name}` v adrese URL pro vytváření protokolovacího nástroje v předchozím kroku.
+Nahraďte `logger-id` hodnotou, kterou jste `{new logger name}` použili v adrese URL k vytvoření protokolovacího nástroje v předchozím kroku.
 
-Můžete použít libovolný výraz, který vrátí řetězec jako hodnotu `log-to-eventhub` elementu. V tomto příkladu je zaznamenána řetězec obsahující datum a čas, název služby, id požadavku, požadavek ip adresu a název operace.
+Můžete použít libovolný výraz, který vrátí řetězec jako hodnotu `log-to-eventhub` prvku. V tomto příkladu se protokoluje řetězec obsahující datum a čas, název služby, ID žádosti, IP adresu žádosti a název operace.
 
-Klikněte na tlačítko **Uložit** uložíte aktualizované zásady. Jakmile je uložen je zásada aktivní a události se protokolují do určeným centra událostí.
+Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je zásada uložena, je zásada aktivní a události budou protokolovány do určeného centra událostí.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o Azure Event Hubs
   * [Začínáme s Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Příjem zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Přijímání zpráv pomocí EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Průvodce programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md)
-* Další informace o integraci API Management a služby Event Hubs
-  * [Odkaz na entitu protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [Referenční příručce o zásadách protokolu do centra událostí](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Sledování vašich rozhraní API pomocí Azure API Management, Event Hubs a Moesif](api-management-log-to-eventhub-sample.md)  
-* Další informace o [integrace s Azure Application Insights](api-management-howto-app-insights.md)
+* Další informace o integraci API Management a Event Hubs
+  * [Reference k entitě protokolovacího nástroje](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [odkaz na zásady přihlášení k protokolu eventhub](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif](api-management-log-to-eventhub-sample.md)  
+* Další informace o [integraci s Azure Application Insights](api-management-howto-app-insights.md)
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png

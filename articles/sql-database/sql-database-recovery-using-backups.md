@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566975"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103108"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -37,7 +37,7 @@ Při použití úrovně služeb Standard nebo Premium se v obnovené databázi z
 - Obnovení P11 – P15 na S4-S12 nebo P1 – P6, pokud je maximální velikost databáze větší než 500 GB.
 - Obnova P1 – P6 na S4-S12, pokud je maximální velikost databáze větší než 250 GB.
 
-Dodatečné náklady se icurred, když je maximální velikost obnovené databáze větší než velikost úložiště zahrnutá do úrovně služby a úrovně výkonu cílové databáze. Dodatečné úložiště zřízené nad zahrnutou částku se účtuje navíc. Podrobnosti o cenách dodatečného úložiště najdete na [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečná velikost využitého místa menší než velikost zahrnutého úložiště, můžete této dodatečné ceně zabránit tím, že nastavíte maximální velikost databáze na zahrnutou částku.
+Dodatečné náklady se účtují, pokud je maximální velikost obnovené databáze větší než velikost úložiště zahrnutá do úrovně služby a úrovně výkonu cílové databáze. Dodatečné úložiště zřízené nad zahrnutou částku se účtuje navíc. Podrobnosti o cenách dodatečného úložiště najdete na [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečná velikost využitého místa menší než velikost zahrnutého úložiště, můžete této dodatečné ceně zabránit tím, že nastavíte maximální velikost databáze na zahrnutou částku.
 
 > [!NOTE]
 > [Automatizované zálohy databáze](sql-database-automated-backups.md) se používají při vytváření [kopie databáze](sql-database-copy.md).
@@ -113,7 +113,7 @@ Chcete-li obnovit odstraněnou databázi pomocí Azure Portal, otevřete stránk
 
 SQL Database můžete obnovit na jakémkoli serveru v libovolné oblasti Azure z posledních geograficky replikovaných záloh. Geografické obnovení používá jako zdroj geograficky replikovanou zálohu. Může být požadován i v případě, že je databáze nebo datacentrum nedostupné kvůli výpadku.
 
-Geografické obnovení je výchozí možností obnovení v případě, že databáze není k dispozici z důvodu incidentu v oblasti hostování. Databázi můžete obnovit na server v libovolné jiné oblasti. Doba, po kterou se zálohování provádí, a když se geograficky replikují do objektu blob Azure v jiné oblasti, nastane zpoždění. V důsledku toho může být obnovená databáze až o jednu hodinu za databází orignal. Následující ilustrace znázorňuje obnovení databáze z poslední dostupné zálohy v jiné oblasti.
+Geografické obnovení je výchozí možností obnovení v případě, že databáze není k dispozici z důvodu incidentu v oblasti hostování. Databázi můžete obnovit na server v libovolné jiné oblasti. Doba, po kterou se zálohování provádí, a když se geograficky replikují do objektu blob Azure v jiné oblasti, nastane zpoždění. V důsledku toho může být obnovená databáze až o jednu hodinu za původní databází. Následující ilustrace znázorňuje obnovení databáze z poslední dostupné zálohy v jiné oblasti.
 
 ![geografické obnovení](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,7 +127,7 @@ Obnovení k určitému bodu v čase v geograficky sekundárním není aktuálně
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geografické obnovení pomocí Azure Portal
 
-Chcete-li geograficky obnovit databázi během [období uchování modelu založeného na DTU](sql-database-service-tiers-dtu.md) nebo [Vcore období uchování](sql-database-service-tiers-vcore.md) pomocí Azure Portal, otevřete stránku databáze SQL a potom klikněte na tlačítko **Přidat**. V textovém poli **Vybrat zdroj** vyberte **zálohovat**. Zadejte zálohu, ze které se má obnovení provést v oblasti a na serveru dle vašeho výběru.
+Pokud chcete databázi geograficky obnovit pomocí Azure Portal, otevřete stránku databáze SQL a pak klikněte na **Přidat**. V textovém poli **Vybrat zdroj** vyberte **zálohovat**. Zadejte zálohu, ze které se má obnovení provést v oblasti a na serveru dle vašeho výběru.
 
 > [!Note]
 > Geografické obnovení pomocí Azure Portal není k dispozici ve spravované instanci. Místo toho prosím použijte PowerShell.
@@ -180,7 +180,7 @@ Postup obnovení jedné nebo sdružené databáze pomocí REST API:
 
 Automatické zálohování chrání vaše databáze před chybami uživatelů a aplikací, náhodným odstraněním databáze a prodlouženými výpadky. Tato integrovaná funkce je k dispozici pro všechny úrovně služeb a výpočetní velikosti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled provozní kontinuity a scénáře najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 - Další informace o Azure SQL Database automatizovaných zálohách najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md).

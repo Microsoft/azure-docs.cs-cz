@@ -1,6 +1,6 @@
 ---
-title: Rozhraní API správy zásad ukázkový Azure – vzor implementovat X-CSRF | Dokumentace Microsoftu
-description: Azure API management zásady ukázkový – ukazuje, jak implementovat vzor X CSRF používané mnoha rozhraní API. Tento příklad je konkrétně pro bránu SAP.
+title: Ukázka zásad Azure API Management-implementace X-CSRF vzoru | Microsoft Docs
+description: Ukázka zásad Azure API Management – ukazuje, jak implementovat vzor X-CSRF, který používá mnoho rozhraní API. Tento příklad je konkrétně pro bránu SAP.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 2f4d26702443ef3113dad98cde1d13b292fe657a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14ea9113bf5712d6ffce356d02abb7224c21771a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306695"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067727"
 ---
-# <a name="implement-x-csrf-pattern"></a>Implementace X-CSRF vzor
+# <a name="implement-x-csrf-pattern"></a>Implementovat vzor X-CSRF
 
-Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak implementovat vzor X CSRF používané mnoha rozhraní API. Tento příklad je konkrétně pro bránu SAP. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak implementovat vzor X-CSRF, který používá mnoho rozhraní API. Tento příklad je konkrétně pro bránu SAP. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozí** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get X-CSRF token from SAP gateway using send request.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace týkající se služby APIM zásad:
+Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

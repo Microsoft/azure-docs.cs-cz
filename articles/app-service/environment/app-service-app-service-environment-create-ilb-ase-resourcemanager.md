@@ -1,6 +1,6 @@
 ---
-title: Vytvoření ILB ASE pomocí šablony Azure Resource Manageru – App Service | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit interní služby load balancer prostředí ASE pomocí šablon Azure Resource Manageru.
+title: Vytvoření pomocného programu interního nástroje pomocí šablon Azure Resource Manager – App Service | Microsoft Docs
+description: Přečtěte si, jak pomocí šablon Azure Resource Manager vytvořit interní přidaný nástroj pro vyrovnávání zatížení.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,66 +10,65 @@ ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130751"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070428"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
 
 > [!NOTE] 
-> Tento článek je o App Service Environment v1. Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
+> Tento článek se týká App Service Environment v1. Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
 >
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
-Služby App Service Environment lze vytvořit pomocí interní adresy virtuální sítě namísto veřejných virtuálních IP adres.  Tato interní adresa je poskytovaný Azure komponenta s názvem interní nástroj pro vyrovnávání zatížení (ILB).  Lze vytvořit prostředí ILB ASE pomocí webu Azure portal.  Je také možné vytvářet pomocí automatizace prostřednictvím šablon Azure Resource Manageru.  Tento článek vás provede kroky a syntaxe, které jsou potřebné k vytvoření ILB ASE pomocí šablon Azure Resource Manageru.
+App Service prostředí je možné vytvořit pomocí interní adresy virtuální sítě namísto veřejné virtuální IP adresy.  Tuto interní adresu poskytuje komponenta Azure s názvem interní nástroj pro vyrovnávání zatížení (interního nástroje).  INTERNÍHO nástroje pomocného programu je možné vytvořit pomocí Azure Portal.  Můžete ji také vytvořit pomocí automatizace pomocí Azure Resource Manager šablon.  Tento článek vás provede kroky a syntaxí, které je potřeba k vytvoření interního nástroje pomocného programu pomocí šablon Azure Resource Manager.
 
-Součástí automatizace vytvoření ILB ASE jsou tři kroky:
+Při automatizaci vytváření interního nástroje pomocného programu pro pořízení se dotýkají tři kroky:
 
-1. Nejprve základní služby ASE se vytvoří ve virtuální síti pomocí adresu interního nástroje pro vyrovnávání namísto veřejných virtuálních IP adres.  Název kořenové domény v rámci tohoto kroku, je přiřazená služba ASE s ILB.
-2. Po vytvoření ILB ASE se nahrát certifikát SSL.  
-3. Nahraného certifikátu SSL je explicitně přiřadit služba ASE s ILB jako svůj certifikát SSL "Výchozí".  Tento certifikát SSL se použije pro provoz protokolu SSL pro aplikace v prostředí ILB ASE, když aplikace se tak vyřeší, pomocí běžných kořenovou doménu přiřazená služby ASE (např.) https://someapp.mycustomrootcomain.com)
+1. Ve virtuální síti se nejdřív vytvoří základní nástroj pro čtení a místo veřejné virtuální IP adresy se použije interní adresa nástroje pro vyrovnávání zatížení.  V rámci tohoto kroku se k interního nástroje pomocnému programu přiřadí název kořenové domény.
+2. Po vytvoření pomocného mechanismu interního nástroje se nahraje certifikát SSL.  
+3. Nahraný certifikát SSL se explicitně přiřadí k interního nástroje pomocnému certifikátu jako jeho "výchozí" certifikát SSL.  Tento certifikát SSL se bude používat pro přenosy SSL do aplikací v interního nástroje pomocném programu při adresování aplikací pomocí společné kořenové domény přiřazené k pomocnému uživateli (např. https://someapp.mycustomrootcomain.com)
 
-## <a name="creating-the-base-ilb-ase"></a>Vytvoření základní služba ASE s ILB
-Jsou k dispozici na Githubu příklad šablony Azure Resource Manageru a její přidružené parametry souboru [tady][quickstartilbasecreate].
+## <a name="creating-the-base-ilb-ase"></a>Vytvoření základního pomocného mechanismu interního nástroje
+Ukázková šablona Azure Resource Manager a její přidružené soubory parametrů jsou k dispozici na GitHubu. [][quickstartilbasecreate]
 
-Většina parametrů v *azuredeploy.parameters.json* souboru jsou společné pro vytváření služeb ase s ILB, jak služby ase vázán na veřejných virtuálních IP adres.  Seznam níže volá výstupní parametry zejména nebo které jsou jedinečné, při vytváření prostředí ILB ASE:
+Většina parametrů v souboru *azuredeploy. Parameters. JSON* je společná pro vytváření interního nástroje služby ASE a také pro služby ASE vázané na veřejnou virtuální IP adresu.  Seznam níže volá při vytváření interního nástroje pomocného programu pro přihlašování do paměti parametry speciální poznámky, nebo které jsou jedinečné:
 
-* *internalLoadBalancingMode*:  Ve většině případů sadě tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a ovládací prvek/datový kanál, který porty naslouchali službou FTP služby ase, bude vázán k ILB přidělenou adresu interní virtuální síti.  Pokud místo toho tato vlastnost nastavena na 2, pak pouze služba FTP související s porty (ovládací prvek a data kanály) bude vázán k adresu ILB, zatímco zůstane na veřejných virtuálních IP adres se přenosy HTTP/HTTPS.
-* *dnsSuffix*:  Tento parametr definuje výchozí kořenové domény, který se přiřadí služby ASE.  Ve veřejné variantu služby Azure App Service, výchozí kořenové domény pro všechny webové aplikace je *azurewebsites.net*.  Ale protože ILB ASE je interní virtuální síti zákazníka, nemá smysl použít veřejné služby výchozí kořenovou doménu.  Místo toho službu ASE by měl mít výchozí kořenové domény, který dává smysl pro použití v rámci interní virtuální síti vaší společnosti.  Hypotetický společnosti Contoso Corporation může například použít výchozí kořenové domény *interní contoso.com* pro aplikace, které jsou určeny pouze byly přeložitelný a přístupná v rámci virtuální sítě společnosti Contoso. 
-* *ipSslAddressCount*:  Tento parametr je automaticky nastavena na výchozí hodnotu 0 v *azuredeploy.json* protože služeb ase s ILB mít pouze jednu adresu ILB.  Nejsou žádné explicitní adresy IP SSL pro službu ASE a proto fondu adres IP SSL pro službu ASE musí být nastavena na hodnotu nula, jinak dojde k chybě zřizování. 
+* *internalLoadBalancingMode*:  Ve většině případů je tato operace nastavena na hodnotu 3, což znamená, že přenos HTTP/HTTPS na portech 80/443 a porty ovládacího prvku nebo datového kanálu, na které naslouchá služba FTP v pomocném mechanismu řízení, bude vázán na interní adresu interního nástroje přidělené virtuální síti.  Pokud je tato vlastnost nastavená na hodnotu 2, budou se svázat jenom porty související se službou FTP (řízení a datové kanály) na interního nástroje adrese, zatímco přenosy HTTP/HTTPS zůstanou ve veřejné virtuální IP adrese.
+* *dnsSuffix*:  Tento parametr definuje výchozí kořenovou doménu, která bude přiřazena k pomocnému mechanismu řízení.  Ve veřejné variaci Azure App Service je výchozí kořenová doména pro všechny webové aplikace *azurewebsites.NET*.  Vzhledem k tomu, že služba interního nástroje pomocného mechanismu je interní pro virtuální síť zákazníka, nemá smysl použít výchozí kořenovou doménu veřejné služby.  Místo toho by měl mít interního nástroje pomocného programu k dispozici výchozí kořenovou doménu, která dává smysl pro použití v interní virtuální síti společnosti.  Hypotetická společnost Contoso může například použít výchozí kořenovou doménu *internal-contoso.com* pro aplikace, které mají být přestupnější a přístupné v rámci virtuální sítě společnosti Contoso. 
+* *ipSslAddressCount*:  Tento parametr je automaticky nastaven na hodnotu 0 v souboru *azuredeploy. JSON* , protože interního nástroje služby ASE má pouze jednu adresu interního nástroje.  Pro interního nástroje pomocného mechanismu zabezpečení nejsou k dispozici žádné explicitní adresy IP-SSL, takže fond adres IP-SSL pro interního nástrojeho přihlašování k musí být nastaven na hodnotu nula. v opačném případě dojde k chybě zřizování. 
 
-Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno pro službu ASE, služba ASE s ILB mohou být vytvořeny pomocí následujícího fragmentu kódu Powershellu.  Změňte soubor cesty tak, aby odpovídaly, kde jsou umístěny soubory šablon Azure Resource Manageru na vašem počítači.  Nezapomeňte taky zadat vlastní hodnoty pro název nasazení Azure Resource Manageru a název skupiny prostředků.
+Po vyplnění souboru *azuredeploy. Parameters. JSON* pro pomocného programu interního nástroje se dá pomocného programu interního nástroje vytvořit pomocí následujícího fragmentu kódu prostředí PowerShell.  Změňte cesty k souboru tak, aby odpovídaly, kde jsou soubory šablon Azure Resource Manager umístěny na vašem počítači.  Nezapomeňte také uvést vlastní hodnoty pro název nasazení Azure Resource Manager a název skupiny prostředků.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Po Azure Resource Manageru šablony se odešle, že bude trvat několik hodin služba ASE s ILB, který se má vytvořit.  Po dokončení vytváření služba ASE s ILB se zobrazí v seznamu prostředí App Service pro předplatné, které aktivuje nasazení portálu uživatelského prostředí.
+Po odeslání šablony Azure Resource Manager může trvat několik hodin, než se vytvoří pomocného nástroje interního nástroje.  Až se vytváření dokončí, v uživatelském rozhraní portálu se zobrazí interního nástroje pomocnému programu portálu v seznamu App Service prostředí pro předplatné, které nasazení aktivovalo.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Nahrání a konfigurace certifikátu SSL "Výchozí"
-Po vytvoření služba ASE s ILB certifikát SSL by měly být přidružené služby ASE, použijte "Výchozí" certifikát SSL pro navazování připojení SSL k aplikacím.  Pokračování hypotetickým příkladem společnosti Contoso Corporation v případě, že služba ASE výchozí DNS přípona je *interní contoso.com*, pak připojení k *https://some-random-app.internal-contoso.com* vyžaduje certifikát SSL, který je platné pro * *.internal contoso.com*. 
+## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Nahrává a konfiguruje se "výchozí" certifikát SSL.
+Po vytvoření pomocného interního NÁSTROJEu služby se certifikát SSL musí přidružit k tomuto pomocnému programu jako výchozí certifikát SSL, který se používá k vytvoření připojení SSL k aplikacím.  V případě, že je výchozí příponou DNS pomocného programu *internal-contoso.com*, budete pokračovat v hypotetické společnosti Contoso *https://some-random-app.internal-contoso.com* Corporation a připojení k nástroji vyžaduje certifikát SSL, který je platný pro * *. Internal-contoso.com*. 
 
-Existuje řada různých způsobů, jak získat platný certifikát SSL, včetně interní certifikační autority, nákupu certifikát od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem.  Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
+Existuje mnoho způsobů, jak získat platný certifikát SSL, včetně interních certifikačních autorit, koupit certifikát od externího vystavitele a používat certifikát podepsaný svým držitelem.  Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* *Předmět*:  Tento atribut musí být nastaven * *.vase kořenové domain-here.com*
-* *Alternativní název subjektu*:  Tento atribut musí obsahovat * *.vase kořenové domain-here.com*, a * *.vase-kořenové-domain-here.com*.  Důvodem pro druhou položku je, že připojení SSL k webu SCM/kudu spojenému s každou aplikací se bude realizovat pomocí adresy formuláře *your-app-name.scm.your-root-domain-here.com*.
+* *Předmět*:  Tento atribut musí být nastaven na hodnotu * *. your-root-Domain-here.com.*
+* *Alternativní název subjektu*:  Tento atribut musí zahrnovat buď * *. your-root-Domain-here.com*, a * *. SCM.your-root-Domain-here.com*.  Důvodem pro druhou položku je to, že připojení SSL k webu SCM/Kudu přidruženému k jednotlivým aplikacím se provede pomocí adresy formuláře *Your-App-Name.SCM.your-root-Domain-here.com*.
 
-Pomocí platného certifikátu SSL v rukou jsou potřeba další dva přípravné kroky.  Certifikát SSL musí být převeden a uložen jako soubor .pfx.  Mějte na paměti, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty a také musí být zabezpečené pomocí hesla.
+S platným certifikátem SSL je potřeba mít dva další přípravné kroky.  Certifikát SSL musí být převeden nebo uložen jako soubor. pfx.  Mějte na paměti, že soubor. pfx musí zahrnovat všechny zprostředkující a kořenové certifikáty a musí být zabezpečený heslem.
 
-Soubor .pfx výsledná pak musí převést na řetězec ve formátu base64, protože certifikát SSL se nahraje pomocí šablony Azure Resource Manageru.  Šablony Azure Resource Manageru jsou textové soubory, soubor .pfx musí převést na řetězec ve formátu base64, takže může být zahrnut jako parametr šablony.
+Výsledný soubor. pfx se pak musí převést na řetězec Base64, protože certifikát SSL se nahraje pomocí šablony Azure Resource Manager.  Vzhledem k tomu, že šablony Azure Resource Manager jsou textové soubory, musí být soubor. pfx převeden na řetězec Base64, aby jej bylo možné zahrnout jako parametr šablony.
 
-Následující fragment kódu Powershellu ukazuje příklad generování certifikátu podepsaného svým držitelem, Export certifikátu jako soubor .pfx, převádění soubor .pfx s kódováním base64 řetězec s kódováním a ten uložíte base64 kódovaný řetězec do samostatného souboru.  Kód Powershellu pro kódování base64 byla vycházejí z [blogu skripty prostředí Powershell][examplebase64encoding].
+Následující fragment kódu PowerShellu ukazuje příklad generování certifikátu podepsaného svým držitelem, Export certifikátu jako souboru. pfx, převedení souboru. pfx na řetězec kódovaný v kódování Base64 a uložení řetězce kódovaného pomocí Base64 do samostatného souboru.  Kód PowerShellu pro kódování Base64 byl přizpůsoben na [blogu PowerShell Scripts][examplebase64encoding].
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -83,18 +82,18 @@ Následující fragment kódu Powershellu ukazuje příklad generování certifi
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Jakmile certifikát SSL byl úspěšně vygenerované a převést na kódovanou jako base64 string, příklad šablony Azure Resource Manageru na Githubu pro [konfigurace výchozího certifikátu SSL] [ configuringDefaultSSLCertificate] je možné.
+Po úspěšném vygenerování certifikátu protokolu SSL a jeho převodu na řetězec kódovaný v kódování base64 lze použít ukázkový Azure Resource Manager šablonu na GitHubu pro [konfiguraci výchozího certifikátu SSL][configuringDefaultSSLCertificate] .
 
-Parametry v *azuredeploy.parameters.json* souboru jsou uvedeny níže:
+Parametry v souboru *azuredeploy. Parameters. JSON* jsou uvedeny níže:
 
-* *appServiceEnvironmentName*:  Název služba ASE s ILB, která se právě nastavuje.
-* *existingAseLocation*:  Textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad:  "Střední část jihu USA".
-* *pfxBlobString*:  Based64 kódovaný řetězcová reprezentace souboru .pfx.  Pomocí fragmentu kódu je uvedeno výše, by řetězec obsažený v "exportedcert.pfx.b64" zkopírujte a vložte ji jako hodnotu *pfxBlobString* atribut.
-* *password*:  Heslo používané k zabezpečení souboru .pfx.
-* *certificateThumbprint*:  Kryptografický otisk certifikátu.  Pokud se načetlo tuto hodnotu z prostředí Powershell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu jako-je.  Při kopírování hodnoty z dialogového okna certifikátu Windows, ale nezapomeňte odstranit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *název certifikátu*:  Vlastní výběr identifikátor popisný řetězec použít na identitu certifikátu.  Název se používá jako součást jedinečný identifikátor pro Azure Resource Manageru *Microsoft.Web/certificates* entita, která představuje certifikát SSL.  Název **musí** končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá portálem jako indikátor, že certifikát se používá k zabezpečení služby ASE s ILB povolena.
+* *appServiceEnvironmentName*:  Název konfigurovaného pomocného programu interního nástroje.
+* *existingAseLocation*:  Textový řetězec obsahující oblast Azure, ve které byl nasazený pomocným mechanismem interního nástroje  Příklad:  "Střed USA – jih".
+* *pfxBlobString*:  Řetězcová reprezentace based64 zakódovaného souboru. pfx.  Pomocí fragmentu kódu uvedeného výše byste zkopírovali řetězec obsažený v souboru "exportedcert. pfx. B64" a vložili jste ho jako hodnotu atributu *pfxBlobString* .
+* *password*:  Heslo použité k zabezpečení souboru. pfx.
+* *certificateThumbprint*:  Kryptografický otisk certifikátu  Pokud tuto hodnotu načtete z PowerShellu (např. *$Certificate. Kryptografický otisk* z dřívějšího fragmentu kódu) můžete použít hodnotu tak, jak je.  Pokud však zkopírujete hodnotu z dialogu certifikát systému Windows, nezapomeňte oddělit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certifikát certifikátu*:  Popisný identifikátor řetězce, který se používá k identifikaci certifikátu.  Název se používá jako součást jedinečného identifikátoru Azure Resource Manager pro entitu *Microsoft. Web/Certificates* , která představuje certifikát SSL.  Název **musí** končit následující příponou: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá na portálu jako ukazatel, který se používá k zabezpečení interního nástroje přihlašování s povolenými právy.
 
-Příklad zkrácený *azuredeploy.parameters.json* je uveden níže:
+Níže je uveden zkrácený příklad *azuredeploy. Parameters. JSON* :
 
     {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
@@ -121,21 +120,21 @@ Příklad zkrácený *azuredeploy.parameters.json* je uveden níže:
          }
     }
 
-Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno, výchozího certifikátu SSL můžete nakonfigurovat pomocí následujícího fragmentu kódu Powershellu.  Změňte soubor cesty tak, aby odpovídaly, kde jsou umístěny soubory šablon Azure Resource Manageru na vašem počítači.  Nezapomeňte taky zadat vlastní hodnoty pro název nasazení Azure Resource Manageru a název skupiny prostředků.
+Po vyplnění souboru *azuredeploy. Parameters. JSON* se dá výchozí certifikát SSL nakonfigurovat pomocí následujícího fragmentu kódu prostředí PowerShell.  Změňte cesty k souboru tak, aby odpovídaly, kde jsou soubory šablon Azure Resource Manager umístěny na vašem počítači.  Nezapomeňte také uvést vlastní hodnoty pro název nasazení Azure Resource Manager a název skupiny prostředků.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Po Azure Resource Manageru šablony se odešle, že bude trvat přibližně 40 minut za službu ASE front-endu na použití změny.  Například s výchozí velikost služby ASE pomocí dvou front endů, šablona bude trvat přibližně jednu hodinu a dvacet minut dokončení.  Je spuštěn v šabloně služby ASE nebude možné škálovat.  
+Po odeslání šablony Azure Resource Manager bude pro použití změny trvat zhruba 40 minut na front-endu na úrovni služeb.  Například s výchozím pomocným mechanismem velikosti, který používá dvě front-endy, bude šablona trvat přibližně jednu hodinu a 20 minut.  I když je šablona spuštěná, nebude možné škálovat škálování.  
 
-Po dokončení šablonu aplikace na služba ASE s ILB je přístupná přes protokol HTTPS a připojení, bude možné zabezpečit pomocí výchozího certifikátu SSL.  Výchozí certifikát SSL se použije při aplikací v prostředí ILB ASE se tak vyřeší, pomocí kombinace výchozí název hostitele a název aplikace.  Například *https://mycustomapp.internal-contoso.com* využije výchozí certifikát SSL pro * *.internal contoso.com*.
+Po dokončení šablony můžete k aplikacím na interního nástroje přihlašování pomocí protokolu HTTPS přejít a připojení se budou zabezpečit pomocí výchozího certifikátu SSL.  Výchozí certifikát SSL se použije, když se aplikace na pomocném programu interního nástroje řeší pomocí kombinace názvu aplikace a výchozího názvu hostitele.  Například *https://mycustomapp.internal-contoso.com* by se použil výchozí certifikát SSL pro * *. Internal-contoso.com*.
 
-Však stejně jako aplikace běžící na veřejné víceklientská služba, vývojáři mohou také nakonfigurovat vlastní hostitele pro jednotlivé aplikace a nakonfigurujte jedinečných vazeb certifikátů SNI SSL pro jednotlivé aplikace.  
+Stejně jako aplikace spuštěné ve veřejné víceklientské službě ale můžou vývojáři nakonfigurovat i vlastní názvy hostitelů pro jednotlivé aplikace a potom nakonfigurovat jedinečné vazby SNI SSL certifikátů pro jednotlivé aplikace.  
 
 ## <a name="getting-started"></a>Začínáme
-Začínáme s App Service Environment najdete v článku [Úvod do služby App Service Environment](app-service-app-service-environment-intro.md)
+Pokud chcete začít pracovat se App Service prostředími, přečtěte si téma [Úvod do App Service Environment](app-service-app-service-environment-intro.md)
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

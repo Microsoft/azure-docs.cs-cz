@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881112"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067947"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
 
@@ -120,7 +119,7 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

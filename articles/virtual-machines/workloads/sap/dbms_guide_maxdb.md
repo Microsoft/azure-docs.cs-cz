@@ -1,6 +1,6 @@
 ---
-title: SAP nasazení MaxDB, liveCache a obsahu serveru na virtuálních počítačích Azure | Dokumentace Microsoftu
-description: SAP MaxDB liveCache a nasazení obsahu serveru v Azure
+title: Nasazení SAP MaxDB, liveCache a Content serveru na virtuálních počítačích Azure | Microsoft Docs
+description: Nasazení SAP MaxDB, liveCache a Content serveru v Azure
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,21 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836037"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101374"
 ---
-# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB liveCache a nasazení obsahu serveru na virtuálních počítačích Azure
+# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Nasazení SAP MaxDB, liveCache a Content serveru na virtuálních počítačích Azure
 
 [767598]: https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -310,166 +309,166 @@ ms.locfileid: "60836037"
 
 
 
-Tento dokument popisuje několik různých oblastí, které je třeba zvážit při nasazování MaxDB liveCache a Server obsahu v Azure IaaS. Podmínkou pro tento dokument, by měl mít čtení dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a také další příručky v [úloh SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Tento dokument popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování MaxDB, liveCache a serveru obsahu v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další Příručky k úloze [SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
-## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Podrobné informace o nasazení SAP MaxDB ve Windows
-### <a name="sap-maxdb-version-support-on-azure"></a>Podpora verzí MaxDB SAP v Azure
-SAP MaxDB 7.9 nebo novější verze SAP aktuálně podporuje pro použití s produktů založených na systému SAP NetWeaver v Azure. Všechny aktualizace serveru SAP MaxDB nebo JDBC a ovladače ODBC pro použití s produktů založených na systému SAP NetWeaver jsou k dispozici pouze prostřednictvím SAP Service Marketplace na <https://support.sap.com/swdc>.
-Obecné informace o používání systému SAP NetWeaver na SAP MaxDB najdete v <https://www.sap.com/community/topic/maxdb.html>.
+## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Specifické pro nasazení SAP MaxDB ve Windows
+### <a name="sap-maxdb-version-support-on-azure"></a>Podpora verze SAP MaxDB v Azure
+SAP v současné době podporuje SAP MaxDB verze 7,9 nebo vyšší pro použití s produkty SAP NetWeaver v Azure. Všechny aktualizace pro SAP MaxDB Server nebo ovladače JDBC a ODBC, které se mají použít s produkty SAP NetWeaver, jsou k dispozici výhradně prostřednictvím služby SAP Service <https://support.sap.com/swdc>Marketplace na adrese.
+Obecné informace o spuštění SAP NetWeaver na SAP MaxDB najdete na adrese <https://www.sap.com/community/topic/maxdb.html>.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Podporované typy verze Microsoft Windows a virtuálních počítačů Azure pro SAP MaxDB DBMS
-Podporovaná verze Microsoft Windows MaxDB SAP DBMS v Azure najdete v tématu:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Podporované verze systému Microsoft Windows a typy virtuálních počítačů Azure pro SAP MaxDB DBMS
+Podporované verze Microsoft Windows pro SAP MaxDB DBMS v Azure najdete v těchto tématech:
 
-* [Přehled dostupnosti SAP produktu (PAM)][sap-pam]
-* Poznámka SAP [1928533]
+* [Tabulka dostupnosti produktů SAP (PAM)][sap-pam]
+* Poznámky SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi operačního systému Microsoft Windows, což je Microsoft Windows 2016.
+Důrazně doporučujeme použít nejnovější verzi operačního systému Microsoft Windows, což je Microsoft Windows 2016.
 
-### <a name="available-sap-maxdb-documentation-for-maxdb"></a>Dokumentaci k dispozici SAP MaxDB MaxDB
-Aktualizovaný seznam SAP MaxDB dokumentaci najdete v následujících SAP Note [767598]
+### <a name="available-sap-maxdb-documentation-for-maxdb"></a>Dostupná dokumentace SAP MaxDB pro MaxDB
+Aktualizovaný seznam dokumentace SAP MaxDB najdete v následující dokumentaci ke SAP [767598]
 
-### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfigurace MaxDB SAP pro instalace SAP na virtuálních počítačích Azure
+### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP MaxDB pro instalace SAP na virtuálních počítačích Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Konfigurace úložiště
-Osvědčené postupy Azure storage pro SAP MaxDB podle obecná doporučení uvedených v kapitole [strukturu úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+Osvědčené postupy pro Azure Storage pro SAP MaxDB se řídí obecnými doporučeními uvedenými v kapitole [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
-> Stejně jako ostatní databáze má SAP MaxDB také dat a souborů protokolu. V terminologii SAP MaxDB je správný výraz "svazek" (ne "file"). Existují třeba SAP MaxDB datových svazků a svazky s protokoly. Nezaměňujte je s svazků disku operačního systému. 
+> Podobně jako u jiných databází má SAP MaxDB také soubory dat a protokolů. V terminologii SAP MaxDB je však správný výraz "svazek" (nikoli "soubor"). K dispozici jsou například datové svazky SAP MaxDB a svazky protokolů. Nepleťte si je s diskovými svazky operačního systému. 
 > 
 > 
 
-Stručně řečeno budete muset:
+V krátkém případě musíte:
 
-* Pokud používáte účty Azure Storage, nastavte účet úložiště Azure, který obsahuje SAP MaxDB dat a protokolů svazky (dat a souborů protokolu) na **místní redundantní úložiště (LRS)** podle zadání v [důležité informace týkající se Azure Virtual Počítače nasazení DBMS pro úlohy SAP](dbms_guide_general.md).
-* Samostatné cesty vstupně-výstupních operací pro SAP MaxDB datové svazky (datové soubory) v cestě vstupně-výstupních operací pro svazky s protokoly (soubory protokolů). To znamená, že SAP MaxDB datové svazky (datové soubory) bylo nutné instalovat na jedné logické jednotky a svazky s protokoly SAP MaxDB (soubory protokolů) je potřeba je instalovat na jiné logické jednotce.
-* Nastavte správný typ ukládání do mezipaměti u každého disku, v závislosti na tom, jestli budete používat pro SAP MaxDB dat či protokolu svazky (dat a souborů protokolu) a ať už používáte Azure na úrovni Standard nebo Premium služby Azure Storage, jak je popsáno v [důležité informace týkající se Azure Virtual Machines DBMS nasazení pro úlohy SAP](dbms_guide_general.md).
-* Tak dlouho, dokud aktuální kvóta IOPS na disk splňuje požadavky, je možné ukládat všechny datové svazky na jednom připojeném disku a také ukládat všechny svazky protokolu databáze na jiného jeden připojený disk.
-* Pokud se vyžadují další vstupně-výstupních operací a/nebo místa, se doporučuje použít Microsoft okno fondy úložiště (pouze k dispozici v systému Microsoft Windows Server 2012 a vyšší) vytvořte jedno velké logické zařízení přes několik připojených disků. Další podrobnosti najdete v tématu taky [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). Tento přístup zjednodušuje režie správy spravovat místo na disku a zabraňuje úsilí ručně distribuce souborů na několik připojených disků.
-* Důrazně doporučujeme pro MaxDB nasazení službu Azure Premium Storage. 
+* Pokud používáte účty Azure Storage, nastavte účet úložiště Azure, který obsahuje data a svazky protokolů SAP MaxDB (soubory dat a protokolů) do **místního redundantního úložiště (LRS)** , jak je uvedeno v části [požadavky na nasazení Azure Virtual Machines DBMS pro SAP. zatížení](dbms_guide_general.md).
+* Oddělte cestu v/v pro datové svazky SAP MaxDB (datové soubory) z cesty v/v pro svazky protokolů (soubory protokolu). Znamená to, že je potřeba nainstalovat datové svazky SAP MaxDB (datové soubory) na jednu logickou jednotku a svazky protokolu SAP MaxDB (soubory protokolu) na jinou logickou jednotku.
+* Nastavte vhodný typ ukládání do mezipaměti pro každý disk v závislosti na tom, jestli ho používáte pro SAP MaxDB data nebo pro svazky protokolů (data a soubory protokolů), a jestli používáte Azure Standard nebo Azure Premium Storage, jak je popsáno v tématu [požadavky pro nasazení azure Virtual Machines DBMS. pro úlohy SAP](dbms_guide_general.md).
+* Pokud má aktuální kvóta IOPS na disk splňovat požadavky, je možné uložit všechny datové svazky na jednom připojeném disku a také uložit všechny svazky protokolů databáze na jiný jeden připojený disk.
+* Pokud se vyžaduje více vstupně-výstupních operací a/nebo mezer, doporučuje se používat fondy úložišť Microsoft Window (dostupné jenom v Microsoft Windows Serveru 2012 a novějších) k vytvoření jednoho velkého logického zařízení přes více připojených disků. Další podrobnosti najdete v tématu [informace o nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Tento přístup zjednodušuje správu a umožňuje spravovat místo na disku a vyhnout se úsilí o ruční distribuci souborů mezi více připojenými disky.
+* pro nasazení MaxDB se důrazně doporučuje použít Azure Premium Storage. 
 
-![Odkaz na konfiguraci virtuálního počítače Azure IaaS pro SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
+![Referenční konfigurace virtuálního počítače Azure s IaaS pro SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
 #### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Zálohování a obnovení
-Při nasazování SAP MaxDB do Azure, musíte zkontrolovat zálohování metodologii. I když v systému není systémem produktivní, SAP databázi hostované na SAP MaxDB nutné zálohovat pravidelně. Od služby Azure Storage uchovává tři Image, je nyní méně důležité z hlediska ochranu systému proti selhání úložiště a další důležité provozní databázi nebo správu selhání zálohování. Hlavním důvodem pro zajištění řádného zálohování a plánu obnovení je tak, aby se může kompenzovat chyby logické nebo ruční tím, že poskytuje funkce pro obnovení bodu v čase. Cílem je tak buď pomocí zálohování a obnovení databáze do určitého bodu v čase nebo pomocí záloh v Azure pro jiný systém tak, že zkopírujete existující databázi. 
+Při nasazování SAP MaxDB do Azure je nutné zkontrolovat metodologii zálohování. I v případě, že systém není produktivní systém, musí být databáze SAP hostovaná SAP MaxDB pravidelně zálohována. Vzhledem k tomu, že Azure Storage udržuje tři image, zálohování je teď méně důležité z hlediska ochrany vašeho systému proti selhání úložiště a důležitějším provozním nebo administrativním selháním. Hlavním důvodem pro zachování správného plánu zálohování a obnovení je, že můžete kompenzovat logické nebo ruční chyby tím, že zajistíte možnosti obnovení k určitému bodu v čase. Cílem je, aby se v tomto časovém okamžiku obnovila databáze k určitému bodu v čase nebo používala zálohy v Azure k osazení jiného systému zkopírováním existující databáze. 
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako pro místní systémy, takže můžete použít standardní nástroje SAP MaxDB zálohování a obnovení, které jsou popsány v jednom z dokumenty SAP MaxDB dokumentaci uvedené v Poznámka SAP [767598]. 
+Zálohování a obnovení databáze v Azure funguje stejným způsobem jako u místních systémů, takže můžete používat standardní nástroje SAP MaxDB Backup/Restore, které jsou popsané v některém z dokumentů dokumentace SAP MaxDB uvedených v tématu SAP Note [767598]. 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Otázky výkonu při zálohování a obnovení
-Stejně jako v nasazení na holé počítače jsou závislé na tom, kolik svazky lze číst v paralelních aplikací a propustnosti tyto svazky výkonu zálohování a obnovení. Proto můžete předpokládat jeden:
+#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Požadavky na výkon pro zálohování a obnovení
+Stejně jako u nasazení v holém prostředí závisí výkon zálohování a obnovení na tom, kolik svazků je možné paralelně číst a propustnost těchto svazků. Proto může jeden předpokládat:
 
-* Méně počet disků používá k ukládání zařízení databáze, nižší celkové propustnost čtení
-* Menším počtem cílů (Stripe adresáře, discích) k zápisu zálohy do nižší propustnost
+* Čím méně je počet disků použitých k uložení databázových zařízení, tím nižší je celková propustnost čtení.
+* Čím méně cílů (prokládané adresáře, disky) k zápisu zálohy do, tím nižší propustnost
 
-Pokud chcete zvýšit počet cílů pro zápis do, existují dvě možnosti, které používáte, pravděpodobně v kombinaci, v závislosti na potřebách:
+Pokud chcete zvýšit počet cílů, na které se má zapisovat, existují dvě možnosti, které můžete v závislosti na vašich potřebách použít, možná v kombinaci:
 
-* Vyhrazení oddělených svazků pro zálohování
-* Prokládání cílový svazek přes více připojené disky za účelem zlepšení propustnosti vstupně-výstupních operací na tomto svazku prokládané disku
-* S zařízení samostatný vyhrazený logického disku:
-  * SAP MaxDB záložní svazky (tj. soubory)
-  * SAP MaxDB datové svazky (tj. soubory)
-  * SAP svazky s protokoly MaxDB (například soubory)
+* Vyhradování samostatných svazků pro zálohování
+* Prokládání cílového svazku zálohování přes několik připojených disků za účelem zlepšení propustnosti IOPS na tomto svazku prokládaného disku
+* Samostatná vyhrazená zařízení logického disku pro:
+  * Svazky pro zálohování SAP MaxDB (tj. soubory)
+  * MaxDB datové svazky SAP (tj. soubory)
+  * Svazky protokolu SAP MaxDB (tj. soubory)
 
-Prokládání svazku přes více připojené disky má probírali výše v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). 
+Prokládání svazků na více připojených discích bylo zmíněno dříve v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Další důležité informace
-Všechny ostatní obecné oblasti jako je například monitorování dostupnosti Azure a SAP také použít, jak je popsáno v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md).  pro nasazení virtuálních počítačů s databází SAP MaxDB.
-Další nastavení specifická pro SAP MaxDB je transparentní pro virtuální počítače Azure a jsou popsané v různých dokumenty, které jsou uvedené v Poznámka SAP [767598] a v těchto poznámkách:
+#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Další požadavky
+Všechny ostatní obecné oblasti, jako jsou například skupiny dostupnosti Azure nebo monitorování SAP, platí také jak je popsáno v tématu [požadavky pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md).  pro nasazení virtuálních počítačů s databází SAP MaxDB.
+Další nastavení pro SAP MaxDB jsou pro virtuální počítače Azure transparentní a jsou popsána v různých dokumentech uvedených v tématu SAP Note [767598] a v těchto poznámkách SAP:
 
 * [826037] 
 * [1139904]
 * [1173395]
 
-## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Podrobné informace o nasazení SAP liveCache ve Windows
-### <a name="sap-livecache-version-support"></a>SAP liveCache podpora verzí
-Minimální verze SAP liveCache podporované ve službě Azure Virtual Machines je **25 SP 10.0 LC/LCAPPS SAP** včetně **liveCache 7.9.08.31** a **LCA sestavení 25**, kterou jsme vydali pro **EhP 2 pro SAP SCM 7.0** a novějších verzí.
+## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Specifické pro nasazení SAP liveCache ve Windows
+### <a name="sap-livecache-version-support"></a>Podpora verze SAP liveCache
+Minimální verze SAP liveCache podporovaná ve službě Azure Virtual Machines je **SAP LC/LCAPPS 10,0 SP 25** včetně **LiveCache 7.9.08.31** a **LCA-Build 25**, vydané pro **EHP 2 pro SAP SCM 7,0** a novější verze.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Podporované typy verze Microsoft Windows a virtuálních počítačů Azure pro SAP liveCache DBMS
-Podporovaná verze Microsoft Windows liveCache SAP v Azure najdete v tématu:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Podporované verze systému Microsoft Windows a typy virtuálních počítačů Azure pro SAP liveCache DBMS
+Podporované verze Microsoft Windows pro SAP liveCache v Azure najdete v těchto tématech:
 
-* [Přehled dostupnosti SAP produktu (PAM)][sap-pam]
-* Poznámka SAP [1928533]
+* [Tabulka dostupnosti produktů SAP (PAM)][sap-pam]
+* Poznámky SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi operačního systému Microsoft Windows Server. 
+Důrazně doporučujeme použít nejnovější verzi operačního systému Microsoft Windows Server. 
 
-### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache pokyny ke konfiguraci pro instalace SAP na virtuálních počítačích Azure
-#### <a name="recommended-azure-vm-types-for-livecache"></a>Doporučuje se pro liveCache typy virtuálních počítačů Azure
-Jak SAP liveCache je aplikace, která provádí výpočty velký, velikost a rychlost paměti RAM a procesoru má hlavní vliv na výkon SAPU liveCache. 
+### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP liveCache pro instalace SAP na virtuálních počítačích Azure
+#### <a name="recommended-azure-vm-types-for-livecache"></a>Doporučené typy virtuálních počítačů Azure pro liveCache
+Jako SAP liveCache je aplikace, která provádí velké výpočty, množství a rychlost paměti RAM a CPU mají zásadní vliv na výkon SAP liveCache. 
 
-Pro SAP podporuje typy virtuálních počítačů Azure (Poznámka SAP [1928533]), všechny virtuální prostředkům procesoru přiděleným k virtuálnímu počítači se zálohují na vyhrazených prostředcích fyzického procesoru hypervisoru. Žádné předimenzování (a tedy žádné soutěže pro prostředky procesoru) se provádí.
+Pro typy virtuálních počítačů Azure podporované SAP (SAP Note [1928533]) se všechny prostředky virtuálního procesoru přidělené k tomuto virtuálnímu počítači zálohují pomocí vyhrazených prostředků fyzického procesoru hypervisoru. Žádná nadvýšení (a tudíž ani žádná konkurence pro prostředky CPU) se neprovádí.
 
-Podobně pro SAP podporuje všechny typy s instancí virtuálních počítačů Azure, paměť virtuálního počítače je namapována na fyzické paměti – bylo potřeba zřizovat (útoky over-pass-the závazek), například 100 % se nepoužívá.
+Podobně platí, že u všech typů instancí virtuálních počítačů Azure podporovaných systémem SAP je paměť virtuálního počítače 100% namapovaná na fyzické převzetí paměti (Provisioning), například v případě, že se nepoužívá.
 
-Z pohledu důrazně doporučujeme používat nejnovější Dv2, Dv3, Ev3 a virtuální počítače řady M-series. Výběr různých typů virtuálních počítačů závisí na paměti, které potřebujete pro liveCache a prostředky procesoru, které potřebujete. Jako s všechna ostatní nasazení DBMS je vhodné využívat Azure Storage úrovně Premium pro kritické svazky výkonu.
+V této perspektivě se důrazně doporučuje použít nejnovější virtuální počítače s Dv2, Dv3, Ev3 a M-Series. Volba různých typů virtuálních počítačů závisí na paměti, kterou potřebujete pro liveCache a prostředky procesoru, které potřebujete. Stejně jako u všech ostatních nasazení systému DBMS je vhodné využít Azure Premium Storage pro kritické svazky s výkonem.
 
 #### <a name="storage-configuration-for-livecache-in-azure"></a>Konfigurace úložiště pro liveCache v Azure
-Jak SAP liveCache je založena na technologii SAP MaxDB, všechny služby Azure storage doporučení osvědčených postupů uvedené výše pro SAP MaxDB popsané v tomto dokumentu platí také pro SAP liveCache. 
+Jelikož SAP liveCache vychází z technologie SAP MaxDB, platí pro SAP liveCache všechna doporučení osvědčených postupů pro Azure Storage, která jsou uvedená pro SAP MaxDB popsaná v tomto dokumentu. 
 
-#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Pro scénář liveCache vyhrazený virtuální počítač Azure
-Stejně jako SAP liveCache intenzivně využívá výpočetní výkon, produktivitu využití důrazně doporučujeme k nasazení na vyhrazený virtuální počítač Azure. 
+#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Vyhrazený virtuální počítač Azure pro liveCache scénář
+Vzhledem k tomu, že SAP liveCache intenzivně využívá výpočetní výkon, se důrazně doporučuje nasadit na vyhrazený virtuální počítač Azure. 
 
-![Vyhrazená pro zajištění liveCache pro případ produktivní použití virtuálních počítačů Azure](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
+![Vyhrazený virtuální počítač Azure pro liveCache pro případ produktivního použití](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
 
 
 #### <a name="backup-and-restore-for-livecache-in-azure"></a>Zálohování a obnovení pro liveCache v Azure
-zálohování a obnovení, včetně důležité informace o výkonu, jsou již popsané v příslušné kapitoly SAP MaxDB v tomto dokumentu. 
+zálohování a obnovení, včetně požadavků na výkon, jsou již popsány v příslušných kapitolách SAP MaxDB v tomto dokumentu. 
 
 #### <a name="other-considerations"></a>Další důležité informace
-Další obecné oblasti jsou již popsané v příslušné kapitole SAP MaxDB. 
+Všechny ostatní obecné oblasti jsou již popsány v příslušné kapitole SAP MaxDB. 
 
-## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Podrobné informace o nasazení obsahu serveru SAP na Windows v Azure
-Server obsahu SAP je součástí samostatné, na serveru k ukládání obsahu, jako jsou elektronických dokumentů v různých formátech. Server obsahu SAP poskytuje vývoje technologie a má být použité mezi aplikacemi pro všechny aplikace SAP. Je nainstalovaný v samostatném systému. Typické obsah je školicích materiálů a dokumentace ke službě z datového skladu znalostní báze nebo technické výkresy pocházející z mySAP PLM systém správy dokumentů. 
+## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Specifické pro nasazení serveru obsahu SAP ve Windows v Azure
+Server obsahu SAP je samostatná součást založená na serveru pro ukládání obsahu, jako jsou například elektronické dokumenty v různých formátech. Server obsahu SAP poskytuje vývoj technologií a je možné ho používat pro jakékoli aplikace SAP. Instaluje se do samostatného systému. Typický obsah je školicí materiál a dokumentace ze služby Knowledge Warehouse nebo technických kreseb pocházejících ze systému správy dokumentů mySAP PLM. 
 
-### <a name="sap-content-server-version-support-for-azure-vms"></a>Podpora verze obsahu serveru SAP pro virtuální počítače Azure
-SAP v současné době podporuje:
+### <a name="sap-content-server-version-support-for-azure-vms"></a>Podpora verze serveru SAP Content Server pro virtuální počítače Azure
+SAP aktuálně podporuje:
 
-* **Server obsahu SAP** s verzí **6.50 (a vyšší)**
-* **SAP MaxDB verze 7.9**
-* **Microsoft IIS (Internet Information Server) verze 8.0 (a vyšší)**
+* **Server obsahu SAP** s verzí **6,50 (a vyšší)**
+* **SAP MaxDB verze 7,9**
+* **Microsoft IIS (Internet Information Server) verze 8,0 (a vyšší)**
 
-Důrazně doporučujeme používat nejnovější verzi obsahu serveru SAP a nejnovější verzi **Microsoft IIS**. 
+Důrazně doporučujeme použít nejnovější verzi serveru SAP Content a nejnovější verzi **služby Microsoft IIS**. 
 
-Zkontrolujte podporované verze obsahu serveru SAP a Microsoft IIS [SAP produktu dostupnost matice (PAM)][sap-pam].
+Podívejte se na nejnovější podporované verze serveru SAP Content a služby Microsoft IIS v tabulce [dostupnosti produktů SAP (pam)][sap-pam].
 
-### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Podporované typy Microsoft Windows a virtuálních počítačů Azure pro SAP serveru obsahu
-Podporovaná verze Windows serveru obsahu SAP v Azure, najdete v tématu:
+### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Podporované typy virtuálních počítačů Microsoft Windows a Azure pro server obsahu SAP
+Pokud chcete zjistit podporovanou verzi Windows pro server obsahu SAP v Azure, přečtěte si téma:
 
-* [Přehled dostupnosti SAP produktu (PAM)][sap-pam]
-* Poznámka SAP [1928533]
+* [Tabulka dostupnosti produktů SAP (PAM)][sap-pam]
+* Poznámky SAP [1928533]
 
-Důrazně doporučujeme používat nejnovější verzi systému Microsoft Windows Server.
+Důrazně doporučujeme použít nejnovější verzi systému Microsoft Windows Server.
 
-### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny ke konfiguraci serveru obsahu SAP pro instalace SAP na virtuálních počítačích Azure
-#### <a name="storage-configuration-for-content-server-in-azure"></a>Konfigurace úložiště pro Server obsahu v Azure
-Při konfiguraci serveru SAP obsahu k ukládání souborů v databázi SAP MaxDB, všechny služby Azure storage osvědčené postupy doporučení pro SAP MaxDB uvedených v tomto dokumentu platí také pro scénář obsahu serveru SAP. 
+### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny pro konfiguraci serveru SAP pro instalaci SAP na virtuálních počítačích Azure
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Konfigurace úložiště pro server obsahu v Azure
+Pokud nakonfigurujete server obsahu SAP pro ukládání souborů v databázi SAP MaxDB, platí také pro scénář serveru SAP Content Server všechna doporučení pro osvědčené postupy pro službu Azure Storage uvedená pro SAP MaxDB v tomto dokumentu. 
 
-Při konfiguraci serveru SAP obsahu k ukládání souborů v systému souborů, doporučujeme použít vyhrazený logické jednotky. Použití prostorů úložiště systému Windows umožňuje také zvýšit velikost logického disku a propustnost vstupně-výstupních operací, jak je popsáno v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). 
+Pokud nakonfigurujete server obsahu SAP pro ukládání souborů v systému souborů, doporučuje se použít vyhrazenou logickou jednotku. Použití prostorů úložiště Windows vám umožní taky zvýšit propustnost logických disků a IOPS, jak je popsáno v tématu [požadavky pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). 
 
-#### <a name="sap-content-server-location"></a>Umístění obsahu serveru SAP
-Server SAP obsahu musí být nasazená ve stejné oblasti Azure a virtuální síť Azure, ve kterém je nasazená systému SAP. Můžete se rozhodnout, jestli chcete nasadit komponenty serveru obsahu SAP na vyhrazený virtuální počítač Azure nebo na jednom virtuálním počítači, ve kterém je spuštěný systém SAP libovolně. 
+#### <a name="sap-content-server-location"></a>Umístění serveru obsahu SAP
+Server obsahu SAP musí být nasazený ve stejné oblasti Azure a virtuální síti Azure, kde je nasazený systém SAP. Můžete se rozhodnout, jestli chcete nasadit součásti serveru SAP Content Server na vyhrazeném virtuálním počítači Azure nebo na stejném virtuálním počítači, kde je spuštěný systém SAP. 
 
-![Vyhrazených virtuálních počítačích Azure k obsahu serveru SAP](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
+![Vyhrazený virtuální počítač Azure pro server obsahu SAP](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
 
 
-#### <a name="sap-cache-server-location"></a>Umístění mezipaměti serveru SAP
-Server SAP mezipaměti je dalších serverových součástí a zajistit tak přístup k místně (v mezipaměti) dokumenty. Server SAP mezipaměti ukládá do mezipaměti dokumenty obsahu serveru SAP. Toto je optimalizace síťový provoz, pokud se dokumenty muset načíst více než jednou z různých míst. Obecně platí, že Server SAP mezipaměti musí být fyzicky blízko klienta, který má přístup k mezipaměti serveru SAP. 
+#### <a name="sap-cache-server-location"></a>Umístění serveru mezipaměti SAP
+Server mezipaměti SAP je další komponentou založenou na serveru, která poskytuje přístup k dokumentům (v mezipaměti) místně. Server mezipaměti SAP ukládá do mezipaměti dokumenty serveru SAP Content. To umožňuje optimalizovat síťový provoz, pokud se dokumenty musí z různých umístění načíst víckrát než jednou. Obecným pravidlem je, že server mezipaměti SAP musí být fyzicky blízko klientovi, který přistupuje k serveru mezipaměti SAP. 
 
 Tady máte dvě možnosti:
 
-1. **Klient je back-end systém SAP** Pokud systém SAP back-end je nakonfigurovaná pro přístup k obsahu serveru SAP, SAP systému je klient. Jako systém SAP a SAP serveru obsahu jsou nasazené ve stejné oblasti Azure, ve stejném datacentru Azure, jsou fyzicky blízko u sebe. Proto není nutné mít vyhrazený Server mezipaměti SAP. Klienti SAP uživatelského rozhraní (SAP GUI nebo webový prohlížeč) přímo přistupovat do systému SAP a systém SAP načte dokumenty ze serveru obsahu SAP.
-2. **Klient je v místním webovém prohlížeči** The Server obsahu SAP dá přistupovat přímo ve webovém prohlížeči. V tomto případě je webový prohlížeč v místním klientovi obsahu serveru SAP. Místním datovým centrem a datacentra Azure jsou umístěny v různých fyzických umístění (ideálně blízko u sebe). Vašeho místního datového centra je připojení k Azure přes Azure VPN typu Site-to-Site nebo ExpressRoute. Přestože obě možnosti nabízí zabezpečené připojení k síti VPN do Azure, připojení sítě site-to-site se nebude poskytovat SLA síťové šířky pásma a latencí mezi místním datovým centrem a datového centra Azure. Ke zrychlení přístupu k dokumentům, proveďte jednu z následujících akcí:
-   1. Instalace serveru SAP mezipaměti on-premises blízko v místním webovém prohlížeči (možnost na obrázku níže)
-   2. Konfigurace Azure ExpressRoute, které nabízí nízkou latenci a vysokorychlostní vyhrazené síťové připojení mezi místním datovým centrem a datového centra Azure.
+1. **Klient je back-end systém SAP** . Pokud je systém back-end SAP nakonfigurovaný pro přístup k serveru obsahu SAP, je systém SAP klientem. Jak systém SAP, tak i SAP Content Server jsou nasazené ve stejné oblasti Azure, ve stejném datovém centru Azure, jsou fyzicky blízko sebe. Proto není nutné mít vyhrazený server mezipaměti SAP. Klienti uživatelského rozhraní SAP (grafické rozhraní SAP nebo webový prohlížeč) přistupují k systému SAP přímo a systém SAP načte dokumenty ze serveru obsahu SAP.
+2. **Klient je místní webový prohlížeč** . Server obsahu SAP lze nakonfigurovat tak, aby k němu měl přímý odkaz webový prohlížeč. V tomto případě je webový prohlížeč, který běží v místním prostředí, klientem serveru SAP Content. Místní datové centrum a datové centrum Azure jsou umístěné v různých fyzických umístěních (v ideálním případě blízko sebe). Vaše místní datacentrum je připojené k Azure přes Azure Site-to-Site VPN nebo ExpressRoute. I když obě možnosti nabízí zabezpečené připojení k síti VPN k Azure, síťové připojení typu Site-to-site nenabízí smlouvu SLA sítě a latenci mezi místním datacentrem a datacenterm Azure. Chcete-li zrychlit přístup k dokumentům, můžete provést jednu z následujících akcí:
+   1. Místní instalace serveru mezipaměti SAP, blízko místního webového prohlížeče (možnost na obrázku níže)
+   2. Nakonfigurujte Azure ExpressRoute, který nabízí vysokorychlostní síťové připojení s vysokou latencí a nízkou latencí mezi místním datacentrem a datacenterm Azure.
 
-![Možnost instalace místním serverem SAP mezipaměti](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+![Možnost instalace místního serveru mezipaměti SAP](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Backup / obnovení
-Při konfiguraci serveru SAP obsahu k ukládání souborů v databázi SAP MaxDB, postupu a výkonové požadavky zálohování/obnovení už podle SAP MaxDB kapitol tohoto dokumentu. 
+Pokud nakonfigurujete server obsahu SAP tak, aby ukládal soubory do databáze SAP MaxDB, postupy zálohování a obnovení a požadavky na výkon jsou již popsány v kapitolách SAP MaxDB tohoto dokumentu. 
 
-Při konfiguraci serveru SAP obsahu k ukládání souborů v systému souborů, jednou z možností je provést ruční zálohování a obnovení struktury celý soubor kde jsou umístěny v dokumentech. Podobně jako SAP MaxDB zálohování a obnovení, se doporučuje mít vyhrazený svazek pro zálohování účel. 
+Pokud nakonfigurujete server obsahu SAP pro ukládání souborů v systému souborů, jednou z možností je provést ruční zálohování nebo obnovení celé struktury souborů, kde jsou umístěny dokumenty. Podobně jako u služby SAP MaxDB Backup/Restore se doporučuje mít vyhrazený diskový svazek pro účely zálohování. 
 
 #### <a name="other"></a>Ostatní
-Další nastavení SAP obsahu specifickou pro Server je transparentní pro virtuální počítače Azure a jsou popsané v různých dokumenty a SAP poznámky:
+Další nastavení specifická pro obsah SAP serveru jsou pro virtuální počítače Azure transparentní a jsou popsána v tématu různé dokumenty a poznámky SAP:
 
 * <https://service.sap.com/contentserver> 
-* Poznámka SAP [1619726]  
+* Poznámky SAP [1619726]  

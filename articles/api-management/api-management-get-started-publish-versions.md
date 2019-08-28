@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203691"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073693"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
 
@@ -38,8 +37,8 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Přidání nové verze
 
@@ -90,7 +89,7 @@ Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
 3. Vyberte **Rozhraní API**.
 4. Vyberte **Přidat**.
 5. Vyberte **Demo Conference API, verze v1**.
-6. Klikněte na **Vybrat**.
+6. Klikněte na tlačítko **vyberte**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 

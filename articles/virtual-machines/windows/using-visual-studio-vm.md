@@ -1,6 +1,6 @@
 ---
-title: Pomocí sady Visual Studio na virtuálním počítači Azure | Dokumentace Microsoftu
-description: Na virtuálním počítači Azure pomocí sady Visual Studio.
+title: Používání sady Visual Studio na virtuálním počítači Azure | Microsoft Docs
+description: Použití sady Visual Studio na virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -10,33 +10,32 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 06/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 31b856b4f6937b57f0a2b82d94fc0fb02936f83f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b62e7e993ba4b5784e28dd9a36979640e2e37da6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449375"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101538"
 ---
-# <a name="visual-studio-images-on-azure"></a>Visual Studio Image v Azure
+# <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Pomocí sady Visual Studio v předkonfigurovaném Azure virtuální počítač (VM) je rychlý a snadný způsob, jak přejít od ničeho nahoru a spuštění vývojové prostředí. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
 
 Zatím Azure neznáte? [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Jaké konfigurace a verze jsou k dispozici?
-Image pro nejnovější hlavní verze, Visual Studio 2019, Visual Studio 2017 a Visual Studio 2015, najdete na webu Azure Marketplace.  Pro každý vydání hlavní verze, zobrazí původně "vydáno pro web" verzi (RTW) a nejnovější aktualizované verze.  Každá z těchto verzí nabízí edice Visual Studio Community a Visual Studio Enterprise.  Tyto Image jsou aktualizovány alespoň každý měsíc zahrnout nejnovější aktualizace sady Visual Studio a Windows.  Názvy imagí budou i nadále stejná, obsahuje popis každého obrázku nainstalovaný produkt verze a "k" datu image.
+Obrázky pro nejaktuálnější hlavní verze, Visual Studio 2019, Visual Studio 2017 a Visual Studio 2015, najdete v Azure Marketplace.  U každé vydané hlavní verze se zobrazí původní verze "vydáno do webu" (RTW) a nejnovější aktualizované verze.  Každá z těchto verzí nabízí edice Visual Studio Community a Visual Studio Enterprise.  Tyto Image jsou aktualizovány alespoň každý měsíc zahrnout nejnovější aktualizace sady Visual Studio a Windows.  Názvy imagí budou i nadále stejná, obsahuje popis každého obrázku nainstalovaný produkt verze a "k" datu image.
 
 | Prodejní verze                                                                                                                                                | Edice              | Verze produktu   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Nejnovější verzi (verze 16.1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Organizace, Community | Verze 16.1.3    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Organizace, Community | Verze 16.0.5    |
-| [Visual Studio 2017: Nejnovější (verzi 15.9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Organizace, Community | Verze 15.9.13   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Organizace, Community | Verze 15.0.24   |
+| [Visual Studio 2019: Nejnovější (verze 16,1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Organizace, Community | 16.1.3 verze    |
+| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Organizace, Community | 16.0.5 verze    |
+| [Visual Studio 2017: Nejnovější (verze 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Organizace, Community | 15.9.13 verze   |
+| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Organizace, Community | 15.0.24 verze   |
 | [Visual Studio 2015: Nejnovější (aktualizace 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Organizace, Community | Verze 14.0.25431.01 |
 
 > [!NOTE]
@@ -53,7 +52,7 @@ Každý image obsahuje funkci doporučené nastavení pro tuto verzi sady Visual
 * Rozšíření GitHub pro Visual Studio
 * Nástroje LINQ to SQL
 
-Příkazový řádek použitý k instalaci sady Visual Studio při sestavování Image je následujícím způsobem:
+Příkazový řádek, který se používá k instalaci sady Visual Studio při sestavování imagí, je následující:
 
 ```
     vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
@@ -95,9 +94,9 @@ Další informace najdete v tématu [přihlášení k Visual Studio](/visualstud
 
 Celé spektrum od vývojových prostředích je obrovský a je skutečné náklady spojené s vytvoření složitější prostředí. Bez ohledu na konfiguraci vašeho prostředí můžete uložit nebo zachytit virtuální počítač nakonfigurovaný jako "základní image" pro budoucí použití nebo pro ostatní členy týmu. Potom při dalším spuštění nového virtuálního počítače, můžete zřídit ze základní image místo image Azure Marketplace.
 
-Rychlý souhrn: Použijte nástroj pro přípravu systému (Sysprep) a vypnout na spuštěný virtuální počítač a pak zachytíte *(obrázek 1)* virtuálního počítače jako bitovou kopii prostřednictvím uživatelského rozhraní na webu Azure Portal. Azure uloží `.vhd` soubor, který obsahuje bitovou kopii v účtu úložiště, které si vyberete. Nová bitová kopie se potom zobrazí jako prostředek obrázku v seznamu prostředků vašeho předplatného.
+Rychlý souhrn: Použijte nástroj pro přípravu systému (Sysprep) a vypněte běžící virtuální počítač a potom Zachyťte *(obrázek 1)* virtuální počítač jako Image prostřednictvím uživatelského rozhraní v Azure Portal. Azure uloží `.vhd` soubor, který obsahuje bitovou kopii v účtu úložiště, které si vyberete. Nová bitová kopie se potom zobrazí jako prostředek obrázku v seznamu prostředků vašeho předplatného.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Obrázek 1) Zachycení image na webu Azure portal uživatelského rozhraní.* </center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Obrázek 1) Zachytit image prostřednictvím uživatelského rozhraní Azure Portal.* </center>
 
 Další informace najdete v tématu [vytvoření spravované image zobecněného virtuálního počítače v Azure](/azure/virtual-machines/windows/capture-image-resource).
 

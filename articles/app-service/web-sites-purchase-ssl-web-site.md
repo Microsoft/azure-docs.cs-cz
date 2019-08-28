@@ -10,18 +10,17 @@ ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: d6d3e91bef6c4f837b068d755994b2f3268600da
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905944"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074037"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Koupit a nakonfigurovat certifikát SSL pro Azure App Service
 

@@ -1,65 +1,64 @@
 ---
-title: KRITICKÉ služby se nezdařila při dalším spuštění virtuálního počítače Azure | Dokumentace Microsoftu
-description: Zjistěte, jak řešit chyby "FAILED 0x0000005A kritické služby", která proběhne při dalším spuštění | Dokumentace Microsoftu
+title: KRITICKá služba se nezdařila při spouštění virtuálního počítače Azure | Microsoft Docs
+description: Přečtěte si, jak řešit potíže s chybou "0x0000005A-CRITICAL SERVICE FAILed", ke kterému dochází při spouštění | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2a6e8985a2cb13da0f2e34f4e9961f84aacdd974
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449803"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103504"
 ---
-# <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zobrazí "Kritické služby se nezdařilo" modré obrazovky při dalším spuštění virtuálního počítače Azure
-Tento článek popisuje chybu "Kritické služby se nezdařilo", které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje řešení problémů s kroky pro řešení problémů. 
+# <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
+Tento článek popisuje chybu "KRITICKá služba neúspěšná", která se může vyskytnout při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky pro řešení potíží, které vám pomůžou tyto problémy vyřešit. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak 
 
-Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky spouštěcí [Diagnostika spouštění](./boot-diagnostics.md), uvidíte jednu z následujících chybových zpráv na modrá obrazovka:
+Virtuální počítač s Windows se nespustí. Když zkontrolujete spouštěcí snímky obrazovky v [diagnostice spouštění](./boot-diagnostics.md), zobrazí se na modré obrazovce jedna z následujících chybových zpráv:
 
-- "Počítač narazili na problém a vyžaduje restartování. Je možné restartovat. Další informace o tomto problému a je to možné opravy https://windows.com/stopcode. Při volání pracovníci technické podpory, můžete svým uživatelům umožnit tyto údaje: Zastavte kód: KRITICKÉ SLUŽBY SE NEZDAŘILO" 
-- "Počítač narazili na problém a vyžaduje restartování. Právě Shromáždíme některé informace o chybě, a jsme budete restartujte za vás. Pokud se chcete dozvědět víc, můžete hledat online později pro tuto chybu: CRITICAL_SERVICE_FAILED"
+- "Váš počítač byl příčinou problému a je nutné ho restartovat. Můžete restartovat. Další informace o tomto problému a možných opravách najdete na https://windows.com/stopcode webu. Pokud zavoláte osobu podpory, poskytněte jim tyto informace: Stop kód: KRITICKÁ SLUŽBA NEBYLA ÚSPĚŠNÁ. " 
+- "Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak za vás budeme restartovat. Pokud se chcete dozvědět víc, můžete pro tuto chybu vyhledat online později: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Příčina
 
-Existují různé příčiny chyby stop. Nejčastější příčiny patří:
+Chyby Stop mají různé příčiny. Mezi nejběžnější příčiny patří:
 - Problém s ovladačem
-- Poškozená systémový soubor nebo paměti
-- Aplikace přistupuje k zakázané sektoru paměti
+- Poškozený systémový soubor nebo paměť
+- Aplikace přistupuje k zakázanému sektoru paměti.
 
 ## <a name="solution"></a>Řešení 
 
-Chcete-li vyřešit tento problém [obraťte se na podporu a odeslat soubor s výpisem paměti](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), což pomůže nám to problém rychleji diagnostikovat, nebo zkuste následující samoobslužné podpory pro řešení.
+Pokud chcete tento problém vyřešit, obraťte se na [podporu a odešlete soubor s výpisem paměti](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), který nám pomůže rychle diagnostikovat problém nebo vyzkoušet následující řešení pro samoobslužnou pomoc.
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
 
-1. Pořízení snímku disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](./troubleshoot-recovery-disks-portal-windows.md). 
-3. Navázat připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
+3. Navažte připojení ke vzdálené ploše virtuálního počítače pro obnovení.
 
-### <a name="enable-dump-logs-and-serial-console"></a>Povolit protokoly s výpisem paměti a konzoly sériového portu
+### <a name="enable-dump-logs-and-serial-console"></a>Povolit protokoly výpisu paměti a sériová konzola
 
-V protokolu s výpisem paměti a [konzoly sériového portu](./serial-console-windows.md) pomůže nám to udělat další informace o řešení.
+Protokol výpisu paměti a [sériová konzola](./serial-console-windows.md) nám pomůžou provést další řešení potíží.
 
-Pokud chcete povolit protokoly s výpisem paměti a konzoly sériového portu, spusťte následující skript.
+Pokud chcete povolit protokoly výpisu paměti a sériovou konzolu, spusťte následující skript.
 
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 2. Spusťte tento skript:
 
-    V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. By měl nahradit ho záznamem má hodnotu vhodnou pro váš virtuální počítač.
+    V tomto skriptu předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je F. Měli byste ho nahradit odpovídající hodnotou pro váš virtuální počítač.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -83,43 +82,43 @@ Pokud chcete povolit protokoly s výpisem paměti a konzoly sériového portu, s
     reg unload HKLM\BROKENSYSTEM
     ```
 
-### <a name="replace-the-unsigned-drivers"></a>Nahraďte nepodepsaných ovladačů
+### <a name="replace-the-unsigned-drivers"></a>Výměna nepodepsaných ovladačů
 
-1. Na virtuální počítač pro obnovení, spusťte následující příkaz z příkazového řádku se zvýšenými oprávněními. Tento příkaz nastaví postiženém disku operačního systému spustit v nouzovém režimu při příštím spuštění počítače:
+1. Na virtuálním počítači pro obnovení spusťte z příkazového řádku se zvýšenými oprávněními následující příkaz. Tento příkaz nastaví ovlivněný disk s operačním systémem na spuštění v nouzovém režimu při příštím spuštění:
 
         bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
 
-    Pokud disk s operačním systémem, který jste připojili je jednotka F, spusťte následující příkaz:
+    Pokud je například disk s operačním systémem, který jste připojili, jednotku F, spusťte následující příkaz:
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [Odpojit disk s operačním systémem a znovu připojte disk s operačním systémem k virtuálnímu počítači ovlivněné](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v nouzovém režimu. Pokud stále dochází k chybě, přejděte na volitelný krok.
-3. Otevřít **spustit** pole a spusťte **verifier** spustit nástroj Správce ověřování ovladačů.
-4. Vyberte **automaticky vybrat nepodepsaných ovladačů**a potom klikněte na tlačítko **Další**.
-5. Zobrazí se seznam soubory ovladačů, které jsou bez znaménka. Mějte na paměti názvy souborů.
-6. Zkopírujte tyto soubory stejné verze funkčním virtuálním počítači a nahradit tyto soubory bez znaménka. 
+2. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v bezpečném režimu. Pokud stále dochází k chybě, Projděte si volitelný krok.
+3. Otevřete okno **Run** a spusťte **Ověřovač** a spusťte nástroj Správce ověřovače ovladačů.
+4. Vyberte možnost **automaticky vybrat nepodepsané ovladače**a pak klikněte na tlačítko **Další**.
+5. Zobrazí se seznam nepodepsaných souborů ovladačů. Zapamatujte si názvy souborů.
+6. Zkopírujte stejné verze těchto souborů z pracovního virtuálního počítače a pak tyto nepodepsané soubory nahraďte. 
 
-7. Odeberte nastavení bezpečné spuštění:
+7. Odeberte nastavení bezpečného spuštění:
 
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Restartujte virtuální počítač. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Volitelné: Analýza protokolů s výpisem paměti ve výpisu stavu systému k chybě režimu
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Volitelné: Analyzovat protokoly výpisu paměti v režimu zotavení po havárii
 
-Pokud chcete analyzovat protokoly s výpisem paměti, postupujte takto:
+Pokud chcete protokoly výpisu paměti analyzovat sami, postupujte takto:
 
 1. Disk s operačním systémem připojte k virtuálnímu počítači pro obnovení.
-2. Na disk s operačním systémem, který jste připojili, přejděte do **\windows\system32\config**. Zkopírujte všechny soubory jako záložní v případě, že vrácení zpět je povinný.
-3. Spustit **Editor registru** (regedit.exe).
-4. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **souboru** > **načíst Hive**.
-5. Přejděte **\windows\system32\config\SYSTEM** složky na disku s operačním systémem, který jste připojili. Název hive zadejte **BROKENSYSTEM**. Nový registr hive se zobrazuje v části **HKEY_LOCAL_MACHINE** klíč.
-6. Přejděte do **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** a proveďte následující změny:
+2. Na disku s operačním systémem, který jste připojili, přejděte na **\Windows\System32\Config**. Zkopírujte všechny soubory jako zálohu pro případ, že je vyžadováno vrácení zpět.
+3. Spusťte **Editor registru** (Regedit. exe).
+4. Vyberte klíč **HKEY_LOCAL_MACHINE** . V nabídce vyberte položku**podregistr Load** **File** > .
+5. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** .
+6. Přejděte na **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** a proveďte následující změny:
 
-    AutoReboot = 0
+    AutoRestart = 0
 
     CrashDumpEnabled = 2
-7.  Vyberte **BROKENSYSTEM**. V nabídce vyberte **souboru** > **Uvolnit podregistr**.
-8.  Upravte nastavení konfiguračních dat spouštění a spusťte v režimu ladění. Spusťte následující příkazy z příkazového řádku se zvýšenými oprávněními:
+7.  Vyberte **BROKENSYSTEM**. V nabídce vyberte **soubor** > **Uvolnit podregistr**.
+8.  Upravte nastavení BCD tak, aby se spouštěla do režimu ladění. Z příkazového řádku se zvýšenými oprávněními spusťte následující příkazy:
 
     ```cmd
     REM Setup some debugging flags on the boot manager
@@ -135,10 +134,10 @@ Pokud chcete analyzovat protokoly s výpisem paměti, postupujte takto:
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} recoveryenabled no
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservices disable
     ```
-9. [Odpojit disk s operačním systémem a znovu připojte disk s operačním systémem k virtuálnímu počítači ovlivněné](troubleshoot-recovery-disks-portal-windows.md).
-10. Spuštění virtuálního počítače chcete zobrazit, pokud se zobrazí analýze výpisu stavu systému. Vyhledejte soubor, který se nepodaří načíst. Je třeba nahradit tento soubor se souborem funkčním virtuálním počítači. 
+9. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md).
+10. Spusťte virtuální počítač a zjistěte, jestli zobrazuje analýzu výpisu paměti. Vyhledejte soubor, který se nepodařilo načíst. Tento soubor je potřeba nahradit souborem z pracovního virtuálního počítače. 
 
-    Tady je ukázka analýzy výpisu stavu systému. Vidíte, že **selhání** na filecrypt.sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    Následuje ukázka analýzy výpisu paměti. Můžete vidět, že **Chyba** je v systému: crypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys ".
 
     ```
     kd> !analyze -v 
@@ -158,7 +157,7 @@ Pokud chcete analyzovat protokoly s výpisem paměti, postupujte takto:
     MODULE_NAME: filecrypt IMAGE_NAME: filecrypt.sys DEBUG_FLR_IMAGE_TIMESTAMP: 0 IMAGE_VERSION: STACK_COMMAND: .thread ; .cxr ; kb FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys PRIMARY_PROBLEM_CLASS: 0x5A_c0000428_IMAGE_filecrypt.sys TARGET_TIME: 2017-11-13T20:51:04.000Z OSBUILD: 14393 OSSERVICEPACK: 1770 SERVICEPACK_NUMBER: 0 OS_REVISION: 0 SUITE_MASK: 144 PRODUCT_TYPE: 3 OSPLATFORM_TYPE: x64 OSNAME: Windows 10 OSEDITION: Windows 10 Server TerminalServer DataCenter OS_LOCALE: USER_LCID: 0 OSBUILD_TIMESTAMP: 2017-09-17 19:16:08 BUILDDATESTAMP_STR: 170917-1700 BUILDLAB_STR: rs1_release BUILDOSVER_STR: 10.0.14393.1770 ANALYSIS_SESSION_ELAPSED_TIME: bfc ANALYSIS_SOURCE: KM FAILURE_ID_HASH_STRING: km:0x5a_c0000428_image_filecrypt.sys FAILURE_ID_HASH: {35f25777-b01e-70a1-c502-f690dab6cb3a} FAILURE_ID_REPORT_LINK: https://go.microsoft.com/fwlink/?LinkID=397724&FailureHash=35f25777-b01e-70a1-c502-f690dab6cb3a
     ```
 
-11. Jakmile se virtuální počítač je práce a spustí běžným způsobem, odeberte nastavení výpisu paměti k chybě:
+11. Jakmile virtuální počítač pracuje a normálně se spouští, odeberte nastavení chyby výpisu paměti.
 
     ```cmd
     REM Restore the boot manager to default values

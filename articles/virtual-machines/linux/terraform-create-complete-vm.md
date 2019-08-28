@@ -9,20 +9,19 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: gwallace
-ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100802"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálního počítače se systémem Linux v Azure pomocí Terraformu
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Vytvoření úplné infrastruktury virtuálních počítačů s Linuxem v Azure s využitím Terraformu
 
 Terraformu umožňuje definovat a vytvářet kompletní nasazení infrastruktury v Azure. Šablony Terraformu můžete vytvářet v uživatelsky čitelném formátu, který umožňuje vytvářet a konfigurovat prostředky Azure konzistentním a reprodukovatelným způsobem. V tomto článku se dozvíte, jak vytvořit úplné prostředí Linux a podpůrné prostředky pomocí Terraformu. Můžete si také přečíst, jak [nainstalovat a nakonfigurovat terraformu](terraform-install-configure.md).
 
@@ -414,7 +413,7 @@ Když máte vytvořenou šablonu Terraformu, prvním krokem je inicializace Terr
 terraform init
 ```
 
-Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se v Azure *nevytvářejí.*
+Dalším krokem je Terraformu přezkoumání a ověření šablony. Tento krok porovná požadované prostředky s informacemi o stavu uloženým v Terraformu a pak provede výstup plánovaného provedení. Prostředky se v Azure nevytvářejí.
 
 ```bash
 terraform plan

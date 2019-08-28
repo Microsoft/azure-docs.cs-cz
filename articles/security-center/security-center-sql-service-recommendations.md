@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907944"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100936"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrana služby Azure data a úložiště v Azure Security Center
 V tomto tématu se dozvíte, jak zobrazit a implementovat doporučení zabezpečení pro prostředky dat a úložiště. Azure Security Center při analýze stavu zabezpečení vašich prostředků Azure našla tato doporučení.
@@ -78,7 +78,6 @@ Na této stránce můžete:
 Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících tématech:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana aplikací pomocí Azure Security Center](security-center-application-recommendations.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 
 Další informace o Security Center najdete v následujících tématech:

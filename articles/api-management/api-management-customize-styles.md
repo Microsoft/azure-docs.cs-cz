@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658062"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073699"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Přizpůsobení stylu stránek portálu pro vývojáře
 
@@ -40,8 +39,8 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +56,11 @@ V tomto kurzu se naučíte:
     Na stránce se zobrazí všechny elementy, které můžete přizpůsobit pomocí **stylů**.
 5. Do pole **Změna hodnot proměnných pro přizpůsobení vzhledu portálu pro vývojáře** zadejte headings-color.
 
-    **\@Záhlaví color** elementu se zobrazí na stránce. Tato proměnná řídí barvu textu.
+    Element  **záhlaví-barvasezobrazínastránce.\@** Tato proměnná řídí barvu textu.
 
     ![přizpůsobení stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klikněte na pole pro  **\@záhlaví color** proměnné. 
+6. Klikněte na pole pro  **\@proměnnou nadpis-barva** . 
     
     Otevře se rozevírací nabídka editoru barev.
 7. V rozevírací nabídce editoru barev vyberte novou barvu.

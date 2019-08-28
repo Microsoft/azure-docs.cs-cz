@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, webhooky, dynamické výpočty, architekturu bez serveru, testování
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 800c9db245007047b2dc17b3f270737254ed42d7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479720"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085146"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -29,7 +28,7 @@ Obsah, který následuje je rozdělený do dvou různých oddílů určená k c�
 - [C#v sadě Visual Studio s použitím xUnit](#c-in-visual-studio)
 - [JavaScript v nástroji VS Code s Jest](#javascript-in-vs-code)
 
-Ukázkové úložiště je k dispozici na [Githubu](https://github.com/Azure-Samples/azure-functions-tests).
+Ukázkové úložiště je k dispozici [](https://github.com/Azure-Samples/azure-functions-tests)na GitHubu.
 
 ## <a name="c-in-visual-studio"></a>C#v sadě Visual Studio
 Následující příklad popisuje, jak vytvořit C# aplikace v sadě Visual Studio funkce a spustit testy pomocí služby [xUnit](https://xunit.github.io).
@@ -43,8 +42,8 @@ K nastavení prostředí, vytvořte funkci a testování aplikací. Následujíc
 1. [Vytvořit novou aplikaci funkcí](./functions-create-first-azure-function.md) a pojmenujte ho *funkce*
 2. [Vytvoření funkce protokolu HTTP v šabloně](./functions-create-first-azure-function.md) a pojmenujte ho *HttpTrigger*.
 3. [Vytvoření funkce časovačem ze šablony](./functions-create-scheduled-function.md) a pojmenujte ho *TimerTrigger*.
-4. [Vytvoření aplikace testů xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) v sadě Visual Studio kliknutím **soubor > Nový > Projekt > Visual C# > .NET Core > Projekt testů xUnit** a pojmenujte ho *Functions.Test*. 
-5. Přidat odkazy z aplikace pro testy pomocí balíčku Nuget [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+4. V aplikaci Visual Studio [vytvořte aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) tak, že kliknete na **soubor > nový C# > projekt > Visual > .NET Core > xUnit test Project** a pojmenujte ho IT *Functions. test*. 
+5. Použití Nugetu k přidání odkazů z testovací aplikace [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Odkaz *funkce* aplikace](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikace.
 
 ### <a name="create-test-classes"></a>Vytvoření tříd testu
@@ -55,7 +54,7 @@ Každá funkce přebírá instanci [ILogger](https://docs.microsoft.com/dotnet/a
 
 `ListLogger` Třída slouží k implementaci `ILogger` rozhraní a udržení ve vnitřním seznamu zpráv pro vyhodnocení během testu.
 
-**Klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **NullScope.cs** a zadejte následující kód:
+**Klikněte pravým tlačítkem** na aplikaci *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **NullScope.cs** a zadejte následující kód:
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **ListLogger.cs** a zadejte Následující kód:
+Potom klikněte **pravým tlačítkem myši** na aplikace *Functions. test* a vyberte **Přidat > třídu**, pojmenujte ji **ListLogger.cs** a zadejte následující kód:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,11 +110,11 @@ namespace Functions.Tests
 
 `ListLogger` Třída implementuje následující členy jako zakázku podle `ILogger` rozhraní:
 
-- **BeginScope**: Obory přidání kontextu do vaší protokolování. V tomto případě test právě odkazuje na statickou instanci služby `NullScope` třídu, která umožňuje testovací funkce.
+- **BeginScope**: Obory přidávají kontext k protokolování. V tomto případě test pouze odkazuje na statickou instanci `NullScope` třídy, aby test mohl fungovat.
 
-- **Hodnotu IsEnabled**: Výchozí hodnota `false` je k dispozici.
+- **Povoleno**: `false` Je poskytnuta výchozí hodnota.
 
-- **Protokol**: Tato metoda používá zadaných `formatter` fungovat jako formát zprávy a poté přidá výsledný text, který má `Logs` kolekce.
+- **Protokol**: Tato metoda používá k formátování `formatter` zprávy poskytnutou funkci a následně `Logs` do kolekce přidá výsledný text.
 
 `Logs` Kolekce je instance `List<string>` a je inicializována v konstruktoru.
 
@@ -196,13 +195,13 @@ namespace Functions.Tests
 ```
 `TestFactory` Třída implementuje následující členy:
 
-- **Data**: Tato vlastnost vrátí [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) kolekce ukázková data. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
+- **Data**: Tato vlastnost vrací kolekci [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) vzorových dat. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
 
-- **CreateDictionary**: Tato metoda přijímá dvojice klíč/hodnota jako argumenty a vrátí nový `Dictionary` použitý k vytvoření `QueryCollection` k reprezentaci hodnoty řetězce dotazu.
+- **CreateDictionary –** : Tato metoda přijímá dvojici klíč/hodnota jako argumenty a vrátí novou `Dictionary` hodnotu použitou k vytvoření `QueryCollection` pro reprezentaci hodnot řetězce dotazu.
 
-- **CreateHttpRequest**: Tato metoda vytvoří inicializovat pomocí parametrů řetězce dotazu daného požadavku HTTP.
+- **CreateHttpRequest**: Tato metoda vytvoří požadavek HTTP inicializovaný pomocí daných parametrů řetězce dotazu.
 
-- **CreateLogger**: Podle typu protokolovač, tato metoda vrátí třídu protokolovací nástroj pro testování. `ListLogger` Uchovává informace o zprávy zaznamenané dříve k dispozici pro vyhodnocení v testech.
+- **CreateLogger**: V závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. `ListLogger` Uchovává informace o zprávy zaznamenané dříve k dispozici pro vyhodnocení v testech.
 
 Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **FunctionsTests.cs** a zadejte Následující kód:
 
@@ -247,13 +246,13 @@ namespace Functions.Tests
 ```
 Členy implementovány v této třídě jsou:
 
-- **Http_trigger_should_return_known_string**: Tento test vytvoří žádost s dotazem řetězcové hodnoty `name=Bill` funkce protokolem HTTP a kontroly, které se vrátí očekávaná odezva.
+- **Http_trigger_should_return_known_string**: Tento test vytvoří požadavek s hodnotami `name=Bill` řetězce dotazu na funkci http a zkontroluje, zda je vrácena očekávaná odpověď.
 
-- **Http_trigger_should_return_string_from_member_data**: Tento test používá xUnit atributy pro zajištění ukázková data do funkce protokolu HTTP.
+- **Http_trigger_should_return_string_from_member_data**: Tento test pomocí atributů xUnit poskytuje ukázková data funkce HTTP.
 
-- **Timer_should_log_message**: Tento test vytvoří instanci `ListLogger` a předá ji do funkcí časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
+- **Timer_should_log_message**: Tento test vytvoří instanci třídy `ListLogger` a předá ji funkcím časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
 
-Pokud chcete získat přístup k aplikaci nastavení v testech, můžete použít [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Chcete-li získat přístup k nastavení aplikace v testech, můžete použít [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
 ### <a name="run-tests"></a>Spouštění testů
 
@@ -377,6 +376,6 @@ Dále nastavte zarážku v testu a stiskněte klávesu **F5**.
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste zjistili, jak sepsání automatizovaných testů pro vaše funkce, pokračujte s těmito prostředky:
-- [Ruční spuštění jiné funkci aktivovanou protokolem HTTP](./functions-manually-run-non-http.md)
+- [Ruční spuštění funkce bez protokolu HTTP aktivované](./functions-manually-run-non-http.md)
 - [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)

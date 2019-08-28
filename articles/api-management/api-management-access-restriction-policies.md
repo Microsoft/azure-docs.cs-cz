@@ -10,16 +10,15 @@ ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: cfb4bda597b2b7ab4658244c46253f5118723402
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774809"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073810"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu API Management
 

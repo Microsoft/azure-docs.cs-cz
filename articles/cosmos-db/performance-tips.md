@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614931"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065923"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -21,7 +21,7 @@ ms.locfileid: "69614931"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která bez problémů škáluje zaručenou latenci a propustnost. Nemusíte dělat zásadní změny architektury nebo psát složitý kód pro škálování databáze pomocí Azure Cosmos DB. Vertikální navýšení a snížení kapacity je stejně snadné jako při provádění jediného volání rozhraní API. Další informace najdete v tématu [jak zřídit propustnost kontejneru](how-to-provision-container-throughput.md) nebo [jak zřídit propustnost databáze](how-to-provision-database-throughput.md). Vzhledem k tomu, že k Azure Cosmos DB je k dispozici prostřednictvím síťových volání, existují optimalizace na straně klienta, které vám při použití [sady SQL .NET SDK](documentdb-sdk-dotnet.md)umožní dosáhnout špičkového výkonu.
+Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která bez problémů škáluje zaručenou latenci a propustnost. Nemusíte dělat zásadní změny architektury nebo psát složitý kód pro škálování databáze pomocí Azure Cosmos DB. Vertikální navýšení a snížení kapacity je stejně snadné jako při provádění jediného volání rozhraní API. Další informace najdete v tématu [jak zřídit propustnost kontejneru](how-to-provision-container-throughput.md) nebo [jak zřídit propustnost databáze](how-to-provision-database-throughput.md). Vzhledem k tomu, že k Azure Cosmos DB je k dispozici prostřednictvím síťových volání, existují optimalizace na straně klienta, které vám při použití [sady SQL .NET SDK](sql-api-sdk-dotnet-standard.md)umožní dosáhnout špičkového výkonu.
 
 Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v úvahu následující možnosti:
 
@@ -48,8 +48,8 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
      |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Direct    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 10000 až 20000    |
-     |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
+     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 10000 až 20000    |
+     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Přímý protokol TCP i HTTPS používají protokol SSL pro počáteční ověřování a šifrování provozu. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
@@ -94,7 +94,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 ## <a name="sdk-usage"></a>Využití sady SDK
 1. **Nainstalovat nejnovější sadu SDK**
 
-    Sady Azure Cosmos DB SDK se neustále zdokonalují, aby poskytovaly nejlepší výkon. Pokud chcete zjistit nejnovější sadu SDK a zkontrolovat vylepšení, podívejte se na stránky [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) .
+    Sady Azure Cosmos DB SDK se neustále zdokonalují, aby poskytovaly nejlepší výkon. Pokud chcete zjistit nejnovější sadu SDK a zkontrolovat vylepšení, podívejte se na stránky [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) .
 2. **Použití typu Singleton Azure Cosmos DB klienta po dobu života vaší aplikace**
 
     Každá instance DocumentClient je bezpečná pro přístup z více vláken a při provozu v přímém režimu provádí efektivní správu připojení a ukládání adres do mezipaměti. Aby bylo možné efektivně spravovat správu připojení a lepší výkon díky DocumentClient, doporučujeme pro celou doménu aplikace používat jednu instanci DocumentClient.

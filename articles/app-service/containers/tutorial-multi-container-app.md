@@ -1,7 +1,7 @@
 ---
-title: Vytvoření aplikace více kontejnerů ve službě Web App for Containers – Azure App Service
-description: Další informace o použití více kontejnerů v Azure pomocí Docker Compose, WordPress a MySQL.
-keywords: služby Azure app service, webové aplikace, od linuxu, docker a compose multicontainer, více kontejnerů, služby web app for containers, více kontejnerů, kontejner, wordpress, k azure db for mysql, provozní databáze s kontejnery
+title: Vytvoření aplikace s více kontejnery v Web App for Containers-Azure App Service
+description: Naučte se používat více kontejnerů v Azure s Docker Compose, WordPress a MySQL.
+keywords: Azure App Service, Web App, Linux, Docker, sestavení, více kontejnerů, Web App for Containers, více kontejnerů, kontejnerů, WordPress, Azure DB pro MySQL, provozní databáze s kontejnery
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -10,16 +10,15 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: d1176d2d70dcd4de3e4287a1973de027c061f291
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b83edae698ed62deea189c979478c2170a034fc8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055556"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070869"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (Preview) ve službě Web App for Containers
 
@@ -39,7 +38,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, budete potřebovat zkušenosti s [Docker Compose](https://docs.docker.com/compose/).
+K dokončení tohoto kurzu potřebujete zkušenosti s [Docker Compose](https://docs.docker.com/compose/).
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -47,7 +46,7 @@ Pro účely tohoto kurzu použijete soubor compose z [Dockeru](https://docs.dock
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
-Možnosti podporované konfigurace najdete v tématu [Docker Compose možnosti](configure-custom-container.md#docker-compose-options).
+Podporované možnosti konfigurace najdete v tématu [možnosti Docker Compose](configure-custom-container.md#docker-compose-options).
 
 Ve službě Cloud Shell vytvořte adresář kurzu a přejděte do něj.
 
@@ -115,7 +114,7 @@ Po vytvoření plánu služby App Service se ve službě Cloud Shell zobrazí po
 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
 
-Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit  _\<název aplikace >_ s jedinečným názvem aplikace.
+Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit  _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -154,7 +153,7 @@ Kontejnery databáze se nedoporučuje používat v produkčním prostředí. Mí
 
 Příkazem [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte server Azure Database for MySQL.
 
-V následujícím příkazu nahraďte názvem vašeho serveru MySQL jedinečným  _&lt;názvem serveru mysql >_ zástupný symbol (platné znaky jsou `a-z`, `0-9`, a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
+V následujícím příkazu nahraďte název serveru MySQL, kde se `0-9`zobrazí `-` `a-z`  _&lt;zástupný symbol MySQL-Server-Name >_ (platné znaky jsou, a). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -249,11 +248,11 @@ Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné 
 ]
 ```
 
-Další informace o proměnných prostředí, najdete v části [konfigurace proměnných prostředí](configure-custom-container.md#configure-environment-variables).
+Další informace o proměnných prostředí najdete v tématu [konfigurace proměnných prostředí](configure-custom-container.md#configure-environment-variables).
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Použití vlastní image pro MySQL SSL a jiné konfigurace
 
-Služba Azure Database for MySQL používá standardně protokol SSL. WordPress vyžaduje pro použití protokolu SSL s MySQL dodatečnou konfiguraci. WordPress "oficiální image" neposkytuje další konfiguraci, ale [vlastní image](https://github.com/Azure-Samples/multicontainerwordpress) připravili jsme pro vaše pohodlí. V praxi byste požadované změny přidali do své vlastní image.
+Služba Azure Database for MySQL používá standardně protokol SSL. WordPress vyžaduje pro použití protokolu SSL s MySQL dodatečnou konfiguraci. Oficiální image WordPressu neposkytuje další konfiguraci, ale [vlastní image](https://github.com/Azure-Samples/multicontainerwordpress) je připravená pro vaše pohodlí. V praxi byste požadované změny přidali do své vlastní image.
 
 Tato vlastní image vychází z „oficiální image“ [WordPressu v Centru Dockeru](https://hub.docker.com/_/wordpress/). Pro službu Azure Database for MySQL byly v této vlastní imagi provedeny následující změny:
 
@@ -285,7 +284,7 @@ Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k z
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ s názvem webové aplikace, které jste vytvořili dříve.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ názvem webové aplikace, kterou jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -310,11 +309,11 @@ Přejděte do nasazené aplikace na adrese `http://<app-name>.azurewebsites.net`
 
 ## <a name="add-persistent-storage"></a>Přidání trvalého úložiště
 
-Ve více kontejnerech se teď provozuje služba Web App for Containers. Pokud ale teď nainstalujete WordPress a později aplikaci restartujete, zjistíte, že instalace WordPressu zmizela. Konfigurace Docker Compose totiž momentálně ukazuje na umístění úložiště uvnitř vašeho kontejneru. Soubory nainstalované do tohoto kontejneru se po restartování aplikace nezachovají. V této části budete [přidání trvalého úložiště](configure-custom-container.md#use-persistent-shared-storage) do kontejneru WordPress.
+Ve více kontejnerech se teď provozuje služba Web App for Containers. Pokud ale teď nainstalujete WordPress a později aplikaci restartujete, zjistíte, že instalace WordPressu zmizela. Konfigurace Docker Compose totiž momentálně ukazuje na umístění úložiště uvnitř vašeho kontejneru. Soubory nainstalované do tohoto kontejneru se po restartování aplikace nezachovají. V této části přidáte do svého kontejneru WordPress [trvalé úložiště](configure-custom-container.md#use-persistent-shared-storage) .
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Použití trvalé úložiště, povolíte toto nastavení v rámci služby App Service. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+Pokud chcete použít trvalé úložiště, povolte toto nastavení v rámci App Service. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -361,7 +360,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ s jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -445,7 +444,7 @@ Po vytvoření nastavení aplikace se ve službě Cloud Shell zobrazí podobné 
 
 ### <a name="update-app-with-new-configuration"></a>Aktualizace aplikace o novou konfiguraci
 
-Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ s jedinečným názvem aplikace.
+Ve službě Cloud Shell změňte příkazem [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) konfiguraci vícekontejnerové [webové aplikace](app-service-linux-intro.md). Nezapomeňte nahradit  _\<název aplikace >_ jedinečným názvem aplikace.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -470,7 +469,7 @@ Dokončete tento postup a nainstalujte WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>Připojení WordPressu k Redis
 
-Přihlaste se na správce WordPress. V navigaci nalevo vyberte **Moduly plug-in** a pak vyberte **Nainstalované moduly plug-in**.
+Přihlaste se ke Správci WordPress. V navigaci nalevo vyberte **Moduly plug-in** a pak vyberte **Nainstalované moduly plug-in**.
 
 ![Výběr modulů plug-in pro WordPress][2]
 
@@ -527,12 +526,12 @@ V tomto kurzu jste se naučili:
 > * Připojit se ke službě Azure Database for MySQL
 > * Řešení chyb
 
-Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS do vaší aplikace](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: Mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
-Nebo, podívejte se na další prostředky:
+Nebo si prohlédněte další zdroje informací:
 
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)

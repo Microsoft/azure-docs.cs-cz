@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c3a1953ce34ab6bf60111715d9d8972a4682ba
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9ee6c4630205561eb8beb19062520f8ae2a35e1b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853387"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073917"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postup: Použití Graph API v Azure AD
 
-Služba Azure Active Directory (Azure AD) Graph API poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů OData REST API. Aplikace můžou pomocí Graph API Azure AD provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) pro data a objekty adresáře. Můžete například použít Azure AD Graph API k vytvoření nového uživatele, zobrazení nebo aktualizaci vlastností uživatele, změně hesla uživatele, kontrole členství ve skupině pro přístup na základě rolí, zakázání nebo odstranění uživatele. Další informace o funkcích Graph API a scénářích aplikací Azure AD najdete v článku [Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [požadavky služby Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
+> [!IMPORTANT]
+> Důrazně doporučujeme pro přístup k prostředkům Azure Active Directory použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Azure AD Graph API. Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které by mohla být služba Azure AD Graph API vhodná; Další informace najdete v příspěvku blogu [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) a [migrace aplikací Azure ad Graph do Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+
+Služba Azure Active Directory (Azure AD) Graph API poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů OData REST API. Aplikace můžou pomocí Graph API Azure AD provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) pro data a objekty adresáře. Můžete například použít Azure AD Graph API k vytvoření nového uživatele, zobrazení nebo aktualizaci vlastností uživatele, změně hesla uživatele, kontrole členství ve skupině pro přístup na základě rolí, zakázání nebo odstranění uživatele. Další informace o funkcích Graph API a scénářích aplikací Azure AD najdete v článku [Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [požadavky služby Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx). Graph API Azure AD funguje jenom s pracovními nebo školními účty.
 
 Tento článek se týká Graph API služby Azure AD. Podobné informace související s Microsoft Graph API najdete v tématu [použití rozhraní api Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
-
-> [!IMPORTANT]
-> Důrazně doporučujeme pro přístup k prostředkům Azure Active Directory použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Azure AD Graph API. Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které může být Azure AD Graph API stále vhodné. Další informace najdete v příspěvku [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogu na webu Office Dev Center.
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Jak vytvořit adresu URL Graph API
 
