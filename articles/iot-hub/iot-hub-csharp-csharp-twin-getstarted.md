@@ -7,16 +7,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: d1a155845f5c04817611fb14f4a973527e3e039b
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e748ade19fe64399015acfc35892c5d9081bf9e3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050459"
+ms.locfileid: "70062101"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
+
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
@@ -31,7 +32,9 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 > V článku sady [SDK Azure IoT](iot-hub-devguide-sdks.md) najdete informace o sadách SDK Azure IoT, které můžete použít k vytvoření zařízení i back-endové aplikace.
 >
 
-Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+## <a name="prerequisites"></a>Požadavky
+
+Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio.
 
@@ -75,7 +78,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
     using Microsoft.Azure.Devices;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste dříve zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
+1. Do třídy **Program** přidejte následující pole. Nahraďte `{iot hub connection string}` připojovacím řetězcem IoT Hub, který jste zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -98,13 +101,13 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí nástroje C#, kter�
                 }
             }";
         await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
-   
+
         var query = registryManager.CreateQuery(
           "SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
         var twinsInRedmond43 = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43: {0}", 
           string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
-   
+
         query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
         var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43 using cellular network: {0}", 
@@ -155,7 +158,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
     using Newtonsoft.Json;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte hodnotu zástupného symbolu připojovacím řetězcem zařízení, který jste si poznamenali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
+1. Do třídy **Program** přidejte následující pole. Nahraďte `{device connection string}` připojovacím řetězcem zařízení, který jste si poznamenali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -193,7 +196,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
         try
         {
             Console.WriteLine("Sending connectivity data as reported property");
-            
+
             TwinCollection reportedProperties, connectivity;
             reportedProperties = new TwinCollection();
             connectivity = new TwinCollection();

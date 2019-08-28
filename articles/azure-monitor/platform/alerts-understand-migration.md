@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034757"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061552"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Vysvětlení fungování nástroje pro migraci
 
@@ -36,7 +36,7 @@ I když nástroj může migrovat téměř všechna [klasická pravidla výstrah]
 - Pravidla pro klasické výstrahy pro některé metriky Cosmos DB. Další [](#cosmos-db-metrics) informace najdete v části dále v tomto článku.
 - Klasická pravidla pro upozornění na všechny klasické virtuální počítače a metriky Cloud Services (Microsoft. ClassicCompute/virtualMachines a Microsoft. ClassicCompute/domainNames/sloty/role). Další [](#classic-compute-metrics) informace najdete v části dále v tomto článku.
 
-Pokud má vaše předplatné nějaká pravidla klasického modelu, je nutné je ručně migrovat. Vzhledem k tomu, že nemůžeme poskytnout automatickou migraci, všechny existující klasické výstrahy metriky těchto typů budou i nadále fungovat do června 2020. Toto rozšíření vám dává čas přejít na nové výstrahy. Žádné nové klasické výstrahy však nelze vytvořit po 2019. srpna.
+Pokud má vaše předplatné nějaká pravidla klasického modelu, je nutné je ručně migrovat. Vzhledem k tomu, že nemůžeme poskytnout automatickou migraci, všechny existující klasické výstrahy metriky těchto typů budou i nadále fungovat do června 2020. Toto rozšíření vám dává čas přejít na nové výstrahy. Můžete také nadále vytvářet nové klasické výstrahy na výše uvedených výjimkách až do června 2020. Pro všechno ostatní ale nemůžete žádné nové klasické výstrahy vytvořit po 2019. srpna.
 
 > [!NOTE]
 > Kromě výše uvedených výjimek, pokud jsou pravidla pro vaše Klasická upozornění neplatná, tj. se jedná o [zastaralé metriky](#classic-alert-rules-on-deprecated-metrics) nebo prostředky, které byly odstraněny, nebudou migrovány během dobrovolné migrace. Při automatické migraci dojde k odstranění všech takových neplatných pravidel upozornění na klasický čas.

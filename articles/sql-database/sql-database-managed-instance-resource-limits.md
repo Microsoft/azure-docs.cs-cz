@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 06/26/2019
-ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 08/27/2019
+ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998198"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060647"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -51,7 +51,7 @@ Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důle�
 
 | **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
-| Počet virtuální jádra\* | COMPUTE GEN4 – 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 – 8, 16, 24, 32 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
+| Počet virtuální jádra\* | COMPUTE GEN4 – 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 – 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 |
 | Maximální velikost paměti | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 – 56 GB až 168 GB (7GB/vCore)<br/>Gen5 40,8 GB až 408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální velikost rezervovaného úložiště instance | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 – 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost databáze | Určeno maximální velikostí úložiště na instanci | Určeno maximální velikostí úložiště na instanci |
@@ -65,10 +65,12 @@ Spravovaná instance má dvě úrovně služeb: Pro obecné účely a Pro důle�
 | Maximální velikost databáze tempDB | 192 – 1 920 GB (24 GB na vCore)<br/>Přidejte další virtuální jádra, abyste získali více místa v databázi TempDB. | Omezeno velikostí úložiště maximální instance. Velikost souboru protokolu TempDB je aktuálně omezená na 24GB/vCore. |
 | OLTP v paměti | Nepodporuje se | K dispozici |
 | Maximální počet relací | 30000 | 30000 |
+| Čitelné repliky | 0 | 1 |
 
 > [!NOTE]
 > - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí systémového zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> určete celkové využité místo podle databází. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
 > - Propustnost a IOPS závisí také na velikosti stránky, která není explicitně omezená pomocí spravované instance.
+> Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -145,7 +147,7 @@ Postup pro zahájení procesu získání větší kvóty:
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o spravované instanci najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
 - Informace o cenách najdete v tématu [SQL Database ceny za Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).

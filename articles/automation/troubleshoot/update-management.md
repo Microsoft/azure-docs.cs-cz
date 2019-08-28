@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982688"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061342"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -278,6 +278,7 @@ Dvojitým kliknutím na výjimku zobrazenou červeně zobrazíte celou zprávu o
 |`0x8024001E`| Operace aktualizace nebyla dokončena, protože služba nebo systém se vypnul.|
 |`0x8024002E`| Služba web Windows Update je zakázána.|
 |`0x8024402C`     | Pokud používáte server WSUS, ujistěte se, že hodnoty registru pro `WUServer` a `WUStatusServer` v klíči `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` registru mají správný server WSUS.        |
+|`0x80072EE2`|Potíže s připojením k síti nebo potíže s nakonfigurovaným serverem WSUS. Zkontrolujte nastavení služby WSUS a ujistěte se, že je přístupná z klienta.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ujistěte se, že služba web Windows Update (wuauserv) je spuštěná a není zakázaná.        |
 |Jakákoli jiná obecná výjimka     | Prohledejte na internetu možná řešení a pracujte s místní podporou IT.         |
 
@@ -379,7 +380,7 @@ Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
 Restart-Service healthservice
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

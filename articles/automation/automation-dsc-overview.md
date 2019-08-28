@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533466"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061385"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -58,16 +58,11 @@ Pro uzly s Windows se podporují tyto verze:
 - Windows 8.1
 - Windows 7
 
-SKU samostatného produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci požadovaného stavu konfigurací, takže ji nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
+SKU samostatného produktového [serveru Microsoft Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-server-2016) neobsahuje implementaci požadovaného stavu konfigurací, takže ji nejde spravovat pomocí prostředí PowerShell DSC nebo konfigurace stavu Azure Automation.
 
 Pro uzly se systémem Linux jsou podporovány následující distribuce/verze:
 
-Rozšíření DSC pro Linux podporuje všechny distribuce systému Linux [schválené v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
-
-Distribuce | Version
--|-
-Debian  | všechny verze
-Ubuntu  | 18,04
+Rozšíření DSC pro Linux podporuje všechna distribuce systému Linux uvedená v části [podporovaná distribuce systému Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
 
 ### <a name="dsc-requirements"></a>Požadavky DSC
 
@@ -104,8 +99,8 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 
 | **Oblast** | **Záznam DNS** |
 | --- | --- |
-| Středozápadní USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
 | East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada – střed |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
@@ -127,7 +122,7 @@ Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služ
 >
 > Každý týden je vhodné stáhnout nový soubor XML. Pak aktualizujte svůj web tak, aby správně identifikoval služby běžící v Azure. Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor používá k aktualizaci inzerce protokolu BGP (Border Gateway Protocol) v Azure Space v první týden v měsíci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md) .
 - Další informace o připojování uzlů najdete v tématu věnovaném [připojování počítačů ke správě podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md) .

@@ -1,5 +1,5 @@
 - name: Dokumentace uživatelské nápovědy
-  href: index.md
+  href: index.yml
 - name: Nápověda k dvoustupňovému ověřování
   items:
     - name: Přehled

@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567615"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060653"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojení aplikace k Azure SQL Database Managed instance
 
 Dnes máte několik možností, jak se rozhodnout, jak a kde budete hostovat svoji aplikaci.
 
@@ -143,12 +143,12 @@ Pokud se chcete připojit ke spravované instanci, doporučuje se používat ná
 |Ovladač ODBC| v17 |
 |Ovladač PHP| 5.2.0 |
 |Ovladač JDBC| 6.4.0 |
-|Ovladač Node. js| 2.1.1 |
+|Ovladač Node.js| 2.1.1 |
 |Ovladač OLEDB| 18.0.2.0 |
 |SSMS| 18,0 nebo [vyšší](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) nebo vyšší |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o spravované instanci najdete v tématu [Co je spravovaná instance](sql-database-managed-instance.md).
 - Kurz, ve kterém se dozvíte, jak vytvořit novou spravovanou instanci, najdete v tématu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md).

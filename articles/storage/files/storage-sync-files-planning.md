@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013533"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061742"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -245,7 +245,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 |--------|---------------------|
 | Austrálie – východ | Nový jižní Wales |
 | Austrálie – jihovýchod | Viktorie |
-| Brazílie – jih | Stav Svatý Paolo |
+| Brazílie – jih | Sao Paulo – stát |
 | Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
@@ -326,7 +326,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Zvážení brány firewall a nastavení proxy serveru](storage-sync-files-firewall-and-proxy.md)
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)

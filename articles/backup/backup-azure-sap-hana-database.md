@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034568"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060707"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Zálohování databáze SAP HANA do Azure
 
 [Azure Backup](backup-overview.md) podporuje zálohování databází SAP HANA do Azure.
 
 > [!NOTE]
-> Tato funkce je aktuálně ve verzi Public Preview. V současnosti není připravené pro produkční prostředí a nemá zaručenou smlouvu SLA. 
+> Tato funkce je aktuálně ve verzi Public Preview. V současnosti není připravené pro produkční prostředí a nemá zaručenou smlouvu SLA.
 
 ## <a name="scenario-support"></a>Podpora scénářů
 
@@ -32,8 +32,11 @@ ms.locfileid: "70034568"
 ### <a name="current-limitations"></a>Aktuální omezení
 
 - Můžete zálohovat jenom SAP HANA databáze běžící na virtuálních počítačích Azure.
-- SAP HANA Backup můžete nakonfigurovat pouze v Azure Portal. Funkci nejde nakonfigurovat pomocí PowerShellu, CLI nebo REST API.
-- Databáze můžete zálohovat pouze v režimu horizontálního navýšení kapacity.
+- V jednom virtuálním počítači Azure můžete jenom zálohovat jenom instance SAP HANA spuštěné. Víc instancí HANA ve stejném virtuálním počítači Azure se v tuto chvíli nepodporuje.
+- Databáze můžete zálohovat pouze v režimu horizontálního navýšení kapacity. Horizontální navýšení kapacity, tj. instance HANA na více virtuálních počítačích Azure, se v tuto chvíli nepodporuje pro zálohování.
+- Nemůžete zálohovat instanci SAP HANA s dynamickou vrstvou na rozšířeném serveru, tj. dynamické vrstvení je k dispozici na jiném uzlu. To je v podstatě škálovatelné, což není podporováno.
+- Nemůžete zálohovat instanci SAP HANA s povolenou dynamickou vrstvou na stejném serveru. Dynamické vrstvení se v tuto chvíli nepodporuje.
+- SAP HANA Backup můžete nakonfigurovat pouze v Azure Portal. Tuto funkci nejde nakonfigurovat pomocí PowerShellu, rozhraní příkazového řádku.
 - Protokoly databáze můžete zálohovat každých 15 minut. Zálohování protokolů začíná proudem až po úspěšném úplném zálohování databáze.
 - Můžete přijímat úplné a rozdílové zálohy. Přírůstkové zálohování není aktuálně podporováno.
 - Zásady zálohování nemůžete po použití pro SAP HANA zálohy upravovat. Pokud chcete zálohovat s jiným nastavením, vytvořte novou zásadu nebo přiřaďte jinou zásadu.
@@ -44,23 +47,16 @@ ms.locfileid: "70034568"
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující:
 
-1. Na virtuálním počítači, na kterém běží databáze SAP HANA, nainstalujte oficiální balíček Microsoft [.NET Core Runtime 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) . Všimněte si, že:
-    - Potřebujete jenom balíček **dotnet-runtime-2,1** . Nepotřebujete **aspnetcore-runtime-2,1**.
-    - Pokud virtuální počítač nemá přístup k Internetu, zrcadlení nebo poskytne offline mezipaměť pro dotnet-runtime-2,1 (a všechny závislé rpm) z informačního kanálu balíčku od společnosti Microsoft, který je uvedený na stránce.
-    - Při instalaci balíčku se může zobrazit výzva k zadání možnosti. Pokud ano, zadejte **Řešení 2**.
-
-        ![Možnost instalace balíčku](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. Na virtuálním počítači nainstalujte a povolte balíčky ovladačů ODBC z oficiálního balíčku nebo média SLES pomocí zypperu následujícím způsobem:
+1. Na virtuálním počítači, na kterém běží databáze SAP HANA, nainstalujte a povolte balíčky ovladačů ODBC z oficiálního balíčku nebo média SLES pomocí zypperu následujícím způsobem:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné dosáhnout Azure, jak je popsáno v [následujícím](#set-up-network-connectivity)postupu.
+2. Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné dosáhnout Azure, jak je popsáno v [následujícím](#set-up-network-connectivity)postupu.
 
-4. Spusťte předregistrační skript ve virtuálním počítači, kde je nainstalovaná verze HANA jako uživatel root. Skript je k dispozici na [portálu](#discover-the-databases) v toku a je vyžadován pro nastavení [správných oprávnění](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
+3. Spusťte předregistrační skript ve virtuálním počítači, kde je nainstalovaná verze HANA jako uživatel root. Skript je k dispozici na [portálu](#discover-the-databases) v toku a je vyžadován pro nastavení [správných oprávnění](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Nastavení připojení k síti
 
@@ -68,6 +64,7 @@ Pro všechny operace potřebuje virtuální počítač SAP HANA připojení k ve
 
 - Můžete si stáhnout [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) pro datacentra Azure a pak přístup k těmto IP adresám.
 - Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě), můžete pomocí [značky služby](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) AzureCloud povolíte všechny veřejné IP adresy Azure. K úpravě pravidel NSG můžete použít [rutinu Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) .
+- port 443 by měl být povolený, protože přenos prostřednictvím protokolu HTTPS.
 
 ## <a name="onboard-to-the-public-preview"></a>Připojit se k veřejné verzi Preview
 
@@ -79,8 +76,6 @@ Připojte se k veřejné verzi Preview následujícím způsobem:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,8 +177,17 @@ Pokud chcete použít místní zálohu (pomocí HANA studia) databáze, která s
     - Nastavte **log_backup_using_backint** na **true**.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Upgrade chráněného 1,0 databáze na 2,0
 
-## <a name="next-steps"></a>Další postup
+Pokud chráníte SAP HANA 1,0 databáze a chcete upgradovat na 2,0, proveďte kroky popsané níže.
+
+- Zastavte ochranu a zachovejte data pro STARou SDC DB.
+- Znovu spusťte skript před registrací se správnými podrobnostmi k (SID a MDC). 
+- Opětovné zaregistrování rozšíření (zálohování-> zobrazení podrobností – > Výběr relevantního virtuálního počítače Azure – > opětovné registraci). 
+- Klikněte na znovu zjistit databáze pro stejný virtuální počítač. Mělo by se zobrazit nové databáze v kroku 2 se správnými podrobnostmi (SYSTEMDB a databáze tenantů, ne SDC). 
+- Chraňte tyto nové databáze.
+
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si](backup-azure-sap-hana-database-troubleshoot.md) , jak řešit běžné chyby při používání služby SAP HANA Backup na virtuálních počítačích Azure.
 [Přečtěte si informace o](backup-azure-arm-vms-prepare.md) zálohování virtuálních počítačů Azure.

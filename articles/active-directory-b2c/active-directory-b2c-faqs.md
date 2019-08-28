@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622254"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061369"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy
 
@@ -43,11 +43,9 @@ Uživatelské účty pro aplikace se musí vždy vytvořit prostřednictvím už
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Kteří zprostředkovatelé sociálních identit teď podporujete? Které z nich plánujete v budoucnu podporovat?
 
-Momentálně podporujeme Facebook, Google +, LinkedIn, Amazon, Twitter (Preview), WeChat (Preview), Weibo (Preview) a QQ (Preview). Přidáme podporu dalších oblíbených poskytovatelů sociálních identit na základě zákaznických požadavků.
+V současné době podporujeme několik poskytovatelů sociálních identit, včetně Amazon, Facebook, GitHubu (Preview), Google, LinkedInu, účtu Microsoft (MSA), QQ (Preview), Twitteru, WeChat (Preview) a Weibo (Preview). Vyhodnocujeme přidání podpory pro další oblíbené poskytovatele sociálních identit na základě zákaznických požadavků.
 
-Azure AD B2C také přidal podporu pro [vlastní zásady](active-directory-b2c-overview-custom.md). Tyto vlastní zásady umožňují vývojářům vytvořit vlastní zásady s jakýmkoli poskytovatelem identity, který podporuje [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) nebo SAML.
-
-Začněte s vlastními zásadami a podívejte se na náš [úvodní balíček vlastních zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
+Azure AD B2C také podporuje [vlastní zásady](active-directory-b2c-overview-custom.md). Vlastní zásady umožňují vytvořit vlastní zásady pro libovolného poskytovatele identity, který podporuje [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) nebo SAML. Začněte s vlastními zásadami a podívejte se na náš [úvodní balíček vlastních zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžu nakonfigurovat obory pro shromažďování dalších informací o uživatelích z různých poskytovatelů sociálních identit?
 

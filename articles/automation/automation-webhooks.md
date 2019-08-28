@@ -1,6 +1,6 @@
 ---
-title: Spuštění runbooku Azure Automation s webhooku
-description: Webhook, který umožňuje klientovi spuštění runbooku ve službě Azure Automation z volání protokolu HTTP.  Tento článek popisuje, jak vytvořit webhook a volání jednoho spuštění runbooku.
+title: Spuštění Azure Automation Runbooku pomocí Webhooku
+description: Webhook, který umožňuje klientovi spustit Runbook v Azure Automation z volání HTTP.  Tento článek popisuje, jak vytvořit Webhook a jak ho zavolat, aby se spustil Runbook.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,131 +9,134 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 153e910ea85ae843c6d4db51e709b58e441f6761
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477927"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061434"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
+# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění Azure Automation Runbooku pomocí Webhooku
 
-A *webhooku* umožňuje spuštění konkrétního runbooku ve službě Azure Automation prostřednictvím jednoho požadavku HTTP. To umožňuje externích služeb, jako je Azure DevOps Services, Githubu, protokoly Azure monitoru nebo vlastních aplikací ke spouštění sad runbook bez implementace celé řešení pomocí rozhraní API služby Azure Automation.  
+*Webhook* umožňuje spustit konkrétní sadu runbook v Azure Automation prostřednictvím jediného požadavku HTTP. To umožňuje, aby externí služby, jako jsou Azure DevOps Services, GitHub, Azure Monitor protokoly nebo vlastní aplikace, spouštěly Runbooky bez implementace úplného řešení pomocí rozhraní API Azure Automation.
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
-Můžete porovnat webhooky k dalším metodám spuštění sady runbook [spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md)
+Webhooky můžete porovnat s jinými metodami spuštění sady Runbook při [Spuštění Runbooku v Azure Automation](automation-starting-a-runbook.md)
 
 > [!NOTE]
-> Spuštění runbooku v Pythonu pomocí webhooku se nepodporuje.
+> Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 
-## <a name="details-of-a-webhook"></a>Podrobnosti o webhooku
+## <a name="details-of-a-webhook"></a>Podrobnosti Webhooku
 
-Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro webhook.
+Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro Webhook.
 
 | Vlastnost | Description |
 |:--- |:--- |
-| Název |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
-| URL |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
-| Datum vypršení platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku tak dlouho, dokud nevyprší platnost webhooku, je možné upravit toto datum vypršení platnosti. |
-| Enabled |Webhook se ve výchozím nastavení povoleno, při jeho vytvoření. Pokud ji nastavíte na hodnotu zakázáno, pak žádný klient ho použít. Můžete nastavit **povoleno** vlastnost při vytváření webhooku nebo kdykoli po jeho vytvoření. |
+| Name |Můžete zadat libovolný název, který chcete pro Webhook, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. <br> Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
+| URL |Adresa URL Webhooku je jedinečná adresa, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje, aby se Runbook vyvolal systémem jiného výrobce bez dalšího ověřování. Z tohoto důvodu by mělo být zacházeno jako s heslem. Z bezpečnostních důvodů můžete adresu URL v Azure Portal zobrazit jenom v době, kdy se Webhook vytvoří. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
+| Datum konce platnosti |Podobně jako u certifikátu má každý Webhook datum vypršení platnosti, ve kterém už ho nebude možné použít. Toto datum vypršení platnosti lze změnit po vytvoření Webhooku, dokud nevypršela platnost Webhooku. |
+| Enabled |Webhook je ve výchozím nastavení povolený, když se vytvoří. Pokud ho nastavíte na zakázáno, nebude ho moct používat žádný klient. Vlastnost **Enabled** můžete nastavit při vytváření Webhooku nebo kdykoli po jeho vytvoření. |
 
 ### <a name="parameters"></a>Parametry
 
-Webhook můžete definovat hodnoty pro parametry sady runbook, které se používají při spuštění runbooku pomocí tohoto webhooku. Webhook musí obsahovat hodnoty všech povinných parametrů runbooku a může obsahovat hodnoty nepovinných parametrů. Hodnotu parametru, který je nakonfigurovaný tak, aby webhook můžete změnit i po vytvoření webhooku. Více webhooky, které jsou propojeny s jedné sady runbook můžete použít různé hodnoty parametrů.
+Webhook může definovat hodnoty pro parametry Runbooku, které se použijí, když tento Webhook spustí Runbook. Webhook musí zahrnovat hodnoty pro všechny povinné parametry Runbooku a může zahrnovat hodnoty pro volitelné parametry. Hodnota parametru konfigurovaná pro Webhook se dá upravit i po vytvoření Webhooku. Jednotlivé Webhooky, které jsou propojeny s jednou sadou Runbook, mohou mít různé hodnoty parametrů.
 
-Při spuštění klienta sady runbook pomocí webhooku, nemohou přepsat hodnoty parametrů definované v webhooku. Přijímat data z klienta, můžete sadu runbook přijímat jeden parametr s názvem **$WebhookData**. Tento parametr je typu [object], který obsahuje data, která obsahuje klient v požadavku POST.
+Když klient spustí Runbook pomocí Webhooku, nemůže přepsat hodnoty parametrů definované ve Webhooku. Pro příjem dat z klienta může sada Runbook přijmout jeden parametr s názvem **$WebhookData**. Tento parametr je typu [Object] obsahující data, která klient obsahuje v žádosti POST.
 
-![Parametr Webhookdata vlastnosti](media/automation-webhooks/webhook-data-properties.png)
+![Vlastnosti Webhookdata](media/automation-webhooks/webhook-data-properties.png)
 
-**$WebhookData** objektu má následující vlastnosti:
+Objekt **$WebhookData** má následující vlastnosti:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| WebhookName |Název webhooku. |
-| RequestHeader |Zatřiďovací tabulku obsahující záhlaví příchozí požadavek POST. |
-| Includesearchresults: true |Tělo z příchozí požadavek POST. To zachovává veškeré formátování, jako je například řetězec JSON, XML, nebo data formuláře kódovaná v řetězci. Sada runbook musí být napsané pro práci s formátem dat, která se očekává. |
+| WebhookName |Název Webhooku |
+| RequestHeader |Zatřiďovací tabulka obsahující hlavičky příchozího požadavku POST |
+| Částmi |Tělo příchozího požadavku POST. Tím se zachová formátování, jako je například String, JSON, XML nebo formovaná data s kódováním. Sada Runbook musí být zapsána, aby fungovala s očekávaným formátem dat. |
 
-Neexistuje žádná konfigurace webhooku potřebné k podpoře **$WebhookData** parametr a sada runbook není potřeba ji přijmout. Pokud sada runbook nedefinuje parametr, je ignorován nějaké podrobnosti o žádosti odeslané z klienta.
+Není k dispozici žádná konfigurace Webhooku, která by podporovala parametr **$WebhookData** a sada Runbook není nutná k jejímu přijetí. Pokud sada Runbook nedefinuje parametr, budou se všechny podrobnosti žádosti odeslané z klienta ignorovat.
 
-Pokud zadáte hodnotu pro $WebhookData při vytváření webhooku, že hodnota je přepsána při webhooku spustí runbook s daty z klientského požadavku POST, i v případě, že klient neobsahuje žádná data v textu požadavku. Když spustíte runbook, který má $WebhookData pomocí jiné metody než webhooku, je pro $Webhookdata, který je rozpoznán runbooku zadat hodnotu. Tato hodnota by měla být objekt se stejným [vlastnosti](#details-of-a-webhook) jako $Webhookdata tak, aby sada runbook správně s ním mohli pracovat stejně jako kdybyste se pracovali s skutečný parametr WebhookData předávány webhooku.
+> [!NOTE]
+> Při volání Webhooku byste měli vždycky ukládat hodnoty parametrů pro případ, že volání neproběhne úspěšně. Pokud dojde k výpadku sítě nebo k potížím s připojením, nebudete moct načíst neúspěšná volání Webhooku.
 
-Například pokud jsou od webu Azure portal následující sady runbook a chcete předat nějaké ukázkové WebhookData pro testování, protože parametr WebhookData je objekt, je předat jako dokumenty JSON v uživatelském rozhraní.
+Pokud při vytváření Webhooku zadáte hodnotu pro $WebhookData, tato hodnota se přepíše, když Webhook spustí Runbook s daty z požadavku POST klienta, a to i v případě, že klient neobsahuje žádná data v textu žádosti. Pokud spustíte sadu Runbook, která má $WebhookData pomocí jiné metody než Webhooku, můžete zadat hodnotu pro $Webhookdata, kterou sada Runbook rozpozná. Tato hodnota by měla být objekt se stejnými [vlastnostmi](#details-of-a-webhook) jako $Webhookdata tak, aby sada Runbook mohla s ním správně pracovat, jako kdyby pracovala se skutečným Webhookdata předaným webhookem.
+
+Například pokud spouštíte následující sadu Runbook z Azure Portal a chcete předat nějaké ukázkové WebhookData pro testování, protože WebhookData je objekt, měl by být předán jako JSON v uživatelském rozhraní.
 
 ![Parametr WebhookData z uživatelského rozhraní](media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
-Následující sady runbook, pokud mají následující vlastnosti pro parametr WebhookData:
+Pro následující sadu Runbook, pokud máte následující vlastnosti pro parametr WebhookData:
 
 * WebhookName: *MyWebhook*
-* RequestBody: *[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*
+* Částmi: *[{' resourceName ': ' myResourceGroup ', ' name ': ' vm01 '}; {' Resource ': ' myResourceGroup ', ' name ': ' vm02 '}]*
 
-Pak by předat následující hodnotu JSON v uživatelském rozhraní pro parametr WebhookData. Vrátí následující příklad se na začátek a znaky nového řádku odpovídá formátu, který je předán z webhooku.
+Pak předáte následující hodnotu JSON v uživatelském rozhraní pro parametr WebhookData. V následujícím příkladu se znaky návratu a nového řádku shodují s formátem předaným z Webhooku.
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
 ```
 
-![Parametr WebhookData začátku z uživatelského rozhraní](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
+![Spustit parametr WebhookData z uživatelského rozhraní](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 > [!NOTE]
-> Hodnoty všechny vstupní parametry jsou protokolovány k úloze runbooku. To znamená, že žádný vstup klientem v požadavku webhooku bude zaznamenané a k dispozici všem uživatelům s přístupem k automatizaci úloh.  Z tohoto důvodu měli byste být opatrní o citlivé informace, včetně ve volání webhooku.
+> Hodnoty všech vstupních parametrů jsou protokolovány pomocí úlohy Runbooku. To znamená, že všechny vstupy poskytované klientem v žádosti Webhooku se budou protokolovat a budou k dispozici všem uživatelům, kteří mají přístup k úloze automatizace.  Z tohoto důvodu byste měli být opatrní v souvislosti s zahrnutím citlivých informací v voláních webhooků.
 
 ## <a name="security"></a>Zabezpečení
 
-Zabezpečení webhooku spoléhá na ochranu osobních údajů její adresu URL, který obsahuje token zabezpečení, které umožňuje vyvolat. Azure Automation neprovádí ověřování na žádost, tak dlouho, dokud ho tvoří na správnou adresu URL. Z tohoto důvodu by neměl webhooků použít pro sady runbook, které provádějí vysoce citlivé a funkce bez použití alternativní způsob ověření požadavku.
+Zabezpečení Webhooku závisí na ochraně osobních údajů své adresy URL, která obsahuje token zabezpečení, který umožňuje jeho vyvolání. Azure Automation neprovádí žádné ověřování na žádosti, pokud je provedena na správnou adresu URL. Z tohoto důvodu by Webhooky neměly být používány pro Runbooky, které provádějí vysoce citlivé funkce bez použití alternativního způsobu ověření žádosti.
 
-Můžete zahrnout logiky v sadě runbook, chcete-li zjistit, že byla volána webhookem kontrolou **WebhookName** vlastnost parametru $WebhookData. Runbook by mohl provést další ověření tím, že hledají konkrétní informace v **RequestHeader** nebo **includesearchresults: true** vlastnosti.
+Můžete zahrnout logiku v rámci Runbooku, abyste zjistili, že byla vyvolána webhookem, a to tak , že zkontroluje vlastnost Webhooku parametru $WebhookData. Sada Runbook může provést další ověření tím, že hledá konkrétní informace ve vlastnostech **RequestHeader** nebo **částmi** .
 
-Jiné strategie je, aby sada runbook ověření některé externí podmínky při přijetí požadavku webhooku. Představte si třeba sadu runbook, která je volána z Githubu, vždycky, když je nová potvrzení změn do úložiště GitHub. Sada runbook může připojení ke Githubu k ověření, že nedošlo k nové potvrzení, než budete pokračovat.
+Další strategií je, aby sada Runbook prováděla při přijetí požadavku Webhooku nějaké ověření externí podmínky. Představte si například sadu Runbook, která je volána GitHubem, kdykoli je k dispozici nové potvrzení do úložiště GitHub. Runbook se může připojit k GitHubu a ověřit, že před pokračováním došlo k novému potvrzení.
 
-## <a name="creating-a-webhook"></a>Vytvoření webhooku
+## <a name="creating-a-webhook"></a>Vytvoření Webhooku
 
-Pomocí následujícího postupu vytvořte nový webhook propojené k sadě runbook na portálu Azure portal.
+Pomocí následujícího postupu můžete vytvořit nový Webhook propojený s runbookm ve Azure Portal.
 
-1. Z **stránky sady Runbook** na webu Azure Portal, klikněte na runbook, který se spustí se webhook. Chcete-li zobrazit stránku s jeho podrobnostmi. Zkontrolujte sadu runbook **stav** je **publikováno**.
-2. Klikněte na tlačítko **Webhooku** v horní části stránky otevřete **přidat Webhook** stránky.
-3. Klikněte na tlačítko **vytvořit nový webhook** otevřít **stránka pro vytvoření webhooku**.
-4. Zadejte **název**, **datum vypršení platnosti** pro webhook a určuje, zda se funkce má povolit. V tématu [podrobnosti webhooku](#details-of-a-webhook) pro další informace o těchto vlastností.
-5. Kliknutím na ikonu kopírování a stisknutím kláves Ctrl + C zkopírujte adresu URL webhooku. Potom uložte ho na bezpečném místě. **Po vytvoření webhooku, nelze znovu načíst adresu URL.**
+1. Na **stránce sady Runbook** v Azure Portal klikněte na Runbook, který Webhook spustí, a zobrazte jeho stránku s podrobnostmi. Ujistěte se, že je **stav** Runbooku **publikovaný**.
+2. Kliknutím na Webhook v horní části stránky otevřete stránku **Přidat Webhook** .
+3. Kliknutím na **vytvořit nový Webhook** otevřete **stránku vytvořit Webhook**.
+4. Zadejte **název**, **Datum vypršení platnosti** Webhooku a určete, jestli má být povolený. Další [](#details-of-a-webhook) informace o těchto vlastnostech najdete v podrobnostech Webhooku.
+5. Kliknutím na ikonu kopírování a stisknutím kombinace kláves CTRL + C zkopírujte adresu URL Webhooku. Pak záznam uložte na bezpečném místě. **Jakmile vytvoříte Webhook, nebudete moct znovu načíst adresu URL.**
 
-   ![Adresa URL Webhooku](media/automation-webhooks/copy-webhook-url.png)
+   ![Adresa URL webhooku](media/automation-webhooks/copy-webhook-url.png)
 
-1. Klikněte na tlačítko **parametry** k poskytnutí hodnot pro parametry runbooku. Pokud má runbook povinné parametry, pak nemůžete vytvořit webhook, pokud jsou k dispozici hodnoty.
-1. Klikněte na tlačítko **vytvořit** k vytvoření webhooku.
+1. Klikněte na **parametry** a zadejte hodnoty parametrů Runbooku. Pokud má sada Runbook povinné parametry, nemůžete vytvořit Webhook, pokud nejsou zadány hodnoty.
+1. Kliknutím na **vytvořit** vytvořte Webhook.
 
-## <a name="using-a-webhook"></a>Pomocí webhooku
+## <a name="using-a-webhook"></a>Použití Webhooku
 
-Použití webhooku po jeho vytvoření, musíte vydat klientské aplikace HTTP POST s adresou URL webhooku. Syntaxe webhooku je v následujícím formátu:
+Pro použití Webhooku po jeho vytvoření musí klientská aplikace vydat HTTP POST s adresou URL Webhooku. Syntaxe Webhooku je v následujícím formátu:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-Klient obdrží jednu z následujících návratových kódů z požadavku POST.
+Klient obdrží z požadavku POST jeden z následujících návratových kódů.
 
 | Kód | Text | Popis |
 |:--- |:--- |:--- |
-| 202 |Přijato |Žádost byla přijata a sada runbook byla úspěšně zařadil do fronty. |
-| 400 |Chybný požadavek |Požadavek nebyl přijat pro jednu z následujících důvodů: <ul> <li>Webhooku vypršela platnost.</li> <li>Je webhook zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
-| 404 |Nebyl nalezen |Požadavek nebyl přijat pro jednu z následujících důvodů: <ul> <li>Webhook se nenašel.</li> <li>Sada runbook nebyla nalezena.</li> <li>Účet nebyl nalezen.</li>  </ul> |
-| 500 |Vnitřní chyba serveru |Adresa URL byla platná, ale došlo k chybě. Požadavek odešlete znovu. |
+| 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
+| 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
+| 404 |Nenalezené |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Webhook se nenašel.</li> <li>Runbook se nenašel.</li> <li>Účet nebyl nalezen.</li>  </ul> |
+| 500 |Vnitřní chyba serveru |Adresa URL byla platná, ale došlo k chybě. Odešlete prosím žádost znovu. |
 
-Za předpokladu, že je žádost úspěšná, odpověď webhooku obsahuje úlohu s ID ve formátu JSON následujícím způsobem. Bude obsahovat ID jedné úlohy, ale umožňuje formát JSON pro potenciální budoucí vylepšení.
+Za předpokladu, že žádost je úspěšná, odpověď Webhooku obsahuje ID úlohy ve formátu JSON následujícím způsobem. Bude obsahovat jedno ID úlohy, ale formát JSON umožňuje možné budoucí vylepšení.
 
 ```json
 {"JobIds":["<JobId>"]}
 ```
 
-Klient nemůže určit po dokončení úlohy runbooku nebo její stav dokončení od webhooku. Může zjistit tyto informace, ID úlohy pomocí jiné metody, jako [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní API služby Azure Automation](/rest/api/automation/job).
+Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její stav dokončení z Webhooku. Tyto informace může zjistit s použitím ID úlohy jinou metodou, jako je [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní Azure Automation API](/rest/api/automation/job).
 
-## <a name="renew-webhook"></a>Obnovit webhooku
+## <a name="renew-webhook"></a>Obnovení Webhooku
 
-Když se vytvoří webhook, má platnost jeden rok. Platnost vyprší po daný rok webhook automaticky. Jakmile platnost webhooku nemůže být znovu aktivovat, musí být odebrány a znovu vytvořit. Pokud webhooku nedosáhla jeho čas vypršení platnosti, je možné rozšířit.
+Při vytvoření Webhooku má doba platnosti jeden rok. Po uplynutí této doby bude Webhook automaticky vypršet. Po vypršení platnosti Webhooku se nedá znovu aktivovat. musí se odebrat a znovu vytvořit. Pokud Webhook nedorazil na svůj čas vypršení platnosti, dá se rozšířit.
 
-K rozšíření webhooku, přejděte do sady runbook, který obsahuje webhooku. Vyberte **Webhooky** pod **prostředky**. Klikněte na tlačítko webhooku, která chcete rozšířit, tato akce otevře **Webhooku** stránky.  Zvolte nové datum vypršení platnosti a dobu a klikněte na tlačítko **Uložit**.
+Chcete-li Webhook zvětšit, přejděte na sadu Runbook, která obsahuje Webhook. V části **prostředky**vyberte Webhooky. Klikněte na Webhook, který chcete zvětšit. Tato akce otevře stránku Webhooku.  Vyberte nové datum a čas vypršení platnosti a klikněte na **Uložit**.
 
-## <a name="sample-runbook"></a>Ukázkové sady runbook
+## <a name="sample-runbook"></a>Ukázkový Runbook
 
-Následující vzorový runbook přijme webhook data a spustí virtuální počítače zadaný v textu požadavku. K otestování této sady runbook ve vašem účtu Automation v části **sady Runbook**, klikněte na tlačítko **+ přidat runbook**. Pokud si nejste jisti, jak vytvořit sadu runbook, přečtěte si téma [vytvoření sady runbook](automation-quickstart-create-runbook.md).
+Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, klikněte v účtu Automation v části **Runbooky**na **+ Přidat Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
 
 ```powershell
 param
@@ -171,7 +174,7 @@ if ($WebhookData) {
             {
                 throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
             }
-            Write-Output "Authenticating to Azure with service principal." 
+            Write-Output "Authenticating to Azure with service principal."
             Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Output
 
         # Start each virtual machine
@@ -188,11 +191,11 @@ else {
 }
 ```
 
-## <a name="test-the-example"></a>Testování v příkladu
+## <a name="test-the-example"></a>Test příkladu
 
-Následující příklad používá prostředí Windows PowerShell pro spuštění sady runbook pomocí webhooku. Webhook; můžete použít libovolný jazyk, který umí vytvářet požadavky HTTP Prostředí Windows PowerShell slouží jako příklad.
+Následující příklad používá Windows PowerShell ke spuštění Runbooku pomocí Webhooku. Libovolný jazyk, který může učinit požadavek HTTP, může používat Webhook. Prostředí Windows PowerShell se tady používá jako příklad.
 
-Sada runbook očekává seznam virtuálních počítačů ve formátu JSON v textu požadavku. Sada runbook ověřuje také, že obsahují záhlaví definované zprávy ověřit volající webhooku je platná.
+Sada Runbook očekává v těle žádosti seznam virtuálních počítačů formátovaných ve formátu JSON. Sada Runbook ověří taky, že hlavičky obsahují definovanou zprávu pro ověření, jestli je volající Webhooku platný.
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -207,7 +210,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-Následující příklad ukazuje, text, který je k dispozici pro sadu runbook v požadavku **includesearchresults: true** vlastnost **WebhookData**. Tato hodnota je formátovat jako dokumenty JSON, protože bylo formátu, který je zahrnutý v textu požadavku.
+Následující příklad ukazuje tělo žádosti, která je k dispozici pro sadu Runbook ve vlastnosti **částmi** třídy **WebhookData**. Tato hodnota je formátována jako JSON, protože se jedná o formát, který byl obsažen v těle požadavku.
 
 ```json
 [
@@ -222,11 +225,11 @@ Následující příklad ukazuje, text, který je k dispozici pro sadu runbook v
 ]
 ```
 
-Žádosti odeslané z prostředí Windows PowerShell a výsledné odpovědi na následujícím obrázku. ID úlohy je extrahován z odpovědi a převedeno na řetězec.
+Následující obrázek ukazuje požadavek odesílaný z Windows PowerShellu a výslednou odpověď. ID úlohy se extrahuje z odpovědi a převede na řetězec.
 
-![Tlačítko Webhooků](media/automation-webhooks/webhook-request-response.png)
+![Tlačítko webhooks](media/automation-webhooks/webhook-request-response.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak reagovat na upozornění Azure pomocí Azure Automation, najdete v článku [pomocí upozornění můžete aktivovat runbooku Azure Automation](automation-create-alert-triggered-runbook.md).
+* Další informace o tom, jak pomocí Azure Automation provést akci s výstrahami Azure, najdete v tématu [použití výstrahy ke spuštění sady Azure Automation Runbook](automation-create-alert-triggered-runbook.md).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: c1407e8a133013054ef33d4fe55fb8ecb46de654
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 64f02a33a3aeecddf751b8293542776bf5819574
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035722"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061896"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v SWIFT v macOS pomocí sady Speech SDK
 
@@ -65,16 +65,22 @@ V následujících dialogových oknech proveďte následující výběry:
 
 ## <a name="add-the-sample-code"></a>Přidání vzorového kódu
 
-1. Umístěte nový hlavičkový soubor s názvem `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` do adresáře uvnitř projektu HelloWorld a vložte do něj následující kód:[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. Umístěte nový hlavičkový soubor s názvem `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` do adresáře uvnitř projektu HelloWorld a vložte do něj následující kód:
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Přidejte relativní cestu `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` k přemostění hlavičky do nastavení projektu SWIFT pro cíl HelloWorld ve vlastnostech záhlaví pole ![s hlavičkou přemostění v *cíli C* .](media/sdk/qs-swift-macos-bridging-header.png)
-1. Obsah automaticky generovaného `AppDelegate.swift` souboru nahraďte:[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
+1. Nahraďte obsah automaticky vygenerovaného souboru `AppDelegate.swift` následujícím kódem:
+
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
 1. V `AppDelegate.swift`nahraďte řetězec `YourSubscriptionKey` pomocí vašeho klíče předplatného.
 1. Nahraďte řetězec `YourServiceRegion` oblastí, která je přidružená k vašemu předplatnému `westus` (například pro předplatné bezplatné zkušební verze).
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Instalace sady SDK jako CocoaPod
 
 1. Nainstalujte správce závislostí CocoaPod, jak je popsáno v pokynech k [instalaci](https://guides.cocoapods.org/using/getting-started.html).
-1. Přejděte do adresáře ukázkové aplikace (`helloworld`). Umístěte textový soubor s názvem `Podfile` a následujícím obsahem v tomto adresáři:[!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
+1. Přejděte do adresáře ukázkové aplikace (`helloworld`). Umístěte textový soubor s názvem `Podfile` a následujícím obsahem v tomto adresáři:
+
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
 1. Přejděte do `helloworld` adresáře v terminálu a spusťte příkaz `pod install`. Tím se vygeneruje `helloworld.xcworkspace` pracovní prostor Xcode obsahující ukázkovou aplikaci a sadu Speech SDK jako závislost. Tento pracovní prostor bude použit v následujících.
 
 ## <a name="build-and-run-the-sample"></a>Sestavení a spuštění ukázky
@@ -84,7 +90,7 @@ V následujících dialogových oknech proveďte následující výběry:
 1. Sestavte a spusťte ukázkový kód tak, že v nabídce vyberete**Spustit** **produkt** > nebo kliknete na tlačítko **Přehrát** .
 1. Po kliknutí na tlačítko rozpoznat v aplikaci a vyslovení několika slov byste se měli podívat na text, který jste promluví v dolní části okna aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)

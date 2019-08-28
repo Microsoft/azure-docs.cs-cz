@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 2010799dd590808a2c5be7d9e2330bd60e2c7913
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 79a960b106cc9de4116e8e59b2fa17f48c896221
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842488"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061455"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložišť dat z aplikace Microsoft Access pomocí Azure Data Factory
 
@@ -33,6 +33,9 @@ Pokud chcete použít tento konektor Microsoft Accessu, musíte:
 
 - Nastavte Integration Runtime pro místní hostování. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
 - Na Integration Runtime počítač nainstalujte ovladač ODBC pro Microsoft Access pro úložiště dat.
+
+>[!NOTE]
+>V tomto konektoru nefunguje verze ovladače ODBC pro Microsoft Access 2016. Místo toho použijte ovladač verze 2013 nebo 2010.
 
 ## <a name="getting-started"></a>Začínáme
 

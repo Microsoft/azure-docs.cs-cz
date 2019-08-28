@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667832"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062062"
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme se zdvojením zařízení (Python)
 
@@ -49,11 +49,15 @@ Níže jsou uvedené pokyny k instalaci požadovaných součástí.
 
 V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metadata umístění do vlákna zařízení přidruženého k vašemu **{ID zařízení}** . Pak se dotazuje na vlákna uložená ve službě IoT Hub a vybere zařízení umístěná v Redmond a pak ty, které vytvářejí mobilní připojení.
 
-1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
+1. V pracovním adresáři otevřete příkazový řádek a nainstalujte **sadu Azure IoT Hub Service SDK pro Python**.
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
 
 2. Pomocí textového editoru vytvořte nový soubor **AddTagsAndQuery.py** .
 
@@ -66,7 +70,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Přidejte následující kód, který nahradí zástupný symbol pro `[IoTHub Connection String]` a `[Device Id]` připojovacím řetězcem pro Centrum IoT a ID zařízení, které jste vytvořili v předchozích částech.
+4. Přidejte následující kód. Nahraďte `[IoTHub Connection String]` připojovacím řetězcem centra IoT, který jste zkopírovali v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). Nahraďte `[Device Id]` ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
 
 5. Do souboru **AddTagsAndQuery.py** přidejte následující kód:
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která přidá metada
 
     Ve výsledcích dotazu pro všechna zařízení umístěná v **Redmond43** byste měli vidět jedno zařízení, které pro dotaz neomezuje výsledky na zařízení, která používají mobilní síť.
 
-    ![první dotaz zobrazující všechna zařízení v Redmond](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![první dotaz zobrazující všechna zařízení v Redmond](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 V další části vytvoříte aplikaci pro zařízení, která oznamuje informace o připojení a mění výsledek dotazu v předchozí části.
 
@@ -151,11 +155,15 @@ V další části vytvoříte aplikaci pro zařízení, která oznamuje informac
 
 V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k vašemu rozbočovači jako vaše **{ID zařízení}** , a pak aktualizuje nahlášené vlastnosti, které jsou v zařízení nahlášeny, aby obsahovaly informace, které jsou připojené pomocí mobilní sítě.
 
-1. Otevřete příkazový řádek a nainstalujte **sadu SDK služby Azure IoT Hub pro Python**. Po dokončení instalace sady SDK zavřete příkazový řádek.
+1. Z příkazového řádku v pracovním adresáři nainstalujte **sadu Azure IoT Hub Service SDK pro Python**:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Balíčky PIP pro Azure-iothub-Service-Client a Azure-iothub-Device-Client jsou momentálně dostupné jenom pro operační systém Windows. Informace pro Linux a Mac OS najdete v oddílech týkajících se Linux a Mac OS na stránce [Příprava vývojového prostředí pro Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
 
 2. Pomocí textového editoru vytvořte nový soubor **ReportConnectivity.py** .
 
@@ -167,7 +175,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. Přidejte následující kód a nahraďte zástupný symbol `[IoTHub Device Connection String]` připojovacím řetězcem pro zařízení služby IoT Hub, které jste vytvořili v předchozích částech.
+4. Přidejte následující kód. Nahraďte hodnotu [](#register-a-new-device-in-the-iot-hub) zástupnéhosymbolupřipojovacímřetězcemzařízení,kterýjstezkopírovalivčástiregistracenovéhozařízeníveslužběIoT`[IoTHub Device Connection String]` hub.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     Objekt **klienta** zveřejňuje všechny metody, které vyžadujete pro interakci se zařízeními ze zařízení. Předchozí kód: po inicializaci objektu **klienta** načte objekt pro vaše zařízení vlákna a aktualizuje jeho hlášenou vlastnost informacemi o připojení.
 
@@ -248,7 +256,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
 
     Mělo by se zobrazit potvrzení, že se vlákna zařízení aktualizovala.
 
-    ![aktualizovat vlákna](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![aktualizovat vlákna](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. Teď, když zařízení oznámilo informace o připojení, by se mělo zobrazit v obou dotazech. Vraťte se zpět a znovu spusťte dotazy:
 
@@ -258,9 +266,9 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která se připojí k
 
     Tentokrát by **{ID zařízení}** mělo být ve výsledcích dotazu.
 
-    ![druhý dotaz](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![druhý dotaz](./media/iot-hub-python-twin-getstarted/service-2.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí registru.
 

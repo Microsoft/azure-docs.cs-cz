@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906023"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061907"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -70,7 +70,7 @@ Správci a spolusprávci předplatného můžou toto nastavení změnit, aby mě
 Organizace, které řídí přístup k VIRTUÁLNÍm počítačům a jejich celkové zabezpečení virtuálních počítačů, vylepšit.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Použití více virtuálních počítačů pro lepší dostupnost
-Pokud váš virtuální počítač spouští kritické aplikace, které potřebují vysokou dostupnost, důrazně doporučujeme použít více virtuálních počítačů. Pro lepší dostupnost použijte [skupinu dostupnosti](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+Pokud váš virtuální počítač spouští kritické aplikace, které potřebují vysokou dostupnost, důrazně doporučujeme použít více virtuálních počítačů. Pro lepší dostupnost použijte [skupinu dostupnosti](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) nebo [zóny](../../availability-zones/az-overview.md)dostupnosti.
 
 Skupina dostupnosti je logické seskupení, které můžete v Azure použít k zajištění toho, že prostředky virtuálních počítačů, které do nich umístíte, jsou při jejich nasazení v datacentru Azure izolované od sebe. Azure zajišťuje, aby virtuální počítače, které umístíte do skupiny dostupnosti, běžely na několika fyzických serverech, výpočetních skříních, jednotkách úložiště a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to jenom podmnožinu vašich virtuálních počítačů a vaše celková aplikace bude dál k dispozici pro vaše zákazníky. Skupiny dostupnosti jsou zásadní funkcí, pokud chcete vytvářet spolehlivé cloudová řešení.
 

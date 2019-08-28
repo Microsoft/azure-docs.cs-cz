@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bed56f169e2a985b23b3bca96c32f7caba596432
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036640"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061515"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,15 +517,19 @@ Pokud jste instalaci provedli předtím, než jste vytvořili konfiguraci Db2 HA
 Použijte konfigurační nástroj J2EE ke kontrole nebo aktualizaci adresy URL JDBC. Vzhledem k tomu, že nástroj J2EE Configuration Tool je grafický nástroj, je nutné mít nainstalovaný X Server:
  
 1. Přihlaste se k primárnímu aplikačnímu serveru instance J2EE a spusťte:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
-1.V levém rámci vyberte **úložiště zabezpečení**.
-1.V pravém rámečku Vyberte klíč JDBC/Pool/\<SAPSID>/URL.
-1.Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
-1.Vyberte **Přidat**.
-1.Pokud chcete změny uložit, vyberte ikonu disku v levém horním rohu.
-1.Zavřete konfigurační nástroj.
-1.Restartujte instanci Java.
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+1. V levém rámci vyberte **úložiště zabezpečení**.
+1. V pravém rámečku Vyberte klíč `jdbc/pool/\<SAPSID>/url`.
+1. Změňte název hostitele v adrese URL JDBC na název virtuálního hostitele.
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+1. Vyberte **Přidat**.
+1. Pokud chcete změny uložit, vyberte ikonu disku v levém horním rohu.
+1. Zavřete konfigurační nástroj.
+1. Restartujte instanci Java.
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>Konfigurace archivace protokolů pro instalaci HADR
 Pokud chcete nakonfigurovat archivaci protokolu Db2 pro instalaci HADR, doporučujeme, abyste nakonfigurovali databázi primárního i pohotovostního režimu tak, aby ve všech umístěních archivu protokolů byla funkce automatického načítání protokolů. Primární i pohotovostní databáze musí být schopné načítat soubory archivu protokolu ze všech umístění archivu protokolů, do kterých může archivovat soubory protokolu buď jedna z těchto instancí databáze. 

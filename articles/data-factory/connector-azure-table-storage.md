@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985988"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061489"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat z a do úložiště tabulek v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -221,10 +221,8 @@ Pokud chcete kopírovat data z tabulky Azure a z ní, nastavte vlastnost Type da
 
 Pro úložiště dat bez schémat, jako je například tabulka Azure, Data Factory odvodí schéma jedním z následujících způsobů:
 
-* Pokud určíte strukturu dat pomocí **struktura** vlastnost v definici datové sady Data Factory respektuje tato struktura jako schéma. V takovém případě, pokud řádek neobsahuje hodnotu pro sloupec, je pro něj k dispozici hodnota null.
-* Pokud neurčíte strukturu dat pomocí vlastnosti **Structure** v definici datové sady, Data Factory odvodí schéma pomocí prvního řádku v datech. V takovém případě, pokud první řádek neobsahuje úplné schéma, některé sloupce v důsledku operace kopírování chybí.
-
-V případě zdrojů dat bez schématu je osvědčeným postupem určení struktury dat pomocí vlastnosti **struktury** .
+* Pokud zadáte mapování sloupců v aktivitě kopírování, Data Factory k načtení dat použít seznam na straně zdroje. V takovém případě, pokud řádek neobsahuje hodnotu pro sloupec, je pro něj k dispozici hodnota null.
+* Pokud nezadáte mapování sloupců v aktivitě kopírování, Data Factory odvodí schéma pomocí prvního řádku v datech. V takovém případě, pokud první řádek neobsahuje úplné schéma (například některé sloupce mají hodnotu null), v důsledku operace kopírování chybí některé sloupce.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -340,7 +338,7 @@ Když přesunete data do a z tabulky Azure, použijí se následující [mapová
 | Edm.Guid |Guid |Globálně jedinečný identifikátor 128. |
 | Edm.Int32 |Int32 |32 celé číslo. |
 | Edm.Int64 |Int64 |64 celé číslo. |
-| Edm.String |Řetězec |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
+| Edm.String |String |Hodnota kódovaná v kódování UTF-16. Hodnoty řetězce můžou být až 64 KB. |
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

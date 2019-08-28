@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741664"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061571"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -72,8 +72,8 @@ Z Log Analytics pracovního prostoru:
 
 Z vašeho předplatného Office 365:
 
-- Uživatelské jméno: E-mailová adresa účtu správce.
-- ID klienta: Jedinečné ID pro předplatné Office 365
+- Jmen E-mailová adresa účtu správce.
+- ID tenanta: Jedinečné ID pro předplatné Office 365
 - ID klienta: 16 znaků řetězec, který představuje klienta Office 365.
 - Tajný kód klienta: Šifrovaný řetězec nezbytný pro ověřování.
 
@@ -83,45 +83,46 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, že řešení p
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com/).
 1. Vyberte **Azure Active Directory** a potom **Registrace aplikací**.
-1. Klikněte na **Registrace nové aplikace**.
+1. Klikněte na **Nová registrace**.
 
     ![Přidat registraci aplikace](media/solution-office-365/add-app-registration.png)
-1. Zadejte **název** aplikace a **adresu URL pro přihlášení**.  Název by měl být popisný.  Použít `http://localhost` pro adresu URL a zachovat _webovou aplikaci/rozhraní API_ pro **Typ aplikace**
+1. Zadejte **název**aplikace. Pro **podporované typy účtů**vyberte **účty v jakémkoli organizačním adresáři (ve víceklientském adresáři Azure AD)** .
     
     ![Vytvořit aplikaci](media/solution-office-365/create-application.png)
-1. Klikněte na **vytvořit** a ověřte informace o aplikaci.
+1. Klikněte na **Registrovat** a ověřte informace o aplikaci.
 
     ![Registrovaná aplikace](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Konfigurace aplikace pro Office 365
 
-1. Kliknutím na **Nastavení** otevřete nabídku **Nastavení** .
-1. Vyberte **vlastnosti**. Změňte **více tenantů** na _Ano_.
+1. Vyberte **ověřování** a ověřte, že se v části **podporované typy účtů**vybraly **účty v libovolné organizační složce (ve víceklientském adresáři Azure AD)** .
 
     ![Nastavení víceklientské architektury](media/solution-office-365/settings-multitenant.png)
 
-1. V nabídce **Nastavení** vyberte **požadovaná oprávnění** a pak klikněte na **Přidat**.
-1. Klikněte na **Vybrat rozhraní API** a potom na **rozhraní API pro správu Office 365**. klikněte na **rozhraní API pro správu sady Office 365**. Klikněte na tlačítko **vyberte**.
+1. Vyberte **oprávnění rozhraní API** a pak **přidejte oprávnění**.
+1. Klikněte na **rozhraní API pro správu sady Office 365**. 
 
     ![Vyberte rozhraní API](media/solution-office-365/select-api.png)
 
-1. V části **vybrat oprávnění** vyberte následující možnosti pro **oprávnění aplikace** i **delegovaná oprávnění**:
-   - Přečíst informace o stavu služby pro organizaci
-   - Čtení dat o aktivitách pro vaši organizaci
-   - Přečíst sestavy aktivit pro organizaci
+1. V části **jaký typ oprávnění vaše aplikace vyžaduje?** vyberte následující možnosti pro **oprávnění aplikace** i **delegovaná oprávnění**:
+   - Přečíst informace o stavu služby pro vaši organizaci
+   - Čtení dat o aktivitách ve vaší organizaci
+   - Čtení sestav aktivit pro vaši organizaci
 
-     ![Vyberte rozhraní API](media/solution-office-365/select-permissions.png)
+     ![Vyberte rozhraní API](media/solution-office-365/select-permissions-01.png)![Vyberte rozhraní API](media/solution-office-365/select-permissions-02.png)
 
-1. Klikněte na **Vybrat** a potom na **Hotovo**.
-1. Klikněte na **udělit oprávnění** a po zobrazení výzvy k ověření klikněte na **Ano** .
+1. Klikněte na tlačítko **Přidat oprávnění**.
+1. Klikněte na **udělit souhlas správce** a po zobrazení výzvy k ověření klikněte na **Ano** .
 
-    ![Udělení oprávnění](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Přidat klíč pro aplikaci
+### <a name="add-a-secret-for-the-application"></a>Přidání tajného klíče pro aplikaci
 
-1. V nabídce **Nastavení** vyberte **klíče** .
+1. Vyberte **certifikáty & tajných** kódů a pak **nový tajný klíč klienta**.
+
+    ![Klíče](media/solution-office-365/secret.png)
+ 
 1. Zadejte **Popis** a **dobu trvání** nového klíče.
-1. Klikněte na **Uložit** a potom zkopírujte **hodnotu** , která se vygenerovala.
+1. Klikněte na **Přidat** a potom zkopírujte **hodnotu** , která se vygenerovala.
 
     ![Klíče](media/solution-office-365/keys.png)
 

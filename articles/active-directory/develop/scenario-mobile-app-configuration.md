@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414847"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061397"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobilní aplikace, která volá webovou rozhraní API – konfigurace kódu
 
-Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód z parametrů aplikace, které jste získali při registraci aplikace. Mobilní aplikace mají také několik složitých specifických, která musí dělat s přizpůsobením rozhraní, které se používá k vytváření těchto aplikací.
+Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód pomocí parametrů registrace aplikace. Mobilní aplikace mají také několik složitých specifických, která musí dělat s přizpůsobením rozhraní, které se používá k vytváření těchto aplikací.
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>Knihovny MSAL podporující mobilní aplikace
 
@@ -38,7 +38,7 @@ Knihovny Microsoftu podporující mobilní aplikace jsou:
 
 ## <a name="configuring-the-application"></a>Konfigurace aplikace
 
-Mobilní aplikace používají `PublicClientApplication` třídu MSAL. Tady je postup vytvoření instance:
+Mobilní aplikace používají `PublicClientApplication` třídu. Tady je postup vytvoření instance:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ Následující článek vysvětluje, jak nakonfigurovat kód aplikace pro Xamari
 
 #### <a name="instantiating-the-application"></a>Vytvoření instance aplikace
 
-V Xamarin nebo UWP nejjednodušší způsob vytvoření instance aplikace je následující, kde `ClientId` je identifikátor GUID vaší aplikace jako registrovaný.
+V Xamarin nebo UWP nejjednodušší způsob vytvoření instance aplikace je následující, kde `ClientId` je identifikátor GUID vaší registrované aplikace.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-V Androidu doporučujeme `CurrentActivityPlugin` [tady](https://github.com/jamesmontemagno/CurrentActivityPlugin).  `PublicClientApplication` Kód Tvůrce pak bude vypadat takto:
+V Androidu doporučujeme použít `CurrentActivityPlugin` [zde](https://github.com/jamesmontemagno/CurrentActivityPlugin).  `PublicClientApplication` Kód Tvůrce pak bude vypadat takto:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Nakonec existují určité informace o prohlížečích v Androidu. Jsou vysvět
 
 #### <a name="uwp-specific-considerations"></a>Konkrétní předpoklady pro UWP
 
-Na UWP můžete používat podnikové sítě. Informace o specifických informacích UWP naleznete v tématu věnovaném [Univerzální platforma Windows specifických pro použití s MSAL.NET](msal-net-uwp-considerations.md).
+Na UWP můžete používat podnikové sítě. Další informace o tom, jak používat knihovnu MSAL s UWP, najdete v tématu [informace o Univerzální platforma Windows specifických pro použití s MSAL.NET](msal-net-uwp-considerations.md).
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Konfigurace aplikace pro použití zprostředkovatele
 
@@ -258,7 +258,7 @@ MSAL používá `–canOpenURL:` ke kontrole, jestli je na zařízení nainstalo
 
 MSAL.NET ještě nepodporuje zprostředkovatele pro Android.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Získání tokenu](scenario-mobile-acquire-token.md)

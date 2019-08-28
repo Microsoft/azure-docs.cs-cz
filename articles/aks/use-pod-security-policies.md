@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 374e86409be08f1f9859b3e325dda57080b89dbf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033987"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061839"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -32,7 +32,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo nově
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-Pokud chcete použít zásady zabezpečení pod, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
+Pokud chcete použít zásady zabezpečení pod, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -71,7 +71,7 @@ V clusteru Kubernetes se k zachycení požadavků na server rozhraní API použ�
 
 *PodSecurityPolicy* je řadič pro přijímání, který ověřuje specifikaci pod, splňuje vaše definované požadavky. Tyto požadavky mohou omezit použití privilegovaných kontejnerů, přístup k určitým typům úložiště nebo uživatele nebo skupiny, ve kterých může být kontejner spuštěn. Když se pokusíte nasadit prostředek, u kterého specifikace pod nesplňují požadavky uvedené v zásadách zabezpečení pod, požadavek se odepře. Tato možnost určuje, které lusky se můžou naplánovat v clusteru AKS, brání určitým možným chybám zabezpečení nebo zvýšení úrovně oprávnění.
 
-Když v clusteru AKS zapnete zásadu zabezpečení pod, uplatní se některé výchozí zásady. Tyto výchozí zásady poskytují předem připravené možnosti, které definují, jaké lusky je možné naplánovat. Nicméně uživatelé clusteru můžou narazit na problémy s nasazováním lusků, dokud nedefinujete vlastní zásady. Doporučuje se postupovat takto:
+Když v clusteru AKS zapnete zásadu zabezpečení pod, uplatní se některé výchozí zásady. Tyto výchozí zásady poskytují předem připravené možnosti, které definují, jaké lusky je možné naplánovat. Nicméně uživatelé clusteru můžou narazit na problémy s nasazováním lusků, dokud nedefinujete vlastní zásady. Doporučený postup je:
 
 * Vytvoření clusteru AKS
 * Definovat vlastní zásady zabezpečení pod
@@ -136,7 +136,7 @@ Je důležité porozumět tomu, jak tyto výchozí zásady pracují s požadavky
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>Vytvoření testovacího uživatele v clusteru AKS
 
-Ve výchozím nastavení se při použití příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] zobrazí přihlašovací údaje *správce* clusteru AKS a `kubectl` přidají se do konfigurace. Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. Pokud pro clustery AKS používáte integraci Azure Active Directory, můžete se přihlásit pomocí přihlašovacích údajů uživatele bez oprávnění správce, aby se zobrazilo vynucování zásad v akci. V tomto článku vytvoříme účet testovacího uživatele v clusteru AKS, který můžete použít.
+Ve výchozím nastavení platí, že když použijete příkaz `kubectl` [AZ AKS Get-Credentials][az-aks-get-credentials] , přidají se do konfigurace přihlašovací údaje *správce* pro cluster AKS. Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. Pokud pro clustery AKS používáte integraci Azure Active Directory, můžete se přihlásit pomocí přihlašovacích údajů uživatele bez oprávnění správce, aby se zobrazilo vynucování zásad v akci. V tomto článku vytvoříme účet testovacího uživatele v clusteru AKS, který můžete použít.
 
 Vytvořte ukázkový obor názvů s názvem *PSP-AKS* pro zdroje testu pomocí příkazu [kubectl Create Namespace][kubectl-create] . Pak vytvořte účet služby s názvem *neadmin-User* pomocí příkazu [kubectl Create ServiceAccount][kubectl-create] :
 
@@ -443,7 +443,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> V prvním kroku tohoto článku byla funkce zásady zabezpečení pod povolena v clusteru AKS. Doporučeným postupem bylo povolit funkci zásady zabezpečení pod, jenom když jste definovali vlastní zásady. To je fáze, kde byste povolili funkci zásady zabezpečení pod. Byla definována jedna nebo více vlastních zásad a k těmto zásadám byly přidruženy uživatelské účty. Nyní můžete bezpečně vyřídit funkci zásady zabezpečení pod a minimalizovat problémy způsobené výchozími zásadami.
+> V prvním kroku tohoto článku byla funkce zásady zabezpečení pod povolena v clusteru AKS. Doporučeným postupem bylo povolit funkci zásady zabezpečení pod, jenom když jste definovali vlastní zásady. To je fáze, kde byste povolili funkci zásady zabezpečení pod. Byla definována jedna nebo více vlastních zásad a k těmto zásadám byly přidruženy uživatelské účty. Teď můžete bezpečně povolit funkci zásady zabezpečení pod a minimalizovat problémy způsobené výchozími zásadami.
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Otestování opětovného vytvoření neprivilegovaného objektu.
 
@@ -500,7 +500,7 @@ Nakonec odstraňte obor názvů *PSP-AKS* :
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek ukazuje, jak vytvořit zásadu zabezpečení pod tím, abyste zabránili použití privilegovaného přístupu. Existuje spousta funkcí, které může zásada vyhovět, jako je například typ svazku nebo uživatel RunAs. Další informace o dostupných možnostech najdete v [referenční dokumentaci k zásadám zabezpečení Kubernetes pod][kubernetes-policy-reference].
 

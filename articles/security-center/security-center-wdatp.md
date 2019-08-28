@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2018
+ms.date: 08/21/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640904"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061419"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Windows Defender pomocí Azure Security Center
 
@@ -115,8 +115,9 @@ Vygenerování neškodné výstrahy testu ochrany ATP v programu Windows Defende
 
 5. V okně šetření vyberte odkaz pro přechod na portál ochrany ATP v programu Windows Defender.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
+- [Platformy a funkce podporované službou Azure Security Center](security-center-os-coverage.md)
 - [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Přečtěte si, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Přečtěte si, jak doporučení vám pomůžou chránit prostředky Azure.
 - [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.
