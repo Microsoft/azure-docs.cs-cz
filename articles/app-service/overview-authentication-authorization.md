@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030846"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087986"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -109,7 +108,7 @@ V následující tabulce jsou uvedené kroky toku ověřování.
 | Krok | Bez sady Provider SDK | Se sadou SDK pro poskytovatele |
 | - | - | - |
 | 1. Podepsat uživatele | Přesměrovává klienta na `/.auth/login/<provider>`. | Kód klienta podepisuje uživatele přímo se sadou SDK pro poskytovatele a přijímá ověřovací token. Informace najdete v dokumentaci k poskytovateli. |
-| 2. Následné ověření | Zprostředkovatel přesměrovává klienta na `/.auth/login/<provider>/callback`. | [Token příspěvků klientských kódů od poskytovatele](app-service-authentication-how-to.md#validate-tokens-from-providers) k `/.auth/login/<provider>` ověření. |
+| 2. Po ověření | Zprostředkovatel přesměrovává klienta na `/.auth/login/<provider>/callback`. | [Token příspěvků klientských kódů od poskytovatele](app-service-authentication-how-to.md#validate-tokens-from-providers) k `/.auth/login/<provider>` ověření. |
 | 3. Vytvořit ověřenou relaci | App Service přidá ověřený soubor cookie pro odpověď. | App Service vrátí do klientského kódu svůj vlastní ověřovací token. |
 | 4. Obsluha ověřeného obsahu | Klient zahrnuje ověřovací soubor cookie v následných požadavcích (automaticky zpracovávaných prohlížečem). | Klientský kód prezentuje ověřovací token `X-ZUMO-AUTH` v hlavičce (automaticky se zpracovává Mobile Apps klientské sady SDK). |
 
@@ -125,7 +124,7 @@ V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service au
 
 Tyto možnosti jsou popsány v následujících nadpisech.
 
-### <a name="allow-anonymous-requests-no-action"></a>Povolit anonymní požadavky (žádná akce)
+### <a name="allow-anonymous-requests-no-action"></a>Povolení anonymních požadavků (žádná akce)
 
 Tato možnost odloží autorizaci neověřeného provozu do kódu aplikace. U ověřených požadavků App Service také společně s ověřovacími informacemi v hlavičkách protokolu HTTP. 
 
@@ -153,7 +152,7 @@ Návody pro konkrétního poskytovatele:
 * [Konfigurace aplikace pro použití přihlášení ke Googlu][Google]
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft][MSA]
 * [Konfigurace aplikace pro použití přihlášení k Twitteru][Twitter]
-* [Postup: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
+* [Postupy: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df2f9aa56e22bd4060c823b02900fa914a0fd7f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532795"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073844"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicializace klientských aplikací pomocí MSAL. js
 Tento článek popisuje inicializaci knihovny Microsoft Authentication Library pro JavaScript (MSAL. js) s instancí aplikace uživatelského agenta. Aplikace User-Agent je forma veřejné klientské aplikace, ve které se klientský kód spouští v uživatelském agentovi, jako je webový prohlížeč. Tito klienti neukládají tajné kódy, protože kontext prohlížeče je otevřený. Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
@@ -123,7 +123,7 @@ Níže je uvedená celková sada konfigurovatelných možností, které jsou akt
 
 - **validateAuthority**: Volitelný parametr.  Ověření vystavitele tokenů. Výchozí hodnota je `true`. Pro B2C aplikace, protože je hodnota autority známá a může se lišit podle zásad, ověření platnosti autority nebude fungovat a musí být nastavená na `false`.
 
-- **redirectUri**: Volitelný parametr.  Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu, s tím rozdílem, že musí být kódovaný v adrese URL. Výchozí hodnota je `window.location.href`.
+- **redirectUri**: Volitelný parametr.  Identifikátor URI pro přesměrování vaší aplikace, ve kterém může vaše aplikace odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu. Výchozí hodnota je `window.location.href`.
 
 - **postLogoutRedirectUri**: Volitelný parametr.  Přesměruje uživatele na `postLogoutRedirectUri` po odhlášení. Výchozí formát je `redirectUri`.
 

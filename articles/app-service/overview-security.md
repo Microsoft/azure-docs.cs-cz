@@ -1,7 +1,7 @@
 ---
-title: Přehled zabezpečení – Azure App Service | Dokumentace Microsoftu
-description: Další informace o App Service pomáhá jak zabezpečené aplikace a jak můžete dále uzamknout aplikace před hrozbami.
-keywords: služby Azure app service webovou aplikaci, mobilní aplikace, aplikace api, aplikace function app, zabezpečení, zabezpečení, zabezpečené, dodržování předpisů, předpisy, certifikátů, certifikáty, https, ftps, tls, vztah důvěryhodnosti, šifrování, šifrování, šifrované, omezení IP adres, ověřování, autorizace, ověřovacích, autho, msi, identita spravované služby, spravovanou identitu, tajné kódy, tajný klíč, opravy, opravy, opravy, verze, izolaci, izolace sítě, před útoky ddos, mitm
+title: Přehled zabezpečení-Azure App Service | Microsoft Docs
+description: Přečtěte si, jak App Service pomáhá zabezpečit vaši aplikaci a jak můžete aplikaci dál uzamknout před hrozbami.
+keywords: Azure App Service, Webová aplikace, mobilní aplikace, aplikace API, aplikace Function App, zabezpečení, zabezpečení, zabezpečení, dodržování předpisů, kompatibilní, certifikát, certifikáty, https, FTPS, TLS, důvěryhodnost, šifrování, šifrování, zašifrovaná, omezení IP adres, ověřování, autorizace, Authn, autho, MSI, identita spravované služby, spravovaná identita, tajné klíče, tajný kód, opravy, oprava, opravy, verze, izolace, izolace sítě, DDoS, MITM
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,111 +10,110 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475861"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074118"
 ---
-# <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
+# <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
 
-Tento článek vám ukáže, jak [služby Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-endu mobilní aplikace, aplikace API a [aplikace function app](/azure/azure-functions/). Profil také ukazuje, jak můžete dále zabezpečit svou aplikaci pomocí integrované funkce služby App Service.
+V tomto článku se dozvíte, jak [Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-end mobilní aplikace, aplikaci API a [aplikaci Function App](/azure/azure-functions/). Také ukazuje, jak můžete aplikaci dále zabezpečit pomocí integrovaných funkcí App Service.
 
-Komponenty platformy služby App Service, včetně virtuálních počítačů Azure, úložiště, síťová připojení, webové architektury, funkce správy a integrace, které jsou aktivně zabezpečené a Posílená. App Service prochází kontrolovat dodržování předpisů náročným průběžně, abyste měli jistotu, že:
+Komponenty platformy App Service, včetně virtuálních počítačů Azure, úložiště, síťových připojení, webových rozhraní, funkcí pro správu a integrace, jsou aktivně zabezpečeny a zpřísněny. App Service projde průběžnými kontrolami dodržování předpisů, aby se zajistilo, že:
 
-- Prostředky aplikace jsou [zabezpečené](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) z prostředků Azure ostatních zákazníků.
-- [Instance virtuálních počítačů a softwaru runtime se pravidelně aktualizují](overview-patch-os-runtime.md) slabiny adresu nově zjištěno. 
-- Komunikace tajných kódů (například připojovací řetězce) mezi vaší aplikací a dalších prostředků Azure (například [SQL Database](https://azure.microsoft.com/services/sql-database/)) zůstává v rámci Azure a není pro různé všechna ohraničení sítě. Tajné kódy se vždy šifrují, pokud uložená.
-- Veškerá komunikace přes připojení služby App Service funkce, jako [hybridní připojení](app-service-hybrid-connections.md), je zašifrovaný. 
-- Připojení pomocí nástroje pro vzdálenou správu, jako je Azure PowerShell, rozhraní příkazového řádku Azure, sady SDK služby Azure, rozhraní REST API, všechny šifrovaná.
-- 24 hodin před internetovými útoky management chrání infrastruktury a platformy před malwarem, distributed denial of service (DDoS), man-in-the-middle typu MITM () a dalšími hrozbami.
+- Prostředky vaší aplikace jsou [zabezpečené](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) z prostředků Azure jiných zákazníků.
+- [Instance virtuálních počítačů a běhový software se pravidelně aktualizují](overview-patch-os-runtime.md) a řeší nově zjištěná ohrožení zabezpečení. 
+- Komunikace s tajnými kódy (jako jsou připojovací řetězce) mezi vaší aplikací a dalšími prostředky Azure (například [SQL Database](https://azure.microsoft.com/services/sql-database/)) zůstává v Azure a nepřekračuje žádné hranice sítě. Tajné kódy jsou při uložení vždy zašifrovány.
+- Veškerá komunikace přes App Service funkce připojení, jako je [hybridní připojení](app-service-hybrid-connections.md), je zašifrovaná. 
+- Připojení ke vzdáleným nástrojům pro správu, jako je Azure PowerShell, Azure CLI, sady SDK Azure a rozhraní REST API, jsou šifrovaná.
+- 24 hodinová Správa hrozeb chrání infrastrukturu a platformu proti malwaru, distribuovaným útokům na DDoS (man-in-the-middle), MITM a dalším hrozbám.
 
-Další informace o zabezpečení infrastruktury a platform v Azure najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
+Další informace o infrastruktuře a zabezpečení platforem v Azure najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
 
-Následující části ukazují, jak rozšířit ochranu před hrozbami aplikace app Service.
+V následujících částech se dozvíte, jak dále chránit aplikaci App Service před hrozbami.
 
-## <a name="https-and-certificates"></a>Protokol HTTPS a certifikátů
+## <a name="https-and-certificates"></a>HTTPS a certifikáty
 
-App Service umožňuje Zabezpečte svoje aplikace pomocí [HTTPS](https://wikipedia.org/wiki/HTTPS). Pokud vaše aplikace je vytvořená, jeho výchozí název domény (\<app_name >. azurewebsites.net) už je přístupný pomocí protokolu HTTPS. Pokud jste [konfigurace vlastní domény pro vaši aplikaci](app-service-web-tutorial-custom-domain.md), měli byste také [Zabezpečte ji pomocí vlastního certifikátu](app-service-web-tutorial-custom-ssl.md) , tak klientský prohlížeč můžete vytvořit zabezpečené připojení prostřednictvím protokolu HTTPS pro vlastní doménu. Existují dva způsoby, jak to udělat:
+App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<APP_NAME >. azurewebsites. NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také zabezpečit vlastním certifikátem](app-service-web-tutorial-custom-ssl.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. Můžete to provést dvěma způsoby:
 
-- **Certifikát App Service** – vytvořit certifikát přímo v Azure. Certifikát je zabezpečený v [Azure Key Vault](/azure/key-vault/)a mohou být naimportovány do vaší aplikace služby App Service. Další informace najdete v tématu [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
-- **Certifikát třetí strany** – nahrání vlastního certifikátu SSL, který jste si koupili od důvěryhodné certifikační autority a jeho vazbu na vaše aplikace app Service. App Service podporuje jednou doménou certifikáty a certifikáty se zástupnými znaky. Podporuje také certifikáty podepsané svým držitelem pro testovací účely. Další informace najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+- **App Service certifikát** – vytvoření certifikátu přímo v Azure. Certifikát je zabezpečený v [Azure Key Vault](/azure/key-vault/)a je možné ho importovat do aplikace App Service. Další informace najdete v tématu [Nákup a konfigurace certifikátu SSL pro Azure App Service](web-sites-purchase-ssl-web-site.md).
+- **Certifikát třetí strany** – nahrajte vlastní certifikát SSL, který jste zakoupili od důvěryhodné certifikační autority, a navažte ho do vaší aplikace App Service. App Service podporuje certifikáty s jednou doménou a zástupné znaky. Pro účely testování podporuje také certifikáty podepsané svým držitelem. Další informace najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL k Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
-## <a name="insecure-protocols-http-tls-10-ftp"></a>Protokoly nezabezpečené (HTTP, TLS 1.0, FTP)
+## <a name="insecure-protocols-http-tls-10-ftp"></a>Nezabezpečené protokoly (HTTP, TLS 1,0, FTP)
 
-Služba App Service zabezpečit svou aplikaci proti všechna nezašifrovaná připojení (HTTP), poskytuje konfiguraci jedním kliknutím pro vynucení protokolu HTTPS. Nezabezpečené požadavky se zapnou okamžitě, než dosáhnou i kód aplikace. Další informace najdete v tématu [vynucení HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https).
+Pokud chcete svoji aplikaci zabezpečit před všemi nezašifrovanými připojeními (HTTP), App Service poskytuje konfiguraci jedním kliknutím pro vymáhání protokolu HTTPS. Nezabezpečené žádosti jsou vypnuté předtím, než budou mít přístup k vašemu kódu aplikace. Další informace najdete v tématu [vymáhání protokolu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https).
 
-[Protokol TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 je již nejsou považované za bezpečné hlediska oborových standardů, jako například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service vám umožní zakázat pomocí zastaralého protokolů [vynucení protokolu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
+Protokol [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 již není považován za zabezpečený oborovým standardem, jako je například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). App Service umožňuje zakázat zastaralé protokoly vynucením [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions).
 
-App Service podporuje pro nasazování souborů protokolu FTP a FTPS. Však FTPS by měl použít namísto FTP, pokud je to možné. Pokud jeden nebo oba tyto protokoly nejsou používány, měli byste [je zakázat](deploy-ftp.md#enforce-ftps).
+App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se měl používat místo FTP, pokud je to možné. Pokud se jeden nebo oba tyto protokoly nepoužívají, měli byste [je zakázat](deploy-ftp.md#enforce-ftps).
 
 ## <a name="static-ip-restrictions"></a>Omezení statických IP adres
 
-Ve výchozím nastavení vaše aplikace app Service bude přijímat žádosti ze všech IP adres z Internetu, ale můžete omezit, která přístup k malou část IP adresy. App Service ve Windows umožňuje definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Seznam povolených položek může obsahovat jednotlivé IP adresy nebo rozsah IP adres určené maskou podsítě. Další informace najdete v tématu [Azure App Service statické omezení IP adres](app-service-ip-restrictions.md).
+Ve výchozím nastavení vaše aplikace App Service přijímá požadavky ze všech IP adres z Internetu, ale můžete tento přístup omezit na malou podmnožinu IP adres. App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).
 
-Pro službu App Service na Windows, můžete taky omezit IP adresy dynamicky tím, že nakonfigurujete _web.config_. Další informace najdete v tématu [dynamické zabezpečení protokolu IP \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací _souboru Web. config_. Další informace najdete v tématu [> Dynamic IP \<Security dynamicIpSecurity](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
-## <a name="client-authentication-and-authorization"></a>Klient ověřování a autorizace
+## <a name="client-authentication-and-authorization"></a>Ověřování a autorizace klienta
 
-Azure App Service poskytuje klíč ověřování a autorizace uživatelů nebo klientské aplikace. Pokud povolená, můžete podepsat v modulu Uživatelé a klientské aplikace s kódem nebo vůbec žádné aplikace. Můžete implementovat vlastní řešení pro ověřování a autorizace nebo Povolit službě App Service, aby to zvládnul za vás. Modul ověřování a autorizace zpracovává webové požadavky před jejich předání do kódu aplikace a zakazuje neoprávněné požadavky dřív, než dorazí váš kód.
+Azure App Service poskytuje ověřování a autorizaci uživatelů nebo klientských aplikací. Když je tato možnost povolená, může se přihlašovat uživatelům a klientským aplikacím s malým nebo žádným kódem aplikace. Můžete implementovat vlastní řešení pro ověřování a autorizaci nebo App Service, abyste ho mohli místo toho zpracovat. Modul ověřování a autorizace zpracovává webové požadavky před jejich předáním do kódu aplikace a zamítnutí neautorizovaných žádostí před tím, než dorazí na váš kód.
 
-App Service ověřování a autorizace podporují více zprostředkovatelů ověřování, včetně Azure Active Directory, účty Microsoft, Facebook, Google a Twitter. Další informace najdete v tématu [Ověřování a autorizace ve službě Azure App Service](overview-authentication-authorization.md).
+Ověřování a autorizace App Service podporují více poskytovatelů ověřování, včetně Azure Active Directory, účtů Microsoft, Facebooku, Google a Twitteru. Další informace najdete v tématu [Ověřování a autorizace ve službě Azure App Service](overview-authentication-authorization.md).
 
 ## <a name="service-to-service-authentication"></a>Ověřování služba-služba
 
-Při ověřování proti back-end služby App Service poskytuje dva různé mechanismy v závislosti na vaše potřeby:
+Při ověřování proti back-endové službě poskytuje App Service v závislosti na vašich potřebách dva různé mechanismy:
 
-- **Služba identity** – Přihlaste se k vzdálený prostředek pomocí identity aplikace. App Service umožňuje snadné vytváření [se identita spravované](overview-managed-identity.md), který můžete použít k ověření s ostatními službami, jako například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](/azure/key-vault/). Kurz začátku do konce tohoto přístupu, najdete v tématu [připojení zabezpečení Azure SQL Database ze služby App Service pomocí spravované identity](app-service-web-tutorial-connect-msi.md).
-- **On-behalf-of (OBO)** – Ujistěte se, Delegovaný přístup ke vzdáleným prostředkům jménem uživatele. S Azure Active Directory jako zprostředkovatele ověřování, aplikace app Service můžete provádět delegované přihlášení vzdálené služby, jako například [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) nebo vzdálenou aplikaci API ve službě App Service. Kurz začátku do konce tohoto přístupu, najdete v tématu [ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service](app-service-web-tutorial-auth-aad.md).
+- **Identita služby** – Přihlaste se ke vzdálenému prostředku pomocí samotné identity aplikace. App Service vám umožní snadno vytvořit [spravovanou identitu](overview-managed-identity.md), kterou můžete použít k ověření pomocí jiných služeb, jako je například [Azure SQL Database](/azure/sql-database/) nebo [Azure Key Vault](/azure/key-vault/). Ucelený kurz tohoto přístupu najdete v tématu [zabezpečené Azure SQL Database připojení z App Service pomocí spravované identity](app-service-web-tutorial-connect-msi.md).
+- **OBO (za běhu)** – zajistěte delegovaný přístup ke vzdáleným prostředkům jménem uživatele. Pomocí Azure Active Directory jako poskytovatele ověřování může vaše aplikace App Service provádět delegované přihlašování ke vzdálené službě, jako je například [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) nebo Vzdálená aplikace API v App Service. Ucelený kurz tohoto přístupu najdete v tématu [ověřování a autorizace uživatelů v Azure App Service](app-service-web-tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Připojení ke vzdáleným prostředkům
 
 Existují tři typy vzdálených prostředků, které vaše aplikace může potřebovat pro přístup: 
 
 - [Prostředky Azure](#azure-resources)
-- [Prostředky ve službě Azure Virtual Network](#resources-inside-an-azure-virtual-network)
+- [Prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network)
 - [Místní prostředky](#on-premises-resources)
 
-Ve všech těchto případech služba App Service poskytuje způsob, jak můžete vytvořit zabezpečené připojení, ale i nadále dodržovalo osvědčené postupy zabezpečení. Například vždy použijte šifrovaná připojení i v případě, že prostředek back-end umožňuje nezašifrované připojení. Kromě toho se ujistěte, že back endu služby Azure umožňuje minimální sadu IP adres. Můžete najít odchozí IP adresy pro vaši aplikaci v [příchozí a odchozí IP adresy ve službě Azure App Service](overview-inbound-outbound-ips.md).
+V každém z těchto případů App Service poskytuje způsob, jak provádět zabezpečená připojení, ale přesto byste měli pozorovat osvědčené postupy zabezpečení. Například vždy používejte šifrovaná připojení, i když prostředek back-end umožňuje nešifrované připojení. Dále se ujistěte, že vaše back-end služba Azure umožňuje minimální sadu IP adres. Odchozí IP adresy pro vaši aplikaci najdete na [příchozích a odchozích IP adresách v Azure App Service](overview-inbound-outbound-ips.md).
 
 ### <a name="azure-resources"></a>Prostředky Azure
 
-Když vaše aplikace se připojí k prostředky Azure, jako například [SQL Database](https://azure.microsoft.com/services/sql-database/) a [služby Azure Storage](/azure/storage/), připojení zůstane v rámci Azure a není pro různé všechna ohraničení sítě. Ale připojení prochází sdílené sítě v systému Azure, proto vždy ujistěte se, že se šifrují vaše připojení. 
+Když se vaše aplikace připojí k prostředkům Azure, jako jsou [SQL Database](https://azure.microsoft.com/services/sql-database/) a [Azure Storage](/azure/storage/), připojení zůstane v Azure a nepřekračuje žádné hranice sítě. Připojení se ale prochází přes sdílené sítě v Azure, takže se vždycky ujistěte, že je vaše připojení šifrované. 
 
-Pokud je vaše aplikace hostovaná v [App Service environment](environment/intro.md), měli byste [připojení k podporované služby Azure s využitím koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
+Pokud je vaše aplikace hostována v [prostředí App Service](environment/intro.md), měli byste [se připojit k podporovaným službám Azure pomocí koncových bodů služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-### <a name="resources-inside-an-azure-virtual-network"></a>Prostředky ve službě Azure Virtual Network
+### <a name="resources-inside-an-azure-virtual-network"></a>Prostředky v rámci Azure Virtual Network
 
-Vaše aplikace přístup k prostředkům v [Azure Virtual Network](/azure/virtual-network/) prostřednictvím [integrace služby Virtual Network](web-sites-integrate-with-vnet.md). Integrace se naváže s virtuální síti pomocí sítě VPN point-to-site. Aplikaci pak mají přístup k prostředkům ve virtuální síti pomocí jejich privátní IP adresy. Připojení point-to-site, ale stále procházejí sdílené sítě v Azure. 
+Vaše aplikace má přístup k prostředkům v [Azure Virtual Network](/azure/virtual-network/) prostřednictvím [integrace Virtual Network](web-sites-integrate-with-vnet.md). Integrace je navázána s Virtual Network pomocí sítě VPN typu Point-to-site. Aplikace pak může získat přístup k prostředkům v Virtual Network pomocí jejich privátních IP adres. Připojení Point-to-site ale pořád projde sdílené sítě v Azure. 
 
-K izolaci prostředků připojení zcela ze sdílené sítě v Azure, vytvořte aplikaci v [App Service environment](environment/intro.md). Protože služby App Service environment se vždy nasadit do vyhrazené virtuální sítě, připojení mezi vaší aplikací a prostředků v rámci virtuální sítě je plně izolované. Další aspekty zabezpečení sítě ve službě App Service environment najdete v části [izolace sítě](#network-isolation).
+Pokud chcete zcela izolovat připojení k prostředkům ze sdílených sítí v Azure, vytvořte si aplikaci v [prostředí App Service](environment/intro.md). Vzhledem k tomu, že App Service prostředí je vždycky nasazené do vyhrazené Virtual Network, je připojení mezi vaší aplikací a prostředky v rámci Virtual Network plně izolované. Další aspekty zabezpečení sítě v prostředí App Service najdete v tématu [izolace sítě](#network-isolation).
 
 ### <a name="on-premises-resources"></a>Místní prostředky
 
-Mít bezpečný přístup k místním prostředkům, jako jsou databáze, třemi způsoby: 
+K místním prostředkům, jako jsou databáze, můžete bezpečně přistupovat třemi způsoby: 
 
-- [Hybridní připojení](app-service-hybrid-connections.md) -naváže připojení typu point-to-point vzdálený prostředek přes tunelové připojení protokolu TCP. TCP tunelu TLS 1.2 pomocí klíče sdíleného přístupového podpisu (SAS).
-- [Integrace Virtual Network](web-sites-integrate-with-vnet.md) pomocí sítě VPN site-to-site – jak je popsáno v [prostředky ve virtuální síti Azure](#resources-inside-an-azure-virtual-network), ale může být připojen virtuální sítě pro vaši místní síť prostřednictvím sítě [ Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě můžete aplikaci připojit k místním prostředkům, jako ostatní prostředky ve virtuální síti.
-- [App Service environment](environment/intro.md) pomocí sítě VPN site-to-site – jak je popsáno v [prostředky ve virtuální síti Azure](#resources-inside-an-azure-virtual-network), ale může být připojen virtuální sítě pro vaši místní síť prostřednictvím sítě [site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě můžete aplikaci připojit k místním prostředkům, jako ostatní prostředky ve virtuální síti.
+- [Hybridní připojení](app-service-hybrid-connections.md) – naváže připojení typu Point-to-Point ke vzdálenému prostředku prostřednictvím tunelu TCP. Tunel TCP je vytvořen pomocí klíčů TLS 1,2 s klíči sdíleného přístupového podpisu (SAS).
+- [Virtual Network integrace](web-sites-integrate-with-vnet.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
+- [App Service prostředí](environment/intro.md) s VPN typu Site-to-site – jak je popsáno v tématu [prostředky v rámci Azure Virtual Network](#resources-inside-an-azure-virtual-network), ale Virtual Network se dá připojit k místní síti prostřednictvím [sítě VPN typu Site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md). V této topologii sítě se může vaše aplikace připojit k místním prostředkům, jako jsou jiné prostředky v Virtual Network.
 
-## <a name="application-secrets"></a>Tajných klíčů aplikací
+## <a name="application-secrets"></a>Tajné klíče aplikace
 
-Neukládejte tajných klíčů aplikací, jako je například přihlašovací údaje databáze, tokeny rozhraní API a privátní klíče do kódu nebo konfiguračního souboru. Obecně uznávaný přístup je pro přístup k nim jako [proměnné prostředí](https://wikipedia.org/wiki/Environment_variable) standardním způsobem v jazyce podle výběru. Ve službě App Service, je způsob, jak definovat proměnné prostředí prostřednictvím [nastavení aplikace](configure-common.md#configure-app-settings) (a hlavně pro aplikace .NET, [připojovací řetězce](configure-common.md#configure-connection-strings)). Nastavení aplikace a připojovacích řetězců jsou uloženy v zašifrované podobě v Azure a máte dešifrovat jenom před se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče jsou pravidelně otočen.
+Neukládejte tajné klíče aplikace, jako jsou přihlašovací údaje databáze, tokeny API a privátní klíče, do kódu nebo konfiguračních souborů. Běžně přijímaným přístupem je přístup k těmto [proměnným prostředí](https://wikipedia.org/wiki/Environment_variable) pomocí standardního vzoru ve zvoleném jazyce. V App Service způsob definování proměnných prostředí je prostřednictvím [nastavení aplikace](configure-common.md#configure-app-settings) (a zejména pro aplikace .NET, [připojovací řetězce](configure-common.md#configure-connection-strings)). Nastavení aplikace a připojovací řetězce se ukládají v Azure jako šifrované a dešifrují se jenom předtím, než se vloží do paměti procesu vaší aplikace při spuštění aplikace. Šifrovací klíče se pravidelně otáčí.
 
-Alternativně můžete integrovat aplikace služby App Service s využitím [Azure Key Vault](/azure/key-vault/) pro správu rozšířené tajných kódů. Podle [přístup k trezoru klíčů na spravovanou identitu](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace app Service mít bezpečný přístup, tajné kódy, které potřebujete.
+Alternativně můžete svou aplikaci App Service integrovat s [Azure Key Vault](/azure/key-vault/) pro pokročilou správu tajných klíčů. Když [přístup k Key Vault ke spravované identitě](../key-vault/tutorial-web-application-keyvault.md), vaše aplikace App Service může zabezpečeně přistupovat k tajným údajům, které potřebujete.
 
 ## <a name="network-isolation"></a>Izolace sítě
 
-S výjimkou **izolované** cenovou úroveň, u všech úrovní aplikace můžete spouštět ve sdílené síťové infrastruktury ve službě App Service. Veřejné IP adresy a nástroje pro vyrovnávání zatížení front-endový jsou sdíleny s jinými tenanty. **Izolované** úroveň poskytuje kompletní síťovou izolaci spuštěním vaší aplikace v rámci vyhrazeného [App Service environment](environment/intro.md). Služby App Service environment běží ve vlastní instanci [Azure Virtual Network](/azure/virtual-network/). To vám umožní: 
+S výjimkou cenové úrovně inizolace všechny úrovně spouštějí vaše aplikace na sdílené síťové infrastruktuře v App Service. Například veřejné IP adresy a nástroje pro vyrovnávání zatížení front-end jsou sdíleny s ostatními klienty. Izolovaná vrstva poskytuje kompletní izolaci sítě spuštěním aplikací v [prostředí vyhrazené App Service](environment/intro.md). Prostředí App Service běží ve vaší vlastní instanci [Azure Virtual Network](/azure/virtual-network/). Umožňuje: 
 
-- Poskytování aplikací prostřednictvím vyhrazené veřejný koncový bod, s vyhrazenou front-endů.
-- Slouží k interní aplikaci pomocí interní nástroj pro vyrovnávání zatížení (ILB), který umožňuje přístup jenom v rámci vaší virtuální sítě Azure. ILB má IP adresu z vaší privátní podsítě, která poskytuje celkový počet izolace aplikací z Internetu.
-- [Pomocí ILB za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu podnikové úrovni pro vaše veřejné webové aplikace, například DDoS protection, identifikátor URI filtrování a prevence prostřednictvím injektáže SQL.
+- Obsluhujte své aplikace prostřednictvím vyhrazeného veřejného koncového bodu s vyhrazenými front-endy.
+- Obsluhovat interní aplikace s využitím interního nástroje pro vyrovnávání zatížení (interního nástroje), který umožňuje přístup pouze zevnitř vaší služby Azure Virtual Network. INTERNÍHO nástroje má IP adresu z vaší privátní podsítě, která poskytuje celkovou izolaci vašich aplikací z Internetu.
+- [Použijte interního nástroje za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu na podnikové úrovni pro vaše veřejné aplikace, jako je například ochrana DDoS, filtrování identifikátorů URI a prevence injektáže SQL.
 
-Další informace najdete v tématu [Úvod do služby Azure App Service Environment](environment/intro.md). 
+Další informace najdete v tématu [Úvod do Azure App Service prostředí](environment/intro.md). 

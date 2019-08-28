@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348317"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100115"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
-## <a name="assumptions"></a>Použité
+## <a name="assumptions"></a>Předpoklady
 
 - Chystáte se migrovat databázi Oracle z místního prostředí do Azure.
 - Máte [balíček diagnostiky](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) pro Oracle Database, které chcete migrovat.
@@ -196,7 +195,7 @@ Pro ukládání do mezipaměti hostitele existují tři možnosti:
 
 - *Jen pro čtení*: Všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
 
-- Čtení pro *čtení:* Toto je algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
+- Čtení pro čtení: Toto je algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
 
 - *Žádné* (zakázáno): Pomocí této možnosti můžete mezipaměť obejít. Všechna data se přenesou na disk a trvale Azure Storage. Tato metoda poskytuje nejvyšší počet vstupně-výstupních operací pro úlohy náročné na vstupně-výstupní operace. Také je nutné vzít v úvahu "náklady na transakci".
 
@@ -233,7 +232,7 @@ Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení v
 - [Konfigurace Oracle Zlaté brány](configure-oracle-golden-gate.md)
 - [Zálohování a obnovení Oracle](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Vytvoření vysoce dostupných virtuálních počítačů](../../linux/create-cli-complete.md)
 - [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)

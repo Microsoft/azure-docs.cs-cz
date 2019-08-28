@@ -1,7 +1,7 @@
 ---
-title: Nasadit vlastní image, více kontejnerů nebo integrované image - službě Azure App Service | Dokumentace Microsoftu
-description: Jak se rozhodnout mezi vlastní nasazení kontejneru Dockeru, více kontejnerů a architektura integrované aplikace pro App Service v Linuxu
-keywords: azure app service, web app, linux, oss
+title: Nasazení vlastní image, více kontejnerů nebo integrované image Azure App Service | Microsoft Docs
+description: Jak se rozhodnout mezi vlastním nasazením kontejneru Docker, více kontejnery a integrovanou aplikační architekturou pro App Service v systému Linux
+keywords: Azure App Service, Web App, Linux, OSS
 services: app-service
 documentationCenter: ''
 author: msangapu
@@ -11,48 +11,47 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919945"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066789"
 ---
-# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Vlastní image, více kontejnerů nebo image integrované platformy?
+# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Vlastní image, více kontejnerů nebo vestavěná image platformy?
 
-[App Service v Linuxu](app-service-linux-intro.md) nabízí tři různé cesty k zařazení vaší aplikace publikována na webu:
+[App Service v systému Linux](app-service-linux-intro.md) nabízí tři různé cesty k aplikaci publikované na webu:
 
-- **Nasazení vlastní image**: "Ukotvovat" vaší aplikace do image Dockeru, který obsahuje všechny soubory a závislosti v balíčku připravené ke spuštění.
-- **Nasazení vícekontejnerových**: "Ukotvovat" vaší aplikace napříč více kontejnery pomocí Docker Compose konfigurační soubor.
-- **Nasazení aplikace s integrovanou platformu imagí**: Naše integrované platformy Image obsahují běžných modulů runtime webové aplikace a závislosti, jako je například Node a PHP. Použít libovolný z [metody nasazení služby Azure App Service](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) k nasazení aplikace do webové aplikace úložiště a pak ji spustit pomocí image integrované platformy.
+- **Nasazení vlastní image**: "Ukotvovat" aplikaci do dokovací image, která obsahuje všechny vaše soubory a závislosti v balíčku připraveného k spuštění.
+- **Nasazení s více kontejnery**: "Ukotvovat" vaší aplikace napříč více kontejnery pomocí konfiguračního souboru Docker Compose.
+- **Nasazení aplikace s integrovanou imagí platformy**: Naše integrované image platforem obsahují běžné moduly runtime a závislosti webových aplikací, jako je například node a PHP. K nasazení vaší aplikace do úložiště vaší webové aplikace použijte libovolnou z [Azure App Service metody nasazení](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a pak použijte vestavěnou image platformy pro její spuštění.
 
-## <a name="which-method-is-right-for-your-app"></a>Jakou metodu je nejvhodnější pro vaši aplikaci? 
+## <a name="which-method-is-right-for-your-app"></a>Která metoda je pro vaši aplikaci nejvhodnější? 
 
-Primárními faktory vzít v úvahu, jsou:
+Primární faktory, které je potřeba vzít v úvahu:
 
-- **Dostupnost dockeru v pracovním postupu vývoje**: Vývoj vlastní image vyžaduje základní znalost Dockeru pracovního postupu vývoje. Nasazení vlastní image do služby web app vyžaduje zveřejnění vlastní image do úložiště hostitele, jako je Docker Hubu. Pokud jste obeznámeni s prostředím Docker a může přidat úkoly Dockeru do pracovního postupu sestavení nebo pokud jsou již publikování vaší aplikace jako image Dockeru, vlastní image je téměř jistě nejlepší volbou.
-- **Víceúrovňová architektura**: Nasazení několika kontejnerů, jako jsou webové aplikační vrstvu a vrstvu rozhraní API k oddělení možností s využitím více kontejnerů. 
-- **Výkon aplikace**: Zvýšení výkonu vícekontejnerové aplikace pomocí mezipaměti vrstvy, jako jsou Redis. Vyberte více kontejnerů toho dosáhnout.
-- **Požadavky na modul runtime jedinečný**: Integrovaná platforma Image jsou určeny k uspokojení potřeb většiny webových aplikací, ale mají omezenou jejich přizpůsobitelnost. Vaše aplikace může mít jedinečné závislosti nebo jiné požadavky na modul runtime, které překračují, co jsou schopny integrované Image.
-- **Požadavky na sestavení**: S [průběžné nasazování](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), můžete získat vaší aplikace do provozu v Azure přímo ze zdrojového kódu. Vyžaduje se bez externího procesu sestavení nebo publikace. Existuje ale omezení přizpůsobitelnost a dostupnost nástroje sestavení v rámci [Kudu](https://github.com/projectkudu/kudu/wiki) stroj pro nasazení. Vaše aplikace může velký růst Kudu pro možnosti, roste v jeho závislostí nebo požadavků pro logiku vlastního sestavení.
-- **Požadavky na čtení/zápis disku**: Všechny webové aplikace se přidělují svazek úložiště pro webový obsah. Tento svazek se opírá o Azure Storage, je připojený k `/home` v systému souborů aplikace. Na rozdíl od souborů v systému souborů kontejneru soubory obsahu hromadně jsou přístupné napříč všemi instancemi škálování aplikace a změny se zachová napříč restartování aplikace. Ale je vyšší latence obsahu svazku disku a další proměnnou než latence místního kontejneru systému souborů a přístupu k nim může mít vliv platformy upgrady, neplánované výpadky a problémy se síťovým připojením. Aplikace, které vyžadují náročné přístup jen pro čtení souborů obsahu můžou mít užitek z nasazení vlastní image, které umístí soubory bitové kopie systému souborů namísto na obsahu svazku.
-- **Sestavení využití prostředků**: Když je aplikace nasazená ze zdroje, skripty nasazení spustit pomocí Kudu stejného plánu služby App Service úložnou a výpočetní prostředky jako spuštěné aplikaci. Nasazení velkých aplikací může využívat další prostředky nebo dobu, než požadovaný. Konkrétně se mnoho pracovní postupy nasazení generovat aktivitu náročné disku na svazku obsahu aplikace, které není optimalizovaná pro takové činnosti. Vlastní image všechny soubory a závislosti vaší aplikace přináší do Azure v jediném balíčku bez nutnosti další soubor či akce související s nasazením.
-- **Pro rychlé iterace potřebovat**: Dockerizing aplikace vyžaduje další kroky sestavení. Změny se projeví musí nahrání nové image do úložiště při každé z nich. Tyto aktualizace jsou pak dali do prostředí Azure. Pokud jeden z předdefinovaných kontejnerů splňuje potřeby vašich aplikací, nasazení ze zdroje můžou nabízet rychlejší pracovního postupu vývoje.
+- **Dostupnost Docker ve vývojovém pracovním postupu**: Vývoj vlastních imagí vyžaduje základní znalosti pracovního postupu Docker pro vývoj. Nasazení vlastní image do webové aplikace vyžaduje publikování vlastní image do hostitele úložiště, jako je Docker Hub. Pokud jste obeznámeni s Docker a můžete přidat úkoly Docker do pracovního postupu sestavení, nebo pokud už aplikaci publikujete jako image Docker, vlastní image je skoro určitě nejlepší volbou.
+- **Architektura s více vrstvami**: Nasaďte více kontejnerů, jako je například vrstva webové aplikace a vrstva rozhraní API pro oddělení možností pomocí více kontejnerů. 
+- **Výkon aplikace**: Zvyšte výkon aplikace s více kontejnery pomocí vrstvy mezipaměti, jako je Redis. Pro dosažení tohoto cíle vyberte více kontejnerů.
+- **Jedinečné požadavky na modul runtime**: Integrované image platforem jsou navržené tak, aby splňovaly potřeby většiny webových aplikací, ale jejich vlastní úpravou jsou omezené. Vaše aplikace může mít jedinečné závislosti nebo jiné požadavky na modul runtime, které překračují, co jsou integrované image schopné.
+- **Požadavky na sestavení**: Díky [průběžnému nasazování](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)můžete svou aplikaci v Azure začít používat přímo ze zdrojového kódu. Není vyžadován externí proces sestavení nebo publikace. Nicméně existuje omezení úprav a dostupnosti nástrojů sestavení v rámci modulu nasazení [Kudu](https://github.com/projectkudu/kudu/wiki) . Vaše aplikace může rozšiřovat schopnosti Kudu při zvětšování svých závislostí nebo požadavků pro vlastní logiku sestavení.
+- **Požadavky na čtení/zápis na disku**: Všem webovým aplikacím se přidělí svazek úložiště pro webový obsah. Tento svazek, který `/home` je zálohovaný Azure Storage, je připojený do systému souborů aplikace. Na rozdíl od souborů v systému souborů kontejnerů jsou soubory ve svazku obsahu přístupné napříč všemi instancemi škálování aplikace a úpravy budou zachovány po restartování aplikace. Latence disku ve svazku obsahu je ale vyšší a větší než latence místního systému souborů kontejnerů a přístup může mít vliv na upgrady platforem, neplánované výpadky a problémy s připojením k síti. Aplikace, které vyžadují velký přístup jen pro čtení k souborům obsahu, můžou využívat vlastní nasazení image, které místo na svazku obsahu umístí soubory v systému souborů imagí.
+- **Využití prostředků sestavení**: Když se aplikace nasadí ze zdroje, skripty pro nasazení běžící pomocí Kudu používají stejné App Service plánování výpočetních prostředků a prostředků úložiště jako běžící aplikace. Rozsáhlá nasazení aplikací můžou spotřebovávat více prostředků nebo dobu, než je potřeba. Konkrétně mnoho pracovních postupů nasazení generuje na svazku obsahu aplikace velkou činnost disku, která není pro tuto aktivitu optimalizovaná. Vlastní image ukládá všechny soubory a závislosti vaší aplikace do Azure v jednom balíčku bez nutnosti dalších přenosů souborů nebo akcí nasazení.
+- **Nutnost rychlé iterace**: Dockerizing aplikace vyžaduje další kroky sestavení. Změny se projeví až po vložení nové image do úložiště s každou aktualizací. Tyto aktualizace jsou pak načteny do prostředí Azure. Pokud některý z vestavěných kontejnerů vyhovuje potřebám vaší aplikace, může nasazení ze zdroje nabízet rychlejší vývojový pracovní postup.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vlastní kontejner:
-* [Spuštění vlastní kontejner](quickstart-docker-go.md)
+* [Spustit vlastní kontejner](quickstart-docker-go.md)
 
 Více kontejnerů:
-* [Vytvoření aplikace pro více kontejnerů](quickstart-multi-container.md)
+* [Vytvoření aplikace s více kontejnery](quickstart-multi-container.md)
 
-Tyto články vám pomůžou začít s App Service v Linuxu pomocí image integrované platformy:
+Následující články vám pomohou začít s App Service v systému Linux s integrovanou imagí platformy:
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](quickstart-php.md)

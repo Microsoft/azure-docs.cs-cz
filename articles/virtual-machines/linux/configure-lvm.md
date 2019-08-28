@@ -1,6 +1,6 @@
 ---
-title: Konfigurace LVM na virtuálním počítači s Linuxem | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurace LVM v Linuxu v Azure.
+title: Konfigurace LVM ve virtuálním počítači se systémem Linux | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat LVM pro Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
@@ -11,30 +11,29 @@ ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 0feac4844f5d65119e74713c21f58fb29e3a7956
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671692"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083821"
 ---
-# <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuální počítač s Linuxem v Azure
-Tento dokument popisuje ke konfiguraci Správce logických svazků (LVM) ve virtuálním počítači Azure. LVM může být použita na disk s operačním systémem nebo datové disky ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nemá LVM nakonfigurované na disk s operačním systémem. Následující postup se zaměří na konfigurace LVM pro datové disky.
+# <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuálním počítači se systémem Linux v Azure
+Tento dokument popisuje, jak na virtuálním počítači Azure nakonfigurovat Správce logických svazků (LVM). LVM se dá použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nebude mít LVM nakonfigurovanou na disku s operačním systémem. Následující postup se zaměřuje na konfiguraci LVM pro datové disky.
 
-## <a name="linear-vs-striped-logical-volumes"></a>Lineární porovnání prokládané svazky logické
-LVM umožňuje zkombinovat do jednoho svazku úložiště počtem fyzických disků. Ve výchozím nastavení LVM obvykle vytvoří lineární logických svazků, což znamená, že je ve fyzickém úložišti zřetězených dohromady. V tomto případě operací čtení a zápisu se obvykle pouze pošle na jeden disk. Naproti tomu můžeme můžete také vytvořit prokládané svazky logické, ve kterých se operace čtení a zápisy distribuují na více disků, které jsou součástí skupiny svazků (podobně jako 0). Z důvodů výkonu bude pravděpodobně že budete chtít prokládanou logických svazků tak, aby přečtených a zapsaných využívat všechny připojené datové disky.
+## <a name="linear-vs-striped-logical-volumes"></a>Lineární vs. prokládané logické svazky
+LVM lze použít ke kombinování několika fyzických disků do jednoho svazku úložiště. Ve výchozím nastavení bude LVM obvykle vytvářet lineární logické svazky, což znamená, že fyzické úložiště je zřetězené dohromady. V takovém případě se operace čtení/zápisu obvykle odesílají jenom na jeden disk. Naproti tomu můžeme také vytvořit prokládané logické svazky, ve kterých jsou čtení a zápisy distribuované na více discích obsažených ve skupině Volume (podobně jako RAID0). Z důvodů výkonu je pravděpodobně vhodné proložit logické svazky tak, aby čtení a zápis využily všechny připojené datové disky.
 
-Tento dokument popisuje, jak sloučit několik datových disků do skupiny jednom svazku a pak vytvořit prokládané logický svazek. Následující postup zobecněné pro práci s většině distribucí. Ve většině případů nástrojů a pracovních postupů pro správu LVM v Azure nejsou zásadně liší od jiných prostředích. Jako obvykle také získáte od Linuxu dodavatele pro dokumentaci a doporučené postupy pro používání LVM s zvláštní distribuci.
+Tento dokument popisuje, jak zkombinovat několik datových disků do jedné skupiny svazků, a pak vytvořit prokládaný logický svazek. Následující kroky jsou zobecněné pro práci s většinou distribucí. Ve většině případů se nástroje a pracovní postupy pro správu LVM v Azure neliší od jiných prostředí. V obvyklých případech si také prostudujte dokumentaci a osvědčené postupy pro používání LVM s vaší konkrétní distribucí.
 
-## <a name="attaching-data-disks"></a>Připojení spravovaných disků
-Jeden obvyklé začínat dvěma nebo více prázdných datových disků, při použití LVM. Podle svých potřeb vstupně-výstupní operace, můžete připojit disků, které jsou uloženy v našich úložiště úrovně Standard s až 500 vstupně-výstupních operací/ps pro jeden disk nebo naše služby Premium storage s až 5000 vstupně-výstupních operací/ps na disk. Tento článek nezkoumá podrobnosti o tom, jak zřídit a připojit datové disky virtuálního počítače s Linuxem. Přečtěte si článek Microsoft Azure [připojení disku](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) podrobné pokyny o tom, jak připojit prázdný datový disk do virtuálního počítače s Linuxem v Azure.
+## <a name="attaching-data-disks"></a>Připojování datových disků
+Jeden bude obvykle chtít začít se dvěma nebo více prázdnými datovými disky při použití LVM. Na základě požadavků na vstupně-výstupní operace se můžete rozhodnout připojit disky, které jsou uložené v naší službě Storage úrovně Standard, s až 500 IO/PS na disk nebo naše úložiště Premium s až 5000/s/PS na disk. Tento článek nepřejde do podrobností o tom, jak zřídit a připojit datové disky k virtuálnímu počítači se systémem Linux. Podrobné pokyny k připojení prázdného datového disku k virtuálnímu počítači se systémem Linux v Azure najdete v článku o Microsoft Azureu [připojit disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
-## <a name="install-the-lvm-utilities"></a>Nainstalujte nástroje LVM
+## <a name="install-the-lvm-utilities"></a>Instalace nástrojů LVM
 * **Ubuntu**
 
     ```bash  
@@ -42,7 +41,7 @@ Jeden obvyklé začínat dvěma nebo více prázdných datových disků, při po
     sudo apt-get install lvm2
     ```
 
-* **RHEL, CentOS a Oracle Linux**
+* **RHEL, CentOS & Oracle Linux**
 
     ```bash   
     sudo yum install lvm2
@@ -60,14 +59,14 @@ Jeden obvyklé začínat dvěma nebo více prázdných datových disků, při po
     sudo zypper install lvm2
     ```
 
-    Na SLES11, je nutné upravit také `/etc/sysconfig/lvm` a nastavte `LVM_ACTIVATED_ON_DISCOVERED` "Povolit":
+    V SLES11 musíte také upravit `/etc/sysconfig/lvm` a nastavit `LVM_ACTIVATED_ON_DISCOVERED` na Povolit:
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
 ## <a name="configure-lvm"></a>Konfigurace LVM
-V této příručce budeme předpokládat mít připojené tři datové disky, které budete označujeme jako `/dev/sdc`, `/dev/sdd` a `/dev/sde`. Tyto cesty nesmí shodovat s názvy cest disk ve virtuálním počítači. Můžete spustit "`sudo fdisk -l`' nebo podobné zobrazte seznam dostupných disků.
+V tomto průvodci předpokládáme, že máte připojené tři datové disky, které budeme označovat jako `/dev/sdc` `/dev/sdd` a `/dev/sde`. Tyto cesty nemusí odpovídat názvům cest k disku ve vašem VIRTUÁLNÍm počítači. Můžete spustit`sudo fdisk -l`nebo podobný příkaz pro výpis dostupných disků.
 
 1. Příprava fyzických svazků:
 
@@ -78,40 +77,40 @@ V této příručce budeme předpokládat mít připojené tři datové disky, k
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Vytvořte skupinu svazku. V tomto příkladu voláme skupiny svazků `data-vg01`:
+2. Vytvořte skupinu svazků. V tomto příkladu voláme skupinu `data-vg01`svazků:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. Vytvoření logické svazky. Příkaz níže jsme se vytvoří jeden logický svazek volá `data-lv01` span skupině celý svazek, ale mějte na paměti, že je také možné vytvořit víc logických svazků ve skupině svazku.
+3. Vytvořte logické svazky. Následující příkaz vytvoří jeden logický svazek s názvem `data-lv01` pro celou skupinu svazků, ale Všimněte si, že je také možné vytvořit více logických svazků ve skupině svazků.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
     Logical volume "data-lv01" created.
     ```
 
-4. Naformátujte logickou svazek
+4. Naformátovat logický svazek
 
     ```bash  
     sudo mkfs -t ext4 /dev/data-vg01/data-lv01
     ```
    
    > [!NOTE]
-   > S využitím SLES11 `-t ext3` místo ext4. SLES11 podporuje pouze přístup jen pro čtení k ext4 systémy souborů.
+   > Pomocí SLES11 použijte `-t ext3` místo ext4. SLES11 podporuje přístup jen pro čtení k systémům souborů ext4.
 
-## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů /etc/fstab
+## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů do/etc/fstab
 > [!IMPORTANT]
-> Nesprávně úpravy `/etc/fstab` souboru by mohlo způsobit systém nelze spustit. Pokud nejste jisti, najdete v dokumentaci vaší distribuce pro informace o tom, jak správně upravit tento soubor. Také je doporučujeme zálohu `/etc/fstab` před úpravou se vytvoří soubor.
+> Nesprávná úprava `/etc/fstab` souboru by mohla vést k nespouštěcímu systému. Pokud si nejste jistí, přečtěte si dokumentaci k distribuci, kde najdete informace o tom, jak tento soubor správně upravit. Doporučuje se také vytvořit zálohu `/etc/fstab` souboru před úpravou.
 
-1. Vytvořte požadované přípojný bod pro nový systém souborů, například:
+1. Vytvořte požadovaný přípojný bod pro nový systém souborů, například:
 
     ```bash  
     sudo mkdir /data
     ```
 
-2. Vyhledejte cestu logické svazku
+2. Najít cestu k logickému svazku
 
     ```bash    
     lvdisplay
@@ -120,22 +119,22 @@ V této příručce budeme předpokládat mít připojené tři datové disky, k
     ....
     ```
 
-3. Otevřít `/etc/fstab` v textovém editoru a přidejte záznam pro nový systém souborů, například:
+3. Otevřete `/etc/fstab` v textovém editoru a přidejte položku pro nový systém souborů, například:
 
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
-    Potom uložte a zavřete `/etc/fstab`.
+    Pak ho uložte a zavřete `/etc/fstab`.
 
-4. Otestujte, jestli `/etc/fstab` správnost položka:
+4. Otestujte správnost položky `/etc/fstab` :
 
     ```bash    
     sudo mount -a
     ```
 
-    Pokud tento příkaz vrátí chybovou zprávu, zkontrolujte syntaxi `/etc/fstab` souboru.
+    Pokud tento příkaz způsobí chybovou zprávu, Projděte si syntaxi v `/etc/fstab` souboru.
    
-    Další spuštění `mount` příkaz, kterým zajistíte, připojení k systému souborů:
+    V dalším kroku `mount` spusťte příkaz, abyste zajistili, že je systém souborů připojený:
 
     ```bash    
     mount
@@ -143,9 +142,9 @@ V této příručce budeme předpokládat mít připojené tři datové disky, k
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. (Volitelné) Spouštěcí parametry bezporuchový v `/etc/fstab`
+5. Volitelné Failsafe parametry spuštění v`/etc/fstab`
    
-    Množství distribucí zahrnout buď `nobootwait` nebo `nofail` připojit parametry, které mohou být přidány do `/etc/fstab` souboru. Tyto parametry umožňuje pro selhání v případě, že připojí systém určitý soubor a umožnit systému Linux, pokračujte ke spuštění i v případě, že není schopen správně připojení systému souborů RAID. V dokumentaci vaší distribuce pro další informace o těchto parametrech.
+    Mnoho distribucí zahrnuje buď `nobootwait` parametry připojení nebo `nofail` parametry, které `/etc/fstab` mohou být přidány do souboru. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
    
     Příklad (Ubuntu):
 
@@ -153,18 +152,18 @@ V této příručce budeme předpokládat mít připojené tři datové disky, k
     /dev/data-vg01/data-lv01  /data  ext4  defaults,nobootwait  0  2
     ```
 
-## <a name="trimunmap-support"></a>Podpora uvolnění dočasné paměti/UNMAP
-Některé Linuxových jádrech podporovat operace TRIM/UNMAP zahodíte nepoužívané bloky na disku. Tyto operace jsou především užitečné ve standardním úložišti informovat Azure, které odstraní stránek už nejsou platné a mohou být zahozeny. Zahazuje se stránky můžete snížení nákladů, pokud vytvoříte velkých souborů a potom je odstraňte.
+## <a name="trimunmap-support"></a>Podpora OŘEZÁVÁNÍ a odmapování
+Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování, aby bylo možné zahodit nepoužívané bloky na disku. Tyto operace jsou primárně užitečné ve službě Storage úrovně Standard pro informování Azure o tom, že odstraněné stránky už nejsou platné a můžou být zahozeny. Vypuštění stránek může ušetřit náklady, pokud vytvoříte velké soubory a pak je odstraníte.
 
-Existují dva způsoby, jak povolit TRIM podpory v virtuálního počítače s Linuxem. Obvyklým způsobem vaše distribuce najdete doporučený postup:
+Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-- Použití `discard` připojit možnost v `/etc/fstab`, například:
+- Použijte možnost `/etc/fstab`připojení v, například: `discard`
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- V některých případech `discard` možnost může mít vliv na výkon. Alternativně můžete spustit `fstrim` příkaz ručně z příkazového řádku, nebo ho přidat do vaší crontab pravidelně spuštění:
+- V některých případech může `discard` mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
 
     **Ubuntu**
 

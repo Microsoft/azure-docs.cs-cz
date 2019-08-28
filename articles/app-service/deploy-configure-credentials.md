@@ -8,18 +8,17 @@ manager: jpconnoc
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 52bbc907d91dd4bf9066daf14d0d5de1b759b92f
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: fc9445b64baae0e625b62356fee381329b01e8fd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558575"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098487"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -85,6 +84,6 @@ Získání přihlašovacích údajů na úrovni aplikace:
 
 Pokud chcete resetovat přihlašovací údaje na úrovni aplikace, vyberte **resetovat přihlašovací údaje** ve stejném dialogu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak pomocí těchto přihlašovacích údajů nasadit aplikaci z [místního Gitu](deploy-local-git.md) nebo pomocí [FTP/S](deploy-ftp.md).

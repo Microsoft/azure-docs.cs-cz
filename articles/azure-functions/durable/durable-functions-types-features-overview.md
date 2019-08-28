@@ -1,110 +1,109 @@
 ---
-title: Typy funkcí a funkcí v rozšíření Durable Functions, Azure functions
-description: Další informace o typech funkce a role, které podporují funkce funkce komunikace v Orchestrace Durable Functions ve službě Azure Functions.
+title: Typy a funkce funkcí v rozšíření Durable Functions Azure Functions
+description: Přečtěte si o typech funkcí a rolí, které podporují komunikaci typu Function-to-Function v Durable Functions orchestrace v Azure Functions.
 services: functions
 author: jeffhollan
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 0d3087c768a02bb5c647fc0d10db3aa4274804f4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812847"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097741"
 ---
-# <a name="durable-functions-types-and-features-azure-functions"></a>Odolné funkce typy a funkce (Azure Functions)
+# <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy a funkce (Azure Functions)
 
-Odolná služba Functions je rozšířením [Azure Functions](../functions-overview.md). Odolná služba Functions můžete použít pro stavové Orchestrace provádění funkce. Odolné funkce je řešení, která se skládá z různých funkcí Azure. Funkce můžete přehrát různé role v Orchestrace odolné funkce. 
+Durable Functions je rozšíření [Azure Functions](../functions-overview.md). Durable Functions lze použít pro stavovou orchestraci provádění funkce. Trvalá funkce je řešení, které se skládá z různých Azure Functions. Funkce mohou hrát různé role v rámci trvalé orchestrace funkcí. 
 
-Tento článek obsahuje přehled typů funkcí, které můžete použít v Orchestrace Durable Functions. Tento článek obsahuje některé běžné vzory, které můžete použít pro připojení funkce. Zjistěte, jak Durable Functions vám může pomoct vyřešit problémy při vývoji aplikace.
+Tento článek poskytuje přehled typů funkcí, které můžete použít při Durable Functions orchestrace. Tento článek obsahuje některé běžné vzory, které můžete použít k připojení funkcí. Přečtěte si, jak vám Durable Functions můžou vyřešit problémy s vývojem aplikací.
 
-![Obrázek, který se zobrazí typy odolná služba functions][1]  
+![Obrázek, který zobrazuje typy trvalých funkcí][1]  
 
-## <a name="types-of-durable-functions"></a>Typy odolná služba functions
+## <a name="types-of-durable-functions"></a>Typy trvalých funkcí
 
-Můžete použít čtyři typy trvalý funkcí ve službě Azure Functions: aktivita, orchestrator, entit a klienta.
+V Azure Functions můžete použít čtyři typy trvalých funkcí: Activity, Orchestrator, entity a Client.
 
 ### <a name="activity-functions"></a>Funkce aktivity
 
-Aktivita funkce jsou základní jednotku práce v Orchestrace odolné funkce. Aktivita funkce jsou funkce a úkoly, které jsou orchestrované v procesu. Například může vytvořit trvalý funkci ke zpracování objednávky. Úkoly zahrnují kontroly inventáře, účtování zákazníka a vytváření dodávky. Každý úkol by funkce protokolem aktivit. 
+Funkce aktivity představují základní pracovní jednotku v rámci trvalé orchestrace funkcí. Funkce aktivity jsou funkce a úkoly, které jsou v procesu Orchestrované. Můžete například vytvořit trvalou funkci pro zpracování objednávky. Úkoly zahrnují kontrolu inventáře a účtování zákazníků a vytváření dodávek. Každý úkol by představoval funkci aktivity. 
 
-Aktivita funkce nejsou s omezením pomocí specifikátoru typu práce můžete můžete v nich. Funkce protokolem aktivit můžete napsat v jakémkoli [jazyk, který podporují Durable Functions](durable-functions-overview.md#language-support). Trvalý úloh framework zaručuje, že každá funkce volané aktivita se spustí alespoň jednou během Orchestrace.
+Funkce aktivity nejsou omezeny v typu práce, kterou lze v nich provádět. Funkci aktivity můžete napsat v jakémkoli [jazyce, který Durable Functions podporu](durable-functions-overview.md#language-support). Prostředí trvalého zpracování úloh zaručuje, že každá funkce s názvem funkce se spustí alespoň jednou během orchestrace.
 
-Použití [aktivační událost pro aktivitu](durable-functions-bindings.md#activity-triggers) k aktivaci funkce protokolem aktivit. Zobrazí funkce .NET [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Aktivační událost můžete také navázat na libovolný objekt a zajistěte tak předání vstupy do funkce. V jazyce JavaScript, dostanete vstup prostřednictvím `<activity trigger binding name>` vlastnost [ `context.bindings` objekt](../functions-reference-node.md#bindings).
+K aktivaci funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-triggers) . Funkce .NET obdrží [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Můžete také navázání triggeru na libovolný jiný objekt, který předává vstup do funkce. V jazyce JavaScript můžete k vstupu přistupovat prostřednictvím `<activity trigger binding name>` vlastnosti [ `context.bindings` objektu](../functions-reference-node.md#bindings).
 
-Aktivita funkce můžete také vrátit hodnoty orchestrátor. Pokud odesílání nebo vrátit velký počet hodnot z funkce aktivitu, můžete použít [řazených kolekcí členů nebo pole](durable-functions-bindings.md#passing-multiple-parameters). Můžete aktivovat funkce protokolem aktivit pouze z instance Orchestrace. I když funkce protokolem aktivit a jiné funkci (například funkci aktivovanou protokolem HTTP) může sdílet kód, každá funkce může mít jenom jeden trigger.
+Funkce Activity může také vrátit hodnoty do nástroje Orchestrator. Pokud odešlete nebo vrátíte velký počet hodnot z funkce Activity, můžete použít [řazené kolekce členů nebo pole](durable-functions-bindings.md#passing-multiple-parameters). Funkci aktivity lze aktivovat pouze z instance orchestrace. I když funkce aktivity a jiná funkce (například funkce aktivované protokolem HTTP) může sdílet nějaký kód, každá funkce může mít jenom jednu Trigger.
 
-Další informace a příklady najdete v tématu [funkce aktivity](durable-functions-bindings.md#activity-triggers).
+Další informace a příklady najdete v tématu [funkce aktivit](durable-functions-bindings.md#activity-triggers).
 
 ### <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
 
-Funkce nástroje Orchestrator popisují, jak akce spustí a pořadí, ve kterém jsou provedení akce. Orchestrace v kódu popisují funkce produktu Orchestrator (C# nebo JavaScript) jak je znázorněno v [Durable Functions vzory a technických konceptech](durable-functions-concepts.md). Orchestrace může mít mnoho různých typů akcí, včetně [funkce aktivity](#activity-functions), [dílčí Orchestrace](#sub-orchestrations), [čekající na externí události](#external-events)a [časovače](#durable-timers). Funkce nástroje Orchestrator může zasahovat rovněž [funkce entity](#entity-functions).
+Funkce nástroje Orchestrator popisují způsob provádění akcí a pořadí, ve kterém jsou akce provedeny. Funkce nástroje Orchestrator popisují orchestraci v kódu (C# nebo JavaScriptu), jak je znázorněno v [Durable Functionsch vzorech a technických konceptech](durable-functions-concepts.md). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), dílčích [orchestrací](#sub-orchestrations), [čekání na externí události](#external-events)a časovače. [](#durable-timers) Funkce nástroje Orchestrator mohou také interagovat s [funkcemi entit](#entity-functions).
 
-Funkce orchestrátoru musí být aktivované [Orchestrace trigger](durable-functions-bindings.md#orchestration-triggers).
+Funkci Orchestrator musí aktivovat [Trigger orchestrace](durable-functions-bindings.md#orchestration-triggers).
 
-Orchestrátor je tím, že [orchestrator klienta](#client-functions). Můžete spustit nástroje orchestrator z libovolného zdroje (HTTP, fronty, datového proudu událostí). Každá instance Orchestrace má identifikátor instance. Identifikátor instance může být automaticky generované (doporučeno) nebo generovaný uživatelem. Můžete použít identifikátor instance na [správu instancí](durable-functions-instance-management.md) o orchestraci.
+Nástroj Orchestrator spouští [klient nástroje Orchestrator](#client-functions). Nástroj Orchestrator můžete aktivovat z libovolného zdroje (HTTP, Queue, datový proud událostí). Každá instance orchestrace má identifikátor instance. Identifikátor instance se dá automaticky vygenerovat (doporučeno) nebo generovat uživatelem. Pomocí identifikátoru instance můžete [Spravovat instance](durable-functions-instance-management.md) orchestrace.
 
-Další informace a příklady najdete v tématu [Orchestrace triggery](durable-functions-bindings.md#orchestration-triggers).
+Další informace a příklady najdete v tématu [triggery orchestrace](durable-functions-bindings.md#orchestration-triggers).
 
-###  <a name="entity-functions"></a>Funkce entity (preview)
+###  <a name="entity-functions"></a>Funkce entit (Preview)
 
-Funkce entity definování operací pro čtení a aktualizaci malých kousků stav, označuje jako *trvalý entity*. Podobně jako funkce nástroje orchestrator, funkce entity jsou funkce s typem speciální aktivační událost *entity trigger*. Na rozdíl od funkce nástroje orchestrator a funkce entity nemají omezeními konkrétního kódu. Funkce entity také spravovat stav explicitně místo implicitně představující stav prostřednictvím toku řízení.
+Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
 
 > [!NOTE]
-> Funkce entity a související funkce je dostupná jenom v trvalé Functions 2.0 a vyšší.
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
 
-Další informace o funkcích entity, najdete v článku [funkce Entity](durable-functions-preview.md#entity-functions) dokumentaci k funkci ve verzi preview.
+Další informace o funkcích entit najdete v dokumentaci k funkcím funkce [entity Functions](durable-functions-preview.md#entity-functions) ve verzi Preview.
 
-### <a name="client-functions"></a>Funkce klienta
+### <a name="client-functions"></a>Klientské funkce
 
-Klient funkce jsou aktivované funkce, které vytváření a správa instancí Orchestrace a entit. Jsou efektivní vstupní bod pro interakci s Durable Functions. Můžete aktivovat funkci klienta z libovolného zdroje (HTTP, fronty, datového proudu událostí atd.). Funkce klienta používá [klient Orchestrace vazby](durable-functions-bindings.md#orchestration-client) vytvářet a spravovat trvalé Orchestrace a entity.
+Funkce klienta jsou aktivované funkcemi, které vytvářejí a spravují instance Orchestrace a entit. Jsou efektivní vstupním bodem pro interakci s Durable Functions. Můžete aktivovat funkci klienta z libovolného zdroje (HTTP, Queue, datový proud události atd.). Klientská funkce používá [vazbu klienta Orchestration](durable-functions-bindings.md#orchestration-client) k vytváření a správě trvalých orchestrací a entit.
 
-Základní příklad funkce klienta je funkci aktivovanou protokolem HTTP, spuštění funkce orchestrátoru, který vrátí odpověď stavu zaškrtnutí. Příklad najdete v tématu [zjišťování adresy URL rozhraní API HTTP](durable-functions-http-api.md#http-api-url-discovery).
+Nejběžnějším příkladem klientské funkce je funkce aktivovaná protokolem HTTP, která spouští funkci Orchestrator, a potom vrátí odpověď stavu check. Příklad najdete v tématu [zjišťování adresy URL rozhraní API protokolu HTTP](durable-functions-http-api.md#http-api-url-discovery).
 
-Další informace a příklady najdete v tématu [klient Orchestrace](durable-functions-bindings.md#orchestration-client).
+Další informace a příklady najdete v tématu věnovaném [klientovi Orchestration](durable-functions-bindings.md#orchestration-client).
 
 ## <a name="features-and-patterns"></a>Funkce a vzory
 
-Další části popisují funkce a vzory Durable Functions typů.
+V dalších částech jsou popsány funkce a vzory Durable Functionsch typů.
 
 ### <a name="sub-orchestrations"></a>Dílčí orchestrace
 
-Funkce nástroje Orchestrator můžete volat funkce aktivity, ale můžete také volat jiné funkce nástroje orchestrator. Můžete například vytvořit větší Orchestrace mimo knihovnu funkcí nástroje orchestrator. Nebo můžete spouštět více instancí funkce orchestrátoru paralelně.
+Funkce nástroje Orchestrator mohou volat funkce aktivity, ale mohou také volat jiné funkce nástroje Orchestrator. Můžete například vytvořit větší orchestraci z knihovny funkcí nástroje Orchestrator. Nebo můžete souběžně spustit více instancí funkce nástroje Orchestrator.
 
-Další informace a příklady najdete v tématu [dílčí Orchestrace](durable-functions-sub-orchestrations.md).
+Další informace a příklady najdete v tématu [dílčí orchestrace](durable-functions-sub-orchestrations.md).
 
-### <a name="durable-timers"></a>Trvalý časovače
+### <a name="durable-timers"></a>Trvalé časovače
 
-[Odolná služba Functions](durable-functions-overview.md) poskytuje *trvalý časovače* , který se ve funkcích produktu orchestrator můžete použít k implementaci zpoždění nebo nastavit vypršení časového limitu na asynchronní akce. Použít trvalý časovače funkcí nástroje orchestrator místo `Thread.Sleep` a `Task.Delay` (C#) nebo `setTimeout()` a `setInterval()` (JavaScript).
+[Durable Functions](durable-functions-overview.md) poskytuje *odolné časovače* , které lze použít ve funkcích nástroje Orchestrator pro implementaci zpoždění nebo nastavení časových limitů pro asynchronní akce. Používejte odolné časovače ve funkcích nástroje `Thread.Sleep` Orchestrator `Task.Delay` namístoC#a ( `setTimeout()` ) `setInterval()` nebo a (JavaScript).
 
-Další informace a příklady najdete v tématu [trvalý časovače](durable-functions-timers.md).
+Další informace a příklady najdete v tématu [trvalé časovače](durable-functions-timers.md).
 
 ### <a name="external-events"></a>Externí události
 
-Funkce nástroje Orchestrator můžete počkat externí akce, které se aktualizovat instance Orchestrace. Tato funkce Durable Functions často je vhodný pro zpracování zásahem ze strany nebo jiné externí zpětná volání.
+Funkce Orchestrator mohou počkat na externí události a aktualizovat instanci Orchestration. Tato funkce Durable Functions často je užitečná pro zpracování lidské interakce nebo jiných externích zpětných volání.
 
-Další informace a příklady najdete v tématu [externí akce, které](durable-functions-external-events.md).
+Další informace a příklady najdete v tématu [externí události](durable-functions-external-events.md).
 
 ### <a name="error-handling"></a>Zpracování chyb
 
-Implementace Orchestrace Durable Functions pomocí kódu. Můžete použít zpracování chyb funkce programovacího jazyka. Vzorů, jako jsou `try` / `catch` pracovat ve vaší Orchestrace. 
+Použijte kód pro implementaci orchestrace Durable Functions. Můžete použít funkce pro zpracování chyb v programovacím jazyce. Vzorce, `try` jako /jepráceve vašíorchestraci`catch` . 
 
-Odolná služba Functions se také dodávají s předdefinované zásady opakování. Akci můžete odložit a aktivity automaticky opakovat, pokud dojde k výjimce. Opakování můžete použít ke zpracování přechodným výjimkám bez opuštění orchestraci.
+Durable Functions taky přináší předdefinované zásady opakování. Akce může zpozdit a opakovat činnost automaticky, když dojde k výjimce. Pomocí opakovaných pokusů můžete zpracovat přechodné výjimky, aniž byste museli opustit orchestraci.
 
 Další informace a příklady najdete v tématu [zpracování chyb](durable-functions-error-handling.md).
 
-### <a name="cross-function-app-communication"></a>Komunikace mezi function app
+### <a name="cross-function-app-communication"></a>Komunikace mezi funkcemi aplikace
 
-I když trvalý Orchestrace běží v kontextu jedné funkce aplikace, můžete použít vzorce ke koordinaci Orchestrace napříč mnoha aplikace function App. Dojít ke komunikaci mezi aplikacemi přes protokol HTTP, ale pomocí rozhraní odolné pro každou aktivitu znamená, že se že můžete stále udržovat trvalý proces mezi dvěma aplikacemi.
+I když trvalá orchestrace běží v kontextu jediné aplikace Function App, můžete použít vzory ke koordinaci orchestrací napříč mnoha aplikacemi funkcí. Komunikace mezi aplikacemi může probíhat přes protokol HTTP, ale při použití odolné architektury pro každou aktivitu můžete stále udržovat trvalý proces ve dvou aplikacích.
 
-Následující příklady ukazují různé funkce aplikace Orchestrace ve C# a JavaScript. V obou příkladech spustí jednu aktivitu externí Orchestrace. Jiné aktivity načte a vrátí stav. Orchestrátor čeká stav `Complete` před pokračováním.
+Následující příklady znázorňují orchestraci aplikací mezi funkcemi v C# a JavaScriptu. V každém příkladu jedna aktivita spouští externí orchestraci. Další aktivita načte a vrátí stav. Nástroj Orchestrator čeká na `Complete` dokončení stavu, než bude pokračovat.
 
-Tady je několik příkladů Orchestrace aplikace funkcí mezi:
+Tady je několik příkladů orchestrace aplikací mezi funkcemi:
 
 #### <a name="c"></a>C#
 
@@ -157,7 +156,7 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -215,12 +214,12 @@ module.exports = async function(context, statusUrl) {
 };
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít, vytvoření první funkce trvalý v [ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md).
+Chcete-li začít, vytvořte svou první trvalou [C#](durable-functions-create-first-csharp.md) funkci v nebo [JavaScriptu](quickstart-js-vscode.md).
 
 > [!div class="nextstepaction"]
-> [Další informace o Durable Functions](durable-functions-bindings.md)
+> [Přečtěte si další informace o Durable Functions](durable-functions-bindings.md)
 
 <!-- Media references -->
 [1]: media/durable-functions-types-features-overview/durable-concepts.png

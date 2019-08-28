@@ -1,65 +1,64 @@
 ---
-title: Doprovodné materiály k nasazování aplikací pomocí šablon - službě Azure App Service | Dokumentace Microsoftu
-description: Doporučení pro vytváření šablon Azure Resource Manageru pro nasazování webových aplikací.
+title: Pokyny k nasazování aplikací pomocí šablon – Azure App Service | Microsoft Docs
+description: Doporučení pro vytváření šablon Azure Resource Manager pro nasazení webových aplikací
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d8fa8b216ca6044adefe1398b58f5d14630540e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137150"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070461"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manageru
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
 
-Tento článek obsahuje doporučení pro vytváření šablon Azure Resource Manageru pro nasazení řešení služby Azure App Service. Tato doporučení vám může pomoct vyhnout běžné problémy.
+Tento článek poskytuje doporučení k vytváření Azure Resource Manager šablon pro nasazení Azure App Service řešení. Tato doporučení vám pomohou vyhnout se běžným problémům.
 
-## <a name="define-dependencies"></a>Definování závislostí
+## <a name="define-dependencies"></a>Definovat závislosti
 
-Definování závislostí u webových aplikací nutné znalosti toho, jak komunikovat prostředky v rámci webové aplikace. Pokud zadáte nesprávné pořadí závislostí, může způsobit chyby nasazení nebo vytvořte časování, nasazení se zablokuje.
+Definování závislostí pro webové aplikace vyžaduje porozumění způsobu interakce prostředků v rámci webové aplikace. Pokud zadáte závislosti v nesprávném pořadí, může dojít k chybám nasazení nebo vytvoření stavu časování, který zastavuje nasazení.
 
 > [!WARNING]
-> Pokud zahrnete MSDeploy rozšíření webu ve vaší šabloně, je nutné nastavit všechny konfigurace prostředky jako závislý na prostředku MSDeploy. Změny konfigurace způsobit, že server restartovat asynchronně. Tím, že prostředky konfigurace závisí na MSDeploy, zajistíte tím, že dokončení MSDeploy před restartování webu. Bez těchto závislostí může restartovat web během procesu nasazení MSDeploy. Ukázková šablona, naleznete v tématu [WordPress šablony se webové nasazení závislostí](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
+> Pokud do šablony zahrnete rozšíření webového serveru, musíte nastavit všechny prostředky konfigurace tak, jak jsou závislé na prostředku MSDeploy. Změny konfigurace způsobí, že se lokalita znovu spustí asynchronně. Když provedete prostředky konfigurace závislé na MSDeploy, zajistíte, že se příkaz MSDeploy dokončí před restartováním lokality. Bez těchto závislostí může být lokalita restartována během procesu nasazení MSDeploy. Příklad šablony naleznete v tématu [šablona WordPress se závislostí nasazení webu](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
 
-Následující obrázek ukazuje pak pořadí závislostí pro různé prostředky App Service:
+Následující obrázek znázorňuje pořadí závislostí pro různé prostředky App Service:
 
 ![Závislosti webové aplikace](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-Nasazení prostředků v následujícím pořadí:
+Prostředky se nasazují v následujícím pořadí:
 
-**Tier 1**
-* Plán služby App Service.
+**Vrstva 1**
+* App Service plán.
 * Všechny ostatní související prostředky, jako jsou databáze nebo účty úložiště.
 
-**Tier 2**
-* Webové aplikace – závisí na plán služby App Service.
-* Azure Application Insights instanci, která cílí na serverové farmě--závisí na plán služby App Service.
+**Úroveň 2**
+* Webová aplikace – závisí na plánu App Service.
+* Instance Azure Application Insights, která cílí na serverovou farmu – závisí na plánu App Service.
 
-**Tier 3**
-* Správa – zdrojového kódu, závisí na webovou aplikaci.
-* Rozšíření webu MSDeploy – závisí na webovou aplikaci.
-* Instance Application Insights, který cílí na serverové farmě – závisí na webovou aplikaci.
+**Vrstva 3**
+* Správa zdrojového kódu – závisí na webové aplikaci.
+* MSDeploy – rozšíření webu – závisí na webové aplikaci.
+* Application Insights instance, která cílí na serverovou farmu – závisí na webové aplikaci.
 
-**Tier 4**
-* Certifikát App Service – závisí na správy zdrojového kódu nebo MSDeploy, pokud je k dispozici. V opačném případě závisí na webovou aplikaci.
-* Nastavení konfigurace (připojovací řetězce, hodnoty web.config, nastavení aplikace) – závisí na správy zdrojového kódu nebo MSDeploy, pokud je k dispozici. V opačném případě závisí na webovou aplikaci.
+**Vrstva 4**
+* App Service certifikát – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
+* Nastavení konfigurace (připojovací řetězce, hodnoty Web. config, nastavení aplikace) – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 
 **Tier 5**
-* Název vazby – hostování závisí na certifikátu, pokud jsou k dispozici. V opačném případě závisí na vyšší úrovni prostředků.
-* Rozšíření – lokality závisí na nastavení konfigurace, pokud jsou k dispozici. V opačném případě závisí na vyšší úrovni prostředků.
+* Vazby názvu hostitele – závisí na certifikátu, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
+* Rozšíření webu – závisí na nastavení konfigurace, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
 
-Obvykle vaše řešení obsahuje jenom některé z těchto prostředků a úrovně. Pro chybějící úrovně namapujte na další vyšší úroveň nižší prostředky.
+Řešení obvykle zahrnuje pouze některé z těchto prostředků a úrovní. U chybějících vrstev namapujte nižší prostředky na úroveň nejbližší vyšší.
 
-Následující příklad ukazuje část šablony. Hodnota konfigurace řetězec připojení závisí na rozšíření MSDeploy. Rozšíření MSDeploy závisí na webovou aplikaci a databázi. 
+Následující příklad ukazuje část šablony. Hodnota konfigurace připojovacího řetězce závisí na rozšíření MSDeploy. Přípona MSDeploy závisí na webové aplikaci a databázi. 
 
 ```json
 {
@@ -88,19 +87,19 @@ Následující příklad ukazuje část šablony. Hodnota konfigurace řetězec 
 }
 ```
 
-Připraveno ke spuštění ukázky, která používá výše uvedený kód, naleznete v tématu [šablony: Vytvoření jednoduché webové aplikace Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+Ukázku připravený na spuštění, který používá kód výše, najdete v tématu [Šablona: Vytvoření jednoduché webové aplikace](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)v Umbraco
 
-## <a name="find-information-about-msdeploy-errors"></a>Informace o chybách MSDeploy
+## <a name="find-information-about-msdeploy-errors"></a>Najít informace o chybách MSDeploy
 
-Pokud vaše šablony Resource Manageru používá MSDeploy, může být obtížné pochopit, chybové zprávy pro nasazení. Pokud chcete získat další informace po selhání nasazení, vyzkoušejte následující kroky:
+Pokud vaše Správce prostředků šablona používá MSDeploy, může být obtížné pochopit chybové zprávy nasazení. Pokud chcete získat další informace po neúspěšném nasazení, zkuste provést následující kroky:
 
-1. Přejděte na web [konzola Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console).
-2. Přejděte do složky na D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Hledání souborů appManagerStatus.xml a appManagerLog.xml. První soubor zaznamená stav. Druhý soubor zaznamenává informace o této chybě. Pokud není jasné, chyba, můžete zahrnout při se s žádostí o pomoc na fóru.
+1. Přejít na [konzolu Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)webu.
+2. Přejděte do složky na adrese D:\home\LogFiles\SiteExtensions\MSDeploy.
+3. Vyhledejte soubory appManagerStatus. XML a appManagerLog. XML. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k fóru.
 
-## <a name="choose-a-unique-web-app-name"></a>Zvolte jedinečný název aplikace
+## <a name="choose-a-unique-web-app-name"></a>Zvolit jedinečný název webové aplikace
 
-Musí být globálně jedinečný název pro vaši webovou aplikaci. Můžete použít zásady vytváření názvů, která by mohla být jedinečný, nebo můžete použít [uniqueString funkce](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) pomáhat s generováním jedinečný název.
+Název vaší webové aplikace musí být globálně jedinečný. Můžete použít konvenci pojmenování, která bude pravděpodobně jedinečná, nebo můžete použít [funkci uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) pro pomoc s vygenerováním jedinečného názvu.
 
 ```json
 {
@@ -111,13 +110,13 @@ Musí být globálně jedinečný název pro vaši webovou aplikaci. Můžete po
 }
 ```
 
-## <a name="deploy-web-app-certificate-from-key-vault"></a>Nasaďte certifikát webové aplikace ze služby Key Vault
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Nasadit certifikát webové aplikace z Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud obsahuje šablony [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) prostředek pro vytvoření vazby SSL a certifikát je uložen ve službě Key Vault, je nutné identity služby App Service můžete přístup k certifikátu.
+Pokud vaše šablona obsahuje prostředek [Microsoft. Web/Certificates](/azure/templates/microsoft.web/certificates) pro vazbu SSL a certifikát je uložený v Key Vault, ujistěte se, že App Service identita může získat přístup k certifikátu.
 
-V globální Azure objektu služby App Service má ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Pokud chcete udělit přístup do služby Key Vault, instančního objektu služby App Service, použijte:
+V globálním Azure má App Service instančního objektu ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Chcete-li udělit přístup k Key Vault pro instanční objekt služby App Service, použijte:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -127,17 +126,17 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-Ve službě Azure Government, objekt služby App Service má ID **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Pomocí tohoto ID v předchozím příkladu.
+V Azure Government má App Service instančního objektu ID **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Použijte toto ID v předchozím příkladu.
 
-Ve službě Key Vault vyberte **certifikáty** a **vygenerovat/importovat** na kterou certifikát nahrajete.
+V Key Vault vyberte **certifikáty** a vygenerujte **/importujte** pro nahrání certifikátu.
 
 ![Importovat certifikát](media/web-sites-rm-template-guidance/import-certificate.png)
 
-V šabloně, zadejte název certifikátu pro `keyVaultSecretName`.
+Do šablony zadejte název certifikátu pro `keyVaultSecretName`.
 
-Ukázková šablona, naleznete v tématu [nasaďte certifikát webové aplikace ze služby Key Vault tajný klíč a použít ho k vytvoření vazby SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
+Příklad šablony najdete v tématu [Nasazení certifikátu webové aplikace z Key Vault tajného kódu a jeho použití k vytvoření vazby SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Kurz k nasazování webových aplikací s využitím šablony najdete v tématu [zřizování a nasazování mikroslužeb v Azure předvídatelně](deploy-complex-application-predictably.md).
-* Další informace o syntaxi JSON a vlastnosti pro typy prostředků v šablonách najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).
+* Kurz nasazení webových aplikací se šablonou najdete v tématu popisujícím [zřizování a nasazování mikroslužeb v Azure](deploy-complex-application-predictably.md).
+* Další informace o syntaxi a vlastnostech JSON pro typy prostředků v šablonách naleznete v tématu [Azure Resource Manager Reference k šabloně](/azure/templates/).

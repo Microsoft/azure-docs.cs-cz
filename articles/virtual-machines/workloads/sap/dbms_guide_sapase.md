@@ -1,5 +1,5 @@
 ---
-title: Nasazení SAP ASE Azure Virtual Machines DBMS pro úlohy SAP | Dokumentace Microsoftu
+title: Nasazení SAP pomocného mechanismu pro Azure Virtual Machines DBMS pro úlohy SAP | Microsoft Docs
 description: Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835273"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101328"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
@@ -309,67 +308,67 @@ ms.locfileid: "60835273"
 
 
 
-V tomto dokumentu se věnuje několika různých oblastech, které je třeba zvážit při nasazování služby ASE SAP v Azure IaaS. Podmínkou pro tento dokument, by měl mít čtení dokumentu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) a další příručky v [úloh SAP v dokumentaci Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+V tomto dokumentu popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování pomocného mechanismu SAP v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Podrobnosti k SAP ASE na Windows
-Zahájení práce s Microsoft Azure, můžete migrovat existující aplikace SAP ASE k Azure Virtual Machines. SAP ASE ve virtuální počítač Azure umožňuje snížit celkové náklady na vlastnictví nasazení, správu a údržbu podnikových kontejnerových nástrojů aplikací snadno migrace těchto aplikací do Microsoft Azure. Se SAP ASE ve virtuální počítač Azure správci a vývojáři můžou využívat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
+## <a name="specifics-to-sap-ase-on-windows"></a>Specifická pro SAP pomocného programu SAP ve Windows
+Počínaje Microsoft Azure můžete stávající aplikace SAP pomocného mechanismu migrovat do Azure Virtual Machines. Protokol SAP pomocného programu na virtuálním počítači Azure umožňuje snížit celkové náklady na vlastnictví nasazení, správy a údržby aplikací v rozlehlých sítích, a to tak, že tyto aplikace jednoduše migrujete do Microsoft Azure. S pomocným mechanismem SAP na virtuálním počítači Azure můžou správci a vývojáři dál používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
 
-Smlouvy SLA pro Azure Virtual Machines, najdete tady: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
+SLA pro Azure Virtual Machines, najdete tady:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
-Microsoft Azure nabízí celou řadu typů různých virtuálních počítačů, které umožňují spouštět nejmenší systémů SAP a prostředí až po velké systémů SAP a prostředí s tisíce uživatelů. Certifikace SAPU velikosti protokoly SAP množství různých SAP použít skladové položky virtuálních počítačů je k dispozici v Poznámka SAP [1928533].
+Microsoft Azure nabízí spoustu různých typů virtuálních počítačů, které vám umožní spustit nejmenší systémy SAP a využít až velké systémy SAP a možnost krajiny s tisíci uživateli. V tématu SAP Note [1928533]se poskytuje SAP – počty SAP různých SKU virtuálních počítačů certifikovaných pro SAP.
 
-Příkazy a doporučení týkající se používání služby Azure Storage, nasazení virtuálních počítačů ze SAP a SAP monitorování v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) platí pro nasazení SAP ASE příliš.
+Příkazy a doporučení týkající se použití Azure Storage, nasazení virtuálních počítačů SAP nebo monitorování SAP provedeného v souvislosti s [nasazením Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení služby SAP.
 
-### <a name="sap-ase-version-support"></a>Podpora SAP ASE verzí
-SAP aktuálně podporuje verze 16.0 pro použití se službou SAP Business Suite produkty SAP ASE. Všechny aktualizace pro server zpráv SAP ASE nebo JDBC a ovladače ODBC pro použití s produkty SAP Business Suite jsou k dispozici pouze prostřednictvím SAP Service Marketplace v: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Podpora verze pomocného mechanismu protokolu SAP
+SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště <https://support.sap.com/swdc>služby SAP na adrese:.
 
-Nestahovat aktualizací serveru SAP ASE nebo ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravy, které jsou podporovány pro použití se službou SAP produkty místních a následující poznámky SAP na virtuálních počítačích Azure najdete v článku:
+Nestahujte aktualizace serveru SAP pomocného mechanismu nebo pro ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravách, které se podporují pro použití s produkty SAP v místním prostředí a v Azure Virtual Machines najdete v následujících komentářích ke SAP:
 
 * [1590719]
 * [1973241]
 
-Obecné informace o spouštění SAP Business Suite v SAP ASE najdete v [oznámení změny stavu](https://www.sap.com/community/topic/ase.html)
+Obecné informace o spuštění SAP Business Suite na SAP pomocném mechanismu služby najdete v [SCN](https://www.sap.com/community/topic/ase.html) .
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfigurace SAP ASE pro SAP související SAP ASE instalace na virtuálních počítačích Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP ASE
-SAP ASE spustitelné soubory by měly být umístěné nebo nainstalovat do systémové jednotce disk s operačním systémem Virtuálního počítače (jednotka c:\). Většina databází systému a nástroje SAP ASE obvykle nejsou dochází k vysoké pracovní vytížení. Proto systému a nástroje pro databáze (master, model, saptools, sybmgmtdb, sybsystemdb) může zůstat na jednotce C:\. 
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP pomocného mechanismu služby pro instalaci SAP pomocného mechanismu pro SAP na virtuálních počítačích Azure
+#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP pomocného programu SAP
+Spustitelné soubory SAP pomocného programu by se měly nacházet nebo instalovat na systémovou jednotku disku s operačním systémem virtuálního\)počítače (jednotka c:. Většinou v databázích systému a nástrojů SAP pomocného programu SAP nedochází k velkým úlohám. Proto mohou databáze systému a nástrojů (hlavní, model, saptools, sybmgmtdb, sybsystemdb) zůstat v C:\ disky. 
 
-Výjimky může být dočasné databáze, který v případě některých SAP ERP a všechny sady funkcí BW mohou vyžadovat větší objem dat nebo objem vstupně-výstupní operace. Svazky nebo vstupně-výstupních operací, které nelze zadat disk s operačním systémem Virtuálního počítače (jednotka C:\).
+Výjimkou může být dočasná databáze, která v případě některých funkcí SAP ERP a všech ČERNOBÍLých úloh může vyžadovat buď větší objem dat, nebo vstupně-výstupní operace. Svazky nebo IOPS, které nemůže poskytnout disk s operačním systémem virtuálního počítače (jednotka C:\).
 
-Závisí na verzi SAPInst/SWPM použitý k instalaci, konfiguraci instance SAP ASE může vypadat:
+V závislosti na verzi SAPInst/SWPM, která se používá k instalaci, by konfigurace instance SAP pomocného programu mohla vypadat takto:
 
-* Jeden tempdb SAP ASE, který se vytvoří při instalaci SAP ASE
-* SAP ASE tempdb vytvořené instalace SAP ASE a další saptempdb vytvořené SAP instalačního programu
-* SAP ASE tempdb vytvořené instalace SAP ASE a další databáze tempdb, který byl vytvořen ručně (například následující poznámka SAP [1752266]) podle požadavků konkrétního tempdb ERP/BW
+* Jedna databáze s pomocným mechanismem SAP, která se vytvoří při instalaci SAP pomocného mechanismu
+* Služba pro vytváření databáze SAP s pomocným mechanismem SAP vytvořená instalací SAP pomocného mechanismu a dalších saptempdb vytvořených instalační rutinou SAP
+* Služba pro vytváření databáze SAP s pomocným mechanismem SAP vytvořená instalací SAP pomocného objektu SAP a další databází tempdb vytvořená ručně (například podle poznámky SAP [1752266]) pro splnění specifických požadavků databáze ERP/šířky
 
-Z důvodů výkonu pro konkrétní ERP nebo všech úloh BW může být vhodné k uložení databáze tempdb zařízení dále vytvořené databáze tempdb na jiném disku než C:\. Pokud neexistuje žádné další databáze tempdb, doporučujeme vytvořit jeden (Poznámka SAP [1752266]).
+Z důvodů výkonu pro konkrétní ERP nebo všechny ČERNOBÍLé úlohy je možné, že je vhodné ukládat do úložiště tempdb i na jiné jednotce než C:\. zařízení tempdb. Pokud neexistuje žádná další databáze tempdb, doporučujeme ji vytvořit (Poznámka k SAP – [1752266]).
 
-Pro tyto systémy, měla by se pro kromě vytvořenou databázi tempdb provést následující kroky:
+U takových systémů je potřeba provést následující kroky pro vytvořenou databázi tempdb navíc:
 
-* Pozice prvního zařízení tempdb jako první zařízení databázi SAP
-* Přidat zařízení databáze tempdb na všech virtuálních pevných discích obsahující zařízení databázi SAP
+* Přesunout první zařízení tempdb do prvního zařízení databáze SAP
+* Přidání zařízení tempdb do každého z virtuálních pevných disků, které obsahují zařízení databáze SAP
 
-Tato konfigurace umožňuje tempdb využívat více místa, než může poskytnout systémové jednotce. Jako referenci jeden můžete zkontrolovat zařízení velikosti databáze tempdb na existující systémy, které běží místně. Nebo taková konfigurace umožňuje čísla vstupně-výstupních operací s databází tempdb, který nemůže být součástí systémové jednotky. Systémy, které jsou spuštěné místně je možné monitorovat vstupně-výstupní úlohy proti databázi tempdb.
+Tato konfigurace umožňuje databázi tempdb spotřebovat více místa, než může systémová jednotka poskytnout. V takovém případě se může u stávajících systémů, které běží místně, kontrolovat velikosti zařízení tempdb. Nebo taková konfigurace umožňuje čísla IOPS v databázi tempdb, která se nedá poskytnout se systémovou jednotkou. Systémy, které jsou spuštěné místně, se dají použít k monitorování vstupně-výstupních úloh v databázi tempdb.
 
-Nikdy žádným zařízením SAP ASE umístěny na jednotce D:\ virtuálního počítače. Pro SAP ASE toto doporučení platí také pro databázi tempdb, i když jsou jenom dočasné objekty v databázi tempdb.
+Nikdy neumísťujte žádná zařízení SAP pomocného mechanismu na D:\ disk virtuálního počítače. V případě systému SAP pomocného mechanismu se tato doporučení vztahují také na databázi tempdb, i když jsou objekty uchovávané v databázi tempdb pouze dočasné.
 
-Pro data a nasazení souborů protokolů transakcí, příkazy a návrhů v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). V případě nasazení založené na Windows se doporučuje použít k vytváření prokládané sady s dostatečnou vstupně-výstupních operací, propustnosti a svazek použití prostorů úložiště systému Windows.  
+V případě nasazení dat a souborů protokolu transakcí se jedná o příkazy a návrhy provedené v rámci [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). V případě systému Windows doporučujeme nasazení prostorů úložiště systému Windows použít k sestavení prokládaných sad s dostatečnými IOPS, propustností a objemy.  
 
-#### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguraci, kde šířku pásma vstupně-výstupní operace se může stát omezujícím faktorem každá míra, což snižuje vstupně-výstupních operací vám může pomoci roztáhnout úlohy, jež možné spouštět ve scénáři IaaS, jako je Azure. Doporučujeme proto se ujistěte, že SAP ASE komprese před nahráním existující databázi SAP do Azure.
+#### <a name="impact-of-database-compression"></a>Dopad komprimace databáze
+V konfiguracích, kde se může I/O šířka pásma stát omezením, by každá míra, která omezuje IOPS, mohla přispět k roztažení úlohy, která může běžet ve scénáři IaaS, jako je Azure. Proto se před nahráním existující databáze SAP do Azure doporučuje použít kompresi SAP pomocného mechanismu.
 
-Doporučení a použít kompresi před nahráním do Azure je dán z několika důvodů:
+Doporučení použít kompresi před nahráním do Azure je z několika důvodů:
 
-* Množství dat k odeslání do Azure je nižší
-* Doba trvání spuštění komprese je kratší, za předpokladu, že jeden můžete používat silnější hardware s více procesory nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupní latence v místním
-* Menší velikosti databáze může vést k nižší náklady pro přidělení disku
+* Množství dat, která se mají nahrát do Azure, je nižší.
+* Doba trvání spuštění komprese je kratší, předpokládá se, že jedna může používat silnější hardware s více procesory nebo vyšší propustnost vstupně-výstupních operací nebo méně v/v místní latenci.
+* Menší velikosti databází můžou vést k menšímu množství nákladů na přidělení disku.
 
-Komprese dat a obchodní fungují v hostovaných ve službě Azure Virtual Machines, stejně jako místní virtuální počítač. Další podrobnosti o tom, jak zkontrolovat, jestli komprese je již v použít stávající databázi SAP ASE, zkontrolujte poznámky SAP [1750510].
+Data-a při práci v CLOUDu, která je hostovaná v Azure, Virtual Machines v místním prostředí. Další informace o tom, jak zjistit, jestli se komprese už používá v existující databázi pomocného mechanismu služby SAP, najdete v článku SAP Note [1750510].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Pomocí DBACockpit k monitorování instancí databáze
-Pro systémy SAP, které používají jako databáze platformy SAP ASE, je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo jako Webdynpro DBACockpit. Ale je k dispozici v implementaci Webdynpro DBACockpit pouze úplné funkce pro monitorování a správu databáze.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Monitorování instancí databáze pomocí DBACockpit
+Pro systémy SAP, které používají program SAP pomocného mechanismu přístupu jako databázová platforma, je DBACockpit přístupný jako okna integrovaných prohlížečů v transakčních DBACockpit nebo jako WebDynpro. Kompletní funkce pro monitorování a správu databáze jsou však k dispozici pouze v WebDynpro implementaci DBACockpit.
 
-Jako s místními systémy několik kroků je potřeba povolit všechny funkce SAP NetWeaver používané Webdynpro provádění DBACockpit. Postupujte podle Poznámka SAP [1245200] povolit spotřebu webdynpros a generovat ty povinné. Podle pokynů ve výše uvedené poznámky, můžete také nakonfigurovat Správce internetové komunikace (icm) spolu s porty, které chcete používat pro připojení http a https. Výchozí nastavení pro protokol http, vypadá takto:
+Stejně jako u místních systémů je potřeba pro povolení všech funkcí SAP NetWeaver používaných WebDynpro implementací DBACockpit použít několik kroků. Postupujte podle poznámky [1245200] pro SAP, abyste povolili použití webdynpros a vygenerovali požadované. Pokud budete postupovat podle pokynů uvedených v předchozích poznámkách, můžete také nakonfigurovat nástroj Internet Communication Manager (ICM) spolu s porty, které se mají použít pro připojení HTTP a HTTPS. Výchozí nastavení pro protokol HTTP vypadá takto:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -377,7 +376,7 @@ Jako s místními systémy několik kroků je potřeba povolit všechny funkce S
 > 
 > 
 
-a odkazy generované v transakci, které DBACockpit vypadá podobně jako:
+a odkazy vygenerované v transakční DBACockpit vypadají podobně jako:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -385,9 +384,9 @@ a odkazy generované v transakci, které DBACockpit vypadá podobně jako:
 > 
 > 
 
-V závislosti na tom, jak je připojený virtuální počítač Azure, který je hostitelem systému SAP do služby AD a DNS, je potřeba mít jistotu, že ICM je plně kvalifikovaný název hostitele, který lze převést na počítači, kde jsou otevírání DBACockpit z. Viz poznámka SAP [773830] pochopit, jak určuje ICM plně kvalifikovaný název hostitele na základě profilu parametrů a explicitně nastavit parametr icm/host_name_full v případě potřeby.
+V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V tématu SAP Note [773830] můžete pochopit, jak ICM Určuje plně kvalifikovaný název hostitele na základě parametrů profilu a v případě potřeby explicitně nastavily parametry ICM/host_name_full.
 
-Pokud jste nasadili virtuální počítač v čistě cloudové scénáře bez připojení mezi místními sítěmi mezi místními a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače vypadá takto:
+Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -395,24 +394,24 @@ Pokud jste nasadili virtuální počítač v čistě cloudové scénáře bez p�
 
 Další podrobnosti týkající se názvu DNS najdete [tady][virtual-machines-azurerm-versus-azuresm].
 
-Nastavení parametru profilu SAP icm/host_name_full jako název DNS virtuálního počítače Azure na odkaz může vypadat podobně jako:
+Nastavení parametru profilu SAP ICM/host_name_full na název DNS virtuálního počítače Azure odkaz může vypadat podobně jako:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-V tomto případě musíte nezapomeňte:
+V takovém případě je třeba zajistit následující:
 
-* Přidat příchozí pravidlo na skupinu zabezpečení sítě na webu Azure Portal pro portů TCP/IP, které slouží ke komunikaci s ICM
-* Přidat příchozí pravidla konfigurace brány Windows Firewall pro porty TCP/IP používaný ke komunikaci s ICM
+* Přidat příchozí pravidla do skupiny zabezpečení sítě v Azure Portal pro porty TCP/IP používané ke komunikaci s nástrojem ICM
+* Přidání příchozích pravidel do konfigurace brány Windows Firewall pro porty TCP/IP používané ke komunikaci s nástrojem ICM
 
-Pro automatické importu všech oprav, které jsou k dispozici doporučuje se pravidelně použít kolekci opravy Poznámka SAP pro vaši verzi SAP:
+Pro automatizované importy dostupných oprav se doporučuje pravidelně uplatňovat poznámku SAP ke shromažďování oprav, které platí pro vaši verzi SAP:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Další informace o DBA řídicí panel pro SAP ASE najdete v následující poznámky SAP:
+Další informace o řídicím panelu DBA pro SAP pomocného mechanismu služby najdete v následujících komentářích ke službě SAP:
 
 * [1605680]
 * [1757924]
@@ -423,106 +422,106 @@ Další informace o DBA řídicí panel pro SAP ASE najdete v následující poz
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>Důležité informace o zálohování nebo obnovení pro SAP ASE
-Při nasazování služby ASE SAP do Azure, musí být přezkoumána zálohování metodologii. I pro neprodukční systémy SAP databáze je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure Storage uchovává tři Image, může být méně důležité možnosti kompenzační selhání úložiště z hlediska zálohování. Hlavním důvodem pro udržení správného plánu zálohování a obnovení je další, která se může kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Cílem je tak buď pomocí zálohování a obnovení databáze zpět do určitého bodu v čase nebo pomocí zálohování v Azure pro jiný systém tak, že zkopírujete existující databázi. 
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Předpoklady pro zálohování a obnovení pro SAP pomocného programu SAP
+Při nasazování pomocného mechanismu SAP do Azure je nutné zkontrolovat metodologii zálohování. I v případě neprodukčních systémů je třeba databáze SAP pravidelně zálohovat. Vzhledem k tomu, že Azure Storage udržuje tři image, může být zálohování méně důležité v souvislosti s kompenzačním selháním úložiště. Hlavní důvod pro zachování správného plánu zálohování a obnovení je větší, než můžete kompenzovat logické a ruční chyby tím, že zajistíte možnosti obnovení k určitému bodu v čase. Cílem je, aby se databáze obnovila k určitému časovému bodu v čase nebo aby používala zálohy v Azure k osazení jiného systému zkopírováním stávající databáze. 
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako v místním prostředí. Naleznete v poznámkách:
+Zálohování a obnovení databáze v Azure funguje stejným způsobem jako v místním prostředí. Viz poznámky SAP:
 
 * [1588316]
 * [1585981]
 
-Podrobné informace o vytváření konfigurace výpisu stavu systému a plánování zálohování. V závislosti na vaší strategie a požadavky, které můžete konfigurovat databáze a protokolu výpisy stavu systému na disku na jeden z disků existující, nebo přidejte další disk pro zálohování. Ke snížení nebezpečí ztrátě dat v případě chyby, je doporučeno použití disku, kde jsou uložené soubory žádné databáze.
+Podrobnosti o vytváření konfigurací výpisu paměti a plánování záloh. V závislosti na vaší strategii a potřebách můžete konfigurovat výpisy databáze a protokolu na disk na jednom z existujících disků nebo přidat další disk pro zálohování. Chcete-li snížit nebezpečí ztráty dat v případě chyby, doporučujeme použít disk, na kterém nejsou umístěny žádné soubory databáze.
 
-Kromě dat – a obchodní komprese SAP ASE také nabízí komprese záloh. Využívat míň místa s výpisy databáze a protokolu se doporučuje použít komprese záloh. Další informace viz poznámka SAP [1588316]. Komprese zálohy je také důležité ke snížení objemu dat, které se mají přenést, pokud plánujete stažení zálohy nebo virtuálních pevných discích obsahující zálohování výpisů paměti z virtuálního počítače Azure do místní.
+Kromě komprese dat a LOB nabízí protokol SAP pomocného programu také kompresi zálohy. Chcete-li využívat méně místa v databázi a výpisy stavu protokolu, doporučuje se použít kompresi zálohy. Další informace najdete v tématu SAP Note [1588316]. Komprimace zálohy je také zásadní pro omezení množství dat, která se mají přenést, pokud chcete stáhnout zálohy nebo virtuální pevné disky obsahující výpisy záloh z virtuálního počítače Azure do místního prostředí.
 
-Nepoužívejte jako databázi nebo protokolu s výpisem paměti cílové jednotce D:\.
+Nepoužívat jednotku D:\ jako cíl výpisu databáze nebo protokolu.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Otázky výkonu při zálohování/obnovení
-Výkon zálohování a obnovení je stejně jako v nasazení na holé počítače, závisí na tom, kolik svazky může číst paralelně a propustnost tyto svazky, které je možné. Uvědomte si, že zálohování komprese spotřebovává prostředky procesoru. Toto využití procesoru komprese záloh můžete přehrát významnou roli na virtuálních počítačích s malý počet vláken na procesor. Proto můžete předpokládat:
+#### <a name="performance-considerations-for-backupsrestores"></a>Požadavky na výkon pro zálohování a obnovení
+Stejně jako v holých nasazeních se výkon zálohování a obnovení závisí na tom, kolik svazků je možné paralelně číst a jakou propustnost těchto svazků může být. Mějte na paměti, že komprese záloh spotřebovává prostředky procesoru. Tato spotřeba procesoru komprimace zálohy může hrát významnou roli na virtuálních počítačích s malým počtem PROCESORových vláken. Proto můžete předpokládat:
 
-* Méně počet disků používá k ukládání zařízení databáze, čím menší celkovou propustnost čtení
-* Čím menší že počet procesorů, vlákna ve virtuálním počítači více závažnost dopadu komprese záloh
-* Menším počtem cílů (Stripe adresáře, discích) k zápisu zálohy do, menší než propustnost
+* Čím méně je počet disků, který se používá k uložení databázových zařízení, tím menší je celková propustnost při čtení.
+* Menší počet PROCESORových vláken ve virtuálním počítači, což je závažnější z vlivu komprimace zálohy
+* Čím méně cílů (prokládané adresáře, disky), do kterého se má zapsat záloha, tím menší je propustnost.
 
-Chcete-li zvýšit počet cílů k zápisu do, že existují dvě možnosti, které je možné použít/kombinovat podle svých potřeb:
+Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete použít dvě možnosti, které se dají v závislosti na vašich potřebách použít nebo kombinovat:
 
-* Prokládání cílový svazek přes více připojené disky, aby se zlepšila propustnost vstupně-výstupních operací na tomto svazku prokládané
-* Vytvoření konfigurace výpisu stavu systému na úrovni SAP ASE, který používá více než jeden cílový adresář pro zápis s výpisem paměti pro
+* Prokládání cílového svazku zálohování přes několik připojených disků pro zlepšení propustnosti IOPS na tomto prokládaném svazku
+* Vytvoření konfigurace výpisu paměti na úrovni služby SAP pro čtení, která používá více než jeden cílový adresář k zápisu výpisu paměti
 
-Prokládání diskový svazek přes více připojené disky popsané v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). Další informace o používání více adresářů v konfiguraci s výpisem paměti SAP ASE, naleznete v dokumentaci na sp_config_dump uloženou proceduru, který slouží k vytvoření konfigurace výpisu stavu systému na [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
+Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP najdete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii pomocí virtuálních počítačů Azure
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat se serverem replikace SAP Sybase
-Se SAP Sybase replikace serveru (SRS), SAP ASE poskytuje záložním pohotovostním režimu řešení asynchronně přenášet databázové transakce na vzdálené umístění. 
+### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat pomocí replikačního serveru SAP Sybase
+Pomocí serveru SAP Sybase pro replikaci (SRS) poskytuje SAP pomocné řešení pro úsporný režim pro asynchronní přenos databázových transakcí do vzdáleného umístění. 
 
-Instalace a používání služby SRS funguje i funkčně v hostované služby virtuálního počítače Azure, stejně jako místní virtuální počítač.
+Instalace a operace služby SRS funguje i v případě, že je virtuální počítač hostovaný ve službách Azure Virtual Machine v místním prostředí.
 
-SAP ASE HADR nevyžaduje Azure Internal Load Balancer a nemá žádné závislosti na úrovni clusterů operačního systému. Funguje na Windows Azure a virtuální počítače s Linuxem. Najdete podrobnosti o SAP ASE HADR [SAP ASE HADR uživatelské příručky](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
+SAP pomocného HADR nevyžaduje interní Load Balancer Azure a nemá žádné závislosti na clusteringu na úrovni operačního systému. Funguje na virtuálních počítačích Azure s Windows a Linux. Podrobnosti o SAP pomocného programu HADR najdete v [příručce SAP POmocného uživatele hadr](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
 
-## <a name="specifics-to-sap-ase-on-linux"></a>Podrobnosti k SAP ASE v Linuxu
-Zahájení práce s Microsoft Azure, můžete snadno migrovat stávající aplikace SAP ASE k Azure Virtual Machines. SAP ASE v rámci virtuálního počítače umožňuje snížit celkové náklady na vlastnictví nasazení, správu a údržbu podnikových kontejnerových nástrojů aplikací snadno migrace těchto aplikací do Microsoft Azure. Se SAP ASE ve virtuální počítač Azure správci a vývojáři můžou využívat stejné vývoj a nástroje pro správu, které jsou k dispozici místně.
+## <a name="specifics-to-sap-ase-on-linux"></a>Specifická pro SAP pomocného mechanismu pro Linux
+Počínaje Microsoft Azure můžete svoje stávající aplikace SAP pomocného mechanismu migrace snadno migrovat do Azure Virtual Machines. SAP pomocného programu na virtuálním počítači umožňuje snížit celkové náklady na vlastnictví nasazení, správy a údržby aplikací v podnikové šířce tím, že tyto aplikace jednoduše migruje na Microsoft Azure. S pomocným mechanismem SAP na virtuálním počítači Azure můžou správci a vývojáři dál používat stejné nástroje pro vývoj a správu, které jsou k dispozici místně.
 
-Pro nasazení virtuálních počítačů Azure je důležité znát oficiální smlouvy SLA, které najdete tady: <https://azure.microsoft.com/support/legal/sla>
+Pro nasazení virtuálních počítačů Azure je důležité znát oficiální SLA, který najdete tady:<https://azure.microsoft.com/support/legal/sla>
 
-Informace o určení velikosti SAP a seznam skladových položek virtuálních počítačů s certifikací SAP je k dispozici v Poznámka SAP [1928533]. Další velikosti dokumentů pro Azure Virtual machines najdete tady SAP <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a zde <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Informace o velikosti SAP a seznam SKU certifikovaných virtuálních počítačů SAP jsou k dispozici v tématu SAP Note [1928533]. Další dokumenty SAP o velikosti pro virtuální počítače Azure najdete tady <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> a tady.<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-Příkazy a doporučení týkající se použití Azure Storage, nasazení virtuálních počítačů o SAP nebo monitorování SAP použít pro nasazení SAP ASE ve spojení s aplikacemi SAP jak je uvedeno v průběhu prvních čtyř kapitol tohoto dokumentu.
+Příkazy a doporučení týkající se použití Azure Storage, nasazení virtuálních počítačů SAP nebo monitorování SAP se vztahují na nasazení SAP pomocného programu SAP ve spojení s aplikacemi SAP, jak uvádíme v prvních čtyřech kapitolách tohoto dokumentu.
 
-Následující dva poznámky SAP zahrnout obecné informace o službě ASE v Linuxu a služba ASE v cloudu:
+Následující dvě poznámky SAP obsahují obecné informace o službě pomocného mechanismu pro Linux a pomocného mechanismu řízení v cloudu:
 
 * [2134316]
 * [1941500]
 
-### <a name="sap-ase-version-support"></a>Podpora SAP ASE verzí
-SAP aktuálně podporuje verze 16.0 pro použití se službou SAP Business Suite produkty SAP ASE. Všechny aktualizace pro server zpráv SAP ASE nebo JDBC a ovladače ODBC pro použití s produkty SAP Business Suite jsou k dispozici pouze prostřednictvím SAP Service Marketplace v: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Podpora verze pomocného mechanismu protokolu SAP
+SAP aktuálně podporuje SAP pomocného programu SAP verze 16,0 pro použití s produkty SAP Business Suite. Všechny aktualizace serveru SAP pomocného programu nebo ovladačů JDBC a ODBC, které se mají použít s produkty SAP Business Suite, se poskytují výhradně prostřednictvím tržiště <https://support.sap.com/swdc>služby SAP na adrese:.
 
-Jako u zařízení v místním nestahovat aktualizací serveru SAP ASE nebo ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravy, které jsou podporovány pro použití se službou SAP Business Suite produkty místních a následující poznámky SAP na virtuálních počítačích Azure najdete v článku:
+Jako u místních instalací nestahujte aktualizace serveru SAP pomocného mechanismu nebo pro ovladače JDBC a ODBC přímo z webů Sybase. Podrobné informace o opravách, které se podporují pro použití s produkty SAP Business Suite v místním prostředí a v Azure Virtual Machines najdete v následujících komentářích ke SAP:
 
 * [1590719]
 * [1973241]
 
-Obecné informace o spouštění SAP Business Suite v SAP ASE najdete v [oznámení změny stavu](https://www.sap.com/community/topic/ase.html)
+Obecné informace o spuštění SAP Business Suite na SAP pomocném mechanismu služby najdete v [SCN](https://www.sap.com/community/topic/ase.html) .
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfigurace SAP ASE pro SAP související SAP ASE instalace na virtuálních počítačích Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP ASE
-SAP ASE spustitelné soubory by měly být umístěné nebo nainstalovat do systému souborů kořenového virtuálního počítače (/sybase). Většina databází systému a nástroje SAP ASE obvykle nejsou dochází k vysoké pracovní vytížení. Databáze systému a nástroje (master, model, saptools, sybmgmtdb, sybsystemdb) proto mohou být uloženy v systému souborů root. 
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Pokyny pro konfiguraci SAP pomocného mechanismu služby pro instalaci SAP pomocného mechanismu pro SAP na virtuálních počítačích Azure
+#### <a name="structure-of-the-sap-ase-deployment"></a>Struktura nasazení SAP pomocného programu SAP
+Spustitelné soubory SAP pomocného programu by se měly nacházet nebo instalovat do kořenového systému souborů virtuálního počítače (/Sybase). Většinou v databázích systému a nástrojů SAP pomocného programu SAP nedochází k velkým úlohám. Proto mohou být databáze systému a nástrojů (hlavní, model, saptools, sybmgmtdb, sybsystemdb) uloženy v kořenovém systému souborů. 
 
-Výjimky může být dočasné databáze, který v případě některých SAP ERP a všechny sady funkcí BW mohou vyžadovat větší objem dat nebo objem vstupně-výstupní operace. Svazky nebo vstupně-výstupních operací, které nelze zadat disk s operačním systémem Virtuálního počítače 
+Výjimkou může být dočasná databáze, která v případě některých funkcí SAP ERP a všech ČERNOBÍLých úloh může vyžadovat buď větší objem dat, nebo vstupně-výstupní operace. Svazky nebo IOPS, které nemůže disk s operačním systémem virtuálního počítače poskytnout 
 
-V závislosti na verzi SAPInst/SWPM použitý k instalaci v systému může obsahovat databáze:
+V závislosti na verzi SAPInst/SWPM, která se používá k instalaci systému, může databáze obsahovat:
 
-* Jediné databáze tempdb SAP ASE vytvořen při instalaci SAP ASE
-* SAP ASE tempdb vytvořené instalace SAP ASE a další saptempdb vytvořené SAP instalačního programu
-* SAP ASE tempdb vytvořené instalace SAP ASE a další databáze tempdb, který byl vytvořen ručně (například následující poznámka SAP [1752266]) podle požadavků konkrétního tempdb ERP/BW
+* Při instalaci SAP pomocného mechanismu softwaru se vytvořila jedna databáze s přísystémem SAP
+* Služba pro vytváření databáze SAP s pomocným mechanismem SAP vytvořená instalací SAP pomocného mechanismu a dalších saptempdb vytvořených instalační rutinou SAP
+* Služba pro vytváření databáze SAP s pomocným mechanismem SAP vytvořená instalací SAP pomocného objektu SAP a další databází tempdb vytvořená ručně (například podle poznámky SAP [1752266]) pro splnění specifických požadavků databáze ERP/šířky
 
-Z důvodů výkonu pro konkrétní ERP nebo všech úloh BW může být vhodné k uložení databáze tempdb zařízení dále vytvořené databáze tempdb (SWPM nebo ručně) v systému samostatného souboru, který může být reprezentován jednoho Azure datového disku nebo RAID Linux pokrývání uzlů m více datové disky Azure. Pokud neexistuje žádné další databáze tempdb, doporučujeme vytvořit jeden (Poznámka SAP [1752266]).
+Z důvodů výkonu pro konkrétní ERP nebo všechny ČERNOBÍLé úlohy může být vhodné ukládat do samostatného systému souborů databázi tempdb (pomocí SWPM nebo ručně), která může být reprezentována s jedním datovým diskem Azure nebo se systémem Linux RAID pokrývá m více datové disky Azure. Pokud neexistuje žádná další databáze tempdb, doporučujeme ji vytvořit (Poznámka k SAP – [1752266]).
 
-Pro tyto systémy by měl pro kromě vytvořenou databázi tempdb provést následující kroky:
+U takových systémů je potřeba provést následující kroky pro vytvořenou databázi tempdb navíc:
 
-* Přesun první adresář databáze tempdb na první systém souborů databáze SAP
-* Přidat adresáře databáze tempdb na všech discích obsahující systému souborů databáze SAP
+* Přesunout první adresář v databázi tempdb do prvního systému souborů databáze SAP
+* Přidejte adresáře tempdb do každého disku obsahujícího systém souborů databáze SAP.
 
-Tato konfigurace umožňuje tempdb využívat více místa, než může poskytnout systémové jednotce. Jako referenci jeden můžete zkontrolovat zařízení velikosti databáze tempdb na existující systémy, které běží místně. Nebo taková konfigurace umožňuje čísla vstupně-výstupních operací s databází tempdb, který nemůže být součástí systémové jednotky. Systémy, které jsou spuštěné místně je možné monitorovat vstupně-výstupní úlohy proti databázi tempdb.
+Tato konfigurace umožňuje databázi tempdb spotřebovat více místa, než může systémová jednotka poskytnout. V takovém případě se může u stávajících systémů, které běží místně, kontrolovat velikosti zařízení tempdb. Nebo taková konfigurace umožňuje čísla IOPS v databázi tempdb, která se nedá poskytnout se systémovou jednotkou. Systémy, které jsou spuštěné místně, se dají použít k monitorování vstupně-výstupních úloh v databázi tempdb.
 
-Nikdy umístěny všechny adresáře SAP ASE na /mnt nebo /mnt/resource virtuálního počítače. Pro SAP ASE toto doporučení platí také pro databázi tempdb, i když jsou jenom dočasné objekty v databázi tempdb. Protože /mnt nebo /mnt/resource je výchozí virtuální počítač Azure temp prostor, který není trvalý. Další podrobnosti o dočasného prostoru virtuálních počítačů Azure najdete v [v tomto článku][virtual-machines-linux-how-to-attach-disk]
+Nikdy neumísťujte žádné adresáře SAP pomocného programu do/mnt nebo/mnt/Resource virtuálního počítače. V případě systému SAP pomocného mechanismu se tato doporučení vztahují také na databázi tempdb, i když jsou objekty uchovávané v databázi tempdb pouze dočasné. Vzhledem k tomu, že/mnt nebo/mnt/Resource je výchozí dočasné místo pro virtuální počítače Azure, které není trvalé. Další podrobnosti o dočasném prostoru virtuálního počítače Azure najdete v [tomto článku][virtual-machines-linux-how-to-attach-disk] .
 
-Pro data a nasazení souborů protokolů transakcí, příkazy a návrhů v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). V případě nasazení založené na Linuxu využití LVM nebo MDADM doporučuje se použít k sestavení prokládaných svazků s dostatečnou vstupně-výstupních operací, propustnosti a svazku. 
+V případě nasazení dat a souborů protokolu transakcí se jedná o příkazy a návrhy provedené v rámci [nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). V případě nasazení se systémem Linux se doporučuje použití LVM nebo MDADM k vytváření prokládaných sad s dostatečným IOPS, propustností a svazkem. 
 
-#### <a name="impact-of-database-compression"></a>Dopad komprese databáze
-V konfiguraci, kde šířku pásma vstupně-výstupní operace se může stát omezujícím faktorem každá míra, což snižuje vstupně-výstupních operací vám může pomoci roztáhnout úlohy, jež možné spouštět ve scénáři IaaS, jako je Azure. Doporučujeme proto se ujistěte, že SAP ASE komprese před nahráním existující databázi SAP do Azure.
+#### <a name="impact-of-database-compression"></a>Dopad komprimace databáze
+V konfiguracích, kde se může I/O šířka pásma stát omezením, by každá míra, která omezuje IOPS, mohla přispět k roztažení úlohy, která může běžet ve scénáři IaaS, jako je Azure. Proto se před nahráním existující databáze SAP do Azure doporučuje použít kompresi SAP pomocného mechanismu.
 
-Doporučení a použít kompresi před nahráním do Azure je dán z několika důvodů:
+Doporučení použít kompresi před nahráním do Azure je z několika důvodů:
 
-* Množství dat k odeslání do Azure je nižší
-* Doba trvání spuštění komprese je kratší, za předpokladu, že jeden můžete používat silnější hardware s více procesory nebo větší šířku pásma vstupně-výstupních operací nebo méně vstupně-výstupní latence v místním
-* Menší velikosti databáze může vést k nižší náklady pro přidělení disku
+* Množství dat, která se mají nahrát do Azure, je nižší.
+* Doba trvání spuštění komprese je kratší, předpokládá se, že jedna může používat silnější hardware s více procesory nebo vyšší propustnost vstupně-výstupních operací nebo méně v/v místní latenci.
+* Menší velikosti databází můžou vést k menšímu množství nákladů na přidělení disku.
 
-Komprese dat a obchodní fungují v hostovaných ve službě Azure Virtual Machines, stejně jako místní virtuální počítač. Další podrobnosti o tom, jak zkontrolovat, jestli komprese je již v použít stávající databázi SAP ASE, zkontrolujte poznámky SAP [1750510]. Další informace týkající se komprese databáze, viz poznámka SAP [2121797].
+Data-a při práci v CLOUDu, která je hostovaná v Azure, Virtual Machines v místním prostředí. Další informace o tom, jak zjistit, jestli se komprese už používá v existující databázi pomocného mechanismu služby SAP, najdete v článku SAP Note [1750510]. Další informace o kompresi databáze najdete v tématu SAP Note [2121797].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Pomocí DBACockpit k monitorování instancí databáze
-Pro systémy SAP, které používají jako databáze platformy SAP ASE, je dostupné jako windows embedded prohlížeče v transakci DBACockpit nebo jako Webdynpro DBACockpit. Ale je k dispozici v implementaci Webdynpro DBACockpit pouze úplné funkce pro monitorování a správu databáze.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Monitorování instancí databáze pomocí DBACockpit
+Pro systémy SAP, které používají program SAP pomocného mechanismu přístupu jako databázová platforma, je DBACockpit přístupný jako okna integrovaných prohlížečů v transakčních DBACockpit nebo jako WebDynpro. Kompletní funkce pro monitorování a správu databáze jsou však k dispozici pouze v WebDynpro implementaci DBACockpit.
 
-Jako s místními systémy několik kroků je potřeba povolit všechny funkce SAP NetWeaver používané Webdynpro provádění DBACockpit. Postupujte podle Poznámka SAP [1245200] povolit spotřebu webdynpros a generovat ty povinné. Podle pokynů ve výše uvedené poznámky, můžete také nakonfigurovat Správce internetové komunikace (icm) spolu s porty, které chcete používat pro připojení http a https. Výchozí nastavení pro protokol http vypadá takto:
+Stejně jako u místních systémů je potřeba pro povolení všech funkcí SAP NetWeaver používaných WebDynpro implementací DBACockpit použít několik kroků. Postupujte podle poznámky [1245200] pro SAP, abyste povolili použití webdynpros a vygenerovali požadované. Pokud budete postupovat podle pokynů uvedených v předchozích poznámkách, můžete také nakonfigurovat nástroj Internet Communication Manager (ICM) spolu s porty, které se mají použít pro připojení HTTP a HTTPS. Výchozí nastavení pro protokol HTTP vypadá takto:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -530,7 +529,7 @@ Jako s místními systémy několik kroků je potřeba povolit všechny funkce S
 > 
 > 
 
-a odkazy generované v transakci DBACockpit bude vypadat nějak takto:
+a odkazy vygenerované v transakční DBACockpit budou vypadat podobně jako toto:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -538,9 +537,9 @@ a odkazy generované v transakci DBACockpit bude vypadat nějak takto:
 > 
 > 
 
-V závislosti na tom, jak je připojený virtuální počítač Azure, který je hostitelem systému SAP do služby AD a DNS, je potřeba mít jistotu, že ICM je plně kvalifikovaný název hostitele, který lze převést na počítači, kde jsou otevírání DBACockpit z. Viz poznámka SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na profil parametry a nastavení parametru icm/host_name_full explicitně v případě potřeby.
+V závislosti na tom, jak je virtuální počítač Azure hostující systém SAP připojený k vaší službě AD a DNS, je potřeba zajistit, aby ICM používala plně kvalifikovaný název hostitele, který se dá vyřešit v počítači, ze kterého se DBACockpit otevírá. V tématu SAP Note [773830] můžete pochopit, jak ICM Určuje plně kvalifikovaný název hostitele v závislosti na parametrech profilu a v případě potřeby explicitně nastavily parametry ICM/host_name_full.
 
-Pokud jste nasadili virtuální počítač v čistě cloudové scénáře bez připojení mezi místními sítěmi mezi místními a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače vypadá takto:
+Pokud jste virtuální počítač nasadili ve scénáři jenom pro cloud bez propojení mezi místními sítěmi a Azure, musíte definovat veřejnou IP adresu a domainlabel. Formát veřejného názvu DNS virtuálního počítače vypadá takto:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -548,24 +547,24 @@ Pokud jste nasadili virtuální počítač v čistě cloudové scénáře bez p�
 
 Další podrobnosti týkající se názvu DNS najdete [tady][virtual-machines-azurerm-versus-azuresm].
 
-Nastavení parametru profilu SAP icm/host_name_full jako název DNS virtuálního počítače Azure na odkaz může vypadat podobně jako:
+Nastavení parametru profilu SAP ICM/host_name_full na název DNS virtuálního počítače Azure odkaz může vypadat podobně jako:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-V tomto případě musíte nezapomeňte:
+V takovém případě je třeba zajistit následující:
 
-* Přidat příchozí pravidlo na skupinu zabezpečení sítě na webu Azure Portal pro portů TCP/IP, které slouží ke komunikaci s ICM
-* Přidat příchozí pravidla konfigurace brány Windows Firewall pro porty TCP/IP používaný ke komunikaci s ICM
+* Přidat příchozí pravidla do skupiny zabezpečení sítě v Azure Portal pro porty TCP/IP používané ke komunikaci s nástrojem ICM
+* Přidání příchozích pravidel do konfigurace brány Windows Firewall pro porty TCP/IP používané ke komunikaci s nástrojem ICM
 
-Pro automatické importu všech oprav, které jsou k dispozici doporučuje se pravidelně použít kolekci opravy Poznámka SAP pro vaši verzi SAP:
+Pro automatizované importy dostupných oprav se doporučuje pravidelně uplatňovat poznámku SAP ke shromažďování oprav, které platí pro vaši verzi SAP:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Další informace o DBA řídicí panel pro SAP ASE najdete v následující poznámky SAP:
+Další informace o řídicím panelu DBA pro SAP pomocného mechanismu služby najdete v následujících komentářích ke službě SAP:
 
 * [1605680]
 * [1757924]
@@ -576,38 +575,38 @@ Další informace o DBA řídicí panel pro SAP ASE najdete v následující poz
 * [1922555]
 * [1956005]
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>Důležité informace o zálohování nebo obnovení pro SAP ASE
-Při nasazování služby ASE SAP do Azure, musí být přezkoumána zálohování metodologii. I pro neprodukční systémy SAP databáze je nutné zálohovat pravidelně. Vzhledem k tomu, že Azure Storage uchovává tři Image, může být méně důležité možnosti kompenzační selhání úložiště z hlediska zálohování. Hlavním důvodem pro udržení správného plánu zálohování a obnovení je další, která se může kompenzovat chyby logické nebo ruční tím, že poskytuje bod v možnosti v době obnovení. Cílem je tak buď pomocí zálohování a obnovení databáze zpět do určitého bodu v čase nebo pomocí zálohování v Azure pro jiný systém tak, že zkopírujete existující databázi. 
+#### <a name="backuprecovery-considerations-for-sap-ase"></a>Předpoklady pro zálohování a obnovení pro SAP pomocného programu SAP
+Při nasazování pomocného mechanismu SAP do Azure je nutné zkontrolovat metodologii zálohování. I v případě neprodukčních systémů je třeba databáze SAP pravidelně zálohovat. Vzhledem k tomu, že Azure Storage udržuje tři image, může být zálohování méně důležité v souvislosti s kompenzačním selháním úložiště. Hlavní důvod pro zachování správného plánu zálohování a obnovení je větší, než můžete kompenzovat logické a ruční chyby tím, že zajistíte možnosti obnovení k určitému bodu v čase. Cílem je, aby se databáze obnovila k určitému časovému bodu v čase nebo aby používala zálohy v Azure k osazení jiného systému zkopírováním stávající databáze. 
 
-Zálohování a obnovení databáze v Azure funguje stejným způsobem jako v místním prostředí. Naleznete v poznámkách:
+Zálohování a obnovení databáze v Azure funguje stejným způsobem jako v místním prostředí. Viz poznámky SAP:
 
 * [1588316]
 * [1585981]
 
-Podrobné informace o vytváření konfigurace výpisu stavu systému a plánování zálohování. V závislosti na vaší strategie a potřebám můžete nakonfigurovat databáze a protokolu výpisů paměti na disk na jednu z existujících disků nebo přidejte další disk pro zálohování. Ke snížení nebezpečí ztrátě dat v případě chyby, se doporučuje používat disk, kde se nachází žádné adresářů a souborů databáze.
+Podrobnosti o vytváření konfigurací výpisu paměti a plánování záloh. V závislosti na vaší strategii a potřebách můžete nakonfigurovat výpisy databáze a protokolu na disk na jeden z existujících disků nebo přidat další disk pro zálohování. Pokud chcete snížit nebezpečí ztráty dat v případě chyby, doporučujeme použít disk, na kterém není umístěný žádný adresář nebo soubor databáze.
 
-Kromě dat – a obchodní komprese SAP ASE také nabízí komprese záloh. Využívat míň místa s výpisy databáze a protokolu se doporučuje použít komprese záloh. Další informace viz poznámka SAP [1588316]. Komprese zálohy je také důležité ke snížení objemu dat, které se mají přenést, pokud plánujete stažení zálohy nebo virtuálních pevných discích obsahující zálohování výpisů paměti z virtuálního počítače Azure do místní.
+Kromě komprese dat a LOB nabízí protokol SAP pomocného programu také kompresi zálohy. Chcete-li využívat méně místa v databázi a výpisy stavu protokolu, doporučuje se použít kompresi zálohy. Další informace najdete v tématu SAP Note [1588316]. Komprimace zálohy je také zásadní pro omezení množství dat, která se mají přenést, pokud chcete stáhnout zálohy nebo virtuální pevné disky obsahující výpisy záloh z virtuálního počítače Azure do místního prostředí.
 
-Nepoužívejte /mnt dočasného prostoru virtuálních počítačů Azure nebo /mnt/resource jako cílové databázi nebo protokolu s výpisem paměti.
+Nepoužívejte dočasné místo pro virtuální počítače Azure/mnt ani/mnt/Resource jako cíl výpisu databáze nebo protokolu.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Otázky výkonu při zálohování/obnovení
-Výkon zálohování a obnovení je stejně jako v nasazení na holé počítače, závisí na tom, kolik svazky může číst paralelně a propustnost tyto svazky, které je možné. Uvědomte si, že zálohování komprese spotřebovává prostředky procesoru. Toto využití procesoru komprese záloh můžete přehrát významnou roli na virtuálních počítačích s malý počet vláken na procesor.  Proto můžete předpokládat:
+#### <a name="performance-considerations-for-backupsrestores"></a>Požadavky na výkon pro zálohování a obnovení
+Stejně jako v holých nasazeních se výkon zálohování a obnovení závisí na tom, kolik svazků je možné paralelně číst a jakou propustnost těchto svazků může být. Mějte na paměti, že komprese záloh spotřebovává prostředky procesoru. Tato spotřeba procesoru komprimace zálohy může hrát významnou roli na virtuálních počítačích s malým počtem PROCESORových vláken.  Proto můžete předpokládat:
 
-* Méně počet disků používá k ukládání zařízení databáze, čím menší celkovou propustnost čtení
-* Čím menší že počet procesorů, vlákna ve virtuálním počítači více závažnost dopadu komprese záloh
-* Menším počtem cílů (Linux softwarového pole RAID, discích) k zápisu zálohy do, menší než propustnost
+* Čím méně je počet disků, který se používá k uložení databázových zařízení, tím menší je celková propustnost při čtení.
+* Menší počet PROCESORových vláken ve virtuálním počítači, což je závažnější z vlivu komprimace zálohy
+* Méně cílů (RAID software pro Linux, disky), do kterých se zapisuje záloha, čím menší propustnost
 
-Chcete-li zvýšit počet cílů k zápisu do, že existují dvě možnosti, které je možné použít/kombinovat podle svých potřeb:
+Pokud chcete zvýšit počet cílů, na které se má zapisovat, můžete použít dvě možnosti, které se dají v závislosti na vašich potřebách použít nebo kombinovat:
 
-* Prokládání cílový svazek přes více připojené disky, aby se zlepšila propustnost vstupně-výstupních operací na tomto svazku prokládané
-* Vytvoření konfigurace výpisu stavu systému na úrovni SAP ASE, který používá více než jeden cílový adresář pro zápis s výpisem paměti pro
+* Prokládání cílového svazku zálohování přes několik připojených disků pro zlepšení propustnosti IOPS na tomto prokládaném svazku
+* Vytvoření konfigurace výpisu paměti na úrovni služby SAP pro čtení, která používá více než jeden cílový adresář k zápisu výpisu paměti
 
-Prokládání diskový svazek přes více připojené disky popsané v [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md). Další informace o používání více adresářů v konfiguraci s výpisem paměti SAP ASE, naleznete v dokumentaci na sp_config_dump uloženou proceduru, který slouží k vytvoření konfigurace výpisu stavu systému na [informační Sybase středisko](http://infocenter.sybase.com/help/index.jsp).
+Prokládání diskového svazku na více připojených discích je popsáno v tématu [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md). Další informace o použití více adresářů v konfiguraci výpisu stavu systému SAP najdete v dokumentaci k uložené proceduře sp_config_dump, která se používá k vytvoření konfigurace výpisu paměti v [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp).
 
-### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii pomocí virtuálních počítačů Azure
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat se serverem replikace SAP Sybase
-Se SAP Sybase replikace serveru (SRS), SAP ASE poskytuje záložním pohotovostním režimu řešení asynchronně přenášet databázové transakce na vzdálené umístění. 
+### <a name="disaster-recovery-with-azure-vms"></a>Zotavení po havárii s virtuálními počítači Azure
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replikace dat pomocí replikačního serveru SAP Sybase
+Pomocí serveru SAP Sybase pro replikaci (SRS) poskytuje SAP pomocné řešení pro úsporný režim pro asynchronní přenos databázových transakcí do vzdáleného umístění. 
 
-Instalace a používání služby SRS funguje i funkčně v hostované služby virtuálního počítače Azure, stejně jako místní virtuální počítač.
+Instalace a operace služby SRS funguje i v případě, že je virtuální počítač hostovaný ve službách Azure Virtual Machine v místním prostředí.
 
-Služba ASE HADR prostřednictvím replikace serveru SAP se podporuje. Důrazně doporučujeme použít SAP ASE 16.03 se pokusit taková konfigurace. Podrobnější pokyny k instalaci těchto konfigurací najdete v podrobné v tomto [blogu](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).
+Podporuje se HADR pomocného serveru přes SAP pro replikaci. K pokusu o takovou konfiguraci se důrazně doporučuje použít SAP pomocného mechanismu 16,03. Podrobnější pokyny k instalaci takových konfigurací najdete podrobněji v tomto [blogu](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).

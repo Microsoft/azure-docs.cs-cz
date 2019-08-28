@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e970afbfd9c302dc95667a7c356e95824838e9b4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636471"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086220"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby úložiště objektů BLOB v Azure pro Azure Functions
 
@@ -1131,7 +1130,7 @@ V JavaScriptu přístup k datům objektu BLOB pomocí `context.bindings.<name fr
 | Objekt blob, tabulka, fronta |  [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Objekt blob, tabulka, fronta |  [Odstraňování potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 

@@ -9,32 +9,31 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: 6164a92e19d8657525029bca9a749baadcb49362
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 09c3dd68dff95a909796e3331069f22ce222c05d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242883"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081084"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí PowerShellu
 
-Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte v následujících scénářích:
+Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte pro následující scénáře:
 
-1. Migrace snímku ve službě storage úrovně Premium (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS) sníží vaše náklady.
-1. Migrace snímek z místně redundantní úložiště (Premium_LRS, Standard_LRS) do zónově redundantní úložiště (Standard_ZRS), abyste využili výhod vyšší spolehlivost úložiště ZRS.
-1. Přesunete snímek do jiného předplatného ve stejné oblasti pro delší dobu uchování.
+1. Migrujte snímek ve službě Premium Storage (Premium_LRS) do úložiště úrovně Standard (Standard_LRS nebo Standard_ZRS), abyste snížili náklady.
+1. Migrujte snímek z místně redundantního úložiště (Premium_LRS, Standard_LRS) do zóny redundantního úložiště (Standard_ZRS), abyste využili vyšší spolehlivosti úložiště ZRS.
+1. Přesunutí snímku do jiného předplatného ve stejné oblasti pro delší dobu uchování.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 

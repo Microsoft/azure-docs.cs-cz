@@ -1,41 +1,40 @@
 ---
-title: Azure vazby služby SendGrid funkce
-description: Referenční informace k vazeb Azure Functions SendGrid.
+title: Azure Functions vazby SendGrid
+description: Odkaz na Azure Functions SendGridch vazeb
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 8b7666b043379f3ff143e2a5eaae6b40ea80ab90
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: dc113417be3df97b9ab9509c30a1f23e1eeaf35b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480252"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086281"
 ---
-# <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
+# <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
-Tento článek vysvětluje, jak odesílat e-mailu pomocí [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) vazby ve službě Azure Functions. Služba Azure Functions podporuje výstupní vazby služby SendGrid.
+Tento článek vysvětluje, jak odeslat e-maily pomocí vazeb [SendGrid](https://sendgrid.com/docs/User_Guide/index.html) v Azure Functions. Azure Functions podporuje výstupní vazbu pro SendGrid.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
+Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) , verze 2. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
+Vazby SendGrid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Podívejte se na příklad specifické pro jazyk:
 
@@ -44,11 +43,11 @@ Podívejte se na příklad specifické pro jazyk:
 * [JavaScript](#javascript-example)
 * [Java](#java-example)
 
-### <a name="c-example"></a>Příklad jazyka C#
+### <a name="c-example"></a>C#případě
 
-Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , že používá fronty Service Bus aktivovat a výstupní vazby služby SendGrid.
+Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která používá aktivační událost Service Bus Queue a výstupní vazbu SendGrid.
 
-#### <a name="synchronous-c-example"></a>Synchronní C# příkladu:
+#### <a name="synchronous-c-example"></a>Synchronní C# příklad:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -73,7 +72,7 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
-#### <a name="asynchronous-c-example"></a>Asynchronní C# příkladu:
+#### <a name="asynchronous-c-example"></a>Asynchronní C# příklad:
 
 ```cs
 [FunctionName("SendEmail")]
@@ -101,11 +100,11 @@ public class OutgoingEmail
 }
 ```
 
-Nastavení atributu, můžete vynechat `ApiKey` vlastnosti, pokud jste svůj klíč rozhraní API v nastavení aplikace s názvem "AzureWebJobsSendGridApiKey".
+Nastavení `ApiKey` vlastnosti atributu můžete vynechat, pokud máte klíč rozhraní API v nastavení aplikace s názvem "AzureWebJobsSendGridApiKey".
 
-### <a name="c-script-example"></a>Ukázkový skript jazyka C#
+### <a name="c-script-example"></a>C#Příklad skriptu
 
-Následující příklad ukazuje SendGrid výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba.
+Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -162,9 +161,9 @@ public class Message
 }
 ```
 
-### <a name="java-example"></a>Příklad pro jazyk Java
+### <a name="java-example"></a>Příklad Java
 
-V následujícím příkladu `@SendGridOutput` ze Poznámka [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime) k odesílání e-mailu pomocí Sendgridu výstupní vazbu.
+Následující příklad používá `@SendGridOutput` anotaci z běhové [knihovny Functions jazyka Java](/java/api/overview/azure/functions/runtime) k odeslání e-mailu pomocí výstupní vazby SendGrid.
 
 ```java
 @FunctionName("SendEmail")
@@ -189,9 +188,9 @@ V následujícím příkladu `@SendGridOutput` ze Poznámka [Java funkce knihovn
     }
 ```
 
-### <a name="javascript-example"></a>Příklad v jazyce JavaScript
+### <a name="javascript-example"></a>Příklad JavaScriptu
 
-Následující příklad ukazuje SendGrid výstupní vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba.
+Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -233,9 +232,9 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) atribut.
+V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Informace o atribut vlastnosti, které můžete nakonfigurovat, najdete v tématu [konfigurace](#configuration). Tady je `SendGrid` příklad atributů v podpisu metody:
+Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je `SendGrid` příklad atributů v podpisu metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -247,22 +246,22 @@ public static void Run(
 }
 ```
 
-Kompletní příklad naleznete v tématu [příklad jazyka C#](#c-example).
+Úplný příklad naleznete v tématu [ C# příklad](#c-example).
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `SendGrid` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type**|| Povinné – musí být nastavena na `sendGrid`.|
-|**direction**|| Povinné – musí být nastavena na `out`.|
-|**name**|| Požadovaná: název této proměnné v kódu funkce žádosti nebo text žádosti. Tato hodnota je ```$return``` po pouze jeden návratovou hodnotu. |
-|**apiKey**|**ApiKey**| Název nastavení aplikace, která obsahuje váš klíč rozhraní API. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsSendGridApiKey".|
-|**to**|**To**| příjemce e-mailovou adresu. |
-|**from**|**from**| E-mailová adresa odesílatele. |
-|**subject**|**Subject**| Předmět e-mailu. |
-|**text**|**text**| obsah e-mailu. |
+|**type**|| Požadováno – musí být nastavené `sendGrid`na.|
+|**direction**|| Požadováno – musí být nastavené `out`na.|
+|**name**|| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je ```$return``` , pokud je k dispozici pouze jedna návratová hodnota. |
+|**apiKey**|**ApiKey**| Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsSendGridApiKey".|
+|**to**|**To**| e-mailová adresa příjemce |
+|**from**|**from**| e-mailová adresa odesílatele |
+|**závislosti**|**Subject**| Předmět e-mailu. |
+|**text**|**text**| obsah e-mailu |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -288,7 +287,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|from|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
+|from|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 
 ## <a name="next-steps"></a>Další postup

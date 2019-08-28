@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Linuxem – HPC | Dokumentace Microsoftu
-description: Obsahuje seznam různých velikostí, které jsou k dispozici pro Linux vysoce výkonných výpočetních virtuálních počítačů v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure Linux – HPC | Microsoft Docs
+description: Obsahuje seznam různých velikostí dostupných pro virtuální počítače s vysokým výkonem pro Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695604"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100865"
 ---
-# <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
+# <a name="high-performance-compute-virtual-machine-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 
@@ -33,22 +32,22 @@ ms.locfileid: "67695604"
 
 ### <a name="mpi"></a>MPI 
 
-SR-IOV povoleno velikosti virtuálních počítačů v Azure umožňují téměř jakékoli flavor MPI, který se má použít.
-Na jiných rozhraní SR-IOV povoleno virtuálních počítačích podporovány jsou pouze verze 5.x Intel MPI. Novější verze (2017, 2018) Intel MPI Runtime knihovny může nebo nemusí být kompatibilní s ovladači Azure Linux RDMA.
+Velikosti virtuálních počítačů s podporou SR-IOV v Azure umožňují téměř jakýkoli charakter MPI.
+Na virtuálních počítačích, které nejsou povolené SR-IOV, se podporují jenom verze Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači RDMA pro Azure Linux.
 
 
-### <a name="supported-os-images"></a>Podporované Image operačního systému
+### <a name="supported-os-images"></a>Podporované image operačních systémů
  
-Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které podporují RDMA připojení:
+Azure Marketplace má mnoho distribucí systému Linux, které podporují připojení RDMA:
   
-* **Založené na centOS HPC** – bez rozhraní SR-IOV povolená virtuálních počítačů založených na CentOS verze 6.5 HPC nebo novější verze, až 7.5 jsou vhodné. Pro virtuální počítače řady H-series se doporučuje verze 7.1 k 7.5. Na virtuálním počítači se nainstalují ovladače RDMA a Intel MPI 5.1.
-  Pro virtuální počítače s SR-IOV CentOS HPC 7.6 pochází optimalizované a předem načtené RDMA ovladačů a balíčky různých MPI, které jsou nainstalovány.
-  Vyhledáme další Image virtuálního počítače RHEL nebo CentOS přidejte InfiniBandLinux rozšíření pro umožnění InfiniBand. Toto rozšíření virtuálního počítače s Linuxem instaluje ovladače Mellanox OFED (na virtuálních počítačích rozhraní SR-IOV) pro připojení RDMA. Následující rutiny Powershellu nainstaluje nejnovější verzi (verze 1.0) InfiniBandDriverLinux rozšíření na existující virtuální počítač s podporou RDMA. RDMA podporovat virtuální počítač má název *myVM* a je nasazený ve skupině prostředků s názvem *myResourceGroup* v *USA – západ* oblasti následujícím způsobem:
+* **HPC založená na CentOS** – pro virtuální počítače, které nejsou povolené SR-IOV, CentOS verze 6,5 HPC nebo novější, jsou vhodné až 7,5. Pro virtuální počítače řady H-Series doporučujeme verze 7,1 až 7,5. Na virtuálním počítači jsou nainstalované ovladače RDMA a Intel MPI 5,1.
+  Pro virtuální počítače SR-IOV přináší CentOS-HPC 7,6 optimalizované a předem načtené s ovladači RDMA a různými nainstalovanými balíčky MPI.
+  Pro jiné image virtuálních počítačů s RHEL/CentOS přidejte rozšíření InfiniBandLinux, aby bylo možné InfiniBand povolit. Tato přípona virtuálního počítače se systémem Linux nainstaluje ovladače Mellanox OFED (na virtuálních počítačích SR-IOV) pro připojení RDMA. Následující rutina prostředí PowerShell nainstaluje nejnovější verzi (verze 1,0) rozšíření InfiniBandDriverLinux na existující virtuální počítač s podporou RDMA. Virtuální počítač s podporou RDMA má název *myVM* a do skupiny prostředků s názvem *myResourceGroup* ve *západní USA* oblasti se nasadí takto:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Rozšíření virtuálních počítačů mohou být také součástí šablony Azure Resource Manageru pro snadné nasazení pomocí elementu JSON:
+  Alternativně lze rozšíření virtuálních počítačů zahrnout do šablon Azure Resource Manager pro snadné nasazení pomocí následujícího elementu JSON:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -57,7 +56,7 @@ Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které p
   } 
   ```
   
-  Následující příkaz nainstaluje nejnovější verze 1.0 InfiniBandDriverLinux rozšíření pro všechny virtuální počítače podporující RDMA v existující škálovací sady s názvem *myVMSS* nasazených ve skupině prostředků s názvem *myResourceGroup*:
+  Následující příkaz nainstaluje nejnovější InfiniBandDriverLinux rozšíření verze 1,0 na všechny virtuální počítače podporující RDMA v existující sadě škálování virtuálního počítače s názvem *myVMSS* nasazenou ve skupině prostředků s názvem *myResourceGroup*:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -66,48 +65,48 @@ Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které p
   ```
   
   > [!NOTE]
-  > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
+  > U imagí HPC založených na CentOS jsou aktualizace jádra v konfiguračním souboru **Yumu** zakázané. Důvodem je to, že ovladače pro Linux RDMA jsou distribuované jako balíček ot./min. a aktualizace ovladačů nemusí fungovat, pokud je jádro aktualizované.
   >
   
 
-* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro prostředí HPC, SLES 12 SP3 pro prostředí HPC (Premium), SLES 12 SP1 pro prostředí HPC, SLES 12 SP1 pro prostředí HPC (Premium), SLES 12 SP4 a SLES 15. Instalace ovladačů RDMA a Intel MPI balíčky nejsou distribuovány na virtuálním počítači. Nainstalujte MPI spuštěním následujícího příkazu:
+* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15. Jsou nainstalované ovladače RDMA a na virtuálním počítači jsou distribuované balíčky Intel MPI. Nainstalujte MPI spuštěním následujícího příkazu:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** – Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurace ovladače RDMA na virtuálním počítači a s technologií Intel stáhnout Intel MPI registrace:
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. Nakonfigurujte na virtuálním počítači ovladače RDMA a zaregistrujte se pomocí Intel pro stažení Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Další podrobnosti o povolení InfiniBand, nastavení MPI, naleznete v tématu [povolit InfiniBand](../workloads/hpc/enable-infiniband.md).
+  Další informace o povolení InfiniBand, nastavení MPI najdete v tématu [Povolení InfiniBand](../workloads/hpc/enable-infiniband.md).
 
 
 ### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
 
-Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuálních počítačů s Linuxem, který může komunikovat pomocí sítě RDMA, včetně: 
+Azure poskytuje několik možností pro vytváření clusterů virtuálních počítačů se systémem Linux HPC, které mohou komunikovat pomocí sítě RDMA, včetně těchto: 
 
-* **Virtuální počítače** -nasadit virtuální počítače s podporou RDMA HPC ve stejné skupině dostupnosti (Pokud používáte model nasazení Azure Resource Manageru). Pokud používáte model nasazení classic, nasaďte virtuální počítače ve stejné cloudové službě. 
+* **Virtuální počítače** – nasazení virtuálních počítačů HPC s podporou RDMA ve stejné skupině dostupnosti (při použití modelu nasazení Azure Resource Manager). Pokud používáte model nasazení Classic, nasaďte virtuální počítače do stejné cloudové služby. 
 
-* **Škálovací sady virtuálních počítačů** - v virtuálního počítače škálovací sady, ujistěte se, že omezíte nasazení do jediné skupiny umístění. Například v šabloně Resource Manageru, nastavte `singlePlacementGroup` vlastnost `true`. 
+* **Virtual Machine Scale Sets** – v sadě škálování virtuálního počítače Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` 
 
-* **MPI mezi virtuálními počítači** – Pokud MPI komunikace v případě potřeby mezi virtuální počítače (VM), ujistěte se, že virtuální počítače jsou ve stejné skupině dostupnosti nastavena nebo virtuální počítač stejné škálovací sady.
+* **MPI mezi virtuálními počítači** – Pokud se vyžaduje komunikace MPI mezi virtuálními počítači, ujistěte se, že jsou virtuální počítače ve stejné skupině dostupnosti nebo ve stejné sadě škálování virtuálního počítače.
 
-* **Azure CycleCloud** – vytvoření clusteru prostředí HPC v [Azure CycleCloud](/azure/cyclecloud/) ke spouštění úloh MPI na uzly s Linuxem.
+* **Azure CycleCloud** – vytvoření clusteru HPC ve [službě Azure CycleCloud](/azure/cyclecloud/) pro spouštění úloh MPI v uzlech systému Linux.
 
-* **Služba Azure Batch** – vytvoření [Azure Batch](/azure/batch/) výpočetní uzly fondu pro spouštění úloh MPI v Linuxu. Další informace najdete v tématu [použití podporující RDMA nebo s podporou grafického procesoru instancí ve fondech Batch](../../batch/batch-pool-compute-intensive-sizes.md). Viz také [Batch loděnice](https://github.com/Azure/batch-shipyard) projekt, pro spouštění úloh kontejneru v Batch.
+* **Azure Batch** – vytvoření fondu [Azure Batch](/azure/batch/) pro spouštění úloh MPI na výpočetních uzlech se systémem Linux. Další informace najdete v tématu [použití instancí podporujících technologii RDMA nebo GPU ve fondech služby Batch](../../batch/batch-pool-compute-intensive-sizes.md). Pro spouštění úloh založených na kontejnerech ve službě Batch se také zobrazí projekt [Batch loděnice](https://github.com/Azure/batch-shipyard) .
 
-* **Sady Microsoft HPC Pack** - [sady HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje několik distribucí systému Linux ke spuštění na nasazených výpočetních uzlů ve virtuálních počítačích Azure podporující RDMA spravuje hlavního uzlu Windows serveru. Ukázkové nasazení, najdete v části [vytvořit prostředí HPC Pack RDMA clusteru s Linuxem v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
-
-
-### <a name="network-considerations"></a>Důležité informace o síti
-* Na jiných SR-IOV podporou RDMA virtuální počítače s Linuxem v Azure, eth1 vyhrazené pro RDMA síťový provoz. Neměňte nastavení eth1 nebo jakékoli informace v konfiguračním souboru odkazující na tuto síť.
-* Na virtuálních počítačů (HB a řady HC) s povoleným rozhraní SR-IOV, ib0 je rezervovaná pro síťový provoz RDMA.
-* Sítě RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. Ke spouštění aplikací MPI v nasazené instance ve službě Azure virtual network, ujistěte se, že se adresní prostor virtuální sítě nepřekrývá síť RDMA.
-* V závislosti na vašem výběru nástroj pro správu clusteru může být potřeba další systém konfigurace ke spouštění úloh MPI. Například v clusteru virtuálních počítačů, možná bude nutné k navázání vztahu důvěryhodnosti mezi uzly clusteru generování klíčů SSH nebo tím, že passwordless přihlášení SSH.
+* **Sada Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje několik distribucí Linux na výpočetní uzly nasazené ve virtuálních počítačích Azure s podporou RDMA, které spravuje hlavní uzel Windows serveru. Ukázkové nasazení najdete [v tématu Vytvoření clusteru HPC Pack Linux RDMA v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 
-## <a name="other-sizes"></a>Další velikosti
+### <a name="network-considerations"></a>Síťové požadavky
+* U virtuálních počítačů se systémem Linux bez SR-IOV v Azure je eth1 vyhrazena pro síťový provoz RDMA. Neměňte žádné nastavení eth1 ani žádné informace v konfiguračním souboru, které odkazují na tuto síť.
+* V případě virtuálních počítačů s podporou SR-IOV (s a HC-Series) je ib0 vyhrazený pro síťový provoz RDMA.
+* Síť RDMA v Azure rezervuje adresní prostor 172.16.0.0/16. Pokud chcete spouštět aplikace MPI na instancích nasazených ve službě Azure Virtual Network, ujistěte se, že adresní prostor virtuální sítě nepřekrývá síť RDMA.
+* V závislosti na zvoleném nástroji pro správu clusteru může být pro spuštění úloh MPI nutná další konfigurace systému. Například na clusteru virtuálních počítačů možná budete muset vytvořit vztah důvěryhodnosti mezi uzly clusteru generováním klíčů SSH nebo vytvořením přihlašovacích údajů SSH bez hesla.
+
+
+## <a name="other-sizes"></a>Jiné velikosti
 - [Obecné účely](sizes-general.md)
 - [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
@@ -117,5 +116,5 @@ Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuáln�
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak nastavit, optimalizací a Škálováním [úlohy HPC](../workloads/hpc/configure.md) v Azure.
-- Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
+- Přečtěte si další informace o tom, jak nastavit, optimalizovat a škálovat [úlohy prostředí HPC](../workloads/hpc/configure.md) v Azure.
+- Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

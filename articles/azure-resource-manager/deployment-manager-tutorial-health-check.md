@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898139"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095819"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Kurz: Použití kontroly stavu v Azure Deployment Manager (Public Preview)
 
@@ -235,8 +235,8 @@ Ověření a otestování funkce Azure Functions:
 
 Pro zjednodušení tohoto kurzu se šablona topologie a artefakty sdílejí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* Úložiště artefaktů:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Šablona topologie: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplates/CreateADMServiceTopology.JSON
+* Úložiště artefaktů: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
 
 Pokud chcete topologii nasadit, vyberte **vyzkoušet** a otevřete Cloud Shell a pak vložte powershellový skript.
 
@@ -265,8 +265,8 @@ Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky 
 
 Pro zjednodušení tohoto kurzu se revidovaná Šablona zavedení sdílí v následujících umístěních, takže nemusíte připravovat svoji vlastní kopii. Pokud chcete použít vlastní, postupujte podle pokynů v [kurzu: Použijte Azure Deployment Manager se šablonami](./deployment-manager-tutorial.md)správce prostředků.
 
-* Šablona topologie:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* Úložiště artefaktů:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Šablona topologie: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplatesHC/CreateADMRollout.JSON
+* Úložiště artefaktů: https:\//armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
 
 Použijte adresu URL stavu není v pořádku, kterou jste vytvořili v části [Vytvoření simulátoru služby kontroly stavu](#create-a-health-check-service-simulator). **ManagedIdentityID**najdete v tématu [Vytvoření spravované identity přiřazené uživatelem](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 
@@ -396,6 +396,6 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak používat funkci kontroly stavu služby Azure Deployment Manager. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).

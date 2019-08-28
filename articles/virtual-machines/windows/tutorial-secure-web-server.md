@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c8f02c43834a593c6b3c5c1df224b80377a9be66
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8742700f472f5cedcf5de307f1b151634303a0be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707994"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101641"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači Windows v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Windows v Azure s certifikáty SSL uloženými v Key Vault
 
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečená nasazování certifikátů do virtuálních počítačů s Windows v Azure. V tomto kurzu se naučíte:
 
@@ -49,7 +48,7 @@ Místo použití vlastní image virtuálního počítače, která zahrnuje integ
 
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
-Před vytvořením služby Key Vault a certifikáty, vytvořte skupinu prostředků s [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v umístění *East US*:
+Než budete moct vytvořit Key Vault a certifikáty, vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupSecureWeb* v umístění *East US*:
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -57,7 +56,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Dále vytvořte službu Key Vault s [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte Key Vault pomocí [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -68,7 +67,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a jeho uložení do služby Key Vault
-Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí [Import AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). Pro účely tohoto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [přidat AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) , který používá výchozí zásady certifikátu z [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí [Import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). V tomto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem pomocí [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) , který používá výchozí zásadu certifikátu z [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -91,7 +90,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítač pomocí [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud zatím neexistují, vytvoří se podpůrné síťové prostředky. Za účelem povolení zabezpečeného webového provozu rutina také otevře port *443*.
+Nyní můžete vytvořit virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud zatím neexistují, vytvoří se podpůrné síťové prostředky. Za účelem povolení zabezpečeného webového provozu rutina také otevře port *443*.
 
 ```azurepowershell-interactive
 # Create a VM
@@ -117,11 +116,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Poslední krok používá rozšíření vlastních skriptů Azure k instalaci webového serveru IIS pomocí [Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+Vytvoření virtuálního počítače trvá několik minut. Poslední krok používá rozšíření vlastních skriptů Azure k instalaci webového serveru IIS pomocí [set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Přidání certifikátu ze služby Key Vault do virtuálního počítače
-K přidání certifikátu ze služby Key Vault do virtuálního počítače, získejte ID certifikátu pomocí [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidání certifikátu do virtuálního počítače s [přidat AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+Pokud chcete přidat certifikát z Key Vault do virtuálního počítače, Získejte ID certifikátu pomocí [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidejte certifikát k virtuálnímu počítači pomocí [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -135,7 +134,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>Konfigurace služby IIS na použití certifikátu
-Použití rozšíření vlastních skriptů s [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) se aktualizovat konfiguraci služby IIS. Tato aktualizace použije certifikát vložený ze služby Key Vault do IIS a nakonfiguruje webovou vazbu:
+Znovu použijte rozšíření vlastních skriptů s příkazem [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) a aktualizujte konfiguraci služby IIS. Tato aktualizace použije certifikát vložený ze služby Key Vault do IIS a nakonfiguruje webovou vazbu:
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -155,7 +154,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Získat veřejnou IP adresu vašeho virtuálního počítače s [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro `myPublicIP`:
+Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro `myPublicIP`:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"

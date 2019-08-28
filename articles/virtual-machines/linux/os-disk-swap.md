@@ -1,6 +1,6 @@
 ---
-title: Disk odkládacího souboru operačního systému pro virtuální počítač Azure pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
-description: Disk s operačním systémem virtuálního počítače Azure pomocí rozhraní příkazového řádku používané změňte.
+title: Výměna disku s operačním systémem pro virtuální počítač Azure pomocí rozhraní příkazového řádku | Microsoft Docs
+description: Změna disku operačního systému používaného virtuálním počítačem Azure pomocí rozhraní příkazového řádku
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -11,30 +11,29 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 970f3409cc46fa6cf96fff3e6944ebeaeadcdcce
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667267"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091670"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Změnit disk s operačním systémem používané Virtuálním počítači Azure pomocí rozhraní příkazového řádku
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Změna disku operačního systému používaného virtuálním počítačem Azure pomocí rozhraní příkazového řádku
 
 
-Pokud máte existující virtuální počítač, ale chcete Prohodit disku pro zálohování disku nebo jiný disk s operačním systémem, můžete využít rozhraní příkazového řádku Azure pro disky s operačním systémem. Není nutné odstranit a znovu vytvořte virtuální počítač. Tak dlouho, dokud se ještě nepoužívá, můžete použít i spravovaného disku v jiné skupině prostředků.
+Pokud máte existující virtuální počítač, ale chcete disk zaměnit na záložní disk nebo jiný disk s operačním systémem, můžete použít rozhraní příkazového řádku Azure pro prohození disků s operačním systémem. Nemusíte odstranit a znovu vytvořit virtuální počítač. Můžete dokonce použít spravovaný disk v jiné skupině prostředků, pokud se ještě nepoužívá.
 
-Virtuální počítač musí být stopped\deallocated a ID prostředku spravovaného disku se dá nahradit výrazem ID prostředku různých spravovaného disku. 
+Virtuální počítač musí být stopped\deallocated, a ID prostředku spravovaného disku se dá nahradit ID prostředku jiného spravovaného disku. 
 
-Ujistěte se, že typ velikosti a úložiště virtuálního počítače jsou kompatibilní s diskem, který chcete připojit. Například pokud ve službě Premium Storage se disk, který chcete použít, pak virtuální počítač musí být schopné Storage úrovně Premium (jako je velikost řady DS-series).
+Ujistěte se, že velikost virtuálního počítače a typ úložiště jsou kompatibilní s diskem, který chcete připojit. Pokud je například disk, který chcete použít, v Premium Storage, musí být virtuální počítač schopný Premium Storage (například velikost řady DS-Series).
 
-Tento článek vyžaduje použití Azure CLI verze 2.0.25 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento článek vyžaduje Azure CLI verze 2.0.25 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 
-Použití [az disk list](/cli/azure/disk) k získání seznamu disků ve vaší skupině prostředků.
+Pomocí [AZ disk list](/cli/azure/disk) získáte seznam disků ve vaší skupině prostředků.
 
 ```azurecli-interactive
 az disk list \
@@ -44,7 +43,7 @@ az disk list \
 ```
 
 
-Použití [az vm stop](/cli/azure/vm) k stop\deallocate virtuální počítač před přechodem na discích.
+Pomocí [AZ VM stop](/cli/azure/vm) stop\deallocate virtuální počítač a teprve potom disky odkládací.
 
 ```azurecli-interactive
 az vm stop \
@@ -53,7 +52,7 @@ az vm stop \
 ```
 
 
-Použití [az vm update](/cli/azure/vm#az-vm-update) s úplné ID prostředku nového disku `--osdisk` parametr 
+Použijte [AZ VM Update](/cli/azure/vm#az-vm-update) s úplným ID prostředku nového disku pro `--osdisk` parametr. 
 
 ```azurecli-interactive 
 az vm update \
@@ -62,7 +61,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-Restartujte virtuální počítač pomocí [az vm start](/cli/azure/vm).
+Restartujte virtuální počítač pomocí [AZ VM Start](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm start \
@@ -73,4 +72,4 @@ az vm start \
    
 **Další postup**
 
-Vytvoření kopie disku najdete v tématu [pořízení snímku disku](snapshot-copy-managed-disk.md).
+Pokud chcete vytvořit kopii disku, přečtěte si téma vytvoření [snímku disku](snapshot-copy-managed-disk.md).

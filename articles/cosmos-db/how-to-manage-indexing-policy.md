@@ -3,22 +3,22 @@ title: Správa zásad indexování v Azure Cosmos DB
 description: Naučte se spravovat zásady indexování v Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093199"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování v Azure Cosmos DB
 
 V Azure Cosmos DB jsou data indexována po [indexování zásad](index-policy.md) , které jsou definovány pro každý kontejner. Výchozí zásada indexování pro nově vytvořené kontejnery vynutila indexy rozsahu pro libovolný řetězec nebo číslo a prostorové indexy pro libovolný objekt typu Point. JSON. Tyto zásady se dají přepsat:
 
-- Z Azure Portal
-- Použití rozhraní příkazového řádku Azure
+- z Azure Portal
+- použití rozhraní příkazového řádku Azure
 - použití jedné ze sad SDK
 
 [Aktualizace zásad indexování](index-policy.md#modifying-the-indexing-policy) spustí transformaci indexu. Průběh této transformace můžete také sledovat ze sad SDK.
@@ -401,7 +401,7 @@ Je volitelné zadat objednávku. Pokud tento parametr nezadáte, pořadí je vze
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o indexování najdete v následujících článcích:
 

@@ -1,31 +1,31 @@
 ---
-title: Nasazení a konfiguraci brány Firewall Azure pomocí Azure CLI
-description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Firewall služby Azure pomocí Azure CLI.
+title: Nasazení a konfigurace Azure Firewall pomocí rozhraní příkazového řádku Azure
+description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Azure Firewall pomocí Azure CLI.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 7/10/2019
+ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707165"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114816"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfiguraci brány Firewall Azure pomocí Azure CLI
+# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Nasazení a konfigurace Azure Firewall pomocí rozhraní příkazového řádku Azure
 
-Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například omezit přístup k webovým stránkám. Nebo můžete chtít omezit odchozí IP adresy a porty, které mohou být přístupné.
+Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například chtít omezit přístup k webům. Nebo můžete chtít omezit odchozí IP adresy a porty, které jsou k dispozici.
 
 Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsítě Azure, je použít Azure Firewall. Azure Firewall umožňuje nakonfigurovat:
 
-* Pravidla aplikace, která definují plně kvalifikované názvy domén, ke kterým je možné získat přístup z podsítě. Plně kvalifikovaný název lze také [zahrnují instance SQL](sql-fqdn-filtering.md).
+* Pravidla aplikace, která definují plně kvalifikované názvy domén, ke kterým je možné získat přístup z podsítě. Plně kvalifikovaný název domény může také [zahrnovat instance SQL](sql-fqdn-filtering.md).
 * Pravidla sítě, která definují zdrojovou adresu, protokol, cílový port a cílovou adresu.
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-Pro účely tohoto článku vytvořte zjednodušené jedné virtuální sítě se třemi podsítěmi pro snadné nasazení. Pro nasazení v produkčním prostředí [model střed a paprsek](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se doporučuje. Brána firewall je ve své vlastní virtuální sítě. Servery úlohy jsou v partnerských virtuálních sítích ve stejné oblasti pomocí jedné nebo několika podsítí.
+V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. U produkčních nasazení se doporučuje [model hvězdicového a paprskového modelu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Brána firewall je ve své vlastní virtuální síti. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -39,11 +39,11 @@ V tomto článku získáte informace o těchto tématech:
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
-> * Konfigurace pravidla aplikace pro povolení přístupu k www.google.com
+> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
 > * Otestovat bránu firewall
 
-Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [webu Azure portal](tutorial-firewall-deploy-portal.md) nebo [prostředí Azure PowerShell](deploy-ps.md).
+Pokud budete chtít, můžete tento postup provést pomocí [Azure Portal](tutorial-firewall-deploy-portal.md) nebo [Azure PowerShell](deploy-ps.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -53,9 +53,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, spusťte Azure CLI verze 2.0.4 nebo novější. Pokud chcete zjistit verzi, spusťte **příkaz az--verze**. Informace o instalaci nebo upgradu najdete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, spusťte Azure CLI verze 2.0.4 nebo novější. Pokud chcete zjistit verzi, spusťte příkaz **AZ--Version**. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI]( /cli/azure/install-azure-cli).
 
-Instalace rozšíření Brána Firewall služby Azure:
+Nainstalujte Azure Firewall rozšíření:
 
 ```azurecli-interactive
 az extension add -n azure-firewall
@@ -79,7 +79,7 @@ az group create --name Test-FW-RG --location eastus
 Tato virtuální síť má tři podsítě.
 
 > [!NOTE]
-> Minimální velikost podsítě AzureFirewallSubnet je /26.
+> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \
@@ -88,7 +88,7 @@ az network vnet create \
   --location eastus \
   --address-prefix 10.0.0.0/16 \
   --subnet-name AzureFirewallSubnet \
-  --subnet-prefix 10.0.1.0/24
+  --subnet-prefix 10.0.1.0/26
 az network vnet subnet create \
   --name Workload-SN \
   --resource-group Test-FW-RG \
@@ -106,7 +106,7 @@ az network vnet subnet create \
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 Po zobrazení výzvy zadejte heslo pro virtuální počítač.
 
-Vytvoření virtuálního počítače Srv odkazů.
+Vytvořte virtuální počítač s odkazem na SRV.
 
 ```azurecli-interactive
 az vm create \
@@ -122,7 +122,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Vytvořte síťové rozhraní pro Srv – práce s konkrétní IP adresy serverů DNS a žádná veřejná IP adresa pro testování.
+Vytvořte síťovou kartu pro službu SRV – Pracujte s konkrétními IP adresami serverů DNS a bez veřejné IP adresy k testování.
 
 ```azurecli-interactive
 az network nic create \
@@ -134,7 +134,7 @@ az network nic create \
    --dns-servers 209.244.0.3 209.244.0.4
 ```
 
-Teď vytvořte virtuální počítač pracovního vytížení.
+Nyní vytvořte virtuální počítač úlohy.
 Po zobrazení výzvy zadejte heslo pro virtuální počítač.
 
 ```azurecli-interactive
@@ -149,7 +149,7 @@ az vm create \
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
-Nyní nasazení brány do virtuální sítě.
+Teď nasaďte bránu firewall do virtuální sítě.
 
 ```azurecli-interactive
 az network firewall create \
@@ -181,7 +181,7 @@ Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytvá
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
-Vytvoření tabulky, se zakázaným šířením BGP trasy
+Vytvoření tabulky se zakázaným šířením trasy protokolu BGP
 
 ```azurecli-interactive
 az network route-table create \
@@ -191,7 +191,7 @@ az network route-table create \
     --disable-bgp-route-propagation true
 ```
 
-Vytvoření trasy.
+Vytvořte trasu.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -216,7 +216,7 @@ az network vnet subnet update \
 
 ## <a name="configure-an-application-rule"></a>Konfigurace pravidla aplikace
 
-Pravidlo brány application umožňuje odchozí přístup k www.google.com.
+Pravidlo aplikace umožňuje odchozí přístup k www.google.com.
 
 ```azurecli-interactive
 az network firewall application-rule create \
@@ -235,7 +235,7 @@ Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukt
 
 ## <a name="configure-a-network-rule"></a>Konfigurace pravidla sítě
 
-Pravidlo sítě umožňuje odchozí přístup na dvě IP adresy na port 53 (DNS).
+Síťové pravidlo umožňuje odchozí přístup ke dvěma IP adresám na portu 53 (DNS).
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -253,9 +253,9 @@ az network firewall network-rule create \
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 
-Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
+Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
-1. Všimněte si privátní IP adresu pro **Srv pracovní** virtuálního počítače:
+1. Poznamenejte si privátní IP adresu pro virtuální počítač s **prací SRV** :
 
    ```azurecli-interactive
    az vm list-ip-addresses \
@@ -263,16 +263,16 @@ Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
    -n Srv-Work
    ```
 
-1. Připojení k vzdálené plochy **Srv Jump** virtuálního počítače a přihlášení. Odtud otevření připojení ke vzdálené ploše **Srv pracovní** privátní IP adresy a přihlašování.
+1. Připojte vzdálenou plochu k virtuálnímu počítači s odkazem na **SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
 
-3. Na **SRV pracovní**, otevřete okno Powershellu a spusťte následující příkazy:
+3. V nabídce **SRV – práci**otevřete okno PowerShellu a spusťte následující příkazy:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Oba příkazy by měl vrátit odpovědi znázorňující, že vaše dotazy DNS se zobrazuje přes bránu firewall.
+   Oba příkazy by měly vracet odpovědi, které ukazují, že vaše dotazy DNS procházejí přes bránu firewall.
 
 1. Spusťte následující příkazy:
 
@@ -284,16 +284,16 @@ Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Uspěli www.google.com požadavky a požadavky www.microsoft.com by selhat. Tento příklad ukazuje, že pravidla brány firewall fungují podle očekávání.
+   Žádosti www.google.com by měly být úspěšné a žádosti www.microsoft.com by měly selhat. To ukazuje, že pravidla brány firewall fungují podle očekávání.
 
-Teď jste ověřili funkčnost pravidla brány firewall:
+Takže teď ověříte, že pravidla brány firewall fungují:
 
 * Názvy DNS můžete přeložit pomocí nakonfigurovaného externího serveru DNS.
 * Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Můžete ponechat prostředky brány firewall k dalšímu kurzu, nebo pokud už je nepotřebujete, odstraňte **Test-FW-RG** skupinu prostředků odstraňte všechny prostředky související s brány firewall:
+Prostředky brány firewall můžete zachovat pro další kurz, nebo pokud už je nepotřebujete, odstraňte skupinu prostředků **test-FW-RG** , abyste odstranili všechny prostředky související s bránou firewall:
 
 ```azurecli-interactive
 az group delete \
@@ -302,4 +302,4 @@ az group delete \
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)

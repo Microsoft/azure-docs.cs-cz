@@ -1,6 +1,6 @@
 ---
-title: Předávat přihlašovací údaje do Azure s využitím Desired State Configuration
-description: Zjistěte, jak bezpečně předávat přihlašovací údaje pro virtuální počítače Azure pomocí prostředí PowerShell Desired State Configuration (DSC).
+title: Předání přihlašovacích údajů do Azure pomocí konfigurace požadovaného stavu
+description: Přečtěte si, jak bezpečně předat přihlašovací údaje virtuálním počítačům Azure pomocí konfigurace požadovaného stavu PowerShellu (DSC).
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -10,32 +10,31 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 723d0cfe6e292c4b8013de4da55779a6c675d610
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705925"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092514"
 ---
-# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Předávat přihlašovací údaje k obslužné rutině Azure DSCExtension
+# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Předání přihlašovacích údajů obslužné rutině Azure DSCExtension
 
-Tento článek se týká rozšíření Desired State Configuration (DSC) pro Azure. Přehled obslužné rutiny rozšíření DSC, naleznete v tématu [Úvod do obslužné rutiny rozšíření Azure Desired State Configuration](dsc-overview.md).
+Tento článek se zabývá rozšířením konfigurace požadovaného stavu (DSC) pro Azure. Přehled obslužné rutiny rozšíření DSC najdete v tématu [Úvod do obslužné rutiny rozšíření konfigurace požadovaného stavu Azure](dsc-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="pass-in-credentials"></a>Předejte přihlašovacích údajů
+## <a name="pass-in-credentials"></a>Přihlašovací údaje pro předání
 
-Jako součást procesu konfigurace může být potřebujete nastavit uživatelské účty, přístup ke službám, nebo nainstalovat program v kontextu uživatele. To všechno budete muset zadat přihlašovací údaje.
+V rámci procesu konfigurace možná budete muset nastavit uživatelské účty, služby přístupu nebo nainstalovat program do uživatelského kontextu. K provedení těchto akcí je potřeba zadat přihlašovací údaje.
 
-Můžete nastavit parametry konfigurace DSC. V konfiguraci s parametry jsou přihlašovací údaje předané do konfigurace a bezpečně uložené v souborech MOF. Obslužná rutina rozšíření Azure zjednodušuje správu přihlašovacích údajů prostřednictvím automatické správy certifikátů.
+K nastavení parametrizovaných konfigurací můžete použít DSC. V parametrizované konfiguraci se přihlašovací údaje předávají do konfigurace a bezpečně ukládají do souborů. mof. Obslužná rutina rozšíření Azure zjednodušuje správu přihlašovacích údajů tím, že poskytuje automatickou správu certifikátů.
 
-Následující skript konfigurací DSC vytvoří místní uživatelský účet pomocí zadaného hesla:
+Následující konfigurační skript DSC vytvoří místní uživatelský účet se zadaným heslem:
 
 ```powershell
 configuration Main
@@ -61,13 +60,13 @@ configuration Main
 }
 ```
 
-Je důležité zahrnout **uzel localhost** jako součást konfigurace. Obslužná rutina rozšíření konkrétně hledá **uzel localhost** příkazu. Pokud tento příkaz chybí, následující kroky nefungují. Je také důležité zahrnout typecast **[PsCredential]** . Tento konkrétní typ aktivuje rozšíření pro šifrování přihlašovacích údajů.
+Je důležité zahrnout jako součást konfigurace **uzel localhost** . Obslužná rutina rozšíření konkrétně hledá příkaz **Node localhost** . Pokud tento příkaz chybí, následující kroky nefungují. Je také důležité zahrnout přetypovat **[PsCredential]** . Tento konkrétní typ aktivuje rozšíření pro šifrování přihlašovacích údajů.
 
-Chcete-li publikovat tento skript do Azure Blob storage:
+Publikování tohoto skriptu do úložiště objektů BLOB v Azure:
 
 `Publish-AzVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
-Chcete-li nastavit rozšíření DSC Azure a zadejte přihlašovací údaje:
+Pokud chcete nastavit rozšíření Azure DSC a zadat přihlašovací údaje:
 
 ```powershell
 $configurationName = 'Main'
@@ -80,15 +79,15 @@ $vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchi
 $vm | Update-AzVM
 ```
 
-## <a name="how-a-credential-is-secured"></a>Jak je zabezpečené přihlašovací údaje
+## <a name="how-a-credential-is-secured"></a>Způsob zabezpečení přihlašovacích údajů
 
-Spuštěním tohoto kódu zobrazí výzvu k zadání přihlašovacích údajů. Jakmile přihlašovací údaje, které je k dispozici jsou stručně uložená v paměti. Při publikování pověření s použitím **Set-AzVMDscExtension** rutiny, přihlašovací údaje, které se přenášejí prostřednictvím protokolu HTTPS do virtuálního počítače. Na virtuálním počítači Azure ukládá přihlašovací údaje, které šifrují na disku s použitím certifikátu místního virtuálního počítače. Přihlašovací údaje se dešifrují stručně v paměti a potom je znovu zašifrován předat DSC.
+Po spuštění tohoto kódu se zobrazí výzva k zadání přihlašovacích údajů. Po zadání přihlašovacích údajů se krátce uloží do paměti. Při publikování přihlašovacích údajů pomocí rutiny **set-AzVMDscExtension** se přihlašovací údaje přenáší přes HTTPS do virtuálního počítače. V tomto virtuálním počítači Azure ukládá přihlašovací údaje šifrované na disk pomocí certifikátu místního virtuálního počítače. Přihlašovací údaje se krátce dešifrují v paměti a pak se znovu zašifrují, aby je bylo možné předat DSC.
 
-Tento proces se liší od [pomocí zabezpečené konfigurace bez obslužné rutiny rozšíření](/powershell/dsc/securemof). Prostředí Azure poskytuje způsob, jak přenášet data konfigurace zabezpečené pomocí certifikátů. Když použijete obslužné rutiny rozšíření DSC, není potřeba zadávat **$CertificatePath** nebo **$CertificateID**/  **$Thumbprint** záznam v **ConfigurationData**.
+Tento proces se liší od [použití zabezpečených konfigurací bez obslužné rutiny rozšíření](/powershell/dsc/securemof). Prostředí Azure nabízí způsob, jak bezpečně přenášet konfigurační data prostřednictvím certifikátů. Když použijete obslužnou rutinu rozšíření DSC, nemusíte zadávat **$CertificatePath** ani **$CertificateID**/  **$Thumbprint** záznam v **ConfigurationData**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Získat [Úvod do obslužné rutiny rozšíření DSC Azure](dsc-overview.md).
-- Zkontrolujte [šablony Azure Resource Manageru pro rozšíření DSC](dsc-template.md).
-- Další informace o prostředí PowerShell DSC, přejděte [centrum dokumentace k Powershellu](/powershell/dsc/overview).
-- Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC a další prostředky DSC, přejděte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Získejte [Úvod k obslužné rutině rozšíření Azure DSC](dsc-overview.md).
+- Projděte si [šablonu Azure Resource Manager pro rozšíření DSC](dsc-template.md).
+- Další informace o prostředí PowerShell DSC najdete v [centru dokumentace PowerShellu](/powershell/dsc/overview).
+- Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC a další prostředky DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

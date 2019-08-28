@@ -6,21 +6,20 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478370"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081660"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace do virtuálních počítačů s Linuxem v Azure s využitím Jenkinse a Azure DevOps služby
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na virtuální počítače se systémem Linux v Azure s využitím Jenkinse a Azure DevOps Services
 
 Kontinuální integrace (CI) a průběžné nasazování (CD) tvoří kanál, s jehož pomocí můžete sestavovat, vydávat a nasazovat kód. Azure DevOps Services poskytuje kompletní plnohodnotnou sadu nástrojů pro automatizaci CI/CD umožňující nasazení do Azure. Jenkins je populární serverový nástroj CI/CD od jiného výrobce, který rovněž nabízí automatizaci CI/CD. Kombinací produktů Azure DevOps Services a Jenkins můžete přizpůsobit způsob, jakým dodáváte cloudovou aplikaci nebo službu.
 
@@ -35,10 +34,10 @@ do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release
 > * Konfigurace Jenkins pro integraci Azure DevOps Services
 > * Vytvoření koncového bodu služby Jenkins
 > * Vytvoření skupiny nasazení pro virtuální počítače Azure
-> * Vytvoření kanálu Azure kanálů verze.
+> * Vytvořte kanál verze Azure Pipelines.
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Potřebujete přístup k serveru Jenkins. Pokud jste ještě nevytvořili server Jenkins, přečtěte si článek o [vytvoření hlavní databáze Jenkins ve virtuálním počítači Azure](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
@@ -68,7 +67,7 @@ Vytvořte fork této aplikace a poznačte si umístění (adresu URL), které po
 
 ## <a name="configure-jenkins-plug-ins"></a>Konfigurace modulů plug-in Jenkins
 
-Nejprve je nutné nakonfigurovat dva moduly plug-in Jenkins: **Prostředí NodeJS** a **průběžného nasazování služby VS Team Services**.
+Nejdřív musíte nakonfigurovat dva moduly plug-in Jenkinse: Průběžné nasazování služeb **NodeJS** a **vs Team Services**.
 
 1. Otevřete svůj účet Jenkins a vyberte **Manage Jenkins** (Spravovat Jenkins).
 2. Na stránce **Manage Jenkins** (Spravovat Jenkins) vyberte **Manage Plugins** (Spravovat moduly plug-in).
@@ -133,7 +132,7 @@ Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jen
 
 1. Otevřete kartu **Vydání** centra **Sestavení a vydání**, otevřete **Skupiny nasazení** a vyberte **+ Nový**.
 2. Zadejte název skupiny nasazení a volitelný popis. Potom vyberte **Vytvořit**.
-3. Zvolte operační systém virtuálního počítače cíle nasazení. Vyberte například **Ubuntu 16.04+**.
+3. Zvolte operační systém virtuálního počítače cíle nasazení. Vyberte například **Ubuntu 16.04+** .
 4. Vyberte **Použít ve skriptu token PAT k ověřování**.
 5. Vyberte odkaz **Systémové předpoklady**. Nainstalujte tyto předpoklady do operačního systému.
 6. Výběrem příkazu **Zkopírovat skript do schránky** skript zkopírujte.
@@ -141,7 +140,7 @@ Koncový bod služby umožňuje službě Azure DevOps Services připojení k Jen
 8. Po instalaci budete vyzváni k zadání značek skupiny nasazení. Přijměte výchozí hodnoty.
 9. Ve službě Azure DevOps Services vyhledejte v seznamu **Cíle** v oblasti **Skupiny nasazení** nově registrovaný virtuální počítač.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Vytvoření kanálu Azure kanály verze
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Vytvoření kanálu pro vydání Azure Pipelines
 
 Kanál verze určuje proces, který Azure Pipelines používá k nasazení aplikace. V tomto příkladu spustíte skript prostředí.
 
@@ -164,9 +163,9 @@ Kanál verze vytvoříte v Azure Pipelines takto:
 
 1. Vyberte **+ Vydaná verze** a vyberte **Vytvořit vydanou verzi**.
 2. Ve zvýrazněném rozevíracím seznamu vyberte dokončené sestavení a pak vyberte **Zařadit do fronty**.
-3. Ve vyskakovací zprávě zvolte odkaz na vydanou verzi. Příklad: "Vydání **Release-1** byla vytvořena."
+3. Ve vyskakovací zprávě zvolte odkaz na vydanou verzi. Příklad: Vydaná verze Release **-1** se vytvořila.
 4. Otevřete kartu **Protokoly** a prohlédněte si výstup konzole vydané verze.
-5. V prohlížeči otevřete adresu URL jednoho ze serverů, který jste přidali do skupiny nasazení. Zadejte například **http://{IP-adresa-vašeho-serveru}**.
+5. V prohlížeči otevřete adresu URL jednoho ze serverů, který jste přidali do skupiny nasazení. Zadejte například **http://{IP-adresa-vašeho-serveru}** .
 6. Přejděte do zdrojového úložiště Gitu a změňte text nadpisu **h1** v souboru app/views/index.jade.
 7. Potvrďte tuto změnu.
 8. Po několika minutách uvidíte novou verzi vytvořenou na stránce **Vydání** v Azure DevOps. Otevřete tuto vydanou verzi a zjistěte, jestli probíhá nasazení. Blahopřejeme!

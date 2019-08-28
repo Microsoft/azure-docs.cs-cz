@@ -1,6 +1,6 @@
 ---
-title: Azure Disk Encryption pro Windows | Dokumentace Microsoftu
-description: Azure Disk Encryption nasadí do virtuálního počítače s Windows pomocí rozšíření virtuálního počítače.
+title: Azure Disk Encryption pro Windows | Microsoft Docs
+description: Nasadí Azure Disk Encryption na virtuální počítač s Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
@@ -8,46 +8,45 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706098"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092649"
 ---
-# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft.Azure.Security.AzureDiskEncryption)
+# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption pro Windows (Microsoft. Azure. Security. AzureDiskEncryption)
 
 ## <a name="overview"></a>Přehled
 
-Azure Disk Encryption využívá nástroj BitLocker k šifrování celého disku poskytují na virtuálních počítačích Azure s Windows.  Toto řešení je integrovaná s Azure Key Vault a Správa disku šifrovací klíče a tajné kódy ve vašem předplatném služby key vault. 
+Azure Disk Encryption využívá BitLocker k poskytování úplného šifrování disků na virtuálních počítačích Azure s Windows.  Toto řešení je integrované s Azure Key Vault pro správu klíčů a tajných kódů disků v předplatném trezoru klíčů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Úplný seznam všech požadovaných součástí najdete v tématu [požadované součásti služby Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Úplný seznam požadovaných součástí najdete v tématu [Azure Disk Encryption požadavky.](
+../../security/azure-security-disk-encryption-prerequisites.md)
 
 ### <a name="operating-system"></a>Operační systém
 
-Seznam aktuálně verzí Windows, naleznete v tématu [požadované součásti služby Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
+Seznam aktuálně verzí Windows najdete v tématu [Azure Disk Encryption požadavky](../../security/azure-security-disk-encryption-prerequisites.md).
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Azure Disk Encryption vyžaduje připojení k Internetu pro přístup k Active Directory, služby Key Vault, úložiště a koncových bodů správy balíčků.  Další informace o nastavení zabezpečení sítě najdete v tématu [požadované součásti služby Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Azure Disk Encryption vyžaduje připojení k Internetu pro přístup ke koncovým bodům služby Active Directory, Key Vault, Storage a správy balíčků.  Další informace o nastavení zabezpečení sítě najdete v [tématu Azure Disk Encryption](
+../../security/azure-security-disk-encryption-prerequisites.md)požadavky.
 
-## <a name="extension-schemata"></a>Rozšíření schémat
+## <a name="extension-schemata"></a>Schémat rozšíření
 
-Existují dvě schémata pro Azure Disk Encryption: v1.1, novější, doporučené schéma, které nepoužívají vlastnosti v Azure Active Directory (AAD) a v0.1, starší schéma, které vyžaduje vlastnosti AAD. Je nutné použít verzi schématu odpovídající rozšíření, kterou používáte: v1.1 schématu pro AzureDiskEncryption rozšíření verze 1.1, v0.1 schématu pro AzureDiskEncryption verze rozšíření 0,1.
+K dispozici jsou dvě schémat pro Azure Disk Encryption: v 1.1, novější, Doporučené schéma, které nepoužívá vlastnosti Azure Active Directory (AAD) a v 0,1, starší schéma, které vyžaduje vlastnosti AAD. Je nutné použít verzi schématu odpovídající příponě, kterou používáte: Schema v 1.1 pro rozšíření AzureDiskEncryption verze 1,1, Schema v 0,1 pro rozšíření AzureDiskEncryption verze 0,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schéma v1.1: Žádné AAD (doporučeno)
+### <a name="schema-v11-no-aad-recommended"></a>Schéma v 1.1: Bez AAD (doporučeno)
 
-Schéma v1.1 je doporučeno a nevyžaduje, aby vlastnosti služby Azure Active Directory.
+Doporučuje se schéma v 1.1 a nevyžaduje Azure Active Directory vlastnosti.
 
 ```json
 {
@@ -74,11 +73,11 @@ Schéma v1.1 je doporučeno a nevyžaduje, aby vlastnosti služby Azure Active D
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schéma v0.1: v AAD 
+### <a name="schema-v01-with-aad"></a>Schéma v 0,1: s AAD 
 
-Vyžaduje schéma 0,1 `aadClientID` a buď `aadClientSecret` nebo `AADClientCertificate`.
+Schéma 0,1 vyžaduje `aadClientID` `aadClientSecret` a. `AADClientCertificate`
 
-Pomocí `aadClientSecret`:
+Používá `aadClientSecret`se:
 
 ```json
 {
@@ -108,7 +107,7 @@ Pomocí `aadClientSecret`:
 }
 ```
 
-Pomocí `AADClientCertificate`:
+Používá `AADClientCertificate`se:
 
 ```json
 {
@@ -147,34 +146,34 @@ Pomocí `AADClientCertificate`:
 | publisher | Microsoft.Azure.Security | řetězec |
 | type | AzureDiskEncryptionForLinux | řetězec |
 | typeHandlerVersion | 0.1, 1.1 | int |
-| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (schéma 0,1) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (schéma 0,1) AADClientSecret | password | řetězec |
 | (schéma 0,1) AADClientCertificate | thumbprint | řetězec |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | řetězec | 
-| KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | řetězec |
+| KeyEncryptionAlgorithm | "RSA-VÝPLNĚ OAEP", "RSA-VÝPLNĚ OAEP-256", "RSA1_5" | řetězec |
 | KeyEncryptionKeyURL | url | řetězec |
 | KeyVaultURL | url | řetězec |
 | (volitelné) Passphrase | password | řetězec | 
 | SequenceVersion | uniqueidentifier | řetězec |
-| VolumeType | Operačního systému, dat, všechny | řetězec |
+| VolumeType | Operační systém, data, vše | řetězec |
 
 ## <a name="template-deployment"></a>Nasazení šablon
-Příklad nasazení šablony najdete v tématu [ vytvořit nový virtuální počítač šifrovaný Windows z image z Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
+Příklad nasazení šablony najdete v tématu [Vytvoření nového šifrovaného virtuálního počítače s Windows z image z Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
 
 ## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
-Pokyny najdete v nejnovější aktualizaci [dokumentace k Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Pokyny najdete v nejnovější [dokumentaci k Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Odkazovat [Průvodce řešením problémů pro Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
+Informace najdete v [Průvodci odstraňováním potíží s Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
 
 ### <a name="support"></a>Podpora
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Další postup
-Další informace o rozšířeních najdete v tématu [funkcí a rozšíření virtuálních počítačů pro Windows](features-windows.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Windows](features-windows.md).

@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3bf9ba52bc4071755918b842da477384dcd38973
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323505"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095166"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivní vytváření dotazů k vypsání prostředků Batch
 
@@ -35,7 +34,7 @@ Téměř všechny aplikace Batch musí provádět určitý typ monitorování ne
 ## <a name="meet-the-detaillevel"></a>Splnění DetailLevel
 V rámci výrobní dávkové aplikace můžou entity jako úlohy, úlohy a výpočetní uzly očíslovat v tisících. Když si vyžádáte informace o těchto prostředcích, může se stát, že se z služby Batch od služby Batch do vaší aplikace na každém dotazu navzájem potenciálně velké množství dat. Omezením počtu položek a typu informací, které je vráceno dotazem, můžete zvýšit rychlost dotazů, a tedy i výkon vaší aplikace.
 
-Tento [][api_net] fragment kódu pro dávku .NET *API obsahuje* všechny úlohy, které jsou přidružené k úloze, spolu se *všemi* vlastnostmi každé úlohy:
+Tento fragment kódu pro [dávku .NET][api_net] API obsahuje všechny úlohy, které jsou přidružené k úloze, spolu se *všemi* vlastnostmi každé úlohy:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -241,7 +240,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 ### <a name="parallel-node-tasks"></a>Úkoly paralelního uzlu
 [Maximalizace využití výpočetních prostředků Azure Batch pomocí souběžných úloh uzlů](batch-parallel-node-tasks.md) je další článek týkající se výkonu aplikace Batch. Některé typy úloh můžou těžit ze spouštění paralelních úloh na větších, ale méně výpočetních uzlech. Podrobnosti o takovém scénáři najdete v [ukázkovém scénáři](batch-parallel-node-tasks.md#example-scenario) v článku.
 

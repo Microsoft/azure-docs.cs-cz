@@ -9,16 +9,15 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 687783520b082cdfd1a6ffc91a8641ea35fafd68
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094917"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
@@ -107,7 +106,7 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 3. Nahrajte balíček na účet Batch. Postup najdete v doprovodné příručce k [balíčkům aplikací](batch-application-packages.md) . Zadejte ID aplikace, například *GPUDriver*, a verzi, například *411,82*.
 1. Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond v konfiguraci virtuálního počítače s požadovaným počtem uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení pro bezobslužnou instalaci ovladačů NVIDIA GPU pomocí spouštěcího úkolu:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ---- | ----- | 
 | **Typ image** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
@@ -162,7 +161,7 @@ Pokud chcete spouštět aplikace MPI ve fondu uzlů H-Series, jedna možnost je 
 
 Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohoto obrázku a s požadovaným počtem uzlů a škálování. V následující tabulce jsou uvedena ukázková nastavení fondu:
 
-| Nastavení | Hodnota |
+| Nastavení | Value |
 | ---- | ---- |
 | **Typ image** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |
@@ -172,7 +171,7 @@ Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohot
 | **Komunikace mezi uzly povolena** | Pravda |
 | **Maximální počet úkolů na uzel** | 1 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete spouštět úlohy MPI ve fondu Azure Batch, přečtěte si příklady pro [Windows](batch-mpi.md) nebo [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) .
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073893"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Kurz: Připojení virtuálního počítače Windows Server ke spravované doméně
 
@@ -153,15 +153,23 @@ Po vytvoření virtuálního počítače a připojení RDP se teď připojte k v
 1. Pokud chcete dokončit proces připojení ke spravované doméně Azure služba AD DS, restartujte virtuální počítač.
 
 > [!TIP]
-> Pomocí rutiny [Add-Computer][add-computer] můžete taky připojit virtuální počítač k doméně pomocí PowerShellu. V následujícím příkladu se připojí doména *Contoso* a virtuální počítač se restartuje. Po zobrazení výzvy zadejte přihlašovací údaje uživatele, který patří do skupiny *správců řadičů domény Azure AD* :
+> Pomocí rutiny [Add-Computer][add-computer] můžete virtuální počítač připojit k doméně pomocí PowerShellu. V následujícím příkladu se připojí doména *Contoso* a virtuální počítač se restartuje. Po zobrazení výzvy zadejte přihlašovací údaje uživatele, který patří do skupiny *správců řadičů domény Azure AD* :
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Pokud chcete připojit virtuální počítač k doméně, aniž byste se k němu připojili a ručně nakonfigurovali připojení, můžete také prozkoumat použití rutiny [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell.
 
 Po restartování virtuálního počítače s Windows serverem se do virtuálního počítače odešlou všechny zásady, které se používají ve spravované doméně Azure služba AD DS. Nyní se můžete přihlásit k virtuálnímu počítači s Windows serverem pomocí příslušných přihlašovacích údajů domény.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 V dalším kurzu použijete tento virtuální počítač s Windows serverem k instalaci nástrojů pro správu, které vám umožní spravovat spravovanou doménu Azure služba AD DS. Pokud v této sérii kurzů nechcete pokračovat, přečtěte si následující postup vyčištění a [zakažte RDP](#disable-rdp) nebo [Odstraňte virtuální počítač](#delete-the-vm). V opačném případě [přejděte k dalšímu kurzu](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Zrušení připojení virtuálního počítače ze spravované domény Azure služba AD DS
+
+Pokud chcete virtuální počítač odebrat ze spravované domény Azure služba AD DS, postupujte podle kroků znovu a [Připojte se k virtuálnímu počítači k doméně](#join-the-vm-to-the-azure-ad-ds-managed-domain). Místo připojení ke spravované doméně Azure služba AD DS se můžete rozhodnout připojit k pracovní skupině, jako je například výchozí *pracovní skupina*. Po restartování virtuálního počítače se objekt počítače odebere ze spravované domény Azure služba AD DS.
+
+Pokud [virtuální počítač odstraníte](#delete-the-vm) bez odpojení od domény, bude v Azure služba AD DS ponechán objekt osamocený počítač.
 
 ### <a name="disable-rdp"></a>Zakázat protokol RDP
 
@@ -208,7 +216,7 @@ Po vyzkoušení každého z těchto kroků pro řešení potíží se znovu poku
 * Ověřte, že jste [povolili synchronizaci hesel][password-sync] s vaší spravovanou doménou. Bez tohoto kroku konfigurace nebudou k dispozici požadované hodnoty hash hesla ve spravované doméně Azure služba AD DS ke správnému ověření vašeho pokusu o přihlášení.
 * Počkejte, než se synchronizace hesel dokončí. Když dojde ke změně hesla uživatelského účtu, může trvat 15-20 minut, než bude heslo k dispozici pro použití v rámci připojení k doméně.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
@@ -231,3 +239,4 @@ Pokud chcete spravovat Azure služba AD DS spravované domény, nakonfigurujte v
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

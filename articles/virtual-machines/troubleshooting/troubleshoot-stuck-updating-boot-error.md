@@ -1,62 +1,61 @@
 ---
-title: Azure při spuštění virtuálního počítače se zasekla na Windows Update | Dokumentace Microsoftu
-description: Zjistěte, jak problém vyřešit. Pokud po spuštění virtuálního počítače Azure se zasekla na Windows update.
+title: Spuštění virtuálního počítače Azure je zablokované na web Windows Update | Microsoft Docs
+description: Naučte se, jak tento problém vyřešit při zablokování spuštění virtuálního počítače Azure ve službě Windows Update.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: cff1577eacd0af86d3ad1c99e1eb2164b64318c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9a93448e084a42a935a8281ccd069e3604b1f18
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60443768"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089618"
 ---
-# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure při spuštění virtuálního počítače se zasekla na Windows update
+# <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
 
-Tento článek pomůže problém vyřešit, když vašeho virtuálního počítače (VM) zasekl ve fázi aktualizace Windows během spouštění. 
+Tento článek pomáhá vyřešit problém, když se váš virtuální počítač zablokuje ve fázi web Windows Update během spouštění. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
- Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) okně uvidíte, že se zablokovala spuštění v procesu aktualizace. Následují příklady zpráv, které se mohou zobrazit:
+ Virtuální počítač s Windows se nespustí. Když zkontrolujete snímky obrazovky v okně [diagnostiky spouštění](../troubleshooting/boot-diagnostics.md) , uvidíte, že spuštění je zablokované v procesu aktualizace. Následují příklady zpráv, které můžete obdržet:
 
-- Instalace Windows ##% nevypínejte počítač. Bude to trvat nějakou dobu svůj počítač se několikrát restartovat.
-- Dokud to neprovedete, zachovat na váš počítač. Instalace aktualizace # #... 
-- Aktualizace, které vracejí se zpět změny nevypínejte počítač nejde dokončit
-- Chyba konfigurace Windows aktualizace probíhá návrat změny nevypínejte počítač
-- Chyba při < kód chyby > použití operace aktualizace ### z ### (\Regist...)
-- Závažná chyba < kód chyby > použití operace aktualizace ### z ### ($$...)
+- Instalace Windows # #% vypne počítač. Tím dojde k tomu, že se Váš počítač několikrát restartuje.
+- Nechte počítač zapnutý, dokud neproběhne. Probíhá instalace aktualizace #... 
+- Nepovedlo se nám dokončit aktualizace, protože se změny nevypnou z počítače.
+- Chyba při konfiguraci vrácení změn aktualizací Windows nevypne počítač
+- Chyba < kód chyby > provádění operací aktualizace # # # # # z # # # # # (\Regist...)
+- Závažná chyba < kód chyby > provádění operací aktualizace # # # # # z # # # # # ($ $...)
 
 
 ## <a name="solution"></a>Řešení
 
-V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vrácena zálohování, proces aktualizace může chvíli trvat. Ponechejte virtuální počítač v tomto stavu po dobu 8 hodin. Pokud virtuální počítač je stále v tomto stavu po uplynutí této doby, restartujte virtuální počítač z portálu Azure portal a zobrazit, pokud se dá spustit normálně. Pokud tento krok nepomůže, použijte následující postup.
+V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpět, může proces aktualizace chvíli trvat. Ponechte virtuální počítač v tomto stavu po dobu 8 hodin. Pokud je virtuální počítač v tomto období stále v tomto stavu, restartujte virtuální počítač z Azure Portal a podívejte se, jestli se může normálně spustit. Pokud tento krok nefunguje, vyzkoušejte následující řešení.
 
-### <a name="remove-the-update-that-causes-the-problem"></a>Odebrání aktualizace, která způsobí, že problém
+### <a name="remove-the-update-that-causes-the-problem"></a>Odebrání aktualizace, která způsobuje problém
 
-1. Pořízení snímku disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md). 
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md). 
 2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
-3. Po Virtuálním počítači pro obnovení je připojený disk s operačním systémem, spuštěním souboru **diskmgmt.msc** otevřete správu disků a zkontrolujte připojený disk je **ONLINE**. Poznamenejte si písmeno jednotky, která je přiřazena připojeného disku s operačním systémem obsahující složku \windows. Pokud je disk šifrovaný, dešifrujte disku, než budete pokračovat s dalšími kroky v tomto dokumentu.
+3. Jakmile je disk s operačním systémem připojený k virtuálnímu počítači pro obnovení, spusťte **diskmgmt. msc** a spusťte správu disků a ujistěte se, že připojený disk je **online**. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem, ve kterém je umístěná složka \Windows. Pokud je disk zašifrovaný, před pokračováním v dalším postupu v tomto dokumentu disk dešifrujte.
 
-4. Spusťte instanci příkazový řádek se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu Získejte seznam balíčky aktualizací, které jsou v připojeném disku s operačním systémem:
+4. Otevřete instanci příkazového řádku se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu Získejte seznam balíčků aktualizací, které jsou na připojeném disku s operačním systémem:
 
         dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
 
-    Například pokud připojeném disku s operačním systémem je jednotka F, spusťte následující příkaz:
+    Pokud je například připojený disk s operačním systémem jednotka F, spusťte následující příkaz:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Otevřete soubor C:\temp\Patch_level.txt a přečíst ho zdola. Vyhledejte aktualizace, která je v **instalace čeká** nebo **odinstalovat čekající** stavu.  Tady je ukázka stav aktualizace:
+5. Otevřete soubor C:\temp\Patch_level.txt a pak ho z dolní části si přečtěte. Vyhledejte aktualizaci, která čeká na **instalaci** nebo **čeká** na odinstalaci.  Následuje ukázka stavu aktualizace:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
@@ -64,7 +63,7 @@ V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vr
     Release Type : Security Update
     Install Time :
     ```
-6. Odebrání aktualizace, která způsobila Chyba:
+6. Odeberte aktualizaci, která způsobila problém:
     
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
@@ -76,6 +75,6 @@ V závislosti na počtu aktualizací, které se zobrazuje nainstalované nebo vr
     ```
 
     > [!NOTE] 
-    > V závislosti na velikosti balíčku nástroje DISM bude chvíli trvat ke zpracování zrušení instalace. Proces bude obvykle dokončit do 16 minut.
+    > V závislosti na velikosti balíčku zabere nástroj DISM během procesu zrušení instalace nějakou dobu. Normálně se proces dokončí do 16 minut.
 
-7. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Zkontrolujte, zda je problém vyřešen.
+7. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Potom zkontrolujte, zda byl problém vyřešen.

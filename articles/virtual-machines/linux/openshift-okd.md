@@ -1,6 +1,6 @@
 ---
-title: Nasazení OKD v Azure | Dokumentace Microsoftu
-description: Nasazení OKD v Azure.
+title: Nasazení OKD v Azure | Microsoft Docs
+description: Nasaďte OKD v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,41 +9,40 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 7db50007dd32c84a360eaec25bf860709272437b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60542505"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082500"
 ---
 # <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 
-Můžete použít jednu ze dvou způsobů nasazení OKD (dříve OpenShift Origin) v Azure:
+Můžete použít jeden ze dvou způsobů, jak nasadit OKD (dříve OpenShift Origin) v Azure:
 
-- Můžete ručně nasadit všechny součásti potřebné infrastruktury Azure a potom postupujte podle [OKD dokumentaci](https://docs.okd.io).
-- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení OKD clusteru.
+- Můžete ručně nasadit všechny nezbytné součásti infrastruktury Azure a pak postupovat podle pokynů v [dokumentaci k OKD](https://docs.okd.io).
+- Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení clusteru OKD.
 
 ## <a name="deploy-using-the-okd-template"></a>Nasazení pomocí šablony OKD
 
-Pokud chcete nasadit, pomocí šablony Resource Manageru, slouží k poskytování vstupní parametry souboru parametrů. Chcete-li dále přizpůsobit nasazení, rozvětvit úložiště GitHub se vzorovými a změňte příslušné položky.
+Chcete-li nasadit pomocí šablony Správce prostředků, použijte soubor parametrů k zadání vstupních parametrů. Pro další přizpůsobení nasazení, rozvětvete úložiště GitHub a změňte příslušné položky.
 
-Některé běžné možnosti vlastního nastavení zahrnují, ale nejsou omezené na:
+Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
-- Velikost virtuálního počítače bastionu (proměnné v azuredeploy.json)
-- Zásady vytváření názvů (proměnné v azuredeploy.json)
-- OpenShift specifika clusteru, se mění prostřednictvím souboru hosts (deployOpenShift.sh)
+- Velikost virtuálního počítače bastionu (proměnná v azuredeploy. JSON)
+- Zásady vytváření názvů (proměnné v azuredeploy. JSON)
+- OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
 
-[OKD šablony](https://github.com/Microsoft/openshift-origin) má k dispozici pro různé verze OKD několika větví.  Podle svých potřeb, můžete aplikaci nasadit přímo z úložiště nebo může vytvořit fork úložiště a vlastní změny před nasazením.
+[Šablona OKD](https://github.com/Microsoft/openshift-origin) má k dispozici více větví pro různé verze nástroje OKD.  Na základě vašich potřeb můžete nasadit přímo z úložiště nebo můžete rozvětvit úložiště a před nasazením provést vlastní změny.
 
-Použití `appId` hodnotu z instančního objektu, který jste vytvořili dříve pro `aadClientId` parametru.
+Použijte hodnotu z instančního objektu, který jste vytvořili dříve `aadClientId` pro parametr. `appId`
 
-Následuje příklad souboru parametrů s názvem azuredeploy.parameters.json se všechny vstupy.
+Následuje příklad souboru parametrů s názvem azuredeploy. Parameters. JSON se všemi požadovanými vstupy.
 
 ```json
 {
@@ -117,17 +116,17 @@ Následuje příklad souboru parametrů s názvem azuredeploy.parameters.json se
 }
 ```
 
-Nahraďte parametry konkrétní informace.
+Nahraďte parametry konkrétními informacemi.
 
-Dvě různé verze může mít různé parametry proto zkontrolujte, zda potřebné parametry pro větev používáte.
+Různé verze mohou mít různé parametry, proto ověřte, zda jsou potřebné parametry pro větev, kterou používáte.
 
-### <a name="deploy-using-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+### <a name="deploy-using-azure-cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
 
 > [!NOTE] 
-> Následující příkaz vyžaduje Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku pomocí můžete ověřit `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, naleznete v tématu [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní `az --version` příkazového řádku můžete ověřit pomocí příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Následující příklad nasadí do skupiny prostředků s názvem openshiftrg, s názvem nasazení myOpenShiftCluster OKD cluster a všechny související prostředky. Šablona se odkazuje přímo z úložiště GitHub se při použití parametrů místní soubor s názvem azuredeploy.parameters.json.
+Následující příklad nasadí cluster OKD a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHub při použití souboru místních parametrů s názvem azuredeploy. Parameters. JSON.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -135,7 +134,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Nasazení trvá aspoň 30 minut na dokončení, na základě celkového počtu nasazených uzlů. Adresa URL konzoly OpenShift a název DNS hlavního vytiskne OpenShift do terminálu po dokončení nasazení. Alternativně můžete zobrazit část Outputs následujícím nasazení z webu Azure portal.
+Dokončení nasazení trvá nejméně 30 minut, a to na základě celkového počtu nasazených uzlů. Adresa URL konzoly OpenShift a název DNS hlavního serveru OpenShift se po dokončení nasazení vytisknou do terminálu. Alternativně můžete zobrazit část s výstupy nasazení z Azure Portal.
 
 ```json
 {
@@ -144,11 +143,11 @@ Nasazení trvá aspoň 30 minut na dokončení, na základě celkového počtu n
 }
 ```
 
-Pokud nechcete vytížit příkazový řádek čeká na dokončení, přidat nasazení `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení můžete získat z webu Azure portal v části nasazení pro skupinu prostředků.
+Pokud nechcete vytvořit vazbu na příkazový řádek, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
 
-## <a name="connect-to-the-okd-cluster"></a>Připojte se ke clusteru OKD
+## <a name="connect-to-the-okd-cluster"></a>Připojení ke clusteru OKD
 
-Až se nasazení dokončí, připojení ke konzole OpenShift s používáním vašeho prohlížeče `OpenShift Console Url`. Můžete také získat přístup přes SSH k hlavnímu serveru OKD. Tady je příklad, který používá výstup z nasazení:
+Až se nasazení dokončí, připojte se ke konzole OpenShift s prohlížečem pomocí `OpenShift Console Url`. Alternativně můžete k hlavnímu serveru OKD použít SSH. Následuje příklad, který používá výstup z nasazení:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -156,7 +155,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Použití [odstranění skupiny az](/cli/azure/group) příkazu k odebrání skupiny prostředků, clusteru OpenShift a všechny související prostředky, pokud jste už nepotřebujete.
+Pomocí příkazu [AZ Group Delete](/cli/azure/group) odeberte skupinu prostředků, cluster OpenShift a všechny související prostředky, pokud už je nepotřebujete.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -164,6 +163,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Další postup
 
-- [Úlohy po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazení Openshiftu](./openshift-troubleshooting.md)
+- [Úkoly po nasazení](./openshift-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift](./openshift-troubleshooting.md)
 - [Začínáme s OKD](https://docs.okd.io)

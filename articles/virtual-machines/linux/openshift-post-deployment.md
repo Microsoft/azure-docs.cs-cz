@@ -1,6 +1,6 @@
 ---
-title: OpenShift v Azure po nasazení úloh | Dokumentace Microsoftu
-description: Další úkoly pro za OpenShift cluster byla nasazena.
+title: OpenShift úlohy po nasazení služby Azure | Microsoft Docs
+description: Další úlohy pro po nasazení clusteru OpenShift
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,49 +9,48 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac93f08a5e93fefaa1de82a7d86a2cfdf3e6aa6d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771320"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091761"
 ---
-# <a name="post-deployment-tasks"></a>Úlohy po nasazení
+# <a name="post-deployment-tasks"></a>Úkoly po nasazení
 
-Po nasazení clusteru služby OpenShift, můžete nakonfigurovat další položky. Tento článek se týká:
+Po nasazení clusteru OpenShift můžete nakonfigurovat další položky. Tento článek se týká:
 
 - Jak nakonfigurovat jednotné přihlašování pomocí Azure Active Directory (Azure AD)
-- Konfigurace protokolů Azure Monitor k monitorování Openshiftu
-- Konfigurace metrik a protokolování
-- Postup instalace zprostředkovatele Open Service Broker for Azure (OSBA)
+- Jak nakonfigurovat protokoly Azure Monitor pro monitorování OpenShift
+- Jak nakonfigurovat metriky a protokolování
+- Jak nainstalovat Open Service Broker pro Azure (OSBA)
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurace jednotného přihlašování pomocí Azure Active Directory
 
-Pro účely ověření služby Azure Active Directory, je třeba nejprve vytvořit registrace aplikace Azure AD. Tento proces zahrnuje dva kroky: registrace aplikace pro vytváření a konfigurace oprávnění.
+Pokud chcete použít Azure Active Directory pro ověřování, nejdřív musíte vytvořit registraci aplikace Azure AD. Tento proces se skládá ze dvou kroků: Vytvoření registrace aplikace a konfigurace oprávnění.
 
 ### <a name="create-an-app-registration"></a>Vytvoření registrace aplikace
 
-Tyto kroky používají Azure CLI k vytvoření registrace aplikace a grafickým uživatelským rozhraním (portál) k nastavení oprávnění. K vytvoření registrace aplikace, budete potřebovat následující pět druhy údajů:
+Tyto kroky používají rozhraní příkazového řádku Azure CLI k vytvoření registrace aplikace a grafického uživatelského rozhraní (portálu) k nastavení oprávnění. K vytvoření registrace aplikace potřebujete následující pět informací:
 
 - Zobrazovaný název: Název registrace aplikace (například OCPAzureAD)
-- Domovská stránka: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Identifikátor URI: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Adresa URL odpovědi: Hlavním veřejnou adresu URL a název registrace aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- Heslo: Zabezpečené heslo (použijte silné heslo)
+- Domovská stránka: Adresa URL konzoly OpenShift (například https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Identifikátor URI identifikátoru: Adresa URL konzoly OpenShift (například https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Adresa URL odpovědi: Hlavní veřejná adresa URL a název registrace aplikace (například https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Zadáno Zabezpečené heslo (použijte silné heslo)
 
-Následující příklad vytvoří registrace aplikace pomocí výše uvedených informací:
+Následující příklad vytvoří registraci aplikace pomocí předchozích informací:
 
 ```azurecli
 az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
-Pokud příkaz je úspěšné, získáte výstup JSON podobný:
+Pokud je příkaz úspěšný, získáte výstup JSON podobný tomuto:
 
 ```json
 {
@@ -71,39 +70,39 @@ Pokud příkaz je úspěšné, získáte výstup JSON podobný:
 }
 ```
 
-Poznamenejte si vlastnost appId vrácenou příkazem pro později.
+Poznamenejte si vlastnost appId vrácenou z příkazu pro pozdější krok.
 
 Na webu Azure Portal:
 
-1. Vyberte **Azure Active Directory** > **registrace aplikace**.
-2. Hledání registrace vaší aplikace (například OCPAzureAD).
-3. Ve výsledcích klikněte na registraci aplikace.
-4. V části **nastavení**vyberte **požadovaná oprávnění**.
-5. V části **požadovaná oprávnění**vyberte **přidat**.
+1. Vyberte **Azure Active Directory** > **registraci aplikace**.
+2. Vyhledejte registraci vaší aplikace (například OCPAzureAD).
+3. Ve výsledcích klikněte na registrace aplikace.
+4. V části **Nastavení**vyberte **požadovaná oprávnění**.
+5. V části **požadovaná oprávnění**vyberte **Přidat**.
 
    ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
-6. Klikněte na krok 1: Vyberte rozhraní API a potom klikněte na tlačítko **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)** . Klikněte na tlačítko **vyberte** v dolní části.
+6. Klikněte na krok 1: Vyberte rozhraní API a pak klikněte na **Windows Azure Active Directory (Microsoft. Azure. Active Directory)** . V dolní části klikněte na **Vybrat** .
 
-   ![Vyberte rozhraní API registrace aplikace](media/openshift-post-deployment/app-registration-select-api.png)
+   ![Registrace aplikace – výběr rozhraní API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. V kroku 2: Vyberte oprávnění, vyberte **přihlášení a čtení profilu uživatele** pod **delegovaná oprávnění**a potom klikněte na tlačítko **vyberte**.
+7. V kroku 2: Vyberte oprávnění, vyberte **Přihlásit se a číst profil uživatele** v části **delegovaná oprávnění**a pak klikněte na **Vybrat**.
 
-   ![Registrace aplikace Access](media/openshift-post-deployment/app-registration-access.png)
+   ![Přístup k registraci aplikace](media/openshift-post-deployment/app-registration-access.png)
 
 8. Vyberte **Done** (Hotovo).
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurace OpenShift pro ověřování Azure AD
 
-Ke konfiguraci OpenShift používání Azure AD jako zprostředkovatele ověřování, je nutné upravit soubor /etc/origin/master/master-config.yaml na všechny hlavní uzly.
+Pokud chcete nakonfigurovat OpenShift pro použití Azure AD jako poskytovatele ověřování, soubor/etc/origin/master/master-config.yaml se musí upravit na všech hlavních uzlech.
 
-Najdete ID tenanta pomocí následujícího příkazu rozhraní příkazového řádku:
+Pomocí následujícího příkazu rozhraní příkazového řádku Najděte ID tenanta:
 
 ```azurecli
 az account show
 ```
 
-V souboru yaml vyhledejte následující řádky:
+V souboru YAML vyhledejte následující řádky:
 
 ```yaml
 oauthConfig:
@@ -121,7 +120,7 @@ oauthConfig:
       kind: HTPasswdPasswordIdentityProvider
 ```
 
-Ihned po předchozím řádků vložte následující řádky:
+Vložte následující řádky hned za předchozí řádky:
 
 ```yaml
   - name: <App Registration Name>
@@ -147,37 +146,37 @@ Ihned po předchozím řádků vložte následující řádky:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Zkontrolujte, zda že bude text zarovnán v rámci identityProviders správně. Najdete ID tenanta pomocí následujícího příkazu rozhraní příkazového řádku: ```az account show```
+Ujistěte se, že text je v identityProviders správně zarovnán. Pomocí následujícího příkazu rozhraní příkazového řádku Najděte ID tenanta:```az account show```
 
-Restartujte hlavní služby OpenShift na všechny hlavní uzly:
+Restartujte hlavní služby OpenShift ve všech hlavních uzlech:
 
 ```bash
 sudo /usr/local/bin/master-restart api
 sudo /usr/local/bin/master-restart controllers
 ```
 
-V konzole nástroje OpenShift, uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikace].
+V konzole OpenShift se teď zobrazují dvě možnosti ověřování: htpasswd_auth a [Registrace aplikace].
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitorování OpenShift s protokoly Azure monitoru
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Monitorování OpenShift pomocí protokolů Azure Monitor
 
 Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
-- Instalace agenta Log Analytics pro Linux přímo na každém uzlu Openshiftu
-- Povolení rozšíření virtuálního počítače Azure Monitor na každém uzlu Openshiftu
-- Instalace agenta Log Analytics jako démon OpenShift-set
+- Instalace agenta Log Analytics pro Linux přímo na každý uzel OpenShift
+- Povolit rozšíření Azure Monitor VM na každém uzlu OpenShift
+- Instalace agenta Log Analytics jako sady OpenShift démona
 
-Přečtěte si celý [pokyny](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) další podrobnosti.
+Další podrobnosti si můžete přečíst v části úplné [pokyny](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) .
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurace metrik a protokolování
 
-Na základě větve, šablon Azure Resource Manageru pro OpenShift Container Platform a OKD zadejte vstupní parametry pro zapnutí metrik a protokolování jako součást instalace.
+Na základě větve můžou šablony Azure Resource Manager pro OpenShift kontejnerové platformy a OKD poskytovat vstupní parametry pro povolení metrik a protokolování v rámci instalace.
 
-OpenShift Container Platform Marketplace nabídka také nabízí možnost povolení metrik a protokolování během instalace clusteru.
+Nabídka OpenShift Container Platform Marketplace také nabízí možnost Povolit metriky a protokolování během instalace clusteru.
 
-Pokud metriky / během instalace clusteru není povoleno protokolování, můžete je snadno povolit po jejich výskytu.
+Pokud se metriky a protokolování nepovolily během instalace clusteru, můžete je po faktu snadno povolit.
 
-### <a name="azure-cloud-provider-in-use"></a>Poskytovatel cloudu Azure používá
+### <a name="azure-cloud-provider-in-use"></a>Používaný poskytovatel cloudu Azure
 
-SSH bastionu uzel nebo první hlavní uzly (na základě šablony a větve používá) pomocí přihlašovacích údajů zadali při nasazení. Vydejte následující příkaz:
+SSH na uzel bastionu nebo na první uzel hlavního uzlu (na základě šablony a používané větve) pomocí přihlašovacích údajů zadaných během nasazování. Vydejte následující příkaz:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -189,7 +188,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Nepoužíváte Azure poskytovatel cloudu
+### <a name="azure-cloud-provider-not-in-use"></a>Poskytovatel cloudu Azure se nepoužívá.
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -199,14 +198,14 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-## <a name="install-open-service-broker-for-azure-osba"></a>Instalace technologie Open Service Broker for Azure (OSBA)
+## <a name="install-open-service-broker-for-azure-osba"></a>Instalace Open Service Broker pro Azure (OSBA)
 
-Otevřete službu Service Broker pro Azure nebo OSBA, umožňuje zřizovat služby Azure Cloud Services přímo z OpenShift. Osba, POUŽIJTE v implementaci otevřené rozhraní API služby Service Broker for Azure. Otevřené rozhraní API služby Service Broker je specifikace, která definuje společný jazyk pro cloud, kterému zprostředkovatelů, které cloud nativních aplikací můžete použít ke správě cloudových služeb bez zámku v.
+Otevřete Service Broker pro Azure nebo OSBA vám umožní zřídit Azure Cloud Services přímo z OpenShift. OSBA se v otevřené implementaci rozhraní API Service Broker pro Azure. Rozhraní Open Service Broker API je specifikace, která definuje společný jazyk pro poskytovatele cloudu, který můžou cloudové nativní aplikace použít ke správě cloudových služeb bez použití zámku.
 
-Nainstalovat OSBA OpenShift, postupujte podle pokynů tady: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
+Pokud chcete nainstalovat OSBA na OpenShift, postupujte podle pokynů v tomto https://github.com/Azure/open-service-broker-azure#openshift-project-template umístění:. 
 > [!NOTE]
-> Pouze dokončete kroky v části šablony projektu OpenShift a ne celý oddíl instalace.
+> Proveďte pouze kroky uvedené v části šablona projektu OpenShift, nikoli v celé části instalování.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Začínáme s OpenShift Container Platform](https://docs.openshift.com/container-platform)
+- [Začínáme s kontejnerovou platformou OpenShift](https://docs.openshift.com/container-platform)

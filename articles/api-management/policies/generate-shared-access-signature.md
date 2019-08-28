@@ -1,6 +1,6 @@
 ---
-title: Rozhraní API správy zásad ukázkový Azure – generovat sdílený přístupový podpis | Dokumentace Microsoftu
-description: Azure API management zásady ukázkový – ukazuje, jak vygenerovat sdílený přístupový podpis pomocí výrazů a předání požadavku do služby Azure storage pomocí zásady revize uri...
+title: Ukázka zásad Azure API managementu – generování sdíleného přístupového podpisu | Microsoft Docs
+description: Ukázka zásad Azure API Management – ukazuje, jak vygenerovat sdílený přístupový podpis pomocí výrazů a předejte požadavek do služby Azure Storage pomocí zásad přepsání-URI.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 2c3adaa6f4e113f09e676583c2c35b5f1fbdb622
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e29673e264f64c976cce664eaf749636400c7f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062186"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067735"
 ---
-# <a name="generate-shared-access-signature"></a>Vygenerovat sdílený přístupový podpis
+# <a name="generate-shared-access-signature"></a>Generovat sdílený přístupový podpis
 
-Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak vygenerovat [sdílený přístupový podpis](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) pomocí výrazů a předání požadavku do služby Azure storage pomocí zásady revize uri. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak generovat [sdílený přístupový podpis](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) pomocí výrazů a předejte požadavek do služby Azure Storage pomocí zásad přepsání-URI. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozí** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Generate Shared Access Signature and forward request to Azure storage.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace týkající se služby APIM zásad:
+Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

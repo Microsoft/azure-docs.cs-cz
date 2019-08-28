@@ -1,6 +1,6 @@
 ---
-title: Rozšíření ovladačů NVIDIA GPU – virtuální počítače Azure s Linuxem | Dokumentace Microsoftu
-description: Rozšíření Microsoft Azure k instalaci ovladačů NVIDIA GPU do řady N-series výpočetní virtuální počítače s Linuxem.
+title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure Linux | Microsoft Docs
+description: Microsoft Azure rozšíření pro instalaci ovladačů NVIDIA GPU na výpočetní virtuální počítače řady N-Series se systémem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
@@ -8,48 +8,47 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: c15948fd9e9acc1e1efeb536939002f179402d5a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 167780971ec59efd1ca197958798564d1ef2d596
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706701"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092313"
 ---
-# <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
+# <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích s Linuxem řady N-series. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
+Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače se systémem Linux N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte podmínky [licenční smlouvy pro koncové uživatele NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330)a souhlasíte s nimi. Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
-Pokyny k ruční instalaci ovladačů a aktuální podporované verze jsou k dispozici [tady](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
-Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače řady N-series s Windows](hpccompute-gpu-windows.md).
+Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde.](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)
+K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtuálních počítačích s Windows N-Series](hpccompute-gpu-windows.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verze operačního systému.
+Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
 
 | Distribuce | Version |
 |---|---|
-| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
+| Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
 | Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření Microsoft Azure pro ovladače GPU NVIDIA vyžaduje, aby cílový virtuální počítač je připojený k Internetu a máte přístup.
+Rozšíření Microsoft Azure pro ovladače GPU NVIDIA vyžaduje, aby byl cílový virtuální počítač připojený k Internetu a měl přístup.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující kód JSON ukazuje schématu pro rozšíření.
+Následující JSON zobrazuje schéma pro rozšíření.
 
 ```json
 {
@@ -76,19 +75,19 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 | Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | řetězec |
+| publisher | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverLinux | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
 
-Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra není-li vyžadované pro instalaci ovladače, nainstalujte nejnovější podporované ovladače a CUDA toolkit (podle vhodnosti).
+Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat jádro, pokud není pro instalaci ovladače vyžadováno, nainstalujte nejnovější podporovaný ovladač a CUDA Toolkit (podle potřeby).
 
 | Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false | true, false | boolean |
-| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | latest | GRID: "430.30", "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
-| installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true (pravda) | true, false | boolean |
+| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false | true, false | boolean |
+| driverVersion | STÁL Verze ovladače mřížky<br> NC/ND: Verze sady nástrojů CUDA Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | latest | MŘÍŽKY "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
+| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | boolean |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -96,11 +95,11 @@ Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru 
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
 
 JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-V následujícím příkladu se předpokládá, že rozšíření je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
+Následující příklad předpokládá, že rozšíření je vnořeno do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
 
 ```json
 {
@@ -139,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V následujícím příkladu zrcadlí výše uvedené příklady Azure Resource Manageru a prostředí PowerShell a také jako příklad instalace ovladače nevýchozí přidá vlastní nastavení. Konkrétně aktualizuje jádra operačního systému a nainstaluje specifický ovladač CUDA toolkit verze.
+Následující příklad zrcadlí výše uvedené Azure Resource Manager a příklady prostředí PowerShell a také přidá vlastní nastavení jako příklad pro nevýchozí instalaci ovladače. Konkrétně aktualizuje jádro operačního systému a nainstaluje konkrétní ovladač verze CUDA Toolkit.
 
 ```azurecli
 az vm extension set `
@@ -158,7 +157,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí Azure Powershellu a rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -174,17 +173,17 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 /var/log/azure/nvidia-vmext-status
 ```
 
-### <a name="exit-codes"></a>Kódy ukončení
+### <a name="exit-codes"></a>Ukončovací kódy
 
-| Ukončovací kód | Význam | Je to možné akce |
+| Kód ukončení | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 0 | Operace byla úspěšná. |
-| 1 | Nesprávné použití rozšíření | Zkontrolujte výstup protokolu spuštění |
-| 10 | Integrační služby Linuxu pro Hyper-V a Azure není k dispozici nebo nainstalované | Zkontrolujte výstup lspci |
-| 11 | Grafický procesor NVIDIA nebyla nalezena na velikosti tohoto virtuálního počítače | Použití [podporovaná velikost virtuálního počítače a operačního systému](../linux/n-series-driver-setup.md) |
-| 12 | Nabídka Image není podporován |
-| 13 | Velikost virtuálního počítače není podporováno | Použít k nasazení virtuálního počítače s N-series |
-| 14 | Neúspěšné operace | Zkontrolujte výstup protokolu spuštění |
+| 0 | Úspěšná operace |
+| 1 | Nesprávné použití rozšíření | Kontrolovat výstupní protokol spuštění |
+| 10 | Integrační služby Linux pro Hyper-V a Azure nejsou dostupné nebo nainstalované | Kontrolovat výstup lspci |
+| 11 | Grafický procesor NVIDIA se v této velikosti virtuálního počítače nenašel. | Použít [podporovanou velikost virtuálního počítače a operační systém](../linux/n-series-driver-setup.md) |
+| 12 | Nabídka Image není podporovaná. |
+| 13 | Velikost virtuálního počítače se nepodporuje. | Použití virtuálního počítače řady N-Series k nasazení |
+| 14 | Operace neproběhla úspěšně. | Kontrolovat výstupní protokol spuštění |
 
 
 ### <a name="support"></a>Podpora
@@ -192,6 +191,6 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další postup
-Další informace o rozšířeních najdete v tématu [funkcí a rozšíření virtuálních počítačů pro Linux](features-linux.md).
+Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).
 
-Další informace o virtuálních počítačích řady N-series najdete v tématu [GPU optimalizované velikosti virtuálních počítačů](../linux/sizes-gpu.md).
+Další informace o virtuálních počítačích řady N-Series najdete v tématu [velikosti virtuálních počítačů optimalizované pro procesory GPU](../linux/sizes-gpu.md).

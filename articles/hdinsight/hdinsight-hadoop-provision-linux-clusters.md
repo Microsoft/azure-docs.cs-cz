@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c47cc49a8e81b44a4529f8f82954797e2648c938
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983089"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113700"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
@@ -83,7 +83,7 @@ Názvy clusterů HDInsight mají následující omezení:
 - Povolené znaky: a-z, 0-9, A až Z 
 - Maximální délka: 59
 - Rezervované názvy: aplikace
-- Musí být jedinečný.
+- Obor názvů clusteru je pro všechny Azure v rámci všech předplatných. Proto musí být název clusteru jedinečný po celém světě.
 - Prvních 6 znaků musí být v rámci virtuální sítě jedinečné.
 
 ## <a name="cluster-login-and-ssh-username"></a>Přihlášení ke clusteru a uživatelské jméno SSH
@@ -254,7 +254,7 @@ Další informace o používání služby Azure Virtual Network s HDInsight najd
 Příklad použití dvou typů clusterů v rámci virtuální sítě Azure najdete v tématu [použití Apache Spark strukturovaného streamování s Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Další informace o používání služby HDInsight s virtuální sítí, včetně specifických požadavků na konfiguraci pro virtuální síť, najdete v tématu [plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Řešení chyb při vytváření clusteru s Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 - [Co jsou HDInsight, Apache Hadoop ekosystém a clustery Hadoop?](hadoop/apache-hadoop-introduction.md)

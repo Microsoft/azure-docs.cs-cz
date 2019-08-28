@@ -1,6 +1,6 @@
 ---
-title: Zásady služby Azure API management ukázkový – přidání funkcí do back-end službu | Dokumentace Microsoftu
-description: Azure API management zásady ukázkový – ukazuje, jak přidat možnosti do back-end službu. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí.
+title: Ukázka zásad Azure API Management – přidání možností do back-endu služby | Microsoft Docs
+description: Ukázka zásad Azure API Management – ukazuje, jak přidat funkce do back-endové služby. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 7c9edbf4b2d231453cd336521a04ba6b7714b696
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 705d7e44f64f8dc3bba669cd80dafdab078fcccc
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062203"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067776"
 ---
-# <a name="add-capabilities-to-a-backend-service"></a>Přidání možností do back-end službu
+# <a name="add-capabilities-to-a-backend-service"></a>Přidání schopností do back-endové služby
 
-Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak přidat možnosti do back-end službu. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak přidat funkce do back-endové služby. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozí** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Call out to an HTTP endpoint and cache the response.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace týkající se služby APIM zásad:
+Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

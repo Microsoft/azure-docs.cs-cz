@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure Powershellu – kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – kopírování (přesun) spravovaných disků do stejného nebo jiného předplatného
+title: Ukázka skriptu Azure PowerShell – kopírování (Přesun) spravovaných disků do stejného nebo jiného předplatného | Microsoft Docs
+description: Ukázka skriptu Azure PowerShell – kopírování (Přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -9,28 +9,27 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: c063fc431578cafebac6fb412f15023ffcf70e17
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9eff4deca3caf5cef08a9075d9f994f7a6cd3a37
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248697"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081423"
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopírování spravovaných disků do stejného předplatného nebo jiném předplatném pomocí Powershellu
+# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopírování spravovaných disků v rámci stejného předplatného nebo jiného předplatného pomocí PowerShellu
 
-Tento skript vytvoří kopii existujícího spravovaného disku do stejného předplatného nebo jiném předplatném. Nový disk se vytvoří ve stejné oblasti jako nadřazeného spravovaného disku.
+Tento skript vytvoří kopii existujícího spravovaného disku ve stejném předplatném nebo v jiném předplatném. Nový disk se vytvoří ve stejné oblasti jako nadřazený spravovaný disk.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -42,7 +41,7 @@ Tento skript k vytvoření nového spravovaného disku v cílovém předplatném
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Zahrnuje resource Id nadřazeného disku a umístění, které je stejné jako umístění nadřazeného disku.  |
+| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Vytvoří konfiguraci disku, která se použije při vytvoření disku. Zahrnuje ID prostředku nadřazeného disku a umístění, které je stejné jako umístění nadřazeného disku.  |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Vytvoří disk pomocí konfigurace disku, názvu disku a názvu skupiny prostředků, které použije jako parametry. |
 
 ## <a name="next-steps"></a>Další postup

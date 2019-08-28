@@ -1,6 +1,6 @@
 ---
-title: SAP ASCS/SCS instance s několika SID vysokou dostupnost s možnostmi Windows Server Failover Clustering a sdílení souborů v Azure | Dokumentace Microsoftu
-description: Vysoká dostupnost s několika SID pro instance SAP ASCS/SCS se soubory systému Windows Server Failover Clustering a sdílenou složku v Azure
+title: Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID pro clustering s podporou převzetí služeb při selhání Windows serveru a sdílení souborů v Azure | Microsoft Docs
+description: Vysoká dostupnost více identifikátorů SID pro instance SAP ASCS/SCS s clusteringem s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32905f6d505f83ead805550205df0daf6be501e5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 00c38c5c8140bffe0767ebe69470285bb15f5fc6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710115"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098715"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -194,89 +193,89 @@ ms.locfileid: "67710115"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance s několika SID vysokou dostupnost s možnostmi Windows Server Failover Clustering a sdílení souborů v Azure
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Víc virtuálních IP adres můžete spravovat pomocí [Azure interního nástroje load balancer][load-balancer-multivip-overview]. 
+Pomocí [interního nástroje pro vyrovnávání zatížení Azure][load-balancer-multivip-overview]můžete spravovat víc virtuálních IP adres. 
 
-Pokud máte nasazení SAP, můžete použít interní nástroj pro vytvoření konfigurace clusteru Windows pro instance služby SAP Central Services (ASCS/SCS).
+Pokud máte nasazení SAP, můžete pomocí interního nástroje pro vyrovnávání zatížení vytvořit konfiguraci clusteru Windows pro instance služby SAP Central Services (ASCS/SCS).
 
-Tento článek se týká jak přejít od jedné instalace ASCS/SCS do konfigurace několika identifikátorů SID SAP nainstalováním dalších SAP ASCS/SCS cluster Clusterované instance do existující systému Windows Server Failover Clustering (WSFC) s **sdílené složky** . Po dokončení tohoto procesu, nakonfigurujete cluster s několika SID SAP.
+Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do konfigurace SAP multi-SID instalací dalších clusterových instancí SAP ASCS/SCS do stávajícího clusteru služby Windows Server Failover Clustering (WSFC) se **sdílenou složkou**. Po dokončení tohoto procesu jste nakonfigurovali cluster SAP s více identifikátory SID.
 
 > [!NOTE]
 >
-> Tato funkce je dostupná pouze v modelu nasazení Azure Resource Manageru.
+> Tato funkce je k dispozici pouze v modelu nasazení Azure Resource Manager.
 >
->Platí omezení na počet privátní front-endové IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.
+>Počet privátních IP adres pro každý interní nástroj pro vyrovnávání zatížení Azure je omezený.
 >
->Maximální počet instancí SAP ASCS/SCS v jednom clusteru služby WSFC je rovna hodnotě maximální počet privátní front-endové IP adresy pro každý nástroj pro vyrovnávání zatížení Azure interní.
+>Maximální počet instancí SAP ASCS/SCS v jednom clusteru WSFC se rovná maximálnímu počtu privátních IP adres pro každý interní nástroj pro vyrovnávání zatížení Azure.
 >
-> Konfigurace zavedené v této dokumentaci se zatím nepodporuje má být použit pro [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> Konfigurace představená v této dokumentaci zatím není podporovaná pro použití pro [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-Další informace o omezení nástroje pro vyrovnávání zatížení najdete v části "privátní front-endovou IP adresy za nástroj pro vyrovnávání zatížení" v [síťová omezení: Azure Resource Manageru][networking-limits-azure-resource-manager]. Také zvážit použití [Azure Standard načíst SKU nástroje pro vyrovnávání](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) místo základní SKU Azure nástroj pro vyrovnávání zatížení.
+Další informace o limitech pro vyrovnávání zatížení najdete v části "privátní front-end IP adresa na nástroj pro vyrovnávání zatížení" v [části omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]. Zvažte také použití [SKU azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) místo základní SKU nástroje pro vyrovnávání zatížení Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Jste už nakonfigurovali cluster služby WSFC pomocí pro jednu instanci SAP ASCS/SCS **sdílené**, jak je znázorněno v tomto diagramu.
+Cluster služby WSFC jste už nakonfigurovali pro použití pro jednu instanci SAP ASCS/SCS pomocí **sdílené složky**, jak je znázorněno v tomto diagramu.
 
-![Obrázek 1: Instanci SAP ASCS/SCS a nasazené ve dvou clusterech SOFS][sap-ha-guide-figure-8007]
+![Obrázek 1: Instance SAP ASCS/SCS a SOFS nasazené ve dvou clusterech][sap-ha-guide-figure-8007]
 
-_**Obrázek 1:** Instanci SAP ASCS/SCS a nasazené ve dvou clusterech SOFS_
+_**Obrázek 1:** Instance SAP ASCS/SCS a SOFS nasazené ve dvou clusterech_
 
 > [!IMPORTANT]
 > Nastavení musí splňovat následující podmínky:
-> * Instance SAP ASCS/SCS musejí sdílet stejný cluster služby WSFC.
-> * Jiné sdílené složky SAP globální hostitelů patřících do různých identifikátorů SID SAP musejí sdílet stejný cluster SOFS.
-> * Každý systém správy databáze (DBMS) SID musí mít svůj vlastní vyhrazený cluster služby WSFC.
-> * Aplikační servery SAP, které patří do jednoho systému SAP SID musí mít vlastní vyhrazený virtuálních počítačů.
+> * Instance SAP ASCS/SCS musí sdílet stejný cluster služby WSFC.
+> * Různé sdílené složky SAP Global Hosts patřící do různých identifikátorů SID SAP musí sdílet stejný cluster SOFS.
+> * Každý identifikátor SID systému správy databáze (DBMS) musí mít vlastní vyhrazený cluster WSFC.
+> * Aplikační servery SAP, které patří k jednomu identifikátoru zabezpečení systému SAP, musí mít vlastní vyhrazené virtuální počítače.
 
-## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura SAP ASCS/SCS několika identifikátorů SID se sdílenou složkou
+## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>Architektura SAP ASCS/SCS s více identifikátory SID se sdílenou složkou
 
-Cílem je nainstalovat víc instancí SAP Java (SCS) v clusteru nebo SAP Advanced Business Application programování (ASCS) ve stejném clusteru služby WSFC, jak je znázorněno zde: 
+Cílem je nainstalovat několik clusterových instancí SAP Advanced Business Application (ASCS) nebo SAP Java (SCS) do stejného clusteru služby WSFC, jak je znázorněno zde: 
 
-![Obrázek 2: Konfigurace několika identifikátorů SID SAP ve dvou clusterech][sap-ha-guide-figure-8008]
+![Obrázek 2: Konfigurace SAP pro více identifikátorů SID ve dvou clusterech][sap-ha-guide-figure-8008]
 
-_**Obrázek 2:** Konfigurace několika identifikátorů SID SAP ve dvou clusterech_
+_**Obrázek 2:** Konfigurace SAP pro více identifikátorů SID ve dvou clusterech_
 
-Instalace dalšího **SAP \<SID2 >** systému se shoduje s instalaci jedné \<SID > systému. Dva další přípravné kroky jsou požadovány v clusteru ASC/SCS i na cluster souborových sdílené složky serveru SOFS.
+Instalace dalšího systému  **\<SAP SID2 >** se shoduje s instalací jednoho \<identifikátoru SID > systému. V clusteru ASCS/SCS se vyžadují dva další přípravné kroky i pro cluster sdílení souborů SOFS.
 
-## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Příprava infrastruktury SAP s několika SID scénář
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Příprava infrastruktury pro scénář s více identifikátory SID SAP
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Příprava infrastruktury na řadiči domény
 
-Vytvoření skupiny domény  **\<domény > \SAP_\<SID2 > _GlobalAdmin**, například s \<SID2 > = PR2. Název skupiny domény \<domény > \SAP_PR2_GlobalAdmin.
+Vytvořte doménu doménové skupiny  **\<> \SAP_\<SID2 > _GlobalAdmin**, například s \<SID2 > = PR2. Název skupiny domény je \<> domény \SAP_PR2_GlobalAdmin.
 
-### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Příprava infrastruktury v clusteru ASC/SCS
+### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Příprava infrastruktury v clusteru ASCS/SCS
 
-Je třeba připravit infrastrukturu, na existujícího clusteru ASC/SCS pro druhý SAP \<SID >:
+Pro druhý > SAP \<SID musíte připravit infrastrukturu pro existující cluster ASCS/SCS:
 
-* Vytvořte virtuální hostitel název Clusterové instance SAP ASCS/SCS na serveru DNS.
-* Přidáte IP adresu pro existující interní Azure load balancer pomocí prostředí PowerShell.
+* Na serveru DNS vytvořte název virtuálního hostitele pro clusterovanou instanci SAP ASCS/SCS.
+* Přidejte IP adresu do stávajícího interního nástroje pro vyrovnávání zatížení Azure pomocí PowerShellu.
 
-Tyto kroky jsou popsány v [Příprava infrastruktury SAP s několika SID scénář][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
+Tyto kroky jsou popsané v tématu [Příprava infrastruktury pro scénář vícenásobného SID pro SAP][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare].
 
 
-### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS s použitím existujícího hostitele globální SAP
+### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS pomocí stávajícího globálního hostitele SAP
 
-Můžete znovu použít existující \<SAPGlobalHost > a Volume1 první SAP \<SID1 > systému.
+Můžete znovu použít stávající \<SAPGlobalHost > a Volume1 prvního systému SAP \<SID1 >.
 
-![Obrázek 3: SOFS s několika SID je stejný jako název hostitele globální SAP][sap-ha-guide-figure-8014]
+![Obrázek 3: SOFS s více SID je stejný jako název globálního hostitele SAP.][sap-ha-guide-figure-8014]
 
-_**Obrázek 3:** SOFS s několika SID je stejný jako název hostitele globální SAP_
+_**Obrázek 3:** SOFS s více SID je stejný jako název globálního hostitele SAP._
 
 > [!IMPORTANT]
->Pro druhý **SAP \<SID2 >** systému, stejný Volume1 a stejné  **\<SAPGlobalHost >** názvu sítě se používají.
->Protože jste už nastavili **SAPMNT** jako název sdílené složky různých systémů SAP vyhrazené pro opětovné použití  **\<SAPGlobalHost >** název sítě, musíte použít stejné **Volume1**.
+>Pro druhý systém **SAP \<SID2 >** se použije stejný Volume1 a stejný  **\<název sítě SAPGlobalHost >** .
+>Vzhledem k tomu, že jste již nastavili **SAPMNT** jako název sdílené složky pro různé systémy SAP, pro opětovné použití  **\<názvu sítě SAPGlobalHost >** je nutné použít stejný **Volume1**.
 >
->Cesta k souboru \<SID2 > globální hostitele je C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>Cesta k souboru pro \<SID2 > globálního hostitele je C:\ClusterStorage\<\\Volume1 \usr\sap SID2 > \SYS\.
 >
 
-Pro \<SID2 > systému, musíte připravit hostitele globální SAP... \SYS\.. složka na clusteru SOFS.
+Pro systém \<SID2 > musíte připravit globálního hostitele SAP. \SYS\.. do složky v clusteru SOFS.
 
-Příprava globální hostitele SAP \<SID2 > instance, spusťte následující skript prostředí PowerShell:
+Pokud chcete připravit globálního hostitele SAP pro \<instanci SID2 >, spusťte následující skript prostředí PowerShell:
 
 
 ```powershell
@@ -325,15 +324,15 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS s použitím jiného hostitele globální SAP
+### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS pomocí jiného globálního hostitele SAP
 
-Můžete nakonfigurovat druhý server SOFS (například druhý server SOFS Clusterové role s  **\<SAPGlobalHost2 >** a jiné **Volume2** druhé  **\< SID2 >** ).
+Druhý SOFS (například druhá role clusteru SOFS s  **\<SAPGlobalHost2 >** a jinou **Volume2** pro druhý  **\<SID2 >** ) můžete nakonfigurovat.
 
-![Obrázek 4: SOFS s několika SID je stejný jako SAP globální název hostitele 2][sap-ha-guide-figure-8015]
+![Obrázek 4: SOFS s více SID je stejný jako název globálního hostitele SAP 2.][sap-ha-guide-figure-8015]
 
-_**Obrázek 4:** SOFS s několika SID je stejný jako název hostitele SAP globální 2_
+_**Obrázek 4:** SOFS s více SID je stejný jako název globálního hostitele SAP 2._
 
-Chcete-li vytvořit druhá role serveru SOFS s \<SAPGlobalHost2 >, spusťte tento skript prostředí PowerShell:
+Pokud chcete vytvořit druhou roli SOFS s \<>em SAPGlobalHost2, spusťte tento skript prostředí PowerShell:
 
 ```powershell
 # Create SOFS with SAP Global Host Name 2
@@ -341,19 +340,19 @@ $SAPGlobalHostName = "sapglobal2"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-Vytvoření druhého **Volume2**. Spusťte tento skript Powershellu:
+Vytvořte druhý **Volume2**. Spustit tento skript prostředí PowerShell:
 
 ```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![Obrázek 5: Druhý Volume2 v modulu Správce clusteru převzetí služeb při selhání][sap-ha-guide-figure-8016]
+![Obrázek 5: Druhý Volume2 v Správce clusteru s podporou převzetí služeb při selhání][sap-ha-guide-figure-8016]
 
-_**Obrázek 5:** Druhý Volume2 v modulu Správce clusteru převzetí služeb při selhání_
+_**Obrázek 5:** Druhý Volume2 v Správce clusteru s podporou převzetí služeb při selhání_
 
-Vytvořte složku s globální SAP pro druhý \<SID2 > a nastavit zabezpečení souboru.
+Vytvořte globální složku SAP pro druhý \<> SID2 a nastavte zabezpečení souboru.
 
-Spusťte tento skript Powershellu:
+Spustit tento skript prostředí PowerShell:
 
 ```powershell
 # Create a folder for <SID2> on a second Volume2 and set file security
@@ -394,31 +393,31 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-K vytvoření sdílené složky SAPMNT na Volume2 s  *\<SAPGlobalHost2 >* název hostitele pro druhý SAP \<SID2 >, spusťte **přidat sdílené složky** průvodce v clusteru převzetí služeb při selhání Správce.
+Pokud chcete vytvořit sdílenou složku SAPMNT v Volume2 \<s  *\<názvem hostitele SAPGlobalHost2 >* pro druhý > SAP SID2, spusťte průvodce **přidáním sdílené složky** v Správce clusteru s podporou převzetí služeb při selhání.
 
-Klikněte pravým tlačítkem myši **saoglobal2** skupina clusteru SOFS a pak vyberte **přidat sdílenou**.
+Klikněte pravým tlačítkem na skupinu clusterů **saoglobal2** SOFS a pak vyberte **Přidat sdílenou složku**.
 
-![Obrázek 6: Spusťte Průvodce "Přidat sdílené složky"][sap-ha-guide-figure-8017]
+![Obrázek 6: Spuštění Průvodce přidáním sdílení souborů][sap-ha-guide-figure-8017]
 
-_**Obrázek 6:** Spusťte Průvodce "Přidat sdílené složky"_
-
-<br>
-
-![Obrázek 7: "Vybrat sdílená složka SMB – rychlá"][sap-ha-guide-figure-8018]
-
-_**Obrázek 7:** Vyberte "Sdílená složka SMB – rychlá"_
+_**Obrázek 6:** Spustit Průvodce přidáním sdílení souborů_
 
 <br>
 
-![Obrázek 8: Vyberte "sapglobalhost2" a zadejte cestu na Volume2][sap-ha-guide-figure-8019]
+![Obrázek 7: Vybrat sdílenou složku SMB – rychlá][sap-ha-guide-figure-8018]
 
-_**Obrázek 8:** Vyberte "sapglobalhost2" a zadejte cestu na Volume2_
+_**Obrázek 7:** Vyberte sdílená složka SMB – rychlá._
 
 <br>
 
-![Obrázek 9: Nastavte název sdílené složky na "sapmnt"][sap-ha-guide-figure-8020]
+![Obrázek 8: Vyberte "sapglobalhost2" a zadejte cestu k Volume2][sap-ha-guide-figure-8019]
 
-_**Obrázek 9:** Nastavte název sdílené složky na "sapmnt"_
+_**Obrázek 8:** Vyberte "sapglobalhost2" a zadejte cestu k Volume2_
+
+<br>
+
+![Obrázek 9: Nastavte název sdílené složky na "sapmnt".][sap-ha-guide-figure-8020]
+
+_**Obrázek 9:** Nastavte název sdílené složky na "sapmnt"._
 
 <br>
 
@@ -428,43 +427,43 @@ _**Obrázek 10:** Zakázat všechna nastavení_
 
 <br>
 
-Přiřadit *úplné řízení* oprávnění k souborům a sapmnt sdílet:
-* **SAP_\<SID > _GlobalAdmin** skupiny uživatelů domény
-* Objekt počítače uzlů clusteru ASC/SCS **ascs 1$** a **ascs 2$**
+Přiřaďte oprávnění k *úplnému řízení* souborům a sapmnt sdílené složce pro:
+* Skupina **uživatelů\<SAP_ SID > _GlobalAdmin** domény
+* Objekt počítače uzlů clusteru ASCS/SCS **ASCS-$1** a **ASCS-$2**
 
-![Obrázek 11: Přiřadit oprávnění k úplnému řízení uživatelských účtů skupiny a počítače][sap-ha-guide-figure-8022]
+![Obrázek 11: Přiřazení oprávnění k úplnému řízení pro skupiny uživatelů a účtů počítačů][sap-ha-guide-figure-8022]
 
-_**Obrázek 11:** Přiřadit "Úplné řízení" uživatelským účtům, skupiny a počítače_
-
-<br>
-
-![Obrázek 12: Vyberte možnost "Vytvořit"][sap-ha-guide-figure-8023]
-
-_**Obrázek 12:** Vyberte možnost "Vytvořit"_
+_**Obrázek 11:** Přiřazení možnosti úplné řízení k skupině uživatelů a účtům počítačů_
 
 <br>
 
-![Obrázek 13: Druhý sapmnt vázáno na hostitele sapglobal2 a Volume2 se vytvoří.][sap-ha-guide-figure-8024]
+![Obrázek 12: Vyberte vytvořit.][sap-ha-guide-figure-8023]
 
-_**Obrázek 13:** Druhý sapmnt vázáno na hostitele sapglobal2 a Volume2 se vytvoří._
+_**Obrázek 12:** Vyberte vytvořit._
 
 <br>
 
-## <a name="install-sap-netweaver-multi-sid"></a>Instalace SAP NetWeaver několika identifikátorů SID
+![Obrázek 13: Vytvoří se druhý sapmnt vázaný na hostitele sapglobal2 a Volume2.][sap-ha-guide-figure-8024]
 
-### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Instalace SAP \<SID2 > ASCS/SCS a Lajících instancí
+_**Obrázek 13:** Vytvoří se druhý sapmnt vázaný na hostitele sapglobal2 a Volume2._
 
-Použijte stejný postup instalace a konfigurace, jak je popsáno výše pro jeden SAP \<SID >.
+<br>
 
-### <a name="install-dbms-and-sap-application-servers"></a>Nainstalujte systém DBMS a SAP aplikačních serverů
-Nainstalujte systém DBMS a aplikační servery SAP, jak je popsáno výše.
+## <a name="install-sap-netweaver-multi-sid"></a>Instalace SAP NetWeaver multi-SID
 
-## <a name="next-steps"></a>Další postup
+### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Nainstalovat SAP \<SID2 > ASCS/SCS a olajících instance
 
-* [Nainstalovat ASCS/SCS instance clusteru převzetí služeb při selhání se žádné sdílené disky][sap-official-ha-file-share-document]: Oficiální pravidla SAP pro soubor s vysokou DOSTUPNOSTÍ sdílet
+Použijte stejný postup instalace a konfigurace, jak je popsáno výše pro jeden \<> SAP SID.
 
-* [Prostory úložiště s přímým přístupem ve Windows serveru 2016][s2d-in-win-2016]
+### <a name="install-dbms-and-sap-application-servers"></a>Instalace systémů DBMS a aplikačních serverů SAP
+Nainstalujte systémy DBMS a aplikační servery SAP, jak je popsáno výše.
 
-* [Horizontální navýšení kapacity souborový server pro přehled dat aplikací][sofs-overview]
+## <a name="next-steps"></a>Další kroky
+
+* [Instalace instance ASCS/SCS do clusteru s podporou převzetí služeb při selhání bez sdílených disků][sap-official-ha-file-share-document]: Oficiální pokyny SAP pro sdílenou složku HA
+
+* [Prostory úložiště s přímým přístupem v systému Windows Server 2016][s2d-in-win-2016]
+
+* [Přehled souborového serveru se škálováním na více instancí pro data aplikací][sofs-overview]
 
 * [Co je nového v úložišti ve Windows serveru 2016][new-in-win-2016-storage]

@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569505"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066049"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
-Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, v pracovním prostoru OMS nebo v Event Hubs. Auditování taky:
+Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovní prostor nebo Event Hubs. Auditování taky:
 
 - Pomáhá udržet dodržování legislativních předpisů, pochopit databázovou činnost a získat přehled o nesrovnalostech a anomáliích, které by mohly označovat obchodní aspekty nebo podezření na narušení zabezpečení.
 
@@ -121,11 +121,22 @@ Pokud se rozhodnete zapisovat protokoly auditu do protokolů Azure Monitor:
 
 - Použijte [Azure Portal](https://portal.azure.com).  Otevřete příslušnou databázi. V horní části stránky **auditování** databáze klikněte na **Zobrazit protokoly auditu**.
 
-    ![Zobrazit protokoly auditu](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Zobrazit protokoly auditu](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Potom kliknutím na **otevřít v OMS** v horní části stránky auditovat **záznamy** otevřete zobrazení protokoly v Log Analytics, kde můžete přizpůsobit časový rozsah a vyhledávací dotaz.
+- Pak máte dva způsoby, jak zobrazit protokoly:
+    
+    Kliknutím na **Log Analytics** v horní části stránky **Auditovat záznamy** otevřete zobrazení protokoly v pracovním prostoru Log Analytics, kde můžete přizpůsobit časový rozsah a vyhledávací dotaz.
+    
+    ![otevřít v pracovním prostoru Log Analytics](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![otevřít v Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    Kliknutím na **zobrazit řídicí panel** v horní části stránky **auditu** se otevře řídicí panel s informacemi o protokolech auditu, kde můžete přejít k podrobnostem o zabezpečení, získat přístup k citlivým datům a další informace. Tento řídicí panel je navržený tak, aby vám pomohla získat přehled o zabezpečení vašich dat.
+    Můžete také přizpůsobit časový rozsah a vyhledávací dotaz. 
+    ![Zobrazit Log Analytics řídicí panel](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Řídicí panel Log Analytics](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics přehledy zabezpečení](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - Případně můžete také získat přístup k protokolům auditu z okna Log Analytics. Otevřete pracovní prostor Log Analytics a v části **Obecné** klikněte na **protokoly**. Můžete začít jednoduchým dotazem, jako je: *Search "SQLSecurityAuditEvents"* , chcete-li zobrazit protokoly auditu.
     Z tohoto místa můžete také použít [protokoly Azure monitor](../log-analytics/log-analytics-log-search.md) a spustit tak rozšířené vyhledávání dat v protokolu auditu. Protokoly Azure Monitor poskytují informace o provozu v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, které umožňují snadno analyzovat miliony záznamů napříč všemi vašimi úlohami a servery. Další užitečné informace o tom, jak hledat jazyk a příkazy protokolu Azure Monitor naleznete v tématu [Azure monitor v protokolech hledání](../log-analytics/log-analytics-log-search.md).
@@ -257,7 +268,7 @@ Rozšířené zásady s podporou klauzule WHERE pro další filtrování:
 - [Získat *rozšířenou* zásadu auditování databáze](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Získat *Rozšířené* zásady auditování serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Správa auditování SQL Database pomocí šablon ARM
+## <a id="subheading-10"></a>Správa auditování SQL Database pomocí šablon Azure Resource Manager
 
 Auditování Azure SQL Database můžete spravovat pomocí [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) šablon, jak je znázorněno v těchto příkladech:
 

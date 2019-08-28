@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853962"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098549"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -186,7 +185,7 @@ Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace]
 - **Účet Microsoft**: Při [konfiguraci nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md)vyberte `wl.offline_access` obor.
 - **Azure Active Directory**: V [https://resources.azure.com](https://resources.azure.com)nástroji proveďte následující kroky:
     1. V horní části stránky vyberte možnost **čtení/zápis**.
-    2. V levém prohlížeči přejděte na předplatná  >  **_\<název\__**  > předplatného**resourceGroups** >  **_Skupinaprostředků\_.\< název\_>_** **poskytovatelé** **Microsoft. Web** **sites** **_název aplikace>\_config\<_**  >  >  >   >  >   >  **authsettings**. 
+    2. V levém prohlížeči přejděte na předplatná >  **_\<název\__**  > předplatného**resourceGroups** >  **_Skupinaprostředků\_.\< název\_>_** **poskytovatelé** **Microsoft. Web** **sites** **_název aplikace>\_config\<_**  >  >  >   >  >   >  **authsettings**. 
     3. Klikněte na **Upravit**.
     4. Upravte následující vlastnost. Nahraďte  _\<\_ID aplikace >_ kódem Azure Active Directory ID aplikace služby, ke které chcete získat přístup.
 
@@ -233,7 +232,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure Active Directory umožňuje pro přihlašovací účty libovolný počet vlastních domén. Toto chování může být nežádoucí pro interní aplikaci, u které nechcete, aby k nim měl nikdo účet _Outlook.com_ . Chcete-li omezit název domény přihlašovacích účtů, postupujte podle těchto kroků.
 
-V [https://resources.azure.com](https://resources.azure.com)přejděte na předplatná  > název předplatného resourceGroups **_\_\<_** prostředek > . >  **_\<\_ název\_ skupiny >_** **poskytovatelé** **Microsoft. Web**sites >  **_název aplikace\_ >\<_**  >  >  >  >  **Konfigurace**  >  **authsettings**. 
+V [https://resources.azure.com](https://resources.azure.com)přejděte na předplatná > název předplatného resourceGroups **_\_\<_** prostředek > . >  **_\<\_ název\_ skupiny >_** **poskytovatelé** **Microsoft. Web**sites >  **_název aplikace\_ >\<_**  >  >  >  >  **Konfigurace**  >  **authsettings**. 
 
 Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klikněte na tlačítko **Vložit**. Nezapomeňte nahradit  _\<\_název domény >_ doménou, kterou chcete.
 

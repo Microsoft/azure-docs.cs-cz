@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c10262e50fff2903d7caf242304145a2ab93dbcd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970618"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087576"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
 Ve struktuře runbooků, které běží v Azure Automation a runbooky, které běží na Hybrid Runbook Worker, není žádný rozdíl. Sady Runbook, které používáte s nejpravděpodobnějším rozdílem, se výrazně liší. Důvodem je to, že Runbooky, které cílí na Hybrid Runbook Worker, obvykle spravují prostředky v místním počítači nebo k prostředkům v místním prostředí, kde je nasazený. Runbooky v Azure Automation obvykle spravují prostředky v cloudu Azure.
 
-Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, `nxautomation` aby měl účet přístup k umístění, kam vaše moduly ukládáte. Když použijete rutinu [install-Module]() , zadejte **AllUsers** k `-Scope` parametru, abyste si ověřili `naxautomation` , že má účet přístup.
+Když vytváříte Runbooky, které mají běžet na Hybrid Runbook Worker, měli byste Runbooky upravovat a testovat v počítači, který je hostitelem hybridního pracovního procesu. Hostitelský počítač má všechny moduly PowerShellu a přístup k síti, které potřebujete pro správu a přístup k místním prostředkům. Jakmile se Runbook na hybridním pracovním počítači testuje, můžete ho nahrát do prostředí Azure Automation, kde je možné ho spustit v hybridním pracovním procesu. Je důležité, abyste věděli, že úlohy spuštěné pod účtem místního systému pro Windows nebo speciální uživatelský účet `nxautomation` v systému Linux. V systému Linux to znamená, že je nutné zajistit, `nxautomation` aby měl účet přístup k umístění, kam vaše moduly ukládáte. Když použijete rutinu [install-Module](/powershell/module/powershellget/install-module) , zadejte **AllUsers** k `-Scope` parametru, abyste si ověřili `naxautomation` , že má účet přístup.
 
 Další informace o PowerShellu v systému Linux najdete v tématu [známé problémy pro prostředí PowerShell na platformách jiných než Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615379"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066081"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -31,6 +31,12 @@ U každého kontejneru Azure Cosmos můžete nakonfigurovat zřízenou propustno
 Klíč/hodnota (tabulka), úložiště se sloupcovou strukturou, dokument a data grafu modely jsou podporována všechna nativně z důvodu ARS (atomů, záznamů a pořadí) návrh postavena služby Azure Cosmos DB. Atomů, záznamů a pořadí lze snadno mapovat a promítá do různých datových modelů. Rozhraní API pro podmnožinu modelů jsou nyní k dispozici (SQL, MongoDB, Table a Gremlin) a další specifické pro další datové modely budou v budoucnu k dispozici.
 
 Azure Cosmos DB má schéma nezávislá indexovací modul dokáže automaticky indexovat všechna data, která se ingestují bez vyžadování jakéhokoli schématu nebo sekundárních indexů od vývojáře. Modul spoléhá na sadu logických index rozložení (obrácenou, úložiště se sloupcovou strukturou, stromu), což oddělit rozložení úložiště z indexu a subsystémy zpracování dotazů. Cosmos DB má také možnost pro podporu sady přenosu protokolů a rozhraní API postupně přibývají a efektivně překládat základní datový model (1) a logické index rozložení (2) tak jednoznačně schopný zajistit podporu více než jeden datový model nativně.
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Můžu pro přístup k datům použít více rozhraní API?
+
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Kde multi-model znamená Azure Cosmos DB podporuje více rozhraní API a více datových modelů, používají různá rozhraní API pro úložiště a síťový protokol různé formáty dat. Například SQL používá JSON, MongoDB používá BSON, tabulka používá EDM, Cassandra používá CQL, Gremlin používá GraphSON. V důsledku toho doporučujeme použít stejné rozhraní API pro veškerý přístup k datům v daném účtu.
+
+Každé rozhraní API funguje nezávisle, s výjimkou Gremlin a SQL API, které jsou interoperabilní.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Je kompatibilní s Azure Cosmos DB HIPAA?
 

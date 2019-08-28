@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875781"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099603"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
 
@@ -49,7 +49,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste dokončili rychlý start [Vytvoření aplikace Azure IoT Central](quick-deploy-iot-central.md), můžete znovu využít aplikaci, kterou jste v tomto rychlém startu vytvořili. Jinak použijte následující postup a vytvořte prázdnou aplikaci Azure IoT Central:
 
-1. Přejděte na stránku [správce aplikací](https://aka.ms/iotcentral) Azure IoT Central.
+1. Přejděte na web [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) .
 
 2. Zadejte e-mailovou adresu a heslo, které používáte pro přístup k vašemu předplatnému Azure:
 
@@ -57,7 +57,7 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
 3. Pokud chcete začít vytvářet novou aplikaci IoT Central Azure, vyberte **Nová aplikace**:
 
-    ![Stránka správce aplikací Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Stránka Správce aplikací Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. Vytvoření nové aplikace Azure IoT Central:
     
@@ -439,7 +439,7 @@ Teď jste definovali **připojenou** šablonu zařízení klimatizace pro klimat
 
     ![Zobrazit řídicí panel](./media/tutorial-define-device-type/dashboard.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

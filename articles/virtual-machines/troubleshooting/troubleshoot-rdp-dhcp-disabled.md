@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d16c5b6304f598440fe4d70648dd652f0dcf06ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362284"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089941"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
 
@@ -29,16 +28,16 @@ Tento článek popisuje problém, který se po zakázání služby Klient DHCP v
 ## <a name="symptoms"></a>Příznaky
 Nemůžete provádět připojení ke vzdálené ploše virtuálního počítače v Azure protože ve virtuálním počítači je zakázána služba Klient DHCP. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce. Vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události. Uvidíte, že služba Klient DHCP není spuštěná nebo nepodaří spustit. Následující ukázka protokolu:
 
-**Název protokolu**: Systémový </br>
+**Název protokolu**: Systém </br>
 **Zdroj**: Správce řízení služeb </br>
-**Datum**: 12/16/2015 11:19:36 AM </br>
+**Datum**: 12/16/2015 11:19:36 DOP. </br>
 **ID události**: 7022 </br>
-**Úloha kategorie**: Žádný </br>
+**Kategorie úlohy**: Žádné </br>
 **Úroveň**: Chyba </br>
 **Klíčová slova**: Classic</br>
-**Uživatel**: neuvedeno </br>
+**Uživatel**: Není k dispozici </br>
 **Počítač**: myvm.cosotos.com</br>
-**Popis**: Služba Klient DHCP přestala během spouštění reagovat.</br>
+**Popis**: Služba klienta DHCP při spuštění přestala reagovat.</br>
 
 Pro virtuální počítače Resource Manageru můžete použít funkce konzoly sériového portu přístup k dotazu pro protokoluje událost 7022 pomocí následujícího příkazu:
 
@@ -87,7 +86,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
     |1069 - ERROR_SERVICE_LOGON_FAILED   |  Zobrazit [služba Klient DHCP selže z důvodu selhání přihlášení](#dhcp-client-service-fails-because-of-logon-failure) |
     | 1070 - ERROR_SERVICE_START_HANG  | Zobrazit [služba Klient DHCP selže nebo přestane reagovat](#dhcp-client-service-crashes-or-hangs).  |
-    | 1077\. - ERROR_SERVICE_NEVER_STARTED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
+    | 1077. - ERROR_SERVICE_NEVER_STARTED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
     |1053 | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
 

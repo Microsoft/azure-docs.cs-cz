@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 43a99835776563f469efa3e0b14992203b34915e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1c43e8523a46971e99b2d91b9c121de3dc57681
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136645"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087958"
 ---
-# <a name="back-up-a-web-app-using-powershell"></a>Zálohování webové aplikace pomocí Powershellu
+# <a name="back-up-a-web-app-using-powershell"></a>Zálohování webové aplikace pomocí PowerShellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure instalace ovladačů v instancích N-series GPU pro Windows | Dokumentace Microsoftu
-description: Jak nastavit ovladače NVIDIA GPU pro virtuální počítače řady N-series běží Windows Server nebo Windows v Azure
+title: Nastavení ovladače grafického procesoru Azure N-Series pro Windows | Microsoft Docs
+description: Postup nastavení ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows serverem nebo Windows v Azure
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -8,67 +8,66 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24189fa8e0f6c31d7fbd3779f666eb85e24dc8f7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723113"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089189"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU na virtuální počítače řady N-series s Windows 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 
 
-Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Windows, musí být nainstalována ovladačů NVIDIA GPU. [Rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) nainstaluje vhodných ovladačů NVIDIA CUDA nebo mřížky na virtuální počítač řady N-series. Instalovat ani spravovat rozšíření pomocí webu Azure portal nebo nástrojů, jako je šablon Azure Resource Manageru nebo Azure Powershellu. Najdete v článku [dokumentaci rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) pro podporované operační systémy a kroky nasazení.
+Aby bylo možné využít možnosti GPU pro virtuální počítače řady Azure N-Series s Windows, musí být nainstalované ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) .
 
-Pokud se rozhodnete pro instalaci ovladače GPU ručně, tento článek obsahuje podporované operační systémy, ovladačů a postup instalace a ověření. Informace o nastavení ruční ovladač je také k dispozici pro [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud se rozhodnete nainstalovat ovladače GPU ručně, Tento článek poskytuje podporované operační systémy, ovladače a postup instalace a ověření. Pro [virtuální počítače se systémem Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)jsou k dispozici také informace o ruční instalaci ovladače.
 
-Základní specifikace, kapacity úložiště a podrobných informací o discích najdete v tématu [velikosti virtuálních počítačů s Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v tématu [velikosti virtuálních počítačů s Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
 ## <a name="driver-installation"></a>Instalace ovladače
 
-1. Připojte pomocí vzdálené plochy pro jednotlivé virtuální počítače řady N-series.
+1. Připojte se pomocí vzdálené plochy ke každému virtuálnímu počítači řady N-Series.
 
-2. Stažení, extrahování a instalaci podporované ovladače pro váš operační systém Windows.
+2. Stáhněte, extrahujte a nainstalujte podporovaný ovladač pro operační systém Windows.
 
-Po instalaci ovladače mřížky na virtuálním počítači je vyžadováno restartování. Po instalaci ovladače CUDA není restartování potřeba.
+Po instalaci ovladače mřížky na virtuálním počítači je potřeba restartovat počítač. Po instalaci ovladače CUDA není nutné restartovat počítač.
 
-## <a name="verify-driver-installation"></a>Ověření instalace ovladače
+## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 
-Můžete ověřit instalaci ovladačů ve Správci zařízení. Následující příklad ukazuje úspěšná konfigurace Tesla K80 karty na síťový adaptér virtuálního počítače Azure.
+Instalaci ovladače můžete ověřit v Device Manager. Následující příklad ukazuje úspěšnou konfiguraci karty Tesla K80 na virtuálním počítači Azure NC.
 
 ![Vlastnosti ovladače GPU](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-Chcete-li zjistit stav zařízení GPU, spusťte [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) s ovladačem nainstalovaný nástroj příkazového řádku.
+Pokud chcete zadat dotaz na stav zařízení GPU, spusťte nástroj příkazového řádku [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) nainstalovaný s ovladačem.
 
-1. Otevřete příkazový řádek a přejděte **C:\Program Files\NVIDIA Corporation\NVSMI** adresáře.
+1. Otevřete příkazový řádek a přejděte do adresáře **C:\Program Files\NVIDIA Corporation\NVSMI** .
 
-2. Spusťte `nvidia-smi`. Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu. **Využití GPU** ukazuje **0 %** Pokud aktuálně používáte úlohu GPU na virtuálním počítači. Podrobnosti o GPU a verze ovladače se může lišit od těch, které jsou zobrazeny.
+2. Spusťte `nvidia-smi`. Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. **GPU-util** zobrazuje **0%** , pokud na virtuálním počítači aktuálně neběží úloha GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
 ![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi.png)  
 
-## <a name="rdma-network-connectivity"></a>Připojení k síti přístup RDMA
+## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Připojení k síti přístup RDMA dá nastavit pro RDMA podporovat virtuální počítače řady N-series například NC24r nasazené ve stejné skupině dostupnosti nebo v jediné skupiny umístění ve škálovací sadě virtuálních počítačů. Rozšíření HpcVmDrivers musí přidat k instalaci ovladačů zařízení sítě Windows, které umožňují připojení RDMA. Chcete-li přidat rozšíření virtuálního počítače do virtuálních počítačů řady N-series podporou RDMA, použijte [prostředí Azure PowerShell](/powershell/azure/overview) rutiny pro Azure Resource Manageru.
+Připojení k síti RDMA je možné povolit u virtuálních počítačů řady N-Series s podporou RDMA, jako je NC24r nasazených ve stejné skupině dostupnosti nebo do jedné skupiny umístění v sadě škálování virtuálního počítače. Aby bylo možné instalovat ovladače síťových zařízení systému Windows, které umožňují připojení RDMA, je nutné přidat rozšíření HpcVmDrivers. Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače N-Series s povoleným RDMA, použijte pro Azure Resource Manager rutiny [Azure PowerShell](/powershell/azure/overview) .
 
-Chcete-li nainstalovat nejnovější verzi 1.1 HpcVMDrivers rozšíření na existující virtuální počítač s podporou RDMA s názvem můjvp přesměrovat v oblasti USA – západ:
+K instalaci nejnovějšího rozšíření verze 1,1 HpcVMDrivers na existující virtuální počítač s podporou RDMA s názvem myVM v oblasti Západní USA:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Další informace najdete v tématu [funkcí a rozšíření virtuálních počítačů pro Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  Další informace najdete v tématu [rozšíření virtuálních počítačů a funkce pro Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Sítě RDMA podporuje rozhraní MPI (Message Passing Interface) provozu pro aplikace s [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) nebo Intel MPI 5.x. 
+Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) nebo Intel MPI 5. x. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Vývojáři aplikací – hardwarově akcelerovanou pro GPU NVIDIA Tesla můžete také stáhnout a nainstalovat nejnovější [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Další informace najdete v tématu [Průvodce instalací CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Vývojáři, kteří sestavují aplikace náročné na grafické PROCESORy NVIDIA Tesla, mohou také stáhnout a nainstalovat nejnovější [sadu CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Další informace najdete v příručce pro [instalaci CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

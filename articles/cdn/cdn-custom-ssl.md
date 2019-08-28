@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996819"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114493"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS u Azure CDN vlastní domény
 
@@ -312,8 +312,11 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
     Vaše stávající domény se budou v nadcházejících měsících postupně migrovat na jediný certifikát, pokud Microsoft dojde analýzou k tomu, že do vaší aplikace přicházejí jenom žádosti klientů SNI. Pokud Microsoft zjistí, že do vaší aplikace přicházejí žádosti klientů jiných než SNI, zůstanou domény v certifikátu SAN s protokolem TLS/SSL založeném na IP adrese. V žádném případě nedojde k přerušení poskytování vaší služby nebo podpory pro žádosti vašich klientů bez ohledu na to, jestli jsou tyto žádosti SNI nebo ne.
 
+7. *Jak fungují obnovení certifikátů pomocí funkce Přineste si vlastní certifikát?*
 
-## <a name="next-steps"></a>Další postup
+    Pokud chcete zajistit, aby byl novější certifikát nasazený v infrastruktuře PoP, jednoduše nahrajte nový certifikát do trezoru klíčů Azure a potom v nastavení SSL na Azure CDN zvolte nejnovější verzi certifikátu a pak stiskněte Uložit. Azure CDN se pak propogate nový aktualizovaný certifikát. 
+
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

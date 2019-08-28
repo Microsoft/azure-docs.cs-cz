@@ -1,6 +1,6 @@
 ---
-title: Přehled agenta virtuálního počítače Azure s Linuxem | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat a nakonfigurovat agenta pro Linux (waagent) ke správě interakcí virtuálního počítače s Kontrolerem prostředků infrastruktury Azure.
+title: Přehled agenta virtuálního počítače Azure Linux | Microsoft Docs
+description: Naučte se instalovat a konfigurovat agenta pro Linux (waagent), abyste mohli spravovat interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -11,24 +11,23 @@ ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59a0cdd29e50501f023faf323948a400f325df0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: acb6e14845beb4c947992e63f1984c072ba9f59f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706164"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084819"
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Princip a používání agenta Azure Linux
+# <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
-Microsoft Azure Linux Agent (waagent) spravuje Linux a FreeBSD zřizování a interakci virtuálních počítačů s Kontrolerem prostředků infrastruktury Azure. Kromě zajištění funkcí, zřízení linuxového agenta Azure navíc poskytuje možnost používat cloud-init pro některé operační systémy Linux. Agenta pro Linux poskytuje následující funkce pro systémy Linux a FreeBSD IaaS nasazení:
+Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Kromě agenta pro Linux, který poskytuje funkce zřizování, Azure taky nabízí možnost použití Cloud-init pro některé Linux operačních systémech. Agent pro Linux poskytuje pro nasazení pro Linux a FreeBSD IaaS následující funkce:
 
 > [!NOTE]
-> Další informace najdete v tématu [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
+> Další informace najdete v [souboru Readme](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 > 
 > 
 
@@ -36,104 +35,104 @@ Microsoft Azure Linux Agent (waagent) spravuje Linux a FreeBSD zřizování a in
   
   * Vytvoření uživatelského účtu
   * Konfigurace typů ověřování SSH
-  * Nasazení veřejného klíče SSH a páry klíčů
+  * Nasazení veřejných klíčů SSH a párů klíčů
   * Nastavení názvu hostitele
-  * Publikování na platformě DNS název hostitele
-  * Generování sestav kryptografický otisk klíče hostitele SSH na platformě
-  * Správa prostředků disku
-  * Formátování a připojování disku prostředků
-  * Konfigurace velikosti odkládacího souboru
+  * Publikování názvu hostitele na platformě DNS platformy
+  * Vytváření sestav otisků klíčů hostitele SSH pro platformu
+  * Správa disků prostředků
+  * Formátování a připojení disku prostředků
+  * Konfigurace odkládacího prostoru
 * **Sítě**
   
-  * Spravuje trasy zlepšit kompatibilitu s servery DHCP platformy
-  * Zajišťuje stabilitu název síťového rozhraní
+  * Spravuje trasy pro zlepšení kompatibility s platformami serverů DHCP.
+  * Zajišťuje stabilitu názvu síťového rozhraní.
 * **Kernel**
   
-  * Nakonfiguruje virtuální uzel NUMA (zakázat pro jádra <`2.6.37`)
-  * Využívá technologii Hyper-V pro /dev/random
-  * Nakonfiguruje SCSI vypršení časových limitů u kořenové zařízení (které by mohly být vzdálený)
+  * Nakonfiguruje virtuální technologii NUMA (zakázat pro`2.6.37`jádro <).
+  * Spotřebovává entropii technologie Hyper-V pro/dev/random.
+  * Konfiguruje časové limity SCSI pro kořenové zařízení (které by mohlo být vzdálené).
 * **Diagnostika**
   
-  * Přesměrování konzoly sériového portu
-* **SCVMM nasazení**
+  * Přesměrování konzoly na sériový port
+* **Nasazení SCVMM**
   
-  * Zjišťuje a bootstraps agenta VMM pro Linux při spuštění v prostředí System Center Virtual Machine Manager 2012 R2
+  * Zjistí a spustí agenta VMM pro Linux při spuštění v prostředí System Center Virtual Machine Manager 2012 R2.
 * **Rozšíření virtuálního počítače**
   
-  * Vložení součástí vytvořené Microsoftem a partnery do virtuálního počítače s Linuxem (IaaS) umožňující softwaru a konfigurace služby automation
-  * Referenční implementace rozšíření virtuálního počítače na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Vložení součásti, kterou vytvořila Microsoft a partneři, do virtuálního počítače se systémem Linux (IaaS), aby bylo možné povolit automatizaci softwaru a konfigurace
+  * Implementace odkazu na rozšíření virtuálních počítačů na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikace
-Tok informací z platformy k agentovi dojde k přes dva kanály:
+Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
 
-* Čas spuštění připojené DVD pro nasazení IaaS. Tento disk DVD zahrnuje CLS OVF konfigurační soubor, který obsahuje všechny informace o zřizování než skutečné keypairs SSH.
-* Koncový bod TCP vystavení rozhraní REST API používá k získání nasazení a konfiguraci topologie.
+* Spouštěcí DVD připojený k IaaS nasazení. Tento disk DVD obsahuje konfigurační soubor kompatibilní s OVF, který obsahuje informace o všech zřizováních, jiné než skutečné páry klíčů SSH.
+* Koncový bod TCP vystavuje REST API, který se používá k získání konfigurace nasazení a topologie.
 
 ## <a name="requirements"></a>Požadavky
-Tyto systémy byly testovány a jsou známé pro práci s agentem Azure Linux:
+Následující systémy byly testovány a jsou známy pro práci s agentem Azure Linux:
 
 > [!NOTE]
-> Tento seznam může lišit od oficiálního seznamu podporovaných systémech na platformě Microsoft Azure, jak je popsáno zde: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Tento seznam se může lišit od oficiálního seznamu podporovaných systémů na platformě Microsoft Azure, jak je popsáno zde:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
-* CentOS 6.3+
+* CentOS 6.3 +
 * Red Hat Enterprise Linux 6.7 +
 * Debian 7.0 +
-* Ubuntu 12.04+
+* Ubuntu 12.04 +
 * openSUSE 12.3 +
 * SLES 11 SP3+
 * Oracle Linux 6.4 +
 
-Další podporované systémy:
+Jiné podporované systémy:
 
-* FreeBSD 10 + (Azure Linux Agent v2.0.10 +)
+* FreeBSD 10 + (agent Azure Linux v 2.0.10 +)
 
-Agenta pro Linux, závisí na některé balíčky systém mohl fungovat správně:
+Agent pro Linux závisí na některých systémových balíčcích, aby fungoval správně:
 
 * Python 2.6 +
 * OpenSSL 1.0 +
 * OpenSSH 5.3 +
-* Nástroje systému souborů: čtvrceny sfdisk fdisk, mkfs,
-* Nástroje pro heslo: chpasswd sudo
-* Nástroje pro zpracování textu: sed grep
-* Sítě nástroje: směrování ip
-* Podpora jádra pro připojení systémy souborů UDF.
+* Nástroje systému souborů: sfdisk, fdisk, mkfs, částečněd
+* Nástroje pro heslo: chpasswd, sudo
+* Nástroje pro zpracování textu: sed, grep
+* Síťové nástroje: IP-Route
+* Podpora jádra pro připojení systémů souborů UDF.
 
 ## <a name="installation"></a>Instalace
-Instalace pomocí RPM nebo DEB balíček z úložiště balíčků vaší distribuce je preferovanou metodu instalace a upgradování agenta Azure Linux. Všechny [poskytovatelé distribuce schválené pro](../linux/endorsed-distros.md) balíček agenta Azure Linux integrovat do své Image a úložiště.
+Upřednostňovanou metodou instalace a upgrade agenta Azure Linux je instalace použití balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](../linux/endorsed-distros.md) integrují balíček agenta Azure Linux do svých imagí a úložišť.
 
-V dokumentaci [agenta Azure Linux úložišti na Githubu](https://github.com/Azure/WALinuxAgent) pro Upřesnit možnosti instalace, například při instalaci ze zdroje nebo do vlastního umístění nebo předpony.
+Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Linux na GitHubu](https://github.com/Azure/WALinuxAgent) , kde najdete rozšířené možnosti instalace, jako je například instalace ze zdroje nebo vlastní umístění nebo předpony.
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 ### <a name="flags"></a>příznaky
-* verbose: Zvýšit úroveň podrobností zadaný příkaz
-* platnost: Interaktivní potvrzení přeskočení pro některé příkazy
+* Podrobné Zvýšit podrobnost zadaného příkazu
+* ode Přeskočit interaktivní potvrzení pro některé příkazy
 
 ### <a name="commands"></a>Příkazy
-* Pomoc: Seznam podporovaných příkazů a příznaky.
-* zrušení zřízení: Pokus o vyčištění systému a že je vhodný pro neukončil. Následující operace odstranění:
+* Pomoc: Zobrazuje seznam podporovaných příkazů a příznaků.
+* zrušení zřízení Pokuste se systém vyčistit a zajistit, aby byl vhodný pro opětovné zřízení. Následující operace odstraní:
   
-  * Všechny klíče hostitele SSH (Pokud Provisioning.RegenerateSshHostKeyPair "y" v konfiguračním souboru)
-  * Konfigurace názvového serveru v /etc/resolv.conf
-  * Kořenové heslo z/etc/shadow (Pokud je u Provisioning.DeleteRootPassword hodnotu y' v konfiguračním souboru)
-  * V mezipaměti zapůjčení DHCP klientů
+  * Všechny klíče hostitele SSH (Pokud zřizování. RegenerateSshHostKeyPair je v konfiguračním souboru ' y ')
+  * Konfigurace názvový server v/etc/resolv.conf
+  * Kořenové heslo z/etc/Shadow (Pokud zřizování. DeleteRootPassword je v konfiguračním souboru ' y ')
+  * Zapůjčení klienta DHCP v mezipaměti
   * Resetuje název hostitele na localhost.localdomain
 
 > [!WARNING]
-> Zrušení zřízení nezaručuje, že bitová kopie je vymažou všechny citlivých informací a vhodný pro distribuci.
+> Zrušení zřízení nezaručuje, že se image vymaže ze všech citlivých informací a vhodná pro opětovnou distribuci.
 > 
 > 
 
-* zrušení zřízení a uživatele: Provádí všechno, co v – zrušení zřízení (viz výše) a také odstranění posledního zřízeného uživatelského účtu (získané z /var/lib/waagent) a přidružená data. Tento parametr je při zrušení zřizování bitovou kopii, která byla dříve zřizování v Azure, tak může zachytit a znovu použít.
-* Verze: Zobrazí verzi waagent
-* serialconsole: Nakonfiguruje GRUB k označení ttyS0 (první sériový port) jako spouštěcí konzoly. Tím se zajistí, že jsou protokoly spouštění jádra odesílat sériového portu a k dispozici pro ladění.
-* Démon procesu: Spusťte waagent jako démon ke správě interakci s platformou. Tento argument je určena k waagent ve skriptu waagent init.
-* Spusťte: Spustit waagent jako proces na pozadí
+* zrušit zřízení a uživatele: Provede vše za zrušení zřízení (výše) a odstraní také naposledy zřízený uživatelský účet (získaný z/var/lib/waagent) a přidružená data. Tento parametr je při rušení zřizování image, která se dřív zřídila v Azure, aby se mohla zachytit a znovu použít.
+* znění Zobrazí verzi waagent.
+* serialconsole: Nakonfiguruje GRUB tak, aby označil ttyS0 (první sériový port) jako spouštěcí konzolu. Tím se zajistí, že se protokoly spouštění jádra odesílají do sériového portu a zpřístupní se pro ladění.
+* proces Spusťte waagent jako démona pro správu interakce s platformou. Tento argument je zadán jako waagent ve skriptu init waagent.
+* Čína Spustit waagent jako proces na pozadí
 
 ## <a name="configuration"></a>Konfiguraci
-Konfigurační soubor (/ etc/waagent.conf) řídí akce waagent. Následuje ukázkový soubor konfigurace:
+Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. V následujícím příkladu vidíte Ukázkový konfigurační soubor:
 
     ```
     Provisioning.Enabled=y
@@ -161,79 +160,79 @@ Konfigurační soubor (/ etc/waagent.conf) řídí akce waagent. Následuje uká
     AutoUpdate.Enabled=y
     ```
 
-Následující možnosti konfigurace jsou popsány. Možnosti konfigurace jsou tři typy; Logická hodnota, řetězec nebo celé číslo. Logická konfigurační možnosti lze zadat jako "y" nebo "n". Speciální klíčové slovo, které "None" mohou být použity pro některé položky konfigurace typu řetězec jako následující podrobnosti:
+Jsou popsány následující různé možnosti konfigurace. Možnosti konfigurace jsou tři typy; Logická hodnota, řetězec nebo celé číslo. Logické možnosti konfigurace lze zadat jako "y" nebo "n". Klíčové slovo None nelze použít pro některé položky konfigurace typu řetězce jako následující podrobnosti:
 
-**Provisioning.Enabled:**  
+**Zřizování. povoleno:**  
 ```
 Type: Boolean  
 Default: y
 ```
-To umožňuje uživatelům povolit nebo zakázat funkci zřizování v agentovi. Platné hodnoty jsou "y" nebo "n". Pokud zřizování je zakázaná, klíče SSH hostitele a uživatel na obrázku jsou zachovány a veškeré zadané v Azure, rozhraní API zřizování konfigurace je ignorována.
+To uživateli umožňuje povolit nebo zakázat funkce zřizování v agentovi. Platné hodnoty jsou "y" nebo "n". Pokud je zřizování zakázané, zachovají se klíče hostitele SSH a uživatele v imagi a veškerá konfigurace zadaná v rozhraní API zřizování Azure se ignoruje.
 
 > [!NOTE]
-> `Provisioning.Enabled` Parametr má výchozí hodnotu "n" Cloud imagemi Ubuntu, který pomocí cloud-init pro zřizování.
+> `Provisioning.Enabled` Parametr má ve výchozím nastavení hodnotu "n" na Ubuntu cloudových imagí, které pro zřizování používají Cloud-init.
 > 
 > 
 
-**Provisioning.DeleteRootPassword:**  
+**Zřizování. DeleteRootPassword:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud sada, kořenové heslo v souboru/etc/shadow se vymažou během procesu zřizování.
+Pokud je nastaveno, bude během procesu zřizování vymazáno kořenové heslo v souboru/etc/shadow.
 
-**Provisioning.RegenerateSshHostKeyPair:**  
+**Zřizování. RegenerateSshHostKeyPair:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Pokud sadu, všechny hostitele páry klíčů SSH (ecdsa, dsa a rsa) jsou během procesu zřizování z/etc/ssh/odstranit. A vygeneruje se jeden nový pár klíčů.
+Při nastavení se během procesu zřizování z/etc/ssh/. odstraní všechny páry klíčů hostitele SSH (ECDSA, DSA a RSA). A vygeneruje se jeden nový pár klíčů.
 
-Typ šifrování pro nový pár klíčů je možné konfigurovat v položce Provisioning.SshHostKeyPairType. Při restartování proces démon programu SSH (třeba po restartování), některých distribucích znovu vytvořit páry klíčů SSH pro všechny chybějící typy šifrování.
+Typ šifrování pro nový pár klíčů lze konfigurovat pomocí položky zřizování. SshHostKeyPairType. Některé distribuce znovu vytvoří páry klíčů SSH pro všechny chybějící typy šifrování při restartování démona SSH (například při restartování počítače).
 
 **Provisioning.SshHostKeyPairType:**  
 ```
 Type: String  
 Default: rsa
 ```
-To lze nastavit na typ šifrovací algoritmus, který je podporován proces démon programu SSH na virtuálním počítači. Obvykle podporované hodnoty jsou "rsa", "dsa" a "ecdsa". "putty.exe" na Windows nepodporuje "ecdsa". Ano Pokud máte v úmyslu použít putty.exe ve Windows pro připojení k nasazení systému Linux, použijte "rsa" nebo "dsa".
+To může být nastaveno na typ šifrovacího algoritmu, který je podporován démonem SSH na virtuálním počítači. Obvykle jsou podporované hodnoty "RSA", "DSA" a "ECDsa". "soubor. exe" ve Windows nepodporuje "ECDsa". Pokud tedy máte v úmyslu použít k připojení k nasazení Linux soubor. exe v systému Windows, použijte "RSA" nebo "DSA".
 
-**Provisioning.MonitorHostName:**  
+**Zřizování. MonitorHostName:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Pokud sada waagent monitoruje virtuálním počítači s Linuxem pro název hostitele změny (jako vrácené příkazem "hostname") a automaticky aktualizujte konfigurace sítí na obrázku tak, aby odrážely změny. Pro vkládání změnu názvu na servery DNS, sítě restartování virtuálního počítače. Stručný postup vede ke ztrátě připojení k Internetu.
+Pokud je tato možnost nastavená, waagent monitoruje virtuální počítač Linux pro změny názvu hostitele (vrácených příkazem "hostname") a automaticky aktualizuje konfiguraci sítě v imagi tak, aby odrážela změnu. Aby bylo možné doručit změnu názvu na servery DNS, budou síťové služby restartovány ve virtuálním počítači. Výsledkem je krátká ztráta připojení k Internetu.
 
 **Provisioning.DecodeCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud sada waagent dekóduje CustomData z formátu Base64.
+Pokud je nastaveno, waagent dekódování CustomData z base64.
 
 **Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud sada waagent provede CustomData po zřízení.
+Pokud je nastaveno, waagent po zřízení spustí CustomData.
 
 **Provisioning.AllowResetSysUser**
 ```
 Type: Boolean
 Default: n
 ```
-Tato možnost umožňuje heslo pro uživatele sys resetovat; Výchozí je zakázaná.
+Tato možnost umožňuje resetování hesla pro uživatele sys; Výchozí hodnota je zakázaná.
 
 **Provisioning.PasswordCryptId**  
 ```
 Type: String  
 Default: 6
 ```
-{Algoritmus používaný crypt při generování hodnoty hash hesla.  
+Algoritmus používaný algoritmem crypt při generování hodnoty hash hesla  
  1 - MD5  
- 2a - Blowfish  
+ 2a – Blowfish  
  5 - SHA-256  
  6 - SHA-512  
 
@@ -242,108 +241,108 @@ Default: 6
 Type: String  
 Default: 10
 ```
-Délka náhodného hodnota salt používá při generování hodnoty hash hesla.
+Délka náhodné soli použitá při generování hodnoty hash hesla
 
-**ResourceDisk.Format:**  
+**ResourceDisk. Format:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Pokud nastavíte, disk počítačových prostředků poskytovaný platformou je ve formátu a připojit waagent, pokud je typ systému souborů požadoval uživatel v "ResourceDisk.Filesystem" než "ntfs". Jeden oddíl typu Linux (83) je k dispozici na disku. Tento oddíl není ve formátu, pokud je možné úspěšně připojit.
+Pokud je tato možnost nastavená, disk prostředků poskytovaný platformou se naformátuje a připojí přes waagent, pokud typ systému souborů požadovaný uživatelem v souboru ResourceDisk. FileSystem je jiný než NTFS. Na disku je k dispozici jeden oddíl typu Linux (83). Tento oddíl není naformátován, pokud jej lze úspěšně připojit.
 
 **ResourceDisk.Filesystem:**  
 ```
 Type: String  
 Default: ext4
 ```
-Určuje typ systému souborů pro disk prostředků. Podporované hodnoty se liší podle Linuxovou distribuci. Pokud je řetězec X, potom mkfs. X musí být k dispozici na image Linuxu. Image SLES 11 použití "ext3". Obrázky FreeBSD používali "ufs2" zde.
+Určuje typ systému souborů pro disk prostředků. Podporované hodnoty se liší podle distribuce systému Linux. Pokud je řetězec X, pak mkfs. X by se měla nacházet v imagi pro Linux. Image SLES 11 by typicky měly používat "ext3". Image FreeBSD by měly používat UFS2.
 
-**ResourceDisk.MountPoint:**  
+**ResourceDisk. přípojný bod:**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-Určuje cestu, na které je připojený disk počítačových prostředků. Je disk počítačových prostředků *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače.
+Určuje cestu, ke které je připojen disk prostředků. Disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění.
 
 **ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
 ```
-Určuje možnosti připojení disku má být předán příkazu -o připojení. Toto je čárkou oddělený seznam hodnot, např. "nodev, nosuid". Zobrazit mount(8) podrobnosti.
+Určuje možnosti připojení disku, které se mají předat příkazu Mount-o. Toto je seznam hodnot oddělených čárkou, např. 'nodev,nosuid'. Podrobnosti najdete v tématu Mount (8).
 
 **ResourceDisk.EnableSwap:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud nastavení odkládacího souboru (/ swapfile) je vytvořen na prostředku disku a přidán do odkládacího souboru v systému.
+Pokud je nastavená, na disku prostředků se vytvoří odkládací soubor (/swapfile) a přidají se do systémového odkládacího prostoru.
 
 **ResourceDisk.SwapSizeMB:**  
 ```
 Type: Integer  
 Default: 0
 ```
-Velikost odkládacího souboru v megabajtech.
+Velikost odkládacího souboru v megabajtech
 
-**Logs.Verbose:**  
+**Log. verbose:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud je vylepšené set, úroveň podrobností protokolu. Waagent zaznamená do /var/log/waagent.log, které využívá funkce logrotate systému obměna protokoly.
+Při nastavení se zvyšuje úroveň podrobností protokolu. Protokoly waagent do/var/log/waagent.log a využívají funkci systému logrotate pro otočení protokolů.
 
 **OS.EnableRDMA**  
 ```
 Type: Boolean  
 Default: n
 ```
-Pokud sada, agent se pokusí nainstalovat a pak načíst ovladač jádra rozhraní RDMA, který odpovídá verzi firmwaru v základním hardwaru.
+Při nastavení se agent pokusí nainstalovat a pak načíst ovladač jádra RDMA, který odpovídá verzi firmwaru na základním hardwaru.
 
-**OS.RootDeviceScsiTimeout:**  
+**Jiného. RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
 ```
-Toto nastavení konfiguruje SCSI časový limit v sekundách na disku a diskových jednotkách operačního systému. Pokud není nastavena, systému, ve kterém jsou použity výchozí hodnoty.
+Toto nastavení nakonfiguruje časový limit SCSI v sekundách pro disk s operačním systémem a datové jednotky. Pokud není nastavená, použijí se výchozí nastavení systému.
 
 **OS.OpensslPath:**  
 ```
 Type: String  
 Default: None
 ```
-Toto nastavení umožňuje zadat alternativní cesty pro binární pro kryptografické operace openssl.
+Toto nastavení se dá použít k zadání alternativní cesty pro binární soubor OpenSSL, který se má použít pro kryptografické operace.
 
 **HttpProxy.Host, HttpProxy.Port**  
 ```
 Type: String  
 Default: None
 ```
-Pokud sada, agent používá tento proxy server pro přístup k Internetu. 
+Pokud je nastaveno, Agent použije tuto proxy server k přístupu k Internetu. 
 
-**AutoUpdate.Enabled**
+**AutoUpdate. Enabled**
 ```
 Type: Boolean
 Default: y
 ```
-Povolí nebo zakáže automatické aktualizace pro cílový stav zpracování; Výchozí hodnota je povoleno.
+Povolí nebo zakáže automatickou aktualizaci pro zpracování stavu cíle; Výchozí hodnota je povolena.
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
-Využití cloudu Imagemi Ubuntu [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) provádět mnoho úloh konfigurace, které by jinak spravovaly pomocí agenta Azure Linux. Platí následující rozdíly:
+## <a name="ubuntu-cloud-images"></a>Ubuntu cloudové image
+Cloudové image Ubuntu využívají [Cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) k provedení mnoha úloh konfigurace, které by jinak bylo možné spravovat agentem Azure Linux. Platí následující rozdíly:
 
-* **Provisioning.Enabled** výchozí hodnota je "n" Cloud imagemi Ubuntu, který pomocí cloud-init k provedení úloh pro zřízení.
-* Následující parametry konfigurace nemají žádný vliv na Ubuntu cloudových Imagí, které pomocí cloud-init ke správě prostředků disku a záměna prostoru:
+* **Zřizování. povolené** výchozí hodnoty: n v Ubuntu cloudových imagích, které k provádění úkolů zřizování používají Cloud-init.
+* Následující konfigurační parametry nemají žádný vliv na Ubuntu cloudových imagí, které používají Cloud-init ke správě disku prostředků a odkládacího prostoru:
   
-  * **ResourceDisk.Format**
+  * **ResourceDisk. Format**
   * **ResourceDisk.Filesystem**
-  * **ResourceDisk.MountPoint**
+  * **ResourceDisk. přípojný bod**
   * **ResourceDisk.EnableSwap**
   * **ResourceDisk.SwapSizeMB**
 
-* Další informace najdete v tématu záměna prostoru imagemi Ubuntu cloudu během zřizování a nakonfigurovat prostředek disku přípojného bodu na následujících odkazech:
+* Další informace najdete v následujících zdrojích konfigurace přípojného bodu disku prostředku a záměna místa na Ubuntu cloudových imagí během zřizování:
   
-  * [Ubuntu Wiki: Konfigurace oddílů prohození](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: Konfigurace swapových oddílů](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Vkládání vlastních dat do virtuálního počítače Azure](../windows/classic/inject-custom-data.md)
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902309"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102981"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 pro zákaznickou zapojení
 
@@ -97,7 +97,7 @@ Pomocí následujících kroků můžete nakonfigurovat Azure Active Directory p
 
     ![Přidejte oprávnění.](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Po dokončení kroků 1-13 na Azure Portal přejděte k vaší instanci Dynamics 365 for Customer Engagement tak, že přejdete na adresu URL (například https://tenant.crm.dynamics.com).
+14. Po dokončení kroků 1-13 na Azure Portal přejděte k vaší instanci Dynamics 365 for Customer Engagement tak, že přejdete na adresu URL (například `https://tenant.crm.dynamics.com`).
 15. Nastavení přístupu výběrem ikony ozubeného kolečka a **rozšířeného nastavení** v horním navigačním panelu.
 16. Na stránce nastavení v horním navigačním panelu přejděte do nabídky nastavení a vyberte **zabezpečení**.
 17. Po na stránce zabezpečení vyberte **Uživatelé**.  Na stránce Uživatelé vyberte rozevírací seznam povolených uživatelů, aby bylo možné přepnout na **uživatele aplikace**.

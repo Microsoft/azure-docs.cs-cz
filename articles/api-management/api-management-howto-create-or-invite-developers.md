@@ -1,6 +1,6 @@
 ---
-title: Jak spravovat uživatelské účty ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit nebo pozvat uživatele ve službě Azure API Management
+title: Jak spravovat uživatelské účty v Azure API Management | Microsoft Docs
+description: Naučte se vytvářet nebo zvát uživatele v Azure API Management
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,70 +9,69 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241728"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072463"
 ---
-# <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
+# <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů v Azure API Management
 
-Vývojáři ve službě API Management, jsou uživatelé rozhraní API, která zveřejníte pomocí služby API Management. Tato příručka ukazuje na tom, jak vytvořit a pozvat vývojáři používat rozhraní API a produktů, že jste jim zpřístupnili s vaší instancí služby API Management. Informace o správě uživatelských účtů prostřednictvím kódu programu, najdete v článku [entitu uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) v dokumentaci [rozhraní API služby REST pro správu](/rest/api/apimanagement/) odkaz.
+V API Management jsou vývojáři uživateli rozhraní API, které vystavíte pomocí API Management. V této příručce se dozvíte, jak vytvořit a pozvat vývojáře k používání rozhraní API a produktů, které jim zpřístupníte s vaší instancí API Management. Informace o tom, jak spravovat uživatelské účty prostřednictvím kódu programu, najdete v dokumentaci k [entitě uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) v odkazu [API Management REST](/rest/api/apimanagement/) .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Provádění úloh v tomto článku: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
+Dokončení úloh v tomto článku: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-developer"> </a>Vytvoření nového pro vývojáře
+## <a name="create-developer"> </a>Vytvořit nového vývojáře
 
-Pokud chcete přidat nového uživatele, postupujte podle kroků v této části:
+Chcete-li přidat nového uživatele, postupujte podle kroků v této části:
 
-1. Vyberte **uživatelé** karty na levé straně obrazovky.
-2. Stisknutím klávesy **+ přidat**.
+1. Vyberte kartu **Uživatelé** vlevo na obrazovce.
+2. Stiskněte **+ Přidat**.
 3. Zadejte příslušné informace pro uživatele.
 4. Stiskněte **Přidat**.
 
     ![Přidání nového uživatele](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-Ve výchozím nastavení, jsou nově vytvořený vývojářských účtů **aktivní**a přidružené **vývojáři** skupiny. Vývojářské účty, které jsou v **aktivní** stavu je možné přistupovat ke všem rozhraním API, ke kterým má předplatná. Nově vytvořená pro vývojáře přidružit další skupiny, najdete v článku [přidružení skupin k vývojářům][How to associate groups with developers].
+Ve výchozím nastavení jsou nově vytvořené účty pro vývojáře **aktivní**a přidruženy ke skupině **Developers** . Účty pro vývojáře, které jsou v aktivním stavu, se dají použít pro přístup ke všem rozhraním API, pro která mají předplatná. Chcete-li přidružit nově vytvořeného vývojáře k dalším skupinám, přečtěte si téma [jak přidružit skupiny k vývojářům][How to associate groups with developers].
 
-## <a name="invite-developer"> </a>Pozvat vývojář
-Pozvat vývojář, postupujte podle kroků v této části:
+## <a name="invite-developer"> </a>Pozvání vývojáře
+Pokud chcete pozvat vývojáře, postupujte podle kroků v této části:
 
-1. Vyberte **uživatelé** karty na levé straně obrazovky.
-2. Stisknutím klávesy **+ pozvat**.
+1. Vyberte kartu **Uživatelé** vlevo na obrazovce.
+2. Stiskněte klávesu **+ Pozvánka**.
 
-Zobrazí se potvrzovací zpráva, ale nově pozvaný pro vývojáře se nezobrazí v seznamu až po přijetí e-mailové pozvánce. 
+Zobrazí se potvrzovací zpráva, ale nově pozvaný vývojář se v seznamu nezobrazí, dokud nepřijme pozvánku. 
 
-Když vývojář pozvání, odešle e-mail pro vývojáře. Tento e-mail je generována pomocí šablony a přizpůsobit. Další informace najdete v tématu [konfigurovat e-mailové šablony][Configure email templates].
+Po pozvání vývojáře se vývojářovi pošle e-mail. Tento e-mail je vygenerován pomocí šablony a je přizpůsobitelný. Další informace najdete v tématu [Konfigurace e-mailových šablon][Configure email templates].
 
-Po přijetí e-mailové pozvánce se účet stane aktivním.
+Po přijetí pozvánky se účet aktivuje.
 
-## <a name="block-developer"> </a> Deaktivovat ani znovu aktivovat účet pro vývojáře
+## <a name="block-developer"></a> Deaktivuje nebo znovu aktivuje vývojářský účet.
 
-Ve výchozím nastavení, jsou nově vytvořený nebo pozvaný vývojářských účtů **aktivní**. Deaktivovat účet pro vývojáře, klikněte na tlačítko **bloku**. Pokud chcete znovu aktivovat účet blokované pro vývojáře, klikněte na tlačítko **aktivovat**. Blokované vývojářského účtu nelze přístup k portálu pro vývojáře nebo volejte libovolné rozhraní API. Pokud chcete odstranit uživatelský účet, klikněte na tlačítko **odstranit**.
+Ve výchozím nastavení jsou **aktivní**nově vytvořené nebo pozvaní účty pro vývojáře. Chcete-li deaktivovat vývojářský účet, klikněte na tlačítko **blokovat**. Chcete-li znovu aktivovat blokovaný vývojářský účet, klikněte na tlačítko **aktivovat**. Blokovaný vývojářský účet nemá přístup k portálu pro vývojáře ani volání libovolných rozhraní API. Pokud chcete odstranit uživatelský účet, klikněte na **Odstranit**.
 
-Zablokujete určitému uživateli, postupujte podle následujících kroků.
+Pokud chcete uživatele zablokovat, postupujte podle následujících kroků.
 
-1. Vyberte **uživatelé** karty na levé straně obrazovky.
-2. Kliknutím na uživatele, který chcete blokovat.
-3. Stisknutím klávesy **bloku**.
+1. Vyberte kartu **Uživatelé** vlevo na obrazovce.
+2. Klikněte na uživatele, kterého chcete zablokovat.
+3. Stiskněte **blokovat**.
 
 ## <a name="reset-a-user-password"></a>Resetování hesla uživatele
 
-Prostřednictvím kódu programu pracovat s uživatelskými účty, najdete v dokumentaci pro entitu uživatele v [REST API služby API Management](/rest/api/apimanagement/) odkaz. Pokud chcete resetovat heslo uživatelského účtu na určitou hodnotu, můžete použít [aktualizaci uživatele](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) operaci a zadejte požadované heslo.
+Chcete-li programově pracovat s uživatelskými účty, přečtěte si dokumentaci k entitě uživatele v tématu [API Management REST API](/rest/api/apimanagement/) reference. Chcete-li obnovit heslo uživatelského účtu na určitou hodnotu, můžete použít operaci [aktualizovat uživatele](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) a zadat požadované heslo.
 
 ## <a name="next-steps"></a>Další kroky
-Po vytvoření účtu pro vývojáře, můžete ho přidružit k rolím a jeho přihlášení k odběru produktů a rozhraní API. Další informace najdete v tématu [postup vytvoření a používání skupin][How to create and use groups].
+Jakmile se vytvoří účet pro vývojáře, můžete ho přidružit k rolím a přihlásit se k odběru produktů a rozhraní API. Další informace najdete v tématu [Vytvoření a používání skupin][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

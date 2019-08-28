@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c9214d8906ad00744f811782f732b15aeec3a7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057d9beebc106d71183b3c979636bb9c5410b15c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136539"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098376"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Vazba vlastního certifikátu SSL do webové aplikace pomocí Powershellu
+# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Vytvoření vazby vlastního certifikátu SSL k webové aplikaci pomocí PowerShellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak k ní vytvoří vazbu certifikátu SSL vlastního názvu domény. 
 

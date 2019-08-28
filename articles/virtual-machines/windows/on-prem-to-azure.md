@@ -1,6 +1,6 @@
 ---
-title: Migrace z AWS a dalších platforem na Managed Disks v Azure | Dokumentace Microsoftu
-description: Vytvoření virtuálních počítačů v Azure pomocí virtuální pevné disky nahrávány z ostatních cloudů, jako je AWS nebo jiných virtualizačních platforem a začněte využívat Azure Managed Disks.
+title: Migrace z AWS a dalších platforem na Managed Disks v Azure | Microsoft Docs
+description: Vytvářejte virtuální počítače v Azure pomocí VHD odeslaných z jiných cloudů, jako je AWS nebo jiných virtualizačních platforem, a využijte výhod Azure Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roygara
@@ -11,74 +11,73 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42ad7bc10cb7b93bd4db9260f950ae4ca12aba44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61126874"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102593"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
-Můžete nahrát soubory virtuálního pevného disku z AWS nebo v místním řešení virtualizace do Azure k vytvoření virtuálních počítačů, které budou využívat služby Managed Disks. Služba Azure Managed Disks odpadá nutnost spravovat účty úložiště pro virtuální počítače Azure IaaS. Je nutné jenom zadat typ (Premium nebo Standard) a velikost disku je nutné, a Azure vytvoří a spravuje disk za vás. 
+Soubory VHD můžete nahrát z AWS nebo místních virtualizačních řešení do Azure a vytvořit tak virtuální počítače, které využívají Managed Disks. Azure Managed Disks odstraňuje nutnost spravovat účty úložiště pro virtuální počítače Azure s IaaS. Musíte zadat jenom typ (Premium nebo Standard) a velikost disku, kterou potřebujete, a Azure tento disk vytvoří a bude ho spravovat. 
 
-Můžete nahrát zobecněný a specializovaných virtuálních pevných disků. 
-- **Zobecněný virtuální pevný disk** -zaznamenala všechny informace vašeho osobního účtu odebrat, pomocí nástroje Sysprep. 
-- **Specializované virtuální pevný disk** – zachovává uživatelské účty, aplikace a další data o stavu z původního virtuálního počítače. 
+Můžete nahrát generalizované a specializované virtuální pevné disky. 
+- **Zobecněný virtuální pevný disk** – všechny informace o svém osobním účtu se odebraly pomocí nástroje Sysprep. 
+- **Specializované virtuální** pevné disky – udržují uživatelské účty, aplikace a data dalších stavů z původního virtuálního počítače. 
 
 > [!IMPORTANT]
-> Před odesláním jakéhokoli virtuálního pevného disku do Azure, měli byste postupovat podle [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 >
 >
 
 
 | Scénář                                                                                                                         | Dokumentace                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Máte existující instancí EC2 služby AWS, které chcete migrovat virtuální počítače Azure s použitím spravovaných disků                              | [Přesun virtuálního počítače z Amazon Web Services (AWS) do Azure](aws-to-azure.md)                           |
-| Máte virtuální počítač z jiné virtualizační platforma, která chcete použít jako image k vytvoření několika virtuálních počítačů Azure. | [Nahrání generalizovaného virtuálního pevného disku a použít ho k vytvoření nového virtuálního počítače v Azure](upload-generalized-managed.md) |
-| Máte jednoznačně vlastní virtuální počítač, který chcete znovu vytvořit v Azure.                                                      | [Nahrání specializovaného virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](create-vm-specialized.md)         |
+| Máte existující instance EC2 AWS, které byste chtěli migrovat na virtuální počítače Azure pomocí spravovaných disků.                              | [Přesunutí virtuálního počítače z Amazon Web Services (AWS) do Azure](aws-to-azure.md)                           |
+| Máte virtuální počítač z jiné virtualizační platformy, kterou byste chtěli použít jako image k vytvoření několika virtuálních počítačů Azure. | [Nahrajte zobecněný virtuální pevný disk a použijte ho k vytvoření nového virtuálního počítače v Azure.](upload-generalized-managed.md) |
+| Máte jedinečně přizpůsobený virtuální počítač, který byste chtěli znovu vytvořit v Azure.                                                      | [Nahrání specializovaného virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](create-vm-specialized.md)         |
 
 
-## <a name="overview-of-managed-disks"></a>Přehled služby Managed Disks
+## <a name="overview-of-managed-disks"></a>Přehled Managed Disks
 
-Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že si nemusíte spravovat účty úložiště. Managed Disks také výhody z vyšší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované od sebe, aby jediný bod selhání. Automaticky umístí disky různých virtuálních počítačů ve skupině dostupnosti v různých Uložišť jednotek škálování (razítka) který omezuje dopad selhání škálovací jednotky jednoho úložiště se situace způsobena vlivem hardwaru a softwaru selhání.
-Podle svých potřeb, můžete vybrat z čtyři typy úložišť. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](disks-types.md).
+Azure Managed Disks zjednodušuje správu virtuálních počítačů tím, že odstraňuje nutnost spravovat účty úložiště. Managed Disks taky využívat lepší spolehlivost virtuálních počítačů ve skupině dostupnosti. Zajišťuje, aby byly disky různých virtuálních počítačů ve skupině dostupnosti dostatečně izolované, aby nedocházelo k jednomu bodu selhání. Automaticky umístí disky různých virtuálních počítačů do skupiny dostupnosti v různých jednotkách škálování úložiště (razítka), které omezují dopad selhání jedné jednotky úložiště kvůli selháním hardwaru a softwaru.
+Podle svých potřeb můžete vybírat ze čtyř typů úložišť. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](disks-types.md).
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace do služby Managed Disks
+## <a name="plan-for-the-migration-to-managed-disks"></a>Plánování migrace na Managed Disks
 
-V této části vám umožní nejlepší rozhodnutí o typech virtuálních počítačů a disk.
+Tato část vám pomůže udělat si nejlepší rozhodnutí o typech virtuálních počítačů a disků.
 
-Pokud plánujete migraci z nespravovaných disků na managed disks, byste měli vědět, které uživatelé s [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) role nebude možné změnit velikost virtuálního počítače (jak se může před převod). Je to proto, že virtuální počítače se spravovanými disky vyžadují, aby uživatel měl oprávnění Microsoft.Compute/disks/write pro disky s operačním systémem.
+Pokud plánujete migrovat z nespravovaných disků na Managed disks, měli byste si být vědomi, že uživatelé s rolí [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nebudou moct měnit velikost virtuálního počítače (protože by to bylo možné před převodem). Důvodem je to, že virtuální počítače se spravovanými disky vyžadují, aby měl uživatel na discích s operačním systémem oprávnění Microsoft. COMPUTE/disks/Write.
 
 ### <a name="location"></a>Location
 
-Vyberte umístění, kde jsou k dispozici Azure Managed Disks. Pokud provádíte migraci do služby Managed Disks úrovně Premium, ujistěte se také, že Premium storage je dostupné v oblasti, kde máte v úmyslu migrovat do. Zobrazit [služeb Azure podle oblasti](https://azure.microsoft.com/regions/#services) aktuální informace o dostupných umístění.
+Vyberte umístění, kde jsou k dispozici Azure Managed Disks. Pokud migrujete na Premium Managed Disks, zajistěte, aby služba Premium Storage byla dostupná v oblasti, na kterou plánujete migrovat. Aktuální informace o dostupných umístěních najdete v tématu [služby Azure podle oblasti](https://azure.microsoft.com/regions/#services) .
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů
 
-Pokud provádíte migraci do služby Managed Disks úrovně Premium, budete muset aktualizovat velikost virtuálního počítače do Premium Storage podporuje velikost dostupná v oblasti, kde je umístěn virtuální počítač. Kontrola velikosti virtuálních počítačů, které jsou schopné Premium Storage. Specifikace velikosti virtuálního počítače Azure jsou uvedeny v [velikosti virtuálních počítačů](sizes.md).
-Zkontrolujte charakteristiky výkonu virtuálních počítačů, které pracují se službou Premium Storage a zvolte nejvhodnější velikosti virtuálního počítače, který nejlépe vyhovuje vaší úlohy. Ujistěte se, že je dostatečná šířka pásma dostupné na virtuálním počítači Centrum umožňující prosazovat diskové přenosy.
+Pokud migrujete na Premium Managed Disks, je nutné aktualizovat velikost virtuálního počítače na Premium Storage dostupné velikosti v oblasti, kde se nachází virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou Premium Storage podporuje. Specifikace velikosti virtuálního počítače Azure jsou uvedené v části [velikosti pro virtuální počítače](sizes.md).
+Přečtěte si výkonnostní charakteristiky virtuálních počítačů, které pracují se Premium Storage a vyberte nejvhodnější velikost virtuálního počítače, která nejlépe vyhovuje vašim úlohám. Ujistěte se, že je ve vašem VIRTUÁLNÍm počítači k dispozici dostatečná šířka pásma, aby bylo možné disk provozovat.
 
 ### <a name="disk-sizes"></a>Velikost disků
 
-**Premium Managed Disks**
+**Managed Disks úrovně Premium**
 
-Existuje sedm typů spravovaných disků úrovně premium se dají s virtuálním Počítačem a obsahují konkrétní IOPs a propustnost omezení. Vzít v úvahu tato omezení, pokud vyberete disk typu Premium pro virtuální počítač podle potřeb vaší aplikace z hlediska kapacity, výkonu, škálovatelnosti a načte ve špičce.
+K virtuálnímu počítači se dá použít sedm typů disků úrovně Premium, které se dají používat s vaším virtuálním počítačem, přičemž každý z nich má konkrétní omezení IOPs a propustnost Vezměte v úvahu tato omezení při výběru typu disku Premium pro váš virtuální počítač na základě potřeb vaší aplikace z důvodu kapacity, výkonu, škálovatelnosti a zatížení ve špičce.
 
-| Typ disky Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Typ disků úrovně Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Velikost disku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
 | Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 125 MB za sekundu |150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
 
-**Spravované disky úrovně Standard**
+**Standardní Managed Disks**
 
-Existuje sedm typů spravované disky úrovně standard, které lze použít s virtuálním Počítačem. Každý z nich mít jiné kapacitě, ale mají stejné vstupně-výstupních operací a omezení propustnosti. Zvolte typ služby Standard Managed disks na základě potřeb kapacity vaší aplikace.
+Existuje sedm typů standardních spravovaných disků, které se dají používat s vaším VIRTUÁLNÍm počítačem. Každá z nich má různou kapacitu, ale má stejný počet vstupně-výstupních operací a omezení propustnosti. Vyberte typ Standard Managed disks založený na potřebách kapacity vaší aplikace.
 
 | Disk typu Standard  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
@@ -86,17 +85,17 @@ Existuje sedm typů spravované disky úrovně standard, které lze použít s v
 | Vstupně-výstupní operace za sekundu / disk       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Propustnost / disk | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu |60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 60 MB za sekundu | 
 
-### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti na disku 
+### <a name="disk-caching-policy"></a>Zásady ukládání do mezipaměti disku 
 
-**Premium Managed Disks**
+**Managed Disks úrovně Premium**
 
-Ve výchozím nastavení, disk zásady ukládání do mezipaměti je *jen pro čtení* pro všechny úrovně Premium datové disky, a *čtení a zápis* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro zajištění optimálního výkonu pro vaše aplikace IOs. Náročné na zápis nebo jen pro zápis datové disky (jako jsou například soubory protokolu serveru SQL Server) Zakázání používání mezipaměti disku, takže můžete dosáhnout lepší výkon aplikace.
+Ve výchozím nastavení jsou zásady ukládání do mezipaměti disku jen pro *čtení* pro všechny disky Premium data a *ke čtení i zápisu* pro disk s operačním systémem Premium připojené k virtuálnímu počítači. Toto nastavení konfigurace se doporučuje pro dosažení optimálního výkonu pro IOs vaší aplikace. U datových disků, které jsou výhradně pro zápis nebo pouze pro zápis (například souborů protokolu SQL Server), zakažte ukládání do mezipaměti disku, abyste dosáhli lepšího výkonu aplikace.
 
 ### <a name="pricing"></a>Ceny
 
-Zkontrolujte [ceny pro Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Ceny služby Managed Disks úrovně Premium je stejná jako nespravované disky Premium. Ale ceny pro Standard Managed Disks se liší od Unmanaged Disks úrovně Standard.
+Projděte si [ceny Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Ceny Managed Disks Premium jsou stejné jako nespravované disky Premium. Ceny pro standardní Managed Disks se ale liší od standardních nespravovaných disků.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Před odesláním jakéhokoli virtuálního pevného disku do Azure, měli byste postupovat podle [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Před nahráním libovolného virtuálního pevného disku do Azure byste měli postupovat po [přípravě virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,6 +1,6 @@
 ---
-title: kvóty virtuálních procesorů pro Azure | Dokumentace Microsoftu
-description: Další informace o kvóty virtuálních procesorů pro Azure.
+title: vCPU kvóty pro Azure | Microsoft Docs
+description: Přečtěte si o kvótách vCPU pro Azure.
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,26 +11,25 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 8912387583c24945de22bcb029d40e4d4766b1fb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 48da419cdf5b4555e06b2a87d4b6821276777826
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719881"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102473"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů pro virtuální počítače
 
-Kvóty virtuálních procesorů pro virtuální počítače a škálovací sady virtuálních počítačů jsou uspořádány ve dvou úrovních pro každé předplatné, v jednotlivých oblastech. První vrstva je celkový počet místních virtuálních procesorů a druhé vrstvy je různé velikost řady počet jader virtuálního počítače jako je například virtuální procesory řady D-series. Pokaždé, když je nový virtuální počítač nasazený virtuálních procesorů pro virtuální počítač nesmí překročit kvóty virtuálních procesorů pro řadu velikostí virtuálních počítačů nebo celkový počet virtuálních procesorů regionální kvóta. Pokud některý z těchto kvót je překročena, nasazení virtuálního počítače nebude možné. Je také kvóty pro celkový počet virtuálních počítačů v oblasti. Podrobnosti o každé z těchto kvót si můžete prohlédnout ve **využití a kvóty** část **předplatné** stránku [webu Azure portal](https://portal.azure.com), nebo můžete zadat dotaz na hodnoty pomocí Prostředí PowerShell.
+Kvóty vCPU pro virtuální počítače a sady škálování virtuálních počítačů jsou seřazené do dvou vrstev pro každé předplatné v každé oblasti. První z nich je celková oblast vCPU a druhá úroveň je různými jádry velikosti virtuálních počítačů, jako je vCPU řady D-Series. Kdykoliv je nasazený nový virtuální počítač, vCPU pro virtuální počítač nesmí překročit kvótu vCPU pro rodinu velikosti virtuálního počítače nebo celkovou kvótu vCPU v oblasti regionálního provozu. Pokud dojde k překročení některé z těchto kvót, nasazení virtuálního počítače se nepovolí. K dispozici je také kvóta pro celkový počet virtuálních počítačů v dané oblasti. Podrobnosti o každé z těchto kvót najdete v části **využití a kvóty** stránky předplatného v [Azure Portal](https://portal.azure.com)nebo se můžete dotazovat na hodnoty pomocí PowerShellu.
 
  [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)] 
  
 ## <a name="check-usage"></a>Kontrola využití
 
-Můžete použít [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) rutiny můžete zkontrolovat na využití kvóty.
+Pomocí rutiny [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) můžete ověřit využití kvóty.
 
 ```azurepowershell-interactive
 Get-AzVMUsage -Location "East US"
@@ -80,10 +79,10 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>Rezervované instance virtuálních počítačů
-Rezervované instance virtuálních počítačů, které mají rozsah v rámci jednoho předplatného bez flexibilitu velikost virtuálního počítače, bude přidán nový aspekt do kvóty virtuálních procesorů. Tyto hodnoty popisuje počet instancí je deklarovaná velikost, který musí být nasaditelný v rámci předplatného. Fungují jako zástupný symbol v kvóty systému a zajistit tak, že tato kvóta je vyhrazený pro Ujistěte se, že je možné nasadit v rámci předplatného rezervované instance virtuálních počítačů. Například pokud má 10 Standard_D1 rezervované instance Virtuálních limit využití pro konkrétní předplatné Standard_D1 rezervované instance virtuálních počítačů bude 10. To způsobí, že Azure a zajistěte, aby vždy alespoň 10 virtuálních procesorů ve nejsou k dispozici celkový počet překročení kvóty virtuálních procesorů se použije pro instance Standard_D1 a nejsou k dispozici v rámci kvóty virtuálních procesorů Standard, řada D se použije pro instance Standard_D1 minimálně 10 virtuálních procesorů.
+Pro rezervované instance virtuálních počítačů, které jsou vymezené na jedno předplatné bez flexibilní velikosti virtuálních počítačů, se do kvót vCPU přidá nový aspekt. Tyto hodnoty popisují počet instancí uvedené velikosti, které je nutné nasadit v předplatném. Fungují jako zástupný symbol v systému kvót, aby bylo zajištěno, že je kvóta vyhrazena pro zajištění nasazení rezervovaných instancí virtuálních počítačů v rámci předplatného. Pokud má například konkrétní předplatné 10 Standard_D1 rezervovaných instancí virtuálních počítačů, omezení využití pro Standard_D1 rezervované instance virtuálních počítačů bude 10. Tím dojde k tomu, že Azure zajistí, že bude k dispozici vždy aspoň 10 vCPU v celkové místní kvótě vCPU, která se má použít pro instance Standard_D1, a v standardní kvótě pro vCPU řady D je k dispozici aspoň 10 vCPU, které se dají použít pro instance Standard_D1.
 
-Pokud k nákupu rezervované instance jednoho předplatného se vyžaduje zvýšení kvóty, můžete si [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) v rámci předplatného.
+Pokud se k nákupu jediného předplatného na rezervovaném počítači vyžaduje zvýšení kvóty, můžete [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) u svého předplatného.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o fakturaci a kvóty najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+Další informace o fakturaci a kvótách najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).

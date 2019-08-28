@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61020985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096038"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
@@ -47,13 +46,13 @@ Pomocí proxy služby Azure Functions můžete upravit požadavků a odpovědí 
 
 Ve výchozím nastavení je požadavek back-end inicializován jako kopii původního požadavku. Kromě nastavení adresa URL back-end, můžete provádět změny metody HTTP, hlaviček a parametrů řetězce dotazu. Změněné hodnoty může odkazovat na [nastavení aplikace] a [parametry z původního požadavku klienta].
 
-Požadavky na back-end lze upravit na portálu tak, že rozbalíte *přepsání žádosti* na stránce Podrobnosti o proxy serveru. 
+Back-endové požadavky lze upravit na portálu rozbalením části *přepsání požadavku* na stránce s podrobnostmi o proxy serveru. 
 
 ### <a name="modify-response"></a>Upravit odpověď
 
 Ve výchozím nastavení odpověď klienta inicializován jako kopii odpovědi back-end. Stavový kód odpovědi, frázi důvodu, záhlaví a text můžete provádět změny. Změněné hodnoty může odkazovat na [nastavení aplikace], [parametry z původního požadavku klienta], a [parametry z odpovědi back-end].
 
-Požadavky na back-end lze upravit na portálu tak, že rozbalíte *přepsání odpovědi* na stránce Podrobnosti o proxy serveru. 
+Back-endové požadavky lze upravit na portálu rozbalením části *přepsání odpovědi* na stránce s podrobnostmi o proxy serveru. 
 
 ## <a name="using-variables"></a>Použití proměnných
 
@@ -80,17 +79,17 @@ Pokud proxy server má šablonu trasy, jako například `/pets/{petId}`, adresa 
 #### <a name="additional-request-parameters"></a>Další parametry požadavku
 Kromě parametrů šablony trasy je možné v rozšíření konfiguračních hodnot následující hodnoty:
 
-* **{request.method}** : Metoda protokolu HTTP, který se používá u původního požadavku.
-* **{request.headers.\<HeaderName\>}** : Hlavičky, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, hodnota bude prázdný řetězec.
-* **{request.querystring. \<ParameterName\>}** : Parametr řetězce dotazu, který může číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete číst. Pokud parametr není k dispozici v požadavku, hodnota bude prázdný řetězec.
+* **{Request. Method}** : Metoda HTTP, která se používá pro původní požadavek.
+* **{request.headers.\<HeaderName\>}** : Záhlaví, které lze číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, hodnota bude prázdný řetězec.
+* **{Request. QueryString.\< ParameterName\>}** : Parametr řetězce dotazu, který lze číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete číst. Pokud parametr není k dispozici v požadavku, hodnota bude prázdný řetězec.
 
 ### <a name="response-parameters"></a>Odkaz na odpověď back-end parametry
 
 Parametry odpovědi může sloužit jako součást úpravy odpověď klientovi. V rozšíření konfiguračních hodnot je možné následující hodnoty:
 
-* **{backend.response.statusCode}** : Stavový kód HTTP vrácená v odpovědi back-end.
-* **{backend.response.statusReason}** : Fráze důvodu HTTP vrácená v odpovědi back-end.
-* **{backend.response.headers.\<HeaderName\>}** : Hlavičky, který může číst z odpovědi back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví chcete číst. Pokud hlavičce nejsou zahrnuty v odpovědi, hodnota bude prázdný řetězec.
+* **{backend.response.statusCode}** : Stavový kód HTTP vrácený na back-endové odpovědi.
+* **{back-end. Response. statusReason}** : Fráze důvod HTTP vrácená na back-endové odpovědi.
+* **{back-endu. Response.\< Headers. Záhlaví\>}** : Záhlaví, které lze číst z back-endové odpovědi. Nahraďte *\<HeaderName\>* s názvem záhlaví chcete číst. Pokud hlavičce nejsou zahrnuty v odpovědi, hodnota bude prázdný řetězec.
 
 ### <a name="use-appsettings"></a>Nastavení odkazu na aplikaci
 
@@ -139,19 +138,19 @@ Proxy servery, které nakonfigurujete jsou uložené v *proxies.json* soubor, kt
 
 Každý proxy má popisný název, například *proxy1* v předchozím příkladu. Odpovídající objekt definice proxy serveru je určené následující vlastnosti:
 
-* **matchCondition**: Vyžaduje--objekt definující požadavků, které aktivují provádění tento proxy server. Obsahuje dvě vlastnosti, které jsou sdíleny s [Aktivační události HTTP]:
-    * _metody_: Pole metody HTTP, které odpovídá proxy serveru. Pokud se nezadá, proxy serveru reaguje na všechny metody HTTP na trasy.
-    * _trasa_: Požadováno – definuje šablonu trasy, řízení, které žádosti adresy URL vašeho proxy serveru reaguje na. Na rozdíl od v aktivační události HTTP, není žádná výchozí hodnota.
-* **backendUri**: Adresa URL back-end prostředků, ke kterému by měl být požadavek směrovány přes proxy server. Tato hodnota může odkazovat nastavení aplikace a parametry z původního požadavku klienta. Pokud tato vlastnost není zahrnutý, Azure Functions odpoví HTTP 200 OK.
-* **requestOverrides**: Objekt, který definuje transformaci na požadavek back-end. Zobrazit [Definování requestOverrides objektu].
-* **responseOverrides**: Objekt, který definuje transformaci na odpověď klienta. Zobrazit [Definování responseOverrides objektu].
+* **matchCondition**: Požadováno – objekt definující požadavky, které aktivují spuštění tohoto proxy serveru. Obsahuje dvě vlastnosti, které jsou sdíleny s [Aktivační události HTTP]:
+    * _metody_: Pole metod HTTP, na které proxy reaguje. Pokud se nezadá, proxy serveru reaguje na všechny metody HTTP na trasy.
+    * _trasa_: Požadováno – definuje šablonu směrování, která určuje, na které žádosti URL na vyžádání proxy odpoví. Na rozdíl od v aktivační události HTTP, není žádná výchozí hodnota.
+* **backendUri**: Adresa URL záložního prostředku, na který má být požadavek proxy. Tato hodnota může odkazovat nastavení aplikace a parametry z původního požadavku klienta. Pokud tato vlastnost není zahrnutý, Azure Functions odpoví HTTP 200 OK.
+* **requestOverrides**: Objekt, který definuje transformace na back-end požadavek. Zobrazit [Definování requestOverrides objektu].
+* **responseOverrides**: Objekt, který definuje transformace na reakci klienta. Zobrazit [Definování responseOverrides objektu].
 
 > [!NOTE] 
 > *Trasy* nerespektuje vlastnost v proxy služby Azure Functions *routePrefix* vlastnost konfigurace hostitele aplikace Function App. Pokud chcete například zahrnout předponu `/api`, musí být zahrnut v *trasy* vlastnost.
 
 ### <a name="disableProxies"></a> Zakázat jednotlivé proxy
 
-Jednotlivé proxy můžete zakázat přidáním `"disabled": true` k proxy serveru v `proxies.json` souboru. To způsobí, že všechny žádosti matchCondition schůzku vrátit kód 404.
+Jednotlivé proxy můžete zakázat přidáním `"disabled": true` k proxy serveru v `proxies.json` souboru. To způsobí, že všechny žádosti, které splňují matchCondition, vrátí 404.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -176,7 +175,7 @@ Chování proxy můžete ovlivnit pomocí několika nastavení aplikace. Všechn
 
 ### <a name="reservedChars"></a> Vyhrazené znaky (formátování řetězce)
 
-Proxy servery číst všechny řetězce z JSON soubor, pomocí \ jako escape symbol. Proxy servery také interpretaci složených závorek. Zobrazit úplnou sadu následující příklady.
+Proxy přečtou všechny řetězce ze souboru JSON pomocí znaku \ jako řídicího symbolu. Proxy objekty také interpretují složené závorky. Podívejte se na celou sadu níže uvedených příkladů.
 
 |Znak|Řídicí znak|Příklad:|
 |-|-|-|
@@ -188,9 +187,9 @@ Proxy servery číst všechny řetězce z JSON soubor, pomocí \ jako escape sym
 
 Objekt requestOverrides definuje změny provedené na požadavek při volání na prostředek back-end. Objekt je definován následující vlastnosti:
 
-* **backend.Request.Method**: Metoda protokolu HTTP, který se používá k volání back endu.
-* **backend.Request.QueryString. \<ParameterName\>** : Parametr řetězce dotazu, který lze nastavit pro volání do back endu. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete nastavit. Pokud je zadán prázdný řetězec, parametr není zahrnutý v požadavku back-end.
-* **backend.request.headers.\<HeaderName\>** : Záhlaví, které lze nastavit pro volání do back endu. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v požadavku back-end.
+* **back-end. Request. Method**: Metoda HTTP, která se používá k volání back-endu.
+* **back-end. Request. QueryString. ParameterName:\> \<** Parametr řetězce dotazu, který lze nastavit pro volání do back-endu. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete nastavit. Pokud je zadán prázdný řetězec, parametr není zahrnutý v požadavku back-end.
+* **backend.request.headers.\<HeaderName\>** : Záhlaví, které lze nastavit pro volání do back-endu. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v požadavku back-end.
 
 Hodnoty můžete odkazovat na parametry a nastavení aplikace z původního požadavku klienta.
 
@@ -219,10 +218,10 @@ Příklad konfigurace může vypadat nějak takto:
 
 Objekt requestOverrides definuje změny provedené v odpovědi, který je předán zpět do klienta. Objekt je definován následující vlastnosti:
 
-* **response.statusCode**: Stavový kód HTTP má být vrácena klientovi.
-* **response.statusReason**: Fráze důvodu HTTP má být vrácena klientovi.
-* **Response.body**: Řetězcové vyjádření abych mohl být vrácen do klienta.
-* **response.headers.\<HeaderName\>** : Záhlaví, které lze nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
+* **response.statusCode**: Stavový kód protokolu HTTP, který má být vrácen klientovi.
+* **Response. statusReason**: Fráze důvod HTTP, která se má vrátit klientovi.
+* **Response. body**: Řetězcové vyjádření těla, které má být vráceno klientovi.
+* **response.headers.\<HeaderName\>** : Záhlaví, které lze nastavit pro odpověď na klienta. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
 
 Hodnoty, se může odkazovat na nastavení aplikace, parametry z původního požadavku klienta a parametry z odpovědi back-end.
 

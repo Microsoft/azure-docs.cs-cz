@@ -1,52 +1,51 @@
 ---
 title: Ruční instalace nebo aktualizace rozšíření vazby Azure Functions
-description: Zjistěte, jak nainstalovat nebo aktualizovat rozšíření vazby Azure Functions pro nasazenou funkci aplikace.
+description: Přečtěte si, jak nainstalovat nebo aktualizovat rozšíření vazby Azure Functions pro nasazené aplikace Function App.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Služba Azure functions, functions, rozšíření NuGet, aktualizace vazeb
+keywords: Azure Functions, Functions, rozšíření vazby, NuGet, aktualizace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035716"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085059"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions na portálu
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions z portálu
 
-Modul runtime verze 2.x Azure Functions používá rozšíření vazby k implementaci kódu pro triggery a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření, je v podstatě nainstalovat balíček. Při vytváření funkcí, tak, jak nainstalovat rozšíření vazby závisí na vývojové prostředí. Další informace najdete v tématu [registraci rozšíření vazby](./functions-bindings-register.md) v aktivační události a vazby článku.
+Azure Functions verze 2. x runtime používá rozšíření vazby k implementaci kódu pro aktivační události a vazby. Rozšíření vazby jsou k dispozici v balíčcích NuGet. K registraci rozšíření v podstatě nainstalujete balíček. Při vývoji funkcí závisí způsob instalace rozšíření vazby na vývojovém prostředí. Další informace najdete v tématu [Registrace rozšíření vazby](./functions-bindings-register.md) v článku triggery a vazby.
 
-V některých případech budete muset ručně nainstalovat nebo aktualizovat rozšíření vazby na webu Azure Portal. Například budete muset aktualizovat registrované vazby na novější verzi. Také můžete potřebovat k registraci podporovanou vazbu, která nejde nainstalovat v **integrace** karta na portálu.
+Někdy je nutné ručně nainstalovat nebo aktualizovat rozšíření vazby v Azure Portal. Například může být nutné aktualizovat registrovanou vazbu na novější verzi. Je také možné, že budete muset zaregistrovat podporovanou vazbu, která se nedá nainstalovat na kartě **integrace** na portálu.
 
 ## <a name="install-a-binding-extension"></a>Instalace rozšíření vazby
 
-Pomocí následujících kroků ruční instalace nebo aktualizace rozšíření z portálu.
+Pomocí následujícího postupu můžete ručně nainstalovat nebo aktualizovat rozšíření z portálu.
 
-1. V [webu Azure portal](https://portal.azure.com), vyhledejte aplikaci function app a vyberte ho. Zvolte **přehled** kartě a vyberte **Zastavit**.  Zastavuje se aplikace function app odemkne soubory tak, že lze provést změny.
+1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji. Zvolte kartu **Přehled** a vyberte **zastavit**.  Zastavení aplikace Function App odemkne soubory, aby bylo možné provádět změny.
 
-1. Zvolte **funkce platformy** kartu a v části **nástroje pro vývoj** vyberte **Rozšířené nástroje (Kudu)** . Koncový bod Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) se otevře v novém okně.
+1. Zvolte kartu **funkce platformy** a v části **vývojové nástroje** vyberte **Rozšířené nástroje (Kudu)** . Koncový bod Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) se otevře v novém okně.
 
-1. V okně Kudu vyberte **konzolou pro ladění** > **CMD**.  
+1. V okně Kudu vyberte **ladit konzolu** > **cmd**.  
 
-1. V příkazovém řádku přejděte do `D:\home\site\wwwroot` a vyberte ikonu Odstranit vedle `bin` se odstranit složku. Vyberte **OK** potvrďte odstranění.
+1. V příkazovém okně přejděte na `D:\home\site\wwwroot` a vyberte ikonu Odstranit `bin` vedle pro odstranění složky. Kliknutím na **OK** potvrďte odstranění.
 
-1. Zvolte ikonu úprav vedle `extensions.csproj` soubor, který definuje rozšíření vazby pro danou aplikaci funkcí. Soubor projektu je otevřený v editoru online.
+1. Klikněte na ikonu Upravit vedle `extensions.csproj` souboru, který definuje rozšíření vazby pro aplikaci Function App. Soubor projektu je otevřen v online editoru.
 
-1. Ujistěte se, vyžaduje přidání a aktualizace **PackageReference** položky v **ItemGroup**a pak vyberte **Uložit**. Aktuální seznam podporovaných balíčků verzí najdete v [balíčky, které potřebujeme, abychom?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) článku na wikiwebu. Všechny tři služby Azure Storage vazby vyžadují Microsoft.Azure.WebJobs.Extensions.Storage balíčku.
+1. Proveďte požadované dodatky a aktualizace položek **PackageReference** ve všech položkách a pak vyberte **Save (Uložit**). Aktuální seznam podporovaných verzí balíčku najdete v článku [Jaké balíčky](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) potřebuji? článek na wikiwebu. Všechny tři Azure Storage vazby vyžadují balíček Microsoft. Azure. WebJobs. Extensions. Storage.
 
-1. Z `wwwroot` složky, spusťte následující příkaz k opětovnému sestavení odkazovaných sestavení v `bin` složky.
+1. Ze složky spusťte následující příkaz pro opětovné sestavení odkazovaného sestavení `bin` ve složce. `wwwroot`
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Zpátky **přehled** karta na portálu, zvolte **spustit** restartovat aplikaci function app.
+1. Zpátky na kartě **Přehled** na portálu klikněte na tlačítko **Start** a restartujte aplikaci Function App.
 
 ## <a name="next-steps"></a>Další postup
 

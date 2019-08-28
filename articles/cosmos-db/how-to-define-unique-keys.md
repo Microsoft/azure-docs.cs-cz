@@ -3,15 +3,15 @@ title: Definování jedinečných klíčů pro kontejner Azure Cosmos
 description: Naučte se definovat jedinečné klíče pro kontejner Azure Cosmos.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 313dd07c2b8eeb5684310b57d74053d3cbc1b5e1
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 67b6ca1914d1728930c29c4a0bbca6cf86753da9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356397"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093328"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 

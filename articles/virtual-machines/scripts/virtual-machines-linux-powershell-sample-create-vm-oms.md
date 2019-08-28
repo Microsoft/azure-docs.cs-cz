@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure Powershellu – protokoly Azure Monitor | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – protokoly Azure monitoru
+title: Ukázka skriptu Azure PowerShell – Azure Monitor protokoly | Microsoft Docs
+description: Ukázka skriptu Azure PowerShell – protokoly Azure Monitor
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e05f146a45eebd257c0a7648573252d1784d21e3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309418427da70eea6db40936477845698b5415fd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703352"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090997"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření Azure Monitor virtuálního počítače pomocí Powershellu
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Vytvoření virtuálního počítače s Azure Monitor pomocí prostředí PowerShell
 
 Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru služby Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 

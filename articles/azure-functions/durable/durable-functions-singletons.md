@@ -1,29 +1,28 @@
 ---
-title: Jednotlivé prvky pro Durable Functions – Azure
-description: Jak používat jednotlivé prvky v rozšíření Durable Functions pro službu Azure Functions.
+title: Singleton pro Durable Functions – Azure
+description: Způsob použití typu Singleton v rozšíření Durable Functions pro Azure Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683806"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097937"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Jednotlivý prvek orchestrátorů v Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Orchestrace singleton v Durable Functions (Azure Functions)
 
-Pro úlohy na pozadí, který je často potřeba zajistit byla najednou spuštěna této jenom jeden výskyt určitého produktu orchestrator. To můžete udělat [Durable Functions](durable-functions-overview.md) přiřazením konkrétní ID instance pro orchestrátor při jejím vytváření.
+Pro úlohy na pozadí často potřebujete zajistit, aby v jednom okamžiku běžela jenom jedna instance konkrétního nástroje Orchestrator. To lze provést v [Durable Functions](durable-functions-overview.md) přiřazením konkrétního ID instance ke Orchestrator při jeho vytváření.
 
-## <a name="singleton-example"></a>Příklad typu singleton
+## <a name="singleton-example"></a>Příklad typu Singleton
 
-Následující C# a JavaScript příklady ukazují funkci triggeru HTTP, která vytvoří Orchestrace úloh na pozadí typu singleton. Kód se zajistí, že existuje pouze jedna instance pro ID zadané instance.
+Následující C# a javascriptové příklady ukazují funkci triggeru http, která vytvoří orchestraci úlohy na pozadí s jedním prvkem. Kód zajišťuje, aby pro zadané ID instance existovala pouze jedna instance.
 
 ### <a name="c"></a>C#
 
@@ -56,7 +55,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 Tady je soubor function.json:
 ```json
@@ -112,17 +111,17 @@ module.exports = async function(context, req) {
 };
 ```
 
-Ve výchozím nastavení instance, ID se náhodně generované identifikátory GUID. Ale v takovém případě je předané instance ID v datech trasy z adresy URL. Kód volá [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) nebo `getStatus` (JavaScript) na kontrola, zda mají zadané ID instance je už spuštěná. Pokud ne, je vytvořena instance s číslem ID této.
+Ve výchozím nastavení jsou identifikátory instancí náhodně generované identifikátory GUID. V tomto případě se ale ID instance předává v datech směrování z adresy URL. Kód volá [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) nebo `getStatus` (JavaScript) pro kontrolu, zda instance se zadaným ID již běží. V takovém případě je vytvořena instance s tímto ID.
 
 > [!WARNING]
-> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Při vývoji místně v JavaScriptu budete muset nastavit proměnnou `WEBSITE_HOSTNAME` prostředí na `localhost:<port>`, ex. `localhost:7071`pro použití metod v `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
-> V této ukázce je potenciální konflikt časování. Pokud se dvě instance **HttpStartSingle** být prováděna současně, obě volání funkce oznámí úspěšné, ale ve skutečnosti se spustí Orchestrace pouze jednu instanci. V závislosti na požadavcích může to mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, že žádné dva požadavky mohou být tato funkce pro aktivaci prováděna současně.
+> V této ukázce je potenciální podmínka časování. Pokud se dvě instance **HttpStartSingle** spustí souběžně, obě volání funkce budou hlásit úspěch, ale pouze jedna instance orchestrace bude skutečně spuštěna. V závislosti na vašich požadavcích může to mít nežádoucí vedlejší účinky. Z tohoto důvodu je důležité zajistit, aby žádné dvě požadavky nemohly současně spouštět tuto triggerovou funkci.
 
-Podrobnosti implementace funkce orchestrátoru není ve skutečnosti důležitá. Může to být funkce regulární orchestrátoru, který při spuštění a dokončení, nebo to může být ten, který spouští navždy (to znamená, [externí Orchestrace](durable-functions-eternal-orchestrations.md)). Důležité je, že existuje pouze někdy jedna instance spuštění najednou.
+Podrobnosti implementace funkce Orchestrator nezáleží na tom, jaké jsou ve skutečnosti. Může se jednat o běžnou funkci Orchestrator, která se spustí a dokončí, nebo to může být jedna z nich, která je trvale spuštěná (to znamená [orchestrace externí](durable-functions-eternal-orchestrations.md)). Důležitým bodem je, že v jednu chvíli běží jenom jedna instance.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak volat dílčí Orchestrace](durable-functions-sub-orchestrations.md)
+> [Naučte se volat dílčí orchestrace.](durable-functions-sub-orchestrations.md)

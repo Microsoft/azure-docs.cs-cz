@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: aabf0d30-04eb-4d34-b44a-69f8bfb84f22
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 91c6d0446d47e118a4e607ff985e06ff5e43e1f7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e14a12543b95f3495e91e4a80880ac586ba911a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884056"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088306"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů s Windows v Azure
 
@@ -61,7 +60,7 @@ Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](
 
 Přečtěte si další informace o výpočetním výkonu pro virtuální počítače s Windows pomocí [skóre srovnávacího testu CoreMark](compute-benchmark-scores.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o různých velikostech virtuálních počítačů, které jsou k dispozici:
 - [Obecné účely](sizes-general.md)

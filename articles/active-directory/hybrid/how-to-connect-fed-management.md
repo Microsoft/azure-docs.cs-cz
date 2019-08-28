@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect – Správa služby AD FS a vlastního nastavení | Dokumentace Microsoftu
-description: Správa služby AD FS s Azure AD Connect a přizpůsobení uživatele AD FS přihlašování s Azure AD Connect a prostředí PowerShell.
-keywords: Služba AD FS, AD FS, AD FS správy, AAD Connect, připojit, přihlášení, služby AD FS přizpůsobení, opravit důvěryhodnost mezi doménami, O365, federace, předávající strany
+title: Azure AD Connect – Správa AD FS a přizpůsobení | Microsoft Docs
+description: AD FS Správa pomocí Azure AD Connect a přizpůsobení uživatelského AD FS přihlašovacího prostředí s využitím Azure AD Connect a PowerShellu.
+keywords: AD FS, ADFS, Správa AD FS, AAD Connect, připojení, přihlášení, AD FS přizpůsobení, oprava důvěryhodnosti, O365, federace, předávající strana
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,237 +18,237 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353456"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085230"
 ---
-# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect
-Tento článek popisuje, jak spravovat a upravovat Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) Connect. Zahrnuje také dalších běžných úkolů služby AD FS, které možná bude potřeba provést kompletní konfiguraci farmy služby AD FS.
+# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
+Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federation Services (AD FS) (AD FS) pomocí Azure Active Directory (Azure AD) Connect. Zahrnuje taky další běžné AD FS úlohy, které může být potřeba udělat pro kompletní konfiguraci AD FS farmy.
 
-| Téma | Co zahrnuje |
+| Téma | Co pokrývá |
 |:--- |:--- |
-| **Správa služby AD FS** | |
-| [Opravit důvěryhodnost](#repairthetrust) |Popisuje, jak opravit důvěryhodnost federace s Office 365. |
-| [Provést federaci se službou Azure AD pomocí alternativního přihlašovacího ID](#alternateid) | Konfigurovat federaci pomocí alternativního přihlašovacího ID  |
-| [Přidání serveru služby AD FS](#addadfsserver) |Jak rozbalit farmu služby AD FS s dalším serverem služby AD FS. |
-| [Přidat server služby Proxy webových aplikací AD FS](#addwapserver) |Jak rozbalit farmu služby AD FS s dalším serverem Proxy webových aplikací (WAP). |
-| [Přidat federované domény](#addfeddomain) |Postup přidání federovanou doménu. |
-| [Aktualizace certifikátu SSL](how-to-connect-fed-ssl-update.md)| Postup aktualizace certifikátu SSL pro farmu služby AD FS. |
-| **Přizpůsobení služby AD FS** | |
-| [Přidat vlastní firemní logo a obrázek](#customlogo) |Jak přizpůsobit přihlašovací stránku služby AD FS s firemní logo a obrázek. |
-| [Přidání popisu přihlášení](#addsignindescription) |Jak přidat popis přihlašovací stránky. |
-| [Upravit pravidla deklarací identity služby AD FS](#modclaims) |Jak změnit deklarace identity služby AD FS pro různé scénáře federace. |
+| **Správa AD FS** | |
+| [Opravit vztah důvěryhodnosti](#repairthetrust) |Jak opravit vztah důvěryhodnosti federace s Office 365. |
+| [Federovat se službou Azure AD s použitím alternativního přihlašovacího ID](#alternateid) | Konfigurace federace pomocí alternativního přihlašovacího ID  |
+| [Přidání serveru AD FS](#addadfsserver) |Jak rozšířit AD FSovou farmu s využitím dalšího serveru AD FS. |
+| [Přidat AD FS proxy server webové aplikace](#addwapserver) |Jak rozšířit AD FSovou farmu pomocí dalšího serveru proxy webových aplikací (WAP). |
+| [Přidání federované domény](#addfeddomain) |Jak přidat federované domény |
+| [Aktualizace certifikátu SSL](how-to-connect-fed-ssl-update.md)| Jak aktualizovat certifikát SSL pro AD FS farmu. |
+| **Přizpůsobení AD FS** | |
+| [Přidat vlastní logo společnosti nebo obrázek](#customlogo) |Postup přizpůsobení AD FS přihlašovací stránky s logem společnosti a obrázkem. |
+| [Přidat popis přihlášení](#addsignindescription) |Přidání popisu přihlašovací stránky |
+| [Upravit pravidla deklarace AD FS](#modclaims) |Postup úpravy deklarací identity AD FS pro různé scénáře federace. |
 
-## <a name="manage-ad-fs"></a>Správa služby AD FS
-Pomocí Průvodce Azure AD Connect, můžete provádět různé AD FS související úlohy ve službě Azure AD Connect bez zásahu uživatele. Po dokončení instalace služby Azure AD Connect pomocí průvodce, můžete spustit průvodce znovu a provádět další úkoly.
+## <a name="manage-ad-fs"></a>Správa AD FS
+Pomocí Průvodce Azure AD Connect můžete provádět různé úlohy související s AD FS v Azure AD Connect s minimálním zásahem uživatele. Po dokončení instalace Azure AD Connect spuštěním průvodce můžete spustit průvodce znovu a provést další úlohy.
 
-## <a name="repairthetrust"></a>Opravit důvěryhodnost 
-Můžete zkontrolovat aktuální stav AD FS a Azure AD vztah důvěryhodnosti a přijmout vhodná opatření na opravu vztahu důvěryhodnosti Azure AD Connect. Následující postup použijte k opravě služby Azure AD a vztah důvěryhodnosti služby AD FS.
+## <a name="repairthetrust"></a>Opravit vztah důvěryhodnosti 
+Azure AD Connect můžete použít ke kontrole aktuálního stavu AD FS a vztahu důvěryhodnosti Azure AD a k provedení příslušných akcí k opravě vztahu důvěryhodnosti. Pomocí těchto kroků opravíte AD FS důvěryhodnosti Azure AD.
 
-1. Vyberte **opravit AAD a kterým důvěřují služby AD FS** ze seznamu další úkoly.
-   ![Opravit AAD a AD FS důvěřovat](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+1. V seznamu dalších úloh vyberte **opravit AAD a důvěryhodnost služby ADFS** .
+   ![Oprava AAD a vztahu důvěryhodnosti služby ADFS](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. Na **připojit ke službě Azure AD** stránky, zadejte svoje přihlašovací údaje globálního správce pro službu Azure AD a klikněte na tlačítko **Další**.
+2. Na stránce **připojit ke službě Azure AD** zadejte přihlašovací údaje globálního správce služby Azure AD a klikněte na **Další**.
    ![Připojení k Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
-3. Na **přihlašovacích údajů pro vzdálený přístup** stránky, zadejte přihlašovací údaje správce domény.
+3. Na stránce **přihlašovací údaje vzdáleného přístupu** zadejte přihlašovací údaje správce domény.
 
-   ![Pověření vzdáleného přístupu](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
+   ![Přihlašovací údaje vzdáleného přístupu](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    Po kliknutí na **Další**, Azure AD Connect zkontroluje stav certifikátu a zobrazuje všechny problémy.
+    Po kliknutí na tlačítko **další**Azure AD Connect zkontroluje stav certifikátu a zobrazí všechny problémy.
 
     ![Stav certifikátů](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
-    **Připraveno ke konfiguraci** stránka zobrazuje seznam akcí, které se provede pro opravu vztahu důvěryhodnosti.
+    Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které budou provedeny k opravě vztahu důvěryhodnosti.
 
     ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
-4. Klikněte na tlačítko **nainstalovat** opravit vztah důvěryhodnosti.
+4. Kliknutím na **instalovat** opravíte vztah důvěryhodnosti.
 
 > [!NOTE]
-> Azure AD Connect může pouze opravit nebo act s certifikáty, které jsou podepsané svým držitelem. Azure AD Connect nejde opravit certifikáty třetích stran.
+> Azure AD Connect může opravit nebo jednat jenom o certifikáty, které jsou podepsané svým držitelem. Azure AD Connect nemůže opravit certifikáty třetích stran.
 
-## <a name="alternateid"></a>Provést federaci se službou Azure AD pomocí AlternateID 
-Doporučuje se, že Name(UPN) objektu zabezpečení uživatele v místním prostředím a cloudem hlavní název uživatele zůstanou stejné. Pokud hlavní název uživatele v místním používá nesměrovatelných domény (např.) Contoso.Local) nebo se nedá změnit z důvodu závislosti místních aplikací, doporučujeme nastavit alternativní přihlašovací ID. Alternativní přihlašovací ID umožňuje konfigurovat přihlašovací prostředí kde uživatelé můžou přihlásit se pomocí atributu než jejich hlavní název uživatele, jako jsou e-mailu. Volba pro hlavní název uživatele ve výchozím nastavení Azure AD Connect na atribut userPrincipalName ve službě Active Directory. Pokud zvolíte jiný atribut pro hlavní název uživatele a jsou federaci pomocí služby AD FS, pak Azure AD Connect nakonfiguruje služby AD FS pro alternativní přihlašovací ID. Níže je uveden příklad vybrat jiný atribut pro hlavní název uživatele:
+## <a name="alternateid"></a>Federovat se službou Azure AD s využitím AlternateID 
+Doporučuje se, aby místní hlavní název uživatele (UPN) a hlavní název uživatele v cloudu byly stejné. Pokud místní hlavní název uživatele (UPN) používá jinou než směrovatelný doménu (např. Contoso. Local) nebo se nedá změnit kvůli závislostem místních aplikací, doporučujeme nastavit alternativní přihlašovací ID. Alternativní ID přihlášení vám umožní nakonfigurovat přihlašovací prostředí, kde se uživatelé můžou přihlašovat pomocí atributu, který je jiný než jeho hlavní název uživatele (UPN), jako je například pošta. Volba pro hlavní název uživatele v Azure AD Connect ve výchozím nastavení nastavena na atribut userPrincipalName ve službě Active Directory. Pokud zvolíte jakýkoli jiný atribut pro hlavní název uživatele a federování je pomocí AD FS, Azure AD Connect se nakonfiguruje AD FS pro alternativní ID přihlášení. Příklad výběru jiného atributu pro hlavní název uživatele je uveden níže:
 
-![Výběr atributu alternativní ID](./media/how-to-connect-fed-management/attributeselection.png)
+![Výběr atributu alternativního ID](./media/how-to-connect-fed-management/attributeselection.png)
 
-Konfigurace alternativního přihlašovacího ID pro službu AD FS zahrnuje dva hlavní kroky:
-1. **Konfigurace správnou sadu vystavování deklarací identity**: Pravidla vystavování deklarací identity v Azure AD vztah důvěryhodnosti předávající strany se upravený, aby používal vybraný atribut UserPrincipalName jako alternativní ID uživatele.
-2. **Povolte alternativní přihlašovací ID v konfiguraci služby AD FS**: Konfigurace služby AD FS se aktualizuje tak, aby služba AD FS můžete vyhledávat uživatele v příslušné doménové struktury pomocí alternativní ID. Tato konfigurace je podporovaná pro službu AD FS na Windows Server 2012 R2 (s KB2919355) nebo novější. Pokud jsou servery služby AD FS 2012 R2, Azure AD Connect ověří přítomnost požadovaných KB. Pokud nebude nalezena KB, upozornění se zobrazí po dokončení konfigurace, jak je znázorněno níže:
+Konfigurace alternativního přihlašovacího ID pro AD FS se skládá ze dvou hlavních kroků:
+1. **Nakonfigurujte správnou sadu deklarací identity**vystavování: Pravidla deklarace identity ve vztahu důvěryhodnosti předávající strany Azure AD se upravují tak, aby používala vybraný atribut UserPrincipalName jako alternativní ID uživatele.
+2. **Povolit alternativní přihlašovací ID v konfiguraci AD FS**: Konfigurace AD FS se aktualizuje tak, aby AD FS mohli vyhledat uživatele v příslušných doménových strukturách pomocí alternativního ID. Tato konfigurace je podporovaná pro AD FS v systému Windows Server 2012 R2 (s KB2919355) nebo novějším. Pokud jsou servery AD FS 2012 R2, Azure AD Connect zkontroluje přítomnost požadované znalostní báze. Pokud není zjištěna KB, zobrazí se po dokončení konfigurace upozornění, jak je znázorněno níže:
 
-    ![Upozornění na chybějící znalostní BÁZE na 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
+    ![Upozornění pro chybějící KB v 2012R2](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Kvůli opravě konfigurace v případě chybějících KB, instalaci požadovaných [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) a potom opravit pomocí vztahu důvěryhodnosti [opravit AAD a vztah důvěryhodnosti služby AD FS](#repairthetrust).
-
-> [!NOTE]
-> Další informace o alternateID a postup, jak ručně nakonfigurovat, najdete v článku [konfigurace alternativního přihlašovacího ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
-
-## <a name="addadfsserver"></a>Přidání serveru služby AD FS 
+    Pokud chcete opravit konfiguraci v případě chybějících KB, nainstalujte požadované [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) a pak opravte vztah důvěryhodnosti pomocí [opravy AAD a AD FS Trust](#repairthetrust).
 
 > [!NOTE]
-> Chcete-li přidat server služby AD FS, Azure AD Connect vyžaduje certifikát PFX. Proto můžete tuto operaci provést pouze v případě, že jste nakonfigurovali farmy služby AD FS pomocí služby Azure AD Connect.
+> Další informace o alternateID a krocích pro ruční konfiguraci najdete v tématu [Konfigurace alternativního přihlašovacího ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) .
 
-1. Vyberte **nasadit další federační Server**a klikněte na tlačítko **Další**.
+## <a name="addadfsserver"></a>Přidání serveru AD FS 
+
+> [!NOTE]
+> Chcete-li přidat server AD FS, Azure AD Connect vyžaduje certifikát PFX. Proto můžete tuto operaci provést pouze v případě, že jste nakonfigurovali AD FS farmu pomocí Azure AD Connect.
+
+1. Vyberte **nasadit další federační server**a klikněte na **Další**.
 
    ![Další federační server](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. Na **připojit ke službě Azure AD** stránky, zadejte svoje přihlašovací údaje globálního správce pro službu Azure AD a klikněte na tlačítko **Další**.
+2. Na stránce **připojit ke službě Azure AD** zadejte přihlašovací údaje globálního správce pro Azure AD a klikněte na **Další**.
 
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
+   ![Připojení ke službě Azure AD](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
 3. Zadejte přihlašovací údaje správce domény.
 
    ![Přihlašovací údaje správce domény](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect vyzve k zadání heslo souboru PFX, který jste zadali při konfiguraci nové farmě služby AD FS s Azure AD Connect. Klikněte na tlačítko **zadat heslo** zadávat heslo k souboru PFX.
+4. Azure AD Connect požádá o heslo k souboru PFX, který jste zadali při konfiguraci nové farmy AD FS pomocí Azure AD Connect. Kliknutím na **zadat heslo** zadejte heslo pro soubor PFX.
 
    ![Heslo certifikátu](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![Zadejte certifikát SSL](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Zadání certifikátu SSL](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
-5. Na **servery služby AD FS** stránky, zadejte název serveru nebo IP adresu přidat do farmy služby AD FS.
+5. Na stránce **AD FS servery** zadejte název nebo IP adresu serveru, který chcete přidat do farmy AD FS.
 
-   ![Servery služby AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
+   ![Servery AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Klikněte na tlačítko **Další**a projděte si poslední **konfigurovat** stránky. Po dokončení přidávání serverů do farmy služby AD FS Azure AD Connect budete mít možnost ověřit připojení.
+6. Klikněte na **Další**a přejděte na stránku finální **Konfigurace** . Až Azure AD Connect dokončí přidávání serverů do farmy AD FS, budete mít možnost ověřit připojení.
 
    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![Instalace dokončena](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>Přidání serveru AD FS WAP 
+## <a name="addwapserver"></a>Přidat AD FS Server WAP 
 
 > [!NOTE]
-> Chcete-li přidat WAP server, Azure AD Connect vyžaduje certifikát PFX. Pokud jste nakonfigurovali farmy služby AD FS pomocí služby Azure AD Connect, lze provést pouze tuto operaci.
+> Chcete-li přidat server WAP, Azure AD Connect vyžaduje certifikát PFX. Proto můžete tuto operaci provést pouze v případě, že jste nakonfigurovali AD FS farmu pomocí Azure AD Connect.
 
-1. Vyberte **nasadit Proxy webových aplikací** ze seznamu dostupných úloh.
+1. V seznamu dostupných úloh vyberte **nasadit proxy webových aplikací** .
 
-   ![Nasazení služby Proxy webových aplikací](./media/how-to-connect-fed-management/WapServer1.PNG)
+   ![Nasadit proxy webových aplikací](./media/how-to-connect-fed-management/WapServer1.PNG)
 
-2. Zadejte přihlašovací údaje globálního správce služby Azure.
+2. Zadejte přihlašovací údaje globálního správce Azure.
 
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
+   ![Připojení ke službě Azure AD](./media/how-to-connect-fed-management/wapserver2.PNG)
 
-3. Na **certifikát SSL zadejte** stránky, zadejte heslo pro soubor PFX, který jste zadali při konfiguraci farmy služby AD FS s Azure AD Connect.
+3. Na stránce **zadat certifikát SSL** zadejte heslo k souboru PFX, který jste zadali při konfiguraci AD FS farmy pomocí Azure AD Connect.
    ![Heslo certifikátu](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![Zadejte certifikát SSL](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![Zadání certifikátu SSL](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. Přidejte server přidat jako WAP server. Protože WAP server nemusí být připojen k doméně, v Průvodci vyzve k zadání přihlašovacích údajů správce ke přidávaný server.
+4. Přidejte server, který se má přidat jako server WAP. Vzhledem k tomu, že je server WAP pravděpodobně připojen k doméně, Průvodce zobrazí výzvu k zadání přihlašovacích údajů správce do přidávaného serveru.
 
-   ![Přihlašovací údaje správce serveru](./media/how-to-connect-fed-management/WapServer5.PNG)
+   ![Přihlašovací údaje serveru pro správu](./media/how-to-connect-fed-management/WapServer5.PNG)
 
-5. Na **přihlašovací údaje pro vztah důvěryhodnosti Proxy** zadejte pověření pro správu ke konfiguraci proxy serveru důvěřujete a přístup k primárnímu serveru ve farmě služby AD FS.
+5. Na stránce **pověření důvěryhodnosti proxy** zadejte přihlašovací údaje správce pro konfiguraci vztahu důvěryhodnosti proxy serveru a přístup k primárnímu serveru ve farmě AD FS.
 
    ![Přihlašovací údaje pro vztah důvěryhodnosti proxy](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. Na **připraveno ke konfiguraci** stránky, Průvodce zobrazí seznam akcí, které budou provedeny.
+6. Na stránce **připraveno ke konfiguraci** se v průvodci zobrazí seznam akcí, které budou provedeny.
 
    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. Klikněte na tlačítko **nainstalovat** dokončete konfiguraci. Po dokončení konfigurace Průvodce poskytuje možnost ověřit připojení k serverům. Klikněte na tlačítko **ověřte** aby se ověřilo připojení.
+7. Kliknutím na **instalovat** dokončete konfiguraci. Po dokončení konfigurace vám průvodce nabídne možnost ověřit připojení k serverům. Kliknutím na **ověřit** zkontrolujte připojení.
 
    ![Instalace dokončena](./media/how-to-connect-fed-management/WapServer8.PNG)
 
-## <a name="addfeddomain"></a>Přidat federované domény 
+## <a name="addfeddomain"></a>Přidání federované domény 
 
-Je snadné přidání domény k federaci s Azure AD pomocí služby Azure AD Connect. Azure AD Connect přidá domény pro federování a upravit pravidla deklarací identity tak, aby správně odrážela vystavitele, když máte více domén, které jsou federované se službou Azure AD.
+Pomocí Azure AD Connect můžete snadno přidat doménu, která se bude federované pomocí Azure AD. Azure AD Connect přidá doménu pro federaci a upraví pravidla deklarace identity tak, aby správně odrážela vystavitele, když máte více domén federované s Azure AD.
 
-1. Pokud chcete přidat federované domény, vyberte úlohu **přidat další domény Azure AD**.
+1. Pokud chcete přidat federované domény, vyberte úlohu **Přidat další doménu služby Azure AD**.
 
-   ![Další domény Azure AD](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
+   ![Další doména Azure AD](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
-2. Na další stránku průvodce zadejte přihlašovací údaje globálního správce pro službu Azure AD.
+2. Na další stránce průvodce zadejte přihlašovací údaje globálního správce pro Azure AD.
 
-   ![Připojení k Azure AD](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
+   ![Připojení ke službě Azure AD](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
-3. Na **přihlašovacích údajů pro vzdálený přístup** zadejte přihlašovací údaje správce domény.
+3. Na stránce **přihlašovací údaje vzdáleného přístupu** zadejte přihlašovací údaje správce domény.
 
-   ![Pověření vzdáleného přístupu](./media/how-to-connect-fed-management/additionaldomain3.PNG)
+   ![Přihlašovací údaje vzdáleného přístupu](./media/how-to-connect-fed-management/additionaldomain3.PNG)
 
-4. Na další stránce průvodce obsahuje seznam domén Azure AD, které může provést federaci s vaší místní adresář. Zvolte doménu, ze seznamu.
+4. Na další stránce průvodce poskytuje seznam domén Azure AD, pomocí kterých můžete federovat svůj místní adresář. V seznamu vyberte doménu.
 
    ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Až zvolíte, domény, Průvodce vám poskytne příslušné informace o další akce, které průvodce provede a vliv konfiguraci. V některých případech Pokud vyberete domény, který ještě není ověřen ve službě Azure AD, Průvodce poskytuje informace o ověření domény. Zobrazit [přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) další podrobnosti.
+    Po výběru domény vám průvodce poskytne příslušné informace o dalších akcích, které průvodce provede, a o vlivu konfigurace. Pokud v některých případech vyberete doménu, která ve službě Azure AD ještě není ověřená, průvodce vám poskytne informace, které vám pomůžou ověřit doménu. Další podrobnosti najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
 
-5. Klikněte na **Další**. **Připraveno ke konfiguraci** stránka zobrazuje seznam akcí, které Azure AD Connect provede. Klikněte na tlačítko **nainstalovat** dokončete konfiguraci.
+5. Klikněte na **Další**. Stránka **připraveno ke konfiguraci** zobrazuje seznam akcí, které Azure AD Connect provede. Kliknutím na **instalovat** dokončete konfiguraci.
 
    ![Připraveno ke konfiguraci](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
-> Předtím, než budou moct přihlásit ke službě Azure AD, musí být synchronizovány uživatelům přidání federovanou doménu.
+> Než se budou moct uživatelé z přidané federované domény přihlašovat k Azure AD, musí se synchronizovat.
 
 ## <a name="ad-fs-customization"></a>Přizpůsobení AD FS
-Následující části obsahují podrobné informace o některých běžných úloh, které možná budete muset provést, když si přizpůsobit přihlašovací stránku služby AD FS.
+V následujících částech najdete podrobné informace o některých běžných úlohách, které je třeba provést při přizpůsobování AD FS přihlašovací stránky.
 
-## <a name="customlogo"></a>Přidat vlastní firemní logo a obrázek 
-Chcete-li změnit logo společnosti, která se zobrazí na **přihlášení** stránky, použijte následující rutinu Windows Powershellu a syntaxe.
+## <a name="customlogo"></a>Přidat vlastní logo společnosti nebo obrázek 
+Chcete-li změnit logo společnosti zobrazené na **přihlašovací** stránce, použijte následující rutinu prostředí Windows PowerShell a syntaxi.
 
 > [!NOTE]
-> Doporučené rozměry loga jsou 260 x 35 \@ 96 dpi a velikost souboru nepřesahovala 10 KB.
+> Doporučené dimenze pro logo jsou 260 x 35 \@ 96 dpi a velikost souboru nesmí být větší než 10 KB.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> *TargetName* parametr je povinný. Výchozí motiv vydaný se službou AD FS se nazývá výchozí.
+> Parametr *TargetName* je povinný. Výchozí motiv vydaný pomocí AD FS se nazývá výchozí.
 
-## <a name="addsignindescription"></a>Přidání popisu přihlášení 
-Přidat přihlašovací stránku popis, který **přihlašovací stránku**, použijte následující rutinu Windows Powershellu a syntaxe.
+## <a name="addsignindescription"></a>Přidat popis přihlášení 
+K přidání popisu přihlašovací stránky na **přihlašovací stránku**použijte následující rutinu Windows PowerShellu a syntaxi.
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>Upravit pravidla deklarací identity služby AD FS 
-Služba AD FS podporuje jazyk bohaté deklarace identity, který vám pomůže vytvořit vlastní pravidla deklarací identity. Další informace najdete v tématu [Role jazyka pravidel deklarací identity](https://technet.microsoft.com/library/dd807118.aspx).
+## <a name="modclaims"></a>Upravit pravidla deklarace AD FS 
+AD FS podporuje bohatý jazyk deklarací identity, který můžete použít k vytvoření vlastních pravidel deklarací identity. Další informace najdete v tématu [Role jazyka pravidel deklarací identity](https://technet.microsoft.com/library/dd807118.aspx).
 
-Následující části popisují, jak psát vlastní pravidla pro některé scénáře, které se týkají služby Azure AD a federační služba AD FS.
+Následující části popisují, jak můžete psát vlastní pravidla pro některé scénáře, které se vztahují k Azure AD a AD FS federaci.
 
-### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Neměnné ID na hodnotu byla vyžadována jeho přítomnost v atributu
-Azure AD Connect vám umožní určit atribut, který má být použit jako zdrojové ukotvení při objekty se synchronizují do služby Azure AD. Pokud hodnota ve vlastním atributu není prázdná, můžete vydat deklaraci identity neměnné ID.
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Neměnné ID je podmíněné pro hodnotu, která se nachází v atributu.
+Azure AD Connect umožňuje zadat atribut, který má být použit jako zdrojový kotva v případě, že jsou objekty synchronizovány do služby Azure AD. Pokud hodnota ve vlastním atributu není prázdná, může být vhodné vystavit neproměnlivou deklaraci ID.
 
-Například můžete vybrat **ms-ds-consistencyguid** jako atribut zdrojového ukotvení a problém **ImmutableID** jako **ms-ds-consistencyguid** v případě atribut má hodnotu před ním. Pokud není žádná hodnota pro atribut, **objectGuid** jako neměnné ID Můžete vytvořit sadu pravidel vlastních deklarací identity, jak je popsáno v následující části.
+Můžete například vybrat **MS-DS-consistencyguid** jako atribut pro zdrojové ukotvení a vystavení **ImmutableID** jako **MS-DS-consistencyguid** pro případ, že atribut na něj má hodnotu. Pokud není k atributu žádná hodnota, vystavte identifikátor objektu **objectGUID** jako neproměnlivé ID. Můžete vytvořit sadu vlastních pravidel deklarací identity, jak je popsáno v následující části.
 
 **Pravidlo 1: Atributy dotazu**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
-V tomto pravidle dotazujete hodnoty **ms-ds-consistencyguid** a **objectGuid** pro uživatele ze služby Active Directory. Změňte název úložiště na název příslušné úložiště ve vašem nasazení služby AD FS. Také změnit typ deklarace identity, který správnou deklarace typu pro federaci, jak jsou definovány pro **objectGuid** a **ms-ds-consistencyguid**.
+V tomto pravidle se dotazuje na hodnoty **MS-DS-consistencyguid** a **objectGUID** pro uživatele ze služby Active Directory. V nasazení AD FS změňte název úložiště na příslušný název úložiště. Změňte také typ deklarace identity na správný typ deklarací identity pro vaši federaci, jak je definováno pro **objectGUID** a **MS-DS-consistencyguid**.
 
-Navíc pomocí **přidat** a není **problém**, můžete se vyhnout přidávání odchozí problém pro entitu a hodnoty můžete použít jako hodnoty, ležící. Vydáte deklaraci identity v pravidle novější po navázání jaká hodnota se má použít jako neměnné ID
+Kromě toho se můžete vyhnout přidáním odchozího problému pro entitu a použít hodnoty jako mezilehlé hodnoty. Tuto deklaraci budete vydávat v pozdějším pravidle po stanovení hodnoty, která se má použít jako neproměnlivé ID.
 
-**Pravidlo 2: Zkontrolujte, jestli ms-ds-consistencyguid existuje pro uživatele**
+**Pravidlo 2: Ověřte, jestli pro uživatele existuje služba MS-DS-consistencyguid.**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Toto pravidlo definuje dočasné příznak, který volá **idflag** , která je nastavena na **useguid** Pokud neexistuje žádný **ms-ds-consistencyguid** pro uživatele. To logice je skutečnost, že služba AD FS neumožňuje prázdné deklarací identity. Ano, při přidání deklarace identity http://contoso.com/ws/2016/02/identity/claims/objectguid a http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid v Rule 1, skončíte se **msdsconsistencyguid** jenom deklarace identity, pokud hodnota se vyplní pro daného uživatele. Pokud není vyplněné, služby AD FS vidí, že bude obsahovat prázdnou hodnotu a zahodí okamžitě. Všechny objekty se mají **objectGuid**, takže tuto žádost bude vždy existuje po provedení Rule 1.
+Toto pravidlo definuje dočasný příznak s názvem **idflag** , který je nastaven na **useguid** , pokud pro uživatele není naplněno žádné y **MS-DS-consistencyguid** . Logika za tímto je fakt, že AD FS nepovoluje prázdné deklarace identity. Takže když přidáte deklarace identity http://contoso.com/ws/2016/02/identity/claims/objectguid a http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid v pravidle 1, skončíte s deklarací **msdsconsistencyguid** jenom v případě, že se hodnota naplní pro uživatele. Pokud není naplněno, AD FS uvidí, že bude mít prázdnou hodnotu a okamžitě ho sníží. Všechny objekty budou mít **objectGUID**, takže po provedení pravidla 1 bude deklarace identity vždycky.
 
-**Pravidlo 3: Pokud je k dispozici vydat ms-ds-consistencyguid jako neměnné ID**
+**Pravidlo 3: Problém ms-DS-consistencyguid jako neproměnlivé ID, pokud je přítomný**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Toto je implicitní **existují** zkontrolovat. Pokud hodnota deklarace identity existuje, pak problém jako neměnné ID V předchozím příkladu se používá **nameidentifier** deklarací identity. Budete muset změnit na typ odpovídající deklarace identity pro neměnné ID ve vašem prostředí.
+Toto je implicitní **existence** kontroly. Pokud hodnota deklarace identity existuje, pak ji vydejte jako neproměnlivé ID. Předchozí příklad používá deklaraci identity **NameIdentifier** . Budete je muset změnit na příslušný typ deklarace identity pro neměnné ID ve vašem prostředí.
 
-**Pravidlo 4: Pokud není k dispozici ms-ds-consistencyGuid vydat objectGuid jako neměnné ID**
+**Pravidlo 4: Pokud není k dispozici služba MS-DS-consistencyGuid, vystavte identifikátor objectGuid jako neproměnlivé ID.**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c2.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
-V tomto pravidle, se jednoduše kontrola dočasné příznak **idflag**. Můžete rozhodnout, zda vydat deklaraci identity založenou na jeho hodnotu.
+V tomto pravidle jednoduše kontrolujete dočasný příznak **idflag**. Rozhodnete, zda chcete vystavit deklaraci identity na základě její hodnoty.
 
 > [!NOTE]
-> Je důležité pořadí těchto pravidel.
+> Pořadí těchto pravidel je důležité.
 
-### <a name="sso-with-a-subdomain-upn"></a>Jednotné přihlašování se subdoménou hlavní název uživatele
+### <a name="sso-with-a-subdomain-upn"></a>Jednotné přihlašování s hlavním názvem uživatele subdomény
 
-Můžete přidat více než jednu doménu federovanou pomocí služby Azure AD Connect, jak je popsáno v [přidat nové federované domény](how-to-connect-fed-management.md#addfeddomain). Verze služby Azure AD Connect 1.1.553.0 a nejnovější pravidla deklarace identity správné pro issuerID automaticky vytvoří. Pokud nemůžete použít Azure AD Connect verze 1.1.553.0 nebo nejnovější, je doporučeno [pravidla deklarací identity Azure AD Záhlavím](https://aka.ms/aadrptclaimrules) nástroj se používá k vygenerování a nastavit pravidla správné deklarací pro vztah důvěryhodnosti přijímající strany Azure AD.
+Pomocí Azure AD Connect můžete přidat více než jednu doménu, jak je popsáno v tématu [Přidání nové federované domény](how-to-connect-fed-management.md#addfeddomain). Azure AD Connect verze 1.1.553.0 a nejnovější vytvoří správné pravidlo deklarace identity pro issuerID automaticky. Pokud nemůžete použít Azure AD Connect verze 1.1.553.0 nebo nejnovější, doporučujeme, abyste pro generování a nastavení správných pravidel deklarací identity pro vztah důvěryhodnosti předávající strany Azure AD použili nástroj [pravidla deklarace identity Azure AD RPT](https://aka.ms/aadrptclaimrules) .
 
-## <a name="next-steps"></a>Další postup
-Další informace o [možnosti přihlášení uživatele](plan-connect-user-signin.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o [možnostech přihlašování uživatelů](plan-connect-user-signin.md).

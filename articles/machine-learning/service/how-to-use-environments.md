@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb9281af16dc8e4b4544cb18a2aae51aa3d9be27
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576274"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098958"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>Vytváření a Správa prostředí pro školení a nasazení
 
@@ -95,7 +95,7 @@ myenv = Environment.from_existing_conda_environment(name = "myenv",
 
 ### <a name="automatically-create-environments"></a>Automatické vytváření prostředí
 
-Automatické vytvoření prostředí tím, že odešlete školicí běh pomocí metody [Submit ()]() . Při odeslání školicího programu může sestavení nového prostředí trvat několik minut, a to v závislosti na velikosti požadovaných závislostí. 
+Automatické vytvoření prostředí tím, že odešlete školicí běh pomocí metody Submit (). Při odeslání školicího programu může sestavení nového prostředí trvat několik minut, a to v závislosti na velikosti požadovaných závislostí. 
 
 Pokud před odesláním spuštění neurčíte prostředí v konfiguraci spuštění, vytvoří se pro vás výchozí prostředí.
 

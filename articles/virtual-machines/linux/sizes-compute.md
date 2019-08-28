@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Linuxem – optimalizované pro výpočetní služby | Dokumentace Microsoftu
-description: Umožňuje zobrazit seznam velikostí různých optimalizováno pro výpočty, k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure Linux – optimalizované pro výpočty | Microsoft Docs
+description: Uvádí různé výpočetní optimalizované velikosti, které jsou dostupné pro virtuální počítače se systémem Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,27 +9,26 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 137cda7e224d3968cae8614c96fddf914d3b5e5e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 154209c78746e1a44c7cee51675150e8acca0f0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708872"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082096"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>Optimalizováno pro výpočty velikostí virtuálních počítačů
+# <a name="compute-optimized-virtual-machine-sizes"></a>Výpočetní optimalizované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-compute](../../../includes/virtual-machines-common-sizes-compute.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="other-sizes"></a>Další velikosti
+## <a name="other-sizes"></a>Jiné velikosti
 - [Obecné účely](sizes-general.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
@@ -38,4 +37,4 @@ ms.locfileid: "67708872"
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840474"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098919"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
@@ -31,44 +31,7 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [konc
 
 Pokud vytvoříte pouze pravidlo virtuální sítě, můžete přeskočit kroky a vysvětlení [dále v tomto článku](#anchor-how-to-by-using-firewall-portal-59j).
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminologie a popis
-
-**Virtuální síť:** Můžete mít virtuální sítě přidružené k vašemu předplatnému Azure.
-
-**Podsíť** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
-
-**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network][vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database.
-
-**Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server SQL Database je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru SQL Database. Aby byl v seznamu ACL pro váš SQL Database, podsíť musí obsahovat název typu **Microsoft. SQL** .
-
-Pravidlo virtuální sítě přikáže serveru SQL Database, aby přijímal komunikaci z každého uzlu, který je v podsíti.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Výhody pravidla virtuální sítě
-
-Dokud neprovedete akci, virtuální počítače v podsítích nebudou s vaším SQL Database komunikovat. Jedna akce, která stanovuje komunikaci, je vytvoření pravidla virtuální sítě. Odůvodnění výběru přístupu pravidla virtuální sítě vyžaduje diskuzi o porovnání a kontrastu zahrnující konkurenční možnosti zabezpečení nabízené bránou firewall.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Povolit přístup ke službám Azure
-
-Podokno brány firewall má tlačítko **pro zapnutí/vypnutí** , které je označeno jako **povolený přístup ke službám Azure**. Nastavení **on** umožňuje komunikaci ze všech IP adres Azure a všech podsítí Azure. Tyto IP adresy nebo podsítě Azure možná nevlastníte. Toto nastavení je pravděpodobně více otevřené, než požadujete SQL Database. Funkce pravidla virtuální sítě nabízí mnohem přesnější kontrolu.
-
-### <a name="b-ip-rules"></a>B. Pravidla protokolu IP
-
-Brána SQL Database firewall umožňuje zadat rozsahy IP adres, ze kterých se SQL Database přijímá komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Ale mnoho uzlů v privátní síti Azure má nakonfigurovanou *dynamickou* IP adresu. Dynamické IP adresy se můžou změnit, třeba když se váš virtuální počítač restartuje. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
-
-Možnost IP můžete vyřazením získat *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [Konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. Pravidla virtuální sítě je snazší vytvářet a spravovat.
-
-> [!NOTE]
-> V podsíti ještě nemůžete mít SQL Database. Pokud váš server Azure SQL Database byl uzlem v podsíti ve vaší virtuální síti, můžou všechny uzly v rámci virtuální sítě komunikovat s vaší SQL Database. V takovém případě můžou vaše virtuální počítače komunikovat s SQL Database bez nutnosti používat pravidla virtuální sítě nebo pravidla protokolu IP.
-
-Od září 2017 však služba Azure SQL Database ještě nepatří mezi služby, které je možné přiřadit k podsíti.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Podrobnosti o pravidlech virtuální sítě
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Dopad odebrání ' povolte službám Azure přístup k serveru '
 
-Mnoho uživatelů chce odebrat **možnost dovolit službám Azure přístup k serveru** ze svých serverů SQL Azure a nahradit je pravidlem brány firewall virtuální sítě.
-Odebrání této akce má vliv na následující funkce:
-
-### <a name="import-export-service"></a>Import služby export
-
-Služba Azure SQL Database import exportu běží na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti, a proto při připojování k databázi získají IP adresu Azure. Při odebrání možnosti **umožnit službám Azure přístup k serveru** nebudou mít přístup k databázím tyto virtuální počítače.
-Tento problém můžete obejít. Spusťte import nebo export BACPAC přímo v kódu pomocí rozhraní DACFx API. Ujistěte se, že je nasazený na virtuálním počítači, který je ve virtuální síti, pro kterou jste nastavili pravidlo brány firewall.
-
-### <a name="sql-database-query-editor"></a>Editor dotazů SQL Database
-
-Editor dotazů Azure SQL Database je nasazený na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti. Virtuální počítače proto při připojování k databázi získají IP adresu Azure. Při odebrání možnosti **umožnit službám Azure přístup k serveru**nebudou mít tyto virtuální počítače přístup k vašim databázím.
-
-### <a name="table-auditing"></a>Auditování tabulek
-
-V současnosti existují dva způsoby, jak povolit auditování na SQL Database. Po povolení koncových bodů služby v Azure SQL Server se auditování tabulek nezdařilo. Zmírnění se omezuje na auditování objektů BLOB.
-
-### <a name="impact-on-data-sync"></a>Dopad na synchronizaci dat
-
-Azure SQL Database má funkci synchronizace dat, která se připojuje k vašim databázím pomocí Azure IP. Při použití koncových bodů služby je možné, že vypnete **možnost Povolit službám Azure přístup k serveru** SQL Database serveru. Tím dojde k přerušení funkce synchronizace dat.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad použití koncových bodů služby virtuální sítě se službou Azure Storage
 
@@ -174,6 +117,7 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
 #### <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
@@ -182,12 +126,12 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
 3.  Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
  
 #### <a name="steps"></a>Kroky
-1. V prostředí PowerShell **zaregistrujte SQL Database Server** pomocí Azure Active Directory (AAD):
+1. V PowerShellu **Zaregistrujte Azure SQL Server** hostování vaší instance Azure SQL Data Warehouse pomocí Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)vytvořte **účet úložiště pro obecné účely v2** .
@@ -196,7 +140,7 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
    > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu serveru SQL Database.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu Azure SQL Server hostování Azure SQL Data Warehouse, které jste zaregistrovali v Azure Active DIRECOTORY (AAD) jako v kroku č. 1.
 
    > [!NOTE] 
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876740"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073928"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -34,39 +34,45 @@ Pokud máte problémy s připojením virtuálních počítačů k doméně, post
 
 **Způsobit** Došlo k překlepu při zadání přihlašovacích údajů do opravy rozhraní Azure Resource Manager šablony.
 
-**Opravit** Pokud chcete opravit přihlašovací údaje, postupujte podle těchto pokynů.
+**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
-1. Ručně přidejte virtuální počítače do domény.
-2. Znovu nasadit po potvrzení přihlašovacích údajů. Další informace najdete v tématu [Vytvoření fondu hostitelů pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. Připojte virtuální počítače k doméně pomocí šablony s [připojením existujícímu virtuálnímu počítači s Windows k doméně AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Ručně přidejte virtuální počítače do domény.
+- Po potvrzení přihlašovacích údajů znovu nasaďte šablonu. Další informace najdete v tématu [Vytvoření fondu hostitelů pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Připojte virtuální počítače k doméně pomocí šablony s [připojením existujícímu virtuálnímu počítači s Windows k doméně AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Chyba: Časový limit čekání na vstup uživatele
 
 **Způsobit** Účet použitý k dokončení připojení k doméně může mít službu Multi-Factor Authentication (MFA).
 
-**Opravit** Dokončete připojení k doméně podle těchto pokynů.
+**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
-1. Dočasně odeberte MFA pro účet.
-2. Použijte účet služby.
+- Dočasně odeberte MFA pro účet.
+- Použijte účet služby.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Chyba: Účet použitý během zřizování nemá oprávnění k dokončení operace.
 
 **Způsobit** Použitý účet nemá oprávnění k připojení virtuálních počítačů k doméně z důvodu dodržování předpisů a předpisů.
 
-**Opravit** Postupujte podle těchto pokynů.
+**Opravit** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
-1. Použijte účet, který je členem skupiny správců.
-2. Udělte potřebná oprávnění k používanému účtu.
+- Použijte účet, který je členem skupiny správců.
+- Udělte potřebná oprávnění k používanému účtu.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Chyba: Název domény nejde přeložit.
 
-**Příčina 1:** Virtuální počítače jsou ve skupině prostředků, která není přidružená k virtuální síti (VNET), ve které se nachází doména.
+**Příčina 1:** Virtuální počítače jsou ve virtuální síti, která není přidružená k virtuální síti (VNET), ve které se nachází doména.
 
 **Oprava 1:** Vytvořte partnerský vztah virtuálních sítí mezi virtuální sítí, ve které byly virtuální počítače zřízené a virtuální síť, ve které je spuštěný řadič domény (DC). Přečtěte si téma [vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)předplatných.
 
-**Příčina 2:** Při použití AadService (AADS) nejsou nastaveny položky DNS.
+**Příčina 2:** Při použití Azure Active Directory Domain Services (Azure služba AD DS) nemá virtuální síť aktualizované nastavení serveru DNS tak, aby odkazovala na spravované řadiče domény.
 
-**Oprava 2:** Pokud chcete nastavit doménové služby, přečtěte si téma [povolení Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
+**Oprava 2:** Pokud chcete aktualizovat nastavení DNS pro virtuální síť, která obsahuje Azure služba AD DS, přečtěte si téma [aktualizace nastavení DNS pro virtuální síť Azure](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+
+**Příčina 3:** Nastavení serveru DNS síťového rozhraní neukazuje na příslušný server DNS ve virtuální síti.
+
+**Oprava 3:** Proveďte jednu z následujících akcí, které je potřeba vyřešit, podle kroků v [změna serverů DNS].
+- Změňte nastavení serveru DNS síťového rozhraní na **vlastní** s použitím kroků v části [Změna serverů DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) a zadejte privátní IP adresy serverů DNS ve virtuální síti.
+- Změňte nastavení serveru DNS síťového rozhraní tak, aby **dědilo z virtuální sítě** s použitím kroků v části [Změna serverů DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers), a potom změňte nastavení serveru DNS virtuální sítě pomocí kroků z části [změnit servery DNS](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Agent virtuálního počítače Windows a spouštěcí zavaděč virtuálních počítačů s Windows nejsou nainstalované.
 

@@ -3,15 +3,15 @@ title: Postup zápisu uložených procedur, triggerů a uživatelsky definovaný
 description: Naučte se definovat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: cf73b6e0477e46f0a2eac43d7fa6bccc6845db92
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615241"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092824"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -314,7 +314,7 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 

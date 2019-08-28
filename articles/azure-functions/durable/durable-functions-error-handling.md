@@ -1,31 +1,30 @@
 ---
 title: Zpracování chyb v Durable Functions – Azure
-description: Zjistěte, jak chcete zpracovávat chyby ve rozšíření Durable Functions pro službu Azure Functions.
+description: Naučte se zpracovávat chyby v rozšíření Durable Functions pro Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33d1b410119e631e0ccc9941beac1062d4ec30f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751940"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087332"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
-Trvalý Orchestrace funkce jsou implementované v kódu a může využívat možnosti zpracování chyb programovacího jazyka. S myslete na to ve skutečnosti nejsou k dispozici žádné nové koncepty, které je potřeba další informace o zpracování chyb a vyrovnání začleňte do vašeho Orchestrace. Existuje však několik chování, které byste měli vědět.
+Trvalé orchestrace funkcí je implementována v kódu a může používat funkce pro zpracování chyb v programovacím jazyce. V takovém případě nemusíte mít žádné nové koncepty, které byste se měli seznámit s zahrnutím zpracování chyb a kompenzací do orchestrace. Existuje však několik chování, o kterých byste měli vědět.
 
-## <a name="errors-in-activity-functions"></a>Chyby v funkce aktivity
+## <a name="errors-in-activity-functions"></a>Chyby v aktivitách funkcí
 
-Je zařazeno zpět do funkce orchestrátoru a vyvolána jako jakoukoliv výjimku, která je vyvolána výjimka ve funkci aktivity `FunctionFailedException`. Můžete napsat kód pro manipulace a kompenzace chyba, která vyhovuje vašim potřebám, funkce orchestrátoru.
+Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět do funkce Orchestrator a vyvolána jako `FunctionFailedException`. Můžete zapsat zpracování chyb a kód kompenzace, který vyhovuje vašim potřebám ve funkci Orchestrator.
 
-Představte si třeba následující funkce orchestrátoru, který převádí prostředků z jednoho účtu:
+Zvažte například následující funkci Orchestrator, která přenáší prostředky z jednoho účtu na jiný:
 
 ### <a name="c"></a>C#
 
@@ -66,7 +65,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -102,11 +101,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Pokud volání **CreditAccount** funkce selže u cílového účtu, funkce orchestrátoru to vyrovnává podle kredity prostředků zpátky na zdrojový účet.
+Pokud se volání funkce **CreditAccount** u cílového účtu nepovede, funkce Orchestrator tuto náhradu kompenzuje tím, že prostředky přepíše na účet zpět do zdrojového účtu.
 
-## <a name="automatic-retry-on-failure"></a>Automatické opakování při selhání
+## <a name="automatic-retry-on-failure"></a>Automaticky opakovat při selhání
 
-Při volání funkce aktivity nebo dílčí Orchestrace funkce, můžete určit zásadu automatické opakování. V následujícím příkladu se pokusí zavolat funkci až třikrát a čekat mezi opakováními 5 sekund:
+Při volání funkcí aktivity nebo funkcí dílčí orchestrace můžete zadat zásady automatického opakování. Následující příklad se pokusí zavolat funkci až třikrát a počkat 5 sekund mezi jednotlivými pokusy:
 
 ### <a name="c"></a>C#
 
@@ -123,7 +122,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,20 +136,20 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`CallActivityWithRetryAsync` (.NET) nebo `callActivityWithRetry` přebírá (JavaScript) rozhraní API `RetryOptions` parametru. Suborchestration volá pomocí `CallSubOrchestratorWithRetryAsync` (.NET) nebo `callSubOrchestratorWithRetry` (JavaScript) rozhraní API můžete použít tyto stejné zásady opakování.
+Rozhraní API `callActivityWithRetry` (.NET`RetryOptions` ) nebo (JavaScript) přebírá parametr. `CallActivityWithRetryAsync` Pomocí rozhraní API (.NET) `CallSubOrchestratorWithRetryAsync` nebo `callSubOrchestratorWithRetry` (JavaScript) můžete stejné zásady opakování použít k podorchestraci.
 
-Existuje několik možností pro přizpůsobení zásady automatické opakování. Jsou to tyto země:
+K dispozici je několik možností přizpůsobení zásady automatického opakování. Jsou to tyto země:
 
-* **Maximální počet pokusů o**: Maximální počet opakovaných pokusů.
-* **První interval opakování**: Množství času se má čekat před první pokus o opakování.
-* **Omezení rychlosti koeficient**: Koeficient používá k určení míra zvýšení rychlosti. Výchozí hodnota je 1.
-* **Maximální interval opakování**: Maximální množství času čekat mezi opakovanými pokusy.
-* **Časového limitu opakování**: Počet opakování maximální množství času na to. Výchozí chování je to chcete zkusit znovu po neomezenou dobu.
-* **Zpracování**: Uživatelské zpětné volání lze určit, který určuje, zda je třeba opakovat volání funkce.
+* **Maximální počet pokusů**: Maximální počet opakovaných pokusů.
+* **Interval prvního opakování**: Doba, po kterou se má čekat před prvním pokusem.
+* **Omezení rychlosti koeficient**: Koeficient použitý k určení míry zvýšení omezení rychlosti. Výchozí hodnota je 1.
+* **Maximální interval opakování**: Maximální doba, po kterou se má čekat mezi opakovanými pokusy
+* **Časový limit opakování**: Maximální doba, po kterou se stráví opakované pokusy. Výchozí chování je opakovat po neomezenou dobu.
+* **Popisovač**: Je možné zadat uživatelem definované zpětné volání, které určuje, zda má být volání funkce opakováno.
 
-## <a name="function-timeouts"></a>Vypršení časových limitů – funkce
+## <a name="function-timeouts"></a>Vypršení časových limitů funkcí
 
-Můžete chtít opustit volání funkce v rámci funkce orchestrátoru, pokud trvá moc dlouho. Správný způsob, jak to udělat ještě dnes je tak, že vytvoříte [trvalý časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
+Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET `context.df.createTimer` ) nebo (JavaScript) ve `Task.WhenAny` spojení s (.NET `context.df.Task.any` ) nebo (JavaScript), jako v následujícím příkladu:
 
 ### <a name="c"></a>C#
 
@@ -181,7 +180,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -206,13 +205,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Tento mechanismus skutečně neukončí provádění funkce probíhající aktivity. Místo toho to jednoduše umožňuje funkce orchestrátoru ignorovat výsledek a přechod na. Další informace najdete v tématu [časovače](durable-functions-timers.md#usage-for-timeout) dokumentaci.
+> Tento mechanismus ve skutečnosti neukončí probíhající zpracování funkce aktivity. Místo toho jednoduše umožňuje, aby funkce Orchestrator ignorovala výsledek a přesunula se na. Další informace najdete v dokumentaci k [časovačům](durable-functions-timers.md#usage-for-timeout) .
 
 ## <a name="unhandled-exceptions"></a>Neošetřené výjimky
 
-Pokud selže funkce orchestrátoru s neošetřenou výjimku, podrobnosti o výjimce protokolují a dokončení instance s `Failed` stav.
+Pokud funkce Orchestrator dojde k chybě s neošetřenou výjimkou, budou zaprotokolovány podrobnosti o výjimce a instance se dokončí se `Failed` stavem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak diagnostikovat problémy](durable-functions-diagnostics.md)
+> [Zjistěte, jak diagnostikovat problémy.](durable-functions-diagnostics.md)

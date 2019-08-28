@@ -6,18 +6,17 @@ author: mscurrell
 manager: gwallace
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 90c8f3779283c23a98bac9d36fde2641c15afafe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323465"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095198"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
@@ -124,7 +123,7 @@ Uzly fondu mají vlastnost, která určuje, jestli je uzel vyhrazený virtuáln�
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený  stav. Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
+Když dojde k přerušení jednoho nebo více uzlů ve fondu, operace výpisu uzlů ve fondu stále tyto uzly vrátí. Aktuální počet uzlů s nízkou prioritou zůstane beze změny, ale u těchto uzlů je stav nastaven na přerušený stav. Batch se pokusí najít náhradní virtuální počítače a v případě úspěchu uzly procházejí **vytvořením** a následným **spuštěním** stavů, než se stane k dispozici pro spuštění úlohy, stejně jako u nových uzlů.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Škálování fondu obsahujícího virtuální počítače s nízkou prioritou
 
@@ -161,7 +160,7 @@ Je možné, že virtuální počítače budou občas zrušené. Když dojde k p�
 -   Zrušené virtuální počítače mají stav aktualizace na přerušeno.
 -   Pokud úlohy běžely na virtuálních počítačích s přerušeným uzlem, tyto úlohy se znovu zařadí do fronty a znovu se spustí.
 -   Virtuální počítač se efektivně odstraní, což vede ke ztrátě všech dat uložených místně na VIRTUÁLNÍm počítači.
--   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to  tak, že procházejí vytvořením a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
+-   Fond se neustále pokouší spojit s cílovým počtem dostupných uzlů s nízkou prioritou. Když se najde náhradní kapacita, uzly zachovají jejich ID, ale budou se znovu inicializovat, a to tak, že procházejí vytvořením a **spuštěním** stavů, než budou k dispozici pro plánování úloh.
 -   Počty přerušení jsou k dispozici jako metrika v Azure Portal.
 
 ## <a name="metrics"></a>Metriky
@@ -180,7 +179,7 @@ Chcete-li zobrazit metriky v Azure Portal:
 
 ![Metriky pro uzly s nízkou prioritou](media/batch-low-pri-vms/low-pri-metrics.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [Přehled funkcí Batch pro vývojáře](batch-api-basics.md), kde jsou základní informace pro každého, kdo se připravuje použít Batch. Článek obsahuje podrobné informace o prostředcích služby Batch, jako jsou fondy, uzly a úlohy, a mnoha funkcích rozhraní API, které můžete použít při vytváření aplikace Batch.
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.

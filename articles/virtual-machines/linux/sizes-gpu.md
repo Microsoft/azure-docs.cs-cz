@@ -1,6 +1,6 @@
 ---
-title: Azure velikostí virtuálního počítače s Linuxem – hardwarově akcelerovanou compute | Dokumentace Microsoftu
-description: Seznamy různé GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure Linux – akcelerované výpočetní prostředky | Microsoft Docs
+description: Obsahuje seznam různých velikostí GPU, které jsou dostupné pro virtuální počítače Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 64cbcd375840d78916810abf9ccb8478ef9a1359
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708837"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082135"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizované velikosti virtuálních počítačů
+# <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -31,16 +30,16 @@ ms.locfileid: "67708837"
 
 ## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
-Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Linuxem, musí být nainstalována ovladačů NVIDIA GPU. [Rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodných ovladačů NVIDIA CUDA nebo mřížky na virtuální počítač řady N-series. Instalovat ani spravovat rozšíření pomocí webu Azure portal nebo nástrojů, jako jsou šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure. Zobrazit [dokumentaci rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) podporovaných distribucích a kroky nasazení. Obecné informace o rozšíření virtuálních počítačů najdete v tématu [rozšíření virtuálního počítače Azure a funkce](../extensions/overview.md).
+Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series se systémem Linux, je nutné nainstalovat ovladače GPU NVIDIA. [Rozšíření ovladače NVIDIA GPU](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako je Azure CLI nebo šablony Azure Resource Manager. Podporované distribuce a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](../extensions/overview.md).
 
-Pokud zvolíte ruční instalace ovladačů NVIDIA GPU, přečtěte si téma [instalace ovladačů v instancích N-series GPU pro Linux](n-series-driver-setup.md) pro podporované distribuce, ovladačů a postup instalace a ověření.
+Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma [nastavení ovladače GPU N-Series pro Linux](n-series-driver-setup.md) pro podporované distribuce, ovladače a kroky instalace a ověření.
 
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* X byste neměli instalovat server nebo jiné systémy, které používají `Nouveau` ovladač na virtuální počítače s Ubuntu síťového adaptéru. Před instalací ovladače NVIDIA GPU, je nutné zakázat `Nouveau` ovladače.  
+* Neměli byste instalovat X server nebo jiné systémy, které používají `Nouveau` ovladač na virtuálních počítačích Ubuntu NC. Před instalací ovladačů NVIDIA GPU je potřeba `Nouveau` ovladač zakázat.  
 
-## <a name="other-sizes"></a>Další velikosti
+## <a name="other-sizes"></a>Jiné velikosti
 - [Obecné účely](sizes-general.md)
 - [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
@@ -49,4 +48,4 @@ Pokud zvolíte ruční instalace ovladačů NVIDIA GPU, přečtěte si téma [in
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -1,6 +1,6 @@
 ---
-title: Kurz – Azure Virtual Machines – skupin dostupnosti pro SQL Server | Dokumentace Microsoftu
-description: Tento kurz ukazuje, jak vytvořit SQL Server vždy skupinu dostupnosti v Azure Virtual Machines.
+title: Skupiny dostupnosti SQL Server – kurz Azure Virtual Machines Microsoft Docs
+description: V tomto kurzu se dozvíte, jak ve službě Azure Virtual Machines vytvořit skupinu dostupnosti Always On SQL Server.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -9,51 +9,50 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593416"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102361"
 ---
-# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Ruční konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure
 
-Tento kurz ukazuje, jak vytvořit SQL Server vždy skupinu dostupnosti v Azure Virtual Machines. Úplný kurz vytvoří skupinu dostupnosti u repliky databáze na dva servery SQL.
+V tomto kurzu se dozvíte, jak ve službě Azure Virtual Machines vytvořit skupinu dostupnosti Always On SQL Server. Úplný kurz vytvoří skupinu dostupnosti s replikou databáze na dvou serverech SQL.
 
-**Časový odhad**: K dokončení po splnění požadavků zabere přibližně 30 minut.
+**Časový odhad**: Po splnění požadavků bude trvat přibližně 30 minut.
 
-Diagram znázorňuje, co vytvoříte v tomto kurzu.
+Diagram znázorňuje, co sestavíte v tomto kurzu.
 
 ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kurz předpokládá, že máte základní znalosti o SQL serveru skupin dostupnosti Always On. Pokud potřebujete další informace, přečtěte si [přehled vždy na skupin dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On SQL Server. Pokud potřebujete další informace, přečtěte si téma [Přehled skupin dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
-V následující tabulce jsou uvedeny požadavky, které je potřeba dokončit před zahájením tohoto kurzu:
+V následující tabulce jsou uvedeny předpoklady, které je třeba provést před zahájením tohoto kurzu:
 
 |  |Požadavek |Popis |
 |----- |----- |----- |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Two SQL Servers | – Ve skupině dostupnosti Azure <br/> – V jedné doméně <br/> -S nainstalovanou funkcí Clustering převzetí služeb při selhání |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Sdílení souborů pro cluster s kopií clusteru |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dva servery SQL | – V sadě dostupnosti Azure <br/> – V jedné doméně <br/> – Je nainstalovaná funkce clusteringu s podporou převzetí služeb při selhání |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Sdílená složka pro disk s kopií clusteru |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby SQL Server | Účet domény |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby agenta systému SQL Server | Účet domény |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otevřete porty brány firewall | - SQL Server: **1433** pro výchozí instanci <br/> -Koncovým bodem zrcadlení databáze: **5022** nebo jakýkoli dostupný port <br/> – Sonda stavu IP adresu nástroje pro vyrovnávání zatížení dostupnost skupiny: **59999** nebo jakýkoli dostupný port <br/> – Nástroje pro vyrovnávání zatížení core, IP sondu stavu adresy clusteru: **58888** nebo jakýkoli dostupný port |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Přidání funkce Clustering převzetí služeb při selhání | Tato funkce vyžaduje oba servery SQL |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet domény pro instalaci | – Místní správce na všech serverech SQL <br/> – Správce sysadmin systému SQL Server pevné role serveru pro každou instanci systému SQL Server  |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby agenta SQL Server | Účet domény |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Otevřené porty brány firewall | -SQL Server: **1433** pro výchozí instanci <br/> -Koncový bod zrcadlení databáze: **5022** nebo jakýkoli dostupný port <br/> -Sonda stavu IP adres služby Vyrovnávání zatížení skupiny dostupnosti: **59999** nebo jakýkoli dostupný port <br/> – Sonda stavu IP Core nástroje pro vyrovnávání zatížení v clusteru: **58888** nebo jakýkoli dostupný port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Přidat funkci clusteringu s podporou převzetí služeb při selhání | Tato funkce vyžaduje SQL Server. |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Instalační účet domény | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
 
 
-Před zahájením tohoto kurzu, budete muset [splnit požadavky pro vytváření skupin dostupnosti Always On v Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Pokud tyto požadavky jsou již dokončen, můžete přejít na [vytvořit Cluster](#CreateCluster).
+Než začnete tento kurz, musíte [Dokončit požadavky na vytváření skupin dostupnosti Always On v Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Pokud jsou tyto požadavky již dokončeny, můžete přejít na příkaz [vytvořit cluster](#CreateCluster).
 
   >[!NOTE]
-  > Celá řada kroků v tomto kurzu k dispozici teď je možné automatizovat pomocí [příkazového řádku Azure SQL VM](virtual-machines-windows-sql-availability-group-cli.md) a [šablony pro rychlý start Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Mnohé z kroků uvedených v tomto kurzu teď můžete automatizovat pomocí šablon [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) a [Azure pro rychlý Start](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -61,141 +60,141 @@ Před zahájením tohoto kurzu, budete muset [splnit požadavky pro vytváření
 <a name="CreateCluster"></a>
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Po dokončení požadavků, prvním krokem je vytvoření clusteru převzetí služeb při selhání ve Windows serveru zahrnuje dva servery SQL Server a server s kopií clusteru.
+Po dokončení požadovaných součástí je prvním krokem vytvoření clusteru s podporou převzetí služeb při selhání se systémem Windows Server, který obsahuje dva servery SQL a monitorovací Server.
 
-1. RDP na prvním serveru SQL Server pomocí účtu domény, který je správcem na serverech SQL i na serveru s kopií clusteru.
+1. RDP na první SQL Server pomocí doménového účtu, který je správcem na serverech SQL Server a monitorovacím serverem.
 
    >[!TIP]
-   >Pokud jste postupovali podle [dokument s požadavky](virtual-machines-windows-portal-sql-availability-group-prereq.md), vytvoří účet s názvem **CORP\Install**. Pomocí tohoto účtu.
+   >Pokud jste postupovali podle [požadavků dokumentu](virtual-machines-windows-portal-sql-availability-group-prereq.md), vytvořili jste účet s názvem **CORP\Install**. Použijte tento účet.
 
-2. V **správce serveru** řídicího panelu, vyberte **nástroje**a potom klikněte na tlačítko **Správce clusteru převzetí služeb při selhání**.
-3. V levém podokně klikněte pravým tlačítkem na **Správce clusteru převzetí služeb při selhání**a potom klikněte na tlačítko **vytvořit Cluster**.
-   ![Vytvoření clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
-4. V Průvodci vytvořením clusteru s vytvořením clusteru s jedním uzlem krokování na stránkách s nastavením v následující tabulce:
+2. Na řídicím panelu **Správce serveru** vyberte **nástroje**a potom klikněte na **Správce clusteru s podporou převzetí služeb při selhání**.
+3. V levém podokně klikněte pravým tlačítkem na **Správce clusteru s podporou převzetí služeb při selhání**a pak klikněte na **vytvořit cluster**.
+   ![Vytvořit cluster](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
+4. V Průvodci vytvořením clusteru vytvořte cluster s jedním uzlem procházením stránek s nastavením v následující tabulce:
 
    | Stránka | Nastavení |
    | --- | --- |
    | Než začnete |Použít výchozí nastavení |
-   | Vybrat servery |Zadejte název prvního serveru SQL Server v **zadejte název serveru** a klikněte na tlačítko **přidat**. |
-   | Upozornění ověření |Vyberte **číslo pro tento cluster nepožadujete podporu od Microsoftu a proto nechcete, aby ke spuštění ověřovacích testů. Když kliknu na další, pokračovat ve vytváření clusteru**. |
-   | Přístupový bod pro správu clusteru |Zadejte název clusteru, například **SQLAGCluster1** v **název clusteru**.|
-   | Potvrzení |Použít výchozí hodnoty, pokud používáte prostory úložiště. Přečtěte si poznámku za touto tabulkou. |
+   | Vybrat servery |Do pole **Zadejte název serveru** zadejte název prvního SQL Server a klikněte na **Přidat**. |
+   | Upozornění ověření |Vyberte **ne. pro tento cluster nepotřebujete podporu od Microsoftu, a proto nechcete spouštět ověřovací testy. Po kliknutí na tlačítko Další pokračovat v vytváření clusteru**. |
+   | Přístupový bod pro správu clusteru |Zadejte název clusteru, například **SQLAGCluster1** v **názvu clusteru**.|
+   | Potvrzení |Použijte výchozí hodnoty, pokud nepoužíváte prostory úložiště. Podívejte se na poznámku za touto tabulkou. |
 
-### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Nastavit IP adresu clusteru převzetí služeb při selhání Windows serveru
+### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Nastavit IP adresu clusteru s podporou převzetí služeb při selhání Windows serveru
 
-1. V **Správce clusteru převzetí služeb při selhání**, přejděte dolů k položce **základní prostředky clusteru** a rozbalte podrobnosti o clusteru. Byste měli vidět oba **název** a **IP adresu** prostředky v **neúspěšné** stavu. Prostředek IP adresy nelze uvést do režimu online vzhledem k tomu, že cluster je přiřazen jako celý počítač stejnou IP adresu, a proto je duplicitní adresa.
+1. V **Správce clusteru s podporou převzetí služeb při selhání**přejděte dolů na **základní prostředky clusteru** a rozbalte podrobnosti o clusteru. Měl by se zobrazit **název** a prostředky **IP adresy** ve stavu **selhání** . Prostředek IP adresy nelze uvést do režimu online, protože cluster má přiřazenou stejnou IP adresu jako samotný počítač, proto je duplicitní adresa.
 
-2. Klikněte pravým tlačítkem na neúspěšný **IP adresu** prostředku a pak klikněte na tlačítko **vlastnosti**.
+2. Klikněte pravým tlačítkem na prostředek neúspěšné **IP adresy** a pak klikněte na **vlastnosti**.
 
    ![Vlastnosti clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Vyberte **statickou IP adresu** a zadejte dostupnou adresu ze stejné podsítě jako vaše virtuální počítače.
+3. Vyberte možnost **statická IP adresa** a zadejte dostupnou adresu ze stejné podsítě jako vaše virtuální počítače.
 
-4. V **základní prostředky clusteru** části, klikněte pravým tlačítkem na název clusteru a klikněte na tlačítko **přepnout do režimu Online**. Potom počkejte, dokud se oba prostředky jsou online. Když prostředek názvu clusteru převede do režimu online, aktualizace serveru řadiče domény s novým účtem AD počítače. Pomocí tohoto účtu AD později spuštění služby skupiny dostupnosti v clusteru.
+4. V části **základní prostředky clusteru** klikněte pravým tlačítkem na název clusteru a klikněte na **převést do režimu online**. Pak počkejte, dokud oba prostředky nebudou online. Když prostředek názvu clusteru přepne do online režimu, aktualizuje řadič domény pomocí nového účtu počítače služby AD. Pomocí tohoto účtu AD můžete později spustit Clusterovou službu skupiny dostupnosti.
 
-### <a name="addNode"></a>Přidat do clusteru SQL serveru
+### <a name="addNode"></a>Přidání druhého SQL Server do clusteru
 
-Přidáte do clusteru SQL serveru.
+Přidejte ostatní SQL Server do clusteru.
 
-1. Ve stromové struktuře prohlížeče, klikněte pravým tlačítkem na cluster a klikněte na tlačítko **přidat uzel**.
+1. Ve stromové struktuře prohlížeče klikněte pravým tlačítkem na cluster a pak klikněte na **přidat uzel**.
 
-    ![Přidání uzlu do clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/44-addnode.png)
+    ![Přidat uzel do clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/44-addnode.png)
 
-1. V **Průvodce přidáním uzlu**, klikněte na tlačítko **Další**. V **zvolit servery** stránce přidat druhý Server SQL. Zadejte název serveru v **zadejte název serveru** a potom klikněte na tlačítko **přidat**. Jakmile budete hotovi, klikněte na tlačítko **Další**.
+1. V **Průvodci přidat uzel**klikněte na **Další**. Na stránce **Vybrat servery** přidejte druhý SQL Server. Do pole **Zadejte název serveru** zadejte název serveru a pak klikněte na **Přidat**. Až skončíte, klikněte na **Další**.
 
-1. V **upozornění ověření** klikněte na **ne** (v případě produkčního prostředí byste měli provést ověřovací testy). Pak klikněte na **Další**.
+1. Na stránce **Upozornění na ověření** klikněte na **ne** (v produkčním scénáři byste měli provádět ověřovací testy). Pak klikněte na **Další**.
 
-8. V **potvrzení** stránky, pokud používáte prostory úložiště, zrušte zaškrtnutí políčka popisek **přidat do clusteru veškeré oprávněné úložiště.**
+8. Pokud používáte prostory úložiště, na stránce **potvrzení** zrušte zaškrtnutí políčka **Přidat do clusteru veškeré oprávněné úložiště.**
 
-   ![Přidat uzel potvrzení](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/46-addnodeconfirmation.png)
+   ![Přidat potvrzení uzlu](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/46-addnodeconfirmation.png)
 
     >[!WARNING]
-   >Pokud používáte prostory úložiště a není zrušte zaškrtnutí políčka **přidat do clusteru veškeré oprávněné úložiště**, Windows odpojí virtuální disky se během procesu clusteringu. Proto dokud prostory úložiště se odebral z clusteru se nezobrazují ve Správci disků nebo Průzkumníka a znovu připojit pomocí Powershellu. Prostory úložiště seskupit několik disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](https://technet.microsoft.com/library/hh831739).
+   >Pokud používáte prostory úložiště a nechcete zrušit kontrolu **Přidat do clusteru všechny opravňující úložiště**, systém Windows virtuální disky během procesu clusteringu odpojí. V důsledku toho se neobjeví ve Správci disků nebo v Průzkumníkovi, dokud se prostory úložiště z clusteru neodstraní a znovu nepřipojí přes PowerShell. Prostory úložiště seskupují více disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](https://technet.microsoft.com/library/hh831739).
 
 1. Klikněte na **Další**.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na tlačítko **Dokončit**.
 
-   Správce clusteru převzetí služeb při selhání ukazuje, že se nový uzel clusteru a zobrazí ho v **uzly** kontejneru.
+   Správce clusteru s podporou převzetí služeb při selhání ukazuje, že váš cluster má nový uzel a zobrazí ho v kontejneru **uzly** .
 
 10. Odhlaste se z relace vzdálené plochy.
 
-### <a name="add-a-cluster-quorum-file-share"></a>Přidání sdílené složky kvora clusteru
+### <a name="add-a-cluster-quorum-file-share"></a>Přidat sdílenou složku kvora clusteru
 
-V tomto příkladu Windows cluster používá sdílené složky k vytvoření kvora clusteru. Tento kurz používá většina uzlů a sdílených sdílené složky kvora. Další informace najdete v tématu [Principy konfigurací kvora v clusteru převzetí služeb při selhání](https://technet.microsoft.com/library/cc731739.aspx).
+V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou složku k vytvoření kvora clusteru. V tomto kurzu se používá kvorum Většina uzlů a sdílených souborů. Další informace najdete v článku [Principy konfigurací kvora v clusteru s podporou převzetí služeb při selhání](https://technet.microsoft.com/library/cc731739.aspx).
 
-1. Připojení k serveru soubor sdílenou složku s kopií clusteru člen pomocí relací vzdálené plochy.
+1. Připojte se k členskému serveru určující sdílené složky s relací vzdálené plochy.
 
-1. Na **správce serveru**, klikněte na tlačítko **nástroje**. Otevřít **Správa počítače**.
+1. V **Správce serveru**klikněte na **nástroje**. Otevřete **správu počítače**.
 
-1. Klikněte na tlačítko **sdílené složky**.
+1. Klikněte na **sdílené složky**.
 
-1. Klikněte pravým tlačítkem na **sdílené složky**a klikněte na tlačítko **novou sdílenou složku...** .
+1. Klikněte pravým tlačítkem na **sdílené složky**a pak klikněte na **Nová sdílená složka...** .
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Použití **Průvodce vytvořením sdílené složky** vytvoření sdílené složky.
+   Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
-1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a najděte nebo vytvořte cestu ke sdílené složce. Klikněte na **Další**.
+1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku. Klikněte na **Další**.
 
-1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na **Další**.
+1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
 
-1. Na **oprávnění ke sdílené složce** nastavit **přizpůsobit oprávnění**. Klikněte na tlačítko **vlastní...** .
+1. V nastavení **oprávnění ke sdílené složce** nastavte **oprávnění přizpůsobit**. Klikněte na **vlastní...** .
 
-1. Na **upravit oprávnění**, klikněte na tlačítko **přidat...** .
+1. V nabídce **přizpůsobit oprávnění**klikněte na **Přidat...** .
 
-1. Ujistěte se, že účet používaný k vytvoření clusteru má plnou kontrolu.
+1. Ujistěte se, že účet použitý k vytvoření clusteru má úplné řízení.
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
 1. Klikněte na **OK**.
 
-1. V **oprávnění ke sdílené složce**, klikněte na tlačítko **Dokončit**. Klikněte na tlačítko **Dokončit** znovu.  
+1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
-1. Odhlaste se z serveru
+1. Odhlášení ze serveru
 
 ### <a name="configure-cluster-quorum"></a>Konfigurace kvora clusteru
 
-Dále nastavte kvorum clusteru.
+V dalším kroku nastavte kvorum clusteru.
 
-1. Připojte se k prvním uzlu clusteru pomocí vzdálené plochy.
+1. Připojte se k prvnímu uzlu clusteru pomocí vzdálené plochy.
 
-1. V **Správce clusteru převzetí služeb při selhání**, klikněte pravým tlačítkem na cluster, přejděte na **další akce**a klikněte na tlačítko **konfigurovat nastavení kvora clusteru...** .
+1. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na cluster, přejděte na **Další akce**a klikněte na **Konfigurovat nastavení kvora clusteru..** .
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/52-configurequorum.png)
 
-1. V **Průvodce konfigurací kvora clusteru**, klikněte na tlačítko **Další**.
+1. V **Průvodci konfigurací kvora clusteru**klikněte na **Další**.
 
-1. V **vybrat možnosti konfigurace kvora**, zvolte **vybrat určující disk kvora**a klikněte na tlačítko **Další**.
+1. V **možnosti vybrat konfiguraci kvora**zvolte **Vybrat určující disk kvora**a klikněte na **Další**.
 
-1. Na **vybrat určující disk kvora**, klikněte na tlačítko **nakonfigurovat určující sdílenou složku souboru**.
+1. Na **výběru vybrat určující disk kvora**klikněte na **Konfigurovat určující sdílenou složku**.
 
    >[!TIP]
-   >Windows Server 2016 podporuje Cloudová kopie clusteru. Pokud se rozhodnete tento typ určující sdílené složky, není nutné soubor sdílet s kopií clusteru. Další informace najdete v tématu [nasazení cloudové kopie clusteru pro převzetí služeb při selhání clusteru](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Tento kurz používá určující sdílenou složku souboru, který není podporovaný ve starších operačních systémech.
+   >Windows Server 2016 podporuje cloudový disk s kopií clusteru. Pokud zvolíte tento typ určujícího umístění, nepotřebujete určující sdílenou složku. Další informace najdete v tématu [nasazení určujícího cloudu pro cluster s podporou převzetí služeb při selhání](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). V tomto kurzu se používá určující sdílená složka, která je podporovaná v předchozích operačních systémech.
 
-1. Na **nakonfigurovat určující sdílenou složku**, zadejte cestu ke sdílené složce, které jste vytvořili. Klikněte na **Další**.
+1. V části **Konfigurovat určující sdílenou složku**zadejte cestu pro sdílenou složku, kterou jste vytvořili. Klikněte na **Další**.
 
-1. Ověřte nastavení na **potvrzení**. Klikněte na **Další**.
+1. Ověřte nastavení při **potvrzení**. Klikněte na **Další**.
 
-1. Klikněte na **Dokončit**.
+1. Klikněte na tlačítko **Dokončit**.
 
-Základní prostředky clusteru se nakonfigurují se určující sdílená složka.
+Základní prostředky clusteru jsou nakonfigurovány s určující sdílenou složkou.
 
-## <a name="enable-availability-groups"></a>Povolte skupiny dostupnosti
+## <a name="enable-availability-groups"></a>Povolit skupiny dostupnosti
 
-Dál povolte **skupin dostupnosti AlwaysOn** funkce. Proveďte tyto kroky na obou serverech SQL.
+Potom povolte funkci **skupiny dostupnosti AlwaysOn** . Proveďte tyto kroky na serverech SQL.
 
-1. Z **Start** obrazovky, spusťte **Správce konfigurace systému SQL Server**.
-2. Ve stromové struktuře prohlížeče klikněte na tlačítko **služby SQL Server**, klepněte pravým tlačítkem myši **SQL Server (MSSQLSERVER)** služby a klikněte na tlačítko **vlastnosti**.
-3. Klikněte na tlačítko **vysoká dostupnost AlwaysOn** kartu a potom vyberte **povolte skupiny dostupnosti AlwaysOn**, následujícím způsobem:
+1. Z obrazovky **Start** spusťte **SQL Server Configuration Manager**.
+2. Ve stromové struktuře prohlížeče klikněte **SQL Server Services**, klikněte pravým tlačítkem na službu **SQL Server (MSSQLSERVER)** a klikněte na **vlastnosti**.
+3. Klikněte na kartu **Vysoká dostupnost AlwaysOn** a pak vyberte **Povolit skupiny dostupnosti AlwaysOn**, a to následujícím způsobem:
 
-    ![Povolte skupiny dostupnosti AlwaysOn](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
+    ![Povolit Skupiny dostupnosti AlwaysOn](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
 
-4. Klikněte na tlačítko **Použít**. Klikněte na tlačítko **OK** v místním dialogovém okně.
+4. Klikněte na tlačítko **Použít**. V automaticky otevíraném okně klikněte na **OK** .
 
 5. Restartujte službu SQL Server.
 
-Opakujte tyto kroky na jiném SQL serveru.
+Opakujte tyto kroky na ostatních SQL Server.
 
 <!-----------------
 ## <a name="endpoint-firewall"></a>Open firewall for the database mirroring endpoint
@@ -219,267 +218,267 @@ On both SQL Servers, open the firewall for the TCP port for the database mirrori
 Repeat these steps on the second SQL Server.
 -------------------------->
 
-## <a name="create-a-database-on-the-first-sql-server"></a>Vytvoření databáze na prvním serveru SQL
+## <a name="create-a-database-on-the-first-sql-server"></a>Vytvořit databázi v prvním SQL Server
 
-1. Spusťte soubor RDP na prvním serveru SQL Server pomocí účtu domény, který je členem pevné role serveru sysadmin.
-1. Otevřete SQL Server Management Studio a připojte se k první SQL serveru.
-7. V **Průzkumník objektů**, klikněte pravým tlačítkem na **databází** a klikněte na tlačítko **novou databázi**.
-8. V **název_databáze**, typ **MyDB1**, pak klikněte na tlačítko **OK**.
+1. Spusťte soubor RDP na první SQL Server s účtem domény, který je členem pevné role serveru sysadmin.
+1. Otevřete SQL Server Management Studio a připojte se k první SQL Server.
+7. V **Průzkumník objektů**klikněte pravým tlačítkem na **databáze** a klikněte na **Nová databáze**.
+8. Do **název databáze**zadejte **MyDB1**a pak klikněte na **OK**.
 
-### <a name="backupshare"></a> Vytvoření sdílené složky záloh
+### <a name="backupshare"></a>Vytvoření sdílené složky zálohy
 
-1. Na prvním serveru SQL v **správce serveru**, klikněte na tlačítko **nástroje**. Otevřít **Správa počítače**.
+1. V prvním SQL Server v **Správce serveru**klikněte na **nástroje**. Otevřete **správu počítače**.
 
-1. Klikněte na tlačítko **sdílené složky**.
+1. Klikněte na **sdílené složky**.
 
-1. Klikněte pravým tlačítkem na **sdílené složky**a klikněte na tlačítko **novou sdílenou složku...** .
+1. Klikněte pravým tlačítkem na **sdílené složky**a pak klikněte na **Nová sdílená složka...** .
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
-   Použití **Průvodce vytvořením sdílené složky** vytvoření sdílené složky.
+   Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
-1. Na **cesta ke složce**, klikněte na tlačítko **Procházet** a vyhledat nebo vytvořit cestu pro sdílenou složku záloh databáze. Klikněte na **Další**.
+1. V části **cesta ke složce**klikněte na **Procházet** a vyhledejte nebo vytvořte cestu pro sdílenou složku zálohy databáze. Klikněte na **Další**.
 
-1. V **název, popis a nastavení** ověřte název sdílené složky a cesta. Klikněte na **Další**.
+1. V části **název, popis a nastavení** ověřte název a cestu ke sdílené složce. Klikněte na **Další**.
 
-1. Na **oprávnění ke sdílené složce** nastavit **přizpůsobit oprávnění**. Klikněte na tlačítko **vlastní...** .
+1. V nastavení **oprávnění ke sdílené složce** nastavte **oprávnění přizpůsobit**. Klikněte na **vlastní...** .
 
-1. Na **upravit oprávnění**, klikněte na tlačítko **přidat...** .
+1. V nabídce **přizpůsobit oprávnění**klikněte na **Přidat...** .
 
-1. Ujistěte se, že účty služby SQL Server a agenta systému SQL Server pro oba servery mít plnou kontrolu.
+1. Ujistěte se, že účty služby Agent SQL Server a SQL Server pro oba servery mají úplné řízení.
 
    ![Nová sdílená složka](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
 1. Klikněte na **OK**.
 
-1. V **oprávnění ke sdílené složce**, klikněte na tlačítko **Dokončit**. Klikněte na tlačítko **Dokončit** znovu.  
+1. V **oprávněních ke sdílené složce**klikněte na **Dokončit**. Znovu klikněte na tlačítko **Dokončit** .  
 
-### <a name="take-a-full-backup-of-the-database"></a>Vytvořit úplnou zálohu databáze
+### <a name="take-a-full-backup-of-the-database"></a>Proveďte úplnou zálohu databáze.
 
-Musíte zálohovat databázi nové inicializace řetězce protokolu. Pokud neprovedete zálohování nové databáze, nemůže být součástí skupiny dostupnosti.
+Pro inicializaci řetězce protokolu je nutné zálohovat novou databázi. Pokud neprovedete zálohu nové databáze, nelze ji zahrnout do skupiny dostupnosti.
 
-1. V **Průzkumník objektů**, klikněte pravým tlačítkem na databázi, přejděte na **úlohy...** , klikněte na tlačítko **zálohování**.
+1. V **Průzkumník objektů**klikněte pravým tlačítkem na databázi, přejděte na **úlohy...** , klikněte na **zálohovat**.
 
-1. Klikněte na tlačítko **OK** úplné zálohování pro výchozí záložní umístění.
+1. Kliknutím na tlačítko **OK** převezmete úplnou zálohu do výchozího umístění zálohy.
 
 ## <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti
-Nyní jste připraveni ke konfiguraci skupiny dostupnosti. použijte následující postup:
+Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následujících kroků:
 
-* Vytvoření databáze na prvním serveru SQL.
-* Provést úplnou zálohu a zálohu transakčního protokolu databáze
-* Obnovit úplnou zálohu a zálohu protokolu na druhém serveru SQL Server s **NORECOVERY** možnost
-* Vytvoření skupiny dostupnosti (**AG1**) se synchronním potvrzováním automatické převzetí služeb při selhání a čitelné sekundární repliky
+* Vytvořte databázi na prvním SQL Server.
+* Proveďte úplnou zálohu a zálohu protokolu transakcí databáze.
+* Obnovení úplných záloh a zaprotokolování do druhé SQL Server pomocí možnosti **NORECOVERY**
+* Vytvoření skupiny dostupnosti (**AG1**) s synchronním potvrzením, automatickým převzetím služeb při selhání a čitelnými sekundárními replikami
 
-### <a name="create-the-availability-group"></a>Vytvoření skupiny dostupnosti:
+### <a name="create-the-availability-group"></a>Vytvořte skupinu dostupnosti:
 
-1. V relaci vzdálené plochy na prvním serveru SQL Server. V **Průzkumník objektů** v aplikaci SSMS klikněte pravým tlačítkem na **vysoká dostupnost AlwaysOn** a klikněte na tlačítko **Průvodce novou skupinou dostupnosti**.
+1. V relaci vzdálené plochy k prvnímu SQL Server. V **Průzkumník objektů** v SSMS klikněte pravým tlačítkem na možnost **AlwaysOn High Availability** a klikněte na **Průvodce novou skupinou dostupnosti**.
 
-    ![Spuštění Průvodce vytvořením skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
+    ![Spustit Průvodce novou skupinou dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. V **ÚVOD** klikněte na **Další**. V **zadejte název skupiny dostupnosti** stránky, zadejte název pro skupinu dostupnosti, například **AG1**v **název skupiny dostupnosti**. Klikněte na **Další**.
+2. Na stránce **Úvod** klikněte na **Další**. Na stránce **zadat název skupiny dostupnosti** zadejte název skupiny dostupnosti, například **AG1**, do pole **název skupiny dostupnosti**. Klikněte na **Další**.
 
-    ![Průvodce vytvořením skupin dostupnosti, zadejte název AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
+    ![Průvodce novým AG, zadání názvu AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
-3. V **vybrat databáze** stránky, vyberte svou databázi a klikněte na tlačítko **Další**.
-
-   >[!NOTE]
-   >Databáze splňuje požadavky pro skupinu dostupnosti, protože jste provedli aspoň jednu úplnou zálohu na zamýšlený primární replice.
-
-   ![Průvodce novou skupinu dostupnosti, vyberte databáze](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/60-newagselectdatabase.png)
-4. V **zadejte repliky** klikněte na **přidat repliky**.
-
-   ![Průvodce vytvořením skupin dostupnosti, zadejte repliky](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. **Připojit k serveru** otevře se dialogové okno. Zadejte název druhého serveru v **název serveru**. Klikněte na **Připojit**.
-
-   Zpátky **zadat repliky** stránky, měli byste vidět uvedené v druhém serveru **replik dostupnosti**. Konfigurace replik následujícím způsobem.
-
-   ![Průvodce vytvořením skupin dostupnosti, zadejte repliky (dokončeno)](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/64-newagreplica.png)
-
-6. Klikněte na tlačítko **koncové body** zobrazíte koncovým bodem zrcadlení pro tuto skupinu dostupnosti databáze. Použijte stejný port, který jste použili při nastavení [pravidlo brány firewall pro koncové body zrcadlení databáze](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-    ![Průvodce novou skupinu dostupnosti, vyberte počáteční Data synchronizace](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
-
-8. V **vybrat počáteční synchronizaci dat** stránce **úplné** a zadejte do sdíleného síťového umístění. Pro umístění, použijte [zálohování sdílené složky, kterou jste vytvořili](#backupshare). V příkladu pochází  **\\ \\ \<první Server SQL\>\Backup\\** . Klikněte na **Další**.
+3. Na stránce **Vybrat databáze** vyberte svou databázi a klikněte na **Další**.
 
    >[!NOTE]
-   >Úplná synchronizace trvá úplné zálohování databáze na první instanci systému SQL Server a obnoví k druhé instanci. U velkých databází úplnou synchronizaci nedoporučuje, protože to může trvat dlouhou dobu. Nyní můžete snížit ruční vytvoření zálohy databáze a obnovení s `NO RECOVERY`. Pokud již obnovení databáze s `NO RECOVERY` na druhém serveru SQL před konfigurací skupiny dostupnosti, zvolte **připojit pouze k**. Pokud chcete vytvořit zálohu po dokončení konfigurace skupiny dostupnosti, zvolte **přeskočit počáteční synchronizaci**.
+   >Databáze splňuje předpoklady pro skupinu dostupnosti, protože jste převzali alespoň jednu úplnou zálohu na zamýšlené primární replice.
 
-    ![Průvodce novou skupinu dostupnosti, vyberte počáteční Data synchronizace](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
+   ![Průvodce novým AG, výběr databází](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/60-newagselectdatabase.png)
+4. Na stránce **zadat repliky** klikněte na **Přidat repliku**.
 
-9. V **ověření** klikněte na **Další**. Tato stránka by měla vypadat podobně jako na následujícím obrázku:
+   ![Průvodce novým AG, zadání replik](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
+5. Zobrazí se dialogové okno **připojit k serveru** . Do pole **název serveru**zadejte název druhého serveru. Klikněte na **Připojit**.
 
-    ![Průvodce novým AG, ověření](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/72-validation.png)
+   Zpátky na stránce **zadat repliky** by se teď měl zobrazit druhý server uvedený v replikách **dostupnosti**. Repliky nakonfigurujte následujícím způsobem.
+
+   ![Průvodce novým AG, zadání replik (dokončeno)](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/64-newagreplica.png)
+
+6. Kliknutím na **koncové body** zobrazíte koncový bod zrcadlení databáze pro tuto skupinu dostupnosti. Použijte stejný port, který jste použili při nastavování [pravidla brány firewall pro koncové body zrcadlení databáze](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+    ![Průvodce novým AG, výběr synchronizace počátečních dat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
+
+8. Na stránce **Vyberte počáteční synchronizaci dat** vyberte možnost **úplné** a zadejte sdílené síťové umístění. Pro toto umístění použijte sdílenou [složku zálohy, kterou jste vytvořili](#backupshare). V tomto příkladu byl  **\\ \\nejprveSQLServer\>\Backup.\\ \<** Klikněte na **Další**.
+
+   >[!NOTE]
+   >Úplná synchronizace provede úplnou zálohu databáze na první instanci SQL Server a obnoví ji do druhé instance. U rozsáhlých databází se Úplná synchronizace nedoporučuje, protože může trvat dlouhou dobu. Tuto dobu můžete zkrátit ručním vytvořením zálohy databáze a jejím `NO RECOVERY`obnovením. Pokud je databáze již `NO RECOVERY` v druhém SQL Server obnovena před konfigurací skupiny dostupnosti, vyberte možnost **pouze připojit**. Pokud chcete zálohování provést po konfiguraci skupiny dostupnosti, vyberte možnost **Přeskočit počáteční synchronizaci dat**.
+
+    ![Průvodce novým AG, výběr synchronizace počátečních dat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/70-datasynchronization.png)
+
+9. Na stránce **ověřování** klikněte na **Další**. Tato stránka by měla vypadat podobně jako na následujícím obrázku:
+
+    ![Průvodce novým AG, ověřování](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/72-validation.png)
 
     >[!NOTE]
-    >Protože jste nenakonfigurovali naslouchací proces skupiny dostupnosti existuje upozornění. pro konfiguraci naslouchacího procesu. Toto upozornění můžete ignorovat, protože ve službě Azure virtual machines můžete vytvořit naslouchací proces po vytvoření nástroje pro vyrovnávání zatížení Azure.
+    >Pro konfiguraci naslouchacího procesu existuje upozornění, protože jste nenakonfigurovali naslouchací proces skupiny dostupnosti. Toto upozornění můžete ignorovat, protože na virtuálních počítačích Azure vytváříte naslouchací proces po vytvoření nástroje pro vyrovnávání zatížení Azure.
 
-10. V **Souhrn** klikněte na **Dokončit**, počkejte, než Průvodce konfiguruje novou skupinu dostupnosti. V **průběh** stránky, můžete kliknout na **podrobnosti** zobrazíte podrobné průběh. Po dokončení průvodce se kontrolovat **výsledky** stránku k ověření úspěšného vytvoření skupiny dostupnosti.
+10. Na stránce **Souhrn** klikněte na **Dokončit**a potom počkejte, než průvodce nakonfiguruje novou skupinu dostupnosti. Na stránce **průběh** můžete kliknutím na **Další podrobnosti** zobrazit podrobný průběh. Po dokončení průvodce Zkontrolujte stránku **výsledků** a ověřte, jestli je skupina dostupnosti úspěšně vytvořená.
 
-     ![Výsledky průvodce AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Klikněte na tlačítko **Zavřít** ukončíte průvodce.
+     ![Průvodce novým AG, výsledky](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
+11. Kliknutím na **Zavřít** průvodce ukončíte.
 
-### <a name="check-the-availability-group"></a>Zkontrolujte skupiny dostupnosti
+### <a name="check-the-availability-group"></a>Ověřit skupinu dostupnosti
 
-1. V **Průzkumník objektů**, rozbalte **vysoká dostupnost AlwaysOn**, potom rozbalte **skupin dostupnosti**. Teď byste měli vidět nové skupiny dostupnosti v tomto kontejneru. Klikněte pravým tlačítkem na skupinu dostupnosti a klikněte na tlačítko **zobrazit řídicí panel**.
+1. V **Průzkumník objektů**rozbalte možnost **vysoce dostupná dostupnost AlwaysOn**a pak rozbalte položku **skupiny dostupnosti**. Nyní by se měla zobrazit nová skupina dostupnosti v tomto kontejneru. Klikněte pravým tlačítkem na skupinu dostupnosti a pak klikněte na **zobrazit řídicí panel**.
 
    ![Zobrazit řídicí panel AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/76-showdashboard.png)
 
-   Vaše **řídicí panel AlwaysOn** by měl vypadat nějak takto.
+   **Řídicí panel AlwaysOn** by měl vypadat nějak takto.
 
    ![Řídicí panel AG](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/78-agdashboard.png)
 
-   Zobrazí se replik, režim převzetí služeb při selhání každou repliku a stav synchronizace.
+   Můžete zobrazit repliky, režim převzetí služeb při selhání každé repliky a stav synchronizace.
 
-2. V **Správce clusteru převzetí služeb při selhání**, klikněte na cluster. Vyberte **role**. Název skupiny dostupnosti, které jste použili je role v clusteru. Skupiny dostupnosti nemá IP adresu pro připojení klientů, protože jste nenakonfigurovali naslouchací proces. Po vytvoření služby Azure load balancer můžete nakonfigurovat naslouchací proces.
+2. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte na svůj cluster. Vyberte **role**. Název skupiny dostupnosti, který jste použili, je role v clusteru. Tato skupina dostupnosti nemá IP adresu pro připojení klienta, protože jste nenakonfigurovali naslouchací proces. Naslouchací proces budete konfigurovat po vytvoření nástroje pro vyrovnávání zatížení Azure.
 
-   ![Skupina dostupnosti v modulu Správce clusteru převzetí služeb při selhání](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
+   ![AG v Správce clusteru s podporou převzetí služeb při selhání](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > Nepokoušejte se převzetí služeb při selhání skupiny dostupnosti ze Správce clusteru převzetí služeb při selhání. Všechny operace převzetí služeb při selhání by se provádět v rámci **řídicí panel AlwaysOn** v aplikaci SSMS. Další informace najdete v tématu [omezení na používání nástroje převzetí služeb při selhání clusteru Manager se skupinami dostupnosti](https://msdn.microsoft.com/library/ff929171.aspx).
+   > Nepokoušejte se převzít služby při selhání skupiny dostupnosti z Správce clusteru s podporou převzetí služeb při selhání. Všechny operace převzetí služeb při selhání by se měly provádět v rámci **řídicího panelu AlwaysOn** v SSMS. Další informace najdete v tématu [omezení používání Správce clusteru s podporou převzetí služeb při selhání se skupinami dostupnosti](https://msdn.microsoft.com/library/ff929171.aspx).
     >
 
-V tomto okamžiku máte skupinu dostupnosti s replikami na dvě instance systému SQL Server. Skupiny dostupnosti můžete přesunout mezi instancemi. Nemůžete připojit, do skupiny dostupnosti ještě protože není nutné naslouchací proces. Naslouchací proces ve službě Azure virtual machines, vyžaduje nástroj pro vyrovnávání zatížení. Dalším krokem je vytvoření nástroje pro vyrovnávání zatížení v Azure.
+V tomto okamžiku máte skupinu dostupnosti s replikami na dvou instancích SQL Server. Skupinu dostupnosti můžete přesunout mezi instancemi. Nemůžete se připojit ke skupině dostupnosti, protože nemáte naslouchací proces. Naslouchací proces vyžaduje nástroj pro vyrovnávání zatížení ve virtuálních počítačích Azure. Dalším krokem je vytvoření nástroje pro vyrovnávání zatížení v Azure.
 
 <a name="configure-internal-load-balancer"></a>
 
 ## <a name="create-an-azure-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení Azure
 
-Skupiny dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení obsahuje IP adresy pro naslouchací procesy skupiny dostupnosti a převzetí služeb při selhání clusteru Windows serveru. Tento oddíl shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení na webu Azure Portal.
+Na virtuálních počítačích Azure vyžaduje Skupina dostupnosti SQL Server službu pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací procesy skupiny dostupnosti a cluster s podporou převzetí služeb při selhání systému Windows Server. Tato část shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení v Azure Portal.
 
-Azure Load Balancer může být standardní nástroj pro vyrovnávání zatížení nebo základní nástroje pro vyrovnávání zatížení. Load balancer úrovně Standard nabízí víc funkcí než základní nástroj pro vyrovnávání zatížení. Pro skupinu dostupnosti je Load balancer úrovně Standard vyžaduje, když používáte zóně dostupnosti (namísto dostupnosti). Podrobnosti o rozdílech mezi typy nástroje pro vyrovnávání zatížení najdete v tématu [SKU nástroje pro vyrovnávání zatížení porovnání](../../../load-balancer/load-balancer-overview.md#skus).
+Azure Load Balancer může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi typy nástroje pro vyrovnávání zatížení naleznete v tématu [Load Balancer porovnání skladové](../../../load-balancer/load-balancer-overview.md#skus)položky.
 
-1. Na webu Azure Portal, přejděte do skupiny prostředků, ve kterém jsou servery SQL a klikněte na **+ přidat**.
-1. Vyhledejte **nástroj pro vyrovnávání zatížení**. Zvolte nástroj pro vyrovnávání zatížení vydávaný microsoftem.
+1. V Azure Portal přejděte do skupiny prostředků, kde jsou vaše servery SQL, a klikněte na **+ Přidat**.
+1. Vyhledejte **Load Balancer**. Vyberte nástroj pro vyrovnávání zatížení publikovaný Microsoftem.
 
-   ![Skupina dostupnosti v modulu Správce clusteru převzetí služeb při selhání](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
+   ![AG v Správce clusteru s podporou převzetí služeb při selhání](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
 1. Klikněte na možnost **Vytvořit**.
-1. Nakonfigurujte následující parametry nástroje pro vyrovnávání zatížení.
+1. Pro nástroj pro vyrovnávání zatížení nakonfigurujte následující parametry.
 
    | Nastavení | Pole |
    | --- | --- |
-   | **Název** |Použít textový název nástroje pro vyrovnávání zatížení, například **sqlLB**. |
+   | **Název** |Použijte textový název nástroje pro vyrovnávání zatížení, například **sqlLB**. |
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální sítě Azure. |
-   | **Podsíť** |Použijte název podsítě, která je virtuální počítač v.  |
-   | **Přiřazení IP adresy** |Statická |
-   | **IP adresa** |Použití dostupnou adresu z podsítě. Použijte tuto adresu pro vaše naslouchacího procesu skupiny dostupnosti. Všimněte si, že se liší od IP adresu clusteru.  |
+   | **Podsíť** |Použijte název podsítě, ve které se nachází virtuální počítač.  |
+   | **Přiřazení IP adresy** |Static |
+   | **IP adresa** |Použijte dostupnou adresu z podsítě. Tuto adresu použijte pro naslouchací proces skupiny dostupnosti. Všimněte si, že se liší od IP adresy vašeho clusteru.  |
    | **Předplatné** |Použijte stejné předplatné jako virtuální počítač. |
-   | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
+   | **Location** |Použijte stejné umístění jako virtuální počítač. |
 
-   Okno Azure portal by měl vypadat nějak takto:
+   Okno Azure Portal by mělo vypadat takto:
 
    ![Vytvoření nástroje pro vyrovnávání zatížení](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/84-createloadbalancer.png)
 
-1. Klikněte na tlačítko **vytvořit**, k vytvoření nástroje pro vyrovnávání zatížení.
+1. Kliknutím na **vytvořit**vytvořte Nástroj pro vyrovnávání zatížení.
 
-Ke konfiguraci nástroje pro vyrovnávání zatížení, budete muset vytvořit back-endový fond, test a nastavte pravidla Vyrovnávání zatížení. Provádějí na webu Azure Portal.
+Pokud chcete nakonfigurovat nástroj pro vyrovnávání zatížení, musíte vytvořit back-end fond, test a nastavit pravidla vyrovnávání zatížení. Udělejte to Azure Portal.
 
-### <a name="add-backend-pool-for-the-availability-group-listener"></a>Přidat back-endový fond pro naslouchací proces skupiny dostupnosti
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>Přidat back-end fond pro naslouchací proces skupiny dostupnosti
 
-1. Na webu Azure Portal přejděte do skupiny dostupnosti. Vám může být nutné aktualizovat zobrazení, abyste viděli nástroje pro vyrovnávání zatížení nově vytvořený.
+1. V Azure Portal přejdete do skupiny dostupnosti. Možná budete muset zobrazení aktualizovat, aby se zobrazil nově vytvořený Nástroj pro vyrovnávání zatížení.
 
-   ![Najít nástroj pro vyrovnávání zatížení ve skupině prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
+   ![Najít Load Balancer ve skupině prostředků](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na tlačítko **back-endové fondy**a klikněte na tlačítko **+ přidat**.
+1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na **back-endové fondy**a pak klikněte na **+ Přidat**.
 
-1. Zadejte název pro back-endový fond.
+1. Zadejte název back-end fondu.
 
-1. Back-endového fondu přidružte skupinu dostupnosti, která obsahuje virtuální počítače.
+1. Přidružte back-end fond ke skupině dostupnosti, která obsahuje virtuální počítače.
 
-1. V části **cílové konfigurace protokolu IP sítě**, zkontrolujte **VIRTUÁLNÍHO počítače** a zvolit oba virtuální počítače, které budou hostiteli replik skupin dostupnosti. Nezahrnují souborovém serveru sdílenou složku s kopií clusteru.
+1. V části **cílové síťové konfigurace IP adresy**zaškrtněte **virtuální počítač** a vyberte oba virtuální počítače, které budou hostovat repliky skupin dostupnosti. Nezahrnujte souborový server sdílené složky.
 
    >[!NOTE]
-   >Pokud nejsou zadány oba virtuální počítače, připojení bude úspěšné pouze k primární replice.
+   >Pokud nejsou zadány oba virtuální počítače, připojení budou úspěšná pouze pro primární repliku.
 
-1. Klikněte na tlačítko **OK** vytvořit back-endový fond.
+1. Kliknutím na tlačítko **OK** vytvořte fond back-end.
 
-### <a name="set-the-probe"></a>Nastavení testu
+### <a name="set-the-probe"></a>Nastavení testu paměti
 
-1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na tlačítko **sondy stavu**a klikněte na tlačítko **+ přidat**.
+1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na **sondy stavu**a potom klikněte na **+ Přidat**.
 
-1. Sonda stavu naslouchací proces nastavte následujícím způsobem:
+1. Nastavte sondu stavu naslouchacího procesu následujícím způsobem:
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointProbe |
-   | **Protokol** | Zvolte možnost TCP | TCP |
-   | **Port** | Žádné nevyužité portu | 59999 |
-   | **Interval**  | Množství času mezi pokusy o testování v řádu sekund |5 |
-   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích test selhání, které se musí vyskytovat pro virtuální počítač, aby se považoval za poškozený  | 2 |
+   | **Protokol** | Zvolit TCP | TCP |
+   | **Port** | Libovolný nepoužitý port | 59999 |
+   | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
+   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
-1. Klikněte na tlačítko **OK** nastavit sondu stavu.
+1. Kliknutím na **OK** nastavte sondu stavu.
 
-### <a name="set-the-load-balancing-rules"></a>Nastavte pravidla Vyrovnávání zatížení
+### <a name="set-the-load-balancing-rules"></a>Nastavení pravidel vyrovnávání zatížení
 
-1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
+1. Klikněte na nástroj pro vyrovnávání zatížení, klikněte na tlačítko **pravidla vyrovnávání zatížení**a klikněte na **+ Přidat**.
 
-1. Nastavte následujícím způsobem pravidel Vyrovnávání zatížení naslouchacího procesu.
+1. Nastavte pravidla vyrovnávání zatížení naslouchacího procesu následujícím způsobem.
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
-   | **Front-endové IP adresy** | Zvolte adresu |Použijte adresu, kterou jste vytvořili při vytvoření nástroje pro vyrovnávání zatížení. |
-   | **Protokol** | Zvolte možnost TCP |TCP |
-   | **Port** | Použijte port pro naslouchací proces skupiny dostupnosti | 1433 |
-   | **Back-endový Port** | Toto pole se nepoužívá při plovoucí IP adresa je nastavená pro přímá odpověď ze serveru vrácené | 1433 |
-   | **Test paměti** |Název, který jste zadali pro test paměti | SQLAlwaysOnEndPointProbe |
+   | **IP adresa front-endu** | Zvolte adresu |Použijte adresu, kterou jste vytvořili při vytváření nástroje pro vyrovnávání zatížení. |
+   | **Protokol** | Zvolit TCP |TCP |
+   | **Port** | Použijte port pro naslouchací proces skupiny dostupnosti. | 1433 |
+   | **Port back-endu** | Toto pole se nepoužívá, je-li pro přímé vrácení serveru nastavená plovoucí IP adresa. | 1433 |
+   | **Testu** |Název, který jste zadali pro test paměti | SQLAlwaysOnEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **Žádné** |
-   | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Enabled |
+   | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Enabled |
 
    > [!WARNING]
-   > Přímá odpověď ze serveru vrácené je nastavit během vytváření. Název není možné změnit.
+   > Při vytváření se nastaví přímá návrat serveru. Název není možné změnit.
 
-1. Klikněte na tlačítko **OK** nastavit pravidla Vyrovnávání zatížení naslouchacího procesu.
+1. Kliknutím na **OK** nastavte pravidla vyrovnávání zatížení naslouchacího procesu.
 
-### <a name="add-the-cluster-core-ip-address-for-the-windows-server-failover-cluster-wsfc"></a>Přidat IP adresu clusteru core pro Windows Server Failover Cluster (WSFC)
+### <a name="add-the-cluster-core-ip-address-for-the-windows-server-failover-cluster-wsfc"></a>Přidání základní IP adresy clusteru pro cluster s podporou převzetí služeb při selhání systému Windows Server (WSFC)
 
-Služby WSFC IP adresa musí být také v nástroji pro vyrovnávání zatížení.
+IP adresa služby WSFC také musí být v nástroji pro vyrovnávání zatížení.
 
-1. Na portálu na stejném Azure load balancer, klikněte na tlačítko **konfigurace protokolu IP front-endu** a klikněte na tlačítko **+ přidat**. Použijte IP adresu, které jste nakonfigurovali pro služby WSFC v základní prostředky clusteru. Nastavte adresu IP jako statické.
+1. Na portálu na stejném nástroji pro vyrovnávání zatížení Azure klikněte na **front-end konfigurace IP adresy** a klikněte na **+ Přidat**. Použijte IP adresu, kterou jste nakonfigurovali pro služby WSFC v základních prostředcích clusteru. Nastavte IP adresu jako statickou.
 
-1. V nástroji pro vyrovnávání zatížení, klikněte na tlačítko **sondy stavu**a klikněte na tlačítko **+ přidat**.
+1. V nástroji pro vyrovnávání zatížení klikněte na **sondy stavu**a pak klikněte na **+ Přidat**.
 
-1. Sonda stavu na IP adresu služby WSFC clusteru core nastavte následujícím způsobem:
+1. Následujícím způsobem nastavte test stavu hlavní IP adresy clusteru služby WSFC:
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | WSFCEndPointProbe |
-   | **Protokol** | Zvolte možnost TCP | TCP |
-   | **Port** | Žádné nevyužité portu | 58888 |
-   | **Interval**  | Množství času mezi pokusy o testování v řádu sekund |5 |
-   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích test selhání, které se musí vyskytovat pro virtuální počítač, aby se považoval za poškozený  | 2 |
+   | **Protokol** | Zvolit TCP | TCP |
+   | **Port** | Libovolný nepoužitý port | 58888 |
+   | **Interval**  | Doba mezi pokusy o sondu v sekundách |5 |
+   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích selhání testu, které se musí vyskytnout, když se virtuální počítač považuje za poškozený  | 2 |
 
-1. Klikněte na tlačítko **OK** nastavit sondu stavu.
+1. Kliknutím na **OK** nastavte sondu stavu.
 
-1. Nastavte pravidla Vyrovnávání zatížení. Klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
+1. Nastavte pravidla vyrovnávání zatížení. Klikněte na tlačítko **pravidla vyrovnávání zatížení**a klikněte na **+ Přidat**.
 
-1. Nastavte následujícím způsobem pravidla Vyrovnávání zatížení adresa IP clusteru core.
+1. Následujícím způsobem nastavte pravidla vyrovnávání zatížení základních IP adres clusteru.
 
-   | Nastavení | Popis | Příklad:
+   | Nastavení | Popis | Příklad
    | --- | --- |---
    | **Název** | Text | WSFCEndPoint |
-   | **Front-endové IP adresy** | Zvolte adresu |Použijte adresu, kterou jste vytvořili při konfiguraci služby WSFC IP adresu. Tím se liší od IP adresu naslouchacího procesu |
-   | **Protokol** | Zvolte možnost TCP |TCP |
-   | **Port** | Použijte port pro IP adresu clusteru. Toto je dostupný port, který se nepoužívá pro test paměti port naslouchacího procesu. | 58888 |
-   | **Back-endový Port** | Toto pole se nepoužívá při plovoucí IP adresa je nastavená pro přímá odpověď ze serveru vrácené | 58888 |
-   | **Test paměti** |Název, který jste zadali pro test paměti | WSFCEndPointProbe |
+   | **IP adresa front-endu** | Zvolte adresu |Použijte adresu, kterou jste vytvořili při konfiguraci IP adresy služby WSFC. To se liší od IP adresy naslouchacího procesu. |
+   | **Protokol** | Zvolit TCP |TCP |
+   | **Port** | Použijte port pro IP adresu clusteru. Toto je dostupný port, který se nepoužívá pro port testu naslouchacího procesu. | 58888 |
+   | **Port back-endu** | Toto pole se nepoužívá, je-li pro přímé vrácení serveru nastavená plovoucí IP adresa. | 58888 |
+   | **Testu** |Název, který jste zadali pro test paměti | WSFCEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **Žádné** |
-   | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | |Enabled |
+   | **Časový limit nečinnosti** | Počet minut, po který se má připojení TCP nechat otevřené | 4 |
+   | **Plovoucí IP adresa (přímá návrat ze serveru)** | |Enabled |
 
    > [!WARNING]
-   > Přímá odpověď ze serveru vrácené je nastavit během vytváření. Název není možné změnit.
+   > Při vytváření se nastaví přímá návrat serveru. Název není možné změnit.
 
-1. Klikněte na tlačítko **OK** nastavit pravidla Vyrovnávání zatížení.
+1. Kliknutím na tlačítko **OK** nastavte pravidla vyrovnávání zatížení.
 
-## <a name="configure-listener"></a> Nakonfigurujte naslouchací proces
+## <a name="configure-listener"></a>Konfigurace naslouchacího procesu
 
-Dalším krokem je konfigurace naslouchacího procesu skupiny dostupnosti na clusteru pro převzetí služeb při selhání.
+Dalším krokem je konfigurace naslouchacího procesu skupiny dostupnosti v clusteru s podporou převzetí služeb při selhání.
 
 > [!NOTE]
-> Tento kurz ukazuje, jak vytvořit jeden naslouchací proces – jeden ILB IP adresou. Vytvoření jednoho nebo víc naslouchacích procesů pomocí jednoho nebo víc IP adres najdete v tématu [skupiny dostupnosti vytvořit naslouchací proces a nástroje pro vyrovnávání zatížení | Azure](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> V tomto kurzu se dozvíte, jak vytvořit jeden naslouchací proces – s jednou IP adresou interního nástroje. Pokud chcete vytvořit jeden nebo více posluchačů pomocí jedné nebo více IP adres, přečtěte si téma [Vytvoření naslouchacího procesu skupiny dostupnosti a nástroje pro vyrovnávání zatížení | Azure](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 
@@ -487,41 +486,41 @@ Dalším krokem je konfigurace naslouchacího procesu skupiny dostupnosti na clu
 
 ## <a name="set-listener-port"></a>Nastavit port naslouchacího procesu
 
-V systému SQL Server Management Studio nastavte na port naslouchacího procesu.
+V SQL Server Management Studio nastavte port naslouchacího procesu.
 
 1. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-1. Přejděte do **AlwaysOn vysokou dostupnost** | **skupin dostupnosti** | **naslouchacích procesů skupin dostupnosti**.
+1. Přejděte | na**naslouchací procesy**skupin dostupnosti **AlwaysOn vysoké dostupnosti** | .
 
-1. Teď byste měli vidět název naslouchacího procesu, který jste vytvořili v modulu Správce clusteru převzetí služeb při selhání. Klikněte pravým tlačítkem na název naslouchacího procesu a klikněte na tlačítko **vlastnosti**.
+1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a klikněte na **vlastnosti**.
 
-1. V **Port** pole, zadejte číslo portu naslouchacího procesu skupiny dostupnosti. Výchozí je 1433, pak klikněte na tlačítko **OK**.
+1. Do pole **port** zadejte číslo portu pro naslouchací proces skupiny dostupnosti. 1433 je výchozí hodnota a pak klikněte na **OK**.
 
-Nyní máte skupinu dostupnosti SQL Server v Azure virtuální počítače spuštěné v režimu Resource Manageru.
+Teď máte SQL Server skupinu dostupnosti ve virtuálních počítačích Azure, které běží v režimu Správce prostředků.
 
-## <a name="test-connection-to-listener"></a>Test připojení k naslouchacímu procesu
+## <a name="test-connection-to-listener"></a>Testovat připojení ke službě Listener
 
-Chcete-li otestovat připojení:
+Otestování připojení:
 
-1. Připojení RDP k serveru SQL Server, který je ve stejné virtuální síti, ale není vlastníkem repliky. Použít jiný SQL Server v clusteru.
+1. Protokol RDP na SQL Server, který je ve stejné virtuální síti, ale nevlastní repliku. V clusteru můžete použít jiné SQL Server.
 
-1. Použití **sqlcmd** nástroj k testování připojení. Například následující skript vytvoří **sqlcmd** připojení k primární replice prostřednictvím naslouchací proces s ověřováním Windows:
+1. K otestování připojení použijte nástroj **Sqlcmd** . Například následující skript vytvoří připojení **Sqlcmd** k primární replice prostřednictvím naslouchacího procesu s ověřováním systému Windows:
 
    ```cmd
    sqlcmd -S <listenerName> -E
    ```
 
-   Pokud je naslouchací proces používá jiný port než výchozí port (1433), zadejte port, který v připojovacím řetězci. Například následující příkaz sqlcmd se připojí k naslouchání na portu 1435:
+   Pokud naslouchací proces používá jiný port než výchozí port (1433), zadejte port v připojovacím řetězci. Například následující příkaz Sqlcmd se připojí k naslouchacího procesu na portu 1435:
 
    ```cmd
    sqlcmd -S <listenerName>,1435 -E
    ```
 
-Připojení SQLCMD se automaticky připojí k libovolným instance systému SQL Server hostuje primární repliku.
+Připojení SQLCMD se automaticky připojí k jakékoli instanci SQL Server hostuje primární repliku.
 
 > [!TIP]
-> Ujistěte se, že je otevřen v bráně firewall oba servery SQL port, který zadáte. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [přidat nebo upravit pravidlo brány Firewall](https://technet.microsoft.com/library/cc753558.aspx).
+> Ujistěte se, že port, který zadáte, je otevřený v bráně firewall obou serverů SQL. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [Přidání nebo úprava pravidla brány firewall](https://technet.microsoft.com/library/cc753558.aspx).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přidat IP adresu nástroji pro vyrovnávání zatížení pro skupinu dostupnosti druhý](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP).
+- [Přidejte IP adresu do nástroje pro vyrovnávání zatížení pro druhou skupinu dostupnosti](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP).

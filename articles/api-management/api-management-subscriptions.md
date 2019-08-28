@@ -1,6 +1,6 @@
 ---
-title: Předplatná ve službě Azure API Management | Dokumentace Microsoftu
-description: Další informace o konceptu předplatných ve službě Azure API Management.
+title: Předplatná v Azure API Management | Microsoft Docs
+description: Přečtěte si o konceptu předplatných v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,60 +9,59 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073411"
 ---
-# <a name="subscriptions-in-azure-api-management"></a>Předplatná ve službě Azure API Management
+# <a name="subscriptions-in-azure-api-management"></a>Předplatná v Azure API Management
 
-Předplatné je důležitý koncept ve službě Azure API Management. Jsou to nejběžnější způsob pro zákazníky se získat přístup k rozhraním API publikované prostřednictvím instance služby API Management. Tento článek obsahuje přehled koncept.
+Předplatná jsou důležitou koncepcí v Azure API Management. Jedná se o nejběžnější způsob, jak mohou příjemci rozhraní API získat přístup k rozhraním API publikovaným pomocí instance API Management. Tento článek poskytuje přehled konceptu.
 
-## <a name="what-are-subscriptions"></a>Co jsou předplatná?
+## <a name="what-are-subscriptions"></a>Co jsou předplatné?
 
-Při publikování rozhraní API prostřednictvím služby API Management je snadné a společné pro zabezpečený přístup k těmto rozhraním API pomocí klíče předplatného. Vývojáři, kteří potřebují využívat publikovaných rozhraní API musí obsahovat platné předplatné klíč v požadavcích HTTP při provádění volání těchto rozhraní API. V opačném případě volání odmítne okamžitě brány API Management. Nepředávají se k back endové služby.
+Když publikujete rozhraní API prostřednictvím API Management, je snadné a běžné zabezpečení přístupu k těmto rozhraním API pomocí klíčů předplatného. Vývojáři, kteří potřebují využívat publikovaná rozhraní API, musí při volání do těchto rozhraní API zahrnovat platný klíč předplatného v požadavcích HTTP. V opačném případě jsou volání okamžitě odmítnuta bránou API Management. Neodesílají se do back-endové služby.
 
-Pokud chcete získat klíč předplatného pro přístup k rozhraní API, se vyžaduje předplatné. Předplatné je v podstatě pojmenované kontejner pro dvojice klíčů předplatného. Vývojáři, kteří potřebují využívat publikovaných rozhraní API můžete získat předplatná. A nepotřebují schválení od vydavatelé rozhraní API. Vydavatelé rozhraní API můžete také vytvořit odběry přímo pro zákazníky.
+Pokud chcete získat klíč předplatného pro přístup k rozhraním API, vyžaduje se předplatné. Předplatné je v podstatě pojmenovaný kontejner pro pár klíčů předplatného. Vývojáři, kteří potřebují využívat publikovaná rozhraní API, můžou získat odběry. A nepotřebují schválení od vydavatelů rozhraní API. Vydavatelé rozhraní API můžou také vytvářet odběry přímo pro uživatele rozhraní API.
 
 > [!TIP]
-> API Management podporuje také další mechanismy pro zabezpečení přístupu k rozhraní API, včetně následujících příkladech:
+> API Management také podporuje další mechanismy pro zabezpečení přístupu k rozhraním API, včetně následujících příkladů:
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Klientské certifikáty](api-management-howto-mutual-certificates-for-clients.md)
-> - [Přidávání na seznam povolených IP](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [Seznam povolených IP adres](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
-## <a name="scope-of-subscriptions"></a>Obor předplatných
+## <a name="scope-of-subscriptions"></a>Rozsah předplatných
 
-Předplatná můžou být spojené s různými obory: produkt, všechna rozhraní API nebo jednotlivé rozhraní API.
+Odběry je možné přidružit k různým oborům: produkt, všechna rozhraní API nebo jednotlivá rozhraní API.
 
 ### <a name="subscriptions-for-a-product"></a>Předplatná produktu
 
-Tradičně, předplatná ve službě API Management souvisely vždy pomocí jediného [produktu API](api-management-terminology.md) oboru. Vývojáři najít seznam produktů na portálu pro vývojáře. Pak by odesílání žádostí o odběr pro produkty, že ale chtěli použít. Po schválení žádosti o odběr, automaticky nebo které vydavatelé rozhraní API, Vývojář můžete klíče v něm přístup ke všem rozhraním API v rámci produktu. V současné době zobrazí portál pro vývojáře předplatná obor produktu pouze části profilu uživatele. 
+Předplatná v API Management byla tradičně přidružena k jednomu oboru [produktu API](api-management-terminology.md) . Vývojáři nalezli seznam produktů na portálu pro vývojáře. Pak by v rámci předplatného odeslali požadavky na produkty, které chtěli používat. Po schválení žádosti o předplatné buď automaticky, nebo vydavatelům rozhraní API může vývojář použít klíče v tomto produktu pro přístup ke všem rozhraním API v produktu. Portál pro vývojáře v současnosti zobrazuje jenom odběry oborů produktů v části Profil uživatele. 
 
-![Předplatná produktu](./media/api-management-subscriptions/product-subscription.png)
+![Odběry produktů](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> V některých případech vydavatelé rozhraní API může být vhodné publikování produktu rozhraní API veřejně bez nutnosti předplatných. Můžete zrušit **vyžadují předplatné** možnost **nastavení** stránky produktu na webu Azure Portal. Všechna rozhraní API v rámci produktu v důsledku toho lze přistupovat bez klíče rozhraní API.
+> V některých případech můžou vydavatelé rozhraní API chtít publikovat produkt API na veřejném, aniž by museli mít požadavek na odběry. V Azure Portal můžou zrušit výběr možnosti **vyžadovat předplatné** na stránce **Nastavení** produktu. V důsledku toho je přístup k všem rozhraním API v rámci produktu možné bez klíče rozhraní API.
 
-### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Předplatná pro všechna rozhraní API nebo jednotlivé rozhraní API
+### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Předplatná pro všechna rozhraní API nebo jednotlivá rozhraní API
 
-Když jsme představili [spotřeby](https://aka.ms/apimconsumptionblog) úroveň služby API Management jsme provedli několik změn zefektivnit správu klíčů:
-- Nejprve jsme přidali dvě další obory předplatného: všechna rozhraní API a jediné rozhraní API. Obor předplatného už nejsou omezené na produktu rozhraní API. Nyní je možné vytvořit klíče, které udělit přístup k rozhraní API nebo všechna rozhraní API v rámci instance služby API Management, aniž by bylo nutné vytvořit produkt a do ní nejprve přidat rozhraní API. Kromě toho každá instance služby API Management nyní zahrnuje předplatné neměnné a všechna rozhraní API. Toto předplatné usnadňuje a jednodušší kvůli testování a ladění rozhraní API v testovací konzole.
+Až zavedeme úroveň [spotřeby](https://aka.ms/apimconsumptionblog) API Management, provedli jsme několik změn, které zjednodušují správu klíčů:
+- Nejdřív jsme přidali dva další obory předplatného: všechna rozhraní API a jedno rozhraní API. Rozsah předplatných už není omezený na produkt rozhraní API. Nyní je možné vytvořit klíče, které udělí přístup k rozhraní API nebo všechna rozhraní API v rámci instance API Management, aniž byste museli vytvořit produkt a přidat k němu rozhraní API jako první. Každá instance API Management nyní přináší neměnné předplatné All-API. Toto předplatné usnadňuje a zjednodušuje testování a ladění rozhraní API v rámci testovací konzoly.
 
-- Za druhé, API Management nyní umožňuje **samostatné** předplatných. Předplatná jsou už musí být přidružené k účtu pro vývojáře. Tato funkce je užitečná ve scénářích, například pokud několik vývojáře nebo týmy sdílet předplatné.
+- V druhém API Management nyní umožňuje **samostatné** odběry. Odběry již není nutné přidružit k účtu vývojáře. Tato funkce je užitečná ve scénářích, jako je například když několik vývojářů nebo týmů sdílí předplatné.
 
-- Nakonec se nyní mohou vydavatelé rozhraní API [vytvářet předplatná](api-management-howto-create-subscriptions.md) přímo na webu Azure portal:
+- A konečně, vydavatelé rozhraní API teď můžou [vytvářet předplatná](api-management-howto-create-subscriptions.md) přímo v Azure Portal:
 
-    ![Flexibilní předplatná](./media/api-management-subscriptions/flexible-subscription.png)
+    ![Flexibilní odběry](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>Další postup
-Získejte další informace o službě API Management:
+Získat další informace o API Management:
 
-+ Přečtěte si další [koncepty](api-management-terminology.md) ve službě API Management.
-+ Postupujte podle našich [kurzy](import-and-publish.md) Další informace o službě API Management.
-+ Zkontrolujte naše [stránku s nejčastějšími dotazy](api-management-faq.md) pro běžné dotazy.
++ Přečtěte si další [Koncepty](api-management-terminology.md) v API Management.
++ Další informace [](import-and-publish.md) o API Management najdete v našich kurzech.
++ Nejčastější dotazy najdete na [stránce s nejčastějšími dotazy](api-management-faq.md) .

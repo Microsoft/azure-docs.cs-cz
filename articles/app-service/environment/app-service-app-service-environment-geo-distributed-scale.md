@@ -1,6 +1,6 @@
 ---
-title: Geograficky distribuované škálování pomocí služby App Service Environment – Azure
-description: Zjistěte, jak horizontálně škálovat aplikace s využitím geografické distribuce pomocí Traffic Manageru a služby App Service Environment.
+title: Geografické distribuované škálování pomocí App Service prostředí – Azure
+description: Naučte se, jak horizontálně škálovat aplikace pomocí geografických distribucí pomocí prostředí Traffic Manager a App Service.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,66 +10,65 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eaefebc569f5bf5461ff7c4407fa77a0c62d4fe8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070221"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geograficky distribuované škálování v prostředí App Service Environments
 ## <a name="overview"></a>Přehled
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Scénáře aplikací, které vyžadují velmi vysokou škálovatelností může překročit kapacitu prostředků výpočetní prostředky k dispozici pro jedno nasazení aplikace.  Hlasovací aplikace, během sportovní události a události televizní Zábava jsou všechny příklady scénářů, které vyžadují velmi vysokou škálovatelností. Vodorovně horizontální navýšení kapacity aplikace s více nasazení aplikací pro zpracování požadavků na extrémní zatížení prováděných v rámci jedné oblasti i napříč oblastmi, mohou být splněny požadavky na vysokou škálovatelností.
+Scénáře aplikací, které vyžadují velmi vysoké škálování, můžou překročit kapacitu výpočetních prostředků, která je dostupná pro jedno nasazení aplikace.  Hlasovací aplikace, sportovní události a televised Entertainment jsou všechny příklady scénářů, které vyžadují extrémně vysoké měřítko. Vysoce škálovatelné požadavky můžou být splněné horizontálním škálováním aplikací, přičemž v jedné oblasti se vytvoří víc nasazení aplikace, stejně jako v různých oblastech, aby se mohly zvládnout extrémní požadavky na zatížení.
 
-Služby App Service Environment jsou ideální platformu pro horizontální navýšení kapacity.  Jednou služby App Service Environment se vybral konfigurace, který podporuje frekvence známé požadavků, vývojáři můžete nasadit další služby App Service Environment způsobem "ořezávání soubor cookie" aby bylo možné kapacitu zatížení požadovaného ve špičce.
+App Service prostředí jsou ideální platformou pro horizontální horizontální navýšení kapacity.  Po výběru konfigurace App Service Environment, která může podporovat známou rychlost požadavků, můžou vývojáři nasadit další App Service prostředí v "ořezávání souborů cookie", aby dosáhli požadované kapacity zatížení ve špičce.
 
-Předpokládejme například, že aplikaci spuštěnou v konfiguraci služby App Service Environment je testovaná pro zpracování 20 tisíc požadavků za sekundu (předávajících stran).  Pokud je kapacita zatížení požadovaného ve špičce 100 tisíc RPS, pak pět (5) služby App Service Environment lze vytvořit a nakonfigurovat tak, aby Ujistěte se, že aplikace dokáže zpracovat očekávané maximální zatížení.
+Předpokládejme například, že aplikace spuštěná v konfiguraci App Service Environment byla testována za účelem zpracování požadavků 20 tisíc za sekundu (RPS).  Pokud je požadovaná kapacita zatížení ve špičce 100 tisíc RPS, můžete vytvořit a nakonfigurovat pět (5) App Service prostředí, aby se zajistilo, že aplikace bude moci zpracovat maximální předpokládané zatížení.
 
-Vzhledem k tomu, že zákazníci obvykle přístup k aplikacím pomocí domény vlastní (nebo vlastní), vývojáři potřebují způsob, jak distribuovat požadavky na aplikaci ve všech instancích služby App Service Environment.  Chcete-li vyřešit pomocí vlastní domény je skvělý způsob, jak to provést [profilu Azure Traffic Manageru][AzureTrafficManagerProfile].  Profil služby Traffic Manager je možné nakonfigurovat tak, aby odkazoval na všechny jednotlivé App Service Environment.  Traffic Manager automaticky zajistí distribuci zákazníkům ve všech prostředích App Service podle nastavení v profilu služby Traffic Manager Vyrovnávání zatížení.  Tento přístup funguje bez ohledu na to, zda všechny App Service Environment jsou nasazené v jedné oblasti Azure, nebo nasazeným ve víc oblastech Azure po celém světě.
+Vzhledem k tomu, že zákazníci obvykle přistupují k aplikacím pomocí vlastní (nebo individuální) domény, potřebují vývojáři způsob, jak distribuovat žádosti o aplikace napříč všemi App Service Environment instancemi.  To je skvělý způsob, jak to provést, je vyřešit vlastní doménu pomocí [profilu Azure Traffic Manager][AzureTrafficManagerProfile].  Profil Traffic Manager lze nakonfigurovat tak, aby ukazoval na všechna jednotlivá App Service prostředí.  Traffic Manager bude automaticky zpracovávat distribuci zákazníků napříč všemi App Service prostředími na základě nastavení vyrovnávání zatížení v profilu Traffic Manager.  Tento přístup funguje bez ohledu na to, jestli jsou všechna App Service prostředí nasazená v jedné oblasti Azure nebo nasazená celosvětově napříč několika oblastmi Azure.
 
-Navíc vzhledem k tomu, že zákazníkům přístup k aplikacím prostřednictvím individuální doména, zákazníci mají vědět o počet prostředí App Service je aplikace spuštěná.  Vývojáři díky tomu můžete rychle a snadno přidat a odebrat, na základě vypozorovaného provoz zatížení služby App Service Environment.
+Kromě toho, vzhledem k tomu, že zákazníci přistupují k aplikacím prostřednictvím domény individuální, si zákazníci nevědomi počtu App Service prostředí, ve kterých se aplikace spouští.  V důsledku toho mohou vývojáři snadno a rychle přidávat a odebírat App Service prostředí na základě pozorovaného zatížení provozu.
 
-Následující koncepční diagram znázorňuje aplikaci horizontálně škálovat napříč tři služby App Service Environment v jedné oblasti.
+Koncepční diagram níže znázorňuje aplikaci horizontálně škálované v rámci tří App Service prostředí v rámci jedné oblasti.
 
-![Konceptuální architektura][ConceptualArchitecture] 
+![Koncepční architektura][ConceptualArchitecture] 
 
-Zbývající část tohoto tématu vás provede jednotlivými kroky nastavení distributed topologii pro ukázkovou aplikaci pomocí více App Service Environment.
+Zbývající část tohoto tématu vás provede kroky pro nastavení distribuované topologie pro ukázkovou aplikaci s využitím více App Service prostředí.
 
 ## <a name="planning-the-topology"></a>Plánování topologie
-Před sestavením si nároky distribuované aplikace, umožňuje mít několik částí informace předem.
+Než začnete sestavovat kapacitu distribuovaných aplikací, pomůže vám to několik informací předem.
 
-* **Vlastní doména aplikace:**  Co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci?  Pro ukázkovou aplikaci vlastní název domény je `www.scalableasedemo.com`
-* **Doménu Traffic Manageru:**  Název domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru][AzureTrafficManagerProfile].  Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager.  Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*.  Díky tomu úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
-* **Strategie pro škálování app nároky:**  Bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti?  Více oblastech?  -Kombinovat oba přístupy poskytují?  Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu.  Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment.  Pomocí 15 + veřejných oblastech Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace.  Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
-* **Zásady vytváření názvů pro App Service Environment:**  Každá služba App Service Environment vyžaduje jedinečný název.  Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment.  Ukázkové aplikace byl použit jednoduché zásady vytváření názvů.  Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
-* **Zásady vytváření názvů pro aplikace:**  Protože více instancí aplikace se nasadí, název je potřeba pro každou instanci nasazené aplikace.  Jeden malý známé, ale příliš pohodlné funkce App Service Environment je, že stejný název aplikace lze použít v rámci více App Service Environment.  Protože každá služba App Service Environment má příponu domény jedinečný, vývojáři můžete znovu použít přesně stejný název aplikace v každém prostředí.  Například vývojář může mít aplikace s názvem následujícím způsobem: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*atd.  Ukázkové aplikace i když každá instance aplikace má také jedinečný název.  Názvy instancí aplikace používá jsou *webfrontend1*, *webfrontend2*, a *webfrontend3*.
+* **Vlastní doména pro aplikaci:**  Jaký je vlastní název domény, který budou zákazníci používat pro přístup k aplikaci?  Pro ukázkovou aplikaci je název vlastní domény`www.scalableasedemo.com`
+* **Doména Traffic Manager:**  Při vytváření [profilu Azure Traffic Manager][AzureTrafficManagerProfile]musí být vybraný název domény.  Tento název bude kombinován s příponou *trafficmanager.NET* k registraci položky domény spravované pomocí Traffic Manager.  Pro ukázkovou aplikaci je zvolený název *škálovatelný-pomocný-demo*.  Výsledkem je, že úplný název domény, který je spravovaný nástrojem Traffic Manager, je *Scalable-ASE-demo.trafficmanager.NET*.
+* **Strategie škálování aplikace:**  Budou nároky na aplikaci distribuovány napříč více App Service prostředími v jedné oblasti?  Více oblastí?  Jak se vzájemně porovnává kombinace obou přístupů?  Rozhodnutí by mělo být založené na očekáváních, kde se bude nacházet na provozu zákazníků, a také na tom, jak se bude moct zbytek podpory back-endové infrastruktury aplikace škálovat.  Například s bezstavovou aplikací 100% se dá aplikace hromadně škálovat s využitím kombinace více App Service prostředí na oblast Azure vynásobená App Service prostředími nasazenými napříč několika oblastmi Azure.  S 15 dalšími veřejnými oblastmi Azure, které si můžete vybrat, můžou zákazníci skutečně vytvořit škálovatelnou aplikaci na úrovni technologie Hyper-v.  Pro ukázkovou aplikaci použitou v tomto článku se tři App Serviceová prostředí vytvořila v jedné oblasti Azure (Střed USA – jih).
+* **Konvence pojmenování pro prostředí App Service:**  Každý App Service Environment vyžaduje jedinečný název.  Nad rámec jednoho nebo dvou App Servicech prostředí je užitečné, abyste měli zásady vytváření názvů, které vám pomůžou identifikovat jednotlivé App Service Environment.  Pro ukázkovou aplikaci se použila jednoduchá konvence pojmenování.  Názvy tří App Service prostředí jsou *fe1ase*, *fe2ase*a *fe3ase*.
+* **Konvence pojmenování pro aplikace:**  Vzhledem k tomu, že bude nasazeno několik instancí aplikace, je pro každou instanci nasazené aplikace nutné zadat název.  Jednou ze známých, ale velmi praktických funkcí App Service prostředí je, že stejný název aplikace můžete použít ve více App Service prostředích.  Vzhledem k tomu, že každý App Service Environment má jedinečnou příponu domény, mohou vývojáři zvolit, aby v každém prostředí znovu používali přesně stejný název aplikace.  Například vývojář může mít aplikace, které jsou pojmenovány takto: *MyApp.foo1.p.azurewebsites.NET*, *MyApp.foo2.p.azurewebsites.NET*, *MyApp.foo3.p.azurewebsites.NET*atd.  V případě ukázkové aplikace má každá instance aplikace také jedinečný název.  Používané názvy instancí aplikace jsou *webfrontend1*, *webfrontend2*a *webfrontend3*.
 
-## <a name="setting-up-the-traffic-manager-profile"></a>Nastavení profilu Traffic Manageru
-Jakmile více instancí aplikace jsou nasazené v několika prostředích App Service, instance jednotlivých aplikací lze registrovat pomocí Traffic Manageru.  Ukázkové aplikace Traffic Manager je potřeba profil pro *škálovatelné služby ase demo.trafficmanager.net* zákazníků, který může směrovat na některý z následujících případech nasazené aplikace:
+## <a name="setting-up-the-traffic-manager-profile"></a>Nastavení profilu Traffic Manager
+Po nasazení několika instancí aplikace na více App Service prostředí se můžou jednotlivé instance aplikace registrovat v Traffic Manager.  Pro ukázkovou aplikaci je Traffic Manager profil potřebný pro *Scalable-ASE-demo.trafficmanager.NET* , který může směrovat zákazníky do kterékoli z následujících nasazených instancí aplikace:
 
-* **webfrontend1.fe1ase.p.azurewebsites.net:**  Instance ukázkové aplikace nasazené na první služby App Service Environment.
-* **webfrontend2.fe2ase.p.azurewebsites.net:**  Instance ukázkové aplikace nasazené na druhý App Service Environment.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  Instance ukázkové aplikace nasazená na prvním App Service Environment.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  Instance ukázkové aplikace nasazená v druhém App Service Environment.
 * **webfrontend3.fe3ase.p.azurewebsites.net:**  Instance ukázkové aplikace nasazené na třetí App Service Environment.
 
-Nejjednodušší způsob, jak zaregistrovat více služby Azure App Service koncových bodů, všechny spuštěné v **stejné** oblast Azure, je pomocí Powershellu [podpora Azure Resource Manageru Traffic Manageru] [ ARMTrafficManager].  
+Nejjednodušší způsob, jak registrovat několik koncových bodů Azure App Service, je všechny spuštěné ve **stejné** oblasti Azure s podporou powershellu [Azure Resource Manager Traffic Manager][ARMTrafficManager].  
 
-Prvním krokem je vytvoření profilu Azure Traffic Manageru.  Následující kód ukazuje, jak se profil vytvořil pro ukázkovou aplikaci:
+Prvním krokem je vytvoření profilu Azure Traffic Manager.  Následující kód ukazuje, jak byl profil vytvořen pro ukázkovou aplikaci:
 
     $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 
-Všimněte si, že jak *RelativeDnsName* parametr byl nastavený na *škálovatelné služby ase ukázka*.  Jedná se jak název domény *škálovatelné služby ase demo.trafficmanager.net* se vytvoří a přidružení k profilu Traffic Manageru.
+Všimněte si, jak byl parametr *RelativeDnsName* nastaven na škálovatelné-pomocného – *demo*.  Tímto způsobem se vytvoří název domény *Scalable-ASE-demo.trafficmanager.NET* a přidruží se k profilu Traffic Manager.
 
-*Trafficroutingmethod funkce* parametr definuje zásady Traffic Manager použije k určení způsobu vytížení od zákazníka rozloženy všechny dostupné koncové body pro vyrovnávání zatížení.  V tomto příkladu *vážená* jste vybrali metodu.  Výsledkem bude požadavky zákazníků se pak rozdělí mezi všechny koncové body registrované aplikace založené na relativní váhy přidružené každý koncový bod. 
+Parametr *TrafficRoutingMethod* definuje zásady vyrovnávání zatížení, které Traffic Manager použít k určení toho, jak se bude zátěž zákazníka šířit ve všech dostupných koncových bodech.  V tomto příkladu se zvolila vážená metoda.  Výsledkem bude, že se požadavky zákazníků šíří napříč všemi registrovanými koncovými body aplikace na základě relativních vah spojených s každým koncovým bodem. 
 
-S profil, který vytvořili každá instance aplikace přidá do profilu jako nativní koncový bod Azure.  Následující kód načte odkaz na každé front-endu webové aplikace a pak přidá jednotlivých aplikací jako koncových bodů Traffic Manageru prostřednictvím *TargetResourceId* parametru.
+S vytvořeným profilem se každá instance aplikace přidá do profilu jako nativní koncový bod Azure.  Následující kód načte odkaz na každou webovou aplikaci front-end a pak přidá každou aplikaci jako Traffic Manager koncový bod pomocí parametru *parametrem targetresourceid* .
 
     $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
@@ -82,42 +81,42 @@ S profil, který vytvořili každá instance aplikace přidá do profilu jako na
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
-Všimněte si, jak je jedno volání *přidat AzureTrafficManagerEndpointConfig* u každé instance jednotlivých aplikací.  *TargetResourceId* parametr v každém z prostředí Powershell odkazuje na některé z instancí tří nasazené aplikace.  Profil služby Traffic Manager se šíří zatížení mezi všechny tři koncové body, které jsou zaregistrované v profilu.
+Všimněte si, jak existuje jedno volání *Add-AzureTrafficManagerEndpointConfig* pro každou jednotlivou instanci aplikace.  Parametr *parametrem targetresourceid* v každém příkazu prostředí PowerShell odkazuje na jednu ze tří nasazených instancí aplikace.  Profil Traffic Manager se rozprostře zatížení ve všech třech koncových bodech registrovaných v profilu.
 
-Všechny tři koncové body používat stejnou hodnotu (10) *váha* parametru.  Výsledkem rozprostření požadavky zákazníků z Traffic Manageru napříč všemi instancemi tři aplikace relativně rovnoměrně. 
+U všech tří koncových bodů se pro parametr *váhy* používá stejná hodnota (10).  Výsledkem je Traffic Manager rozprostření požadavků zákazníků napříč všemi třemi instancemi aplikace relativně rovnoměrně. 
 
-## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Odkazuje aplikaci vlastní domény na doménu Traffic Manageru
-V posledním kroku potřeby se tak, aby odkazoval vlastní doménu aplikace na doménu Traffic Manageru.  Ukázkové aplikace to znamená, že odkazující `www.scalableasedemo.com` na `scalable-ase-demo.trafficmanager.net`.  Tento krok je potřeba dokončit u registrátora domény, který spravuje vlastní doménu.  
+## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Nasměrování vlastní domény aplikace v Traffic Manager doméně
+Posledním krokem je nasměrování vlastní domény aplikace v Traffic Manager doméně.  Pro ukázkovou aplikaci to znamená, `www.scalableasedemo.com` že `scalable-ase-demo.trafficmanager.net`ukazuje na.  Tento krok je nutné provést s doménovým registrátorem, který spravuje vlastní doménu.  
 
-Pomocí nástrojů pro správu vašeho registrátora domény záznam CNAME zaznamenává musí být vytvořen, která odkazuje vlastní domény na doménu Traffic Manageru.  Následující obrázek ukazuje příklad vypadá tato konfigurace CNAME:
+Pomocí nástrojů pro správu domény vašeho registrátora se musí vytvořit záznamy CNAME, které budou ukazovat na vlastní doménu v doméně Traffic Manager.  Následující obrázek ukazuje příklad toho, jak tato konfigurace záznamu CNAME vypadá takto:
 
-![CNAME for Custom Domain][CNAMEforCustomDomain] 
+![CNAME pro vlastní doménu][CNAMEforCustomDomain] 
 
-I když nejsou zahrnuta v tomto tématu, mějte na paměti, že každá instance jednotlivých aplikací musí mít vlastní doménu v něm zaregistrovaný poskytovatel také.  Jinak pokud žádost o zajišťuje instance aplikace a aplikace nemá žádné vlastní domény zaregistrovaný s aplikací, požadavek selže.  
+I když se to v tomto tématu nezabývá, pamatujte, že každá instance aplikace musí mít taky zaregistrovanou vlastní doménu.  Jinak pokud požadavek vytvoří instanci aplikace a aplikace nemá v aplikaci zaregistrovanou vlastní doménu, požadavek se nezdaří.  
 
-V tomto příkladu je vlastní doména `www.scalableasedemo.com`, a každá instance aplikace má vlastní domény s ním spojená.
+V tomto příkladu je `www.scalableasedemo.com`vlastní doména a ke každé instanci aplikace je přidružená vlastní doména.
 
 ![Vlastní doména][CustomDomain] 
 
-Rekapitulace registrace vlastní domény s aplikacemi Azure App Service, najdete v následujícím článku na [registrace vlastní domény][RegisterCustomDomain].
+Rekapitulace o registraci vlastní domény pomocí Azure App Servicech aplikací najdete v následujícím článku o [registraci vlastních domén][RegisterCustomDomain].
 
-## <a name="trying-out-the-distributed-topology"></a>Vyzkoušejte si Distributed topologii
-Konečný výsledek konfigurace Traffic Manageru a DNS je, že žádosti pro `www.scalableasedemo.com` budou směrovat přes následující posloupnost:
+## <a name="trying-out-the-distributed-topology"></a>Vyzkoušení distribuované topologie
+Konečný výsledek Traffic Manager a konfigurace DNS je, že požadavky na `www.scalableasedemo.com` službu budou procházet pomocí následujícího pořadí:
 
-1. Prohlížeč nebo zařízení provede vyhledávání DNS `www.scalableasedemo.com`
-2. Záznam CNAME u registrátora domény způsobí, že vyhledávání DNS přesměrováni do Azure Traffic Manageru.
-3. Vyhledávání DNS se provádí *škálovatelné služby ase demo.trafficmanager.net* proti jeden ze serverů DNS Azure Traffic Manageru.
-4. Na základě zásada vyrovnávání zatížení ( *trafficroutingmethod funkce* parametr použili dříve při vytváření profilu služby Traffic Manager), bude vyberte jednu z nakonfigurované koncové body a vrátí plně kvalifikovaný název domény tohoto koncového bodu do Traffic Manageru prohlížeč nebo zařízení.
-5. Protože je plně kvalifikovaný název koncového bodu adresy Url instance aplikace běžící na App Service Environment, prohlížeč nebo zařízení požádá server Microsoft Azure DNS vyřešit plně kvalifikovaný název domény na IP adresu. 
-6. Prohlížeč nebo zařízení pošle požadavek HTTP/S na IP adresu.  
-7. Žádost se přejít na jednu z instancí aplikace běží v některém prostředí App Service.
+1. Prohlížeč nebo zařízení provede vyhledávání DNS pro`www.scalableasedemo.com`
+2. Záznam CNAME v registrátoru domény způsobí přesměrování vyhledávání DNS do Azure Traffic Manager.
+3. Pro *Scalable-ASE-demo.trafficmanager.NET* se provede vyhledávání DNS na jednom ze serverů DNS Azure Traffic Manager.
+4. Na základě zásad vyrovnávání zatížení (parametr *TrafficRoutingMethod* použitý dříve při vytváření profilu Traffic Manager) Traffic Manager vybere jeden z konfigurovaných koncových bodů a vrátí plně kvalifikovaný název domény tohoto koncového bodu do prohlížeče nebo zařízení.
+5. Vzhledem k tomu, že plně kvalifikovaný název domény koncového bodu je adresa URL instance aplikace spuštěné na App Service Environment, prohlížeč nebo zařízení požádá Microsoft Azure server DNS o překlad plně kvalifikovaného názvu domény na IP adresu. 
+6. Prohlížeč nebo zařízení odešle požadavek HTTP/S na IP adresu.  
+7. Požadavek se dorazí na jednu z instancí aplikace spuštěné v jednom z App Service prostředí.
 
-Konzoly obrázek níže ukazuje vyhledání DNS pro vlastní doménu ukázkovou aplikaci úspěšně překládá na instanci aplikace běžící na jednom z aktualizace tři ukázkové App Service Environment (v tomto případě druhý ze tří App Service Environment):
+Následující obrázek konzoly ukazuje vyhledání DNS pro vlastní doménu ukázkové aplikace úspěšného překladu do instance aplikace spuštěné na jednom ze tří ukázkových App Service prostředí (v tomto případě druhý ze tří App Service prostředí):
 
-![Vyhledávání DNS][DNSLookup] 
+![Vyhledání DNS][DNSLookup] 
 
 ## <a name="additional-links-and-information"></a>Další odkazy a informace
-Dokumentaci k Powershellu [podpora Azure Resource Manageru Traffic Manageru][ARMTrafficManager].  
+Dokumentace k [podpoře Azure Resource Manager][ARMTrafficManager]powershellu Traffic Manager.  
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

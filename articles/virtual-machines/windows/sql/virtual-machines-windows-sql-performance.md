@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d81c1941f114efbfd4ede559152317e907edeaea
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6a386096d8a94c240e9a00457d87d04254e02920
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882393"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102008"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server v Azure Virtual Machines
 
@@ -196,7 +195,7 @@ Pokud používáte prostory úložiště, při přidávání uzlů do clusteru n
 
 Pokud používáte prostory úložiště a nechcete zrušit kontrolu **Přidat do clusteru všechny opravňující úložiště**, systém Windows virtuální disky během procesu clusteringu odpojí. V důsledku toho se neobjeví ve Správci disků nebo v Průzkumníkovi, dokud se prostory úložiště z clusteru neodstraní a znovu nepřipojí přes PowerShell. Prostory úložiště seskupují více disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](/windows-server/storage/storage-spaces/overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o úložišti a výkonu najdete v tématu [pokyny ke konfiguraci úložiště pro SQL Server na virtuálním počítači Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/) .
 

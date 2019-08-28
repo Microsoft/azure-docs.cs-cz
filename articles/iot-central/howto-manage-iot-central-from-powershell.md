@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 23243324c64519094432ee0c80d3e0cad447ef8b
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849057"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086893"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Místo vytváření a správy aplikací IoT Central ze stránky IoT Central [Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
+Místo vytváření a správy aplikací IoT Central na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -68,7 +68,7 @@ Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplik
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
 |Location |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** . |
 |Name              |Název aplikace v Azure Portal. |
-|subdomény         |Subdoména v adrese URL aplikace V tomto příkladu je https://mysubdomain.azureiotcentral.com adresa URL aplikace. |
+|Subdoména         |Subdoména v adrese URL aplikace V tomto příkladu je https://mysubdomain.azureiotcentral.com adresa URL aplikace. |
 |Skladová jednotka (SKU)               |V současné době jediná hodnota je **S1** (úroveň Standard). Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
 |DisplayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |

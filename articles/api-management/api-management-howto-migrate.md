@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 831eacf8197e90d7ae6b752ee11898c9667b5b6a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036541"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073467"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Postup migrace API Management Azure napříč oblastmi
 Pokud chcete migrovat API Management instance z jedné oblasti Azure do jiné, můžete použít funkci [zálohování a obnovení](api-management-howto-disaster-recovery-backup-restore.md) . Měli byste zvolit stejný API Management cenové úrovně ve zdrojové a cílové oblasti. 

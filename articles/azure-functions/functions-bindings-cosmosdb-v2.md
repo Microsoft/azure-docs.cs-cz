@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 67b70a67065bfc66639b0f6911f66111829c9a0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774926"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086758"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB vazby pro Azure Functions 2. x
 
@@ -566,6 +565,9 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP aktivovat, více dokumenty pomocí DocumentClient (C#)
 
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , která načte seznam dokumentů. Je funkce aktivována požadavkem HTTP. Tento kód použije `DocumentClient` instance poskytované vazby Azure Cosmos DB ke čtení seznamu dokumentů. `DocumentClient` Instance možné využít také pro operace zápisu.
+
+> [!NOTE]
+> K usnadnění testování můžete také použít rozhraní [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) .
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -2403,7 +2405,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 |Protocol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
 |leasePrefix|neuvedeno|Předpona zapůjčení pro použití ve všech funkcích aplikace|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Další informace o databáze bez serveru, výpočetního prostředí pomocí služby Cosmos DB](../cosmos-db/serverless-computing-database.md)
 * [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

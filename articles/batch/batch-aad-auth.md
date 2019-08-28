@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 8f95b802e51b942421bc580d9c3d5704092f5b1d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624021"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095622"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -367,7 +366,7 @@ Pomocí přihlašovacích údajů instančního objektu otevřete objekt **Batch
 )
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o Azure AD najdete v dokumentaci k [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak používat ADAL jsou k dispozici v knihovně [ukázek kódu Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) .
 

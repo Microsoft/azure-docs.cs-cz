@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849065"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073972"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -204,6 +204,6 @@ Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si téma [Správa a údržba agenta Log Analytics pro systémy Windows a Linux](agent-manage.md) , kde se dozvíte, jak spravovat agenta během životního cyklu nasazení na vašich počítačích.  
+- Přečtěte si téma [Správa a údržba agenta Log Analytics pro systémy Windows a Linux](agent-manage.md) , kde se dozvíte, jak překonfigurovat, upgradovat nebo odebrat agenta z virtuálního počítače.
 
 - Pokud narazíte na problémy při instalaci nebo správě agenta, přečtěte si téma [řešení potíží s agentem Windows](agent-windows-troubleshoot.md) .

@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: adba197b4412177d0655fb6835cfdf8671a81f4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846117"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100458"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -74,7 +73,7 @@ Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítač�
 *Automatizované opravy* jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Pokud je nainstalováno rozšíření SQL Server IaaS, můžete zadat den v týdnu, čas a dobu trvání okna údržby. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů.  Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-automated-patching.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Migrace SQL Server virtuálního počítače do Azure:
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: bde4572ec72286be7d845f4e83bf9c0fe3bff6f1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932401"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072455"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby v Azure API Management
 
@@ -221,7 +220,7 @@ Obnovení je dlouhodobá operace, která může trvat až 30 minut, než se doko
 > [!NOTE]
 > Operace zálohování a obnovení se dají provádět taky pomocí příkazů PowerShell _Backup-AzApiManagement_ a Restore _-AzApiManagement_ .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V různých návodech k procesu zálohování a obnovení si Projděte následující zdroje informací.
 

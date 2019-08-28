@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa88e45f2523dd65c4f714bfeab1c0eda401d720
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 6341f58791c2fad71a65650e32cff02fb52d78c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869155"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098679"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
 Tento dokument popisuje podrobnosti o upgradech operačního systému ve velkých instancích HANA.
@@ -50,6 +49,6 @@ V následující části najdete několik běžných známých problémů během
 - U SKU třídy b typu SKU se Software Foundation software (SFS) odebere po upgradu operačního systému. Po upgradu operačního systému je nutné přeinstalovat kompatibilní SFS.
 - Ovladače karet Ethernet (ENIC a FNIC) se vrátily zpátky na starší verzi. Po upgradu musíte přeinstalovat kompatibilní verze ovladačů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Přečtěte si téma [zálohování a obnovení](hana-overview-high-availability-disaster-recovery.md) pro třídu SKU typu zálohování operačního systému.
 - Přečtěte si [zálohování operačního systému pro položky typu II SKU revize 3](os-backup-type-ii-skus.md) pro třídu SKU typu II.

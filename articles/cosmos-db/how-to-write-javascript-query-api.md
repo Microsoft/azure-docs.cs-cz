@@ -3,15 +3,15 @@ title: Jak zapisovat uložené procedury a triggery pomocí rozhraní API pro do
 description: Naučte se zapisovat uložené procedury a triggery pomocí rozhraní API pro dotazy jazyka JavaScript v Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 20a9ca8e28961a6dc49947a22f745424961b4a3f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615263"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092883"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Postup zápisu uložených procedur a triggerů v Azure Cosmos DB pomocí rozhraní API pro dotazy jazyka JavaScript
 
@@ -78,7 +78,7 @@ function insertDocumentAndUpdateMetadata(item) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V následujících článcích najdete informace o uložených procedurách, triggerech a uživatelem definovaných funkcích v Azure Cosmos DB:
 

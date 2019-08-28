@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače ze specializovaného disku v Azure | Dokumentace Microsoftu
-description: Vytvoření nového virtuálního počítače připojením specializované nespravovaný disk v modelu nasazení Resource Manager.
+title: Vytvoření virtuálního počítače ze specializovaného disku v Azure | Microsoft Docs
+description: Vytvořte nový virtuální počítač připojením specializovaného nespravovaného disku v modelu nasazení Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,67 +11,66 @@ ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8833ddf487c36446b5e5b4ce1d6cfc6363d3ceeb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cc3c1d9352d9df44a51a917700c656055b8b8361
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710392"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088628"
 ---
-# <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště
+# <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště
 
-Vytvoření nového virtuálního počítače připojením specializované nespravovaný disk jako disk s operačním systémem pomocí Powershellu. Specializovaného disku je kopie virtuální pevný disk z existujícího virtuálního počítače, který uchovává uživatelské účty, aplikace a další data o stavu z původního virtuálního počítače. 
+Vytvořte nový virtuální počítač připojením specializovaného nespravovaného disku jako disku s operačním systémem pomocí PowerShellu. Specializovaný disk je kopií virtuálního pevného disku ze stávajícího virtuálního počítače, který udržuje uživatelské účty, aplikace a další stavová data z původního virtuálního počítače. 
 
 Máte dvě možnosti:
 * [Nahrání virtuálního pevného disku](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Zkopírujte virtuální pevný disk z existujícího virtuálního počítače Azure](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
+* [Zkopírování virtuálního pevného disku existujícího virtuálního počítače Azure](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Nahrání specializovaného virtuálního pevného disku
+## <a name="option-1-upload-a-specialized-vhd"></a>Možnost 1: Nahrání specializovaného virtuálního pevného disku
 
-Můžete nahrát virtuální pevný disk ze specializovaného virtuálního počítače vytvoří místní virtualizace nástroj, jako je Hyper-V nebo virtuální počítač exportovat z jiného cloudu.
+Virtuální pevný disk můžete nahrát z specializovaného virtuálního počítače vytvořeného pomocí nástroje pro místní virtualizaci, jako je Hyper-V nebo virtuální počítač exportovaný z jiného cloudu.
 
 ### <a name="prepare-the-vm"></a>Příprava virtuálního počítače
-Můžete nahrát specializovaného virtuálního pevného disku, který byl vytvořen pomocí virtuálního počítače s místní nebo virtuální pevný disk vyexportovali z jiného cloudu. Specializovaného virtuálního pevného disku uchovává uživatelské účty, aplikace a další data o stavu z původního virtuálního počítače. Pokud máte v úmyslu použít virtuální pevný disk jako – k vytvoření nového virtuálního počítače, ověřte následující kroky. 
+Můžete nahrát specializovaný virtuální pevný disk, který byl vytvořen pomocí místního virtuálního počítače nebo virtuálního pevného disku exportovaný z jiného cloudu. Specializovaný virtuální pevný disk udržuje uživatelské účty, aplikace a data dalších stavů z původního virtuálního počítače. Pokud máte v úmyslu použít virtuální pevný disk jako vytvoření nového virtuálního počítače, ujistěte se, že jsou splněné následující kroky. 
   
-  * [Příprava virtuálního pevného disku Windows k nahrání do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Ne** generalizace virtuálního počítače pomocí nástroje Sysprep.
-  * Odeberte všechny hostované virtualizačních nástrojů a agenty, kteří jsou nainstalováni na virtuálním počítači (tj. nástroje VMware).
-  * Zajistěte, aby že virtuální počítač je nakonfigurovaný na vyžádání jeho IP adresu a nastavení DNS prostřednictvím protokolu DHCP. Tím se zajistí, že server při spuštění získá IP adresu v rámci virtuální sítě. 
+  * [Připravte si virtuální pevný disk Windows, který se má nahrát do Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Neprovádějte GENERALIZACI virtuálního počítače pomocí nástroje Sysprep.
+  * Odeberte všechny virtualizační nástroje a agenty hosta, které jsou nainstalované na virtuálním počítači (například nástroje VMware).
+  * Ujistěte se, že je virtuální počítač nakonfigurovaný tak, aby z protokolu DHCP vyčetl adresu IP a nastavení DNS. Tím se zajistí, že server při spuštění získá IP adresu v rámci virtuální sítě. 
 
 
-### <a name="get-the-storage-account"></a>Získat účet úložiště.
-Budete potřebovat účet úložiště v Azure k uložení této odeslané image virtuálního počítače. Můžete použít existující účet úložiště nebo vytvořte novou. 
+### <a name="get-the-storage-account"></a>Získat účet úložiště
+K uložení nahrané image virtuálního počítače potřebujete účet úložiště v Azure. Můžete buď použít existující účet úložiště, nebo vytvořit nový. 
 
-Pokud chcete zobrazit účty úložiště k dispozici, zadejte:
+Chcete-li zobrazit dostupné účty úložiště, zadejte:
 
 ```powershell
 Get-AzStorageAccount
 ```
 
-Pokud chcete použít existující účet úložiště, pokračujte k nahrávání oddíl image virtuálního počítače.
+Pokud chcete použít existující účet úložiště, přejděte do části nahrání image virtuálního počítače.
 
-Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto kroků:
+Pokud potřebujete vytvořit účet úložiště, použijte následující postup:
 
-1. Budete potřebovat název skupiny prostředků, ve kterém by měl vytvořit účet úložiště. Pokud chcete zjistit všechny skupiny prostředků, které jsou ve vašem předplatném, zadejte:
+1. Potřebujete název skupiny prostředků, ve které se má účet úložiště vytvořit. Pokud chcete zjistit všechny skupiny prostředků ve vašem předplatném, zadejte:
    
     ```powershell
     Get-AzResourceGroup
     ```
 
-    Chcete-li vytvořit skupinu prostředků s názvem **myResourceGroup** v **USA – západ** oblast, typ:
+    Pokud chcete v **západní USA** oblasti vytvořit skupinu prostředků s názvem **myResourceGroup** , zadejte:
 
     ```powershell
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Vytvoření účtu úložiště s názvem **mystorageaccount** v této skupině prostředků s použitím [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) rutiny:
+2. Vytvořte účet úložiště s názvem **mystorageaccount** v této skupině prostředků pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) :
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -79,7 +78,7 @@ Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto krok�
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště
-Použití [přidat AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) rutiny pro nahrání obrázku do kontejneru v účtu úložiště. Tento příklad nahraje soubor **myVHD.vhd** z `"C:\Users\Public\Documents\Virtual hard disks\"` na účet úložiště s názvem **mystorageaccount** v **myResourceGroup** skupinu prostředků. Soubor se umístí do kontejneru s názvem **mycontainer** a nový název souboru bude **myUploadedVHD.vhd**.
+Pomocí rutiny [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) nahrajte image do kontejneru v účtu úložiště. Tento příklad nahraje soubor **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do účtu úložiště s názvem **mystorageaccount** ve skupině prostředků **myResourceGroup** . Soubor se umístí do kontejneru s názvem **myContainer** a nový název souboru bude **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -89,7 +88,7 @@ Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-V případě úspěchu se získat odpověď bude vypadat nějak takto:
+V případě úspěchu získáte odpověď, která vypadá nějak takto:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -103,59 +102,59 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tohoto příkazu může trvat dobu.
+V závislosti na připojení k síti a velikosti souboru VHD může dokončení tohoto příkazu chvíli trvat.
 
 
-## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Option 2: Zkopírujte virtuální pevný disk z existujícího virtuálního počítače Azure
+## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>Možnost 2: Zkopírování virtuálního pevného disku z existujícího virtuálního počítače Azure
 
-Virtuální pevný disk můžete zkopírovat do jiného účtu úložiště má použít při vytváření nového virtuálního počítače duplicitní.
+Virtuální pevný disk můžete zkopírovat do jiného účtu úložiště, abyste ho mohli použít při vytváření nového duplicitního virtuálního počítače.
 
 ### <a name="before-you-begin"></a>Před zahájením
-Ujistěte se, že jste:
+Ujistěte se, že:
 
-* Mít informace o **zdrojové a cílové účty úložiště**. Pro zdrojový virtuální počítač musíte mít názvy účet a kontejner úložiště. Obvykle bude mít název kontejneru **virtuální pevné disky**. Také musíte mít cílový účet úložiště. Pokud již nemáte, můžete vytvořit pomocí buď na portálu (**všechny služby** > účty úložiště > Přidat) nebo pomocí [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) rutiny. 
-* Stáhli a nainstalovali [nástroj AzCopy](../../storage/common/storage-use-azcopy.md). 
+* Obsahuje informace o **zdrojovém a cílovém účtu úložiště**. Pro zdrojový virtuální počítač je potřeba mít účet úložiště a názvy kontejnerů. Název kontejneru bude obvykle **VHD**. Musíte mít také cílový účet úložiště. Pokud ho ještě nemáte, můžete ho vytvořit buď pomocí portálu (**všechny služby** > účty úložiště > Přidat), nebo pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) . 
+* Stáhli a nainstalovali jste [Nástroj AzCopy](../../storage/common/storage-use-azcopy.md). 
 
-### <a name="deallocate-the-vm"></a>Uvolněte virtuální počítač
-Uvolněte virtuální počítač, což uvolní virtuálního pevného disku, které se mají zkopírovat. 
+### <a name="deallocate-the-vm"></a>Zrušení přidělení virtuálního počítače
+Zrušení přidělení virtuálního počítače, který uvolní virtuální pevný disk pro zkopírování. 
 
-* **Portál**: Klikněte na tlačítko **virtuálních počítačů** > **myVM** > Zastavit
-* **Powershell**: Použití [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) zastavení (uvolnění) virtuálního počítače s názvem **myVM** ve skupině prostředků **myResourceGroup**.
+* **Portál**: Klikněte na **virtuální počítače** > **myVM** > zastavit.
+* **PowerShell**: Pomocí [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) zastavte (navrácení) virtuálního počítače s názvem **myVM** ve skupině prostředků **myResourceGroup**.
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Stav** pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)** .
+**Stav** virtuálního počítače ve Azure Portal se změní ze zastaveno na **Zastaveno (přidělení zrušeno)** .
 
-### <a name="get-the-storage-account-urls"></a>Získání adresy URL účtu úložiště
-Je třeba adresy URL zdrojových a cílových účtů úložiště. Adresy URL vypadat: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Pokud již znáte název účtu a kontejneru úložiště, můžete nahradit jenom informace mezi hranaté závorky pro vytvoření vaší adresy URL. 
+### <a name="get-the-storage-account-urls"></a>Získání adres URL účtu úložiště
+Potřebujete adresy URL zdrojového a cílového účtu úložiště. Adresy URL vypadají jako: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Pokud už znáte účet úložiště a název kontejneru, můžete jenom nahradit informace mezi závorkami a vytvořit tak adresu URL. 
 
-Na webu Azure portal nebo Azure Powershell můžete použít k získání adresy URL:
+Adresu URL můžete získat pomocí Azure Portal nebo Azure PowerShellu:
 
-* **Portál**: Klikněte na tlačítko **>** pro **všechny služby** > **účty úložiště** > *účtu úložiště*  >  **Objekty BLOB** a je pravděpodobně ve zdrojovém souboru virtuálního pevného disku **virtuální pevné disky** kontejneru. Klikněte na tlačítko **vlastnosti** kontejneru a zkopírujte text, označený **URL**. Budete potřebovat adresy URL zdrojového a cílového kontejnerů. 
-* **Powershell**: Použití [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) získat informace pro virtuální počítač s názvem **myVM** ve skupině prostředků **myResourceGroup**. Ve výsledcích, podívejte se **profil úložiště** části **Uri virtuálního pevného disku**. První část identifikátoru Uri je adresa URL ke kontejneru a poslední částí je název virtuálního pevného disku pro virtuální počítač.
+* **Portál**:  > Kliknětena >  **všechny služby**účty úložiště objekty blob účtu úložiště a zdrojový soubor VHD se pravděpodobně nacházejí v kontejneru VHD. >  **>** Klikněte na **vlastnosti** kontejneru a zkopírujte text označený **Adresa URL**. Budete potřebovat adresy URL zdrojového i cílového kontejneru. 
+* **PowerShell**: K získání informací o virtuálním počítači s názvem **myVM** ve skupině prostředků **myResourceGroup**použijte [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) . Ve výsledcích vyhledejte část **profil úložiště** pro **identifikátor URI virtuálního pevného disku**. První část identifikátoru URI je adresa URL kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
-## <a name="get-the-storage-access-keys"></a>Získání přístupových klíčů úložiště
-Najdete přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčů najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).
+## <a name="get-the-storage-access-keys"></a>Získání přístupových klíčů k úložišti
+Vyhledejte přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčích najdete v tématu [informace o účtech Azure Storage](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: Klikněte na tlačítko **všechny služby** > **účty úložiště** > *účtu úložiště* > **přístupové klíče**. Zkopírujte klíč označený jako **key1**.
-* **Powershell**: Použití [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) získat klíč úložiště pro účet úložiště **mystorageaccount** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč s názvem **key1**.
+* **Portál**: Klikněte na **všechny služby** > **účty** > úložiště**přístupové klíče***účtu* > úložiště. Zkopírujte klíč označený jako **klíč1**.
+* **PowerShell**: Pomocí [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) Získejte klíč úložiště pro účet úložiště **mystorageaccount** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč označený jako **klíč1**.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
 ```
 
-### <a name="copy-the-vhd"></a>Zkopírujte virtuální pevný disk
-Můžete kopírovat soubory mezi účty úložiště pomocí AzCopy. K cílovému kontejneru Pokud zadaný kontejner neexistuje, vytvoří se pro vás. 
+### <a name="copy-the-vhd"></a>Kopírování VHD
+Soubory mezi účty úložiště můžete kopírovat pomocí AzCopy. Pro cílový kontejner, pokud zadaný kontejner neexistuje, vytvoří se za vás. 
 
-Použití nástroje AzCopy, otevřete příkazový řádek na místním počítači a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný. Budou se podobat *C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
+Pokud chcete používat AzCopy, otevřete na svém místním počítači příkazový řádek a přejděte do složky, ve které je nainstalovaná AzCopy. Bude se podobat *složce C:\Program Files (x86) \Microsoft SDKs\Azure\AzCopy*. 
 
-Zkopírujte všechny soubory v rámci kontejneru, můžete použít **/S** přepnout. To je možné zkopírovat virtuální pevný disk operačního systému a všechny datové disky v případě, že jsou ve stejném kontejneru. Tento příklad ukazuje, jak zkopírovat všechny soubory v kontejneru **mysourcecontainer** v účtu úložiště **mysourcestorageaccount** do kontejneru **mydestinationcontainer**v **mydestinationstorageaccount** účtu úložiště. Názvy účtů úložiště a kontejnerů nahraďte vlastními. Nahraďte `<sourceStorageAccountKey1>` a `<destinationStorageAccountKey1>` s vlastními klíči.
+Chcete-li zkopírovat všechny soubory v rámci kontejneru, použijte přepínač **/s** . Tato možnost slouží ke zkopírování virtuálního pevného disku s operačním systémem a všech datových disků, pokud jsou ve stejném kontejneru. Tento příklad ukazuje, jak zkopírovat všechny soubory v kontejneru **mysourcecontainer** v účtu úložiště **mysourcestorageaccount** do kontejneru **mydestinationcontainer** v účtu úložiště **mydestinationstorageaccount** . Názvy účtů úložiště a kontejnerů nahraďte vlastními. `<sourceStorageAccountKey1>` Nahraďte `<destinationStorageAccountKey1>` a vlastními klíči.
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -163,7 +162,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
     /SourceKey:<sourceStorageAccountKey1> /DestKey:<destinationStorageAccountKey1> /S
 ```
 
-Pokud chcete zkopírovat konkrétní virtuální pevný disk v kontejneru s více soubory, můžete také zadat název souboru pomocí přepínače /Pattern. V tomto příkladu pouze soubor s názvem **myFileName.vhd** budou zkopírovány.
+Pokud chcete zkopírovat pouze konkrétní virtuální pevný disk v kontejneru s více soubory, můžete také zadat název souboru pomocí přepínače/Pattern. V tomto příkladu se zkopíruje pouze soubor s názvem **myFileName. VHD** .
 
 ```
 AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecontainer `
@@ -173,7 +172,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
 ```
 
 
-Až se dokončí, zobrazí zprávu, která vypadá přibližně takto:
+Po dokončení se zobrazí zpráva, která vypadá nějak takto:
 
 ```
 Finished 2 of total 2 file(s).
@@ -187,24 +186,24 @@ Elapsed time:            00.00:13:07
 ```
 
 ### <a name="troubleshooting"></a>Řešení potíží
-* Při použití nástroje AZCopy, pokud se zobrazí chyba "Server se nepodařilo ověřit žádost", ujistěte se, že hodnota hlavičky autorizace je vytvořen správně včetně podpis. Pokud používáte 2 klíč nebo klíč sekundární úložiště, zkuste použít klíč úložiště primární nebo 1.
+* Pokud se při použití AZCopy zobrazí chyba "Server selhal při ověření žádosti", ujistěte se, že je hodnota autorizační hlavičky správně vytvořená, včetně signatury. Pokud používáte klíč 2 nebo sekundární klíč úložiště, zkuste použít primární nebo první klíč úložiště.
 
 ## <a name="create-the-new-vm"></a>Vytvoření nového virtuálního počítače 
 
-Je potřeba vytvořit sítě a další prostředky virtuálních počítačů pro nový virtuální počítač.
+Musíte vytvořit síť a další prostředky virtuálních počítačů, které má nový virtuální počítač používat.
 
 ### <a name="create-the-subnet-and-vnet"></a>Vytvoření podsítě a virtuální sítě
 
-Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
+Vytvořte virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
 
-1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem **mySubNet**, ve skupině prostředků **myResourceGroup**a nastaví předponu adresy podsítě na **10.0.0.0/24**.
+1. Vytvořte podsíť. Tento příklad vytvoří podsíť s názvem **mySubNet**ve skupině prostředků **myResourceGroup**a nastaví předponu adresy podsítě na **10.0.0.0/24**.
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubNet"
     $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Vytvořte virtuální síť. V tomto příkladu nastaví název virtuální sítě bude **myVnetName**, umístění pro **USA – západ**a předpony adresy pro virtuální síť k **10.0.0.0/16**. 
+2. Vytvořte virtuální síť. V tomto příkladu se nastaví název virtuální sítě, která se má **myVnetName**, umístění, které se má **západní USA**, a předpona adresy pro virtuální síť **10.0.0.0/16**. 
    
     ```powershell
     $location = "West US"
@@ -212,10 +211,10 @@ Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-networ
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
-   Abyste mohli pro přihlášení k virtuálnímu počítači pomocí protokolu RDP, budete muset mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. Vzhledem k tomu, že byl virtuální pevný disk pro nový virtuální počítač vytvořen z existující specializovaného virtuálního počítače, po vytvoření virtuálního počítače je možné použít existující účet ze zdrojového virtuálního počítače, který má oprávnění k přihlášení pomocí protokolu RDP.
-   To je potřeba dokončit před vytvořením síťového rozhraní, které budou přidruženy.  
-   V tomto příkladu nastaví název skupiny NSG na **myNsg** a názvu pravidlo protokolu RDP **myRdpRule**.
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvoření skupiny zabezpečení sítě a pravidla protokolu RDP
+   Abyste se mohli přihlásit ke svému VIRTUÁLNÍmu počítači pomocí protokolu RDP, musíte mít bezpečnostní pravidlo, které umožňuje přístup protokolu RDP na portu 3389. Vzhledem k tomu, že virtuální pevný disk pro nový virtuální počítač byl vytvořen z existujícího specializovaného virtuálního počítače, můžete po jeho vytvoření použít existující účet ze zdrojového virtuálního počítače, který měl oprávnění k přihlášení pomocí protokolu RDP.
+   Tento postup je nutné provést před vytvořením síťového rozhraní, ke kterému bude přidružen.  
+   V tomto příkladu se nastaví název NSG na **myNsg** a název pravidla RDP na **myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"
@@ -229,19 +228,19 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
     
 ```
 
-Další informace o koncových bodů a pravidel NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí Powershellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
 Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
 
-1. Vytvoření veřejné IP adresy. V tomto příkladu je název veřejné IP adresy nastavena **myIP**.
+1. Vytvořte veřejnou IP adresu. V tomto příkladu je název veřejné IP adresy nastavený na **myIP**.
    
     ```powershell
     $ipName = "myIP"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Vytvořte síťové rozhraní V tomto příkladu je název síťové karty nastavený na **myNicName**. Tento krok také přiřadí skupiny zabezpečení sítě vytvořené dříve s tento síťový adaptér
+2. Vytvořte síťovou kartu. V tomto příkladu je název síťové karty nastavený na **myNicName**. Tento krok taky přidruží skupinu zabezpečení sítě vytvořenou dříve s tímto síťovým ADAPTÉRem.
    
     ```powershell
     $nicName = "myNicName"
@@ -249,15 +248,15 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
     ```
 
-### <a name="set-the-vm-name-and-size"></a>Nastavte název virtuálního počítače a velikost
+### <a name="set-the-vm-name-and-size"></a>Nastavení názvu a velikosti virtuálního počítače
 
-V tomto příkladu nastaví na název virtuálního počítače "myVM" a velikost virtuálního počítače na "Standard_A2".
+V tomto příkladu se nastaví název virtuálního počítače na "myVM" a velikost virtuálního počítače na "Standard_A2".
 ```powershell
 $vmName = "myVM"
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize "Standard_A2"
 ```
 
-### <a name="add-the-nic"></a>Přidání síťového rozhraní
+### <a name="add-the-nic"></a>Přidat síťovou kartu
     
 ```powershell
 $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
@@ -266,38 +265,38 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
 ### <a name="configure-the-os-disk"></a>Konfigurace disku s operačním systémem
 
-1. Nastavte identifikátor URI virtuálního pevného disku, který jste nahráli nebo zkopírovali. V tomto příkladu soubor virtuálního pevného disku s názvem **myOsDisk.vhd** se ukládají v účtu úložiště s názvem **myStorageAccount** v kontejneru nazvaném **myContainer**.
+1. Nastavte identifikátor URI pro virtuální pevný disk, který jste nahráli nebo zkopírovali. V tomto příkladu je soubor VHD s názvem **myOsDisk. VHD** uložený v účtu úložiště s názvem **myStorageAccount** v kontejneru s názvem **myContainer**.
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Přidáte disk s operačním systémem. V tomto příkladu když se vytvoří disk s operačním systémem, je termín "osDisk" připojeným k názvu virtuálního počítače vytvořit název disku operačního systému. Tento příklad také určuje, že tento virtuální pevný disk založený na Windows by měl být připojené k virtuálnímu počítači jako disku s operačním systémem.
+2. Přidejte disk s operačním systémem. V tomto příkladu se při vytvoření disku s operačním systémem do názvu virtuálního počítače připojí pojem "osDisk", aby se vytvořil název disku operačního systému. Tento příklad také určuje, že tento virtuální pevný disk systému Windows by měl být připojen k virtuálnímu počítači jako disk s operačním systémem.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
     $vm = Set-AzVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption attach -Windows
     ```
 
-Volitelné: Pokud máte datové disky, které musí být připojené k virtuálnímu počítači přidáte datové disky pomocí adresy URL dat virtuálních pevných disků a příslušné logické jednotky (LUN).
+Volitelné: Pokud máte datové disky, které je potřeba připojit k virtuálnímu počítači, přidejte datové disky pomocí adres URL datových pevných disků a příslušné logické jednotky (LUN).
 
 ```powershell
 $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Pokud používáte účet úložiště, data a adresy URL disku operačního systému vypadat přibližně takto: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. To můžete najít na portálu pro procházení cílový kontejner úložiště, klikněte na operačního systému nebo datového virtuálního pevného disku, který jste zkopírovali, a následným kopírováním obsahu z adresy URL.
+Při použití účtu úložiště vypadají adresy URL disků a disků s operačním systémem něco podobného: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. To můžete na portálu najít tak, že přejdete do cílového kontejneru úložiště, kliknete na operační systém nebo na zkopírovaný datový disk VHD a pak zkopírujete obsah této adresy URL.
 
 
-### <a name="complete-the-vm"></a>Dokončete tento virtuální počítač 
+### <a name="complete-the-vm"></a>Dokončete virtuální počítač. 
 
-Vytvoření virtuálního počítače pomocí konfigurace, které jsme právě vytvořili.
+Vytvořte virtuální počítač pomocí konfigurací, které jsme právě vytvořili.
 
 ```powershell
 #Create the new VM
 New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-Pokud tento příkaz byl úspěšný, zobrazí se výstup podobný tomuto:
+Pokud byl tento příkaz úspěšný, zobrazí se výstup podobný tomuto:
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -306,14 +305,14 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Ověřte, že se vytvořil virtuální počítač
-Nově vytvořený virtuální počítač by se měla zobrazit buď v [webu Azure portal](https://portal.azure.com)v části **všechny služby** > **virtuálních počítačů**, nebo použijte následující příkaz Powershellu příkazy:
+### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
+Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com), v části **všechny** > **virtuální počítače**služeb, nebo pomocí následujících příkazů PowerShellu:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>Další postup
-Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlaste se na virtuálním počítači Azure s Windows](connect-logon.md).
+## <a name="next-steps"></a>Další kroky
+Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md).
 

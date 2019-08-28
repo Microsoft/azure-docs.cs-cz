@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871913"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092670"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorování metrik a protokolů pomocí diagnostického rozšíření systému Linux
 
@@ -131,13 +131,11 @@ Name | Value
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net`. Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
-storageAccountSasToken | [Token SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro služby BLOB a Table Services (`ss='bt'`), který se vztahuje na kontejnery a`srt='co'`objekty (), což uděluje oprávnění k přidávání, vytváření, výpisům, aktualizaci`sp='acluw'`a zápisu (). Nezahrnujte ** úvodní otazník (?).
+storageAccountSasToken | [Token SAS účtu](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) pro služby BLOB a Table Services (`ss='bt'`), který se vztahuje na kontejnery a`srt='co'`objekty (), což uděluje oprávnění k přidávání, vytváření, výpisům, aktualizaci`sp='acluw'`a zápisu (). Nezahrnujte úvodní otazník (?).
 mdsdHttpProxy | volitelné Informace o proxy serveru HTTP potřebné k povolení rozšíření pro připojení k zadanému účtu úložiště a koncovému bodu
 sinksConfig | volitelné Podrobnosti o alternativních umístěních, na které se dají doručovat metriky a události Konkrétní podrobnosti o jednotlivých datových jímkach podporovaných rozšířením jsou uvedené v následujících oddílech.
 
-
-> [!NOTE]
-> Když nasadíte rozšíření pomocí šablony nasazení Azure, musí se předem vytvořit účet úložiště a token SAS a pak se předávat do šablony. Nelze nasadit virtuální počítač, účet úložiště a nakonfigurovat rozšíření v jediné šabloně. Vytvoření tokenu SAS v rámci šablony není aktuálně podporováno.
+K získání tokenu SAS v rámci šablony Správce prostředků použijte funkci **listAccountSas** . Příklad šablony naleznete v tématu [Příklad funkce list](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 Požadovaný token SAS můžete snadno vytvořit prostřednictvím Azure Portal.
 
@@ -229,7 +227,7 @@ Tato struktura obsahuje různé bloky nastavení, které řídí informace shrom
 }
 ```
 
-Prvek | Hodnota
+Prvek | Value
 ------- | -----
 StorageAccount | Název účtu úložiště, ve kterém se má rozšíření zapsat data Musí se jednat o stejný název, jako je zadaný v [Nastavení Protected](#protected-settings).
 mdsdHttpProxy | volitelné Stejné jako v [chráněných nastaveních](#protected-settings). Veřejná hodnota je přepsána soukromou hodnotou, pokud je nastavena. V chráněných nastaveních umístěte nastavení proxy serveru, jako je třeba heslo. [](#protected-settings)
@@ -252,12 +250,12 @@ Zbývající prvky jsou podrobně popsány v následujících oddílech.
 
 Tato volitelná struktura ovládá shromažďování metrik a protokolů pro doručování do služby Azure metrik a dalších datových jímka. Je nutné zadat buď `performanceCounters` nebo `syslogEvents` nebo obojí. Je nutné zadat `metrics` strukturu.
 
-Prvek | Hodnota
+Prvek | Value
 ------- | -----
 eventVolume | volitelné Určuje počet oddílů vytvořených v rámci tabulky úložiště. Musí být jedna z `"Large"`, `"Medium"`nebo `"Small"`. Pokud není zadaný, použije se výchozí hodnota `"Medium"`.
 sampleRateInSeconds | volitelné Výchozí interval mezi kolekcemi nezpracovaných (neagregovaných) metrik. Nejmenší podporovaná vzorkovací frekvence je 15 sekund. Pokud není zadaný, použije se výchozí hodnota `15`.
 
-#### <a name="metrics"></a>metrics metrik
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -318,7 +316,7 @@ counter | Společně s "Class" identifikuje konkrétní metriku v oboru názvů 
 counterSpecifier | Identifikuje konkrétní metriku v oboru názvů metrik Azure.
 condition | volitelné Vybere konkrétní instanci objektu, na kterou metrika aplikuje, nebo vybere agregaci napříč všemi instancemi daného objektu. Další informace najdete v tématu `builtin` definice metrik.
 sampleRate | JE 8601 interval, který nastavuje rychlost shromažďování nezpracovaných vzorků pro tuto metriku. Pokud není nastaven, interval shromažďování je nastaven hodnotou [sampleRateInSeconds](#ladcfg). Nejkratší podporovaná vzorkovací frekvence je 15 sekund (PT15S).
-Jednotce | By měl být jeden z těchto řetězců: "Count", "bytes", "Seconds", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekund". Definuje jednotku pro metriku. Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
+jednotka | By měl být jeden z těchto řetězců: "Count", "bytes", "Seconds", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekund". Definuje jednotku pro metriku. Spotřebitelé shromážděných dat očekávají, že hodnoty shromážděných dat odpovídají této jednotce. LAD ignoruje toto pole.
 displayName | Popisek (v jazyce určeném pomocí přidruženého nastavení národního prostředí), který se má připojit k těmto datům v Azure metrik. LAD ignoruje toto pole.
 
 CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je například funkce Azure Portaling a upozorňování, používají counterSpecifier jako klíč, který identifikuje metriku nebo instanci metriky. Pro `builtin` metriky doporučujeme používat counterSpecifier hodnoty, které `/builtin/`začínají na. Pokud shromažďujete konkrétní instanci metriky, doporučujeme připojit identifikátor instance k hodnotě counterSpecifier. Příklady:
@@ -433,7 +431,7 @@ Třída procesoru metrik nabízí informace o využití procesoru ve virtuální
 counter | Význam
 ------- | -------
 PercentIdleTime | Procento času během okna agregace, které procesory prováděly nečinný cyklus jádra
-percentProcessorTime | Procento času spuštění vlákna, které není nečinné
+PercentProcessorTime | Procento času spuštění vlákna, které není nečinné
 PercentIOWaitTime | Procento času čekání na dokončení vstupně-výstupních operací
 PercentInterruptTime | Procento času provádění hardwarových a softwarových přerušení a DPC (odložená volání procedur)
 PercentUserTime | Doba nečinnosti v průběhu okna agregace, procento času stráveného uživatelem s normální prioritou
@@ -541,7 +539,7 @@ V závislosti na předchozích definicích najdete ukázkovou konfiguraci rozš�
 
 Konfigurace těchto privátních nastavení:
 
-* Účet úložiště
+* účet úložiště
 * token SAS odpovídajícího účtu
 * několik umyvadel (JsonBlob nebo EventHubs s tokeny SAS)
 
@@ -705,7 +703,7 @@ Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vyge
 
 V příslušné [dokumentaci k EventHubs](../../event-hubs/event-hubs-what-is-event-hubs.md) se dozvíte, jak využívat zprávy publikované do koncového bodu EventHubs.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vytvořte výstrahy metriky v [Azure monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) pro metriky, které shromažďujete.
 * Vytvořte [grafy monitorování](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) pro vaše metriky.

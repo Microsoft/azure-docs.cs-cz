@@ -1,140 +1,139 @@
 ---
-title: Azure Functions instalace modulu Runtime | Dokumentace Microsoftu
-description: Postup instalace modulu Runtime služby Azure Functions ve verzi preview 2
+title: Instalace Modul runtime služby Azure Functions | Microsoft Docs
+description: Jak nainstalovat Modul runtime služby Azure Functions Preview 2
 services: functions
 author: apwestgarth
 manager: stefsch
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61022862"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085500"
 ---
-# <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat modul Runtime služby Azure Functions ve verzi preview 2
+# <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Pokud chcete nainstalovat modul Runtime služby Azure Functions ve verzi preview 2, postupujte podle těchto kroků:
+Chcete-li nainstalovat Modul runtime služby Azure Functions verze Preview 2, postupujte takto:
 
-1. Ujistěte se, že váš počítač úspěšně projde minimální požadavky.
-1. Stáhněte si [Azure Functions instalační program modulu Runtime ve verzi Preview](https://aka.ms/azafrv2).
-1. Odinstalujte modul Runtime služby Azure Functions ve verzi preview 1.
-1. Nainstalujte modul Runtime služby Azure Functions ve verzi preview 2.
-1. Dokončete konfiguraci modulu Runtime služby Azure Functions ve verzi preview 2.
-1. Vytvoření první funkce Azure Functions Runtime – Předběžná verze
+1. Ujistěte se, že váš počítač splňuje minimální požadavky.
+1. Stáhněte si [instalační program služby modul runtime služby Azure Functions Preview](https://aka.ms/azafrv2).
+1. Odinstalujte Modul runtime služby Azure Functions Preview 1.
+1. Nainstalujte Modul runtime služby Azure Functions Preview 2.
+1. Dokončete konfiguraci Modul runtime služby Azure Functions verze Preview 2.
+1. Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než nainstalujete modul Runtime služby Azure Functions ve verzi preview, musíte mít k dispozici následující prostředky:
+Než nainstalujete Modul runtime služby Azure Functions Preview, musíte mít k dispozici následující prostředky:
 
-1. Počítače se systémem Microsoft Windows Server 2016 nebo Microsoft Windows 10 Creators Update (Professional nebo Enterprise Edition).
-1. Instance SQL serveru v rámci vaší sítě.  Minimální požadovaná edice je SQL Server Express.
+1. Počítač se systémem Microsoft Windows Server 2016 nebo Microsoft Windows 10 Creators Update (Professional nebo Enterprise Edition).
+1. Instance SQL Server spuštěná v rámci vaší sítě.  Minimální požadovaná edice je SQL Server Express.
 
-## <a name="uninstall-previous-version"></a>Odinstalovat předchozí verze
+## <a name="uninstall-previous-version"></a>Odinstalace předchozí verze
 
-Pokud jste dříve nainstalovali modul Runtime služby Azure Functions ve verzi preview, je nutné odinstalovat před instalací nejnovější verze.  Odinstalujte modul Runtime služby Azure Functions ve verzi preview tak, že odeberete program v Windows přidat nebo odebrat programy.
+Pokud jste již dříve nainstalovali Modul runtime služby Azure Functions Preview, je nutné před instalací nejnovější verze odinstalovat.  Odinstalujte Modul runtime služby Azure Functions Preview odebráním programu v okně Přidat nebo odebrat programy v systému Windows.
 
-## <a name="install-the-azure-functions-runtime-preview"></a>Instalace Preview modulu Runtime Azure Functions
+## <a name="install-the-azure-functions-runtime-preview"></a>Nainstalovat Modul runtime služby Azure Functions Preview
 
-Instalační služby Azure Functions modulu Runtime ve verzi Preview vám pomůže nainstalovat modul Runtime služby Azure Functions ve verzi preview Management a role pracovního procesu.  Je možné nainstalovat roli správy a pracovní proces ve stejném počítači.  Jak budete přidávat další aplikace function App, však musíte nasadit více rolemi pracovních procesů u dalších počítačů bude škálovat vaše funkce do několika pracovních procesů.
+Instalační program služby Modul runtime služby Azure Functions Preview vás provede instalací portálu Modul runtime služby Azure Functions Preview a rolí pracovních procesů.  Je možné nainstalovat roli Správa a pracovní proces do stejného počítače.  Při přidávání dalších aplikací funkcí ale musíte nasadit další role pracovního procesu na další počítače, abyste mohli škálovat vaše funkce na více pracovních procesů.
 
-## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Nainstalujte Management a Role pracovního procesu ve stejném počítači
+## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Instalace role správy a pracovního procesu do stejného počítače
 
-1. Spusťte instalační program ve verzi Preview modulu Runtime Azure Functions.
+1. Spusťte instalační program služby Modul runtime služby Azure Functions Preview.
 
-    ![Azure ve verzi preview instalační modul Runtime služby Functions][1]
+    ![Instalační program služby Modul runtime služby Azure Functions Preview][1]
 
 1. Klikněte na **Další**.
-1. Jakmile jste si přečetli podmínky **smlouva EULA**, **zaškrtněte políčko** přijmout podmínky a klikněte na tlačítko **Další** k přechodu.
-1. Vyberte role, kterou chcete nainstalovat na tomto počítači **rolí správy funkce** a/nebo **Role pracovního procesu funkce** a klikněte na tlačítko **Další**.
+1. Po přečtení podmínek **smlouvy EULA** **zaškrtněte políčko** , abyste mohli podmínky přijmout, a kliknutím na Další přejděte k **dalšímu kroku** .
+1. Vyberte role, které chcete nainstalovat, do role **správce Functions** Worker Functions nebo **Functions Worker** functions a klikněte na **Další**.
 
-    ![Azure modul Runtime služby Functions ve verzi preview instalačním programem – výběr role][3]
-
-    > [!NOTE]
-    > Můžete nainstalovat **Role pracovního procesu funkce** na mnoho dalších počítačů. Uděláte to tak, postupujte podle těchto pokynů a vybrat jenom **Role pracovního procesu funkce** v instalačním programu.
-
-1. Klikněte na tlačítko **Další** mít **Průvodce instalací modulu Runtime Azure Functions** zahájení procesu instalace na svém počítači.
-1. Jakmile budete hotovi, spustí se Průvodce instalací **modul Runtime služby Azure Functions** konfigurační nástroj.
-
-    ![Dokončete instalační služby systému ve verzi preview Azure modul Runtime služby Functions][6]
+    ![Instalační program pro náhled Modul runtime služby Azure Functions – výběr role][3]
 
     > [!NOTE]
-    > Pokud chcete nainstalovat **Windows 10** a **kontejneru** funkce není povolená dříve, **instalace modulu Runtime Azure Functions** vás vyzve k restartování počítače pro dokončení instalace.
+    > **Roli pracovního procesu Functions** můžete nainstalovat na mnoho dalších počítačů. Pokud to chcete provést, postupujte podle těchto pokynů a v instalačním programu vyberte pouze **pracovní roli Worker Functions** .
 
-## <a name="configure-the-azure-functions-runtime"></a>Konfigurace modulu Runtime Azure Functions
+1. Kliknutím na tlačítko **Další** zobrazíte **modul runtime služby Azure Functions Průvodce instalací** na vašem počítači instalační proces.
+1. Po dokončení Průvodce instalací spustí nástroj pro konfiguraci **modul runtime služby Azure Functions** .
 
-K dokončení instalace modulu Runtime služby Azure Functions, je nutné provést konfiguraci.
+    ![Instalační program služby Modul runtime služby Azure Functions Preview byl dokončen.][6]
 
-1. **Modul Runtime služby Azure Functions** konfigurační nástroj ukazuje, jaké role jsou nainstalovány na vašem počítači.
+    > [!NOTE]
+    > Pokud instalujete v **systému Windows 10** a funkce **kontejneru** nebyla dříve povolena, **instalační program modul runtime služby Azure Functions** vyzve k restartování počítače, aby bylo možné instalaci dokončit.
 
-    ![Nástroj konfigurace Azure modul Runtime služby Functions ve verzi preview][7]
+## <a name="configure-the-azure-functions-runtime"></a>Nakonfigurovat Modul runtime služby Azure Functions
 
-1. Klikněte na tlačítko **databáze** kartu, zadejte podrobnosti o připojení pro vaši instanci SQL serveru, včetně zadání [hlavní klíč databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)a klikněte na tlačítko **použít**.  Připojení k instanci systému SQL Server je nutná pro modul Runtime Azure Functions k vytvoření databáze pro podporu modulu Runtime.
+Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné dokončit konfiguraci.
 
-    ![Konfigurace databáze ve verzi preview Azure modul Runtime služby Functions][8]
+1. Nástroj pro konfiguraci **modul runtime služby Azure Functions** ukazuje, které role jsou nainstalovány na vašem počítači.
 
-1. Klikněte na tlačítko **pověření** kartu.  Tady je nutné vytvořit dva nové přihlašovací údaje pro použití s sdílené složky pro hostování všechny vaše aplikace function App.  Zadejte **uživatelské jméno** a **heslo** kombinace, abyste **vlastníka sdílené složky** a **uživatele sdílené složky**, pak klikněte na tlačítko **Použít**.
+    ![Nástroj pro konfiguraci Modul runtime služby Azure Functions Preview][7]
 
-    ![Přihlašovací údaje ve verzi preview Azure modul Runtime služby Functions][9]
+1. Klikněte na kartu **databáze** , zadejte podrobnosti o připojení pro vaši instanci SQL Server, včetně zadání [hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), a klikněte na **použít**.  Aby se Modul runtime služby Azure Functions vytvořila databáze pro podporu modulu runtime, je nutné připojení k instanci SQL Server.
 
-1. Klikněte na tlačítko **sdílené** kartu.  Tady zadejte podrobnosti o umístění sdílené složky.  Sdílené složky můžete vytvořit za vás, nebo můžete použít existující sdílení souborů a klikněte na tlačítko **použít**.  Pokud vyberete nové sdílené umístění, je nutné zadat adresář používají modul Runtime služby Azure Functions.
+    ![Konfigurace databáze Modul runtime služby Azure Functions Preview][8]
 
-    ![Modul Runtime služby Functions ve verzi preview sdílená složka Azure][10]
+1. Klikněte na kartu **přihlašovací údaje** .  Tady musíte vytvořit dvě nové přihlašovací údaje, které se mají použít se sdílenou složkou pro hostování všech vašich aplikací Function App.  Zadejte kombinace **uživatelského jména** a **hesla** pro **vlastníka sdílené složky** a pro **uživatele sdílené složky**a potom klikněte na **použít**.
 
-1. Klikněte na tlačítko **IIS** kartu.  Tato karta zobrazuje podrobnosti o weby ve službě IIS, která vytvoří nástroj pro konfiguraci modulu Runtime služby Azure Functions.  Můžete zadat vlastní název DNS pro modul Runtime služby Azure Functions ve verzi preview portálu.  Klikněte na tlačítko **použít** dokončete.
+    ![Přihlašovací údaje pro Modul runtime služby Azure Functions Preview][9]
 
-    ![Azure Functions Runtime – Předběžná verze služby IIS][11]
+1. Klikněte na kartu **sdílení souborů** .  Tady je nutné zadat podrobnosti umístění sdílené složky.  Sdílenou složku můžete vytvořit za vás, nebo můžete použít existující sdílenou složku a kliknout na **použít**.  Pokud vyberete nové umístění sdílené složky, musíte určit adresář, který má Modul runtime služby Azure Functions použít.
 
-1. Klikněte na tlačítko **služby** kartu.  Tato karta zobrazuje stav služeb v nástroji pro konfiguraci modulu Runtime služby Azure Functions.  Pokud **služba Azure Functions hostitele aktivace** není spuštěno po počáteční konfiguraci, klikněte na tlačítko **spustit službu**.
+    ![Modul runtime služby Azure Functions ve verzi Preview sdílení souborů][10]
 
-    ![Azure ve verzi preview modul Runtime služby Functions konfigurace byla dokončena][12]
+1. Klikněte na kartu **IIS** .  Tato karta zobrazuje podrobnosti o webech ve službě IIS, které vytváří nástroj pro konfiguraci Modul runtime služby Azure Functions.  Tady můžete zadat vlastní název DNS pro portál Modul runtime služby Azure Functions Preview.  Klikněte na tlačítko **použít** k dokončení.
 
-1. Přejděte **Azure Functions Runtime portál** jako `https://<machinename>.<domain>/`.
+    ![Služba IIS pro Modul runtime služby Azure Functions Preview][11]
 
-    ![Portál Azure preview modul Runtime služby Functions][13]
+1. Klikněte na kartu **služby** .  Tato karta zobrazuje stav služeb v nástroji pro konfiguraci Modul runtime služby Azure Functions.  Pokud po počáteční konfiguraci neběží **Aktivační služba hostitele Azure Functions** , klikněte na **Spustit službu**.
 
-## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Vytvoření první funkce v modulu Runtime služby Azure Functions ve verzi preview
+    ![Dokončení konfigurace Modul runtime služby Azure Functions Preview][12]
 
-Chcete-li vytvořit svoji první funkci ve verzi preview modul Runtime služby Azure Functions
+1. Přejděte na **portál modul runtime služby Azure Functions** jako `https://<machinename>.<domain>/`.
 
-1. Přejděte **portálu modul Runtime Azure Functions** jako `https://<machinename>.<domain>` například `https://mycomputer.mydomain.com`.
+    ![Portál Preview Modul runtime služby Azure Functions][13]
 
-1. Zobrazí se výzva k **přihlášení**, pokud nasazení používá domény, uživatelské jméno účtu domény a heslo, jinak použít místní účet uživatelské jméno a heslo pro přihlášení k portálu.
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-    ![Modul Runtime služby Functions ve verzi preview portálu přihlášení k Azure][14]
+Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-1. Vytvoření aplikace function App, je nutné vytvořit předplatné.  V levém horním rohu portálu, klikněte **+** možnost vedle předplatná.
+1. Přejděte na **portál modul runtime služby Azure Functions** , `https://<machinename>.<domain>` `https://mycomputer.mydomain.com`například.
 
-    ![Azure modul Runtime služby Functions ve verzi preview portálu předplatných][15]
+1. Zobrazí se výzva k **přihlášení**, pokud je nasazená v doméně, použijte uživatelské jméno a heslo účtu domény, jinak se přihlaste k portálu pomocí uživatelského jména a hesla místního účtu.
 
-1. Zvolte **DefaultPlan**, zadejte název vašeho předplatného a klikněte na tlačítko **vytvořit**.
+    ![Přihlášení k portálu Modul runtime služby Azure Functions Preview][14]
 
-    ![Plán portálu předplatného Azure modul Runtime služby Functions ve verzi preview a název][16]
+1. Pokud chcete vytvářet aplikace Function App, musíte si vytvořit předplatné.  V levém horním rohu portálu klikněte **+** na možnost vedle předplatných.
 
-1. V levém podokně portálu jsou uvedeny všechny vaše aplikace function App.  Pokud chcete vytvořit novou aplikaci Function App, vyberte záhlaví **aplikace Function App** a klikněte na tlačítko **+** možnost.
+    ![Předplatná portálu Modul runtime služby Azure Functions Preview][15]
 
-1. Zadejte název pro vaši aplikaci function app, vyberte správné předplatné, která verze modulu runtime Azure Functions, které chcete programovat proti a klikněte na tlačítko **Create**
+1. Vyberte **DefaultPlan**, zadejte název vašeho předplatného a klikněte na **vytvořit**.
 
-    ![Azure modul Runtime služby Functions ve verzi preview portálu novou aplikaci function app][17]
+    ![Plán a název předplatného portálu Modul runtime služby Azure Functions Preview][16]
 
-1. V levém podokně portálu je uvedena nová aplikace function app.  Vyberte funkce a pak klikněte na tlačítko **novou funkci** nahoře v prostředním podokně na portálu.
+1. Všechny vaše aplikace Function App jsou uvedené v levém podokně portálu.  Novou Function App vytvoříte tak, že vyberete nadpis **aplikace funkce** a kliknete na **+** možnost.
 
-    ![Šablony Azure ve verzi preview modul Runtime služby Functions][18]
+1. Zadejte název aplikace Function App, vyberte správné předplatné, zvolte verzi modulu runtime Azure Functions, se kterou chcete programovat, a klikněte na **vytvořit** .
 
-1. Vyberte funkci Trigger časovače, v pravém informační rámeček pojmenujte svoji funkci a změnit plán `*/5 * * * * *` (Tento výraz cron způsobí, že vaše funkce časovače pro spuštění každých pět sekund) a klikněte na tlačítko **Create**
+    ![Nová aplikace Function App na portálu Modul runtime služby Azure Functions Preview][17]
 
-    ![Modul Runtime služby Functions ve verzi preview nového časovače funkce Konfigurace Azure][19]
+1. Vaše nová aplikace Function App je uvedená v levém podokně portálu.  Vyberte funkce a potom v horní části prostředního podokna na portálu klikněte na **Nová funkce** .
 
-1. Byla vytvořena vaše funkce.  Prováděcí protokol aplikace Function App můžete zobrazit rozbalením **protokolu** panelu v dolní části portálu.
+    ![Šablony pro náhled Modul runtime služby Azure Functions][18]
 
-    ![Azure provádí funkce ve verzi preview modul Runtime služby Functions][20]
+1. Vyberte funkci Trigger časovače v pravém informačním rámečku funkce a změňte plán na `*/5 * * * * *` (Tento výraz cron způsobí, že se funkce časovače spustí každých pět sekund) a klikněte na **vytvořit** .
+
+    ![Konfigurace nové funkce časovače Modul runtime služby Azure Functions Preview][19]
+
+1. Vaše funkce se teď vytvořila.  Protokol spuštění aplikace Function App můžete zobrazit tak, že rozbalíte podokno **protokolu** v dolní části portálu.
+
+    ![Provádění funkce ve verzi Preview Modul runtime služby Azure Functions][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

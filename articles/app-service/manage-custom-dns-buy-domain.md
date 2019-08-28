@@ -1,6 +1,6 @@
 ---
-title: Nákup vlastního názvu domény v Azure – službu App Service
-description: Informace o možnostech nákupu názvu vlastní domény s webovou aplikací ve službě Azure App Service.
+title: Koupit vlastní název domény v Azure – App Service
+description: Naučte se koupit vlastní název domény pomocí webové aplikace v Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -10,38 +10,37 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 188db5e89097542b5a47b43e7bc8bbb2ce30b072
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310147"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073130"
 ---
-# <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
+# <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Koupit vlastní název domény pro Azure App Service
 
-Domény služby App Service jsou domény nejvyšší úrovně, které se spravují přímo v Azure. Jejich usnadňují spravování vlastních domén pro [služby Azure App Service](overview.md). V tomto kurzu se dozvíte, jak koupit doménu služby App Service a přiřadit názvy DNS do služby Azure App Service.
+App Service domény jsou domény nejvyšší úrovně, které se spravují přímo v Azure. Usnadňují správu vlastních domén pro [Azure App Service](overview.md). V tomto kurzu se dozvíte, jak koupit doménu App Service a přiřadit k Azure App Service názvy DNS.
 
-Pro virtuální počítač Azure nebo Azure Storage, najdete v článku [doména přiřadit služby App Service na virtuálním počítači Azure nebo Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services, najdete v části [konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Informace o virtuálním počítači nebo Azure Storage Azure najdete v tématu [přiřazení App Service domény k virtuálnímu počítači Azure nebo Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services najdete v tématu [Konfigurace vlastního názvu domény pro cloudovou službu Azure](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Vytvořit plán služby App Service](/azure/app-service/) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
-* [Odebrat limit útraty pro vaše předplatné](../billing/billing-spending-limit.md#remove). Nelze nakupovat domény služby App Service s kredity bezplatné předplatné.
+* [Odeberte limit útraty ve vašem](../billing/billing-spending-limit.md#remove)předplatném. Nemůžete nakupovat App Service domén s kredity bezplatného předplatného.
 
 ## <a name="prepare-the-app"></a>Příprava aplikace
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Použití vlastních domén v Azure App Service, aplikaci prvku [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být placenou úroveň (**Shared**, **základní**, **standardní**, nebo  **Premium**). V tomto kroku Ujistěte se, že aplikace je na podporované cenové úrovni.
+Pokud chcete používat vlastní domény v Azure App Service, musí být [plán App Service](https://azure.microsoft.com/pricing/details/app-service/) vaší aplikace placenou úrovní (**Shared**, **Basic**, **Standard**nebo **Premium**). V tomto kroku se ujistěte, že je aplikace v podporované cenové úrovni.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
@@ -63,7 +62,7 @@ Aktuální úroveň aplikace je zvýrazněná modrým ohraničením. Zkontrolujt
 
 ![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Pokud není v plánu služby App Service **F1** vrstvy, zavřete **vertikálně navýšit kapacitu** stránce a přeskočte k [koupit doménu](#buy-the-domain).
+Pokud App Service plán není ve vrstvě **F1** , zavřete stránku horizontálního navýšení **kapacity** a přejděte k [nákupu domény](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
@@ -77,224 +76,224 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 
 ![Potvrzení operace škálování](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-## <a name="buy-the-domain"></a>Koupit domény
+## <a name="buy-the-domain"></a>Koupit doménu
 
 ### <a name="pricing-information"></a>Informace o cenách
-Informace o cenách na domény služby Azure App Service, přejděte [stránku App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/windows/) a posuňte se dolů doména App Service.
+Informace o cenách Azure App Servicech doménách najdete na [stránce s cenami App Service](https://azure.microsoft.com/pricing/details/app-service/windows/) a posuňte se dolů na App Service doménu.
 
-### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí svého účtu Azure.
 
-### <a name="launch-buy-domains"></a>Spusťte nákup domén
-V **App Services** kartu, klikněte na název vaší aplikace, vyberte **nastavení**a pak vyberte **vlastní domény**
+### <a name="launch-buy-domains"></a>Spustit nákupní domény
+Na kartě **App Services** klikněte na název vaší aplikace, vyberte **Nastavení**a pak vyberte **vlastní domény** .
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-V **vlastní domény** klikněte na **koupit domény**.
+Na stránce **vlastní domény** klikněte na **koupit doménu**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
-> Není-li v **domén služby App Service** části, je třeba odebrat limit útraty u vašeho účtu Azure (viz [požadavky](#prerequisites)).
+> Pokud nemůžete zobrazit část **App Service domény** , musíte odebrat limit útraty ve vašem účtu Azure (viz [požadavky](#prerequisites)).
 >
 >
 
-### <a name="configure-the-domain-purchase"></a>Konfigurace zakoupení domény
+### <a name="configure-the-domain-purchase"></a>Konfigurace nákupu domény
 
-V **doména App Service** stránku, **hledat domény** zadejte název domény, které chcete koupit a zadejte `Enter`. Navržené domény k dispozici jsou uvedeny přímo pod textové pole. Vyberte jednu nebo více domén, které chcete koupit.
+Na stránce **App Service doména** zadejte do pole **Hledat doménu** název domény, kterou chcete koupit, a zadejte `Enter`. Navrhované dostupné domény se zobrazují hned pod textovým polem. Vyberte jednu nebo více domén, které chcete koupit.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
-> Následující [domény nejvyšší úrovně](https://wikipedia.org/wiki/Top-level_domain) domény služby App Service podporuje: _com_, _net_, _co.uk_, _organizace_, _nl_, _v_, _biz_, _org.uk_, a _co.in_.
+> Následující [domény nejvyšší úrovně](https://wikipedia.org/wiki/Top-level_domain) jsou podporovány App Service doménami: _com_, _net_, _co.UK_, _org_, _nl_, _in_,, _org.UK_a _co.in_.
 >
 >
 
-Klikněte na tlačítko **kontaktní údaje** a vyplňte formulář kontaktní údaje domény. Až budete hotovi, klikněte na tlačítko **OK** se vrátíte na stránku doména App Service.
+Klikněte na **kontaktní informace** a vyplňte formulář kontaktní informace v doméně. Po dokončení klikněte na tlačítko **OK** , čímž se vrátíte na stránku App Service doména.
 
-Je důležité, vyplňte všechna povinná pole s co nejvíce přesnost nejvíce. Nesprávná data kontaktní informace může způsobit selhání při nákupu domény.
+Je důležité vyplnit všechna povinná pole co nejvíc přesností. Nesprávná data pro kontaktní údaje můžou mít za následek neúspěšné zakoupení domén.
 
-Potom vyberte požadované možnosti pro vaši doménu. V následující tabulce najdete vysvětlení:
+V dalším kroku vyberte požadované možnosti pro vaši doménu. Vysvětlení najdete v následující tabulce:
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
-|Ochranu osobních údajů | Povolení | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
-| Přiřadit výchozí hostitelské názvy | **WWW** a **\@** | Vyberte požadovaný název hostitele vazeb v případě potřeby. Po dokončení operace nákupu domény vaší aplikace je přístupný na vybrané názvy hostitelů. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože nemá podporu záznamy O Traffic Manageru. Můžete provedete změny přiřazení názvu hostitele po dokončení nákupu domény. |
+|Ochrana osobních údajů | Povolení | Přihlaste se k ochraně osobních údajů, která je zahrnutá v ceně nákupu _zdarma_. Některé domény nejvyšší úrovně jsou spravovány registrátory, které nepodporují ochranu osobních údajů, a jsou uvedeny na stránce **Ochrana osobních údajů** . |
+| Přiřadit výchozí hostitelské názvy | **www** a **\@** | V případě potřeby vyberte požadované vazby hostitele. Po dokončení operace nákupu domény může být aplikace dostupná na vybraných hostitelských hostitelích. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože Traffic Manager nepodporuje záznamy. Po dokončení nákupu domény můžete provádět změny v přiřazeních hostitelů. |
 
-### <a name="accept-terms-and-purchase"></a>Přijměte podmínky a nákup
+### <a name="accept-terms-and-purchase"></a>Přijmout podmínky a koupit
 
-Klikněte na tlačítko **právní podmínky** přečtěte si podmínky a náklady a pak klikněte na **koupit**.
+Kliknutím na **právní doložku** si Projděte podmínku a poplatky a pak klikněte na **koupit**.
 
 > [!NOTE]
-> Domény služby App Service použít k hostování domén GoDaddy pro registraci domény a Azure DNS. Kromě registrace poplatek domény se platí poplatky za používání pro Azure DNS. Informace najdete v tématu [ceny služby Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+> App Service domény používají GoDaddy k registraci domény a Azure DNS k hostování domén. Kromě registračního poplatku domény se účtují poplatky za využití Azure DNS použít. Informace najdete v tématu [Azure DNS ceny](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
-Zpátky **doména App Service** klikněte na **OK**. Když probíhá operace, se zobrazí následující oznámení:
+Zpátky na stránce **App Service doména** klikněte na **OK**. V průběhu operace se zobrazí následující oznámení:
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
-### <a name="test-the-hostnames"></a>Testování názvy hostitelů
+### <a name="test-the-hostnames"></a>Testování názvů hostitelů
 
-Pokud výchozí názvy hostitelů přiřazenými do vaší aplikace, se také zobrazí oznámení úspěch pro každý vybraný název hostitele.
+Pokud jste aplikaci přiřadili výchozí názvy hostitelů, zobrazí se vám také oznámení o úspěšnosti pro každý vybraný název hostitele.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Zobrazí také názvy vybraných hostitelů v **vlastní domény** stránku, **vlastní názvy hostitelů** oddílu.
+Vybrané názvy hostitelů se zobrazí také na stránce **vlastní domény** v části **vlastní názvy hostitelů** .
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> A **zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí chybu nebo upozornění, v závislosti na prohlížeči. Konfigurace vazby SSL, najdete v článku [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
+> Nezabezpečený popisek pro vaši vlastní doménu znamená, že ještě není vázaný na certifikát SSL, a kterákoli žádost HTTPS z prohlížeče do vaší vlastní domény obdrží chybu nebo varování v závislosti na prohlížeči. Informace o konfiguraci vazby SSL najdete v tématu [Nákup a konfigurace certifikátu SSL pro Azure App Service](web-sites-purchase-ssl-web-site.md).
 >
 
-Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _kontoso.net_ a _www\.kontoso.net_.
+Chcete-li otestovat názvy hostitelů, přejděte k uvedeným názvům hostitelů v prohlížeči. V příkladu na předchozím snímku obrazovky zkuste přejít na _kontoso.NET_ a na _webové\.kontoso.NET_.
 
-## <a name="assign-hostnames-to-app"></a>Názvy hostitelů přiřadit aplikace
+## <a name="assign-hostnames-to-app"></a>Přiřazení názvů hostitelů k aplikaci
 
-Pokud se rozhodnete přiřadit výchozí hostitelské názvy do vaší aplikace během procesu nákupu nebo pokud je potřeba přiřadit název hostitele není uvedený, můžete kdykoli přiřadit název hostitele.
+Pokud se rozhodnete nepřiřadit k aplikaci jeden nebo více výchozích názvů hostitelů během procesu nákupu, nebo pokud potřebujete přiřadit název hostitele, který není uveden, můžete název hostitele přiřadit kdykoli.
 
-Názvy hostitelů v doména App Service můžete také přiřadit jakoukoli jinou aplikaci. Postup závisí na tom, jestli se doména App Service a aplikaci patřily do stejného předplatného.
+Můžete také přiřadit názvy hostitelů v doméně App Service do jakékoli jiné aplikace. Postup závisí na tom, jestli App Service doména a aplikace patří do stejného předplatného.
 
-- Jiné předplatné: Mapování vlastních záznamů DNS z doména App Service do aplikace, jako jsou externě zakoupené domény. Informace o přidání vlastní názvy DNS doména služby App Service najdete v tématu [spravovat vlastní záznamy DNS](#custom). Mapování externí domény zakoupené na aplikaci, najdete v článku [mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md). 
-- Stejného předplatného: Pomocí následujícího postupu.
+- Jiné předplatné: Namapujte vlastní záznamy DNS z App Service domény do aplikace, jako je externě zakoupená doména. Informace o přidání vlastních názvů DNS do domény App Service najdete v tématu [Správa vlastních záznamů DNS](#custom). Pokud chcete namapovat externí zakoupenou doménu na aplikaci, přečtěte si téma [Mapování existujícího vlastního názvu DNS na Azure App Service](app-service-web-tutorial-custom-domain.md). 
+- Stejné předplatné: Použijte následující postup.
 
-### <a name="launch-add-hostname"></a>Spuštění přidat název hostitele
-V **App Services** vyberte název aplikace, kterou chcete přiřadit názvů hostitelů, vyberte **nastavení**a pak vyberte **vlastní domény**.
+### <a name="launch-add-hostname"></a>Spustit přidání názvu hostitele
+Na stránce **App Services** vyberte název aplikace, ke které chcete přiřadit názvy hostitelů, vyberte **Nastavení**a pak vyberte **vlastní domény**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-Ujistěte se, že vaše zakoupené doména uvedena v **domén služby App Service** části, ale nevybírejte ho. 
+Ujistěte se, že je Vaše zakoupená doména uvedená v části **App Service domény** , ale nevybírejte ji. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
-> Všechny domén služby App Service ve stejném předplatném jsou uvedeny v aplikace **vlastní domény** stránky. Pokud se vaše doména je v předplatném aplikace, ale nevidíte ji v aplikaci prvku **vlastní domény** stránce, zkuste to znova otevřít **vlastní domény** stránce nebo aktualizujte webovou stránku. Zkontrolujte taky, oznámení zvonku v horní části webu Azure portal pro průběh nebo vytvoření chyby.
+> Na stránce **vlastní domény** aplikace se zobrazí všechny App Service domény ve stejném předplatném. Pokud je vaše doména v předplatném aplikace, ale nemůžete ji zobrazit na stránce **vlastní domény** aplikace, zkuste znovu otevřít stránku **vlastní domény** nebo aktualizovat webovou stránku. Také si přečtěte oznámení v oznámení v horní části Azure Portal pro průběh nebo selhání vytvoření.
 >
 >
 
 Vyberte **Přidat název hostitele**.
 
-### <a name="configure-hostname"></a>Konfigurace názvu hostitele
-V **přidat název hostitele** dialogové okno, zadejte plně kvalifikovaný název vaše doména App Service nebo jakákoli subdoména. Příklad:
+### <a name="configure-hostname"></a>Konfigurovat název hostitele
+V dialogovém okně **Přidat název hostitele** zadejte plně kvalifikovaný název domény vaší App Service domény nebo jakékoli subdomény. Příklad:
 
 - kontoso.net
 - www\.kontoso.net
 - abc.kontoso.net
 
-Až budete hotovi, vyberte **ověřit**. Typ záznamu názvu hostitele se vybere automaticky za vás.
+Po dokončení vyberte **ověřit**. Typ záznamu názvu hostitele je automaticky vybrán.
 
 Vyberte **Přidat název hostitele**.
 
-Po dokončení operace se zobrazí oznámení úspěch přiřazené názvu hostitele.  
+Po dokončení operace se pro přiřazený název hostitele zobrazí oznámení o úspěchu.  
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-### <a name="close-add-hostname"></a>Zavřete přidat název hostitele
-V **přidat název hostitele** stránky, další název hostitele přiřadit aplikace podle potřeby. Až budete hotovi, zavřete **přidat název hostitele** stránky.
+### <a name="close-add-hostname"></a>Zavřít přidání názvu hostitele
+Na stránce **Přidat název hostitele** přiřaďte aplikaci libovolný další název hostitele podle potřeby. Po dokončení zavřete stránku **Přidat název hostitele** .
 
-Teď byste měli vidět nově přiřazené hostname(s) ve vaší aplikaci **vlastní domény** stránky.
+Teď byste měli vidět nově přiřazené názvy hostitelů na stránce **vlastní domény** vaší aplikace.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
-### <a name="test-the-hostnames"></a>Testování názvy hostitelů
+### <a name="test-the-hostnames"></a>Testování názvů hostitelů
 
-Přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _abc.kontoso.net_.
+V prohlížeči přejděte k uvedeným názvům hostitelů. V příkladu na předchozím snímku obrazovky zkuste přejít na _ABC.kontoso.NET_.
 
-## <a name="renew-the-domain"></a>Obnovit doménu
+## <a name="renew-the-domain"></a>Obnovení domény
 
-Doména služby App Service, které jste si zakoupili je platný jeden rok od okamžiku nákupu. Ve výchozím nastavení doména nenakonfiguruje automaticky obnovit tím vaším způsobem platby pro příští rok. Můžete ručně obnovit váš název domény.
+App Service doména, kterou jste zakoupili, je platná po dobu jednoho roku od zakoupení. Ve výchozím nastavení je doména nakonfigurovaná tak, aby se automaticky obnovila tak, že si zaznamenáme způsob platby na další rok. Název domény můžete ručně obnovit.
 
-Pokud chcete vypnout automatické obnovení, nebo pokud chcete ručně obnovit vaší domény, postupujte podle kroků v tomto poli.
+Pokud chcete vypnout automatické obnovování nebo pokud chcete, aby se doména obnovila ručně, postupujte podle kroků uvedených tady.
 
-V **App Services** kartu, klikněte na název vaší aplikace, vyberte **nastavení**a pak vyberte **vlastní domény**.
+Na kartě **App Services** klikněte na název vaší aplikace, vyberte **Nastavení**a pak vyberte **vlastní domény**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-V **domén služby App Service** části, vyberte doménu, kterou chcete konfigurovat.
+V části **App Service domény** vyberte doménu, kterou chcete nakonfigurovat.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-V levém navigačním panelu domény, vyberte **obnovení domény**. Chcete-li zastavit automatické prodlužování platnosti vaší domény, vyberte **vypnout**a potom **Uložit**.
+V levém navigačním panelu domény vyberte **obnovení domény**. Pokud chcete zastavit obnovení domény automaticky, vyberte **vypnout**a pak **Uložit**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-Chcete-li ručně obnovit vaši doménu, vyberte **obnovení domény**. Toto tlačítko však není aktivní předtím než [90 dní před vypršením platnosti domény](#when-domain-expires).
+Chcete-li ručně obnovit doménu, vyberte možnost **obnovit doménu**. Toto tlačítko je ale aktivní až [90 dní před vypršením platnosti domény](#when-domain-expires).
 
-Pokud obnovení vaší domény je úspěšný, zobrazí se oznámení e-mailem do 24 hodin.
+Pokud je obnovení domény úspěšné, obdržíte e-mailové oznámení během 24 hodin.
 
-## <a name="when-domain-expires"></a>Kdy vyprší platnost domény
+## <a name="when-domain-expires"></a>Po vypršení platnosti domény
 
-Azure se zabývá vypršení platnosti, případně vypršela jeho platnost domény služby App Service následujícím způsobem:
+Azure se týká vypršení platnosti nebo App Service domén s vypršenou platností následujícím způsobem:
 
-* Pokud je zakázáno automatické obnovení: 90 dnů před vypršením platnosti domény, se vám je odeslán oznamovací e-mail obnovení a **obnovení domény** je tlačítko aktivovat na portálu.
-* Pokud je povoleno automatické obnovení: Den po datu vypršení platnosti domény Azure pokusí účtovat Obnova názvu domény.
-* Pokud dojde k chybě během automatického obnovení (například vaší karty strženy platnost), nebo pokud je zakázáno automatické obnovení a umožňují domény vyprší, Azure vás upozorní na vypršení platnosti domény a parků název vaší domény. Je možné [ručně obnovit](#renew-the-domain) vaší domény.
-* V den 4. až 12 dnů po vypršení platnosti Azure vám pošle e-mailů další oznámení. Je možné [ručně obnovit](#renew-the-domain) vaší domény.
-* Dne 19. po vypršení platnosti vaše doména zůstává sporu ale stala předmětem uplatnění poplatek. Můžete volat zákaznickou podporu o obnovení název domény, v souladu s žádné použitelné obnovení a uplatnění poplatky.
-* Azure dne 25 po vypršení platnosti, umístí vaší domény pro aukce se službou aukce oboru názvu domény. Můžete volat zákaznickou podporu o obnovení název domény, v souladu s žádné použitelné obnovení a uplatnění poplatky.
-* 30 den po vypršení platnosti vy už moct uplatnit vaší domény.
+* Pokud je automatické obnovení zakázané: 90 dní před vypršením platnosti domény se vám pošle e-mail s oznámením o prodloužení a na portálu se aktivuje tlačítko **prodloužit doménu** .
+* Pokud je povoleno automatické obnovení: Po dni vypršení platnosti domény se Azure pokusí vyfakturovat za obnovení názvu domény.
+* Pokud při automatickém obnovování dojde k chybě (například vypršela platnost karty na soubor) nebo pokud je automatické obnovení zakázané a pokud povolíte vypršení platnosti domény, Azure vás upozorní na vypršení platnosti domény a parky, které mají název vaší domény. Doménu můžete [obnovit ručně](#renew-the-domain) .
+* V 4.12. dnech dne po vypršení platnosti vám Azure pošle další e-maily s oznámením. Doménu můžete [obnovit ručně](#renew-the-domain) .
+* 19 den po vypršení platnosti zůstane doména pozastavená, ale bude se řídit poplatkem za uplatnění. Můžete zavolat zákaznickou podporu a prodloužit název domény, a to v souladu s platnými poplatky za obnovení a uplatnění.
+* Od 25 dnů po vypršení platnosti Azure zaznamená vaši doménu do aukce za aukci pomocí služby obor názvů domény. Můžete zavolat zákaznickou podporu a prodloužit název domény, a to v souladu s platnými poplatky za obnovení a uplatnění.
+* Po uplynutí 30 dnů po vypršení platnosti už nebudete moci uplatnit svoji doménu.
 
 <a name="custom"></a>
 
-## <a name="manage-custom-dns-records"></a>Manage custom DNS records
+## <a name="manage-custom-dns-records"></a>Správa vlastních záznamů DNS
 
-V Azure, záznamy DNS pro domény služby App Service se spravují pomocí [Azure DNS](https://azure.microsoft.com/services/dns/). Můžete přidat, odebrat a aktualizovat záznamy DNS, stejně jako pro externě zakoupené doménu.
+V Azure se záznamy DNS pro App Service doméně spravují pomocí [Azure DNS](https://azure.microsoft.com/services/dns/). Můžete přidávat, odebírat a aktualizovat záznamy DNS stejně jako u externě koupené domény.
 
-### <a name="open-app-service-domain"></a>Doména otevřít služby App Service
+### <a name="open-app-service-domain"></a>Otevřít App Service doménu
 
-Na webu Azure Portal, v levé nabídce vyberte **všechny služby** > **domén služby App Service**.
+V Azure Portal v nabídce vlevo vyberte **všechny služby** > **App Service domény**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Vyberte doménu, ke správě. 
+Vyberte doménu, kterou chcete spravovat. 
 
 ### <a name="access-dns-zone"></a>Přístup k zóně DNS
 
-V nabídce vlevo doménu, vyberte **zónu DNS**.
+V nabídce vlevo v doméně vyberte **zónu DNS**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
-Tato akce otevře [zónu DNS](../dns/dns-zones-records.md) stránky vaše doména App Service v Azure DNS. Informace o tom, jak upravit záznamů DNS najdete v tématu [jak spravovat zóny DNS na webu Azure Portal](../dns/dns-operations-dnszones-portal.md).
+Tato akce otevře stránku [zóny DNS](../dns/dns-zones-records.md) vaší App Service domény v Azure DNS. Informace o tom, jak upravit záznamy DNS, najdete v tématu [správa zóny DNS v Azure Portal](../dns/dns-operations-dnszones-portal.md).
 
-## <a name="cancel-purchase-delete-domain"></a>Zrušit nákup (odstranění domény)
+## <a name="cancel-purchase-delete-domain"></a>Zrušit nákup (odstranit doménu)
 
-Když zakoupíte doména App Service, máte pět dní zrušit svůj nákup si vrátit celou částku. Za pět dní můžete odstranit doména App Service ale nemůže přijímat refundaci.
+Po zakoupení App Service domény budete mít za pět dní, abyste zrušili nákup pro plnou refundaci. Po pěti dnech můžete doménu App Service odstranit, ale nemůžete ji vrátit.
 
-### <a name="open-app-service-domain"></a>Doména otevřít služby App Service
+### <a name="open-app-service-domain"></a>Otevřít App Service doménu
 
-Na webu Azure Portal, v levé nabídce vyberte **všechny služby** > **domén služby App Service**.
+V Azure Portal v nabídce vlevo vyberte **všechny služby** > **App Service domény**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Vyberte domény, ke které chcete zrušit nebo odstranit. 
+Vyberte doménu, kterou chcete zrušit nebo odstranit. 
 
-### <a name="delete-hostname-bindings"></a>Odstranění vazby názvu hostitele
+### <a name="delete-hostname-bindings"></a>Odstranit vazby názvů hostitelů
 
-V nabídce vlevo doménu, vyberte **vazby názvu hostitele**. Tady jsou uvedené vazby názvu hostitele ze všech služeb Azure.
+V nabídce vlevo v doméně vyberte možnost **vazby názvů hostitelů**. Tady jsou uvedené vazby názvů hostitelů ze všech služeb Azure.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
-Doména App Service nejde odstranit, dokud se odstraní všechny vazby názvu hostitele.
+Doménu App Service nelze odstranit, dokud nebudou odstraněny všechny vazby názvů hostitelů.
 
-Odstranit vazbu každý název hostitele tak, že vyberete **...**   >  **Odstranit**. Když se odstraní všechny vazby, vyberte **Uložit**.
+Odstraňte všechny vazby hostitele výběrem **...**  >  **Odstraňte**. Po odstranění všech vazeb vyberte **Save (Uložit**).
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Zrušit nebo odstranit
 
-V nabídce vlevo doménu, vyberte **přehled**. 
+V nabídce vlevo v doméně vyberte **Přehled**. 
 
-Pokud limit zrušení na zakoupené domény nebyl vypršel, vyberte **zrušit nákup**. V opačném případě se zobrazí **odstranit** tlačítko místo. Chcete-li odstranit doménu bez refundaci, vyberte **odstranit**.
+Pokud neuplynula doba zrušení u koupené domény, vyberte **zrušit nákup**. V opačném případě se místo toho zobrazí tlačítko pro **odstranění** . Chcete-li odstranit doménu bez náhrady, vyberte možnost **Odstranit**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-Potvrďte operaci vybrat **Ano**.
+Pro potvrzení operace vyberte **Ano**.
 
-Po dokončení operace se doména je z vašeho předplatného vydané a dostupné pro každého, kdo zopakovat nákup. 
+Po dokončení operace se doména uvolní z vašeho předplatného a bude k dispozici pro kohokoli zakoupení. 
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Směrování výchozí adresy URL do vlastního adresáře
 
-Ve výchozím nastavení služba App Service směruje webové požadavky do kořenového adresáře kódu vaší aplikace. Pro přesměrování je na podadresáře, například `public`, naleznete v tématu [směrování výchozí adresy URL do vlastního adresáře](app-service-web-tutorial-custom-domain.md#virtualdir).
+Ve výchozím nastavení služba App Service směruje webové požadavky do kořenového adresáře kódu vaší aplikace. Pokud je chcete směrovat do podadresáře, například `public`, přečtěte si téma [přesměrování výchozí adresy URL na vlastní adresář](app-service-web-tutorial-custom-domain.md#virtualdir).

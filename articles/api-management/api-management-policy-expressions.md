@@ -10,16 +10,15 @@ ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a42028891f0a8677127221c8ed4cff73a22103a
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fa5e84ba62896969458b84cf014e2b35ee869df7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498537"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072176"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad je C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené podmnožině typů .NET Framework. [](api-management-policy-expressions.md#CLRTypes)
@@ -210,18 +209,18 @@ Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](ap
 
 |Kontextová proměnná|Povolené metody, vlastnosti a hodnoty parametrů|
 |----------------------|-------------------------------------------------------|
-|context|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý Časový interval v čase mezi hodnotou časového razítka a aktuálním časem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Produktu](#ref-context-product)<br /><br /> [Požadavek](#ref-context-request)<br /><br /> Identifikátor Identifikátor GUID – jedinečný identifikátor žádosti<br /><br /> [Odpověď](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: DateTime – bod v čase, kdy byla přijata žádost<br /><br /> Trasování: bool – určuje, zda je trasování zapnuto nebo vypnuto <br /><br /> [Uživatelský](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary < řetězec, > objektů<br /><br /> void trace (zpráva: String)|
+|context|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý Časový interval v čase mezi hodnotou časového razítka a aktuálním časem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Produktu](#ref-context-product)<br /><br /> [Požadavek](#ref-context-request)<br /><br /> Identifikátor Identifikátor GUID – jedinečný identifikátor žádosti<br /><br /> [Odpověď](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko DateTime – bod v čase, kdy byla přijata žádost<br /><br /> Trasování: bool – určuje, zda je trasování zapnuto nebo vypnuto <br /><br /> [Uživatelský](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary < řetězec, > objektů<br /><br /> void trace (zpráva: String)|
 |<a id="ref-context-api"></a>context.Api|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl [IUrl](#ref-iurl)<br /><br /> Verze: řetězec |
 |<a id="ref-context-deployment"></a>souvislost. Prostředí|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>souvislost. LastError|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Oddíl: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Pro další informace o kontextu. Poslední chyba najdete v tématu [zpracování chyb](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>context.Operation|ID: řetězec<br /><br /> Metoda: String<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|
-|<a id="ref-context-product"></a>context.Product|Třídy IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: enum ProductState {NotPublished, Publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|<a id="ref-context-request"></a>souvislost. Request|Text zprávy: [IMessageBody](#ref-imessagebody) nebo `null` Pokud požadavek nemá tělo.<br /><br /> Certifikát: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Hlavičky](#ref-context-request-headers): IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> IpAddress: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < řetězec, řetězec ><br /><br /> Metoda: String<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adresa URL: [IUrl](#ref-iurl)|
+|<a id="ref-context-product"></a>context.Product|Třídy IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: enum ProductState {NotPublished, Publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
+|<a id="ref-context-request"></a>souvislost. Request|Těles [IMessageBody](#ref-imessagebody) nebo `null` Pokud požadavek nemá tělo.<br /><br /> Certifikát System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Hlavičky](#ref-context-request-headers): IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> IpAddress: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < řetězec, řetězec ><br /><br /> Metoda: String<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adresa URL [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>kontext řetězce. Request. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví žádosti oddělené čárkou nebo `defaultValue` , pokud záhlaví není nalezeno.|
-|<a id="ref-context-response"></a>souvislost. Základě|Text zprávy: [IMessageBody](#ref-imessagebody)<br /><br /> [Hlavičky](#ref-context-response-headers): IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
+|<a id="ref-context-response"></a>souvislost. Základě|Těles [IMessageBody](#ref-imessagebody)<br /><br /> [Hlavičky](#ref-context-response-headers): IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|
 |<a id="ref-context-response-headers"></a>kontext řetězce. Response. Headers. GetValueOrDefault (Header: řetězec, defaultValue: String)|záhlaví: řetězec<br /><br /> VýchozíHodnota: řetězec<br /><br /> Vrátí hodnoty záhlaví odpovědi oddělené čárkou nebo `defaultValue` Pokud záhlaví není nalezeno.|
-|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedTime: Datetime<br /><br /> EndDate Hodnotu?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate Hodnotu?|
-|<a id="ref-context-user"></a>context.User|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny: IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Nebyly IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: Datetime|
+|<a id="ref-context-subscription"></a>souvislost. Formě|CreatedTime: DateTime<br /><br /> EndDate Hodnotu?<br /><br /> ID: řetězec<br /><br /> Klíč: řetězec<br /><br /> Název: řetězec<br /><br /> PrimaryKey: řetězec<br /><br /> SecondaryKey: řetězec<br /><br /> StartDate Hodnotu?|
+|<a id="ref-context-user"></a>context.User|E-mail: řetězec<br /><br /> FirstName: řetězec<br /><br /> Skupiny IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: řetězec<br /><br /> Nebyly IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: String<br /><br /> Poznámka: řetězec<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|ID: řetězec<br /><br /> Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Protokolů IEnumerable < řetězec\><br /><br /> ServiceUrl [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|ID: řetězec<br /><br /> Název: řetězec|
 |<a id="ref-imessagebody"></a>IMessageBody|As < T\>(preserveContent: bool = false): Kde T: String, Byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Metody `context.Request.Body.As<T>` `T`a `context.Response.Body.As<T>` se používají ke čtení těla zprávy požadavku a odpovědi v zadaném typu. Ve výchozím nastavení používá metoda původní datový proud zprávy a vykresluje jej po jeho vrácení k dispozici. Chcete-li zabránit tomu, aby metoda pracovala na kopii toku textu, nastavte `preserveContent` parametr na. `true` Pokud si chcete prohlédnout příklad, přejděte [sem](api-management-transformation-policies.md#SetBody) .|

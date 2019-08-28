@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače ze spravované image v Azure | Dokumentace Microsoftu
-description: Vytvoření virtuálního počítače Windows z generalizované image spravovaného pomocí Azure Powershellu nebo na webu Azure portal, v modelu nasazení Resource Manageru.
+title: Vytvoření virtuálního počítače ze spravované image v Azure | Microsoft Docs
+description: V modelu nasazení Správce prostředků vytvořte virtuální počítač s Windows z generalizované spravované Image pomocí Azure PowerShell nebo Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,45 +10,44 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 3ae730389b54fc1034bfac3ffdc7e56a2dc5f3fc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 30e5a7e5953c56ff452b992370e8225ca103abba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718968"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079700"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
-Můžete vytvořit několik virtuálních počítačů (VM) z virtuálního počítače Azure spravované image pomocí webu Azure portal nebo Powershellu. Spravované image virtuálního počítače obsahuje informace potřebné k vytvoření virtuálního počítače, včetně operačního systému a datové disky. Virtuální pevné disky (VHD), které tvoří image, včetně disků operačního systému a všechny datové disky se ukládají jako spravované disky. 
+Můžete vytvořit několik virtuálních počítačů z image spravovaného virtuálního počítače Azure pomocí Azure Portal nebo PowerShellu. Spravovaná image virtuálního počítače obsahuje informace potřebné k vytvoření virtuálního počítače, včetně operačního systému a datových disků. Virtuální pevné disky (VHD), které tvoří bitovou kopii, včetně disků operačního systému i všech datových disků, jsou uloženy jako spravované disky. 
 
-Před vytvořením nového virtuálního počítače, budete muset [vytvoření spravované image virtuálního počítače](capture-image-resource.md) použít jako zdrojový obrázek a udělte oprávnění ke čtení na bitovou kopii s žádným uživatelem, kteří mají mít přístup k bitové kopii. 
+Před vytvořením nového virtuálního počítače budete muset [vytvořit spravovanou image virtuálního počítače](capture-image-resource.md) , která se použije jako zdrojová image, a udělit všem uživatelům, kteří mají mít přístup k imagi, přístup pro čtení k imagi. 
 
 
 ## <a name="use-the-portal"></a>Použití portálu
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo vyberte **všechny prostředky**. Můžete seřadit prostředky podle **typ** snadno najít Image.
-3. Vyberte bitovou kopii, kterou chcete použít v seznamu. Na obrázku **přehled** otevře se stránka.
-4. Vyberte **vytvořit virtuální počítač** z nabídky.
-5. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo, které tady zadáte, se použije k přihlášení k virtuálnímu počítači. Jakmile budete hotovi, vyberte **OK**. Můžete vytvořit nový virtuální počítač v existující skupinu prostředků nebo vyberte **vytvořit nový** a vytvořte novou skupinu prostředků pro uložení virtuálního počítače.
+2. V nabídce vlevo vyberte **všechny prostředky**. Můžete řadit prostředky podle **typu** a snadno tak najít své image.
+3. Ze seznamu vyberte obrázek, který chcete použít. Otevře se Stránka s přehledem obrázku.
+4. V nabídce vyberte **vytvořit virtuální počítač** .
+5. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo, které tady zadáte, se použije k přihlášení k virtuálnímu počítači. Po dokončení vyberte **OK**. Nový virtuální počítač můžete vytvořit v existující skupině prostředků, nebo výběrem možnosti **vytvořit novou** vytvořte novou skupinu prostředků pro uložení virtuálního počítače.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. 
-7. V části **nastavení**, proveďte potřebné změny a vyberte **OK**. 
-8. Na stránce Souhrn, byste měli vidět název vaší image uvedený jako **privátní image**. Vyberte **Ok** spusťte nasazení virtuálního počítače.
+7. V části **Nastavení**podle potřeby proveďte změny a vyberte **OK**. 
+8. Na stránce Souhrn byste měli vidět název Image uvedený jako **privátní obrázek**. Výběrem **OK** spusťte nasazení virtuálního počítače.
 
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Můžete použít PowerShell k vytvoření virtuálního počítače z image pomocí zjednodušené sady parametrů [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) rutiny. Na obrázku musí být ve stejné skupině prostředků, kde vytvoříte virtuální počítač.
+PowerShell můžete použít k vytvoření virtuálního počítače z Image pomocí zjednodušené sady parametrů pro rutinu [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Bitová kopie musí být ve stejné skupině prostředků, ve které vytvoříte virtuální počítač.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-Zjednodušené sady parametrů pro [rutiny New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje pouze, že zadáte název, skupinu prostředků a název image vytvořit virtuální počítač z bitové kopie. Nový-AzVm použije hodnotu **– název** parametr jako název všech prostředků, které se vytvoří automaticky. V tomto příkladu budeme poskytovat podrobnější názvy pro všechny prostředky ale nechat rutiny automaticky vytvořit. Můžete také vytvořit prostředky předem, jako je například virtuální síť a předat název prostředku do rutiny. Nový-AzVm bude používat existující prostředky, pokud jej lze najít podle názvu.
+Zjednodušená sada parametrů pro [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje, abyste zadali název, skupinu prostředků a název Image k vytvoření virtuálního počítače z image. New-AzVm použije hodnotu parametru **-Name** jako název všech prostředků, které vytvoří automaticky. V tomto příkladu poskytujeme podrobnější názvy pro každý z těchto prostředků, ale nechat rutinu je automaticky vytvořit. Můžete také vytvořit prostředky předem, například virtuální síť, a předat název prostředku do rutiny. New-AzVm použije stávající prostředky, pokud je může najít podle jména.
 
-Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage*v *myResourceGroup* skupinu prostředků z image s názvem *myImage*. 
+Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage*ve skupině prostředků *myResourceGroup* z image s názvem *myImage*. 
 
 
 ```azurepowershell-interactive
@@ -66,6 +65,6 @@ New-AzVm `
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

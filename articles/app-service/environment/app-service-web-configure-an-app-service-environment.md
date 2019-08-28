@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace služby App Service Environment v1 – Azure
-description: Konfigurace, Správa a monitorování služby App Service Environment v1
+title: Jak nakonfigurovat App Service Environment v1 – Azure
+description: Konfigurace, Správa a monitorování App Service Environment v1
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -10,190 +10,189 @@ ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130615"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069935"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
 
 > [!NOTE]
-> Tento článek je o App Service Environment v1.  Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
+> Tento článek se týká App Service Environment v1.  Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
 > 
 
 ## <a name="overview"></a>Přehled
-Na vysoké úrovni služby Azure App Service Environment se skládá z několika hlavní součásti:
+Azure App Service Environment se na nejvyšší úrovni skládá z několika hlavních součástí:
 
-* Služba hostovaná výpočetní prostředky, které běží ve službě App Service Environment
-* Úložiště
+* Výpočetní prostředky, které běží v hostované službě App Service Environment
+* Storage
 * Databáze
-* Classic(V1) nebo Azure Manager(V2) prostředku virtuální sítě (VNet) 
-* Podsítě ve službě App Service Environment hostované spuštěná v ní
+* Rozhraní Azure Classic (V1) nebo Správce prostředků (v2) Virtual Network (VNet) 
+* Podsíť, ve které je spuštěná hostovaná služba App Service Environment
 
-### <a name="compute-resources"></a>Výpočetní prostředky
-Výpočetní prostředky, které používáte pro vašich fondů zdrojů čtyři.  Každý App Service Environment (ASE) obsahuje sadu front-endů a tři fondy pracovních procesů je to možné. Není nutné používat všechny fondy pracovních procesů tři--Pokud chcete, můžete stačí použít jeden nebo dva.
+### <a name="compute-resources"></a>Výpočet prostředků
+Využijete výpočetní prostředky pro vaše čtyři fondy zdrojů.  Každý App Service Environment (pomocného programu) má sadu front-endu a tři možné fondy pracovních procesů. Nemusíte používat všechny tři fondy pracovních procesů – Pokud chcete, můžete použít jenom jednu nebo dvě.
 
-Hostitelé ve fondech zdrojů (front-endy ani pracovní procesy) nejsou přímo dostupné klientům. Nelze připojit se k nim, změnit jejich zřizování pomocí protokolu RDP (Remote Desktop) nebo fungují jako správce na ně.
+Hostitelé ve fondech prostředků (front-endy a pracovní procesy) nejsou přímo přístupné pro klienty. K připojení k nim nemůžete použít protokol RDP (Remote Desktop Protocol) (RDP), měnit jejich zřizování nebo působit jako správce.
 
-Můžete nastavit prostředků fondu množství a velikosti. Ve službě ASE máte čtyři možnosti velikosti, které jsou označeny jako P1 až P4. Podrobnosti o těchto velikostech a cenách najdete v tématu [ceny služeb App Service](https://azure.microsoft.com/pricing/details/app-service/).
-Změna počtu nebo velikosti je volána operace škálování.  Operace pouze jeden škálování může být v průběhu najednou.
+Můžete nastavit množství a velikost fondu zdrojů. V pomocném mechanismu služby máte čtyři možnosti velikosti, které jsou označené P1 až P4. Podrobnosti o těchto velikostech a jejich cenách najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
+Změna množství nebo velikosti se nazývá operace škálování.  V jednom okamžiku může probíhat jenom jedna operace škálování.
 
-**Front-endů**: Front-endů jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uloženy ve vaší službě ASE. Při spuštění úlohy ve front-endů.
+**Front-endy**: Front-endy jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uložené v pomocném mechanismu pro zápis. Nespouštíte úlohy na front-endy.
 
-* Služba ASE začíná dvěma P2s, což je dostatečná pro vývojové a testovací úlohy a úlohy v produkčním prostředí nízké úrovně. Důrazně doporučujeme P3s pro střední náročné produkční úlohy.
-* Pro střední pro náročné produkční úlohy doporučujeme vám, že máte alespoň čtyři P3s zajistit nejsou dostatečná front-endů spuštěn, když dojde k plánované údržby. Aktivity plánované údržby přinese dolů jeden front-endu v čase. To snižuje celkovou dostupnou kapacitu front-endu během údržby nevyžadovala.
-* Front-endů může trvat až hodinu zřizování. 
-* Pro další ladění škálování, měli byste sledovat procento využití procesoru, paměti a aktivní požadavky metriky pro front-endový fond. Pokud procenta využití procesoru nebo paměti jsou vyšší než 70 procent při spuštění P3s, přidejte další front-endů. Pokud hodnota aktivních požadavků předběhli aktuální fázi navýšení kapacity na 15 000 na 20 000 požadavků za front-endu, měli byste také přidat další front-endů. Cílem je zajistit procenta využití procesoru a paměti níže 70 % a ukončit aktivní požadavky odstávkou navýšení kapacity na nižší než 15 000 požadavků za front, pokud používáte P3s.  
+* Pomocného programu začíná dvěma P2s, což je dostatečné pro úlohy pro vývoj a testování a pro produkční úlohy nízké úrovně. Důrazně doporučujeme P3S pro středně náročné provozní úlohy.
+* U středně velkých a velkých produkčních úloh doporučujeme, abyste měli aspoň čtyři P3sy, abyste zajistili, že budou při plánované údržbě spuštěny dostatečné front-endy. Naplánované aktivity údržby odeberou jeden front-end v čase. Tím se snižuje Celková dostupná kapacita front-endu během aktivit údržby.
+* Pro front-endy může být zřízení trvat až hodinu. 
+* Pro další škálovatelné ladění byste měli monitorovat procento využití procesoru, procentuální podíl paměti a aktivní požadavky na front-end fond. Pokud jsou procentuální hodnoty procesoru nebo paměti vyšší než 70% při spuštění P3S, přidejte další front-endy. Pokud je hodnota aktivní požadavky průměrně 15 000 až 20 000 požadavků za front-end, měli byste také přidat další front-endy. Celkovým cílem je udržet procento využití procesoru a paměti pod 70% a aktivní požadavky vychází z maximálního počtu požadavků 15 000 na front-end za sekundu, pokud používáte P3S.  
 
-**Pracovní procesy**: Zaměstnanci jsou, kde skutečně běží. Při škálování vašich plánech služby App Service, která používá si pracovní procesy ve fondu přidružených pracovních procesů.
+**Pracovní procesy**: Pracovní procesy jsou ve skutečnosti, kde vaše aplikace skutečně běží. Při horizontálním navýšení kapacity App Service plány používá pracovní procesy v přidruženém fondu pracovních procesů.
 
-* Nelze přidat okamžitě pracovních procesů. Může trvat až hodinu zřizování.
-* Velikost výpočetních prostředků pro jakýkoli fond škálování bude trvat < 1 hodina za aktualizační doména. Existují 20 aktualizačních domén ve službě ASE. Pokud můžete škálovat výpočetní velikost fondu pracovních procesů s 10 instancí, může trvat až 10 hodin.
-* Pokud změníte velikost výpočetních prostředků, které se používají ve fondu pracovních procesů, způsobí souvisejícím s úplným spuštěním aplikace, které jsou spuštěny v tomto fondu pracovních procesů.
+* Nemůžete okamžitě přidat pracovní procesy. Zřízení můžou trvat až hodinu.
+* Škálování velikosti výpočetních prostředků pro každý fond bude trvat < 1 hodinu na jednu doménu aktualizace. V pomocném mechanismu služby je 20 aktualizačních domén. Pokud jste škálovat výpočetní velikost fondu pracovních procesů s 10 instancemi, může to trvat až 10 hodin, než se dokončí.
+* Pokud změníte velikost výpočetních prostředků, které se používají ve fondu pracovních procesů, vygeneruje se studená spuštění aplikací, které jsou spuštěné v daném fondu pracovních procesů.
 
-Nejrychlejší způsob, jak změnit velikost výpočetních prostředků fondu pracovních procesů, na kterém neběží žádné aplikace je:
+Nejrychlejší způsob, jak změnit velikost výpočetních prostředků fondu pracovních procesů, na kterém neběží žádné aplikace, je:
 
-* Vertikálně snížit kapacitu počtu pracovních procesů na 2.  Minimální vertikálně velikost na portálu je 2. Bude trvat několik minut, než uvolnit vaší instance. 
-* Vyberte nové výpočty velikosti a počtu instancí. Tady bude trvat až 2 hodiny.
+* Škálujte počet pracovních procesů na 2.  Minimální velikost zmenšení v portálu je 2. Zrušení přidělení instancí bude trvat několik minut. 
+* Vyberte novou výpočetní velikost a počet instancí. Z tohoto místa bude trvat až 2 hodiny, než se dokončí.
 
-Pokud vaše aplikace potřebuje větší velikost výpočetních prostředků, nemůžete využít předchozí pokynů. Místo změny velikosti fondu pracovních procesů, který je hostitelem aplikace, kterou můžete naplnit jiný fond pracovních procesů s pracovními procesy požadované velikosti a přesuňte aplikace do tohoto fondu.
+Pokud vaše aplikace vyžadují větší velikost výpočetních prostředků, nemůžete využít výhod předchozích pokynů. Místo změny velikosti fondu pracovních procesů, který je hostitelem těchto aplikací, můžete další pracovní fond naplnit pracovníky požadované velikosti a přesunout své aplikace do tohoto fondu.
 
-* Vytvoření další instance potřebné výpočetního prostředí v jiném fondu pracovních procesů. To bude trvat až hodinu, dokončete.
-* Změnit přiřazení vaše plány služby App Service, které jsou hostiteli aplikace, které vyžadují větší velikost fondu nově nakonfigurovaný pracovního procesu. To je rychlé operace, která by měla trvat méně než minutu.  
-* Pokud nepotřebujete tyto nevyužité instance, vertikálně snížit kapacitu první fond pracovních procesů. Tato operace trvá několik minut na dokončení.
+* Vytvořte další instance potřebné výpočetní velikosti v jiném fondu pracovních procesů. Dokončení této akce může trvat až hodinu.
+* Znovu přiřaďte plány App Service, které hostují aplikace, které vyžadují větší velikost pro nově nakonfigurovaný fond pracovních procesů. Toto je rychlá operace, kterou je třeba dokončit kratší dobu než minutu.  
+* Pokud už nepotřebujete tyto nepoužívané instance, můžete škálovat první fond pracovních procesů. Dokončení této operace trvá několik minut.
 
-**Automatické škálování**: Jedním z nástrojů, které vám mohou pomoci při správě využití výpočetních prostředků provádí automatické škálování. Můžete použít automatické škálování pro front-endu nebo fondy pracovních procesů. Můžete provádění akcí, například zvýšení vaší instance libovolného typu fondu ráno a snížit večer. Nebo třeba přidat instance když počet pracovních procesů, které jsou k dispozici ve fondu pracovních procesů klesne pod určitou prahovou hodnotu.
+Automatické **škálování**: Jedním z nástrojů, které vám pomůžou se správou spotřeby výpočetních prostředků, je automatické škálování. Automatické škálování můžete použít pro front-end nebo fondy pracovních procesů. Můžete provádět akce, jako je například zvýšení instancí libovolného typu fondu v ráno a jejich snížení večer. Případně můžete přidat instance, když počet pracovníků, kteří jsou k dispozici ve fondu pracovních procesů, klesne pod určitou prahovou hodnotu.
 
-Pokud chcete nastavit pravidla automatického škálování kolem metriky fondu výpočetních prostředků a vzít v úvahu čas, který vyžaduje zřizování. Další podrobnosti o automatické škálování služby App Service Environment najdete v tématu [postup konfigurace automatického škálování ve službě App Service Environment][ASEAutoscale].
+Pokud chcete nastavit pravidla automatického škálování na základě metrik fondu výpočetních prostředků, pamatujte na dobu, kterou zřizování vyžaduje. Další informace o automatickém škálování App Service prostředí najdete v tématu [Postup konfigurace automatického škálování v App Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Úložiště
-Každá služba ASE má nakonfigurovanou 500 GB úložiště. Zde se používá ve všech aplikacích v této službě ASE. Tento prostor úložiště je součástí služby ASE a aktuálně není možné přepnout na použití vašeho prostoru úložiště. Pokud provádíte úpravy směrování virtuální sítě nebo zabezpečení, budete muset přesto umožňuje přístup ke službě Azure Storage – nebo služby ASE nemůže fungovat.
+### <a name="storage"></a>Storage
+Každý pomocného programu je nakonfigurovaný s 500 GB úložiště. Toto místo se používá napříč všemi aplikacemi v pomocném formuláři. Tento prostor úložiště je součástí pomocného mechanismu řízení a momentálně se nedá přepnout na použití prostoru úložiště. Pokud provádíte úpravy směrování nebo zabezpečení vaší virtuální sítě, je potřeba, abyste stále povolili přístup k Azure Storage--nebo nemůžete funkci pomocného mechanismu nastavovat.
 
 ### <a name="database"></a>Databáze
-Databáze obsahuje informace, které definují prostředí, jakož i podrobnosti o aplikacích, které jsou spuštěny v rámci něj. Toto je příliš součástí předplatného Azure uchovávat. Není něco, co máte přímé schopnost pracovat. Pokud provádíte úpravy směrování virtuální sítě nebo zabezpečení, budete muset přesto umožňuje přístup k SQL Azure – nebo služby ASE nemůže fungovat.
+Databáze obsahuje informace definující prostředí a také podrobnosti o aplikacích, které jsou v něm spuštěné. Toto je moc součástí předplatného Azure. Nejedná se o to, že máte přímo možnost manipulovat. Pokud provádíte úpravy směrování nebo zabezpečení vaší virtuální sítě, je potřeba, abyste stále povolili přístup k SQL Azure--nebo nemůžete funkci pomocného mechanismu nastavovat.
 
 ### <a name="network"></a>Síť
-Virtuální síť, která se použije vaše služba ASE může být ten, který jste při vytváření služby ASE nebo disk, který jste provedli předem. Když vytvoříte podsíť během vytváření služby ASE, vynutí službu ASE ve stejné skupině prostředků jako virtuální síť. Pokud potřebujete skupinu prostředků, které používá vaše služba ASE je jiná než u vaší virtuální sítě, budete muset vytvořit službu ASE pomocí šablony resource Manageru.
+Virtuální síť, která se používá u vašeho pomocného mechanismu, může být ta, kterou jste provedli při vytváření pomocného programu pro čtení nebo v případě, že jste ho udělali Když vytvoříte podsíť během vytváření pomocného mechanismu řízení, vynutí, aby se pomocného modulu nacházet ve stejné skupině prostředků jako virtuální síť. Pokud potřebujete, aby se skupina prostředků, kterou váš správce služby využívala, lišila od vaší virtuální sítě, je potřeba vytvořit správce prostředků pomocí šablony Resource Manageru.
 
-Existují některá omezení, virtuální síť, která se používá pro službu ASE:
+Existují určitá omezení pro virtuální síť, která se používá pro pomocného mechanismu řízení:
 
-* Virtuální síť musí být regionální virtuální síť.
-* Musí být podsíť s 8 nebo více adres, ve kterém je nasazená služba ASE.
-* Po podsíť se používá k hostování služby ASE, nebude možné změnit rozsah adres podsítě. Z tohoto důvodu doporučujeme, aby podsíť obsahuje minimálně 64 adres pro případné budoucí růst služby ASE.
-* Může existovat nic jiného v podsíti, ale služby ASE.
+* Virtuální síť musí být místní virtuální síť.
+* Musí existovat podsíť s 8 nebo více adresami, ve kterých je nasazený pomocný objekt pro řízení.
+* Po použití podsítě k hostování pomocného mechanismu řízení se rozsah adres podsítě nedá změnit. Z tohoto důvodu doporučujeme, aby podsíť obsahovala aspoň 64 adres, aby vyhovovala budoucímu nárůstu pomocného mechanismu.
+* V podsíti nemůže být nic jiného, ale pomocného mechanismu.
 
-Na rozdíl od hostovanou službu, která obsahuje službu ASE [virtuální sítě] [ virtualnetwork] a podsítě jsou v rámci uživatelského ovládacího prvku.  Můžete spravovat virtuální síti prostřednictvím virtuální sítě uživatelského rozhraní nebo Powershellu.  Služba ASE je možné nasadit v klasický nebo virtuální síti správce prostředků.  Portál a rozhraní API prostředí se mírně liší mezi klasickou virtuální sítí a virtuálních sítí správce prostředků, ale prostředí v ASE je stejný.
+Na rozdíl od hostované služby, která obsahuje pomocného uživatele, je [virtuální síť][virtualnetwork] a podsíť v rámci uživatelského ovládacího prvku.  Virtuální síť můžete spravovat pomocí Virtual Network uživatelského rozhraní nebo prostředí PowerShell.  Pomocí pomocného mechanismu může být nasazený v klasické nebo Správce prostředků virtuální síti.  Portál a prostředí API se mírně liší mezi klasickými a Správce prostředků virtuální sítě, ale prostředí pomocného uživatelského rozhraní je stejné.
 
-Virtuální síť, která slouží jako hostitel služby ASE můžete použít buď soukromé definice RFC1918 IP adresy nebo ho můžete použít veřejné IP adresy.  Pokud chcete použít rozsah IP, která není předmětem definice RFC1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) pak budete muset vytvořit virtuální síť a podsíť pro službu ASE před časem vytvoření služby ASE.
+Virtuální síť, která se používá k hostování pomocného mechanismu služby, může používat buď privátní IP adresy RFC1918, nebo může používat veřejné IP adresy.  Pokud chcete použít rozsah IP adres, který nepokrývá RFC1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), musíte vytvořit virtuální síť a podsíť, kterou bude používat váš protokol pro čtení před vytvořením pomocného programu.
 
-Protože tato možnost umístí do virtuální sítě Azure App Service, znamená to, že vaše aplikace, které jsou hostované ve vaší službě ASE teď přístup k prostředkům, které jsou k dispozici prostřednictvím ExpressRoute nebo virtuální privátní sítě site-to-site (VPN) přímo. Aplikace, které jsou ve službě App Service Environment nevyžadují dalších síťových funkcí pro přístup k prostředkům, které jsou k dispozici pro virtuální síť, která je hostitelem služby App Service Environment. To znamená, že není nutné získat k prostředkům v nebo připojené k virtuální síti pomocí integrace virtuální sítě nebo hybridní připojení. Stále můžete oba tyto funkce ale pro přístup k prostředkům v sítích, které nejsou připojené k virtuální síti.
+Vzhledem k tomu, že tato funkce umístí Azure App Service do vaší virtuální sítě, znamená to, že vaše aplikace, které jsou hostované v přihlašování k síti, teď můžou přistupovat k prostředkům, které jsou k dispozici prostřednictvím služby ExpressRoute nebo virtuální privátní sítě (VPN) typu Site-to-site přímo. Aplikace, které jsou v App Service Environment, nevyžadují další síťové funkce pro přístup k prostředkům, které jsou k dispozici pro virtuální síť, která je hostitelem vašeho App Service Environment. To znamená, že nemusíte používat Integrace virtuální sítě ani Hybrid Connections k tomu, abyste se dostali k prostředkům v nebo připojení k vaší virtuální síti. Obě tyto funkce můžete i přesto použít, pokud chcete získat přístup k prostředkům v sítích, které nejsou připojené k virtuální síti.
 
-Například můžete integrovat s virtuální síť, která je ve vašem předplatném, ale není připojené k virtuální síti, které vaše služba ASE je v můžete integrace virtuální sítě. Stále také můžete Hybrid Connections pro přístup k prostředkům, které jsou v jiných sítích, stejně jako obvykle.  
+Můžete například použít Integrace virtuální sítě pro integraci s virtuální sítí, která je ve vašem předplatném, ale není připojená k virtuální síti, ve které je váš přihlášený. I nadále můžete použít Hybrid Connections pro přístup k prostředkům, které jsou v jiných sítích, stejně jako obvykle.  
 
-Pokud máte virtuální síť nakonfigurovanou síť VPN ExpressRoute, byste měli znát některé požadavky na směrování, které má služba ASE. Existují některé konfigurace trasy definované uživatelem (UDR), které nejsou kompatibilní s ASE. Další podrobnosti o spuštění služby ASE ve virtuální síti s využitím ExpressRoute najdete v tématu [spuštění služby App Service Environment ve virtuální síti s využitím ExpressRoute][ExpressRoute].
+Pokud máte virtuální síť nakonfigurovanou pomocí sítě VPN ExpressRoute, měli byste si uvědomit některé z požadavků na směrování, které má pomocným mechanismem řízení. Existují některé konfigurace trasy definované uživatelem (UDR), které jsou nekompatibilní s pomocným mechanismem řízení. Další informace o spuštění pomocného mechanismu řízení ve virtuální síti s ExpressRoute najdete v tématu [spuštění App Service Environment ve virtuální síti s ExpressRoute][ExpressRoute].
 
 #### <a name="securing-inbound-traffic"></a>Zabezpečení příchozího provozu
-Existují dva primární metody řízení příchozího provozu do služby ASE.  Groups(NSGs) zabezpečení sítě můžete použít k řízení jaké IP adresy můžete přístup k vaší službě ASE podle postupu popsaného tady [řízení příchozího provozu ve službě App Service Environment](app-service-app-service-environment-control-inbound-traffic.md) a můžete taky nakonfigurovat službu ASE s interním nástrojem Load Balancer (ILB).  Tyto funkce lze také společně Pokud budete chtít omezit přístup pomocí skupin zabezpečení sítě pro vaše služba ASE s ILB.
+Existují dvě primární metody řízení příchozího provozu do služby pomocného mechanismu.  Pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) můžete řídit, které IP adresy mají přístup k vašemu pomocnému objektu pro přístup, jak je popsáno zde, [jak řídit příchozí provoz v App Service Environment](app-service-app-service-environment-control-inbound-traffic.md) a můžete také nakonfigurovat své pomocného programu pomocí interního Load BALANCER (interního nástroje).  Tyto funkce se dají použít i v případě, že chcete omezit přístup pomocí skupin zabezpečení sítě pro pomocného programu interního nástroje.
 
-Při vytváření služby ASE se vytvoří virtuální IP adresu ve virtuální síti.  Existují dva typy virtuálních IP adres, externí a interní.  Při vytváření služby ASE s externí virtuální IP Adresou vaší aplikace ve vaší službě ASE budou přístupné přes internet směrovatelné IP adresu. Při výběru interní služby ASE s ILB nakonfigurují a nebude přímo přístup k Internetu.  Službu ASE nadále vyžaduje externí virtuální IP Adresou, ale používá se pouze pro přístup k Azure správu a údržbu.  
+Při vytváření pomocného mechanismu se vytvoří virtuální IP adresa ve vaší virtuální síti.  Existují dva typy VIP, externí a interní.  Když vytvoříte přístupový objekt s externí virtuální IP adresou, vaše aplikace ve vašem přihlašování k Internetu budou přístupné prostřednictvím IP adresy směrovatelné přes Internet. Když vyberete interní, váš přístupový protokol se nakonfiguruje s interního nástroje a nebude přímo přístupný z Internetu.  INTERNÍHO nástroje pomocného modulu pro správu pořád vyžaduje externí VIP, ale používá se pouze pro přístup ke správě a údržbě Azure.  
 
-Při vytváření služba ASE s ILB zadejte subdoménu používá služba ASE s ILB a bude muset spravovat vlastní službu DNS pro subdomény, kterou zadáte.  Vzhledem k tomu, že nastavíte název subdomény, budete potřebovat ke správě certifikát používaný pro přístup k protokolu HTTPS.  Po vytvoření služby ASE se výzva k zadání certifikátu.  Další informace o vytváření a používání prostředí ILB ASE [interního nástroje Load Balancer pomocí služby App Service Environment][ILBASE]. 
+Během vytváření interního nástroje pomocného mechanismu vám poskytne subdoménu používanou službou interního nástroje pomocného mechanismu řízení a bude muset spravovat vlastní DNS pro subdoménu, kterou určíte.  Vzhledem k tomu, že jste nastavili název subdomény, musíte taky spravovat certifikát používaný pro přístup pomocí protokolu HTTPS.  Po vytvoření pomocného nástroje se zobrazí výzva k zadání certifikátu.  Další informace o vytváření a používání interního nástroje pomocného programu pro čtení [pomocí interní Load Balancer s App Service Environment][ILBASE]. 
 
 ## <a name="portal"></a>Portál
-Můžete spravovat a monitorovat službu App Service Environment pomocí uživatelského rozhraní na webu Azure Portal. Pokud máte službu ASE, pak jste pravděpodobně uvidíte symbol služby App Service na vaše postranním panelu. Tento symbol se používá k reprezentování prostředí App Service na webu Azure Portal:
+App Service Environment můžete spravovat a monitorovat pomocí uživatelského rozhraní v Azure Portal. Pokud máte přihlášený objekt pro řízení, pravděpodobně se na bočním panelu zobrazí symbol App Service. Tento symbol slouží k reprezentaci App Servicech prostředí v Azure Portal:
 
-![App Service Environment symbol][1]
+![Symbol App Service Environment][1]
 
-Otevřete uživatelské rozhraní, které jsou uvedeny všechny vaše služby App Service Environment, můžete použít ikonu nebo vyberte dvojitou šipkou (">" symbol) v dolní části na bočním panelu vyberte App Service Environment. Pokud vyberete jednu ze služby ase uvedené, otevřete uživatelského rozhraní, který slouží k jeho monitorování a správu.
+Chcete-li otevřít uživatelské rozhraní se seznamem všech App Servicech prostředí, můžete použít ikonu nebo vybrat dvojitou šipku (">") v dolní části bočního panelu a vybrat App Service prostředí. Výběrem jednoho z uvedených služby ASE otevřete uživatelské rozhraní, které se používá k jeho monitorování a správě.
 
-![Uživatelské rozhraní pro monitorování a Správa služby App Service Environment][2]
+![Uživatelské rozhraní pro monitorování a správu App Service Environment][2]
 
-Toto první okno obsahuje některé vlastnosti služby ASE, spolu s grafu metrik za fond zdrojů. Některé vlastnosti, které jsou uvedeny v **Essentials** bloku jsou také hypertextové odkazy, které se otevře okno, který je spojen s ním. Například můžete vybrat **virtuální sítě** název otevřete uživatelské rozhraní přidružené k virtuální síti, na kterém vaše služba ASE. **Plány služby App Service** a **aplikace** každý otevřete oken, které uvádějí tyto položky, které jsou ve vaší službě ASE.  
+Toto první okno zobrazuje některé vlastnosti vašeho pomocného programu spolu s grafem metriky na fond zdrojů. Některé vlastnosti, které jsou uvedeny v bloku **Essentials** , jsou také hypertextové odkazy, které otevřou okno, které je k němu přidruženo. Můžete například vybrat název **Virtual Network** a otevřít tak uživatelské rozhraní přidružené k virtuální síti, ve které je spuštěný váš pomocným mechanismem řízení. **App Service plány** a **aplikace** jednotlivých otevřených oken, které uvádějí tyto položky v pomocném mechanismu řízení.  
 
 ### <a name="monitoring"></a>Monitorování
-Grafy umožňují zobrazit různé metriky výkonu v jednotlivých oblastí zdrojů. Pro front-endový fond můžete monitorovat průměrné využití procesoru a paměti. Pro fondy pracovních procesů můžete sledovat množství, které se používá a množství, které je k dispozici.
+Grafy vám umožní zobrazit v každém fondu zdrojů nejrůznější metriky výkonu. Pro front-end fond můžete monitorovat průměrný procesor a paměť. U fondů pracovních procesů můžete monitorovat množství, které se používá, a množství, které je k dispozici.
 
-Použití více App Service, které můžete provést plány pracovní procesy ve fondu pracovních procesů. Zatížení není distribuován stejným způsobem jako s front-endové servery, takže využití procesoru a paměti neposkytují většinu cestě užitečné informace. Je důležitější sledovat, kolik pracovních procesů, které jste už použili a jsou k dispozici – zejména pokud spravujete tohoto systému k použití jiným uživatelům.  
+Více plánů App Service může využít pracovní procesy ve fondu pracovních procesů. Zatížení se nedistribuuje stejným způsobem jako u front-end serverů, takže využití procesoru a paměti nepřináší tolik, jak jsou užitečné informace. Je důležitější, abyste mohli sledovat, kolik pracovníků jste používali a jsou k dispozici – zejména pokud spravujete tento systém, aby ho ostatní používali.  
 
-Také vám pomůže všechny metriky, které lze sledovat v grafech nastavení výstrah. Nastavení výstrah tady funguje stejně jako jinde ve službě App Service. Upozornění můžete nastavit buď z **výstrahy** uživatelského rozhraní část nebo při bližším pohledu všechny metriky uživatelského rozhraní a vyberete **přidat upozornění**.
+Pro nastavení výstrah můžete také použít všechny metriky, které lze v grafech sledovat. Nastavení výstrah v tomto případě funguje stejně jako jinde v App Service. Výstrahu můžete nastavit buď ze součásti uživatelského rozhraní **výstrahy** , nebo z přechodu do libovolného uživatelského rozhraní metriky a výběrem možnosti **Přidat výstrahu**.
 
-![Metriky uživatelského rozhraní][3]
+![Uživatelské rozhraní metrik][3]
 
-Metriky, které se právě probírali jsou metriky služby App Service Environment. Existují také metriky, které jsou k dispozici na úrovni plánu služby App Service. Je to, kde sledování procesoru a paměti je velmi výhodné.
+Právě popsaná metrika je App Service Environment metriky. K dispozici jsou také metriky, které jsou k dispozici na úrovni plánu App Service. To je místo, kde monitoruje procesor a paměť spoustu smyslů.
 
-Všechny plány služby App Service ve službě ASE jsou vyhrazené plány služby App Service. To znamená, že jenom aplikace, které jsou spuštěné v hostitelích přidělené, plán služby App Service jsou aplikace v tomto plánu služby App Service. Chcete-li zobrazit podrobnosti o plánu služby App Service, otevřete plán služby App Service z některého ze seznamů v Uživatelském rozhraní služby ASE nebo z **plánů App Service Procházet** (které jsou uvedeny všechny z nich).   
+V pomocném mechanismu řízení jsou všechny plány App Service vyhrazené App Service plány. To znamená, že všechny aplikace, které jsou spuštěny na hostitelích přidělených tomuto App Service plánu, jsou aplikace v daném App Service plánu. Pokud chcete zobrazit podrobnosti o plánu App Service, zajistěte si App Service plán z libovolného seznamu v uživatelském rozhraní služby přihlašování nebo z části **procházet App Service plány** (které uvádí všechny).   
 
 ### <a name="settings"></a>Nastavení
-V okně služby ASE se **nastavení** oddíl, který obsahuje několik důležitých funkcí:
+V okně pomocného mechanismu se nachází oddíl **Nastavení** , který obsahuje několik důležitých možností:
 
-**Nastavení** > **vlastnosti**: **Nastavení** okno se automaticky otevře při opětovném připojení do okna vaší služby ASE. V horní části **vlastnosti**. Existuje několik položek tady, které jsou redundantní uvidíte v **Essentials**, ale je velmi užitečný, co je **virtuální IP adresu**, stejně jako **odchozí IP adresy**.
+ > **Vlastnosti**nastavení: Okno **Nastavení** se automaticky otevře při otevření okna pomocného mechanismu. V horní části jsou **vlastnosti**. Tady je několik položek, které jsou redundantní na to, co vidíte v **Essentials**, ale to je velmi užitečné pro **virtuální IP adresu**i pro **odchozí IP adresy**.
 
-![Okna nastavení a vlastnosti][4]
+![Okno nastavení a vlastnosti][4]
 
-**Nastavení** > **IP adresy**: Když vytvoříte aplikaci IP vrstvy SSL (Secure Sockets) ve vaší službě ASE, potřebujete adresu IP SSL. Pokud chcete získat, musí vaše služba ASE adresy IP SSL, které vlastní, které mohou být přiděleny. Po vytvoření prostředí ASE má jednu adresu IP SSL pro tento účel, ale můžete přidat další. Není zpoplatněny pro další SSL IP adresy, jak je znázorněno v [služby App Service – ceny][AppServicePricing] (v oddílu na připojení SSL). Další cena je cena IP SSL.
+Nastavení > **IP adres**: Při vytváření aplikace SSL (Secure Sockets Layer) (SSL) v pomocném mechanismu služby budete potřebovat IP SSL adresu. Abyste si ho mohli opatřit, vaše pomocného mechanismu potřebuje IP SSL adres, které vlastní, a dá se přidělit. Při vytvoření pomocného mechanismu pro tento účel má jednu IP SSL adresu, ale můžete přidat další. Pro další IP SSL adresy se účtuje poplatek, jak je uvedeno v článku o [cenách App Service][AppServicePricing] (v části o připojeních SSL). Další cenou je IP SSL cena.
 
-**Nastavení** > **front-Endového fondu** / **fondy pracovních procesů**: Každá z těchto oken fondu prostředků vám umožňuje zobrazit informace pouze o tento fond zdrojů, kromě toho, že ovládací prvky plně škálování tento fond zdrojů.  
+**Nastavení** > **fondy pracovních procesů** **fondu** / front-end: Každá z těchto oken fondů prostředků nabízí možnost zobrazovat informace pouze v tomto fondu zdrojů, kromě poskytování ovládacích prvků pro úplné škálování fondu zdrojů.  
 
-Základní okna pro každý fond zdrojů obsahuje graf pomocí metrik pro tento fond zdrojů. Stejně jako u grafů v okně služby ASE můžete přejít do grafu a nastavit výstrahy podle potřeby. Nastavení upozornění v okně služby ASE pro konkrétní prostředek fondu udělá to stejné jako to z fondu zdrojů. Z fondu pracovních procesů **nastavení** okno, budete mít přístup ke všem aplikacím nebo plány služby App Service, které běží v tomto fondu pracovních procesů.
+Základní okno pro každý fond zdrojů poskytuje graf s metrikami pro daný fond zdrojů. Stejně jako u grafů z okna pomocného mechanismu můžete přejít do grafu a nastavit výstrahy podle potřeby. Nastavení výstrahy z okna pomocného mechanismu řízení pro určitý fond zdrojů má stejný stav jako z fondu zdrojů. V okně **Nastavení** fondu pracovních procesů máte přístup ke všem aplikacím nebo App Servicem plánům, které jsou spuštěné v tomto fondu pracovních procesů.
 
-![Nastavení fondu pracovních procesů uživatelského rozhraní][5]
+![Uživatelské rozhraní nastavení fondu pracovních procesů][5]
 
-### <a name="portal-scale-capabilities"></a>Možnosti škálování na portálu
+### <a name="portal-scale-capabilities"></a>Možnosti škálování portálu
 Existují tři operace škálování:
 
-* Změna počtu IP adres ve službě ASE, které jsou k dispozici pro použití protokolu IP SSL.
+* Změna počtu IP adres v přihlašování k systému, které jsou k dispozici pro IP SSL využití.
 * Změna velikosti výpočetního prostředku, který se používá ve fondu zdrojů.
-* Změna počtu výpočetních prostředků, které se používají ve fondu zdrojů ručně nebo pomocí automatického škálování.
+* Změna počtu výpočetních prostředků, které se používají ve fondu zdrojů, a to buď ručně, nebo prostřednictvím automatického škálování.
 
-Na portálu existují tři způsoby, jak řídit počet serverů, které máte ve vašich fondů zdrojů:
+Na portálu existují tři způsoby, jak řídit, kolik serverů máte ve fondech prostředků:
 
-* Operace škálování z hlavního okno služby ASE v horní části. Můžete provádět více škálování změny konfigurace fondů front-endu a pracovního procesu. Všechny jsou použity jako jediná operace.
-* Ruční škálování operace z fondu prostředků jednotlivých **škálování** okno, které je pod **nastavení**.
-* Automatické škálování, který jste nastavili z fondu prostředků jednotlivých **škálování** okno.
+* Operace škálování z hlavního okna pomocného mechanismu řízení v horní části. Můžete provést několik změn konfigurace škálování front-endu a fondů pracovních procesů. Všechny jsou aplikovány jako jediná operace.
+* Operace ručního škálování z okna **škálování** jednotlivých fondů prostředků, které se nachází v části **Nastavení**.
+* Automatické škálování, které jste nastavili v okně **škálování** jednotlivých fondů prostředků.
 
-Pokud chcete použít operace škálování v okně služby ASE, jezdcem množství a uložte. Toto uživatelské rozhraní také podporuje změnu velikosti.  
+Pokud chcete použít operaci škálování v okně pomocného mechanismu řízení, přetáhněte posuvník na požadované množství a uložte ho. Toto uživatelské rozhraní také podporuje změnu velikosti.  
 
 ![Škálování uživatelského rozhraní][6]
 
-Pokud chcete využít funkce ruční nebo automatické škálování fondu konkrétní prostředek, přejděte na **nastavení** > **front-Endového fondu adres** / **fondy pracovních procesů** jako je to vhodné. Pak otevřete na fond, který chcete změnit. Přejděte na **nastavení** > **horizontální navýšení kapacity** nebo **nastavení** > **vertikálně navýšit kapacitu**. **Horizontální navýšení kapacity** okno umožňuje řídit množství instance. **Vertikálně navýšit kapacitu** můžete nastavit velikost prostředku.  
+Pokud chcete používat funkce ručního nebo automatického škálování v konkrétním fondu zdrojů, v případě potřeby použijte možnost **Nastavení** > **fondy pracovních procesů** **fondu** / front-endu. Pak otevřete fond, který chcete změnit. Přejít na **Nastavení** > **horizontální** navýšení kapacity nebo navýšení**kapacity** **Nastavení** > . Okno horizontálního navýšení **kapacity** umožňuje řídit množství instancí. **Horizontální navýšení kapacity** umožňuje řídit velikost prostředků.  
 
-![Nastavení škálování uživatelského rozhraní][7]
+![Uživatelské rozhraní nastavení škálování][7]
 
-## <a name="fault-tolerance-considerations"></a>Aspekty odolnosti proti chybám
-Můžete nakonfigurovat službu App Service Environment používat až 55 celkový počet výpočetních prostředků. Tyto 55 výpočetní prostředky jenom 50 umožňuje hostovat úlohy. Důvod pro to má dva účely. Existuje minimálně 2 front-endu výpočetní prostředky.  Který zůstane až do 53 k podpoře přidělení fondu pracovních procesů. Aby bylo možné zajistit odolnost proti chybám, musíte mít další výpočetní prostředek, který je přidělen dle následujících pravidel:
+## <a name="fault-tolerance-considerations"></a>Požadavky na odolnost proti chybám
+Můžete nakonfigurovat App Service Environment pro použití až 55 celkových výpočetních prostředků. Z těchto 55 výpočetních prostředků lze použít pouze 50 pro hostování úloh. Důvodem je dvojí. Je k dispozici minimálně 2 výpočetní prostředky front-endu.  To ponechá až 53 pro podporu přidělení pracovního fondu. Aby se zajistila odolnost proti chybám, musíte mít další výpočetní prostředek, který je přidělený podle následujících pravidel:
 
-* Každý fond pracovních procesů musí aspoň 1 dalšího výpočetního prostředku, který není k dispozici pro přiřazení úloh.
-* Když počtu využívaných výpočetních prostředků ve fondu pracovních procesů překročí určitou hodnotu, jiné výpočetních prostředků je potřeba pro odolnost proti chybám. Toto není případ ve front-endový fond.
+* Každý pracovní fond potřebuje aspoň jeden další výpočetní prostředek, který není k dispozici pro přiřazení úlohy.
+* Pokud množství výpočetních prostředků ve fondu pracovních procesů překročí určitou hodnotu, je potřeba pro odolnost proti chybám potřebovat jiný výpočetní prostředek. Nejedná se o případ ve fondu front-endu.
 
-V každém fondu jednoho pracovního jsou požadavky odolnosti proti chybám, které pro danou hodnotu X prostředky přiřazené k fondu pracovních procesů:
+V rámci libovolného jednoho pracovního fondu jsou požadavky na odolnost proti chybám, které se týkají dané hodnoty X prostředků přiřazených k fondu pracovních procesů:
 
-* Pokud je v rozmezí 2 až 20 X, množství použitelné výpočetní prostředky, které můžete použít pro úlohy je X-1.
-* Pokud je v rozmezí 21 až 40 X, množství použitelné výpočetní prostředky, které můžete použít pro úlohy je X-2.
-* Pokud X je 41 až 53, je velikost použitelné výpočetní prostředky, které můžete použít pro úlohy X-3.
+* Pokud X je mezi 2 a 20, množství použitelných výpočetních prostředků, které můžete použít pro úlohy, je X-1.
+* Pokud X je mezi 21 a 40, množství použitelných výpočetních prostředků, které můžete použít pro úlohy, je X-2.
+* Pokud X je mezi 41 a 53, množství použitelných výpočetních prostředků, které můžete použít pro úlohy, je X-3.
 
-Nároků má 2 front-endové servery a 2 pracovní procesy.  Pomocí výše uvedených příkazů pak, tady je pár příkladů vyjasnit:  
+Minimální nároky mají 2 servery front-end a dva pracovní procesy.  Výše uvedené příkazy pak představují několik příkladů k objasnění:  
 
-* Pokud máte v jeden fond pracovních procesů 30, můžete je 28 použít k hostování zatížení.
-* Pokud jeden fond obsahuje 2 pracovní procesy, pak 1 umožňuje hostovat úlohy.
-* Pokud máte 20 pracovních procesů v jeden fond, pak 19 slouží k hostování zatížení.  
-* Pokud máte 21 pracovních procesů v jeden fond, lze potom stále pouze 19 hostovat úlohy.  
+* Pokud máte v jednom fondu 30 pracovních procesů, můžete k hostování úloh použít 28.
+* Pokud máte 2 pracovní procesy v jednom fondu, pak je možné použít 1 k hostování úloh.
+* Pokud máte v jednom fondu 20 pracovních procesů, můžete k hostování úloh použít 19.  
+* Pokud máte v jednom fondu 21 pracovních procesů, můžete k hostování úloh použít jenom 19.  
 
-Je důležité aspekty odolnosti proti chybám, ale je potřeba mít na paměti při škálování nad určité hranice. Pokud chcete přidat další kapacity přejít z 20 instancí, přejděte do 22 nebo vyšší protože 21 nepřidává žádné další kapacitu. Totéž platí, bude vyšší než 40, kde je nejbližší číslo, který přidá kapacity 42.  
+Aspekt odolnosti proti chybám je důležitý, ale při škálování nad rámec určitých prahových hodnot je potřeba mít na paměti. Pokud chcete přidat větší kapacitu z 20 instancí, pokračujte na 22 nebo vyšší, protože 21 nepřidá žádnou další kapacitu. Totéž platí výše 40, kde další číslo, které přičítá kapacitu, je 42.  
 
-## <a name="deleting-an-app-service-environment"></a>Odstranění služby App Service Environment
-Pokud chcete odstranit službu App Service Environment, jednoduše použijte **odstranit** akce v horní části okna služby App Service Environment. Když to uděláte, zobrazí se výzva k zadání názvu služby App Service Environment potvrďte, že Opravdu chcete provést. Všimněte si, že při odstranění služby App Service Environment můžete odstranit veškerý obsah v ní také.  
+## <a name="deleting-an-app-service-environment"></a>Odstranění App Service Environment
+Pokud chcete odstranit App Service Environment, jednoduše použijte akci **Odstranit** v horní části okna App Service Environment. Když to uděláte, zobrazí se výzva k zadání názvu App Service Environment, abyste se ujistili, že to opravdu chcete. Všimněte si, že při odstranění App Service Environment odstraníte i veškerý obsah v něm obsažené.  
 
-![Odstranění služby App Service Environment uživatelského rozhraní][9]  
+![Odstranění uživatelského rozhraní App Service Environment][9]  
 
 ## <a name="getting-started"></a>Začínáme
-Začínáme s App Service Environment najdete v článku [vytvoření služby App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
+Pokud chcete začít pracovat s App Service prostředími, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

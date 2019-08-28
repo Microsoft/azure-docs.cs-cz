@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01001336e166d5eb2c7dff845b80da2174225a25
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234432"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099734"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Síťová architektura SAP HANA (velké instance)
 
@@ -76,7 +75,7 @@ Rozdíly v nasazení SAP v Azure jsou:
 
 S revizí 3 dlouhých razítek instancí HANA může být latence sítě mezi virtuálními počítači a velkými jednotkami instancí vyšší než typická latence sítě typu virtuální počítač k virtuálnímu počítači. V závislosti na oblasti Azure mohou měřené hodnoty překročit 0,7-MS latenci odezvy v SAP, který je klasifikován jako nižší průměr v [upozorněních na SAP #1100926-Nejčastější dotazy: Výkon](https://launchpad.support.sap.com/#/notes/1100926/E)sítě. V závislosti na oblasti a nástroji Azure měření latence síťové odezvy mezi virtuálním počítačem Azure a jednotkou velké instance je měřená latence může být až do 2 MS. Zákazníci se však úspěšně nasazují SAP HANA aplikace SAP na základě SAP HANA velké instance. Ujistěte se, že vaše obchodní procesy důkladně otestujete ve velké instanci Azure HANA. Nová funkce označovaná jako rychlá cesta ExpressRoute dokáže snížit latenci sítě mezi velkými instancemi HANA a virtuálními počítači aplikační vrstvy v Azure v podstatě (viz níže). 
 
-Díky revizi 4 velkými objemy instancí Hana je latence sítě mezi virtuálními počítači Azure, které jsou nasazené v blízkosti razítka velkých instancí Hana, v souladu s průměrem nebo lepší klasifikací, jak je uvedeno v [části SAP Note #. 1100926 – NEJČASTĚJŠÍ DOTAZY: Výkon](https://launchpad.support.sap.com/#/notes/1100926/E) sítě, pokud je nakonfigurovaná rychlá cesta Azure ExpressRoute (viz níže). Aby bylo možné nasadit virtuální počítače Azure v těsné blízkosti pro jednotky s velkým počtem instancí revize 4, je nutné využívat [skupiny umístění v blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob, jakým se dají skupiny umístění pro okolí použít k vyhledání aplikační vrstvy SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro Azure pro optimální latenci sítě s aplikacemi SAP. ](sap-proximity-placement-scenarios.md).
+Díky revizi 4 velkými objemy instancí Hana je latence sítě mezi virtuálními počítači Azure nasazenými v blízkosti k razítku velkých instancí Hana, aby splňovala průměrnou nebo lepší klasifikaci, jak je uvedeno v [části SAP Note. #1100926 – NEJČASTĚJŠÍ DOTAZY: Výkon](https://launchpad.support.sap.com/#/notes/1100926/E) sítě, pokud je nakonfigurovaná rychlá cesta Azure ExpressRoute (viz níže). Aby bylo možné nasadit virtuální počítače Azure v těsné blízkosti pro jednotky s velkým počtem instancí revize 4, je nutné využívat [skupiny umístění v blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Způsob, jakým se dají skupiny umístění pro okolí použít k vyhledání aplikační vrstvy SAP ve stejném datovém centru Azure jako revize 4 jednotky velkých instancí HANA, jsou popsané v tématu [skupiny umístění pro Azure pro optimální latenci sítě s aplikacemi SAP. ](sap-proximity-placement-scenarios.md).
 
 Aby se zajistila deterministické latence sítě mezi virtuálními počítači a rozsáhlou instancí HANA, je nutné vybrat SKU brány ExpressRoute. Na rozdíl od vzorců přenosů mezi místními a virtuálními počítači může model přenosů mezi virtuálními počítači a rozsáhlou instancí HANA vyvíjet malé, ale i vysoké shluky požadavků a datových svazků, které se mají přenést. Abychom mohli tyto shluky zvládnout správně, důrazně doporučujeme použití SKU brány UltraPerformance. Pro třídu Type II třídy SKU velkých instancí služby HANA je použití SKU brány UltraPerformance jako brány ExpressRotue povinné.
 
@@ -136,7 +135,7 @@ Ve výchozím nastavení je pro SAP HANA v Azure (velké instance) důležité t
 
 * Pokud máte velké jednotky instancí HANA nasazené ve dvou různých oblastech Azure pro zotavení po havárii, platí stejná přechodná omezení směrování v minulosti. Jinými slovy, IP adresy velké instance jednotky HANA v jedné oblasti (například USA – západ) nebyly směrovány na jednotku velkých instancí HANA nasazenou v jiné oblasti (například USA – východ). Toto omezení bylo nezávislé na použití partnerského vztahu sítě Azure v různých oblastech nebo vzájemném propojení okruhů ExpressRoute, které spojují jednotky velkých instancí HANA s virtuálními sítěmi. V případě grafické reprezentace si přečtěte obrázek v části "použití jednotek velkých instancí HANA ve více oblastech." Toto omezení, které bylo dodáno s nasazenou architekturou, zakázalo okamžité použití replikace systému HANA jako funkce zotavení po havárii. V případě nedávných změn vyhledejte oddíl ' použít velké instance služby HANA v několika oblastech '. 
 
-* Jednotky s SAP HANA v Azure (velké instance) mají přiřazenou IP adresu z rozsahu adres fondu IP adres serveru, který jste odeslali při žádosti o nasazení velké instance HANA. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupná prostřednictvím předplatných Azure a okruhu, který propojuje virtuální sítě Azure s velkými instancemi HANA. IP adresa, která je přiřazená z tohoto rozsahu adres fondu IP adres serveru, je přímo přiřazená k hardwarové jednotce. V tomto případě se už *nepřiřazuje prostřednictvím* překladu adres (NAT), jako by to bylo v prvním nasazení tohoto řešení. 
+* Jednotky s SAP HANA v Azure (velké instance) mají přiřazenou IP adresu z rozsahu adres fondu IP adres serveru, který jste odeslali při žádosti o nasazení velké instance HANA. Další informace najdete v tématu [SAP Hana (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupná prostřednictvím předplatných Azure a okruhu, který propojuje virtuální sítě Azure s velkými instancemi HANA. IP adresa, která je přiřazená z tohoto rozsahu adres fondu IP adres serveru, je přímo přiřazená k hardwarové jednotce. V tomto případě se už nepřiřazuje prostřednictvím překladu adres (NAT), jako by to bylo v prvním nasazení tohoto řešení. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Přímé směrování na velké instance HANA
 Ve výchozím nastavení nefunguje přenositelné směrování mezi jednotkami velkých instancí a místními instancemi nebo mezi směrováním velkých instancí HANA nasazenými ve dvou různých oblastech. Existuje několik možností, jak takové přenositelné směrování povolit.
@@ -173,7 +172,7 @@ Pokud chcete získat další informace o tom, jak ExpressRoute Global Reach povo
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>Připojení k Internetu velké instance HANA
-Velká instance HANA nemá  přímé připojení k Internetu. Toto omezení může například omezit schopnost registrovat bitovou kopii operačního systému přímo dodavateli operačního systému. Možná budete muset pracovat se serverem nástroje pro správu předplatného SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux správce předplatného.
+Velká instance HANA nemá přímé připojení k Internetu. Toto omezení může například omezit schopnost registrovat bitovou kopii operačního systému přímo dodavateli operačního systému. Možná budete muset pracovat se serverem nástroje pro správu předplatného SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux správce předplatného.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Šifrování dat mezi virtuálními počítači a rozsáhlou instancí HANA
 Data přenášená mezi velkou instancí a virtuálními počítači HANA nejsou šifrovaná. Nicméně čistě pro výměnu mezi aplikací založenými na platformě a JDBC/rozhraním ODBC pro HANA, můžete povolit šifrování provozu. Další informace najdete v [této dokumentaci pomocí SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).

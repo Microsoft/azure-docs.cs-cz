@@ -1,5 +1,5 @@
 ---
-title: GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver | Dokumentace Microsoftu
+title: GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver | Microsoft Docs
 description: GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101127"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 
@@ -43,88 +42,88 @@ ms.locfileid: "60711248"
 
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů a instalace GlusterFS clusteru, který slouží k ukládání sdílených dat s vysokou dostupností systému SAP.
-Tato příručka popisuje, jak nastavit GlusterFS, který se používá dva systémy SAP NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu se předpokládá, že jste použili [šablony serveru SAP souboru] [ template-file-server] s předponou prostředků **glust**.
+Tento článek popisuje, jak nasadit virtuální počítače, nakonfigurovat virtuální počítače a nainstalovat cluster GlusterFS, který se dá použít k ukládání sdílených dat systému SAP s vysokou dostupností.
+Tato příručka popisuje, jak nastavit GlusterFS, které používají dva systémy SAP, NW1 a NW2. Názvy prostředků (například virtuální počítače, virtuální sítě) v příkladu předpokládají, že jste použili [šablonu souborového serveru SAP][template-file-server] s předponou prostředků **glust**.
 
-Přečtěte si následující poznámky SAP a Paper nejprve
+Nejprve si přečtěte následující poznámky a dokumenty SAP
 
-* Poznámka SAP [1928533], který obsahuje:
-  * Seznam velikostí virtuálních počítačů Azure, které jsou podporovány pro nasazení softwaru SAP
-  * Informace o kapacitě důležité pro velikosti virtuálních počítačů Azure
-  * Podporované SAP software a operační systém (OS) a kombinace databáze
+* Poznámka [1928533]pro SAP obsahuje:
+  * Seznam velikostí virtuálních počítačů Azure, které jsou podporované pro nasazení softwaru SAP
+  * Důležité informace o kapacitě pro velikosti virtuálních počítačů Azure
+  * Podporovaný software SAP a kombinace operačního systému (OS) a databáze
   * Požadovaná verze jádra SAP pro Windows a Linux v Microsoft Azure
 
-* Poznámka SAP [2015553] uvádí předpoklady pro nasazení softwaru SAP nepodporuje SAP v Azure.
-* Poznámka SAP [2002167] má doporučené nastavení operačního systému pro Red Hat Enterprise Linux
-* Poznámka SAP [2009879] obsahuje pokyny pro SAP HANA pro Red Hat Enterprise Linux
-* Poznámka SAP [2178632] podrobné informace o všech monitorování metrik pro SAP v Azure.
-* Poznámka SAP [2191498] má požadovaná verze SAP hostitele agenta pro Linux v Azure.
-* Poznámka SAP [2243692] obsahuje informace o SAP programech v Linuxu v Azure.
-* Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
-* [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
-* [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux (Tento článek)][deployment-guide]
-* [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
-* [Dokumentaci k produktu pro Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
-* Dokumentace ke službě obecné RHEL
-  * [Přehled doplňků vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+* SAP Note [2015553] uvádí požadavky na nasazení softwaru SAP podporovaná službou SAP v Azure.
+* Poznámka SAP Poznámka [2002167] obsahuje doporučená nastavení operačního systému pro Red Hat Enterprise Linux
+* Poznámka SAP Poznámka [2009879] obsahuje pokyny pro SAP HANA Red Hat Enterprise Linux
+* Pro SAP Note [2178632] najdete podrobné informace o všech metrikách monitorování hlášených pro SAP v Azure.
+* V případě SAP Poznámka [2191498] je požadovaná verze agenta hostitele SAP pro Linux v Azure.
+* Poznámka SAP Poznámka [2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
+* V části SAP Note [1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
+* [Komunitní komunita SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
+* [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP v systému Linux (Tento článek)][deployment-guide]
+* [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
+* [Dokumentace produktu pro úložiště Red Hat Gluster](https://access.redhat.com/documentation/red_hat_gluster_storage/)
+* Obecná dokumentace k RHEL
+  * [Přehled doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Správa doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Odkaz na doplněk vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Konkrétní RHEL dokumentace k Azure:
-  * [Zásady podpory pro clustery s vysokou dostupností RHEL – Microsoft Azure Virtual Machines jako členů clusteru](https://access.redhat.com/articles/3131341)
-  * [Instalace a konfigurace Red Hat Enterprise Linux 7.4 (a novější) vysokou dostupnost clusteru v Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Referenční informace k doplňku vysoké dostupnosti](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Dokumentace k RHEL specifické pro Azure:
+  * [Zásady podpory pro RHEL clustery s vysokou dostupností – Microsoft Azure Virtual Machines jako členové clusteru](https://access.redhat.com/articles/3131341)
+  * [Instalace a konfigurace Red Hat Enterprise Linux 7,4 (a novější) cluster s vysokou dostupností v Microsoft Azure](https://access.redhat.com/articles/3252491)
 
 ## <a name="overview"></a>Přehled
 
-Abyste dosáhli vysoké dostupnosti, SAP NetWeaver vyžaduje sdílené úložiště. GlusterFS nakonfigurovaná na jiném clusteru a mohou být využívána více systémů SAP.
+Pro zajištění vysoké dostupnosti vyžaduje SAP NetWeaver sdílené úložiště. GlusterFS je nakonfigurovaný v samostatném clusteru a dá se použít v několika systémech SAP.
 
-![Přehled SAP NetWeaver vysoké dostupnosti](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
+![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
 
-## <a name="set-up-glusterfs"></a>Nastavit GlusterFS
+## <a name="set-up-glusterfs"></a>Nastavení GlusterFS
 
-Chcete-li nasadit všechny požadované prostředky Azure můžete použít šablony Azure z githubu, včetně virtual machines, dostupnosti a síťových rozhraní nebo můžete nasadit prostředky ručně.
+Pomocí šablony Azure z GitHubu můžete nasadit všechny požadované prostředky Azure, včetně virtuálních počítačů, skupiny dostupnosti a síťových rozhraní, nebo můžete prostředky nasadit ručně.
 
-### <a name="deploy-linux-via-azure-template"></a>Nasazení Linuxu pomocí šablony Azure
+### <a name="deploy-linux-via-azure-template"></a>Nasazení systému Linux prostřednictvím šablony Azure
 
-Na webu Azure Marketplace obsahuje bitovou kopii pro Red Hat Enterprise Linux, který můžete použít k nasazení nových virtuálních počítačů.
-Můžete některou ze šablon quickstart na githubu nasadit všechny požadované prostředky. Šablona nasadí virtuální počítače, dostupnosti, atd. Postupujte podle těchto kroků a nasaďte šablonu:
+Azure Marketplace obsahuje obrázek pro Red Hat Enterprise Linux, který můžete použít k nasazení nových virtuálních počítačů.
+K nasazení všech požadovaných prostředků můžete použít jednu z šablon pro rychlý Start na GitHubu. Šablona nasadí virtuální počítače, skupinu dostupnosti atd. Pomocí těchto kroků nasaďte šablonu:
 
-1. Otevřít [šablony serveru SAP souboru] [ template-file-server] na webu Azure Portal
-1. Zadejte následující parametry
-   1. Předpona prostředků  
-      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro prostředky, které jsou nasazené.
-   2. Zadejte počet systémů SAP počet systémů SAP, které budou používat tento souborový server. To nasadí požadovaný počet disků atd.
+1. Otevřete [šablonu souborového serveru SAP][template-file-server] v Azure Portal
+1. Zadejte následující parametry.
+   1. Předpona prostředku  
+      Zadejte předponu, kterou chcete použít. Hodnota se používá jako předpona pro nasazené prostředky.
+   2. Počet systému SAP: zadejte počet systémů SAP, které budou používat tento souborový server. Tím se nasadí požadovaný počet disků atd.
    3. Typ operačního systému  
-      Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte RHEL 7
-   4. Klíč pro uživatelské jméno správce, správce hesla nebo klíče SSH  
-      Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
+      Vyberte jednu ze distribucí systému Linux. V tomto příkladu vyberte RHEL 7.
+   4. Uživatelské jméno správce, heslo správce nebo klíč SSH  
+      Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá /subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /poskytovatelé/ Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID&gt;** předplatného **&lt;/resourceGroups/název&gt;skupiny prostředků**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** název**podsítě/subnets/&gt; názvu virtuální sítě&lt;**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
-Nejprve musíte vytvořit virtuální počítače pro tento cluster. Potom vytvořte nástroj pro vyrovnávání zatížení a použijte virtuální počítače v back-endové fondy.
+Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
 
 1. Vytvoření skupiny prostředků
-1. Vytvoření virtuální sítě
+1. Vytvoření Virtual Network
 1. Vytvoření skupiny dostupnosti  
-   Nastavení maximální aktualizační doména
-1. Vytvoření virtuálního počítače 1  
-   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Vyberte dříve vytvořenou skupinu dostupnosti  
-1. Vytvoření virtuálního počítače 2  
-   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Vyberte dříve vytvořenou skupinu dostupnosti  
+   Nastavit maximální aktualizační doménu
+1. Vytvořit virtuální počítač 1  
+   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Vybrat skupinu dostupnosti vytvořenou dříve  
+1. Vytvořit virtuální počítač 2  
+   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
 
 ### <a name="configure-glusterfs"></a>Konfigurace GlusterFS
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1, **[2]** – platí jenom pro uzel 2, **[3].**  – platí jenom pro uzel 3.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1, **[2]** , které platí jenom pro uzel 2, **[3]** – platí jenom pro uzel 3.
 
 1. **[A]**  Nastavit rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   Nahraďte IP adresu a název hostitele v následujících příkazech
+   V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -137,35 +136,35 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <b>10.0.0.42 glust-2</b>
    </code></pre>
 
-1. **[A]**  Zaregistrovat
+1. **[A]** zaregistrovat
 
-   Registrace virtuálních počítačů a připojí ho k fondu, který obsahuje úložiště pro RHEL 7, GlusterFS
+   Zaregistrujte virtuální počítače a připojte je ke fondu, který obsahuje úložiště pro RHEL 7 a GlusterFS.
 
    <pre><code>sudo subscription-manager register
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-1. **[A]**  Povolit GlusterFS úložišť
+1. **[A]** povolení úložišť GlusterFS
 
-   Abyste mohli nainstalovat požadované balíčky, povolte následující úložiště.
+   Aby bylo možné nainstalovat požadované balíčky, povolte následující úložiště.
 
    <pre><code>sudo subscription-manager repos --disable "*"
    sudo subscription-manager repos --enable=rhel-7-server-rpms
    sudo subscription-manager repos --enable=rh-gluster-3-for-rhel-7-server-rpms
    </code></pre>
   
-1. **[A]**  GlusterFS nainstalovat balíčky
+1. **[A]** instalace balíčků GlusterFS
 
-   Tyto balíčky nainstalovat na všechny uzly GlusterFS
+   Nainstalovat tyto balíčky na všechny uzly GlusterFS
 
    <pre><code>sudo yum -y install redhat-storage-server
    </code></pre>
 
-   Po instalaci restartování uzlů.
+   Po instalaci restartujte uzly.
 
-1. **[A]**  Upravit brány Firewall
+1. **[A]** změna brány firewall
 
-   Přidání pravidla brány firewall pro povolení komunikace s klienty na GlusterFS uzly.
+   Přidejte pravidla brány firewall, která povolí klientský provoz do uzlů GlusterFS.
 
    <pre><code># list the available zones
    firewall-cmd --get-active-zones
@@ -174,7 +173,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo firewall-cmd --zone=public --add-service=glusterfs
    </code></pre>
 
-1. **[A]**  Povolit a spustit službu GlusterFS
+1. **[A]** povolení a spuštění služby GlusterFS
 
    Spusťte službu GlusterFS na všech uzlech.
 
@@ -182,9 +181,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]** Create GluserFS
+1. **[1]** vytvořit GluserFS
 
-   Spusťte následující příkazy k vytvoření clusteru GlusterFS
+   Spuštěním následujících příkazů vytvořte cluster GlusterFS.
 
    <pre><code>sudo gluster peer probe glust-1
    sudo gluster peer probe glust-2
@@ -203,9 +202,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    # State: Accepted peer request (Connected)
    </code></pre>
 
-1. **[2]**  Peer stav testu
+1. **[2]** stav testovacího partnera
 
-   Testovat stav partnerského na druhém uzlu
+   Testování stavu partnerského vztahu na druhém uzlu
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -219,9 +218,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[3]**  Peer stav testu
+1. **[3]** stav testovacího partnera
 
-   Stav partnerského uzlu třetí testování
+   Testování stavu partnerského vztahu na třetím uzlu
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -235,11 +234,11 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[A]**  Vytvořit LVM
+1. **[A]** vytvořit LVM
 
-   V tomto příkladu se používá GlusterFS pro dva systémy SAP NW1 a NW2. Pomocí následujících příkazů vytvořte LVM konfigurace pro tyto systémy SAP.
+   V tomto příkladu se GlusterFS používá pro dva systémy SAP, NW1 a NW2. Pomocí následujících příkazů vytvořte konfigurace LVM pro tyto systémy SAP.
 
-   Pomocí těchto příkazů pro NW1
+   Použijte tyto příkazy pro NW1
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun0
    sudo pvscan
@@ -278,7 +277,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo mount -a
    </code></pre>
 
-   Pomocí těchto příkazů pro NW2
+   Použijte tyto příkazy pro NW2
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun1
    sudo pvscan
@@ -317,9 +316,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo mount -a
    </code></pre>
 
-1. **[1]**  Vytváření distribuovaných svazků
+1. **[1]** vytvořit distribuovaný svazek
 
-   Pomocí následujících příkazů vytvořte svazek GlusterFS pro NW1 a spusťte ji.
+   Pomocí následujících příkazů vytvořte svazek GlusterFS pro NW1 a spusťte ho.
 
    <pre><code>sudo gluster vol create <b>NW1</b>-sapmnt replica 3 glust-0:/rhs/<b>NW1</b>/sapmnt glust-1:/rhs/<b>NW1</b>/sapmnt glust-2:/rhs/<b>NW1</b>/sapmnt force
    sudo gluster vol create <b>NW1</b>-trans replica 3 glust-0:/rhs/<b>NW1</b>/trans glust-1:/rhs/<b>NW1</b>/trans glust-2:/rhs/<b>NW1</b>/trans force
@@ -334,7 +333,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo gluster volume start <b>NW1</b>-aers
    </code></pre>
 
-   Pomocí následujících příkazů vytvořte svazek GlusterFS pro NW2 a spusťte ji.
+   Pomocí následujících příkazů vytvořte svazek GlusterFS pro NW2 a spusťte ho.
 
    <pre><code>sudo gluster vol create <b>NW2</b>-sapmnt replica 3 glust-0:/rhs/<b>NW2</b>/sapmnt glust-1:/rhs/<b>NW2</b>/sapmnt glust-2:/rhs/<b>NW2</b>/sapmnt force
    sudo gluster vol create <b>NW2</b>-trans replica 3 glust-0:/rhs/<b>NW2</b>/trans glust-1:/rhs/<b>NW2</b>/trans glust-2:/rhs/<b>NW2</b>/trans force
@@ -352,8 +351,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 ## <a name="next-steps"></a>Další postup
 
 * [Instalace SAP ASCS a databáze](high-availability-guide-rhel.md)
-* [Azure Virtual Machines, plánování a implementace SAP][planning-guide]
-* [Nasazení virtuálních počítačů pro SAP v Azure][deployment-guide]
+* [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
+* [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana na virtuálních počítačích Azure najdete v tématu [vysoké dostupnosti systému SAP HANA v Azure Virtual Machines (VM)][sap-hana-ha]
+* Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* Další informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA na virtuálních počítačích Azure, najdete v tématu [Vysoká dostupnost SAP HANA na azure Virtual Machines (virtuální počítače)][sap-hana-ha] .

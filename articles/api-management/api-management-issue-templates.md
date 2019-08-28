@@ -1,6 +1,6 @@
 ---
-title: Vydání šablony ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak přizpůsobit obsah stránek problém na portálu pro vývojáře ve službě Azure API Management.
+title: Vystavení šablon v Azure API Management | Microsoft Docs
+description: Naučte se přizpůsobit obsah stránek problému na portálu pro vývojáře v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,33 +10,32 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656687"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072258"
 ---
-# <a name="issue-templates-in-azure-api-management"></a>Problém šablon ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
+# <a name="issue-templates-in-azure-api-management"></a>Vystavení šablon v Azure API Management
+Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu pro vývojáře pomocí sady šablon, které konfigurují svůj obsah. Pomocí syntaxe [DotLiquid](http://dotliquidmarkup.org/) a editoru dle vašeho výběru, jako je například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a poskytnuté sady lokalizovaných [řetězcových prostředků](api-management-template-resources.md#strings), [prostředků glyfů](api-management-template-resources.md#glyphs)a [ovládacích prvků stránky](api-management-page-controls.md)máte skvělou flexibilitu při konfiguraci obsah stránek se zobrazí podle svých potřeb pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránek problém na portálu pro vývojáře.  
+ Šablony v této části umožňují přizpůsobit obsah stránek problému na portálu pro vývojáře.  
   
 -   [Seznam problémů](#IssueList)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale můžou se změnit kvůli průběžně vylepšujeme. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).  
+>  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> Seznam problémů  
- **Seznam problémů** šablony vám umožní přizpůsobit text na stránce seznamu problém na portálu pro vývojáře.  
+##  <a name="IssueList"></a>Seznam problémů  
+ Šablona **seznam problémů** vám umožní přizpůsobit tělo stránky se seznamem problémů na portálu pro vývojáře.  
   
- ![Vydat portál pro vývojáře seznamu](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "portál pro vývojáře seznamu problém APIM")  
+ ![Portál pro vývojáře seznamu problémů](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Portál pro vývojáře seznam problémů APIM")  
   
 ### <a name="default-template"></a>Výchozí šablona  
   
@@ -91,7 +90,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ```
   
 ### <a name="controls"></a>Ovládací prvky  
- `Issue list` Šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
+ Šablona může používat následující [ovládací prvky stránky.](api-management-page-controls.md) `Issue list`  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -99,11 +98,11 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|`Issues`|Kolekce [problém](api-management-template-data-model-reference.md#Issue) entity.|Problémy, které jsou viditelné pro aktuálního uživatele.|  
-|`Paging`|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci aplikací.|  
-|`IsAuthenticated`|Boolean|Určuje, zda má aktuální uživatel je přihlášený ke portálu pro vývojáře.|  
-|`CanReportIssues`|Boolean|Určuje, zda má aktuální uživatel oprávnění k souboru k problému.|  
-|`Search`|string|Tato vlastnost je zastaralý a neměl by se používat.|  
+|`Issues`|Kolekce entit [problémů](api-management-template-data-model-reference.md#Issue) .|Problémy viditelné pro aktuálního uživatele.|  
+|`Paging`|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce aplikací.|  
+|`IsAuthenticated`|boolean|Určuje, jestli je aktuální uživatel přihlášený k portálu pro vývojáře.|  
+|`CanReportIssues`|boolean|Zda má aktuální uživatel oprávnění k zastavení problému.|  
+|`Search`|řetězec|Tato vlastnost je zastaralá a neměla by se používat.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -137,4 +136,4 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu p
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

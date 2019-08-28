@@ -1,6 +1,6 @@
 ---
-title: Azure API management zásady ukázkový – nastavte dobu odezvy mezipaměti | Dokumentace Microsoftu
-description: Azure API management zásady ukázkový – ukazuje, jak nastavit dobu odezvy mezipaměti pomocí maxAge hodnota v hlavičce Cache-Control odesílaných back-endu...
+title: Ukázka zásad Azure API Management – nastavení doby trvání mezipaměti odpovědí | Microsoft Docs
+description: Ukázka zásad Azure API Management – ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v hlavičce Cache-Control odesílané back-endu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 042fab72da2d4b890314b6ee9c7237241b492fba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d2f334e2088d96543fabd3b99cac71d95630eb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859148"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071974"
 ---
-# <a name="set-response-cache-duration"></a>Nastavení mezipaměti Doba trvání odpovědi
+# <a name="set-response-cache-duration"></a>Nastavit dobu trvání mezipaměti odpovědí
 
-Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak nastavit dobu odezvy mezipaměti pomocí maxAge hodnota v hlavičce Cache-Control odesílaných back-endu. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak nastavit dobu trvání mezipaměti odpovědí pomocí hodnoty maxAge v hlavičce Cache-Control odesílané back-endu. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
-Vložte kód do **příchozí** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Set cache duration using response cache control header.policy.xml)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace týkající se služby APIM zásad:
+Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

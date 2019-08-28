@@ -1,6 +1,6 @@
 ---
-title: Konfigurace oznámení a e-mailových šablon ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat oznámení a e-mailových šablon ve službě Azure API Management.
+title: Konfigurace oznámení a e-mailových šablon v Azure API Management | Microsoft Docs
+description: Naučte se konfigurovat oznámení a e-mailové šablony v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,80 +9,79 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 2a959c9d131c6aa0bdc99450cf2b6f09a5d8bfa7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d49e861a529f3b2265f65c53cc0ee2f6feb151da
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60528415"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072478"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurace oznámení a e-mailových šablon ve službě Azure API Management
-API Management nabízí možnost nakonfigurovat oznámení pro konkrétní události a nakonfigurovat e-mailové šablony, které se používají ke komunikaci s správci a vývojáři instance služby API Management. Tento článek ukazuje, jak nakonfigurovat oznámení dostupná událostem a poskytuje přehled o konfiguraci e-mailové šablony pro tyto události.
+API Management poskytuje možnost konfigurovat oznámení pro konkrétní události a konfigurovat e-mailové šablony, které se používají ke komunikaci se správci a vývojáři instance API Management. Tento článek ukazuje, jak nakonfigurovat oznámení pro dostupné události a poskytuje přehled konfigurace e-mailových šablon používaných pro tyto události.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud jste instanci služby API Management, projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
+Pokud nemáte instanci služby API Management, dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="publisher-notifications"> </a>Konfigurace oznámení
 
-1. Vyberte vaše **API MANAGEMENT** instance.
-2. Klikněte na tlačítko **oznámení** Chcete-li zobrazit dostupné oznámení.
+1. Vyberte instanci služby **API Management** .
+2. Kliknutím na **oznámení** zobrazíte dostupná oznámení.
 
-    ![Vydavatele oznámení][api-management-publisher-notifications]
+    ![Oznámení vydavatelů][api-management-publisher-notifications]
 
-    Následující seznam událostí může být nakonfigurována pro oznámení.
+    Následující seznam událostí lze nakonfigurovat pro oznámení.
 
-   * **Žádosti o předplatné (které vyžadují schválení)** -zadané e-mailové příjemce a uživatelé obdrží e-mailová oznámení o žádosti rozhraní API produkty, které vyžadují schválení.
-   * **Nová předplatná** -zadané e-mailové příjemce a uživatelé obdrží e-mailová oznámení o nových předplatných produktu API.
-   * **Žádosti o aplikace Galerie** -zadané e-mailové příjemce a uživatelé obdrží e-mailová oznámení při odeslání nové aplikace v galerii aplikací.
-   * **SKRYTÁ** -zadané e-mailové příjemce a uživatelé obdrží e-mailu nevidomí kopii všechny e-maily odeslané na vývojáře.
-   * **Nový problém nebo komentář** – zadané e-mailové příjemce a uživatelé obdrží e-mailová oznámení, když se vytvoří nový problém nebo komentář je odesíláno na portálu pro vývojáře.
-   * **Zavřít účet zpráva** -zadané e-mailové příjemce a uživatelé obdrží e-mailová oznámení po uzavření účtu.
-   * **Blížící se omezení kvóty předplatného** -následující příjemců e-mailu a uživatelé obdrží e-mailová oznámení při využití předplatného blíží kvótu využití.
+   * **Žádosti o předplatné (vyžaduje schválení)** – zadaní příjemci e-mailu a uživatelé budou dostávat e-mailová oznámení o žádostech o odběr pro produkty API vyžadující schválení.
+   * **Nové předplatné** – zadaní příjemci e-mailu a uživatelé budou dostávat e-mailová oznámení o nových předplatných produktu API.
+   * **Požadavky na galerii aplikací** – zadané příjemce e-mailu a uživatelé budou dostávat e-mailová oznámení, když se do Galerie aplikací odešlou nové aplikace.
+   * **Skrytá** – zadané příjemce e-mailu a uživatelé obdrží e-mail s nezávisle kopiemi e-mailů odeslaných vývojářům.
+   * **Nový problém nebo komentář** – zadané příjemce e-mailu a uživatelé budou dostávat e-mailová oznámení při odeslání nového problému nebo komentáře na portálu pro vývojáře.
+   * **Zavřít zprávu účtu** – zadané příjemce e-mailu a uživatelé budou dostávat e-mailová oznámení v případě, že je účet uzavřený.
+   * **Blíží** se kvóta předplatného – následující příjemci e-mailu a uživatelé budou dostávat e-mailová oznámení, když se použití předplatného blíží kvótě využití.
 
-     Pro každou událost můžete zadat příjemců e-mailu pomocí e-mailová adresa textového pole nebo uživatelům můžete vybrat ze seznamu.
+     Pro každou událost můžete zadat příjemce e-mailu pomocí textového pole e-mailová adresa nebo můžete vybrat uživatele ze seznamu.
 
-3. Zadejte e-mailové adresy, abyste dostávali oznámení, zadejte je v textovém poli e-mailovou adresu. Pokud máte více e-mailové adresy, oddělte je čárkami.
+3. Pokud chcete zadat e-mailové adresy, které chcete oznámit, zadejte je do textového pole e-mailová adresa. Pokud máte více e-mailových adres, oddělte je čárkami.
 
-    ![Příjemce oznámení][api-management-email-addresses]
+    ![Příjemci oznámení][api-management-email-addresses]
 4. Stiskněte **Přidat**.
 
 ## <a name="email-templates"> </a>Konfigurace šablon oznámení
-API Management nabízí šablony oznámení pro e-mailové zprávy, které jsou odeslány při správě a používání služby. Jsou k dispozici následující e-mailové šablony.
+API Management poskytuje šablony oznámení pro e-mailové zprávy, které se odesílají v průběhu správy a používání služby. K dispozici jsou následující e-mailové šablony.
 
-* Odeslání aplikace Galerie schválení
-* Písmeno farewell pro vývojáře
-* Maximální kvóta vývojář blíží oznámení
+* Schválená odeslání Galerie aplikací
+* Farewell – písmeno pro vývojáře
+* Oznámení o přístupu k omezení kvóty pro vývojáře
 * Pozvat uživatele
-* Nový komentář přidán k problému
-* Nový problém přijetí
-* Aktivovat nové předplatné
-* Potvrzení odběru obnovit
-* Odmítne žádost o odběr
-* Byla přijata žádost o předplatné
+* Byl přidán nový komentář k problému.
+* Byl přijat nový problém.
+* Aktivované nové předplatné
+* Potvrzení obnovení předplatného
+* Žádosti o předplatné se odmítnou.
+* Žádost o předplatné přijata
 
 Tyto šablony lze upravit podle potřeby.
 
-Chcete-li zobrazit a konfigurovat e-mailové šablony pro vaše instance služby API Management, klikněte na tlačítko **šablon oznámení**.
+Chcete-li zobrazit a nakonfigurovat e-mailové šablony pro instanci API Management, klikněte na možnost **šablony oznámení**.
 
 ![Šablony e-mailů][api-management-email-templates]
 
-Každou e-mailová šablona má subjektu ve formátu prostého textu a definice text ve formátu HTML. Každá položka je přizpůsobit podle potřeby.
+Každá šablona e-mailu má předmět v prostém textu a definici těla ve formátu HTML. Každou položku lze podle potřeby přizpůsobit.
 
 ![Editor šablon e-mailu][api-management-email-template]
 
-**Parametry** seznam obsahuje seznam parametrů, který se při vložit do předmětu nebo obsahu, budou nahrazeny určenou hodnotu při odeslání e-mailu. Vložit parametr, umístěte kurzor, kde chcete, aby parametr přejděte a klikněte na šipku nalevo od názvu parametru.
+Seznam **parametrů** obsahuje seznam parametrů, které při vložení do předmětu nebo textu nahradí určenou hodnotu při odeslání e-mailu. Chcete-li vložit parametr, umístěte kurzor na místo, kam chcete použít parametr, a klikněte na šipku nalevo od názvu parametru.
 
 > [!NOTE] 
-> Parametry nejsou nahradit skutečnými hodnotami při zobrazení náhledu nebo odeslání testu.
+> Při náhledu nebo odeslání testu nejsou parametry nahrazeny skutečnými hodnotami.
 
-Chcete-li uložit změny do e-mailovou šablonu, klikněte na tlačítko **Uložit**, nebo zrušit změny, klikněte na tlačítko **zahodit**.
+Pokud chcete změny uložit do e-mailové šablony, klikněte na **Uložit**nebo změny zrušte kliknutím na zahodit.
  
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png

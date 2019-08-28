@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323088"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094673"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -44,25 +43,25 @@ Všechny propagační nebo ukázkové velikosti virtuálních počítačů, kter
 | Basic A-Series | Všechny velikosti *kromě* Basic_A0 (a0) | Any |
 | A-Series | Všechny velikosti *kromě* Standard_A0 | Any |
 | Av2-series | Všechny velikosti | Any |
-| B-Series | Žádné | Není k dispozici. |
-| Řada DC | Žádné | Není k dispozici. |
+| B-Series | Žádné | Není dostupné |
+| Řada DC | Žádné | Není dostupné |
 | Dv2, Dsv2-Series | Všechny velikosti | Any |
 | Dv3, Dsv3-Series | Všechny velikosti | Any |
-| [Paměť optimalizované velikosti](../virtual-machines/linux/sizes-memory.md) | Žádné | Není k dispozici. |
+| [Paměť optimalizované velikosti](../virtual-machines/linux/sizes-memory.md) | Žádné | Není dostupné |
 | Fsv2-series | Všechny velikosti | Any |
 | H-series | Všechny velikosti | Any |
 | Řada 2 –<sup>2</sup> | Všechny velikosti | Any |
 | HC – řada<sup>2</sup> | Všechny velikosti | Any |
 | Řada Ls | Všechny velikosti | Any |
-| Řada Lsv2 | Žádné | Není k dispozici. |
+| Řada Lsv2 | Žádné | Není dostupné |
 | M-Series | Standard_M64ms (jenom s nízkou prioritou), Standard_M128s (jenom s nízkou prioritou) | Any |  
 | NCv2-Series<sup>2</sup> | Všechny velikosti | Any |
 | NCv3-Series<sup>2</sup> | Všechny velikosti | Any |
 | ND-Series<sup>2</sup> | Všechny velikosti | Any |
 | NDv2-Series | Všechny velikosti | Režim předplatného uživatele |
 | NV-Series | Všechny velikosti | Any |
-| Řada NVv3 | Žádný | Není k dispozici. |
-| SAP HANA | Žádný | Není k dispozici. |
+| Řada NVv3 | Žádné | Není dostupné |
+| SAP HANA | Žádné | Není dostupné |
 
 <sup>1</sup> některé novější série virtuálních počítačů se zpočátku částečně podporují. Tyto řady virtuálních počítačů můžou být přidělené účty Batch s **režimem přidělování fondů** nastaveným na **předplatné uživatele**. Další informace o konfiguraci účtu Batch najdete v tématu [Správa účtů Batch](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . V tématu [kvóty a omezení](batch-quota-limit.md) se dozvíte, jak vyžádat kvótu pro tyto částečně podporované řady virtuálních počítačů pro účty Batch pro **předplatné uživatele** .  
 
@@ -91,7 +90,7 @@ Fondy dávek v konfiguraci cloudové služby podporují všechny [velikosti virt
 
 * **Konfigurace fondu** – obecně platí více možností velikosti virtuálních počítačů při vytváření fondu v konfiguraci virtuálního počítače v porovnání s konfigurací cloudové služby.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
 * Informace o použití velikosti virtuálních počítačů náročných na výpočetní výkon najdete [v tématu použití instancí s podporou RDMA nebo GPU ve fondech služby Batch](batch-pool-compute-intensive-sizes.md).

@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
-ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96ba829ffaadb6bc792c2d859e1e6766ab3ee394
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323882"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095592"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -287,7 +286,7 @@ Obvykle je žádoucí, aby služba Batch čekala na dokončení spouštěcího �
 
 Pokud na výpočetním uzlu selže spouštěcí úkol, je stav tohoto uzlu aktualizován, aby odrážel selhání, a uzlu se nepřiřazují žádné úlohy. Spouštěcí úkol může selhat, jestliže se vyskytl problém s kopírováním jeho souborů prostředků z úložiště nebo pokud proces spuštěný pomocí jeho příkazového řádku vrátí nenulový ukončovací kód.
 
-Pokud do existujícího fondu přidáte spouštěcí úkol nebo ho aktualizujete, musíte restartovat výpočetní uzly fondu, aby se u nich spouštěcí úkol použil.
+Pokud přidáváte nebo aktualizujete spouštěcí úkol pro už existující fond, musíte restartovat jeho výpočetní uzly, aby se na nich spouštěcí úkol provedl.
 
 >[!NOTE]
 > Batch omezuje celkovou velikost spouštěcího úkolu, což zahrnuje soubory prostředků i proměnné prostředí. Pokud potřebujete zmenšit velikost spouštěcího úkolu, můžete použít jednu ze dvou následujících metod:
@@ -504,7 +503,7 @@ V situacích, kdy některé úkoly selhávají, může klientská aplikace nebo 
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 * Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](quick-run-dotnet.md) nebo [Pythonu](quick-run-python.md). Tyto rychlé starty vás provedou ukázkovou aplikací, která používá službu Batch ke spouštění úlohy na několika výpočetních uzlech, a představí vám použití služby Azure Storage k přípravě a načítání souborů úloh.
 * Stáhněte a nainstalujte [Batch Explorer][batch_labs] pro použití při vývoji řešení Batch. Nástroj Batch Explorer vám pomůže vytvářet, ladit a monitorovat aplikace Azure Batch. 

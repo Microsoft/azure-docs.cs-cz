@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 20577459e7dee2530efc17581bcc51b7d6bf2789
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050610"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073373"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují umístit jakékoli prostředky Azure do sítě, ve které není Internet směrovatelné, ke kterým budete mít přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).

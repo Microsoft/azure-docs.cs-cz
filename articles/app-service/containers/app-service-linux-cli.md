@@ -1,6 +1,6 @@
 ---
-title: Spravovat Web App for Containers pomocí Azure CLI – Azure App Service | Dokumentace Microsoftu
-description: Spravujte Web App for Containers pomocí Azure CLI.
+title: Správa Web App for Containers pomocí Azure CLI – Azure App Service | Microsoft Docs
+description: Správa Web App for Containers pomocí rozhraní příkazového řádku Azure
 keywords: azure app service, web app, cli, linux, oss
 services: app-service
 documentationCenter: ''
@@ -11,85 +11,84 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850080"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071316"
 ---
-# <a name="manage-web-app-for-containers-using-azure-cli"></a>Spravovat Web App for Containers pomocí Azure CLI
+# <a name="manage-web-app-for-containers-using-azure-cli"></a>Správa Web App for Containers pomocí rozhraní příkazového řádku Azure
 
-Pomocí příkazů v tomto článku, který budete moct vytvářet a spravovat služby Web App for Containers pomocí Azure CLI.
-Můžete začít používat novou verzi rozhraní příkazového řádku dvěma způsoby:
+Pomocí příkazů v tomto článku můžete vytvořit a spravovat Web App for Containers pomocí rozhraní příkazového řádku Azure CLI.
+Novou verzi rozhraní příkazového řádku můžete začít používat dvěma způsoby:
 
-* [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) na svém počítači.
-* Pomocí [Azure Cloud Shell (Preview)](../../cloud-shell/overview.md)
+* Instalace rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) na váš počítač.
+* Použití [Azure Cloud Shell (Preview)](../../cloud-shell/overview.md)
 
-## <a name="create-a-linux-app-service-plan"></a>Vytvoření plánu služby App Service pro Linux
+## <a name="create-a-linux-app-service-plan"></a>Vytvoření plánu App Service pro Linux
 
-Vytvořte systému Linux plán služby App Service, můžete použít následující příkaz:
+Pokud chcete vytvořit plán App Service pro Linux, můžete použít následující příkaz:
 
 ```azurecli-interactive
 az appservice plan create -n appname -g rgname --is-linux -l "South Central US" --sku S1 --number-of-workers 1
 ```
 
-## <a name="create-a-custom-docker-container-web-app"></a>Vytvoření vlastního kontejneru Dockeru webové aplikace
+## <a name="create-a-custom-docker-container-web-app"></a>Vytvoření vlastní webové aplikace kontejneru Docker
 
-Vytvoření webové aplikace a nakonfigurovat jej pro spuštění vlastního kontejneru Dockeru, můžete použít následující příkaz:
+Pokud chcete vytvořit webovou aplikaci a nakonfigurovat ji tak, aby spouštěla vlastní kontejner Docker, můžete použít následující příkaz:
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
 ```
 
-## <a name="activate-the-docker-container-logging"></a>Aktivovat protokolování kontejneru Dockeru
+## <a name="activate-the-docker-container-logging"></a>Aktivace protokolování kontejneru Docker
 
-K aktivaci protokolování kontejneru Dockeru, můžete použít následující příkaz:
+K aktivaci protokolování kontejneru Docker můžete použít následující příkaz:
 
 ```azurecli-interactive
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
 
-## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>Změna vlastního kontejneru Dockeru pro webovou aplikaci existující kontejnery aplikace
+## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>Změna vlastního kontejneru Docker pro existující aplikaci Web App for Containers
 
-Chcete-li změnit dřív vytvořenou aplikaci, z aktuální image Dockeru pro novou bitovou kopii, slouží následující příkaz:
+Chcete-li změnit dříve vytvořenou aplikaci, z aktuální image Docker na novou bitovou kopii můžete použít následující příkaz:
 
 ```azurecli-interactive
 az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
 ```
 
-## <a name="using-docker-images-from-a-private-registry"></a>Použití Image Dockeru z privátního registru
+## <a name="using-docker-images-from-a-private-registry"></a>Použití imagí Docker z privátního registru
 
-Můžete nakonfigurovat aplikaci, abyste mohli používat Image z privátního registru. Budete muset zadat adresu url vašeho registru, uživatelské jméno a heslo. Toho lze dosáhnout pomocí následujícího příkazu:
+Aplikaci můžete nakonfigurovat tak, aby používala image z privátního registru. Je nutné zadat adresu URL pro váš registr, uživatelské jméno a heslo. Toho lze dosáhnout pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az webapp config container set -n sname1 -g rgname -c <container name> -r <server url> -u <username> -p <password>
 ```
 
-## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Povolit nepřetržité nasazení pro vlastní Image Dockeru
+## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Povolit nepřetržitá nasazení pro vlastní image Docker
 
-Pomocí následujícího příkazu můžete povolit funkci CD a získat adresu url webhooku. Tato adresa url je možné nakonfigurujete úložiště Dockerhubu nebo ve službě Azure Container Registry.
+Pomocí následujícího příkazu můžete povolit funkce CD a získat adresu URL Webhooku. Tato adresa URL se dá použít ke konfiguraci úložišť Dockerhubu nebo Azure Container Registry.
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
 ```
 
-## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Vytvoření webové aplikace pro kontejnery aplikace pomocí jedné z našich integrovaných runtime architektury
+## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Vytvoření aplikace Web App for Containers pomocí některé z našich vestavěných prostředí modulu runtime
 
-Vytvoření webové aplikace PHP 5.6 pro kontejnery aplikace, která, slouží následující příkaz.
+Pokud chcete vytvořit Web App for Containers aplikaci PHP 5,6, můžete použít následující příkaz.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
 ```
 
-## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Změnit verzi rozhraní framework pro existující Web App for Containers aplikace
+## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Změna verze rozhraní pro existující aplikaci Web App for Containers
 
-Pokud chcete změnit dřív vytvořenou aplikaci, z aktuální verze rozhraní framework Node.js 6.11, můžete použít následující příkaz:
+Chcete-li změnit dříve vytvořenou aplikaci z aktuální verze rozhraní na Node. js 6,11, můžete použít následující příkaz:
 
 ```azurecli-interactive
 az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
@@ -97,7 +96,7 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 
 ## <a name="set-up-git-deployments-for-your-web-app"></a>Nastavení nasazení Git pro vaši webovou aplikaci
 
-Nastavení nasazení Git pro vaši aplikaci, můžete použít následující příkaz:
+Pro nastavení nasazení Git pro vaši aplikaci můžete použít následující příkaz:
 
 ```azurecli-interactive
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
@@ -105,8 +104,8 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 
 ## <a name="next-steps"></a>Další postup
 
-* [Co je Azure App Service v Linuxu?](app-service-linux-intro.md)
+* [Co je Azure App Service v systému Linux?](app-service-linux-intro.md)
 * [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (Preview)](../../cloud-shell/overview.md)
 * [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Průběžné nasazování pomocí služby Web App for Containers](app-service-linux-ci-cd.md)
+* [Průběžné nasazování pomocí Web App for Containers](app-service-linux-ci-cd.md)

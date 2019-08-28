@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234457"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099815"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Řízení velkých instancí Azure HANA prostřednictvím webu Azure Portal
 Tento dokument popisuje způsob, jakým se v [Azure Portal](https://portal.azure.com) prezentují [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a jaké aktivity je možné provádět prostřednictvím Azure Portal s velkými jednotkami instancí Hana, které jsou pro vás nasazené. Viditelnost velkých instancí HANA v Azure Portal k dispozici prostřednictvím poskytovatele prostředků Azure pro velké instance HANA, který je aktuálně ve verzi Public Preview.
@@ -93,7 +92,7 @@ Další velmi důležité informace najdete v pravém dolním rohu přehledu s n
 Další pole v pravém sloupci záhlaví informuje o stavu napájení jednotky velkých instancí HANA.
 
 > [!NOTE]
-> Stav napájení popisuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Neposkytuje informace o tom, jak operační systém pracuje a je spuštěný. Při restartu velké jednotky instance HANA se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená  , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
+> Stav napájení popisuje, zda je hardwarová jednotka zapnutá nebo vypnutá. Neposkytuje informace o tom, jak operační systém pracuje a je spuštěný. Při restartu velké jednotky instance HANA se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 > 
 
 Pokud stisknete tlačítko Zobrazit další, zobrazí se další informace. Jednou z dalších informací se zobrazuje revize razítka velké instance HANA, jednotka byla nasazena v. Přečtěte si článek [co je SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) pro různé revize rozsáhlých razítek instancí Hana.
@@ -130,7 +129,7 @@ Při inicializaci restartování operačního systému Linux došlo k různým s
 Po stisknutí tlačítka restartovat se zobrazí dotaz, zda opravdu chcete jednotku restartovat. Jakmile ověříte, že stisknete tlačítko "Ano", jednotka se restartuje.
 
 > [!NOTE]
-> V procesu restartování se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená  , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
+> V procesu restartování se zobrazí malý čas, kdy se stav jednotky změní na **zahájení** přechodu do stavu **zahájeno**. Ve stavu spuštěno znamená , že se operační systém spouští nebo že byl operační systém zcela spuštěn. V důsledku toho po restartování jednotky Nemůžete očekávat, že se okamžitě přihlašujete k jednotce, jakmile se stav přepne na **zahájeno**.
 
 > [!IMPORTANT]
 > Závisí na velikosti paměti v jednotce velké instance služby HANA, restartování a restartování hardwaru a operační systém může trvat až jednu hodinu.

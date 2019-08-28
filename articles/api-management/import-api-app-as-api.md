@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255902"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073263"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
 
@@ -33,8 +32,8 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v tématu [dokumentace ke službě App Service](https://docs.microsoft.com/azure/app-service/)
++ Dokončete následující rychlý Start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
++ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci k App Service](https://docs.microsoft.com/azure/app-service/) .
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -91,7 +90,7 @@ Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

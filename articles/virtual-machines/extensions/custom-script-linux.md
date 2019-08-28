@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 1a01f5f8aed994c16b8302e42996b27ee6a48003
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 23354ce310ad4916c8fa2eb9cb99c5e4521b4a62
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624864"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084737"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Použití rozšíření vlastních skriptů Azure verze 2 s virtuálními počítači se systémem Linux
 Rozšíření vlastních skriptů verze 2 stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakoukoli jinou úlohu konfigurace nebo správy. Můžete stáhnout skripty z Azure Storage nebo jiného přístupného internetového umístění, nebo je můžete poskytnout modulu runtime rozšíření. 
@@ -258,7 +257,7 @@ az vm extension set \
   --protected-settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
 
-### <a name="azure-cli-examples"></a>Příklady rozhraní příkazového řádku Azure
+### <a name="azure-cli-examples"></a>Příklady Azure CLI
 
 #### <a name="public-configuration-with-script-file"></a>Veřejná konfigurace se souborem skriptu
 
@@ -413,6 +412,6 @@ data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2
 info:    vm extension get command OK
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Chcete-li zobrazit kód, aktuální problémy a verze, přečtěte si téma [vlastní-Script-rozšíření – úložiště Linux](https://github.com/Azure/custom-script-extension-linux).
 

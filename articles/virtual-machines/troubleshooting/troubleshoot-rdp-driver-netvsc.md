@@ -1,66 +1,65 @@
 ---
-title: Řešení potíží netvsc.sys při vzdálené připojení k Windows 10 nebo Windows serveru 2016 virtuálního počítače v Azure | Dokumentace Microsoftu
-description: Informace o řešení potíží s RDP se netsvc.sys související vydání, když jste připojení k Windows 10 nebo Windows serveru 2016 virtuálního počítače v Azure.
+title: Řešení problému s netvsc. sys při vzdáleném připojení k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure | Microsoft Docs
+description: Naučte se řešit potíže s protokolem RDP související s Netsvc. sys při připojování k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: e6685a5e77d92bb9e05ab9578e48c99e80a64b74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e68aac07379de142968b85884e7dbd95e73195f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362250"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103478"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nelze vzdáleně připojit k Windows 10 nebo Windows serveru 2016 virtuálního počítače v Azure z důvodu netvsc.sys
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nejde se vzdáleně připojit k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 v Azure kvůli netvsc. sys.
 
-Tento článek vysvětluje, jak vyřešit nějaký problém, ve kterém není žádné síťové připojení při připojení k Windows 10 nebo Windows Server 2016 Datacenter virtuálních počítačů (VM) na hostiteli Hyper-V Server 2016.
+Tento článek vysvětluje, jak řešit potíže, ke kterým nedochází při připojování k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 Datacenter na hostiteli Hyper-V na serveru 2016, pokud se nepoužívá žádné síťové připojení.
 
 ## <a name="symptoms"></a>Příznaky
 
-Nelze se připojení k Azure Windows 10 nebo virtuální počítač s Windows serverem 2016 pomocí protokolu RDP (Remote Desktop). V [Diagnostika spouštění](boot-diagnostics.md), na obrazovce zobrazí červený křížek v průběhu síťovou kartu (NIC). To znamená, že virtuální počítač nemá připojení po plně načtený operační systém.
+Nemůžete se připojit k virtuálnímu počítači s Windows 10 nebo Windows serverem 2016 pomocí protokol RDP (Remote Desktop Protocol) (RDP). V [diagnostice spouštění](boot-diagnostics.md)se na obrazovce zobrazí červená křížová obrazovka přes síťovou kartu (nic). To znamená, že virtuální počítač nemá žádné připojení, když je operační systém plně načtený.
 
-Obvykle k tomuto problému dochází ve Windows [sestavení 14393](https://support.microsoft.com/help/4093120/) a [sestavení 15063](https://support.microsoft.com/help/4015583/). Pokud verze operačního systému je novější než tato verze, v tomto článku se nevztahují na váš scénář. Pokud chcete zkontrolovat verzi systému, otevřete relaci příkazového řádku v [funkce konzoly sériového portu přístup](serial-console-windows.md)a pak spusťte **Ver**.
+K tomuto problému obvykle dochází v systému Windows [build 14393](https://support.microsoft.com/help/4093120/) a [sestavení 15063](https://support.microsoft.com/help/4015583/). Pokud je verze vašeho operačního systému novější než tyto verze, Tento článek se nevztahuje na váš scénář. Chcete-li zjistit verzi systému, otevřete relaci příkazu CMD v [konzole sériového přístupu](serial-console-windows.md)a potom spusťte možnost **ver**.
 
 ## <a name="cause"></a>Příčina
 
-Této situaci může dojít, pokud je verze nainstalovaného netvsc.sys systémový soubor **10.0.14393.594** nebo **10.0.15063.0**. Tyto verze netvsc.sys může systém zabránit interakci s platformou Azure.
+K tomuto problému může dojít, pokud je verze nainstalovaného systémového souboru netvsc. sys **10.0.14393.594** nebo **10.0.15063.0**. Tyto verze netvsc. sys můžou zabránit systému v interakci s platformou Azure.
 
 
 ## <a name="solution"></a>Řešení
 
-Než začnete provádět tyto kroky [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md) ovlivněných virtuálních počítačů jako záložní. Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) připojením systémový disk virtuálního počítače na virtuální počítač pro obnovení.
+Než budete postupovat podle těchto kroků, pořiďte [snímek systémového disku](../windows/snapshot-copy-managed-disk.md) OVLIVNĚNÉHO virtuálního počítače jako zálohy. Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) připojením systémový disk virtuálního počítače na virtuální počítač pro obnovení.
 
 
-### <a name="use-the-serial-console"></a>Použití konzole sériového portu
+### <a name="use-the-serial-console"></a>Použití konzoly sériového portu
 
-Připojte se k [konzoly sériového portu, otevřete PowerShell instanci](serial-console-windows.md)a pak postupujte podle těchto kroků.
+Připojte se ke [konzole sériového portu, otevřete instanci prostředí PowerShell](serial-console-windows.md)a pak postupujte podle těchto kroků.
 
 > [!NOTE]
 > Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
 
-1. Spuštěním následujícího příkazu v Powershellu instance se získat verzi souboru (**c:\windows\system32\drivers\netvsc.sys**):
+1. Spuštěním následujícího příkazu v instanci PowerShellu Získejte verzi souboru (**c:\windows\system32\drivers\netvsc.sys**):
 
    ```
    (get-childitem "$env:systemroot\system32\drivers\netvsc.sys").VersionInfo.FileVersion
    ```
 
-2. Stáhněte si příslušnou aktualizaci na nový nebo existující datový disk, který je připojen k funkčním virtuálním počítači ze stejné oblasti:
+2. Stáhněte si příslušnou aktualizaci na nový nebo existující datový disk, který je připojený k pracovnímu virtuálnímu počítači ze stejné oblasti:
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo novější aktualizace
+   - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 nebo novější aktualizace
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
 
-3. Odpojení disku nástroje funkčním virtuálním počítači a poté jej připojit k virtuálnímu počítači nefunkční.
+3. Odpojte disk s nástrojem od pracovního virtuálního počítače a pak ho připojte k poškozenému virtuálnímu počítači.
 
-4. Spusťte následující příkaz k instalaci aktualizace na virtuálním počítači:
+4. Spusťte následující příkaz pro instalaci aktualizace na virtuální počítač:
 
    ```
    dism /ONLINE /add-package /packagepath:<Utility Disk Letter>:\<KB .msu or .cab>
@@ -76,47 +75,47 @@ Připojte se k [konzoly sériového portu, otevřete PowerShell instanci](serial
 
 3. Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojený systémový disk.
 
-4. Vytvoření kopie **\Windows\System32\config** složku v případě a vrácení zpět při změně je nezbytné.
+4. Vytvoří kopii složky **\Windows\System32\config** v případě, že je nutné vrátit zpět změny.
 
-5. Na stanici virtuálního počítače spusťte Editor registru (regedit.exe).
+5. Na záchranném virtuálním počítači spusťte Editor registru (Regedit. exe).
 
-6. Vyberte **HKEY_LOCAL_MACHINE** klíče a pak vyberte **souboru** > **načíst Hive** z nabídky.
+6. Vyberte klíč **HKEY_LOCAL_MACHINE** a v nabídce vyberte možnost > **Načíst podregistr** .
 
-7. Vyhledejte soubor systému v **\Windows\System32\config** složky.
+7. Vyhledejte systémový soubor ve složce **\Windows\System32\config** .
 
-8. Vyberte **otevřít**, typ **BROKENSYSTEM** názvu, rozbalte **HKEY_LOCAL_MACHINE** klíče a vyhledejte další klíč, který je pojmenován **BROKENSYSTEM** .
+8. Vyberte **otevřít**, jako název zadejte **BROKENSYSTEM** , rozbalte klíč **HKEY_LOCAL_MACHINE** a pak vyhledejte další klíč s názvem **BROKENSYSTEM**.
 
-9. Přejděte do následujícího umístění:
+9. Přejít do následujícího umístění:
 
    ```
    HKLM\BROKENSYSTEM\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}
    ```
 
-10. V každé podklíč (jako je 0000) v souvislosti **DriverDesc** hodnotu, která se zobrazí jako **síťový adaptér Microsoft HYPER-V**.
+10. V každém podklíči (například 0000) Prověřte hodnotu **DriverDesc** , která se zobrazí jako **síťový adaptér Microsoft Hyper-V**.
 
-11. V podklíči, zkontrolujte **DriverVersion** hodnotu, která je verze ovladače síťového adaptéru virtuálního počítače.
+11. V podklíči vyhledejte hodnotu **DriverVersion** , která je verze ovladače síťového adaptéru virtuálního počítače.
 
 12. Stáhněte si příslušnou aktualizaci:
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) nebo novější aktualizace
+    - **10.0.14393.594**: [](https://support.microsoft.com/help/4073562)KB4073562 nebo novější aktualizace
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) nebo novější aktualizace
 
-13. Připojte disk systému jako datový disk na virtuálním počítači s zachránit, na kterém si můžete stáhnout aktualizace.
+13. Připojte systémový disk jako datový disk na záchranném VIRTUÁLNÍm počítači, na kterém si můžete stáhnout aktualizaci.
 
-14. Spusťte následující příkaz k instalaci aktualizace na virtuálním počítači:
+14. Spusťte následující příkaz pro instalaci aktualizace na virtuální počítač:
 
     ```
     dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
     ```
 
-15. Spusťte následující příkaz pro odpojení podregistry:
+15. Spuštěním následujícího příkazu odpojte podregistr:
 
     ```
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Odpojení disku a vytvoření virtuálního počítače znovu](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Odpojte systémový disk a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktujte podporu
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud stále potřebujete pomoc, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , která vám umožní rychle vyřešit potíže.

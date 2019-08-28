@@ -1,6 +1,6 @@
 ---
-title: Zpracování chyb v zásady služby Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak reagovat na chybové stavy, které mohou nastat během zpracování požadavků ve službě Azure API Management.
+title: Zpracování chyb v zásadách Azure API Management | Microsoft Docs
+description: Naučte se reagovat na chybové stavy, které můžou nastat při zpracování požadavků v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,24 +10,23 @@ ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df7b14c8221ab7837cabe968a82cfc5d5d9050c4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704444"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072583"
 ---
-# <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásady služby API Management
+# <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásadách API Management
 
-Tím, že poskytuje `ProxyError` objektu Azure API Management umožňuje vydavatelům reagovat na chybové stavy, které mohou nastat při zpracování požadavků. `ProxyError` Je objekt zpřístupněný prostřednictvím [kontextu. LastError](api-management-policy-expressions.md#ContextVariables) vlastnost a můžou používat zásady `on-error` části zásady. Tento článek poskytuje odkaz pro chybu funkce zpracování ve službě Azure API Management.  
+Poskytnutím `ProxyError` objektu Azure API Management umožňuje vydavatelům reagovat na chybové podmínky, ke kterým může dojít během zpracování požadavků. K `ProxyError` objektu je přistup prostřednictvím [kontextu. ](api-management-policy-expressions.md#ContextVariables)Vlastnost sectionGroup a dá se použít v zásadách v `on-error` části Policy (zásady). Tento článek poskytuje referenční informace o možnostech zpracování chyb v Azure API Management.  
   
-## <a name="error-handling-in-api-management"></a>Chyba zpracování ve službě API Management
+## <a name="error-handling-in-api-management"></a>Zpracování chyb v API Management
 
- Zásady ve službě Azure API Management jsou rozdělené do `inbound`, `backend`, `outbound`, a `on-error` sections – jak je znázorněno v následujícím příkladu.  
+ Zásady ve službě Azure API Management jsou rozdělené `backend`do `outbound` `inbound`oddílů, `on-error` , a, jak je znázorněno v následujícím příkladu.  
   
 ```xml  
 <policies>  
@@ -48,26 +47,26 @@ Tím, že poskytuje `ProxyError` objektu Azure API Management umožňuje vydavat
 </policies>  
 ```  
   
-Během zpracování žádosti o provádění předdefinované kroků spolu se všechny zásady, které jsou v oboru pro daný požadavek. Pokud dojde k chybě, zpracování okamžitě přejde `on-error` části zásady.  
-`on-error` Zásady je možné v oboru. Vydavatelé rozhraní API můžete nakonfigurovat vlastní chování, jako je například protokolování chyba do služby event hubs nebo vytváří nové odpovědi za účelem vrácení volajícímu.  
+Při zpracování požadavku se spustí integrovaný postup spolu se všemi zásadami, které jsou v rozsahu pro danou žádost. Pokud dojde k chybě, zpracování se okamžitě přeskočí `on-error` do oddílu zásad.  
+Oddíl `on-error` zásad lze použít v jakémkoli oboru. Vydavatelé rozhraní API můžou nakonfigurovat vlastní chování, jako je například protokolování chyby do Center událostí nebo vytvoření nové odpovědi, která se vrátí volajícímu.  
   
 > [!NOTE]
->  `on-error` Části není k dispozici v zásadách ve výchozím nastavení. Chcete-li přidat `on-error` k zásadě, přejděte na požadovanou zásadu v editoru zásad a přidejte ji. Další informace o konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
+>  `on-error` Oddíl není ve výchozím nastavení v zásadách k dispozici. Pokud chcete přidat `on-error` oddíl do zásad, přejděte na požadovanou zásadu v editoru zásad a přidejte ji. Další informace o konfiguraci zásad najdete v tématu [zásady v API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
 >   
->  Pokud není žádný `on-error` části volající bude přijímat zpráv odpovědí HTTP 400 nebo 500, pokud dojde k chybě.  
+>  Pokud není k dispozici žádný `on-error` oddíl, volající obdrží zprávy s odpovědí HTTP 400 nebo 500, pokud dojde k chybovému stavu.  
   
-### <a name="policies-allowed-in-on-error"></a>Zásady povolené na chybu
+### <a name="policies-allowed-in-on-error"></a>Zásady povolené při zapnuté chybě
 
- Tyto zásady dají použít v `on-error` části zásady.  
+ V `on-error` části zásady se dají použít tyto zásady.  
   
 -   [choose](api-management-advanced-policies.md#choose)  
 -   [set-variable](api-management-advanced-policies.md#set-variable)  
--   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)  
--   [vrácení odpovědi](api-management-advanced-policies.md#ReturnResponse)  
+-   [najít a nahradit](api-management-transformation-policies.md#Findandreplacestringinbody)  
+-   [návrat – odpověď](api-management-advanced-policies.md#ReturnResponse)  
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)  
 -   [set-method](api-management-advanced-policies.md#SetRequestMethod)  
 -   [set-status](api-management-advanced-policies.md#SetStatus)  
--   [send-request](api-management-advanced-policies.md#SendRequest)  
+-   [Odeslat požadavek](api-management-advanced-policies.md#SendRequest)  
 -   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)  
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)  
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
@@ -75,59 +74,59 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
   
 ## <a name="lasterror"></a>LastError
 
- Když dojde k chybě a řízení přejde `on-error` části zásady, chyba je uložen v [kontextu. LastError](api-management-policy-expressions.md#ContextVariables) vlastnost, která je přístupná v rámci zásad v `on-error` oddílu. LastError má následující vlastnosti.  
+ Pokud dojde k chybě a řízení přejde na `on-error` oddíl zásady, je chyba uložena v [kontextu. Vlastnost GetLastError](api-management-policy-expressions.md#ContextVariables) , ke které se dají přistupovat zásady `on-error` v části. Poslední z těchto vlastností je.  
   
-| Name       | Typ   | Popis                                                                                               | Požaduje se |
+| Name       | Typ   | Popis                                                                                               | Požadováno |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| `Source`   | string | Název elementu, kde došlo k chybě. Může být zásad nebo název kroku integrované kanálu.     | Ano      |
-| `Reason`   | string | Kód chyby přívětivá počítač, který by se použil při zpracování chyb.                                       | Ne       |
-| `Message`  | string | Popis chyby čitelné.                                                                         | Ano      |
-| `Scope`    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
-| `Section`  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
-| `Path`     | string | Určuje vnořené zásady, třeba "zvolte [3] / při [2]".                                                        | Ne       |
-| `PolicyId` | string | Hodnota `id` atribut, pokud zadaný výhradně zákazník, a to na zásadách, kde došlo k chybě             | Ne       |
+| `Source`   | řetězec | Pojmenuje prvek, kde došlo k chybě. Může to být buď zásada, nebo vestavěný název kroku kanálu.     | Ano      |
+| `Reason`   | řetězec | Uživatelsky přívětivý kód chyby, který se dá použít při zpracování chyb.                                       | Ne       |
+| `Message`  | řetězec | Popis chyby čitelný člověkem.                                                                         | Ano      |
+| `Scope`    | řetězec | Název oboru, ve kterém došlo k chybě, a mohl by být typu "Global", "Product", "API" nebo "Operation" | Ne       |
+| `Section`  | řetězec | Název oddílu, kde došlo k chybě. Možné hodnoty: "příchozí", "back-end", "odchozí" nebo "On-Error".       | Ne       |
+| `Path`     | řetězec | Určuje vnořenou zásadu, například "Choose [3]/when [2]".                                                        | Ne       |
+| `PolicyId` | řetězec | `id` Hodnota atributu, pokud je zadána zákazníkem, podle zásad, kde došlo k chybě             | Ne       |
 
 > [!TIP]
-> Stavový kód můžete přistupovat prostřednictvím kontextu. Response.StatusCode.  
+> Ke stavovým kódem můžete přistupovat prostřednictvím kontextu. Response. StatusCode  
 
 > [!NOTE]
-> Všechny zásady mít volitelně `id` atribut, který lze přidat do kořenového prvku zásad. Pokud tento atribut je k dispozici v zásadách, když dojde k chybě, je možné hodnotu atributu načíst pomocí `context.LastError.PolicyId` vlastnost.
+> Všechny zásady mají volitelný `id` atribut, který lze přidat do kořenového prvku zásady. Pokud je tento atribut přítomen v zásadě, pokud dojde k chybě, hodnota atributu může být načtena pomocí `context.LastError.PolicyId` vlastnosti.
 
-## <a name="predefined-errors-for-built-in-steps"></a>Předdefinované chyby pro vestavěné kroky  
- Tyto chyby jsou předdefinované pro chybové podmínky, které mohou nastat během vyhodnocení vestavěné kroky.  
+## <a name="predefined-errors-for-built-in-steps"></a>Předdefinované chyby pro předdefinované kroky  
+ Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít během hodnocení integrovaných kroků zpracování.  
   
 | Source        | Podmínka                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
-| konfigurace | Identifikátor URI neodpovídá žádné operaci nebo rozhraní API | OperationNotFound       | Nelze spárovat příchozího požadavku pro operaci.                                                                      |
-| authorization | Není zadaný klíč předplatného             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíč předplatného. Ujistěte se, že při zasílání požadavků na toto rozhraní API obsahovat klíč předplatného. |
-| authorization | Hodnota klíče předplatného není platná.         | SubscriptionKeyInvalid  | Přístup byl odepřen z důvodu neplatné předplatné klíč. Je nutné zadat platný klíč pro aktivní předplatné.            |
+| konfigurace | Identifikátor URI neodpovídá žádnému rozhraní API nebo operaci. | OperationNotFound       | Příchozí požadavek nelze spárovat s operací.                                                                      |
+| authorization | Klíč předplatného není zadaný.             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíče předplatného. Při vytváření požadavků na toto rozhraní API nezapomeňte zahrnout klíč předplatného. |
+| authorization | Hodnota klíče předplatného není platná.         | SubscriptionKeyInvalid  | Přístup byl odepřen z důvodu neplatného klíče předplatného. Ujistěte se, že jste zadali platný klíč pro aktivní předplatné.            |
   
 ## <a name="predefined-errors-for-policies"></a>Předdefinované chyby pro zásady  
- Tyto chyby jsou předdefinované pro chybové podmínky, které se můžou objevit během vyhodnocení zásad.  
+ Následující chyby jsou předdefinované pro chybové stavy, ke kterým může dojít při vyhodnocování zásad.  
   
 | Source       | Podmínka                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| omezení četnosti   | Překročil se limit frekvence                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
-| kvóta        | Překročila se kvóta                                                  | QuotaExceeded             | Překročení kvóty volání. Kvótu se doplnit v xx:xx:xx. \- nebo - šířku pásma kvóty. Kvótu se doplnit v xx:xx:xx. |
-| jsonp        | Hodnota parametru zpětného volání je neplatný (obsahuje chybné znaky) | CallbackParameterInvalid  | Hodnota parametru zpětného volání {zpětného volání název parametru} není platný identifikátor jazyka JavaScript.                                          |
-| Filtr IP    | Nepovedlo se parsovat volající IP z požadavku                          | FailedToParseCallerIP     | Nepovedlo se vytvořit IP adresu pro volajícího. Přístup se odepřel.                                                                        |
-| Filtr IP    | Volající IP není v seznamu povolených aplikací                                | CallerIpNotAllowed        | IP adresy volajícího {ip-address} není povolena. Přístup se odepřel.                                                                        |
-| Filtr IP    | Volající IP je v seznamu blokovaných položek                                    | CallerIpBlocked           | IP adresy volajícího blokovaný. Přístup se odepřel.                                                                                         |
-| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderNotFound            | Hlavička {název hlavičky} se nenašla v požadavku. Přístup se odepřel.                                                                    |
-| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderValueNotAllowed     | Hodnota hlavičky {název hlavičky} z {hodnota hlavičky} není povolena. Přístup se odepřel.                                                          |
-| validate-jwt | V požadavku chybí Jwt token                                 | TokenNotFound             | Nebyl nalezen v žádosti o token JWT. Přístup se odepřel.                                                                                         |
-| validate-jwt | Nepovedlo se ověřit podpis                                     | TokenSignatureInvalid     | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
-| validate-jwt | Neplatná cílová skupina                                                | TokenAudienceNotAllowed   | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
-| validate-jwt | Neplatný vydavatel                                                  | TokenIssuerNotAllowed     | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
-| validate-jwt | Vypršela platnost tokenu.                                                   | TokenExpired              | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
-| validate-jwt | Podpisový klíč se nepodařilo přeložit podle ID                            | TokenSignatureKeyNotFound | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
-| validate-jwt | Chybí požadované deklarace identit z tokenu                          | TokenClaimNotFound        | JWT token neobsahuje následující deklarace: < c1\>, < c2\>,... Přístup se odepřel.                                                            |
-| validate-jwt | Neshoda hodnot deklarací identity                                           | TokenClaimValueNotAllowed | Hodnota deklarace identity {název deklarace} z {hodnota deklarace} není povolena. Přístup se odepřel.                                                             |
-| validate-jwt | Jiné chyby ověření                                       | JwtInvalid                | < zprávu z knihovny tokenů jwt\>                                                                                                          |
+| frekvence – omezení   | Překročení limitu přenosové rychlosti                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
+| kvóta        | Překročení kvóty                                                  | QuotaExceeded             | Překročení kvóty volání. Kvóta bude doplněna v XX: xx: xx. – nebo mimo kvótu šířky pásma. Kvóta bude doplněna v XX: xx: xx. |
+| jsonp        | Hodnota parametru zpětného volání je neplatná (obsahuje nesprávné znaky). | CallbackParameterInvalid  | Hodnota parametru zpětného volání {callback-Parameter-Name} není platným identifikátorem JavaScriptu.                                          |
+| filtr IP adres    | Nepovedlo se analyzovat IP adresu volajícího z požadavku.                          | FailedToParseCallerIP     | Nepovedlo se vytvořit IP adresu volajícího. Přístup se odepřel.                                                                        |
+| filtr IP adres    | IP adresa volajícího není v seznamu povolených.                                | CallerIpNotAllowed        | IP adresa volajícího {IP-Address} není povolená. Přístup se odepřel.                                                                        |
+| filtr IP adres    | Volající je v seznamu blokovaných IP adres.                                    | CallerIpBlocked           | IP adresa volajícího je blokovaná. Přístup se odepřel.                                                                                         |
+| check-Header | Není předložena požadovaná hlavička nebo chybí hodnota.               | HeaderNotFound            | Záhlaví {Header-Name} nebylo v požadavku nalezeno. Přístup se odepřel.                                                                    |
+| check-Header | Není předložena požadovaná hlavička nebo chybí hodnota.               | HeaderValueNotAllowed     | Hodnota hlavičky {Header-Name} {Header-value} není povolená. Přístup se odepřel.                                                          |
+| validate-jwt | Token JWT v žádosti chybí.                                 | TokenNotFound             | V požadavku se nenašel token JWT. Přístup se odepřel.                                                                                         |
+| validate-jwt | Podpis se nepovedlo ověřit.                                     | TokenSignatureInvalid     | < zpráva z knihovny\>JWT. Přístup se odepřel.                                                                                          |
+| validate-jwt | Neplatná cílová skupina                                                | TokenAudienceNotAllowed   | < zpráva z knihovny\>JWT. Přístup se odepřel.                                                                                          |
+| validate-jwt | Neplatný Vydavatel                                                  | TokenIssuerNotAllowed     | < zpráva z knihovny\>JWT. Přístup se odepřel.                                                                                          |
+| validate-jwt | Vypršela platnost tokenu.                                                   | TokenExpired              | < zpráva z knihovny\>JWT. Přístup se odepřel.                                                                                          |
+| validate-jwt | Podpisový klíč nebyl přeložen podle ID                            | TokenSignatureKeyNotFound | < zpráva z knihovny\>JWT. Přístup se odepřel.                                                                                          |
+| validate-jwt | V tokenu chybí požadované deklarace identity.                          | TokenClaimNotFound        | V tokenu JWT chybí následující deklarace: < C1\>, < C2\>,... Přístup se odepřel.                                                            |
+| validate-jwt | Neshoda hodnot deklarace identity                                           | TokenClaimValueNotAllowed | Hodnota deklarace identity {Claim-Name} typu {Claim-value} není povolená. Přístup se odepřel.                                                             |
+| validate-jwt | Jiná selhání ověřování                                       | JwtInvalid                | < zpráva z knihovny JWT\>                                                                                                          |
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Nastavení zásad rozhraní API:
+Nastavení zásad rozhraní API pro:
 
 ```xml
 <policies>
@@ -170,15 +169,15 @@ Nastavení zásad rozhraní API:
 </policies>
 ```
 
-a odesílání neoprávněného požadavku bude mít za následek následující odpověď:
+a odeslání neautorizované žádosti bude mít za následek následující odpověď:
 
-![Chyba Neautorizováno odpovědi](media/api-management-error-handling-policies/error-response.png)
+![Neautorizovaná odpověď na chybu](media/api-management-error-handling-policies/error-response.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Práce se zásadami pro další informace najdete v tématu:
+Další informace o práci se zásadami najdete v těchto tématech:
 
-+ [Zásady ve službě API Management](api-management-howto-policies.md)
-+ [Transformujte rozhraní API](transform-api.md)
-+ [Referenční příručce o zásadách](api-management-policy-reference.md) úplný seznam zásad příkazy a jejich nastavení
++ [Zásady v API Management](api-management-howto-policies.md)
++ [Transformační rozhraní API](transform-api.md)
++ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)   

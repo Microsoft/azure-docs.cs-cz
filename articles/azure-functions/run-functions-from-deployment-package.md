@@ -6,16 +6,15 @@ documentationcenter: na
 author: ggailey777
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 96dbe9b15831a349afc0e68c15c39c1cb31b1032
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444068"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095966"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
@@ -61,7 +60,7 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 
 [Nasazení zip][Zip deployment for Azure Functions] je funkce Azure App Service, která umožňuje nasadit projekt Function App do `wwwroot` adresáře. Projekt je zabalen jako soubor nasazení. zip. Stejná rozhraní API je možné použít k nasazení balíčku do `d:\home\data\SitePackages` složky. S hodnotou nastavení aplikace nakopírují rozhraní API pro nasazení `d:\home\site\wwwroot`zip balíček do složkymístoextrakcesouborůdo.`d:\home\data\SitePackages` `WEBSITE_RUN_FROM_PACKAGE` `1` Zároveň vytvoří `packagename.txt` soubor. Aplikace Function App se pak spustí z balíčku po restartování a `wwwroot` bude jen pro čtení. Další informace o nasazení zip najdete v tématu [nasazení zip pro Azure Functions](deployment-zip-push.md).
 
-## <a name="adding-the-websiterunfrompackage-setting"></a>Přidání nastavení WEBSITE_RUN_FROM_PACKAGE
+## <a name="adding-the-website_run_from_package-setting"></a>Přidání nastavení WEBSITE_RUN_FROM_PACKAGE
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
@@ -72,7 +71,7 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 - Tato funkce nevytváří místní mezipaměť.
 - Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)

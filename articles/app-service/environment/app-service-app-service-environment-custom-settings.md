@@ -1,6 +1,6 @@
 ---
-title: Vlastní nastavení pro App Service Environment – Azure
-description: Vlastní nastavení konfigurace pro služby App Service Environment
+title: Vlastní nastavení pro App Service prostředí – Azure
+description: Vlastní nastavení konfigurace pro App Service prostředí
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,27 +10,26 @@ ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765070"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070300"
 ---
-# <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro služby App Service Environment
+# <a name="custom-configuration-settings-for-app-service-environments"></a>Vlastní nastavení konfigurace pro App Service prostředí
 ## <a name="overview"></a>Přehled
-Protože App Service Environment (ase) jsou izolované pro jediného zákazníka, existují určitá nastavení konfigurace, které mohou být použity výhradně App Service Environment. Tento článek popisuje různé konkrétních vlastních nastavení, které jsou k dispozici pro App Service Environment.
+Vzhledem k tomu, že App Service prostředí (služby ASE) jsou izolované pro jednoho zákazníka, existují určitá nastavení konfigurace, která je možné použít výhradně pro App Service prostředí. Tento článek popisuje různé konkrétní vlastní nastavení, která jsou k dispozici pro App Service prostředí.
 
-Pokud nemáte službu App Service Environment, přečtěte si téma [vytvoření služby App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
+Pokud nemáte App Service Environment, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
 
-Vlastní nastavení služby App Service Environment můžete ukládat pomocí pole v novém **clusterSettings** atribut. Tento atribut nachází ve slovníku "Properties" *hostingEnvironments* entity Azure Resource Manageru.
+Přizpůsobení App Service Environment můžete ukládat pomocí pole v New atributu **clusterSettings** . Tento atribut se nachází ve slovníku Properties entity *hostingEnvironments* Azure Resource Manager.
 
-Následující fragment kódu ukazuje šablony Resource Manageru se používá zkratka **clusterSettings** atribut:
+Následující zkrácený Správce prostředků fragment šablony ukazuje atribut **clusterSettings** :
 
     "resources": [
     {
@@ -50,26 +49,26 @@ Následující fragment kódu ukazuje šablony Resource Manageru se používá z
        }
     }
 
-**ClusterSettings** atribut mohou být součástí šablony Resource Manageru k aktualizaci služby App Service Environment.
+Atribut **clusterSettings** může být součástí šablony Správce prostředků pro aktualizaci App Service Environment.
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Použití Průzkumníka prostředků Azure k aktualizaci služby App Service Environment
-Alternativně můžete aktualizovat služby App Service Environment pomocí [Azure Resource Exploreru](https://resources.azure.com).  
+## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Aktualizace App Service Environment pomocí Azure Resource Explorer
+Alternativně můžete App Service Environment aktualizovat pomocí [Azure Resource Explorer](https://resources.azure.com).  
 
-1. V Průzkumníku prostředků, běžte do uzlu pro App Service Environment (**předplatná** > **resourceGroups** > **poskytovatelé**  >  **Microsoft.Web** > **hostingEnvironments**). Pak klikněte na konkrétní služby App Service Environment, kterou chcete aktualizovat.
-2. V pravém podokně klikněte na tlačítko **r/w** v horním panelu nástrojů umožňující interaktivní úpravy v Průzkumníku prostředků.  
-3. Klikněte na modrý **upravit** tlačítko, chcete-li upravit šablony Resource Manageru.
-4. Posuňte se dolů v pravém podokně. **ClusterSettings** atribut je úplně dole, ve kterém můžete zadat nebo aktualizovat jeho hodnotu.
-5. Zadejte (nebo zkopírujte a vložte) pole hodnot konfigurace, které chcete zahrnout **clusterSettings** atribut.  
-6. Klikněte na zelené **UMÍSTIT** tlačítko, které se nachází v horní části pravého podokna se zapsat změny do služby App Service Environment.
+1. V Průzkumník prostředků přejít na uzel pro App Service Environment ( >  předplatná > **poskytovatelé** > **resourceGroups** > **Microsoft. Web**  **hostingEnvironments**). Pak klikněte na konkrétní App Service Environment, kterou chcete aktualizovat.
+2. V pravém podokně klikněte na tlačítko **pro čtení a zápis** na horním panelu nástrojů, čímž povolíte interaktivní úpravy v Průzkumník prostředků.  
+3. Klikněte na modré tlačítko pro **Úpravy** , aby bylo možné šablonu správce prostředků upravovat.
+4. Posuňte se do dolní části pravého podokna. Atribut **clusterSettings** je v horní části, kde můžete zadat nebo aktualizovat jeho hodnotu.
+5. Zadejte (nebo zkopírujte a vložte) pole hodnot konfigurace, které chcete v atributu **clusterSettings** .  
+6. Kliknutím na zelené tlačítko pro **vložení** , které se nachází v horní části pravého podokna, potvrďte změnu App Service Environment.
 
-Ale odešlete změny, bude trvat přibližně 30 minut počtem front-endové systémy v App Service Environment tato změna projevila.
-Například pokud služba App Service Environment má čtyři front-endů, bude trvat přibližně dvě hodiny pro dokončení aktualizace konfigurace. Při změně konfigurace se nasazuje, žádná jiná operace škálování nebo jejich změn konfigurace může proběhnout ve službě App Service Environment.
+Tuto změnu můžete ale odeslat přibližně 30 minut vynásobený počtem front-endy v App Service Environment, aby se změna projevila.
+Například pokud má App Service Environment čtyři front-endy, bude trvat přibližně dvě hodiny, než se aktualizace konfigurace dokončí. Během změny konfigurace se nemůžou provádět žádné další operace škálování ani operace změny konfigurace v App Service Environment.
 
-## <a name="disable-tls-10-and-tls-11"></a>Zákaz protokolu TLS 1.0 a TLS 1.1
+## <a name="disable-tls-10-and-tls-11"></a>Zakázat TLS 1,0 a TLS 1,1
 
-Pokud chcete spravovat nastavení protokolu TLS na základě aplikace app, pak můžete použít pokyny, opatřeného [nastavení vynucení protokolu TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) dokumentaci. 
+Pokud chcete v aplikaci spravovat nastavení TLS podle aplikace, můžete použít pokyny uvedené v dokumentaci k [Nastavení Vynutilí TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) . 
 
-Pokud chcete zakázat všechny příchozí protokol TLS 1.0 a TLS 1.1 provoz pro všechny aplikace ve službě ASE, můžete nastavit následující **clusterSettings** položky:
+Pokud chcete zakázat všechny příchozí přenosy TLS 1,0 a TLS 1,1 pro všechny aplikace v pomocném mechanismu služby, můžete nastavit následující položku **clusterSettings** :
 
         "clusterSettings": [
             {
@@ -78,10 +77,10 @@ Pokud chcete zakázat všechny příchozí protokol TLS 1.0 a TLS 1.1 provoz pro
             }
         ],
 
-Název nastavení říká 1.0, ale při konfiguraci, zakáže protokol TLS 1.0 a TLS 1.1.
+Název nastavení říká 1,0, ale při konfiguraci zakáže protokol TLS 1,0 i TLS 1,1.
 
-## <a name="change-tls-cipher-suite-order"></a>Změna pořadí sady šifer TLS
-Další otázkou od zákazníků, je-li, můžete upravit seznam šifer vyjednaném svůj server a jde tohoto dosáhnout úpravou **clusterSettings** jak je znázorněno níže. Seznam dostupných šifrovacích sad můžete získat z [článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+## <a name="change-tls-cipher-suite-order"></a>Změna pořadí šifrovací sady TLS
+Další otázkou od zákazníků je, že pokud můžou upravit seznam šifr vydaných serverem a můžete to dosáhnout úpravou **clusterSettings** , jak je znázorněno níže. Seznam šifrovacích sad, které jsou k dispozici, lze načíst z [tohoto článku na webu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
 
         "clusterSettings": [
             {
@@ -91,12 +90,12 @@ Další otázkou od zákazníků, je-li, můžete upravit seznam šifer vyjednan
         ],
 
 > [!WARNING]
-> Pokud nesprávné hodnoty jsou nastavené pro šifrovací sady, nemůže rozumět SChannel, veškerá komunikace TLS na váš server může přestat fungovat. V takovém případě budete muset odebrat *FrontEndSSLCipherSuiteOrder* položky z **clusterSettings** a odeslat aktualizovanou šablonu Resource Manageru se vrátit zpět na výchozí šifrovací sada nastavení.  Prosím tuto funkci používejte opatrně.
+> Pokud jsou pro šifrovací sadu, kterou SChannel nedokáže pochopit, nastavené nesprávné hodnoty, může přestat fungovat veškerá komunikace TLS s vaším serverem. V takovém případě budete muset odebrat položku *FrontEndSSLCipherSuiteOrder* z **clusterSettings** a odeslat aktualizovanou šablonu správce prostředků a vrátit se k výchozímu nastavení šifrovací sady.  Použijte prosím tuto funkci opatrně.
 > 
 > 
 
 ## <a name="get-started"></a>Začínáme
-Lokality šablony správce prostředků Azure rychlý Start obsahuje šablonu s základní definice [vytváření služby App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
+Web šablony pro rychlý Start Správce prostředků pro Azure obsahuje šablonu se základní definicí pro [vytvoření App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->
 

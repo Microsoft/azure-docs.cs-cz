@@ -1,6 +1,6 @@
 ---
-title: Akcelerátor zápisu Azure | Dokumentace Microsoftu
-description: Dokumentace o tom, jak povolit a používat akcelerátorem zápisu
+title: Akcelerátor zápisu Azure | Microsoft Docs
+description: Dokumentace k povolení a použití Akcelerátor zápisu
 services: virtual-machines-linux
 documentationcenter: ''
 author: raiye
@@ -9,7 +9,6 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
@@ -17,11 +16,11 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: fcd7b43bf142ab33c1a3421cbc539bb2646d48f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d54d082285145f99d109772a8371fcaaa3ceb8d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083211"
 ---
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

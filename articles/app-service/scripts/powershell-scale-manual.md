@@ -9,21 +9,20 @@ editor: ''
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 44bc78ee0e9d3fddf91aaeb677c53716c2ce2597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d740dbfb1b5d16d84872ef183a52454549be617e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136367"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098221"
 ---
-# <a name="scale-a-web-app-manually-using-powershell"></a>Škálování webové aplikace ručně pomocí Powershellu
+# <a name="scale-a-web-app-manually-using-powershell"></a>Ruční škálování webové aplikace pomocí PowerShellu
 
 V tomto scénáři se dozvíte, jak vytvořit skupinu prostředků, plán služby App Service a webovou aplikaci. Pak budete plán služby App Service škálovat z jedné instance na několik instancí.
 
@@ -54,7 +53,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci webové aplikace. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

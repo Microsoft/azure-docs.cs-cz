@@ -1,5 +1,5 @@
 ---
-title: OpenShift v Azure – přehled | Dokumentace Microsoftu
+title: OpenShift v Azure – přehled | Microsoft Docs
 description: Přehled OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -9,50 +9,49 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082558"
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
-OpenShift je otevřené a rozšiřitelné kontejneru aplikační platforma, která přináší Docker a Kubernetes pro podniky.  
+OpenShift je otevřená a rozšiřitelná platforma pro aplikace kontejnerů, která přináší Docker a Kubernetes do podniku.  
 
-OpenShift zahrnuje pro správu a Orchestrace kontejnerů Kubernetes. Přidá zaměřené na vývojáře a zaměřené operace nástroje této povolit:
+OpenShift zahrnuje Kubernetes pro orchestraci a správu kontejnerů. Přidává nástroje zaměřené na vývojáře a operace zaměřené na provoz, které umožňují:
 
-- Rychlý vývoj aplikací.
+- Rychlý vývoj aplikací
 - Snadné nasazení a škálování.
-- Dlouhodobé životní cyklus údržby pro týmy a aplikace.
+- Dlouhodobá údržba v životním cyklu pro týmy a aplikace.
 
-Nejsou k dispozici více verzí OpenShift.  Z těchto verzí jsou pouze dva jsou v současnosti dostupné pro zákazníky, kteří nasazují v Azure: OpenShift Container Platform a OKD (dříve OpenShift Origin).
+K dispozici je více verzí OpenShift.  Z těchto verzí jsou dnes k dispozici pouze dvě pro zákazníky k nasazení v Azure: OpenShift Container Platform a OKD (dřív OpenShift Origin).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift je plně spravovaná nabídka služby OpenShift v Azure. Tato služba je společně spravované a podporované společností Microsoft a Red Hat. Další podrobnosti najdete v tématu [Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) dokumentaci.
+Microsoft Azure Red Hat OpenShift je plně spravovaná nabídka OpenShift spuštěná v Azure. Tato služba je společně spravovaná a podporovaná Microsoftem a Red Hat. Další podrobnosti najdete v dokumentaci ke [službě Azure Red Hat OpenShift](https://docs.microsoft.com/azure/openshift/) .
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
-Container Platform je připravená pro podnikové [komerční verze](https://www.openshift.com) z a podporuje Red Hat. S touto verzí zákazníci zakoupit nezbytná oprávnění pro OpenShift Container Platform a zodpovídají za instalaci a správu celé infrastruktury.
+Platforma kontejneru je [komerční verze](https://www.openshift.com) připravená pro podnikové prostředí od společnosti Red Hat a podporovaná. V této verzi si zákazníci zakoupí nezbytné nároky na OpenShift kontejnerové platformy a zodpovídá za instalaci a správu celé infrastruktury.
 
-Protože zákazníkům "vlastní" celou platformu, jejich ji nainstalujte ve svém místním datovém centru, nebo ve veřejném cloudu (jako je Azure).
+Vzhledem k tomu, že zákazníci "vlastní", můžou ho nainstalovat do místního datového centra nebo ve veřejném cloudu (například Azure).
 
 ## <a name="okd"></a>OKD
 
-Je OKD [open source](https://www.okd.io/) nadřazený projekt OpenShift, která je podporovaná komunitou. OKD můžete nainstalovat na CentOS nebo Red Hat Enterprise Linux (RHEL).
+OKD je [Open Source](https://www.okd.io/) projekt pro OpenShift, který je podporován komunitou. OKD se dá nainstalovat na CentOS nebo Red Hat Enterprise Linux (RHEL).
 
 ## <a name="next-steps"></a>Další postup
 
 - [Konfigurace běžných požadavků pro OpenShift v Azure](./openshift-prerequisites.md)
-- [Nasazení OpenShift Container Platform v Azure](./openshift-container-platform.md)
-- [Nasazení OpenShift Container platformy samosprávné Marketplace nabídku](./openshift-marketplace-self-managed.md)
-- [Nasadit OpenShift v Azure stacku](./openshift-azure-stack.md)
-- [Úlohy po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazení Openshiftu](./openshift-troubleshooting.md)
+- [Nasazení platformy kontejnerů OpenShift v Azure](./openshift-container-platform.md)
+- [Nasazení nabídky samoobslužného tržiště spravovaného kontejnerem OpenShift](./openshift-marketplace-self-managed.md)
+- [Nasazení OpenShift v Azure Stack](./openshift-azure-stack.md)
+- [Úkoly po nasazení](./openshift-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift](./openshift-troubleshooting.md)

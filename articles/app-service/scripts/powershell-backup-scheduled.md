@@ -10,19 +10,18 @@ tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: acb17386a2c2e0b2a89f46c607befb56eadaee48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0223d093cc82becf66a903ea80c03c8435ea84c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136582"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098383"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Vytvoření naplánovaného zálohování webové aplikace pomocí Powershellu
+# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Vytvoření naplánovaného zálohování webové aplikace pomocí PowerShellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří naplánované zálohování. 
 

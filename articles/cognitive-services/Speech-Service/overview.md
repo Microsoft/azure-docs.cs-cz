@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068847"
 ---
 # <a name="what-are-the-speech-services"></a>Co jsou služby Speech?
 
@@ -84,12 +84,10 @@ Vzorový kód je k dispozici na GitHubu pro každou službu Azure Speech Service
 
 Služba Azure Speech Services dobře funguje s integrovanými modely, ale možná budete chtít další přizpůsobení a vyladit prostředí pro svůj produkt nebo prostředí. Možnosti přizpůsobení jsou v rozsahu od ladění akustického modelu až po jedinečná hlasová písma pro vaši značku. Po vytvoření vlastního modelu ho můžete použít u libovolné služby Azure Speech Services.
 
-| Speech Service | Model | Popis |
-|----------------|-------|-------------|
-| Řeč na text | [Akustický model](how-to-customize-acoustic-models.md) | Vytvořte si vlastní akustický model pro aplikace, nástroje nebo zařízení, které se používají v různých prostředích, jako je třeba v kleci nebo v továrně, z nichž každá má konkrétní podmínky záznamu. Mezi příklady patří zvýrazněné rozpoznávání řeči, konkrétní šum na pozadí nebo použití konkrétního mikrofonu pro záznam. |
-| | [Jazykový model](how-to-customize-language-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro pole, jako je lékařské terminologie nebo žargonu. |
-| | [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický tvar a zobrazení slova nebo termínu. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché. |
-| Text na řeč | [Hlasové písmo](how-to-customize-voice-font.md) | Vlastní hlasová písma umožňují vytvořit rozpoznatelný hlasový hlas pro vaši značku. Pro začátek zabere pouze malé množství dat. Větší údaje, které poskytnete, budou zvukové písmo větší, než je vaše hlasová. |
+| Speech Service | Platforma | Popis |
+|----------------|-------------|-------------|
+| Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání bariér při rozpoznání řeči, jako jsou mluvený styl, slovník a šum na pozadí |
+| Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný hlas pro aplikace pro převod textu na řeč s dostupnými daty o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 

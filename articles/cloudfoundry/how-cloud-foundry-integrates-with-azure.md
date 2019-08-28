@@ -1,6 +1,6 @@
 ---
-title: Jak se integruje s Azure Cloud Foundry | Dokumentace Microsoftu
-description: Popisuje, jak můžete pomocí služby Azure a zlepšit tak prostředí Enterprise Cloud Foundry
+title: Jak se Cloud Foundry integruje s Azure | Microsoft Docs
+description: Popisuje, jak Cloud Foundry možné využívat služby Azure ke zlepšení podnikového prostředí.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
@@ -9,90 +9,89 @@ editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb5de6bf42769e7fd04782fc52d93764d1d7a3d6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198965"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093925"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
 
-[Cloud Foundry](https://docs.cloudfoundry.org/) je spuštěn na platformě poskytovatelů cloudu IaaS platformě PaaS. Nabízí komfortem při nasazování aplikace konzistentní napříč poskytovatelů cloudových služeb. Můžete také integrovat s různými službami Azure, podnikové vysokou dostupnost, škálovatelnost a úspor nákladů.
-Existují [6 subsystémy Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), který může být flexibilně škálování online, včetně: Směrování, ověřování, Správa životního cyklu aplikací, správa, monitorování a zasílání zpráv. Pro každou subsystémů můžete nakonfigurovat Cloud Foundry používat zpravodaj služby Azure. 
+[Cloud Foundry](https://docs.cloudfoundry.org/) je PaaS platforma, která běží na IaaS platformě poskytovatelů cloudu. Nabízí konzistentní prostředí pro nasazení aplikací napříč poskytovateli cloudu. Může se také integrovat s různými službami Azure s vysokou dostupností, škálovatelností a úsporou nákladů na podnikové úrovni.
+Existují [6 subsystémů Cloud Foundry](https://docs.cloudfoundry.org/concepts/architecture/), které je možné pružně škálovat online, včetně: Směrování, ověřování, Správa životního cyklu aplikací, Správa služeb, zasílání zpráv a monitorování. Pro každý z těchto subsystémů můžete nakonfigurovat Cloud Foundry, aby používaly korespondenční službu Azure. 
 
-![Cloud Foundry v Azure integrace architektury](media/CFOnAzureEcosystem-colored.png)
+![Cloud Foundry v architektuře Integrace Azure](media/CFOnAzureEcosystem-colored.png)
 
 ## <a name="1-high-availability-and-scalability"></a>1. Vysoká dostupnost a škálovatelnost
-### <a name="managed-disk"></a>Spravovaný Disk
-Bosh používá pro vytvoření disku a odstraňování rutiny ISP Azure (rozhraní poskytovatele cloudu). Ve výchozím nastavení se používají nespravované disky. Zákazník ručně vytvářet účty úložiště a pak nakonfigurujte účty v souborech manifestu CF vyžaduje. Toto je z důvodu omezení počtu disků v účtu úložiště.
-Nyní [spravovaného disku](https://azure.microsoft.com/services/managed-disks/) nabídkami spravovaného disku bezpečné a spolehlivé úložiště pro virtuální počítače, je k dispozici. Zákazník nemusí se účet úložiště pro škálování a vysokou dostupnost. Azure automaticky uspořádá disky. Ať už nové nebo stávající nasazení, bude zpracovávat ISP Azure vytvoření či migrace spravovaných disků při nasazení aplikace CF. Jsou podporovány pro PCF 1.11. Můžete si taky prostudovat Cloud Foundry open source [spravovaného disku pokyny](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) pro referenci. 
+### <a name="managed-disk"></a>Spravovaný disk
+Bosh používá Azure CPI (rozhraní poskytovatele cloudu) pro vytváření a odstraňování rutin na disku. Ve výchozím nastavení se používají nespravované disky. Vyžaduje, aby zákazník vytvořil účty úložiště ručně, a pak nakonfiguruje účty v souborech manifestu CF. Důvodem je omezení počtu disků na účet úložiště.
+K dispozici je teď [spravovaný disk](https://azure.microsoft.com/services/managed-disks/) , který nabízí spravované zabezpečené a spolehlivé diskové úložiště pro virtuální počítače. Zákazník už nebude muset řešit účet úložiště pro škálování a HA. Azure uspořádá disky automaticky. Bez ohledu na to, jestli se jedná o nové nebo existující nasazení, Azure CPI zpracuje vytváření nebo migraci spravovaného disku během nasazování CF. Podporuje se s PCF 1,11. Můžete také prozkoumat dokumentaci Open Source Cloud Foundry [Managed disks](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) pro referenci. 
 ### <a name="availability-zone-"></a>Zóna dostupnosti *
-Jako platforma pro aplikace nativní pro cloud, Cloud Foundry je navržená s [čtyři úroveň vysoké dostupnosti](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html). Při první tři úrovně chyby softwaru mohou být zpracovány CF samotný systém, platformu odolnost proti chybám poskytuje poskytovatelů cloudových služeb. Klíčové komponenty CF by měly být chráněny pomocí platformy poskytovatele cloudových řešení s vysokou DOSTUPNOSTÍ. To zahrnuje GoRouters, mozky Diegu, CF databázi a službu dlaždice. Ve výchozím nastavení [dostupnosti Azure](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets) se používá pro odolnost proti chybám mezi clustery v datovém centru.
-Je dobré nové [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview ) vydání nyní přináší odolnost proti chybám na další úroveň s nízkou latencí redundance napříč datovými centry.
-Zóny dostupnosti Azure HA dosahuje tak, že sada virtuálních počítačů do více než 2 datových center, každá sada virtuálních počítačů jsou redundantní do jiné sady. Jednu zónu je vypnutý, ostatní sady jsou ještě živá, izolovaně od po havárii.
+Jako platforma pro nativní cloudové platformy je Cloud Foundry navržena se [čtyřmi úrovněmi vysoké dostupnosti](https://docs.pivotal.io/pivotalcf/2-1/concepts/high-availability.html). Zatímco první tři úrovně chyb softwaru mohou být zpracovány samotným systémem CF, odolnost proti chybám platformy je poskytována poskytovateli cloudu. Komponenty Key CF by měly být chráněné řešením HA pro platformu poskytovatele cloudu. Patří sem GoRouters, Diegu Mozeks, CF Database a Service dlaždice. Ve výchozím nastavení se [Skupina dostupnosti Azure](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/deploy-cloudfoundry-with-availability-sets) používá pro odolnost proti chybám mezi clustery v datovém centru.
+Dobrým novým je, že se teď uvolní [zóna dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview ) , která přináší odolnost proti chybám na vyšší úroveň s nízkou latencí napříč datovými centry.
+Zóna dostupnosti Azure dosahuje HA tím, že do dvou a datových center umístí sadu virtuálních počítačů. Každá sada virtuálních počítačů je redundantní pro jiné sady. Pokud je jedna zóna mimo provoz, ostatní sady jsou stále živé, izolované od havárie.
 > [!NOTE] 
-> Zóny dostupnosti Azure není ještě dostupná do všech oblastí, zkontrolujte nejnovější [oznámení pro seznam podporovaných oblastí](https://docs.microsoft.com/azure/availability-zones/az-overview). Otevřete zdrojový Cloud Foundry, zkontrolujte [zóny dostupnosti Azure Cloud Foundry pokyny opensourcových](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone).
+> Zóna dostupnosti Azure ještě není nabízená všem oblastem, podívejte se na nejnovější [oznámení v seznamu podporovaných oblastí](https://docs.microsoft.com/azure/availability-zones/az-overview). V případě Open Source Cloud Foundry ověřte v [oblasti dostupnosti v Azure informace o open source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone).
 
-## <a name="2-network-routing"></a>2. Směrováním v síti
-Ve výchozím nastavení se používá Azure load balancer úrovně basic pro příchozí požadavky CF/aplikace API a předává je Gorouters. CF komponenty, jako jsou Brain Diegu, MySQL, ERT můžete také použít nástroj pro vyrovnávání zatížení pro provoz pro vysokou dostupnost. Azure také poskytuje sadu plně spravované řešení vyrovnávání zatížení. Pokud potřebujete pro ukončení protokolu TLS ("přesměrování zpracování SSL") nebo za zpracování vrstvy aplikace požadavku HTTP/HTTPS, vezměte v úvahu Application Gateway. Pro vysokou dostupnost a škálovatelnost zátěže na vrstvy 4 vezměte v úvahu load balanceru úrovně standard.
-### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí různé možnosti, včetně snižování zátěže SSL, kompletního SSL, Firewall webových aplikací, spřažení relace na základě souborů cookie a další vyrovnávání zatížení vrstvy 7. Je možné [konfigurace aplikační brány v otevřít zdrojový Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF, zkontrolujte [zpráva k vydání verze PCF 2.1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) POC testu.
+## <a name="2-network-routing"></a>2. Síťové směrování
+Ve výchozím nastavení se nástroj pro vyrovnávání zatížení Azure Basic používá pro příchozí požadavky na CF API/aplikace a předává je do Gorouters. Komponenty CF, jako je Diegu mozek, MySQL, ERT, mohou také použít nástroj pro vyrovnávání zatížení k vyvážení provozu pro HA. Azure také poskytuje sadu plně spravovaných řešení vyrovnávání zatížení. Pokud hledáte ukončení protokolu TLS ("snižování zátěže SSL") nebo na požadavky HTTP/HTTPS zpracování aplikační vrstvy, zvažte Application Gateway. Pro zajištění vysoké dostupnosti a škálovatelnosti vyrovnávání zatížení ve vrstvě 4 zvažte standardní nástroj pro vyrovnávání zatížení.
+### <a name="azure-application-gateway-"></a>Application Gateway Azure *
+[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabízí různé možnosti vyrovnávání zatížení vrstvy 7, včetně snižování zátěže SSL, koncového šifrování SSL, brány firewall webových aplikací, spřažení relací na základě souborů cookie a dalších. Application Gateway můžete [nakonfigurovat v Cloud Foundry Open Source](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). Pro PCF si Projděte zpráva k [vydání verze PCF 2,1](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) pro test ověření koncepce.
 
-### <a name="azure-standard-load-balancer-"></a>Azure Load balancer úrovně Standard *
-Nástroj Azure Load Balancer je nástroj pro vyrovnávání zatížení vrstvy 4. Používá se za účelem distribuce provozu mezi instance služeb v sadě s vyrovnáváním zatížení. Standardní verze nabízí [pokročilé funkce](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nad základní verze. Příklad 1. Maximální limit fondu back-end je vyvolávána s cílem 1 000 virtuálních počítačů ze 100.  2. Koncové body nyní podporují více skupinám dostupnosti místo jedné skupiny dostupnosti.  3. Další funkce, jako jsou porty HA, bohatší data monitorování a tak dále. Při přesouvání do zóny dostupnosti Azure load balancer úrovně standard je povinné. Pro nové nasazení doporučujeme začít s Azure Load balancer úrovně Standard. 
+### <a name="azure-standard-load-balancer-"></a>Standard Load Balancer Azure *
+Azure Load Balancer je nástroj pro vyrovnávání zatížení vrstvy 4. Slouží k distribuci provozu mezi instancemi služeb v sadě s vyrovnáváním zatížení. Standardní verze poskytuje [Pokročilé funkce](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) nad základní verzí. Například 1. Maximální limit back-end fondu je vyvolán z 100 na 1000 virtuálních počítačů.  2. Koncové body teď podporují více skupin dostupnosti místo jedné skupiny dostupnosti.  3. Další funkce, jako jsou porty HA, rozsáhlejší monitorovací data atd. Pokud přesouváte do zóny dostupnosti Azure, vyžaduje se standardní nástroj pro vyrovnávání zatížení. Pro nové nasazení doporučujeme začít s Azure Standard Load Balancer. 
 
-## <a name="3-authentication"></a>3. Authentication 
-[Cloud Foundry uživatelský účet a ověřování](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) je služba pro správu identit centrální pro CF a jeho různé součásti. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je služba Microsoftu pro více tenantů, cloudového adresáře a identity management. Ve výchozím nastavení se UAA používá k ověřování Cloud Foundry. Jako upřesňující možnosti UAA také podporuje Azure AD jako úložiště externí uživatele. Uživatelé Azure AD můžete přistupovat pomocí svoji identitu LDAP, bez účtu Cloud Foundry Cloud Foundry. Postupujte podle těchto kroků [konfigurace služby Azure AD pro UAA v PCF](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
+## <a name="3-authentication"></a>3. Ověřování 
+[Cloud Foundry uživatelský účet a ověřování](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) je služba správy centrální identity pro CF a její různé komponenty. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je víceklientské cloudové služby a služba pro správu identit od Microsoftu. Ve výchozím nastavení se pro Cloud Foundry ověřování používá UAA. Jako pokročilá možnost podporuje i Azure AD úložiště externích uživatelů. Uživatelé Azure AD mají přístup k Cloud Foundry pomocí své identity LDAP bez účtu Cloud Foundry. Pomocí těchto kroků můžete [nakonfigurovat Azure AD pro UAA v PCF](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
-## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Úložiště dat pro Cloud Foundry běhu systému
-Cloud Foundry nabízí skvělé rozšiřitelnosti pro použití úložiště objektů BLOB Azure nebo služby Azure MySQL nebo PostgreSQL pro aplikace modulu runtime systému úložiště.
-### <a name="azure-blobstore-for-cloud-foundry-cloud-controller-blobstore"></a>Úložiště Azure objektů blob pro Cloud Foundry cloudu řadič úložiště objektů BLOB
-Kontroler cloudové úložiště objektů blob je důležitá data úložiště pro buildpacks, droplety, balíčky a fondy zdrojů. Ve výchozím nastavení se používá server systému souborů NFS pro kontroler cloudové úložiště objektů BLOB. Abyste se vyhnuli jediným bodem selhání, použijte jako externí úložiště Azure Blob Storage. Podívejte se [dokumentace ke Cloud Foundry](https://docs.cloudfoundry.org/deploying/common/cc-blobstore-config.html) pozadí, a [možnosti v Pivotal Cloud Foundry](https://docs.pivotal.io/pivotalcf/2-0/customizing/azure.html).
+## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Úložiště dat pro systém Cloud Foundry runtime
+Cloud Foundry nabízí skvělou rozšiřitelnost pro používání Azure SAS nebo Azure MySQL/PostgreSQL Services pro úložiště systémových aplikací modulu runtime.
+### <a name="azure-blobstore-for-cloud-foundry-cloud-controller-blobstore"></a>Azure SAS pro Cloud Foundry SAS Cloud Controller
+Cloud Controller SAS je důležité úložiště dat pro buildpacks, droplety, balíčky a fondy zdrojů. Ve výchozím nastavení se server NFS používá pro SAS adaptéru cloudu. Aby nedocházelo k jednomu bodu selhání, použijte Azure Blob Storage jako externí úložiště. Projděte si [dokumentaci k Cloud Foundry](https://docs.cloudfoundry.org/deploying/common/cc-blobstore-config.html) pro pozadí a [Možnosti v Cloud Foundry pivoted](https://docs.pivotal.io/pivotalcf/2-0/customizing/azure.html).
 
-### <a name="mysqlpostgresql-as-cloud-foundry-elastic-run-time-database-"></a>MySQL nebo PostgreSQL jako elastický Cloud Foundry provozovat čas databázi *
-Elastické Runtime CF vyžaduje dvě důležité systémy databáze:
+### <a name="mysqlpostgresql-as-cloud-foundry-elastic-run-time-database-"></a>Databáze MySQL/PostgreSQL jako Cloud Foundry databáze elastického běhu *
+Elastický modul runtime pro CF vyžaduje dvě hlavní systémové databáze:
 #### <a name="ccdb"></a>CCDB 
-Kontroler cloudové databáze.  Adaptér cloud poskytuje koncových bodů rozhraní REST API pro klienty pro přístup k systému. CCDB ukládá tabulek pro organizace, mezery, služby, role uživatelů a více pro kontroler cloudu.
+Databáze řadiče cloudu.  Cloud Controller poskytuje REST API koncovým bodům pro klienty pro přístup k systému. CCDB ukládá tabulky pro organizace, prostory, služby, role uživatelů a další pro cloudový adaptér.
 #### <a name="uaadb"></a>UAADB 
-Databáze pro uživatelský účet a ověřování. Ukládají se ověřování uživatelů související data, například šifrovaná uživatelská jména a hesla.
+Databáze pro uživatelský účet a ověřování. Ukládá data související s ověřováním uživatele, například šifrovaná uživatelská jména a hesla.
 
-Ve výchozím nastavení můžete použít místní systémovou databázi (MySQL). Pro vysokou dostupnost a škálování, využívají Azure spravované MySQL nebo PostgreSQL služby. Tady je podle pokynů z [povolení Azure MySQL nebo PostgreSQL pro CCDB, UAADB a jiné systémové databáze s otevřít zdrojový Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
+Ve výchozím nastavení je možné použít databázi MySQL (Local System Database). V případě HA a škálování použijte Azure Managed MySQL nebo PostgreSQL Services. Tady je pokyn pro [Povolení Azure MySQL/PostgreSQL pro CCDB, UAADB a další systémové databáze s Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
 
-## <a name="5-open-service-broker"></a>5. Technologie Open Service Broker
-Služby Azure service broker nabízí jednotné rozhraní pro správu aplikace přístup ke službám Azure. Nové [Open Service Broker for Azure projektu](https://github.com/Azure/open-service-broker-azure) poskytuje jednotné a jednoduchý způsob, jak poskytovat služby do aplikací přes Cloud Foundry, OpenShift a Kubernetes. Zobrazit [Azure Open Service Broker pro dlaždici PCF](https://network.pivotal.io/products/azure-open-service-broker-pcf/) pokyny nasazení PCF.
+## <a name="5-open-service-broker"></a>5. Otevřít Service Broker
+Azure Service Broker nabízí konzistentní rozhraní pro správu přístupu aplikací ke službám Azure. Nový [otevřený Service Broker pro Azure Project](https://github.com/Azure/open-service-broker-azure) nabízí jediný a jednoduchý způsob poskytování služeb aplikacím v rámci Cloud Foundry, OpenShift a Kubernetes. Pokyny k nasazení v PCF najdete na [dlaždici Azure Open Service Broker pro PCF](https://network.pivotal.io/products/azure-open-service-broker-pcf/) .
 
 ## <a name="6-metrics-and-logging"></a>6. Metriky a protokolování
-Azure Log Analytics Nozzle je komponenta Cloud Foundry, která předává metriky z [Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) k [protokoly Azure monitoru](https://azure.microsoft.com/services/log-analytics/). Nozzle můžete shromažďovat, zobrazit a analyzovat metriky stavu a výkonu systému CF mezi několika nasazeními.
-Klikněte na tlačítko [tady](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) se dozvíte, jak nasadit Azure Log Analytics Nozzle pro Open Source a Pivotal Cloud Foundry prostředí a pak přístup k datům z Azure monitoru protokoly konzoly. 
+Trysek služby Azure Log Analytics je Cloud Foundry komponenta, která předá metriky z [Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) do [protokolů Azure monitor](https://azure.microsoft.com/services/log-analytics/). Pomocí této trysky můžete shromažďovat, zobrazovat a analyzovat stav systému CF a metriky výkonu napříč různými nasazeními.
+Kliknutím [sem](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) se dozvíte, jak nasadit trysku služby Azure Log Analytics do Open Source a pivoted Cloud Foundry prostředí a pak přistupovat k datům z konzoly protokolů Azure monitor. 
 > [!NOTE]
-> Z verze PCF 2.0 BOSH metrik stavu pro virtuální počítače se předávají do Loggregator Firehose ve výchozím nastavení a jsou integrované do konzoly protokoly Azure monitoru.
+> Z PCF 2,0 jsou metriky stavu BOSH pro virtuální počítače předávány ve výchozím nastavení Loggregator firehose a jsou integrovány do konzoly Azure Monitor protokoly.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="7-cost-saving"></a>7. Úspory nákladů
-### <a name="cost-saving-for-devtest-environments"></a>Pro prostředí pro vývoj/testování pro úsporu nákladů
+## <a name="7-cost-saving"></a>7. Úspora nákladů
+### <a name="cost-saving-for-devtest-environments"></a>Úspora nákladů pro prostředí pro vývoj a testování
 #### <a name="b-series-"></a>Řady B-Series: *
-Zatímco řady F a virtuálních počítačů D byly běžně doporučuje pro produkční prostředí Pivotal Cloud Foundry nové "zvládáním výkonových špiček" [řady B-series](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) přináší nové možnosti. Zvládáním výkonových špiček virtuální počítače řady B-series jsou ideální pro úlohy, které není nutné plný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle požadavky na výkon zvládáním výkonových špiček. Je 0,012 $za hodinu (B1) ve srovnání s 0,05 USD za hodinu (F1), podívejte se seznam všech [velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) a [ceny](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) podrobnosti. 
-#### <a name="managed-standard-disk"></a>Spravovaných disků úrovně Standard: 
-Disky Premium se doporučuje pro zajištění spolehlivého výkonu v produkčním prostředí.  S [spravovaného disku](https://azure.microsoft.com/services/managed-disks/), služba storage úrovně standard může také poskytovat podobné spolehlivost, jiné výkonové. Pro úlohu, která není citlivé na výkon, jako je vývoj a testování nebo méně náročné prostředí spravované disky úrovně standard nabízí alternativní možnost s nižšími náklady.  
-### <a name="cost-saving-in-general"></a>Obecně úspory nákladů 
-#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Významné VM náklady na ukládání s Azure rezervace: 
-Dnes, všechny virtuální počítače CF se účtuje pomocí "on-demand" cen, i když v prostředí obvykle zůstat po neomezenou dobu. Teď můžete rezervovat kapacitu virtuálních počítačů na 1 nebo 3 roky období a získejte slevy 45 – 65 %. Slevy fakturačního systému beze změny do svého prostředí. Podrobnosti najdete v tématu [jak Azure funguje rezervace](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
-#### <a name="managed-premium-disk-with-smaller-sizes"></a>Spravovaný Disk úrovně Premium s menší velikostí: 
-Spravované disky podporu menší velikosti disků, třeba P4(32 GB) a P6(64 GB) pro disky standard i premium. Pokud máte malé úlohy, ušetříte náklady při migraci ze standardní prémiové disky na spravované prémiové disky.
-#### <a name="use-azure-first-party-services"></a>Použijte první strany služby Azure: 
-Využití výhod Azure služba Microsoftu sníží dlouhodobé správy nákladů, kromě vysokou dostupnost a spolehlivost v uvedených částech. 
+I když byly pro Pivoting Cloud Foundry produkčního prostředí běžně doporučovány série virtuálních počítačů F a D, nová možnost "s možností rozšíření [B-Series](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) " přináší nové možnosti. Virtuální počítače s podporou řady B-Series jsou ideální pro úlohy, které nepotřebují průběžný výkon procesoru, jako jsou webové servery, malé databáze a vývojové a testovací prostředí. Tyto úlohy mají typicky požadavky na výkon při roztržení. Ve srovnání s $0,05/hod (F1) je ve srovnání se $0.012/hod. Další informace najdete v úplném seznamu velikostí a [cen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) . 
+#### <a name="managed-standard-disk"></a>Spravovaný standardní disk: 
+Pro zajištění spolehlivého výkonu v produkčním prostředí byly doporučeny disky Premium.  Se [spravovaným diskem](https://azure.microsoft.com/services/managed-disks/)může standard Storage také poskytovat podobnou spolehlivost s jiným výkonem. Pro úlohy, které nejsou citlivé na výkon, jako je vývoj a testování nebo méně důležité prostředí, nabízejí spravované standardní disky alternativní možnost s nižšími náklady.  
+### <a name="cost-saving-in-general"></a>Obecně se ukládají náklady. 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Významné náklady na virtuální počítače se ukládají pomocí rezervací Azure: 
+V dnešní době se všechny virtuální počítače CF účtují pomocí cen na vyžádání, a to i v případě, že prostředí obvykle zůstanou neomezeně. Nyní můžete rezervovat kapacitu virtuálního počítače na 1 nebo 3 roky a získat slevy 45-65%. Slevy se používají v systému fakturace, a to bez jakýchkoli změn v prostředí. Podrobnosti najdete v tématu [Jak funguje rezervace Azure](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
+#### <a name="managed-premium-disk-with-smaller-sizes"></a>Spravovaný disk úrovně Premium s menšími velikostmi: 
+Spravované disky podporují menší velikosti disků, například P4 (32 GB) a P6 (64 GB) pro disky úrovně Premium i Standard. Pokud máte malé úlohy, můžete při migraci z disků Standard Premium na spravované disky Premium ušetřit náklady.
+#### <a name="use-azure-first-party-services"></a>Používejte služby Azure First stran: 
+Využití služby Azure First večírek snižuje náklady na dlouhodobou správu, kromě HA a spolehlivosti uvedených v předchozích částech. 
 
-Má Pivotalu spustili [malé nároky na místo ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) pro zákazníky PCF komponenty jsou umístěné do jenom 4 virtuální počítače spuštěné instance až 2500 aplikací. Zkušební verze je teď k dispozici prostřednictvím [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+Na pivotu bylo zahájeno [malé nároky ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) pro zákazníky PCF. komponenty jsou společně umístěny do pouhých 4 virtuálních počítačů a jsou spuštěny až 2500 instancí aplikací. Zkušební verze je teď k dispozici prostřednictvím [místa na trhu Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
 
 ## <a name="next-steps"></a>Další kroky
-Funkce integrace služby Azure jsou dostupné s nejprve [otevřít zdrojový Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/), než bude k dispozici v Pivotal Cloud Foundry. Funkce označené * stále nejsou k dispozici prostřednictvím PCF. Cloud Foundry integrace s Azure Stack není buď zahrnuté v tomto dokumentu.
-Pro podporu PCF na funkce označené *, nebo Cloud Foundry integrace s Azure Stackem, kontaktujte vašeho account manažera společnosti Pivotal a Microsoft pro nejnovější stav. 
+Funkce Integrace Azure jsou nejdřív k dispozici s [Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/), než budou k dispozici na pivoted Cloud Foundry. Funkce označené symbolem * stále nejsou k dispozici prostřednictvím PCF. Cloud Foundry integrace s Azure Stack není v tomto dokumentu zahrnutá ani jedna z nich.
+Pokud chcete PCF podporu pro funkce označené * nebo Cloud Foundry integrace s Azure Stack, obraťte se na Pivoted and účet Microsoft Manager, kde najdete nejnovější stav. 
 

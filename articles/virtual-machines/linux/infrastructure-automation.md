@@ -1,6 +1,6 @@
 ---
-title: Použití nástrojů automatizace infrastruktury pro virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
-description: Další informace o použití nástrojů automatizace infrastruktury, jako jsou Ansible, Chef, Puppet, Terraform a Packeru pro vytvoření a správa virtuálních počítačů s Linuxem v Azure
+title: Použití nástrojů pro automatizaci infrastruktury pro virtuální počítače se systémem Linux v Azure | Microsoft Docs
+description: Naučte se používat nástroje pro automatizaci infrastruktury, jako je Ansible, Puppet, Terraformu a balírna, k vytváření a správě virtuálních počítačů se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,17 +9,16 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 808f671b108fa2e06e3be919372647b391f809eb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: da476c1f0c1b64a0689f401ebb215fe8888b9921
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671413"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083071"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

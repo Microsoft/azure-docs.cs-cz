@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 60e5e6cc6fdd839c8bbe44d8e1d2e794e7afb34d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5909bf2a41745162902911aa31a9bce07d36135b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323047"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094583"
 ---
 # <a name="task-complete-event"></a>Událost dokončení úlohy
 
@@ -86,8 +85,8 @@ ms.locfileid: "68323047"
 
 |Název elementu|type|Poznámky|
 |------------------|----------|-----------|
-|startTime|Datetime|Čas spuštění úlohy. ' Running ' odpovídá stavu spuštěno  , takže pokud úloha určí soubory prostředků nebo balíčky aplikací, pak čas spuštění odráží čas, kdy se úloha spustila stahování nebo nasazování.  Pokud byl úkol restartován nebo opakován, jedná se o poslední čas spuštění úlohy.|
-|endTime|Datetime|Čas, kdy byla úloha dokončena.|
+|startTime|DateTime|Čas spuštění úlohy. ' Running ' odpovídá stavu spuštěno , takže pokud úloha určí soubory prostředků nebo balíčky aplikací, pak čas spuštění odráží čas, kdy se úloha spustila stahování nebo nasazování.  Pokud byl úkol restartován nebo opakován, jedná se o poslední čas spuštění úlohy.|
+|endTime|DateTime|Čas, kdy byla úloha dokončena.|
 |exitCode|Int32|Ukončovací kód úkolu|
 |retryCount|Int32|Počet opakovaných pokusů o úlohu službou Batch. Úloha se zopakuje, pokud se ukončí s nenulovým ukončovacím kódem, až do zadaného MaxTaskRetryCount.|
 |requeueCount|Int32|Počet, kolikrát se služba Batch znovu zařadila do fronty jako výsledek požadavku uživatele.<br /><br /> Když uživatel odebere uzly z fondu (změnou velikosti nebo zmenšení fondu) nebo když je úloha zakázaná, může uživatel určit, že spuštěné úlohy na uzlech se mají znovu zařadit do fronty ke spuštění. Tento počet sleduje, kolikrát se úkol z těchto důvodů znovu zařadil do fronty.|

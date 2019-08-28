@@ -7,17 +7,16 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: bf5219f8e147baba0e89a8c0e1fa6cb7b371473c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c708bfd0f8e49e9a857b9f77fab6224354ff06a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774754"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097188"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Vazby úložiště front Azure pro Azure Functions
 
@@ -619,7 +618,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastaveno na `queue`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje frontu v kódu funkce. Nastavte na `$return` odkaz na návratovou hodnotu funkce.|
-|**queueName** |**queueName** | Název fronty |
+|**queueName** |**queueName** | Název fronty. |
 |**připojení** | **připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -684,7 +683,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
 |maxDequeueCount|5|Počet pokusů o zpracování zprávy před jejich přesunutím do nepoškozené fronty.|
 |newBatchThreshold|batchSize/2|Pokaždé, když se počet zpracovávaných zpráv souběžně vrátí k tomuto číslu, modul runtime načte další dávku.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 

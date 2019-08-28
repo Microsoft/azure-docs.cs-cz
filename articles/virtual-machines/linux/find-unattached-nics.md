@@ -1,6 +1,6 @@
 ---
-title: Vyhledání a odstranění nepřipojených síťových adaptérů Azure | Dokumentace Microsoftu
-description: Tom, jak vyhledat a odstranit síťové adaptéry Azure, které nejsou připojené k virtuálním počítačům pomocí Azure CLI
+title: Vyhledání a odstranění nepřipojených síťových adaptérů Azure | Microsoft Docs
+description: Jak najít a odstranit síťové adaptéry Azure, které nejsou připojené k virtuálním počítačům pomocí Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -11,25 +11,24 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: dd4fcfe80818bd8e1e87851f4b5131aac73ceeb5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1665b5fa8d2bfd63982bcffd1d5251214ff3586b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083325"
 ---
-# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Jak najít a odstranit nepřipojené síťové rozhraní (NIC) karty pro virtuální počítače Azure
-Když odstraníte virtuální počítač (VM) v Azure, nebudou ve výchozím nastavení odstraněny karty síťového rozhraní (NIC). Je-li vytvořit a odstranit více virtuálních počítačů, nepoužívané síťové adaptéry dál používat interní zapůjčení IP adres. Při vytváření dalších síťových adaptérů virtuálního počítače, mohou nepovedlo se získat zapůjčení IP v adresním prostoru podsítě. V tomto článku se dozvíte, jak najít a odstranění nepřipojených síťových adaptérů.
+# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Jak vyhledat a odstranit nepřipojené síťové karty (nic) pro virtuální počítače Azure
+Když odstraníte virtuální počítač v Azure, karty síťového rozhraní (nic) se ve výchozím nastavení neodstraní. Pokud vytvoříte a odstraníte víc virtuálních počítačů, nepoužívané síťové karty budou dál používat zapůjčení interních IP adres. Při vytváření jiných síťových adaptérů virtuálních počítačů nemusí být možné získat zapůjčení IP adres v adresním prostoru podsítě. V tomto článku se dozvíte, jak najít a odstranit nepřipojené síťové adaptéry.
 
 ## <a name="find-and-delete-unattached-nics"></a>Vyhledání a odstranění nepřipojených síťových adaptérů
 
-*VirtualMachine* vlastnosti pro síťové rozhraní se ukládají ID a skupinu prostředků virtuálního počítače síťového adaptéru je připojen k. Tento skript projde všechny síťové adaptéry v rámci předplatného a ověří, zda *virtualMachine* vlastnost má hodnotu null. Pokud je tato vlastnost hodnotu null, síťového adaptéru není připojen k virtuálnímu počítači.
+Vlastnost *VirtualMachine* pro síťovou kartu ukládá ID a skupinu prostředků virtuálního počítače, ke kterému je připojená síťová karta. Následující skript projde všemi síťovými kartami v rámci předplatného a zkontroluje, jestli má vlastnost *VirtualMachine* hodnotu null. Pokud má tato vlastnost hodnotu null, síťové rozhraní není připojené k virtuálnímu počítači.
 
-Chcete-li zobrazit všechny nepřipojených síťových adaptérů, ji má důrazně doporučujeme pro první spuštění skriptu pomocí *deleteUnattachedNics* proměnnou *0*. Odstranění nepřipojených síťových adaptérů, poté, co si výstup seznamu, spusťte skript s *deleteUnattachedNics* k *1*.
+Pokud chcete zobrazit všechny nepřipojené síťové karty, důrazně doporučujeme spustit skript s proměnnou *deleteUnattachedNics* na *hodnotu 0*. Pokud chcete po kontrole výstupu seznamu odstranit všechny nepřipojené síťové rozhraní, spusťte skript s *deleteUnattachedNics* na *1*.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs
@@ -51,6 +50,6 @@ do
 done
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak vytvářet a spravovat virtuální sítě v Azure najdete v tématu [vytváření a správě sítí virtuálních počítačů](tutorial-virtual-network.md).
+Další informace o tom, jak vytvářet a spravovat virtuální sítě v Azure, najdete v tématu [Vytvoření a správa sítí virtuálních počítačů](tutorial-virtual-network.md).

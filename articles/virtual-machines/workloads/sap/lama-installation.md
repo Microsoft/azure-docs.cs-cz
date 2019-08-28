@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68607975"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099542"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -99,10 +98,10 @@ Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azur
 
 Otevřete web SAP LaMa a přejděte na infrastruktura. Přejděte na kartu cloudové správce a klikněte na Přidat. Vyberte Microsoft Azure Adaptér cloudu a klikněte na další. Zadejte následující informace:
 
-* Popisek: Vyberte název instance konektoru.
+* Popisek Vyberte název instance konektoru.
 * Uživatelské jméno: ID aplikace instančního objektu
-* Heslo: Klíč nebo heslo instančního objektu služby
-* URL: Zachovat výchozí https://management.azure.com/
+* Zadáno Klíč nebo heslo instančního objektu služby
+* Adresa URL: Zachovat výchozí https://management.azure.com/
 * Interval monitorování (sekundy): Měla by být aspoň 300.
 * ID předplatného: ID předplatného Azure
 * ID tenanta Azure Active Directory: ID tenanta služby Active Directory
@@ -504,12 +503,12 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Chyby a upozornění při instalaci aplikačního serveru
 
 * Chyba při provádění kroku SAPinst: getProfileDir
-  * CHYBA: (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_readProfileDir | možnost | najít | zaznamenalo | zareadProfile | 0 | getProfileDir ohlásila chybu: Uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
+  * CHYBA (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_readProfileDir | možnost | najít | zaznamenalo | zareadProfile | 0 | getProfileDir ohlásila chybu: Uzel \\\as1-ascs\sapmnt\AS1\SYS\profile neexistuje. Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
   * Řešení  
     Ujistěte se, že je SWPM spuštěný s uživatelem, který má přístup k tomuto profilu. Tento uživatel se dá nakonfigurovat v Průvodci instalací aplikačního serveru.
 
 * Chyba při provádění kroku SAPinst: askUnicode
-  * CHYBA: (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_getUnicode | možnost | najít | zaznamenala | zakódování | | 0 | askUnicode ohlásila chybu: Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
+  * CHYBA (Poslední chyba hlášená krokem: Zachycená ESAPinstException v modulu volání: Validátor kroku | NW_DI | najít | najít | najít | 0 | 0 | NW_GetSidFromProfiles | najít | najít | najít | getSid | 0 | NW_getUnicode | možnost | najít | zaznamenala | zakódování | | 0 | askUnicode ohlásila chybu: Pokud chcete tento problém vyřešit, spusťte v interaktivním režimu SAPinst.)
   * Řešení  
     Pokud používáte nedávné jádro SAP, SWPM nemůže určit, jestli systém je systémem kódování Unicode, který už používá server zpráv ASCS. Další podrobnosti najdete v tématu SAP Note [2445033] .  
     Tento problém bude opravený v novém balíčku nebo opravě podpory SAP LaMa.  
@@ -562,7 +561,7 @@ Pro *název hostitele instance služby pas* v dialogu *instance primárního apl
   * Řešení  
     Nezapomeňte přidat pravidlo hostitele v rámci *izolace* krok za účelem povolení komunikace z virtuálního počítače s řadičem domény.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Průvodce provozem SAP HANA v Azure][hana-ops-guide]
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]

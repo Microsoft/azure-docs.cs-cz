@@ -1,93 +1,92 @@
 ---
-title: Zotavení po havárii a geografická rozptýlenost v Durable Functions – Azure
-description: Přečtěte si o zotavení po havárii a geografická rozptýlenost v Durable Functions.
+title: Zotavení po havárii a geografická distribuce v Durable Functions – Azure
+description: Přečtěte si o zotavení po havárii a geografické distribuci v Durable Functions.
 services: functions
 author: MS-Santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f242a16bc89e6b229efa42b88ebd20ca174e2516
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741333"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098072"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Zotavení po havárii a geografická distribuce
 
 ## <a name="overview"></a>Přehled
 
-V Durable Functions všechny stavy se ukládají ve službě Azure Storage. A [centra úloh](durable-functions-task-hubs.md) je logický kontejner prostředků služby Azure Storage, které se používají pro Orchestrace. Funkce nástroje Orchestrator a aktivity pouze komunikovat mezi sebou když patří do stejné centra úloh.
-Popsané scénáře navrhnout možnosti nasazení pro zvýšení dostupnosti a minimalizovat prostoje během aktivity pro zotavení po havárii.
+V Durable Functions je veškerý stav trvale v Azure Storage. [Centrum úloh](durable-functions-task-hubs.md) je logický kontejner pro Azure Storage prostředky, které se používají pro orchestrace. Funkce Orchestrator a Activity můžou vzájemně fungovat, když patří do stejného centra úloh.
+Popsané scénáře navrhují možnosti nasazení a zvyšují dostupnost a minimalizují prostoje během aktivit zotavení po havárii.
 
-Je důležité si všimněte, že tyto scénáře jsou založeny na konfigurace aktivní – pasivní, protože se řídit využití služby Azure Storage. Tento model spočívá v nasazení aplikace funkcí zálohování (pasivní) do jiné oblasti. Traffic Manager monitorovat aplikace primární (aktivní) funkce dostupnosti. To převezme do aplikace funkci zálohování Pokud selže primární. Další informace najdete v tématu [Traffic Manageru](https://azure.microsoft.com/services/traffic-manager/)společnosti [metody směrování provozu Priority.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Je důležité si všimnout, že tyto scénáře jsou založené na konfiguracích aktivní – pasivní, protože se řídí využitím Azure Storage. Tento model se skládá z nasazení zálohovací (pasivní) aplikace Function App do jiné oblasti. Traffic Manager bude sledovat dostupnost primární (aktivní) funkce aplikace. Dojde k převzetí služeb při selhání v aplikaci Function App, pokud primární selže. Další informace najdete v tématu věnovaném [metodě směrování s prioritou](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
 
 >[!NOTE]
 >
-> - Navrhované konfiguraci aktivní-pasivní zajišťuje, že klient vždy moct aktivovat novou Orchestrace přes protokol HTTP. Ale následkem s dvě aplikace function App sdílení stejné úložiště, zpracování na pozadí budou distribuována mezi jejich soutěží o ceny na stejné fronty zpráv. Tuto konfiguraci s sebou nese náklady za Přidání odchozího přenosu dat pro sekundární funkci aplikace.
-> - Základní centra účtů a úloh úložiště jsou vytvořené v primární oblasti a sdílí obě aplikace function App.
-> - Všechny aplikace function App, které jsou nasazeny redundantně, musejí sdílet stejnou funkci přístupové klíče v případě při aktivaci prostřednictvím protokolu HTTP. Poskytuje modul Runtime služby Functions [rozhraní API pro správu](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , která umožňuje uživatelům programově přidat, odstranit a aktualizovat klíče funkce.
+> - Navrhovaná konfigurace aktivní – pasivní zajišťuje, že klient bude vždycky schopný aktivovat nové orchestrace přes HTTP. V důsledku toho, že mají dvě aplikace Function App sdílející stejné úložiště, bude zpracování na pozadí distribuováno mezi obě z nich a bude se přijímají pro zprávy ve stejných frontách. Tato konfigurace se vyskytne v přidaných nákladech na výstup pro sekundární aplikaci Function App.
+> - Základní účet úložiště a centrum úloh se vytvoří v primární oblasti a sdílí se s oběma aplikacemi funkcí.
+> - Všechny aplikace Function App, které jsou redundantním nasazením, musí v případě aktivace pomocí protokolu HTTP sdílet stejné přístupové klíče funkce. Modul runtime Functions zveřejňuje [rozhraní API pro správu](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , které umožňuje uživatelům programově přidávat, odstraňovat a aktualizovat klíče funkcí.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scénář 1 – výpočetní prostředky se sdíleným úložištěm s vyrovnáváním zatížení
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scénář 1 – COMPUTE s vyrovnáváním zatížení se sdíleným úložištěm
 
-Pokud se nezdaří výpočetní infrastruktura v Azure, se můžou stát nedostupnými aplikace function app. Aby se minimalizovala možnost které, tento scénář používá dvě funkce aplikace nasazené do různých oblastí.
-Traffic Manager je nakonfigurována ke zjišťování problémů s primární funkce aplikace automaticky přesměrování provozu do aplikace function app v sekundární oblasti. Tuto aplikaci function app se hovoří o stejný účet Azure Storage a Centrum úkolů. Proto stav aplikace function App se neztratí a práce můžete pokračovat v normálně. Jakmile se stav obnovení do primární oblasti Azure Traffic Manageru se spustí směrování žádostí na tuto aplikaci function app.
+Pokud se výpočetní infrastruktura v Azure nezdařila, může dojít k nedostupnosti aplikace Function App. K minimalizaci možnosti takového výpadku používá tento scénář dvě aplikace Function App nasazené do různých oblastí.
+Traffic Manager je nakonfigurovaná tak, aby zjistila problémy v aplikaci s primární funkcí a automaticky přesměruje provoz do aplikace Function App v sekundární oblasti. Tato aplikace Function App sdílí stejný účet Azure Storage a centrum úloh. Proto se stav aplikací Function App neztratí a práce může normálně pokračovat. Jakmile se stav obnoví do primární oblasti, Azure Traffic Manager zahájí žádosti o směrování do této aplikace Function App automaticky.
 
-![Diagram znázorňující scénář 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Diagram znázorňující scénář 1](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-Při použití tento scénář nasazení má několik výhod:
+Při použití tohoto scénáře nasazení je k dispozici několik výhod:
 
-- Pokud výpočetní infrastruktura selže, práce může pokračovat v převzetí přes oblast bez ztráty stavu.
-- Traffic Manager automaticky postará o automatické převzetí služeb při selhání na aplikaci funkcí v pořádku.
-- Traffic Manager automaticky znovu naváže provozu do aplikace primární funkce po výpadek byl opraven.
+- Pokud dojde k selhání výpočetní infrastruktury, můžete pokračovat v práci v oblasti převzetí služeb při selhání bez ztráty stavu.
+- Traffic Manager se postará o automatické převzetí služeb při selhání do funkční aplikace v pořádku.
+- Po opravě výpadku Traffic Manager automaticky znovu navázat provoz do primární aplikace Function App.
 
-Ale zvažte použití tohoto scénáře:
+V tomto scénáři ale zvažte následující:
 
-- Pokud aplikace function app se nasadí pomocí vyhrazený plán služby App Service, replikaci výpočetní infrastruktura v převzetí nad datovým centrem zvýší náklady.
-- Tento scénář popisuje výpadky na výpočetní infrastrukturu, ale účet úložiště i nadále být jediným bodem selhání pro funkce aplikace. Pokud dojde k výpadku úložiště, aplikace utrpí výpadek.
-- Pokud aplikace function app se převzaly při selhání, bude vyšší latence od jeho účet úložiště bude přistupovat napříč oblastmi.
-- Přístupu ke službě storage z jiné oblasti, kde je umístěné s sebou nese náklady v vyšší náklady kvůli sítě výchozí přenos.
-- Tento scénář závisí na Traffic Manager. Vzhledem k tomu [jak funguje Traffic Manager](../../traffic-manager/traffic-manager-how-it-works.md), může být nějakou dobu klientskou aplikaci, která využívá odolné funkce je potřeba poslat dotaz znova adresu funkce aplikace z Traffic Manageru.
+- Pokud je aplikace Function App nasazená pomocí vyhrazeného App Service plánu, bude se při replikaci výpočetní infrastruktury v datovém centru převzetí služeb při selhání zvyšovat náklady.
+- Tento scénář pokrývá výpadky výpočetní infrastruktury, ale účet úložiště i nadále je jediným bodem selhání aplikace Function App. Pokud dojde k výpadku úložiště, aplikace utrpí výpadek.
+- Pokud dojde k převzetí služeb při selhání aplikace Function App, dojde ke zvýšení latence, protože budou mít přístup k účtu úložiště napříč různými oblastmi.
+- Přístup ke službě úložiště z jiné oblasti, ve které se nachází, se s vyššími náklady vyplatí kvůli přenosům na výstup sítě.
+- Tento scénář závisí na Traffic Manager. S ohledem na to, [jak Traffic Manager funguje](../../traffic-manager/traffic-manager-how-it-works.md), může trvat nějakou dobu, než klientská aplikace, která spotřebovává trvalou funkci, musí znovu zadat dotaz na adresu aplikace Function app z Traffic Manager.
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scénář 2 – výpočetní bez místní úložiště s vyrovnáváním zatížení
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scénář 2 – výpočetní výkon s vyrovnáváním zatížení s místním úložištěm
 
-Předchozí scénář popisuje pouze v případě selhání v výpočetní infrastruktury. Jestliže služba úložiště, jinak dojde k výpadku aplikace function app.
-K zajištění nepřetržitého provozu odolná služba functions, tento scénář využívá účet místního úložiště na každou oblast, do které jsou nasazené aplikace function App.
+Předchozí scénář pokrývá jenom případ selhání výpočetní infrastruktury. Pokud služba úložiště selže, způsobí to výpadek aplikace Function App.
+Pro zajištění nepřetržitého provozu trvalých funkcí používá tento scénář místní účet úložiště v každé oblasti, do které jsou nasazené aplikace Function App.
 
-![Diagram znázorňující scénář 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![Diagram znázorňující scénář 2](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-Tento přístup přidá vylepšení v předchozím scénáři:
+Tento přístup přináší vylepšení v předchozím scénáři:
 
-- Pokud se aplikace function app nezdaří, Traffic Manager se postará o přebírání služeb při selhání do sekundární oblasti. Ale vzhledem k tomu, že aplikace function app se spoléhá na svůj vlastní účet úložiště, odolná služba functions pokračovat v práci.
-- Verzi převzetí služeb při selhání není žádné další latence v převzetí přes oblast, protože jsou umístěné aplikace function app a účtu úložiště.
-- Selhání ve vrstvě úložiště budou při odolné funkce, které zase aktivuje přesměrování na převzetí přes oblast dojít k chybám. Znovu protože aplikace function app a úložiště jsou izolované na oblast, odolné funkce budou nadále fungovat.
+- Pokud aplikace Function App selže, Traffic Manager se postará o selhání do sekundární oblasti. Vzhledem k tomu, že aplikace Function App spoléhá na vlastní účet úložiště, jsou trvalé funkce nadále funkční.
+- Během převzetí služeb při selhání nedochází k žádné další latenci v oblasti převzetí služeb při selhání, protože aplikace Function App a účet úložiště se nacházejí společně.
+- Selhání vrstvy úložiště způsobí selhání u trvalých funkcí, které zase spustí přesměrování na oblast převzetí služeb při selhání. Vzhledem k tomu, že aplikace Function App a úložiště jsou izolované podle oblasti, budou trvalé funkce i nadále fungovat.
 
 Důležité informace pro tento scénář:
 
-- Pokud aplikace function app se nasadí pomocí vyhrazený plán služby App Service, replikaci výpočetní infrastruktura v převzetí nad datovým centrem zvýší náklady.
-- Aktuální stav není převzetí služeb při selhání, což znamená, že spuštění a byl vytvořen kontrolní bod funkce se nezdaří. Záleží jen na klientské aplikaci zkuste to znovu nebo restartování práce.
+- Pokud je aplikace Function App nasazená pomocí vyhrazeného plánu AppService, replikace výpočetní infrastruktury v datacentru při selhání zvyšuje náklady.
+- Aktuální stav není při selhání, což znamená, že spuštění a kontrolní body se nezdaří. Chcete-li akci opakovat nebo restartovat, je to klientská aplikace.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scénář 3 – výpočetní prostředky s využitím úložiště GRS sdílené s vyrovnáváním zatížení
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scénář 3 – výpočty vyrovnaných k vyrovnávání zatížení pomocí sdíleného úložiště GRS
 
-Tento scénář je úprava přes prvního scénáře, implementace sdíleného úložiště účtu. Hlavním rozdílem, že účet úložiště se vytvoří s povolenou geografickou replikací.
-Funkčně tento scénář nabízí stejné výhody jako scénář 1, ale umožňuje další data recovery výhody:
+Tento scénář je úpravou v prvním scénáři, implementace sdíleného účtu úložiště. Hlavní rozdíl v tom, že je účet úložiště vytvořený s povolenou geografickou replikací.
+V takovém případě přináší tento scénář stejné výhody jako scénář 1, ale umožňuje další výhody obnovení dat:
 
-- Geograficky redundantní úložiště (GRS) a maximalizovat dostupnost pro váš účet úložiště GRS jen pro čtení (RA-GRS).
-- Pokud dojde k výpadku oblasti služby storage, jednu z možností je, že provoz datového centra určit, že úložiště musí být převzetí služeb při selhání do sekundární oblasti. V takovém případě přístup k účtu úložiště budete přesměrováni transparentně kopii geograficky replikovaného účtu úložiště, bez zásahu uživatele.
-- V tomto případě stav odolná služba functions se zachovají až po poslední replikace účtu úložiště, který probíhá každých několik minut.
+- Geograficky redundantní úložiště (GRS) a GRS pro čtení (RA-GRS) maximalizuje dostupnost vašeho účtu úložiště.
+- Pokud dojde k výpadku služby úložiště v oblasti, jednou z možností je to, že operace Datacenter určují, že se úložiště musí převzít do sekundární oblasti. V tomto případě se přístup k účtu úložiště transparentně přesměruje na geograficky replikovanou kopii účtu úložiště bez zásahu uživatele.
+- V takovém případě se stav trvalých funkcí zachová až na poslední replikaci účtu úložiště, ke kterému dochází každých pár minut.
 
-Stejně jako jiné scénáře jsou důležité aspekty:
+Stejně jako u ostatních scénářů jsou důležité důležité informace:
 
-- Převzetí služeb při selhání do repliky se provádí pomocí operátorů datacenter a může trvat nějakou dobu. Do té doby se aplikace function app dochází kvůli výpadku.
-- Je vyšší náklady pro účty geograficky replikovaného úložiště.
-- Asynchronně vyvolá GRS. Nejnovější transakcí může dojít ke ztrátě některých kvůli latenci procesu replikace.
+- Převzetí služeb při selhání replikou provádí operátoři Datacenter a může to chvíli trvat. Do té doby dojde k výpadku aplikace Function App.
+- Existují zvýšené náklady na použití geograficky replikovaných účtů úložiště.
+- K GRS dochází asynchronně. Z důvodu latence procesu replikace může dojít ke ztrátě některých z posledních transakcí.
 
-![Diagram znázorňující scénář 3.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
+![Diagram znázorňující scénář 3](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [navrhování aplikací s vysokou dostupností pomocí RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+Další informace o [navrhování aplikací s vysokou dostupností najdete v článku RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md) .

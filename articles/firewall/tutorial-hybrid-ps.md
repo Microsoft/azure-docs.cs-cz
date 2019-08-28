@@ -1,80 +1,81 @@
 ---
-title: 'Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu'
-description: V tomto kurzu se dozvíte, jak nasadit a nakonfigurovat Firewall služby Azure pomocí Azure Powershellu.
+title: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
+description: V tomto článku se naučíte, jak nasadit a nakonfigurovat Azure Firewall pomocí Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
+ms.topic: article
 ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144925"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073083"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
-Při připojení místní sítě k virtuální síti vytvořit hybridní síť, Azure, možnost řízení přístupu k prostředkům Azure sítě je důležitou součástí celkového plánu zabezpečení.
+Když připojíte místní síť k virtuální síti Azure a vytvoříte hybridní síť, bude mít možnost řídit přístup k síťovým prostředkům Azure důležitou součást celkového plánu zabezpečení.
 
-Brána Firewall služby Azure můžete použít k řízení přístupu k síti v hybridní síť s využitím pravidel, která definují povolené a zakázané síťový provoz.
+Azure Firewall můžete použít k řízení přístupu k síti v hybridní síti pomocí pravidel, která definují povolený a zakázaný síťový provoz.
 
-V tomto kurzu vytvoříte tři virtuální sítě:
+V tomto článku vytvoříte tři virtuální sítě:
 
-- **Připojení typu VNet-Hub** – brána firewall je v této virtuální síti.
-- **Virtuální sítě paprsků** -virtuální sítě paprsků představuje úlohy na Azure.
-- **Připojení typu VNet-Onprem** – místní síť představuje místní virtuální sítě. Skutečné nasazení se dá připojit pomocí připojení VPN nebo ExpressRoute. Pro zjednodušení tento kurz používá připojení brány VPN a Azure umístěný virtuální síť se používá k reprezentování v místní síti.
+- **VNet-hub** – brána firewall je v této virtuální síti.
+- **VNet-paprsek** – virtuální síť paprsků představuje zatížení, které je umístěné v Azure.
+- **VNet-OnPrem** -místní virtuální síť představuje místní síť. Ve skutečném nasazení je možné ho připojit buď pomocí sítě VPN, nebo připojení ExpressRoute. Pro zjednodušení Tento článek používá připojení brány VPN a k reprezentaci místní sítě se používá virtuální síť, která je umístěná v Azure.
 
 ![Brána firewall v hybridní síti](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Deklarování proměnných
-> * Vytvoření virtuální sítě centra brány firewall
+> * Vytvoření virtuální sítě centra firewallu
 > * Vytvoření virtuální sítě paprsků
-> * Vytvořit místní virtuální sítě
+> * Vytvoření místní virtuální sítě
 > * Konfigurace a nasazení brány firewall
 > * Vytvoření a propojení bran VPN
-> * Vytvoření partnerského vztahu centra a virtuální sítě paprsků
+> * Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
 > * Vytvoření tras
 > * Vytvoření virtuálních počítačů
 > * Otestovat bránu firewall
 
+Pokud chcete použít Azure Portal k dokončení tohoto kurzu, přečtěte si téma [kurz: Nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal](tutorial-hybrid-portal.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento kurz vyžaduje místně spusťte PowerShell. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 Předpokladem správného fungování tohoto scénáře jsou tři klíčové požadavky:
 
-- Uživatelem definovanou trasou (UDR) v podsíti paprsku, který odkazuje na adresu IP brány Firewall Azure jako výchozí brána. U této směrovací tabulky musí být **Zakázáno** šíření tras protokolu BGP.
-- Uživatelem definovaná TRASA v podsíti brány centra musí odkazovat na IP adresu brány firewall jako další segment pro sítě paprsků.
+- Trasa definovaná uživatelem (UDR) v podsíti paprsků, která odkazuje na IP adresu Azure Firewall jako výchozí bránu. U této směrovací tabulky musí být **Zakázáno** šíření tras protokolu BGP.
+- UDR v podsíti brány centra musí ukazovat na IP adresu brány firewall jako další směrování na sítě paprsků.
 
-   Žádné uživatelem definovaná TRASA se vyžaduje v podsíti brány Firewall Azure jako zjišťuje směrování z protokolu BGP.
+   V Azure Firewall podsíti se nevyžadují žádné UDR, protože se učí trasy od protokolu BGP.
 - Při vytváření partnerského vztahu virtuální sítě VNet-Hub s virtuální sítí VNet-Spoke nezapomeňte nastavit **AllowGatewayTransit** a při vytváření partnerského vztahu virtuální sítě VNet-Spoke s virtuální sítí VNet-Hub nezapomeňte nastavit **UseRemoteGateways**.
 
-Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-the-routes) v tomto kurzu.
+V části [Vytvoření tras](#create-the-routes) v tomto článku najdete informace o tom, jak se tyto trasy vytvářejí.
 
 >[!NOTE]
->Azure brány Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet učí výchozí trasu k vaší místní síti přes protokol BGP, je nutné to přepsat s UDR 0.0.0.0/0 s **NextHopType** hodnota nastavená na **Internet** udržovat s přímým přístupem Připojení k Internetu. Ve výchozím nastavení brána Firewall služby Azure nepodporuje vynuceného tunelování k místní síti.
+>Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu. Ve výchozím nastavení Azure Firewall nepodporuje vynucené tunelování v místní síti.
 >
->Však vyžaduje-li vaše konfigurace vynuceného tunelování k místní síti, Microsoft bude podporovat v případ od případu. Takže si můžete přečíst váš případ, obraťte se na podporu. Pokud přijat, vytvoříme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
+>Pokud však vaše konfigurace vyžaduje vynucené tunelování v místní síti, společnost Microsoft je bude podporovat na základě případu. Obraťte se na podporu, abychom mohli zkontrolovat váš případ. Pokud je to možné, připravujeme vaše předplatné a zajistíte, aby bylo zachováno požadované připojení k Internetu z brány firewall.
 
 >[!NOTE]
->Přenos dat mezi přímo partnerských virtuálních sítích je směrován přímo i v případě, že trasu UDR odkazuje na jako výchozí brána Firewall služby Azure. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat trasu UDR předpona cílové podsítě sítě explicitně v obou podsítích.
+>Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Související referenční dokumentace k Azure Powershellu najdete v tématu [referenční informace k Azure Powershellu](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
+Chcete-li si projít referenční dokumentaci související Azure PowerShell, přečtěte si téma [Azure PowerShell reference](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
-V následujícím příkladu se deklarují proměnné s použitím hodnot pro tento kurz. V některých případech může být potřeba nahradit některé hodnoty vlastními pro práci v rámci vašeho předplatného. Upravte proměnné podle potřeby a pak je zkopírujte a vložte do konzoly PowerShell.
+Následující příklad deklaruje proměnné pomocí hodnot tohoto článku. V některých případech může být nutné nahradit některé hodnoty vlastními, aby fungovaly v rámci vašeho předplatného. Upravte proměnné podle potřeby a pak je zkopírujte a vložte do konzoly PowerShell.
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -116,15 +117,15 @@ $SNnameGW = "GatewaySubnet"
 ```
 
 
-## <a name="create-the-firewall-hub-virtual-network"></a>Vytvoření virtuální sítě centra brány firewall
+## <a name="create-the-firewall-hub-virtual-network"></a>Vytvoření virtuální sítě centra firewallu
 
-Nejprve vytvořte skupinu prostředků obsahující prostředky pro účely tohoto kurzu:
+Nejdřív vytvořte skupinu prostředků, která bude obsahovat prostředky pro tento článek:
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
   ```
 
-Definujte podsítě, které mají být zahrnuty ve virtuální síti:
+Zadejte podsítě, které se mají zahrnout do virtuální sítě:
 
 ```azurepowershell
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name $SNnameHub -AddressPrefix $SNHubPrefix
@@ -138,7 +139,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Požádat o veřejnou IP adresu, která bude přidělena pro bránu VPN, které vytvoříte pro vaše virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Bráně VPN se přidělí automaticky.
+Vyžádejte si veřejnou IP adresu, kterou chcete přidělit pro bránu VPN, kterou vytvoříte pro virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Bráně VPN se přidělí automaticky.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -147,37 +148,37 @@ Požádat o veřejnou IP adresu, která bude přidělena pro bránu VPN, které 
 
 ## <a name="create-the-spoke-virtual-network"></a>Vytvoření virtuální sítě paprsků
 
-Definujte podsítě, které mají být zahrnuty do virtuální sítě paprsků:
+Zadejte podsítě, které se mají zahrnout do virtuální sítě paprsků:
 
 ```azurepowershell
 $Spokesub = New-AzVirtualNetworkSubnetConfig -Name $SNnameSpoke -AddressPrefix $SNSpokePrefix
 $GWsubSpoke = New-AzVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNSpokeGWPrefix
 ```
 
-Vytvoření virtuální sítě paprsků:
+Vytvořit virtuální síť paprsků:
 
 ```azurepowershell
 $VNetSpoke = New-AzVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
-## <a name="create-the-on-premises-virtual-network"></a>Vytvořit místní virtuální sítě
+## <a name="create-the-on-premises-virtual-network"></a>Vytvoření místní virtuální sítě
 
-Definujte podsítě, které mají být zahrnuty ve virtuální síti:
+Zadejte podsítě, které se mají zahrnout do virtuální sítě:
 
 ```azurepowershell
 $Onpremsub = New-AzVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
 $GWOnpremsub = New-AzVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
 ```
 
-Teď vytvořte virtuální místní sítě:
+Teď vytvořte místní virtuální síť:
 
 ```azurepowershell
 $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Požádat o veřejnou IP adresu, která bude přidělena pro bránu, kterou vytvoříte pro virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Přiděluje se pro bránu dynamicky.
+Vyžádejte si veřejnou IP adresu, kterou chcete přidělit bráně, kterou vytvoříte pro virtuální síť. Všimněte si, že metoda *AllocationMethod* je **dynamická**. Nelze zadat IP adresu, kterou chcete použít. Přiděluje se pro bránu dynamicky.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -186,7 +187,7 @@ Požádat o veřejnou IP adresu, která bude přidělena pro bránu, kterou vytv
 
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurace a nasazení brány firewall
 
-Teď do centrální virtuální síti nasaďte bránu firewall.
+Teď nasaďte bránu firewall do virtuální sítě rozbočovače.
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -222,9 +223,9 @@ Set-AzFirewall -AzureFirewall $Azfw
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Vytvoření a propojení bran VPN
 
-Virtuální sítě centra a místní připojení prostřednictvím bran VPN.
+Rozbočovač a místní virtuální sítě se připojují prostřednictvím bran VPN.
 
-### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>Vytvoření brány VPN pro virtuální síť centra
+### <a name="create-a-vpn-gateway-for-the-hub-virtual-network"></a>Vytvoření brány VPN pro virtuální síť centrální sítě
 
 Vytvořte konfiguraci brány VPN. Konfigurace brány VPN definuje podsíť a veřejnou IP adresu, která se bude používat.
 
@@ -235,7 +236,7 @@ Vytvořte konfiguraci brány VPN. Konfigurace brány VPN definuje podsíť a ve�
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
 
-Teď vytvořte bránu VPN pro virtuální síť centra. Konfigurace sítě pro sítě vyžadují typ sítě VPN RouteBased. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
+Nyní vytvořte bránu VPN pro virtuální síť centrální sítě. Konfigurace sítě na síť vyžadují RouteBased VpnType. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
 
 ```azurepowershell
 New-AzVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
@@ -243,7 +244,7 @@ New-AzVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1 `
 -VpnType RouteBased -GatewaySku basic
 ```
 
-### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>Vytvoření brány VPN pro místní virtuální sítě
+### <a name="create-a-vpn-gateway-for-the-on-premises-virtual-network"></a>Vytvoření brány VPN pro místní virtuální síť
 
 Vytvořte konfiguraci brány VPN. Konfigurace brány VPN definuje podsíť a veřejnou IP adresu, která se bude používat.
 
@@ -254,7 +255,7 @@ $gwipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfNameOnprem `
   -Subnet $subnet2 -PublicIpAddress $gwOnprempip
   ```
 
-Teď vytvořte bránu VPN pro místní virtuální sítě. Konfigurace sítě pro sítě vyžadují typ sítě VPN RouteBased. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
+Teď vytvořte bránu VPN pro místní virtuální síť. Konfigurace sítě na síť vyžadují RouteBased VpnType. Vytvoření brány VPN může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové položce brány VPN.
 
 ```azurepowershell
 New-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
@@ -264,7 +265,7 @@ New-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
 
 ### <a name="create-the-vpn-connections"></a>Vytvoření připojení VPN
 
-Nyní můžete vytvořit připojení VPN mezi centrem a místní brány
+Teď můžete vytvořit připojení VPN mezi centrem a místními branami.
 
 #### <a name="get-the-vpn-gateways"></a>Získání bran VPN
 
@@ -275,14 +276,14 @@ $vnetOnpremgw = Get-AzVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupNa
 
 #### <a name="create-the-connections"></a>Vytvoření připojení
 
-V tomto kroku vytvoříte připojení z virtuální sítě centra pro místní virtuální sítě. Zobrazí se sdílený klíč uváděný v příkladech. Pro sdílený klíč můžete použít vlastní hodnoty. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
+V tomto kroku vytvoříte připojení z virtuální sítě rozbočovače k místní virtuální síti. Zobrazí se sdílený klíč uváděný v příkladech. Pro sdílený klíč můžete použít vlastní hodnoty. Důležité je, že se sdílený klíč pro obě připojení musí shodovat. Vytvoření připojení může nějakou dobu trvat.
 
 ```azurepowershell
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1 `
 -VirtualNetworkGateway1 $vnetHubgw -VirtualNetworkGateway2 $vnetOnpremgw -Location $Location1 `
 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
 ```
-Vytvořte místní k připojení k virtuální síti centra. Tento krok je podobný předchozímu, s výjimkou vytvoření připojení z virtuální sítě místního prostředí do virtuální sítě centra. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
+Vytvořte připojení k virtuální síti z místního prostředí k rozbočovači. Tento krok je podobný předchozímu, s tím rozdílem, že vytvoříte připojení z VNet-OnPrem do VNet-hub. Ověřte, že se sdílené klíče shodují. Připojení se vytvoří během několika minut.
 
   ```azurepowershell
   New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameOnprem -ResourceGroupName $RG1 `
@@ -292,7 +293,7 @@ Vytvořte místní k připojení k virtuální síti centra. Tento krok je podob
 
 #### <a name="verify-the-connection"></a>Ověření připojení
 
-V případě úspěšného připojení můžete ověřit pomocí *Get-AzVirtualNetworkGatewayConnection* rutiny, s nebo bez něj *– ladění*. Použijte následující příklad rutiny a nakonfigurujte hodnoty tak, aby odpovídaly vašemu prostředí. Pokud se zobrazí výzva, vyberte možnost **A**, aby se spustilo **Vše**. V příkladu odkazuje *-Name* na název připojení, které chcete otestovat.
+Úspěšné připojení můžete ověřit pomocí rutiny *Get-AzVirtualNetworkGatewayConnection* s nebo bez *ladění*. Použijte následující příklad rutiny a nakonfigurujte hodnoty tak, aby odpovídaly vašemu prostředí. Pokud se zobrazí výzva, vyberte možnost **A**, aby se spustilo **Vše**. V příkladu odkazuje *-Name* na název připojení, které chcete otestovat.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -306,9 +307,9 @@ Po dokončení zpracování rutiny si prohlédněte hodnoty. V následujícím p
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Vytvoření partnerského vztahu centra a virtuální sítě paprsků
+## <a name="peer-the-hub-and-spoke-virtual-networks"></a>Vytvoření partnerského vztahu mezi virtuálními sítěmi hub a paprsek
 
-Nyní vytvořit partnerský vztah centra a virtuální sítě paprsků.
+Nyní můžete vytvořit partnerský vztah mezi virtuálními sítěmi hub a paprsek.
 
 ```azurepowershell
 # Peer hub to spoke
@@ -384,11 +385,11 @@ Set-AzVirtualNetwork
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-Teď vytvoříte paprsků pracovního vytížení a místní virtuální počítače a umístit je do příslušné podsítě.
+Teď vytvořte úlohu paprsků a místní virtuální počítače a umístěte je do příslušných podsítí.
 
 ### <a name="create-the-workload-virtual-machine"></a>Vytvoření virtuálního počítače úloh
 
-Vytvoření virtuálního počítače ve virtuální síti paprsku službou IIS, se žádná veřejná IP adresa a umožňuje příkazy ping pro zjištění v.
+Vytvořte virtuální počítač ve virtuální síti paprsků, spusťte službu IIS bez veřejné IP adresy a v nástroji můžete povolit příkazy k zadání příkazů.
 Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
 ```azurepowershell
@@ -436,9 +437,9 @@ Set-AzVMExtension `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
     -Location $Location1--->
 
-### <a name="create-the-on-premises-virtual-machine"></a>Vytvořit místní virtuální počítač
+### <a name="create-the-on-premises-virtual-machine"></a>Vytvoření místního virtuálního počítače
 
-Toto je jednoduchý virtuální počítač, který používáte pro připojení pomocí vzdálené plochy veřejnou IP adresu. Odtud pak připojíte k místnímu serveru prostřednictvím brány firewall. Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
+Toto je jednoduchý virtuální počítač, který používáte k připojení pomocí vzdálené plochy k veřejné IP adrese. Odtud se pak pomocí brány firewall připojíte k místnímu serveru. Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
 ```azurepowershell
 New-AzVm `
@@ -453,7 +454,7 @@ New-AzVm `
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 
-Nejprve získejte a poznamenejte si privátní IP adresu pro **VM-spoke-01** virtuálního počítače.
+Nejprve získejte a pak Poznamenejte si privátní IP adresu virtuálního počítače **VM-paprsek-01** .
 
 ```azurepowershell
 $NIC.IpConfigurations.privateipaddress
@@ -463,7 +464,7 @@ Na webu Azure Portal se připojte k virtuálnímu počítači **VM-Onprem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Otevřete webový prohlížeč na **VM Onprem**a přejděte na http://\<privátní IP adresa virtuálního počítače spoke-01\>.
+Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a vyhledejte privátní IP\<adresu\>virtuálního počítače http://-paprsek-01.
 
 Měla by se zobrazit výchozí stránka Internetové informační služby.
 
@@ -471,11 +472,11 @@ Na virtuálním počítači **VM-Onprem** otevřete připojení vzdálené ploch
 
 Přípojení by mělo proběhnout úspěšně a měli byste být schopni se přihlásit pomocí zvoleného uživatelského jména a hesla.
 
-Teď jste ověřili funkčnost pravidla brány firewall:
+Takže teď ověříte, že pravidla brány firewall fungují:
 
 <!---- You can ping the server on the spoke VNet.--->
-- Můžete procházet webový server na virtuální sítě paprsků.
-- Můžete připojit k serveru v paprsku virtuální síť pomocí protokolu RDP.
+- Webový server můžete procházet ve virtuální síti paprsků.
+- Pomocí protokolu RDP se můžete připojit k serveru ve virtuální síti paprsků.
 
 Dále změňte akci kolekce pravidel sítě brány firewall na **Odepřít**, abyste ověřili, že pravidla brány firewall fungují podle očekávání. Spuštěním následujícího skriptu změňte akci kolekce pravidel na **Odepřít**.
 
@@ -496,5 +497,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
-> [!div class="nextstepaction"]
-> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)
+[Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)

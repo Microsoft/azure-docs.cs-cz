@@ -1,48 +1,49 @@
 ---
-title: Azure Data Box omezuje | Dokumentace Microsoftu
-description: Popisuje omezení systému a doporučené velikosti pro připojení a komponenty Microsoft Azure Data Box.
+title: Omezení Azure Data Box | Microsoft Docs
+description: Popisuje omezení systému a Doporučené velikosti pro součásti Microsoft Azure Data Box a připojení.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 2e1ed8df490343e569f9466fd56458f652dafaf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244646"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098815"
 ---
-# <a name="azure-data-box-limits"></a>Omezení služby Azure Data Box
+# <a name="azure-data-box-limits"></a>Omezení Azure Data Box
 
-Tato omezení zvažte, jak nasadit a provozovat váš Microsoft Azure Data Box. Následující tabulka popisuje tato omezení pro zařízení Data Box.
+Tato omezení zvažte při nasazení a provozu Data Box Microsoft Azure. Následující tabulka popisuje tato omezení pro Data Box.
 
-## <a name="data-box-service-limits"></a>Omezení služby data Box
+## <a name="data-box-service-limits"></a>Omezení služby Data Box
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-limits"></a>Omezení zařízení data Box
+## <a name="data-box-limits"></a>Omezení Data Box
 
-- Data Box můžete uložit maximálně 500 milionů souborů.
+- Data Box může ukládat maximálně 500 000 000 souborů.
+- Data Box podporuje maximálně 512 kontejnerů nebo sdílených složek v cloudu. Adresáře nejvyšší úrovně v rámci sdílené složky uživatele se stanou kontejnery nebo sdílené složky Azure v cloudu. 
 
-## <a name="azure-storage-limits"></a>Omezení služby Azure storage
+## <a name="azure-storage-limits"></a>Omezení úložiště Azure
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Odesílání dat upozornění
+## <a name="data-upload-caveats"></a>Upozornění na nahrávání dat
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-limits"></a>Omezení velikosti účtu úložiště Azure
+## <a name="azure-storage-account-size-limits"></a>Omezení velikosti účtu Azure Storage
 
 [!INCLUDE [data-box-storage-account-size-limits](../../includes/data-box-storage-account-size-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Omezení velikosti objektu Azure
+## <a name="azure-object-size-limits"></a>Omezení velikosti objektů Azure
 
 [!INCLUDE [data-box-object-size-limits](../../includes/data-box-object-size-limits.md)]
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Objekt blob bloku Azure, objekty blob stránky a konvence pojmenování souboru
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Zásady pro pojmenovávání objektů blob bloku Azure, objektů blob stránky a názvů souborů
 
 [!INCLUDE [data-box-naming-conventions](../../includes/data-box-naming-conventions.md)]

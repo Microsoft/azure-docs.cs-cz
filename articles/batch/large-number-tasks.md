@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: f91d47e1f57fb74575fbdad0a76386b53fb38b1f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322525"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094026"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů do dávkové úlohy
 
@@ -210,7 +209,7 @@ except Exception as e:
     raise e
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o použití rozšíření Azure Batch CLI s [šablonami Batch CLI](batch-cli-templates.md).
 * Přečtěte si další informace o [rozšíření sady Batch Python SDK](https://pypi.org/project/azure-batch-extensions/).

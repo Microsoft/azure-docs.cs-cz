@@ -1,6 +1,6 @@
 ---
-title: Vytvoření sdílené bitové kopie virtuálního počítače Azure pro Linux pomocí portálu | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí webu Azure portal k vytváření a sdílení imagí virtuálních počítačů.
+title: Vytvoření sdílených imagí virtuálních počítačů Azure pro Linux pomocí portálu | Microsoft Docs
+description: Naučte se používat Azure Portal k vytváření a sdílení imagí virtuálních počítačů.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,84 +9,83 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8be4890f01ae2c0d893bb7c45f29c6f8178844f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708917"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082116"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvořením Galerie sdílené bitové kopie pomocí webu Azure portal
+# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvoření galerie sdílených imagí pomocí Azure Portal
 
-A [Galerie obrázků Shared](shared-image-galleries.md) zjednodušuje vlastní image pro sdílení obsahu napříč vaší organizací. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní Image můžete použít ke spuštění úlohy nasazení, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
+[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spuštění úloh nasazení, jako jsou předem načtené aplikace, konfigurace aplikací a další konfigurace operačního systému. 
 
-Galerie obrázků Shared umožňuje sdílení vlastních imagí virtuálních počítačů s jinými uživateli ve vaší organizaci, a to v rámci nebo napříč oblastmi v rámci tenanta služby AAD. Vybrat obrázky, které chcete sdílet, oblasti, které chcete provést, je k dispozici v a který chcete sdílet. Můžete vytvořit více galerií, takže je možné logicky seskupit sdílené bitové kopie. 
+Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními uživateli ve vaší organizaci v rámci oblastí nebo napříč nimi v rámci tenanta AAD. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. Můžete vytvořit několik galerií, abyste mohli logicky seskupovat sdílené image. 
 
-Galerie je prostředku nejvyšší úrovně, která poskytuje řízení přístupu na úplné na základě rolí (RBAC). Image může být označené verzí, a je možné replikovat každý verze image na jiný oblastí Azure. Galerie funguje pouze s spravované Image.
+Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení přístupu na základě role (RBAC). Bitové kopie můžou být ve verzi a můžete se rozhodnout pro replikaci každé verze image na jinou sadu oblastí Azure. Galerie funguje pouze se spravovanými bitovými kopiemi.
 
-Galerie obrázků sdílené funkce má více typů prostředků. Můžeme se pomocí nebo sestavení v tomto článku:
+Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
 
 | Resource | Popis|
 |----------|------------|
-| **Spravované image** | Toto je základní image, který můžete používat samostatně nebo použít k vytvoření **verze image** v Galerie obrázků. Vytváření spravovaných imagí z generalizovaného virtuálních počítačů. Spravované image je speciální typ virtuálního pevného disku, který je možné vytvořit několik virtuálních počítačů a můžete teď použít k vytvoření verze sdílené bitové kopie. |
-| **Galerie obrázků** | Na webu Azure Marketplace, jako jsou **Galerie obrázků** je úložiště pro správu a sdílení imagí, ale vy řídíte, kdo má přístup. |
-| **Definici Image** | Bitové kopie jsou definovány v rámci Galerie a budou mít informace o požadavcích pro interní použití a image. To zahrnuje, jestli obrázek je Windows nebo Linux, poznámky k verzi a požadavky na minimální a maximální paměť. Je to definice typu bitové kopie. |
-| **Verze bitové kopie** | **Verze image** se používá k vytvoření virtuálního počítače, když použijete galerii. Podle potřeby pro vaše prostředí můžete mít více verze Image. Při použití, jako jsou spravované image **verze image** vytvoření virtuálního počítače, verze image slouží k vytvoření nové disky pro virtuální počítač. Verze Image můžete použít více než jednou. |
+| **Spravovaná image** | Toto je základní obrázek, který se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z zobecněných virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
+| **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
+| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich interní používání. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. |
+| **Verze image** | **Verze image** je to, co použijete k vytvoření virtuálního počítače při použití galerie. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Podobně jako u spravované image při použití **verze image** k vytvoření virtuálního počítače se verze image používá k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát. |
 
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-K dokončení příkladu v tomto článku, musíte mít existující spravované image. Můžete postupovat podle [kurzu: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure Powershellu](tutorial-custom-images.md) ji vytvořit v případě potřeby. Pokud spravované image obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
+Chcete-li dokončit příklad v tomto článku, musíte mít existující spravovanou bitovou kopii. Můžete postupovat [podle kurzu: Vytvořte vlastní image virtuálního počítače Azure pomocí Azure PowerShell](tutorial-custom-images.md) a v případě potřeby ho vytvořte. Pokud spravovaná bitová kopie obsahuje datový disk, velikost datového disku nemůže být větší než 1 TB.
 
-Při nahrazení projdete tohoto článku, skupinu prostředků a virtuální počítač příslušných místech názvy.
+Při práci s tímto článkem nahraďte názvy skupin prostředků a virtuálních počítačů tam, kde je to potřeba.
 
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
 
-## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních počítačů z image
+## <a name="create-vms-from-an-image"></a>Vytvoření virtuálních počítačů z Image
 
-Po dokončení se verze image můžete vytvořit jeden nebo více nových virtuálních počítačů. 
+Po dokončení verze image můžete vytvořit jeden nebo více nových virtuálních počítačů. 
 
 > [!IMPORTANT]
-> Na portálu nelze použít k nasazení virtuálního počítače z image v jiném tenantovi azure. Vytvoření virtuálního počítače pomocí bitové kopie sdíleny mezi klienty, je nutné použít [rozhraní příkazového řádku Azure](shared-images.md#create-a-vm) nebo [Powershellu](../windows/shared-images.md#create-vms-from-an-image).
+> Portál nemůžete použít k nasazení virtuálního počítače z image v jiném tenantovi Azure. Pokud chcete vytvořit virtuální počítač z image sdílené mezi klienty, musíte použít [Azure CLI](shared-images.md#create-a-vm) nebo [PowerShell](../windows/shared-images.md#create-vms-from-an-image).
 
 
-Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myResourceGroup* v *USA – východ* datového centra.
+Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myResourceGroup* v datovém centru *východní USA* .
 
-1. Na stránce pro vaši verzi image, vyberte **vytvořit virtuální počítač** v nabídce v horní části stránky.
-1. Pro **skupiny prostředků**vyberte **vytvořit nový** a typ *myResourceGroup* pro název.
-1. V **název virtuálního počítače**, typ *myVM*.
-1. Pro **oblasti**vyberte *USA – východ*.
-1. Pro **možností dostupnosti**, ponechte výchozí hodnotu *žádné redundance infrastruktury požadované*.
-1. Hodnota pro **Image** by měl být vyplněné automaticky Pokud jste začali ze stránky pro verzi image.
-1. Pro **velikost**, zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a klikněte na "Vyberte".
-1. V části **účet správce**vyberte **heslo** nebo **veřejný klíč SSH**, zadejte vaše informace.
-1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, v části **veřejné příchozí porty**, zvolte **povolit vybrané porty** a pak vyberte **SSH (22)** z rozevíracího seznamu. Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, ponechejte **žádný** vybrala pro **veřejné příchozí porty**.
-1. Až budete hotovi, vyberte **revize + vytvořit** tlačítko v dolní části stránky.
-1. Když virtuální počítač úspěšně proběhne ověření, vyberte **vytvořit** v dolní části stránky a spustit nasazení.
+1. Na stránce verze image vyberte v nabídce v horní části stránky **vytvořit virtuální počítač** .
+1. V poli **Skupina prostředků**vyberte **vytvořit novou** a jako název zadejte *myResourceGroup* .
+1. Do **název virtuálního počítače**zadejte *myVM*.
+1. V **oblasti oblast**vyberte *východní USA*.
+1. U **možností dostupnosti**ponechte výchozí možnost *bez nutnosti redundance infrastruktury*.
+1. Hodnota pro **Obrázek** by se měla automaticky vyplnit, pokud jste začali ze stránky verze image.
+1. Jako **Velikost**zvolte velikost virtuálního počítače ze seznamu dostupných velikostí a pak klikněte na vybrat.
+1. V části **účet správce**vyberte **heslo** nebo **veřejný klíč SSH**a pak zadejte svoje informace.
+1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, vyberte v části **veřejné příchozí porty**možnost **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** . Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, nechte **žádné** vybrané pro **veřejné příchozí porty**.
+1. Po dokončení vyberte tlačítko **Revize + vytvořit** v dolní části stránky.
+1. Jakmile virtuální počítač projde ověřením, v dolní části stránky vyberte **vytvořit** a spusťte nasazení.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro příslušný virtuální počítač, vyberete **Odstranit** a pak potvrdíte název skupiny prostředků, kterou chcete odstranit.
 
-Pokud chcete odstranit jednotlivé prostředky, musíte je odstranit, v opačném pořadí. Například pokud chcete odstranit definici image, musíte odstranit všechny verze image vytvořené z této image.
+Pokud chcete odstranit jednotlivé prostředky, je nutné je odstranit v opačném pořadí. Chcete-li například odstranit definici obrázku, je nutné odstranit všechny verze imagí vytvořené z této bitové kopie.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete také vytvořit Galerie obrázků sdílených prostředků pomocí šablon. Nejsou k dispozici několik šablon rychlý start Azure: 
+Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 
-- [Vytvořit sdílené Galerie obrázků](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Vytvoření definice Image v galerii sdílené bitové kopie](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Vytvoření Image verze v sdílené Galerie obrázků](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Vytvoření virtuálního počítače z Image verze](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Vytvoření galerie sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Vytvoření definice obrázku v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Vytvoření verze image v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Další informace o galeriích sdílené bitové kopie, najdete v článku [přehled](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [Poradce při potížích s sdílené Galerie obrázků](troubleshooting-shared-images.md).
+Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).
 

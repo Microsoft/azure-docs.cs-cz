@@ -1,7 +1,7 @@
 ---
-title: Podpora SSH pro službu App Service v Linuxu – Azure | Dokumentace Microsoftu
-description: Další informace o používání SSH se službou Azure App Service v Linuxu.
-keywords: azure app service, web app, linux, oss
+title: Podpora SSH pro App Service v systému Linux – Azure | Microsoft Docs
+description: Další informace o použití SSH s Azure App Service v systému Linux.
+keywords: Azure App Service, Web App, Linux, OSS
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -11,56 +11,55 @@ ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b54d5003f67a1bd79e1e52eef87df858bc68ade1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: fef8a17de4539a1427c269cdc512063d07df195c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551914"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066865"
 ---
-# <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
+# <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v systému Linux
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) se běžně používá ke spuštění příkazů pro správu vzdáleně z příkazového řádku terminálu. App Service v Linuxu podporuje SSH do kontejneru pro aplikace s jednotlivými integrované Image Dockeru pro zásobník modulu Runtime nových webových aplikací. 
+[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) se běžně používá ke vzdálenému spouštění příkazů pro správu z terminálu příkazového řádku. App Service v systému Linux poskytuje podporu SSH do kontejneru aplikace s každým z vestavěných imagí Docker používaných pro zásobník modulu runtime pro nové webové aplikace. 
 
-![Zásobníky modulu runtime](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
+![Běhové zásobníky](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
-Pro vlastní Image Dockeru, tím, že nakonfigurujete SSH server do své vlastní image.
+Pro vlastní image Docker nakonfigurujte server SSH ve vlastní imagi.
 
-Do tohoto kontejneru můžete také připojit přímo ze svého místního vývojového počítače pomocí SSH a SFTP.
+Ke kontejneru se můžete připojit také přímo z místního vývojového počítače pomocí SSH a SFTP.
 
 ## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
-## <a name="use-ssh-support-with-custom-docker-images"></a>Podpora SSH pomocí vlastní Image Dockeru
+## <a name="use-ssh-support-with-custom-docker-images"></a>Použití podpory SSH s vlastními imagemi Docker
 
-Zobrazit [konfigurace SSH do vlastního kontejneru](configure-custom-container.md#enable-ssh).
+Viz [Konfigurace SSH ve vlastním kontejneru](configure-custom-container.md#enable-ssh).
 
-## <a name="open-ssh-session-from-remote-shell"></a>Otevřete relaci SSH ze vzdáleného prostředí
+## <a name="open-ssh-session-from-remote-shell"></a>Otevřít relaci SSH ze vzdáleného prostředí
 
 > [!NOTE]
 > Tato funkce je aktuálně ve verzi Preview.
 >
 
-Pomocí protokolu TCP tunelové propojení, které můžete vytvořit síťové připojení mezi počítačem pro vývoj a Web App for Containers přes ověřené připojení soketu WebSocket. Umožňuje otevřít relaci SSH s vašeho kontejneru ve službě App Service z klienta podle vašeho výběru.
+Pomocí tunelového propojení TCP můžete vytvořit síťové připojení mezi vývojovým počítačem a Web App for Containers přes ověřované připojení protokolu WebSocket. Umožňuje otevřít relaci SSH s kontejnerem spuštěným v App Service z klienta podle vašeho výběru.
 
-Abyste mohli začít, je potřeba nainstalovat [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Chcete-li zjistit, jak to funguje, bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
+Chcete-li začít, je nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud chcete zjistit, jak funguje bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Vytvořit vzdálené připojení k aplikaci pomocí [az webapp-připojení ke vzdálené vytvoření](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) příkazu. Zadejte  _\<id předplatného >_ ,  _\<název skupiny >_ a \_ \<název aplikace > _ pro vaši aplikaci.
+Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. \_Zadejte  _\<ID předplatného->_ ,  _\<Group-Name >_ a \<App-Name > _ pro vaši aplikaci.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> `&` na konci příkazu je pouze ke zvýšení pohodlí Pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spuštěním následujícího příkazu ve stejném prostředí.
+> `&`na konci příkazu je jenom pro pohodlí, pokud používáte Cloud Shell. Spustí proces na pozadí, takže můžete spustit další příkaz ve stejném prostředí.
 
-Výstup tohoto příkazu obsahuje informace, že budete muset otevřít relaci SSH.
+Výstup příkazu vám poskytne informace, které potřebujete k otevření relace SSH.
 
 ```
 Port 21382 is open
@@ -68,20 +67,20 @@ SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
 ```
 
-Otevřete relaci SSH s kontejnerech s klientem nástroje podle vašeho výběru použitím místní port. Následující příklad používá výchozí [ssh](https://ss64.com/bash/ssh.html) příkaz:
+Pomocí místního portu otevřete v kontejneru relaci SSH s vámi zvoleným klientem. Následující příklad používá výchozí příkaz [SSH](https://ss64.com/bash/ssh.html) :
 
 ```azurecli-interactive
 ssh root@127.0.0.1 -p <port>
 ```
 
-Jakmile se zobrazí výzva, zadejte `yes` pokračujte v připojování. Zobrazí se výzva k zadání hesla. Použití `Docker!`, které se zobrazilo, dříve.
+Po zobrazení výzvy zadejte `yes` , že chcete pokračovat v připojování. Pak se zobrazí výzva k zadání hesla. Použijte `Docker!`, které jste si zobrazili dříve.
 
 ```
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 ```
 
-Jakmile je ověřen, byste měli vidět na úvodní obrazovce relace.
+Jakmile budete ověřeni, měli byste vidět úvodní obrazovku relace.
 
 ```
   _____
@@ -97,7 +96,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Nyní jste připojeni k vašemu konektoru.  
 
-Zkuste spustit [horní](https://ss64.com/bash/top.html) příkazu. Byste měli vidět procesu vaší aplikace v seznamu proces. Následující ukázkový výstup je se `PID 263`.
+Zkuste spustit [horní](https://ss64.com/bash/top.html) příkaz. Měli byste být schopni zobrazit proces vaší aplikace v seznamu procesů. V níže uvedeném příkladu je to s `PID 263`.
 
 ```
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -123,11 +122,11 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>Další postup
 
-Otázky a připomínky můžete publikovat na [fórum Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Otázky a připomínky můžete publikovat na [fóru Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
-Další informace o Web App for Containers naleznete v tématu:
+Další informace o Web App for Containers najdete v tématech:
 
-* [Úvod do vzdáleného ladění aplikací v Node.js ve službě Azure App Service z VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Představujeme vzdálené ladění aplikací Node. js v Azure App Service z VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Jak používat vlastní image Dockeru pro službu Web App for Containers](quickstart-docker-go.md)
 * [Použití .NET Core ve službě Azure App Service v Linuxu](quickstart-dotnetcore.md)
 * [Použití Ruby ve službě Azure App Service v Linuxu](quickstart-ruby.md)

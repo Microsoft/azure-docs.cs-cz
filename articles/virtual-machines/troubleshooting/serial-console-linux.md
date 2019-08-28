@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4e0c91096d5efdcc9639a7127126d8e4b89ef068
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854392"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090164"
 ---
 # <a name="azure-serial-console-for-linux"></a>Sériová konzola Azure pro Linux
 
@@ -248,7 +247,7 @@ A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual M
 
 A. Ano. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Použijte konzolu sériového [přístupu pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).
 * Použijte konzolu sériového rozhraní pro [volání NMI a SysRq](serial-console-nmi-sysrq.md).
 * Naučte se používat konzolu sériového portu k [Povolení GRUB v různých distribuce](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).

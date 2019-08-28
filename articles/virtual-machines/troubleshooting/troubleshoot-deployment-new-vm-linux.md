@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazení virtuálního počítače s Linuxem | Dokumentace Microsoftu
-description: Řešení problémů s nasazením Resource Manageru při vytvoření nového virtuálního počítače Linux v Azure
+title: Řešení potíží s nasazením virtuálního počítače se systémem Linux | Microsoft Docs
+description: Řešení potíží s Správce prostředků nasazení při vytváření nového virtuálního počítače se systémem Linux v Azure
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -11,83 +11,82 @@ ms.assetid: 906a9c89-6866-496b-b4a4-f07fb39f990c
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: dd6241f75311ea956b204b5181ae17db0ef3faa1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710497"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090021"
 ---
-# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Potíží s nasazením Resource Manageru s vytvářením nového virtuálního počítače Linux v Azure
+# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Řešení potíží s nasazením Správce prostředků při vytváření nového virtuálního počítače se systémem Linux v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="top-issues"></a>Nejčastější problémy
+## <a name="top-issues"></a>Hlavní problémy
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 Další dotazy a potíže s nasazením virtuálního počítače najdete v tématu [Řešení potíží s nasazením linuxového virtuálního počítače v Azure](troubleshoot-deploy-vm-linux.md).
 
-## <a name="collect-activity-logs"></a>Protokoly aktivit shromažďování
-Proces řešení potíží, shromažďování protokolů aktivit k identifikaci chyby související s problémem. Následující odkazy obsahují podrobné informace o procesu dodržovat.
+## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
+Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o tom, jak postupovat.
 
 [Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Zobrazení protokolů aktivit ke správě prostředků Azure](../../resource-group-audit.md)
+[Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**ACOVNÍ ADRESÁŘ:** Pokud je operační systém Linux zobecněn, a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Linux specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
+**POŽADOVANÉ** Pokud je operační systém systému Linux zobecněn a je nahrán a/nebo zachycen s zobecněným nastavením, pak nedojde k žádným chybám. Podobně platí, že pokud je operační systém Linux specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
 
 **Chyby nahrávání:**
 
-**N<sup>1</sup>:** Pokud je operační systém Linux generalizovaný a nahrát ho jako specializovaná, obdržíte chybu časového limitu zřizování protože virtuální počítač zasekl ve fázi zřizování.
+**N<sup>1</sup>:** Pokud je operační systém Linux zobecněný a nahraje se jako specializované, zobrazí se chyba časového limitu zřizování, protože virtuální počítač se zablokuje ve fázi zřizování.
 
-**N<sup>2</sup>:** Pokud je operační systém Linux specializované a nahrání generalizovaného, obdržíte chybu zřizování selhání, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo.
-
-**Řešení:**
-
-Chcete-li oba tyto chyby vyřešit, nahrajte původní virtuální pevný disk, k dispozici v místním prostředí stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte provést – zrušení zřízení nejprve.
-
-**Zachycení chyb:**
-
-**N<sup>3</sup>:** Pokud je operační systém Linux zobecněn, a jsou zachyceny jako specializovaná, obdržíte chybu časového limitu zřizování protože původní virtuální počítač se nedá použít jako ho označí jako zobecněný.
-
-**N<sup>4</sup>:** Pokud je operační systém Linux specializované a jejím zaznamenání jako generalizovaná, obdržíte chybu zřizování selhání, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo. Navíc původní virtuální počítač je nepoužitelný protože je označená jako specializované.
+**N<sup>2</sup>:** Pokud je operační systém Linux specializovaný a nahraje se jako zobecněný, zobrazí se chyba zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem.
 
 **Řešení:**
 
-Chcete-li oba tyto chyby vyřešit, odstraňte aktuální image na portálu, a [vytvoří další bitovou kopii z aktuální virtuální pevné disky](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) stejné nastavení jako, který pro operační systém (zobecněný/specializované).
+Chcete-li tyto chyby vyřešit, nahrajte původní virtuální pevný disk, který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit – zrušit zřízení.
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: Vlastní / galerie a image z marketplace; došlo k chybě přidělení
-Tato chyba nastane v situacích, když je připnutá novou žádost o virtuální počítač do clusteru, který nemůže zajišťovat podporu žádá velikost virtuálního počítače, nebo nemá žádné dostupné volné místo tak, aby vyhovovaly žádosti.
+**Zachytit chyby:**
 
-**1. příčina:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
+**N<sup>3</sup>:** Pokud je operační systém Linux zobecněný a je zachycen jako specializovaný, zobrazí se chyba časového limitu zřizování, protože původní virtuální počítač nelze použít, protože je označen jako zobecněný.
+
+**N<sup>4</sup>:** Pokud je operační systém Linux specializovaný a zachycuje se jako zobecněný, zobrazí se chyba při zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem. Původní virtuální počítač také nelze použít, protože je označen jako specializovaný.
+
+**Řešení:**
+
+Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
+
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Problém: Vlastní/Galerie/image Marketplace; selhání přidělení
+K této chybě dochází v situacích, kdy je nový požadavek na virtuální počítač připnutý ke clusteru, který buď nepodporuje požadovanou velikost virtuálního počítače, nebo nemá k dispozici volné místo pro vyžádání žádosti.
+
+**Příčina 1:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
 
 **Řešení 1:**
 
-* Opakujte žádost, použijte menší velikost virtuálního počítače.
-* Pokud velikost pro požadovaný virtuální počítač nejde změnit:
+* Opakujte požadavek s menší velikostí virtuálního počítače.
+* Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte na tlačítko **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupiny dostupnosti*  >  **Virtuálních počítačů** > *váš virtuální počítač* > **Zastavit**.
-  * Po zastavení všech virtuálních počítačů, vytvoření nového virtuálního počítače v požadovanou velikost.
-  * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Start**.
+    Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. > Zastavte.  > 
+  * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
+  * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 
-**2. příčina:** Cluster nemá žádné volné prostředky.
+**Příčina 2:** Cluster nemá volné prostředky.
 
 **Řešení 2:**
 
 * Opakujte požadavek později.
-* Pokud nový virtuální počítač může být součástí do jiné skupiny dostupnosti
-  * Vytvoření nového virtuálního počítače v různých dostupnosti (ve stejné oblasti).
-  * Přidáte nový virtuální počítač do stejné virtuální síti.
+* Pokud může být nový virtuální počítač součástí jiné skupiny dostupnosti
+  * Vytvořte nový virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).
+  * Přidejte nový virtuální počítač do stejné virtuální sítě.
 
-## <a name="next-steps"></a>Další postup
-Pokud narazíte na problémy při spuštění zastavený virtuální počítač s Linuxem nebo změně velikosti existujícího virtuálního počítače Linux v Azure, přečtěte si téma [potíže s restartováním nebo změnou velikosti existujícího virtuálního počítače s Linuxem v Azure Resource Manageru řešení potíží s nasazení](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="next-steps"></a>Další kroky
+Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače se systémem Linux nebo změníte velikost stávajícího virtuálního počítače se systémem Linux v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků při restartování nebo změně velikosti stávajícího virtuálního počítače se systémem Linux v Azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

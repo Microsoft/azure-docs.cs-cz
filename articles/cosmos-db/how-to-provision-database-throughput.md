@@ -3,19 +3,19 @@ title: Zřízení propustnosti databáze ve službě Azure Cosmos DB
 description: Zjistěte, jak zřídit propustnost na úrovni databáze ve službě Azure Cosmos DB.
 author: rimman
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: 2744422e2e082c5bc6f63975b1100f336d32d5fa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 29bc65c8afaa1fe4bdc39923bd2219184e8b3a96
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250062"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093002"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zřizování propustnosti na databázi ve službě Azure Cosmos DB
+# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zřízení propustnosti pro databázi v Azure Cosmos DB
 
-Tento článek vysvětluje, jak zřídit propustnost v databázi ve službě Azure Cosmos DB. Propustnost můžete zřídit pro jeden [kontejner](how-to-provision-container-throughput.md) nebo pro databázi a sdílet ji mezi kontejnery v rámci databáze. Informace o tom, kdy použít propustnosti kontejneru úrovni a úrovni databáze, najdete v článku [případy použití pro zřizování propustnosti na kontejnerech a databází](set-throughput.md) článku. Databáze úrovně propustnosti můžete zřídit pomocí webu Azure portal nebo sady SDK služby Azure Cosmos DB.
+Tento článek vysvětluje, jak zřídit propustnost pro databázi v Azure Cosmos DB. Propustnost můžete zřídit pro jeden [kontejner](how-to-provision-container-throughput.md) nebo pro databázi a sdílet ji mezi kontejnery v rámci databáze. Informace o použití propustnosti na úrovni kontejneru a databáze najdete v článku [případy použití pro zajištění propustnosti v kontejnerech a databázích](set-throughput.md) . Propustnost na úrovni databáze můžete zřídit pomocí Azure Portal nebo Azure Cosmos DB SDK.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Zřízení propustnosti pomocí webu Azure Portal
 
@@ -23,16 +23,16 @@ Tento článek vysvětluje, jak zřídit propustnost v databázi ve službě Azu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. [Vytvořit nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account), nebo vyberte existující účet Azure Cosmos.
+1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřít **Průzkumník dat** podokně a vyberte **novou databázi**. Zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová databáze**. Zadejte následující podrobnosti:
 
    * Zadejte ID databáze. 
-   * Vyberte **zřídit propustnost**.
-   * Zadejte propustnost (třeba 1 000 ru).
+   * Vyberte možnost **zřízení propustnosti**.
+   * Zadejte propustnost (například 1000 ru).
    * Vyberte **OK**.
 
-![Dialogové okno snímek obrazovky s novou databázi](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+![Snímek obrazovky dialogového okna Nová databáze](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
 
 ## <a name="provision-throughput-using-azure-cli"></a>Zřízení propustnosti pomocí Azure CLI
@@ -50,7 +50,7 @@ az cosmosdb database create --db-name
 
 
 
-## <a name="provision-throughput-using-powershell"></a>Zřídit propustnost pomocí Powershellu
+## <a name="provision-throughput-using-powershell"></a>Zajištění propustnosti pomocí PowerShellu
 
 ```azurepowershell-interactive
 # Create a database and provision throughput of 400 RU/s
@@ -72,7 +72,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 ## <a name="provision-throughput-using-net-sdk"></a>Zřízení propustnosti pomocí sady .NET SDK
 
 > [!Note]
-> Pro všechna rozhraní API můžete zřídit propustnost pomocí sady SDK Cosmos pro rozhraní SQL API. Volitelně můžete v následujícím příkladu pro Apache Cassandra API také.
+> Sady Cosmos SDK pro SQL API můžete použít ke zřízení propustnosti pro všechna rozhraní API. Volitelně můžete pro rozhraní API Cassandra také použít následující příklad.
 
 ### <a id="dotnet-all"></a>Všechna rozhraní API
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
@@ -100,11 +100,11 @@ await client.CreateDatabaseIfNotExistsAsync(
 session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Naleznete v následujících článcích se dozvíte o zřízenou propustnost v databázi Azure Cosmos DB:
+V následujících článcích se dozvíte o zřízené propustnosti v Azure Cosmos DB:
 
-* [Globálně škálujte zřízená propustnost](scaling-throughput.md)
-* [Zřizování propustnosti na kontejnerech a databází](set-throughput.md)
+* [Globálně škálovat zřízenou propustnost](scaling-throughput.md)
+* [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Zřízení propustnosti pro kontejner](how-to-provision-container-throughput.md)
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)

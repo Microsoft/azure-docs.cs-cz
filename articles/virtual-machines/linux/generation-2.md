@@ -10,16 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: e551f23c833a5ed88fe14a2f61b03581be0c74fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 9d94c4be90b408da7635f47567aa8f713f14de86
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479999"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083189"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora virtuálních počítačů 2. generace (Preview) v Azure
 
@@ -147,6 +146,6 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Seznamte [se s virtuálními počítači generace 2 v Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

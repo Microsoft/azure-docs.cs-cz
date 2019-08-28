@@ -1,66 +1,65 @@
 ---
 title: Výkon a škálování v Durable Functions – Azure
-description: Úvod do rozšíření Durable Functions pro službu Azure Functions.
+description: Úvod do rozšíření Durable Functions pro Azure Functions
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed0fe22903412d4164fb3a85dbd9afafdc7023e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60733232"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098002"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
-K optimalizaci výkonu a škálovatelnosti, je důležité pochopit unikátních vlastnostech škálování [Durable Functions](durable-functions-overview.md).
+Pro optimalizaci výkonu a škálovatelnosti je důležité pochopit jedinečné charakteristiky škálování [Durable Functions](durable-functions-overview.md).
 
-Informace o tom chování škálování, budete muset pochopit některé podrobnosti podkladového zprostředkovatele služby Azure Storage.
+Pro pochopení chování škálování je třeba pochopit některé podrobnosti o základním poskytovateli Azure Storage.
 
-## <a name="history-table"></a>Tabulky historie
+## <a name="history-table"></a>Tabulka historie
 
-**Historie** tabulka je tabulka Azure Storage, který obsahuje historii událostí pro všechny instance Orchestrace úloh centrum. Název této tabulky je ve formě *TaskHubName*historie. Instance spuštění nové řádky se přidají do této tabulky. Klíč oddílu této tabulky je odvozený od ID instance orchestraci. Instance ID je náhodný ve většině případů, které zajišťuje optimální distribuci interních oddílů ve službě Azure Storage.
+Tabulka **Historie** je Azure Storage tabulka, která obsahuje události historie pro všechny instance orchestrace v rámci centra úloh. Název této tabulky je ve formátu *TaskHubName*historie. Po spuštění instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je odvozen z ID instance orchestrace. ID instance je ve většině případů náhodné, což zajišťuje optimální distribuci vnitřních oddílů v Azure Storage.
 
-Když je potřeba spustit instanci Orchestrace, odpovídající řádky v tabulce historie jsou načtena do paměti. Tyto *Historie událostí* se pak znovu přehrát do kódu funkce orchestrátoru jak ji získat zpátky do stavu dříve byl vytvořen kontrolní bod. Použití historie provádění k opětovnému sestavení stavu tímto způsobem je ovlivněno [model Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
+Je-li nutné spustit instanci orchestrace, jsou do paměti načteny příslušné řádky tabulky historie. Tyto *události historie* se pak přehrají do kódu funkce Orchestrator a vrátí se zpátky do předchozího kontrolního stavu. Použití historie spouštění k opětovnému sestavení tohoto způsobu je ovlivněno [vzorem zdroje události](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
-## <a name="instances-table"></a>Instance tabulky
+## <a name="instances-table"></a>Tabulka instancí
 
-**Instance** jiné tabulky Azure Storage, který obsahuje stavy všech instancí Orchestrace v centru úkolu je tabulka. Jak se vytvářejí instance, nové řádky se přidají do této tabulky. Klíč oddílu v této tabulce je ID instance Orchestrace klíč řádku je dlouhodobý – konstanta Existuje jeden řádek pro každou instanci Orchestrace.
+Tabulka **Instances** je další Azure Storage tabulka, která obsahuje stavy všech instancí orchestrace v rámci centra úloh. Při vytváření instancí se do této tabulky přidají nové řádky. Klíč oddílu této tabulky je ID instance Orchestrace a klíč řádku je pevná konstanta. Existuje jeden řádek na instanci orchestrace.
 
-Tato tabulka slouží ke splnění požadavků na dotazy instance z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET) a `getStatus` (JavaScript) rozhraní API také [dotazu na stavovou rozhraní HTTP API](durable-functions-http-api.md#get-instance-status). Je udržovat konzistentní s obsahem **historie** tabulka již bylo zmíněno dříve. Použití samostatné tabulky Azure Storage efektivně splňovat operace dotazů instance tímto způsobem je ovlivněno [zodpovědnosti příkazů a dotazů oddělení (CQRS) vzor](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Tato tabulka slouží k uspokojení požadavků na dotazování instance z rozhraní API [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET `getStatus` ) a (JavaScript) a také pro [dotaz na stavový protokol HTTP API](durable-functions-http-api.md#get-instance-status). Je trvale konzistentní s obsahem výše zmíněné tabulky **Historie** . Použití samostatné Azure Storage tabulky k efektivnímu uspokojení operací dotazů na instance tímto způsobem je ovlivněno [vzorem CQRS (Command and Query Responsibility segregation) (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
-## <a name="internal-queue-triggers"></a>Vnitřní fronty aktivační události
+## <a name="internal-queue-triggers"></a>Interní triggery front
 
-Funkce nástroje Orchestrator a funkce aktivity se spouštějí ve vnitřní fronty v centru úloh aplikace function app. Použití fronty tímto způsobem poskytuje spolehlivé zprávy "na alespoň jedno" určitými zárukami. Existují dva typy front v Durable Functions: **řízení fronty** a **pracovní položky fronty**.
+Funkce a funkce nástroje Orchestrator jsou spouštěny interními frontami v centru úloh aplikace Function App. Použití front tímto způsobem poskytuje spolehlivé záruky doručení zpráv "nejméně jednou". Existují dva typy front v Durable Functions: **frontu řízení** a **frontu pracovních položek**.
 
-### <a name="the-work-item-queue"></a>Pracovní položka fronty
+### <a name="the-work-item-queue"></a>Fronta pracovních položek
 
-Existuje jedna pracovní položka fronty za Centrum úkolů v Durable Functions. Je základní frontu a chová podobně jako u kteréhokoli jiného `queueTrigger` fronty ve službě Azure Functions. Tato fronta je použít k aktivaci bezstavové *funkce aktivity* podle dequeueing do jedné zprávy najednou. Všechny tyto zprávy obsahují vstupech do aktivity funkce a další metadata, například jaké funkce pro spuštění. Když aplikace Durable Functions škálovat do několika virtuálních počítačů, všechny tyto virtuální počítače soutěžit získat práce z fronty pracovní položku.
+K dispozici je jedna fronta pracovních položek na každé centrum úloh v Durable Functions. Jedná se o základní frontu, která se chová podobně jako `queueTrigger` jakákoli jiná fronta v Azure Functions. Tato fronta se používá k aktivaci bezstavových *funkcí aktivity* tím, že v jednom okamžiku odřadí jedinou zprávu. Každá z těchto zpráv obsahuje vstupy funkcí aktivity a další metadata, jako je například funkce, kterou je třeba provést. Když Durable Functions aplikace škáluje na více virtuálních počítačů, všechny tyto virtuální počítače budou chtít získat práci z fronty pracovních položek.
 
-### <a name="control-queues"></a>Řízení front
+### <a name="control-queues"></a>Počet front ovládacích prvků:
 
-Existuje více *řízení fronty* za úkol Centrum Durable Functions. A *řízení fronty* je složitější než jednodušší fronty pracovní položku. Ovládací prvek fronty slouží k aktivaci funkce stavové orchestrator. Protože funkce instancemi nástroje orchestrator jsou stavová jednotlivých prvků, není možné použít modelu konkurenčních příjemců k distribuci zatížení napříč virtuálními počítači. Místo toho nástroje orchestrator jsou zprávy s vyrovnáváním zatížení napříč řízení front. Další informace o tomto chování najdete v následujících oddílech.
+K dispozici je více *řídicích front* pro každé centrum úloh v Durable Functions. *Fronta ovládacího prvku* je výkonnější než jednodušší fronta pracovních položek. Řídicí fronty se používají ke spuštění stavových funkcí nástroje Orchestrator. Vzhledem k tomu, že instance funkcí Orchestrator jsou stavové singleton, není možné použít konkurenční model uživatele k distribuci zatížení napříč virtuálními počítači. Místo toho jsou zprávy nástroje Orchestrator vyrovnávány napříč řídicími frontami. Další podrobnosti o tomto chování najdete v následujících oddílech.
 
-Ovládací prvek fronty obsahují celou řadu typů Orchestrace životní cyklus zpráv. Mezi příklady patří [zpráv s orchestrator ovládacího prvku](durable-functions-instance-management.md), funkce aktivitu *odpovědi* zprávy a zprávy časovače. Až 32 zpráv bude vyjmutou z fronty ovládací prvek v jedné cyklického dotazování. Tyto zprávy obsahují data datové části, jakož i metadata, která instance orchestration je určený pro včetně. Pokud více dequeued zpráv jsou určené pro jednu instanci Orchestrace, budou zpracovávat jako dávku.
+Řídicí fronty obsahují nejrůznější typy zpráv o životním cyklu orchestrace. Příklady zahrnují [zprávy řízení nástroje Orchestrator](durable-functions-instance-management.md), zprávy s odezvou funkcí aktivity a zprávy časovače. Ve frontě ovládacích prvků v jednom cyklickém dotazování bude z fronty ovládacího prvku odřazena spousta zpráv 32. Tyto zprávy obsahují data datové části i metadata, včetně toho, pro kterou instanci orchestrace je určena. Je-li pro stejnou instanci orchestrace určena více zpráv ve frontě, budou zpracovány jako dávka.
 
-### <a name="queue-polling"></a>Dotazování fronty
+### <a name="queue-polling"></a>Cyklické dotazování front
 
-Rozšíření trvalý úlohy implementuje exponenciální regresní algoritmu náhodných aby se snížil dopad nečinné fronty dotazovat se na náklady za transakce úložiště. Když se najde zprávu, modul runtime okamžitě vyhledá další zprávy. Když je nalezena žádná zpráva, počká na určitou dobu, než to zkusíte znovu. Po následujících neúspěšných pokusech o získání zpráv fronty dobu čekání i nadále zvyšovat, dokud nedosáhne maximální doba čekání, výchozí nastavení je 30 sekund.
+Rozšíření odolné úlohy implementuje náhodný exponenciální algoritmus pro snížení vlivu nečinnosti na transakční dotaz na náklady transakce úložiště. Po nalezení zprávy modul runtime hned vyhledá jinou zprávu; Pokud se nenajde žádná zpráva, počká na určitou dobu, než se zkusí znovu. Po následných neúspěšných pokusech o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která má výchozí hodnotu 30 sekund.
 
-Dotazování Maximální zpoždění se dají konfigurovat přes `maxQueuePollingInterval` vlastnost [host.json souboru](../functions-host-json.md#durabletask). Nastavíte tuto možnost na hodnotu vyšší může vést k vyšší latence zpracování zprávy. Vyšší latence se očekává až po období nečinnosti. Vyšší náklady na úložiště z důvodu transakce větší úložiště by mohlo způsobit nastavíte tuto možnost na nižší hodnotu.
+Maximální zpoždění cyklického dotazování lze konfigurovat prostřednictvím `maxQueuePollingInterval` vlastnosti v [souboru Host. JSON](../functions-host-json.md#durabletask). Nastavení této hodnoty na vyšší hodnotu může mít za následek vyšší latence při zpracování zpráv. Vyšší latence by se měly očekávat jenom po období nečinnosti. Nastavení této hodnoty na nižší hodnotu může mít za následek vyšší náklady na úložiště kvůli zvýšeným transakcím úložiště.
 
 > [!NOTE]
-> Při spuštění v plány Azure Functions Consumption a Premium [kontroler škálování Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každých 10 sekund Každá fronta ovládacího prvku a pracovní položky. Tato další cyklického dotazování je potřeba určit, kdy chcete aktivovat instancí funkce aplikací a rozhodnutí o škálování. V době psaní tohoto intervalu 10 druhá je konstantní a nedá se konfigurovat.
+> Při spuštění v rámci plánů Azure Functions a Premium se kontroler [Azure Functions Scale](../functions-scale.md#how-the-consumption-and-premium-plans-work) bude dotazovat každý ovládací prvek a frontu pracovních položek každých 10 sekund. Toto další cyklické dotazování je nezbytné k určení, kdy se mají aktivovat instance aplikace Function App a provádět rozhodování o škálování. V době psaní je tento 10 sekundový interval konstantní a nedá se nakonfigurovat.
 
 ## <a name="storage-account-selection"></a>Výběr účtu úložiště
 
-Fronty, tabulky a objekty BLOB využívané odolná služba Functions se vytvoří v nakonfigurovaném účtu Azure Storage. Účet, který chcete použít se dá nastavit pomocí `durableTask/azureStorageConnectionStringName` nastavení **host.json** souboru.
+Fronty, tabulky a objekty blob používané nástrojem Durable Functions jsou vytvořeny v nakonfigurovaném Azure Storagem účtu. Účet, který se má použít, se dá `durableTask/azureStorageConnectionStringName` zadat pomocí nastavení v souboru **Host. JSON** .
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -84,11 +83,11 @@ Fronty, tabulky a objekty BLOB využívané odolná služba Functions se vytvoř
 }
 ```
 
-Pokud není zadán, výchozí `AzureWebJobsStorage` účet úložiště se používá. Pro úlohy náročné na výkon ale účet storage jiné než výchozí konfigurace se doporučuje. Odolná služba Functions často využívá Azure Storage a pomocí vyhrazeného úložiště účtu izoluje využití úložiště Durable Functions z interní využití Azure Functions hostitelem.
+Pokud není zadaný, použije se `AzureWebJobsStorage` výchozí účet úložiště. Pro úlohy citlivé na výkon se ale doporučuje nakonfigurovat účet úložiště, který není výchozí. Durable Functions používá Azure Storage silně a používání vyhrazeného účtu úložiště izoluje Durable Functions využití úložiště od interního využití hostitelem Azure Functions.
 
-## <a name="orchestrator-scale-out"></a>Horizontální navýšení kapacity nástroje Orchestrator
+## <a name="orchestrator-scale-out"></a>Škálování na více instancí Orchestrator
 
-Aktivita funkce jsou bezstavové a horizontálně automaticky přidáním virtuálních počítačů. Funkce nástroje Orchestrator na druhé straně jsou *dělené* napříč jednu či více front ovládacího prvku. Počet front ovládací prvek je definována v **host.json** souboru. Následující příklad host.json fragment kódu nastaví `durableTask/partitionCount` vlastnost `3`.
+Funkce aktivity jsou bezstavové a automaticky se škálují s přidáním virtuálních počítačů. Funkce Orchestrator funguje na druhé straně v rámci jedné nebo více front ovládacích prvků. Počet front řízení je definován v souboru **Host. JSON** . Následující příklad fragmentu Host. JSON nastaví `durableTask/partitionCount` vlastnost na `3`hodnotu.
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -112,37 +111,37 @@ Aktivita funkce jsou bezstavové a horizontálně automaticky přidáním virtu�
 }
 ```
 
-Centra úloh může mít nakonfigurovanou mezi 1 a 16 oddíly. Pokud není zadán, výchozí počet oddílů je **4**.
+Centrum úloh se dá nakonfigurovat s mezi 1 a 16 oddíly. Pokud není zadaný, výchozí počet oddílů je **4**.
 
-Při horizontálním navýšení kapacity na několik instancí hostitele – funkce (obvykle v jiných virtuálních počítačů), každá instance získá zámek na jednom front ovládacího prvku. Tyto zámky se implementují interně jako objekt blob úložiště zapůjčení a ujistěte se, že instance Orchestrace pouze na jednom hostiteli instance byla najednou spuštěna. Pokud úloha centrum je nakonfigurováno pomocí tří řízení front, Orchestrace instance může být s vyrovnáváním zatížení ve virtuálních počítačích až tři. Ke zvýšení kapacity pro provedení aktivity funkce lze přidat další virtuální počítače.
+Při horizontálním navýšení kapacity na více instancí hostitelů funkcí (obvykle na různých virtuálních počítačích) získá každá instance zámek jedné z řídicích front. Tyto zámky se interně implementují jako zapůjčení úložiště objektů BLOB a zajišťují, že instance orchestrace se spouští jenom na jedné instanci hostitele v jednom okamžiku. Pokud je Centrum úkolů nakonfigurované se třemi řídicími frontami, instance orchestrace se můžou vyrovnávat zatížením až po třech virtuálních počítačích. Další virtuální počítače je možné přidat za účelem zvýšení kapacity pro provádění funkcí aktivity.
 
-Následující diagram znázorňuje interakci hostitele Azure Functions s entitami úložiště v prostředí s horizontálně.
+Následující diagram znázorňuje, jak se hostitel Azure Functions komunikuje s entitami úložiště v prostředí s možností horizontálního rozšíření kapacity.
 
-![Diagram škálování](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Měřítko diagramu](./media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Jak je znázorněno na předchozím obrázku, všechny virtuální počítače soutěžit o zprávy do fronty pracovní položku. Však pouze tři virtuální počítače můžete získat zprávy z fronty ovládacího prvku a každý virtuální počítač uzamkne queue jeden ovládací prvek.
+Jak je znázorněno na předchozím diagramu, všechny virtuální počítače soutěží o zprávy ve frontě pracovní položky. Z řídicích front ale můžou získat zprávy jenom tři virtuální počítače a každý virtuální počítač zamkne jednu frontu ovládacích prvků.
 
-Orchestrace instancí se distribuují napříč všemi instancemi fronty ovládacího prvku. Distribuce se provádí pomocí algoritmu hash ID instance orchestraci. ID instance ve výchozím nastavení se náhodný GUID, zajištění, že instance jsou rovnoměrně distribuované napříč všechny fronty ovládacího prvku.
+Instance orchestrace jsou distribuovány napříč všemi instancemi fronty ovládacích prvků. Distribuce se provádí pomocí hashování ID instance orchestrace. ID instancí ve výchozím nastavení jsou náhodné identifikátory GUID, které zajišťují, aby se instance rovnoměrně rozdělují mezi všechny fronty ovládacích prvků.
 
-Obecně řečeno funkce nástroje orchestrator by měla být jednoduché a velké množství výpočetní výkon, neměli byste potřebovat. Proto není nutné vytvářet velký počet ovládací prvek oddílů, fronty a zajistit si skvělé propustnost. Většina náročné práce by mělo být provedeno funkce bezstavové aktivity, které lze škálovat nekonečně.
+Obecně řečeno, funkce nástroje Orchestrator mají být odlehčené a neměly by vyžadovat velké množství výpočetní síly. Proto není nutné vytvářet velký počet oddílů front řízení pro dosažení skvělé propustnosti. Většina těžkých prací by se měla provádět v bezstavových funkcích aktivity, které se dají škálovat nekonečně.
 
 ## <a name="auto-scale"></a>Automatické škálování
 
-Jak se všechny funkce Azure běžící v plánu Consumption, Durable Functions podporuje automatické škálování prostřednictvím [řadič škálování Azure Functions](../functions-scale.md#runtime-scaling). Měřítka řadiče monitoruje latence všechny fronty pravidelně vydáním _Náhled_ příkazy. Na základě latence peeked zprávy, měřítka řadiče se rozhodnout, jestli se má přidat nebo odebrat virtuální počítače.
+Stejně jako u všech Azure Functions běžících v plánu spotřeby Durable Functions podporuje automatické škálování prostřednictvím [řadiče Azure Functions škálování](../functions-scale.md#runtime-scaling). Kontroler škálování monitoruje latenci všech front tím, že pravidelně vydává příkazy pro _prohlížení_ . V závislosti na latencích prohlížených zpráv se kontroler škálování rozhodne, jestli se mají přidat nebo odebrat virtuální počítače.
 
-Pokud měřítka řadiče zjistí, že jsou příliš vysoká. řízení fronty zpráv latenci, přidá dokud latence zpráva poklesne pod přijatelnou úroveň nebo dosáhne počet oddílů řízení fronty instancí virtuálních počítačů. Obdobně měřítka řadiče se průběžně přidávají instancí virtuálních počítačů Pokud latence fronty pracovních položek jsou vysoká, bez ohledu na to, počet oddílů.
+Pokud kontroler škálování zjistí, že latence zpráv řízení fronty je příliš vysoká, přidá instance virtuálních počítačů, dokud se latence zprávy nesníží na přijatelnou úroveň, nebo dosáhne počtu oddílů fronty řízení. Podobně, kontroler škálování průběžně přidá instance virtuálních počítačů, pokud jsou vysoké latence fronty pracovních položek, bez ohledu na počet oddílů.
 
 ## <a name="thread-usage"></a>Využití vlákna
 
-Funkce nástroje Orchestrator jsou spuštěny v jednom vlákně zajistit, že spuštění může být deterministický napříč mnoha riziko. Z důvodu spuštění tento jednovláknový je důležité, že vlákna funkce produktu orchestrator není provádět úlohy náročné na CPU, provádět vstupně-výstupní operace nebo blokovat z jakéhokoli důvodu. Veškerá práce, která může vyžadovat vstupně-výstupní operace blokuje, nebo přesunout do funkce aktivity více vláken.
+Funkce nástroje Orchestrator jsou spouštěny v jednom vlákně, aby bylo zajištěno, že provádění může být deterministické v mnoha opakováních. Z důvodu tohoto spuštění s jedním vláknem je důležité, aby vlákna funkcí Orchestrator neprováděla úlohy náročné na procesor, prováděla vstupně-výstupní operace nebo blokovat z jakéhokoli důvodu. Všechny práce, které mohou vyžadovat vstupně-výstupní operace, blokování nebo více vláken, by měly být přesunuty do funkcí aktivity.
 
-Aktivita funkce mají stejné chování jako běžné funkce aktivované fronty. Mohou bezpečně provádět vstupně-výstupních operací, provést operace náročné na CPU a používejte více vláken. Protože aktivity aktivační události jsou bezstavové, se můžou volně horizontální navýšení kapacity na množství virtuálních počítačů.
+Funkce aktivit mají stejné chování jako běžné funkce aktivované frontou. Můžou bezpečně dělat vstupně-výstupní operace, provádět operace náročné na procesor a používat víc vláken. Protože triggery aktivit jsou bezstavové, můžou volně škálovat na neohraničený počet virtuálních počítačů.
 
 ## <a name="concurrency-throttles"></a>Omezení souběžnosti
 
-Služba Azure Functions podporuje spuštění více funkcí současně v rámci aplikace s jedním instance. Tato souběžné spouštění vám pomůže zvýšit paralelismu a minimalizuje počet "souvisejícím s úplným spuštěním", které Typická aplikace dojde v čase. Vysoká souběžnosti však může vést k využití paměti vysokou jednotlivé virtuální počítače. V závislosti na potřebách aplikace function app může být potřeba omezení souběžnosti jednotlivé instance, aby možnost paměti v situacích, vysokým zatížením.
+Azure Functions podporuje souběžné provádění více funkcí v rámci jedné instance aplikace. Toto souběžné provádění pomáhá zvýšit paralelismus a minimalizuje počet "studených startů", na které bude Typická aplikace v průběhu času docházet. Vysoká souběžnost ale může mít za následek vysoké využití paměti na virtuálním počítači. V závislosti na potřebách aplikace Function App může být nutné omezit souběžnost na jednotlivé instance, aby nedocházelo k možnosti vycházet z paměti v situacích s vysokým zatížením.
 
-Oba limity aktivita funkce a nástroje orchestrator funkce souběžnosti se dá nakonfigurovat v **host.json** souboru. Jsou příslušné nastavení `durableTask/maxConcurrentActivityFunctions` a `durableTask/maxConcurrentOrchestratorFunctions` v uvedeném pořadí.
+V souboru **Host. JSON** lze konfigurovat jak funkci aktivity, tak omezení souběžnosti funkcí Orchestrator. Příslušná nastavení jsou `durableTask/maxConcurrentActivityFunctions` `durableTask/maxConcurrentOrchestratorFunctions` v uvedeném pořadí.
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -168,16 +167,16 @@ Oba limity aktivita funkce a nástroje orchestrator funkce souběžnosti se dá 
 }
 ```
 
-V předchozím příkladu maximálně 10 orchestrator 10 aktivity funkcí a současně na jeden virtuální počítač. Pokud není zadán, počet souběžných spuštění funkce aktivity a orchestrator je omezené na 10 × počet jader virtuálního počítače.
+V předchozím příkladu může maximálně 10 funkcí Orchestrator a 10 funkcí pro aktivity běžet na jednom virtuálním počítači současně. Pokud není zadán, počet souběžných aktivit a spuštění funkcí Orchestrator je omezené na 10X počet jader virtuálního počítače.
 
 > [!NOTE]
-> Tato nastavení jsou užitečné ke správě paměti a využití procesoru na jeden virtuální počítač. Ale při škálované na víc virtuálních počítačů, každý virtuální počítač bude mít svou vlastní sadu omezení. Tato nastavení nelze použít k řízení souběžnosti na globální úrovni.
+> Tato nastavení jsou užitečná při správě paměti a využití CPU na jednom virtuálním počítači. Ale při horizontálním navýšení kapacity mezi několika virtuálními počítači bude mít každý virtuální počítač vlastní sadu omezení. Tato nastavení nelze použít k řízení souběžnosti na globální úrovni.
 
-## <a name="orchestrator-function-replay"></a>Funkce opakování nástroje Orchestrator
+## <a name="orchestrator-function-replay"></a>Funkce Orchestrator – přehrání
 
-Jak už bylo zmíněno dříve, jsou funkcí nástroje orchestrator přehrály pomocí obsahu **historie** tabulky. Ve výchozím nastavení je kód funkce orchestrátoru přehrály pokaždé, když jsou odstraněné z fronty dávku zpráv z fronty ovládacího prvku.
+Jak bylo zmíněno dříve, funkce Orchestrator se přehrávají pomocí obsahu tabulky **Historie** . Ve výchozím nastavení se kód funkce nástroje Orchestrator přehraje pokaždé, když se dávka zpráv z fronty ovládacího prvku odřadí.
 
-Tím, že se dají zakázat toto chování opakování agresivní **rozšířené relace**. Pokud jsou povolené rozšířené relace, funkce instancemi nástroje orchestrator jsou uložené v paměti, kterou déle a nové zprávy může zpracovat bez úplné opakování. Rozšířené relace se povoluje nastavením `durableTask/extendedSessionsEnabled` k `true` v **host.json** souboru. `durableTask/extendedSessionIdleTimeoutInSeconds` Nastavení se používá k řízení dobu nečinnosti relace se bude vysílat v paměti:
+Toto agresivní chování při opakovaném přehrání lze zakázat povolením **rozšířených relací**. Když je povolená rozšířená relace, instance funkcí Orchestrator se uchovávají v paměti déle a nové zprávy je možné zpracovat bez úplného přehrání. Rozšířené relace jsou povolené nastavením `durableTask/extendedSessionsEnabled` na `true` v souboru **Host. JSON** . `durableTask/extendedSessionIdleTimeoutInSeconds` Nastavení slouží k řízení doby, po kterou se nečinná relace uchovává v paměti:
 
 ### <a name="functions-1x"></a>Functions 1.x
 
@@ -203,43 +202,43 @@ Tím, že se dají zakázat toto chování opakování agresivní **rozšířen�
 }
 ```
 
-Typické účinku povolení rozšířené relace se snižuje vstupně-výstupní operace proti účtu úložiště Azure a celkové lepší výkon.
+Typický efekt povolení rozšířených relací se snižuje v/v proti účtu Azure Storage a celkově lepší propustnost.
 
-Jeden potenciální Nevýhodou této funkce je však této funkce nečinnosti orchestrator instance zůstanou v paměti delší. Existují dva důsledky zajímat:
+Ale jedním z možných Nevýhodou této funkce je, že nečinné instance funkcí Orchestrator zůstanou v paměti déle. Existují dva účinky, které je potřeba mít na paměti:
 
-1. Celkové zvýšení využití paměti v aplikaci funkce.
-2. Celkově pokles propustnosti při provádění funkcí mnoho souběžných, krátkodobých nástroje orchestrator.
+1. Celkové zvýšení využití paměti aplikace Function App
+2. Celkové snížení propustnosti v případě, že existuje mnoho souběžných a krátkodobých spuštění funkcí Orchestrator.
 
-Například pokud `durableTask/extendedSessionIdleTimeoutInSeconds` nastavená na 30 sekund, funkce epizodě krátkodobou orchestrator, který se spustí v menší než 1 sekundu stále zabírat paměti po dobu 30 sekund. Bude také započítávat `durableTask/maxConcurrentOrchestratorFunctions` kvóty již bylo zmíněno dříve, potenciálně brání spuštění jiné funkce nástroje orchestrator.
+Pokud `durableTask/extendedSessionIdleTimeoutInSeconds` je například nastaveno na 30 sekund, pak krátká funkce Orchestrator, která se provede za méně než 1 sekundou, bude i nadále zabírat paměť po dobu 30 sekund. Také se bude počítat s `durableTask/maxConcurrentOrchestratorFunctions` výše uvedenou kvótou, která potenciálně brání spuštění dalších funkcí nástroje Orchestrator.
 
 > [!NOTE]
-> Toto nastavení by měla sloužit pouze po funkce orchestrátoru je úplně vývoji a testování. Výchozí chování agresivní opakování je vhodný pro detekci chyb idempotence funkcí nástroje orchestrator v době vývoje.
+> Tato nastavení by měla být použita pouze poté, co byla funkce Orchestrator plně vyvinuta a testována. Výchozí agresivní chování při přehrání je užitečné pro detekci chyb idempotence ve funkcích Orchestrator v době vývoje.
 
 ## <a name="performance-targets"></a>Cíle výkonnosti
 
-Pokud plánujete použít Durable Functions pro produkční aplikace, je důležité vzít v úvahu požadavky na výkon v rané fázi procesu plánování. Tento oddíl popisuje některé scénáře základní informace o využití a očekávané maximální propustnosti čísla.
+Když plánujete použít Durable Functions pro produkční aplikaci, je důležité zvážit požadavky na výkon v brzké době v procesu plánování. Tato část se zabývá některými základními scénáři použití a očekávanými maximálními čísly propustnosti.
 
-* **Sekvenční aktivita provádění**: Tento scénář popisuje funkce orchestrátoru, který spouští řadu funkce aktivity jednu po druhé. Nejlépe odpovídá [řetězení funkce](durable-functions-sequence.md) vzorku.
-* **Paralelní provádění aktivity**: Tento scénář popisuje funkce orchestrátoru, který se spustí paralelní pomocí mnoho funkcí aktivity [větveného, jinak](durable-functions-cloud-backup.md) vzor.
-* **Paralelní zpracování odpovědi**: Tento scénář je v druhé polovině [větveného, jinak](durable-functions-cloud-backup.md) vzor. Zaměřuje se na výkon jinak. Je důležité si uvědomit, že na rozdíl od větveného, jinak se provádí funkce instancí jedné orchestrator a proto dají spustit jenom na jeden virtuální počítač.
-* **Zpracování událostí externí**: Tento scénář představuje instanci funkce nástroje orchestrator jeden, který čeká na [externí události](durable-functions-external-events.md), postupně po jednom.
+* **Provádění sekvenční aktivity**: Tento scénář popisuje funkci nástroje Orchestrator, která spouští řadu funkcí aktivity jednu po druhé. Nejlépe se podobá ukázce [řetězení funkcí](durable-functions-sequence.md) .
+* **Paralelní provádění aktivit**: Tento scénář popisuje funkci Orchestrator, která paralelně spouští mnoho funkcí aktivity s využitím modelu ventilátoru s [ventilátory](durable-functions-cloud-backup.md) .
+* **Paralelní zpracování odpovědí**: Tento scénář je druhá polovina vzoru ventilátoru [a ventilátoru](durable-functions-cloud-backup.md) . Zaměřuje se na výkon ventilátoru. Je důležité si uvědomit, že na rozdíl od ventilátoru se ventilátor používá v jedné instanci funkce Orchestrator, a proto může běžet jenom na jednom virtuálním počítači.
+* **Externí zpracování událostí**: Tento scénář představuje jednu instanci funkce Orchestrator, která čeká na [externí události](durable-functions-external-events.md), a to v jednom okamžiku.
 
 > [!TIP]
-> Na rozdíl od větveného jinak operace jsou omezené na jeden virtuální počítač. Pokud vaše aplikace používá větveného, jinak vzor a máte obavy o výkonu jinak, vezměte v úvahu dílčího dělení větveného funkce aktivity napříč více [dílčí Orchestrace](durable-functions-sub-orchestrations.md).
+> Na rozdíl od ventilátorů jsou operace ventilátoru omezené na jeden virtuální počítač. Pokud vaše aplikace využívá vzorek ventilátoru a máte obavy o výkon ventilátoru, zvažte rozdělení funkce aktivity na více [dílčích orchestrací](durable-functions-sub-orchestrations.md).
 
-V následující tabulce jsou uvedeny očekávané *maximální* čísla propustnost pro scénáře bylo popsáno dříve. "Instance" odkazuje na jednu instanci funkce orchestrátoru běžící na jeden malý ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) virtuálních počítačů ve službě Azure App Service. Ve všech případech se předpokládá, že [rozšířené relace](#orchestrator-function-replay) jsou povolené. Skutečné výsledky se mohou lišit v závislosti na využití procesoru nebo vstupně-výstupní operace prováděné pomocí kódu funkce.
+Následující tabulka uvádí očekávaná *maximální* čísla propustnosti pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci funkce Orchestrator běžící na jednom malém virtuálním počítači ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) v Azure App Service. Ve všech případech se předpokládá, že jsou povolené [Rozšířené relace](#orchestrator-function-replay) . Skutečné výsledky se můžou lišit v závislosti na využití procesoru nebo vstupně-výstupní práci prováděné kódem funkce.
 
 | Scénář | Maximální propustnost |
 |-|-|
-| Provádění sekvenční aktivity | 5 aktivit za sekundu na instanci |
-| Spuštění paralelní aktivita (větveného) | 100 aktivit za sekundu na instanci |
-| Paralelní zpracování odpovědi (jinak) | 150 odpovědi za sekundu na instanci |
-| Zpracování externího událostí | 50 událostí za sekundu na instanci |
+| Provádění sekvenční aktivity | 5 aktivit za sekundu, na instanci |
+| Paralelní provádění aktivit (ventilátor-out) | 100 aktivit za sekundu, na instanci |
+| Paralelní zpracování odpovědí (ventilátor-in) | 150 odpovědí za sekundu, na instanci |
+| Externí zpracování událostí | 50 událostí za sekundu, na instanci |
 
 > [!NOTE]
-> Tato čísla jsou aktuální v době v1.4.0 (GA) verzi rozšíření Durable Functions. Tato čísla může postupem času změnit zrání funkce a optimalizace probíhají.
+> Tato čísla jsou aktuální pro vydání rozšíření Durable Functions v 1.4.0 (GA). Tato čísla se můžou v průběhu času měnit, protože se tato funkce prosazuje a optimalizace se provedou.
 
-Pokud nevidíte očekáváte, že čísla propustnost a procesoru a využití paměti, zobrazí se v pořádku, zkontrolujte, jestli příčinou souvisí s [stavu vašeho účtu úložiště](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Durable Functions, které rozšíření můžete umístit významné zatížení na účtu služby Azure Storage a dostatečně vysoké zatížení může vést k omezení účtu úložiště.
+Pokud se vám nezobrazují počty propustnosti, které očekáváte, a využití procesoru a paměti se zobrazí v pořádku, zkontrolujte, jestli příčina souvisí s [stavem vašeho účtu úložiště](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). Rozšíření Durable Functions může vést k výraznému zatížení pro Azure Storage účet a dostatečně vysoké zatížení může mít za následek omezení účtu úložiště.
 
 ## <a name="next-steps"></a>Další postup
 

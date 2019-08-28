@@ -1,64 +1,63 @@
 ---
-title: Modrá obrazovka chyby při dalším spuštění virtuálního počítače Azure | Dokumentace Microsoftu
-description: Zjistěte, jak problém vyřešit modrá obrazovka chyby přijaté při dalším spuštění | Dokumentace Microsoftu
+title: Při spouštění virtuálního počítače Azure došlo k chybám modré obrazovky | Microsoft Docs
+description: Naučte se, jak řešit potíže, při kterých se při spouštění zobrazila chyba modré obrazovky | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 397f9f4de21ecb27435c132d80074ed442202448
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719786"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089969"
 ---
-# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows se zobrazuje chyba modrá obrazovka při dalším spuštění virtuálního počítače Azure
-Tento článek popisuje modrá obrazovka chyby, které můžete narazit při spuštění Windows virtuální počítač (VM) v Microsoft Azure. Poskytuje kroky při shromažďování dat pro lístek podpory. 
+# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Při spouštění virtuálního počítače Azure zobrazuje Windows chybou modrou obrazovku
+Tento článek popisuje chyby modré obrazovky, se kterými se můžete setkat při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky, které vám pomůžou shromáždit data pro lístek podpory. 
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků, který doporučujeme použít pro nová nasazení místo modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak 
 
-Virtuální počítač Windows nespustí. Když vrátíte se změnami na snímcích obrazovky spouštěcí [Diagnostika spouštění](./boot-diagnostics.md), najdete v jednom z následujících chybových zpráv v modrá obrazovka:
+Virtuální počítač s Windows se nespustí. Když zkontrolujete spouštěcí snímky obrazovky v [diagnostice spouštění](./boot-diagnostics.md), zobrazí se některá z následujících chybových zpráv na modré obrazovce:
 
-- Naše PC narazili na problém a vyžaduje restartování. Shromáždíme jenom některé informace o chybě, a potom restartujete.
-- Váš počítač narazili na problém a vyžaduje restartování.
+- náš počítač narazil na problém a je potřeba ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se můžete restartovat.
+- Váš počítač narazil na problém a je potřeba ho restartovat.
 
-Tato část uvádí běžné chybové zprávy, se můžete setkat při správě virtuálních počítačů:
+V této části jsou uvedené běžné chybové zprávy, se kterými se můžete setkat při správě virtuálních počítačů:
 
 ## <a name="cause"></a>Příčina
 
-Může dojít z několika příčin jako proč získali byste chybu stop. Nejčastější příčiny patří:
+Může to být několik důvodů, proč by se vám zobrazila chyba Stop. Mezi nejběžnější příčiny patří:
 
 - Problém s ovladačem
-- Poškozená systémový soubor nebo paměti
-- Zakázané sektoru paměti přistupuje k aplikaci
+- Poškozený systémový soubor nebo paměť
+- Aplikace přistupuje ke zakázanému sektoru paměti.
 
-## <a name="collect-memory-dump-file"></a>Shromažďovat výpis stavu paměti
+## <a name="collect-memory-dump-file"></a>Shromáždit soubor s výpisem paměti
 
-Chcete-li tento problém vyřešit, je třeba prvními, kdo se shromažďování výpisu stavu systému souboru při chybě a obraťte se na podporu pomocí souboru s výpisem paměti. Shromažďování výpisu stavu systému souborů, postupujte podle těchto kroků:
+Chcete-li tento problém vyřešit, je třeba nejprve shromáždit soubor s výpisem paměti pro chybu a kontaktovat podporu se souborem s výpisem paměti. Chcete-li shromáždit soubor s výpisem paměti, postupujte podle následujících kroků:
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
 
-1. Pořízení snímku disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md). 
-3. K obnovení virtuálního počítače pomocí vzdálené plochy.
+3. Vzdálená plocha do virtuálního počítače pro obnovení.
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a vyplňte lístek podpory
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Vyhledat soubor s výpisem paměti a odeslat lístek podpory
 
-1. Na virtuální počítač pro obnovení přejděte do složky systému windows v připojeném disku s operačním systémem. Pokud písmeno jednotky, která je přiřazena připojeném disku s operačním systémem je F, budete muset přejít do F:\Windows.
-2. Vyhledejte soubor memory.dmp a potom [vyplňte lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pomocí souboru s výpisem paměti. 
+1. Na virtuálním počítači pro obnovení otevřete složku Windows na připojeném disku s operačním systémem. Pokud je písmeno přiřazené k připojenému disku s operačním systémem F, je nutné přejít na F:\Windows.
+2. Vyhledejte soubor Memory. dmp a pak odešlete [lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti. 
 
-Pokud nemůže najít soubor s výpisem paměti, přesuňte následující krok, povolení protokolu výpisu stavu systému a konzoly sériového portu.
+Pokud soubor s výpisem paměti nemůžete najít, přejděte k dalšímu kroku a Povolte protokol výpisu a sériovou konzolu.
 
 ### <a name="enable-dump-log-and-serial-console"></a>Povolení protokolu výpisu stavu systému a konzoly sériového portu
 
@@ -67,7 +66,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
 2. Spusťte tento skript:
 
-    V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F.  Nahraďte ji odpovídající hodnotou ve virtuálním počítači.
+    V tomto skriptu předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je F.  Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -91,8 +90,8 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Ujistěte se, zda je dostatek místa na disku přidělit tolik paměti, jako paměť RAM, které závisí na velikosti, který vyberete pro tento virtuální počítač.
-    2. Pokud není dostatek místa nebo je to velká velikost virtuálního počítače (řady G a GS E), může pak změnit umístění, kde tento soubor se vytvoří a, která odkazují na libovolný datový disk, který je připojen k virtuálnímu počítači. K tomuto účelu bude nutné změnit následující klíč:
+    1. Ujistěte se, že na disku je dostatek místa pro přidělení tolika paměti jako paměti RAM, což závisí na velikosti, kterou vybíráte pro tento virtuální počítač.
+    2. Pokud není dostatek místa nebo se jedná o virtuální počítač velké velikosti (G, GS nebo E-series), můžete změnit umístění, kde se tento soubor vytvoří, a odkazovat na jakýkoli jiný datový disk, který je připojený k virtuálnímu počítači. K tomu budete muset změnit následující klíč:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -101,9 +100,9 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [Odpojit disk s operačním systémem a znovu připojte disk s operačním systémem k virtuálnímu počítači ovlivněné](../windows/troubleshoot-recovery-disks-portal.md).
-4. Spusťte virtuální počítač pro reprodukci problému a vygeneruje se soubor s výpisem paměti.
-5. Připojení disku s operačním systémem k obnovení virtuálního počítače, shromažďování výpisu stavu systému souborů a potom [vyplňte lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pomocí souboru s výpisem paměti.
+3. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](../windows/troubleshoot-recovery-disks-portal.md).
+4. Spusťte virtuální počítač, aby se problém reprodukoval, a pak se vygeneruje soubor s výpisem paměti.
+5. Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení, shromážděte soubor výpisu paměti a pak [odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) se souborem s výpisem paměti.
 
 
 

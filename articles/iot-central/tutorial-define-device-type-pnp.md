@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 877769041d1587c6c1b0f4dbaff51d5a1a7924b5
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 660b2ead146695657ae13444cb7936eff8224f3a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997719"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099520"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -44,7 +44,7 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste dokončili rychlý start [Vytvoření aplikace Azure IoT Central](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json), můžete znovu využít aplikaci, kterou jste v tomto rychlém startu vytvořili. Jinak použijte následující postup a vytvořte prázdnou aplikaci Azure IoT Central:
 
-1. Přejděte na stránku [správce aplikací](https://aka.ms/iotcentral) Azure IoT Central.
+1. Přejděte na web [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) .
 
 1. Pokud máte předplatné Azure, přihlaste se pomocí přihlašovacích údajů, které používáte pro přístup k němu, jinak se přihlaste pomocí účet Microsoft:
 

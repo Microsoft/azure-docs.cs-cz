@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a Správa virtuálního počítače Azure pomocí Javy | Dokumentace Microsoftu
-description: Pomocí Javy a Azure Resource Manageru k nasazení virtuálního počítače a všechny její Podpůrné prostředky.
+title: Vytvoření a Správa virtuálního počítače Azure pomocí Java | Microsoft Docs
+description: Pomocí jazyků Java a Azure Resource Manager nasaďte virtuální počítač a všechny jeho podpůrné prostředky.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,35 +11,34 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b02fd8f012dee2436f4f276e05185428008508a1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722570"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103025"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Javy
+# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
-[Virtuálního počítače Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) potřebuje několik Podpůrné prostředky Azure. Tento článek popisuje vytváření, Správa a odstranění prostředků virtuálního počítače pomocí Javy. Získáte informace o těchto tématech:
+[Virtuální počítač Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) potřebuje několik pomocných prostředků Azure. Tento článek popisuje vytváření, správu a odstraňování prostředků virtuálních počítačů pomocí jazyka Java. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořte projekt Maven
+> * Vytvoření projektu Maven
 > * Přidat závislosti
-> * Vytvořte přihlašovací údaje
-> * Vytvoření prostředků
+> * Vytvořit pověření
+> * Vytvořit prostředky
 > * Provádění úloh správy
 > * Odstranění prostředků
 > * Spuštění aplikace
 
-Proveďte tyto kroky trvá přibližně 20 minut.
+Provedení těchto kroků trvá přibližně 20 minut.
 
-## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
+## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-1. Pokud jste tak již neučinili, nainstalujte [Java](https://aka.ms/azure-jdks).
+1. Pokud jste to ještě neudělali, nainstalujte [Java](https://aka.ms/azure-jdks).
 2. Nainstalujte [Maven](https://maven.apache.org/download.cgi).
 3. Vytvořte novou složku a projekt:
     
@@ -52,7 +51,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. V části `testAzureApp` složku, otevřete `pom.xml` a přidejte konfiguraci buildu na &lt;projektu&gt; umožňuje tvorbu aplikace:
+1. Ve složce otevřete soubor a &lt;přidejte do projektu&gt; konfiguraci sestavení, aby bylo možné sestavit aplikaci: `pom.xml` `testAzureApp`
 
     ```xml
     <build>
@@ -68,7 +67,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
     </build>
     ```
 
-2. Přidáte závislosti, které jsou potřeba pro přístup k Azure Java SDK.
+2. Přidejte závislosti potřebné pro přístup k sadě Azure Java SDK.
 
     ```xml
     <dependency>
@@ -115,13 +114,13 @@ Proveďte tyto kroky trvá přibližně 20 minut.
 
 3. Uložte soubor.
 
-## <a name="create-credentials"></a>Vytvořte přihlašovací údaje
+## <a name="create-credentials"></a>Vytvořit pověření
 
-Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup do [instanční objekt služby Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
+Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu objektu služby Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Měli byste také zaznamenat ID aplikace, ověřovací klíč a ID tenanta, které budete potřebovat v pozdějším kroku.
 
-### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
+### <a name="create-the-authorization-file"></a>Vytvoření autorizačního souboru
 
-1. Vytvořte soubor s názvem `azureauth.properties` a k němu přidejte tyto vlastnosti:
+1. Vytvořte soubor s názvem `azureauth.properties` a přidejte do něj tyto vlastnosti:
 
     ```
     subscription=<subscription-id>
@@ -134,20 +133,20 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte **&lt;id předplatného&gt;** identifikátorem předplatné **&lt;id aplikace&gt;** aplikaci služby Active Directory identifikátor, **&lt;ověřovací klíč&gt;** s klíčem aplikace a **&lt;id tenanta&gt;** s identifikátor tenanta.
+    Nahraďte **&lt;ID&gt;** předplatného identifikátorem vašeho předplatného,  **&lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, **&lt;Authentication Key pomocí&gt;** klíče aplikace a  **&lt;ID&gt; tenanta** s identifikátorem tenanta.
 
 2. Uložte soubor.
-3. Nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION v prostředí s úplnou cestou k souboru ověřovacího.
+3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
-### <a name="create-the-management-client"></a>Vytvoření klienta služby správy
+### <a name="create-the-management-client"></a>Vytvořit klienta pro správu
 
-1. Otevřít `App.java` soubor `src\main\java\com\fabrikam` a ujistěte se, že příkaz Tento balíček je v horní části:
+1. Otevřete soubor v části `src\main\java\com\fabrikam` a ujistěte se, že je tento příkaz balíčku v horní části: `App.java`
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. V rámci příkazu balíčku, přidejte tyto příkazy import:
+2. V rámci příkazu Package přidejte tyto příkazy importu:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -169,7 +168,7 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
     import java.util.Scanner;
     ```
 
-2. Chcete-li vytvořit přihlašovací údaje služby Active Directory, které potřebujete k podání žádostí o tento kód vložte do hlavní metoda třídy aplikace:
+2. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které potřebujete k vytvoření žádostí, přidejte tento kód do metody Main třídy App:
    
     ```java
     try {
@@ -185,13 +184,13 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
 
     ```
 
-## <a name="create-resources"></a>Vytvoření prostředků
+## <a name="create-resources"></a>Vytvořit prostředky
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Všechny prostředky musí být součástí [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md).
+Všechny prostředky musí být obsaženy ve [skupině prostředků](../../azure-resource-manager/resource-group-overview.md).
 
-Chcete-li zadat hodnoty pro aplikace a vytvořte skupinu prostředků, tento kód vložte do bloku try v hlavní metodě:
+Chcete-li zadat hodnoty pro aplikaci a vytvořit skupinu prostředků, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating resource group...");
@@ -201,11 +200,11 @@ ResourceGroup resourceGroup = azure.resourceGroups()
     .create();
 ```
 
-### <a name="create-the-availability-set"></a>Vytvořit skupinu dostupnosti
+### <a name="create-the-availability-set"></a>Vytvoření skupiny dostupnosti
 
-[Skupiny dostupnosti](tutorial-availability-sets.md) usnadňují údržbu virtuálních počítačů, které používá vaše aplikace.
+[Skupiny dostupnosti](tutorial-availability-sets.md) usnadňují údržbu virtuálních počítačů používaných vaší aplikací.
 
-Chcete-li vytvořit skupinu dostupnosti, přidejte do bloku try v hlavní metodě tento kód:
+Chcete-li vytvořit skupinu dostupnosti, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating availability set...");
@@ -218,9 +217,9 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
+[Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
 
-Chcete-li vytvořit veřejnou IP adresu pro virtuální počítač, tento kód vložte do bloku try v hlavní metodě:
+Pro vytvoření veřejné IP adresy pro virtuální počítač přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -234,9 +233,9 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-network/virtual-networks-overview.md).
+Virtuální počítač musí být v podsíti [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
 
-Pokud chcete vytvořit podsítě a virtuální síť, tento kód vložte do bloku try v hlavní metodě:
+Pokud chcete vytvořit podsíť a virtuální síť, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -249,11 +248,11 @@ Network network = azure.networks()
     .create();
 ```
 
-### <a name="create-the-network-interface"></a>Vytvořte síťové rozhraní
+### <a name="create-the-network-interface"></a>Vytvoření síťového rozhraní
 
-Virtuální počítač potřebuje síťové rozhraní ve virtuální síti komunikovat.
+Virtuální počítač potřebuje ke komunikaci s virtuální sítí síťové rozhraní.
 
-Chcete-li vytvořit síťové rozhraní, tento kód vložte do bloku try v hlavní metodě:
+Chcete-li vytvořit síťové rozhraní, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating network interface...");
@@ -272,7 +271,7 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 Teď, když jste vytvořili všechny podpůrné prostředky, můžete vytvořit virtuální počítač.
 
-K vytvoření virtuálního počítače, přidejte do bloku try v hlavní metodě tento kód:
+Chcete-li vytvořit virtuální počítač, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -294,11 +293,11 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> V tomto kurzu se vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru další Image najdete v tématu [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> V tomto kurzu se vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru dalších imagí najdete v tématu [navigace a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Pokud chcete použít stávající disk místo marketplace image, použijte tento kód: 
+Pokud chcete použít existující disk místo image Marketplace, použijte tento kód: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk")
@@ -321,17 +320,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci opakovaných nebo složitých úloh.
+Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete chtít vytvořit kód pro automatizaci opakujících se nebo složitých úloh.
 
-Když budete potřebovat k ničemu s virtuálním Počítačem, budete muset získat její instanci. Tento kód vložte do bloku try hlavní metody:
+Pokud potřebujete s virtuálním počítačem něco udělat, musíte získat jeho instanci. Přidejte tento kód do testovaného bloku metody Main:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>Získání informací o virtuálním počítači
+### <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
 
-Chcete-li získat informace o virtuálním počítači, přidejte do bloku try v hlavní metodě tento kód:
+Chcete-li získat informace o virtuálním počítači, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("hardwareProfile");
@@ -389,9 +388,9 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Zastavit virtuální počítač a ponechat jeho nastavení ale dál bude účtovat, nebo můžete zastavit virtuální počítač a uvolnit ji. Při zrušení přidělení virtuálního počítače jsou všechny prostředky s ním spojená také končí uvolnění a účtování pro něj.
+Můžete zastavit virtuální počítač a zachovat všechna jeho nastavení, ale nadále se vám bude účtovat, nebo můžete virtuální počítač zastavit a zrušit jeho přidělení. Když je virtuální počítač uvolněný, oddělují se i všechny prostředky, které jsou k němu přidružené, a pro něj končí fakturace.
 
-Pokud chcete zastavit virtuální počítač bez rušení přidělení ho, tento kód vložte do bloku try v hlavní metodě:
+Chcete-li zastavit virtuální počítač bez jeho přidělení, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Stopping vm...");
@@ -400,7 +399,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Pokud chcete zrušit přidělení virtuálního počítače, změna stavu PowerOff volání tento kód:
+Pokud chcete zrušit přidělení virtuálního počítače, změňte volání stavu PowerOff na tento kód:
 
 ```java
 vm.deallocate();
@@ -408,7 +407,7 @@ vm.deallocate();
 
 ### <a name="start-the-vm"></a>Spuštění virtuálního počítače
 
-Chcete-li spustit virtuální počítač, tento kód vložte do bloku try v hlavní metodě:
+Chcete-li spustit virtuální počítač, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Starting vm...");
@@ -419,9 +418,9 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>Změna velikosti virtuálního počítače
 
-Mnoho aspektů nasazení má brát při rozhodování o velikosti pro virtuální počítač. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).  
+Při rozhodování o velikosti vašeho virtuálního počítače je třeba vzít v úvahu mnoho aspektů nasazení. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).  
 
-Chcete-li změnit velikost virtuálního počítače, přidejte do bloku try v hlavní metodě tento kód:
+Chcete-li změnit velikost virtuálního počítače, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Resizing vm...");
@@ -434,7 +433,7 @@ input.nextLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Přidání datového disku k virtuálnímu počítači
 
-Chcete-li přidat datový disk k virtuálnímu počítači, který je 2 GB. velikost, má logické jednotce LUN 0 a ukládání do mezipaměti typu ReadWrite, tento kód vložte do bloku try v hlavní metodě:
+Chcete-li přidat datový disk do virtuálního počítače, který má velikost 2 GB, má logickou jednotku 0 a typ zápisu do mezipaměti, přidejte tento kód do bloku try v metodě Main:
 
 ```java
 System.out.println("Adding data disk...");
@@ -447,30 +446,30 @@ input.nextLine();
 
 ## <a name="delete-resources"></a>Odstranění prostředků
 
-Vzhledem k tomu, že se vám účtovat prostředky používané v Azure, je vždy vhodné odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
+Vzhledem k tomu, že se vám účtují prostředky používané v Azure, je vždy vhodné odstranit prostředky, které už nepotřebujete. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, stačí odstranit skupinu prostředků.
 
-1. Pokud chcete odstranit skupinu prostředků, tento kód vložte do bloku try v hlavní metodě:
+1. Pokud chcete odstranit skupinu prostředků, přidejte tento kód do bloku try v metodě Main:
    
     ```java
     System.out.println("Deleting resources...");
     azure.resourceGroups().deleteByName("myResourceGroup");
     ```
 
-2. Soubor App.java uložte.
+2. Uložte soubor App. Java.
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-To by měla trvat asi pět minut, než tuto konzolovou aplikaci pro spuštění úplně od začátku.
+Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibližně pět minut.
 
-1. Ke spuštění aplikace, použijte tento příkaz Maven:
+1. Chcete-li spustit aplikaci, použijte tento příkaz Maven:
 
     ```
     mvn compile exec:java
     ```
 
-2. Než stisknete klávesu **Enter** spuštění odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na webu Azure Portal. Klikněte na stav nasazení můžete zobrazit informace o nasazení.
+2. Než stisknete **ENTER** a začnete odstraňovat prostředky, může trvat několik minut, než se ověří vytváření prostředků v Azure Portal. Kliknutím na stav nasazení zobrazíte informace o nasazení.
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o používání [knihovny Azure libraries for Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
+* Přečtěte si další informace o používání [knihoven Azure pro Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

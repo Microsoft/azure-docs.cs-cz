@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 18cb7433de81ddf6733a494778d0a7c82afb5677
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095630"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověřování řešení Batch Management se službou Active Directory
 
@@ -59,7 +58,7 @@ Postupujte podle následujících kroků v Azure Portal:
 4. Kliknutím na **Přidat** přidejte nové požadované oprávnění. 
 5. V kroku 1 zadejte **Windows Azure rozhraní API pro správu služeb**, vyberte toto rozhraní API ze seznamu výsledků a klikněte na tlačítko **Vybrat** .
 6. V kroku 2 zaškrtněte políčko vedle **přístupu k modelu nasazení Azure Classic jako uživatelé organizace**a klikněte na tlačítko **Vybrat** .
-7. Klikněte na  tlačítko Hotovo.
+7. Klikněte na tlačítko Hotovo.
 
 Okno **požadovaná oprávnění** teď zobrazuje, že oprávnění k vaší aplikaci se udělují rozhraním API ADAL i správce prostředků. Při první registraci aplikace v Azure AD jsou oprávnění ve výchozím nastavení udělena službě ADAL.
 

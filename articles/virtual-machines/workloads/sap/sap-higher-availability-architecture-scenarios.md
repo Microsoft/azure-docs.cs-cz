@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4668d5e7872c677f20c2395b5927d83c69775926
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 64db278807b40f8b142513ac06247e916be74f4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68855194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078039"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využití restartování virtuálních počítačů infrastruktury Azure k dosažení "vyšší dostupnosti" systému SAP
 
@@ -281,6 +280,6 @@ Za předpokladu, že Typický scénář Azure jedné instance aplikačního serv
   * [Spuštění nebo zastavení SAP společně s vaším serverem UNIX spustit/zastavit](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [Spouštění a zastavování agentů pro správu SAP NetWeaver](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o plné dostupnosti aplikace SAP NetWeaver s podporou aplikací najdete v článku o [vysoké dostupnosti aplikace SAP v Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

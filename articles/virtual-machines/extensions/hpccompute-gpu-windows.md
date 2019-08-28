@@ -1,6 +1,6 @@
 ---
-title: Rozšíření ovladače NVIDIA GPU – virtuální počítače s Windows v Azure | Dokumentace Microsoftu
-description: Rozšíření Microsoft Azure k instalaci ovladačů NVIDIA GPU do řady N-series výpočetní virtuální počítače se systémem Windows.
+title: Rozšíření ovladače NVIDIA GPU – virtuální počítače Azure s Windows | Microsoft Docs
+description: Microsoft Azure rozšíření pro instalaci ovladačů NVIDIA GPU na výpočetní virtuální počítače řady N-Series s Windows
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
@@ -8,27 +8,26 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 004d6125de6762303db91f3a5ef9ffa16e6e501f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c44722403967f3563472692f97cb2a114e6294cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705958"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084466"
 ---
-# <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
+# <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Windows. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
+Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače řady Windows N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte podmínky [licenční smlouvy pro koncové uživatele NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330)a souhlasíte s nimi. Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
-Pokyny k ruční instalaci ovladačů a aktuální podporované verze jsou k dispozici [tady](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup).
-Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače s Linuxem řady N-series](hpccompute-gpu-linux.md).
+Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup).
+K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU pro [virtuální počítače řady Linux N-Series](hpccompute-gpu-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,11 +43,11 @@ Toto rozšíření podporuje následující OSs:
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření Microsoft Azure pro ovladače GPU NVIDIA vyžaduje, aby cílový virtuální počítač je připojený k Internetu a máte přístup.
+Rozšíření Microsoft Azure pro ovladače GPU NVIDIA vyžaduje, aby byl cílový virtuální počítač připojený k Internetu a měl přístup.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující kód JSON ukazuje schématu pro rozšíření.
+Následující JSON zobrazuje schéma pro rozšíření.
 
 ```json
 {
@@ -75,7 +74,7 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 | Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
+| publisher | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
@@ -84,11 +83,11 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru 
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
 
 JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-V následujícím příkladu se předpokládá, že rozšíření je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
+Následující příklad předpokládá, že rozšíření je vnořeno do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
 
 ```json
 {
@@ -142,7 +141,7 @@ az vm extension set `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí Azure Powershellu a rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -152,7 +151,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Rozšíření provádění výstup je zaznamenán v následujícím adresáři:
+Výstup spuštění rozšíření je protokolován do následujícího adresáře:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
@@ -162,19 +161,19 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Kód chyby | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 0 | Operace byla úspěšná. |
-| 1 | Operace byla úspěšná. Vyžaduje se restartování. |
-| 100 | Operace není podporována nebo nebylo možné dokončit. | Možné příčiny: Nepodporovaná verze prostředí PowerShell, velikost virtuálního počítače není virtuálního počítače s N-series, stahování dat selhání. Zkontrolujte soubory protokolu a zjistěte příčinu chyby. |
-| 240, 840 | Časový limit operace. | Zkuste operaci znovu. |
-| -1 | Došlo k výjimce. | Zkontrolujte soubory protokolu a zjistěte příčinu výjimky. |
-| -5x | Operace byla přerušena z důvodu čeká na restartování. | Restartování virtuálního počítače. Instalace bude pokračovat po restartování počítače. Odinstalace by mělo být vyvoláno ručně. |
+| 0 | Úspěšná operace |
+| 1 | Operace byla úspěšná. Je vyžadován restart. |
+| 100 | Operace není podporována nebo ji nelze dokončit. | Možné příčiny: Verze PowerShellu není podporovaná, velikost virtuálního počítače není virtuální počítač řady N-Series, při stahování dat došlo k chybě. Zkontrolujte soubory protokolu a určete příčinu chyby. |
+| 240, 840 | Časový limit operace. | Zkuste operaci zopakovat. |
+| -1 | Došlo k výjimce. | Zkontrolujte soubory protokolu a určete příčinu výjimky. |
+| – pětinásobné | Operace byla přerušena z důvodu nedokončeného restartování. | Restartujte virtuální počítač. Po restartování bude instalace pokračovat. Odinstalaci je třeba vyvolat ručně. |
 
 
 ### <a name="support"></a>Podpora
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/community/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Další postup
-Další informace o rozšířeních najdete v tématu [funkcí a rozšíření virtuálních počítačů pro Windows](features-windows.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Windows](features-windows.md).
 
-Další informace o virtuálních počítačích řady N-series najdete v tématu [GPU optimalizované velikosti virtuálních počítačů](../windows/sizes-gpu.md).
+Další informace o virtuálních počítačích řady N-Series najdete v tématu [velikosti virtuálních počítačů optimalizované pro procesory GPU](../windows/sizes-gpu.md).

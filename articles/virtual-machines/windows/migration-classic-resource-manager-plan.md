@@ -11,16 +11,15 @@ ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 26766be8b2468da0df44fa42655db0ee04db45a2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: bf8959abcf591acd902793e9247cd15e2cfdada9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327071"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089219"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu funkcí, je důležité naplánovat cestu migrace, abyste se ujistili, že jsou všechno plynulé. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
@@ -32,7 +31,7 @@ Existují čtyři obecné fáze cesty migrace:<br>
 
 ![Fáze migrace](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plánování
+## <a name="plan"></a>Plán
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
@@ -214,7 +213,7 @@ Záměrné, jaké služby teď chcete v Azure Resource Manager povolit.  Spousta
 Pamatujte na to, proč jste tento klasický začátek pro Azure Resource Manager cestu migrace.  Jaké byly původní obchodní důvody? Dosáhli jste obchodní důvod?
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

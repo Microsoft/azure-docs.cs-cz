@@ -3,15 +3,15 @@ title: Postup vytvoření více nezávislých triggerů Azure Functions pro Cosm
 description: Naučte se konfigurovat více nezávislých Azure Functions triggerů, které Cosmos DB k vytváření architektur řízených událostmi.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 315ac1025a2b05ec7b16f7f0b14b66f224905d92
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 987136bf8aba1313e1bef21f58691bf9a860ea32
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335674"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093379"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 
@@ -38,7 +38,7 @@ Cílem tohoto článku je provést druhou možnost.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurace kontejneru sdílených zapůjčení
 
-Chcete-li nakonfigurovat kontejner sdílených zapůjčených adres, je nutné, abyste v aktivačních událostech provedli jedinou `LeaseCollectionPrefix` dodatečnou konfiguraci, kterou C# je `leaseCollectionPrefix` třeba přidat [, pokud používáte](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) nebo, pokud používáte jazyk JavaScript. Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
+Chcete-li nakonfigurovat kontejner sdílených zapůjčených adres, je nutné, abyste v aktivačních událostech provedli jedinou `LeaseCollectionPrefix` dodatečnou konfiguraci, kterou C# je `leaseCollectionPrefix` třeba přidat, pokud používáte [atribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) nebo, pokud používáte jazyk JavaScript. [](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) Hodnota atributu by měla být logickým popisovačem toho, co konkrétní Trigger spouští.
 
 Například pokud máte tři triggery: jednu, která odesílá e-maily, jeden, který je agregací pro vytvoření materializované zobrazení, a druhý, který odesílá změny do jiného úložiště, pro pozdější analýzu můžete přiřadit `LeaseCollectionPrefix` "e-maily" prvnímu z nich "," promaterializované "na druhý" a "analytická" třetí druhá.
 

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy týkající se virtuálních počítačů s Windows v Azure | Dokumentace Microsoftu
-description: Poskytuje odpovědi na některé běžné otázky o virtuálních počítačích s Windows vytvořeného pomocí modelu Resource Manageru.
+title: Nejčastější dotazy týkající se virtuálních počítačů s Windows v Azure | Microsoft Docs
+description: Obsahuje odpovědi na některé běžné dotazy týkající se virtuálních počítačů s Windows vytvořených pomocí modelu Správce prostředků.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,81 +11,80 @@ ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 69c79db937d70bcc8ae834bf0bdf8f1930bed3c9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 0b1af2052e8aa916bf5fd6a40bea3502ff81a02d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722740"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079486"
 ---
-# <a name="frequently-asked-question-about-windows-virtual-machines"></a>Časté otázky o Windows Virtual Machines
-Tento článek se zabývá některými běžnými dotazy o virtuálních počítačích s Windows, které jsou vytvořené v Azure s využitím modelu nasazení Resource Manager. Linux verzi tohoto tématu naleznete v části [nejčastější dotazy o virtuálních počítačích s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+# <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se Windows Virtual Machines
+Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
-Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Informace o zásadách podpory pro provozování softwaru Microsoftu serveru v Azure najdete v tématu [podpora serverového softwaru Microsoftu pro Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
+Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Informace o zásadách podpory pro používání serverového softwaru Microsoftu v Azure najdete v tématu [podpora serverového softwaru Microsoftu pro Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
 
-Některé verze Windows 7, Windows 8.1 a Windows 10 jsou dostupné pro předplatitele MSDN Azure benefit a předplatitele MSDN pro účely vývoje a testování s průběžnými platbami, pro vývojová a testovací úlohy. Podrobnosti, včetně pokynů a omezení, najdete v tématu [Image klienta Windows pro předplatitele MSDN](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
+Některé verze Windows 7, Windows 8.1 a Windows 10 jsou dostupné pro předplatitele zvýhodněné služby MSDN Azure a předplatitele MSDN pro vývoj a testování s průběžnými platbami podle aktuálního využití pro úlohy vývoje a testování. Podrobnosti, včetně pokynů a omezení, najdete v tématu [Image klienta Windows pro předplatitele MSDN](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/). 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
-Každý datový disk může být až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Služba Azure Managed Disks se doporučené nabídky diskových úložišť pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik Spravovaných disků. Spravované disky nabídka dva typy odolných úložišť: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [spravované disky ceny](https://azure.microsoft.com/pricing/details/managed-disks).
+Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik Spravovaných disků. Managed Disks nabízí dva typy trvalých možností úložiště: Managed Disks úrovně Premium a Standard Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
-Účty úložiště Azure můžete také poskytují úložiště pro disk s operačním systémem a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
+Účty Azure Storage taky můžou poskytovat úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžete přistupovat k virtuálnímu počítači?
-Vytvořit vzdálené připojení pomocí připojení vzdálené plochy (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlaste se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podporují se maximálně dvě souběžná připojení, pokud je server nakonfigurovaný jako hostitel relace vzdálené plochy.  
+## <a name="how-can-i-access-my-virtual-machine"></a>Jak můžu získat přístup k virtuálnímu počítači?
+Navažte vzdálené připojení pomocí Připojení ke vzdálené ploše (RDP) pro virtuální počítač s Windows. Pokyny najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podporuje se maximálně dvě souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
 
-Pokud máte potíže s pomocí vzdálené plochy, přečtěte si téma [připojení řešení ke vzdálené ploše na základě Windows Azure virtuální počítač](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Pokud máte problémy se vzdálenou plochou, přečtěte si téma [řešení potíží s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Pokud už znáte technologii Hyper-V, možná hledáte podobný nástroj jako VMConnect. Azure žádný podobný nástroj nenabízí, protože přístup k virtuálnímu počítači prostřednictvím konzoly nepodporuje.
 
-## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Můžete použít dočasný disk (jednotku D: ve výchozím nastavení) k ukládání dat?
-Nepoužívejte k ukládání dat dočasném disku. Je pouze dočasné úložiště, takže by mohl riskovat ztrátu dat, která není možné obnovit. Při přesunu virtuálního počítače na jiného hostitele, může dojít ke ztrátě dat. Mezi důvody možného přesunu virtuálního počítače patří změna velikosti virtuálního počítače, aktualizace hostitele nebo selhání hardwaru.
+## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>Můžu pro ukládání dat použít dočasný disk (ve výchozím nastavení jednotku D:)?
+Nepoužívejte dočasný disk k ukládání dat. Je to jenom dočasné úložiště, takže byste měli riskovat ztráty dat, která se nedají obnovit. Pokud se virtuální počítač přesune na jiného hostitele, může dojít ke ztrátě dat. Mezi důvody možného přesunu virtuálního počítače patří změna velikosti virtuálního počítače, aktualizace hostitele nebo selhání hardwaru.
 
-Pokud máte aplikaci, kterou je potřeba použít písmeno jednotky D:, můžete změnit tak, aby dočasný disk používá jinou hodnotu než D: přiřazení písmena jednotek. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Pokud máte aplikaci, která potřebuje použít písmeno jednotky D:, můžete znovu přiřadit písmena jednotek, aby dočasný disk používal jinou hodnotu než D:. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 
 ## <a name="how-can-i-change-the-drive-letter-of-the-temporary-disk"></a>Jak můžu změnit písmeno jednotky dočasného disku?
-Písmeno jednotky můžete změnit přesunutím stránkovacího souboru a novým přiřazením písmen jednotek, ale musíte zajistit, aby že provedením kroků v určitém pořadí. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Můžete změnit písmeno jednotky přesunutím stránkovacího souboru a opětovným přiřazením písmen jednotek, ale musíte se ujistit, že provedete kroky v určitém pořadí. Pokyny najdete v článku [Změna písmena jednotky na dočasném disku ve Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Můžete přidat existující virtuální počítač do skupiny dostupnosti?
-Ne. Pokud chcete virtuální počítač jako součást skupiny dostupnosti, musíte vytvořit virtuální počítač v rámci sady. Aktuálně není k dispozici způsob, jak přidat do skupiny dostupnosti po vytvoření virtuálního počítače.
+## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>Můžu přidat existující virtuální počítač do skupiny dostupnosti?
+Ne. Pokud chcete, aby váš virtuální počítač byl součástí skupiny dostupnosti, musíte vytvořit virtuální počítač v rámci sady. V tuto chvíli není možné přidat virtuální počítač do skupiny dostupnosti po jeho vytvoření.
 
-## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Můžete nahrát virtuálního počítače do Azure?
+## <a name="can-i-upload-a-virtual-machine-to-azure"></a>Můžu nahrát virtuální počítač do Azure?
 Ano. Pokyny najdete v tématu [migrace místních virtuálních počítačů do Azure](on-prem-to-azure.md).
 
-## <a name="can-i-resize-the-os-disk"></a>Můžete změnit velikost disku operačního systému?
-Ano. Pokyny najdete v tématu [popisem postupu rozšíření jednotky operačního systému virtuálního počítače ve skupině prostředků Azure](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="can-i-resize-the-os-disk"></a>Můžu změnit velikost disku s operačním systémem?
+Ano. Pokyny najdete v tématu [postup rozšíření jednotky operačního systému virtuálního počítače ve skupině prostředků Azure](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžete kopírovat nebo naklonovat existující virtuální počítač Azure?
-Ano. Spravované Image můžete vytvořit image virtuálního počítače a pak použít bitovou kopii k sestavení několika nových virtuálních počítačů. Pokyny najdete v tématu [vytvořit vlastní image virtuálního počítače](tutorial-custom-images.md).
+## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžu zkopírovat nebo naklonovat stávající virtuální počítač Azure?
+Ano. Pomocí spravovaných imagí můžete vytvořit image virtuálního počítače a pak image použít k sestavení několika nových virtuálních počítačů. Pokyny najdete v tématu [Vytvoření vlastní image virtuálního počítače](tutorial-custom-images.md).
 
-## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč mi nezobrazují Kanada – střed a Kanada – východ oblastí prostřednictvím Azure Resource Manageru?
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč se mi nezobrazuje oblast Kanada – střed a Kanada – východní Azure Resource Manager?
 
-Tyto dvě nové oblasti, Kanada – střed a Kanada – východ nejsou registrovány automaticky k vytvoření virtuálního počítače pro existující předplatná Azure. Tuto registrace se provádí automaticky při nasazení virtuálního počítače na webu Azure portal do jakékoli jiné oblasti pomocí Azure Resource Manageru. Po nasazení virtuálního počítače do jiné oblasti Azure, třeba tyto nové oblasti k dispozici pro následující virtuální počítače.
+Pro vytváření virtuálních počítačů v existujících předplatných Azure se neregistrují automaticky dvě nové oblasti Kanady – střed a Kanada – východ. Tato registrace se provádí automaticky, když se virtuální počítač nasadí prostřednictvím Azure Portal do jakékoli jiné oblasti pomocí Azure Resource Manager. Po nasazení virtuálního počítače do jakékoli jiné oblasti Azure by měly být nové oblasti dostupné pro další virtuální počítače.
 
-## <a name="does-azure-support-linux-vms"></a>Azure podporuje virtuální počítače s Linuxem?
-Ano. Rychlé vytvoření virtuálního počítače s Linuxem pro vyzkoušení najdete v tématu [vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](../linux/quick-create-portal.md).
+## <a name="does-azure-support-linux-vms"></a>Podporuje Azure virtuální počítače se systémem Linux?
+Ano. Postup pro rychlé vytvoření virtuálního počítače se systémem Linux pro vyzkoušení najdete v tématu [Vytvoření virtuálního počítače se systémem Linux v Azure pomocí portálu](../linux/quick-create-portal.md).
 
-## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Mohu přidat síťové rozhraní k virtuálnímu počítači po jeho vytvoření?
-Ano, to je nyní možné. Virtuální počítač nejprve musí být zastaven uvolněno. Potom můžete přidat nebo odebrat síťovou kartu (pokud to není poslední síťového rozhraní na virtuálním počítači). 
+## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Můžu na virtuální počítač přidat síťové rozhraní po jeho vytvoření?
+Ano, teď je to možné. Nejdřív je potřeba zastavit navráceného virtuálního počítače. Pak můžete přidat nebo odebrat síťovou kartu (Pokud se nejedná o poslední síťovou kartu na VIRTUÁLNÍm počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Ano. Název počítače může být maximálně 15 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions#compute) pro více informací o pojmenování prostředků.
+Ano. Název počítače může mít délku maximálně 15 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence](/azure/architecture/best-practices/naming-conventions#compute) pojmenování.
 
-## <a name="are-there-any-resource-group-name-requirements"></a>Existují prostředek požadavky na název skupiny?
-Ano. Název skupiny prostředků může být maximálně 90 znaků. Zobrazit [konvence pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) Další informace o skupinách prostředků.
+## <a name="are-there-any-resource-group-name-requirements"></a>Existují nějaké požadavky na název skupiny prostředků?
+Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) pojmenování.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 
-Uživatelská jména, může být maximálně 20 znaků a nesmí končit tečkou ("."). 
+Uživatelské jméno může mít délku maximálně 20 znaků a nesmí končit tečkou ("."). 
 
-Nejsou povoleny následující uživatelská jména:
+Následující uživatelská jména nejsou povolena:
 
 | | | | |
 |-----------------|-----------|--------------------|----------|
@@ -101,30 +100,30 @@ Nejsou povoleny následující uživatelská jména:
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na heslo při vytváření virtuálního počítače?
 
-Existují různé heslo požadavky na délku, v závislosti na tom nástroje, které používáte:
- - Portál - 12 až 72 znaků
- - PowerShell – 8 až 123 znaků
- - Rozhraní příkazového řádku – mezi 12 až 123
+Existují různé požadavky na délku hesla, a to v závislosti na použitém nástroji:
+ - Portál – mezi 12-72 znaky
+ - PowerShell – mezi 8-123 znaky
+ - CLI – mezi 12-123
 
-* Mít nižší znaků
-* Horní znaky
-* Máte číslice
-* Speciální znak (regulární výraz odpovídat [\W_])
+* Mít méně znaků
+* Má horní znaky
+* Mít číslici
+* Má speciální znak (porovnávání regulárního výrazu [\W_])
 
-Nejsou povoleny následující hesla:
+Následující hesla nejsou povolena:
 
 <table>
     <tr>
         <td>abc@123</td>
-        <td>ILOVEYOU!</td>
-        <td>P@$$w0rd</td>
+        <td>iloveyou!</td>
+        <td>P @ $ $w 0rd</td>
         <td>P@ssw0rd</td>
         <td>P@ssword123</td>
     </tr>
     <tr>
         <td>Pa$$word</td>
         <td>pass@word1</td>
-        <td>Heslo!</td>
+        <td>Zadáno!</td>
         <td>Heslo1</td>
         <td>Password22</td>
     </tr>

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 662e8365ef3c5642df58f4cea8a7d831bbfa6970
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870871"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083853"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.

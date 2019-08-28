@@ -1,6 +1,6 @@
 ---
-title: Použít klientský certifikát SSL v kódu aplikace – Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak používat klientské certifikáty pro připojení ke vzdáleným prostředkům, které je vyžadují.
+title: Použít klientský certifikát SSL v kódu aplikace – Azure App Service | Microsoft Docs
+description: Naučte se používat klientské certifikáty pro připojení ke vzdáleným prostředkům, které je vyžadují.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -9,81 +9,80 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ead1892062912840c9931ae60d11c90975ad26ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066994"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použití certifikátu SSL v kódu aplikace ve službě Azure App Service
+# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použijte certifikát SSL v kódu aplikace v Azure App Service
 
-Tato příručka ukazuje, jak používat veřejné nebo privátní certifikáty v kódu aplikace. Příklad případem použití je, že vaše aplikace přistupuje k externí služby, která vyžaduje ověření certifikátu.
+Tato příručka ukazuje, jak použít veřejné nebo privátní certifikáty ve vašem kódu aplikace. Příkladem případu použití je, že vaše aplikace přistupuje k externí službě, která vyžaduje ověření certifikátu.
 
-Tento přístup k používání certifikátů v kódu využívá protokol SSL funkcí ve službě App Service, která vyžaduje, aby vaše aplikace v **základní** vrstvy nebo vyšší. Alternativně můžete [zahrnout soubor certifikátu v úložišti aplikace](#load-certificate-from-file), ale není to doporučený postup pro privátní certifikáty.
+Tento přístup k používání certifikátů v kódu využívá funkci SSL v App Service, která vyžaduje, aby vaše aplikace byla v úrovni **Basic** nebo vyšší. Případně můžete [soubor certifikátu zahrnout do úložiště aplikace](#load-certificate-from-file), ale nejedná se o doporučený postup pro privátní certifikáty.
 
-Pokud umožníte spravovat své certifikáty SSL služby App Service můžete samostatně spravovat certifikáty a kódu aplikace a chránit citlivá data.
+Když necháte App Service spravovat certifikáty SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="upload-a-private-certificate"></a>Odeslání privátního certifikátu
+## <a name="upload-a-private-certificate"></a>Nahrání privátního certifikátu
 
-Než nahrajete privátní certifikát, ujistěte se, že [splňuje všechny požadavky](app-service-web-tutorial-custom-ssl.md#prepare-a-private-certificate), s tím rozdílem, že nemusí být nakonfigurovány pro ověřování serveru.
+Před nahráním privátního certifikátu se ujistěte, že [splňuje všechny požadavky](app-service-web-tutorial-custom-ssl.md#prepare-a-private-certificate), s tím rozdílem, že není nutné konfigurovat pro ověřování serveru.
 
-Až budete připravení nahrát, spusťte následující příkaz <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+Až budete připraveni na nahrání, spusťte následující příkaz v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config ssl upload --name <app-name> --resource-group <resource-group-name> --certificate-file <path-to-PFX-file> --certificate-password <PFX-password> --query thumbprint
 ```
 
-Zkopírujte kryptografický otisk certifikátu a zobrazit [zpřístupnit certifikát](#make-the-certificate-accessible).
+Zkopírujte kryptografický otisk certifikátu a podívejte [se na zpřístupněný certifikát](#make-the-certificate-accessible).
 
-## <a name="upload-a-public-certificate"></a>Odeslat veřejný certifikát
+## <a name="upload-a-public-certificate"></a>Nahrajte veřejný certifikát.
 
-Veřejné certifikáty jsou podporovány v *.cer* formátu. Nahrát veřejný certifikát <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>a přejděte do aplikace.
+Veřejné certifikáty jsou podporovány ve formátu *. cer* . Pokud chcete nahrát veřejný certifikát, <a href="https://portal.azure.com" target="_blank">Azure Portal</a>a přejděte do aplikace.
 
-Klikněte na tlačítko **nastavení SSL** > **veřejných certifikátů (.cer)**  > **nahrát veřejný certifikát** v levém navigačním panelu vaší aplikace.
+Klikněte na **Nastavení** > SSL**veřejné certifikáty (. cer)**  > **nahrát veřejný certifikát** z levé navigační části aplikace.
 
-V **název**, zadejte název certifikátu. V **soubor certifikátu CER**, vyberte soubor CER.
+Do pole **název**zadejte název certifikátu. V **souboru certifikátu CER**vyberte svůj soubor CER.
 
 Klikněte na **Odeslat**.
 
 ![Odeslat veřejný certifikát](./media/app-service-web-ssl-cert-load/private-cert-upload.png)
 
-Po nahrání certifikátu zkopírujte kryptografický otisk certifikátu a zobrazit [zpřístupnit certifikát](#make-the-certificate-accessible).
+Po nahrání certifikátu zkopírujte kryptografický otisk certifikátu a podívejte [se na zpřístupněný certifikát](#make-the-certificate-accessible).
 
-## <a name="import-an-app-service-certificate"></a>Import certifikátu služby App Service
+## <a name="import-an-app-service-certificate"></a>Import certifikátu App Service
 
-Zobrazit [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
+Přečtěte si téma [koupit a nakonfigurovat certifikát SSL pro Azure App Service](web-sites-purchase-ssl-web-site.md).
 
-Po importu certifikátu zkopírujte kryptografický otisk certifikátu a zobrazit [zpřístupnit certifikát](#make-the-certificate-accessible).
+Po importu certifikátu zkopírujte kryptografický otisk certifikátu a podívejte se, jak [se certifikát](#make-the-certificate-accessible)zpřístupní.
 
-## <a name="make-the-certificate-accessible"></a>Tento certifikát zpřístupnit
+## <a name="make-the-certificate-accessible"></a>Zpřístupněte certifikát jako přístupný.
 
-Pokud chcete použít certifikát nahraný nebo importované v kódu vaší aplikace, zajistíte přístupnost s jeho kryptografický otisk `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace, spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Pokud chcete ve svém kódu aplikace použít nahraný nebo importovaný certifikát, zpřístupněte jeho kryptografický otisk pomocí `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Zpřístupnit vaše certifikáty, nastavte hodnotu na `*`.
+Pro zpřístupnění všech certifikátů nastavte hodnotu na `*`.
 
 > [!NOTE]
-> Toto nastavení umístí zadané certifikáty v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) úložiště pro většinu cenové úrovně, ale **izolovaný režim** úroveň (to znamená, že se aplikace běží v [služby App Service Environment](environment/intro.md)), umístí certifikáty v [místní Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ukládat.
+> Toto nastavení umístí zadané certifikáty do aktuálního úložiště [User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) pro většinu cenových úrovní, ale v **izolované** úrovni (tj. aplikace běží v [App Service Environment](environment/intro.md)) umístí certifikáty do [místních Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) . uchovávat.
 >
 
-![Konfigurace nastavení aplikace](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
+![Konfigurovat nastavení aplikace](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
 Jakmile budete hotoví, klikněte na **Uložit**.
 
-Nakonfigurované certifikáty jsou teď připravená k použití ve vašem kódu.
+Nakonfigurované certifikáty jsou teď připravené k použití ve vašem kódu.
 
-## <a name="load-the-certificate-in-code"></a>Načtení certifikátu v kódu
+## <a name="load-the-certificate-in-code"></a>Načíst certifikát v kódu
 
-Jakmile váš certifikát není přístupný, budete přístup v kódu jazyka C# pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+Jakmile je certifikát přístupný, získáte k němu C# přístup pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -111,15 +110,15 @@ certStore.Close();
 <a name="file"></a>
 ## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
 
-Pokud je potřeba načíst soubor certifikátu z adresáře aplikace, je lepší odešlete pomocí [FTPS](deploy-ftp.md) místo [Git](deploy-local-git.md), např. Byste měli mít citlivá data, jako jsou privátní certifikát ze správy zdrojového kódu.
+Pokud potřebujete načíst soubor certifikátu z adresáře aplikace, je vhodnější ho nahrát pomocí [FTPS](deploy-ftp.md) namísto [Gitu](deploy-local-git.md), například. Měli byste chránit citlivá data, jako je soukromý certifikát, ze správy zdrojového kódu.
 
-I v případě, že načítání souboru přímo v kódu .NET knihovny stále ověří, pokud je načíst aktuální profil uživatele. Chcete-li načíst aktuální profil uživatele, nastavte `WEBSITE_LOAD_USER_PROFILE` nastavení aplikace pomocí následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+I když soubor načítáte přímo do kódu .NET, knihovna stále ověřuje, zda je aktuální profil uživatele načten. Chcete-li načíst aktuální profil uživatele, nastavte `WEBSITE_LOAD_USER_PROFILE` nastavení aplikace pomocí následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 ```
 
-Jakmile je toto nastavení, následující C# příklad načte certifikát nazvaný `mycert.pfx` z `certs` adresáři úložiště vaší aplikace.
+Po nastavení tohoto nastavení následující C# příklad načte certifikát s názvem `mycert.pfx` z `certs` adresáře úložiště vaší aplikace.
 
 ```csharp
 using System;

@@ -7,17 +7,16 @@ manager: craigg
 ms.date: 12/5/2018
 ms.topic: conceptual
 tags: azure-service-management
-ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478504"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091352"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
 
@@ -25,7 +24,7 @@ ms.locfileid: "60478504"
 > * [Linux](provision-sql-server-linux-virtual-machine.md)
 > * [Windows](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 
-V tomto kurzu rychlý start použijete k vytvoření virtuálního počítače s Linuxem s nainstalovaným SQL serverem 2017 na webu Azure portal.
+V tomto kurzu rychlý Start použijete Azure Portal k vytvoření virtuálního počítače se systémem Linux s nainstalovanou SQL Server 2017.
 
 V tomto kurzu se naučíte:
 
@@ -44,46 +43,46 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. V levém podokně vyberte **vytvořit prostředek**.
 
-1. V **vytvořit prostředek** vyberte **Compute**.
+1. V podokně **vytvořit prostředek** vyberte **COMPUTE**.
 
-1. Vyberte **zobrazit všechny** vedle **doporučené** záhlaví.
+1. Vyberte **Zobrazit vše** vedle doporučeného nadpisu.
 
    ![Zobrazení všech imagí virtuálních počítačů](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. Do vyhledávacího pole zadejte **SQL serveru 2017**a vyberte **Enter** má začít prohledávání.
+1. Do vyhledávacího pole zadejte **SQL Server 2017**a výběrem **ENTER** spusťte hledání.
 
-1. Omezit rozsah výsledků vyhledávání tak, že vyberete **operační systém** > **Redhat**. Potom v části **vydavatele**, zvolte **Microsoft**.
+1. Omezte výsledky hledání tak, že vyberete **operační systém** > **RedHat**. Pak v části **Vydavatel**zvolte **Microsoft**.
 
     ![Vyhledávací filtr pro image virtuálních počítačů s SQL Serverem 2017](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. Z výsledků hledání vyberte image Linuxu s SQL Serverem 2017. Tento kurz používá **bezplatná licence SQL serveru: SQL Server 2017 Developer v Red Hat Enterprise Linux 7.4**.
+1. Z výsledků hledání vyberte image Linuxu s SQL Serverem 2017. V tomto kurzu **se používá bezplatná licence SQL Server: SQL Server 2017 vývojář na Red Hat Enterprise Linux 7,4**.
 
    > [!TIP]
-   > Edice Developer umožňuje testovat nebo vyvíjet s využitím funkcí edice Enterprise, ale žádné náklady na licencování SQL serveru. Platíte jenom náklady na provozování virtuálního počítače s Linuxem.
+   > Vývojářská edice vám umožní testovat nebo vyvíjet s funkcemi edice Enterprise, ale bez SQL Server licenčních nákladů. Platíte jenom náklady na provozování virtuálního počítače s Linuxem.
 
-1. V části **vybrat model nasazení**, vyberte model nasazení, která vyhovuje potřebám vaší úlohy.
+1. V části **Vybrat model nasazení**zvolte model nasazení, který vyhovuje vašim potřebám vašich úloh.
 
     > [!Note]
-    > Pro nové úlohy použijte **Resource Manageru**. Pro připojení k existující virtuální síť, vyberte metodu nasazení virtuální sítě pro vaši úlohu. Další informace o modelech nasazení najdete v tématu [Azure Resource Manageru a modely nasazení classic](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
+    > Pro nové úlohy použijte **Správce prostředků**. Pokud se chcete připojit k existující virtuální síti, vyberte metodu nasazení virtuální sítě pro vaše zatížení. Další informace o modelech nasazení najdete v tématu [modely nasazení Azure Resource Manager a Classic](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model).
 
 1. Vyberte **Vytvořit**.
 
-### <a name="set-up-your-linux-vm"></a>Nastavení virtuálního počítače s Linuxem
+### <a name="set-up-your-linux-vm"></a>Nastavení virtuálního počítače se systémem Linux
 
-1. V **Základy** kartu, vyberte možnost vaše **předplatné** a **skupiny prostředků**. 
+1. Na kartě **základy** vyberte své **předplatné** a **skupinu prostředků**. 
 
     ![Okno Základy](./media/provision-sql-server-linux-virtual-machine/basics.png)
 
-1. V **název virtuálního počítače**, zadejte název pro nový virtuální počítač s Linuxem.
-1. Potom zadejte nebo vyberte následující hodnoty:
-   * **Oblast**: Vyberte oblast Azure, který je pro vás nejvhodnější.
-   * **Možnosti dostupnosti**: Vyberte možnost dostupnost a redundance, která je nejvhodnější pro vaše aplikace a data.
-   * **Změnit velikost**: Tuto možnost vyberte velikost počítače a až budete hotovi, zvolte **vyberte**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+1. Do **název virtuálního počítače**zadejte název nového virtuálního počítače se systémem Linux.
+1. Pak zadejte nebo vyberte následující hodnoty:
+   * **Oblast:** Vyberte oblast Azure, která je pro vás nejvhodnější.
+   * **Možnosti dostupnosti**: Vyberte možnost dostupnost a redundance, která je pro vaše aplikace a data nejvhodnější.
+   * **Změnit velikost**: Tuto možnost vyberte, pokud chcete vybrat velikost počítače a po dokončení klikněte na **Vybrat**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
      ![Výběr velikosti virtuálního počítače](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
-   > Pro vývoj a funkční testování, použít velikost virtuálního počítače u **DS2** nebo vyšší. Pro testování výkonnosti použijte **DS13** nebo vyšší.
+   > Pro vývoj a funkční testování použijte velikost virtuálního počítače **DS2** nebo vyšší. Pro testování výkonnosti použijte **DS13** nebo vyšší.
 
    * **Typ ověřování**: Vyberte **veřejný klíč SSH**.
 
@@ -91,20 +90,20 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
      > U ověřování máte na výběr mezi používáním veřejného klíče SSH nebo hesla. SSH je bezpečnější. Pokyny k vygenerování klíče SSH najdete v tématu [Vytvoření klíčů SSH v Linuxu a na Macu pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
    * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
-   * **Veřejný klíč SSH**: Zadejte veřejný klíč RSA.
-   * **Veřejné příchozí porty**: Zvolte **povolit vybrané porty** a vybrat **SSH (22)** port v **vyberte veřejné příchozí porty** seznamu. V tomto rychlém startu tento krok je nezbytný k připojení a dokončete konfiguraci systému SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)** , aby se otevřel port 1433 pro připojení přes internet.
+   * **Veřejný klíč SSH**: Zadejte svůj veřejný klíč RSA.
+   * **Veřejné příchozí porty**: Zvolte možnost **Povolit vybrané porty** a vyberte port **SSH (22)** v seznamu **Vybrat veřejné příchozí porty** . V tomto rychlém startu je tento krok nezbytný pro připojení a dokončení konfigurace SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)** , aby se otevřel port 1433 pro připojení přes internet.
 
    ![Příchozí porty](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
-1. Proveďte změny chcete nastavení na následujících kartách další, nebo ponechat výchozí nastavení.
+1. Proveďte všechny požadované změny nastavení na následujících dalších kartách nebo ponechte výchozí nastavení.
     * **Disky**
     * **Sítě**
-    * **Správa**
-    * **Konfigurace typu Host**
+    * **Správu**
+    * **Konfigurace hosta**
     * **Značky**
 
 1. Vyberte **Zkontrolovat a vytvořit**.
-1. V **revize + vytvořit** vyberte **vytvořit**.
+1. V podokně **Revize + vytvořit** vyberte **vytvořit**.
 
 ## <a id="connect"></a>Připojení k virtuálnímu počítači s Linuxem
 
@@ -118,7 +117,7 @@ IP adresu svého virtuálního počítače najdete na webu Azure Portal.
 
 ![IP adresa na webu Azure Portal](./media/provision-sql-server-linux-virtual-machine/vmproperties.png)
 
-Pokud máte spuštěnou na Windows a nemáte prostředí BASH, nainstalujte klienta SSH, jako je například PuTTY.
+Pokud používáte Windows a nemáte prostředí BASH, nainstalujte klienta SSH, jako je například.
 
 1. [Stáhněte a nainstalujte PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
@@ -126,16 +125,16 @@ Pokud máte spuštěnou na Windows a nemáte prostředí BASH, nainstalujte klie
 
 1. Na obrazovce konfigurace PuTTY zadejte veřejnou IP adresu vašeho virtuálního počítače.
 
-1. Vyberte **otevřít** a zadejte svoje uživatelské jméno a heslo na vyzvání.
+1. Vyberte **otevřít** a na výzvy zadejte své uživatelské jméno a heslo.
 
 Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
 
 > [!Note]
-> Pokud se zobrazí výstraha zabezpečení PuTTY o klíč hostitele serveru nejsou uložené v mezipaměti v registru, zvolte jednu z následujících možností. Pokud důvěřujete tomuto hostiteli, vyberte **Ano** přidat klíče PuTTy vaší mezipaměti a pokračovat v připojování. Pokud chcete provozovat připojení pouze jednou, bez přidání klíče do mezipaměti, vyberte **ne**. Pokud tento hostitel nedůvěřuje, vyberte **zrušit** proto ukončil připojení.
+> Pokud se zobrazí výstraha zabezpečení výstupů na klíč hostitele serveru, který není uložen do mezipaměti v registru, vyberte z následujících možností. Pokud tomuto hostiteli důvěřujete, vyberte **Ano** a přidejte klíč do mezipaměti pro výstup a pokračujte v připojování. Chcete-li provést připojení pouze jednou, aniž byste museli přidat klíč do mezipaměti, vyberte možnost **ne**. Pokud tomuto hostiteli nedůvěřujete, vyberte **Zrušit** , aby se připojení zrušilo.
 
 ## <a id="password"></a>Změna hesla SA
 
-Nový virtuální počítač nainstaluje SQL Server s náhodným heslem SA. Toto heslo resetujte, než se připojit k SQL serveru přes přihlášení SA.
+Nový virtuální počítač nainstaluje SQL Server s náhodným heslem SA. Resetujte toto heslo předtím, než se připojíte k SQL Server s přihlášením SA.
 
 1. Po připojení k vašemu virtuálnímu počítači s Linuxem otevřete nový příkazový terminál.
 
@@ -174,10 +173,10 @@ Pokud se potřebujete vzdáleně připojit k SQL Serveru na virtuálním počít
 > Pokud jste během zřizování v nastavení vybrali příchozí port **MS SQL (1433)** , tyto změny už se pro vás provedly. Můžete přejít k další části věnované konfiguraci brány firewall.
 
 1. Na portálu vyberte **Virtuální počítače** a pak vyberte váš virtuální počítač s SQL Serverem.
-1. V levém navigačním podokně v části **nastavení**vyberte **sítě**.
-1. V okně sítě vyberte **přidat příchozí port** pod **příchozích pravidel portu**.
+1. V levém navigačním podokně v části **Nastavení**vyberte **sítě**.
+1. V okně sítě vyberte v části **pravidla portů pro příchozí spojení** **Přidat port pro příchozí** spojení.
 
-   ![Pravidla portů pro příchozí provoz](./media/provision-sql-server-linux-virtual-machine/networking.png)
+   ![Pravidla portů pro příchozí spojení](./media/provision-sql-server-linux-virtual-machine/networking.png)
 
 1. V seznamu **Služba** vyberte **MS SQL**.
 
@@ -202,6 +201,6 @@ Tento kurz vám ukázal vytvoření virtuálního počítače s Red Hat Enterpri
 
 Když teď máte v Azure virtuální počítač s SQL Serverem 2017, můžete se k němu místně připojit pomocí nástroje **sqlcmd** a spouštět dotazy Transact-SQL.
 
-Pokud jste nakonfigurovali virtuální počítač Azure pro vzdálené připojení k serveru SQL, je třeba připojit vzdáleně. Příklad vzdáleného připojení k SQL Serveru v Linuxu z Windows najdete v tématu [Použití SSMS ve Windows k připojení k SQL Serveru v Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms). Informace o připojení pomocí Visual Studio Code najdete v tématu [Použití nástroje Visual Studio Code k vytváření a spouštění skriptů Transact-SQL pro SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode).
+Pokud jste virtuální počítač Azure nakonfigurovali pro připojení vzdáleného SQL Server, měli byste být schopni se připojit vzdáleně. Příklad vzdáleného připojení k SQL Serveru v Linuxu z Windows najdete v tématu [Použití SSMS ve Windows k připojení k SQL Serveru v Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms). Informace o připojení pomocí Visual Studio Code najdete v tématu [Použití nástroje Visual Studio Code k vytváření a spouštění skriptů Transact-SQL pro SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode).
 
-Další obecné informace o SQL serveru v Linuxu najdete v tématu [přehled SQL serveru 2017 v Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-overview). Další informace o používání virtuálních počítačů s Linuxem a SQL Serverem 2017 najdete v tématu [Přehled virtuálních počítačů s SQL Serverem 2017 v Azure](sql-server-linux-virtual-machines-overview.md).
+Obecnější informace o SQL Server on Linux najdete v tématu [přehled SQL Server 2017 na Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview). Další informace o používání virtuálních počítačů s Linuxem a SQL Serverem 2017 najdete v tématu [Přehled virtuálních počítačů s SQL Serverem 2017 v Azure](sql-server-linux-virtual-machines-overview.md).
