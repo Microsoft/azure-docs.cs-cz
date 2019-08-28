@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: c55b831903ed8dad124156013c8379536f676efa
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322784"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094323"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 

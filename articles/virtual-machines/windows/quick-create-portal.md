@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fed118ee78e6a11f3492060a55ac9847bb5b6a88
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 60f74de308938ee155cf61f3360f73d92feaa67c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720039"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102493"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na portálu Azure
 
@@ -37,9 +36,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
-1. V **nový** stránce v části **Oblíbené**vyberte **systému Windows Server 2016 Datacenter**.
+1. Na **nové** stránce v části **Oblíbené**vyberte **Windows Server 2016 Datacenter**.
 
-1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Typ *myResourceGroup* pro název. 
+1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . 
 
     ![Vytvoření nové skupiny prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
@@ -57,7 +56,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. Zbytek ponechte ve výchozím nastavení a pak v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
-    ![Zkontrolovat a vytvořit](./media/quick-create-portal/review-create.png)
+    ![Zkontrolujte a vytvořte](./media/quick-create-portal/review-create.png)
 
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
@@ -95,7 +94,7 @@ Na portálu vyberte virtuální počítač a v přehledu virtuálního počíta�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **odstranit**. Potvrďte název skupiny prostředků na dokončení odstranění prostředků.
+Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
 
 ## <a name="next-steps"></a>Další postup
 

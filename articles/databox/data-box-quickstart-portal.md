@@ -6,21 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405545"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098785"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box pomocí webu Azure portal
+::: zone target="docs"
+
+# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box pomocí Azure Portal
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí Azure Portal
+
+::: zone-end
+
+::: zone target="docs"
 
 Tento rychlý start popisuje, jak nasadit Azure Data Box pomocí webu Azure Portal. V tomto postupu najdete informace o zapojení, konfiguraci a kopírování dat do Data Boxu, aby se data nahrála do služby Azure. Rychlý start se provádí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
 
-Pro podrobné podrobný postup nasazení a pokyny pro sledování, přejděte na [kurzu: Objednávky zařízení Azure Data Box](data-box-deploy-ordered.md)
+Podrobné pokyny k [nasazení a sledování najdete v tématu Kurz: Azure Data Box objednávky](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+Tato příručka popisuje, jak nasadit Azure Data Box pomocí Azure Portal. Tyto kroky zahrnují kontrolu požadavků, kabelů a připojení zařízení a kopírování dat do zařízení, aby se načetly do Azure.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
@@ -41,11 +63,36 @@ Než začnete:
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Požadavky
+
+Než začnete, ujistěte se, že máte následující:
+
+1. Dokončili [jste kurz: Pořadí Azure Data Box](data-box-deploy-ordered.md).
+2. Obdrželi jste Data Box se doručí stav objednávky na portálu. 
+3. Byly zkontrolovány [pokyny pro bezpečnost data box](data-box-safety.md).
+4. Přijala se jedna pozemní napájecí šňůra, která se má použít s úložným zařízením s 100 TB.
+5. Přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box. Hostitelský počítač musí splňovat tyto požadavky:
+    - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
+    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
+6. Přístup k ploché ploše k umístění Data Box. Pokud chcete zařízení umístit do samostatného nebo svislého umístění v racku Standard, potřebujete 7U slot.
+7. Zadáno následující kabely pro připojení Data Box k hostitelskému počítači.
+    - Jeden nebo více 10 MB SFP + Twinax Copper nebo SFP + kabely s optickými vlákny (používají se s daty 1, síťovými rozhraními data 2). Další informace najdete v [seznamu podporovaných kabelů a přepínačů z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) , které jsou kompatibilní s Mellanox ConnectX®-3 pro en Dual-Port 10GBASE-T adaptéry-T a síťové rozhraní PCI Express 3,0.
+    - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
+
+::: zone-end
+
+::: zone target="docs"
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="order"></a>Objednání
+## <a name="order"></a>Pořadí
 
 Tento krok trvá přibližně 5 minut.
 
@@ -55,6 +102,8 @@ Tento krok trvá přibližně 5 minut.
 4. Zadejte podrobnosti objednávky a informace o dodání. Pokud je služba dostupná ve vaší oblasti, zadejte adresy pro poslání e-mailu s oznámením, zkontrolujte souhrn a vytvořte objednávku.
 
 Po vytvoření objednávky je zařízení připravené k odeslání.
+
+
 
 ## <a name="cable"></a>Kabel 
 
@@ -82,7 +131,7 @@ Když obdržíte Data Box, zapojte kabely a zařízení připojte a zapněte pod
     4. Zapněte zařízení. Tlačítko napájení je na předním panelu zařízení.
 
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 Tento krok trvá 5 až 7 minut.
 
@@ -91,7 +140,7 @@ Tento krok trvá 5 až 7 minut.
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
 4. Standardně je pro nastavení sítě pro datové rozhraní 10 Gb/s (nebo 1 Gb/s) nakonfigurovaný protokol DHCP. V případě potřeby můžete toto rozhraní nakonfigurovat jako statické a zadat IP adresu. 
 
-## <a name="copy-data"></a>Kopírování dat
+## <a name="copy-data"></a>Kopírovat data
 
 Doba trvání této operace závisí na množství dat a rychlosti sítě.
  
@@ -126,11 +175,13 @@ Dokončení tohoto kroku trvá 2 až 3 minuty.
 
 - Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili Azure Data Box, který vám má pomoci s importem dat do Azure. Další informace o správě Azure Data Boxu získáte v následujícím kurzu: 
 
 > [!div class="nextstepaction"]
 > [Použití webu Azure Portal ke správě Data Boxu](data-box-portal-admin.md)
+
+::: zone-end
 
 

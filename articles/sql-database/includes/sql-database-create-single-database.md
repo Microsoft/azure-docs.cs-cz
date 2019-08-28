@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098995"
 ---
 V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
@@ -23,7 +23,7 @@ V tomto kroku vytvoříte Azure SQL Database jedinou databázi.
 
 Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
-1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* .
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte *Azure SQL* . Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 2. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici **databáze** vyberete **Zobrazit podrobnosti** .
 3. Vyberte **vytvořit**:
 
@@ -43,7 +43,7 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
        - **Název serveru**: Typ `mysqlserver`; spolu s některými čísly pro jedinečnost.
        - **Přihlašovací jméno správce serveru**: Zadejte `azureuser`.
        - **Heslo**: Zadejte komplexní heslo, které splňuje požadavky na heslo.
-       - **Umístění**: V rozevíracím seznamu vyberte umístění, například `West US 2`.
+       - **Umístění**: V rozevíracím seznamu vyberte umístění, například `West US`.
 
          ![Nový server](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ Vytvořte skupinu prostředků a izolovanou databázi pomocí prostředí PowerS
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

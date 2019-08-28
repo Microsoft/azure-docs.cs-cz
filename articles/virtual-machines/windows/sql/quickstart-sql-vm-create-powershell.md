@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69789f11cc0ab3702ebbc905ce86f9992868e259
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715461"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100679"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémy Windows a SQL Server v prostředí Azure PowerShell
 
@@ -40,17 +39,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="configure-powershell"></a>Konfigurace prostředí PowerShell
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním **připojit AzAccount** příkazu.
+1. Otevřete PowerShell a navažte přístup ke svému účtu Azure spuštěním příkazu **Connect-AzAccount** .
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Měli byste vidět obrazovku pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
+1. Měla by se zobrazit obrazovka pro zadání vašich přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Pro zjednodušení zbývající části tohoto rychlého startu, Zbývající příkazy tento název použít jako základ pro ostatní názvy prostředků.
+1. Definujte proměnnou s jedinečným názvem skupiny prostředků. Aby bylo možné zjednodušit zbytek rychlého startu, zbývající příkazy používají tento název jako základ pro jiné názvy prostředků.
 
    ```powershell
    $ResourceGroupName = "sqlvm1"
@@ -121,7 +120,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
 
-1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno bude "azureadmin". Ujistěte se, že změníte \<heslo > před spuštěním příkazu.
+1. Definujte přihlašovací údaje pro přihlášení k virtuálnímu počítači. Uživatelské jméno je "azureadmin". Před spuštěním příkazu je \<třeba změnit heslo >.
 
    ``` PowerShell
    # Define a credential object
@@ -149,7 +148,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
 
-Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta k novému virtuálnímu počítači, spusťte následující příkaz, po vytvoření virtuálního počítače.
+Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete nainstalovat agenta na nový virtuální počítač, spusťte po vytvoření virtuálního počítače následující příkaz.
 
    ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -157,37 +156,37 @@ Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je 
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
 
-1. Použijte následující příkaz pro načtení veřejnou IP adresu nového virtuálního počítače.
+1. Pomocí následujícího příkazu načtěte veřejnou IP adresu nového virtuálního počítače.
 
    ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. Předat jako parametr příkazového řádku pro tuto IP adresu **mstsc** spustit relaci vzdálené plochy nového virtuálního počítače.
+1. Předat vrácenou IP adresu jako parametr příkazového řádku pro **mstsc** ke spuštění relace vzdálené plochy do nového virtuálního počítače.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno se zpětným lomítkem na začátku (například `\azureadmin`) a heslo, které jste nastavili dříve v tomto rychlém startu.
+1. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte zadání přihlašovacích údajů k jinému účtu. Zadejte uživatelské jméno s předchozím zpětným lomítkem (například `\azureadmin`) a heslo, které jste nastavili dříve v tomto rychlém startu.
 
 ## <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-1. Po přihlášení k relaci vzdálené plochy spusťte **SQL Server Management Studio 2017** z nabídky start.
+1. Po přihlášení k relaci vzdálené plochy spusťte v nabídce Start **SQL Server Management Studio 2017** .
 
-1. V **připojit k serveru** dialogového okna nechte výchozí hodnoty. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
+1. V dialogovém okně **připojit k serveru** ponechte výchozí nastavení. Název serveru je shodný s názvem virtuálního počítače. Ověřování je nastavené na **Ověřování systému Windows**. Vyberte **Connect** (Připojit).
 
-Jste teď připojeni k serveru SQL Server místně. Pokud chcete připojit vzdáleně, je nutné [konfigurace připojení k](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
+Nyní jste připojeni k SQL Server místně. Pokud se chcete připojit vzdáleně, musíte [nakonfigurovat připojení](virtual-machines-windows-sql-connect.md) z portálu nebo ručně.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nepotřebujete, virtuálnímu počítači spouštět nepřetržitě, byste se vyhnout zbytečným poplatkům? zastavte ho, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
+Pokud nepotřebujete, aby se virtuální počítač spouštěl nepřetržitě, můžete se vyhnout zbytečným poplatkům, když ho zastavíte, když se nepoužívá. Následující příkaz zastaví virtuální počítač, ale ponechá ho k dispozici pro budoucí použití.
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači **odebrat AzResourceGroup** příkazu. Tím trvale odstraní virtuální počítač, proto tento příkaz používejte s opatrností.
+Pomocí příkazu **Remove-AzResourceGroup** můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači. Tím se trvale odstraní i virtuální počítač, takže tento příkaz používejte opatrně.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,79 +1,78 @@
 ---
-title: Odolná služba Functions přehled – Azure
-description: Úvod do rozšíření Durable Functions pro službu Azure Functions.
+title: Přehled Durable Functions – Azure
+description: Úvod do rozšíření Durable Functions pro Azure Functions
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 323ab530d8199dd154e5d3568c09f86f6f52d702
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612864"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087194"
 ---
-# <a name="what-are-durable-functions"></a>Co jsou odolná služba Functions?
+# <a name="what-are-durable-functions"></a>Co jsou Durable Functions?
 
-*Odolná služba Functions* jsou rozšíření [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
+*Durable Functions* jsou rozšíření [Azure Functions](../functions-overview.md) umožňující psaní stavových funkcí v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
 
 ## <a name="benefits"></a>Výhody
 
-Rozšíření umožňuje definovat stavové pracovní postupy pomocí [ *funkce orchestrátoru*](durable-functions-types-features-overview.md#orchestrator-functions), což poskytuje následující výhody:
+Rozšíření umožňuje definovat stavové pracovní postupy pomocí [*funkce Orchestrator*](durable-functions-types-features-overview.md#orchestrator-functions), která může poskytovat následující výhody:
 
-* Můžete definovat pracovní postupy v kódu. Nejsou potřeba žádné schémat JSON nebo návrháře.
-* Další funkce lze volat i synchronního a asynchronního. Výstup z volané funkce lze uložit do místní proměnné.
-* Průběh je automaticky byl vytvořen kontrolní bod, když čeká na funkci. Místní se nikdy ztraceny, pokud se proces recykluje nebo restartování virtuálního počítače.
+* Pracovní postupy můžete definovat v kódu. Nejsou potřeba žádné schéma JSON ani návrháře.
+* Další funkce mohou být volány synchronně i asynchronně. Výstup z volaných funkcí lze uložit do místních proměnných.
+* Průběh je automaticky nastaven na kontrolní bod, pokud funkce čeká. Při recyklování nebo restartování virtuálního počítače se místní stav nikdy neztratí.
 
 ## <a name="application-patterns"></a>Vzory aplikací
 
-Případem primárního použití pro Durable Functions je zjednodušuje složité a stavové koordinace požadavky aplikace bez serveru. Tady jsou některé vzory Typická aplikace, které může přinést Durable Functions:
+Primární případ použití pro Durable Functions zjednodušuje komplexní požadavky na stavovou spolupráci v aplikacích bez serveru. Níže jsou uvedeny některé typické vzory aplikací, které mohou Durable Functions těžit z následujících možností:
 
 * [Řetězení](durable-functions-concepts.md#chaining)
-* [FAN odesílací/fan v](durable-functions-concepts.md#fan-in-out)
-* [Async HTTP APIs](durable-functions-concepts.md#async-http)
+* [Ventilátor/ventilátor – v](durable-functions-concepts.md#fan-in-out)
+* [Asynchronní rozhraní HTTP API](durable-functions-concepts.md#async-http)
 * [Monitorování](durable-functions-concepts.md#monitoring)
 * [Lidská interakce](durable-functions-concepts.md#human)
 
 ## <a name="language-support"></a>Podporované jazyky
 
-Odolná služba Functions nyní podporuje následující jazyky:
+Durable Functions aktuálně podporuje následující jazyky:
 
-* **C#** : oba [předkompilované knihovny tříd](../functions-dotnet-class-library.md) a [ C# skript](../functions-reference-csharp.md).
-* **F#** : předkompilované knihovny tříd a F# skriptu. F#skript se podporuje jenom pro verzi 1.x modulu runtime Azure Functions.
-* **JavaScript**: podporuje jenom pro verzi 2.x modulu runtime Azure Functions. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější. 
+* **C#** : [předkompilované knihovny tříd](../functions-dotnet-class-library.md) a [ C# skript](../functions-reference-csharp.md).
+* **F#** : předkompilované knihovny tříd a F# skript. F#skript je podporován pouze pro verzi 1. x modulu Azure Functions runtime.
+* **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
 
-Odolná služba Functions je cílem podporovat všechny [Azure Functions jazyky](../supported-languages.md). Najdete v článku [seznam problémů Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) nejnovější stav práce pro podporu dalších jazyků.
+Durable Functions má za cíl podporu všech [Azure Functionsch jazyků](../supported-languages.md). Nejnovější stav práce pro podporu dalších jazyků najdete v [seznamu problémů s Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) .
 
-Podobně jako Azure Functions jsou šablony, které vám pomůžou s vývojem pomocí Durable Functions [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)a [webu Azure portal](durable-functions-create-portal.md).
+Stejně jako Azure Functions, jsou šablony, které vám pomohou vyvíjet Durable Functions pomocí sady [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)a [Azure Portal](durable-functions-create-portal.md).
 
 ## <a name="billing"></a>Fakturace
 
-Odolná služba Functions se účtuje stejná jako funkce Azure Functions. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="jump-right-in"></a>Pustit do práce
+## <a name="jump-right-in"></a>Skok přímo v
 
-Můžete začít s Durable Functions za méně než 10 minut provedením následujících kurzech rychlý start specifické pro jazyk:
+Můžete začít s Durable Functions za 10 minut, a to provedením jednoho z těchto kurzů pro rychlý Start pro konkrétní jazyk:
 
-* [C#pomocí Visual Studio 2019](durable-functions-create-first-csharp.md)
-* [JavaScript s využitím Visual Studio Code](quickstart-js-vscode.md)
+* [C#pomocí sady Visual Studio 2019](durable-functions-create-first-csharp.md)
+* [JavaScript pomocí Visual Studio Code](quickstart-js-vscode.md)
 
-V obou šablon rychlý start místně vytvořit a otestovat trvalý funkci "hello world". Kód funkce potom publikujete do Azure. Funkce, které vytvoříte orchestruje a zřetězí společně volání dalších funkcí.
+V obou rychlých startech můžete místně vytvořit a otestovat funkci "Hello World". Kód funkce potom publikujete do Azure. Funkce, kterou vytváříte, orchestruje a řetězí volání dalších funkcí.
 
 ## <a name="learn-more"></a>Víc se uč
 
-V následujícím videu najdete výhody Durable Functions:
+Následující video zvýrazní výhody Durable Functions:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Durable-Functions-in-Azure-Functions/player] 
 
-Protože je pokročilá rozšíření pro Durable Functions [Azure Functions](../functions-overview.md), není vhodná pro všechny aplikace. Další informace o Durable Functions najdete v tématu [Durable Functions vzory a technických konceptech](durable-functions-concepts.md). Porovnání s jinými technologiemi Azure orchestration najdete v tématu [porovnání Azure Functions a Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
+Vzhledem k tomu, že Durable Functions je pokročilá rozšíření pro [Azure Functions](../functions-overview.md), není vhodné pro všechny aplikace. Další informace o Durable Functions najdete v tématu [Durable Functions Patterns and Technical koncepty](durable-functions-concepts.md). Porovnání s dalšími technologiemi orchestrace Azure najdete v tématu [porovnání Azure functions a Azure Logic Apps](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Odolné funkce vzory a technické koncepty](durable-functions-concepts.md)
+> [Způsoby Durable Functions a technické koncepce](durable-functions-concepts.md)
