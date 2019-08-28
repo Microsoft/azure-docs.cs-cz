@@ -7,27 +7,26 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 941a35084ba811e3bf9224087336db9abbd5b5d5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104387"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086353"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
-Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve službě Azure Cosmos DB. Další informace o službě Azure Cosmos DB najdete v tématu [služby Azure Cosmos DB: Výpočetní prostředí bez serveru databázi s využitím Azure Functions](../cosmos-db/serverless-computing-database.md).
+Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve službě Azure Cosmos DB. Další informace o Azure Cosmos DB najdete v článku [Azure Cosmos DB: Výpočetní databáze bez serveru s využitím Azure Functions](../cosmos-db/serverless-computing-database.md).
 
 ![Zobrazte si zprávy v protokolech.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 + Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -60,7 +59,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 1. Do vyhledávacího pole zadejte `cosmos` a zvolte šablonu **Trigger Azure Cosmos DB**.
 
-1. Pokud se zobrazí výzva, vyberte **nainstalovat** instalace rozšíření služby Azure Cosmos DB v aplikaci function app. Po úspěšném dokončení instalace vyberte **Pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Cosmos DB rozšíření do aplikace Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
     ![Instalace rozšíření vazby](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -72,8 +71,8 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | ------------ | ---------------- | ------------------------------------------ |
     | **Název** | Výchozí | Použijte výchozí název funkce navrhovaný šablonou.|
     | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
-    | **Název kolekce** | Items | Název kolekce, která se má monitorovat. |
-    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Zaškrtnuté | Kolekce ještě neexistuje, takže ji vytvořte. |
+    | **Název kolekce** | Položky | Název kolekce, která se má monitorovat. |
+    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Zaškrtnuto | Kolekce ještě neexistuje, takže ji vytvořte. |
     | **Název databáze** | Úlohy | Název databáze s kolekcí, která se má monitorovat. |
 
 1. Kliknutím na **Vytvořit** vytvořte funkci aktivovanou službou Azure Cosmos DB. Po vytvoření funkce se zobrazí kód funkce založené na šabloně.  
@@ -105,7 +104,7 @@ Potom se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v da
     | Nastavení|Navrhovaná hodnota|Popis |
     | ---|---|--- |
     | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
-    | **ID kolekce** | Items | Název nové kolekce. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
+    | **ID kolekce** | Položky | Název nové kolekce. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
     | **Kapacita úložiště** | Pevná (10 GB)|Použijte výchozí hodnotu. Tato hodnota je kapacita úložiště databáze. |
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |
     | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý pro vytvoření výkonné kolekce. | 
@@ -138,7 +137,7 @@ Jakmile bude existovat kolekce definovaná ve vazbě funkce, můžete funkci ote
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste funkci, která se spouští při přidání nebo úpravě dokumentu ve službě Azure Cosmos DB. Další informace o funkcích aktivovaných službou Azure Cosmos DB najdete v tématu [Vazby Azure Cosmos DB ve službě Azure Functions](functions-bindings-cosmosdb.md).
 

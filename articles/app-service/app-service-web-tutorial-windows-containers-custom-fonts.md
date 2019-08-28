@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace ASP.NET s využitím kontejnerů Windows (Preview) – služby Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak nasadit vlastního kontejneru Windows do Azure App Service a nasaďte vlastní software v kontejneru.
+title: Sestavování aplikace ASP.NET pomocí kontejneru Windows (Preview) – Azure App Service | Microsoft Docs
+description: Naučte se nasadit vlastní kontejner Windows do Azure App Service a nasadit vlastní software do kontejneru.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071507"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrace aplikace ASP.NET do služby Azure App Service pomocí kontejneru Windows (verze Preview)
 
@@ -29,12 +28,12 @@ ms.locfileid: "65415543"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalovat Visual Studio 2019</a> s **vývoj pro ASP.NET a web** a **vývoj pro Azure** úlohy. Pokud jste nainstalovali aplikaci Visual Studio 2019 již:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
     - Nainstalujte nejnovější aktualizace sady Visual Studio kliknutím na **Nápověda** > **Vyhledat aktualizace**.
     - Kliknutím na **Nástroje** > **Získat nástroje a funkce** přidejte do sady Visual Studio tyto sady funkcí.
 
@@ -111,13 +110,13 @@ V průvodci publikováním vyberte **Registr kontejneru** > **Vytvořit nový Az
 
 V dialogu **Vytvořit nový Azure Container Registry** vyberte **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášeni, vyberte z rozevíracího seznamu účet, který obsahuje požadované předplatné.
 
-![Přihlásit se k Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
+![Přihlášení k Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>Konfigurace registru
 
 Nakonfigurujte nový registr kontejneru podle navržených hodnot v následující tabulce. Jakmile budete hotovi, klikněte na **Vytvořit**.
 
-| Nastavení  | Navrhovaná hodnota | Další informace získáte |
+| Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
@@ -128,7 +127,7 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 
 Otevře se okno terminálu s průběhem nasazování image. Počkejte, než se nasazení dokončí.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -140,7 +139,7 @@ V nabídce vlevo vyberte **Vytvořit prostředek** > **Web** > **Web App for Con
 
 V rozhraní pro vytváření nakonfigurujte nastavení podle následující tabulky:
 
-| Nastavení  | Navrhovaná hodnota | Další informace získáte |
+| Nastavení  | Navrhovaná hodnota | Další informace |
 | ----------------- | ------------ | ----|
 |**Název aplikace**| Zadejte jedinečný název. | Adresa URL webové aplikace je `http://<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace. |
 |**Skupina prostředků**| Vyberte **Použít existující** a zadejte **myResourceGroup**. |  |

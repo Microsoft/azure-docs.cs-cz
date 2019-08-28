@@ -1,5 +1,5 @@
 ---
-title: Úvod do služby App Service Environment – Azure
+title: Seznámení s App Service prostředí – Azure
 description: Stručný přehled služby Azure App Service Environment
 services: app-service
 documentationcenter: na
@@ -9,17 +9,16 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 48b053b6520bff2ac83cd02af31194f81413e92c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115902"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069238"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
@@ -31,7 +30,7 @@ Azure App Service Environment je funkce služby Azure App Service, která poskyt
 * Webové aplikace pro Linux 
 * Kontejnery Dockeru
 * Mobilní aplikace
-* Functions
+* Funkce
 
 Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které mají tyto požadavky:
 
@@ -47,7 +46,7 @@ Služby ASE jsou izolované tak, aby spouštěly jenom aplikace jednoho zákazn�
 * Služby [App Service Environments v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) poskytují rámec pro zabezpečení aplikací v podsíti vaší sítě a také vaše vlastní nasazení služby Azure App Service.
 * K horizontálnímu škálování se dá použít víc služeb ASE. Další informace najdete v článku [Nastavení náročnosti geografické distribuce aplikace](app-service-app-service-environment-geo-distributed-scale.md).
 * Služby ASE se dají použít ke konfiguraci architektury zabezpečení, jak je patrné z podrobných informací z konference AzureCon. Informace o způsobu konfigurace architektury zabezpečení v podrobných informacích z konference AzureCon najdete v [článku o implementaci vrstvené architektury zabezpečení](app-service-app-service-environment-layered-security.md) se službami App Service Environment.
-* U aplikací využívajících služby ASE mají je přístup chráněný branami v podobě upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF). Další informace najdete v článku [Firewall webových aplikací (WAF)][AppGW].
+* U aplikací využívajících služby ASE mají je přístup chráněný branami v podobě upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF). Další informace najdete v tématu [Firewall webových aplikací (WAF)][AppGW].
 
 ## <a name="dedicated-environment"></a>Vyhrazené prostředí ##
 
@@ -63,7 +62,7 @@ Pracovní procesy jsou role, které jsou hostiteli zákaznických aplikací. Pra
 
 Zákazníci nemusí spravovat front-endy ani pracovní procesy. Veškerá infrastruktura se přidává automaticky s tím, jak zákazníci horizontálně navyšují kapacitu svých plánů služby App Service. Při vytváření nebo škálování plánů služby App Service ve službě ASE se podle potřeby přidává nebo odebírá nutná infrastruktura.
 
-Za službu ASE se účtuje pevný měsíční poplatek za infrastrukturu, který se nemění podle velikosti služby ASE. Kromě toho se účtuje poplatek za každý virtuální procesor v plánu služby App Service. Všechny aplikace hostované ve službě ASE jsou ve skladové položce s izolovanou cenou. Informace o cenách pro služby ASE najdete na stránce [Ceny služeb App Service][Pricing], která obsahuje také dostupné možnosti služeb ASE.
+Za službu ASE se účtuje pevný měsíční poplatek za infrastrukturu, který se nemění podle velikosti služby ASE. Kromě toho se účtuje poplatek za každý virtuální procesor v plánu služby App Service. Všechny aplikace hostované ve službě ASE jsou ve skladové položce s izolovanou cenou. Informace o cenách pro pomocného mechanismu pro čtení najdete na stránce s [cenami App Service][Pricing] a Projděte si dostupné možnosti pro služby ase.
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě ##
 
@@ -71,11 +70,11 @@ Funkce ASE představuje nasazení služby Azure App Service přímo do virtuáln
 
 Služba ASE může být obrácená buď na internet a mít veřejnou IP adresu, nebo do interního prostředí a mít jenom adresu interního nástroje pro vyrovnávání zatížení Azure.
 
-[Skupiny zabezpečení sítě][NSGs] omezují příchozí síťovou komunikaci na podsíť, ve které se nachází služba ASE. Pomocí skupin zabezpečení sítě můžete spouštět aplikace za upstreamovými zařízeními a službami, jako jsou brány WAF a síťoví poskytovatelé SaaS.
+[Skupiny zabezpečení sítě][NSGs] omezují příchozí síťovou komunikaci na podsíť, ve které se nachází pomocným mechanismem řízení. Pomocí skupin zabezpečení sítě můžete spouštět aplikace za upstreamovými zařízeními a službami, jako jsou brány WAF a síťoví poskytovatelé SaaS.
 
 Aplikace také často potřebují přístup k firemním prostředkům, jako jsou třeba interní databáze a webové služby. Pokud nasadíte službu ASE ve virtuální síti, která má připojení VPN k místní síti, aplikace v této službě ASE můžou získat přístup k místním prostředkům. Tato možnost platí bez ohledu na to, jestli se jedná o síť VPN typu [site-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), nebo o síť VPN [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-Další informace o tom, jak služby ASE fungují s virtuálními sítěmi a místními sítěmi, najdete v článku [Aspekty sítí služby App Service Environment][ASENetwork].
+Další informace o tom, jak služby ASE pracuje s virtuálními sítěmi a místními sítěmi, najdete v tématu [App Service Environment síťové požadavky][ASENetwork].
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
@@ -85,7 +84,7 @@ App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se 
 
 Ve verzi ASEv1 je potřeba spravovat všechny prostředky ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Před horizontálním navýšením kapacity vašeho plánu služby App Service je potřeba nejdřív horizontálně navýšit kapacitu fondu pracovních procesů, který má být jeho hostitelem.
 
-Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se platí za každý přidělený virtuální procesor. To zahrnuje i virtuální procesory používané pro front-endy nebo pracovní procesy, které nejsou hostiteli žádných úloh. Ve verzi ASEv1 je výchozí maximální velikost služby ASE celkem 55 hostitelů. To zahrnuje pracovní procesy i front-endy. Jedna z výhod verze ASEv1 spočívá v tom, že se dá nasadit do klasické virtuální sítě i do virtuální sítě Resource Manager. Další informace o verzi ASEv1 najdete v článku [Úvod do služby App Service Environment verze 1][ASEv1Intro].
+Verze ASEv1 používá jiný cenový model než verze ASEv2. Ve verzi ASEv1 se platí za každý přidělený virtuální procesor. To zahrnuje i virtuální procesory používané pro front-endy nebo pracovní procesy, které nejsou hostiteli žádných úloh. Ve verzi ASEv1 je výchozí maximální velikost služby ASE celkem 55 hostitelů. To zahrnuje pracovní procesy i front-endy. Jedna z výhod verze ASEv1 spočívá v tom, že se dá nasadit do klasické virtuální sítě i do virtuální sítě Resource Manager. Další informace o ASEv1 najdete v tématu [App Service Environment v1 Úvod][ASEv1Intro].
 
 <!--Links-->
 [App Service Environments v2]: https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment

@@ -8,17 +8,16 @@ manager: gwallace
 keywords: azure functions, functions, event processing, compute, serverless architecture
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 23caffd14ba37427869e8e5d0ab8d78c42d39f7d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593817"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096572"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
@@ -72,7 +71,7 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
     ![Odezva funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Aplikaci Visual Studio jste použili k vytvoření a publikování aplikace C# Function App v Azure pomocí jednoduché funkce aktivované protokolem HTTP. Další informace o vývoji funkcí jako knihoven tříd .NET naleznete v tématu [Azure Functions C# reference pro vývojáře](functions-dotnet-class-library.md).
 

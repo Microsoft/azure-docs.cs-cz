@@ -72,8 +72,8 @@
       items:
         - name: .NET
           items:
-            - name: Referenční informace k sadě .NET SDK
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Referenční informace
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
             - name: Balíček NuGet
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Přejít

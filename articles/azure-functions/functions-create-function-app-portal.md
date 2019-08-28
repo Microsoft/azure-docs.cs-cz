@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: eb362ec652b306a12a41e7e96dcbc86638369c17
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085894"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Vytvoření aplikace funkcí na webu Azure Portal
 
@@ -35,7 +34,7 @@ Po vytvoření aplikace funkcí můžete jednotlivé funkce vytvářet v jednom 
 
 ## <a name="service-plans"></a>Plány služby
 
-Azure Functions nabízí dva různé plány služby: Plán consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon za běhu kódu, podle potřeby se škáluje na více instancí s ohledem na zatížení a pak se škáluje na méně instancí, když kód není spuštěný. Plán služby App Service poskytuje aplikaci funkcí přístup ke všem zařízením služby App Service. Plán služby musíte zvolit při vytváření aplikace funkcí a v současné době nejde změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
+Azure Functions má dva různé plány služby: Plán spotřeby a plán App Service. Plán Consumption automaticky přiděluje výpočetní výkon za běhu kódu, podle potřeby se škáluje na více instancí s ohledem na zatížení a pak se škáluje na méně instancí, když kód není spuštěný. Plán služby App Service poskytuje aplikaci funkcí přístup ke všem zařízením služby App Service. Plán služby musíte zvolit při vytváření aplikace funkcí a v současné době nejde změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
 
 Pokud v plánu služby App Service plánujete spouštět funkce JavaScriptu, měli byste zvolit plán s méně jádry. Další informace najdete v tématu [Referenční informace k JavaScriptu pro službu Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
@@ -52,7 +51,7 @@ Další informace o typech účtů úložiště najdete v tématu [Seznámení s
 
 ## <a name="next-steps"></a>Další postup
 
-Když na webu Azure portal umožňuje snadno vytvořit a vyzkoušet si funkce, doporučujeme [místního vývojového](functions-develop-local.md). Po vytvoření aplikace function app na portálu, budete muset přesto přidat funkci. 
+I když Azure Portal usnadňuje vytváření a vyzkoušení funkcí, doporučujeme [místní vývoj](functions-develop-local.md). Po vytvoření aplikace Function App na portálu stále potřebujete přidat funkci. 
 
 > [!div class="nextstepaction"]
-> [Přidat funkci aktivovanou protokolem HTTP](functions-create-first-azure-function.md#create-function)
+> [Přidání funkce aktivované protokolem HTTP](functions-create-first-azure-function.md#create-function)

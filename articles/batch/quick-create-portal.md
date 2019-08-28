@@ -5,17 +5,16 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322368"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094123"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch v Azure Portal
 
@@ -68,7 +67,7 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
 4. Posuňte se dolů a zadejte nastavení **Velikost uzlu** a **Škálování**. Navržená velikost uzlu nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
   
-   |Nastavení  |Hodnota  |
+   |Nastavení  |Value  |
    |---------|---------|
    |**Cenová úroveň uzlu**     |Standard_A1|
    |**Cílové vyhrazené uzly**     |2|
@@ -83,7 +82,7 @@ Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů ú
 
 Po několika minutách se stav fondu změní na hodnotu **Stabilní** a uzly se spustí. Vyberte **Uzly** a zkontrolujte stav uzlů. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly. 
 
-## <a name="create-a-job"></a>Vytvoření úlohy
+## <a name="create-a-job"></a>Vytvoří úlohu
 
 Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly. 
 
@@ -91,7 +90,7 @@ Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude s
 
 2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
-   ![Vytvoření úlohy][job_create]
+   ![Vytvoří úlohu][job_create]
 
 Po vytvoření úlohy se otevře stránka **Úkoly**.
 
@@ -131,7 +130,7 @@ Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou 
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili účet Batch, fond služby Batch a úlohu služby Batch. Úloha spustila ukázkové úkoly a prohlédli jste si výstup vytvořený v jednom z uzlů. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch najdete v dalších kurzech o službě Azure Batch. 
 

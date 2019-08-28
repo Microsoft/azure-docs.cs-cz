@@ -1,6 +1,6 @@
 ---
-title: Vytvoření C# webové aplikace ASP.NET Core – Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak spouštět webové aplikace ve službě Azure App Service nasazením výchozí C# webové aplikace ASP.NET Core.
+title: Vytvoření C# webové aplikace ASP.NET Core – Azure App Service | Microsoft Docs
+description: Naučte se spouštět webové aplikace v Azure App Service nasazením výchozí C# webové aplikace ASP.NET Core.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -10,17 +10,16 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b64fd653a737201921ad481c50e2a72dc00cd912
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854521"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071751"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -28,7 +27,7 @@ ms.locfileid: "60854521"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md). 
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak nasadit první ASP.NET Core do služby Azure App Service webovou aplikaci. Jakmile budete hotovi, budete mít skupinu prostředků, která se skládá z plánu služby App Service a aplikaci služby App Service s nasazenou webovou aplikací.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak nasadit první webovou aplikaci ASP.NET Core do Azure App Service. Až budete hotovi, budete mít skupinu prostředků, která se skládá z plánu App Service a App Service aplikace s nasazenou webovou aplikací.
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -73,7 +72,7 @@ Průvodce publikováním se spustí automaticky. Výběrem **App Service** > **P
 
 ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášení, vyberte z rozevíracího seznamu požadovaný účet.
 
@@ -81,7 +80,7 @@ V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat �
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
 >
    
-![Přihlásit se k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
+![Přihlášení k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -105,7 +104,7 @@ V dialogovém okně **Konfigurovat plán hostování** použijte nastavení podl
 |-|-|-|
 |Plán služby App Service| myAppServicePlan | Název plánu služby App Service. |
 | Location | Západní Evropa | Datacentrum, které je hostitelem webové aplikace. |
-| Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+| Size | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
 Vyberte **OK**.
 
@@ -151,7 +150,7 @@ Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL we
 
 Pokud chcete webovou aplikaci spravovat, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V nabídce vlevo vyberte **App Services**a potom vyberte název aplikace Azure.
+V nabídce vlevo vyberte **App Services**a pak vyberte název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-dotnet/access-portal.png)
 

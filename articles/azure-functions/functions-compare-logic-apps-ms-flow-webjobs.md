@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 keywords: microsoft flow, flow, logic apps, azure functions, functions, azure webjobs, webjobs, event processing, dynamic compute, serverless architecture
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7bfe586294aec5938e2245c38fbe88aa5e57a66c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9543e67d0f98836f760ac840fa12ec5718da037e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839496"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086046"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Co jsou Microsoft Flow, Logic Apps, funkce a WebJobs?
 
@@ -43,7 +42,7 @@ Následující tabulka vám pomůže určit, jestli je pro určitou integraci ne
 |  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Uživatelé |Administrativní pracovníci, podnikoví uživatelé, správci služby SharePoint |Profesionální integrátoři a vývojáře, IT profesionálové |
-| Scénáře |Samoobslužný |Pokročilé integrace |
+| Scénáře |Samoobslužné |Pokročilé integrace |
 | Nástroj pro návrh |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
 | Správa životního cyklu aplikací (ALM) |Návrh a testování v neprodukčních prostředích po připraveném zvýšení úrovně na produkční |Azure DevOps: Správa zdrojového kódu, testování, podpora, automatizace a možnosti správy v [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Prostředí pro správu |Správa zásad ochrany před únikem informací Microsoft Flow prostředí a prevence ztráty dat, sledování licencí: [Centrum pro správu Microsoft Flow](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování: [Azure Portal](https://portal.azure.com) |

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932234"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073850"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -67,6 +67,8 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* Není dostupné ve všech oblastech.  
 
@@ -82,34 +84,35 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Východní USA 2     |     S8, S9   |    1    |
-|Středoseverní USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Středozápadní USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Východní USA 2     |     S8, S9, S8v2, S9v2   |    1    |
+|Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|USA – západ     |    S8, S9   |    2  |
+|USA – západ     |    S8, S9, S8v2, S9v2   |    2  |
 |Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Západní USA 2    |    S8, S9  |    1     |
+|Západní USA 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Evropa
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
+|Severní Evropa     |    S8v2, S9v2      |    3     |
 |Velká Británie – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Západní Evropa    |   S8, S9  |  1  |
+|Západní Evropa    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Austrálie – východ     |    S8, S9    |    1     |
+|Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1     |
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
+|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
@@ -246,13 +249,13 @@ Dokumentace ke službě Azure Analysis Services používá také [GitHub Issues]
 
 ## <a name="blogs"></a>Blogy
 
-Všechno se rychle mění. Nejnovější informace najdete na [blogu týmu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/) a [blogu o Azure](https://azure.microsoft.com/blog/).
+Všechno se rychle mění. Získejte nejnovější informace o [blogu Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) a [blogu Azure](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Komunita
 
 Služba Analysis Services má velmi aktivní komunitu uživatelů. Připojte se ke konverzaci na [fóru Azure Analysis Services](https://aka.ms/azureanalysisservicesforum).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Registrace bezplatné zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/)   

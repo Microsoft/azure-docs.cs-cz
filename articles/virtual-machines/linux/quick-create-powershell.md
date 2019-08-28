@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2bbf76e161ec4106b625d1ceb7677c728a989d66
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1d69cb80b105c85640420575f709d8a47629eea0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667067"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082289"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem v Azure pomocí Powershellu
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rychlý start: Vytvoření virtuálního počítače se systémem Linux v Azure pomocí PowerShellu
 
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell nasadit do Azure virtuální počítač s Linuxem. V tomto rychlém startu se používá image Ubuntu 16.04 LTS z marketplace od společnosti Canonical. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
@@ -119,7 +118,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Vytvoření virtuální síťové karty (NIC) s [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Virtuální síťová karta připojí virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
+Pomocí [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)vytvořte virtuální síťovou kartu (nic). Virtuální síťová karta připojí virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -168,7 +167,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Teď, kombinovat předchozí definice konfigurace k vytvoření s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+Teď Zkombinujte předchozí definice konfigurace pro vytvoření pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -180,7 +179,7 @@ Nasazení virtuálního počítače bude několik minut trvat. Po dokončení na
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
-Vytvořte k virtuálnímu počítači připojení SSH s použitím jeho veřejné IP adresy. Pokud chcete zjistit veřejnou IP adresu virtuálního počítače, použijte [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) rutiny:
+Vytvořte k virtuálnímu počítači připojení SSH s použitím jeho veřejné IP adresy. Veřejnou IP adresu virtuálního počítače zobrazíte pomocí rutiny [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) :
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -215,7 +214,7 @@ V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku server
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) rutina pro odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít rutinu [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

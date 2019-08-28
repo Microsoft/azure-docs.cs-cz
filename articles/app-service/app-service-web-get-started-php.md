@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v PHP – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření webové aplikace v PHP – Azure App Service | Microsoft Docs
 description: Během několika minut můžete nasadit svou první aplikaci PHP Hello World pomocí služby Azure App Service Web Apps.
 services: app-service\web
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f1a5c3a57c60b30855f7bfaaa1ee3ab85285011d
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 90f83e3e6fa1910641b3e384460cf4aa14016c1a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298543"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067332"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -28,7 +27,7 @@ ms.locfileid: "66298543"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v PHP ve službě App Service v Linuxu](./containers/quickstart-php.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý úvodní kurz ukazuje, jak nasadit aplikaci v PHP do služby Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v PHP do Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -185,7 +184,7 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
@@ -197,7 +196,7 @@ Levá nabídka obsahuje různé možnosti pro konfiguraci vaší aplikace.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [PHP s databází MySQL](app-service-web-tutorial-php-mysql.md)

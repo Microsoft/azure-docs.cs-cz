@@ -238,7 +238,7 @@
     - name: Platforma jako služba
       items:
         - name: Dokumentace k platformě jako službě
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: Kontinuita podnikových procesů
           href: sql-database-business-continuity.md
         - name: Vysoká dostupnost

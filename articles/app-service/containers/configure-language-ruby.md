@@ -10,18 +10,17 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 222ded620610957e752e2081bda638d78eba4867
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 71734396e90987fb1e318f3d8bb01d957fc0fda1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619436"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071293"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Ruby pro Azure App Service
 
@@ -158,7 +157,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz: Aplikace kolejnice s PostgreSQL](tutorial-ruby-postgres-app.md)

@@ -1,5 +1,5 @@
 ---
-title: Spuštění vlastní kontejner Windows (Preview) – služby Azure App Service | Dokumentace Microsoftu
+title: Spustit vlastní kontejner Windows (Preview) – Azure App Service | Microsoft Docs
 description: Zjistěte, jak do služby Azure App Service nasadit vlastní kontejner s Windows.
 services: app-service\web
 documentationcenter: ''
@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 089334d32ca54035abfbf59446366ecbe3378c15
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 791017fffe96455157388fb43e0c1d65faba8933
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919743"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071521"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
@@ -29,7 +28,7 @@ ms.locfileid: "64919743"
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
@@ -42,7 +41,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Ve Visual Studiu vytvořte projekt tak, že vyberete **Soubor > Nový > Projekt**. 
 
-V dialogovém okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET (.NET Framework)**.
+V dialogovém okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET (.NET Framework)** .
 
 Aplikaci pojmenujte _myFirstAzureWebApp_ a pak vyberte **OK**.
    
@@ -86,7 +85,7 @@ Počkejte, než se nasazení dokončí. Na stránce **Publikovat** se teď zobra
 
 Zkopírujte si tento název úložiště pro pozdější použití.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -96,7 +95,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 2. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte **Web App for Containers**.
 
-3. Zadejte název aplikace, například *win-container-demo*, přijměte výchozí nastavení, aby se vytvořila nová skupina prostředků, a v poli **OS** klikněte na **Windows (Preview)**.
+3. Zadejte název aplikace, například *win-container-demo*, přijměte výchozí nastavení, aby se vytvořila nová skupina prostředků, a v poli **OS** klikněte na **Windows (Preview)** .
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
@@ -178,13 +177,13 @@ Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po 
 
 Ke spuštění vaší aplikace můžete použít i jinou vlastní image Dockeru. Musíte však zvolit správnou [nadřazenou image](https://docs.docker.com/develop/develop-images/baseimages/) pro požadovanou architekturu: 
 
-- Pokud chcete nasadit aplikace rozhraní .NET Framework, použít nadřazená image založené na Windows Server Core 2019 [dlouhodobé údržby kanálu (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) release. 
-- K nasazení aplikace .NET Core použijte nadřazená image založené na Windows Server Nano 1809 [půlroční Obsluha kanálu (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) release. 
+- K nasazení aplikací .NET Framework použijte nadřazenou bitovou kopii na základě verze Windows Server Core 2019 [(LTSC) (dlouhodobá údržba kanálu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
+- Pokud chcete nasadit aplikace .NET Core, použijte nadřazenou bitovou kopii založenou na vydání Windows Server nano 1809 [(konzola pro správu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
 
 Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:
 
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [MCR.microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – Toto je základní kontejneru použít v rámci Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) Image Windows Nano serveru.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – Toto je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) imagí Microsoft Windows nano serveru.
 
 ## <a name="next-steps"></a>Další postup
 

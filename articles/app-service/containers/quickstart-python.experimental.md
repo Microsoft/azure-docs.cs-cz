@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c971e84a12b23625326d63b3493395f1d1381937
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996893"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071004"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v systému Linux (Preview)
 
@@ -163,7 +162,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Integrovaná image v jazyce Python v App Service v systému Linux je aktuálně ve verzi Preview a můžete přizpůsobit příkaz, který je použit ke spuštění aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
