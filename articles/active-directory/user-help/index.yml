@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Dokumentace uživatelské nápovědy
+summary: Jako zaměstnanec, pracovník IT nebo koncový uživatel můžete nastavovat ověřování pro váš pracovní nebo školní účet, resetovat svoje vlastní heslo, nastavovat a připojovat zařízení, nastavovat aplikaci Microsoft Authenticator a využívat různé portály.
+metadata:
+  title: Uživatelská nápověda pro ověřování, aplikace a zařízení
+  description: Jako zaměstnanec nebo koncový uživatel se dozvíte, jak nastavit a používat ověřování, aplikaci Microsoft Authenticator aplikaci a portál Moje aplikace.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062201"
+landingContent:
+- title: Nastavení a využití aplikace Microsoft Authenticator
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je aplikace Microsoft Authenticator?
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: Stažení a instalace aplikace
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: Informace o zálohování a obnovení účtu
+      url: user-help-auth-app-backup-recovery.md
+    - text: Přihlášení pomocí aplikace
+      url: user-help-auth-app-sign-in.md
+- title: Nastavení a použití dvoustupňového ověření
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je dvojúrovňové ověřování?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení metod ověřování
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Správa nastavení
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Podpora
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: Nastavení portálu Moje aplikace a jeho využití
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je portál Moje aplikace?
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktualizace vašich informací
+      url: my-apps-portal-end-user-update-profile.md
+    - text: Podpora
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: Nastavení a použití bezpečnostních údajů (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou bezpečnostní údaje (Preview)?
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení metod pro bezpečnostní údaje
+      url: security-info-add-update-methods-overview.md
+    - text: Přidání údajů během přihlašování
+      url: security-info-setup-signin.md
+- title: Nastavení a použití portálu Můj profil (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je portál Můj profil (Preview)?
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa organizací
+      url: myprofile-portal-organizations-page.md
+    - text: Správa připojených zařízení
+      url: myprofile-portal-devices-page.md
+- title: Resetování vlastního hesla
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je resetování hesla?
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Registrace pro resetování hesla
+      url: active-directory-passwords-reset-register.md
+    - text: Resetování hesla
+      url: user-help-reset-password.md

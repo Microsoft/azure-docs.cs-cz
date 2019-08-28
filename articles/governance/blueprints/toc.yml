@@ -11,6 +11,9 @@
     - name: Vytvoření podrobného plánu – portál
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: Vytvoření podrobného plánu – PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: Vytvoření podrobného plánu – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md

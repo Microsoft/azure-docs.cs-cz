@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 6ca8351e7294c5a9cdd9f594eb4524d04a27b5c1
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c9bc02959c64baecf11e2d1651051cd9bdda61d7
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516977"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060616"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -26,7 +26,7 @@ Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a u
 
 ![Příklad hierarchického stromu skupin pro správu](./media/tree.png)
 
-Vytvořte hierarchii, abyste mohli použít zásadu, jako je například omezení umístění virtuálních počítačů ve skupině Produkce na oblast USA – západ. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
+Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
 Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu můžete v této skupině vytvořit jedno přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) (RBAC), které zdědí tento přístup pro všechna předplatná.
 Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
@@ -55,7 +55,7 @@ Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod n
   - Nová předplatná při vytvoření ve výchozím nastavení automaticky spadají do kořenové skupiny pro správu.
 - Kořenovou složku pro správu sice vidí všichni zákazníci Azure, ale ne všichni mají přístup ke správě této skupiny.
   - Každý, kdo má přístup k předplatnému, vidí kontext tohoto předplatného v rámci hierarchie.  
-  - Ke kořenová skupina pro správu nikdo nemá výchozí přístup. Globální správci Azure AD jsou jedinými uživateli, kteří si sami sobě mohou zvýšit oprávnění a získat tak přístup.  Jakmile globální správci mají přístup, mohou ostatním uživatelům přidělovat libovolné role RBAC pro správu.  
+  - Ke kořenová skupina pro správu nikdo nemá výchozí přístup. Globální správci Azure AD jsou jedinými uživateli, kteří si sami sobě mohou zvýšit oprávnění a získat tak přístup.  Jakmile mají přístup ke kořenové skupině pro správu, mohou ostatním uživatelům přidělovat libovolné role RBAC pro správu.  
 
 > [!IMPORTANT]
 > Všechna přiřazení uživatelského přístupu nebo zásad v kořenové skupině pro správu **se použijí pro všechny prostředky v rámci příslušného adresáře**.

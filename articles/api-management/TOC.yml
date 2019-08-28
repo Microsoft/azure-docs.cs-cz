@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: Použití řízení přístupu na základě rolí
           href: api-management-role-based-access-control.md
+        - name: Migrace instancí služby API Management
+          href: api-management-howto-migrate.md
         - name: Použití spravovaných identit pro prostředky Azure
           href: api-management-howto-use-managed-service-identity.md
         - name: Integrace se Service Fabric

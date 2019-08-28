@@ -1,56 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k RBAC pro prostředky Azure
+summary: Řízení přístupu na základě role (RBAC) je systém, který poskytuje detailní správu přístupu prostředků Azure. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
 metadata:
-  document_id: null
-  title: Dokumentace k řízení přístupu na základě role (RBAC) pro prostředky Azure | Microsoft Docs
-  description: 'Přečtěte si víc o využití řízení přístupu na základě role (RBAC) ke správě toho, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.'
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  title: Dokumentace k řízení přístupu na základě role (RBAC) pro prostředky Azure
+  description: Přečtěte si víc o využití řízení přístupu na základě role (RBAC) ke správě toho, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: 'Řízení přístupu na základě role (RBAC) je systém, který poskytuje detailní správu přístupu prostředků Azure. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.'
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: 'Uzamknutí přístupu do Azure (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">Zobrazení přístupu pro uživatele</a>
-  - title: Podrobné kurzy
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Udělení přístupu pro uživatele – portál</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Udělení přístupu pro skupinu – PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Vytvoření vlastní role – PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Vytvoření vlastní role – rozhraní příkazového řádku</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Zabezpečení prostředků Azure pomocí řízení přístupu na základě role (RBAC)
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">Další interaktivní výuka...</a>
+  ms.date: 08/26/2019
+  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052022"
+landingContent:
+- title: Informace o prostředcích programu FastTrack for Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je RBAC?
+      url: overview.md
+    - text: Vysvětlení různých rolí
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: 'Microsoft Ignite: Uzamknutí přístupu do Azure'
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Zobrazení přístupu pro uživatele
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: Udělení přístupu pro uživatele – portál
+      url: quickstart-assign-role-user-portal.md
+    - text: Udělení přístupu pro skupinu – PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: Zabezpečení vašich prostředků Azure s využitím RBAC
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: Správa přístupu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portál
+      url: role-assignments-portal.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Azure CLI
+      url: role-assignments-cli.md
+    - text: REST API
+      url: role-assignments-rest.md
+    - text: Šablona
+      url: role-assignments-template.md
+- title: Vytvoření vlastních rolí
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vlastní role
+      url: custom-roles.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření vlastní role – PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: Vytvoření vlastní role – rozhraní příkazového řádku
+      url: tutorial-custom-role-cli.md

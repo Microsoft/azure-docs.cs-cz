@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Použití doporučení k vylepšení zabezpečení
       href: security-center-using-recommendations.md
-    - name: Detekce hrozeb
-      href: security-center-detection-capabilities.md
-    - name: Správa výstrah zabezpečení
-      href: security-center-managing-and-responding-alerts.md
-    - name: Incidenty zabezpečení
-      href: security-center-incident.md
     - name: Správa napříč tenanty
       href: security-center-cross-tenant-management.md
-    - name: Upozornění detekce hrozeb
+    - name: Incidenty a upozornění detekce hrozeb
       items:
         - name: Přehled výstrah zabezpečení
           href: security-center-alerts-overview.md
+        - name: Správa výstrah zabezpečení
+          href: security-center-managing-and-responding-alerts.md
+        - name: Správa incidentů zabezpečení
+          href: security-center-incident.md
         - name: Detekce hrozeb pro virtuální počítače a servery
           href: security-center-alerts-iaas.md
         - name: Detekce hrozeb pro cloudové nativní výpočetní prostředí

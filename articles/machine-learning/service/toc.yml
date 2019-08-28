@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: Regrese (data newyorské taxislužby)
           items:
-            - name: 1. Příprava dat pro modelování
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. Automatické trénování modelu ML
+            - name: Automatické trénování modelu ML
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: Vizuální rozhraní
@@ -260,7 +257,7 @@
     - name: Vytváření opakovaně použitelných pracovních postupů
       displayName: pipelines
       items:
-        - name: Kanály ML
+        - name: Vytváření kanálů ML v Pythonu
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines pro CI/CD
           displayName: 'continuous, integration, delivery'
