@@ -9,23 +9,22 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230626"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073439"
 ---
 # <a name="about-api-management"></a>Informace o službě API Management
 
-API Management (APIM) je způsob, jak vytvořit konzistentní a moderní brány rozhraní API pro stávající služby back-end.
+API Management (APIM) je způsob, jak vytvořit konzistentní a moderní brány API pro stávající back-endové služby.
 
-API Management pomáhá organizacím při publikování rozhraní API pro externí, partnerské a interní vývojáře, aby tak uvolnila potenciál jejich dat a služeb. Firmy po celém světě hledají způsoby, jak rozšířit svojí činnost na digitální platformě, vytvářejí nové kanály, hledají nové zákazníky a více se propojují s těmi stávajícími. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. S pomocí služby Azure API Management můžete vzít jakýkoli back-end a na jeho základě spustit plnohodnotný program s rozhraním API.
+API Management pomáhá organizacím při publikování rozhraní API pro externí, partnerské a interní vývojáře, aby odemkli potenciál jejich dat a služeb. Firmy po celém světě hledají způsoby, jak rozšířit svojí činnost na digitální platformě, vytvářejí nové kanály, hledají nové zákazníky a více se propojují s těmi stávajícími. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. S pomocí služby Azure API Management můžete vzít jakýkoli back-end a na jeho základě spustit plnohodnotný program s rozhraním API.
 
 Tento článek obsahuje přehled běžných scénářů, které zahrnují APIM.  Také poskytuje stručný přehled hlavních komponent systému APIM. Článek dále poskytuje podrobnější přehled jednotlivých komponent.
 
@@ -61,7 +60,7 @@ Systém se skládá z následujících součástí:
   * Vytvořit účet a přihlásit se k odběru za účelem získání klíčů rozhraní API.
   * Přistupovat k analýzám jejich využití.
 
-Další informace najdete v tématu [Cloud-based API Management: Využití Power of APIs](https://j.mp/ms-apim-whitepaper) PDF dokument White Paper. Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
+Další informace najdete [v cloudovém API Management: Využijte sílu rozhraní API](https://j.mp/ms-apim-whitepaper) pro dokumenty PDF. Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
  
  * Běžné požadavky a problémy rozhraní API
  * Oddělení rozhraní API a představení průčelí
@@ -122,7 +121,7 @@ Pokud se chcete o službě API Management dozvědět víc, podívejte se na nás
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dokončete následující rychlý start a začněte používat Azure API Management:
 

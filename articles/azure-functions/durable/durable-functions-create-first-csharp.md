@@ -7,16 +7,15 @@ author: jeffhollan
 manager: jeconnoc
 keywords: azure functions, functions, event processing, compute, serverless architecture
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 966be2d16615ba120287974201de5dd264fbbbcf
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 40e25fc0cfc9d08ef59092929d2cf1d51dcf83d1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594081"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087562"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
@@ -140,7 +139,7 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
 2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Po použití publikované aplikace byste měli získat stejnou reakci na stav jako předtím.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pomocí sady Visual Studio jste vytvořili a publikovali C# trvalou aplikaci Function App.
 

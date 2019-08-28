@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 05b761dbf9f58f6afca6459e28d2fecca9aa7b06
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878303"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099496"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Vytvoření aplikace Azure IoT Central (funkce ve verzi Preview)
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit aplikaci IoT Central Azure, k
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Přejděte na stránku [správce aplikací](https://aka.ms/iotcentral) Azure IoT Central. Pak se přihlaste pomocí osobního nebo pracovního nebo školního účtu Microsoftu.
+Přejděte na web [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) . Pak se přihlaste pomocí osobního nebo pracovního nebo školního účtu Microsoftu.
 
 Pokud chcete začít vytvářet novou aplikaci Azure IoT Central, vyberte **New Application** (Nová aplikace). Tento odkaz vás přesměruje na stránku **vytvořit aplikaci** .
 
@@ -50,9 +50,9 @@ Vytvoření nové aplikace IoT Central v Azure, která zahrnuje funkce verze Pre
 
 1. V dolní části stránky vyberte **vytvořit** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili IoT Central aplikaci, která používá funkce verze Preview. Navrhovaný další krok:
 
 > [!div class="nextstepaction"]
-> [Prohlídka IoT Central](overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Definování nového typu zařízení v aplikaci Azure IoT Central](./tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
