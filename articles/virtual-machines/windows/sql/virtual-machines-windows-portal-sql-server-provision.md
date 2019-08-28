@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102210"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zřídit virtuální počítač s Windows SQL Server v Azure Portal
 
@@ -37,21 +36,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Když vytváříte virtuální počítač s SQL Server, můžete z Galerie virtuálních počítačů vybrat jednu z několika předem nakonfigurovaných imagí. Následující kroky ukazují, jak vybrat jednu z imagí SQL Server 2017.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu.
+1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Kliknutím na **Zobrazit podrobnosti**můžete zobrazit další informace. 
+1. Do `2017` pole SQL Server image pro hledání na dlaždici **virtuální počítače SQL** zadejte a vyberte **bezplatné SQL Server licenci: SQL Server 2017 Developer v systému Windows Server** 2016 z rozevíracího seznamu. 
 
-1. Na webu Azure Portal klikněte na **Vytvořit prostředek**. Na Portálu se otevře okno **Nový**.
 
-1. V okně **Nový** klikněte na **Compute** a pak klikněte na **Zobrazit všechno**.
-
-1. Do pole hledání zadejte **SQL Server 2017** a stiskněte ENTER.
-
-1. V rozevíracích seznamech filtru vyberte pro **operační systém** možnost _Windows Server 2016_ a jako **vydavatele**vyberte _Microsoft_ . 
-
-     ![Okno Nová služba Compute](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
-
-1. Projděte si dostupné image SQL Serveru. U každé image je označena příslušná verze SQL Serveru a operační systém.
-
-1. Vyberte image s názvem **Free SQL Server License: SQL Server 2017 Developer v systému Windows Server**2016.
+   ![Výběr image virtuálního počítače s SQL](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > V tomto návodu se používá vývojářská edice, protože se jedná o plně funkční, bezplatnou edici SQL Server pro testování vývoje. Platíte jenom náklady na provozování virtuálního počítače. V tomto návodu ale zvolíte libovolné image, které chcete použít. Popis dostupných imagí najdete v [přehledu SQL Server Windows Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
@@ -61,7 +51,6 @@ Když vytváříte virtuální počítač s SQL Server, můžete z Galerie virtu
    >
    > Další informace o těchto možnostech najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md).
 
-1. V části **Vybrat model nasazení** ověřte, že je vybraný **Resource Manager**. U nových virtuálních počítačů se doporučuje používat model nasazení Resource Manageru. 
 
 1. Vyberte **Vytvořit**.
 

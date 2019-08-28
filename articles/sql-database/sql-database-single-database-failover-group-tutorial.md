@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a80dc8ccaa72a57986ed6c64f7ab7050ab4c7de5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099073"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání
 
@@ -61,16 +61,15 @@ V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](sql-databa
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal. 
 
 
-1. V levém horním rohu [Azure Portal](https://portal.azure.com)vyberte **všechny služby** . 
-1. Do `sql servers` vyhledávacího pole zadejte. 
-1. Volitelné Vyberte ikonu hvězdičky vedle SQL serverů a oblíbené **SQL servery** a přidejte je do levého navigačního podokna. 
-    
-    ![Vyhledání serverů SQL](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Vyberte jednu databázi vytvořenou v části 2, například `mySampleDatbase`. 
+1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
-1. Vyberte **SQL servery** a zvolte server, který jste vytvořili v části 1, například `mysqlserver`.
+   ![Otevřít server pro jednu databázi](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte **Přidat skupinu** a vytvořte novou skupinu převzetí služeb při selhání. 
 
-    ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Přidat novou skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte následující hodnoty a pak vyberte **vytvořit**:
     - **Název skupiny převzetí služeb při selhání**: Zadejte jedinečný název skupiny převzetí služeb při selhání, `failovergrouptutorial`například. 
@@ -78,16 +77,16 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
         - **Název serveru**: Zadejte jedinečný název sekundárního serveru, například `mysqlsecondary`. 
         - **Přihlašovací jméno správce serveru**: Textový`azureuser`
         - **Heslo**: Zadejte komplexní heslo, které splňuje požadavky na heslo.
-        - **Umístění**: V rozevíracím seznamu vyberte umístění, například Východní USA 2. Toto umístění nemůže být stejné jako primární server.
+        - **Umístění**: V rozevíracím seznamu vyberte umístění, například `East US`. Toto umístění nemůže být stejné jako primární server.
 
     > [!NOTE]
     > Přihlašovací údaje serveru a firewall se musí shodovat s nastavením vašeho primárního serveru. 
     
-      ![Vytvoření sekundárního serveru pro skupinu převzetí služeb při selhání](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+      ![Vytvoření sekundárního serveru pro skupinu převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
    - **Databáze v rámci této skupiny**: Po výběru sekundárního serveru se tato možnost odemkne. Vyberte ho a vyberte databáze, které **chcete přidat** , a pak vyberte databázi, kterou jste vytvořili v části 1. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace. 
         
-    ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -99,12 +98,12 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   # $location = "West US 2"
+   # $location = "West US"
    # $adminLogin = "azureuser"
    # $password = "PWD27!"+(New-Guid).Guid
    # $serverName = "mysqlserver-$(Get-Random)"
    # $databaseName = "mySampleDatabase"
-   $drLocation = "East US 2"
+   $drLocation = "East US"
    $drServerName = "mysqlsecondary-$(Get-Random)"
    $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
 
@@ -194,16 +193,21 @@ V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro se
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Testovací převzetí služeb při selhání pomocí Azure Portal. 
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na server **SQL** Servers. 
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
+1. Vyberte jednu databázi vytvořenou v části 2, například `mySampleDatbase`. 
+1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
+
+   ![Otevřít server pro jednu databázi](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+
 1. V podokně **Nastavení** vyberte **skupiny převzetí služeb při selhání** a pak vyberte skupinu převzetí služeb při selhání, kterou jste vytvořili v části 2. 
   
-   ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![Výběr skupiny převzetí služeb při selhání z portálu](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární. 
 1. V podokně úloh vyberte převzetí služeb při selhání pro skupinu převzetí služeb při selhání, která obsahuje vaši ukázkovou jedinou databázi. 
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** . 
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně zdařilo, dva servery by měly mít zaměnitelné role. 
 1. Znovu vyberte **převzetí služeb při selhání** , aby se servery převedly zpátky na původní role. 

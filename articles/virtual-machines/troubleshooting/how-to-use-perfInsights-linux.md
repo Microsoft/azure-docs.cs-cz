@@ -10,16 +10,15 @@ tags: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: f618066f19a5cbbf25bc1fcc872cc654ce96dae3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080517"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -245,7 +244,7 @@ Karta **Linux** obsahuje informace o hardwaru a operačním systému běžícím
 
 ![Snímek obrazovky s kartou Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Protokoly diagnostiky a sestavy můžete odeslat podpora Microsoftu k dalšímu přezkoumání. Při práci s podpora Microsoftu zaměstnanci si můžou vyžádat, abyste předávali výstup, který je vygenerovaný PerfInsights, aby pomohl procesu řešení potíží.
 

@@ -1,6 +1,6 @@
 ---
-title: Skupiny dostupnosti pro SQL Server – Azure Virtual Machines – zotavení po havárii | Dokumentace Microsoftu
-description: Tento článek vysvětluje, jak nakonfigurovat skupinu dostupnosti SQL Server na virtuálních počítačích Azure s replikou v jiné oblasti.
+title: Skupiny dostupnosti SQL Server – Virtual Machines Azure – zotavení po havárii | Microsoft Docs
+description: Tento článek vysvětluje, jak nakonfigurovat skupinu dostupnosti SQL Server na virtuálních počítačích Azure pomocí repliky v jiné oblasti.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -9,124 +9,123 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571726"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100672"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti AlwaysOn na virtuálních počítačích, které jsou v různých oblastech Azure
+# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti Always On na virtuálních počítačích Azure v různých oblastech
 
-Tento článek vysvětluje, jak nakonfigurovat repliky dostupnosti skupin AlwaysOn SQL serveru na virtuálních počítačích Azure ve vzdáleném umístění Azure. Pomocí této konfigurace k podpoře zotavení po havárii.
+Tento článek vysvětluje, jak na virtuálních počítačích Azure nakonfigurovat repliku skupiny dostupnosti Always On SQL Server ve vzdáleném umístění Azure. Tuto konfiguraci použijte k podpoře zotavení po havárii.
 
-Tento článek se týká k Azure Virtual Machines v režimu Resource Manageru.
+Tento článek se týká Azure Virtual Machines v režimu Správce prostředků.
 
-Následující obrázek ukazuje běžné nasazení skupiny dostupnosti na virtuálních počítačích Azure:
+Na následujícím obrázku vidíte běžné nasazení skupiny dostupnosti na virtuálních počítačích Azure:
 
    ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
-V tomto nasazení jsou všechny virtuální počítače v jedné oblasti Azure. Repliky skupin dostupnosti může mít synchronní potvrzení změn se automatické převzetí služeb při selhání na SQL-1 a SQL 2. K vytvoření této architektury, najdete v článku [skupiny dostupnosti šablony nebo kurzu](virtual-machines-windows-portal-sql-availability-group-overview.md).
+V tomto nasazení jsou všechny virtuální počítače v jedné oblasti Azure. Repliky skupin dostupnosti můžou mít synchronní potvrzení s automatickým převzetím služeb při selhání na SQL-1 a SQL-2. Pokud chcete vytvořit tuto architekturu, přečtěte si téma [Šablona skupiny dostupnosti nebo kurz](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
-Tato architektura je zranitelný vůči prostojům, pokud oblast stane nedostupnou. Abyste vyřešili toto ohrožení zabezpečení, přidejte repliku v jiné oblasti Azure. Následující diagram znázorňuje, jak by vypadal novou architekturu:
+Tato architektura je zranitelná v případě výpadku, pokud je oblast Azure nepřístupná. Pokud chcete tuto chybu zabezpečení překonat, přidejte repliku do jiné oblasti Azure. Následující diagram znázorňuje, jak by nová architektura vypadala:
 
-   ![Zotavení po Havárii skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
+   ![Skupina dostupnosti DR](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
 
-Předchozí diagram znázorňuje nový virtuální počítač s názvem SQL-3. SQL-3 je v jiné oblasti Azure. SQL-3 se přidá do clusteru Windows Server Failover Cluster. Replika skupiny dostupnosti může být hostitelem SQL-3. Konečně si všimněte, že oblast Azure pro SQL 3 má nový nástroj pro vyrovnávání zatížení Azure.
+Předchozí diagram znázorňuje nový virtuální počítač s názvem SQL-3. SQL-3 je v jiné oblasti Azure. SQL-3 se přidá do clusteru s podporou převzetí služeb při selhání se systémem Windows Server. SQL-3 může hostovat repliku skupiny dostupnosti. Nakonec si všimněte, že oblast Azure pro SQL-3 má nový nástroj pro vyrovnávání zatížení Azure.
 
 >[!NOTE]
-> Skupině dostupnosti Azure je potřeba po více než jeden virtuální počítač ve stejné oblasti. Pokud pouze jeden virtuální počítač je v oblasti, pak skupinu dostupnosti se nevyžaduje. Můžete pouze umístit virtuální počítač ve skupině dostupnosti v okamžiku vytvoření. Pokud virtuální počítač je už ve skupině dostupnosti, můžete přidat virtuální počítač pro další repliky později.
+> Pokud je víc než jeden virtuální počítač ve stejné oblasti, vyžaduje se skupina dostupnosti Azure. Pokud je v této oblasti jenom jeden virtuální počítač, Skupina dostupnosti se nevyžaduje. Virtuální počítač můžete umístit pouze do skupiny dostupnosti v okamžiku vytvoření. Pokud je virtuální počítač již ve skupině dostupnosti, můžete později přidat virtuální počítač pro další repliku.
 
-V této architektuře repliky ve vzdálené oblasti obvykle nastaven režim dostupnosti asynchronního potvrzování a režim ručního převzetí služeb při selhání.
+V této architektuře je replika ve vzdálené oblasti obvykle nakonfigurovaná s režimem dostupnosti s asynchronním potvrzováním a režimem ručního převzetí služeb při selhání.
 
-Když replik skupin dostupnosti jsou na virtuálních počítačích Azure v různých oblastech Azure, vyžaduje každá oblast:
+Když jsou repliky skupin dostupnosti na virtuálních počítačích Azure v různých oblastech Azure, každá oblast vyžaduje:
 
-* Bránu virtuální sítě
+* Brána virtuální sítě
 * Připojení brány virtuální sítě
 
-Následující diagram znázorňuje, jak sítích komunikovat mezi datovými centry.
+Následující diagram znázorňuje, jak sítě komunikují mezi datovými centry.
 
    ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->Tato architektura se neúčtují poplatky za odchozí data pro data replikovat mezi oblastmi Azure. Zobrazit [cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).  
+>Tato architektura nenese poplatky za odchozí data pro data replikovaná mezi oblastmi Azure. Podívejte se na téma [ceny šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
-## <a name="create-remote-replica"></a>Vytvoření vzdálené repliky
+## <a name="create-remote-replica"></a>Vytvořit vzdálenou repliku
 
-Chcete-li vytvořit repliku ve vzdáleném datovém centru, proveďte následující kroky:
+Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte následující kroky:
 
-1. [Vytvoření virtuální sítě v nové oblasti](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
+1. [Vytvořte virtuální síť v nové oblasti](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
-1. [Konfigurace připojení typu VNet-to-VNet pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+1. [Nakonfigurujte připojení typu VNet-to-VNet pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
    >[!NOTE]
-   >V některých případech může mít použití Powershellu k vytvoření připojení VNet-to-VNet. Například pokud používáte různé účty Azure nejde nakonfigurovat připojení na portálu. V tomto případě zobrazí [konfigurace připojení typu VNet-to-VNet pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+   >V některých případech může být nutné použít PowerShell k vytvoření připojení VNet-to-VNet. Pokud například použijete různé účty Azure, nemůžete konfigurovat připojení na portálu. V tomto případě najdete informace v tématu [Konfigurace připojení typu VNet-to-VNet pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-1. [Vytvoření řadiče domény v nové oblasti](../../../active-directory/active-directory-new-forest-virtual-machine.md).
+1. [V nové oblasti vytvořte řadič domény](../../../active-directory/active-directory-new-forest-virtual-machine.md).
 
-   Tento řadič domény poskytuje ověřování, pokud není dostupný řadič domény v primární lokalitě.
+   Tento řadič domény zajišťuje ověřování, pokud řadič domény v primární lokalitě není k dispozici.
 
-1. [Vytvoření virtuálního počítače s SQL serverem v nové oblasti](virtual-machines-windows-portal-sql-server-provision.md).
+1. [Vytvořte SQL Server virtuální počítač v nové oblasti](virtual-machines-windows-portal-sql-server-provision.md).
 
-1. [Vytvoření služby Azure load balancer v síti na novém regionu](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
+1. [Vytvořte Nástroj pro vyrovnávání zatížení Azure v síti v nové oblasti](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
 
    Tento nástroj pro vyrovnávání zatížení musí:
 
    - Být ve stejné síti a podsíti jako nový virtuální počítač.
-   - Máte statickou IP adresu pro naslouchací proces skupiny dostupnosti.
-   - Zahrnout back-endový fond, který se skládá z virtuálních počítačů ve stejné oblasti jako nástroj pro vyrovnávání zatížení.
-   - Použijte sondu protokolu TCP port specifické pro IP adresu.
-   - Mají pravidla specifická pro SQL Server ve stejné oblasti vyrovnávání zatížení.  
-   - Být standardní nástroj pro vyrovnávání zatížení, pokud virtuální počítače v back-endového fondu nejsou součástí jedné skupiny dostupnosti nebo škálovací sady virtuálních počítačů. Pro další informace najdete [Přehled služby Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+   - Mít statickou IP adresu pro naslouchací proces skupiny dostupnosti.
+   - Zahrňte back-end fond tvořený pouze virtuálními počítači ve stejné oblasti jako nástroj pro vyrovnávání zatížení.
+   - Použijte test portu TCP specifický pro IP adresu.
+   - Musí mít pravidlo vyrovnávání zatížení specifické pro SQL Server ve stejné oblasti.  
+   - Pokud virtuální počítače ve fondu back-end nejsou součástí jedné skupiny dostupnosti nebo sady škálování virtuálních počítačů, je Standard Load Balancer. Další informace najdete v článku [přehled Azure Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
-1. [Přidejte funkci Clustering převzetí služeb při selhání na nový server SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
+1. [Přidejte funkci clusteringu s podporou převzetí služeb při selhání do nového SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 
-1. [Připojte nový SQL Server k doméně](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
+1. [Připojte se k novému SQL Server k doméně](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
 
-1. [Nastavit nový účet služby systému SQL Server na používání účtu domény](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount).
+1. [Nastavte nový účet služby SQL Server na používání doménového účtu](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount).
 
-1. [Přidat nový SQL Server do clusteru Windows Server Failover Cluster](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
+1. [Přidejte novou SQL Server do clusteru s podporou převzetí služeb při selhání se systémem Windows Server](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
 1. Vytvořte prostředek IP adresy v clusteru.
 
-   V modulu Správce clusteru převzetí služeb při selhání můžete vytvořit prostředek IP adresy. Klikněte pravým tlačítkem na roli skupiny dostupnosti, klikněte na tlačítko **přidat prostředek**, **více prostředků**a klikněte na tlačítko **IP adresu**.
+   Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem na roli skupiny dostupnosti, klikněte na **Přidat prostředek**, **Další prostředky**a klikněte na **IP adresa**.
 
-   ![Vytvoření IP adresy](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
+   ![Vytvořit IP adresu](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
    Tuto IP adresu nakonfigurujte následujícím způsobem:
 
-   - Použijte síti ze vzdáleného datového centra.
-   - Přiřadíte IP adresu z nový nástroj pro vyrovnávání zatížení Azure. 
+   - Použijte síť ze vzdáleného datového centra.
+   - Přiřaďte IP adresu z nového nástroje pro vyrovnávání zatížení Azure. 
 
-1. Na novém serveru SQL v SQL Server Configuration Manager [povolte skupiny dostupnosti Always On](https://msdn.microsoft.com/library/ff878259.aspx).
+1. Na novém SQL Server v SQL Server Configuration Manager [Povolit skupiny dostupnosti Always On](https://msdn.microsoft.com/library/ff878259.aspx).
 
-1. [Otevřete porty brány firewall na nový Server SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+1. [Otevřete porty brány firewall na novém SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
 
-   Čísla portů, které budete muset otevřít závisí na vašem prostředí. Otevřené porty pro koncový bod zrcadlení a Azure načíst sondy stavu nástroje pro vyrovnávání.
+   Čísla portů, která je třeba otevřít, závisí na vašem prostředí. Otevřete porty pro koncový bod zrcadlení a test stavu služby Azure Load Balancer.
 
-1. [Přidání repliky do skupiny dostupnosti na novém serveru SQL](https://msdn.microsoft.com/library/hh213239.aspx).
+1. [Přidejte repliku do skupiny dostupnosti na novém SQL Server](https://msdn.microsoft.com/library/hh213239.aspx).
 
-   V případě repliky ve vzdálené oblasti Azure nastavte ji pro asynchronní replikaci s ruční převzetí služeb při selhání.  
+   Pro repliku ve vzdálené oblasti Azure ji nastavte pro asynchronní replikaci s ručním převzetím služeb při selhání.  
 
-1. Přidáte prostředek IP adresy jako závislost pro naslouchací proces klienta přístup k bodu (síťový název) clusteru.
+1. Přidejte prostředek IP adresy jako závislost pro cluster naslouchacího bodu přístupu klienta (síťový název).
 
-   Následující snímek obrazovky ukazuje prostředek clusteru správně nakonfigurovaná adresa IP:
+   Následující snímek obrazovky ukazuje správně nakonfigurovaný prostředek clusteru IP adres:
 
    ![Skupina dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >Skupina prostředků clusteru zahrnuje obě IP adresy. Obě IP adresy jsou závislosti pro klientský přístupový bod naslouchacího procesu. Použití **nebo** operátor v konfiguraci clusteru závislostí.
+   >Skupina prostředků clusteru zahrnuje jak IP adresy. Obě tyto IP adresy jsou závislosti pro naslouchací bod klienta pro naslouchací proces. V konfiguraci závislostí clusteru použijte operátor **or** .
 
-1. [Nastavení parametrů clusteru v prostředí PowerShell](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
+1. [Nastavte parametry clusteru v prostředí PowerShell](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
 
-Spusťte skript prostředí PowerShell se název sítě s clustery, IP adresy a portu sondy, které jste nakonfigurovali v nástroji pro vyrovnávání zatížení v nové oblasti.
+Spusťte skript prostředí PowerShell s názvem sítě clusteru, IP adresou a portem testu, který jste nakonfigurovali v nástroji pro vyrovnávání zatížení v nové oblasti.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -139,49 +138,49 @@ Spusťte skript prostředí PowerShell se název sítě s clustery, IP adresy a 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-## <a name="set-connection-for-multiple-subnets"></a>Nastavit připojení pro více podsítí
+## <a name="set-connection-for-multiple-subnets"></a>Nastavení připojení pro více podsítí
 
-Replik ve vzdáleném datovém centru je součástí skupiny dostupnosti, ale je v jiné podsíti. Pokud tato replika se stane primární replikou, může dojít k překročení časového limitu připojení aplikace. Toto chování je stejné jako místní skupiny dostupnosti v nasazení více podsítí. Povolit připojení z klienta aplikace, aktualizujte připojení klienta nebo nakonfigurovat překlad názvů ukládání do mezipaměti na prostředku názvu sítě clusteru.
+Replika ve vzdáleném datovém centru je součástí skupiny dostupnosti, ale je v jiné podsíti. Pokud se tato replika stává primární replikou, může dojít k vypršení časového limitu připojení k aplikacím. Toto chování je stejné jako místní skupina dostupnosti v nasazení s více podsítěmi. Chcete-li v klientských aplikacích umožňovat připojení, buď aktualizujte připojení klienta, nebo nakonfigurujte ukládání názvů překladu IP adres do prostředku s názvem sítě v clusteru.
 
-Pokud možno aktualizovat připojovací řetězce klienta pro nastavení `MultiSubnetFailover=Yes`. Zobrazit [propojení s MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
+V případě potřeby aktualizujte připojovací řetězce klienta na `MultiSubnetFailover=Yes`hodnotu nastavit. Viz téma [připojení pomocí MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Pokud nelze upravit připojovací řetězce, můžete nakonfigurovat název řešení ukládání do mezipaměti. Zobrazit [chybou vypršení časového limitu a můžete se nemůže připojit k SQL Server 2012 AlwaysOn naslouchacího procesu skupiny dostupnosti v prostředí více podsítí](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
+Pokud připojovací řetězce upravovat nemůžete, můžete nakonfigurovat ukládání názvů do mezipaměti. Podívejte se [na téma chyba vypršení časového limitu a nemůžete se připojit k naslouchacího procesu skupiny dostupnosti AlwaysOn SQL Server 2012 v prostředí s více](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)podsítěmi.
 
 ## <a name="fail-over-to-remote-region"></a>Převzetí služeb při selhání do vzdálené oblasti
 
-K otestování připojení naslouchacího procesu do vzdálené oblasti, můžete převzetí služeb při selhání do vzdálené oblasti repliky. Replika je asynchronní, je zranitelný vůči potenciální ztrátě dat převzetí služeb při selhání. Převzít služby při selhání bez ztráty dat, změňte režim dostupnosti na synchronní a nastavte režim převzetí služeb při selhání na hodnotu automaticky. Použijte k tomu následující postup:
+Pokud chcete otestovat připojení naslouchacího procesu ke vzdálené oblasti, můžete převzít služby repliky do vzdálené oblasti. I když je replika asynchronní, převzetí služeb při selhání je ohroženo potenciální ztrátou dat. Pokud chcete převzít služby při selhání bez ztráty dat, změňte režim dostupnosti na synchronní a nastavte režim převzetí služeb při selhání na automaticky. Použijte k tomu následující postup:
 
-1. V **Průzkumník objektů**, připojte se k instanci systému SQL Server, který je hostitelem primární repliky.
-1. V části **skupin dostupnosti AlwaysOn**, **skupin dostupnosti**, klikněte pravým tlačítkem na vaší skupiny dostupnosti a klikněte na tlačítko **vlastnosti**.
-1. Na **Obecné** stránce v části **replik dostupnosti**, nastavte sekundární replika v lokalitě zotavení po Havárii použít **synchronní potvrzení** režim dostupnosti a  **Automatické** režim převzetí služeb při selhání.
-1. Pokud máte ve stejné lokalitě jako váš primární repliky pro zajištění vysoké dostupnosti na sekundární repliku, nastavte na tuto repliku **asynchronní potvrzení** a **ruční**.
+1. V **Průzkumník objektů**se připojte k instanci SQL Server, která je hostitelem primární repliky.
+1. V části **skupiny dostupnosti AlwaysOn**, **skupiny dostupnosti**klikněte pravým tlačítkem na vaši skupinu dostupnosti a klikněte na **vlastnosti**.
+1. Na stránce **Obecné** v části **repliky dostupnosti**nastavte sekundární repliku na webu Dr tak, aby používala režim **synchronního potvrzování** a režim **automatického** převzetí služeb při selhání.
+1. Pokud máte sekundární repliku ve stejné lokalitě jako primární replika pro zajištění vysoké dostupnosti, nastavte tuto repliku na **asynchronní potvrzení** a **Ruční**.
 1. Klikněte na tlačítko OK.
-1. V **Průzkumník objektů**, klikněte pravým tlačítkem na skupinu dostupnosti a klikněte na tlačítko **zobrazit řídicí panel**.
-1. Na řídicím panelu ověřte, že se synchronizují repliky v lokalitě zotavení po Havárii.
-1. V **Průzkumník objektů**, klikněte pravým tlačítkem na skupinu dostupnosti a klikněte na tlačítko **převzetí služeb při selhání...** . SQL Server Management studia spustí průvodce, převzít služby při selhání systému SQL Server.  
-1. Klikněte na tlačítko **Další**a vyberte instanci SQL serveru v lokalitě zotavení po Havárii. Klikněte na tlačítko **Další** znovu.
-1. Připojte se k instanci systému SQL Server v lokalitě zotavení po Havárii a klikněte na tlačítko **Další**.
-1. Na **Souhrn** stránky, zkontrolujte nastavení a klikněte na tlačítko **Dokončit**.
+1. V **Průzkumník objektů**klikněte pravým tlačítkem na skupinu dostupnosti a pak klikněte na **zobrazit řídicí panel**.
+1. Na řídicím panelu ověřte, zda je replika na webu DR synchronizovaná.
+1. V **Průzkumník objektů**klikněte pravým tlačítkem na skupinu dostupnosti a pak klikněte na **převzetí služeb při selhání...** . Studia Management SQL Server otevře Průvodce pro převzetí služeb při selhání SQL Server.  
+1. Klikněte na **Další**a na webu Dr vyberte instanci SQL Server. Znovu klikněte na tlačítko **Další** .
+1. Připojte se k instanci SQL Server v lokalitě DR a klikněte na **Další**.
+1. Na stránce **Souhrn** zkontrolujte nastavení a klikněte na **Dokončit**.
 
-Po otestování připojení k primární replice přejděte zpět do vašeho primárního datového centra a nastavte režim dostupnosti jejich normální provozní nastavení. V následující tabulce jsou uvedeny běžné provozní nastavení pro architekturu popsanou v tomto dokumentu:
+Po otestování připojení přesuňte primární repliku zpátky do svého primárního datového centra a nastavte režim dostupnosti zpět na normální provozní nastavení. Následující tabulka ukazuje normální provozní nastavení pro architekturu popsanou v tomto dokumentu:
 
 | Location | Instance serveru | Role | Režim dostupnosti | Režim převzetí služeb při selhání
 | ----- | ----- | ----- | ----- | -----
-| Primární datové centrum | SQL-1 | Primární | Synchronní | Automatické
-| Primární datové centrum | SQL-2 | Sekundární | Synchronní | Automatické
-| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronní | Manual
+| Primární datové centrum | SQL-1 | Primární | Synchronizace | Automatické
+| Primární datové centrum | SQL-2 | Sekundární | Synchronizace | Automatické
+| Sekundární nebo vzdálené datové centrum | SQL-3 | Sekundární | Asynchronně | Ručně
 
 
-### <a name="more-information-about-planned-and-forced-manual-failover"></a>Další informace o plánovaných a vynucené ruční převzetí služeb při selhání
+### <a name="more-information-about-planned-and-forced-manual-failover"></a>Další informace o plánovaném a vynuceném ručním převzetí služeb při selhání
 
 Další informace naleznete v následujících tématech:
 
-- [Provést plánované ruční převzetí služeb skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
-- [Provést vynucené ruční převzetí služeb skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
+- [Provedení plánovaného ručního převzetí služeb při selhání skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [Provedení vynuceného ručního převzetí služeb při selhání skupiny dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>Další odkazy
 
-* [Skupiny dostupnosti AlwaysOn](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Skupiny dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Nástroje pro vyrovnávání zatížení Azure](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
-* [Skupinu dostupnosti Azure](../manage-availability.md)
+* [Skupiny dostupnosti Azure](../manage-availability.md)

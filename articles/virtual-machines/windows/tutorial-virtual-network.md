@@ -9,23 +9,22 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d283a18d0ec2391b05210b785351dda0ca0ad416
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5a780617b8f46c5ec5f00fbfc45b7d91c29a836
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100211"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure Powershellu
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Windows pomocí Azure PowerShell
 
-Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. Příklady v tomto kurzu předpokládají, že virtuální počítače hostují webovou aplikaci s back-end databáze, ale není v tomto kurzu nasazení aplikace. V tomto kurzu se naučíte:
+Virtuální počítače Azure používají pro interní i externí síťovou komunikaci sítě Azure. Tento kurz vás provede nasazením dvou virtuálních počítačů a konfigurací sítě Azure pro tyto virtuální počítače. V příkladech v tomto kurzu se předpokládá, že virtuální počítače jsou hostiteli webové aplikace s back-end databází, ale v tomto kurzu není nasazená aplikace. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě a podsítě
@@ -65,7 +64,7 @@ Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním roh
 
 V tomto kurzu vytvoříte virtuální síť se dvěma podsítěmi. Front-endovou podsíť k hostování webové aplikace a back-endovou podsíť pro hostování databázového serveru.
 
-Než vytvoříte virtuální síť, abyste vytvořili skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myRGNetwork* v umístění *EastUS*:
+Než budete moct vytvořit virtuální síť, vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků *myRGNetwork* v umístění *EastUS*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
@@ -89,7 +88,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě s názvem *myVNet* pomocí *myFrontendSubnet* a *myBackendSubnet* pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
+Vytvořte virtuální síť s názvem *myVNet* pomocí *myFrontendSubnet* a *myBackendSubnet* pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -106,9 +105,9 @@ Nyní jste vytvořili síť rozdělenou do dvou podsítí – jedné pro front-e
 
 Veřejná IP adresa umožňuje připojení k prostředkům Azure z internetu. Metodu přidělování veřejné IP adresy je možné nakonfigurovat dynamicky nebo staticky. Ve výchozím nastavení se veřejná IP adresa přiděluje dynamicky. Dynamické IP adresy se vydávají při zrušení přidělení virtuálního počítače. Toto chování znamená, že se IP adresa změní při libovolné operaci, která zahrnuje zrušení přidělení virtuálního počítače.
 
-Metodu přidělování můžete nastavit staticky, což zajišťuje, že IP adresa zůstane přiřazená k virtuálnímu počítači, dokonce i ve stavu zrušeného přidělení. Pokud používáte statické IP adresy, nelze zadat IP adresu. Místo toho se přiděluje z fondu dostupných adres.
+Metodu alokace lze nastavit na statickou, což zajistí, že IP adresa zůstane přiřazena k virtuálnímu počítači, i když je stav navráceno. Pokud používáte statickou IP adresu, nemůžete zadat samotnou IP adresu. Místo toho je přiděleno z fondu dostupných adres.
 
-Vytvoření veřejné IP adresy s názvem *myPublicIPAddress* pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
+Vytvořte veřejnou IP adresu s názvem *myPublicIPAddress* pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -122,7 +121,7 @@ Pokud chcete přiřadit statickou veřejnou IP adresu, můžete změnit parametr
 
 ## <a name="create-a-front-end-vm"></a>Vytvoření front-endového virtuálního počítače
 
-Virtuální počítač ke komunikaci ve virtuální síti potřebuje virtuální síťové rozhraní. Vytvořte síťové rozhraní s využitím [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface):
+Virtuální počítač ke komunikaci ve virtuální síti potřebuje virtuální síťové rozhraní. Vytvořte síťovou kartu pomocí [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface):
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -139,7 +138,7 @@ Nastavte uživatelské jméno a heslo potřebné pro účet správce na virtuál
 $cred = Get-Credential
 ```
 
-Vytvoření virtuálních počítačů pomocí [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Vytvořte virtuální počítače pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -155,13 +154,13 @@ New-AzVM `
 
 ## <a name="secure-network-traffic"></a>Zabezpečení provozu sítě
 
-Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel zabezpečení, která prostředkům připojeným k virtuálním sítím Azure povolují nebo odpírají síťový provoz. Skupinu zabezpečení sítě můžete přidružit k podsítím nebo jednotlivým síťovým rozhraním. Skupina zabezpečení sítě je přidružen k síti rozhraní se týká pouze k přidruženému virtuálnímu počítači. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti.
+Skupina zabezpečení sítě (NSG) obsahuje seznam pravidel zabezpečení, která prostředkům připojeným k virtuálním sítím Azure povolují nebo odpírají síťový provoz. Skupinu zabezpečení sítě můžete přidružit k podsítím nebo jednotlivým síťovým rozhraním. NSG je přidružená jenom k síťovému rozhraní, které se vztahuje jenom na přidružený virtuální počítač. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla se vztahují na všechny prostředky, které jsou připojené k příslušné podsíti.
 
 ### <a name="network-security-group-rules"></a>Pravidla skupiny zabezpečení sítě
 
 Pravidla skupiny zabezpečení sítě definují síťové porty, které provoz buď povolují, nebo zakazují. Pravidla mohou zahrnovat zdrojové a cílové rozsahy IP adres, aby se provoz řídil mezi určitými systémy nebo podsítěmi. Pravidla skupiny zabezpečení sítě také obsahují prioritu (1–4096). Pravidla se vyhodnocují v pořadí podle priority. Pravidlo s prioritou 100 se vyhodnotí před pravidlem s prioritou 200.
 
-Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla nejde odstranit, ale protože je jim přiřazená nejnižší priorita, dají se přepsat pravidly, která vytvoříte.
+Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla nelze odstranit, ale vzhledem k tomu, že mají přiřazenou nejnižší prioritu, mohou být přepsána vytvořenými pravidly.
 
 - **Virtuální síť** – provoz směřující z virtuální sítě a do ní je povolený v příchozím i odchozím směru.
 - **Internet** – odchozí provoz je povolený, ale příchozí provoz se blokuje.
@@ -169,7 +168,7 @@ Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla nej
 
 ### <a name="create-network-security-groups"></a>Vytvoření skupin zabezpečení sítě
 
-Vytvořte příchozí pravidlo s názvem *myFrontendNSGRule* povolit příchozí webový provoz na *myFrontendVM* pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig):
+Vytvořte příchozí pravidlo s názvem *myFrontendNSGRule* , které povolí příchozí webový provoz na *myFrontendVM* pomocí [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -199,7 +198,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Přidat skupinu zabezpečení sítě s názvem *myFrontendNSG* pomocí [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
+Přidejte skupinu zabezpečení sítě s názvem *myFrontendNSG* pomocí [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `
@@ -273,9 +272,9 @@ New-AzVM `
    -VirtualNetworkName myVNet
 ```
 
-Bitová kopie v tomto příkladu je nainstalován systém SQL Server, ale není použit v tomto kurzu. Je zahrnutý až vám ukážeme, jak lze nakonfigurovat pro zpracování webových přenosů virtuálního počítače a virtuální počítač pro správu databáze.
+Image v tomto příkladu je SQL Server nainstalovaná, ale v tomto kurzu se nepoužívá. Je k dispozici postup, který vám ukáže, jak můžete nakonfigurovat virtuální počítač pro zpracování webového provozu a virtuálního počítače pro zpracování správy databází.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezpečené sítě Azure. 
 

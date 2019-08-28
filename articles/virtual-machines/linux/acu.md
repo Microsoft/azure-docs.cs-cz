@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure výpočetní jednotka | Dokumentace Microsoftu
-description: Přehled konceptů Azure výpočetních jednotek pro Linux. ACU poskytuje způsob porovnání výkonu procesoru jednotlivých SKU v Azure.
+title: Přehled výpočetní jednotky Azure | Microsoft Docs
+description: Přehled konceptu výpočetních jednotek Azure pro Linux. ACU poskytuje způsob, jak porovnat výkon procesoru napříč SKU Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: 521674c2e7839d89aefde8779763a7cf059dc261
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e0ec84f2e7423310119981b74a52c3e751af8d19
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668589"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084135"
 ---
-# <a name="azure-compute-unit-acu"></a>Jednotka výpočetní prostředky Azure (ACU)
+# <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
-Tady jsou odkazy na další informace o různých velikostech:
-- [Pro obecné účely](sizes-general.md)
+Tady jsou odkazy na Další informace o různých velikostech:
+- [Obecné účely](sizes-general.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)

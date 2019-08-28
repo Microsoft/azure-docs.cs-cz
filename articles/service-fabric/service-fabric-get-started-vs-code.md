@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric pomocí VS Code Začínáme | Dokumentace Microsoftu
-description: Tento článek představuje přehled vytváření aplikací Service Fabric pomocí Visual Studio Code.
+title: Service Fabric Azure s VS Code Začínáme | Microsoft Docs
+description: Tento článek představuje přehled vytváření Service Fabric aplikací pomocí Visual Studio Code.
 services: service-fabric
 documentationcenter: .net
 author: peterpogorski
@@ -8,37 +8,36 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60946559"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102966"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
-[Service Fabric Reliable Services rozšíření pro VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) poskytuje nástroje potřebné k vytvoření, sestavení a ladění aplikace Service Fabric v operačních systémech Windows, Linux a macOS.
+[Rozšíření Service Fabric Reliable Services pro vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-service-fabric-reliable-services) poskytuje nástroje potřebné k vytváření, sestavování a ladění aplikací Service Fabric v operačních systémech Windows, Linux a MacOS.
 
-Tento článek obsahuje přehled požadavků a instalace rozšíření, a také použití různé příkazy, které jsou k dispozici v rozšíření. 
+Tento článek poskytuje přehled požadavků a nastavení rozšíření a také použití různých příkazů, které jsou k dispozici v rozšíření. 
 
 > [!IMPORTANT]
-> Aplikace Service Fabric Java mohou být vytvořeny na počítačích s Windows, ale je možné nasadit do pouze clustery Azure s Linuxem. Ladění aplikací v Javě nepodporuje Windows.
+> Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Následující požadavky musí být nainstalován ve všech prostředích.
+Ve všech prostředích musí být nainstalované následující požadavky.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
 * [Sada Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
-* Generátorů yeoman – nainstalujte příslušné generátory pro vaši aplikaci
+* Yeoman generátory – nainstalujte vhodné generátory pro vaši aplikaci.
 
    ```sh
    npm install -g yo
@@ -48,92 +47,92 @@ Následující požadavky musí být nainstalován ve všech prostředích.
    npm install -g generator-azuresfguest
    ```
 
-Pro vývoj v Javě je nutné nainstalovat následující požadavky:
+Pro vývoj v jazyce Java je nutné nainstalovat následující požadavky:
 
-* [Sada Java SDK](https://aka.ms/azure-jdks) (verze 1.8)
+* [Java SDK](https://aka.ms/azure-jdks) (verze 1,8)
 * [Gradle](https://gradle.org/install/)
-* [Ladicí program pro rozšíření VS Codu Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) potřebné k ladění služeb v Javě. Ladění služeb v Javě je v Linuxu podporováno pouze. Můžete nainstalovat buď kliknutím na ikonu rozšíření **aktivity panelu** ve VS Code a vyhledávání rozšíření nebo z VS Code Marketplace.
+* [Ladicí program pro rozšíření Java vs Code](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug) Nutné pro ladění služeb Java. Ladění služeb Java je podporováno pouze v systému Linux. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
 
-Musí být nainstalován následující požadované součásti pro .NET Core /C# vývoj:
+Pro .NET Core/C# vývoj musí být nainstalované tyto požadavky:
 
-* [.NET core](https://www.microsoft.com/net/learn/get-started) (verze 2.0.0 nebo novější)
-* [C#pro Visual Studio Code (využívající omnisharp) VS Code příponou](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) potřebné k ladění C# služby. Můžete nainstalovat buď kliknutím na ikonu rozšíření **aktivity panelu** ve VS Code a vyhledávání rozšíření nebo z VS Code Marketplace.
+* [.NET Core](https://www.microsoft.com/net/learn/get-started) (verze 2.0.0 nebo novější)
+* [vs Code rozšíření pro Visual Studio Code (s technologií OmniSharp) C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Nutné pro ladění C# služeb. Instalaci můžete provést kliknutím na ikonu rozšíření na **řádku aktivity** vs Code a hledáním rozšíření nebo na webu vs Code Marketplace.
 
 ## <a name="setup"></a>Instalace
 
-1. Otevřít VS Code.
-2. Klikněte na ikonu rozšíření **aktivity panelu** na levé straně VS Code. Vyhledejte "Service Fabric". Klikněte na tlačítko **nainstalovat** pro rozšíření Service Fabric Reliable Services.
+1. Otevřete VS Code.
+2. Klikněte na ikonu rozšíření na **panelu aktivity** na levé straně vs Code. Vyhledejte "Service Fabric". Pro rozšíření Service Fabric Reliable Services klikněte na **instalovat** .
 
 ## <a name="commands"></a>Příkazy
-Service Fabric Reliable Services rozšíření pro VS Code obsahuje mnoho příkazů, což vývojářům umožňuje vytvářet a nasazovat projekty Service Fabricu. Můžete volat příkazy z **paletu příkazů** stisknutím kombinace kláves `(Ctrl + Shift + p)`, zadáte název příkazu do panelu vstupní a výběrem požadovaného příkazu ze seznamu nápovědy. 
+Rozšíření Service Fabric Reliable Services pro VS Code poskytuje mnoho příkazů, které vývojářům pomůžou vytvořit a nasadit Service Fabric projekty. Příkazy lze volat z palety **příkazů** stisknutím klávesy `(Ctrl + Shift + p)`, zadáním názvu příkazu do vstupního panelu a výběrem požadovaného příkazu ze seznamu příkazů. 
 
-* Service Fabric: Vytvoření aplikace 
+* Service Fabric: Vytvořit aplikaci 
 * Service Fabric: Publikování aplikace 
-* Service Fabric: Nasazení aplikace 
-* Service Fabric: Odebrání aplikace  
-* Service Fabric: Sestavení aplikace 
-* Service Fabric: Clean Application 
+* Service Fabric: Nasadit aplikaci 
+* Service Fabric: Odstranit aplikaci  
+* Service Fabric: Sestavit aplikaci 
+* Service Fabric: Vyčistit aplikaci 
 
-### <a name="service-fabric-create-application"></a>Service Fabric: Vytvoření aplikace
+### <a name="service-fabric-create-application"></a>Service Fabric: Vytvořit aplikaci
 
-**Service Fabric: Vytvoření aplikace** příkaz vytvoří novou aplikaci Service Fabric v aktuálním pracovním prostoru. V závislosti na tom, jaké generátorů yeoman jsou nainstalovány na vývojovém počítači, můžete vytvořit několik typů aplikace Service Fabric, včetně Javy, C#, kontejner a projekty hosta. 
+**Service Fabric: Příkaz vytvořit** aplikaci vytvoří v aktuálním pracovním prostoru novou Service Fabricovou aplikaci. V závislosti na tom, které generátory Yeoman jsou nainstalovány na vašem vývojovém počítači, můžete vytvořit několik typů Service Fabric aplikace, včetně C#projektů Java,, kontejnerů a hostů. 
 
-1.  Vyberte **Service Fabric: Přidat službu** příkaz
-2.  Vyberte typ pro novou aplikaci Service Fabric. 
-3.  Zadejte název aplikace, kterou chcete vytvořit
-3.  Vyberte typ služby, který chcete přidat do aplikace Service Fabric. 
-4.  Postupujte podle výzev a pojmenujte službu. 
-5.  Nová aplikace Service Fabric se zobrazí v pracovním prostoru.
-6.  Otevřete novou složku aplikace, aby se stal kořenové složky v pracovním prostoru. Můžete pokračovat v provádění příkazů odsud.
+1.  **Vyberte Service Fabric: Přidat příkaz** služby
+2.  Vyberte typ nové aplikace Service Fabric. 
+3.  Zadejte název aplikace, kterou chcete vytvořit.
+3.  Vyberte typ služby, kterou chcete přidat do aplikace Service Fabric. 
+4.  Podle pokynů pojmenujte službu. 
+5.  V pracovním prostoru se zobrazí nová aplikace Service Fabric.
+6.  Otevřete složku nová aplikace tak, aby se stala kořenovou složkou v pracovním prostoru. V tomto případě můžete pokračovat ve spouštění příkazů.
 
-### <a name="service-fabric-add-service"></a>Service Fabric: Add Service
-**Service Fabric: Přidat službu** příkaz přidá nové služby do stávající aplikace Service Fabric. Aplikace, služby se přidají do musí být kořenový adresář pracovního prostoru. 
+### <a name="service-fabric-add-service"></a>Service Fabric: Přidat službu
+**Service Fabric: Příkaz Přidat** službu přidá novou službu do existující aplikace Service Fabric. Aplikace, do které bude služba přidána, musí být kořenovým adresářem pracovního prostoru. 
 
-1.  Vyberte **Service Fabric: Přidat službu** příkazu.
-2.  Vyberte typ stávající aplikaci Service Fabric. 
-3.  Vyberte typ služby, který chcete přidat do aplikace Service Fabric. 
-4.  Postupujte podle výzev a pojmenujte službu. 
-5.  Nová služba, zobrazí se v adresáři projektu. 
+1.  **Vyberte Service Fabric: Přidat příkaz** služby
+2.  Vyberte typ aktuální aplikace Service Fabric. 
+3.  Vyberte typ služby, kterou chcete přidat do aplikace Service Fabric. 
+4.  Podle pokynů pojmenujte službu. 
+5.  Nová služba se zobrazí v adresáři projektu. 
 
 ### <a name="service-fabric-publish-application"></a>Service Fabric: Publikování aplikace
-**Service Fabric: Publikování aplikace** příkaz nasadí vaši aplikaci Service Fabric ve vzdáleném clusteru. Cílový cluster může být zabezpečený nebo nezabezpečenému clusteru. Pokud parametry nejsou nastavené v Cloud.json, aplikace je nasazená do místního clusteru.
+**Service Fabric: Příkaz publikovat** aplikaci nasadí vaši aplikaci Service Fabric ve vzdáleném clusteru. Cílový cluster může být buď zabezpečený, nebo nezabezpečený cluster. Pokud v souboru Cloud. JSON nejsou parametry, aplikace se nasadí do místního clusteru.
 
-1.  Prvním je aplikace sestavená, je vygenerován soubor Cloud.json v adresáři projektu.
-2.  Vstupní hodnoty pro cluster, který chcete připojit k souboru Cloud.json.
-3.  Vyberte **Service Fabric: Publikování aplikace** příkazu.
-4.  Zobrazte cílový cluster pomocí Service Fabric Exploreru pro potvrzení, že je nainstalovaná aplikace. 
+1.  Při prvním sestavení aplikace se v adresáři projektu vygeneruje soubor Cloud. JSON.
+2.  Zadejte hodnoty pro cluster, ke kterému se chcete připojit v souboru Cloud. JSON.
+3.  **Vyberte Service Fabric: Příkaz publikovat** aplikaci.
+4.  Zobrazte cílový cluster s Service Fabric Explorer a ověřte, že je aplikace nainstalovaná. 
 
-### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: Nasazení aplikace (Localhost)
-**Service Fabric: Nasazení aplikace** příkaz nasadí vaši aplikaci Service Fabric na místní cluster. Ujistěte se, že místní cluster běží před použitím příkazu. 
+### <a name="service-fabric-deploy-application-localhost"></a>Service Fabric: Nasadit aplikaci (localhost)
+**Service Fabric: Příkaz nasadit** aplikaci nasadí vaši aplikaci Service Fabric do místního clusteru. Před použitím příkazu se ujistěte, že je váš místní cluster spuštěný. 
 
-1. Vyberte **Service Fabric: Nasazení aplikace** příkaz
-2. Zobrazit místní cluster pomocí Service Fabric Exploreru (http:\//localhost:19080 / Explorer) pro potvrzení, že je nainstalovaná aplikace. To může trvat nějakou dobu, tak buďte prosím trpěliví.
-3. Můžete také použít **Service Fabric: Publikování aplikace** příkaz bez parametrů, nastavte v souboru Cloud.json k nasazení do místního clusteru.
+1. **Vyberte Service Fabric: Nasadit aplikaci** – příkaz
+2. Zobrazte místní cluster pomocí Service Fabric Explorer (http:\//localhost: 19080/Explorer) a potvrďte, že je aplikace nainstalovaná. To může nějakou dobu trvat, tedy pacient.
+3. Můžete také použít **Service Fabric: Příkaz publikovat** aplikaci bez parametrů nastavených v souboru Cloud. JSON pro nasazení do místního clusteru.
 
 > [!NOTE]
-> Nasazení aplikace v Javě do místního clusteru se nepodporuje na počítačích s Windows.
+> V počítačích s Windows není podporováno nasazení aplikací Java do místního clusteru.
 
-### <a name="service-fabric-remove-application"></a>Service Fabric: Odebrání aplikace
-**Service Fabric: Odebrání aplikace** příkaz odebere z clusteru, aby byl dříve nasazen do používání rozšíření VS Codu aplikace Service Fabric. 
+### <a name="service-fabric-remove-application"></a>Service Fabric: Odstranit aplikaci
+**Service Fabric: Příkaz remove** Application odebere z clusteru Service Fabric aplikaci, kterou předtím nasadili pomocí rozšíření vs Code. 
 
-1.  Vyberte **Service Fabric: Odebrat aplikaci** příkazu.
-2.  Zobrazte clusteru pomocí Service Fabric Exploreru pro potvrzení, že aplikace byla odebrána. To může trvat nějakou dobu, tak buďte prosím trpěliví.
+1.  **Vyberte Service Fabric: Příkaz remove** Application
+2.  Prohlédněte si cluster s Service Fabric Explorer a ověřte, že byla aplikace odebrána. To může nějakou dobu trvat, tedy pacient.
 
-### <a name="service-fabric-build-application"></a>Service Fabric: Sestavení aplikace
-**Service Fabric: Sestavení aplikace** příkazu můžete vytvořit buď Java nebo C# aplikace Service Fabric. 
+### <a name="service-fabric-build-application"></a>Service Fabric: Sestavit aplikaci
+**Service Fabric: Příkaz Sestavit** aplikaci může sestavovat aplikace C# Java nebo Service Fabric. 
 
-1.  Ujistěte se, že jsou v kořenové složce aplikace před spuštěním tohoto příkazu. Tento příkaz určuje typ aplikace (C# nebo Java) a odpovídajícím způsobem sestavení vaší aplikace.
-2.  Vyberte **Service Fabric: Sestavení aplikace** příkazu.
-3.  Výstup z procesu sestavení je zapsán do integrovaného terminálu.
+1.  Před spuštěním tohoto příkazu se ujistěte, že jste v kořenové složce aplikace. Příkaz identifikuje typ aplikace (C# nebo Java) a odpovídajícím způsobem vytvoří aplikaci.
+2.  **Vyberte Service Fabric: Příkaz Sestavit** aplikaci
+3.  Výstup procesu sestavení je zapsán do integrovaného terminálu.
 
-### <a name="service-fabric-clean-application"></a>Service Fabric: Clean Application
-**Service Fabric: Clean Application** příkaz odstraní všechny soubory jar a nativních knihoven, které byly generovány sestavením. Platí pro aplikace v Javě. 
+### <a name="service-fabric-clean-application"></a>Service Fabric: Vyčistit aplikaci
+**Service Fabric: Příkaz vyčistit** aplikaci odstraní všechny soubory jar a nativní knihovny, které byly vygenerovány sestavením. Platí pouze pro aplikace v jazyce Java. 
 
-1.  Ujistěte se, že jsou v kořenové složce aplikace před spuštěním tohoto příkazu. 
-2.  Vyberte **Service Fabric: Clean Application** příkazu.
-3.  Výstup procesu čištění zapsán do integrovaného terminálu.
+1.  Před spuštěním tohoto příkazu se ujistěte, že jste v kořenové složce aplikace. 
+2.  **Vyberte Service Fabric: Příkaz vyčistit** aplikaci
+3.  Výstupem procesu čištění je zápis do integrovaného terminálu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [vyvíjet a ladit C# aplikace Service Fabric pomocí VS Code](./service-fabric-develop-csharp-applications-with-vs-code.md).
-* Zjistěte, jak [vývoj a ladění aplikací Service Fabric v Javě s VS Code](./service-fabric-develop-java-applications-with-vs-code.md).
+* Naučte [se vyvíjet a ladit C# Service Fabric aplikace pomocí vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md).
+* Naučte [se vyvíjet a ladit aplikace Java Service Fabric pomocí vs Code](./service-fabric-develop-java-applications-with-vs-code.md).

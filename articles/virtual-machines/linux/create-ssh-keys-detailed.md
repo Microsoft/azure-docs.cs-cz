@@ -1,6 +1,6 @@
 ---
-title: Podrobný postup - SSH páru klíčů pro Azure s Linuxem | Dokumentace Microsoftu
-description: Přečtěte si podrobné pokyny k vytváření a správě veřejných a privátních pár klíčů SSH pro virtuální počítače s Linuxem v Azure.
+title: Podrobný postup – pár klíčů SSH pro virtuální počítače Azure Linux | Microsoft Docs
+description: Přečtěte si podrobné pokyny k vytvoření a správě páru veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
@@ -11,53 +11,52 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
-ms.openlocfilehash: 1859cdfaead27fda1956b553ebea06374c9cdc6a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: f166f460f1518588bd12cc5d0581101d417dd41a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668082"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083747"
 ---
-# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: Vytvoření a Správa klíčů SSH pro ověřování, aby virtuální počítač s Linuxem v Azure 
-Pomocí páru klíčů (SSH secure shell) můžete vytvořit virtuální počítač s Linuxem v Azure, který ve výchozím nastavení používá klíče SSH pro ověřování, takže odpadá potřeba používat k přihlášení hesla. Virtuální počítače vytvořené pomocí webu Azure portal, rozhraní příkazového řádku Azure Resource Manageru šablony nebo jiné nástroje můžou zahrnovat veřejný klíč SSH jako součást svého nasazení, která nastaví ověřování pomocí klíče SSH pro připojení SSH. 
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: Vytváření a Správa klíčů SSH pro ověřování na virtuálním počítači Linux v Azure 
+Pomocí páru klíčů SSH (Secure Shell) můžete vytvořit virtuální počítač se systémem Linux v Azure, který bude standardně používat klíče SSH pro ověřování. tím se eliminuje nutnost přihlášení hesel. Virtuální počítače vytvořené pomocí Azure Portal, Azure CLI, šablony Správce prostředků nebo jiné nástroje můžou jako součást nasazení zahrnovat veřejný klíč SSH, který nastavuje ověřování pomocí klíče SSH pro připojení SSH. 
 
-Tento článek obsahuje podrobné informace a postupy pro vytváření a správě pár souborů veřejného a privátního klíče SSH RSA pro připojení klienta SSH. Pokud chcete rychlý příkazy, přečtěte si téma [vytvoření pár veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure](mac-create-ssh-keys.md).
+Tento článek poskytuje podrobné informace a kroky k vytvoření a správě dvojice souborů veřejného privátního klíče SSH RSA pro připojení klientů SSH. Pokud chcete rychlé příkazy, přečtěte si téma [jak vytvořit pár veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](mac-create-ssh-keys.md).
 
-Další způsoby, jak vygenerovat a používat klíče SSH na počítači Windows, naleznete v tématu [klíče, jak použít SSH s Windows v Azure](ssh-from-windows.md).
+Další způsoby, jak vygenerovat a používat klíče SSH na počítači s Windows, najdete v tématu [použití klíčů ssh s Windows v Azure](ssh-from-windows.md).
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
 ### <a name="private-key-passphrase"></a>Heslo privátního klíče
-Privátní klíč SSH by měl mít velmi zabezpečené heslo, který ho chrání. Toto heslo se používá pouze pro přístup k souboru privátního klíče SSH a *není* heslo k uživatelskému účtu. Pokud ke svému klíči SSH přidáte heslo, zašifruje klíče 128bitový standard AES, tak, aby privátní klíč nebylo možné bez přístupového hesla dešifrovat. Pokud útočník odcizit privátní klíč a tento klíč neobsahoval přístupové heslo, bude moct použít pro přihlášení k libovolné servery, které mají odpovídající veřejný klíč. Pokud privátní klíč chráněný heslem, nelze použít, útočník, což znamená další úroveň zabezpečení pro vaši infrastrukturu v Azure.
+Privátní klíč SSH by měl mít velmi zabezpečené heslo pro ochranu. Toto heslo je jenom pro přístup k privátnímu souboru klíče SSH a není to heslo k uživatelskému účtu. Když do klíče SSH přidáte přístupové heslo, šifruje privátní klíč pomocí 128 AES, aby privátní klíč byl nepoužitý bez přístupového hesla k dešifrování. Pokud by útočník stole váš privátní klíč a tento klíč neobsahoval heslo, mohl by tento soukromý klíč použít k přihlášení k jakémukoli serveru s odpovídajícím veřejným klíčem. Pokud je privátní klíč chráněný heslem, nemůžete ho použít, protože poskytuje další úroveň zabezpečení pro vaši infrastrukturu v Azure.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="ssh-keys-use-and-benefits"></a>Použití a výhody klíčů SSH
 
-Při vytváření virtuálního počítače Azure tak, že zadáte veřejný klíč, zkopíruje Azure veřejný klíč (v `.pub` formátu) k `~/.ssh/authorized_keys` složky na virtuálním počítači. Klíče SSH v `~/.ssh/authorized_keys` slouží vybízí klienta, aby odpovídající privátní klíč v připojení SSH. V systému Linux virtuálního počítače Azure, který používá klíče SSH pro ověřování Azure nakonfiguruje server SSHD tak, že nepovolíte heslo přihlášení, pouze klíče SSH. Proto tak, že vytvoříte Linuxový virtuální počítač Azure s klíči SSH, vám může pomoct zabezpečit nasazením virtuálního počítače a ušetříte si obvyklý konfigurační po nasazení krok zakázání hesel v `sshd_config` souboru.
+Když vytvoříte virtuální počítač Azure zadáním veřejného klíče, Azure zkopíruje veřejný klíč (ve `.pub` formátu) `~/.ssh/authorized_keys` do složky na virtuálním počítači. Klíče SSH v `~/.ssh/authorized_keys` nástroji slouží k výzvě klienta, aby se shodoval s odpovídajícím privátním klíčem na připojení SSH. V případě virtuálního počítače Azure Linux, který používá klíče SSH k ověřování, Azure nakonfiguruje server SSHD tak, aby nepovoloval přihlášení k heslům, jenom klíče SSH. Tím, že vytvoříte virtuální počítač Azure Linux s klíči SSH, můžete přispět k zabezpečení nasazení virtuálních počítačů a uložit obvyklý krok konfigurace po nasazení, který zakazuje hesla v `sshd_config` souboru.
 
-Pokud nechcete používat klíče SSH, můžete nastavit virtuální počítač s Linuxem pro použití ověřování pomocí hesla. Pokud váš virtuální počítač není přístupný z Internetu, může být dostatečné pomocí hesla. Ale pořád potřebujete spravovat hesla pro každý virtuální počítač s Linuxem a Udržovat zásady pro hesla v pořádku a postupů, jako jsou minimální délku hesla a pravidelné aktualizace. Použití klíčů SSH pro snížení složitosti správy jednotlivých přihlašovacích údajů napříč několika virtuálními počítači.
+Pokud nechcete používat klíče SSH, můžete pro virtuální počítač se systémem Linux nastavit ověřování pomocí hesla. Pokud váš virtuální počítač není přístupný z Internetu, může stačit použití hesla. Pořád ale budete muset spravovat hesla pro každý virtuální počítač Linux a udržovat dobré zásady a postupy pro hesla, jako je například minimální délka hesla a pravidelné aktualizace. Použití klíčů SSH snižuje složitost správy individuálních přihlašovacích údajů napříč několika virtuálními počítači.
 
-## <a name="generate-keys-with-ssh-keygen"></a>Vygenerování klíče ssh-keygen
+## <a name="generate-keys-with-ssh-keygen"></a>Generování klíčů pomocí ssh-keygen
 
-K vytvoření klíčů, je upřednostňovanou příkaz `ssh-keygen`, která je k dispozici OpenSSH nástroje v Azure Cloud Shell, macOS nebo Linux hostitele, [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about)a další nástroje. `ssh-keygen` zeptá na několik otázek a pak zapíše privátní klíč a odpovídající veřejný klíč. 
+Chcete-li vytvořit klíče, preferovaný příkaz `ssh-keygen`je, který je k dispozici u OpenSSH nástrojů v Azure Cloud Shell, hostiteli MacOS nebo Linux, subsystému [Windows pro Linux](https://docs.microsoft.com/windows/wsl/about)a dalších nástrojích. `ssh-keygen`požádá o sérii otázek a pak zapíše privátní klíč a shodný veřejný klíč. 
 
 Klíče SSH jsou ve výchozím nastavení v adresáři `~/.ssh`.  Pokud adresář `~/.ssh` nemáte, vytvoří ho za vás příkaz `ssh-keygen` se správnými oprávněními.
 
 ### <a name="basic-example"></a>Základní příklad
 
-Následující `ssh-keygen` příkaz generuje 2048bitový SSH RSA soubory veřejného a privátního klíče ve výchozím nastavení `~/.ssh` adresáře. Pokud existuje pár klíčů SSH v aktuálním umístění, tyto soubory jsou přepsány.
+Následující `ssh-keygen` příkaz generuje ve výchozím nastavení `~/.ssh` v adresáři soubory veřejného a privátního klíče SSH RSA standardně 2048. Pokud pár klíčů SSH existuje v aktuálním umístění, tyto soubory se přepíší.
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
 ### <a name="detailed-example"></a>Podrobný příklad
-Následující příklad ukazuje možnosti další příkaz k vytvoření páru klíčů SSH RSA. Pokud existuje pár klíčů SSH v aktuálním umístění, tyto soubory jsou přepsány. 
+Následující příklad ukazuje další možnosti příkazu pro vytvoření páru klíčů RSA RSA. Pokud pár klíčů SSH existuje v aktuálním umístění, tyto soubory se přepíší. 
 
 ```bash
 ssh-keygen \
@@ -72,15 +71,15 @@ ssh-keygen \
 
 `ssh-keygen`= program použitý k vytvoření klíčů
 
-`-t rsa` = Typ vytvářeného klíče, v tomto případě ve formátu RSA
+`-t rsa`= typ klíče, který se má vytvořit, v tomto případě ve formátu RSA
 
-`-b 4096` = počet bitů v klíči, v tomto případě 4096
+`-b 4096`= počet bitů v klíči, v tomto případě 4096
 
-`-C "azureuser@myserver"`= komentář připojený na konec souboru veřejného klíče pro snadnější identifikaci. Obvykle je jako komentář používá e-mailovou adresu, ale použít cokoli, co pro vaši infrastrukturu.
+`-C "azureuser@myserver"`= komentář připojený na konec souboru veřejného klíče pro snadnější identifikaci. Obvykle se jako komentář používá e-mailová adresa, ale je vhodná pro vaši infrastrukturu.
 
-`-f ~/.ssh/mykeys/myprivatekey` = Název souboru privátního klíče, pokud se rozhodnete nepoužívat výchozí název. S příponou souboru odpovídající veřejného klíče `.pub` je generována ve stejném adresáři. Tento adresář musí existovat.
+`-f ~/.ssh/mykeys/myprivatekey`= název souboru privátního klíče, pokud se rozhodnete nepoužívat výchozí název. Odpovídající soubor veřejného klíče připojený pomocí `.pub` je vygenerovaný ve stejném adresáři. Adresář musí existovat.
 
-`-N mypassphrase` = dodatečné přístupové heslo pro přístup k souboru privátního klíče. 
+`-N mypassphrase`= Další heslo, které se používá pro přístup k souboru privátního klíče. 
 
 ### <a name="example-of-ssh-keygen"></a>Příklad ssh-keygen
 
@@ -108,13 +107,13 @@ The keys randomart image is:
 +-----------------+
 ```
 
-#### <a name="saved-key-files"></a>Uložené soubory klíčů
+#### <a name="saved-key-files"></a>Soubory uložených klíčů
 
 `Enter file in which to save the key (/home/azureuser/.ssh/id_rsa): ~/.ssh/id_rsa`
 
-Název páru klíčů pro tento článek. Pár klíčů s názvem `id_rsa` je výchozí hodnota; může očekávat některé nástroje `id_rsa` název souboru s privátním klíčem, takže je vhodné. Výchozím umístěním pro páry klíčů SSH a konfigurační soubor SSH je adresář `~/.ssh/`. Pokud nezadáte úplnou cestu, `ssh-keygen` vytvoří klíče v aktuálním pracovním adresáři, nikoli ve výchozím adresáři `~/.ssh`.
+Název páru klíčů pro tento článek. Jako výchozí je pojmenovaná `id_rsa` dvojice klíčů. některé nástroje můžou `id_rsa` očekávat název souboru privátního klíče, takže jeden z nich je dobrý nápad. Výchozím umístěním pro páry klíčů SSH a konfigurační soubor SSH je adresář `~/.ssh/`. Pokud nezadáte úplnou cestu, `ssh-keygen` vytvoří klíče v aktuálním pracovním adresáři, nikoli ve výchozím adresáři `~/.ssh`.
 
-#### <a name="list-of-the-ssh-directory"></a>Seznam `~/.ssh` adresáře
+#### <a name="list-of-the-ssh-directory"></a>`~/.ssh` Seznam adresáře
 
 ```bash
 ls -al ~/.ssh
@@ -122,35 +121,35 @@ ls -al ~/.ssh
 -rw-r--r-- 1 azureuser staff   410 Aug 25 18:04 id_rsa.pub
 ```
 
-#### <a name="key-passphrase"></a>Heslo klíče
+#### <a name="key-passphrase"></a>Klíčové heslo
 
 `Enter passphrase (empty for no passphrase):`
 
-Je *důrazně* doporučujeme přidat si přístupové heslo k privátnímu klíči. Bez přístupového hesla k ochraně souboru s klíčem každý, kdo má soubor můžete ho použít pro přihlášení k jakémukoli serveru s odpovídajícím veřejným klíčem. Přidání přístupového hesla nabízí vyšší ochranu v případě, že někdo bude schopen získat přístup k vašemu souboru privátního klíče, poskytne vám čas změnit si klíče.
+Důrazně doporučujeme přidat k privátnímu klíči přístupové heslo. Bez přístupového hesla k ochraně souboru s klíčem může kdokoli, kdo má soubor, použít ho k přihlášení k jakémukoli serveru s odpovídajícím veřejným klíčem. Přidání hesla nabízí vyšší ochranu v případě, že někdo získá přístup k vašemu souboru privátního klíče, což vám poskytne čas na změnu klíčů.
 
-## <a name="generate-keys-automatically-during-deployment"></a>Během nasazení automaticky vygenerovat klíče
+## <a name="generate-keys-automatically-during-deployment"></a>Generovat klíče automaticky během nasazení
 
-Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače, může volitelně Generovat soubory veřejného a privátního klíče SSH spuštěním [az vm vytvořit](/cli/azure/vm) příkazů `--generate-ssh-keys` možnost. Klíče jsou uložené v adresáři ~/.ssh. Všimněte si, že tento parametr nepřepisuje klíče Pokud již existují v dané oblasti.
+Pokud k vytvoření virtuálního počítače použijete rozhraní příkazového [řádku Azure](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH spuštěním `--generate-ssh-keys` příkazu [AZ VM Create](/cli/azure/vm) s možností. Klíče jsou uloženy v adresáři ~/.ssh. Všimněte si, že tato možnost příkazu nepřepisuje klíče, pokud již existují v tomto umístění.
 
-## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Zadejte veřejný klíč SSH při nasazování virtuálního počítače
+## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>Při nasazování virtuálního počítače zadat veřejný klíč SSH
 
-Pokud chcete vytvořit virtuální počítač s Linuxem, který používá klíče SSH pro ověřování, zadejte veřejný klíč SSH při vytváření virtuálního počítače pomocí webu Azure portal, rozhraní příkazového řádku, šablon Resource Manageru nebo jiné metody. Během používání portálu, zadejte veřejný klíč samotný. Pokud používáte [rozhraní příkazového řádku Azure](/cli/azure) k vytvoření virtuálního počítače pomocí stávajícího veřejného klíče, zadejte hodnotu nebo umístění veřejného klíče spuštěním [az vm vytvořit](/cli/azure/vm) příkazů `--ssh-key-value` možnost. 
+Pokud chcete vytvořit virtuální počítač se systémem Linux, který používá klíče SSH k ověřování, zadejte svůj veřejný klíč SSH při vytváření virtuálního počítače pomocí Azure Portal, CLI, Správce prostředků šablon nebo jiných metod. Při použití portálu zadáte vlastní veřejný klíč. Pokud k vytvoření virtuálního počítače pomocí rozhraní příkazového [řádku Azure](/cli/azure) použijete existující veřejný klíč, zadejte hodnotu nebo umístění tohoto veřejného klíče spuštěním `--ssh-key-value` příkazu [AZ VM Create](/cli/azure/vm) s možností. 
 
-Pokud nejste obeznámeni s formátem veřejný klíč SSH, se zobrazí veřejný klíč spuštěním `cat` následujícím způsobem nahraďte `~/.ssh/id_rsa.pub` nahraďte vlastním umístěním souboru veřejného klíče:
+Pokud nejste obeznámeni s formátem veřejného klíče SSH, můžete svůj veřejný klíč `cat` zobrazit následujícím způsobem a nahradit `~/.ssh/id_rsa.pub` ho vlastním umístěním souboru veřejného klíče:
 
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-Výstup je podobný následujícímu (zde redigovaný):
+Výstup je podobný následujícímu (zde redigováné):
 
 ```
 ssh-rsa XXXXXXXXXXc2EAAAADAXABAAABAXC5Am7+fGZ+5zXBGgXS6GUvmsXCLGc7tX7/rViXk3+eShZzaXnt75gUmT1I2f75zFn2hlAIDGKWf4g12KWcZxy81TniUOTjUsVlwPymXUXxESL/UfJKfbdstBhTOdy5EG9rYWA0K43SJmwPhH28BpoLfXXXXXG+/ilsXXXXXKgRLiJ2W19MzXHp8z3Lxw7r9wx3HaVlP4XiFv9U4hGcp8RMI1MP1nNesFlOBpG4pV2bJRBTXNXeY4l6F8WZ3C4kuf8XxOo08mXaTpvZ3T1841altmNTZCcPkXuMrBjYSJbA8npoXAXNwiivyoe3X2KMXXXXXdXXXXXXXXXXCXXXXX/ azureuser@myserver
 ```
 
-Pokud zkopírujte a vložte obsah souboru veřejného klíče na webu Azure portal nebo šablony Resource Manageru, ujistěte se, že nemusíte kopírovat žádné prázdné znaky nebo zavést další zalomení řádků. Například pokud používáte macOS, můžete předat soubor veřejného klíče (ve výchozím nastavení, `~/.ssh/id_rsa.pub`) k **pbcopy** chcete zkopírovat obsah (existují další programy v systému Linux, které totéž, jako například `xclip`).
+Pokud zkopírujete a vložíte obsah souboru veřejného klíče do šablony Azure Portal nebo Správce prostředků, ujistěte se, že nekopírujete žádné další prázdné znaky ani nezavedete další zalomení řádků. Pokud například používáte MacOS, můžete soubor veřejného klíče (ve výchozím nastavení `~/.ssh/id_rsa.pub`) přesměrovat na **pbcopy** ke zkopírování obsahu (existují i další programy pro Linux, které mají stejnou `xclip`věc, například).
 
-Pokud dáváte přednost použití veřejného klíče, který je ve víceřádkovém formátu, můžete generovat formátovaný klíč ve formátu RFC4716 v kontejneru pem z veřejného klíče, který jste předtím vytvořili.
+Pokud dáváte přednost použití veřejného klíče, který je ve víceřádkovém formátu, můžete vygenerovat RFC4716 formátovaný klíč v kontejneru PEM z veřejného klíče, který jste vytvořili dříve.
 
 Vytvoření klíče ve formátu RFC4716 z existujícího veřejného klíče SSH:
 
@@ -161,22 +160,22 @@ ssh-keygen \
 -m RFC4716 > ~/.ssh/id_ssh2.pem
 ```
 
-## <a name="ssh-to-your-vm-with-an-ssh-client"></a>SSH k virtuálnímu počítači s klientem SSH
-Veřejný klíč nasazené na vašem virtuálním počítači Azure, a privátní klíč v místním systému, SSH k virtuálnímu počítači pomocí IP adresy nebo název DNS virtuálního počítače. Nahraďte *azureuser* a *myvm.westus.cloudapp.azure.com* v následujícím příkazu se uživatelské jméno správce a plně kvalifikovaný název domény (nebo IP adresou):
+## <a name="ssh-to-your-vm-with-an-ssh-client"></a>SSH k VIRTUÁLNÍmu počítači pomocí klienta SSH
+S veřejným klíčem nasazeným na VIRTUÁLNÍm počítači Azure a privátním klíčem v místním systému se k vašemu VIRTUÁLNÍmu počítači přihlaste přes SSH pomocí IP adresy nebo názvu DNS vašeho virtuálního počítače. V následujícím příkazu nahraďte *azureuser* a *myvm.westus.cloudapp.Azure.com* uživatelským jménem správce a plně kvalifikovaným názvem domény (nebo IP adresou):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Pokud jste při vytváření páru klíčů zadali přístupové heslo, zadejte heslo vyzvání během procesu přihlášení. (Server se přidá do vaší složky `~/.ssh/known_hosts` a nové připojení se nebude vyžadovat, dokud se nezmění veřejný klíč na virtuálním počítači Azure nebo se neodebere název serveru ze složky `~/.ssh/known_hosts`.)
+Pokud jste při vytváření páru klíčů zadali heslo, zadejte heslo při zobrazení výzvy během procesu přihlašování. (Server se přidá do vaší složky `~/.ssh/known_hosts` a nové připojení se nebude vyžadovat, dokud se nezmění veřejný klíč na virtuálním počítači Azure nebo se neodebere název serveru ze složky `~/.ssh/known_hosts`.)
 
-Pokud virtuální počítač používá zásady přístupu v čase, budete muset požádat o přístup před připojením k virtuálnímu počítači. Další informace o zásadách just-in-time najdete v tématu [spravovat přístup k virtuálním počítačům podle potřeby pomocí v zásadách čas](../../security-center/security-center-just-in-time.md).
+Pokud virtuální počítač používá zásady přístupu za běhu, musíte požádat o přístup, abyste se mohli připojit k virtuálnímu počítači. Další informace o zásadách za běhu najdete v tématu [Správa přístupu k virtuálním počítačům pomocí zásad podle časových údajů](../../security-center/security-center-just-in-time.md).
 
-## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>Použití ssh-agent k uložení vaše heslo privátního klíče
+## <a name="use-ssh-agent-to-store-your-private-key-passphrase"></a>Použití SSH-agent k uložení hesla privátního klíče
 
-Abyste nemuseli zadávat heslo souboru s privátním klíčem každé přihlášení SSH, můžete použít `ssh-agent` na heslo souboru s privátním klíčem do mezipaměti. Pokud používáte počítač Mac, klíčenky macOS bezpečně ukládá heslo privátního klíče při vyvolání `ssh-agent`.
+Abyste se vyhnuli psaní klíčového hesla k souboru privátního klíče u každého přihlášení pomocí `ssh-agent` protokolu SSH, můžete použít k ukládání hesla souboru privátního klíče do mezipaměti. Pokud používáte Mac, macOS řetězec klíčů bezpečně ukládá heslo k privátnímu klíči při jeho vyvolání `ssh-agent`.
 
-Ověřit a použít `ssh-agent` a `ssh-add` informovat systém SSH o souborech s klíči tak, že není potřeba použít přístupové heslo interaktivně.
+Ověřte a používejte `ssh-agent` a `ssh-add` informujte systém SSH o souborech klíčů, abyste nemuseli používat přístupové heslo interaktivně.
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -188,10 +187,10 @@ Potom přidejte privátní klíč do `ssh-agent` pomocí příkazu `ssh-add`.
 ssh-add ~/.ssh/id_rsa
 ```
 
-Heslo privátního klíče jsou teď uložená v `ssh-agent`.
+Heslo privátního klíče je nyní uloženo v `ssh-agent`.
 
-## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Použití ssh kopírování id zkopírovat klíč do existujícího virtuálního počítače
-Pokud jste již vytvořili virtuální počítač, můžete nainstalovat nový veřejný klíč SSH k virtuálním počítačům s Linuxem pomocí příkazu, který je podobný následujícímu:
+## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Ke zkopírování klíče do existujícího virtuálního počítače použijte SSH-Copy-ID.
+Pokud jste již vytvořili virtuální počítač, můžete nový veřejný klíč SSH nainstalovat do virtuálního počítače se systémem Linux pomocí příkazu podobného následujícímu:
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
@@ -199,9 +198,9 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
 
 ## <a name="create-and-configure-an-ssh-config-file"></a>Vytvoření a nakonfigurování konfiguračního souboru SSH
 
-Můžete vytvořit a nakonfigurovat konfigurační soubor SSH (`~/.ssh/config`) ke zrychlení protokolu se změnami a optimalizovat chování klienta SSH. 
+Můžete vytvořit a nakonfigurovat konfigurační soubor SSH (`~/.ssh/config`) pro urychlení přihlášení a optimalizaci chování klienta ssh. 
 
-Následující příklad ukazuje jednoduchou konfiguraci a že vám pomůže rychle se přihlásit jako uživatel konkrétnímu virtuálnímu počítači pomocí výchozí privátního klíče SSH. 
+Následující příklad ukazuje jednoduchou konfiguraci, kterou můžete použít k rychlému přihlášení jako uživatel k určitému virtuálnímu počítači pomocí výchozího privátního klíče SSH. 
 
 ### <a name="create-the-file"></a>Vytvoření souboru
 
@@ -209,7 +208,7 @@ Následující příklad ukazuje jednoduchou konfiguraci a že vám pomůže ryc
 touch ~/.ssh/config
 ```
 
-### <a name="edit-the-file-to-add-the-new-ssh-configuration"></a>Upravte soubor a přidejte novou konfiguraci SSH
+### <a name="edit-the-file-to-add-the-new-ssh-configuration"></a>Úpravou souboru přidejte novou konfiguraci SSH.
 
 ```bash
 vim ~/.ssh/config
@@ -217,7 +216,7 @@ vim ~/.ssh/config
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
-Přidejte nastavení konfigurace, které jsou vhodné pro hostitele virtuálního počítače.
+Přidejte nastavení konfigurace odpovídající vašemu hostitelskému VIRTUÁLNÍmu počítači.
 
 ```bash
 # Azure Keys
@@ -227,20 +226,20 @@ Host myvm
 # ./Azure Keys
 ```
 
-Můžete přidat konfigurace pro další hostitele, aby každý z nich používat svůj vlastní vyhrazený pár klíčů. Zobrazit [konfigurační soubor SSH](https://www.ssh.com/ssh/config/) pro pokročilejší možnosti konfigurace.
+Můžete přidat konfigurace pro další hostitele, aby každý mohl použít svůj vlastní vyhrazený pár klíčů. Pokročilejší možnosti konfigurace najdete v tématu [konfigurační soubor SSH](https://www.ssh.com/ssh/config/) .
 
-Teď, když máte pár klíčů SSH a nakonfigurovaný konfigurační soubor SSH, budete moct přihlásit k virtuálním počítačům s Linuxem, rychle a bezpečně. Při spuštění následujícího příkazu SSH vyhledá a načte všechna nastavení z `Host myvm` blokovat v konfigurační soubor SSH.
+Teď, když máte pár klíčů SSH a nakonfigurovaný konfigurační soubor SSH, se můžete rychle a bezpečně přihlašovat ke svému VIRTUÁLNÍmu počítači Linux. Když spustíte následující příkaz, SSH vyhledá a načte všechna nastavení z `Host myvm` bloku v konfiguračním souboru SSH.
 
 ```bash
 ssh myvm
 ```
 
-Při prvním přihlášení k serveru pomocí klíče SSH vás příkaz požádá vás o přístupové heslo pro tento soubor klíče.
+Při prvním přihlášení k serveru pomocí klíče SSH vás příkaz vyzve k zadání hesla pro tento soubor klíče.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Dalším krokem je vytvoření virtuálního počítače Azure s Linuxem pomocí nového veřejného klíče SSH. Virtuální počítače Azure, které jsou vytvořeny pomocí veřejný klíč SSH jako přihlášení jsou lépe zabezpečené než virtuální počítače vytvořené pomocí výchozí přihlašovací metoda, hesla.
+Dalším krokem je vytvoření virtuálního počítače Azure s Linuxem pomocí nového veřejného klíče SSH. Virtuální počítače Azure vytvořené pomocí veřejného klíče SSH jako přihlašování jsou lépe zabezpečené než virtuální počítače vytvořené pomocí výchozí metody přihlašování, hesla.
 
-* [Vytvoření virtuálního počítače s Linuxem pomocí webu Azure portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Vytvoření virtuálního počítače s Linuxem pomocí šablony Azure](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Vytvoření virtuálního počítače se systémem Linux pomocí Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Vytvoření virtuálního počítače se systémem Linux pomocí Azure CLI](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Vytvoření virtuálního počítače se systémem Linux pomocí šablony Azure](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

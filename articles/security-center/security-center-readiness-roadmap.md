@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781142"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100920"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -67,9 +67,8 @@ Následující zdroje vám pomůžou při správě výstrah zabezpečení a ochr
 
 Články    
 * [Monitorování stavu zabezpečení pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Ochrana virtuálních počítačů pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 * [Ochrana sítě pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Ochrana aplikací pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [Ochrana služby a dat Azure SQL pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 

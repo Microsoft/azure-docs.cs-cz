@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098629"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -103,7 +103,7 @@ Pokud je to možné, použijte alternativní přístupy, jako je použití virtu
 
 Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané platformou. Důvodem je, že vývoj vlastního ověřovacího kódu může být náchylný k chybám. Většina vašich vývojářů není odborníkem na zabezpečení a pravděpodobně si nebude vědoma odlišností a nejnovějšího vývoje v ověřování a autorizaci. Komerční kód (například od společnosti Microsoft) je často široce prověřený zabezpečením.
 
-Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože brání slabým místům zabezpečení vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (portál nebo vzdálené prostředí PowerShell) a službám orientovaným na zákazníky by měly být navržené a nakonfigurované tak, aby používaly [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
+Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je aktuální standard pro ověřování a autorizaci, protože brání slabým místům zabezpečení vyplývajícím z uživatelského jména a hesla ověřování. Přístup k rozhraním pro správu Azure (portál nebo vzdálené prostředí PowerShell) a službám s přístupem k zákazníkům by měly být navržené a nakonfigurované pro používání [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
 
 Používejte standardní ověřovací protokoly, jako je OAuth2 a Kerberos. Tyto protokoly byly výrazně zkontrolovány a jsou pravděpodobně implementovány jako součást knihoven platforem pro ověřování a autorizaci.
 
@@ -116,7 +116,7 @@ V následující tabulce jsou uvedeny hrozby pro rozteč a jejich ukázková ome
 | --- | --- | --- |
 | Falšování identity | Ověřování | Vyžadovat připojení HTTPS. |
 | Manipulace | Integrita | Ověřte certifikáty SSL. |
-| Popírání odpovědnosti | Neodvolatelnost | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
+| Popírání odpovědnosti | Neodmítnutí | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
 | Zpřístupnění informací | Chovávat | Šifrování citlivých dat v klidovém formátu pomocí [certifikátů služby](/rest/api/appservice/certificates). |
 | Přerušení služby | Dostupnost | Monitoruje metriky výkonu pro potenciální podmínky odepření služeb. Implementujte filtry připojení. |
 | Zvýšení oprávnění | Authorization | Použijte [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
@@ -139,7 +139,7 @@ Níže jsou uvedené osvědčené postupy pro používání App Service.
 **Podrobnosti**: [App Service Environment](/azure/app-service/environment/intro) má funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě. Virtuální sítě umožňují umístit prostředky Azure do sítě, ve které není Internet, směrovatelný síť, ke které budete řídit přístup. Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet).
 
 **Osvědčené postupy**: Monitorujte stav zabezpečení vašich App Servicech prostředí.   
-**Podrobnosti**: Pomocí Azure Security Center můžete monitorovat App Service prostředí. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](/azure/security-center/security-center-virtual-machine-recommendations) , která vás provedou procesem konfigurace potřebných ovládacích prvků.
+**Podrobnosti**: Pomocí Azure Security Center můžete monitorovat App Service prostředí. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří [doporučení](../../security-center/security-center-virtual-machine-protection.md) , která vás provedou procesem konfigurace potřebných ovládacích prvků.
 
 > [!NOTE]
 > App Service monitorování je ve verzi Preview a je k dispozici pouze na [úrovni Standard](/azure/security-center/security-center-pricing) Security Center.
@@ -164,7 +164,7 @@ Ověřování ochrany zabezpečení je důležité jako testování jakékoli ji
 Fuzzy testuje je metoda pro hledání chyb programu (chyby kódu) tím, že poskytuje chybná vstupní data do programových rozhraní (vstupní body), která analyzují a spotřebovávají tato data. [Zjišťování rizik zabezpečení společnosti Microsoft](https://www.microsoft.com/en-us/security-risk-detection/) je cloudový nástroj, který můžete použít k vyhledání chyb a dalších chyb zabezpečení v softwaru před nasazením do Azure. Nástroj je navržený tak, aby zachytával chyby zabezpečení před nasazením softwaru, takže nemusíte opravovat chybu, zabývat se havárií nebo reagovat na útok po vydání softwaru.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jsme se zaměřili na výhody zabezpečení nasazení Azure PaaS a osvědčené postupy zabezpečení pro cloudové aplikace. Dále se seznamte s doporučenými postupy pro zabezpečení webových a mobilních řešení PaaS pomocí konkrétních služeb Azure. Začneme s Azure App Service, Azure SQL Database a Azure SQL Data Warehouse a Azure Storage. V případě, že budou k dispozici články o doporučených postupech pro jiné služby Azure, budou odkazy uvedeny v následujícím seznamu:
 
 - [Azure App Service](paas-applications-using-app-services.md)

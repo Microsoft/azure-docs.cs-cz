@@ -1,5 +1,5 @@
 ---
-title: Skript Azure Powershellu ukázkový – vytvoření aplikace s průběžným nasazováním GitHub | Dokumentace Microsoftu
+title: Ukázka skriptu Azure PowerShell – vytvoření aplikace pomocí průběžného nasazování GitHubu | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace s průběžným nasazováním z GitHubu
 services: app-service\web
 documentationcenter: ''
@@ -10,27 +10,25 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d60fc1afbd129471ba56dddb6e2d5beba5ca2330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc8be33ede80070b8e9928e01d07b6066f1c887c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136480"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113577"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Vytvoření webové aplikace s průběžným nasazováním z GitHubu
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak nastaví průběžné nasazování z úložiště GitHub. Informace o nasazení z GitHubu bez průběžného nasazování najdete v tématu [Vytvoření webové aplikace a nasazení kódu z GitHubu](powershell-deploy-github.md).
+Tento ukázkový skript vytvoří ve App Service webovou aplikaci se souvisejícími prostředky a pak nastaví [průběžné nasazování](../deploy-continuous-deployment.md) z úložiště GitHub. Informace o nasazení z GitHubu bez průběžného nasazování najdete v tématu [Vytvoření webové aplikace a nasazení kódu z GitHubu](powershell-deploy-github.md).
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure. Zajistěte také následující:
 
-- Vytvoření připojení k Azure pomocí příkazu `az login`.
-- Umístění kódu aplikace ve veřejném nebo privátním úložišti GitHub, které vlastníte.
-- [Vytvoření přístupového tokenu v účtu GitHub](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+- Umístění kódu aplikace ve veřejném nebo privátním úložišti GitHub, které vlastníte. Chcete-li získat automatické sestavení, sestavte úložiště podle připravenosti tabulky [úložiště](../deploy-continuous-deployment.md#prepare-your-repository) .
+- Vytvořili jste [osobní přístupový token ve vašem účtu GitHubu](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

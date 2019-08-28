@@ -1,21 +1,33 @@
 ---
-title: Kurz k odeslání zařízení Azure Data Box zpět | Dokumentace Microsoftu
+title: Kurz pro dodávání Azure Data Box zpět | Microsoft Docs
 description: Zjistěte, jak odeslat Azure Data Box do Microsoftu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 7/08/2019
+ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098831"
 ---
-# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrátí zařízení Azure Data Box a ověřte nahrání dat do Azure
+::: zone target="docs"
+
+# <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Kurz: Vrácení Azure Data Box a ověření nahrávání dat do Azure
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Vrácení Data Box a ověření nahrávání dat do Azure
+
+::: zone-end
+
+::: zone target="docs"
 
 Tento kurz popisuje, jak vrátit Azure Data Box a ověřit nahrání dat do Azure.
 
@@ -23,7 +35,7 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
 > * Požadavky
-> * Příprava k odeslání
+> * Připravit k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu
@@ -32,46 +44,65 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 
 Než začnete, ujistěte se, že:
 
-- Když jste dokončili [kurzu: Kopírování dat do služby Azure Data Box a ověřte](data-box-deploy-copy-data.md). 
-- Kopírování úloh se dokončí. Příprava k odeslání nelze spustit, pokud probíhají úlohy kopírování.
+- Dokončili jste tento [kurz: Zkopírujte data Azure Data Box a ověřte](data-box-deploy-copy-data.md). 
+- Kopírování úloh bylo dokončeno. Příprava k odeslání nemůže běžet, pokud probíhá kopírování úloh.
 
-## <a name="prepare-to-ship"></a>Příprava k odeslání
+## <a name="prepare-to-ship"></a>Připravit k odeslání
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
+::: zone-end
+
+::: zone target="chromeless"
+
+Po dokončení kopírování dat zařízení připravíte a dodáte. Když zařízení dosáhne datacentra Azure, data se automaticky odešlou do Azure.
+
+## <a name="prepare-to-ship"></a>Připravit k odeslání
+
+Než dokončíte přípravu na odeslání, ujistěte se, že jsou dokončené úlohy kopírování.
+
+1. Přejděte na stránku **Prepare to ship** (Připravit k odeslání) v místním webovém uživatelském rozhraní a zahajte přípravu k odeslání. 
+2. Z místního webového uživatelského rozhraní vypněte zařízení. Odpojte od zařízení kabely. 
+
+Další kroky určíte tak, že zařízení vracíte.
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="ship-data-box-back"></a>Vrácení Data Boxu
 
-Ujistěte se, že dokončení kopírování dat do zařízení a **přípravu k odeslání** spuštění je úspěšné. Založené na oblasti, ve kterém jsou dodávky zařízení, se liší podle postupu.
+Zajistěte, aby byla kopie dat do zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, ve které se zařízení dodává.
 
+::: zone-end
 
-### <a name="ship-in-us-canada-europe"></a>Dodávání v USA, Kanadě, Evropa
+## <a name="ship-in-us-canada-europe"></a>Dodat v USA, Kanadě, Evropě
 
-Pokud vrácení zařízení v USA, Kanadě, nebo v Evropě, proveďte následující kroky.
+Při vracení zařízení v USA, Kanadě nebo Evropě proveďte následující kroky.
 
-1. Ujistěte se, že zařízení je vypnutý a kabely se odeberou. 
+1. Ujistěte se, že je zařízení vypnuté, a odeberou se kabely. 
 2. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud popisek poškození nebo ztráty nebo se nezobrazuje na displeji E-ink, obraťte se na Microsoft Support. Pokud podpora navrhuje, pak můžete přejít na **přehled > stáhnout Expediční štítek** na webu Azure Portal. Stáhnout Expediční štítek a opatří na zařízení. 
-4. S UPS vyzvednutí naplánujte, pokud vrácení zařízení. Chcete-li vyzvednutí naplánovat:
+3. Ujistěte se, že se na displeji s elektronickým inkoustem zobrazuje expediční štítek, a naplánujte vyzvednutí přepravcem. Pokud je popisek poškozený nebo ztracený nebo se nezobrazuje v zobrazení E-tiskovou barvou, kontaktujte podpora Microsoftu. Pokud je tato podpora navrhována, můžete přejít na **přehled > stáhnout expediční štítek** v Azure Portal. Stáhněte si expediční štítek a přihlaste se k zařízení. 
+4. Naplánujte vyzvednutí se zdrojem napájení při vracení zařízení. Naplánování výdeje:
 
-    - Volání místní UPS (specifické pro zemi/oblast bezplatné číslo).
-    - Ve volání nabídka zpětné dodávky sledovací číslo, jak je znázorněno v E-ink zobrazení nebo Tisk popisku.
-    - Pokud není uveden v uvozovkách sledovacího čísla, bude vyžadovat UPS vám umožní platit poplatek za další využití během vyzvednutí.
+    - Zavolejte místní zdroje UPS (bezplatné číslo země/oblasti).
+    - Ve svém volání citujete číslo sledování zpětné dodávky, jak je znázorněno v zobrazení elektronického inkoustu nebo ve vytištěném popisku.
+    - Pokud sledovací číslo není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
 
-    Namísto plánování vyzvednutí, můžete také odkládací pole údaj na nejbližší umístění pro odložení.
+    Místo plánování vyzvednutí můžete také Data Box umístit na nejbližší místo pro vyřazení.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
-### <a name="ship-in-asia-pacific-region"></a>Dodávání v oblasti Asie a Tichomoří
 
-#### <a name="ship-in-australia"></a>Dodávání v Austrálii
+## <a name="ship-in-australia"></a>Dodávat v Austrálii
 
-Datacentra Azure v Austrálii mít oznámení o zvýšení zabezpečení. Všechny příchozí dodávky musí mít oznámení o pokročilé. Proveďte následující kroky k odeslání v Austrálii.
+Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít rozšířené oznámení. Proveďte následující kroky, které dodáte v Austrálii.
 
 
-1. Zachovat původní pole použitý k dodání zařízení pro zpáteční zásilku.
-2. Ujistěte se, že dokončení kopírování dat do zařízení a **přípravu k odeslání spustit** je úspěšné.
+1. Uchová původní pole použité k odeslání zařízení pro dodávku vratky.
+2. Ujistěte se, že je kopírování dat do zařízení dokončeno a **Příprava k odeslání spuštění** proběhlo úspěšně.
 3. Vypněte zařízení a odeberte kabely.
-4. Zařazování a bezpečné umístění, která byla součástí zařízení zadní zařízení napájecí kabel.
-5. E-mailové řešení Quantium žádost o vyzvednutí. Odkazovat na referenční číslo služby na webu Azure portal. Pomocí následující šablony e-mailu:- *žádost o zpětný Expediční štítek s kódem TAU*. Ujistěte se, že v e-mailu uveďte následující podrobnosti: 
+4. Zařazování a bezpečné umístění napájecí šňůry, která byla v zařízení k dispozici na zadní straně zařízení.
+5. Odešlete e-mailem Quantium řešení pro vyžádání žádosti o vyzvednutí. Přečtěte si referenční číslo služby zadané v Azure Portal. Použijte následující šablonu e-mailu:- *Request pro zpětný přenos popisku s kódem Tau*. Nezapomeňte do e-mailu zahrnout tyto podrobnosti: 
 
     ```
     To: Azure@quantiumsolutions.com
@@ -83,28 +114,27 @@ Datacentra Azure v Austrálii mít oznámení o zvýšení zabezpečení. Všech
     - Contact number:
     - Requested pickup date: mm/dd
     ```
-6. Řešení pro Austrálii Quantium e-mail zpáteční Expediční štítek.
-7. Tisk zpáteční štítek a opatří ho ve službě box přesouvání.
-8. Předá do Kurýrní balíček.
+6. Quantium Solutions Austrálie vám pošle e-mailem zpáteční expediční štítek.
+7. Vytiskněte návratový popisek a přihlaste ho v poli pro expedici.
+8. Doručním balíčkem na Courier.
 
-V případě potřeby můžete poslat e-mail podpoře řešení Quantium Azure@quantiumsolutions.com nebo telefon.
+V případě potřeby můžete podporu řešení Quantium poslat e- Azure@quantiumsolutions.com mailem na telefon nebo telefonicky.
 
+Pro dotazování týkající se vaší objednávky prostřednictvím telefonu:
 
-Pro dotaz týkající se vaší objednávky prostřednictvím telefonu:
+- Nejprve odešlete e-mail pro vyzvednutí.
+- Zadejte název objednávky na telefonu.
 
-- Odešlete e-mailu pro vyzvednutí první.
-- Zadejte název vaší objednávky na telefonu.
+## <a name="ship-in-japan"></a>Dodat v Japonsku 
 
-#### <a name="ship-in-japan"></a>Dodávejte v Japonsku 
-
-1. Zachovat původní pole použitý k dodání zařízení pro zpáteční zásilku.
+1. Uchová původní pole použité k odeslání zařízení pro dodávku vratky.
 2. Vypněte zařízení a odeberte kabely.
-3. Zařazování a bezpečné umístění, která byla součástí zařízení zadní zařízení napájecí kabel.
-4. Zapsat vaše společnost název a adresu informace v poznámce zásilky jako vaše informace odesílatele.
-5. E-mailu Quantium řešení pomocí následující šablony e-mailu.
+3. Zařazování a bezpečné umístění napájecí šňůry, která byla v zařízení k dispozici na zadní straně zařízení.
+4. Jako informace o odesílateli napište název vaší společnosti a uveďte informace na zásilce.
+5. Odešlete e-mailem Quantium řešení pomocí následující e-mailové šablony.
 
-    - Pokud Japonsko příspěvek Chakubarai zásilky Poznámka nebyla zahrnuta nebo chybí, Všimněte si, že v tomto e-mailu. Japonsko řešení Quantium požádá o příspěvek Japonsko přenést na vyzvednutí zásilky Poznámka.
-    - Pokud máte více objednávek, e-mailu k zajištění individuální vyzvednutí.
+    - V případě, že se v tomto e-mailu nezahrnula Poznámka k odeslání do Japonska nebo Chakubarai, Poznámka: Quantium Solutions Japonsko bude požádat o zveřejnění příspěvku za účelem uvedení poznámky k expedici na vyzvednutí.
+    - Pokud máte více objednávek, e-mailem zajistěte individuální vyzvednutí.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -118,13 +148,14 @@ Pro dotaz týkající se vaší objednávky prostřednictvím telefonu:
     d. 17：00-19：00 
     ```
 
-3. Dostávat e-mailové potvrzení z řešení Quantium poté, co jste si vyzvednutí. Potvrzení e-mailu obsahuje také informace v poznámce Chakubarai zásilku.
+3. Po zapsání vyzvednutí obdržíte e-mailové potvrzení z řešení Quantium. Potvrzení e-mailu obsahuje také informace o Chakubarai zásilce.
 
-V případě potřeby můžete požádat podporu řešení Quantium (japonské) na následující informace: 
+V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský jazyk) na následujících informacích: 
 
-- E-mailu:Customerservice.JP@quantiumsolutions.com 
+- ElektronCustomerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
+::: zone target="docs"
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
@@ -134,30 +165,42 @@ Po dokončení ověřování se Data Box připojí k síti v datacentru Azure. A
 
 Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
 
-Ověřte, že vaše data před odstraněním ze zdroje nahraje do Azure. Vaše data můžou být v:
+Před odstraněním ze zdroje ověřte, že jsou vaše data nahraná do Azure. Vaše data můžou být v:
 
-- Vaše účty úložiště Azure. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
+- Váš účet Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
   - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
-- Vaší skupiny prostředků spravovaného disku. Při vytváření spravované disky, virtuální pevné disky jsou odeslat jako objekty BLOB stránky a poté převeden na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadané v době vytvoření objednávky. 
+- Skupiny prostředků spravovaného disku. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadaným v době vytváření objednávky. 
 
-    - Pokud vaše kopie na managed disks v Azure byla úspěšná, může použít **podrobnosti objednávky** webu Azure portal a zkontrolujte zadaná poznámka skupin prostředků za spravované disky.
+    - Pokud byla vaše kopie na spravované disky v Azure úspěšná, můžete přejít na **Podrobnosti objednávky** v Azure Portal a poznamenat si skupiny prostředků zadané pro službu Managed disks.
 
-        ![Identifikujte skupiny prostředků spravovaného disku](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Identifikace skupin prostředků spravovaných disků](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        Přejděte do skupiny prostředků uvedené a vyhledejte spravované disky.
+        Přejděte do vyznačené skupiny prostředků a vyhledejte své spravované disky.
 
-        ![Spravovaný disk připojený do skupin prostředků](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
+        ![Spravovaný disk připojený ke skupinám prostředků](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Pokud jste si zkopírovali disk VHDX nebo dynamický nebo rozdílový virtuální pevný disk, VHDX nebo VHD je nahrát do přípravného účtu úložiště jako objekt blob stránky, ale převod virtuálního pevného disku na spravovaný disk selže. Přejděte k vaší pracovní **účet úložiště > objekty BLOB** a pak vyberte příslušný kontejner – SSD na úrovni Standard, Standard HDD nebo Premium SSD. Virtuální pevné disky jsou odeslány jako objekty BLOB stránky v přípravného účtu úložiště.
+    - Pokud jste zkopírovali disk VHDX nebo dynamický/Rozdílový virtuální pevný disk, soubor VHDX/VHD se nahraje do pracovního účtu úložiště jako objekt blob stránky, ale převod virtuálního pevného disku na spravovaný disk se nezdařil. Do svého přípravného **účtu úložiště > objekty blob** a potom vyberte příslušný kontejner-SSD úrovně Standard, HDD úrovně Standard nebo SSD úrovně Premium. Virtuální pevné disky se nahrají jako objekty blob stránky v přípravném účtu úložiště.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+::: zone-end
 
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
  
 Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v souladu se [standardem NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Další postup
 
@@ -165,7 +208,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 
 > [!div class="checklist"]
 > * Požadavky
-> * Příprava k odeslání
+> * Připravit k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Ověření nahrání dat do Azure
 > * Vymazání dat z Data Boxu
@@ -174,5 +217,7 @@ V následujícím článku se dozvíte, jak spravovat Data Box přes místní we
 
 > [!div class="nextstepaction"]
 > [Správa Azure Data Boxu pomocí místního webového uživatelského rozhraní](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

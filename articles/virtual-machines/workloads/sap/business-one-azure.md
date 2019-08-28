@@ -1,6 +1,6 @@
 ---
-title: SAP Business jeden na Azure Virtual Machines | Dokumentace Microsoftu
-description: SAP Business jeden na Azure.
+title: SAP Business One na Azure Virtual Machines | Microsoft Docs
+description: SAP Business One v Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,151 +9,150 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101416"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
-Tento dokument obsahuje pokyny pro nasazení SAP Business One ve službě Azure Virtual Machines. V dokumentaci k není náhradou za dokumentaci k instalaci podnikání, jeden pro SAP. Základní pokyny pro plánování a nasazení pro infrastrukturu Azure a spustit jednu obchodní aplikace v by měly pokrývat v dokumentaci.
+Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.
 
-Obchodní jeden podporuje dvě různé databáze:
-- SQL Server – viz [SAP Poznámka #928839 – plánování vydání verze pro Microsoft SQL Server](https://launchpad.support.sap.com/#/notes/928839)
-- SAP HANA – pro přesné SAP Business One matice podpory pro SAP HANA, a rezervovat [přehled dostupnosti SAP produktu](https://support.sap.com/pam)
+Podnik One podporuje dvě různé databáze:
+- SQL Server – viz téma [SAP Note #928839 – plánování vydání pro Microsoft SQL Server](https://launchpad.support.sap.com/#/notes/928839)
+- SAP HANA – pro SAP HANA je k dispozici pouze jedna matice podpory SAP Business One, rezervuje se [matice dostupnosti produktu SAP](https://support.sap.com/pam) .
 
-Jak je uvedeno v týkající se SQL Server, na základě aspektů základní nasazení [nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) platí. pro SAP HANA jsou uvedené důležité informace v tomto dokumentu.
+V případě SQL Server platí základní požadavky na nasazení, jak je popsáno v [nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) . v případě SAP HANA se v tomto dokumentu zmiňují doporučení.
 
 ## <a name="prerequisites"></a>Požadavky
-K použití tohoto průvodce potřebujete základní znalosti o následující komponenty Azure:
+K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure ve Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- [Virtuální počítače Azure v Linuxu](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Azure, sítě a virtuální sítí správa pomocí Powershellu](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [Sítě Azure a virtuální sítě pomocí rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Správa disků v Azure pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Virtuální počítače Azure v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+- [Správa sítí a virtuálních sítí Azure pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
+- [Sítě a virtuální sítě Azure s rozhraním CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Správa disků Azure pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-I v případě, že máte zájem business jeden pouze, dokument [Azure Virtual Machines plánování a implementace SAP Netweaveru](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) může být dobrým zdrojem informací.
+I v případě, že máte zájem o podnikání jenom jednou, dokument [plánování a implementace Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) může být dobrým zdrojem informací.
 
-Předpokladem je, že se můžete jako instance nasazení SAP Business One:
+Předpokladem je, že jako instance nasazujete SAP Business One:
 
-- Zkušenosti s instalace SAP HANA na dané infrastruktury, jako jsou virtuální počítač
-- Známý instalaci aplikace SAP Business One na infrastrukturu, jako jsou virtuální počítače Azure
-- Zkušenosti s provozováním SAP Business One a zvolit systém DBMS
-- Zkušenosti s nasazením infrastruktury v Azure
+- Seznámení s instalací SAP HANA v dané infrastruktuře, jako je třeba virtuální počítač
+- Známou instalaci aplikace SAP Business One na infrastrukturu, jako jsou virtuální počítače Azure
+- Seznamte se s operačním systémem SAP Business One a vybraným systémem DBMS.
+- Seznámení s nasazením infrastruktury v Azure
 
-Všechny tyto oblasti nesmí být zahrnuté v tomto dokumentu.
+Všechny tyto oblasti nebudou zahrnuty v tomto dokumentu.
 
-Kromě dokumentace ke službě Azure byste měli znát hlavní poznámky SAP, který odkazuje na jednu obchodní nebo které jsou centrální poznámky SAP pro firmy, jeden:
+Kromě dokumentace k Azure byste měli znát hlavní poznámky ke službě SAP, které odkazují na firmu One nebo které jsou centrálními poznámkami od SAP pro firmy One:
 
-- [528296 – Poznámka: Přehled obecné pro SAP Business jeden verze a související produkty](https://launchpad.support.sap.com/#/notes/528296)
-- [2216195 – poznámky k verzi aktualizace pro SAP Business jeden 9.2, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2216195)
-- [2483583 - centrální Poznámka k SAP Business jeden 9.3](https://launchpad.support.sap.com/#/notes/2483583)
-- [2483615 – vydání aktualizace Poznámka pro SAP Business jeden 9.3](https://launchpad.support.sap.com/#/notes/2483615)
-- [2483595 - kolektivní Poznámka k SAP Business jeden 9.3 obecnými problémy souvisejícími s](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458 - kolektivní konzultační Poznámka pro SAP HANA-Related témata SAP Business One, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
+- [528296 – obecná Poznámka k přehledu SAP Business One Release a souvisejících produktů](https://launchpad.support.sap.com/#/notes/528296)
+- [2216195 – aktualizace vydané verze poznámky pro SAP Business One 9,2, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2216195)
+- [2483583 – střední Poznámka pro SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483583)
+- [2483615 – aktualizace vydané verze poznámky pro SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
+- [2483595 – kolektivní Poznámka pro SAP Business One 9,3 Obecné problémy](https://launchpad.support.sap.com/#/notes/2483595)
+- [2027458 – kolektivní poznámková Poznámka k SAP HANA Příbuzná témata týkající se SAP Business One, verze pro SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
 
 
-## <a name="business-one-architecture"></a>Architektura jednoho firmy
-Obchodní z nich je aplikace, která má dvě úrovně:
+## <a name="business-one-architecture"></a>Podniková jedna architektura
+Obchodní jedna je aplikace, která má dvě úrovně:
 
-- Klientská vrstva s klientem "fat.
+- Vrstva klienta s klientem systému souborů FAT
 - Databázová vrstva, která obsahuje schéma databáze pro tenanta
 
-Lepší přehled, které komponenty jsou spuštěné v klientské části a které části jsou spuštěny v části server je popsána v [SAP Business jeden Příručka pro správce](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) 
+Lepší přehled o tom, které součásti jsou spuštěny v části klienta a které části jsou spuštěny v části serveru, jsou popsány v článku [SAP Business One – Příručka správce](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) . 
 
-Protože náročné latence důležité interakce mezi klientská vrstva a vrstva DBMS, třeba obou úrovní nacházet v Azure, při nasazení v Azure. je běžné, že uživatelé pak vzdálené plochy na jeden nebo více virtuálních počítačů spuštěných vzdálené plochy služby pro Business One součásti klienta.
+Vzhledem k tomu, že mezi vrstvou klienta a vrstvou systému DBMS dochází k vysoké latenci, je potřeba, aby při nasazení v Azure byly obě úrovně v Azure umístěné v Azure. obvykle je to, že uživatelé pak mají k jednomu nebo několika virtuálním počítačům, na kterých je spuštěná služba RDS, jednu z komponent klienta.
 
-### <a name="sizing-vms-for-sap-business-one"></a>Změna velikosti virtuálních počítačů pro SAP Business jeden
+### <a name="sizing-vms-for-sap-business-one"></a>Změna velikosti virtuálních počítačů pro SAP Business One
 
-Pokud jde o velikosti virtuálních počítačů klienta, požadavky na prostředky jsou popsány SAP v dokumentu [SAP Business jeden Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Pro Azure budete muset zaměřit a dobře se počítá s požadavky uvedenými v kapitole 2.4 dokumentu.
+V souvislosti s určením velikosti virtuálních počítačů klientů jsou požadavky na prostředky zdokumentovány v tématu SAP v dokumentu [SAP Business One hardware – Průvodce požadavky](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). V případě Azure se musíte zaměřit a počítat s požadavky uvedenými v kapitole 2,4 dokumentu.
 
-Jako virtuální počítače Azure pro hostování Business One klientské komponenty a hostitele DBMS jsou povoleny pouze virtuální počítače, které jsou podporovány SAP NetWeaver. Seznam SAP NetWeaver podporovaných virtuálních počítačích Azure najdete v článku [SAP 1928533 # Poznámka](https://launchpad.support.sap.com/#/notes/1928533).
+Jako virtuální počítače Azure pro hostování firemních komponent a hostitele DBMS jsou povolené jenom virtuální počítače, které jsou podporované SAP NetWeaver. Pokud chcete najít seznam podporovaných virtuálních počítačů Azure NetWeaver, přečtěte [si poznámku SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-Spuštění SAP HANA jako back-end systém DBMS pro Business One, jenom virtuální počítače, které jsou uvedeny pro firmy v HANA v [seznamu platformy IaaS certifeid HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) jsou podporovány pro HANA. Business One klientské součásti nejsou ovlivněny toto silnější omezení pro SAP HANA jako systém DBMS.
+Provozování SAP HANA jako systému DBMS back-endu pro firmy – pro HANA se podporují jenom virtuální počítače, které jsou uvedené pro firmy na HANA v [seznamu platforem Hana Certifeid IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) . Toto silnější omezení pro SAP HANA jako systém DBMS nemá vliv na obchodní komponenty na jeden klient.
 
-### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Verze operačního systému pro SAP Business One
+### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Verze operačních systémů, které se mají použít pro SAP Business One
 
-V zásadě je vždy vhodné použít nejnovější verze operačního systému. Zejména v prostoru Linux nové funkce Azure zavedl různé novější vedlejší verze operačního systému Suse a Red Hat. Na straně Windows Windows Server 2016 s vysokou doporučuje se použít.
+V zásadě je vždy nejvhodnější použít nejnovější verze operačních systémů. Zejména v prostoru Linux se nové funkce Azure představily s různými novějšími podverzemi SUSE a Red Hat. Na straně Windows se důrazně doporučuje použití Windows serveru 2016.
 
 
 ## <a name="deploying-infrastructure-in-azure-for-sap-business-one"></a>Nasazení infrastruktury v Azure pro SAP Business One
-V dalším několik kapitolách dílky infrastruktury tomuto účelu nasazení SAP.
+V několika dalších kapitolách se infrastruktura týkají nasazení SAP.
 
-### <a name="azure-network-infrastructure"></a>Azure síťovou infrastrukturu
-Síťové infrastruktury, které potřebujete k nasazení v Azure, závisí na, jestli nasazujete jednu Business One systém sami. Nebo, jestli se hostitel, který hostuje desítky Business One systémy pro zákazníky. Může existovat i drobné změny v návrhu na tom, jestli způsob připojení k Azure. Projít různé možnosti, jeden návrh kde máte připojení k síti VPN do Azure a ve kterém můžete rozšířit služby Active Directory prostřednictvím [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) nebo [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) do Azure.
+### <a name="azure-network-infrastructure"></a>Síťová infrastruktura Azure
+Síťová infrastruktura, kterou potřebujete nasadit v Azure, závisí na tom, jestli pro sebe nasadíte jeden podnikový systém. Nebo bez ohledu na to, jestli jste hostitel, který hostuje spoustu obchodních systémů pro zákazníky. V návrhu se taky můžou mírně měnit informace o tom, jestli se k Azure připojujete. Procházejí různé možnosti, jeden návrh, kde máte připojení VPN do Azure a kde rozšiřujete službu Active Directory prostřednictvím [sítě VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) nebo [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) do Azure.
 
-![Jednoduchá síť konfigurace s Business One](./media/business-one-azure/simple-network-with-VPN.PNG)
+![Jednoduchá konfigurace sítě s jedním podnikem](./media/business-one-azure/simple-network-with-VPN.PNG)
 
-Zjednodušená konfigurace zobrazí zavádí několik instancí zabezpečení, které umožňují ke správě a omezení směrování. Začíná 
+Uvedená zjednodušená konfigurace zavádí několik instancí zabezpečení, které umožňují řídit a omezit směrování. Začíná na 
 
-- Směrovače a brány firewall na straně zákazníka místní.
-- Další instance nastane o [skupiny zabezpečení sítě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview) můžete zavést pravidla směrování a zabezpečení pro virtuální síť Azure, kterou provozujete v jedné konfiguraci SAP Business.
-- Pokud se chcete vyhnout, které uživatelé Business One klienta můžete zobrazit i serveru, na kterém běží obchodní jeden server, který se spouští v databázi, byste měli oddělit virtuálního počítače hostující obchodní jednoho klienta a business jeden server ve dvou různých podsítích virtuální sítě.
-- Pokud chcete omezit přístup k jednomu serveru obchodní by znovu použít přiřazené ke dvěma různým podsítím skupiny zabezpečení sítě Azure.
+- Směrovač nebo brána firewall na straně zákazníka na místním zařízení.
+- Další instancí je [Skupina zabezpečení sítě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview) , kterou můžete použít k zavedení pravidel směrování a zabezpečení pro virtuální síť Azure, na které spouštíte podnikovou konfiguraci SAP v nástroji.
+- Aby se zabránilo tomu, že uživatelé firmy můžou také vidět Server, na kterém běží podnikový jeden server, na kterém běží databáze, měli byste oddělit virtuální počítač, který je hostitelem jednoho klienta, a podnikový jeden server ve dvou různých podsítích v rámci virtuální sítě.
+- Pro omezení přístupu k podnikovému jednomu serveru byste měli znovu použít službu Azure NSG přiřazenou ke dvěma různým podsítím.
 
-Složitější verze konfigurace sítě Azure je založená na Azure [popsané doporučené postupy hvězdicové architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Vzor architektury hvězdicové změní první zjednodušená konfigurace na jednu takto:
+Propracovanější verze konfigurace sítě Azure je založená na osvědčených postupech Azure v rámci [architektury hub a paprsků](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Vzor architektury hub a paprsek by změnil první zjednodušenou konfiguraci tak, aby vypadala takto:
 
 
-![Rozbočovač a uvedenou konfiguraci s Business One](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
+![Konfigurace hub a paprsků s podnikovým jedním](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
 
-Pro případy, kdy se uživatelé připojují prostřednictvím Internetu bez jakéhokoli privátního připojení do Azure, návrhu sítě v Azure by měl být v souladu s principy zdokumentované v Azure referenční architektury pro [DMZ mezi Azure a Internetem](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz).
+V případě, že se uživatelé připojují přes Internet bez privátního připojení do Azure, musí být návrh sítě v Azure v souladu se zásadami popsanými v referenční architektuře Azure pro [DMZ mezi Azure a Internet](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz).
 
-### <a name="business-one-database-server"></a>Business jeden databázový server
-Typ databáze systému SQL Server a SAP HANA jsou k dispozici. Bez ohledu na správce databáze, byste si měli přečíst dokument [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) zobrazíte obecné principy nasazení DBMS v azure virtuální počítače a související sítě a úložiště témata.
+### <a name="business-one-database-server"></a>Podnikový jeden databázový server
+Pro typ databáze jsou k dispozici SQL Server a SAP HANA. Nezávisle na systému DBMS, měli byste si přečíst dokumentaci dokumentu [k nasazení azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) a získat obecné informace o nasazeních DBMS ve virtuálních počítačích Azure a souvisejících tématech o sítích a úložištích.
 
-I když už oznámil v konkrétní a obecné databáze dokumentů, je třeba sami znát:
+I když se v konkrétních a obecných databázových dokumentech již zvýrazňuje, měli byste se seznámit s těmito kroky:
 
-- [Správa dostupnosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) a [Správa dostupnosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
-- [Smlouva SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
+- [Správa dostupnosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) a [Správa dostupnosti virtuálních počítačů se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
-Tyto dokumenty by vám při rozhodování o výběru typů úložiště a konfigurace vysoké dostupnosti.
+Tyto dokumenty by vám měly pomáhat při rozhodování o výběru typů úložiště a konfiguraci vysoké dostupnosti.
 
 V zásadě byste měli:
 
-- Používání disků Premium SSD přes standardní pevné disky. Další informace o typech disků k dispozici, najdete v našem článku [vyberte typ disku](../../windows/disks-types.md)
-- Použití Azure Managed disks za nespravované disky
-- Ujistěte se, že máte dostatečnou propustnost vstupně-výstupních operací a vstupně-výstupních operací nakonfigurovanou vaše konfigurace disků
-- Abyste měli náklady na konfiguraci efektivní úložiště kombinovat/hana nebo data a /hana/log svazku
+- Použijte Premium SSD oproti standardu HDD. Další informace o dostupných typech disků najdete v našem článku [Výběr typu disku](../../windows/disks-types.md) .
+- Použití Azure Managed disks na nespravovaných discích
+- Ujistěte se, že máte dostatečný počet IOPS a propustnost vstupně-výstupních operací nakonfigurovaných s konfigurací disku.
+- Pokud chcete mít cenově výhodnější konfiguraci úložiště, zkombinujte/Hana/data a/Hana/log svazek.
 
 
 #### <a name="sql-server-as-dbms"></a>SQL Server jako DBMS
-Pro nasazení systému SQL Server jako DBMS pro Business One, přejděte na dokument [nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
+Pokud chcete nasadit SQL Server jako DBMS pro firmy, přečtěte si dokument [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
 
-Jsou odhady přibližnou velikosti pro stranu DBMS pro SQL Server:
+Přibližné odhady velikosti pro SQL Server pro systém DBMS jsou následující:
 
-| Počet uživatelů | virtuální procesory | Memory (Paměť) | Příklad typy virtuálních počítačů |
+| Počet uživatelů | vCPU | Memory (Paměť) | Příklady typů virtuálních počítačů |
 | --- | --- | --- | --- |
 | až 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
 | až 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
 | až 80 | 16 | 64 GB | D16s_v3, E16s_v3 |
 | až 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
-Nastavení velikosti uvedené výše by měl získat představu tam, kde začít. Může být, že budete potřebovat méně nebo více prostředků, v takovém případě je snadné přizpůsobení v azure. Změna mezi typy virtuálních počítačů je možné s restartování virtuálního počítače.
+Výše uvedená velikost by měla poskytnout představu o tom, kde začít s. Je možné, že potřebujete méně nebo více prostředků. v takovém případě je to snadné. Změna mezi typy virtuálních počítačů je možná pouhým restartováním virtuálního počítače.
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA jako DBMS
-Použití SAP HANA DBMS následujících částech vám by měly dodržovat důležité informace o dokumentu [SAP HANA v Azure Provozní příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+Použití SAP HANA jako DBMS v následujících částech byste měli postupovat podle pokynů v dokumentu [SAP HANA v provozní příručce Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
 
-Pro vysokou dostupnost a konfiguracích zotavení po havárii kolem SAP HANA jako databázi pro Business One v Azure, přečtěte si dokumentaci [vysoké dostupnosti SAP HANA pro Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) a dokumentace na které z tohoto dokumentu.
+V případě konfigurace pro vysokou dostupnost a zotavení po havárii v rámci služby SAP HANA jako databáze pro firmy v Azure byste si měli přečíst dokumentaci [SAP HANA vysoké dostupnosti pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) a dokumentaci, na kterou se odkazuje z tohoto dokumentu. .
 
-Pro SAP HANA zálohování a obnovení strategie, byste si měli přečíst dokument [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) a dokumentaci na který je odkazováno z tohoto dokumentu.
+Pokud SAP HANA strategie zálohování a obnovení, měli byste si přečíst příručku k [zálohování dokumentů pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) a dokumentaci, na kterou se odkazuje z tohoto dokumentu.
 
  
-### <a name="business-one-client-server"></a>Obchodní na jeden server
-Tyto součásti aspekty volby úložiště nejsou prvořadým zájmem. Nicméně budete chtít mít spolehlivé platformě. Pro tento virtuální počítač, proto měli používat Azure Storage úrovně Premium i pro základní virtuální pevný disk. Změna velikosti virtuálního počítače, s daty v [SAP Business jeden Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Pro Azure budete muset zaměřit a dobře se počítá s požadavky uvedenými v kapitole 2.4 dokumentu. Můžete vypočítat požadavky, je potřeba porovnání následující dokumenty, kde najít ideální virtuálního počítače:
+### <a name="business-one-client-server"></a>Podnikový jeden klientský server
+Pro tyto součásti se nejedná o zásadní obavy týkající se úložiště. Nicméně chcete mít spolehlivou platformu. Proto byste pro tento virtuální počítač měli použít Azure Premium Storage, a to i pro základní virtuální pevný disk. Velikost virtuálního počítače nastavujte pomocí dat uvedených v tématu [Průvodce požadavky SAP podniku na hardware](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). V případě Azure se musíte zaměřit a počítat s požadavky uvedenými v kapitole 2,4 dokumentu. Při výpočtu požadavků je třeba je porovnat s následujícími dokumenty a najít ideální virtuální počítač pro vás:
 
 - [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [Poznámka SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [Poznámka ke SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
-Porovnejte počet procesorů a paměti, které jsou potřebné k popisu společností Microsoft. Mějte také propustnost sítě při výběru virtuální počítače.
+Porovnejte počet procesorů a paměti, které je třeba zdokumentovat od Microsoftu. Při volbě virtuálních počítačů si taky Pamatujte na propustnost sítě.
 
 
 

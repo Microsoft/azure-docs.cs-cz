@@ -1,45 +1,44 @@
 ---
-title: Certifikace SAP Hana v Azure (velké instance) | Dokumentace Microsoftu
-description: Certifikace SAP Hana v Azure (velké instance).
+title: Certifikace SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Certifikace SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d623a189da5c5eccd73018e1ae0b7e5564fe09ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709691"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099881"
 ---
 # <a name="certification"></a>Certifikace
 
-Kromě certifikační NetWeaver SAP vyžaduje speciální certifikaci pro SAP HANA a SAP HANA podporují určité infrastruktury, jako je Azure IaaS.
+Kromě certifikace NetWeaver vyžaduje SAP speciální certifikaci pro SAP HANA podporu SAP HANA na určitých infrastrukturách, jako je Azure IaaS.
 
-Je základní Poznámka SAP na systému NetWeaver a SAP HANA stupně certifikace [SAP Poznámka #1928533 – aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533).
+Základní Poznámka ke službě SAP na NetWeaver a SAP HANA certifikace jsou [v rámci služby SAP Note #1928533 – aplikace SAP v Azure: Podporované produkty a typy](https://launchpad.support.sap.com/#/notes/1928533)virtuálních počítačů Azure.
 
-Záznamy certifikaci pro SAP HANA na jednotky Azure (velké instance) najdete v [platformách IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokality. 
+Záznamy o certifikaci pro SAP HANA v Azure (velké instance) najdete na webu [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . 
 
-SAP HANA v Azure (velké instance) typů uvedených v SAP HANA s certifikací platformy IaaS lokality poskytuje Microsoft a SAP zákazníkům možnost nasazení velké SAP Business Suite, SAP BW, s/4 HANA, BW/4HANA nebo jiné úlohy SAP HANA v Azure. Toto řešení je založeno na razítku certifikovaných vyhrazený hardware SAP HANA ([SAP HANA přizpůsobená data center integrace – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spouštíte řešení SAP HANA TDI nakonfigurované, všechny aplikace pro systém SAP HANA (jako je SAP Business Suite v SAP HANA, SAP BW on SAP HANA S4/HANA a BW4/HANA) funguje na hardwarové infrastruktury.
+SAP HANA v Azure (velké instance), na které se říká SAP HANA certifikovaných platforem IaaS, poskytují zákazníkům Microsoftu a SAP možnost nasadit v Azure rozsáhlou sadu SAP Business Suite, SAP BW, S/4 HANA, ČERNOBÍLe/4HANA nebo jiné úlohy SAP HANA. Řešení je založené na certifikovaném hardwarovém razítku SAP-HANA ([SAP HANA přizpůsobené integraci datového centra – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spustíte SAP HANA řešení s označením TDI, všechny aplikace založené na SAP HANA (například SAP Business Suite na SAP HANA, SAP BW na SAP HANA, S4/HANA a BW4/HANA) fungují na hardwarové infrastruktuře.
 
-Porovnání se spouštěním SAP HANA ve virtuálních počítačích, toto řešení má výhodu. Poskytuje větší objemy paměti. Pokud chcete povolit toto řešení, je potřeba pochopit následující klíčové aspekty:
+V porovnání se spouštěním SAP HANA na virtuálních počítačích má toto řešení výhodu. Poskytuje mnohem větší paměťové svazky. Chcete-li povolit toto řešení, je nutné pochopit následující klíčové aspekty:
 
-- SAP aplikací vrstvy a mimo systém SAP aplikace běží ve virtuálních počítačích, které jsou hostované v razítka obvykle hardware Azure.
-- Zákazník v místní infrastruktuře, datových center, a nasazení aplikací jsou připojené k platformě cloud prostřednictvím ExpressRoute (doporučeno) nebo virtuální privátní sítě (VPN). Služba Active Directory a DNS také se rozšíří do Azure.
-- Instance databáze SAP HANA pro pracovní vytížení HANA běží na systému SAP HANA v Azure (velké instance). Velká Instance razítka je připojen do sítě Azure, aby software spuštěný na virtuálních počítačích můžete pracovat s instance HANA používané velká Instance HANA.
-- Hardware systému SAP HANA v Azure (velké instance) je k dispozici v IaaS s operačním systémem SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux a předinstalovaným vyhrazený hardware. Stejně jako u virtuálních počítačů, další aktualizace a údržba pro operační systém je na vás.
-- Instalace HANA nebo jakékoli další komponenty potřebné ke spuštění SAP HANA na jednotkách velká Instance HANA je vaší povinností. Všechny příslušné probíhající operace a správa SAP HANA v Azure jsou také vaší povinností.
-- Kromě řešení je zde popsáno můžete nainstalovat další komponenty ve vašem předplatném Azure, která se připojuje k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s, nebo přímo do systému SAP HANA databáze, jako jsou třeba jump servery, servery protokolu RDP, SAP HANA Studio, SAP Data Services pro SAP BI scénáře, nebo řešení pro monitorování sítě.
-- Velká Instance HANA stejně jako v Azure, nabízí podporu pro vysokou dostupnost a funkce pro zotavení po havárii.
+- Aplikační vrstva SAP a aplikace jiného typu než SAP běží na virtuálních počítačích, které jsou hostované v obvyklých hardwarových razítkách Azure.
+- Místní infrastruktura, datová centra a nasazení aplikací jsou připojené ke cloudové platformě prostřednictvím ExpressRoute (doporučeno) nebo virtuální privátní sítě (VPN). Služby Active Directory a DNS se taky rozšiřují do Azure.
+- Instance databáze SAP HANA pro úlohy HANA běží na SAP HANA v Azure (velké instance). Označení velkých instancí je připojené k síti Azure, takže software běžící na virtuálních počítačích může komunikovat s instancí HANA spuštěnou ve velké instanci HANA.
+- Hardware SAP HANA v Azure (velké instance) je vyhrazený hardware, který je k dispozici v IaaS s předinstalovaným SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux. Stejně jako u virtuálních počítačů je vám vaše zodpovědnost za další aktualizace a údržbu operačního systému.
+- Instalace HANA nebo jakékoli další součásti, které jsou nutné ke spuštění SAP HANA v jednotkách velké instance HANA, je vaše zodpovědnost. Všechny příslušné probíhající operace a Správa SAP HANA v Azure jsou také vaší zodpovědností.
+- Kromě řešení popsaných tady můžete nainstalovat další komponenty v rámci předplatného Azure, které se připojují k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s SAP HANA nebo přímo do databáze, jako jsou servery odkazů, servery RDP, SAP HANA Studio, SAP Data Services pro scénáře SAP BI nebo řešení monitorování sítě.
+- Stejně jako v Azure nabízí velká instance HANA podporu pro funkce vysoké dostupnosti a zotavení po havárii.
 
 **Další postup**
-- Přečtěte si [dostupných skladových položek pro HLI](hana-available-skus.md) 
+- Projděte si [dostupné SKU pro HLI](hana-available-skus.md) 

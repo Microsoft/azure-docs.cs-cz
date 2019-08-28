@@ -1,153 +1,152 @@
 ---
-title: Zálohování SAP HANA Azure založené na snímcích úložiště | Dokumentace Microsoftu
-description: Existují dvě hlavní zálohování možnosti pro SAP HANA na virtuálních počítačích Azure, tento článek se týká zálohování SAP HANA založené na snímcích úložiště
+title: SAP HANA zálohování Azure na základě snímků úložiště | Microsoft Docs
+description: Existují dvě hlavní možnosti zálohování SAP HANA na virtuálních počítačích Azure. Tento článek se zabývá SAP HANA zálohování na základě snímků úložiště.
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 875060a59cf70d295534c3a4f56136010a560e74
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709929"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078596"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
 ## <a name="introduction"></a>Úvod
 
-Toto je část z třídílné série článků související na zálohování SAP HANA. [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace pro zahájení práce a [SAP HANA Azure Backup na úrovni souborů](sap-hana-backup-file-level.md) zahrnuje možnost zálohování souborů.
+Tato část je součástí série článků souvisejících v rámci zálohování SAP HANA. [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace o tom, jak začít, a [SAP HANA Azure Backup na úrovni souborů](sap-hana-backup-file-level.md) pokrývá možnost zálohování na základě souborů.
 
-Pokud používáte funkci zálohování virtuálních počítačů pro ukázku All-in-one jednou instancí systému, jeden zvažte provedení zálohování virtuálních počítačů namísto správy záloh HANA na úrovni operačního systému. Alternativou je pořizovat snímky objektů blob v Azure k vytvoření kopie jednotlivé virtuální disky, které jsou připojené k virtuálnímu počítači, a zachovat HANA datových souborů. Ale konzistence aplikací při vytváření snímku zálohy nebo disk virtuálního počítače, zatímco systém je v provozu a spouštění je kritický bod. Zobrazit _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md). SAP HANA má funkci, která podporuje tyto druhy snímků úložiště.
+Při použití funkce zálohování virtuálního počítače pro ukázkový systém s jednou instancí je potřeba, aby se místo správy záloh HANA na úrovni operačního systému mělo zvážit zálohování virtuálního počítače. Alternativou je pořizování snímků Azure Blob pro vytváření kopií jednotlivých virtuálních disků, které jsou připojené k virtuálnímu počítači, a zachování datových souborů HANA. Kritická je ale konzistence aplikací při vytváření zálohy virtuálního počítače nebo snímku disku v době, kdy je systém v provozu. V tématu _SAP HANA konzistence dat při pořizování snímků úložiště_ v související [příručce zálohování článků pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md). SAP HANA má funkci, která podporuje tyto druhy snímků úložiště.
 
-## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>SAP HANA snímků jako centrální část Aplikačně konzistentní zálohování
+## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>SAP HANA snímky jako centrální součást záloh konzistentních vzhledem k aplikacím
 
-V SAP HANA, který podporuje pořizování snímku úložiště není funkce. Existuje omezení na jeden kontejner systémy. Scénáře sing MCS SAP HANA s více než jednoho tenanta nepodporuje tento typ snímku databáze SAP HANA (viz [vytvořit úložiště snímků (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)).
+SAP HANA, který podporuje pořízení snímku úložiště, je funkce. Existují omezení pro systémy s jedním kontejnerem. Scénáře jednotlivě SAP HANA MCS s více než jedním klientem nepodporují tento druh snímku databáze SAP HANA (viz [vytvoření snímku úložiště (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)).
 
 Funguje takto:
 
-- Příprava úložiště snímků pomocí inicializace snímek SAP HANA
-- Spustit úložiště snímku (snapshot, třeba Azure blob)
-- Potvrďte snímek SAP HANA
+- Příprava snímku úložiště zahájením SAP HANA snímku
+- Spusťte snímek úložiště (například snímek Azure BLOB).
+- Potvrzení SAP HANA snímku
 
-![Tento snímek obrazovky ukazuje, že snímku dat SAP HANA lze vytvořit pomocí příkazu SQL](media/sap-hana-backup-storage-snapshots/image011.png)
+![Tento snímek obrazovky ukazuje, že SAP HANA snímek dat lze vytvořit pomocí příkazu SQL](media/sap-hana-backup-storage-snapshots/image011.png)
 
-Tento snímek obrazovky ukazuje, že snímku dat SAP HANA lze vytvořit pomocí příkazu SQL.
+Tento snímek obrazovky ukazuje, že SAP HANA snímek dat lze vytvořit pomocí příkazu jazyka SQL.
 
-![Snímek se pak také objeví v katalogu záloh v SAP HANA Studio](media/sap-hana-backup-storage-snapshots/image012.png)
+![Snímek se pak zobrazí také v katalogu záloh v SAP HANA studiu.](media/sap-hana-backup-storage-snapshots/image012.png)
 
-Snímek pak se zobrazí také v katalogu záloh v SAP HANA Studio.
+Snímek se pak zobrazí také v katalogu záloh v SAP HANA studiu.
 
-![Na disku snímku se zobrazí v adresáři dat SAP HANA](media/sap-hana-backup-storage-snapshots/image013.png)
+![Na disku se snímek zobrazí v adresáři SAP HANA dat.](media/sap-hana-backup-storage-snapshots/image013.png)
 
-Na disku zobrazí snímku se v adresáři dat SAP HANA.
+Na disku se snímek zobrazí v adresáři SAP HANA dat.
 
-Jeden má zajistit, že konzistence systému souborů je také zaručeno, že před spuštěním snímků úložiště SAP HANA je v režimu přípravy snímku. Zobrazit _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
+Jedna z nich musí zajistit, aby před spuštěním snímku úložiště byla zaručena konzistence systému souborů, zatímco SAP HANA je v režimu přípravy snímků. V tématu _SAP HANA konzistence dat při pořizování snímků úložiště_ v související [příručce zálohování článků pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
 
-Po dokončení snímků úložiště je velmi důležité pro potvrzení snímek SAP HANA. Neexistuje odpovídající příkaz jazyka SQL spustit: Zavřít SNÍMKU zálohování dat (viz [dat zavřít SNÍMKU příkaz BACKUP (zálohování a obnovení)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
+Po dokončení snímku úložiště je důležité potvrdit SAP HANA snímek. Existuje odpovídající příkaz SQL ke spuštění: Zavřít snímek ZÁLOHOVANých dat (viz [příkaz Zavřít snímek zálohovaných dat (zálohování a obnovení)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)).
 
 > [!IMPORTANT]
-> Potvrďte HANA snímku. Z důvodu &quot;kopie při zápisu,&quot; SAP HANA potřebovat další místo na disku v přípravě snímku režimu a není možné spustit nové zálohování, dokud není potvrzené snímek SAP HANA.
+> Potvrďte snímek HANA. Z důvodu&quot; kopírování na zápis SAP HANA může vyžadovat další místo na disku v režimu přípravy snímku a není možné spustit nové zálohy, dokud se nepotvrdí SAP HANA snímku. &quot;
 
-## <a name="hana-vm-backup-via-azure-backup-service"></a>Zálohování virtuálních počítačů HANA prostřednictvím služby Azure Backup
+## <a name="hana-vm-backup-via-azure-backup-service"></a>Zálohování virtuálního počítače HANA prostřednictvím služby Azure Backup
 
-Zálohování agenta služby Azure Backup není k dispozici pro virtuální počítače s Linuxem. Kromě Linuxu nemá podobné funkce, jako Windows je s službu VSS.  Chcete-li používat služby Azure backup na úrovni souborů či složek, jednu by zkopírujte záložní soubory SAP HANA do virtuálního počítače s Windows a pak pomocí agenta zálohování. 
+Agent zálohování služby Azure Backup není k dispozici pro virtuální počítače se systémem Linux. Kromě toho Linux nemá podobné funkce jako systém Windows s VSS.  Aby bylo možné používat službu Azure Backup na úrovni souboru nebo adresáře, může jeden zkopírovat SAP HANA záložní soubory na virtuální počítač s Windows a potom použít agenta zálohování. 
 
-Pouze úplné zálohování virtuálního počítače s Linuxem v opačném případě je možné prostřednictvím služby Azure Backup. Zobrazit [přehled funkcí ve službě Azure Backup](../../../backup/backup-introduction-to-azure-backup.md) Další.
+V opačném případě je možné prostřednictvím služby Azure Backup použít pouze úplné zálohování virtuálních počítačů se systémem Linux. Další informace najdete v tématu [Přehled funkcí v Azure Backup](../../../backup/backup-introduction-to-azure-backup.md) .
 
-Služba Azure Backup nabízí možnost pro zálohování a obnovení virtuálního počítače. Další informace o této službě a její funkci najdete v článku [plánování infrastruktury zálohování virtuálních počítačů v Azure](../../../backup/backup-azure-vms-introduction.md).
+Služba Azure Backup nabízí možnost zálohování a obnovení virtuálního počítače. Další informace o této službě a o tom, jak to funguje, najdete v článku [plánování infrastruktury zálohování virtuálních počítačů v Azure](../../../backup/backup-azure-vms-introduction.md).
 
-Existují dva důležité aspekty podle tohoto článku:
+Existují dva důležité informace, které jsou v souladu s tímto článkem:
 
-_&quot;Pro virtuální počítače s Linuxem jsou je to možné, pouze konzistentní zálohování, od Linuxu nemá ekvivalentní platformy pro službu VSS.&quot;_
+_&quot;Pro virtuální počítače se systémem Linux jsou možné pouze zálohy konzistentní se soubory, protože systém Linux nemá odpovídající platformu pro službu Stínová kopie svazku (VSS).&quot;_
 
-_&quot;Aplikace je nutné implementovat vlastní &quot;opravit&quot; mechanismus pro obnovená data.&quot;_
+_&quot;Aplikace potřebují pro obnovená data &quot;implementovat vlastní&quot; mechanizmus pro opravy.&quot;_
 
-Proto jeden má Ujistěte se, že SAP HANA v konzistentním stavu na disku při spuštění zálohování. Zobrazit _SAP HANA snímky_ popsané dříve v dokumentu. Ale když SAP HANA zůstane v tomto režimu přípravy snímku je potenciální problém. Zobrazit [vytvořit úložiště snímků (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) Další informace.
+Proto jedna z nich musí mít jistotu, že SAP HANA je v konzistentním stavu na disku při spuštění zálohování. Viz _snímky SAP HANA_ popsané dříve v dokumentu. Existuje však potenciální problém, když SAP HANA zůstane v tomto režimu přípravy snímku. Další informace najdete v tématu [vytvoření snímku úložiště (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) .
 
 Tento článek uvádí:
 
-_&quot;Se důrazně doporučuje potvrďte nebo zrušte úložiště snímku co nejdříve po jeho vytvoření. Zatímco je snímek úložiště připravené nebo vytvořili, snímek příslušných dat je zmrazen. Když zůstane zmrazené snímek příslušných dat, můžete stále provádět změny v databázi. Tyto změny nezpůsobí zmrazené snímku relevantní data, která mají změnit. Místo toho změny jsou zapsány do pozice v datové oblasti, které jsou oddělené od snímků úložiště. Změny se zapisují taky do protokolu. Ale tím déle snímek příslušných dat se ukládají zmrazené, čím můžou růst objemu dat.&quot;_
+_&quot;Důrazně doporučujeme, abyste snímek úložiště po jeho vytvoření potvrdili nebo zrušili. Během přípravy nebo vytváření snímku úložiště jsou data relevantní pro snímek zmrazena. I když zůstanou data relevantní pro snímek zablokovaná, můžou se v databázi provádět změny. Tyto změny nezpůsobí změnu zmrazených dat týkajících se snímků. Místo toho se změny zapisují do pozic v oblasti dat, které jsou oddělené od snímku úložiště. Do protokolu se zapisují také změny. Data relevantní pro snímek se ale uchovávají zmrazená, čím víc objem dat může růst.&quot;_
 
-Azure Backup se postará o konzistence systému souborů prostřednictvím rozšíření virtuálního počítače Azure. Tato rozšíření nejsou k dispozici samostatná a fungují pouze v kombinaci se službou Azure Backup. Je však stále potřeba zadat skripty k vytvoření a odstranění snímku SAP HANA pro zajištění konzistence aplikace.
+Azure Backup zabere v potaz konzistenci systému souborů prostřednictvím rozšíření virtuálních počítačů Azure. Tato rozšíření nejsou samostatně dostupná a fungují pouze v kombinaci s Azure Backup službou. Nicméně je stále potřeba poskytnout skripty pro vytvoření a odstranění snímku SAP HANA pro zajištění konzistence aplikace.
 
 Azure Backup má čtyři hlavní fáze:
 
-- Spustit Příprava skriptu – skript je potřeba vytvořit snímek SAP HANA
+- Spustit přípravu skriptu-skript musí vytvořit snímek SAP HANA
 - Pořídit snímek
-- Spuštění skriptu po pořízení snímku – skript je potřeba odstranit SAP HANA vytvořen skriptem přípravy
-- Přenést data do úložiště
+- Spustit skript po snímku – skript musí odstranit SAP HANA vytvořené skriptem Prepare.
+- Přenos dat do trezoru
 
-Podrobnosti, ve kterém můžete zkopírovat tyto skripty a podrobnosti o tom, jak funguje Azure Backup přesně najdete v následujících článcích:
+Podrobnosti o tom, kam zkopírovat tyto skripty a podrobnosti o tom, jak Azure Backup funguje přesně, najdete v následujících článcích:
 
 - [Plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Konzistentní zálohování virtuálních počítačů Azure s Linuxem](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)
+- [Zálohování virtuálních počítačů Azure Linux konzistentní vzhledem k aplikacím](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)
 
 
 
-V tomto okamžiku v okamžiku, nepublikoval Microsoft připraví a po pořízení snímku skriptů pro SAP HANA. Jako zákazník nebo systém integrátor musíte vytvořit tyto skripty a nakonfigurovat postupem podle dokumentace výše uvedenými.
+V tomto okamžiku společnost Microsoft nezveřejnila přípravu skriptů a skripty po snímku pro SAP HANA. Pokud byste chtěli, aby se tyto skripty vytvořily jako zákazník nebo systémový integrátor, je nutné nakonfigurovat postup na základě dokumentace, na kterou se odkazuje výše.
 
 
-## <a name="restore-from-application-consistent-backup-against-a-vm"></a>Obnovení ze zálohy konzistentní vzhledem k aplikacím aplikace na virtuálním počítači
-Proces obnovení konzistentní vzhledem k aplikacím zálohu aplikace pořízeným službou Azure backup je popsána v článku [obnovení souborů ze záloh virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm). 
+## <a name="restore-from-application-consistent-backup-against-a-vm"></a>Obnovení z zálohování konzistentního vzhledem k aplikacím na virtuálním počítači
+Proces obnovení zálohování konzistentního vzhledem k aplikacím pořízeným službou Azure Backup je popsán v článku [obnovení souborů ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm). 
 
 > [!IMPORTANT]
-> V následujícím článku [obnovení souborů ze záloh virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) je seznam výjimek a kroky uvedené při použití disku prokládané sady. Prokládané disky jsou tak pravděpodobnou příčinou regulární konfigurace virtuálního počítače pro SAP HANA. Proto je důležité najdete v článku a otestovat proces obnovení pro případy, jak je uvedeno v následujícím článku. 
+> V článku [obnovení souborů ze zálohy virtuálního počítače Azure](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm) je seznam výjimek a kroků, které jsou uvedené při použití sad Stripe disks. Prokládané disky jsou nejspíš standardní konfigurací virtuálních počítačů pro SAP HANA. Proto je nezbytné si přečíst článek a otestovat proces obnovení pro tyto případy, jak je uvedeno v článku. 
 
 
 
-## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>Licenční klíč HANA a virtuální počítač obnovit prostřednictvím služby Azure Backup
+## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>Licenční klíč HANA a obnovení virtuálního počítače prostřednictvím služby Azure Backup
 
-Služba Azure Backup je určené k vytvoření nového virtuálního počítače během obnovení. Neexistuje žádný plán teď provedete &quot;místní&quot; obnovení existujícího virtuálního počítače Azure.
+Služba Azure Backup je navržená tak, aby při obnovení vytvořila nový virtuální počítač. Nyní není k dispozici žádný plán pro &quot;místní&quot; obnovení stávajícího virtuálního počítače Azure.
 
-![Tento obrázek ukazuje možnost obnovení služby Azure na webu Azure Portal](media/sap-hana-backup-storage-snapshots/image019.png)
+![Tento obrázek ukazuje možnost obnovení služby Azure v Azure Portal](media/sap-hana-backup-storage-snapshots/image019.png)
 
-Tento obrázek ukazuje možnost obnovení služby Azure na webu Azure Portal. Jeden můžete zvolit vytvoření virtuálního počítače během obnovení nebo obnovení disků. Po obnovení disků, je stále potřeba vytvořit nový virtuální počítač, dojde k jeho zvýraznění. Pokaždé, když se nový virtuální počítač se vytvoří v Azure jedinečné ID virtuálního počítače změní (viz [přístup k a pomocí jedinečné ID virtuálního počítače Azure](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)).
+Tento obrázek ukazuje možnost obnovení služby Azure v Azure Portal. Jednu z nich si můžete vybrat mezi vytvořením virtuálního počítače během obnovování nebo obnovování disků. Po obnovení disků je stále potřeba vytvořit nový virtuální počítač nad ním. Pokaždé, když se v Azure vytvoří nový virtuální počítač, změní se jedinečné ID virtuálního počítače (viz [přístup k virtuálnímu počítači Azure a jeho používání jedinečné ID](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)).
 
-![Tento obrázek ukazuje jedinečné ID virtuálního počítače Azure, před a po obnovení prostřednictvím služby Azure Backup](media/sap-hana-backup-storage-snapshots/image020.png)
+![Tento obrázek ukazuje jedinečné ID virtuálního počítače Azure před a po obnovení prostřednictvím služby Azure Backup.](media/sap-hana-backup-storage-snapshots/image020.png)
 
-Tento obrázek ukazuje jedinečné ID virtuálního počítače Azure, před a po obnovení prostřednictvím služby Azure Backup. SAP hardwarový klíč, který se používá pro SAP licencování, používá tato jedinečné ID virtuálního počítače. Nová licence SAP v důsledku toho musí být nainstalovaná po obnovení virtuálního počítače.
+Na tomto obrázku vidíte jedinečné ID virtuálního počítače Azure před a po obnovení prostřednictvím služby Azure Backup. Hardwarový klíč SAP, který se používá pro licencování SAP, používá toto jedinečné ID virtuálního počítače. V důsledku toho je potřeba po obnovení virtuálního počítače nainstalovat novou licenci SAP.
 
-Nová funkce Azure Backup se zobrazí v režimu náhledu při vytváření této příručce zálohování. To umožňuje úrovně obnovení souborů na základě na, která byla provedena pro virtuální počítač záložní snímek virtuálního počítače. Tím se vyhnete nutnosti nasazení nového virtuálního počítače a proto Jedinečný ID virtuálního počítače zůstala stejná a žádný nový licenční klíč SAP HANA je povinný. Další dokumentaci k této funkci bude poskytována po byl plně testovaný.
+V režimu náhledu byla během vytváření tohoto průvodce zálohováním nabídnuta nová funkce Azure Backup. Umožňuje obnovení na úrovni souborů na základě snímku virtuálního počítače, který byl proveden pro zálohování virtuálního počítače. Tím se vyhnete nutnosti nasazovat nový virtuální počítač, takže jedinečné ID virtuálního počítače zůstane stejné a nemusíte mít žádný nový SAP HANA licenční klíč. Další dokumentace k této funkci bude poskytována po úplném otestování.
 
-Azure Backup vám umožní nakonec zálohování Azure jednotlivé virtuální disky, a navíc souborů a adresářů z uvnitř virtuálního počítače. Hlavní výhodou služby Azure Backup je všechny zálohy, ukládání zákazníka z by bylo nutné provést pro jeho správu. Pokud obnovení chování je nezbytné, bude Azure Backup vyberte správné zálohování používat.
+Azure Backup nakonec povolí zálohování jednotlivých virtuálních disků Azure, včetně souborů a adresářů z virtuálního počítače. Důležitou výhodou Azure Backup je Správa všech záloh, které se od zákazníka ukládají. Pokud bude obnovení nezbytné, Azure Backup vybere správnou zálohu, která se má použít.
 
-## <a name="sap-hana-vm-backup-via-manual-disk-snapshot"></a>Zálohování virtuálních počítačů SAP HANA pomocí snímku disku ruční
+## <a name="sap-hana-vm-backup-via-manual-disk-snapshot"></a>SAP HANA zálohování virtuálních počítačů pomocí ručního snímku disku
 
-Namísto použití služby Azure Backup, jeden jednotlivých řešení zálohování nakonfigurovat tak, že vytvoříte snímky objektů blob virtuálních pevných disků Azure ručně pomocí Powershellu. Zobrazit [snímky objektů blob pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) popis kroků.
+Místo používání služby Azure Backup by se jedna mohla nakonfigurovat jednotlivé řešení zálohování tím, že se snímky objektů BLOB v Azure ručně vytvoří pomocí PowerShellu. Popis kroků najdete v tématu [použití snímků objektů BLOB v prostředí PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) .
 
-Poskytuje větší flexibilitu, ale nevyřeší problémy, které bylo popsáno dříve v tomto dokumentu:
+Nabízí větší flexibilitu, ale neřeší problémy popsané dříve v tomto dokumentu:
 
-- Stále musíte zkontrolovat, že SAP HANA je v konzistentním stavu tak, že vytvoříte snímek SAP HANA
-- Disk s operačním systémem nelze přepsat, i v případě zrušení přidělení virtuálního počítače z důvodu chyby s oznámením, že existuje zapůjčení. Funguje to jenom po odstranění virtuálního počítače, což by mohlo dojít k nové jedinečné ID virtuálního počítače a není nutné k instalaci nové licence SAP.
+- Stále je nutné zajistit, aby se SAP HANA v konzistentním stavu vytvořením snímku SAP HANA
+- Disk s operačním systémem nejde přepsat, i když se virtuální počítač oddělí kvůli chybě, která uvádí, že zapůjčení existuje. Funguje jenom po odstranění virtuálního počítače, což by vedlo k novému jedinečnému ID virtuálního počítače a potřeba nainstalovat novou licenci SAP.
 
-![Je možné obnovit datové disky virtuálního počítače Azure](media/sap-hana-backup-storage-snapshots/image021.png)
+![Je možné obnovit jenom datové disky virtuálního počítače Azure.](media/sap-hana-backup-storage-snapshots/image021.png)
 
-To je možné obnovit datové disky virtuálního počítače Azure, jak se vyhnout potížím získání nové jedinečné ID virtuálního počítače a nezneplatnil SAP licence:
+Je možné obnovit jenom datové disky virtuálního počítače Azure, aby nedošlo k potížím s získáním nového jedinečného ID virtuálního počítače, a proto jste zrušili platnost licence SAP:
 
-- Pro testování byly dva datové disky Azure připojené k virtuálnímu počítači a nad nich byl definován softwarového pole RAID 
-- Bylo potvrzeno, že se SAP HANA v konzistentním stavu snímku funkcí SAP HANA
-- Ukotvit systému souborů (viz _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md))
-- Snímky objektů BLOB byly odebrány z obou datových disků
-- Uvolnit systému souborů
-- Potvrzení snímek SAP HANA
-- Pokud chcete obnovit datové disky, byl virtuální počítač vypnutý a oba disky odpojit
-- Po odpojení disků, se přepsal se snímky objektů blob v původní
-- Pak se obnovené virtuální disky připojené znovu k virtuálnímu počítači
-- Po spuštění virtuálního počítače, vše na softwaru diskového pole RAID fungovaly správně a byla nastavena zpět na čas snímku objektu blob
-- HANA byla nastavena zpět na snímku HANA
+- Pro tento test se k virtuálnímu počítači připojily dva datové disky Azure a na nich byl definován softwarový RAID. 
+- Bylo potvrzeno, že SAP HANA bylo v konzistentním stavu pomocí funkce snímku SAP HANA
+- Zablokování systému souborů (viz _SAP HANA konzistence dat při pořizování snímků úložiště_ v související [příručce zálohování článků pro SAP HANA na Azure Virtual Machines](sap-hana-backup-guide.md))
+- Snímky objektů BLOB byly získány z obou datových disků.
+- Odblokování systému souborů
+- Potvrzení snímku SAP HANA
+- Chcete-li obnovit datové disky, byl virtuální počítač vypnutý a oba disky odpojeny.
+- Po odpojení disků byly přepsány předchozími snímky objektů BLOB
+- Obnovené virtuální disky se pak znovu připojily k virtuálnímu počítači.
+- Po spuštění virtuálního počítače se všechno na základě přípravku softwaru RAID vypracovalo správně a nastavilo se zpátky na čas snímku objektu BLOB.
+- HANA se nastavil zpátky na snímek HANA.
 
-Pokud bylo možné vypnout SAP HANA než snímky objektů blob, bude postup méně složitý. V takovém případě jeden může přeskočit snímku HANA a, pokud nic dalšího se děje v systému, také přeskočit zablokování systému souborů. Přidaná složitost spolu vaše úloha, když je potřeba dělat všechno, co je online snímky. Zobrazit _konzistence dat SAP HANA při pořizování snímků úložiště_ v příslušném článku [Průvodci zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
+Pokud bylo možné ukončit SAP HANA před snímky objektu blob, procedura bude méně složitá. V takovém případě může jeden snímek HANA přeskočit a pokud v systému nebude nic dalšího, přeskočte také zablokování systému souborů. Pokud je potřeba udělat snímky, když všechno je online, přijdete o složitost na obrázek. V tématu _SAP HANA konzistence dat při pořizování snímků úložiště_ v související [příručce zálohování článků pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md).
 
 ## <a name="next-steps"></a>Další kroky
-* [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace pro zahájení práce.
-* [Zálohování SAP HANA založené na úrovni souboru](sap-hana-backup-file-level.md) zahrnuje možnost zálohování souborů.
-* Informace o vytvoření vysoké dostupnosti a plánování zotavení po havárii SAP Hana v Azure (velké instance), najdete v článku [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
+* [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace o tom, jak začít.
+* [SAP HANA zálohování na základě úrovně souboru](sap-hana-backup-file-level.md) pokrývá možnost zálohování na základě souborů.
+* Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).
