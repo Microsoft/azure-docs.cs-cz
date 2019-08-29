@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Návody
   items:
+    - name: Správa serveru
+      items:
+        - name: portál Azure
+          href: howto-create-manage-server-portal.md
     - name: Pravidla brány firewall
       items:
         - name: portál Azure
@@ -123,6 +127,8 @@
       items:
         - name: portál Azure
           href: howto-auto-grow-storage-portal.md
+        - name: Azure CLI
+          href: howto-auto-grow-storage-cli.md
     - name: Přístup k protokolům serveru
       items:
         - name: Protokoly pomalých dotazů
