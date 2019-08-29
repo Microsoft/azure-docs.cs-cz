@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861593"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067469"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API
 
@@ -42,8 +41,8 @@ V tomto kurzu se naučíte:
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
--   Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
--   Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
+-   Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
+-   Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -75,13 +74,13 @@ Původní odpověď by měla vypadat takto:
 1. Vyberte **Demo Conference API**.
 2. V horní části obrazovky vyberte kartu **Návrh**.
 3. Vyberte **Všechny operace**.
-4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5. Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+4. V části **Zpracování odchozích požadavků** klikněte na ikonu **</>** .
+5. Umístěte kurzor myši do elementu **&lt;outbound&gt;** .
 6. V pravém okně v části **Zásady transformace** vložte dva fragmenty kódu zásady dvojitým kliknutím na **+ Set HTTP header** (Nastavit hlavičku protokolu HTTP).
 
    ![Zásady](./media/transform-api/transform-api.png)
 
-7. Upravit vaše  **\<odchozí >** kód vypadat nějak takto:
+7. Upravte kód pro  **odchozí>tak,abyvypadaltakto:\<**
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,10 +111,10 @@ Původní odpověď zobrazíte následovně:
 1.  Vyberte **Demo Conference API**.
 2.  Vyberte **Všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
-4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>**.
-5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;**.
+4.  V části **Zpracování odchozích požadavků** klikněte na ikonu **</>** .
+5.  Umístěte kurzor myši do elementu **&lt;outbound&gt;** .
 6.  V pravém okně v části **Zásady transformace** klikněte na **+ Find and replace string in body** (Najít a nahradit řetězec v těle textu).
-7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>**) tak, aby odpovídala bráně služby APIM. Příklad:
+7.  Nahraďte adresu URL upravením kódu **find-and-replace** (v elementu **\<outbound\>** ) tak, aby odpovídala bráně služby APIM. Příklad:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,10 +127,10 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 1.  Vyberte **Demo Conference API**.
 2.  Vyberte **Všechny operace**.
 3.  V horní části obrazovky vyberte kartu **Návrh**.
-4.  V **zpracování příchozích** klikněte na tlačítko **</>** ikonu.
-5.  Umístěte kurzor myši do elementu **&lt;inbound&gt;**.
+4.  V části **příchozí zpracování** klikněte na **</>** ikonu.
+5.  Umístěte kurzor myši do elementu **&lt;inbound&gt;** .
 6.  V pravém okně v části **Zásady omezení přístupu** klikněte na **+ Limit call rate per key** (Omezit četnost volání pro každý klíč).
-7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>**) následovně:
+7.  Upravte kód **rate-limit-by-key** (v elementu **\<inbound\>** ) následovně:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -194,7 +193,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
 
 5. Počkejte asi 15 sekund a znovu stiskněte **Odeslat**. Tentokrát by se už měla objevit odpověď **200 OK**.
 
-    ![Throttling](./media/transform-api/test-throttling.png)
+    ![Omezování](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Video
 

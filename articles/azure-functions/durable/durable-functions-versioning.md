@@ -1,35 +1,34 @@
 ---
 title: Správa verzí v Durable Functions – Azure
-description: Zjistěte, jak k implementaci správy verzí v rozšíření Durable Functions pro službu Azure Functions.
+description: Naučte se implementovat správu verzí v rozšíření Durable Functions pro Azure Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648128"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097618"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
-Je nevyhnutelné, že funkce bude se přidal, odstranil a mění v průběhu životního cyklu aplikace. [Odolná služba Functions](durable-functions-overview.md) umožňuje řetězení takovým způsobem, který nebylo dříve možné dohromady funguje, a toto zřetězení ovlivňuje, jak můžete zpracovávat správy verzí.
+Je nevyhnutelné, že funkce budou přidány, odebrány a změněny po dobu života aplikace. [Durable Functions](durable-functions-overview.md) umožňuje zřetězení funkcí společně s možnostmi, které nebyly dřív možné, a toto zřetězení ovlivňuje způsob, jakým můžete zvládnout správu verzí.
 
-## <a name="how-to-handle-breaking-changes"></a>Jak zpracovat změny způsobující chyby
+## <a name="how-to-handle-breaking-changes"></a>Postup zpracování nejnovějších změn
 
-Existuje několik příkladů rozbíjející změny mít na paměti. Tento článek popisuje nejběžnější ty. Hlavní motiv za všechny z nich je, oba Orchestrace nové i stávající funkce jsou ovlivněny změnami kódu funkce.
+K dispozici je několik příkladů zásadních změn, o kterých byste měli vědět. Tento článek popisuje nejběžnější. Hlavním motivem v celém z nich je, že nové i existující orchestrace funkcí jsou ovlivněny změnami v kódu funkce.
 
-### <a name="changing-activity-function-signatures"></a>Změna signatury funkce aktivity
+### <a name="changing-activity-function-signatures"></a>Změna signatur funkcí aktivity
 
-Změna podpisu odkazuje na změnu názvu, vstup nebo výstup z funkce. Pokud je funkce aktivity tento druh změny, to by mohlo narušit funkce orchestrátoru, který na něm závisí. Pokud aktualizujete funkce orchestrátoru přizpůsobil této změně, by mohlo poškodit existující instance vydávaných za pochodu.
+Změna podpisu odkazuje na změnu názvu, vstupu nebo výstupu funkce. Pokud je tento typ změny proveden na funkci aktivity, může dojít k přerušení funkce Orchestrator, která na ní závisí. Pokud aktualizujete funkci Orchestrator tak, aby odpovídala této změně, můžete přerušit existující instance v letadlech.
 
-Jako příklad předpokládejme, že máme následující funkce.
+Předpokládejme například, že máme následující funkci.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -40,7 +39,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato funkce zjednodušenou přijímá výsledky **Foo** a předává jej do **panelu**. Předpokládejme, že chcete změnit návratový typ **Foo** z `bool` k `int` pro podporu více různých výsledné hodnoty. Výsledek vypadá takto:
+Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pruhů**. Řekněme, že potřebujeme změnit vrácenou hodnotu **foo** z `bool` na `int` na, aby podporovala širší škálu výsledných hodnot. Výsledek bude vypadat takto:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -51,15 +50,15 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato změna funguje pro všechny nové instance funkce orchestrátoru, ale žádné vydávaných za pochodu instance přestane fungovat. Například vezměte si situaci, kde instance Orchestrace volá **Foo**, získá zpět logickou hodnotu a potom kontrolní body. Pokud změna podpisu je nasazena v tuto chvíli, byl vytvořen kontrolní bod instance selže okamžitě, když bude pokračovat a přehrává volání `context.CallActivityAsync<int>("Foo")`. Důvodem je, že je výsledek v tabulce historie `bool` ale nový kód se pokusí rekonstruovat do `int`.
+Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Například je třeba vzít v úvahu případ, kde instance orchestrace volá **foo**, vrátí logickou hodnotu a pak kontrolní body. Pokud je změna podpisu nasazena v tomto okamžiku, kontrolní instance selže okamžitě po obnovení a znovu spustí volání `context.CallActivityAsync<int>("Foo")`. Důvodem je, že výsledek v tabulce historie je `bool` ale nový kód se pokusí ho deserializovat do. `int`
 
-Toto je pouze jedna z mnoha různými způsoby, změna podpisu může dojít k narušení existující instance. Obecně platí Pokud orchestrátoru je potřeba změnit způsob, jakým volá funkci, pak tato změna by mohla způsobovat problémy.
+Toto je pouze jeden z mnoha různých způsobů, kterými změna podpisu může přerušit stávající instance. Obecně platí, že pokud nástroj Orchestrator potřebuje změnit způsob, jakým volá funkci, pak změna bude pravděpodobně problematická.
 
-### <a name="changing-orchestrator-logic"></a>Změna logiky nástroje orchestrator
+### <a name="changing-orchestrator-logic"></a>Změna logiky nástroje Orchestrator
 
-Jiné třídy problémy se správou verzí pocházet od změny kódu funkce produktu orchestrator tak, aby mate Logika opakování pro vydávaných za pochodu instancí.
+Druhá třída problémů se správou verzí přichází ze změny kódu funkce nástroje Orchestrator způsobem, který zaplní logiku opětovného přehrání pro instance v letadle.
 
-Vezměte v úvahu následující funkce nástroje orchestrator:
+Vezměte v úvahu následující funkci Orchestrator:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -70,7 +69,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Nyní předpokládejme, že chcete přidat další volání funkce zdánlivě nevinnosti změny.
+Nyní předpokládejme, že chcete provést zdánlivě Innocent změnu pro přidání dalšího volání funkce.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -86,40 +85,40 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato změna přidá nové volání funkce **SendNotification** mezi **Foo** a **panelu**. Neexistují žádné změny podpis. Vznikne problém, když existující instanci návratu z volání **panelu**. Během opětovného přehrání, pokud původní volání **Foo** vrátil `true`, pak zavolá opakování orchestrator **SendNotification** nenacházející se v historii spuštění. V důsledku toho rozhraní trvalý úlohy nezdaří a zobrazí se `NonDeterministicOrchestrationException` protože došlo ke volání **SendNotification** očekávaného zobrazíte volání **panelu**.
+Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud se vrátí `true`původní volání foo, pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification** , které není v historii spuštění. Výsledkem je, že rozhraní odolného úlohy se nezdařila s a `NonDeterministicOrchestrationException` , protože při očekávaném volání na **panel**se objevilo volání **SendNotification** .
 
-## <a name="mitigation-strategies"></a>Strategie omezení rizik
+## <a name="mitigation-strategies"></a>Strategie zmírňování
 
-Tady jsou některé strategie pro řešení výzev Správa verzí:
+Tady jsou některé strategie pro práci s problémy se správou verzí:
 
-* Neprovádět žádnou akci
-* Zastavte všechny instance vydávaných za pochodu
-* Nasazení vedle sebe
+* Nedělat nic
+* Zastavit všechny instance v letadle
+* Souběžná nasazení
 
-### <a name="do-nothing"></a>Neprovádět žádnou akci
+### <a name="do-nothing"></a>Nedělat nic
 
-Nejjednodušší způsob, jak zpracovat k zásadní změně je nechat vydávaných za pochodu Orchestrace selhat instance. Změněná kódová předchozí spuštění nové instance.
+Nejjednodušší způsob, jak zvládnout zásadní změnu, je nechat instance orchestrace v letadlech neúspěšné. Nové instance úspěšně spustily změněný kód.
 
-Ať už se jedná o problém závisí na důležitost instancím vydávaných za pochodu. Pokud jsou v aktivním vývoji a o vydávaných za pochodu instancí, může to být dostatečné. Musíte však výjimky a chyby v svůj kanál diagnostiku. Pokud chcete, aby se zabránilo tyto věci, zvažte další možnosti správy verzí.
+Bez ohledu na to, jestli se jedná o problém, závisí na důležitosti vašich leteckých instancí. Pokud pracujete v aktivním vývoji a nezáleží na tom, jestli jde o instance v letadle, může to být dostatečné. V kanálu diagnostiky ale budete muset zabývat s výjimkami a chybami. Pokud se chcete těmto akcím vyhnout, zvažte další možnosti správy verzí.
 
-### <a name="stop-all-in-flight-instances"></a>Zastavte všechny instance vydávaných za pochodu
+### <a name="stop-all-in-flight-instances"></a>Zastavit všechny instance v letadle
 
-Další možností je ukončit všechny instance vydávaných za pochodu. To můžete udělat zrušením obsah vnitřní **řízení fronty** a **pracovní položky fronty** fronty. Instance se navždy zablokuje, kde jsou, ale nebude dál sbližuje tyto telemetrická data pomocí zprávy o neúspěchu. To je ideální v prototypu rychlý vývoj.
+Další možností je zastavit všechny letecké instance. To se dá udělat vymazáním obsahu fronty interního **řízení** a pracovní položky a **fronty** . Instance se budou trvale zablokovat tam, kde jsou, ale nebudou mít k disřádek žádnou telemetrii se zprávami o chybách. To je ideální v rychlém vývoji prototypů.
 
 > [!WARNING]
-> Podrobnosti o tyto fronty může změnit v čase, takže nemusíte spoléhat na tuto techniku pro produkční úlohy.
+> Podrobnosti o těchto frontách se můžou v průběhu času měnit, takže se na tuto techniku nespoléhá pro produkční úlohy.
 
-### <a name="side-by-side-deployments"></a>Nasazení vedle sebe
+### <a name="side-by-side-deployments"></a>Souběžná nasazení
 
-Většina testování převzetí služeb při způsobem zajistit, že změny způsobující chyby nasazených bezpečně je jejich nasazení – souběžně se staršími verzemi. To lze provést pomocí kteréhokoli z následujících postupů:
+Nejpravděpodobnější způsob, jak zajistit, aby se změny v bezpečném nasazení nezdařily, je nasazením souběžně se staršími verzemi. To lze provést pomocí některého z následujících postupů:
 
-* Nasazení všech aktualizací jako zcela nových funkcí (nové názvy).
-* Všechny aktualizace nasaďte jako novou aplikaci function app s jiným účtem úložiště.
-* Nasazení nové kopie aplikace function app, ale s aktualizovaným `TaskHub` název. Toto je doporučený postup.
+* Všechny aktualizace nasaďte jako zcela nové funkce (nové názvy).
+* Nasaďte všechny aktualizace jako novou aplikaci Function App s jiným účtem úložiště.
+* Nasaďte novou kopii aplikace Function App, ale s aktualizovaným `TaskHub` názvem. Toto je doporučený postup.
 
-### <a name="how-to-change-task-hub-name"></a>Změna názvu centra úloh
+### <a name="how-to-change-task-hub-name"></a>Postup změny názvu centra úloh
 
-Centra úloh se dá nakonfigurovat v *host.json* to následujícím způsobem:
+Centrum úloh lze v souboru *Host. JSON* nakonfigurovat následujícím způsobem:
 
 #### <a name="functions-1x"></a>Functions 1.x
 
@@ -135,14 +134,14 @@ Centra úloh se dá nakonfigurovat v *host.json* to následujícím způsobem:
 
 Výchozí hodnota je `DurableFunctionsHub`.
 
-Všechny entity služby Azure Storage jsou pojmenovány podle `HubName` hodnota konfigurace. Tím, že nový název centra úloh, zajistíte tím, že se vytvoří samostatné fronty a tabulky historie pro novou verzi vaší aplikace.
+Všechny entity Azure Storage jsou pojmenovány na `HubName` základě hodnoty konfigurace. Když zadáte novému centru úkolů nový název, zajistíte, aby se pro novou verzi vaší aplikace vytvořily samostatné fronty a tabulky historie.
 
-Doporučujeme nasadit novou verzi aplikace function app na nový [Slot nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Sloty nasazení umožňují provozovat několik kopií vašich funkce aplikace na straně po boku s pouze jedním z nich jako aktivní *produkční* slot. Až budete připravení ke zveřejnění nové logice Orchestrace vaší stávající infrastruktuře, může být stejně snadné jako přechodem na novou verzi do produkčního slotu.
+Doporučujeme nasadit novou verzi aplikace Function App do nového slotu pro [nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Sloty nasazení umožňují souběžně spustit více kopií aplikace Function App s jedním z nich, jako je aktivní *produkční* slot. Až budete připraveni vystavit novou logiku orchestrace pro stávající infrastrukturu, může to být jednoduché jako záměna nové verze do produkčního slotu.
 
 > [!NOTE]
-> Tato strategie je nejvhodnější při použití protokolu HTTP a webhookové aktivační události pro funkce nástroje orchestrator. Aktivace jiným protokolem než HTTP, třeba fronty a Event Hubs, by měl definice aktivační události [jsou odvozeny z nastavení aplikace](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , která aktualizuje jako součást operace prohození.
+> Tato strategie funguje nejlépe při použití aktivačních událostí HTTP a Webhooku pro funkce Orchestrator. U triggerů bez protokolu HTTP, jako jsou fronty nebo Event Hubs, by definice triggeru měla [odvozovat z nastavení aplikace](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , které se v rámci operace swapu aktualizuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak zpracovat výkonu a škálování problémy](durable-functions-perf-and-scale.md)
+> [Naučte se zvládnout problémy s výkonem a škálováním.](durable-functions-perf-and-scale.md)

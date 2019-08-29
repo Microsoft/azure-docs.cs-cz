@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: ebe02e8bf3fecc03c46bb66c9ab178e4f277e6e4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971620"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114764"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -153,4 +153,12 @@ Pokaždé, když se použije Změna konfigurace, Azure Firewall se pokusí aktua
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Je pro název brány firewall nějaký limit znaků?
 
-Ano. Pro název brány firewall je povolený limit 50 znaků. 
+Ano. Pro název brány firewall je povolený limit 50 znaků.
+
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Proč Azure Firewall potřebovat velikost podsítě/26?
+
+Azure Firewall musí zřídit při škálování víc instancí virtuálních počítačů. A/26 adresního prostoru zajišťuje, že brána firewall má k dispozici dostatek IP adres pro přizpůsobení škálování.
+
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Je potřeba změnit velikost podsítě brány firewall při škálování služby?
+
+Ne. Azure Firewall nepotřebuje podsíť větší než/26.

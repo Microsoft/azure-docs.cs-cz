@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a9fb68fff492b6f3b00825b1fae91310f091a3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033398"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113650"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení do Microsoftu do webové aplikace v ASP.NET
 
@@ -479,14 +479,21 @@ Přístup pro přihlášení můžete omezit jenom na uživatelské účty v org
 
 Můžete implementovat vlastní metodu pro ověření vystavitelů pomocí parametru **IssuerValidator** . Další informace o tom, jak použít tento parametr, naleznete v tématu [Třída TokenValidationParameters](/previous-versions/visualstudio/dn464192(v=vs.114)).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si, jak můžou webové aplikace volat webová rozhraní API.
 
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Informace o tom, jak vytvořit aplikaci používanou v tomto průvodci rychlým startem
 
+Další informace o webových aplikacích, které volají webová rozhraní API, s využitím platformy Microsoft Identity Platform:
+
 > [!div class="nextstepaction"]
-> [Webové aplikace, které volají webová rozhraní API]( https://aka.ms/msal-net-authorization-code)
+> [Webové aplikace, které volají webová rozhraní API](scenario-web-app-sign-user-overview.md)
+
+Naučte se vytvářet webové aplikace s voláním Microsoft Graph:
+
+> [!div class="nextstepaction"]
+> [Kurz Microsoft Graph ASP.NET](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -1,22 +1,22 @@
 ---
-title: Nasazení a konfiguraci brány Firewall Azure pomocí Azure Powershellu
-description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Firewall služby Azure pomocí Azure Powershellu.
+title: Nasazení a konfigurace Azure Firewall pomocí Azure PowerShell
+description: V tomto článku se dozvíte, jak nasadit a nakonfigurovat Azure Firewall pomocí Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 4c6ccce493ffb25d7a2237e0d98a2b71b35c92c1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620972"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114784"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Nasazení a konfiguraci brány Firewall Azure pomocí Azure Powershellu
+# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Nasazení a konfigurace Azure Firewall pomocí Azure PowerShell
 
-Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například omezit přístup k webovým stránkám. Nebo můžete chtít omezit odchozí IP adresy a porty, které mohou být přístupné.
+Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například chtít omezit přístup k webům. Nebo můžete chtít omezit odchozí IP adresy a porty, které jsou k dispozici.
 
 Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsítě Azure, je použít Azure Firewall. Azure Firewall umožňuje nakonfigurovat:
 
@@ -25,7 +25,7 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-Pro účely tohoto článku vytvořte zjednodušené jedné virtuální sítě se třemi podsítěmi pro snadné nasazení. Pro nasazení v produkčním prostředí [model střed a paprsek](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se doporučuje, pokud brána firewall je ve své vlastní virtuální sítě. Servery úlohy jsou v partnerských virtuálních sítích ve stejné oblasti pomocí jedné nebo několika podsítí.
+V tomto článku vytvoříte zjednodušenou jedinou virtuální síť se třemi podsítěmi pro snadné nasazení. V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -39,17 +39,17 @@ V tomto článku získáte informace o těchto tématech:
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
-> * Konfigurace pravidla aplikace pro povolení přístupu k www.google.com
+> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
 > * Otestovat bránu firewall
 
-Pokud dáváte přednost, můžete absolvovat s použitím tohoto postupu [webu Azure portal](tutorial-firewall-deploy-portal.md).
+Pokud budete chtít, můžete tento postup dokončit pomocí [Azure Portal](tutorial-firewall-deploy-portal.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento postup vyžaduje místně spusťte PowerShell. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Connect-AzAccount`, abyste vytvořili připojení k Azure.
+Tento postup vyžaduje, abyste spustili PowerShell místně. Musíte mít nainstalovaný modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Po ověření verze PowerShellu spusťte příkaz `Connect-AzAccount`, abyste vytvořili připojení k Azure.
 
 ## <a name="set-up-the-network"></a>Nastavit síť
 
@@ -67,15 +67,14 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 Tato virtuální síť má tři podsítě:
 
+> [!NOTE]
+> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
 ```azurepowershell
-$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/24
+$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
 $Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
-
-> [!NOTE]
-> Minimální velikost podsítě AzureFirewallSubnet je /26.
-
 Teď vytvořte virtuální síť:
 
 ```azurepowershell
@@ -88,7 +87,7 @@ $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG 
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
-Vytvoření virtuálního počítače Srv odkazů.
+Vytvořte virtuální počítač s odkazem na SRV.
 
 ```azurepowershell
 New-AzVm `
@@ -101,7 +100,7 @@ New-AzVm `
     -Size "Standard_DS2"
 ```
 
-Vytvoření pracovního vytížení virtuálního počítače s žádná veřejná IP adresa.
+Vytvořte virtuální počítač úlohy bez veřejné IP adresy.
 Po zobrazení výzvy zadejte pro virtuální počítač uživatelské jméno a heslo.
 
 ```azurepowershell
@@ -121,7 +120,7 @@ New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
-Nyní nasazení brány do virtuální sítě.
+Teď nasaďte bránu firewall do virtuální sítě.
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -140,7 +139,7 @@ Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytvá
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
-Vytvoření tabulky, se zakázaným šířením BGP trasy
+Vytvoření tabulky se zakázaným šířením trasy protokolu BGP
 
 ```azurepowershell
 $routeTableDG = New-AzRouteTable `
@@ -169,7 +168,7 @@ Set-AzVirtualNetworkSubnetConfig `
 
 ## <a name="configure-an-application-rule"></a>Konfigurace pravidla aplikace
 
-Pravidlo brány application umožňuje odchozí přístup k www.google.com.
+Pravidlo aplikace umožňuje odchozí přístup k www.google.com.
 
 ```azurepowershell
 $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0.2.0/24 `
@@ -187,7 +186,7 @@ Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukt
 
 ## <a name="configure-a-network-rule"></a>Konfigurace pravidla sítě
 
-Pravidlo sítě umožňuje odchozí přístup na dvě IP adresy na port 53 (DNS).
+Síťové pravidlo umožňuje odchozí přístup ke dvěma IP adresám na portu 53 (DNS).
 
 ```azurepowershell
 $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAddress 10.0.2.0/24 `
@@ -203,7 +202,7 @@ Set-AzFirewall -AzureFirewall $Azfw
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Změna primární a sekundární adresy DNS u síťového rozhraní **Srv-Work**
 
-Pro účely testování v tomto postupu konfigurace adresy serveru primární a sekundární DNS. Není to povinné obecné Brána Firewall služby Azure.
+Pro účely testování v tomto postupu nakonfigurujte primární a sekundární adresy DNS serveru. Nejedná se o obecný požadavek Azure Firewall.
 
 ```azurepowershell
 $NIC.DnsSettings.DnsServers.Add("209.244.0.3")
@@ -213,24 +212,24 @@ $NIC | Set-AzNetworkInterface
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 
-Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
+Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
-1. Všimněte si privátní IP adresu pro **Srv pracovní** virtuálního počítače:
+1. Poznamenejte si privátní IP adresu pro virtuální počítač s **prací SRV** :
 
    ```
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. Připojení k vzdálené plochy **Srv Jump** virtuálního počítače a přihlášení. Odtud otevření připojení ke vzdálené ploše **Srv pracovní** privátní IP adresy a přihlašování.
+1. Připojte vzdálenou plochu k virtuálnímu počítači s odkazem na **SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
 
-3. Na **SRV pracovní**, otevřete okno Powershellu a spusťte následující příkazy:
+3. V nabídce **SRV – práci**otevřete okno PowerShellu a spusťte následující příkazy:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Oba příkazy by měl vrátit odpovědi znázorňující, že vaše dotazy DNS se zobrazuje přes bránu firewall.
+   Oba příkazy by měly vracet odpovědi, které ukazují, že vaše dotazy DNS procházejí přes bránu firewall.
 
 1. Spusťte následující příkazy:
 
@@ -242,16 +241,16 @@ Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Uspěli www.google.com požadavky a požadavky www.microsoft.com by selhat. Tento příklad ukazuje, že pravidla brány firewall fungují podle očekávání.
+   Žádosti www.google.com by měly být úspěšné a žádosti www.microsoft.com by měly selhat. To ukazuje, že pravidla brány firewall fungují podle očekávání.
 
-Teď jste ověřili funkčnost pravidla brány firewall:
+Takže teď ověříte, že pravidla brány firewall fungují:
 
 * Názvy DNS můžete přeložit pomocí nakonfigurovaného externího serveru DNS.
 * Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Můžete ponechat prostředky brány firewall k dalšímu kurzu, nebo pokud už je nepotřebujete, odstraňte **Test-FW-RG** skupinu prostředků odstraňte všechny prostředky související s brány firewall:
+Prostředky brány firewall můžete zachovat pro další kurz, nebo pokud už je nepotřebujete, odstraňte skupinu prostředků **test-FW-RG** , abyste odstranili všechny prostředky související s bránou firewall:
 
 ```azurepowershell
 Remove-AzResourceGroup -Name Test-FW-RG
@@ -259,4 +258,4 @@ Remove-AzResourceGroup -Name Test-FW-RG
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)

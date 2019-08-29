@@ -1,6 +1,6 @@
 ---
 title: Kurz přizpůsobení virtuálního počítače s Linuxem pomocí nástroje cloud-init v Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak používat cloud-init a Key Vault k přizpůsobení virtuálních počítačů s Linuxem při prvním spuštění v Azure
+description: V tomto kurzu se naučíte používat Cloud-init a Key Vault k přizpůsobení virtuálních počítačů se systémem Linux při prvním spuštění v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708608"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081772"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -131,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Otestování webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *http:\/\/\<publicIpAddress >* do adresního řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Stejně jako v následujícím příkladu se zobrazí aplikace Node.js:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *> http:\/\/\<publicIpAddress* . Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Stejně jako v následujícím příkladu se zobrazí aplikace Node.js:
 
 ![Zobrazení spuštěného webu NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -262,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a zadejte *https:\/\/\<publicIpAddress >* do adresního řádku. Stejně jako ve výstupu při předchozím vytváření virtuálního počítače zadejte vlastní veřejnou IP adresu. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *https:\/\/\<publicIpAddress >* . Stejně jako ve výstupu při předchozím vytváření virtuálního počítače zadejte vlastní veřejnou IP adresu. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -271,7 +270,7 @@ Následně se zobrazí váš zabezpečený web NGINX a aplikace v Node.js, jak j
 ![Zobrazení spuštěného zabezpečeného webu NGINX](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste nakonfigurovali virtuální počítače při prvním spuštění pomocí nástroje cloud-init. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

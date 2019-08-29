@@ -1,142 +1,141 @@
 ---
-title: Podrobné vzdálené plochy, řešení potíží v Azure | Dokumentace Microsoftu
-description: Projděte si podrobný postup řešení potíží pro vzdálené plochy chyby, kde nelze do virtuálních počítačů Windows v Azure
+title: Podrobné řešení potíží se vzdálenou plochou v Azure | Microsoft Docs
+description: Přečtěte si podrobný postup řešení potíží s chybami vzdálené plochy, kde nemůžete na virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
 manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: nejde se připojit k vzdálené ploše, řešit problémy se vzdálenou plochu, nemůže připojit ke vzdálené ploše, vzdálené plochy chyby, řešení potíží vzdálené plochy, potížích se vzdálenou plochou
+keywords: nejde se připojit ke vzdálené ploše, řešit potíže se vzdálenou plochou. Vzdálená plocha se nemůže připojit, chyby vzdálené plochy, řešení potíží vzdálené plochy, problémy vzdálené plochy.
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 56fa1363e9737a2ce06ba5f0215235a84ee70ce6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a0f4c4172661b0f041a30df2d4d63ba58f203e89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709917"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080539"
 ---
-# <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobný Poradce při potížích kroky pro připojení ke vzdálené ploše pro virtuální počítače s Windows v Azure
-Tento článek obsahuje podrobný postup řešení potíží, Diagnostika a řešení složitých chybami ke vzdálené ploše pro založené na Windows Azure virtual machines.
+# <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení potíží s připojením ke vzdálené ploše pro virtuální počítače s Windows v Azure
+Tento článek poskytuje podrobné kroky pro řešení potíží pro diagnostiku a opravu složitých chyb vzdálené plochy pro virtuální počítače Azure se systémem Windows.
 
 > [!IMPORTANT]
-> Chcete-li odstranit více běžných chyb vzdálené plochy, nezapomeňte si přečíst [základní článku Poradce při potížích pro vzdálenou plochu](troubleshoot-rdp-connection.md) než budete pokračovat.
+> Abyste vyloučili častější chyby vzdálené plochy, před pokračováním si přečtěte [základní článek věnované řešení potíží pro vzdálenou plochu](troubleshoot-rdp-connection.md) .
 
-Může dojít ke vzdálené ploše chybovou zprávu, která není vypadat specifické chybové zprávy uvedené v [základní Průvodce odstraňováním potíží vzdálené plochy](troubleshoot-rdp-connection.md). Postupujte podle následujících kroků zjistěte, proč se nemůže připojit ke službě RDP na virtuálních počítačích Azure klienta Remote Desktop (RDP).
+Může se zobrazit chybová zpráva vzdálené plochy, která se neshoduje s žádnou z konkrétních chybových zpráv popsaných v [Průvodci řešením potíží se základní vzdálenou plochou](troubleshoot-rdp-connection.md). Pomocí těchto kroků zjistíte, proč se klient vzdálené plochy (RDP) nemůže připojit ke službě RDP na virtuálním počítači Azure.
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na tlačítko **získat podporu**. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="components-of-a-remote-desktop-connection"></a>Součásti připojení ke vzdálené ploše
-V připojení ke vzdálené ploše se podílejí následující komponenty:
+Připojení RDP se účastní tyto komponenty:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Než budete pokračovat, může pomoct duševně zkontrolujte, co se změnil od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači. Příklad:
+Než budete pokračovat, může to znamenat, že se od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači může zobrazit co nejdřív. Příklad:
 
-* Veřejnou IP adresu virtuálního počítače nebo cloudové služby, který obsahuje virtuální počítač (neboli virtuální IP adresu [virtuálních IP adres](https://en.wikipedia.org/wiki/Virtual_IP_address)) se změnil. Protokol RDP selhání může být, že klientské mezipaměti DNS má stále *starou IP adresu* zaregistrovaný pro název DNS. Vyprázdnění mezipaměti klienta DNS a zkuste se znovu připojit virtuální počítač. Nebo se připojte přímo s novou virtuální IP adresy.
-* Správa připojení ke vzdálené ploše namísto použití připojení vygenerovaný na webu Azure portal pomocí aplikací třetích stran. Ověřte, že konfigurace aplikace obsahuje správný port TCP pro provoz vzdálené plochy. Tento port pro klasický virtuální počítač v můžete zkontrolovat [webu Azure portal](https://portal.azure.com), kliknutím na nastavení Virtuálního počítače > Koncové body.
+* Změnila se veřejná IP adresa virtuálního počítače nebo cloudové služby, která obsahuje virtuální počítač (označovaný také jako [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)virtuální IP adresa). Selhání protokolu RDP může být způsobeno tím, že mezipaměť klienta DNS má stále zaregistrovanou *starou IP adresu* pro název DNS. Vyprázdněte mezipaměť klienta DNS a zkuste znovu připojit virtuální počítač. Nebo se zkuste připojit přímo k nové virtuální IP adrese.
+* Používáte aplikaci třetí strany ke správě připojení ke vzdálené ploše místo použití připojení vygenerovaného Azure Portal. Ověřte, že konfigurace aplikace zahrnuje správný port TCP pro přenosy vzdálené plochy. Tento port můžete pro klasický virtuální počítač v [Azure Portal](https://portal.azure.com)ověřit kliknutím na nastavení virtuálního počítače > koncové body.
 
-## <a name="preliminary-steps"></a>Přípravné kroky
-Před pokračováním podrobné řešení potíží
+## <a name="preliminary-steps"></a>Předběžné kroky
+Než budete pokračovat na podrobné řešení potíží,
 
-* Zkontrolujte stav virtuálního počítače na webu Azure Portal pro všechny zřejmé problémy.
-* Postupujte podle [Rychlá oprava kroky pro běžné chyby protokol RDP v základní Průvodce odstraňováním potíží](troubleshoot-rdp-connection.md#quick-troubleshooting-steps).
-* Pro vlastní Image Ujistěte se, že virtuální pevný disk je správně připravena před odesláním ho. Další informace najdete v tématu [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](../windows/prepare-for-upload-vhd-image.md).
+* Ověřte stav virtuálního počítače v Azure Portal pro jakékoli zjevné problémy.
+* Postupujte podle [kroků pro rychlé opravy běžných chyb protokolu RDP v základní příručce pro odstraňování potíží](troubleshoot-rdp-connection.md#quick-troubleshooting-steps).
+* U vlastních imagí se ujistěte, že je virtuální pevný disk správně připravený před nahráním. Další informace najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](../windows/prepare-for-upload-vhd-image.md).
 
 
 Zkuste se znovu připojit k virtuálnímu počítači přes vzdálenou plochu po provedení těchto kroků.
 
 ## <a name="detailed-troubleshooting-steps"></a>Podrobný poradce při potížích
-Klient vzdálené plochy nemusí být schopný připojit službu Vzdálená plocha na virtuálním počítači Azure z důvodu problémů v následujících zdrojích:
+Klient vzdálené plochy nemusí být schopný kontaktovat službu Vzdálená plocha na VIRTUÁLNÍm počítači Azure kvůli problémům v následujících zdrojích:
 
-* [Klient služby Vzdálená plocha počítače](#source-1-remote-desktop-client-computer)
-* [Organizace intranetu hraničního zařízení](#source-2-organization-intranet-edge-device)
-* [Koncový bod služby v cloudu a přístup k seznamu ovládacího prvku (ACL)](#source-3-cloud-service-endpoint-and-acl)
+* [Klientský počítač vzdálené plochy](#source-1-remote-desktop-client-computer)
+* [Intranetové hraniční zařízení organizace](#source-2-organization-intranet-edge-device)
+* [Koncový bod cloudové služby a seznam řízení přístupu (ACL)](#source-3-cloud-service-endpoint-and-acl)
 * [Skupiny zabezpečení sítě](#source-4-network-security-groups)
-* [Na základě Windows virtuální počítač Azure](#source-5-windows-based-azure-vm)
+* [Virtuální počítač Azure se systémem Windows](#source-5-windows-based-azure-vm)
 
-## <a name="source-1-remote-desktop-client-computer"></a>Zdroj 1: Klient služby Vzdálená plocha počítače
-Ověřte, že počítač může vytvořit připojení vzdálené plochy do jiného v místním počítači se systémem Windows.
+## <a name="source-1-remote-desktop-client-computer"></a>Zdroj 1: Klientský počítač vzdálené plochy
+Ověřte, že počítač může vytvořit připojení vzdálené plochy k jinému místnímu počítači se systémem Windows.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
 
-Pokud není, zkontrolujte následující nastavení v počítači:
+Pokud nemůžete, v počítači ověřte následující nastavení:
 
-* Nastavení místní brány firewall, které blokuje provoz vzdálené plochy.
-* Místně nainstalovaný klientský software proxy server, který brání připojení ke vzdálené ploše.
-* Místně nainstalovaný software, který brání připojení ke vzdálené ploše pro monitorování sítě.
-* Jiné druhy zabezpečovací programy, které monitorování provozu nebo povolit/zakázat konkrétní typy provozu, který brání připojení ke vzdálené ploše.
+* Místní nastavení brány firewall blokující provoz vzdálené plochy.
+* Místně instalovaný klientský proxy software, který znemožňuje připojení ke vzdálené ploše.
+* Místně nainstalovaný software pro monitorování sítě, který znemožňuje připojení ke vzdálené ploše.
+* Další typy zabezpečovacího softwaru, které buď monitorují provoz, nebo povolují určité typy přenosů, které zabraňují připojení ke vzdálené ploše.
 
-V těchto případech se dočasně zakázat software a pokusí připojit k místním počítači přes vzdálenou plochu. Pokud můžete zjistit příčinu skutečného tímto způsobem, pracujete se správcem vaší sítě, chcete-li nastavení softwaru, které povolí připojení ke vzdálené ploše.
+Ve všech těchto případech software dočasně zakažte a pokuste se připojit k místnímu počítači přes vzdálenou plochu. Pokud zjistíte skutečnou příčinu tímto způsobem, spolupracujte se správcem sítě a opravte nastavení softwaru pro povolení připojení ke vzdálené ploše.
 
-## <a name="source-2-organization-intranet-edge-device"></a>Zdroj 2: Organizace intranetu hraničního zařízení
-Ověřte, že počítače přímo připojené k Internetu může vytvořit připojení ke vzdálené ploše na virtuálním počítači Azure.
+## <a name="source-2-organization-intranet-edge-device"></a>Zdrojový 2: Intranetové hraniční zařízení organizace
+Ověřte, že počítač, který je přímo připojený k Internetu, může vytvořit připojení ke vzdálené ploše na virtuálním počítači Azure.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
 
-Pokud nemáte počítač, který je přímo připojený k Internetu, vytvořte a testování pomocí Azure nový virtuální počítač v prostředku skupiny nebo cloudovou službu. Další informace najdete v tématu [vytvořit virtuální počítač s Windows v Azure](../virtual-machines-windows-hero-tutorial.md). Virtuální počítač a skupinu prostředků nebo cloudovou službu, můžete odstranit po testu.
+Pokud nemáte počítač, který je přímo připojený k Internetu, vytvořte a otestujte pomocí nového virtuálního počítače Azure ve skupině prostředků nebo v cloudové službě. Další informace najdete v tématu [Vytvoření virtuálního počítače s Windows v Azure](../virtual-machines-windows-hero-tutorial.md). Po dokončení testu můžete virtuální počítač a skupinu prostředků nebo cloudovou službu odstranit.
 
-Pokud vytvoříte připojení ke vzdálené ploše s počítačem přímo připojené k Internetu, zkontrolujte zařízení edge intranetu organizace pro:
+Pokud můžete vytvořit připojení ke vzdálené ploše přímo na počítači připojeném k Internetu, podívejte se na intranetové hraniční zařízení organizace pro:
 
-* Interní firewall blokující připojení HTTPS k Internetu.
-* Proxy serveru brání připojení ke vzdálené ploše.
-* Zjišťování neoprávněných vniknutí nebo softwaru, která běží na zařízeních ve vaší hraniční síti brání připojení ke vzdálené ploše pro monitorování sítě.
+* Interní brána firewall blokující připojení HTTPS k Internetu.
+* Proxy server znemožňuje připojení ke vzdálené ploše.
+* Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě běžící na zařízeních ve vaší hraniční síti, který znemožňuje připojení ke vzdálené ploše.
 
-Práce se správcem vaší sítě, chcete-li nastavení intranetu hraniční zařízení naprogramujete organizace umožňující připojení ke vzdálené ploše založený na protokolu HTTPS do Internetu.
+Spolupracujte se správcem sítě a opravte nastavení podnikového internetového hraničního zařízení, které umožňuje připojení ke vzdálené ploše založené na protokolu HTTPS k Internetu.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Zdroj 3: Koncový bod služby v cloudu a seznamu ACL
-Virtuální počítače vytvořené pomocí modelu nasazení Classic ověřte, že jiného virtuálního počítače Azure, který je ve stejné cloudové službě nebo virtuální síti můžete provádět připojení ke vzdálené ploše virtuálního počítače Azure.
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Zdroj 3: Koncový bod cloudové služby a seznam ACL
+U virtuálních počítačů vytvořených pomocí modelu nasazení Classic ověřte, že se k VIRTUÁLNÍmu počítači Azure může připojit jiný virtuální počítač Azure, který je ve stejné cloudové službě nebo ve virtuální síti.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> Pro virtuální počítače vytvořené v Resource Manageru, přejděte k [4 zdroje: Skupiny zabezpečení sítě](#source-4-network-security-groups).
+> U virtuálních počítačů vytvořených v Správce prostředků přejděte na [zdroj 4: Skupiny](#source-4-network-security-groups)zabezpečení sítě.
 
-Pokud nemáte jiného virtuálního počítače ve stejné cloudové službě nebo virtuální sítě, vytvořte si ho. Postupujte podle kroků v [vytvořit virtuální počítač s Windows v Azure](../virtual-machines-windows-hero-tutorial.md). Odstraňte testovací virtuální počítač po dokončení testu.
+Pokud nemáte jiný virtuální počítač ve stejné cloudové službě nebo virtuální síti, vytvořte ho. Postupujte podle kroků v části [Vytvoření virtuálního počítače s Windows v Azure](../virtual-machines-windows-hero-tutorial.md). Po dokončení testu odstraňte testovací virtuální počítač.
 
-Pokud se k virtuálnímu počítači ve stejné cloudové službě nebo virtuální síti se můžete připojit přes vzdálenou plochu, zkontrolujte tato nastavení:
+Pokud se můžete připojit přes vzdálenou plochu k virtuálnímu počítači ve stejné cloudové službě nebo virtuální síti, vyhledejte tato nastavení:
 
-* Konfigurace koncového bodu pro provoz vzdálené plochy na cílovém virtuálním počítači: Privátní port TCP koncového bodu musí odpovídat portu TCP, na kterém naslouchá služby Vzdálená plocha Virtuálního počítače (výchozí hodnota je 3389).
-* Seznam ACL pro koncový bod provozu vzdálené plochy na cílovém virtuálním počítači: Seznamy řízení přístupu vám umožňují určit povolené nebo zakázané příchozí přenosy z Internetu na základě zdrojové IP adresy. Nesprávně nakonfigurované seznamy ACL můžete zabránit příchozí provoz vzdálené plochy ke koncovému bodu. Zkontrolujte vaše seznamy ACL zajistit, že příchozí provoz z veřejné IP adresy vašeho proxy serveru nebo jiný server edge není povolen. Další informace najdete v tématu [co je seznamu pro řízení přístupu sítě (ACL)?](../../virtual-network/virtual-networks-acl.md)
+* Konfigurace koncového bodu pro provoz vzdálené plochy na cílovém virtuálním počítači: Privátní port TCP koncového bodu se musí shodovat s portem TCP, na kterém naslouchá služba vzdálené plochy virtuálního počítače (výchozí hodnota je 3389).
+* Seznam řízení přístupu pro koncový bod vzdálené plochy na cílovém virtuálním počítači: Seznamy ACL umožňují zadat povolený nebo zakázaný příchozí provoz z Internetu na základě jeho zdrojové IP adresy. Nesprávně nakonfigurované seznamy řízení přístupu (ACL) můžou zabránit příchozímu provozu vzdálené plochy do koncového bodu. Zkontrolujte seznamy ACL, abyste měli jistotu, že příchozí provoz z vašich veřejných IP adres vašeho proxy serveru nebo jiného hraničního serveru je povolený. Další informace najdete v tématu [co je seznam ACL (Network Access Control List)?](../../virtual-network/virtual-networks-acl.md)
 
-Zkontrolujte, jestli je koncový bod příčiny problému, odstraňte aktuální koncový bod a vytvořte novou, zvolte náhodný port v rozsahu 49152 až 65535 pro externí port číslo. Další informace najdete v tématu [postup nastavení koncových bodů pro virtuální počítač](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Chcete-li zjistit, zda je koncový bod zdrojem problému, odeberte aktuální koncový bod a vytvořte nový a vyberte náhodný port v rozsahu 49152 – 65535 pro číslo externího portu. Další informace najdete v tématu [nastavení koncových bodů na virtuální počítač](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="source-4-network-security-groups"></a>Zdroj 4: Network Security Groups (Skupiny zabezpečení sítě)
-Skupiny zabezpečení sítě umožňují přesněji řídit povoleného příchozího a odchozího provozu. Můžete vytvořit pravidla pokrývání uzlů podsítě a cloudové služby ve službě Azure virtual network.
+Skupiny zabezpečení sítě umožňují podrobnější kontrolu nad povoleným příchozím a odchozím provozem. Můžete vytvořit pravidla pro podsítě a cloudové služby ve službě Azure Virtual Network.
 
-Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat platná pravidla skupin zabezpečení a ověřte, že příchozí "skupina zabezpečení sítě existuje pravidlo a je nastaveno jako prioritní pro port RDP (ve výchozím nastavení 3389). Další informace najdete v tématu [přenosy dat pomocí efektivní pravidla zabezpečení pro řešení potíží s virtuálním počítači](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat účinná pravidla skupiny zabezpečení, abyste měli jistotu, že příchozí pravidlo "Povolit" NSG existuje a že má nastavenou prioritu pro port RDP (standardně 3389). Další informace najdete v tématu [použití platných pravidel zabezpečení k řešení potíží s tokem provozu virtuálních počítačů](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-## <a name="source-5-windows-based-azure-vm"></a>Zdroj: 5: Na základě Windows virtuální počítač Azure
+## <a name="source-5-windows-based-azure-vm"></a>Zdroj 5: Virtuální počítač Azure se systémem Windows
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-Postupujte podle pokynů v [v tomto článku](../windows/reset-rdp.md). Tento článek obnoví služby Vzdálená plocha na virtuálním počítači:
+Postupujte podle pokynů v [tomto článku](../windows/reset-rdp.md). Tento článek obnoví na virtuálním počítači službu Vzdálená plocha:
 
-* Povolte výchozí pravidlo brány Firewall na "Vzdálená plocha" Windows (TCP port 3389).
-* Povolte připojení ke vzdálené ploše tak, že nastavíte hodnotu registru HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections na hodnotu 0.
+* Povolte výchozí pravidlo brány Windows Firewall pro vzdálenou plochu (TCP port 3389).
+* Povolte připojení ke vzdálené ploše nastavením hodnoty registru HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections na hodnotu 0.
 
-Zkuste připojení znovu z vašeho počítače. Pokud jste pořád nejste schopni připojit přes vzdálenou plochu, zkontrolujte následující možné potíže:
+Opakujte pokus o připojení z počítače. Pokud se stále nemůžete připojit přes vzdálenou plochu, Projděte si následující možné problémy:
 
-* Na cílovém virtuálním počítači neběží služba Vzdálená plocha.
+* Na cílovém virtuálním počítači není spuštěná služba Vzdálená plocha.
 * Služba Vzdálená plocha nenaslouchá na portu TCP 3389.
-* Brána Windows Firewall nebo jiné místní brány firewall má výstupní pravidlo, které brání provozu vzdálené plochy.
-* Zjišťování neoprávněných vniknutí nebo software spuštěný na virtuálním počítači Azure pro monitorování sítě brání připojení ke vzdálené ploše.
+* Brána Windows Firewall nebo jiná místní brána firewall má odchozí pravidlo, které brání provozu vzdálené plochy.
+* Zjišťování neoprávněných vniknutí nebo software pro monitorování sítě běžící na virtuálním počítači Azure znemožňuje připojení ke vzdálené ploše.
 
-Pro virtuální počítače vytvořené pomocí modelu nasazení classic můžete použít vzdálenou relaci Azure Powershellu na virtuálním počítači Azure. Nejprve potřebujete k instalaci certifikátu pro virtuální počítač hostující cloudovou službu. Přejděte na [nakonfigurovat zabezpečený vzdálený PowerShell přístup k Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a stáhněte si **InstallWinRMCertAzureVM.ps1** soubor skriptu do místního počítače.
+U virtuálních počítačů vytvořených pomocí modelu nasazení Classic můžete použít relaci vzdálené Azure PowerShell k virtuálnímu počítači Azure. Nejdřív musíte nainstalovat certifikát pro hostující cloudovou službu virtuálního počítače. Přejděte na [Konfigurace zabezpečeného vzdáleného powershellového přístupu k Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a Stáhněte si soubor skriptu **InstallWinRMCertAzureVM. ps1** do svého místního počítače.
 
-V dalším kroku nainstalujte Azure PowerShell, pokud jste tak již neučinili. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+V dalším kroku nainstalujte Azure PowerShell, pokud jste to ještě neudělali. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-Dále otevřete příkazový řádek prostředí Azure PowerShell a změňte aktuální složku na umístění **InstallWinRMCertAzureVM.ps1** souboru skriptu. Pro spuštění skriptu Azure Powershellu, musíte nastavit zásady spouštění správné. Spustit **Get-ExecutionPolicy** příkaz k určení aktuální úroveň zásad. Informace o nastavení odpovídající úroveň najdete v tématu [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
+Potom otevřete příkazový řádek Azure PowerShell a změňte aktuální složku na umístění souboru skriptu **InstallWinRMCertAzureVM. ps1** . Chcete-li spustit skript Azure PowerShell, je nutné nastavit správné zásady spouštění. Spuštěním příkazu **Get-ExecutionPolicy** určete aktuální úroveň zásad. Informace o nastavení příslušné úrovně najdete v tématu [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx).
 
-Dále zadejte název vašeho předplatného Azure, název cloudové služby a název vašeho virtuálního počítače (odebrání < a > znaků), a potom spusťte tyto příkazy.
+V dalším kroku zadejte název předplatného Azure, název cloudové služby a název virtuálního počítače (odebráním < a >ch znaků) a pak tyto příkazy spusťte.
 
 ```powershell
 $subscr="<Name of your Azure subscription>"
@@ -145,11 +144,11 @@ $vmName="<Name of the target virtual machine>"
 .\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
 ```
 
-Můžete získat název správné předplatné z *SubscriptionName* vlastnost zobrazení **Get-AzureSubscription** příkazu. Název cloudové služby pro virtuální počítač z můžete získat *ServiceName* sloupce v zobrazení **Get-AzureVM** příkaz.
+Správný název předplatného můžete získat z vlastnosti *Subscription* pro zobrazení příkazu **Get-AzureSubscription** . Název cloudové služby pro virtuální počítač můžete získat ze sloupce *ServiceName* v zobrazení příkazu **Get-AzureVM** .
 
-Zaškrtněte, pokud máte nový certifikát. Otevřete modul snap-in Certifikáty pro aktuálního uživatele a podívejte se **důvěryhodné kořenové certifikační autority\Certifikáty** složky. Měli byste vidět certifikát s názvem DNS ve sloupci vystaveno pro cloudové služby (Příklad: cloudservice4testing.cloudapp.net).
+Ověřte, zda máte nový certifikát. Otevřete modul snap-in Certifikáty pro aktuálního uživatele a podívejte se do složky **důvěryhodných kořenových certifikačních autorit Authorities\Certificates** . V poli vydáno do sloupce (příklad: cloudservice4testing.cloudapp.net) by se měl zobrazit certifikát s názvem DNS vaší cloudové služby.
 
-V dalším kroku spustit vzdálenou relaci Azure Powershellu pomocí těchto příkazů.
+Dále inicializujte relaci vzdálené Azure PowerShell pomocí těchto příkazů.
 
 ```powershell
 $uri = Get-AzureWinRMUri -ServiceName $serviceName -Name $vmName
@@ -157,47 +156,47 @@ $creds = Get-Credential
 Enter-PSSession -ConnectionUri $uri -Credential $creds
 ```
 
-Po zadání přihlašovacích údajů správce platný, by měl vypadat podobně jako následující příkazový řádek Azure Powershellu:
+Po zadání platných přihlašovacích údajů správce by se měla zobrazit zpráva podobná následujícímu Azure PowerShell výzvě:
 
 ```powershell
 [cloudservice4testing.cloudapp.net]: PS C:\Users\User1\Documents>
 ```
 
-První část této výzvy je název cloudové služby, který obsahuje cílový virtuální počítač, který může být odlišné od "cloudservice4testing.cloudapp.net". Nyní můžete zadávat příkazy pro tuto cloudovou službu k prozkoumání problémů uvedené a opravte konfiguraci prostředí Azure PowerShell.
+První část této výzvy je název cloudové služby, který obsahuje cílový virtuální počítač, který se může lišit od "cloudservice4testing.cloudapp.net". Nyní můžete pro tuto cloudovou službu vystavovat Azure PowerShell příkazy, abyste prozkoumali zmíněné problémy a opravili konfiguraci.
 
-### <a name="to-manually-correct-the-remote-desktop-services-listening-tcp-port"></a>Chcete-li ručně služby Vzdálená plocha naslouchání TCP port
-Na řádku vzdálené relace prostředí Azure PowerShell spusťte tento příkaz.
+### <a name="to-manually-correct-the-remote-desktop-services-listening-tcp-port"></a>Ruční oprava portu TCP služby Vzdálená plocha naslouchání
+Na příkazovém řádku relace vzdáleného Azure PowerShell spusťte tento příkaz.
 
 ```powershell
 Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 ```
 
-Vlastnost číslo_portu zobrazuje aktuální číslo portu. V případě potřeby změnit vzdálené plochy port číslo zpět na výchozí hodnotu (3389) pomocí tohoto příkazu.
+Vlastnost číslo_portu zobrazuje aktuální číslo portu. V případě potřeby změňte číslo portu vzdálené plochy zpátky na výchozí hodnotu (3389) pomocí tohoto příkazu.
 
 ```powershell
 Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber" -Value 3389
 ```
 
-Ověřte, že port se změnil na 3389 pomocí tohoto příkazu.
+Pomocí tohoto příkazu ověřte, že port byl změněn na 3389.
 
 ```powershell
 Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 ```
 
-Ukončete relaci vzdálené prostředí Azure PowerShell pomocí tohoto příkazu.
+Pomocí tohoto příkazu ukončete relaci vzdálené Azure PowerShell.
 
 ```powershell
 Exit-PSSession
 ```
 
-Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure je rovněž na portu TCP. 3398 jako jeho interní port. Restartujte virtuální počítač Azure a zkuste to znovu připojení ke vzdálené ploše.
+Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure používá také port TCP 3398 jako svůj interní port. Restartujte virtuální počítač Azure a pokuste se znovu připojit ke vzdálené ploše.
 
 ## <a name="additional-resources"></a>Další zdroje
-[Jak obnovit heslo nebo službu Vzdálená plocha pro virtuální počítače s Windows](../windows/reset-rdp.md)
+[Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítače s Windows](../windows/reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
 
-[Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači s Linuxem v Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Řešení potíží s připojením Secure Shell (SSH) k virtuálnímu počítači Azure se systémem Linux](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Poradce při potížích s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

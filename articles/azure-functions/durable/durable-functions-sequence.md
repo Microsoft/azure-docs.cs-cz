@@ -1,25 +1,24 @@
 ---
-title: Funkce řetězení v Durable Functions – Azure
-description: Zjistěte, jak ke spuštění ukázky Durable Functions, která postupně provede sekvenci funkce.
+title: Řetězení funkcí v Durable Functions – Azure
+description: Naučte se, jak spustit ukázku Durable Functions, která spouští sekvenci funkcí.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730531"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087108"
 ---
-# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v Durable Functions – ukázka Hello pořadí
+# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Řetězení funkcí v ukázce sekvence Durable Functions-Hello
 
-Funkce řetězení odkazuje na model provedení pořadí funkcí v určitém pořadí. Často výstup jedné funkce je potřeba použít se vstupem jiné funkce. Tento článek popisuje řetězení sekvenci, která vytvoříte po dokončení tohoto rychlého startu Durable Functions ([ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md)). Další informace o Durable Functions najdete v tématu [Durable Functions vzory a technických konceptech](durable-functions-concepts.md).
+Řetězení funkcí odkazuje na vzor spouštění sekvence funkcí v určitém pořadí. Výstup jedné funkce se často musí použít na vstup jiné funkce. Tento článek popisuje sekvenci zřetězení, kterou vytvoříte při dokončování Durable Functions rychlý Start ([C#](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md)). Další informace o Durable Functions najdete v tématu [Durable Functions Patterns and Technical koncepty](durable-functions-concepts.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -27,36 +26,36 @@ Funkce řetězení odkazuje na model provedení pořadí funkcí v určitém po�
 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E1_HelloSequence`: Funkce orchestrátoru, který volá `E1_SayHello` více než jednou v sekvenci. Uloží výstup z `E1_SayHello` volá a zaznamená výsledky.
-* `E1_SayHello`: Funkce aktivitu, která se připojí řetězec "Hello".
+* `E1_HelloSequence`: Funkce nástroje Orchestrator, která `E1_SayHello` v posloupnosti volá více než jednou. Ukládá výstupy z `E1_SayHello` volání a zaznamenává výsledky.
+* `E1_SayHello`: Funkce aktivity, která předřadí řetězec s řetězcem "Hello".
 
-Následující části popisují konfiguraci a kód, který se používají pro skriptovací C# a JavaScript. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
+Následující části popisují konfiguraci a kód, který se používá ke C# skriptování a JavaScriptu. Kód pro vývoj v aplikaci Visual Studio se zobrazí na konci článku.
 
 > [!NOTE]
-> Odolné funkce jazyka JavaScript jsou k dispozici pro 2.x modul runtime služby Functions pouze.
+> Durable Functions JavaScriptu jsou k dispozici pouze pro modul runtime Functions 2. x.
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
-### <a name="functionjson-file"></a>soubor Function.JSON
+### <a name="functionjson-file"></a>soubor Function. JSON
 
-Pokud používáte Visual Studio Code nebo na webu Azure portal pro vývoj, tady je obsah *function.json* souboru pro funkci nástroje orchestrator. Většina orchestrator *function.json* soubory vypadat například takto téměř úplně stejné.
+Pokud používáte Visual Studio Code nebo Azure Portal pro vývoj, tady je obsah souboru *Functions. JSON* pro funkci Orchestrator. Většina souborů *. JSON funkcí* Orchestrator vypadá téměř přesně takto.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
-Důležité je `orchestrationTrigger` typ vazby. Všechny funkce produktu orchestrator musíte použít tento typ aktivační události.
+Důležitou věcí je `orchestrationTrigger` typ vazby. Všechny funkce nástroje Orchestrator musí používat tento typ aktivační události.
 
 > [!WARNING]
-> Budete dodržovat pravidla "bez vstupně-výstupní operace" funkcí nástroje orchestrator, nechcete používat žádné vstupní nebo výstupní vazby při použití `orchestrationTrigger` aktivovat vazby.  Pokud dalších vstupních nebo výstupních vazeb jsou potřeba, by měl místo toho se používají v rámci `activityTrigger` funkce, které jsou volány orchestrátor.
+> Chcete-li přidržet pravidlo "žádné I/O" funkcí nástroje Orchestrator, při použití `orchestrationTrigger` vazby triggeru nepoužívejte žádné vstupní ani výstupní vazby.  Pokud jsou vyžadovány jiné vstupní nebo výstupní vazby, měly by být použity místo toho v kontextu `activityTrigger` funkcí, které jsou volány nástrojem Orchestrator.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skript jazyka C# (Visual Studio Code a Azure portal ukázkový kód)
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#skript (ukázkový kód Visual Studio Code a Azure Portal)
 
 Zde je zdrojový kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-Všechny funkce Orchestrace C# musí mít parametr typu `DurableOrchestrationContext`, která existuje v `Microsoft.Azure.WebJobs.Extensions.DurableTask` sestavení. Pokud používáte skript jazyka C#, sestavení může být odkazováno pomocí `#r` zápis. Tento objekt context umožňuje volat jiné *aktivity* funkce a předání vstupních parametrů pomocí jeho [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metody.
+Všechny C# funkce orchestrace musí mít parametr typu `DurableOrchestrationContext`, `Microsoft.Azure.WebJobs.Extensions.DurableTask` který existuje v sestavení. Pokud používáte C# skript, sestavení lze odkazovat pomocí `#r` zápisu. Tento kontextový objekt umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metody.
 
-Kód volá `E1_SayHello` třikrát v sekvenci s různými hodnotami parametrů. Vrácené hodnoty každého volání je přidán do `outputs` seznam, který je vrácen na konci funkce.
+Kód volá `E1_SayHello` tři časy v pořadí s různými hodnotami parametrů. Návratová hodnota každého volání je přidána do `outputs` seznamu, který je vrácen na konci funkce.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -64,53 +63,53 @@ Zde je zdrojový kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Musí obsahovat všechny funkce Orchestrace jazyka JavaScript [ `durable-functions` modulu](https://www.npmjs.com/package/durable-functions). To je knihovna, která umožňuje zápis Durable Functions v JavaScriptu. Existují tři významné rozdíly mezi funkce orchestraci a jiné funkce jazyka JavaScript:
+Všechny funkce orchestrace JavaScriptu musí obsahovat [ `durable-functions` modul](https://www.npmjs.com/package/durable-functions). Toto je knihovna, která umožňuje psát Durable Functions v jazyce JavaScript. Existují tři významné rozdíly mezi funkcí Orchestrace a dalšími funkcemi jazyka JavaScript:
 
-1. Funkce [generátoru funkcí.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. Funkce je zabalený ve volání `durable-functions` modulu `orchestrator` – metoda (zde `df`).
-3. Funkce musí být synchronní. Protože metoda "orchestrator" zpracovává volání 'context.done", funkce by měla jednoduše 'return'.
+1. Funkce je generátorová [funkce.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+2. Funkce je zabalena do volání `durable-functions` `orchestrator` metody modulu (zde `df`).
+3. Funkce musí být synchronní. Protože metoda ' Orchestrator ' zpracovává volání ' Context. hotov ', funkce by měla jednoduše ' Return '.
 
-`context` Objekt obsahuje `df` objektu umožňuje volat jiné *aktivity* funkce a předání vstupních parametrů pomocí jeho `callActivity` metoda. Kód volá `E1_SayHello` třikrát v sekvenci s různými hodnotami parametrů, pomocí `yield` k označení spuštění by měl čekat na volání funkce asynchronní aktivity se mají vrátit. Vrácené hodnoty každého volání je přidán do `outputs` seznam, který je vrácen na konci funkce.
+Objekt obsahuje objekt, který umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své `callActivity` metody. `df` `context` Kód volá `E1_SayHello` třikrát tři časy v pořadí s různými hodnotami parametrů, které `yield` používají k určení, že by mělo být spuštěno volání funkce asynchronní aktivity, které se mají vrátit. Návratová hodnota každého volání je přidána do `outputs` seznamu, který je vrácen na konci funkce.
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
-### <a name="functionjson-file"></a>soubor Function.JSON
+### <a name="functionjson-file"></a>soubor Function. JSON
 
-*Function.json* soubor pro aktivitu funkce `E1_SayHello` je podobná `E1_HelloSequence` s tím rozdílem, že používá `activityTrigger` vazby typu, nikoli `orchestrationTrigger` typ vazby.
+Soubor *Function. JSON* pro funkci `E1_SayHello` Activity je `E1_HelloSequence` podobný tomu s tím rozdílem, že `orchestrationTrigger` používá `activityTrigger` typ vazby místo typu vazby.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Musíte použít všechny funkce volané funkce protokolem Orchestrace `activityTrigger` vazby.
+> Každá funkce, která je volána funkcí orchestrace, musí `activityTrigger` používat vazbu.
 
-Provádění `E1_SayHello` je relativně jednoduché řetězec operace formátování.
+Implementace `E1_SayHello` je poměrně operace formátování řetězce s jednoduchým řetězcem.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-Tato funkce má parametr typu [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), kterou používá k získání vstupu, který byl předán voláním funkce orchestrátoru [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
+Tato funkce má parametr typu [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), který používá k získání vstupu, který byl předán voláním funkce Orchestrator do [`CallActivityAsync<T>`](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
 ### <a name="javascript"></a>JavaScript
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Na rozdíl od Orchestrace funkce JavaScriptu potřebuje funkce protokolem aktivit žádné speciální instalační program. Vstup předaný funkci orchestrator je umístěn na `context.bindings` objekt pod názvem `activityTrigger` vazby – v takovém případě `context.bindings.name`. Název vazby, jenž mohou být nastaveny jako parametr exportované funkce a k nim přistupuje přímo, což je, co dělá ukázkový kód.
+Na rozdíl od funkce orchestrace JavaScriptu nepotřebuje funkce aktivity žádné speciální nastavení. Vstup předaný do něj funkce Orchestrator je umístěn na `context.bindings` objektu pod názvem `activityTrigger` vazby `context.bindings.name`– v tomto případě. Název vazby lze nastavit jako parametr exportované funkce a získat k nim přímý pøístup, což je to, co dělá vzorový kód.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Ke spuštění `E1_HelloSequence` Orchestrace, odeslat požadavek následující HTTP POST.
+Chcete-li `E1_HelloSequence` spustit orchestraci, odešlete následující požadavek HTTP POST.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> Předchozím fragmentu kódu HTTP předpokládá existuje položka v `host.json` souboru, který odebere výchozí `api/` předpony ze všech URL funkce triggeru HTTP. Značky můžete najít v této konfiguraci `host.json` soubor ve vzorcích.
+> Předchozí fragment kódu http předpokládá, že v `host.json` souboru je položka, která odebere výchozí `api/` předponu ze všech adres URL funkcí triggeru protokolu HTTP. Značky pro tuto konfiguraci najdete v `host.json` souboru v ukázkách.
 
-Například pokud používáte ukázku v aplikaci function app s názvem "myfunctionapp", nahraďte "myfunctionapp.azurewebsites.net" "{hostitele}".
+Pokud například spustíte ukázku ve Function App s názvem "myfunctionapp", nahraďte "{host}" myfunctionapp.azurewebsites.net ".
 
-Výsledkem je odpověď HTTP 202 takto (oříznut pro zkrácení):
+Výsledkem je odpověď HTTP 202, jako je to (oříznuto pro zkrácení):
 
 ```
 HTTP/1.1 202 Accepted
@@ -121,13 +120,13 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/96924899
 (...trimmed...)
 ```
 
-V tomto okamžiku orchestraci je ve frontě a začne okamžitě spustit. Adresa URL v `Location` záhlaví lze použít ke kontrole stavu spuštění.
+V tomto okamžiku se orchestrace zařadí do fronty a spustí se okamžitě. Adresu URL v `Location` hlavičce lze použít ke kontrole stavu provedení.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-Výsledkem je stav orchestraci. Spuštění a dokončení rychlé, takže se zobrazí v *dokončeno* stavu odpovědí, který vypadá takto (oříznut pro zkrácení):
+Výsledkem je stav orchestrace. Rychle běží a dokončuje se, takže se zobrazí v *dokončeném* stavu s odpovědí, která bude vypadat (oříznuté pro zkrácení):
 
 ```
 HTTP/1.1 200 OK
@@ -137,22 +136,22 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-Jak je vidět, `runtimeStatus` instance je *dokončeno* a `output` obsahuje výsledek spuštění funkce orchestrátoru serializací JSON.
+Jak vidíte, `runtimeStatus` instance je `output` *dokončena* a obsahuje výsledek serializace funkce Orchestrator ve formátu JSON.
 
 > [!NOTE]
-> Koncový bod HTTP POST, který spustil funkce orchestrátoru je implementována v ukázkové aplikaci jako HTTP aktivuje funkci s názvem "HttpStart". Můžete implementovat podobné starter logiku pro další typy triggerů, jako je třeba `queueTrigger`, `eventHubTrigger`, nebo `timerTrigger`.
+> Koncový bod HTTP POST, který spustil funkci Orchestrator, se implementuje v ukázkové aplikaci jako aktivační funkce HTTP s názvem "HttpStart". Můžete implementovat podobnou počáteční logiku pro jiné typy triggerů, `queueTrigger` `eventHubTrigger`například, nebo `timerTrigger`.
 
-Podívejte se na protokoly spuštění funkce. `E1_HelloSequence` Funkce spuštěno a dokončeno více než jednou z důvodu chování opakování podle [přehled](durable-functions-concepts.md). Na druhé straně, došlo jenom tři prováděných `E1_SayHello` od provádění těchto funkcí není získat znovu přehrát.
+Podívejte se na protokoly spuštění funkce. Funkce byla spuštěna a několikrát dokončena z důvodu chování opakovaného přehrávání popsaných v [přehledu.](durable-functions-concepts.md) `E1_HelloSequence` Na druhé straně bylo k dispozici pouze tři spuštění `E1_SayHello` , protože se tyto provádění této funkce nezobrazují.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio ukázkový kód
+## <a name="visual-studio-sample-code"></a>Vzorový kód sady Visual Studio
 
-Tady je Orchestrace jako jeden soubor jazyka C# v sadě Visual Studio projekt:
+Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tato ukázka vám ukázal, jednoduché funkce řetězení Orchestrace. Další příklad ukazuje, jak implementovat fan odesílací/fan v vzor.
+Tato ukázka ukázala jednoduchou orchestraci zřetězení funkcí. Další příklad ukazuje, jak implementovat vzorek ventilátoru nebo ventilátoru.
 
 > [!div class="nextstepaction"]
-> [Spustit Fan odesílací/fan v ukázce](durable-functions-cloud-backup.md)
+> [Spustit ukázku ventilátoru/ventilátoru](durable-functions-cloud-backup.md)

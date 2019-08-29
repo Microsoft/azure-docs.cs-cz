@@ -1,6 +1,6 @@
 ---
-title: Použití filtrů paketů FreeBSD k vytvoření brány firewall v Azure | Dokumentace Microsoftu
-description: Informace o nasazení brány firewall NAT pomocí FreeBSD PF v Azure.
+title: Vytvoření brány firewall v Azure pomocí filtru paketů FreeBSD | Microsoft Docs
+description: Naučte se, jak nasadit bránu firewall překladu adres (NAT) pomocí FreeBSD PF v Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KylieLiang
@@ -9,39 +9,38 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 03ef1ad3f81cfe7b11f74ace9ff2992535d5aad6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667639"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083245"
 ---
-# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Použití filtrů paketů FreeBSD k vytvoření zabezpečené brány firewall v Azure
-Tento článek představuje nasazení brány firewall NAT pomocí Packeru filtrů FreeBSD pomocí šablony Azure Resource Manageru pro běžný scénář webového serveru.
+# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak pomocí filtru paketů FreeBSD vytvořit zabezpečenou bránu firewall v Azure
+Tento článek popisuje, jak nasadit firewall překladu adres (NAT) pomocí filtru FreeBSD Pack Azure Resource Manager prostřednictvím šablony pro běžný scénář webového serveru.
 
 ## <a name="what-is-pf"></a>Co je PF?
-PF (filtr paketů, zapsat také pf) je filtr paketů licencovaný BSD, střední část softwaru pro funkce brány firewall. PF od té doby se vyvinula rychle a nyní má několik výhod oproti další dostupné brány firewall. Překlad síťových adres (NAT) je v souboru PF od prvního dne, pak Plánovač paketů a aktivní fronty management byly integrovány do PF, tak, že integrace ALTQ a díky tomu je prostřednictvím PF vaší konfigurace. Funkce, jako je pfsync a CARP pro převzetí služeb při selhání a redundance, authpf relace ověřování a protokolu ftp – proxy serveru k usnadnění funkce brány firewall obtížné protokolu FTP, mají také rozšířené PF. Stručně řečeno PF je brána firewall výkonné a plně funkční. 
+PF (filtr paketů, také napsaný PF) je filtr licencovaných stavových paketů BSD, střední část softwaru pro bránu firewall. Vzhledem k tomu, že je k dispozici, bylo z BF možné rychle vyvíjet a teď má několik výhod oproti ostatním dostupným Překlad síťových adres (NAT) je na adrese PF od jednoho dne a služba Plánovač paketů a aktivní fronty byla integrována do BF, protože integruje ALTQ a usnadňuje konfiguraci prostřednictvím konfigurace PF. Další funkce, jako jsou pfsync a CARP pro převzetí služeb při selhání a redundanci, Authpf pro ověřování relací a FTP – proxy server pro usnadnění brány firewall pro obtížné protokol FTP, mají také rozšířenou PF. V krátkém případě je BF k dispozici pro bránu firewall s bohatou funkcí. 
 
 ## <a name="get-started"></a>Začínáme
-Pokud mají zájem o nastavení zabezpečené brány firewall v cloudu pro vaše webové servery, pusťme se do práce. Můžete také použít skripty do této šablony Azure Resource Managerem použít ke konfiguraci síťové topologie.
-Šablony Azure Resource Manageru nastavte FreeBSD virtuální počítač, který provádí NAT /redirection PF dva virtuální počítače a FreeBSD pomocí webový server Nginx nainstalovaný a nakonfigurovaný. Kromě provádění NAT pro výchozí přenos dvě webové servery, virtuální počítač NAT/přesměrování zachycuje požadavků HTTP a přesměruje je to dva webových serverů principem kruhového. Virtuální sítě používá 10.0.0.2/24 privátní prostoru nesměrovatelných adres IP a můžete změnit parametry šablony. Šablony Azure Resource Manageru také definuje směrovací tabulku pro celý virtuální síť, což je kolekce jednotlivých tras, chcete-li přepsat Azure výchozích tras na základě cílové IP adresy. 
+Pokud vás zajímá nastavení zabezpečené brány firewall v cloudu pro vaše webové servery, můžeme začít. Můžete také použít skripty používané v této šabloně Azure Resource Manager k nastavení síťové topologie.
+Šablona Azure Resource Manager nastavila virtuální počítač s FreeBSD, který provádí překlad adres/Redirection pomocí PF a dva FreeBSD virtuální počítače s nainstalovaným a nakonfigurovaným webovým serverem Nginx. Kromě provádění překladu adres (NAT) pro dva webové servery s odchozí přenos dat zachycuje virtuální počítač NAT/přesměrování požadavky HTTP a přesměruje je na dva webové servery v rámci kruhové dotazování. Virtuální síť používá privátní adresní prostor IP adres 10.0.0.2/24 a parametry šablony můžete upravit. Šablona Azure Resource Manager také definuje směrovací tabulku pro celou virtuální síť, což je kolekce jednotlivých tras používaných k přepsání výchozích tras Azure na základě cílové IP adresy. 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
-### <a name="deploy-through-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
-Budete potřebovat nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název skupiny prostředků `myResourceGroup` v `West US` umístění.
+### <a name="deploy-through-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
+Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název `myResourceGroup` skupiny prostředků `West US` v umístění.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-V dalším kroku nasaďte šablonu [instalační program pf freebsd](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) s [vytvořit nasazení skupiny pro az](/cli/azure/group/deployment). Stáhněte si [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) na stejné cestě a definovat vlastní hodnoty prostředků, jako například `adminPassword`, `networkPrefix`, a `domainNamePrefix`. 
+V dalším kroku nasaďte šablonu [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Stáhněte si [azuredeploy. Parameters. JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) pod stejnou cestou a definujte vlastní hodnoty prostředků, například `adminPassword`, `networkPrefix`a `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -49,15 +48,15 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Po přibližně během pěti minut, zobrazí se informace o `"provisioningState": "Succeeded"`. Potom můžete ssh na front-endový virtuální počítač (NAT) nebo přístup webový server Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaný název domény z front-endový virtuální počítač (NAT). Následující příklad vypíše v plně kvalifikovaný název domény a veřejné IP adresy přiřazené k front-endový virtuální počítač (NAT) `myResourceGroup` skupinu prostředků. 
+Po asi pět minut se zobrazí informace o `"provisioningState": "Succeeded"`. Pak můžete pomocí protokolu SSH přejít k virtuálnímu počítači front-end (NAT) nebo přistupovat k webovému serveru Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaného názvu domény (NAT). Následující příklad vypíše plně kvalifikovaný název domény a veřejnou IP adresu, která se přiřadí virtuálnímu počítači `myResourceGroup` front-endu (NAT) ve skupině prostředků. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
-## <a name="next-steps"></a>Další postup
-Opravdu chcete nastavit vlastní NAT v Azure? Open Source, bezplatné, ale výkonné? Potom PF je dobrou volbou. Pomocí šablony [instalační program pf freebsd](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup), stačí pouze pět minut nastavit brány firewall NAT s využitím FreeBSD pro vyrovnávání zatížení s kruhovým uživatele PF v Azure pro běžný scénář webového serveru. 
+## <a name="next-steps"></a>Další kroky
+Chcete v Azure nastavit vlastní překlad adres (NAT)? Open Source, zdarma, ale výkonné? Pak je PF dobrá volba. Pomocí šablony [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)budete potřebovat jenom pět minut, než nastavíte bránu firewall překladu adres (NAT) s vyrovnáváním zatížení s kruhovým dotazováním pomocí služby FreeBSD PF v Azure pro běžný scénář webového serveru. 
 
-Pokud chcete získat nabídku FreeBSD v Azure, podívejte se na [Úvod do Linuxu na Azure](freebsd-intro-on-azure.md).
+Pokud se chcete seznámit s nabídkou FreeBSD v Azure, přečtěte si [Úvod do FreeBSD v Azure](freebsd-intro-on-azure.md).
 
-Pokud chcete získat další informace o souboru PF, podívejte se na [FreeBSD Příručka](https://www.freebsd.org/doc/handbook/firewalls-pf.html) nebo [PF – uživatelská příručka](https://www.freebsd.org/doc/handbook/firewalls-pf.html).
+Pokud chcete získat další informace o PF, přečtěte si příručku pro [FreeBSD](https://www.freebsd.org/doc/handbook/firewalls-pf.html) nebo [uživatele PF](https://www.freebsd.org/doc/handbook/firewalls-pf.html).
