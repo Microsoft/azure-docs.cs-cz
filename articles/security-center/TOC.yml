@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: Není nainstalováno posouzení ohrožení zabezpečení
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Povolení skupin zabezpečení sítě
-          href: security-center-enable-network-security-groups.md
         - name: Sestavy hrozeb
           href: security-center-threat-report.md
         - name: Vlastní výstrahy
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Playbooky Logic Apps
           href: security-center-playbooks.md
-        - name: Zobrazení událostí
-          href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
         - name: Plánování a provoz

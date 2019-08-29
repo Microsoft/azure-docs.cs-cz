@@ -259,6 +259,8 @@
               href: sql-data-warehouse-install-visual-studio.md
             - name: Integrace správy zdrojového kódu
               href: sql-data-warehouse-source-control-integration.md
+            - name: "Průběžná integrace a\_nasazování"
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
         - name: Připojení a dotazování
           items:
             - name: Visual Studio SSDT

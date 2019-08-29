@@ -194,6 +194,8 @@
       items:
         - name: portál Azure
           href: howto-auto-grow-storage-portal.md
+        - name: portál Azure
+          href: howto-auto-grow-storage-cli.md
     - name: Přístup k protokolům serveru
       items:
         - name: portál Azure

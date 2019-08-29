@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717521"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614161"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Pochopení Azure Cosmos DB faktury
 
@@ -90,7 +90,7 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Příklady fakturace s geografickou replikací a s více hlavními servery  
 
-Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do účtu služby Azure Cosmos DB Database. Propustnost, kterou jste nakonfigurovali pro různé Azure Cosmos DB databáze a kontejnery, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je součet zřízené propustnosti (RU/s) nakonfigurovaný napříč všemi databázemi a kontejnery v rámci vašeho účtu databáze Azure Cosmos (zřízený za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, pak celkové zřízená propustnost za danou hodinu, pro účet databáze Azure Cosmos, který je nakonfigurovaný s jednou oblastí zápisu, se rovná T x N RU/s a (b) nakonfigurovaným se všemi oblastmi, které jsou schopné zpracovávat zápisy, se rovná T x (N + 1) RU/s. přestup. Zajištěná propustnost (jedna oblast zápisu) náklady $0.008/hod na 100 RU/s a zřízená propustnost s více možnostmi s možností zápisu (s více hlavními konfiguracemi) $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
+Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého účtu databáze Azure Cosmos. Propustnost, kterou jste nakonfigurovali pro různé databáze a kontejnery Azure Cosmos, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je součet zřízené propustnosti (RU/s) nakonfigurovaný napříč všemi databázemi a kontejnery v rámci vašeho účtu databáze Azure Cosmos (zřízený za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, pak celkové zřízená propustnost za danou hodinu, pro účet databáze Azure Cosmos, který je nakonfigurovaný s jednou oblastí zápisu, se rovná T x N RU/s a (b) nakonfigurovaným se všemi oblastmi, které jsou schopné zpracovávat zápisy, se rovná T x (N + 1) RU/s. přestup. Zajištěná propustnost (jedna oblast zápisu) náklady $0.008/hod na 100 RU/s a zřízená propustnost s více možnostmi s možností zápisu (s více hlavními konfiguracemi) $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Příklad fakturace: účet Azure Cosmos s více oblastmi, zápisy v jedné oblasti
 
@@ -228,7 +228,7 @@ Celkové měsíční náklady = měsíční náklady na úložiště a měsíčn
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Fakturace s Azure Cosmos DB rezervovanou kapacitou
 
-Azure Cosmos DB Rezervovaná kapacita vám umožní koupit zřízenou propustnost předem (rezervovanou kapacitu nebo rezervaci), kterou je možné použít pro všechny databáze Azure Cosmos DB a kontejnery (pro rozhraní API nebo datový model) ve všech oblastech Azure. Vzhledem k tomu, že se cena zřízené propustnosti liší v závislosti na oblasti, pomůže vám rezervovat rezervovanou kapacitu jako peněžní kredit, který jste zakoupili na základě slevy, kterou je možné vyřadit z hlediska zřízené propustnosti podle příslušné ceny v jednotlivých oblastech. Řekněme například, že máte účet Azure Cosmos s jediným kontejnerem zřízeným 50-K RU/s a globálně replikovanými dvěma oblastmi – Východní USA a Japonsko – východ. Pokud zvolíte možnost průběžné platby, platíte:  
+Azure Cosmos DB Rezervovaná kapacita vám umožní koupit zřízenou propustnost předem (Rezervovaná kapacita nebo rezervace), kterou je možné použít pro všechny databáze a kontejnery Azure Cosmos (pro jakékoli rozhraní API nebo datový model) napříč všemi oblastmi Azure. Vzhledem k tomu, že se cena zřízené propustnosti liší v závislosti na oblasti, pomůže vám rezervovat rezervovanou kapacitu jako peněžní kredit, který jste zakoupili na základě slevy, kterou je možné vyřadit z hlediska zřízené propustnosti podle příslušné ceny v jednotlivých oblastech. Řekněme například, že máte účet Azure Cosmos s jediným kontejnerem zřízeným 50-K RU/s a globálně replikovanými dvěma oblastmi – Východní USA a Japonsko – východ. Pokud zvolíte možnost průběžné platby, platíte:  
 
 * v Východní USA: 50-K RU/s rychlostí $0,008 za 100 RU/s v této oblasti 
 
