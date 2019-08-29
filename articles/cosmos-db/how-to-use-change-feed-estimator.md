@@ -3,15 +3,15 @@ title: Použití estimatoru Change feed-Azure Cosmos DB
 description: Naučte se používat estimatoru Change feed k analýze průběhu procesoru změny kanálu.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 82e5bb547d025d25aa6720d2b7a603d53a921c57
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991961"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092950"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 
@@ -58,7 +58,7 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 

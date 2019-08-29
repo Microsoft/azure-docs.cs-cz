@@ -10,18 +10,17 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 23f2d9add5838fc0c9ac5764921a2f3cc6ae7ab7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b9db5cbb9e65fc7bc8aa306a69a0889f29b61be3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67709903"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101340"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -425,7 +424,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Název**: Název prostředku (název virtuálního počítače).
    * **Typ disku virtuálního počítače**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
    * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač se systémem Linux můžete zadat klíč protokolu SSH (Public Secure Shell), který používáte k přihlášení k počítači.
-   * **Předplatné**: Vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
+   * **Předplatné:** Vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
    * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat buď název nové skupiny prostředků, nebo název skupiny prostředků, která již existuje.
    * **Umístění**: Místo nasazení nového virtuálního počítače. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 1. **Velikost**:
@@ -473,7 +472,7 @@ Virtuální počítač můžete vytvořit pomocí jedné ze šablon SAP publikov
 V Azure Portal zadejte pro šablonu následující parametry:
 
 1. **Základy**:
-   * **Předplatné**: Předplatné, které se má použít k nasazení šablony.
+   * **Předplatné:** Předplatné, které se má použít k nasazení šablony.
    * **Skupina prostředků**: Skupina prostředků, která se má použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků, nebo můžete vybrat existující skupinu prostředků v rámci předplatného.
    * **Umístění**: Kam šablonu nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 
@@ -565,7 +564,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Název**: Název prostředku (název virtuálního počítače).
    * **Typ disku virtuálního počítače**: Vyberte typ disku disku s operačním systémem. Pokud chcete pro datové disky použít Premium Storage, doporučujeme použít také Premium Storage pro disk s operačním systémem.
    * **Uživatelské jméno a heslo** nebo **veřejný klíč SSH**: Zadejte uživatelské jméno a heslo uživatele, který se vytvoří během zřizování. Pro virtuální počítač se systémem Linux můžete zadat klíč protokolu SSH (Public Secure Shell), který používáte k přihlášení k počítači.
-   * **Předplatné**: Vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
+   * **Předplatné:** Vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
    * **Skupina prostředků**: Název skupiny prostředků pro virtuální počítač. Můžete zadat buď název nové skupiny prostředků, nebo název skupiny prostředků, která již existuje.
    * **Umístění**: Místo nasazení nového virtuálního počítače. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 1. **Velikost**:
@@ -612,7 +611,7 @@ Pokud chcete vytvořit nasazení pomocí privátní image operačního systému 
 V Azure Portal zadejte pro šablonu následující parametry:
 
 1. **Základy**:
-   * **Předplatné**: Předplatné, které se má použít k nasazení šablony.
+   * **Předplatné:** Předplatné, které se má použít k nasazení šablony.
    * **Skupina prostředků**: Skupina prostředků, která se má použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vybrat existující skupinu prostředků v rámci předplatného.
    * **Umístění**: Kam šablonu nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:
@@ -707,7 +706,7 @@ K vytvoření nasazení pomocí privátního disku s operačním systémem prost
 V Azure Portal zadejte pro šablonu následující parametry:
 
 1. **Základy**:
-   * **Předplatné**: Předplatné, které se má použít k nasazení šablony.
+   * **Předplatné:** Předplatné, které se má použít k nasazení šablony.
    * **Skupina prostředků**: Skupina prostředků, která se má použít k nasazení šablony. Můžete vytvořit novou skupinu prostředků nebo vybrat existující skupinu prostředků v rámci předplatného.
    * **Umístění**: Kam šablonu nasadit. Pokud jste vybrali existující skupinu prostředků, použije se umístění této skupiny prostředků.
 1. **Nastavení**:

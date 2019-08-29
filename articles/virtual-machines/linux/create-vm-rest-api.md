@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Linuxem pomocí rozhraní REST API služby Azure | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit virtuální počítač s Linuxem v Azure, která používá ověřování Managed Disks a SSH pomocí rozhraní Azure REST API.
+title: Vytvoření virtuálního počítače se systémem Linux pomocí Azure REST API | Microsoft Docs
+description: Naučte se, jak vytvořit virtuální počítač se systémem Linux v Azure, který používá Managed Disks a ověřování SSH s Azure REST API.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,70 +9,69 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667949"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083480"
 ---
-# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
+# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
 
-Virtuální počítač s Linuxem (VM) v Azure se skládá z různých zdrojů, jako jsou disky a síťové rozhraní a definuje parametry, jako je například umístění, velikost a nastavení operačního systému image a ověřování.
+Virtuální počítač se systémem Linux v Azure se skládá z různých prostředků, jako jsou například disky a síťová rozhraní, a definuje parametry, jako je umístění, velikost a bitová kopie operačního systému a nastavení ověřování.
 
-Můžete vytvořit virtuální počítač s Linuxem pomocí webu Azure portal, Azure CLI 2.0, mnoho sad Azure SDK, šablon Azure Resource Manageru a celou řadu nástrojů třetích stran, jako jsou Ansible nebo Terraformu. Všechny tyto nástroje nakonec pomocí rozhraní REST API k vytvoření virtuálního počítače s Linuxem.
+Virtuální počítač se systémem Linux můžete vytvořit prostřednictvím Azure Portal, Azure CLI 2,0, mnoha sad Azure SDK, šablon Azure Resource Manager a mnoha nástrojů třetích stran, jako je Ansible nebo Terraformu. Všechny tyto nástroje nakonec používají REST API k vytvoření virtuálního počítače se systémem Linux.
 
-V tomto článku se dozvíte, jak používat rozhraní REST API k vytvoření virtuálního počítače s Linuxem, systémem Ubuntu 18.04-LTS pomocí spravovaných disků a ověřování SSH.
+V tomto článku se dozvíte, jak pomocí REST API vytvořit virtuální počítač Linux se systémem Ubuntu 18,04-LTS se spravovanými disky a ověřováním SSH.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Před vytvořením a odešlete žádost, budete potřebovat:
+Než vytvoříte a odešlete žádost, budete potřebovat:
 
 * `{subscription-id}` Pro vaše předplatné
-  * Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* A `{resourceGroupName}` jste předem vytvořili
-* A [virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
-* Pár klíčů SSH (můžete [vygenerovat nový token](mac-create-ssh-keys.md) pokud ho nemáte)
+  * Pokud máte více předplatných, přečtěte si téma [práce s více](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) předplatnými.
+* Vytvořili `{resourceGroupName}` jste předem čas
+* [Virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
+* Pár klíčů SSH (můžete vygenerovat [Nový](mac-create-ssh-keys.md) , pokud ho ještě nemáte)
 
-## <a name="request-basics"></a>Základní informace o požadavku
+## <a name="request-basics"></a>Základy požadavků
 
-Chcete-li vytvořit nebo aktualizovat virtuální počítač, použijte následující *UMÍSTIT* operace:
+Chcete-li vytvořit nebo aktualizovat virtuální počítač, použijte následující operaci *vložení* :
 
 ``` http
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-Kromě `{subscription-id}` a `{resourceGroupName}` parametry, budete muset zadat `{vmName}` (`api-version` je volitelný, ale tento článek byl testován s `api-version=2017-12-01`)
+`{subscription-id}` Kromě parametrů a `{resourceGroupName}` musíte zadat `{vmName}` `api-version=2017-12-01`(`api-version` je volitelný, ale tento článek byl testován pomocí).
 
-Vyžadují se následující hlavičky:
+Jsou vyžadovány následující hlavičky:
 
-| Hlavička požadavku   | Popis |
+| Hlavička žádosti   | Popis |
 |------------------|-----------------|
 | *Content-Type:*  | Povinný parametr. Nastavte na `application/json`. |
-| *Authorization:* | Povinný parametr. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization:* | Povinný parametr. Nastavte na platný `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-Obecné informace o práci s požadavky rozhraní REST API najdete v tématu [součástí žádost/odpověď rozhraní REST API](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+Obecné informace o práci s požadavky na REST API najdete v tématu [komponenty REST API žádosti a odpovědi](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## <a name="create-the-request-body"></a>Vytvořit datovou část požadavku
+## <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
-Následující běžné definice slouží k sestavení hlavní část žádosti:
+Následující běžné definice se používají k sestavení textu žádosti:
 
 | Name                       | Požadováno | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | Pravda     | řetězec                                                                              | Umístění prostředku. |
-| name                       |          | řetězec                                                                              | Název virtuálního počítače. |
+| name                       |          | řetězec                                                                              | Název virtuálního počítače |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Určuje síťová rozhraní virtuálního počítače. |
 
-Text požadavku příkladu jsou uvedeny níže. Je nutné zadat název virtuálního počítače v `{computerName}` a `{name}` parametry, název síťového rozhraní, které jste vytvořili v části `networkInterfaces`, vaše uživatelské jméno v `adminUsername` a `path`a *veřejného*část vašich klíčů SSH (například umístěný v `~/.ssh/id_rsa.pub`) v `keyData`. Zahrnout další parametry, můžete chtít upravit `location` a `vmSize`.  
+Příklad textu žádosti je uvedený níže. Ujistěte se, že jste zadali název virtuálního počítače `{computerName}` v `{name}` parametrech a, název síťového rozhraní, které jste vytvořili v `networkInterfaces`části, uživatelské jméno `adminUsername` v `path`a a *veřejnou* část svého SSH. souboru KeyPair (nachází se v, `~/.ssh/id_rsa.pub`například) v. `keyData` Další parametry, které byste mohli chtít upravit `location` , `vmSize`zahrnují a.  
 
 ```json
 {
@@ -127,22 +126,22 @@ Text požadavku příkladu jsou uvedeny níže. Je nutné zadat název virtuáln
 }
 ```
 
-Úplný seznam dostupných definic v textu požadavku, najdete v části [virtuálních počítačů vytvořit nebo aktualizovat definice těla požadavku](/rest/api/compute/virtualmachines/createorupdate#definitions).
+Úplný seznam dostupných definic v těle požadavku najdete v tématu [Definice textu žádosti o vytvoření nebo aktualizaci virtuálních počítačů](/rest/api/compute/virtualmachines/createorupdate#definitions).
 
-## <a name="sending-the-request"></a>Odesílání požadavku
+## <a name="sending-the-request"></a>Odesílá se žádost.
 
-Můžete použít klienta vaši volbu pro odeslání požadavku HTTP. Můžete také použít [nástroje v prohlížeči](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kliknutím **vyzkoušet** tlačítko.
+K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby. Můžete také použít [Nástroj v prohlížeči](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kliknutím na tlačítko **vyzkoušet** .
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
-Existují dva úspěšné odpovědi pro operaci vytvoření nebo aktualizaci virtuálního počítače:
+Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat virtuální počítač:
 
 | Name        | Typ                                                                              | Popis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 – vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |
+| 201 vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |
 
-Zhuštěnému *201 – vytvořeno* odpovědi z předchozího textu požadavku příklad, který vytvoří virtuální počítač zobrazuje *vmId* bylo přiřazeno a *provisioningState* je *Vytváření*:
+Zhuštěná *201 vytvořená* odpověď z předchozího ukázkového textu žádosti, který vytvoří virtuální počítač, zobrazuje *vmId* a *provisioningState* se *vytváří*:
 
 ```json
 {
@@ -151,13 +150,13 @@ Zhuštěnému *201 – vytvořeno* odpovědi z předchozího textu požadavku p�
 }
 ```
 
-Další informace o rozhraní REST API odpovědi najdete v tématu [zpracování zprávy s odpovědí](/rest/api/azure/#process-the-response-message).
+Další informace o odpovědích REST API najdete v tématu [zpracování zprávy s odpovědí](/rest/api/azure/#process-the-response-message).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rozhraní REST API služby Azure nebo jiné nástroje pro správu, jako je například Azure Powershellu nebo rozhraní příkazového řádku Azure naleznete v následujících tématech:
+Další informace o rozhraních REST API Azure nebo jiných nástrojích pro správu, jako je Azure CLI nebo Azure PowerShell, najdete v následujících tématech:
 
-- [Rozhraní REST API poskytovatele Azure Compute](/rest/api/compute/)
+- [REST API zprostředkovatele Azure COMPUTE](/rest/api/compute/)
 - [Začínáme s Azure REST API](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
 - [Modul Azure PowerShell](/powershell/azure/overview)

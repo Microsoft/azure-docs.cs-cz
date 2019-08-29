@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991557"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074387"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
 
@@ -177,63 +177,7 @@ V části najdete odkazy na poznámky k verzi pro distribuce datových platforem
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Výchozí konfigurace uzlů a velikosti virtuálních počítačů pro clustery
 
-V následujících tabulkách jsou uvedeny výchozí velikosti virtuálních počítačů pro clustery HDInsight.  Tento graf je nezbytný pro pochopení velikostí virtuálních počítačů, které se mají použít při vytváření skriptů PowerShellu nebo rozhraní příkazového řádku Azure CLI pro nasazení clusterů HDInsight.
-
-> [!NOTE]
-> Jedinými typy clusterů, které mají datové disky, jsou Kafka a HBA clustery s povolenou funkcí urychleného zápisu. HDInsight podporuje P30 a S30 velikosti disků v těchto scénářích.
-
-> [!IMPORTANT]  
-> Pokud v clusteru potřebujete víc než 32 pracovních uzlů, musíte vybrat velikost hlavního uzlu s aspoň 8 jádry a 14 GB paměti RAM.
-
-* Všechny podporované oblasti kromě Brazílie – jih a Japonsko – západ:
-
-|Typ clusteru|Hadoop|HBase|Interaktivní dotaz|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Head: výchozí velikost virtuálního počítače|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|Head: Doporučené velikosti virtuálních počítačů|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Pracovní proces: výchozí velikost virtuálního počítače|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 s 2 S30 disky na zprostředkovatele|
-|Pracovní proces: Doporučené velikosti virtuálních počítačů|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|ZooKeeper: výchozí velikost virtuálního počítače||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|ZooKeeper: Doporučené velikosti virtuálních počítačů||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|Služby ML: výchozí velikost virtuálního počítače||||||D4 v2||
-|Služby ML: Doporučená velikost virtuálního počítače||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Brazílie – jih a Japonsko – pouze (žádné velikosti v2):
-
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | ML Services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Head: výchozí velikost virtuálního počítače |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Head: Doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
-  | Pracovní proces: výchozí velikost virtuálního počítače |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Pracovní proces: Doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
-  | ZooKeeper: výchozí velikost virtuálního počítače | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: Doporučené velikosti virtuálních počítačů | |A2,<br/> A3,<br/> A4 | |A2,<br/> A3,<br/> A4 | | |
-  | Služby ML: výchozí velikosti virtuálních počítačů | | | | | |D4 |
-  | Služby ML: Doporučené velikosti virtuálních počítačů | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
-
-> [!NOTE]
-> - Hlava se označuje jako *Nimbus* pro typ clusteru.
-> - Pracovní proces je známý jako *správce* pro typ clusteru.
-> - Pracovní proces je známý jako *oblast* pro typ clusteru HBA.
+Další informace o tom, které SKU virtuálních počítačů vybrat pro váš cluster, najdete v tématu [Podrobnosti o konfiguraci clusteru Azure HDInsight](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>Další postup
 - [Nastavení clusteru pro Apache Hadoop, Spark a další funkce v HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

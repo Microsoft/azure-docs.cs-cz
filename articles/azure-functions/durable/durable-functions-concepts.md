@@ -1,42 +1,41 @@
 ---
-title: Odolné funkce vzory a technických konceptech v Azure Functions
-description: Zjistěte, jak rozšíření Durable Functions ve službě Azure Functions poskytuje výhody stavový kód spuštění v cloudu.
+title: Způsoby Durable Functions a technické koncepce v Azure Functions
+description: Přečtěte si, jak rozšíření Durable Functions v Azure Functions poskytuje výhody při provádění stavového kódu v cloudu.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812893"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098257"
 ---
-# <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Odolné funkce vzory a technických konceptech (Azure Functions)
+# <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Vzory Durable Functions a technické koncepce (Azure Functions)
 
-Odolná služba Functions je rozšířením [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md). Odolná služba Functions můžete použít k zápisu stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. 
+Durable Functions je rozšíření [Azure Functions](../functions-overview.md) a [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md). Můžete použít Durable Functions k zápisu stavových funkcí v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování. 
 
-Tento článek poskytuje podrobné informace o chování rozšíření Durable Functions pro běžné vzory implementace a Azure Functions. Informace můžou pomoct určit, jak vyřešit problémy při vývoji pomocí Durable Functions.
+Tento článek obsahuje podrobné informace o chování rozšíření Durable Functions pro Azure Functions a běžné vzory implementace. Tyto informace vám pomohou určit, jak používat Durable Functions k řešení problémů s vývojem.
 
 > [!NOTE]
-> Odolná služba Functions je pokročilá rozšíření pro službu Azure Functions, která není vhodná pro všechny aplikace. Tento článek předpokládá, že máte silné znalost konceptů v [Azure Functions](../functions-overview.md) a problémů při vývoji aplikace bez serveru.
+> Durable Functions je pokročilá rozšíření pro Azure Functions, která nejsou vhodná pro všechny aplikace. V tomto článku se předpokládá, že máte silnou znalost konceptů v [Azure Functions](../functions-overview.md) a problémy, které se týkají vývoje aplikací bez serveru.
 
 ## <a name="patterns"></a>Vzory
 
-Tato část popisuje některé běžné vzory aplikací, kde odolná služba Functions může být užitečné.
+Tato část popisuje některé běžné aplikační vzory, kde Durable Functions můžou být užitečné.
 
-### <a name="chaining"></a>Vzor #1: Řetězení funkcí
+### <a name="chaining"></a>#1 vzoru: Řetězení funkcí
 
-Ve funkci řetězení vzor spustí pořadí funkcí v určitém pořadí. V tomto vzoru výstup jedné funkce platí pro vstup jiné funkci.
+Ve vzoru zřetězení funkcí se posloupnost funkcí provádí v určitém pořadí. V tomto modelu je výstup jedné funkce aplikován na vstup jiné funkce.
 
-![Diagram funkce řetězení vzor](./media/durable-functions-concepts/function-chaining.png)
+![Diagram vzoru řetězení funkcí](./media/durable-functions-concepts/function-chaining.png)
 
-Odolná služba Functions můžete použít k implementaci funkce řetězení vzor stručně a výstižně, jak je znázorněno v následujícím příkladu:
+Můžete použít Durable Functions k implementaci vzor řetězení funkcí stručně, jak je znázorněno v následujícím příkladu:
 
 #### <a name="c-script"></a>Skript jazyka C#
 
@@ -58,9 +57,9 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Existují malé rozdíly v psaní předkompilované odolné funkce v C# a zápis předkompilované odolné funkce C# skript, který je znázorněno v příkladu. V C# předkompilované funkce, trvalý parametry musí být doplněny pomocí příslušných atributů. Příkladem je `[OrchestrationTrigger]` atribut pro `DurableOrchestrationContext` parametru. V C# předkompilované odolné funkce, je-li parametry nejsou správně upraveným, modul runtime nelze vložit do funkce proměnné a dojde k chybě. Další příklady najdete v článku [azure-functions-durable-extension ukázky na Githubu](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
+> Existuje drobný rozdíl mezi zápisem předkompilované trvalé funkce v C# a zápisem předkompilované trvalé funkce ve C# skriptu, který je zobrazen v příkladu. C# V předkompilovaných funkcích musí být odolné parametry dekorované příslušnými atributy. Příkladem je `[OrchestrationTrigger]` atribut `DurableOrchestrationContext` pro parametr. C# V předkompilovaných trvalých funkcích, pokud parametry nejsou správně upraveny, modul runtime nemůže vložit proměnné do funkce a dojde k chybě. Další příklady najdete v ukázkách [Azure-Functions-odolné rozšíření na GitHubu](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -73,22 +72,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-V tomto příkladu hodnoty `F1`, `F2`, `F3`, a `F4` jsou názvy další funkce do aplikace function App. Tok řízení můžete implementovat pomocí normální imperativní programování konstrukce. Kód spustí shora dolů. Kód může zahrnovat existující sémantiku toku řízení jazyka, jako jsou podmíněné příkazy a smyčky. Můžete vytvořit logiku zpracování chyb v `try` / `catch` / `finally` bloky.
+`F1`V tomto příkladu hodnoty `F2` `F3`,, a `F4` jsou názvy dalších funkcí v aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. `try` Do blokůmůžete`finally` zahrnout logiku zpracování chyb. / `catch` /
 
-Můžete použít `context` parametr [DurableOrchestrationContext] \(.NET\) a `context.df` volání další funkce podle názvu, předat parametry a vrátí funkce objekt (JavaScript) výstup. Pokaždé, když kód volá `await` (C#) nebo `yield` (JavaScript), kontrolní body framework Durable Functions průběh aktuální instance funkce. Pokud proces nebo virtuální počítač recykluje polovině provádění, obnoví instanci funkce z předchozího `await` nebo `yield` volání. Další informace najdete v další části se vzor č. 2: Ventilátor out/podporuje.
+Můžete použít `context` parametr [DurableOrchestrationContext] \(.NET\) a objekt(JavaScript)kvyvolánídalšíchfunkcípodlenázvu,PassParametersavracetvýstupfunkce.`context.df` Pokaždé, když kód `await` voláC#() `yield` nebo (JavaScript), Durable Functions Framework kontrolní body průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `await` nebo `yield` volání. Další informace najdete v další části #2 vzorových informací: Ventilátor nebo ventilátor v.
 
 > [!NOTE]
-> `context` Objekt v jazyce JavaScript představuje celé [funkce kontextu](../functions-reference-node.md#context-object), nejen [DurableOrchestrationContext] parametru.
+> Objekt v JavaScriptu představuje celý [kontext funkce](../functions-reference-node.md#context-object), nikoli jenom parametr DurableOrchestrationContext. [] `context`
 
-### <a name="fan-in-out"></a>Vzor #2: Ventilátor out/podporuje
+### <a name="fan-in-out"></a>#2 vzoru: Ventilátor nebo ventilátor v
 
-Ventilátor out/ventilátor ve vzorku, paralelně spustit více funkcí a potom počkejte na dokončení všech funkcí. Úkony agregace se často provádí na výsledky, které jsou vráceny z funkce.
+Ve vzorku se v ventilátoru nebo ventilátoru spouští více funkcí paralelně a pak čekají na dokončení všech funkcí. U výsledků, které se vrátí z funkcí, se často provádí některá agregační práce.
 
-![Diagram ventilátor out/ventilátor vzor](./media/durable-functions-concepts/fan-out-fan-in.png)
+![Diagram vzoru ventilátoru a ventilátoru](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-U běžných funkcí můžete se škálovatelnou tím, že funkce Odeslat více zpráv do fronty. Zpět v ventilační je mnohem složitější. Chcete sloučit, v normální funkce psaní kódu můžete sledovat, kdy funkce aktivované protokolem front end a potom úložiště fungovat výstupy. 
+Díky normálním funkcím se můžete dostat do fronty tak, že funkci odešlete více zpráv. Fanning zpět je mnohem náročnější. Pro ventilátor v nástroji normální funkce napíšete kód, který bude sledován při ukončení funkcí aktivovaných frontou, a následné uložení výstupů funkcí. 
 
-Rozšíření Durable Functions zpracovává tento model s poměrně jednoduchý kód:
+Rozšíření Durable Functions zpracovává tento vzor s poměrně jednoduchým kódem:
 
 #### <a name="c-script"></a>Skript jazyka C#
 
@@ -113,7 +112,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -135,19 +134,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Větveného úkony distribuované na více instancí `F2` funkce. Práce se sleduje pomocí dynamického seznamu úkolů. .NET `Task.WhenAll` rozhraní API nebo JavaScript `context.df.Task.all` rozhraní API volat, čekat na dokončení všech volané funkce. Pak, bude `F2` funkce výstupů se agregují ze seznamu dynamického úloh a předat `F3` funkce.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. Rozhraní .NET `Task.WhenAll` API nebo JavaScript `context.df.Task.all` API se zavolá, aby se čekalo na dokončení všech volaných funkcí. Výstupy `F3` funkcí pak jsou agregovány z dynamického seznamu úkolů a předány funkci. `F2`
 
-Automatické vytváření kontrolních bodů, ke které dochází na `await` nebo `yield` volat `Task.WhenAll` nebo `context.df.Task.all` zajistí, že potenciální uprostřed při selhání nebo restartování nevyžaduje restartování již dokončeného úkolu.
+Automatické vytváření kontrolních bodů, ke kterým dochází `await` při `yield` volání `Task.WhenAll` `context.df.Task.all` nebo, zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
 
-### <a name="async-http"></a>Vzor #3: Async HTTP APIs
+### <a name="async-http"></a>#3 vzoru: Asynchronní rozhraní HTTP API
 
-Asynchronní vzor rozhraní API HTTP, řeší potíže s koordinace stavu dlouhotrvající operace s externími klienty. Běžný způsob, jak tento model implementovat, je tak, že volání triggeru dlouhotrvající akce HTTP. Pak přesměruje klienta na stav koncového bodu, který klient dotazuje další po dokončení operace.
+Vzor asynchronních rozhraní HTTP API řeší problém koordinace stavu dlouhotrvajících operací s externími klienty. Běžný způsob, jak tento model implementovat, je, že volání HTTP aktivuje dlouhotrvající akci. Pak přesměrujte klienta na koncový bod stavu, který se klient dotazuje, když se operace dokončí.
 
 ![Diagram vzoru HTTP API](./media/durable-functions-concepts/async-http-api.png)
 
-Odolná služba Functions poskytuje integrované rozhraní API, která zjednodušuje kód, který napíšete pro interakci s dlouhotrvající provádění funkcí. Ukázky quickstart Durable Functions ([ C# ](durable-functions-create-first-csharp.md) a [JavaScript](quickstart-js-vscode.md)) ukazují jednoduchý příkaz REST, které můžete použít ke spuštění nové instance funkce nástroje orchestrator. Po spuštění instance rozšíření zpřístupní webhook, rozhraní API HTTP, který dotaz na stav funkce nástroje orchestrator. 
+Durable Functions poskytuje integrovaná rozhraní API, která zjednodušují psaní kódu pro interakci s dlouhodobě běžícími spouštěními funkcí. Ukázky Durable Functions rychlý Start ([C#](durable-functions-create-first-csharp.md) a [JavaScript](quickstart-js-vscode.md)) znázorňují jednoduchý příkaz REST, který můžete použít ke spuštění nových instancí funkcí nástroje Orchestrator. Po spuštění instance rozšíření zpřístupňuje rozhraní API HTTP Webhooku, která se dotazují na stav funkce nástroje Orchestrator. 
 
-Následující příklad ukazuje příkazů REST, které začínají orchestrátor a dotaz na její stav. Pro přehlednost jsou vynechány některé podrobnosti jako v příkladu.
+Následující příklad ukazuje příkazy REST, které spouštějí nástroj Orchestrator a dotazují svůj stav. Pro přehlednost jsou některé podrobnosti z příkladu vynechány.
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -172,11 +171,11 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2017-03-16T21:20:57Z", ...}
 ```
 
-Vzhledem k tomu, že modul runtime Durable Functions spravuje stavu, není nutné implementovat vlastní mechanismus sledování stavu.
+Vzhledem k tomu, že modul runtime Durable Functions spravuje stav, nemusíte implementovat vlastní mechanismus pro sledování stavu.
 
-Rozšíření Durable Functions má integrované webhooky, které spravují dlouho běžící Orchestrace. Tento model může také implementovat sami pomocí vlastní aktivační události – funkce (třeba HTTP, fronty nebo Azure Event Hubs) a `orchestrationClient` vazby. Fronty zpráv může například použít k aktivaci ukončení. Nebo můžete použít aktivační událost HTTP, který je chráněný pomocí zásad ověřování Azure Active Directory místo integrované webhooky, který pomocí generovaného klíče pro ověřování.
+Rozšíření Durable Functions obsahuje integrované Webhooky, které spravují dlouhotrvající orchestrace. Tento vzor můžete implementovat sami pomocí triggerů funkcí (například http, front nebo Azure Event Hubs) a `orchestrationClient` vazby. Můžete například použít zprávu fronty k aktivaci ukončení. Nebo můžete použít Trigger HTTP, který je chráněný pomocí Azure Active Directory zásad ověřování místo vestavěných webhooků, které pro ověřování používají vygenerovaný klíč.
 
-Tady je několik příkladů, jak používat rozhraní HTTP API vzoru:
+Tady je několik příkladů použití vzoru HTTP API:
 
 #### <a name="c"></a>C#
 
@@ -199,7 +198,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -219,21 +218,21 @@ module.exports = async function (context, req) {
 };
 ```
 
-V rozhraní .NET [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` parametr je hodnota z `orchestrationClient` výstupní vazby, který je součástí rozšíření Durable Functions. V jazyce JavaScript tento objekt je vrácen voláním `df.getClient(context)`. Tyto objekty poskytují metody, které můžete použít pro spuštění, odesílání událostí do, ukončení a dotaz pro instancemi nástroje orchestrator nové nebo existující funkce.
+V rozhraní .NET je parametr [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` hodnotou z `orchestrationClient` výstupní vazby, která je součástí rozšíření Durable Functions. V jazyce JavaScript je tento objekt vrácen voláním `df.getClient(context)`metody. Tyto objekty poskytují metody, které můžete použít ke spuštění, odeslání událostí do, ukončení a dotazování na nové nebo existující instance funkcí Orchestrator.
 
-V předchozích ukázkách přijímá funkci aktivovanou protokolem HTTP `functionName` hodnotu z adresy URL příchozích a předává hodnotu [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) vazba rozhraní API potom vrátí odpověď, která obsahuje `Location` záhlaví a další informace o instanci. Informace můžete použít později k vyhledání stav instance spuštěna nebo k ukončení instance.
+V předchozích příkladech přebírá `functionName` funkce aktivované protokolem HTTP hodnotu z adresy URL příchozí a předává hodnotu [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). Rozhraní API vazby [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) pak vrátí odpověď `Location` obsahující hlavičku a další informace o instanci. Později můžete informace použít k vyhledání stavu spuštěné instance nebo ukončení instance.
 
-### <a name="monitoring"></a>Vzor #4: Monitorování
+### <a name="monitoring"></a>#4 vzoru: Monitorování
 
-Vzor monitorování odkazuje na flexibilní, opakované zpracování v pracovním postupu. Příkladem je interval dotazování, dokud jsou splněny konkrétní podmínky. Můžete použít běžný [trigger časovače](../functions-bindings-timer.md) k adresování základní scénáře, jako je například úloha pravidelné čištění, ale jeho interval je statická a správu životnosti instance stane složité. Odolná služba Functions můžete vytvářet intervaly opakování flexibilní, spravovat úlohy životnosti a vytvořte více monitorování procesů z jednoho Orchestrace.
+Model monitorování odkazuje na flexibilní a opakovaný proces v pracovním postupu. Příkladem je cyklické dotazování, dokud nebudou splněny určité podmínky. Pomocí pravidelné [aktivační procedury časovače](../functions-bindings-timer.md) můžete vyřešit základní scénář, například úlohu pravidelného čištění, ale jeho interval je statický a Správa životnosti instance je složitá. Pomocí Durable Functions můžete vytvářet flexibilní intervaly opakování, spravovat životnost úloh a vytvářet více procesů monitorování z jedné orchestrace.
 
-Příkladem vzoru monitorování je vrátit starší scénář asynchronní rozhraní API protokolu HTTP. Místo zveřejňování koncový bod pro externí klienty monitorovat dlouhotrvající operace, dlouhotrvající monitorování spotřebovává externí koncový bod a potom čeká změnu stavu.
+Příkladem vzoru monitorování je vrácení dřívějšího scénáře asynchronního protokolu HTTP API. Místo vystavení koncového bodu pro externího klienta za účelem monitorování dlouhotrvající operace používá dlouhotrvající monitor externí koncový bod a poté čeká na změnu stavu.
 
-![Diagram vzoru monitorování](./media/durable-functions-concepts/monitor.png)
+![Diagram modelu monitoru](./media/durable-functions-concepts/monitor.png)
 
-V několika řádků kódu můžete použít Durable Functions k vytvoření více monitorů respektujících libovolného koncových bodů. Monitorování můžete ukončit provádění, když je splněna podmínka, nebo [DurableOrchestrationClient](durable-functions-instance-management.md) lze ukončit monitorování. Můžete změnit monitorování `wait` interval na základě konkrétní podmínky (například exponenciální regresí.) 
+V několika řádcích kódu můžete pomocí Durable Functions vytvořit více monitorů, které sledují libovolné koncové body. Monitory mohou ukončit provádění, pokud je splněna podmínka, nebo může [DurableOrchestrationClient](durable-functions-instance-management.md) ukončit monitorování. Můžete změnit `wait` interval monitorování na základě konkrétní podmínky (například exponenciální omezení rychlosti.) 
 
-Následující kód implementuje základní monitorování:
+Následující kód implementuje základní monitor:
 
 #### <a name="c-script"></a>Skript jazyka C#
 
@@ -263,7 +262,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,19 +290,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Při přijetí požadavku pro ID tohoto. úloze je vytvořena nová instance Orchestrace Instance dotazuje ve stavu, dokud je podmínka splněna a smyčky je byl ukončen. Trvalý časovače Určuje interval dotazování. Potom více práce lze provést, nebo můžete ukončit orchestraci. Když `context.CurrentUtcDateTime` (.NET) nebo `context.df.currentUtcDateTime` překračuje (JavaScript) `expiryTime` hodnota konce monitorování.
+Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Když rozhraní `context.df.currentUtcDateTime` `expiryTime` (.NET) nebo (JavaScript) překračuje hodnotu, monitor skončí. `context.CurrentUtcDateTime`
 
-### <a name="human"></a>Vzor #5: Lidská interakce
+### <a name="human"></a>#5 vzoru: Lidská interakce
 
-Mnoho automatizovaných procesů, které zahrnují nějaký druh lidské interakce. Zahrnující lidí v automatizovaného procesu je velmi obtížné, protože uživatelé nejsou jako vysoce dostupný a jako responzivní jako cloudové služby. Automatizovaný proces může povolit pro tuto pomocí logiky vypršení časových limitů a kompenzace.
+Řada automatizovaných procesů zahrnuje nějaký druh lidské interakce. Zapojení lidí do automatizovaného procesu je obtížné, protože lidé nejsou jako vysoce dostupné a reagují jako cloudové služby. Automatizovaný proces to může využít při použití časových limitů a logiky kompenzace.
 
-Schvalovací proces je příkladem obchodní proces, který zahrnuje lidské interakce. Schválení od správce může být nezbytný pro překročí určitou dobu dolar sestavy výdajů. Pokud správce neudělí schválení vyúčtování během 72 hodin (možná manager přešel na dovolenou), eskalace proces aktivuje, chcete-li získat schválení od jiného uživatele (možná manažer tohoto manažera).
+Schvalovací proces je příkladem obchodního procesu, který zahrnuje lidskou interakci. Pro sestavu výdajů, která překračuje určitou částku dolaru, může být vyžadováno schválení správcem. Pokud správce neschválí zprávu o výdajích do 72 hodin (možná správce přešel na dovolenou), proces eskalace se zahájí a získá schválení od někoho jiného (možná správce manažera).
 
-![Diagram vzoru lidská interakce](./media/durable-functions-concepts/approval.png)
+![Diagram vzoru lidské interakce](./media/durable-functions-concepts/approval.png)
 
-Vzor v tomto příkladu můžete implementovat pomocí funkce orchestrátoru. Orchestrator používá [trvalý časovače](durable-functions-timers.md) k žádosti o schválení. Pokud dojde k vypršení časového limitu proto ho postoupí produktu orchestrator. Orchestrátor čeká [externí událost](durable-functions-external-events.md), jako jsou oznámení, který je generován zásahem ze strany.
+Vzor v tomto příkladu můžete implementovat pomocí funkce Orchestrator. Nástroj Orchestrator používá k žádosti o schválení [trvalý časovač](durable-functions-timers.md) . Pokud dojde k vypršení časového limitu, produkt Orchestrator postoupí. Orchestrator čeká na [externí událost](durable-functions-external-events.md), jako je například oznámení, které vygenerovala lidská interakce.
 
-Tyto příklady vytvoření schvalovací proces k předvedení zásahem ze strany vzoru:
+Tyto příklady vytvoří proces schvalování, který předvádí vzor lidské interakce:
 
 #### <a name="c-script"></a>Skript jazyka C#
 
@@ -330,7 +329,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -352,9 +351,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Chcete-li vytvořit trvalý časovače, zavolejte `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript). Se přijal oznámení `context.WaitForExternalEvent` (.NET) nebo `context.df.waitForExternalEvent` (JavaScript). Potom `Task.WhenAny` (.NET) nebo `context.df.Task.any` můžete rozhodnout, jestli ke zvýšení úrovně se nazývá (JavaScript) (časový limit nastane dřív) nebo zpracovávat schválení (schválení přijetí před vypršením časového limitu).
+Chcete-li vytvořit trvalý časovač, `context.CreateTimer` volejte (.NET) `context.df.createTimer` nebo (JavaScript). Oznámení přijímá `context.WaitForExternalEvent` (.NET) nebo `context.df.waitForExternalEvent` (JavaScript). Pak (.NET) nebo `context.df.Task.any` (JavaScript) se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem). `Task.WhenAny`
 
-Externího klienta můžete pomocí doručování oznámení o události do funkce orchestrátoru čekání [integrovaná rozhraní API HTTP](durable-functions-http-api.md#raise-event) nebo pomocí [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) rozhraní API z Další funkce:
+Externí klient může doručovat oznámení události do čekající funkce Orchestrator pomocí [integrovaných rozhraní HTTP API](durable-functions-http-api.md#raise-event) nebo pomocí rozhraní API [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) z jiné funkce:
 
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
@@ -374,15 +373,15 @@ module.exports = async function (context) {
 };
 ```
 
-### <a name="aggregator"></a>Vzor #6: Agregátoru (preview)
+### <a name="aggregator"></a>#6 vzoru: Agregátor (Preview)
 
-Šestý vzor spočívá v agregaci data události po určitou dobu do jediného adresovatelný *entity*. V tomto vzoru data agregují mohou pocházet z několika zdrojů, mohou být dodávány v dávkách nebo mohou být rozmístěny long-časová období. Agregátor potřebovat reagovat na data události po doručení a externí klienti mohou muset dotázat agregovaná data.
+Šestým vzorem je informace o agregaci dat událostí v časovém intervalu až na jednu, adresovatelnou *entitu*. V tomto modelu mohou být shromážděná data z více zdrojů, mohou být dodávána v dávkách nebo mohou být rozmístěna za dlouhou dobu. Agregátor může potřebovat provést akci s daty události při jejich doručení a externí klienti budou potřebovat dotaz na agregovaná data.
 
-![Agregátor diagramu](./media/durable-functions-concepts/aggregator.png)
+![Agregátorový diagram](./media/durable-functions-concepts/aggregator.png)
 
-Velmi obtížné to při implementaci tohoto modelu s normální, bezstavové funkce je, že řízení souběžnosti stane velmi náročná. Jenom je potřeba si dělat starosti úpravy stejná data ve stejnou dobu více vláken, je také potřeba starat o zajištění, že agregátor pouze na jeden virtuální počítač byla najednou spuštěna.
+Důvodem, proč se pokusit o implementaci tohoto modelu s normálními a bezstavovým funkcemi, je, že řízení souběžnosti se stává obrovským problémem. Nemusíte si dělat starosti s více vlákny, které mění stejná data současně, musíte se také starat o to, že agregátor běží jenom na jednom virtuálním počítači.
 
-Použití [trvalý Entity funkce](durable-functions-preview.md#entity-functions), jednu implementaci tohoto modelu snadno jako jedinou funkci.
+Pomocí [funkce trvalé entity](durable-functions-preview.md#entity-functions)může jeden implementovat tento vzor snadno jako jednu funkci.
 
 ```csharp
 [FunctionName("Counter")]
@@ -408,7 +407,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Trvalý entity mohou také modelovat jako třídy rozhraní .NET. To může být užitečné, pokud velká seznam operací, a pokud je převážně statické. Následující příklad je ekvivalentní provádění `Counter` entity pomocí .NET třídy a metody.
+Odolné entity lze také modelovat jako třídy .NET. To může být užitečné v případě, že se seznam operací bude velký a je většinou statický. Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod .NET.
 
 ```csharp
 public class Counter
@@ -428,7 +427,7 @@ public class Counter
 }
 ```
 
-Klienty můžete zařadit do fronty *operace* pro (označované také jako "signalizace") pomocí funkce entity `orchestrationClient` vazby.
+Klienti můžou zařadit *operace* do fronty pro (označuje se také jako "signalizace") funkce `orchestrationClient` entity pomocí vazby.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -445,71 +444,71 @@ public static async Task Run(
 }
 ```
 
-Dynamicky generované proxy jsou také k dispozici pro signalizaci entity jako typově bezpečný. A kromě signalizace, můžou klienti dotazovat také pro stav entity funkce pomocí metod na `orchestrationClient` vazby.
+Dynamicky generované proxy servery jsou také k dispozici pro signalizaci entit v typově bezpečném způsobu. Kromě signalizace se klienti můžou také dotazovat na stav funkce entity pomocí metod na `orchestrationClient` vazbě.
 
 > [!NOTE]
-> Funkce entity jsou aktuálně dostupné jen [náhled odolné Functions 2.0](durable-functions-preview.md).
+> Funkce entit jsou aktuálně k dispozici pouze ve [verzi Durable Functions 2,0 Preview](durable-functions-preview.md).
 
-## <a name="the-technology"></a>Tato technologie
+## <a name="the-technology"></a>Technologie
 
-Na pozadí rozšíření Durable Functions je postavený na [trvalý Framework úloh](https://github.com/Azure/durabletask), knihovny open source na Githubu, který se používá k vytváření orchestrací trvalý úloh. Jako Azure Functions bez serveru vývoj Azure WebJobs, je Durable Functions bez serveru vývoj odolné architektury úloh. Microsoft a jiných společností pomocí rozhraní trvalý úlohy výrazně automatizovat klíčové procesy. Je přirozeně vhodná pro prostředí bez serveru Azure Functions.
+Na pozadí je rozšíření Durable Functions postaveno nad [trvalým prostředím úloh](https://github.com/Azure/durabletask), open source knihovny na GitHubu, která se používá k sestavování trvalých orchestrací úloh. Podobně jako Azure Functions je vývoj Azure WebJobs bez serveru, Durable Functions je vývojem trvalého prostředí úloh bez serveru. Microsoft a další organizace často využívají trvalý rámec úloh pro automatizaci nejdůležitějších procesů. Pro prostředí Azure Functions bez serveru je to přirozené.
 
-### <a name="event-sourcing-checkpointing-and-replay"></a>Model Event sourcing, vytváření kontrolních bodů a opětovného přehrání
+### <a name="event-sourcing-checkpointing-and-replay"></a>Zdroje událostí, vytváření kontrolních bodů a přehrávání
 
-Funkce nástroje Orchestrator spolehlivě Udržovat stav jejich provedení pomocí [modelu event sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) vzoru návrhu. Místo uložení přímo aktuální stav Orchestrace, rozšíření Durable Functions používá úložiště nabízí jen možnost připojovat pro záznam úplné posloupnosti akcí, které přijímá Orchestrace funkce. Úložiště nabízí jen možnost připojovat má mnoho výhod oproti "vypsání" úplné běhový stav. Mezi výhody patří vyšší výkon, škálovatelnost a rychlost odezvy. Získáte také konečné konzistence transakčních dat a úplné záznamy pro audit a historii. Záznamy pro audit podporují spolehlivé provádět kompenzační akce.
+Služba Orchestrator Functions spolehlivě udržuje jejich stav spouštění pomocí vzoru návrhu pro vytváření [událostí](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) . Místo přímého ukládání aktuálního stavu orchestrace používá rozšíření Durable Functions k zaznamenání celé řady akcí, které orchestrace funkce provede, úložiště pouze pro připojení. Úložiště jen pro připojení má mnoho výhod v porovnání s "výpisem" celého běhového stavu. Mezi výhody patří vyšší výkon, škálovatelnost a rychlost odezvy. Získáte také konečnou konzistenci pro transakční data a úplné záznamy a historii auditu. Záznamy auditu podporují spolehlivé kompenzační akce.
 
-Odolná služba Functions používá modelu event sourcing transparentně. Na pozadí `await` (C#) nebo `yield` – operátor (JavaScript) v funkce orchestrátoru vrací řízení vlákna orchestrator zpět do dispečera trvalý Framework úloh. Dispečer pak potvrdí všechny nové akce, které funkce orchestrátoru naplánované (třeba volání jedné nebo více podřízených funkcí nebo plánování trvalý časovače) do úložiště. Akce transparentní potvrzení se připojí k historii spuštění instance Orchestrace. Historie je uložena v tabulce úložiště. Potvrzení akce poté přidá zprávy do fronty k naplánování samotnou práci. Funkce orchestrátoru v tomto okamžiku může být uvolněna z paměti. 
+Durable Functions používá zdrojové události transparentně. Na pozadí má `await` operátor (C#) nebo `yield` (JavaScript) ve funkci Orchestrator kontrolu nad vláknem nástroje Orchestrator zpátky do trvalého dispečeru rozhraní úloh. Dispečer pak potvrdí všechny nové akce, které naplánovala funkce Orchestrator (například volání jedné nebo více podřízených funkcí nebo naplánování trvalého časovače) do úložiště. Transparentní akce potvrzení připojí k historii spuštění instance Orchestration. Historie je uložená v tabulce úložiště. Akce potvrzení pak přidá zprávy do fronty, aby naplánovala skutečnou práci. V tomto okamžiku může být funkce Orchestrator uvolněna z paměti. 
 
-Fakturace za funkce orchestrátoru zastaví, pokud používáte plán consumption Azure Functions. Když existuje více práce uděláte, se restartuje – funkce a jeho stav je znovu vytvořena.
+Fakturace funkce Orchestrator se zastaví, pokud používáte plán Azure Functions spotřeby. Pokud je k dispozici více práce, je funkce restartována a její stav je znovu vytvořen.
 
-Když orchestraci funkce dostane další práci (například doručení zprávy do odpovědi nebo trvalý vyprší), orchestrator probudí a znovu spustí funkci celou od začátku znovu sestavit místní stavu. 
+Když je funkce orchestrace předána více práce (například přijetí zprávy odpovědi nebo vypršení platnosti časovače), nástroj Orchestrator probudí a znovu spustí celou funkci od začátku až po opětovné sestavení místního stavu. 
 
-Během opětovného přehrání, pokud kód se pokusí zavolat funkci (nebo proveďte jiné asynchronní práce), trvalý Framework úloh consults historie provádění aktuální Orchestrace. Pokud se zjistí, že [funkce aktivitu](durable-functions-types-features-overview.md#activity-functions) již spuštěn a vrátil výsledek, přehrává výsledku této funkce a kód orchestrator nadále běží. Opakování bude pokračovat, dokud se nedokončí kód funkce, nebo dokud je jeho naplánováno nový asynchronní práce.
+Při opakovaném přehrání, pokud se kód pokusí zavolat funkci (nebo provést jakoukoli jinou asynchronní práci), bude architektura trvalého úkolu vyzvat k historii spuštění aktuální orchestrace. Pokud zjistí, že [funkce Activity](durable-functions-types-features-overview.md#activity-functions) již byla provedena a způsobila výsledek, přehraje výsledek této funkce a kód nástroje Orchestrator pokračuje v běhu. Opětovné přehrání pokračuje, dokud nebude kód funkce dokončen nebo dokud nebude naplánována nová asynchronní práce.
 
-### <a name="orchestrator-code-constraints"></a>Omezení kódu produktu Orchestrator
+### <a name="orchestrator-code-constraints"></a>Omezení kódu Orchestrator
 
-Chování opakování orchestrator kódu vytvoří omezení na typu kódu, který píšete v funkce orchestrátoru. Orchestrator kód například musí být deterministický, protože budou přehrány více než jednou a jeho musí mít stejný výsledek pokaždé, když. Úplný seznam omezení, najdete v části [omezení kódu Orchestrator](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints).
+Chování při opětovném přehrání kódu Orchestrator vytvoří omezení pro typ kódu, který můžete zapsat do funkce Orchestrator. Například kód Orchestrator musí být deterministický, protože bude opakovaně přehrán vícekrát a musí pokaždé vydávat stejný výsledek. Úplný seznam omezení najdete v tématu věnovaném [omezením kódu Orchestrator](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints).
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Rozšíření Durable Functions automaticky generuje sledování strukturovaná data do [Application Insights](../functions-monitoring.md) Pokud nastavíte aplikaci function app s instrumentačním klíčem Azure Application Insights. Data sledování můžete použít k monitorování akcí a probíhá vaše Orchestrace.
+Rozšíření Durable Functions automaticky posílá data strukturovaného sledování do [Application Insights](../functions-monitoring.md) , pokud nastavíte aplikaci Function App pomocí klíče instrumentace Azure Application Insights. Pomocí sledovacích dat můžete monitorovat akce a průběh orchestrace.
 
-Tady je příklad Durable Functions sledování událostí vypadat na portálu Application Insights při použití [Application Insights Analytics](../../application-insights/app-insights-analytics.md):
+Tady je příklad toho, co Durable Functions události sledování vypadají jako na portálu Application Insights, když používáte [Application Insights Analytics](../../application-insights/app-insights-analytics.md):
 
-![Výsledky dotazu Application Insights](./media/durable-functions-concepts/app-insights-1.png)
+![Application Insights výsledků dotazu](./media/durable-functions-concepts/app-insights-1.png)
 
-Můžete najít užitečné strukturovaných dat ve službě `customDimensions` pole v každé položky protokolu. Tady je příklad, který je úplně rozbalit položky:
+Užitečná strukturovaná data můžete najít v `customDimensions` poli každé položky protokolu. Tady je příklad položky, která je plně rozbalená:
 
-![CustomDimensions pole v dotazu Application Insights](./media/durable-functions-concepts/app-insights-2.png)
+![Pole customDimensions v dotazu Application Insights](./media/durable-functions-concepts/app-insights-2.png)
 
-Z důvodu chování opakování dispečer trvalý Framework úloh můžete očekávat zobrazíte položky redundantní protokolu pro přehraná akce. Položky protokolu redundantní pomůže vám porozumět chování opakování modulu jádra. [Diagnostiky](durable-functions-diagnostics.md) článek ukazuje ukázkové dotazy, které odfiltrovat opětovného přehrání protokoly, abyste viděli právě "v reálném čase" protokoly.
+Kvůli chování opětovného přehrání dispečera rozhraní pro trvalé úlohy můžete očekávat, že se položky protokolu pro přehrání akcí zobrazí jako nadbytečné. Nadbytečné položky protokolu vám můžou porozumět chování základního motoru při opakovaném přehrávání. V [](durable-functions-diagnostics.md) tomto článku se dozvíte o ukázkových dotazech odfiltrování protokolů opětovného přehrání, abyste viděli jenom protokoly v reálném čase.
 
 ## <a name="storage-and-scalability"></a>Úložiště a škálovatelnost
 
-Rozšíření Durable Functions používá front, tabulek a objektů BLOB ve službě Azure Storage k zachování spuštění historie stavu a aktivační události spuštění funkce. Můžete použít výchozí účet úložiště pro aplikaci function app, nebo můžete nakonfigurovat samostatný účet úložiště. Samostatný účet na základě limitů propustnosti úložiště může být vhodné. Kód produktu orchestrator, který napíšete nepracuje s entitami v těchto účtech úložiště. Trvalý rozhraní úloha spravuje entity přímo jako podrobnost implementace.
+Rozšíření Durable Functions používá fronty, tabulky a objekty BLOB v Azure Storage k uchování stavu historie provádění a triggeru provádění funkce. Pro aplikaci Function App můžete použít výchozí účet úložiště, nebo můžete nakonfigurovat samostatný účet úložiště. Je možné, že budete chtít vytvořit samostatný účet založený na omezeních propustnosti úložiště. Kód Orchestrator, který napíšete, nekomunikuje s entitami v těchto účtech úložiště. Trvalé rozhraní úlohy spravuje entity přímo jako podrobnosti implementace.
 
-Funkce nástroje Orchestrator naplánovat funkce aktivity a zobrazí jejich odpovědi prostřednictvím vnitřní fronty zpráv. Při spuštění aplikace function app v plánu consumption Azure Functions, [řadič škálování Azure Functions](../functions-scale.md#how-the-consumption-and-premium-plans-work) monitoruje tyto fronty. Podle potřeby se přidají nové výpočetních instancí. Horizontální navýšení kapacity na několik virtuálních počítačů, může být spuštění funkce orchestrátoru na jeden virtuální počítač, při funkce aktivity, které volání funkcí nástroje orchestrator může spustit na několika různých virtuálních počítačů. Další informace o chování škálování Durable Functions najdete v tématu [výkon a škálování](durable-functions-perf-and-scale.md).
+Nástroj Orchestrator Functions Activity Functions funkce plánu a přijímá jejich odpovědi prostřednictvím interních zpráv fronty. Když aplikace Function App běží v plánu Azure Functions spotřebu, kontroler [Azure Functions škálování](../functions-scale.md#how-the-consumption-and-premium-plans-work) tyto fronty monitoruje. V případě potřeby jsou přidány nové výpočetní instance. Při horizontálním navýšení kapacity na více virtuálních počítačů může funkce Orchestrator běžet na jednom virtuálním počítači, ale funkce aktivity, které volání funkce Orchestrator může běžet na několika různých virtuálních počítačích. Další informace o chování Durable Functions škálování najdete v tématu [výkon a škálování](durable-functions-perf-and-scale.md).
 
-Historie provádění pro účty orchestrator je uložen v úložišti tabulek. Pokaždé, když se instance rehydrates na konkrétní virtuální počítač, orchestrátoru načte historii jejího spouštění ze služby table storage, takže ho můžete znovu sestavit stavu místní. Je vhodné aspekt máte k dispozici v úložišti tabulek v historii, které můžete použít nástroje, jako je [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) zobrazíte historii vašich Orchestrace.
+Historie spouštění pro účty nástroje Orchestrator je uložena v úložišti tabulek. Pokaždé, když se instance rehydratované na konkrétním virtuálním počítači, nástroj Orchestrator načte svou historii spuštění z úložiště tabulek, aby mohl znovu sestavit svůj místní stav. Vhodným aspektem, který má k dispozici historii v úložišti tabulek, je, že k zobrazení historie orchestrací můžete použít nástroje, jako je [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) .
 
-Úložiště objektů blob se používají především jako mechanismus "pronájmu" ke koordinaci škálování Orchestrace instancí napříč několika virtuálními počítači. Úložiště objektů BLOB uchovávání dat pro velké zprávy, které nemůže být uložen přímo do tabulky nebo fronty.
+Objekty blob úložiště se primárně používají jako mechanismus zapůjčení ke koordinaci škálování instancí orchestrace napříč několika virtuálními počítači. Objekty blob úložiště uchovávají data pro velké zprávy, které se nedají uložit přímo v tabulkách nebo frontách.
 
-![Snímek obrazovky Průzkumníka služby Azure Storage](./media/durable-functions-concepts/storage-explorer.png)
+![Snímek obrazovky s Průzkumník služby Azure Storage](./media/durable-functions-concepts/storage-explorer.png)
 
 > [!NOTE]
-> I když je snadné a pohodlné zobrazit historii provádění ve službě table storage, neprovádějte žádné závislosti pro tuto tabulku. Tabulka může změnit, protože rozšíření Durable Functions vyvíjí.
+> I když je snadné a praktické zobrazit historii spouštění v úložišti tabulek, neprovádějte v této tabulce žádné závislosti. Tabulka se může změnit, protože se vyvíjí rozšíření Durable Functions.
 
 ## <a name="known-issues"></a>Známé problémy
 
-Všechny známé problémy, které mají být sledovány v [problémy Githubu](https://github.com/Azure/azure-functions-durable-extension/issues) seznamu. Pokud narazíte na problém a nejde najít problému v Githubu otevře nový problém. Zahrnout podrobný popis problému.
+Všechny známé problémy by měly být sledovány v seznamu [problémů](https://github.com/Azure/azure-functions-durable-extension/issues) na GitHubu. Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém. Uveďte podrobný popis problému.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o Durable Functions najdete v tématu [Durable Functions funkce, typy a funkce](durable-functions-types-features-overview.md). 
+Další informace o Durable Functions najdete v tématu [Durable Functions typy a funkce](durable-functions-types-features-overview.md)funkcí. 
 
 Jak začít:
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce trvalý](durable-functions-create-first-csharp.md)
+> [Vytvoření první trvalé funkce](durable-functions-create-first-csharp.md)
 
 [DurableOrchestrationContext]: https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html

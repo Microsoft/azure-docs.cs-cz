@@ -7,18 +7,17 @@ author: hermannd
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67707240"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099665"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
 
@@ -977,7 +976,7 @@ Tento konečný snímek obrazovky ukazuje část s podrobnostmi o jednom přecho
 ![Hawk jeden přechod](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tato příručka pro řešení potíží popisuje vysokou dostupnost pro SAP HANA v konfiguraci s možností horizontálního rozšíření kapacity. Kromě databáze je další důležitou součástí systému SAP NetWeaver Stack. Přečtěte si o [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure, které používají server SUSE Enterprise Linux][sap-nw-ha-guide-sles].
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203612"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072572"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Použití revizí k bezpečnému provedení nevýznamných změn
 Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Ve službě Azure API Management k tomu můžeme použít **revize**. Další informace najdete v tématech [Verze a revize](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) a [Správa verzí rozhraní API pomocí služby Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -37,8 +36,8 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Přidání nové revize
 
@@ -84,7 +83,7 @@ V tomto kurzu se naučíte:
 
 2. Otevřete místní nabídku ( **...** ) pro **Revizi 2**.
 3. Vyberte **Nastavit jako aktuální**.
-4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis provedené změny, který se zobrazí vývojářům, například: **Testování revizí. Přidání nové operace test.**
+4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis změny, kterou vývojáři uvidí, například: **Testování revizí. Přidání nové operace test.**
 5. **Revize 2** je teď nastavená jako aktuální.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Procházení portálu pro vývojáře a zobrazení změn a protokolu změn
@@ -96,9 +95,9 @@ V tomto kurzu se naučíte:
 5. Pod názvem rozhraní API vyberte **Historie změn rozhraní API**.
 6. Všimněte si, že se v tomto seznamu zobrazí vaše položka protokolu změn.
 
-    ![Portál pro vývojáře](media/api-management-getstarted-revise-api/developer_portal.PNG)
+    ![Vývojářský portál](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

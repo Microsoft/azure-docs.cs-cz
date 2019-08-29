@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží problém virtuálního počítače Azure pomocí vnořená virtualizace v Azure | Dokumentace Microsoftu
-description: Jak řešit problém virtuálního počítače Azure s využitím vnořená virtualizace v Azure
+title: Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure | Microsoft Docs
+description: Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
@@ -10,134 +10,133 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 135368fd9b838573ae8aa65e16d5df2cd3df3e6d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 18d7e9b0ab44dfe18df0dcd7cd36fb708649a4bc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089681"
 ---
-# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží problém virtuálního počítače Azure pomocí vnořená virtualizace v Azure
+# <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží s virtuálním počítačem Azure pomocí vnořené virtualizace v Azure
 
-Tento článek ukazuje, jak vytvořit prostředí vnořená virtualizace v Microsoft Azure, takže se můžete připojit disk problémový virtuální počítač na hostitele Hyper-V (virtuální počítač zachránit) pro účely odstraňování potíží.
+V tomto článku se dozvíte, jak vytvořit vnořené prostředí virtualizace v nástroji Microsoft Azure, abyste mohli připojit disk problémového virtuálního počítače na hostiteli Hyper-V (záchranný virtuální počítač) pro účely řešení potíží.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Připojte problémový virtuální počítač, virtuální počítač zachránit musí splňovat následující požadavky:
+Chcete-li připojit problémový virtuální počítač, musí záchranný virtuální počítač splňovat následující požadavky:
 
--   Virtuální počítač zachránit musí být ve stejném umístění jako problémový virtuální počítač.
+-   Záchranný virtuální počítač musí být ve stejném umístění jako virtuální počítač problému.
 
--   Virtuální počítač zachránit musí být ve stejné skupině prostředků jako problémový virtuální počítač.
+-   Záchranný virtuální počítač musí být ve stejné skupině prostředků jako problémový virtuální počítač.
 
--   Virtuální počítač zachránit musí používat stejný typ účtu úložiště (Standard nebo Premium) jako problémový virtuální počítač.
+-   Záchranný virtuální počítač musí používat stejný typ účtu úložiště (Standard nebo Premium) jako virtuální počítač problému.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Vytvoření virtuálního počítače zachránit a nainstalujte roli Hyper-V
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Vytvoření záchranného virtuálního počítače a instalace role Hyper-V
 
-1.  Vytvořte nový virtuální počítač zachránit:
+1.  Vytvořte nový záchranný virtuální počítač:
 
     -  Operační systém: Windows Server 2016 Datacenter
 
-    -  Velikost: Jakoukoli řadu V3 s minimálně dvě jádra, které podporují vnořená virtualizace. Další informace najdete v tématu [Představujeme nové velikosti počítačů Dv3 a Ev3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Velikost: Všechny řady v3 s alespoň dvěma jádry, které podporují vnořenou virtualizaci. Další informace najdete v tématu [Představujeme nové velikosti virtuálních počítačů s Dv3 a Ev3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
-    -  Stejné umístění, účet úložiště a skupině prostředků jako problémový virtuální počítač.
+    -  Stejné umístění, účet úložiště a skupina prostředků jako virtuální počítač problému.
 
-    -  Vyberte stejný typ úložiště jako problémový virtuální počítač (Standard nebo Premium).
+    -  Vyberte stejný typ úložiště jako virtuální počítač problému (Standard nebo Premium).
 
-2.  Za virtuální počítač zachránit se vytvoří, vzdálené plochy k virtuálnímu počítači zachránit.
+2.  Po vytvoření záchranného virtuálního počítače se jedná o vzdálenou plochu na záchranný virtuální počítač.
 
-3.  Ve Správci serveru vyberte **spravovat** > **přidat role a funkce**.
+3.  V správce serveru vyberte **Spravovat** > **Přidat role a funkce**.
 
-4.  V **typ instalace** vyberte **instalace na základě rolí nebo na základě funkcí**.
+4.  V části **typ instalace** vyberte instalace na základě **rolí nebo na základě funkcí**.
 
-5.  V **vybrat cílový server** části, ujistěte se, že je vybraná zachránit virtuálního počítače.
+5.  V části **Vybrat cílový server** se ujistěte, že je vybraný záchranný virtuální počítač.
 
-6.  Vyberte **role Hyper-V** > **přidat funkce**.
+6.  Vyberte >  **role Hyper-V** **Přidat funkce**.
 
-7.  Vyberte **Další** na **funkce** oddílu.
+7.  V části **funkce** vyberte **Další** .
 
-8.  Pokud virtuální přepínač je k dispozici, vyberte ji. V opačném případě vyberte **Další**.
+8.  Pokud je k dispozici virtuální přepínač, vyberte ho. V opačném případě vyberte **Další**.
 
-9.  Na **migrace** vyberte **další**
+9.  V části **migrace** vyberte **Další** .
 
-10. Na **výchozí úložiště** vyberte **Další**.
+10. V části **výchozí úložiště** vyberte **Další**.
 
-11. Zaškrtněte políčko v případě potřeby automaticky restartovat server.
+11. V případě potřeby zaškrtněte políčko pro restartování serveru.
 
 12. Vyberte **Install** (Nainstalovat).
 
-13. Povolit server k instalaci role Hyper-V. Tato akce trvá několik minut a na server se automaticky restartuje.
+13. Povolí serveru instalaci role Hyper-V. Tato akce trvá několik minut a server se automaticky restartuje.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvořit problém virtuálního počítače na serveru Hyper-V virtuálního počítače zachránit
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvoření virtuálního počítače s problémem na serveru Hyper-V záchranného virtuálního počítače
 
-1.  Zaznamenejte název disku v problémový virtuální počítač a pak odstraňte problém virtuálního počítače. Ujistěte se, abyste všechny připojené disky. 
+1.  Poznamenejte si název disku ve virtuálním počítači problému a pak odstraňte problémový virtuální počítač. Ujistěte se, že jste zachovali všechny připojené disky. 
 
-2.  Připojte disk s operačním systémem problému virtuálního počítače jako datového disku virtuálního počítače zachránit.
+2.  Připojte disk s operačním systémem pro váš problémový virtuální počítač jako datový disk pro záchranný virtuální počítač.
 
-    1.  Za problém se odstraní virtuální počítač, přejděte k virtuálnímu počítači zachránit.
+    1.  Po odstranění problému zkuste virtuální počítač přejít na záchranný virtuální počítač.
 
-    2.  Vyberte **disky**a potom **přidat datový disk**.
+    2.  Vyberte **disky**a pak **přidat datový disk**.
 
-    3.  Vyberte disk virtuálního počítače problém a pak vyberte **Uložit**.
+    3.  Vyberte disk s problematickým virtuálním počítačem a pak vyberte **Uložit**.
 
-3.  Po disku byla úspěšně připojený, vzdálené plochy k virtuálnímu počítači zachránit.
+3.  Po úspěšném připojení disku k záchrannému VIRTUÁLNÍmu počítači se připojí Vzdálená plocha.
 
-4.  Otevřete správu disků (diskmgmt.msc). Ujistěte se, že disk problém virtuálního počítače je nastavena na **Offline**.
+4.  Spusťte správu disků (diskmgmt. msc). Ujistěte se, že je disk virtuálního počítače problému nastavený na **offline**.
 
-5.  Otevřete Správce technologie Hyper-V: V **správce serveru**, vyberte **role Hyper-V**. Klikněte pravým tlačítkem na server a pak vyberte **Správce technologie Hyper-V**.
+5.  Otevřít Správce technologie Hyper-V: V **Správce serveru**vyberte **roli technologie Hyper-V**. Pravým tlačítkem myši klikněte na server a pak vyberte **Správce technologie Hyper-V**.
 
-6.  Ve Správci technologie Hyper-V klikněte pravým tlačítkem na virtuální počítač zachránit a pak vyberte **nový** > **virtuálního počítače** > **Další**.
+6.  Ve Správci technologie Hyper-V klikněte pravým tlačítkem na záchranný virtuální počítač a potom vyberte **Nový** > **virtuální počítač** > **Další**.
 
-7.  Zadejte název pro virtuální počítač a potom vyberte **Další**.
+7.  Zadejte název virtuálního počítače a pak vyberte **Další**.
 
-8.  Vyberte **1. generace**.
+8.  Vyberte možnost **generace 1**.
 
-9.  Nastavte počáteční hodnotu paměti na 1024 MB nebo víc.
+9.  Nastavte spouštěcí paměť v 1024 MB nebo více.
 
-10. Pokud je k dispozici vyberte síťový přepínač technologie Hyper-V, který byl vytvořen. Jinak přejděte na další stránku.
+10. Pokud je to možné, vyberte přepínač sítě Hyper-V, který byl vytvořen. V opačném případě přejděte na další stránku.
 
 11. Vyberte **připojit virtuální pevný disk později**.
 
-    ![obrázek o možnost později virtuální pevný Disk Attach](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![Obrázek možnosti připojit virtuální pevný disk později](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. Vyberte **Dokončit** při vytvoření virtuálního počítače.
+12. Po vytvoření virtuálního počítače vyberte **Dokončit** .
 
-13. Klikněte pravým tlačítkem na virtuální počítač, který jste vytvořili a pak vyberte **nastavení**.
+13. Klikněte pravým tlačítkem na virtuální počítač, který jste vytvořili, a pak vyberte **Nastavení**.
 
-14. Vyberte **řadič IDE 0**vyberte **pevném**a potom klikněte na tlačítko **přidat**.
+14. Vyberte možnost **řadič IDE 0**, vyberte možnost **pevný disk**a klikněte na tlačítko **Přidat**.
 
-    ![Přidá obrázek o novém pevném disku](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![Obrázek týkající se přidání nového pevného disku](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. V **fyzický pevný Disk**, vyberte disk problémový virtuální počítač, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte všechny disky uvedené, zaškrtněte, pokud je disk se nastaví na offline pomocí správy disků.
+15. Na stránce **fyzický pevný disk**vyberte disk s PROBLEMATICKým virtuálním počítačem, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte žádné disky uvedené na seznamu, zkontrolujte, jestli je disk nastavený na offline pomocí správy disků.
 
-    ![obrázek o připojí disk](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![obrázek o připojení disku](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. Vyberte **použít**a pak vyberte **OK**.
 
-18. Dvakrát klikněte na virtuální počítač a spusťte ho.
+18. Dvakrát klikněte na virtuální počítač a potom ho spusťte.
 
-19. Teď můžete pracovat ve virtuálním počítači jako místní virtuální počítač. Může postupujte podle všech kroků, které potřebujete.
+19. Nyní můžete pracovat na VIRTUÁLNÍm počítači jako místní virtuální počítač. Můžete postupovat podle všech potřebných kroků pro řešení potíží.
 
 ## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Krok 3: Opětovné vytvoření virtuálního počítače Azure v Azure
 
-1.  Jakmile získáte zpět do režimu online virtuálního počítače, vypněte virtuální počítač ve Správci technologie Hyper-V.
+1.  Po opětovném obnovení virtuálního počítače do režimu online vypněte virtuální počítač ve Správci technologie Hyper-V.
 
-2.  Přejděte [webu Azure portal](https://portal.azure.com) a vyberte virtuální počítač zachránit > disky, zkopírujte název disku. Název použijete v dalším kroku. Pevný disk z virtuálního počítače zachránit odpojte.
+2.  Otevřete [Azure Portal](https://portal.azure.com) a vyberte záchranné virtuální počítače > disky, zkopírujte název disku. V dalším kroku použijete název. Odpojte pevný disk od záchranného virtuálního počítače.
 
-3.  Přejděte na **všechny prostředky**, vyhledejte název disku a pak vyberte disk.
+3.  Přejdete na **všechny prostředky**, vyhledejte název disku a pak vyberte disk.
 
-     ![obrázek o prohledá disk](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![obrázek o hledání na disku](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
-4. Klikněte na tlačítko **vytvoření virtuálního počítače**.
+4. Klikněte na **vytvořit virtuální počítač**.
 
-     ![obrázek o vytvoří virtuální počítač z disku](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![obrázek o vytvoření virtuálního počítače z disku](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
-Můžete také pomocí Azure Powershellu k vytvoření virtuálního počítače z disku. Další informace najdete v tématu [vytvoření nového virtuálního počítače z existujícího disku pomocí prostředí PowerShell](../windows/create-vm-specialized.md#create-the-new-vm). 
+K vytvoření virtuálního počítače z disku můžete použít taky Azure PowerShell. Další informace najdete v tématu [Vytvoření nového virtuálního počítače z existujícího disku pomocí prostředí PowerShell](../windows/create-vm-specialized.md#create-the-new-vm). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [připojení řešení potíží s RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači, naleznete v tématu [řešit problémy s připojením aplikace na virtuálním počítači s Windows](troubleshoot-app-connection.md).
+Pokud máte problémy s připojením k VIRTUÁLNÍmu počítači, přečtěte si téma [řešení potíží s připojením RDP k virtuálnímu počítači Azure](troubleshoot-rdp-connection.md). Problémy s přístupem k aplikacím běžícím na vašem VIRTUÁLNÍm počítači najdete v tématu [řešení potíží s připojením aplikací na virtuálním počítači s Windows](troubleshoot-app-connection.md).

@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050034"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114849"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spuštění kontejnerů obličeje
 
@@ -150,7 +150,6 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 V tomto článku jste zjistili koncepty a pracovní postupy, jak stahovat, instalovat a spouštět kontejnery Face API. Souhrn:
 
-* Face API poskytuje tři kontejnery pro Linux pro Docker, které poskytují extrakci klíčových frází, rozpoznávání jazyka a analýzu mínění.
 * Image kontejneru se stáhnou z Azure Container Registry.
 * Spuštění imagí kontejnerů v Dockeru.
 * Pomocí REST API nebo sady SDK můžete volat operace v kontejnerech Face API tím, že zadáte identifikátor URI hostitele kontejneru.

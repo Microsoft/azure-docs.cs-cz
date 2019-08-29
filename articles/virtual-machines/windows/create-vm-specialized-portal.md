@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows ze specializovaného VHD na webu Azure Portal | Dokumentace Microsoftu
-description: Vytvořte nový virtuální počítač s Windows ze souboru VHD na webu Azure Portal.
+title: Vytvoření virtuálního počítače s Windows ze specializovaného virtuálního pevného disku v Azure Portal | Microsoft Docs
+description: Vytvořte nový virtuální počítač s Windows z virtuálního pevného disku v Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,74 +10,73 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: cadd4b16ab111f46e49429c6d99e0e692325b3b1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718937"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079644"
 ---
-# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače z VHD pomocí webu Azure portal
+# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Vytvoření virtuálního počítače z virtuálního pevného disku pomocí Azure Portal
 
 Existuje několik způsobů, jak vytvořit virtuální počítač (VM) v Azure: 
 
-- Pokud už máte virtuální pevný disk (VHD), který chcete použít, nebo chcete zkopírovat virtuální pevný disk z existujícího virtuálního počítače používat, můžete vytvořit nový virtuální počítač pomocí *připojení* virtuálního pevného disku k novému virtuálnímu počítači jako disku s operačním systémem. 
+- Pokud už máte virtuální pevný disk (VHD), který chcete použít, nebo chcete zkopírovat virtuální pevný disk z existujícího virtuálního počítače, který chcete použít, můžete vytvořit nový virtuální počítač *připojením* virtuálního pevného disku k NOVÉmu virtuálnímu počítači jako disk s operačním systémem. 
 
-- Můžete vytvořit nový virtuální počítač z virtuálního pevného disku virtuálního počítače, který je odstraněný. Například pokud máte virtuální počítač Azure, ale nefunguje správně, můžete odstranit virtuální počítač a použít jeho virtuální pevný disk k vytvoření nového virtuálního počítače. Můžete znovu použít stejný virtuální pevný disk nebo vytvoření kopie VHD vytvořením snímku a následným vytvořením nového spravovaného disku ze snímku. I když vytvoření snímku trvá několik kroků, zachová původní virtuální pevný disk a poskytne vám záložní.
+- Můžete vytvořit nový virtuální počítač z virtuálního pevného disku, který byl odstraněn. Například pokud máte virtuální počítač Azure, který nepracuje správně, můžete virtuální počítač odstranit a použít jeho virtuální pevný disk k vytvoření nového virtuálního počítače. Můžete buď znovu použít stejný VHD nebo vytvořit kopii virtuálního pevného disku, a to vytvořením snímku a následným vytvořením nového spravovaného disku ze snímku. I když vytvoření snímku trvá několik dalších kroků, zachová původní virtuální pevný disk a poskytne vám záložní.
 
-- Použijte klasický virtuální počítač a použijte virtuální pevný disk k vytvoření nového virtuálního počítače, který používá model nasazení Resource Manager a spravované disky. Pro nejlepší výsledky **Zastavit** klasický virtuální počítač na webu Azure Portal před vytvořením snímku.
+- Posaďte klasický virtuální počítač a pomocí virtuálního pevného disku vytvořte nový virtuální počítač, který používá model nasazení Správce prostředků a spravované disky. Nejlepších výsledků dosáhnete, když před vytvořením snímku zastavíte klasický virtuální počítač v Azure Portal.
  
-- Virtuální počítač Azure můžete vytvořit z virtuálního pevného disku místní nahrání místního virtuálního pevného disku a připojení k novému virtuálnímu počítači. Použijte PowerShell nebo jiný nástroj k nahrání virtuálního pevného disku do účtu úložiště a pak vytvoření spravovaného disku z virtuálního pevného disku. Další informace najdete v tématu [nahrání specializovaného virtuálního pevného disku](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
+- Virtuální počítač Azure můžete vytvořit z místního virtuálního pevného disku tak, že nahrajete místní virtuální pevný disk a připojíte ho k novému virtuálnímu počítači. Pomocí PowerShellu nebo jiného nástroje nahrajte virtuální pevný disk do účtu úložiště a pak vytvoříte spravovaný disk z virtuálního pevného disku. Další informace najdete v tématu [nahrání specializovaného virtuálního pevného disku](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 
-Nepoužívejte specializovaného disku, pokud chcete vytvořit několik virtuálních počítačů. Místo toho pro rozsáhlejší nasazení [vytvořit bitovou kopii](capture-image-resource.md) a potom [použít tuto bitovou kopii k vytvoření několika virtuálních počítačů](create-vm-generalized-managed.md).
+Nepoužívejte specializovaný disk, pokud chcete vytvořit více virtuálních počítačů. Místo toho můžete pro rozsáhlejší nasazení [vytvořit image](capture-image-resource.md) a pak [pomocí této image vytvořit víc virtuálních počítačů](create-vm-generalized-managed.md).
 
 
-## <a name="copy-a-disk"></a>Zkopírujte disk
+## <a name="copy-a-disk"></a>Kopírování disku
 
-Vytvoření snímku a pak vytvořte disk ze snímku. Tato strategie umožňuje zachovat původní virtuální pevný disk jako záložní:
+Vytvořte snímek a pak vytvořte disk ze snímku. Tato strategie vám umožní zachovat původní virtuální pevný disk jako záložní:
 
-1. Z [webu Azure portal](https://portal.azure.com), v nabídce vlevo vyberte **všechny služby**.
-2. V **všechny služby** vyhledávací pole, zadejte **disky** a pak vyberte **disky** zobrazíte seznam dostupných disků.
-3. Vyberte disk, který chcete použít. **Disku** stránka se zobrazí tento disk.
+1. Z [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **všechny služby**.
+2. Do vyhledávacího pole **všechny služby** zadejte **disky** a pak vyberte **disky** . zobrazí se seznam dostupných disků.
+3. Vyberte disk, který chcete použít. Zobrazí se stránka **disku** pro tento disk.
 4. V nabídce v horní části vyberte **vytvořit snímek**. 
 5. Zadejte **název** snímku.
-6. Zvolte **skupiny prostředků** snímku. Můžete použít buď existující skupinu prostředků nebo vytvořte novou.
-7. Pro **typ účtu**, zvolte buď **Standard (HDD)** nebo **úrovně Premium (SSD)** úložiště.
-8. Jakmile budete hotovi, vyberte **vytvořit** k vytvoření snímku.
-9. Po vytvoření snímku, vyberte **vytvořit prostředek** v levé nabídce.
-10. Do vyhledávacího pole zadejte **spravovaného disku** a pak vyberte **Managed Disks** ze seznamu.
-11. Na **Managed Disks** stránce **vytvořit**.
+6. Vyberte **skupinu prostředků** pro snímek. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou.
+7. Jako **typ účtu**vyberte buď úložiště **Standard (HDD)** , nebo **Premium (SSD)** .
+8. Až budete hotovi, vyberte **vytvořit** a vytvořte snímek.
+9. Po vytvoření snímku vyberte v nabídce vlevo možnost **vytvořit prostředek** .
+10. Do vyhledávacího pole zadejte **Managed disk** a v seznamu vyberte **Managed disks** .
+11. Na stránce **Managed disks** vyberte **vytvořit**.
 12. Zadejte **název** disku.
-13. Zvolte **skupiny prostředků** disku. Můžete použít buď existující skupinu prostředků nebo vytvořte novou. Tento výběr se taky použije jako skupina prostředků ve kterém vytvoříte virtuální počítač z disku.
-14. Pro **typ účtu**, zvolte buď **Standard (HDD)** nebo **úrovně Premium (SSD)** úložiště.
-15. V **typ zdroje**, zkontrolujte **snímku** zaškrtnuto.
-16. V **zdrojový snímek** rozevíracího seznamu, vyberte snímek, který chcete použít.
-17. Provést jiné úpravy podle potřeby a potom vyberte **vytvořit** k vytvoření disku.
+13. Vyberte **skupinu prostředků** pro disk. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou. Tento výběr se použije taky jako skupina prostředků, ve které vytvoříte virtuální počítač z disku.
+14. Jako **typ účtu**vyberte buď úložiště **Standard (HDD)** , nebo **Premium (SSD)** .
+15. V **typ zdroje**ověřte, zda je vybrán **snímek** .
+16. V rozevíracím seznamu **zdrojový snímek** vyberte snímek, který chcete použít.
+17. Podle potřeby proveďte jakékoli další úpravy a potom vyberte **vytvořit** a vytvořte disk.
 
 ## <a name="create-a-vm-from-a-disk"></a>Vytvoření virtuálního počítače z disku
 
-Jakmile budete mít spravovaného disku virtuální pevný disk, který chcete použít, můžete vytvořit virtuální počítač na portálu:
+Po vytvoření virtuálního pevného disku spravovaného disku, který chcete použít, můžete virtuální počítač vytvořit na portálu:
 
-1. Z [webu Azure portal](https://portal.azure.com), v nabídce vlevo vyberte **všechny služby**.
-2. V **všechny služby** vyhledávací pole, zadejte **disky** a pak vyberte **disky** zobrazíte seznam dostupných disků.
-3. Vyberte disk, který chcete použít. **Disku** stránky pro tento disk se otevře.
-4. V **přehled** stránky, ujistěte se, že **stav disku** je uveden jako **Unattached**. Pokud tomu tak není, můžete potřebovat k odpojení disku od virtuálního počítače nebo odstranění virtuálního počítače uvolnit disku.
+1. Z [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **všechny služby**.
+2. Do vyhledávacího pole **všechny služby** zadejte **disky** a pak vyberte **disky** . zobrazí se seznam dostupných disků.
+3. Vyberte disk, který chcete použít. Otevře se stránka **disku** pro tento disk.
+4. Na stránce **Přehled** zajistěte, aby byl **stav disku** uvedenýjako nepřipojený. Pokud tomu tak není, možná budete muset buď odpojit disk od virtuálního počítače, nebo odstranit virtuální počítač, aby se disk uvolnil.
 4. V nabídce v horní části stránky vyberte **vytvořit virtuální počítač**.
-5. Na **Základy** stránky pro nový virtuální počítač, zadejte **název virtuálního počítače** a buď vyberte existující **skupiny prostředků** nebo vytvořte novou.
-6. Pro **velikost**vyberte **změnit velikost** přístup **velikost** stránky.
-7. Vyberte řádek velikosti virtuálního počítače a pak zvolte **vyberte**.
-8. Na **sítě** stránky, můžete buď nechat na portálu vytvořit všechny nové prostředky nebo můžete vybrat existující **virtuální síť** a **skupinu zabezpečení sítě**. Na portálu vždy vytváří nové síťové rozhraní a veřejnou IP adresu nového virtuálního počítače. 
-9. Na **správu** stránce, provést změny možností monitorování.
-10. Na **hosta config** stránce, podle potřeby přidejte žádná rozšíření.
-11. Jakmile budete hotovi, vyberte **revize + vytvořit**. 
-12. Pokud konfigurace virtuálního počítače úspěšně proběhne ověření, vyberte **vytvořit** ke spuštění nasazení.
+5. Na stránce **základy** nového virtuálního počítače zadejte **název virtuálního počítače** a buď vyberte existující **skupinu prostředků** , nebo vytvořte novou.
+6. Pro možnost **Velikost**vyberte **změnit velikost** pro přístup na stránku **velikosti** .
+7. Vyberte řádek velikosti virtuálního počítače a pak zvolte **Vybrat**.
+8. Na stránce **síť** můžete buď nechat portál vytvořit všechny nové prostředky, nebo můžete vybrat existující **virtuální síť** a **skupinu zabezpečení sítě**. Portál vždy vytvoří nové síťové rozhraní a veřejnou IP adresu pro nový virtuální počítač. 
+9. Na stránce **Správa** proveďte jakékoli změny možností monitorování.
+10. Na stránce **Konfigurace hosta** podle potřeby přidejte libovolná rozšíření.
+11. Až budete hotovi, vyberte **zkontrolovat + vytvořit**. 
+12. Pokud konfigurace virtuálního počítače projde ověřením, vyberte **vytvořit** a spusťte nasazení.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete také použít PowerShell k [nahrání virtuálního pevného disku do Azure a vytvoření specializovaného virtuálního počítače](create-vm-specialized.md).
+PowerShell můžete také použít k [nahrání virtuálního pevného disku do Azure a vytvoření specializovaného virtuálního počítače](create-vm-specialized.md).
 
 

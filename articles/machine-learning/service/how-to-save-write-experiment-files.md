@@ -1,6 +1,7 @@
 ---
-title: Prevence omezení úložiště a latence experimentů se vstupními a výstupními adresáři
-description: V tomto článku se naučíte, kam uložit vstupní soubory experimentu a kde zapisujete výstupní soubory, aby se předešlo chybám omezení úložiště a latenci experimentu.
+title: Kam ukládat soubory experimentů & Write
+titleSuffix: Azure Machine Learning service
+description: Naučte se ukládat vstupní soubory experimentu a kde zapisovat výstupní soubory, aby se předešlo chybám omezení úložiště a latenci experimentu.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856054"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114514"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 

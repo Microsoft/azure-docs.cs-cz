@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227408"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073876"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: Konfigurace preferovaného umístění dat pro prostředky Office 365
 Účelem tohoto tématu je projít si, jak nakonfigurovat atribut pro preferované umístění dat v Azure Active Directory (Azure AD) Connect Sync. Pokud někdo používá pro Office 365 více geografických možností, použijte tento atribut k určení geografického umístění dat Office 365 uživatele. ( *Oblast* podmínek a *geografické* použití jsou zaměnitelné.)
@@ -32,7 +32,7 @@ Ve výchozím nastavení se prostředky Office 365 pro vaše uživatele nacháze
 Nastavením atributu **preferredDataLocation**můžete definovat geografickou hodnotu uživatele. Můžete mít prostředky uživatele Office 365, jako je poštovní schránka a OneDrive, ve stejné geografické podobě jako uživatel a mít pro celou organizaci i jednoho tenanta.
 
 > [!IMPORTANT]
-> Služba multi-Geo je aktuálně dostupná pro zákazníky s minimálně 500 předplatnými sady Office 365. Podrobnosti získáte od zástupce Microsoftu.
+> Služba multi-Geo je aktuálně dostupná pro zákazníky s aktivním smlouva Enterprise a minimálně 500 předplatných služeb Office 365. Podrobnosti získáte od zástupce Microsoftu.
 >
 >
 
@@ -49,7 +49,7 @@ Zeměpisných oblastech v sadě Office 365 dostupné pro více geografických um
 | Francie | FRA |
 | Indie | NAJÍT |
 | Japonsko | JPN |
-| Jižní Korea | KOR |
+| Korejská republika | KOR |
 | Jižní Afrika | ZAF |
 | Spojené arabské emiráty | JSOU |
 | Spojené království | GBR |
@@ -91,8 +91,8 @@ Aby se zabránilo tomu, že se nezamýšlené změny exportují do služby Azure
 
 1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
 2. Zakažte naplánovanou synchronizaci spuštěním této rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false`.
-3. Spusťte **Synchronization Service Manager**  > spuštěním**synchronizační služby**.
-4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s probíhajícím stavem.
+3. Spusťte **Synchronization Service Manager** > spuštěním**synchronizační služby**.
+4. Vyberte kartu **operace** a potvrďte, že neexistuje žádná operace s probíhajícímstavem.
 
 ![Snímek obrazovky s Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
@@ -141,7 +141,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Vyberte zdrojový atribut | není zaškrtnuto | Aktualizace |
+    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | Není zaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit příchozí pravidlo, vyberte **Přidat**.
 
@@ -178,7 +178,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Typ toku | Cílový atribut | Source | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | není zaškrtnuto | Aktualizace |
+    | Přímé | preferredDataLocation | preferredDataLocation | Není zaškrtnuto | Aktualizace |
 
 7. Pokud chcete vytvořit odchozí pravidlo, zavřete **Přidat** .
 
@@ -213,7 +213,7 @@ Obecně je potřeba úplný cyklus synchronizace. Důvodem je to, že jste přid
    2. V dialogovém okně vyberte možnost **Úplná synchronizace**a pak vyberte **OK**.
    3. Počkejte na dokončení operace.
 
-5. Ověřit  nedokončené exporty do Azure AD:
+5. Ověřit nedokončené exporty do Azure AD:
 
    1. Klikněte pravým tlačítkem na **konektor Azure AD**a vyberte **Hledat místo**v konektoru.
    2. V dialogovém okně **Hledat místo konektoru** :
@@ -249,7 +249,7 @@ Nyní je čas ověřit konfiguraci a povolit pro uživatele.
 Za předpokladu, že je váš tenant označený k tomu, aby mohl používat tuto funkci, se poštovní schránka přesune do správného geografického umístění. Můžete to ověřit tak, že si vyhledáte název serveru, kde se nachází poštovní schránka.
 4. Pokud chcete ověřit, že toto nastavení bylo v mnoha poštovních schránkách platné, použijte skript v [Galerii TechNet](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Tento skript obsahuje taky seznam prefixů serveru pro všechna datová centra Office 365 a geografickou oblast, ve které se nachází. Dá se použít jako odkaz v předchozím kroku k ověření umístění poštovní schránky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o multi-geografické sadě Office 365:
 

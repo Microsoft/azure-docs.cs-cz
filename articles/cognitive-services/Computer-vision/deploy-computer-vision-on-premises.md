@@ -1,5 +1,5 @@
 ---
-title: Použití s Kubernetes a Helm-Počítačové zpracování obrazu
+title: Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 titleSuffix: Azure Cognitive Services
 description: Nasaďte kontejner Počítačové zpracování obrazu do instance kontejneru Azure a otestujte ho ve webovém prohlížeči.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5befba9bdc44a594363dba86c0c2d082a9b44cdd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036624"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068974"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Použití s Kubernetes a Helmem
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Použití kontejneru Počítačové zpracování obrazu s Kubernetes a Helm
 
 Jednou z možností, jak místně spravovat Počítačové zpracování obrazu kontejnery, je použití Kubernetes a Helm. Když pomocí Kubernetes a Helm definujete image kontejneru Rozpoznávání textu, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [install and run rozpoznávání textu Containers](computer-vision-how-to-install-containers.md).
 

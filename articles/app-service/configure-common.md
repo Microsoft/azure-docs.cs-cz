@@ -11,17 +11,16 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 11a29a980fbbbafad850daeda5af11b78580bcaa
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636648"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067008"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -248,7 +247,7 @@ Pro aplikace pro Linux se podívejte na:
 
 Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro Azure App Service](containers/configure-custom-container.md) .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Konfigurace vlastní domény ve službě Azure App Service]
 - [Nastavení přípravných prostředí ve službě Azure App Service]

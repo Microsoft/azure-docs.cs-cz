@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559465"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066436"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Přepisovat konverzace s více účastníky pomocí sady Speech SDK
 
@@ -25,7 +25,9 @@ Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat
 
 * Konverzace Transcriber je podporována pro C++systémy C#, a Java v systémech Windows, Linux a Android.
 * ROOBO DevKit je podporované hardwarové prostředí pro vytváření přepisů konverzací, protože poskytuje kruhové pole s více mikrofony, které je možné efektivně využít pro identifikaci mluvčího. [Další informace najdete v tématu sada Speech Devices SDK](speech-devices-sdk.md).
-* Podpora sady Speech SDK pro přepisy konverzací je omezená na použití zvukových streamů pro vyžádání obsahu a nabízených oznámení s osmi kanály 16 kHz PCM.
+* Podpora sady Speech SDK pro přepisy konverzací je omezená na proudy pro vyžádání obsahu a streamy nabízených oznámení s 8 kanály 16bitového zvuku se 16 kHz PCM. V současné době se pro zvukové zachycení 8 kanálů podporují jenom tyto sady:
+   * [ROOBO Smart audio s kulatým 7 – MIC DK](https://ddk.roobo.com/)
+   * [Azure Kinect DK](https://azure.microsoft.com/en-in/services/kinect-dk/).
 * Přepis konverzace je aktuálně k dispozici v jazycích "en-US" a "zh-CN" v následujících oblastech: centralus a eastasia.
 
 ## <a name="prerequisites"></a>Požadavky

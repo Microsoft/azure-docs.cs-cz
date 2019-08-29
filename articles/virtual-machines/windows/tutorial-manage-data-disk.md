@@ -9,7 +9,6 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
@@ -17,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: b6098d6a8752737ef0bffaf35c8ba4b6e5223d22
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f44ea76ed22ab4feacc6ee37b165bbc33f7ddafc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707967"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101601"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -73,7 +72,7 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 Uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači můžete nastavit pomocí příkazu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 
-Vytvoření virtuálního počítače s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
+Vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -96,7 +95,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Vytvořit datový disk se [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) příkazu.
+Pomocí příkazu [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) vytvořte datový disk.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -105,13 +104,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Převeďte virtuální počítač, který chcete přidat datový disk, pomocí [rutiny Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) příkazu.
+Pomocí příkazu [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) Získejte virtuální počítač, ke kterému chcete přidat datový disk.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Přidání datového disku do konfigurace virtuálního počítače s [přidat AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) příkazu.
+Přidejte datový disk do konfigurace virtuálního počítače pomocí příkazu [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) .
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -122,7 +121,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Aktualizovat virtuální počítač s [rutiny Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) příkazu.
+Aktualizujte virtuální počítač pomocí příkazu [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) .
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100907"
 ---
 # <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
 
@@ -50,7 +50,7 @@ Následující seznam popisuje akce uživatelů, které mohou vyžadovat novou v
 
 Co se stane s pravidly a řídicími panely zařízení, když dojde ke změně verze?
 
-**Pravidla** mohou obsahovat podmínky, které jsou závislé na vlastnostech. Pokud jste odebrali jednu nebo více těchto vlastností, tato pravidla mohou být v nové verzi šablony zařízení poškozena. Můžete přejít na tato konkrétní pravidla a aktualizovat podmínky pro opravu pravidel. Pravidla pro předchozí verzi by měla fungovat bez dopadu.
+**Pravidla** v předchozí verzi šablony zařízení nadále fungují beze změny. Pravidla se automaticky nemigrují na novou verzi šablony zařízení. Pravidla pro novou verzi šablony můžete vytvořit obvyklým způsobem. Další informace najdete v článku [Vytvoření pravidla telemetrie a nastavení oznámení v](howto-create-telemetry-rules.md) článku s postupem pro Azure IoT Central aplikace.
 
 **Řídicí panely zařízení** mohou obsahovat několik typů dlaždic. Některé dlaždice mohou obsahovat nastavení a vlastnosti. Pokud je odebrána vlastnost nebo nastavení použité v dlaždici, je dlaždice zcela nebo částečně přerušena. Můžete přejít na dlaždici a opravit problém buď odebráním dlaždice, nebo aktualizací obsahu dlaždice.
 
@@ -65,7 +65,7 @@ Můžete vytvořit několik verzí šablony zařízení. V průběhu času budet
 
 ![Postup migrace zařízení](media/howto-version-device-template/pick-version.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili používat verze šablon zařízení ve vaší aplikaci Azure IoT Central, je tady doporučený další krok:
 

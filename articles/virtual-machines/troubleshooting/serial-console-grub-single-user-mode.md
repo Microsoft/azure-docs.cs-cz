@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846607"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090197"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
 GRUB je celkový jednotný zaváděcí program pro spouštění, který je pravděpodobně první věcí, kterou se zobrazí při spuštění virtuálního počítače. Vzhledem k tomu, že se zobrazuje před spuštěním operačního systému, není přístupná přes SSH. Z GRUB můžete změnit konfiguraci spouštění tak, aby se spouštěla do režimu jednoho uživatele, mimo jiné.
@@ -199,7 +198,7 @@ Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat grub,
 ### <a name="single-user-mode-in-oracle-linux"></a>Režim jednoho uživatele v Oracle Linux
 Postupujte podle pokynů pro RHEL výše a povolte jeden uživatelský režim v Oracle Linux.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](serial-console-linux.md).
 * Naučte se používat sériovou konzolu k [Povolení GRUB v různých distribuce](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) .
 * Použití sériové konzoly pro [volání NMI a SysRq](serial-console-nmi-sysrq.md)

@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s chybami rozšíření virtuálních počítačů Windows | Dokumentace Microsoftu
-description: Další informace o řešení potíží s chybami rozšíření virtuálních počítačů Windows Azure
+title: Řešení potíží s chybami rozšíření virtuálních počítačů s Windows | Microsoft Docs
+description: Přečtěte si, jak řešit potíže s chybami rozšíření Azure Windows VM
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -9,24 +9,23 @@ editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: f2b85e9a156d0e6264ec39282b803118963cbbbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706662"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084297"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření virtuálních počítačů Windows Azure
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží s chybami rozšíření Azure Windows VM
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
-## <a name="viewing-extension-status"></a>Zobrazení stavu rozšíření
-Šablony Azure Resource Manageru můžete spustit z prostředí Azure PowerShell. Po spuštění šablony stav extension lze zobrazit v Průzkumníku prostředků Azure nebo nástroje příkazového řádku.
+## <a name="viewing-extension-status"></a>Zobrazuje se stav rozšíření.
+Šablony Azure Resource Manager lze spouštět z Azure PowerShell. Po provedení šablony lze stav rozšíření zobrazit z Azure Resource Explorer nebo nástrojů příkazového řádku.
 
 Zde naleznete příklad:
 
@@ -59,13 +58,13 @@ Tady je ukázkový výstup:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Řešení potíží s chybami rozšíření
-### <a name="rerun-the-extension-on-the-vm"></a>Znovu spusťte rozšíření na virtuálním počítači
-Pokud se spouštění skriptů na virtuálním počítači pomocí rozšíření vlastních skriptů, může občas spouštějí došlo k chybě, kde byl virtuální počítač vytvořen úspěšně, ale došlo k selhání skriptu. Za těchto podmínek je doporučeným způsobem, jak tuto chybu odebrat rozšíření a znovu spustit šablonu.
-Poznámka: Tato funkce v budoucích verzích by se zvýšila odebrat potřeba odinstalovat rozšíření.
+## <a name="troubleshooting-extension-failures"></a>Řešení potíží se selháním rozšíření
+### <a name="rerun-the-extension-on-the-vm"></a>Znovu spustit rozšíření na virtuálním počítači
+Pokud spouštíte skripty na virtuálním počítači pomocí rozšíření vlastních skriptů, někdy můžete spustit chybu, při které byl virtuální počítač úspěšně vytvořen, ale skript se nezdařil. Za těchto podmínek se doporučuje obnovit z této chyby rozšíření a znovu znovu spustit šablonu.
+Poznámka: V budoucnu by se tato funkce vylepšila tak, aby se odstranila nutnost Odinstalace rozšíření.
 
-#### <a name="remove-the-extension-from-azure-powershell"></a>Odeberte rozšíření z prostředí Azure PowerShell
+#### <a name="remove-the-extension-from-azure-powershell"></a>Odebrat rozšíření z Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Odebraný rozšíření šablonou může být znovu spustit na spouštění skriptů na virtuálním počítači.
+Po odebrání rozšíření je možné šablonu znovu spustit, aby se spouštěly skripty na virtuálním počítači.
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení upozornění na dostupnost Azure Application insights | Dokumentace Microsoftu
+title: Nastavení upozornění na dostupnost pomocí Azure Application Insights | Microsoft Docs
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
 services: application-insights
 documentationcenter: ''
@@ -13,66 +13,69 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: cc022f91d4b4fec42929769df8c979320548a1f9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304905"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114398"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. To vás může upozornit, pokud vaše aplikace nereaguje nebo zda stránka reaguje příliš pomalu.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Může vás upozornit, pokud vaše aplikace nereaguje nebo pokud reaguje příliš pomalu.
 
-## <a name="enable-alerts"></a>Povolení upozornění
+## <a name="enable-alerts"></a>Povolit výstrahy
 
-Výstrahy jsou nyní automaticky povolené ve výchozím nastavení, ale aby bylo možné plně konfigurovat výstrahy, je nejprve nutné nejprve vytvořit test dostupnosti.
+Výstrahy jsou teď ve výchozím nastavení automaticky povolené, ale aby bylo možné úplně nakonfigurovat výstrahu, musíte nejdřív vytvořit test dostupnosti.
 
-![Vytvoření prostředí](./media/availability-alerts/create-test.png)
+![Vytvořit prostředí](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  S [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), pravidlo upozornění předvolby závažnosti a oznámení s [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musí být** nakonfigurované v prostředí upozornění. Bez následujících kroků budou dostávat jen oznámení na portálu.
+>  S [novými sjednocenými výstrahami](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)se **musí** nakonfigurovat závažnost pravidla výstrahy a předvolby oznámení se [skupinami akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) v prostředí výstrahy. Bez následujících kroků obdržíte pouze oznámení v portálu.
 
-1. Po uložení test dostupnosti, v podrobnostech kartu klikněte na symbol tří teček testu, který jste právě vytvořili. Klikněte na "Upravit upozornění".
+1. Po uložení testu dostupnosti klikněte na kartě Podrobnosti na tři tečky, které jste právě provedli. Klikněte na upravit upozornění.
 
    ![Upravit po uložení](./media/availability-alerts/edit-alert.png)
 
-2. Nastavte úroveň závažnosti požadované, popis pravidla a co je nejdůležitější – skupina akcí, která má předvolby oznámení, které chcete použít pro toto pravidlo upozornění.
+2. Nastavte požadovanou úroveň závažnosti, popis pravidla a nejdůležitější informace – skupina akcí, která má předvolby oznámení, kterou chcete použít pro toto pravidlo upozornění.
 
    ![Upravit po uložení](./media/availability-alerts/set-action-group.png)
 
-### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Upozornění na X z Y míst hlášení chyb
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Výstraha na ose X z umístění Y hlášení selhání
 
-X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [oznámení pro nové sjednocené prostředí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), když vytvoříte nový test dostupnosti. Výběrem možnosti "klasickém" nebo zakázání pravidla upozornění, můžete se odhlásit.
+Pravidlo upozornění na umístění X z Y je ve výchozím nastavení povolené v [novém jednotném prostředí výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)při vytváření nového testu dostupnosti. Můžete si vybrat možnost Classic nebo zakázat pravidlo výstrahy.
 
 > [!NOTE]
-> Konfigurace skupin akcí pro příjem oznámení při aktivaci upozornění podle výše uvedených kroků. Bez tohoto kroku budou dostávat jen na portálu oznámení, když se pravidlo aktivuje.
+> Nakonfigurujte skupiny akcí tak, aby přijímaly oznámení v případě, že se výstraha aktivuje podle výše uvedeného postupu. Bez tohoto kroku dostanete oznámení v portálu jenom v případě, že se pravidlo aktivuje.
 >
 
 ### <a name="alert-on-availability-metrics"></a>Upozornění na metriky dostupnosti
 
-Použití [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), můžete upozornění na segmentovaným agregační dostupnosti a otestovat také doba trvání metriky:
+Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)můžete upozornit na segmenticky agregovanou dostupnost a metriky doby trvání testu:
 
 1. Vyberte prostředek Application Insights v prostředí metrik a vyberte metriku dostupnosti:
 
-    ![Výběr metriky dostupnosti](./media/availability-alerts/select-metric.png)
+    ![Výběr metrik dostupnosti](./media/availability-alerts/select-metric.png)
 
-2. Konfigurace výstrah, které možnosti z nabídky se dostanete na nové prostředí kde můžete vybrat konkrétní testy nebo nastavit pravidlo upozornění na umístění. Můžete také nakonfigurovat akce skupiny pro toto pravidlo upozornění tady.
+2. Možnost konfigurovat výstrahy z nabídky vás převezme do nového prostředí, kde můžete vybrat konkrétní testy nebo umístění pro nastavení pravidla výstrahy. Tady můžete nakonfigurovat také skupiny akcí pro toto pravidlo upozornění.
 
-### <a name="alert-on-custom-analytics-queries"></a>Upozornění na vlastních analytických dotazů
+### <a name="alert-on-custom-analytics-queries"></a>Upozornění na vlastní analytické dotazy
 
-Použití [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), může upozornit na [vlastní protokol dotazů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Pomocí vlastních dotazů můžete upozornění na jakékoli libovolného podmínku, která vám pomůže využít vaše nejspolehlivější signál problémy s dostupností. To platí také zejména, pokud odesíláte pomocí sady SDK TrackAvailability výsledky vlastní dostupnosti. 
+Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)můžete upozornit na [vlastní dotazy protokolu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). S vlastními dotazy můžete upozorňovat na jakékoli podmínky, které vám pomůžou dosáhnout nejspolehlivějšího signálu problémů s dostupností. To platí i v případě, že odesíláte vlastní výsledky dostupnosti pomocí sady TrackAvailability SDK.
 
 > [!Tip]
-> Metriky na údaje o dostupnosti zahrnují vlastní dostupnost výsledky, které vám mohou odesílání voláním naší sady SDK TrackAvailability. Můžete použít upozornění na metriky podporu, aby upozornění na výsledky vlastní dostupnosti.
+> Metriky dostupnosti dat zahrnují všechny vlastní výsledky dostupnosti, které můžete odeslat voláním naší sady TrackAvailability SDK. Můžete použít upozorňování na podporu metrik pro upozornění na výsledky vlastní dostupnosti.
 >
+
+## <a name="automate-alerts"></a>Automatizace výstrah
+
+Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert) .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Vyhrazené [článek pro řešení potíží](troubleshoot-availability.md).
+Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vícekrokové webové testy](availability-multistep.md)
-* [Adresa URL příkazem ping webové testy](monitor-web-app-availability.md)
-
+* [Webové testy s více kroky](availability-multistep.md)
+* [Testování webových testů adresy URL](monitor-web-app-availability.md)

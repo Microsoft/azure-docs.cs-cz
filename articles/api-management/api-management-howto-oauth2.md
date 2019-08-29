@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249862"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072376"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
 
@@ -95,9 +94,9 @@ V této příručce se dozvíte, jak nakonfigurovat instanci služby API Managem
 
 ## <a name="step3"> </a>Testování autorizace uživatele OAuth 2,0 na portálu pro vývojáře
 
-Jakmile nakonfigurujete server OAuth 2,0 a nakonfigurujete své rozhraní API tak, aby používalo tento server, můžete ho otestovat tak, že na portálu pro vývojáře kliknete a zavoláte rozhraní API.  V horní nabídce stránky s přehledem instance Azure API Management klikněte na  **portál pro vývojáře** .
+Jakmile nakonfigurujete server OAuth 2,0 a nakonfigurujete své rozhraní API tak, aby používalo tento server, můžete ho otestovat tak, že na portálu pro vývojáře kliknete a zavoláte rozhraní API.  V horní nabídce stránky s přehledem instance Azure API Management klikněte na **portál pro vývojáře** .
 
-![Portál pro vývojáře][api-management-developer-portal-menu]
+![Vývojářský portál][api-management-developer-portal-menu]
 
 V horní nabídce klikněte na **rozhraní API** a vyberte **echo API**.
 
@@ -123,7 +122,7 @@ Jakmile se přihlásíte, **hlavičky žádosti** se naplní `Authorization : Be
 
 V tomto okamžiku můžete nakonfigurovat požadované hodnoty pro zbývající parametry a odeslat žádost.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o použití OAuth 2,0 a API Management najdete v následujícím videu a doprovodném [článku](api-management-howto-protect-backend-with-aad.md).
 

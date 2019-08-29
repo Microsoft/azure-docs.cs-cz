@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311867"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114802"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -56,7 +56,7 @@ Naučte se používat rychlé úlohy v prvním kurzu ACR Tasks, [sestavovat imag
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatické sestavení při potvrzení zdrojového kódu
 
-Použijte úlohy ACR k automatickému spuštění sestavení image kontejneru, když se kód potvrdí do úložiště Git. Úlohy sestavení lze konfigurovat pomocí příkazu Azure CLI [AZ ACR Task][az-acr-task], umožňují zadat úložiště Git a volitelně také větev a souboru Dockerfile. Když váš tým potvrdí kód do úložiště, ACR úkoly – vytvořené webhookem spustí sestavení image kontejneru definované v úložišti.
+Použijte úlohy ACR k automatickému spuštění sestavení image kontejneru, když se kód potvrdí do úložiště Git v GitHubu nebo v Azure DevOps. Úlohy sestavení lze konfigurovat pomocí příkazu Azure CLI [AZ ACR Task][az-acr-task], umožňují zadat úložiště Git a volitelně také větev a souboru Dockerfile. Když váš tým potvrdí kód do úložiště, ACR úkoly – vytvořené webhookem spustí sestavení image kontejneru definované v úložišti.
 
 > [!IMPORTANT]
 > Pokud jste dříve vytvořili úkoly ve verzi Preview pomocí `az acr build-task` příkazu, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
@@ -73,10 +73,14 @@ Pokud je v případě, že je nadřazeným nástrojem pro správu a údržbu ima
 
 Vzhledem k tomu, že úlohy ACR dynamicky zjišťují základní závislosti obrázků při vytváření image kontejneru, může rozpoznat, kdy se aktualizuje základní obrázek image aplikace. S jedním předkonfigurovaným [úkolem sestavení](container-registry-tutorial-base-image-update.md#create-a-task)ACR úkoly **automaticky znovu sestaví každou image aplikace** . Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
 
-Přečtěte si o opravách operačních systémů a platforem v rámci třetího kurzu ACR úlohy, [Automatizace sestavení imagí na základě aktualizace základního obrázku pomocí úloh Azure Container Registry](container-registry-tutorial-base-image-update.md).
+Úkol ACR sleduje základní aktualizaci obrázku, pokud je základní bitová kopie v jednom z následujících umístění:
 
-> [!NOTE]
-> V současné době se aktualizace základních imagí spustí jenom v případě, že se základní a aplikační image nacházejí ve stejném registru Azure Container, nebo se nachází ve veřejném úložišti Docker nebo v úložišti Microsoft Container Registry.
+* Stejný registr kontejneru Azure, ve kterém se úloha spouští
+* Další Azure Container Registry ve stejné oblasti 
+* Veřejné úložiště v Docker Hub
+* Veřejné úložiště v Microsoft Container Registry
+
+Další informace o opravách operačních systémů a rozhraní v rámci třetího kurzu ACR úlohy, [Automatizace sestavení imagí na základě aktualizace základního obrázku pomocí úloh Azure Container Registry](container-registry-tutorial-base-image-update.md).
 
 ## <a name="multi-step-tasks"></a>Úlohy s více kroky
 
@@ -105,7 +109,7 @@ Od července 2019 budou data a protokoly pro úlohy spuštěné v registru stand
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Až budete připraveni k automatizaci automatických oprav operačního systému a architektury sestavením imagí kontejneru v cloudu, podívejte se na [řadu kurzů ACR úloh](container-registry-tutorial-quick-task.md)tři části.
 

@@ -9,18 +9,17 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 7aaf29ddf52fb07524aa972f12ca18c235a40928
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072095"
 ---
-# <a name="failed-to-update-api-management-service-hostnames"></a>Nepovedlo se aktualizovat názvy hostitelů služby API Management
+# <a name="failed-to-update-api-management-service-hostnames"></a>Nepovedlo se aktualizovat názvy hostitelů služby API Management.
 
 Tento článek popisuje chybu "nepovedlo se aktualizovat názvy hostitelů služby API Management), se kterými se můžete setkat při přidávání vlastní domény pro službu Azure API Management. Tento článek popisuje kroky pro řešení potíží, které vám pomůžou tento problém vyřešit.
 
@@ -48,7 +47,7 @@ Pokud chcete tento problém vyřešit, postupujte následovně:
     - **Vyberte objekt zabezpečení**: Vyhledejte název služby API Management a vyberte ji ze seznamu.
     - **Klíčová oprávnění**: Žádné
     - **Oprávnění tajného**kódu: Získat
-    - **Oprávnění certifikátu**: Žádný
+    - **Oprávnění certifikátu**: Žádné
 1. Vyberte **OK** a vytvořte zásady přístupu.
 1. Vyberte **Uložit** a uložte změny.
 

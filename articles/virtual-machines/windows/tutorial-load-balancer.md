@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5ca8f07ac1cc4296376904a2ba5ca85ff479a72c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe202712f5e269950b64046453867bd23d18a9ab
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708014"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100221"
 ---
-# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů Windows v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure Powershellu
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Windows v Azure za účelem vytvoření vysoce dostupné aplikace s Azure PowerShell
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto kurzu se seznámíte s různými komponentami nástroje pro vyrovnávání zatížení Azure, které distribuují provoz a zajišťují vysokou dostupnost. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
@@ -60,7 +59,7 @@ New-AzResourceGroup `
 ```
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvoření veřejné IP adresy s [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
+Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj pro vyrovnávání zatížení veřejnou IP adresu. Vytvořte veřejnou IP adresu pomocí [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress). Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* ve skupině prostředků *myResourceGroupLoadBalancer*:
 
 ```azurepowershell-interactive
 $publicIP = New-AzPublicIpAddress `
@@ -71,7 +70,7 @@ $publicIP = New-AzPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
-Vytvořte front-endový fond IP adres s [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Následující příklad vytvoří front-endový fond IP adres s názvem *myFrontEndPool* a připojí adresu *myPublicIP*: 
+Vytvořte fond IP adres front-endu pomocí [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Následující příklad vytvoří front-endový fond IP adres s názvem *myFrontEndPool* a připojí adresu *myPublicIP*: 
 
 ```azurepowershell-interactive
 $frontendIP = New-AzLoadBalancerFrontendIpConfig `
@@ -79,14 +78,14 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-Vytvořte back-endový fond adres s [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Virtuální počítače se k tomuto back-endovému fondu připojí v dalších krocích. Následující příklad vytvoří back-endový fond adres s názvem *myBackEndPool*:
+Vytvořte fond adres back-endu pomocí [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). Virtuální počítače se k tomuto back-endovému fondu připojí v dalších krocích. Následující příklad vytvoří back-endový fond adres s názvem *myBackEndPool*:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
   -Name "myBackEndPool"
 ```
 
-Nyní vytvořte nástroj pro vyrovnávání zatížení pomocí [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem *myLoadBalancer* pomocí front-endových a back-endových fondů IP adres vytvořených v předchozích krocích:
+Teď vytvořte Nástroj pro vyrovnávání zatížení pomocí [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem *myLoadBalancer* pomocí front-endových a back-endových fondů IP adres vytvořených v předchozích krocích:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -102,7 +101,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
 
 Následující příklad vytvoří sondu protokolu TCP. Pokud potřebujete jemněji odstupňované kontroly stavu, můžete vytvářet i vlastní sondy protokolu HTTP. Pokud použijete vlastní sondu protokolu HTTP, musíte vytvořit stránku kontroly stavu, například *healthcheck.aspx*. Aby nástroj pro vyrovnávání zatížení udržel hostitele v oběhu, musí sonda vracet odpověď **HTTP 200 OK**.
 
-K vytvoření sondy stavu protokolu TCP, použijete [přidat AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig). Následující příklad vytvoří sondu stavu s názvem *myHealthProbe* monitorující jednotlivé virtuální počítače na portu *TCP* *80*:
+K vytvoření sondy stavu protokolu TCP použijte [příkaz Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig). Následující příklad vytvoří sondu stavu s názvem *myHealthProbe* monitorující jednotlivé virtuální počítače na portu *TCP* *80*:
 
 ```azurepowershell-interactive
 Add-AzLoadBalancerProbeConfig `
@@ -114,7 +113,7 @@ Add-AzLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-Chcete-li sondu stavu použít, aktualizujte nástroj pro vyrovnávání zatížení pomocí [Set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
+Pokud chcete použít sondu stavu, aktualizujte Nástroj pro vyrovnávání zatížení pomocí [set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -123,7 +122,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujte také sondu stavu, která se má použít.
 
-Vytvořte pravidlo nástroje pro vyrovnávání zatížení s [přidat AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP* *80*:
+Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP* *80*:
 
 ```azurepowershell-interactive
 $probe = Get-AzLoadBalancerProbeConfig -LoadBalancer $lb -Name "myHealthProbe"
@@ -139,7 +138,7 @@ Add-AzLoadBalancerRuleConfig `
   -Probe $probe
 ```
 
-Aktualizujte nástroj pro vyrovnávání zatížení s [Set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
+Aktualizujte Nástroj pro vyrovnávání zatížení pomocí [set-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancer):
 
 ```azurepowershell-interactive
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -149,7 +148,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě. Další informace o virtuálních sítích najdete v kurzu [Správa virtuálních sítí Azure](tutorial-virtual-network.md).
 
 ### <a name="create-network-resources"></a>Vytvoření síťových prostředků
-Vytvoření virtuální sítě s [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet* s podsítí *mySubnet*:
+Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem *myVnet* s podsítí *mySubnet*:
 
 ```azurepowershell-interactive
 # Create subnet config
@@ -166,7 +165,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-Vytvoří se virtuální síťové karty se [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Následující příklad vytvoří tři virtuální síťové karty. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
+Virtuální síťové karty se vytvářejí pomocí [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Následující příklad vytvoří tři virtuální síťové karty. (Jednu virtuální síťovou kartu pro každý virtuální počítač, který pro svou aplikaci vytvoříte v následujících krocích). Kdykoli můžete vytvořit další virtuální síťové karty a virtuální počítače a přidat je do nástroje pro vyrovnávání zatížení:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -184,7 +183,7 @@ for ($i=1; $i -le 3; $i++)
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 Pokud chcete zlepšit vysokou dostupnost aplikace, umístěte své virtuální počítače do skupiny dostupnosti.
 
-Vytvořit skupinu dostupnosti pomocí [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
+Vytvořte skupinu dostupnosti pomocí [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset). Následující příklad vytvoří skupinu dostupnosti s názvem *myAvailabilitySet*:
 
 ```azurepowershell-interactive
 $availabilitySet = New-AzAvailabilitySet `
@@ -202,7 +201,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítače s [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří tři virtuální počítače a požadované komponenty virtuální sítě (pokud ještě neexistují):
+Nyní můžete vytvořit virtuální počítače pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří tři virtuální počítače a požadované komponenty virtuální sítě (pokud ještě neexistují):
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -227,7 +226,7 @@ Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takž
 ### <a name="install-iis-with-custom-script-extension"></a>Instalace služby IIS pomocí rozšíření vlastních skriptů
 V předchozím kurzu týkajícím se [postupu přizpůsobení virtuálního počítače s Windows](tutorial-automate-vm-deployment.md) jste se dozvěděli, jak automatizovat přizpůsobení virtuálního počítače s rozšířením vlastních skriptů pro Windows. Stejný přístup můžete použít pro instalaci a konfiguraci služby IIS na vašich virtuálních počítačích.
 
-Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) k instalaci rozšíření vlastních skriptů. Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
+K instalaci rozšíření vlastních skriptů použijte [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 3; $i++)
@@ -245,7 +244,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získat veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení s [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
+Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -264,7 +263,7 @@ Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížen
 Na virtuálních počítačích, na kterých je vaše aplikace spuštěná, možná budete potřebovat provést údržbu, například nainstalovat aktualizace operačního systému. Abyste si poradili se zvýšením provozu do vaší aplikace, možná budete muset přidat další virtuální počítače. V této části se dozvíte, jak z nástroje pro vyrovnávání zatížení odebrat virtuální počítač nebo ho do něj přidat.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>Odebrání virtuálního počítače z nástroje pro vyrovnávání zatížení
-Získejte síťovou kartu s [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface), nastavte *LoadBalancerBackendAddressPools* vlastnost virtuální síťový adaptér, který *$null*. Nakonec virtuální síťovou kartu aktualizujte.
+Pomocí [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface)Získejte síťovou kartu a pak nastavte vlastnost *LoadBalancerBackendAddressPools* virtuální síťové karty na *$null*. Nakonec virtuální síťovou kartu aktualizujte.
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface `
@@ -277,7 +276,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi zbývající dva virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. Teď můžete na virtuálním počítači provést údržbu, například nainstalovat aktualizace operačního systému nebo provést restartování virtuálního počítače.
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>Přidání virtuálního počítače do nástroje pro vyrovnávání zatížení
-Po provedení údržby virtuálního počítače, nebo pokud potřebujete rozšířit kapacitu, nastavte *LoadBalancerBackendAddressPools* vlastnost virtuální síťový adaptér, který *BackendAddressPool* z [ Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer):
+Po provedení údržby virtuálních počítačů nebo v případě, že potřebujete rozšířit kapacitu, nastavte vlastnost *LoadBalancerBackendAddressPools* virtuální síťové karty na *BackendAddressPool* z [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer):
 
 Získejte nástroj pro vyrovnávání zatížení:
 

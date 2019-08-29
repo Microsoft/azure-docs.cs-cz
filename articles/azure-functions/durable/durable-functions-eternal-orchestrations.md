@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a93a0cf5dad83ae3c69b15fda9ba6f4268b9a91f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a04221a61ae057185ddd8ad37bbba2d387ee5eda
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624158"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097977"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
 
@@ -99,7 +98,7 @@ Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, Nevolejt
 
 Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení metodu [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) . Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Naučte se implementovat orchestrace singleton.](durable-functions-singletons.md)

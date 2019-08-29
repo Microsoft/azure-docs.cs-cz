@@ -1,6 +1,6 @@
 ---
-title: Export skupiny prostředků Azure, které obsahují rozšíření virtuálních počítačů | Dokumentace Microsoftu
-description: Exportujte šablon Resource Manageru, které zahrnují rozšíření virtuálních počítačů.
+title: Exportování skupin prostředků Azure, které obsahují rozšíření virtuálních počítačů | Microsoft Docs
+description: Exportujte Správce prostředků šablony, které obsahují rozšíření virtuálních počítačů.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
-ms.openlocfilehash: 58e72390e4cee04b31ed983fb5fcdf5657fcca45
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6ac3a19d12b99c61dd0607b07b4659114f52400e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706007"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084616"
 ---
-# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Export skupiny prostředků, které obsahují rozšíření virtuálních počítačů
+# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportování skupin prostředků, které obsahují rozšíření virtuálních počítačů
 
-Skupiny prostředků Azure je možné exportovat do nové šablony Resource Manageru, který lze potom znovu nasadit. Proces exportu interpretuje existujících prostředků a vytvoří šablonu Resource Manageru, které při nasazení má za následek podobné skupinu prostředků. Při použití možnosti export skupiny prostředků pro skupinu prostředků obsahující rozšíření virtuálních počítačů, několik položek musí brát jako je například rozšíření kompatibility a nastavení chráněné.
+Skupiny prostředků Azure je možné exportovat do nové šablony Správce prostředků, kterou je možné znovu nasadit. Proces exportu interpretuje existující prostředky a vytvoří šablonu Správce prostředků, která při nasazení výsledků do podobné skupiny prostředků. Při použití možnosti exportu skupiny prostředků u skupiny prostředků, která obsahuje rozšíření virtuálních počítačů, je potřeba zvážit několik položek, jako je například kompatibilita rozšíření a chráněné nastavení.
 
-Tento dokument podrobně popisuje, jak funguje proces export skupiny prostředků týkající se rozšíření virtuálního počítače, včetně seznamu nepodporuje rozšíření a podrobnosti o zpracování zabezpečená data.
+Tento dokument podrobně popisuje, jak proces exportu skupiny prostředků funguje v souvislosti s rozšířeními virtuálních počítačů, včetně seznamu podporovaných rozšíření, a podrobnostmi o manipulaci s zabezpečenými daty.
 
-## <a name="supported-virtual-machine-extensions"></a>Rozšíření podporovaných virtuálních počítačů
+## <a name="supported-virtual-machine-extensions"></a>Podporovaná rozšíření virtuálních počítačů
 
-Jsou k dispozici mnoho rozšíření virtuálního počítače. Ne všechna rozšíření, je možné exportovat do šablony Resource Manageru pomocí funkce "Automatizační skript". Pokud rozšíření virtuálního počítače není podporovaná, je potřeba umístit ručně zpět do vyexportované šablony.
+K dispozici je řada rozšíření virtuálních počítačů. Do šablony Správce prostředků se nedají exportovat všechna rozšíření pomocí funkce skriptu Automation. Pokud rozšíření virtuálního počítače není podporováno, je nutné jej ručně umístit zpět do exportované šablony.
 
-Následující rozšíření je možné exportovat skript funkce automatizace.
+Následující rozšíření lze exportovat pomocí funkce skriptu automatizace.
 
 | Linka ||||
 |---|---|---|---|
-| Acronis zálohování | Agent Windows služby Datadog | Opravy operačního systému pro Linux | Linux snímku virtuálního počítače
-| Zálohování Acronis Linux | Rozšíření docker | Puppet agenta |
-| Informace o BG | Rozšíření DSC | Site 24x7 Apm Insight |
-| Linux agenta BMC CTM | Dynatrace Linux | Site 24x7 Linux Server |
-| Agent Windows BMC CTM | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef klienta | HPE zabezpečení aplikace Defenderu | Trend Micro DSA |
-| Vlastní skript | IaaS Antimalware | Trend Micro DSA Linux |
-| Rozšíření vlastních skriptů | Diagnostika IaaS | Přístup k virtuálním počítačům pro Linux |
-| Vlastní skript pro Linux | Klient Linux Chef | Přístup k virtuálním počítačům pro Linux |
-| Služby Datadog linuxového agenta | Linux Diagnostic | VM Snapshot |
+| Zálohování Acronis | Služby Datadog agenta pro Windows | Opravy operačního systému pro Linux | Snímek virtuálního počítače Linux
+| Acronis Backup Linux | Rozšíření Docker | Agent Puppet |
+| BG – informace | Rozšíření DSC | Site 24x7 Apm Insight |
+| BMC CTM agent Linux | DynaTrace Linux | Site 24x7 Linux Server |
+| Okna agenta BMC CTM | DynaTrace okna | Site 24x7 Windows Server |
+| Klient pro klienta | HPE Security Application Defender | Trend Micro DSA |
+| Vlastní skript | IaaS antimalware | Trend Micro DSA Linux |
+| Rozšíření vlastních skriptů | Diagnostika IaaS | Přístup k virtuálnímu počítači pro Linux |
+| Vlastní skript pro Linux | Klient pro Linux | Přístup k virtuálnímu počítači pro Linux |
+| Agent služby Datadog Linux | Diagnostika Linux | VM Snapshot |
 
 ## <a name="export-the-resource-group"></a>Export skupiny prostředků
 
-Pokud chcete exportovat skupiny prostředků do opakovaně použitelné šablony, proveďte následující kroky:
+Pokud chcete exportovat skupinu prostředků do opakovaně použitelné šablony, proveďte následující kroky:
 
 1. Přihlášení k webu Azure Portal
-2. V nabídce centra klikněte na skupiny prostředků
-3. Vyberte cílovou skupinu prostředků ze seznamu
-4. V okně skupiny prostředků klikněte na tlačítko automatizační skript
+2. V nabídce centra klikněte na skupiny prostředků.
+3. Vyberte cílovou skupinu prostředků ze seznamu.
+4. V okně Skupina prostředků klikněte na skript Automation.
 
 ![Export šablony](./media/export-templates/template-export.png)
 
-Skript automatizace Azure Resource Manageru vytvoří šablonu Resource Manageru, soubor parametrů a několika ukázky skriptů nasazení například prostředí PowerShell a rozhraní příkazového řádku Azure. V tomto okamžiku vyexportované šablony lze stáhnout pomocí tlačítka stáhnout, přidat jako novou šablonu do knihovny šablon nebo znovu nasadit pomocí tlačítka nasadit.
+Skript Azure Resource Manager Automation vytvoří šablonu Správce prostředků, soubor parametrů a několik ukázkových skriptů nasazení, jako je PowerShell a Azure CLI. V tuto chvíli je možné vyexportovaná šablona stáhnout pomocí tlačítka pro stažení, přidat jako novou šablonu do knihovny šablon nebo ji znovu nasadit pomocí tlačítka nasadit.
 
-## <a name="configure-protected-settings"></a>Chráněné nastavení
+## <a name="configure-protected-settings"></a>Konfigurovat chráněná nastavení
 
-Mnoho rozšíření virtuálního počítače Azure zahrnují chráněná nastavení pro konfiguraci, která šifruje citlivá data, jako jsou přihlašovací údaje a konfiguračních řetězců. Chráněné nastavení neexportují pomocí skriptu pro automatizaci. Pokud nastavení nezbytné, chráněné muset být vloženy do exportovaný bez vizuálního vzhledu.
+Mnoho rozšíření virtuálních počítačů Azure zahrnuje konfiguraci chráněného nastavení, která šifruje citlivá data, jako jsou přihlašovací údaje a konfigurační řetězce. Chráněná nastavení nejsou exportována pomocí skriptu Automation. V případě potřeby musí být do exportované šablony znovu vložena chráněná nastavení.
 
-### <a name="step-1---remove-template-parameter"></a>Krok 1 – odebrat parametr šablony
+### <a name="step-1---remove-template-parameter"></a>Krok 1 – odebrání parametru šablony
 
-Při exportu skupinu prostředků, se vytvoří jednou šablonou parametr zadejte hodnotu na chráněná nastavení pro exportované. Tento parametr je možné odebrat. Odeberte parametr, prohlédněte si seznam parametrů a odstraňovat parametr, který vypadá podobně jako v tomto příkladu JSON.
+Při exportu skupiny prostředků je vytvořen jeden parametr šablony, který poskytuje hodnotu pro exportované chráněné nastavení. Tento parametr lze odebrat. Pokud chcete parametr odebrat, Prohlédněte si seznam parametrů a odstraňte parametr, který vypadá podobně jako tento příklad JSON.
 
 ```json
 "extensions_extensionname_protectedSettings": {
@@ -75,11 +74,11 @@ Při exportu skupinu prostředků, se vytvoří jednou šablonou parametr zadejt
 }
 ```
 
-### <a name="step-2---get-protected-settings-properties"></a>Krok 2: získání chráněné vlastnosti nastavení
+### <a name="step-2---get-protected-settings-properties"></a>Krok 2 – získání vlastností chráněných nastavení
 
-Protože každý chráněný nastavení obsahuje sadu požadovaných vlastností, seznam těchto vlastností, které je třeba shromáždit. Každý parametr chráněná nastavení pro konfiguraci najdete v [schématu Azure Resource Manageru na Githubu](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Toto schéma obsahuje jenom sady parametrů pro rozšířeními uvedenými v oddílu Přehled tohoto dokumentu. 
+Vzhledem k tomu, že každé chráněné nastavení má sadu požadovaných vlastností, je třeba shromáždit seznam těchto vlastností. Každý parametr konfigurace chráněného nastavení najdete ve [schématu Azure Resource Manager na GitHubu](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Toto schéma obsahuje jenom sady parametrů pro rozšíření uvedená v tomto dokumentu v části Přehled. 
 
-Z v rámci tohoto schématu úložiště vyhledávání pro požadované rozšíření, v tomto příkladu `IaaSDiagnostics`. Po rozšíření `protectedSettings` byl objekt nachází, poznamenejte si hodnoty jednotlivých parametrů. V příkladu `IaasDiagnostic` rozšíření, vyžadují se parametry `storageAccountName`, `storageAccountKey`, a `storageAccountEndPoint`.
+V rámci úložiště schématu vyhledejte v tomto příkladu `IaaSDiagnostics`požadovanou příponu. Po umístění objektu `protectedSettings` rozšíření si poznamenejte každý parametr. V příkladu `IaasDiagnostic` rozšíření jsou `storageAccountName`vyžadovány parametry, `storageAccountKey`a `storageAccountEndPoint`.
 
 ```json
 "protectedSettings": {
@@ -103,11 +102,11 @@ Z v rámci tohoto schématu úložiště vyhledávání pro požadované rozší
 }
 ```
 
-### <a name="step-3---re-create-the-protected-configuration"></a>Krok 3: znovu vytvořte chráněnou konfiguraci
+### <a name="step-3---re-create-the-protected-configuration"></a>Krok 3 – opětovné vytvoření chráněné konfigurace
 
-Hledat v exportované šabloně `protectedSettings` a nahraďte objekt exportované chráněné nastavení nový, který obsahuje parametry požadované rozšíření a hodnotu pro každý z nich.
+V exportované šabloně vyhledejte `protectedSettings` a nahraďte exportovaný objekt Protected nastavení novým, který obsahuje požadované parametry rozšíření a hodnotu pro každý z nich.
 
-V příkladu `IaasDiagnostic` novou konfiguraci chráněných nastavení rozšíření, by vypadalo jako v následujícím příkladu:
+V příkladu `IaasDiagnostic` rozšíření by nová konfigurace chráněného nastavení vypadala jako v následujícím příkladu:
 
 ```json
 "protectedSettings": {
@@ -117,7 +116,7 @@ V příkladu `IaasDiagnostic` novou konfiguraci chráněných nastavení rozší
 }
 ```
 
-Konečné rozšíření prostředků vypadá podobně jako v následujícím příkladu JSON:
+Konečný prostředek rozšíření vypadá podobně jako v následujícím příkladu JSON:
 
 ```json
 {
@@ -149,9 +148,9 @@ Konečné rozšíření prostředků vypadá podobně jako v následujícím př
 }
 ```
 
-Pokud pomocí parametrů šablona zadávat hodnoty vlastností, tyto potřeba vytvořit. Při vytváření parametrů šablony pro nastavení hodnot chráněné, je nutné použít `SecureString` parametr typu tak, aby citlivé hodnoty jsou zabezpečené. Další informace o používání parametrů naleznete v tématu [šablon pro vytváření Azure Resource Manageru](../../resource-group-authoring-templates.md).
+Pokud používáte parametry šablony k poskytnutí hodnot vlastností, je nutné je vytvořit. Při vytváření parametrů šablony pro hodnoty chráněného nastavení nezapomeňte použít `SecureString` typ parametru, aby byly citlivé hodnoty zabezpečené. Další informace o použití parametrů najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
 
-V příkladu `IaasDiagnostic` rozšíření, tyto parametry by se vytvořily v sekci parametrů šablony Resource Manageru.
+V příkladu `IaasDiagnostic` rozšíření se vytvoří následující parametry v oddílu Parameters šablony Správce prostředků.
 
 ```json
 "storageAccountName": {
@@ -164,4 +163,4 @@ V příkladu `IaasDiagnostic` rozšíření, tyto parametry by se vytvořily v s
 }
 ```
 
-V tomto okamžiku šablony můžete nasadit pomocí libovolné metody nasazení šablony.
+V tuto chvíli je možné šablonu nasadit pomocí jakékoli metody nasazení šablony.

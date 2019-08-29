@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3db1884fb80ce28dc58f09687ff16cc1ce904679
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8eaa96dd92ab0f18b590b284d59dd7b775738602
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708096"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101733"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Kurz: Zálohování a obnovení souborů pro Windows virtual machines v Azure
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Kurz: Zálohování a obnovení souborů pro virtuální počítače s Windows v Azure
 
 Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Windows Serverem and IIS. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Windows](quick-create-portal.md). V tomto kurzu se naučíte:
 
@@ -46,12 +45,12 @@ Vytvořte jednoduché plánované denní zálohování do trezoru služby Recove
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V nabídce na levé straně vyberte **Virtuální počítače**. 
 1. V seznamu vyberte virtuální počítač, který chcete zálohovat.
-1. V okně virtuálního počítače v **operace** klikněte na tlačítko **zálohování**. Otevře se okno **Povolit zálohování**.
+1. V okně virtuální počítač v části **operace** klikněte na **zálohovat**. Otevře se okno **Povolit zálohování**.
 1. V části **Trezor služby Recovery Services** klikněte na **Vytvořit nový** a zadejte název nového trezoru. Nový trezor se vytvoří ve stejné skupině prostředků a umístění jako virtuální počítač.
-1. V části **výběr zásady zálohování**, ponechte výchozí **(nové) DailyPolicy**a potom klikněte na tlačítko **povolit zálohování**.
+1. V části **zvolit zásadu zálohování**ponechte výchozí **(New) DailyPolicy**a pak klikněte na **Povolit zálohování**.
 1. Pokud chcete vytvořit prvotní bod obnovení, v okně **Zálohování** klikněte na **Zálohovat nyní**.
-1. Na **zálohovat nyní** okna, klikněte na ikonu kalendáře, pomocí ovládacího prvku Kalendář rozhodnout se, jak dlouho se uchovávají bod obnovení a klikněte na tlačítko **OK**.
-1. V **zálohování** okně pro virtuální počítač, zobrazí se vám počet dokončených bodů obnovení.
+1. V okně **Zálohovat nyní** klikněte na ikonu kalendáře, pomocí ovládacího prvku Kalendář vyberte dobu uchování bodu obnovení a klikněte na tlačítko **OK**.
+1. V okně **zálohování** pro váš virtuální počítač uvidíte počet dokončených bodů obnovení.
 
 
     ![Body obnovení](./media/tutorial-backup-vms/backup-complete.png)
@@ -76,17 +75,17 @@ V tomto příkladu ukážeme, jak obnovit soubor s obrázkem, který se použív
 
 1. V místním počítači otevřete novou kartu a přejděte na [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte daný virtuální počítač.
-1. V okně virtuálního počítače v **operace** klikněte na tlačítko **zálohování**. Otevře se okno **Zálohování**. 
+1. V okně virtuální počítač v části **operace** klikněte na **zálohovat**. Otevře se okno **Zálohování**. 
 1. V nabídce v horní části okna vyberte **Obnovení souborů**. Otevře se okno **Obnovení souborů**.
-1. V **krok 1: Vyberte bod obnovení**, vyberte bod obnovení z rozevíracího seznamu.
-1. V **krok 2: Stažení skriptu pro procházení a obnovení souborů**, klikněte na tlačítko **stáhnout spustitelný soubor** tlačítko. Zkopírujte heslo pro soubor a uložte ho někam bezpečné.
+1. V **kroku 1: Vyberte bod**obnovení, vyberte bod obnovení z rozevíracího seznamu.
+1. V **kroku 2: Stažení skriptu pro procházení a obnovení souborů**klikněte na tlačítko **stáhnout spustitelný soubor** . Zkopírujte heslo pro tento soubor a uložte ho někam do trezoru.
 1. V místním počítači otevřete **Průzkumníka souborů**, přejděte do složky **Stažené soubory** a zkopírujte na stažený soubor .exe. Název virtuálního počítače je uvedený na začátku názvu souboru. 
-1. Na virtuálním počítači (pomocí připojení RDP) vložte soubor .exe na plochu virtuálního počítače. 
-1. Přejdete na plochu virtuálního počítače a poklikejte na daný sobor .exe. Příkazový řádek se spustí. Program připojí bod obnovení jako sdílenou složku, která můžete přistupovat. Po vytvoření sdílené složky zavřete zadáním **q** příkazový řádek.
+1. Na svém VIRTUÁLNÍm počítači (pomocí připojení RDP) vložte soubor. exe na plochu svého virtuálního počítače. 
+1. Přejdete na plochu virtuálního počítače a poklikejte na daný sobor .exe. Spustí se příkazový řádek. Program připojí bod obnovení jako sdílenou složku, ke které máte přístup. Po vytvoření sdílené složky zavřete zadáním **q** příkazový řádek.
 1. Ve virtuálním počítači otevřete **Průzkumníka souborů** a přejděte na písmeno jednotky použité pro sdílenou složku.
 1. Přejděte do \inetpub\wwwroot a zkopírujte **iisstart.png** ze sdílené složky a vložte ho do \inetpub\wwwroot. Příklad: Zkopírujte F:\inetpub\wwwroot\iisstart.png a vložte ho do c:\inetpub\wwwroot k obnovení souboru.
 1. Na místním počítači otevřete kartu prohlížeče, kde jste připojeni k IP adrese virtuálního počítače s výchozí stránkou IIS. Stisknutím Ctrl + F5 aktualizujte stránku v prohlížeči. Teď byste měli vidět, že se obrázek obnovil.
-1. V místním počítači, přejděte zpět na kartu prohlížeče na webu Azure portal a v **krok 3: Odpojení disků po obnovení** klikněte na tlačítko **odpojit disky** tlačítko. Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte stáhnout nový skript k vytvoření nového přípojného bodu.
+1. V místním počítači se vraťte na kartu prohlížeče pro Azure Portal a v **kroku 3: Odpojte disky po obnovení** klikněte na tlačítko **Odpojit disky** . Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po uplynutí těchto 12 hodin je potřeba stáhnout nový skript a vytvořit nový přípojný bod.
 
 
 

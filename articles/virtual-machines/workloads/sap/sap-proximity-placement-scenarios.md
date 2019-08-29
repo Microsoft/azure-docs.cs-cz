@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077992"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP
 Aplikace SAP založené na architektuře SAP NetWeaver nebo SAP S/4HANA jsou citlivé na latenci sítě mezi aplikační vrstvou SAP a databázovou vrstvou SAP. Důvodem této citlivosti těchto architektur je, že většina obchodní logiky se spouští v aplikační vrstvě. V důsledku provádění obchodní logiky, které bude vrstva aplikace SAP vystavovat dotazy do databázové vrstvy s vysokou četností tisíců a desítkami tisíců za sekundu. Ve většině případů je povaha těchto dotazů jednoduchá. A často lze provádět na úrovni databáze za méně než 500 mikrosekund nebo dokonce méně. Čas strávený v síti, který odešle takový dotaz z aplikační vrstvy do databázové vrstvy a získá výslednou sadu vrácenou z databázové vrstvy, má významný dopad na čas potřebný k provedení obchodních procesů. Tato citlivost na latenci sítě je důvod potřebný k dosažení optimální latence sítě v projektech nasazení SAP. V [tématu SAP Note #1100926 – Nejčastější dotazy: Výkon](https://launchpad.support.sap.com/#/notes/1100926/E)sítě, SAP publikoval některé pokyny, jak klasifikovat latenci sítě.

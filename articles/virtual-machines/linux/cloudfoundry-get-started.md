@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Cloud Foundry v Microsoft Azure | Dokumentace Microsoftu
-description: Použití OSS nebo Pivotal Cloud Foundry v Microsoft Azure
+title: Začínáme s Cloud Foundry na Microsoft Azure | Microsoft Docs
+description: Spuštění OSS nebo Pivot Cloud Foundry v Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
@@ -10,61 +10,60 @@ tags: ''
 keywords: ''
 ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: e042c9cbce985882b468472425d6803862e82941
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d91ad0bea7f79dd67edd4f0bb9e06a37a0f86bea
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091927"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 
-Cloud Foundry je opensourcová služba typu PaaS (platforma jako služba) pro vytváření, nasazování a provozování aplikací typu 12-Factor vyvinutých v různých jazycích a architekturách. Tento dokument popisuje možnosti, které máte pro spuštění Cloud Foundry v Azure a jak můžete začít.
+Cloud Foundry je opensourcová služba typu PaaS (platforma jako služba) pro vytváření, nasazování a provozování aplikací typu 12-Factor vyvinutých v různých jazycích a architekturách. Tento dokument popisuje možnosti, které máte ke spuštění Cloud Foundry v Azure, a jak můžete začít.
 
-## <a name="cloud-foundry-offerings"></a>Pro cloud Foundry
+## <a name="cloud-foundry-offerings"></a>Cloud Foundry nabídky
 
-Existují dvě formy Cloud Foundry je k dispozici pro použití v Azure: open-source Cloud Foundry (OSS CF) a Pivotal Cloud Foundry (PCF). Je OSS CF zcela [open source](https://github.com/cloudfoundry) verzi Cloud Foundry spravuje Cloud Foundry Foundation. Pivotal Cloud Foundry je podniková distribuce nástroje Cloud Foundry od společnosti Pivotal softwaru Inc. Podíváme na některé rozdíly mezi dvěma nabídek.
+Existují dvě formy Cloud Foundry k dispozici pro spuštění v Azure: Open-Source Cloud Foundry (OSS CF) a Pivoted Cloud Foundry (PCF). OSS CF je zcela [Open Source](https://github.com/cloudfoundry) verze Cloud Foundry spravovaná Cloud Foundry Foundation. Pivoting Cloud Foundry je podniková distribuce Cloud Foundry od společnosti Pivoted Software Inc. Podíváme se na některé rozdíly mezi dvěma nabídkami.
 
-### <a name="open-source-cloud-foundry"></a>Open source Cloud Foundry
+### <a name="open-source-cloud-foundry"></a>Open-Source Cloud Foundry
 
-První nasazení BOSH ředitele a pak nasazení Cloud Foundry, můžete nasadit OSS Cloud Foundry v Azure pomocí [pokynů uvedených na Githubu](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md). Další informace o používání OSS CF, najdete v článku [dokumentaci](https://docs.cloudfoundry.org/) poskytované Cloud Foundry Foundation.
+OSS Cloud Foundry v Azure můžete nasadit tak, že nejdřív nasadíte ředitele BOSH a pak nasadíte Cloud Foundry pomocí [pokynů uvedených na GitHubu](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/guidance.md). Další informace o použití OSS CF najdete v [dokumentaci](https://docs.cloudfoundry.org/) poskytované Cloud Foundry Foundation.
 
-Společnost Microsoft poskytuje podporu best effort pro OSS CF těmito cestami komunity:
+Microsoft poskytuje nejlepší podporu pro OSS CF prostřednictvím následujících kanálů komunity:
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>kanál bosh-azure ISP na [Cloud Foundry Slack](https://slack.cloudfoundry.org/)
-- [do seznamu adresátů CF bosh](https://lists.cloudfoundry.org/pipermail/cf-bosh)
-- Problémy Githubu pro [ISP](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) a [služby service broker](https://github.com/Azure/meta-azure-service-broker/issues)
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>Bosh – kanál Azure-CPI při [Cloud Foundry časové rezervy](https://slack.cloudfoundry.org/)
+- [CF – seznam adresátů Bosh](https://lists.cloudfoundry.org/pipermail/cf-bosh)
+- Problémy GitHubu pro [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) a [Service Broker](https://github.com/Azure/meta-azure-service-broker/issues)
 
 >[!NOTE]
-> Úroveň podpory pro vaše prostředky Azure, jako jsou virtuální počítače, ve kterém spouštíte Cloud Foundry je podle smlouvy o podpoře Azure. Podpora komunity Best effort platí jenom pro součásti specifické pro Cloud Foundry.
+> Úroveň podpory vašich prostředků Azure, jako jsou třeba virtuální počítače, na kterých spouštíte Cloud Foundry, je založená na vaší smlouvě o podpoře Azure. Nejlepší podpora komunity se vztahuje pouze na komponenty specifické pro Cloud Foundry.
 
 ### <a name="pivotal-cloud-foundry"></a>Pivotal Cloud Foundry
 
-Pivotal Cloud Foundry obsahuje stejné základní platformě jako distribuční OSS, společně se sadou nástrojů pro správu proprietární a podnikovou podporu. PCF provozovat v Azure, musíte získat licenci od společnosti Pivotal. PCF nabídky na webu Azure Marketplace zahrnuje 90denní zkušební licenci.
+Pivoting Cloud Foundry zahrnuje stejnou základní platformu jako distribuci OSS, spolu se sadou proprietárních nástrojů pro správu a podnikovou podporou. Pokud chcete spustit PCF v Azure, musíte získat licenci od pivotu. Nabídka PCF z webu Azure Marketplace zahrnuje zkušební licenci 90.
 
-Mezi tyto nástroje patří [Pivotal Operations Manageru](https://docs.pivotal.io/pivotalcf/customizing/), webové aplikace, která zjednodušuje nasazení a správa Cloud Foundry Foundation, a [Pivotal aplikace správce](https://docs.pivotal.io/pivotalcf/console/), webové aplikace pro správu Uživatelé a aplikace.
+Mezi tyto nástroje patří [pivoting Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), Webová aplikace, která zjednodušuje nasazování a správu Cloud Foundry Foundation a [správce pivoted Apps](https://docs.pivotal.io/pivotalcf/console/), webovou aplikaci pro správu uživatelů a aplikací.
 
-Kromě kanály podpory pro CF OSS výše uvedené licenci PCF vás opravňuje Pivotal požádat o podporu. Microsoft a Pivotal povolili také podporu pracovních postupů, které vám umožní smluvních požádejte o pomoc a mají váš dotaz zajistit tím správné směrování v závislosti na tom, kde je problém.
+Kromě kanálů podpory uvedených pro OSS CF výše vám licence PCF opravňuje k tomu, abyste se obrátili na podporu. Microsoft a Pivoted také povolily pracovní postupy podpory, které vám umožňují požádat o pomoc obě strany a podle toho, kde se problém týká, je váš dotaz správně směrován.
 
-## <a name="azure-service-broker"></a>Azure Service Broker
+## <a name="azure-service-broker"></a>Service Broker Azure
 
-Může vést ke vzniku cloud Foundry ["12 factor app"](https://12factor.net/) metody, která podporuje oddělit nestavových aplikačních procesy a stavové služby zálohování. [Služby můžou být zprostředkovatelé](https://docs.cloudfoundry.org/services/api.html) nabízejí konzistentní způsob, jak zřídit a pomocné služby svázat s aplikací. [Služby Azure service broker](https://github.com/Azure/meta-azure-service-broker) obsahuje některé z klíčových služeb Azure přes tento kanál, včetně služby Azure storage a Azure SQL.
+Cloud Foundry podporuje metodologii ["32bitová aplikace"](https://12factor.net/) , která podporuje čisté oddělení bezstavových procesů aplikace a stavové služby pro zálohování. [Služby Service Broker](https://docs.cloudfoundry.org/services/api.html) nabízejí jednotný způsob, jak zřídit a navazovat služby zálohování pro aplikace. [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) poskytuje některé z klíčových služeb Azure prostřednictvím tohoto kanálu, včetně Azure Storage a Azure SQL.
 
-Pokud používáte Pivotal Cloud Foundry, služba Service broker je také [k dispozici jako dlaždici](https://docs.pivotal.io/azure-sb/installing.html) z Pivotal sítě.
+Pokud používáte Cloud Foundry Pivoted, služba Service Broker je také [k dispozici jako dlaždice](https://docs.pivotal.io/azure-sb/installing.html) ze pivoted Network.
 
 ## <a name="related-resources"></a>Související prostředky
 
-### <a name="azure-devops-services-plugin"></a>Modul plug-in Azure DevOps služby
+### <a name="azure-devops-services-plugin"></a>Modul plug-in Azure DevOps Services
 
-Cloud Foundry je vhodné pro agilní vývoj softwaru, včetně využití čipu TPM kontinuální integrace (CI) a průběžné doručování (CD). Pokud používáte Azure DevOps služby ke správě vašich projektů a chcete nastavit až CI/CD kanálu cílí na Cloud Foundry, můžete použít [Azure DevOps služby Cloud Foundry vytvořte rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Modul plug-in můžete snadno nakonfigurovat a automatizovat nasazení do Cloud Foundry, ať už spuštěné v Azure nebo jiného prostředí.
+Cloud Foundry je vhodný pro agilní vývoj softwaru, včetně použití průběžné integrace (CI) a průběžného doručování (CD). Použijete-li Azure DevOps Services ke správě projektů a chcete nastavit kanál CI/CD, který cílí na Cloud Foundry, můžete použít [rozšíření build Cloud Foundry Azure DevOps Services](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Modul plug-in usnadňuje konfiguraci a automatizaci nasazení Cloud Foundry, ať už běží v Azure nebo jiném prostředí.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nasazení Pivotal Cloud Foundry na Azure Marketplace](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
-- [Nasazení aplikace na Cloud Foundry v Azure](./cloudfoundry-deploy-your-first-app.md)
+- [Nasazení Pivot Cloud Foundry z Azure Marketplace](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Nasazení aplikace pro Cloud Foundry v Azure](./cloudfoundry-deploy-your-first-app.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure konzoly sériového portu pro volání SysRq a NMI | Dokumentace Microsoftu
-description: Pomocí konzoly sériového portu pro SysRq a NMI volá ve službě Azure virtual machines.
+title: Sériová konzola Azure pro volání SysRq a NMI | Microsoft Docs
+description: Použití sériové konzoly pro volání SysRq a NMI na virtuálních počítačích Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -8,127 +8,126 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 87db223465c0d6680b8d60807bf90afc81e52554
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 81fb9f99f4f7e4f77b39855445639369f65f0966
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708328"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091317"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použít pro volání SysRq a NMI konzoly sériového portu
+# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použití sériové konzoly pro volání SysRq a NMI
 
 ## <a name="system-request-sysrq"></a>Požadavek na systém (SysRq)
-SysRq je posloupnost kláves srozumitelné pro linuxového jádra systému operace, které můžete aktivovat sadu předdefinovaných akcí. Tyto příkazy jsou často používány při řešení potíží s virtuálního počítače nebo obnovení nelze provést prostřednictvím tradiční správy (například pokud virtuální počítač neodpovídá). Pomocí funkce SysRq konzoly sériového portu Azure bude napodobovat stisknutí SysRq klíče a znaky zadané na fyzické klávesnice.
+SysRq je posloupnost klíčů, které rozumí jádro operačního systému Linux, které může aktivovat sadu předem definovaných akcí. Tyto příkazy se často používají v případě, že řešení potíží s virtuálním počítačem nebo obnovení nelze provést pomocí tradiční správy (například pokud virtuální počítač neodpovídá). Použití funkce SysRq v konzole sériového kódu Azure napodobuje stisknutí klávesy SysRq a znaků, které jsou zadány na fyzické klávesnici.
 
-Jakmile se doručí SysRq pořadí, bude konfigurace jádra řídit, jak systém reaguje. Informace o povolení a zakázání SysRq, najdete v článku *příručky pro správce SysRq* [text](https://aka.ms/kernelorgsysreqdoc) | [markdownu](https://aka.ms/linuxsysrq).  
+Po doručení sekvence SysRq bude konfigurace jádra řídit, jak systém reaguje. Informace o povolení a zakázání SysRq najdete v tématu *Příručka pro správu SysRq* – [text](https://aka.ms/kernelorgsysreqdoc) | [Markdownu](https://aka.ms/linuxsysrq).  
 
-Sériové konzoly Azure je možné odeslat SysRq na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže.
+Pomocí ikony klávesnice na panelu příkazů, která se zobrazuje níže, můžete k odeslání SysRq na virtuální počítač Azure použít konzolu Azure Serial.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Výběrem "příkazu SysRq Send" se otevře dialogové okno, které se poskytují běžné možnosti SysRq ani nebude přijímat posloupnost SysRq příkazy zadané do dialogového okna.  To umožňuje provádět základní operace, například bezpečné restartování pomocí pro řadu SysRq: `REISUB`.
+Když vyberete příkaz Odeslat SysRq, otevře se dialogové okno, ve kterém budou uvedeny běžné možnosti SysRq, nebo přijmout sekvenci SysRq příkazů zadaných do dialogového okna.  To umožňuje řadě SysRq provádět operace vysoké úrovně, jako je bezpečné restartování pomocí: `REISUB`.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
-Příkaz SysRq nelze použít na virtuálních počítačích, které se zastaví nebo jejichž jádra je ve stavu, jako nereagující. (například poplachu jádra).
+Příkaz SysRq se nedá použít na virtuálních počítačích, které jsou zastavené nebo jejichž jádro je v nereagující stavu. (například nouzové jádro jádra).
 
 ### <a name="enable-sysrq"></a>Povolit SysRq 
-Jak je popsáno v *příručky pro správce SysRq* SysRq výše, lze nakonfigurovat tak, aby všechny, jsou k dispozici žádný nebo jenom určité příkazy. Můžete povolit všechny příkazy SysRq pomocí níže uvedených kroků, ale nebude byly zachovány při restartování:
+Jak je popsáno v *příručce pro správu SysRq* výše, SysRq je možné nakonfigurovat tak, aby byly k dispozici všechny, žádné nebo pouze určité příkazy. Všechny příkazy SysRq můžete povolit pomocí následujícího kroku, ale nezůstane restartováním:
 ```
 echo "1" >/proc/sys/kernel/sysrq
 ```
-K zajištění SysReq konfigurace trvalosti, vám pomůžou následující povolit všechny příkazy SysRq
-1. Přidání tohoto řádku */etc/sysctl.conf* <br>
+Chcete-li nastavit konfiguraci SysReq jako trvalou, můžete provést následující postup, kterým povolíte všechny příkazy SysRq.
+1. Přidání tohoto řádku do */etc/sysctl.conf* <br>
     `kernel.sysrq = 1`
-1. Restartování nebo aktualizaci sysctl spuštěním <br>
+1. Restartování nebo aktualizace sysctl spuštěním <br>
     `sysctl -p`
 
-### <a name="command-keys"></a>Příkaz klíče 
-Z SysRq příručky pro správce výše:
+### <a name="command-keys"></a>Příkazové klávesy 
+V příručce pro správu SysRq výše:
 
 |Příkaz| Funkce
 | ------| ----------- |
-|``b``  |   Okamžitě restartovat systém bez synchronizace nebo odpojení disků.
-|``c``  |   Provede zhroucení systému NULL ukazatel přistoupit přes ukazatel. Havarijní výpis bude provedena v případě nakonfigurované.
-|``d``  |   Ukazuje všech zámků, které jsou uloženy.
-|``e``  |   Odeslat SIGTERM všech procesů kromě init.
-|``f``  |   Zavolá killer oom k ukončení procesu nároky paměť, ale nejsou nějaké Pokud nic lze ukončit.
-|``g``  |   Používá kgdb (ladicí program jádra)
-|``h``  |   Zobrazí nápovědu (libovolné jiné klávesy než ty, které tady najdete také zobrazíte nápovědu, ale ``h`` se snadno zapamatuje :-)
-|``i``  |    Odeslat SIGKILL všech procesů kromě init.
-|``j``  |    Nuceně "Právě uvolnit ji" - zmrazené podle FIFREEZE ioctl systémy souborů.
-|``k``  |    Klíč zabezpečeného přístupu (SAK) ukončí všechny programy v konzole pro aktuální virtuální. POZNÁMKA: Zobrazit důležité poznámky níže v části SAK.
-|``l``  |    Zobrazuje backtrace zásobníku pro všechny aktivní procesory.
-|``m``  |    Bude vypsat aktuální informace o paměti ke konzole.
-|``n``  |    Aby nice možné RT úlohy
-|``o``  |    Se vypne systému (Pokud je nakonfigurovaná a podporované).
-|``p``  |    Bude vypsat aktuální registry a příznaky ke konzole.
-|``q``  |    Bude výpis paměti na procesor seznam všech ozbrojené hrtimers (ale ne regulární timer_list časovače) a podrobné informace o všech zařízeních clockevent.
-|``r``  |    Vypne režim nezpracovaná klávesnice a nastaví na XLATE.
+|``b``  |   Provede restart systému hned bez synchronizace nebo odpojení disků.
+|``c``  |   Provede selhání systému pomocí zpětného odkazu na ukazatel s hodnotou NULL. V případě nakonfigurovaného výpisu bude proveden výpis.
+|``d``  |   Zobrazuje všechny zámky, které jsou uchovávány.
+|``e``  |   Odešle SIGTERM všem procesům, s výjimkou init.
+|``f``  |   Zavolá OOM Killer, který ukončí proces HOG paměti, ale nejedná se o nemožnost, pokud by nebylo možné nic ukončit.
+|``g``  |   Používá se v kgdb (ladicí program jádra).
+|``h``  |   Zobrazí se vám také obrazovka (jakýkoli jiný klíč, než jaké jsou uvedeny v seznamu, ``h`` ale budete si moct snadno zapamatovat:-)).
+|``i``  |    Odešle SIGKILL všem procesům, s výjimkou init.
+|``j``  |    Vynuceně "Stačí ho rozmrazit" – systémové systémy zmrazené FIFREEZE IOCTL.
+|``k``  |    Klíč zabezpečeného přístupu (SAK) ukončuje všechny programy v aktuální virtuální konzole. POZNÁMKA: V části SAK najdete důležité komentáře.
+|``l``  |    Zobrazuje zpětné trasování zásobníku pro všechny aktivní procesory.
+|``m``  |    Vypíše informace o aktuální paměti do konzoly.
+|``n``  |    Slouží k zajištění skvělého možného úkolu RT
+|``o``  |    Vypne váš systém (Pokud je nakonfigurovaný a podporovaný).
+|``p``  |    Vypíše aktuální registry a příznaky do konzoly.
+|``q``  |    Vypíše na seznam PROCESORů všechny ozbrojené hrtimers (ale ne pravidelné timer_list časovače) a podrobné informace o všech zařízeních clockevent.
+|``r``  |    Vypne režim nezpracovaných kláves a nastaví ho na XLATE.
 |``s``  |    Pokusí se synchronizovat všechny připojené systémy souborů.
-|``t``  |    Se vypsat seznam aktuálních úkolů a jejich informace ke konzole.
-|``u``  |    Se pokusí znovu připojit všechny připojené systémy souborů jen pro čtení.
-|``v``  |    Vynuceně obnoví framebuffer konzoly
-|``v``  |    Způsobí, že ETM vyrovnávací paměti s výpisem paměti [ARM specifické]
-|``w``  |    Vypíše úlohy, které jsou ve stavu nepřerušitelný zdroj (blokováno).
-|``x``  |    Používá rozhraní xmon na platformách Pocket PC/powerpc. Zobrazit globální PMU zaregistruje na sparc64. Vypsat všechny položky MIPS vyrovnávací paměti TLB.
-|``y``  |    Zobrazit globální registruje procesor [konkrétní SPARC 64]
-|``z``  |    Vypsat ftrace vyrovnávací paměti
-|``0``-``9`` | Nastaví úroveň protokolu konzoly, řízení, které zprávy jádra se vytisknou do konzoly. (``0``pro příklad by ji činilo tak, aby pouze mimořádných zpráv jako poplachy nebo OOPSes by ji činilo ke konzole.)
+|``t``  |    Vypíše seznam aktuálních úloh a jejich informace do konzoly.
+|``u``  |    Pokusí se znovu připojit všechny připojené systémy souborů jen pro čtení.
+|``v``  |    Vynuceně obnoví konzolu framebuffer.
+|``v``  |    Způsobuje výpis vyrovnávací paměti ETM [specifický pro ARM]
+|``w``  |    Vypíše úlohy, které jsou v nenepřerušitelných (blokovaných) stavu.
+|``x``  |    Používá se rozhraním xmon na platformách Pocket PC/PowerPC. Zobrazit globální Registry PMU v sparc64 Vypsat všechny položky TLB v MIPS
+|``y``  |    Zobrazit Registry globálních PROCESORů [specifické pro SPARC-64]
+|``z``  |    Výpis vyrovnávací paměti fTRACE
+|``0``-``9`` | Nastaví úroveň protokolu konzoly a řídí, které zprávy jádra budou vytištěny do konzoly. (``0``například by to vedlo k tomu, že by konzola měla dělat jenom nouzové zprávy, jako je například nouzové nebo nesmysly.)
 
-### <a name="distribution-specific-documentation"></a>Distribuce příslušnou část dokumentace ###
-Distribuce příslušnou část dokumentace na SysRq a kroky konfigurace Linux při přijetí příkazu SysRq "Selhání" Vytvořit výpis stavu systému najdete na odkazech níže:
+### <a name="distribution-specific-documentation"></a>Dokumentace ke konkrétní distribuci ###
+Dokumentaci určenou pro distribuci na SysRq a postup pro konfiguraci systému Linux, aby při přijetí příkazu SysRq "Crash" vytvořily výpis stavu systému, naleznete v následujících odkazech:
 
 #### <a name="ubuntu"></a>Ubuntu ####
- - [Výpis jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Výpis stavu selhání jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
-- [Co je SysRq zařízení a jak ji používat?](https://access.redhat.com/articles/231663)
-- [Jak používat funkci SysRq ke shromažďování informací ze serveru RHEL](https://access.redhat.com/solutions/2023)
+- [Co je zařízení SysRq a jak ho můžu použít?](https://access.redhat.com/articles/231663)
+- [Jak pomocí zařízení SysRq shromažďovat informace ze serveru RHEL](https://access.redhat.com/solutions/2023)
 
 #### <a name="suse"></a>SUSE ####
-- [Konfigurace funkce capture core s výpisem paměti jádra](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Nakonfigurovat zachytávání výpisu jádra jádra](https://www.suse.com/support/kb/doc/?id=3374462)
 
 #### <a name="coreos"></a>CoreOS ####
-- [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
+- [Shromažďování protokolů selhání](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>Maskable přerušení (NMI) 
-Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které nereagují.
+## <a name="non-maskable-interrupt-nmi"></a>Přerušení bez maskování (NMI) 
+Nemaskovatelné přerušení (NMI) je navržené k vytvoření signálu, který software na virtuálním počítači nebude ignorovat. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  V současné době se programátoři a správci systému často používají NMI jako mechanismus pro ladění nebo odstraňování potíží se systémy, které nereagují.
 
-Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje.  Operační systémy lze nakonfigurovat, aby při selhání a vytvořit výpis stavu paměti operačního systému Linux dostane NMI.
+Pomocí ikony klávesnice na panelu příkazů, která je uvedená níže, se dá použít Konzola sériového portu k odeslání NMI virtuálnímu počítači Azure. Po doručení NMI bude konfigurace virtuálního počítače řídit, jak systém reaguje.  Operační systémy Linux se dají nakonfigurovat tak, aby selhaly, a vytvoří výpis paměti. operační systém obdrží NMI.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
-Pro systémy Linux, které podporují sysctl jádra parametry konfigurace můžete povolit nějaké při příjmu tohoto NMI pomocí následující:
-1. Přidání tohoto řádku */etc/sysctl.conf* <br>
+Pro systémy Linux, které podporují sysctl pro konfiguraci parametrů jádra, můžete povolit nenouzové při příjmu tohoto NMI pomocí následujících kroků:
+1. Přidání tohoto řádku do */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`
-1. Restartování nebo aktualizaci sysctl spuštěním <br>
+1. Restartování nebo aktualizace sysctl spuštěním <br>
     `sysctl -p`
 
-Další informace o konfiguraci jádra systému Linux, včetně `unknown_nmi_panic`, `panic_on_io_nmi`, a `panic_on_unrecovered_nmi`, naleznete v tématu: [Dokumentace ke službě pro/proc/sys/jádra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Distribuce příslušnou část dokumentace na NMI a kroky konfigurace Linux při přijetí NMI vytvořit výpis stavu systému najdete na odkazech níže:
+Další informace o konfiguracích jádra systému Linux, `unknown_nmi_panic`včetně `panic_on_io_nmi`,, `panic_on_unrecovered_nmi`a, najdete v těchto tématech: [Dokumentace pro/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentaci určenou pro distribuci na NMI a postup pro konfiguraci systému Linux, aby při přijetí NMI mohl vytvořit výpis stavu systému, naleznete v následujících odkazech:
  
 ### <a name="ubuntu"></a>Ubuntu 
- - [Výpis jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Výpis stavu selhání jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
- - [Co je NMI a k čemu mohu využít?](https://access.redhat.com/solutions/4127)
- - [Jak je nakonfigurovat systém selhání při vložení NMI přepínač?](https://access.redhat.com/solutions/125103)
- - [Případ chyby vypsat příručky pro správce](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
+ - [Co je NMI a k čemu ho můžu použít?](https://access.redhat.com/solutions/4127)
+ - [Jak můžu nakonfigurovat systém tak, aby došlo k chybě, když je nabízený přepínač NMI?](https://access.redhat.com/solutions/125103)
+ - [Průvodce pro správce výpisu stavu systému](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
-- [Konfigurace funkce capture core s výpisem paměti jádra](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Nakonfigurovat zachytávání výpisu jádra jádra](https://www.suse.com/support/kb/doc/?id=3374462)
 
 ### <a name="coreos"></a>CoreOS 
-- [Shromažďování údajů o protokoly chyb](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
+- [Shromažďování protokolů selhání](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="next-steps"></a>Další kroky
-* Na hlavní stránce dokumentace sériové konzoly Linux se nachází [tady](serial-console.md).
-* Přihlásit se pomocí konzoly sériového portu [kontrole a do režimu jednoho uživatele](serial-console-grub-single-user-mode.md)
-* Je taky dostupná ke konzole sériového portu [Windows](../windows/serial-console.md) virtuálních počítačů
-* Další informace o [Diagnostika spouštění](boot-diagnostics.md)
+## <a name="next-steps"></a>Další postup
+* Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](serial-console.md).
+* Pomocí sériové konzoly spusťte [grub a zadejte režim single user](serial-console-grub-single-user-mode.md) .
+* Pro virtuální počítače s [Windows](../windows/serial-console.md) je dostupná taky konzola sériového portu.
+* Další informace o [diagnostice spouštění](boot-diagnostics.md)

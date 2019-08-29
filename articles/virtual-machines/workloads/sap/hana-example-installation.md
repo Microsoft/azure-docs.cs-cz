@@ -1,137 +1,136 @@
 ---
-title: Postup instalace HANA na systému SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Postup instalace HANA na systému SAP HANA v Azure (velké instance).
+title: Jak nainstalovat HANA na SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Jak nainstalovat HANA na SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce82a2972d9cc349e527811e32c974996327e70b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709746"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101285"
 ---
-# <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Nainstalujte HANA na systému SAP HANA v Azure (velké instance)
+# <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Instalace HANA na SAP HANA v Azure (velké instance)
 
-Pokud chcete nainstalovat HANA na systému SAP HANA v Azure (velké instance), musí nejprve provedete následující:
-- Microsoft se poskytují všechna data nasazení za vás ve velké Instance SAP HANA.
-- Velká Instance SAP HANA jste dostali z Microsoftu.
-- Vytvoříte virtuální síť Azure, který je připojený k vaší místní síti.
-- Okruh ExpressRoute pro velké instance HANA připojíte do stejné virtuální síti Azure.
-- Je-li nainstalovat virtuální počítač Azure, který používáte jako jump box pro velké instance HANA.
-- Zajistíte tím, že můžete připojit z jump box do jednotky velká Instance HANA a naopak.
-- Můžete zkontrolovat, zda jsou nainstalovány všechny potřebné balíčky a opravy.
-- Si přečíst poznámky SAP a dokumentaci ke službě HANA instalace operačního systému, které používáte. Ujistěte se, že verze HANA podle výběru se podporuje na verzi operačního systému.
+Pokud chcete nainstalovat HANA na SAP HANA v Azure (velké instance), musíte nejdřív udělat toto:
+- Microsoftu poskytnete všechna data, která pro vás nasadíte na SAP HANA velké instanci.
+- Od Microsoftu obdržíte SAP HANA velkou instanci.
+- Vytvoříte virtuální síť Azure, která je připojená k vaší místní síti.
+- Okruh ExpressRoute pro velké instance HANA připojíte ke stejné službě Azure Virtual Network.
+- Pro velké instance HANA nainstalujete virtuální počítač Azure, který používáte jako pole s odkazem.
+- Ujistěte se, že se můžete připojit z pole pro přesun do jednotky velkých instancí HANA a naopak.
+- Kontrolujete, zda jsou nainstalovány všechny potřebné balíčky a opravy.
+- Poznámky a dokumentace SAP k instalaci HANA si přečtete v operačním systému, který používáte. Ujistěte se, že verze pro HANA je ve verzi operačního systému podporovaná.
 
-Dalším oddílu si ukážeme příklad stahování instalačních balíčků HANA k virtuálnímu počítači jump box. V tomto případě je operační systém Windows.
+V další části se zobrazuje příklad Stažení instalačních balíčků HANA do virtuálního počítače se seznamem odkazů. V tomto případě je operačním systémem Windows.
 
-## <a name="download-the-sap-hana-installation-bits"></a>Stáhněte si bity instalace SAP HANA
-Velká Instance HANA jednotek nejsou připojené přímo k Internetu. Nelze stáhnout přímo instalační balíčky ze SAP do virtuálního počítače pro velká Instance HANA. Místo toho stáhne balíčky do virtuálního počítače jump box.
+## <a name="download-the-sap-hana-installation-bits"></a>Stažení SAP HANAch instalačních bitů
+Jednotky velkých instancí HANA nejsou přímo připojené k Internetu. Nemůžete přímo stáhnout instalační balíčky z SAP do virtuálního počítače velké instance HANA. Místo toho tyto balíčky stahujete do virtuálního počítače se seznamem odkazů.
 
-Budete potřebovat SAP S uživatelem nebo jiný uživatel, který umožňuje přístup k SAP web Marketplace.
+Potřebujete SAP S – uživatel nebo jiný uživatel, který vám umožní přístup k webu SAP Marketplace.
 
-1. Přihlaste se a přejděte na [SAP Service Marketplace](https://support.sap.com/en/index.html). Vyberte **stáhnout Software** > **instalace a Upgrade** > **podle abecední rejstřík**. Potom vyberte **pod H – edice platformy SAP HANA** > **2.0 edice platformy SAP HANA** > **instalace**. Stažení souborů je znázorněno na následujícím snímku obrazovky.
+1. Přihlaste se a přečtěte si [Web SAP Service Marketplace](https://support.sap.com/en/index.html). Vyberte **možnost stáhnout instalace softwaru** > **a upgradovat** > **podle abecedního indexu**. Pak vyberte **v části H – SAP HANA Platform Edition** > **SAP HANA Platform Edition 2,0** > **instalace**. Stáhněte si soubory zobrazené na následujícím snímku obrazovky.
 
-   ![Snímek obrazovky se soubory ke stažení.](./media/hana-installation/image16_download_hana.PNG)
+   ![Snímek obrazovky se soubory, které se mají stáhnout](./media/hana-installation/image16_download_hana.PNG)
 
-2. V tomto příkladu jsme stáhli instalační balíčky SAP HANA 2.0. Na Azure jump box virtuální počítač, rozbalte samorozbalovací archivy do adresáře, jak je znázorněno níže.
+2. V tomto příkladu jsme stáhli instalační balíčky SAP HANA 2,0. Na virtuálním počítači s odkazem na Azure rozbalte samorozbalovací archivy do adresáře, jak je znázorněno níže.
 
-   ![Snímek obrazovky samorozbalovací archivu](./media/hana-installation/image17_extract_hana.PNG)
+   ![Snímek obrazovky s automatickou extrakcí archivu](./media/hana-installation/image17_extract_hana.PNG)
 
-3. Při extrahování archivy zkopírujte adresář, vytvoří extrakcí (v tomto případě 51052030). Zkopírujte adresář do adresáře, který jste vytvořili ze svazku jednotky /hana/shared velká Instance HANA.
+3. Po extrahování archivů zkopírujte adresář vytvořený extrakcí (v tomto případě 51052030). Zkopírujte adresář ze svazku/Hana/Shared velké instance služby HANA do vytvořeného adresáře.
 
    > [!Important]
-   > Nekopírujte instalační balíčky do kořenového adresáře nebo spouštěcí logickou jednotku, protože místo je omezený a musí používat i jiné procesy.
+   > Instalační balíčky nekopírujte do kořenové nebo spouštěcí logické jednotky (LUN), protože místo je omezené a musí je používat i jiné procesy.
 
 
-## <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Instalace SAP HANA na jednotce velká Instance HANA
-Abyste mohli nainstalovat SAP HANA, přihlaste se jako uživatel root. Pouze root má dostatečná oprávnění k instalaci SAP HANA. Nastavení oprávnění na adresáři, který se zkopíruje do /hana/shared.
+## <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Nainstalovat SAP HANA jednotky velkých instancí HANA
+Chcete-li nainstalovat SAP HANA, přihlaste se jako uživatel root. Pouze kořenový adresář má dostatečná oprávnění pro instalaci SAP HANA. Nastavení oprávnění pro adresář, který jste zkopírovali do/Hana/Shared.
 
 ```
 chmod –R 744 <Installation bits folder>
 ```
 
-Pokud chcete nainstalovat SAP HANA pomocí instalačního programu grafické uživatelské rozhraní, musí být nainstalovaný na velkých instancích HANA gtk2 balíčku. Pokud chcete zkontrolovat, zda je nainstalována, spusťte následující příkaz:
+Pokud chcete nainstalovat SAP HANA pomocí nastavení grafického uživatelského rozhraní, musí být balíček GTK2 nainstalovaný na velkých instancích HANA. Chcete-li ověřit, zda je nainstalován, spusťte následující příkaz:
 
 ```
 rpm –qa | grep gtk2
 ```
 
-(V dalších krocích, vám ukážeme, SAP HANA instalaci přes grafické uživatelské rozhraní.)
+(V pozdějších krocích ukážeme nastavení SAP HANA s grafickým uživatelským rozhraním.)
 
 Přejděte do instalačního adresáře a přejděte do podadresáře HDB_LCM_LINUX_X86_64. 
 
-Mimo tento adresář začněte:
+Z tohoto adresáře spusťte:
 
 ```
 ./hdblcmgui 
 ```
-AT tento bod, průběh řadou obrazovek, které poskytují data pro instalaci. V tomto příkladu jsme instalaci databázového serveru SAP HANA a klientské komponenty SAP HANA. Proto je naše výběr **databáze SAP HANA**.
+V tuto chvíli budete postupovat podle posloupnosti obrazovek, ve kterých zadáte data pro instalaci. V tomto příkladu nainstalujeme Server SAP HANA Database a součásti SAP HANA klienta. Proto je náš výběr **SAP HANA databáze**.
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovku vybrané databáze SAP HANA](./media/hana-installation/image18_hana_selection.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s vybranou databází SAP HANA](./media/hana-installation/image18_hana_selection.PNG)
 
-Na další obrazovce vyberte **instalace nového systému**.
+Na další obrazovce vyberte **nainstalovat nový systém**.
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovku instalace nového systému vybrané](./media/hana-installation/image19_select_new.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s vybraným nástrojem nainstalovat nový systém](./media/hana-installation/image19_select_new.PNG)
 
-V dalším kroku vyberte mezi několik dalších komponent, které můžete nainstalovat.
+Dále vyberte několik dalších součástí, které lze nainstalovat.
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovky se seznamem další součásti](./media/hana-installation/image20_select_components.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA se seznamem dalších komponent](./media/hana-installation/image20_select_components.PNG)
 
-Jsme zde, zvolte klienta SAP HANA a SAP HANA Studio. Můžeme také instalaci instance vertikálně navýšit kapacitu. Klikněte na tlačítko **jednoho hostitele systému**. 
+Tady zvolíme klienta SAP HANA a SAP HANA Studio. Nainstalujeme také instanci škálování. Pak zvolte **systém s jedním hostitelem**. 
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovky pomocí jednoho hostitele systému vybrané](./media/hana-installation/image21_single_host.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s vybraným jediným hostitelským systémem](./media/hana-installation/image21_single_host.PNG)
 
-Pak zadejte nějaká data.
+Dále zadejte nějaká data.
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovka s vlastností systémová pole k definování](./media/hana-installation/image22_provide_sid.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s poli vlastnosti systému, která se má definovat](./media/hana-installation/image22_provide_sid.PNG)
 
 > [!Important]
-> Jako HANA System Identifikátor (SID), je nutné zadat stejný identifikátor SID, jako jste zadali Microsoft, když jste si objednali velká Instance HANA nasazení. Zvolíte jiné SID způsobí, že instalace selhat z důvodu problémů s přístupem k oprávnění v různých svazcích.
+> Jako ID systému HANA (SID) je nutné zadat stejné SID jako při objednání vysokého nasazení instance HANA, jako jste zadali Microsoft. Výběr jiného identifikátoru SID způsobí selhání instalace kvůli problémům s oprávněním k přístupu na různých svazcích.
 
-Pro cestu instalace použití /hana/shared adresáře. V dalším kroku zadejte umístění pro HANA datové soubory a soubory protokolu HANA.
+Pro cestu k instalaci použijte adresář/Hana/Shared. V dalším kroku zadáte umístění datových souborů HANA a souborů protokolu HANA.
 
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovku pole v oblasti dat a protokolů](./media/hana-installation/image23_provide_log.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s poli data a oblasti protokolu](./media/hana-installation/image23_provide_log.PNG)
 
 > [!Note]
-> Identifikátor SID, které jste zadali při definování vlastností systému (před dvě obrazovky) by měl odpovídat SID přípojné body. Pokud dojde k neshodě, vraťte se a upravte identifikátor SID k hodnotě, kterou máte v přípojné body.
+> Identifikátor SID, který jste zadali při definování vlastností systému (před oběma obrazovkami), by se měl shodovat s identifikátorem SID přípojných bodů. Pokud dojde k neshodě, vraťte se zpátky a upravte SID na hodnotu, kterou máte na přípojných bodech.
 
-V dalším kroku zkontrolujte název hostitele a nakonec ho opravit. 
+V dalším kroku zkontrolujte název hostitele a nakonec ho opravte. 
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovky s názvem hostitele](./media/hana-installation/image24_review_host_name.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s názvem hostitele](./media/hana-installation/image24_review_host_name.PNG)
 
-V dalším kroku budete potřebovat k načtení dat, které dáte společnosti Microsoft, když jste si objednali velká Instance HANA nasazení. 
+V dalším kroku budete také potřebovat načíst data, která jste zadali společnosti Microsoft při objednání vysokého nasazení instance HANA. 
 
-![Snímek obrazovky ze SAP HANA Správa životního cyklu, pomocí Správce systémová pole k definování](./media/hana-installation/image25_provide_guid.PNG)
+![Snímek obrazovky SAP HANA správy životního cyklu s poli správce systému k definování](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> Zadejte stejný **ID uživatele pro správce systému** a **ID skupiny uživatelů** poskytnete společnosti Microsoft, jako objednávky jednotku nasazení. V opačném případě se nezdaří instalace SAP HANA na jednotce velká Instance HANA.
+> Zadejte stejné ID a **ID** **uživatele správce systému** jako při nasazování jednotky, které jste zadali společnosti Microsoft. V opačném případě selže instalace SAP HANA jednotky velkých instancí HANA.
 
-Další dvě obrazovky se tady nezobrazují. Umožňují zadat heslo pro uživatele systému databáze SAP HANA a heslo pro uživatele sapadm. Druhá možnost se používá pro hostitele agenta SAP, který se nainstaluje jako součást instance databáze SAP HANA.
+Následující dvě obrazovky tady nejsou uvedené. Umožňují zadat heslo pro uživatele systému SAP HANA databáze a heslo pro uživatele sapadm. Ta se používá pro agenta hostitele SAP, který se nainstaluje jako součást instance databáze SAP HANA.
 
-Po definování heslo, se zobrazí obrazovka s potvrzením. Zkontrolujte všechna data uvedená a pokračovat v instalaci. Obrazovka průběh dokumentující průběh instalace, například takto:
+Po definování hesla se zobrazí potvrzovací obrazovka. Ověřte všechna uvedená data a pokračujte v instalaci. Dostanete obrazovku s průběhem, která dokumentuje průběh instalace, jako je tato:
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovka s indikátory průběhu instalace](./media/hana-installation/image27_show_progress.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA s indikátory průběhu instalace](./media/hana-installation/image27_show_progress.PNG)
 
-Při dokončení instalace by se zobrazit obrazovka podobný následujícímu:
+Po dokončení instalace by se měla zobrazit obrazovka podobná této:
 
-![Snímek obrazovky ze SAP HANA správy životního cyklu obrazovky, určující instalace je dokončena](./media/hana-installation/image28_install_finished.PNG)
+![Obrazovka obrazovky správy životního cyklu SAP HANA, která značí dokončení instalace](./media/hana-installation/image28_install_finished.PNG)
 
-Instance SAP HANA nyní měli a funkční, připravené pro použití. Měli byste být schopni k němu připojit z SAP HANA Studio. Také se ujistěte, že vyhledejte a použijte nejnovější aktualizace.
+Instance SAP HANA by teď měla být spuštěná a připravená k použití. Měli byste být schopni se k němu připojit z SAP HANA studia. Ujistěte se také, že jste kontrolovali a použili nejnovější aktualizace.
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Velké instance SAP HANA vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md)
+- [Velké instance SAP HANA vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md)
 

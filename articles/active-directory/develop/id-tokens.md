@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/27/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853177"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074269"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
@@ -30,7 +30,7 @@ ms.locfileid: "68853177"
 
 ## <a name="using-the-id_token"></a>Použití id_token
 
-Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo přístupového tokenu [](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, vytvoření klíče databáze a poskytnutí přístupu k klientské aplikaci.
+Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a získá další užitečné informace – neměl by se používat k autorizaci místo přístupového tokenu [](access-tokens.md). Deklarace identity, které poskytuje, lze použít pro UX v rámci aplikace, jako klíče v databázi a poskytnutí přístupu k klientské aplikaci.  Při vytváření klíčů pro databázi byste neměli `idp` používat, protože jsou v něm scénáře hostů.  Generování klíčů by se mělo `sub` provádět samostatně (což je vždycky jedinečné), `tid` které se používá pro směrování v případě potřeby.  Pokud potřebujete sdílet data napříč službami, bude fungovat `oid` , + `sub` + `tid` protože víc služeb získá stejný `oid`přístup.
 
 ## <a name="claims-in-an-id_token"></a>Deklarace identity v id_token
 
@@ -99,7 +99,7 @@ Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřová
 * Cílová skupina: `aud` deklarace identity by měla odpovídat ID aplikace pro vaši aplikaci.
 * Hodnota nonce: `nonce` deklarace v datové části se musí shodovat s parametrem nonce předaným do koncového bodu/Authorize během počátečního požadavku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace [](access-tokens.md) o přístupových tokenech
 * Přizpůsobte deklarace identity ve vašem id_token pomocí [volitelných deklarací identity](active-directory-optional-claims.md).

@@ -1,6 +1,6 @@
 ---
-title: Přehled scénáře zotavení po havárii Oracle ve vašem prostředí Azure | Dokumentace Microsoftu
-description: Scénář zotavení po havárii pro databáze Oracle database 12c v prostředí Azure
+title: Přehled scénáře zotavení po havárii Oracle v prostředí Azure | Microsoft Docs
+description: Scénář zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -9,102 +9,101 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: db0b9887b80f13938045a5d11fb09ed0a43efc19
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706962"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101460"
 ---
-# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databáze Oracle Database 12c v prostředí Azure
+# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 
 ## <a name="assumptions"></a>Předpoklady
 
-- Máte znalosti Oracle Data Guard návrhu a prostředí Azure.
+- Znáte návrh Oracle data Guard a prostředí Azure.
 
 
 ## <a name="goals"></a>Cíle
-- Návrh topologii a konfiguraci, která splňují vaše požadavky na zotavení po havárii.
+- Navrhněte topologii a konfiguraci, které odpovídají požadavkům zotavení po havárii (DR).
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scénář 1: Primární server a servery pro zotavení po Havárii v Azure
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Scénář 1: Primární lokality a weby DR v Azure
 
-Zákazník má Oracle databáze set up v primární lokalitě. Zotavení po Havárii A lokalita je v jiné oblasti. Zákazník používá Oracle Data Guard pro rychlé obnovení mezi těmito lokalitami. Primární lokalita má také sekundární databáze pro vytváření sestav a jiné účely. 
+Zákazník má nastavenou databázi Oracle v primární lokalitě. Lokalita DR je v jiné oblasti. Zákazník používá Oracle data Guard pro rychlé obnovení mezi těmito lokalitami. Primární lokalita má také sekundární databázi pro vytváření sestav a další použití. 
 
 ### <a name="topology"></a>Topologie
 
-Zde je souhrn instalace nástroje Azure:
+Tady je souhrn nastavení Azure:
 
-- Dva servery (primární lokalitou a lokalitou zotavení po Havárii)
+- Dvě lokality (primární lokalita a lokalita DR)
 - Dvě virtuální sítě
 - Dvě databáze Oracle s ochranou dat (primární a pohotovostní)
-- Dvě databáze Oracle se brána Golden nebo Data Guard (pouze primární lokalita)
-- Dva aplikační služby, jeden primární a v lokalitě zotavení po Havárii
-- *Skupinu dostupnosti,* který se používá pro databáze a aplikace služby v primární lokalitě
-- Jeden jumpbox v každé lokalitě, která omezuje přístup k privátní síti a umožňuje pouze přihlášení správce
-- Jumpbox, aplikační služby, databáze a brány VPN v oddělených podsítích
-- Skupina zabezpečení sítě pro aplikace a databáze podsítě vynucovat
+- Dvě databáze Oracle se zlatou bránou nebo ochranou dat (jenom primární lokalita)
+- Dvě aplikační služby, jedna primární a jedna na webu DR
+- *Skupina dostupnosti,* která se používá pro databázi a službu aplikace v primární lokalitě
+- Jeden JumpBox na každé lokalitě, který omezuje přístup k privátní síti a umožňuje pouze přihlášení správcem
+- JumpBox, Aplikační služba, databáze a brána sítě VPN v samostatných podsítích
+- NSG vynutilo pro podsítě aplikace a databáze
 
-![Snímek obrazovky stránky topologie zotavení po Havárii](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scénář 2: Primární lokalita v místním a zotavení po Havárii serveru v Azure
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scénář 2: Místní lokalita a lokalita DR v Azure
 
-Zákazník má nastavení databáze Oracle v místním (primární lokalita). Zotavení po Havárii A lokalita je v Azure. Oracle Data Guard se používá pro rychlé obnovení mezi těmito lokalitami. Primární lokalita má také sekundární databáze pro vytváření sestav a jiné účely. 
+Zákazník má místní nastavení Oracle Database (primární lokalita). Lokalita DR je v Azure. Oracle data Guard slouží k rychlému obnovení mezi těmito lokalitami. Primární lokalita má také sekundární databázi pro vytváření sestav a další použití. 
 
-Existují dvě metody pro tento instalační program.
+Existují dva přístupy k tomuto nastavení.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Způsob 1: Přímé připojení mezi místními a Azure, by vyžadoval otevřené porty protokolu TCP v bráně firewall 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Přístup 1: Přímé připojení mezi místním prostředím a Azure, které vyžaduje otevření portů TCP v bráně firewall 
 
-Přímé připojení nedoporučujeme, protože zveřejňovaly porty TCP zvnějšku.
+Nedoporučujeme přímé připojení, protože zveřejňuje porty TCP na vnějším světě.
 
 #### <a name="topology"></a>Topologie
 
-Toto je souhrn instalace nástroje Azure:
+Toto je souhrn nastavení Azure:
 
-- Zotavení po Havárii jednoho webu 
+- Jeden web DR 
 - Jedna virtuální síť
 - Jedna databáze Oracle s ochranou dat (aktivní)
-- Jednu aplikaci služby v lokalitě zotavení po Havárii
-- Jeden jumpboxu, což omezuje přístup k privátní síti a umožňuje pouze přihlášení správce
-- Jumpbox, aplikační služby, databáze a brány VPN v oddělených podsítích
-- Skupina zabezpečení sítě pro aplikace a databáze podsítě vynucovat
-- Zásady/pravidlo NSG umožňuje příchozí port TCP 1521 (nebo uživatelem definovaný port)
-- Pravidlo skupiny zabezpečení sítě zásady/omezit jenom IP adresa nebo adresy místní (databáze nebo aplikace) pro přístup k virtuální síti
+- Jedna Aplikační služba na webu DR
+- Jeden JumpBox, který omezuje přístup k privátní síti a umožňuje pouze přihlášení správcem
+- JumpBox, Aplikační služba, databáze a brána sítě VPN v samostatných podsítích
+- NSG vynutilo pro podsítě aplikace a databáze
+- Zásada nebo pravidlo NSG, které povolí příchozí port TCP 1521 (nebo uživatelem definovaný port)
+- Zásady nebo pravidlo NSG, které omezí jenom IP adresu/adresy v místním prostředí (DB nebo Application) pro přístup k virtuální síti.
 
-![Snímek obrazovky stránky topologie zotavení po Havárii](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Způsob 2: Site-to-site VPN
-Site-to-site VPN není lepším řešením. Další informace o nastavení sítě VPN najdete v tématu [vytvoření virtuální sítě s připojením typu Site-to-Site VPN pomocí rozhraní příkazového řádku](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
+### <a name="approach-2-site-to-site-vpn"></a>Přístup 2: Síť VPN typu Site-to-site
+VPN typu Site-to-site je lepší přístup. Další informace o nastavení sítě VPN najdete v tématu [vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)rozhraní příkazového řádku (CLI).
 
 #### <a name="topology"></a>Topologie
 
-Toto je souhrn instalace nástroje Azure:
+Toto je souhrn nastavení Azure:
 
-- Zotavení po Havárii jednoho webu 
+- Jeden web DR 
 - Jedna virtuální síť 
 - Jedna databáze Oracle s ochranou dat (aktivní)
-- Jednu aplikaci služby v lokalitě zotavení po Havárii
-- Jeden jumpboxu, což omezuje přístup k privátní síti a umožňuje pouze přihlášení správce
-- Jumpbox, aplikační služby, databáze a brány VPN jsou v samostatných podsítí
-- Skupina zabezpečení sítě pro aplikace a databáze podsítě vynucovat
-- Připojení VPN typu Site-to-site mezi místními a Azure
+- Jedna Aplikační služba na webu DR
+- Jeden JumpBox, který omezuje přístup k privátní síti a umožňuje pouze přihlášení správcem
+- JumpBox, služba Application Service, databáze a VPN Gateway jsou v samostatných podsítích.
+- NSG vynutilo pro podsítě aplikace a databáze
+- Připojení VPN typu Site-to-site mezi místními počítači a Azure
 
-![Snímek obrazovky stránky topologie zotavení po Havárii](./media/oracle-disaster-recovery/oracle_topology_03.png)
+![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
 ## <a name="additional-reading"></a>Další čtení
 
 - [Návrh a implementace databáze Oracle v Azure](oracle-design.md)
-- [Konfigurace Oracle Data Guard](configure-oracle-dataguard.md)
-- [Konfigurace Oracle Golden brány](configure-oracle-golden-gate.md)
-- [Oracle zálohování a obnovení](oracle-backup-recovery.md)
+- [Konfigurace Oracle data Guard](configure-oracle-dataguard.md)
+- [Konfigurace Oracle Zlaté brány](configure-oracle-golden-gate.md)
+- [Zálohování a obnovení Oracle](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Vytvoření vysoce dostupných virtuálních počítačů](../../linux/create-cli-complete.md)
-- [Prozkoumejte ukázky nasazení virtuálního počítače pomocí Azure CLI](../../linux/cli-samples.md)
+- [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)

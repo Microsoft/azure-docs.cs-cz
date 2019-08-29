@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazením Linux virtuálního počítače v Azure | Dokumentace Microsoftu
-description: Řešení potíží s nasazením Linux virtuálního počítače v modelu nasazení Azure Resource Manageru.
+title: Řešení potíží s nasazením virtuálních počítačů se systémem Linux v Azure | Microsoft Docs
+description: Řešení potíží s nasazením virtuálního počítače se systémem Linux v modelu nasazení Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -11,84 +11,83 @@ ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 38d53af06312c993a749fa86619e25e60d39fff4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6aed61f13da8f6a29c1c3fa619af58cb720ea8e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710477"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089956"
 ---
-# <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením Linux virtuálního počítače v Azure
+# <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálních počítačů se systémem Linux v Azure
 
-Řešení potíží s problémy při nasazení virtuálního počítače (VM) v Azure, najdete v tématu [nejčastější problémy](#top-issues) pro běžné chyby a jejich řešení.
+Pokud chcete řešit problémy s nasazením virtuálního počítače v Azure, přečtěte si [nejdůležitější problémy](#top-issues) s běžnými chybami a řešeními.
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
-## <a name="top-issues"></a>Nejčastější problémy
+## <a name="top-issues"></a>Hlavní problémy
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Cluster nepodporuje požadovanou velikost virtuálního počítače
+## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Cluster nepodporuje požadovanou velikost virtuálního počítače.
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Opakujte žádost, použijte menší velikost virtuálního počítače.
-- Pokud velikost pro požadovaný virtuální počítač nejde změnit:
-    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na tlačítko **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > dostupnosti > **virtuálních počítačů** > váš virtuální počítač >  **Zastavit**.
-    - Po zastavení všech virtuálních počítačů, vytvoření virtuálního počítače do požadované velikosti.
-    - Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na příkaz spustit.
+- Opakujte požadavek s menší velikostí virtuálního počítače.
+- Pokud velikost požadovaného virtuálního počítače nejde změnit:
+    - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > zastavtevirtuální počítač >.
+    - Až se všechny virtuální počítače zastaví, vytvořte virtuální počítač v požadované velikosti.
+    - Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko Spustit.
 
 
-## <a name="the-cluster-does-not-have-free-resources"></a>Cluster nemá žádné volné prostředky
+## <a name="the-cluster-does-not-have-free-resources"></a>Cluster nemá volné prostředky.
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Zopakujte později.
-- Pokud nový virtuální počítač může být součástí do jiné skupiny dostupnosti
-    - Vytvoření virtuálního počítače v různých dostupnosti (ve stejné oblasti).
-    - Přidáte nový virtuální počítač do stejné virtuální síti.
+- Opakujte požadavek později.
+- Pokud může být nový virtuální počítač součástí jiné skupiny dostupnosti
+    - Vytvořte virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).
+    - Přidejte nový virtuální počítač do stejné virtuální sítě.
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Jak si můžu aktivovat svůj měsíční kredit pro Visual studio Enterprise (BizSpark)
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Návody aktivovat svůj měsíční kredit pro Visual Studio Enterprise (BizSpark)
 
-Pokud chcete aktivovat svůj měsíční kredit, najdete v tomto [článku](https://azure.microsoft.com/offers/ms-azr-0064p/).
+Další informace o aktivaci měsíčního kreditu najdete v tomto [článku](https://azure.microsoft.com/offers/ms-azr-0064p/).
 
-## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Proč nelze nainstalovat ovladače GPU pro virtuální počítač s Ubuntu NV?
+## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Proč nemůžu nainstalovat ovladač GPU pro virtuální počítač Ubuntu NV?
 
-V současné době Linux GPU podpora je dostupná jenom na virtuálních počítačích Azure NC systémem Ubuntu Server 16.04 LTS. Další informace najdete v tématu [nastavit ovladače GPU pro virtuální počítače řady N-series s Linuxem](../linux/n-series-driver-setup.md).
+V současné době je podpora pro Linux GPU dostupná jenom na virtuálních počítačích Azure NC, na kterých běží Ubuntu Server 16,04 LTS. Další informace najdete v tématu [nastavení ovladačů GPU pro virtuální počítače řady N-Series se systémem Linux](../linux/n-series-driver-setup.md).
 
-## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>Chybí ovladače pro své Linuxové virtuální počítače řady N-Series
+## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>Pro virtuální počítač se systémem Linux N-Series chybí moje ovladače
 
-Ovladače pro virtuální počítače se systémem Linux se nacházejí [tady](../linux/n-series-driver-setup.md). 
+Ovladače pro virtuální počítače se systémem Linux najdete [tady](../linux/n-series-driver-setup.md). 
 
-## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nemůžu najít instanci GPU v rámci Můj virtuální počítač řady N-Series
+## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nemůžu najít instanci GPU v mém virtuálním počítači řady N-Series
 
-Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Windows serverem 2016 nebo Windows Server 2012 R2, je nutné nainstalovat ovladače NVIDIA grafiky na každém virtuálním počítači po nasazení. Informace o instalaci ovladačů je k dispozici pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md) a [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md).
+Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series s Windows serverem 2016 nebo Windows Serverem 2012 R2, musíte na každý virtuální počítač po nasazení nainstalovat ovladače grafiky NVIDIA. Informace o nastavení ovladače jsou k dispozici pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md) a [virtuální počítače Linux](../linux/n-series-driver-setup.md).
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Je virtuální počítače řady N-Series dostupné v mojí oblasti?
+## <a name="is-n-series-vms-available-in-my-region"></a>Jsou virtuální počítače řady N-Series dostupné v mojí oblasti?
 
-Můžete zkontrolovat dostupnost z [dostupné produkty v jednotlivých oblasti tabulky](https://azure.microsoft.com/regions/services), ceny a [tady](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
+Dostupnost můžete ověřit z [tabulky dostupné podle oblastí](https://azure.microsoft.com/regions/services)a na ceny [zde](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 
-## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Nejde mi zobrazíte řadu velikostí virtuálního počítače, který chci, aby při změně velikosti virtuálního počítače.
+## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Nedá se mi zobrazit rodina velikostí virtuálních počítačů, kterou chci při změně velikosti virtuálního počítače.
 
-Když na virtuálním počítači běží, je nasazen na fyzickém serveru. Fyzické servery v oblasti Azure, které jsou seskupené v clusterech běžné fyzický hardware. Změnou velikosti virtuálního počítače, které vyžaduje virtuální počítač přesunout na jiný hardware clustery se liší v závislosti na tom, které model nasazení byla použita k nasazení virtuálního počítače.
+Když je virtuální počítač spuštěný, je nasazený na fyzický server. Fyzické servery v oblastech Azure se seskupují v clusterech společného fyzického hardwaru. Změna velikosti virtuálního počítače, který vyžaduje přesun virtuálního počítače do různých hardwarových clusterů, se liší v závislosti na modelu nasazení, který se použil k nasazení virtuálního počítače.
 
-- Virtuální počítače nasazené v modelu nasazení Classic, nasazení cloudové služby musí být odebrány a znovu nasadit, chcete-li změnit velikost v jinou řadu velikostí virtuálních počítačů.
+- Virtuální počítače nasazené v modelu nasazení Classic je nutné odebrat a znovu nasadit nasazení cloudové služby, aby se virtuální počítače změnily na velikost v jiné rodině velikostí.
 
-- Virtuální počítače nasazené v modelu nasazení Resource Manager, je nutné zastavit všechny virtuální počítače ve skupině dostupnosti před změnou velikosti ze všech virtuálních počítačů ve skupině dostupnosti.
+- Virtuální počítače nasazené v modelu nasazení Správce prostředků před změnou velikosti libovolného virtuálního počítače ve skupině dostupnosti musíte zastavit všechny virtuální počítače ve skupině dostupnosti.
 
-## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Uvedená velikost virtuálního počítače není podporována při nasazení ve skupině dostupnosti.
+## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Uvedená velikost virtuálního počítače není při nasazení v sadě dostupnosti podporována.
 
-Zvolte velikost, která je podporována v clusteru pro skupinu dostupnosti. Doporučujeme vytvořit skupinu dostupnosti nastavena na hodnotu zvolte největší velikost virtuálního počítače, které se domníváte, že potřebujete a mít, které bude váš první nasazení do skupiny dostupnosti.
+Vyberte velikost podporovanou v clusteru skupiny dostupnosti. Doporučuje se při vytváření skupiny dostupnosti zvolit největší velikost virtuálního počítače, kterou si myslíte, že potřebujete, a to je vaše první nasazení do skupiny dostupnosti.
 
-## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Jaké distribuce a verze Linux jsou podporovány v Azure?
+## <a name="what-linux-distributionsversions-are-supported-on-azure"></a>Jaké distribuce a verze systému Linux jsou podporovány v Azure?
 
-Můžete najít na seznamu v systému Linux [Azure-Endorsed distribuce](../linux/endorsed-distros.md).
+Seznam najdete v části Linux v distribucích [schválené pro Azure](../linux/endorsed-distros.md).
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Můžete přidat existující klasický virtuální počítač do skupiny dostupnosti?
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Můžu přidat existující klasický virtuální počítač do skupiny dostupnosti?
 
-Ano. Chcete nové nebo existující skupinu dostupnosti můžete přidat existující klasický virtuální počítač. Další informace najdete v části [přidat existující virtuální počítač do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
+Ano. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Další postup
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/).
 
-Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

@@ -9,18 +9,17 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 4a65465528ea2ffd8ba7af705d92efbb23a96d9e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d89e25b6a39649bb8421fd32b8842c3c76807268
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883460"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102156"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představujeme SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure #
 
@@ -72,6 +71,6 @@ Virtuální počítače můžete také vytvořit sami bez šablony. Nejdřív do
 
 - [Vytvoření skupiny dostupnosti Always On pro zlepšení dostupnosti a zotavení po havárii](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Konfigurace skupiny dostupnosti Always On SQL Server v Azure Virtual Machines v různých oblastech](virtual-machines-windows-portal-sql-availability-group-dr.md)

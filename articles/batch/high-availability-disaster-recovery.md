@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: lahugh
-ms.openlocfilehash: 3c76a5100e6ac1db067ccdbd582ddf9adba946c1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 11446f5f23d470234b5dba641dc16e0bf71d9b72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322584"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094030"
 ---
 # <a name="design-your-application-for-high-availability"></a>Návrh aplikace pro zajištění vysoké dostupnosti
 
@@ -48,7 +47,7 @@ Při navrhování řešení, které je možné převzetí služeb při selhání
 - V aplikaci, která volá službu Batch, úložiště a jakékoli další služby, můžete snadno přesměrovat klienty nebo zatížení do jiné oblasti.
 - Osvědčeným postupem, jak zajistit úspěšné převzetí služeb při selhání, je často přepnutí do alternativní oblasti v rámci běžné operace. Například u dvou nasazení v samostatných oblastech se každý měsíc přepínáním na alternativní oblast.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o vytváření účtů Batch pomocí [Azure Portal](batch-account-create-portal.md), [Azure CLI](cli-samples.md), [PowerShellu](batch-powershell-cmdlets-get-started.md)nebo [rozhraní API pro správu služby Batch](batch-management-dotnet.md).
 - Výchozí kvóty jsou přidruženy k účtu Batch. [Tento článek](batch-quota-limit.md) obsahuje podrobnosti o výchozích hodnotách kvót a popisuje, jak lze kvóty zvýšit.

@@ -1,5 +1,5 @@
 ---
-title: Použití s Kubernetes a Helm službou pro rozpoznávání řeči
+title: Použití kontejneru služby Speech s Kubernetes a Helm
 titleSuffix: Azure Cognitive Services
 description: Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/16/2019
+ms.date: 8/26/2019
 ms.author: dapine
-ms.openlocfilehash: d8a5b941be34028f7a1c53e39b38ab30714ba301
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971337"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066494"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Použití s Kubernetes a Helmem
+# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Použití kontejneru služby Speech s Kubernetes a Helm
 
 Jednou z možností správy vašich místních kontejnerů řeči je použití Kubernetes a Helm. Když použijete Kubernetes a Helm k definování imagí na kontejnerech pro text a převod textu na řeč, vytvoříme balíček Kubernetes. Tento balíček se nasadí do místního clusteru Kubernetes. Nakonec se podíváme, jak otestovat nasazené služby a různé možnosti konfigurace. Další informace o spouštění kontejnerů Docker bez orchestrace Kubernetes najdete v tématu [instalace a spuštění kontejnerů služby Speech](speech-container-howto.md).
 
@@ -262,7 +262,7 @@ Grafy Helm jsou hierarchické. Hierarchicky umožňují dědění grafu, ale tak
 
 [!INCLUDE [Text-to-Speech Helm Chart Config](includes/text-to-speech-chart-config.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další podrobnosti o instalaci aplikací pomocí Helm ve službě Azure Kubernetes Service (AKS) [najdete tady][installing-helm-apps-in-aks].
 

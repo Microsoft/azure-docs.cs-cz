@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: c31fa96457a3945c39fcc34770cb6783af3b81e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d89e8f174c7006c1a0f771dd4dfaa816ded3698c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049120"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100991"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Rozšiřování IoT Central Azure pomocí vlastních pravidel, která odesílají oznámení
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
-Vytvořte aplikaci IoT Central ze stránky [Azure IoT Central – moje aplikace](https://aka.ms/iotcentral) s následujícím nastavením:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvořte aplikaci IoT Central s následujícím nastavením:
 
 | Nastavení | Value |
 | ------- | ----- |
@@ -305,7 +305,7 @@ Toto řešení používá Stream Analytics dotaz k detekci, kdy se zařízení z
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
 
-Přejděte do [IoT Central aplikace](https://aka.ms/iotcentral) , kterou jste vytvořili v šabloně společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
 1. Přejděte na stránku **průběžné exportu dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:
@@ -345,7 +345,7 @@ Pokud se chcete uklizený po tomto postupu a vyhnout se zbytečným nákladům, 
 
 Aplikaci IoT Central můžete odstranit ze stránky **pro správu** v rámci aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této příručce se naučíte:
 

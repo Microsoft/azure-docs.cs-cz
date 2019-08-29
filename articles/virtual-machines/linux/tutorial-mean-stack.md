@@ -9,21 +9,20 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6d870e5eedf362a6c929216735c8b5e9240aaa4f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708484"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081525"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření stacku MongoDB, Express, AngularJS a Node.js (MEAN) na virtuální počítač s Linuxem v Azure
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Kurz: Vytvoření zásobníku MongoDB, Express, AngularJS a Node. js (střední) na virtuálním počítači se systémem Linux v Azure
 
 V tomto kurzu se dozvíte, jak implementovat stack MongoDB, Express, AngularJS a Node.js (MEAN) na virtuálním počítači s Linuxem v Azure. Stack MEAN, který vytvoříte, umožňuje přidávání, odstraňování a výpis knih v databázi. Získáte informace o těchto tématech:
 
@@ -324,7 +323,7 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:3300*. Zobrazená stránka by měla vypadat přibližně takto:
+2. Otevřete webový prohlížeč na adrese, kterou jste si pro virtuální počítač poznamenali. Například *http:\//13.72.77.9:* . Zobrazená stránka by měla vypadat přibližně takto:
 
     ![Záznam o knize](media/tutorial-mean/meanstack-init.png)
 

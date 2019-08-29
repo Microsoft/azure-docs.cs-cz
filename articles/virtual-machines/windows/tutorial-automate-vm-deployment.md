@@ -9,23 +9,22 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 72489c6d0b03166fcb2a5f1ed39f7b8d5408ff24
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 02c038a1eefefb62dceb42e511b9a895691ef47b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708173"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101725"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
 
-Ke konfiguraci virtuálních počítačů (VM) v podobě rychle a konzistentně, můžete použít [vlastní skript rozšíření pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
+K rychlému a konzistentnímu konfigurování virtuálních počítačů můžete použít [rozšíření vlastních skriptů pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Použít rozšíření vlastních skriptů k instalaci služby IIS
@@ -47,13 +46,13 @@ Rozšíření vlastních skriptů můžete použít s virtuálními počítači 
 
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-Nastavte uživatelské jméno správce a heslo pro virtuální počítač s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Nastavte uživatelské jméno a heslo správce virtuálního počítače pomocí [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítač pomocí [rutiny New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupAutomate* a podpůrné síťové prostředky. Za účelem povolení webového provozu rutina také otevře port *80*.
+Nyní můžete vytvořit virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupAutomate* a podpůrné síťové prostředky. Za účelem povolení webového provozu rutina také otevře port *80*.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -72,7 +71,7 @@ Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
 
 ## <a name="automate-iis-install"></a>Automatizace instalace služby IIS
-Použití [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) k instalaci rozšíření vlastních skriptů. Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
+K instalaci rozšíření vlastních skriptů použijte [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Rozšíření spustí `powershell Add-WindowsFeature Web-Server` za účelem instalace webového serveru služby IIS a potom aktualizuje stránku *Default.htm*, aby zobrazovala název hostitele virtuálního počítače:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -87,7 +86,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Testovací web
-Získat veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení s [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIPAddress*:
+Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIPAddress*:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27f7a9b576263b97c251306c9817b85c31041739
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312227"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101314"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -132,7 +131,7 @@ Operační systém Linux nainstalovaný na SAP HANA v Azure (velké instance) ob
 
 Je vaší zodpovědností nainstalovat klienta SAP HANA HDB do jednotek velkých instancí HANA při instalaci SAP HANA.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>Krok 2: Změna konfigurace/etc/ssh/ssh\_
+### <a name="step-2-change-the-etcsshssh_config"></a>Krok 2: Změna konfigurace/etc/ssh/ssh\_
 
 Tento krok je popsaný v tématu povolení komunikace s úložištěm v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf).
 
@@ -214,7 +213,7 @@ Pokud počet uchovávaných snímků překročí počet, který je pojmenován j
 ## <a name="snapshot-strategies"></a>Strategie snímků
 Frekvence snímků pro různé typy závisí na tom, zda používáte funkci zotavení po havárii velké instance HANA. Tato funkce spoléhá na snímky úložiště, které mohou vyžadovat speciální doporučení pro četnost a dobu provádění snímků úložiště. 
 
-V následujících doporučeních a doporučeních se předpokládá, že *nepoužíváte* funkci zotavení po havárii, kterou velké instance Hana nabízí. Místo toho můžete snímky úložiště použít k zálohování a být schopné poskytnout obnovení k určitému bodu v čase za posledních 30 dní. V důsledku omezení počtu snímků a prostoru Vezměte v úvahu následující požadavky:
+V následujících doporučeních a doporučeních se předpokládá, že nepoužíváte funkci zotavení po havárii, kterou velké instance Hana nabízí. Místo toho můžete snímky úložiště použít k zálohování a být schopné poskytnout obnovení k určitému bodu v čase za posledních 30 dní. V důsledku omezení počtu snímků a prostoru Vezměte v úvahu následující požadavky:
 
 - Čas obnovení pro obnovení k bodu v čase.
 - Využité místo.
@@ -402,5 +401,5 @@ Postup obnovení ze zálohy snímku najdete v tématu [Ruční Průvodce obnoven
 Chcete-li provést obnovení k určitému bodu v čase, přečtěte si téma "obnovení databáze k následujícímu časovému okamžiku" v tématu [Ruční Průvodce obnovením pro SAP HANA v Azure ze snímku úložiště](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf). 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Viz [Principy a příprava zotavení po havárii](hana-concept-preparation.md).

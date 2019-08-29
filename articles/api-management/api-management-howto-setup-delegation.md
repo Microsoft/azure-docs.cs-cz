@@ -10,16 +10,15 @@ ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: cd7b2cecce443e821e233d97a260b7dfb3471752
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667222"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073448"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegování registrace uživatelů a předplatného produktu
 
@@ -67,7 +66,7 @@ Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést n�
      > 
      > 
    * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
-3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven**na "** Signing" (přihlásit se).
+3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven na "Signing" (přihlásit se).
 4. Prezentovat uživatele s uživatelským ROZHRANÍm pro přihlášení nebo registraci
 5. Pokud se uživatel přihlásí, musíte pro ně vytvořit odpovídající účet v API Management. [Vytvoření uživatele] s REST APIem API Management. Když to uděláte, ujistěte se, že jste nastavili ID uživatele na stejnou hodnotu jako ve vašem úložišti uživatelů nebo na ID, které můžete sledovat.
 6. Po úspěšném ověření uživatele:

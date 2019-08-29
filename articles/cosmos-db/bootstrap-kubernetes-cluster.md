@@ -1,65 +1,65 @@
 ---
-title: Jak používat Kubernetes v Azure pomocí služby Azure Cosmos DB
-description: Zjistěte, jak spustit cluster Kubernetes v Azure, která používá službu Azure Cosmos DB (preview)
+title: Jak používat Azure Kubernetes s Azure Cosmos DB
+description: Naučte se, jak spustit cluster Kubernetes v Azure, který používá Azure Cosmos DB (Preview).
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 2c6af53aeec5d40f603d65595d93527107c0d80a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427704"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093731"
 ---
-# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Kubernetes v Azure pomocí služby Azure Cosmos DB (preview)
+# <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Azure Kubernetes s Azure Cosmos DB (Preview)
 
-Etcd rozhraní API ve službě Azure Cosmos DB umožňuje používat službu Azure Cosmos DB jako back-endu úložiště pro Kubernetes v Azure. Azure Cosmos DB implementuje přenosový protokol etcd, což umožňuje hlavní uzel rozhraní API serverů k používání služby Azure Cosmos DB, stejně jako ji by přístup k místně instalované etcd. etcd rozhraní API ve službě Azure Cosmos DB je aktuálně ve verzi preview. Pokud používáte Azure Cosmos etcd rozhraní API jako záložní úložiště pro Kubernetes, získáte následující výhody: 
+Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako úložiště back-endu pro Azure Kubernetes. Azure Cosmos DB implementuje etcd přenosový protokol, který umožňuje serverům rozhraní API hlavního uzlu používat Azure Cosmos DB stejným způsobem, jako by měl přístup k lokálně instalované etcd. rozhraní etcd API v Azure Cosmos DB je aktuálně ve verzi Preview. Pokud používáte Azure Cosmos etcd API jako záložní úložiště pro Kubernetes, získáte následující výhody: 
 
-* Už není potřeba ručně konfigurovat a spravovat etcd.
-* Vysoká dostupnost etcd zaručeny Cosmos (99,99 % v jedné oblasti, ve více oblastech 99,999 %).
-* Elastické škálovatelnosti etcd.
-* Zabezpečte tím, že výchozí & připraveno pro podniky.
-* Špičkové, komplexní smlouvy SLA.
+* Není potřeba ručně konfigurovat a spravovat etcd.
+* Vysoká dostupnost etcd, zaručená Cosmos (99,99% v jedné oblasti, 99,999% v několika oblastech).
+* Elastická škálovatelnost etcd
+* Zabezpečení ve výchozím nastavení & Enterprise připraveno.
+* Špičkové komplexní Slay v oboru.
 
-Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v článku [přehled](etcd-api-introduction.md) článku. V tomto článku se dozvíte, jak používat [modul Azure Kubernetes](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) ke spuštění clusteru Kubernetes v Azure, která používá [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) místo etcd místně nainstalovaná a nakonfigurovaná. 
+Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Přehled](etcd-api-introduction.md) . V tomto článku se dozvíte, jak pomocí [modulu Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (AKS-Engine) vytvořit cluster Kubernetes v Azure, který používá [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) namísto lokálně nainstalovaného a nakonfigurovaného etcd. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete stáhnout Azure CLI, které jsou specifické pro váš operační systém a nainstalovat.
+1. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete stáhnout Azure CLI specifické pro váš operační systém a nainstalovat.
 
-1. Nainstalujte [nejnovější verzi](https://github.com/Azure/aks-engine/releases) modulu Azure Kubernetes. Pokyny pro různé operační systémy jsou k dispozici v [modul Azure Kubernetes](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) stránky. Potřebujete pouze kroky z **nainstalovat modul AKS** část propojené dokumentu. Po stažení, extrahuje soubor zip.
+1. Nainstalujte [nejnovější verzi](https://github.com/Azure/aks-engine/releases) modulu Azure Kubernetes Engine. Pokyny k instalaci pro různé operační systémy jsou k dispozici na stránce [Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) . Pouze potřebujete kroky z části **Instalace modulu AKS** v propojeném dokumentu. Po stažení rozbalte soubor zip.
 
-   Modul Azure Kubernetes (**aks-engine**) generuje šablon Azure Resource Manageru pro clustery Kubernetes v Azure. Vstup pro aks modul je soubor definice clusteru, které popisují požadovanou clusteru, včetně nástroje orchestrator, funkce a agenty. Struktura vstupních souborů je podobný veřejné rozhraní API pro službu Azure Kubernetes Service.
+   Modul Azure Kubernetes Engine (**AKS-Engine**) generuje šablony Azure Resource Manager pro clustery Kubernetes v Azure. Vstup do AKS-Engine je definiční soubor clusteru, který popisuje požadovaný cluster, včetně nástroje Orchestrator, features a agentů. Struktura vstupních souborů je podobná veřejnému rozhraní API pro službu Azure Kubernetes.
 
-1. Etcd rozhraní API ve službě Azure Cosmos DB je aktuálně ve verzi preview. Zaregistrujte a použijte verzi preview v: https://aka.ms/cosmosetcdapi-signup. Po odeslání formuláře, vaše předplatné bude používat Azure Cosmos etcd rozhraní API na seznamu povolených. 
+1. Rozhraní etcd API v Azure Cosmos DB je momentálně ve verzi Preview. Zaregistrujte se a použijte verzi Preview na https://aka.ms/cosmosetcdapi-signup adrese:. Po odeslání formuláře se vašemu předplatnému bude používat rozhraní etcd API služby Azure Cosmos. 
 
-## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Nasazení clusteru pomocí služby Azure Cosmos DB
+## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Nasazení clusteru s Azure Cosmos DB
 
-1. Otevřete okno příkazového řádku a přihlaste se do Azure pomocí následujícího příkazu:
+1. Otevřete okno příkazového řádku a přihlaste se k Azure pomocí následujícího příkazu:
 
    ```azurecli-interactive
    az login 
    ```
 
-1. Pokud máte více než jedno předplatné, přepněte na předplatné, které bylo povolené pro službu Azure Cosmos DB etcd rozhraní API. Můžete přepnout na požadované předplatné, pomocí následujícího příkazu:
+1. Pokud máte více než jedno předplatné, přepněte do předplatného, které je na seznamu povolených pro Azure Cosmos DB rozhraní etcd API. Pomocí následujícího příkazu můžete přepnout na požadované předplatné:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"
    ```
-1. Dále vytvořte novou skupinu prostředků, kde budete nasazovat prostředky vyžadované clusteru Kubernetes v Azure. Ujistěte se, že chcete vytvořit skupinu prostředků v oblasti "centralus". Není to povinné pro skupinu prostředků, ale bude v oblasti "centralus", je aktuálně k dispozici pro nasazení v oblasti "centralus" pouze Azure Cosmos etcd rozhraní API. Proto je vhodné mít cluster Kubernetes, bude umístěna společně s instancí etcd Cosmos:
+1. Potom vytvořte novou skupinu prostředků, do které nasadíte prostředky, které cluster Azure Kubernetes vyžaduje. Nezapomeňte vytvořit skupinu prostředků v oblasti "centralus". Není nutné, aby skupina prostředků byla v oblasti "centralus", ale rozhraní API pro Azure Cosmos etcd je aktuálně k dispozici k nasazení v oblasti "centralus". Proto je vhodné, aby byl cluster Kubernetes společně umístěn s instancí Cosmos etcd:
 
    ```azurecli-interactive
    az group create --name <Name> --location "centralus"
    ```
 
-1. Dále vytvořte instanční objekt pro cluster Kubernetes v Azure tak, aby mohl komunikovat s prostředky, které jsou součástí stejné skupiny prostředků. Můžete vytvořit instanční objekt služby pomocí rozhraní příkazového řádku Azure, Powershellu nebo webu Azure portal, v tomto příkladu, které budete rozhraní příkazového řádku k jeho vytvoření.
+1. Dále vytvořte instanční objekt pro cluster Azure Kubernetes, aby mohl komunikovat s prostředky, které jsou součástí stejné skupiny prostředků. Instanční objekt můžete vytvořit pomocí rozhraní příkazového řádku Azure CLI, PowerShellu nebo Azure Portal, v tomto příkladu budete mít příkaz CLI a vytvoříte ho.
 
    ```azurecli-interactive
    az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<Your_Azure_subscription_ID>/resourceGroups/<Your_resource_group_name>"
    ```
-   Tento příkaz vypíše podrobnosti instančního objektu, například:
+   Tento příkaz vypíše Podrobnosti objektu služby, například:
    
    ```cmd
    Retrying role assignment creation: 1/36
@@ -72,15 +72,15 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
    }
    ```
    
-   Poznamenejte si **appId** a **heslo** pole, protože budete používat tyto parametry v dalších krocích. 
+   Poznamenejte si pole **appId** a **Password** , protože tyto parametry použijete v dalších krocích. 
 
-1. Z příkazového řádku přejděte do složky, ve kterém je modul Azure Kubernetes spustitelný soubor umístěn. Například na příkazovém řádku můžete přejděte do složky jako:
+1. Z příkazového řádku přejděte do složky, ve které je umístěný spustitelný soubor modulu Azure Kubernetes. Například na příkazovém řádku můžete přejít do složky jako:
 
    ```cmd
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Otevřete textový editor podle vašeho výběru a definujte šablony Resource Manageru, který se nasadí cluster Kubernetes v Azure pomocí služby Azure Cosmos DB etcd rozhraní API. Zkopírujte následující definici JSON do textového editoru a uložte soubor jako `apiModel.json`:
+1. Otevřete textový editor podle vlastního výběru a definujte šablonu Správce prostředků, která nasadí cluster Azure Kubernetes pomocí rozhraní API Azure Cosmos DB etcd. Zkopírujte následující definici JSON do textového editoru a soubor uložte jako `apiModel.json`:
 
    ```json
 
@@ -121,9 +121,9 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
    }
    ```
 
-   V souboru definice JSON/clusteru, je parametr klíče si uvědomit **"cosmosEtcd": true**. Tento parametr je ve vlastnostech "profilech masterProfile" a informuje o nasazení rozhraní API služby Azure Cosmos etcd nahrazujícím regulární etcd. 
+   V souboru definice JSON nebo clusteru je parametr klíče, který se má poznamenat **"cosmosEtcd": true**. Tento parametr je ve vlastnostech "profilech masterprofile" a označuje, že nasazení bude používat rozhraní API Azure Cosmos etcd místo regulárního etcd. 
 
-1. Nasazení clusteru Kubernetes v Azure, která používá službu Azure Cosmos DB pomocí následujícího příkazu:
+1. Nasaďte cluster Azure Kubernetes, který používá Azure Cosmos DB, s následujícím příkazem:
 
    ```cmd
    aks-engine deploy \
@@ -137,19 +137,19 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
      --force-overwrite
    ```
 
-   Modul Azure Kubernetes využívá definici clusteru, který popisuje požadovaný tvar, velikost a konfigurace Azure Kubernetes. Existuje několik funkcí, které se dá nastavit pomocí definice clusteru. V tomto příkladu budete používat následující parametry:
+   Modul Azure Kubernetes využívá definici clusteru, která popisuje požadovaný tvar, velikost a konfiguraci Azure Kubernetes. V rámci definice clusteru je možné povolit několik funkcí. V tomto příkladu budete používat následující parametry:
 
-   * **id předplatného:** ID předplatného Azure, který má rozhraní API služby Azure Cosmos DB etcd povolena.
-   * **id klienta:** ID aplikace instančního objektu. `appId` Byla vrácena jako výstup v kroku 4.
-   * **Tajný klíč klienta:** Heslo instančního objektu nebo náhodně generované heslo. Tato hodnota byla vrácena jako výstup v parametru 'password' v kroku 4. 
-   * **dnsPrefix:** Oblasti jedinečný název DNS. Tato hodnota je součástí názvu hostitele (například hodnoty jsou – myprod1, pracovní).
-   * **Umístění:**  Umístění, kde clusteru by mělo být nasazená momentálně se podporuje jenom "centralus" je nepodporuje.
+   * **ID předplatného:** ID předplatného Azure, které má povolené Azure Cosmos DB rozhraní API etcd
+   * **ID klienta:** Identifikátor appId objektu služby `appId` V kroku 4 se vrátil jako výstup.
+   * **Tajný kód klienta:** Heslo objektu služby nebo náhodně generované heslo. Tato hodnota byla vrácena jako výstup v parametru Password v kroku 4. 
+   * **dnsPrefix:** Název DNS jedinečné pro oblast. Tato hodnota bude tvořit část názvu hostitele (příklad hodnot je-myprod1, fázování).
+   * **oblasti**  Umístění, do kterého se má cluster nasadit, momentálně se podporuje jenom "centralus".
 
    > [!Note]
-   > Rozhraní API služby Azure Cosmos etcd je aktuálně k dispozici pro nasazení v oblasti "centralus" pouze. 
+   > Rozhraní Azure Cosmos etcd API je teď k dispozici jenom pro nasazení v oblasti "centralus". 
  
    * **api-model:** Plně kvalifikovaná cesta k souboru šablony.
-   * **vynucení přepsání:** Tato možnost se používá k automatickému přepsání existujících souborů ve výstupním adresáři.
+   * **vynutit – přepsat:** Tato možnost slouží k automatickému přepsání existujících souborů ve výstupním adresáři.
  
    Následující příkaz ukazuje příklad nasazení:
 
@@ -166,7 +166,7 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-Nasazení šablony trvá několik minut. Po úspěšném dokončení nasazení se zobrazí následující výstup v příkazovém řádku příkazy:
+Dokončení nasazení šablony trvá několik minut. Po úspěšném dokončení nasazení se zobrazí následující výstup do příkazového řádku:
 
 ```cmd
 WARN[0006] apimodel: missing masterProfile.dnsPrefix will use "aks-sg-test"
@@ -175,12 +175,12 @@ INFO[0025] Starting ARM Deployment (aks-sg-test-546247491). This will take some 
 INFO[0587] Finished ARM Deployment (aks-sg-test-546247491). Succeeded
 ```
 
-Skupina prostředků, jako teď obsahuje prostředky – virtuální počítač Azure Cosmos účtu (etcd rozhraní API), virtuální sítě, dostupnosti, a další prostředky vyžadované clusteru Kubernetes. 
+Skupina prostředků teď obsahuje prostředky, jako jsou virtuální počítače, účet Azure Cosmos (etcd API), virtuální síť, skupinu dostupnosti a další prostředky vyžadované clusterem Kubernetes. 
 
-Název účtu Azure Cosmos se bude shodovat s k8s zadanou předponu DNS. Váš účet Azure Cosmos automaticky zřídí databázi s názvem **EtcdDB** a kontejner s názvem **EtcdData**. Kontejner bude ukládat všechny etcd související data. Kontejner je zřízený s počtem jednotek žádosti a můžete [škálování (zvětšit nebo zmenšit) propustnost](scaling-throughput.md) na základě vašich úloh. 
+Název účtu Azure Cosmos bude odpovídat zadané předponě DNS připojené k k8s. Váš účet Azure Cosmos se automaticky zřídí s databází s názvem **EtcdDB** a kontejnerem s názvem **EtcdData**. Kontejner bude ukládat všechna data související s etcd. Kontejner se zřídí s určitým počtem jednotek žádostí. [propustnost můžete škálovat (zvýšit nebo snížit)](scaling-throughput.md) na základě vašich úloh. 
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [pracovat s databází Azure Cosmos, kontejnery a položek](databases-containers-items.md)
-* Zjistěte, jak [optimalizaci nákladů na zřízená propustnost](optimize-cost-throughput.md)
+* Naučte [se pracovat s Azure Cosmos Database, kontejnery a položkami](databases-containers-items.md) .
+* Informace o tom, jak [optimalizovat zřízené náklady na propustnost](optimize-cost-throughput.md)
 

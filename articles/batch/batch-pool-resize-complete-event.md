@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: c2544bd2be683b731c3dac0bea651d4b64dff75e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a11dec8998a77153cd10b6caf72f5885c69b70c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094772"
 ---
 # <a name="pool-resize-complete-event"></a>Událost dokončení změny velikosti fondu
 
@@ -48,7 +47,7 @@ ms.locfileid: "68323194"
 |targetDedicated|Int32|Počet výpočetních uzlů, které jsou pro fond požadovány.|
 |enableAutoScale|Bool|Určuje, jestli se velikost fondu v průběhu času automaticky upraví.|
 |isAutoPool|Bool|Určuje, jestli se fond vytvořil pomocí mechanismu autopoolu úlohy.|
-|startTime|Datetime|Čas zahájení změny velikosti fondu.|
-|endTime|Datetime|Čas, kdy se změna velikosti fondu dokončila.|
+|startTime|DateTime|Čas zahájení změny velikosti fondu.|
+|endTime|DateTime|Čas, kdy se změna velikosti fondu dokončila.|
 |resultCode|Řetězec|Výsledek změny velikosti.|
 |resultMessage|Řetězec|Chyba změny velikosti zahrnuje podrobnosti o výsledku.<br /><br /> Pokud se změna velikosti úspěšně dokončila, uvádí, že operace byla úspěšná.|
