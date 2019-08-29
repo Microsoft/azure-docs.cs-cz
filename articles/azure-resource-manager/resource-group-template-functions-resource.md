@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650419"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095755"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -188,7 +188,7 @@ Zadat zdroj podle použití názvu prostředku nebo [funkce resourceId](#resourc
 
 Použijete-li funkci **list** v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce **seznamu** odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a list s podmíněně nasazeným prostředkem.
 
-### <a name="example"></a>Příklad
+### <a name="list-example"></a>Příklad seznamu
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) ukazuje, jak vrátit primární a sekundární klíče z účtu úložiště v části výstupů. Také vrátí token SAS pro účet úložiště. 
 
@@ -284,7 +284,7 @@ Každý podporovaný typ se vrátí v následujícím formátu:
 
 Pole řazení vrácené hodnoty není zaručena.
 
-### <a name="example"></a>Příklad:
+### <a name="providers-example"></a>Příklad poskytovatelů
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) ukazuje, jak použít funkci zprostředkovatele:
 
@@ -433,7 +433,7 @@ Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` , není správné.
 
-### <a name="example"></a>Příklad
+### <a name="reference-example"></a>Příklad odkazu
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) nasadí prostředku a odkazuje na tento prostředek.
 
@@ -600,7 +600,7 @@ K vytváření prostředků ve stejném umístění jako skupina prostředků se
 
 K použití značek ze skupiny prostředků na prostředek můžete také použít funkci Resource. Další informace najdete v tématu [použití značek ze skupiny prostředků](resource-group-using-tags.md#apply-tags-from-resource-group).
 
-### <a name="example"></a>Příklad
+### <a name="resource-group-example"></a>Příklad skupiny prostředků
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) vrátí vlastnosti skupiny prostředků.
 
@@ -737,7 +737,7 @@ Pokud chcete získat ID prostředku na úrovni předplatného při nasazení v o
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="resource-id-example"></a>Příklad ID prostředku
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) vrátí ID prostředku účtu úložiště ve skupině prostředků:
 
@@ -795,7 +795,7 @@ Funkce vrátí v následujícím formátu:
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="subscription-example"></a>Příklad předplatného
 
 Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) ukazuje volal funkci předplatného v část outputs. 
 
@@ -813,7 +813,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).

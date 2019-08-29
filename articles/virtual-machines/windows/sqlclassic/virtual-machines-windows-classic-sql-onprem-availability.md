@@ -1,6 +1,6 @@
 ---
-title: Rozšíření místních skupin dostupnosti Always On do Azure | Dokumentace Microsoftu
-description: Tento kurz používá prostředky vytvořené pomocí modelu nasazení classic a popisuje, jak pomocí průvodce přidat repliky v SQL Server Management Studio (SSMS) přidání repliky skupiny dostupnosti Always On v Azure.
+title: Rozšiřování místních skupin dostupnosti Always On do Azure | Microsoft Docs
+description: Tento kurz používá prostředky vytvořené pomocí modelu nasazení Classic a popisuje, jak pomocí Průvodce přidáním repliky v SQL Server Management Studio (SSMS) přidat repliku skupiny dostupnosti Always On v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -9,89 +9,88 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28819bc9d2eaf7d4b595bed59bcd1df8741b62a5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481579"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101833"
 ---
-# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšíření místních skupin dostupnosti Always On do Azure
-Skupiny dostupnosti AlwaysOn pro zajištění vysoké dostupnosti pro skupiny databáze tak, že přidáte sekundárních replik. Povolit tyto repliky databáze v případě selhání selhání. Kromě toho jsou slouží k přesměrování zpracování úlohami pro čtení nebo úlohy zálohování.
+# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšiřování místních skupin dostupnosti Always On do Azure
+Skupiny dostupnosti Always On poskytují vysokou dostupnost pro skupiny databáze přidáním sekundárních replik. Tyto repliky umožňují při selhání převzít služby při selhání databáze. Kromě toho je lze použít k přesměrování zatížení a úloh pro zálohování.
 
-Skupiny dostupnosti v místním do Microsoft Azure můžete rozšířit zřizování jeden nebo více virtuálních počítačů Azure s SQL serverem a jejich přidání jako repliky skupiny dostupnosti v místním.
+Místní skupiny dostupnosti můžete Microsoft Azure tím, že zřizujete jeden nebo více virtuálních počítačů Azure s SQL Server a pak je přidáte jako repliky do místních skupin dostupnosti.
 
-Tento kurz předpokládá, že máte následující:
+V tomto kurzu se předpokládá, že máte následující:
 
-* Aktivní předplatné Azure. Je možné [zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Existující skupiny dostupnosti Always On na místní. Další informace o skupinách dostupnosti najdete v tématu [skupin dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx).
-* Připojení mezi místní sítí a virtuální sítí Azure. Další informace o vytváření této virtuální síti, najdete v části [vytvoření připojení typu Site-to-Site pomocí webu Azure portal (classic)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
+* Aktivní předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Existující skupina dostupnosti Always On v místním prostředí. Další informace o skupinách dostupnosti najdete v tématu [skupiny dostupnosti Always On](https://msdn.microsoft.com/library/hh510230.aspx).
+* Připojení mezi místní sítí a virtuální sítí Azure. Další informace o vytváření této virtuální sítě najdete v tématu [vytvoření připojení typu Site-to-site pomocí Azure Portal (Classic)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 ## <a name="add-azure-replica-wizard"></a>Průvodce přidáním repliky Azure
-V této části se dozvíte, jak používat **Průvodce přidáním repliky Azure** rozšířit vaše řešení skupiny dostupnosti Always On zahrnout Azure repliky.
+V této části se dozvíte, jak pomocí **Průvodce přidáním repliky Azure** zvětšit vaše řešení skupiny dostupnosti Always On, aby zahrnovalo repliky Azure.
 
 > [!IMPORTANT]
-> **Průvodce přidáním repliky Azure** podporuje pouze virtuální počítače vytvořené pomocí modelu nasazení Classic. Nové nasazení virtuálního počítače by měla používat novější modelu Resource Manager. Pokud používáte virtuální počítače s využitím Resource Manageru, je třeba ručně přidat sekundární repliky Azure pomocí jazyka Transact-SQL commmands (není tady zobrazené). Tento průvodce nebudou fungovat ve scénáři Resource Manageru.
+> **Průvodce přidáním repliky Azure** podporuje jenom virtuální počítače vytvořené pomocí modelu nasazení Classic. Nová nasazení virtuálních počítačů by měla používat novější model Správce prostředků. Pokud používáte virtuální počítače s Správce prostředků, je nutné ručně přidat sekundární repliku Azure pomocí jazyka Transact-SQL Commmands (tady není zobrazený). Tento průvodce nebude ve scénáři Správce prostředků fungovat.
 
-1. Z v rámci SQL Server Management Studio rozbalte **vysoká dostupnost AlwaysOn** > **skupin dostupnosti** >  **[název vaší skupiny dostupnosti]** .
-2. Klikněte pravým tlačítkem na **replik dostupnosti**, pak klikněte na tlačítko **přidat repliky**.
-3. Ve výchozím nastavení **přidat repliky Průvodce vytvořením skupiny dostupnosti** se zobrazí. Klikněte na **Další**.  Pokud jste vybrali **tuto stránku již příště nezobrazovat** možnost v dolní části stránky při předchozím spuštění tohoto průvodce se tato obrazovka se nezobrazí.
+1. V rámci SQL Server Management Studio rozbalte položku**skupiny** > dostupnosti **Always On s vysokou dostupností** >  **[název vaší skupiny dostupnosti]** .
+2. Klikněte pravým tlačítkem na **repliky dostupnosti**a pak klikněte na **Přidat repliku**.
+3. Ve výchozím nastavení se zobrazí **Průvodce přidáním repliky do skupiny dostupnosti** . Klikněte na **Další**.  Pokud jste v dolní části stránky během předchozího spuštění tohoto průvodce vybrali možnost tuto **stránku již příště** nezobrazovat, tato obrazovka se nezobrazí.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
-4. Budete muset připojit na všechny stávající sekundární repliky. Můžete kliknout na **připojit...** vedle každé repliky nebo je můžete kliknout na tlačítko **připojit všechny...** v dolní části obrazovky. Po ověření klikněte na tlačítko **Další** k přechodu na další obrazovce.
-5. Na **zadejte repliky** stránce několik karet jsou uvedeny v horní části: **Repliky**, **koncové body**, **předvolby zálohování**, a **naslouchací proces**. Z **repliky** klikněte na tlačítko **přidat repliky Azure...** Chcete-li spustit Průvodce přidáním repliky Azure.
+4. Budete se muset připojit ke všem existujícím sekundárním replikám. Můžete kliknout na **připojit...** vedle každé repliky můžete kliknout na **Připojit vše...** v dolní části obrazovky. Po ověření kliknutím na tlačítko **Další** přejděte na další obrazovku.
+5. Na stránce **zadat repliky** jsou v horní části uvedeny více karet: **Repliky**, **koncové body**, **Předvolby zálohování**a **naslouchací proces**. Na kartě **repliky** klikněte na **Přidat repliku Azure...** pro spuštění Průvodce přidáním repliky Azure.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
-6. Pokud jste nainstalovali, než bude moct, vyberte certifikát pro správu Azure z místního úložiště certifikátů Windows. Vyberte nebo zadejte id předplatného Azure, pokud jste už použili, než bude moct. Klikněte na možnost stažení, a stáhněte si a nainstalujte certifikát pro správu Azure a stáhněte si seznam předplatných, pomocí účtu Azure.
+6. Vyberte existující certifikát pro správu Azure z místního úložiště certifikátů Windows, pokud jste ho nainstalovali dřív. Vyberte nebo zadejte ID předplatného Azure, pokud jste ho použili dřív. Kliknutím na stáhnout si můžete stáhnout a nainstalovat certifikát pro správu Azure a stáhnout seznam předplatných pomocí účtu Azure.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
-7. Každé pole na stránce s hodnotami, které se použijí k vytvoření Azure virtuální počítač (VM), který bude hostovat repliku naplníte.
+7. Každé pole na stránce se naplní hodnotami, které se použijí k vytvoření virtuálního počítače Azure, který bude hostovat repliku.
    
    | Nastavení | Popis |
    | --- | --- |
-   | **Image** |Vyberte požadovanou kombinaci operačního systému a serveru SQL Server |
-   | **Velikost virtuálního počítače** |Vyberte velikost virtuálního počítače, který nejlépe vyhovuje vašim obchodním potřebám |
-   | **Název virtuálního počítače** |Zadejte jedinečný název pro nový virtuální počítač. Název musí obsahovat 3 až 15 znaků, může obsahovat jenom písmena, číslice a spojovníky, musí začínat písmenem a končit písmenem nebo číslicí. |
-   | **Uživatelské jméno virtuálního počítače** |Zadejte uživatelské jméno, které se stanou účet správce na virtuálním počítači |
-   | **Heslo správce virtuálního počítače** |Zadejte heslo pro nový účet |
-   | **Potvrzení hesla** |Potvrďte heslo pro nový účet |
-   | **Virtual Network** |Zadejte virtuální síť Azure, který má používat nový virtuální počítač. Další informace o virtuálních sítích najdete v tématu [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md). |
-   | **Virtual Network Subnet** |Zadejte podsíť virtuální sítě, který má používat nový virtuální počítač |
-   | **Domény** |Potvrďte správnost předem vyplněné hodnoty pro doménu |
-   | **Doména uživatelské jméno** |Zadejte účet, který je ve skupině místních správců v uzlech místního clusteru |
-   | **Heslo** |Zadejte heslo pro uživatelské jméno domény |
-8. Klikněte na tlačítko **OK** chcete ověřit nastavení nasazení.
-9. Zobrazí se další právní podmínky. Čtení a klikněte na tlačítko **OK** Pokud souhlasíte s těmito podmínkami.
-10. **Zadejte repliky** stránky se zobrazí znovu. Ověřte nastavení pro nový Azure repliky na **repliky**, **koncové body**, a **předvolby zálohování** karty. Upravte nastavení podle požadavků vaší firmy.  Další informace o parametrech obsažená na těchto kartách najdete v tématu [zadat stránku repliky (nový průvodce nebo přidání repliky Průvodce vytvořením skupiny dostupnosti)](https://msdn.microsoft.com/library/hh213088.aspx). Poznámka: Nelze vytvořit naslouchacích procesů pomocí karty naslouchacího procesu skupiny dostupnosti, které obsahují Azure repliky. Kromě toho pokud naslouchací proces již byl vytvořen před spuštěním průvodce, obdržíte zprávu s oznámením, že se nepodporuje v Azure. Podíváme se na to, jak pro vytvoření naslouchacích procesů v **vytvořit naslouchací proces skupiny dostupnosti** oddílu.
+   | **Obrázek** |Vyberte požadovanou kombinaci OS a SQL Server |
+   | **Velikost virtuálního počítače** |Vyberte velikost virtuálního počítače, který nejlépe vyhovuje vašim obchodním potřebám. |
+   | **Název virtuálního počítače** |Zadejte jedinečný název nového virtuálního počítače. Název musí obsahovat 3 až 15 znaků, může obsahovat jenom písmena, číslice a spojovníky a musí začínat písmenem a končit písmenem nebo číslicí. |
+   | **Uživatelské jméno virtuálního počítače** |Zadejte uživatelské jméno, které se stane účtem správce ve virtuálním počítači. |
+   | **Heslo správce virtuálního počítače** |Zadejte heslo pro nový účet. |
+   | **Potvrzení hesla** |Potvrďte heslo k novému účtu. |
+   | **Virtual Network** |Zadejte virtuální síť Azure, kterou má nový virtuální počítač použít. Další informace o virtuálních sítích najdete v tématu [přehled Virtual Network](../../../virtual-network/virtual-networks-overview.md). |
+   | **Virtual Network podsíť** |Zadejte podsíť virtuální sítě, kterou má nový virtuální počítač použít. |
+   | **Domény** |Potvrďte, že předem vyplněná hodnota pro doménu je správná. |
+   | **Uživatelské jméno domény** |Zadejte účet, který je v místní skupině Administrators na místních uzlech clusteru. |
+   | **Heslo** |Zadejte heslo pro uživatelské jméno domény. |
+8. Kliknutím na **OK** ověřte nastavení nasazení.
+9. Zobrazí se další právní výrazy. Pokud souhlasíte s těmito podmínkami, přečtěte si a klikněte na **OK** .
+10. Znovu se zobrazí stránka **zadat repliky** . Ověřte nastavení pro novou repliku Azure na kartách **repliky**, **koncové body**a **Předvolby zálohování** . Upravte nastavení tak, aby splňovalo vaše obchodní požadavky.  Další informace o parametrech obsažených na těchto kartách najdete v tématu věnovaném [nastavení stránky repliky (Průvodce novou skupinou dostupnosti/průvodce přidáním repliky)](https://msdn.microsoft.com/library/hh213088.aspx). Naslouchací procesy nelze vytvořit pomocí karty naslouchacího procesu pro skupiny dostupnosti, které obsahují repliky Azure. Kromě toho, pokud již byl naslouchací proces vytvořen před spuštěním průvodce, obdržíte zprávu s oznámením, že není podporována v Azure. Podíváme se na to, jak vytvořit naslouchací procesy v části **Vytvoření naslouchacího procesu skupiny dostupnosti** .
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 11. Klikněte na **Další**.
-12. Vyberte metodu synchronizace dat, kterou chcete použít na **vybrat počáteční synchronizaci dat** stránky a klikněte na tlačítko **Další**. Pro většinu scénářů, vyberte **úplnou synchronizaci dat**. Další informace o metodách synchronizace dat najdete v tématu [vyberte počáteční synchronizace stránka dat (vždy na dostupnost skupiny průvodci)](https://msdn.microsoft.com/library/hh231021.aspx).
-13. Zkontrolujte výsledky na **ověření** stránky. Opravte nevyřízených problémů a v případě potřeby znovu spusťte ověření. Klikněte na **Další**.
+12. Na stránce **Vyberte počáteční synchronizaci dat** vyberte metodu synchronizace dat, kterou chcete použít, a klikněte na **Další**. U většiny scénářů vyberte **Úplná synchronizace dat**. Další informace o metodách synchronizace dat najdete na [stránce Výběr počáteční synchronizace dat (Průvodce skupinami dostupnosti Always On)](https://msdn.microsoft.com/library/hh231021.aspx).
+13. Zkontrolujte výsledky na stránce **ověřování** . Opravte nevyřízené problémy a v případě potřeby znovu spusťte ověřování. Klikněte na **Další**.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
-14. Zkontrolujte nastavení na **Souhrn** stránce a potom klikněte na **Dokončit**.
-15. Zahájí proces zřizování. Po úspěšném dokončení průvodce klikněte na tlačítko **Zavřít** Chcete-li ukončit průvodce.
+14. Zkontrolujte nastavení na stránce **Souhrn** a pak klikněte na **Dokončit**.
+15. Proces zřizování se zahájí. Po úspěšném dokončení průvodce kliknutím na **Zavřít** ukončete průvodce.
 
 > [!NOTE]
-> Průvodce přidáním repliky Azure vytvoří soubor protokolu v Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. Tento protokolový soubor lze použít k vyřešení problémů nasazení se nezdařilo Azure repliky. Pokud průvodce selže, provádění jakékoli akce, budou se všechny předchozí operace vrátit zpět, včetně odstranění zřízených virtuálních počítačů.
+> Průvodce přidáním repliky Azure vytvoří soubor protokolu v Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. Tento soubor protokolu se dá použít k odstraňování potíží s neúspěšnými nasazeními repliky Azure. Pokud průvodce neprovede žádnou akci, vrátí se všechny předchozí operace zpátky, včetně odstranění zřízeného virtuálního počítače.
 > 
 > 
 
-## <a name="create-an-availability-group-listener"></a>Vytvořte naslouchací proces skupiny dostupnosti
-Po vytvoření skupiny dostupnosti, měli byste vytvořit naslouchací proces pro připojení klientů k replik. Posluchači přímý příchozí připojení k primární nebo sekundární repliky jen pro čtení. Další informace o naslouchacích procesů, naleznete v tématu [konfigurace naslouchacího procesu ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
+## <a name="create-an-availability-group-listener"></a>Vytvoření naslouchacího procesu skupiny dostupnosti
+Po vytvoření skupiny dostupnosti byste měli vytvořit naslouchací proces pro klienty pro připojení k replikám. Naslouchací procesy směrují příchozí připojení buď k primární replice, nebo k sekundární replice jen pro čtení. Další informace o posluchačích najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
-## <a name="next-steps"></a>Další postup
-Kromě použití **Průvodce přidáním repliky Azure** pro rozšíření vaší skupiny dostupnosti Always On do Azure, může také přesunutí některých úloh SQL serveru zcela do Azure. Abyste mohli začít, najdete v článku [zřízení virtuálního počítače SQL serveru v Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+## <a name="next-steps"></a>Další kroky
+Kromě používání **Průvodce přidáním repliky Azure** k rozšíření skupiny dostupnosti Always On do Azure můžete také některé úlohy SQL Server do Azure přesunout úplně. Informace o tom, jak začít, najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md).
 
-Další témata související s SQL serverem na virtuálních počítačích Azure, najdete v části [systému SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241780"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073614"
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
@@ -36,8 +35,8 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Projděte si následující rychlý start: [Vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Také dokončení následujícího kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Dokončete následující rychlý Start: [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
++ Také proveďte následující kurz: [Importujte a publikujte své první rozhraní API](import-and-publish.md).
 
 ## <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu
 
@@ -48,17 +47,17 @@ V tomto kurzu se naučíte:
 
     Při přidávání produktu je potřeba zadat následující informace: 
 
-    | Název                     | Popis                                                                                                                                                                                                                                                                                                             |
+    | Name                     | Popis                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Display name             | Název, který se má zobrazit na **portálu pro vývojáře**.                                                                                                                                                                                                                                                        |
-    | Název                     | Popisný název produktu.                                                                                                                                                                                                                                                                                      |
+    | Name                     | Popisný název produktu.                                                                                                                                                                                                                                                                                      |
     | Popis              | Do pole **Popis** můžete zadat podrobné informace o produktu, například jeho účel, rozhraní API, ke kterým poskytuje přístup, a další užitečné informace.                                                                                                                                               |
-    | Stav                    | Pokud chcete produkt publikovat, stiskněte **Publikováno**. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty nepublikované a viditelné pouze pro skupinu **Správci**.                                                                                      |
+    | State                    | Pokud chcete produkt publikovat, stiskněte **Publikováno**. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty nepublikované a viditelné pouze pro skupinu **Správci**.                                                                                      |
     | Vyžaduje předplatné.    | Zaškrtněte políčko **Vyžadovat předplatné**, pokud se k používání produktu vyžaduje přihlášení uživatele k odběru.                                                                                                                                                                                                                                   |
     | Vyžaduje schválení        | Zaškrtněte políčko **Vyžadovat schválení**, pokud chcete, aby pokusy o přihlášení k odběru produktu kontroloval a následně přijímal nebo odmítal správce. Pokud toto políčko není zaškrtnuté, pokusy o přihlášení k odběru se automaticky schvalují.                                                                                                                         |
     | Omezení počtu předplatných | Pokud chcete omezit počet více souběžných předplatných, zadejte omezení předplatných.                                                                                                                                                                                                                                |
     | Právní podmínky              | Pro produkt můžete zahrnout podmínky použití, které musí předplatitelé přijmout, aby mohli produkt využívat.                                                                                                                                                                                                             |
-    | Rozhraní API                     | Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/> Při vytváření produktu můžete přidat existující rozhraní API. Rozhraní API můžete do produktu přidat i později, a to na stránce **Nastavení** produktu nebo při vytváření rozhraní API. |
+    | API                     | Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/> Při vytváření produktu můžete přidat existující rozhraní API. Rozhraní API můžete do produktu přidat i později, a to na stránce **Nastavení** produktu nebo při vytváření rozhraní API. |
 
 3. Kliknutím na **Vytvořit** vytvořte nový produkt.
 

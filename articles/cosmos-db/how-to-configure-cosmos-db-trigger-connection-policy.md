@@ -3,15 +3,15 @@ title: Azure Functions Trigger pro zásady připojení Cosmos DB
 description: Zjistěte, jak nakonfigurovat zásady připojení používané Azure Functions triggerem pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335623"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093606"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Postup konfigurace zásad připojení používaných Azure Functions triggerem pro Cosmos DB
 
@@ -50,7 +50,7 @@ Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1
 > [!NOTE]
 > Při práci s plánem hostování Azure Functions spotřeby má každá instance omezení množství připojení soketu, která může udržovat. Při práci s režimem Direct/TCP se vytvoří návrh většího [počtu](../azure-functions/manage-connections.md#connection-limit)připojení. v takovém případě můžete buď použít režim brány, nebo spustit Azure Functions v [režimu App Service](../azure-functions/functions-scale.md#app-service-plan).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Omezení připojení v Azure Functions](../azure-functions/manage-connections.md#connection-limit)
 * [Tipy k výkonu Azure Cosmos DB](./performance-tips.md)
