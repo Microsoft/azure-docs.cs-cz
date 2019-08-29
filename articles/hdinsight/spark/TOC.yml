@@ -331,6 +331,8 @@
           href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Referenční informace
   items:
+    - name: Podporované konfigurace uzlů
+      href: ../hdinsight-supported-node-configuration.md
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

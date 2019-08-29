@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
+  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70062201"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70072662"
 landingContent:
 - title: Nastavení a využití aplikace Microsoft Authenticator
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: Přihlášení pomocí aplikace
       url: user-help-auth-app-sign-in.md
-- title: Nastavení a použití dvoustupňového ověření
+- title: Volba metody dvoustupňového ověřování
   linkLists:
   - linkListType: overview
     links:
@@ -49,7 +49,7 @@ landingContent:
       url: multi-factor-authentication-end-user-manage-settings.md
     - text: Podpora
       url: multi-factor-authentication-end-user-troubleshoot.md
-- title: Nastavení portálu Moje aplikace a jeho využití
+- title: Aktualizace informací na portálu Moje aplikace
   linkLists:
   - linkListType: overview
     links:
@@ -61,7 +61,7 @@ landingContent:
       url: my-apps-portal-end-user-update-profile.md
     - text: Podpora
       url: my-apps-portal-end-user-troubleshoot.md
-- title: Nastavení a použití bezpečnostních údajů (Preview)
+- title: Nastavení a správa bezpečnostních údajů (Preview)
   linkLists:
   - linkListType: overview
     links:
@@ -73,7 +73,7 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: Přidání údajů během přihlašování
       url: security-info-setup-signin.md
-- title: Nastavení a použití portálu Můj profil (Preview)
+- title: Správa informací na portálu Moje aplikace (Preview)
   linkLists:
   - linkListType: overview
     links:

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentace k virtuálním počítačům Azure pro datové vědy
+title: Dokumentace k prostředí Azure Data Science Virtual Machine
 metadata:
-  title: Dokumentace k virtuálním počítačům pro datové vědy – Azure
-  description: 'Naučíte se využívat Data Science Virtual Machine, experimentální prostředí v cloudu Azure vytvořené pro účely datových věd. Oblíbené nástroje pro datové vědy a další funkce jsou předinstalované a předem nakonfigurované, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.'
+  title: Dokumentace k prostředí Data Science Virtual Machine – Azure
+  description: 'Naučíte se využívat Data Science Virtual Machine, experimentální prostředí v cloudu Azure, které je vytvořené pro účely datových věd. Oblíbené nástroje pro datové vědy a strojové učení jsou předem nainstalované a předkonfigurované. Zajistí vám náskok při vytváření inteligentních aplikací pro pokročilou analýzu.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: Azure Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače s nástroji pro datové vědy a strojové učení. Tento virtuální počítač můžete využít k sestavování pokročilých inteligentních analytických aplikací. <a href="overview.md">Další informace...</a>.
+  description: Azure Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače s nástroji pro datové vědy a strojové učení. Tento virtuální počítač můžete využít k sestavování inteligentních aplikací pro pokročilé analýzy. <a href="overview.md">Další informace</a>.
 sections:
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
-        text: 'Naučíte se nastavit virtuální počítač pro datové vědy založený na Windows nebo Linuxu:'
+        text: 'Naučíte se nastavit prostředí Data Science Virtual Machine založené na systému Windows nebo na Linuxu:'
       - type: paragraph
         text: <b>DSVM s Windows</b>
       - type: list
@@ -35,7 +35,7 @@ sections:
           - html: <a href="linux-dsvm-intro">Nastavení DSVM se systémem Linux CentOS</a>
           - html: <a href="dsvm-ubuntu-intro">Nastavení DSVM se systémem Linux Ubuntu</a>
           - html: <a href="linux-dsvm-walkthrough">Použití virtuálního počítače pro datové vědy s Linuxem</a>
-  - title: Další technologie Azure Machine Learning
+  - title: Další technologie Azure Machine Learningu
     items:
       - type: paragraph
         text: 'Další technologie dostupné ve službách Azure Machine Learning:'

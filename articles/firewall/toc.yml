@@ -10,7 +10,7 @@
     - name: Nasazení a konfigurace
       href: tutorial-firewall-deploy-portal.md
     - name: Nasazení v hybridní síti
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: Filtrování příchozího provozu pomocí DNAT
       href: tutorial-firewall-dnat.md
     - name: Monitorování diagnostických protokolů
@@ -39,6 +39,8 @@
   items:
     - name: Nasazení s využitím Azure PowerShellu
       href: deploy-ps.md
+    - name: Nasazení v hybridní síti – PowerShell
+      href: tutorial-hybrid-ps.md
     - name: Nasazení s využitím rozhraní příkazového řádku Azure
       href: deploy-cli.md
     - name: Nasazení pomocí šablony

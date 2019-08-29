@@ -60,6 +60,8 @@
         - name: Vaše výhody na trhu
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Zapojení partnerů do společného prodeje
+              href: ./marketplace-co-sell.md
             - name: Upřednostňovaná řešení
               href: ./preferred-solutions.md
             - name: Integrovaná řešení
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Otestování nabídky
           href: ./partner-center-portal/test-drive.md
+        - name: Možnost společného prodeje
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: Kódy zemí a oblastí
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: Stavové kódy
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Stav publikování
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualizace stávajících nabídek
