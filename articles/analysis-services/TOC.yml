@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě Azure Analysis Services
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Co je služba Azure Analysis Services?
