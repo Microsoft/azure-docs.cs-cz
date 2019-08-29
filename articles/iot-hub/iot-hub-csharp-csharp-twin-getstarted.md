@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: e748ade19fe64399015acfc35892c5d9081bf9e3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c07b110f0d4c31713ab432b5b5e337f3b69dfc55
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062101"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147716"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
 
@@ -33,8 +33,6 @@ V tomto kurzu vytvoříte tyto aplikace konzoly .NET:
 >
 
 ## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio.
 
@@ -245,7 +243,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
     ![Připojení zařízení se úspěšně nahlásilo.](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Metadata zařízení jste přidali jako značky z back-endové aplikace a zapsali jste aplikaci simulovaného zařízení, která oznamuje informace o připojení zařízení v zařízení. Zjistili jste také, jak zadat dotaz na tyto informace pomocí dotazovacího jazyka IoT Hub, jako je třeba SQL.
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019190"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147865"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrateová matice podpory
 
@@ -31,10 +31,10 @@ Existují dvě verze služby Azure Migrate:
 
 Tabulka shrnuje podporované scénáře migrace.
 
-**Nasazení** | **Zobrazí*** 
+**Nasazení** | **Podrobnosti** 
 --- | --- 
 **Místní posouzení** | Vyhodnoťte místní úlohy a data běžící na virtuálních počítačích VMware a na virtuálních počítačích Hyper-V. Vyhodnotit pomocí Azure Migrate Server Assessment and Microsoft Data Migration Assistant (DMA) a také nástroje třetích stran, které zahrnují Cloudamize, spolupronajmutí tech and Turbonomic Server.
-**Místní migrace do Azure** | Migrujte úlohy a data běžící na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V a na instancích AWS/GCP na Azure. Migrujte pomocí Azure Migrate Server Assessment and Azure Database Migration Service (DMS) a také pomocí nástrojů třetích stran, které zahrnují Carbonite a CorentTech.
+**Místní migrace do Azure** | Migrujte úlohy a data spuštěná na fyzických serverech, virtuálních počítačích VMware, virtuálních počítačích Hyper-V, fyzických serverech a cloudových virtuálních počítačích do Azure. Migrujte pomocí Azure Migrate Server Assessment and Azure Database Migration Service (DMS) a také pomocí nástrojů třetích stran, které zahrnují Carbonite a CorentTech.
 
 Konkrétní podpora nástrojů je shrnuta následujícím způsobem.
 
@@ -53,7 +53,7 @@ CorentTech | Migrace | [Další informace](https://www.corenttech.com/).
 
 **Podpora** | **Podrobnosti**
 --- | ---
-Subscription | V předplatném můžete mít jeden Azure Migrate projekt.
+Subscription | V předplatném můžete mít více Azure Migratech projektů.
 Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
 Virtuální počítače VMware  | Vyhodnoťte až 35 000 virtuálních počítačů VMware v jednom projektu.
 Virtuální počítače Hyper-V | Vyhodnoťte až 10 000 virtuálních počítačů Hyper-V v jednom projektu.
