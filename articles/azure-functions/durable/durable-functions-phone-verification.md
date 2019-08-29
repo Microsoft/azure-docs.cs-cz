@@ -1,103 +1,102 @@
 ---
-title: Lidská interakce a vypršení časového limitu pro v Durable Functions – Azure
-description: Zjistěte, jak zpracovat lidské interakce a vypršení časového limitu pro v rozšíření Durable Functions pro službu Azure Functions.
+title: Lidská interakce a časové limity v Durable Functions – Azure
+description: Naučte se, jak zpracovávat lidské interakce a časové limity v rozšíření Durable Functions pro Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3918c37d985c6766fe6ad4601b70ddbd4597b0ba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087149"
 ---
-# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Lidská interakce v Durable Functions – Ukázka ověření telefonu
+# <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Ukázka lidské interakce v Durable Functions-telefon ověřování
 
-Tato ukázka předvádí, jak vytvářet [Durable Functions](durable-functions-overview.md) Orchestrace, která zahrnuje lidské interakce. Pokaždé, když se skutečná osoba zapojena do automatizovaného procesu, proces musí být schopen odeslat oznámení uživateli a přijímat odpovědi asynchronně. Musíte také povolit možnost, není k dispozici osobě. (Tento poslední část je, kde vypršení časového limitu na významu nabývají.)
+Tato ukázka předvádí, jak sestavit [Durable Functions](durable-functions-overview.md) orchestrace, která zahrnuje lidskou interakci. Kdykoli je skutečná osoba zapojena do automatizovaného procesu, proces musí být schopný odesílat oznámení osobě a přijímat odpovědi asynchronně. Také musí umožnit, aby osoba nebyla k dispozici. (V této poslední části se stanou důležité časové limity.)
 
-Tato ukázka implementuje služby SMS na telefonu ověřovacího systému. Tyto typy toků se často používají při ověřování na základě telefonní číslo nebo ověřování službou Multi-Factor Authentication (MFA). Výkonné příklad důvodem je, že celý implementace se provádí pomocí několika malých funkcí. Žádné externím úložišti, jako je například databáze, je povinný.
+Tato ukázka implementuje systém ověřování pro telefon založený na SMS. Tyto typy toků se často používají při ověřování telefonního čísla zákazníka nebo služby Multi-Factor Authentication (MFA). Jedná se o účinný příklad, protože celá implementace se provádí pomocí několika malých funkcí. Není vyžadováno žádné externí úložiště dat, například databáze.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Ověření telefonu se používá k ověření, že koncoví uživatelé vaší aplikace nejsou spammery a který říká, že jsou jsou. Ověřování službou Multi-Factor Authentication je běžným případem použití k ochraně před hackery uživatelské účty. Problém s implementací vlastní ověření pomocí telefonu je, že vyžaduje **stavové zásahu** s lidmi. Koncový uživatel se většinou poskytuje nějaký kód (například číslo 4 číslice) a musí odpovídat **v rozumném čase**.
+Ověřování pomocí telefonu se používá k ověření, že koncoví uživatelé vaší aplikace nejsou odesilatelé nevyžádané pošty a že se k nim říkají. Multi-Factor Authentication je běžný případ použití pro ochranu uživatelských účtů proti hackerům. Výzvou k implementaci vlastního ověřování na základě telefonu je, že vyžaduje **stavovou interakci** s lidmi. Koncovému uživateli se obvykle poskytuje nějaký kód (například číslo se čtyřmi číslicemi) a musí reagovat **v rozumném časovém intervalu**.
 
-Použít běžné funkce Azure jsou bezstavové (jako jsou mnoho dalších koncové body cloudu na jiných platformách), tak tyto druhy interakce zahrnují explicitně Správa externě v databázi nebo některé jiné trvalá úložiště stavu. Kromě toho interakce musí rozdělit do více funkcí, které lze koordinovat společně. Například budete potřebovat alespoň jedna funkce pro rozhodnutí týkající se kód, uchování někde a odesílá je do telefonu uživatele. Kromě toho budete potřebovat alespoň jeden další funkci pro příjem odpověď od uživatele a nějakým způsobem mapovat zpět na původní volání funkce, aby bylo možné provést ověření kódu. Vypršení časového limitu je také k důležitým aspektům, abyste zajistili bezpečnost. To může být složitější poměrně rychle.
+Běžné Azure Functions jsou bezstavové (stejně jako mnoho dalších koncových bodů cloudu na jiných platformách), takže tyto typy interakcí zahrnují explicitní správu stavu externě v databázi nebo v jiném trvalém úložišti. Kromě toho musí být interakce rozdělena do více funkcí, které mohou být koordinovány dohromady. Například potřebujete alespoň jednu funkci pro rozhodování o kódu, zachovat ho někam a poslat ho do telefonu uživatele. Kromě toho potřebujete alespoň jednu další funkci pro příjem odpovědi od uživatele a nějakým způsobem ji namapovat zpátky na původní volání funkce, aby bylo možné provést ověření kódu. Časový limit je také důležitým aspektem pro zajištění zabezpečení. To může mít poměrně složitý přístup.
 
-Při použití Durable Functions, se výrazně snižuje složitost tento scénář. Jak uvidíte v této ukázce, funkce orchestrátoru můžete snadno a bez zahrnující všechny externích datových úložištích spravovat stavové zásahu. Protože jsou funkcí nástroje orchestrator *trvalý*, tyto interaktivní toky jsou také vysoce spolehlivé.
+Složitost tohoto scénáře se výrazně zkracuje při použití Durable Functions. Jak vidíte v této ukázce, může funkce Orchestrator spravovat stavovou interakci snadno a bez zahrnutí externích úložišť dat. Vzhledem k tomu, že funkce nástroje Orchestrator jsou *trvalé*, jsou tyto interaktivní toky také vysoce spolehlivé.
 
-## <a name="configuring-twilio-integration"></a>Konfigurace integrace platformy Twilio
+## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
 ## <a name="the-functions"></a>Funkce
 
-Tento článek vás provede následující funkce v ukázkové aplikaci:
+Tento článek vás provede následujícími funkcemi v ukázkové aplikaci:
 
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-Následující části popisují konfiguraci a kód, který se používají pro skriptovací C# a JavaScript. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
+Následující části popisují konfiguraci a kód, který se používá ke C# skriptování a JavaScriptu. Kód pro vývoj v aplikaci Visual Studio se zobrazí na konci článku.
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace ověření SMS (Visual Studio Code a Azure portal ukázkový kód)
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace ověření SMS (ukázkový kód Visual Studio Code a Azure Portal)
 
-**E4_SmsPhoneVerification** funkce používá standardní *function.json* pro funkce nástroje orchestrator.
+Funkce **E4_SmsPhoneVerification** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
 
-Tady je kód, který implementuje funkce:
+Zde je kód, který implementuje funkci:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
-Po zahájení této funkce orchestrátoru provede následující akce:
+Po spuštění tato funkce Orchestrator provede následující akce:
 
-1. Získá telefonní číslo, ke kterému bude *odeslat* oznámení zprávou SMS.
-2. Volání **E4_SendSmsChallenge** odeslat zprávu SMS na uživatele a vrátí zpět kód očekávané výzvy 4 číslice.
-3. Vytvoří trvalý časovače této aktivační události 90 sekund od aktuálního času.
-4. Paralelně s časovač, čeká **SmsChallengeResponse** události od uživatele.
+1. Načte telefonní číslo, na které bude *odesílat* oznámení SMS.
+2. Zavolá **E4_SendSmsChallenge** k odeslání zprávy SMS uživateli a vrátí zpět očekávaný kód výzvy se čtyřmi číslicemi.
+3. Vytvoří trvalý časovač, který spouští 90 sekund od aktuálního času.
+4. Paralelně s časovačem počká na událost **SmsChallengeResponse** od uživatele.
 
-Uživatel obdrží zprávu SMS s čtyřmístný kód. Mají 90 sekund se má odeslat zpět do instance funkce nástroje orchestrator pro dokončení procesu ověření, že stejný kód 4 číslice. Pokud odesílání chybný kód, vývojáři získají další tři pokusí získat přímo (v rámci stejné 90sekundové okno).
+Uživatel obdrží zprávu SMS s kódem se čtyřmi číslicemi. Mají 90 sekund k odeslání stejného čtyřmístného kódu zpátky do instance funkce Orchestrator, aby se dokončil proces ověření. Pokud odešle nesprávný kód, získá další tři pokusy o jeho navýšení (v rámci stejného 90 druhého okna).
 
 > [!NOTE]
-> Nemusí být zřejmé v první, ale tento orchestrator funkce je zcela deterministický. Je to proto, `CurrentUtcDateTime` (.NET) a `currentUtcDateTime` vlastnosti (JavaScript) slouží k výpočtu čas vypršení platnosti časovač a tyto vlastnosti vrátí stejnou hodnotu na každé opakování v tuto chvíli v kódu produktu orchestrator. To je důležité zajistit, aby stejné `winner` výsledkem každého opakovaná volání `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript).
+> V první době nemusí být zřejmé, ale tato funkce Orchestrator je zcela deterministické. Důvodem je, že `CurrentUtcDateTime` vlastnosti (.NET) `currentUtcDateTime` a (JavaScript) se používají k výpočtu času vypršení platnosti časovače. Tyto vlastnosti vrátí stejnou hodnotu pro každé přehrání v tomto okamžiku v kódu Orchestrator. To je důležité, aby se zajistilo `winner` , že stejné výsledky z každého `Task.WhenAny` opakovaného volání metody `context.df.Task.any` (.NET) nebo (JavaScript).
 
 > [!WARNING]
-> Je důležité [zrušení časovače](durable-functions-timers.md) Pokud už nepotřebujete jim vypršení platnosti, stejně jako v příkladu výše, když je přijata odpověď na výzvu.
+> Je důležité [Zrušit časovače](durable-functions-timers.md) , pokud už nepotřebujete, aby vyprší platnost, jako v příkladu výše, pokud je odpověď na výzvu přijata.
 
 ## <a name="send-the-sms-message"></a>Odeslat zprávu SMS
 
-**E4_SendSmsChallenge** funkce používá vazbu Twilio odeslat zprávu SMS s 4 6místným číselným kódem pro koncového uživatele. *Function.json* je definovaná následujícím způsobem:
+Funkce **E4_SendSmsChallenge** používá vazbu Twilio k odeslání zprávy SMS s kódem se čtyřmi číslicemi koncovému uživateli. *Funkce Function. JSON* je definována takto:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
 
-A tady je kód, který generuje kód 4 číslice výzvy a odešle zprávu SMS:
+A zde je kód, který generuje kód výzvy se čtyřmi číslicemi a pošle zprávu SMS:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-To **E4_SendSmsChallenge** funkce získá volat pouze jednou, i když dojde k chybě procesu nebo získá znovu přehrát. To je dobré, protože nechcete, aby koncový uživatel získání více zpráv SMS. `challengeCode` Vrátit hodnota se automaticky ukládají, aby funkce orchestrátoru vždy věděli, co je správný kód.
+Tato funkce **E4_SendSmsChallenge** se volá jenom jednou, a to i v případě, že proces selže nebo se přehraje. To je dobré, protože nechcete, aby koncový uživatel načítají více zpráv SMS. `challengeCode` Návratová hodnota je automaticky trvale zachovaná, takže funkce Orchestrator vždycky ví, co je to správný kód.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Použití ukázka funkcí aktivovanou protokolem HTTP, můžete spustit orchestraci odesláním následujících požadavku HTTP POST:
+Pomocí funkcí aktivovaných protokolem HTTP, které jsou součástí ukázky, můžete zahájit orchestraci odesláním následující žádosti HTTP POST:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -116,9 +115,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-Funkce orchestrátoru přijímá zadané telefonní číslo a okamžitě ji odešle zpráva SMS s náhodně generované 4 číslice ověřovací kód &mdash; například *2168*. Funkce potom odpověď 90 sekund čeká.
+Funkce Orchestrator obdrží poskytnuté telefonní číslo a okamžitě pošle zprávu SMS s náhodně generovaným ověřovacím kódem &mdash; se čtyřmi číslicemi, například *2168*. Funkce pak pro odpověď vyčká 90 sekund.
 
-Chcete-li odpovědět kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md) uvnitř jiného funkci nebo volání **sendEventUrl** HTTP POST webhooku odkazuje v odpovědi 202 výše , nahrazení `{eventName}` s názvem události `SmsChallengeResponse`:
+Pro odpověď s kódem můžete použít [ `RaiseEventAsync` (.NET) `raiseEvent` nebo (JavaScript)](durable-functions-instance-management.md) uvnitř jiné funkce nebo vyvolat Webhook **sendEventUrl** http post, na který odkazuje odpověď 202, nahrazuje `{eventName}` názvem `SmsChallengeResponse`událost:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -128,7 +127,7 @@ Content-Type: application/json
 2168
 ```
 
-Pokud odešlete to předtím, než čas vyprší, dokončení orchestraci a `output` je nastaveno na `true`, označující úspěšné ověření.
+Pokud tuto zprávu odešlete před vypršením platnosti časovače, orchestrace se `output` dokončí a pole `true`se nastaví na hodnotu, což indikuje úspěšné ověření.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -142,7 +141,7 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":true,"createdTime":"2017-06-29T19:10:49Z","lastUpdatedTime":"2017-06-29T19:12:23Z"}
 ```
 
-Pokud necháte časovač vypršení platnosti, nebo pokud zadáte čtyřikrát chybný kód, můžete zadat dotaz na stav a zobrazit `false` Orchestrace funkce výstupu, že neúspěšná ověření pomocí telefonu.
+Pokud necháte vypršení platnosti časovače, nebo pokud zadáte špatný kód čtyřikrát, můžete zadat dotaz na stav a zobrazit `false` výstup funkce orchestrace, což značí, že se nezdařilo ověření telefonu.
 
 ```
 HTTP/1.1 200 OK
@@ -152,18 +151,18 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="visual-studio-sample-code"></a>Visual Studio ukázkový kód
+## <a name="visual-studio-sample-code"></a>Vzorový kód sady Visual Studio
 
-Tady je Orchestrace jako jeden soubor jazyka C# v sadě Visual Studio projekt:
+Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 > [!NOTE]
-> Budete muset nainstalovat `Microsoft.Azure.WebJobs.Extensions.Twilio` balíček Nuget pro spuštění níže uvedený ukázkový kód.
+> Pro spuštění ukázkového kódu níže `Microsoft.Azure.WebJobs.Extensions.Twilio` budete muset nainstalovat balíček NuGet.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>Další postup
 
-Tato ukázka má jsme vám ukázali některé pokročilé funkce Durable Functions, zejména `WaitForExternalEvent` a `CreateTimer`. Už víte, jak tyto mohou být kombinovány s `Task.WaitAny` implementovat systém spolehlivé časového limitu, který je často užitečné pro interakci s skuteční lidé. Další informace o tom, jak používat Durable Functions načtením série článků, které nabízejí podrobné pokrytí konkrétní témata.
+Tato ukázka ukázala některé pokročilé funkce Durable Functions, zejména `WaitForExternalEvent` a. `CreateTimer` Viděli jste, jak se dají kombinovat s `Task.WaitAny` implementací systému spolehlivého časového limitu, který je často užitečný pro interakci se skutečnými lidmi. Další informace o tom, jak používat Durable Functions, najdete v řadě článků, které nabízejí podrobné pokrytí konkrétních témat.
 
 > [!div class="nextstepaction"]
-> [Přejít na první článek v sérii](durable-functions-bindings.md)
+> [Přejít na první článek v řadě](durable-functions-bindings.md)

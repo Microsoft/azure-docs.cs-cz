@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558858"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068861"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -63,13 +63,7 @@ Vzorový kód pro sadu Speech SDK je k dispozici na GitHubu. Tyto ukázky se tý
 
 ## <a name="customization"></a>Přizpůsobení
 
-Kromě univerzálního modelu používaného pro hlasové služby můžete vytvořit vlastní akustické, jazykové a výslovnostní modely, které jsou specifické pro vaše prostředí. Tady je seznam možností přizpůsobení:
-
-| Model | Popis |
-|-------|-------------|
-| [Akustický model](how-to-customize-acoustic-models.md) | Vytvoření vlastního akustického modelu je užitečné v případě, že se aplikace, nástroje nebo zařízení používají v konkrétním prostředí, jako je například automobil nebo továrna s konkrétními podmínkami záznamu. Ukázky zahrnují řeč s přízvukem, určité zvuky na pozadí nebo použití určitého mikrofonu pro nahrávání. |
-| [Jazykový model](how-to-customize-language-model.md) | Vytvořte vlastní jazykový model pro zlepšení přepisu slovníku a gramatiky specifické pro konkrétní odvětví, jako je lékařské terminologie nebo žargonu. |
-| [Model výslovnosti](how-to-customize-pronunciation.md) | Pomocí vlastního modelu výslovnosti můžete definovat fonetický tvar a zobrazení slova nebo termínu. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete, abyste mohli začít se výslovnost soubor – soubor .txt jednoduché. |
+Kromě standardního směrného plánu, který využívají služby pro rozpoznávání řeči, si můžete přizpůsobit modely podle vašich potřeb s dostupnými daty, abyste překonali překážky rozpoznávání řeči, jako je mluvený styl, slovník a šum na pozadí, a přečtěte si téma [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
@@ -92,7 +86,7 @@ Pokud vaše aplikace, nástroje nebo produkty používají Zpracování řeči B
 * [REST API: Převod textu na řeč](rest-text-to-speech.md)
 * [REST API: Přepis a přizpůsobení Batch](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Získat klíč předplatného služby Speech Services zdarma](get-started.md)
 * [Získat sadu Speech SDK](speech-sdk.md)

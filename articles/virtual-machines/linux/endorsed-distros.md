@@ -1,6 +1,6 @@
 ---
-title: Linuxové distribuce schválené pro v Azure | Dokumentace Microsoftu
-description: Další informace o systému Linux v distribucích schválených pro Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
+title: Distribuce systému Linux schválená v Azure | Microsoft Docs
+description: Přečtěte si informace o systému Linux v distribucích schválených Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -11,58 +11,57 @@ ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
-ms.openlocfilehash: 172267af394885d0c5ac0a0717de87e968182d37
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4b254b508e5fac5721e579620e207c2a8612352d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667869"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083411"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>Doporučených distribucích systému Linux v Azure
-Partneři poskytují imagí Linuxu v Tržišti Azure Marketplace. Pracujeme na tom s různými komunitami Linux přidejte ještě více rozšířili se schválenou sadou distribučního seznamu. Do té doby pro distribuce, které nejsou k dispozici z webu Marketplace, můžete vždy použít vlastní Linux podle pokynů v tématu [vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+# <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
+Partneři poskytují image Linux v Azure Marketplace. Pracujeme s různými komunitami Linux pro přidání ještě více typů do schváleného distribučního seznamu. U distribucí, které nejsou k dispozici na webu Marketplace, můžete kdykoli využít vlastní Linux podle pokynů v části [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Podporované distribuce a verze
-V následující tabulce jsou uvedeny v Linuxových distribucích a verzích, které jsou podporovány v Azure. Odkazovat na [podporu pro Linuxové Image v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) podrobné informace o podpoře pro Linux a open source technologiemi v Azure.
+V následující tabulce jsou uvedené distribuce a verze systému Linux podporované v Azure. Podrobnější informace o podpoře pro Linux a open source technologii v Azure najdete [v tématu Podpora imagí pro Linux v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
 
-Ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure jsou jádra moduly, které Microsoft přispívá přímo do nadřazeného jádro Linuxu.  Některé ovladače služby LIS jsou ve výchozím nastavení součástí distribuce jádra. Starší distribuce, které jsou založeny na Red Hat Enterprise (RHEL) jsou dostupné jako samostatný soubor ke stažení na CentOS [Linux Integration Services verze 4.2 pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zobrazit [požadavky jádro Linuxu](create-upload-generic.md#linux-kernel-requirements) Další informace o ovladače služby LIS.
+Ovladače pro Linux Integration Services (LIS) pro Hyper-V a Azure jsou moduly jádra, které Microsoft přispívá přímo k jádru nadřazeného systému Linux.  Některé ovladače v aplikaci LIS jsou ve výchozím nastavení součástí jádra distribuce. Starší distribuce založené na Red Hat Enterprise (RHEL)/CentOS jsou k dispozici jako samostatné stažení na [platformě Linux Integration Services verze 4,2 pro Hyper-V a Azure](https://www.microsoft.com/download/details.aspx?id=55106). Další informace o ovladačích služby LIS najdete v tématu [požadavky na jádro systému Linux](create-upload-generic.md#linux-kernel-requirements) .
 
-Azure Linux Agent je už předem nainstalované na Image Azure Marketplace a je obvykle k dispozici z úložiště balíčků vaší distribuce. Zdrojový kód můžete najít na [Githubu](https://github.com/azure/walinuxagent).
+Agent Azure Linux je už předinstalovaný na Azure Marketplace imagí a je typicky dostupný z úložiště balíčku distribuce. Zdrojový kód najdete na GitHubu [](https://github.com/azure/walinuxagent).
 
 
 | Distribuce | Version | Ovladače | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [Služby LIS stahování](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: Jádra systému |Balíček: V [úložiště](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jádra systému |Zdrojový kód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7.9 +, 8.2 + |Jádra systému |Balíček: V úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7 + 7.1 +, 8.0 + |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1+<br>15|Jádra systému |Balíček:<p> pro 11 v [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště<br>12 součástí modulu "Veřejný Cloud" v části "python agenta azure"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE přestupné 42.2 + |Jádra systému |Balíček: V [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště v části "python agenta azure" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |Jádra systému |Balíček: V úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3 +, 7.0 + |CentOS 6.3: [Stažení v LIS](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: V jádru |Balíček: V [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |V jádru |Zdrojový kód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| Debian |Debian 7.9 +, 8.2 + |V jádru |Balíček: V úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4+, 7.0+ |V jádru |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |V jádru |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1+<br>15|V jádru |Balíček:<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE přestupné 42.2 + |V jádru |Balíček: V [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |V jádru |Balíček: V úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>**  informace o rozšířenou podporu pro Ubuntu 12.04 a 14.04 najdete tady: [Ubuntu rozšířené zabezpečení údržby](https://www.ubuntu.com/esm).
+  - **<sup>1</sup>** informace o rozšířené podpoře pro Ubuntu 12,04 a 14,04 najdete tady: [Ubuntu rozšířená údržba zabezpečení](https://www.ubuntu.com/esm).
 
 
-## <a name="image-update-cadence"></a>Obrázek rytmus
-Azure vyžaduje, aby vydavatelé doporučených distribucích systému Linux pravidelnou aktualizaci jejich imagí v Tržišti Azure Marketplace pomocí nejnovějších oprav a oprav chyb zabezpečení, v tempo čtvrtletní nebo rychlejší. Aktualizované imagí v Tržišti Azure Marketplace jsou dostupné zákazníkům se automaticky jako nové verze image SKU. Další informace o tom, jak najít Image Linuxu: [Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+## <a name="image-update-cadence"></a>Tempo aktualizace image
+Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktualizovali své image v Azure Marketplace s nejnovějšími opravami a opravami zabezpečení, a to na čtvrtletním nebo rychlejším tempo. Aktualizované obrázky v Azure Marketplace jsou automaticky dostupné zákazníkům jako nové verze SKU image. Další informace o tom, jak najít image pro Linux: [V Azure Marketplace najdete image virtuálních počítačů se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
 
 ### <a name="additional-links"></a>Další odkazy
- - [Životní cyklus bitové kopie operačního systému SUSE veřejného cloudu](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+ - [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
 
-## <a name="azure-tuned-kernels"></a>Laděná Azure jádra
+## <a name="azure-tuned-kernels"></a>Jádra Azure – vyladěné jádro
 
-Azure spolupracuje s různými doporučených distribucích systému Linux Optimalizovat obrázky, které jsou publikované na webu Azure Marketplace. Jeden aspekt tato spolupráce je vývoj "vyladěný" Linuxová jádra, která jsou optimalizovaná pro platformu Azure a doručí jako komponenty plně podporované distribuce systému Linux. Jádrech Laděná Azure zahrnuje nové funkce a vylepšení výkonu a rychlejším tempem (obvykle čtvrtletní) ve srovnání s výchozí nebo obecný jader, které jsou k dispozici z distribučního.
+Azure úzce spolupracuje s různými schválenými distribucí pro Linux k optimalizaci imagí, které publikovali do Azure Marketplace. Jedním z aspektů této spolupráce je vývoj "vyladěných" jader pro Linux, které jsou optimalizované pro platformu Azure a dodávané jako plně podporované součásti distribuce systému Linux. Jádro optimalizované pro Azure zahrnují nové funkce a vylepšení výkonu a rychlejší (obvykle čtvrtletní) tempo ve srovnání s výchozími nebo obecnými jádry, které jsou dostupné z distribuce.
 
-Ve většině případů tyto jádrech předinstalované na imagích výchozí na webu Azure Marketplace najdete a Zákazníci tak Azure bude okamžitě těžit z těchto optimalizovaný jádra. Další informace o těchto Laděná Azure jádrech najdete v následujících odkazů:
+Ve většině případů najdete tyto jádra předem nainstalované na výchozích imagí v Azure Marketplace, takže zákazníci Azure budou okamžitě využívat výhod těchto optimalizovaných jader. Další informace o těchto jádrech vyladěných pro Azure najdete na následujících odkazech:
 
- - CentOS Laděná Azure jádra – k dispozici prostřednictvím virtualizace CentOS SIG - [Další informace](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
- - Debian cloudu jádra – k dispozici s Debian 10 a image Debian 9 "zpětné" v Azure – [More Info](https://wiki.debian.org/Cloud/MicrosoftAzure)
- - SLES Laděná Azure jádra - [Další informace](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
- - Ubuntu Laděná Azure jádra - [Další informace](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+ - CentOS vyladěné v Azure – k dispozici prostřednictvím CentOS pro virtualizaci virtualizace – [Další informace](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian Cloud kernel – k dispozici s imagí Debian 10 a Debian 9 "porty" na Azure – [Další informace](https://wiki.debian.org/Cloud/MicrosoftAzure)
+ - SLES – vyladěné jádro Azure – [Další informace](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu – vyladěné jádro Azure – [Další informace](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>Partneři
@@ -70,33 +69,33 @@ Ve většině případů tyto jádrech předinstalované na imagích výchozí n
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
 
-Z webu CoreOS:
+Na webu CoreOS:
 
-*CoreOS je určená pro zabezpečení, konzistence a spolehlivost. Místo instalace balíčků přes yum nebo apt, CoreOS používá kontejnery Linuxu pro správu svých služeb na vyšší úrovni abstrakce. Kód jediné služby a všechny závislosti jsou sbaleny do kontejneru, který může běžet na jeden nebo více počítačích CoreOS.*
+*CoreOS je navržená pro zabezpečení, konzistenci a spolehlivost. Místo instalace balíčků přes Yumu nebo apt CoreOS používá ke správě služeb na vyšší úrovni abstrakce kontejnery Linux. Kód jedné služby a všechny závislosti se zabalí do kontejneru, který se dá spustit na jednom nebo mnoha počítačích s CoreOS.*
 
 ### <a name="credativ"></a>credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
-Credativ je nezávislé konzultaci s a služby společnosti, která se specializuje na vývoji a implementaci profesionální řešení pomocí bezplatného softwaru. Jako přední open source specialisty má Credativ mezinárodní rozpoznávání s řadu IT oddělení, které používají jejich podporu. Ve spojení s Microsoftem Credativ aktuálně připravuje odpovídající Debian Image Debian 8 (Jessie) a Debian před 7 (Wheezy). Obě bitové kopie jsou navrženy speciálně pro použití v Azure a je možné snadno spravovat prostřednictvím platformy. Credativ bude podporovat také dlouhodobou údržbu a aktualizace Image Debian pro Azure prostřednictvím jeho otevřít zdroj Support Center.
+Credativ je nezávislá společnost pro poradenské a služby, která se specializuje na vývoj a implementaci profesionálních řešení pomocí bezplatného softwaru. Credativ nabízí mezinárodní rozpoznávání s mnoha IT odděleními, které využívají jejich podporu, jako špičkové open source specialisty. V kombinaci s Microsoftem se v credativ aktuálně připravují odpovídající image Debian pro Debian 8 (Jessie) a Debian před 7 (Wheezy). Obě image jsou speciálně navržené pro běh v Azure a je možné je snadno spravovat přes platformu. Credativ bude také podporovat dlouhodobou údržbu a aktualizaci imagí Debian pro Azure prostřednictvím svých Open Source Center Support Center.
 
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Strategie Oracle je nabídnout širokého portfolia řešení pro veřejných a privátních cloudů. Tato strategie dává zákazníkům možnost volby a flexibilitu v tom, jak nasadit software Oracle během používání Oracle cloudů i v jiných cloudech. Partnerství Oraclu s Microsoftem umožňuje zákazníkům nasadit software Oracle ve veřejných a privátních cloudech Microsoftu s jistotou certifikace a podpory od Oraclu.  Závazek a investice do řešení veřejného a soukromého cloudu Oracle Oracle je beze změny.
+Pomocí strategie Oracle můžete nabízet široké portfolio řešení pro veřejné a privátní cloudy. Strategie nabízí zákazníkům možnost volby a flexibilitu při nasazování softwaru Oracle v cloudech Oracle a dalších cloudech. Partnerství Oraclu s Microsoftem umožňuje zákazníkům nasadit software Oracle ve veřejných a privátních cloudech Microsoftu s jistotou certifikace a podpory od Oraclu.  Závazek Oracle a investice do řešení veřejného a privátního cloudu Oracle se nemění.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Přední poskytovatel na světě open source řešení Red Hat pomáhá více než 90 % společností z žebříčku Fortune 500 řešit obchodní problémy, mapování scénářů IT a obchodní strategie a připraví na budoucnost technologie. Red Hat to provádí poskytování zabezpečeného řešení prostřednictvím open obchodní model a model pomocí cenově dostupné a předvídatelná předplatného.
+Špičkovým poskytovatelem open source řešení, Red Hat pomáhá více než 90% společností Fortune 500 řešit obchodní výzvy, zarovnávat své IT a obchodní strategie a připravovat se na budoucnost technologie. Red Hat zajišťuje zabezpečená řešení prostřednictvím otevřeného obchodního modelu a cenově dostupného a předvídatelného modelu předplatného.
 
 ### <a name="suse"></a>SUSE
 [https://www.suse.com/suse-linux-enterprise-server-on-azure](https://www.suse.com/suse-linux-enterprise-server-on-azure)
 
-SUSE Linux Enterprise Server v Azure je prověřené platformě, která vám poskytuje spolehlivost a zabezpečení pro cloud computingu. SUSE na univerzální platformě Linux se hladce integrují s cloudovými službami Azure umožní snadno spravovatelné cloudovém prostředí. S více než 9,200 certifikovaných aplikací od 1800 nezávislých dodavatelů softwaru pro SUSE Linux Enterprise serveru SUSE zajišťuje, úlohy běžící v podporovaných v datovém centru, můžou bez problémů dokážete nasadit v Azure.
+SUSE Linux Enterprise Server v Azure je prověřená platforma, která poskytuje vyšší spolehlivost a zabezpečení cloud computingu. Všestranná platforma pro Linux SUSE se bezproblémově integruje s Azure Cloud Services, aby poskytovala snadno spravovatelné cloudové prostředí. S více než 9 200 certifikovanými aplikacemi od více než 1 800 nezávislých dodavatelů softwaru pro SUSE Linux Enterprise Server SUSE zajistí, aby zatížení běžící v datovém centru bylo možné bez obav nasadit v Azure.
 
 ### <a name="canonical"></a>Canonical
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
-Canonical inženýrství a zásad správného řízení komunity open jednotka pro Ubuntu úspěch v klientovi, serveru a cloud computingu, což zahrnuje osobní cloudových služeb pro spotřebitele. Od firmy canonical vize platformy jednotný, bez v Ubuntu, z telefonu do cloudu, poskytuje řadu přeměnit rozhraní pro telefony, tablety, TV a desktop. Tuto vizi říká díky první volbu pro různé instituce od poskytovatelů veřejných cloudů tvůrci spotřební elektroniku a Oblíbené položky mezi jednotlivé technologists Ubuntu.
+Kanonický technický a otevřený Ubuntuá jednotka zásad správného řízení komunity v klientech, serverech a cloud computingu, která zahrnuje osobní cloudové služby pro zákazníky. V kanonickém výhledu sjednocené a bezplatné platformy v Ubuntu, od telefonu po Cloud, poskytuje řadu souvislých rozhraní pro telefony, tablety, televizor a Desktop. Tato vize Ubuntu první volbu pro různé instituce od poskytovatelů veřejných cloudů vedoucím společnosti pro uživatele a oblíbené položky mezi jednotlivými technologists.
 
-S vývojáři a technologie výrobních centrech po celém světě Canonical jednoznačně umístěn při spolupráci s tvůrci hardwaru, poskytovatele obsahu a vývojářům uveďte Ubuntu řešení na trh pro počítače, servery a kapesních zařízeních.
+Díky vývojářům a technickým centrům po celém světě je kanonické řešení jednoznačně umístěno k partnerovi s tvůrci hardwaru, poskytovateli obsahu a vývojářům softwaru, aby mohli nabízet Ubuntu řešení pro počítače, servery a kapesní zařízení.

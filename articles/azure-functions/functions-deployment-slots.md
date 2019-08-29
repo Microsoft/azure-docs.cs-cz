@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: funkce Azure Functions
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a75299906098a0149df5417835569a30a4e585ff
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626181"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085671"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -189,6 +188,6 @@ Existují dvě úrovně podpory pro sloty nasazení:
 | Linux Premium (Preview)   | Náhled              |
 | Vyhrazený pro Linux           | Všeobecná dostupnost |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Technologie nasazení v Azure Functions](./functions-deployment-technologies.md)

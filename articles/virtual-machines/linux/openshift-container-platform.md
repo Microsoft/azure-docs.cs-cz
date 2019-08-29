@@ -1,6 +1,6 @@
 ---
-title: Nasazení OpenShift Container Platform v Azure | Dokumentace Microsoftu
-description: Nasazení OpenShift Container Platform v Azure.
+title: Nasazení platformy kontejneru OpenShift v Azure | Microsoft Docs
+description: Nasazení platformy kontejneru OpenShift v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 48c462edf6c7b17c3a538b6ce0cb28609628d75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65411568"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091778"
 ---
-# <a name="deploy-openshift-container-platform-in-azure"></a>Nasazení OpenShift Container Platform v Azure
+# <a name="deploy-openshift-container-platform-in-azure"></a>Nasazení platformy kontejnerů OpenShift v Azure
 
-Pro nasazení OpenShift Container Platform v Azure můžete použít některou z několika metod:
+K nasazení platformy kontejnerů OpenShift v Azure můžete použít některou z několika metod:
 
-- Můžete ručně nasadit komponenty potřebnou infrastrukturu Azure a pak postupujte podle [dokumentaci OpenShift Container Platform](https://docs.openshift.com/container-platform).
-- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-container-platform/) , která zjednodušuje nasazení OpenShift Container Platform clusteru.
-- Další možností je použít [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
+- Je možné ručně nasadit nezbytné součásti infrastruktury Azure a potom postupovat podle [dokumentace k platformě OpenShift Container](https://docs.openshift.com/container-platform).
+- Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-container-platform/) , která zjednodušuje nasazení clusteru OpenShift Container Platform.
+- Další možností je použití [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování instance Red Hat Enterprise Linux je zaregistrované u předplatného Red Hat a připojený k ID fondu, který obsahuje oprávnění pro OpenShift Container Platform.
-Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu Red Hat předplatné správce (RHSM) Můžete použít aktivační klíč, ID organizace a ID fondu. Tyto informace můžete ověřit tak, že přihlášení k https://access.redhat.com.
+Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování je instance Red Hat Enterprise Linux zaregistrovaná v rámci předplatného Red Hat a připojená k ID fondu, které obsahuje nároky na OpenShift kontejnerové platformy.
+Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Můžete použít aktivační klíč, ID organizace a ID fondu. Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com.
 
 
-## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>Nasazení pomocí šablony OpenShift Container Platform Resource Manageru
+## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>Nasazení pomocí Správce prostředků šablony kontejnerové platformy OpenShift
 
-### <a name="private-clusters"></a>Privátní clusterů
+### <a name="private-clusters"></a>Soukromé clustery
 
-Nasazení privátní clusterů OpenShift vyžaduje více než jen nemají přidružený k nástroji pro vyrovnávání zatížení hlavní (Webová konzola) nebo na veřejnou IP adresu infra nástroj pro vyrovnávání zatížení (směrovače).  Soukromý cluster obecně používá vlastní server DNS (ne výchozí Azure DNS), vlastního názvu domény (například contoso.com) a předdefinované virtuálních sítí.  Pro privátní clustery budete muset předem nakonfigurovat virtuální sítě se všemi příslušné podsítě a nastavení serveru DNS.  Pak pomocí **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**, a  **existingNodeSubnetReference** zadat existující podsítě pro použití v clusteru.
+Nasazení privátních clusterů OpenShift vyžaduje více než jen veřejnou IP adresu přidruženou k hlavnímu nástroji pro vyrovnávání zatížení (webová konzola) nebo k nástroji pro vyrovnávání zatížení (směrovač).  Privátní cluster obecně používá vlastní server DNS (nikoli výchozí Azure DNS), vlastní název domény (například contoso.com) a předem definované virtuální sítě (y).  U privátních clusterů je potřeba nakonfigurovat virtuální síť se všemi příslušnými podsítěmi a nastaveními DNS serveru předem.  Pak pomocí **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**a **existingNodeSubnetReference** určete existující podsíť pro použití clusterem.
 
-Pokud je vybrána privátní hlavní (**masterClusterType**= private), statické privátní IP adresa musí být zadáno pro **masterPrivateClusterIp**.  Tato IP adresa se přiřadí front-endu nástroje pro vyrovnávání zatížení hlavní.  IP adresa musí být v rámci CIDR pro hlavní podsíť a není používáno.  **masterClusterDnsType** musí být nastavena na "vlastní" a k hlavnímu serveru musí být zadaný název DNS pro **masterClusterDns**.  Název DNS, musí být namapovaný na statickou privátní IP adresu a se použije pro přístup ke konzole na hlavní uzly.
+Je-li vybrána privátní hlavní server (**masterClusterType**= Private), musí být pro **masterPrivateClusterIp**zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu hlavního nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro hlavní podsíť a nepoužívá se.  **masterClusterDnsType** musí být nastavená na Custom a musí se zadat hlavní název DNS pro **masterClusterDns**.  Název DNS se musí namapovat na statickou privátní IP adresu a bude se používat pro přístup ke konzole na hlavních uzlech.
 
-Pokud je vybrána směrovače privátního (**routerClusterType**= private), statické privátní IP adresa musí být zadáno pro **routerPrivateClusterIp**.  Tato IP adresa se přiřadí front-endu infra nástroj pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro infra podsítě a nepoužívá.  **routingSubDomainType** musí být nastavena na "vlastní" a zástupný název DNS pro směrování musí být zadaná pro **routingSubDomain**.  
+Pokud je vybrán privátní směrovač (**routerClusterType**= Private), musí být pro **routerPrivateClusterIp**zadána statická privátní IP adresa.  Tato IP adresa se přiřadí front-endu nástroje pro vyrovnávání zatížení.  IP adresa musí být v rámci CIDR pro podsíť, která se nepoužívá.  **routingSubDomainType** musí být nastavená na Custom a pro **routingSubDomain**se musí zadat název DNS zástupného znaku pro směrování.  
 
-Pokud se vybere privátní hlavních serverů a směrovač privátní, vlastní název domény i pro musí být zadáno **domainName**
+Pokud jsou vybrány privátní hlavní servery a privátní směrovač, je nutné zadat vlastní název domény také pro název **domény** .
 
-Po úspěšném nasazení uzel Bastionu je jediný uzel s veřejnou IP adresu, která můžete ssh do.  I v případě, že řídicí uzly jsou nakonfigurované pro veřejný přístup, že se nezobrazí pro ssh přístup.
+Po úspěšném nasazení je uzel bastionu jediným uzlem s veřejnou IP adresou, na kterou můžete protokol SSH.  I když jsou hlavní uzly nakonfigurované pro veřejný přístup, nezveřejňují se pro přístup přes SSH.
 
-Pokud chcete nasadit, pomocí šablony Resource Manageru, slouží k poskytování vstupní parametry souboru parametrů. Chcete-li dále přizpůsobit nasazení, rozvětvit úložiště GitHub se vzorovými a změňte příslušné položky.
+Chcete-li nasadit pomocí šablony Správce prostředků, použijte soubor parametrů k zadání vstupních parametrů. Pro další přizpůsobení nasazení, rozvětvete úložiště GitHub a změňte příslušné položky.
 
-Některé běžné možnosti vlastního nastavení zahrnují, ale nejsou omezené na:
+Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
-- Velikost virtuálního počítače bastionu (proměnné v azuredeploy.json)
-- Zásady vytváření názvů (proměnné v azuredeploy.json)
-- OpenShift specifika clusteru, se mění prostřednictvím souboru hosts (deployOpenShift.sh)
+- Velikost virtuálního počítače bastionu (proměnná v azuredeploy. JSON)
+- Zásady vytváření názvů (proměnné v azuredeploy. JSON)
+- OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
 
 ### <a name="configure-the-parameters-file"></a>Konfigurace souboru parametrů
 
-[Šablony OpenShift Container Platform](https://github.com/Microsoft/openshift-container-platform) má několik větví, které jsou k dispozici pro různé verze nástroje OpenShift Container Platform.  Podle svých potřeb, můžete aplikaci nasadit přímo z úložiště nebo můžete vytvořit fork úložiště a provádět vlastní změny šablony nebo skripty před nasazením.
+[Šablona platformy kontejnerů OpenShift](https://github.com/Microsoft/openshift-container-platform) má k dispozici více větví pro různé verze kontejnerové platformy OpenShift.  Na základě vašich potřeb můžete nasadit přímo z úložiště nebo můžete rozvětvit úložiště a před nasazením vytvořit vlastní změny v šablonách nebo skriptech.
 
-Použití `appId` hodnotu z objektu služby, který jste vytvořili dříve pro `aadClientId` parametru.
+Pro parametr použijte `appId` hodnotu z instančního objektu, který jste vytvořili dříve. `aadClientId`
 
-Následující příklad ukazuje soubor parametrů s názvem azuredeploy.parameters.json se všechny vstupy.
+Následující příklad ukazuje soubor parametrů s názvem azuredeploy. Parameters. JSON se všemi požadovanými vstupy.
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -243,79 +242,79 @@ Následující příklad ukazuje soubor parametrů s názvem azuredeploy.paramet
 }
 ```
 
-Nahraďte parametry konkrétní informace.
+Nahraďte parametry konkrétními informacemi.
 
-Dvě různé verze může mít různé parametry, proto ověřte potřebné parametry pro větev, kterou používáte.
+Různé verze mohou mít různé parametry, takže ověřují parametry potřebné pro větev, kterou používáte.
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Vysvětlení souboru parameters.JSON
+### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. Vysvětlení souboru Parameters. JSON
 
 | Vlastnost | Popis | Platné možnosti | Výchozí hodnota |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Adresa URL pro artefakty (json, skripty atd.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
-| `location` | Oblasti Azure do nasazení prostředků do |  |  |
-| `masterVmSize` | Velikost hlavního virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_E2s_v3 |
-| `infraVmSize` | Velikost infrastruktura virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_D4s_v3 |
-| `nodeVmSize` | Velikost uzlu aplikace virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_D4s_v3 |
-| `cnsVmSize` | Velikost uzlu kontejneru nativní úložiště (CNS) virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy.json |  | Standard_E4s_v3 |
-| `osImageType` | Image RHEL, který se má použít. defaultgallery: On-Demand; Marketplace: třetích stran obrázku | defaultgallery <br> marketplace | defaultgallery |
-| `marketplaceOsImage` | Pokud `osImageType` se webu marketplace, a pak zadejte odpovídající hodnoty pro "vydavatele", "nabízejí", "sku", verze nabídky marketplace. Tento parametr je typu objektu |  |  |
-| `storageKind` | Typ úložiště, který se má použít  | Spravované<br> nespravované | Spravované |
-| `openshiftClusterPrefix` | Předpona použitá ke konfiguraci názvy hostitelů pro všechny uzly clusteru.  Od 1 do 20 znaků |  | clusteru |
-| `minoVersion` | Podverze OpenShift Container Platform 3.11 k nasazení |  | 69 |
-| `masterInstanceCount` | Počet hlavních serverů uzlů pro nasazení | 1, 3, 5 | 3 |
-| `infraInstanceCount` | Počet infra uzly k nasazení | 1, 2, 3 | 3 |
-| `nodeInstanceCount` | Počet uzlů na nasazení | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
-| `cnsInstanceCount` | Číslo CNS uzly k nasazení | 3, 4 | 3 |
+| `_artifactsLocation`  | Adresa URL artefaktů (JSON, skripty atd.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `location` | Oblast Azure, do které se nasazují prostředky |  |  |
+| `masterVmSize` | Velikost hlavního virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_E2s_v3 |
+| `infraVmSize` | Velikost infračerveného virtuálního počítače. Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_D4s_v3 |
+| `nodeVmSize` | Velikost virtuálního počítače uzlu aplikace Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_D4s_v3 |
+| `cnsVmSize` | Velikost virtuálního počítače uzlu pro nativní úložiště kontejnerů (CNS). Vyberte jednu z povolených velikostí virtuálních počítačů, které jsou uvedené v souboru azuredeploy. JSON. |  | Standard_E4s_v3 |
+| `osImageType` | Obrázek RHEL, který se má použít defaultgallery: Na vyžádání; Marketplace: obrázek třetí strany | defaultgallery <br> marketplace | defaultgallery |
+| `marketplaceOsImage` | Pokud `osImageType` je Marketplace, zadejte odpovídající hodnoty pro ' Publish ', ' nabídka ', ' SKU ', ' verze ' nabídky Marketplace. Tento parametr je typ objektu. |  |  |
+| `storageKind` | Typ úložiště, který se má použít  | starosti<br> spravovateln | starosti |
+| `openshiftClusterPrefix` | Předpona clusteru používaná ke konfiguraci názvů hostitelů pro všechny uzly.  Mezi 1 a 20 znaky |  | mycluster |
+| `minoVersion` | Podverze OpenShift kontejneru platformy 3,11 k nasazení |  | 69 |
+| `masterInstanceCount` | Počet hlavních uzlů k nasazení | 1, 3, 5 | 3 |
+| `infraInstanceCount` | Počet uzlů pro nasazení | 1, 2, 3 | 3 |
+| `nodeInstanceCount` | Počet uzlů k nasazení | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
+| `cnsInstanceCount` | Počet uzlů propojené sítě, které se mají nasadit | 3, 4 | 3 |
 | `osDiskSize` | Velikost disku s operačním systémem pro virtuální počítač (v GB) | 64, 128, 256, 512, 1024, 2048 | 64 |
-| `dataDiskSize` | Velikost datového disku k připojení k uzlům pro Docker svazek (v GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
-| `cnsGlusterDiskSize` | Velikost datového disku k připojení k CNS uzly pro použití podle glusterfs (v GB | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
-| `adminUsername` | Uživatelské jméno správce pro přihlášení operačního systému (VM) a počáteční OpenShift uživatele |  | ocpadmin |
-| `enableMetrics` | Zapnutí metrik. Metriky vyžadují více prostředků, proto vyberte správné velikosti infrastruktura virtuálního počítače | true (pravda) <br> false | false |
-| `enableLogging` | Povolení protokolování. elasticsearch pod vyžaduje 8 GB paměti RAM proto vyberte správné velikosti infrastruktura virtuálního počítače | true (pravda) <br> false | false |
-| `enableCNS` | Povolit nativní kontejneru úložiště | true (pravda) <br> false | false |
-| `rhsmUsernameOrOrgId` | Red Hat správce předplatného uživatelské jméno nebo organizace ID |  |  |
-| `rhsmPoolId` | ID fondu Red Hat správce předplatného, obsahující své nároky OpenShift pro výpočetní uzly |  |  |
-| `rhsmBrokerPoolId` | Red Hat správce předplatného fondu Identifikátor, který obsahuje uzly své nároky OpenShift pro vzory a infrastruktura. Pokud nemáte k dispozici jiný fond ID, zadejte stejné ID fondu jako "rhsmPoolId. |  |
-| `sshPublicKey` | Zkopírujte váš veřejný klíč SSH zde |  |  |
-| `keyVaultSubscriptionId` | ID předplatného předplatné obsahující služby Key Vault |  |  |
-| `keyVaultResourceGroup` | Název skupiny prostředků obsahující trezor klíčů |  |  |
-| `keyVaultName` | Název služby Key Vault, které jste vytvořili |  |  |
-| `enableAzure` | Povolit poskytovatele cloudu Azure | true (pravda) <br> false | true (pravda) |
-| `aadClientId` | Azure ID pro klienta Active Directory také označuje jako ID aplikace instančního objektu pro |  |  |
-| `domainName` | Název vlastního názvu domény použít (pokud existuje). Nastavte na "none" není-li nasazení plně soukromý cluster |  | None |
-| `masterClusterDnsType` | Typ domény pro webovou konzolu OpenShift. "default" infra použije název DNS hlavního uzlu veřejnou IP adresu. "vlastní" můžete zadat vlastní název | default <br> Vlastní | default |
-| `masterClusterDns` | Vlastní název DNS používat pro přístup k webové konzole OpenShift, pokud jste vybrali vlastní pro `masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Pokud nastavena na "nipio" `routingSubDomain` použije nip.io.  Použijte 'custom', pokud máte vlastní doménu, kterou chcete použít pro směrování | nipio <br> Vlastní | nipio |
-| `routingSubDomain` | Zástupný název DNS, který chcete použít pro směrování, pokud jste vybrali vlastní pro `routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Vyberte, jestli chcete použít existující virtuální síť nebo vytvořit novou virtuální síť | existující <br> novinka | novinka |
-| `virtualNetworkResourceGroupName` | Název skupiny prostředků pro nové virtuální sítě, pokud jste vybrali pro "new. `virtualNetworkNewOrExisting` |  | resourceGroup().name |
-| `virtualNetworkName` | Název nové virtuální sítě vytvořit, pokud jste vybrali pro "new. `virtualNetworkNewOrExisting` |  | openshiftvnet |
-| `addressPrefixes` | Předpony adres nové virtuální sítě |  | 10.0.0.0/14 |
-| `masterSubnetName` | Název hlavní podsítě. |  | mastersubnet |
-| `masterSubnetPrefix` | CIDR používané pro hlavní subnet - musí být podmnožinou addressPrefix |  | 10.1.0.0/16 |
-| `infraSubnetName` | Název infra podsítě |  | infrasubnet |
-| `infraSubnetPrefix` | CIDR používané pro subnet - infra musí být podmnožinou addressPrefix |  | 10.2.0.0/16 |
-| `nodeSubnetName` | Název podsítě. Tento uzel |  | nodesubnet |
-| `nodeSubnetPrefix` | CIDR používané pro podsíť uzlu – musí být podmnožinou addressPrefix |  | 10.3.0.0/16 |
-| `existingMasterSubnetReference` | Úplný odkaz na existující podsíť pro hlavní uzly. Není potřeba, pokud vytváříte novou virtuální síť / podsíť |  |  |
-| `existingInfraSubnetReference` | Úplný odkaz na existující podsíť pro infra uzly. Není potřeba, pokud vytváříte novou virtuální síť / podsíť |  |  |
-| `existingCnsSubnetReference` | Úplný odkaz na existující podsíť pro CNS uzly. Není potřeba, pokud vytváříte novou virtuální síť / podsíť |  |  |
-| `existingNodeSubnetReference` | Úplný odkaz na existující podsíť pro výpočetní uzly. Není potřeba, pokud vytváříte novou virtuální síť / podsíť |  |  |
-| `masterClusterType` | Zadejte, jestli cluster používá privátní nebo veřejné řídicí uzly. Pokud je zvolená privátní řídicí uzly nebude zveřejnit na Internetu prostřednictvím veřejné IP adresy. Místo toho použije privátní IP adresa zadaná v `masterPrivateClusterIp` | Veřejné <br> privátní | Veřejné |
-| `masterPrivateClusterIp` | Vybrali privátní řídicí uzly potom privátní IP adresa musí být určeno pro použití interního nástroje pro hlavní uzly. Tato statická IP adresa musí být v rámci blok CIDR pro hlavní podsíť a již není používáno. Pokud se vybere veřejné hlavní uzly, tato hodnota se nepoužije, ale musí být zadán |  | 10.1.0.200 |
-| `routerClusterType` | Zadejte, jestli cluster používá privátní nebo veřejné infra uzly. Pokud je zvolená privátní infra uzlů nesmí být zpřístupněné Internetu přes veřejnou IP adresu. Místo toho použije privátní IP adresa zadaná v `routerPrivateClusterIp` | Veřejné <br> privátní | Veřejné |
-| `routerPrivateClusterIp` | Pokud privátní infra vybrané uzly a privátní IP adresa musí být zadán pro použití pomocí interního nástroje pro infra uzlů. Tato statická IP adresa musí být v rámci blok CIDR pro hlavní podsíť a již není používáno. Pokud veřejná infra vybrané uzly, tato hodnota se nepoužije, ale musí být zadán |  | 10.2.0.200 |
-| `routingCertType` | Použít vlastní certifikát pro doménu směrování nebo certifikát podepsaný svým držitelem výchozí – postupujte podle pokynů v **vlastní certifikáty** oddílu | selfsigned <br> Vlastní | selfsigned |
-| `masterCertType` | Použít vlastní certifikát pro hlavní doménu nebo certifikát podepsaný svým držitelem výchozí – postupujte podle pokynů v **vlastní certifikáty** oddílu | selfsigned <br> Vlastní | selfsigned |
+| `dataDiskSize` | Velikost datového disku, který se má připojit k uzlům pro svazek Docker (v GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
+| `cnsGlusterDiskSize` | Velikost datového disku, který se má připojit k uzlům CNS pro použití v GlusterFS (v GB | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
+| `adminUsername` | Uživatelské jméno správce pro přihlášení k operačnímu systému (VM) a počátečního uživatele OpenShift |  | ocpadmin |
+| `enableMetrics` | Povolte metriky. Metriky vyžadují více prostředků, takže vyberte vhodnou velikost pro virtuální počítač s infračerveným odkazem. | true <br> false | false |
+| `enableLogging` | Povolit protokolování. Elasticsearch pod vyžaduje 8 GB paměti RAM, takže vyberte vhodnou velikost pro virtuální počítač pro infračervené zařízení. | true <br> false | false |
+| `enableCNS` | Povolit nativní úložiště kontejneru | true <br> false | false |
+| `rhsmUsernameOrOrgId` | Uživatelské jméno nebo ID organizace pro správce předplatného Red Hat |  |  |
+| `rhsmPoolId` | ID fondu správce předplatného Red Hat, které obsahuje vaše nároky na OpenShift pro výpočetní uzly |  |  |
+| `rhsmBrokerPoolId` | ID fondu správce předplatného Red Hat, které obsahuje vaše nároky na OpenShift pro hlavní a infračervené uzly. Pokud nemáte jiná ID fondu, zadejte jako rhsmPoolId stejné ID fondu. |  |
+| `sshPublicKey` | Sem zkopírujte veřejný klíč SSH. |  |  |
+| `keyVaultSubscriptionId` | ID předplatného pro předplatné obsahující Key Vault |  |  |
+| `keyVaultResourceGroup` | Název skupiny prostředků, která obsahuje Key Vault |  |  |
+| `keyVaultName` | Název Key Vault, který jste vytvořili |  |  |
+| `enableAzure` | Povolit Azure Cloud Provider | true <br> false | true |
+| `aadClientId` | ID klienta Azure Active Directory také označované jako ID aplikace pro instanční objekt |  |  |
+| `domainName` | Název vlastního názvu domény, který se má použít (Pokud je k dispozici) Pokud není nasazen plně soukromý cluster, nastavte na hodnotu None. |  | žádný |
+| `masterClusterDnsType` | Typ domény pro webovou konzolu OpenShift klíčové slovo Default bude používat označení DNS pro veřejnou IP adresu hlavního infračerveného provozu. možnost vlastní umožňuje definovat vlastní název. | default <br> vlastní | default |
+| `masterClusterDns` | Vlastní název DNS, který se použije pro přístup k webové konzoli OpenShift, pokud jste vybrali možnost Custom (vlastní) pro`masterClusterDnsType` |  | console.contoso.com |
+| `routingSubDomainType` | Pokud je nastavená na ' nipio `routingSubDomain` ', použije NIP.IO.  Pokud máte vlastní doménu, kterou chcete použít pro směrování, použijte možnost vlastní. | nipio <br> vlastní | nipio |
+| `routingSubDomain` | Název DNS se zástupnými znaky, který chcete použít pro směrování, pokud jste vybrali možnost vlastní pro`routingSubDomainType` |  | apps.contoso.com |
+| `virtualNetworkNewOrExisting` | Vyberte, zda chcete použít existující Virtual Network nebo vytvořit nový Virtual Network | stávající <br> nový | nový |
+| `virtualNetworkResourceGroupName` | Název skupiny prostředků pro nový Virtual Network, pokud jste vybrali možnost Nový pro`virtualNetworkNewOrExisting` |  | resourceGroup().name |
+| `virtualNetworkName` | Název nového Virtual Network, který se má vytvořit, pokud jste vybrali možnost Nový pro`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `addressPrefixes` | Předpona adresy nové virtuální sítě |  | 10.0.0.0/14 |
+| `masterSubnetName` | Název hlavní podsítě |  | mastersubnet |
+| `masterSubnetPrefix` | CIDR použitý pro hlavní podsíť – musí být podmnožinou addressPrefix. |  | 10.1.0.0/16 |
+| `infraSubnetName` | Název infračervené podsítě |  | infrasubnet |
+| `infraSubnetPrefix` | CIDR, který se používá pro podsíť v síti, musí být podmnožinou addressPrefix. |  | 10.2.0.0/16 |
+| `nodeSubnetName` | Název podsítě uzlu |  | nodesubnet |
+| `nodeSubnetPrefix` | CIDR použitý pro podsíť uzlu – musí být podmnožinou addressPrefix. |  | 10.3.0.0/16 |
+| `existingMasterSubnetReference` | Úplný odkaz na existující podsíť pro hlavní uzly. Není nutné při vytváření nové virtuální sítě nebo podsítě. |  |  |
+| `existingInfraSubnetReference` | Úplný odkaz na existující podsíť pro infračervené uzly Není nutné při vytváření nové virtuální sítě nebo podsítě. |  |  |
+| `existingCnsSubnetReference` | Úplný odkaz na existující podsíť pro uzly CNS Není nutné při vytváření nové virtuální sítě nebo podsítě. |  |  |
+| `existingNodeSubnetReference` | Úplný odkaz na existující podsíť pro výpočetní uzly. Není nutné při vytváření nové virtuální sítě nebo podsítě. |  |  |
+| `masterClusterType` | Určete, jestli cluster používá soukromé nebo veřejné hlavní uzly. Pokud je zvolená možnost privátní, hlavní uzly nebudou zpřístupněny Internetu prostřednictvím veřejné IP adresy. Místo toho použije privátní IP adresu uvedenou v`masterPrivateClusterIp` | veřejná <br> privátní | veřejná |
+| `masterPrivateClusterIp` | Pokud jsou vybrány privátní hlavní uzly, musí být zadána privátní IP adresa pro použití interním nástrojem pro vyrovnávání zatížení pro hlavní uzly. Tato statická IP adresa musí být v bloku CIDR pro hlavní podsíť a ještě se nepoužívá. Pokud jsou vybrané veřejné hlavní uzly, tato hodnota se nepoužije, ale musí se zadat i dál. |  | 10.1.0.200 |
+| `routerClusterType` | Určete, jestli cluster používá soukromé nebo veřejné infračervené uzly. Pokud je zvolená možnost privátní, nebudou se uzly v síti Internet zveřejnit prostřednictvím veřejné IP adresy. Místo toho použije privátní IP adresu uvedenou v`routerPrivateClusterIp` | veřejná <br> privátní | veřejná |
+| `routerPrivateClusterIp` | Pokud jsou vybrány privátní infračervené uzly, musí být zadána privátní IP adresa pro použití interním nástrojem pro vyrovnávání zatížení pro infračervené uzly. Tato statická IP adresa musí být v bloku CIDR pro hlavní podsíť a ještě se nepoužívá. Pokud je vybraná možnost veřejné infračervené uzly, tato hodnota se nebude používat, ale musí se dál zadat. |  | 10.2.0.200 |
+| `routingCertType` | Použijte vlastní certifikát pro doménu směrování nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> vlastní | selfsigned |
+| `masterCertType` | Použijte vlastní certifikát pro hlavní doménu nebo výchozí certifikát podepsaný svým držitelem – postupujte podle pokynů v části **vlastní certifikáty** . | selfsigned <br> vlastní | selfsigned |
 
 <br>
 
 ### <a name="deploy-using-azure-cli"></a>Nasazení s využitím rozhraní příkazového řádku Azure
 
 > [!NOTE] 
-> Následující příkaz vyžaduje Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku pomocí můžete ověřit `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, naleznete v tématu [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> Následující příkaz vyžaduje rozhraní příkazového řádku Azure CLI 2.0.8 nebo novější. Verzi rozhraní `az --version` příkazového řádku můžete ověřit pomocí příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-Následující příklad nasadí do skupiny prostředků s názvem openshiftrg, s názvem nasazení myOpenShiftCluster OpenShift cluster a všechny související prostředky. Šablona se odkazuje přímo z úložiště GitHub se vzorovými a místní parametrů, které se používá soubor s názvem souboru azuredeploy.parameters.json.
+Následující příklad nasadí cluster OpenShift a všechny související prostředky do skupiny prostředků s názvem openshiftrg s názvem nasazení myOpenShiftCluster. Na šablonu se odkazuje přímo z úložiště GitHubu a používá se soubor místních parametrů s názvem azuredeploy. Parameters. JSON.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -323,7 +322,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Nasazení trvá minimálně 60 minut na dokončení, na základě celkového počtu nasazených uzlů a možností, které nakonfigurujete. Plně kvalifikovaný název domény Bastionu DNS a adresu URL konzoly OpenShift vytiskne po dokončení nasazení do terminálu.
+Dokončení nasazení trvá minimálně 60 minut, a to na základě celkového počtu nasazených uzlů a nakonfigurovaných možností. Plně kvalifikovaný název domény DNS bastionu a adresa URL konzoly OpenShift se po dokončení nasazení vytisknou do terminálu.
 
 ```json
 {
@@ -332,11 +331,11 @@ Nasazení trvá minimálně 60 minut na dokončení, na základě celkového po�
 }
 ```
 
-Pokud nechcete vytížit příkazový řádek čeká na dokončení, přidat nasazení `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení můžete získat z webu Azure portal v části nasazení pro skupinu prostředků.
+Pokud nechcete vytvořit vazbu na příkazový řádek, který čeká na dokončení nasazení, přidejte `--no-wait` jako jednu z možností pro nasazení skupiny. Výstup z nasazení lze načíst z Azure Portal v části nasazení pro skupinu prostředků.
 
-## <a name="connect-to-the-openshift-cluster"></a>Připojte se ke clusteru Openshiftu
+## <a name="connect-to-the-openshift-cluster"></a>Připojení ke clusteru OpenShift
 
-Až se nasazení dokončí, získání připojení z výstupní sekce nasazení. Připojení ke konzole OpenShift v prohlížeči pomocí **adresa URL konzoly OpenShift**. Můžete také SSH Bastion host. Tady je příklad, kde je uživatelské jméno správce clusteradmin a bastionu veřejné IP adresy DNS plně kvalifikovaný název domény je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. K hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -344,14 +343,14 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Použití [odstranění skupiny az](/cli/azure/group) příkazu k odebrání skupiny prostředků, clusteru OpenShift a všechny související prostředky, pokud jste už nepotřebujete.
+Pomocí příkazu [AZ Group Delete](/cli/azure/group) odeberte skupinu prostředků, cluster OpenShift a všechny související prostředky, pokud už je nepotřebujete.
 
 ```azurecli 
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úlohy po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazení OpenShift v Azure](./openshift-troubleshooting.md)
-- [Začínáme s OpenShift Container Platform](https://docs.openshift.com/container-platform)
+- [Úkoly po nasazení](./openshift-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift v Azure](./openshift-troubleshooting.md)
+- [Začínáme s kontejnerovou platformou OpenShift](https://docs.openshift.com/container-platform)

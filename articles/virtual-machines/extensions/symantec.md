@@ -1,6 +1,6 @@
 ---
-title: Instalace aplikace Symantec Endpoint Protection na Windows virtuální počítač v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat a nakonfigurovat Symantec Endpoint Protection rozšíření zabezpečení na nového nebo existujícího virtuálního počítače Azure vytvořené pomocí modelu nasazení Classic.
+title: Instalace Symantec Endpoint Protection na virtuální počítač s Windows v Azure | Microsoft Docs
+description: Přečtěte si, jak nainstalovat a nakonfigurovat rozšíření Symantec Endpoint Protection Security na novém nebo existujícím virtuálním počítači Azure vytvořeném pomocí modelu nasazení Classic.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz
@@ -11,35 +11,34 @@ ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
-ms.openlocfilehash: d79e46467c24277200ef72bb64e8c5b7427bf269
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e6e81732c0e25bc46d28172cdf085f6c3f457ca8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705883"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084261"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači s Windows
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Tento článek ukazuje, jak nainstalovat a nakonfigurovat Symantec Endpoint Protection klienta na existujícího virtuálního počítače (VM) s Windows serverem. Tato úplného klienta zahrnuje služby, jako je virů a spywaru ochrany, brány firewall a prevenci neoprávněných vniknutí. Klientovi je nainstalován jako rozšíření zabezpečení pomocí agenta virtuálního počítače.
+V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat klienta Symantec Endpoint Protection na stávajícím virtuálním počítači s Windows serverem. Tento úplný klient zahrnuje služby, jako je ochrana před viry a spywarem, brána firewall a prevence vniknutí. Klient se nainstaluje jako rozšíření zabezpečení pomocí agenta virtuálního počítače.
 
-Pokud máte stávající předplatné od společnosti Symantec pro místní řešení, můžete k ochraně virtuálních počítačů Azure. Pokud vám zákazník ještě nejsou, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v tématu [Symantec Endpoint Protection na platformu Microsoft Azure][Symantec]. Tato stránka obsahuje také odkazy na licenční informace a pokyny pro instalaci klienta, pokud jste již zákazníků Symantec.
+Pokud máte stávající předplatné od Symantecu pro místní řešení, můžete ho použít k ochraně virtuálních počítačů Azure. Pokud ještě nejste zákazník, můžete si zaregistrovat zkušební verzi předplatného. Další informace o tomto řešení najdete v tématu [Symantec Endpoint Protection na platformě Azure od Microsoftu][Symantec]. Tato stránka obsahuje také odkazy na informace o licencování a pokyny pro instalaci klienta, pokud už jste zákazníkem Symantec.
 
-## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Instalace aplikace Symantec Endpoint Protection na existující virtuální počítač
+## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Instalace Symantec Endpoint Protection na stávajícím virtuálním počítači
 Než začnete, budete potřebovat následující:
 
-* Modul Azure PowerShell, verze 0.8.2 nebo novějších systémů na počítači v práci. Můžete zkontrolovat verzi Azure Powershellu, kterou jste nainstalovali pomocí **Get-Module azure | format-table verze** příkazu. Pokyny a odkaz na nejnovější verzi najdete v tématu [instalace a konfigurace prostředí Azure PowerShell][PS]. Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
-* Agent virtuálního počítače spuštěného na virtuálním počítači Azure.
+* Azure PowerShell modul verze 0.8.2 nebo novější, ve vašem pracovním počítači. Verzi Azure PowerShell, kterou jste nainstalovali, můžete zjistit pomocí příkazu **Get-Module Azure | Format-Table Version** . Pokyny a odkaz na nejnovější verzi najdete v tématu [Jak nainstalovat a nakonfigurovat Azure PowerShell][PS]. Přihlaste se k předplatnému Azure pomocí `Add-AzureAccount`.
+* Agent virtuálního počítače běžící na virtuálním počítači Azure.
 
-Nejprve ověřte, že Agent virtuálního počítače je už nainstalovaný na virtuálním počítači. Zadejte název cloudové služby a název virtuálního počítače a pak spusťte následující příkazy příkazového řádku Azure PowerShell na úrovni správce. Nahradit vše, co v uvozovkách, včetně < a > znaků.
+Nejdřív ověřte, že je na virtuálním počítači už nainstalovaný agent virtuálního počítače. Zadejte název cloudové služby a název virtuálního počítače a potom na příkazovém řádku Azure PowerShell na úrovni správce spusťte následující příkazy. Nahradí vše v uvozovkách, včetně < a > znaků.
 
 > [!TIP]
-> Pokud si nejste jisti, cloudovou službu a názvy virtuálních počítačů, spusťte **Get-AzureVM** vypsat názvy všech virtuálních počítačů v aktuálním předplatném.
+> Pokud neznáte název cloudové služby a virtuálního počítače, spusťte příkaz **Get-AzureVM** , který zobrazí seznam názvů všech virtuálních počítačů v aktuálním předplatném.
 
 ```powershell
 $CSName = "<cloud service name>"
@@ -48,9 +47,9 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Pokud **write-host** příkaz zobrazí **True**, je nainstalovaný Agent virtuálního počítače. Pokud se zobrazí **False**, podívejte se pokyny a odkaz ke stažení v příspěvku na blogu Azure [agenta virtuálního počítače a rozšíření – část 2][Agent].
+Pokud se v příkazu **Write-Host** zobrazí **hodnota true**, je nainstalován agent virtuálního počítače. Pokud se zobrazí **hodnota NEPRAVDA**, Projděte si pokyny a odkaz na stažení v příspěvku na blogu Azure [Agent a rozšíření virtuálního počítače – část 2][Agent].
 
-Pokud je nainstalovaný Agent virtuálního počítače, spusťte tyto příkazy pro instalaci agenta aplikace Symantec Endpoint Protection.
+Pokud je nainstalován agent virtuálního počítače, spusťte tyto příkazy a nainstalujte agenta Symantec Endpoint Protection.
 
 ```powershell
 $Agent = Get-AzureVMAvailableExtension -Publisher Symantec -ExtensionName SymantecEndpointProtection
@@ -59,16 +58,16 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
     -VM $vm | Update-AzureVM
 ```
 
-Pokud chcete ověřit, že rozšíření Symantec zabezpečení byla nainstalována a je aktuální:
+Ověření, zda bylo nainstalováno rozšíření zabezpečení Symantec a je aktuální:
 
-1. Přihlaste se k virtuálnímu počítači. Pokyny najdete v tématu [jak se přihlásit k virtuální počítač s Windows serverem][Logon].
-2. Windows Server 2008 R2, klikněte na tlačítko **Start > Symantec Endpoint Protection**. Pro Windows Server 2012 nebo Windows Server 2012 R2, na obrazovce start zadejte **Symantec**a potom klikněte na tlačítko **Symantec Endpoint Protection**.
-3. Z **stav** karty **stav Symantec Endpoint Protection** okna, aktualizace nebo v případě potřeby restartovat.
+1. Přihlaste se k virtuálnímu počítači. Pokyny najdete v tématu [jak se přihlásit k virtuálnímu počítači s Windows serverem][Logon].
+2. Pro Windows Server 2008 R2 klikněte na **Start > Symantec Endpoint Protection**. Pro Windows Server 2012 nebo Windows Server 2012 R2 na obrazovce Start zadejte **Symantec**a pak klikněte na **Symantec Endpoint Protection**.
+3. Na kartě **stav** okna **stav-Symantec Endpoint Protection** použijte v případě potřeby aktualizace nebo restartovat.
 
 ## <a name="additional-resources"></a>Další zdroje
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem][Logon]
 
-[Funkce a rozšíření virtuálních počítačů Azure][Ext]
+[Rozšíření a funkce virtuálních počítačů Azure][Ext]
 
 <!--Link references-->
 [Symantec]: https://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure

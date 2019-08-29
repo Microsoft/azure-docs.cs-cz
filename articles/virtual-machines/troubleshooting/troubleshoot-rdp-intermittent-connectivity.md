@@ -1,118 +1,117 @@
 ---
-title: Vzdálená plocha odpojí často ve virtuálním počítači Azure | Dokumentace Microsoftu
-description: Zjistěte, jak řešit časté odpojení vzdálené plochy ve virtuálním počítači Azure.
+title: Vzdálená plocha se na virtuálním počítači Azure často odpojí. | Microsoft Docs
+description: Naučte se řešit časté problémy odpojení vzdálené plochy na virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 7fecf8c5fdafb64f7922054dd2bb9755b0dec031
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16322b2cca4875f1ace89e29752608b95fe568ef
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386172"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103459"
 ---
-# <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Vzdálená plocha odpojí často ve virtuálním počítači Azure
+# <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Vzdálená plocha se na virtuálním počítači Azure často odpojí.
 
-Tento článek vysvětluje, jak řešit časté odpojení na virtuálním počítači Azure (VM) přes Remote Desktop Protocol RDP).
+Tento článek vysvětluje, jak řešit často nepřipojená připojení k virtuálnímu počítači Azure pomocí protokol RDP (Remote Desktop Protocol) RDP).
 
 > [!NOTE] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
-Během vaší relace čelíte přerušované problémy s připojením RDP. Zpočátku se můžete připojit k virtuálnímu počítači, ale sníží připojení.
+Během relací se můžete setkat s přerušovanými problémy s připojením RDP. K virtuálnímu počítači se můžete nejdřív připojit, ale připojení se pak uvolní.
 
 ## <a name="cause"></a>Příčina
 
-Tomuto problému může dojít, pokud je špatně nakonfigurovaný. naslouchací proces RDP. Obvykle k tomuto problému dochází na virtuálním počítači, který používá vlastní image.
+K tomuto problému může dojít, pokud je naslouchací proces RDP nesprávně nakonfigurovaný. K tomuto problému obvykle dochází na virtuálním počítači, který používá vlastní image.
 
 ## <a name="solution"></a>Řešení
 
-Než začnete provádět tyto kroky [pořízení snímku disku s operačním systémem](../windows/snapshot-copy-managed-disk.md) ovlivněných virtuálních počítačů jako záložní. 
+Než budete postupovat podle těchto kroků, pořiďte si [snímek disku s operačním systémem](../windows/snapshot-copy-managed-disk.md) OVLIVNĚNÉHO virtuálního počítače jako záložního. 
 
-Chcete-li tento problém vyřešit, použití sériového portu ovládacího prvku nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) připojením disku s operačním systémem virtuálního počítače na virtuální počítač pro obnovení.
+Pokud chcete tento problém vyřešit, použijte řízení sériového portu nebo [opravte virtuální počítač offline](#repair-the-vm-offline) připojením disku operačního systému virtuálního počítače k virtuálnímu počítači pro obnovení.
 
-### <a name="serial-control"></a>Ovládací prvek sériového portu
+### <a name="serial-control"></a>Řízení sériového portu
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md). Potom spusťte následující příkazy k resetování konfigurace protokolu RDP. Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte k dalšímu kroku.
-2. Nižší zabezpečení vrstvy protokolu RDP na hodnotu 0. Při tomto nastavení komunikace mezi serverem a klientem použít nativní šifrování protokolu RDP.
+1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md). Pak spusťte následující příkazy pro resetování konfigurací RDP. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí, pokračujte na další krok.
+2. Snižte úroveň zabezpečení RDP na hodnotu 0. V tomto nastavení komunikace mezi serverem a klientem používá nativní šifrování RDP.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-3. Snížení úrovně šifrování pro nastavení minimální umožňující připojení starší verze klientů protokolu RDP.
+3. Snižte úroveň šifrování na minimální nastavení, aby bylo možné připojit starší klienty RDP.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-4. Nastavit připojení RDP k načtení konfigurace uživatele klientského počítače.
+4. Nastavením protokolu RDP načtěte konfiguraci uživatele klientského počítače.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-5. Povolte RDP Keep-Alive ovládacího prvku:
+5. Povolit ovládací prvek Keep-Alive protokolu RDP:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-6. Nastavení ovládacího prvku obnovení připojení protokolu RDP:
+6. Nastavení ovládacího prvku pro obnovení protokolu RDP:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fReconnectSame' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
-7. Nastavení ovládacího prvku čas relace protokolu RDP:
+7. Nastavte řízení času relace protokolu RDP:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-8. Nastavte ovládací prvek v době odpojení protokol RDP: 
+8. Nastavte řízení času odpojení protokolu RDP: 
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-9. Nastavení ovládacího prvku doba připojení protokolu RDP:
+9. Nastavte řízení času připojení RDP:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-10. Nastavení ovládacího prvku doby nečinnosti relace protokolu RDP:
+10. Nastavte řízení času nečinnosti relace protokolu RDP:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxIdleTime' /t REG_DWORD /d 0 /f
-11. Nastavení ovládacího prvku "Omezit maximální počet souběžných připojení":
+11. Nastavte ovládací prvek omezit maximální počet souběžných připojení:
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d 4294967295 /f
 
-12. Restartujte virtuální počítač a zkuste to znovu k němu připojit pomocí protokolu RDP.
+12. Restartujte virtuální počítač a zkuste se k němu připojit pomocí protokolu RDP.
 
 ### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
 
 1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Po disk s operačním systémem je připojen k virtuální počítač pro obnovení, ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3. Na disk s operačním systémem, který jste připojili, přejděte **\windows\system32\config** složky. Zkopírujte všechny soubory v této složce jako zálohu, v případě, že vrácení zpět je povinný.
-4. Spusťte Editor registru (regedit.exe).
-5. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **souboru** > **načíst Hive**:
-6. Přejděte **\windows\system32\config\SYSTEM** složky na disku s operačním systémem, který jste připojili. Název hive zadejte **BROKENSYSTEM**. Nový registr hive se zobrazuje v části **HKEY_LOCAL_MACHINE** klíč. Pak načíst hive softwaru **\windows\system32\config\SOFTWARE** pod **HKEY_LOCAL_MACHINE** klíč. Název softwaru hive zadejte **BROKENSOFTWARE**. 
-7. Otevřete okno příkazového řádku se zvýšenými oprávněními (**spustit jako správce**), a spusťte příkazy ve zbývajících krocích resetování konfigurace protokolu RDP. 
-8. Dolní vrstva zabezpečení protokolu RDP na hodnotu 0, tak, aby komunikace mezi serverem a klientem používat nativní šifrování protokolu RDP:
+3. Na disku s operačním systémem, který jste připojili, přejděte do složky **\Windows\System32\Config** . Zkopírujte všechny soubory v této složce jako zálohu pro případ, že je vyžadováno vrácení zpět.
+4. Spusťte Editor registru (Regedit. exe).
+5. Vyberte klíč **HKEY_LOCAL_MACHINE** . V nabídce vyberte**podregistr Loading** **File** > :
+6. Přejděte do složky **\windows\system32\config\SYSTEM** na disku s operačním systémem, který jste připojili. Jako název podregistru zadejte **BROKENSYSTEM**. Nový podregistr registru se zobrazí pod klíčem **HKEY_LOCAL_MACHINE** . Pak v klíči **HKEY_LOCAL_MACHINE** načtěte podregistr software **\windows\system32\config\SOFTWARE** . Jako název softwaru pro podregistr zadejte **BROKENSOFTWARE**. 
+7. Otevřete okno příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**) a ve zbývajících krocích spusťte příkazy pro resetování konfigurací RDP. 
+8. Snižte úroveň zabezpečení RDP na 0, aby komunikace mezi serverem a klientem používala nativní šifrování RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
-9. Snížení úrovně šifrování pro nastavení minimální umožňující připojení starší verze klientů protokolu RDP:
+9. Snižte úroveň šifrování na minimální nastavení, aby bylo možné připojit starší klienty RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MinEncryptionLevel' /t REG_DWORD /d 1 /f
-10. Nastavit připojení RDP k načtení konfigurace uživatele klientského počítače.
+10. Nastavením protokolu RDP načtěte konfiguraci uživatele klientského počítače.
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fQueryUserConfigFromLocalMachine' /t REG_DWORD /d 1 /f
-11. Povolte RDP Keep-Alive ovládacího prvku:
+11. Povolit ovládací prvek Keep-Alive protokolu RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'KeepAliveTimeout' /t REG_DWORD /d 1 /f 
         
@@ -121,7 +120,7 @@ Chcete-li tento problém vyřešit, použití sériového portu ovládacího prv
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveEnable' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'KeepAliveInterval' /t REG_DWORD /d 1 /f
-12. Nastavení ovládacího prvku obnovení připojení protokolu RDP:
+12. Nastavení ovládacího prvku pro obnovení protokolu RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritReconnectSame' /t REG_DWORD /d 0 /f 
         
@@ -133,12 +132,12 @@ Chcete-li tento problém vyřešit, použití sériového portu ovládacího prv
 
         REG ADD "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v 'fDisableAutoReconnect' /t REG_DWORD /d 0 /f
 
-13. Nastavení ovládacího prvku čas relace protokolu RDP:
+13. Nastavte řízení času relace protokolu RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxSessionTime' /t REG_DWORD /d 1 /f
-14. Nastavte ovládací prvek v době odpojení protokol RDP:
+14. Nastavte řízení času odpojení protokolu RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
@@ -147,27 +146,27 @@ Chcete-li tento problém vyřešit, použití sériového portu ovládacího prv
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxDisconnectionTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxDisconnectionTime' /t REG_DWORD /d 0 /f
-15. Nastavení ovládacího prvku doba připojení protokolu RDP:
+15. Nastavte řízení času připojení RDP:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxConnectionTime' /t REG_DWORD /d 0 /f
-16. Nastavení ovládacího prvku doby nečinnosti relace protokolu RDP:     REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP Tcp" /v "fInheritMaxIdleTime" /t REG_DWORD /d 1 /f 
+16. Nastavte řízení času nečinnosti relace protokolu RDP:     REG přidat "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp"/v "fInheritMaxIdleTime"/t REG_DWORD/d 1/f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'fInheritMaxIdleTime' /t REG_DWORD /d 1 /f 
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v ' MaxIdleTime' /t REG_DWORD /d 0 /f
-17. Nastavení ovládacího prvku "Omezit maximální počet souběžných připojení":
+17. Nastavte ovládací prvek omezit maximální počet souběžných připojení:
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
-18. Restartujte virtuální počítač a zkuste to znovu k němu připojit pomocí protokolu RDP.
+18. Restartujte virtuální počítač a zkuste se k němu připojit pomocí protokolu RDP.
 
-## <a name="need-help"></a>Potřebujete pomoc? 
-Kontaktujte podporu. Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+## <a name="need-help"></a>Potřebujete pomoct? 
+Kontaktujte podporu. Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.
 
 
 

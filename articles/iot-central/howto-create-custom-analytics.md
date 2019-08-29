@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e1649d1ad50a62374cb5a1d9491c594e1b485ec1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049166"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100973"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
-Vytvořte aplikaci IoT Central ze stránky [Azure IoT Central – moje aplikace](https://aka.ms/iotcentral) s následujícím nastavením:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvořte aplikaci IoT Central s následujícím nastavením:
 
 | Nastavení | Value |
 | ------- | ----- |
@@ -99,7 +99,7 @@ Váš Event Hubs obor názvů vypadá jako na následujícím snímku obrazovky:
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurace exportu v IoT Central
 
-Přejděte do [IoT Central aplikace](https://aka.ms/iotcentral) , kterou jste vytvořili v šabloně společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
+Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejděte do IoT Central aplikace, kterou jste vytvořili ze šablony společnosti Contoso. V této části nakonfigurujete aplikaci pro streamování telemetrie z simulovaných zařízení do centra událostí. Konfigurace exportu:
 
 1. Přejděte na stránku **průběžné exportu dat** , vyberte **+ Nový**a pak **Azure Event Hubs**.
 1. Pro konfiguraci exportu použijte následující nastavení a pak vyberte **Uložit**:

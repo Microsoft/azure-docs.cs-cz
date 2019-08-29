@@ -1,31 +1,30 @@
 ---
-title: Stav vlastní Orchestrace v Durable Functions – Azure
-description: Zjistěte, jak nakonfigurovat a používat stav vlastní Orchestrace pro Durable Functions.
+title: Stav vlastní orchestrace v Durable Functions – Azure
+description: Naučte se konfigurovat a používat vlastní stav orchestrace pro Durable Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8d36c797e80702302a1954d2f00e1e4daabcaa88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709996"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098122"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní Orchestrace v Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestrace v Durable Functions (Azure Functions)
 
-Stav vlastní Orchestrace umožňuje nastavit vlastní stav hodnotu funkce nástroje orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API HTTP GetStatus nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API.
+Vlastní stav orchestrace umožňuje nastavit vlastní hodnotu stavu pro funkci Orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API GetStatus API `DurableOrchestrationClient.GetStatusAsync` nebo rozhraní API.
 
-## <a name="sample-use-cases"></a>Ukázka případy použití
+## <a name="sample-use-cases"></a>Příklady případů použití
 
 ### <a name="visualize-progress"></a>Vizualizace průběhu
 
-Klienty můžete dotazovat stav koncového bodu a zobrazit průběh uživatelského rozhraní, které vizualizuje aktuální fáze spuštění. Následující příklad ukazuje průběh sdílení:
+Klienti mohou dotazovat koncový bod stavu a zobrazit uživatelské rozhraní průběhu, které vizualizuje aktuální fázi provádění. Následující příklad znázorňuje sdílení průběhu:
 
 #### <a name="c"></a>C#
 
@@ -54,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -80,7 +79,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-A pak klienta se zobrazí výstup orchestraci pouze tehdy, když `CustomStatus` pole nastavena na "Londýn":
+Pak klient obdrží výstup orchestrace pouze v případě `CustomStatus` , že je pole nastaveno na hodnotu Londýn.
 
 #### <a name="c"></a>C#
 
@@ -115,7 +114,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,14 +144,14 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> V jazyce JavaScript `customStatus` pole se nastaví při další `yield` nebo `return` naplánované akce.
+> V jazyce JavaScript `customStatus` bude pole nastaveno při plánování akce další `yield` nebo `return` .
 
 > [!WARNING]
-> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Při vývoji místně v JavaScriptu budete muset nastavit proměnnou `WEBSITE_HOSTNAME` prostředí na `localhost:<port>`, ex. `localhost:7071`pro použití metod v `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
-### <a name="output-customization"></a>Výstup vlastního nastavení
+### <a name="output-customization"></a>Vlastní nastavení výstupu
 
-Další zajímavé scénář je tak, že vrací vlastní výstup na základě jedinečných charakteristik nebo interakcí segmentace uživatelů. Díky pomoci stav vlastní Orchestrace zůstane obecný kód na straně klienta. Všechny hlavní úpravy dojde na straně serveru, jak je znázorněno v následujícím příkladu:
+Dalším zajímavým scénářem je segmentování uživatelů tím, že vrací přizpůsobený výstup na základě jedinečných vlastností nebo interakcí. Pomocí vlastního stavu orchestrace zůstane kód na straně klienta obecný. Všechny hlavní úpravy se projeví na straně serveru, jak je znázorněno v následující ukázce:
 
 #### <a name="c"></a>C#
 
@@ -192,7 +191,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -227,7 +226,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="instruction-specification"></a>Specifikace instrukce
 
-Orchestrator může poskytovat klientům prostřednictvím vlastního stavu jedinečný pokyny. Stav vlastní pokyny budou zmapována do kroků Orchestrace kódu:
+Nástroj Orchestrator může poskytovat jedinečné pokyny pro klienty prostřednictvím vlastního stavu. Vlastní pokyny ke stavu budou mapovány na kroky v kódu orchestrace:
 
 #### <a name="c"></a>C#
 
@@ -257,7 +256,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -286,7 +285,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Ukázka
 
-V následujícím příkladu je vlastní stav nastaven.
+V následující ukázce je nastaven vlastní stav jako první.
 
 ### <a name="c"></a>C#
 
@@ -303,7 +302,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -319,14 +318,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Je spuštěn orchestraci, můžete načíst externí klienti tento vlastní stav:
+I když je orchestrace spuštěná, externí klienti mohou načíst tento vlastní stav:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienti získáte odpovědi na následující:
+Klienti získají následující odpověď:
 
 ```http
 {
@@ -340,9 +339,9 @@ Klienti získáte odpovědi na následující:
 ```
 
 > [!WARNING]
-> Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni vyplňoval sloupec Azure Table Storage. Vývojáři mohou pomocí externího úložiště, pokud budou potřebovat větší datovou část.
+> Vlastní datová část stavu je omezená na 16 KB textu JSON ve formátu UTF-16, protože musí být schopná se umístit do sloupce Azure Table Storage. Vývojáři můžou použít externí úložiště, pokud potřebují větší datovou část.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o rozhraní API protokolu HTTP v Durable Functions](durable-functions-http-api.md)
+> [Přečtěte si o rozhraních API protokolu HTTP v Durable Functions](durable-functions-http-api.md)

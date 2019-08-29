@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879601"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114251"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Společná rozhraní IoT technologie Plug and Play ve verzi Preview
 
-U všech zařízení IoT technologie Plug and Play se očekává implementace některých běžných rozhraní. Společná rozhraní využívají řešení IoT, protože poskytují konzistentní funkce. [Certifikace](tutorial-build-device-certification.md) vyžaduje, aby vaše zařízení implementovalo několik společných rozhraní. Můžete načíst společné definice rozhraní z úložiště globálního modelu.
+U všech zařízení IoT technologie Plug and Play se očekává implementace některých běžných rozhraní. Společná rozhraní využívají řešení IoT, protože poskytují konzistentní funkce. [Certifikace](tutorial-build-device-certification.md) vyžaduje, aby vaše zařízení implementovalo několik společných rozhraní. Z úložiště veřejného modelu můžete načíst společné definice rozhraní.
 
 ## <a name="summary-of-common-interfaces"></a>Souhrn společných rozhraní
 
@@ -35,7 +35,7 @@ U všech zařízení IoT technologie Plug and Play se očekává implementace n�
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
-Pomocí rozšíření Azure IoT pro Azure CLI můžete načíst společná rozhraní z globálního úložiště modelu.
+Pomocí rozšíření Azure IoT pro Azure CLI můžete načíst společná rozhraní z úložiště veřejného modelu.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,13 +49,13 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **technologie Plug and Play IoT: Otevřete příkaz úložiště** modelu. Vyberte **úložiště globálních modelů**. Globální úložiště modelu se otevře v VS Code.
+1. Zadejte **technologie Plug and Play** a pak vyberte **technologie Plug and Play IoT: Otevřete příkaz úložiště** modelu. Vyberte **veřejné úložiště**. Úložiště veřejného modelu se otevře v VS Code.
 
-1. V úložišti globálních modelů zadejte název rozhraní do vyhledávacího pole.
+1. V úložišti veřejného modelu zadejte název rozhraní do vyhledávacího pole.
 
 1. Pokud chcete vytvořit místní kopii rozhraní, vyberte ji ve výsledcích hledání a pak vyberte **Stáhnout**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se seznámili s běžnými rozhraními, je zde několik dalších prostředků:
 

@@ -8,19 +8,18 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322707"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094284"
 ---
 > [!NOTE] 
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z bezpečnostních důvodů. 
@@ -60,7 +59,7 @@ Další informace o přístupu k souborům a adresářům z úlohy najdete v té
 
 Úroveň zvýšení úrovně uživatelského účtu indikuje, jestli se úloha spouští s vyšším přístupem. Se zvýšeným přístupem může běžet účet automatického uživatele i pojmenovaný uživatelský účet. Úroveň zvýšení úrovně oprávnění jsou tyto dvě možnosti:
 
-- **NonAdmin** Úloha se spouští jako standardní uživatel bez zvýšeného přístupu. Výchozí úroveň zvýšení oprávnění pro uživatelský účet Batch je vždy nesprávce .
+- **NonAdmin** Úloha se spouští jako standardní uživatel bez zvýšeného přístupu. Výchozí úroveň zvýšení oprávnění pro uživatelský účet Batch je vždy nesprávce.
 - **Správce:** Úloha se spouští jako uživatel se zvýšeným přístupem a funguje s úplnými oprávněními správce. 
 
 ## <a name="auto-user-accounts"></a>Účty automatických uživatelů

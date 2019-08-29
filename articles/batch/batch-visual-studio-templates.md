@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bb4c71f2c7f42ef599796bc380bb7a9f35b8c64e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094345"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
 
@@ -385,7 +384,7 @@ Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a s
 ### <a name="client-considerations"></a>Klientské požadavky
 **Přihlašovací údaje úložiště**
 
-Pokud váš procesor úloh používá úložiště objektů BLOB v Azure k uchování výstupů, například pomocí pomocné knihovny pro konvence souborů, pak potřebuje  přístup k přihlašovacím údajům účtu cloudového úložiště *nebo* k adrese URL kontejneru objektů blob, která obsahuje sdílený přístup. podpis (SAS). Šablona zahrnuje podporu pro poskytování přihlašovacích údajů prostřednictvím běžných proměnných prostředí. Váš klient může přihlašovací údaje k úložišti předat následujícím způsobem:
+Pokud váš procesor úloh používá úložiště objektů BLOB v Azure k uchování výstupů, například pomocí pomocné knihovny pro konvence souborů, pak potřebuje přístup k přihlašovacím údajům účtu cloudového úložiště *nebo* k adrese URL kontejneru objektů blob, která obsahuje sdílený přístup. podpis (SAS). Šablona zahrnuje podporu pro poskytování přihlašovacích údajů prostřednictvím běžných proměnných prostředí. Váš klient může přihlašovací údaje k úložišti předat následujícím způsobem:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {

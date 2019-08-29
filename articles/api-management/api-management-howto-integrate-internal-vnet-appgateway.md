@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure API Management ve virtuální síti pomocí služby Application Gateway | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat a nakonfigurovat Azure API Management v interní virtuální síti s Application Gateway (WAF) jako front-endu
+title: Jak používat Azure API Management v Virtual Network s Application Gateway | Microsoft Docs
+description: Přečtěte si, jak nastavit a nakonfigurovat Azure API Management v interních Virtual Network s Application Gateway (WAF) jako front-endu.
 services: api-management
 documentationcenter: ''
 author: solankisamir
@@ -10,28 +10,27 @@ ms.assetid: a8c982b2-bca5-4312-9367-4a0bbc1082b1
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f7617348a98899251dcd3b8f1645c40bd297ffdb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141667"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073560"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integraci služby API Management v interní virtuální síti pomocí služby Application Gateway
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
-## <a name="overview"> </a> Přehled
+## <a name="overview"></a> Přehled
 
-Služba API Management je možné nakonfigurovat ve virtuální síti v interní režim, který je přístupný pouze z v rámci virtuální sítě. Azure Application Gateway je služba PAAS, která poskytuje nástroje pro vyrovnávání zatížení vrstvy 7. Funguje jako služba reverzních proxy serverů a poskytuje mezi jeho nabídky Firewall webových aplikací (WAF).
+Službu API Management lze nakonfigurovat v Virtual Network v interním režimu, který je přístupný pouze v rámci Virtual Network. Azure Application Gateway je služba PAAS, která poskytuje nástroj pro vyrovnávání zatížení vrstvy 7. Funguje jako služba reverzního proxy serveru a nabízí z nabídky bránu firewall webových aplikací (WAF).
 
-Kombinování zřizována jako interní virtuální síť s front-endový aplikační brány API Management umožňuje následující scénáře:
+Kombinování API Management zřízené v interní virtuální síti s Application Gateway front-endu umožňuje následující scénáře:
 
-* Použijte stejný prostředek API Management k využití v příjemci interní a externí uživatele.
-* Použijte jeden prostředek API Management a mají podmnožinu rozhraní API definované ve službě API Management je dostupná pro externí uživatele.
-* Zadejte klíč způsob, jak zapnout a vypnout přepnout přístup do API managementu z veřejného Internetu.
+* Použijte stejný prostředek API Management pro spotřebu interních i externích spotřebitelů.
+* Použijte jeden prostředek API Management a mít podmnožinu rozhraní API definovanou v API Management k dispozici pro externí příjemce.
+* Poskytněte způsob, jak přepnout přístup k API Management z veřejného internetu na a vypnout.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -39,52 +38,52 @@ Kombinování zřizována jako interní virtuální síť s front-endový aplika
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li postupovat podle kroků popsaných v tomto článku, budete potřebovat:
+Pokud chcete postupovat podle kroků popsaných v tomto článku, musíte mít:
 
 * Aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Certifikáty – pfx a cer pro název hostitele rozhraní API a pfx pro název hostitele portálu pro vývojáře.
+* Certifikáty-PFX a CER pro název hostitele rozhraní API a PFX pro název hostitele portálu pro vývojáře.
 
-## <a name="scenario"> </a> Scénář
+## <a name="scenario"></a> Scénář
 
-Tento článek popisuje způsob použití jediné služby API Management pro interní a externí uživatele a pracovat jako jeden front-endu pro i v místním prostředí a rozhraní API v cloudu. Zobrazí se také, jak vystavit pouze podmnožinu vašich rozhraní API (v příkladu, které jsou zvýrazněny zeleně) pro externí spotřebu pomocí směrování funkce je dostupná ve službě Application Gateway.
+Tento článek popisuje, jak používat jednu API Management službu pro interní i externí spotřebitele a učinit ji jako jeden front-end pro místní i cloudová rozhraní API. Také se dozvíte, jak vystavit jenom podmnožinu vašich rozhraní API (v příkladu, kde jsou zvýrazněna zeleně) pro externí spotřebu pomocí funkce směrování dostupné v Application Gateway.
 
-V prvním příkladu nastavení všechna svoje rozhraní API spravují pouze v rámci vaší virtuální sítě. Interní příjemci (zvýrazněná v oranžová) můžete přistupovat všechna vaše interní a externí rozhraní API. Provoz se nikdy nedostane mimo k Internetu. Vysoký výkon připojení se doručují prostřednictvím okruhů Expressroute.
+V prvním příkladu instalace jsou všechna vaše rozhraní API spravovaná jenom v rámci vašeho Virtual Network. Interní spotřebitelé (zvýrazněné oranžová) mají přístup ke všem vašim interním a externím rozhraním API. Provoz nikdy nepřijde na Internet. Připojení s vysokým výkonem se dodává přes okruhy Express Route.
 
-![Adresa URL trasy](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
+![trasa URL](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> Než začnete
+## <a name="before-you-begin"></a> Než začnete
 
-* Ujistěte se, že používáte nejnovější verzi prostředí Azure PowerShell. Pokyny k instalaci na [instalace Azure Powershellu](/powershell/azure/install-az-ps). 
+* Ujistěte se, že používáte nejnovější verzi prostředí Azure PowerShell. Pokyny k instalaci najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-az-ps). 
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co je potřeba k vytvoření integrace mezi službami API Management a služba Application Gateway?
+## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co je potřeba k vytvoření integrace mezi API Management a Application Gateway?
 
 * **Fond back-end serverů:** Toto je interní virtuální IP adresa služby API Management.
-* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se použijí na všechny servery v rámci fondu.
-* **Front-endový port:** Toto je veřejný port, který se otevírá ve službě application gateway. Přenosů kontaktujících ho přesměruje na jeden back-end serverů.
-* **Naslouchací proces:** Naslouchací proces má front-end port, protokol (Http nebo Https, tyto hodnoty jsou malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
-* **Pravidlo:** Pravidlo váže naslouchací proces do fondu back endového serveru.
-* **Vlastní stavu testu:** Application Gateway, ve výchozím nastavení, pomocí IP adres na základě testů zjistit, které servery v BackendAddressPool jsou aktivní. API Management, kterou služba reagovala jenom na žádosti se hlavička hostitele správná, proto testy výchozí nezdaří. Sonda stavu vlastní musí definovat tak, aby pomůže zjistit, zda služba je aktivní a předávat požadavky službě application gateway.
-* **Vlastní domény certifikáty:** Pro přístup k rozhraní API správy z Internetu, musíte vytvořit mapování CNAME z jeho názvu hostitele front-endu název DNS Application Gateway. Tím se zajistí, že záhlaví názvu hostitele a certifikát odesílat Application Gateway, která je předána API Management je ten, který APIM dokáže rozpoznat jako platný. V tomto příkladu budeme používat dva certifikáty - pro back-endu a portálu pro vývojáře.  
+* **Nastavení fondu back-end serverů:** Každý fond má nastavení, jako je port, protokol a spřažení na základě souborů cookie. Tato nastavení se aplikují na všechny servery v rámci fondu.
+* **Port front-end:** Toto je veřejný port, který se otevírá ve službě Application Gateway. Provoz se přesměruje na jeden ze serverů back-end.
+* **Služby** Naslouchací proces má front-end port, protokol (http nebo https, u těchto hodnot se rozlišují malá a velká písmena) a název certifikátu SSL (Pokud se konfiguruje přesměrování zpracování SSL).
+* **Pravidlo** Pravidlo váže naslouchací proces na fond back-end serverů.
+* **Vlastní sonda stavu:** Application Gateway ve výchozím nastavení používá ke zjištění, které servery v BackendAddressPool jsou aktivní, nástroje testy založené na IP adresách. Služba API Management reaguje jenom na žádosti se správnou hlavičkou hostitele, takže výchozí sondy selžou. Je potřeba definovat vlastní sondu stavu, která bude pomáhat aplikační bráně zjistit, jestli je služba aktivní, a měla by překládat požadavky.
+* **Vlastní certifikáty domény:** Chcete-li získat přístup k API Management z Internetu, je třeba vytvořit mapování CNAME svého názvu hostitele na Application Gateway název DNS front-endu. Tím se zajistí, že záhlaví a certifikát hostitele odeslaného do Application Gateway, který předáte do API Management, je jedním APIM, který může rozpoznat jako platný. V tomto příkladu použijeme dva certifikáty – pro back-end a portál pro vývojáře.  
 
-## <a name="overview-steps"> </a> Kroků potřebných pro integraci služby API Management a služba Application Gateway
+## <a name="overview-steps"></a> Kroky vyžadované pro integraci API Management a Application Gateway
 
 1. Vytvoření skupiny prostředků pro Resource Manager
-2. Vytvořte virtuální síť, podsíť a veřejnou IP adresu pro službu Application Gateway. Vytvoření další podsítě pro službu API Management.
-3. Vytvoření služby API Management v podsíti virtuální sítě vytvořené výše a ujistěte se, že používáte interní režimu.
-4. Nastavení vlastního názvu domény ve službě API Management.
-5. Vytvoření objektu konfigurace aplikační brány.
-6. Vytvoří prostředek služby Application Gateway.
-7. Vytvořte záznam CNAME z veřejného názvu DNS služby Application Gateway na název hostitele proxy API Management.
+2. Pro Application Gateway vytvořte Virtual Network, podsíť a veřejnou IP adresu. Vytvořte další podsíť pro API Management.
+3. Vytvořte službu API Management v podsíti virtuální sítě vytvořené výše a ujistěte se, že používáte interní režim.
+4. Nastavte vlastní název domény ve službě API Management.
+5. Vytvořte objekt konfigurace Application Gateway.
+6. Vytvořte prostředek Application Gateway.
+7. Vytvořte CNAME z veřejného názvu DNS Application Gateway k názvu hostitele API Management proxy serveru.
 
-## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>Vystavení portálu pro vývojáře externě přes Application Gateway
+## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>Zpřístupnění portálu pro vývojáře externě prostřednictvím Application Gateway
 
-V této příručce se také zveřejňujeme **portál pro vývojáře** externí cílovým skupinám na místě přes Application Gateway. Vyžaduje další kroky k vytvoření naslouchacího procesu portál pro vývojáře, test, nastavení a pravidla. Všechny podrobnosti jsou uvedeny v příslušných kroků.
+V této příručce zveřejníme také portál pro **vývojáře** pro externí cílové skupiny prostřednictvím Application Gateway. Vyžaduje další kroky pro vytvoření naslouchacího procesu, sondy, nastavení a pravidel portálu pro vývojáře. Všechny podrobnosti jsou k dispozici v příslušných krocích.
 
 > [!WARNING]
-> Pokud používáte Azure AD nebo ověřování jiných výrobců, povolte prosím [spřažení relace na základě souborů cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) funkcí ve službě Application Gateway.
+> Pokud používáte ověřování Azure AD nebo třetí strany, povolte v Application Gateway funkci [spřažení relace na základě souborů cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) .
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 
@@ -96,7 +95,7 @@ Přihlášení k Azure
 Connect-AzAccount
 ```
 
-Ověření pomocí přihlašovacích údajů.
+Proveďte ověření pomocí vašich přihlašovacích údajů.
 
 ### <a name="step-2"></a>Krok 2
 
@@ -117,15 +116,15 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. To slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby application gateway používají stejnou skupinu prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. To slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby Application Gateway používají stejnou skupinu prostředků.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvořte virtuální síť a podsíť pro službu application gateway
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Vytvoření Virtual Network a podsítě pro aplikační bránu
 
-Následující příklad ukazuje, jak vytvořit virtuální síť pomocí zdroj správce.
+Následující příklad ukazuje, jak vytvořit Virtual Network pomocí Resource Manageru.
 
 ### <a name="step-1"></a>Krok 1
 
-Přiřaďte rozsah adres 10.0.0.0/24 proměnné podsítě, která má být použit pro službu Application Gateway při vytváření virtuální sítě.
+Přiřaďte proměnné podsítě rozsah adres 10.0.0.0/24, který se má použít pro Application Gateway při vytváření Virtual Network.
 
 ```powershell
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
@@ -133,7 +132,7 @@ $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPref
 
 ### <a name="step-2"></a>Krok 2
 
-Přiřaďte 10.0.1.0/24 rozsah adres proměnné podsítě, která má být použit pro službu API Management při vytváření virtuální sítě.
+Přiřaďte k proměnné podsítě rozsah adres 10.0.1.0/24, který se má použít pro API Management při vytváření Virtual Network.
 
 ```powershell
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
@@ -141,7 +140,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>Krok 3
 
-Vytvoření virtuální sítě s názvem **appgwvnet** ve skupině prostředků **apim-appGw-RG** pro oblast západní USA. Pomocí předpony 10.0.0.0/16 s podsítí 10.0.0.0/24 a 10.0.1.0/24.
+Vytvořte Virtual Network s názvem **appgwvnet** ve skupině prostředků **APIM-appGw-RG** pro oblast západní USA. Použijte předponu 10.0.0.0/16 s podsítěmi 10.0.0.0/24 a 10.0.1.0/24.
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -149,20 +148,20 @@ $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName 
 
 ### <a name="step-4"></a>Krok 4
 
-Přiřaďte proměnnou podsítě pro další kroky
+Přiřaďte proměnnou podsítě pro další kroky.
 
 ```powershell
 $appgatewaysubnetdata = $vnet.Subnets[0]
 $apimsubnetdata = $vnet.Subnets[1]
 ```
 
-## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Vytvoření služby API Management v síti VNET nakonfigurovaný v interní režimu
+## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Vytvoření služby API Management ve virtuální síti nakonfigurované v interním režimu
 
-Následující příklad ukazuje, jak vytvořit služby API Management ve virtuální síti nakonfigurovat interní pouze pro přístup.
+Následující příklad ukazuje, jak vytvořit službu API Management ve virtuální síti nakonfigurovanou pouze pro interní přístup.
 
 ### <a name="step-1"></a>Krok 1
 
-Vytvořte virtuální síť pro správu rozhraní API objektu pomocí podsítě $apimsubnetdata vytvořili výše.
+Vytvořte objekt API Management Virtual Network pomocí podsítě $apimsubnetdata vytvořené výše.
 
 ```powershell
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
@@ -170,7 +169,7 @@ $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apims
 
 ### <a name="step-2"></a>Krok 2
 
-Vytvoření služby API Management ve virtuální síti.
+Vytvoří službu API Management v rámci Virtual Network.
 
 ```powershell
 $apimServiceName = "ContosoApi"       # API Management service instance name
@@ -179,13 +178,13 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-Po úspěšném výše uvedený příkaz najdete [konfiguraci DNS vyžadovaných pro přístup k vnitřní chybě služby VNET API Management](api-management-using-with-internal-vnet.md#apim-dns-configuration) k němu přistupovat. Tento krok může trvat více než půl hodiny.
+Po úspěšném provedení výše uvedeného příkazu se podívejte na [konfiguraci DNS, která je nutná pro přístup k interní službě VNET API Management](api-management-using-with-internal-vnet.md#apim-dns-configuration) pro přístup k ní. Tento krok může trvat déle než půl hodiny.
 
-## <a name="set-up-a-custom-domain-name-in-api-management"></a>Nastavení vlastního názvu domény ve službě API Management
+## <a name="set-up-a-custom-domain-name-in-api-management"></a>Nastavení vlastního názvu domény v API Management
 
 ### <a name="step-1"></a>Krok 1
 
-Inicializujte následující proměnné s podrobnostmi o certifikáty pomocí privátního klíče pro domény. V tomto příkladu budeme používat `api.contoso.net` a `portal.contoso.net`.  
+Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a. `portal.contoso.net`  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -202,7 +201,7 @@ $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainT
 
 ### <a name="step-2"></a>Krok 2
 
-Vytvořte a nastavte název hostitele objektů konfigurace proxy serveru a na portálu.  
+Vytvořte a nastavte konfigurační objekty hostname pro proxy server a portál.  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
@@ -215,7 +214,7 @@ Set-AzApiManagement -InputObject $apimService
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
-Vytvořte prostředek veřejné IP adresy **adresy publicIP01** ve skupině prostředků.
+Ve skupině prostředků vytvořte **publicIP01** prostředku veřejné IP adresy.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
@@ -223,7 +222,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 IP adresa je ke službě Application Gateway přiřazena při spuštění služby.
 
-## <a name="create-application-gateway-configuration"></a>Vytvoření konfigurace aplikační brány
+## <a name="create-application-gateway-configuration"></a>Vytvořit konfiguraci aplikační brány
 
 Před vytvořením služby Application Gateway musí být nastaveny všechny položky konfigurace. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
@@ -237,7 +236,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet
 
 ### <a name="step-2"></a>Krok 2
 
-Nakonfigurujte port front-end IP pro koncový bod veřejné IP adresy. Tento port je port, který koncoví uživatelé připojit.
+Nakonfigurujte port front-end IP adresy pro koncový bod veřejné IP adresy. Tento port je port, ke kterému se koncoví uživatelé připojují.
 
 ```powershell
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
@@ -253,7 +252,7 @@ $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -Publi
 
 ### <a name="step-4"></a>Krok 4
 
-Konfigurace certifikátů pro službu Application Gateway, která se použije k dešifrování a znovu šifrovat provoz procházející.
+Nakonfigurujte certifikáty pro Application Gateway, které se použijí k dešifrování a opětovnému šifrování provozu, který prochází.
 
 ```powershell
 $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
@@ -262,7 +261,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>Krok 5
 
-Vytvořte naslouchací procesy HTTP služby Application Gateway. Jim přiřadíte front-end IP konfigurace, portu a protokolu ssl certifikáty.
+Vytvořte naslouchací proces HTTP pro Application Gateway. Přiřaďte k nim konfiguraci front-end IP adresy, portu a certifikátů SSL.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -271,10 +270,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Vytvoření vlastní sondy ke službě API Management `ContosoApi` koncový bod domény proxy serveru. Cesta `/status-0123456789abcdef` je výchozího stavu pomocí koncových bodů hostované na všechny služby API Management. Nastavte `api.contoso.net` jako název hostitele vlastní test paměti k zabezpečení pomocí certifikátu protokolu SSL.
+Vytvořte vlastní testy pro koncový bod domény proxy `ContosoApi` serveru služby API Management. Tato cesta `/status-0123456789abcdef` je výchozím koncovým bodem stavu hostovaným na všech službách API Management. Nastavte `api.contoso.net` jako vlastní název hostitele testu, abyste ho zabezpečili pomocí certifikátu SSL.
 
 > [!NOTE]
-> Název hostitele `contosoapi.azure-api.net` je výchozí název hostitele proxy server nakonfigurovaný s názvem služby `contosoapi` se vytvoří v Azure veřejné.
+> Název hostitele `contosoapi.azure-api.net` je výchozím názvem proxy hostitele nakonfigurovaným při vytvoření služby `contosoapi` s názvem ve veřejném Azure.
 >
 
 ```powershell
@@ -284,7 +283,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>Krok 7
 
-Nahrajte certifikát, který chcete použít u prostředků fondu back-end s podporou protokolu SSL. Toto je stejný certifikát, který jste zadali v kroku 4 výše.
+Nahrajte certifikát, který se má použít u prostředků back-endu s povoleným protokolem SSL. Jedná se o stejný certifikát, který jste zadali v kroku 4 výše.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
@@ -292,7 +291,7 @@ $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistce
 
 ### <a name="step-8"></a>Krok 8
 
-Konfigurace nastavení HTTP back-endu pro službu Application Gateway. To zahrnuje nastavení časového limitu pro požadavek back-endu, po jejímž uplynutí se zrušilo. Tato hodnota se liší od časový limit testu.
+Nakonfigurujte nastavení back-endu protokolu HTTP pro Application Gateway. To zahrnuje nastavení časového limitu pro požadavek na back-end, po kterém se zruší. Tato hodnota se liší od časového limitu testu.
 
 ```powershell
 $apimPoolSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
@@ -301,7 +300,7 @@ $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apim
 
 ### <a name="step-9"></a>Krok 9
 
-Nakonfigurujte fond back-end IP adres s názvem **apimbackend** interní virtuální IP adresy služby API Management vytvořili výše.
+Nakonfigurujte fond back-end IP adres s názvem **apimbackend** s interní virtuální IP adresou služby API Management vytvořené výše.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
@@ -309,7 +308,7 @@ $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimba
 
 ### <a name="step-10"></a>Krok 10
 
-Vytvoření pravidel pro službu Application Gateway používat základní směrování.
+Vytvořte pravidla pro Application Gateway pro použití základního směrování.
 
 ```powershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType Basic -HttpListener $listener -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
@@ -317,11 +316,11 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 ```
 
 > [!TIP]
-> Změna typu pravidla – a směrování k omezení přístupu k určitým stránek portálu pro vývojáře.
+> Změňte-RuleType a směrování, abyste omezili přístup k určitým stránkám portálu pro vývojáře.
 
 ### <a name="step-11"></a>Krok 11
 
-Nakonfigurujte počet instancí a velikost pro službu Application Gateway. V tomto příkladu používáme [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) pro zvýšení zabezpečení prostředků API Management.
+Nakonfigurujte počet instancí a velikost Application Gateway. V tomto příkladu používáme [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) pro zvýšené zabezpečení prostředku API Management.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -329,39 +328,39 @@ $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 
 ### <a name="step-12"></a>Krok 12
 
-Konfigurace WAF bude v režimu "Ochrany před únikem informací".
+Nakonfigurujte WAF tak, aby byl v režimu prevence.
 
 ```powershell
 $config = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-application-gateway"></a>Vytvořit Application Gateway
 
-Vytvoření služby Application Gateway se všemi objekty konfigurace z předchozích kroků.
+Vytvořte Application Gateway se všemi objekty konfigurace z předchozích kroků.
 
 ```powershell
 $appgwName = "apim-app-gw"
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupName -Location $location -BackendAddressPools $apimProxyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $apimPoolPortalSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener, $portalListener -RequestRoutingRules $rule01, $rule02 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert, $certPortal -AuthenticationCertificates $authcert -Probes $apimprobe, $apimPortalProbe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>Název hostitele proxy API Management do prostředku Application Gateway veřejného názvu DNS CNAME
+## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME API Management název hostitele proxy serveru k veřejnému názvu DNS prostředku Application Gateway
 
-Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Při použití veřejné IP adresy, služba Application Gateway vyžaduje dynamicky přidělený název DNS, který nemusí být snadné použití.
+Po vytvoření brány je dalším krokem konfigurace front-endu pro komunikaci. Při použití veřejné IP adresy Application Gateway vyžaduje dynamicky přiřazený název DNS, který možná nebude možné snadno použít.
 
-Application Gateway název DNS by měla sloužit k vytvoření záznamu CNAME, který odkazuje název hostitele proxy serveru služby APIM (třeba `api.contoso.net` ve výše uvedených příkladech) na tento název DNS. Pokud chcete nakonfigurovat záznam IP CNAME front-endu, načtěte podrobnosti o službě Application Gateway a název její přidružené IP adresy nebo DNS pomocí elementu PublicIPAddress. Použití záznamů A se nedoporučuje, protože virtuální IP adresa se může změnit při restartování služby brány.
+Název DNS Application Gateway by měl být použit k vytvoření záznamu CNAME, který odkazuje na název hostitele proxy serveru APIM (např. `api.contoso.net` v předchozích příkladech) na tento název DNS. Pokud chcete nakonfigurovat záznam CNAME protokolu IP, načtěte podrobnosti o Application Gateway a jeho přidruženém názvu IP/DNS pomocí elementu PublicIPAddress. Použití záznamů A se nedoporučuje, protože VIP se může při restartování brány změnit.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a> Souhrn
-Nakonfigurovaná ve virtuální síti Azure API Management poskytuje rozhraní jednu bránu pro všechny nakonfigurované rozhraní API, ať už jsou hostované v místním prostředí nebo v cloudu. Integrace Application Gateway pomocí služby API Management nabízí flexibilitu selektivně povolení konkrétní rozhraní API bude přístupný na Internetu, a také poskytuje firewallu webových aplikací jako front-endu k vaší instanci API Management.
+## <a name="summary"></a> Souhrn
+Azure API Management nakonfigurovaný ve virtuální síti poskytuje rozhraní jediné brány pro všechna nakonfigurovaná rozhraní API, ať už jsou hostovaná místně nebo v cloudu. Integrace Application Gateway s API Management poskytuje flexibilitu selektivního povolení konkrétních rozhraní API k přístupu na internetu a poskytování firewallu webových aplikací jako front-endu vaší instance API Management.
 
-## <a name="next-steps"> </a> Další kroky
-* Další informace o službě Azure Application Gateway
-  * [Přehled služby Application Gateway](../application-gateway/application-gateway-introduction.md)
-  * [Firewall webových aplikací pomocí Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Application Gateway používající směrování na základě cest](../application-gateway/application-gateway-create-url-route-arm-ps.md)
-* Další informace o API Management a virtuálními sítěmi
-  * [Použití služby API Management k dispozici pouze v rámci virtuální sítě](api-management-using-with-internal-vnet.md)
-  * [Použití služby API Management ve virtuální síti](api-management-using-with-vnet.md)
+## <a name="next-steps"></a> Další kroky
+* Další informace o Azure Application Gateway
+  * [Přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
+  * [Application Gateway Firewall webových aplikací](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
+  * [Application Gateway pomocí směrování založeného na cestách](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+* Další informace o API Management a virtuální sítě
+  * [Použití API Management k dispozici pouze v rámci virtuální sítě](api-management-using-with-internal-vnet.md)
+  * [Použití API Management ve virtuální síti](api-management-using-with-vnet.md)

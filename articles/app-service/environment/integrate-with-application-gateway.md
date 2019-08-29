@@ -1,6 +1,6 @@
 ---
-title: Integrace prostředí ILB ase pomocí služby Application Gateway – Azure
-description: Návod, jak integrovat aplikace ve vašem prostředí ILB App Service pomocí služby Application Gateway
+title: Integrace interního nástroje App Service Environment s využitím Application Gateway – Azure
+description: Návod, jak integrovat aplikaci do interního nástroje App Service Environment pomocí Application Gateway
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -9,117 +9,116 @@ ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764801"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069474"
 ---
-# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace ILB App Service Environment ve službě Azure Application Gateway #
+# <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace App Service Environment interního nástroje s využitím Azure Application Gateway #
 
-[Služby App Service Environment](./intro.md) je nasazení služby Azure App Service v podsíti virtuální sítě Azure zákazníka. Je možné nasadit s veřejných nebo privátních koncový bod pro přístup k aplikaci. Nasazení služby App Service Environment s privátní koncového bodu (to znamená, že interní nástroj pro vyrovnávání zatížení) je volána služby ILB App Service Environment.  
+[App Service Environment](./intro.md) je nasazení Azure App Service v podsíti virtuální sítě Azure zákazníka. Dá se nasadit s veřejným nebo soukromým koncovým bodem pro přístup k aplikaci. Nasazení App Service Environment s privátním koncovým bodem (to znamená interní nástroj pro vyrovnávání zatížení) se označuje jako App Service Environment interního nástroje.  
 
-Webové aplikace tím, že příchozí webový provoz blokovat nahrávání malwaru SQL injektáže, skriptování napříč weby a útoky DDoS a další útoky, brány firewall webových aplikací pomáhají zabezpečit. Také prohlédne odpovědi z back endové webové servery pro prevence ztráty dat (DLP). Zařízením WAF můžete získat na webu Azure Marketplace nebo můžete použít [Azure Application Gateway][appgw].
+Brány firewall webových aplikací vám pomůžou zabezpečit webové aplikace tím, že kontrolují příchozí webový provoz, aby blokovali injektáže SQL, skriptování mezi weby, nahrávající malware & DDoS aplikací a další útoky. Také kontroluje odpovědi z back-endové webové servery na ochranu před únikem informací (DLP). Zařízení WAF můžete získat z webu Azure Marketplace nebo můžete použít [azure Application Gateway][appgw].
 
-Azure Application Gateway je virtuální zařízení, která poskytuje Vyrovnávání zatížení vrstvy 7, snižování zátěže protokolu SSL a ochrana brány firewall (WAF) webové aplikace. Může naslouchat veřejné IP adresy a provoz můžete směrovat do vašeho koncového bodu aplikace. Následující informace popisují postupy integrace nakonfigurovaná waf služby application gateway s aplikací ve službě ILB App Service Environment.  
+Azure Application Gateway je virtuální zařízení, které poskytuje ochranu vyrovnávání zatížení vrstvy 7, snižování zátěže SSL a bránu firewall webových aplikací (WAF). Může naslouchat na veřejné IP adrese a směrovat provoz do koncového bodu aplikace. Následující informace popisují, jak integrovat WAF konfigurovanou Aplikační bránu do aplikace v interního nástroje App Service Environment.  
 
-Integrace application gateway s ILB App Service Environment je na úrovni aplikace. Při konfiguraci aplikační brány s ILB App Service Environment děláte ho pro konkrétní aplikace v ILB App Service Environment. Tato technika umožňuje hostování zabezpečených víceklientských aplikací v jednom prostředí ILB App Service.  
+Integrace služby Application Gateway s App Service Environment interního nástroje je na úrovni aplikace. Když konfigurujete Aplikační bránu pomocí App Service Environment interního nástroje, provádíte ji pro konkrétní aplikace v App Service Environment interního nástroje. Tato technika umožňuje hostování zabezpečených víceklientské aplikací v jednom interního nástroje App Service Environment.  
 
-![Služba Application gateway, přejděte do aplikace na služby ILB App Service Environment][1]
+![Aplikační brána ukazující na aplikaci na interního nástroje App Service Environment][1]
 
 Tento návod vám ukáže, jak:
 
-* Vytvoření služby Azure Application Gateway.
-* Nakonfigurujte aplikační bránu, aby odkazoval na aplikaci ve službě ILB App Service Environment.
-* Nakonfigurujte svoji aplikaci případném dalším sdílení dodržovat vlastní název domény.
-* Upravte veřejný název hostitele DNS, který odkazuje na vaše brána application gateway.
+* Vytvořte Application Gateway Azure.
+* Nakonfigurujte Application Gateway tak, aby odkazoval na aplikaci v App Service Environment interního nástroje.
+* Nakonfigurujte svou aplikaci tak, aby dodržovala vlastní název domény.
+* Upravte název veřejného hostitele DNS, který odkazuje na vaši Aplikační bránu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li integrovat vaše brána Application Gateway s ILB App Service Environment, potřebujete:
+K integraci svého Application Gateway s App Service Environment interního nástroje potřebujete:
 
-* Služby ILB App Service Environment.
-* Aplikace běžící v ILB App Service Environment.
-* Názvu internetové domény směrovatelné pro použití s vaší aplikací ve službě App Service Environment ILB.
-* Adresa ILB, která používá služby ILB App Service Environment. Tyto informace jsou na portálu služby App Service Environment v rámci **nastavení** > **IP adresy**:
+* INTERNÍHO nástroje App Service Environment.
+* Aplikace spuštěná v interního nástroje App Service Environment.
+* Název internetové IP domény, který se má používat s vaší aplikací v interního nástroje App Service Environment.
+* Adresa interního nástroje, kterou používá vaše interního nástroje App Service Environment. Tyto informace jsou na portálu App Service Environment v části **Nastavení** > **IP adresy**:
 
-    ![Příklad seznamu IP adresy používané služby ILB App Service Environment][9]
+    ![Příklad seznamu IP adres, které používá App Service Environment interního nástroje][9]
     
-* Veřejný název DNS, který se použije v pozdější tak, aby odkazoval na vaše brána Application Gateway. 
+* Veřejný název DNS, který se později používá k nasměrování na Application Gateway. 
 
-Podrobnosti o tom, jak vytvořit služby ILB App Service Environment najdete v tématu [vytváření a používání služby ILB App Service Environment][ilbase].
+Podrobnosti o tom, jak vytvořit App Service Environment interního nástroje, najdete v tématu [Vytvoření a použití App Service Environment interního nástroje][ilbase].
 
-Tento článek předpokládá, že chcete službu Application Gateway ve stejné virtuální síti Azure nasazená služba App Service Environment. Než začnete k vytvoření služby Application Gateway, vyberte nebo vytvořte podsíť, kterou použijete k hostování brány. 
+V tomto článku se předpokládá, že chcete Application Gateway ve stejné službě Azure Virtual Network, ve které je nasazený App Service Environment. Než začnete vytvářet Application Gateway, vyberte nebo vytvořte podsíť, kterou budete používat k hostování brány. 
 
-Měli byste použít podsíť, která není jednu s názvem GatewaySubnet. Když vložíte do podsítě brány Application Gateway, nebudete moct vytvořit bránu virtuální sítě později. 
+Měli byste použít podsíť, která není ta s názvem GatewaySubnet. Pokud vložíte Application Gateway do GatewaySubnet, nebudete moct později vytvořit bránu virtuální sítě. 
 
-Brána také nelze vložit do podsítě, která používá služby ILB App Service Environment. App Service Environment je jediné, co může být v této podsíti.
+Bránu nemůžete umístit ani do podsítě, kterou používá interního nástroje App Service Environment. App Service Environment je jediná věc, kterou může být v této podsíti.
 
 ## <a name="configuration-steps"></a>Postup konfigurace ##
 
-1. Na webu Azure Portal, přejděte na **nový** > **sítě** > **Application Gateway**.
+1. V Azure Portal přejít na **Nový** > **síťový** > **Application Gateway**.
 
-2. V **Základy** oblasti:
+2. V oblasti **základy** :
 
-   a. Pro **název**, zadejte název služby Application Gateway.
+   a. Do pole **název**zadejte název Application Gateway.
 
-   b. Pro **úroveň**vyberte **WAF**.
+   b. Jako **úroveň**vyberte **WAF**.
 
-   c. Pro **předplatné**, vyberte předplatným, které používá virtuální sítě služby App Service Environment.
+   c. V poli **předplatné**vyberte stejné předplatné, které používá App Service Environment virtuální síť.
 
-   d. Pro **skupiny prostředků**, vytvořte nebo vyberte skupinu prostředků.
+   d. V části **Skupina prostředků**vytvořte nebo vyberte skupinu prostředků.
 
-   e. Pro **umístění**, vyberte umístění ve virtuální síti službu App Service Environment.
+   e. V poli **umístění**vyberte umístění virtuální sítě App Service Environment.
 
-   ![Základní informace o vytvoření nové službě Application Gateway][2]
+   ![Základy vytváření nových Application Gateway][2]
 
-3. V **nastavení** oblasti:
+3. V oblasti **Nastavení** :
 
-   a. Pro **virtuální síť**, výběr virtuální sítě služby App Service Environment.
+   a. Pro **virtuální síť**vyberte App Service Environment virtuální síť.
 
-   b. Pro **podsítě**, vyberte podsíť, ve kterém musí být nasazený aplikační brány. Nepoužívejte GatewaySubnet, protože bude bránit vytvoření brány VPN.
+   b. V poli **podsíť**vyberte podsíť, ve které musí být nasazen Application Gateway. Nepoužívejte GatewaySubnet, protože tím zabráníte vytváření bran VPN.
 
-   c. Pro **IP adres jako typu**vyberte **veřejné**.
+   c. Jako **typ IP adresy**vyberte **veřejné**.
 
-   d. Pro **veřejnou IP adresu**, vyberte veřejnou IP adresu. Pokud ho nemáte, vytvořte nějaký.
+   d. V případě **veřejné IP adresy**vyberte veřejnou IP adresu. Pokud ho ještě nemáte, vytvořte ho hned teď.
 
-   e. Pro **protokol**vyberte **HTTP** nebo **HTTPS**. Pokud konfigurujete pro protokol HTTPS, musíte zadat certifikát PFX.
+   e. V případě **protokolu**vyberte **http** nebo **https**. Pokud konfigurujete pro protokol HTTPS, je nutné zadat certifikát PFX.
 
-   f. Pro **firewallu webových aplikací**, můžete povolit bránu firewall a také nastavit pro buď **detekce** nebo **ochrany před únikem informací** podle svých potřeb.
+   f. V případě **brány firewall webových aplikací**můžete bránu firewall povolit a také ji nastavit pro **detekci** nebo **prevenci** , jak se to hodí.
 
-   ![Nová nastavení pro vytvoření aplikační brány][3]
+   ![Nové nastavení vytváření Application Gateway][3]
     
-4. V **Souhrn** , zkontrolujte nastavení a vyberte **OK**. Vaše brána Application Gateway může trvat o něco více než 30 minut na dokončení instalace.  
+4. V části **Souhrn** zkontrolujte nastavení a vyberte **OK**. Dokončení instalace může trvat déle než 30 minut. Application Gateway  
 
-5. Po dokončení instalace vaše brána Application Gateway, přejděte na portálu služby Application Gateway. Vyberte **back-endový fond**. Přidání ILB adresy pro ILB App Service Environment.
+5. Po dokončení instalace Application Gateway přejít na portál Application Gateway. Vyberte **back-end fond**. Přidejte interního nástroje adresu pro svůj interního nástroje App Service Environment.
 
-   ![Konfigurace back-endový fond][4]
+   ![Konfigurovat back-end fond][4]
 
-6. Po dokončení procesu konfigurace back endového fondu, vyberte **sondy stavu**. Vytvořte sondu stavu pro název domény, který chcete použít pro vaši aplikaci. 
+6. Po dokončení procesu konfigurace fondu back-end vyberte **sondy stavu**. Vytvořte sondu stavu pro název domény, který chcete použít pro vaši aplikaci. 
 
    ![Konfigurace sond stavu][5]
     
-7. Po dokončení procesu konfigurace vašeho sond stavu, vyberte **nastavení HTTP**. Upravit stávající nastavení, vyberte **použít vlastní sondy**a vyberte test, který jste nakonfigurovali.
+7. Po dokončení procesu konfigurace sond stavu vyberte **Nastavení http**. Upravte stávající nastavení, vyberte **použít vlastní test paměti**a vyberte test, který jste nakonfigurovali.
 
-   ![Konfigurace nastavení protokolu HTTP][6]
+   ![Konfigurace nastavení HTTP][6]
     
-8. Přejděte ke službě Application Gateway **přehled** části a zkopírujte veřejnou IP adresu, která používá vaše brána Application Gateway. Nastavit tuto IP adresu jako záznam A pro název domény vaší aplikace, nebo použijte název DNS pro tuto adresu v záznamu CNAME. Je snazší vyberte veřejnou IP adresu a zkopírujte z uživatelského rozhraní pro veřejnou IP adresu spíše než zkopírovat z odkazu ve službě Application Gateway **přehled** oddílu. 
+8. V části **přehled** Application Gateway a ZKOPÍRUJTE veřejnou IP adresu, kterou používá Application Gateway. Nastavte tuto IP adresu jako záznam pro název domény aplikace nebo použijte název DNS pro tuto adresu v záznamu CNAME. Je snazší vybrat veřejnou IP adresu a zkopírovat ji z uživatelského rozhraní veřejné IP adresy místo toho, abyste ji zkopírovali z odkazu v části **přehled** Application Gateway. 
 
    ![Portál Application Gateway][7]
 
-9. Nastavte vlastní název domény pro vaši aplikaci do služby ILB App Service Environment. Přejděte do vaší aplikace na portálu a v části **nastavení**vyberte **vlastní domény**.
+9. Nastavte název vlastní domény vaší aplikace ve vašem interního nástroje App Service Environment. Na portálu přejdete na aplikaci a v části **Nastavení**vyberte **vlastní domény**.
 
-   ![Nastavit vlastní název domény na aplikaci][8]
+   ![Nastavení vlastního názvu domény v aplikaci][8]
 
-Nejsou k dispozici informace o nastavení vlastních názvů domén pro webové aplikace v následujícím článku [nastavení vlastních názvů domén pro vaši webovou aplikaci][custom-domain]. Ale pro aplikaci služby ILB App Service Environment, není k dispozici žádné ověření názvu domény. Protože DNS, který spravuje koncových bodů aplikace, které vlastníte, můžete umístit cokoli, co chcete, aby v něm. Vlastní název domény, který v tomto případě přidáte nemusí být ve službě DNS, ale přesto musí nakonfigurovat s vaší aplikací. 
+K dispozici jsou informace o nastavení vlastních názvů domén pro webové aplikace v článku [Nastavení vlastních názvů domén pro vaši webovou aplikaci][custom-domain]. U aplikace v interního nástroje App Service Environment ale není k dispozici žádné ověření názvu domény. Vzhledem k tomu, že jste vlastníkem DNS, který spravuje koncové body aplikace, můžete v něm libovolně umístit. Vlastní název domény, který přidáváte v tomto případě, nemusí být ve službě DNS, ale stále musí být nakonfigurovaný s vaší aplikací. 
 
-Po dokončení instalace a jste povolili krátkém čase se změny DNS rozšíří, můžete přístup k aplikaci s použitím vlastního názvu domény, který jste vytvořili. 
+Až se instalace dokončí a máte povolenou krátkou dobu, než se změny DNS rozšíří, můžete k aplikaci přistupovat pomocí vlastního názvu domény, který jste vytvořili. 
 
 
 <!--IMAGES-->

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace firewallu webových aplikací (WAF) služby App Service Environment – Azure
+title: Konfigurace firewallu webových aplikací (WAF) pro App Service Environment – Azure
 description: Zjistěte, jak nakonfigurovat Firewall webových aplikací před službou App Service Environment.
 services: app-service\web
 documentationcenter: ''
@@ -10,17 +10,16 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130642"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070052"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
@@ -31,7 +30,7 @@ Kromě služby Azure Application Gateway je k dispozici několik možností na w
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 Pro účely tohoto dokumentu nakonfigurujeme službu App Service Environment za několika instancemi Barracuda WAF s vyrovnáváním zatížení, aby se do služby App Service Environment dostal pouze provoz z této brány WAF a aby služba nebyla přístupná z DMZ. Před instancí Barracuda WAF také máme službu Azure Traffic Manager, která vyrovnává zatížení napříč datovými centry a oblastmi Azure. Podrobný diagram nastavení bude podobný jako na následujícím obrázku:
 
 ![Architektura][Architecture] 
@@ -74,12 +73,12 @@ Po přihlášení by se měl zobrazit podobný řídicí panel jako na následuj
 
 ![Správa – Řídicí panel][ManagementDashboard]
 
-Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu je nakonfigurovaná aplikace služby App Service obsluhující provoz na HTTP a HTTPS.
+Po kliknutí na kartu **Services** (Služby) můžete konfigurovat bránu WAF pro služby, které chrání. Další podrobnosti o konfiguraci Barracuda WAF najdete v příslušné [dokumentaci](https://techlib.barracuda.com/waf/getstarted1). V následujícím příkladu je nakonfigurované App Service aplikace obsluhující provoz na protokolech HTTP a HTTPS.
 
 ![Správa – Přidání služeb][ManagementAddServices]
 
 > [!NOTE]
-> V závislosti na konfiguraci aplikace a jaké funkce se používají ve službě App Service Environment je potřeba směrovat provoz TCP na jiné porty než 80 a 443, například pokud máte nastavené IP SSL pro aplikaci služby App Service. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
+> V závislosti na tom, jak jsou vaše aplikace nakonfigurované a jaké funkce se ve vašem App Service Environment používají, musíte přesměrováním provozu u jiných portů TCP než 80 a 443, například pokud máte IP SSL instalaci pro App Service aplikaci. Seznam síťových portů používaných ve službě App Service Environment najdete v části Síťové porty v [dokumentaci k řízení příchozího provozu](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 

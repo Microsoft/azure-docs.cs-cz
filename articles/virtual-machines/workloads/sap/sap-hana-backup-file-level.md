@@ -7,18 +7,17 @@ author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 86a0633a433623c2b43bb26721e5fcee08d4301f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8860c943dafdb9d166510519d0fb058f523537b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640809"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078905"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
@@ -156,7 +155,7 @@ Na tomto snímku obrazovky vidíte, že se zdrojová adresářová struktura ve 
 
 Ukládání SAP HANA záložních souborů do souborů Azure může být zajímavou možností v budoucnu, pokud SAP HANA zálohování souborů podporuje přímo. Nebo když bude možné připojit soubory Azure přes systém souborů NFS a maximální kvóta je podstatně vyšší než 5 TB.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](sap-hana-backup-guide.md) poskytuje přehled a informace o tom, jak začít.
 * [SAP HANA zálohování na základě snímků úložiště](sap-hana-backup-storage-snapshots.md) popisuje možnost zálohování na základě snímků úložiště.
 * Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).

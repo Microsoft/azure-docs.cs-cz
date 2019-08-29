@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 96fde6ade45bb92036fbc9ac803eebd50640bf85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013450"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102875"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Nejčastější dotazy
 
@@ -157,7 +157,7 @@ Pokud chcete používat vizualizaci závislostí, je potřeba stáhnout a nainst
 
 Na každý počítač je potřeba nainstalovat následující agenty:
 - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Agent závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure).
+- [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent).
 - Pokud máte počítače bez připojení k Internetu, musíte na ně stáhnout a nainstalovat bránu Log Analytics.
 
 Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty.
@@ -198,5 +198,5 @@ Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure
 
 Migrace Azure Migrate serveru používá modul replikace Site Recovery pro migraci virtuálních počítačů VMware založenou na agentech, migraci virtuálních počítačů Hyper-V a migraci fyzických serverů do Azure. Možnost bez agenta pro migraci virtuálních počítačů VMware je nativně integrovaná do migrace serveru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

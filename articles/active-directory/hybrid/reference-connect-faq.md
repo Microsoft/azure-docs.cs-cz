@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011298"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084862"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -273,4 +273,4 @@ Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevř
 
 **Otázka: Proč se mi zobrazují události 6311 a 6401 po chybách kroku synchronizace?**
 
-V případě událostí 6311- **v serveru došlo k neočekávané chybě při zpětném volání** a 6401- **kontroler agenta pro správu zjistil neočekávanou chybu** – jsou vždy protokolovány po chybě kroku synchronizace. Chcete-li tyto chyby vyřešit, je nutné vyčistit chyby kroku synchronizace.  Další informace najdete v tématu [řešení chyb při synchronizaci](tshoot-connect-sync-errors.md) a [odstraňování potíží s synchronizací objektů pomocí Azure AD Connect synchronizace](/tshoot-connect-objectsync.md) .
+V případě událostí 6311- **v serveru došlo k neočekávané chybě při zpětném volání** a 6401- **kontroler agenta pro správu zjistil neočekávanou chybu** – jsou vždy protokolovány po chybě kroku synchronizace. Chcete-li tyto chyby vyřešit, je nutné vyčistit chyby kroku synchronizace.  Další informace najdete v tématu [řešení chyb při synchronizaci](tshoot-connect-sync-errors.md) a [odstraňování potíží s synchronizací objektů pomocí Azure AD Connect synchronizace](tshoot-connect-objectsync.md) .

@@ -1,66 +1,65 @@
 ---
-title: Nelze připojit k virtuálním počítačům Azure, protože RDP port není povolené v NSG | Dokumentace Microsoftu
-description: Zjistěte, jak řešit potíže, ve kterém RDP selže z důvodu konfigurace skupiny zabezpečení sítě na webu Azure Portal | Dokumentace Microsoftu
+title: Nejde se připojit k virtuálním počítačům Azure, protože port RDP není v NSG povolený. | Microsoft Docs
+description: Naučte se řešit potíže s tím, že se protokol RDP nezdařil z důvodu konfigurace NSG v Azure Portal | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfb0464fd7fbd271272a992cffead44e9ba3b553
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318931"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103423"
 ---
-#  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nelze vzdáleně připojit k virtuálnímu počítači protože RDP port není povolené v NSG
+#  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nejde se vzdáleně připojit k virtuálnímu počítači, protože port RDP není v NSG povolený.
 
-Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete připojit k virtuálním počítači s Windows Azure (VM) vzhledem k tomu, že ve skupině zabezpečení sítě (NSG) není povolen port protokolu RDP (Remote Desktop).
+Tento článek vysvětluje, jak vyřešit problém, ve kterém se nemůžete připojit k virtuálnímu počítači s Windows Azure (VM), protože port protokol RDP (Remote Desktop Protocol) (RDP) není ve skupině zabezpečení sítě (NSG) povolený.
 
 
 > [!NOTE] 
-> Azure nabízí dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Doporučujeme vám použít model nasazení Resource Manager místo klasického modelu nasazení pro nová nasazení. 
+> Azure má dva modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Pro nová nasazení doporučujeme použít model nasazení Správce prostředků místo modelu nasazení Classic. 
 
 ## <a name="symptom"></a>Příznak
 
-Nelze provést připojení RDP k virtuálnímu počítači v Azure, protože není otevřený RDP port ve skupině zabezpečení sítě.
+Nemůžete vytvořit připojení RDP k virtuálnímu počítači v Azure, protože ve skupině zabezpečení sítě není otevřený port RDP.
 
 ## <a name="solution"></a>Řešení 
 
-Při vytváření nového virtuálního počítače blokován veškerý provoz z Internetu ve výchozím nastavení. 
+Když vytváříte nový virtuální počítač, bude ve výchozím nastavení blokován veškerý provoz z Internetu. 
 
-Pokud chcete povolit port RDP v skupinu zabezpečení sítě, postupujte podle těchto kroků:
+Pokud chcete povolit port RDP v NSG, postupujte takto:
 1. Přihlaste se k [na webu Azure portal](https://portal.azure.com).
-2. V **virtuálních počítačů**, vyberte virtuální počítač, u něhož došlo k potížím. 
-3. V **nastavení**vyberte **sítě**. 
-4. V **příchozí pravidla portů**, zkontrolujte, zda je správně nastaven port pro protokol RDP. Následuje příklad konfigurace: 
+2. V **Virtual Machines**vyberte virtuální počítač, který má problém. 
+3. V **Nastavení**vyberte **sítě**. 
+4. V části **pravidla portů pro příchozí spojení**ověřte, zda je port pro protokol RDP nastaven správně. Následuje příklad konfigurace: 
 
     **Priorita**: 300 </br>
     **Port**: 3389 </br>
     **Název**: Port_3389 </br>
     **Port**: 3389 </br>
     **Protokol**: TCP </br>
-    **Zdroj**: Jakýkoli </br>
-    **Cíle**: Jakýkoli </br>
-    **Akce**: Povolit </br>
+    **Zdroj**: Any </br>
+    **Cílová umístění**: Any </br>
+    **Akce**: Allow </br>
 
-Pokud určíte zdrojovou IP adresu, toto nastavení umožní provoz pouze z konkrétní IP adresu nebo rozsah IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace protokolu RDP je v rozsahu.
+Pokud zadáte zdrojovou IP adresu, toto nastavení povoluje provoz jenom z konkrétní IP adresy nebo rozsahu IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace RDP, je v rozsahu.
 
-Další informace o skupinách Nsg najdete v tématu [skupinu zabezpečení sítě](../../virtual-network/security-overview.md).
+Další informace o skupin zabezpečení sítě najdete v tématu [Skupina zabezpečení sítě](../../virtual-network/security-overview.md).
 
 > [!NOTE]
-> RDP port 3389 je přístupný Internetu. Proto doporučujeme použít pouze pro tento port doporučuje pro účely testování. Pro produkční prostředí doporučujeme použít síť VPN nebo privátní připojení.
+> Port RDP 3389 je přístupný z Internetu. Proto doporučujeme použít tento port pouze pro doporučené testování. Pro produkční prostředí doporučujeme použít síť VPN nebo privátní připojení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud v NSG je již povolen RDP port, přečtěte si téma [řešení potíží s RDP obecné chybě ve virtuálním počítači Azure](./troubleshoot-rdp-general-error.md).
+Pokud je port RDP už v NSG povolený, podívejte se na téma [řešení potíží s obecnou chybou protokolu RDP na virtuálním počítači Azure](./troubleshoot-rdp-general-error.md).
 
 
 

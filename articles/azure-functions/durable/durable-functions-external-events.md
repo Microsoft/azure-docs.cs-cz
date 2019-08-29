@@ -1,32 +1,31 @@
 ---
-title: Zpracování externího událostí v Durable Functions – Azure
-description: Zjistěte, jak zpracovat externí akce, které v rozšíření Durable Functions pro službu Azure Functions.
+title: Zpracování externích událostí v Durable Functions – Azure
+description: Naučte se zpracovávat externí události v rozšíření Durable Functions pro Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: eb024e11b78d13d5ab4544c634acef2ade8141c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730782"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087308"
 ---
-# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externího událostí v Durable Functions (Azure Functions)
+# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
 
-Funkce nástroje Orchestrator mají možnost počkat a naslouchat událostem externí. Tato funkce [Durable Functions](durable-functions-overview.md) je často užitečné pro zpracování zásahem ze strany nebo jiné externí aktivační události.
+Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím událostem. Tato funkce [Durable Functions](durable-functions-overview.md) je často užitečná pro zpracování lidské interakce nebo jiných externích triggerů.
 
 > [!NOTE]
-> Externí akce, které jsou jednosměrnou asynchronní operace. Nejsou vhodné pro situace, kdy bylo zahájeno odesílání události klienta musí synchronní neodpověděla funkce orchestrátoru.
+> Externí události jsou jednosměrné asynchronní operace. Nejsou vhodné pro situace, kdy klient odesílající událost potřebuje synchronní odpověď od funkce Orchestrator.
 
-## <a name="wait-for-events"></a>Čekání na události
+## <a name="wait-for-events"></a>Počkat na události
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) metoda umožňuje funkce orchestrátoru asynchronně čekat a naslouchat vnější události. Deklaruje naslouchání funkce orchestrátoru *název* události a *tvar dat.* očekává příjem.
+Metoda [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) umožňuje, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
 ### <a name="c"></a>C#
 
@@ -47,7 +46,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -62,9 +61,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-V předchozím příkladu naslouchá určité jedna událost a provede akci při obdržení.
+Předchozí příklad naslouchá konkrétní jedné události a provede akci, jakmile bude přijata.
 
-Může naslouchat více událostí současně, jako v následujícím příkladu, který čeká na jednu ze tří oznámení událostí.
+Můžete naslouchat více událostem souběžně, jako v následujícím příkladu, který čeká na jedno ze tří možných oznámení o událostech.
 
 #### <a name="c"></a>C#
 
@@ -93,7 +92,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Čeká na předchozí příklad *jakékoli* více událostí. Je také možné počkat *všechny* události.
+Předchozí příklad naslouchá *libovolné* z několika událostí. Je také možné počkat na *všechny* události.
 
 #### <a name="c"></a>C#
 
@@ -136,7 +135,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,18 +154,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) po neomezenou dobu čeká na vstup.  Aplikace function app může být bezpečně uvolněna při čekání. Pokud události dorazí pro tuto instanci Orchestrace, se probudí, automaticky a okamžitě zpracovává událost.
+[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) čeká na nějaké zadání neomezenou dobu.  Aplikace Function App se dá bezpečně uvolnit při čekání. Pokud a když událost dorazí na tuto instanci orchestrace, je automaticky probuzeny a okamžitě zpracuje událost.
 
 > [!NOTE]
-> Pokud vaše aplikace function app používá, je plán Consumption, žádné poplatky se účtují, když funkce orchestrátoru je čekání na úlohu z `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript), bez ohledu na to, jak dlouho čekat.
+> Pokud vaše aplikace Function App používá plán spotřeby, neúčtují se žádné poplatky za to, že funkce Orchestrator očekává úkol od `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript) bez ohledu na to, jak dlouho čekají.
 
-V rozhraní .NET, pokud se datová část události nejde převést na očekávaný typ. `T`, je vyvolána výjimka.
+V rozhraní .NET, pokud nelze datovou část události převést na očekávaný typ `T`, je vyvolána výjimka.
 
 ## <a name="send-events"></a>Odesílání událostí
 
-[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy odesílá události, která `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` čeká (JavaScript).  `RaiseEventAsync` Přijímá metodu *eventName* a *eventData* jako parametry. Data události musí být serializovatelný JSON.
+Metoda [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) třídy [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) odesílá události, které `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript) čeká.  Metoda přijímá jako parametry *EventName* a *eventData.* `RaiseEventAsync` Data události musí být serializovatelný v kódu JSON.
 
-Níže je příklad fronty aktivuje funkce, která odesílá událost "Schválení" na instanci funkce nástroje orchestrator. ID instance Orchestrace pochází z těla zprávy fronty.
+Níže je uvedená příklad funkce aktivované frontou, která odesílá událost schválení do instance funkce Orchestrator. ID instance Orchestration pochází z těla zprávy fronty.
 
 ### <a name="c"></a>C#
 
@@ -180,7 +179,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -191,21 +190,21 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Interně `RaiseEventAsync` (.NET) nebo `raiseEvent` zařadí zprávu, která získá vyzvednou funkce orchestrátoru čekání (JavaScript). Pokud instance nečeká na určeném *název události,* zpráva o události se přidá do fronty v paměti. Pokud instance Orchestrace začne později, které naslouchají *název události,* zjistí, frontu pro zprávy o událostech.
+Interně `RaiseEventAsync` , (.NET) `raiseEvent` nebo (JavaScript) zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
 
 > [!NOTE]
-> Pokud neexistuje žádná instance orchestration se zadaným *instance ID*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
+> Pokud není k dispozici žádná instance orchestrace se zadaným *ID instance*, zpráva události bude zahozena. Další informace o tomto chování najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
 
 > [!WARNING]
-> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Při vývoji místně v JavaScriptu budete muset nastavit proměnnou `WEBSITE_HOSTNAME` prostředí na `localhost:<port>`, ex. `localhost:7071`pro použití metod v `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém GitHubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak nastavit externí Orchestrace](durable-functions-eternal-orchestrations.md)
+> [Přečtěte si, jak nastavit orchestrace externí.](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Spuštění ukázky, která čeká na vnější události](durable-functions-phone-verification.md)
+> [Spustit ukázku, která čeká na externí události](durable-functions-phone-verification.md)
 
 > [!div class="nextstepaction"]
-> [Spuštění ukázky, která čeká na lidské interakce](durable-functions-phone-verification.md)
+> [Spustit ukázku, která čeká na lidskou interakci](durable-functions-phone-verification.md)

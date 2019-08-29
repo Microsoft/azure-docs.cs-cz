@@ -1,6 +1,6 @@
 ---
-title: Správa zachytávání paketů pomocí služby Azure Network Watcher – Azure portal | Dokumentace Microsoftu
-description: Další informace o správě funkce zachytávání paketů služby Network Watcher pomocí webu Azure portal.
+title: Správa zachytávání paketů pomocí Azure Network Watcher-Azure Portal | Microsoft Docs
+description: Naučte se spravovat funkci zachytávání paketů Network Watcher pomocí Azure Portal.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,91 +14,91 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 50092db9e2e3670168cbb3440b8cb99eb0c2ac20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714704"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102850"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Správa zachytávání paketů pomocí služby Azure Network Watcher pomocí portálu
+# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu
 
-Zachytávání paketů Network Watcher umožňuje vytvořit relace zachycení sledujte provoz do a z virtuálního počítače. Filtry jsou k dispozici pro relace zachytávání zajistit, že zachytíte jenom provoz, který chcete. Zachytávání paketů pomáhá diagnostikovat sítě anomálie reaktivně i proaktivně. Další použití patří shromažďování statistik sítě, získáte informace o síti vniknutí pro komunikaci klient server ladění a mnoho dalšího. Nebudou moct vzdáleně aktivovat paketů zaznamená, snižuje zátěž ručně spustit zachytávání paketů na požadovaný virtuální počítač, což šetří cenný čas.
+Network Watcher Capture paketů umožňuje vytvářet relace zachycení pro sledování provozu do a z virtuálního počítače. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě, jak proaktivní, tak i proaktivní. Mezi další použití patří shromažďování statistik sítě, získávání informací o neoprávněných vniknutích k síti, ladění komunikace mezi klientem a serverem a mnoho dalšího. Schopnost vzdáleně aktivovat zachycení paketů, usnadňuje zatížení ručního zachycení paketů na požadovaném virtuálním počítači, který šetří cenné časy.
 
-V tomto článku zjistíte, jak spustit, zastavit, stáhněte si a odstranit zachycení paketů. 
+V tomto článku se naučíte, jak spustit, zastavit, stáhnout a odstranit zachytávání paketů. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Zachytávání paketů vyžaduje následující připojení:
+Zachytávání paketů vyžaduje následující možnosti připojení:
 * Odchozí připojení k účtu úložiště přes port 443.
 * Příchozí a odchozí připojení k 169.254.169.254
 * Příchozí a odchozí připojení k 168.63.129.16
 
-Pokud skupinu zabezpečení sítě přidružené k síťové rozhraní nebo podsíť, která se síťové rozhraní nachází, ujistěte se, že existují pravidla, které umožní předchozí porty. 
+Pokud je skupina zabezpečení sítě přidružená k síťovému rozhraní nebo podsíti, ve které je síťové rozhraní, zajistěte, aby existovala pravidla, která umožňují předchozí porty. Podobně přidávání uživatelem definovaných tras pro přenos do vaší sítě může bránit připojení k výše uvedeným IP adresám a portům. Ujistěte se prosím, že jsou dostupné. 
 
 ## <a name="start-a-packet-capture"></a>Spustit zachytávání paketů
 
-1. V prohlížeči přejděte [webu Azure portal](https://portal.azure.com) a vyberte **všechny služby**a pak vyberte **Network Watcher** v **části sítě**.
-2. Vyberte **zachytávání paketů** pod **síťové diagnostické nástroje**. Bez ohledu na jejich stavu jsou uvedeny všechny existující zachycení paketů.
-3. Vyberte **přidat** vytvořit zachytávání paketů. Můžete vybrat hodnoty pro následující vlastnosti:
-   - **Předplatné**: Předplatné, pro zachycení virtuálního počítače, které chcete vytvořit paketu probíhá.
+1. V prohlížeči přejděte na [Azure Portal](https://portal.azure.com) a vyberte **všechny služby**a potom vyberte **Network Watcher** v **části síť**.
+2. V části nástroje pro **diagnostiku sítě**vyberte **zachycení paketů** . Budou uvedena všechna existující zachycení paketů bez ohledu na jejich stav.
+3. Vyberte **Přidat** a vytvořte zachytávání paketů. Můžete vybrat hodnoty pro následující vlastnosti:
+   - **Předplatné:** Předplatné, pro které má virtuální počítač vytvořit zachytávání paketů, je v nástroji.
    - **Skupina prostředků**: Skupina prostředků virtuálního počítače.
-   - **Cílit na virtuální počítač**: Virtuální počítač, který chcete vytvořit pro zachycení paketů.
-   - **Název zachycení paketu**: Název zachycení paketů.
-   - **Účet úložiště nebo soubor**: Vyberte **účtu úložiště**, **souboru**, nebo obojí. Pokud vyberete **souboru**, v zachytávání se zapisují do na cestu v rámci virtuálního počítače.
-   - **Místní cesta k souboru**: Místní cestu na virtuálním počítači, kam bude uložena zachytávání paketů (platné pouze tehdy, když *souboru* je vybrána). Cesta musí být platná cesta. Pokud používáte virtuální počítač s Linuxem, musí cesta začínat */var/zachycuje*.
-   - **Účty úložiště**: Vyberte existující účet úložiště, pokud jste vybrali *účtu úložiště*. Tato možnost je k dispozici, pokud jste vybrali pouze **úložiště**.
+   - **Cílový virtuální počítač**: Virtuální počítač, pro který chcete vytvořit zachytávání paketů.
+   - **Název zachytávání paketů**: Název zachytávání paketů.
+   - **Účet úložiště nebo soubor**: Vyberte **účet úložiště**, **soubor**nebo obojí. Pokud vyberete **soubor**, zachytávání se zapíše do cesty v rámci virtuálního počítače.
+   - **Cesta k místnímu souboru**: Místní cesta na virtuálním počítači, kam se bude ukládat zachytávání paketů (platí jenom v případě, že je vybraný *soubor* ) Cesta musí být platná cesta. Pokud používáte virtuální počítač se systémem Linux, cesta musí začínat na */var/Captures*.
+   - **Účty úložiště**: Pokud jste vybrali *účet úložiště*, vyberte existující účet úložiště. Tato možnost je dostupná jenom v případě, že jste vybrali **úložiště**.
    
      > [!NOTE]
-     > Účty úložiště úrovně Premium nejsou aktuálně podporovány pro ukládání paketů zachytí.
+     > Účty Premium Storage se v tuto chvíli nepodporují pro ukládání zachycení paketů.
 
-   - **Maximální počet bajtů na paket**: Počet bajtů z jednotlivých paketů, které jsou zachyceny. Pokud je ponecháno prázdné, jsou zachyceny všechny bajty.
-   - **Maximální počet bajtů na relaci**: Celkový počet bajtů, které jsou zachyceny. Hodnota po dosažení zarážky zachycení paketů.
+   - **Maximální počet bajtů na paket**: Počet bajtů z každého zaznamenaného paketu. Pokud je ponecháno prázdné, všechny bajty budou zachyceny.
+   - **Maximální počet bajtů na relaci**: Celkový počet zaznamenaných bajtů. Jakmile je hodnota dosažena, zachytávání paketů se zastaví.
    - **Časový limit (sekundy)** : Časový limit před zastavením zachytávání paketů. Výchozí hodnota je 18 000 sekund.
-   - Filtrování (nepovinné). Vyberte **+ přidat filtr**
-     - **Protokol**: Protokol pro filtrování pro zachycení paketů. Dostupné hodnoty jsou TCP, UDP a všechny.
-     - **Místní IP adresa**: Filtry paketů zachycení paketů, kde místní IP adresa odpovídá této hodnotě.
-     - **Místní port**: Filtry paketů zachycení paketů, kde na místní port odpovídá této hodnotě.
-     - **Vzdálená IP adresa**: Filtry paketů zachycení paketů, kde Vzdálená IP adresa odpovídá této hodnotě.
-     - **Vzdálený port**: Pokud vzdálený port odpovídá této hodnotě filtry paketů zachycení paketů.
+   - Filtrování (volitelné). Vybrat **+ Přidat filtr**
+     - **Protokol**: Protokol, který se má vyfiltrovat pro zachytávání paketů. Dostupné hodnoty jsou TCP, UDP a any.
+     - **Místní IP adresa**: Vyfiltruje zachytávání paketů pro pakety, které místní IP adresa odpovídá této hodnotě.
+     - **Místní port**: Vyfiltruje zachytávání paketů pro pakety, které místní port odpovídá této hodnotě.
+     - **Vzdálená IP adresa**: Vyfiltruje zachytávání paketů pro pakety, u kterých Vzdálená IP adresa odpovídá této hodnotě.
+     - **Vzdálený port**: Vyfiltruje zachytávání paketů pro pakety, které vzdálený port odpovídá této hodnotě.
     
      > [!NOTE]
-     > Hodnoty portu a IP adresa může být jedna hodnota, rozsah hodnot nebo rozsah, jako je například 80 – 1024, pro port. Můžete definovat tolik filtry podle potřeby.
+     > Hodnoty portu a IP adresy můžou být jedinou hodnotou, rozsahem hodnot nebo rozsahem, například 80-1024, pro port. Můžete definovat tolik filtrů, kolik potřebujete.
 
 4. Vyberte **OK**.
 
-Po vypršení časového limitu určeného v zachytávání paketů zachycení paketů se zastaví a si můžete prohlédnout. Můžete také ručně zastavit relace zachytávání paketů.
+Po vypršení časového limitu nastaveného pro zachytávání paketů je zachytávání paketů zastaveno a lze ho zkontrolovat. Můžete také ručně zastavit relaci zachytávání paketů.
 
 > [!NOTE]
-> Na portálu automaticky:
->  * Vytvoří sledovací proces sítě ve stejné oblasti jako oblast, kterou existuje virtuální počítač, který jste vybrali, pokud oblast nemá doposud sledovací proces sítě.
->  * Přidá *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) nebo [Windows](../virtual-machines/windows/extensions-nwa.md) rozšíření virtuálního počítače k virtuálnímu počítači, pokud ještě není nainstalovaná.
+> Portál automaticky:
+>  * Vytvoří sledovací proces sítě ve stejné oblasti, ve které se nachází virtuální počítač, ve kterém jste zvolili, pokud tato oblast ještě nemá sledovací proces sítě.
+>  * Přidá rozšíření virtuálního počítače se [systémem](../virtual-machines/windows/extensions-nwa.md) *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) nebo Windows k virtuálnímu počítači, pokud ještě není nainstalované.
 
-## <a name="delete-a-packet-capture"></a>Odstranit zachycení paketů
+## <a name="delete-a-packet-capture"></a>Odstranění zachytávání paketů
 
-1. V zobrazení pro zachytávání paketů, vyberte **...**  na pravé straně paketu zachycení, nebo klikněte pravým tlačítkem na existující zachycení paketů a vyberte **odstranit**.
-2. Zobrazí se výzva k potvrzení, že chcete odstranit zachycení paketů. Vyberte **Ano**.
+1. V zobrazení zachytávání paketů vyberte **...** na pravé straně zachytávání paketů nebo klikněte pravým tlačítkem na existující zachytávání paketů a vyberte **Odstranit**.
+2. Zobrazí se výzva, abyste potvrdili, že chcete odstranit zachytávání paketů. Vyberte **Ano**.
 
 > [!NOTE]
-> Odstraňuje se zachycení paketů nedojde k odstranění zachytávací soubor v účtu úložiště nebo na virtuálním počítači.
+> Odstraněním zachytávání paketů nedojde k odstranění digitalizačního souboru v účtu úložiště nebo na virtuálním počítači.
 
-## <a name="stop-a-packet-capture"></a>Zastavit zachytávání paketů
+## <a name="stop-a-packet-capture"></a>Zastavení zachytávání paketů
 
-V zobrazení pro zachytávání paketů, vyberte **...**  na pravé straně paketu zachycení, nebo klikněte pravým tlačítkem na existující zachycení paketů a vyberte **Zastavit**.
+V zobrazení zachytávání paketů vyberte **...** na pravé straně zachytávání paketů nebo klikněte pravým tlačítkem na existující zachytávání paketů a vyberte **zastavit**.
 
-## <a name="download-a-packet-capture"></a>Stáhněte si zachytávání paketů
+## <a name="download-a-packet-capture"></a>Stažení zachytávání paketů
 
-Po dokončení relace zachycení paketů zachytávací soubor nahraje do služby blob storage nebo do místního souboru na virtuálním počítači. Umístění úložiště pro zachytávání paketů je definován při vytváření zachytávání paketů. Praktický nástroj pro přístup k zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, který můžete [Stáhnout](https://storageexplorer.com/).
+Po dokončení relace zachycení paketů se zachytávací soubor nahraje do úložiště objektů BLOB nebo do místního souboru na virtuálním počítači. Umístění úložiště zachytávání paketů je definované během vytváření zachycení paketů. Pohodlný nástroj pro přístup k zachyceným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který si můžete [Stáhnout](https://storageexplorer.com/).
 
-Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
+Pokud je zadaný účet úložiště, soubory zachytávání paketů se uloží do účtu úložiště v následujícím umístění:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-Pokud jste vybrali **souboru** při vytváření zachytávání můžete zobrazení nebo stažení souboru z cesty, které jste nakonfigurovali na virtuálním počítači.
+Pokud jste při vytváření zachytávání vybrali možnost **soubor** , můžete zobrazit nebo stáhnout soubor z cesty, kterou jste nakonfigurovali na virtuálním počítači.
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak automatizovat zachytávání paketů pomocí virtuálního počítače výstrahy, najdete v článku [vytvořit zachytávání paketů upozornění aktivovaných](network-watcher-alert-triggered-packet-capture.md).
-- Pokud chcete zjistit, jestli konkrétní provoz je povolený, nebo z virtuálního počítače, naleznete v tématu [Diagnostika potíží s filtrováním virtuální počítač síťové přenosy](diagnose-vm-network-traffic-filtering-problem.md).
+- Informace o automatizaci zachycení paketů s výstrahami virtuálních počítačů najdete v tématu [Vytvoření aktivované výstrahy zachytávání paketů](network-watcher-alert-triggered-packet-capture.md).
+- Informace o tom, jestli je konkrétní provoz na virtuálním počítači povolený, najdete v tématu [Diagnostika problému s filtrováním síťového provozu virtuálního počítače](diagnose-vm-network-traffic-filtering-problem.md).

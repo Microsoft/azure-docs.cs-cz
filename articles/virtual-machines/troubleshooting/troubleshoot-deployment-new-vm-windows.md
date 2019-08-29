@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s nasazení virtuálního počítače Windows v Azure | Dokumentace Microsoftu
-description: Řešení problémů s nasazením Resource Manageru při vytvoření nového virtuálního počítače Windows v Azure
+title: Řešení potíží s nasazením virtuálního počítače s Windows v Azure | Microsoft Docs
+description: Řešení potíží s Správce prostředků nasazení při vytváření nového virtuálního počítače s Windows v Azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -11,85 +11,84 @@ ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6bdf0816e40e34b184da0340a8dbaffbcd7657e8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710462"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103483"
 ---
-# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení problémů s nasazením při vytváření nového virtuálního počítače Windows v Azure
+# <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení potíží s nasazením při vytváření nového virtuálního počítače s Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="top-issues"></a>Nejčastější problémy
+## <a name="top-issues"></a>Hlavní problémy
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-Jiné problémy při nasazení virtuálního počítače a dotazy, naleznete v tématu [řešení potíží s nasazením Windows virtuální počítač v Azure](troubleshoot-deploy-vm-windows.md).
+Další problémy s nasazením virtuálních počítačů a dotazy najdete v tématu [řešení potíží s nasazením problémů s virtuálním počítačem s Windows v Azure](troubleshoot-deploy-vm-windows.md).
 
-## <a name="collect-activity-logs"></a>Protokoly aktivit shromažďování
-Proces řešení potíží, shromažďování protokolů aktivit k identifikaci chyby související s problémem. Následující odkazy obsahují podrobné informace o procesu dodržovat.
+## <a name="collect-activity-logs"></a>Shromažďování protokolů aktivit
+Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identifikujte chybu spojenou s problémem. Následující odkazy obsahují podrobné informace o tom, jak postupovat.
 
 [Zobrazení operací nasazení](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Zobrazení protokolů aktivit ke správě prostředků Azure](../../resource-group-audit.md)
+[Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**ACOVNÍ ADRESÁŘ:** Pokud je operační systém Windows generalizovaný a je nahraný a zachytit pomocí nastavení zobecněný, pak nebudou všechny chyby. Podobně pokud je operační systém Windows specializovaná a je nahraný a zachytit pomocí speciální nastavení, pak nebudou všechny chyby.
+**POŽADOVANÉ** Pokud je operační systém Windows zobecněný a nahraje se nebo zachycuje s zobecněným nastavením, neobjeví se žádné chyby. Podobně platí, že pokud je operační systém Windows specializovaný a je nahrán a/nebo zachycen se specializovaným nastavením, pak nedojde k žádným chybám.
 
 **Chyby nahrávání:**
 
-**N<sup>1</sup>:** Pokud je operační systém Windows generalizovaný a nahrát ho jako specializovaná, budete mít k vypršení časového limitu zřizování se zablokuje a na obrazovce OOBE virtuálního počítače.
+**N<sup>1</sup>:** Pokud je OS Windows zobecněná a nahraje se jako specializované, zobrazí se na obrazovce OOBE Chyba časového limitu zřizování virtuálního počítače.
 
-**N<sup>2</sup>:** Pokud je operační systém Windows specializované a nahrání generalizovaného, zobrazí se zřizování chyba s virtuálním Počítačem, zaseknuto v OOBE obrazovky, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo.
-
-**Řešení**
-
-Chcete-li oba tyto chyby vyřešit, použijte [přidat AzVhd původní virtuální pevný disk nahrát](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), k dispozici místně, stejné nastavení jako, který pro operační systém (zobecněný/specializované). Pokud chcete nahrát jako generalizovaná, nezapomeňte nejdřív spusťte nástroj sysprep.
-
-**Zachycení chyb:**
-
-**N<sup>3</sup>:** Pokud je operační systém Windows zobecněn, a jsou zachyceny jako specializovaná, obdržíte chybu časového limitu zřizování protože původní virtuální počítač se nedá použít jako ho označí jako zobecněný.
-
-**N<sup>4</sup>:** Pokud je operační systém Windows specializované a jejím zaznamenání jako generalizovaná, obdržíte chybu zřizování selhání, protože nový virtuální počítač běží s původní název počítače, uživatelské jméno a heslo. Navíc původní virtuální počítač je nepoužitelný protože je označená jako specializované.
+**N<sup>2</sup>:** Pokud je operační systém specializovaný na Windows a nahraje se jako zobecněný, zobrazí se chyba zřizování virtuálního počítače zablokované na obrazovce OOBE, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem.
 
 **Řešení**
 
-Chcete-li oba tyto chyby vyřešit, odstraňte aktuální image na portálu, a [vytvoří další bitovou kopii z aktuální virtuální pevné disky](../windows/create-vm-specialized.md) stejné nastavení jako, který pro operační systém (zobecněný/specializované).
+Chcete-li tyto chyby vyřešit, použijte [příkaz Add-AzVhd k nahrání původního virtuálního pevného disku](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), který je k dispozici místně, se stejným nastavením jako v operačním systému (generalizovaná/specializovaná). Pokud se chcete nahrát jako zobecněné, nezapomeňte nejdřív spustit nástroj Sysprep.
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problém: Vlastní/galerie/marketplace image; došlo k chybě přidělení
-Tato chyba nastane v situacích, když je připnutá novou žádost o virtuální počítač do clusteru, který nemůže zajišťovat podporu žádá velikost virtuálního počítače, nebo nemá žádné dostupné volné místo tak, aby vyhovovaly žádosti.
+**Zachytit chyby:**
 
-**1. příčina:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
+**N<sup>3</sup>:** Pokud je OS Windows zobecněná a je zachycená jako specializovaná, zobrazí se chyba vypršení časového limitu zřizování, protože původní virtuální počítač nelze použít, protože je označen jako zobecněný.
+
+**N<sup>4</sup>:** Pokud je operační systém specializovaný na Windows a zachycuje se jako zobecněný, zobrazí se chyba při zřizování, protože nový virtuální počítač běží s původním názvem počítače, uživatelským jménem a heslem. Původní virtuální počítač také nelze použít, protože je označen jako specializovaný.
+
+**Řešení**
+
+Chcete-li tyto chyby vyřešit, odstraňte aktuální bitovou kopii z portálu a znovu [ji Zachyťte z aktuálních virtuálních pevných disků](../windows/create-vm-specialized.md) se stejným nastavením jako u operačního systému (generalizovaná/specializovaná).
+
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problém: Vlastní/Galerie/image Marketplace; selhání přidělení
+K této chybě dochází v situacích, kdy je nový požadavek na virtuální počítač připnutý ke clusteru, který buď nepodporuje požadovanou velikost virtuálního počítače, nebo nemá k dispozici volné místo pro vyžádání žádosti.
+
+**Příčina 1:** Cluster nepodporuje požadovanou velikost virtuálního počítače.
 
 **Řešení 1:**
 
-* Opakujte žádost, použijte menší velikost virtuálního počítače.
-* Pokud velikost pro požadovaný virtuální počítač nejde změnit:
+* Opakujte požadavek s menší velikostí virtuálního počítače.
+* Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte na tlačítko **skupiny prostředků** > *vaší skupiny prostředků* > **prostředky** > *vaší skupiny dostupnosti*  >  **Virtuálních počítačů** > *váš virtuální počítač* > **Zastavit**.
-  * Po zastavení všech virtuálních počítačů, vytvoření nového virtuálního počítače v požadovanou velikost.
-  * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Start**.
+    Klikněte na **prostředky skupiny** > prostředků**prostředky** > .vaše > *Skupina* *dostupnosti*Virtual Machinesváš > virtuálnípočítač. > Zastavte.  > 
+  * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
+  * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 
-**2. příčina:** Cluster nemá žádné volné prostředky.
+**Příčina 2:** Cluster nemá volné prostředky.
 
 **Řešení 2:**
 
 * Opakujte požadavek později.
-* Pokud nový virtuální počítač může být součástí do jiné skupiny dostupnosti
-  * Vytvoření nového virtuálního počítače v různých dostupnosti (ve stejné oblasti).
-  * Přidáte nový virtuální počítač do stejné virtuální síti.
+* Pokud může být nový virtuální počítač součástí jiné skupiny dostupnosti
+  * Vytvořte nový virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).
+  * Přidejte nový virtuální počítač do stejné virtuální sítě.
 
 ## <a name="next-steps"></a>Další postup
-Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače Windows nebo změně velikosti stávajícího virtuálního počítače Windows v Azure, přečtěte si téma [potíže s restartováním nebo změnou velikosti stávajícího virtuálního počítače Windows v Azure Resource Manageru řešení potíží s nasazení](restart-resize-error-troubleshooting.md).
+Pokud narazíte na problémy při spuštění zastaveného virtuálního počítače s Windows nebo změníte velikost existujícího virtuálního počítače s Windows v Azure, přečtěte si téma [řešení potíží s nasazením správce prostředků potíží s restartováním nebo změnou velikosti stávajícího virtuálního počítače s Windows v Azure](restart-resize-error-troubleshooting.md).
 
 

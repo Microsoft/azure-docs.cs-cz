@@ -1,6 +1,6 @@
 ---
-title: Konfigurace skupiny dostupnosti Always On na Virtuálním počítači Azure s použitím prostředí PowerShell | Dokumentace Microsoftu
-description: Tento kurz používá prostředky, které byly vytvořené pomocí modelu nasazení classic. Použití Powershellu k vytvoření skupiny dostupnosti Always On v Azure.
+title: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure pomocí PowerShellu | Microsoft Docs
+description: V tomto kurzu se používají prostředky, které byly vytvořeny pomocí modelu nasazení Classic. Pomocí PowerShellu vytvoříte skupinu dostupnosti Always On v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -9,59 +9,58 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a4e2f175-fe56-4218-86c7-a43fb916cc64
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: c089d54544217cf72f81a2535ceede50d25b9b61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362182"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100358"
 ---
-# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na Virtuálním počítači Azure pomocí Powershellu
+# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure pomocí PowerShellu
 > [!div class="op_single_selector"]
-> * [Classic: UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Classic: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Standardním UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Standardním PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Než začnete, vezměte v úvahu, že teď můžete dokončit tuto úlohu v modelu Azure resource manager. Doporučujeme model Azure resource Manageru pro nová nasazení. Zobrazit [SQL serveru skupiny dostupnosti AlwaysOn na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Než začnete, zvažte, že teď můžete tuto úlohu dokončit v modelu Azure Resource Manager. Pro nová nasazení doporučujeme model Azure Resource Manager. Viz [SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Doporučujeme, aby většina nových nasazení používala model Resource Manager. Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení.
+> Doporučujeme, aby většina nových nasazení používala model Správce prostředků. Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení.
 
-Virtuální počítače Azure (VM) umožňuje správcům databáze pro snížení nákladů, vysoké dostupnosti systému SQL Server. V tomto kurzu se dozvíte, jak implementovat skupinu dostupnosti s využitím SQL serveru Always On začátku do konce v prostředí Azure. Na konci tohoto kurzu řešení SQL serveru Always On v Azure bude obsahovat následující prvky:
+Virtuální počítače Azure můžou správcům databází pomáhat snížit náklady na SQL Server systém s vysokou dostupností. V tomto kurzu se dozvíte, jak implementovat skupinu dostupnosti pomocí SQL Server v rámci prostředí Azure vždy na konci. Na konci tohoto kurzu se SQL Server řešení Always On v Azure skládá z následujících prvků:
 
-* Virtuální síť, která obsahuje více podsítí, včetně front-endem a back endové podsítě.
+* Virtuální síť, která obsahuje více podsítí, včetně front-endu a back-endové podsítě.
 * Řadič domény s doménou služby Active Directory.
-* Dva virtuální počítače SQL serveru, které se nasazují do back endové podsítě a připojený k doméně služby Active Directory.
-* Tři uzly clusteru převzetí služeb při selhání Windows s modelem kvora Většina uzlů.
-* Skupina dostupnosti s dvě repliky synchronního potvrzování dostupnosti databáze.
+* Dva SQL Server virtuální počítače, které jsou nasazeny do back-endové podsítě a připojeny k doméně služby Active Directory.
+* Cluster s podporou převzetí služeb při selhání s Windows se třemi uzly s modelem kvora s většinou uzlů.
+* Skupina dostupnosti se dvěma replikami synchronního potvrzování databáze dostupnosti.
 
-Tento scénář je vhodný pro jeho jednoduchost v Azure, nikoli pro jeho nákladovou efektivitu a dalších faktorů. Například můžete minimalizovat počet virtuálních počítačů pro skupinu dostupnosti dvě repliky a Šetřete na výpočetní hodiny v Azure pomocí řadiče domény jako určující sdílená složka souboru kvora v clusteru převzetí služeb při selhání uzlu. Tato metoda snižuje počet virtuálních počítačů pomocí jedné z výše uvedených konfigurace.
+Tento scénář je vhodný pro zjednodušení v Azure, ne pro své nákladové efektivity nebo jiné faktory. Můžete například minimalizovat počet virtuálních počítačů pro skupinu dostupnosti se dvěma replikami, které se uloží na výpočetní dobu v Azure, a to pomocí řadiče domény, jako je určující sdílená složka kvora v clusteru s podporou převzetí služeb při selhání se dvěma uzly. Tato metoda snižuje počet virtuálních počítačů o jednu z výše uvedených konfigurací.
 
-Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení je popsáno výše, aniž byste museli vypracování podrobností každého kroku. Proto namísto zadávání kroky konfigurace grafického uživatelského rozhraní, používá prostředí PowerShell na vás provedou rychle každého kroku. V tomto kurzu se předpokládá následující:
+V tomto kurzu se dozvíte, jaké kroky potřebujete k nastavení výše uvedeného řešení, aniž byste museli vykazovat podrobnosti o jednotlivých krocích. Proto namísto poskytování kroků konfigurace grafického uživatelského rozhraní pomocí skriptování PowerShellu rychle provedete jednotlivé kroky. V tomto kurzu se předpokládá následující:
 
-* Už máte účet Azure s předplatným služby virtuálního počítače.
-* Když jste nainstalovali [rutin prostředí Azure PowerShell](/powershell/azure/overview).
-* Už máte důkladného porozumění skupinami dostupnosti Always On pro místní řešení. Další informace najdete v tématu [skupiny dostupnosti AlwaysOn (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
+* Už máte účet Azure s předplatným virtuálního počítače.
+* Nainstalovali jste rutiny [Azure PowerShell](/powershell/azure/overview).
+* Už máte plnou znalostí skupin dostupnosti Always On pro místní řešení. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
-## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Připojte se ke svému předplatnému Azure a vytvořte virtuální síť
-1. V okně Powershellu v místním počítači naimportujte modul Azure stáhnout nastavení publikování do svého počítače a připojení relace prostředí PowerShell ke svému předplatnému Azure pomocí importu stažených nastavení publikování.
+## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Připojte se k předplatnému Azure a vytvořte virtuální síť.
+1. V okně PowerShellu v místním počítači Importujte modul Azure, Stáhněte si soubor nastavení publikování na váš počítač a připojte relaci PowerShellu k vašemu předplatnému Azure importem staženého nastavení publikování.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    **Get-AzurePublishSettingsFile** příkaz automaticky vygeneruje certifikát pro správu Azure a stáhne do vašeho počítače. Prohlížeč se automaticky otevře a zobrazí výzva k zadání přihlašovacích údajů účtu Microsoft pro vaše předplatné Azure. Na stažený **.publishsettings** soubor obsahuje všechny informace potřebné ke správě vašeho předplatného Azure. Po uložení tohoto souboru do místního adresáře, importujte ho pomocí **Import AzurePublishSettingsFile** příkazu.
+    Příkaz **Get-AzurePublishSettingsFile** automaticky vygeneruje certifikát pro správu pomocí Azure a stáhne ho do vašeho počítače. Automaticky se otevře prohlížeč a zobrazí se výzva k zadání přihlašovacích údajů účet Microsoft pro vaše předplatné Azure. Stažený soubor **. publishsettings** obsahuje všechny informace, které potřebujete ke správě předplatného Azure. Po uložení tohoto souboru do místního adresáře ho naimportujte pomocí příkazu **Import-AzurePublishSettingsFile** .
 
    > [!NOTE]
-   > Soubor .publishsettings obsahuje vaše přihlašovací údaje (nekódovaný), které se používají ke správě vašich předplatných a služeb Azure. Osvědčené postupy zabezpečení pro tento soubor je dočasně ukládat mimo vašeho adresáře zdrojových souborů (například ve složce Libraries\Documents) a jeho odstranění po dokončení importu. Uživatel se zlými úmysly, který získá přístup k souboru .publishsettings můžete upravit, vytvoření a odstranění služby Azure.
+   > Soubor. publishsettings obsahuje vaše přihlašovací údaje (nekódované), které se používají ke správě předplatných a služeb Azure. Osvědčeným postupem zabezpečení pro tento soubor je uložit ho dočasně mimo vaše zdrojové adresáře (například ve složce Libraries\Documents) a po dokončení importu ho odstranit. Uživatel se zlými úmysly, který získá přístup k souboru. publishsettings, může upravit, vytvořit a odstranit vaše služby Azure.
 
-2. Definujte řady proměnných, které použijete k vytvoření cloudové infrastruktury IT.
+2. Definujte řadu proměnných, které použijete k vytvoření vaší infrastruktury IT v cloudu.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -81,12 +80,12 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Věnujte pozornost následujícím zajistit, že vaše příkazy uspějí později:
+    Věnujte pozornost následujícím akcím, abyste zajistili, že příkazy budou později úspěšné:
 
-   * Proměnné **$storageAccountName** a **$dcServiceName** musí být jedinečný, protože slouží k identifikaci cloudové úložiště účtu a cloud serveru, v uvedeném pořadí, v síti Internet.
-   * Názvy, které zadáte pro proměnné **$affinityGroupName** a **$virtualNetworkName** jsou nakonfigurované v dokumentu konfigurace virtuální sítě, které budete používat později.
-   * **$sqlImageName** určuje aktualizovaný název image virtuálního počítače, který obsahuje SQL Server 2012 Service Pack 1 Enterprise Edition.
-   * Pro zjednodušení **Contoso! 000** se o stejné heslo, který se používá v rámci celého kurzu.
+   * Proměnné **$storageAccountName** a **$dcServiceName** musí být jedinečné, protože se používají k identifikaci účtu cloudového úložiště a cloudového serveru v Internetu.
+   * Názvy, které zadáte pro proměnné **$affinityGroupName** a **$virtualNetworkName** , se konfigurují v konfiguračním dokumentu virtuální sítě, který použijete později.
+   * **$sqlImageName** určuje aktualizovaný název bitové kopie virtuálního počítače, která obsahuje SQL Server 2012 Service Pack 1 Enterprise Edition.
+   * Pro jednoduchost je **Contoso! 000** stejné heslo, které se používá v celém kurzu.
 
 3. Vytvořte skupinu vztahů.
 
@@ -96,12 +95,12 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
             -Description $affinityGroupDescription `
             -Label $affinityGroupLabel
 
-4. Vytvoření virtuální sítě pomocí importu souboru konfigurace.
+4. Vytvořte virtuální síť importováním konfiguračního souboru.
 
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    Konfigurační soubor obsahuje následujícího dokumentu XML. Stručně řečeno, určuje virtuální síť s názvem **ContosoNET** ve skupině vztahů, volá **ContosoAG**. Má adresní prostor **10.10.0.0/16** a se dvěma podsítěmi, **10.10.1.0/24** a **10.10.2.0/24**, které jsou v uvedeném pořadí přední podsítě a zpět podsítě. Front-podsíť je, kde můžete umístit klientské aplikace jako Microsoft SharePoint. Zpět podsíť je, kde budete umístit virtuální počítače SQL serveru. Pokud změníte **$affinityGroupName** a **$virtualNetworkName** proměnné dříve, musíte taky změnit odpovídající názvy níže.
+    Konfigurační soubor obsahuje následující dokument XML. V krátkém případě určuje virtuální síť s názvem **ContosoNET** ve skupině vztahů s názvem **ContosoAG**. Má adresní prostor **10.10.0.0/16** a má dvě podsítě, **10.10.1.0/24** a **10.10.2.0/24**, což jsou front-Subnet a back-Subnet v uvedeném pořadí. Front-Subnet je místo, kde můžete umístit klientské aplikace, jako je Microsoft SharePoint. Zpětná podsíť je místo, kam umístíte SQL Server virtuální počítače. Změníte-li **$affinityGroupName** a **$virtualNetworkName** proměnných dříve, je nutné také změnit odpovídající názvy níže.
 
         <NetworkConfiguration xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -124,7 +123,7 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Vytvoření účtu úložiště, který je spojen s skupinu vztahů, že jste vytvořili a nastavte ji jako aktuální účet úložiště v rámci vašeho předplatného.
+5. Vytvořte účet úložiště, který je přidružený ke skupině vztahů, kterou jste vytvořili, a nastavte ho jako aktuální účet úložiště v předplatném.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -134,7 +133,7 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Vytvořte server řadiče domény v nové sadě služby a dostupnost cloudu.
+6. Vytvořte Server řadiče domény v nové cloudové službě a skupině dostupnosti.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -152,14 +151,14 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
                     –AffinityGroup $affinityGroupName `
                     -VNetName $virtualNetworkName
 
-    Tyto příkazy potrubím provádět následující akce:
+    Tyto příkazy v kanálu dělají následující věci:
 
-   * **Nový-AzureVMConfig** vytvoří konfiguraci virtuálního počítače.
-   * **Přidat AzureProvisioningConfig** poskytuje konfigurační parametry samostatný server Windows.
-   * **Přidat AzureDataDisk** přidává datový disk, který budete používat k ukládání dat služby Active Directory, s možností ukládání do mezipaměti na hodnotu None.
-   * **New-AzureVM** vytvoří novou cloudovou službu a nový virtuální počítač Azure vytvoří novou cloudovou službu.
+   * **New-AzureVMConfig** vytvoří konfiguraci virtuálního počítače.
+   * **Add-AzureProvisioningConfig** poskytuje konfigurační parametry samostatného Windows serveru.
+   * **Add-AzureDataDisk** přidá datový disk, který budete používat k ukládání dat služby Active Directory, s možností ukládání do mezipaměti nastavenou na žádné.
+   * **New-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v nové cloudové službě.
 
-7. Počkejte na jejich kompletní zřízení nového virtuálního počítače a stáhnout soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá dlouhou dobu zřizovat, `while` smyčky i nadále posílat nový virtuální počítač, až bude připravená k použití.
+7. Počkejte na úplné zřízení nového virtuálního počítače a Stáhněte soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá zřízení delší dobu `while` , bude smyčka pokračovat v dotazování nového virtuálního počítače, dokud nebude připraven k použití.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -175,12 +174,12 @@ Tento kurz je určen k zobrazení kroky, které jsou potřeba nastavit řešení
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete domény služby Active Directory na tomto serveru řadiče domény. Nechte okno Powershellu otevřené v místním počítači. Použijete ho znovu vytvořit dva virtuální počítače s SQL serverem.
+Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete doménu služby Active Directory na tomto serveru řadiče domény. Nechte okno PowerShellu otevřené na místním počítači. Později ji budete používat k vytvoření těchto dvou SQL Server virtuálních počítačů.
 
 ## <a name="configure-the-domain-controller"></a>Konfigurace řadiče domény
-1. Připojte se k serveru řadiče domény spusťte soubor vzdálené plochy. Použít AzureAdmin uživatelské jméno a heslo správce počítače **Contoso! 000**, které jste zadali při vytváření nového virtuálního počítače.
+1. Připojte se k serveru řadiče domény spuštěním souboru vzdálené plochy. Použijte uživatelské jméno pro správce počítače AzureAdmin a heslo **Contoso! 000**, které jste zadali při vytváření nového virtuálního počítače.
 2. Otevřete okno Powershellu v režimu správce.
-3. Spusťte následující příkaz **DCPROMO. Soubor EXE** příkaz pro nastavení **corp.contoso.com** domény se datové adresáře na disku M.
+3. Spusťte následující příkaz **dcpromo. Příkaz EXE** pro nastavení domény **Corp.contoso.com** s datovými adresáři na jednotce M.
 
         dcpromo.exe `
             /unattend `
@@ -198,14 +197,14 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
             /SYSVOLPath:"C:\Windows\SYSVOL" `
             /SafeModeAdminPassword:"Contoso!000"
 
-    Jakmile se příkaz dokončí, virtuální počítač automaticky restartuje.
+    Po dokončení příkazu se virtuální počítač automaticky restartuje.
 
-4. Připojení k serveru řadiče domény znovu spusťte soubor vzdálené plochy. Tentokrát, přihlaste se jako **CORP\Administrator**.
-5. Otevřete okno Powershellu v režimu správce a naimportujte modul Powershellu pro Active Directory pomocí následujícího příkazu:
+4. Znovu se připojte k serveru řadiče domény spuštěním souboru vzdálené plochy. Tentokrát se přihlaste jako **CORP\Administrator**.
+5. Otevřete okno PowerShellu v režimu správce a importujte modul PowerShell služby Active Directory pomocí následujícího příkazu:
 
         Import-Module ActiveDirectory
 
-6. Spuštěním následujících příkazů přidejte tři uživatele do domény.
+6. Spuštěním následujících příkazů přidejte do domény tři uživatele.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -227,8 +226,8 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** slouží ke konfiguraci opravdu všechno spojené s instancí služby SQL Server, clusteru převzetí služeb při selhání a skupiny dostupnosti. **CORP\SQLSvc1** a **CORP\SQLSvc2** se používají jako účty služeb systému SQL Server pro dva virtuální počítače SQL serveru.
-7. Následně spusťte následující příkazy, které poskytují **CORP\Install** oprávnění k vytváření počítačových objektů v doméně.
+    **CORP\Install** se používá ke konfiguraci všeho souvisejícího s instancemi služby SQL Server, clusterem s podporou převzetí služeb při selhání a skupinou dostupnosti. **CORP\SQLSvc1** a **CORP\SQLSvc2** se používají jako účty služby SQL Server pro dva virtuální počítače SQL Server.
+7. Dále spusťte následující příkazy, které **CORP\Install** oprávnění k vytváření počítačových objektů v doméně.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -239,12 +238,12 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Identifikátor GUID specifikovaný výše je identifikátor GUID pro typ objektu počítače. **CORP\Install** účtu potřebám **číst všechny vlastnosti** a **vytvářet objekty počítačů** oprávnění k vytváření aktivní přímé objektů pro převzetí služeb při selhání clusteru. **Číst všechny vlastnosti** oprávnění je už zadaná k CORP\Install ve výchozím nastavení, takže není nutné explicitně udělit. Další informace o oprávněních, které jsou potřebné k vytvoření clusteru převzetí služeb při selhání najdete v tématu [podrobná příručka pro převzetí služeb při selhání clusteru: Konfigurace účtů ve službě Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    Výše uvedený identifikátor GUID je identifikátor GUID typu objektu počítače. Účet **CORP\Install** potřebuje oprávnění **číst všechny vlastnosti** a **vytvořit objekty počítače** k vytvoření aktivních přímých objektů pro cluster s podporou převzetí služeb při selhání. Oprávnění **číst všechny vlastnosti** již ve výchozím nastavení CORP\Install, takže je nemusíte explicitně udělovat. Další informace o oprávněních potřebných k vytvoření clusteru s podporou převzetí služeb při [selhání najdete v tématu Podrobný průvodce clusterem s podporou převzetí služeb při selhání: Konfigurace účtů ve službě Active](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)Directory.
 
-    Teď, když jste dokončili konfiguraci služby Active Directory a uživatelských objektů, vytvoříte dva virtuální počítače SQL serveru a připojte je k této doméně.
+    Teď, když jste dokončili konfiguraci služby Active Directory a uživatelských objektů, vytvoříte dva SQL Server virtuální počítače a připojíte je k této doméně.
 
-## <a name="create-the-sql-server-vms"></a>Vytvořit virtuální počítače SQL serveru
-1. Dál používat, který je na místním počítači otevřete okno Powershellu. Definujte následující další proměnné:
+## <a name="create-the-sql-server-vms"></a>Vytvoření virtuálních počítačů s SQL Server
+1. Pokračujte v používání okna PowerShellu otevřeného na místním počítači. Definujte následující další proměnné:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -257,8 +256,8 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    IP adresa **10.10.0.4** je obvykle přiřazené na prvním virtuálním počítači, který vytvoříte v **10.10.0.0/16** podsítě vaší virtuální sítí Azure. Měli byste ověřit, že jde o adresu serveru řadiče domény spuštěním **IPCONFIG**.
-2. Spusťte následující směrované příkazy k vytvoření prvního virtuálního počítače v clusteru převzetí služeb při selhání, s názvem **ContosoQuorum**:
+    IP adresa **10.10.0.4** se obvykle přiřazuje PRVNÍmu virtuálnímu počítači, který vytvoříte v podsíti **10.10.0.0/16** vaší virtuální sítě Azure. Ověřte, zda se jedná o adresu serveru řadiče domény spuštěním **příkazu ipconfig**.
+2. Spusťte následující příkazy v kanálu k vytvoření prvního virtuálního počítače v clusteru s podporou převzetí služeb při selhání s názvem **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -284,13 +283,13 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Mějte na paměti následující týkající se výše uvedeného příkazu:
+    Všimněte si následujícího příkazu, který se týká výše uvedeného příkazu:
 
-   * **Nový-AzureVMConfig** vytvoří konfiguraci virtuálního počítače se názvu požadované skupiny dostupnosti. Následující virtuální počítače se vytvoří s stejný název sady dostupnosti tak, aby připojí se do stejné skupiny dostupnosti.
-   * **Přidat AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
-   * **Set-AzureSubnet** umístí virtuální počítač v back podsítě.
-   * **New-AzureVM** vytvoří novou cloudovou službu a nový virtuální počítač Azure vytvoří novou cloudovou službu. **Části Networkinterfaceconfigurations** parametr určuje, zda má server DNS pro servery v novou cloudovou službu IP adresu **10.10.0.4**. Toto je IP adresa serveru řadiče domény. Tento parametr je potřebná k povolení nové virtuální počítače v cloudové službě k připojení k doméně služby Active Directory úspěšně. Bez tohoto parametru se musí ručně nastavení IPv4 ve virtuálním počítači použít server řadiče domény jako primární server DNS po zřízení virtuálního počítače a pak virtuální počítač připojit k doméně služby Active Directory.
-3. Spusťte následující směrované příkazy k vytvoření virtuálních počítačů serveru SQL s názvem **ContosoSQL1** a **ContosoSQL2**.
+   * **New-AzureVMConfig** vytvoří konfiguraci virtuálního počítače s požadovaným názvem skupiny dostupnosti. Následující virtuální počítače se vytvoří se stejným názvem sady dostupnosti, aby byly připojené ke stejné skupině dostupnosti.
+   * **Add-AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
+   * **Set-AzureSubnet** umístí virtuální počítač do back-Subnet.
+   * **New-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v nové cloudové službě. Parametr **DnsSettings** určuje, že server DNS pro servery v nové cloudové službě má IP adresu **10.10.0.4**. Toto je IP adresa serveru řadiče domény. Tento parametr je potřeba k tomu, aby se nové virtuální počítače v cloudové službě daly úspěšně připojit k doméně služby Active Directory. Bez tohoto parametru musíte ručně nastavit nastavení IPv4 ve vašem VIRTUÁLNÍm počítači tak, aby po zřízení virtuálního počítače používalo Server řadiče domény jako primární server DNS, a pak připojte virtuální počítač k doméně služby Active Directory.
+3. Spusťte následující příkazy v kanálu k vytvoření SQL Server virtuálních počítačů s názvem **ContosoSQL1** a **ContosoSQL2**.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -348,14 +347,14 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
                         New-AzureVM `
                             -ServiceName $sqlServiceName
 
-    Mějte na paměti následující týkající se výše uvedené příkazy:
+    Všimněte si následujících příkazů, které se týkají výše uvedených příkazů:
 
-   * **Nový-AzureVMConfig** používá stejný název sady dostupnosti jako server řadiče domény a používá SQL Server 2012 Service Pack 1 Enterprise Edition image v galerii virtuálních počítačů. Také nastaví disk s operačním systémem na čtení ukládání do mezipaměti pouze (bez ukládání do mezipaměti). Doporučujeme migrovat soubory databáze do samostatné datový disk k virtuálnímu počítači připojíte a nakonfigurovat bez pro čtení nebo zápis do mezipaměti. Ale je skoro tak dobré odebrat, ukládání do mezipaměti na disku s operačním systémem, protože nelze odebrat, přečtěte si ukládání do mezipaměti na disku s operačním systémem.
-   * **Přidat AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
-   * **Set-AzureSubnet** umístí virtuální počítač v back podsítě.
-   * **Přidat-AzureEndpoint** přidá koncové body přístupu tak, aby klientské aplikace můžou k tyto instance služby SQL Server na Internetu. Jiné porty disponují ContosoSQL1 a ContosoSQL2.
-   * **New-AzureVM** vytvoří nový virtuální počítač SQL serverem v jako ContosoQuorum stejné cloudové službě. Pokud chcete, aby ve stejné skupině dostupnosti, je nutné umístit virtuální počítače ve stejné cloudové službě.
-4. Počkejte, než pro každý virtuální počítač k plně zřízený a pro každý virtuální počítač stáhnout jeho soubor vzdálené plochy do pracovního adresáře. `for` Smyčka projde tři nové virtuální počítače a provede příkazy nejvyšší úrovně složených závorkách pro každý z nich.
+   * **Příkaz New-AzureVMConfig** používá stejný název sady dostupnosti jako server řadiče domény a používá image SQL Server 2012 Service Pack 1 Enterprise Edition v galerii virtuálních počítačů. Také nastaví disk s operačním systémem jenom na ukládání do mezipaměti pro zápis (bez ukládání do mezipaměti). Doporučujeme migrovat soubory databáze na samostatný datový disk, který připojíte k virtuálnímu počítači, a nakonfigurovat jej bez ukládání do mezipaměti pro čtení nebo zápis. Další nejlepší věc je ale odebrat ukládání do mezipaměti pro zápis na disk s operačním systémem, protože na disku s operačním systémem nemůžete odebrat ukládání do mezipaměti pro čtení.
+   * **Add-AzureProvisioningConfig** připojí virtuální počítač k doméně služby Active Directory, kterou jste vytvořili.
+   * **Set-AzureSubnet** umístí virtuální počítač do back-Subnet.
+   * **Add-AzureEndpoint** přidá koncové body přístupu, aby klientské aplikace mohly přistupovat k těmto instancím služby SQL Server Services na internetu. K ContosoSQL1 a ContosoSQL2 jsou přidány různé porty.
+   * **New-AzureVM** vytvoří nový virtuální počítač SQL Server ve stejné cloudové službě jako ContosoQuorum. Virtuální počítače musíte umístit do stejné cloudové služby, pokud chcete, aby byly ve stejné skupině dostupnosti.
+4. Počkejte, až se všechny virtuální počítače úplně zřídí, a pro každý z nich Stáhněte svůj soubor vzdálené plochy do pracovního adresáře. Cyklická `for` smyčka prochází třemi novými virtuálními počítači a provádí příkazy uvnitř složených závorek nejvyšší úrovně pro každé z nich.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -375,76 +374,76 @@ Nyní je úspěšně zřízený server řadiče domény. Dále nakonfigurujete d
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    Virtuální počítače SQL serveru jsou nyní zřízený a spuštěný, ale instalované se systémem SQL Server s výchozími možnostmi.
+    Virtuální počítače s SQL Server jsou nyní zřízené a spuštěné, ale jsou nainstalovány s SQL Server s výchozími možnostmi.
 
-## <a name="initialize-the-failover-cluster-vms"></a>Inicializovat clusteru převzetí služeb při selhání virtuálních počítačů
-V této části budete muset upravit tři servery, které budete používat v clusteru převzetí služeb při selhání a instalace systému SQL Server. Zejména:
+## <a name="initialize-the-failover-cluster-vms"></a>Inicializace virtuálních počítačů clusteru s podporou převzetí služeb při selhání
+V této části je potřeba upravit tři servery, které budete používat v clusteru s podporou převzetí služeb při selhání a instalaci SQL Server. Zejména:
 
-* Všechny servery: Je potřeba nainstalovat **Clustering převzetí služeb při selhání** funkce.
-* Všechny servery: Je třeba přidat **CORP\Install** jako počítač **správce**.
-* ContosoSQL1 a pouze ContosoSQL2: Je třeba přidat **CORP\Install** jako **sysadmin** role ve výchozí databázi.
-* ContosoSQL1 a pouze ContosoSQL2: Je třeba přidat **NT AUTHORITY\System** jako u přihlášení s následujícími oprávněními:
+* Všechny servery: Je potřeba nainstalovat funkci **clusteringu s podporou převzetí služeb při selhání** .
+* Všechny servery: Musíte přidat **CORP\Install** jako **správce**počítače.
+* Jenom ContosoSQL1 a ContosoSQL2: Do výchozí databáze je třeba přidat **CORP\Install** jako roli **sysadmin** .
+* Jenom ContosoSQL1 a ContosoSQL2: Je potřeba přidat **NT AUTHORITY\SYSTEM** jako přihlašování s následujícími oprávněními:
 
-  * Příkaz ALTER žádnou skupinu dostupnosti
-  * Připojení SQL
-  * Zobrazení stavu serveru
-* ContosoSQL1 a pouze ContosoSQL2: **TCP** na virtuálním počítači SQL serveru je již povolen protokol. Nicméně stále potřebujete k otevření brány firewall pro vzdálený přístup k systému SQL Server.
+  * Změna jakékoli skupiny dostupnosti
+  * Připojit SQL
+  * Zobrazit stav serveru
+* Jenom ContosoSQL1 a ContosoSQL2: Protokol **TCP** je už na SQL SERVERm virtuálním počítači povolený. Pořád ale musíte otevřít bránu firewall pro vzdálený přístup k SQL Server.
 
-Nyní jste připraveni začít. Počínaje **ContosoQuorum**, postupujte podle následujících kroků:
+Teď jste připraveni začít. Od **ContosoQuorum**použijte následující postup:
 
-1. Připojte se k **ContosoQuorum** spuštěním soubory vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, které jste zadali při vytváření virtuálních počítačů.
-2. Ověřte, že počítače byl úspěšně připojen k **corp.contoso.com**.
-3. Počkejte na dokončení úlohy automatizované inicializace před pokračováním instalace systému SQL Server.
+1. Připojte se k **ContosoQuorum** spuštěním souborů vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, které jste zadali při vytváření virtuálních počítačů.
+2. Ověřte, že se počítače úspěšně připojily k **Corp.contoso.com**.
+3. Než budete pokračovat, počkejte na dokončení instalace SQL Server, aby se spustily úlohy automatizované inicializace.
 4. Otevřete okno Powershellu v režimu správce.
-5. Nainstalujte funkci Clustering převzetí služeb při selhání s Windows.
+5. Nainstalujte funkci Clustering s podporou převzetí služeb při selhání systému Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. Přidat **CORP\Install** jako místní správce.
+6. Přidejte **CORP\Install** jako místního správce.
 
         net localgroup administrators "CORP\Install" /Add
-7. Odhlaste se z ContosoQuorum. Pak budete hotovi s tímto serverem nyní.
+7. Odhlaste se z ContosoQuorum. Nyní jste hotovi s tímto serverem.
 
         logoff.exe
 
-V dalším kroku inicializovat **ContosoSQL1** a **ContosoSQL2**. Postupujte podle následujících kroků, které jsou stejné pro oba virtuální počítače s SQL serverem.
+Dále inicializujte **ContosoSQL1** a **ContosoSQL2**. Postupujte podle následujících kroků, které jsou u obou SQL Server virtuálních počítačů stejné.
 
-1. Připojte se k dva virtuální počítače s SQL serverem pomocí souborů vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, které jste zadali při vytváření virtuálních počítačů.
-2. Ověřte, že počítače byl úspěšně připojen k **corp.contoso.com**.
-3. Počkejte na dokončení úlohy automatizované inicializace před pokračováním instalace systému SQL Server.
+1. Připojte se k těmto dvěma virtuálním počítačům SQL Server spuštěním souborů vzdálené plochy. Použijte uživatelské jméno správce počítače **AzureAdmin** a heslo **Contoso! 000**, které jste zadali při vytváření virtuálních počítačů.
+2. Ověřte, že se počítače úspěšně připojily k **Corp.contoso.com**.
+3. Než budete pokračovat, počkejte na dokončení instalace SQL Server, aby se spustily úlohy automatizované inicializace.
 4. Otevřete okno Powershellu v režimu správce.
-5. Nainstalujte funkci Clustering převzetí služeb při selhání s Windows.
+5. Nainstalujte funkci Clustering s podporou převzetí služeb při selhání systému Windows.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. Přidat **CORP\Install** jako místní správce.
+6. Přidejte **CORP\Install** jako místního správce.
 
         net localgroup administrators "CORP\Install" /Add
-7. Importujte poskytovatele prostředí PowerShell SQL Server.
+7. Importujte zprostředkovatele SQL Server PowerShellu.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. Přidat **CORP\Install** jako role sysadmin pro výchozí instanci SQL serveru.
+8. Přidejte **CORP\Install** jako roli sysadmin pro výchozí instanci SQL Server.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. Přidat **NT AUTHORITY\System** jako Přihlaste se pomocí tří oprávnění je popsáno výše.
+9. Přidejte **NT AUTHORITY\SYSTEM** jako přihlašování se třemi výše uvedenými oprávněními.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-10. Otevření brány firewall pro vzdálený přístup k systému SQL Server.
+10. Otevřete bránu firewall pro vzdálený přístup k SQL Server.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
 11. Odhlaste se z obou virtuálních počítačů.
 
          logoff.exe
 
-A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete PowerShell zprostředkovatele SQL Server provést všechny práce na **ContosoSQL1**.
+Nakonec budete připraveni ke konfiguraci skupiny dostupnosti. Pomocí zprostředkovatele SQL Server PowerShellu provedete veškerou práci na **ContosoSQL1**.
 
 ## <a name="configure-the-availability-group"></a>Konfigurace skupiny dostupnosti
-1. Připojte se k **ContosoSQL1** znovu pomocí souborů vzdálené plochy. Místo přihlášení pomocí účtu počítače, přihlaste se pomocí **CORP\Install**.
+1. Znovu se připojte k **ContosoSQL1** spuštěním souborů vzdálené plochy. Místo přihlášení pomocí účtu počítače se přihlaste pomocí **CORP\Install**.
 2. Otevřete okno Powershellu v režimu správce.
 3. Definujte následující proměnné:
 
@@ -460,11 +459,11 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
         $backupShare = "\\$server1\backup"
         $quorumShare = "\\$server1\quorum"
         $ag = "AG1"
-4. Importujte poskytovatele prostředí PowerShell SQL Server.
+4. Importujte zprostředkovatele SQL Server PowerShellu.
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. Změňte účet služby SQL Server pro ContosoSQL1 na CORP\SQLSvc1.
+5. Změna účtu služby SQL Server pro ContosoSQL1 na CORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -473,7 +472,7 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. Změňte účet služby SQL Server pro ContosoSQL2 na CORP\SQLSvc2.
+6. Změna účtu služby SQL Server pro ContosoSQL2 na CORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -482,12 +481,12 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Stáhněte si **CreateAzureFailoverCluster.ps1** z [vytvořit Cluster převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Tento skript budete používat při vytvoření clusteru funkční převzetí služeb při selhání. Důležité informace o interakci Clustering převzetí služeb při selhání s Windows pomocí sítě Azure najdete v tématu [vysokou dostupnost a zotavení po havárii pro SQL Server ve službě Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
-8. Přejděte do pracovního adresáře a vytvořte cluster převzetí služeb při selhání pomocí staženého skriptu.
+7. Stáhněte si **CreateAzureFailoverCluster. ps1** z [vytváření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Pomocí tohoto skriptu vám pomůžete vytvořit funkční cluster s podporou převzetí služeb při selhání. Důležité informace o tom, jak Windows Clustering s podporou převzetí služeb při selhání spolupracuje se sítí Azure, najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+8. Přejděte do pracovního adresáře a vytvořte cluster s podporou převzetí služeb při selhání se staženým skriptem.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Povolte skupiny dostupnosti AlwaysOn pro výchozí instance systému SQL Server na **ContosoSQL1** a **ContosoSQL2**.
+9. Povolte skupiny dostupnosti Always On pro výchozí instance SQL Server v **ContosoSQL1** a **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -499,20 +498,20 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Vytvořit zálohovací adresář a udělení oprávnění pro účty služeb systému SQL Server. Budete používat tento adresář a připraví databázi dostupnosti na sekundární replice.
+10. Vytvořte záložní adresář a udělte oprávnění účtům služby SQL Server. Tento adresář použijete k přípravě databáze dostupnosti v sekundární replice.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Vytvoření databáze v **ContosoSQL1** volá **MyDB1**provést úplnou zálohu a zálohu protokolu a obnoví je na **ContosoSQL2** s **WITH NORECOVERY**  možnost.
+11. Vytvořte databázi v **ContosoSQL1** s názvem **MyDB1**, proveďte úplnou zálohu i zálohu protokolu a obnovte je v **ContosoSQL2** s možností **WITH NORECOVERY** .
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Vytvořte dostupnost skupiny koncových bodů na virtuální počítače SQL serveru a nastavte správné oprávnění v koncových bodech.
+12. Vytvořte koncové body skupiny dostupnosti na virtuálních počítačích SQL Server a nastavte správná oprávnění pro koncové body.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -533,7 +532,7 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
-13. Vytvoření repliky dostupnosti.
+13. Vytvořte repliky dostupnosti.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -551,7 +550,7 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Nakonec vytvořte skupinu dostupnosti a spojení sekundární repliky do skupiny dostupnosti.
+14. Nakonec vytvořte skupinu dostupnosti a připojte se k ní sekundární replika do skupiny dostupnosti.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -565,7 +564,7 @@ A konečně budete připraveni ke konfiguraci skupiny dostupnosti. Použijete Po
              -Path "SQLSERVER:\SQL\$server2\Default\AvailabilityGroups\$ag" `
              -Database $db
 
-## <a name="next-steps"></a>Další postup
-Jste teď úspěšně implementovali AlwaysOn SQL serveru tak, že vytvoříte skupinu dostupnosti v Azure. Konfigurace naslouchacího procesu pro tuto skupinu dostupnosti, najdete v článku [konfigurace naslouchacího procesu ILB pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
+## <a name="next-steps"></a>Další kroky
+Nyní jste úspěšně nasadili SQL Server vždy k vytvoření skupiny dostupnosti v Azure. Pokud chcete pro tuto skupinu dostupnosti nakonfigurovat naslouchací proces, přečtěte si téma [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
-Další informace o používání SQL serveru v Azure najdete v tématu [systému SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o používání SQL Server v Azure najdete v článku [SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

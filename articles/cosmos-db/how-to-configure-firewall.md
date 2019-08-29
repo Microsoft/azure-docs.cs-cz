@@ -3,15 +3,15 @@ title: Konfigurace brány firewall protokolu IP pro účet Azure Cosmos DB
 description: Naučte se konfigurovat zásady řízení přístupu IP pro podporu brány firewall na účtech Azure Cosmos.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 534f64b19adb29a0ff7811c50c9698ca33d6966f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615364"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093546"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP v Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Pokud zásadu řízení přístupu k IP adrese povolíte programově, je nutné 
 |------|----------|
 |Německo|51.4.229.218|
 |Čína|139.217.8.252|
-|Vláda USA|52.244.48.71|
+|US Gov|52.244.48.71|
 |Všechny ostatní oblasti|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Přístup k Azure Portal můžete povolit tak, že vyberete možnost **Povolit přístup z Azure Portal** , jak je znázorněno na následujícím snímku obrazovky: 

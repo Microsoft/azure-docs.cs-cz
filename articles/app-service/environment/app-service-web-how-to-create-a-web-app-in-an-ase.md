@@ -1,6 +1,6 @@
 ---
 title: Vytvoření webové aplikace v App Service Environment v1 – Azure
-description: Zjistěte, jak vytvořit webové aplikace a aplikace plány služeb v App Service Environment v1
+description: Naučte se vytvářet webové aplikace a plány služby App Service v App Service Environment v1.
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -10,94 +10,93 @@ ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60765125"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069844"
 ---
-# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace v App Service Environment v1
+# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
 > [!NOTE]
-> Tento článek je o App Service Environment v1.  Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
+> Tento článek se týká App Service Environment v1.  Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
 > 
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje postupy při vytváření webových aplikací a plánů služby App Service v [služby App Service Environment v1](app-service-app-service-environment-intro.md) (ASE). 
+V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Service Environment v1](app-service-app-service-environment-intro.md) (pomocného programu). 
 
 > [!NOTE]
-> Pokud chcete se dozvědět, jak vytvořit webovou aplikaci, ale není potřeba provádět ve službě App Service Environment, naleznete v tématu [vytvoření webové aplikace .NET](../app-service-web-get-started-dotnet.md) nebo související kurzech pro ostatní jazyky a architektury.
+> Pokud se chcete dozvědět, jak vytvořit webovou aplikaci, ale nemusíte ji provádět v App Service Environment, přečtěte si téma [Vytvoření webové aplikace .NET](../app-service-web-get-started-dotnet.md) nebo některého z souvisejících kurzů pro jiné jazyky a rozhraní.
 > 
 > 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz předpokládá, že jste vytvořili službu App Service Environment. Pokud jste tak ještě neučinili, přečtěte si téma [vytvoření služby App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
+V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Pokud jste to ještě neudělali, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
-1. V [webu Azure Portal](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek > Web + mobilní zařízení > Webová aplikace**. 
+1. Na webu [Azure Portal](https://portal.azure.com/)klikněte na **vytvořit prostředek > web a mobilní zařízení > webovou aplikaci**. 
    
     ![][1]
 2. Vyberte své předplatné.  
    
-    Pokud máte více předplatných, mějte na paměti, že pokud chcete vytvořit aplikaci v App Service Environment, budete muset použít stejné předplatné, které jste použili při vytváření prostředí. 
+    Pokud máte více předplatných, abyste si mohli ve svém App Service Environment vytvořit aplikaci, musíte použít stejné předplatné, které jste použili při vytváření prostředí. 
 3. Vyberte nebo vytvořte skupinu prostředků.
    
-    *Skupiny prostředků* vám umožní spravovat související prostředky Azure jako celku a jsou užitečné při navazování *řízení přístupu na základě rolí* pravidla (RBAC) pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ResourceGroups]. 
+    *Skupiny prostředků* umožňují spravovat související prostředky Azure jako jednotku a jsou užitečné při vytváření pravidel *řízení přístupu na základě rolí* (RBAC) pro vaše aplikace. Další informace naleznete v tématu [Přehled Azure Resource Manager][ResourceGroups]. 
 4. Vyberte nebo vytvořte plán služby App Service.
    
-    *Plány služby App Service* jsou spravované sady webových aplikací.  Obvykle při výběru ceny účtované ceny se použije k plánu služby App Service, nikoli pro jednotlivé aplikace. Ve službě ASE platíte za výpočetní instance přidělené služby ASE místo mít uvedené s vaší ASP.  Vertikální navýšení kapacity počtu instancí webové aplikace, které můžete vertikálně navýšit kapacitu instance vaší služby App Service a plán ovlivní všechny webové aplikace v tomto plánu.  Některé funkce, jako je například sloty webu nebo integrace virtuální sítě také mít omezení množství v rámci plánu.  Další informace najdete v tématu [přehled plánů služby Azure App Service](../overview-hosting-plans.md)
+    *Plány App Service* jsou spravované sady webových aplikací.  Po výběru ceny se za normálních podmínek místo individuálních aplikací použije cena za App Service plán. V rámci služby řízení přihlašování platíte za výpočetní instance přidělené k pomocnému programu místo toho, co jste vystavili pomocí ASP.  Pro horizontální navýšení kapacity webové aplikace můžete škálovat instance App Serviceho plánu a ovlivňují všechny webové aplikace v tomto plánu.  Některé funkce, jako jsou například sloty webu nebo Integrace virtuální sítě, mají také omezení množství v rámci plánu.  Další informace najdete v tématu [Přehled plánů Azure App Service](../overview-hosting-plans.md) .
    
-    Plány služby App Service můžete identifikovat ve vaší službě ASE pohledem na umístění, které je uvedeno v části název plánu.  
+    Plány App Service v rámci služby přihlašování můžete identifikovat v umístění, které je uvedeno v názvu plánu.  
    
     ![][5]
    
-    Pokud chcete použít plán služby App Service, který již existuje ve službě App Service Environment, vyberte tento plán. Pokud chcete vytvořit nový plán služby App Service, najdete v následující části tohoto kurzu, [vytvořte plán služby App Service ve službě App Service Environment](#createplan).
-5. Zadejte název pro vaši webovou aplikaci a pak klikněte na tlačítko **vytvořit**. 
+    Pokud chcete použít plán App Service, který již v App Service Environment existuje, vyberte tento plán. Pokud chcete vytvořit nový plán App Service, přečtěte si následující část tohoto kurzu a [vytvořte App Service plán v App Service Environment](#createplan).
+5. Zadejte název vaší webové aplikace a pak klikněte na **vytvořit**. 
    
     Pokud vaše App Service Environment používá externí VIP adresa URL aplikace v App Service Environment je: [*sitename*]. [ *název služby App Service Environment*]. p.azurewebsites.net místo [*sitename*]. azurewebsites.net
    
     Pokud vaše App Service Environment používá interní VIP adresu URL aplikace, jsou App Service Environment: [*sitename*]. [ *subdomény zadané během vytváření App Service Environment*]   
-    Po výběru vaší ASP při vytvoření služby ASE se zobrazí subdomény, aktualizujte níže **název**
+    Po výběru stránky ASP během vytváření pomocného mechanismu se zobrazí aktualizace subdomény pod **názvem** .
 
-## <a name="createplan"></a> Vytvoření plánu služby App Service
-Když vytvoříte plán služby App Service ve službě App Service Environment, vaše volby pracovního procesu se liší, protože neexistují žádné sdílené pracovní procesy ve službě ASE.  Pracovní procesy, které je nutné použít jsou ty, které byly přiděleny služby ASE správce.  To znamená, že pokud chcete vytvořit nový plán, musíte mít další pracovních procesů přidělených pro váš fond pracovních procesů služby ASE než celkový počet instancí ve všech vašich plánů už v tomto fondu pracovních procesů.  Pokud nemáte dostatek pracovních procesů ve fondu pracovních procesů vaší služby ASE k vytvoření vašeho plánu, musíte pracovat s vaším správcem služby ASE je přidána.
+## <a name="createplan"></a>Vytvoření plánu App Service
+Při vytváření plánu App Service v App Service Environment se volby pracovních procesů liší, protože v pomocném mechanismu pro řízení neexistují žádné sdílené pracovní procesy.  Pracovní procesy, které se mají použít, jsou ty, které správce přidělil správci.  To znamená, že pokud chcete vytvořit nový plán, musíte mít více pracovníků přidělených vašemu fondu pracovních procesů pomocného programu, než celkový počet instancí ve všech vašich plánech, které už jsou v daném fondu pracovních procesů.  Pokud ve fondu pracovních procesů pomocného mechanismu přihlašování nemáte dostatečná pracovní procesy k vytvoření vašeho plánu, budete je muset přičíst pomocí Správce pomocného programu.
 
-Další rozdíl s plány služby App Service, které jsou hostované ve službě App Service Environment je chybějící výběr cenové.  Pokud máte službu App Service Environment se platit za výpočetní prostředky použité v systému a nemají přidání poplatky pro plány v tomto prostředí.  Obvykle při vytváření plánu služby App Service je vybrat cenový plán, který určuje fakturace.  Služby App Service Environment je v podstatě privátní umístění, kde můžete vytvářet obsah.  Platíte jenom pro prostředí a není pro hostování vašeho obsahu.
+Dalším rozdílem v App Servicech plánech hostovaných App Service Environment je nedostatek cenového výběru.  Když máte App Service Environment platíte za výpočetní prostředky používané systémem a nepřidali jste poplatky za plány v tomto prostředí.  Normálně při vytváření plánu App Service vyberete Cenový tarif, který určuje vaši fakturaci.  App Service Environment je v podstatě soukromým umístěním, kde můžete vytvářet obsah.  Platíte za prostředí a nebudete hostovat svůj obsah.
 
-Následující pokyny ukazují, jak vytvořit plán služby App Service při vytváření webové aplikace, jak je popsáno v předchozí části tohoto kurzu.
+Následující pokyny ukazují, jak vytvořit plán App Service, když vytváříte webovou aplikaci, jak je vysvětleno v předchozí části tohoto kurzu.
 
-1. Klikněte na tlačítko **vytvořit nový** v naplánování výběru uživatelského rozhraní a zadejte název plánu, stejně jako obvykle mimo prostředí ASE.
-2. Vyberte službu ASE, kterou chcete použít z vašeho výběru umístění.
+1. V uživatelském rozhraní pro výběr plánu klikněte na **vytvořit nový** a zadejte název pro svůj plán stejným způsobem, jako byste normálně nemuseli být mimo správce.
+2. V ovládacím prvku pro výběr umístění vyberte pomocné okno, které chcete použít.
    
-    Protože je v podstatě umístění privátní nasazení služby App Service Environment se zobrazí v části umístění. 
+    Vzhledem k tomu, že App Service Environment je v podstatě soukromým umístěním nasazení, zobrazuje se v části umístění. 
    
     ![][2]
    
-    Po výběru prostředí ase. při výběru umístění vytvoření plánu služby App Service aktualizací uživatelského rozhraní.  Umístění nyní zobrazuje název systémem ASE a oblasti je v a nástroje pro výběr cenový plán se nahradí ovládacího prvku pro výběr fondu pracovních procesů.  
+    Po výběru pomocného mechanismu pro výběr umístění se aktualizují uživatelské rozhraní pro vytváření App Serviceho plánu.  Umístění nyní zobrazuje název systému pomocného programu a oblast, ve které se nachází, a výběr cenového plánu je nahrazen nástrojem pro výběr fondu pracovních procesů.  
    
     ![][3]
 
-### <a name="selecting-a-worker-pool"></a>Vyberte fond pracovních procesů
-Normálně ve službě Azure App Service a mimo službu App Service Environment, existují 3 velikosti výpočetní prostředky, které jsou k dispozici s výběrem vyhrazené cenový plán.  Podobným způsobem službu ase můžete definovat až 3 fondy pracovních procesů a určete velikost výpočetních, který se používá pro tento fond pracovních procesů.  To znamená pro tenanty služby ase se místo výběru cenového plánu s velikostí výpočetní prostředky pro váš plán služby App Service, je vybrat, co se volá *fond pracovních procesů*.  
+### <a name="selecting-a-worker-pool"></a>Výběr fondu pracovních procesů
+Normálně v Azure App Service a mimo App Service Environment existují 3 výpočetní velikosti, které jsou k dispozici s výběrem vyhrazeného cenového plánu.  Podobně můžete u pomocného mechanismu služeb definovat až 3 fondy pracovníků a zadat výpočetní velikost, která se používá pro tento fond pracovních procesů.  To znamená, že pro klienty pomocného mechanismu služeb je místo výběru cenového plánu s výpočetní velikostí pro plán App Service vybrat, co se nazývá *fond pracovních procesů*.  
 
-Výběr fondu pracovních procesů uživatelského rozhraní zobrazuje velikost výpočetní prostředky použité pro tento fond pracovních procesů pod názvem.  K dispozici množství odkazuje na tom, kolik výpočetní instance jsou k dispozici pro použití v tomto fondu.  Celkový počet fondu může mít více instancí než tento počet, ale tato hodnota odkazuje na jednoduše kolik nejsou používány.  Pokud je potřeba upravit, přečtěte si služby App Service Environment, chcete-li přidat další výpočetní prostředky [konfigurace služby App Service Environment](app-service-web-configure-an-app-service-environment.md).
+Uživatelské rozhraní pro výběr fondu pracovních procesů zobrazuje výpočetní velikost, která se používá pro tento fond pracovních procesů pod názvem.  Dostupné množství znamená, kolik výpočetních instancí je k dispozici pro použití v daném fondu.  Celkový fond může mít ve skutečnosti víc instancí, než je toto číslo, ale tato hodnota odkazuje na to, kolik se nepoužívá.  Pokud potřebujete upravit App Service Environment pro přidání dalších výpočetních prostředků, přečtěte si téma [konfigurace App Service Environment](app-service-web-configure-an-app-service-environment.md).
 
 ![][4]
 
-V tomto příkladu najdete v článku k dispozici pouze dva fondy pracovních procesů. Důvodem je, Správce služby ASE jen přidělených hostitele do těchto dvou pracovních procesů fondů.  Třetí se zobrazují, když nejsou virtuální počítače přidělené do něj.  
+V tomto příkladu vidíte, že jsou k dispozici pouze dva fondy pracovních procesů. Důvodem je, že správce pomocného mechanismu přiděluje pouze hostitele do těchto dvou fondů pracovních procesů.  Třetí se zobrazí, když jsou do něj přidělené virtuální počítače.  
 
 ## <a name="after-web-app-creation"></a>Po vytvoření webové aplikace
-Existuje několik důležitých informací pro spuštění webových aplikací a správě plánů služby App Service ve službě ASE, které je nutné vzít v úvahu.  
+Pro spouštění webových aplikací a správu plánů App Service v pomocném mechanismu služby je potřeba vzít v úvahu několik důležitých informací.  
 
-Jak bylo uvedeno dříve, vlastník služby ASE zodpovídá za velikost systému a díky tomu jsou také za zajištění, že je dostatečnou kapacitu k hostování požadované plány služby App Service. Pokud neexistují žádné dostupné pracovní procesy, nebudete moct vytvořit plán služby App Service.  Toto je také true pro škálování webové aplikace.  Pokud potřebujete více instancí je třeba získat správce služby App Service Environment, aby přidal další pracovní procesy.
+Jak bylo uvedeno dříve, vlastník pomocného mechanismu řízení zodpovídá za velikost systému a v důsledku toho je také zodpovědný za to, že existuje dostatečná kapacita pro hostování požadovaných App Servicech plánů. Pokud nejsou k dispozici žádní pracovní procesy, nebudete moci vytvořit plán App Service.  To platí také pro škálování webové aplikace.  Pokud potřebujete víc instancí, budete muset App Service Environment správce, abyste mohli přidat další pracovní procesy.
 
-Po vytvoření webové aplikace a plán služby App Service je vhodné ji vertikálně navýšit kapacitu.  Ve službě ASE vždy musíte mít aspoň 2 instancí plánu služby App Service poskytují odolnost proti chybám pro vaše aplikace.  Škálování plánu služby App Service ve službě ASE je stejná jako za normálních okolností prostřednictvím uživatelského rozhraní plán služby App Service.  Další informace o škálování [jak škálovat webovou aplikaci ve službě App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+Po vytvoření webové aplikace a plánu App Service je vhodné ji škálovat.  V pomocném mechanismu služby budete vždycky muset mít aspoň 2 instance App Serviceho plánu, aby se zajistila odolnost vašich aplikací.  Škálování plánu App Service v pomocném mechanismu služby je stejné jako normální prostřednictvím uživatelského rozhraní App Service plánu.  Další informace o škálování, [Jak škálovat webovou aplikaci v App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

@@ -1,6 +1,6 @@
 ---
-title: Připojení Azure File storage s linuxem pomocí protokolu SMB | Dokumentace Microsoftu
-description: Postup připojení Azure File storage s linuxem pomocí protokolu SMB pomocí Azure CLI
+title: Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB | Microsoft Docs
+description: Postup připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
@@ -8,33 +8,32 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ca58bbc6f7b983ff545eb2dca6240359637e214
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671230"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091832"
 ---
-# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení Azure File storage s linuxem pomocí protokolu SMB
+# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení služby Azure File Storage na virtuálních počítačích se systémem Linux pomocí protokolu SMB
 
-Tento článek popisuje, jak používat službu Azure File storage na virtuální počítač s Linuxem pomocí připojení protokolu SMB pomocí Azure CLI. Azure File storage nabízí sdílené složky v cloudu s využitím standardního protokolu SMB. 
+V tomto článku se dozvíte, jak používat službu Azure File Storage na virtuálním počítači se systémem Linux pomocí připojení SMB pomocí Azure CLI. Služba Azure File Storage nabízí sdílené složky v cloudu pomocí standardního protokolu SMB. 
 
-File storage nabízí sdílené složky v cloudu, které využívají standardní protokol SMB. V jakémkoli operačním systému, který podporuje protokol SMB 3.0 můžou připojit sdílenou složku. Když použijete připojení protokolu SMB v systému Linux, získáte snadné zálohování robustní a trvalý archivace umístění úložiště, která je podporovaná smlouvou SLA.
+File Storage nabízí sdílené složky v cloudu, které používají standardní protokol SMB. Sdílenou složku můžete připojit z libovolného operačního systému, který podporuje SMB 3,0. Při použití připojení SMB v systému Linux získáte snadné zálohování robustního a trvalého úložiště archivace, které je podporováno smlouvou SLA.
 
-Přesunutí souborů z virtuálního počítače připojení protokolu SMB, která je hostována ve službě File storage je skvělý způsob, jak ladit protokoly. Stejné sdílené složce protokolu SMB je místně připojit do pracovní stanice se systémem Mac, Linux nebo Windows. SMB není nejlepším řešením pro streamování Linux nebo protokoly aplikací v reálném čase, protože protokol SMB není určený pro zpracování těchto funkcí náročné protokolování. Nástroje protokolování vyhrazené a Unifikovaný vrstvy, jako je Fluentd bude vhodnější než SMB k shromažďování údajů o Linuxu a aplikace protokolování výstupu.
+Přesunutí souborů z virtuálního počítače do připojení SMB hostovaného v úložišti souborů je skvělým způsobem, jak ladit protokoly. Stejnou sdílenou složku protokolu SMB lze místně připojit k pracovní stanici Mac, Linux nebo Windows. SMB není nejlepším řešením pro streamování protokolů Linux nebo aplikací v reálném čase, protože protokol SMB není sestavený tak, aby zpracovávala takové těžké protokolovací funkce. Vyhrazený Nástroj pro vrstvu jednotného protokolování, jako je například Fluent, je lepší volbou než protokol SMB pro shromažďování výstupu protokolování pro Linux a aplikace.
 
-Tato příručka vyžaduje, že používáte Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu **az --version**. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+Tato příručka vyžaduje, abyste spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu **az --version**. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků s názvem *myResourceGroup* v *USA – východ* umístění.
+Vytvořte v umístění *východní USA* skupinu prostředků s názvem *myResourceGroup* .
 
 ```bash
 az group create --name myResourceGroup --location eastus
@@ -42,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvořit nový účet úložiště, v rámci skupiny prostředků, kterou jste vytvořili pomocí [vytvořit účet úložiště az](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT\<náhodné číslo >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečný, pomocí `$RANDOM` přidá číslo a za účelem zajistit její jedinečnost.
+V rámci vytvořené skupiny prostředků vytvořte nový účet úložiště pomocí [AZ Storage Account Create](/cli/azure/storage/account). Tento příklad vytvoří účet úložiště s názvem *mySTORAGEACCT\<Random Number >* a vloží název tohoto účtu úložiště do proměnné **STORAGEACCT**. Názvy účtů úložiště musí být jedinečné, použití `$RANDOM` čísla ke konci připojovat k jedinečnému názvu.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -53,11 +52,11 @@ STORAGEACCT=$(az storage account create \
     --query "name" | tr -d '"')
 ```
 
-## <a name="get-the-storage-key"></a>Získání klíče úložiště
+## <a name="get-the-storage-key"></a>Získat klíč úložiště
 
-Když vytvoříte účet úložiště, klíče účtu se vytvoří v párech tak, aby se mohou otáčet bez přerušení služby. Když přepnete do druhého klíče dvojice, můžete vytvořit nový pár klíčů. Nové klíče účtu úložiště se vytváří vždy ve dvojicích, tak budete mít vždy alespoň jeden nevyužité klíč účtu úložiště můžete přepnout na.
+Když vytvoříte účet úložiště, klíče účtu se vytvoří ve dvojicích, aby se mohly otáčet bez přerušení služby. Když přepnete na druhý klíč ve dvojici, vytvoříte nový pár klíčů. Nové klíče účtu úložiště se vždycky vytvářejí ve dvojicích, takže vždycky budete mít aspoň jeden nepoužívaný klíč účtu úložiště připravený k přepnutí na.
 
-Zobrazení klíče účtu úložiště pomocí [seznamu klíčů účtu úložiště az](/cli/azure/storage/account/keys). V tomto příkladu ukládají hodnotu klíč 1 **klíč úložiště** proměnné.
+Zobrazte klíče účtu úložiště pomocí funkce [AZ Storage Account Keys list](/cli/azure/storage/account/keys). Tento příklad uloží hodnotu klíče 1 do proměnné **STORAGEKEY** .
 
 ```bash
 STORAGEKEY=$(az storage account keys list \
@@ -68,11 +67,11 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Vytvoření sdílené složky
 
-Vytvoření sdílené složky úložiště souboru pomocí [vytvořit sdílenou složku úložiště az](/cli/azure/storage/share). 
+Pomocí [AZ Storage Share Create](/cli/azure/storage/share)vytvořte sdílenou složku úložiště souborů. 
 
-Názvy sdílených složek musí být malá písmena, číslice a spojovníky, ale nemůžou začínat pomlčkou. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek musí obsahovat malá písmena, číslice a spojovníky, ale nemohou začínat spojovníkem. Kompletní informace o zadávání názvů sdílených složek a souborů najdete v tématu [Pojmenování a odkazování na sdílené složky, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-Tento příklad vytvoří sdílenou složku s názvem *myshare* s kvótou 10 GB. 
+Tento příklad vytvoří sdílenou složku s názvem *myshare* s kvótou 10-GIB. 
 
 ```bash
 az storage share create --name myshare \
@@ -81,40 +80,40 @@ az storage share create --name myshare \
     --account-key $STORAGEKEY
 ```
 
-## <a name="create-a-mount-point"></a>Vytvořit bod připojení
+## <a name="create-a-mount-point"></a>Vytvořit přípojný bod
 
-Na počítači s Linuxem připojit sdílenou složku Azure, budete muset Ujistěte se, že máte **cifs utils** nainstalovaný balíček. Pokyny k instalaci, naleznete v tématu [nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
+Pokud chcete sdílenou složku Azure připojit k počítači se systémem Linux, musíte se ujistit, že máte nainstalovaný balíček **CIFS-util** . Pokyny k instalaci najdete v tématu [instalace balíčku CIFS-utils pro distribuci systému Linux](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
 
-Služba soubory Azure používá protokol SMB, která komunikuje přes TCP port 445.  Pokud máte potíže s připojením sdílené složky Azure, ujistěte se, že brána firewall neblokuje TCP port 445.
+Azure Files používá protokol SMB, který komunikuje přes port TCP 445.  Pokud máte potíže s připojením sdílené složky Azure, ujistěte se, že brána firewall neblokuje port TCP 445.
 
 
 ```bash
 mkdir -p /mnt/MyAzureFileShare
 ```
 
-## <a name="mount-the-share"></a>Připojit sdílenou složku
+## <a name="mount-the-share"></a>Připojení sdílené složky
 
-Připojení sdílené složky Azure do místního adresáře. 
+Připojte sdílenou složku Azure k místnímu adresáři. 
 
 ```bash
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Výše uvedený příkaz používá [připojit](https://linux.die.net/man/8/mount) příkaz pro připojení sdílené složky Azure a možnosti, které jsou specifické pro [cifs](https://linux.die.net/man/8/mount.cifs). Konkrétně, file_mode a dir_mode možnosti sadu souborů a adresářů na oprávnění `0777`. `0777` Poskytuje oprávnění čtení, zápis a oprávnění pro všechny uživatele. Tato oprávnění můžete změnit tak, že nahradíte hodnoty s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod). Můžete také využít další [cifs](https://linux.die.net/man/8/mount.cifs) možnosti, jako je ID skupiny nebo uid. 
+Výše uvedený příkaz používá příkaz [Mount](https://linux.die.net/man/8/mount) k připojení sdílené složky Azure a možností specifických pro [CIFS](https://linux.die.net/man/8/mount.cifs). Konkrétně možnosti file_mode a dir_mode nastaví soubory a adresáře na oprávnění `0777`. `0777` Oprávnění poskytuje oprávnění ke čtení, zápisu a spouštění pro všechny uživatele. Tato oprávnění můžete změnit nahrazením hodnot pomocí dalších [oprávnění chmod](https://en.wikipedia.org/wiki/Chmod). Můžete také použít další možnosti [CIFS](https://linux.die.net/man/8/mount.cifs) , například GID nebo UID. 
 
 
 ## <a name="persist-the-mount"></a>Zachovat připojení
 
-Po restartování virtuálního počítače s Linuxem, je při vypnutí odpojeny připojené sdílené složky SMB. Pro opětovné připojení sdílené složky protokolu SMB při spuštění, přidá řádek do Linux /etc/fstab. Linux používá soubor fstab zobrazte seznam systémů souborů, které jsou potřebné k připojení během spouštění. Přidání sdílené složky SMB zajišťuje, že sdílená složka File storage trvale připojeného souboru systému pro virtuální počítač s Linuxem. Přidání souboru úložiště sdílené složky SMB do nového virtuálního počítače je možné při použití cloud-init.
+Po restartování virtuálního počítače se systémem Linux bude připojená sdílená složka SMB odpojena během vypínání. Pokud chcete po spuštění znovu připojit sdílenou složku SMB, přidejte řádek do adresáři/etc/fstab. pro Linux. Linux používá soubor fstab k vypsání systémů souborů, které musí připojit během procesu spouštění. Přidání sdílené složky SMB zajistí, že sdílená složka úložiště je trvale připojeným systémem souborů pro virtuální počítač se systémem Linux. Přidání sdílené složky SMB úložiště souborů do nového virtuálního počítače je možné, když použijete Cloud-init.
 
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
-Pro zvýšení zabezpečení v produkčních prostředích byste měli uložit svoje přihlašovací údaje mimo fstab.
+Pro zvýšení zabezpečení v produkčních prostředích byste měli přihlašovací údaje ukládat mimo fstab.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Použití cloud-init k přizpůsobení virtuálního počítače s Linuxem během vytváření](using-cloud-init.md)
+- [Přizpůsobení virtuálního počítače se systémem Linux během vytváření pomocí Cloud-init](using-cloud-init.md)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
-- [Šifrování disků na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](encrypt-disks.md)
+- [Šifrování disků na virtuálním počítači se systémem Linux pomocí Azure CLI](encrypt-disks.md)
 

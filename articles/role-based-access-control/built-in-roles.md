@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013371"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114660"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -70,6 +70,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 | [Čtenář fakturace](#billing-reader) | Povolí přístup pro čtení k fakturačním údajům. |
 | [BizTalk Contributor](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. |
 | [Přístup ke členskému uzlu blockchain (Preview)](#blockchain-member-node-access-preview) | Umožňuje přístup k blockchain členským uzlům. |
+| [Přispěvatel podrobného plánu](#blueprint-contributor) | Může spravovat definice podrobného plánu, ale nepřiřazovat je. |
+| [Operátor podrobného plánu](#blueprint-operator) | Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Poznámka: Tato akce funguje pouze v případě, že je přiřazení provedeno pomocí uživatelem přiřazené spravované identity. |
 | [Přispěvatel koncového bodu CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělit přístup jiným uživatelům. |
 | [Čtečka koncového bodu CDN](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže provádět změny. |
 | [Přispěvatel profilu CDN](#cdn-profile-contributor) | Může spravovat profily CDN a jejich koncové body, ale nemůže udělit přístup jiným uživatelům. |
@@ -948,6 +950,44 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
+## <a name="blueprint-contributor"></a>Přispěvatel podrobného plánu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může spravovat definice podrobného plánu, ale nepřiřazovat je. |
+> | **ID** | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | **Akce** |  |
+> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
+> | Microsoft. Details/modrotisky/* | Vytvářejte a spravujte definice podrobného plánu nebo artefakty podrobného plánu. |
+> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | Microsoft. Resources/nasazení/* | Vytváření a Správa nasazení skupin prostředků |
+> | Microsoft. support/* | Vytváření a Správa lístků podpory |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="blueprint-operator"></a>Operátor podrobného plánu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Poznámka: Tato akce funguje pouze v případě, že je přiřazení provedeno pomocí uživatelem přiřazené spravované identity. |
+> | **ID** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | **Akce** |  |
+> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
+> | Microsoft. detail/blueprintAssignments/* | Vytvořte a spravujte přiřazení podrobného plánu. |
+> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | Microsoft. Resources/nasazení/* | Vytváření a Správa nasazení skupin prostředků |
+> | Microsoft. support/* | Vytváření a Správa lístků podpory |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>Přispěvatel koncového bodu CDN
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1268,7 +1308,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Akce** |  |
 > | Microsoft. spotřeb/* |  |
 > | Microsoft.CostManagement/* |  |
-> | Microsoft. fakturace/billingPeriods/Read | Zobrazí seznam dostupných fakturačních období. |
+> | Microsoft. fakturace/billingPeriods/Read |  |
 > | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
@@ -1291,7 +1331,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Akce** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. fakturace/billingPeriods/Read | Zobrazí seznam dostupných fakturačních období. |
+> | Microsoft. fakturace/billingPeriods/Read |  |
 > | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
@@ -1899,6 +1939,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Insights/registr/Action | Zaregistruje poskytovatele platformy Microsoft Insights. |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Čtení, zápis a odstranění Application Insights webových testů. |
+> | Microsoft. Insights/sešity/* |  |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení, zápis a odstranění. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Čtení, zápis a odstraňování uložených hledání Log Analytics. |
 > | Microsoft. OperationalInsights/pracovní prostory/hledání/akce | Spustí vyhledávací dotaz. |
@@ -2474,6 +2515,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. SQL/managedInstances/databáze/sensitivityLabels/* |  |
 > | Microsoft. SQL/managedInstances/databáze/vulnerabilityAssessments/* |  |
 > | Microsoft. SQL/managedInstances/securityAlertPolicies/* |  |
+> | Microsoft. SQL/managedInstances/databáze/transparentDataEncryption/* |  |
 > | Microsoft. SQL/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Vytváření a Správa zásad auditování SQL serveru |
 > | Microsoft.Sql/servers/auditingSettings/* | Vytvoření a Správa nastavení auditování SQL serveru |
@@ -2494,6 +2536,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení databáze serveru SQL Server |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | Vytváření a Správa metrik zabezpečení databáze systému SQL Server |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
+> | Microsoft. SQL/servery/databáze/transparentDataEncryption/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
@@ -2975,7 +3018,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vlastní role pro prostředky Azure](custom-roles.md)
 - [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)

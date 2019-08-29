@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3afcd429351a0d988ff0e82ecf09f524ceac70f1
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098722"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3
 
@@ -49,7 +48,7 @@ Zálohování systému souborů operačního systému je naplánováno pomocí *
 ```
 Na následující obrazovce vidíte ukázková ruční záloha:
 
-![Použití](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![použití](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
 ## <a name="how-to-restore-a-backup"></a>Jak obnovit zálohu?
@@ -77,7 +76,7 @@ Následující snímek obrazovky ukazuje obnovení úplné zálohy:
 Balíčky s vysokou a obnovenou **instalací jsou předem nainstalovány** v **SKU typu II** velkých instancí Hana a žádná akce není od vás nutná. Pro zálohování operačního systému můžete přímo začít používat zezadu.
 V případech, kdy potřebujete balíčky nainstalovat sami, můžete postupovat podle pokynů uvedených v části instalace a konfigurace nástroje pro zpětnou instalaci.
 
-Chcete-li **nainstalovat záložní balíčky** , použijte následující příkazy:
+Chcete-li nainstalovat záložní balíčky, použijte následující příkazy:
 
 Pro operační systém **SLES** použijte následující příkaz:
 ```

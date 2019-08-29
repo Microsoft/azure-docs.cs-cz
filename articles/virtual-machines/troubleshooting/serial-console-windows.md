@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a6e303c26278eff290a2d4efb6f96e9962cf2f87
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: MT
+ms.openlocfilehash: 008502a2edf1f7d28c94139afdf1bd32f94c13dc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080465"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -296,7 +295,7 @@ A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke 
 
 A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Podrobný průvodce příkazy cmd a PowerShellu, které můžete použít v konzole Windows SAC, najdete v tématu [příkazy Windows: CMD a PowerShell](serial-console-cmd-ps-commands.md).
 * Je taky dostupná ke konzole sériového portu [Linux](serial-console-linux.md) virtuálních počítačů.
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md).

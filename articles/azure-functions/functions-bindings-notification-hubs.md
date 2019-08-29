@@ -1,60 +1,59 @@
 ---
-title: Vazby centra oznámení pro službu Azure Functions
-description: Vysvětlení použití vazby centra oznámení Azure ve službě Azure Functions.
+title: Notification Hubs vazby pro Azure Functions
+description: Vysvětlení použití vazby centra oznámení Azure v Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 1ed9e8cc9d05aef81175acb3bc0efd953e1bf1c4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7538e47a1d0bed0c72ff5ed467c98828cc9c18ba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086644"
 ---
-# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazby pro službu Azure Functions
+# <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazba pro Azure Functions
 
-Tento článek vysvětluje, jak odesílat nabízená oznámení pomocí [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) vazby ve službě Azure Functions. Azure Functions podporuje výstupní vazby pro Notification Hubs.
+Tento článek vysvětluje, jak odesílat nabízená oznámení pomocí vazeb [Azure Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md) v Azure Functions. Azure Functions podporuje výstupní vazby pro Notification Hubs.
 
-Azure Notification Hubs, musí být nakonfigurovaný pro službu platformy oznámení (PNS) chcete použít. Další informace o získání nabízených oznámení do vaší klientské aplikace ze služby Notification Hubs, najdete v článku [Začínáme se službou Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) a vyberte svou klientskou platformu cílového z rozevíracího seznamu v horní části stránky.
+Pro službu PNS (Platform Notification Service), kterou chcete použít, musí být nakonfigurována služba Azure Notification Hubs. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> Má Google [zastaralé Google Cloud Messaging (GCM) a služby Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). Tento výstupní vazbu nepodporuje FCM. K odesílání oznámení pomocí FCM, použijte [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) přímo ve funkci nebo použití [šablony oznámení](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+> Google má [nepoužívané Google Cloud Messaging (GCM) ve prospěch Firebase Cloud Messaging (FCM)](https://developers.google.com/cloud-messaging/faq). Tato výstupní vazba nepodporuje FCM. K odesílání oznámení pomocí FCM použijte [rozhraní Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) přímo ve své funkci nebo použijte [oznámení šablon](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby centra oznámení jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) úložiště GitHub.
+Vazby Notification Hubs jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) , verze 1. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Tato vazba není k dispozici ve funkcích 2.x.
+Tato vazba není k dispozici ve funkcích 2. x.
 
-## <a name="example---template"></a>Příklad – šablony
+## <a name="example---template"></a>Příklad šablony
 
-Oznámení můžete odesílat může být nativní oznámení nebo [šablony oznámení](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Podle konfigurace v nativní oznámení cílit na konkrétní klientskou platformu `platform` vlastnost výstupní vazbu. Šablona oznámení můžete použít pro více cílových platforem.   
+Oznámení, která odesíláte, můžou být nativní oznámení nebo [oznámení šablon](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Nativní oznámení cílí na konkrétní klientskou platformu, jak je `platform` nakonfigurovaná ve vlastnosti výstupní vazby. Oznámení šablony lze použít k zacílení na více platforem.   
 
 Podívejte se na příklad specifické pro jazyk:
 
-* [Skript jazyka C# – výstupní parametr](#c-script-template-example---out-parameter)
-* [Skript jazyka C# - asynchronní](#c-script-template-example---asynchronous)
-* [Skript jazyka C# – JSON](#c-script-template-example---json)
-* [Skript jazyka C# – knihovny typů](#c-script-template-example---library-types)
+* [C#parametr skriptu](#c-script-template-example---out-parameter)
+* [C#skript – asynchronní](#c-script-template-example---asynchronous)
+* [C#skript – JSON](#c-script-template-example---json)
+* [C#typy knihoven skriptů](#c-script-template-example---library-types)
 * [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
-### <a name="c-script-template-example---out-parameter"></a>Příklad jazyka C# skript šablony - výstupní parametr
+### <a name="c-script-template-example---out-parameter"></a>C#Ukázkový parametr šablony skriptu
 
-Tento příklad odešle oznámení [šablona registrace](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v šabloně.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v šabloně.
 
 ```cs
 using System;
@@ -75,9 +74,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---asynchronous"></a>Příklad jazyka C# skript šablony - asynchronní
+### <a name="c-script-template-example---asynchronous"></a>C#příklad šablony skriptu – asynchronní
 
-Pokud používáte asynchronní kód, výstupní parametry nejsou povoleny. V tomto případě použijte `IAsyncCollector` vrátit šablonu oznámení. Následující kód je příklad asynchronní výše uvedený kód. 
+Používáte-li asynchronní kód, nejsou povoleny výstupní parametry. V tomto případě použijte `IAsyncCollector` k vrácení oznámení šablony. Následující kód je asynchronní příklad kódu výše. 
 
 ```cs
 using System;
@@ -100,9 +99,9 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-### <a name="c-script-template-example---json"></a>Příklad jazyka C# skript šablony - JSON
+### <a name="c-script-template-example---json"></a>C#příklad šablony skriptu – JSON
 
-Tento příklad odešle oznámení [šablona registrace](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v šabloně platný řetězec formátu JSON pomocí.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v šabloně pomocí platného řetězce JSON.
 
 ```cs
 using System;
@@ -114,9 +113,9 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 }
 ```
 
-### <a name="c-script-template-example---library-types"></a>Příklad jazyka C# skript šablony – knihovny typů
+### <a name="c-script-template-example---library-types"></a>C#příklad šablony skriptu – typy knihoven
 
-Tento příklad ukazuje, jak používat typy definované v [knihovny Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
+Tento příklad ukazuje, jak používat typy definované v [knihovně Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/). 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -139,18 +138,18 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-### <a name="f-template-example"></a>F#Příklad šablony
+### <a name="f-template-example"></a>F#příklad šablony
 
-Tento příklad odešle oznámení [šablona registrace](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) obsahující `location` a `message`.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message`.
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
     notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
 ```
 
-### <a name="javascript-template-example"></a>Příklad šablony v jazyce JavaScript
+### <a name="javascript-template-example"></a>Příklad šablony JavaScriptu
 
-Tento příklad odešle oznámení [šablona registrace](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) obsahující `location` a `message`.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message`.
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -169,9 +168,9 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="example---apns-native"></a>Příklad – nativní služby APN
+## <a name="example---apns-native"></a>Příklad – Native APNS
 
-Tento ukázkový skript jazyka C# ukazuje, jak posílat nativní oznámení APNS. 
+Tento C# ukázkový skript ukazuje, jak odeslat NATIVNÍ oznámení APNs. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -200,9 +199,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---wns-native"></a>Příklad – nativní WNS
+## <a name="example---wns-native"></a>Příklad – WNS Native
 
-Tento ukázkový skript jazyka C# ukazuje, jak používat typy definované v [knihovny Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) odesílat nativní oznámení s informační zprávou nabízených oznámení Windows. 
+Tento C# ukázkový skript ukazuje, jak použít typy definované v [knihovně Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) k odeslání nativního informačního oznámení WNS. 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -245,29 +244,29 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="attributes"></a>Atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) atribut.
+V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte atribut [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) .
 
-Vlastnosti a parametry konstruktoru atributu jsou popsané [konfigurace](#configuration) části.
+Parametry a vlastnosti konstruktoru atributu jsou popsány v oddílu [Konfigurace](#configuration) .
 
-## <a name="configuration"></a>Konfigurace
+## <a name="configuration"></a>Konfiguraci
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `NotificationHub` atribut:
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* , a `NotificationHub` atribut:
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** |neuvedeno| Musí být nastavena na "notificationHub". |
+|**type** |neuvedeno| Musí být nastavené na "notificationHub". |
 |**direction** |neuvedeno| Musí být nastavena na "out". | 
-|**name** |neuvedeno| Název proměnné používá v kódu funkce pro centra oznámení. |
-|**tagExpression** |**TagExpression** | Výrazy označení umožňují určit, že oznámení bude doručen do skupiny zařízení, které jste se zaregistrovali k přijímání oznámení, které odpovídají výrazu značky.  Další informace najdete v tématu [směrování a značky výrazy](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
-|**hubName** | **HubName** | Název prostředku centra oznámení na webu Azure Portal. |
-|**připojení** | **connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec centra oznámení.  Připojovací řetězec musí být nastavena *DefaultFullSharedAccessSignature* hodnotu pro vaše Centrum oznámení. Zobrazit [nastavení řetězce připojení](#connection-string-setup) dále v tomto článku.|
-|**Platforma** | **Platforma** | Vlastnost platformy označuje klientská platforma, vaše cíle oznámení. Ve výchozím nastavení pokud vlastnost platformy je vynecháno z výstupní vazbu šablony oznámení je možné cílit na libovolnou platformu nakonfigurované v centru oznámení Azure. Další informace o použití šablon obecně pro odeslání pro různé platformy oznámení pomocí centra oznámení Azure, najdete v části [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Pokud nastavíte, **platformy** musí být jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Služba nabízených oznámení společnosti Apple. Další informace o konfiguraci centra oznámení pro služby APN a přijímání oznámení v aplikaci klienta najdete v tématu [odesílání nabízených oznámení do iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro správce a přijímání oznámení do aplikace kindle a využívá, najdete v části [Začínáme se službou Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Služby nabízených oznámení Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) cílení na platformy Windows. Windows Phone 8.1 a novější také podporuje služby nabízených oznámení Windows. Další informace najdete v tématu [Začínáme se službou Notification Hubs pro Windows Universal Platform aplikace](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Microsoft služba nabízených oznámení](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje starší platformy Windows Phone a Windows Phone 8. Další informace najdete v tématu [odesílání nabízených oznámení pomocí Azure Notification Hubs ve Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**name** |neuvedeno| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
+|**tagExpression** |**TagExpression** | Výrazy značek umožňují určit, že oznámení budou doručena do sady zařízení, která jsou zaregistrovaná pro příjem oznámení, která odpovídají výrazu značky.  Další informace najdete v tématu [výrazy směrování a značek](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
+|**hubName** | **HubName** | Název prostředku centra oznámení v Azure Portal. |
+|**připojení** | **connectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec Notification Hubs.  Připojovací řetězec musí být nastaven na hodnotu *DefaultFullSharedAccessSignature* vašeho centra oznámení. Viz [nastavení připojovacího řetězce](#connection-string-setup) dále v tomto článku.|
+|**platformy** | **Platformy** | Vlastnost Platform označuje klientskou platformu, na kterou vaše oznámení cílí. Ve výchozím nastavení platí, že pokud je vlastnost Platform vynechána z výstupní vazby, lze pomocí oznámení šablon cílit na jakoukoli platformu nakonfigurovanou v centru oznámení Azure. Další informace o použití šablon obecně k odesílání oznámení pro různé platformy pomocí Centra oznámení Azure najdete v tématu [šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Při nastavení musí být **platforma** jedna z následujících hodnot: <ul><li><code>apns</code>&mdash;Apple Push Notification Service. Další informace o konfiguraci centra oznámení pro službu APN a přijetí oznámení v klientské aplikaci najdete v tématu posílání [nabízených oznámení do systému iOS pomocí Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Další informace o konfiguraci centra oznámení pro ADM a přijetí oznámení v aplikaci Kindle najdete v tématu [Začínáme Notification Hubs pro aplikace Kindle](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Služba nabízených oznámení Windows](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) cílí na platformy Windows. WNS podporuje i Windows Phone 8,1 a novější. Další informace najdete v tématu [Začínáme se Notification Hubs pro aplikace Univerzální platformy Windows](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[Služba nabízených oznámení Microsoftu](/previous-versions/windows/apps/ff402558(v=vs.105)). Tato platforma podporuje Windows Phone 8 a starších Windows Phonech platforem. Další informace najdete v tématu [Posílání nabízených oznámení pomocí Azure Notification Hubs v Windows Phone](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-### <a name="functionjson-file-example"></a>Příklad souboru Function.JSON
+### <a name="functionjson-file-example"></a>Příklad souboru Function. JSON
 
-Tady je příklad vazby v Notification Hubs *function.json* souboru.
+Tady je příklad vazby Notification Hubs v souboru *Function. JSON* .
 
 ```json
 {
@@ -286,27 +285,27 @@ Tady je příklad vazby v Notification Hubs *function.json* souboru.
 }
 ```
 
-### <a name="connection-string-setup"></a>Nastavení připojovací řetězce
+### <a name="connection-string-setup"></a>Nastavení připojovacího řetězce
 
-Pokud chcete použít na výstup centra oznámení vazby, musíte nakonfigurovat připojovací řetězec centra. Můžete vybrat existující centrum oznámení nebo vytvořit nový jeden přímo ze *integrace* karta na portálu Azure portal. Připojovací řetězec můžete také nakonfigurovat ručně. 
+Chcete-li použít výstupní vazbu centra oznámení, je nutné nakonfigurovat připojovací řetězec pro centrum. Můžete vybrat existující centrum oznámení nebo vytvořit nové přímo z karty *integrace* v Azure Portal. Připojovací řetězec můžete také nakonfigurovat ručně. 
 
 Konfigurace připojovacího řetězce pro existující centrum oznámení:
 
-1. Přejděte do svého centra oznámení v [webu Azure portal](https://portal.azure.com), zvolte **zásady přístupu**a vyberte vedle tlačítka pro kopírování **DefaultFullSharedAccessSignature** zásad. To zkopíruje připojovací řetězec pro *DefaultFullSharedAccessSignature* zásady pro vaše Centrum oznámení. Tento připojovací řetězec umožňuje funkci zasílání oznámení k rozbočovači.
-    ![Zkopírujte připojovací řetězec centra oznámení](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Přejděte do vaší aplikace function app na webu Azure Portal, zvolte **nastavení aplikace**, jako například přidat klíč **MyHubConnectionString**, vložte zkopírovaný *DefaultFullSharedAccessSignature* pro vaše Centrum oznámení jako hodnotu a pak klikněte na tlačítko **Uložit**.
+1. V [Azure Portal](https://portal.azure.com)přejděte do centra oznámení, zvolte **zásady přístupu**a klikněte na tlačítko Kopírovat vedle zásady **DefaultFullSharedAccessSignature** . Tím se do centra oznámení zkopíruje připojovací řetězec pro zásady *DefaultFullSharedAccessSignature* . Tento připojovací řetězec umožňuje, aby vaše funkce odesílala zprávy s oznámením do centra.
+    ![Zkopírování připojovacího řetězce centra oznámení](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. V Azure Portal přejděte do aplikace Function App, zvolte **nastavení aplikace**, přidejte klíč, jako je například **MyHubConnectionString**, vložte zkopírované *DefaultFullSharedAccessSignature* pro vaše centrum oznámení jako hodnotu a potom klikněte na  **Uložte**.
 
-Název tohoto nastavení aplikace je co přejde v nastavení výstupní vazbu připojení v *function.json* nebo atribut .NET. Zobrazit [konfiguračního oddílu](#configuration) dříve v tomto článku.
+Název tohoto nastavení aplikace je to, co se nachází v nastavení připojení výstupní vazby v atributu *Function. JSON* nebo .NET. Viz [část konfigurace](#configuration) výše v tomto článku.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Referenční informace |
+| Vazba | Reference |
 |---|---|
 | Centrum oznámení | [Provozní příručka](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

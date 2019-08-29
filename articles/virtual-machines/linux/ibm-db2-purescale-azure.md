@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874879"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083081"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
 
@@ -41,7 +40,7 @@ Tento článek nepokrývá rozdíly a možné úlohy migrace pro přesun databá
 Abychom vám pomohli při rozhodování o nejlepší architektuře pureScale pro vaše prostředí, doporučujeme vám plně odhadnout velikost a vytvořit hypotézu. Ve zdrojovém systému nezapomeňte zvážit možnost DB2 z/OS Parallel Sysplex s architekturou sdílení dat, konfigurací spojovacího zařízení a statistikou využití distribuovaného datového zařízení (DDF).
 
 > [!NOTE]
-> Tento článek popisuje jeden přístup k migraci DB2, ale existují další. Například DB2 pureScale lze také spustit v virtualizovaných místních prostředích. IBM podporuje DB2 v systému Microsoft Hyper-V v různých konfiguracích. Další informace najdete v tématu [Architektura virtualizace DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) ve znalostní bázi IBM Knowledge Center.
+> Tento článek popisuje jeden přístup k migraci DB2, ale existují další. Například DB2 pureScale lze také spustit v virtualizovaných místních prostředích. IBM podporuje DB2 na Microsoft Hyper-V v různých konfiguracích. Další informace najdete v tématu [Architektura virtualizace DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) ve znalostní bázi IBM Knowledge Center.
 
 ## <a name="architecture"></a>Architektura
 
@@ -70,7 +69,7 @@ Tato architektura spouští aplikaci, úložiště a datovou vrstvu na virtuáln
 
 -   Cluster DB2 pureScale Typ výpočetních prostředků, které v Azure potřebujete, závisí na nastavení. Obecně platí, že můžete použít dva přístupy:
 
-    -   Použijte síť s více uzly a vysoce výkonným výpočetním prostředím (HPC), ve které se v malých až středně velkých instancích přistupuje ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované E-series nebo úložiště s podporou [úložišť řady L](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) -Series poskytují potřebný výpočetní výkon.
+    -   Použijte síť s více uzly a vysoce výkonným výpočetním prostředím (HPC), ve které se v malých až středně velkých instancích přistupuje ke sdílenému úložišti. Pro tento typ HPC konfigurace Azure paměťově optimalizované E-series nebo úložiště s podporou úložišť řady L- [](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) Series poskytují potřebný výpočetní výkon.
 
     -   Pro datové moduly použijte méně velkých instancí virtuálních počítačů. U velkých instancí jsou největší virtuální počítače optimalizované pro paměť [řady M-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) ideální pro náročné úlohy v paměti. V závislosti na velikosti logického oddílu (LPAR), který se používá ke spuštění DB2, budete možná potřebovat vyhrazenou instanci.
 
@@ -109,6 +108,6 @@ Každý virtuální počítač Azure je nasazený do virtuální sítě, která 
 
 V Azure pureScale potřebuje jako síťové připojení pro úložiště používat protokol TCP/IP.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 -   [Nasadit tuto architekturu v Azure](deploy-ibm-db2-purescale-azure.md)

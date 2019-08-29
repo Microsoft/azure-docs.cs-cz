@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949915"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096157"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -315,12 +314,12 @@ func host start
 | **`--cors-credentials`** | Povolte pouze ověřené požadavky mezi zdroji (tj. soubory cookie a záhlaví ověřování) pouze verze 2. x. |
 | **`--cors`** | Čárkami oddělený seznam původů CORS bez mezer. |
 | **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Pouze verze 2. x. |
-| **`--nodeDebugPort -n`** | Port pro použití ladicího programu uzlu. Výchozí: Hodnota z Launch. JSON nebo 5858. Pouze verze 1. x. |
+| **`--nodeDebugPort -n`** | Port pro použití ladicího programu uzlu. Výchozí Hodnota z Launch. JSON nebo 5858. Pouze verze 1. x. |
 | **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom `--cert`pro. Pouze verze 2. x. |
 | **`--port -p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Před ukončením procesu ponechejte další vstup. Používá se jenom při spouštění základních nástrojů z integrovaného vývojového prostředí (IDE).|
 | **`--script-root --prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny C# tříd jsou soubory Host. JSON, Local. Settings. JSON a Function. JSON generovány v *kořenové* podsložce s cestou, jako je například `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. Toto je kořen aplikace Function App při spuštění v Azure. |
-| **`--timeout -t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí: 20 sekund.|
+| **`--timeout -t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí 20 sekund.|
 | **`--useHttps`** | Vytvořte vazby `https://localhost:{port}` na místo pro `http://localhost:{port}`. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát na vašem počítači.|
 
 Když se hostitel funkce spustí, vypíše adresu URL funkcí aktivovaných protokolem HTTP:

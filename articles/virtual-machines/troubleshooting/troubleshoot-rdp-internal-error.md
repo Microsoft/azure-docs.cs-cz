@@ -1,5 +1,5 @@
 ---
-title: Vnitřní chyba nastane, pokud vytvořit připojení RDP k Azure Virtual Machines | Dokumentace Microsoftu
+title: Při navázání připojení RDP k Azure Virtual Machines dojde k vnitřní chybě | Microsoft Docs
 description: Informace o řešení potíží s RDP s interními chybami v Microsoft Azure. | Dokumentace Microsoftu
 services: virtual-machines-windows
 documentationCenter: ''
@@ -7,24 +7,23 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa00a5b65b0e337c47ca1fa892b8958f0bd2232
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319424"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089813"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
 > [!NOTE]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a klasický](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -55,7 +54,7 @@ Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [op
 Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
 
-#### <a name="step-1-check-the-rdp-port"></a>Krok: Zkontrolujte, 1 RDP port
+#### <a name="step-1-check-the-rdp-port"></a>Krok 1. Podívejte se na port RDP.
 
 1. V instanci prostředí PowerShell, použijte [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) ke kontrole, jestli port 8080 je použít v jiných aplikacích:
@@ -87,7 +86,7 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
     3. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění pro certifikát podepsaný svým držitelem protokolu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správných oprávnění pro certifikát podepsaný svým držitelem protokolu RDP
 
 1.  V instanci prostředí PowerShell spusťte následující příkazy jeden po druhém prodloužit platnost certifikátu podepsaného svým držitelem protokol RDP:
 

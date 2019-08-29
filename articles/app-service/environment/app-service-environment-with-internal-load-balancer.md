@@ -1,6 +1,6 @@
 ---
-title: Vytváření a používání interního nástroje load balancer s App Service environment – Azure | Dokumentace Microsoftu
-description: Vytváření a používání služby ASE s ILB
+title: Vytvoření a použití interního nástroje pro vyrovnávání zatížení s prostředím App Service – Azure | Microsoft Docs
+description: Vytvoření a použití pomocného objektu s interního nástroje
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -10,128 +10,127 @@ ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130598"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069901"
 ---
-# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Službě interní služby Load Balancer pomocí služby App Service Environment
+# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
 
 > [!NOTE] 
-> Tento článek je o App Service Environment v1. Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
+> Tento článek se týká App Service Environment v1. Existuje novější verze App Service Environment, kterou je snazší použít a která je spuštěná na výkonnější infrastruktuře. Další informace o nové verzi začíná [úvodem do App Service Environment](intro.md).
 >
 
-Funkce App Service Environment (ASE) je možnost Premium služby Azure App Service, která poskytuje rozšířené konfigurace schopností, který není k dispozici v razítka pro více tenantů. Funkce služby ASE v podstatě nasadí Azure App Service ve vaší virtuální sítě Azure. Abyste získali větší představu o funkce, které nabízí služba App Service Environment, přečtěte si [novinky službě App Service Environment] [ WhatisASE] dokumentaci. Pokud neznáte výhody provoz ve virtuální síti čtení [Azure Virtual Network, nejčastější dotazy k][virtualnetwork]. 
+Funkce App Service Environment (pomocného mechanismu) je možnost služby Premium v Azure App Service, která poskytuje rozšířenou možnost konfigurace, která není dostupná u razítek s více klienty. Funkce pomocného mechanismu IT v podstatě nasadí Azure App Service ve službě Azure Virtual Network (VNet). Pokud chcete získat větší přehled o funkcích, které nabízí App Service prostředí, přečtěte si článek [co je App Service Environment][WhatisASE] dokumentace. Pokud si nejste jisti výhodami provozu ve virtuální síti, přečtěte si [Nejčastější dotazy k Azure Virtual Network][virtualnetwork]. 
 
 ## <a name="overview"></a>Přehled
-Služba ASE je možné nasadit pomocí Internetu přístupném koncovém bodu nebo s IP adresou ve vaší virtuální síti. Pokud chcete nastavit IP adresu na adresu ve virtuální síti je potřeba nasadit službu ASE s interním Balancer(ILB) zatížení. Pokud vaše služba ASE je nakonfigurovaná s ILB, zadejte:
+Pomocí pomocného bodu se dá nasadit s přístupem k Internetu nebo s IP adresou ve vaší virtuální síti. Aby bylo možné nastavit IP adresu na adresu virtuální sítě, musíte nasadit svůj pomocného správce pomocí interního Load Balancer (interního nástroje). Když nakonfigurujete pomocného správce s interního nástroje, zadáte:
 
-* your own domain or subdomain. Abyste usnadnili snadnou, tento dokument předpokládá subdoménu můžete ji ale konfigurovat v obou případech. 
-* certifikát používaný pro protokol HTTPS.
-* DNS management for your subdomain. 
+* vaše vlastní doména nebo subdoména. V tomto dokumentu se předpokládá, že tento dokument má subdoménu, ale můžete ho nakonfigurovat tak, jak je to možné. 
+* certifikát používaný pro protokol HTTPS
+* Správa DNS pro subdoménu 
 
 Díky tomu budete moct provádět třeba tyto úkony:
 
-* hostování intranetových aplikací, jako jsou – obchodní aplikace, bezpečně v cloudu, ke které přistupujete přes lokalitu k lokalitě nebo virtuální privátní sítě ExpressRoute
+* hostování intranetových aplikací, jako jsou obchodní aplikace, bezpečně v cloudu, ke kterým přistupujete přes lokalitu nebo ExpressRoute VPN
 * hostování aplikací v cloudu, které nejsou uvedené na veřejných serverech DNS
-* Vytvoření internet izolovaný režim back-endu aplikace, které umožňují zabezpečenou integraci vašich front-endu aplikací
+* Vytvářejte internetové aplikace s izolovaným back-end, se kterými se můžou vaše klientské aplikace bezpečně integrovat.
 
 #### <a name="disabled-functionality"></a>Zakázané funkce
-Existuje několik věcí, které nelze provést, pokud pomocí ILB ASE. Zahrnout tyto věci:
+K dispozici jsou některé věci, které nemůžete použít při použití interního nástroje pomocného programu. Mezi tyto věci patří:
 
-* pomocí IPSSL
-* přiřazení IP adres na konkrétní aplikace
-* Nákup a používání certifikát s aplikací na portálu. Samozřejmě, stále můžete získat certifikáty přímo s certifikační autority a použijte ho s vašimi aplikacemi, ale ne prostřednictvím webu Azure portal.
+* použití IPSSL
+* přiřazují se IP adresy konkrétním aplikacím.
+* nákup a použití certifikátu s aplikací prostřednictvím portálu Certifikáty můžete samozřejmě i nadále získávat přímo s certifikační autoritou a používat je s vašimi aplikacemi, ale ne prostřednictvím Azure Portal.
 
-## <a name="creating-an-ilb-ase"></a>Vytvoření ILB ASE
-Vytvoření ILB ASE není výrazně liší od vytvoření prostředí ASE normálně. Podrobnější diskuzi o vytvoření služby ASE najdete v tématu [vytvoření služby App Service Environment][HowtoCreateASE]. Proces vytvoření ILB ASE je mezi vytvořením virtuální sítě během vytváření služby ASE nebo vyberte existující virtuální sítě. Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto: 
+## <a name="creating-an-ilb-ase"></a>Vytvoření pomocného mechanismu pro interního nástroje
+Vytvoření pomocného mechanismu pro interního nástroje se neliší od normálního vytváření pomocného mechanismu. Podrobnější diskuzi o vytváření pomocného mechanismu řízení najdete v tématu [jak vytvořit App Service Environment][HowtoCreateASE]. Proces vytvoření interního nástroje pomocného mechanismu je stejný mezi vytvořením virtuální sítě během vytváření pomocného procesu nebo výběrem již existující virtuální sítě. Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto: 
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek -> Web + mobilní zařízení -> Služba App Service Environment**.
+1. V Azure Portal vyberte **vytvořit prostředek-> Web a mobilní zařízení-> App Service Environment**.
 2. Vyberte své předplatné.
 3. Vyberte nebo vytvořte skupinu prostředků.
 4. Vyberte nebo vytvořte virtuální síť.
-5. Pokud vyberete virtuální síť vytvořte podsíť.
-6. Vyberte **virtuální síť/umístění-> Konfigurace virtuální sítě** a nastavte typ virtuální IP adresy na interní.
-7. Zadejte název subdomény (Tento název se subdoménou používat pro aplikace vytvořené v této službě ASE).
-8. Vyberte **OK** a potom **vytvořit**.
+5. Pokud vybíráte virtuální síť, vytvořte podsíť.
+6. Vyberte **Virtual Network/umístění-> konfigurace virtuální** sítě a nastavte typ VIP na interní.
+7. Zadejte název subdomény (Tento název je subdoménou, která se používá pro aplikace vytvořené v tomto mechanismu pro nápovědu).
+8. Vyberte **OK** a pak **vytvořit**.
 
 ![][1]
 
-V podokně virtuální sítě je konfigurace virtuální sítě, vyberte možnost, která vám umožní mezi externí IP adresu nebo interní virtuální IP ADRESE. Výchozí hodnota je externí. Pokud máte nastavené na externí služby ASE používá k Internetu virtuální IP adresu. Pokud vyberete interní, vaše služba ASE je nakonfigurovaný s ILB na IP adresu v rámci vaší virtuální sítě. 
+V podokně Virtual Network existuje možnost konfigurace virtuální sítě, která umožňuje vybrat mezi externí VIP nebo interní VIP. Výchozí hodnota je external. Pokud máte nastavenou hodnotu externí, váš přístupový protokol používá internetovou IP adresu s přístupem. Pokud vyberete interní, váš pomocného programu se nakonfiguruje s interního nástroje na IP adrese v rámci vaší virtuální sítě. 
 
-Po výběru interní odebrána možnost přidávat do služby ASE další IP adresy a místo toho je nutné zadat subdoménu služby ASE. Ve službě ASE s externí virtuální IP Adresou se název služby ASE používá v subdoménu pro aplikace vytvořené v této službě ASE. Pokud je název vaší služby ASE ***contosotest*** a je název vaší aplikace v této službě ASE ***test***, subdoménu je ve formátu ***contosotest.p.azurewebsites.net*** a adresa URL pro tuto aplikaci je ***mytest.contosotest.p.azurewebsites.net***. Pokud nastavíte typ virtuální IP adresy na interní, název vaší služby ASE se nepoužívá v subdoménu pro danou službu ASE. Zadejte subdoménu explicitně. Pokud je vaše subdoménu ***contoso.corp.net*** a aplikace v tom, že služba ASE s názvem ***timereporting***, adresa URL pro tuto aplikaci je ***timereporting.contoso.corp.net***.
+Po výběru interního výběru možnosti přidat další IP adresy do pomocného mechanismu služby dojde k odebrání a místo toho musíte zadat subdoménu pomocného mechanismu. V rámci služby pomocného objektu s externí virtuální IP adresou se název pomocného mechanismu používá v subdoméně pro aplikace vytvořené v tomto pomocném formuláři. Pokud má váš správce přihlášený s názvem ***contosotest*** a vaše aplikace v tomto pomocném programu má název ***MyTest***, je poddoménou formát ***contosotest.p.azurewebsites.NET*** a adresa URL této aplikace je ***MyTest.contosotest.p.azurewebsites.NET***. Pokud nastavíte typ VIP na interní, název pomocného mechanismu se v subdoméně pro pomocného mechanismu názvů nepoužije. Subdoménu zadáte explicitně. Pokud je vaše subdoména ***contoso.corp.NET*** a v tomto pomocném objektu s názvem ***timereporting***jste vytvořili aplikaci, adresa URL této aplikace je ***timereporting.contoso.corp.NET***.
 
-## <a name="apps-in-an-ilb-ase"></a>Aplikace v prostředí ILB ASE
-Vytvoření aplikace ve službě ASE s ILB je stejné jako vytvoření aplikace ve službě ASE normálně. 
+## <a name="apps-in-an-ilb-ase"></a>Aplikace v pomocném protokolu interního nástroje
+Vytvoření aplikace v pomocném okně interního nástroje je stejné jako vytvoření aplikace v pomocném mechanismu. 
 
-1. Na webu Azure Portal, vyberte **vytvořit prostředek -> Web + mobilní zařízení -> Web** nebo **Mobile** nebo **aplikace API**.
+1. V Azure Portal vyberte **vytvořit prostředek-> Web a mobilní zařízení-> web** nebo **mobilní** **aplikace nebo aplikaci API**.
 2. Zadejte název aplikace.
 3. Vyberte své předplatné.
 4. Vyberte nebo vytvořte skupinu prostředků.
-5. Vyberte nebo vytvořte Plan(ASP) App Service. Pokud vytváříte novou ASP, vyberte jako umístění svoji službu ASE a vyberte fond pracovních procesů, který chcete, aby vaše ASP vytvořit v. Když vytvoříte ASP, vyberte svoji službu ASE jako umístění a fond pracovních procesů. Když zadáte název aplikace, uvidíte, že subdoménu pod názvem vašeho aplikace nahrazuje subdoménu pro vaši službu ASE. 
-6. Vyberte **Vytvořit**. Je nutné vybrat **připnout na řídicí panel** zaškrtávací políčko, pokud chcete, aby aplikace zobrazovala na řídicím panelu. 
+5. Vyberte nebo vytvořte plán App Service (ASP). Pokud vytváříte nové prostředí ASP, jako umístění vyberte svůj pomocným mechanismem a vyberte fond pracovních procesů, ve kterém chcete vytvořit ASP. Při vytváření ASP vyberete jako umístění a fond pracovních procesů správce přidaných objektů. Když zadáte název aplikace, uvidíte, že subdoména v názvu vaší aplikace je nahrazena subdoménou pro váš přístup k pomocnému programu. 
+6. Vyberte **Vytvořit**. Nezapomeňte zaškrtnout políčko připnout **na řídicí panel** , pokud chcete, aby se aplikace zobrazovala na řídicím panelu. 
 
 ![][2]
 
-Pod názvem aplikace aktualizuje tak, aby odrážely subdoménu vaše služba ASE název subdomény. 
+V části název aplikace se název subdomény aktualizuje tak, aby odrážel subdoménu vašeho pomocného programu. 
 
-## <a name="post-ilb-ase-creation-validation"></a>Ověření vytvoření ILB ASE příspěvku
-Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liší od služby bez interního nástroje pro vyrovnávání zatížení. Které jsou už jste si poznamenali je potřeba spravovat vlastní službu DNS a také je nutné zadat vlastní certifikát pro připojení prostřednictvím protokolu HTTPS. 
+## <a name="post-ilb-ase-creation-validation"></a>Ověřování vytvořením interního nástroje pomocného mechanismu odeslání
+Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liší od služby bez interního nástroje pro vyrovnávání zatížení. Jak už jste si poznamenali, musíte si spravovat vlastní DNS a musíte taky zadat vlastní certifikát pro připojení HTTPS. 
 
-Po vytvoření služby ASE, všimnete si, že subdoménu ukazuje subdoménu zadaná a je nová položka v **nastavení** nabídky s názvem **ILB certifikát**. Služba ASE se vytvoří s certifikátem podepsaným svým držitelem, který usnadňuje testování protokolu HTTPS. Portálu zjistíte, které budete muset poskytnout vlastní certifikát pro protokol HTTPS, ale to se vám doporučujeme mít certifikát, který doprovází vaše subdomény. 
+Po vytvoření pomocného bodu obnovení si všimněte, že se v subdoméně zobrazuje zadaná subdoména a v nabídce **Nastavení** s názvem **interního nástroje Certificate**je nová položka. Pomocného programu se vytvoří s certifikátem podepsaným svým držitelem, který usnadňuje testování HTTPS. Na portálu se dozvíte, že potřebujete zadat vlastní certifikát pro protokol HTTPS, ale doporučujeme vám, abyste měli certifikát, který se dokončí s vaší subdoménou. 
 
 ![][3]
 
-Pokud jsou jednoduše vyzkoušet věci a nevíte, jak vytvořit certifikát, můžete použít konzolovou aplikaci konzoly MMC služby IIS vytvořit certifikát podepsaný svým držitelem. Jakmile ho vytvoříte, můžete exportovat jako soubor .pfx a pak ho nahrajte do uživatelské rozhraní konektoru Certificate ILB. Při přístupu na web zabezpečený pomocí certifikátu podepsaného svým držitelem, prohlížeči vám upozornění, že není zabezpečený lokalizovat pro ověření certifikátu webu, ke kterému přistupujete. Pokud chcete se vyhnout této upozornění, musíte správně podepsaný certifikát, který odpovídá vaší subdoménu a má řetěz certifikátů, který je rozpoznán prohlížeče.
+Pokud jednoduše vyzkoušíte něco a nevíte, jak vytvořit certifikát, můžete k vytvoření certifikátu podepsaného svým držitelem použít konzolovou aplikaci IIS MMC. Jakmile je vytvořený, můžete ho exportovat jako soubor. pfx a pak ho nahrát do uživatelského rozhraní certifikátu interního nástroje. Když přistupujete k webu zabezpečenému pomocí certifikátu podepsaného svým držitelem, zobrazí se vám upozornění, že web, ke kterému přistupujete, není zabezpečený z důvodu neschopnosti ověřit certifikát. Pokud se chcete tomuto upozornění vyhnout, budete potřebovat správně podepsaný certifikát, který odpovídá vaší subdoméně a má řetěz důvěryhodnosti, který rozpozná váš prohlížeč.
 
 ![][6]
 
-Pokud chcete akci toku s vlastní certifikáty a otestovat přístup protokolu HTTP a HTTPS do služby ASE:
+Pokud chcete tento tok vyzkoušet s vlastními certifikáty a otestovat přístup HTTP i HTTPS k vašemu přimocnému programu:
 
-1. Přejděte na uživatelské rozhraní služby ASE po vytvoření služby ASE **ASE -> Nastavení -> certifikáty ILB**.
-2. Nastavení certifikátu ILB tak, že vyberete soubor pfx certifikátu a zadejte heslo. Tento krok vezme za malou chvíli ke zpracování a zobrazí se zpráva, která probíhá škálování operace.
-3. Získat adresu ILB vaší služby ase (**ASE -> Vlastnosti -> virtuální IP adresu**).
-4. Vytvoření webové aplikace ve službě ASE po jeho vytvoření. 
-5. Vytvoření virtuálního počítače, pokud nemáte v dané virtuální síti (není ve stejné podsíti jako službu ASE nebo věci konec).
-6. Set DNS for your subdomain. Můžete použít zástupný znak vaše subdoménu ve službě DNS nebo pokud chcete provést několik jednoduchých testů, upravte soubor hostitelů na vašem virtuálním počítači nastavit název webové aplikace na virtuální IP adresu. Pokud vaše služba ASE název subdomény. ilbase.com a tak, že by se řešit v mytestapp.ilbase.com, provedli mytestapp webové aplikace, které nastavíte v souboru hostitelů. (Na Windows, je soubor hostitelů v C:\Windows\System32\drivers\etc\)
-7. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com (nebo cokoli, co je název vaší webové aplikace s vaší subdoménu).
-8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, musíte přijmout chybějící zabezpečení. 
+1. Přejít na uživatelské rozhraní pomocného uživatelského rozhraní po vytvoření pomocného mechanismu **řízení-> nastavení-> certifikátů interního nástroje**.
+2. Nastavte interního nástroje certifikát tak, že vyberete soubor PFX certifikátu a zadáte heslo. Tento krok chvíli trvá a zobrazí se zpráva, že probíhá operace škálování.
+3. Získejte interního nástroje adresu pro váš pomocného správce (pomocného **> vlastností – > virtuální IP adresa**).
+4. Po vytvoření vytvořte webovou aplikaci v pomocném mechanismu. 
+5. Vytvořte virtuální počítač, pokud ho v této virtuální síti nemáte (ne ve stejné podsíti jako pomocného mechanismu řízení nebo věci).
+6. Nastavte DNS pro subdoménu. Můžete použít zástupný znak s vaší subdoménou v DNS nebo pokud chcete provést některé jednoduché testy, upravte soubor hostitelů na VIRTUÁLNÍm počítači a nastavte název webové aplikace na VIP IP adresa. Pokud byl váš správce přihlášený jako název subdomény. ilbase.com a provedli jste webovou aplikaci MyTestApp, aby byla řešena v mytestapp.ilbase.com, nastavte ji v souboru Hosts. (V systému Windows je soubor hostitelů na adrese C:\Windows\System32\drivers\etc\)
+7. Použijte na tomto virtuálním počítači prohlížeč a pak https://mytestapp.ilbase.com na (nebo na základě názvu vaší webové aplikace ve vaší subdoméně).
+8. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, musíte přijmout nedostatečné zabezpečení. 
 
-IP adresa pro vaše ILB je uveden ve vlastnostech jako virtuální IP adresu.
+IP adresa pro váš interního nástroje je uvedena ve vašich vlastnostech jako virtuální IP adresa.
 
 ![][4]
 
-## <a name="using-an-ilb-ase"></a>Pomocí ILB ASE
+## <a name="using-an-ilb-ase"></a>Používá službu App Service Environment s interním nástrojem pro vyrovnávání zatížení.
 #### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
-Službu ASE umožňuje izolaci sítě pro vaše aplikace. Aplikace nejsou přístupné nebo dokonce známé pomocí Internetu. Tento přístup je ideální pro hostování intranetových serverů, jako jsou třeba – obchodní aplikace. Pokud potřebujete omezit přístup ještě více, pořád můžete Groups(NSGs) zabezpečení sítě pro řízení přístupu na úrovni sítě. 
+INTERNÍHO nástroje pomocného mechanismu umožňuje izolaci sítě pro vaše aplikace. Aplikace nejsou přístupné nebo ani známy v Internetu. Tento přístup je skvělý pro hostování intranetových webů, jako jsou třeba obchodní aplikace. Pokud potřebujete přístup ještě více omezit, můžete k řízení přístupu na úrovni sítě dál používat skupiny zabezpečení sítě (skupin zabezpečení sítě). 
 
-Pokud chcete pro další omezení přístupu pomocí skupin zabezpečení sítě, musí se ujistěte, že nedojde k narušení komunikaci, která služby ASE potřebuje, aby provoz. I když přístup HTTP/HTTPS je pouze prostřednictvím ILB ASE používá, služby ASE se stále závisí na prostředky mimo virtuální síť. Je nutné použít co přístup k síti najdete v tématu [řízení příchozího provozu do služby App Service Environment] [ ControlInbound] a [podrobnosti o konfiguraci sítě pro App Service Environment používající ExpressRoute][ExpressRoute]. 
+Pokud chcete k dalšímu omezení přístupu použít skupin zabezpečení sítě, musíte se ujistit, že jste nepřerušili komunikaci, kterou vyžaduje pomocný přístup k provozu. I když přístup HTTP/HTTPS je jenom prostřednictvím interního nástroje, který používá přístupový modul pro zápis, pořád závisí na prostředcích mimo virtuální síť. Informace o tom, jaký přístup k síti stále potřebujete, najdete v tématu [řízení příchozího provozu do App Service Environment][ControlInbound] a [podrobností konfigurace sítě pro App Service prostředí pomocí ExpressRoute][ExpressRoute]. 
 
-Ke konfiguraci vaší skupiny zabezpečení sítě, musíte znát IP adresu, která se používá Azure ke správě vaší služby ASE. Tuto IP adresu je také odchozí IP adresu z vaší služby ASE, pokud to dává požadavky na Internetu. Odchozí IP adresa pro vaše služba ASE zůstane statické po celou dobu životnosti vaší služby ASE. Pokud odstraníte a znovu vytvořit službu ASE, získáte novou IP adresu. Pokud chcete zjistit IP adresu, přejděte na **Nastavení -> vlastnosti** a najít **odchozí IP adresa**. 
+Abyste mohli nakonfigurovat skupin zabezpečení sítě, musíte znát IP adresu, kterou Azure používá ke správě vašeho pomocného mechanismu. Tato IP adresa je také odchozí IP adresa z vašeho přimocného mechanismu, pokud vytváří internetové požadavky. Odchozí IP adresa pro pomocného správce sítě zůstane po celou dobu životnosti vašeho pomocného mechanismu. Pokud odstraníte a znovu vytvoříte správce přidaných mechanismů, zobrazí se nová IP adresa. IP adresu najdete tak, že přejdete na **Nastavení-> vlastnosti** a vyhledáte **odchozí IP adresu**. 
 
 ![][5]
 
-#### <a name="general-ilb-ase-management"></a>Služba ASE s ILB obecné správy
-Správa prostředí ILB ASE je z velké části stejný jako obvykle Správa služby ASE. Nutné navýšit vaše fondy pracovních procesů pro hostování více instancí ASP a vertikálně navýšit kapacitu front-endové servery pro zpracování zvýšené množství přenosy HTTP/HTTPS. Obecné informace o správě konfigurace služby ASE najdete v tématu [konfigurace služby App Service Environment][ASEConfig]. 
+#### <a name="general-ilb-ase-management"></a>Obecná Správa pomocného mechanismu interního nástroje
+Správa interního nástroje pomocného mechanismu je převážně stejná jako správa pomocného mechanismu. Je nutné škálovat fondy pracovních procesů, aby bylo možné hostovat více instancí ASP, a škálovat servery front-end tak, aby zpracovávala zvýšené množství přenosů HTTP/HTTPS. Obecné informace o správě konfigurace pomocného mechanismu služby najdete v tématu [konfigurace App Service Environment][ASEConfig]. 
 
-Další Správa položek se správy certifikátů a Správa služby DNS. Je nutné získat a nahrát certifikát používaný pro protokol HTTPS. Po vytvoření ILB ASE a nahraďte ho, než vyprší její platnost. Vzhledem k tomu, že Azure je vlastníkem základní doméně, může poskytovat certifikáty pro služby ase s externí virtuální IP Adresou. Protože subdomény používané službu ASE může být cokoli, je nutné zadat vlastní certifikát pro protokol HTTPS. 
+Další položky správy jsou Správa certifikátů a správa DNS. Certifikát, který se používá pro HTTPS po vytvoření pomocného nástroje interního nástroje, musíte získat a odeslat a nahradit ho před jeho vypršením. Vzhledem k tomu, že Azure vlastní základní doménu, může poskytovat certifikáty pro služby ASE s externí virtuální IP adresou. Vzhledem k tomu, že subdoména, kterou používá správce interního nástroje, může být cokoli, musíte zadat vlastní certifikát pro protokol HTTPS. 
 
-#### <a name="dns-configuration"></a>Konfigurace služby DNS
-Pokud používáte externí virtuální IP Adresou, DNS spravuje Azure. Všechny aplikace vytvořené ve vaší službě ASE se automaticky přidají do Azure DNS, což je veřejná služba DNS. Ve službě ASE s interním nástrojem pro vyrovnávání zatížení musíte spravovat vlastní službu DNS. Pro daný subdomény, jako je například contoso.corp.net musíte vytvořit DNS A záznamy, které odkazují na vaši adresu ILB pro:
+#### <a name="dns-configuration"></a>Konfigurace DNS
+Při použití externí virtuální IP adresy se DNS spravuje přes Azure. Všechny aplikace vytvořené ve vaší službě ASE se automaticky přidají do Azure DNS, což je veřejná služba DNS. Ve službě ASE s interním nástrojem pro vyrovnávání zatížení musíte spravovat vlastní službu DNS. Pro danou subdoménu, jako je například contoso.corp.net, je nutné vytvořit záznamy DNS A, které odkazují na vaši interního nástroje adresu:
 
     * 
-    publikování *.SCM ftp 
+    *. SCM publikování FTP 
 
 
 ## <a name="getting-started"></a>Začínáme
-Začínáme s App Service Environment najdete v článku [Úvod do služby App Service Environment][WhatisASE]
+Pokud chcete začít pracovat se App Service prostředími, přečtěte si téma [Úvod do App Service prostředí][WhatisASE] .
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

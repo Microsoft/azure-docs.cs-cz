@@ -5,19 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 4/9/2019
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405684"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113478"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
-Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například omezit přístup k webovým stránkám. Nebo můžete chtít omezit odchozí IP adresy a porty, které mohou být přístupné.
+Řízení odchozího síťového přístupu je důležitou součástí celkového plánu zabezpečení sítě. Můžete například chtít omezit přístup k webům. Nebo můžete chtít omezit odchozí IP adresy a porty, které jsou k dispozici.
 
 Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsítě Azure, je použít Azure Firewall. Azure Firewall umožňuje nakonfigurovat:
 
@@ -26,7 +26,7 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi. Pro nasazení v produkčním prostředí [model střed a paprsek](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se doporučuje, pokud brána firewall je ve své vlastní virtuální sítě. Servery úlohy jsou v partnerských virtuálních sítích ve stejné oblasti pomocí jedné nebo několika podsítí.
+V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi. V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
-> * Konfigurace pravidla aplikace pro povolení přístupu k www.google.com
+> * Konfigurace pravidla použití pro povolení přístupu k www.google.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
 > * Otestovat bránu firewall
 
@@ -57,7 +57,7 @@ Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nas
 Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Na Azure domovské stránky portálu, vyberte **skupiny prostředků** > **přidat**.
+2. Na domovské stránce Azure Portal vyberte **skupiny** > prostředků**Přidat**.
 3. Jako **Název skupiny prostředků** zadejte **Test-FW-RG**.
 4. V části **Předplatné** vyberte své předplatné.
 5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
@@ -67,27 +67,27 @@ Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 
 Tato virtuální síť bude obsahovat tři podsítě.
 
-1. Azure portal domovské stránce vyberte **vytvořit prostředek**.
+> [!NOTE]
+> Velikost podsítě AzureFirewallSubnet je/26. Další informace o velikosti podsítě najdete v tématu [Azure firewall Nejčastější dotazy](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
+1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. V části **sítě**vyberte **virtuální síť**.
 4. Jako **Název** zadejte **Test-FW-VN**.
 5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
 6. V části **Předplatné** vyberte své předplatné.
-7. Pro **skupiny prostředků**vyberte **Test-FW-RG**.
+7. V případě **skupiny prostředků**vyberte **test-FW-RG**.
 8. V části **Umístění** vyberte dříve použité umístění.
 9. V části **Podsíť** jako **Název** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
-10. V části **Rozsah adres** zadejte **10.0.1.0/24**.
+10. Pro **Rozsah adres**zadejte **10.0.1.0/26**.
 11. Přijměte ostatní výchozí nastavení a pak vyberte **vytvořit**.
-
-> [!NOTE]
-> Minimální velikost podsítě AzureFirewallSubnet je /26.
 
 ### <a name="create-additional-subnets"></a>Vytvoření dalších podsítí
 
 V dalším kroku vytvoříme podsítě pro jump server a servery úloh.
 
-1. Na Azure domovské stránky portálu, vyberte **skupiny prostředků** > **Test-FW-RG**.
-2. Vyberte **Test-FW VN** virtuální sítě.
-3. Vyberte **podsítě** > **+ podsíť**.
+1. Na domovské stránce Azure Portal vyberte **skupiny** > prostředků**test-FW-RG**.
+2. Vyberte virtuální síť **test-FW-vn** .
+3. Vyberte **podsítě** > **a podsíť**.
 4. Jako **Název** zadejte **Workload-SN**.
 5. V části **Rozsah adres** zadejte **10.0.2.0/24**.
 6. Vyberte **OK**.
@@ -98,34 +98,34 @@ Vytvořte další podsíť s názvem **Jump-SN** a rozsahem adres **10.0.3.0/24*
 
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 
-1. Na webu Azure portal, vyberte **vytvořit prostředek**.
+1. V Azure Portal vyberte **vytvořit prostředek**.
 2. Vyberte **Výpočty** a potom v seznamu Doporučené vyberte **Windows Server 2016 Datacenter**.
 3. Zadejte pro virtuální počítač tyto hodnoty:
 
    |Nastavení  |Value  |
    |---------|---------|
-   |Skupina prostředků     |**Test-FW-RG**|
-   |Název virtuálního počítače     |**SRV Jump**|
+   |Resource group     |**Test-FW-RG**|
+   |Název virtuálního počítače     |**SRV – skok**|
    |Oblast     |Stejné jako předchozí|
    |Uživatelské jméno správce     |**azureuser**|
    |Heslo     |**Azure123456!**|
 
-4. V části **příchozí pravidla portů**, pro **veřejné příchozí porty**vyberte **povolit vybrané porty**.
-5. Pro **vyberte příchozí porty**vyberte **protokolu RDP (3389)**.
+4. V části **pravidla příchozího portu**pro **veřejné příchozí porty**vyberte **Povolit vybrané porty**.
+5. V případě **vyberte příchozí porty**vyberte **RDP (3389)** .
 
-6. Přijměte ostatní výchozí hodnoty a vyberte **Další: Disky**.
-7. Přijměte výchozí hodnoty disk a vyberte **Další: Sítě**.
-8. Ujistěte se, že **Test-FW VN** vybraná virtuální síť a podsíť je **Jump-SN**.
-9. Pro **veřejnou IP adresu**, přijměte výchozí novou veřejnou ip adresu název (Srv-Jump-ip).
-11. Přijměte ostatní výchozí hodnoty a vyberte **Další: Správa**.
-12. Vyberte **vypnout** zakažte diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a vyberte **revize + vytvořit**.
+6. Přijměte ostatní výchozí hodnoty a **vyberte Další: Disky**.
+7. Přijměte výchozí nastavení disku a **vyberte Další: Sítě**.
+8. Ujistěte se, že pro virtuální síť je vybrána možnost **test-FW-vn** a že podsíť **přeskočí SN**.
+9. U **veřejné IP**adresy přijměte výchozí název nové veřejné IP adresy (SRV-skok-IP).
+11. Přijměte ostatní výchozí hodnoty a **vyberte Další: Správa**.
+12. Výběrem možnosti **vypnuto** zakážete diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a vyberte **zkontrolovat + vytvořit**.
 13. Zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**.
 
-Použijte informace v následující tabulce ke konfiguraci další virtuální počítač s názvem **Srv pracovní**. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
+Pomocí informací v následující tabulce můžete nakonfigurovat jiný virtuální počítač s názvem **SRV – práce**. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
 
 |Nastavení  |Value  |
 |---------|---------|
-|Podsíť|**Workload-SN**|
+|Subnet|**Workload-SN**|
 |Veřejná IP adresa|**Žádné**|
 |Veřejné příchozí porty|**Žádné**|
 
@@ -133,47 +133,47 @@ Použijte informace v následující tabulce ke konfiguraci další virtuální 
 
 Nasaďte do virtuální sítě bránu firewall.
 
-1. Z domovské stránky portálu vyberte **vytvořit prostředek**.
-2. Typ **brány firewall** do vyhledávacího pole a stiskněte klávesu **Enter**.
-3. Vyberte **brány Firewall** a pak vyberte **vytvořit**.
+1. Na domovské stránce portálu vyberte **vytvořit prostředek**.
+2. Do vyhledávacího pole zadejte **firewall** a stiskněte klávesu **ENTER**.
+3. Vyberte **firewall** a pak vyberte **vytvořit**.
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
 
    |Nastavení  |Value  |
    |---------|---------|
-   |Předplatné     |\<Vaše předplatné\>|
-   |Skupina prostředků     |**Test-FW-RG** |
-   |Název     |**Test-FW01**|
+   |Subscription     |\<Vaše předplatné\>|
+   |Resource group     |**Test-FW-RG** |
+   |Name     |**Test-FW01**|
    |Location     |Vyberte dříve použité umístění.|
    |Zvolit virtuální síť     |**Použít existující**: **Test-FW-VN**|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
 5. Vyberte **Zkontrolovat a vytvořit**.
-6. Zkontrolujte souhrn a pak vyberte **vytvořit** vytvořit bránu firewall.
+6. Zkontrolujte souhrn a pak vyberte **vytvořit** a vytvořte bránu firewall.
 
    Nasazení může několik minut trvat.
-7. Po dokončení nasazení přejděte k **Test-FW-RG** prostředku, skupiny a vyberte **testovací FW01** brány firewall.
+7. Po dokončení nasazení přejdete do skupiny prostředků **test-FW-RG** a vyberete možnost **test-FW01** firewall.
 8. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
 U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, která půjde přes bránu firewall.
 
-1. Azure portal domovské stránce vyberte **všechny služby**.
+1. Na domovské stránce Azure Portal vyberte **všechny služby**.
 2. V části **sítě**vyberte **směrovací tabulky**.
 3. Vyberte **Přidat**.
 4. Jako **Název** zadejte **Firewall-route**.
 5. V části **Předplatné** vyberte své předplatné.
-6. Pro **skupiny prostředků**vyberte **Test-FW-RG**.
+6. V případě **skupiny prostředků**vyberte **test-FW-RG**.
 7. V části **Umístění** vyberte dříve použité umístění.
 8. Vyberte **Vytvořit**.
-9. Vyberte **aktualizovat**a pak vyberte **trasy brány Firewall** směrovací tabulky.
+9. Vyberte **aktualizovat**a pak vyberte tabulku směrování **brány firewall** .
 10. Vyberte **podsítě** a pak vyberte **přidružit**.
-11. Vyberte **virtuální síť** > **Test-FW VN**.
-12. Pro **podsítě**vyberte **úloh-SN**. Ujistěte se, že jste vybrali pouze **úloh-SN** podsítě pro tuto trasu, jinak brána firewall nebude fungovat správně.
+11. Vyberte **virtuální síť** > **test-FW-vn**.
+12. V případě **podsítě**vyberte **úlohu – SN**. Ujistěte se, že jste pro tuto trasu vybrali pouze podsíť **zatížení sériového zatížení** sítě, jinak brána firewall nebude správně fungovat.
 
 13. Vyberte **OK**.
-14. Vyberte **trasy** a pak vyberte **přidat**.
-15. Pro **trasy název**, typ **fw distribuční skupině**.
+14. Vyberte **trasy** a pak vyberte **Přidat**.
+15. Jako **název trasy**zadejte **FW-DG**.
 16. V části **Předpona IP adresy** zadejte **0.0.0.0/0**.
 17. V části **Typ dalšího směrování** vyberte **Virtuální zařízení**.
 
@@ -183,19 +183,19 @@ U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, k
 
 ## <a name="configure-an-application-rule"></a>Konfigurace pravidla aplikace
 
-Toto je pravidlo brány application, který umožňuje odchozí přístup k www.google.com.
+Toto je pravidlo aplikace, které umožňuje odchozí přístup k www.google.com.
 
-1. Otevřít **Test-FW-RG**a vyberte **testovací FW01** brány firewall.
-2. Na **testovací FW01** stránce v části **nastavení**vyberte **pravidla**.
-3. Vyberte **kolekce pravidel aplikace** kartu.
+1. Otevřete **test-FW-RG**a vyberte firewall **test-FW01** .
+2. Na stránce **test-FW01** v části **Nastavení**vyberte **pravidla**.
+3. Vyberte kartu **kolekce pravidel aplikace** .
 4. Vyberte **přidat kolekci pravidel aplikace**.
 5. Jako **Název** zadejte **App-Coll01**.
 6. V části **Priorita** zadejte **200**.
 7. V části **Akce** vyberte **Povolit**.
-8. V části **pravidla**, **Target plně kvalifikované názvy domény**, pro **název**, typ **povolit Google**.
+8. V části **pravidla**zadejte **cílové plně kvalifikované názvy domény**pro **název**typ **Allow-Google**.
 9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
 10. V části **Protokol:Port** zadejte **http, https**.
-11. Pro **Target plně kvalifikované názvy domény**, typ **www.google.com**
+11. V případě **cílových plně kvalifikovaných názvů domény**zadejte **www.Google.com** .
 12. Vyberte **Přidat**.
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
@@ -204,13 +204,13 @@ Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukt
 
 Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 53 (DNS).
 
-1. Vyberte **sítě kolekce pravidel** kartu.
+1. Vyberte kartu **kolekce pravidel sítě** .
 2. Vyberte **přidat kolekci pravidel sítě**.
 3. Jako **název** zadejte **Net-Coll01**.
 4. V části **Priorita** zadejte **200**.
 5. V části **Akce** vyberte **Povolit**.
 
-6. V části **pravidla**, pro **název**, typ **povolit DNS**.
+6. V části **pravidla**zadejte do **pole název**možnost **Allow-DNS**.
 7. V části **Protokol** vyberte **UDP**.
 8. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
 9. V části Cílová adresa zadejte **209.244.0.3,209.244.0.4**
@@ -219,11 +219,11 @@ Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Změna primární a sekundární adresy DNS u síťového rozhraní **Srv-Work**
 
-Pro účely testování v tomto kurzu, nakonfigurujte DNS adresy primárního a sekundárního serveru. Není to povinné obecné Brána Firewall služby Azure.
+Pro účely testování v tomto kurzu nakonfigurujte primární a sekundární adresy DNS serveru. Nejedná se o obecný požadavek Azure Firewall.
 
 1. Na webu Azure Portal otevřete skupinu prostředků **Test-FW-RG**.
-2. Vyberte síťové rozhraní pro **Srv pracovní** virtuálního počítače.
-3. V části **nastavení**vyberte **servery DNS**.
+2. Vyberte síťové rozhraní pro virtuální počítač s **prací SRV** .
+3. V části **Nastavení**vyberte **servery DNS**.
 4. V části **servery DNS**vyberte **vlastní**.
 5. Do textového pole **Přidat server DNS** zadejte **209.244.0.3** a do dalšího textového pole zadejte **209.244.0.4**.
 6. Vyberte **Uložit**.
@@ -231,21 +231,21 @@ Pro účely testování v tomto kurzu, nakonfigurujte DNS adresy primárního a 
 
 ## <a name="test-the-firewall"></a>Otestovat bránu firewall
 
-Teď otestujte bránu firewall, aby ověřili, že funguje podle očekávání.
+Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
 1. Zkontrolujte na webu Azure Portal síťová nastavení virtuálního počítače **Srv-Work** a poznamenejte si privátní IP adresu.
-2. Připojení k vzdálené plochy **Srv Jump** virtuálního počítače a přihlášení. Odtud otevření připojení ke vzdálené ploše **Srv pracovní** privátní IP adresu.
+2. Připojte vzdálenou plochu k virtuálnímu počítači s odkazem na **SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše na privátní IP adresu služby **SRV – pracovní** postup.
 
 3. Otevřete prohlížeč Internet Explorer a přejděte na adresu https://www.google.com.
-4. Vyberte **OK** > **Zavřít** na výstrahy zabezpečení aplikace Internet Explorer.
+4. V okně výstrahy zabezpečení aplikace Internet Explorer vyberte **OK** > **Zavřít** .
 
-   Zobrazí se domovská stránka služby Google.
+   Měla by se zobrazit Domovská stránka Google.
 
 5. Přejděte do https://www.microsoft.com.
 
    Brána firewall by vás měla zablokovat.
 
-Teď jste ověřili funkčnost pravidla brány firewall:
+Takže teď ověříte, že pravidla brány firewall fungují:
 
 * Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 * Názvy DNS můžete přeložit pomocí nakonfigurovaného externího serveru DNS.
@@ -257,4 +257,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)
+> [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)

@@ -1,6 +1,6 @@
 ---
-title: Správa protokolů a šifer ve službě Azure API Management | Dokumentace Microsoftu
-description: Další informace o správě protokolů (TLS nebo SSL) a šifer (DES) ve službě Azure API Management.
+title: Správa protokolů a šifr v Azure API Management | Microsoft Docs
+description: Naučte se spravovat protokoly (TLS, SSL) a šifry (DES) v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -9,39 +9,38 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: f809aaf872607e7fa61368832a3df74318f2a858
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7c7fdd06480ce3da70c86d38ab0685b9b3aaaf2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141506"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072388"
 ---
-# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Správa protokolů a šifer ve službě Azure API Management
+# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Správa protokolů a šifr v Azure API Management
 
-Azure API Management podporuje více verzí protokolu TLS pro stranách klienta i back-endu, jakož i šifrování 3DES.
+Azure API Management podporuje více verzí protokolu TLS pro klientské i back-endové strany i šifrování 3DES.
 
-Tato příručka ukazuje, jak spravovat protokoly a šifer konfigurace pro instance Azure API Management.
+V této příručce se dozvíte, jak spravovat konfiguraci protokolů a šifrování pro instanci Azure API Management.
 
-![Správa protokolů a šifer v APIM](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
+![Správa protokolů a šifr v APIM](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle kroků v tomto článku, budete potřebovat:
+Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 
-* Instance služby API Management
+* Instance API Management
 
-## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Správa protokolů a 3DES šifer TLS
+## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Jak spravovat protokoly TLS a šifru 3DES
 
-1. Přejděte do vaší **instance služby API Management** na webu Azure Portal.
-2. Vyberte **protokol nastavení** z nabídky.  
-3. Povolí nebo zakáže požadované protokoly nebo šifry.
-4. Klikněte na **Uložit**. Změny se použijí během hodiny.  
+1. V Azure Portal přejděte ke své **instanci API Management** .
+2. V nabídce vyberte **nastavení protokolu** .  
+3. Povolte nebo zakažte požadované protokoly nebo šifry.
+4. Klikněte na **Uložit**. Změny budou provedeny během hodiny.  
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
-* Podívejte se na informace [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o službě API Management.
+* Přečtěte si další informace o [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
+* Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.

@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335986"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099416"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -61,7 +61,7 @@ Přečtěte si další informace o tom, jak účtování funguje pro [aktivačn�
 
   * **SKU pro vývojáře**: Buď až 4 účty na úrovni Standard, nebo až 5 celkových standardních účtů. Žádné základní účty.
 
-Další informace o omezeních účtu pro integraci najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtu integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu. 
+Další informace o omezeních účtu pro integraci najdete v tématu [omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Další informace o [úrovních účtu integrace a jejich cenovém modelu](#integration-accounts) najdete dále v tomto tématu.
 
 V případě SKU ISE úrovně Premium má základní jednotka pevnou kapacitu, takže pokud potřebujete větší propustnost, můžete [Přidat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)buď během vytváření, nebo později. ISE SKU pro vývojáře nemá schopnost přidávat další jednotky škálování. Logic Apps, které běží ve ISE, neúčtují náklady na uchovávání dat.
 
@@ -142,9 +142,9 @@ Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete
 
 1. V Azure Portal Najděte a otevřete aplikaci logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte metriky .
+1. V nabídce aplikace logiky v části **monitorování**vyberte metriky.
 
-1. V pravém podokně v části **název grafu**vyberte v seznamu metrika možnost  **využití fakturace pro spouštění spotřeby úložiště**.
+1. V pravém podokně v části **název grafu**vyberte v seznamu metrika možnost **využití fakturace pro spouštění spotřeby úložiště**.
 
    Tato metrika poskytuje počet jednotek spotřeby úložiště v GB za měsíc, které se účtují.
 
@@ -162,9 +162,9 @@ Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete
 
 1. V podokně s **podrobnostmi o spuštění aplikace logiky** v tabulce akce, které uvádí stav a dobu trvání jednotlivých akcí, vyberte akci, kterou chcete zobrazit.
 
-1. V podokně **Akce aplikace logiky** vyhledejte v části **vstupy odkaz** a výstupy odkazy velikosti pro vstupy a výstupy této akce .
+1. V podokně **Akce aplikace logiky** vyhledejte v části **vstupy odkaz** a výstupy odkazy velikosti pro vstupy a výstupy této akce.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Azure Logic Apps](logic-apps-overview.md)
 * [Vytvoření první aplikace logiky](quickstart-create-first-logic-app-workflow.md)

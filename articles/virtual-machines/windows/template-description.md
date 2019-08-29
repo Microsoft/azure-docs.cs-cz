@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítače v šabloně Azure Resource Manageru | Microsoft Azure
-description: Další informace o definici prostředku virtuálního počítače v šabloně Azure Resource Manageru.
+title: Virtuální počítače v šabloně Azure Resource Manager | Microsoft Azure
+description: Přečtěte si další informace o tom, jak je prostředek virtuálního počítače definovaný v Azure Resource Manager šabloně.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,26 +11,25 @@ ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: fd4fad40ef4809c756321493854f38fd813569ca
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710286"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101770"
 ---
-# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manageru
+# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manager
 
-Tento článek popisuje aspekty šablony Azure Resource Manageru, které se vztahují k virtuálním počítačům. Tento článek nepopisuje úplnou šablonu při vytváření virtuálního počítače; k tomu potřebujete definice prostředku pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak tyto prostředky je možné definovat společně, najdete v článku [názorný Průvodce šablonou Resource Manageru](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Tento článek popisuje aspekty Azure Resource Manager šablony, které se vztahují k virtuálním počítačům. Tento článek nepopisuje úplnou šablonu pro vytvoření virtuálního počítače. potřebujete definice prostředků pro účty úložiště, síťová rozhraní, veřejné IP adresy a virtuální sítě. Další informace o tom, jak se tyto prostředky dají definovat společně, najdete v [návodu k šabloně správce prostředků](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Existuje několik instancí [šablon v galerii](https://azure.microsoft.com/documentation/templates/?term=VM) , které zahrnují prostředku virtuálního počítače. Ne všechny prvky, které mohou být součástí šablony jsou zde popsány.
+Galerie obsahuje mnoho [šablon](https://azure.microsoft.com/documentation/templates/?term=VM) , které zahrnují prostředek virtuálního počítače. Ne všechny prvky, které lze zahrnout do šablony, jsou popsány zde.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-Tento příklad ukazuje typické prostředků část o šablonu pro vytvoření zadaný počet virtuálních počítačů:
+Tento příklad ukazuje typický oddíl prostředků šablony pro vytvoření zadaného počtu virtuálních počítačů:
 
 ```json
 "resources": [
@@ -148,30 +147,30 @@ Tento příklad ukazuje typické prostředků část o šablonu pro vytvoření 
 ``` 
 
 > [!NOTE] 
->Tento příklad využívá účet úložiště, který byl dříve vytvořen. Účet úložiště můžete vytvořit a nasadit ho z šablony. V příkladu rovněž závisí na síťové rozhraní a jeho závislé prostředky, které by v šabloně definované. Tyto prostředky se nezobrazují v příkladu.
+>Tento příklad spoléhá na účet úložiště, který byl dříve vytvořen. Účet úložiště můžete vytvořit tak, že ho nasadíte ze šablony. Příklad také závisí na síťovém rozhraní a jeho závislých prostředcích, které by byly definovány v šabloně. Tyto prostředky nejsou uvedeny v tomto příkladu.
 >
 >
 
 ## <a name="api-version"></a>Verze rozhraní API
 
-Při nasazování prostředků pomocí šablony, budete muset zadat verzi rozhraní API pro použití. V příkladu prostředku virtuálního počítače pomocí elementu. Tato verze rozhraní API:
+Při nasazení prostředků pomocí šablony musíte zadat verzi rozhraní API, která se má použít. V příkladu se zobrazuje prostředek virtuálního počítače pomocí tohoto elementu apiVersion:
 
 ```
 "apiVersion": "2016-04-30-preview",
 ```
 
-Verze rozhraní API služby jste zadali v šabloně má vliv na vlastnosti, které definujete v šabloně. Obecně platí měli byste vybrat nejnovější verzi rozhraní API, při vytváření šablony. U existujících šablon můžete rozhodnout, jestli chcete dál používat starší verze rozhraní API, nebo aktualizaci šablony pro nejnovější verzi, abyste mohli využívat nové funkce.
+Verze rozhraní API, kterou zadáte v šabloně, má vliv na to, které vlastnosti můžete v šabloně definovat. Obecně platí, že při vytváření šablon byste měli vybrat nejnovější verzi rozhraní API. U existujících šablon se můžete rozhodnout, jestli chcete pokračovat v používání dřívější verze rozhraní API, nebo aktualizovat šablonu pro nejnovější verzi, abyste mohli využívat nové funkce.
 
-Použijte tyto příležitosti, jak získat nejnovější verze rozhraní API:
+Tyto příležitosti použijte k získání nejnovějších verzí rozhraní API:
 
-- Rozhraní REST API – [seznamu všechny poskytovatele prostředků](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI – [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API – [vypíše všechny poskytovatele prostředků](https://docs.microsoft.com/rest/api/resources/providers) .
+- PowerShell – [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI – [AZ Provider show](https://docs.microsoft.com/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné
 
-[Parametry](../../resource-group-authoring-templates.md) usnadňují zadejte hodnoty pro šablonu při každém spuštění. Tento oddíl parametrů se používá v tomto příkladu:
+[Parametry](../../resource-group-authoring-templates.md) usnadňují zadání hodnot pro šablonu při jejím spuštění. V příkladu se používá tento oddíl parametrů:
 
 ```        
 "parameters": {
@@ -181,9 +180,9 @@ Použijte tyto příležitosti, jak získat nejnovější verze rozhraní API:
 },
 ```
 
-Když nasadíte příklad šablony, zadejte hodnoty pro jméno a heslo účtu správce na každý virtuální počítač a počet virtuálních počítačů k vytvoření. Máte možnost zadání hodnot parametrů v samostatném souboru, který je spravován pomocí šablony, nebo které uvádějí hodnoty po zobrazení výzvy.
+Když nasadíte ukázkovou šablonu, zadáte hodnoty pro název a heslo účtu správce na každém virtuálním počítači a počet virtuálních počítačů, které se mají vytvořit. Máte možnost zadat hodnoty parametrů v samostatném souboru, který je spravován šablonou, nebo zadat hodnoty po zobrazení výzvy.
 
-[Proměnné](../../resource-group-authoring-templates.md) usnadňují nastavit hodnoty v šabloně se opakovaně používají v jeho nebo můžou časem změnit. Tento oddíl proměnné se používá v tomto příkladu:
+[Proměnné](../../resource-group-authoring-templates.md) usnadňují nastavení hodnot v šabloně, které se v něm používají opakovaně, nebo které se můžou v průběhu času měnit. Tento oddíl proměnných se používá v tomto příkladu:
 
 ```
 "variables": { 
@@ -216,11 +215,11 @@ Když nasadíte příklad šablony, zadejte hodnoty pro jméno a heslo účtu sp
 }, 
 ```
 
-Při nasazování Ukázková šablona hodnoty proměnné slouží pro název a identifikátor na dříve vytvořený účet úložiště. Proměnné se taky používají k poskytování nastavení diagnostického rozšíření. Použití [osvědčené postupy pro vytváření šablon Azure Resource Manageru](../../resource-manager-template-best-practices.md) vám pomohou rozhodnout, jak chcete struktury parametry a proměnné v šabloně.
+Když nasadíte ukázkovou šablonu, použijí se pro název a identifikátor dříve vytvořeného účtu úložiště proměnné hodnoty proměnných. Proměnné také slouží k poskytnutí nastavení pro diagnostické rozšíření. Použijte [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../resource-manager-template-best-practices.md) , které vám pomůžou určit, jak chcete strukturovat parametry a proměnné ve vaší šabloně.
 
-## <a name="resource-loops"></a>Prostředek smyčky
+## <a name="resource-loops"></a>Smyčky prostředků
 
-Pokud potřebujete více než jeden virtuální počítač pro vaši aplikaci, můžete kopírovat element v šabloně. Tento volitelný prvek prochází vytváření počet virtuálních počítačů, které jste zadali jako parametr:
+Pokud pro svou aplikaci potřebujete více než jeden virtuální počítač, můžete použít kopírovací prvek v šabloně. Tento volitelný element Cykluje vytvořením počtu virtuálních počítačů, které jste zadali jako parametr:
 
 ```
 "copy": {
@@ -229,7 +228,7 @@ Pokud potřebujete více než jeden virtuální počítač pro vaši aplikaci, m
 },
 ```
 
-Všimněte si také, v příkladu, index smyčky se používá při zadání některé z hodnot pro prostředek. Pokud zadáte počet instancí tří, názvy disků operačního systému jsou například myOSDisk1 myOSDisk2 a myOSDisk3:
+Všimněte si také, že je v příkladu použit index smyčky při zadávání některých hodnot prostředku. Pokud jste například zadali počet instancí tři, názvy disků operačního systému jsou myOSDisk1, myOSDisk2 a myOSDisk3:
 
 ```
 "osDisk": { 
@@ -240,11 +239,11 @@ Všimněte si také, v příkladu, index smyčky se používá při zadání ně
 ```
 
 > [!NOTE] 
->Tento příklad používá spravované disky pro virtuální počítače.
+>V tomto příkladu se pro virtuální počítače používají spravované disky.
 >
 >
 
-Mějte na paměti, který vytváří pro jeden prostředek smyčky v šabloně může vyžadovat použití smyčky při vytváření nebo přístup k dalším prostředkům. Například více virtuálních počítačů nelze použít stejném síťovém rozhraní, pokud vaše šablony prochází vytvoříte tři virtuální počítače musí také smyčka procesem vytvoření tři síťová rozhraní. Při přiřazení síťového rozhraní k virtuálnímu počítači, index smyčky se používá k identifikaci ho:
+Pamatujte, že vytvoření smyčky pro jeden prostředek v šabloně může vyžadovat, abyste při vytváření nebo přístupu k jiným prostředkům použili smyčku. Například více virtuálních počítačů nemůže používat stejné síťové rozhraní, takže pokud vaše šablona projde vytvořením tří virtuálních počítačů, musí se také cyklicky vytvořit tři síťová rozhraní. Při přiřazování síťového rozhraní k virtuálnímu počítači se k jeho identifikaci používá index smyčky:
 
 ```
 "networkInterfaces": [ { 
@@ -255,7 +254,7 @@ Mějte na paměti, který vytváří pro jeden prostředek smyčky v šabloně m
 
 ## <a name="dependencies"></a>Závislosti
 
-Většinu prostředků závisí na další zdroje informací a správně fungovat. Virtuální počítače musí být přidružená k virtuální síti a provedete, že potřebuje síťové rozhraní. [DependsOn](../../resource-group-define-dependencies.md) element slouží k Ujistěte se, že je připravená k použití, než virtuální počítače se vytvoří síťové rozhraní:
+Většina prostředků závisí na dalších prostředcích, aby fungovaly správně. Virtuální počítače musí být přidružené k virtuální síti a k tomu potřebují síťové rozhraní. Element [dependsOn](../../resource-group-define-dependencies.md) se používá k zajištění, že síťové rozhraní je připravené k použití před vytvořením virtuálních počítačů:
 
 ```
 "dependsOn": [
@@ -263,9 +262,9 @@ Většinu prostředků závisí na další zdroje informací a správně fungova
 ],
 ```
 
-Resource Manager nasadí současně všechny prostředky, které nejsou závislé na jiný prostředek nasazuje. Buďte opatrní při nastavení závislostí, protože vaše nasazení může zpomalit neúmyslně zadáním zbytečné závislosti. Závislosti můžete zřetězit prostřednictvím několika prostředků. Například síťové rozhraní závisí na veřejnou IP adresu a prostředky virtuální sítě.
+Správce prostředků nasadí paralelně všechny prostředky, které nejsou závislé na nasazeném jiném prostředku. Při nastavování závislostí buďte opatrní, protože je možné neúmyslně zpomalit nasazení zadáním zbytečných závislostí. Závislosti můžou zřetězit více prostředků. Například síťové rozhraní závisí na veřejné IP adrese a prostředcích virtuální sítě.
 
-Jak budete vědět, jestli je požadovaná závislost? Podívejte se na hodnoty, které jste nastavili v šabloně. Pokud prvek v bodech definice prostředku virtuálního počítače na jiný prostředek, který je nasazený do stejné šablony, musíte závislost. Například váš virtuální počítač příklad definuje profil sítě:
+Jak zjistíte, jestli je požadovaná závislost? Podívejte se na hodnoty, které jste nastavili v šabloně. Pokud element v definici prostředků virtuálního počítače odkazuje na jiný prostředek, který je nasazený ve stejné šabloně, budete potřebovat závislost. Například ukázkový virtuální počítač definuje profil sítě:
 
 ```
 "networkProfile": { 
@@ -276,25 +275,25 @@ Jak budete vědět, jestli je požadovaná závislost? Podívejte se na hodnoty,
 },
 ```
 
-Pokud chcete nastavit tuto vlastnost, musí existovat síťové rozhraní. Proto musíte závislost. Musíte také nastavit závislosti, pokud jeden prostředek (podřízený) je definována v rámci jiného prostředku (nadřazené). Například nastavení diagnostiky a rozšíření vlastních skriptů jsou obě definovány jako podřízené prostředky virtuálního počítače. Nelze vytvořit dokud virtuální počítač existuje. Proto se oba prostředky se označí jako závislé na virtuálním počítači.
+Chcete-li nastavit tuto vlastnost, musí existovat síťové rozhraní. Proto potřebujete závislost. Je také nutné nastavit závislost, pokud je jeden prostředek (podřízený) definován v rámci jiného prostředku (nadřazený objekt). Například nastavení diagnostiky a rozšíření vlastních skriptů se definují jako podřízené prostředky virtuálního počítače. Nedají se vytvořit, dokud virtuální počítač neexistuje. Proto jsou oba prostředky označeny jako závislé na virtuálním počítači.
 
 ## <a name="profiles"></a>Profily
 
-Několik prvků profil se používá při definování prostředku virtuálního počítače. Některé jsou vyžadovány a některé jsou volitelné. Například vyžadují se elementy – hardwareProfile, osProfile, storageProfile a položky networkProfile, ale diagnosticsProfile je volitelný. Tyto profily definují nastavení, jako například:
+Při definování prostředku virtuálního počítače se používá několik prvků profilu. Některé jsou povinné a některé jsou volitelné. Například prvky položka hardwareprofile, osProfile, storageProfile a networkProfile jsou požadovány, ale diagnosticsProfile je nepovinný. Tyto profily definují nastavení, jako například:
    
-- [Velikost](sizes.md)
+- [hodnota](sizes.md)
 - [název](/azure/architecture/best-practices/naming-conventions) a přihlašovací údaje
-- disk a [nastavení operačního systému](cli-ps-findimage.md)
-- [Síťové rozhraní](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- nastavení disku a [operačního systému](cli-ps-findimage.md)
+- [síťové rozhraní](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - Diagnostika spouštění
 
-## <a name="disks-and-images"></a>Disky a Image
+## <a name="disks-and-images"></a>Disky a image
    
-V Azure, může představovat soubory virtuálního pevného disku [disků nebo imagí](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Operační systém v souboru virtuálního pevného disku se specializuje na konkrétní virtuální počítač, to se označuje jako disk. Operační systém v souboru virtuálního pevného disku je zobecněný se použije k vytvoření mnoha virtuálních počítačů, ho se označuje jako obrázek.   
+V Azure můžou soubory VHD představovat [disky nebo Image](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Pokud je operační systém v souboru VHD specializovaný jako na konkrétní virtuální počítač, nazývá se to disk. Pokud je operační systém v souboru VHD zobecněný, aby se mohl vytvořit mnoho virtuálních počítačů, označuje se jako obrázek.   
     
-### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nové virtuální počítače a nové disky, které z image platformy
+### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Vytvoření nových virtuálních počítačů a nových disků z image platformy
 
-Při vytváření virtuálního počítače, musíte rozhodnout, jaký operační systém. ImageReference element se používá k definování operačního systému z nového virtuálního počítače. Příklad ukazuje definici pro operační systém Windows Server:
+Když vytváříte virtuální počítač, musíte se rozhodnout, jaký operační systém se má použít. Element element imagereference se používá k definování operačního systému nového virtuálního počítače. V příkladu je uvedena definice operačního systému Windows Server:
 
 ```
 "imageReference": { 
@@ -305,7 +304,7 @@ Při vytváření virtuálního počítače, musíte rozhodnout, jaký operačn�
 },
 ```
 
-Pokud chcete vytvořit operačního systému Linux, můžete použít tuto definici:
+Pokud chcete vytvořit operační systém Linux, můžete použít tuto definici:
 
 ```
 "imageReference": {
@@ -316,7 +315,7 @@ Pokud chcete vytvořit operačního systému Linux, můžete použít tuto defin
 },
 ```
 
-Nastavení konfigurace pro disk s operačním systémem jsou přiřazeny s elementem osDisk. Příklad definuje nového spravovaného disku s ukládání do mezipaměti režim nastavený na **ReadWrite** a, který vytváří se disk z [image platformy](cli-ps-findimage.md):
+Konfigurační nastavení disku operačního systému je přiřazeno k elementu osDisk. V příkladu je definován nový spravovaný disk s režimem ukládání do mezipaměti , který je nastaven na nepoužívatelné, a který disk vytváří z [Image platformy](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -326,9 +325,9 @@ Nastavení konfigurace pro disk s operačním systémem jsou přiřazeny s eleme
 },
 ```
 
-### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Vytvoření nové virtuální počítače z existující spravované disky
+### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Vytvořit nové virtuální počítače z existujících spravovaných disků
 
-Pokud chcete vytvořit virtuální počítače z existujícího disků, odeberte elementu imageReference a prvky osProfile a definovat toto nastavení disku:
+Pokud chcete vytvořit virtuální počítače z existujících disků, odeberte element imagereference a osProfile prvky a definujte tato nastavení disku:
 
 ```
 "osDisk": { 
@@ -341,9 +340,9 @@ Pokud chcete vytvořit virtuální počítače z existujícího disků, odeberte
 },
 ```
 
-### <a name="create-new-virtual-machines-from-a-managed-image"></a>Vytvoření nové virtuální počítače ze spravované image
+### <a name="create-new-virtual-machines-from-a-managed-image"></a>Vytvoření nových virtuálních počítačů ze spravované image
 
-Pokud chcete vytvořit virtuální počítač ze spravované image, změňte elementu imageReference a definovat toto nastavení disku:
+Pokud chcete vytvořit virtuální počítač ze spravované image, změňte element element imagereference a definujte tato nastavení disku:
 
 ```
 "storageProfile": { 
@@ -361,7 +360,7 @@ Pokud chcete vytvořit virtuální počítač ze spravované image, změňte ele
 
 ### <a name="attach-data-disks"></a>Připojit datové disky
 
-Volitelně můžete přidat datové disky pro virtuální počítače. [Počet disků](sizes.md) závisí na velikosti disku s operačním systémem, který používáte. Maximální počet datových disků, které může být přidán na ně s velikostí virtuálních počítačů nastavte na Standard_DS1_v2 je dva. V tomto příkladu přidáte jednoho spravovaného datového disku pro každý virtuální počítač:
+Volitelně můžete přidat datové disky k virtuálním počítačům. [Počet disků](sizes.md) závisí na velikosti disku operačního systému, který používáte. S velikostí virtuálních počítačů nastavených na Standard_DS1_v2 je maximální počet datových disků, které se dají do nich přidat, dva. V příkladu se do každého virtuálního počítače přidávají jeden spravovaný datový disk:
 
 ```
 "dataDisks": [
@@ -377,7 +376,7 @@ Volitelně můžete přidat datové disky pro virtuální počítače. [Počet d
 
 ## <a name="extensions"></a>Rozšíření
 
-I když [rozšíření](extensions-features.md) jsou samostatný prostředek, jsou úzce vázané na virtuální počítače. Rozšíření můžete přidat jako podřízený prostředek virtuálního počítače nebo jako samostatný prostředek. Příklad ukazuje [diagnostické rozšíření](extensions-diagnostics-template.md) přidávaný do virtuálních počítačů:
+I když jsou [rozšíření](extensions-features.md) samostatným prostředkem, jsou úzce svázána s virtuálními počítači. Rozšíření se dají přidat jako podřízený prostředek virtuálního počítače nebo jako samostatný prostředek. V příkladu se zobrazuje [rozšíření diagnostiky](extensions-diagnostics-template.md) , které se přidává do virtuálních počítačů:
 
 ```
 { 
@@ -410,9 +409,9 @@ I když [rozšíření](extensions-features.md) jsou samostatný prostředek, js
 },
 ```
 
-Tento prostředek rozšíření používá proměnnou storageName a diagnostických proměnné k poskytnutí hodnot. Pokud chcete změnit data, která se shromažďují v tomto rozšíření, můžete přidat další čítače výkonu wadperfcounters proměnné. Můžete se také rozhodnout pro převedení diagnostická data do jiného účtu úložiště než ve kterém se ukládají disky virtuálních počítačů.
+Tento prostředek rozšíření používá proměnnou úložiště a diagnostické proměnné k poskytnutí hodnot. Pokud chcete změnit data shromážděná tímto rozšířením, můžete přidat další čítače výkonu do proměnné wadperfcounters. Můžete také zvolit, aby diagnostická data byla vložena do jiného účtu úložiště, než kde jsou uloženy disky virtuálních počítačů.
 
-Existuje mnoho rozšíření, které můžete nainstalovat na virtuální počítač, ale je nejužitečnější pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V tomto příkladu spustí skript prostředí PowerShell s názvem start.ps1 na každý virtuální počítač při prvním spuštění:
+Na virtuálním počítači můžete nainstalovat spoustu rozšíření, ale nejužitečnější je pravděpodobně [rozšíření vlastních skriptů](extensions-customscript.md). V tomto příkladu se skript prostředí PowerShell s názvem Start. ps1 spustí na každém virtuálním počítači, když se poprvé spustí:
 
 ```
 {
@@ -439,27 +438,27 @@ Existuje mnoho rozšíření, které můžete nainstalovat na virtuální počí
 }
 ```
 
-Skript start.ps1 lze provádět mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu nejsou inicializovány; můžete použít vlastní skript k jejich inicializaci. Pokud máte více úloh po spuštění udělat, můžete použít soubor start.ps1 volat jiné skripty prostředí PowerShell ve službě Azure storage. V příkladu Powershellu, ale můžete použít libovolný metoda, která je k dispozici v operačním systému, který používáte.
+Skript Start. ps1 může provést mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu, nejsou inicializovány. k jejich inicializaci můžete použít vlastní skript. Pokud máte více úloh po spuštění, můžete použít soubor Start. ps1 ke volání dalších skriptů PowerShellu ve službě Azure Storage. V příkladu se používá PowerShell, ale můžete použít libovolnou metodu skriptování, která je k dispozici v operačním systému, který používáte.
 
-Můžete zobrazit stav nainstalovaná rozšíření z rozšíření nastavení na portálu:
+Stav nainstalovaných rozšíření můžete zobrazit z nastavení rozšíření na portálu:
 
-![Načíst stav rozšíření](./media/template-description/virtual-machines-show-extensions.png)
+![Získat stav rozšíření](./media/template-description/virtual-machines-show-extensions.png)
 
-Můžete také získat informace o rozšíření pomocí **Get-AzVMExtension** příkazu Powershellu **get rozšíření virtuálního počítače** rozhraní příkazového řádku Azure, nebo **získat informace o rozšíření**Rozhraní REST API.
+Můžete taky získat informace o rozšíření pomocí příkazu PowerShellu **Get-AzVMExtension** , **rozšíření virtuálního počítače získat** příkaz Azure CLI nebo REST API **získat informace o rozšíření** .
 
 ## <a name="deployments"></a>Nasazení
 
-Při nasazení šablony Azure sleduje nasazený jako skupinu a automaticky přiřadí název této skupiny nasazené prostředky. Název nasazení je stejný jako název šablony.
+Když nasadíte šablonu, Azure sleduje prostředky, které jste nasadili jako skupinu, a automaticky přiřadí název k této nasazené skupině. Název nasazení je stejný jako název šablony.
 
-Pokud vás to zajímá o stavu prostředků v nasazení, zobrazte si skupinu prostředků na webu Azure Portal:
+Pokud jste zajímá o stavu prostředků v nasazení, zobrazte skupinu prostředků v Azure Portal:
 
-![Získejte informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
+![Získat informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
-To není problém používat stejnou šablonu k vytváření prostředků nebo aktualizovat stávající prostředky. Při nasazení šablon pomocí příkazů, máte možnost říct, která [režimu](../../resource-group-template-deploy.md) chcete použít. Režim může být nastaven na hodnotu **Complete** nebo **přírůstkové**. Ve výchozím nastavení je přírůstkové aktualizace. Buďte opatrní při použití **Complete** režimu vzhledem k tomu může omylem odstranit prostředky. Pokud nastavíte režim na **Complete**, odstraní všechny prostředky ve skupině prostředků, které nejsou v šabloně Resource Manageru.
+Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků nebo k aktualizaci existujících prostředků. Když použijete příkazy k nasazení šablon, budete mít možnost vyslovit, který [režim](../../resource-group-template-deploy.md) chcete použít. Režim lze nastavit buď jako dokončený , nebo **přírůstkový**. Výchozím nastavením je přírůstkové aktualizace. Při použití kompletního režimu buďte opatrní, protože prostředky můžete omylem odstranit. Když nastavíte režim na **dokončeno**, správce prostředků odstraní všechny prostředky ve skupině prostředků, která není v šabloně.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořit vlastní šablonu pomocí [šablon pro vytváření Azure Resource Manageru](../../resource-group-authoring-templates.md).
-- Nasadit šablonu, kterou jste vytvořili pomocí [vytvořit virtuální počítač s Windows pomocí šablony Resource Manageru](ps-template.md).
-- Zjistěte, jak spravovat virtuální počítače, které jste vytvořili kontrolou [vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Syntaxi JSON a vlastnosti typů prostředků v šablonách najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).
+- Vytvoření vlastní šablony pomocí [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
+- Nasaďte šablonu, kterou jste vytvořili, pomocí [šablony Správce prostředků vytvořit virtuální počítač s Windows](ps-template.md).
+- Informace o tom, jak spravovat virtuální počítače, které jste vytvořili, najdete v tématu [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Syntaxi a vlastnosti typů prostředků v šablonách JSON naleznete v tématu [Azure Resource Manager Reference k šabloně](/azure/templates/).

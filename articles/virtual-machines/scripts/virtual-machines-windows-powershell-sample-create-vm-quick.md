@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3894758592ef84c18398b7eeee9a5cd41cd70256
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: dbb0a0821b6a2c7465a518577e18d45488c1e7b4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695999"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090550"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
 

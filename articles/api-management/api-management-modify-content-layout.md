@@ -10,23 +10,22 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656635"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072271"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Úprava obsahu a rozložení stránek na portálu pro vývojáře ve službě Azure API Management
 Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
 
-* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout] (vysvětlení obsahuje tento průvodce)
-* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
+* [Úprava obsahu statických stránek a elementů rozložení stránek][modify-content-layout] (vysvětluje tento průvodce)
+* [Aktualizace stylů použitých pro prvky stránky napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace k rozhraní API, produkty, ověřování uživatelů atd.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -56,8 +55,8 @@ Portál pro vývojáře je přístupný z webu Azure Portal.
 Nové záhlaví by se teď mělo zobrazovat na každé stránce portálu pro vývojáře.
 
 ## <a name="next-steps"></a>Další kroky
-* [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
-* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace rozhraní API, produkty, ověřování uživatelů atd.)
+* [Aktualizace stylů použitých pro prvky stránky napříč portálem pro vývojáře][customize-styles]
+* [Úprava šablon použitých pro stránky generované portálem][portal-templates] (například dokumentace k rozhraní API, produkty, ověřování uživatelů atd.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

@@ -6,16 +6,15 @@ author: jeffhollan
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443963"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096233"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plán Azure Functions Premium (Preview)
 
@@ -110,7 +109,7 @@ Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pr
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔ |
 |Kanada – střed| ✔ |  |
-|Střední USA| ✔ |  |
+|Střed USA| ✔ |  |
 |Východní Asie| ✔ |  |
 |East US | | ✔ |
 |Východní USA 2| ✔ |  |
@@ -118,9 +117,9 @@ Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pr
 |Japonsko – východ|  | ✔ |
 |Japonsko – západ| ✔ | |
 |Jižní Korea – střed| ✔ |  |
-|Středoseverní USA| ✔ |  |
+|Střed USA – sever| ✔ |  |
 |Severní Evropa| ✔ | ✔ |
-|Středojižní USA| ✔ |  |
+|Střed USA – jih| ✔ |  |
 |Jižní Indie | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔ |
 |Spojené království – západ| ✔ |  |
@@ -132,7 +131,7 @@ Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pr
 
 Stav známých problémů [veřejné verze Preview](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)můžete sledovat na GitHubu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Pochopení možností škálování a hostování Azure Functions](functions-scale.md)

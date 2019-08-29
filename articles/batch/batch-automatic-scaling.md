@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500036"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095440"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření vzorce automatického škálování pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -714,7 +713,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Maximalizujte využití výpočetních prostředků Azure Batch pomocí souběžných úloh uzlů](batch-parallel-node-tasks.md) obsahuje podrobné informace o tom, jak můžete na výpočetních uzlech ve fondu provádět více úloh současně. Kromě automatického škálování může tato funkce pomáhat snížit dobu trvání úloh u některých úloh a ušetřit tak peníze.
 * Pro další zvýšení efektivity zajistěte, aby se v aplikaci Batch dotazoval na službu Batch optimálním způsobem. Pokud se chcete dozvědět, jak omezit množství dat, která se při dotazování na stav potenciálně tisíc výpočetních uzlů nebo úkolů přecházejí, podívejte se na téma [dotazování služby Azure Batch](batch-efficient-list-queries.md) .
 

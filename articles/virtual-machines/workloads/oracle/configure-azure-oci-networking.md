@@ -8,18 +8,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510213"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100140"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
@@ -100,7 +99,7 @@ Aby bylo možné propojení odstranit, musí být v zadaném pořadí dodrženy 
 
 V tuto chvíli je proces odstranění a zrušení zřízení dokončený.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o propojení mezi platformami OCI a Azure najdete v [dokumentaci Oracle](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm).
 * Pomocí [skriptů terraformu](https://aka.ms/azureociinterconnecttf) nasaďte infrastrukturu pro cílové aplikace Oracle přes Azure a nakonfigurujte síťové propojení. 

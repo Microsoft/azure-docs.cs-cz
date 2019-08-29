@@ -1,6 +1,6 @@
 ---
-title: Nasadit OpenShift v Azure stacku | Dokumentace Microsoftu
-description: Nasaďte OpenShift v Azure stacku.
+title: Nasadit OpenShift v Azure Stack | Microsoft Docs
+description: Nasaďte OpenShift do Azure Stack.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,32 +9,31 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: haroldw
-ms.openlocfilehash: 91b37753ae80596612eda9d3ccd34858691e35ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771545"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082595"
 ---
-# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasadit OpenShift Container Platform nebo OKD ve službě Azure Stack
+# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasazení kontejnerové platformy OpenShift nebo OKD v Azure Stack
 
-Je možné nasadit OpenShift v Azure stacku. Nasazení se mírně liší a funkce budou také mírně lišit, existují některé hlavní rozdíly mezi Azure a Azure Stack.
+OpenShift se dá nasadit v Azure Stack. Mezi Azure a Azure Stack je několik klíčových rozdílů, takže se nasazení mírně liší a možnosti se taky mírně liší.
 
-V současné době poskytovatele cloudu Azure nefunguje ve službě Azure Stack. Z tohoto důvodu nebude moct používat disk připojit jako trvalé úložiště ve službě Azure Stack. Místo toho můžete nakonfigurovat další možnosti úložiště, jako je například systém souborů NFS, iSCSI, GlusterFS, atd. Jako alternativu můžete povolit CNS a používat GlusterFS jako trvalé úložiště. Pokud je povolené CNS, tři další uzly se nasadí s další úložiště pro GlusterFS využití.
+Poskytovatel cloudu Azure v současné době nefunguje v Azure Stack. Z tohoto důvodu nebudete moct k trvalému uložení v Azure Stack použít připojení k disku. Místo toho můžete nakonfigurovat další možnosti úložiště, jako je třeba NFS, iSCSI, GlusterFS atd. Alternativně můžete povolit propojené sítě a používat GlusterFS pro trvalé úložiště. Pokud je povolený CNS, nasadí se tři další uzly s dodatečným úložištěm pro použití GlusterFS.
 
-Můžete použít některou z několika metod nasazení OpenShift Container Platform nebo OKD ve službě Azure Stack:
+K nasazení OpenShift kontejnerové platformy nebo OKD v Azure Stack můžete použít některou z několika metod:
 
-- Můžete ručně nasadit komponenty potřebnou infrastrukturu Azure a pak postupujte podle [OpenShift Container Platform dokumentaci](https://docs.openshift.com/container-platform) nebo [OKD dokumentaci](https://docs.okd.io).
-- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-container-platform/) , která zjednodušuje nasazení OpenShift Container Platform clusteru.
-- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení OKD clusteru.
+- Je možné ručně nasadit nezbytné součásti infrastruktury Azure a pak dodržet [dokumentaci k platformě OpenShift Container](https://docs.openshift.com/container-platform) a [dokumentaci OKD](https://docs.okd.io).
+- Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-container-platform/) , která zjednodušuje nasazení clusteru OpenShift Container Platform.
+- Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení clusteru OKD.
 
-Při použití šablony Resource Manageru, vyberte správné větve (azurestack 3.x vydání). Šablony pro Azure nebude fungovat podle verze rozhraní API jsou rozdíly mezi Azure a Azure Stack. Odkaz na image RHEL aktuálně pevně zakóduje jako proměnné v souboru azuredeploy.json a bude nutné změnit tak, aby odpovídala bitové kopie.
+Pokud používáte šablonu Správce prostředků, vyberte správnou větev (azurestack-Release-3. x). Šablony pro Azure nebudou fungovat, protože verze rozhraní API se v Azure a Azure Stack liší. Odkaz na obrázek RHEL je v současné době pevně kódovaný jako proměnná v souboru azuredeploy. JSON a bude muset být změněn tak, aby odpovídal vašemu obrázku.
 
 ```json
 "imageReference": {
@@ -45,31 +44,31 @@ Při použití šablony Resource Manageru, vyberte správné větve (azurestack 
 }
 ```
 
-Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování instance Red Hat Enterprise Linux je zaregistrované u předplatného Red Hat a připojený k ID fondu, který obsahuje oprávnění pro OpenShift Container Platform.
-Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu Red Hat předplatné správce (RHSM) Alternativně můžete použít aktivační klíč, ID organizace a ID fondu.  Tyto informace můžete ověřit tak, že přihlášení k https://access.redhat.com.
+Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování je instance Red Hat Enterprise Linux zaregistrovaná v rámci předplatného Red Hat a připojená k ID fondu, které obsahuje nároky na OpenShift kontejnerové platformy.
+Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Alternativně můžete použít aktivační klíč, ID organizace a ID fondu.  Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com.
 
-## <a name="azure-stack-prerequisites"></a>Požadavky služby Azure Stack
+## <a name="azure-stack-prerequisites"></a>Azure Stack předpoklady
 
-Image RHEL (OpenShift Container Platform) nebo image CentOS (OKD) musí být přidán do prostředí Azure Stack pro nasazení OpenShift clusteru. Obraťte se na správce služby Azure Stack pro přidání těchto imagí. Pokyny najdete tady:
+RHEL Image (OpenShift Container Platform) nebo Image CentOS (OKD) se musí do prostředí Azure Stack přidat, aby bylo možné nasadit cluster OpenShift. Pokud chcete přidat tyto image, obraťte se na správce Azure Stack. Pokyny najdete tady:
 
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
 
-## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Nasazení pomocí šablony OpenShift Container Platform nebo OKD Resource Manageru
+## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Nasazení pomocí OpenShift kontejnerové platformy nebo šablony OKD Správce prostředků
 
-Nasazení pomocí šablony Resource Manageru, použijte soubor parametrů slouží k poskytování vstupní parametry. Chcete-li dále přizpůsobit nasazení, rozvětvit úložiště GitHub se vzorovými a změňte příslušné položky.
+Chcete-li nasadit pomocí šablony Správce prostředků, použijte soubor parametrů k zadání vstupních parametrů. Pro další přizpůsobení nasazení, rozvětvete úložiště GitHub a změňte příslušné položky.
 
-Některé běžné možnosti vlastního nastavení zahrnují, ale nejsou omezené na:
+Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
-- Velikost virtuálního počítače bastionu (proměnné v azuredeploy.json)
-- Zásady vytváření názvů (proměnné v azuredeploy.json)
-- OpenShift specifika clusteru, se mění prostřednictvím souboru hosts (deployOpenShift.sh)
-- Odkaz na image RHEL (proměnné v azuredeploy.json)
+- Velikost virtuálního počítače bastionu (proměnná v azuredeploy. JSON)
+- Zásady vytváření názvů (proměnné v azuredeploy. JSON)
+- OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
+- Odkaz na obrázek RHEL (proměnná v azuredeploy. JSON)
 
-Postup nasazení pomocí Azure CLI, postupujte podle příslušné části v [OpenShift Container Platform](./openshift-container-platform.md) části nebo [OKD](./openshift-okd.md) oddílu.
+Postup nasazení pomocí Azure CLI najdete v příslušné části v části [OpenShift Container Platform](./openshift-container-platform.md) nebo v části [OKD](./openshift-okd.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úlohy po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s nasazení OpenShift v Azure](./openshift-troubleshooting.md)
+- [Úkoly po nasazení](./openshift-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift v Azure](./openshift-troubleshooting.md)

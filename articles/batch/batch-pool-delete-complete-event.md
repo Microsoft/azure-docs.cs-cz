@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: fd32554866d1e2130fd0833adc1b286fb6bc07a5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3ad48fdba298a10d94a32e31e432c0c88b35b658
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323229"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094842"
 ---
 # <a name="pool-delete-complete-event"></a>Událost dokončení odstranění fondu
 
@@ -36,8 +35,8 @@ ms.locfileid: "68323229"
 |Prvek|type|Poznámky|
 |-------------|----------|-----------|
 |id|Řetězec|ID fondu|
-|startTime|Datetime|Čas zahájení odstranění fondu|
-|endTime|Datetime|Čas dokončení odstranění fondu|
+|startTime|DateTime|Čas zahájení odstranění fondu|
+|endTime|DateTime|Čas dokončení odstranění fondu|
 
 ## <a name="remarks"></a>Poznámky
 Další informace o stavech a kódech chyb pro operaci změny velikosti fondu najdete v tématu [odstranění fondu z účtu](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

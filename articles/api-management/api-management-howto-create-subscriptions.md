@@ -1,6 +1,6 @@
 ---
-title: Vytvořit odběry ve službě Azure API Management | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit odběry ve službě Azure API Management.
+title: Vytváření předplatných v Azure API Management | Microsoft Docs
+description: Naučte se vytvářet předplatná v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,45 +9,44 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657605"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073530"
 ---
-# <a name="create-subscriptions-in-azure-api-management"></a>Vytvořit odběry ve službě Azure API Management
+# <a name="create-subscriptions-in-azure-api-management"></a>Vytvoření předplatných v Azure API Management
 
-Při publikování rozhraní API prostřednictvím služby Azure API Management je snadné a společné pro zabezpečený přístup k těmto rozhraním API pomocí klíče předplatného. Klientské aplikace, které potřebují využívat publikovaných rozhraní API musí obsahovat platné předplatné klíč v požadavcích HTTP při provádění volání těchto rozhraní API. Pokud chcete získat klíč předplatného pro přístup k rozhraní API, se vyžaduje předplatné. Další informace o předplatných najdete v tématu [předplatných ve službě Azure API Management](api-management-subscriptions.md).
+Když publikujete rozhraní API prostřednictvím Azure API Management, je snadné a běžné zabezpečení přístupu k těmto rozhraním API pomocí klíčů předplatného. Klientské aplikace, které potřebují spotřebovat publikovaná rozhraní API, musí při volání do těchto rozhraní API zahrnovat platný klíč předplatného v požadavcích HTTP. Pokud chcete získat klíč předplatného pro přístup k rozhraním API, vyžaduje se předplatné. Další informace o předplatných najdete [v tématu předplatná v Azure API Management](api-management-subscriptions.md).
 
-Tento článek vás provede kroky pro vytvoření předplatných na webu Azure Portal.
+Tento článek vás provede kroky pro vytvoření předplatných v Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Provést kroky v tomto článku, jsou následující požadavky:
+K provedení kroků v tomto článku jsou nezbytné tyto požadavky:
 
-+ [Vytvoření instance API managementu](get-started-create-service-instance.md).
-+ Vysvětlení [předplatných ve službě API Management](api-management-subscriptions.md).
++ [Vytvořte instanci API Management](get-started-create-service-instance.md).
++ Pochopení [předplatných v API Management](api-management-subscriptions.md).
 
-## <a name="create-a-new-subscription"></a>Vytvořte nové předplatné
+## <a name="create-a-new-subscription"></a>Vytvoření nového předplatného
 
-1. Vyberte **předplatná** v nabídce na levé straně.
-2. Vyberte **přidat předplatné**.
+1. V nabídce na levé straně vyberte odběry.
+2. Vyberte **přidat odběr**.
 3. Zadejte název předplatného a vyberte obor.
-4. Volitelně můžete zvolte, pokud by měl být předplatné přidružené k uživateli.
+4. Volitelně můžete zvolit, zda má být předplatné přidruženo k uživateli.
 5. Vyberte **Uložit**.
 
-![Flexibilní předplatná](./media/api-management-subscriptions/flexible-subscription.png)
+![Flexibilní odběry](./media/api-management-subscriptions/flexible-subscription.png)
 
-Po vytvoření předplatného jsou k dispozici dva klíče rozhraní API pro přístup k rozhraní API. Jeden z nich je primární a jedna je sekundární. 
+Po vytvoření předplatného jsou k dispozici dva klíče rozhraní API pro přístup k rozhraním API. Jeden klíč je primární a jeden je sekundární. 
 
 ## <a name="next-steps"></a>Další postup
-Získejte další informace o službě API Management:
+Získat další informace o API Management:
 
-+ Přečtěte si další [koncepty](api-management-terminology.md) ve službě API Management.
-+ Postupujte podle našich [kurzy](import-and-publish.md) Další informace o službě API Management.
-+ Zkontrolujte naše [stránku s nejčastějšími dotazy](api-management-faq.md) pro běžné dotazy.
++ Přečtěte si další [Koncepty](api-management-terminology.md) v API Management.
++ Další informace [](import-and-publish.md) o API Management najdete v našich kurzech.
++ Nejčastější dotazy najdete na [stránce s nejčastějšími dotazy](api-management-faq.md) .

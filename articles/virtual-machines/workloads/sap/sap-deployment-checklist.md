@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079011"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v kontrolním seznamu pro plánování a nasazení Azure 
 
@@ -159,7 +158,7 @@ Pilotní nasazení lze spustit před nebo souběžně s plánováním a přípra
    3.  Ujistěte se, že jsou šifrované všechny prostředky, které je třeba šifrovat. Definujte a spusťte procesy pro zálohování certifikátů, ukládání a přístup k těmto certifikátům a obnovení šifrovaných entit. 
    4.  Použití [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) a/nebo pro disky s operačním systémem, pokud je to možné z bodu podpory operačního systému v zobrazení
    5.  Ověřte, že se nepoužilo příliš mnoho vrstev šifrování. Má omezené použití služby Azure Disk Encryption a pak nad jednou z transparentních metod šifrování databáze DBMS.
-6. Testování výkonu
+6. Testování výkonnosti
    1.  V SAP založené na trasování a měřeních SAP Porovnejte prvních 10 online sestav s aktuální implementací, pokud je to možné. 
    2.  V SAP založené na trasování a měřeních SAP Porovnejte horní 10 dávkových úloh s aktuální implementací, pokud je to možné. 
    3.  V SAP založené na trasování a měřeních SAP Porovnejte přenosy dat prostřednictvím rozhraní do systému SAP. Zaměřte se na rozhraní, u kterých víte, že přenos probíhá mezi různými umístěními, třeba z místního prostředí do Azure. 

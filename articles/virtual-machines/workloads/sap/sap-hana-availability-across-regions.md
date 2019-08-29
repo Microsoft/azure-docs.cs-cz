@@ -1,6 +1,6 @@
 ---
-title: Dostupnost SAP HANA v různých oblastech Azure | Dokumentace Microsoftu
-description: Přehled aspektů dostupnost při spuštění SAP HANA na virtuálních počítačích Azure v několika oblastech Azure.
+title: SAP HANA dostupnost napříč oblastmi Azure | Microsoft Docs
+description: Přehled informací o dostupnosti při spuštění SAP HANA na virtuálních počítačích Azure ve více oblastech Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,86 +9,85 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60650263"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078853"
 ---
-# <a name="sap-hana-availability-across-azure-regions"></a>Dostupnost SAP HANA v různých oblastech Azure
+# <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA dostupnost napříč oblastmi Azure
 
-Tento článek popisuje scénáře týkající se dostupnosti SAP HANA v různých oblastech Azure. Z důvodu vzdálenosti mezi oblastmi Azure nastavení dostupnosti SAP HANA v několika oblastech Azure zahrnuje zvláštní požadavky.
+Tento článek popisuje scénáře týkající se SAP HANA dostupnosti napříč různými oblastmi Azure. Z důvodu vzdálenosti mezi oblastmi Azure, nastavení SAP HANA dostupnosti ve více oblastech Azure zahrnuje zvláštní požadavky.
 
-## <a name="why-deploy-across-multiple-azure-regions"></a>Proč nasadit napříč několika oblastmi Azure
+## <a name="why-deploy-across-multiple-azure-regions"></a>Důvody nasazení v několika oblastech Azure
 
-Oblasti Azure, které často jsou odděleny dlouhé vzdálenosti. V závislosti na geopolitické oblasti vzdálenosti mezi oblastmi Azure pravděpodobně stovky mil, nebo dokonce několik tisíc mil, jako jsou ve Spojených státech. Z důvodu vzdálenost síťový provoz mezi prostředky, které jsou nasazené ve dvou různých oblastech Azure prostředí umožňujícím zpětnou transformaci významné sítích s latencí. Latence je natolik závažné, aby vyloučení synchronní výměna dat mezi dvě instance SAP HANA v části typickou úloh SAP. 
+Oblasti Azure jsou často oddělené velkými vzdálenostmi. V závislosti na geopolitické oblasti může být vzdálenost mezi oblastmi Azure stovky mil nebo dokonce několik tisíc mil, jako v USA. Z důvodu vzdálenosti může síťový provoz mezi prostředky, které jsou nasazené ve dvou různých oblastech Azure, výrazně vycházet z větší latence při zpětném volání sítě. Latence je dostatečně významná pro vyloučení synchronního výměny dat mezi dvěma SAP HANA instancemi v rámci typických úloh SAP. 
 
-Na druhé straně organizace často mají požadavek vzdálenost mezi umístění primárního datového centra a sekundárního datacentra. Požadavek na dálku zajišťuje dostupnost případě přírodní katastrofě v širší zeměpisné oblasti. Mezi příklady patří hurikány, které přístupů Karibská oblast a Florida v září a. října 2017. Vaše organizace může mít alespoň požadavek na minimální vzdálenost. Pro většinu služeb Azure zákazníky definice minimální vzdálenost vyžaduje, abyste návrhu pro dostupnost v rámci [oblastí Azure](https://azure.microsoft.com/regions/). Protože je příliš velká pro použití režimu synchronní replikace HANA vzdálenost mezi dvěma oblastmi Azure, RTO a RPO požadavky může vynutit nasazení konfigurace dostupnost v jedné oblasti a pak doplnit další nasazení za sekundu oblast.
+Na druhé straně organizace často mají požadavek na vzdálenost mezi umístěním primárního datacentra a sekundárním datacenterm. Požadavek na vzdálenost pomáhá zajistit dostupnost, pokud dojde k přirozené havárii v širším geografickém umístění. Příklady zahrnují hurikány, který dosáhl oblasti karibské a Florida v září a říjnu 2017. Vaše organizace může mít aspoň minimální požadavek na minimální délku. Pro většinu zákazníků Azure vyžaduje definice minimální vzdálenosti návrh a dostupnost v různých [oblastech Azure](https://azure.microsoft.com/regions/). Vzhledem k tomu, že vzdálenost mezi dvěma oblastmi Azure je moc velká a nedá se použít režim synchronní replikace HANA, můžou požadavky na RTO a RPO vynutit nasazení konfigurací dostupnosti v jedné oblasti a pak doplnit další nasazení za sekundu. věřitel.
 
-Dalším aspektem vzít v úvahu v tomto scénáři je převzetí služeb při selhání a přesměrování klienta. Předpokladem je, že převzetí služeb při selhání mezi instance systému SAP HANA ve dvou různých oblastech Azure vždy je ruční převzetí služeb při selhání. Vzhledem k tomu, replikace systému SAP HANA má nastaven režim replikace asynchronní, existuje riziko, že předávání dat v primární instance HANA nebyl dosud proveden ho sekundární instance HANA. Proto automatické převzetí služeb při selhání není možnost konfigurace, kde je asynchronní replikace. I přes ručně řízené převzetí služeb při selhání, stejně jako v cvičení převzetí služeb při selhání musíte přijmout opatření pro zajištění, že všechny potvrzené data na primární straně dostal sekundární instanci před ručně přesunout do jiné oblasti Azure.
+Dalším aspektem, který je třeba vzít v úvahu, je převzetí služeb při selhání a přesměrování klienta. Předpokladem je, že převzetí služeb při selhání mezi instancemi SAP HANA ve dvou různých oblastech Azure vždycky představuje ruční převzetí služeb při selhání. Vzhledem k tomu, že režim replikace SAP HANA replikace systému je nastaven na hodnotu asynchronní, je možné, že data potvrzená v primární instanci HANA ještě neudělala sekundární instance HANA. Proto automatické převzetí služeb při selhání není možností pro konfigurace, kde je replikace asynchronní. I s ručně kontrolovaným převzetím služeb při selhání, jako v rámci cvičení při převzetí služeb při selhání, musíte přijmout opatření, abyste zajistili, že všechna potvrzená data na primární straně se před ručním přesunutím do jiné oblasti Azure převezmou v rámci sekundární instance.
  
-Virtuální síť Azure používá jiný rozsah IP adres. IP adresy se nasazují do druhé oblasti Azure. Buď musíte proto chcete-li změnit konfiguraci klienta SAP HANA nebo nejlépe, je potřeba vytvořit postup pro změnu překlad názvů. Tímto způsobem, klienti budou přesměrovaní na IP adresu serveru nové sekundární lokality. Další informace najdete v článku SAP [obnova připojení klienta po převzetí](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html).   
+Azure Virtual Network používá jiný rozsah IP adres. IP adresy se nasazují ve druhé oblasti Azure. Proto je třeba změnit konfiguraci klienta SAP HANA, případně můžete vytvořit kroky pro změnu překladu názvů. Tímto způsobem budou klienti přesměrováni na IP adresu serveru nové sekundární lokality. Další informace najdete v článku věnovaném [obnovení připojení klienta SAP po](https://help.sap.com/doc/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c93a723ceedc45da9a66ff47672513d3.html)jeho převzetí.   
 
-## <a name="simple-availability-between-two-azure-regions"></a>Jednoduché dostupnosti mezi dvěma oblastmi Azure
+## <a name="simple-availability-between-two-azure-regions"></a>Jednoduchá dostupnost mezi dvěma oblastmi Azure
 
-Můžete rozhodnout není zavedený žádnou konfiguraci dostupnosti v rámci jedné oblasti, ale ještě další požadavek mít úlohu obsluhuje, pokud dojde k havárii. Typické případy pro takové scénáře jsou neprovozním systémy. Sice udržitelné poloviční denně nebo dokonce i za den s systému dolů nemůže povolit systém, aby byl k dispozici na 48 hodin nebo více. Chcete-li nastavení levnější, spusťte další systémy, které je i méně důležitá ve virtuálním počítači. Druhý systém funguje jako cíl. Můžete také velikost virtuálního počítače v sekundární oblasti menší a rozhodnou předběžné načtení dat. Protože převzetí služeb při selhání je ruční a zahrnuje mnoho kroků další převzít služby při selhání aplikace dokončena a zásobníku, je přijatelné další čas vypnout virtuální počítač, změňte jeho velikost a restartujte virtuální počítač.
+V rámci jedné oblasti se můžete rozhodnout, že neumístíte žádnou konfiguraci dostupnosti, ale pokud dojde k havárii, bude mít požadavek na obsluhu zatížení. Typické případy takových scénářů jsou nevýrobní systémy. I když je systém rozmístěný po dobu půl dne nebo dokonce i jeden den, nemůžete, aby byl systém k dispozici po dobu 48 hodin nebo déle. Pokud chcete nastavit méně nákladné nastavení, spusťte na virtuálním počítači jiný systém, který je ještě méně důležitý. Další systém funguje jako cíl. Můžete také změnit velikost virtuálního počítače v sekundární oblasti na menší a zvolit, aby se data nečetla. Vzhledem k tomu, že převzetí služeb při selhání je ruční a zahrnuje mnoho dalších kroků pro převzetí služeb při selhání kompletního zásobníku aplikace, další čas vypnutí virtuálního počítače, jeho změna velikosti a restartování virtuálního počítače je přijatelné.
 
-Pokud používáte scénáři sdílení cíle zotavení po Havárii systémem dotazů a odpovědí v jeden virtuální počítač, budete muset vzít v úvahu tyto aspekty:
+Pokud používáte scénář sdílení cíle DR se systémem QA v jednom virtuálním počítači, musíte vzít v úvahu tyto okolnosti:
 
-- Existují dva [režimy operace](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) delta_datashipping a logreplay, které jsou k dispozici pro takové situaci
-- Oba režimy operace mají jiné paměťové požadavky bez předběžného načítání dat
-- Delta_datashipping potřebovat výrazně méně paměti bez předběžného načítání možnosti než logreplay může vyžadovat. Naleznete v kapitole 4.3 dokument SAP [jak k provádění systémové replikace pro SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)
-- Požadavek na paměť logreplay operace režimu bez předběžné načtení není deterministický. a závisí na načíst columnstore struktury. V extrémních případech se může vyžadovat 50 % paměti primární instance. Paměť pro režim operace logreplay je nezávislá na tom, jestli jste se rozhodli mají data předem nastavené.
+- Existují dva [režimy operací](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) s delta_datashipping a logreplay, které jsou k dispozici pro takový scénář.
+- Oba režimy operace mají různé požadavky na paměť bez přednačtení dat.
+- Delta_datashipping může vyžadovat drasticky méně paměti bez možnosti přednačtení, než logreplay může vyžadovat. Viz kapitola 4,3 dokumentu SAP [Jak provést replikaci systému pro SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)
+- Požadavek na paměť pro režim operace logreplay bez přednačtení není deterministický a závisí na načtených strukturách columnstore. V extrémních případech může být nutné vyžadovat 50% paměti primární instance. Paměť pro režim operace logreplay je nezávislá na tom, jestli se rozhodnete, že chcete předčítat sadu dat, nebo ne.
 
 
-![Diagram dvou virtuálních počítačů přes dvě oblasti](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
+![Diagram dvou virtuálních počítačů ve dvou oblastech](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
 
 > [!NOTE]
-> V této konfiguraci je nelze zadat plánovaný bod obnovení = 0, protože režim replikace systému HANA je asynchronní. Pokud je potřeba zadat plánovaný bod obnovení = 0, tato konfigurace není konfigurace podle výběru.
+> V této konfiguraci nemůžete zadat RPO = 0, protože režim replikace systému HANA je asynchronní. Pokud potřebujete zadat RPO = 0, tato konfigurace není konfigurací volby.
 
-Malé změny provedené v konfiguraci může být konfigurace dat jako předběžné načtení. Ale vzhledem k povaze ruční převzetí služeb při selhání a skutečnosti, že aplikace potřebovat přesunout do druhé oblasti, se nemusí mít smysl předběžné načtení dat. 
+Malá změna, kterou můžete v konfiguraci provést, může být konfigurace dat jako přednačtení. Nicméně vzhledem k ručnímu charakteru převzetí služeb při selhání a skutečnost, že vrstvy aplikace potřebují také přejít do druhé oblasti, nemusí mít smysl předčítat data. 
 
-## <a name="combine-availability-within-one-region-and-across-regions"></a>Kombinovat dostupnost v rámci jedné oblasti i napříč oblastmi 
+## <a name="combine-availability-within-one-region-and-across-regions"></a>Kombinování dostupnosti v rámci jedné oblasti a napříč oblastmi 
 
-Kombinace dostupnost v různých oblastech i mohou být způsobeny tyto faktory:
+Kombinací dostupnosti v rámci a napříč oblastmi můžou být tyto faktory založené na těchto faktorech:
 
-- Požadavek cíle bodu obnovení = 0 v rámci oblasti Azure.
-- Organizace není ochoten nebo schopen mít globální operace ovlivněny hlavní přírodní katastrofa, který má vliv větší oblasti. To se stává třeba u některých hurikány, které přístupů Karibiku během posledních několika let.
-- Předpisy o vývozu vyžádání vzdálenosti mezi primárních a sekundárních lokalit, které jsou jasně nad rámec jaké dostupnost Azure může poskytnout zóny.
+- Požadavek RPO = 0 v oblasti Azure.
+- Organizace není ochotná ani schopná mít globální operace ovlivněné většími přirozenými pohromě, které mají vliv na větší oblast. V tomto případě se jednalo o některé hurikány, které dosáhly oblasti karibské za posledních několik let.
+- Předpisy, které vyžadují vzdálenost mezi primárními a sekundárními lokalitami, které jsou jasně nad rámec toho, co můžou poskytovat zóny dostupnosti Azure.
 
-V těchto případech můžete nastavit jaké SAP volání [konfigurace replikace vícevrstvé systému SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) s využitím systémové replikace HANA. Architektura vypadat nějak takto:
+V těchto případech můžete nastavit, co SAP volá [SAP HANA konfiguraci replikace](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) s více vrstvami, pomocí replikace systému Hana. Architektura by vypadala takto:
 
-![Diagram tři virtuální počítače prostřednictvím dvou oblastech](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
+![Diagram tří virtuálních počítačů ve dvou oblastech](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-SAP zavedené [replikace více cílový systém](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) s HANA 2.0 SPS3. Replikace více cílový systém přináší určité výhody ve scénářích aktualizace. Zotavení po Havárii site (2 oblasti) například nemá žádný vliv při sekundární lokality HA je mimo provoz kvůli údržbě nebo aktualizace. Můžete najít další informace o více cíl systémové replikace HANA [tady](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html).
-Možnou architekturu s více cíl replikace vypadat nějak takto:
+SAP zavádí [replikaci s více cílovými systémy](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) s Hana 2,0 SPS3. Replikace s více cílovými systémy přináší ve scénářích aktualizace některé výhody. Například lokalita DR (region 2) nemá vliv, pokud je sekundární lokalita HA mimo provoz kvůli údržbě nebo aktualizacím. Další informace o replikaci více cílů systému HANA najdete [tady](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html).
+Možná architektura s replikací s více cíli vypadá takto:
 
-![Diagram tři virtuální počítače přes dvě oblasti milti cíl](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+![Diagram tří virtuálních počítačů ve dvou oblastech milti-Target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
 
-Pokud má organizace požadavky na vysokou dostupnost připravenosti v second(DR) oblast Azure, tato architektura může vypadat třeba:
+Pokud má organizace požadavky na připravenost na vysokou dostupnost v druhé oblasti Azure (DR), pak by architektura vypadala takto:
 
-![Diagram tři virtuální počítače přes dvě oblasti milti cíl](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Diagram tří virtuálních počítačů ve dvou oblastech milti-Target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
-Použití logreplay jako režim operace, tato konfigurace poskytuje plánovaný bod obnovení = 0, s nízké RTO, v rámci primární oblasti. Konfigurace také poskytuje vrazíme cíle bodu obnovení, pokud se jedná o přesun do druhé oblasti. RTO časy v druhé oblasti jsou závislé na tom, jestli se předem načtou data. Mnozí uživatelé používají k provozování systému testovacího virtuálního počítače v sekundární oblasti. V tomto případ použití, nemůže být předem načtena data.
+Tato konfigurace poskytuje v rámci operace logreplay jako provozní režim RPO RPO = 0 s nízkou RTO v rámci primární oblasti. Konfigurace také poskytuje dát RPO, pokud je zahrnut přesun do druhé oblasti. Doba RTO ve druhé oblasti závisí na tom, zda jsou data předem načtena. Mnoho zákazníků používá virtuální počítač v sekundární oblasti ke spuštění testovacího systému. V takovém případě se data nedají předem načíst.
 
 > [!IMPORTANT]
-> Režimy operace mezi různé vrstvy musí být homogenní. Můžete **nelze** použít logreply režim operace mezi 1 a vrstvu 2 a delta_datashipping slouží k poskytování vrstvy 3. Můžete pouze jednu nebo jiné operace režim, ve kterém musí být konzistentní pro všechny úrovně. Protože delta_datashipping není vhodné poskytnout plánovaný bod obnovení = 0, režim pouze přiměřené operace pro taková konfigurace vícevrstvé zůstává logreplay. Podrobnosti o operaci režimech a určitá omezení, najdete v článku SAP [režimy operace pro systémové replikace SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
+> Režimy operací mezi různými vrstvami musí být homogenní. Logreply se **nedá** použít jako režim operace mezi vrstvou 1 a vrstvou 2 a delta_datashipping k poskytnutí vrstvy 3. Můžete zvolit jenom jeden nebo jiný provozní režim, který musí být konzistentní pro všechny úrovně. Vzhledem k tomu, že delta_datashipping není vhodný k poskytnutí cíle bodu obnovení (RPO), zůstane logreplay pouze přiměřený provozní režim pro takovou konfiguraci s více vrstvami. Podrobnosti o režimech operací a některých omezeních najdete v článku [provozní režimy článků SAP pro replikaci SAP HANA systému](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
 
 ## <a name="next-steps"></a>Další postup
 
-Podrobné pokyny k nastavení těchto konfigurací v Azure najdete v tématu:
+Podrobné pokyny k nastavení těchto konfigurací v Azure najdete tady:
 
-- [Nastavení systémové replikace SAP HANA ve virtuálních počítačích Azure](sap-hana-high-availability.md)
-- [Vysoká dostupnost pro SAP HANA s využitím systémové replikace](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
+- [Nastavení replikace systému SAP HANA na virtuálních počítačích Azure](sap-hana-high-availability.md)
+- [Vysoká dostupnost pro SAP HANA pomocí replikace systému](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/)
 
  
 

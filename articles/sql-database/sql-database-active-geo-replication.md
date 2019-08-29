@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935071"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092815"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -106,6 +106,10 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 ## <a name="preparing-secondary-database-for-failover"></a>Příprava sekundární databáze pro převzetí služeb při selhání
 
 Aby vaše aplikace mohla hned po převzetí služeb při selhání přistupovat k nové primární databázi, ujistěte se, že požadavky na ověřování pro sekundární server a databázi jsou správně nakonfigurované. Podrobnosti najdete v tématu [SQL Database Security po zotavení po havárii](sql-database-geo-replication-security-config.md). Aby se zajistilo dodržování předpisů po převzetí služeb při selhání, ujistěte se, že zásady uchovávání záloh v sekundární databázi odpovídají primárnímu. Tato nastavení nejsou součástí databáze a nereplikují se. Ve výchozím nastavení se sekundární bude konfigurovat s výchozí dobou uchování PITR sedmi dnů. Podrobnosti najdete v tématu [SQL Database automatizované zálohy](sql-database-automated-backups.md).
+
+> [!IMPORTANT]
+> Pokud je vaše databáze členem skupiny převzetí služeb při selhání, nemůžete iniciovat převzetí služeb při selhání pomocí příkazu geografické replikace faiover. Pro skupinu zvažte použití příkazu pro převzetí služeb při selhání. Pokud potřebujete převzít služby při selhání pro jednotlivé databáze, musíte je nejdřív odebrat ze skupiny převzetí služeb při selhání. Podrobnosti najdete v tématu [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) . 
+
 
 ## <a name="configuring-secondary-database"></a>Konfigurace sekundární databáze
 
@@ -205,7 +209,7 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [Odstranit odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
 |  | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Ukázkové skripty najdete v těchto tématech:
   - [Konfigurace a převzetí služeb při selhání izolované databáze s využitím aktivní geografické replikace](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)

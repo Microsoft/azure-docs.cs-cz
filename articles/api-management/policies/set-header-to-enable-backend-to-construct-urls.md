@@ -1,6 +1,6 @@
 ---
-title: Zásady služby Azure API management ukázkový – přidání hlavičky předané | Dokumentace Microsoftu
-description: Azure API management zásady ukázkový – ukazuje, jak přidat hlavičku předané v příchozího požadavku, aby back-endového rozhraní API k vytvoření správné adresy URL.
+title: Ukázka zásad Azure API managementu – přidejte předanou hlavičku | Microsoft Docs
+description: Ukázka zásad Azure API Management – ukazuje, jak přidat předanou hlavičku v příchozím požadavku, aby back-end rozhraní API umožnilo vytváření správných adres URL.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859490"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067504"
 ---
-# <a name="add-a-forwarded-header"></a>Přidat hlavičku předané
+# <a name="add-a-forwarded-header"></a>Přidat předanou hlavičku
 
-Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak přidat hlavičku předané v příchozího požadavku, aby back-endového rozhraní API k vytvoření správné adresy URL. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázku zásad služby Azure API Management, která ukazuje, jak přidat předanou hlavičku ve vstupní žádosti, aby back-end rozhraní API umožnilo vytváření správných adres URL. Pokud chcete nastavit nebo upravit kód zásady, postupujte podle kroků popsaných v tématu [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="code"></a>Kód
 
-Vložte kód do **příchozí** bloku.
+Vložte kód do **vstupního** bloku.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace týkající se služby APIM zásad:
+Další informace o zásadách APIM:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

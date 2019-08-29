@@ -10,16 +10,15 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990341"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090452"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
 
@@ -27,7 +26,7 @@ Tento článek popisuje, jak vyřešit potíže s aktivací služby správy klí
 
 ## <a name="symptom"></a>Příznak
 
-V podsítích Azure Virtual Network povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , které směruje veškerý internetový provoz zpátky do vaší místní sítě. V tomto scénáři můžou virtuální počítače Azure s Windows Serverem 2012 R2 (nebo novějšími verzemi Windows) úspěšně aktivovat Windows. Virtuální počítače, na kterých běží starší verze Windows, ale neaktivují Windows.
+V podsítích Azure Virtual Network povolíte [vynucené tunelování](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) , které směruje veškerý internetový provoz zpátky do vaší místní sítě. V tomto scénáři se virtuální počítače Azure se systémem Windows nepodaří aktivovat systém Windows.
 
 ## <a name="cause"></a>Příčina
 
@@ -110,7 +109,7 @@ K přidání vlastní trasy použijte následující postup:
 
 4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Instalační klíče klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )
