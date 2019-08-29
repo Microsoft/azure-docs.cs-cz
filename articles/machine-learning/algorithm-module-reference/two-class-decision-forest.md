@@ -1,7 +1,7 @@
 ---
-title: 'Rozhodovací les se dvěma třídami: Odkaz na modul'
+title: 'Rozhodovací doménová struktura se dvěma třídami: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu rozhodovací les se dvěma třídami ve službě Azure Machine Learning k vytvoření služby machine learning model založený na doménových strukturách algoritmus rozhodnutí.
+description: Naučte se používat modul pro rozhodovací doménovou strukturu dvou tříd ve službě Azure Machine Learning k vytvoření modelu Machine Learning na základě algoritmu rozhodovací doménové struktury.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,100 +9,99 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 73b7822c56e2b07eeefdedce1bce6d410d110ebc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411480"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128400"
 ---
-# <a name="two-class-decision-forest-module"></a>Modul rozhodovací les se dvěma třídami
+# <a name="two-class-decision-forest-module"></a>Modul doménové struktury se dvěma třídami
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření služby machine learning model založený na doménových strukturách algoritmus rozhodnutí.  
+Pomocí tohoto modulu můžete vytvořit model strojového učení založený na algoritmu rozhodovacích doménových struktur.  
 
-Rozhodnutí doménových strukturách jsou rychlé, pod dohledem komplet modely. Tento modul je dobrou volbou, pokud chcete předpovědět cíl s maximálně dva výsledky. 
+Rozhodovací doménové struktury jsou rychlé a pod dohledem. Tento modul je dobrý volbou, pokud chcete předpovědět cíl s maximálním počtem dvou výsledků. 
 
-## <a name="understanding-decision-forests"></a>Principy rozhodnutí doménových struktur
+## <a name="understanding-decision-forests"></a>Porozumění rozhodovacím strukturám
 
-Tento algoritmus rozhodnutí doménové struktury je kompletu učení metoda určené pro úlohy klasifikace. Komplet metody jsou založeny na obecné zásady, které nespoléhat se na jednom modelu, můžete získat lepší výsledky a obecnější modelu vytvořením více souvisejících modelů a jejich sloučením nějakým způsobem. Modely komplet obecně poskytují lepší pokrytí a přesnost než jeden rozhodovacích stromů. 
+Tento algoritmus rozhodovací doménové struktury je vzdělávací metoda kompletování, která je určená pro úlohy klasifikace. Metody kompletování jsou založené na obecné zásadě, která se spíše nespoléhá na jeden model, můžete získat lepší výsledky a obecnější model tím, že vytvoříte několik souvisejících modelů a zkombinujete je nějakým způsobem. Obecně platí, že modely kompletování poskytují lepší pokrytí a přesnost než jednotlivé rozhodovací stromy. 
 
-Existuje mnoho způsobů, jak vytvořit jednotlivé modely a zkombinujte je v kompletu. Tato konkrétní implementace rozhodovací les funguje tak, že vytváření více rozhodovacích stromů a potom **hlasování** na nejoblíbenější třída output. Hlasování je jedním z better-known metody pro generování výsledků v modelu skupiny stromů. 
+Existuje mnoho způsobů, jak vytvořit jednotlivé modely a kombinovat je do kompletu. Tato konkrétní implementace rozhodovací doménové struktury funguje tak, že sestaví více rozhodovacích stromů a pak bude **hlasovat** pro nejoblíbenější výstupní třídu. Hlasovací je jedna z lepších známých metod pro generování výsledků v modelu kompletu. 
 
-+ Vytvoření mnoha stromech jednotlivé klasifikace pomocí celou datovou sadu, ale jiné (obvykle randomizovaného) počáteční body. Tím se liší od přístupu náhodné doménové struktury, ve kterém může používat jednotlivé rozhodovacích stromů pouze část náhodná data nebo funkce.
-+ Každý stromu v rozhodovacím stromu doménové struktury výstupy histogram nenormalizovaný četnost popisků. 
-+ Proces agregace součet těchto histogramy a normalizuje výsledek, který má získat "pravděpodobností" pro každý popisek. 
-+ Stromové struktury, které mají vysokou predikce budete mít větší váhu konečné rozhodnutí skupiny stromů.
++ Je vytvořeno mnoho jednotlivých stromů klasifikace, pomocí celé datové sady, ale různé (obvykle náhodné) počáteční body. To se liší od přístupu k náhodné doménové struktuře, ve kterém jednotlivé rozhodovací stromy můžou použít jenom náhodnou část dat nebo funkcí.
++ V každém stromu stromu rozhodovací doménové struktury je výstupem nenormalizovaného frekvenčního histogramu popisků. 
++ Agregační proces sečte Tyto histogramy a normalizuje výsledek pro získání "pravděpodobnosti" pro každý popisek. 
++ V konečném rozhodnutí kompletu budou mít stromy s jistotou vysoké předpovědi větší váhu.
 
-Rozhodovací stromy obecně mají mnoho výhod pro úlohy klasifikace:
+Obecné rozhodovací stromy mají pro úlohy klasifikace mnoho výhod:
   
-- Hranice nelineárních rozhodnutí, můžete zachytit.
-- Můžete trénování a předvídání na velké množství dat, jako jsou efektivní výpočet a využití paměti.
-- Výběr funkce je integrovaná do procesy trénování a klasifikace.  
-- Stromy zvládne hlučného dat a mnoho funkcí.  
-- Jsou-ukazatelů modely, což znamená, že zpracovávají data pomocí různých distribucí. 
+- Můžou zachytit hranice nelineárního rozhodování.
+- Můžete vyškolit a odhadnout spoustu dat, protože jsou efektivní při výpočtech a využití paměti.
+- Výběr funkcí je integrovaný do procesů školení a klasifikace.  
+- Stromy mohou pojmout data o velikosti a množství funkcí.  
+- Jsou to modely nevyužívající parametry, což znamená, že mohou zpracovávat data s proměnlivými distribucí. 
 
-Však jednoduché rozhodovacích stromů můžete overfit na data a jsou méně generalizovatelného než umožňující stromu.
+Jednoduché rozhodovací stromy ale mohou overfit data a jsou méně generalizované než struktury stromů.
 
-Další informace najdete v tématu [doménových struktur rozhodnutí](https://go.microsoft.com/fwlink/?LinkId=403677).  
+Další informace najdete v tématu o [rozhodovacích doménových strukturách](https://go.microsoft.com/fwlink/?LinkId=403677).  
 
-## <a name="how-to-configure"></a>Postup konfigurace
+## <a name="how-to-configure"></a>Jak nakonfigurovat
   
-1.  Přidat **rozhodovací les se dvěma třídami** modulu do experimentu v Azure Machine Learning a otevřete **vlastnosti** podokně modulu. 
+1.  Přidejte modul pro **rozhodovací doménovou strukturu dvou tříd** do experimentu v Azure Machine Learning a otevřete podokno **vlastností** modulu. 
 
-    Můžete najít v modulu v rámci **Machine Learning**. Rozbalte **inicializovat**a potom **klasifikace**.  
+    Modul najdete v části **Machine Learning**. Rozbalte položku **Initialize**a pak **klasifikaci**.  
   
-2.  Pro **převzorkování metoda**, zvolte metodu použitou k vytvoření jednotlivé stromové struktury.  Můžete si vybrat z **pytlování** nebo **replikovat**.  
+2.  V případě **metody převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.  
   
-    -   **Pytlování**: Pytlování se také nazývá *bootstrap agregaci*. V této metodě se na nové ukázky, vytvořil náhodně vzorkování původní datové sady s nahrazení, dokud máte datovou sadu velikosti původní pěstuje každém stromu.  
+    -   Zazavazadlí: Pro zaznamenání je také označováno jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní.  
   
-         Výstupy modelů jsou zkombinované podle *hlasování*, což je způsob agregace. Každý stromu v doménové struktuře klasifikace rozhodnutí výstupy histogram Nenormalizovaná četnost popisků. Agregace je součet těchto histogramy a normalizovat zobrazíte "pravděpodobností" pro každý popisek. Tímto způsobem budete mít stromové struktury, které mají vysokou predikce větší váhu konečné rozhodnutí skupiny stromů.  
+         Výstupy modelů jsou kombinovány hlasováním, což je forma agregace. Každý strom v doménové struktuře rozhodnutí o klasifikaci má za následek nenormalizovaný frekvenční histogram popisků. Agregaci je sečíst Tyto histogramy a normalizovat a získat tak "pravděpodobnost" pro každý popisek. Tímto způsobem budou mít stromy s důvěrou vysoké předpovědi větší váhu v konečném rozhodnutí kompletu.  
   
-         Další informace naleznete v příspěvku Wikipedia pro zavedení agregaci.  
+         Další informace najdete v tématu Wikipedii pro agregaci Bootstrap.  
   
-    -   **Replikovat**: Při replikaci každý stromu trénovaných na přesně stejné vstupní data. Určení, které rozdělení predikát použije se pro každý uzel stromu zůstane náhodné a stromy budou mít různé.   
+    -   **Replikovat**: V případě replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.   
   
-3.  Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.  
+3.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete provést konfiguraci modelu, můžete zadat konkrétní sadu hodnot jako argumenty.
+    -   **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
   
-4.  Pro **počet rozhodovacích stromů**, zadejte maximální počet rozhodovacích stromů, které mohou být vytvořeny v skupiny stromů. Vytvořením další rozhodovacích stromů, může potenciálně získat lepší pokrytí, ale když školení zvýší.  
+4.  V poli **počet rozhodovacích stromů**zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.  
   
     > [!NOTE]
-    >  Tato hodnota také řídí počet stromové struktury zobrazují při vizualizaci trénovaného modelu. Pokud chcete zobrazit nebo vytisknout jediného stromu, můžete nastavit hodnotu na 1. Však může být pouze jeden stromové struktury (stromové struktury s počáteční sadu parametrů) vytvořen a jsou prováděny žádné další iterace.
+    >  Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, můžete nastavit hodnotu 1. Může však být vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace.
   
-5.  Pro **maximální hloubka rozhodovacích stromů**, zadejte číslo pro omezení maximální hloubky jakékoli rozhodovací strom. Zvýšení hloubku stromu může zvýšit přesnost, nese chvíli školení overfitting a vyšší.
+5.  Pro **maximální hloubku rozhodovacích stromů**zadejte číslo, abyste omezili maximální hloubku rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
   
-6.  Pro **počet náhodných rozdělí na jeden uzel**, zadejte počet rozdělení pro použití při vytváření jednotlivých uzlů stromu. A *rozdělit* náhodně dělí prostředky, které nabízí v každé úrovni stromu (uzel).
+6.  Pro **počet náhodných rozdělení na uzel**zadejte počet rozdělení, který se má použít při sestavování jednotlivých uzlů stromu. *Rozdělení* znamená, že funkce v každé úrovni stromu (uzlu) jsou náhodně děleny.
   
-7.  Pro **minimální počet vzorků za uzel typu list**, určit minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (listový) ve stromové struktuře.
+7.  Pro **minimální počet vzorků na uzel listu**Určete minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.
   
-     Zvýšením tuto hodnotu zvýšit prahovou hodnotu pro vytvoření nového pravidla. Výchozí hodnotu 1, ještě jeden případ může způsobit, který se má vytvořit nové pravidlo. Pokud zvýšíte hodnotu 5, museli byste trénovací data obsahují aspoň pět případy, které splňují stejných podmínek.  
+     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.  
   
-8.  Vyberte **povolit neznámé hodnoty zařazené do kategorií funkcí** možnost vytvořit skupinu pro neznámé hodnoty v sadách školení nebo ověření. Model může být méně přesné pro známé hodnoty, ale může poskytovat lepší předpovědi pro nové hodnoty (neznámá). 
+8.  Vyberte možnost **Povolení neznámých hodnot pro funkce kategorií** a vytvořte skupinu pro neznámé hodnoty v rámci školicích nebo ověřovacích sad. Model může být pro známé hodnoty méně přesný, ale může poskytovat lepší předpovědi pro nové (neznámé) hodnoty. 
 
-     Pokud výběr této možnosti modelu může přijmout hodnoty, které jsou obsaženy v trénovací data.
+     Pokud zrušíte výběr této možnosti, může model přijímat pouze hodnoty, které jsou obsaženy v školicích datech.
   
-9. Připojení s popiskem datovou sadu a jeden z [školicí moduly](module-reference.md):  
+9. Připojte s popiskem datovou sadu a jeden z [školicích modulů](module-reference.md):  
   
-    -   Pokud nastavíte **režimu vytváření trainer** k **jediný parametr**, použijte [trénování modelu](./train-model.md) modulu.  
+    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .  
   
     
 ## <a name="results"></a>Výsledky
 
 Po dokončení školení:
 
-+ Pokud chcete zobrazit stromu, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup [Train Model](./train-model.md) modul a vyberte **vizualizovat**.
++ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup modulu [vlakového modelu](./train-model.md) a vyberte **vizualizovat**.
   
-    Klikněte na každém stromu podrobnostem rozdělení a zobrazit pravidla pro každý uzel.
+    Kliknutím na jednotlivé stromové struktury přejdete k podrobnostem o rozdělení a uvidíte pravidla pro každý uzel.
 
-+ Uložte snímek model, klikněte pravým tlačítkem myši **Trénovaného modelu** výstupní a vyberte **uložit Model**. Uložené modelu není aktualizován na následné spuštění experimentu.
++ Snímek modelu uložíte tak, že kliknete pravým tlačítkem na výstup **trained model** a vyberete **Uložit model**. Uložený model není aktualizován při následných spuštění experimentu.
 
-+ Chcete-li použít model pro vyhodnocení, přidejte **Score Model** modulů na experiment.
++ Chcete-li použít model pro bodování, přidejte modul určení **skóre modelu** do experimentu.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

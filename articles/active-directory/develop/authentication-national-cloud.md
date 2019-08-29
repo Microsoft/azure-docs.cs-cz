@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abaf8c910710000930f4e0ab6200d0ebd75b8d46
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835194"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135863"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -69,9 +69,6 @@ Pomocí základní adresy URL specifické pro danou oblast můžete vymezit pož
 
 U aplikací pro jednoho tenanta nahraďte "Common" v předchozích adresách URL ID tenanta nebo názvem. Příklad: `https://login.microsoftonline.de/contoso.com`.
 
-> [!NOTE]
-> Koncové body tokenu a [autorizace Azure AD v 2.0]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) jsou k dispozici pouze pro globální službu. Nepodporují se pro národní cloudová nasazení.
-
 ## <a name="microsoft-graph-api"></a>Rozhraní API pro Microsoft Graph
 
 Informace o tom, jak volat rozhraní API Microsoft Graph v národním cloudovém prostředí, najdete v tématu [Microsoft Graph v národních cloudových nasazeních](https://developer.microsoft.com/graph/docs/concepts/deployments).
@@ -81,7 +78,7 @@ Informace o tom, jak volat rozhraní API Microsoft Graph v národním cloudovém
 
 Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft identity, postupujte podle [kurzu MSAL (Microsoft Authentication Library)](msal-national-cloud.md). Konkrétně se tato aplikace bude přihlašovat uživateli a získat přístupový token pro volání rozhraní Microsoft Graph API.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace pro:
 

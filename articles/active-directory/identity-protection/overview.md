@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335386"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125679"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection je více než Nástroj pro monitorov�
 - Výpočet úrovní rizika přihlašování
 - Výpočet úrovní rizika uživatele
 
-**Zkoumání rizikových událostí:**
+**Zkoumání zjištění rizik:**
 
-- Odesílání oznámení pro rizikové události
-- Zkoumání rizikových událostí pomocí relevantních a kontextových informací
+- Odesílání oznámení pro detekci rizik
+- Zkoumání zjištění rizik pomocí relevantních a kontextových informací
 - Poskytování základních pracovních postupů pro sledování šetření
 - Poskytování snadného přístupu k opravám, jako je resetování hesla
 
@@ -76,10 +76,10 @@ Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Activ
 
 Azure Active Directory Identity Protection analyzuje vaši konfiguraci a detekuje ohrožení zabezpečení, která mohou mít dopad na identity vašeho uživatele. Další podrobnosti najdete v tématu [chyby zabezpečení zjištěné nástrojem Azure Active Directory Identity Protection](vulnerabilities.md).
 
-### <a name="risk-events"></a>Rizikové události
+### <a name="risk-detections"></a>Detekce rizik
 
-Azure Active Directory používá k detekci podezřelých akcí, které souvisejí s identitami vašich uživatelů, adaptivní algoritmy strojového učení a heuristiky. Systém vytvoří záznam pro každou zjištěnou podezřelou akci. Tyto záznamy se také označují jako rizikové události.  
-Další podrobnosti najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](../active-directory-identity-protection-risk-events.md).
+Azure Active Directory používá k detekci podezřelých akcí, které souvisejí s identitami vašich uživatelů, adaptivní algoritmy strojového učení a heuristiky. Systém vytvoří záznam pro každou zjištěnou podezřelou akci. Tyto záznamy se označují také jako detekce rizik.  
+Další podrobnosti najdete v tématu [Azure Active Directory detekci rizik](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Šetření
 
@@ -89,10 +89,10 @@ Vaše cesta prostřednictvím Identity Protection obvykle začíná řídicím p
 
 Tento řídicí panel poskytuje přístup k:
 
-- Sestavy, jako jsou **Uživatelé označení příznakem rizika**, **rizikové události** a **ohrožení zabezpečení**
+- Sestavy, jako jsou **Uživatelé označení příznakem rizika**, **detekce rizik** a **ohrožení zabezpečení**
 - Nastavení, jako je například konfigurace **zásad zabezpečení**, **oznámení** a **Registrace služby Multi-Factor Authentication**
 
-Obvykle je výchozím bodem pro šetření, což je proces kontroly aktivit, protokolů a dalších relevantních informací týkajících se rizikových událostí a rozhodování o tom, zda jsou kroky pro nápravu nebo zmírnění potíží nezbytné a jak byla identita ohrožení zabezpečení a pochopení způsobu použití ohrožené identity.
+Obvykle je výchozím bodem pro šetření, což je proces kontroly aktivit, protokolů a dalších relevantních informací souvisejících s detekcí rizik, rozhodování o tom, zda jsou kroky pro nápravu nebo zmírnění problémů nezbytné a jak byla identita ohrožení zabezpečení a pochopení způsobu použití ohrožené identity.
 
 Své vyšetřovací aktivity můžete spojit s oznámeními [](notifications.md) Azure Active Directory odesílají e-maily na e-mail.
 

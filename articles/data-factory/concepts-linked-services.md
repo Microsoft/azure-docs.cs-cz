@@ -3,21 +3,20 @@ title: Propojené služby v Azure Data Factory | Microsoft Docs
 description: Přečtěte si o propojených službách v Data Factory. Propojené služby propojí výpočetní a datové úložiště s datovou továrnou.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 904e063ae64a971de7f34fbfac63b7679f3bc363
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019955"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137124"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -92,19 +91,16 @@ Následující propojená služba je Azure Storage propojená služba. Všimnět
 ```
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
+
 Propojené služby můžete vytvořit pomocí jednoho z těchto nástrojů nebo sad SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager Template a Azure Portal
 
 ## <a name="data-store-linked-services"></a>Propojené služby úložiště dat
-Připojení k úložištím dat najdete v našich [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats). Odkázat na seznam pro konkrétní vlastnosti připojení potřebné pro různá úložiště.
-
-## <a name="data-store-supported-activities"></a>Podporované aktivity úložiště dat
-
-[!INCLUDE [Connector-activity support matrix](../../includes/connector-activity-support-matrix.md)]
+Seznam dat, která podporuje Data Factory, najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknutím na úložiště dat získáte informace o podporovaných vlastnostech připojení.
 
 ## <a name="compute-linked-services"></a>Propojené služby Compute
 Referenční [výpočetní prostředí](compute-linked-services.md) jsou podporovaná pro podrobnosti o různých výpočetních prostředích, ke kterým se můžete připojit z vaší datové továrny i s různými konfiguracemi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytváření kanálů a datových sad pomocí jednoho z těchto nástrojů nebo sad SDK najdete v následujícím kurzu.
 
 - [Rychlý start: Vytvoření datové továrny pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md)

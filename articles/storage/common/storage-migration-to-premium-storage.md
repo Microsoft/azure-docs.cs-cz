@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 90cd079ebc82e8231b052f65156f85d612592ad2
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 1bf46240303d1f31cd09c1a2723e18d27d3ef789
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114733"
+ms.locfileid: "70124689"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace do Azure Premium Storage (nespravované disky)
 
@@ -177,7 +177,7 @@ Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
     ```
-
+ 
    Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
    * **/Source:** _zdroj:&gt; &lt;_ Umístění složky nebo adresy URL kontejneru úložiště, která obsahuje virtuální pevný disk.
@@ -265,15 +265,15 @@ Pomocí AzCopy můžete snadno nahrát virtuální pevný disk přes Internet. V
 2. Otevřete Azure PowerShell a přejdete do složky, kde je nainstalovaná AzCopy.
 3. Pomocí následujícího příkazu zkopírujte soubor VHD ze zdroje do umístění cíl.
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+      AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
-    Příklad:
+   Příklad:
 
-    ```azcopy
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-    ```
+   ```azcopy
+      AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
+   ```
 
    Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
@@ -754,7 +754,7 @@ Chcete-li ladit aplikaci pro lepší výkon disku, přečtěte si část věnova
 ### <a name="application-migrations"></a>Migrace aplikací
 Databáze a další komplexní aplikace mohou vyžadovat zvláštní postup definovaný poskytovatelem aplikace pro migraci. Přečtěte si příslušnou dokumentaci k aplikaci. Například databáze se obvykle dají migrovat pomocí zálohování a obnovení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Konkrétní scénáře migrace virtuálních počítačů najdete v následujících zdrojích informací:
 
 * [Migrace Azure Virtual Machines mezi účty úložiště](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)

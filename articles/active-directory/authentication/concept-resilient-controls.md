@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779678"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125114"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory
 
@@ -80,12 +80,12 @@ Tato ukázková sada zásad uděluje vybraným uživatelům v **AppUsers**, př�
 * Zásada 1: Zablokovat přístup lidem mimo cílové skupiny
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučení AppUsers, CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Zahrnout všechny aplikace
-  * Stavu (Žádný)
+  * Stavu NTato
   * Udělit řízení: Zablokovat
 * Zásada 2: Udělte přístup k AppUsers vyžadujícímu MFA nebo důvěryhodnému zařízení.
   * Uživatelé a skupiny: Zahrnout AppUsers Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Zahrnout všechny aplikace
-  * Stavu (Žádný)
+  * Stavu NTato
   * Udělit řízení: Udělit přístup, vyžadovat vícefaktorové ověřování, vyžadovat, aby zařízení splňovalo předpisy. Pro více ovládacích prvků: Vyžadovat jeden z vybraných ovládacích prvků.
 
 ### <a name="contingencies-for-user-lockout"></a>Nepředvídané události pro uzamčení uživatele
@@ -232,7 +232,7 @@ V závislosti na tom, jaké zmírnění nebo nečinnosti se při přerušení po
 1. V rámci strategie řízení změn zdokumentujte každou změnu a předchozí stav, abyste mohli vrátit zpět všechny nedokončené okolnosti, jakmile jsou ovládací prvky přístupu plně funkční.
 2. Předpokládá se, že se zlomyslné aktéry pokusí o vybírání hesel prostřednictvím útoků pomocí postřiku hesel nebo útoků phishing při zakázání MFA Chybné objekty actor mohou již mít hesla, která dříve neudělila přístup k jakémukoli prostředku, který lze během tohoto okna provést. U kritických uživatelů, jako jsou například vedoucí pracovníci, můžete toto riziko částečně zmírnit tím, že si resetujete jejich hesla, než je pro ně zakážete MFA.
 3. Archivujte veškerou přihlašovací aktivitu a určete, kdo má přístup k čemu v době zakázání MFA.
-4. [Třídění všech rizikových událostí hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) v rámci tohoto okna.
+4. [Třídění všech zjištění rizik hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) v rámci tohoto okna.
 
 ## <a name="after-a-disruption"></a>Po přerušení
 
@@ -242,7 +242,7 @@ Po obnovení služby, která způsobila přerušení, vraťte změny, které jst
 2. Zakažte zásady pro nepředvídané pracovní postupy. 
 3. Vraťte všechny další změny, které jste provedli a popsali během přerušení.
 4. Pokud jste použili účet pro nouzový přístup, nezapomeňte znovu vygenerovat přihlašovací údaje a fyzicky zabezpečit nové přihlašovací údaje v rámci postupů vašeho účtu pro nouzový přístup.
-5. Pokračujte v [třídění všech rizikových událostí hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po přerušení podezřelé aktivity.
+5. Pokračujte v [třídění všech zjištění rizik hlášených](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po přerušení podezřelé aktivity.
 6. Odvolat všechny obnovovací tokeny, které byly vydány [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) pro cílení na skupinu uživatelů. Odvolání všech aktualizačních tokenů je důležité pro privilegované účty používané při přerušení a v důsledku toho vynutí opětovné ověření a splnění kontroly nad obnovenými zásadami.
 
 ## <a name="emergency-options"></a>Nouzové možnosti
@@ -254,7 +254,7 @@ Pokud vaše organizace používá starší zásady vícefaktorového ověřován
    1. Pokud nemáte inventarizaci odchozích IP adres nebo potřebujete povolit přístup v podnikové síti i mimo ni, můžete přidat celý adresní prostor IPv4 jako důvěryhodné IP adresy zadáním 0.0.0.0/1 a 128.0.0.0/1.
 
 >[!IMPORTANT]
- > Pokud rozdáte rozšíření důvěryhodných IP adres na přístup odblokování, negenerují se rizikové události přidružené k IP adresám (například nemožná cestovní nebo neznámou umístění).
+ > Pokud rozpoznáváte důvěryhodné IP adresy na přístup odblokování, negenerují se detekce rizik přidružená k IP adresám (například nemožná cesta nebo neznámá umístění).
 
 >[!NOTE]
  > Konfigurace [důvěryhodných IP adres](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) pro Azure MFA je dostupná jenom pro [licence Azure AD Premium](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).

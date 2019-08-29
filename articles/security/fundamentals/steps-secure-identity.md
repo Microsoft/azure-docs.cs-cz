@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934606"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129316"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků k zabezpečení infrastruktury identit
 
@@ -53,7 +53,7 @@ Většina porušení podnikového zabezpečení pocházela z některého z něko
 
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Ujistěte se, že vaše organizace používá silné ověřování.
 
-Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu používá, je důležité, abyste heslo zálohovali pomocí nějaké formy silného pověření – Další informace o [ověřování Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
+Vzhledem k tomu, že se četnost vyladěného, podvodného, odcizeného malwaru nebo opětovného použití znovu využije, je důležité, abyste heslo zálohovali pomocí nějaké formy silných přihlašovacích údajů – další informace o [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Spustit zaměnit často hesla pro útoky a vypnout tradiční složitost a pravidla vypršení platnosti.
 
@@ -130,7 +130,7 @@ Azure Active Directory má mnoho možností, které automaticky zachycují útok
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>Implementace zásad zabezpečení rizik uživatelů pomocí Azure AD Identity Protection
 
-Riziko uživatele indikuje pravděpodobnost ohrožení identity uživatele a počítá se na základě [rizikových událostí uživatele](../../active-directory/identity-protection/overview.md) , které jsou přidruženy k identitě uživatele. Zásady rizik uživatelů jsou zásady podmíněného přístupu, které vyhodnotí úroveň rizika pro konkrétního uživatele nebo skupinu. Na základě nízké, střední a vysoké úrovně rizika může být zásada nakonfigurovaná tak, aby blokovala přístup, nebo vyžadovala zabezpečenou změnu hesla pomocí Multi-Factor Authentication. Doporučení Microsoftu je vyžadovat pro uživatele s vysokým rizikem zabezpečenou změnu hesla.
+Riziko uživatele indikuje pravděpodobnost ohrožení identity uživatele a počítá se na základě [zjištění rizik uživatele](../../active-directory/identity-protection/overview.md) , která jsou přidružena k identitě uživatele. Zásady rizik uživatelů jsou zásady podmíněného přístupu, které vyhodnotí úroveň rizika pro konkrétního uživatele nebo skupinu. Na základě nízké, střední a vysoké úrovně rizika může být zásada nakonfigurovaná tak, aby blokovala přístup, nebo vyžadovala zabezpečenou změnu hesla pomocí Multi-Factor Authentication. Doporučení Microsoftu je vyžadovat pro uživatele s vysokým rizikem zabezpečenou změnu hesla.
 
 ![Uživatelé označení příznakem rizika](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Služba Microsoft Azure Services a funkce poskytují konfigurovatelné možnosti
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Monitorovat události Azure AD Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je nástroj pro oznamování, monitorování a vytváření sestav, který můžete použít k detekci potenciálních ohrožení zabezpečení, které mají vliv na identity vaší organizace. Detekuje rizikové události, jako jsou nevrácené přihlašovací údaje, nemožné cestování a přihlášení z infikovaných zařízení, anonymní IP adresy, IP adresy přidružené k podezřelé aktivitě a neznámá umístění. Povolit upozornění na oznámení pro příjem e-mailů uživatelů v ohrožení a/nebo týdenního e-mailu.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je nástroj pro oznamování, monitorování a vytváření sestav, který můžete použít k detekci potenciálních ohrožení zabezpečení, které mají vliv na identity vaší organizace. Detekuje detekci rizik, jako jsou nevrácené přihlašovací údaje, nemožné cestování a přihlášení z infikovaných zařízení, anonymní IP adresy, IP adresy přidružené k podezřelé aktivitě a neznámá umístění. Povolit upozornění na oznámení pro příjem e-mailů uživatelů v ohrožení a/nebo týdenního e-mailu.
 
 Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste měli monitorovat denně:
 1. V sestavách rizikové přihlašování se budou provádět aktivity přihlašování uživatelů, které byste měli prozkoumat, ale oprávněný vlastník neudělal přihlášení.
@@ -196,5 +196,5 @@ Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrol
 
 Vážíme si, jak vážně proberete zabezpečení identity a doufáme, že tento dokument je užitečným plánem pro bezpečnější stav vaší organizace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud potřebujete pomoc s plánováním a nasazením doporučení, požádejte o pomoc [plány nasazení projektu Azure AD](https://aka.ms/deploymentplans) .

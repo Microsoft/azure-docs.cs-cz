@@ -1,7 +1,7 @@
 ---
-title: 'Použije transformace: Odkaz na modul'
+title: 'Použít transformaci: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak použít modul použije transformace ve službě Azure Machine Learning k úpravě vstupní datové sady založené na dříve vypočítané transformace.
+description: Naučte se používat modul použít transformaci ve službě Azure Machine Learning k úpravě vstupní datové sady na základě dříve vypočítané transformace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,42 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 810f375642af49814049589cb83ad17fea578b13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028707"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128965"
 ---
 # <a name="apply-transformation-module"></a>Použít modul transformace
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k úpravě vstupní datové sady založené na dříve vypočítané transformace.  
+Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.  
   
-Například, pokud jste použili k normalizaci trénovacích dat pomocí skóre z **normalizovat Data** modulu, je vhodné použít hodnotu z skóre, která se spočítala k trénování během vyhodnocování fáze. Ve službě Azure Machine Learning, můžete uložit jako transformace a poté použijete metodu normalizace **použít transformace** vyrovnat skóre z vstupní data před vyhodnocování.
+Pokud jste například použili z skóre k normalizování školicích dat pomocí modulu **normalizing data** Module, měli byste použít hodnotu z-skóre, která byla vypočítána pro školení v rámci fáze bodování. V Azure Machine Learning můžete metodu normalizace Uložit jako transformaci a pak pomocí **použít transformaci** použít pro vstupní data skóre před vyhodnocením.
   
-Azure Machine Learning poskytuje podporu pro vytváření a následným použitím různých druhů vlastní transformace. Například můžete chtít uložit a potom budou transformace:  
+Azure Machine Learning poskytuje podporu pro vytváření a následné použití mnoha různých druhů vlastních transformací. Můžete například chtít uložit a pak znovu použít transformace na:  
   
-- Odeberte nebo nahraďte chybějící hodnoty pomocí **vyčištění chybějících dat**
-- Normalizovat data pomocí **normalizovat Data**
+- Odebrání nebo nahrazení chybějících hodnot pomocí **Vyčištění chybějících dat**
+- Normalizovat data pomocí **normalizovat** data
   
 
-## <a name="how-to-use-apply-transformation"></a>Jak používat použít transformace  
+## <a name="how-to-use-apply-transformation"></a>Použití funkce použít transformaci  
   
-1. Přidat **použít transformace** modulu do experimentu. Můžete najít tento modul v rámci **Machine Learning**v **skóre** kategorie. 
+1. Přidejte do experimentu modul **použít transformaci** . Tento modul můžete najít v části **Machine Learning**v kategorii **skóre** . 
   
-2. Vyhledejte existující transformace použít jako vstup.  Dříve uložené transformace najdete v **transformuje** skupinu v levém navigačním podokně.  
+2. Vyhledejte existující transformaci, která se použije jako vstup.  Dříve uložené transformace lze nalézt ve skupině **transformes** v levém navigačním podokně.  
   
    
   
-3. Připojte datové sady, který chcete transformovat. Datová sada musí mít přesně stejné schéma (počet sloupců, názvy sloupců, datových typů) jako datovou sadu, pro který byl původně navržený transformace.  
+3. Připojte datovou sadu, kterou chcete transformovat. Datová sada musí mít přesně stejné schéma (počet sloupců, názvy sloupců, datové typy) jako datovou sadu, pro kterou byla transformace poprvé navržena.  
   
-4. Žádné další parametry musí být nastavena, protože všechna přizpůsobení se provádí při definování transformace.  
+4. Není nutné nastavovat žádné další parametry, protože při definování transformace je provedeno veškeré vlastní nastavení.  
   
-5. Použití transformace na novou datovou sadu, spusťte experiment.  
+5. Chcete-li použít transformaci na novou datovou sadu, spusťte experiment.  
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

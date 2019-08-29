@@ -1,7 +1,7 @@
 ---
-title: 'Určení skóre modelu: Odkaz na modul'
+title: 'Model skóre: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak používat modul určení skóre modelu ve službě Azure Machine Learning k vygenerování predikce na základě natrénovaného klasifikačního nebo regresního modelu.
+description: Naučte se používat modul určení skóre modelu ve službě Azure Machine Learning ke generování předpovědi pomocí výukového modelu klasifikace nebo regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f8f7bfcbbf013f2cf32957772086d7e44d31e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029262"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128518"
 ---
 # <a name="score-model-module"></a>Modul Určení skóre modelu
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží ke generování predikce na základě trénovaný klasifikační nebo regresní model.
+Pomocí tohoto modulu můžete vygenerovat předpovědi s využitím trained nebo regresního modelu.
 
 ## <a name="how-to-use"></a>Způsob použití
 
-1. Přidat **Score Model** modulu do experimentu.
+1. Přidejte modul určení **skóre modelu** do experimentu.
 
-2. Připojte trénovaného modelu a datovou sadu obsahující nové vstupní data. 
+2. Připojte školený model a datovou sadu obsahující nová vstupní data. 
 
-    Data by měla být ve formátu, který je kompatibilní s typem trénovaného modelu, který používáte. Schéma vstupní datová sada by měla odpovídat také obecně schéma dat využívají k tréninku modelu.
+    Data by měla být ve formátu kompatibilním s typem vyškolený model, který používáte. Schéma vstupní datové sady by mělo také obecně odpovídat schématu dat použitých pro výuku modelu.
 
 3. Spusťte experiment.
 
 ## <a name="results"></a>Výsledky
 
-Po vygenerování skóre, které se pomocí sady [Score Model](./score-model.md):
+Po vygenerování sady skóre pomocí [modelu skóre](./score-model.md):
 
-+ Generuje sadu metriky použít za vaše rozhodnutí vyzkoušet jeho přesnost (výkon).  scored datovou sadu, která se můžete připojit [Evaluate Model](./evaluate-model.md), 
-+ Klikněte pravým tlačítkem na modul a vyberte **vizualizovat** zobrazíte ukázku výsledků.
-+ Uložte výsledky do datové sady.
++ Pro vygenerování sady metrik používané pro vyhodnocení přesnosti modelu (výkon).  můžete propojit vyhodnocenou datovou sadu k [vyhodnocení modelu](./evaluate-model.md), 
++ Klikněte pravým tlačítkem na modul a vyberte **vizualizovat** a zobrazí se ukázka výsledků.
++ Uloží výsledky do datové sady.
 
-Skóre nebo předpovězené hodnoty, může být v různých formátech, v závislosti na modelu a vstupní data:
+Skóre nebo předpokládaná hodnota může být v mnoha různých formátech v závislosti na modelu a vstupních datech:
 
-- Pro modelů klasifikace [Score Model](./score-model.md) výstupy předpovězené hodnoty pro třídy, jakož i pravděpodobnost předpovězené hodnoty.
-- Pro regresní modely [Score Model](./score-model.md) generuje pouze předpokládaná číselná hodnota.
-- U modelů klasifikace imagí může být skóre třídu objektu v obrázku nebo logická hodnota označující, zda byl nalezen konkrétní funkce.
+- U modelů klasifikace [model skóre](./score-model.md) zapisuje předpokládanou hodnotu pro třídu a také pravděpodobnost předpovězené hodnoty.
+- Pro regresní modely generuje [model skóre](./score-model.md) pouze předpovězenou číselnou hodnotu.
+- V případě modelů klasifikace obrázků může být skóre třída objektu v obrázku nebo logická hodnota, která označuje, zda byla nalezena konkrétní funkce.
 
-## <a name="publish-scores-as-a-web-service"></a>Publikovat jako webovou službu skóre
+## <a name="publish-scores-as-a-web-service"></a>Publikování skóre jako webové služby
 
-Běžně se používají vyhodnocení je výstup jako součást prediktivní webové služby. Další informace najdete v tématu v tomto kurzu o tom, jak vytvořit webové služby založené na experiment v Azure Machine Learning:
+Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v tomto kurzu o vytvoření webové služby na základě experimentu v Azure Machine Learning:
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

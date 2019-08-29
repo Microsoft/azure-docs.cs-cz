@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848203"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128345"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -30,7 +30,7 @@ Následující tabulka uvádí každé vývojové prostředí popsané v tomto �
 | [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
 | [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudového poznámkového bloku (Python a SDK jsou předem nainstalované), ale mají předinstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovým VIRTUÁLNÍm počítačem poznámkového bloku se pomaleji Začínáme. |
-| [Azure Notebooks](#aznotebooks) | Špičková a špičková prostředí s využitím Pythonu a předem nainstalované sady SDK. | Ve srovnání s cloudovým virtuálním počítačem notebooků je k dispozici méně efektivní virtuální počítač. Izolované od pracovního prostoru a dalších prostředků. |
+| [Azure Notebooks](#aznotebooks) | Bezplatné a odlehčené prostředí Začínáme s předinstalovaným Pythonem a sadou SDK. | V porovnání s cloudovým virtuálním počítačem poznámkového bloku jsou dostupné méně výkonné virtuální počítače. Izolované od pracovního prostoru a dalších prostředků. |
 
 Tento článek také nabízí další tipy k používání následujících nástrojů:
 
@@ -187,16 +187,21 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
     Tento příkaz nainstaluje základní Azure Machine Learning SDK s poznámkovým blokem a automl. `automl` Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > Pokud se zobrazí zpráva, že PyYAML nelze odinstalovat, použijte místo toho následující příkaz:
+   > * Pokud se zobrazí zpráva, že PyYAML nelze odinstalovat, použijte místo toho následující příkaz:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * Počínaje macOS Catalina, zsh (prostředí Z) je výchozí prostředí pro přihlášení a interaktivní prostředí. V ZSH použijte následující příkaz, který řídí hranaté závorky\\"" (zpětné lomítko):
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Instalace sady SDK bude trvat několik minut. Další informace o možnostech instalace najdete v [instalační příručce](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
+
+   Instalace sady SDK bude trvat několik minut. Další informace o možnostech instalace najdete v příručce pro [instalaci](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
@@ -280,7 +285,7 @@ Pokud chcete použít Visual Studio Code pro vývoj, udělejte toto:
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí založené na poznámkovém bloku s výpočetním clusterem založeným na procesoru nebo GPU.
+Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Poskytuje prostředí pro spolupráci na bázi poznámkového bloku s PROCESORem nebo výpočetním clusterem založeným na GPU.
 
 Jak Azure Databricks spolupracuje se službou Azure Machine Learning:
 + Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
@@ -294,7 +299,7 @@ Vytvořte [cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart
 
 Použijte tato nastavení:
 
-| Nastavení |Platná pro| Hodnota |
+| Nastavení |Platná pro| Value |
 |----|---|---|
 | Název clusteru |vždy| yourclustername |
 | Modul runtime Databricks |vždy| Libovolný běhový modul bez ML (bez ML 4. x, 5. x) |
@@ -329,10 +334,10 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    1. Na kartě **knihovny** vyberte **restartovat**.
 
    Zvažte také:
-   + V Automl config při použití Azure Databricks přidejte následující parametry:
+   + V AutoML config při použití Azure Databricks přidejte následující parametry:
        1. ```max_concurrent_iterations```vychází z počtu pracovních uzlů v clusteru.
         2. ```spark_context=sc```je založen na výchozím kontextu Sparku.
-   + Nebo, pokud máte starou verzi sady SDK, zrušte výběr z nainstalovaného knihovny clusteru a přesuňte se do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud dojde k nějakému problému, odpojte a znovu připojte svůj cluster.
+   + Nebo, pokud máte starou verzi sady SDK, zrušte výběr z nainstalovaného knihovny clusteru a přesuňte se do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po restartování dojde k problému, odpojte a znovu připojte svůj cluster.
 
 Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
@@ -403,7 +408,7 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
     Tento kód zapíše konfigurační soubor do souboru *. AzureML/config. JSON* .
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
 - Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk)

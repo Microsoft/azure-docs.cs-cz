@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 049fc534c6bf3d777268363968ac2a8b92ca8d1c
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904434"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147451"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Začínáme se správou zařízení (Node. js)
 
@@ -34,8 +34,6 @@ Na konci tohoto kurzu máte dvě konzolové aplikace Node. js:
 * **dmpatterns_getstarted_service. js**, který volá přímou metodu v aplikaci simulovaného zařízení, zobrazuje odpověď a zobrazuje aktualizované hlášené vlastnosti.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu potřebujete:
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998176"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128205"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -30,13 +30,13 @@ Tento článek ukazuje, jak používat API [Upload video](https://api-portal.vid
 Po nahrání videa Video Indexer případně zakódovat video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. Pomocí placené možnosti vytvoříte účet Video Indexer, který je [připojený k vašemu předplatnému Azure a účet Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
 
 ## <a name="uploading-considerations"></a>Aspekty nahrávání videí na server
-
-- Při nahrávání videa na server podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo vyššího).
-- Velikost nahrávání s možností URL je omezená na 30 GB
-- Délka adresy URL žádosti je omezená na 2048 znaků.
+ 
+- Při nahrávání videa na základě adresy URL (upřednostňované) musí být koncový bod zabezpečený pomocí TLS 1,2 (nebo vyšší).
+- Velikost nahrávání s možností URL je omezená na 30 GB.
+- Délka adresy URL žádosti je omezená na 6144 znaků, kde délka adresy URL řetězce dotazu je omezená na 4096 znaků.
 - Velikost nahrávání s možností bajtového pole je omezená na 2 GB.
 - Časový limit možnosti bajtového pole vyprší po 30 minutách.
-- Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
+- Adresa URL poskytnutá `videoURL` parametrem musí být zakódovaná.
 - Indexace Media Services prostředků má stejné omezení jako indexování z adresy URL.
 - Video Indexer má pro jeden soubor maximální dobu trvání 4 hodiny.
 
@@ -289,6 +289,6 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 |400|VIDEO_ALREADY_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Projděte si výstup Azure Video Indexer vytvořený pomocí rozhraní API](video-indexer-output-json-v2.md)

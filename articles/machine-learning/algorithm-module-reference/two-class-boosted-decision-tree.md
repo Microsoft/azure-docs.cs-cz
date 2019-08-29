@@ -1,7 +1,7 @@
 ---
-title: 'Two-Class posíleného rozhodovacího stromu: Odkaz na modul'
+title: 'Zvýšení rozhodovacího stromu se dvěma třídami: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu Two-Class Boosted Decision Tree ve službě Azure Machine Learning vytvořit model, který je založen na algoritmu Posílený rozhodovací stromy strojového učení.
+description: Naučte se používat modul zesíleného rozhodovacího stromu se dvěma třídami ve službě Azure Machine Learning, abyste vytvořili model strojového učení, který je založený na algoritmu posílené rozhodovací stromy.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,71 +9,70 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 09ea530cac5bdbd62208f134177e5ceaccb545e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027942"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128405"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>Two-Class Boosted Decision Tree modulu
+# <a name="two-class-boosted-decision-tree-module"></a>Modul pro zvýšení rozhodovacího stromu se dvěma třídami
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření modelu strojového učení, který je založen na algoritmu Posílený rozhodovací stromy. 
+Pomocí tohoto modulu můžete vytvořit model strojového učení, který je založený na algoritmu zesílených rozhodovacích stromů. 
 
-Posíleného rozhodovacího stromu je kompletu učení metody, ve kterém stromu druhý opraví chyby stromu první stromu třetí opraví chyby prvního a druhého stromy a tak dále.  Předpovědi jsou založené na celé skupiny stromů stromů společně, umožňující do predikce.
+Posílený rozhodovací strom je metoda učení kompletu, ve které druhý strom opravuje chyby prvního stromu, třetí strom pro chyby první a druhé stromy a tak dále.  Předpovědi jsou založené na celé kompletování stromů dohromady, které tvoří předpověď.
   
-Obecně platí pokud správně nakonfigurovaná, jsou Posílený rozhodovací stromy nejjednodušší metody, pomocí kterého se má získat maximální výkon na širokou škálu úlohy strojového učení. Nicméně jsou také jedním z inteligentních algoritmů více vysokými nároky na paměť a aktuální implementace obsahuje všechno, co v paměti. Model posíleného rozhodovacího stromu proto nemusí být schopna zpracovat velké datové sady, který dokáže zpracovat některé lineární inteligentních algoritmů.
+Obecně platí, že při správné konfiguraci jsou posílené rozhodovací stromy nejjednodušším způsobem, kterým získáte nejvyšší výkon nejrůznějších úloh strojového učení. Jsou to však také jedním z dalších učí náročných na paměť a aktuální implementace uchovává vše v paměti. Proto je možné, že model zesíleného rozhodovacího stromu nebude moci zpracovat velké datové sady, které mohou procesy lineárních učí zpracovat.
 
-## <a name="how-to-configure"></a>Postup konfigurace
+## <a name="how-to-configure"></a>Jak nakonfigurovat
 
-Tento modul vytvoří model Nezkušený klasifikace. Protože klasifikace je metodu učení pro trénování modelu, je třeba *označené datovou sadu* , který obsahuje popisek sloupce s hodnotou pro všechny řádky.
+Tento modul vytváří nevlakový model klasifikace. Vzhledem k tomu, že klasifikace je metoda učení pod dohledem, budete potřebovat datovou *sadu* s příznakem, která obsahuje sloupec popisku s hodnotou pro všechny řádky.
 
-Trénovat tento typ modelu pomocí [trénování modelu](././train-model.md). 
+Tento typ modelu můžete vyškolit pomocí [modelu výuky](././train-model.md). 
 
-1.  Ve službě Azure Machine Learning, přidejte **Boosted Decision Tree** modulu do experimentu.
+1.  V Azure Machine Learning přidejte do experimentu modul **zesíleného rozhodovacího stromu** .
   
-2.  Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.
+2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .
   
-    + **Jeden parametr**: Pokud víte, jak chcete provést konfiguraci modelu, můžete zadat konkrétní sadu hodnot jako argumenty.
+    + **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
   
   
-3.  Pro **maximální počet listů za stromu**, umožňuje určit maximální počet uzlů terminálu (listy), které je možné vytvořit v libovolné stromu.
+3.  U **maximálního počtu pochodů na strom**určete maximální počet uzlů terminálu (opustí), které je možné vytvořit v jakémkoli stromu.
   
-     Zvýšením tuto hodnotu potenciálně zvýšit velikost stromu a získat vyšší přesnost, nese overfitting a už školení čas.
+     Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout lepší přesnosti, a to na riziko přebudování a delší dobu školení.
   
-4.  Pro **minimální počet vzorků za uzel typu list**, určit počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (listový) ve stromové struktuře.  
+4.  Pro **minimální počet vzorků na uzel listu**určete počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.  
   
-     Zvýšením tuto hodnotu zvýšit prahovou hodnotu pro vytvoření nového pravidla. Výchozí hodnotu 1, ještě jeden případ může způsobit, který se má vytvořit nové pravidlo. Pokud zvýšíte hodnotu 5, museli byste trénovací data obsahují aspoň pět případy, které splňují stejných podmínek.
+     Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.
   
-5.  Pro **rychlost učení**, zadejte číslo mezi 0 a 1, který definuje velikost kroku při učení.  
+5.  Do pole **rychlost učení**zadejte číslo od 0 do 1, které definuje velikost kroku při učení.  
   
-     Rychlost učení Určuje, jak rychle nebo pomalu learner sladila na optimální řešení. Pokud velikost kroku je příliš velký, může být překročení optimální řešení. Pokud je příliš malá velikost kroku, školení trvá déle a umožňuje konvergovat v nejlepším řešením.
+     Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
   
-6.  Pro **počet stromů vytvořený**, určení celkového počtu rozhodovacích stromů k vytvoření v skupiny stromů. Vytvořením další rozhodovacích stromů, můžete potenciálně získat lepší pokrytí, ale čas školení zvýší.
+6.  Pro **počet konstruovaných stromů**určete celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se zvýší.
   
-     Tato hodnota také řídí počet stromové struktury zobrazují při vizualizaci trénovaného modelu. Pokud chcete zobrazit nebo vytisknout jediného stromu, nastavte hodnotu na 1. Ale pokud tak učiníte, pouze jeden stromu je vytvořen (stromové struktury s počáteční sadu parametrů) a jsou prováděny žádné další iterace.
+     Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, nastavte hodnotu na 1. Nicméně když to uděláte, vytvoří se jenom jeden strom (strom s počáteční sadou parametrů) a žádné další iterace se neprovádí.
   
-7.  Pro **náhodná počáteční hodnota čísla**, volitelně zadejte nezáporné celé číslo, který se použije jako náhodný počáteční hodnoty. Určení základní hodnota zajistí reprodukovatelnost během spuštění, které mají stejnou dat a parametry.  
+7.  V případě **náhodného čísla počáteční**hodnota zadejte nezáporné celé číslo, které chcete použít jako hodnotu náhodného osazení. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.  
   
-     Náhodná počáteční hodnota je standardně nastavena na 0, což znamená, že je počáteční počáteční hodnoty získané ze systémových hodin.  Po sobě jdoucích běhy využívající náhodná počáteční hodnota může vést k odlišným výsledkům.
+     Náhodné osazení je ve výchozím nastavení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin.  Po sobě jdoucí běhy s náhodným osivem můžou být odlišné výsledky.
   
 
-9. Trénování modelu.
+9. Proveďte výuku modelu.
   
-    + Pokud nastavíte **režimu vytváření trainer** k **jeden parametr**, připojení označené datové sady a [Train Model](./train-model.md) modulu.  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](./train-model.md) .  
   
    
 ## <a name="results"></a>Výsledky
 
-Po dokončení cvičení modelu klikněte pravým tlačítkem na výstup [Train Model](./train-model.md) zobrazíte výsledky:
+Po dokončení školení modelů klikněte pravým tlačítkem na výstup výukového [modelu](./train-model.md) pro zobrazení výsledků:
 
-+ Pokud chcete zobrazit stromu, který byl vytvořen při každé iteraci, vyberte **vizualizovat**. 
-+ K podrobnostem o rozdělení a zobrazit pravidla pro každý uzel, klikněte na každém stromu.
++ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, vyberte **vizualizovat**. 
++ Chcete-li přejít k podrobnostem o rozdělení a zobrazit pravidla pro každý uzel, klikněte na jednotlivé stromové struktury.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

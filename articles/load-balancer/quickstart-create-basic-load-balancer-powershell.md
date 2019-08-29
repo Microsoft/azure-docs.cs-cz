@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 58b36265a5e440dbf33a5d6fb85e791abbd006a8
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 378904b139edb7fe5d7c4376102ca6b153d84fb6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274244"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129078"
 ---
 # <a name="get-started"></a>Rychlý Start Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí Azure PowerShell
 
@@ -129,7 +129,7 @@ $natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 -BackendPort 3389
 ```
 
-### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
+### <a name="create-load-balancer"></a>Vytvořit nástroj pro vyrovnávání zatížení
 
 Vytvořte základní Load Balancer pomocí [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří pomocí dříve vytvořené konfigurace front-endové IP adresy, back-endového fondu, sondy stavu, pravidla vyrovnávání zatížení a pravidel překladu adres veřejný Load Balancer úrovně Basic s názvem myLoadBalancer:
 
@@ -168,7 +168,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-### <a name="create-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
+### <a name="create-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
 
 Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení k vaší virtuální síti.
 
@@ -295,40 +295,37 @@ Následujícím způsobem nainstalujte na obou back-endových virtuálních poč
 
 1. Získejte veřejnou IP adresu Load Balanceru. Pomocí rutiny `Get-AzPublicIPAddress` získejte veřejnou IP adresu Load Balanceru.
 
-   ```azurepowershell-interactive
-    Get-AzPublicIPAddress `
-    -ResourceGroupName "myResourceGroupLB" `
-    -Name "myPublicIP" | select IpAddress
-   ```
-2. Vytvořte pomocí veřejné IP adresy z předchozího kroku připojení ke vzdálené ploše virtuálního počítače VM1. 
+    ```azurepowershell-interactive
+    Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
+    ```
 
-   ```azurepowershell-interactive
+2. **V místním počítači otevřete příkazový řádek nebo okno PowerShellu pro tento krok**.  Vytvořte pomocí veřejné IP adresy z předchozího kroku připojení ke vzdálené ploše virtuálního počítače VM1. 
 
-      mstsc /v:PublicIpAddress:4221  
-  
-   ```
+    ```azurepowershell-interactive
+    mstsc /v:PublicIpAddress:4221  
+    ```
+
 3. Zadáním přihlašovacích údajů pro virtuální počítač *VM1* spusťte relaci RDP.
 4. Spusťte na virtuálním počítači VM1 Windows PowerShell a pomocí následujících příkazů nainstalujte server služby IIS a aktualizujte výchozí soubor htm.
+
     ```azurepowershell-interactive
-    # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    #Add custom htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+        # Install IIS
+          Install-WindowsFeature -name Web-Server -IncludeManagementTools
+        
+        # Remove default htm file
+          remove-item  C:\inetpub\wwwroot\iisstart.htm
+        
+        # Add custom htm file
+          Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
     ```
 5. Ukončete připojení RDP k virtuálnímu počítači *myVM1*.
-6. Spuštěním příkazu `mstsc /v:PublicIpAddress:4222` vytvořte připojení RDP k virtuálnímu počítači *myVM2* a zopakujte na něm čtvrtý krok.
+6. **Vytvořte připojení RDP na místním počítači** pomocí *myVM2* spuštěním `mstsc /v:PublicIpAddress:4222` příkazu a opakujte krok 4 pro *VM2*.
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```azurepowershell-interactive
-Get-AzPublicIPAddress `
-  -ResourceGroupName "myResourceGroupLB" `
-  -Name "myPublicIP" | select IpAddress
+Get-AzPublicIPAddress -ResourceGroupName "myResourceGroupLB" -Name "myPublicIP" | select IpAddress
 ```
 
 Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Zobrazí se web, včetně názvu hostitele virtuálního počítače, do kterého nástroj pro vyrovnávání zatížení distribuoval provoz, jako v následujícím příkladu:
@@ -345,7 +342,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 Remove-AzResourceGroup -Name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V rámci tohoto rychlého startu jste vytvořili Load Balancer úrovně Basic, připojili jste k němu virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 

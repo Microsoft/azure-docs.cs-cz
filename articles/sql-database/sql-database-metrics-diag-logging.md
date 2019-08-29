@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d9f1afdff53ada2df7722fcfdd7014fb6c417e39
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998229"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135175"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -555,7 +555,7 @@ Další informace o [datech statistiky čekání na úložiště dotazů](https:
 |SourceSystem|Stál Azure |
 |TimeGenerated [UTC]|Časové razítko záznamu protokolu |
 |type|Stál AzureDiagnostics |
-|ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQ |
+|ResourceProvider|Název poskytovatele prostředků Stál MICROSOFT.SQL |
 |Kategorie|Název kategorie Stál Chyby |
 |OperationName|Název operace Stál ErrorEvent |
 |Resource|Název zdroje |
@@ -707,7 +707,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 
 Přečtěte si další informace o [formátu protokolu Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak povolit protokolování a pochopit kategorie metrik a protokolů podporované různými službami Azure, najdete v těchto tématech:
 

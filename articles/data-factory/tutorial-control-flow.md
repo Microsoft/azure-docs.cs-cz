@@ -3,27 +3,26 @@ title: Větvení v kanálu Azure Data Factory | Dokumentace Microsoftu
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456990"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140736"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Přehled scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
+Podrobný přehled scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
 
 V tomto kurzu provedete následující kroky:
 
@@ -46,7 +45,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 * **Visual Studio** 2013, 2015 nebo 2017. Názorný postup v tomto článku využívá Visual Studio 2017.
-* **Stáhněte a nainstalujte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)**.
+* **Stáhněte a nainstalujte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
 * **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
 
 ### <a name="create-blob-table"></a>Vytvoření tabulky objektů blob
@@ -66,14 +65,14 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
 
 1. Spusťte **Visual Studio**.
 2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**. Vyžaduje se .NET verze 4.5.2 nebo novější.
-3. V seznamu typů projektů napravo vyberte **Visual C#** -> **Aplikace konzoly (.NET Framework)**.
+3. V seznamu typů projektů napravo vyberte **Visual C#**  -> **Aplikace konzoly (.NET Framework)** .
 4. Jako název zadejte **ADFv2BranchTutorial**.
 5. Projekt vytvoříte kliknutím na **OK**.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
 1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
-2. V **Konzola správce balíčků**, spusťte následující příkazy, které se mají balíčky nainstalovat. Odkazovat na [balíček nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) s podrobnostmi.
+2. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -96,7 +95,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Do **třídy Program** přidejte tyto statické proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Do **třídy Program** přidejte tyto statické proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```csharp
         // Set variables
@@ -209,7 +208,7 @@ Do metody **Main** přidejte následující kód, který vytvoří **datovou sad
 
 Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob ke kopírování ze: **FolderPath** a **FileName**;
+- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **filename**;
 - Všimněte si použití parametrů pro FolderPath. sourceBlobContainer je název parametru a výraz se nahradí hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
 V souboru Program.cs vytvořte funkci SourceBlobDatasetDefinition:
@@ -263,14 +262,14 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>Vytvoření C# třídy: EmailRequest
+## <a name="create-a-c-class-emailrequest"></a>Vytvořte C# třídu: EmailRequest
 
 V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vlastnosti kanál posílá v těle požadavku při odesílání e-mailu. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
 
 - **Message**: Text e-mailu. V případě úspěšného kopírování tato vlastnost obsahuje podrobnosti o spuštění (počet zapsaných dat). V případě neúspěšného kopírování tato vlastnost obsahuje podrobnosti o chybě.
 - **DataFactoryName**: Název datové továrny.
 - **PipelineName**: Název kanálu.
-- **Příjemce**: Parametr, který se předává. Tato vlastnost určuje příjemce e-mailu.
+- **Přijímač**: Parametr, který se předává. Tato vlastnost určuje příjemce e-mailu.
 
 ```csharp
     class EmailRequest

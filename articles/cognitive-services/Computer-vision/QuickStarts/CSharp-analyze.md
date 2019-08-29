@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza místní image - REST,C#'
+title: 'Rychlý start: Analyzovat místní image – RESTC#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a C#.
 services: cognitive-services
@@ -11,36 +11,33 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 941478e8d09ea0a06139ba4ddf3ac14e5b52b9d6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7f4fb8114c2d6fca9564ce4848484c1c20a9511e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606022"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141413"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Analýza místní image pomocí rozhraní API pro počítačové zpracování obrazu REST aC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý start: Analyzujte místní Image pomocí Počítačové zpracování obrazu REST API aC#
 
-V tomto rychlém startu se analyzovat místně uložený obrázek extrahovat vizuální funkce pomocí rozhraní REST API pro počítačové zpracování obrazu. S [analyzovat Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metodu, můžete extrahovat informace vizuální funkce na základě obsahu obrázku.
+V tomto rychlém startu budete analyzovat místně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [analyzovat image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat informace o vizuálních funkcích založenou na obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
 Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
 
-1. Vytvořit nové řešení sady Visual Studio v sadě Visual Studio pomocí Vizuálu C# šablony Konzolová aplikace (.NET Framework).
+1. Vytvořte nové řešení sady Visual Studio v aplikaci Visual Studio pomocí šablony aplikace C# Visual Console (.NET Framework).
 1. Nainstalujte balíček NuGet Newtonsoft.Json.
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Newtonsoft.Json.
     1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
-1. Nahraďte kód v `Program.cs` kódem zobrazeným níže a tam, kde je to potřeba, proveďte následující změny v kódu:
-    1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-    1. Hodnotu `uriBase` nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
 1. Spusťte program.
 1. Do příkazového řádku zadejte cestu k místnímu obrázku.
 
@@ -56,19 +53,13 @@ namespace CSHttpClientSample
 {
     static class Program
     {
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
+        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westcentralus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
+        static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
+        
+        // the Analyze method endpoint
+        const string uriBase = endpoint + "vision/v2.0/analyze";
 
         static void Main()
         {
@@ -252,4 +243,4 @@ namespace CSHttpClientSample
 Prozkoumejte základní aplikaci Windows, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů.
 
 > [!div class="nextstepaction"]
-> [Computer Vision API na C# kurz](../Tutorials/CSharpTutorial.md)
+> [Kurz C# rozhraní API pro počítačové zpracování obrazu](../Tutorials/CSharpTutorial.md)

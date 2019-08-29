@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 08/28/2019
 ms.author: assafi
-ms.openlocfilehash: deb8c742161d59c8926c1ec139978d15b891bd4a
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 6e6f1d5cfe1f5e745e6f780b5cb9f979520a1f91
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019474"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70134918"
 ---
 # <a name="quickstart-text-analytics-client-library-for-net"></a>Rychlý start: Klientská knihovna pro analýzu textu pro .NET
 <a name="HOLTop"></a>
@@ -89,19 +89,36 @@ using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
 using Microsoft.Rest;
 ```
 
-V `Main` metodě aplikace vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k této proměnné. Metody budete definovat později.
+Ve `Program` třídě aplikace vytvořte proměnné pro koncový bod a klíč předplatného prostředku. Ve statickém konstruktoru získá tyto hodnoty z proměnných `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a. `TEXT_ANALYTICS_ENDPOINT` Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
+
+```csharp
+private const string key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+```
+
+V `Main` metodě aplikace vytvořte přihlašovací údaje pro přístup ke koncovému bodu analýza textu.  Metody volané `Main` metodou se definují později.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
 ```csharp
 static void Main(string[] args)
 {
-    // replace this endpoint with the correct one for your Azure resource. 
-    string endpoint = $"https://westus.api.cognitive.microsoft.com";
-    //This sample assumes you have created an environment variable for your key
-    string key = Environment.GetEnvironmentVariable("TEXT_ANALYTICS_SUBSCRIPTION_KEY");
-
-    var credentials = new ApiKeyServiceClientCredentials(key);
+    var credentials = new ApiKeyServiceClientCredentials(subscriptionKey);
     TextAnalyticsClient client = new TextAnalyticsClient(credentials)
     {
         Endpoint = endpoint
@@ -110,9 +127,11 @@ static void Main(string[] args)
     Console.OutputEncoding = System.Text.Encoding.UTF8;
     SentimentAnalysisExample(client);
     // languageDetectionExample(client);
-    // RecognizeEntitiesExample(client);
+    // entityRecognitionExample(client);
     // KeyPhraseExtractionExample(client);
-    Console.ReadLine();
+    
+    Console.Write("Press any key to exit.");
+    Console.ReadKey();
 }
 ```
 
@@ -263,14 +282,17 @@ Entities:
 Vytvořte novou funkci s názvem `KeyPhraseExtractionExample()` , která převezme klienta, který jste vytvořili dříve, [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.textanalytics.textanalyticsclientextensions.keyphrases?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Language_TextAnalytics_TextAnalyticsClientExtensions_KeyPhrases_Microsoft_Azure_CognitiveServices_Language_TextAnalytics_ITextAnalyticsClient_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_) a zavolejte jeho funkci. Výsledek bude obsahovat seznam zjištěných klíčových frází v případě `KeyPhrases` úspěchu `errorMessage` a v případě potřeby. Vytiskněte všechny zjištěné klíčové fráze.
 
 ```csharp
-var result = client.KeyPhrases("My cat might need to see a veterinarian.");
-
-// Printing key phrases
-Console.WriteLine("Key phrases:");
-
-foreach (string keyphrase in result.KeyPhrases)
+static void KeyPhraseExtractionExample(TextAnalyticsClient client)
 {
-    Console.WriteLine($"\t{keyphrase}");
+    var result = client.KeyPhrases("My cat might need to see a veterinarian.");
+
+    // Printing key phrases
+    Console.WriteLine("Key phrases:");
+
+    foreach (string keyphrase in result.KeyPhrases)
+    {
+        Console.WriteLine($"\t{keyphrase}");
+    }
 }
 ```
 

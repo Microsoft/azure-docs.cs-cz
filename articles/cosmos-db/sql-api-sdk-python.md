@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624625"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137345"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -145,7 +145,12 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 Všechny žádosti o Cosmos DB používání vyřazené sady SDK jsou službou odmítnuty.
 
 > [!WARNING]
-> Všechny verze sady Azure SQL SDK pro Python před verzí **1.0.0** byly vyřazení od **29. února 2016**. 
+> Všechny verze sady Python SDK pro SQL API starší než verze **1.0.0** byly vyřazení od **29. února 2016**. 
+> 
+> 
+
+> [!WARNING]
+> Všechny verze 1. x a 2. x sady Python SDK pro SQL API budou vycházet z **30. srpna 2020**. 
 > 
 > 
 
@@ -155,27 +160,27 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK jsou službou o
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15. listopadu 2018 |--- |
 | [3.0.1](#3.0.1) |Říjen 04, 2018 |--- |
-| [2.3.3](#2.3.3) |Září 08, 2018 |--- |
-| [2.3.2](#2.3.2) |8\. května 2018 |--- |
-| [2.3.1](#2.3.1) |21. prosince 2017 |--- |
-| [2.3.0](#2.3.0) |10. listopadu 2017 |--- |
-| [2.2.1](#2.2.1) |Září 29, 2017 |--- |
-| [2.2.0](#2.2.0) |10. května 2017 |--- |
-| [2.1.0](#2.1.0) |Květen 01, 2017 |--- |
-| [2.0.1](#2.0.1) |30. října 2016 |--- |
-| [2.0.0](#2.0.0) |29. září 2016 |--- |
-| [1.9.0](#1.9.0) |7\. července 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.0](#1.7.0) |26. dubna 2016 |--- |
-| [1.6.1](#1.6.1) |08 8. dubna 2016 |--- |
-| [1.6.0](#1.6.0) |29. března 2016 |--- |
-| [1.5.0](#1.5.0) |Leden 03, 2016 |--- |
-| [1.4.2](#1.4.2) |06 6. října 2015 |--- |
-| 1.4.1 |06 6. října 2015 |--- |
-| [1.2.0](#1.2.0) |6\. srpna 2015 |--- |
-| [1.1.0](#1.1.0) |09. července 2015 |--- |
-| [1.0.1](#1.0.1) |25. května 2015 |--- |
-| [1.0.0](#1.0.0) |07. dubna 2015 |--- |
+| [2.3.3](#2.3.3) |Září 08, 2018 |30. srpna 2020 |
+| [2.3.2](#2.3.2) |8\. května 2018 |30. srpna 2020 |
+| [2.3.1](#2.3.1) |21. prosince 2017 |30. srpna 2020 |
+| [2.3.0](#2.3.0) |10. listopadu 2017 |30. srpna 2020 |
+| [2.2.1](#2.2.1) |Září 29, 2017 |30. srpna 2020 |
+| [2.2.0](#2.2.0) |10. května 2017 |30. srpna 2020 |
+| [2.1.0](#2.1.0) |Květen 01, 2017 |30. srpna 2020 |
+| [2.0.1](#2.0.1) |30. října 2016 |30. srpna 2020 |
+| [2.0.0](#2.0.0) |29. září 2016 |30. srpna 2020 |
+| [1.9.0](#1.9.0) |7\. července 2016 |30. srpna 2020 |
+| [1.8.0](#1.8.0) |14. června 2016 |30. srpna 2020 |
+| [1.7.0](#1.7.0) |26. dubna 2016 |30. srpna 2020 |
+| [1.6.1](#1.6.1) |08 8. dubna 2016 |30. srpna 2020 |
+| [1.6.0](#1.6.0) |29. března 2016 |30. srpna 2020 |
+| [1.5.0](#1.5.0) |Leden 03, 2016 |30. srpna 2020 |
+| [1.4.2](#1.4.2) |06 6. října 2015 |30. srpna 2020 |
+| 1.4.1 |06 6. října 2015 |30. srpna 2020 |
+| [1.2.0](#1.2.0) |6\. srpna 2015 |30. srpna 2020 |
+| [1.1.0](#1.1.0) |09. července 2015 |30. srpna 2020 |
+| [1.0.1](#1.0.1) |25. května 2015 |30. srpna 2020 |
+| [1.0.0](#1.0.0) |07. dubna 2015 |30. srpna 2020 |
 | 0.9.4-prelease |14. ledna 2015 |29. února 2016 |
 | 0.9.3-prelease |9\. prosince 2014 |29. února 2016 |
 | 0.9.2-prelease |25. listopadu 2014 |29. února 2016 |

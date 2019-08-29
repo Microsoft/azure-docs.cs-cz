@@ -1,7 +1,7 @@
 ---
-title: 'Trénování modelu: Odkaz na modul'
+title: 'Model výuky: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití **trénování modelu** modulu ve službě Azure Machine Learning tak moct trénovat klasifikační nebo regresní model.
+description: Naučte se používat modul **vlakového modelu** ve službě Azure Machine Learning ke školení modelu klasifikace nebo regrese.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,73 +9,72 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 29d0f698456b83c1520a92bc7df47b26540325f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028107"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128452"
 ---
 # <a name="train-model-module"></a>Modul trénování modelu
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k trénovat klasifikační nebo regresní model. Školení probíhá po definované modelu a nastavte jeho parametry a vyžaduje označených datových. Můžete také použít **Train Model** k přeučování existující model s novými daty. 
+Tento modul slouží ke školení modelu klasifikace nebo regrese. Školení proběhne po definování modelu a nastavení jeho parametrů a vyžaduje označení dat. Pomocí **výukového modelu** můžete také přeškolovat stávající model s novými daty. 
 
-## <a name="how-the-training-process-works"></a>Jak funguje proces školení
+## <a name="how-the-training-process-works"></a>Jak proces školení funguje
 
-V Azure Machine Learning je obvykle o třech krocích vytváření a používání modelu strojového učení. 
+V Azure Machine Learning je vytváření a používání modelu strojového učení obvykle proces tří kroků. 
 
-1. Konfigurace modelu, výběrem konkrétního typu algoritmu a definování jeho parametry nebo hyperparameters. Zvolte některou z následujících typů modelu: 
+1. Nakonfigurujete model, výběrem konkrétního typu algoritmu a definováním jeho parametrů nebo parametrů. Vyberte některý z následujících typů modelů: 
 
-    + **Klasifikace** modely založené na neuronových sítí, rozhodovacích stromů a rozhodnutí doménové struktury a ostatní algoritmy.
-    + **Regrese** modely, které obsahují standardní lineární regrese, nebo využívající jiné algoritmy, včetně neuronových sítí a regresní Bayesova.  
+    + **Klasifikační** modely založené na neuronovéch sítích, rozhodovacích stromů a doménových strukturách a dalších algoritmech.
+    + **Regresní** modely, které mohou zahrnovat standardní lineární regresi nebo které používají jiné algoritmy, včetně neuronovéch sítí a bayesovského rozhodování regrese.  
 
-2. Zadejte datovou sadu, má popisek, který obsahuje data, které jsou kompatibilní s algoritmem. Připojení dat a modelu, který má **Train Model**.
+2. Poskytněte datovou sadu, která je označena a má data kompatibilní s algoritmem. Připojte data i model k proškolování **modelu**.
 
-    Jaké školení vytváří je konkrétní binární formát, iLearner, který zapouzdřuje statistické vzory zjistili díky spolupráci se data. Nelze přímo upravovat nebo si přečtěte tento formát; ostatní moduly však můžete použít tento trénovaného modelu. 
+    Jaké školení vytváří konkrétní binární formát, iLearner, který zapouzdřuje statistické vzorce získané z dat. Tento formát nejde změnit přímo ani číst. Tento vycvičený model ale může používat jiný modul. 
     
-    Můžete také zobrazit vlastnosti modelu. Další informace najdete v části výsledků.
+    Můžete také zobrazit vlastnosti modelu. Další informace najdete v části s výsledky.
 
-3. Po dokončení školení použít s jednou z trénovaného modelu [vyhodnocování moduly](./score-model.md), k vytvoření predikcí nová data.
+3. Po dokončení školení použijte školicí model s jedním z [modulů](./score-model.md)pro vyhodnocování a předpovědi se na nová data.
 
-## <a name="how-to-use-train-model"></a>Jak používat **Train Model**  
+## <a name="how-to-use-train-model"></a>Jak používat **model výuky**  
   
-1.  Ve službě Azure Machine Learning nakonfigurujte model klasifikace nebo regresní model.
+1.  V Azure Machine Learning nakonfigurujte model klasifikace nebo regresní model.
     
-2. Přidat **Train Model** modulů na experiment.  Můžete najít v rámci tohoto modulu **Machine Learning** kategorie. Rozbalte **Train**a pak přetáhněte **Train Model** modulu do svého experimentu.
+2. Přidejte modul **vlakového modelu** do experimentu.  Tento modul můžete najít v kategorii **Machine Learning** . Rozbalte položku **vlak**a přetáhněte modul **vlakového modelu** do experimentu.
   
-3.  Na levém vstup připojte Nezkušený režimu. Připojit trénovací datové sady na pravém vstup **Train Model**.
+3.  Na levém vstupu připojte nev nevýukovém režimu. Připojte datovou sadu ke správnému vstupu **modelu výuky**.
 
-    Trénovací datovou sadu musí obsahovat sloupec popisek. Všechny řádky bez popisky jsou ignorovány.
+    Datová sada školení musí obsahovat sloupec popisku. Všechny řádky bez popisků jsou ignorovány.
   
-4.  Pro **popisek sloupce**, klikněte na tlačítko **spustit selektor sloupců**a zvolte jeden sloupec, který obsahuje výsledky modelu lze použít k trénování.
+4.  U **sloupce popisek**klikněte na **Spustit selektor sloupců**a vyberte jeden sloupec obsahující výsledky, které model může použít pro školení.
   
-    - Pro klasifikaci problémy sloupec popisek musí obsahovat buď **zařazené do kategorií** hodnoty nebo **diskrétní** hodnoty. Některé příklady může být hodnocení Ano/Ne, kód klasifikace stádiu nebo název nebo skupinu příjmů.  Pokud vyberete noncategorical sloupce, modul vrátí chybu během cvičení.
+    - Pro problémy s klasifikací musí sloupec popisku obsahovat buď hodnoty **kategorií** nebo **diskrétní** hodnoty. Některé příklady mohou být hodnocení typu Ano/bez, kód klasifikace choroby nebo název nebo skupina pro příjem.  Pokud vyberete sloupec noncategorical, modul během školení vrátí chybu.
   
-    -   Regrese problémů, musí obsahovat sloupec popisek **číselné** data, která představuje proměnnou odpovědi. V ideálním případě představuje číselná data průběžné škálování. 
+    -   V případě regresních problémů musí sloupec popisku obsahovat **Číselná** data, která představují proměnnou odpovědi. V ideálním případě číselná data představují souvislý rozsah. 
     
-    Příklady je možné kredit rizikovým skóre, předpokládané čas selhání pro pevný disk nebo předpokládaných počet volání do centra volání v daném dni nebo čas.  Pokud jste nezvolili číselný sloupec, může se objevit chyba.
+    Příkladem může být skóre úvěrového rizika, předpokládaný čas k selhání pevného disku nebo předpokládaný počet volání centra volání v daném dni nebo čase.  Pokud nevyberete číselný sloupec, může se zobrazit chyba.
   
-    -   Pokud nezadáte popisek sloupce, Azure Machine Learning se pokusí odvodit, což je sloupec odpovídající popisku, na základě metadat datové sady. Pokud použila nesprávném sloupci, opravte ji pomocí voliče sloupců.
+    -   Pokud neurčíte, který sloupec popisku použít, Azure Machine Learning se pokusí odvodit, který je příslušným sloupcem popisku, pomocí metadat datové sady. Pokud se sloupec vybere jako špatný, můžete ho opravit pomocí voliče sloupců.
   
     > [!TIP] 
-    > Pokud máte problémy s používáním selektor sloupců, najdete v článku [výběr sloupců v datové sadě](./select-columns-in-dataset.md) tipy. Popisuje některé běžné scénáře a tipy pro používání **pravidla s** a **podle názvu** možnosti.
+    > Pokud máte potíže s použitím voliče sloupců, přečtěte si článek [Výběr sloupců v datové sadě](./select-columns-in-dataset.md) pro tipy. Popisuje několik běžných scénářů a tipů k používání **pravidel s pravidly** a možnostmi **názvu** .
   
-5.  Spusťte experiment. Pokud máte velké množství dat, to může chvíli trvat.
+5.  Spusťte experiment. Pokud máte velké množství dat, může to chvíli trvat.
 
-## <a name="bkmk_results"></a> výsledky
+## <a name="bkmk_results"></a>Důsledk
 
-Po model se trénuje:
+Po vyškolení modelu:
 
-+ Chcete-li zobrazit parametry modelu a váhy funkce, klikněte pravým tlačítkem na výstupu a vyberte **vizualizovat**.
-+ K použití modelu v další pokusy, klikněte pravým tlačítkem na model a vyberte **uložit Model**. Zadejte název pro model. 
++ Pokud chcete zobrazit parametry modelu a váhy funkcí, klikněte pravým tlačítkem na výstup a vyberte **vizualizovat**.
++ Pokud chcete model použít v jiných experimentech, klikněte pravým tlačítkem na model a vyberte **Uložit model**. Zadejte název modelu. 
 
-    Toto uloží modelu jako snímek, který není aktualizován opakovaných spuštění experimentu.
-+ K použití modelu pro předpověď nové hodnoty, připojte ho k [Score Model](./score-model.md) modulu, společně s novou vstupní data.
+    Tím se model uloží jako snímek, který není aktualizován opakovanými běhy experimentu.
++ Pokud chcete model použít při předvídání nových hodnot, připojte ho k modulu [skóre modelu](./score-model.md) spolu s novými vstupními daty.
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -3,21 +3,20 @@ title: Datové sady v Azure Data Factory | Microsoft Docs
 description: Seznamte se s datovými sadami v Data Factory. Datové sady reprezentují vstupní a výstupní data.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019973"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137297"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -147,9 +146,7 @@ Je třeba počítat s následujícím:
 - linkedServiceName odkazuje na propojenou službu typu AzureSqlDatabase, která je definována v následujícím fragmentu kódu JSON.
 
 ## <a name="dataset-type"></a>Typ datové sady
-V závislosti na používaném úložišti dat existuje mnoho různých typů datových sad. Seznam úložišť dat podporovaných nástrojem Data Factory najdete v následující tabulce. Kliknutím na úložiště dat se dozvíte, jak vytvořit propojenou službu a datovou sadu pro toto úložiště dat.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
+V závislosti na používaném úložišti dat existuje mnoho různých typů datových sad. Seznam dat, která podporuje Data Factory, najdete v článku [Přehled konektoru](connector-overview.md) . Kliknutím na úložiště dat se dozvíte, jak vytvořit propojenou službu a datovou sadu pro toto úložiště dat.
 
 V příkladu v předchozí části je typ datové sady nastavený na **AzureSqlTable**. Podobně pro datovou sadu objektů BLOB v Azure je typ datové sady nastavený na **azureblobu**, jak je znázorněno v následujícím kódu JSON:
 

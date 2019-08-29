@@ -7,17 +7,16 @@ author: nabhishek
 manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: fad8045ac8bddb236f0f80ad223ebafc7aa7e93a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: b6426017b7608742866cedb08b5ac9298400d433
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002860"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140893"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku Databricks ve službě Azure Data Factory
 
@@ -71,7 +70,7 @@ Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
 1.  Jako **Umístění** vyberte umístění datové továrny.
 
-    Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
+    Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
 1.  Vyberte **Vytvořit**.
 
 
@@ -109,7 +108,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
     1.  **Přístupový token** vygenerujte z pracovního prostoru Azure Databricks. Postup najdete [tady](https://docs.databricks.com/api/latest/authentication.html#generate-token).
 
-    1.  Pro **verze clusteru**vyberte **4.2** (s Apache Sparkem 2.3.1, Scala 2.11)
+    1.  V případě **verze clusteru**vyberte **4,2** (s Apache Spark 2.3.1, Scala 2,11).
 
     1.  V části **Typ uzlu clusteru** vyberte **Standardní\_D3\_v2** pod kategorií **Pro obecné účely (HDD)** pro tento kurz. 
     
@@ -151,7 +150,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
           ![Vytvoří novou složku.](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Vytvoření nového poznámkového bloku](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), nazvěte ji **mynotebook** pod **adftutorial** složky, klikněte na tlačítko **vytvořit.**
+       1. [Vytvoření nového poznámkového bloku](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), vyvolejte IT **MyNotebook** ve složce **adftutorial** , klikněte na **vytvořit.**
 
           ![Vytvoření nového poznámkového bloku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,7 +178,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
        ![Přidání parametru](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Pojmenujte parametr **vstupní** a zadejte hodnotu jako výraz  **\@kanálu ().parameters.name**.
+    b.  Pojmenujte parametr jako **vstup** a zadejte hodnotu jako kanál výrazu  **\@(). Parameters. Name**.
 
 1.  Pokud chcete kanál ověřit, vyberte tlačítko **Ověřit** na panelu nástrojů. Okno ověřování zavřete výběrem tlačítka **\>\>** (šipka doprava).
 

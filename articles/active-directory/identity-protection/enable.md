@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335516"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126588"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Povolení Azure Active Directory Identity Protection
 
-Azure Active Directory Identity Protection je schopnost Azure Active Directory (Azure AD). S Azure AD Identity Protection můžete:
+Azure Active Directory Identity Protection je schopnost Azure Active Directory (Azure AD). Pomocí Azure AD Identity Protection můžete provádět následující akce:
 
-- Získat ucelený pohled na uživatele označené příznakem a rizikové události detekované pomocí algoritmů strojového učení
-- Nastavit zásady podmíněného přístupu založené na rizicích, které automaticky chrání uživatele
-- Zlepšit stav zabezpečení tak, že bude reagovat na ohrožení zabezpečení 
+- Získejte konsolidované zobrazení uživatelů označených příznakem a detekci rizik zjištěných pomocí algoritmů strojového učení.
+- Nastavení zásad podmíněného přístupu na základě rizika k automatické ochraně uživatelů
+- Zlepšení stav zabezpečení na základě ohrožení zabezpečení 
 
 Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

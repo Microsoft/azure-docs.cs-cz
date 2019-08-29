@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302577"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126960"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -50,7 +50,7 @@ Kliknutím na libovolnou komponentu zobrazíte související přehledy a přejde
 
 ![Ukotven](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Prozkoumat selhání
+### <a name="investigate-failures"></a>Prověřit chyby
 
 Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
@@ -58,7 +58,7 @@ Vyberte možnost **prozkoumat selhání** a spusťte tak podokno selhání.
 
 ![Snímek obrazovky s problémy s chybami](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Prozkoumat výkon
+### <a name="investigate-performance"></a>Prověřit výkon
 
 Pokud chcete řešit problémy s výkonem, vyberte **prozkoumat výkon**.
 
@@ -74,7 +74,7 @@ Vyberte **Přejít k podrobnostem** a prozkoumejte koncové prostředí transakc
 
 ![Snímek obrazovky s podrobnostmi o transakci od začátku do konce](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Zobrazit v analýzách
+### <a name="view-in-analytics"></a>Zobrazit v Analytics
 
 Pokud chcete svá data aplikací dotazovat a prozkoumat dál, klikněte na **Zobrazit v analýze**.
 
@@ -270,6 +270,8 @@ Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
 
 ![Obrázek MapLink-1](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Princip korelace](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Další informace o tom, jak korelace funguje v Application Insights, najdete v článku [korelace telemetrie] (https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* [Koncové prostředí pro diagnostiku transakcí](transaction-diagnostics.md) koreluje telemetrie na straně serveru ze všech vašich Application Insights monitorovaných komponent do jednoho zobrazení.
+* Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .

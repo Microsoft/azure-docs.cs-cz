@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640610"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141147"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby v Azure Search
 Maximální limity úložiště, zatížení a množství indexů, dokumentů a dalších objektů závisí na tom, jestli jste zřídili [Azure Search](search-create-service-portal.md) na cenových úrovních **Free**, **Basic**, **Standard**nebo **Storage** s optimalizovaným úložištěm.
@@ -76,7 +76,7 @@ Pokud portál indikuje omezení počtu dokumentů, byla služba vytvořena před
 + Východní Asie
 + Střed Indie
 + Japonsko – západ
-+ Středozápadní USA
++ Západní střed USA
 
 Pro služby podléhající omezením dokumentu platí následující maximální limity:
 
@@ -124,6 +124,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 <sup>4</sup> maximálně 30 dovedností na dovednosti.
 
 <sup>5</sup> zátěžového vyhledávání a analýza obrázků v Azure Blob indexování mají kratší dobu běhu než běžné indexování textu. Analýza obrázků a zpracování přirozeného jazyka jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Čas spuštění byl snížen, aby bylo možné v frontě poskytnout ostatním úlohám možnost spustit.  
+
+## <a name="synonym-limits"></a>Omezení synonym
+
+Maximální povolený počet map synonym se liší podle cenové úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je equivalvent termínem. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
+
+| Resource | Zdarma | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
+| Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Dotazů za sekundu (QPS)
 

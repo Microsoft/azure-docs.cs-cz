@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989636"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127134"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -65,11 +65,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kontroly přístupu|Zrušení připojení k řízení aplikací|
 |Kontroly přístupu|Aktualizace kontroly přístupu|
 |Kontroly přístupu|Aktualizovat stav zprovoznění kontrol přístupu Azure AD|
-|Kontroly přístupu|Aktualizovat nastavení doby trvání e-mailového oznámení přístupu k revizi|
-|Kontroly přístupu|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
+|Kontroly přístupu|Nastavení aktualizace počtu opakování kontroly přístupu|
 |Kontroly přístupu|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
-|Kontroly přístupu|Nastavení aktualizace typu konce opakování kontrol přístupu|
-|Kontroly přístupu|Nastavení aktualizace typu opakování kontrol přístupu|
+|Kontroly přístupu|Nastavení typu konce opakování kontroly přístupu aktualizace|
+|Kontroly přístupu|Nastavení aktualizace typu opakování kontroly přístupu|
 |Kontroly přístupu|Aktualizovat nastavení připomenutí přístupu k revizi|
 |Kontroly přístupu|Aktualizace programu|
 |Kontroly přístupu|Aktualizace žádosti o schválení|
@@ -348,10 +348,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Správa jednotek pro správu|Stažení rizikových událostí jednoho typu|
+|Správa jednotek pro správu|Stažení jediného typu detekce rizika|
 |Správa jednotek pro správu|Stažení správců a stavu týdenního přehledu vyjádření souhlasu|
-|Správa jednotek pro správu|Stažení rizikových událostí všech typů|
-|Správa jednotek pro správu|Stažení rizikových událostí bezplatného uživatele|
+|Správa jednotek pro správu|Stáhnout všechny typy detekce rizik|
+|Správa jednotek pro správu|Stáhnout zjišťování rizik uživatelů zdarma|
 |Správa jednotek pro správu|Stažení uživatelů označených příznakem rizika|
 |Správa aplikací|Zpracované hromadné pozvánky|
 |Správa aplikací|Odeslané hromadné pozvánky|
@@ -517,11 +517,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |---|---|
 |Správa skupin|Kontrola žádosti o schválení žádosti|
 |Správa skupin|Aktualizace kontroly přístupu|
-|Správa skupin|Aktualizovat nastavení doby trvání e-mailového oznámení přístupu k revizi|
-|Správa skupin|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Správa skupin|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
+|Správa skupin|Nastavení aktualizace počtu opakování kontroly přístupu|
 |Správa skupin|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
-|Správa uživatelů|Nastavení aktualizace typu konce opakování kontrol přístupu|
-|Správa uživatelů|Nastavení aktualizace typu opakování kontrol přístupu|
+|Správa uživatelů|Nastavení typu konce opakování kontroly přístupu aktualizace|
+|Správa uživatelů|Nastavení aktualizace typu opakování kontroly přístupu|
 
 
 

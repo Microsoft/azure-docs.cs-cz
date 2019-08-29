@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s Azure Data Factory
-description: Informace o řešení potíží při použití služby Azure Data Factory.
+description: Naučte se řešit potíže s používáním Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
@@ -9,32 +9,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
 robots: noindex
-ms.openlocfilehash: cc880885777cbca67d6fb39b90feadc889339f76
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836180"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135124"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. 
 
-Tento článek poskytuje tipy pro řešení potíží pro problémy při použití služby Azure Data Factory. Tento článek neobsahuje všechny možné problémy při použití služby, ale uvádí některé problémy a Obecné tipy pro řešení potíží.   
+Tento článek popisuje tipy k odstraňování potíží při použití Azure Data Factory. Tento článek neuvádí všechny možné problémy při používání služby, ale zabývá se některými problémy a obecnými tipy pro řešení potíží.   
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Chyba: Předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory.
+### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Chyba: U předplatného není zaregistrované používání oboru názvů Microsoft. DataFactory.
 Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není na vašem počítači zaregistrovaný. Udělejte toto:
 
 1. Spusťte Azure PowerShell.
-2. Přihlaste se ke svému účtu Azure pomocí následujícího příkazu.
+2. Přihlaste se k účtu Azure pomocí následujícího příkazu.
 
     ```powershell
     Connect-AzAccount
@@ -45,30 +45,30 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problém: Neautorizovaná chybová zpráva při spuštění rutiny služby Data Factory
+### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Řešení Neoprávněná Chyba při spuštění rutiny Data Factory
 Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo účet Azure. Pomocí následujících rutin vyberte správné předplatné a účet Azure pro použití s Azure PowerShellem.
 
-1. Připojení – AzAccount – použití správné ID uživatele a heslo
-2. Get-AzSubscription - zobrazit všechna předplatná pro tento účet.
-3. Vyberte AzSubscription &lt;název předplatného&gt; – výběr správného předplatného. Použijte stejný jako ten, který použijete k vytvoření služby data factory na webu Azure portal.
+1. Connect-AzAccount – použijte správné ID a heslo uživatele.
+2. Get-AzSubscription – zobrazí všechna předplatná pro tento účet.
+3. &lt;Název&gt; předplatného Select-AzSubscription – vyberte správné předplatné. Použijte stejný ten, který použijete k vytvoření datové továrny na Azure Portal.
 
-### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problém: Nepovedlo se spustit expresní instalaci serveru Data Management Gateway z webu Azure portal
+### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Řešení Nepodařilo se spustit instalaci expresní brány Správa dat z Azure Portal
 Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo webový prohlížeč kompatibilní s technologií Microsoft ClickOnce. Pokud se expresní instalace nezdaří, použijte jeden z následujících postupů:
 
-* Použijte Internet Explorer nebo Microsoft ClickOnce kompatibilní webový prohlížeč.
+* Použijte Internet Explorer nebo webový prohlížeč kompatibilní s Microsoft ClickOnce.
 
     Pokud používáte Chrome, přejděte na [internetový obchod Chrome](https://chrome.google.com/webstore/), dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
 
-    Totéž proveďte pro Firefox (instalace doplňku). Na panelu nástrojů klikněte na tlačítko Otevřít nabídku (tři vodorovné čáry v pravém horním rohu), klikněte na Doplňky, dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
-* Použití **ruční instalaci** odkazu je zobrazen ve stejném okně na portálu. Tento postup použijte ke stažení instalačního souboru a jeho spuštění. Když je instalace úspěšná, zobrazí dialogové okno Konfigurace brány správy dat. Zkopírujte **klíč** z okna portálu a použijte ho ve správci konfigurace k ruční registraci brány v příslušné službě.  
+    To samé udělejte pro Firefox (instalovat doplněk). Na panelu nástrojů klikněte na tlačítko Otevřít nabídku (tři vodorovné čáry v pravém horním rohu), klikněte na Doplňky, dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
+* Použijte odkaz na **ruční instalaci** , který je zobrazený ve stejném okně na portálu. Tento přístup slouží ke stažení instalačního souboru a jeho spuštění ručně. Po úspěšném dokončení instalace se zobrazí dialogové okno Správa dat konfigurace brány. Zkopírujte **klíč** z okna portálu a použijte ho ve správci konfigurace k ruční registraci brány v příslušné službě.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problém: Nepovedlo se připojit k místnímu SQL serveru
-Spuštění **Data Management Gateway Configuration Manager** na počítači brány a použít **Poradce při potížích s** kartu a otestujte připojení k SQL serveru z počítače brány. Naleznete v tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tipy k řešení potíží s připojení/bránou související problémy.   
+### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Řešení Nepodařilo se připojit k místním SQL Server
+Na počítači brány spusťte **Správa dat Configuration Manager brány** a pomocí karty **Poradce při potížích** otestujte připojení k SQL Server z počítače brány. Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu [řešení](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) potíží s bránou.   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problém: Vstupní řezy jsou napořád ve stavu Čekání.
-Řezy mohou být v **čekání** stavu z různých důvodů. Jeden z běžných příčin je, že **externí** vlastnost není nastavena na **true**. By měly být označené všechny datové sady vytvořené mimo rozsah Azure Data Factory **externí** vlastnost. Tato vlastnost určuje, že data jsou externí a není podpořena žádnými kanály v data factory. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Řešení Vstupní řezy jsou napořád ve stavu Čekání.
+Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true**. Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
 
-Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData*** Pokud nastavíte external na hodnotu true.
+Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData***, pokud nastavíte možnost externí na hodnotu true.
 
 Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-factory-create-datasets.md).
 
@@ -100,33 +100,33 @@ Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-fa
 
 Pokud chcete tuto chybu vyřešit, přidejte vlastnost **external** a volitelný oddíl **externalData** do definice JSON vstupní tabulky a potom tuto tabulku vytvořte znovu.
 
-### <a name="problem-hybrid-copy-operation-fails"></a>Problém: Hybridní kopírování nezdaří
-Naleznete v tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kroky pro řešení potíží s kopírování do a z místních dat pomocí brány správy dat úložiště.
+### <a name="problem-hybrid-copy-operation-fails"></a>Řešení Operace hybridního kopírování se nezdařila
+Postup řešení potíží s kopírováním do nebo z místního úložiště dat pomocí Správa dat brány najdete v tématu [řešení](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) potíží s bránou.
 
-### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Problém: HDInsight na vyžádání zřizování se nezdaří
-Při použití propojené služby typu HDInsightOnDemand, budete muset zadat vlastnost linkedServiceName, která odkazuje na služby Azure Blob Storage. Služba Data Factory využívá toto úložiště k ukládání protokolů a podpůrných souborů pro cluster HDInsight na vyžádání.  Někdy se zřizování clusteru HDInsight na vyžádání nezdaří s následující chybou:
+### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Řešení Zřizování HDInsight na vyžádání se nepovede.
+Při použití propojené služby typu HDInsightOnDemand je nutné zadat linkedServiceName, který odkazuje na Blob Storage Azure. Služba Data Factory využívá toto úložiště k ukládání protokolů a podpůrných souborů pro cluster HDInsight na vyžádání.  Někdy se zřizování clusteru HDInsight na vyžádání nezdaří s následující chybou:
 
 ```
 Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
 ```
 
-Tato zpráva obvykle indikuje, že umístění účtu úložiště zadané vlastností linkedServiceName se neshoduje s umístěním datového centra, ve kterém dochází ke zřizování HDInsightu. Příklad: Pokud je služba data factory v oblasti západní USA a Azure storage je v oblasti východní USA, zřízení na vyžádání nezdaří v oblasti západní USA.
+Tato zpráva obvykle indikuje, že umístění účtu úložiště zadané vlastností linkedServiceName se neshoduje s umístěním datového centra, ve kterém dochází ke zřizování HDInsightu. Příklad: Pokud je vaše Datová továrna v Západní USA a služba Azure Storage je v Východní USA, zřizování na vyžádání se v Západní USA nezdařilo.
 
-Navíc existuje ještě druhá vlastnost additionalLinkedServiceNames JSON, která umožňuje zadat další účty úložiště v HDInsightu na vyžádání. Tyto další propojené účty úložiště by měl být ve stejném umístění jako HDInsight cluster, nebo se postup nezdaří ke stejné chybě.
+Navíc existuje ještě druhá vlastnost additionalLinkedServiceNames JSON, která umožňuje zadat další účty úložiště v HDInsightu na vyžádání. Tyto další propojené účty úložiště by měly být ve stejném umístění jako cluster HDInsight, nebo dojde k chybě se stejnou chybou.
 
-### <a name="problem-custom-net-activity-fails"></a>Problém: Vlastní aktivita technologie .NET selhala
-V tématu [ladit kanálu pomocí vlastní aktivity](data-factory-use-custom-activities.md#troubleshoot-failures) podrobné pokyny.
+### <a name="problem-custom-net-activity-fails"></a>Řešení Vlastní aktivita technologie .NET selhala
+Podrobný postup najdete v tématu [ladění kanálu pomocí vlastní aktivity](data-factory-use-custom-activities.md#troubleshoot-failures) .
 
-## <a name="use-azure-portal-to-troubleshoot"></a>Řešení potíží pomocí webu Azure portal
-### <a name="using-portal-blades"></a>Pomocí oken webu portal
-Zobrazit [monitorování kanálu](data-factory-monitor-manage-pipelines.md) kroky.
+## <a name="use-azure-portal-to-troubleshoot"></a>Řešení potíží pomocí Azure Portal
+### <a name="using-portal-blades"></a>Používání oken portálu
+Postup najdete v tématu [monitorování kanálu](data-factory-monitor-manage-pipelines.md) .
 
 ### <a name="using-monitor-and-manage-app"></a>Pomocí aplikace Monitorování a správa
-Zobrazit [monitorování a Správa kanálů data factory pomocí monitorování a Správa aplikace](data-factory-monitor-manage-app.md) podrobnosti.
+Podrobnosti najdete v tématu [monitorování a Správa kanálů služby Data Factory pomocí monitorování a správy aplikace](data-factory-monitor-manage-app.md) .
 
-## <a name="use-azure-powershell-to-troubleshoot"></a>Řešení potíží s pomocí Azure Powershellu
-### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Řešení potíží s chybu pomocí Azure Powershellu
-Zobrazit [objektu pro vytváření dat monitorování kanálů pomocí Azure Powershellu](data-factory-monitor-manage-pipelines.md) podrobnosti.
+## <a name="use-azure-powershell-to-troubleshoot"></a>Řešení potíží pomocí Azure PowerShell
+### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Řešení chyby pomocí Azure PowerShell
+Podrobnosti najdete v tématu [monitorování data Factorych kanálů pomocí Azure PowerShell](data-factory-monitor-manage-pipelines.md) .
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

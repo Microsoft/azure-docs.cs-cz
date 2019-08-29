@@ -1,144 +1,142 @@
 ---
-title: Datové továrny – protokol změn rozhraní API .NET | Dokumentace Microsoftu
-description: Popisuje změny způsobující chyby, aktualizací obsahujících nové funkce, opravy atd... v konkrétní verzi rozhraní .NET API pro Azure Data Factory.
+title: Data Factory – protokol změn rozhraní .NET API | Microsoft Docs
+description: Popisuje zásadní změny, doplňky funkcí, opravy chyb atd... v určité verzi rozhraní .NET API pro Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 8208271b-7f4c-4214-b665-d2ff503c4470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 863f3500c84eeab1c3dac19141cd334fc6961694
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/22/2018
+ms.openlocfilehash: 35f0145526aa596691fde26e92695f64f5ac35e0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567244"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140524"
 ---
-# <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – protokol změn rozhraní API .NET
+# <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – protokol změn rozhraní .NET API
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. 
 
-Tento článek obsahuje informace o změnách na sadu SDK pro Azure Data Factory v konkrétní verzi. Můžete najít nejnovější balíček NuGet pro Azure Data Factory [zde](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
+Tento článek poskytuje informace o změnách Azure Data Factory SDK v konkrétní verzi. Nejnovější balíček NuGet pro Azure Data Factory najdete [tady](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories) .
 
-## <a name="version-4110"></a>Verze 4.11.0
-Aktualizací obsahujících nové funkce:
+## <a name="version-4110"></a>4\.11.0 verze
+Přidání funkcí:
 
-* Byly přidány následující typy propojené služby:
+* Přidali jsme následující typy propojených služeb:
   * [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
   * [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
   * [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
-* Byly přidány následující typy datové sady:
+* Přidali jsme následující typy datových sad:
   * [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
   * [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
-* Byly přidány následující typy zdrojů kopírování:
+* Byly přidány následující typy zdrojů kopie:
   * [MongoDbSource](https://msdn.microsoft.com/library/mt765123.aspx)
 
-## <a name="version-4100"></a>Verze 4.10.0
-* Následující volitelné vlastnosti Přibyla TextFormat:
+## <a name="version-4100"></a>4\.10.0 verze
+* Do TextFormat byly přidány následující volitelné vlastnosti:
   * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
   * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
   * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
-* Byly přidány následující typy propojené služby:
+* Přidali jsme následující typy propojených služeb:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
   * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
-* Byly přidány následující typy datové sady:
+* Přidali jsme následující typy datových sad:
   * [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
-* Byly přidány následující typy zdrojů kopírování:
+* Byly přidány následující typy zdrojů kopie:
   * [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
-* Přidat [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) vlastnost AzureMLBatchExecutionActivity
-  * Povolit předání několik webových služeb vstupy do experimentu Azure Machine Learning
+* Přidání vlastnosti [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) do AzureMLBatchExecutionActivity
+  * Povolení předávání více vstupů webové služby do Azure Machine Learning experimentu
 
-## <a name="version-491"></a>Verze 4.9.1
+## <a name="version-491"></a>4\.9.1 verze
 ### <a name="bug-fix"></a>Oprava chyby
-* Přestat používat ověřování na základě WebApi pro [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx).
+* Vyřazení ověřování založeného na WebApi pro [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)
 
-## <a name="version-490"></a>Verze 4.9.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Přidat [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) a [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) vlastností CopyActivity. Zobrazit [fázovaného kopírování](data-factory-copy-activity-performance.md#staged-copy) podrobnosti o funkci.
+## <a name="version-490"></a>4\.9.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Přidejte vlastnosti [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) a [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) do CopyActivity. Podrobnosti o této funkci najdete v tématu [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) .
 
 ### <a name="bug-fix"></a>Oprava chyby
-* Zavést přetížení [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) metoda, která přebírá [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) instance.
-* Označit [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) a [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) v CopySink jako volitelné.
+* Zaveďte přetížení metody [ActivityWindowOperationExtensions. list](https://msdn.microsoft.com/library/mt767915.aspx) , která přebírá instanci [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) .
+* Označte [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) a [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) jako volitelné v CopySink.
 
-## <a name="version-480"></a>Verze 4.8.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Byly přidány následující volitelné vlastnosti pro typ aktivity kopírování k povolení ladění výkonu kopírování:
-  * [parallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+## <a name="version-480"></a>4\.8.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Do typu aktivity kopírování byly přidány následující volitelné vlastnosti, aby bylo možné vyladit výkon kopírování:
+  * [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
   * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
-## <a name="version-470"></a>Verze 4.7.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Přidat nový typ StorageFormat [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) typu kopírování souborů ve formátu (ORC) úložiště se sloupcovou strukturou optimalizované řádek.
-* Přidat [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) PolyBaseSettings vlastnosti, které SqlDWSink.
-  * Umožňuje použití technologie PolyBase můžete kopírovat data do SQL Data Warehouse.
+## <a name="version-470"></a>4\.7.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Byl přidán nový typ StorageFormat typu [OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx) ke kopírování souborů ve formátu optimalizované řádky (Orc).
+* Přidejte vlastnosti [AllowPolyBase](https://msdn.microsoft.com/library/mt723396.aspx) a PolyBaseSettings do SqlDWSink.
+  * Umožňuje použití základny ke kopírování dat do SQL Data Warehouse.
 
 ## <a name="version-461"></a>Verze 4.6.1
 ### <a name="bug-fixes"></a>Opravy chyb
-* Opravuje požadavku HTTP pro zobrazení seznamu okna aktivit.
-  * Odebere název skupiny prostředků a název objektu pro vytváření dat z datové části požadavku.
+* Opraví požadavek HTTP na výpis oken aktivity.
+  * Odebere název skupiny prostředků a název datové továrny z datové části požadavku.
 
-## <a name="version-460"></a>Verze 4.6.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Následující vlastnosti byly přidány do [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx):
+## <a name="version-460"></a>4\.6.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Do [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)byly přidány následující vlastnosti:
   * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-  * [expirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
+  * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
   * [Datové sady](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
-* Následující vlastnosti byly přidány do [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx):
+* Do [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)byly přidány následující vlastnosti:
   * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
-* Přidána nové [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) typ [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) typu pro definování datové sady, jejichž data jsou ve formátu JSON.
+* Byl přidán nový typ [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) typu [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) pro definování datových sad, jejichž data jsou ve formátu JSON.
 
-## <a name="version-450"></a>Verze 4.5.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Přidání [seznam operací pro okna aktivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
-  * Přidání metody k načtení okna aktivit s filtry na základě typů entit (to znamená, že objekty pro vytváření dat, datové sady, kanály a aktivity).
-* Byly přidány následující typy propojené služby:
+## <a name="version-450"></a>4\.5.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Byly přidány [operace seznamu pro okno aktivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx).
+  * Přidali jsme metody pro načtení oken aktivity s filtry na základě typů entit (to znamená datových továrn, datových sad, kanálů a aktivit).
+* Přidali jsme následující typy propojených služeb:
   * [ODataLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odatalinkedservice.aspx), [WebLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.weblinkedservice.aspx)
-* Byly přidány následující typy datové sady:
+* Přidali jsme následující typy datových sad:
   * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
-* Byly přidány následující typy zdrojů kopírování:     
-  * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+* Byly přidány následující typy zdrojů kopie:     
+  * [Websource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
-## <a name="version-440"></a>Verze 4.4.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Následující typ propojené služby se přidala jako zdroje a jímky aktivity kopírování:
-  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Zobrazit [propojená služba Azure Storage SAS](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) koncepční informace a příklady.
+## <a name="version-440"></a>4\.4.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Jako zdroj dat a jímky pro aktivity kopírování se přidal následující typ propojené služby:
+  * [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx). Koncepční informace a příklady najdete v tématu [Azure Storage propojená služba SAS](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) .
 
-## <a name="version-430"></a>Verze 4.3.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Následující typy haven propojené služby byl přidán jako zdroj dat pro aktivity kopírování:
-  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Zobrazit [přesunout data z HDFS pomocí služby Data Factory](data-factory-hdfs-connector.md) koncepční informace a příklady.
-  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Zobrazit [přesunout úložiště dat z rozhraní ODBC dat pomocí Azure Data Factory](data-factory-odbc-connector.md) koncepční informace a příklady.
+## <a name="version-430"></a>4\.3.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Následující typy propojených služeb některé byly přidány jako zdroje dat pro aktivity kopírování:
+  * [HdfsLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.hdfslinkedservice.aspx). Koncepční informace a příklady najdete v tématu [přesun dat z HDFS pomocí Data Factory](data-factory-hdfs-connector.md) .
+  * [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx). Koncepční informace a příklady najdete v tématu [přesun dat z úložišť dat ODBC pomocí Azure Data Factory](data-factory-odbc-connector.md) .
 
-## <a name="version-420"></a>Verze 4.2.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Byla přidána následující nového typu aktivity: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Podrobnosti o aktivitě najdete v tématu [modely aktualizace Azure ML s využitím aktivita prostředku aktualizace](data-factory-azure-ml-batch-execution-activity.md).
-* Nové vlastnosti volitelné [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) byl přidán do [AzureMLLinkedService třídy](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx).
-* [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) a [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) vlastnosti byly přidány do [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) třídy.
-* Povolit konfiguraci vypršení časových limitů u volání klienta do služby Data Factory.
+## <a name="version-420"></a>4\.2.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Byl přidán následující nový typ aktivity: [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx). Podrobnosti o aktivitě najdete v tématu [aktualizace modelů Azure ml pomocí aktivity aktualizovat prostředek](data-factory-azure-ml-batch-execution-activity.md).
+* Do [třídy AzureMLLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)byla přidána nová volitelná vlastnost [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) .
+* Do třídy [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) se přidaly vlastnosti [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) a [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) .
+* Povolte konfiguraci časových limitů pro volání klientů služby Data Factory.
 
-## <a name="version-410"></a>Verze 4.1.0
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* Byly přidány následující typy propojené služby:
+## <a name="version-410"></a>4\.1.0 verze
+### <a name="feature-additions"></a>Přidání funkcí
+* Přidali jsme následující typy propojených služeb:
   * [AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
   * [AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * Byly přidány následující typy aktivit:
   * [DataLakeAnalyticsUSQLActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datalakeanalyticsusqlactivity.aspx)
-* Byly přidány následující typy datové sady:
+* Přidali jsme následující typy datových sad:
   * [AzureDataLakeStoreDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoredataset.aspx)
-* Byly přidány následující typy zdroje a jímky pro aktivitu kopírování:
+* Přidali jsme následující typy zdrojů a jímky pro aktivitu kopírování:
   * [AzureDataLakeStoreSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresource.aspx)
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
-## <a name="version-401"></a>Verze 4.0.1
+## <a name="version-401"></a>4\.0.1 verze
 ### <a name="breaking-changes"></a>Změny způsobující chyby
-Následující třídy byly přejmenovány. Nové názvy byly původní názvy tříd, než verze 4.0.0.
+Následující třídy byly přejmenovány. Nové názvy byly původní názvy tříd před verzí 4.0.0.
 
 | Název v 4.0.0 | Název v 4.0.1 |
 |:--- |:--- |
@@ -165,7 +163,7 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **Seznamu** metody nyní vrací stránkových výsledků. Pokud odpověď obsahuje neprázdný **NextLink** vlastnost, klientská aplikace potřebuje pokračovat v načítání na další stránku, dokud jsou vráceny všechny stránky.  Zde naleznete příklad:
+* Metody **seznamu** vrátí aktuálně stránkované výsledky. Pokud odpověď obsahuje neprázdnou vlastnost **NextLink** , musí klientská aplikace pokračovat v načítání další stránky, dokud nebudou vráceny všechny stránky.  Zde naleznete příklad:
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
@@ -180,8 +178,8 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
         nextLink = nextResponse.NextLink;
     }
     ```
-* **Seznam** kanálu rozhraní API Vrátí souhrn kanálu místo úplné podrobnosti. Například aktivity v kanálu souhrnu obsahovat pouze názvem a typem.
+* API kanálu **seznamu** vrátí pouze souhrn kanálu namísto úplných podrobností. Například aktivity v souhrnu kanálu obsahují pouze název a typ.
 
-### <a name="feature-additions"></a>Aktualizací obsahujících nové funkce
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) třída podporuje dvě nové vlastnosti **SliceIdentifierColumnName** a **SqlWriterCleanupScript**pro zajištění podpory idempotentní kopírovat do Azure SQL Data Sklad. Zobrazit [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) , kde najdete podrobnosti o těchto vlastnostech.
-* Nyní podporujeme provoz uloženou proceduru nad zdroji, Azure SQL Database a Azure SQL Data Warehouse jako součást aktivitu kopírování. [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) třídy mají následující vlastnosti: **SqlReaderStoredProcedureName** a **StoredProcedureParameters**. Zobrazit [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) článků na webu Azure.com najdete podrobnosti o těchto vlastnostech.  
+### <a name="feature-additions"></a>Přidání funkcí
+* Třída [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) podporuje dvě nové vlastnosti, **SliceIdentifierColumnName** a **SqlWriterCleanupScript**, aby podporovaly idempotentní kopírování do Azure SQL Data Warehouse. Podrobnosti o těchto vlastnostech najdete v článku o [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) .
+* Nyní podporujeme provoz uloženou proceduru pro Azure SQL Database a zdroje Azure SQL Data Warehouse v rámci aktivity kopírování. Třídy [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) mají následující vlastnosti: **SqlReaderStoredProcedureName** a **StoredProcedureParameters**. Podrobnosti o těchto vlastnostech najdete v článcích [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) na Azure.com.  

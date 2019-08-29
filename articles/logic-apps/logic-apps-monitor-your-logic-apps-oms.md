@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/16/2019
-ms.openlocfilehash: 2f82bd9c0bcacf2c552df84cdd4f8f2cd6a68c8a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.date: 08/29/2019
+ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543228"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138691"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Získání přehledů a ladění dat pro Logic Apps pomocí Azure Monitorch protokolů
 
@@ -55,7 +55,7 @@ Než začnete, potřebujete Log Analytics pracovní prostor. Naučte [se, jak vy
 
 ## <a name="install-logic-apps-management-solution"></a>Instalace řešení pro správu Logic Apps
 
-Pokud jste již zapnuli Azure Monitor protokoly při vytváření aplikace logiky, přeskočte tento krok. Již máte nainstalované řešení pro správu Logic Apps.
+Pokud jste už při vytváření aplikace logiky nastavili protokoly Azure Monitor, přeskočte tento krok. Již máte nainstalované řešení pro správu Logic Apps.
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole Najděte "pracovní prostory Log Analytics" a vyberte **Log Analytics pracovní prostory**.
 
@@ -107,23 +107,21 @@ Po spuštění aplikace logiky můžete zobrazit stav a počet těchto běhů na
 
    Tady je příklad, který ukazuje všechna spuštění pro konkrétní aplikaci logiky:
 
-   ![Zobrazení spuštění pro aplikaci logiky nebo stav](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
+   ![Zobrazení běhu a stavu aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   Tato stránka obsahuje tyto rozšířené možnosti:
+   Tato stránka obsahuje rozšířené možnosti: 
 
-   * **Sledované vlastnosti:**
+   * Sloupec **sledovaných vlastností** : V případě aplikace logiky, kde jste nastavili sledované vlastnosti, které jsou seskupené podle akcí, můžete tyto vlastnosti zobrazit z tohoto sloupce. Chcete-li zobrazit tyto sledované vlastnosti, vyberte možnost **Zobrazit**. Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
 
-     V tomto sloupci se zobrazují sledované vlastnosti, které jsou seskupené podle akcí pro aplikaci logiky. Chcete-li zobrazit sledované vlastnosti, vyberte možnost **Zobrazit**. Chcete-li vyhledat sledované vlastnosti, použijte filtr sloupce.
+      ![Zobrazení sledovaných vlastností aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
-     ![Zobrazení sledovaných vlastností aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+      Jakékoli nově přidané sledované vlastnosti mohou trvat 10-15 minut, než se budou zobrazovat poprvé. Přečtěte si, [jak přidat sledované vlastnosti do aplikace logiky](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-     Jakékoli nově přidané sledované vlastnosti mohou trvat 10-15 minut, než se budou zobrazovat poprvé. Přečtěte si, [jak přidat sledované vlastnosti do aplikace logiky](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
-
-   * **Odešlete** Můžete znovu odeslat jednu nebo více spuštění aplikace logiky, které selhaly, byly úspěšné nebo stále spuštěné. Zaškrtněte políčka pro spuštění, která chcete znovu odeslat, a pak vyberte **znovu odeslat**.
+   * **Znovu odeslat**: Můžete znovu odeslat jednu nebo více spuštění Logic Apps, která se nezdařila, byla úspěšná nebo stále běží. Zaškrtněte políčka pro spuštění, která chcete znovu odeslat, a pak vyberte znovu **Odeslat**.
 
      ![Znovu spustit běhy aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
-1. Chcete-li tyto výsledky filtrovat, můžete provádět filtrování na straně klienta i na straně serveru.
+1. Pokud chcete filtrovat výsledky, můžete provést filtrování na straně klienta i na straně serveru.
 
    * **Filtr na straně klienta**: U každého sloupce vyberte filtry, které chcete, například:
 
@@ -135,23 +133,19 @@ Po spuštění aplikace logiky můžete zobrazit stav a počet těchto běhů na
 
 1. Pokud chcete zobrazit všechny akce a jejich podrobnosti pro konkrétní běh, vyberte řádek pro spuštění aplikace logiky.
 
-   Tady je příklad, který ukazuje všechny akce pro konkrétní spuštění aplikace logiky:
+   Tady je příklad, který zobrazuje všechny akce a triggery pro konkrétní spuštění aplikace logiky:
 
    ![Zobrazení akcí pro spuštění aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
 
-1. Pokud chcete zobrazit dotaz za výsledky nebo zobrazit všechny výsledky, vyberte na stránce výsledky možnost **Zobrazit vše**. otevře se stránka hledání v protokolu.
+1. Pokud chcete zobrazit dotaz za výsledky nebo zobrazit všechny výsledky, vyberte na stránce výsledky možnost **Zobrazit vše**. otevře se stránka **protokoly** .
 
-   ![Zobrazit vše na stránkách výsledků](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   ![Zobrazit všechny výsledky](media/logic-apps-monitor-your-logic-apps-oms/logic-app-see-all.png)
 
-   Na stránce prohledávání protokolu můžete zvolit tyto možnosti:
+   Na stránce **protokoly** můžete zvolit tyto možnosti:
 
    * Chcete-li zobrazit výsledky dotazu v tabulce, vyberte možnost **tabulka**.
 
-   * Chcete-li změnit dotaz, můžete upravit řetězec dotazu na panelu hledání. Pro lepší prostředí vyberte Pokročilá **Analýza**.
-
-     ![Zobrazení akcí a podrobností pro spuštění aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
-     Na stránce Log Analytics můžete aktualizovat dotazy a zobrazit výsledky z tabulky. Tento dotaz používá [dotazovací jazyk Kusto](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit různé výsledky.
+   * Dotazy používají [dotazovací jazyk Kusto](https://aka.ms/LogAnalyticsLanguageReference), který můžete upravit, pokud chcete zobrazit různé výsledky. Chcete-li změnit dotaz, aktualizujte řetězec dotazu a vyberte možnost **Spustit** pro zobrazení výsledků v tabulce. 
 
      ![Log Analytics – zobrazení dotazu](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

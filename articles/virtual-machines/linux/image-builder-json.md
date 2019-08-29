@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816319"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129064"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -57,7 +57,7 @@ Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imag
 
 - East US
 - Východní USA 2
-- Středozápadní USA
+- Západní střed USA
 - USA – západ
 - USA – západ 2
 
@@ -190,6 +190,7 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
 `imageVersionId` Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
 
 ## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes
+
 Ve výchozím nastavení se spustí Tvůrce imagí po dobu 240 minut. Po této instalaci dojde k vypršení časového limitu a zastavení, bez ohledu na to, jestli je sestavení image dokončené. Pokud dojde k vypršení časového limitu, zobrazí se chybová zpráva podobná této:
 
 ```text
@@ -203,7 +204,6 @@ Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to p
 
 
 ## <a name="properties-customize"></a>Vlastnosti: přizpůsobení
-
 
 Image Builder podporuje několik "úprav". Vlastníci jsou funkce, které se používají k přizpůsobení image, jako je spouštění skriptů nebo restartování serverů. 
 
@@ -498,7 +498,7 @@ az resource show \
 > [!NOTE]
 > Až se virtuální pevný disk vytvoří, zkopírujte ho do jiného umístění, co nejrychleji. Virtuální pevný disk je uložený v účtu úložiště v dočasné skupině prostředků vytvořené při odeslání šablony image do služby Azure image Builder. Pokud odstraníte šablonu image, ztratíte tím virtuální pevný disk. 
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V GitHubu pro [Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder)jsou k dispozici ukázkové soubory. JSON pro různé scénáře.
  

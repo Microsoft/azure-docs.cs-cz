@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1b5615de8df42bca64822b0e459c7815412300af
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980483"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125381"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -1843,11 +1843,11 @@ Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v t
 **Kategorie služby:** Identity Protection  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. V edici Azure AD Premium P2 získáte nejpodrobnější informace o základní všechna nalezení.
+Přehled, který získáte pro zjištění zjištěného rizika, je svázán s vaším předplatným služby Azure AD. V edici Azure AD Premium P2 získáte nejpodrobnější informace o základní všechna nalezení.
 
-V edici Azure AD Premium P1 detekcí, které nejsou pokryty všemi licence jeví jako riziková událost přihlášení s dalšími riziky. zjistili.
+U edice Azure AD Premium P1 se detekce, která není pokrytá vaší licencí, zobrazuje jako přihlášení k detekci rizik s dalšími zjištěnými riziky.
 
-Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events).
+Další informace najdete v tématu [Azure Active Directory detekci rizik](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events).
  
 ---
 
@@ -1913,7 +1913,7 @@ Obecná dostupnost nové konzoly Správa služby Azure Active Directory a nová 
 
 **Co je k dispozici?**
 
-V rámci přechodu na Nová konzola pro správu jsme zpřístupnili 2 nová rozhraní API pro načítání protokolů aktivit Azure AD. Nová sada rozhraní API poskytuje širší filtrování a řazení funkce kromě toho, že bohatší auditu a aktivit přihlašování. Dříve dostupné v sestavách zabezpečení dat teď přístupný prostřednictvím události rizika Identity Protection rozhraní API v Microsoft Graphu.
+V rámci přechodu na Nová konzola pro správu jsme zpřístupnili 2 nová rozhraní API pro načítání protokolů aktivit Azure AD. Nová sada rozhraní API poskytuje širší filtrování a řazení funkce kromě toho, že bohatší auditu a aktivit přihlašování. Data dříve dostupná prostřednictvím sestav zabezpečení teď můžou být přístupná prostřednictvím rozhraní API detekce rizik ochrany identity v Microsoft Graph.
 
 Další informace naleznete v tématu:
 
@@ -2264,13 +2264,13 @@ Další informace najdete v tématu věnovaném [ovládacím prvkům v Azure AD 
  
 ---
 
-### <a name="aggregation-of-real-time-risk-events"></a>Agregace v reálném čase rizikových událostí
+### <a name="aggregation-of-real-time-risk-detections"></a>Agregace zjišťování rizik v reálném čase
 
 **Textový** Změněná funkce    
 **Kategorie služby:** Ochrana identit  
 **Schopnost produktu:** Zabezpečení identity a ochrana
 
-Ve službě Azure AD Identity Protection se teď všechny v reálném čase rizikové události, které pocházely ze stejné IP adresy v daném dni agregují pro každý typ rizikové události. Tato změna omezení objemu rizikové události zobrazeny bez jakékoli změny v zabezpečení uživatele.
+V Azure AD Identity Protection se teď všechny detekce rizik v reálném čase, které pocházejí ze stejné IP adresy v daném dni, agreguje pro každý typ detekce rizik. Tato změna omezuje množství zjištěných detekcí rizik bez změny zabezpečení uživatele.
 
 Základní detekce v reálném čase funguje pokaždé, když uživatel přihlásí. Pokud máte zásady rizik přihlašování zabezpečení nastavit tak, aby ověřování službou Multi-Factor Authentication nebo blokování přístupu, se stále aktivují během každé rizikových přihlášení.
  
@@ -2388,7 +2388,7 @@ Další informace najdete v tématu [skrytí aplikace třetí strany z uživatel
 
 **Co je k dispozici?**
 
- Jako součást přechodu na Nová konzola pro správu, dvě nová rozhraní API pro načítání aktivit Azure AD jsou k dispozici protokoly. Nová sada rozhraní API poskytuje širší filtrování a řazení funkce kromě toho, že bohatší auditu a aktivit přihlašování. Dříve dostupné v sestavách zabezpečení nyní dat přístupné prostřednictvím rozhraní Identity Protection riziko události API v Microsoft Graphu.
+ Jako součást přechodu na Nová konzola pro správu, dvě nová rozhraní API pro načítání aktivit Azure AD jsou k dispozici protokoly. Nová sada rozhraní API poskytuje širší filtrování a řazení funkce kromě toho, že bohatší auditu a aktivit přihlašování. Data dříve dostupná prostřednictvím sestav zabezpečení jsou teď přístupná prostřednictvím rozhraní API detekce rizik ochrany identity v Microsoft Graph.
 
 
 ## <a name="september-2017"></a>Září 2017

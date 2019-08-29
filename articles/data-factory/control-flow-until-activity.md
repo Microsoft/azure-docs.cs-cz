@@ -1,26 +1,25 @@
 ---
-title: Do aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Dokud aktivita provádí ve smyčce sadu aktivit, dokud podmínek přidružená k aktivitě nevyhodnotí jako true nebo vypršením časového limitu.
+title: Dokud aktivita v Azure Data Factory | Microsoft Docs
+description: Aktivita dokud aktivita ve smyčce provede sadu aktivit, dokud se podmínka spojená s aktivitou nevyhodnotí jako true nebo dokud nevyprší časový limit.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155169"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142452"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Do aktivity ve službě Azure Data Factory
-Dokud aktivita poskytuje stejné funkce, která DNT – dokud opakování ve smyčce struktura obsahuje v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
+# <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
+Aktivita dokud neposkytuje stejné funkce jako do struktury smyčky do, které poskytuje v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -50,23 +49,23 @@ Dokud aktivita poskytuje stejné funkce, která DNT – dokud opakování ve smy
 
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název `Until` aktivity. | String | Ano
-type | Musí být nastaveno na **dokud**. | String | Ano
-Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | výraz.  | Ano
-timeout | Provést – až do smyčky vyprší po určeném čase. | řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dnů. | Ne
-Činnosti | Sadu aktivit, které jsou prováděny, dokud je výraz vyhodnocen `true`. | Pole aktivit. |  Ano
+name | `Until` Název aktivity | Řetězec | Ano
+type | Musí být nastavenéna do. | Řetězec | Ano
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
+časový limit | Vyprší časový interval smyčky po zadaném čase. | Řetezce. `d.hh:mm:ss`ani `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen `true`jako. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a vzorové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu datové továrny pomocí Azure Powershellu a JSON definic najdete v tématu [kurz: vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-until-activity"></a>Kanál s aktivita Until
-V tomto příkladu tento kanál obsahuje dvě aktivity: **Dokud** a **počkejte**. Aktivita Wait čeká na zadaném časovém období před spuštěním webové aktivity ve smyčce. Další informace o výrazům a funkcím ve službě Data Factory najdete v tématu [jazyk výrazů a funkce](control-flow-expression-language-functions.md). 
+### <a name="pipeline-with-until-activity"></a>Kanál s až do aktivity
+V tomto příkladu má kanál dvě aktivity: **Do** a **počkejte**. Aktivita čekání počká po určenou dobu před spuštěním aktivity webu ve smyčce. Další informace o výrazech a funkcích v Data Factory naleznete v tématu [Expression Language and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -117,9 +116,9 @@ V tomto příkladu tento kanál obsahuje dvě aktivity: **Dokud** a **počkejte*
 ```
 
 ## <a name="example-2"></a>Příklad 2 
-Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky ve smyčce. Smyčka je ukončeno hodnota pro parametr opakování je nastavena na hodnotu false nebo vyprší časový limit po jedné minutě.   
+Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky ve smyčce. Smyčka končí, když je hodnota parametru opakování nastavena na hodnotu false nebo když uplyne časový limit po jedné minutě.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s až do aktivity (c:\adfv2quickstartpsh)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s až do aktivity (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -192,7 +191,7 @@ Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky 
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -209,8 +208,8 @@ Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky 
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametry datové sady objektů Blob v Azure (C:\adfv2quickstartpsh)
-Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2** parametr kanálu. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
 {
@@ -236,7 +235,7 @@ Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2**
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (C:\adfv2quickstartpsh)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
 
 ```json
 {
@@ -246,11 +245,11 @@ Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2**
 }
 ```
 
-### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
+### <a name="powershell-commands"></a>Příkazy PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Těchto příkazů se předpokládá, že jste uložili soubor JSON do složky: C:\ADF. 
+U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -289,12 +288,12 @@ while ($True) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)

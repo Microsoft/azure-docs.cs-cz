@@ -1,6 +1,6 @@
 ---
-title: Nastavte proměnné aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak používat aktivitu nastavit proměnnou nastavíte hodnotu existující proměnné definované v kanálech Data Factory
+title: Nastavit aktivitu proměnné v Azure Data Factory | Microsoft Docs
+description: Naučte se používat aktivitu nastavit proměnnou k nastavení hodnoty existující proměnné definované v kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,32 +8,33 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/10/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
+ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60767961"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142447"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Nastavte proměnné aktivity ve službě Azure Data Factory
+# <a name="set-variable-activity-in-azure-data-factory"></a>Nastavit aktivitu proměnné v Azure Data Factory
 
-Použije aktivitu nastavit proměnnou nastavíte hodnotu existující proměnné typu String, Bool nebo pole definované v kanálech Data Factory.
+Aktivitu nastavit proměnnou použijte k nastavení hodnoty existující proměnné typu String, bool nebo Array definovaného v kanálu Data Factory.
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Požaduje se
+Vlastnost | Popis | Požadováno
 -------- | ----------- | --------
 name | Název aktivity v kanálu | Ano
-description | Text popisující, jakým způsobem aktivita naloží | ne
+description | Text popisující, co aktivita dělá | ne
 type | Typ aktivity je SetVariable | ano
-value | Řetězcový literál nebo výraz hodnotu objektu používá k nastavení zadané proměnné | ano
-variableName | Název proměnné, která stanoví tato aktivita | ano
+value | Hodnota řetězcového literálu nebo objektu výrazu, která se používá k nastavení zadané proměnné | ano
+variableName | Název proměnné, která bude nastavena touto aktivitou | ano
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o aktivitu toku řízení související podporovaných službou Data Factory: 
+Přečtěte si o související aktivitě toku ovládacích prvků, kterou podporuje Data Factory: 
 
-- [Připojte aktivitu proměnnou](control-flow-append-variable-activity.md)
+- [Aktivita připojení proměnné](control-flow-append-variable-activity.md)

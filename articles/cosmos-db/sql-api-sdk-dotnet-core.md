@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779171"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142618"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -220,7 +220,7 @@ ms.locfileid: "68779171"
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oprava problému, který občas způsobí WebException: Vzdálený název se nedá rozpoznat.
+* Oprava problému, který občas způsobí WebException: Vzdálený název se nedal přeložit.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -251,9 +251,21 @@ Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovějš�
 
 Pokud máte dotazy související s touto sadou SDK, odešlete příspěvek do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)nebo zadáte problém v [úložišti GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues).
 
-## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
+## <a name="release--retirement-dates"></a>Data vyřazení & vydání
+Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi.
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
+
+Všechny požadavky na Azure Cosmos DB s využitím vyřazené sady SDK jsou službou odmítnuty.
+
+> [!WARNING]
+> Všechny verze **1. x** .NET Core SDK pro rozhraní SQL API budou vyřazení od **30. srpna 2020**.
+> 
+>
+<br/>
+
+
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |2\. července 2019 |--- |
 | [2.4.1](#2.4.1) |20. června 2019 |--- |
@@ -268,26 +280,26 @@ Pokud máte dotazy související s touto sadou SDK, odešlete příspěvek do [S
 | [2.1.1](#2.1.1) |27. září 2018 |--- |
 | [2.1.0](#2.1.0) |21. září 2018 |--- |
 | [2.0.0](#2.0.0) |07. září 2018 |--- |
-| [1.9.1](#1.9.1) |09. března 2018 |--- |
-| [1.8.2](#1.8.2) |21. února 2018 |--- |
-| [1.8.1](#1.8.1) |05. února 2018 |--- |
-| [1.7.1](#1.7.1) |16. listopadu 2017 |--- |
-| [1.7.0](#1.7.0) |10. listopadu 2017 |--- |
-| [1.6.0](#1.6.0) |17. října 2017 |--- |
-| [1.5.1](#1.5.1) |02. října 2017 |--- |
-| [1.5.0](#1.5.0) |10. srpna 2017 |--- | 
-| [1.4.1](#1.4.1) |07. srpna 2017 |--- |
-| [1.4.0](#1.4.0) |02. srpna 2017 |--- |
-| [1.3.2](#1.3.2) |12. června 2017 |--- |
-| [1.3.1](#1.3.1) |23. května 2017 |--- |
-| [1.3.0](#1.3.0) |10. května 2017 |--- |
-| [1.2.2](#1.2.2) |19. dubna 2017 |--- |
-| [1.2.1](#1.2.1) |29. března 2017 |--- |
-| [1.2.0](#1.2.0) |25. března 2017 |--- |
-| [1.1.2](#1.1.2) |20. března 2017 |--- |
-| [1.1.1](#1.1.1) |14. března 2017 |--- |
-| [1.1.0](#1.1.0) |16. února 2017 |--- |
-| [1.0.0](#1.0.0) |21. prosince 2016 |--- |
+| [1.9.1](#1.9.1) |09. března 2018 |30. srpna 2020 |
+| [1.8.2](#1.8.2) |21. února 2018 |30. srpna 2020 |
+| [1.8.1](#1.8.1) |05. února 2018 |30. srpna 2020 |
+| [1.7.1](#1.7.1) |16. listopadu 2017 |30. srpna 2020 |
+| [1.7.0](#1.7.0) |10. listopadu 2017 |30. srpna 2020 |
+| [1.6.0](#1.6.0) |17. října 2017 |30. srpna 2020 |
+| [1.5.1](#1.5.1) |02. října 2017 |30. srpna 2020 |
+| [1.5.0](#1.5.0) |10. srpna 2017 |30. srpna 2020 | 
+| [1.4.1](#1.4.1) |07. srpna 2017 |30. srpna 2020 |
+| [1.4.0](#1.4.0) |02. srpna 2017 |30. srpna 2020 |
+| [1.3.2](#1.3.2) |12. června 2017 |30. srpna 2020 |
+| [1.3.1](#1.3.1) |23. května 2017 |30. srpna 2020 |
+| [1.3.0](#1.3.0) |10. května 2017 |30. srpna 2020 |
+| [1.2.2](#1.2.2) |19. dubna 2017 |30. srpna 2020 |
+| [1.2.1](#1.2.1) |29. března 2017 |30. srpna 2020 |
+| [1.2.0](#1.2.0) |25. března 2017 |30. srpna 2020 |
+| [1.1.2](#1.1.2) |20. března 2017 |30. srpna 2020 |
+| [1.1.1](#1.1.1) |14. března 2017 |30. srpna 2020 |
+| [1.1.0](#1.1.0) |16. února 2017 |30. srpna 2020 |
+| [1.0.0](#1.0.0) |21. prosince 2016 |30. srpna 2020 |
 | [0.1.0-preview](#0.1.0-preview) |15. listopadu 2016 |Do 31. prosince 2016 |
 
 ## <a name="see-also"></a>Viz také

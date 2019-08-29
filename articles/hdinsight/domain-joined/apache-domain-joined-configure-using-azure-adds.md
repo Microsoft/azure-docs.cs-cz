@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614217"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125593"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -22,12 +22,12 @@ Clustery Balíček zabezpečení podniku (ESP) poskytují přístup k více uži
 V tomto článku se dozvíte, jak pomocí Azure Active Directory Domain Services (Azure AD-DS) nakonfigurovat cluster HDInsight s protokolem ESP.
 
 > [!NOTE]  
-> Protokol ESP je všeobecně dostupný v HDInsight 3,6 a 4,0 pro typy clusterů: Apache Spark, Interactive, Apache Hadoop a HBA. Protokol ESP pro Apache Kafka typ clusteru je ve verzi Preview.
+> Protokol ESP je všeobecně dostupný v HDInsight 3,6 a 4,0 pro typy clusterů: Apache Spark, Interactive, Hadoop a HBA. Protokol ESP pro Apache Kafka typ clusteru je ve verzi Preview s podporou pouze nejlepšího úsilí. Clustery ESP vytvořené před datem GA protokolu ESP (1. října 2018) nejsou podporovány.
 
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD-DS
 
 > [!NOTE]  
-> Oprávnění k povolení služby Azure AD-DS mají jenom správci tenanta. Pokud je úložiště clusteru Azure Data Lake Storage (ADLS) Gen1 nebo Gen2, je nutné zakázat vícefaktorové ověřování (MFA) pouze pro uživatele, kteří budou potřebovat přístup ke clusteru pomocí základních ověření protokolu Kerberos. Pomocí [důvěryhodných IP adres](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) můžete zakázat MFA pro konkrétní uživatele, jenom když přistupuje k rozsahu IP adres virtuální sítě clusteru HDInsight. Pokud používáte podmíněný přístup, ujistěte se, že koncový bod služby AD ve virtuální síti HDInsight je povolený.
+> Oprávnění k povolení služby Azure AD-DS mají jenom správci tenanta. Pokud je úložiště clusteru Azure Data Lake Storage (ADLS) Gen1 nebo Gen2, je nutné zakázat Multi-Factor Authentication (MFA) pouze pro uživatele, kteří budou potřebovat přístup ke clusteru pomocí základních ověření protokolu Kerberos. Pomocí [důvěryhodných IP adres](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) nebo [podmíněného přístupu](../../active-directory/conditional-access/overview.md) můžete zakázat MFA pro konkrétní uživatele, jenom když přistupuje k rozsahu IP adres virtuální sítě clusteru HDInsight. Pokud používáte podmíněný přístup, ujistěte se, že koncový bod služby AD ve virtuální síti HDInsight je povolený.
 >
 > Pokud je úložiště clusteru Azure Blob Storage (WASB), nepovolujte vícefaktorové ověřování.
 

@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360828"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141898"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat Service Bus témata a předplatná v Pythonu
 
@@ -39,7 +39,7 @@ Tento článek popisuje, jak používat témata a odběry služby Service Bus. U
 
     > [!NOTE]
     > V tomto rychlém startu vytvoříte **téma** a **předplatné** k tématu pomocí **Pythonu** . 
-3. Nainstalujte [balíček Azure Python][Azure Python package]. Projděte si příručku k [instalaci Pythonu](../python-how-to-install.md).
+3. Nainstalujte [balíček Azure Python][Azure Python package]. Projděte si příručku k [instalaci Pythonu](/azure/python/python-sdk-azure-install).
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
 
@@ -195,7 +195,7 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se seznámili se základy Service Bus témata, získáte další informace na následujících odkazech.
 

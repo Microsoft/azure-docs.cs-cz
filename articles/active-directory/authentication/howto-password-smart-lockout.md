@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637592"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125006"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Inteligentní uzamčení Azure Active Directory
 
@@ -45,7 +45,7 @@ Při použití [předávacího ověřování](../hybrid/how-to-connect-pta.md)je
 * Prahová hodnota pro uzamčení Azure AD je **nižší** než prahová hodnota pro uzamčení účtu služby Active Directory. Nastavte hodnoty tak, aby prahová hodnota uzamčení účtu služby Active Directory byla minimálně dvě nebo třikrát delší než prahová hodnota pro uzamčení Azure AD. 
 * Doba trvání uzamčení Azure AD musí být nastavená na delší dobu, než je čítač uzamčení účtu služby Active Directory pro obnovení po dobu trvání. Počítejte s tím, že doba trvání služby Azure AD je nastavená v sekundách, ale doba trvání AD je nastavená v řádu minut. 
 
-Například pokud chcete, aby byl čítač Azure AD vyšší než AD, pak bude Azure AD 120 sekund (2 minuty), zatímco vaše služba Prem AD je nastavená na 1 minutu (60 sekund).
+Například pokud chcete, aby byl čítač Azure AD vyšší než AD, pak bude Azure AD 120 sekund (2 minuty), zatímco vaše místní služba AD je nastavená na 1 minutu (60 sekund).
 
 > [!IMPORTANT]
 > Správce v současné době nemůže odemknout účty uživatelů cloudu, pokud byly uzamčeny funkcí inteligentního uzamčení. Správce musí počkat na vypršení platnosti doby uzamčení. Uživatel se ale může odemknout pomocí samoobslužného resetování hesla (SSPR) z důvěryhodného zařízení nebo umístění.
@@ -67,7 +67,7 @@ Na základě požadavků vaší organizace může být nutné přizpůsobit hodn
 
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, použijte následující postup:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a klikněte na **Azure Active Directory**a pak na **metody ověřování**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte na **Azure Active Directory** > **metody** > ověřování**ochrana heslem**.
 1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené. Výchozí hodnota je 10.
 1. Nastavte **dobu uzamčení v sekundách**na délku v sekundách každého uzamknutí. Výchozí hodnota je 60 sekund (jedna minuta).
 

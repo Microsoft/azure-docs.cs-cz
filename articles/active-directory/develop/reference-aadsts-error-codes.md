@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874241"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135763"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -194,6 +194,7 @@ Hledáte informace o kódech chyb AADSTS, které vrací služba tokenů zabezpe�
 | AADSTS90019 | MissingTenantRealm – službě Azure AD se nepovedlo určit identifikátor tenanta z požadavku. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat – formát hlavního názvu není platný nebo nesplňuje očekávaný `name[/host][@realm]` formát. Hlavní název je povinný, hostitel a sféra jsou volitelné a můžou být nastavené na hodnotu null. |
 | AADSTS90023 | InvalidRequest – žádost ověřovací služby není platná. |
+| AADSTS9002313 | InvalidRequest-žádost je poškozená nebo neplatná. – Problém je tady, protože u požadavku na určitý koncový bod došlo k nějaké chybě. K tomuto problému se dostanete tak, že získáte Fiddler trasování chyby a zjistíte, jestli je požadavek ve skutečnosti správně naformátovaný nebo ne. |
 | AADSTS90024 | RequestBudgetExceededError – došlo k přechodné chybě. Zkuste to znova. |
 | AADSTS90033 | MsodsServiceUnavailable – služba Microsoft online Directory Service (MSODS) není k dispozici. |
 | AADSTS90036 | MsodsServiceUnretryableFailure – došlo k neočekávané chybě, která není znovu opakována ze služby WCF hostované službou MSODS. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md). |

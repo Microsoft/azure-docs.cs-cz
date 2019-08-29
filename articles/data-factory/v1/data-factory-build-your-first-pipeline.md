@@ -1,27 +1,24 @@
 ---
-title: 'Kurz objekt pro vytváření dat: První datový kanál | Dokumentace Microsoftu'
-description: Tento kurz služby Azure Data Factory se dozvíte, jak vytvářet a plánovat služby data factory, který zpracovává data pomocí skriptu Hive v clusteru Hadoop.
+title: 'Data Factory kurz: První datový kanál | Microsoft Docs'
+description: V tomto Azure Data Factory kurzu se dozvíte, jak vytvořit a naplánovat datovou továrnu, která zpracovává data pomocí skriptu podregistru v clusteru Hadoop.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 2dd2edfabff51c749890fe20d47a29c1ec39947c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839441"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140386"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Vytvoření prvního kanálu pro transformaci dat pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -31,37 +28,37 @@ ms.locfileid: "67839441"
 
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [rychlý start: Vytvoření datové továrny pomocí Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [rychlý Start: Vytvořte datovou továrnu pomocí](../quickstart-create-data-factory-dot-net.md)Azure Data Factory.
 
-V tomto kurzu sestavíte svou první datovou továrnu Azure s datovým kanálem. Kanál transformuje vstupní data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop) a generuje výstupní data.  
+V tomto kurzu sestavíte svůj první objekt pro vytváření dat Azure s datovým kanálem. Kanál transformuje vstupní data spuštěním skriptu podregistru v clusteru Azure HDInsight (Hadoop) a vytváří výstupní data.  
 
-Tento článek obsahuje přehled a požadavky pro tento kurz. Po dokončení požadavků můžete udělat kurz pomocí jedné z následujících nástrojů nebo sad SDK: Visual Studio, PowerShell, šablony Resource Manageru, rozhraní REST API. Vyberte jednu z možností v rozevíracím seznamu v odkazech na konci tohoto článku, pokud chcete udělat kurz pomocí jedné z těchto možností začátek (nebo).    
+Tento článek poskytuje přehled a předpoklady pro tento kurz. Po dokončení požadavků můžete kurz udělat pomocí jednoho z následujících nástrojů nebo sad SDK: Visual Studio, PowerShell, Správce prostředků šablona REST API. Vyberte jednu z možností v rozevíracím seznamu na začátku (nebo) odkazech na konci tohoto článku, abyste mohli kurz používat jednou z těchto možností.    
 
 ## <a name="tutorial-overview"></a>Přehled kurzu
 V tomto kurzu budete provádět následující kroky:
 
-1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo více datových kanálů, které přesouvají a transformují data. 
+1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více datových kanálů, které přesouvají a transformují data. 
 
-    V tomto kurzu vytvoříte jeden kanál v datové továrně. 
-2. Vytvoření **kanálu**. Kanál může obsahovat jednu nebo víc aktivit (příklady: Aktivita kopírování, aktivita HDInsight Hive). Tato ukázka používá aktivitu HDInsight Hive, která spouští skript Hivu v clusteru HDInsight Hadoop. Skript nejprve vytvoří tabulku, která odkazuje nezpracovaná data webového protokolu uložená ve službě Azure blob storage a pak nezpracovaná data rozdělí podle roku a měsíce.
+    V tomto kurzu vytvoříte v datové továrně jeden kanál. 
+2. Vytvořte **kanál**. Kanál může mít jednu nebo více aktivit (příklady: Aktivita kopírování, aktivita podregistru HDInsight). V této ukázce se používá aktivita podregistru HDInsight, která spouští skript podregistru v clusteru HDInsight Hadoop. Skript nejprve vytvoří tabulku, která odkazuje na nezpracovaná data webového protokolu uložená v úložišti objektů BLOB v Azure, a potom oddělí nezpracovaná data po rocích a měsících.
 
-    V tomto kurzu kanál používá aktivitu Hive k transformaci dat spuštěním dotazu Hive v clusteru Azure HDInsight Hadoop. 
-3. Vytvoření **propojené služby**. Vytvoříte propojenou službu, která spojuje úložiště dat nebo výpočetní službu s datovou továrnou. Úložiště dat, jako například Azure Storage, uchovává vstupní a výstupní data aktivit v kanálu. Výpočetní službu jako je cluster HDInsight Hadoop, zpracovává nebo transformuje data.
+    V tomto kurzu kanál používá aktivitu podregistru k transformaci dat spuštěním dotazu na podregistr v clusteru Azure HDInsight Hadoop. 
+3. Vytvořte **propojené služby**. Vytvoříte propojenou službu, která spojuje úložiště dat nebo výpočetní službu s datovou továrnou. Úložiště dat, jako například Azure Storage, uchovává vstupní a výstupní data aktivit v kanálu. Výpočetní služba, jako je cluster HDInsight Hadoop, zpracovává nebo transformuje data.
 
-    V tomto kurzu vytvoříte dvě propojené služby: **Azure Storage** a **Azure HDInsight**. Azure Storage propojená služba propojuje účet úložiště Azure, který obsahuje vstupní a výstupní data do služby data factory. Azure HDInsight propojená služba propojuje cluster Azure HDInsight, který slouží k transformaci dat do služby data factory. 
+    V tomto kurzu vytvoříte dvě propojené služby: **Azure Storage** a **Azure HDInsight**. Propojená služba Azure Storage propojuje účet Azure Storage, který obsahuje vstupní a výstupní data do objektu pro vytváření dat. Propojená služba Azure HDInsight propojuje cluster Azure HDInsight, který slouží k transformaci dat do objektu pro vytváření dat. 
 3. Vytvoření vstupní a výstupní **datové sady**. Vstupní datová sada představuje vstup pro aktivitu v kanálu a výstupní datová sada představuje výstup pro aktivitu.
 
-    V tomto kurzu zadejte vstupní a výstupní datovou sadu umístění vstupní a výstupní data ve službě Azure Blob Storage. Propojenou službu Azure Storage Určuje, co je účet služby Azure Storage používá. Vstupní datová sada Určuje, kde jsou uložené vstupní soubory a výstupní datovou sadu Určuje umístění výstupních souborů. 
+    V tomto kurzu vstupní a výstupní datové sady určují umístění vstupních a výstupních dat v Blob Storage Azure. Propojená služba Azure Storage určuje, jaký Azure Storage účet se používá. Vstupní datová sada určuje, kde jsou umístěny vstupní soubory a výstupní datová sada určuje, kde jsou umístěny výstupní soubory. 
 
 
-Zobrazit [Úvod do služby Azure Data Factory](data-factory-introduction.md) článku podrobnější přehled služby Azure Data Factory.
+Podrobný přehled Azure Data Factory najdete v tématu [Úvod do Azure Data Factoryho](data-factory-introduction.md) článku.
   
-Tady je **zobrazení diagramu** služby data factory ukázkový vytváříte v tomto kurzu. **MyFirstPipeline** má jednu aktivitu typu Hive, která využívá **AzureBlobInput** datovou sadu jako vstup a vytvoří **AzureBlobOutput** datovou sadu jako výstup. 
+Tady je **zobrazení diagramu** ukázkové datové továrny, kterou sestavíte v tomto kurzu. **MyFirstPipeline** má jednu aktivitu typu podregistr, která využívá **AzureBlobInput** datovou sadu jako vstup a vytváří datovou sadu **AzureBlobOutput** jako výstup. 
 
 ![Zobrazení diagramu v kurzu služby Data Factory](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-V tomto kurzu **inputdata** složky **adfgetstarted** kontejner objektů blob v Azure obsahuje jeden soubor s názvem input.log. Tento soubor protokolu obsahuje položky za tři měsíce: Leden, únor a březen 2016. Zde jsou řádky vzorku pro každý měsíc ve vstupním souboru. 
+V tomto kurzu obsahuje složka **InputData** **adfgetstarted** kontejneru Azure Blob jeden soubor s názvem input. log. Tento soubor protokolu obsahuje položky ze tří měsíců: Leden, únor a březen z 2016. Zde jsou řádky vzorku pro každý měsíc ve vstupním souboru. 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -77,30 +74,30 @@ adfgetstarted/partitioneddata/year=2016/month=2/000000_0
 adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 ```
 
-Z řádků vzorku uvedených výše, je první z nich (s 2016-01-01) zapsán do souboru 000000_0 ve měsíce = 1 složky. Podobně je druhý řádek zapsán do souboru ve složce month=2 a třetí řádek je zapsán do souboru ve složce month=3.  
+Z výše uvedených vzorových řádků je první z nich (s 2016-01-01) zapsán do souboru 000000_0 ve složce Month = 1. Podobně je druhý řádek zapsán do souboru ve složce month=2 a třetí řádek je zapsán do souboru ve složce month=3.  
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu splňovali následující požadavky:
 
 1. **Předplatné Azure** – Pokud nemáte předplatné Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Postup při vytváření bezplatného zkušebního účtu najdete v článku [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
-2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Poznamenejte si po vytvoření účtu úložiště **název účtu** a **přístupový klíč**. Přečtěte si článek [Zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
-3. Stáhnout a revidovat souboru dotazu Hive (**HQL**) umístění: [ https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql ](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Tento dotaz transformuje vstupní data a generuje výstupní data. 
-4. Stáhnout a revidovat ukázkového vstupního souboru (**input.log**) umístění: [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
-5. Vytvořte kontejner objektů blob s názvem **adfgetstarted** ve službě Azure Blob Storage. 
-6. Nahrát **partitionweblogs.hql** do souboru **skript** složky **adfgetstarted** kontejneru. Pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
-7. Nahrát **input.log** do souboru **inputdata** složky **adfgetstarted** kontejneru. 
+2. **Úložiště Azure** – Pro ukládání dat v rámci tohoto kurzu budete používat účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště si poznamenejte **název účtu** a **přístupový klíč**. Přečtěte si článek [Zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
+3. Stáhněte a zkontrolujte soubor dotazu na podregistr (**HQL**) umístěný v umístění [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql):. Tento dotaz transformuje vstupní data a vytváří výstupní data. 
+4. Stáhněte si a zkontrolujte vzorový vstupní soubor (**input. log**) umístěný v:[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+5. Ve Blob Storage Azure vytvořte kontejner objektů BLOB s názvem **adfgetstarted** . 
+6. Nahrajte soubor **partitionweblogs. HQL** do složky **Script** v kontejneru **adfgetstarted** . Používejte nástroje, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/). 
+7. Odešlete soubor **input. log** do složky **InputData** v kontejneru **adfgetstarted** . 
 
-Po dokončení požadavků, vyberte jednu z následujících nástrojů nebo sad SDK chcete kurz absolvovat: 
+Po dokončení požadovaných součástí vyberte jeden z následujících nástrojů nebo sad SDK a proveďte tento kurz: 
 
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Šablona Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Visual Studio poskytuje grafické uživatelské rozhraní způsob vytváření datových továren. Vzhledem k tomu, možnosti prostředí PowerShell, šablony Resource Manageru a rozhraní REST API pro skriptování a programování způsob vytváření datových továren.
+Visual Studio poskytuje grafické uživatelské rozhraní a způsob vytváření datových továrn. Vzhledem k tomu, že PowerShell, Správce prostředků šablona a možnosti REST API poskytují skriptovací a programovací způsob vytváření datových továrn.
 
 > [!NOTE]
-> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Nekopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby kopírování dat pomocí Azure Data Factory najdete v tématu [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Nekopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz o tom, jak kopírovat data pomocí Azure Data Factory, najdete v [tématu Kurz: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Podrobné informace najdete v tématu s popisem [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md). 
 

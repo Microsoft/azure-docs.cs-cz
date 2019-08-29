@@ -9,13 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1022bdc26a340b6b54ad840d1fe47674509fa865
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871659"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128734"
 ---
 # <a name="join-data"></a>Spojení dat
 
@@ -65,7 +64,7 @@ Chcete-li provést spojení se dvěma datovými sadami, měly by se vztahovat na
 
 1. Spusťte experiment nebo vyberte modul připojení dat a vybrané **spuštění** , aby se spojení provádělo.
 
-1. Pokud chcete zobrazit výsledky, klikněte pravým tlačítkem  > myši na**vizualizaci**datové**sady** > výsledků spojování.
+1. Pokud chcete zobrazit výsledky, klikněte pravým tlačítkem > myši na**vizualizaci**datové**sady** > výsledků spojování.
 
 ## <a name="next-steps"></a>Další postup
 

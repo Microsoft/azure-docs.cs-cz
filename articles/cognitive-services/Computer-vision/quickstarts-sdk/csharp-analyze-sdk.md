@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza obrázku - SDKC#'
+title: 'Rychlý start: Analyzovat image – sada SDKC#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu analyzujete obrázek pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 48c96ac55ca2192506f9190a9dd9be9c1ee0058f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 59641973a953d1db501f7b660b04df900bc55cb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603473"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141023"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku pomocí sady SDK služby pro zpracování obrazu počítač aC#
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku pomocí sady Počítačové zpracování obrazu SDK aC#
 
-V tomto rychlém startu bude analyzovat místní a vzdálené image extrahovat pomocí klientské knihovny pro počítačové zpracování obrazu pro vizuální funkce C#. Pokud chcete, můžete stáhnout kód v tomto průvodci jako kompletní ukázkovou aplikaci z [Cognitive Services Csharp vizi](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) úložišti na Githubu.
+V tomto rychlém startu budete analyzovat místní i vzdálenou image pro extrakci vizuálních funkcí pomocí klientské knihovny Počítačové zpracování obrazu pro C#. Pokud chcete, můžete si kód v této příručce stáhnout jako kompletní ukázkovou aplikaci z Cognitive Servicesho úložiště [Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+* Počítačové zpracování obrazu klíč předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 * Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
@@ -37,7 +37,7 @@ Pokud chcete spustit ukázku, postupujte takto:
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Microsoft.Azure.CognitiveServices.Vision.ComputerVision.
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
-1. Nahraďte obsah *Program.cs* následujícím kódem. `AnalyzeImageAsync` a `AnalyzeImageInStreamAsync` obalují metod [analyzovat rozhraní API REST obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) pro vzdálené a místní Image, v uvedeném pořadí.
+1. Obsah *program.cs* nahraďte následujícím kódem. Metody `AnalyzeImageAsync` a`AnalyzeImageInStreamAsync` zabalí [REST API analyzovat bitovou kopii](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) pro vzdálené a místní image v uvedeném pořadí.
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -151,14 +151,14 @@ Pokud chcete spustit ukázku, postupujte takto:
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
 1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s klíči vašeho předplatného.
 1. `<LocalImage>` nahraďte cestou a názvem souboru místního obrázku.
-1. Volitelně můžete nastavit `remoteImageUrl` na adresu URL jiný obrázek.
+1. Volitelně můžete nastavit `remoteImageUrl` na jinou adresu URL obrázku.
 1. Spusťte program.
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď zobrazí nejrelevantnější titulek každého obrázku. Můžete změnit `DisplayResults` metoda výstup různých data obrázku. Zobrazit [AnalyzeLocalAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions.analyzeimageinstreamasync?view=azure-dotnet) metodu pro další informace.
+Úspěšná odpověď zobrazí nejrelevantnější titulek každého obrázku. Můžete změnit `DisplayResults` metodu na výstup různých dat obrázku. Další informace najdete v tématu metoda [AnalyzeLocalAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions.analyzeimageinstreamasync?view=azure-dotnet) .
 
-Zobrazit [rozhraní API, šablony rychlý start: Analýza místní image použijte C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) příklad nezpracovaném formátu JSON výstupu.
+Viz [rychlé starty rozhraní API: Analyzovat místní image s C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) příkladem nezpracovaného výstupu JSON.
 
 ```console
 https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

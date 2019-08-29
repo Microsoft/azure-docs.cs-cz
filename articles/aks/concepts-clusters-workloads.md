@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616005"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147185"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -100,6 +100,9 @@ Související osvědčené postupy najdete v tématu [osvědčené postupy pro z
 ### <a name="node-pools"></a>Fondy uzlů
 
 Uzly stejné konfigurace jsou seskupeny dohromady do *fondů uzlů*. Cluster Kubernetes obsahuje jeden nebo více fondů uzlů. Počáteční počet uzlů a velikost je definován při vytváření clusteru AKS, který vytváří *výchozí fond uzlů*. Tento výchozí fond uzlů v AKS obsahuje základní virtuální počítače, které spouštějí vaše uzly agentů. Podpora fondu více uzlů je v současné době ve verzi Preview v AKS.
+
+> [!NOTE]
+> Aby cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly ve výchozím fondu uzlů.
 
 Při škálování nebo upgradu clusteru AKS je akce prováděna s výchozím fondem uzlů. Můžete se také rozhodnout škálovat nebo upgradovat určitý fond uzlů. V případě operací upgradu jsou spuštěné kontejnery naplánovány na jiných uzlech ve fondu uzlů, dokud nebudou všechny uzly úspěšně upgradovány.
 

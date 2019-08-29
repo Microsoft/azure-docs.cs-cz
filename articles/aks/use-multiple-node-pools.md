@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 656934f00879b47669fac4deaac5156cb100e159
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: caeb89332bd46b4f0cf2d0f9e5654aebca4d765d
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898749"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147253"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -101,12 +101,15 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --enable-vmss \
-    --node-count 1 \
+    --node-count 2 \
     --generate-ssh-keys \
     --kubernetes-version 1.13.10
 ```
 
 Vytvoření clusteru bude trvat několik minut.
+
+> [!NOTE]
+> Aby se zajistilo, že váš cluster funguje spolehlivě, měli byste spustit aspoň 2 (dva) uzly ve výchozím fondu uzlů, protože v rámci tohoto fondu uzlů běží základní systémové služby.
 
 Až bude cluster připravený, pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] Získejte přihlašovací údaje clusteru pro použití s `kubectl`:
 
@@ -133,7 +136,7 @@ Stav fondů uzlů zobrazíte pomocí příkazu [AZ AKS Node Pool list][az-aks-no
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-Následující příklad výstupu ukazuje, že *mynodepool* byl úspěšně vytvořen se třemi uzly ve fondu uzlů. Když se v předchozím kroku vytvořil cluster AKS, vytvořil se výchozí *nodepool1* s počtem uzlů *1*.
+Následující příklad výstupu ukazuje, že *mynodepool* byl úspěšně vytvořen se třemi uzly ve fondu uzlů. Když se v předchozím kroku vytvořil cluster AKS, vytvořil se výchozí *nodepool1* s počtem uzlů *2*.
 
 ```console
 $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
@@ -151,7 +154,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -166,11 +169,14 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > Pokud při přidávání fondu uzlů nejsou zadány žádné *OrchestratorVersion* ani *VmSize* , vytvoří se uzly na základě výchozích hodnot pro cluster AKS. V tomto příkladu bylo Kubernetes verze *1.13.10* a velikost uzlu *Standard_DS2_v2*.
 
 ## <a name="upgrade-a-node-pool"></a>Upgrade fondu uzlů
-
+ 
 > [!NOTE]
 > Operace upgradu a škálování v clusteru nebo ve fondu uzlů se vzájemně vylučují. Cluster ani fond uzlů nemůžete současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
 Pokud byl cluster AKS vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro počáteční fond uzlů. K dispozici jsou různé příkazy pro upgrade verze Kubernetes roviny ovládacího prvku a fondu uzlů. Příkaz se používá k upgradu roviny ovládacího prvku, `az aks nodepool upgrade` zatímco se používá k upgradu samostatného fondu uzlů. `az aks upgrade`
+
+> [!NOTE]
+> Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
 
 Pojďme upgradovat *mynodepool* na Kubernetes *1.13.10*. Pomocí příkazu [AZ AKS Node upgrade Pool][az-aks-nodepool-upgrade] upgradujte fond uzlů, jak je znázorněno v následujícím příkladu:
 
@@ -206,7 +212,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -269,7 +275,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -319,7 +325,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -372,7 +378,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
   },
   {
     ...
-    "count": 1,
+    "count": 2,
     ...
     "name": "nodepool1",
     "orchestratorVersion": "1.13.10",
@@ -389,7 +395,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="schedule-pods-using-taints-and-tolerations"></a>Naplánování lusků pomocí chuti a tolerovánosti
 
-Nyní máte v clusteru dva fondy uzlů – výchozí fond uzlů byl původně vytvořen a fond uzlů na bázi GPU. K zobrazení uzlů v clusteru použijte příkaz [kubectl Get Nodes][kubectl-get] . Následující příklad výstupu ukazuje jeden uzel v každém fondu uzlů:
+Nyní máte v clusteru dva fondy uzlů – výchozí fond uzlů byl původně vytvořen a fond uzlů na bázi GPU. K zobrazení uzlů v clusteru použijte příkaz [kubectl Get Nodes][kubectl-get] . Následující příklad výstupu ukazuje uzly:
 
 ```console
 $ kubectl get nodes
@@ -597,7 +603,7 @@ Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pom
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak ovládat lusky napříč fondy uzlů, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 

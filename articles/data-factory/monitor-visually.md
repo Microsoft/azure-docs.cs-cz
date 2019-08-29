@@ -3,21 +3,20 @@ title: Vizuálně monitorujte datové továrny Azure | Microsoft Docs
 description: Naučte se vizuálně monitorovat datové továrny Azure.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: shlo
-ms.openlocfilehash: e680610263830c856a3ff902d8e55cd8b2b4a158
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114540"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141100"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorujte datové továrny Azure.
 Azure Data Factory je cloudová služba pro integraci dat. Můžete ho použít k vytvoření pracovních postupů řízených daty v cloudu pro orchestraci a automatizaci přesunu dat a transformaci dat. Pomocí Azure Data Factory můžete:

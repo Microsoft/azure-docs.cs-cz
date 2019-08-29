@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API | Dokumentace Microsoftu'
+title: 'Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API | Microsoft Docs'
 description: V tomto kurzu vytvoříte kanál Azure Data Factory s aktivitou kopírování pomocí rozhraní .NET API.
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: craigg
 ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6291540363b2fbafa8f4747dc9f58a39164f3cbe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839415"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140293"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
 > [!div class="op_single_selector"]
@@ -42,7 +41,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > [!NOTE] 
 > Úplnou dokumentaci k rozhraní .NET API pro datovou továrnu najdete v [referencích k rozhraní .NET API služby Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 > 
-> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu [kurzu: Vytvoření kanálu pro transformaci dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz o tom, jak transformovat data pomocí Azure Data Factory, najdete [v tématu Kurz: Vytvořte kanál pro transformaci dat pomocí clusteru](data-factory-build-your-first-pipeline.md)Hadoop.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -133,7 +132,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 3. V **Konzole Správce balíčků** postupujte takto:
    1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Do souboru **App.config** přidejte následující část **appSetttings**. Tato nastavení se používá pomocnou metodu: **GetAuthorizationHeader**.
+4. Do souboru **App.config** přidejte následující část **appSetttings**. Tato nastavení používá pomocná metoda: **GetAuthorizationHeader**.
 
     Nahraďte hodnoty pro **&lt;ID aplikace&gt;** , **&lt;Heslo&gt;** , **&lt;ID předplatného&gt;** a **&lt;ID tenanta&gt;** vlastními hodnotami.
 
@@ -235,7 +234,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 
     V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). 
 
-    Proto vytvoříte dvě propojené služby s názvem AzureStorageLinkedService a AzureSqlLinkedService typu: AzureStorage a AzureSqlDatabase.  
+    Proto vytvoříte dvě propojené služby s názvem AzureStorageLinkedService a AzureSqlLinkedService typů: AzureStorage a AzureSqlDatabase.  
 
     Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. Tento účet úložiště je ten, ve kterém jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili kontejner a nahráli do něj data.
 9. Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure SQL**.
@@ -514,9 +513,9 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
     ```
 18. Ukázku spusťte kliknutím na **Ladit** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
 19. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
-    * Propojené služby: **LinkedService_AzureStorage**
-    * Datová sada: **InputDataset** a **OutputDataset**.
-    * Kanál: **PipelineBlobSample**
+    * Propojená služba: **LinkedService_AzureStorage**
+    * Integrován **InputDataset** a **OutputDataset**.
+    * Kanálu **PipelineBlobSample**
 20. Ověřte, že se v tabulce **emp** vytvořily dva záznamy zaměstnanců v zadané databázi Azure SQL.
 
 ## <a name="next-steps"></a>Další postup

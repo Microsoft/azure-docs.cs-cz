@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597865"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137539"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
@@ -46,7 +46,8 @@ Budete muset vytvořit prostředek Počítačové zpracování obrazu pro svůj 
 
 1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, které jste právě vytvořili. Zkopírujte adresu URL pod **koncovým bodem** , abyste ji mohli snadno načíst za chvíli. Pak klikněte na **Zobrazit přístupové klíče**.
 
-    ![Stránka Azure Portal s odkazem adresa URL koncového bodu a přístup k klávesovým zkratkám](../Images/copy-vision-endpoint.png)
+    ![Stránka Azure Portal s odkazem](../Images/copy-vision-endpoint.png) adresa URL koncového bodu a přístup k klávesovým zkratkám[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 
 1. V dalším okně Zkopírujte hodnotu **klíče 1** do schránky.
 
@@ -69,7 +70,7 @@ Pak v Průzkumník řešení klikněte pravým tlačítkem na projekt a pomocí 
 
 Dále přidáte kód, který ve skutečnosti využívá službu Počítačové zpracování obrazu k vytváření metadat pro image. Tyto kroky se vztahují na aplikaci ASP.NET v testovacím prostředí, ale můžete je přizpůsobit na vlastní aplikaci. Důležité je, že v tomto okamžiku máte webovou aplikaci ASP.NET, která může nahrávat obrázky do kontejneru Azure Storage, číst z něj obrázky a zobrazovat je v zobrazení. Pokud si o tom nejste jisti, je vhodné postupovat podle [cvičení 3 Azure Storageho testovacího prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). 
 
-1. Otevřete soubor *HomeController.cs* ve složce Controllers projektu  a na začátek souboru přidejte následující `using` příkazy:
+1. Otevřete soubor *HomeController.cs* ve složce Controllers projektu a na začátek souboru přidejte následující `using` příkazy:
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;

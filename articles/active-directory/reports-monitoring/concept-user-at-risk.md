@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989844"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127639"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Sestava uživatelů označených příznakem rizika v Azure Portal
 
-Azure Active Directory (Azure AD) detekuje podezřelé akce týkající se vašich uživatelských účtů. Pro každou zjištěnou akci se vytvoří záznam s názvem [riziková událost](concept-risk-events.md) .
+Azure Active Directory (Azure AD) detekuje podezřelé akce týkající se vašich uživatelských účtů. Pro každou zjištěnou akci se vytvoří záznam s názvem [zjišťování rizik](concept-risk-events.md) .
 
 K sestavám zabezpečení můžete přistupovat z [Azure Portal](https://portal.azure.com) tak, že vyberete okno **Azure Active Directory** a pak přejdete do části **zabezpečení** . 
 
-Zjištěné rizikové události se použijí k výpočtu těchto údajů:
+Pro výpočet se používají zjištěná zjištění rizik:
 
 - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
 
 - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
-Informace o tom, jak nakonfigurovat zásady, které aktivují tyto rizikové události, najdete v tématu [Postup konfigurace zásad rizik uživatelů](../identity-protection/howto-user-risk-policy.md). 
+Informace o tom, jak nakonfigurovat zásady, které aktivují tyto detekce rizik, najdete v tématu [Postup konfigurace zásad rizik uživatelů](../identity-protection/howto-user-risk-policy.md). 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Sestavy uživatelů označených příznakem rizika nabízí všechny edice Azur
 
 - V **edicích Azure Active Directory Free a Basic**se zobrazí seznam uživatelů označených příznakem rizika. 
 
-- Kromě toho edice **Azure Active Directory Premium 1** umožňuje prozkoumávat některé ze základních rizikových událostí, které byly zjištěny pro každou sestavu. 
+- Kromě toho edice **Azure Active Directory Premium 1** umožňuje prozkoumávat některé z základních detekcí rizik zjištěných pro jednotlivé sestavy. 
 
-- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních rizikových událostech a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních detekcích rizik a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Sestava rizik uživatelů pro edice Free a Basic pro Azure AD
@@ -73,7 +73,7 @@ Sestava uživatelé označení příznakem rizika v edicích Azure AD Premium v�
 
 - Seznam uživatelských účtů, které by mohly být ohrožené 
 
-- Agregované informace o [typech rizikových událostí](concept-risk-events.md), které byly zjištěné
+- Agregované informace o zjištěných [typech detekce rizik](concept-risk-events.md)
 
 - Možnost stažení sestavy
 
@@ -89,11 +89,11 @@ Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživat
 
 - Zavřít všechny události
 
-- Vyšetřit rizikové události oznámené pro uživatele 
+- Prozkoumat zjištěná zjištění rizik pro uživatele. 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/324.png)
 
-Pokud chcete vyšetřit rizikovou událost, vyberte některou ze seznamu a otevře se okno **Podrobnosti** pro danou rizikovou událost. V okně **Podrobnosti** můžete buď ručně zavřít rizikovou událost, nebo znovu aktivovat ručně zavřenou rizikovou událost. 
+Pokud chcete zjistit detekci rizik, vyberte ji ze seznamu a otevřete okno **Podrobnosti** pro toto zjišťování rizik. V okně **podrobností** máte možnost buď ručně uzavřít detekci rizik, nebo znovu aktivovat ručně uzavřenou detekci rizik. 
 
 ![Riziková přihlášení](./media/concept-user-at-risk/325.png)
 

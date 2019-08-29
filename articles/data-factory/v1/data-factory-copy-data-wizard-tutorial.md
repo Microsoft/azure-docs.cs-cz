@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření kanálu pomocí Průvodce kopírováním | Dokumentace Microsoftu'
+title: 'Kurz: Vytvoření kanálu pomocí Průvodce kopírováním | Microsoft Docs'
 description: V tomto kurzu vytvoříte kanál služby Azure Data Factory s aktivitou kopírování pomocí průvodce kopírováním podporovaného službou Data Factory
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,18 @@ manager: craigg
 ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d67e18182d44dc640c75d982ccb40f1d22f8b41
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: fa5e7735d122dcf06b9b9692abb23441752082fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836601"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140354"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí Průvodce kopírováním služby Data Factory
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí Průvodce kopírováním Data Factory
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
@@ -62,7 +61,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
       - Vyberte možnost **Použít existující** a vyberte existující skupinu prostředků.
       - Vyberte možnost **Vytvořit nový** a zadejte název pro skupinu prostředků.
           
-        Některé kroky v tomto kurzu se předpokládá, že použijete název: **ADFTutorialResourceGroup** pro skupinu prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../../azure-resource-manager/resource-group-overview.md).
+        U některých kroků v tomto kurzu se předpokládá, že používáte název: **ADFTutorialResourceGroup** pro skupinu prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../../azure-resource-manager/resource-group-overview.md).
    4. Vyberte **umístění** pro příslušný objekt pro vytváření dat.
    5. Zaškrtněte políčko **Připnout na řídicí panel** v dolní části okna.  
    6. Klikněte na možnost **Vytvořit**.
@@ -150,7 +149,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
 
     Další informace o používání této aplikace najdete v článku [Monitorování a správa kanálu pomocí monitorovací aplikace](data-factory-monitor-manage-app.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste v operaci kopírování použili úložiště objektů blob jako zdrojové úložiště dat a databázi Azure SQL jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

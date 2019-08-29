@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834711"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135721"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
+
+> [!NOTE]
+>  Pokud neoznámíte serveru, který prostředek chcete volat, neaktivuje Server zásady podmíněného přístupu pro daný prostředek. Takže pokud chcete mít Trigger MFA, budete muset do své adresy URL zahrnout prostředek. 
+>
 
 Azure Active Directory (Azure AD) používá OAuth 2,0 k autorizaci přístupu k webovým aplikacím a webovým rozhraním API v tenantovi Azure AD. Tato příručka je nezávislá na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití žádné z našich [Open Source knihoven](active-directory-authentication-libraries.md).
 
@@ -219,7 +223,7 @@ V následující tabulce jsou uvedeny stavové kódy HTTP, které vrátí koncov
 | Kód HTTP | Popis |
 | --- | --- |
 | 400 |Výchozí kód HTTP. Používá se ve většině případů a je typicky způsoben chybnou žádostí. Opravte a odešlete požadavek znovu. |
-| 401 |Ověření se nezdařilo. V žádosti například chybí parametr client_secret. |
+| 401 |Ověřování se nezdařilo. V žádosti například chybí parametr client_secret. |
 | 403 |Ověření se nepovedlo. Uživatel například nemá oprávnění pro přístup k prostředku. |
 | 500 |Ve službě došlo k vnitřní chybě. Opakujte požadavek. |
 
@@ -278,6 +282,8 @@ Specifikace RFC 6750 definuje následující chyby pro prostředky, které použ
 Přístupové tokeny jsou krátkodobé a po uplynutí jejich platnosti musí být obnoveny, aby bylo možné pokračovat v přístupu k prostředkům. Můžete aktualizovat `access_token` tím, že odešlete `POST` další požadavek na `/token` koncový bod, `code`ale tentokrát `refresh_token` místo toho poskytne.  Aktualizační tokeny jsou platné pro všechny prostředky, na které váš klient již udělil souhlas s přístupem. pro vyžádání nového přístupového tokenu pro `resource=https://graph.microsoft.com` `resource=https://contoso.com/api`lze použít obnovovací token vydaný na žádost pro. 
 
 Aktualizační tokeny nemají zadané životnosti. Obvykle jsou životnosti aktualizačních tokenů poměrně dlouhé. V některých případech ale platnost tokenů aktualizace vyprší, odvolají se nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovat chyby vrácené koncovým bodem vystavení tokenu správně.
+
+[!NOTE] Životnosti přístupového tokenu najdete tady: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Výchozí hodnota pro přístupové tokeny je 1 hodina a výchozí hodnota pro Refresh tokens je 90 dní. Tyto životnosti je možné změnit nakonfigurováním životností tokenů odpovídajícím způsobem. 
 
 Když obdržíte odpověď s chybou aktualizačního tokenu, zahodíte aktuální obnovovací token a vyžádáte si nový autorizační kód nebo přístupový token. Zejména při použití obnovovacího tokenu v toku udělení autorizačního kódu, pokud obdržíte odpověď s `interaction_required` `invalid_grant` kódy chyb, zahodíte obnovovací token a vyžádáte nový autorizační kód.
 

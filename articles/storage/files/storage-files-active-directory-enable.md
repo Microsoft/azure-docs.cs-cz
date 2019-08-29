@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 886cacc5e90136380a183f6b9ddd1123d726dcf3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617675"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129229"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Povolení Azure Active Directory Domain Services ověřování pomocí protokolu SMB pro soubory Azure
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,11 +46,9 @@ Než povolíte službu Azure AD přes SMB pro soubory Azure, ujistěte se, že j
 
 2.  **Povolí Azure AD Domain Services v tenantovi Azure AD.**
 
-< < < < < < < VEDOUCÍm k podpoře ověřování pomocí přihlašovacích údajů Azure AD musíte povolit Azure AD Domain Services pro vašeho tenanta Azure AD. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
-= = = = = = = = Pokud chcete podporovat ověřování pomocí přihlašovacích údajů Azure AD, musíte povolit Azure služba AD DS pro vašeho tenanta Azure AD. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolení Azure Active Directory Domain Services pomocí Azure Portal](../../active-directory-domain-services/create-instance.md).
->>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
+    Aby bylo možné podporovat ověřování pomocí přihlašovacích údajů Azure AD, musíte Azure AD Domain Services pro vašeho tenanta Azure AD povolit. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
+    Dokončení nasazení Azure služba AD DS obvykle trvá přibližně 15 minut. Než přejdete k dalšímu kroku, ověřte,že se stav služby Azure služba AD DS zobrazuje jako spuštěný a povolená synchronizace hodnot hash hesel.
 
 3.  **Doména: připojení virtuálního počítače Azure s Azure služba AD DS.**
 
@@ -242,7 +240,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 
 Nyní jste úspěšně povolili ověřování Azure AD přes protokol SMB a přiřadili jste vlastní roli, která poskytuje přístup ke sdílené složce Azure pomocí identity Azure AD. Pokud chcete ostatním uživatelům udělit přístup ke sdílené složce, postupujte podle pokynů v části [přiřazení oprávnění k přístupu k identitě](#assign-access-permissions-to-an-identity) a [Konfigurace oprávnění NTFS](#configure-ntfs-permissions-over-smb) v oddílech SMB.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě soubory Azure a o tom, jak používat Azure AD přes SMB, najdete v těchto zdrojích:
 

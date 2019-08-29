@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576547"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125429"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: Podmíněný přístup na základě rizik
+# <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: Podmíněný přístup podle rizika
 
-Organizace s Azure AD Premium licence P2 můžou vytvářet zásady podmíněného přístupu, které obsahují Azure AD Identity Protection rizikové události. Existují tři výchozí zásady, které mohou být povoleny v poli. 
+Organizace s Azure AD Premium licencemi P2 můžou vytvářet zásady podmíněného přístupu, které obsahují Azure AD Identity Protection detekce rizik. Existují tři výchozí zásady, které mohou být povoleny v poli. 
 
 * Vyžaduje, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication.
 * Vyžaduje změnu hesla pro uživatele s vysokým rizikem.
 * Vyžadovat službu Multi-Factor Authentication pro uživatele se středním nebo vysokým rizikem přihlášení.
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Vyžadovat registraci všech uživatelů pro Azure Multi-Factor Authentication
+## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Vyžadovat, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication
 
 Povolení této zásady bude vyžadovat, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. 
 

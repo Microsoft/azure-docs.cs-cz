@@ -3,25 +3,22 @@ title: Sestavení prvního objektu pro vytváření dat (šablona Resource Manag
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 66475c0500cb3106dc95945dd2e457e20f68bff3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836672"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140500"
 ---
-# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru
+# <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí šablony Azure Resource Manager
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -31,16 +28,16 @@ ms.locfileid: "67836672"
 > 
  
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [rychlý start: Vytvoření datové továrny pomocí Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [rychlý Start: Vytvořte datovou továrnu pomocí](../quickstart-create-data-factory-dot-net.md)Azure Data Factory.
 
 V tomto článku vytvoříte první objekt pro vytváření dat Azure pomocí šablony Azure Resource Manageru. Pokud chcete udělat kurz pomocí jiných nástrojů nebo sad SDK, vyberte jednu z možností z rozevíracího seznamu.
 
-Kanál v tomto kurzu má jednu aktivitu: **Aktivita HDInsight Hive**. Tato aktivita spouští skript Hive v clusteru Azure HDInsight, který transformuje vstupní data pro vytvoření výstupních dat. Spuštění kanálu je naplánované jednou za měsíc mezi zadaným počátečním a koncovým časem. 
+Kanál v tomto kurzu má jednu aktivitu: **Aktivita v podregistru HDInsight** Tato aktivita spouští skript Hive v clusteru Azure HDInsight, který transformuje vstupní data pro vytvoření výstupních dat. Spuštění kanálu je naplánované jednou za měsíc mezi zadaným počátečním a koncovým časem. 
 
 > [!NOTE]
-> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Kurz předvádějící způsoby kopírování dat pomocí Azure Data Factory najdete v tématu [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Kurz o tom, jak kopírovat data pomocí Azure Data Factory, najdete v [tématu Kurz: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> V tomto kurzu kanál obsahuje pouze jednu aktivitu typu: HDInsightHive. Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+> Kanál v tomto kurzu má jenom jednu aktivitu typu: HDInsightHive. Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -62,7 +59,7 @@ Kanál v tomto kurzu má jednu aktivitu: **Aktivita HDInsight Hive**. Tato aktiv
 
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může obsahovat jednu nebo víc aktivit. Existují dva typy aktivit: [aktivity přesunu dat](data-factory-data-movement-activities.md) a [transformace dat](data-factory-data-transformation-activities.md). V tomto kurzu vytvoříte kanál s jednou aktivitou (aktivita Hive).
 
-Následující oddíl poskytuje hotovou šablonu Resource Manageru pro definování entit služby Data Factory, abyste mohli rychle projít kurzem a otestovat šablonu. Pro lepší pochopení toho, jak jsou jednotlivé entity služby Data Factory definovány, přejděte k oddílu [Entity služby Data Factory v šabloně](#data-factory-entities-in-the-template). Další informace o syntaxi JSON a vlastnosti pro prostředky Data Factory v šabloně najdete v tématu [typy prostředků Microsoft.DataFactory](/azure/templates/microsoft.datafactory/allversions).
+Následující oddíl poskytuje hotovou šablonu Resource Manageru pro definování entit služby Data Factory, abyste mohli rychle projít kurzem a otestovat šablonu. Pro lepší pochopení toho, jak jsou jednotlivé entity služby Data Factory definovány, přejděte k oddílu [Entity služby Data Factory v šabloně](#data-factory-entities-in-the-template). Další informace o syntaxi a vlastnostech JSON pro Data Factory prostředky v šabloně najdete v tématu [typy prostředků Microsoft. DataFactory](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json-template"></a>Šablona JSON služby Data Factory
 Šablona Resource Manageru nejvyšší úrovně pro definování datové továrny je: 
@@ -264,7 +261,7 @@ Ve složce **C:\ADFGetStarted** vytvořte soubor JSON s názvem **ADFTutorialARM
 ```
 
 > [!NOTE]
-> Můžete najít další příklad šablony Resource Manageru pro vytvoření služby Azure data factory na [kurzu: Vytvoření kanálu s aktivitou kopírování pomocí šablony Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md).  
+> Další příklad šablony Správce prostředků pro vytvoření datové továrny Azure najdete v [kurzu: Vytvořte kanál s aktivitou kopírování pomocí šablony](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)Azure Resource Manager.  
 > 
 > 
 
@@ -410,7 +407,7 @@ V tomto oddílu zadáte název a klíč svého účtu služby Azure Storage. Pod
     }
 }
 ```
-Vlastnost **connectionString** používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a dataFactoryName definované v šabloně. 
+Vlastnost **connectionString** používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a DataFactory definované v šabloně. 
 
 #### <a name="hdinsight-on-demand-linked-service"></a>Propojená služba HDInsightu na vyžádání
 Podrobnosti o vlastnostech JSON používaných k definici propojené služby HDInsightu najdete v článku [Propojené služby Compute](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).  
@@ -618,7 +615,7 @@ Tady je ukázka šablony Resource Manageru pro vytvoření logické brány v poz
     ]
 }
 ```
-Tato šablona vytvoří objekt pro vytváření dat s názvem gatewayusingarmdf, který má bránu s názvem: GatewayUsingARM. 
+Tato šablona vytvoří datovou továrnu s názvem GatewayUsingArmDF s bránou s názvem: GatewayUsingARM. 
 
 ## <a name="see-also"></a>Viz také
 

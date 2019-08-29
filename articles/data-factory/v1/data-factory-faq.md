@@ -1,97 +1,95 @@
 ---
-title: Azure Data Factory – nejčastější dotazy
-description: Nejčastější dotazy ohledně služby Azure Data Factory.
+title: Azure Data Factory – často kladené otázky
+description: Nejčastější dotazy týkající se Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839358"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139820"
 ---
-# <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – nejčastější dotazy
+# <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [časté otázky – Data Factory](../frequently-asked-questions.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Nejčastější dotazy-Data Factory](../frequently-asked-questions.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
-Data Factory je Cloudová služba integrace dat, která **automatizuje přesouvání a transformaci dat**. Stejně jako objekt factory, která spouští zařízení, ta vezmou suroviny a transformují je na hotové výroby Data Factory orchestruje stávající služby, které sbírají nezpracovaná data a transformují je na informace připravené k použití.
+Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat**. Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
 
-Data Factory umožňuje vytvářet pracovní postupy řízené daty pro přesun dat mezi s místními a cloudovými úložišti dat i zpracovat a transformovat data pomocí výpočetních služeb, jako je například Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provádí akce, které potřebujete, můžete naplánovat jeho spuštění pravidelně (každou hodinu, denně, týdně atd.).   
+Data Factory umožňuje vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními i cloudovým úložištěm dat a také zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den, každý týden atd.).   
 
-Další informace najdete v tématu [přehled a klíčové koncepty](data-factory-introduction.md).
+Další informace najdete v tématu [přehled & klíčových konceptů](data-factory-introduction.md).
 
 ### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Kde najdu informace o cenách pro Azure Data Factory?
-Zobrazit [stránce s podrobnostmi ceny za Data Factory][adf-pricing-details] pro podrobnosti o cenách pro službu Azure Data Factory.  
+Podrobnosti o cenách pro Azure Data Factory najdete na [stránce s podrobnostmi o cenách Data Factory][adf-pricing-details] .  
 
-### <a name="how-do-i-get-started-with-azure-data-factory"></a>Jak můžu začít pracovat s Azure Data Factory?
-* Přehled služby Azure Data Factory najdete v tématu [Úvod do služby Azure Data Factory](data-factory-introduction.md).
-* Kurz o tom, jak **zkopírovat nebo přesunout data** pomocí aktivity kopírování, zobrazit [kopírování dat z Azure Blob Storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Kurz o tom, jak **transformovat data** pomocí aktivity Hivu HDInsight. Zobrazit [zpracovávat data pomocí skriptu Hive v clusteru Hadoop](data-factory-build-your-first-pipeline.md)
+### <a name="how-do-i-get-started-with-azure-data-factory"></a>Návody začít s Azure Data Factory?
+* Přehled Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](data-factory-introduction.md).
+* Kurz týkající se **kopírování a přesouvání dat** pomocí aktivity kopírování najdete v tématu [kopírování dat z Azure Blob Storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Návod, jak **transformovat data** pomocí aktivity podregistru HDInsight. Viz [procesní data spuštěním skriptu registru v clusteru Hadoop](data-factory-build-your-first-pipeline.md) .
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Co je dostupnost oblastí služby Data Factory?
-Data Factory je dostupná v **USA – západ** a **Severní Evropa**. Výpočetní a úložné služby používané objekty pro vytváření dat může být v jiných oblastech. Zobrazit [podporované oblasti](data-factory-introduction.md#supported-regions).
+### <a name="what-is-the-data-factorys-region-availability"></a>Jaká je dostupnost oblasti Data Factory?
+Data Factory je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
 
-### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení na počet továren/kanály a aktivity/datové sady dat?
-Zobrazit **omezení datové továrny Azure** část [předplatné Azure a limity, kvóty a omezení](../../azure-subscription-service-limits.md#data-factory-limits) článku.
+### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu datových továren/kanálů/aktivit/datových sad?
+V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md#data-factory-limits) najdete v části **omezení Azure Data Factory** .
 
-### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co je pro tvorbu/vývojářské prostředí pomocí služby Azure Data Factory?
-Můžete vytvořit/vytvářet datové továrny pomocí jedné z následujících nástrojů nebo sad SDK:
+### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Co je prostředí pro vytváření a vývojáře pomocí služby Azure Data Factory?
+Pomocí jednoho z následujících nástrojů nebo sad SDK můžete vytvářet a vytvářet datové továrny:
 
-* **Visual Studio** sady Visual Studio můžete použít k vytvoření datové továrny Azure. Zobrazit [vytvoření prvního kanálu dat pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) podrobnosti.
-* **Prostředí Azure PowerShell** naleznete v tématu [vytvořit a monitorovat datové továrny Azure pomocí Azure Powershellu](data-factory-build-your-first-pipeline-using-powershell.md) kurzu/návod pro vytvoření datové továrny pomocí prostředí PowerShell. Zobrazit [Reference k rutinám Data Factory][adf-powershell-reference] obsahu v knihovně MSDN úplnou dokumentaci o rutinách služby Data Factory.
-* **Knihovna tříd rozhraní .NET** můžete programově vytvářet datové továrny pomocí Data Factory .NET SDK. Zobrazit [vytvářet, monitorovat a spravovat datové továrny pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) návod k vytvoření datové továrny pomocí sady .NET SDK. Zobrazit [Reference knihovny tříd pro objekt pro vytváření dat][msdn-class-library-reference] úplnou dokumentaci o Data Factory .NET SDK.
-* **Rozhraní REST API** rozhraní REST API, který je zveřejněn prostřednictvím služby Azure Data Factory můžete použít také k vytváření a nasazování datové továrny. Zobrazit [referencích rozhraní API REST služby Data Factory][msdn-rest-api-reference] úplnou dokumentaci o rozhraní REST API služby Data Factory.
-* **Šablona Azure Resource Manageru** naleznete v tématu [kurzu: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md) fo podrobnosti.
+* **Visual Studio** Pomocí sady Visual Studio můžete vytvořit datovou továrnu Azure. Podrobnosti najdete v tématu [Vytvoření prvního datového kanálu pomocí sady Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .
+* **Azure PowerShell** Kurz nebo návod k vytvoření datové továrny pomocí PowerShellu najdete v tématu věnovaném [Vytvoření a sledování Azure Data Factory používání Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) . Kompletní dokumentaci k Data Factory rutinám najdete v tématu [Data Factory][adf-powershell-reference] obsahu rutiny v knihovně MSDN.
+* **Knihovna tříd .NET** Pomocí programu Data Factory .NET SDK můžete programově vytvářet datové továrny. Návod k vytvoření datové továrny pomocí sady .NET SDK najdete v tématu [Vytvoření, monitorování a Správa datových továren pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) . Kompletní dokumentaci sady Data Factory .NET SDK naleznete v tématu [Data Factory reference knihovny tříd][msdn-class-library-reference] .
+* **REST API** K vytváření a nasazování datových továren můžete použít taky REST API vystavené službou Azure Data Factory. Ucelenou dokumentaci k Data Factory REST API najdete v tématu [Data Factory REST API Reference][msdn-rest-api-reference] .
+* **Šablona Azure Resource Manager** Viz [kurz: Sestavte svou první datovou továrnu](data-factory-build-your-first-pipeline-using-arm.md) Azure pomocí Azure Resource Manager detailů šablony.
 
-### <a name="can-i-rename-a-data-factory"></a>Můžete přejmenovat objekt pro vytváření dat?
-Ne. Stejně jako ostatní prostředky Azure nelze změnit název datové továrny Azure.
+### <a name="can-i-rename-a-data-factory"></a>Můžu přejmenovat datovou továrnu?
+Ne. Podobně jako u jiných prostředků Azure nejde změnit název objektu pro vytváření dat Azure.
 
-### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Můžu přesunout objekt pro vytváření dat z jednoho předplatného Azure do jiného?
-Ano. Použití **přesunout** tlačítka v okně data factory, jak je znázorněno v následujícím diagramu:
+### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Můžu datovou továrnu přesunout z jednoho předplatného Azure do jiného?
+Ano. V okně Data Factory použijte tlačítko **přesunout** , jak je znázorněno na následujícím diagramu:
 
-![Přesunutí objektu pro vytváření dat](media/data-factory-faq/move-data-factory.png)
+![Přesunout objekt pro vytváření dat](media/data-factory-faq/move-data-factory.png)
 
-### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Co je výpočetní prostředí podporovaných službou Data Factory?
-Následující tabulka obsahuje seznam podporovaných objektu pro vytváření dat a aktivity, které v nich dají spustit výpočetní prostředí.
+### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Jaká jsou výpočetní prostředí podporovaná nástrojem Data Factory?
+Následující tabulka uvádí seznam výpočetních prostředí podporovaných Data Factory a aktivit, které na nich můžou běžet.
 
-| Výpočetní prostředí | activities |
+| Výpočetní prostředí | aktivity |
 | --- | --- |
-| [Cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
+| [Cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[Dotnet](data-factory-use-custom-activities.md), [podregistr](data-factory-hive-activity.md), [prase](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivity Machine Learning: Dávkové spouštění a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning aktivity: Dávkové zpracování a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL Data Lake Analytics](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [systému SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
 
-### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Jak porovnat objektu pro vytváření dat Azure s SQL Server Integration Services (SSIS)? 
-Zobrazit [vs Azure Data Factory. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) prezentaci z jednoho z našich MVP (Most. Vážíme si toho Professionals): Reza Rad. Některé z nedávných změn ve službě Data Factory se nemusí nacházet na prezentace. Průběžně přidáváme další funkce do služby Azure Data Factory. Průběžně přidáváme další funkce do služby Azure Data Factory. Jsme bude obsahovat tyto aktualizace do porovnání dat integrace technologií od Microsoftu nějakou dobu konce tohoto roku.   
+### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Jak Azure Data Factory porovnat s služba SSIS (SQL Server Integration Services) (SSIS)? 
+Podívejte se [na Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) prezentaci od některého z našich odborníků MVP (nejvíc vyhodnocených profesionálů): Reza rad. Některé nedávné změny v Data Factory nemusí být uvedeny v balíčku snímků. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Nepřetržitě přidáváme další možnosti pro Azure Data Factory. Tyto aktualizace budeme začlenit do porovnání technologií pro integraci dat od Microsoftu po celý tento rok.   
 
-## <a name="activities---faq"></a>Aktivity – nejčastější dotazy
-### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Jaké jsou různé typy aktivit, které můžete použít v kanálech Data Factory?
-* [Aktivity přesunu dat](data-factory-data-movement-activities.md) přesouvat data.
-* [Aktivity transformace dat](data-factory-data-transformation-activities.md) aby zpracovala/transformovala data.
+## <a name="activities---faq"></a>Aktivity – Nejčastější dotazy
+### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Jaké jsou různé typy aktivit, které můžete použít v kanálu Data Factory?
+* [Aktivity přesunu dat](data-factory-data-movement-activities.md) pro přesun dat.
+* [Aktivity transformace dat](data-factory-data-transformation-activities.md) pro zpracování/transformaci dat.
 
-### <a name="when-does-an-activity-run"></a>Pokud aktivita spustit?
-**Dostupnosti** určuje nastavení konfigurace ve výstupní tabulce dat při spuštění aktivity. Pokud jsou zadané vstupní datové sady, aktivita zkontroluje, zda jsou splněny všechny závislosti vstupní data (tedy **připravené** stavu) před spuštěním.
+### <a name="when-does-an-activity-run"></a>Kdy se spustí aktivita?
+Nastavení konfigurace **dostupnosti** v tabulce výstupní data Určuje, kdy se aktivita spustí. Pokud jsou zadány vstupní datové sady, aktivita před spuštěním zkontroluje, jestli jsou všechny závislosti vstupních dat splněné (stav **připraveno** ).
 
-## <a name="copy-activity---faq"></a>Aktivita kopírování – nejčastější dotazy
-### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>Je lepší mít kanál s více aktivit nebo samostatné kanálu pro každou aktivitu?
-Kanály mají sadu souvisejících aktivit. Pokud nejsou spotřebované datové sady, které je propojují jinou aktivitu mimo kanálu, abyste mohli aktivity v jednom kanálu. Tímto způsobem, nebude potřeba aktivní období kanálu řetězec tak, aby jejich zarovnání bylo mezi sebou. Při aktualizaci kanálu navíc lépe zajištěná integrita dat v tabulkách interní do kanálu. Aktualizace kanálu v podstatě zastaví všechny aktivity v rámci kanálu, odebere a znovu vytvoří je. Z vývojového perspektivy, může také být snazší zjistit tok dat v rámci souvisejících činností v jednom souboru JSON pro příslušný kanál.
+## <a name="copy-activity---faq"></a>Aktivita kopírování – Nejčastější dotazy
+### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>Je lepší mít pro každou aktivitu kanál s více aktivitami nebo samostatný kanál?
+Kanály by měly seskupit související aktivity. Pokud datové sady, které je spojují, nespotřebovává žádná jiná aktivita mimo kanál, můžete aktivity uchovávat v jednom kanálu. Tímto způsobem nemusíte řetězit aktivní období kanálu, aby se vzájemně narovnaly. Integrita dat v tabulkách vnitřních s tímto kanálem je také při aktualizaci kanálu lépe zachovaná. Aktualizace kanálu v podstatě zastaví všechny aktivity v rámci kanálu, odebere je a znovu vytvoří. Z perspektivy vytváření obsahu může být také snazší sledovat tok dat v rámci souvisejících aktivit v jednom souboru JSON pro daný kanál.
 
-### <a name="what-are-the-supported-data-stores"></a>Co jsou podporovaných úložišť dat?
+### <a name="what-are-the-supported-data-stores"></a>Jaké jsou podporovaná úložiště dat?
 Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového úložiště dat do úložiště dat jímky. Data Factory podporuje následující typy úložišť dat. Data z libovolného zdroje lze zapsat do libovolné jímky. Kliknutím na úložiště dat se dozvíte, jak kopírovat data z a do daného úložiště.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
@@ -102,23 +100,23 @@ Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového ú
 ### <a name="what-are-the-supported-file-formats"></a>Jaké jsou podporované formáty souborů?
 [!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
 
-### <a name="where-is-the-copy-operation-performed"></a>Kde se provádí operaci kopírování?
-Zobrazit [přesun globálně dostupné dat](data-factory-data-movement-activities.md#global) podrobné informace. Stručně řečeno když do místního úložiště dat je zahrnuta, operace kopírování je prováděno pomocí brány správy dat v místním prostředí. A při přesouvání dat mezi dvěma cloudovými úložišti operace kopírování se provádí v oblast nejbližší umístění jímky ve stejné zeměpisné oblasti.
+### <a name="where-is-the-copy-operation-performed"></a>Kde se provádí operace kopírování?
+Podrobnosti najdete v části [globálně dostupné přesuny dat](data-factory-data-movement-activities.md#global) . Pokud se jedná o místní úložiště dat, je operace kopírování prováděna Správa dat bránou ve vašem místním prostředí. A když přesun dat mezi dvěma cloudových úložišť, provede se operace kopírování v oblasti nejbližší k umístění jímky ve stejné geografické oblasti.
 
-## <a name="hdinsight-activity---faq"></a>Aktivita HDInsight – nejčastější dotazy
-### <a name="what-regions-are-supported-by-hdinsight"></a>Které oblasti podporují HDInsight?
-Naleznete v části s geografickou dostupností v následujícím článku: nebo [podrobnosti o cenách Azure HDInsight][hdinsight-supported-regions].
+## <a name="hdinsight-activity---faq"></a>Aktivita HDInsight – Nejčastější dotazy
+### <a name="what-regions-are-supported-by-hdinsight"></a>Které oblasti podporuje služba HDInsight?
+Podívejte se na část geografické dostupnosti v následujícím článku: nebo v [podrobnostech o cenách HDInsight][hdinsight-supported-regions].
 
-### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>Jaké oblasti se používá cluster HDInsight na vyžádání?
-Cluster HDInsight na vyžádání se vytvoří ve stejné oblasti, kde úložiště, které jste zadali pro použití s clusteru existuje.    
+### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>Jakou oblast používá cluster HDInsight na vyžádání?
+Cluster HDInsight na vyžádání se vytvoří ve stejné oblasti, ve které existuje úložiště, které jste zadali pro použití s clusterem.    
 
-### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>Postup přidružení dalších účtů úložiště pro váš cluster HDInsight?
-Pokud používáte vlastní HDInsight Cluster (BYOC – přineste si vlastní Cluster), naleznete v následujících tématech:
+### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>Jak přidružit další účty úložiště ke clusteru HDInsight?
+Pokud používáte vlastní cluster HDInsight (BYOC-Přineste si vlastní cluster), přečtěte si následující témata:
 
-* [Použití clusteru služby HDInsight s účty alternativní úložiště a Metaúložišti][hdinsight-alternate-storage]
-* [Použití dalších účtů úložiště s HDInsight Hive][hdinsight-alternate-storage-2]
+* [Použití clusteru HDInsight s alternativním účtem úložiště a Metaúložiště][hdinsight-alternate-storage]
+* [Použití dalších účtů úložiště s podregistrem HDInsight][hdinsight-alternate-storage-2]
 
-Pokud používáte cluster na vyžádání, který je vytvořen pomocí služby Data Factory, zadejte další účty úložiště pro HDInsight propojenou službu tak, aby služba Data Factory můžete zaregistrovat vaším jménem. V definici JSON propojené služby na vyžádání pomocí **additionalLinkedServiceNames** vlastnosti a určit alternativní účty, jak je znázorněno v následujícím fragmentu kódu JSON:
+Pokud používáte cluster na vyžádání, který je vytvořený službou Data Factory, určete další účty úložiště pro propojenou službu HDInsight, aby je služba Data Factory mohla zaregistrovat vaším jménem. V definici JSON pro propojenou službu na vyžádání použijte vlastnost **additionalLinkedServiceNames** k určení alternativních účtů úložiště, jak je znázorněno v následujícím fragmentu kódu JSON:
 
 ```JSON
 {
@@ -137,25 +135,25 @@ Pokud používáte cluster na vyžádání, který je vytvořen pomocí služby 
     }
 }
 ```
-V předchozím příkladu představují otherLinkedServiceName1 a otherLinkedServiceName2 propojené služby, jejichž definice obsahuje přihlašovací údaje, které potřebuje přístup k účtům alternativní úložiště clusteru HDInsight.
+V příkladu výše otherLinkedServiceName1 a otherLinkedServiceName2 představuje propojené služby, jejichž definice obsahují přihlašovací údaje, které cluster HDInsight potřebuje k přístupu k alternativním účtům úložiště.
 
-## <a name="slices---faq"></a>Kolekce obsahuje nějaké řezy – nejčastější dotazy
-### <a name="why-are-my-input-slices-not-in-ready-state"></a>Proč je můj vstupních řezů není ve stavu Připraveno?
-Běžnou chybou nenastavuje **externí** vlastnost **true** vstupní datové sady, pokud vstupní data jsou externí vzhledem k objektu pro vytváření dat (není vytvořený službou data factory).
+## <a name="slices---faq"></a>Řezy – Nejčastější dotazy
+### <a name="why-are-my-input-slices-not-in-ready-state"></a>Proč nejsou moje vstupní řezy ve stavu připraveno?
+Společná chyba nenastavuje vlastnost **External** na vstupní datovou sadu na **true** , když vstupní data jsou externí pro objekt pro vytváření dat (nevyráběné objektem pro vytváření dat).
 
-V následujícím příkladu je jenom nutné nastavit **externí** na true **dataset1**.  
+V následujícím příkladu stačí nastavit vlastnost **External** na hodnotu true v **DataSet1.** .  
 
-**DataFactory1** kanálu 1: dataset1 -> aktivity "activity1" -> dataset2 -> "activity2" -> kanál dataset3 2: dataset3 -> aktivita "activity3" -> dataset4
+**DataFactory1** Kanál 1: DataSet1.-> Activity1-> Dataset2-> "Activity2"-> dataset3 Pipeline 2: dataset3-> activity3-> dataset4
 
-Pokud máte jinou datovou továrnu s kanálem, který přebírá dataset4 (vytvořený pomocí kanálu 2 ve službě data factory 1), označte dataset4 jako externí datové sady, protože datovou sadu vytváří různé datové továrny (DataFactory1, ne DataFactory2).  
+Pokud máte jiný objekt pro vytváření dat s kanálem, který přebírá dataset4 (vyprodukovaný kanálem 2 ve službě Data Factory 1), označte dataset4 jako externí datovou sadu, protože datová sada je vytvořena jinou datovou továrnou (DataFactory1, ne DataFactory2).  
 
 **DataFactory2**    
-Kanál 1: dataset4 -> aktivita "activity4" -> dataset5
+Kanál 1: dataset4-> activity4-> dataset5
 
-Pokud je vlastnost external nastavená správně, ověřte, zda vstupní data existuje v umístění zadaném v definici vstupní datové sady.
+Pokud je vlastnost External nastavena správně, ověřte, zda vstupní data existují v umístění zadaném v definici vstupní datové sady.
 
-### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>Jak spustit určitý řez v jinou dobu, než když řez vytvářen každý den o půlnoci?
-Použití **posun** vlastnosti a určit čas, který chcete řez bude vytvořen. Zobrazit [dostupnosti datové sady](data-factory-create-datasets.md#dataset-availability) podrobné informace o této vlastnosti. Tady je příklad:
+### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>Jak spustit řez v jiné době než půlnoc, kdy se řez vyrábí každý den?
+Pomocí vlastnosti **posunutí** určete čas, kdy se má řez vyrobit. Podrobnosti o této vlastnosti najdete v části [dostupnost datové sady](data-factory-create-datasets.md#dataset-availability) . Tady je rychlý příklad:
 
 ```json
 "availability":
@@ -165,36 +163,36 @@ Použití **posun** vlastnosti a určit čas, který chcete řez bude vytvořen.
     "offset": "06:00:00"
 }
 ```
-Denní řezy začínají **6: 00** místo výchozí půlnoc.     
+Denní řezy začínají v **6** , ale ne jako výchozí půlnoc.     
 
-### <a name="how-can-i-rerun-a-slice"></a>Jak můžete znovu spustit určitý řez?
-Můžete znovu spustit určitý řez v jednom z následujících způsobů:
+### <a name="how-can-i-rerun-a-slice"></a>Jak můžu znovu spustit řez?
+Řez můžete znovu spustit jedním z následujících způsobů:
 
-* Pomocí monitorování a Správa aplikací spustit znovu okno aktivity nebo řezu. Zobrazit [znovu spustit vybranou okna aktivit](data-factory-monitor-manage-app.md#perform-batch-actions) pokyny.   
-* Klikněte na tlačítko **spustit** panelu příkazů **datový ŘEZ** okno řezu na webu Azure Portal.
-* Spustit **Set-AzDataFactorySliceStatus** rutiny se stavem nastavena na **čekání** řez.   
+* Pomocí možnosti monitorování a Správa aplikace znovu spusťte okno nebo řez aktivity. Pokyny najdete v tématu opětovné [spuštění vybraných oken aktivity](data-factory-monitor-manage-app.md#perform-batch-actions) .   
+* Na panelu příkazů v okně **datový řez** pro řez v Azure Portal klikněte na **Spustit** .
+* Spusťte rutinu **set-AzDataFactorySliceStatus** se stavem nastaveným na **čekání** na řez.   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  Zobrazit [Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] podrobné informace o rutině.
+  Podrobnosti o této rutině naleznete v tématu [set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] .
 
-### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak dlouho to trvala zpracovat určitý řez?
-Použití Průzkumníku okna aktivity v monitorování a Správa aplikace vědět, jak dlouho trvalo zpracování datový řez. Zobrazit [Průzkumníku okna aktivity](data-factory-monitor-manage-app.md#activity-window-explorer) podrobnosti.
+### <a name="how-long-did-it-take-to-process-a-slice"></a>Jak dlouho trvá zpracování řezu?
+Pomocí Průzkumníka oken aktivit v okně monitorování & Spravovat aplikaci, abyste zjistili, jak dlouho trvalo zpracování datového řezu. Podrobnosti najdete v [Průzkumníkovi okna aktivity](data-factory-monitor-manage-app.md#activity-window-explorer) .
 
-Můžete také provést následující na webu Azure Portal:  
+V Azure Portal můžete také provést následující akce:  
 
-1. Klikněte na tlačítko **datových sad** na dlaždici **služby DATA FACTORY** okno datové továrny.
-2. Kliknutím na konkrétní datové sady **datových sad** okno.
-3. Vyberte řez, který vás zajímá z **poslední řezy** seznamu **tabulky** okno.
-4. Klikněte na možnost spuštění z aktivit **spuštění aktivit** seznamu **datový ŘEZ** okno.
-5. Klikněte na tlačítko **vlastnosti** na dlaždici **podrobnosti o spuštění aktivit** okno.
-6. Měli byste vidět **doba trvání** pole s hodnotou. Tato hodnota je doba zpracování řezu.   
+1. Klikněte na dlaždici datové **sady** v okně **objekt** pro vytváření dat pro vaši datovou továrnu.
+2. V okně datové **sady** klikněte na konkrétní datovou sadu.
+3. V seznamu **Poslední řezy** v okně **tabulka** Vyberte řez, který vás zajímá.
+4. Klikněte na spuštění aktivit ze seznamu **spuštění aktivit** v okně **datový řez** .
+5. V okně **Podrobnosti o spuštění aktivity** klikněte na dlaždici **vlastnosti** .
+6. Mělo by se zobrazit pole **Trvání** s hodnotou. Tato hodnota je doba potřebná ke zpracování řezu.   
 
-### <a name="how-to-stop-a-running-slice"></a>Postup zastavení spuštěného řez?
-Pokud je třeba ukončit spuštění kanálu, můžete použít [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) rutiny. V současné době pozastavení kanálu nezastaví řez spuštění, které jsou v průběhu. Po dokončení spuštění v průběhu je neexistoval žádný další řez.
+### <a name="how-to-stop-a-running-slice"></a>Jak zastavit běžící řez?
+Pokud potřebujete zastavit spuštění kanálu, můžete použít rutinu [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) . V současné době pozastavení kanálu nezastaví provádění řezů, které probíhají. Po dokončení probíhajících spuštění se nevybere žádný další řez.
 
-Pokud Opravdu chcete okamžitě zabránit všech spuštění, jedině bude kanál odstranit a znovu vytvořit. Pokud se rozhodnete odstranit kanálu, není potřeba odstraňovat tabulky a propojené služby používané kanálu.
+Pokud opravdu chcete okamžitě zastavit všechna spuštění, jediným způsobem by byl kanál odstranit a znovu ho vytvořit. Pokud se rozhodnete kanál odstranit, nemusíte odstraňovat tabulky a propojené služby používané kanálem.
 
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models

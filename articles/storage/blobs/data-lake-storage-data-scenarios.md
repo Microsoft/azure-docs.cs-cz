@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2954f0bfcfe78243c2df12182f45034f46c8391d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991896"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142996"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -39,10 +39,10 @@ Tady je seznam nástrojů, pomocí kterých můžete vytvořit kontejner pro va�
 
 |Tool | Doprovodné materiály |
 |---|--|
-|Azure Storage Explorer | [Vytvoření kontejneru pomocí Průzkumník služby Storage](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Azure Storage Explorer | [Vytvoření kontejneru pomocí Průzkumník služby Storage](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [Vytvoření kontejneru objektů BLOB nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Rozhraní příkazového řádku kontejneru Hadoop (HDFS) se službou HDInsight |[Vytvoření kontejneru pomocí HDFS v HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
-|Kód v poznámkovém bloku Azure Databricks|[Vytvoření kontejneru účtu úložiště (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Vytvoření kontejneru a jeho připojení (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
+|Rozhraní příkazového řádku kontejneru Hadoop (HDFS) se službou HDInsight |[Vytvoření kontejneru pomocí HDFS v HDInsight](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
+|Kód v poznámkovém bloku Azure Databricks|[Vytvoření kontejneru účtu úložiště (Scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [Vytvoření kontejneru a jeho připojení (Python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
 
 Je nejjednodušší vytvořit systémy souborů pomocí Průzkumník služby Storage nebo AzCopy. Vytváření systémů souborů pomocí HDInsight a datacihly trvá trochu více práce. Pokud ale plánujete použít clustery HDInsight nebo datacihly ke zpracování vašich dat, můžete nejdřív vytvořit své clustery a použít rozhraní příkazového řádku HDFS pro vytváření systémů souborů.  
 

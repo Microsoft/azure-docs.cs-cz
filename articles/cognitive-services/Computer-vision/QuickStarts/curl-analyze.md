@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza vzdálené image - REST, cURL'
+title: 'Rychlý start: Analýza vzdálené image – REST, kudrlinkou'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat vzdálený obrázek pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2be6625fa2c21c3ece767f270746171c3928a774
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0c52bf9b62026caec54a09acd10a52f89ca98d52
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604439"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138023"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Rychlý start: Analýza vzdálené image pomocí REST API pro počítačové zpracování obrazu a cURL
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Rychlý start: Analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a kudrlinkou
 
-V tomto rychlém startu analyzovat vzdáleně uložený obrázek k extrakci vizuální funkce pomocí rozhraní REST API pro počítačové zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí REST API Počítačové zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [cURL](https://curl.haxx.se/windows).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. 
 
 ## <a name="create-and-run-the-sample-command"></a>Vytvoření a spuštění ukázkového příkazu
 
@@ -36,7 +36,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Zkopírujte do textového editoru následující příkaz.
 1. Proveďte v příkazu na příslušných místech následující změny:
     1. Hodnotu `<subscriptionKey>` nahraďte klíčem předplatného.
-    1. Adresu URL požadavku (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) nahraďte adresou URL koncového bodu metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Nahraďte první část adresy URL požadavku (`westcentralus`) textem ve vaší vlastní adrese URL koncového bodu.
+        [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Volitelně můžete změnit parametr jazyka v adrese URL požadavku (`language=en`) a použít jiný podporovaný jazyk.
     1. Volitelně můžete změnit adresu URL obrázku v textu požadavku (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) na adresu URL jiného obrázku, který se má analyzovat.
 1. Otevřete okno příkazového řádku.
@@ -106,7 +107,7 @@ curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: applica
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 437456ecb700b2efb60f2f6269643ca39d8775e2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: e875c74884fcea824ac29001aa5bcca9009e3dcb
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697527"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142767"
 ---
-# <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání služby Analýza textu pro rozpoznávání pomocí jazyka Java
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Rychlý start: Použití jazyka Java k volání služby pro rozpoznávání Azure Analýza textu
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711) analýza textu v jazyce Java.
@@ -37,10 +37,9 @@ Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-service
 
 Rozhraní Rozpoznávání jazyka API detekuje jazyk textového dokumentu pomocí [metody zjišťování jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte třídu s názvem `DetectLanguage.java`.
 1. Přidejte níže uvedený kód do vaší třídy.
-1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
-1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
 1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
 1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
@@ -91,23 +90,24 @@ class Documents {
 }
 
 public class DetectLanguage {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    public static void Initialize () throws Exception {
+        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+        subscription_key = System.getenv(subscription_key_var);
+        if (null == subscription_key) {
+            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
+        }
 
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+        endpoint = System.getenv(endpoint_var);
+        if (null == endpoint) {
+            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
+        }
+    }
 
     static String path = "/text/analytics/v2.1/languages";
     
@@ -115,11 +115,11 @@ public class DetectLanguage {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -148,6 +148,8 @@ public class DetectLanguage {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "This is a document written in English.");
             documents.add ("2", "Este es un document escrito en Español.");
@@ -213,10 +215,9 @@ public class DetectLanguage {
 
 Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetSentiment.java`.
 1. Přidejte níže uvedený kód do vaší třídy.
-1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
-1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
 1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
 1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
@@ -268,23 +269,24 @@ class Documents {
 }
 
 public class GetSentiment {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    public static void Initialize () throws Exception {
+        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+        subscription_key = System.getenv(subscription_key_var);
+        if (null == subscription_key) {
+            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
+        }
 
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+        endpoint = System.getenv(endpoint_var);
+        if (null == endpoint) {
+            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
+        }
+    }
 
     static String path = "/text/analytics/v2.1/sentiment";
     
@@ -292,11 +294,11 @@ public class GetSentiment {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -325,6 +327,8 @@ public class GetSentiment {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
@@ -366,10 +370,9 @@ Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporn
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetKeyPhrases.java`.
 1. Přidejte níže uvedený kód do vaší třídy.
-1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
-1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
 1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
 1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
@@ -421,23 +424,24 @@ class Documents {
 }
 
 public class GetKeyPhrases {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    public static void Initialize () throws Exception {
+        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+        subscription_key = System.getenv(subscription_key_var);
+        if (null == subscription_key) {
+            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
+        }
 
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+        endpoint = System.getenv(endpoint_var);
+        if (null == endpoint) {
+            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
+        }
+    }
 
     static String path = "/text/analytics/v2.1/keyPhrases";
     
@@ -445,11 +449,11 @@ public class GetKeyPhrases {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -478,6 +482,8 @@ public class GetKeyPhrases {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema.");
@@ -538,10 +544,9 @@ public class GetKeyPhrases {
 
 Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetEntities.java`.
 1. Přidejte níže uvedený kód do vaší třídy.
-1. Nahraďte hodnotu klíčem z předplatného analýza textu v [Azure.](https://ms.portal.azure.com) `accessKey`
-1. Nahraďte umístění v `host` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
 1. Ujistěte se, že máte nainstalovanou knihovnu [gson](https://github.com/google/gson) .
 1. Spusťte program v integrovaném vývojovém prostředí (IDE) nebo použijte příkazový řádek, který se má spustit (pokyny v komentářích kódu).
 
@@ -593,23 +598,24 @@ class Documents {
 }
 
 public class GetEntities {
+    static String subscription_key_var;
+    static String subscription_key;
+    static String endpoint_var;
+    static String endpoint;
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    public static void Initialize () throws Exception {
+        subscription_key_var = "TEXT_ANALYTICS_SUBSCRIPTION_KEY";
+        subscription_key = System.getenv(subscription_key_var);
+        if (null == subscription_key) {
+            throw new Exception ("Please set/export an environment variable named " + subscription_key_var);
+        }
 
-// Replace the accessKey string value with your valid access key.
-    static String accessKey = "enter key here";
-
-// Replace or verify the region.
-
-// You must use the same region in your REST API call as you used to obtain your access keys.
-// For example, if you obtained your access keys from the westus region, replace 
-// "westcentralus" in the URI below with "westus".
-
-// NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-// a free trial access key, you should not need to change this region.
-    static String host = "https://westus.api.cognitive.microsoft.com";
+        endpoint_var = "TEXT_ANALYTICS_ENDPOINT";
+        endpoint = System.getenv(endpoint_var);
+        if (null == endpoint) {
+            throw new Exception ("Please set/export an environment variable named " + endpoint_var);
+        }
+    }
 
     static String path = "/text/analytics/v2.1/entities";
     
@@ -617,11 +623,11 @@ public class GetEntities {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
-        URL url = new URL(host+path);
+        URL url = new URL(endpoint+path);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "text/json");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", accessKey);
+        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscription_key);
         connection.setDoOutput(true);
 
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
@@ -650,6 +656,8 @@ public class GetEntities {
 
     public static void main (String[] args) {
         try {
+            Initialize();
+
             Documents documents = new Documents ();
             documents.add ("1", "en", "Microsoft is an It company.");
 
@@ -712,7 +720,7 @@ public class GetEntities {
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

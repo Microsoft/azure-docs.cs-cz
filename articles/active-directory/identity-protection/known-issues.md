@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: fe7125174129752e6d6dbe0e00d01d4f32755333
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333887"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126097"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Nejčastější dotazy a známé problémy se službou Identity Protection (aktualizované) v Azure Active Directory
 
@@ -34,15 +34,15 @@ Dotaz na pole **username** rozlišuje velká a malá písmena, zatímco dotazy v
 
 Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika** . Pro čtení sloupce klikněte v horní části okna rizikové uživatele na **sloupce** .
 
-**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav rizikových událostí na **Uzavřeno (vyřešeno)** .
+**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav detekce rizik na **Uzavřeno (vyřešeno)** .
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Zpráva o rizikových přihlášeních sestav známých problémů
 
-**Řešení** u rizikové události nastaví stav na uživatele, **kteří prošli MFA založenými na základě rizikových zásad**.
+**Řešení** při detekci rizik nastaví stav na **uživatele, kteří prošli MFA řízenými zásadami na základě rizika**.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>Proč pro každou rizikovou událost nejde nastavit vlastní úrovně rizika?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Proč nejde nastavit vlastní úrovně rizika pro každé zjišťování rizik?
 
 Úrovně rizika v ochraně identity jsou založené na přesnosti detekce a využívají se v našem strojovém učení. Pokud chcete přizpůsobit, jaké zkušenosti uživatelé prezentují, může správce zahrnout nebo vyloučit určité uživatele nebo skupiny z rizika uživatele a rizikových zásad přihlašování.
 
@@ -59,7 +59,7 @@ Mapování geografického umístění IP je v celém oboru. Pokud se domníváte
 - Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
 
     > [!NOTE]
-    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na potvrzené napadení  a úroveň rizika na **Vysoká**.
+    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na potvrzené napadení a úroveň rizika na **Vysoká**.
 
 **Potvrzení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že se přihlášení provádělo vlastníkem identity a neindikuje ohrožení.
 
@@ -68,11 +68,11 @@ Mapování geografického umístění IP je v celém oboru. Pokud se domníváte
 - Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
 
     > [!NOTE]
-    > Pokud se domníváte, že uživatel není ohrožen, použijte na úrovni uživatele **Zrušit riziko pro uživatele** , místo použití **potvrzení** na úrovni přihlášení na úrovni zabezpečení. Zrušením **rizika uživatele** na úrovni uživatele se zavřou riziko uživatele a všechny předchozí rizikové přihlašovací a rizikové události.
+    > Pokud se domníváte, že uživatel není ohrožen, použijte na úrovni uživatele **Zrušit riziko pro uživatele** , místo použití **potvrzení** na úrovni přihlášení na úrovni zabezpečení. Zrušením **rizika uživatele** na úrovni uživatele se zavřou riziko uživatele a veškerá dřívější riziková přihlášení a detekce rizik.
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Proč se mi zobrazuje uživatel s nízkým (nebo výše) rizikovým skórem, i když se v rámci Identity Protection nezobrazuje žádné rizikové přihlašovací ani rizikové události?
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Proč se mi zobrazuje uživatel s nízkým (nebo výše) rizikovým skórem, i když se v rámci Identity Protection nezobrazuje žádné rizikové přihlašování nebo zjišťování rizik?
 
-Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší platnost, uživatel může mít riziko nízké nebo vyšší, i když v rámci Identity Protection nejsou k dispozici žádná nedávná riziková přihlášení nebo rizikové události. K tomu může dojít v případě, že by se po uplynutí časového rámce, pro který ukládáme podrobnosti rizikových přihlášení a rizikových událostí, prováděla pouze škodlivá aktivita uživatele. Nevypršení rizika uživatele nekončí, protože v prostředí zákazníků byly známy chybné aktéry před 140 dny za napadenou identitou před tím, než dojde k jejich útokům. Zákazníci si můžou prohlédnout časovou osu uživatelů a pochopit, proč hrozí riziko uživatele tím, že se vrátí:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Vzhledem k kumulativnímu riziku uživatele je souhrnná povaha a nevyprší platnost, uživatel může mít riziko nízké nebo vyšší, a to i v případě, že nejsou k dispozici žádná nedávný riziková přihlášení nebo detekce rizik zobrazená v nástroji Identity Protection. K tomu může dojít v případě, že dojde k překročení časového rámce, pro který uživatel ukládá podrobnosti o rizikových přihlášeních a detekcích rizik. Nevypršení rizika uživatele nekončí, protože v prostředí zákazníků byly známy chybné aktéry před 140 dny za napadenou identitou před tím, než dojde k jejich útokům. Zákazníci si můžou prohlédnout časovou osu uživatelů a pochopit, proč hrozí riziko uživatele tím, že se vrátí:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Proč má přihlášení "riziko při přihlašování" (agregované) "vysoké skóre", pokud jsou k němu přidružená zjištění nízká nebo střední rizikovost?
 

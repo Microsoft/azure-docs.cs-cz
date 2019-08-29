@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 7fed6caa719824dd51b19789a7066ffaea13d336
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 82c2c6d7ac347949a7cf24226fdb0095313ee689
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907819"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147688"
 ---
 # <a name="get-started-with-device-management-java"></a>Začínáme se správou zařízení (Java)
 
@@ -52,8 +52,6 @@ Na konci tohoto kurzu máte dvě konzolové aplikace Java:
 > Informace o sadách SDK, které můžete použít k sestavení aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 
 ## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu potřebujete:
 
 * Java SE 8. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) popisuje, jak nainstalovat Java pro tento kurz v systému Windows nebo Linux.
 

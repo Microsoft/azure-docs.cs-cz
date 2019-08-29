@@ -1,76 +1,76 @@
 ---
-title: Go-To-Market Services - výhody marketplace | Azure
-description: V této části jsou popsány Go-To-Market Services – prostředky Microsoftu, které můžete použít vydavatele.
+title: Služby pro uvedení na trh – výhody na webu Marketplace | Azure
+description: Služby pro uvedení na trh – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02fcda2d851ddefa1c592bf0b5b09d5e5d59828f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909724"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128222"
 ---
-# <a name="your-marketplace-benefits"></a>Výhody Marketplace
+# <a name="your-marketplace-benefits"></a>Výhody vašeho webu Marketplace
 
-Jako součást procesu publikování budete muset vytvořit technickou a marketingovou prostředků pro vaši nabídku. V důsledku toho jsou technickou a marketingovou výhody, které můžete použít Azure Marketplace a AppSource vydavatelé za účelem zlepšení zapojení zákazníků v rámci vaší nabídky. Může být pro vás technické prostředky pod užitečné.
+V rámci vaší cesty pro publikování potřebujete vytvořit technickou a marketingovou aktiva pro vaši nabídku. V důsledku toho existují technické a marketingové výhody, které Azure Marketplace a AppSource vydavatelé můžou využít k vylepšení zapojení zákazníka s vaší nabídkou. Níže můžete najít technické prostředky, které jsou níže užitečné.
 
-## <a name="technical-resources-provided-by-microsoft"></a>Technické materiály poskytované společnosti Microsoft
+## <a name="technical-resources-provided-by-microsoft"></a>Technické prostředky poskytované Microsoftem
 
-Při vytváření vaší nabídky, můžete využít celou řadu materiálů Microsoftu, jako je například poradě s pracovníkem technické nebo získání podpory pro testování řešení specifické pro marketplace.
+Při vytváření vaší nabídky můžete využít řadu prostředků Microsoftu, například konzultaci s technickým odborníkem nebo získání podpory pro testování řešení specifického pro Marketplace.
 
-Technické prostředky je možné kdykoli.  Následující tabulka uvádí výhody:
+Technické prostředky lze kdykoli použít.  V následující tabulce jsou uvedeny výhody:
 
 ![](./media/marketplace-publishers-guide/technical-benefit-table.png)
 
-## <a name="how-to-access-microsoft-resources"></a>Jak získat přístup k prostředkům společnosti Microsoft
+## <a name="how-to-access-microsoft-resources"></a>Přístup k prostředkům Microsoftu
 
-Výhody pro uvedení na trh jsou dostupné pro partnery, kteří mají nedávno publikované nabídky. 
+Výhody pro uvedení na trh jsou přístupné partnerům, kteří nabídku nedávno publikovali. 
 
-1. Registrace: [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) získat přístup k portál partnerů cloudu a připojování zdroje podpory.
-2. Konzultaci prodejní weby společnosti Microsoft: Využijte této [bezplatné konzultaci](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) abyste mohli naplánovat Architektura aplikace na webu marketplace.
-3. Fóra na webu Marketplace: Ptejte se přímo k zaměstnanci Microsoftu a dalších partnerů marketplace v [fórum Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
-4. Technické podpory: Pomocí nabídky Nápověda v [portál partnerů cloudu](https://cloudpartner.azure.com/) pomoc na vaše otázky týkající se webu marketplace podporu. 
-5. Integrace AAD a vývoj a testování sponzorství: můžete se vyjádřit výslovný souhlas v při přechodu za provozu s využitím transactable (nasaditelný a Fakturovatelné nabídky). Další části o tom, jak začít s výhodami pro uvedení na trh.
+1. Registrace [](https://azuremarketplace.microsoft.com/sell) Zaregistrujte se, abyste získali přístup k prostředkům podpory portál partnerů cloudu a připojování.
+2. Konzultace na webu Microsoft Marketplace: Využijte tuto [bezplatnou spolupráci](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) , která vám pomůžou naplánovat architekturu vaší aplikace na webu Marketplace.
+3. Fóra Marketplace: Zeptejte se na své otázky přímo zaměstnancům Microsoftu a dalším partnerům na webu [Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+4. Technická podpora: Pomocí nabídky Nápověda v [portál partnerů cloudu](https://cloudpartner.azure.com/) získáte pomoc na dotazy týkající se podpory související s Marketplace. 
+5. Sponzor pro integraci a vývoj a testování služby AAD: v případě, že budete pokračovat, budete mít k souhlas (s podporou nasazení a Fakturovatelné nabídky). V další části najdete informace o tom, jak začít s výhodami pro uvedení na trh.
 
 ## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Výhody pro uvedení na trh (GTM) na webu Marketplace
 
-Novým položkám na Azure Marketplace a AppSource nárok na výhody GTM bezplatné marketplace prostřednictvím našeho týmu služeb Microsoftu. Tento tým vám pomůže optimalizovat vaše výpisy a zvýšit povědomí o řešení na webu Microsoft Marketplace.
+Nové výpisy v Azure Marketplace i AppSource mají nárok na bezplatné GTM výhody služby Marketplace prostřednictvím našeho týmu služeb Microsoft GTM Services. Tento tým vám pomůže optimalizovat vaše výpisy a zvýšit povědomí o vašich řešeních na webu Microsoft Marketplace.
 
-| Prodejní místo | K dispozici další výhody |
+| Prodejní místo | Další dostupné výhody |
 |:--- |:--- |
-| AppSource |  Microsoft Gold partnerů <br> Příkaz Transact nabídky – odměny Marketplace <br> Zkušební verze aplikace |
-| Na webu Azure Marketplace | Příkaz Transact nabídky – odměny Marketplace <br> Nabídky zkušebních verzí |
+| AppSource |  Partneři Microsoftu Gold <br> Nabídky Transact – výhody Marketplace <br> Zkušební aplikace |
+| Azure Marketplace | Nabídky Transact – výhody Marketplace <br> Nabídky zkušební verze |
 
-Vaše GTM podpora zahrnuje šablony, webového obsahu, školení a nástroje a propagaci vašeho podnikání.
+Vaše podpora GTM zahrnuje šablony, webový obsah, školení a nástroje pro zvýšení úrovně vaší firmy.
 
-Chcete-li využít tyto výhody, budete muset:
+Pro přístup k těmto výhodám budete potřebovat:
 
-1. Publikování nabídky v Azure Marketplace nebo AppSource.
-2. Zkontrolujte zadané marketingových kontaktů v **kontaktní informace** část vaší nabídky. To by měl být vyhrazených marketingové prostředků, na rozdíl od alias pokrývající vše. (tj, nepoužívejte "podporují\@", "informace o\@", "marketing\@" atd.)
+1. Publikování nabídky buď v Azure Marketplace nebo AppSource.
+2. Ujistěte se, že jste zadali marketingový kontakt v části **kontaktní informace** v rámci vaší nabídky. Mělo by se jednat o vyhrazený marketingový prostředek, a to na rozdíl od aliasu catch-ALL. (tzn. Nepoužívejte "podporu\@", "informace\@", "marketing\@" atd.)
 
-Na základě stavu vašeho řešení, nabídka se seznam, zkušební verze nebo jazyka Transact-odměny Marketplace, obdržíte e-mail s sami nebo jako pozvánku do volání konzultaci s vyhrazenou zapojení správce. Není potřeba dělat nic. iniciujte hovor – Marketplace Onboardingový tým vás bude kontaktovat na základě informací poskytují v [portál partnerů cloudu](https://cloudpartner.azure.com/).
+V závislosti na stavu vašeho řešení, nabídce vyzkoušení nebo v prostředí Transact – Marketplace obdržíte e-mail s prostředky samoobslužné pomoci nebo pozvánku na konzultační hovor s vyhrazeným správcem Engagement. K zahájení volání nemusíte provádět žádnou činnost – tým registrace do Marketplace vám bude kontaktovat na základě informací, které zadáte v [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-Obor aktivit, které jsou k dispozici, rozšíří růstem vaší nabídky na webu marketplace. Všechny výpisy přijímat základní úroveň optimalizace doporučení a podporu.  Tyto výpisy jsou také nárok na další výhody marketingové založené na marketplace stav (seznam, zkušební verze nebo jazyka Transact - marketplace odměny), zvolené řešení a partnera Microsoftu s kompetencí ocenění.
+Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení.  Tyto seznamy mají taky nárok na další marketingové výhody založené na stavu řešení (ceny v seznamu, zkušební verzi nebo v rámci služby Transact-Marketplace), zvolený web Marketplace a úspěšnost kompetence partnera Microsoftu.
 
-Následující tabulky shrnují požadavky zakládající nárok pro seznam a nabídky zkušebních verzí:
+Následující tabulka shrnuje požadavky na způsobilost pro nabídky seznamů a zkušebních verzí:
 
 ![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-\* Vyžaduje stříbrné nebo zlaté úrovně kompetence. <br>
-\*\* Vyžaduje zlaté úrovně kompetence. <br>
-\*\*\* Vyžaduje zlaté úrovně kompetence a společný prodej připraven ve výpisech partnera. <br>
-^ Transact pouze, lze použít na Azure Marketplace.
+\*Vyžaduje stříbro nebo Gold Competency. <br>
+\*\*Vyžaduje Gold Competency. <br>
+\*\*\*Vyžaduje Gold Competency a společný prodej připravený v seznamech partnerů. <br>
+Pouze ^ Transact, použitelný pro Azure Marketplace.
 
-## <a name="marketplace-rewards-for-transact-partners"></a>Odměny Marketplace pro partnery transact
+## <a name="marketplace-rewards-for-transact-partners"></a>Ceny na webu Marketplace pro partnery Transact
 
-Můžete zobrazit úplný seznam výhody pro marketplace odměny v [programu souhrnu snímky](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM).
+Úplný seznam výhod pro web Marketplace si můžete prohlédnout na [snímcích souhrnu programu](https://aka.ms/marketplacerewards).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/) k vytvoření a konfiguraci nabídky.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/) a vytvořte a nakonfigurujte vaši nabídku.
 
 ---

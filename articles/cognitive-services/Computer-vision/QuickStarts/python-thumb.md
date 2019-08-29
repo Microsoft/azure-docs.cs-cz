@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření miniatury - REST, Python'
+title: 'Rychlý start: Generování miniatur – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5203467eadadf1180eabf7b5a51b113ae273ee7c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: f699a41e566d4080b77b538d03804b1969291678
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603536"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141246"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Generování miniatur pomocí rozhraní API pro počítačové zpracování obrazu REST a Python
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rychlý start: Generování miniatury pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu vygeneruje miniaturu z image pomocí rozhraní REST API pro počítačové zpracování obrazu. S [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metodu, můžete určit požadovanou výšku a šířku a pro počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete určit požadovanou výšku a šířku a počítačové zpracování obrazu používat inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
-- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Vytvoření a spuštění ukázky, zkopírujte následující kód do editoru kódu. 
+Chcete-li vytvořit a spustit ukázku, zkopírujte následující kód do editoru kódu. 
 
 ```python
 import requests
@@ -41,20 +41,17 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westcentralus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-thumbnail_url = vision_base_url + "generateThumbnail"
+thumbnail_url = endpoint + "vision/v2.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
@@ -76,9 +73,7 @@ plt.axis("off")
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
-Potom postupujte takto:
-1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
-1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+Dále postupujte následovně:
 1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
 1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
 1. Otevřete okno příkazového řádku.
@@ -86,17 +81,17 @@ Potom postupujte takto:
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí jako binární data, která představuje data bitové kopie pro miniaturu. Ukázka by se zobrazit tuto bitovou kopii. Pokud požadavek selže, odpověď se zobrazí v okně příkazového řádku a může obsahovat kód chyby.
+Úspěšná odpověď se vrátí jako binární data, která představují data obrázku pro miniaturu. Ukázka by měla zobrazit tento obrázek. Pokud se požadavek nepovede, zobrazí se odpověď v okně příkazového řádku a měla by obsahovat kód chyby.
 
-## <a name="run-in-jupyter-optional"></a>Spuštění v Jupyter (volitelné)
+## <a name="run-in-jupyter-optional"></a>Spustit v Jupyter (volitelné)
 
-V tomto rychlém startu můžete případně spustit krok za krokem způsobem pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
+Tento rychlý Start můžete volitelně spustit v kroku pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Dále si můžete přečíst podrobnější informace o funkci generování miniatur.
+Potom si přečtěte podrobnější informace o funkci generování miniatur.
 
 > [!div class="nextstepaction"]
 > [Generování miniatur](../concept-generating-thumbnails.md)

@@ -3,26 +3,25 @@ title: Větvení v kanálu Azure Data Factory | Dokumentace Microsoftu
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: f2a8983ae5306ec2ada7b4b537c2f17425b8717d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8e4c17307b35295f37f1f84db912d04ca625b6a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718755"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140912"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, kanál odešle podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, kanál odešle podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Přehled scénáře: ![Přehled](media/tutorial-control-flow-portal/overview.png)
+Podrobný přehled scénáře: ![Přehled](media/tutorial-control-flow-portal/overview.png)
 
 V tomto kurzu provedete následující kroky:
 
@@ -127,7 +126,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Data a analýzy** > **služby Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -149,7 +148,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.      
-8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
+8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazuje se objekt pro vytváření dat**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -272,7 +271,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
 23. Přetáhněte **červené** tlačítko vedle aktivity kopírování na druhou aktivitu webu **SendFailureEmailActivity**. Aktivity můžete přesunout tak, aby kanál vypadal podobně jako na následujícím obrázku: 
 
     ![Úplný kanál se všemi aktivitami](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. Pokud chcete kanál ověřit, klikněte na tlačítko **Ověřit** na panelu nástrojů. Zavřete okno **Výstup ověření kanálu** kliknutím na tlačítko **>>**.
+24. Pokud chcete kanál ověřit, klikněte na tlačítko **Ověřit** na panelu nástrojů. Zavřete okno **Výstup ověření kanálu** kliknutím na tlačítko **>>** .
 
     ![Ověření kanálu](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Pokud chcete publikovat entity (datové sady, kanály atd.) do služby Data Factory, vyberte **Publikovat vše**. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**.
@@ -309,7 +308,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     1. Jako hodnotu parametru **sourceBlobContainer** zadejte **adftutorial/dummy/input**. Ujistěte se, že v kontejneru adftutorial neexistuje složka dummy. 
     2. Jako hodnotu parametru **sinkBlobContainer** zadejte **adftutorial/dummy/output**. 
     3. Zadejte **e-mailovou adresu** **příjemce**. 
-    4. Klikněte na **Dokončit**.
+    4. Klikněte na tlačítko **Dokončit**.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Monitorování neúspěšného spuštění kanálu
 

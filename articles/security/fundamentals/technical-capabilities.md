@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934587"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129304"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -61,7 +61,7 @@ Výhody zabezpečení Azure Active Directory (Azure AD) zahrnují tyto možnosti
 
 - Poskytněte přístup k aplikacím s jednotným přihlašováním, včetně tisíců předem integrovaných aplikací SaaS.
 
-- Povolte zabezpečení přístupu k aplikacím vynucením vícefaktorového ověřování založeného na pravidlech pro místní i cloudové aplikace.
+- Povolte zabezpečení přístupu k aplikacím vynucením Multi-Factor Authentication založených na pravidlech pro místní i cloudové aplikace.
 
 - Zajištění zabezpečeného vzdáleného přístupu k místním webovým aplikacím prostřednictvím Azure Proxy aplikací služby AD.
 
@@ -73,7 +73,7 @@ Níže jsou uvedené základní možnosti správy identit Azure:
 
 - Jednotné přihlašování
 
-- Vícefaktorové ověřování
+- Ověřování pomocí služby Multi-Factor Authentication
 
 - Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 
@@ -95,7 +95,7 @@ Mnoho organizací spoléhá na aplikace typu software jako služba (SaaS), jako 
 
 Nejen uživatelé nepotřebují spravovat více sad uživatelských jmen a hesel, přístup k aplikaci se dá automaticky zřídit nebo zrušit na základě organizačních skupin a jejich stavu jako zaměstnanec. [Azure AD zavádí zabezpečení a přístup k řízení zásad správného řízení](../../active-directory/active-directory-enterprise-apps-manage-sso.md) , které vám umožní centrálně spravovat přístup uživatelů napříč SaaS aplikacemi.
 
-#### <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+#### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 [Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. [Vícefaktorové ověřování pomáhá chránit](../../active-directory/authentication/concept-mfa-howitworks.md) přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování prostřednictvím řady možností ověřování – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace nebo ověřovací kód a tokeny OAuth třetích stran.
 
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management vám umožní:
 
 #### <a name="identity-protection"></a>Ochrana identit
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je služba zabezpečení, která poskytuje konsolidované zobrazení rizikových událostí a potenciálních ohrožení zabezpečení, které mají vliv na identity vaší organizace. Identity Protection používá funkce detekce anomálií stávajících Azure Active Directory (k dispozici prostřednictvím sestav aktivit neobvyklé Azure AD) a zavádí nové rizikové typy událostí, které mohou detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je služba zabezpečení, která poskytuje konsolidovanou pohled na detekci rizik a potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace. Identity Protection používá funkce detekce anomálií stávajících Azure Active Directory (k dispozici prostřednictvím sestav aktivit neobvyklé Azure AD) a přináší nové typy detekce rizika, které mohou detekovat anomálie v reálném čase.
 
 ## <a name="secure-resource-access"></a>Zabezpečený přístup k prostředkům
 
@@ -386,7 +386,7 @@ Kromě toho kontrolní seznam:
 
 ![ověření zabezpečení (detekce)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Provozní zabezpečení Azure je postavené na platformě, která zahrnuje znalostní báze získané různými funkcemi, které jsou jedinečné pro společnost Microsoft, včetně Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center. a podrobné povědomí o kyberbezpečnosti hrozbách.
+Provozní zabezpečení Azure je postavené na platformě, která zahrnuje znalostní bázi z různých možností, které jsou jedinečné pro společnost Microsoft, včetně Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center. a podrobné povědomí o kyberbezpečnosti hrozbách.
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
@@ -501,7 +501,7 @@ Resource Manager poskytuje několik výhod:
 > [!Note]
 > Resource Manager poskytuje nový způsob nasazení a správy vašich řešení. Pokud jste použili předchozí model nasazení a chcete se dozvědět o změnách, přečtěte si téma [Principy nasazení Správce prostředků a klasického nasazení](../../azure-resource-manager/resource-manager-deployment-model.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o zabezpečení najdete v našich podrobných tématech o zabezpečení:
 

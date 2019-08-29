@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335440"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126287"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Jak: Konfigurace zásad rizik uživatelů
 
@@ -26,9 +26,9 @@ Tento článek poskytuje informace, které potřebujete ke konfiguraci zásad ri
 
 ## <a name="what-is-a-user-risk-policy"></a>Co je to zásady rizik uživatelů?
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. V Azure AD se podezřelé akce, které může systém detekovat, označují také jako rizikové události. I když lze v reálném čase zjistit některé rizikové události, existují také rizikové události vyžadující více času. Například pro zjištění nemožného cestování do neobvyklých umístění systém vyžaduje počáteční období učení 14 dní, kde se dozvíte o běžném chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Jednotlivé rizikové události můžete například vyřešit ručně, nebo je můžete vyřešit pomocí rizika přihlašování nebo zásad podmíněného přístupu uživatele.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. V Azure AD se podezřelé akce, které může systém detekovat, označují také jako detekce rizik. I když se v reálném čase dají detekovat některé detekce rizik, existují i detekce rizik, která vyžadují víc času. Například pro zjištění nemožného cestování do neobvyklých umístění systém vyžaduje počáteční období učení 14 dní, kde se dozvíte o běžném chování uživatele. Existuje několik možností, jak vyřešit zjištěná zjištění rizik. Můžete například vyřešit jednotlivá zjištění rizik ručně nebo je můžete vyřešit pomocí rizika přihlašování nebo zásad podmíněného přístupu uživatele.
 
-Všechny rizikové události, které byly zjištěny pro uživatele a nebyly vyřešeny, se označují jako aktivní rizikové události. Aktivní rizikové události, které jsou přidruženy k uživateli, se označují jako riziko pro uživatele. V závislosti na riziku uživatele Azure AD vypočítá pravděpodobnost (nízká, střední, vysoká), že došlo k ohrožení uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
+Všechny detekce rizik zjištěné pro uživatele, které se nevyřešily, se označují jako aktivní detekce rizik. Aktivní detekce rizik, která jsou přidružená k uživateli, se označuje jako riziko pro uživatele. V závislosti na riziku uživatele Azure AD vypočítá pravděpodobnost (nízká, střední, vysoká), že došlo k ohrožení uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
 
 ![Rizika uživatele](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ Můžete nastavit zásady zabezpečení rizik uživatelů pro blokování uživa
 
 Blokování přihlášení:
 
-* Brání generování nových rizikových událostí uživatele pro ovlivněného uživatele.
-* Umožňuje správcům ručně opravit rizikové události, které mají vliv na identitu uživatele a obnoví je na zabezpečený stav.
+* Brání generování nových zjištění rizik uživatelů pro ovlivněného uživatele.
+* Umožňuje správcům ručně opravit detekci rizik, které ovlivňují identitu uživatele, a obnovovat je v zabezpečeném stavu.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -100,6 +100,6 @@ Přehled souvisejícího uživatelského prostředí najdete v těchto tématech
 
     ![Zásady rizik uživatelů](./media/howto-user-risk-policy/1009.png "Zásady rizik uživatelů")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přehled Azure AD Identity Protection najdete v tématu [Azure AD Identity Protection Overview](overview.md).

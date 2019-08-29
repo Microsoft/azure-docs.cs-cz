@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051662"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138418"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
 
@@ -71,7 +71,7 @@ Po spuštění virtuálního počítače pomocí části **virtuální počíta�
 1. Na webové stránce poznámkového bloku Jupyter je hlavní název_složky vaším uživatelským jménem.  Vyberte tuto složku.
 
     > [!TIP]
-    > Tato složka se nachází na [kontejneru úložiště](concept-workspace.md#resources) ve vašem pracovním prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Virtuální počítač poznámkového bloku můžete odstranit a pořád zachovat veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
+    > Tato složka se nachází v [účtu úložiště](concept-workspace.md#resources) ve vašem pracovním prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Virtuální počítač poznámkového bloku můžete odstranit a pořád zachovat veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
 
 1. `samples-*` Otevřete podadresář a pak otevřete`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967094"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124915"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegovat úlohy ve správě nároků Azure AD (Preview)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967094"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny scénáře, kdy jsou balíčky pro přístup požadovány. Obvykle se jedná o uživatele v rámci oddělení, kteří vědí, kdo potřebují spolupracovat.
+Ve výchozím nastavení můžou globální správci a správci uživatelů vytvářet a spravovat všechny aspekty správy nároků služby Azure AD. Uživatelé v těchto rolích ale nemusí znát všechny scénáře, kdy jsou balíčky pro přístup požadovány. Obvykle se jedná o uživatele v rámci oddělení, kteří vědí, kdo potřebují spolupracovat. 
 
-Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují k provedení své úlohy, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv. Tento článek popisuje role, které můžete přiřadit k delegování různých úloh v rámci správy oprávnění.
+Místo udělení neomezených oprávnění nesprávcům můžete uživatelům udělit nejnižší oprávnění, která potřebují k provedení své úlohy, a vyhnout se tak vytváření konfliktních nebo nevhodných přístupových práv. Tento článek popisuje role, které můžete přiřadit k delegování různých úloh v rámci správy oprávnění. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Příklad delegáta pro přijetí oddělení
 
-Pokud chcete pochopit, jak byste mohli delegovat úlohy ve správě nároků, je třeba vzít v úvahu příklad. Předpokládejme, že vaše organizace má následující pět uživatelů:
+Pokud chcete pochopit, jak byste mohli delegovat úlohy ve správě nároků, je třeba vzít v úvahu příklad. 
+
+Předpokládejme, že vaše organizace má následující pět uživatelů:
 
 | Uživatel | Oddělení | Poznámky |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Oddělení výzkumu i marketingu chtějí pro své uživatele používat oprávn
 Oddělení pro výzkum a marketing teď můžou využívat nárok na správu. Bob, Karolínu, Dave a ELISA můžou vytvořit a spravovat balíčky přístupu v příslušných katalozích.
 
 ![Příklad delegáta správy oprávnění](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Role správy oprávnění
 
@@ -113,6 +116,7 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 | [Správce aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
 | [Správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
 | Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pouze v případě, že vlastník skupiny | Jenom v případě, že vlastník aplikace |  |
+
 
 ## <a name="add-a-catalog-creator"></a>Přidat tvůrce katalogu
 

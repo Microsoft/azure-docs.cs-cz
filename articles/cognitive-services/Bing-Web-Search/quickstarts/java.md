@@ -10,15 +10,15 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 42cb270955846f1333b79389c3ca979dc4808f05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 24197cc708789381e0f160268bea96b25457ba8f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489634"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123725"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Rychlý start: Hledání na webu pomocí Vyhledávání na webu Bingu REST API a Java
+# <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rychlý start: Použití jazyka Java k vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API, Služba rozpoznávání Azure
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Java pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 

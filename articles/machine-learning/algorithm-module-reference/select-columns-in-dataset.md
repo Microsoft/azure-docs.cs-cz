@@ -1,7 +1,7 @@
 ---
-title: 'Výběr sloupců v datové sadě: Odkaz na modul'
+title: 'Vybrat sloupce v datové sadě: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití výběr sloupců v datové sadě modulu ve službě Azure Machine Learning vybrat podmnožinu sloupců pro použití v podřízené operace.
+description: Naučte se používat modul vybrat sloupce v datové sadě ve službě Azure Machine Learning k výběru podmnožiny sloupců, které se mají použít v rámci navazujících operací.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,108 +9,107 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028092"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128493"
 ---
-# <a name="select-columns-in-dataset-module"></a>Výběr sloupců v datové sadě modulu
+# <a name="select-columns-in-dataset-module"></a>Výběr sloupců v modulu DataSet
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vybrat podmnožinu sloupců pro použití v podřízené operace. V modulu neodebere fyzicky sloupce ze jako zdrojovou datovou sadu; Místo toho dojde k podmnožině sloupců, podobně jako databáze *zobrazení* nebo *projekce*.
+Pomocí tohoto modulu můžete zvolit podmnožinu sloupců, které se mají použít v rámci podřízených operací. Modul neodebere fyzické sloupce ze zdrojové datové sady. místo toho vytvoří podmnožinu sloupců, podobně jako *zobrazení* nebo *projekce*databáze.
 
-Tento modul je užitečné, když budete chtít omezit sloupce, které jsou k dispozici pro příjem dat operaci, nebo pokud chcete zmenšit velikost datové sady, odebráním nepotřebných sloupců.
+Tento modul je užitečný v případě, že potřebujete omezit sloupce dostupné pro operaci pro příjem dat, nebo pokud chcete zmenšit velikost datové sady odebráním nepotřebných sloupců.
 
-Sloupců v datové sadě jsou výstupem ve stejném pořadí jako původní data, i když je zadat v jiném pořadí.
+Sloupce v datové sadě jsou výstupy ve stejném pořadí jako v původních datech, a to i v případě, že je zadáte v jiném pořadí.
 
 ## <a name="how-to-use"></a>Způsob použití
 
-Tento modul nemá žádné parametry. Pomocí selektoru sloupců vyberte sloupce, které chcete zahrnout nebo vyloučit.
+Tento modul nemá žádné parametry. K výběru sloupců, které se mají zahrnout nebo vyloučit, použijte selektor sloupců.
 
 ### <a name="choose-columns-by-name"></a>Zvolit sloupce podle názvu
 
-V modulu pro výběr sloupců podle názvu několika způsoby: 
+V modulu je více možností pro výběr sloupců podle názvu: 
 
-+ Filtrování a hledání
++ Filtrovat a Hledat
 
-    Klikněte na tlačítko **podle názvu** možnost.
+    Klikněte na možnost **podle názvu** .
 
-    Pokud jste se připojili datovou sadu, která je už vyplněné, by se zobrazit seznam dostupných sloupců. Pokud se nezobrazí žádné sloupce, můžete potřebovat ke spuštění nadřazeného moduly, chcete-li zobrazit seznam sloupců.
+    Pokud jste připojili datovou sadu, která je již naplněna, zobrazí se seznam dostupných sloupců. Pokud se nezobrazí žádné sloupce, může být nutné spustit moduly pro odesílání dat, aby se zobrazil seznam sloupců.
 
-    Chcete-li filtrovat seznam, zadejte do vyhledávacího pole. Například, pokud zadáte písmeno `w` do vyhledávacího pole v seznamu vyfiltrují zobrazit názvy sloupců, které obsahují písmeno `w`.
+    Chcete-li filtrovat seznam, zadejte do vyhledávacího pole. Pokud například zadáte písmeno `w` do vyhledávacího pole, seznam se vyfiltruje tak, aby zobrazoval názvy sloupců, které obsahují písmeno. `w`
 
-    Vyberte sloupce a klikněte na tlačítko se šipkou vpravo vybrané sloupce přesunout do seznamu v pravém podokně.
+    Vyberte sloupce a kliknutím na tlačítko se šipkou doprava přesuňte vybrané sloupce do seznamu v pravém podokně.
 
-    + Vybrat průběžné rozsah názvů sloupců, stiskněte klávesu **Shift + kliknutí myši**.
-    + Chcete-li přidat jednotlivé sloupce do výběru, stiskněte **Ctrl + kliknutí**.
+    + Chcete-li vybrat souvislý rozsah názvů sloupců, stiskněte klávesy **SHIFT + kliknutí**.
+    + Chcete-li přidat jednotlivé sloupce do výběru, stiskněte klávesy **CTRL + kliknutí**.
 
-    Klikněte na tlačítko zaškrtnutí uložte a zavřete.
+    Kliknutím na tlačítko zaškrtnutí se uložte a zavřete.
 
-+ Použije názvy v kombinaci s jinými pravidly
++ Použití názvů v kombinaci s jinými pravidly
 
-    Klikněte na tlačítko **pravidla s** možnost.
+    Klikněte na možnost **s pravidly** .
     
-    Vyberte pravidlo, jako je například zobrazení sloupců konkrétní datového typu.
+    Vyberte pravidlo, jako je například zobrazení sloupců určitého datového typu.
 
-    Potom klikněte na jednotlivé sloupce tohoto typu podle názvu, je přidat do seznamu výběru.
+    Pak klikněte na jednotlivé sloupce daného typu podle názvu a přidejte je do seznamu výběru.
 
-+ Zadejte nebo vložte čárkou oddělený seznam názvů sloupců
++ Zadejte nebo vložte čárkami oddělený seznam názvů sloupců.
 
-    Pokud vaše datová sada je rozsáhlá, může být jednodušší použít indexy nebo jednotlivě vygenerovat seznam názvů, nikoli výběr sloupce. Za předpokladu, že předem připravená seznamu:
+    Pokud je vaše datová sada rozsáhlá, může být jednodušší použít indexy nebo vygenerované seznamy názvů místo výběru sloupců jednotlivě. Za předpokladu, že jste si seznam připravili předem:
 
-    1. Klikněte na tlačítko **pravidla s** možnost. 
-    2. Vyberte **žádné sloupce**vyberte **zahrnout**a potom klikněte do textového pole s červený vykřičník. 
-    3. Vložte nebo zadejte čárkou oddělený seznam názvů sloupců dříve ověřené. Nelze uložit modulu Pokud libovolný sloupec má neplatný název, proto nezapomeňte zkontrolovat názvy předem.
+    1. Klikněte na možnost **s pravidly** . 
+    2. Vyberte **žádné sloupce**, vyberte **Zahrnout**a pak klikněte do textového pole s červeným vykřičníkem. 
+    3. Vložte nebo zadejte čárkami oddělený seznam dříve ověřených názvů sloupců. Modul nemůžete uložit, pokud má nějaký sloupec neplatný název, proto nezapomeňte zkontrolovat názvy předem.
     
-    Tuto metodu můžete také zadat seznam sloupců pomocí jejich hodnoty indexu. 
+    Tuto metodu můžete také použít k určení seznamu sloupců pomocí jejich hodnot indexu. 
 
-### <a name="choose-by-type"></a>Zvolte podle typu
+### <a name="choose-by-type"></a>Zvolit podle typu
 
-Pokud používáte **pravidla s** možnost, můžete použít více podmínek na vybrané sloupce. Například může být potřeba získat jenom funkce sloupce číselným datovým typem.
+Použijete-li možnost **with Rules** , můžete pro výběr sloupců použít více podmínek. Například může být nutné získat pouze sloupce funkce číselného datového typu.
 
-**Začít s** možnost určuje počáteční bod a je důležité pochopit, výsledky. 
+Možnost **začít s** určuje výchozí bod a je důležité pro porozumění výsledkům. 
 
-+ Pokud vyberete **všechny sloupce** možnost, všechny sloupce se přidají do seznamu. Poté, je nutné použít **vyloučit** umožňuje *odebrat* sloupce, které splňují určité podmínky. 
++ Pokud vyberete možnost **všechny sloupce** , do seznamu se přidají všechny sloupce. Pak je nutné pomocí možnosti **vyloučit** *Odebrat* sloupce, které splňují určité podmínky. 
 
-    Například může začínat všechny sloupce a pak odeberte sloupce, podle názvu nebo podle typu.
+    Můžete například začít se všemi sloupci a pak odebrat sloupce podle názvu nebo podle typu.
 
-+ Pokud vyberete **žádné sloupce** možnost, seznam sloupců na začátku prázdná. Zadejte podmínky, které *přidat* sloupců do seznamu. 
++ Pokud vyberete možnost **žádné sloupce** , seznam sloupců začne být prázdný. Pak zadáte podmínky pro *Přidání* sloupců do seznamu. 
 
-    Pokud použijete víc pravidel, je každá podmínka **sčítání**. Řekněme například, začněte s žádné sloupce a potom přidejte pravidlo zobrazíte všechny číselné sloupce. V datové sadě Automobile price bude výsledkem 16 sloupců. Potom klikněte **+** podepsat přidat novou podmínku a vyberte **zahrnují všechny funkce**. Výsledná datová sada obsahuje všechny číselné sloupce. navíc všechny funkce sloupce, včetně některých sloupců funkce řetězec.
+    Pokud použijete více pravidel, každá podmínka je **aditivní**. Řekněme například, že začnete bez sloupců a pak přidáte pravidlo, které získá všechny číselné sloupce. V datové sadě cen automobilu je výsledkem 16 sloupců. Pak klikněte **+** na znaménko a přidejte novou podmínku a vyberte **Zahrnout všechny funkce**. Výsledná datová sada zahrnuje všechny číselné sloupce a všechny sloupce funkcí včetně některých sloupců funkcí řetězce.
 
-### <a name="choose-by-column-index"></a>Zvolte podle sloupce indexu
+### <a name="choose-by-column-index"></a>Vybrat podle indexu sloupce
 
-Index sloupce odkazuje pořadí sloupců v rámci původní datové sady.
+Index sloupce odkazuje na pořadí sloupce v rámci původního objektu DataSet.
 
-+ Sloupce jsou číslovány postupně počínaje 1.  
-+ Oblast sloupců, použijte pomlčky. 
-+ Konkrétní požadavky, jako `1-` nebo `-3` nejsou povoleny.
-+ Duplicitní index hodnoty (nebo názvy sloupců) nejsou povoleny a může dojít k chybě.
++ Sloupce se číslují sekvenčně od 1.  
++ Chcete-li získat rozsah sloupců, použijte spojovník. 
++ Specifikace Open-konec, například `1-` nebo `-3` , nejsou povoleny.
++ Duplicitní hodnoty indexu (nebo názvy sloupců) nejsou povoleny a mohou mít za následek chybu.
 
-Například za předpokladu, že vaše datová sada obsahuje alespoň osm sloupce, vám může vložit v některém z následujících příkladů vrátit víc nesousedících sloupců: 
+Například za předpokladu, že vaše datová sada má alespoň osm sloupců, můžete vložit do kteréhokoli z následujících příkladů, které vrátí více nesouvislých sloupců: 
 
 + `8,1-4,6`
 + `1,3-8`
 + `1,3-6,4` 
 
-v posledním příkladu nemá za následek chybu; Nicméně, vrátí jednu instanci sloupce `4`.
+poslední příklad nevede k chybě; Vrátí ale jednu instanci sloupce `4`.
 
 
 
-### <a name="change-order-of-columns"></a>Změna pořadí sloupců
+### <a name="change-order-of-columns"></a>Změnit pořadí sloupců
 
-Možnost **povolit vynechávání duplicit a zachovat pořadí sloupců v výběru** začíná je seznam prázdný a přidá sloupce, které zadáte podle názvu nebo podle indexu. Na rozdíl od jiných možností, které vždy vrátí sloupců v jejich "přirozené pořadí", tato možnost výstup, který pojmenujete sloupce v pořadí nebo jejich seznam. 
+Možnost **povolující duplicity a zachovat pořadí sloupců v výběru** začíná prázdným seznamem a přidává sloupce, které určíte podle názvu nebo indexu. Na rozdíl od jiných možností, které vždy vracejí sloupce v jejich "přirozeném pořadí", tato možnost vypíše sloupce v pořadí, ve kterém je napíšete nebo je vypíšete. 
 
-V prvku dataset pomocí sloupců Sloupec1, Sloupec2, Col3 a Sloupec4 můžete například změnit pořadí sloupců a vynechte sloupec 2, tak, že určíte jednu z následujících seznamů:
+Například v datové sadě se sloupci Sloupec1, col2, Col3 a Col4 můžete změnit pořadí sloupců a nechat sloupec 2 zadáním jednoho z následujících seznamů:
 
 + `Col4, Col3, Col1`
 + `4,3,1`
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

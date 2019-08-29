@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127396"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Hledání sestav aktivit v Azure Portal
 
@@ -112,12 +112,12 @@ Pomocí sestavy přihlášení můžete zobrazit podrobnosti o využití aplikac
 
 ### <a name="anomalous-activity-reports"></a>Sestavy aktivit neobvyklé
 
-Sestavy aktivit neobvyklé poskytují informace o rizikových událostech týkajících se zabezpečení, které může služba Azure AD detekovat a sestavovat.
+Sestavy aktivit neobvyklé poskytují informace o detekcích rizik souvisejících se zabezpečením, které může služba Azure AD detekovat a sestavovat.
 
-V následující tabulce jsou uvedené sestavy zabezpečení aktivity Azure AD neobvyklé a odpovídající typy rizikových událostí v Azure Portal. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](concept-risk-events.md).  
+V následující tabulce jsou uvedené sestavy zabezpečení aktivity Azure AD neobvyklé a odpovídající typy detekce rizik v Azure Portal. Další informace najdete v tématu [Azure Active Directory detekci rizik](concept-risk-events.md).  
 
 
-| Sestava aktivity Azure AD neobvyklé |  Typ události rizika ochrany identity|
+| Sestava aktivity Azure AD neobvyklé |  Typ detekce rizika ochrany identity|
 | :--- | :--- |
 | Uživatelé s uniklými přihlašovacími údaji | Uniklé přihlašovací údaje |
 | Nestandardní přihlašovací aktivita | Nemožná cesta do netypických míst |
@@ -126,15 +126,15 @@ V následující tabulce jsou uvedené sestavy zabezpečení aktivity Azure AD n
 | Přihlášení z IP adres s podezřelou aktivitou | Přihlášení z IP adres s podezřelou aktivitou |
 | - | Přihlášení z neznámých míst |
 
-Následující sestavy zabezpečení aktivity Azure AD neobvyklé nejsou zahrnuté jako rizikové události v Azure Portal:
+Následující sestavy zabezpečení aktivity Azure AD neobvyklé nejsou zahrnuté do zjišťování rizik v Azure Portal:
 
 * Přihlášení po několika neúspěších
 * Přihlášení z více geografických poloh
 
 
-### <a name="detected-risk-events"></a>Zjištěné rizikové události
+### <a name="detected-risk-detections"></a>Zjištěné detekce rizik
 
-K sestavám zjištěných rizikových událostí můžete přistupovat v části **zabezpečení** okna **Azure Active Directory** v [Azure Portal](https://portal.azure.com). Zjištěné rizikové události jsou sledovány v následujících sestavách:   
+K sestavám zjištěných detekcí rizik můžete získat přístup v části **zabezpečení** okna **Azure Active Directory** v [Azure Portal](https://portal.azure.com). Zjištěná zjištění rizik jsou sledována v následujících sestavách:   
 
 - [Ohrožení uživatelé](concept-user-at-risk.md)
 - [Riziková přihlášení](concept-risky-sign-ins.md)
@@ -224,7 +224,7 @@ Další informace najdete v tématu [Zásady uchovávání sestav Azure Active D
 
 Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [rozhraní API pro generování sestav v Azure AD](concept-reporting-api.md) můžete data načíst prostřednictvím kódu programu a uložit je do databáze. Případně můžete protokoly auditu integrovat do systému SIEM třetí strany, jako je Splunk nebo Sumo Logic.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přehled protokolů auditu](concept-audit-logs.md)
 * [Přehled přihlášení](concept-sign-ins.md)

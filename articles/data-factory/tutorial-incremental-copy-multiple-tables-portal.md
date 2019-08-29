@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581675"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140755"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -175,9 +174,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v databázi Azure SQL
 Spuštěním následujícího dotazu vytvořte v databázi SQL dvě uložené procedury a dva datové typy. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek.
 
-Pokud chcete začít s usnadňují cesty, jsme přímo použít tyto uložené procedury předávání přes proměnnou tabulky rozdílová data v a pak na ně sloučit do cílového úložiště. Buďte opatrní, že to není očekává "velký" počet delta řádků (více než 100) k uložení do proměnné tabulky.  
+Aby bylo možné cestu snadno začít používat, přímo tyto uložené procedury předají rozdílová data v rámci přes proměnnou tabulky a pak je sloučí do cílového úložiště. Buďte opatrní, protože neočekává "velký" počet rozdílových řádků (více než 100), které se mají Uložit do proměnné tabulky.  
 
-Pokud je potřeba sloučit velký počet řádků delta do cílového úložiště, doporučujeme použít aktivitu kopírování ke kopírování rozdílová data do dočasné tabulky "staging" v cílové ukládání první a pak vytvořené bez použití vari Tabulka uložená procedura možnost Sloučit z tabulky "pracovní" do "final" tabulky. 
+Pokud potřebujete sloučit velký počet rozdílových řádků do cílového úložiště, doporučujeme použít aktivitu kopírování ke zkopírování všech rozdílových dat do dočasné tabulky "fázování" v cílovém úložišti a pak vytvořit vlastní uloženou proceduru bez použití tabulky VARI. je možné je sloučit z tabulky "fázování" do "konečné" tabulky. 
 
 
 ```sql
@@ -248,11 +247,11 @@ END
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-1. Jako **verzi** vyberte **V2 (Preview)**.
+1. Jako **verzi** vyberte **V2 (Preview)** .
 1. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 1. Zaškrtněte **Připnout na řídicí panel**.     
 1. Klikněte na možnost **Vytvořit**.      
-1. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
+1. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazuje se objekt pro vytváření dat**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -281,7 +280,7 @@ Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v 
 1. Jako **Název** zadejte **MySelfHostedIR** a klikněte na **Další**. 
 
    ![Název místního prostředí IR](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Klikněte na tlačítko **kliknutím sem spustíte expresní instalaci pro tento počítač** v **možnost 1: Expresní instalace** oddílu. 
+1. Kliknutím **na tlačítko Kliknutím sem spustíte expresní instalaci pro tento počítač** v **možnosti 1: Oddíl expresní** instalace. 
 
    ![Kliknutí na odkaz na expresní instalaci](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. V okně **Expresní instalace Integration Runtime (v místním prostředí)** klikněte na **Zavřít**. 
@@ -305,7 +304,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
     ![Tlačítko Nová propojená služba](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. V okně **Nová propojená služba** vyberte **SQL Server** a klikněte na **Pokračovat**. 
 
-    ![Výběr SQL Serveru](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+    ![Vybrat SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. V okně **Nová propojená služba** proveďte následující kroky:
 
     1. Jako **Název** zadejte **SqlServerLinkedService**. 
@@ -352,7 +351,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
    ![Nabídka Nová datová sada](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. V okně **Nová datová sada** vyberte **SQL Server** a klikněte na **Dokončit**. 
 
-   ![Výběr SQL Serveru](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+   ![Vybrat SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
 1. Ve webovém prohlížeči se otevře nová karta, na které můžete datovou sadu konfigurovat. Datová sada se zobrazí také ve stromovém zobrazení. Na kartě **Obecné** v dolní části okna Vlastnosti jako **Název** zadejte **SourceDataset**. 
 
    ![Zdrojová datová sada – název](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
@@ -404,7 +403,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze.
 1. Přepněte na kartu **Připojení** a proveďte následující kroky: 
 
     1. Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
-    1. Jako **Tabulka** vyberte **[dbo].[watermarktable]**.
+    1. Jako **Tabulka** vyberte **[dbo].[watermarktable]** .
 
        ![Datová sada meze – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
@@ -440,7 +439,7 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
 1. V okně **Vlastnosti** přepněte na kartu **Nastavení** a jako **Položky** zadejte `@pipeline().parameters.tableList`. Aktivita ForEach prochází seznam tabulek a provádí operaci přírůstkového kopírování. 
 
     ![Aktivita ForEach – nastavení](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
-1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)**.
+1. Pokud ještě není vybraná, vyberte v kanálu aktivitu **ForEach**. Klikněte na tlačítko **Upravit (ikona tužky)** .
 
     ![Aktivita ForEach – úprava](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
 1. V sadě nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Vyhledávání** na plochu návrháře kanálu. Pak jako **Název** zadejte **LookupOldWaterMarkActivity**.
@@ -493,9 +492,9 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     ![Aktivita jímky – nastavení jímky](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Proveďte následující kroky:
 
-    1. V **datovou sadu** vlastnost, pro **SinkTableName** parametr, zadejte `@{item().TABLE_NAME}`.
-    1. Pro **název uložené procedury** vlastnost, zadejte `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Pro **typ tabulky** vlastnost, zadejte `@{item().TableType}`.
+    1. Do vlastnosti **DataSet** zadejte `@{item().TABLE_NAME}`pro parametr **SinkTableName** hodnotu.
+    1. Jako vlastnost **název uložené procedury** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
+    1. Jako vlastnost **typ tabulky** zadejte `@{item().TableType}`.
 
 
         ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -514,10 +513,10 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Vyberte **Importovat parametr**. 
     1. Zadejte následující hodnoty parametrů: 
 
-        | Název | Typ | Hodnota | 
+        | Name | Typ | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. V levém podokně klikněte na **Publikovat**. Tato akce publikuje vytvořené entity do služby Data Factory. 

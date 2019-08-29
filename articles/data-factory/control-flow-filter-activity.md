@@ -1,26 +1,25 @@
 ---
-title: Filtrovat aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
+title: Filtrovat aktivitu v Azure Data Factory | Microsoft Docs
 description: Aktivita filtru filtruje vstupy.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: shlo
-ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7e2e735baa7e40b4170d3397327e90fc1a5d2d5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554843"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141678"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivity ve službě Azure Data Factory
-Můžete použít aktivitu filtr v kanálu použít výraz filtru do vstupního pole. 
+# <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivitu v Azure Data Factory
+Můžete použít aktivitu filtru v kanálu k použití výrazu filtru na vstupní pole. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -35,18 +34,18 @@ Můžete použít aktivitu filtr v kanálu použít výraz filtru do vstupního 
 }
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název `Filter` aktivity. | String | Ano
-type | Musí být nastaveno na **filtr**. | String | Ano
-Podmínka | Podmínku, která má použít pro filtrování vstupu. | Výraz | Ano
-items | Vstupní pole, na které bude použito filtru. | Výraz | Ano
+name | `Filter` Název aktivity | Řetězec | Ano
+type | Musí být nastavené na **Filter**. | Řetězec | Ano
+condition | Podmínka, která se má použít pro filtrování vstupu. | Výraz | Ano
+items | Vstupní pole, ve kterém se má použít filtr | Výraz | Ano
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-V tomto příkladu tento kanál obsahuje dvě aktivity: **Filtr** a **ForEach**. Aktivita filtru je nakonfigurovaná k filtrování vstupní pole pro položky s hodnotou větší než 3. Aktivita ForEach pak Iteruje přes filtrované hodnoty a čeká na počtu sekund zadaného pomocí aktuální hodnoty.
+V tomto příkladu má kanál dvě aktivity: **Filtrovat** a **foreach** Aktivita filtru je nakonfigurována tak, aby vyfiltroval vstupní pole pro položky s hodnotou větší než 3. Aktivita ForEach pak provede iteraci filtrovaných hodnot a počká na počet sekund zadaný aktuální hodnotou.
 
 ```json
 {
@@ -91,13 +90,13 @@ V tomto příkladu tento kanál obsahuje dvě aktivity: **Filtr** a **ForEach**.
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

@@ -6,19 +6,31 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 796335fddf6107284b589d70094ff4f5a0e3acd5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050003"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147948"
 ---
 ::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírovat data Azure Data Box Disk a ověřit
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopírovat data do Azure Data Box Disk a ověřit
+
+Po připojení a odemčení disků můžete zkopírovat data ze zdrojového datového serveru na disky. Po dokončení kopírování dat byste měli mít data, která jste zkopírovali. Ověřování zajišťuje, že se data úspěšně odesílají do Azure později.
+
+::: zone-end
+
+::: zone target="docs"
 
 Tento kurz popisuje, jak zkopírovat data z hostitelského počítače a potom vygenerovat kontrolní součty k ověření jejich integrity.
 
@@ -294,19 +306,18 @@ V dalším kurzu se dozvíte, jak poslat Data Box Disk zpátky a ověřit nahrá
 
 ::: zone target="chromeless"
 
-## <a name="copy-data-to-disks"></a>Kopírování dat na disky
+### <a name="copy-data-to-disks"></a>Kopírování dat na disky
 
 K připojení a zkopírování dat z počítače do Data Box Disk proveďte následující kroky.
 
 1. Zobrazte obsah odemknuté jednotky. Seznam předdefinovaných složek a podsložek v jednotce se liší v závislosti na možnostech vybraných při umístění Data Box Diskho pořadí.
 2. Zkopírujte data do složek odpovídajících příslušnému formátu dat. Zkopírujte například nestrukturovaná data do složky pro složku *BlockBlob* , data VHD nebo VHDX do složky *PageBlob* a soubory do *AzureFile*. Pokud formát dat neodpovídá příslušné složce (typu úložiště), pak se v pozdějším kroku nahrávání dat do Azure nezdařila.
 
-    - Zajistěte, aby všechny kontejnery, objekty BLOB a soubory splňovaly [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) a [omezení velikosti objektů Azure](data-box-disk-limits.md#azure-object-size-limits). Pokud tato pravidla nebo omezení nedodržují, nahrávání dat do Azure se nezdaří.
-    - V účtu služby Azure Storage se pro každou podsložku ve složkách BlockBlob a PageBlob vytvoří zvláštní kontejner. Všechny soubory v rámci složek *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru $root pod účtem Azure Storage. 
-    - Všechny soubory v kontejneru $root jsou vždy odeslány jako objekty blob bloku.
-    - Zkopírujte soubory do složky ve složce *AzureFile* . Podsložka v rámci složky *AzureFile* vytvoří sdílenou složku. Soubory zkopírované přímo do složky *AzureFile* selžou a nahrají se jako objekty blob bloku.
-    - Pokud jsou v kořenovém adresáři nějaké soubory a složky, před zahájením kopírování dat je potřeba je přesunout do jiné složky.
+    - Zajistěte, aby všechny kontejnery, objekty BLOB a soubory splňovaly [zásady vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) a [omezení velikosti objektů Azure](data-box-disk-limits.md#azure-object-size-limits). Pokud tato pravidla nebo omezení nedodržují, nahrávání dat do Azure se nezdaří.     
     - Pokud se vaše objednávka Managed Disks jako jedna z cílů úložiště, přečtěte si téma zásady vytváření názvů pro [spravované disky](data-box-disk-limits.md#managed-disk-naming-conventions).
+    - V účtu služby Azure Storage se pro každou podsložku ve složkách BlockBlob a PageBlob vytvoří zvláštní kontejner. Všechny soubory v rámci složek *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru $root pod účtem Azure Storage. Všechny soubory v kontejneru $root jsou vždy odeslány jako objekty blob bloku.
+    - Vytvořte podsložku ve složce *AzureFile* . Tato podsložka se mapuje na sdílenou složku v cloudu. Zkopírujte soubory do podsložky. Soubory zkopírované přímo do složky *AzureFile* selžou a nahrají se jako objekty blob bloku.
+    - Pokud jsou v kořenovém adresáři nějaké soubory a složky, před zahájením kopírování dat je potřeba je přesunout do jiné složky.
 
 3. K kopírování dat použijte funkci přetažení pomocí Průzkumníka souborů nebo jakéhokoli nástroje pro kopírování souborů kompatibilního s protokolem SMB, jako je například Robocopy. Pomocí následujícího příkazu lze iniciovat více úloh kopírování:
 
@@ -317,13 +328,13 @@ K připojení a zkopírování dat z počítače do Data Box Disk proveďte nás
 
 Pokud používáte více disků a máte velkou datovou sadu, která musí být rozdělená a zkopírovaná na všech discích, použijte nepovinný postup [rozdělení a kopírování](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks) .
 
-## <a name="validate-data"></a>Ověření dat
+### <a name="validate-data"></a>Ověření dat
 
 Při ověřování dat proveďte následující kroky.
 
 1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
 2. Pomocí možnosti 2 Ověřte soubory a vygenerujte kontrolní součty. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
-    Další informace o ověření dat naleznete v tématu [Validate data](data-box-disk-deploy-copy-data.md#validate-data). Pokud při ověřování dojde k chybě, přečtěte si téma [řešení chyb při ověřování](data-box-disk-troubleshoot.md).
+    Další informace o ověření dat naleznete v tématu [Validate data](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma [řešení chyb při ověřování](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: target = "_blank"}.
 
 ::: zone-end

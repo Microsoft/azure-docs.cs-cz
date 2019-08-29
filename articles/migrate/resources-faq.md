@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102875"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142217"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Nejčastější dotazy
 
@@ -172,7 +172,7 @@ Ne, vizualizace závislosti se nedá exportovat. Vzhledem k tomu, že Azure Migr
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Jak mohu automatizovat instalaci Microsoft Monitoring Agent (MMA) a agenta závislostí?
 
-Pomocí tohoto [skriptu Nainstalujte agenty](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Pomocí tohoto [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazení, jako je System Center Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
 
@@ -183,8 +183,7 @@ Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazen
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Jaké operační systémy podporuje agent závislostí?
 
-- Zobrazí seznam [operačních systémů Windows podporovaných agentem závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-- Prohlédněte si seznam [operačních systémů Linux podporovaných agentem závislosti](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+Zobrazí seznam [operačních systémů Windows a Linux, které Azure monitor pro virtuální počítače podporuje](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Je možné vizualizovat závislosti v Azure Migrate po dobu delší než hodinu?
 Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k dotazování na [data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
@@ -198,5 +197,5 @@ Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure
 
 Migrace Azure Migrate serveru používá modul replikace Site Recovery pro migraci virtuálních počítačů VMware založenou na agentech, migraci virtuálních počítačů Hyper-V a migraci fyzických serverů do Azure. Možnost bez agenta pro migraci virtuálních počítačů VMware je nativně integrovaná do migrace serveru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si [přehled Azure Migrate](migrate-services-overview.md).

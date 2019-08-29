@@ -1,26 +1,25 @@
 ---
-title: Aktivita ověření ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Aktivita ověření dál spuštění kanálu, dokud ověří připojené datové sady s určitá kritéria, který uživatel zadá.
+title: Ověřovací aktivita v Azure Data Factory | Microsoft Docs
+description: Ověřovací aktivita nepokračuje v provádění kanálu, dokud neověřuje připojenou datovou sadu s určitými kritérii, které uživatel zadá.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77fdab04e03429d135875cb2ef223e8c23d312a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764318"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141609"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Aktivita ověření ve službě Azure Data Factory
-Ověřování v kanálu můžete použít k zajištění kanálu pouze pokračuje v provádění po ověří připojeného existuje odkaz na datovou sadu, že splňují zadaná kritéria nebo bylo dosaženo časového limitu.
+# <a name="validation-activity-in-azure-data-factory"></a>Ověřovací aktivita v Azure Data Factory
+Ověřování v kanálu můžete použít k tomu, abyste zajistili, že kanál bude pokračovat jenom po ověření, že existuje odkaz na připojenou datovou sadu, který splňuje zadaná kritéria, nebo se dosáhlo vypršení časového limitu.
 
 
 ## <a name="syntax"></a>Syntaxe
@@ -57,26 +56,26 @@ Ověřování v kanálu můžete použít k zajištění kanálu pouze pokračuj
 ```
 
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity "ověření. | String | Ano |
-type | Musí být nastaveno na **ověření**. | String | Ano |
-Datové sady | Aktivity se zablokovat spuštění, dokud se ověřila tento odkaz na datovou sadu existuje a zda splňují zadaná kritéria, nebo bylo dosaženo časového limitu. Vlastnost "MinimumSize" nebo "ChildItems" by měla podporovat datové sady k dispozici. | Odkaz na datovou sadu | Ano |
-timeout | Určuje časový limit pro spuštění aktivity. Pokud není zadána žádná hodnota, výchozí hodnota je 7 dnů ("7.00:00:00"). Formát je d.hh:mm:ss | String | Ne |
-Přejít do režimu spánku | Zpoždění v sekundách mezi pokusy o ověření. Pokud není zadána žádná hodnota, výchozí hodnota je 10 sekund. | Integer | Ne |
-childItems | Kontroluje, jestli složka má podřízené položky. Lze nastavit na hodnotu true: Ověřte, že složka existuje a že má položky. Blokuje, dokud alespoň jedna položka nachází ve složce nebo nebude dosaženo hodnoty časového limitu.-false: Ověřte, že složka existuje a že je prázdný. Blokuje, dokud se složka je prázdná nebo až do vypršení časového limitu nebude dosaženo hodnoty. Pokud není zadána žádná hodnota, aktivita bude blokovat, dokud složka existuje, nebo dokud nebude dosaženo časového limitu. | Boolean | Ne |
-minimumSize | Minimální velikost souboru v bajtech. Pokud není zadána žádná hodnota, výchozí hodnota je 0 bajtů. | Integer | Ne |
+name | Název aktivity ověření | Řetězec | Ano |
+type | Musí být nastavené na **ověřování**. | Řetězec | Ano |
+integrován | Aktivita bude blokovat provádění, dokud neověří, zda existuje tento odkaz na datovou sadu a zda splňuje zadaná kritéria, nebo byl dosažen časový limit. Zadaná datová sada by měla podporovat vlastnost "MinimumSize" nebo "ChildItems". | Odkaz na datovou sadu | Ano |
+časový limit | Určuje časový limit pro spuštění aktivity. Pokud není zadaná žádná hodnota, výchozí hodnota je 7 dní ("7.00:00:00"). Formát je d. hh: mm: SS | Řetězec | Ne |
+spat | Zpoždění v sekundách mezi pokusy o ověření. Pokud není zadaná žádná hodnota, výchozí hodnota je 10 sekund. | Integer | Ne |
+childItems | Kontroluje, zda složka obsahuje podřízené položky. Lze nastavit na hodnotu-true: Ověřte, zda složka existuje a zda obsahuje položky. Blokuje, dokud není k dispozici alespoň jedna položka ve složce nebo hodnota časového limitu.-false: Ověřte, že složka existuje a že je prázdná. Blokuje, dokud není složka prázdná, nebo dokud nedosáhnete hodnoty časového limitu. Pokud není zadaná žádná hodnota, aktivita se zablokuje, dokud složka neexistuje nebo dokud nebude dosaženo časového limitu. | Logická hodnota | Ne |
+minimumSize | Minimální velikost souboru v bajtech Pokud není zadaná žádná hodnota, výchozí hodnota je 0 bajtů. | Integer | Ne |
 
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory:
+Podívejte se na další aktivity toku řízení podporované Data Factory:
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

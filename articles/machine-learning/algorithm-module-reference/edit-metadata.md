@@ -1,7 +1,7 @@
 ---
-title: 'Úprava metadat: Reference k modulu'
+title: 'Upravit metadata: Reference k modulu'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu upravit Metadata ve službě Azure Machine Learning, chcete-li změnit metadata, která je přidružená k sloupců v datové sadě.
+description: Naučte se, jak pomocí modulu upravit metadata ve službě Azure Machine Learning změnit metadata, která jsou přidružená ke sloupcům v datové sadě.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 282652adb917450c262e08bf10c3c6e537b829e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072707"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128870"
 ---
-# <a name="edit-metadata-module"></a>Upravit Metadata modulu
+# <a name="edit-metadata-module"></a>Upravit modul metadat
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Chcete-li změnit metadata, která je přidružená k sloupců v datové sadě pomocí modulu upravit Data. Po použití modulu upravit Metadata se změní hodnota a datový typ datové sady.
+Pomocí modulu upravit data můžete změnit metadata, která jsou přidružená ke sloupcům v datové sadě. Hodnota a datový typ datové sady se po použití modulu upravit metadata změní.
 
-Typické metadat změny mohou zahrnovat:
+Typické změny metadat mohou zahrnovat:
   
-+ Zpracuje logická nebo číselné sloupce jako hodnoty zařazené do kategorií.
++ Zpracovávání logických nebo číselných sloupců jako hodnot kategorií
   
-+ Určující, který sloupec obsahuje **třídy** popisek nebo obsahuje hodnoty, které chcete kategorizovat nebo předpovědět.
++ Určuje, který sloupec obsahuje popisek **třídy** nebo obsahuje hodnoty, které chcete zařadit do kategorií nebo odhadnout.
   
-+ Označení sloupce jako funkce.
++ Označení sloupců jako funkcí
   
-+ Změna hodnoty data a času na číselné hodnoty nebo naopak.
++ Změna hodnot data a času na číselné hodnoty, nebo naopak.
   
 + Přejmenování sloupců.
   
- Upravit Metadata použijte, kdykoli potřebujete změnit definici sloupce, obvykle podle požadavků pro příjem dat modul. Například některé moduly fungovat jenom s konkrétní datové typy nebo vyžadují příznaky u sloupců, jako například `IsFeature` nebo `IsCategorical`.  
+ Použijte úpravu metadat kdykoli potřebujete upravit definici sloupce, obvykle pro splnění požadavků na modul pro příjem dat. Například některé moduly fungují pouze s konkrétními datovými typy nebo vyžadují příznaky na sloupcích, například `IsFeature` nebo. `IsCategorical`  
   
- Po provedení požadované operace, můžete obnovit metadata do původního stavu.
+ Po provedení požadované operace můžete metadata obnovit do původního stavu.
   
-## <a name="configure-edit-metadata"></a>Konfigurace upravit Metadata
+## <a name="configure-edit-metadata"></a>Konfigurace úprav metadat
   
-1. Ve službě Azure Machine Learning přidejte modul upravit Metadata do experimentu a připojte datovou sadu, kterou chcete aktualizovat. Můžete najít datovou sadu v rámci **transformace dat** v **manipulovat** kategorie.
+1. V Azure Machine Learning přidejte do experimentu modul upravit metadata a připojte datovou sadu, kterou chcete aktualizovat. Datovou sadu můžete najít v části **transformace dat** v kategorii **manipulace** .
   
-1. Vyberte **spusťte selektor sloupců** a zvolte sloupec nebo sadu sloupců pro práci s. Můžete zvolit sloupce jednotlivě podle názvu nebo indexu, nebo můžete vybrat skupinu sloupců podle typu.  
+1. Vyberte možnost **Spustit selektor sloupců** a vyberte sloupec nebo sadu sloupců, se kterými chcete pracovat. Sloupce můžete zvolit jednotlivě podle názvu nebo indexu nebo můžete zvolit skupinu sloupců podle typu.  
   
-1. Vyberte **datový typ** možnost, pokud je potřeba přiřadit jiný datový typ vybraného sloupce. Může být potřeba změnit datový typ pro určité operace. Například pokud vaše zdrojová datová sada má čísla zpracována jako text, musíte změnit je na číselný datový typ před použitím matematických operací.
+1. Vyberte možnost **datového typu** , pokud pro vybrané sloupce potřebujete přiřadit jiný datový typ. Pro určité operace může být nutné změnit datový typ. Pokud má vaše zdrojová datová sada například čísla zpracovaná jako text, musíte je před použitím matematických operací změnit na číselný datový typ.
 
-    + Podporované datové typy jsou **řetězec**, **celé číslo**, **Double**, **logická**, a **data a času**.
+    + Podporované datové typy jsou **řetězec**, **celé číslo**, **Double**, **Boolean**a **DateTime**.
 
-    + Pokud vyberete více sloupců, musíte použít změny metadat *všechny* vybrané sloupce. Řekněme například, že vyberete dva nebo tři číselné sloupce. Můžete je změnit všechny na řetězcový datový typ a přejmenovat v rámci jedné operace. Z plovoucí na celé nelze však změnit jeden sloupec pro datový typ řetězce a další sloupec.
+    + Pokud vyberete více sloupců, je nutné použít změny metadat u *všech* vybraných sloupců. Řekněme například, že vyberete dva nebo tři číselné sloupce. Můžete je změnit na datový typ String a přejmenovat je v jedné operaci. Nelze však změnit jeden sloupec na datový typ String a jiný sloupec z typu float na celé číslo.
   
-    + Pokud nezadáte nového datového typu, sloupec metadat se nezmění.
+    + Pokud nezadáte nový datový typ, metadata sloupce se nezmění.
 
-    + Typ sloupce a hodnoty se změní po provedení operace upravit Metadata. Kdykoli můžete obnovit původního datového typu pomocí upravit Metadata obnovení datový typ sloupce.  
+    + Typ sloupce a hodnoty se po provedení operace Upravit metadata změní. Původní datový typ můžete kdykoli obnovit pomocí Upravit metadata a obnovit datový typ sloupce.  
 
     > [!NOTE]
-    > Pokud změníte jakýkoli typ číslo **data a času** zadejte, ponechte **formátu data a času** prázdné pole. Aktuálně není možné určit cílový formát data.  
+    > Pokud změníte libovolný typ čísla na typ **DateTime** , ponechte pole **formát data a času** prázdné. V současné době není možné zadat cílový formát dat.  
 
-1. Vyberte **zařazené do kategorií** možnost určit, že hodnoty ve vybraných sloupcích považovat za kategorií.
+1. Vyberte možnost **kategorií** a určete tak, že hodnoty ve vybraných sloupcích by měly být považovány za kategorie.
 
-    Například můžete mít sloupec obsahující čísla 0, 1 a 2, ale vědět, že čísla ve skutečnosti rozumí "Smoker", "Non-smoker" a "Neznámý". V takovém případě označením sloupce jako zařazené do kategorií zajistíte tím, že hodnoty slouží pouze k seskupení dat a ne v číselné výpočty.
+    Například můžete mít sloupec, který obsahuje čísla 0, 1 a 2, ale víte, že ve skutečnosti znamenají hodnoty "Kouřer", "jiný než kouřový" a "Neznámý". V takovém případě označením sloupce příznakem jako kategorií zajistíte, aby se hodnoty používaly pouze k seskupení dat a nikoli k číselným výpočtům.
   
-1. Použití **pole** možnost, pokud chcete změnit způsob, Azure Machine Learning používá data v modelu.
+1. Možnost **pole** použijte, pokud chcete změnit způsob, jakým Azure Machine Learning používá data v modelu.
 
-    + **Funkce**: Tuto možnost použijte k nastavení příznaku sloupec jako funkci v modulech, které pracují pouze na sloupce. Ve výchozím nastavení jsou považovány za funkce původně všechny sloupce.  
+    + **Funkce**: Tuto možnost použijte k označení sloupce jako funkce v modulech, které pracují pouze na sloupcích funkcí. Ve výchozím nastavení se všechny sloupce považují za funkce.  
   
-    + **Popisek**: Tuto možnost použijte k označení popisku, který je také označován jako předvídatelný atribut nebo Cílová proměnná. Mnoho modulů vyžadují že tento sloupec právě jeden popisek je k dispozici v datové sadě.
+    + **Popisek**: Tuto možnost použijte k označení popisku, který je také znám jako předvídatelný atribut nebo cílová proměnná. Mnoho modulů vyžaduje, aby datová sada obsahovala přesně jeden sloupec popisku.
 
-        V mnoha případech můžete odvodit Azure Machine Learning, že sloupec obsahuje popisek třídy. Nastavením těchto metadat, můžete zajistit, že se správně identifikuje sloupce. Nastavení této možnosti nezmění datové hodnoty. Změní jen způsob, kterým několik algoritmů strojového učení zpracovávají data.
+        V mnoha případech Azure Machine Learning může odvodit, že sloupec obsahuje popisek třídy. Nastavením těchto metadat můžete zajistit správnou identifikaci sloupce. Nastavením této možnosti nedojde ke změně hodnot dat. Změní se jenom na to, jak některé algoritmy strojového učení zpracovávají data.
   
     > [!TIP]
-    > Máte dat, který se nevejde do následujících kategorií? Vaše datová sada může například obsahovat hodnoty, jako je jedinečné identifikátory, které nejsou užitečné jako proměnné. Tyto identifikátory v některých případech může způsobovat problémy při použití v modelu.
+    > Máte data, která se nevejdou do těchto kategorií? Například vaše datová sada může obsahovat hodnoty jako jedinečné identifikátory, které nejsou užitečné jako proměnné. Někdy taková ID můžou způsobit problémy při použití v modelu.
     >
-    > Naštěstí Azure Machine Learning uchovává všechna vaše data, takže není nutné odstranit tyto sloupce z datové sady. Když budete potřebovat k provádění operací na některé speciální sadu sloupců, odeberte všechny ostatní sloupce dočasně pomocí [výběr sloupců v datové sadě](select-columns-in-dataset.md) modulu. Později můžete sloučit sloupce zpět do datové sady s použitím [přidat sloupce](add-columns.md) modulu.  
+    > Naštěstí Azure Machine Learning udržuje všechna vaše data, takže nemusíte tyto sloupce z datové sady odstraňovat. Pokud potřebujete provést operace s určitou zvláštní sadou sloupců, stačí odebrat všechny ostatní sloupce dočasně pomocí modulu [Výběr sloupců v datové sadě](select-columns-in-dataset.md) . Později můžete sloučit sloupce zpátky do datové sady pomocí modulu [Přidat sloupce](add-columns.md) .  
   
-1. Pomocí následujících možností obnovení metadat na výchozí hodnoty a vymažte předchozích výběrů.  
+1. Pomocí následujících možností smažete předchozí výběry a obnovíte výchozí hodnoty metadat.  
   
-    + **Vymazat funkce**: Tuto možnost použijte, chcete-li odebrat příznak funkce.  
+    + **Vymazat funkci**: Tuto možnost použijte, chcete-li odebrat příznak funkce.  
   
-         Všechny sloupce jsou zpočátku považovány za funkce. Pro moduly, které provádějí matematické operace může být nutné pro tuto možnost použijte, aby se zabránilo číselné sloupce jsou považovány za proměnné.
+         Všechny sloupce se zpočátku považují za funkce. U modulů, které provádějí matematické operace, možná budete muset tuto možnost použít, chcete-li zabránit tomu, aby se číselné sloupce považovat za proměnné.
   
-    + **Vymazat popisek**: Tuto možnost použijte, chcete-li odebrat **popisek** metadata ze zadaného sloupce.  
+    + **Vymazat popisek**: Tuto možnost použijte, chcete-li odebrat metadata **popisku** ze zadaného sloupce.  
   
-    + **Vymazat skóre**: Tuto možnost použijte, chcete-li odebrat **skóre** metadata ze zadaného sloupce.  
+    + **Vymazat skóre**: Pomocí této možnosti můžete ze zadaného sloupce odebrat metadata **skóre** .  
   
-         Momentálně nelze označit explicitně sloupec jako bodů ve službě Azure Machine Learning. Některé operace však způsobit sloupec se označí jako skóre interně. Vlastní modul R může také výstupní hodnoty skóre.
+         V tuto chvíli nemůžete explicitně označit sloupec jako skóre v Azure Machine Learning. Některé operace ale mají za následek, že se sloupec označí jako skóre interně. Také vlastní modul R může výstupní hodnoty skóre.
 
-1. Pro **nové názvy sloupců**, zadejte název nového vybraný sloupec nebo sloupce.  
+1. Pro **nové názvy sloupců**zadejte nový název vybraného sloupce nebo sloupce.  
   
-    + Názvy sloupců můžete použít jenom znaky, které podporuje UTF-8 kódování. Prázdné řetězce, hodnoty Null nebo názvy, které sestávat jen z mezery nejsou povolené.  
+    + Názvy sloupců můžou používat jenom znaky, které podporuje kódování UTF-8. Prázdné řetězce, hodnoty null nebo názvy, které jsou tvořeny pouze mezerami, nejsou povoleny.  
   
-    + Chcete-li přejmenovat více sloupců, zadejte názvy jako čárkami oddělený seznam v pořadí podle sloupce indexů.  
+    + Chcete-li přejmenovat více sloupců, zadejte názvy jako seznam oddělený čárkami v pořadí indexů sloupců.  
   
-    + Všechny vybrané sloupce musí být přejmenován. Nejde vynechat nebo přeskočit sloupce.  
+    + Všechny vybrané sloupce musí být přejmenovány. Nemůžete vynechat nebo přeskočit sloupce.  
   
 1. Spusťte experiment.  
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) ke službě Azure Machine Learning.
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning.

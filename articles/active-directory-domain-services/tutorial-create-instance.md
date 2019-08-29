@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 56cb9a17054faace65ae1b65ed0ddbedf1e8af99
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125223"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: Vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -43,6 +43,9 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Abyste mohli Azure služba AD DS povolit, potřebujete ve svém tenantovi Azure AD oprávnění *globálního správce* .
 * Abyste mohli vytvořit požadované prostředky Azure služba AD DS, potřebujete oprávnění přispěvatele v předplatném Azure.
 * [Pro Samoobslužné resetování hesla][configure-sspr]se musí nakonfigurovat tenant služby Azure AD.
+
+> [!IMPORTANT]
+> Po vytvoření spravované domény Azure služba AD DS nemůžete instanci přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazování instance služby Azure služba AD DS je nutné vybrat nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

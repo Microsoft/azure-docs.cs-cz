@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dbf45853f5f7a440578f3a9005831a4ef63d85e7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65778866"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140690"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -89,14 +88,14 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
 
 1. Spusťte **Visual Studio**.
 2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.
-3. V seznamu typů projektů napravo vyberte **Visual C#** -> **Aplikace konzoly (.NET Framework)**. Vyžaduje se .NET verze 4.5.2 nebo novější.
+3. V seznamu typů projektů napravo vyberte **Visual C#**  -> **Aplikace konzoly (.NET Framework)** . Vyžaduje se .NET verze 4.5.2 nebo novější.
 4. Jako název zadejte **ADFv2Tutorial**.
 5. Projekt vytvoříte kliknutím na **OK**.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
 1. Klikněte na **Nástroje**  ->  **Správce balíčků NuGet**  ->  **Konzola správce balíčků**.
-2. V **Konzola správce balíčků**, spusťte následující příkazy, které se mají balíčky nainstalovat. Odkazovat na [balíček nuget Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) s podrobnostmi.
+2. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -120,7 +119,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     ```
 
     
-2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```csharp
     // Set variables
@@ -233,8 +232,8 @@ Do metody **Main** přidejte následující kód, který vytvoří **datovou sad
 
 Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob ke kopírování ze: **FolderPath** a **FileName**;
-- Formát objektu udávající, jak analyzovat obsah: **TextFormat** a jeho nastavení (například oddělovač sloupců).
+- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **filename**;
+- Formát objektu blob, který označuje, jak analyzovat obsah: **TextFormat** a jeho nastavení (například Oddělovač sloupců).
 - Strukturu dat, včetně názvů sloupců a typů dat, které se v tomto případě mapují na tabulku SQL jímky.
 
 ```csharp

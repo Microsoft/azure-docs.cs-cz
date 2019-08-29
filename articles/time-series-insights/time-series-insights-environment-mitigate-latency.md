@@ -1,6 +1,6 @@
 ---
-title: Jak monitorovat a snížení šířky pásma v Azure Time Series Insights | Dokumentace Microsoftu
-description: Tento článek popisuje, jak monitorování, diagnostikovat a zmírnit problémy s výkonem, které způsobují latenci a omezování v Azure Time Series Insights.
+title: Jak monitorovat a snižovat omezování v Azure Time Series Insights | Microsoft Docs
+description: Tento článek popisuje, jak monitorovat, diagnostikovat a zmírnit problémy s výkonem, které způsobují latenci a omezování v Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,78 +10,90 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165764"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123789"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezování snížit latenci v Azure Time Series Insights
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezení pro snížení latence v Azure Time Series Insights
 
-Pokud objem příchozích dat překročí konfiguraci vašeho prostředí, můžete setkat s latencí nebo omezení využití sítě v Azure Time Series Insights.
+Když velikost příchozích dat překročí konfiguraci vašeho prostředí, může docházet k latenci nebo omezování v Azure Time Series Insights.
 
-Můžete vyhnout latenci a omezování tím, že správně nakonfigurujete prostředí objem dat, který chcete analyzovat.
+Latenci a omezování můžete zabránit tím, že správně nakonfigurujete prostředí pro množství dat, která chcete analyzovat.
 
-Které bývají nejčastějším docházet k latenci a omezování, když jste:
+Máte pravděpodobně na latenci a omezení, když máte tyto možnosti:
 
-- Přidání zdroje událostí, který obsahuje původní data, která může být delší než vaše frekvence přiděleného příchozího přenosu dat (dohnat se musí Time Series Insights).
-- Přidáte další zdroje událostí do prostředí, což vede k zásobníku z další události (které by mohla překročit kapacitu vašeho prostředí).
-- Nahrání velkého množství historických událostí do zdroje událostí, což vede k prodlevě (Time Series Insights potřebovat dohnat).
-- Připojte se k referenčních dat pomocí telemetrie, což vede k větší velikost události.  Z hlediska omezení paket ingressed data s velikost paketu 32 kB považuje za 32 události, každý velikosti 1 KB. Události maximální povolená velikost je 32 KB; datových paketů větší než 32 KB se oříznou.
+- Přidejte zdroj události, který obsahuje stará data, která by mohla překročit vaši přidělenou míru příchozího přenosu dat (Time Series Insights bude nutné zachytit).
+- Přidání dalších zdrojů událostí do prostředí a výsledkem je špička dalších událostí (což by mohlo překročit kapacitu vašeho prostředí).
+- Nahrajte velké objemy historických událostí do zdroje událostí, čímž dojde k prodlevě (Time Series Insights bude nutné zachytit).
+- Spojování referenčních dat s telemetrie a výsledkem je větší velikost události.  V perspektivě omezování se příchozí datový paket s velikostí paketu 32 KB považuje za události 32, každé velikosti 1 KB. Maximální povolená velikost události je 32 KB; datové pakety větší než 32 KB se zkrátí.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Další informace o chování příchozího přenosu dat Time Series Insights a jak ji plánovat.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Přečtěte si o chování Time Series Insights dat a o tom, jak je naplánovat.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
-## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorování latenci a omezování s výstrahami
+## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorování latence a omezování pomocí výstrah
 
-Výstrahy můžete pomoci diagnostikovat a zmírnit problémy s latencí způsobené vašeho prostředí.
+Výstrahy vám můžou pomáhat diagnostikovat a zmírnit problémy latence způsobené vaším prostředím.
 
-1. Na webu Azure Portal, vyberte **metriky**.
+1. V Azure Portal vyberte **výstrahy**.
 
-   [![Metriky](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
+   [![Generoval](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
-1. Vyberte **Přidat upozornění metriky**.  
+1. Zobrazí se panel **vytvořit pravidlo** . Vyberte **Přidat** pod **podmínkou**.
 
-   [![Přidat upozornění metriky](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
+   [![Přidat výstrahu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
-Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
+1. Dále nakonfigurujte přesné podmínky pro logiku signálu.
 
-|Metrika  |Popis  |
-|---------|---------|
-|**Příchozí přenos dat přijatých bajtů**     | Počet nezpracovaných Bajty čtení z zdroje událostí. Počet nezpracovaných obvykle zahrnuje název vlastnosti a hodnotu.  |  
-|**Příchozí přenos dat přijatých neplatné zprávy**     | Počet zpráv neplatná číst ze všech zdrojů událostí služby Azure Event Hubs nebo Azure IoT Hub.      |
-|**Příchozí přenos dat přijatých zpráv**   | Počet zpráv, které číst ze zdroje událostí pro všechny služby Event Hubs a centra IoT hub.        |
-|**Příchozí přenos dat uložené bajtů**     | Celková velikost událostí uložených a k dispozici pro dotaz. Velikost je vypočítán pouze na hodnotu vlastnosti.        |
-|**Příchozí přenos dat uložených událostí**     |   Počet plochá událostí uložených a k dispozici pro dotaz.      |
-|**Příchozí přenos dat přijaté zprávy časový interval**    |  Zdroj a čas, kdy se zpracovávají v příchozího přenosu dat, rozdíl v sekundách mezi časem, že je zpráva událostí zařazených do fronty.      |
-|**Prodleva počet zpráv přijatých příchozího přenosu dat**    |  Rozdíl mezi pořadové číslo poslední zprávy ve frontě událostí zdroje oddílu a pořadovým číslem zprávy jsou zpracovávány v příchozí.      |
+   [![Konfigurovat logiku signálu](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
-![Latence](media/environment-mitigate-latency/latency.png)
+   Odtud můžete nakonfigurovat výstrahy pomocí některých z těchto podmínek:
 
-* Pokud jste se omezují, zobrazí se hodnota pro *příchozího přenosu dat přijatých zpráv časová prodleva*, vás informuje o tom, kolik sekund za vaše TSI pochází z skutečný čas zprávy narazí na zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Prodleva počet zpráv přijatých příchozího přenosu dat* by měl také obsahovat hodnotu, umožňuje určit, kolik zpráv za vás.  Nejjednodušší způsob, jak získat zachycena je zvýšení kapacity pro vaše prostředí na hodnotu, která vám umožní vám pomohou překonat rozdíl.  
+   |Metrika  |Popis  |
+   |---------|---------|
+   |**Přijaté bajty příchozího přenosu dat**     | Počet nezpracovaných bajtů načtených ze zdrojů událostí. Nezpracovaný počet obvykle zahrnuje název vlastnosti a hodnotu.  |  
+   |**Příchozí přenos dat přijal neplatné zprávy.**     | Počet neplatných zpráv přečtených ze všech zdrojů událostí Azure Event Hubs nebo Azure IoT Hub.      |
+   |**Příchozí zprávy příchozího přenosu dat**   | Počet zpráv načtených ze všech Event Hubs nebo zdrojů událostí centra IoT.        |
+   |**Uložené bajty příchozího přenosu dat**     | Celková velikost uložených událostí a dostupných pro dotaz Velikost je vypočítána pouze v hodnotě vlastnosti.        |
+   |**Uložené události** příchozího přenosu dat    |   Počet sloučených událostí uložených a dostupných pro dotaz      |
+   |**Prodleva při příjmu příchozího přenosu zpráv**   |  Rozdíl v sekundách mezi časem, kdy je zpráva zařazená do fronty ve zdroji událostí a čas zpracování v příchozím přenosu.      |
+   |**Prodleva počtu přijatých zpráv příchozího** přenosu dat   |  Rozdíl mezi pořadovým číslem poslední zprávy ve frontě ve zdrojovém oddílu události a pořadovým číslem zprávy zpracovávaných v příchozím přenosu.      |
 
-  Například pokud máte jednu jednotku S1 prostředí a podívejte se, že je prodleva 5 000 000 zpráv, může zvýšit velikost prostředí šest jednotky pro kolem denně k získání zachycena.  Vám může zlepšit i dál catch nahoru rychleji. Můžete projít období je společného výskytu při počátečním zřizování prostředí, zejména při připojení ke zdroji událostí, který již v sobě obsahuje události nebo když hromadné nahrání spoustu historická data.
+   Vyberte **Done** (Hotovo).
 
-* Další technikou je nastavit **uložených událostí příchozího přenosu dat** výstrahu > = prahovou hodnotu mírně pod vaší kapacity celkové prostředí po dobu 2 hodin.  Toto upozornění můžete zjistit, jestli je neustále plně využívá kapacitu, který označuje vysokou pravděpodobnost latence. 
+1. Po nakonfigurování požadované logiky signálu si prohlédněte zvolené pravidlo výstrahy vizuálně.
 
-  Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za kapacitu minuta příchozího přenosu dat), můžete nastavit **uložených událostí příchozího přenosu dat** výstrah pro > = 1900 události po dobu 2 hodin. Pokud jsou neustále překročení této mezní hodnoty a proto se aktivuje upozornění, je pro vás pravděpodobně v rámci zřízený.  
+   [![Příchozího přenosu dat](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
-* Pokud máte podezření, se omezují, můžete porovnat vaše **příchozího přenosu dat přijatých zpráv** pomocí události uživatele egressed zdroj zprávy.  Pokud příchozí přenos dat do vašeho centra událostí je větší než vaše **příchozího přenosu dat přijatých zpráv**, služby Time Series Insights jsou pravděpodobně omezené.
+## <a name="throttling-and-ingress-management"></a>Omezování a správa pro příchozí přenosy
 
-## <a name="improving-performance"></a>Zvýšení výkonu
+* Pokud jste omezili omezení, zobrazí se hodnota *prodlevy přijatých zpráv příchozího*přenosu dat, která vás bude informovat o tom, kolik sekund za vaší TSI vychází ze skutečného času, kdy zpráva narazí na zdroj události (s výjimkou doby indexování appx. 30-60 sekund).  
 
-Ke snížení omezení šířky pásma a latence, je nejlepší způsob, jak ho opravit zvýšit kapacitu vašeho prostředí.
+  *Prodleva počtu přijatých zpráv příchozího* přenosu dat by měla mít také hodnotu, která vám umožní určit, kolik zpráv je za vás.  Nejjednodušší způsob, jak se získat, je zvýšit kapacitu vašeho prostředí na velikost, která vám umožní překonat rozdíl.  
 
-Můžete vyhnout latenci a omezování tím, že správně nakonfigurujete prostředí objem dat, který chcete analyzovat. Další informace o tom, jak přidat kapacitu do svého prostředí najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
+  Pokud třeba máte prostředí s jednou jednotkou S1 a vidíte, že se jedná o prodlevu zprávy 5 000 000, mohli byste velikost svého prostředí zvětšit na šest jednotek po dobu jednoho dne, abyste se mohli zachytit.  Můžete ještě víc zvýšit, abyste rychleji zachytili. Při počátečním zřizování prostředí, zejména v případě, že ho připojíte ke zdroji událostí, který už obsahuje události nebo když hromadně nahráváte spoustu historických dat, je období zachycení běžným výskytem.
+
+* Další možností je nastavit upozornění na **uložené události** příchozího přenosu > = mezní hodnota mírně pod celkovou kapacitou prostředí po dobu 2 hodin.  Tato výstraha vám pomůže pochopit, jestli máte neustále na kapacitě, což znamená vysokou pravděpodobnost latence. 
+
+  Například pokud máte tři jednotky S1 zřízené (nebo 2100 událostí za minutu příchozího přenosu dat), můžete nastavit upozornění na **uložené události** příchozího přenosu dat pro > = 1900 události na 2 hodiny. Pokud tuto prahovou hodnotu trvale obdržíte, a proto aktivujete upozornění, pravděpodobně jste v souladu se zřízením.  
+
+* Pokud se domníváte, že jste omezili, můžete porovnat **přijaté zprávy** s příchozími zprávami ve zdroji událostí.  Pokud příchozí přenos dat do centra událostí je větší než vaše **příchozí zprávy**, vaše Time Series Insights jsou nejspíš omezené.
+
+## <a name="improving-performance"></a>Zlepšení výkonu
+
+Aby se snížila latence nebo dochází k latenci, nejlepším způsobem, jak ho opravit, je zvýšit kapacitu vašeho prostředí.
+
+Latenci a omezování můžete zabránit tím, že správně nakonfigurujete prostředí pro množství dat, která chcete analyzovat. Další informace o tom, jak přidat kapacitu do svého prostředí, najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Další postup řešení potíží [diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights](time-series-insights-diagnose-and-solve-problems.md).
+- Další kroky pro řešení potíží najdete [v Time Series Insights prostředí diagnostiky a řešení problémů](time-series-insights-diagnose-and-solve-problems.md).
 
-- Další pomoc, zahájit konverzaci na [fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Taky se můžete obrátit [podpory Azure](https://azure.microsoft.com/support/options/) pro možnosti podpory s asistencí.
+- Pokud potřebujete další pomoc, spusťte konverzaci na [fóru MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Můžete se také obrátit na [podporu Azure](https://azure.microsoft.com/support/options/) s podporou možností podpory.

@@ -1,5 +1,5 @@
 ---
-title: Správa webových služeb pomocí služby API Management
+title: Správa webových služeb pomocí API Management
 titleSuffix: Azure Machine Learning Studio
 description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management. Správa koncových bodů rozhraní REST API tak, že definujete uživatelský přístup, omezení využití a řídicí panel monitorování.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347081"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138565"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
@@ -182,11 +182,11 @@ Přejmenujte ho na **SimpleFeatureHashingExperiment**. Rozbalte **uložení dato
 
 Rozbalte **transformace dat** a **manipulaci s** a přetáhněte **výběr sloupců v datové sadě** do experimentu. Připojit **rezervuje kontroly od Amazonu** k **výběr sloupců v datové sadě**.
 
-![Propojte modul knihy revize datovou sadu do modulu projektu sloupce](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Připojit modul sady dat recenze knihy k modulu sloupce projektu](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Klikněte na tlačítko **výběr sloupců v datové sadě** a potom klikněte na tlačítko **spustit selektor sloupců** a vyberte **Col2**. Kliknutím na značku zaškrtnutí k použití těchto změn.
 
-![Vyberte sloupce pomocí názvů sloupců](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Vybrat sloupce s použitím názvů sloupců](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Rozbalte **rozhraní Text Analytics** a přetáhněte **Hashování** do experimentu. Připojit **výběr sloupců v datové sadě** k **Hashování**.
 
@@ -214,7 +214,7 @@ Klikněte na tlačítko **Ano** publikovat experimentu.
 ![Ano k publikování](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Test webové služby
-Webové služby Azure ml se skládá z kanálu RSS (požadavku nebo odpovědi služby) a BES (služba batch execution) koncových bodů. RSS je pro synchronní zpracování. BES je pro provádění asynchronní úlohy. K otestování webové služby s vzorový zdroj Python níže, budete muset stáhnout a nainstalovat sadu Azure SDK pro jazyk Python (naleznete v tématu: [Postup instalace Pythonu](../../python-how-to-install.md)).
+Webové služby Azure ml se skládá z kanálu RSS (požadavku nebo odpovědi služby) a BES (služba batch execution) koncových bodů. RSS je pro synchronní zpracování. BES je pro provádění asynchronní úlohy. Pokud chcete otestovat webovou službu pomocí níže uvedeného ukázkového zdroje Pythonu, možná budete muset stáhnout a nainstalovat sadu Azure SDK pro Python (viz: [Jak nainstalovat Python](/azure/python/python-sdk-azure-install)).
 
 Budete také potřebovat **pracovní prostor**, **služby**, a **klíč rozhraní API** experimentu pro následující vzorový zdroj. Pracovní prostor a služby zjistíte kliknutím na možnost **žádostí a odpovědí** nebo **Batch Execution** pro experiment v řídicím panelu webové služby.
 

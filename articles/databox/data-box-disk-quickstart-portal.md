@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035638"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126020"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70035638"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí Azure Portal
+## <a name="get-started-with-azure-data-box-disk"></a>Začínáme s Azure Data Box Disk 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ::: zone target="chromeless"
 
-Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí webu Azure Portal. Tyto kroky zahrnují kontrolu požadavků, odemknutí disků, připojení a kopírování dat na disky, aby se načetly do Azure.
+Tato příručka popisuje, jak nasadit Azure Data Box Disk v Azure Portal. Tyto kroky zahrnují kontrolu požadavků, odemknutí disků a připojení a kopírování dat na disky, aby se načetly do Azure.
 
 ::: zone-end
 
@@ -60,7 +60,7 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadavky
 
 - V tomto [kurzu jste nastavili vaši objednávku pro data box disk: Pořadí Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.

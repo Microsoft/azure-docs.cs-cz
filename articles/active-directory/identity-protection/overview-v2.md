@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 08/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 3129027da0f28d9c89f7afe75d9531df9bae499e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991082"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125634"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizováno)?
 
@@ -42,17 +42,17 @@ Azure AD Identity Protection je funkce Azure Active Directory Premium P2, která
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
-## <a name="risk-events"></a>Rizikové události
+## <a name="risk-detections"></a>Detekce rizik
 
-Azure AD Identity Protection detekuje následující rizikové události: 
+Azure AD Identity Protection detekuje následující detekce rizik: 
 
-| Typ rizikové události | Popis | Typ detekce |
+| Typ detekce rizika | Popis | Typ detekce |
 | --- | --- | --- |
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. | Offline |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeč pro Anonymizer, sítě VPN. | V reálném čase |
 | Neznámou vlastnost přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. | V reálném čase |
 | IP adresy související s malwarem | Přihlášení z IP adresy propojené s malwarem | Offline |
-| Nevrácená pověření | Tato riziková událost označuje, že došlo k úniku platných přihlašovacích údajů uživatele. | Offline |
+| Nevrácená pověření | Toto zjišťování rizik indikuje, že došlo k úniku platných přihlašovacích údajů uživatele. | Offline |
 
 ## <a name="types-of-risk"></a>Typy rizik 
 
@@ -80,7 +80,7 @@ Riziko uživatele představuje pravděpodobnost, že daná identita je ohrožena
 Riziko uživatele je vypočítáváno pomocí úvahy o všech rizicích spojených s uživatelem:
 
 - Všechna riziková přihlášení
-- Všechny rizikové události nepropojené s přihlášením
+- Všechna zjišťování rizik, která nejsou propojená s přihlášením
 - Riziko aktuálního uživatele
 - Jakékoli akce týkající se nápravy nebo neúspěšných akcí provedených uživateli do dne
 
@@ -88,7 +88,7 @@ Riziko uživatele je vypočítáváno pomocí úvahy o všech rizicích spojený
 
 Azure AD využívá Machine Learning k detekci anomálií a podezřelých aktivit pomocí obou signálů zjištěných v reálném čase během přihlašování a také nereálné signály, které souvisejí s uživateli a jejich přihlašovacími aktivitami. Pomocí těchto dat aplikace Identity Protection vypočítá riziko přihlášení v reálném čase pokaždé, když se uživatel ověří, a určí celkovou úroveň rizika uživatele pro každého uživatele. Služba Identity Protection umožňuje automaticky provádět akce s těmito rozpoznáváními rizik konfigurací rizika uživatele ochrany identity a rizikových zásad pro přihlašování.  
 
-Pro pochopení, jak Identity Protection detekuje riziko, existují dva důležité koncepty: riziko pro uživatele a riziko přihlášení. Riziko přihlašování odráží pravděpodobnost, že vlastník identity daný požadavek na ověření neautorizovaný. Existují dva typy rizik přihlašování: v reálném čase a celkem. V době daného pokusu o přihlášení se zjistilo riziko přihlášení v reálném čase (například přihlášení z anonymních IP adres). Celkové riziko přihlašování je agregované z zjištěných rizik při přihlašování v reálném čase a všech dalších rizikových událostí, které nejsou v reálném čase přidružené k přihlašovacím údajům uživatele (například nemožné cestovat). Riziko uživatele odráží celkovou pravděpodobnost, že špatný objekt actor ohrozí danou identitu. Riziko uživatele obsahuje všechny rizikové aktivity pro daného uživatele, včetně:
+Pro pochopení, jak Identity Protection detekuje riziko, existují dva důležité koncepty: riziko pro uživatele a riziko přihlášení. Riziko přihlašování odráží pravděpodobnost, že vlastník identity daný požadavek na ověření neautorizovaný. Existují dva typy rizik přihlašování: v reálném čase a celkem. V době daného pokusu o přihlášení se zjistilo riziko přihlášení v reálném čase (například přihlášení z anonymních IP adres). Celkové riziko přihlašování je agregované z zjištěných rizik při přihlašování v reálném čase a všech dalších zjišťování rizik, která nejsou v reálném čase přidružena k přihlašovacím údajům uživatele (například nemožným cestám). Riziko uživatele odráží celkovou pravděpodobnost, že špatný objekt actor ohrozí danou identitu. Riziko uživatele obsahuje všechny rizikové aktivity pro daného uživatele, včetně:
 
 - Riziko přihlášení v reálném čase
 - Další riziko při přihlašování
@@ -102,7 +102,7 @@ Základní tok pro detekci rizika ochrany identity a reakci pro každé dané p�
 
 Pojďme se podívat na příklad zaměstnance společnosti Contoso. 
 
-1. Zaměstnanec se pokusí přihlásit k Exchangi Online z prohlížeče pro mandát. V době přihlášení Azure AD detekuje rizikové události v reálném čase. 
+1. Zaměstnanec se pokusí přihlásit k Exchangi Online z prohlížeče pro mandát. V době přihlášení Azure AD detekuje zjišťování rizik v reálném čase. 
 2. Azure AD zjistí, že se zaměstnanec přihlašuje z anonymní IP adresy a aktivuje úroveň rizika pro přihlášení do střední úrovně. 
 3. Pracovník je vyzván na výzvu MFA, protože správce IT společnosti Contoso nakonfiguroval zásady podmíněného přístupu Identity Protection. Zásady vyžadují MFA pro rizikové riziko střední nebo vyšší úrovně. 
 4. Zaměstnanec předá výzvu MFA a přistupuje k Exchangi Online a jejich úroveň rizika uživatele se nemění. 
@@ -115,20 +115,20 @@ Ale co když se zaměstnanec nesnažil přihlásit?
 2. Azure AD zjistí, že pokus o přihlášení pochází z anonymní IP adresy, což aktivuje riziko přihlášení v reálném čase. 
 3. Škodlivý objekt actor je výzvou na výzvu MFA, protože správce IT společnosti Contoso nakonfiguroval zásady podmíněného přístupu identity ochrany identity, aby vyžadoval MFA, pokud je riziko při přihlašování střední nebo vyšší. 
 4. Škodlivý objekt actor neprojde výzvu MFA a nemůže získat přístup k účtu Exchange Online daného zaměstnance. 
-5. Výzva k neúspěšnému vyvolání MFA aktivovala rizikovou událost, která se má zaznamenat, a zvyšuje riziko jejich uživatele pro budoucí přihlášení. 
+5. Výzva k selhání MFA aktivovala detekci rizik, která se má zaznamenat, a zvyšuje riziko jejich uživatele pro budoucí přihlášení. 
 
 Teď, když se škodlivý objekt actor pokusil získat přístup k účtu Sarah, se podívejme na to, co se stane při příštím pokusu o přihlášení zaměstnancem. 
 
-1. Zaměstnanec se pokusí přihlásit k Exchangi Online z Outlooku. V době přihlášení Azure AD detekuje rizikové události v reálném čase a také všechna předchozí rizika uživatele. 
+1. Zaměstnanec se pokusí přihlásit k Exchangi Online z Outlooku. V době přihlášení služba Azure AD detekuje zjišťování rizik v reálném čase a také všechna předchozí rizika uživatele. 
 2. Azure AD nedetekuje žádné riziko při přihlašování v reálném čase, ale detekuje vysoké riziko pro uživatele z důvodu poslední rizikové aktivity v předchozích scénářích.  
 3. Zaměstnanec je vyzván na výzvu k resetování hesla, protože správce IT společnosti Contoso nakonfiguroval zásady rizik uživatele ochrany identity, aby vyžadoval změnu hesla, když uživatel s vysokým rizikovým protokolem. 
 4. Vzhledem k tomu, že je zaměstnanec registrovaný pro SSPR a MFA, úspěšně resetuje heslo. 
 5. Když resetujete své heslo, přihlašovací údaje zaměstnanců už nebudou ohrožené a jejich identita se vrátí do bezpečného stavu. 
-6. Předchozí rizikové události zaměstnance se vyřeší a jejich úroveň rizika uživatele se automaticky resetuje jako odpověď na zmírnění ohrožení zabezpečení přihlašovacích údajů. 
+6. Vyřešily se předchozí detekce rizik zaměstnanců a jejich úroveň rizika uživatele se automaticky resetuje jako odpověď na zmírnění ohrožení zabezpečení přihlašovacích údajů. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Návody konfiguraci Identity Protection? 
 
-Pokud chcete začít s ochranou identity, nejdřív nakonfigurujte zásady rizik uživatelů a zásady rizik přihlašování. Jakmile tyto zásady nakonfigurujete a použijete pro testovací skupinu, můžete simulovat rizikové události a pochopit, jak bude ochrana identity ve vašem prostředí reagovat. Níže uvedené příručky pro rychlý Start poskytují návod, jak nastavit výše uvedené zásady a testovat ve vašem prostředí. 
+Pokud chcete začít s ochranou identity, nejdřív nakonfigurujte zásady rizik uživatelů a zásady rizik přihlašování. Jakmile tyto zásady nakonfigurujete a nasadíte na testovací skupinu, můžete simulovat detekci rizik a pochopit, jak bude ochrana identity ve vašem prostředí reagovat. Níže uvedené příručky pro rychlý Start poskytují návod, jak nastavit výše uvedené zásady a testovat ve vašem prostředí. 
 
 Identity Protection podporuje tři role v Azure AD, aby vyrovnala aktivity správy v rámci vašeho nasazení: 
 
@@ -157,6 +157,6 @@ Další informace najdete v tématu [přiřazení rolí správce v Azure Active 
 | Oznámení | Týdenní přehled | Ano | Ne | Ne |
 | | Zásady registrace MFA | Ano | Ne | Ne |
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 Informace o tom, jak začít s ochranou identity, najdete v tématu [Konfigurace zásad rizik přihlašování](quickstart-sign-in-risk-policy.md). 

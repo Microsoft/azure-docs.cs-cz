@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vygenerování thumbnail - REST, cURL'
+title: 'Rychlý start: Generování miniatur – REST, kudrlinkou'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 55fa5ffbfe8cdb266340df1a407968d542b36c1a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141441"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Rychlý start: Generování miniatur pomocí REST API pro počítačové zpracování obrazu a cURL
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Rychlý start: Vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a kudrlinkou
 
-V tomto rychlém startu generovat miniatury z image pomocí rozhraní REST API pro počítačové zpracování obrazu. Zadejte požadovanou výšku a šířku, které se můžou lišit v dávce aspekt ze vstupního obrázku. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice kolem této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Určete požadovanou výšku a šířku, která se může v poměrné dávce od vstupní image lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentnímu identifikaci oblasti zájmu a k vygenerování souřadnic oříznutí kolem této oblasti.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [cURL](https://curl.haxx.se/windows).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="get-thumbnail-request"></a>Žádost Get Thumbnail
 
@@ -54,7 +54,8 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Proveďte v příkazu na příslušných místech následující změny:
     1. Hodnotu `<subscriptionKey>` nahraďte klíčem předplatného.
     1. Hodnotu `<thumbnailFile>` nahraďte cestou a názvem souboru, do kterého chcete miniaturu uložit.
-    1. Adresu URL požadavku (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail`) nahraďte adresou URL koncového bodu metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Nahraďte první část adresy URL požadavku (`westcentralus`) textem ve vaší vlastní adrese URL koncového bodu.
+        [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Volitelně můžete změnit adresu URL obrázku v textu požadavku (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) na adresu URL jiného obrázku, ze kterého se má generovat miniatura.
 1. Otevřete okno příkazového řádku.
 1. Vložte příkaz z textového editoru do okna příkazového řádku a pak příkaz spusťte.
@@ -65,11 +66,11 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď zapíše obrázek miniatury do souboru určeného v `<thumbnailFile>`. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo. Pokud požadavek zdá se, že proběhla úspěšně, ale vytvořený miniaturu není platný soubor obrázku, může být, že váš klíč předplatného není platný.
+Úspěšná odpověď zapíše obrázek miniatury do souboru určeného v `<thumbnailFile>`. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo. Pokud se žádost zdá být úspěšná, ale vytvořená Miniatura není platným souborem obrázku, může to být tím, že váš klíč předplatného není platný.
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu tím, jak analyzovat bitovou kopii, zjišťovat celebrit a památek, vytvořit miniaturu a extrahovat tištěné a rukou psaný text. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu k analýze obrázku, detekci celebrit a orientačních bodů, vytvoření miniatury a extrakci vytištěného a rukopisného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -1,7 +1,7 @@
 ---
-title: 'Two-Class logistické regrese: Odkaz na modul'
+title: 'Logistická regrese dvou tříd: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu Two-Class logistické Regrese ve službě Azure Machine Learning vytvořte Logistický regresní model, který můžete použít k predikci výsledků dvou (a pouze dvě).
+description: Naučte se používat modul logistické regrese ve službě Azure Machine Learning, abyste mohli vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,71 +9,70 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: aacaf6c64ef77d0e694f97e3675060eca33794ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029247"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128383"
 ---
-# <a name="two-class-logistic-regression-module"></a>Modul logistické regrese Two-Class
+# <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření modelu logistické regrese, který můžete použít k predikci výsledků dvou (a pouze dvě). 
+Pomocí tohoto modulu můžete vytvořit model logistické regrese, který se dá použít k předpovědi dvou (a jenom dvou) výsledků. 
 
-Logistické regrese je dobře známé statistické technika, který se používá pro modelování různé druhy problémů. Je tento algoritmus *pod dohledem learning* metody.  Proto je třeba zadat datovou sadu, která už obsahuje výsledky pro trénování modelu.  
+Logistická regrese je dobře známá statistická technika, která se používá k modelování mnoha druhů problémů. Tento algoritmus je metoda *učení pod dohledem* ;  Proto je nutné poskytnout datovou sadu, která již obsahuje výsledky pro výuku modelu.  
 
-### <a name="about-logistic-regression"></a>O logistické regrese  
+### <a name="about-logistic-regression"></a>O logistické regresi  
 
-Logistické regrese je známá metoda statistiku, který se používá k předpovědi pravděpodobnosti nejistým a je zvláště oblíbených úloh klasifikace. Algoritmus předpovídá pravděpodobnost výskytu události montáží data logistické funkci.
+Logistická regrese je dobře známá metoda, která se používá k předpovědi pravděpodobnosti výsledku, a je obzvláště oblíbená pro úlohy klasifikace. Algoritmus předpovídá pravděpodobnost výskytu události tím, že se data namontuje na logistickou funkci.
   
-V tomto modulu je klasifikační algoritmus optimalizovaná pro proměnné dichotomous nebo binary. Pokud potřebujete ke klasifikaci více výsledků, použijte [logistické regrese Multiclass](./multiclass-logistic-regression.md) modulu.
+V tomto modulu je klasifikační algoritmus optimalizovaný pro dichotomous nebo binární proměnné. Pokud potřebujete klasifikovat více výsledků, použijte modul logistické regrese pro více [tříd](./multiclass-logistic-regression.md) .
 
-##  <a name="how-to-configure"></a>Postup konfigurace  
+##  <a name="how-to-configure"></a>Jak nakonfigurovat  
 
-K trénování tento model, je nutné zadat datovou sadu, která obsahuje sloupec popisek nebo třídy. Protože tento modul je určená pro problémy s dvěma třídami, popisek nebo třída sloupec musí obsahovat přesně dvě hodnoty. 
+Chcete-li tento model naučit, je nutné poskytnout datovou sadu, která obsahuje sloupec popisku nebo třídy. Vzhledem k tomu, že tento modul je určený pro problémy se dvěma třídami, sloupec popisku nebo třídy musí obsahovat přesně dvě hodnoty. 
 
-Například popisek sloupce může být [hlasovali] s možných hodnot "Ano" nebo "Ne". Nebo může být [úvěrové riziko] s možných hodnot "Vysoká" nebo "Nízká". 
+Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" nebo "ne". Nebo může to být [úvěrové riziko] s možnými hodnotami "vysoká" nebo "nízká". 
   
-1.  Přidat **Two-Class logistické regrese** modulu do experimentu.  
+1.  Přidejte do experimentu modul **logistické regrese dvou tříd** .  
   
-2.  Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.  
+2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete provést konfiguraci modelu, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jeden parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
   
-3.  Pro **optimalizace tolerance**, zadejte prahovou hodnotu pro použití při optimalizaci modelu. Pokud zlepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, algoritmus je považován za mít konvergované na řešení a zastaví školení.  
+3.  V případě **tolerance optimalizace**zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
   
-4.  Pro **L1 regularizace váha** a **L2 regularizace váha**, zadejte hodnotu pro parametry regularizace L1 a L2. Nenulové hodnoty se doporučuje pro obojí.  
+4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2**zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
   
-     *Regularizace* je metoda kvůli overfitting podle ukládání sankcí modely s koeficient extrémní hodnoty. Regularizace funguje tak, že přidáte sankce, který je spojen s hodnotami koeficient chybu hypotézu. Proto přesný model s extrémně koeficient hodnoty by penalizován víc, ale méně přesný model s konzervativnější hodnoty by penalizován méně.  
+     *Pravidelná* metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémních koeficientů by tedy byl potrestánější, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.  
   
-     L1 a míry regularizace L2 mají různé účinky a používá.  
+     Pravidelná L1 a L2 mají různé účinky a použití.  
   
-    -   L1 lze použít k modelům zhuštěný, což je užitečné při práci s vysokým počtem rozměrů data.  
+    -   L1 se dá použít na řídké modely, což je užitečné při práci s vysokými objemy dat.  
   
-    -   Naproti tomu regularizace L2 je vhodnější pro data, která není zhuštěné.  
+    -   Na rozdíl od je pro data, která nejsou zhuštěná, vhodnější pravidelná navýšení L2.  
   
-     Tento algoritmus podporuje lineární kombinace hodnot regularizace L1 a L2: to znamená, pokud <code>x = L1</code> a <code>y = L2</code>, pak <code>ax + by = c</code> definuje lineární rozsah podmínky regularizace.  
+     Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, <code>x = L1</code> že <code>y = L2</code>Pokud a <code>ax + by = c</code> , pak definuje lineární rozpětí regulárních podmínek.  
   
     > [!NOTE]
-    >  Chcete se dozvědět víc o L1 a L2 regularizace? Následující článek obsahuje informace o tom, jak se liší L1 a L2 regularizace a jejich vliv přizpůsobení modelu pomocí ukázky kódu pro logistické regrese a modely neuronových sítí:  [L1 a míry Regularizace L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak ovlivňují přizpůsobení modelu, s ukázkami kódu pro logistické regrese a síťové modely:  [Pravidelná Kol1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
-    > Našli různé kombinace lineární L1 a L2 podmínek pro logistické regresní modely: například [elastické net regularizace](https://wikipedia.org/wiki/Elastic_net_regularization). Doporučujeme odkazují na tyto kombinace k určení kombinace lineární, která platí ve vašem modelu.
+    > Pro logistické regresní modely byly navrženy různé lineární kombinace L1 a L2: například [elastické čisté](https://wikipedia.org/wiki/Elastic_net_regularization)účely. Doporučujeme, abyste na tyto kombinace odkazovali a definovali lineární kombinaci, která je v modelu platná.
       
-5.  Pro **velikost paměti pro L-BFGS**, zadejte množství paměti pro *L-BFGS* optimalizace.  
+5.  Pro **velikost paměti pro l-BFGS**určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
   
-     L-BFGS zastupuje "omezenou pamětí Broyden Fletcher Goldfarb Shanno". Je optimalizace algoritmus, který se používá pro parametr odhadu. Tento parametr označuje počet posledních pozic a přechody pro ukládání pro výpočet na další krok.  
+     L-BFGS představuje "omezené paměťové Broyden-Fletcher-Goldfarb-Shanno". Jedná se o optimalizační algoritmus, který je oblíbený pro odhad parametru. Tento parametr určuje počet minulých pozic a přechodů, které se mají uložit pro výpočet dalšího kroku.  
   
-     Tento parametr optimalizace omezuje množství paměti, která se používá k výpočtu dalšího kroku a směr. Pokud určíte méně paměti, školení je rychlejší, ale méně přesné.  
+     Tento parametr optimalizace omezuje velikost paměti, která se používá k výpočtu dalšího kroku a směru. Když zadáte méně paměti, školení je rychlejší, ale je méně přesné.  
   
-6.  Pro **náhodná počáteční hodnota čísla**, zadejte celočíselnou hodnotu. Definuje počáteční hodnoty je důležité, pokud chcete výsledky bude reprodukovatelné přes více běhů tom stejném experimentu.  
+6.  V případě **náhodného čísla**zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné na více spuštěních stejného experimentu.  
   
   
-8. Do experimentu přidat označený datové sady a připojení mezi [školicí moduly](module-reference.md).  
+8. Přidejte do experimentu tagované datové sady a propojte jeden ze [školicích modulů](module-reference.md).  
   
-    -   Pokud nastavíte **režimu vytváření trainer** k **jediný parametr**, použijte [trénování modelu](./train-model.md) modulu.  
+    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](./train-model.md) .  
   
 9. Spusťte experiment.  
   
@@ -81,11 +80,11 @@ Například popisek sloupce může být [hlasovali] s možných hodnot "Ano" neb
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit souhrn parametry modelu, společně s funkcí váhy získané při školení, klikněte pravým tlačítkem na výstup [Train Model](./train-model.md) a vyberte **vizualizovat**.   
++ Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení, klikněte pravým tlačítkem na výstup [výukového modelu](./train-model.md) a vyberte **vizualizovat**.   
   
-+ K vytvoření predikcí nová data, použijte jako vstup pro trénovaný model a nových dat [Score Model](./score-model.md) modulu. 
++ Chcete-li vytvořit předpovědi pro nová data, použijte školený model a nová data jako vstup do modulu určení [skóre modelu](./score-model.md) . 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

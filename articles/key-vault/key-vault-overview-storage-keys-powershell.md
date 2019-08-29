@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562535"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136569"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault spravovaného účtu úložiště – PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562535"
 > - Místo přihlašovacích údajů k účtu úložiště ověřte svoji klientskou aplikaci pomocí identity aplikace nebo uživatele. 
 > - Při provozu v Azure použijte [spravovanou identitu Azure AD](/azure/active-directory/managed-identities-azure-resources/) . Spravované identity odstraňují nutnost ověřování klientů společně a ukládají přihlašovací údaje do nebo do aplikace.
 > - Pro správu autorizací použijte Access Control na základě rolí (RBAC), kterou podporuje taky Key Vault.
+> - Přístup AAD k účtu úložiště nefunguje pro přístup k tabulkám, které ještě nejsou.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Povolit opakované generování klíče
 
-Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete nastavit dobu vygenerování. V následujícím příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "klíč1" a prohodí aktivní klíč z "key2" na "klíč1".
+Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete nastavit dobu vygenerování. V následujícím příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "key2" a prohodí aktivní klíč z "key2" na "klíč1".
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

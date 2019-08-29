@@ -1,38 +1,38 @@
 ---
-title: Připojte aktivitu proměnnou ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit proměnnou připojit aktivitu přidat hodnotu existující proměnné pole definované v kanálech Data Factory
+title: Připojit aktivitu proměnné v Azure Data Factory | Microsoft Docs
+description: Naučte se nastavit aktivitu připojit proměnnou pro přidání hodnoty do existující proměnné pole definované v kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557218"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141726"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Připojte aktivitu proměnnou ve službě Azure Data Factory
+# <a name="append-variable-activity-in-azure-data-factory"></a>Připojit aktivitu proměnné v Azure Data Factory
 
-Použije aktivitu přidat proměnnou přidat hodnotu existující proměnné pole definované v kanálech Data Factory.
+Aktivitu připojit proměnnou použijte k přidání hodnoty do existující proměnné pole definované v kanálu Data Factory.
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Požaduje se
+Vlastnost | Popis | Požadováno
 -------- | ----------- | --------
 name | Název aktivity v kanálu | Ano
-description | Text popisující, jakým způsobem aktivita naloží | ne
+description | Text popisující, co aktivita dělá | ne
 type | Typ aktivity je AppendVariable | ano
-value | Řetězcový literál nebo výraz hodnotu objektu použít k připojení do zadané proměnné | ano
-variableName | Název proměnné, která bude upravena podle počtu aktivit, proměnná musí být typu "Pole" | ano
+value | Hodnota řetězcového literálu nebo objektu výrazu, která se používá pro připojení k zadané proměnné | ano
+variableName | Název proměnné, která bude upravena aktivitou, musí být proměnná typu Array. | ano
 
 ## <a name="next-steps"></a>Další postup
-Další informace o aktivitu toku řízení související podporovaných službou Data Factory: 
+Přečtěte si o související aktivitě toku ovládacích prvků, kterou podporuje Data Factory: 
 
-- [Nastavte proměnné aktivity](control-flow-set-variable-activity.md)
+- [Aktivita nastavení proměnné](control-flow-set-variable-activity.md)

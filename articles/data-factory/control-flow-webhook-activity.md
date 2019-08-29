@@ -1,26 +1,25 @@
 ---
-title: Webhook aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Aktivita Webhooku pokračovat spuštění kanálu, dokud ověří připojené datové sady s určitá kritéria, který uživatel zadá.
+title: Aktivita Webhooku v Azure Data Factory | Microsoft Docs
+description: Aktivita Webhooku nepokračuje v provádění kanálu, dokud neověřuje připojenou datovou sadu s určitými kritérii, které uživatel zadá.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c11fb800dba06ab5566647489f020f727860a7ff
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764301"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142409"
 ---
-# <a name="webhook-activity-in-azure-data-factory"></a>Webhook aktivity ve službě Azure Data Factory
-Zavěšení aktivitu webu můžete použít k řízení provádění kanálů přes váš vlastní kód. Použití webhooku aktivity, zákazníci volání koncového bodu a předat adresu URL zpětného volání. Spuštění kanálu čeká zpětné volání, které má být volána před pokračováním na další aktivitu.
+# <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
+Aktivitu webového zavěšení můžete použít k řízení provádění kanálů pomocí vlastního kódu. Pomocí aktivity Webhooku můžou zákazníci zavolat koncový bod a předat URL zpětného volání. Běh kanálu čeká na vyvolání zpětného volání před pokračováním na další aktivitu.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -50,34 +49,34 @@ Zavěšení aktivitu webu můžete použít k řízení provádění kanálů p�
 ```
 
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
 
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivity hook webu | String | Ano |
-type | Musí být nastaveno na **Webhooku**. | String | Ano |
-method | Metoda REST API pro cílový koncový bod. | řetězec. Podporované typy: "POST" | Ano |
-url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). | Ano |
-Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: "záhlaví": {"Accept-Language": "en-us", "Content-Type": "application/json"}. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. "záhlaví": {"Content-Type": "application/json"} |
-Text | Představuje datovou část, která je odeslána do koncového bodu. | Tělo předán zpět do zpětného volání identifikátoru URI by měl být platným formátem JSON. Zobrazit schéma datové části požadavku v [schématu datové části požadavku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) oddílu. | Ano |
-ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Základní" nebo "ClientCertificate." Další informace najdete v tématu [ověřování](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne |
-timeout | Jak dlouho bude čekat na aktivitu &#39;zpětného&#39; má být volána. Jak dlouho aktivity bude čekat "zpětného' má být volána. Výchozí hodnota je 10mins ("00:10:00"). Format is Timespan i.e. d.hh:mm:ss | String | Ne |
+name | Název aktivity webového zavěšení | Řetězec | Ano |
+type | Musí být nastavenéna Webhook. | Řetězec | Ano |
+– metoda | Metoda rozhraní REST API pro cílový koncový bod | Řetezce. Podporované typy: SPUŠTĚNÍ | Ano |
+url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). | Ano |
+záhlaví | Hlavičky, které se odesílají do žádosti Například chcete-li nastavit jazyk a typ pro požadavek: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"}. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. "Headers": {"Content-Type": "Application/JSON"} |
+hlavní část | Představuje datovou část, která je odeslána do koncového bodu. | Tělo předané zpět do identifikátoru URI zpětného volání by mělo být platný kód JSON. Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) . | Ano |
+Ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo "ClientCertificate". Další informace najdete v části [ověřování](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
+časový limit | Jak dlouho bude aktivita čekat na vyvolání &#39;callBackUri&#39; . Doba, po kterou bude aktivita čekat na vyvolání callBackUri Výchozí hodnota je 10mins ("00:10:00"). Formát je časový rozsah, tj. d. hh: mm: ss. | Řetězec | Ne |
 
 ## <a name="additional-notes"></a>Další poznámky
 
-Azure Data Factory předá další vlastnost "zpětného" v textu koncový bod adresy url a bude očekávat tento identifikátor uri, který má být volána před zadaná hodnota časového limitu. Pokud není vyvolána, identifikátor uri, aktivita selže se stavem "Vypršel časový limit".
+Azure Data Factory předáte další vlastnost "callBackUri" v těle koncového bodu adresy URL a očekává, že tento identifikátor URI bude vyvolán před zadanou hodnotou časového limitu. Pokud identifikátor URI není vyvolán, aktivita se nezdaří se stavem "vypršela platnost".
 
-Aktivita webu hook samotné selže, pouze, pokud selže volání vlastního koncového bodu. Jakákoli chybová zpráva lze přidávat do datové části zpětného volání a použít v následných aktivity.
+Aktivita webového zavěšení se nezdařila pouze v případě, že volání vlastního koncového bodu se nepovede. Do textu zpětného volání lze přidat jakoukoli chybovou zprávu a použít ji v následné aktivitě.
 
 ## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory:
+Podívejte se na další aktivity toku řízení podporované Data Factory:
 
 - [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)
 - [Aktivita Until](control-flow-until-activity.md)

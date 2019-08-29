@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: e0dea5fcc7860e8653d542653e279010f8ede200
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bd3f31f4247a9d80615634a64fee0c6eb3297fe5
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898855"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147248"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru služby Azure Kubernetes (AKS)
 
@@ -83,13 +83,16 @@ Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující přík
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --service-principal <appId> \
     --client-secret <password> \
     --generate-ssh-keys
 ```
 
 Po několika minutách se nasazení dokončí a vrátí informace ve formátu JSON o nasazení AKS.
+
+> [!NOTE]
+> Aby cluster mohl spolehlivě fungovat, měli byste spustit aspoň 2 (dva) uzly.
 
 ## <a name="install-the-kubernetes-cli"></a>Instalace rozhraní příkazového řádku Kubernetes
 
@@ -118,7 +121,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se nasadil cluster Kubernetes ve službě AKS a nakonfigurovali jste `kubectl` pro připojení k tomuto clusteru. Naučili jste se tyto postupy:
 

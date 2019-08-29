@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 9da0552e3ccc707c6b2f228b402f4e9db7dafee3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335364"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125709"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
-Azure AD Identity Protection posílá dva typy automatických e-mailů s oznámením, které vám pomůžou spravovat rizika a rizikové události uživatelů:
+Azure AD Identity Protection posílá dva typy automatických e-mailů s oznámením, které vám pomůžou se správou rizik uživatelů a detekcí rizik:
 
 - E-mail zjištěných uživatelů v nebezpečí
 - Týdenní e-mail pro výtah
@@ -31,7 +31,7 @@ Tento článek poskytuje přehled e-mailů s oznámením.
 
 V reakci na zjištěný účet hrozí Azure AD Identity Protection vygenerovat e-mailové upozornění s **uživateli** s rizikem zjištěným jako předmětem. E-mail obsahuje odkaz na sestavu **[Uživatelé označení příznakem rizika](../reports-monitoring/concept-user-at-risk.md)** . Osvědčeným postupem je okamžitě prozkoumat riziko pro uživatele.
 
-Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste určili. Po přesunu na tuto úroveň rizika uživatele ale nebudete dostávat noví uživatelé upozorňující na riziko zjištěná e-mailová upozornění pro tohoto uživatele. Pokud jste například nastavili zásady na upozornění pro středně velké uživatelské riziko a uživatel Jan se přesune na střední riziko, obdržíte riziko zjištěného e-mailu pro uživatele Jan. V případě, že se Jan pak přesune na vysoké riziko nebo má další rizikové události, nebudete dostávat druhé uživatele v upozornění na zjištěnou rizikovost.
+Konfigurace pro tuto výstrahu vám umožní určit, na jakou úroveň rizika uživatele má být výstraha vygenerována. E-mail se vygeneruje, když úroveň rizika uživatele dosáhne toho, co jste určili. Po přesunu na tuto úroveň rizika uživatele ale nebudete dostávat noví uživatelé upozorňující na riziko zjištěná e-mailová upozornění pro tohoto uživatele. Pokud jste například nastavili zásady na upozornění pro středně velké uživatelské riziko a uživatel Jan se přesune na střední riziko, obdržíte riziko zjištěného e-mailu pro uživatele Jan. V případě, že se Jan pak přesune na vysoké riziko nebo má další detekce rizika, nebudete dostávat druhé uživatele v případě zjištěných rizik.
 
 ![E-mail zjištěných uživatelů v nebezpečí](./media/notifications/01.png)
 
@@ -48,7 +48,7 @@ Pokud chcete otevřít související dialogové okno, klikněte na **výstrahy**
 
 ## <a name="weekly-digest-email"></a>Týdenní e-mail pro výtah
 
-Týdenní e-mailová zpráva o Digest obsahuje souhrn nových rizikových událostí.  
+Týdenní e-mailová zpráva o Digest obsahuje souhrn nových detekcí rizik.  
 Zahrnuje:
 
 - Ohrožení uživatelé

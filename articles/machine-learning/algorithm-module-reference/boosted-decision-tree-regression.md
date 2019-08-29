@@ -1,7 +1,7 @@
 ---
-title: 'Posílená regrese rozhodovacího stromu: Odkaz na modul'
+title: 'Zvýšila se regrese rozhodovacího stromu: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu Boosted regrese rozhodovacího stromu ve službě Azure Machine Learning k vytvoření kompletu regresní stromy pomocí zvýšení skóre.
+description: Naučte se, jak používat modul pro regresi se zesíleným rozhodovacím stromem ve službě Azure Machine Learning k vytvoření sady regresních stromů pomocí zvyšování úrovně.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,80 +9,79 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4135c2e516eb7f26e1b99a22a60501f4577cce
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411548"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128963"
 ---
-# <a name="boosted-decision-tree-regression-module"></a>Posílená regrese rozhodovacího stromu modulu
+# <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření kompletu regresní stromy pomocí zvýšení skóre. *Zvýšení skóre* znamená, že je závislá na předchozí stromů každém stromu. Algoritmus učí montáží zbývající stromové struktury, které ho. Proto zvýšení skóre v komplet stromu rozhodnutí obvykle zvyšte přesnost s určité riziko malé nižší pokrytí.  
+Tento modul použijte k vytvoření kompletu regresních stromů pomocí zvyšování úrovně. *Zvyšování úrovně* znamená, že každý strom je závislý na předchozí stromové struktuře. Algoritmus se učí tím, že se dovedou zbytky stromů, které jí předcházejí. Proto zvýšení přesnosti v kompletu rozhodovacího stromu zamýšlí zlepšit přesnost s malým rizikem menšího rozsahu.  
   
-Tato metoda regrese je metoda učení a vyžaduje tudíž *označené jako datovou sadu*. Popisek sloupce musí obsahovat číselné hodnoty.  
+Tato regresní metoda je metoda učení pod dohledem, a proto vyžaduje *datovou sadu*s popiskem. Sloupec popisku musí obsahovat číselné hodnoty.  
 
 > [!NOTE]
-> Tento modul slouží pouze u datových sad použijte číselné proměnné.  
+> Tento modul použijte pouze s datovými sadami, které používají číselné proměnné.  
 
-Po definování model trénovat pomocí [trénování modelu](./train-model.md).
+Po definování modelu ho pomocí [modelu vlaků](./train-model.md)provedete.
 
 > [!TIP]
-> Chcete se dozvědět víc o stromové struktury, které byly vytvořeny? Jakmile model se trénuje, klikněte pravým tlačítkem na výstup [Train Model](./train-model.md) modul a vyberte **vizualizovat** zobrazíte stromu, který byl vytvořen při každé iteraci. Můžete k podrobnostem rozdělení pro každou strom a zobrazit pravidla pro každý uzel.  
+> Chcete získat další informace o tom, které stromy byly vytvořeny? Jakmile je model vyškolený, klikněte pravým tlačítkem myši na výstup modulu [vlak model](./train-model.md) a vyberte **vizualizovat** . zobrazí se strom, který byl vytvořen v každé iteraci. Můžete přejít k podrobnostem rozdělení pro jednotlivé stromové struktury a zobrazit pravidla pro každý uzel.  
   
-## <a name="more-about-boosted-regression-trees"></a>Další informace o Posílený regresní stromy  
+## <a name="more-about-boosted-regression-trees"></a>Další informace o zesílených regresních stromech  
 
-Zvýšení skóre je jedním z několika klasické metody pro vytváření modelů skupiny stromů, spolu s pytlování, náhodných doménových struktur a tak dále.  Ve službě Azure Machine Learning použijte Posílený rozhodovací stromy efektivní provádění přechodu TRŽIŠTĚ zvýšení skóre algoritmus. Přechodu zvýšení skóre je strojové učení techniku pro regresní problémy. Sestaví každém stromu regrese způsobem podle jednotlivých kroků, pomocí funkce předdefinované ztráty pro měření chyb v každém kroku a opravit ho v dalším. Prediktivní model proto je ve skutečnosti kompletu sady slabší prediktivní modely.  
+Zvýšení úrovně je jedna z různých klasických metod pro vytváření modelů kompletů, včetně zaznamenání na náhodné doménové struktury a tak dále.  V Azure Machine Learning se posílené rozhodovací stromy používaly efektivní implementací algoritmu pro zvýšení počtu TRŽIŠTě. Zvýšení barevného přechodu je technika strojového učení pro regresní problémy. Sestaví každý regresní strom v rámci krokování pomocí předdefinované funkce ztráty k měření chyby v jednotlivých krocích a jejich opravě v dalším kroku. Proto je model předpovědi ve skutečnosti ze sady slabších předpovědí modelů.  
   
-Regrese problémy zvýšení skóre sestavení řadu stromové struktury podle jednotlivých kroků způsobem a potom vybere optimální stromu použití libovolného differentiable ztráta funkce.  
+Ve regresních problémech zvyšuje sestavování řadu stromů v rámci kroků a pak vybere optimální strom pomocí libovolné funkce differentiable ztráty.  
   
 Další informace najdete v těchto článcích:  
   
 + [https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting](https://wikipedia.org/wiki/Gradient_boosting)
 
-    Tohoto článku na wikipedii na přechodu zvýšení poskytuje základní informace na Posílený stromové struktury. 
+    Tento článek Wikipedii o nárůstu gradientu poskytuje určité pozadí na zesílených stromech. 
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: Z RankNet k LambdaRank k LambdaMART: Přehled. Podle J.C. Burges.
+    Microsoft Research: Z RankNet až LambdaRank na LambdaMART: Přehled. Od J.C. Burges.
 
-Přechodu zvýšení skóre metody lze také pro klasifikaci problémy snížením k regresi s funkcí vhodný ztráty. Další informace o implementaci Posílený stromů pro úlohy klasifikace najdete v tématu [Two-Class Boosted Decision Tree](./two-class-boosted-decision-tree.md).  
+Metodu zvyšování barevného přechodu lze také použít pro problémy s klasifikací tím, že je zmenšíte na regresi pomocí vhodné funkce ztráty. Další informace o implementaci posílených stromů pro úlohy klasifikace najdete v článku o [rozhodovacím stromu se dvěma třídami](./two-class-boosted-decision-tree.md).  
 
-## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak nakonfigurovat Boosted regrese rozhodovacího stromu
+## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak nakonfigurovat zvýšení regrese rozhodovacího stromu
 
-1.  Přidat **Boosted Decision Tree** modulu do experimentu. Můžete najít tento modul v rámci **Machine Learning**, **inicializovat**v části **regrese** kategorie. 
+1.  Přidejte do experimentu modul **zesíleného rozhodovacího stromu** . Tento modul najdete pod **Machine Learning**, **inicializovat**v rámci kategorie regrese . 
   
-2.  Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.  
+2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Tuto možnost vyberte, pokud víte, jak chcete konfigurovat modelu a poskytnout konkrétní sadu hodnot jako argumenty.  
+    -   **Jeden parametr**: Tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.  
    
   
-3. **Maximální počet listů za stromu**: Umožňuje určete maximální počet uzlů terminálu (listy), které je možné vytvořit v libovolné stromu.  
+3. **Maximální počet pochodů na strom**: Určuje maximální počet uzlů terminálu (opustí), které lze vytvořit v jakémkoli stromu.  
 
-    Zvýšením tuto hodnotu potenciálně zvýšit velikost stromu a získat vyšší přesnost, nese overfitting a už školení čas.  
+    Zvýšením této hodnoty můžete zvýšit velikost stromu a dosáhnout lepší přesnosti, a to na riziko přebudování a delší dobu školení.  
 
-4. **Minimální počet vzorků za uzel typu list**: Určete minimální počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (listový) ve stromové struktuře.
+4. **Minimální počet vzorků na uzel typu list**: Určuje minimální počet případů vyžadovaných k vytvoření libovolného uzlu terminálu (list) ve stromu.
 
-    Zvýšením tuto hodnotu zvýšit prahovou hodnotu pro vytvoření nového pravidla. Výchozí hodnotu 1, ještě jeden případ může způsobit, který se má vytvořit nové pravidlo. Pokud zvýšíte hodnotu 5, museli byste trénovacích dat obsahovat aspoň 5 případy, které splňují stejných podmínek.
+    Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň 5 případů, které splňují stejné podmínky.
 
-5. **Rychlost učení**: Zadejte číslo mezi 0 a 1, který definuje velikost kroku při učení. Rychlost učení Určuje, jak rychle nebo pomalu learner sladila na optimální řešení. Pokud velikost kroku je příliš velká, může být překročení optimální řešení. Pokud je příliš malá velikost kroku, školení trvá déle a umožňuje konvergovat v nejlepším řešením.
+5. **Rychlost učení**: Zadejte číslo od 0 do 1, které definuje velikost kroku při učení. Studijní frekvence určuje, jak rychle nebo pomalu se učí sblížení s optimálním řešením. Pokud je velikost kroku příliš velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení.
 
-6. **Počet stromů vytvořený**: Určení celkového počtu rozhodovacích stromů k vytvoření v skupiny stromů. Vytvořením další rozhodovacích stromů, může potenciálně získat lepší pokrytí, ale když školení zvýší.
+6. **Počet vytvořených stromů**: Určuje celkový počet rozhodovacích stromů, které se mají v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.
 
-    Tato hodnota také řídí počet stromové struktury zobrazují při vizualizaci trénovaného modelu. Pokud chcete zobrazit nebo vytisknout strom jedna, můžete nastavit hodnotu 1. však je vytvořen pouze jeden stromové struktury (stromové struktury s počáteční sadu parametrů) a jsou prováděny žádné další iterace.
+    Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout strom Ingle, můžete nastavit hodnotu na 1. je však vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a nejsou provedeny žádné další iterace.
 
-7. **Náhodné číslo**: Zadejte volitelný nezáporné celé číslo pro použití jako náhodný počáteční hodnoty. Určení základní hodnota zajistí reprodukovatelnost během spuštění, které mají stejnou dat a parametry.
+7. **Počáteční číslo prvního čísla**: Zadejte volitelné nezáporné celé číslo, které bude použito jako hodnota náhodného základu. Určení počáteční hodnoty zajišťuje reprodukovatelnost v různých spuštěních, která mají stejná data a parametry.
 
-    Ve výchozím nastavení náhodná počáteční hodnota je nastavena na hodnotu 0, což znamená, že je počáteční počáteční hodnoty získané ze systémových hodin.
+    Ve výchozím nastavení je náhodné osazení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin.
   
-8. **Povolit neznámé zařazené do kategorií úrovně**: Vyberte tuto možnost, chcete-li vytvořit skupinu pro neznámé hodnoty v sadách školení a ověřování. Pokud výběr této možnosti modelu může přijmout hodnoty, které jsou obsaženy v trénovací data. Model může být méně přesné pro známé hodnoty, ale může poskytovat lepší předpovědi pro nové hodnoty (neznámá).
+8. **Povolení neznámých úrovní kategorií**: Tuto možnost vyberte, pokud chcete vytvořit skupinu pro neznámé hodnoty v sadách pro školení a ověření. Pokud zrušíte výběr této možnosti, může model přijímat pouze hodnoty, které jsou obsaženy v školicích datech. Model může být pro známé hodnoty méně přesný, ale může poskytovat lepší předpovědi pro nové (neznámé) hodnoty.
 
-9. Přidáte trénovací datovou sadu a jeden z modulů školení:
+9. Přidejte datovou sadu školení a jeden z školicích modulů:
 
-    - Pokud nastavíte **režimu vytváření trainer** umožňuje **jeden parametr**, použijte [Train Model](train-model.md) modulu.  
+    - Pokud nastavíte možnost **vytvořit režim Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .  
   
     
 
@@ -92,14 +91,14 @@ Přechodu zvýšení skóre metody lze také pro klasifikaci problémy snížen�
 
 Po dokončení školení:
 
-+ Pokud chcete zobrazit stromu, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup [Train Model](train-model.md) modul a vyberte **vizualizovat**.
++ Chcete-li zobrazit strom, který byl vytvořen při každé iteraci, klikněte pravým tlačítkem na výstup modulu [vlakového modelu](train-model.md) a vyberte **vizualizovat**.
   
-     Klikněte na každém stromu podrobnostem rozdělení a zobrazit pravidla pro každý uzel.  
+     Kliknutím na jednotlivé stromové struktury přejdete k podrobnostem o rozdělení a uvidíte pravidla pro každý uzel.  
 
-+ K použití modelu pro vyhodnocení, připojte ho k [určení skóre modelu](./score-model.md), k předpovědi hodnot pro nový vstupní příklady.
++ Chcete-li použít model pro bodování, připojte ho k [modelu skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
 
-+ Uložte snímek trénovaného modelu, klikněte pravým tlačítkem myši **Trained model** výstup školicí modul a vyberte **uložit jako**. Kopírování trénovaného modelu, který můžete uložit není aktualizován na následné spuštění experimentu.
++ Pokud chcete uložit snímek školicího modelu, klikněte pravým tlačítkem na vyškolený výstup **modelu** školicího modulu a vyberte **Uložit jako**. Kopie vyškolených modelů, které uložíte, není aktualizována při následných spuštění experimentu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: f6cb364c231c2415bf49a24e6e9406a14640b892
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600270"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142809"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Rychlý start: Klientská knihovna pro rozpoznávání formulářů pro .NET
 
@@ -174,6 +174,10 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+Pokud jste navíc prohlédli vlastní model, který chcete z účtu odstranit, použijte následující metodu:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+
 ## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste pomocí klientské knihovny rozhraní .NET pro rozpoznávání formulářů mohli naučit vlastní model a analyzovat formuláře. V dalším kroku se dozvíte tipy, jak vytvořit lepší školicí sadu dat a vytvářet přesnější modely.
@@ -182,4 +186,4 @@ V tomto rychlém startu jste pomocí klientské knihovny rozhraní .NET pro rozp
 >[Sestavení sady školicích dat](../build-training-data-set.md)
 
 * [Co je nástroj pro rozpoznávání formulářů?](../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)

@@ -7,18 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543507"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146124"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
 Konfigurace hosta používá modul prostředku [Konfigurace požadovaného stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování virtuálních počítačů Azure. Konfigurace DSC definuje podmínku, ve které by se měl virtuální počítač nacházet. Pokud se konfigurace nezdařila, je aktivován **audit** účinku zásad a virtuální počítač se považuje za nevyhovující.
 
-[Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v rámci virtuálních počítačů. Náprava nastavení v rámci virtuálních počítačů ještě není dostupná.
+[Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v rámci virtuálních počítačů. Náprava nastavení v rámci virtuálních počítačů zatím není k dispozici.
 
 Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu virtuálního počítače Azure.
 
@@ -142,7 +142,7 @@ V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné kl
 Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem. Identita je používána virtuálními počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Dále vytvořte instanci Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
-Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault).
+Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
 Pak přiřaďte k virtuálnímu počítači identitu přiřazenou uživateli. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
@@ -318,11 +318,11 @@ S definicemi zásad a iniciativ vytvořenými v Azure se posledním krokem při�
 
 Po publikování vlastního Azure Policy pomocí vlastního balíčku obsahu jsou k dispozici dvě pole, která je potřeba aktualizovat, pokud chcete publikovat novou verzi.
 
-- **Verze**: Když spustíte rutinu rutiny `New-GuestConfigurationPolicy` , musíte zadat číslo verze, které je větší než aktuálně publikované.  Tím se aktualizuje verze přiřazení konfigurace hosta v novém souboru zásad, takže rozšíření rozpozná, že balíček se aktualizoval.
-- **contentHash**: Tato `New-GuestConfigurationPolicy` rutina se automaticky aktualizuje pomocí rutiny.  Jedná se o hodnotu hash balíčku, kterou `New-GuestConfigurationPackage`vytvořil.  Toto musí být správné pro `.zip` soubor, který publikujete.  Je-li `contentUri` aktualizována pouze vlastnost, například v případě, že by někdo mohl provést ruční změnu definice zásady z portálu, rozšíření nepřijme balíček obsahu.
+- **Verze**: Když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.  Vlastnost aktualizuje verzi přiřazení konfigurace hosta v novém souboru zásad tak, aby rozšíření rozpoznalo aktualizaci balíčku.
+- **contentHash**: Tato vlastnost je automaticky aktualizována pomocí `New-GuestConfigurationPolicy` rutiny.  Jedná se o hodnotu hash balíčku, kterou `New-GuestConfigurationPackage`vytvořil.  Vlastnost musí být správná pro `.zip` soubor, který publikujete.  Je-li `contentUri` aktualizována pouze vlastnost, například v případě, že by někdo mohl provést ruční změnu definice zásady z portálu, rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze.
-Tím budou zaručeny správné aktualizace všech vlastností.
+Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
 
@@ -330,7 +330,7 @@ Konfigurace hosta, při auditování počítačů s Windows, je implementovaná 
 Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC.
 Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování.
 Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: Převeďte Zásady skupiny do](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
-Až se obsah převede, výše uvedené kroky pro vytvoření pakcage a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
+Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a jeho publikování jako Azure Policy budou stejné jako u jakéhokoli obsahu DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VOLITELNÉ Podepisování balíčků konfigurace hosta
 

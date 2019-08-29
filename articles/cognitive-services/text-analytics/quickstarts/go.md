@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 85eae936cf86d144f0baf91623b7be9f69eb4dbb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9d04d00be52619d220a698697459376e4937942d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697551"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70134960"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití možnosti přejít k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
@@ -36,10 +36,9 @@ Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-service
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Otevřete příkazový řádek v počítači s nainstalovanou službou přejít z kořenové složky.
 1. Vytvořte soubor, například: `go build detect.go`.
@@ -52,29 +51,28 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+    if "" == os.Getenv(subscriptionKeyVar) {
+        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+    }
+    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+    if "" == os.Getenv(endpointVar) {
+        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+    }
+    var endpoint string = os.Getenv(endpointVar)
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
     const uriPath = "/text/analytics/v2.1/languages"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "text": "This is a document written in English."},
@@ -179,10 +177,9 @@ func main() {
 
 Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Otevřete příkazový řádek v počítači s nainstalovanou službou přejít z kořenové složky.
 1. Vytvořte soubor, například: `go build sentiment.go`.
@@ -195,29 +192,28 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
+    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+    if "" == os.Getenv(subscriptionKeyVar) {
+        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+    }
+    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+    if "" == os.Getenv(endpointVar) {
+        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+    }
+    var endpoint string = os.Getenv(endpointVar)
 
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
     const uriPath = "/text/analytics/v2.1/sentiment"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -297,10 +293,9 @@ Výsledek je měřen jako kladný, pokud je skóre zaokrouhleno na 1,0 a záporn
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
 1. Vytvořte soubor, například: `go build key-phrases.go`.
@@ -313,29 +308,28 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
+    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+    if "" == os.Getenv(subscriptionKeyVar) {
+        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+    }
+    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+    if "" == os.Getenv(endpointVar) {
+        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+    }
+    var endpoint string = os.Getenv(endpointVar)
+    
     const uriPath = "/text/analytics/v2.1/keyPhrases"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
         {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
@@ -435,10 +429,9 @@ func main() {
 
 Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location`, zatímco odkaz na Wikipedii je. `https://en.wikipedia.org/wiki/United_States`  Následující příklad identifikuje entity pro anglické dokumenty.
 
+1. Vytvořte proměnné `TEXT_ANALYTICS_SUBSCRIPTION_KEY` prostředí a `TEXT_ANALYTICS_ENDPOINT` koncový bod a klíč předplatného prostředku Azure. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným prostředí.
 1. Ve svém oblíbeném editoru kódu vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
-1. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-1. Nahraďte umístění v `uriBase` (momentálně `westcentralus`) oblastí, kterou jste si zaregistrovali.
 1. Uložte soubor s příponou .go.
 1. Na počítači s nainstalovaným jazykem Go otevřete příkazové okno.
 1. Vytvořte soubor, například: `go build entities.go`.
@@ -451,32 +444,31 @@ import (
     "encoding/json"
     "fmt"
     "io/ioutil"
+    "log"
     "net/http"
+    "os"
     "strings"
     "time"
 )
 
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    /*
-    Replace or verify the region.
-
-    You must use the same region in your REST API call as you used to obtain your access keys.
-    For example, if you obtained your access keys from the westus region, replace 
-    "westus" in the URI below with "westcentralus".
-
-    NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-    a free trial access key, you should not need to change this region.
-    */
-    const uriBase =    "https://westus.api.cognitive.microsoft.com"
+    var subscriptionKeyVar string = "TEXT_ANALYTICS_SUBSCRIPTION_KEY"
+    if "" == os.Getenv(subscriptionKeyVar) {
+        log.Fatal("Please set/export the environment variable " + subscriptionKeyVar + ".")
+    }
+    var subscriptionKey string = os.Getenv(subscriptionKeyVar)
+    var endpointVar string = "TEXT_ANALYTICS_ENDPOINT"
+    if "" == os.Getenv(endpointVar) {
+        log.Fatal("Please set/export the environment variable " + endpointVar + ".")
+    }
+    var endpoint string = os.Getenv(endpointVar)
+    
     const uriPath = "/text/analytics/v2.1/entities"
 
-    const uri = uriBase + uriPath
+    var uri = endpoint + uriPath
 
     data := []map[string]string{
-        {"id": "1", "language": "en", "text": "Microsoft is an It company."}
+        {"id": "1", "language": "en", "text": "Microsoft is an It company."},
     }
 
     documents, err := json.Marshal(&data)
@@ -574,7 +566,7 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

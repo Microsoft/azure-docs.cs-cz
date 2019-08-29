@@ -1,0 +1,44 @@
+---
+title: Chyby služby Azure sériové konzoly | Microsoft Docs
+description: Běžné chyby v konzole sériového prostředí Azure
+services: virtual-machines
+documentationcenter: ''
+author: asinn826
+manager: borisb
+editor: ''
+tags: azure-resource-manager
+ms.service: virtual-machines
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: vm
+ms.workload: infrastructure-services
+ms.date: 8/20/2019
+ms.author: alsin
+ms.openlocfilehash: a997675a2f7a280e8311e2bba7dca21de82a086e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129663"
+---
+# <a name="common-errors-within-the-azure-serial-console"></a>Běžné chyby v konzole sériového prostředí Azure
+V rámci konzole sériového prostředí Azure existuje sada známých chyb. Toto je seznam těchto chyb a jejich zmírňující kroky.
+
+## <a name="common-errors"></a>Běžné chyby
+
+Chyba                            |   Omezení rizik
+:---------------------------------|:--------------------------------------------|
+Nepovedlo se načíst nastavení diagnostiky spouštění pro  *&lt;VMNAME&gt;* . Použití konzole sériového portu, zajistěte, že Diagnostika spouštění je povolená pro tento virtuální počítač. ![Chyba diagnostiky spouštění](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | Ujistěte se, že virtuální počítač nebo sada škálování virtuálního počítače mají zapnutou [diagnostiku spouštění](boot-diagnostics.md) . Pokud používáte sériové prostředí v instanci sady škálování virtuálních počítačů, ujistěte se, že vaše instance má nejnovější model.
+Virtuální počítač je v zastaveném stavu Uvolněno. Spusťte virtuální počítač a pokus o připojení konzoly sériového portu. ![Chyba přidělení](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | Instance virtuálního počítače nebo virtuálního počítače musí být ve stavu spuštěno, aby mohla přistupovat ke konzole sériového portu. Spusťte virtuální počítač nebo instanci sady škálování virtuálního počítače a zkuste to znovu.
+Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". ![Chyba brány firewall účtu úložiště](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| Ujistěte se, že diagnostika spouštění nemá bránu firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzole sériového portu na funkci.
+Nemáte potřebná oprávnění k použití tohoto virtuálního počítače se sériovou konzolou. Ujistěte se, máte alespoň oprávnění role Přispěvatel virtuálních počítačů.| Přístup ke konzole sériového portu vyžaduje, abyste měli na svém VIRTUÁLNÍm počítači nebo v sadě škálování virtuálního počítače přístup na úrovni přispěvatele nebo novější. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
+Účet úložiště, který se používá pro diagnostiku spouštění na tomto virtuálním počítači, se nepovedlo najít. Ověřte, jestli je pro tento virtuální počítač povolená Diagnostika spouštění, jestli se tento účet úložiště neodstranil a máte k tomuto účtu úložiště přístup. | Dvakrát ověřte, že jste neodstranili účet úložiště diagnostiky spouštění pro váš virtuální počítač nebo sadu škálování virtuálního počítače.
+Zřizování pro tento virtuální počítač ještě nebylo úspěšné. Ujistěte se prosím, že je virtuální počítač plně nasazený, a zkuste připojení ke sériové konzole znovu. | Virtuální počítač nebo sada škálování virtuálního počítače se pořád můžou zřídit. Chvíli počkejte a pak to zkuste znovu.
+Nemáte požadovaná oprávnění k zápisu do účtu úložiště diagnostiky spouštění tohoto virtuálního počítače. Ujistěte se prosím, že máte aspoň oprávnění přispěvatelů virtuálních počítačů na. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
+Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění  *&lt;STORAGEACCOUNTNAME&gt;* . Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Přístup Sériová konzola vyžaduje přístup na úrovni přispěvatele v účtu úložiště diagnostiky spouštění. Další informace najdete na stránce s [přehledem](serial-console-overview.md).
+Webové sokety je uzavřený nebo nelze otevřít. | Je možné, že budete muset přidat přístup `*.console.azure.com`k bráně firewall. Podrobnější, ale delší přístup je povolení přístupu brány firewall k [rozsahům IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653), které se často mění poměrně.
+
+
+## <a name="next-steps"></a>Další kroky
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)
+* Další informace o [konzole sériového rozhraní Azure pro virtuální počítače s Windows](./serial-console-windows.md)

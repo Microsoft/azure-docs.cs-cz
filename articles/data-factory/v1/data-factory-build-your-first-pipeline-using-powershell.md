@@ -3,23 +3,20 @@ title: Sestavení prvního objektu pro vytváření dat (PowerShell) | Dokumenta
 description: V tomto kurzu vytvoříte pomocí prostředí Azure PowerShell ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0f18fc8a18cbcf5d85b68ed40790eda36d653812
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 3e60e31f62d74a22a87c60f70e62bd5148906607
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836578"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140423"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -33,14 +30,14 @@ ms.locfileid: "67836578"
 
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [rychlý start: Vytvoření datové továrny pomocí Azure Data Factory](../quickstart-create-data-factory-powershell.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [rychlý Start: Vytvořte datovou továrnu pomocí](../quickstart-create-data-factory-powershell.md)Azure Data Factory.
 
 V tomto článku vytvoříte první objekt pro vytváření dat Azure pomocí prostředí Azure PowerShell. Pokud chcete udělat kurz pomocí jiných nástrojů nebo sad SDK, vyberte jednu z možností z rozevíracího seznamu.
 
-Kanál v tomto kurzu má jednu aktivitu: **Aktivita HDInsight Hive**. Tato aktivita spouští skript Hive v clusteru Azure HDInsight, který transformuje vstupní data pro vytvoření výstupních dat. Spuštění kanálu je naplánované jednou za měsíc mezi zadaným počátečním a koncovým časem. 
+Kanál v tomto kurzu má jednu aktivitu: **Aktivita v podregistru HDInsight** Tato aktivita spouští skript Hive v clusteru Azure HDInsight, který transformuje vstupní data pro vytvoření výstupních dat. Spuštění kanálu je naplánované jednou za měsíc mezi zadaným počátečním a koncovým časem. 
 
 > [!NOTE]
-> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Nekopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby kopírování dat pomocí Azure Data Factory najdete v tématu [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Nekopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz o tom, jak kopírovat data pomocí Azure Data Factory, najdete v [tématu Kurz: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
@@ -74,7 +71,7 @@ V tomto kroku vytvoříte pomocí prostředí Azure PowerShell objekt pro vytvá
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     Některé kroky v tomto kurzu vychází z předpokladu, že používáte skupinu prostředků s názvem ADFTutorialResourceGroup. Pokud máte jinou skupinu prostředků, použijte ji v postupech v tomto kurzu místo skupiny ADFTutorialResourceGroup.
-3. Spustit **New-AzDataFactory** rutinu, která vytvoří objekt pro vytváření dat s názvem **FirstDataFactoryPSH**.
+3. Spusťte rutinu **New-AzDataFactory** , která vytvoří datovou továrnu s názvem **FirstDataFactoryPSH**.
 
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
@@ -84,7 +81,7 @@ V tomto kroku vytvoříte pomocí prostředí Azure PowerShell objekt pro vytvá
 * Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba **Název objektu pro vytváření dat FirstDataFactoryPSH není k dispozici**, název změňte (třeba na název váš_název_FirstDataFactoryPSH). Při provádění postupů v tomto kurzu potom tento název používejte místo názvu ADFTutorialFactoryPSH. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
 * Instance služby Data Factory můžete vytvářet jenom tehdy, když jste přispěvatelem/správcem předplatného Azure.
 * Název objektu pro vytváření dat se může v budoucnu zaregistrovat jako název DNS, takže pak bude veřejně viditelný.
-* Pokud se zobrazí chybová zpráva: "**Toto předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory**", proveďte jednu z následujících akcí a znovu zkuste název publikovat:
+* Pokud se zobrazí chyba: "**Toto předplatné není zaregistrované pro používání oboru názvů Microsoft. DataFactory**", proveďte jednu z následujících akcí a zkuste publikovat znovu:
 
   * Spuštěním následujícího příkazu v prostředí Azure PowerShell zaregistrujte zprostředkovatele služby Data Factory:
 
@@ -122,22 +119,22 @@ V tomto kroku propojíte se svým objektem pro vytváření dat svůj účet slu
     ```
     Nahraďte **název účtu** názvem účtu služby Azure Storage a **klíč účtu** přístupovým klíčem k účtu Azure Storage. Chcete-li zjistit, jak získat přístupový klíč k úložišti, přečtěte si informace o zobrazení, kopírování a opětovném vygenerování přístupových klíčů k úložišti v tématu [Správa účtu úložiště](../../storage/common/storage-account-manage.md#access-keys).
 2. V prostředí Azure PowerShell přejděte do složky ADFGetStarted.
-3. Můžete použít **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu. Tato rutina a další rutiny služby Data Factory používané v tomto kurzu vyžadují, abyste zadali hodnoty parametrů *ResourceGroupName* a *DataFactoryName*. Alternativně můžete použít **Get-AzDataFactory** zobrazíte **DataFactory** objektu a tento objekt předat, aniž by museli zadávat *ResourceGroupName* a  *DataFactoryName* pokaždé, když spustíte rutinu. Spuštěním následujícího příkazu přiřaďte výstup **Get-AzDataFactory** rutiny **$df** proměnné.
+3. Můžete použít rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu. Tato rutina a další rutiny služby Data Factory používané v tomto kurzu vyžadují, abyste zadali hodnoty parametrů *ResourceGroupName* a *DataFactoryName*. Alternativně můžete použít rutinu **Get-AzDataFactory** k získání objektu DataFactory a předání objektu bez zadání *ResourceGroupName* a DataFactory při každém spuštění rutiny. Spuštěním následujícího příkazu přiřaďte výstup rutiny **Get-AzDataFactory** k proměnné **$DF** .
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-4. Nyní, spusťte **New-AzDataFactoryLinkedService** rutinu, která vytvoří propojenou **StorageLinkedService** služby.
+4. Teď spusťte rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu **StorageLinkedService** .
 
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    Pokud jste nespustili **Get-AzDataFactory** rutiny a nepřiřadili výstup k **$df** proměnné, je potřeba zadat hodnoty pro *ResourceGroupName* a  *DataFactoryName* parametry následujícím způsobem.
+    Pokud jste spustíte rutinu **Get-AzDataFactory** a přiřadíte výstup do proměnné **$DF** , bude nutné zadat hodnoty parametrů *ResourceGroupName* a DataFactory následujícím způsobem .
 
     ```PowerShell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    Pokud průběhu kurzu zavřete prostředí Azure PowerShell, musíte spustit **Get-AzDataFactory** rutiny dalším spuštění prostředí Azure PowerShell k dokončení tohoto kurzu.
+    Pokud zavřete Azure PowerShell uprostřed kurzu, je nutné spustit rutinu **Get-AzDataFactory** při příštím spuštění Azure PowerShell k dokončení tohoto kurzu.
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Vytvoření propojené služby Azure HDInsight
 V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsight na vyžádání. Cluster HDInsight se automaticky vytvoří za běhu, a až dokončí zpracování, po určité zadané době nečinnosti se odstraní. Místo clusteru HDInsight na vyžádání můžete použít také vlastní cluster HDInsight. Podrobnosti najdete v tématu [Propojené výpočetní služby](data-factory-compute-linked-services.md).
@@ -176,7 +173,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
        Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů používají následující formát: „adf**název_vašeho_objektu_pro_vytváření_dat**-**název_propojené_služby**-razítko_data_a_času“. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
 
      Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
-2. Spustit **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu názvem HDInsightOnDemandLinkedService.
+2. Spusťte rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu s názvem HDInsightOnDemandLinkedService.
     
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
@@ -223,7 +220,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
    | type |Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
    | columnDelimiter |Sloupce v souborech protokolu jsou oddělené znakem čárky (,). |
    | frequency/interval |Frekvence je nastavená na hodnotu Month (Měsíc) a interval je 1, takže vstupní řezy jsou dostupné jednou za měsíc. |
-   | external |Pokud vstupní data nevygenerovala služba Data Factory, je tato vlastnost nastavená na hodnotu true. |
+   | externí |Pokud vstupní data nevygenerovala služba Data Factory, je tato vlastnost nastavená na hodnotu true. |
 2. Spuštěním následujícího příkazu v prostředí Azure PowerShell vytvořte datovou sadu služby Data Factory:
 
     ```PowerShell
@@ -263,7 +260,7 @@ Nyní vytvoříte výstupní datovou sadu, která bude představovat výstupní 
     ```
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
-V tomto kroku vytvoříte svůj první kanál s aktivitou **HDInsightHive**. Vstupní řez je dostupný jednou měsíčně (frekvence: Měsíc, interval: 1), výstupní řez se generuje jednou měsíčně a vlastnost scheduler pro aktivitu je také nastavena na jednou měsíčně. Nastavení výstupní datové sady a vlastnosti scheduler se musí shodovat. V současnosti určuje plán výstupní datová sada, takže musíte výstupní datovou sadu vytvořit i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. Vysvětlení vlastností použitých v následujícím kódu JSON najdete na konci této části.
+V tomto kroku vytvoříte svůj první kanál s aktivitou **HDInsightHive**. Vstupní řez je dostupný jednou měsíčně (frekvence: Měsíc, interval: 1), výstupní řez se vytváří jednou měsíčně a vlastnost Scheduler pro aktivitu je také nastavená na měsíčně. Nastavení výstupní datové sady a vlastnosti scheduler se musí shodovat. V současnosti určuje plán výstupní datová sada, takže musíte výstupní datovou sadu vytvořit i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. Vysvětlení vlastností použitých v následujícím kódu JSON najdete na konci této části.
 
 1. Ve složce C:\ADFGetStarted vytvořte soubor JSON s názvem MyFirstPipelinePSH.json s následujícím obsahem:
 
@@ -339,12 +336,12 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou **HDInsightHive**. Vst
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se děje v objektu pro vytváření dat Azure.
 
-1. Spustit **Get-AzDataFactory** a přiřaďte výstup k **$df** proměnné.
+1. Spusťte rutinu **Get-AzDataFactory** a přiřaďte výstup k proměnné **$DF** .
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. Spustit **Get-AzDataFactorySlice** získat tak podrobné údaje o všech řezech datové sady **EmpSQLTable**, což je výstupní tabulkou kanálu.
+2. Spuštěním rutiny **Get-AzDataFactorySlice** získáte podrobnosti o všech řezech **EmpSQLTable**, což je výstupní tabulka kanálu.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -363,7 +360,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Spustit **Get-AzDataFactoryRun** získáte podrobnosti o spouštění aktivity pro určitý řez.
+3. Spuštěním rutiny **Get-AzDataFactoryRun** získáte podrobnosti o spuštění aktivit pro konkrétní řez.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -412,7 +409,7 @@ V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracov�
 4. Vytvořili jste **kanál** s aktivitou **HDInsight Hive**.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Jak používat aktivitu kopírování ke kopírování dat z objektu Blob Azure do Azure SQL najdete v tématu [kurzu: Kopírování dat z objektu Blob Azure do Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru Azure HDInsight na vyžádání spouští skript Hive. Informace o tom, jak pomocí aktivity kopírování zkopírovat data z objektu blob Azure do Azure SQL, najdete v [tématu Kurz: Umožňuje zkopírovat data z objektu blob Azure do Azure](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)SQL.
 
 ## <a name="see-also"></a>Viz také
 

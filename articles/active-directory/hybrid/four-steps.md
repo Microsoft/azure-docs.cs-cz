@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532445"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124923"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
@@ -141,7 +141,7 @@ Ve výchozím nastavení Azure AD odemkne účty, když provede resetování hes
 
 Azure poskytuje sestavy, které vám i vaše organizace můžou použít k zajištění registrace uživatelů pro MFA a SSPR. Uživatelé, kteří si nezaregistrovali registraci, mohou být muset být na tomto procesu informováni.
 
-[Sestava přihlášení](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) MFA obsahuje informace o využití MFA a poskytuje přehled o tom, jak vícefaktorové ověřování funguje ve vaší organizaci. Přístup k aktivitě přihlašování (a auditům a rizikovým událostem) pro Azure AD je zásadní pro řešení potíží, analýzu využití a Forenzní vyšetřování.
+[Sestava přihlášení](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) MFA obsahuje informace o využití MFA a poskytuje přehled o tom, jak vícefaktorové ověřování funguje ve vaší organizaci. Přístup k aktivitě přihlašování (a auditům a detekcím rizik) pro Azure AD je zásadní pro řešení potíží, analýzu využití a Forenzní vyšetřování.
 
 Podobně je možné pomocí [sestavy samoobslužné správy hesel](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) určit, kdo má (nebo nemá) zaregistrovaný pro SSPR.
 
@@ -265,7 +265,7 @@ Doporučujeme vytisknout následující kontrolní seznam, který bude odkazovat
 ||Monitorování využití aplikací pro účely řízení Insights|
 ||Pochopení ovladačů volání podpory|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak můžete zvýšit zabezpečení stav pomocí možností Azure Active Directory a tohoto kontrolního seznamu pěti kroků – [pět kroků k zabezpečení vaší infrastruktury identity](https://aka.ms/securitysteps).
 

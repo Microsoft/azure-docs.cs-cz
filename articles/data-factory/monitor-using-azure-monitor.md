@@ -3,21 +3,20 @@ title: Monitorování datových továren pomocí Azure Monitor | Microsoft Docs
 description: Naučte se používat Azure Monitor k monitorování kanálů Data Factory povolením diagnostických protokolů s informacemi z Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326845"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141130"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datových továren pomocí Azure Monitor
 Cloudové aplikace jsou komplexní s mnoha pohybujícími se částmi. Monitorování poskytuje data, která zajistí, že vaše aplikace zůstane v dobrém stavu. Také vám pomůže nastavovat potenciální problémy nebo řešit potíže s předchozími. Kromě toho můžete k získání podrobných přehledů o vaší aplikaci použít data monitorování. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
@@ -505,11 +504,11 @@ Přihlaste se k Azure Portal a > kliknutím na monitorovat**výstrahy** vytvořt
 
 ![Výstrahy v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
 
-### <a name="create-alerts"></a>Vytváření výstrah
+### <a name="create-alerts"></a>Vytvořit výstrahy
 
 1.  Kliknutím na **+ nové pravidlo výstrahy** vytvořte novou výstrahu.
 
-    ![nové pravidlo výstrahy](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nové pravidlo upozornění](media/monitor-using-azure-monitor/alerts_image4.png)
 
 2.  Definujte **podmínku upozornění**.
 
@@ -536,6 +535,6 @@ Přihlaste se k Azure Portal a > kliknutím na monitorovat**výstrahy** vytvořt
 
     ![Skupina akcí, obrazovka 4 ze 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o monitorování a správě kanálů pomocí kódu najdete v článku [programové monitorování a Správa kanálů](monitor-programmatically.md) .

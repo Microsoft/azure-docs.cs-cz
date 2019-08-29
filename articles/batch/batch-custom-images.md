@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036703"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141827"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Vytvoření fondu pomocí Galerie sdílených imagí
 
@@ -23,7 +23,7 @@ Když vytváříte fond Azure Batch s použitím konfigurace virtuálního poč�
 
 Když použijete galerii sdílených imagí pro vlastní image, budete mít kontrolu nad typem a konfigurací operačního systému a také s typem datových disků. Sdílená image může zahrnovat aplikace a referenční data, která jsou k dispozici ve všech uzlech fondu služby Batch hned po zřízení.
 
-Můžete mít také více verzí bitové kopie, které jsou potřeba pro vaše prostředí. Když použijete verzi image k vytvoření virtuálního počítače, verze image se použije k vytvoření nových disků pro virtuální počítač. 
+Můžete mít také více verzí bitové kopie, které jsou potřeba pro vaše prostředí. Když použijete verzi image k vytvoření virtuálního počítače, verze image se použije k vytvoření nových disků pro virtuální počítač.
 
 Použití sdíleného obrázku šetří čas při přípravě výpočetních uzlů fondu na spuštění úlohy služby Batch. Po zřízení je možné použít bitovou kopii Azure Marketplace a nainstalovat software na každý výpočetní uzel, ale použití sdílené Image je obvykle efektivnější. Kromě toho můžete pro sdílenou image zadat několik replik, takže když vytvoříte fondy s mnoha virtuálními počítači (víc než 600 virtuálních počítačů), ušetříte čas při vytváření fondu.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Vytvoření fondu ze sdílené Image pomocí Azure Portal
+
+Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azure Portal.
+
+1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Přejít na **účty Batch** a vyberte svůj účet.
+1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
+1. V části **typ obrázku** vyberte sdílená **Galerie imagí**.
+1. Dokončete zbývající části s informacemi o spravované imagi.
+1. Vyberte **OK**.
+
+![Vytvořte fond se ze sdílené image s portálem.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>Předpoklady pro velké fondy
 

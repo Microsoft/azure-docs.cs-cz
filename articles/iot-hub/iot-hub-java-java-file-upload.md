@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3d1f82c5eadde52edb721185a497d9b187eebb7b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3ef727c4d1f1af13b66c7de02b8e67cc5e45f065
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668066"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147482"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Java)
 
@@ -44,7 +44,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 > [!NOTE]
 > IoT Hub podporuje spoustu platforem a jazyků zařízení (včetně C, .NET a JavaScriptu) prostřednictvím sad SDK pro zařízení Azure IoT. Podrobné pokyny k připojení zařízení k Azure IoT Hub najdete v [centru pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) .
 
-Pro absolvování tohoto kurzu potřebujete:
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější [Java SE Development Kit 8](https://aka.ms/azure-jdks)
 

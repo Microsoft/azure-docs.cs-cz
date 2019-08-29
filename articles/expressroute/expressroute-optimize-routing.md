@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a20318a4779b06e60d849dea0774d717d87e48e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854327"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141855"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -75,7 +75,7 @@ Existují dvě řešení problému. První z nich je, že budete jednoduše inze
 Druhým řešením je, že budete nadále inzerovat obě předpony v obou okruzích ExpressRoute a kromě toho nám dáte vědět, která předpona je blíž ke které z poboček. Protože podporujeme předřazení protokolu BGP AS PATH, můžete konfigurovat cestu AS PATH pro vaši předponu a ovlivnit směrování. V tomto příkladu lze prodloužit AS PATH pro 172.2.0.0/31 v oblasti USA – východ tak, abychom pro přenos dat určený pro tuto předponu preferovali okruh ExpressRoute v oblasti USA – západ (protože naše síť si bude myslet, že cesta k této předponě je přes západ kratší). Obdobně lze prodloužit AS PATH pro 172.2.0.2/31 v oblasti USA – západ, abychom preferovali okruh ExpressRoute v oblasti USA – východ. Směrování je optimalizované pro obě pobočky. Pokud v tomto návrhu jeden okruh ExpressRoute není funkční, Exchange Online se s vámi pořád může spojit prostřednictvím jiného okruhu ExpressRoute a vaší sítě WAN. 
 
 > [!IMPORTANT]
-> Odebereme soukromá čísla AS v AS PATH pro předpony přijaté v partnerském vztahu Microsoftu. Musíte připojit veřejná čísla AS do AS PATH, abyste ovlivnili směrování pro partnerský vztah Microsoftu.
+> Pro předpony přijaté v partnerském vztahu Microsoftu odebereme jako čísla v cestě AS čísla, která jsou přijatá při partnerském vztahu s privátním číslem. Pro ovlivnění směrování pro partnerský vztah Microsoftu je potřeba, abyste se připojili k veřejnému připojení jako k jako číslům v cestě AS.
 > 
 > 
 

@@ -11,33 +11,33 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 7fcf24256634ef11b575348d9da7d6bbbab8b67c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333923"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127769"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection PlayBook
 
 Tato PlayBook vám pomůže:
 
-* Naplnit data v prostředí Identity Protection simulací rizikových událostí a ohrožení zabezpečení
+* Naplnění dat v prostředí Identity Protection díky simulaci zjištění rizik a ohrožení zabezpečení
 * Nastavte zásady podmíněného přístupu na základě rizika a otestujte dopad těchto zásad.
 
-## <a name="simulating-risk-events"></a>Simulace rizikových událostí
+## <a name="simulating-risk-detections"></a>Simulace zjišťování rizik
 
-V této části najdete postup pro simulaci následujících typů rizikových událostí:
+V této části najdete postup simulace následujících typů detekce rizik:
 
 * Přihlášení z anonymních IP adres (snadné)
 * Přihlášení z neznámých umístění (střední)
 * Nemožná cesta do netypických míst (obtížné)
 
-Jiné rizikové události nelze simulovat zabezpečeným způsobem.
+Jiné zjišťování rizik se nedají simulovat zabezpečeným způsobem.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
 
-Další informace o této rizikové události najdete v tématu [přihlášení z anonymních IP adres](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
+Další informace o tomto zjišťování rizik najdete v tématu [přihlášení z anonymních IP adres](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
 
 Dokončení následujícího postupu vyžaduje, abyste použili:
 
@@ -53,7 +53,7 @@ Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Přihlášení z neznámých míst
 
-Další informace o této rizikové události najdete v tématu [přihlášení z neznámých umístění](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations). 
+Další informace o tomto detekci rizika najdete v tématu [přihlášení z neznámých umístění](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations). 
 
 Abyste mohli simulovat neznámou polohu, musíte se přihlásit z umístění a zařízení, ke kterému váš zkušební účet ještě nebyl přihlášený.
 
@@ -76,14 +76,14 @@ Přihlašování se zobrazuje na řídicím panelu Identity Protection během 10
 
 ### <a name="impossible-travel-to-atypical-location"></a>Nemožná cesta do neobvyklých míst
 
-Další informace o této rizikové události najdete v tématu [nemožná cesta do neobvyklých umístění](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
+Další informace o tomto detekci rizika najdete v tématu [nemožná cesta do neobvyklých umístění](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
-Simulace nemožného cestovního stavu je obtížné, protože algoritmus využívá Machine Learning k pleveli falešně pozitivních hodnot, jako je nemožná cesta ze známých zařízení, nebo přihlášení z VPN, které používají jiní uživatelé v adresáři. Kromě toho algoritmus vyžaduje před tím, než začne generovat rizikové události, historii přihlášení 14 dní a 10 přihlášení uživatele. Z důvodu komplexních modelů strojového učení a výše uvedených pravidel existuje možnost, že následující kroky nevedou k rizikové události. Je možné, že budete chtít tyto kroky replikovat pro několik účtů Azure AD, aby se tato riziková událost publikovala.
+Simulace nemožného cestovního stavu je obtížné, protože algoritmus využívá Machine Learning k pleveli falešně pozitivních hodnot, jako je nemožná cesta ze známých zařízení, nebo přihlášení z VPN, které používají jiní uživatelé v adresáři. Kromě toho algoritmus vyžaduje historii přihlášení 14 dní a 10 přihlášení uživatele, než začne generovat detekci rizik. Z důvodu komplexních modelů strojového učení a výše uvedených pravidel existuje možnost, že následující kroky nebudou mít za následek detekci rizik. Tyto kroky můžete chtít replikovat pro více účtů Azure AD, aby bylo možné toto zjišťování rizik publikovat.
 
 **Chcete-li simulovat nemožná cestu k neobvyklým umístěním, proveďte následující kroky**:
 
 1. V prohlížeči použijte standardní prohlížeč a přejděte [https://myapps.microsoft.com](https://myapps.microsoft.com)na.  
-2. Zadejte přihlašovací údaje účtu, pro který chcete vygenerovat nemožnou událost pro služební riziko.
+2. Zadejte přihlašovací údaje účtu, pro který chcete vygenerovat nemožnou detekci neslužebního rizika.
 3. Změňte svého uživatelského agenta. Můžete změnit uživatelského agenta v aplikaci Internet Explorer z Vývojářské nástroje nebo změnit uživatelského agenta v prohlížeči Firefox nebo Chrome pomocí doplňku User-Agent přepínač.
 4. Změňte IP adresu. IP adresu můžete změnit pomocí sítě VPN, samoobslužného doplňku nebo nového počítače v Azure v jiném datovém centru.
 5. Přihlaste se [https://myapps.microsoft.com](https://myapps.microsoft.com) pomocí stejných přihlašovacích údajů jako před a během několika minut po předchozím přihlášení.
@@ -93,7 +93,7 @@ Přihlašování se zobrazuje na řídicím panelu Identity Protection během 2-
 ## <a name="simulating-vulnerabilities"></a>Simulace chyb zabezpečení
 Ohrožení zabezpečení představují slabé stránky v prostředí Azure AD, které může zneužít špatný objekt actor. V současné době se 3 typy ohrožení zabezpečení nacházejí v Azure AD Identity Protection, které využívají jiné funkce služby Azure AD. Po nastavení těchto funkcí se tyto chyby zabezpečení zobrazí na řídicím panelu Identity Protection automaticky.
 
-* [Multi-Factor Authentication pro](../authentication/multi-factor-authentication.md) Azure AD
+* [Multi-Factor Authentication](../authentication/multi-factor-authentication.md) Azure AD
 * [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/)Azure AD.
 * [Privileged Identity Management](../privileged-identity-management/pim-configure.md)Azure AD. 
 
@@ -118,8 +118,8 @@ Další informace najdete v článku, který se zabývá [způsobem konfigurace 
 
 5. V části ovládací prvky vyberte požadovaný ovládací prvek přístupu (například vyžadovat změnu hesla).
 5. Jako **Vynutilit zásady**vyberte **vypnuto**.
-6. Zvyšte riziko pro uživatele testovacího účtu, a to například simulací jedné z rizikových událostí.
-7. Počkejte pár minut a pak ověřte, že je úroveň uživatele pro uživatele střední. Pokud ne, simulovat pro uživatele více rizikových událostí.
+6. Zvyšte riziko pro uživatele testovacího účtu, a to například simulací některého z detekcí rizika několikrát.
+7. Počkejte pár minut a pak ověřte, že je úroveň uživatele pro uživatele střední. Pokud ne, simulovat pro uživatele více detekcí rizik.
 8. Jako **Vynutilit zásady**vyberte **zapnuto**.
 9. Můžete teď otestovat podmíněný přístup na základě rizik uživatelů přihlášením pomocí uživatele se zvýšenou úrovní rizika.
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905224"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142084"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -201,7 +201,7 @@ Pokud chcete použít vizualizaci závislostí, přidružte pracovní prostor Lo
 1. Pokud chcete k projektu připojit Log Analytics pracovní prostor, klikněte v **přehledu**> **Essentials**na **vyžaduje konfiguraci**.
 2. Můžete vytvořit nový pracovní prostor nebo připojit stávající:
   - Chcete-li vytvořit nový pracovní prostor, zadejte název. Pracovní prostor se vytvoří v oblasti ve stejném geografickém regionu [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
+  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. V seznamu jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v [podporované Service map oblasti](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Pokud chcete připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
 > [!NOTE]
 > Pracovní prostor přidružený k projektu migrace nemůžete změnit.
@@ -340,5 +340,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Přečtěte si o](migrate-services-overview.md) nejnovější verzi Azure Migrate.

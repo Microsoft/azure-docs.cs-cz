@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987935"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127011"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Nejčastější dotazy týkající se Azure Active Directory sestav
 
@@ -37,7 +37,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: Nyní používám `https://graph.windows.net/<tenant-name>/reports/` rozhraní API koncového bodu ke stažení sestav zabezpečení Azure AD (specifických typů detekcí, jako jsou nevrácená pověření nebo přihlášení z anonymních IP adres) do našich systémů vytváření sestav prostřednictvím kódu programu. Co mám přepnout na?**
 
-**Odpověď:** K přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph můžete použít  [rozhraní API pro rizikové události Identity Protection](../identity-protection/graph-get-started.md). Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších, a standardizovat rizikové události do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), což je standard Microsoftu pro taková rozhraní API jako O365 nebo Azure AD. To, co je potřeba, může buď zvětšit vaše aktuální investice do MS graphu, nebo vám pomůžou začít s přechodem na tuto novou standardní platformu.
+**Odpověď:**   [Rozhraní API detekce rizik v rámci Identity Protection](../identity-protection/graph-get-started.md)můžete použít k přístupu k detekcím zabezpečení prostřednictvím Microsoft Graph. Tento nový formát poskytuje větší flexibilitu v tom, jak můžete zadávat dotazy na data, s využitím pokročilého filtrování, výběru polí a dalších možností a standardizovat detekci rizik do jednoho typu pro snazší integraci do systémů Siem a dalších nástrojů pro shromažďování dat. Vzhledem k tomu, že data jsou v jiném formátu, nemůžete pro staré dotazy použít nový dotaz. [Nové rozhraní API ale používá Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), což je standard Microsoftu pro taková rozhraní API jako O365 nebo Azure AD. To, co je potřeba, může buď zvětšit vaše aktuální investice do MS graphu, nebo vám pomůžou začít s přechodem na tuto novou standardní platformu.
 
 ---
 
@@ -107,7 +107,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 ## <a name="risky-sign-ins"></a>Riziková přihlášení
 
-**Otázka: V rámci Identity Protection existuje riziková událost, ale v sestavě přihlášení se nezobrazuje odpovídající přihlášení. Je to očekávané?**
+**Otázka: V rámci Identity Protection se detekuje riziko, ale v sestavě přihlášení se nezobrazuje odpovídající přihlášení. Je to očekávané?**
 
 **Odpověď:** Ano, ochrana identity vyhodnocuje riziko pro všechny toky ověřování, ať už interaktivní, nebo neinteraktivní. Všechna přihlášení však pouze zobrazí pouze interaktivní přihlášení.
 
@@ -115,7 +115,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 **Otázka: Návody zjistit, proč přihlášení nebo uživatel označil v Azure Portal rizikové?**
 
-**Odpověď:** Pokud máte předplatné **Azure AD Premium** , můžete získat další informace o základních rizikových událostech výběrem uživatele v **označení příznakem rizika** nebo výběrem záznamu v sestavě **rizikové přihlašování** . Máte-li **bezplatné** předplatné nebo **základní** předplatné, můžete zobrazit sestavy rizikových a rizikových přihlášení uživatelů, ale nevidíte základní informace o rizikových událostech.
+**Odpověď:** Pokud máte předplatné **Azure AD Premium** , můžete získat další informace o základních detekcích rizik výběrem uživatele v **označení příznakem rizika** nebo výběrem záznamu v sestavě **rizikové přihlašování** . Máte-li **bezplatné** předplatné nebo **základní** předplatné, můžete zobrazit sestavy rizikových a rizikových přihlášení uživatelů, ale nevidíte základní informace o detekci rizika.
 
 ---
 
@@ -125,7 +125,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se vytv�
 
 ---
 
-**Otázka: K čemu se riziková událost "přihlášení se zjištěným dodatečným rizikem" značí?**
+**Otázka: Co znamená, že při zjišťování rizik se zjistilo, že se objevilo dodatečné riziko?**
 
 **Odpověď:** Pokud chcete mít přehled o všech rizikových přihlášeních ve vašem prostředí, přihlaste se s dalšími zjištěnými riziky jako zástupné symboly pro přihlášení k detekcím, které jsou výhradně Azure AD Identity Protection odběratelům.
 

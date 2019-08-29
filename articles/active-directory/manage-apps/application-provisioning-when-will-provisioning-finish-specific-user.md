@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667158"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147106"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -62,7 +62,7 @@ Protokoly auditu zřizování zaznamenávají všechny operace prováděné slu�
 Další informace o tom, jak číst protokoly auditu v Azure Portal, najdete v [průvodci zřizováním sestav](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřizování uživatelů?
-Při použití automatického zřizování uživatelů s aplikací Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci na základě toho, co je třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , v pravidelných plánovaných časových intervalech, obvykle každých 10 minut.
+Při použití automatického zřizování uživatelů s aplikací Azure AD automaticky zřídí a aktualizuje uživatelské účty v aplikaci na základě toho, co je třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , v pravidelných plánovaných intervalech, obvykle každých 40 minut.
 
 Čas potřebný k zřízení daného uživatele závisí hlavně na tom, jestli vaše úloha zřizování spouští počáteční synchronizaci nebo přírůstkovou synchronizaci.
 
@@ -104,5 +104,5 @@ Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteč
 
 - Počet a velikost přiřazených skupin. Synchronizace přiřazených skupin trvá déle než synchronizace uživatelů. Počet i velikost přiřazených skupin mají vliv na výkon. Pokud má aplikace [povolená mapování pro synchronizaci objektů skupin](customize-application-attributes.md#editing-group-attribute-mappings), jsou kromě uživatelů synchronizovány i vlastnosti skupiny, jako jsou názvy skupin a členství. Tyto další synchronizace budou trvat déle než jenom synchronizace uživatelských objektů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

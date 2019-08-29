@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334024"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126558"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurace zásad rizik v Azure Active Directory Identity Protection (Aktualizováno)
 
-Azure AD detekuje rizikové události, které jsou indikátory pro potenciálně ohrožené identity. Konfigurací zásad rizik můžete definovat automatizované odpovědi na výsledky detekce:
+Azure AD detekuje detekce rizik, které jsou indikátory pro potenciálně ohrožené identity. Konfigurací zásad rizik můžete definovat automatizované odpovědi na výsledky detekce:
 
-- Pomocí zásad rizik přihlašování můžete nakonfigurovat odpověď na rizikové události v reálném čase, které byly zjištěny během přihlašování uživatele. 
+- Pomocí zásad rizik přihlašování můžete nakonfigurovat reakci na detekci rizik v reálném čase, které byly zjištěny během přihlašování uživatele. 
 - Pomocí zásad rizika pro uživatele můžete nakonfigurovat odpověď na všechna aktivní rizika uživatelů zjištěná uživatelem v průběhu času.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Jaké jsou zásady rizik přihlašování?
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. Například pokud je přihlášení provedeno pomocí anonymní IP adresy nebo je přihlášení zahájeno z neznámého umístění? V Azure AD se podezřelé akce, které může systém detekovat, označují také jako rizikové události. Na základě rizikových událostí, které byly zjištěny během přihlašování, služba Azure AD vypočítá hodnotu. Hodnota představuje pravděpodobnost (nízká, střední, vysoká), že se přihlášení legitimního uživatele neprovádí. Pravděpodobnost se nazývá **úroveň rizika přihlašování**.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. Například pokud je přihlášení provedeno pomocí anonymní IP adresy nebo je přihlášení zahájeno z neznámého umístění? V Azure AD se podezřelé akce, které může systém detekovat, označují také jako detekce rizik. V závislosti na detekcích rizik zjištěných během přihlašování Azure AD vypočítá hodnotu. Hodnota představuje pravděpodobnost (nízká, střední, vysoká), že se přihlášení legitimního uživatele neprovádí. Pravděpodobnost se nazývá **úroveň rizika přihlašování**.
 
 Zásada pro rizikové přihlašování je automatizovaná odpověď, kterou můžete nakonfigurovat pro konkrétní úroveň rizika přihlašování. V odpovědi můžete zablokovat přístup k vašim prostředkům nebo vyžadovat přístup ke službě Multi-Factor Authentication (MFA), abyste získali přístup.
 
-Když uživatel úspěšně dokončí výzvu MFA aktivované zásadou pro přihlašování, poskytne nám zpětnou vazbu k identitě, kterou přihlásilo od legitimního uživatele. Proto se riziková událost přihlašování, která aktivovala výzvu MFA, automaticky uzavře a ochrana identity zabrání v přispívání na zvýšení rizika uživatele. Povolení zásad rizik přihlašování může snížit noisiness v zobrazení rizikových přihlášení tím, že uživatelům umožníte, aby při zobrazení výzvy pro MFA a následně automaticky uzavřeli související rizikové přihlášení.
+Když uživatel úspěšně dokončí výzvu MFA aktivované zásadou pro přihlašování, poskytne nám zpětnou vazbu k identitě, kterou přihlásilo od legitimního uživatele. Proto se zjišťování rizik při přihlašování, které aktivovalo výzvu MFA, automaticky ukončí a ochrana identity zabrání v přispívání na zvýšení rizika uživatele. Povolení zásad rizik přihlašování může snížit noisiness v zobrazení rizikových přihlášení tím, že uživatelům umožníte, aby při zobrazení výzvy pro MFA a následně automaticky uzavřeli související rizikové přihlášení.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Návody získat přístup k zásadám rizik přihlašování?
    
@@ -51,7 +51,7 @@ Když konfigurujete zásady pro rizikové přihlašování, musíte nastavit:
 
 - Úroveň rizika přihlašování, která spouští zásady:
 
-   ![Úroveň rizika přihlášení](./media/howto-configure-risk-policies/12.png)
+   ![Úroveň rizika přihlašování](./media/howto-configure-risk-policies/12.png)
 
 - Typ přístupu, který chcete vyhovět při splnění úrovně rizika přihlašování:  
 
@@ -93,9 +93,9 @@ Přehled souvisejícího uživatelského prostředí najdete v těchto tématech
 
 ## <a name="what-is-a-user-risk-policy"></a>Co je to zásady rizik uživatelů?
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. V Azure AD se podezřelé akce, které může systém detekovat, označují také jako rizikové události. I když lze v reálném čase zjistit některé rizikové události, existují také rizikové události vyžadující více času. Například pro zjištění nemožného cestování do neobvyklých umístění systém vyžaduje počáteční období učení 14 dní, kde se dozvíte o běžném chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Jednotlivé rizikové události můžete například vyřešit ručně, nebo je můžete vyřešit pomocí rizika přihlašování nebo zásad podmíněného přístupu uživatele.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. V Azure AD se podezřelé akce, které může systém detekovat, označují také jako detekce rizik. I když se v reálném čase dají detekovat některé detekce rizik, existují i detekce rizik, která vyžadují víc času. Například pro zjištění nemožného cestování do neobvyklých umístění systém vyžaduje počáteční období učení 14 dní, kde se dozvíte o běžném chování uživatele. Existuje několik možností, jak vyřešit zjištěná zjištění rizik. Můžete například vyřešit jednotlivá zjištění rizik ručně nebo je můžete vyřešit pomocí rizika přihlašování nebo zásad podmíněného přístupu uživatele.
 
-Všechny rizikové události, které byly zjištěny pro uživatele a nebyly vyřešeny, se označují jako aktivní rizikové události. Aktivní rizikové události, které jsou přidruženy k uživateli, se označují jako riziko pro uživatele. V závislosti na riziku uživatele Azure AD vypočítá pravděpodobnost (nízká, střední, vysoká), že došlo k ohrožení uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
+Všechny detekce rizik zjištěné pro uživatele, které se nevyřešily, se označují jako aktivní detekce rizik. Aktivní detekce rizik, která jsou přidružená k uživateli, se označuje jako riziko pro uživatele. V závislosti na riziku uživatele Azure AD vypočítá pravděpodobnost (nízká, střední, vysoká), že došlo k ohrožení uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
 
 ![Rizika uživatele](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ Můžete nastavit zásady zabezpečení rizik uživatelů pro blokování uživa
 
 Blokování přihlášení:
 
-* Brání generování nových rizikových událostí uživatele pro ovlivněného uživatele.
-* Umožňuje správcům ručně opravit rizikové události, které mají vliv na identitu uživatele a obnoví je na zabezpečený stav.
+* Brání generování nových zjištění rizik uživatelů pro ovlivněného uživatele.
+* Umožňuje správcům ručně opravit detekci rizik, které ovlivňují identitu uživatele, a obnovovat je v zabezpečeném stavu.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -158,6 +158,6 @@ Při nastavování zásad
 
 Doporučená výchozí hodnota pro většinu organizací je nakonfigurovat pravidlo pro **střední** prahovou hodnotu, aby se vyrovnalo rovnováhu mezi použitelností a zabezpečením.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
  [Kanál 9: Azure AD a zobrazení identity: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)

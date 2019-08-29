@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774415"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129039"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Řešení chyb při vytváření virtuálních počítačů a prostředí v Azure DevTest Labs
 DevTest Labs vám poskytne upozornění, pokud je název počítače neplatný nebo pokud se chystáte porušovat zásady testovacího prostředí. Někdy se zobrazí červená `X` vedle vašeho testovacího virtuálního počítače nebo stavu prostředí, která vás informuje, že došlo k nějaké chybě.  Tento článek poskytuje několik štychů, které můžete použít k vyhledání základního problému a snad, abyste se vyhnuli problému v budoucnu.
 
 ## <a name="portal-notifications"></a>Oznámení na portálu
-Pokud používáte Azure Portal, první místo, kde se na něj můžete podívat, je **panel oznámení**.  Panel oznámení, který je k dispozici na hlavním panelu příkazů kliknutím na **ikonu zvonku**, vám sdělí, jestli byl virtuální počítač nebo vytvoření prostředí testovacího prostředí úspěšné nebo ne.  Pokud došlo k chybě, zobrazí se chybová zpráva přidružená k chybě při vytváření. Podrobnosti často poskytují další informace, které vám pomůžou problém vyřešit. V následujícím příkladu se virtuální počítač nepodařilo vytvořit z důvodu nedostatku jader. Podrobná zpráva vám ukáže, jak problém vyřešit a požádat o zvýšení kvóty jádra.
+Pokud používáte Azure Portal, první místo, kde se na něj můžete podívat, je **panel oznámení**.  Panel oznámení, který je k dispozici na hlavním panelu příkazů kliknutím na **ikonu zvonku**, vám sdělí, jestli byl virtuální počítač nebo vytvoření prostředí testovacího prostředí úspěšné nebo ne.  Pokud došlo k chybě, zobrazí se chybová zpráva přidružená k chybě při vytváření. Podrobnosti často poskytují další informace, které vám pomůžou problém vyřešit. V následujícím příkladu se virtuální počítač nepodařilo vytvořit z důvodu nedostatku jader. Podrobná zpráva vám ukáže, jak problém vyřešit a požádat o zvýšení kvóty jádra.
 
 ![Oznámení Azure Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
@@ -76,5 +76,5 @@ Chcete-li zobrazit protokoly nasazení šablon testovacího prostředí, postupu
 4. Na stránce **nasazení** vyberte odkaz **Podrobnosti operace** pro operaci, která selhala.
 5. Zobrazí se podrobnosti o operaci, která selhala v okně **Podrobnosti operace** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Viz [Poradce při potížích s chybami artefaktů](devtest-lab-troubleshoot-artifact-failure.md)

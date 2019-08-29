@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612880"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124674"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Nejčastější dotazy
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services. Udržujte kontrolu aktualizací.
@@ -61,6 +61,9 @@ Ne. Doména, kterou poskytuje Azure AD Domain Services, je spravovaná doména. 
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Můžou se uživatelé typu Host pozvat do adresáře použít Azure AD Domain Services?
 Ne. Uživatelé typu Host, kteří se pozvali k adresáři Azure AD pomocí procesu pozvání [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) , se synchronizují do vaší Azure AD Domain Services spravované domény. Hesla pro tyto uživatele ale nejsou uložená ve vašem adresáři služby Azure AD. Proto Azure AD Domain Services nemá žádný způsob, jak synchronizovat hodnoty hash protokolu NTLM a Kerberos pro tyto uživatele do spravované domény. V důsledku toho se tito uživatelé nebudou moci přihlásit ke spravované doméně nebo připojit počítače ke spravované doméně.
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Můžu existující Azure AD Domain Services spravovanou doménu přesunout do jiného předplatného, skupiny prostředků, oblasti nebo virtuální sítě?
+Ne. Po vytvoření spravované domény Azure AD Domain Services nemůžete instanci přesunout do jiné skupiny prostředků, virtuální sítě, předplatného atd. Při nasazování instance služby Azure služba AD DS je nutné vybrat nejvhodnější předplatné, skupinu prostředků, oblast a virtuální síť.
 
 ## <a name="administration-and-operations"></a>Správa a operace
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Můžu se k řadiči domény pro spravovanou doménu připojit pomocí vzdálené plochy?

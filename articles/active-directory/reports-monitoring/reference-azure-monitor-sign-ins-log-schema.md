@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989608"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127055"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretujte schéma přihlašovacích protokolů služby Azure AD v Azure Monitor
 
@@ -154,11 +154,11 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | ResultType | Výsledkem operace přihlášení může být *úspěch* nebo neúspěch. | 
 | ResultSignature | Obsahuje kód chyby, pokud existuje, pro operaci přihlášení. |
 | ResultDescription | Poskytuje popis chyby pro operaci přihlášení. |
-| riskDetail | riskDetail | Poskytuje "důvod" za konkrétní stav rizikového uživatele, přihlášení nebo rizikové události. Možné `none`hodnoty jsou:, `adminConfirmedSigninSafe` ,`unknownFutureValue`,,, ,,`userPassedMFADrivenByRiskBasedPolicy`, ,`adminConfirmedSigninCompromised`. `aiConfirmedSigninSafe` `userPerformedSecuredPasswordReset` `userPerformedSecuredPasswordChange` `adminGeneratedTemporaryPassword` `adminDismissedAllRiskForUser` Hodnota `none` znamená, že uživatel ani se přihlásila žádná akce. <br>**Poznámka:** Podrobnosti této vlastnosti vyžadují licenci Azure AD Premium P2. Další licence vrací hodnotu `hidden`. |
-| riskEventTypes | riskEventTypes | Typy rizikových událostí přidružené k přihlašování Možné `unlikelyTravel`hodnoty jsou:, `malwareInfectedIPAddress` ,`unknownFutureValue`,,, ,,`leakedCredentials`, a`generic`. `suspiciousIPAddress` `unfamiliarFeatures` `maliciousIPAddress` `anonymizedIPAddress` `investigationsThreatIntelligence` |
+| riskDetail | riskDetail | Poskytuje "důvod" za konkrétní stav rizikového uživatele, přihlášení nebo zjišťování rizik. Možné `none`hodnoty jsou:, `adminConfirmedSigninSafe` ,`unknownFutureValue`,,, ,,`userPassedMFADrivenByRiskBasedPolicy`, ,`adminConfirmedSigninCompromised`. `aiConfirmedSigninSafe` `userPerformedSecuredPasswordReset` `userPerformedSecuredPasswordChange` `adminGeneratedTemporaryPassword` `adminDismissedAllRiskForUser` Hodnota `none` znamená, že uživatel ani se přihlásila žádná akce. <br>**Poznámka:** Podrobnosti této vlastnosti vyžadují licenci Azure AD Premium P2. Další licence vrací hodnotu `hidden`. |
+| riskEventTypes | riskEventTypes | Typy detekce rizik spojené s přihlášením Možné `unlikelyTravel`hodnoty jsou:, `malwareInfectedIPAddress` ,`unknownFutureValue`,,, ,,`leakedCredentials`, a`generic`. `suspiciousIPAddress` `unfamiliarFeatures` `maliciousIPAddress` `anonymizedIPAddress` `investigationsThreatIntelligence` |
 | riskLevelAggregated | riskLevel | Agregovaná úroveň rizika. Možné hodnoty jsou: `none`, `low`, `medium`, `high`, `hidden`a. `unknownFutureValue` Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo povoleno Azure AD Identity Protection. **Poznámka:** Podrobnosti této vlastnosti jsou k dispozici pouze pro zákazníky Azure AD Premium P2. Vrátí `hidden`se všichni ostatní zákazníci. |
 | riskLevelDuringSignIn | riskLevel | Úroveň rizika během přihlašování Možné hodnoty jsou: `none`, `low`, `medium`, `high`, `hidden`a. `unknownFutureValue` Hodnota `hidden` znamená, že uživatel nebo přihlášení nebylo povoleno Azure AD Identity Protection. **Poznámka:** Podrobnosti této vlastnosti jsou k dispozici pouze pro zákazníky Azure AD Premium P2. Vrátí `hidden`se všichni ostatní zákazníci. |
-| riskState | riskState | Hlásí stav rizikového uživatele, přihlášení nebo rizikové události. Možné `none`hodnoty jsou:, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, ,`confirmedCompromised`. `unknownFutureValue` |
+| riskState | riskState | Oznamuje stav rizikového uživatele, přihlášení nebo zjišťování rizik. Možné `none`hodnoty jsou:, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, ,`confirmedCompromised`. `unknownFutureValue` |
 | Trvání v MS |  Tato hodnota není mapována a můžete toto pole bezpečně ignorovat. |
 | CallerIpAddress | IP adresa klienta, který odeslal požadavek. | 
 | CorrelationId | Volitelný identifikátor GUID, který je předán klientem. Tato hodnota může pomoct sladit operace na straně klienta s operacemi na straně serveru a je užitečná při sledování protokolů, které zahrnují služby. |

@@ -1,7 +1,7 @@
 ---
-title: 'Zadejte Data ručně: Odkaz na modul'
+title: 'Zadat data ručně: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu ručně zadejte Data ve službě Azure Machine Learning vytvořit na malou sadu dat tak, že zadáte hodnoty. Datová sada může mít více sloupců.
+description: Naučte se, jak pomocí příkazu zadat data ručně ve službě Azure Machine Learning vytvořit malou datovou sadu zadáním hodnot. Datová sada může mít více sloupců.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,61 +9,60 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028602"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128841"
 ---
-# <a name="enter-data-manually-module"></a>Zadejte Data ručně modulu
+# <a name="enter-data-manually-module"></a>Zadat data ručně modul
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření malé datové sady zadáním hodnot. Datová sada může mít více sloupců.
+Pomocí tohoto modulu můžete vytvořit malou datovou sadu zadáním hodnot. Datová sada může mít více sloupců.
   
-Tento modul může být užitečné v situacích, jako je například tyto:  
+Tento modul může být užitečný ve scénářích, jako jsou tyto:  
   
-- Generování malou sadu hodnot pro účely testování  
+- Generování malé sady hodnot pro testování  
   
-- Vytváří se krátký seznam popisků
+- Vytvoření krátkého seznamu popisků
   
-- Psaní seznam názvů sloupců vkládat do datové sady
+- Zadání seznamu názvů sloupců, které se mají vložit do datové sady
 
 ## <a name="enter-data-manually"></a>Ruční zadávání dat 
   
-1.  Přidat [ručně zadat Data](./enter-data-manually.md) modulu do experimentu. V tomto modulu můžete najít **datový vstup a výstup** kategorie ve službě Azure Machine Learning. 
+1.  Přidejte do experimentu modul [zadat data ručně](./enter-data-manually.md) . Tento modul můžete najít v kategorii **vstup a výstup dat** v Azure Machine Learning. 
   
-2.  Pro **DataFormat**, vyberte jednu z následujících možností. Tyto možnosti určují, jak by měl analyzovat data, která zadáte. Požadavky pro každý formát značně liší, takže nezapomeňte si přečíst související témata.  
+2.  V poli **Formát DataFormat**vyberte jednu z následujících možností. Tyto možnosti určují, jak se mají analyzovat data, která zadáte. Požadavky na jednotlivé formáty se značně liší, proto si nezapomeňte přečíst Příbuzná témata.  
   
-    -   **ARFF**. Atribut vztah formát souboru, používá Weka.   
+    -   **ARFF**. Formát souboru relace atributu, který používá weka.   
   
-    -   **CSV**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převést na sdílený svazek clusteru](./convert-to-csv.md).  
+    -   **CSV**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
   
-    -   **SVMLight**. Formát používaný Vowpal Wabbit a další architektury strojového učení.  
+    -   **SVMLight**. Formát používaný pro dostupné a dalšími architekturami strojového učení.  
   
-    -   **TSV**. Formát hodnoty oddělené tabulátorem.
+    -   **TSV**. Formát hodnot oddělených tabulátorem.
 
-     Pokud volba formátu a neposkytuje data, která splňuje specifikace formátu, dojde k chybě za běhu.
+     Pokud zvolíte Formát a neposkytnete data, která vyhovují specifikacím formátu, dojde k chybě modulu runtime.
   
-3.  Klikněte do **Data** textové pole pro začněte zadávat data. Následující formáty vyžadují zvláštní pozornost:  
+3.  Klikněte do textového pole **data** a začněte zadávat data. Následující formáty vyžadují zvláštní pozornost:  
   
-    - **CSV**:  Chcete-li vytvořit více sloupců, vložte text oddělený čárkami nebo zadejte pomocí čárek mezi poli více sloupců.
+    - **CSV**:  Chcete-li vytvořit více sloupců, vložte text oddělený čárkami nebo zadejte více sloupců pomocí čárky mezi poli.
   
-        Pokud vyberete **HasHeader** možnost, můžete použít první řádek hodnot jako záhlaví sloupce.  
+        Pokud vyberete možnost **HasHeader** , můžete použít první řádek hodnot jako záhlaví sloupce.  
   
-        Pokud výběr této možnosti, názvy sloupců, Sloupec1, Sloupec2 a tak dále, se používají. Můžete přidat nebo změnit sloupce názvy později pomocí [upravit Metadata](./edit-metadata.md).  
+        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupec1, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
   
-    - **TSV**: Chcete-li vytvořit více sloupců, vložte tabulátory oddělený text nebo zadejte pomocí karet mezi poli více sloupců.  
+    - **TSV**: Chcete-li vytvořit více sloupců, vložte text oddělený tabulátorem nebo zadejte více sloupců pomocí karet mezi poli.  
   
-        Pokud vyberete **HasHeader** možnost, můžete použít první řádek hodnot jako záhlaví sloupce.  
+        Pokud vyberete možnost **HasHeader** , můžete použít první řádek hodnot jako záhlaví sloupce.  
   
-        Pokud výběr této možnosti, názvy sloupců, Sloupec1, Sloupec2 a tak dále, se používají. Můžete přidat nebo změnit sloupce názvy později pomocí [upravit Metadata](./edit-metadata.md).  
+        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupec1, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
   
-    -   **ARFF**:  Vložte existující soubor formátu ARFF. Pokud zadáte hodnoty přímo, je potřeba přidat volitelné záhlaví a pole požadovaný atribut na začátku data. 
+    -   **ARFF**:  Vložte do existujícího souboru formátu ARFF. Pokud zadáváte hodnoty přímo, nezapomeňte přidat volitelné záhlaví a požadovaná pole atributu na začátek dat. 
     
-        Například následující řádky záhlaví a atribut může být přidán do jednoduchého seznamu. Záhlaví sloupce bude `SampleText`.
+        Například následující záhlaví a řádky atributů mohou být přidány do jednoduchého seznamu. Záhlaví sloupce by `SampleText`bylo.
     
         ```text
         % Title: SampleText.ARFF  
@@ -73,9 +72,9 @@ Tento modul může být užitečné v situacích, jako je například tyto:
         \<type first data row here>  
         ```
 
-    -   **SVMLight**: Zadejte nebo zkopírujte hodnoty v SVMLight formátu.  
+    -   **SVMLight**: Zadejte nebo vložte hodnoty pomocí formátu SVMLight.  
   
-        Například následující ukázka představuje první řádky několik krve datové sady ve formátu SVMight:  
+        Například následující příklad představuje první pár řádků datové sady krve darování ve formátu SVMight:  
   
         ```text  
         # features are [Recency], [Frequency], [Monetary], [Time]  
@@ -83,24 +82,24 @@ Tento modul může být užitečné v situacích, jako je například tyto:
         1 1:0 2:13 3:3250 4:28   
         ```  
   
-        Při spuštění [ručně zadat Data](./enter-data-manually.md) modulu, tyto řádky jsou převedeny na datovou sadu sloupců a index hodnoty následujícím způsobem:  
+        Když spustíte modul [zadat data ručně](./enter-data-manually.md) , tyto řádky se převedou na datovou sadu sloupců a hodnot indexu následujícím způsobem:  
   
-        |Col1|Col2|Col3|Col4|Popisky|  
+        |Sloupec1|Col2|Col3|Col4|Popisky|  
         |-|-|-|-|-|  
-        |0.00016|0.004|0.999961|0.00784|1|  
-        |0|0.004|0.999955|0.008615|1|  
+        |0,00016|0,004|0,999961|0,00784|1|  
+        |0|0,004|0,999955|0,008615|1|  
   
-4.  Po každý řádek, přejděte na nový řádek stiskněte klávesu ENTER.  
+4.  Po každém řádku stiskněte klávesu ENTER a začněte nový řádek.  
   
-     **Ujistěte se, že stisknutím klávesy ENTER na posledním řádku.** 
+     **Nezapomeňte stisknout ENTER po posledním řádku.** 
      
-     Po stisknutí klávesy ENTER několikrát, chcete-li přidat více prázdné řádky na konci, je odebrán poslední prázdný řádek oříznutý, ale jiné prázdné řádky jsou považovány za chybějící hodnoty.  
+     Pokud přidáte více prázdných koncových řádků několikrát stisknutím klávesy ENTER, bude poslední prázdný řádek oříznutý, ale jiné prázdné řádky budou považovány za chybějící hodnoty.  
   
-     Pokud vytvoříte řádky s chybějící hodnoty, můžete vždy odfiltrovat je později.  
+     Pokud vytvoříte řádky s chybějícími hodnotami, můžete je kdykoli filtrovat později.  
   
-5.  Klikněte pravým tlačítkem na modul a vyberte **spustit vybrané** k parsování dat a jejich načtení do pracovního prostoru jako datová sada.  
+5.  Klikněte pravým tlačítkem na modul a vyberte **Spustit vybrané** a analyzujte data a načtěte je do pracovního prostoru jako datovou sadu.  
   
      Chcete-li zobrazit datovou sadu, klikněte na výstupní port a vyberte **vizualizovat**.  
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4380bf81d05aa5247b57605b2aa53d24a73a0f68
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638589"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142664"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro SQL API: Poznámky ke stažení a verzi
 > [!div class="op_single_selector"]
@@ -218,7 +218,7 @@ ms.locfileid: "68638589"
 * Opravy, aby sada SDK odolnější automatické převzetí služeb při selhání za určitých podmínek.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Oprava problému, který občas způsobí WebException: Vzdálený název se nedá rozpoznat.
+* Oprava problému, který občas způsobí WebException: Vzdálený název se nedal přeložit.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -377,6 +377,10 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 
 Všechny požadavky na Azure Cosmos DB s využitím vyřazené sady SDK jsou službou odmítnuty.
 
+> [!WARNING]
+> Všechny verze **1. x** sady .NET SDK pro rozhraní SQL API budou vycházet z **30. srpna 2020**.
+> 
+>
 <br/>
 
 | Version | Datum vydání | Datum vyřazení z provozu |
@@ -394,52 +398,52 @@ Všechny požadavky na Azure Cosmos DB s využitím vyřazené sady SDK jsou slu
 | [2.1.1](#2.1.1) |27. září 2018 |--- |
 | [2.1.0](#2.1.0) |21. září 2018 |--- |
 | [2.0.0](#2.0.0) |07. září 2018 |--- |
-| [1.22.0](#1.22.0) |19. dubna 2018 |--- |
-| [1.21.1](#1.20.1) |09. března 2018 |--- |
-| [1.20.2](#1.20.1) |21. února 2018 |--- |
-| [1.20.1](#1.20.1) |05. února 2018 |--- |
-| [1.19.1](#1.19.1) |16. listopadu 2017 |--- |
-| [1.19.0](#1.19.0) |10. listopadu 2017 |--- |
-| [1.18.1](#1.18.1) |07. listopadu 2017 |--- |
-| [1.18.0](#1.18.0) |17. října 2017 |--- |
-| [1.17.0](#1.17.0) |10. srpna 2017 |--- |
-| [1.16.1](#1.16.1) |07. srpna 2017 |--- |
-| [1.16.0](#1.16.0) |02. srpna 2017 |--- |
-| [1.15.0](#1.15.0) |30. června 2017 |--- |
-| [1.14.1](#1.14.1) |23. května 2017 |--- |
-| [1.14.0](#1.14.0) |10. května 2017 |--- |
-| [1.13.4](#1.13.4) |9\. května 2017 |--- |
-| [1.13.3](#1.13.3) |6\. května 2017 |--- |
-| [1.13.2](#1.13.2) |19. dubna 2017 |--- |
-| [1.13.1](#1.13.1) |29. března 2017 |--- |
-| [1.13.0](#1.13.0) |24. března 2017 |--- |
-| [1.12.2](#1.12.2) |20. března 2017 |--- |
-| [1.12.1](#1.12.1) |14. března 2017 |--- |
-| [1.12.0](#1.12.0) |15. února 2017 |--- |
-| [1.11.4](#1.11.4) |06 6. února 2017 |--- |
-| [1.11.3](#1.11.3) |26. ledna 2017 |--- |
-| [1.11.1](#1.11.1) |21. prosince 2016 |--- |
-| [1.11.0](#1.11.0) |08 8. prosince 2016 |--- |
-| [1.10.0](#1.10.0) |27. září 2016 |--- |
-| [1.9.5](#1.9.5) |Září 01, 2016 |--- |
-| [1.9.4](#1.9.4) |24. srpna 2016 |--- |
-| [1.9.3](#1.9.3) |15. srpna 2016 |--- |
-| [1.9.2](#1.9.2) |23. července 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.1](#1.7.1) |6\. května 2016 |--- |
-| [1.7.0](#1.7.0) |26. dubna 2016 |--- |
-| [1.6.3](#1.6.3) |08 8. dubna 2016 |--- |
-| [1.6.2](#1.6.2) |29. března 2016 |--- |
-| [1.5.3](#1.5.3) |19. února 2016 |--- |
-| [1.5.2](#1.5.2) |14. prosince 2015 |--- |
-| [1.5.1](#1.5.1) |23. listopadu 2015 |--- |
-| [1.5.0](#1.5.0) |05. října 2015 |--- |
-| [1.4.1](#1.4.1) |25. srpna 2015 |--- |
-| [1.4.0](#1.4.0) |13. srpna 2015 |--- |
-| [1.3.0](#1.3.0) |05. srpna 2015 |--- |
-| [1.2.0](#1.2.0) |06 z července 2015 |--- |
-| [1.1.0](#1.1.0) |30. dubna 2015 |--- |
-| [1.0.0](#1.0.0) |08 8. dubna 2015 |--- |
+| [1.22.0](#1.22.0) |19. dubna 2018 | 30. srpna 2020 |
+| [1.21.1](#1.20.1) |09. března 2018 |30. srpna 2020 |
+| [1.20.2](#1.20.1) |21. února 2018 |30. srpna 2020 |
+| [1.20.1](#1.20.1) |05. února 2018 |30. srpna 2020 |
+| [1.19.1](#1.19.1) |16. listopadu 2017 |30. srpna 2020 |
+| [1.19.0](#1.19.0) |10. listopadu 2017 |30. srpna 2020 |
+| [1.18.1](#1.18.1) |07. listopadu 2017 |30. srpna 2020 |
+| [1.18.0](#1.18.0) |17. října 2017 |30. srpna 2020 |
+| [1.17.0](#1.17.0) |10. srpna 2017 |30. srpna 2020 |
+| [1.16.1](#1.16.1) |07. srpna 2017 |30. srpna 2020 |
+| [1.16.0](#1.16.0) |02. srpna 2017 |30. srpna 2020 |
+| [1.15.0](#1.15.0) |30. června 2017 |30. srpna 2020 |
+| [1.14.1](#1.14.1) |23. května 2017 |30. srpna 2020 |
+| [1.14.0](#1.14.0) |10. května 2017 |30. srpna 2020 |
+| [1.13.4](#1.13.4) |9\. května 2017 |30. srpna 2020 |
+| [1.13.3](#1.13.3) |6\. května 2017 |30. srpna 2020 |
+| [1.13.2](#1.13.2) |19. dubna 2017 |30. srpna 2020 |
+| [1.13.1](#1.13.1) |29. března 2017 |30. srpna 2020 |
+| [1.13.0](#1.13.0) |24. března 2017 |30. srpna 2020 |
+| [1.12.2](#1.12.2) |20. března 2017 |30. srpna 2020 |
+| [1.12.1](#1.12.1) |14. března 2017 |30. srpna 2020 |
+| [1.12.0](#1.12.0) |15. února 2017 |30. srpna 2020 |
+| [1.11.4](#1.11.4) |06 6. února 2017 |30. srpna 2020 |
+| [1.11.3](#1.11.3) |26. ledna 2017 |30. srpna 2020 |
+| [1.11.1](#1.11.1) |21. prosince 2016 |30. srpna 2020 |
+| [1.11.0](#1.11.0) |08 8. prosince 2016 |30. srpna 2020 |
+| [1.10.0](#1.10.0) |27. září 2016 |30. srpna 2020 |
+| [1.9.5](#1.9.5) |Září 01, 2016 |30. srpna 2020 |
+| [1.9.4](#1.9.4) |24. srpna 2016 |30. srpna 2020 |
+| [1.9.3](#1.9.3) |15. srpna 2016 |30. srpna 2020 |
+| [1.9.2](#1.9.2) |23. července 2016 |30. srpna 2020 |
+| [1.8.0](#1.8.0) |14. června 2016 |30. srpna 2020 |
+| [1.7.1](#1.7.1) |6\. května 2016 |30. srpna 2020 |
+| [1.7.0](#1.7.0) |26. dubna 2016 |30. srpna 2020 |
+| [1.6.3](#1.6.3) |08 8. dubna 2016 |30. srpna 2020 |
+| [1.6.2](#1.6.2) |29. března 2016 |30. srpna 2020 |
+| [1.5.3](#1.5.3) |19. února 2016 |30. srpna 2020 |
+| [1.5.2](#1.5.2) |14. prosince 2015 |30. srpna 2020 |
+| [1.5.1](#1.5.1) |23. listopadu 2015 |30. srpna 2020 |
+| [1.5.0](#1.5.0) |05. října 2015 |30. srpna 2020 |
+| [1.4.1](#1.4.1) |25. srpna 2015 |30. srpna 2020 |
+| [1.4.0](#1.4.0) |13. srpna 2015 |30. srpna 2020 |
+| [1.3.0](#1.3.0) |05. srpna 2015 |30. srpna 2020 |
+| [1.2.0](#1.2.0) |06 z července 2015 |30. srpna 2020 |
+| [1.1.0](#1.1.0) |30. dubna 2015 |30. srpna 2020 |
+| [1.0.0](#1.0.0) |08 8. dubna 2015 | 30. srpna 2020 |
 
 
 ## <a name="faq"></a>Nejčastější dotazy

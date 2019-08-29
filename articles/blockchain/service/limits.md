@@ -1,8 +1,8 @@
 ---
-title: Azure Blockchain Limits
-description: Přehled služby Azure a funkční omezení ve službě Azure Blockchain
+title: Omezení Azure blockchain
+description: Přehled služby a funkční omezení ve službě Azure blockchain
 services: azure-blockchain
-keywords: blockchain
+keywords: Blockchain
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
@@ -10,58 +10,58 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028167"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147145"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Omezení ve službě Azure Blockchain
+# <a name="limits-in-azure-blockchain-service"></a>Omezení ve službě Azure blockchain
 
-Služba Azure Blockchain má služby a funkční omezení, jako je počet uzlů, které může mít člena, consortium omezení a úložiště částky.
+Služba Azure blockchain má omezení služby a funkčnosti, jako je počet uzlů, které může mít člen, omezení konsorcia a množství úložiště.
 
 ## <a name="pricing-tier"></a>Cenová úroveň
 
-Maximální počtu transakcí a uzly program pro ověření závisí na tom, jestli si zřídíte službu Azure Blockchain na Basic nebo Standard cenové úrovně.
+Maximální limity pro transakce a uzly validátoru závisí na tom, jestli zřizujete službu Azure blockchain na úrovních Basic nebo Standard.
 
-| Cenová úroveň | Maximální počet transakcí uzly | Maximální počet uzlů program pro ověření |
+| Cenová úroveň | Maximální počet uzlů transakcí | Maximální počet uzlů validátoru |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-Po vytvoření členu není podporováno při změně cenové úrovně mezi Basic a Standard.
+Změna cenové úrovně mezi základními a standardními po vytvoření členů není podporována.
 
 ## <a name="storage-capacity"></a>Kapacita úložiště
 
-Maximální velikost úložiště, které je možné použít pro uzel knihy dat a protokolů je 1 terabajt.
+Maximální velikost úložiště, které je možné použít pro jednotlivé uzly pro data a protokoly hlavní knihy, je 1,8 terabajtů.
 
-Snížení velikosti úložiště knihy a protokolu se nepodporuje.
+Zmenšení hlavní knihy a velikosti úložiště protokolů se nepodporuje.
 
-## <a name="consortium-limits"></a>Omezení W3C
+## <a name="consortium-limits"></a>Omezení konsorcia
 
-* **Názvy Consortium a člena musí být jedinečné** od jiných názvů consortium a členů ve službě Azure Blockchain.
+* **Názvy konsorcia a členů musí být** v rámci služby Azure blockchain jedinečné od ostatních názvů Consortium a member.
 
-* **Názvy členů a consortium nelze změnit.**
+* **Názvy členů a konsorcia se nedají změnit.**
 
-* **Všechny členy konsorcium musí být v rámci stejné cenové úrovně**
+* **Všichni členové konsorcia musí být ve stejné cenové úrovni.**
 
-* **Všechny členy, které jsou součástí konsorcium se musí nacházet ve stejné oblasti**
+* **Všichni členové, kteří se účastní konsorcium, se musí nacházet ve stejné oblasti.**
 
-    První člen vytvořené v konsorcium určuje oblast. Pozvaní členové pro konsorcia se musí nacházet ve stejné oblasti jako první člen. Omezení členů do stejné oblasti ujistil, že caiq sítě není mít negativní dopad.
+    První člen vytvořený v konsorciu určuje oblast. Pozvaní členové do konsorcia musí být ve stejné oblasti jako první člen. Omezení všech členů na stejnou oblast vám pomůže zajistit, aby se v síti nepříznivě ovlivnila shoda.
 
-* **Konsorcium musí mít aspoň jednoho správce**
+* **Konsorcium musí mít aspoň jednoho správce.**
 
-    Pokud je v konsorcium jen jednoho správce, nemohou sami odebrat z konsorcia nebo odstranit jejich členů, dokud se přidá nebo propagovány konsorcia jiným správcem.
+    Pokud má konsorcium pouze jednoho správce, nemůže z konsorcia odstranit ani odstranit jeho člena, dokud není do konsorcia přidán nebo povýšen jiný správce.
 
-* **Odebrat z konsorcia členy nejde znovu přidat.**
+* **Členy odebrané z konsorcia nelze znovu přidat.**
 
-    Místo toho se musí se znovu pozvat spojit konsorcia a vytvoření nového člena. Jejich existující prostředek člen nejsou odstranit pro zachování historie transakcí.
+    Místo toho je nutné je znovu pozvat, aby se připojili k konsorciu a vytvořil nový člen. Jejich stávající členské prostředky nejsou odstraněny pro zachování historických transakcí.
 
-* **Všechny členy konsorcium musí používat stejnou verzi účetní kniha**
+* **Všichni členové konsorcia musí používat stejnou verzi hlavní knihy.**
 
-    Další informace o použití dílčích oprav, aktualizace a verze knihy ve službě Azure Blockchain k dispozici, najdete v části [opravy, aktualizace a verze](ledger-versions.md).
+    Další informace o opravách, aktualizacích a verzích hlavní knihy dostupných ve službě Azure blockchain najdete v článku o [opravách, aktualizacích a verzích](ledger-versions.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití dílčích oprav, aktualizace a verze](ledger-versions.md)
+* [Opravy, aktualizace a verze](ledger-versions.md)

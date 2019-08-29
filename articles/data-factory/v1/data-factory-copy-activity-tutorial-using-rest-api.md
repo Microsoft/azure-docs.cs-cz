@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití rozhraní REST API vytvoříte kanál Azure Data Factory | Dokumentace Microsoftu'
+title: 'Kurz: Vytvoření kanálu Azure Data Factory pomocí REST APIu | Microsoft Docs'
 description: V tomto kurzu pomocí rozhraní REST API vytvoříte kanál Azure Data Factory s aktivitou kopírování pro kopírování dat z úložiště objektů blob v Azure do databáze Azure SQL.
 services: data-factory
 documentationcenter: ''
@@ -9,19 +9,18 @@ editor: ''
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b5698d94a09096d58b316ca3b23bead5b1a39a7
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 187d8375220c5dbfbaf0b92d41231dedd7e71ee6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839409"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140228"
 ---
-# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API vytvoříte kanál Azure Data Factory pro kopírování dat 
+# <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití REST API k vytvoření kanálu Azure Data Factory ke kopírování dat 
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
@@ -45,7 +44,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 > [!NOTE]
 > Tento článek nepopisuje všechny možnosti rozhraní REST API služby Data Factory. Úplnou dokumentaci o rutinách služby Data Factory najdete v článku [Rozhraní REST API služby Data Factory - referenční informace](/rest/api/datafactory/).
 >  
-> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu [kurzu: Vytvoření kanálu pro transformaci dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Kurz o tom, jak transformovat data pomocí Azure Data Factory, najdete [v tématu Kurz: Vytvořte kanál pro transformaci dat pomocí clusteru](data-factory-build-your-first-pipeline.md)Hadoop.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -187,7 +186,7 @@ Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu 
 | format -> type |Vstupní soubor je v textovém formátu, takže použijeme **TextFormat**. |
 | columnDelimiter | Sloupce ve vstupním souboru jsou oddělené **znakem čárky (`,`)** . |
 | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, takže vstupní řezy jsou dostupné **každou hodinu**. Jinými slovy služba Data Factory každou hodinu vyhledá vstupní data v kořenové složce kontejneru objektů blob (**adftutorial**), který jste zadali. Vyhledává data v rámci kanálu mezi časy spuštění a ukončení, ne před nebo po této době.  |
-| external | Pokud data nevygeneroval tento kanál, je tato vlastnost nastavená na hodnotu **true**. Vstupní data v tomto kurzu jsou v souboru emp.txt, který není generován tímto kanálem, proto jsme tuto vlastnost nastavili na hodnotu true. |
+| externí | Pokud data nevygeneroval tento kanál, je tato vlastnost nastavená na hodnotu **true**. Vstupní data v tomto kurzu jsou v souboru emp.txt, který není generován tímto kanálem, proto jsme tuto vlastnost nastavili na hodnotu true. |
 
 Další informace o těchto vlastnostech JSON najdete v článku [Konektor Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
 
@@ -352,7 +351,7 @@ V tomto kroku vytvoříte objekt služby Azure Data Factory s názvem **ADFCopyT
 
 Je třeba počítat s následujícím:
 
-* Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí ve výsledcích zobrazí chyba: **Název objektu pro vytváření dat "ADFCopyTutorialDF" není k dispozici**, proveďte následující kroky:  
+* Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se ve výsledcích zobrazí chyba: **Název objektu pro vytváření dat "ADFCopyTutorialDF" není k dispozici**, proveďte následující kroky:  
   
   1. Změňte název (například yournameADFCopyTutorialDF) v souboru **datafactory.json**.
   2. V prvním příkazu, kde je proměnné **$cmd** přiřazena hodnota, nahraďte ADFCopyTutorialDF novým názvem a spusťte příkaz. 
@@ -361,7 +360,7 @@ Je třeba počítat s následujícím:
      V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
 * Instance služby Data Factory můžete vytvářet jenom tehdy, když jste přispěvatelem/správcem předplatného Azure.
 * Název objektu pro vytváření dat se může v budoucnu zaregistrovat jako název DNS, takže pak bude veřejně viditelný.
-* Pokud se zobrazí chybová zpráva: "**Toto předplatné není zaregistrované používání oboru názvů Microsoft.DataFactory**", proveďte jednu z následujících akcí a znovu zkuste název publikovat: 
+* Pokud se zobrazí chyba: "**Toto předplatné není zaregistrované pro používání oboru názvů Microsoft. DataFactory**", proveďte jednu z následujících akcí a zkuste publikovat znovu: 
   
   * Spuštěním následujícího příkazu v prostředí Azure PowerShell zaregistrujte zprostředkovatele služby Data Factory: 
 
@@ -378,7 +377,7 @@ Je třeba počítat s následujícím:
 Před vytvořením kanálu je nejdřív potřeba vytvořit několik entit služby Data Factory. Nejprve vytvoříte propojené služby propojující zdrojové a cílové úložiště dat do vašeho úložiště dat. Poté definujte vstupní a výstupní datové sady pro reprezentaci dat v propojených úložištích dat. Nakonec vytvořte kanál s aktivitou, která používá tyto datové sady.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). Proto vytvoříte dvě propojené služby s názvem AzureStorageLinkedService a AzureSqlLinkedService typu: AzureStorage a AzureSqlDatabase.  
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). Proto vytvoříte dvě propojené služby s názvem AzureStorageLinkedService a AzureSqlLinkedService typů: AzureStorage a AzureSqlDatabase.  
 
 Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s datovou továrnou. Tento účet úložiště je ten, ve kterém jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili kontejner a nahráli do něj data.   
 

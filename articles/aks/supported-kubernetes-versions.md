@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982698"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147223"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -49,13 +49,13 @@ AKS podporuje čtyři dílčí verze Kubernetes:
 
 To se označuje jako "N-3" – (N (nejnovější verze)-3 (podverze)).
 
-Například pokud AKS zavádí *1.13. x* ještě dnes, podpora je poskytována pro následující verze:
+Například pokud AKS zavádí *otázku 1.13. a* , je k dispozici podpora pro následující verze:
 
 Nová dílčí verze    |    Seznam podporovaných verzí
 -----------------    |    ----------------------
-1.13. x               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1.10. a, 1.10. b
 
-Kde "x" a ". a" a ". b" představují reprezentativní verze oprav.
+Kde ". a" a ". b" jsou reprezentativními verzemi oprav. " "z" 1.13. a se může lišit od 1.12. a. Například 1.13.9 a 1.12.8.
 
 Podrobnosti o komunikaci týkající se změn a očekávání verzí najdete v části "komunikace" níže.
 
@@ -72,7 +72,7 @@ Pokud je zavedena nová podverze, je podpora nejstarší dílčí verze a vydán
 1.9.b
 ```
 
-A AKS verze 1.13. x to znamená, že verze 1.9. x (všechny verze 1,9) budou odebrány a mimo podporu.
+A AKS verze 1,13. *to znamená, že 1,9.* verze (všechny verze 1,9) se odeberou a nepodporují.
 
 > [!NOTE]
 > Upozorňujeme, že pokud na zákaznících běží Nepodporovaná verze Kubernetes, zobrazí se jim výzva k upgradu při žádosti o podporu pro cluster. Clustery, na kterých běží Nepodporovaná vydání Kubernetes, se nevztahují na [zásady podpory AKS](https://docs.microsoft.com/azure/aks/support-policies).
@@ -126,7 +126,7 @@ Konkrétní vydané verze oprav se můžou přeskočit nebo se zrychlí v závis
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Výchozí verze Azure Portal a CLI
 
-Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se vždycky nastaví na N-1 dílčí verzi a nejnovější opravu. Například pokud AKS podporuje *1.13. x*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, je výchozí verze pro nové clustery *1.12. b.* .
+Když nasadíte cluster AKS na portálu nebo pomocí rozhraní příkazového řádku Azure CLI, cluster se vždycky nastaví na N-1 dílčí verzi a nejnovější opravu. Například pokud AKS podporuje *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1.10. a* + *1.10 b*, je výchozí verze pro nové clustery *1.12. b.* .
 
 AKS má výchozí hodnotu N-1 (moll. latestPatch, například 1.12. b), aby zákazníkům poskytovala známou, stabilní a opravenou verzi ve výchozím nastavení.
 
@@ -161,8 +161,8 @@ KubernetesVersion    Upgrades
 
 Pokud se nacházíte na *n-4* verzi, jste mimo podporu a budete vyzváni k upgradu. Pokud upgrade z verze n-4 na n-3 uspěje, jste teď v rámci našich zásad podpory. Příklad:
 
-- Pokud podporované verze AKS jsou *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*a *1.10. e* + *1.10 f* a jste na *1,9. g* nebo *1.9. h*, jste mimo podporu.
-- Pokud upgrade z *1.9. g* nebo *1.9. h* na *1.10. e* nebo je *1.10. f* úspěšné, jste zpátky v rámci našich zásad podpory.
+- Pokud podporované verze AKS jsou *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*a *1.10. f* + *1.10. g* a jste na *1,9. h* nebo *1.9. i* , jste mimo podporu.
+- Pokud je upgrade z *1.9. h* nebo *1.9. i* na *1.10. f* nebo *1.10. g* úspěšný, jste zpátky v rámci našich zásad podpory.
 
 Upgrady na verze starší než *n-4* nejsou podporovány. V takových případech doporučujeme zákazníkům vytvořit nové clustery AKS a znovu nasazovat své úlohy.
 

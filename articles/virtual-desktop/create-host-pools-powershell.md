@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2fd8934f34b811c0a2532f27e32fc799c2c8186e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563291"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141852"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -82,7 +82,7 @@ K úspěšnému připojení k doméně udělejte na každém virtuálním počí
 5. Proveďte ověření pomocí doménového účtu, který má oprávnění k počítačům připojeným k doméně.
 
     >[!NOTE]
-    > Pokud se k virtuálním počítačům připojujete do prostředí Azure AD Domain Services, ujistěte se, že je uživatel připojení k doméně taky členem [skupiny správců AAD řadiče domény](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
+    > Pokud se připojujete k virtuálním počítačům do prostředí Azure Active Directory Domain Services (Azure služba AD DS), ujistěte se, že je uživatel připojení k doméně také členem [skupiny správců AAD řadiče domény](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group).
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrace virtuálních počítačů do fondu hostitelů ve službě Windows Virtual Desktop Preview
 
@@ -103,7 +103,7 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 >[!IMPORTANT]
 >Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste vytvořili fond hostitelů, můžete ho naplnit pomocí vzdálených aplikací RemoteApp. Další informace o správě aplikací ve virtuálním počítači s Windows najdete v kurzu Správa skupin aplikací.
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: bc93dcea74f0660a4f56aec237eaae5a4e3eeb9a
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a1b206b3be4cf012d7d0cd399cf2a67d853537b1
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904531"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147399"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
@@ -53,7 +53,7 @@ Na konci tohoto kurzu máte dvě aplikace v Pythonu:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Níže jsou uvedené pokyny k instalaci požadovaných součástí.
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -348,7 +348,7 @@ Nyní můžete spustit aplikace.
 
     ![Ukázka úlohy IoT Hub 2 – výstup zařízení](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízení a aktualizaci vlastností vlákna zařízení.
 

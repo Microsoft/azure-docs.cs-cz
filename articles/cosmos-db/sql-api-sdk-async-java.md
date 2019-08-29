@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624692"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142656"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK pro SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -152,9 +152,13 @@ Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK. P
 
 Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
 
+> [!WARNING]
+> **30. srpna 2020**se vyřadí všechny verze **1. x** asynchronní sady Java SDK pro SQL API.
+> 
+>
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |5\. března 2019|--- |
 | [2.4.2](#2.4.2) |1\. březen 2019|--- |
@@ -169,9 +173,9 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [2.1.0](#2.1.0) |5\. září 2018|--- |
 | [2.0.1](#2.0.1) |16. srpna 2018|--- |
 | [2.0.0](#2.0.0) |20. června 2018|--- |
-| [1.0.2](#1.0.2) |18. května 2018|--- |
-| [1.0.1](#1.0.1) |20. dubna 2018|--- |
-| [1.0.0](#1.0.0) |27. února 2018|--- |
+| [1.0.2](#1.0.2) |18. května 2018|30. srpna 2020 |
+| [1.0.1](#1.0.1) |20. dubna 2018|30. srpna 2020 |
+| [1.0.0](#1.0.0) |27. února 2018|30. srpna 2020 |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

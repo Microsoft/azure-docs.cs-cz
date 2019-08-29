@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery - vyloučení disků při replikaci virtuálních počítačů Azure pomocí Azure Powershellu | Dokumentace Microsoftu
-description: Zjistěte, jak vyloučit disky virtuálních počítačů Azure během Azure Site Recovery s využitím Azure Powershellu.
-services: site-recovery
+title: Azure Site Recovery – vyloučení disků během replikace virtuálních počítačů Azure pomocí Azure PowerShell | Microsoft Docs
+description: Přečtěte si, jak vyloučit disky virtuálních počítačů Azure během Azure Site Recovery pomocí Azure PowerShell.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160302"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147048"
 ---
-# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Vyloučení disků z replikace virtuálních počítačů Azure Powershellu
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Vyloučení disků z replikace PowerShellu virtuálních počítačů Azure
 
-Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počítačů Azure. Může vyloučit disky pro optimalizaci šířky pásma spotřebovaná replikace nebo cílové straně prostředky, které používají tyto disky. Tato funkce je aktuálně dostupná jenom prostřednictvím Azure Powershellu.
+Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počítačů Azure. Disky můžete vyloučit pro optimalizaci spotřebované šířky pásma replikace nebo prostředků na cílové straně, které tyto disky používají. V současné době je tato funkce dostupná jenom prostřednictvím Azure PowerShell.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -26,25 +25,25 @@ Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počí
 
 Než začnete, potřebujete:
 
-- Ujistěte se, že rozumíte [komponent a architektury zotavení po havárii](azure-to-azure-architecture.md).
+- Ujistěte se, že rozumíte [architektuře a komponentám zotavení po havárii](azure-to-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](azure-to-azure-support-matrix.md) pro všechny komponenty.
-- Ujistěte se, že máte AzureRm Powershellu "Az" modulu. Pro instalaci nebo aktualizaci prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Ujistěte se, že jste vytvořili trezor služby recovery services a aspoň jednou chráněný virtuální počítač. Pokud jste tyto věci takto neučinili, pokračujte v procesu v [nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu](azure-to-azure-powershell.md).
+- Ujistěte se, že máte modul PowerShell AzureRm "AZ". Pokud chcete nainstalovat nebo aktualizovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Ujistěte se, že jste aspoň jednou vytvořili trezor služby Recovery Services a chráněné virtuální počítače. Pokud jste tyto věci neudělali, postupujte podle pokynů v části [Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell](azure-to-azure-powershell.md).
 
-## <a name="why-exclude-disks-from-replication"></a>Proč vylučovat disky z replikace
-Je třeba vyloučit disky z replikace, protože:
+## <a name="why-exclude-disks-from-replication"></a>Důvody vyloučení disků z replikace
+Je možné, že budete chtít vyloučit disky z replikace z těchto důvodů:
 
-- Váš virtuální počítač byl dosažen [frekvence změny limity Azure Site Recovery k replikaci dat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+- Virtuální počítač dosáhl [Azure Site Recovery omezení pro replikaci sazeb změny dat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
 
-- Měněná data uložená na vyloučených discích nejsou důležitá nebo nemusí být replikována.
+- Data, která jsou stejná na vyloučeném disku, nejsou důležitá nebo nemusí být replikována.
 
-- Chcete uložit úložné a síťové prostředky odstraněním potřeby replikace data.
+- Chcete uložit úložiště a síťové prostředky tím, že se data nereplikují.
 
-## <a name="how-to-exclude-disks-from-replication"></a>Jak vyloučit disky z replikace
+## <a name="how-to-exclude-disks-from-replication"></a>Vyloučení disků z replikace
 
-V našem příkladu jsme replikovat virtuální počítač, který má jeden operační systém a tři datové disky, které jsou na oblast východní USA pro oblast západní USA 2. Název virtuálního počítače je *AzureDemoVM*. Vyloučení disku se 1 jsme zachovat disky 2 a 3.
+V našem příkladu budeme replikovat virtuální počítač, který má jeden operační systém a tři datové disky, které jsou v Východní USA oblasti, do Západní USA 2 oblasti. Název virtuálního počítače je *AzureDemoVM*. Vyloučíme disk 1 a zachováte disky 2 a 3.
 
-## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Získat podrobnosti pro replikaci virtuálních počítačů
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Získat podrobnosti o virtuálních počítačích, které se mají replikovat
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -69,7 +68,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Získáte podrobné informace o discích virtuálních počítačů. Tyto informace se použije později při spuštění replikace virtuálního počítače.
+Získejte podrobnosti o discích virtuálního počítače. Tyto informace se použijí později při zahájení replikace virtuálního počítače.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -78,9 +77,9 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ## <a name="replicate-an-azure-virtual-machine"></a>Replikace virtuálního počítače Azure
 
-V následujícím příkladu předpokládáme, že už máte účet úložiště mezipaměti, zásady replikace a mapování. Pokud nemáte k dispozici tyto věci, postupujte podle procesu na [nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu](azure-to-azure-powershell.md).
+V následujícím příkladu předpokládáme, že už máte účet úložiště mezipaměti, zásady replikace a mapování. Pokud tyto věci nemáte, postupujte podle pokynů v části [Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell](azure-to-azure-powershell.md).
 
-Replikace virtuálního počítače Azure s *spravované disky*.
+Replikace virtuálního počítače Azure se *spravovanými disky*.
 
 ```azurepowershell
 
@@ -128,14 +127,14 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Když operace počáteční replikace skončí úspěšně, data virtuálního počítače se replikují do oblasti pro zotavení.
+Po úspěšném provedení operace spuštění replikace se data virtuálního počítače replikují do oblasti obnovení.
 
-Můžete přejít na web Azure Portal a zobrazit replikované virtuální počítače v části "replikované položky."
+Můžete přejít na Azure Portal a zobrazit replikované virtuální počítače v části replikované položky.
 
-Proces replikace začne synchronizace replik indexů kopii replikační disky virtuálního počítače v oblasti obnovení. Tato fáze se nazývá fáze počáteční replikace.
+Proces replikace začíná vytvořením kopie replikačních disků virtuálního počítače v oblasti obnovení. Tato fáze se nazývá fáze prvotní replikace.
 
-Po dokončení počáteční replikace, replikace přejde k fázi rozdílové synchronizace. V tomto okamžiku je chráněný virtuální počítač. Vyberte chráněný virtuální počítač, pokud chcete zobrazit, pokud jsou vyloučeny všechny disky.
+Po dokončení počáteční replikace se replikace přesune do fáze rozdílové synchronizace. V tuto chvíli je virtuální počítač chráněný. Vyberte chráněný virtuální počítač a zjistěte, jestli nejsou nějaké disky vyloučené.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o [spuštění testovacího převzetí služeb při](site-recovery-test-failover-to-azure.md).
+Přečtěte si o [spuštění testovacího převzetí služeb při selhání](site-recovery-test-failover-to-azure.md).

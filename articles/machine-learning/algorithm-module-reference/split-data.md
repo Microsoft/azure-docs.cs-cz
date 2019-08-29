@@ -1,7 +1,7 @@
 ---
-title: 'Rozdělení dat: Odkaz na modul'
+title: 'Rozdělit data: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu rozdělení dat ve službě Azure Machine Learning datové sady rozdělit do dvou různých sad.
+description: Naučte se používat modul rozdělit data ve službě Azure Machine Learning k rozdělení datové sady do dvou různých sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,110 +9,109 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: a7395280ed9a2e9dcb94a081f0b3bf10a28da719
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029397"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128464"
 ---
-# <a name="split-data-module"></a>Modul rozdělení dat.
+# <a name="split-data-module"></a>Modul rozdělení dat
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k rozdělení na dvě odlišné sady datové sady.
+Pomocí tohoto modulu můžete rozdělit datovou sadu do dvou různých sad.
 
-Tento modul je zvlášť užitečné, když budete chtít rozdělit data do trénování a testování sad. Můžete přizpůsobit tak, že data rozdělená také. Některé možnosti podporují náhodné dat; ostatní jsou přizpůsobené pro datový typ nebo typ modelu.
+Tento modul je zvláště užitečný v případě, že potřebujete oddělit data do sad pro školení a testování. Můžete přizpůsobit také způsob, jakým jsou data rozdělena. Některé možnosti podporují náhodnost dat; jiné jsou přizpůsobené pro určitý typ dat nebo model.
 
-## <a name="how-to-configure"></a>Postup konfigurace
+## <a name="how-to-configure"></a>Jak nakonfigurovat
 
 > [!TIP]
-> Před výběrem rozdělení režimu, číst všechny možnosti, které určují typ rozdělení, které potřebujete.
-> Pokud změníte rozdělení režimu, může resetovat další možnosti.
+> Než zvolíte režim rozdělování, přečtěte si všechny možnosti a určete typ rozdělení, který potřebujete.
+> Pokud změníte rozdělovací režim, můžete obnovit všechny ostatní možnosti.
 
-1. Přidat **rozdělení dat** modulu do experimentu v rozhraní. Můžete najít tento modul v rámci **transformace dat**v **ukázka a rozdělení** kategorie.
+1. Přidejte modul **rozdělit data** do experimentu v rozhraní. Tento modul můžete najít v části **transformace dat**v kategorii **Ukázka a rozdělení** .
 
-2. **Rozdělení režimu**: Vyberte jednu z následujících režimů, v závislosti na typu dat, která máte, a způsobu jeho rozdělení. Oba režimy dělení má různé možnosti. Klikněte na následující témata pro podrobné pokyny a příklady. 
+2. **Režim rozdělení**: V závislosti na typu dat a způsobu, jakým je chcete rozdělit, vyberte jeden z následujících režimů. Každý režim rozdělování má různé možnosti. Podrobné pokyny a příklady získáte kliknutím na následující témata. 
 
-    - **Rozdělit řádky**: Tuto možnost použijte, pokud chcete jenom data rozdělit do dvou částí. Můžete určit procento data vložit do jednotlivých rozdělit, ale ve výchozím nastavení, rozdělení dat. 50-50.
+    - **Rozdělit řádky**: Tuto možnost použijte, pokud chcete pouze rozdělit data do dvou částí. Můžete určit procento dat, která mají být vložena do každého rozdělení, ale ve výchozím nastavení jsou data rozdělena 50-50.
 
-        Můžete také náhodně výběr řádků v jednotlivých skupinách a použití vrstveného vzorkování. V vrstveného vzorkování, musíte vybrat jednoho sloupce dat, pro které chcete hodnoty rozdělí rovnoměrně mezi dvěma výsledků datové sady.  
+        Můžete také náhodně vybrat řádky v každé skupině a použít vzorkování stratified. V stratified vzorkování musíte vybrat jeden sloupec dat, pro který chcete hodnoty rozdělit rovnoměrně mezi dvě datové sady výsledků.  
 
-    - **Regulární výraz rozdělení** tuto možnost zvolte, pokud chcete rozdělit vaše datová sada při testování jednoho sloupce pro hodnoty.
+    - **Rozdělení regulárního výrazu**  Tuto možnost vyberte, pokud chcete datovou sadu rozdělit tak, že otestujete jeden sloupec s hodnotou.
 
-        Například pokud je analýza mínění, můžete zkontrolovat přítomnost konkrétní produkt název do textového pole a datové sady rozdělit řádky s cílový název produktu a ta bez.
+        Pokud například analyzujete mínění, mohli byste vyhledat přítomnost konkrétního názvu produktu v textovém poli a potom datovou sadu rozdělit do řádků s cílovým názvem produktu a bez.
 
-    - **Rozdělení relativní výraz**:  Tuto možnost použijte, kdykoli budete chtít použít podmínku pro číslo sloupce. Číslo může být pole data a času, obsahující stáří sloupec nebo korunách nebo dokonce i v procentech. Můžete například chtít rozdělit datovou sadu v závislosti na náklady na skupiny uživatelů podle věku rozsahů nebo samostatné dat podle kalendářního data položky.
+    - **Rozdělení relativního výrazu**:  Tuto možnost použijte vždy, když chcete podmínku použít pro sloupec s čísly. Toto číslo může být pole Datum a čas, sloupec obsahující věkové nebo dolarové částky nebo dokonce i procento. Například můžete chtít rozdělit datovou sadu podle nákladů na položky, seskupit lidi podle věkových rozsahů nebo jednotlivé údaje podle kalendářního data.
 
 ### <a name="split-rows"></a>Rozdělit řádky
-1.  Přidat [rozdělení dat](./split-data.md) modulu do experimentu v rozhraní a připojit datové sady, kterou chcete rozdělit.
+1.  Přidejte modul [rozdělit data](./split-data.md) do experimentu v rozhraní a připojte datovou sadu, kterou chcete rozdělit.
   
-2.  Pro **rozdělení režimu**, zvolte **rozdělit řádky**. 
+2.  V **režimu rozdělení**vyberte **rozdělit řádky**. 
 
-3.  **Nastavte podíl řádků v první výstupní sadě dat**. Tuto možnost použijte, chcete-li zjistit, kolik řádků přejděte do první výstupu (vlevo). Všechny ostatní řádky se přejít na druhého výstupu (napravo).
+3.  **Zlomek řádků v první výstupní datové sadě**. Tuto možnost použijte k určení, kolik řádků přejde do prvního (levého) výstupu. Všechny ostatní řádky budou přejít na druhý (pravá ruka) výstup.
 
-    Poměr představuje procentuální podíl řádků odesílat první výstupní sadě dat, takže je nutné zadat desetinné číslo mezi 0 a 1.
+    Poměr představuje procento řádků odeslaných na první výstupní datovou sadu, takže je nutné zadat desetinné číslo od 0 do 1.
      
-     Například pokud jako hodnotu zadáte 0,75, datová sada by rozdělit pomocí poměrem 75:25 75 % řádků odesílat první výstupní sadě dat a 25 % odesílat druhý výstupní datovou sadu.
+     Pokud například zadáte 0,75 jako hodnotu, datová sada bude rozdělena pomocí poměru 75:25 a 75% řádků odeslaných do první výstupní datové sady a 25% odesláno druhé výstupní datové sadě.
   
-4. Vyberte **Randomized rozdělení** možnost, pokud chcete náhodně výběr data do dvou skupin. Toto je upřednostňovaná možnost, při vytváření datové sady pro trénování a testování.
+4. Vyberte možnost **náhodného rozdělení** , pokud chcete náhodně vybrat data do dvou skupin. Toto je upřednostňovaná možnost při vytváření školicích a testovacích datových sad.
 
-5.  **Náhodné**: Zadejte hodnotu nezáporné celé číslo k inicializaci pseudonáhodné posloupnosti instancí, který se má použít. Tento počáteční výchozí hodnota se používá ve všech modulech, které generují náhodná čísla. 
+5.  **Náhodné osazení**: Zadejte nezápornou celočíselnou hodnotu pro inicializaci pseudonáhodných sekvence instancí, která se má použít. Toto výchozí osivo se používá ve všech modulech, které generují náhodná čísla. 
 
-     Určení základní hodnota díky výsledky obecně reprodukovatelné. Pokud je nutné opakovat výsledky operace rozdělení, měli byste zadat počáteční hodnoty pro generátor náhodných čísel. Jinak náhodná počáteční hodnota je standardně nastavena na 0, což znamená, že je počáteční počáteční hodnoty získané ze systémových hodin. V důsledku toho distribuci dat může být mírně odlišná pokaždé, když provedete rozdělení. 
+     Určením počáteční hodnoty se výsledky obvykle rereprodukovatelní. Pokud potřebujete výsledky operace rozdělení zopakovat, měli byste pro generátor náhodných čísel zadat počáteční hodnotu. V opačném případě je náhodné osazení nastaveno na hodnotu 0, což znamená, že počáteční počáteční hodnota se získá ze systémových hodin. V důsledku toho může být distribuce dat mírně odlišná pokaždé, když provedete rozdělení. 
 
-6. **Vrstveného rozdělení**: Tuto možnost nastavte na **True** zajistit, že obsahují dva výstupní datové sady reprezentativní vzorek hodnot v *setkání strata sloupec* nebo *sloupec klíče rozdělení*. 
+6. **Stratified rozdělení**: Nastavte tuto možnost na **hodnotu true** , chcete-li zajistit, aby dvě výstupní datové sady obsahovaly reprezentativní vzorek hodnot ve *sloupci vrstvy* nebo ve *sloupci klíč*rozvrstvení. 
 
-    S povoleným vzorkováním vrstveného, data rozdělená tak, aby každý výstupní datová sada získá zhruba procentní každou cílovou hodnotu. Například může mít jistotu, že trénování a testování sad přibližně vyvažují s ohledem na výsledek nebo s ohledem ot druhý sloupec, jako je například pohlaví.
+    V případě vzorkování stratified jsou data rozdělena tak, že každá výstupní datová sada získá zhruba stejné procento každé cílové hodnoty. Například můžete chtít zajistit, aby vaše školicí a testovací sady byly zhruba vyvážené s ohledem na výsledek nebo s ohledem na jiný sloupec, například pohlaví.
 
 7. Spusťte experiment.
 
 
 ## <a name="regular-expression-split"></a>Rozdělení regulárního výrazu
 
-1.  Přidat [rozdělení dat](./split-data.md) modulu do svého experimentu a propojte jej jako vstup pro datovou sadu, kterou chcete rozdělit.  
+1.  Přidejte modul [rozdělit data](./split-data.md) do experimentu a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.  
   
-2.  Pro **rozdělení režimu**vyberte **regulárního výrazu rozdělení**.
+2.  V případě **rozdělení režimu**vyberte možnost **rozdělení regulárního výrazu**.
 
-3. V **regulárního výrazu** zadejte platný regulární výraz. 
+3. Do pole **regulární výraz** zadejte platný regulární výraz. 
   
-   Regulární výraz by měly dodržovat Python syntaxi regulárního výrazu.
+   Regulární výraz by měl následovat po syntaxi regulárního výrazu jazyka Python.
 
 
 4. Spusťte experiment.
 
-    Podle regulárních výrazů, které zadáte, datová sada je rozdělen do dvou sad řádků: řádků s hodnotami, které odpovídají výrazu a všechny zbývající řádky. 
+    Na základě regulárního výrazu, který zadáte, je datová sada rozdělena do dvou sad řádků: řádků s hodnotami, které odpovídají výrazu a všem zbývajícím řádkům. 
 
-## <a name="relative-expression-split"></a>Rozdělení relativní výrazu.
+## <a name="relative-expression-split"></a>Rozdělení relativního výrazu
 
-1. Přidat [rozdělení dat](./split-data.md) modulu do svého experimentu a propojte jej jako vstup pro datovou sadu, kterou chcete rozdělit.
+1. Přidejte modul [rozdělit data](./split-data.md) do experimentu a připojte ho jako vstup k datové sadě, kterou chcete rozdělit.
   
-2. Pro **rozdělení režimu**vyberte **relativní výraz rozdělení**.
+2. V případě **rozdělení režimu**vyberte **relativní rozdělení výrazu**.
   
-3. V **relační výraz** textového pole, typ, což je výraz, který provádí operace porovnání, na jeden sloupec:
+3. Do textového pole **relační výraz** zadejte výraz, který provádí operaci porovnání, v jednom sloupci:
 
 
  - Číselný sloupec:
-    - Sloupec obsahuje počet číselných datových typů včetně datové typy data a času.
+    - Sloupec obsahuje čísla libovolného číselného datového typu, včetně datových typů data a času.
 
-    - Výraz může odkazovat nejvýše jeden sloupec názvu.
+    - Výraz může odkazovat maximálně na jeden název sloupce.
 
-    - Použít znak ampersand (&) pro operaci AND a použijte kanálu znak pro operace OR (|).
+    - Použijte znak ampersand (&) pro operaci AND a použijte pro operaci nebo znak svislé čáry (|).
 
-    - Jsou podporovány následující operátory: `<`, `>`, `<=`, `>=`, `==`, `!=`
+    - Podporovány jsou následující operátory: `<`, `>`, `<=`, `>=`, `==`,`!=`
 
-    - Operace nejde skupin s použitím `(` a `)`.
+    - Operace nelze seskupit pomocí `(` a. `)`
 
- - Řetězcový sloupec: 
-    - Jsou podporovány následující operátory: `==`, `!=`
+ - Sloupec řetězce: 
+    - Podporovány jsou následující operátory: `==`,`!=`
 
 
 
 4. Spusťte experiment.
 
-    Výraz rozdělí dvě sady řádků datové sady: řádků s hodnotami, které splňují podmínku a všechny zbývající řádky.
+    Výraz rozdělí datovou sadu do dvou sad řádků: řádky s hodnotami, které splňují podmínku, a všechny zbývající řádky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

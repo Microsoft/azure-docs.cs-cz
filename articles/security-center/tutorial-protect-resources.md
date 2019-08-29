@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 8fc287826d1a98b5d61229979544fdb3780455d4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7533a8636697db92a69cfec99d0e89138164d7b7
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967938"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147885"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
-Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům (VM) just-in-Time (JIT) omezuje vaše vystavení útokům umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Chraňte své prostředky pomocí Azure Security Center
+Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálnímu počítači za běhu (JIT) snižuje vaši expozici útokům tím, že vám umožní odepřít trvalý přístup k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
 
 V tomto kurzu se naučíte:
 
@@ -34,18 +34,18 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat službu Security Center v cenové úrovni Standard. Security Center úrovně Standard můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
+Chcete-li si vyzkoušet postupy popsané v tomto kurzu, budete potřebovat službu Security Center v cenové úrovni Standard. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
 
 ## <a name="manage-vm-access"></a>Správa přístupu k virtuálním počítačům
-Chcete-li zamezit příchozímu provozu na virtuální počítače Azure, tím omezit vystavení útokům při poskytování snadného přístupu pro připojení k virtuálním počítačům v případě potřeby je možné přístup k virtuálnímu počítači podle potřeby.
+Přístup k virtuálnímu počítači JIT se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se v případě potřeby zajistí snadný přístup k virtuálním počítačům.
 
 Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Když je povolený přístup podle potřeby, Security Center využívá pravidla skupin zabezpečení sítě (NSG) omezující přístup k portům pro správu, aby na ně nemohli cílit útočníci.
 
-1. V hlavní nabídce služby Security Center, vyberte **Just-in-Time virtuální počítač přístup k** pod **POKROČILÁ OBRANA cloudu**.
+1. V hlavní nabídce Security Center vyberte v části **Pokročilá obrana cloudu**možnost **přístup k virtuálním** počítačům za běhu.
 
    ![Přístup k virtuálnímu počítači podle potřeby][1]
 
-   **Přístup k virtuálním počítačům just-in-Time** poskytuje informace o stavu vašich virtuálních počítačů:
+   **Přístup k virtuálnímu počítači za běhu** poskytuje informace o stavu virtuálních počítačů:
 
    - **Nakonfigurované** – Virtuální počítače s nakonfigurovanou podporou přístupu podle potřeby.
    - **Doporučené** – Virtuální počítače, které můžou podporovat přístup podle potřeby, ale ještě tak nebyly nakonfigurované.
@@ -73,17 +73,15 @@ Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené 
 ## <a name="harden-vms-against-malware"></a>Posílení ochrany virtuálních počítačů před malwarem
 Adaptivní řízení aplikací pomáhá definovat sadu aplikací, které mají povoleno spouštění v nakonfigurovaných skupinách prostředků. To kromě jiných výhod pomáhá posílit ochranu virtuálních počítačů před malwarem. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.
 
-Tato funkce je dostupná pouze pro počítače s Windows.
-
 1. Vraťte se do hlavní nabídky Security Center. V části **POKROČILÁ OBRANA CLOUDU** vyberte **Adaptivní řízení aplikací**.
 
    ![Adaptivní řízení aplikací][3]
 
    Část **Skupiny prostředků** obsahuje tři karty:
 
-   - **Nakonfigurované**: Seznam skupin prostředků obsahujících virtuální počítače s nakonfigurovaným řízením aplikací.
-   - **Doporučené**: Seznam skupin prostředků, pro kterou aplikaci se doporučuje řízení.
-   - **Žádné doporučení**: Seznam skupin prostředků obsahujících virtuální počítače bez jakýchkoli doporučených řízení aplikací. Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
+   - **Nakonfigurováno**: Seznam skupin prostředků obsahujících virtuální počítače, které byly nakonfigurovány pomocí řízení aplikací.
+   - **Doporučené**: Seznam skupin prostředků, pro které se doporučuje řízení aplikací
+   - **Žádné doporučení**: Seznam skupin prostředků obsahujících virtuální počítače bez jakýchkoli doporučení pro řízení aplikací Například virtuální počítače, na kterých se neustále mění aplikace a které se ještě nedostaly do stabilního stavu.
 
 2. Výběrem karty **Doporučené** zobrazte seznam skupin prostředků s doporučeními pro řízení aplikací.
 
@@ -91,10 +89,10 @@ Tato funkce je dostupná pouze pro počítače s Windows.
 
 3. Výběrem skupiny prostředků otevřete možnost **Vytvořit pravidla řízení aplikací**. V části **Vybrat virtuální počítače** zkontrolujte seznam doporučených virtuálních počítačů a zrušte zaškrtnutí těch, na které nechcete použít řízení aplikací. V části **Vybrat procesy pro pravidla přidávání na seznam povolených** zkontrolujte seznam doporučených aplikací a zrušte zaškrtnutí těch, které nechcete použít. Seznam obsahuje:
 
-   - **NÁZEV**: Úplná cesta aplikace
-   - **PROCESY**: Počet aplikací se nacházejí v jednotlivých cestách
-   - **BĚŽNÉ**: "Ano" znamená, že tyto procesy spustily na většině virtuálních počítačů v této skupině prostředků
-   - **ZNEUŽITELNÉ**: Ikona upozornění značí, pokud aplikace může používat útočník k obejití seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
+   - **NÁZEV**: Úplná cesta k aplikaci
+   - **PROCESY**: Kolik aplikací se nachází v každé cestě
+   - **BĚŽNÉ**: "Ano" označuje, že tyto procesy byly spuštěny na většině virtuálních počítačů v této skupině prostředků.
+   - ZNEUŽITELNÉ: Výstražná ikona indikuje, jestli by útočník mohl aplikace využít k obejití seznamu povolených aplikací. Tyto aplikace doporučujeme před schválením zkontrolovat.
 
 4. Jakmile budete s výběry hotovi, vyberte **Vytvořit**.
 

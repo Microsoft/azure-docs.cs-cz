@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 287fd07f170ec85b07b75e1823cbb67d462004f6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098800"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142935"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -253,7 +253,7 @@ A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii obje
 A.  Ne. V současné době Azure datacentra nepřijímá doručování Data Box od zákazníků nebo od jiných dopravců než UPS.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [systémové požadavky služby Data Box](data-box-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-limits.md).

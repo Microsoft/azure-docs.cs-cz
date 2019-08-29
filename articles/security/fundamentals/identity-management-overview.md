@@ -1,6 +1,6 @@
 ---
 title: Funkce zabezpečení Azure, které vám pomůžou se správou identit | Microsoft Docs
-description: " Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které vám pomůžou se správou identit. Řešení pro správu identit a přístupu společnosti Microsoft usnadňují ochranu přístupu k aplikacím a prostředkům v podnikovém datovém centru a cloudu a umožňuje tak další úrovně ověřování, jako je vícefaktorové ověřování a podmíněný přístup. konfigurovaný. "
+description: " Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které vám pomůžou se správou identit. Řešení pro správu identit a přístupu společnosti Microsoft usnadňují ochranu přístupu k aplikacím a prostředkům v podnikovém datovém centru a cloudu a umožňuje tak další úrovně ověřování, například Multi-Factor Authentication a podmíněný přístup. konfigurovaný. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826286"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129363"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
- Správa identit je proces ověřování a autorizace [objektů zabezpečení](/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řízení informací o těchto objektech zabezpečení (identity). Objekty zabezpečení (identity) můžou zahrnovat služby, aplikace, uživatele, skupiny atd. Řešení pro správu identit a přístupu od Microsoftu umožňují IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a do cloudu. Taková ochrana umožňuje další úrovně ověřování, jako je vícefaktorové ověřování a zásady podmíněného přístupu. Monitorování podezřelých aktivit prostřednictvím pokročilých sestav zabezpečení, auditování a upozorňování pomáhá zmírnit možné problémy se zabezpečením. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) poskytuje jednotné přihlašování (SSO) k tisícům aplikací SaaS (Cloud software as a Service) a přístup k webovým aplikacím, které spouštíte místně.
+ Správa identit je proces ověřování a autorizace [objektů zabezpečení](/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řízení informací o těchto objektech zabezpečení (identity). Objekty zabezpečení (identity) můžou zahrnovat služby, aplikace, uživatele, skupiny atd. Řešení pro správu identit a přístupu od Microsoftu umožňují IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a do cloudu. Taková ochrana umožňuje další úrovně ověřování, například Multi-Factor Authentication a zásady podmíněného přístupu. Monitorování podezřelých aktivit prostřednictvím pokročilých sestav zabezpečení, auditování a upozorňování pomáhá zmírnit možné problémy se zabezpečením. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) poskytuje jednotné přihlašování (SSO) k tisícům aplikací SaaS (Cloud software as a Service) a přístup k webovým aplikacím, které spouštíte místně.
  
 Díky výhodám zabezpečení Azure Active Directory (Azure AD) můžete:
 
 * Můžete vytvářet a spravovat jednu identitu pro každého uživatele v rámci hybridního podniku, udržovat uživatele, skupiny a zařízení v synchronizaci. 
 * Poskytněte přístup k vašim aplikacím bez jednotného přihlašování, včetně tisíců předem integrovaných aplikací SaaS.
-* Povolte zabezpečení přístupu k aplikacím vynucením vícefaktorového ověřování založeného na pravidlech pro místní i cloudové aplikace.
+* Povolte zabezpečení přístupu k aplikacím vynucením Multi-Factor Authentication založených na pravidlech pro místní i cloudové aplikace.
 * Zajištění zabezpečeného vzdáleného přístupu k místním webovým aplikacím prostřednictvím Azure Proxy aplikací služby AD.
 
 Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení Azure, které vám pomůžou se správou identit. Poskytujeme také odkazy na články, které poskytují podrobné informace o jednotlivých funkcích, abyste se mohli dozvědět víc.  
@@ -79,7 +79,7 @@ Další informace:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Služba Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
+Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
 
 Další informace:
 
@@ -160,7 +160,7 @@ Další informace:
 
 ## <a name="identity-protection"></a>Ochrana identit
 
-Azure AD Identity Protection je služba zabezpečení, která poskytuje konsolidované zobrazení rizikových událostí a potenciálních ohrožení zabezpečení, která ovlivňují identity vaší organizace. Identity Protection využívá stávající možnosti detekce anomálií Azure AD, které jsou k dispozici prostřednictvím sestav aktivit Azure AD neobvyklé. Identity Protection také zavádí nové rizikové typy událostí, které mohou detekovat anomálie v reálném čase.
+Azure AD Identity Protection je služba zabezpečení, která poskytuje konsolidovanou pohled na detekci rizik a potenciální ohrožení zabezpečení, která ovlivňují identity vaší organizace. Identity Protection využívá stávající možnosti detekce anomálií Azure AD, které jsou k dispozici prostřednictvím sestav aktivit Azure AD neobvyklé. Identity Protection také přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
 
 Další informace:
 

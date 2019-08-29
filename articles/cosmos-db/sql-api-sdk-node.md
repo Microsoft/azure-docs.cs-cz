@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 27b548d03e6b05179da744e636a5c887e6b01ad5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624681"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142578"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK pro SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "69624681"
 |Resource  |Odkaz  |
 |---------|---------|
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|Dokumentace API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|Dokumentace rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
 |Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Ukázky kódu | [Ukázky kódu Node. js](sql-api-nodejs-samples.md)
@@ -409,49 +409,70 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 ## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
 Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi.
 
-Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, proto se doporučuje, vždy upgradovat na nejnovější SDK verzi co možná nejdříve.
+Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
 
 Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
 
+> [!WARNING]
+> Všechny verze **1. x** sady SDK pro rozhraní SQL API budou vyřazení od **30. srpna 2020**.
+> 
+>
 <br/>
 
-| Verze | Datum vydání | Datum vyřazení z provozu |
+| Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [3.1.0](#3.1.0) |26. července 2019 |--- |
+| [3.0.4](#3.0.4) |22. července 2019 |--- |
+| [3.0.3](#3.0.3) |17. července 2019 |--- |
+| [3.0.2](#3.0.2) |9\. července 2019 |--- |
+| [3.0.0](#3.0.0) |28. června 2019 |--- |
+| [2.1.5](#2.1.5) |20. března 2019 |--- |
+| [2.1.4](#2.1.4) |15. března 2019 |--- |
+| [2.1.3](#2.1.3) |8\. března 2019 |--- |
+| [2.1.2](#2.1.2) |28. ledna 2019 |--- |
+| [2.1.1](#2.1.1) |5\. prosince 2018 |--- |
+| [2.1.0](#2.1.0) |4\. prosince 2018 |--- |
+| [2.0.5](#2.0.5) |7\. listopadu 2018 |--- |
+| [2.0.4](#2.0.4) |30. října 2018 |--- |
+| [2.0.3](#2.0.3) |30. října 2018 |--- |
+| [2.0.2](#2.0.2) |10. října 2018 |--- |
+| [2.0.1](#2.0.1) |25. září 2018 |--- |
+| [2.0.0](#2.0.0) |24. září 2018 |--- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2\. srpna 2018 |--- |
-| [1.14.4](#1.14.4) |Květen 03, 2018 |--- |
-| [1.14.3](#1.14.3) |Květen 03, 2018 |--- |
-| [1.14.2](#1.14.2) |21. prosince 2017 |--- |
-| [1.14.1](#1.14.1) |10. listopadu 2017 |--- |
-| [1.14.0](#1.14.0) |9\. listopadu 2017 |--- |
-| [1.13.0](#1.13.0) |11. října 2017 |--- |
-| [1.12.2](#1.12.2) |10. srpna 2017 |--- |
-| [1.12.1](#1.12.1) |10. srpna 2017 |--- |
-| [1.12.0](#1.12.0) |10. května 2017 |--- |
-| [1.11.0](#1.11.0) |16. března 2017 |--- |
-| [1.10.2](#1.10.2) |27. ledna 2017 |--- |
-| [1.10.1](#1.10.1) |22. prosince 2016 |--- |
-| [1.10.0](#1.10.0) |03. října 2016 |--- |
-| [1.9.0](#1.9.0) |7\. července 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.0](#1.7.0) |26. dubna 2016 |--- |
-| [1.6.0](#1.6.0) |29. března 2016 |--- |
-| [1.5.6](#1.5.6) |08 8. března 2016 |--- |
-| [1.5.5](#1.5.5) |2\. února 2016 |--- |
-| [1.5.4](#1.5.4) |Únor 01, 2016 |--- |
-| [1.5.2](#1.5.2) |26. ledna 2016 |--- |
-| [1.5.2](#1.5.2) |22. ledna 2016 |--- |
-| [1.5.1](#1.5.1) |4\. ledna 2016 |--- |
-| [1.5.0](#1.5.0) |31. prosince 2015 |--- |
-| [1.4.0](#1.4.0) |06 6. října 2015 |--- |
-| [1.3.0](#1.3.0) |06 6. října 2015 |--- |
-| [1.2.2](#1.2.2) |10. září 2015 |--- |
-| [1.2.1](#1.2.1) |15. srpna 2015 |--- |
-| [1.2.0](#1.2.0) |05. srpna 2015 |--- |
-| [1.1.0](#1.1.0) |09. července 2015 |--- |
-| [1.0.3](#1.0.3) |04. června 2015 |--- |
-| [1.0.2](#1.0.2) |23. května 2015 |--- |
-| [1.0.1](#1.0.1) |15. května 2015 |--- |
-| [1.0.0](#1.0.0) |08 8. dubna 2015 |--- |
+| [1.14.4](#1.14.4) |Květen 03, 2018 |30. srpna 2020 |
+| [1.14.3](#1.14.3) |Květen 03, 2018 |30. srpna 2020 |
+| [1.14.2](#1.14.2) |21. prosince 2017 |30. srpna 2020 |
+| [1.14.1](#1.14.1) |10. listopadu 2017 |30. srpna 2020 |
+| [1.14.0](#1.14.0) |9\. listopadu 2017 |30. srpna 2020 |
+| [1.13.0](#1.13.0) |11. října 2017 |30. srpna 2020 |
+| [1.12.2](#1.12.2) |10. srpna 2017 |30. srpna 2020 |
+| [1.12.1](#1.12.1) |10. srpna 2017 |30. srpna 2020 |
+| [1.12.0](#1.12.0) |10. května 2017 |30. srpna 2020 |
+| [1.11.0](#1.11.0) |16. března 2017 |30. srpna 2020 |
+| [1.10.2](#1.10.2) |27. ledna 2017 |30. srpna 2020 |
+| [1.10.1](#1.10.1) |22. prosince 2016 |30. srpna 2020 |
+| [1.10.0](#1.10.0) |03. října 2016 |30. srpna 2020 |
+| [1.9.0](#1.9.0) |7\. července 2016 |30. srpna 2020 |
+| [1.8.0](#1.8.0) |14. června 2016 |30. srpna 2020 |
+| [1.7.0](#1.7.0) |26. dubna 2016 |30. srpna 2020 |
+| [1.6.0](#1.6.0) |29. března 2016 |30. srpna 2020 |
+| [1.5.6](#1.5.6) |08 8. března 2016 |30. srpna 2020 |
+| [1.5.5](#1.5.5) |2\. února 2016 |30. srpna 2020 |
+| [1.5.4](#1.5.4) |Únor 01, 2016 |30. srpna 2020 |
+| [1.5.2](#1.5.2) |26. ledna 2016 |30. srpna 2020 |
+| [1.5.2](#1.5.2) |22. ledna 2016 |30. srpna 2020 |
+| [1.5.1](#1.5.1) |4\. ledna 2016 |30. srpna 2020 |
+| [1.5.0](#1.5.0) |31. prosince 2015 |30. srpna 2020 |
+| [1.4.0](#1.4.0) |06 6. října 2015 |30. srpna 2020 |
+| [1.3.0](#1.3.0) |06 6. října 2015 |30. srpna 2020 |
+| [1.2.2](#1.2.2) |10. září 2015 |30. srpna 2020 |
+| [1.2.1](#1.2.1) |15. srpna 2015 |30. srpna 2020 |
+| [1.2.0](#1.2.0) |05. srpna 2015 |30. srpna 2020 |
+| [1.1.0](#1.1.0) |09. července 2015 |30. srpna 2020 |
+| [1.0.3](#1.0.3) |04. června 2015 |30. srpna 2020 |
+| [1.0.2](#1.0.2) |23. května 2015 |30. srpna 2020 |
+| [1.0.1](#1.0.1) |15. května 2015 |30. srpna 2020 |
+| [1.0.0](#1.0.0) |08 8. dubna 2015 |30. srpna 2020 |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

@@ -3,16 +3,16 @@ title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848441"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146102"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure modrotisky
 
@@ -106,14 +106,23 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 > [!NOTE]
 > Protože se přiřazení podrobného plánu vytvářejí v předplatném, musí se oprávnění pro přiřazení a zrušení přiřazení podrobného plánu udělit v oboru předplatného nebo do oboru předplatného zdědit.
 
-Všechna výše uvedená oprávnění jsou zahrnutá v roli **vlastníka** . Role **přispěvatele** má oprávnění CREATE detailal a DELETE podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
+K dispozici jsou následující předdefinované role:
+
+|Role RBAC | Popis |
+|-|-|
+|[Vlastník](../../role-based-access-control/built-in-roles.md#owner) | Kromě dalších oprávnění zahrnuje všechna Azure Blueprint související oprávnění. |
+|[Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) | Kromě dalších oprávnění může vytvořit a odstranit definice podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. |
+|[Přispěvatel podrobného plánu](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Může spravovat definice podrobného plánu, ale nepřiřazovat je. |
+|[Operátor podrobného plánu](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové definice podrobného plánu. Přiřazení podrobného plánu funguje pouze v případě, že je přiřazení provedeno pomocí uživatelem přiřazené spravované identity. |
+
+Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
 > Pokud používáte spravovanou identitu přiřazenou systémem, musí instanční objekt pro plány Azure pro povolení nasazení vyžadovat roli **vlastníka** v přiřazeném předplatném. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Pokud používáte spravovanou identitu přiřazenou uživatelem, musí oprávnění **vlastníka** vytvořit jenom uživatel vytvářející přiřazení podrobného plánu.
 
 ## <a name="naming-limits"></a>Omezení pojmenování
 
-Níže je seznam omezení, která existují pro určitá pole:
+Pro určitá pole existují následující omezení:
 
 |Object|Pole|Povolené znaky|Max. Délka|
 |-|-|-|-|

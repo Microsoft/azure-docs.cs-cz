@@ -7,22 +7,22 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 8cf72ba2fff65cf3382344fd2851c9c6027676c2
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635868"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128193"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
 Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí založenou na obsahu obrázku. Můžete například vygenerovat titulek z obrázku, generovat značky nebo identifikovat celebrit a orientačních bodů. Tato dovednost používá v Cognitive Services modely strojového učení, které poskytuje [počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) . 
 
 > [!NOTE]
-> Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
+> Malé objemy (pod 20 transakcí) se dají spouštět zdarma v Azure Search, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů v Azure Search. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
 > Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci obrázků jsou popsány na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
@@ -37,9 +37,8 @@ V parametrech jsou rozlišována malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *zh* – zjednodušená čínština|
-|visualFeatures |   Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li><li>*Popis* – popisuje obsah obrázku s úplnou anglickou větou.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li> *ImageType* – zjistí, zda je obrázek Klipart nebo kreslení čáry.</li><li>  *Color* – Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý & bílá.</li><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo pohlaví). Zjistili jsme také zřejmý sugestivní obsah.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena.|
-| details   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné.</li></ul>
- |
+|visualFeatures |   Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li><li>*Popis* – popisuje obsah obrázku s úplnou anglickou větou.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>    *ImageType* – zjistí, zda je obrázek Klipart nebo kreslení čáry.</li><li>  *Color* – Určuje barvu zvýraznění, dominantní barvu a, zda je obrázek černý & bílá.</li><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo pohlaví). Zjistili jsme také zřejmý sugestivní obsah.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena.|
+| details   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
@@ -49,7 +48,8 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 
 
-##  <a name="sample-definition"></a>Definice vzorku
+##  <a name="sample-skill-definition"></a>Ukázka definice dovednosti
+
 ```json
         {
             "description": "Extract image analysis.",
@@ -316,7 +316,17 @@ V parametrech jsou rozlišována malá a velká písmena.
             "targetFieldName": "faces"
         }
 ```
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Variace při mapování polí výstupu (vnořené vlastnosti)
 
+Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně, jako jsou pouze orientačních bodů nebo celebrit. V takovém případě se ujistěte, že schéma indexu obsahuje pole, které konkrétně obsahuje orientační.
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
+            "targetFieldName": "landmarks"
+        }
+```
 ##  <a name="sample-input"></a>Vzorový vstup
 
 ```json
@@ -493,6 +503,22 @@ V následujících chybových případech nejsou extrahovány žádné prvky.
 | NotSupportedVisualFeature  | Zadaný typ funkce není platný. |
 | NotSupportedImage | Nepodporovaná image, například podřízená pornografie. |
 | InvalidDetails | Nepodporovaný model specifický pro doménu. |
+
+Pokud se zobrazí chyba, která `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`je podobná, ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v `detail`rámci.
+
+```json
+"categories":[  
+      {  
+         "name":"building_",
+         "score":0.97265625,
+         "detail":{  
+            "landmarks":[  
+               {  
+                  "name":"Forbidden City",
+                  "confidence":0.92013400793075562
+               }
+            ]
+```
 
 ## <a name="see-also"></a>Viz také:
 

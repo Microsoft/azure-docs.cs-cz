@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113208"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125182"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: Pomocí aktivační události služby Multi-Factor Authentication a změn hesel rizikových událostí
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Kurz: Použití detekcí rizik k aktivaci Multi-Factor Authentication a změně hesla
 
 V tomto kurzu zapnete funkce služby Azure AD Identity Protection a funkci služby Azure AD Premium P2, která je víc než jenom nástroj k monitorování a vytváření sestav. Identity v organizaci můžete chránit nakonfigurováním zásad na základě rizikové událostí, které automaticky reagují na rizikové chování. Tyto zásady mohou buď uživatele automaticky zablokovat, nebo mohou zajistit nápravu v podobě vynucení změny hesla či vícefaktorového ověřování.
 
-Zásady Azure AD Identity Protection je možné kromě stávající zásady podmíněného přístupu jako další úroveň ochrany. U vašich uživatelů nemusí nikdy k aktivaci jedné z těchto zásad v závislosti na rizikovém chování dojít, ale jako správce budete vědět, že jsou pro všechny případy chránění.
+Zásady Azure AD Identity Protection se dají použít společně s existujícími zásadami podmíněného přístupu jako dodatečnou vrstvu ochrany. U vašich uživatelů nemusí nikdy k aktivaci jedné z těchto zásad v závislosti na rizikovém chování dojít, ale jako správce budete vědět, že jsou pro všechny případy chránění.
 
-Rizikovou událost mohou aktivovat například následující akce:
+Mezi položky, které mohou aktivovat detekci rizik, patří:
 
 * Uživatelé s uniklými přihlašovacími údaji
 * Přihlášení z anonymních IP adres
@@ -52,7 +52,7 @@ Povolení zásad na základě rizikové události je jednoduchý proces. Násled
 
 ### <a name="enable-users-to-register-for-multi-factor-authentication"></a>Zapnutí registrace uživatelů k vícefaktorovému ověřování
 
-Služba Azure AD Identity Protection obsahuje výchozí zásady, které vám mohou pomoci při vaši uživatelé zaregistrovali služby Multi-Factor Authentication a snadno identifikovat aktuální stav registrace. Povolením této zásady nespustíte výzvy k provedení vícefaktorového ověřování, ale požádáte uživatele, aby se k němu předběžně zaregistrovali.
+Azure AD Identity Protection obsahuje výchozí zásady, které vám pomůžou zajistit, aby se uživatelé zaregistrovali pro Multi-Factor Authentication a snadno identifikovali aktuální stav registrace. Povolením této zásady nespustíte výzvy k provedení vícefaktorového ověřování, ale požádáte uživatele, aby se k němu předběžně zaregistrovali.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
@@ -61,7 +61,7 @@ Služba Azure AD Identity Protection obsahuje výchozí zásady, které vám moh
    1. Nastavením této zásady se začne od všech uživatelů vyžadovat registrace metod vícefaktorového ověřování, aby se připravili na jeho používání.
 1. Klikněte na **Uložit**.
 
-   ![Vyžadovat od uživatelů při přihlášení registraci pro vícefaktorové ověřování](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![Vyžadovat, aby se uživatelé zaregistrovali pro vícefaktorové ověřování při přihlášení](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Zapnutí změn hesla na základě rizikové události
 

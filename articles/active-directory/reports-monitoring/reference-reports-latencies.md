@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987940"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127040"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory latencí hlášení
 
@@ -64,11 +64,11 @@ V následující tabulce jsou uvedeny informace o latenci pro sestavy zabezpeče
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
 
-## <a name="risk-events"></a>Rizikové události
+## <a name="risk-detections"></a>Detekce rizik
 
-Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem **riziková událost**.
+Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem **detekce rizik**.
 
-V následující tabulce jsou uvedeny informace o latenci pro rizikové události.
+V následující tabulce jsou uvedeny informace o latenci pro detekci rizik.
 
 | Zpráva | Minimální | Average | Maximum |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ V následující tabulce jsou uvedeny informace o latenci pro rizikové událost
 
 * [Přehled sestav Azure AD](overview-reports.md)
 * [Programový přístup k sestavám Azure AD](concept-reporting-api.md)
-* [Rizikové události v Azure Active Directory](concept-risk-events.md)
+* [Azure Active Directory detekce rizik](concept-risk-events.md)

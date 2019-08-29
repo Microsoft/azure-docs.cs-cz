@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072912"
+ms.locfileid: "70129198"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -717,7 +717,7 @@ K této chybě dochází, protože u účtu úložiště došlo k převzetí slu
 | **Řetězec chyby** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Požadována náprava** | Ne |
 
-K této chybě dochází z důvodu interního problému s databází synchronizace. Tato chyba bude automaticky vyřešena, když Azure File Sync při opakovaném pokusu o synchronizaci. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
+K této chybě dochází z důvodu interního problému s databází synchronizace. Tato chyba bude automaticky vyřešena při opakování synchronizace. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
 
 <a id="-2134364024"></a>**Synchronizace se nezdařila z důvodu změny v Azure Active Directory tenant**  
 

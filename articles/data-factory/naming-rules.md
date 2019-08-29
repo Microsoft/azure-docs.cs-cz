@@ -1,32 +1,31 @@
 ---
-title: Pravidla pro pojmenovávání entity služby Azure Data Factory | Dokumentace Microsoftu
-description: Popisuje pravidla pojmenování pro entity služby Data Factory.
+title: Pravidla pro pojmenování Azure Data Factory entit | Microsoft Docs
+description: Popisuje pravidla vytváření názvů pro Entity Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: c02a9393de72b827b7e38b52d06589f042d581b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4397f7efdb9ff797375584f5a43af2833a6a2989
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786998"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140992"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – pravidla pojmenování
-Následující tabulka obsahuje pravidla pojmenování artefaktů služby Data Factory.
+Následující tabulka poskytuje pravidla pro pojmenování artefaktů Data Factory.
 
-| Name | Jedinečnost názvu | Ověřovací kontroly |
+| Name | Jedinečnost názvu | Kontroly ověřování |
 |:--- |:--- |:--- |
-| Data Factory |Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena, tedy `MyDF` a `mydf` odkazovat na stejnou datovou továrnou. |<ul><li>Každá datová továrna se váže na přesně jedno předplatné Azure.</li><li>Názvy objektů musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a znak spojovníku (-).</li><li>Každému znaku pomlčky (-) musí být bezprostředně před a následované písmenem nebo číslicí. Po sobě jdoucí pomlčky nejsou povolené v názvu kontejneru.</li><li>Název může být dlouhý 3 až 63 znaků.</li></ul> |
-| Propojené služby a datové sady a kanály |Je jedinečný s ve službě data factory. Názvy jsou malá a velká písmena. |<ul><li>Názvy objektů musí začínat písmenem, číslo nebo podtržítko (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<", ">","*", "%", "&", ":","\\"</li><li>Pomlčky ("-") v názvech propojených služeb a datových sad pouze nejsou povoleny.</li></ul>  |
-| Skupina prostředků |Jedinečný v rámci Microsoft Azure. Názvy jsou malá a velká písmena. | Další informace najdete v tématu [Azure – pravidla pojmenování a omezení](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
+| Data Factory |Jedinečné v rámci Microsoft Azure. V názvech se nerozlišují malá `MyDF` a velká písmena, to znamená a `mydf` odkazují na stejný objekt pro vytváření dat. |<ul><li>Každá datová továrna je vázaná na právě jedno předplatné Azure.</li><li>Název objektu musí začínat písmenem nebo číslicí a může obsahovat jenom písmena, číslice a spojovníky (-).</li><li>Každý znak spojovníku (-) musí bezprostředně předcházet a musí následovat písmeno nebo číslo. Po sobě jdoucí pomlčky nejsou v názvech kontejnerů povolené.</li><li>Název může být 3-63 znaků dlouhý.</li></ul> |
+| Propojené služby/datové sady/kanály |Jedinečné v objektu pro vytváření dat. V názvech se nerozlišují malá a velká písmena. |<ul><li>Názvy objektů musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li><li>Pomlčky ("-") nejsou povoleny v názvech propojených služeb a datových sad.</li></ul>  |
+| Skupina prostředků |Jedinečné v rámci Microsoft Azure. V názvech se nerozlišují malá a velká písmena. | Další informace najdete v tématu [pravidla a omezení pro pojmenovávání Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). |
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak vytvářet datové továrny pomocí podrobných pokynů v [rychlý start: vytvoření datové továrny](quickstart-create-data-factory-powershell.md) článku. 
+Naučte se vytvářet datové továrny podle podrobných pokynů v tématu [rychlý Start: vytvoření datové továrny](quickstart-create-data-factory-powershell.md) . 

@@ -1,7 +1,7 @@
 ---
-title: 'Rozhodovací les regrese: Odkaz na modul'
+title: 'Regrese rozhodovací doménové struktury: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu Two-Class Zprůměrované Perceptron ve službě Azure Machine Learning vytvořit model podle průměrné perceptron algoritmu strojového učení.
+description: Naučte se, jak ve službě Azure Machine Learning použít průměrný modul Perceptron se dvěma třídami k vytvoření modelu Machine Learning založeného na průměrném algoritmu Perceptron.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,57 +9,56 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f0fec525ed87f91cf102053383b2934aac4b71c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029232"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128426"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Modul Perceptron Zprůměrované Two-Class
+# <a name="two-class-averaged-perceptron-module"></a>Průměrný Perceptron modul se dvěma třídami
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k vytvoření model podle průměrné perceptron algoritmu strojového učení.  
+Pomocí tohoto modulu můžete vytvořit model strojového učení na základě průměrného Perceptron algoritmu.  
   
-Tento algoritmus klasifikace je metoda učení a vyžaduje *označené datovou sadu*, který obsahuje popisek sloupce. Můžou natrénujete tím, že poskytuje model a označené datovou sadu jako vstup do [trénování modelu](./train-model.md). Trénovaného modelu lze pak použít k předpovědi hodnot pro nový vstupní příklady.  
+Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje datovou *sadu*s příznakem, která obsahuje sloupec popisku. Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro vlakový [model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
 
-### <a name="about-averaged-perceptron-models"></a>O modelech průměrné perceptron
+### <a name="about-averaged-perceptron-models"></a>Průměrné modely Perceptron
 
-*Byla metoda perceptron* je raných fázích i jednoduchý verze neuronové sítě. V takovém případě jsou vstupy rozdělit do několika možných výstupy na základě lineární funkce a následně se spojí dohromady sadu váhy, které jsou odvozeny z funkce vector – proto název "perceptron."
+*Průměrná metoda Perceptron* je časná a jednoduchá verze neuronové sítě. V tomto přístupu jsou vstupy klasifikovány do několika možných výstupů založených na lineární funkci a pak v kombinaci se sadou vah odvozenými z vektoru funkce, tedy názvu "Perceptron".
 
-Jednodušší perceptron modely jsou vhodné k učení lineárně oddělitelné vzory, zatímco neuronových sítí (zejména hluboké neuronové sítě) můžete modelovat složitější hranice třídy. Ale perceptrons jsou rychlejší a vzhledem k tomu, že budou zpracovávat případů sériově perceptrons jde použít s průběžné vzdělávání.
+Jednodušší modely Perceptron jsou vhodné pro učení lineárních oddělitelných vzorů, zatímco sítě neuronové (hlavně neuronové sítě) můžou modelovat složitější hranice tříd. Perceptrons jsou ale rychlejší a protože zpracovávají případy v sériovém případě, perceptrons se dají použít s průběžným školením.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak nakonfigurovat Perceptron Zprůměrované Two-Class
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak nakonfigurovat průměrnou Perceptroni dvou tříd
 
-1.  Přidat **Two-Class Zprůměrované Perceptron** modulu do experimentu.  
+1.  Do experimentu přidejte Perceptron modul průměrně se **dvěma třídami** .  
 
-2.  Určení způsobu modelu zaškolení, tak, že nastavíte **režimu vytváření trainer** možnost.  
+2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: Pokud víte, jak chcete provést konfiguraci modelu, poskytují konkrétní sadu hodnot jako argumenty.
+    -   **Jeden parametr**: Pokud víte, jak chcete model nakonfigurovat, poskytněte konkrétní sadu hodnot jako argumenty.
   
-3.  Pro **rychlost učení**, zadejte hodnotu *rychlost učení*. Rychlost učení hodnoty ovládacího prvku velikost krok, který se používá v stochastického sestupu pokaždé, když model je testováno a opravit.
+3.  Do pole **rychlost učení**zadejte hodnotu *studijní frekvence*. Hodnoty studijních kurzů určují velikost kroku, který se používá v stochastického přechodu při každém testování a opravování modelu.
   
-     Tím, že míra menších, při testování modelu častěji, s využitím riziko, že můžou uváznout ve místní limitu. Tím, že v kroku větší, můžete použít sloučit rychleji, nese překročení true minima.
+     Tím, že se rychlost zmenší, otestujete model častěji s rizikem, že se můžete zablokovat v místních stabilní úrovně. Tím, že krok provedete větší, můžete provést sblížení rychleji a na riziko překročení skutečných minimálních minim.
   
-4.  Pro **maximální počet iterací**, zadejte počet pokusů o má algoritmus pro zjištění trénovací data.  
+4.  V poli **maximální počet iterací**zadejte počet pokusů, kolikrát chcete, aby algoritmus kontroloval školicí data.  
   
-     Zastavuje se již v rané fázi často poskytuje lepší generalizace. Zvýšení počtu iterací zlepšuje přizpůsobování nese overfitting.
+     Brzy se často zastavuje lepší generalizace. Zvýšení počtu opakování zlepšuje přizpůsobení při riziku přebudování.
   
-5.  Pro **náhodná počáteční hodnota čísla**, volitelně zadejte celočíselnou hodnotu pro použití jako počáteční hodnoty. Pokud chcete Ujistěte se, že běží reprodukovatelnost experimentu napříč, doporučuje se použít počáteční hodnoty.  
+5.  V případě **náhodného čísla počáteční**hodnota zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota. Použití počáteční hodnoty se doporučuje, pokud chcete zajistit reprodukovatelnost experimentu v rámci spuštění.  
   
-1.  Připojte trénovací datovou sadu a jeden z modulů školení:
+1.  Připojte datovou sadu školení a jeden z školicích modulů:
   
-    -   Pokud nastavíte **režimu vytváření trainer** k **jediný parametr**, použijte [trénování modelu](train-model.md) modulu.
+    -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .
 
 ## <a name="results"></a>Výsledky
 
 Po dokončení školení:
 
-+ Chcete-li zobrazit souhrn parametry modelu, společně s funkcí váhy získané při školení, klikněte pravým tlačítkem na výstup [Train Model](./train-model.md).
++ Pokud chcete zobrazit souhrn parametrů modelu spolu s váhy funkcí zjištěnými ze školení, klikněte pravým tlačítkem myši na výstup [modelu výuky](./train-model.md).
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

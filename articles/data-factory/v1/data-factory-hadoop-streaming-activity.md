@@ -1,51 +1,50 @@
 ---
-title: Transformace dat pomocí streamované aktivitě Hadoop – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí streamované aktivitě Hadoop ve službě Azure data factory transformovat data spuštěním streamování Hadoop programy na vyžádání/svůj vlastní clusteru služby HDInsight.
+title: Transformace dat pomocí aktivity streamování Hadoop – Azure | Microsoft Docs
+description: Přečtěte si, jak můžete pomocí aktivity streamování Hadoop v Azure Data Factory transformovat data spuštěním programů pro streamování Hadoop na vyžádání nebo vlastním clusterem HDInsight.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486341"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139549"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí streamované aktivitě Hadoop ve službě Azure Data Factory
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
-> * [Aktivita hivu](data-factory-hive-activity.md) 
-> * [Aktivita pig](data-factory-pig-activity.md)
+> * [Aktivita v podregistru](data-factory-hive-activity.md) 
+> * [Aktivita prasete](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
-> * [Streamované aktivitě Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Aktivita Spark](data-factory-spark.md)
+> * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Aktivita Sparku](data-factory-spark.md)
 > * [Aktivita Provedení dávky služby Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktivita Aktualizace prostředků služby Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
-> * [Vlastní aktivita .NET](data-factory-use-custom-activities.md)
+> * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí systému Hadoop, streamování aktivity ve službě Data Factory](../transform-data-using-hadoop-streaming.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity streamování Hadoop v Data Factory](../transform-data-using-hadoop-streaming.md).
 
 
-Můžete použít aktivitu HDInsightStreamingActivity vyvolat úlohu streamování Hadoop z kanálu služby Azure Data Factory. Následující fragment kódu JSON ukazuje syntaxi pro použití HDInsightStreamingActivity v souboru JSON kanálu. 
+Aktivitu HDInsightStreamingActivity můžete použít k vyvolání úlohy streamování Hadoop z Azure Data Factoryho kanálu. Následující fragment kódu JSON ukazuje syntaxi pro použití HDInsightStreamingActivity v souboru JSON kanálu. 
 
-Aktivita streamování HDInsight ve službě Data Factory [kanálu](data-factory-create-pipelines.md) spustí programy streamování Hadoop na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight se systémem Windows nebo Linux. Tento článek vychází [aktivity transformace dat](data-factory-data-transformation-activities.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace.
+Aktivita streamování HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští programy pro streamování Hadoop na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](data-factory-introduction.md) a udělat kurz: [Vytvoření prvního kanálu dat](data-factory-build-your-first-pipeline.md) před čtením tohoto článku. 
+> Pokud s Azure Data Factory začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: Před čtením tohoto článku Sestavte [první datový kanál](data-factory-build-your-first-pipeline.md) . 
 
-## <a name="json-sample"></a>Vzorek kódu JSON
-HDInsight cluster se automaticky vyplní příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení název kontejneru, který se používá cluster HDInsight je název samotného clusteru. Například pokud je název clusteru myhdicluster, název kontejneru objektů blob přidružené by myhdicluster. 
+## <a name="json-sample"></a>Ukázka JSON
+Cluster HDInsight se automaticky vyplní pomocí ukázkových programů (WC. exe a Cat. exe) a dat (DaVinci. txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster. 
 
 ```JSON
 {
@@ -95,28 +94,28 @@ HDInsight cluster se automaticky vyplní příklad programy (wc.exe a cat.exe) a
 
 Je třeba počítat s následujícím:
 
-1. Nastavte **linkedServiceName** název propojené služby, který odkazuje na vaše HDInsight cluster, podle kterého se spouští úloha streamování mapreduce.
-2. Nastavit typ aktivity na **HDInsightStreaming**.
-3. Pro **Mapovač** vlastnost, zadejte název spustitelného souboru mapování. V tomto příkladu je cat.exe Mapovač spustitelný soubor.
-4. Pro **redukční funkci** vlastnost, zadejte název spustitelného souboru redukční funkci. V tomto příkladu je wc.exe redukční funkci spustitelný soubor.
-5. Pro **vstupní** vlastnost typu, zadejte pro mapovač vstupní soubor (včetně umístění). Příklad: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample je kontejner objektů blob, příklad/data/Gutenberg je složka, a davinci.txt objektu blob.
-6. Pro **výstup** vlastnost typu, zadejte název výstupního souboru (včetně umístění) pro redukční funkci. Výstup úlohy streamování Hadoop je zapsán do umístění určeného pro tuto vlastnost.
-7. V **filePaths** části, zadejte cesty pro spustitelné soubory mapovací a redukční funkci. Příklad: "adfsample/example/apps/wc.exe" adfsample je kontejner objektů blob, příklad/aplikace je složka, a wc.exe spustitelný soubor.
-8. Pro **fileLinkedService** vlastnost, zadejte propojenou službu Azure Storage, který představuje úložiště Azure, který obsahuje soubory zadané v části filePaths.
-9. Pro **argumenty** vlastnost, zadejte argumenty pro úlohu streamování.
-10. **GetDebugInfo** vlastnost je volitelný prvek. Pokud je nastaven na chybu, protokoly se stáhnou pouze při selhání. Pokud je nastavena na hodnotu Always, protokoly budou staženy vždy bez ohledu na stav spuštění.
+1. Nastavte **linkedServiceName** na název propojené služby, která odkazuje na cluster HDInsight, na kterém je spuštěná úloha streamování MapReduce.
+2. Nastavte typ aktivity na **HDInsightStreaming**.
+3. Pro vlastnost **Mapper** zadejte název spustitelného souboru mapovače. V tomto příkladu je soubor Cat. exe spustitelným souborem mapovače.
+4. V poli vlastnost pro **snížení** zadejte název spustitelného souboru pro zmenšení. V tomto příkladu je WC. exe spustitelný soubor pro snížení.
+5. Pro vlastnost typ **vstupu** zadejte vstupní soubor (včetně umístění) pro mapovač. V příkladu: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample je kontejnerem objektů blob, příkladem/data/Gutenberg je složka a DaVinci. txt je objekt BLOB.
+6. Pro vlastnost typ **výstupu** zadejte výstupní soubor (včetně umístění) pro redukci. Výstup úlohy služby streamování Hadoop se zapisuje do umístění zadaného pro tuto vlastnost.
+7. V části **cesty** souborů zadejte cesty pro soubory Mapper a zmenšení. V příkladu: "adfsample/example/Apps/WC. exe", adfsample je kontejnerem objektů blob, příkladem/aplikacemi je složka a WC. exe je spustitelný soubor.
+8. Pro vlastnost **fileLinkedService** určete propojenou službu Azure Storage, která představuje úložiště Azure, které obsahuje soubory zadané v části cesty souborů.
+9. Pro vlastnost **arguments (argumenty** ) zadejte argumenty pro úlohu streamování.
+10. Vlastnost **GetDebugInfo –** je volitelný element. Pokud je nastavená chyba, protokoly se stáhnou pouze při selhání. Pokud je nastavené na vždycky, protokoly se stáhnou vždycky bez ohledu na stav spuštění.
 
 > [!NOTE]
-> Jak je znázorněno v příkladu, zadáte pro streamované aktivitě Hadoop pro výstupní datovou sadu **výstupy** vlastnost. Tato datová sada je jenom fiktivní datovou sadu, která je nutná Centrum umožňující prosazovat plán kanálu. Není potřeba zadat všechny vstupní datové sady pro aktivity **vstupy** vlastnost.  
+> Jak je znázorněno v příkladu, zadáváte výstupní datovou sadu pro aktivitu streamování Hadoop pro vlastnost výstupy. Tato datová sada je pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu. Pro aktivitu pro vlastnost Inputs není nutné zadávat žádnou vstupní datovou sadu .  
 > 
 > 
 
-## <a name="example"></a>Příklad:
-Kanál v tomto názorném postupu spustí streamovací program počet slov v mapování/zmenšování v clusteru Azure HDInsight. 
+## <a name="example"></a>Příklad
+Kanál v tomto návodu spustí v clusteru Azure HDInsight program pro vytváření map a snižování počtu slov. 
 
 ### <a name="linked-services"></a>Propojené služby
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Nejprve vytvořte propojenou službu, která propojení služby Azure Storage, který se používá cluster Azure HDInsight k Azure data factory. Pokud zkopírujete/vložíte následující kód, nezapomeňte nahradit název účtu a klíč účtu název a klíč služby Azure Storage. 
+Nejdřív vytvoříte propojenou službu, která propojí Azure Storage, kterou cluster Azure HDInsight používá pro Azure Data Factory. Pokud zkopírujete/vložíte následující kód, nezapomeňte nahradit název účtu a klíč účtu názvem a klíčem vašeho Azure Storage. 
 
 ```JSON
 {
@@ -130,8 +129,8 @@ Nejprve vytvořte propojenou službu, která propojení služby Azure Storage, k
 }
 ```
 
-#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight, propojené služby
-V dalším kroku vytvoříte propojenou službu, která propojí váš cluster Azure HDInsight do služby Azure data factory. Pokud zkopírujete/vložíte následující kód, název clusteru HDInsight nahraďte názvem vašeho clusteru HDInsight a změnit hodnoty uživatelského jména a hesla. 
+#### <a name="azure-hdinsight-linked-service"></a>Propojená služba Azure HDInsight
+V dalším kroku vytvoříte propojenou službu, která propojí cluster Azure HDInsight s objektem pro vytváření dat Azure. Pokud zkopírujete/vložíte následující kód, nahraďte název clusteru HDInsight názvem vašeho clusteru HDInsight a změňte hodnoty uživatelského jména a hesla. 
 
 ```JSON
 {
@@ -150,7 +149,7 @@ V dalším kroku vytvoříte propojenou službu, která propojí váš cluster A
 
 ### <a name="datasets"></a>Datové sady
 #### <a name="output-dataset"></a>Výstupní datová sada
-Kanál v tomto příkladu nepřijímá žádné vstupy. Zadejte výstupní datovou sadu streamování aktivity HDInsight. Tato datová sada je jenom fiktivní datovou sadu, která je nutná Centrum umožňující prosazovat plán kanálu. 
+Kanál v tomto příkladu nepřijímá žádné vstupy. Pro aktivitu streamování HDInsight určíte výstupní datovou sadu. Tato datová sada je pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu. 
 
 ```JSON
 {
@@ -175,9 +174,9 @@ Kanál v tomto příkladu nepřijímá žádné vstupy. Zadejte výstupní datov
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál v tomto příkladu má pouze jednu aktivitu, která je typu: **HDInsightStreaming**. 
+Kanál v tomto příkladu má pouze jednu aktivitu typu: **HDInsightStreaming**. 
 
-HDInsight cluster se automaticky vyplní příklad programy (wc.exe a cat.exe) a data (davinci.txt). Ve výchozím nastavení název kontejneru, který se používá cluster HDInsight je název samotného clusteru. Například pokud je název clusteru myhdicluster, název kontejneru objektů blob přidružené by myhdicluster.  
+Cluster HDInsight se automaticky vyplní pomocí ukázkových programů (WC. exe a Cat. exe) a dat (DaVinci. txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster.  
 
 ```JSON
 {
@@ -224,8 +223,8 @@ HDInsight cluster se automaticky vyplní příklad programy (wc.exe a cat.exe) a
 }
 ```
 ## <a name="see-also"></a>Viz také
-* [Aktivita hivu](data-factory-hive-activity.md)
-* [Aktivita pig](data-factory-pig-activity.md)
+* [Aktivita v podregistru](data-factory-hive-activity.md)
+* [Aktivita prasete](data-factory-pig-activity.md)
 * [Aktivita MapReduce](data-factory-map-reduce.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)

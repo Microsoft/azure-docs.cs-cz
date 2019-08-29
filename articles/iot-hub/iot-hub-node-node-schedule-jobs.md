@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877128"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147643"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node. js)
 
@@ -49,8 +49,6 @@ Na konci tohoto kurzu máte dvě aplikace Node. js:
 * **scheduleJobService. js**, který volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu potřebujete:
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 

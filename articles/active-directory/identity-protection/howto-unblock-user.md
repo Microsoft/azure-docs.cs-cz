@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4e3756435703c4e8c887a4e7b9d4f75a6701d840
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335374"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126254"
 ---
 # <a name="how-to-unblock-users"></a>Jak: Odblokování uživatelů
 
@@ -52,10 +52,10 @@ Chcete-li odblokovat podezřelé přihlášení, máte následující možnosti:
 Chcete-li odblokovat účet s rizikem, máte následující možnosti:
 
 1. **Resetování hesla** – můžete resetovat heslo uživatele. 
-2. **Zrušit všechny rizikové události** – zásady rizik uživatelů blokují uživatele, pokud byla dosažena nakonfigurovaná úroveň rizika uživatele pro blokování přístupu. Úroveň rizika uživatele můžete snížit ručním ukončením hlášených rizikových událostí. 
+2. **Zrušit všechny detekce rizik** – zásady rizik uživatelů blokují uživatele, pokud byla dosažena nakonfigurovaná úroveň rizika uživatele pro blokování přístupu. Úroveň rizika uživatele můžete snížit ručním uzavřením hlášených zjištění rizik. 
 3. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlašování způsobuje problémy pro konkrétní uživatele, můžete z něj vyloučit uživatele. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Zakázat zásady** – Pokud se domníváte, že konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zásady zakázat. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
 Chcete získat další informace o Azure AD Identity Protection? Podívejte se [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).

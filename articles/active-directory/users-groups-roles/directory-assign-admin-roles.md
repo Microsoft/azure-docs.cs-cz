@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034995"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135574"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -123,7 +123,7 @@ K dispozici jsou následující role správce:
 
 * **[Správce zařízení](#device-administrators)** : Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se stanou Správci místních počítačů na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory. Neposkytují možnost spravovat objekty zařízení v Azure Active Directory. 
 
-* **[Čtečky adresářů](#directory-readers)** : Toto je role, která by se měla přiřadit jenom k starším aplikacím, které nepodporují [architekturu souhlasu](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Nepřiřazujte ji uživatelům.
+* **[Čtečky adresářů](#directory-readers)** : Toto je role, která by se měla přiřadit jenom k starším aplikacím, které nepodporují [architekturu souhlasu](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Uživatelé v této roli mohou číst základní informace o adresáři. Tato role by se měla použít pro: 1) udělení přístupu ke čtení konkrétní sady uživatelů typu host místo udělení oprávnění všem uživatelům typu Host. 2) udělení konkrétní sady uživatelů bez oprávnění správce k portálu Azure Portal, pokud je možnost omezit přístup k portálu Azure AD jenom na správce, nastavená na Ano. 3) udělení instančních objektů přístup k adresáři whereDirectory. Read. All není možnost.
 
 * **[Účty synchronizace adresářů](#directory-synchronization-accounts)** : Nepoužívejte. Tato role je automaticky přiřazena ke službě Azure AD Connect a není určena ani podporována pro jiné použití.
 
@@ -658,7 +658,7 @@ Uživatelé přiřazení k této roli budou přidáni do místní skupiny Admini
 | microsoft.aad.directory/groupSettingTemplates/basic/read | Přečte základní vlastnosti groupSettingTemplates v Azure Active Directory. |
 
 ### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
-Může číst základní informace o adresáři. Pro udělení přístupu k aplikacím, které nejsou určené pro uživatele.
+Může číst základní informace o adresáři. Uživatelé v této roli mohou číst základní informace o adresáři. Tato role by se měla použít pro: 1) udělení přístupu ke čtení konkrétní sady uživatelů typu host místo udělení oprávnění všem uživatelům typu Host. 2) udělení konkrétní sady uživatelů bez oprávnění správce k portálu Azure Portal, pokud je možnost omezit přístup k portálu Azure AD jenom na správce, nastavená na Ano. 3) udělení instančních objektů přístup k adresáři whereDirectory. Read. All není možnost.
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -1388,7 +1388,7 @@ Následující role by se neměly používat. Jsou zastaralé a v budoucnu se od
 * Správce poštovní schránky
 * Připojení pracovních zařízení
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)

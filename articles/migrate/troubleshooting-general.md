@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: fa1e7fcf89ccc06e429831191ba5dfce3cf33797
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828314"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142325"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -199,17 +199,17 @@ Neschválený operační systém Linux | Počítač se může v Azure spustit, a
 Neznámý operační systém | Operační systém virtuálního počítače byl ve vCenter Server zadán jako jiný. Toto chování blokuje Azure Migrate Ověření připravenosti na Azure pro virtuální počítač. Před migrací počítače se ujistěte, že Azure [podporuje](https://aka.ms/azureoslist) operační systém počítače.
 Nepodporovaná bitová verze operačního systému | Virtuální počítače s 32 operačním systémem se můžou spouštět v Azure, ale před migrací do Azure doporučujeme upgradovat operační systém virtuálního počítače na 64.
 Vyžaduje předplatné Microsoft Visual Studio. | Počítač používá klientský operační systém Windows, který je podporovaný jenom prostřednictvím předplatného sady Visual Studio.
-Pro požadovaný výkon úložiště se nenašel žádný virtuální počítač. | Výkon úložiště (vstupně-výstupní operace za sekundu [IOPS] a propustnost) požadovaná pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
-Pro požadovaný výkon sítě se nenašel žádný virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
-V zadaném umístění se nenašel žádný virtuální počítač. | Před migrací použijte jiné cílové umístění.
+Pro požadovaný výkon úložiště se nenašel virtuální počítač. | Výkon úložiště (vstupně-výstupní operace za sekundu [IOPS] a propustnost) požadovaná pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
+Pro požadovaný výkon sítě se nenašel virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
+Virtuální počítač se nenašel v zadaném umístění. | Před migrací použijte jiné cílové umístění.
 Minimálně jeden nevhodný disk | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. Azure Migrate: Posouzení serveru v současné době nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě omezení disku pro spravované disky úrovně Premium (32 TB).  U každého disku připojeného k virtuálnímu počítači se ujistěte, že je velikost disku < 64 TB (podporuje disky SSD úrovně Ultra), pokud ne, zmenšete velikost disku před migrací do Azure nebo použitím více disků v Azure a prodávejte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , aby se dosáhlo vyšších limitů úložiště. Ujistěte se, že [disky virtuálních počítačů spravované](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)službou Azure podporují výkon (IOPS a propustnost), které potřebuje každý disk.
 Jeden nebo více nevhodných síťových adaptérů. | Před migrací odeberte nepoužívané síťové adaptéry z počítače.
 Počet disků překračuje limit. | Před migrací z počítače odeberte nepoužívané disky.
 Velikost disku překračuje limit. | Azure Migrate: Posouzení serveru v současné době nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disků Premium (32 TB). Azure ale podporuje disky s velikostí až 64 TB (Podporované disky SSD úrovně Ultra). Zmenšete disky na méně než 64 TB před migrací nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště.
-V zadaném umístění není k dispozici žádný disk. | Před migrací zajistěte, aby byl disk v cílovém umístění.
-Pro zadanou redundanci není k dispozici žádný disk. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
+Disk není v zadaném umístění k dispozici. | Před migrací zajistěte, aby byl disk v cílovém umístění.
+Disk není pro zadanou redundanci k dispozici. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
 Nebylo možné určit vhodnost disku z důvodu vnitřní chyby. | Zkuste vytvořit nové vyhodnocení pro skupinu.
-Virtuální počítač s požadovaný počtem jader a požadovanou pamětí se nenašel. | Azure nemohl najít vhodný typ virtuálního počítače. Před migrací Snižte velikost paměti a počtu jader místního počítače.
+Virtuální počítač s požadovanými jádry a pamětí se nenašel. | Azure nemohl najít vhodný typ virtuálního počítače. Před migrací Snižte velikost paměti a počtu jader místního počítače.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost virtuálního počítače. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc disků. | Zkuste vytvořit nové vyhodnocení pro skupinu.
 Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťových adaptérů. | Zkuste vytvořit nové vyhodnocení pro skupinu.
@@ -271,7 +271,7 @@ A [tady je seznam operačních systémů Linux, které podporuje MMA](https://do
 
 ### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Které operační systémy podporují agenta závislostí?
 
-[Tady je seznam operačních systémů Windows, které podporuje agent závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems). A [tady je seznam operačních systémů Linux podporovaných agentem závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[Tady je seznam [operačních systémů Windows a Linux, které Azure monitor pro virtuální počítače podporuje](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Nejde vizualizovat závislosti v Azure Migrate po dobu delší než 1 hodinu.
 V Azure Migrate můžete vizualizovat závislosti až po dobu jedné hodiny. I když Azure Migrate umožňuje přejít zpět k určitému datu za poslední měsíc, maximální doba, po kterou můžete vizualizovat závislosti, je jedna hodina.

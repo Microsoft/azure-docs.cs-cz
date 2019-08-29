@@ -1,7 +1,7 @@
 ---
-title: 'Převeďte na sdílený svazek clusteru: Odkaz na modul'
+title: 'Převést na sdílený svazek clusteru: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak použít převést do modulu sdíleného svazku clusteru ve službě Azure Machine Learning a datové sady převést do formátu CSV, který můžete stáhnout, exportu nebo sdílení s moduly skriptu R nebo Python.
+description: Naučte se používat modul převést do sdíleného svazku clusteru ve službě Azure Machine Learning k převodu datové sady do formátu CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,52 +9,51 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 8b8b6758cc2df7a092ce36e9507f84ac534d0e3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028722"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128900"
 ---
-# <a name="convert-to-csv-module"></a>Převést do modulu sdíleného svazku clusteru
+# <a name="convert-to-csv-module"></a>Převést na modul CSV
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k převedení datovou sadu do formátu CSV, který můžete stáhnout, exportu nebo sdílení s moduly skriptu R nebo Python.
+Pomocí tohoto modulu můžete převést datovou sadu na formát CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
 
 ### <a name="more-about-the-csv-format"></a>Další informace o formátu CSV 
 
-Formát CSV, který zastupuje "textový soubor s oddělovači", je formát souboru používaný mnoha externích nástrojů strojového učení. Sdílený svazek clusteru je běžné formát pro výměnu při práci s open source jazyků, jako je R nebo Python.
+Formát CSV, který představuje "hodnoty oddělené čárkami", je formát souboru, který používá mnoho externích nástrojů strojového učení. CSV je běžný formát pro výměnu při práci s open source jazyky, jako je R nebo Python.
 
-I v případě, že budete provádět většinu práce ve službě Azure Machine Learning, jsou časy, kdy možná pro vás bude užitečné převést vaše datové sady do souboru CSV pro použití v externích nástrojů. Příklad:
+I v případě, že většinu práce v Azure Machine Learning používáte, v některých případech může být užitečné převést datovou sadu na CSV a použít ji v externích nástrojích. Příklad:
 
-+ Stáhněte si soubor CSV a otevřít ho pomocí aplikace Excel nebo ho naimportovat do relační databáze.  
-+ Uložte soubor CSV do cloudového úložiště a k němu připojit z Power BI a vytvářet vizualizace.  
-+ Použijte formát CSV k přípravě dat pro použití v R a Python. Klepněte pravým tlačítkem výstup modulu pro generování kódu potřebné pro přístup k datům přímo z Pythonu nebo Poznámkový blok Jupyter. 
++ Stáhněte soubor CSV a otevřete ho v Excelu nebo ho importujte do relační databáze.  
++ Uložte soubor CSV do cloudového úložiště a připojte se k němu z Power BI, abyste mohli vytvářet vizualizace.  
++ Pomocí formátu CSV Připravte data pro použití v R a Pythonu. Stačí kliknout pravým tlačítkem na výstup modulu, který vygeneruje kód potřebný pro přístup k datům přímo z Pythonu nebo Jupyter poznámkového bloku. 
 
-Při převodu datovou sadu do sdíleného svazku clusteru, je soubor uložen ve vašem pracovním prostoru Azure ML. Nástroj služby Azure storage můžete použít k otevření a použití souboru přímo, nebo klikněte pravým tlačítkem na výstup modulu a stažení souboru CSV do počítače nebo použít v kódem R nebo Python.  
+Když datovou sadu převedete do sdíleného svazku clusteru, soubor se uloží do vašeho pracovního prostoru Azure ML. Pomocí nástroje Azure Storage můžete soubor otevřít a použít přímo, nebo můžete kliknout pravým tlačítkem na výstup modulu a stáhnout soubor CSV do počítače nebo ho použít v kódu R nebo Pythonu.  
 
-## <a name="how-to-configure-convert-to-csv"></a>Jak nakonfigurovat převést na sdílený svazek clusteru
+## <a name="how-to-configure-convert-to-csv"></a>Jak nakonfigurovat převod na CSV
 
-1.  Přidat [převést na sdílený svazek clusteru](./convert-to-csv.md) modulu do experimentu. V tomto modulu můžete najít **převody formátů dat** skupiny v rozhraní. 
+1.  Přidejte do experimentu modul [převést do sdíleného svazku clusteru](./convert-to-csv.md) . Tento modul můžete najít ve skupině **převodů formátu dat** v rozhraní. 
 
-2. Připojte ho k libovolného modulu, jejichž výstupem jsou datové sady.   
+2. Připojte ho ke všem modulům, které výstupují datovou sadu.   
   
 3.  Spusťte experiment.
 
 ### <a name="results"></a>Výsledky
   
 
-Dvakrát klikněte na panel výstupu [převést na sdílený svazek clusteru](./convert-to-csv.md)a vyberte jednu z těchto možností.  
+Dvakrát klikněte na výstup [převést na sdílený svazek clusteru](./convert-to-csv.md)a vyberte jednu z těchto možností.  
 
- + **Datová sada výsledků -> stáhnout**: Okamžitě se otevře kopii dat ve formátu CSV, který můžete uložit do místní složky. Pokud nezadáte složku, je použit výchozí název souboru a soubor CSV je uložen v místní **stáhne** knihovny.
+ + **Výsledná sada dat – > stáhnout**: Ihned otevře kopii dat ve formátu CSV, kterou můžete uložit do místní složky. Pokud složku nezadáte, použije se výchozí název souboru a soubor CSV se uloží do místní knihovny pro **stahování** .
 
 
- + **Datová sada výsledků -> Uložit jako datovou sadu**: Uloží soubor CSV zpět do pracovního prostoru Azure ML jako samostatné datové sady.
+ + **Výsledná sada dat – > Uložit jako datovou sadu**: Uloží soubor CSV zpátky do pracovního prostoru Azure ML jako samostatnou datovou sadu.
 
- + **Generovat kód pro přístup k datům**: Služba Azure ML generuje dvě sady kódu, abyste pro přístup k datům s použitím jazyka Python nebo s použitím R. Přístup k datům, zkopírujte fragment kódu do vaší aplikace. (*Generovat kód přístupu k datům se chystá.* )
+ + **Generovat kód pro přístup k datům**: Azure ML generuje dvě sady kódu pro přístup k datům, a to buď pomocí Pythonu, nebo pomocí R. Chcete-li získat přístup k datům, zkopírujte do aplikace fragment kódu. (*Generování kódu pro přístup k datům bude brzy.* )
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637285"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147856"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Výběr mezi úrovněmi služby vCore a migrace z úrovní služeb DTU
 
@@ -43,7 +43,7 @@ Následující tabulka vysvětluje rozdíly mezi těmito třemi úrovněmi:
 ||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálovatelný**|
 |---|---|---|---|
 |Nejlepší pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště.|Podnikové aplikace s požadavky vysokého vstupu a výstupu. Nabízí nejvyšší odolnost proti chybám pomocí několika izolovaných replik.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.|
-|Compute|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5 0,5 – 4 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|
+|Compute|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5 0,5 – 16 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 1 až 24 virtuální jádra<br/>Gen5 2 až 80 virtuální jádra|
 |Memory (Paměť)|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore<br/>**Výpočetní**prostředí bez serveru:<br/>Gen5 3 GB na vCore|**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore |**Zřízené výpočetní**prostředky:<br/>COMPUTE GEN4 – 7 GB na vCore<br/>Gen5 5,1 GB na vCore|
 |Storage|Používá vzdálené úložiště.<br/>**Jedna databáze zřízená COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní prostředí s jedním databázovým serverem bez serveru**:<br/>5 GB - 1 TB<br/>**Spravovaná instance**: 32 GB - 8 TB |Používá místní úložiště SSD.<br/>**Jedna databáze zřízená COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
 |Propustnost vstupně-výstupních operací (přibližná)|**Samostatná databáze**: 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací: 7000<br/>**Spravovaná instance**: Závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS na jádro s 200 000m maximálním IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|

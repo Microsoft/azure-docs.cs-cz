@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a2420f98bb07686b548dc6641df77dd0fdf7028b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562804"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128058"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Přejděte do adresáře, který obsahuje skript Pythonu `python_quickstart_client.py`.
+Přejít do adresáře, který obsahuje skript `python_quickstart_client.py`Pythonu.
 
 Ve vývojovém prostředí Pythonu nainstalujte vyžadované balíčky pomocí `pip`.
 
@@ -230,7 +230,7 @@ for task in tasks:
 
 Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá vám možnost odstranit fond a úlohu služby Batch. Za fond, ve kterém jsou spuštěné uzly, se účtují poplatky, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Provedete to tak, že v Azure Portal vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828722"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129334"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -218,7 +218,7 @@ Další informace najdete v tématu [Vytvoření a Správa zásad pro vymáhán�
 **Podrobnosti**: Mapování dokumentů v dokumentaci vaší organizace nebo v samotné zásadě Azure přidáním odkazu na zásadu organizace v [popisu zásad](../../governance/policy/concepts/definition-structure.md#display-name-and-description) Azure nebo v popisu [iniciativy](../../governance/policy/concepts/definition-structure.md#initiatives) Azure Policy.
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Monitorování sestav rizik Azure AD
-Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem [riziková událost](../../active-directory/reports-monitoring/concept-risk-events.md). Rizikové události se zaznamenávají v sestavách zabezpečení Azure AD. Další informace najdete v sestavě zabezpečení [rizikové uživatele](../../active-directory/reports-monitoring/concept-user-at-risk.md) a [zabezpečení rizikových přihlášení](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
+Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem [detekce rizik](../../active-directory/reports-monitoring/concept-risk-events.md). Detekce rizik se zaznamenávají v sestavách zabezpečení Azure AD. Další informace najdete v sestavě zabezpečení [rizikové uživatele](../../active-directory/reports-monitoring/concept-user-at-risk.md) a [zabezpečení rizikových přihlášení](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).
 
 ## <a name="next-steps"></a>Další postup
 V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.

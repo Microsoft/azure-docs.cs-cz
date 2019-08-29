@@ -1,7 +1,7 @@
 ---
-title: 'Trénování Clusteringový Model: Odkaz na modul'
+title: 'Model clusteringu s výukou: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak použít modul trénování modelu Clustering ve službě Azure Machine Learning k trénování modelů clusteringu.
+description: Naučte se používat modul výukového modelu clusteringu ve službě Azure Machine Learning ke školení modelů clusteringu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,56 +9,55 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 41cdec1d7f1c3932b17da6f9b1de518071f3f542
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028077"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128480"
 ---
 # <a name="train-clustering-model"></a>Trénování modelu clusteringu
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k trénování model clusteringu.
+Tento modul slouží ke školení modelu clusteringu.
 
-Modul přebírá Nezkušený clusteringu model, který jste už nakonfigurovali pomocí [Clustering K-Means](k-means-clustering.md) modulu a trénovat modelu s použitím datové sady s popiskem nebo bez popisku. Modul vytvoří oba trénovaného modelu, který můžete použít k předpovědi a sadu přiřazení clusteru pro každý případ v trénovací data.
+Modul převezme provedený model clusteringu, který jste už nakonfigurovali pomocí technologie [K-označuje modul clusteringu](k-means-clustering.md) a navlakuje model pomocí označené nebo neoznačené sady dat. Modul vytvoří jak vyškolený model, který můžete použít pro předpověď, a sadu přiřazení clusteru pro každý případ v školicích datech.
 
 > [!NOTE]
-> Clustering databázový model se školení pomocí [Train Model](train-model.md) modul, který je obecný modul pro trénování modelů strojového učení. Důvodem je, že [Train Model](train-model.md) funguje pouze s pod dohledem učení se supervizí. K-means a dalších algoritmů clusteringu povolit bez dohledu učení, to znamená, že algoritmus může učit se z dat bez popisku.  
+> Model clusteringu nejde být vyškolený pomocí modulu [výuka modelu](train-model.md) , který je obecným modulem pro školení modelů strojového učení. Důvodem je to, že [model výuky](train-model.md) funguje jenom se základními algoritmy učení. K-znamená a další algoritmy clusteringu umožňují bezdohledné učení, což znamená, že se algoritmus může naučit z neoznačených dat.  
   
-## <a name="how-to-use-train-clustering-model"></a>Jak používat Train Model clusteringu  
+## <a name="how-to-use-train-clustering-model"></a>Použití modelu výukového clusteringu  
   
-1.  Přidat **Train Model clusteringu** modulu do experimentu v nástroji Studio. Můžete najít v modulu v rámci **modulů služby Machine Learning**v **Train** kategorie.  
+1.  Přidejte modul pro **vytváření clusterů výukového modelu** do experimentu v studiu. Modul najdete v části **Machine Learning moduly**v kategorii vlaků.  
   
-2. Přidat [Clustering K-Means](k-means-clustering.md) modulu nebo jiný vlastní modul, který vytvoří kompatibilní clustering modelu a nastavte parametry model clusteringu.  
+2. Přidejte modul pro [clusteringu](k-means-clustering.md) , který je prostředkem pro clustering, nebo jiný vlastní modul, který vytvoří kompatibilní model clusteringu, a nastavte parametry modelu clusteringu.  
     
-3.  Připojit trénovací datové sady na pravém vstup **Train Model clusteringu**.
+3.  Připojte školicí datovou sadu k pravému vstupu **modelu clusteringu**s výukou.
   
-5.  V **sloupců**, vybrat sloupce, z datové sady používané k vytváření clusterů. Je nutné vybrat sloupce, které byly správné funkce: například nepoužívejte ID nebo další sloupce, které obsahují jedinečné hodnoty nebo sloupce, které obsahují stejné hodnoty.
+5.  V části **sada sloupců**vyberte sloupce z datové sady, které chcete použít při vytváření clusterů. Nezapomeňte vybrat sloupce, které mají dobré funkce, například Vyhněte se použití ID nebo jiných sloupců, které mají jedinečné hodnoty, nebo sloupců, které mají všechny stejné hodnoty.
 
-    Pokud popisek je k dispozici, můžete ho použít jako funkci, nebo nechte.  
+    Pokud je popisek k dispozici, můžete ho buď použít jako funkci, nebo ho nechat zapnutý.  
   
-6. Vyberte možnost, **Kontrola připojení nebo zrušte zaškrtnutí pro výsledek pouze**, pokud chcete výstup trénovacích dat spolu s nový popisek clusteru.
+6. Vyberte možnost a **zaškrtněte políčko připojit nebo zrušit zaškrtnutí pouze pro výsledek**, pokud chcete výstup školicích dat společně s novým označením clusteru.
 
-    Pokud výběr této možnosti jsou pouze přiřazení clusteru výstup. 
+    Pokud zrušíte výběr této možnosti, budou výstupem pouze přiřazení clusteru. 
 
-7. Spusťte experiment, nebo klikněte na tlačítko **Train Model clusteringu** modul a vyberte **spustit vybrané**.  
+7. Spusťte experiment nebo klikněte na modul **výukového modelu clusteringu** a vyberte **Spustit vybrané**.  
   
 ### <a name="results"></a>Výsledky
 
 Po dokončení školení:
 
 
-+  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte **způsobit datových sad**a klikněte na tlačítko **vizualizovat**.
++  Chcete-li zobrazit hodnoty v datové sadě, klikněte pravým tlačítkem na modul, vyberte výslednou datovou **sadu**a klikněte na **vizualizovat**.
 
-+ K uložení naučeného modelu pro pozdější znovu použít, klikněte pravým tlačítkem na modul, vyberte **Trained model**a klikněte na tlačítko **uložit jako Trénovaného modelu**.
++ Pokud chcete vyškolený model Uložit pro pozdější opětovné použití, klikněte pravým tlačítkem myši na modul, vyberte **trained model**a klikněte na **Uložit jako trained model**.
 
-+ K vygenerování skóre z modelu, použijte [přiřadit Data clustery](assign-data-to-clusters.md).
++ K vygenerování skóre z modelu použijte [přiřazení dat do clusterů](assign-data-to-clusters.md).
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

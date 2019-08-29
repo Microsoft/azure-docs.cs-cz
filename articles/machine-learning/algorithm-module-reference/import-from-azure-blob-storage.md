@@ -1,7 +1,7 @@
 ---
-title: 'Import ze služby Azure Blob Storage: Odkaz na modul'
+title: 'Importovat z Azure Blob Storage: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Přečtěte si že toto téma popisuje, jak pomocí importu z úložiště objektů Blob v Azure modulu ve službě Azure Machine Learning číst data z úložiště objektů blob v Azure, aby data můžete použít v experimentu služby machine learning.
+description: Přečtěte si toto téma popisuje, jak pomocí modulu import z Azure Blob Storage v rámci služby Azure Machine Learning číst data z úložiště objektů BLOB v Azure, abyste mohli používat data v experimentu machine learningu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 4ac98516c1a326e1ede09bbb9660113ffd0642a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029682"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128726"
 ---
-# <a name="import-from-azure-blob-storage-module"></a>Importovat z modulu Azure Blob Storage
+# <a name="import-from-azure-blob-storage-module"></a>Import z modulu Azure Blob Storage
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k čtení dat z úložiště objektů blob v Azure, takže data můžete použít v experimentu služby machine learning.  
+Tento modul slouží ke čtení dat z úložiště objektů BLOB v Azure, abyste mohli používat data v experimentu machine learningu.  
 
-Služba objektů Blob v Azure je pro ukládání velkých objemů dat, včetně binární data. Objekty BLOB Azure můžete přistupovat odkudkoli a pomocí protokolu HTTP nebo HTTPS. Ověřování může být potřeba v závislosti na typu úložiště objektů blob. 
+Služba objektů BLOB v Azure slouží k ukládání velkých objemů dat, včetně binárních dat. K objektům blob Azure se dá dostat odkudkoli a použít buď HTTP, nebo HTTPS. V závislosti na typu úložiště objektů BLOB může být vyžadováno ověřování. 
 
-- Veřejné objekty BLOB je přístupný, kdokoli, nebo uživatelé, kteří mají adresa URL SAS.
-- Soukromé objekty BLOB vyžadují přihlašovací údaje a přihlašovací údaje.
+- K veřejným objektům blob může přistupovat kdokoli nebo uživatelé, kteří mají adresu URL SAS.
+- Privátní objekty blob vyžadují přihlašovací údaje a přihlašovací údaje.
 
-Import z úložiště objektů blob vyžaduje, aby se data uložená v objektech BLOB, které používají **objektů blob bloku** formátu. Soubory uložené v objektu blob musí používat oddělený čárkami (CSV) nebo formáty oddělené tabulátorem (TSV). Při čtení souboru záznamy a všechny příslušné atribut záhlaví jsou načtena jako řádky do paměti jako datovou sadu.
-
-
-Důrazně doporučujeme Profilovat vaše data před importem, abyste měli jistotu, že schéma je podle očekávání. Proces importu prohledá některé počet řádků head k určení schématu, ale novější řádků může obsahovat další sloupce nebo data, která způsobí chyby.
+Import z úložiště objektů BLOB vyžaduje, aby byla data uložená v objektech blob, které používají formát **objektů blob bloku** . Soubory uložené v objektu BLOB musí používat formáty TSV (CSV) nebo oddělený tabulátorem (TSV). Při čtení souboru jsou záznamy a příslušné záhlaví atributů načteny jako řádky do paměti jako datová sada.
 
 
-
-## <a name="manually-set-properties-in-the-import-data-module"></a>Ručně nastavit vlastnosti v modulu Import dat
-
-Následující kroky popisují, jak ručně nakonfigurovat zdroj pro import.
-
-1. Přidat **Import dat** modulu do experimentu. Tento modul můžete najít v rozhraní, v **datový vstup a výstup**
-
-2. Pro **zdroj dat**vyberte **Azure Blob Storage**.
-
-3. Pro **typ ověřování**, zvolte **veřejné (adresa URL SAS)** Pokud víte, že jako veřejný zdroj dat byl poskytnut informace. SAS URL je adresa URL časově omezenou pro veřejný přístup, který můžete vygenerovat pomocí nástroje pro Azure storage.
-
-    V opačném případě zvolte **účet**.
-
-4. Pokud jsou vaše data v **veřejné** objekt blob, který je přístupný pomocí adresy URL SAS, nepotřebujete další přihlašovací údaje, protože řetězce adresy URL obsahuje všechny informace potřebné pro stahování a ověřování.
-
-    V **URI** pole zadejte nebo vložte úplný identifikátor URI, který definuje účet a veřejných objektů blob.
+Důrazně doporučujeme profilovat data před importem, abyste se ujistili, že je schéma očekávaným způsobem. Proces importu kontroluje určitý počet řádků hlavní řádky a určí schéma, ale pozdější řádky mohou obsahovat nadbytečné sloupce nebo data, která způsobují chyby.
 
 
 
-5. Pokud jsou vaše data v **privátní** účtu, je nutné zadat přihlašovací údaje, včetně názvu účtu a klíč.
+## <a name="manually-set-properties-in-the-import-data-module"></a>Ručně nastavit vlastnosti v modulu import dat
 
-    - Pro **název účtu**, zadejte nebo vložte název účtu, který obsahuje objekt blob, které chcete získat přístup.
+Následující postup popisuje, jak ručně nakonfigurovat zdroj importu.
 
-        Pokud je úplná adresa URL účtu úložiště, například `http://myshared.blob.core.windows.net`, zadali byste `myshared`.
+1. Přidejte modul **Import dat** do experimentu. Tento modul můžete najít v rozhraní, **vstup a výstup dat**
 
-    - Pro **klíč účtu**, vložte přístupový klíč úložiště, která je přidružená k účtu.
+2. V případě **zdroje dat**vyberte **Azure Blob Storage**.
 
-        Pokud si nejste jisti přístupový klíč, najdete v části, "Manage účtům Azure storage" v tomto článku: [Informace o účtech Azure Storage](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+3. Pokud víte, že byly informace k dispozici jako veřejný zdroj dat, vyberte jako **typ ověřování**možnost **veřejné (SAS adresa URL)** . Adresa URL SAS je časově vázaná adresa URL pro veřejný přístup, kterou můžete vygenerovat pomocí nástroje Azure Storage.
 
-6. Pro **cesta ke kontejneru, adresáře nebo objekt blob**, zadejte název konkrétní objekt blob, který chcete načíst.
+    V opačném případě vyberte možnost **účet**.
 
-    Například, pokud jste nahráli soubor s názvem **data01.csv** do kontejneru **trainingdata** v rámci účtu s názvem **mymldata**, by být úplná adresa URL k souboru: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt` .
+4. Pokud jsou vaše data ve **veřejném** objektu blob, ke kterému se dá získat přístup pomocí adresy URL SAS, nepotřebujete další přihlašovací údaje, protože řetězec adresy URL obsahuje všechny informace, které jsou potřeba ke stažení a ověření.
 
-    Proto se v poli **cesta ke kontejneru, adresáře nebo objekt blob**, zadali byste: `trainingdata/data01.csv`
+    Do pole **identifikátor URI** zadejte nebo vložte úplný identifikátor URI, který definuje účet a veřejný objekt BLOB.
 
-    Pokud chcete importovat více souborů, můžete použít zástupné znaky `*` (hvězdička) nebo `?` (otazník).
 
-    Například za předpokladu, že kontejner `trainingdata` obsahuje více souborů z kompatibilním formátu, můžete použít následující specifikace ke čtení všech souborů, začínající souborem `data`a zřetězení do jedné datové sady:
+
+5. Pokud jsou vaše data v **privátním** účtu, musíte zadat přihlašovací údaje včetně názvu účtu a klíče.
+
+    - Do **pole název účtu**zadejte nebo vložte název účtu, který obsahuje objekt blob, ke kterému chcete získat přístup.
+
+        Pokud je `http://myshared.blob.core.windows.net`například úplná adresa URL účtu úložiště, zadáte `myshared`.
+
+    - Do pole **klíč účtu**vložte přístupový klíč k úložišti, který je přidružený k účtu.
+
+        Pokud přístupový klíč neznáte, přečtěte si část "Správa účtů úložiště Azure" v tomto článku: [O účtech Azure Storage](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+
+6. **Do pole cesta k kontejneru, adresáři nebo objektu BLOB**zadejte název konkrétního objektu blob, který chcete načíst.
+
+    Pokud jste například nahráli soubor s názvem **data01. csv** do kontejneru **trainingdata** v účtu s názvem **mymldata**, bude úplná adresa URL pro tento soubor: `http://mymldata.blob.core.windows.net/trainingdata/data01.txt`.
+
+    Proto v **cestě pole k kontejneru, adresáři nebo objektu BLOB**zadáte:`trainingdata/data01.csv`
+
+    Chcete-li importovat více souborů, můžete použít zástupné znaky `*` (hvězdičku) nebo `?` (otazník).
+
+    Například za předpokladu, že `trainingdata` kontejner obsahuje více souborů kompatibilního formátu, můžete použít následující specifikaci ke čtení všech souborů `data`počínaje a jejich zřetězení do jedné datové sady:
 
     `trainingdata/data*.csv`
 
-    Zástupné znaky nelze použít v názvu kontejneru. Pokud je potřeba importovat soubory z několika kontejnerů, použijte samostatnou instanci **importovat Data** modul pro každý kontejner a pak sloučení datových sad pomocí [přidat řádky](./add-rows.md) modulu.
+    V názvech kontejnerů nemůžete použít zástupné znaky. Pokud potřebujete importovat soubory z více kontejnerů, použijte samostatnou instanci modulu **Import dat** pro každý kontejner a potom slučte datové sady pomocí modulu [Přidat řádky](./add-rows.md) .
 
     > [!NOTE]
-    > Pokud jste vybrali možnost **použití mezipaměti výsledky**, všechny změny provedené do souborů v kontejneru nespouštějí aktualizaci dat v testu.
+    > Pokud jste vybrali možnost, **použijte výsledky uložené v mezipaměti**, všechny změny provedené v souborech v kontejneru neaktivují aktualizaci dat v experimentu.
 
-7. Pro **formát souboru objektu Blob**, vyberte možnost, která udává formát dat, která je uložena v objektu blob, tak, aby Azure Machine Learning můžete zpracovávat data odpovídajícím způsobem. Podporují se následující formáty:
+7. V případě **formátu souboru BLOB**vyberte možnost, která určuje formát dat uložených v objektu blob, aby Azure Machine Learning mohl data zpracovat odpovídajícím způsobem. Podporovány jsou následující formáty:
 
-    - **CSV**: Hodnot oddělených čárkami (CSV) jsou výchozí formát úložiště pro export a import souborů ve službě Azure Machine Learning. Je-li data již obsahuje řádek záhlaví, nezapomeňte vybrat možnost, **soubor má řádek záhlaví**, nebo hlavičku, bude zacházeno jako data v řádku.
-
-       
-
-    - **TSV**: Hodnoty oddělené tabulátorem (TSV) jsou formátu, který používá mnoho nástrojů strojového učení. Je-li data již obsahuje řádek záhlaví, nezapomeňte vybrat možnost, **soubor má řádek záhlaví**, nebo hlavičku, bude zacházeno jako data v řádku.
+    - **CSV**: Hodnoty oddělené čárkami (CSV) jsou výchozím formátem úložiště pro export a import souborů v Azure Machine Learning. Pokud již data obsahují řádek záhlaví, nezapomeňte vybrat možnost, **soubor má řádek záhlaví**, jinak bude záhlaví považováno za řádek dat.
 
        
 
-    - **ARFF**: Tento formát podporuje import souborů v formát používaný čtečkou Weka sady nástrojů. 
+    - **TSV**: Hodnoty oddělené tabulátory (TSV) jsou formáty používané mnoha nástroji pro strojové učení. Pokud již data obsahují řádek záhlaví, nezapomeňte vybrat možnost, **soubor má řádek záhlaví**, jinak bude záhlaví považováno za řádek dat.
+
+       
+
+    - **ARFF**: Tento formát podporuje import souborů ve formátu používaném sadou nástrojů weka. 
 
    
 
 8. Spusťte experiment.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900410"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135275"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database versus SQL Server
 
@@ -135,7 +135,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
 | [Synchronizace dat SQL](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Ano, s Managed SSIS v prostředí Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), najdete [v tématu Vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, pokud se spravované SSIS v prostředí Azure Data Factory (ADF), ve kterém jsou balíčky uložené v SSISDB hostovaném Azure SQL Database a spouštěné v Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database serveru a spravované instanci, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Ano, pomocí spravovaného prostředí SSIS v Azure Data Factory (ADF), kde jsou balíčky uložené v SSISDB hostovaném spravovanou instancí a spuštěny na Azure SSIS Integration Runtime (IR), přečtěte si téma [vytvoření Azure-SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Pokud chcete porovnat funkce SSIS v SQL Database a Managed instance, přečtěte si téma [porovnání Azure SQL Database izolovaných databází nebo elastických fondů a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) | Ne – [viz Power BI](https://docs.microsoft.com/power-bi/) |
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | Ano | Ne. Použijte předdefinované sestavy v SQL Server Management Studio a Azure Data Studio. |
 | [Virtuální síť](../virtual-network/virtual-networks-overview.md) | Částečně, umožňuje omezený přístup pomocí [koncových bodů virtuální](sql-database-vnet-service-endpoint-rule-overview.md) sítě. | Ano, spravovaná instance je vložena do virtuální sítě zákazníka. Zobrazit [podsíť](sql-database-managed-instance-transact-sql-information.md#subnet) a [virtuální síť](sql-database-managed-instance-transact-sql-information.md#vnet) |
@@ -161,7 +161,17 @@ Azure SQL Database podporuje různé datové nástroje, které vám pomůžou se
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – viz [Rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |
 | [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ano](https://www.microsoft.com/download/details.aspx?id=38829) | Ne |
 
-## <a name="next-steps"></a>Další postup
+## <a name="migration-methods"></a>Metody migrace
+
+K přesunu dat mezi SQL Server, Izolovaná databáze a databázemi spravované instance můžete použít různé metody migrace. Některé metody jsou **online** a vybírání všech změn provedených ve zdroji během provádění migrace, zatímco v **offline** metodách potřebujete zastavit úlohu, která upravuje data ve zdroji, zatímco probíhá migrace.
+
+| **Zdroj** | **Izolovaná databáze a elastický fond** | **Spravovaná instance** |
+| --- | --- | --- |
+| SQL Server (on-Prem, AzureVM, Amazon RDS) | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online** [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Nativní zálohování a obnovování, [BacPac soubor (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
+| Izolovaná databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
+| MI | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Obnovení v časovém intervalu mezi instancemi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) nebo [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [nativní zálohování a obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
+
+## <a name="next-steps"></a>Další kroky
 
 Společnost Microsoft nadále přidává funkce do Azure SQL Database. Navštivte webovou stránku aktualizace služby pro Azure, kde najdete nejnovější aktualizace pomocí těchto filtrů:
 

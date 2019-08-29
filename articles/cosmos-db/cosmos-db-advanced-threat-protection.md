@@ -4,15 +4,15 @@ description: Přečtěte si, jak Azure Cosmos DB poskytuje šifrování neaktivn
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981734"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123858"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 
@@ -56,6 +56,31 @@ Použijte následující rutiny PowerShellu:
 * [Povolit rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [Získat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Zakázat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>Používání šablon Azure Resource Manager
+
+Pomocí šablony Azure Resource Manager můžete nastavit Cosmos DB s povolenou rozšířenou ochranou hrozeb.
+Další informace najdete v tématu [Vytvoření účtu CosmosDB s využitím rozšířené ochrany před internetovými útoky](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+
+### <a name="using-azure-policy"></a>Použití Azure Policy
+
+K povolení rozšířené ochrany před internetovými útoky pro Cosmos DB použijte Azure Policy.
+
+1. Spusťte stránku Azure **Policy-definitions** a vyhledejte zásadu **nasazení rozšířené ochrany před internetovými útoky pro Cosmos DB** .
+
+    ![Zásady hledání](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. Klikněte na zásady **nasadit rozšířenou ochranu před internetovými útoky pro CosmosDB** a pak klikněte na **přiřadit**.
+
+    ![Vybrat předplatné nebo skupinu](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. V poli **obor** klikněte na tři tečky, vyberte předplatné Azure nebo skupinu prostředků a pak klikněte na **Vybrat**.
+
+    ![Stránka definice zásad](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. Zadejte další parametry a klikněte na **přiřadit**.
 
 ## <a name="manage-atp-security-alerts"></a>Spravovat výstrahy zabezpečení ATP
 

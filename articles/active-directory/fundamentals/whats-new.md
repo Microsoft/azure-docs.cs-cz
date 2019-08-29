@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93327091d0065a67d441dd56cadd83f4f7d2d1f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: afab194c984dcbfa96a9342f46b892c7ec08d321
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970402"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135676"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -85,7 +85,7 @@ Nové změny uživatelského rozhraní přicházejí do návrhu **Přidat z obla
 **Kategorie služby:** MFA  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady Office 365](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Pokud aktuálně spoléháte na tyto stránky, abyste mohli aktualizovat nastavení brány firewall, musíte se ujistit, že máte také seznam IP adres, které jsou popsány v části **požadavky na bránu firewall pro Azure Multi-Factor Authentication Server** v části [Začínáme. s využitím článku Azure Multi-Factor Authentication serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
+Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady Office 365](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Pokud aktuálně spoléháte na tyto stránky, abyste mohli aktualizovat nastavení brány firewall, musíte se ujistit, že máte také seznam IP adres, které jsou popsány v části **požadavky na bránu firewall pro Azure Multi-Factor Authentication Server** v části [Začínáme. s](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) využitím článku Azure Multi-Factor Authentication Server.
 
 ---
 
@@ -164,7 +164,7 @@ Další informace o tom, jak lépe zabezpečit organizaci pomocí automatizovan�
 
 Pokud už vás unavuje správu dlouhých seznamů IP adres a rozsahů, můžete použít novou značku síťové služby **AzureActiveDirectoryDomainServices** ve skupině zabezpečení sítě Azure, která vám pomůžou zabezpečit příchozí provoz na Azure AD Domain Services Virtual. podsíť sítě.
 
-Další informace o této nové značce služby najdete v tématu [skupiny zabezpečení sítě pro Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#default-network-service-group).
+Další informace o této nové značce služby najdete v tématu [skupiny zabezpečení sítě pro Azure AD Domain Services](../../active-directory-domain-services/network-considerations.md#network-security-groups-and-required-ports).
 
 ---
 
@@ -186,7 +186,7 @@ Další informace najdete v tématu [Povolení auditů zabezpečení pro Azure A
 **Kategorie služby:** Samoobslužné resetování hesla  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
-Nové metody ověřování & sestavy Insights vám pomůžou pochopit, jak se registrují funkce jako Azure Multi-Factor Authentication a Samoobslužné resetování hesla, včetně počtu registrovaných Uživatelé pro každou funkci, jak často se Samoobslužné resetování hesla používá k resetování hesel a podle toho, jakou metodu se resetuje.
+Nové metody ověřování & sestavy Insights vám pomůžou pochopit, jak se registrují a používají funkce jako Azure Multi-Factor Authentication a Samoobslužné resetování hesla ve vaší organizaci, včetně počtu registrovaných Uživatelé pro každou funkci, jak často se Samoobslužné resetování hesla používá k resetování hesel a podle toho, jakou metodu se resetuje.
 
 Další informace najdete v tématu [použití metod ověřování & Insights (Preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights).
 
@@ -388,7 +388,7 @@ Další informace o nastavení firemního brandingu najdete v tématu [Přidán�
 **Kategorie služby:** MFA  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication ve své organizaci, musí nyní používat cloudové ověřování Azure Multi-Factor Authentication. Zákazníci, kteří si server MFA vyaktivovali před 1. července, se nezmění. Pořád budete moct stáhnout nejnovější verzi, získat budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci.
+Od 1. července 2019 už Microsoft nenabídne MFA Server pro nová nasazení. Noví zákazníci, kteří chtějí vyžadovat službu Multi-Factor Authentication ve své organizaci, teď musí používat cloudové Multi-Factor Authentication Azure. Zákazníci, kteří si server MFA vyaktivovali před 1. července, se nezmění. Pořád budete moct stáhnout nejnovější verzi, získat budoucí aktualizace a vygenerovat přihlašovací údaje pro aktivaci.
 
 Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication Server](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy). Další informace o cloudových Multi-Factor Authenticationch Azure najdete v tématu [plánování cloudového nasazení azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted).
 
@@ -590,7 +590,7 @@ Další informace o podmíněném přístupu a resetování hesla najdete v blog
 
 Detekce analýzy hrozeb Azure AD je teď k dispozici jako součást aktualizované Azure AD Identity Protection funkce. Tato nová funkce pomáhá indikovat neobvyklou aktivitu uživatelů pro konkrétního uživatele nebo aktivitu, která je konzistentní se známými vzory útoku na základě interních a externích zdrojů analýzy hrozeb Microsoftu.
 
-Další informace o aktualizované verzi Azure AD Identity Protection najdete na blogu o [čtyřech hlavních Azure AD Identity Protection vylepšeních, která jsou teď ve verzi Public Preview](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) , a na [Azure Active Directory Identity Protection (aktualizované)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) předmětu. Další informace o detekci Azure AD Threat Intelligence najdete v článku [Azure Active Directory Identity Protection rizikové události](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) .
+Další informace o aktualizované verzi Azure AD Identity Protection najdete na blogu o [čtyřech hlavních Azure AD Identity Protection vylepšeních, která jsou teď ve verzi Public Preview](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) , a na [Azure Active Directory Identity Protection (aktualizované)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) předmětu. Další informace o detekci analýzy hrozeb v Azure AD najdete v článku [Azure Active Directory Identity Protection detekce rizik](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) .
 
 ---
 
@@ -632,7 +632,7 @@ Abychom vám pomohli vyřešit svůj názor na vizualizace pomocí protokolů ak
 
 - **Přihlášení.** Obsahuje podrobné informace o aplikacích a uživatelích, včetně umístění pro přihlášení, klientského operačního systému nebo klienta a verze prohlížeče a počtu úspěšných nebo neúspěšných přihlášení.
 
-- **Starší verze ověřování a podmíněný přístup.** Poskytuje podrobné informace o aplikacích a uživatelích využívajících starší verze ověřování, včetně využití služby Multi-Factor Authentication, aktivovaného zásadami podmíněného přístupu, aplikací, které používají zásady podmíněného přístupu, a tak dále.
+- **Starší verze ověřování a podmíněný přístup.** Obsahuje podrobné informace o aplikacích a uživatelích využívajících starší ověřování, včetně Multi-Factor Authenticationho použití aktivovaných zásadami podmíněného přístupu, aplikacích, které používají zásady podmíněného přístupu a tak dále.
 
 - **Analýza neúspěšných přihlášení.** Pomáhá určit, jestli dochází k chybám přihlášení kvůli akci uživatele, problémům se zásadami nebo vaší infrastruktuře.
 

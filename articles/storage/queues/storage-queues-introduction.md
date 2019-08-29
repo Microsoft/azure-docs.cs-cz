@@ -8,23 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86bbff167a2653fd8d89b566b551c4c53dd3614e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721169"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124569"
 ---
 # <a name="what-are-azure-queues"></a>Co jsou fronty Azure?
 
-Azure Queue Storage je služba pro ukládání velkého počtu zpráv. Přístup ke zprávám odkudkoli na světě prostřednictvím ověřených volání pomocí protokolu HTTP nebo HTTPS. Zpráva fronty může mít velikost až 64 KB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště.
-
-## <a name="common-uses"></a>Běžné použití
-
-Toto jsou některá běžná použití úložiště služby Queue Storage:
-
-* Vytvoření backlogu práce k asynchronnímu zpracování
-* Předávání zpráv z webové role Azure do role pracovního procesu Azure
+Azure Queue Storage je služba pro ukládání velkého počtu zpráv. Přístup ke zprávám odkudkoli na světě prostřednictvím ověřených volání pomocí protokolu HTTP nebo HTTPS. Zpráva fronty může mít velikost až 64 KB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště. Fronty se běžně používají k vytváření nevyřízených položek pro asynchronní zpracování.
 
 ## <a name="queue-service-concepts"></a>Služba front koncepty
 

@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035709"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135043"
 ---
 ::: zone target="chromeless"
 
-# <a name="return-azure-data-box-disk"></a>Vrátit Azure Data Box Disk 
+## <a name="return-azure-data-box-disk"></a>Vrátit Azure Data Box Disk 
 
 ::: zone-end
 
@@ -49,22 +49,9 @@ Než začnete, ujistěte se, že jste dokončili [kurz: Zkopírujte data Azure D
     - Doporučujeme zabalit disky pomocí dobře zabezpečeného zalomení.
     - Ujistěte se, že je přizpůsobení Snug, aby se snížilo jakékoli přesuny v rámci pole.
 
-Další kroky určíte tak, že zařízení vracíte.
+Další kroky určíte tak, že zařízení vracíte. Pokyny se liší pro USA, Kanadu, Austrálii nebo země v Asii.
 
-
-
-- [Naplánujte si vyzvednutí v případě, že zařízení vrátíte v USA a Kanadě](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-- [Naplánujte si vyzvednutí v rámci DHL pro Evropu](data-box-disk-deploy-picked-up.md#pick-up-in-europe) návštěvou svého webu a zadáním čísla faktury zpátečního.
-- [Naplánování výdeje v Austrálii](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
-- [Naplánujte vyzvednutí pro země v Asii](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , jako je Japonsko, Korea a Singapur.
-
-::: zone target="chromeless"
-
-Po zvednutí disků vaším operátorem se zobrazí stav objednávky na portálu a zobrazí se ID sledování.
-
-::: zone-end
-
-## <a name="pick-up-in-us-canada"></a>Projměte v USA, Kanadě
+### <a name="pick-up-in-us-canada"></a>Projměte v USA, Kanadě
 
 Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
 
@@ -80,7 +67,7 @@ Při vrácení zařízení v USA nebo Kanadě proveďte následující kroky.
     - Pokud sledovací číslo není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
     - Místo plánování vyzvednutí můžete také Data Box Disk umístit na nejbližší místo pro vyřazení.
 
-## <a name="pick-up-in-europe"></a>Vyzvednout v Evropě
+### <a name="pick-up-in-europe"></a>Vyzvednout v Evropě
 
 Pokud se zařízení vrátí do Evropy, proveďte následující kroky.
 
@@ -93,7 +80,7 @@ Pokud se zařízení vrátí do Evropy, proveďte následující kroky.
 4. Přejít na web země/oblast DHL Express a vyberte **kniha, > kterou chcete použít pro eReturnou dodávku**.    
 3. Zadejte číslo nákladového listu a kliknutím na tlačítko **Naplánovat vyzvednutí** zařiďte vyzvednutí.
 
-## <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
+### <a name="pick-up-in-australia"></a>Vyzvednout v Austrálii
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít rozšířené oznámení. Pro vyzvednutí v Austrálii proveďte následující kroky.
 
@@ -104,11 +91,11 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
     - Adresa
     - Jméno kontaktu
 
-## <a name="pick-up-in-asia"></a>Vyzvednout v Asii
+### <a name="pick-up-in-asia"></a>Vyzvednout v Asii
 
 Pokyny pro vyzvednutí se liší v případě Japonska, Koreje a Singapuru.
 
-### <a name="pick-up-in-japan"></a>Vyzvednout v Japonsku
+#### <a name="pick-up-in-japan"></a>Vyzvednout v Japonsku
 
 1. Jako informace o odesílateli napište název vaší společnosti a uveďte informace na zásilce.
 2. Odešlete e-mailem Quantium řešení pomocí následující e-mailové šablony.
@@ -135,7 +122,7 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 - ElektronCustomerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-### <a name="pick-up-in-korea"></a>Vyzvednout v Koreji
+#### <a name="pick-up-in-korea"></a>Vyzvednout v Koreji
 
 1. Nezapomeňte zahrnout zpáteční poznámku ze zásilky.
 2. Požádat o vyzvednutí, pokud je k dispozici Poznámka k expedici:
@@ -149,13 +136,10 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
     3. Pokud Courier nepřijde ke kolekci, zavolejte na mezinárodní linku *řešení Quantium* pro alternativní opatření. 
     4. V případě, že se požadavek provádí přes telefon, se zobrazí ústní potvrzení.
 
-### <a name="pick-up-in-singapore"></a>Vyzvednout v Singapuru
+#### <a name="pick-up-in-singapore"></a>Vyzvednout v Singapuru
 
 1. Vytiskněte popisek pro expedici a připojte se k poli. Pokud je popisek poškozený nebo ztracený:
     - Přejděte na **přehled > stáhnout expediční štítek** a získat expediční štítek pro návrat.
-
-        ![Stáhnout expediční štítek](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Připevněte popisek na zařízení. Ujistěte se, že je popisek viditelný.
 
 2. Požadavek na vyzvednutí:
@@ -168,7 +152,7 @@ V případě potřeby můžete kontaktovat podporu řešení Quantium (japonský
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 

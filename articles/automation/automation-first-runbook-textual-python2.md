@@ -1,6 +1,6 @@
 ---
-title: Můj první runbook Pythonu ve službě Azure Automation
-description: Kurz vás provede vytvořením, otestováním a publikováním jednoduchého runbooku Python.
+title: Můj první Runbook v Pythonu v Azure Automation
+description: Kurz vás provede vytvořením, otestováním a publikováním jednoduchého Runbooku v Pythonu.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a030005d73df61c31c5aa1c2e1b56e52b03a56e3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6808ad101a828708ff4fe77bb4b8a55cf8c5fec7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478513"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135430"
 ---
-# <a name="my-first-python-runbook"></a>Můj první runbook Pythonu
+# <a name="my-first-python-runbook"></a>Můj první Runbook sady Python
 
 > [!div class="op_single_selector"]
 > - [Grafický](automation-first-runbook-graphical.md)
@@ -24,10 +24,10 @@ ms.locfileid: "67478513"
 > - [Pracovní postup PowerShellu](automation-first-runbook-textual.md)
 > - [Python](automation-first-runbook-textual-python2.md)
 
-Tento kurz vás provede vytvořením [Python runbook](automation-runbook-types.md#python-runbooks) ve službě Azure Automation. Začnete s jednoduchým runbookem pro testování a publikování. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec provedete runbook robustnější přidáním parametrů runbooku.
+Tento kurz vás provede vytvořením [Runbooku](automation-runbook-types.md#python-runbooks) v Pythonu v Azure Automation. Začnete s jednoduchým runbookm, který otestujete a publikujete. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec uděláte robustnější sadu Runbook přidáním parametrů Runbooku.
 
 > [!NOTE]
-> Spuštění runbooku v Pythonu pomocí webhooku se nepodporuje.
+> Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,29 +37,29 @@ Pro absolvování tohoto kurzu potřebujete:
 - [Účet Automation](automation-offering-get-started.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 - Virtuální počítač Azure. Tento počítač zastavíte a spustíte, proto to nesmí být produkční virtuální počítač.
 
-## <a name="create-a-new-runbook"></a>Vytvořit nový runbook
+## <a name="create-a-new-runbook"></a>Vytvořit nový Runbook
 
-Začněte vytvořením jednoduchého runbooku, který zobrazí text *Hello World*.
+Začnete vytvořením jednoduchého Runbooku, který vypíše text *Hello World*.
 
 1. Na webu Azure Portal otevřete účet Automation.
 
     Stránka účtu Automation nabízí rychlý přehled prostředků v tomto účtu. Už byste tam měli mít nějaké prostředky. Většina z těchto assetů jsou moduly, které jsou automaticky obsažené v novém účtu Automation. Také potřebujete asset přihlašovacích údajů, který je uvedený v [požadavcích](#prerequisites).<br>
 
 1. V části **SPRÁVA PROCESŮ** vyberte **Runbooky** a otevřete seznam runbooků.
-1. Vyberte **+ přidat runbook** k vytvoření nové sady runbook.
-1. Dejte runbooku název *MyFirstRunbook-Python*.
-1. V takovém případě se chystáte vytvořit [Python runbook](automation-runbook-types.md#python-runbooks) proto vyberte **Python 2** pro **typ Runbooku**.
+1. Vyberte **+ Přidat Runbook** pro vytvoření nové sady Runbook.
+1. Dejte Runbooku název *MyFirstRunbook-Python*.
+1. V tomto případě vytvoříte [Runbook sady Python](automation-runbook-types.md#python-runbooks) , takže vyberte **Python 2** pro **typ Runbooku**.
 1. Kliknutím na **Vytvořit** vytvoříte runbook a otevřete textový editor.
 
-## <a name="add-code-to-the-runbook"></a>Přidání kódu do runbooku
+## <a name="add-code-to-the-runbook"></a>Přidat kód do Runbooku
 
-Nyní přidejte tomu jednoduchý příkaz Tisk textu "Hello World":
+Nyní přidáte jednoduchý příkaz pro vytištění textu "Hello World":
 
 ```python
 print("Hello World!")
 ```
 
-Klikněte na tlačítko **Uložit** pro sadu runbook uložte.
+Kliknutím na **Save (Uložit** ) sadu Runbook uložte.
 
 ## <a name="test-the-runbook"></a>Otestování runbooku
 
@@ -68,40 +68,40 @@ Před publikováním runbooku, které ho zpřístupní v produkčním prostřed�
 1. Kliknutím na **Testovací podokno** otevřete testovací podokno.
 1. Kliknutím na **Spustit** spustíte test. Měla by to být jediná povolená možnost.
 1. Vytvoří se [úloha runbooku](automation-runbook-execution.md) a její stav se zobrazí.
-   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přejde do *počáteční* když pracovní proces úlohu a potom *systémem* když sada runbook skutečně spustí, změní.
+   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přesune se ke *spuštění* , když pracovní proces tuto úlohu vyvolá a pak se spustí, když se Runbook skutečně spustí.
 1. Po dokončení úlohy runbooku se zobrazí jeho výstup. V takovém případě byste měli vidět *Hello World*.
 1. Zavřete testovací podokno a vraťte se na plátno.
 
-## <a name="publish-and-start-the-runbook"></a>Publikování a spuštění sady runbook
+## <a name="publish-and-start-the-runbook"></a>Publikování a spuštění Runbooku
 
-Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před spuštěním v produkčním prostředí.
-Když runbook publikujete, přepíšete stávající publikované verze s verzi konceptu.
-V takovém případě publikovanou verzi ještě nemáte protože jste runbook teprve vytvořili.
+Vytvořený Runbook je stále v režimu konceptu. Musíte ho publikovat, abyste ho mohli spustit v produkčním prostředí.
+Když publikujete sadu Runbook, přepíšete existující publikovanou verzi verzí konceptu.
+V tomto případě ještě nemáte publikovanou verzi, protože jste Runbook právě vytvořili.
 
 1. Kliknutím na **Publikovat** runbook publikujte a po zobrazení výzvy klikněte na **Ano**.
-1. Pokud se posunete doleva, abyste runbook viděli v **sady Runbook** podokně nyní zobrazuje **stav vytváření** z **publikováno**.
+1. Pokud se posunete doleva, abyste sadu Runbook zobrazili v podokně sady **Runbook** nyní, zobrazí se **stav vytváření obsahu** **Publikováno**.
 1. Posuňte se zpět doprava, abyste viděli podokno **MyFirstRunbook-Python**.
-   Možnosti v horní části umožňují spuštění runbooku, zobrazení runbooku nebo naplánování jeho spuštění někdy v budoucnu.
-2. Chcete spouštět sadu runbook, proto klikněte na **Start** a potom klikněte na tlačítko **Ok** po otevření okna spuštění Runbooku.
-3. Podokno úlohy je otevřen pro úlohy runbooku, který jste vytvořili. v tomto podokně můžete zavřít, ale v takovém případě vám ho můžete nechat otevřený mohli sledovat průběh úlohy.
-1. Stav úlohy se zobrazuje v **Souhrn úlohy** a odpovídá stavům, že jste viděli při testování runbooku.
-2. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. Otevře se podokno výstup a zobrazí se váš *Hello World*.
+   Možnosti v horní části nám umožňují spuštění Runbooku, zobrazení Runbooku nebo naplánování jeho spuštění někdy v budoucnu.
+2. Chcete spustit sadu Runbook, klikněte na tlačítko **Start** a poté klikněte na tlačítko **OK** , jakmile se otevře okno spustit Runbook.
+3. Otevře se podokno úlohy pro vytvořenou úlohu Runbooku. Toto podokno můžete zavřít, ale v tomto případě ho necháte otevřené, abyste mohli sledovat průběh úlohy.
+1. Stav úlohy se zobrazí v **souhrnu úlohy** a odpovídá stavům, které jste viděli při testování Runbooku.
+2. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. Otevře se podokno výstup a uvidíte své *Hello World*.
 3. Zavřete podokno Výstup.
 4. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Ve výstupním datovém proudu byste měli vidět jenom text *Hello World*, ale můžou se zobrazit i jiné datové proudy z úlohy runbooku, například Podrobný nebo Chyba, pokud do nich runbook zapisuje.
-5. Zavřete podokno datové proudy a podokno úloha a vraťte se do podokna MyFirstRunbook-Python.
+5. Zavřete podokno streamy a podokno úloh a vraťte se do podokna MyFirstRunbook-Python.
 6. Kliknutím na **Úlohy** otevřete podokno Úlohy, které patří k tomuto runbooku. Vypíšou se všechny úlohy, které tento runbook vytvořil. Ve výpisu by se měla zobrazit pouze jedna úloha, protože jste ji spustili jenom jednou.
 7. Na tuto úlohu můžete kliknout a otevřít podokno Úloha, které jste zobrazili při spuštění runbooku. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
 
-## <a name="add-authentication-to-manage-azure-resources"></a>Přidání ověřování ke správě prostředků Azure
+## <a name="add-authentication-to-manage-azure-resources"></a>Přidání ověřování pro správu prostředků Azure
 
 Runbook jste otestovali a publikovali, ale zatím nedělá nic užitečného. Chcete po něm, aby spravoval prostředky Azure.
-Ke správě prostředků Azure, tento skript má k ověření pomocí přihlašovacích údajů z vašeho účtu Automation. Abychom vám pomohli, můžete použít [balíček nástroje Azure Automation](https://github.com/azureautomation/azure_automation_utility) usnadnit k ověření a interakce s prostředky Azure.
+Ke správě prostředků Azure se musí skript ověřit pomocí přihlašovacích údajů z vašeho účtu Automation. K usnadnění ověřování a interakci s prostředky Azure můžete použít [balíček Azure Automation Utility](https://github.com/azureautomation/azure_automation_utility) .
 
 > [!NOTE]
-> Účet Automation musí být vytvořen s hlavní funkce služby existovat certifikát spustit jako.
-> Pokud váš účet automation nebyl vytvořen pomocí instančního objektu, můžete se ověřit pomocí metody popsané v [ověřování pomocí knihovny správy Azure pro Python](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate).
+> Aby byl účet služby Automation vytvořen jako certifikát spustit jako, musí být vytvořen s funkcí instančního objektu.
+> Pokud se Váš účet Automation nevytvořil s instančním objektem, můžete ověřit pomocí metody popsané v tématu [ověřování pomocí knihoven pro správu Azure pro Python](/azure/python/python-sdk-azure-authenticate).
 
-1. Kliknutím otevřete textový editor **upravit** v podokně MyFirstRunbook-Python.
+1. Kliknutím na **Upravit** v podokně MyFirstRunbook-Python otevřete textový editor.
 
 2. Přidejte následující kód pro ověření do Azure:
 
@@ -144,11 +144,11 @@ Ke správě prostředků Azure, tento skript má k ověření pomocí přihlašo
    azure_credential = get_automation_runas_credential(runas_connection)
    ```
 
-## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Přidejte kód k vytvoření klienta služby Python Compute a spuštění virtuálního počítače
+## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Přidejte kód pro vytvoření klienta Python COMPUTE a spusťte virtuální počítač.
 
-Pro práci s virtuálními počítači Azure, vytvořte instanci [Azure Compute klienta pro Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.computemanagementclient?view=azure-python).
+Pokud chcete pracovat s virtuálními počítači Azure, vytvořte instanci [klienta Azure COMPUTE pro Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.computemanagementclient?view=azure-python).
 
-Spuštění virtuálního počítače pomocí klienta výpočetní prostředky. Přidejte následující kód do sady runbook:
+Pomocí výpočetního klienta spusťte virtuální počítač. Do sady Runbook přidejte následující kód:
 
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
@@ -164,17 +164,17 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Kde _MyResourceGroup_ je název skupiny prostředků, která obsahuje virtuální počítač, a _TestVM_ je název virtuálního počítače, které chcete spustit.
+Kde _MyResourceGroup_ je název skupiny prostředků, která obsahuje virtuální počítač, a _TestVM_ je název virtuálního počítače, který chcete spustit.
 
-Testování a spuštění sady runbook znovu, abyste viděli, že začne tento virtuální počítač.
+Otestujte a znovu spusťte Runbook, abyste viděli, že virtuální počítač spouští.
 
-## <a name="use-input-parameters"></a>Používání vstupních parametrů
+## <a name="use-input-parameters"></a>Použití vstupních parametrů
 
-Sada runbook aktuálně používá pevně definovaných hodnot pro názvy skupiny prostředků a virtuální počítač.
-Nyní Pojďme přidat kód, který načte tyto hodnoty ze vstupních parametrů.
+Sada Runbook aktuálně používá pevně zakódované hodnoty pro názvy skupiny prostředků a virtuálního počítače.
+Nyní přidáme kód, který získá tyto hodnoty ze vstupních parametrů.
 
-Můžete použít `sys.argv` proměnné k získání hodnot parametrů.
-Přidejte následující kód do runbooku ihned po druhé `import` příkazy:
+`sys.argv` Proměnnou použijete k získání hodnot parametrů.
+Do sady Runbook přidejte následující kód hned po ostatních `import` příkazech:
 
 ```python
 import sys
@@ -183,10 +183,10 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Tento postup importuje `sys` modulu a vytvoří dvě proměnné pro uložení názvu skupiny prostředků a virtuální počítač.
-Všimněte si, že element seznamu argumentů `sys.argv[0]`, je název skriptu a není uživatelský vstup.
+Tím se `sys` modul naimportuje a vytvoří dvě proměnné pro uchování skupiny prostředků a názvů virtuálních počítačů.
+Všimněte si, že element seznamu argumentů, `sys.argv[0]`, je název skriptu a uživatel ho nezadá.
 
-Nyní můžete upravit poslední dva řádky, runbook použije parametr vstupní hodnoty místo pevně definovaných hodnot:
+Nyní můžete upravit poslední dva řádky sady Runbook tak, aby místo použití pevně zakódovaných hodnot používaly hodnoty vstupního parametru:
 
 ```python
 async_vm_start = compute_client.virtual_machines.start(
@@ -194,17 +194,17 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Při spuštění runbooku v Pythonu (buď na **testovací** stránky nebo jako publikované sady runbook), můžete zadat hodnoty pro parametry v **spustit Runbook** stránce v části **parametry** .
+Po spuštění sady Python Runbook (na stránce **test** nebo jako publikovaného Runbooku) můžete zadat hodnoty parametrů na stránce **Spustit Runbook** v části **parametry**.
 
-Po spuštění zadáním hodnoty v prvním poli sekundy se zobrazí a tak dále, tak, že podle potřeby můžete zadat libovolný počet hodnot parametrů.
+Po zahájení zadání hodnoty v prvním poli se zobrazí druhý a tak dále, takže můžete zadat tolik hodnot parametrů, kolik je potřeba.
 
-Hodnoty budou dostupné do skriptu jako `sys.argv` pole jako v kódu, kterou jste právě přidali.
+Hodnoty jsou k dispozici pro skript jako `sys.argv` pole jako v kódu, který jste právě přidali.
 
-Zadejte název vaší skupiny prostředků jako hodnota pro první parametr a název virtuálního počítače spustit jako hodnotu druhého parametru.
+Jako hodnotu prvního parametru zadejte název vaší skupiny prostředků a název virtuálního počítače, který se má spustit jako hodnota druhého parametru.
 
 ![Zadejte hodnoty parametrů](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
-Klikněte na tlačítko **OK** pro spuštění sady runbook. Sada runbook spuštěna a spouští se virtuální počítač, který jste zadali.
+Spusťte sadu Runbook kliknutím na tlačítko **OK** . Sada Runbook se spustí a spustí vybraný virtuální počítač.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -212,5 +212,5 @@ Klikněte na tlačítko **OK** pro spuštění sady runbook. Sada runbook spušt
 - První kroky s grafickými runbooky najdete v článku [Můj první grafický runbook](automation-first-runbook-graphical.md).
 - První kroky s runbooky pracovních postupů PowerShellu najdete v článku [Můj první runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
 - Další informace o typech runbooků, jejich výhodách a omezeních najdete v článku [Typy runbooků ve službě Azure Automation](automation-runbook-types.md).
-- Další informace o vývoji pro Azure pomocí Pythonu najdete v tématu [Azure pro vývojáře v Pythonu](https://docs.microsoft.com/python/azure/?view=azure-python)
-- Pokud chcete zobrazit ukázkové sady runbook Python 2, najdete v článku [Azure Automation na Githubu](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- Další informace o vývoji pro Azure pomocí Pythonu najdete v tématu [Azure pro vývojáře](/azure/python/) v Pythonu.
+- Pokud chcete zobrazit ukázkové sady Runbook Python 2, přečtěte si téma [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) .

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989726"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127278"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co jsou sestavy Azure Active Directory?
 
@@ -54,9 +54,9 @@ Všechny edice služby Azure AD poskytují uživatelům příznakem rizika pro r
 
 - V **edicích Azure Active Directory Free a Basic**se zobrazí seznam uživatelů označených příznakem rizika a rizikových přihlášení. 
 
-- Edice **Azure Active Directory Premium 1** tento model rozšiřuje tím, že umožňuje také prozkoumávat některé ze základních rizikových událostí, které byly v každé sestavě rozpoznány. 
+- Edice **Azure Active Directory Premium 1** rozšiřuje tento model tím, že umožňuje prověření některých základních zjištění rizik zjištěných pro každou sestavu. 
 
-- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o základních rizikových událostech a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
+- Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o základních detekcích rizik a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
 
 ## <a name="activity-reports"></a>Sestavy aktivit

@@ -1,74 +1,74 @@
 ---
-title: Aktivita funkce Azure Functions ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o použití funkce Azure Functions aktivity ke spuštění funkce Azure Functions v kanálech Data Factory
+title: Aktivita funkce Azure v Azure Data Factory | Microsoft Docs
+description: Naučte se používat aktivitu Azure Functions ke spuštění funkce Azure ve Data Factoryovém kanálu.
 services: data-factory
 documentationcenter: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 292fe858b85faef69b9df2dbdf54e7061ed56fa2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144118"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142513"
 ---
-# <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure ve službě Azure Data Factory
+# <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure v Azure Data Factory
 
-Aktivita funkce Azure vám umožní spustit [Azure Functions](../azure-functions/functions-overview.md) v kanálech Data Factory. Ke spuštění funkce Azure, musíte vytvořit propojenou službu připojení a aktivitu, která určuje, kterou chcete použít ke spuštění funkce Azure functions.
+Aktivita funkce Azure umožňuje spouštět [Azure Functions](../azure-functions/functions-overview.md) v kanálu Data Factory. Pokud chcete spustit funkci Azure Functions, musíte vytvořit připojení propojené služby a aktivitu, která určuje funkci Azure, kterou plánujete spustit.
 
-Úvod osm minut a ukázku této funkce podívejte se na následující video:
+Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
 
-## <a name="azure-function-linked-service"></a>Služba Azure propojené – funkce
+## <a name="azure-function-linked-service"></a>Propojená služba Functions Azure
 
-Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, která [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) je *není* `JObject`.) Žádný návratový typ jiný než `JObject` selže a vyvolá chybu uživatele *obsah odpovědi není platný JObject*.
+Návratový typ funkce Azure musí být platný `JObject`. (Mějte na paměti, že [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) není `JObject`.) Libovolný návratový typ jiný než `JObject` neúspěch a vyvolá obsah odpovědi na chyb uživatele není *platný JObject*.
 
 | **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
-| type   | Vlastnost type musí být nastavená na: **AzureFunction** | ano |
-| Adresa url aplikace – funkce | Adresa URL pro aplikaci Azure Function App. Formát je `https://<accountname>.azurewebsites.net`. Tato adresa URL je hodnoty v rámci **URL** části při prohlížení aplikace Function App na webu Azure Portal  | ano |
-| klíč funkce | Přístupový klíč pro funkce Azure functions. Klikněte na **spravovat** oddílu pro odpovídající funkci a zkopírovat buď **klíč funkce** nebo **klíč hostitele**. Další informace najdete tady: [Azure Functions HTTP aktivačními událostmi a vazbami](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | ano |
+| type   | Vlastnost Type musí být nastavená na: **AzureFunction** | ano |
+| Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net`. Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |
+| klíč funkce | Přístupový klíč pro funkci Azure Functions Klikněte na část **Správa** příslušné funkce a zkopírujte buď **klíč funkce** , nebo **klíč hostitele**. Další informace najdete tady: [Azure Functions triggerů HTTP a vazeb](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | ano |
 |   |   |   |
 
-## <a name="azure-function-activity"></a>Aktivit v Azure – funkce
+## <a name="azure-function-activity"></a>Aktivita funkce Azure
 
 | **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadováno** |
 | --- | --- | --- | --- |
-| name  | Název aktivity v kanálu  | String | ano |
-| type  | Typ aktivity je "AzureFunctionActivity. | String | ano |
-| Propojená služba | Funkce Azure, propojené služby pro odpovídající aplikaci funkcí Azure  | Odkaz na propojenou službu | ano |
-| Název funkce  | Název funkce v aplikaci Azure Function App, která volá tuto aktivitu | String | ano |
-| method  | Metoda rozhraní REST API pro volání funkce | Řetězec podporované typy: "GET", "POST", "UMÍSTĚNÍ"   | ano |
-| záhlaví  | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: "záhlaví": {"Accept-Language": "en-us", "Content-Type": "application/json"} | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne |
-| Text  | text, který se zasílá společně s žádost na metodu api – funkce  | Řetězec (nebo výraz s hodnotu resultType řetězec) nebo objekt.   | Vyžaduje se pro metody PUT/POST |
+| name  | Název aktivity v kanálu  | Řetězec | ano |
+| type  | Typ aktivity je "AzureFunctionActivity". | Řetězec | ano |
+| propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
+| název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
+| – metoda  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
+| záhlaví  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
+| hlavní část  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
 |   |   |   | |
 
-Zobrazit schéma datové části požadavku v [schématu datové části požadavku](control-flow-web-activity.md#request-payload-schema) oddílu.
+Podívejte se na schéma datové části požadavku v části  [schéma datové části požadavku](control-flow-web-activity.md#request-payload-schema).
 
 ## <a name="routing-and-queries"></a>Směrování a dotazy
 
-Aktivita funkce Azure podporuje **směrování**. Například, pokud má koncový bod vaše funkce Azure Functions `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`, pak bude `functionName` použít v aktivitě funkce Azure je `<functionName>/<value>`. Tato funkce se požadovaný můžete parametrizovat `functionName` za běhu.
+Aktivita funkce Azure podporuje **Směrování**. Pokud má například služba Azure Functions koncový bod `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`, pak bude `functionName` pro použití v aktivitě `<functionName>/<value>`funkce Azure Functions. Tuto funkci můžete parametrizovat tak, aby poskytovala `functionName` požadovaný čas za běhu.
 
-Aktivita funkce Azure podporuje také **dotazy**. Dotaz musí být součástí `functionName`. Například, pokud je název funkce `HttpTriggerCSharp` a dotaz, který chcete zahrnout `name=hello`, pak můžete vytvořit `functionName` v aktivitě funkce Azure jako `HttpTriggerCSharp?name=hello`. Tato funkce může být parametrizován tak můžete určit hodnotu za běhu.
+Aktivita funkce Azure také podporuje **dotazy**. Dotaz musí být zahrnut jako součást `functionName`. Například pokud je `HttpTriggerCSharp` název funkce a dotaz, který chcete `name=hello`zahrnout, můžete vytvořit `functionName` v aktivitě funkce Azure jako `HttpTriggerCSharp?name=hello`. Tato funkce může být Parametrizovaná, takže hodnotu je možné určit za běhu.
 
-## <a name="timeout-and-long-running-functions"></a>Časový limit a dlouho běžící funkce
+## <a name="timeout-and-long-running-functions"></a>Vypršení časového limitu a dlouho běžící funkce
 
-Azure Functions vyprší po sekundách 230 bez ohledu `functionTimeout` nastavení, které jste nakonfigurovali v nastavení. Další informace najdete v [tomto článku](../azure-functions/functions-versions.md#timeout). Chcete-li tento problém vyřešit, postupujte podle asynchronní vzorek nebo použít Durable Functions. Výhodou odolná služba Functions je, že nabízejí vlastní mechanismus sledování stavu, takže nebudete muset implementovat vlastní.
+Azure Functions časový limit po 230 sekundách bez ohledu na `functionTimeout` nastavení, které jste nakonfigurovali v nastavení. Další informace najdete v [tomto článku](../azure-functions/functions-versions.md#timeout). Chcete-li toto chování obejít, postupujte podle asynchronního vzoru nebo použijte Durable Functions. Výhodou Durable Functions je, že nabízí vlastní mechanismus pro sledování stavu, takže nebudete muset implementovat své vlastní.
 
-Další informace o odolná služba Functions v [v tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivita funkce Azure můžete nastavit pro volání funkce trvalý, který vrátí odpověď se jiný identifikátor URI, například [v tomto příkladu](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Protože `statusQueryGetUri` vrátí 202 stav protokolu HTTP při funkce běží, stav funkce můžete dotazovat pomocí aktivitu webu. Stačí nastavit aktivitu webu s `url` pole nastaveno `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`. Po dokončení funkce trvalý výstup funkce bude výstup aktivity webu.
+Přečtěte si další informace o Durable Functions v [tomto článku](../azure-functions/durable/durable-functions-overview.md). Aktivitu funkce Azure můžete nastavit tak, aby volala trvalou funkci, která vrátí odpověď s jiným identifikátorem URI, jako je například [Tento příklad](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Vzhledem `statusQueryGetUri` k tomu, že vrátí stav HTTP 202, když je funkce spuštěná, můžete dotazovat stav funkce pomocí webové aktivity. Jednoduše nastavte aktivitu webu s `url` polem nastaveným na. `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` Po dokončení trvalé funkce bude výstupem funkce výstup webové aktivity.
 
 
 ## <a name="sample"></a>Ukázka
 
-Můžete najít ukázky služby Data Factory, který používá funkci Azure Functions k extrahování obsahu souboru cíl [tady](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
+Ukázku Data Factory, který používá funkci Azure k extrakci obsahu souboru tar, najdete [tady](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o aktivity ve službě Data Factory v [kanály a aktivity ve službě Azure Data Factory](concepts-pipelines-activities.md).
+Přečtěte si další informace o aktivitách v Data Factory v prokanálech [a aktivitách v Azure Data Factory](concepts-pipelines-activities.md).

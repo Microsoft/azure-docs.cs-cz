@@ -1,29 +1,28 @@
 ---
-title: Podpora pro pomocí Azure Site Recovery pomocí služby Azure Backup | Dokumentace Microsoftu
-description: Poskytuje přehled o tom, jak Azure Site Recovery a Azure Backup lze použít společně.
-services: site-recovery
+title: Podpora použití Azure Site Recovery s Azure Backup
+description: Poskytuje přehled o tom, jak lze Azure Site Recovery a Azure Backup použít společně.
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sideeksh
-ms.openlocfilehash: e902f70225ec0eb0caa98f7e19a16c87220cb6f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2078aa33ca735b91b5923d94028a286427f107a6
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035753"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146875"
 ---
-# <a name="support-for-using-site-recovery-with-azure-backup"></a>Podpora pro používání služby Site Recovery pomocí služby Azure Backup
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>Podpora použití Site Recovery s Azure Backup
 
-Tento článek shrnuje podporu pro použití [služby Site Recovery](site-recovery-overview.md) spolu s [služby Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
+Tento článek shrnuje podporu pro používání [služby Site Recovery](site-recovery-overview.md) společně se [službou Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
-**Akce** | **Site Recovery podporu** | **Podrobnosti**
+**Akce** | **Podpora Site Recovery** | **Podrobnosti**
 --- | --- | ---
-**Nasazení služeb společně** | Podporováno | Služby jsou interoperabilní a dá se najednou.
-**Zálohování a obnovení souborů** | Podporováno | Když jsou povolené zálohování a replikace pro virtuální počítač a zálohy jsou prováděny, neexistuje žádný problém v obnovování souborů na straně zdroje virtuální počítače, nebo skupinu virtuálních počítačů. Replikace bude pokračovat jako obvykle myší bez nutnosti změn ve stavu replikace.
-**Zálohování a obnovení disku** | Žádné aktuální podpory | Pokud obnovit zálohy disku, musíte zakázat a znovu povolit replikaci pro virtuální počítač znovu.
-**Zálohování a obnovení virtuálních počítačů** | Žádné aktuální podpory | Je-li zálohovat nebo obnovit virtuální počítač nebo skupinu virtuálních počítačů, musíte zakázat a znovu povolit replikaci pro virtuální počítač.  
+**Nasazení služeb společně** | Podporováno | Služby jsou interoperabilní a dají se nakonfigurovat společně.
+**Zálohování a obnovení souborů** | Podporováno | Když se pro virtuální počítač povolí zálohování a replikace, dojde k žádnému problému při obnovování souborů na virtuálních počítačích na straně zdroje nebo na skupině virtuálních počítačů. Replikace pokračuje obvyklým způsobem bez změny stavu replikace.
+**Zálohování a obnovení disku** | Žádná aktuální podpora | Pokud obnovíte zálohovaný disk, budete muset znovu zakázat a znovu povolit replikaci virtuálního počítače.
+**Zálohování a obnovení virtuálního počítače** | Žádná aktuální podpora | Pokud zálohujete nebo obnovíte virtuální počítač nebo skupinu virtuálních počítačů, musíte pro virtuální počítač Zakázat a znovu povolit replikaci.  
 
 

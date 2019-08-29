@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360836"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141916"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Použití front Service Bus s Pythonem
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte vytvářet aplikace v Pythonu pro posílání zpráv 
 
         > [!NOTE]
         > V tomto kurzu vytvoříte **frontu** v oboru názvů Service Bus pomocí Pythonu. 
-1. Instalace Pythonu nebo [balíčku Azure Service Bus Pythonu][Python Azure Service Bus package]najdete v [příručce pro instalaci Pythonu](../python-how-to-install.md). [Tady](/python/api/overview/azure/servicebus?view=azure-python)najdete úplnou dokumentaci k sadě Service Bus Python SDK.
+1. Instalace Pythonu nebo [balíčku Azure Service Bus Pythonu][Python Azure Service Bus package]najdete v [příručce pro instalaci Pythonu](/azure/python/python-sdk-azure-install). [Tady](/python/api/overview/azure/servicebus?view=azure-python)najdete úplnou dokumentaci k sadě Service Bus Python SDK.
 
 ## <a name="create-a-queue"></a>Vytvoření fronty
 Objekt **ServiceBusClient** vám umožní pracovat s frontami. Do horní části každého souboru Pythonu, do kterého chcete programově přistupovat, přidejte následující kód Service Bus:
@@ -128,7 +128,7 @@ V případě, že dojde k chybě aplikace po zpracování zprávy, ale před zav
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základy Service Busch front, najdete další informace v těchto článcích.
 
 * [Fronty, témata a odběry][Queues, topics, and subscriptions]

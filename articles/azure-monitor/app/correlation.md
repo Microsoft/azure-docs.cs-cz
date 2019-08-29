@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 1c6a0ce3e4e8d098d2bc048a331b0ae0cb5c6b13
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881394"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124106"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -258,6 +258,7 @@ V některých případech můžete chtít přizpůsobit způsob, jakým se názv
 ## <a name="next-steps"></a>Další postup
 
 - Zápis [vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
+- Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .
 - Přečtěte si další informace o [Nastavení cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) pro jiné sady SDK.
 - Připojte všechny komponenty mikroslužby na Application Insights. Podívejte se na [podporované platformy](../../azure-monitor/app/platforms.md).
 - Seznamte [](../../azure-monitor/app/data-model.md) se s datovým modelem pro Application Insights typy.

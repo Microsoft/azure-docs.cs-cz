@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090197"
+ms.locfileid: "70124491"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
 GRUB je celkový jednotný zaváděcí program pro spouštění, který je pravděpodobně první věcí, kterou se zobrazí při spuštění virtuálního počítače. Vzhledem k tomu, že se zobrazuje před spuštěním operačního systému, není přístupná přes SSH. Z GRUB můžete změnit konfiguraci spouštění tak, aby se spouštěla do režimu jednoho uživatele, mimo jiné.
@@ -58,9 +58,24 @@ Až budete v režimu jednoho uživatele, přidejte nového uživatele s sudo opr
 RHEL se automaticky přetáhne do režimu jednoho uživatele, pokud se nedokáže normálně spustit. Pokud jste ale nestavili kořenový přístup pro režim single user, nebudete mít kořenové heslo a nebude se moct přihlásit. Existuje alternativní řešení (Další informace najdete v části Ruční zadání jednoho uživatelského režimu), ale v návrhu je zpočátku nastaveno oprávnění root Access.
 
 ### <a name="grub-access-in-rhel"></a>Přístup k GRUB v RHEL
-RHEL se dodává s povoleným GRUBem. Pokud chcete zadat grub, restartujte virtuální počítač `sudo reboot` pomocí a stiskněte libovolnou klávesu. Uvidíte, že se zobrazí obrazovka GRUB.
+RHEL se dodává s povoleným GRUBem. Pokud chcete zadat grub, restartujte virtuální počítač `sudo reboot` pomocí a stiskněte libovolnou klávesu. Uvidíte, že se zobrazí obrazovka GRUB. Pokud se nezobrazí, zajistěte, aby v souboru GRUB (`/etc/default/grub`) byly přítomny následující řádky:
 
-> Poznámka: Red Hat taky poskytuje dokumentaci pro spouštění do záchranného režimu, nouzového režimu, režimu ladění a resetování kořenového hesla. [Pro přístup k němu klikněte sem](https://aka.ms/rhel7grubterminal).
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> Red Hat taky poskytuje dokumentaci pro spouštění do záchranného režimu, nouzového režimu, režimu ladění a resetování kořenového hesla. [Pro přístup k němu klikněte sem](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Nastavení kořenového přístupu pro režim single user v RHEL
 Režim jednoho uživatele v RHEL vyžaduje, aby byl povolený kořenový uživatel, který je ve výchozím nastavení zakázaný. Pokud potřebujete povolit režim jednoho uživatele, postupujte podle následujících pokynů:
@@ -193,12 +208,12 @@ V případě, že se SLES nemůže normálně spustit, bude automaticky vyřazen
 Podobně jako Red Hat Enterprise Linux, jeden uživatelský režim v Oracle Linux vyžaduje GRUB a kořenový uživatel, který má být povolen.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB přístup v Oracle Linux
-Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat grub, restartujte virtuální počítač `sudo reboot` pomocí a stiskněte klávesu ESC. Uvidíte, že se zobrazí obrazovka GRUB. Pokud nevidíte grub, ujistěte se, že hodnota `GRUB_TERMINAL` řádku obsahuje "sériovou konzolu", například:. `GRUB_TERMINAL="serial console"`
+Oracle Linux se dodává s GRUB, které jsou povolené. Pokud chcete zadat grub, restartujte virtuální počítač `sudo reboot` pomocí a stiskněte klávesu ESC. Uvidíte, že se zobrazí obrazovka GRUB. Pokud nevidíte grub, ujistěte se, že hodnota `GRUB_TERMINAL` řádku obsahuje "sériovou konzolu", například:. `GRUB_TERMINAL="serial console"` Sestavte GRUB `grub2-mkconfig -o /boot/grub/grub.cfg`pomocí.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Režim jednoho uživatele v Oracle Linux
 Postupujte podle pokynů pro RHEL výše a povolte jeden uživatelský režim v Oracle Linux.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Hlavní stránka dokumentace pro Linux na sériové konzole se nachází [tady](serial-console-linux.md).
 * Naučte se používat sériovou konzolu k [Povolení GRUB v různých distribuce](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) .
 * Použití sériové konzoly pro [volání NMI a SysRq](serial-console-nmi-sysrq.md)

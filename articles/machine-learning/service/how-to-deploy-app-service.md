@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114295"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147912"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o konfiguraci webové aplikace naleznete v dokumentaci [App Service v systému Linux](/azure/app-service/containers/) .
-* Další informace o škálování najdete v tématu [Začínáme s automatickým škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* Další informace o podpoře SSL najdete v tématu [použití certifikátu SSL v Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
-* Další informace o ověřování najdete v tématu [Konfigurace aplikace App Service pro použití Azure Active Directory přihlášení](/azure/app-service/configure-authentication-provider-aad).
+* Naučte se konfigurovat webovou aplikaci v dokumentaci k [App Service v systému Linux](/azure/app-service/containers/) .
+* Další informace o škálování najdete v seznámení s automatickým [škálováním v Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
+* [Použijte certifikát SSL v Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Nakonfigurujte aplikaci App Service, aby používala Azure Active Directory přihlášení](/azure/app-service/configure-authentication-provider-aad).
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

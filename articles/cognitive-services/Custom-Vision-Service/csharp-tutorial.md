@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: anroth
-ms.openlocfilehash: ef5e1d7bb2c5b4404ce1a43bc719b7b5a242b1c7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7faad2c432e15ed363bd1caf290e03dc75e9d298
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946249"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141069"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision .NET SDK
 
@@ -34,7 +34,7 @@ K napsání aplikace v .NET, která využívá službu Custom Vision, budete pot
 
 Naklonujte nebo si stáhněte projekt [Ukázky pro Cognitive Services v .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples). Přejděte do složky **CustomVision/ImageClassification** a otevřete soubor _ImageClassification.csproj_ v sadě Visual Studio.
 
-Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s názvem __My New Project__ , který bude přístupný na [webu služby Custom Vision](https://customvision.ai/). Potom nahraje obrázky k trénování a testování klasifikátoru. V tomto projektu je účelem klasifikátoru určit, jestli je strom __jedlovec__ nebo __sakura__ .
+Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s názvem __My New Project__, který bude přístupný na [webu služby Custom Vision](https://customvision.ai/). Potom nahraje obrázky k trénování a testování klasifikátoru. V tomto projektu je účelem klasifikátoru určit, jestli je strom __jedlovec__ nebo __sakura__.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -62,7 +62,7 @@ Vytvořený projekt se zobrazí na [webu služby Custom Vision](https://customvi
 
 ### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-Součástí tohoto projektu jsou i obrázky. Odkazuje se na ně v metodě **LoadImagesFromDisk** v souboru _Program.cs_ . Do jedné dávky můžete nahrát až 64 imagí.
+Součástí tohoto projektu jsou i obrázky. Odkazuje se na ně v metodě **LoadImagesFromDisk** v souboru _Program.cs_. Do jedné dávky můžete nahrát až 64 imagí.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=40-55)]
 
@@ -103,7 +103,7 @@ CustomVisionPredictionClient endpoint = new CustomVisionPredictionClient()
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>Odeslání obrázku do výchozího koncového bodu předpovědi
 
-V tomto skriptu se v metodě **LoadImagesFromDisk** načte testovací obrázek a v konzole se zobrazí výstup předpovědi modelu.
+V tomto skriptu se v metodě **LoadImagesFromDisk** načte testovací obrázek a v konzole se zobrazí výstup předpovědi modelu. Hodnota proměnné publishedModelName by měla odpovídat hodnotě Publikováno jako na kartě **výkon** na portálu Custom Vision Portal. 
 
 ```csharp
 // Make a prediction against the new project

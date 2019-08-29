@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335299"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127700"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Rychlý start: Zablokovat přístup v případě zjištění rizika relace s Azure Active Directory Identity Protection  
 
@@ -34,7 +34,7 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 
 - **Přístup k edici Azure AD Premium P2** – Azure AD Identity Protection je funkce Azure AD Premium P2. 
 - **Identity Protection** – scénář v tomto rychlém startu vyžaduje, aby byla povolená ochrana identity. Pokud si nejste jisti, jak povolit ochranu identity, přečtěte si téma [povolení Azure Active Directory Identity Protection](../identity-protection/enable.md).
-- **Webový prohlížeč** – [prohlížeč pro mandát](https://www.torproject.org/projects/torbrowser.html.en) vám umožňuje zachovat ochranu osobních údajů online. Identity Protection detekuje přihlášení z prohlížeče mandátu jako **přihlášení z anonymních IP adres**, které mají střední úroveň rizika. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
+- **Webový prohlížeč** – [prohlížeč pro mandát](https://www.torproject.org/projects/torbrowser.html.en) vám umožňuje zachovat ochranu osobních údajů online. Identity Protection detekuje přihlášení z prohlížeče mandátu jako **přihlášení z anonymních IP adres**, které mají střední úroveň rizika. Další informace najdete v tématu [Azure Active Directory detekci rizik](../reports-monitoring/concept-risk-events.md).  
 - **Testovací účet s názvem Alain Charon** – Pokud si nejste jisti, jak vytvořit testovací účet, přečtěte si téma [Přidání nového uživatele](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Otestování přihlášení 
@@ -48,7 +48,7 @@ Cílem tohoto kroku je zajistit, že váš testovací účet bude mít přístup
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu 
 
-Scénář v tomto rychlém startu používá k vygenerování zjištěných přihlášení z události rizika anonymních **IP adres** přihlášení z prohlížeče pro mandát. Úroveň rizika této rizikové události je střední. Chcete-li reagovat na tuto rizikové události, nastavte rizikové podmínky přihlášení na hodnotu Střední. 
+Scénář v tomto rychlém startu používá k vygenerování zjištěných přihlášení ze zjišťování rizik anonymních **IP adres** přihlášení z prohlížeče pro mandát. Úroveň rizika tohoto zjišťování rizik je střední. Pokud chcete reagovat na toto zjištění rizika, nastavte rizikové podmínky přihlášení na hodnotu Střední. 
 
 V této části se dozvíte, jak vytvořit požadované zásady podmíněného přístupu pro rizikové přihlašování. V zásadách nastavte:
 
@@ -81,7 +81,7 @@ V této části se dozvíte, jak vytvořit požadované zásady podmíněného p
 
 Pokud chcete zásady otestovat, zkuste se k vašemu [Azure Portal](https://portal.azure.com) přihlašovat jako **Jakub Charon** pomocí prohlížeče pro prostředí. Váš pokus o přihlášení by měl blokovat vaše zásada podmíněného přístupu.
 
-![Vícefaktorové ověřování](./media/quickstart-sign-in-risk-policy/203.png)
+![Ověřování pomocí služby Multi-Factor Authentication](./media/quickstart-sign-in-risk-policy/203.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

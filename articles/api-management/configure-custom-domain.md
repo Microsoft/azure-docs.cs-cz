@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975742"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135538"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -88,7 +88,7 @@ Při konfiguraci DNS pro vlastní název domény máte dvě možnosti:
 -   Nakonfigurujte záznam A, který odkazuje na IP adresu brány API Management.
 
 > [!NOTE]
-> I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
+> I když je IP adresa instance pro správu rozhraní API statická, může se v několika scénářích změnit. Z tohoto důvodu doporučujeme při konfiguraci vlastní domény použít CNAME. Při volbě metody konfigurace DNS Vezměte v úvahu. Další informace najdete v tématu [Nejčastější dotazy k rozhraní API Mananagement](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Další kroky
 

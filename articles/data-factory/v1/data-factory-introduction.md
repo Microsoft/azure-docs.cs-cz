@@ -1,27 +1,26 @@
 ---
 title: Úvod do Data Factory, služby pro integraci dat | Dokumentace Microsoftu
-description: 'Zjistěte, co je Azure Data Factory: Cloudové služby pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.'
+description: 'Přečtěte si, co Azure Data Factory: Cloudová služba pro integraci dat, která orchestruje a automatizuje přesun a transformaci dat.'
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: aed073e7d65f193c4123106ba1ae3f4f442965e1
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836314"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139508"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-introduction.md)
 > * [Verze 2 (aktuální verze)](../introduction.md)
 
@@ -119,7 +118,7 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
 ### <a name="relationship-between-data-factory-entities"></a>Vztah mezi entitami služby Data Factory
 
-![Diagram: Data Factory, služba pro integraci dat cloudu – klíčové koncepty](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Znázorňuje Data Factory, služba pro integraci dat v cloudu – klíčové koncepty](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Podporované oblasti
 V současné době můžete vytvářet datové továrny v oblastech Západní USA, Východní USA a Severní Evropa. Datová továrna nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb.

@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 4538cb987d88c92e379640e69b29ad5c8c75a520
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360406"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141041"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých sad SDK (Software Development Kit). 
@@ -152,6 +152,6 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
 
 Úplnou dokumentaci k rutinám PowerShellu najdete v tématu [Data Factory powershellové reference](/powershell/module/az.datafactory)k rutinám.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály. 
 

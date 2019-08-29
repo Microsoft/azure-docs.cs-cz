@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884882"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138340"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 > * [Nainstalujte Terraform a nakonfigurujte přístup k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
 > * [Vytvořte pár klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), pokud ho ještě nemáte.
 > * [Nainstalujte Packer](https://www.packer.io/docs/install/index.html), pokud ho ještě na svém místním počítači nainstalovaný nemáte.
@@ -44,7 +44,7 @@ V prázdném adresáři vytvořte tři nové soubory s následujícími názvy:
 
 - ```variables.tf``` tento soubor bude obsahovat hodnoty proměnných používaných v šabloně.
 - ```output.tf``` tento soubor bude popisovat nastavení, která se zobrazí po nasazení.
-- ```vmss.tf``` tento soubor bude obsahovat kód infrastruktury, kterou nasazujete.
+- ```vmss.tf```Tento soubor obsahuje kód infrastruktury, kterou nasazujete.
 
 ##  <a name="create-the-variables"></a>Vytvoření proměnných 
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ Postupujte podle kurzu a vytvořte image Ubuntu se zrušeným zřízením a nain
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Úprava infrastruktury pro přidání škálovací sady virtuálních počítačů
 
 V tomto kroku vytvoříte v síti, kterou jste dříve nasadili, následující prostředky:
-- Nástroj pro vyrovnávání zatížení Azure, který bude obsluhovat aplikaci a připojí ji k veřejné IP adrese nasazené v kroku 4.
+- Nástroj pro vyrovnávání zatížení Azure pro obsloužení aplikace a připojení k veřejné IP adrese nasazené dříve.
 - Jeden nástroj pro vyrovnávání zatížení Azure a pravidla, která budou obsluhovat aplikaci a připojí ji k veřejné IP adrese nakonfigurované dříve.
-- Backendový fond adres Azure, který přiřadíte k nástroji pro vyrovnávání zatížení. 
-- Port sondy stavu, který používá aplikace a konfiguruje se v nástroji pro vyrovnávání zatížení. 
-- Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
-- Server [Nginx](https://nginx.org/) na uzlech škálovací sady virtuálních počítačů nainstalované z vlastní image
+- Fond adres back-endu Azure a přiřaďte ho k nástroji pro vyrovnávání zatížení.
+- Port sondy stavu používaný aplikací a nakonfigurovaný v nástroji pro vyrovnávání zatížení.
+- Sada škálování virtuálního počítače sedí za nástrojem pro vyrovnávání zatížení, která je spuštěná ve virtuální síti nasazené dříve.
+- [Nginx](https://nginx.org/) na uzlech škály virtuálních počítačů nainstalovaných z vlastní image.
 
 
 Na konec souboru `vmss.tf` přidejte následující kód.
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

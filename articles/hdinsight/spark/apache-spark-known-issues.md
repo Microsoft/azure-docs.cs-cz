@@ -1,134 +1,146 @@
 ---
-title: Řešení potíží s clusterem Apache Spark v Azure HDInsight
-description: Další informace o problémech souvisejících s clustery Apache Spark v Azure HDInsight a jak ty obejít.
+title: Řešení potíží s Apache Sparkm clusterem v Azure HDInsight
+description: Přečtěte si o problémech souvisejících s Apache Spark clustery ve službě Azure HDInsight a o tom, jak tyto problémy obejít.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 02/21/2018
+ms.topic: troubleshooting
+ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51a0ee6f2d928d79e60ca9976d7651c70867a41f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717607"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575681"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
-Tento dokument uchovává informace o známé problémy HDInsight Spark verze public Preview.  
+Tento dokument sleduje všechny známé problémy ve verzi Public Preview pro HDInsight Spark.  
 
-## <a name="apache-livy-leaks-interactive-session"></a>Apache Livy nevracení interaktivní relace
-Když [Apache Livy](https://livy.incubator.apache.org/) restartuje (z [Apache Ambari](https://ambari.apache.org/) nebo z důvodu restartování virtuálního počítače hlavního uzlu 0) s interaktivní relaci stále aktivní, relaci interaktivní úlohy úniku. Nové úlohy v důsledku toho mohou zaseknout ve stavu přijato.
+## <a name="apache-livy-leaks-interactive-session"></a>Livy nevrácení interaktivní relace Apache
+Když se [Apache Livy](https://livy.incubator.apache.org/) restartuje (z [Apache Ambari](https://ambari.apache.org/) nebo z důvodu restartování virtuálního počítače hlavnímu uzlu 0) s interaktivní relací, dojde k úniku interaktivní relace úlohy. V důsledku toho se můžou nové úlohy zablokovat v přijatém stavu.
 
-**Omezení rizik:**
+**Zmírnění**
 
-Chcete-li tento problém obejít, postupujte takto:
+Problém můžete vyřešit pomocí následujícího postupu:
 
-1. SSH do hlavního uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH do hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Spusťte následující příkaz k vyhledání ID aplikací rychlý prostřednictvím Livy interaktivní úlohy. 
-   
+2. Spuštěním následujícího příkazu Najděte ID aplikací interaktivních úloh spouštěných prostřednictvím Livy.
+
         yarn application –list
-   
-    Pokud úlohy, které byly spuštěny s Livy interaktivní relace se žádné explicitní názvy zadané, bude výchozí názvy projektu Livy. Pro relaci Livy tím, že [Poznámkový blok Jupyter](https://jupyter.org/), začíná název úlohy remotesparkmagics_ *. 
-3. Spusťte následující příkaz k ukončení úlohy. 
-   
+
+    Výchozí názvy úloh budou Livy, pokud byly úlohy spuštěny s relací Livy Interactive bez zadání explicitních názvů. Pro relaci Livy spuštěnou v [Jupyter notebook](https://jupyter.org/)začíná `remotesparkmagics_*`název úlohy.
+
+3. Spuštěním následujícího příkazu tyto úlohy ukončete.
+
         yarn application –kill <Application ID>
 
-Nové úlohy začít spouštět. 
+Nové úlohy začínají běžet.
 
-## <a name="spark-history-server-not-started"></a>Server historie Sparku nebylo zahájeno
-Po vytvoření clusteru se automaticky spustit Server historie Sparku.  
+## <a name="spark-history-server-not-started"></a>Server historie Spark není spuštěný.
+Po vytvoření clusteru se server historie Sparku nespustí automaticky.  
 
-**Omezení rizik:** 
+**Zmírnění**
 
-Historie serveru spusťte ručně z Ambari.
+Ručně spusťte server historie z Ambari.
 
-## <a name="permission-issue-in-spark-log-directory"></a>Problému s oprávněními v adresáři protokolu Spark
-Při odesílání úlohy pomocí skriptu spark-submit, získá hdiuser následující chybu:
+## <a name="permission-issue-in-spark-log-directory"></a>Problém s oprávněním v adresáři protokolu Spark
+Při odesílání úlohy pomocí Spark-Submit hdiuser získá následující chybu:
 
 ```
 java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
 ```
-A žádný ovladač protokol je zapsán. 
 
-**Omezení rizik:**
+A nezapisuje se žádný protokol ovladače.
 
-1. Přidáte hdiuser do skupiny Hadoop. 
-2. Zadejte 777 oprávnění na /var/log/spark po vytvoření clusteru. 
-3. Aktualizace umístění protokolu spark pomocí nástroje Ambari bude adresář s 777 oprávnění.  
-4. Spuštění skriptu spark-submit jako sudo.  
+**Zmírnění**
 
-## <a name="spark-phoenix-connector-is-not-supported"></a>Konektor Spark Phoenix není podporovaný
+1. Přidejte hdiuser do skupiny Hadoop.
+2. Po vytvoření clusteru poskytněte/var/log/Spark oprávnění 777.
+3. Aktualizujte umístění protokolu Spark pomocí Ambari, aby bylo v adresáři s oprávněními 777.  
+4. Spusťte Spark-Submit jako sudo.  
 
-Clustery HDInsight Spark konektoru Spark Phoenix nepodporují.
+## <a name="spark-phoenix-connector-is-not-supported"></a>Konektor Spark-Phoenix není podporovaný.
 
-**Omezení rizik:**
+Clustery HDInsight Spark nepodporují konektor Spark-Phoenix.
 
-Místo toho je nutné použít konektor Spark HBase. Pokyny najdete v tématu [použití konektoru Spark HBase](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+**Zmírnění**
 
-## <a name="issues-related-to-jupyter-notebooks"></a>Problémy související s poznámkovými bloky Jupyter
-Toto jsou některé známé problémy související s poznámkovými bloky Jupyter.
+Místo toho je nutné použít konektor Spark-HBA. Pokyny najdete v tématu [Jak používat konektor Spark-HBA](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
-### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Poznámkové bloky s ne ASCII znaky v názvech souborů
-Nepoužívejte ne ASCII znaky v názvech souborů Poznámkový blok Jupyter. Pokud se pokusíte odeslat soubor pomocí uživatelského rozhraní Jupyter, který má název souboru ne ASCII, selže bez jakékoli chybovou zprávu. Jupyter neumožňuje nahrát soubor, ale nevyvolá chybu viditelné buď.
+## <a name="issues-related-to-jupyter-notebooks"></a>Problémy související s Jupyter poznámkovým blokem
 
-### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Chyba při načítání poznámkové bloky o větší velikosti
+Níže jsou uvedené některé známé problémy související s Jupyter poznámkami.
+
+### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Poznámkové bloky s jinými znaky než ASCII v názvech souborů
+
+V názvech souborů poznámkových bloků Jupyter nepoužívejte jiné znaky než ASCII. Pokud se pokusíte nahrát soubor prostřednictvím uživatelského rozhraní Jupyter, které obsahuje název souboru, který není ASCII, dojde k chybě bez jakékoli chybové zprávy. Jupyter neumožňuje odeslat soubor, ale nevyvolává viditelnou chybu.
+
+### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Při načítání poznámkových bloků větších velikostí došlo k chybě.
+
 Může se zobrazit chyba **`Error loading notebook`** při načíst poznámkovými bloky, které jsou větší velikost.  
 
-**Omezení rizik:**
+**Zmírnění**
 
-K této chybě dojde, neznamená, že vaše data jsou poškozena nebo ztráty.  Poznámkové bloky jsou stále na disku v `/var/lib/jupyter`, a získat přístup přes SSH do clusteru, aby k nim přístup. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Pokud se zobrazí tato chyba, neznamená to, že vaše data jsou poškozená nebo ztracená.  Vaše poznámkové bloky jsou pořád na `/var/lib/jupyter`disku v a k nim můžete přistupovat přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Jakmile se připojíte ke clusteru pomocí SSH, můžete zkopírovat vašich poznámkových bloků z clusteru do místního počítače (pomocí spojovacího bodu služby nebo WinSCP) jako zálohování, aby se zabránilo ztrátě veškerá důležitá data v poznámkovém bloku. Pak můžete tunel SSH do vašeho hlavního uzlu na port 8001 pro přístup k Jupyter bez nutnosti kontaktovat bránu.  Odtud můžete vymazat výstupem poznámkového a znovu pro minimalizaci velikosti poznámkového bloku.
+Po připojení ke clusteru pomocí SSH můžete zkopírovat poznámkové bloky z clusteru do místního počítače (pomocí spojovacího bodu služby nebo WinSCP), aby se zabránilo ztrátě jakýchkoli důležitých dat v poznámkovém bloku. Pak můžete pomocí SSH tunelu do svého hlavnímu uzluu na portu 8001 získat přístup k Jupyter bez průchodu bránou.  Odtud můžete vymazat výstup poznámkového bloku a znovu ho uložit, aby se minimalizovala velikost poznámkového bloku.
 
-K této chybě zabránit v budoucnosti, je třeba provést některé osvědčené postupy:
+Aby nedošlo k této chybě v budoucnu, je nutné dodržovat některé osvědčené postupy:
 
-* Je důležité udržet co nejmenší velikost poznámkového bloku. Všechny výstupy z Sparkových úloh, která budou odeslána zpět do aplikace Jupyter se ukládají v poznámkovém bloku.  Obecně je nejvhodnější s Jupyterem s aby se zabránilo spouštění `.collect()` na velké RDD společnosti nebo datových rámců; místo toho, pokud chcete, a prohlédněte si obsah RDD, zvažte spuštění `.take()` nebo `.sample()` tak, aby výstupu nezíská příliš velký.
-* Navíc když uložíte Poznámkový blok, vymazat veškerý výstup buňky, které chcete zmenšit velikost.
+* Je důležité zachovat malou velikost poznámkového bloku. Veškerý výstup úloh Sparku, který se pošle zpátky do Jupyter, je uložený v poznámkovém bloku.  Osvědčeným postupem je Jupyter obecně, abyste se vyhnuli `.collect()` spouštění ve velkých RDD nebo datasnímcích. místo toho, pokud chcete prohlížet obsah RDD, zvažte spuštění `.take()` nebo `.sample()` , aby váš výstup nezískal příliš velký.
+* Když uložíte Poznámkový blok, zrušte zaškrtnutí všech výstupních buněk, abyste snížili velikost.
 
-### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Prvním spuštění poznámkového bloku trvá déle, než se čekalo
-První příkaz kódu do poznámkového bloku Jupyter pomocí Spark magic může trvat déle než minutu.  
+### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Počáteční spuštění poznámkového bloku trvá déle, než bylo očekáváno
 
-**Vysvětlení:**
+První příkaz kódu v poznámkovém bloku Jupyter pomocí Spark Magic může trvat déle než minutu.  
 
-K tomu dochází, protože při spuštění první buňky kódu. Na pozadí vyvolá konfigurace relací a Sparku, SQL a Hive kontexty jsou nastavené. Po těchto kontextech jsou nastaveny, první příkaz je spuštěný a díky tomu získá dojem, který příkaz trvalo dlouhou dobu pro dokončení.
+**Požadované**
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Časový limit Poznámkový blok Jupyter v vytvoření relace
-Když Spark cluster je nemá dostatek prostředků, Spark a PySpark jádra v poznámkovém bloku Jupyter se časový limit pokusu o vytvoření relace. 
+K tomu dochází, protože při spuštění první buňky kódu. Na pozadí se zahájí nastavení konfigurace relace a kontexty Spark, SQL a podregistr. Po nastavení těchto kontextů se spustí první příkaz, který dává dojem, že dokončení příkazu trvalo dlouhou dobu.
 
-**Omezení rizik:** 
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Časový limit Jupyter poznámkového bloku při vytváření relace
 
-1. Uvolněte některé prostředky ve vašem clusteru Sparku pomocí:
-   
-   * Přejděte do nabídky zavřít a zastavení nebo kliknutím na vypnutí v Průzkumníku poznámkového bloku se zastavuje jiné Spark poznámkových bloků.
-   * Zastavuje se další aplikace Spark z YARN.
-2. Restartujte Poznámkový blok, který se spustí. Musí být vytvořit relaci nyní k dispozici dostatek prostředky.
+Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace se v jádrech Sparku a PySpark v Jupyter poznámkovém bloku vyprší časový limit.
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
+**Hrozeb**
+
+1. Uvolněte některé prostředky v clusteru Spark pomocí:
+
+   * Ukončete jiné poznámkové bloky Spark tak, že přejdete do nabídky Zavřít a zastavit nebo v Průzkumníku poznámkového bloku kliknete na tlačítko vypnout.
+   * Zastavování jiných aplikací Spark z PŘÍZe.
+
+2. Restartujte Poznámkový blok, který jste se pokusili spustit. K dispozici je dostatek prostředků, aby bylo možné nyní vytvořit relaci.
+
+## <a name="see-also"></a>Viz také:
+
+* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+
+* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
+
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
+
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
+
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
-

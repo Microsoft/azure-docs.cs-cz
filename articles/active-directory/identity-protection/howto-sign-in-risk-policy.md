@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335408"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126297"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Jak: Konfigurace zásad rizik přihlášení
 
-Azure Active Directory detekuje [rizikové typy událostí](../reports-monitoring/concept-risk-events.md#risk-event-types) v reálném čase i v režimu offline. Každá riziková událost, která byla zjištěna pro přihlášení uživatele, přispívá k logickému konceptu s názvem rizikové přihlášení. Rizikové přihlášení je indikátorem pokusu o přihlášení, který nemusí být proveden oprávněným vlastníkem uživatelského účtu.
+Azure Active Directory detekuje [typy detekce rizik](../reports-monitoring/concept-risk-events.md#risk-detection-types) v reálném čase i v režimu offline. Každé zjištění rizika, které bylo zjištěno pro přihlášení uživatele, přispívá k logickému konceptu s názvem rizikové přihlášení. Rizikové přihlášení je indikátorem pokusu o přihlášení, který nemusí být proveden oprávněným vlastníkem uživatelského účtu.
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Jaké jsou zásady rizik přihlašování?
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. Například pokud je přihlášení provedeno pomocí anonymní IP adresy nebo je přihlášení zahájeno z neznámého umístění? V Azure AD se podezřelé akce, které může systém detekovat, označují také jako rizikové události. Na základě rizikových událostí, které byly zjištěny během přihlašování, služba Azure AD vypočítá hodnotu. Hodnota představuje pravděpodobnost (nízká, střední, vysoká), že se přihlášení legitimního uživatele neprovádí. Pravděpodobnost se nazývá **úroveň rizika přihlašování**.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je rozpoznat podezřelé akce, které jsou k disjetí společně s přihlášením. Například pokud je přihlášení provedeno pomocí anonymní IP adresy nebo je přihlášení zahájeno z neznámého umístění? V Azure AD se podezřelé akce, které může systém detekovat, označují také jako detekce rizik. V závislosti na detekcích rizik zjištěných během přihlašování Azure AD vypočítá hodnotu. Hodnota představuje pravděpodobnost (nízká, střední, vysoká), že se přihlášení legitimního uživatele neprovádí. Pravděpodobnost se nazývá **úroveň rizika přihlašování**.
 
 Zásada pro rizikové přihlašování je automatizovaná odpověď, kterou můžete nakonfigurovat pro konkrétní úroveň rizika přihlašování. V odpovědi můžete zablokovat přístup k vašim prostředkům nebo vyžadovat přístup ke službě Multi-Factor Authentication (MFA), abyste získali přístup.
    
@@ -44,7 +44,7 @@ Když konfigurujete zásady pro rizikové přihlašování, musíte nastavit:
 
 - Úroveň rizika přihlašování, která spouští zásady:
 
-    ![Úroveň rizika přihlášení](./media/howto-sign-in-risk-policy/12.png)
+    ![Úroveň rizika přihlašování](./media/howto-sign-in-risk-policy/12.png)
 
 - Typ přístupu, který chcete vyhovět při splnění úrovně rizika přihlašování:  
 

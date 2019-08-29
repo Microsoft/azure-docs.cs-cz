@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vygenerování thumbnail - SDKC#'
+title: 'Rychlý start: Generování miniatur – sada SDKC#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 78ffd9628c7a65ae60d457bbff3631ea261649d5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b43bce2b8235c44475e92da385ba57ee467815ef
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603442"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141004"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Generování miniatur pomocí sady SDK služby pro zpracování obrazu počítač aC#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Vygenerujte miniaturu pomocí sady Počítačové zpracování obrazu SDK aC#
 
-V tomto rychlém startu vygeneruje miniaturu výtisky oříznout smart z bitové kopie pomocí sady SDK pro zpracování obrazu počítače pro C#. Pokud chcete, můžete stáhnout kód v tomto průvodci jako kompletní ukázkovou aplikaci z [Cognitive Services Csharp vizi](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) úložišti na Githubu.
+V tomto rychlém startu vygenerujete miniaturu s inteligentním oříznutím z obrázku pomocí sady Počítačové zpracování obrazu SDK C#pro. Pokud chcete, můžete si kód v této příručce stáhnout jako kompletní ukázkovou aplikaci z Cognitive Servicesho úložiště [Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+* Počítačové zpracování obrazu klíč předplatného. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 * Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="generatethumbnailasync-method"></a>Metoda GenerateThumbnailAsync
 
- Tyto metody můžete použít k vygenerování miniatury obrázku. Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
+ Tyto metody můžete použít k vygenerování miniatury obrázku. Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
 Pokud chcete spustit ukázku, postupujte takto:
 

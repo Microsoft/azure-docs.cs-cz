@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555338"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124145"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly v Azure Monitor
+
 Zdroj dat vlastních protokolů v Azure Monitor umožňuje shromažďovat události z textových souborů na počítačích s Windows i Linux. Mnoho aplikací protokoluje informace do textových souborů namísto standardních protokolovacích služeb, jako je například protokol událostí systému Windows nebo syslog. Po shromáždění můžete data analyzovat do jednotlivých polí v dotazech nebo data extrahovat během shromažďování do jednotlivých polí.
 
 ![Vlastní kolekce protokolů](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ Soubory protokolů, které mají být shromažďovány, se musí shodovat s nás
 > * Maximální počet znaků pro název sloupce je 500. 
 >
 
+>[!IMPORTANT]
+>Vlastní kolekce protokolů vyžaduje, aby aplikace, která zapisuje soubor protokolu, vyprázdní obsah protokolu na disk pravidelně. Důvodem je to, že vlastní shromažďování protokolů závisí na upozorněních na změnu systému souborů pro sledovaný soubor protokolu.
+
 ## <a name="defining-a-custom-log"></a>Definování vlastního protokolu
 K definování vlastního souboru protokolu použijte následující postup.  Posuňte se na konec tohoto článku a Projděte si návod k přidání vlastního protokolu.
 
@@ -64,7 +68,6 @@ Začnete tím, že nahrajete ukázku vlastního protokolu.  Průvodce bude analy
 
 Pokud se použije oddělovač časového razítka, pak vlastnost TimeGenerated každého záznamu uloženého v Azure Monitor bude naplněna s datem a časem zadanými pro tuto položku v souboru protokolu.  Pokud se použije nový oddělovač řádků, TimeGenerated se naplní datem a časem, které položka Azure Monitor shromáždila.
 
-
 1. Klikněte na **Procházet** a přejděte k ukázkovému souboru.  Všimněte si, že toto tlačítko může být označeno jako označit v některých prohlížečích **možnost soubor** .
 2. Klikněte na **Další**.
 3. Průvodce vlastním protokolem nahraje soubor a zobrazí seznam záznamů, které identifikuje.
@@ -75,7 +78,6 @@ Pokud se použije oddělovač časového razítka, pak vlastnost TimeGenerated k
 Musíte definovat jednu nebo více cest v agentovi, kde může najít vlastní protokol.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo můžete zadat cestu se zástupným znakem pro název. Tato podpora podporuje aplikace, které každý den vytvoří nový soubor, nebo když jeden soubor dosáhne určité velikosti. Můžete také zadat více cest pro jeden soubor protokolu.
 
 Aplikace může například vytvořit soubor protokolu každý den s datem zahrnutým do názvu jako v souboru log20100316. txt. Vzor takového protokolu může být *\*log. txt* , který by se měl vztahovat na libovolný soubor protokolu, který následuje po schématu pojmenování aplikace.
-
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
@@ -105,7 +107,6 @@ Jakmile Azure Monitor začne shromažďovat z vlastního protokolu, budou zázna
 > [!NOTE]
 > Pokud v dotazu chybí vlastnost RawData, může být nutné zavřít a znovu otevřít prohlížeč.
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analyzovat položky vlastního protokolu
 Celý záznam v protokolu bude uložen v jediné vlastnosti s názvem **rawData**.  Pravděpodobně budete chtít jednotlivé údaje v každé položce oddělit do jednotlivých vlastností každého záznamu. Pokud chcete použít možnosti analýzy **rawData** do více vlastností, přečtěte si téma [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
 
@@ -114,7 +115,6 @@ Pomocí následujícího postupu v Azure Portal odeberte vlastní protokol, kter
 
 1. V nabídce **data** v upřesňujících **nastaveních** pracovního prostoru vyberte **vlastní protokoly** a seznamte se s vlastními protokoly.
 2. Pro odebrání klikněte na **Odebrat** vedle vlastního protokolu.
-
 
 ## <a name="data-collection"></a>Shromažďování dat
 Azure Monitor bude shromažďovat nové záznamy z každého vlastního protokolu přibližně každých 5 minut.  Agent zaznamená své místo do každého souboru protokolu, ze kterého bude shromažďovat.  Pokud agent přejde do režimu offline po určitou dobu, bude Azure Monitor shromažďovat položky z místa, kde byla naposledy ponechána, a to i v případě, že byly tyto položky vytvořeny v době, kdy byl agent offline.
@@ -135,11 +135,11 @@ Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vla
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Ukázkový návod k přidání vlastního protokolu
 V následující části se seznámíte s příkladem vytvoření vlastního protokolu.  Shromážděný vzorový protokol obsahuje jednu položku na každém řádku počínaje datem a časem a pak pole s oddělovači pro kód, stav a zprávu.  Níže je uvedeno několik ukázkových položek.
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>Nahrát a analyzovat ukázkový protokol
 Poskytujeme jeden ze souborů protokolu a uvidí události, které bude shromažďovat.  V tomto případě je nový řádek dostatečným oddělovačem.  Pokud by mohla jedna položka v protokolu zahrnovat více řádků, je nutné použít oddělovač časového razítka.
@@ -157,14 +157,10 @@ Používáme název *MyApp_CL* a typ v **popisu**.
 ![Název protokolu](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Ověření, jestli se vlastní protokoly shromažďují
-K vrácení všech záznamů z shromážděného protokolu používáme dotaz *typu = MyApp_CL* .
+K vrácení všech záznamů ze shromážděného protokolu používáme jednoduchý dotaz na *MyApp_CL* .
 
 ![Dotaz protokolu bez vlastních polí](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>Analyzovat položky vlastního protokolu
-Vlastní pole používáme k definování polí *čas události*, *Code*, *status*a *Message* a v záznamech, které jsou vráceny dotazem, se může zobrazit rozdíl.
-
-![Dotaz protokolu s vlastními poli](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>Alternativy k vlastním protokolům
 I když jsou vlastní protokoly užitečné v případě, že se data vejdou na uvedená kritéria, ale existují případy, kdy potřebujete jinou strategii:
@@ -178,6 +174,6 @@ V případech, kdy vaše data nejde shromažďovat s vlastními protokoly, zvaž
 - Pomocí vlastního skriptu nebo jiné metody Zapište data do událostí nebo [syslog](data-sources-syslog.md) [systému Windows](data-sources-windows-events.md) , které jsou shromažďovány pomocí Azure monitor. 
 - Odešlete data přímo do Azure Monitor pomocí [rozhraní API kolekce dat http](data-collector-api.md). Příklad použití runbooků v Azure Automation je k dispozici ve [shromažďovat data protokolu v Azure monitor pomocí sady Azure Automation Runbook](runbook-datacollect.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
 * Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

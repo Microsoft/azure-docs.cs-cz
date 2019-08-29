@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693879"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125349"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkce Azure Active Directory
 
@@ -53,9 +53,9 @@ V této fázi můžou správci ve službě Azure AD před importem nebo vytvoře
 | [Zakázat pravidelná resetování hesla pro cloudové uživatelské účty](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodické resetování hesla připomáhají uživatelům zvyšovat stávající hesla. Použijte pokyny v dokumentu pokyny pro heslo od Microsoftu a zrcadlte své místní zásady na uživatele jenom pro Cloud. | Azure AD Free |
 | [Přizpůsobení Azure Active Directoryho inteligentního uzamčení](../authentication/howto-password-smart-lockout.md) | Zastavení uzamčení od cloudových uživatelů při jejich replikaci do místních uživatelů Active Directory | |
 | [Povolit extranetové inteligentní uzamčení pro AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS uzamčení extranetu chrání před útoky hrubou silou hesla, zatímco umožňuje platným AD FSm uživatelům nadále používat své účty. | |
-| [Nasazení služby Multi-Factor Authentication pro Azure AD pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) | Vyžaduje, aby uživatelé prováděli dvoustupňové ověřování při přístupu k citlivým aplikacím pomocí zásad podmíněného přístupu. | Azure AD Premium P1 |
+| [Nasazení Multi-Factor Authentication Azure AD pomocí zásad podmíněného přístupu](../authentication/howto-mfa-getstarted.md) | Vyžaduje, aby uživatelé prováděli dvoustupňové ověřování při přístupu k citlivým aplikacím pomocí zásad podmíněného přístupu. | Azure AD Premium P1 |
 | [Povolit Azure Active Directory Identity Protection](../identity-protection/enable.md) | Povolte sledování rizikových přihlášení a napadených přihlašovacích údajů uživatelům ve vaší organizaci. | Azure AD Premium P2 |
-| [Použití rizikových událostí ke spuštění vícefaktorového ověřování a změn hesel](../authentication/tutorial-risk-based-sspr-mfa.md) | Povolte automatizaci, která může aktivovat události, jako je vícefaktorové ověřování, resetování hesla a blokování přihlášení na základě rizika. | Azure AD Premium P2 |
+| [Použití zjišťování rizik ke spuštění vícefaktorového ověřování a změn hesel](../authentication/tutorial-risk-based-sspr-mfa.md) | Povolte automatizaci, která může aktivovat události, jako je vícefaktorové ověřování, resetování hesla a blokování přihlášení na základě rizika. | Azure AD Premium P2 |
 | [Povolit sblížené registrace pro samoobslužné resetování hesla a Vícefaktorové ověřování Azure AD (preview)](../authentication/concept-registration-mfa-sspr-converged.md) | Umožněte uživatelům, aby se zaregistrovali z jednoho společného prostředí pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fáze 2: Importovat uživatele, povolit synchronizaci a spravovat zařízení

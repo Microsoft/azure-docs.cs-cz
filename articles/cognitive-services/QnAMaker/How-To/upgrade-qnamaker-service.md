@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640487"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147092"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Sdílení nebo upgrade služby QnA Maker
 Pokud chcete prostředky spravovat lépe, sdílejte nebo Upgradujte své služby QnA Maker. 
@@ -26,13 +26,14 @@ Po počátečním vytvoření můžete upgradovat jednotlivé součásti QnA Mak
 
 QnA Maker vytvoří několik prostředků Azure. Aby se snížila úroveň správy a výhoda sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
 
-|Služba|Sdílení|
-|--|--|
-|Cognitive Services|X|
-|Plán služby App Service|✔|
-|App Service|X|
-|Application Insights|✔|
-|Služba vyhledávání|✔|
+|Služba|Sdílení|Reason|
+|--|--|--|
+|Cognitive Services|X|Není možné podle návrhu|
+|Plán služby App Service|✔|Pevné místo na disku přidělené pro plán služby App Service. Pokud jiné aplikace, sdílející stejný plán App Service, využijete významné místo na disku, v Qnamakerem App Service dojde k problémům.|
+|App Service|X|Není možné podle návrhu|
+|Application Insights|✔|Může být sdíleno|
+|Služba vyhledávání|✔|1. `testkb` je rezervovaný název služby qnamakerem, kterou nemůžou použít jiní uživatelé.<br>2. Mapování synonym podle názvu `synonym-map` je vyhrazeno pro službu qnamakerem.<br>3. Počet publikovaných aktualizací KB je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>Aktualizace SKU správy QnA Maker
 

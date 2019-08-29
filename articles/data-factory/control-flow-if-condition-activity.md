@@ -1,25 +1,24 @@
 ---
-title: Pokud podmínka vyhodnocena jako aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Aktivita podmínky If umožňuje řídit zpracování toku na základě podmínky.
+title: Aktivita podmínky v Azure Data Factory | Microsoft Docs
+description: Aktivita podmínka if umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153468"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142487"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Pokud aktivita ve službě Azure Data Factory podmínky
+# <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
 
 ## <a name="syntax"></a>Syntaxe
@@ -62,23 +61,23 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 }
 ```
 
-## <a name="type-properties"></a>Typ vlastnosti
+## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Požadováno
 -------- | ----------- | -------------- | --------
-name | Název aktivita podmínky if. | String | Ano
-type | Musí být nastaveno na **IfCondition** | String | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s výsledkem typu boolean | Ano
-ifTrueActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `true`. | Array | Ano
-ifFalseActivities | Sadu aktivit, které jsou spouštěny, když je výraz vyhodnocen `false`. | Array | Ano
+name | Název aktivity if-Condition | Řetězec | Ano
+type | Musí být nastavené na **IfCondition** | Řetězec | Ano
+expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
+ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí `true`jako. | Array | Ano
+ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí `false`jako. | Array | Ano
 
-## <a name="example"></a>Příklad:
-Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určená hodnota parametru kanálu: routeSelection. Pokud routeSelection hodnotu true, budou data zkopírována do outputPath1. A pokud je hodnota routeSelection false, data je zkopírován do outputPath2. 
+## <a name="example"></a>Příklad
+Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a vzorové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu datové továrny pomocí Azure Powershellu a JSON definic najdete v tématu [kurz: vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivita podmínky IF (c:\adfv2quickstartpsh)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou IF-Condition (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -179,7 +178,7 @@ Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní slož
 }
 ```
 
-Další příklad výrazu je: 
+Dalším příkladem výrazu je: 
 
 ```json
 "expression":  {
@@ -189,7 +188,7 @@ Další příklad výrazu je:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -206,8 +205,8 @@ Další příklad výrazu je:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametry datové sady objektů Blob v Azure (C:\adfv2quickstartpsh)
-Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2** parametr kanálu. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
 {
@@ -233,7 +232,7 @@ Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2**
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (C:\adfv2quickstartpsh)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
 
 ```json
 {
@@ -244,11 +243,11 @@ Nastaví kanál **folderPath** hodnotu buď **outputPath1** nebo **outputPath2**
 }
 ```
 
-### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
+### <a name="powershell-commands"></a>Příkazy PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Těchto příkazů se předpokládá, že jste uložili soubor JSON do složky: C:\ADF. 
+U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -289,11 +288,11 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>Další postup
-Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)

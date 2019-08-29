@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899715"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142838"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure pomocí podmíněného přístupu
+
+> [!CAUTION]
+> Ujistěte se, že rozumíte tomu, jak podmíněný přístup funguje, než nastavíte zásadu pro správu přístupu ke správě Azure. Ujistěte se, že nevytváříte podmínky, které by mohly blokovat váš vlastní přístup k portálu.
 
 Podmíněný přístup v Azure Active Directory (Azure AD) řídí přístup ke cloudovým aplikacím na základě konkrétních podmínek, které zadáte. Pokud chcete přístup udělit, vytvořte zásady podmíněného přístupu, které povolí nebo zablokují přístup na základě toho, jestli jsou požadavky v zásadě splněné nebo ne. 
 
@@ -44,7 +47,5 @@ Zásada, kterou vytvoříte, se vztahuje na všechny koncové body správy Azure
 
 Všimněte si, že zásada platí pro Azure PowerShell, která volá rozhraní API Azure Resource Manager. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), který volá Microsoft Graph.
 
-> [!CAUTION]
-> Ujistěte se, že rozumíte tomu, jak podmíněný přístup funguje, než nastavíte zásadu pro správu přístupu ke správě Azure. Ujistěte se, že nevytváříte podmínky, které by mohly blokovat váš vlastní přístup k portálu.
 
 Další informace o nastavení a použití podmíněného přístupu najdete [v tématu podmíněný přístup v Azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md).

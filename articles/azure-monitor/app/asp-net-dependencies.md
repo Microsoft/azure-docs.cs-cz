@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 858508e949f8a880498e1a3d983dc76224010c31
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5e07243720872ff4555d4c000dcb7b0b7236e66f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534619"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126741"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -39,6 +39,7 @@ Application Insights sady SDK pro .NET a .NET Core, `DependencyTrackingTelemetry
 |[Klientská sada SDK pro ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Verze 3.0.0 a vyšší. |
 |Azure Cosmos DB | Automaticky sledováno pouze v případě, že se používá protokol HTTP/HTTPS. Režim TCP nebude zachycena Application Insights. |
 
+Pokud nemůžete najít závislost nebo používáte jinou sadu SDK, ujistěte se, že je v seznamu [automaticky shromážděných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud není závislost automaticky shromažďována, můžete ji stále sledovat ručně pomocí [volání sledování závislostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Nastavení automatického sledování závislosti v konzolových aplikacích
 

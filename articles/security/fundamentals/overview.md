@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907918"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129353"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -345,7 +345,7 @@ Zabezpečení systémů, aplikací a dat začíná pomocí řízení přístupu 
 Microsoft používá pro správu identit a přístupu více postupů a technologií zabezpečení napříč svými produkty a službami.
 -   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) vyžaduje, aby uživatelé používali více metod pro přístup, místně i v cloudu. Poskytuje silné ověřování s využitím široké škály možností snadného ověření a současně přihlašuje uživatele k jednoduchému procesu přihlašování.
 
--   [Microsoft Authenticator](https://aka.ms/authenticator) poskytuje uživatelsky přívětivé prostředí Multi-Factor Authentication, které spolupracuje s účty Microsoft Azure Active Directory i Microsoft a zahrnuje podporu pro wearables a schvalování pomocí otisků prstů.
+-   [Microsoft Authenticator](https://aka.ms/authenticator) poskytuje uživatelsky přívětivé Multi-Factor Authentication prostředí, které spolupracuje s účty Microsoft Azure Active Directory i Microsoft a zahrnuje podporu pro schvalování wearables a na základě otisků prstů.
 
 -   [Vynucování zásad hesel](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) zvyšuje zabezpečení tradičních hesel tím, že ukládá požadavky na délku a složitost, vynucené pravidelné otočení a uzamčení účtu po neúspěšných pokusech o ověření.
 
@@ -365,7 +365,7 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) je funkce Premium Azure Active Directory, která umožňuje identifikovat cloudové aplikace používané zaměstnanci ve vaší organizaci.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) je služba zabezpečení, která využívá Azure Active Directory možnosti detekce anomálií k zajištění konsolidovaného zobrazení rizikových událostí a potenciálních ohrožení zabezpečení, které by mohly ovlivnit vaši organizaci. nebyly.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) je služba zabezpečení, která využívá Azure Active Directory možnosti detekce anomálií k zajištění konsolidovaného zobrazení v detekci rizik a potenciálních ohrožení zabezpečení, které by mohly ovlivnit vaši organizaci. nebyly.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně, aniž by bylo nutné nasazovat řadiče domény. Uživatelé se k těmto virtuálním počítačům přihlásí pomocí svých podnikových přihlašovacích údajů pro Active Directory a můžou bezproblémově přistupovat k prostředkům.
 

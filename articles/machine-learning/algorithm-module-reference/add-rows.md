@@ -1,7 +1,7 @@
 ---
-title: 'Přidání řádků: Odkaz na modul'
+title: 'Přidat řádky: Odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Další informace o použití modulu přidat řádky ve službě Azure Machine Learning zřetězit dvě datové sady.
+description: Naučte se používat modul přidat řádky ve službě Azure Machine Learning ke zřetězení dvou datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,38 +9,37 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ffd693ea3452ef48dc3e05e7bc4a6d3988a487b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129008"
 ---
-# <a name="add-rows-module"></a>Přidat modul řádků
+# <a name="add-rows-module"></a>Modul pro přidání řádků
 
-Tento článek popisuje modulu rozhraní visual (preview) pro službu Azure Machine Learning.
+Tento článek popisuje modul vizuálního rozhraní (Preview) pro službu Azure Machine Learning.
 
-Tento modul slouží k řetězení dvě datové sady. V zřetězení řádky druhé datové sady jsou přidány na konec první datové sady.  
+Tento modul slouží ke zřetězení dvou datových sad. Ve zřetězení jsou řádky druhé datové sady přidány na konec první datové sady.  
   
-Řetězení řádků je užitečné v situacích, jako je například tyto:  
+Zřetězení řádků je užitečné ve scénářích, jako jsou tyto:  
   
-+ Vygenerování řadu statistiky hodnocení a chcete je zkombinovat do jedné tabulky pro jednodušší vytváření sestav.  
++ Vygenerovali jste řadu zkušebních statistik a chcete je zkombinovat do jedné tabulky pro snazší vytváření sestav.  
   
-+ Pracujete s různých datových sad a je potřeba sloučit datové sady, chcete-li vytvořit finální datové sady.  
++ Pracovali jste s různými datovými sadami a chcete kombinovat datové sady, abyste vytvořili finální datovou sadu.  
 
-## <a name="how-to-use-add-rows"></a>Jak používat přidat řádky  
+## <a name="how-to-use-add-rows"></a>Použití funkce přidat řádky  
 
-Řádky zřetězit řádky z obou datových sad, musí mít přesně stejné schéma. To znamená, stejný počet sloupců a stejný typ dat ve sloupci.
+Aby bylo možné zřetězit řádky ze dvou datových sad, musí mít řádky přesně stejné schéma. To znamená, že stejný počet sloupců a stejný typ dat ve sloupcích.
 
-1.  Přetáhněte **přidat řádky** modulu do svého experimentu najdete ho pod **transformace dat**v **manipulovat** kategorie.
+1.  Přetáhněte modul **Přidat řádky** do experimentu, můžete ho najít v části **transformace dat**v kategorii **manipulace** .
 
-2. Připojte se k dva vstupní porty datových sad. Datová sada, kterou chcete připojit, musí být připojené k druhé port (vpravo). 
+2. Připojte datové sady ke dvěma vstupním portům. Datová sada, kterou chcete připojit, by měla být připojena k druhému (pravému) portu. 
   
-3.  Spusťte experiment. Počet řádků ve vstupní sadě by se měl rovnat součet řádky z obou vstupní datové sady.
+3.  Spusťte experiment. Počet řádků ve výstupní datové sadě by se měl rovnat součtu řádků obou vstupních datových sad.
 
-    Pokud přidáte stejné datové sady do obou vstupy **přidat řádky** modulu, datová sada je duplicitní. 
+    Pokud přidáte stejnou datovou sadu do obou vstupů modulu **Přidat řádky** , je datová sada duplikována. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zobrazit [sada modulů, které jsou k dispozici](module-reference.md) do služby Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 

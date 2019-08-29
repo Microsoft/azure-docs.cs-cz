@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4b24805cd59d1eb9d28591749d5169486e54d506
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250123"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141782"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Měřená fakturace pomocí služby měření na webu Marketplace
 
@@ -74,7 +74,7 @@ Atributy, které definují vlastní dimenzi, jsou sdíleny ve všech plánech na
 
 * identifikátor
 * Name
-* Jednotka měření
+* Měrná jednotka
 
 Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít různé hodnoty od plánu k plánování.  Před publikováním plánu můžete tyto hodnoty upravit a bude to mít vliv pouze na tento plán.  Po publikování plánu už tyto atributy nebude možné upravovat.  Tyto atributy jsou:
 
@@ -84,7 +84,7 @@ Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít růz
 
 Dimenze mají také dvě speciální pojmy "povolené" a "nekonečné":
 
-* **Povoleno** znamená, že se tento plán účastní v této dimenzi.  Pokud vytváříte nový plán, který neodesílá události využití na základě této dimenze, je vhodné ponechat toto zrušení zaškrtnutí.  Také všechny nové dimenze přidané po prvním publikování plánu budou v již publikovaném plánu zobrazovat stav "Nepovoleno".  Zakázaná dimenze se teď zobrazí v jakémkoli seznamu dimenzí pro plán, který si zákazníci uvidí.
+* **Povoleno** znamená, že se tento plán účastní v této dimenzi.  Pokud vytváříte nový plán, který neodesílá události využití na základě této dimenze, je vhodné ponechat toto zrušení zaškrtnutí.  Také všechny nové dimenze přidané po prvním publikování plánu budou v již publikovaném plánu zobrazovat stav "Nepovoleno".  Zakázaná dimenze se nezobrazí v žádných seznamech dimenzí pro plán, který si zákazníci uvidí.
 * Nekonečno, reprezentované symbolem nekonečno "∞", označuje, že se tento plán účastní v této dimenzi, ale nepoužívá měření na základě této dimenze.  Pokud chcete zákazníkům označovat, že funkce reprezentované touto dimenzí jsou zahrnuté v plánu, ale bez omezení využití.  Dimenze s nekonečným využitím se zobrazí v seznamech dimenzí pro plán, který uvidí zákazníci, s označením, že se za tento plán nikdy neúčtuje poplatek.
 
 >[!Note] 
@@ -104,7 +104,7 @@ Po publikování nabídky s dimenzí již nelze změnit podrobnosti na úrovni n
 
 * identifikátor
 * Name
-* Jednotka měření
+* Měrná jednotka
 
 Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 

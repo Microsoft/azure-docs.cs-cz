@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: fc3a4bb1fad836d8f3dadd5a06169b705ef4d4fc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4fdafee622a67582787829bb63331a8d0225506f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881260"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137492"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Použití funkcí Počítačové zpracování obrazu s REST API a Java
 
@@ -44,7 +44,7 @@ Tento kurz jsme vyvinuli v integrovaném vývojovém prostředí (IDE) NetBeans.
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Získejte předplatné rozhraní API pro počítačové zpracování obrazu a získejte klíč předplatného
 
-Než vytvoříte příklad, musíte se přihlásit k odběru rozhraní API pro počítačové zpracování obrazu, který je součástí Azure Cognitive Services. Podrobnosti o správě předplatného a klíče najdete v [předplatných](https://azure.microsoft.com/try/cognitive-services/). V tomto kurzu můžete použít jak primární, tak i sekundární klíče.
+Před vytvořením příkladu musíte mít klíč předplatného pro Počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Poznamenejte si taky adresu URL koncového bodu služby.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Projekt získání nekompletního kurzu
 

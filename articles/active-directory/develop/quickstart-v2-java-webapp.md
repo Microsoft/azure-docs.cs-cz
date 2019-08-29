@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: de2a59f878e0c0258b0619895d8f4c8bfd0670a8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036427"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125474"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace Java pomocí Microsoftu
 
@@ -34,10 +34,9 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 > ## <a name="prerequisites"></a>Požadavky
 > K provedení této ukázky budete potřebovat: 
-> - Připojení k Internetu.
-> - Funkční instalace jazyků Java a Maven.
-> - Tenant Azure Active Directory (Azure AD). Další informace o tom, jak získat tenanta Azure AD, najdete v tématu [Jak získat tenanta Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-
+> - Java Development Kit (JDK) 8 nebo vyšší a Maven.
+> - Tenant Azure Active Directory (Azure AD). Další informace o tom, jak získat tenanta Azure AD, najdete v tématu [Jak získat tenanta Azure AD.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
+>
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
@@ -143,5 +142,22 @@ Odkaz na MSAL4J můžete přidat přidáním následujícího kódu do horní č
 ```
 import com.microsoft.aad.msal4j.*;
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o oprávněních a souhlasu:
+
+> [!div class="nextstepaction"]
+> [Oprávnění a souhlas](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+
+Další informace o toku ověřování pro tento scénář najdete v tématu tok autorizačního kódu OAuth 2,0:
+
+> [!div class="nextstepaction"]
+> [Tok OAuth autorizačním kódem](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+
+Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
+
+> [!div class="nextstepaction"]
+> [Microsoft Identity Platform Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

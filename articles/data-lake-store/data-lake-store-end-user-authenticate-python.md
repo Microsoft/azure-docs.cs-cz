@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování koncového uživatele: Python s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
-description: Zjistěte, jak dokončit ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory s využitím Pythonu
+title: 'Ověřování koncového uživatele: Python s Azure Data Lake Storage Gen1 s využitím Azure Active Directory | Microsoft Docs'
+description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí Pythonu.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878046"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139056"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Pythonu
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "60878046"
 > 
 > 
 
-V tomto článku najdete informace o tom, jak provádět ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí sady Python SDK. Ověřování koncového uživatele lze dále rozdělit do dvou kategorií:
+V tomto článku se dozvíte, jak pomocí sady Python SDK provádět ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1. Ověřování koncových uživatelů lze dále rozdělit do dvou kategorií:
 
-* Ověřování koncového uživatele bez ověřování Multi-Factor Authentication
-* Ověřování koncového uživatele pomocí služby Multi-Factor authentication
+* Ověřování koncových uživatelů bez vícefaktorového ověřování
+* Ověřování koncových uživatelů pomocí Multi-Factor Authentication
 
-Obě tyto možnosti jsou popsány v tomto článku. Ověřování služba služba s Data Lake Storage Gen1 pomocí Pythonu, přečtěte si téma [ověřování služba služba Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md).
+Obě tyto možnosti jsou popsány v tomto článku. Informace o ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Pythonu najdete v tématu [ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,15 +40,15 @@ Obě tyto možnosti jsou popsány v tomto článku. Ověřování služba služb
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Nativní"** . Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvořte Azure Active Directory "nativní" aplikaci**. Musíte dokončit kroky v části [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
-Pro práci s Data Lake Storage Gen1 pomocí Pythonu, je nutné nainstalovat tři moduly.
+Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul Azure Data Lake Storage Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store Filesystem](https://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu správy Azure Data Lake Storage Gen1](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v tématu [Reference k modulům systému souborů Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -60,7 +60,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-1. V integrovaném vývojovém prostředí podle vašeho výběru vytvořte novou aplikaci v Pythonu, například **mysample.py**.
+1. V integrovaném vývojovém prostředí vytvořte novou aplikaci v Pythonu, například **MySample.py**.
 
 2. Přidáním následujícího fragmentu kódu importujte požadované moduly.
 
@@ -86,11 +86,11 @@ pip install azure-datalake-store
 
 3. Uložte změny v souboru mysample.py.
 
-## <a name="end-user-authentication-with-multi-factor-authentication"></a>Ověřování koncového uživatele pomocí služby Multi-Factor authentication
+## <a name="end-user-authentication-with-multi-factor-authentication"></a>Ověřování koncových uživatelů pomocí Multi-Factor Authentication
 
-### <a name="for-account-management"></a>Pro správu účtu
+### <a name="for-account-management"></a>Pro správu účtů
 
-Použijte následující fragment kódu k ověření ve službě Azure AD pro operace správy účtů v účtu Data Lake Storage Gen1. Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Zadejte následující hodnoty pro existující služby Azure AD **nativní** aplikace.
+Pomocí následujícího fragmentu kódu se pomocí služby Azure AD prokáže operace správy účtů na účtu Data Lake Storage Gen1. Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Zadejte níže uvedené hodnoty pro existující **nativní** aplikaci Azure AD.
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -107,17 +107,17 @@ Použijte následující fragment kódu k ověření ve službě Azure AD pro op
 
 ### <a name="for-filesystem-operations"></a>Pro operace systému souborů
 
-Použijte k ověření ve službě Azure AD pro operace systému souborů v účtu Data Lake Storage Gen1. Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Zadejte následující hodnoty pro existující služby Azure AD **nativní** aplikace.
+Toto použijte k ověření pomocí služby Azure AD pro operace systému souborů na účtu Data Lake Storage Gen1. Následující fragment kódu můžete použít k ověřování vaší aplikace pomocí vícefaktorového ověřování. Zadejte níže uvedené hodnoty pro existující **nativní** aplikaci Azure AD.
 
     adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
-## <a name="end-user-authentication-without-multi-factor-authentication"></a>Ověřování koncového uživatele bez ověřování Multi-Factor Authentication
+## <a name="end-user-authentication-without-multi-factor-authentication"></a>Ověřování koncových uživatelů bez vícefaktorového ověřování
 
-Toto je zastaralé. Další informace najdete v tématu [ověřování Azure pomocí sady Python SDK](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
+Tato je zastaralá. Další informace najdete v tématu [ověřování Azure pomocí Python SDK](/azure/python/python-sdk-azure-authenticate).
    
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování koncového uživatele k ověření pomocí Azure Data Lake Storage Gen1 pomocí Pythonu. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat Python pro práci s Azure Data Lake Storage Gen1.
+V tomto článku jste zjistili, jak používat ověřování koncovými uživateli k ověřování pomocí Azure Data Lake Storage Gen1 pomocí Pythonu. Nyní se můžete podívat na následující články, které vás seznámí s postupem použití Pythonu pro práci s Azure Data Lake Storage Gen1.
 
-* [Operace správy účtů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-get-started-python.md)
-* [Operace s daty v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md)
+* [Operace správy účtů na Data Lake Storage Gen1 s využitím Pythonu](data-lake-store-get-started-python.md)
+* [Operace s daty při Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md)
 

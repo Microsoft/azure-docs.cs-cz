@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0f1a2e0bad39b54edc153416e4120bbc6912578c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532939"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125457"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (Preview)
 
@@ -24,7 +24,7 @@ Doporučujeme, abyste si myslíte, že účty správců jsou jedinými účty, k
 
 Za účelem dosažení přiměřené rovnováhy zabezpečení a použitelnosti by se uživatelům při každém přihlášení neměli zobrazovat výzva. Požadavky na ověření, které odráží normální chování uživatelů, například přihlášení ze stejného zařízení ze stejného umístění, mají nízkou pravděpodobnost napadení. V případě problémů s MFA by se měla zobrazit jenom přihlášení, která se považují za rizikové a ukazují charakteristiky vadného objektu actor.
 
-Ochrana koncového uživatele je [zásada standardních hodnot](concept-baseline-protection.md) MFA založená na riziku, která chrání všechny uživatele v adresáři, včetně všech rolí správce. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro MFA pomocí ověřovací aplikace. Uživatelé můžou ignorovat výzvu k registraci MFA po dobu 14 dnů, po které se budou zablokovat přihlášení, dokud se neregistrují pro MFA. Po registraci pro MFA se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů je zablokované, dokud se neobnoví jejich heslo a neodstranily se rizikové události.
+Ochrana koncového uživatele je [zásada standardních hodnot](concept-baseline-protection.md) MFA založená na riziku, která chrání všechny uživatele v adresáři, včetně všech rolí správce. Když se tyto zásady povolí, vyžaduje se, aby se všichni uživatelé zaregistrovali pro MFA pomocí ověřovací aplikace. Uživatelé můžou ignorovat výzvu k registraci MFA po dobu 14 dnů, po které se budou zablokovat přihlášení, dokud se neregistrují pro MFA. Po registraci pro MFA se uživatelům zobrazí výzva k MFA jenom během pokusů o rizikové přihlašování. Ohrožení uživatelských účtů je zablokované, dokud se neobnoví jejich heslo, a detekce rizik byla zrušena.
 
 > [!NOTE]
 > Tato zásada platí pro všechny uživatele včetně účtů hostů a při přihlašování ke všem aplikacím se vyhodnotí.
@@ -33,7 +33,7 @@ Ochrana koncového uživatele je [zásada standardních hodnot](concept-baseline
 
 Abychom mohli chránit naše zákazníky, služba nevrácených přihlašovacích údajů od Microsoftu vyhledá veřejně dostupné páry uživatelského jména a hesla. Pokud se shodují s jedním z našich uživatelů, pomůžeme tento účet hned zabezpečit. Uživatelé označení jako nevrácené přihlašovací údaje budou ověřeni z hlediska zabezpečení. Těmto uživatelům se zablokuje přihlášení, dokud se neobnoví jejich heslo.
 
-Uživatelům, kteří mají přiřazenou licenci Azure AD Premium, můžete obnovit přístup prostřednictvím samoobslužného resetování hesla (SSPR), pokud je funkce ve svém adresáři povolená. Uživatelé bez licence Premium, která se zablokuje, musí požádat správce, aby provedl ruční resetování hesla, a odvolat událost rizika uživatele označená příznakem.
+Uživatelům, kteří mají přiřazenou licenci Azure AD Premium, můžete obnovit přístup prostřednictvím samoobslužného resetování hesla (SSPR), pokud je funkce ve svém adresáři povolená. Uživatelé bez licence Premium, která se zablokuje, musí požádat správce, aby provedl ruční resetování hesla, a vypustit detekci rizik uživatelů označených příznakem.
 
 ### <a name="steps-to-unblock-a-user"></a>Postup odblokování uživatele
 

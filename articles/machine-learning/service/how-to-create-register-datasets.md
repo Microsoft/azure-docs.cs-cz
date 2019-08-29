@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: e5d5d36e82914f1d6d03299db0ed1427ac5a389a
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992120"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147586"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -45,9 +45,11 @@ K vytváření a práci s datovými sadami potřebujete:
 
 ## <a name="dataset-types"></a>Typy datových sad
 
-Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. V současné době podporujeme [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , které reprezentují data v tabulkovém formátu, a to analýzou poskytnutého souboru nebo seznamu souborů. To vám umožní vyhodnotit data do PANDAS dataframe. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší dokumentaci.
+Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. Seznam typů datových sad:
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do PANDAS dataframe. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší [dokumentaci](https://aka.ms/tabulardataset-api-reference).
+* Soubor DataSet odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Získáte tak možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Soubory můžou být libovolného formátu, což umožňuje rozšířit řadu scénářů strojového učení, včetně obsáhlého učení.
 
-Další informace o nadcházejících změnách rozhraní API najdete v tématu [co je služba Azure Machine Learning?](https://aka.ms/tabular-dataset) 
+Další informace o nadcházejících změnách rozhraní API najdete [tady](https://aka.ms/tabular-dataset).
 
 ## <a name="create-datasets"></a>Vytvoření datových sad 
 
@@ -101,6 +103,25 @@ titanic_ds.take(3).to_pandas_dataframe()
 1|2|1|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
 2|3|1|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||ne
 
+### <a name="create-filedatasets"></a>Vytvoření datových sad
+`from_files()` Použijte`FileDatasetFactory` metodu třídy pro načtení souborů v jakémkoli formátu a vytvořte neregistrovanou datovou sadu souborů.
+
+```Python
+# create a FileDataset from multiple paths in datastore
+datastore_paths = [
+                  (datastore, 'animals/dog/1.jpg'),
+                  (datastore, 'animals/dog/2.jpg'),
+                  (datastore, 'animals/dog/*.jpg')
+                 ]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = [
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
+           ]          
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 ## <a name="register-datasets"></a>Registrace datových sad
 
 Pokud chcete dokončit proces vytváření, zaregistrujte své datové sady s pracovním prostorem:

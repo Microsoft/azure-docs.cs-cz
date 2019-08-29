@@ -3,21 +3,20 @@ title: Výraz a funkce v Azure Data Factory | Microsoft Docs
 description: Tento článek poskytuje informace o výrazech a funkcích, které můžete použít při vytváření entit Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 533d0c7461530a00e6f640ee53c0c87d336e799d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c500c4b2d35a449a9f9c0f693a02c008ea6e3c5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876317"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141696"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -262,5 +261,5 @@ Tento [kurz](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-
 |adddays|Přidá celočíselný počet dní do předaného řetězcového časového razítka. Počet dní může být kladný nebo záporný. Výsledkem je řetězec ve formátu ISO 8601 ("o") ve výchozím nastavení, pokud není zadán specifikátor formátu. Například `2015-02-23T13:27:36Z`:<br /><br /> `adddays('2015-03-15T13:27:36Z', -20)`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Timestamp<br /><br /> **Popis**: Povinný parametr. Řetězec, který obsahuje čas.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Dny<br /><br /> **Popis**: Povinný parametr. Počet dní, po které se má přidat Může být negativní na odečtení dní.<br /><br /> **Číslo parametru**: 3<br /><br /> **Název**: Formát<br /><br /> **Popis**: Volitelný parametr. Buď [jeden znak specifikátoru formátu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) , nebo [vlastní vzorek formátu](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) , který určuje, jak se má naformátovat hodnota tohoto časového razítka. Pokud není zadán formát, je použit formát ISO 8601 ("o").|  
 |formatDateTime|Vrátí řetězec ve formátu data. Výsledkem je řetězec ve formátu ISO 8601 ("o") ve výchozím nastavení, pokud není zadán specifikátor formátu. Například `2015-02-23T13:27:36Z`:<br /><br /> `formatDateTime('2015-03-15T13:27:36Z', 'o')`<br /><br /> **Číslo parametru**: 1<br /><br /> **Název**: Date<br /><br /> **Popis**: Povinný parametr. Řetězec, který obsahuje datum.<br /><br /> **Číslo parametru**: 2<br /><br /> **Název**: Formát<br /><br /> **Popis**: Volitelný parametr. Buď [jeden znak specifikátoru formátu](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) , nebo [vlastní vzorek formátu](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) , který určuje, jak se má naformátovat hodnota tohoto časového razítka. Pokud není zadán formát, je použit formát ISO 8601 ("o").|  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam systémových proměnných, které můžete použít ve výrazech, najdete v tématu [systémové proměnné](control-flow-system-variables.md).

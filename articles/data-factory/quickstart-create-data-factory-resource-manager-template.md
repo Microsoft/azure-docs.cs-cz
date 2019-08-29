@@ -8,23 +8,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157015"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140973"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manager
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuální verze](quickstart-create-data-factory-resource-manager-template.md)
 
-Tento rychlý start popisuje použití šablony Azure Resource Manageru k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů blob Azure. Kurz o tom, jak **transformace** dat pomocí Azure Data Factory najdete v tématu [kurzu: Transformace dat pomocí Sparku](transform-data-using-spark.md).
+Tento rychlý start popisuje použití šablony Azure Resource Manageru k vytvoření datové továrny Azure. Kanál, který vytvoříte v této datové továrně, **kopíruje** data z jedné složky do jiné složky v úložišti objektů blob Azure. Kurz o tom, jak **transformovat** data pomocí Azure Data Factory, najdete [v tématu Kurz: Transformace dat pomocí Sparku](transform-data-using-spark.md).
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Úvod do služby Azure Data Factory najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -43,7 +43,7 @@ Obecné informace o šablonách Azure Resource Manageru najdete v tématu [Vytv�
 
 Následující oddíl poskytuje hotovou šablonu Resource Manageru pro definování entit služby Data Factory, abyste mohli rychle projít kurzem a otestovat šablonu. Pro lepší pochopení toho, jak jsou jednotlivé entity služby Data Factory definovány, přejděte k oddílu [Entity služby Data Factory v šabloně](#data-factory-entities-in-the-template).
 
-Další informace o syntaxi JSON a vlastnosti pro prostředky Data Factory v šabloně najdete v tématu [typy prostředků Microsoft.DataFactory](/azure/templates/microsoft.datafactory/allversions).
+Další informace o syntaxi a vlastnostech JSON pro Data Factory prostředky v šabloně najdete v tématu [typy prostředků Microsoft. DataFactory](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>JSON pro Data Factory
 
@@ -369,9 +369,9 @@ DeploymentDebugLogLevel :
 - Kanál s aktivitou kopírování
 - Trigger pro aktivaci kanálu
 
-Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spustit, je použít **Start AzDataFactoryV2Trigger** rutiny Powershellu. Podrobné kroky najdete v následujícím postupu:
+Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak spustit Trigger, je použít rutinu **Start-AzDataFactoryV2Trigger** prostředí PowerShell. Podrobné kroky najdete v následujícím postupu:
 
-1. V okně PowerShellu vytvořte proměnnou, která bude uchovávat název skupiny prostředků. Zkopírujte do okna PowerShellu následující příkaz a stiskněte ENTER. Pokud jste zadali jiný název skupiny prostředků pro příkaz New-AzResourceGroupDeployment, aktualizujte tuto hodnotu.
+1. V okně PowerShellu vytvořte proměnnou, která bude uchovávat název skupiny prostředků. Zkopírujte do okna PowerShellu následující příkaz a stiskněte ENTER. Pokud jste pro příkaz New-AzResourceGroupDeployment zadali jiný název skupiny prostředků, aktualizujte tady hodnotu.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -403,7 +403,7 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
     ```
     
     Všimněte si, že stav modulu runtime triggeru je **Zastaveno**.
-5. **Spusťte trigger**. Trigger spouští kanál definovaný v šabloně v celou hodinu. To znamená, že pokud jste tento příkaz spustili ve 14:25, trigger poprvé spustí kanál v 15:00. Potom bude kanál spouštět každou hodinu až do koncového času, který jste zadali pro aktivační událost.
+5. **Spusťte trigger**. Trigger spouští kanál definovaný v šabloně v celou hodinu. To znamená, že pokud jste tento příkaz spustili ve 14:25, trigger poprvé spustí kanál v 15:00. Potom kanál spustí každou hodinu až do času ukončení zadaného pro aktivační událost.
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -417,7 +417,7 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Potvrďte, že aktivační událost se spustil spuštěním příkazu Get-AzDataFactoryV2Trigger znovu.
+6. Opětovným spuštěním příkazu Get-AzDataFactoryV2Trigger ověřte, zda byl aktivační událost spuštěn.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -452,13 +452,13 @@ Nasazený trigger je v zastaveném stavu. Jedním ze způsobů, jak trigger spus
     ![Monitorování spuštění kanálu](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
-    > Se zobrazí spuštění kanálu pouze v celou hodinu (například: 4 AM, AM, 6: 00, 5 atd.). Po uplynutí další celé hodiny seznam aktualizujte kliknutím na **Aktualizovat** na panelu nástrojů.
+    > Vidíte, že se kanál spouští jenom v hodinách hodin (například: 4 dop., 5násobek, 6 dop. atd.) Po uplynutí další celé hodiny seznam aktualizujte kliknutím na **Aktualizovat** na panelu nástrojů.
 
 5. Klikněte na odkaz ve sloupci **Akce**.
 
     ![Odkaz na akce kanálu](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. Zobrazí se spuštění aktivit související s příslušným spuštěním kanálu. V tomto rychlém startu má kanál pouze jednu aktivitu typu: Kopírování. Proto se zobrazí spuštění této aktivity.
+6. Zobrazí se spuštění aktivit související s příslušným spuštěním kanálu. V tomto rychlém startu má kanál jenom jednu aktivitu typu: Kopií. Proto se zobrazí spuštění této aktivity.
 
     ![Spuštění aktivit](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Klikněte na odkaz ve sloupci **Výstup**. V okně **Výstup** se zobrazí výstup operace kopírování. Pokud chcete zobrazit celý výstup, klikněte na tlačítko pro maximalizaci. Maximalizované okno výstupu můžete minimalizovat nebo zavřít.
@@ -507,7 +507,7 @@ Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s�
 }
 ```
 
-Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a dataFactoryName definované v šabloně.
+Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a DataFactory definované v šabloně.
 
 #### <a name="azure-blob-input-dataset"></a>Vstupní datová sada Azure Blob
 
@@ -605,7 +605,7 @@ Nadefinujete kanál, který kopíruje data z jedné datové sady Azure Blob do j
 
 #### <a name="trigger"></a>Trigger
 
-Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte trigger pomocí **Start AzDataFactoryV2Trigger** rutiny. Další informace o triggerech najdete v článku [Spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).
+Nadefinujete trigger, který spouští kanál jednou za hodinu. Nasazený trigger je v zastaveném stavu. Spusťte Trigger pomocí rutiny **Start-AzDataFactoryV2Trigger** . Další informace o triggerech najdete v článku [Spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
 {
@@ -659,6 +659,6 @@ Všimněte si, že první příkaz používá soubor parametrů pro vývojové p
 
 Šablonu můžete také znovu použít k provádění opakujících se úloh. Můžete například vytvořit mnoho datových továren s jedním nebo více kanály, které implementují stejnou logiku, ale každá datová továrna používá jiný účet úložiště Azure. V tomto scénáři použijete k vytvoření datových továren stejnou šablonu ve stejném prostředí (vývojové, testovací nebo produkční) s různými soubory parametrů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích.

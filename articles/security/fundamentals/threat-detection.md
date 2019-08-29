@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036177"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129284"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -30,13 +30,13 @@ Azure nabízí nejrůznější možnosti konfigurace a přizpůsobení zabezpeč
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je funkce [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition, která poskytuje přehled o rizikových událostech a potenciálních ohroženích zabezpečení, které mohou ovlivnit identity vaší organizace. Identity Protection používá stávající možnosti detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav aktivit Azure AD neobvyklé](../../active-directory/active-directory-reporting-azure-portal.md), a zavádí nové rizikové typy událostí, které mohou detekovat anomálie v reálném čase.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) je funkce [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) Edition, která poskytuje přehled o detekcích rizik a potenciálních ohroženích zabezpečení, které mohou ovlivnit identity vaší organizace. Identity Protection používá stávající možnosti detekce anomálií Azure AD, které jsou dostupné prostřednictvím [sestav aktivit Azure AD neobvyklé](../../active-directory/active-directory-reporting-azure-portal.md), a přináší nové typy detekce rizik, které mohou detekovat anomálie v reálném čase.
 
 ![Diagram Azure AD Identity Protection](./media/threat-detection/azure-threat-detection-fig1.png)
 
-V případě Identity Protection se pro detekci anomálií a rizikových událostí, které mohou indikovat, že došlo k ohrožení identity, využívá algoritmy adaptivního strojového učení a heuristiky. Pomocí těchto dat aplikace Identity Protection vygeneruje sestavy a výstrahy, takže můžete tyto rizikové události prozkoumat a učinit patřičnou nápravu nebo zmírňující opatření.
+Identity Protection pomocí adaptivních algoritmů strojového učení a heuristiky detekuje anomálie a detekci rizik, které mohou znamenat, že došlo k ohrožení identity. Pomocí těchto dat aplikace Identity Protection generuje sestavy a výstrahy, aby bylo možné tyto detekce rizik prozkoumat a učinit patřičnou nápravu nebo zmírňující opatření.
 
-Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. Na základě rizikových událostí aplikace Identity Protection vypočítá úroveň rizika uživatele pro každého uživatele, takže můžete nakonfigurovat zásady založené na rizicích, které budou automaticky chránit identity vaší organizace.
+Azure Active Directory Identity Protection je více než Nástroj pro monitorování a vytváření sestav. V závislosti na detekcích rizik aplikace Identity Protection počítá úroveň rizika uživatele pro každého uživatele, takže můžete nakonfigurovat zásady založené na rizicích, které budou automaticky chránit identity vaší organizace.
 
 Tyto zásady založené na rizicích, kromě dalších [ovládacích prvků podmíněného přístupu](../../active-directory/active-directory-conditional-access-azure-portal.md) , které jsou poskytovány Azure Active Directory a [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), můžou automaticky blokovat nebo nabízet adaptivní nápravné akce, které zahrnují resetování hesel a Multi-Factor. vynucování ověřování.
 
@@ -46,14 +46,14 @@ Azure Active Directory Identity Protection je více než Nástroj pro monitorov�
 
 Příklady některých způsobů, jak může Azure Identity Protection pomáhat zabezpečit vaše účty a identity, zahrnují:
 
-[Zjišťování rizikových událostí a rizikových účtů](../../active-directory/identity-protection/overview.md)
--   Detekuje šest typů rizikových událostí pomocí strojového učení a heuristických pravidel.
+[Zjišťování detekcí rizik a rizikových účtů](../../active-directory/identity-protection/overview.md)
+-   Zjišťuje šest typů detekce rizik pomocí strojového učení a heuristických pravidel.
 -   Vypočítat úrovně rizika uživatele.
 -   Poskytněte vlastní doporučení pro zlepšení celkového stav zabezpečení tím, že zvýrazníte slabá místa.
 
-[Zkoumání rizikových událostí](../../active-directory/identity-protection/overview.md)
--   Odesílat oznámení pro rizikové události.
--   Prozkoumejte rizikové události pomocí relevantních a kontextových informací.
+[Zkoumání zjištění rizik](../../active-directory/identity-protection/overview.md)
+-   Odesílat oznámení pro detekci rizik.
+-   Prozkoumejte detekci rizik pomocí relevantních a kontextových informací.
 -   Poskytněte základní pracovní postupy pro sledování vyšetřování.
 -   Poskytněte snadný přístup k opravám, jako je resetování hesla.
 

@@ -1,9 +1,9 @@
 ---
-title: Jednostránková aplikace (získání tokenu pro volání rozhraní API) - platforma identit Microsoft
-description: Další informace o vytváření jednostránkové aplikace (získání tokenu pro volání rozhraní API)
+title: Jednostránkové aplikace (získání tokenu pro volání rozhraní API) – Microsoft Identity Platform
+description: Naučte se vytvářet jednostránkové aplikace (získat token pro volání rozhraní API).
 services: active-directory
 documentationcenter: dev-center-name
-author: navyasric
+author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,41 +11,41 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 08/20/2019
+ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c842db8a0874d3619e0dc59b90aa12226cb984
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f49a6093194ef76a895f2a54f8a78a55da73e7e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138822"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135715"
 ---
-# <a name="single-page-application---acquire-a-token-to-call-an-api"></a>Jednostránková aplikace – získání tokenu pro volání rozhraní API
+# <a name="single-page-application---acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace – získání tokenu pro volání rozhraní API
 
-Vzor pro získávání tokenů pro rozhraní API pomocí MSAL.js, je nejprve pokusí tiché žádosti o token pomocí `acquireTokenSilent` metody. Když tato metoda je volána, knihovně nejprve zkontroluje mezipaměti v prohlížeči úložiště existuje platný token a vrátí jej. Když neexistuje žádný platný token v mezipaměti, odešle ze skrytých iframe tiché žádosti o token do služby Azure Active Directory (Azure AD). Tato metoda také umožňuje knihovna k obnovení tokeny. Další podrobnosti o relaci přihlášení a hodnot životnosti tokenu ve službě Azure AD najdete v tématu [token doby života](active-directory-configurable-token-lifetimes.md).
+Vzor pro získání tokenů pro rozhraní API pomocí MSAL. js slouží jako první pokus o požadavek na pasivní token pomocí `acquireTokenSilent` metody. Při volání této metody knihovna nejprve zkontroluje mezipaměť v úložišti prohlížeče, aby viděli, zda existuje platný token a vrátí jej. Pokud v mezipaměti není žádný platný token, pošle se požadavek na bezobslužný token Azure Active Directory (Azure AD) ze skrytého prvku IFRAME. Tato metoda také umožňuje, aby knihovna obnovila tokeny. Další informace o relaci jednotného přihlašování a hodnotách životnosti tokenů ve službě Azure AD najdete v tématu [Životnost tokenů](active-directory-configurable-token-lifetimes.md).
 
-Tiché žádostí o token do služby Azure AD mohou být neúspěšné pro několik příčin, jako je Azure vypršela platnost relace AD nebo změnu hesla. V takovém případě můžete vyvolat jeden interaktivních metod (které se zobrazí výzva) k získání tokenů.
+Požadavky na tiché tokeny do služby Azure AD mohou selhat z některých důvodů, jako je například relace Azure AD s vypršenou platností nebo změna hesla. V takovém případě můžete vyvolat jednu z interaktivních metod (s výzvou uživatele) získat tokeny.
 
-* [Získat token se automaticky otevírané okno](#acquire-token-with-a-pop-up-window) pomocí `acquireTokenPopup`
-* [Získání tokenu s přesměrování](#acquire-token-with-redirect) pomocí `acquireTokenRedirect`
+* [Získání tokenu pomocí překryvného okna](#acquire-token-with-a-pop-up-window) pomocí`acquireTokenPopup`
+* [Získání tokenu pomocí přesměrování](#acquire-token-with-redirect)`acquireTokenRedirect`
 
-**Volba mezi automaticky otevírané okno nebo přesměrovat prostředí**
+**Volba mezi prostředím pro místní nebo přesměrování**
 
- Kombinace metod automaticky otevírané okno i přesměrování nelze použít ve vaší aplikaci. Volba mezi automaticky otevírané okno nebo přesměrovat prostředí závisí na vaší aplikace flow.
+ V aplikaci nelze použít kombinaci metod pro místní i přesměrování. Volba mezi zobrazováním překryvných nebo přesměrování závisí na toku aplikace.
 
-* Pokud nechcete, aby uživatel se přejít mimo vaše hlavní aplikace stránky během ověřování, doporučujeme použít místní metody. Protože ověřování přesměrování se děje v automaticky otevírané okno, stav hlavní aplikace se zachová.
+* Pokud nechcete, aby uživatel přešel ze stránky vaší hlavní aplikace během ověřování, doporučuje se používat místní metody. Vzhledem k tomu, že se přesměrování ověřování provádí v překryvném okně, zůstane zachován stav hlavní aplikace.
 
-* Existují určité případy, kde je nutné použít metody přesměrování. Pokud uživatelé vaší aplikace mají omezení prohlížeče nebo zásady níž jsou automaticky otevíraná okna windows zakázány, můžete použít metody přesměrování. Také se doporučuje používat metody přesměrování se prohlížeč Internet Explorer, protože existují určité [známé problémy s aplikací Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) při zpracování automaticky otevíraná okna.
+* V některých případech může být nutné použít metody přesměrování. Pokud mají uživatelé vaší aplikace omezení nebo zásady prohlížeče, kde jsou automaticky otevíraná okna zakázaná, můžete použít metody přesměrování. Doporučujeme také použít metody přesměrování v prohlížeči Internet Explorer, protože při zpracování automaticky otevíraných oken dochází k určitým [známým problémům s Internet Explorerem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) .
 
-Můžete nastavit obory API, které chcete zahrnout při sestavování žádost o přístupový token přístupový token. Všimněte si, že všechny požadované obory nemusí být udělena v přístupovém tokenu a závisí na vyjádření souhlasu uživatele.
+Můžete nastavit rozsahy rozhraní API, které má přístupový token zahrnout při vytváření žádosti o přístupový token. Všimněte si, že se v přístupovém tokenu nemůžou udělit všechny požadované obory a závisí na tom, jestli uživatel souhlasí.
 
-## <a name="acquire-token-with-a-pop-up-window"></a>Získat token se automaticky otevírané okno
+## <a name="acquire-token-with-a-pop-up-window"></a>Získání tokenu pomocí překryvného okna
 
 ### <a name="javascript"></a>JavaScript
 
-Výše uvedené způsob použití metod pro místní prostředí:
+Výše uvedený vzor pomocí metod pro místní prostředí:
 
 ```javascript
 const accessTokenRequest = {
@@ -72,9 +72,9 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 ### <a name="angular"></a>Úhlová
 
-Knihovna MSAL Angular obálky zvyšuje pohodlí přidání zachycování HTTP `MsalInterceptor` která bude automaticky tiše získat přístupové tokeny a připojit je na požadavky HTTP do rozhraní API.
+Úhlová obálka MSAL poskytuje pohodlí při přidávání zachytávací protokolem HTTP, který automaticky získá přístupové tokeny a připojí je k požadavkům HTTP na rozhraní API.
 
-Můžete určit obory pro rozhraní API v `protectedResourceMap` možnost konfigurace, která MsalInterceptor bude požadovat, když automaticky získávání tokenů.
+V `protectedResourceMap` možnosti konfigurace můžete zadat obory pro rozhraní API, které bude MsalInterceptor vyžadovat při automatickém získávání tokenů.
 
 ```javascript
 //In app.module.ts
@@ -93,7 +93,7 @@ providers: [ ProductService, {
    ],
 ```
 
-Pro úspěchy a chyby tiché získání tokenu poskytuje knihovna MSAL Angular zpětná volání, které se můžete přihlásit k odběru. Taky je dobré si uvědomit k odhlášení odběru.
+V případě úspěchu a selhání získání tichého tokenu MSAL úhlové zpětné volání, které se můžete přihlásit k odběru. Je také důležité pamatovat si předplatné.
 
 ```javascript
 // In app.component.ts
@@ -110,13 +110,13 @@ ngOnDestroy() {
  }
 ```
 
-Alternativně můžete také explicitně získat tokeny pomocí metody získání tokenu, jak je popsáno v základní knihovně MSAL.js.
+Alternativně můžete také explicitně získat tokeny pomocí metod získat token, jak je popsáno v základní knihovně MSAL. js.
 
 ## <a name="acquire-token-with-redirect"></a>Získání tokenu pomocí přesměrování
 
 ### <a name="javascript"></a>JavaScript
 
-Vzor je popsané výše ale zobrazených metodou přesměrovat k získání tokenu interaktivně. Všimněte si, že budete muset registrovat zpětné volání pro přesměrování, jak je uvedeno výše.
+Vzor je popsaný výše, ale zobrazuje se s metodou přesměrování k interaktivnímu získání tokenu. Bude nutné zaregistrovat zpětné volání přesměrování, jak je uvedeno výše.
 
 ```javascript
 function authCallback(error, response) {
@@ -142,9 +142,40 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
+## <a name="request-for-optional-claims"></a>Požadavek na volitelné deklarace identity
+V aplikaci si můžete vyžádat volitelné deklarace identity a určit tak další deklarace identity, které se mají zahrnout do tokenů pro vaši aplikaci. Aby bylo možné vyžádat volitelné deklarace identity ve službě id_token, můžete do pole claimsRequest třídy AuthenticationParameters. TS odeslat objekt deklarací dokument.
+
+Pro následující účely můžete použít volitelné deklarace identity:
+
+- Chcete-li zahrnout další deklarace identity v tokenech pro vaši aplikaci.
+- Změna chování určitých deklarací identity, které Azure AD vrací v tokenech
+- Přidejte a získejte přístup k vlastním deklaracím pro vaši aplikaci.
+
+
+### <a name="javascript"></a>JavaScript
+```javascript
+"optionalClaims":  
+   {
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": true
+             }
+      ],
+
+var request = {
+    scopes: ["user.read"],
+    claimsRequest: JSON.stringify(claims)
+};
+
+myMSALObj.acquireTokenPopup(request);
+```
+Další informace o volitelných deklaracích, rezervace [volitelných deklarací identity](active-directory-optional-claims.md)
+
+
 ### <a name="angular"></a>Úhlová
 
-To je stejný, jak je popsáno výše.
+To je stejné, jak je popsáno výše.
 
 ## <a name="next-steps"></a>Další postup
 

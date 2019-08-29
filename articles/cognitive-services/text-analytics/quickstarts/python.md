@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/28/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 3ef7f65bbb27992278eb467f840c1443ac0db0b8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725900"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135030"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
@@ -49,11 +49,20 @@ import requests
 from pprint import pprint
 ```
 
-Vytvořte proměnné pro svůj klíč předplatného a koncový bod pro Analýza textu REST API. Ověřte, že oblast v koncovém bodu odpovídá hodnotě, kterou jste použili při registraci (například `westcentralus`). Pokud používáte bezplatný zkušební klíč, nemusíte nic měnit.
+Vytvořte proměnné pro koncový bod a klíč předplatného prostředku Azure. Získejte tyto hodnoty z proměnných prostředí TEXT_ANALYTICS_SUBSCRIPTION_KEY a TEXT_ANALYTICS_ENDPOINT. Pokud jste po zahájení úprav aplikace vytvořili tyto proměnné prostředí, budete muset zavřít a znovu otevřít Editor, integrované vývojové prostředí (IDE) nebo prostředí, které používáte pro přístup k proměnným.
     
 ```python
-subscription_key = "<ADD YOUR KEY HERE>"
-text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+import os
+
+key_var_name = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TEXT_ANALYTICS_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
 Následující části popisují, jak volat jednotlivé funkce rozhraní API.
@@ -65,7 +74,7 @@ Následující části popisují, jak volat jednotlivé funkce rozhraní API.
 Připojíte `languages` se k základnímu koncovému bodu analýza textu, abyste mohli vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
     
 ```python
-language_api_url = text_analytics_base_url + "languages"
+language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
 Datová část pro rozhraní API se skládá ze seznamu `documents`, který je řazenými kolekcemi členů `id` obsahující a `text` atributem. Atribut ukládá text, který má být analyzován, `id` a může být libovolná hodnota. `text` 
@@ -134,7 +143,7 @@ pprint(languages)
 Chcete-li zjistit mínění (které rozsahy jsou kladné nebo záporné) sady dokumentů, přidejte `sentiment` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
     
 ```python
-sentiment_url = text_analytics_base_url + "sentiment"
+sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
 Stejně jako u příkladu detekce jazyka vytvořte slovník s `documents` klíčem, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z hodnot `id`, `text` (text, který se má analyzovat) a `language` (jazyk textu). 
@@ -196,7 +205,7 @@ Mínění skóre dokumentu je mezi 0,0 a 1,0 a s vyšším skóre, které signal
 Pro extrakci klíčových frází ze sady dokumentů přidejte `keyPhrases` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro zjišťování jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
     
 ```python
-keyphrase_url = text_analytics_base_url + "keyPhrases"
+keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
 Tato kolekce dokumentů se používá jako příklad analýzy mínění.
@@ -272,7 +281,7 @@ pprint(key_phrases)
 Chcete-li identifikovat známé entity (osoby, místa a věci) v textových dokumentech, přihlaste se `entities` do základního koncového bodu analýza textu, aby bylo možné vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
     
 ```python
-entities_url = text_analytics_base_url + "entities"
+entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
 Vytvořte kolekci dokumentů, jako v předchozích příkladech. 
@@ -447,7 +456,7 @@ pprint(entities)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

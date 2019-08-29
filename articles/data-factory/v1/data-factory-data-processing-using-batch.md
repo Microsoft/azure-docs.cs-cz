@@ -1,163 +1,161 @@
 ---
-title: Zpracování rozsáhlých datových sad pomocí Data Factory a Batch | Dokumentace Microsoftu
-description: Popisuje, jak zpracovat obrovská množství dat v kanálu Azure Data Factory pomocí paralelní zpracování funkce služby Azure Batch.
+title: Zpracování rozsáhlých datových sad pomocí Data Factory a dávky | Microsoft Docs
+description: Popisuje, jak zpracovávat velké objemy dat v Azure Data Factory kanálu pomocí možnosti paralelního zpracování Azure Batch.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 67829b6245fe4fea8da88c97fa8d5aeedccc90a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446612"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140038"
 ---
-# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
+# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [vlastní aktivity ve službě Data Factory](../transform-data-using-dotnet-custom-activity.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [vlastní aktivity v Data Factory](../transform-data-using-dotnet-custom-activity.md).
 
-Tento článek popisuje architekturu ukázkové řešení, která přesunu a zpracování rozsáhlých datových sad automatické a naplánovaným způsobem. Také poskytuje návod začátku do konce implementovat řešení pomocí služby Data Factory a Azure Batch.
+Tento článek popisuje architekturu ukázkového řešení, které přesouvá a zpracovává velké datové sady automaticky a naplánovaným způsobem. Poskytuje také ucelený návod k implementaci řešení pomocí Data Factory a Azure Batch.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Tento článek je delší než typické článek, protože obsahuje návod, celé ukázkové řešení. Pokud jste služby Batch a Data Factory teprve začínáte, můžete další informace o těchto službách, a jak spolu fungují. Pokud něco o službách, které znáte a jsou návrh/aplikační architektura založená na řešení, můžete se zaměřit na architekturu části tohoto článku. Pokud vytváříte prototyp nebo řešení, můžete chtít vyzkoušet podrobných pokynů v tomto návodu. Zveme komentář k tomuto obsahu a jak je používáte.
+Tento článek je delší než typický článek, protože obsahuje návod k celému ukázkovému řešení. Pokud začínáte s dávkou a Data Factory, můžete se dozvědět víc o těchto službách a o tom, jak spolu pracují. Pokud víte něco o službách a navrhujete nebo navrhujete řešení, můžete se zaměřit na část architektury článku. Pokud vyvíjíte prototyp nebo řešení, možná budete chtít vyzkoušet podrobné pokyny v tomto návodu. Vaše připomínky k tomuto obsahu a způsobu, jakým ho používáte, pozvěte.
 
-Nejprve Podívejme se na jak služby Data Factory a Batch vám může pomoci zpracování velkých datových sad v cloudu.     
+Nejdřív se podíváme na to, jak Data Factory a služba Batch vám pomůžou zpracovávat velké datové sady v cloudu.     
 
 
 ## <a name="why-azure-batch"></a>Proč Azure Batch?
- Můžete použít Batch umožňuje efektivně spouštět rozsáhlé paralelní a vysoce výkonné aplikace výpočetního prostředí (HPC) v cloudu. Je služba platformy, která plánuje výpočetně náročné práce ke spuštění ve spravované kolekci virtuálních počítačů (VM). Může automaticky škálovat výpočetní prostředky, které splňují potřeby vašich úloh.
+ Pomocí dávky můžete efektivně spouštět rozsáhlé paralelní a vysoce výkonné výpočetní aplikace (HPC) v cloudu. Jedná se o službu platformy, která plánuje spouštění práce náročné na výpočetní výkon ve spravované kolekci virtuálních počítačů (VM). Může automaticky škálovat výpočetní prostředky tak, aby splňovaly potřeby vašich úloh.
 
-Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace spustí paralelně a škálovaně. Můžete spustit na vyžádání nebo naplánované úlohy. Není nutné ručně vytvářet, konfigurovat a spravovat cluster prostředí HPC, jednotlivé virtuální počítače, virtuální sítě, nebo komplexních úloh a plánování úloh infrastruktury.
+Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace spustí paralelně a škálovaně. Můžete spouštět úlohy na vyžádání nebo naplánované úlohy. Není nutné ručně vytvářet, konfigurovat a spravovat cluster HPC, jednotlivé virtuální počítače, virtuální sítě ani složitou infrastrukturu úloh a úloh plánování úloh.
 
- Pokud nejste obeznámeni s Batch, tyto články vám pomůže porozumět architektuře/implementace řešení popsaných v tomto článku:   
+ Pokud nejste obeznámeni se službou Batch, následující články vám pomůžou pochopit architekturu a implementaci řešení popsaného v tomto článku:   
 
-* [Základy služby Batch](../../batch/batch-technical-overview.md)
+* [Základy dávky](../../batch/batch-technical-overview.md)
 * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
 
-Volitelně můžete další informace o službě Batch najdete v tématu [dokumentace ke službě Batch](https://docs.microsoft.com/azure/batch/).
+Další informace o službě Batch najdete v [dokumentaci](https://docs.microsoft.com/azure/batch/)ke službě Batch.
 
 ## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
-Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Vytvoření spravované datové kanály, které přesun dat z místních i cloudových úložišť dat do centralizovaného úložiště dat můžete použít Data Factory. Příkladem je úložiště objektů Blob v Azure. Data Factory můžete zpracovat a transformovat data pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Můžete také naplánovat datové kanály ke spuštění naplánované způsobem (například každou hodinu, každý den a jednou týdně). Můžete monitorovat a spravovat kanály, abyste mohli rozpoznat potíže a provést akci zasáhnout.
+Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Pomocí Data Factory můžete vytvářet spravované datové kanály, které přesouvají data z místních a cloudových úložišť do centralizovaného úložiště dat. Příkladem je úložiště objektů BLOB v Azure. Data Factory můžete použít ke zpracování nebo transformaci dat pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Datové kanály můžete také naplánovat tak, aby běžely naplánovaným způsobem (například každou hodinu, denně a týdně). Pokud chcete identifikovat problémy a provést akci, můžete kanály na první pohled monitorovat a spravovat.
 
-  Pokud nejste obeznámeni s Data Factory, tyto články vám pomůže porozumět architektuře/implementace řešení popsaných v tomto článku:  
+  Pokud nejste obeznámeni s Data Factory, následující články vám pomůžou pochopit architekturu a implementaci řešení popsaného v tomto článku:  
 
-* [Úvod do služby Data Factory](data-factory-introduction.md)
-* [Vytvoření prvního kanálu dat](data-factory-build-your-first-pipeline.md)   
+* [Úvod do Data Factory](data-factory-introduction.md)
+* [Sestavení prvního datového kanálu](data-factory-build-your-first-pipeline.md)   
 
-Volitelně můžete další informace o službě Data Factory najdete v tématu [dokumentace ke službě Data Factory](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
+Pokud chcete získat další informace o Data Factory, přečtěte si [dokumentaci Data Factory](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
 
-## <a name="data-factory-and-batch-together"></a>Data Factory a Batch najednou
-Data Factory obsahuje zabudované aktivity. Například aktivita kopírování umožňuje kopírování a přesouvání dat ze zdrojového úložiště dat do cílového úložiště dat. Aktivita Hive se používá ke zpracování dat s využitím clusterů Hadoop (HDInsight) v Azure. Seznam aktivit transformace podporované, najdete v části [aktivity transformace dat](data-factory-data-transformation-activities.md).
+## <a name="data-factory-and-batch-together"></a>Data Factory a Batch společně
+Data Factory obsahuje integrované aktivity. Například aktivita kopírování se používá pro kopírování a přesun dat ze zdrojového úložiště dat do cílového úložiště dat. Aktivita podregistru se používá ke zpracování dat pomocí clusterů Hadoop (HDInsight) v Azure. Seznam podporovaných transformačních aktivit najdete v tématu [aktivity transformace dat](data-factory-data-transformation-activities.md).
 
-Můžete také vytvořit vlastní aktivity .NET se přesunout nebo zpracování dat pomocí vlastní logiky. Tyto aktivity můžete spustit v clusteru HDInsight nebo ve fondu Batch virtuálních počítačů. Při použití služby Batch můžete vytvořit fond pro automatické škálování (Přidání nebo odebrání na základě příslušného zatížení virtuálních počítačů) na základě vzorce je zadat.     
+Můžete také vytvořit vlastní aktivity rozhraní .NET pro přesun nebo zpracování dat pomocí vlastní logiky. Tyto aktivity můžete spustit na clusteru HDInsight nebo ve fondu služby Batch virtuálních počítačů. Když použijete Batch, můžete nakonfigurovat fond na automatické škálování (přidání nebo odebrání virtuálních počítačů založených na úlohách) na základě vzorce, který zadáte.     
 
-## <a name="architecture-of-a-sample-solution"></a>Architektura ukázkové řešení
-  Architektura popsaných v tomto článku je jednoduché řešení. Také je relevantní pro komplexní scénáře, jako je modelování finančních služeb, zpracování obrázků a vykreslování a genomický analýzy rizik.
+## <a name="architecture-of-a-sample-solution"></a>Architektura ukázkového řešení
+  Architektura popsaná v tomto článku je určena pro jednoduché řešení. Také se týká složitých scénářů, jako jsou například modelování rizik podle finančních služeb, zpracování a vykreslování obrázků a analýza genomu.
 
-Diagram znázorňuje, jak Data Factory orchestruje přesun dat a zpracování. Profil také ukazuje, jak Batch zpracovává data paralelní způsobem. Stáhnout a vytisknout diagram pro snadné odkazování (11 × 17 palců nebo velikost A3). Pro přístup k diagramu tak, aby jej vytisknout, naleznete v tématu [HPC a Orchestrace dat pomocí služby Batch a Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
+Diagram znázorňuje, jak Data Factory orchestruje přesun a zpracování dat. Také ukazuje, jak Batch zpracovává data paralelně. Tento diagram si můžete stáhnout a vytisknout pro snadné odkazy (velikost 11 × 17 palců nebo a3). Chcete-li získat přístup k diagramu, abyste ho mohli vytisknout, přečtěte si téma [HPC a orchestrace dat pomocí Batch a Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Diagram rozsáhlé zpracování dat](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[![Diagram zpracování velkých objemů dat](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
-Následující seznam uvádí základní kroky procesu. Toto řešení zahrnuje kód a vysvětlení, k vytvoření řešení začátku do konce.
+Následující seznam uvádí základní kroky procesu. Řešení obsahuje kód a vysvětlení pro sestavení komplexního řešení.
 
-* **Nakonfigurujte službu Batch k fondu výpočetních uzlů (virtuálních počítačů).** Můžete určit počet uzlů a velikost každého uzlu.
+* **Nakonfigurujte dávku s fondem výpočetních uzlů (virtuálních počítačů).** Můžete zadat počet uzlů a velikost jednotlivých uzlů.
 
-* **Vytvoření instance služby Data Factory** , který je nakonfigurovaný s entitami, které představují úložiště objektů blob, služba Batch výpočetní prostředky, vstupní a výstupní data a pracovního postupu a kanál pomocí aktivity, které přesouvají a transformují data.
+* **Vytvořte instanci Data Factory** , která je nakonfigurovaná s entitami, které reprezentují úložiště objektů blob, služby Batch COMPUTE, vstupní/výstupní data a pracovní postup nebo kanál s aktivitami, které přesouvají a transformují data.
 
-* **Vytvořte vlastní aktivitu .NET v kanálu služby Data Factory.** Aktivita je váš uživatelský kód, který běží na fondu služby Batch.
+* **Vytvořte vlastní aktivitu .NET v kanálu Data Factory.** Aktivita je váš uživatelský kód, který běží ve fondu služby Batch.
 
-* **Store velké množství vstupních dat jako objekty BLOB ve službě Azure Storage.** Data rozdělená do logické kolekce obsahuje nějaké řezy (obvykle podle času).
+* **Ukládejte velké objemy vstupních dat jako objekty BLOB v Azure Storage.** Data jsou rozdělena do logických řezů (obvykle podle času).
 
-* **Data Factory kopíruje data, která se zpracovává paralelně** do sekundárního umístění.
+* **Data Factory kopíruje data zpracovaná paralelně** do sekundárního umístění.
 
-* **Data Factory vlastní aktivita běží za použití fondu přidělené službou Batch.** Data Factory můžou běžet souběžně aktivity. Každá aktivita zpracuje určitý řez data. Výsledky jsou uloženy v úložišti.
+* **Data Factory spustí vlastní aktivitu pomocí fondu přiděleného službou Batch.** Data Factory může spouštět aktivity souběžně. Každá aktivita zpracovává řez dat. Výsledky jsou uloženy v úložišti.
 
-* **Data Factory přesune konečných výsledků do třetí umístění** buď pro distribuci přes aplikaci nebo pro další zpracování v jiných nástrojích.
+* **Data Factory přesune konečné výsledky do třetího umístění,** a to buď pro distribuci prostřednictvím aplikace, nebo pro další zpracování jinými nástroji.
 
-## <a name="implementation-of-the-sample-solution"></a>Provádění ukázkové řešení
-Ukázkové řešení je záměrně jednoduchá. Je navržena tak, aby ukazují, jak pomocí služby Data Factory a Batch společně s datovými sadami procesu. Řešení se počítá počet výskytů prvku hledaný termín "Microsoft" ve vstupních souborů, které jsou uspořádány v časové řadě. Potom vypíše počet výstupních souborů.
+## <a name="implementation-of-the-sample-solution"></a>Implementace ukázkového řešení
+Ukázkové řešení je záměrně jednoduché. Je navržený tak, aby vám ukázal, jak používat Data Factory a Batch společně ke zpracování datových sad. Řešení spočítá počet výskytů hledaného výrazu "Microsoft" ve vstupních souborech, které jsou uspořádány v časové řadě. Pak tento počet vypíše do výstupních souborů.
 
-**Čas:** Pokud jste se seznámili se základními funkcemi Azure Data Factory a Batch a dokončili následující požadavky, toto řešení má jedné až dvou hodin.
+**Interval** Pokud jste obeznámeni se základy Azure, Data Factory a Batch a dokončili jste následující požadavky, bude dokončení tohoto řešení trvat jednu až dvě hodiny.
 
 ### <a name="prerequisites"></a>Požadavky
 #### <a name="azure-subscription"></a>Předplatné Azure
-Pokud nemáte předplatné Azure, můžete rychle vytvořit Bezplatný zkušební účet. Další informace najdete v tématu [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+Pokud nemáte předplatné Azure, můžete rychle vytvořit bezplatný zkušební účet. Další informace najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Účet služby Azure Storage
-K uložení dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md). Ukázkové řešení využívá úložiště objektů blob.
+K ukládání dat v tomto kurzu použijete účet úložiště. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Ukázkové řešení využívá úložiště objektů BLOB.
 
 #### <a name="azure-batch-account"></a>Účet Azure Batch
-Vytvoření účtu Batch pomocí [webu Azure portal](https://portal.azure.com/). Další informace najdete v tématu [vytvořit a spravovat účty Batch](../../batch/batch-account-create-portal.md). Poznámka: Batch účtu název a klíč účtu. Můžete také použít [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) rutina pro vytvoření účtu Batch. Pokyny k používání této rutiny najdete v tématu [Začínáme s rutinami Powershellu ve službě Batch](../../batch/batch-powershell-cmdlets-get-started.md).
+Vytvořte účet Batch pomocí [Azure Portal](https://portal.azure.com/). Další informace najdete v tématu [Vytvoření a Správa účtu Batch](../../batch/batch-account-create-portal.md). Poznamenejte si název účtu Batch a klíč účtu. K vytvoření účtu Batch taky můžete použít rutinu [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) . Pokyny k použití této rutiny najdete v tématu [Začínáme s rutinami PowerShellu pro Batch](../../batch/batch-powershell-cmdlets-get-started.md).
 
-Ukázkové řešení Batch (nepřímo prostřednictvím kanálu datové továrny) používá ke zpracování dat paralelní způsobem ve fondu výpočetních uzlů (spravované kolekce virtuálních počítačů).
+Ukázkové řešení používá dávku (nepřímo prostřednictvím kanálu Data Factory) k paralelnímu zpracování dat ve fondu výpočetních uzlů (spravovaná kolekce virtuálních počítačů).
 
-#### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch pool virtuálních počítačů
-Vytvoření fondu služby Batch s výpočetními uzly měly aspoň dva.
+#### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch fond virtuálních počítačů
+Vytvořte fond Batch s aspoň dvěma výpočetními uzly.
 
-1. V [webu Azure portal](https://portal.azure.com)vyberte **Procházet** v levé nabídce a vyberte **účty Batch**.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **Procházet** a vyberte **účty Batch**.
 
-1. Vyberte svůj účet Batch **účtu Batch** okno.
+1. Vyberte účet Batch a otevřete okno **účtu Batch** .
 
-1. Vyberte **fondy** dlaždici.
+1. Vyberte dlaždici **fondy** .
 
-1. Na **fondy** okno, vyberte **přidat** tlačítko na panelu nástrojů a přidání fondu.
+1. V okně **fondy** vyberte tlačítko **Přidat** na panelu nástrojů a přidejte fond.
 
-   a. Zadejte ID fondu (**ID fondu**). Poznamenejte si ID fondu. Budete ho potřebovat při vytváření řešení data factory.
+   a. Zadejte ID fondu (**ID fondu**). Poznamenejte si ID fondu. Budete je potřebovat při vytváření řešení Data Factory.
 
-   b. Zadejte **systému Windows Server 2012 R2** pro **operační systém řady** nastavení.
+   b. Pro nastavení **řady operačních systémů** zadejte **Windows Server 2012 R2** .
 
-   c. Vyberte **cenové úrovně uzlů**.
+   c. Vyberte **cenovou úroveň uzlu**.
 
-   d. Zadejte **2** hodnotu **cílové vyhrazené** nastavení.
+   d. Jako hodnotu pro **vyhrazené nastavení cíle** zadejte **2** .
 
-   e. Zadejte **2** hodnotu **maximální počet úkolů na uzel** nastavení.
+   e. Jako hodnotu pro nastavení **maximální počet úkolů na uzel** zadejte **2** .
 
-   f. Vyberte **OK** vytvoříte fond.
+   f. Vyberte **OK** a vytvořte fond.
 
 #### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Použijete [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) nebo [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (od společnosti ClumsyLeaf Software) ke kontrole a měnit data ve vašich projektech úložiště. Také můžete zkontrolovat a změnit data v protokolech aplikací hostovaných v cloudu.
+Pro kontrolu a změnu dat v projektech úložiště slouží [Průzkumník služby Azure Storage 6](https://azurestorageexplorer.codeplex.com/) nebo [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ze softwaru ClumsyLeaf). Můžete také zkontrolovat a změnit data v protokolech aplikací hostovaných v cloudu.
 
-1. Vytvořte kontejner s názvem **mycontainer** s přístupem k privátní (bez anonymního přístupu).
+1. Vytvořte kontejner s názvem **myContainer** s privátním přístupem (bez anonymního přístupu).
 
 1. Pokud používáte CloudXplorer, vytvořte složky a podsložky s následující strukturou:
 
-   ![Struktura složky a podsložky](./media/data-factory-data-processing-using-batch/image3.png)
+   ![Struktura složek a podsložek](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder` a `outputfolder` jsou složky nejvyšší úrovně v `mycontainer`. `inputfolder` Složka obsahuje podsložky razítka data a času (rrrr-MM-DD-HH).
+   `Inputfolder`a `outputfolder` jsou složky nejvyšší úrovně v `mycontainer`. `inputfolder` Složka má podsložky s časovými razítky (rrrr-mm-dd-HH).
 
-   Pokud používáte Průzkumníka služby Storage, v dalším kroku, nahrávání souborů s následujícími názvy: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, a tak dále. Tento krok vytvoří automaticky složky.
+   Použijete-li Průzkumník služby Storage, nahrajete v dalším kroku soubory s následujícími názvy: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, a tak dále. Tento krok automaticky vytvoří složky.
 
-1. Vytvořte textový soubor **soubor.txt** na svém počítači s obsahem, který obsahuje klíčové slovo **Microsoft**. Příkladem je "testovací vlastní aktivity Microsoft vlastní aktivity testu Microsoft."
+1. Vytvořte na svém počítači textový soubor **soubor. txt** s obsahem, který má klíčové slovo **Microsoft**. Příkladem je "test vlastní aktivity Microsoft Test Custom Activity Microsoft."
 
-1. Nahrajte soubor do následující vstupní složky v úložišti objektů blob:
+1. Nahrajte soubor do následujících vstupních složek v úložišti objektů BLOB:
 
    ![Vstupní složky](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Pokud používáte Průzkumníka služby Storage, nahrajte **soubor.txt** do souboru **mycontainer**. Vyberte **kopírování** na panelu nástrojů a vytvořte kopii objektu blob. V **objekt Blob kopírování** dialogovém okně Změnit **název cílové objektů blob** k `inputfolder/2015-11-16-00/file.txt`. Opakujte tento krok k vytvoření `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt`, a tak dále. Tato akce automaticky vytvoří složky.
+   Pokud používáte Průzkumník služby Storage, nahrajte soubor **File. txt** do **myContainer**. Na panelu nástrojů vyberte možnost **Kopírovat** a vytvořte kopii objektu BLOB. V dialogovém okně **Kopírovat objekt BLOB** změňte **cílový název objektu BLOB** na `inputfolder/2015-11-16-00/file.txt`. Opakováním tohoto kroku vytvořte `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt` `inputfolder/2015-11-16-04/file.txt`, a tak dále. Tato akce automaticky vytvoří složky.
 
-1. Vytvořit jiný kontejner s názvem `customactivitycontainer`. Nahrajte soubor zip vlastní aktivity do tohoto kontejneru.
+1. Vytvořte další kontejner s `customactivitycontainer`názvem. Nahrajte do tohoto kontejneru soubor zip vlastní aktivity.
 
 #### <a name="visual-studio"></a>Visual Studio
-Instalace sady Visual Studio 2012 nebo novějším k vytvoření vlastní aktivity služby Batch pro použití v řešení data factory.
+Nainstalujte Visual Studio 2012 nebo novější a vytvořte tak vlastní aktivitu Batch, která se má použít v řešení Data Factory.
 
-### <a name="high-level-steps-to-create-the-solution"></a>Základní kroky pro vytvoření řešení
+### <a name="high-level-steps-to-create-the-solution"></a>Kroky vysoké úrovně pro vytvoření řešení
 1. Vytvořte vlastní aktivitu, která obsahuje logiku zpracování dat.
 
-1. Vytvoření datové továrny, který používá vlastní aktivity.
+1. Vytvořte datovou továrnu, která používá vlastní aktivitu.
 
 ### <a name="create-the-custom-activity"></a>Vytvoření vlastní aktivity
-Vlastní aktivita objekt pro vytváření dat je srdcem toto ukázkové řešení. Ukázkové řešení Batch používá ke spuštění vlastní aktivity. Informace o tom, jak vyvinout vlastní aktivity a jejich použití v kanálech data factory najdete v tématu [použití vlastních aktivit v kanálech data factory](data-factory-use-custom-activities.md).
+Vlastní aktivita Data Factory je srdcem tohoto ukázkového řešení. Ukázkové řešení používá dávku ke spuštění vlastní aktivity. Informace o vývoji vlastních aktivit a jejich použití v kanálech služby Data Factory najdete v tématu [použití vlastních aktivit v kanálu služby Data Factory](data-factory-use-custom-activities.md).
 
-Pokud chcete vytvořit vlastní aktivitu .NET, který vám pomůže v kanálech data factory, vytvoříte projekt knihovny tříd .NET vytvoříte třídou, která implementuje rozhraní IDotNetActivity. Toto rozhraní obsahuje pouze jednu metodu: Spusťte. Následuje podpis metody:
+Chcete-li vytvořit vlastní aktivitu rozhraní .NET, kterou můžete použít v kanálu datové továrny, vytvořte projekt knihovny tříd .NET s třídou, která implementuje rozhraní IDotNetActivity. Toto rozhraní má pouze jednu metodu: Spustit. Zde je podpis metody:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -167,46 +165,46 @@ public IDictionary<string, string> Execute(
             IActivityLogger logger)
 ```
 
-Tato metoda má několik klíčových komponent, které je třeba porozumět:
+Tato metoda má několik klíčových součástí, které je třeba pochopit:
 
-* Tato metoda přebírá čtyři parametry:
+* Metoda přijímá čtyři parametry:
 
-  * **linkedServices**. Tento parametr je výčtový seznam propojených služeb, které jsou propojeny vstupní a výstupní data zdroje (například služby blob storage) do služby data factory. V této ukázce je pouze jeden propojené služby typu Azure Storage používají pro vstup a výstup.
-  * **datové sady**. Tento parametr je výčtový seznam datových sad. Tento parametr slouží k získání umístění a schémata definované vstupní a výstupní datové sady.
-  * **aktivita**. Tento parametr představuje aktuální entitu výpočetní prostředky. V takovém případě je služba Batch.
-  * **Protokolovací nástroj**. Protokolovací nástroj můžete použít k zápisu ladění komentáře povrchu jako protokol "User" pro kanál.
-* Metoda vrací slovník, který je možné zřetězit vlastních aktivit v budoucnu. Tato funkce není dosud implementována, tak, aby prázdný slovník vrácení z metody.
+  * **linkedServices**. Tento parametr je Výčtový seznam propojených služeb, které propojí vstupní a výstupní zdroje dat (například BLOB Storage) s datovou továrnou. V této ukázce je k dispozici pouze jedna propojená služba typu Azure Storage použitá pro vstup i výstup.
+  * **datové sady**. Tento parametr je Výčtový seznam datových sad. Tento parametr můžete použít k získání umístění a schémat definovaných vstupními a výstupními datovými sadami.
+  * **aktivita**. Tento parametr představuje aktuální výpočetní entitu. V tomto případě se jedná o službu Batch.
+  * **protokolovací**nástroj. Pomocí protokolovacího nástroje můžete zapsat komentáře k ladění, které jsou pro kanál v protokolu "uživatel".
+* Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit společně v budoucnu. Tato funkce ještě není implementovaná, takže jednoduše z metody vrátíte prázdný slovník.
 
-#### <a name="procedure-create-the-custom-activity"></a>Postup: Vytvoření vlastní aktivity
-1. Vytvořte projekt knihovny tříd .NET v sadě Visual Studio.
+#### <a name="procedure-create-the-custom-activity"></a>Psaný Vytvoření vlastní aktivity
+1. Vytvořte projekt knihovny tříd .NET v aplikaci Visual Studio.
 
-   a. Start Visual Studio 2012/2013/2015.
+   a. Spusťte Visual Studio 2012/2013/2015.
 
    b. Vyberte **Soubor** > **Nový** > **Projekt**.
 
-   c. Rozbalte **šablony**a vyberte **Visual C\#** . V tomto názorném postupu použijete C\#, ale můžete použít libovolný jazyk .NET k vývoji vlastní aktivity.
+   c. Rozbalte **šablony**a vyberte **Visual C\#** . V tomto návodu použijete C\#, ale můžete použít libovolný jazyk .NET k vývoji vlastní aktivity.
 
-   d. Vyberte **knihovny tříd** ze seznamu typů projektů napravo.
+   d. V seznamu typů projektů napravo vyberte **Knihovna tříd** .
 
-   e. Zadejte **MyDotNetActivity** pro **název**.
+   e. Jako **název**zadejte **MyDotNetActivity** .
 
-   f. Vyberte **C:\\ADF** pro **umístění**. Vytvořit složku **ADF** Pokud neexistuje.
+   f. Jako **umístění**vyberte **\\C: ADF** . Vytvořte **ADF** složky, pokud neexistuje.
 
    g. Vyberte **OK** pro vytvoření projektu.
 
-1. Vyberte **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
+1. Vyberte **nástroje** > **správce**balíčků NuGet konzola správce balíčků. > 
 
-1. V konzole Správce balíčků spustíte následující příkaz k importu Microsoft.Azure.Management.DataFactories:
+1. V konzole správce balíčků spusťte následující příkaz pro import Microsoft. Azure. Management. datafactorys:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-1. Import **služby Azure Storage** balíček NuGet do projektu. Tento balíček musíte, protože v této ukázce použijete rozhraní API pro úložiště objektů Blob:
+1. Importujte balíček NuGet **Azure Storage** do projektu. Tento balíček budete potřebovat, protože v této ukázce použijete rozhraní Blob Storage API:
 
     ```powershell
     Install-Package Az.Storage
     ```
-1. Přidejte následující direktivy using pro zdrojový soubor v projektu:
+1. Do zdrojového souboru v projektu přidejte následující direktivy using:
 
     ```csharp
     using System.IO;
@@ -220,17 +218,17 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-1. Změňte název oboru názvů **MyDotNetActivityNS**.
+1. Změňte název oboru názvů na **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-1. Změnit název třídy, která se **MyDotNetActivity**a jsou odvozeny z **IDotNetActivity** rozhraní, jak je znázorněno:
+1. Změňte název třídy na **MyDotNetActivity**a odvodit ji z rozhraní **IDotNetActivity** , jak je znázorněno níže:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-1. Implementace (Přidat) **Execute** metodu **IDotNetActivity** rozhraní při **MyDotNetActivity** třídy. Zkopírujte následující vzorový kód k metodě. Vysvětlení logikou používanou v této metodě, najdete v článku [metodu Execute](#execute-method) oddílu.
+1. Implementujte (přidejte) metodu **Execute** rozhraní **IDotNetActivity** do třídy **MyDotNetActivity** . Zkopírujte následující vzorový kód do metody. Vysvětlení logiky použité v této metodě naleznete v části [Metoda Execute](#execute-method) .
 
     ```csharp
     /// <summary>
@@ -312,7 +310,7 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
        return new Dictionary<string, string>();
     }
     ```
-1. Přidejte následující metody helper pro třídu. Tyto metody jsou vyvolány **Execute** metody. Nejdůležitější, **Calculate** metoda izoluje kód, který prochází každý objekt blob.
+1. Do třídy přidejte následující pomocné metody. Tyto metody jsou vyvolány metodou **Execute** . Nejdůležitější, metoda **výpočtu** izoluje kód, který projde každým objektem BLOB.
 
     ```csharp
     /// <summary>
@@ -381,7 +379,7 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
        return output;
     }
     ```
-    Metoda GetFolderPath vrací cestu ke složce, která datová sada odkazuje na a GetFileName metoda vrátí název souboru objektu blob nebo odkazující na datovou sadu.
+    Metoda GetFolderPath vrací cestu ke složce, na kterou datová sada odkazuje, a metoda getfiletable vrátí název objektu BLOB nebo souboru, na který datová sada odkazuje.
 
     ```csharp
 
@@ -394,22 +392,22 @@ Tato metoda má několik klíčových komponent, které je třeba porozumět:
             "folderPath": "mycontainer/inputfolder/{Year}-{Month}-{Day}-{Hour}",
     ```
 
-    Metoda Calculate vypočítá počet instancí – klíčové slovo "Microsoft" ve vstupních souborů (objekty BLOB ve složce). Hledaný termín "Microsoft" je pevně zakódovaný v kódu.
+    Metoda výpočtu vypočítá počet instancí klíčového slova "Microsoft" ve vstupních souborech (objekty blob ve složce). Hledaný termín "Microsoft" je pevně kódovaný v kódu.
 
-1. Zkompilujte projekt. Vyberte **sestavení** z nabídky a pak vyberte **sestavit řešení**.
+1. Zkompilujte projekt. V nabídce vyberte **sestavení** a pak vyberte **Sestavit řešení**.
 
-1. Spusťte Windows Explorer a přejděte k **bin\\ladění** nebo **bin\\release** složky. Výběr složky závisí na typu sestavení.
+1. Spusťte Průzkumníka Windows a otevřete složku pro **\\** **\\ladění** nebo vydanou přihrádku. Volba složky závisí na typu sestavení.
 
-1. Vytvořte soubor zip **MyDotNetActivity.zip** , která obsahuje všechny binární soubory v  **\\bin\\ladění** složky. Můžete chtít zahrnout MyDotNetActivity. **pdb** souboru tak, aby získat další podrobnosti, jako je číslo řádku ve zdrojovém kódu, která způsobila problém, když dojde k chybě.
+1. Vytvořte soubor zip **MyDotNetActivity. zip** , který obsahuje všechny binární soubory ve  **\\složce ladění bin\\** . Možná budete chtít zahrnout MyDotNetActivity. soubor **PDB** , který vám umožní získat další podrobnosti, jako je číslo řádku ve zdrojovém kódu, který způsobil problém při výskytu chyby.
 
    ![Seznam složek bin\Debug](./media/data-factory-data-processing-using-batch/image5.png)
 
-1. Nahrát **MyDotNetActivity.zip** jako objekt blob do kontejneru objektů blob `customactivitycontainer` ve službě blob storage, StorageLinkedService propojenou službu v objektu ADFTutorialDataFactory používá. Vytvořit kontejner objektů blob `customactivitycontainer` Pokud ještě neexistuje.
+1. Nahrajte **MyDotNetActivity. zip** jako objekt blob do kontejneru `customactivitycontainer` objektů BLOB v úložišti objektů blob, který používá propojená služba StorageLinkedService v ADFTutorialDataFactory. Vytvořte kontejner `customactivitycontainer` objektů blob, pokud ještě neexistuje.
 
 #### <a name="execute-method"></a>Execute – metoda
-Tato část obsahuje bližší informace o kódu v metodě Execute.
+V této části najdete další podrobnosti o kódu v metodě Execute.
 
-1. Členy pro iterace v rámci vstupní kolekce se nacházejí v [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) oboru názvů. Pro iteraci prostřednictvím kolekce objektů blob, je nutné použít **BlobContinuationToken** třídy. V podstatě je nutné použít DNT-při smyčky s tokenem jako mechanismus pro ukončení opakování. Další informace najdete v tématu [použití Blob storage pomocí technologie .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Základní smyčky je znázorněna zde:
+1. Členy pro iteraci přes vstupní kolekci najdete v oboru názvů [Microsoft. windowsazure. Storage. blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) . Chcete-li iterovat v kolekci objektů blob, je nutné použít třídu **BlobContinuationToken** . V podstatě je nutné použít smyčku Loop s tokenem jako mechanismus pro ukončení smyčky. Další informace najdete v tématu [použití služby Blob Storage z rozhraní .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Základní smyčka je znázorněna zde:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,47 +430,47 @@ Tato část obsahuje bližší informace o kódu v metodě Execute.
     } while (continuationToken != null);
 
     ```
-   Další informace najdete v tématu v dokumentaci [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metody.
+   Další informace najdete v dokumentaci k metodě [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) .
 
-1. Kód pro práci prostřednictvím sady objektů BLOB logicky přejde v rámci provést-smyčku while. V **Execute** metody, provést – zatímco smyčka projde seznam objektů blob pro metodu s názvem **Calculate**. Metoda vrátí řetězcovou proměnnou s názvem **výstup** , který je výsledkem by bylo provést iteraci pomocí všech objektů BLOB v segmentu.
+1. Kód pro práci prostřednictvím sady objektů BLOB logicky směřuje ve smyčce do-while. V metodě **Execute** projde smyčka do-while seznam objektů blob do metody s názvem **Vypočítat**. Metoda vrátí řetězcovou proměnnou s názvem **Output** , která je výsledkem iterace všemi objekty BLOB v segmentu.
 
-   Vrátí počet výskytů prvku hledaný termín, který je předán "Microsoft" v objektu blob **Calculate** metody.
+   Vrátí počet výskytů hledaného výrazu "Microsoft" v objektu BLOB předané metodě **výpočtu** .
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-1. Po **Calculate** dokončení metody musí být napsané pro nový objekt blob. Pro každou sadu objektů BLOB zpracovat je možné zapsat nový objekt blob s výsledky. Pokud chcete uložit nový objekt blob, vyhledejte nejdříve výstupní datovou sadu.
+1. Po dokončení metody **výpočtu** je nutné ji zapsat do nového objektu BLOB. U každé zpracované sady objektů BLOB může být do výsledků zapisován nový objekt BLOB. Chcete-li zapisovat do nového objektu blob, nejprve najděte výstupní datovou sadu.
 
     ```csharp
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-1. Kód také volá metodu helper **GetFolderPath** načíst cestu ke složce (název kontejneru úložiště).
+1. Kód také volá pomocnou metodu **GetFolderPath** , která načte cestu ke složce (název kontejneru úložiště).
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   Metoda GetFolderPath Přetypuje objekt datové sady, který má AzureBlobDataSet, který má vlastnost s názvem FolderPath.
+   Metoda GetFolderPath přetypování objektu DataSet na AzureBlobDataSet, který má vlastnost s názvem FolderPath.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FolderPath;
     ```
-1. Kód volá **GetFileName** metody k získání názvu souboru (název objektu blob). Kód je podobný jako předchozí kód, který byl použit k získání cesty ke složce.
+1. Kód volá metodu **Getfiletable** , aby získal název souboru (název objektu BLOB). Kód je podobný předchozímu kódu, který byl použit k získání cesty ke složce.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FileName;
     ```
-1. Název souboru je zapsán tak, že vytvoříte objekt identifikátoru URI. Identifikátor URI konstruktor používá **BlobEndpoint** vlastnost vrátí název kontejneru. Název složky a cesta k souboru se přidají k sestavení kompletních identifikátor URI objektu blob výstup.  
+1. Název souboru je napsán vytvořením objektu identifikátoru URI. Konstruktor identifikátoru URI používá vlastnost **BlobEndpoint** k vrácení názvu kontejneru. K vytvoření výstupního identifikátoru URI objektu BLOB se přidá cesta ke složce a název souboru.  
 
     ```csharp
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-1. Po zapsání název souboru, můžete napsat výstupní řetězec z **Calculate** metodu pro nový objekt blob:
+1. Po zapsání názvu souboru můžete zapsat výstupní řetězec z metody **výpočtu** do nového objektu BLOB:
 
     ```csharp
     // Create a blob and upload the output text.
@@ -482,11 +480,11 @@ Tato část obsahuje bližší informace o kódu v metodě Execute.
     ```
 
 ### <a name="create-the-data-factory"></a>Vytvoření datové továrny
-V [vytvořit vlastní aktivitu](#create-the-custom-activity) oddílu, můžete vytvořit vlastní aktivitu a nahraný soubor zip s binárními soubory a souboru PDB do kontejneru objektů blob. V této části vytvoříte datovou továrnu s kanálem, který používá vlastní aktivity.
+V části [Vytvoření vlastní aktivity](#create-the-custom-activity) jste vytvořili vlastní aktivitu a nahráli soubor zip s binárními soubory a souborem pdb do kontejneru objektů BLOB. V této části vytvoříte datovou továrnu s kanálem, který používá vlastní aktivitu.
 
-Vstupní datová sada pro vlastní aktivity představuje (soubory) objektů BLOB ve vstupní složce (`mycontainer\\inputfolder`) ve službě blob storage. Představuje výstupní datovou sadu aktivity výstupních objektů BLOB ve výstupní složce (`mycontainer\\outputfolder`) ve službě blob storage.
+Vstupní datová sada pro vlastní aktivitu představuje objekty BLOB (soubory) ve vstupní složce (`mycontainer\\inputfolder`) ve službě BLOB Storage. Výstupní datová sada pro aktivitu představuje výstupní objekty blob ve výstupní složce (`mycontainer\\outputfolder`) ve službě BLOB Storage.
 
-Přetáhněte jeden nebo více souborů do vstupní složky:
+Přetáhněte jeden nebo více souborů do vstupních složek:
 
 ```
 mycontainer -\> inputfolder
@@ -497,21 +495,21 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-Na všech složkách, třeba vyřaďte jeden soubor (soubor.txt) s následujícím obsahem:
+Například umístěte jeden soubor (soubor. txt) do každé složky s následujícím obsahem:
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Každá vstupní složky odpovídá řezu v objektu pro vytváření dat i v případě, že složka obsahuje dva nebo více souborů. Když každý řez je zpracován kanálem, vlastní aktivita Iteruje přes všechny objekty BLOB ve vstupní složce pro tento řez.
+Každá vstupní složka odpovídá řezu v datové továrně, a to i v případě, že složka obsahuje dva nebo více souborů. Když kanál zpracovává jednotlivé řezy, prochází vlastní aktivita všemi objekty blob ve vstupní složce pro daný řez.
 
-Uvidíte pět výstupní soubory se stejným obsahem. Například výstupní soubor pro zpracování souboru ve složce 2015-11-16-00 má následující obsah:
+Vidíte pět výstupních souborů se stejným obsahem. Například výstupní soubor ze zpracování souboru ve složce 2015-11-16-00 má následující obsah:
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
 ```
 
-Pokud je do vstupní složky vyřadit více souborů (soubor.txt, Soubor2.txt, file3.txt) se stejným obsahem, viz následující obsah do výstupního souboru. Všechny složky (2015-11-16-00 atd.) odpovídá řezu v této ukázce i v případě, že složka obsahuje více vstupních souborů.
+Pokud vyřadíte více souborů (soubor. txt, soubor2. txt, file3. txt) se stejným obsahem do vstupní složky, ve výstupním souboru se zobrazí následující obsah. Každá složka (2015-11-16-00 atd.) odpovídá řezu v této ukázce, i když má složka více vstupních souborů.
 
 ```csharp
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
@@ -519,89 +517,89 @@ Pokud je do vstupní složky vyřadit více souborů (soubor.txt, Soubor2.txt, f
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file3.txt.
 ```
 
-Výstupní soubor má tři řádky, jeden pro každý vstupní soubor (blob) ve složce přidružené řez (2015-11-16-00).
+Výstupní soubor má nyní tři řádky, jeden pro každý vstupní soubor (objekt BLOB) ve složce přidružené k řezu (2015-11-16-00).
 
-Pro každé spuštění aktivity se vytvoří úkol. V této ukázce je pouze jedna aktivita v kanálu. Pokud kanál je zpracován určitý řez, vlastní aktivita spouští v dávkové zpracování řezu. Protože je pět řezů (každý řez může mít více objektů BLOB nebo soubor), se vytvoří pět úkolů ve službě Batch. Když je úkol spuštěn v Batch, je vlastní aktivity, na kterém běží.
+Úkol se vytvoří pro každý běh aktivity. V této ukázce je v kanálu jenom jedna aktivita. Při zpracování řezu kanálem se vlastní aktivita spustí v dávce za účelem zpracování řezu. Vzhledem k tomu, že existuje pět řezů (každý řez může mít více objektů BLOB nebo souborů), v dávce se vytvoří pět úkolů. Když je úloha spuštěna v dávce, jedná se o vlastní aktivitu, která je spuštěná.
 
-Následující návod poskytuje další podrobnosti.
+Další podrobnosti najdete v následujícím návodu.
 
 #### <a name="step-1-create-the-data-factory"></a>Krok 1: Vytvoření datové továrny
-1. Po přihlášení k [webu Azure portal](https://portal.azure.com/), proveďte následující kroky:
+1. Po přihlášení k [Azure Portal](https://portal.azure.com/)proveďte následující kroky:
 
-   a. Vyberte **nový** v nabídce vlevo.
+   a. V nabídce vlevo vyberte **Nový** .
 
-   b. Vyberte **Data a analýzy** na **nový** okno.
+   b. V okně **Nový** vyberte **data a analýzy** .
 
-   c. Vyberte **služby Data Factory** na **Data analytics** okno.
+   c. V okně **Analýza dat** vyberte **Data Factory** .
 
-1. Na **nová datová továrna** okně zadejte **CustomActivityFactory** pro název. Název datové továrny musí být globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat CustomActivityFactory není k dispozici", změňte název datové továrny. Například použijte yournameCustomActivityFactory a znovu vytvořte datovou továrnu.
+1. V okně **Nová datová továrna** jako název zadejte **CustomActivityFactory** . Název datové továrny musí být globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat CustomActivityFactory není k dispozici", změňte název datové továrny. Použijte například yournameCustomActivityFactory a vytvořte datovou továrnu znovu.
 
 1. Vyberte **název skupiny prostředků**a vyberte existující skupinu prostředků nebo vytvořte skupinu prostředků.
 
-1. Ověřte správnost dané předplatné a oblast, ve kterém chcete objekt pro vytváření dat vytvořit.
+1. Ověřte, jestli je předplatné a oblast, kde chcete vytvořit datovou továrnu, správné.
 
-1. Vyberte **vytvořit** na **nová datová továrna** okno.
+1. V okně **Nová datová továrna** vyberte **vytvořit** .
 
-1. Vytvoření datové továrny v řídicím panelu portálu.
+1. Objekt pro vytváření dat se vytvoří na řídicím panelu portálu.
 
-1. Po úspěšném vytvoření objektu pro vytváření dat se zobrazí **služby Data factory** stránky, která zobrazuje obsah služby data factory.
+1. Po úspěšném vytvoření objektu pro vytváření dat se zobrazí stránka **Datová továrna** , která vám ukáže obsah objektu pro vytváření dat.
 
-   ![Stránka datová továrna](./media/data-factory-data-processing-using-batch/image6.png)
+   ![Stránka pro datovou továrnu](./media/data-factory-data-processing-using-batch/image6.png)
 
 #### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
-Propojené služby propojují úložiště dat nebo výpočetní služby spojili s datovou továrnu. V tomto kroku propojíte se svou datovou továrnou účet úložiště a účet Batch.
+Propojené služby propojují úložiště dat nebo výpočetní služby s datovou továrnou. V tomto kroku propojíte svůj účet úložiště a účet Batch s datovou továrnou.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
-1. Vyberte **Autor a nasadit** na dlaždici **služby Data factory** okno **CustomActivityFactory**. Zobrazí se Editor služby Data Factory.
+1. V okně **objekt pro vytváření dat** pro **CustomActivityFactory**vyberte dlaždici **Autor a nasazení** . Zobrazí se Editor Data Factory.
 
-1. Vyberte **nové datové úložiště** na panelu příkazů a zvolte **úložiště Azure.** Skript JSON, který použijete k vytvoření úložiště, propojené služby v editoru se zobrazí.
+1. Na panelu příkazů vyberte **nové úložiště dat** a zvolte **úložiště Azure.** Zobrazí se skript JSON, který použijete k vytvoření propojené služby úložiště v editoru.
 
    ![Nové datové úložiště](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Nahraďte **název účtu** názvem vašeho účtu úložiště. Nahraďte **klíč účtu** přístupovým klíčem účtu úložiště. Zjistěte, jak získat přístupový klíč k úložišti, najdete v článku [zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště](../../storage/common/storage-account-manage.md#access-keys).
+1. Nahraďte **název účtu** názvem vašeho účtu úložiště. Nahraďte **klíč účtu** přístupovým klíčem účtu úložiště. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-manage.md#access-keys).
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
    ![Nasazení](./media/data-factory-data-processing-using-batch/image8.png)
 
-#### <a name="create-an-azure-batch-linked-service"></a>Vytvoření služby propojené služby Azure Batch
-V tomto kroku vytvoříte propojené služby pro účet Batch, který se používá ke spuštění aktivity vlastní data factory.
+#### <a name="create-an-azure-batch-linked-service"></a>Vytvoření propojené služby Azure Batch
+V tomto kroku vytvoříte propojenou službu pro účet Batch, který se používá ke spuštění vlastní aktivity objektu pro vytváření dat.
 
-1. Vyberte **nový výpočet** na panelu příkazů a zvolte **Azure Batch.** Skript JSON, který použijete k vytvoření dávky propojené služby v editoru se zobrazí.
+1. Na panelu příkazů vyberte **Nový COMPUTE** a zvolte **Azure Batch.** Zobrazí se skript JSON, který použijete k vytvoření propojené služby Batch v editoru.
 
 1. Ve skriptu JSON:
 
-   a. Nahraďte **název účtu** s názvem vašeho účtu Batch.
+   a. Nahraďte **název účtu** názvem vašeho účtu Batch.
 
-   b. Nahraďte **přístupový klíč** přístupovým klíčem účtu Batch.
+   b. Nahraďte **přístupová klávesu** přístupovým klíčem účtu Batch.
 
-   c. Zadejte ID fondu **poolName** vlastnost. Pro tuto vlastnost můžete zadat název fondu nebo ID fondu.
+   c. Zadejte ID fondu pro vlastnost **Pool** . Pro tuto vlastnost můžete zadat buď název fondu, nebo ID fondu.
 
-   d. Zadejte identifikátor URI služby batch pro **batchUri** vlastnost JSON.
+   d. Zadejte identifikátor URI dávky pro vlastnost **batchUri** JSON.
 
       > [!IMPORTANT]
-      > Adresu URL **účtu Batch** okně je v následujícím formátu: \<accountname\>.\< oblast\>. batch.azure.com. Pro **batchUri** vlastnost ve skriptu JSON, budete muset odebrat a88 "accountname." ** z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
+      > Adresa URL z okna **účtu Batch** má tento formát: \<Account.\< \> region\>. batch.Azure.com. Pro vlastnost **batchUri** ve skriptu JSON je nutné odebrat A88 "Account.". * * z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
-      ![Okno účtu batch](./media/data-factory-data-processing-using-batch/image9.png)
+      ![Okno účtu Batch](./media/data-factory-data-processing-using-batch/image9.png)
 
-      Pro **poolName** vlastnosti také můžete zadat ID fondu namísto název fondu.
+      Pro vlastnost **Pool** (název fondu) můžete také zadat ID fondu místo názvu fondu.
 
       > [!NOTE]
-      > Služba Data Factory nepodporuje možnost na vyžádání pro službu Batch, stejně jako pro HDInsight. Pouze vlastní fond služby Batch můžete použít ve službě data factory.
+      > Služba Data Factory nepodporuje možnost na vyžádání pro službu Batch, protože pro službu HDInsight. V datové továrně můžete použít jenom vlastní fond služby Batch.
       >
       >
    
-   e. Zadejte **StorageLinkedService** pro **linkedServiceName** vlastnost. Tuto propojenou službu jste vytvořili v předchozím kroku. Toto úložiště se používá jako pracovní oblast pro soubory a protokoly.
+   e. Pro vlastnost **linkedServiceName** zadejte **StorageLinkedService** . Tuto propojenou službu jste vytvořili v předchozím kroku. Toto úložiště se používá jako pracovní oblast pro soubory a protokoly.
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
 #### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datových sad
-V tomto kroku vytvoříte datové sady, které představují vstupní a výstupní data.
+V tomto kroku vytvoříte datové sady, které reprezentují vstupní a výstupní data.
 
 #### <a name="create-the-input-dataset"></a>Vytvoření vstupní datové sady
-1. V editoru služby Data Factory, vyberte **nová datová sada** tlačítko na panelu nástrojů. Vyberte **úložiště objektů Blob v Azure** z rozevíracího seznamu.
+1. V editoru Data Factory klikněte na panelu nástrojů na tlačítko **Nová datová sada** . V rozevíracím seznamu vyberte **úložiště objektů BLOB v Azure** .
 
 1. Nahraďte skript JSON v pravém podokně následujícím fragmentem kódu JSON:
 
@@ -661,13 +659,13 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     }
     ```
 
-    Vytvoření kanálu dále v tomto návodu s časem zahájení 2015-11-16T00:00:00Z a konec času 2015-11-16T05:00:00Z. Je naplánováno a generuje data po hodinách, takže máte pět řezy vstupní a výstupní (mezi **00**: 00:00 -\> **05**: 00:00).
+    Kanál vytvoříte později v tomto návodu s časem spuštění 2015-11-16T00:00:00Z a koncovým časem 2015-11-16T05:00:00Z. Naplánovalo se zpracování dat každou hodinu, takže je pět vstupních/výstupních řezů (mezi **00**: 00:00-\> **05**: 00:00).
 
-    **Frekvence** a **interval** pro vstupní datovou sadu, které jsou nastaveny na **hodinu** a **1**, což znamená, že vstupní řez je dostupný po hodinách.
+    **Frekvence** a **interval** pro vstupní datovou sadu jsou nastavené na **Hour** a **1**, což znamená, že vstupní řez je dostupný každou hodinu.
 
-    Počáteční čas pro každý řez je reprezentována **SliceStart** systémové proměnné v předchozím fragmentu kódu JSON. Tady jsou časy zahájení pro každý řez.
+    Počáteční čas každého řezu je reprezentován systémovou proměnnou **vlastnosti slicestart** v předchozím fragmentu kódu JSON. Tady jsou časy spuštění jednotlivých řezů.
 
-    | **řez** | **Čas spuštění**          |
+    | **Průřez** | **Čas spuštění**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
@@ -675,9 +673,9 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     | 4         | 2015-11-16T**03**:00:00 |
     | 5         | 2015-11-16T**04**:00:00 |
 
-    **FolderPath** vypočítat pomocí toho rok, měsíc, den a hodina součástí počáteční čas řezu (**SliceStart**). Zde je, jak je vstupní složky mapované na určitý řez.
+    **FolderPath** se počítá pomocí části rok, měsíc, den a hodina počátečního času řezu (**vlastnosti slicestart**). Tady je způsob, jak je vstupní složka namapována na řez.
 
-    | **řez** | **Čas spuštění**          | **Vstupní složky**  |
+    | **Průřez** | **Čas spuštění**          | **Vstupní složka**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
@@ -685,12 +683,12 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-1. Vyberte **nasadit** na panelu nástrojů můžete vytvářet a nasazovat **InputDataset** tabulky.
+1. Pro vytvoření a nasazení tabulky **InputDataset** vyberte **nasadit** na panelu nástrojů.
 
 #### <a name="create-the-output-dataset"></a>Vytvoření výstupní datové sady
-V tomto kroku vytvoříte datovou sadu typu AzureBlob, která bude představovat výstupní data.
+V tomto kroku vytvoříte další datovou sadu typu Azureblobu, která bude představovat výstupní data.
 
-1. V editoru služby Data Factory, vyberte **nová datová sada** tlačítko na panelu nástrojů. Vyberte **úložiště objektů Blob v Azure** z rozevíracího seznamu.
+1. V editoru Data Factory klikněte na panelu nástrojů na tlačítko **Nová datová sada** . V rozevíracím seznamu vyberte **úložiště objektů BLOB v Azure** .
 
 1. Nahraďte skript JSON v pravém podokně následujícím fragmentem kódu JSON:
 
@@ -722,9 +720,9 @@ V tomto kroku vytvoříte datovou sadu typu AzureBlob, která bude představovat
     }
     ```
 
-    Výstupní objekt blob nebo soubor se generuje pro každý vstupní řez. Zde je, jak je výstupní soubor s názvem pro každý řez. Všechny výstupní soubory jsou generovány v jedné složce výstupu `mycontainer\\outputfolder`.
+    Pro každý vstupní řez se vygeneruje výstupní objekt BLOB nebo soubor. Tady je způsob, jak je výstupní soubor pojmenován pro každý řez. Všechny výstupní soubory jsou generovány v jedné výstupní složce, `mycontainer\\outputfolder`.
 
-    | **řez** | **Čas spuštění**          | **Výstupní soubor**       |
+    | **Průřez** | **Čas spuštění**          | **Výstupní soubor**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
@@ -732,19 +730,19 @@ V tomto kroku vytvoříte datovou sadu typu AzureBlob, která bude představovat
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-    Mějte na paměti, že všechny soubory ve vstupní složky (například 2015-11-16-00) jsou součástí řez s časem zahájení 2015--11-16 00. Při zpracování této řez, vlastní aktivita prohledává každý soubor a vytváří čáry ve výstupním souboru s počtem výskytů hledaný termín "Microsoft". Pokud existují tři soubory ve složce 2015-11-16-00, jsou v výstupní soubor 2015-11-16-00.txt tři řádky.
+    Mějte na paměti, že všechny soubory ve vstupní složce (například 2015-11-16-00) jsou součástí řezu s časem spuštění 2015-11-16-00. Při zpracování tohoto řezu vlastní aktivita projde každým souborem a vytvoří ve výstupním souboru řádek s počtem výskytů hledaného výrazu "Microsoft". Pokud se ve složce 2015-11-16-00 nacházejí tři soubory, ve výstupním souboru 2015-11-16 -00. txt jsou tři řádky.
 
-1. Vyberte **nasadit** na panelu nástrojů můžete vytvářet a nasazovat **OutputDataset**.
+1. Na panelu nástrojů vyberte **nasadit** a vytvořte a nasaďte rozhraní **OutputDataset**.
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Krok 4: Vytvoření a spuštění kanálu s aktivitou vlastní
-V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivita, kterou jste vytvořili dříve.
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Krok 4: Vytvoření a spuštění kanálu s vlastní aktivitou
+V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivitou, kterou jste předtím vytvořili.
 
 > [!IMPORTANT]
-> Pokud jste nenahráli **soubor.txt** do vstupní složky v kontejneru objektů blob, proveďte tak před vytvořením kanálu. **IsPaused** je nastavena na hodnotu false v kanálu JSON, takže spuštění kanálu se okamžitě, protože **start** datum je v minulosti.
+> Pokud jste **soubor. txt** neodeslali do vstupních složek v kontejneru objektů blob, udělejte to ještě před vytvořením kanálu. Vlastnost inpauseed je ve formátu JSON kanálu nastavená na false, takže kanál se spustí hned, protože **počáteční** datum je v minulosti.
 >
 >
 
-1. V editoru služby Data Factory, vyberte **nový kanál** na panelu příkazů. Pokud se nezobrazí příkaz, vyberte symbol tří teček zobrazte je.
+1. V editoru Data Factory na panelu příkazů vyberte **Nový kanál** . Pokud příkaz nevidíte, vyberte symbol tří teček, který chcete zobrazit.
 
 1. Nahraďte skript JSON v pravém podokně následujícím fragmentem kódu JSON:
 
@@ -793,65 +791,65 @@ V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivita, kterou j
     ```
    Je třeba počítat s následujícím:
 
-   * Je jenom jedna aktivita v kanálu a je typu **DotNetActivity**.
-   * **AssemblyName** je nastavena na název knihovny DLL **MyDotNetActivity.dll**.
-   * **Vstupní bod** je nastavena na **MyDotNetActivityNS.MyDotNetActivity**. Je v podstatě \<obor názvů\>.\< ClassName\> ve vašem kódu.
-   * **PackageLinkedService** je nastavena na **StorageLinkedService**, která odkazuje na úložiště objektů blob, který obsahuje příslušný soubor .zip pro vlastní aktivity. Pokud používáte jiný účet úložiště pro vstupní a výstupní soubory a soubor zip vlastní aktivitu, budete muset vytvořit jinou propojenou službu Storage. Tento článek předpokládá, že používáte stejný účet úložiště.
-   * **PackageFile** je nastavena na **customactivitycontainer/MyDotNetActivity.zip**. Je ve formátu \<containerforthezip\>/\<nameofthezip.zip\>.
+   * V kanálu je pouze jedna aktivita a jedná se o typ **DotNetActivity**.
+   * **AssemblyName** je nastaven na název knihovny DLL **MyDotNetActivity. dll**.
+   * **Parametr entryPoint** je nastavený na **MyDotNetActivityNS. MyDotNetActivity**. Je to v podstatě \<obor\>názvů\< . ClassName\> ve vašem kódu.
+   * **PackageLinkedService** je nastavená na **StorageLinkedService**, která odkazuje na úložiště objektů blob, které obsahuje soubor zip vlastní aktivity. Pokud používáte jiné účty úložiště pro vstupní a výstupní soubory a vlastní soubor zip aktivity, musíte vytvořit další propojenou službu úložiště. V tomto článku se předpokládá, že používáte stejný účet úložiště.
+   * **PackageFile** je nastavená na **customactivitycontainer/MyDotNetActivity. zip**. Je \<ve formátu containerforthezip/\>nameofthezip.zip.\<\>
    * Vlastní aktivita přijímá **InputDataset** jako vstup a **OutputDataset** jako výstup.
-   * **LinkedServiceName** vlastnost vlastní aktivity odkazuje na **AzureBatchLinkedService**, který dává pokyn služby Data Factory, který vlastní aktivita je potřeba spustit na služby Batch.
-   * **Souběžnosti** nastavení je důležité. Pokud použijete výchozí hodnotu, která je 1, i v případě, že máte dva nebo víc výpočetních uzlů ve fondu služby Batch, se zpracovávají řezy jeden po druhém. Proto nejsou využívat paralelní zpracování funkce služby Batch. Pokud nastavíte **souběžnosti** na vyšší hodnotu, Dejme tomu, že 2, znamená to, že dva řezy (odpovídá možnosti dvě úlohy ve službě Batch) může být zpracována ve stejnou dobu. V takovém případě budou použity oba virtuální počítače ve fondu služby Batch. Odpovídajícím způsobem nastavte vlastnost souběžnosti.
-   * Pouze jeden úkol (řezu) je spustit na virtuálním počítači v libovolném bodě ve výchozím nastavení. Ve výchozím nastavení **maximální počet úloh na virtuální počítač** je nastavena na hodnotu 1 pro fond služby Batch. Jako součást požadavků vytvořili fond se tato vlastnost nastavena na hodnotu 2. Proto se dva datové továrny řezy můžete spustit na virtuálním počítači ve stejnou dobu.
-     - **IsPaused** je vlastnost nastavena na hodnotu false, ve výchozím nastavení. Kanálu se spustí okamžitě v tomto příkladě vzhledem k tomu, že řezy spustit v minulosti. Tuto vlastnost lze nastavit **true** k pozastavení kanálu a nastavte ji zpět na **false** restartovat.
-     -   **Start** a **end** časy jsou od sebe pět hodin. Řezy se tvoří po hodinách, takže pět řezy se tvoří kanál.
+   * Vlastnost **linkedServiceName** vlastní aktivity odkazuje na **AzureBatchLinkedService**, která oznamuje Data Factory, že vlastní aktivita potřebuje spustit v dávce.
+   * Nastavení **souběžnosti** je důležité. Pokud použijete výchozí hodnotu, která je 1, i když ve fondu dávek máte dva nebo více výpočetních uzlů, tyto řezy se zpracují po druhém. Proto nebudete využívat možnosti paralelního zpracování v dávce. Pokud nastavíte **souběžnost** na vyšší hodnotu, řekněme 2 znamená, že lze zpracovat dva řezy (odpovídající dvěma úkolům ve službě Batch). V takovém případě jsou využívány oba virtuální počítače ve fondu Batch. Nastavte vlastnost Concurrency odpovídajícím způsobem.
+   * Ve výchozím nastavení se na virtuálním počítači spustí jenom jeden úkol (řez). Ve výchozím nastavení je **maximální počet úkolů na virtuální počítač** pro fond dávek nastavený na hodnotu 1. Jako součást požadavků jste vytvořili fond s touto vlastností nastavenou na hodnotu 2. Proto mohou být na virtuálním počítači spuštěny dva řezy objektu pro vytváření dat ve stejnou dobu.
+     - Vlastnost s vlastností-pauseed je ve výchozím nastavení nastavena na hodnotu false. Kanál se spustí hned v tomto příkladu, protože řezy začínají v minulosti. Tuto vlastnost můžete nastavit na **hodnotu true** , chcete-li kanál pozastavit a nastavit jej zpět na **hodnotu false** pro restartování.
+     -   Doba **zahájení** a **ukončení** je pět hodin od. Řezy se vytvářejí každou hodinu, takže kanál vytvoří pět řezů.
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte kanál.
 
-#### <a name="step-5-test-the-pipeline"></a>Krok 5: Test kanálu
-V tomto kroku otestujte kanál přetažením soubory do vstupní složky. Začněte tím, že kanál ve Visual Basicu s jeden soubor pro každý vstupní složky.
+#### <a name="step-5-test-the-pipeline"></a>Krok 5: Testování kanálu
+V tomto kroku otestujete kanál odstraněním souborů do vstupních složek. Začněte tím, že otestujete kanál s jedním souborem pro každou vstupní složku.
 
-1. Na **služby Data factory** okna na webu Azure Portal, vyberte **Diagram**.
+1. V okně **objekt pro vytváření dat** v Azure Portal vyberte **diagram**.
 
    ![Diagram](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. V **Diagram** dvakrát klikněte na vstupní datová sada **InputDataset**.
+1. V zobrazení **diagramu** poklikejte na vstupní datovou sadu **InputDataset**.
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
-1. **InputDataset** otevře se okno s všech pět řezy, které jsou připravené. Všimněte si, že **čas spuštění ŘEZU** a **ŘEZ KONCOVÝ čas** pro každý řez.
+1. Zobrazí se okno **InputDataset** se všemi pěti řezy připravenými pro řezy. Všimněte si POČÁTEČNÍho a **koncového času** **řezu** pro každý řez.
 
-   ![Vstupní řez počáteční a koncové časy](./media/data-factory-data-processing-using-batch/image12.png)
+   ![Počáteční a koncové časy vstupního řezu](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. V **Diagram** zobrazit, vyberte možnost **OutputDataset**.
+1. V zobrazení **diagramu** vyberte možnost **OutputDataset**.
 
-1. Pět výstupní řezy se zobrazí v **připravené** stavu, pokud byly vytvořeny.
+1. Pět výstupních řezů se zobrazí ve stavu připraveno, pokud byly vytvořeny.
 
-   ![Výstupní řez počáteční a koncové časy](./media/data-factory-data-processing-using-batch/image13.png)
+   ![Počáteční a koncové časy výstupního řezu](./media/data-factory-data-processing-using-batch/image13.png)
 
-1. Použití portálu k zobrazení úloh přidružených k řezy a naleznete v tématu co virtuálního počítače, které byly spuštěny každý řez v. Další informace najdete v tématu [integrace služby Data Factory a Batch](#data-factory-and-batch-integration) oddílu.
+1. Pomocí portálu můžete zobrazit úkoly spojené s řezy a zjistit, v jakém virtuálním počítači běžely jednotlivé řezy. Další informace najdete v části [Data Factory a Batch Integration](#data-factory-and-batch-integration) .
 
-1. Výstupní soubory se zobrazí pod `mycontainer` v `outputfolder` ve službě blob storage.
+1. Výstupní soubory se zobrazí v `mycontainer` části `outputfolder` v úložišti objektů BLOB.
 
    ![Výstupní soubory v úložišti](./media/data-factory-data-processing-using-batch/image15.png)
 
-   Pět výstupní soubory jsou uvedeny, jeden pro každý vstupní řez. Každá z výstupních souborů má obsah, podobně jako následující výstup:
+   V seznamu je uvedeno pět výstupních souborů, jeden pro každý vstupní řez. Každý z výstupních souborů má obsah podobný následujícímu výstupu:
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
-   Následující diagram znázorňuje, jak se objekt pro vytváření datové řezy mapují na úkoly ve službě Batch. V tomto příkladu má určitý řez pouze jedno spuštění.
+   Následující diagram znázorňuje, jak jsou řezy Data Factory mapovány na úlohy ve službě Batch. V tomto příkladu má řez jenom jedno spuštění.
 
-   ![Diagram mapování řezu](./media/data-factory-data-processing-using-batch/image16.png)
+   ![Diagram mapování řezů](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. Zkuste to teď s více soubory ve složce. Vytvoření souborů **Soubor2.txt**, **file3.txt**, **file4.txt**, a **file5.txt** se stejným obsahem stejně jako v soubor.txt ve složce **2015-11-06-01**.
+1. Teď ve složce zkuste použít více souborů. Vytvořte soubory **Soubor2. txt**, **file3. txt**, **file4. txt**a **file5. txt** se stejným obsahem, jako v souboru. txt ve složce **2015-11-06-01**.
 
-1. Ve výstupní složce odstranit výstupní soubor **2015-11-16-01.txt**.
+1. Ve výstupní složce odstraňte výstupní soubor **2015-11-16 -01. txt**.
 
-1. Na **OutputDataset** okna, klikněte pravým tlačítkem na segment s **čas spuštění ŘEZU** nastavena na **11/16/2015 01:00:00 AM**. Vyberte **spustit** na opětovné spuštění/opětovné zpracování řezu. Řez nyní obsahuje pět souborů místo jednoho souboru.
+1. V okně **OutputDataset** klikněte pravým tlačítkem na řez s **časem zahájení řezu** nastaveným na **11/16/2015 01:00:00 dop**. Vyberte možnost **Spustit** pro opětovné spuštění nebo opětovné zpracování řezu. Řez teď má pět souborů místo jednoho souboru.
 
     ![Spusťte](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. Po spuštění řezu a její stav je **připravené**, ověřte obsah do výstupního souboru pro tento řez (**2015-11-16-01.txt**). Výstupní soubor se zobrazí v části `mycontainer` v `outputfolder` ve službě blob storage. Měla by existovat jeden řádek pro každý soubor řezu.
+1. Po spuštění řezu a jeho stav je **připravený**a ověřte obsah ve výstupním souboru pro tento řez (**2015-11-16 -01. txt**). Výstupní soubor se zobrazí v `mycontainer` části `outputfolder` v úložišti objektů BLOB. Pro každý soubor řezu by měl být řádek.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -862,43 +860,43 @@ V tomto kroku otestujte kanál přetažením soubory do vstupní složky. Začn�
     ```
 
 > [!NOTE]
-> Pokud odstraníte nebyla výstupní soubor 2015-11-16-01.txt před s pěti vstupních souborů, zobrazí jeden řádek z předchozího spuštění řezu a pět řádků z aktuálního spuštění řezu. Ve výchozím nastavení se připojí obsah k výstupnímu souboru, pokud již existuje.
+> Pokud jste neodstranili výstupní soubor 2015-11-16 -01. txt před tím, než se pokusíte o pět vstupních souborů, uvidíte jeden řádek z předchozího řezu běhu a pět řádků z aktuálního řezu se spustí. Ve výchozím nastavení je obsah připojen do výstupního souboru, pokud již existuje.
 >
 >
 
-#### <a name="data-factory-and-batch-integration"></a>Integrace služby Data Factory a Batch
-Služba Data Factory vytvoří úlohu ve službě Batch s názvem `adf-poolname:job-xxx`.
+#### <a name="data-factory-and-batch-integration"></a>Integrace Data Factory a Batch
+Služba Data Factory v dávce vytvoří úlohu s názvem `adf-poolname:job-xxx`.
 
-![Úlohy služby batch](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+![Dávkové úlohy](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
-Pro každé spuštění aktivity řezu se vytvoří úkol v úloze. Pokud 10 řezy jsou připravené ke zpracování, vytvoří se 10 úkoly v úloze. Můžete mít více než jeden řez paralelnímu spouštění, pokud máte víc výpočetních uzlů ve fondu. Pokud je maximální počet úkolů na výpočetním uzlu nastaven na větší než jedna, můžete spustit více než jeden řez ve stejné výpočetní.
+Úkol v úloze se vytvoří pro každý běh řezu aktivity. Pokud je možné zpracovat 10 řezů, v úloze se vytvoří 10 úkolů. Pokud máte ve fondu více výpočetních uzlů, můžete mít paralelně spuštěný více než jeden řez. Pokud je maximální počet úkolů na výpočetní uzel nastavený na hodnotu větší než 1, může se ve stejném výpočetním prostředí spustit více než jeden řez.
 
-V tomto příkladu je pět řezů, takže máte pět úkolů ve službě Batch. S **souběžnosti** nastavena na **5** v kódu JSON ve službě data factory kanálu a **maximální počet úloh na virtuální počítač** nastavena na **2** ve fondu služby Batch pomocí **2** virtuálních počítačů, úlohy běžet rychle. (Zkontrolujte počátečním a koncovým časem pro úlohy.)
+V tomto příkladu je pět řezů, takže v dávce je pět úkolů. V případě, že je souběžnost nastavená na **5** ve formátu JSON kanálu v datové továrně a **maximální počet úloh na virtuální počítač** nastavený na **2** ve fondu Batch se **dvěma** virtuálními počítači, úlohy se spustí rychle. (Ověřte počáteční a koncové časy pro úlohy.)
 
-Chcete-li zobrazit úlohy služby Batch a jejích úkolů, které jsou spojeny s řezy použít na portálu a podívat se jaké virtuálního počítače, které byly spuštěny každý řez v.
+Pomocí portálu zobrazte úlohu Batch a její úkoly, které jsou k nim přidruženy, a podívejte se, na jakém virtuálním počítači běžely jednotlivé řezy.
 
-![Úlohy služby batch](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+![Úlohy dávkové úlohy](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
 ### <a name="debug-the-pipeline"></a>Ladění kanálu
-Ladění zahrnuje několik základních technik.
+Ladění se skládá z několika základních technik.
 
-1. Pokud vstupní řez není nastavený **připravené**, zkontrolujte, jestli je správná struktura vstupní složky a že soubor.txt existuje ve vstupních složkách.
+1. Pokud vstupní řez není nastavený na **připraveno**, zkontrolujte, jestli je správně nastavená struktura vstupní složky a jestli soubor. txt existuje ve vstupních složkách.
 
    ![Struktura vstupní složky](./media/data-factory-data-processing-using-batch/image3.png)
 
-1. V **Execute** metoda vaše vlastní aktivity použijte **IActivityLogger** objektu do protokolu informace, které vám pomohou s řešením problémů. Protokolované zprávy zobrazí uživateli\_souboru protokolu 0.
+1. V metodě **Execute** vlastní aktivity použijte objekt **IActivityLogger** k protokolování informací, které vám pomůžou vyřešit problémy. Protokolované zprávy se zobrazí v souboru protokolu uživatele\_0. log.
 
-   Na **OutputDataset** okno, vyberte na řez otevřete **datový řez** okno pro tento řez. V části **spuštění aktivit**, se zobrazí jedna aktivita spustit řez. Pokud vyberete **spustit** na příkazovém řádku, můžete spustit jiné aktivity spuštění pro stejný řez.
+   V okně **OutputDataset** Vyberte řez a zobrazte okno **datový řez** pro daný řez. V části **spuštění aktivit**se pro řez zobrazí jedno spuštění aktivity. Vyberete-li možnost **Spustit** na panelu příkazů, můžete spustit další spuštění aktivity pro stejný řez.
 
-   Když vyberete spuštění aktivit, uvidíte **podrobnosti o spuštění aktivit** okno se seznamem souborů protokolů. Zobrazí zprávy zaznamenané dříve uživatele\_souboru protokolu 0. Při výskytu chyby se zobrazí tři spuštění aktivit, protože počet opakování je nastavená na 3 v kódu JSON kanálu a aktivity. Vyberete-li spuštění aktivity, zobrazit soubory protokolů obsahující informace pro řešení potíží s chybou.
+   Když vyberete spuštění aktivit, zobrazí se okno Podrobnosti o **spuštění aktivit** se seznamem souborů protokolu. Zaznamenané zprávy se zobrazí v souboru\_protokolu uživatele 0. log. Pokud dojde k chybě, zobrazí se tři spuštění aktivit, protože počet opakování je v souboru JSON kanálu nebo aktivity nastavený na 3. Když vyberete spuštění aktivit, zobrazí se soubory protokolů, které můžete zkontrolovat a vyřešit chybu.
 
-   ![Okna OutputDataset a datový řez](./media/data-factory-data-processing-using-batch/image18.png)
+   ![Okna OutputDataset a datových řezů](./media/data-factory-data-processing-using-batch/image18.png)
 
-   V seznamu souborů protokolu, vyberte **user-0.log**. V pravém panelu výsledky použití **IActivityLogger.Write** metoda se zobrazí.
+   V seznamu souborů protokolu vyberte **User-0. log**. V pravém panelu se zobrazí výsledky použití metody **IActivityLogger. Write** .
 
-   ![Okno Podrobnosti o spuštění aktivit](./media/data-factory-data-processing-using-batch/image19.png)
+   ![Okno podrobností o spuštění aktivity](./media/data-factory-data-processing-using-batch/image19.png)
 
-   Kontrola systému 0.log pro všechny chybové zprávy systému a výjimky.
+   V protokolu System-0. log vyhledejte všechny systémové chybové zprávy a výjimky.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
@@ -909,38 +907,38 @@ Ladění zahrnuje několik základních technik.
     
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
-1. Zahrnout **PDB** souboru v souboru zip tak, aby podrobnosti o chybě informace, jako je zásobníku volání při výskytu chyby.
+1. Zahrňte soubor **PDB** do souboru zip, aby podrobnosti o chybě obsahovaly informace, jako je například zásobník volání, když dojde k chybě.
 
-1. Všechny soubory v souboru .zip pro vlastní aktivity musí být na nejvyšší úrovni se žádné podsložky.
+1. Všechny soubory v souboru zip pro vlastní aktivitu musí být na nejvyšší úrovni bez podsložek.
 
    ![Seznam souborů zip vlastní aktivity](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Ujistěte se, že **assemblyName** (MyDotNetActivity.dll), **entryPoint** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip), a **packageLinkedService** (mělo by odkazovat na úložiště objektů blob, který obsahuje příslušný soubor .zip) jsou nastavené na správné hodnoty.
+1. Zajistěte, aby byl parametr **AssemblyName** (MyDotNetActivity. dll), **EntryPoint** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) a **packageLinkedService** (mělo by odkazovat na úložiště objektů blob, které obsahuje soubor ZIP), je nastavené na správné hodnoty.
 
-1. Pokud jste opravili chybu a chcete řez zpracovat znovu, klikněte pravým tlačítkem myši výseč **OutputDataset** okna a vyberte **spustit**.
+1. Pokud jste opravili chybu a chcete znovu zpracovat řez, klikněte pravým tlačítkem myši na řez v okně **OutputDataset** a vyberte **Spustit**.
 
-   ![Okno OutputDataset možnost spuštění](./media/data-factory-data-processing-using-batch/image21.png)
+   ![Možnost spuštění okna OutputDataset](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > Kontejner je v úložišti objektů blob s názvem `adfjobs`. Tento kontejner není automaticky odstraněn, ale můžete bezpečně odstranit po dokončení testování řešení. Obdobně řešení data factory vytvoří úlohu Batch s názvem `adf-\<pool ID/name\>:job-0000000001`. Po otestování řešení Pokud chcete, můžete odstranit tuto úlohu.
+   > Kontejner je ve vašem úložišti objektů BLOB s `adfjobs`názvem. Tento kontejner se neodstraní automaticky, ale po dokončení testování řešení ho můžete bezpečně odstranit. Podobně řešení Data Factory vytvoří dávkovou úlohu s názvem `adf-\<pool ID/name\>:job-0000000001`. Tuto úlohu můžete odstranit po otestování řešení, pokud chcete.
    >
    >
-1. Vlastní aktivita nepoužívá **app.config** souborů z vašeho balíčku. Proto pokud váš kód načítá řetězce připojení z konfiguračního souboru, to nebude fungovat v době běhu. Nejosvědčenější při použití služby Batch je uložit všechny tajné klíče ve službě Azure Key Vault. Pak pomocí hlavního názvu služby na základě certifikátů k ochraně služby key vault a distribuovat tento certifikát fondu služby Batch. Vlastní aktivita .NET můžete přístup k tajným klíčům ze služby key vault za běhu. Tato obecná řešení můžete škálovat pro libovolný typ tajného klíče, nejenom na připojovací řetězec.
+1. Vlastní aktivita nepoužívá soubor **App. config** z vašeho balíčku. Proto pokud váš kód přečte z konfiguračního souboru jakékoli připojovací řetězce, nefunguje za běhu. Osvědčeným postupem při používání Batch je uložení jakýchkoli tajných kódů v Azure Key Vault. Pak použijte instanční objekt založený na certifikátu k ochraně trezoru klíčů a k distribuci certifikátu do fondu služby Batch. Vlastní aktivita rozhraní .NET má k dispozici přístup k tajným klíčům z trezoru klíčů za běhu. Toto obecné řešení se může škálovat na libovolný typ tajného klíče, nikoli jenom na připojovací řetězec.
 
-    Je snazší alternativní řešení, ale se nejedná osvědčený postup. Vytvoříte propojené služby databáze SQL s připojením nastavení řetězce. Potom můžete vytvořit datovou sadu, která používá propojenou službu a zřetězení datovou sadu jako zástupný vstupní datovou sadu, která vlastní aktivitu .NET. Potom můžete přistupovat připojovací řetězec propojené služby v kódu vlastní aktivity. By měl fungovat správně v době běhu.  
+    Existuje jednodušší řešení, ale nejedná se o doporučený postup. Můžete vytvořit propojenou službu SQL Database s nastavením připojovacího řetězce. Pak můžete vytvořit datovou sadu, která používá propojenou službu, a zřetězit datovou sadu jako fiktivní vstupní datovou sadu do vlastní aktivity .NET. Pak můžete přístup k připojovacímu řetězci propojené služby v kódu vlastní aktivity. Mělo by fungovat při běhu.  
 
-#### <a name="extend-the-sample"></a>Rozšíření ukázky
-Můžete rozšířit této ukázce se dozvíte více o funkcích služby Data Factory a Batch. Třeba pro zpracování řezů v různých časový rozsah, proveďte následující kroky:
+#### <a name="extend-the-sample"></a>Rozšíří ukázku
+Pokud chcete získat další informace o funkcích Data Factory a Batch, můžete tuto ukázku zvětšit. Chcete-li například zpracovat řezy v jiném časovém rozsahu, proveďte následující kroky:
 
-1. Přidání následujících podsložek v `inputfolder`: 2015-11-16-05, 2015-11-16-06 201--11-16 07, 2011--11-16 08 a 2015--11-16 09. Vstupní soubory umístíte do těchto složek. Změňte koncový čas pro kanál z `2015-11-16T05:00:00Z` k `2015-11-16T10:00:00Z`. V **Diagram** dvakrát klikněte na **InputDataset** a ověřte, zda vstupní řezy jsou připravené. Dvakrát klikněte na panel **OutputDataset** zobrazíte stav výstupní řezy. Pokud jsou v **připravené** stavu, zkontrolujte výstupní složku pro výstupní soubory.
+1. Přidejte následující podsložky v `inputfolder`: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08 a 2015-11-16-09. Umístěte vstupní soubory do těchto složek. Změňte čas ukončení kanálu z `2015-11-16T05:00:00Z` na. `2015-11-16T10:00:00Z` V zobrazení **diagramu** poklikejte na **InputDataset** a zkontrolujte, že jsou vstupní řezy připravené. Dvojitým kliknutím na **OutputDataset** zobrazíte stav výstupních řezů. Pokud jsou ve stavu **připraveno** , podívejte se do výstupní složky pro výstupní soubory.
 
-1. Zvětšit nebo zmenšit **souběžnosti** nastavení, abyste pochopili, jak ovlivňuje výkon vašeho řešení, hlavně zpracování, který se nachází v Batch. Další informace o **souběžnosti** nastavení, najdete v článku "krok 4: Vytvoření a spuštění kanálu s aktivitou vlastní."
+1. Zvyšte nebo snižte nastavení souběžnosti, abyste pochopili, jak má vliv na výkon vašeho řešení, zejména na zpracování, ke kterému dochází v dávce. Další informace o nastavení **souběžnosti** najdete v části "krok 4: Vytvořte a spusťte kanál s vlastní aktivitou.
 
-1. Vytvoření fondu s vyšší nebo nižší **maximální počet úloh na virtuální počítač**. Pokud chcete použít nový fond, který jste vytvořili, aktualizujte ve službě Batch propojené v řešení data factory. Další informace o **maximální počet úloh na virtuální počítač** nastavení, najdete v článku "krok 4: Vytvoření a spuštění kanálu s aktivitou vlastní."
+1. Vytvoří fond s vyšším nebo nižším **maximálním počtu úloh na virtuální počítač**. Pokud chcete použít nový fond, který jste vytvořili, aktualizujte propojenou službu Batch v řešení Data Factory. Další informace o nastavení **maximálního počtu úkolů na virtuální počítač** najdete v části Krok 4: Vytvořte a spusťte kanál s vlastní aktivitou.
 
-1. Vytvoření fondu služby Batch pomocí **automatického škálování** funkce. Automatické škálování výpočetních uzlů ve fondu služby Batch je dynamické přizpůsobení výpočetní výkon, které používá vaše aplikace. 
+1. Vytvořte fond Batch pomocí funkce **automatického škálování** . Automatické škálování výpočetních uzlů ve fondu služby Batch je dynamické seřízení výkonu zpracování, které vaše aplikace používá. 
 
-    Ukázkové vzorce zde dosáhne následující chování. Při počátečním vytvoření fondu začíná jeden virtuální počítač. Metrika $PendingTasks definuje počet úloh ve spuštěném a stavy aktivní (ve frontě). Vzorec najde průměrný počet čekající úlohy za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nedostane mimo 25 virtuálních počítačů. Jako nové úkoly se odešlou, fond se automaticky rozšíří. Dokončení úkolů virtuální počítače budou zdarma jednu po druhé a automatickým Škálováním zmenšuje těchto virtuálních počítačů. StartingNumberOfVMs a maxNumberofVMs můžete upravit podle vašich potřeb.
+    Vzorový vzorec tady dosáhne následujícího chování. Při počátečním vytvoření fondu se spustí jeden virtuální počítač. Metrika $PendingTasks definuje počet úloh ve stavu spuštěno a aktivní (ve frontě). Vzorec nalezne průměrný počet nedokončených úloh za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nepřekračuje 25 virtuálních počítačů. Při odeslání nových úloh se fond automaticky zvětšuje. Po dokončení úloh se virtuální počítače uvolní jednou a automatické škálování tyto virtuální počítače zmenší. StartingNumberOfVMs a maxNumberofVMs můžete upravit podle svých potřeb.
  
     Vzorec automatického škálování:
 
@@ -952,17 +950,17 @@ Můžete rozšířit této ukázce se dozvíte více o funkcích služby Data Fa
     $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
     ```
 
-   Další informace najdete v tématu [automatické škálování výpočetních uzlů ve fondu Batch](../../batch/batch-automatic-scaling.md).
+   Další informace najdete v tématu [Automatické škálování výpočetních uzlů ve fondu služby Batch](../../batch/batch-automatic-scaling.md).
 
-   Pokud se fond používá výchozí [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), služba Batch může trvat 15 až 30 minut Příprava virtuálního počítače před spuštěním vlastní aktivity. Pokud fond používá jiný autoScaleEvaluationInterval, služba Batch může trvat autoScaleEvaluationInterval plus 10 minut.
+   Pokud fond používá výchozí [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), může před spuštěním vlastní aktivity služba Batch trvat 15 až 30 minut, než se virtuální počítač připraví. Pokud fond používá jiný autoScaleEvaluationInterval, může služba Batch trvat autoScaleEvaluationInterval plus 10 minut.
 
-1. V ukázkovém řešení **Execute** metoda vyvolá **Calculate** metody, která zpracovává vstupní výseč k vytvoření řez výstupních dat. Můžete napsat vlastní metodu ke zpracování vstupních dat a nahraďte **Calculate** volání metody **Execute** metoda pomocí volání pro metodu.
+1. V ukázkovém řešení vyvolá metoda **Execute** metodu **výpočtu** , která zpracovává vstupní datový řez a vytváří výstupní datový řez. Můžete napsat vlastní metodu pro zpracování vstupních dat a nahradit volání metody **výpočtu** v metodě **Execute** voláním metody.
 
-### <a name="next-steps-consume-the-data"></a>Další kroky: Tato data využívají
-Po zpracování dat můžete použít pomocí online nástrojů, jako je Power BI. Tady jsou odkazy, které vám pomůžou porozumět Power BI a jak ji používat v Azure:
+### <a name="next-steps-consume-the-data"></a>Další kroky: Využití dat
+Po zpracování dat je můžete využívat s online nástroji, jako je Power BI. Tady jsou odkazy, které vám pomůžou pochopit Power BI a jak ho používat v Azure:
 
-* [Prozkoumejte datová sada v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Prozkoumat datovou sadu v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
+* [Začínáme s Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Aktualizovat data v Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure a Power BI: Základní přehled](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
@@ -971,12 +969,12 @@ Po zpracování dat můžete použít pomocí online nástrojů, jako je Power B
 
   * [Úvod do služby Data Factory](data-factory-introduction.md)
   * [Začínáme s Data Factory](data-factory-build-your-first-pipeline.md)
-  * [Použití vlastních aktivit v kanálech Data Factory](data-factory-use-custom-activities.md)
+  * [Použití vlastních aktivit v kanálu Data Factory](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Základy služby Batch](../../batch/batch-technical-overview.md)
+  * [Základy dávky](../../batch/batch-technical-overview.md)
   * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
-  * [Vytvoření a Správa účtu Batch na webu Azure Portal](../../batch/batch-account-create-portal.md)
+  * [Vytvoření a Správa účtu Batch v Azure Portal](../../batch/batch-account-create-portal.md)
   * [Začínáme s klientskou knihovnou Batch pro .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer

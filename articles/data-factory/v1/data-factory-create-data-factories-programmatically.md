@@ -1,34 +1,33 @@
 ---
-title: Vytvářet kanály zpracování dat pomocí sady Azure .NET SDK | Dokumentace Microsoftu
-description: Zjistěte, jak programově vytvářet, monitorovat a spravovat objekty pro vytváření dat Azure pomocí sady SDK pro Data Factory.
+title: Vytváření datových kanálů pomocí sady Azure .NET SDK | Microsoft Docs
+description: Naučte se programově vytvářet, monitorovat a spravovat datové továrny Azure pomocí Data Factory SDK.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487278"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140218"
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvářet, monitorovat a spravovat objekty pro vytváření dat Azure pomocí Azure Data Factory .NET SDK
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytváření, sledování a Správa datových továrn Azure pomocí sady Azure Data Factory .NET SDK
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi této služby, podívejte se na [kurz o aktivitě kopírování](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Přehled
-Můžete vytvářet, monitorovat a spravovat Azure datových továren programově pomocí Data Factory .NET SDK. Tento článek obsahuje návod, který můžete postupovat podle ukázková Konzolová aplikace .NET, která vytvoří a sleduje datovou továrnu vytvořit. 
+Pomocí sady Data Factory .NET SDK můžete programově vytvářet, monitorovat a spravovat datové továrny Azure. Tento článek obsahuje návod, pomocí kterého můžete vytvořit ukázkovou konzolovou aplikaci .NET, která vytvoří a monitoruje datovou továrnu. 
 
 > [!NOTE]
-> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. Zobrazit [referencích rozhraní API .NET služby Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) úplnou dokumentaci o rozhraní .NET API služby Data Factory. 
+> Tento článek nepopisuje všechny možnosti rozhraní .NET API služby Data Factory. V tématu [Data Factory rozhraní .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pro komplexní dokumentaci k rozhraní .NET api pro Data Factory. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +105,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 * Heslo (zadané v prvním příkazu)
 
 ## <a name="walkthrough"></a>Názorný postup
-V tomto návodu vytvoříte datovou továrnu s kanálem, který obsahuje aktivitu kopírování, která. Aktivita kopírování kopíruje data ze složky ve službě Azure blob storage do jiné složky ve stejném úložišti objektů blob. 
+V tomto návodu vytvoříte datovou továrnu s kanálem, který obsahuje aktivitu kopírování. Aktivita kopírování kopíruje data ze složky ve vašem úložišti objektů BLOB v Azure do jiné složky ve stejném úložišti objektů BLOB. 
 
 Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).
 
@@ -122,7 +121,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
 3. V **Konzole Správce balíčků** postupujte takto:
    1. Spusťte následující příkaz a nainstalujte balíček služby Data Factory: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Nahraďte obsah **App.config** soubor v projektu s následujícím obsahem: 
+4. Nahraďte obsah souboru **App. config** v projektu následujícím obsahem: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -139,8 +138,8 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         </appSettings>
     </configuration>
     ```
-5. V souboru App.Config aktualizujte hodnoty pro  **&lt;ID aplikace&gt;** ,  **&lt;heslo&gt;** ,  **&lt;předplatného ID&gt;** , a **&lt;ID tenanta&gt;** vlastními hodnotami.
-6. Přidejte následující **pomocí** příkazy **Program.cs** soubor v projektu.
+5. V souboru App. config aktualizujte hodnoty  **&lt;ID&gt;aplikace**,  **&lt;heslo&gt;** ,  **&lt;ID&gt;** předplatného a **&lt;ID tenanta. s&gt;** vašimi vlastními hodnotami.
+6. Přidejte následující příkazy **using** do souboru **program.cs** v projektu.
 
     ```csharp
     using System.Configuration;
@@ -178,7 +177,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     ```
 
    > [!IMPORTANT]
-   > Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure. Můžete vytvořit skupinu prostředků pomocí [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) rutiny.
+   > Hodnotu **resourceGroupName** nahraďte názvem skupiny prostředků Azure. Skupinu prostředků můžete vytvořit pomocí rutiny [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
    >
    > Aktualizujte název datové továrny (dataFactoryName) tak, aby byl jedinečný. Název objektu pro vytváření dat musí být globálně jedinečný. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
 7. Do metody **Main** přidejte následující kód, který vytvoří **objekt pro vytváření dat**.
@@ -222,9 +221,9 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     ```
 9. Do metody **Main** přidejte následující kód, který vytvoří **vstupní a výstupní datové sady**.
 
-    **FolderPath** vstupního objektu blob je nastavený na **adftutorial /** kde **adftutorial** je název kontejneru v úložišti objektů blob. Pokud tento kontejner neexistuje ve službě Azure blob storage, vytvořte kontejner s tímto názvem: **adftutorial** a nahrajte do textového souboru do kontejneru.
+    **FolderPath** pro vstupní objekt BLOB je nastavená na **adftutorial/** kde **adftutorial** je název kontejneru v úložišti objektů BLOB. Pokud tento kontejner ve službě Azure Blob Storage neexistuje, vytvořte kontejner s tímto názvem: **adftutorial** a nahrajte textový soubor do kontejneru.
 
-    V cestě FolderPath pro výstupní objekt blob je nastavena na: **adftutorial/apifactoryoutput / {Slice}** kde **řez** je počítáno dynamicky podle hodnoty **SliceStart** () Datum a čas začátku každé výseče.)
+    FolderPath pro výstupní objekt BLOB je nastavená na: **adftutorial/apifactoryoutput/{Slice}** , kde se **řez** dynamicky počítá na základě hodnoty **vlastnosti slicestart** (datum a čas zahájení každého řezu).
 
     ```csharp
     // create input and output datasets
@@ -360,7 +359,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     });
     ```
-12. Do metody **Main** přidejte následující kód pro získání stavu datového řezu výstupní datové sady. Existuje jenom jeden řez očekávání v této ukázce.
+12. Do metody **Main** přidejte následující kód pro získání stavu datového řezu výstupní datové sady. V této ukázce se očekává jenom jeden řez.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -395,7 +394,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         }
     }
     ```
-13. **(volitelné)**  Přidejte následující kód pro získání běhových dat pro datový řez k **hlavní** metody.
+13. **(volitelné)** Přidejte následující kód pro získání podrobností o spuštění pro datový řez do metody **Main** .
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
@@ -427,7 +426,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**. Tato metoda se zobrazí dialogové okno, které umožňuje poskytovat **uživatelské jméno** a **heslo** , který používáte k přihlášení na webu Azure portal.
+14. Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**. Tato metoda představuje dialogové okno, ve kterém můžete zadat **uživatelské jméno** a **heslo** , které používáte k přihlášení do Azure Portal.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -447,9 +446,9 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     }
     ```
 
-15. V Průzkumníku řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a klikněte na tlačítko **přidat odkaz**. Zaškrtněte políčko pro `System.Configuration` sestavení a klikněte na tlačítko **OK**.
+15. V Průzkumník řešení rozbalte projekt: **DataFactoryAPITestApp**, klikněte pravým tlačítkem na **odkazy**a pak klikněte na **Přidat odkaz**. Vyberte zaškrtávací políčko pro `System.Configuration` sestavení a klikněte na tlačítko **OK**.
 15. Sestavte konzolovou aplikaci. Klikněte v nabídce na **Sestavit** a potom klikněte na **Sestavit řešení**.
-16. Ujistěte se, že jeden nebo více souborů v kontejneru adftutorial ve službě Azure blob storage. Pokud ne, vytvořte soubor Emp.txt v programu Poznámkový blok s následujícím obsahem a nahrajte ho do kontejneru adftutorial.
+16. Ověřte, že v kontejneru adftutorial v úložišti objektů BLOB v Azure existuje aspoň jeden soubor. V případě potřeby vytvořte v programu Poznámkový blok soubor EMP. txt s následujícím obsahem a nahrajte ho do kontejneru adftutorial.
 
     ```
     John, Doe
@@ -457,12 +456,12 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     ```
 17. Ukázku spusťte kliknutím na **Ladit** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
 18. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
-    * Propojené služby: **AzureStorageLinkedService**
-    * Datová sada: **DatasetBlobSource** a **DatasetBlobDestination**.
-    * Kanál: **PipelineBlobSample**
-19. Ověřte, že výstupní soubor je vytvořen v **apifactoryoutput** složky **adftutorial** kontejneru.
+    * Propojená služba: **AzureStorageLinkedService**
+    * Integrován **DatasetBlobSource** a **DatasetBlobDestination**.
+    * Kanálu **PipelineBlobSample**
+19. Ověřte, že se ve složce **apifactoryoutput** v kontejneru **adftutorial** vytvoří výstupní soubor.
 
-## <a name="get-a-list-of-failed-data-slices"></a>Získat seznam neúspěšných datové řezy 
+## <a name="get-a-list-of-failed-data-slices"></a>Získat seznam neúspěšných datových řezů 
 
 ```csharp
 // Parse the resource path
@@ -502,6 +501,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Další postup
-Podívejte se na následující příklad pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data ze služby Azure blob storage do služby Azure SQL database: 
+Podívejte se na následující příklad pro vytvoření kanálu pomocí sady .NET SDK, který kopíruje data z úložiště objektů BLOB v Azure do databáze SQL Azure: 
 
 - [Vytvoření kanálu pro kopírování dat z Blob Storage do SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)

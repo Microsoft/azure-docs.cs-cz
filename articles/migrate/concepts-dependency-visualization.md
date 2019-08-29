@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102894"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142905"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -45,7 +45,7 @@ Azure Migrate používá řešení [Service map](../operations-management-suite/
 
 - Když přidružujete pracovní prostor, získáte možnost vytvořit nový pracovní prostor nebo připojit nějaký existující:
   - Když vytváříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti ve stejném geografickém regionu [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v oblasti, kde [je podpora Service map podporována](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby bylo možné připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
+  - Když připojíte existující pracovní prostor, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedeny pouze ty pracovní prostory, které byly vytvořeny v oblasti, kde [je podpora Service map podporována](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Aby bylo možné připojit pracovní prostor, ujistěte se, že máte přístup čtenář k pracovnímu prostoru.
 
   > [!NOTE]
   > Jakmile připojíte pracovní prostor k projektu, nemůžete ho později změnit.
@@ -85,6 +85,6 @@ Pracovní prostor Log Analytics můžete použít mimo Azure Migrate. Neodstran�
 
 Pokud neodstraníte projekt Azure Migrate, neodstraňujte pracovní prostor vytvořený pomocí Azure Migrate. Pokud to uděláte, funkce vizualizace závislosti nebude fungovat podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Seskupení počítačů pomocí závislostí počítačů](how-to-create-group-machine-dependencies.md)
 - [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) o nejčastějších dotazech k vizualizaci závislostí.

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrahujte rukou psaný text - SDKC#'
+title: 'Rychlý start: Extrahování ručně psaného textu – sada SDKC#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
 services: cognitive-services
@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba72fdce42a8313903a26aead4a1c1922a9bb586
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 315e35535c29771fb12a97f26e6e2c294e888d07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603465"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137429"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Rychlý start: Extrahujte rukou psaný text pomocí počítačové zpracování obrazu C# SDK
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Rychlý start: Extrahování ručně psaného textu pomocí C# sady počítačové zpracování obrazu SDK
 
-V tomto rychlém startu se extrahovat tištěné nebo rukou psaný text z obrázku pomocí sady SDK pro zpracování obrazu počítače pro C#. Pokud chcete, můžete stáhnout kód v tomto průvodci jako kompletní ukázkovou aplikaci z [Cognitive Services Csharp vizi](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) úložišti na Githubu.
+V tomto rychlém startu budete z obrázku extrahovat ručně psaný nebo vytištěný text pomocí sady Počítačové zpracování obrazu SDK C#pro. Pokud chcete, můžete si kód v této příručce stáhnout jako kompletní ukázkovou aplikaci z Cognitive Servicesho úložiště [Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) na GitHubu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k přihlášení pro počítačové zpracování obrazu a získejte klíč.
+* Počítačové zpracování obrazu klíč předplatného. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 * Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
@@ -37,7 +37,7 @@ Pokud chcete spustit ukázku, postupujte takto:
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Microsoft.Azure.CognitiveServices.Vision.ComputerVision.
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
-1. `Program.cs` nahraďte následujícím kódem. `BatchReadFileAsync` a `BatchReadFileInStreamAsync` obalují metod [rozhraní API služby Batch pro čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) pro vzdálené a místní Image, v uvedeném pořadí. `GetReadOperationResultAsync` Metoda zabalí [získat API výsledek operace čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
+1. `Program.cs` nahraďte následujícím kódem. Metody `BatchReadFileAsync` a`BatchReadFileInStreamAsync` zabalí [rozhraní API služby Batch pro čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) pro vzdálené a místní image v uvedeném pořadí. Metoda zabalí [rozhraní API pro získání výsledku operace Get Read.](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) `GetReadOperationResultAsync`
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -179,7 +179,7 @@ Pokud chcete spustit ukázku, postupujte takto:
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď vytiskne řádky rozpoznaný text každé bitové kopie.
+Úspěšná odpověď vytiskne řádky rozpoznaného textu pro každý obrázek.
 
 ```console
 Calling GetHandwritingRecognitionOperationResultAsync()
@@ -193,7 +193,7 @@ The quick brown fox jumps over the lazy
 Pack my box with five dozen liquor jugs
 ```
 
-Zobrazit [rychlý start: Extrahujte rukou psaný text - REST, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) příklad nezpracovaného výstupu JSON z volání rozhraní API.
+Další [informace najdete v tématu rychlý Start: Extrahujte rukou psaný text, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) který je příkladem nezpracovaného výstupu JSON z volání rozhraní API.
 
 ## <a name="next-steps"></a>Další postup
 
