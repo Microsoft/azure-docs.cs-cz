@@ -1,49 +1,53 @@
 ---
-title: Nakonfigurujte virtuální plochy Preview Windows-metodu Vyrovnávání zatížení – Azure
-description: Jak konfigurovat metodu Vyrovnávání zatížení pro prostředí virtuálního klienta Windows.
+title: Konfigurace metody vyrovnávání zatížení ve verzi Preview pro virtuální počítače s Windows – Azure
+description: Jak nakonfigurovat metodu vyrovnávání zatížení pro prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328880"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163768"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení Preview virtuální plochy Windows
+# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení verze Preview pro virtuální počítače s Windows
 
-Konfigurace metodu Vyrovnávání zatížení pro skupinu hostitelů, můžete upravit prostředí Preview virtuální plochy Windows tak, aby lépe vyhovovala vašim potřebám.
+Konfigurace metody vyrovnávání zatížení pro fond hostitelů vám umožní upravit prostředí Windows Virtual Desktop Preview tak, aby lépe vyhovovalo vašim potřebám.
 
 >[!NOTE]
-> To se nevztahují na fond trvalé klasické pracovní plochy hostiteli vzhledem k tomu, že uživatelé vždy mít mapování 1:1 pro hostitele relace v rámci fondu hostitele.
+> To se nevztahuje na fond hostitelů trvalé plochy, protože uživatelé mají vždycky mapování 1:1 na hostitele relace v rámci fondu hostitelů.
 
-## <a name="configure-breadth-first-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení první šířka
+## <a name="configure-breadth-first-load-balancing"></a>Konfigurace šířky – první vyrovnávání zatížení
 
-Vyrovnávání zatížení šířka první je výchozí konfigurace pro nové dočasné hostitelů fondy. Vyrovnávání zatížení šířka první distribuuje nových uživatelských relací na všech hostitelích dostupných relace ve fondu hostitele. Při konfiguraci Vyrovnávání zatížení první kontejnerových nástrojů, můžete nastavit limit maximální časový limit relace na hostiteli relace ve fondu hostitele.
+Šířka – první vyrovnávání zatížení je výchozí konfigurace pro nové netrvalé fondy hostitelů. Šířka – první vyrovnávání zatížení distribuuje nové uživatelské relace napříč všemi dostupnými hostiteli relací ve fondu hostitelů. Při konfiguraci škály vyrovnávání zatížení můžete nastavit maximální počet relací na hostitele relace ve fondu hostitelů.
 
-Nejprve je potřeba [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
-Ke konfiguraci fondu hostitele k provedení první šířka zátěže bez nastavení limit maximální časový limit relace, spusťte následující rutinu Powershellu:
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
+
+Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení po prvním použití bez úprav maximálního limitu relací, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer
 ```
 
-Ke konfiguraci fondu hostitele provádět Vyrovnávání zatížení šířka první a použít novou relaci maximální limit, spusťte následující rutinu Powershellu:
+Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení a používal nový limit maximálního počtu relací, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer -MaxSessionLimit ###
 ```
 
-## <a name="configure-depth-first-load-balancing"></a>Konfigurace služby Vyrovnávání zatížení první hloubky
+## <a name="configure-depth-first-load-balancing"></a>Konfigurace hloubky – první vyrovnávání zatížení
 
-Vyrovnávání zatížení v první hloubce distribuuje nové relace uživatele na hostiteli, který k dispozici relace s nejvyšší počet připojení, avšak nepropracoval se limit prahové hodnoty maximální časový limit relace. Při konfiguraci služby Vyrovnávání zatížení hloubky první, je **musí** nastavit limit maximální časový limit relace na hostiteli relace ve fondu hostitele.
+Hloubka při prvním vyrovnávání zatížení distribuuje nové uživatelské relace k dostupnému hostiteli relace s největším počtem připojení, ale nedosáhla maximální prahové hodnoty limitu relací. Při konfiguraci vyrovnávání zatížení prvního rozsahu **musíte** nastavit maximální počet relací na hostitele relace ve fondu hostitelů.
 
-Ke konfiguraci fondu hostitele provádět Vyrovnávání zatížení první hloubka, spusťte následující rutinu Powershellu:
+Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení první hloubky, spusťte následující rutinu PowerShellu:
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -DepthFirstLoadBalancer -MaxSessionLimit ###

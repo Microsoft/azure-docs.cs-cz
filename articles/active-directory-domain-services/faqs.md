@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124674"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171904"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Nejčastější dotazy
 Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services. Udržujte kontrolu aktualizací.
@@ -79,7 +79,7 @@ Ne. Neudělujete oprávnění správce ve spravované doméně. Oprávnění spr
 Ne. Členství ve skupinách nelze upravovat v doménách, které jsou službou Azure AD Domain Services. Totéž platí pro atributy uživatele. Můžete ale změnit členství ve skupině nebo atributy uživatele buď v Azure AD, nebo v místní doméně. Tyto změny se automaticky synchronizují s Azure AD Domain Services.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak dlouho trvá, aby se změny v adresáři služby Azure AD zobrazily ve spravované doméně?
-Změny provedené v adresáři Azure AD pomocí uživatelského rozhraní Azure AD nebo PowerShellu se synchronizují do vaší spravované domény. Tento proces synchronizace běží na pozadí. Po dokončení počáteční synchronizace obvykle trvá přibližně 20 minut, než se změny provedené ve službě Azure AD projeví ve spravované doméně.
+Změny provedené v adresáři Azure AD pomocí uživatelského rozhraní služby Azure AD nebo PowerShellu se automaticky synchronizují do vaší spravované domény. Tento proces synchronizace běží na pozadí. Pro tuto synchronizaci není definováno žádné časové období, aby se dokončily všechny změny objektu.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Můžu roztáhnout schéma spravované domény, které poskytuje Azure AD Domain Services?
 Ne. Schéma je spravováno společností Microsoft pro spravovanou doménu. Azure AD Domain Services nepodporuje rozšíření schématu.

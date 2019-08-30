@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569001"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173433"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -24,7 +24,7 @@ Azure SQL Database poskytuje několik metod pro vytvoření reakční konzistent
 
 ## <a name="overview"></a>Přehled
 
-Kopie databáze je snímek zdrojové databáze v době žádosti o zkopírování. Můžete vybrat stejný server nebo jiný server. Můžete také zvolit, že se má zachovat vrstva služby a výpočetní velikost, nebo použít jinou výpočetní velikost v rámci stejné úrovně služby (edice). Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. V tuto chvíli můžete upgradovat nebo downgradovat na libovolnou edici. Přihlašovací jména, uživatele a oprávnění se dají spravovat nezávisle.  
+Kopie databáze je snímek zdrojové databáze v době žádosti o zkopírování. Můžete vybrat stejný server nebo jiný server. Můžete také zvolit, že se má zachovat vrstva služby a výpočetní velikost, nebo použít jinou výpočetní velikost v rámci stejné úrovně služby (edice). Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. V tuto chvíli můžete upgradovat nebo downgradovat na libovolnou edici. Přihlašovací jména, uživatele a oprávnění se dají spravovat nezávisle. Kopie se vytvoří pomocí technologie geografické replikace a po dokončení osazení se odkaz geografická replikace automaticky ukončí. Všechny požadavky na použití geografické replikace se vztahují na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](sql-database-active-geo-replication.md) .
 
 > [!NOTE]
 > [Automatizované zálohy databáze](sql-database-automated-backups.md) se používají při vytváření kopie databáze.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 Kompletní vzorový skript najdete v tématu [kopírování databáze na nový server](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+Kopie databáze je asynchronní operace, ale cílová databáze je vytvořena ihned po přijetí žádosti. Pokud potřebujete operaci kopírování zrušit, když stále probíhá, odstraňte cílovou databázi pomocí rutiny [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>Role RBAC pro správu kopie databáze
+
+Chcete-li vytvořit kopii databáze, budete muset být v následujících rolích.
+
+- Vlastník předplatného nebo
+- SQL Server role přispěvatele nebo
+- Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
+
+   Microsoft. SQL/servery/databáze/číst Microsoft. SQL/servery/databáze/zapisovat
+
+Pokud chcete kopii databáze zrušit, budete muset být v následujících rolích.
+
+- Vlastník předplatného nebo
+- SQL Server role přispěvatele nebo
+- Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
+
+   Microsoft. SQL/servery/databáze/číst Microsoft. SQL/servery/databáze/zapisovat
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopírování databáze pomocí jazyka Transact-SQL
 
@@ -108,6 +128,10 @@ Pomocí dotazu na zobrazení sys. databases a sys. DM _database_copies monitoruj
 > [!NOTE]
 > Pokud se rozhodnete zrušit kopírování během procesu, spusťte příkaz [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) v nové databázi. Také spuštění příkazu DROP DATABASE na zdrojové databázi také zruší proces kopírování.
 
+> [!IMPORTANT]
+> Pokud potřebujete vytvořit kopii s podstatně menším objektem typu SLO, než je zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání aplikace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení databáze SQL Azure pomocí záloh databáze](sql-database-recovery-using-backups.md#geo-restore) .
+
+
 ## <a name="resolve-logins"></a>Vyřešit přihlášení
 
 Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER User](https://msdn.microsoft.com/library/ms176060.aspx) přemapujte uživatele z nové databáze na přihlašovací údaje na cílovém serveru. Pokud chcete vyřešit osamocené uživatele, přečtěte si téma [řešení potíží s osamocenými](https://msdn.microsoft.com/library/ms175475.aspx)uživateli. Viz také [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
@@ -116,7 +140,7 @@ Všichni uživatelé v nové databázi si uchovávají oprávnění, která měl
 
 Další informace o správě uživatelů a přihlášení po zkopírování databáze na jiný SQL Database Server najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o přihlášeních najdete v tématech [Správa přihlášení](sql-database-manage-logins.md) a [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 * Informace o exportu databáze najdete v tématu [Export databáze do BacPac](sql-database-export.md).

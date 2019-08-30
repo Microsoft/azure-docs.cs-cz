@@ -1,6 +1,6 @@
 ---
-title: Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
-description: Zjistěte, jak přidat virtuální počítač do testovacího prostředí ve službě Azure DevTest Labs
+title: Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
+description: Naučte se, jak přidat virtuální počítač do testovacího prostředí v Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: be5ff2c59878cc966e73d89c18343b0a6ea3d89c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311580"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162254"
 ---
-# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
-Pokud už máte [vytvoření vašeho prvního virtuálního počítače](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), pravděpodobně jste to v předem načtené [image z marketplace](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* , který je buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede Přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí webu Azure portal.
+# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
+Pokud jste už [svůj první virtuální počítač vytvořili](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), pravděpodobně jste to učinili z předem načtené [image na webu Marketplace](devtest-lab-configure-marketplace-images.md). Pokud teď chcete do testovacího prostředí přidat další virtuální počítače, můžete také zvolit *základ* , který je buď [vlastní obrázek](devtest-lab-create-template.md) , nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede použitím Azure Portal k přidání virtuálního počítače do testovacího prostředí v DevTest Labs.
 
-Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač ve vaší laboratoři.
+Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač v testovacím prostředí.
 
-## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
+## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání virtuálního počítače do testovacího prostředí v Azure DevTest Labs
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** v **DEVOPS** oddílu. Pokud vyberete * (hvězdičkami) vedle položky **DevTest Labs** v **DEVOPS** oddílu. Tato akce přidá **DevTest Labs** do levé navigační nabídce tak, aby k němu máte přístup snadno dalším. Pak můžete vybrat **DevTest Labs** v navigační nabídce vlevo.
+1. Vyberte **všechny služby**a potom v části **DEVOPS** vyberte **DevTest Labs** . Pokud vyberete * (hvězdička) vedle **DevTest Labs** v části **DEVOPS** . Tato akce přidá **DevTest Labs** do levé navigační nabídky, abyste k ní mohli snadno získat přístup později. Pak můžete v levé navigační nabídce vybrat **DevTest Labs** .
 
-    ![Vyberte všechny služby – DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
-1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete vytvořit virtuální počítač.
-2. Cvičení **přehled** stránce **+ přidat**.
+    ![Všechny služby – výběr DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
+1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete virtuální počítač vytvořit.
+2. Na stránce **Přehled** testovacího prostředí vyberte **+ Přidat**.
 
-    ![Přidání tlačítka virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. Na **vyberte bázi** vyberte marketplace image pro virtuální počítač.
-1. Na **základní nastavení** karty **virtuálního počítače** stránce, proveďte následující akce:
-    1. Zadejte název pro virtuální počítač v **název virtuálního počítače** textového pole. Do textového pole je pro vás předem vyplněný s jedinečným názvem automaticky generované. Název odpovídá uživatelské jméno v e-mailovou adresu, za nímž následuje jedinečný 3 číslice. Tato funkce vám ušetří čas přemýšlení o název počítače a zadávat pokaždé, když vytváříte počítač. Pokud budete chtít, můžete přepsat toto pole automaticky vyplněný s názvem podle vašeho výběru. Pokud chcete přepsat automaticky vyplněný název pro virtuální počítač, zadejte název do **název virtuálního počítače** textového pole.
-    2. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači. **Uživatelské jméno** pro počítač je předem vyplněná jedinečný automaticky generovaný název. Název odpovídá uživatelské jméno v e-mailovou adresu. Tato funkce vám ušetří čas při rozhodování o uživatelského jména pokaždé, když vytvoříte nový počítač. Pokud chcete znovu, můžete přepsat toto pole automaticky vyplněný s uživatelským jménem podle svého výběru. Chcete-li přepsat automaticky vyplněné hodnoty pro uživatelské jméno, zadejte hodnotu v **uživatelské jméno** textového pole. Tomuto uživateli je udělen **správce** oprávnění na virtuálním počítači.
-    3. Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte **heslo** pro daného uživatele. Chcete-li uložit toto heslo jako výchozí heslo ve službě Azure key vault související s testovacím prostředí, vyberte **uložit jako výchozí heslo**. Výchozí heslo se uloží ve službě key vault s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí, **VmPassword** je automaticky vybrána pro **heslo**. Chcete-li přepsat hodnotu, zrušte **použít uložený tajný kód** zaškrtněte políčko a zadejte heslo.
+    ![Tlačítko pro přidání virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+1. Na stránce **Zvolte základní** stránku vyberte Image Marketplace pro virtuální počítač.
+1. Na kartě **základní nastavení** na stránce **virtuální počítač** proveďte následující akce:
+    1. Do textového pole **název virtuálního počítače** zadejte název virtuálního počítače. Textové pole je předem vyplněno jedinečným automaticky generovaným názvem. Název odpovídá uživatelskému jménu v e-mailové adrese a následuje jedinečné číslo 3 číslice. Tato funkce šetří čas, po který si myslíte název počítače a zadejte ho pokaždé, když vytvoříte počítač. Pokud chcete, můžete toto automaticky vyplněné pole přepsat názvem dle vašeho výběru. Pokud chcete pro virtuální počítač přepsat automaticky vyplněný název, zadejte název do textového pole **název virtuálního počítače** .
+    2. Zadejte **uživatelské jméno** , kterému je uděleno oprávnění správce na virtuálním počítači. **Uživatelské jméno** pro tento počítač je předem vyplněno jedinečným automaticky generovaným názvem. Název odpovídá uživatelskému jménu v rámci své e-mailové adresy. Tato funkce šetří čas pro rozhodování o uživatelském jménu pokaždé, když vytvoříte nový počítač. V případě potřeby můžete toto automaticky vyplněné pole přepsat vlastním uživatelským jménem dle vašeho výběru. Pokud chcete pro uživatelské jméno přepsat automaticky vyplněnou hodnotu, zadejte do textového pole **uživatelské jméno** hodnotu. Tento uživatel má na virtuálním počítači udělená oprávnění **správce** .
+    3. Pokud vytváříte první virtuální počítač v testovacím prostředí, zadejte **heslo** pro tohoto uživatele. Pokud chcete toto heslo uložit jako výchozí heslo do trezoru klíčů Azure přidruženého k testovacímu prostředí, vyberte **Uložit jako výchozí heslo**. Výchozí heslo je uloženo v trezoru klíčů s názvem: **VmPassword**. Při pokusu o vytvoření dalších virtuálních počítačů v testovacím prostředí se pro **heslo**automaticky vybere **VmPassword** . Pokud chcete hodnotu přepsat, zrušte zaškrtnutí políčka **použít uložený tajný kód** a zadejte heslo.
 
         ![Výběr základní image](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
-        Můžete také tajné kódy ve službě key vault nejdříve uložte a pak použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [Store tajné kódy ve službě key vault](devtest-lab-store-secrets-in-key-vault.md). Chcete-li použít heslo uložené ve službě key vault, vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo).
-    4. V **další možnosti** vyberte **změnit velikost**. Vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
-    5. Vyberte **přidat nebo odebrat artefakty**. Vyberte a nakonfigurujte artefakty, které chcete přidat do základní image.
-    **Poznámka:** Pokud začínáte s DevTest Labs začínáte nebo konfigurace artefakty, vyhledejte [k virtuálnímu počítači přidat existující artefakt](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a pak se sem vraťte po dokončení.
-2. Přepněte **Upřesnit nastavení** kartě v horní části a proveďte následující akce:
-    1. Chcete-li změnit virtuální síť, virtuální počítač, vyberte **změnit virtuální síť**.
-    2. Pokud chcete změnit podsíť, vyberte **změnit podsíť**.
-    3. Určete, jestli je IP adresa virtuálního počítače **veřejné, privátní nebo sdílené**.
-    4. Pokud chcete automaticky odstranit virtuální počítač, zadejte **datum a čas vypršení**.
-    5. Chcete-li virtuální počítač nárokovatelných uživatelem testovacího prostředí, vyberte **Ano** pro **nastavit tento počítač nárokovatelných** možnost.
-    6. Zadejte počet **instancí virtuálních počítačů** chcete zpřístupnit uživatelům testovacího prostředí.
+        V trezoru klíčů můžete nejdřív také ukládat tajné klíče a pak je použít při vytváření virtuálního počítače v testovacím prostředí. Další informace najdete v tématu [uložení tajných klíčů v trezoru klíčů](devtest-lab-store-secrets-in-key-vault.md). Pokud chcete použít heslo uložené v trezoru klíčů, vyberte **použít uložený tajný kód**a zadejte hodnotu klíče, která odpovídá vašemu tajnému klíči (heslo).
+    4. V části **Další možnosti** vyberte **změnit velikost**. Vyberte jednu z předdefinovaných položek, které určují jádra procesoru, velikost paměti RAM a velikost pevného disku virtuálního počítače, který se má vytvořit.
+    5. Vyberte **Přidat nebo odebrat artefakty**. Vyberte a nakonfigurujte artefakty, které chcete přidat do základní image.
+    **Poznámka:** Pokud s DevTest Labs začínáte a konfigurujete artefakty, přečtěte si část [Přidání existujícího artefaktu do virtuálního počítače](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) a po dokončení se vraťte sem.
+2. V horní části přepněte na kartu **Upřesnit nastavení** a proveďte následující akce:
+    1. Pokud chcete změnit virtuální síť, ve které je virtuální počítač, vyberte **změnit virtuální**síť.
+    2. Chcete-li změnit podsíť, vyberte možnost **změnit podsíť**.
+    3. Určete, jestli je IP adresa virtuálního počítače **veřejná, soukromá nebo sdílená**.
+    4. Pokud chcete virtuální počítač automaticky odstranit, zadejte **Datum a čas vypršení platnosti**.
+    5. Pokud chcete virtuální počítač vyžádat od uživatele testovacího prostředí, vyberte **Ano** , aby se tato možnost vymáhat z **tohoto počítače** mohla vydávat.
+    6. Zadejte počet **instancí virtuálního počítače** , které mají být k dispozici pro uživatele testovacího prostředí.
 
         ![Výběr základní image](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
-1. Vyberte **vytvořit** zadaný virtuální počítač přidat do testovacího prostředí.
+1. Výběrem **vytvořit** přidejte zadaný virtuální počítač do testovacího prostředí.
 
-   Na stránce testovacího prostředí se zobrazuje stav vytvoření Virtuálního počítače – nejprve jako **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
+   Stránka testovací prostředí zobrazuje stav vytvoření virtuálního počítače, který se nejdřív **vytvoří**, a pak se **spustí** po spuštění virtuálního počítače.
 
     ![Stav vytváření virtuálního počítače](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
 ## <a name="add-an-existing-artifact-to-a-vm"></a>Přidat existující artefakt do virtuálního počítače
-Při vytváření virtuálního počítače, můžete přidat existující artefakty. Pro každé testovací prostředí obsahuje artefakty z veřejného úložiště artefaktů DevTest Labs, stejně jako artefakty, které jste vytvořili a přidání úložiště artefaktů.
+Při vytváření virtuálního počítače můžete přidat existující artefakty. Každé testovací prostředí zahrnuje artefakty z úložiště artefaktů veřejných DevTest Labs i artefakty, které jste vytvořili a přidali do vlastního úložiště artefaktů.
 
-* Azure DevTest Labs *artefakty* vám umožní zadat *akce* prováděných při zřízení virtuálního počítače, jako je například spouštění skriptů Windows Powershellu, příkazů Bash a instalace softwaru.
-* Artefakt *parametry* umožňují přizpůsobit artefakt pro váš konkrétní scénář
+* Azure DevTest Labs *artefakty* umožňují určit *Akce* , které se provedou při zřizování virtuálního počítače, například spouštění skriptů prostředí Windows PowerShell, spouštění příkazů bash a instalace softwaru.
+* *Parametry* artefaktu umožňují přizpůsobit artefakt pro konkrétní scénář.
 
-Chcete zjistit, jak vytvořit artefakty, najdete v článku, [informace o vytváření vlastních artefaktů pro použití s DevTest Labs](devtest-lab-artifact-author.md).
+Chcete-li zjistit, jak vytvořit artefakty, přečtěte si článek, [jak vytvářet vlastní artefakty pro použití s DevTest Labs](devtest-lab-artifact-author.md).
 
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
-1. V seznamu testovacích prostředí vyberte prostředí obsahující tento virtuální počítač, se kterým chcete pracovat.
-1. Vyberte **Moje virtual machines**.
+1. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
+1. V seznamu cvičení vyberte testovací prostředí obsahující virtuální počítač, se kterým chcete pracovat.
+1. Vyberte **moje virtuální počítače**.
 1. Vyberte požadovaný virtuální počítač.
-1. Vyberte **spravovat artefakty**.
+1. Vyberte **Spravovat artefakty**.
 1. Vyberte **použít artefakty**.
-1. Na **použít artefakty** podokně, vyberte prosím artefakt, který chcete přidat do virtuálního počítače.
-1. Na **přidání artefaktu** podokně, zadejte hodnoty požadovaných parametrů a všechny volitelné parametry, které potřebujete.
-1. Vyberte **přidat** přidat artefakt a vraťte **použít artefakty** podokně.
+1. V podokně **použít artefakty** vyberte artefakt, který chcete přidat do virtuálního počítače.
+1. V podokně **Přidat artefakt** zadejte požadované hodnoty parametrů a všechny volitelné parametry, které potřebujete.
+1. Vyberte **Přidat** a přidejte artefakt a vraťte se do podokna **použít artefakty** .
 1. Pokračujte v přidávání artefaktů podle potřeby pro váš virtuální počítač.
-1. Po přidání artefaktů můžete [změnit pořadí, ve kterém jsou spuštěny artefakty](#change-the-order-in-which-artifacts-are-run). Můžete také přejít zpět k [zobrazit nebo upravit artefakt](#view-or-modify-an-artifact).
-1. Při přidávání artefaktů budete mít, vyberte **použít**
+1. Po přidání artefaktů můžete [změnit pořadí, ve kterém jsou artefakty spuštěny](#change-the-order-in-which-artifacts-are-run). Můžete také přejít zpátky a [Zobrazit nebo upravit artefakt](#view-or-modify-an-artifact).
+1. Až skončíte s přidáváním artefaktů, vyberte **použít** .
 
-## <a name="change-the-order-in-which-artifacts-are-run"></a>Změnit pořadí, ve kterém jsou spuštěny artefaktů
-Ve výchozím nastavení akcí artefakty provádějí v pořadí, ve kterém byly přidány k virtuálnímu počítači.
-Následující postup ukazuje, jak změnit pořadí, ve kterém jsou spuštěny artefakty.
+## <a name="change-the-order-in-which-artifacts-are-run"></a>Změna pořadí, ve kterém jsou artefakty spuštěny
+Ve výchozím nastavení jsou akce artefaktů spouštěny v pořadí, ve kterém jsou přidány do virtuálního počítače.
+Následující postup ukazuje, jak změnit pořadí, ve kterém jsou artefakty spuštěny.
 
-1. V horní části **použít artefakty** podokně, vyberte odkaz, která udává počet artefaktů, které byly přidány k virtuálnímu počítači.
+1. V horní části podokna **použít artefakty** vyberte odkaz označující počet artefaktů přidaných do virtuálního počítače.
 
-    ![Počet artefaktů, které jsou přidány do virtuálního počítače](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na **vybrané artefakty** podokně přetáhněte a umístěte artefakty do požadovaného pořadí. **Poznámka:** Pokud máte potíže při přetahování artefaktu, ujistěte se, že přetáhnete na levé straně artefaktu.
+    ![Počet artefaktů přidaných do virtuálního počítače](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. V podokně **vybrané artefakty** přetáhněte artefakty do požadovaného pořadí. **Poznámka:** Pokud máte potíže při přetahování artefaktem, ujistěte se, že přetahujete z levé strany artefaktu.
 1. Až to budete mít, vyberte **OK**.
 
-## <a name="view-or-modify-an-artifact"></a>Zobrazit nebo upravit artefakt
-Následující kroky ukazují, jak zobrazit nebo upravit parametry artefaktu:
+## <a name="view-or-modify-an-artifact"></a>Zobrazení nebo úprava artefaktu
+Následující postup ukazuje, jak zobrazit nebo upravit parametry artefaktu:
 
-1. V horní části **použít artefakty** podokně, vyberte odkaz, která udává počet artefaktů, které byly přidány k virtuálnímu počítači.
+1. V horní části podokna **použít artefakty** vyberte odkaz označující počet artefaktů přidaných do virtuálního počítače.
 
-    ![Počet artefaktů, které jsou přidány do virtuálního počítače](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Na **vybrané artefakty** podokně, vyberte prosím artefakt, který chcete zobrazit nebo upravit.
-1. Na **přidání artefaktu** podokno, zkontrolujte všechny potřebné změny a vyberte **OK** zavřete **přidání artefaktu** podokně.
-1. Vyberte **OK** zavřete **vybrané artefakty** podokně.
+    ![Počet artefaktů přidaných do virtuálního počítače](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. V podokně **vybrané artefakty** vyberte artefakt, který chcete zobrazit nebo upravit.
+1. V podokně **Přidat artefakt** proveďte potřebné změny a kliknutím na **tlačítko OK** zavřete podokno **Přidat artefakt** .
+1. Výběrem **OK** zavřete podokno **vybrané artefakty** .
 
-## <a name="save-azure-resource-manager-template"></a>Uložit šablonu Azure Resource Manageru
-Šablony Azure Resource Manageru poskytuje deklarativní způsob, jak definovat opakovatelné nasazování.
-Následující postup vysvětluje, jak uložit šablonu Azure Resource Manageru pro virtuální počítač vytváří.
-Po uložení, můžete použít šablony Azure Resource Manageru k [nasazení nových virtuálních počítačů pomocí Azure Powershellu](../azure-resource-manager/resource-group-overview.md#template-deployment).
+## <a name="save-azure-resource-manager-template"></a>Uložit šablonu Azure Resource Manager
+Šablona Azure Resource Manager poskytuje deklarativní způsob, jak definovat opakované nasazení.
+Následující postup vysvětluje, jak uložit šablonu Azure Resource Manager pro vytvářený virtuální počítač.
+Po uložení můžete použít šablonu Azure Resource Manager k [nasazení nových virtuálních počítačů s Azure PowerShell](../azure-resource-manager/template-deployment-overview.md).
 
-1. Na **virtuálního počítače** vyberte **zobrazení šablony Azure Resource Manageru**.
-2. Na **zobrazení Azure Resource Manageru šablony** podokně, vyberte text šablony.
-3. Zkopírování vybraného textu do schránky.
-4. Vyberte **OK** zavřete **šablony Azure Resource Manageru zobrazit podokno**.
+1. V podokně **virtuální počítač** vyberte **Zobrazit Azure Resource Manager šablonu**.
+2. V podokně **zobrazit Azure Resource Manager šablonu** vyberte text šablony.
+3. Zkopíruje vybraný text do schránky.
+4. Výběrem **OK** zavřete **podokno Azure Resource Manager šablon zobrazení**.
 5. Otevřete textový editor.
-6. Vložte text šablony ze schránky.
-7. Uložte pro pozdější použití.
+6. Vloží text šablony ze schránky.
+7. Uložte soubor pro pozdější použití.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Další postup
-* Po vytvoření virtuálního počítače může připojit k virtuálnímu počítači tak, že vyberete **připojit** v podokně Virtuálního počítače.
-* Zjistěte, jak [při vytváření vlastních artefaktů pro virtuální počítač DevTest Labs](devtest-lab-artifact-author.md).
-* Prozkoumejte [Galerie šablon QuickStart pro Azure Resource Manageru DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+## <a name="next-steps"></a>Další kroky
+* Po vytvoření virtuálního počítače se můžete připojit k virtuálnímu počítači tak, že v podokně virtuálního počítače vyberete **připojit** .
+* Naučte se [vytvářet vlastní artefakty pro virtuální počítač DevTest Labs](devtest-lab-artifact-author.md).
+* Prozkoumejte [galerii šablon rychlého startu Azure Resource Manager DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512554"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162269"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Doprovodné materiály k licencování spolupráce Azure Active Directory s B2B
 
@@ -32,10 +32,10 @@ Uživatelé typu Host můžou taky používat bezplatné funkce Azure AD bez dal
 ## <a name="examples-calculating-guest-user-licenses"></a>Příklady: Výpočet uživatelských licencí typu Host
 Jakmile určíte, kolik uživatelů typu Host potřebuje získat přístup k placeným službám Azure AD, ujistěte se, že máte dostatek placené licence Azure AD, aby pokryly uživatele typu Host v požadovaném poměru 1:5. Následuje několik příkladů:
 
-- Chcete pozvat 100 uživatelů typu host na vaše aplikace nebo služby Azure AD a chcete přiřadit správu přístupu a zřizování všem uživatelům typu Host. Také budete chtít vyžadovat MFA a podmíněný přístup pro 50 těchto uživatelů typu Host. K pokrytí této kombinace budete potřebovat 10 licencí Azure AD Basic a licence 10 Azure AD Premium P1. Pokud plánujete použití funkcí ochrany identit u uživatelů typu Host, budete potřebovat Azure AD Premium licence P2 ve stejném poměru 1:5, aby pokryly uživatele typu Host.
+- Chcete pozvat 100 uživatelů typu host na vaše aplikace nebo služby Azure AD a zajistit správu a zřizování přístupu. Pro 50 těchto uživatelů typu Host budete také chtít vyžadovat MFA a podmíněný přístup, takže pro tyto funkce budete potřebovat 10 Azure AD Premiumch licencí P1. Pokud plánujete použití funkcí ochrany identit u uživatelů typu Host, budete potřebovat Azure AD Premium licence P2 ve stejném poměru 1:5, aby pokryly uživatele typu Host.
 - Chcete pozvat 60 uživatelů typu Host, kteří požadují MFA, takže musíte mít minimálně 12 Azure AD Premium licencí P1. Máte 10 zaměstnanců s licencemi Azure AD Premium P1, což by umožnilo 50 uživatelům typu Host v rámci licenčního poměru 1:5. Abyste pokryli 10 dalších uživatelů typu Host, budete si muset koupit dvě další licence Premium P1.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podívejte se na následující zdroje informací o spolupráci Azure AD B2B:
 

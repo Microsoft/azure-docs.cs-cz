@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 1f798917548f4a744518b12ba1e2be2095bdf1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811634"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164511"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
@@ -42,7 +42,7 @@ Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění
     
 ### <a name="works-with-all-your-azure-data"></a>Možnost práce se všemi daty Azure
   
-Data Lake Analytics spolupracuje s Azure Data Lake Store na zajištění nejvyššího výkonu, propustnosti a paralelizace a funguje s objekty blob Azure Storage, službou Azure SQL Database a datovým skladem Azure.
+Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a spolupracuje s Azure Storagemi bloby, Azure SQL Database a Azure Warehouse.
 
 ### <a name="next-steps"></a>Další postup
  

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927292"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171923"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -65,17 +65,16 @@ Chcete-li tento obsah HTML hostovat ve službě BLOB Storage, postupujte násled
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce **centra** vyberte **Nový** > **úložiště** > **účet**úložiště.
-3. Zadejte jedinečný **název** účtu úložiště.
-4. **Model nasazení** může zůstat **Správce prostředků**.
-5. Změňte **druh účtu** na **úložiště objektů BLOB**.
-6. **Výkon** může zůstat v **úrovni Standard**.
-7. **Replikace** může zůstat v **RA-GRS**.
-8. **Úroveň přístupu** může zůstatv chodu.
-9. **Šifrování služby úložiště** může zůstat **zakázané**.
-10. Vyberte **předplatné** pro účet úložiště.
-11. Vytvořte **skupinu prostředků** nebo vyberte existující.
-12. Vyberte **zeměpisnou polohu** svého účtu úložiště.
-13. Vytvořte účet úložiště kliknutím na **Vytvořit**.  
+3. Vyberte **předplatné** pro účet úložiště.
+4. Vytvořte **skupinu prostředků** nebo vyberte existující.
+5. Zadejte jedinečný **název** účtu úložiště.
+6. Vyberte **zeměpisnou polohu** svého účtu úložiště. 
+7. **Model nasazení** může zůstat **Správce prostředků**.
+8. **Výkon** může zůstat v **úrovni Standard**.
+9. Změňte **druh účtu** na **úložiště objektů BLOB**.
+10. **Replikace** může zůstat v **RA-GRS**.
+11. **Úroveň přístupu** může zůstatv chodu. 
+12. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte účet úložiště.  
     Po dokončení nasazení se automaticky otevře okno **účet úložiště** .
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru

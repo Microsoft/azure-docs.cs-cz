@@ -1,74 +1,98 @@
 ---
-title: Kurz ke kopírování dat prostřednictvím protokolu SMB v Azure Data Box náročné | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data do vaší Azure Data Box náročné prostřednictvím protokolu SMB
+title: Kurz kopírování dat pomocí protokolu SMB v Azure Data Box Heavy | Microsoft Docs
+description: Naučte se, jak kopírovat data do Azure Data Box Heavy přes SMB.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592419"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164375"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box náročné prostřednictvím protokolu SMB
+::: zone target = "docs"
 
-Tento kurz popisuje, jak se připojit k a kopírování dat z hostitelského počítače pomocí místního webového uživatelského rozhraní.
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Kurz: Kopírování dat do Azure Data Box Heavy přes protokol SMB
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="copy-data-to-azure-data-box-heavy"></a>Kopírovat data do Azure Data Box Heavy
+
+::: zone-end
+
+::: zone target = "docs"
+
+V tomto kurzu se dozvíte, jak se připojit a kopírovat data z hostitelského počítače pomocí místního webového uživatelského rozhraní.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Připojte se k datové pole náročná na výkon
-> * Kopírování dat do služby Data Box Heavy
+> * Připojení k Data Box Heavy
+> * Kopírovat data do Data Box Heavy
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+Data ze zdrojového serveru můžete zkopírovat do svého Data Box přes SMB, NFS, REST, službu kopírování dat nebo na spravované disky.
+
+V každém případě se ujistěte, že název sdílené složky a složky a velikost dat následují podle pokynů popsaných v [Azure Storage a data box Heavych omezeních služeb](data-box-heavy-limits.md).
+
+::: zone-end
+
+::: zone target = "docs"
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurzu: Azure Data Box náročné nastavit](data-box-deploy-set-up.md).
-2. Jste přijali vaše náročné pole Data a stav objednávky na portálu je **dodáno**.
-3. Máte hostitelský počítač, který obsahuje data, který chcete zkopírovat do Data Box náročné. Hostitelský počítač musí splňovat tyto požadavky:
+1. Dokončili [jste kurz: Nastavte Azure Data Box Heavy](data-box-deploy-set-up.md).
+2. Dostali jste Data Box Heavy se **doručí**stav objednávky na portálu.
+3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Box Heavy. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Pro nejrychlejší kopírování rychlosti můžete využít dvě připojení 10GbE 40 (jeden do každého uzlu) paralelně. Pokud nemáte k dispozici připojení 10GbE 40, doporučujeme, že máte alespoň dva 10 GbE připojení (jeden do každého uzlu).
+    - Musí být připojený k vysokorychlostní síti. Pro nejrychlejší rychlost kopírování je možné využít paralelní připojení 2 40-GbE (jeden na uzel). Pokud nemáte k dispozici připojení 40-GbE, doporučujeme, abyste měli aspoň 2 10 připojení (jedna na jeden uzel).
+   
 
-## <a name="connect-to-data-box-heavy-shares"></a>Připojte se k velkým pole Data sdílené složky
+## <a name="connect-to-data-box-heavy-shares"></a>Připojení k Data Box Heavy sdíleným složkám
 
-Založené na vybraný účet úložiště, datové pole v případě velkého vytvoří až:
+V závislosti na vybraném účtu úložiště Data Box Heavy vytvoří až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
-- Jedna sdílená složka pro premium storage.
-- Jedna sdílená složka pro účet služby blob storage.
+- Jedna sdílená složka pro Premium Storage.
+- Jedna sdílená složka pro účet úložiště objektů BLOB.
 
-Tyto prostředky jsou vytvářeny na obou uzlech zařízení.
+Tyto sdílené složky se vytvářejí na obou uzlech zařízení.
 
-V rámci sdílené složky objektů blob bloku blob a stránky:
-- Na první úrovni entity jsou kontejnery.
-- Druhé úrovně entity jsou objekty BLOB.
+V části objekty blob bloku a sdílené složky objektů blob stránky:
+- Entity první úrovně jsou kontejnery.
+- Entity druhé úrovně jsou objekty blob.
 
-V rámci sdílené složky pro soubory Azure:
-- Na první úrovni entity jsou sdílené složky.
-- Druhé úrovně entity jsou soubory.
+V části sdílené složky pro soubory Azure:
+- Entity první úrovně jsou sdílené složky.
+- Entity druhé úrovně jsou soubory.
 
-V následující tabulce jsou uvedeny cesty UNC ke sdílené složky na vaše Data Box zátěži a Azure Storage cestu adresy URL kterého se nahrávají data. Konečná adresa URL služby Azure Storage cesta může být odvozena z cesty UNC sdílené složky.
+V následující tabulce je uvedena cesta UNC ke sdíleným složkám na Data Box Heavy a adresa URL cesty Azure Storage, kam se data nahrají. Konečnou adresu URL pro cestu Azure Storage lze odvodit z cesty ke sdílené složce UNC.
  
 |                   |                                                            |
 |-------------------|--------------------------------------------------------------------------------|
-| Objekty BLOB bloku Azure | <li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
-| Objekty BLOB stránky Azure  | <li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
-| Soubory Azure       |<li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
+| Objekty blob bloku Azure | <li>Cesta UNC ke sdíleným složkám:`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL Azure Storage:`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Objekty blob stránky Azure  | <li>Cesta UNC ke sdíleným složkám:`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL Azure Storage:`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Soubory Azure       |<li>Cesta UNC ke sdíleným složkám:`\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Adresa URL Azure Storage:`https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-Postup připojení pomocí Windows nebo Linuxem klienta se liší.
+Postup připojení pomocí klienta se systémem Windows nebo Linux se liší.
 
 > [!NOTE]
-> Postupujte podle stejných kroků pro připojení k uzlům zařízení paralelně.
+> Použijte stejný postup k paralelnímu připojení k oběma uzlům zařízení.
 
 ### <a name="connect-on-a-windows-system"></a>Připojení v systému Windows
 
-Pokud používáte počítač s Windows serverem hostitele, postupujte podle těchto kroků se připojíte k velkým pole Data.
+Pokud používáte hostitelský počítač s Windows serverem, připojte se k Data Box Heavy pomocí těchto kroků.
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **Získat přihlašovací údaje** získejte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště.
 
@@ -78,14 +102,14 @@ Pokud používáte počítač s Windows serverem hostitele, postupujte podle tě
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
-3. Pro přístup ke složkám přidružené k účtu úložiště (*databoxe2etest* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
+3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*databoxe2etest* v následujícím příkladu) z hostitelského počítače, otevřete příkazové okno. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     V závislosti na formátu vašich dat budou sdílené cesty vypadat podobně jako níže:
-    - Azure objekt blob bloku – `\\10.100.10.100\databoxe2etest_BlockBlob`
-    - Azure objektů blob stránky – `\\10.100.10.100\databoxe2etest_PageBlob`
-    - Soubory Azure – `\\10.100.10.100\databoxe2etest_AzFile`
+    - Objekt blob bloku Azure –`\\10.100.10.100\databoxe2etest_BlockBlob`
+    - Objekt blob stránky Azure –`\\10.100.10.100\databoxe2etest_PageBlob`
+    - Soubory Azure –`\\10.100.10.100\databoxe2etest_AzFile`
     
 4. Po zobrazení výzvy zadejte heslo ke sdílené složce. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
 
@@ -95,49 +119,49 @@ Pokud používáte počítač s Windows serverem hostitele, postupujte podle tě
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na tlačítko **OK** otevřete Průzkumníka souborů.
+4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
-    Teď byste měli vidět sdílené složky jako složky.
+    Nyní byste měli vidět sdílené složky jako složky.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-2.png)
 
-    **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data odesílají jako objekty BLOB. Nelze kopírovat soubory přímo do *kořenové* složky v účtu úložiště.
+    **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složka vytvořená v části objekty blob bloku a sdílené objekty blob stránky představuje kontejner, do kterého se data nahrají jako objekty blob. Soubory nemůžete kopírovat přímo do *kořenové* složky v účtu úložiště.
     
 ### <a name="connect-on-a-linux-system"></a>Připojení v systému Linux
 
-Použití klienta systému Linux, pomocí následujícího příkazu připojte sdílenou složku SMB.
+Pokud používáte klienta se systémem Linux, připojte sdílenou složku SMB pomocí následujícího příkazu.
 
 ```
 sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/databoxubuntuhost/databox
 ```
 
-`vers` Parametr je verze protokolu SMB, která podporuje hostitele se systémem Linux. Zařaďte příslušnou verzi ve výše uvedeném příkazu.
+`vers` Parametr je verze protokolu SMB, kterou podporuje váš hostitel pro Linux. Připojte v příkazu výše příslušnou verzi.
 
-Verze protokolu SMB, která podporuje náročné pole dat, naleznete v tématu [podporované souborové systémy pro klienty Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
+Verze protokolu SMB, které podporuje Data Box Heavy, najdete v části [podporované systémy souborů pro klienty se systémem Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
 
-## <a name="copy-data-to-data-box-heavy"></a>Kopírování dat do služby Data Box Heavy
+## <a name="copy-data-to-data-box-heavy"></a>Kopírovat data do Data Box Heavy
 
-Po připojení ke sdíleným složkám náročné pole dat, dalším krokem je zkopírovat data.
+Až budete připojeni ke sdíleným složkám Data Box Heavy, je dalším krokem kopírování dat.
 
-### <a name="copy-considerations"></a>Důležité informace o kopírování
+### <a name="copy-considerations"></a>Požadavky na kopírování
 
-Než začnete kopírování dat, projděte si následující aspekty:
+Než začnete s kopírováním dat, přečtěte si následující skutečnosti:
 
-- Ujistěte se, že zkopírovat data do sdílené složky, které odpovídají formátu příslušná data. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Zkopírujte virtuální pevné disky do objektů blob stránky.
+- Nezapomeňte zkopírovat data do sdílených složek, které odpovídají příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Zkopírujte virtuální pevné disky do objektu blob stránky.
 
-    Pokud formát dat neshoduje s typem příslušné sdílené složky, pak v pozdějším kroku, nahrát data do Azure se nezdaří.
--  Při kopírování dat, ujistěte se, že velikost dat odpovídá omezení velikosti podle [služby Azure storage a Data Box náročné omezení](data-box-heavy-limits.md).
-- Pokud se data, která se nahrává podle těžké pole Data, současně odešle jiné aplikace mimo náročné pole dat, pak to může způsobit poškození nahrávání úlohy selhání a data.
+    Pokud se formát dat neshoduje s odpovídajícím typem sdílené složky, pak se v pozdějším kroku nahrávání dat do Azure nezdaří.
+-  Při kopírování dat se ujistěte, že velikost dat odpovídá omezení velikosti popsané v [úložišti Azure a omezeních data box Heavy](data-box-heavy-limits.md).
+- Pokud jsou data odesílaná pomocí Data Box Heavy souběžně nahraná jinými aplikacemi mimo Data Box Heavy, může to vést k selhání úlohy a poškození dat.
 - Doporučujeme:
-    - Nepoužíváte protokolu SMB a systému souborů NFS ve stejnou dobu.
-    - Zkopírujte stejná data do stejného cíle end v Azure.
+    - Současně nepoužíváte protokoly SMB i NFS.
+    - Zkopírujte stejná data do stejného koncového cíle v Azure.
      
   V těchto případech nelze určit konečný výsledek.
-- Vždy vytvořte složku pro soubory, které chcete kopírovat v rámci sdílené složky a potom zkopírujte soubory do této složky. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data nahrají jako objekty BLOB. Nelze kopírovat soubory přímo do *kořenové* složky v účtu úložiště.
+- Vždy vytvořte složku pro soubory, které máte v úmyslu zkopírovat do sdílené složky, a poté soubory zkopírujte do této složky. Složka vytvořená v části objekty blob bloku a sdílené objekty blob stránky představuje kontejner, do kterého se data nahrají jako objekty blob. Soubory nemůžete kopírovat přímo do *kořenové* složky v účtu úložiště.
 
-Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
+Po připojení ke sdílené složce SMB spusťte kopii dat.
 
 1. Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
     
@@ -152,7 +176,7 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
     |/r:     |Určuje počet opakovaných pokusů při neúspěšném kopírování.         |
     |/w:     |Určuje dobu čekání mezi opakovanými pokusy v sekundách.         |
     |/is     |Zahrne stejné soubory.         |
-    |/nfl    |Určuje, že názvy souborů nejsou protokolovány.         |
+    |/nfl    |Určuje, že se názvy souborů neprotokolují.         |
     |/ndl    |Určuje, že názvy adresářů se neprotokolují.        |
     |/np     |Určuje, že se nezobrazí průběh operace kopírování (počet dosud zkopírovaných souborů nebo adresářů). Zobrazení průběhu výrazně snižuje výkon.         |
     |/MT     | Určuje, že se má použít multithreading. Doporučený počet vláken je 32 nebo 64. Tato možnost se nepoužívá u zašifrovaných souborů. Možná bude nutné oddělit zašifrované a nezašifrované soubory. Kopírování s jedním vláknem však výrazně snižuje výkon.           |
@@ -161,10 +185,10 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
     |/z      | Zkopíruje soubory v režimu restartování. Tuto možnost použijte v případě, že je prostředí nestabilní. Tato možnost snižuje propustnost kvůli dodatečnému protokolování.      |
     | /zb    | Použije režim restartování. Pokud se přístup odepře, použije tato možnost režim zálohování. Tato možnost snižuje propustnost kvůli vytváření kontrolních bodů.         |
     |/efsraw | Zkopíruje všechny zašifrované soubory v režimu nezpracovaného systému souborů EFS. Tuto možnost použijte pouze u zašifrovaných souborů.         |
-    |protokol +:\<soubor_protokolu >| Připojí výstup k existujícímu souboru protokolu.|
+    |log +:\<soubor protokolu >| Připojí výstup k existujícímu souboru protokolu.|
     
  
-    Následující příklad ukazuje výstup příkaz robocopy pro kopírování souborů do Data Box náročné.
+    Následující příklad ukazuje výstup příkazu Robocopy ke zkopírování souborů do Data Box Heavy.
 
     ```   
     C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.100.10.100\devicemanagertest1_AzFile\templates /MT:24
@@ -204,11 +228,11 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
     C:\Users>
     ```       
 
-2. Pokud chcete optimalizovat výkon, použijte při kopírování dat následující parametry robocopy. (Níže uvedených čísel představují doporučené scénáře.)
+2. Pokud chcete optimalizovat výkon, použijte při kopírování dat následující parametry robocopy. (Níže uvedená čísla reprezentují scénáře nejlepšího případu.)
 
-    | Platforma    | Vetšinou malé soubory (< 512 kB)    | Většinou střední soubory 512 KB - 1 MB  | Většinou velké soubory (> 1 MB)                             |
+    | Platforma    | Vetšinou malé soubory (< 512 kB)    | Většinou střední soubory 512 KB-1 MB  | Většinou velké soubory (> 1 MB)                             |
     |-------------|--------------------------------|----------------------------|----------------------------|
-    | Data Box Heavy | 6 relací Robocopy <br> 24 vláken na relaci | 6 relací Robocopy <br> 16 vláken na relaci | 6 relací Robocopy <br> 16 vláken na relaci |
+    | Data Box Heavy | 6 Robocopy relací <br> 24 vláken na relaci | 6 Robocopy relací <br> 16 vláken na relaci | 6 Robocopy relací <br> 16 vláken na relaci |
 
 
     Další informace o příkazu Robocopy najdete v článku [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy a několik příkladů).
@@ -218,42 +242,98 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
     ![Zobrazit zkopírované soubory](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
 
 
-4. Jak se kopírují data:
+4. Při kopírování dat:
 
-    - Názvy souborů, formáty a formát jsou ověřena k zajištění, že ty splňovat omezení objektu a úložiště v Azure stejně jako Azure file a container zásady vytváření názvů.
-    - K zajištění integrity dat, je kontrolního součtu také počítaný vložená.
+    - Názvy souborů, velikosti a formáty jsou ověřeny, aby se zajistilo, že splňují omezení objektu a úložiště Azure a také zásady vytváření názvů souborů a kontejnerů Azure.
+    - Aby se zajistila integrita dat, je kontrolní součet také vypočítán jako vložený.
 
-    Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Vyberte ikonu šipky stáhnout chybovým souborům.
+    Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Vyberte ikonu šipky a Stáhněte soubory s chybami.
 
-    ![Stáhněte si chybovým souborům](media/data-box-heavy-deploy-copy-data/download-error-files.png)
+    ![Stáhnout soubory s chybou](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do Data Box náročné](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat, naleznete v tématu [Poradce při potížích s Data Box na těžké problémy](data-box-troubleshoot.md).
+    Další informace najdete v tématu [zobrazení protokolů chyb během kopírování dat do data box Heavy](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [řešení potíží s data box Heavy](data-box-troubleshoot.md).
 
-5. Otevřete chybový soubor v poznámkovém bloku. Následující soubor chyba označuje, že není správně zarovnaná data.
+5. Otevřete soubor chyb v programu Poznámkový blok. Následující chybový soubor indikuje, že data nejsou správně zarovnána.
 
-    ![Chyba při otevírání souboru](media/data-box-heavy-deploy-copy-data/open-error-file.png)
+    ![Otevřít soubor s chybou](media/data-box-heavy-deploy-copy-data/open-error-file.png)
     
-    Pro objekt blob stránky data musí být 512 bajtů zarovnána. Po odebrání těchto dat chyba řeší, jak je znázorněno na následujícím snímku obrazovky.
+    V případě objektu blob stránky musí být data zarovnaná 512 bajtů. Po odebrání těchto dat se chyba vyřeší, jak je znázorněno na následujícím snímku obrazovky.
 
-    ![Vyřešené chyby](media/data-box-heavy-deploy-copy-data/error-resolved.png)
+    ![Chyba byla vyřešena](media/data-box-heavy-deploy-copy-data/error-resolved.png)
 
-6. Až se kopírování dokončí, přejděte do **zobrazit řídicí panel** stránky. Zkontrolujte využité místo a volné místo na vašem zařízení.
+6. Po dokončení kopírování přejdete na zobrazení stránky **řídicího panelu** . Ověřte použité místo a volné místo na vašem zařízení.
     
     ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-heavy-deploy-copy-data/verify-used-space-dashboard.png)
 
-Opakujte předchozí postup pro kopírování dat do druhý uzel zařízení.
+Zopakováním výše uvedených kroků zkopírujte data do druhého uzlu zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli o Azure Data Box náročné témata, jako:
+V tomto kurzu jste se dozvěděli o Azure Data Box Heavy témata, jako například:
 
 > [!div class="checklist"]
-> * Připojte se k datové pole náročná na výkon
-> * Kopírování dat do služby Data Box Heavy
+> * Připojení k Data Box Heavy
+> * Kopírovat data do Data Box Heavy
 
 
-Přejděte k dalšímu kurzu, kde se naučíte, jak dodávat vaše Data Box náročné zpět společnosti Microsoft.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak odeslat Data Box Heavy zpět společnosti Microsoft.
 
 > [!div class="nextstepaction"]
-> [Dodávejte vaše Azure Data pole těžkých společnosti Microsoft](./data-box-heavy-deploy-picked-up.md)
+> [Odeslání Azure Data Box Heavy Microsoftu](./data-box-heavy-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+### <a name="copy-data-via-smb"></a>Kopírování dat pomocí protokolu SMB
+
+1. Pokud používáte hostitele Windows, připojte se ke sdíleným složkám SMB pomocí následujícího příkazu:
+
+    `\\<IP address of your device>\ShareName`
+
+2. Pokud chcete získat přihlašovací údaje ke sdílené složce, přejděte na stránku **Connect & copy** (Připojit a kopírovat) v místním webovém uživatelském rozhraní Data Boxu.
+
+3. K kopírování dat do sdílených složek použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je například Robocopy.
+
+Podrobné pokyny najdete [v kurzu: Kopírovat data do Azure Data Box přes protokol](data-box-heavy-deploy-copy-data.md)SMB.
+
+### <a name="copy-data-via-nfs"></a>Kopírování dat přes systém souborů NFS
+
+1. Pokud používáte hostitele systému souborů NFS, připojte sdílené složky systému souborů NFS pomocí následujícího příkazu:
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. Přihlašovací údaje pro přístup ke sdílené složce získáte tak, že přejdete na **stránku připojit & kopírování** v místním webovém uživatelském rozhraní data box Heavy.
+3. Pomocí `cp` příkazu `rsync` nebo zkopírujte data. 
+4. Opakujte tyto kroky pro připojení a zkopírování dat do druhého uzlu Data Box Heavy.
+
+Podrobné pokyny najdete [v kurzu: Kopírování dat do Azure Data Box přes systém](data-box-heavy-deploy-copy-data-via-nfs.md)souborů NFS.
+
+### <a name="copy-data-via-rest"></a>Kopírování dat pomocí REST
+
+1. Pokud chcete kopírovat data pomocí Data Box BLOB Storage přes rozhraní REST API, můžete se připojit přes *protokol HTTP* nebo *https*.
+2. Pokud chcete kopírovat data do Data Box BLOB Storage, můžete použít AzCopy.
+3. Opakujte tyto kroky pro připojení a zkopírování dat do druhého uzlu Data Box Heavy.
+
+Podrobné pokyny najdete [v kurzu: Zkopírujte data do Azure Data Box BLOB Storage přes rozhraní REST](data-box-heavy-deploy-copy-data-via-rest.md)API.
+
+### <a name="copy-data-via-data-copy-service"></a>Kopírování dat prostřednictvím služby kopírování dat
+
+1. Chcete-li kopírovat data pomocí služby kopírování dat, je třeba vytvořit úlohu. V místním webovém uživatelském rozhraní Data Box Heavy klikněte na **spravovat > kopírovat Data > vytvořit**.
+2. Vyplňte parametry a vytvořte úlohu.
+3. Opakujte tyto kroky pro připojení a zkopírování dat do druhého uzlu Data Box Heavy.
+
+Podrobné pokyny najdete [v kurzu: Pomocí služby kopírování dat zkopírujte data do Azure Data Box Heavy](data-box-heavy-deploy-copy-data-via-copy-service.md).
+
+### <a name="copy-data-to-managed-disks"></a>Kopírování dat na spravované disky
+
+1. Při seřazení zařízení Data Box Heavy byste měli jako cíl úložiště vybrat spravované disky.
+2. K Data Box Heavy se můžete připojit přes sdílené složky SMB nebo NFS.
+3. Data pak můžete kopírovat prostřednictvím nástrojů SMB nebo NFS.
+4. Opakujte tyto kroky pro připojení a zkopírování dat do druhého uzlu Data Box Heavy.
+
+Podrobné pokyny najdete [v kurzu: Používejte Data Box k těžkému importování dat jako spravovaných](data-box-heavy-deploy-copy-data-from-vhds.md)disků v Azure.
+
+::: zone-end
+
 

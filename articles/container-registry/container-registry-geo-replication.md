@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 manager: gwallace
 ms.service: container-registry
-ms.topic: overview
+ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574383"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172273"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
@@ -64,7 +64,7 @@ Pomocí funkce geografické replikace Azure Container Registry jsou tyto výhody
 
 ## <a name="configure-geo-replication"></a>Konfigurace geografické replikace
 
-Konfigurace geografické replikace je stejně jednoduchá jako při kliknutí na oblasti na mapě. Můžete taky spravovat geografickou replikaci pomocí nástrojů, včetně příkazů [AZ ACR](/cli/azure/acr/replication) Replication v Azure CLI.
+Konfigurace geografické replikace je stejně jednoduchá jako při kliknutí na oblasti na mapě. Můžete také spravovat geografickou replikaci pomocí nástrojů, včetně příkazů [AZ ACR](/cli/azure/acr/replication) Replication v rozhraní příkazového řádku Azure CLI, nebo nasadit registr s povolenou geografickou replikaci pomocí [šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication).
 
 Geografická replikace je funkce jenom pro [Registry úrovně Premium](container-registry-skus.md) . Pokud váš registr ještě nemáte Premium, můžete v [Azure Portal](https://portal.azure.com)změnit z úrovně Basic a Standard na Premium:
 

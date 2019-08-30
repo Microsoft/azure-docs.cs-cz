@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/29/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014427"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172888"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -236,6 +236,8 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 |UserMaxStandByReplicaCount |Int, výchozí hodnota je 1. |Dynamické|Výchozí maximální počet replik v pohotovostním stavu, které systém udržuje pro uživatelské služby. |
 |UserReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je \* 60,0 30. |Dynamické|Zadejte časový interval v sekundách. Dojde-li k výpadku trvalé repliky; Windows Fabric čeká na tuto dobu, než se replika před vytvořením nových náhradních replik (která by vyžadovala kopii stavu). |
 |UserStandByReplicaKeepDuration |Čas v sekundách, výchozí hodnota je \* 3600,0 \* 24 7. |Dynamické|Zadejte časový interval v sekundách. Když se trvalá replika vrátí ze stavu mimo provoz; je možné, že již byla nahrazena. Tento časovač určuje, jak dlouho bude FM uchovávat pohotovostní repliku před zahozením. |
+|WaitForInBuildReplicaSafetyCheckTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60 * 10)|Dynamické|Zadejte časový interval v sekundách. Položka konfigurace pro volitelný časový limit pro kontrolu bezpečnosti WaitForInBuildReplica Tato konfigurace definuje časový limit pro kontrolu bezpečnosti WaitForInBuildReplica pro deaktivace a upgrady uzlu. Tato bezpečnostní kontroly selže, pokud platí některá z následujících podmínek:-primární probíhá vytváření a velikost sady repliky cíle ft > 1 – Pokud je aktuální replika v buildu a je trvalá – Pokud se jedná o aktuální primární repliku a vytváří se nová replika, přeskočí se tato bezpečnostní kontroly. PED, pokud časový limit vyprší i v případě, že jedna z předchozích podmínek je stále pravdivá. |
+|WaitForReconfigurationSafetyCheckTimeout|Časový interval, výchozí hodnota je common:: TimeSpan:: FromSeconds (60.0 * 10)|Dynamické|Zadejte časový interval v sekundách. Položka konfigurace pro volitelný časový limit pro kontrolu bezpečnosti WaitForReconfiguration Tato konfigurace definuje časový limit kontroly bezpečnosti WaitForReconfiguration pro deaktivace a upgrady uzlu. Tato kontrola bezpečnosti se nezdařila, pokud je replika zaškrtnuta jako součást oddílu, který je v rámci změny konfigurace. Po vypršení časového limitu bude bezpečnostní kontroly vynecháno, i když je oddíl stále v rámci změny konfigurace.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 

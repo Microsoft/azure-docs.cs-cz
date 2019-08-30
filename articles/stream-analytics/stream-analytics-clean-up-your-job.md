@@ -7,25 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330055"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173291"
 ---
-# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavit nebo odstranit úlohu Azure Stream Analytics
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavení nebo odstranění úlohy Azure Stream Analytics
 
-Úlohy Azure Stream Analytics můžete snadno zastavit nebo odstranit prostřednictvím webu Azure portal, prostředí Azure PowerShell, sady Azure SDK for .net nebo REST API. Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
+Azure Stream Analytics úlohy je možné snadno zastavit nebo odstranit pomocí Azure Portal, Azure PowerShell, sady Azure SDK pro .NET nebo REST API. Po odstranění nelze úlohu Stream Analytics obnovit.
 
 >[!NOTE] 
 >Při zastavení vaší úlohy Stream Analytics, data se uchovávají pouze ve vstupní a výstupní úložiště, jako jsou Event Hubs nebo Azure SQL Database. V případě potřeby k odebrání dat z Azure je potřeba provést proces odebrání za vstupní a výstupní prostředky vaší úlohy Stream Analytics.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Zastavení úlohy na webu Azure portal
 
-Po zastavení úlohy prostředky, které byly deprovisionned a zastaví zpracování událostí. Zastaví se také poplatky za související s tuto úlohu. Ale všechny konfigurace zůstanou a můžete později restartovat úlohu 
+Po zastavení úlohy dojde ke zrušení zřízení prostředků a zastavení zpracování událostí. Poplatky související s touto úlohou se také zastaví. Veškerá vaše konfigurace je ale zachovaná a později ji můžete restartovat. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
@@ -39,7 +39,7 @@ Po zastavení úlohy prostředky, které byly deprovisionned a zastaví zpracov�
 ## <a name="delete-a-job-in-azure-portal"></a>Odstraňování úlohy na webu Azure portal
 
 >[!WARNING] 
->Úlohu Stream Analytics nelze obnovit, jakmile je Odstraněná.
+>Po odstranění nelze úlohu Stream Analytics obnovit.
 
 1. Přihlaste se k portálu Azure. 
 
@@ -54,7 +54,7 @@ Po zastavení úlohy prostředky, které byly deprovisionned a zastaví zpracov�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Chcete-li zastavit úlohu pomocí prostředí PowerShell, použijte [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) rutiny. Pokud chcete odstranit úlohu pomocí prostředí PowerShell, použijte [odebrat AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) rutiny.
+K zastavení úlohy pomocí prostředí PowerShell použijte rutinu [stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) . K odstranění úlohy pomocí prostředí PowerShell použijte rutinu [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) .
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Zastavit nebo odstranit úlohu pomocí sady Azure SDK pro .NET
 

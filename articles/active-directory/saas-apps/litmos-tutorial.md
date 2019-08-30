@@ -1,283 +1,202 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Litmos | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Litmos.
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s Litmos | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Litmos.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: cfaae4bb-e8e5-41d1-ac88-8cc369653036
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84ec2d8895cf0cdaf933d6446b361a3e606feb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a935ef6d14b4de67964c555e0ffa610bbe992459
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097879"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171574"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Kurz: Integrace Azure Active Directory s Litmos
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Litmos
 
-V tomto kurzu se dozvíte, jak integrovat Litmos s Azure Active Directory (Azure AD).
-Litmos integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat Litmos s Azure Active Directory (Azure AD). Když integrujete Litmos s Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Litmos.
-* Můžete povolit uživatelům být automaticky přihlášeni k Litmos (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Litmos.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Litmos svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Litmos, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Litmos jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Litmos odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Litmos **IDP** jednotné přihlašování zahájené pomocí
-
-* Podporuje Litmos **JIT** zřizování uživatelů
+* Litmos podporuje jednotné přihlašování **IDP** .
+* Litmos podporuje zřizování uživatelů **jenom v čase** .
 
 ## <a name="adding-litmos-from-the-gallery"></a>Přidání Litmos z Galerie
 
-Konfigurace integrace Litmos do služby Azure AD, budete muset přidat Litmos z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Litmos do služby Azure AD, musíte přidat Litmos z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Litmos z galerie, postupujte následovně:**
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Litmos** .
+1. Na panelu výsledků vyberte **Litmos** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-litmos"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Litmos
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Litmos pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Litmos.
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Litmos, dokončete následující stavební bloky:
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte LITMOS SSO](#configure-litmos-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Litmos Test User](#create-litmos-test-user)** -to, abyste měli protějšek B. Simon v Litmos, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Litmos**vyberte **Litmos** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Litmos** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Litmos v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Litmos podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Litmos.
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.litmos.com/account/Login`
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Litmos, které potřebujete k dokončení následujících stavebních bloků:
-
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Litmos Single Sign-On](#configure-litmos-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Litmos](#create-litmos-test-user)**  – Pokud chcete mít protějšek Britta Simon Litmos, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
-
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
-
-Ke konfiguraci Azure AD jednotné přihlašování s Litmos, proveďte následující kroky:
-
-1. V [webu Azure portal](https://portal.azure.com/)na **Litmos** integrace stránce aplikace vyberte **jednotného přihlašování**.
-
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
-
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
-
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
-
-    ![Litmos domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
-
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.litmos.com/account/Login`
-
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.litmos.com/integration/samllogin`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.litmos.com/integration/samllogin`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi, které jsou vysvětlené později v kurzu nebo se obraťte na [tým podpory Litmos klienta](https://www.litmos.com/contact-us) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi, které jsou vysvětleny později v kurzu, nebo se obraťte na [tým podpory Litmos Client](https://www.litmos.com/contact-us) , který tyto hodnoty získá. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Litmos aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
-
-    ![image](common/edit-attribute.png)
-
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
-
-    | Name |  Zdrojový atribut |
-    |---------------|--------- |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
-    | Email | user.mail |
-
-    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
-
-    c. Nechte **Namespace** prázdné.
-
-    d. Vyberte zdroj jako **atribut**.
-
-    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
-
-7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-8. Na **nastavení Litmos** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **Nastavení Litmos** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor služby Azure Ad
-
-    c. Adresa URL – odhlášení
-
-### <a name="configure-litmos-single-sign-on"></a>Konfigurace Litmos jednotné přihlašování
-
-1. V jiném okně prohlížeče přihlašování k webu společnosti Litmos jako správce.
-
-2. V navigačním panelu na levé straně klikněte na tlačítko **účty**.
-
-    ![V oddílu účtů na straně aplikace][22]
-
-3. Klikněte na tlačítko **integrace** kartu.
-
-    ![Karta integrace][23]
-
-4. Na **integrace** kartu, přejděte dolů k položce **3. stran integrace**a potom klikněte na tlačítko **SAML 2.0** kartu.
-
-    ![Protokol SAML 2.0 oddílu][24]
-
-5. Zkopírujte hodnoty v rámci **je koncový bod SAML pro litmos:** a vložte ho do **adresy URL odpovědi** textového pole v **Litmos domény a adresy URL** části webu Azure Portal.
-
-    ![Koncový bod SAML][26]
-
-6. Ve vaší **Litmos** aplikace, proveďte následující kroky:
-
-    ![Litmos aplikace][25]
-
-    a. Klikněte na tlačítko **povolit SAML**.
-
-    b. V poznámkovém bloku otevřete certifikát kódováním base-64, zkopírujte obsah ho do schránky a a vložte ho do **certifikát X.509 SAML** textového pole.
-
-    c. Klikněte na tlačítko **uložit změny**.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Litmos použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Litmos.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Litmos**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Litmos**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **Litmos**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz Litmos v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+## <a name="configure-litmos-sso"></a>Konfigurace jednotného přihlašování Litmos
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. V jiném okně prohlížeče se přihlaste k webu Litmos společnosti jako správce.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+2. V navigačním panelu na levé straně klikněte na **účty**.
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+    ![Část účty na straně aplikace][22]
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
-
-### <a name="create-litmos-test-user"></a>Vytvoření Litmos testovacího uživatele
-
-Cílem této části je vytvořte uživatele Britta Simon v Litmos. Aplikace Litmos podporuje Just-in-Time zřizování. To znamená uživatelský účet se automaticky vytvoří v případě potřeby během pokusu o přístup k aplikaci pomocí přístupového panelu.
-
-**Vytvořte uživatele v Litmos jako Britta Simon, proveďte následující kroky:**
-
-1. V jiném okně prohlížeče přihlašování k webu společnosti Litmos jako správce.
-
-2. V navigačním panelu na levé straně klikněte na tlačítko **účty**.
-
-    ![V oddílu účtů na straně aplikace][22]
-
-3. Klikněte na tlačítko **integrace** kartu.
+3. Klikněte na kartu **integrace** .
 
     ![Karta integrace][23]
 
-4. Na **integrace** kartu, přejděte dolů k položce **3. stran integrace**a potom klikněte na tlačítko **SAML 2.0** kartu.
+4. Na kartě **integrace** přejděte dolů k části integrace s **jinými stranami**a pak klikněte na kartu **SAML 2,0** .
+
+    ![Oddíl SAML 2,0][24]
+
+5. Zkopírujte hodnotu pod **koncovým bodem SAML pro Litmos:** a vložte ji do textového pole **Adresa URL odpovědi** v části **doména a adresy URL Litmos** v Azure Portal.
+
+    ![Koncový bod SAML][26]
+
+6. V aplikaci **Litmos** proveďte následující kroky:
+
+    ![Aplikace Litmos][25]
+
+    a. Klikněte na **Povolit SAML**.
+
+    b. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikátu SAML X. 509** .
+
+    c. Klikněte na tlačítko **uložit změny**.
+
+### <a name="create-litmos-test-user"></a>Vytvořit testovacího uživatele Litmos
+
+Cílem této části je vytvořit uživatele s názvem Britta Simon v Litmos. Aplikace Litmos podporuje zřizování za běhu. To znamená, že uživatelský účet se vytvoří automaticky v případě potřeby během pokusu o přístup k aplikaci pomocí přístupového panelu.
+
+**Chcete-li vytvořit uživatele s názvem Britta Simon v Litmos, proveďte následující kroky:**
+
+1. V jiném okně prohlížeče se přihlaste k webu Litmos společnosti jako správce.
+
+2. V navigačním panelu na levé straně klikněte na **účty**.
+
+    ![Část účty na straně aplikace][22]
+
+3. Klikněte na kartu **integrace** .
+
+    ![Karta integrace][23]
+
+4. Na kartě **integrace** přejděte dolů k části integrace s **jinými stranami**a pak klikněte na kartu **SAML 2,0** .
 
     ![SAML 2.0][24]
 
-5. Vyberte **automaticky vytvořit uživatele**
+5. Vybrat možnost **Generovat uživatele**
   
-    ![Automatické generování uživatelů][27]
+    ![Vygenerovat uživatele][27]
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+## <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Litmos na přístupovém panelu, můžete by měl být automaticky přihlášeni k Litmos, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Litmos, měli byste se automaticky přihlásit k Litmos, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-<!--Image references-->
+- [Vyzkoušejte si Litmos s Azure AD](https://aad.portal.azure.com/)
 
 [21]: ./media/litmos-tutorial/tutorial_litmos_60.png
 [22]: ./media/litmos-tutorial/tutorial_litmos_61.png

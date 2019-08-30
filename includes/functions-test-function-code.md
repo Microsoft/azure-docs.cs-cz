@@ -4,23 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174789"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170893"
 ---
 ## <a name="test"></a>Testování funkce v Azure
 
-Otestujete nasazenou funkci pomocí cURL. Pomocí adresy URL, kterou jste zkopírovali v předchozím kroku, připojte řetězec dotazu `&name=<yourname>` na adresu URL, jako v následujícím příkladu:
+K otestování nasazené funkce použijte kudrlinkou. Pomocí adresy URL, včetně klíč funkce, který jste zkopírovali z předchozího kroku, přidejte řetězec `&name=<yourname>` dotazu k adrese URL.
 
-```bash
-curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-```
+![použití funkce kudrlinkou k volání funkce v Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-![pomocí příkazu cURL k volání funkce v Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
+Zkopírovaná adresa URL včetně klíče funkce můžete také vložit do adresy webového prohlížeče. Znovu přidejte řetězec `&name=<yourname>` dotazu k adrese URL před provedením žádosti.
 
-Můžete také vložit zkopírovanou adresu URL na adresu ve webovém prohlížeči. Znovu připojte řetězec dotazu `&name=<yourname>` na adresu URL předtím, než provedete požadavek.
-
-![Pomocí webového prohlížeče pro volání funkce.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![Volání funkce pomocí webového prohlížeče.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

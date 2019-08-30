@@ -1,6 +1,6 @@
 ---
-title: Přihlaste se k virtuálnímu počítači s Linuxem pomocí přihlašovacích údajů Azure Active Directory | Dokumentace Microsoftu
-description: V tomto postupy se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Linuxem pro přihlášení uživatelů používat ověřování služby Azure Active Directory
+title: Přihlaste se k virtuálnímu počítači se systémem Linux s přihlašovacími údaji Azure Active Directory | Microsoft Docs
+description: Naučte se vytvořit a nakonfigurovat virtuální počítač Linux pro přihlášení pomocí Azure Active Directory ověřování.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -12,61 +12,65 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/17/2018
+ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: f8f00c49ced4e06eb634cbbfb1b786e6729783d2
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667652"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163222"
 ---
-# <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: Přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
-Tím se zvyšuje zabezpečení Linuxových virtual machines (VM) v Azure, můžete integrovat s ověřováním Azure Active Directory (AD). Při použití ověřování Azure AD pro virtuální počítače s Linuxem můžete centrálně řídit a vynucovat zásady, které povolují nebo odepírají přístup k virtuálním počítačům. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač s Linuxem pro použití ověřování Azure AD.
+Pokud chcete zlepšit zabezpečení virtuálních počítačů se systémem Linux v Azure, můžete je integrovat s ověřováním Azure Active Directory (AD). Když použijete ověřování Azure AD pro virtuální počítače se systémem Linux, centrálně ovládáte a vynutili zásady, které povolují nebo odmítnou přístup k virtuálním počítačům. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat virtuální počítač Linux pro použití ověřování Azure AD.
 
-> [!NOTE]
-> Tato funkce je ve verzi preview a nedoporučujeme používat s úloh nebo produkčních virtuálních počítačů. Pomocí této funkce na testovací virtuální počítač, který očekáváte, že se zahodit po testování.
 
-Existuje mnoho výhod používání ověřování Azure AD k přihlášení do virtuálních počítačů s Linuxem v Azure, včetně:
+> [!IMPORTANT]
+> Ověřování Azure Active Directory je aktuálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tuto funkci můžete použít na testovacím virtuálním počítači, který po testování očekáváte zrušit.
+>
+
+
+K přihlášení k virtuálním počítačům se systémem Linux v Azure využíváme mnoho výhod, včetně:
 
 - **Vylepšené zabezpečení:**
-  - K přihlášení do Azure s Linuxem můžete použít podnikové přihlašovací údaje služby AD. Není nutné vytvořit místní účty správců a správa životního cyklu přihlašovacích údajů.
-  - Díky snížení vaše umožňující místní účty správců, není potřeba starat o ztrátu/metodám krádeže přihlašovacích údajů, uživatelé konfigurace slabé pověření atd.
-  - Složitost hesla a doby života zásady hesel nakonfigurované pro váš adresář Azure AD pomáhají zabezpečené virtuální počítače s Linuxem i.
-  - Na další zabezpečení přihlášení pro virtuální počítače Azure můžete nakonfigurovat ověřování Multi-Factor Authentication.
-  - Schopnost přihlášení do virtuálních počítačů s Linuxem pomocí Azure Active Directory funguje i pro zákazníky používající [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
+  - K přihlášení k virtuálním počítačům Azure Linux můžete použít přihlašovací údaje podnikového AD. Není nutné vytvářet účty místních správců a spravovat dobu života přihlašovacích údajů.
+  - Omezením závislosti na účtech místních správců nemusíte dělat starosti se ztrátou a krádeží přihlašovacích údajů, uživatelé konfigurují slabé přihlašovací údaje atd.
+  - Zásady složitosti hesla a životního cyklu hesla nakonfigurované pro váš adresář služby Azure AD pomůžou zabezpečit také virtuální počítače se systémem Linux.
+  - K dalšímu zabezpečení přihlášení k virtuálním počítačům Azure můžete nakonfigurovat službu Multi-Factor Authentication.
+  - Možnost přihlášení k virtuálním počítačům Linux pomocí Azure Active Directory funguje taky pro zákazníky, kteří používají [federační služby](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Bezproblémová spolupráce:** Pomocí Role-Based řízení přístupu (RBAC), můžete určit, kdo může přihlásit k daného virtuálního počítače jako běžný uživatel nebo s oprávněním správce. Když uživatelé připojit nebo opustit váš tým, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než by bylo nutné procházení virtuálních počítačů odebrat nepotřebné veřejné klíče SSH. Když zaměstnanci opustí organizaci a jeho uživatelský účet je zakázán nebo odebrány ze služby Azure AD, že už nebude mít přístup k vašim prostředkům.
+- **Bezproblémová spolupráce:** Díky Access Controlům na základě rolí (RBAC) můžete určit, kdo se může přihlásit k danému virtuálnímu počítači jako běžný uživatel nebo s oprávněními správce. Když se uživatelé připojí nebo odejdou z týmu, můžete aktualizovat zásadu RBAC pro virtuální počítač a podle potřeby tak udělit přístup. Toto prostředí je mnohem jednodušší než nutnosti odstraňovat virtuální počítače, aby nedošlo k odebrání nepotřebných veřejných klíčů SSH. Když zaměstnanci odejdou z vaší organizace a jejich uživatelský účet je v Azure AD zakázaný nebo odebraný, už nebudou mít přístup k vašim prostředkům.
 
-## <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribucí systému Linux
+## <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribuce Linux
 
-Následující distribucí systému Linux jsou aktuálně podporované ve verzi preview tato funkce:
+Během verze Preview této funkce se aktuálně podporují následující distribuce systému Linux:
 
 | Distribuce | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE skok 42.3 |
+| openSUSE | openSUSE, přestupné 42,3 |
 | RedHat Enterprise Linux | RHEL 6, RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
-| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 a Ubuntu Server 18.04 |
+| Ubuntu Server | Ubuntu 14,04 LTS, Ubuntu Server 16,04 a Ubuntu Server 18,04 |
 
 
-Následující oblasti Azure jsou aktuálně podporované ve verzi preview tato funkce:
+Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 
-- Všechny globálními oblastmi Azure
+- Všechny globální oblasti Azure
 
 >[!IMPORTANT]
-> Pomocí této funkce ve verzi preview, pouze nasaďte podporované distribuce Linuxu a v podporované oblasti Azure. Tato funkce není podporovaná v Azure Government nebo suverénních cloudech.
+> Pokud chcete tuto funkci ve verzi Preview používat, nasaďte jenom podporované distribuce Linux a v podporované oblasti Azure. Tato funkce není podporována v cloudech Azure Government nebo svrchovan.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
 
-Vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az-group-create), pak vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az-vm-create) pomocí podporované distribuce a v podporované oblasti. Tento příklad nasadí virtuální počítač s názvem *myVM* , která používá *Ubuntu 16.04 LTS* do skupiny prostředků s názvem *myResourceGroup* v *southcentralus*  oblasti. V následujících příkladech můžete zadat vlastní skupiny prostředků a názvy virtuálních počítačů podle potřeby.
+Vytvořte skupinu prostředků pomocí [AZ Group Create](/cli/azure/group#az-group-create)a pak vytvořte virtuální počítač pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí podporovaného distribuce a v podporované oblasti. Následující příklad nasadí virtuální počítač s názvem *myVM* , který používá *Ubuntu 16,04 LTS* do skupiny prostředků s názvem *myResourceGroup* v oblasti *southcentralus* . V následujících příkladech můžete podle potřeby zadat vlastní skupinu prostředků a názvy virtuálních počítačů.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location southcentralus
@@ -81,9 +85,9 @@ az vm create \
 
 Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut.
 
-## <a name="install-the-azure-ad-login-vm-extension"></a>Nainstalovat rozšíření virtuálního počítače přihlášení k Azure AD
+## <a name="install-the-azure-ad-login-vm-extension"></a>Instalace rozšíření pro přihlášení k virtuálnímu počítači Azure AD
 
-Přihlásit se k virtuálnímu počítači s Linuxem pomocí přihlašovacích údajů Azure AD, nainstalujte rozšíření virtuálního počítače přihlášení Azure Active Directory. Rozšíření virtuálních počítačů jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure. Použití [sada rozšíření az vm](/cli/azure/vm/extension#az-vm-extension-set) k instalaci *AADLoginForLinux* rozšíření na virtuální počítač s názvem *myVM* v *myResourceGroup* prostředků Skupina:
+Pokud se chcete přihlásit k virtuálnímu počítači se systémem Linux s přihlašovacími údaji služby Azure AD, nainstalujte Azure Active Directory rozšíření VM pro přihlášení. Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pomocí [AZ VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) nainstalujete rozšíření *AADLoginForLinux* na virtuální počítač s názvem *myVM* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli-interactive
 az vm extension set \
@@ -93,19 +97,19 @@ az vm extension set \
     --vm-name myVM
 ```
 
-*ProvisioningState* z *Succeeded* se zobrazí po instalaci rozšíření na virtuálním počítači.
+*ProvisioningState* se po úspěšné instalaci rozšíření na virtuálním počítači zobrazí.
 
-## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí virtuálního počítače
+## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
-Zásady řízení přístupu na základě rolí (RBAC) Azure určí, kdo může přihlásit k virtuálnímu počítači. Dvě role RBAC se používají k autorizaci přihlášení virtuálního počítače:
+Zásady správy Access Control na základě rolí (RBAC) v Azure určují, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role RBAC:
 
-- **Přihlášení správce virtuálního počítače**: Uživatelé s touto rolí přiřazené přihlásit virtuální počítač Azure s správce Windows nebo Linuxem kořenovými oprávněními.
-- **Přihlášení uživatele virtuálního počítače**: Uživatelé s touto rolí přiřadit může přihlásit k virtuálnímu počítači Azure s běžná uživatelská oprávnění.
+- **Přihlašovací jméno správce virtuálního počítače**: Uživatelé s touto rolí přiřazeni se můžou přihlásit k virtuálnímu počítači Azure pomocí oprávnění správce Windows nebo kořenového uživatele Linux.
+- **Přihlášení uživatele k virtuálnímu počítači**: Uživatelé s přiřazenou rolí se můžou přihlásit k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
 
 > [!NOTE]
-> Pokud chcete, aby uživatel pro přihlášení k virtuálnímu počítači přes SSH, je nutné přiřadit buď *přihlášení správce virtuálního počítače* nebo *přihlášení uživatele virtuálního počítače* role. Uživatele s Azure *vlastníka* nebo *Přispěvatel* role přiřazené pro virtuální počítač automaticky nemají oprávnění k přihlášení k virtuálnímu počítači přes SSH.
+> Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes SSH, musíte přiřadit buď roli *přihlášení správce virtuálního počítače* , nebo *přihlašovací údaje uživatele virtuálního počítače* . Uživatel Azure s rolemi *vlastník* nebo *Přispěvatel* přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes SSH.
 
-Následující příklad používá [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) přiřadit *přihlášení správce virtuálního počítače* role virtuálního počítače Azure aktuálního uživatele. Uživatelské jméno účtu Azure active se získá pomocí [zobrazit účet az](/cli/azure/account#az-account-show)a *oboru* je nastavena na virtuální počítač vytvořený v předchozím kroku s [az vm show](/cli/azure/vm#az-vm-show). Můžou také mít přiřazené oboru na úrovni skupiny nebo předplatného resource a použít normální dědičnost oprávnění RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../role-based-access-control/overview.md)
+V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role *přihlášení správce virtuálního počítače* pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a *obor* se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a použít normální oprávnění dědičnosti RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) .
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -118,60 +122,57 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Pokud doména AAD a přihlašovací uživatelské jméno domény se neshodují, je nutné zadat ID objektu váš uživatelský účet s *– id objektu pověřené osoby*, ne jenom uživatelské jméno pro *– pověřené osoby*. Můžete získat ID objektu pro váš uživatelský účet s [seznamu uživatelů služby ad az](/cli/azure/ad/user#az-ad-user-list).
+> Pokud se vaše doména AAD a doména přihlašovacího jména uživatele neshodují, je nutné zadat ID objektu vašeho uživatelského účtu pomocí *--zmocněnce-Object-ID*, nikoli jenom pomocí uživatelského jména pro- *-nabyvatele*. ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az-ad-user-list).
 
-Další informace o tom, jak používat ke správě přístupu k prostředkům předplatného Azure RBAC najdete v tématu pomocí [rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md), [webu Azure portal](../../role-based-access-control/role-assignments-portal.md), nebo [prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům předplatného Azure, najdete v tématu použití rozhraní příkazového [řádku Azure](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)nebo [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Azure AD tak, aby vyžadovala vícefaktorové ověřování pro konkrétního uživatele pro přihlášení k virtuálním počítači s Linuxem můžete také nakonfigurovat. Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Službu Azure AD můžete také nakonfigurovat tak, aby vyžadovala službu Multi-Factor Authentication pro konkrétního uživatele, aby se přihlásil k virtuálnímu počítači se systémem Linux. Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 
-## <a name="log-in-to-the-linux-virtual-machine"></a>Přihlaste se k virtuálním počítači s Linuxem
+## <a name="log-in-to-the-linux-virtual-machine"></a>Přihlášení k virtuálnímu počítači se systémem Linux
 
-Nejprve zobrazte veřejnou IP adresu vašeho virtuálního počítače s [az vm show](/cli/azure/vm#az-vm-show):
+Nejprve zobrazte veřejnou IP adresu vašeho virtuálního počítače pomocí [AZ VM show](/cli/azure/vm#az-vm-show):
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Přihlaste se k virtuálnímu počítači Azure s Linuxem pomocí svých přihlašovacích údajů Azure AD. `-l` Parametr umožňuje určit vlastní adresu účtu služby Azure AD. Účet adresy by měly být zadány v všechna písmena malá. Použijte veřejnou IP adresu vašeho virtuálního počítače z předchozího příkazu:
+Přihlaste se k virtuálnímu počítači Azure Linux pomocí svých přihlašovacích údajů Azure AD. `-l` Parametr umožňuje zadat vlastní adresu účtu služby Azure AD. Nahraďte vzorový účet vlastním. Adresy účtu by měly být zadány pouze malými písmeny. Z předchozího příkazu nahraďte ukázkovou IP adresu veřejnou IP adresou vašeho virtuálního počítače.
 
 ```azurecli-interactive
-ssh -l azureuser@contoso.onmicrosoft.com publicIps
+ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-Zobrazí se výzva k přihlášení k Azure AD s jednorázový kód na [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin). Zkopírujte a vložte jednorázový kód do přihlašovací stránky zařízení, jak je znázorněno v následujícím příkladu:
+Budete vyzváni k přihlášení ke službě Azure AD s jednorázovým kódem použití na adrese [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin). Zkopírujte a vložte kód jednorázového použití do přihlašovací stránky zařízení.
 
-```bash
-~$ ssh -l azureuser@contoso.onmicrosoft.com 13.65.237.247
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJS3K6X4D to authenticate. Press ENTER when ready.
-```
+Po zobrazení výzvy zadejte přihlašovací údaje služby Azure AD přihlašovací údaje na přihlašovací stránce. 
 
-Po zobrazení výzvy zadejte své přihlašovací údaje Azure AD na přihlašovací stránku. Následující zpráva je zobrazena ve webovém prohlížeči, když jste úspěšně ověření:
+Ve webovém prohlížeči se po úspěšném ověření zobrazí následující zpráva:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
-    You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
+Zavřete okno prohlížeče, vraťte se do výzvy SSH a stiskněte klávesu **ENTER** . 
 
-Zavřete okno prohlížeče, vraťte se do SSH výzvy a stiskněte klávesu **Enter** klíč. Jste nyní přihlášeni k virtuálnímu počítači Azure s Linuxem pomocí oprávnění role jako přiřazená, jako například *uživatele virtuálního počítače* nebo *správce virtuálního počítače*. Pokud je váš uživatelský účet přiřazený *přihlášení správce virtuálního počítače* roli, můžete použít `sudo` ke spuštění příkazů, které vyžadují oprávnění root.
+Nyní jste přihlášeni k virtuálnímu počítači Azure Linux s oprávněními role přiřazenou, jako je například *uživatel virtuálního počítače* nebo *Správce virtuálního počítače*. Pokud je vašemu uživatelskému účtu přiřazená role *přihlášení správce virtuálního počítače* , můžete použít `sudo` ke spuštění příkazů, které vyžadují oprávnění root.
 
-## <a name="sudo-and-aad-login"></a>Přihlášení Sudo a AAD
+## <a name="sudo-and-aad-login"></a>Přihlášení sudo a AAD
 
-Při prvním spuštění sudo, zobrazí se výzva k ověření podruhé. Pokud nechcete, aby museli znovu provést ověření pro spuštění sudo, můžete upravit soubor sudoers `/etc/sudoers.d/aad_admins` a nahraďte tento řádek:
+Při prvním spuštění sudo se zobrazí výzva k ověření druhého času. Pokud se pro spuštění sudo nechcete znovu přihlásit, můžete upravit soubor `/etc/sudoers.d/aad_admins` sudoers a nahradit tento řádek:
 
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
-Tento řádek:
+S tímto řádkem:
 
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
 ```
 
 
-## <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s problémy s přihlašováním
+## <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
-Některé běžné chyby při pokusu o SSH pomocí přihlašovacích údajů Azure AD. obsahovat žádné role RBAC přiřazen a opakovat pokynů se přihlaste. Pomocí následujících částí k odstranění těchto problémů.
+Některé běžné chyby při pokusu o přihlášení SSH s přihlašovacími údaji služby Azure AD zahrnují nepřiřazené role RBAC a opakované výzvy k přihlášení. Tyto problémy opravíte pomocí následujících částí.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Přístup byl odepřen: Role RBAC není přiřazen
+### <a name="access-denied-rbac-role-not-assigned"></a>Přístup byl odepřen: Role RBAC není přiřazená.
 
-Pokud se zobrazí následující chyba na příkazovém řádku vašeho SSH, ověřte, že jste nakonfigurovali zásady RBAC pro virtuální počítač, který uděluje uživateli buď *přihlášení správce virtuálního počítače* nebo *přihlášení uživatele virtuálního počítače*role:
+Pokud se v příkazovém řádku SSH zobrazí následující chyba, ověřte, že jste pro virtuální počítač nakonfigurovali zásady RBAC, které udělí uživateli buď *přihlašovací jméno správce virtuálního počítače* , nebo roli *přihlášení uživatele virtuálního počítače* :
 
 ```bash
 login as: azureuser@contoso.onmicrosoft.com
@@ -182,18 +183,18 @@ Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute
 Access denied
 ```
 
-### <a name="continued-ssh-sign-in-prompts"></a>Trvalé SSH výzvám k přihlášení
+### <a name="continued-ssh-sign-in-prompts"></a>Pokračování přihlašovacích výzev protokolu SSH
 
-Pokud úspěšně dokončit krok ověřování ve webovém prohlížeči, budete okamžitě vyzváni znovu přihlásil nový kód. Tato chyba je obvykle způsobeno neshodou mezi přihlašovací jméno, které jste zadali do příkazového řádku SSH a účet, který jste přihlášení k Azure AD se službou. K vyřešení tohoto problému:
+Pokud jste úspěšně dokončili krok ověřování ve webovém prohlížeči, můžete se okamžitě zobrazit výzva, abyste se znovu přihlásili pomocí nového kódu. Tato chyba je obvykle způsobena neshodou mezi přihlašovacím jménem, které jste zadali v příkazovém řádku SSH, a účtem, ke kterému jste se přihlásili do Azure AD. Chcete-li tento problém vyřešit:
 
-- Ověřte správnost přihlašovací jméno, které jste zadali do příkazového řádku SSH. Máte překlep v názvu přihlášení může způsobit nesoulad mezi přihlašovací jméno, které jste zadali do příkazového řádku SSH a účet, který jste přihlášení k Azure AD se službou. Například jste zadali *azuresuer\@contoso.onmicrosoft.com* místo *azureuser\@contoso.onmicrosoft.com*.
-- Pokud máte víc uživatelských účtů, ujistěte se, že neposkytnete jiného uživatelského účtu v okně prohlížeče při přihlašování k Azure AD.
-- Linux je velká a malá písmena operačního systému. Existuje rozdíl mezi "Azureuser@contoso.onmicrosoft.com"a"azureuser@contoso.onmicrosoft.com", což vedlo k neshodě. Ujistěte se, že je zadat hlavní název uživatele s správné rozlišování řádku SSH.
+- Ověřte, jestli je přihlašovací jméno, které jste zadali na příkazovém řádku SSH, správné. Překlep v přihlašovacím jméně může způsobit neshodu mezi přihlašovacím jménem, které jste zadali na příkazovém řádku SSH, a účtem, který jste se přihlásili k Azure AD pomocí. Například jste zadali *azuresuer\@contoso.onmicrosoft.com* namísto *azureuser\@contoso.onmicrosoft.com*.
+- Pokud máte víc uživatelských účtů, ujistěte se, že při přihlašování do Azure AD neposkytnete v okně prohlížeče jiný uživatelský účet.
+- Linux je operační systém s rozlišováním velkých a malých písmen. Existuje rozdíl mezi 'Azureuser@contoso.onmicrosoft.com' a 'azureuser@contoso.onmicrosoft.com', což může způsobit neshodu. Ujistěte se, že v příkazovém řádku SSH určíte hlavní název uživatele se správným rozlišováním velkých a malých písmen.
 
-## <a name="preview-feedback"></a>Zpětnou vazbu ve verzi Preview
+## <a name="preview-feedback"></a>Náhled zpětné vazby
 
-Podělte se o této verzi preview funkce nebo sestavu problémy ji váš názor [fóru názorů na Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
+Nasdílejte svůj názor na tuto funkci ve verzi Preview nebo nahlaste problémy pomocí svého [fóra s názory na Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) .
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+Další informace o Azure Active Directory najdete v tématu [co je Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) .

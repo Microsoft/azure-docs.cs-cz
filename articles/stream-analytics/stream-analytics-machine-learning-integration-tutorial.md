@@ -9,15 +9,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621547"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173335"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Provedení analýzy subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning Studio (Preview)
-Tento článek popisuje, jak rychle vytvořit jednoduchou úlohu Azure Stream Analytics, která se integruje s Azure Machine Learning Studio. Použijete modelem Machine Learning pro analýzu mínění v galerii Cortana Intelligence pro analýzu streamování textová data a určit skóre mínění v reálném čase. Pomocí Cortana Intelligence Suite vám umožňuje provést bez starostí o složitými rozhraními vytváření modelu analýzy mínění.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Provedení analýzy mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Preview)
+Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning Studio. Použijete modelem Machine Learning pro analýzu mínění v galerii Cortana Intelligence pro analýzu streamování textová data a určit skóre mínění v reálném čase. Pomocí Cortana Intelligence Suite vám umožňuje provést bez starostí o složitými rozhraními vytváření modelu analýzy mínění.
 
 Můžete použít, co jste se naučili v tomto článku pro podobné scénáře je:
 
@@ -45,7 +45,7 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 Na vysoké úrovni k dokončení úloh jsme vám ukázali v tomto článku provedete následující:
 
 1. Vytvoření účtu služby Azure storage a kontejner úložiště objektů blob a nahrajte vstupní soubor ve formátu CSV do kontejneru.
-3. Přidat model analýzy mínění v galerii Cortana Intelligence do pracovního prostoru Azure Machine Learning Studio a tento model nasadíme jako webovou službu v pracovního prostoru Machine Learning.
+3. Přidejte model mínění Analytics z Cortana Intelligence Gallery do pracovního prostoru Azure Machine Learning Studio a nasaďte tento model jako webovou službu v pracovním prostoru Machine Learning.
 5. Vytvoření úlohy Stream Analytics, která volá tuto webovou službu jako funkce, aby bylo možné zjistit mínění pro textový vstup.
 6. Spuštění úlohy Stream Analytics a kontrola výstupu.
 

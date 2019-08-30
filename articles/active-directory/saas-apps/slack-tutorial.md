@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e15f704fc9604bd18a1f4848e84065fc507314
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563109"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s časovou rezervou
 
@@ -47,6 +47,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Časová rezerva podporuje jednotné přihlašování na webu **SP**
 * Časová rezerva podporuje zřizování uživatelů **jenom v čase**
 * Časová rezerva podporuje [ **automatizované** zřizování uživatelů](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial)
+
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-slack-from-the-gallery"></a>Přidání časové rezervy z Galerie
 
@@ -90,36 +93,6 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     > [!NOTE]
     > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. Pro získání hodnoty se obraťte na [tým podpory pracovní rezervy klienta](https://slack.com/help/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
-
-1. Aplikace časové rezervy očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > Pokud máte uživatele, kteří mají přiřazenou **e-mailovou adresu** , není na základě licence Office 365. deklarace identity **uživatele. e-mail** se nezobrazí v tokenu SAML. V těchto případech doporučujeme jako hodnotu atributu **User. email** použít **User. userPrincipalName** , aby se místo toho namapoval jako **jedinečný identifikátor** .
-
-1. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
-
-    | Name | Zdrojový atribut |
-    | --- | --- |
-    | křestní_jméno | user.givenname |
-    | příjmení | user.surname |
-    | Uživatel. E-mail | user.mail |
-    | User. username | user.userprincipalname |
-
-    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
-
-    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
-
-    c. Ponechte **obor názvů** prázdný.
-
-    d. Jako **atribut**vyberte zdroj.
-
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
-
-    f. Klikněte na tlačítko **Ok**
-
-    g. Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -187,7 +160,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-slack-test-user"></a>Vytvořit testovacího uživatele pro časovou rezervu
 
-Cílem této části je vytvořit uživatele s názvem Britta Simon v časové rezervě. Časová rezerva podporuje zřizování za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup k časové rezervě, pokud ještě neexistuje. Časová rezerva podporuje taky Automatické zřizování uživatelů. Další podrobnosti najdete [tady](slack-provisioning-tutorial.md) , jak nakonfigurovat automatické zřizování uživatelů.
+Cílem této části je vytvořit uživatele s názvem B. Simon v časové rezervě. Časová rezerva podporuje zřizování za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup k časové rezervě, pokud ještě neexistuje. Časová rezerva podporuje taky Automatické zřizování uživatelů. Další podrobnosti najdete [tady](slack-provisioning-tutorial.md) , jak nakonfigurovat automatické zřizování uživatelů.
 
 > [!NOTE]
 > Pokud potřebujete ručně vytvořit uživatele, musíte kontaktovat [tým podpory časové rezervy](https://slack.com/help/contact).

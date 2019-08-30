@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76d47353c5b81d7ed735f11a81e3e77514054076
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3cf262f2c2f14ea66a40facfd5b32139fc648e47
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082647"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165332"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu úžasnéch funkcí, je důležité naplánovat cestu k migraci, abyste měli jistotu, že bude docházet k plynulé práci. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům. 
@@ -192,7 +192,7 @@ Co je potřeba vzít v úvahu:
 Záměrné, jaké služby teď chcete v Azure Resource Manager povolit.  Spousta zákazníků pro svá prostředí Azure vyhledá méně závažná řešení:
 
 - [Access Control na základě rolí](../../role-based-access-control/overview.md).
-- [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/template-deployment-overview.md).
 - [Značky](../../azure-resource-manager/resource-group-using-tags.md).
 - [Řízení aktivit](../../azure-resource-manager/resource-group-audit.md)
 - [Zásady Azure](../../governance/policy/overview.md)

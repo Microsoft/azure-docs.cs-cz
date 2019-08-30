@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334017"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126526"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Nejčastější dotazy k Azure Active Directory Identity Protection
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Identity Protection. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Proč některé rizikové události mají stav Uzavřeno (systém)?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Proč některé detekce rizik mají stav Uzavřeno (systém)?
 
-**Odpověď:** Tyto rizikové události byly zjištěny ochranou identity a později uzavřeny, protože události již nebyly považovány za rizikové. Tyto události se nepočítají směrem k úrovni rizika uživatele. 
+**Odpověď:** Tyto detekce rizika byly zjištěny ochranou identity a později uzavřeny, protože události již nebyly považovány za rizikové. Tyto události se nepočítají směrem k úrovni rizika uživatele. 
 
 ---
 

@@ -4,15 +4,15 @@ description: Naučte se, jak začlenit správu delegovaných prostředků do Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012059"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165029"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Ujistěte se, že předplatné zákazníka je zaregistrované pro připojování.
-
-Každé předplatné musí mít autorizaci k registraci tak, že ručně zaregistrujete poskytovatele prostředků **Microsoft. ManagedServices** . Zákazník může zaregistrovat předplatné podle kroků uvedených v části [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
-
-Zákazník si může ověřit, že předplatné je připravené k registraci, jedním z následujících způsobů.
-
-### <a name="azure-portal"></a>portál Azure
-
-1. V Azure Portal vyberte předplatné.
-1. Vyberte **Poskytovatelé prostředků**.
-1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako zaregistrované.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Výsledek by měl vypadat přibližně takto:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Výsledek by měl vypadat přibližně takto:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Při připojování předplatného (nebo jedné nebo více skupin prostředků v rámci předplatného) pomocí popsaného postupu se poskytovatel prostředků **Microsoft. ManagedServices** zaregistruje pro toto předplatné.
 
 ## <a name="define-roles-and-permissions"></a>Definování rolí a oprávnění
 
@@ -129,8 +74,6 @@ Pro usnadnění správy doporučujeme použít pro každou roli skupiny uživate
 > Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastník a všech vestavěných rolí [](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) s oprávněním dataactions. Integrovaná role správce přístupu uživatele je podporována pro omezené použití, jak je popsáno níže. Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) se také nepodporují.
 
 Aby bylo možné definovat autorizaci, budete muset znát hodnoty ID pro každého uživatele, skupinu uživatelů nebo instanční objekt, ke kterému chcete udělit přístup. Také budete potřebovat ID definice role pro každou předdefinovanou roli, kterou chcete přiřadit. Pokud je ještě nemáte, můžete je načíst jedním z následujících způsobů.
-
-
 
 ### <a name="powershell"></a>PowerShell
 
@@ -329,7 +272,7 @@ Get-AzContext
 az account list
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V Azure Portal můžete [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

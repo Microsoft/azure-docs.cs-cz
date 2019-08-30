@@ -3,21 +3,31 @@ title: Vytvoření a nasazení Azure Functions v Pythonu s Visual Studio Code
 description: Jak používat rozšíření Visual Studio Code pro Azure Functions k vytváření funkcí bez serveru v Pythonu a jejich nasazení do Azure.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639091"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170717"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Nasazení Pythonu pro Azure Functions s využitím Visual Studio Code
 
 V tomto kurzu použijete Visual Studio Code a rozšíření Azure Functions k vytvoření koncového bodu HTTP bez serveru pomocí Pythonu a také k přidání připojení (neboli "vazby") do úložiště. Azure Functions spouští váš kód v prostředí bez serveru, aniž byste museli zřizovat virtuální počítač nebo publikovat webovou aplikaci. Rozšíření Azure Functions pro Visual Studio Code významně zjednodušuje proces používání funkcí automatickým zpracováním mnoha otázek týkajících se konfigurace.
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Instalace rozšíření Azure Functions
+> * Vytvoření funkce aktivované protokolem HTTP
+> * Místní ladění
+> * Synchronizovat nastavení aplikace
+> * Zobrazit protokoly streamování
+> * Připojení k Azure Storage
 
 Pokud narazíte na problémy s některým z kroků v tomto kurzu, máme rádi vědět o podrobnostech. K odeslání podrobné zpětné vazby použijte na konci každého oddílu tlačítko **jsem narazili na problém** .
 
@@ -100,29 +110,26 @@ Výstup, který začíná logem Azure Functions (je třeba posunout výstup naho
     | Vyberte jazyk pro projekt Function App. | **Python** | Jazyk, který má být použit pro funkci, která určuje šablonu použitou pro kód. |
     | Vyberte šablonu pro funkci prvního projektu. | **Aktivační událost HTTP** | Funkce, která používá Trigger HTTP, se spustí pokaždé, když se na koncový bod funkce navede požadavek HTTP. (K dispozici jsou různé triggery Azure Functions. Další informace najdete v tématu [co se dá dělat s funkcemi?](functions-overview.md#what-can-i-do-with-functions).) |
     | Zadejte název funkce. | HttpExample | Název se používá pro podsložku, která obsahuje kód funkce spolu s konfiguračními daty, a definuje také název koncového bodu HTTP. Místo toho, abyste přijali výchozí hodnotu "HTTPTrigger", použijte "HttpExample", abyste rozlišili funkci přímo od triggeru. |
-    | Úroveň autorizace | **Anonymous** | Anonymní autorizace umožňuje všem uživatelům přístup k této funkci. |
+    | Úroveň autorizace | **Slouží** | Volání na koncový bod funkce vyžadují [klíč funkce](functions-bindings-http-webhook.md#authorization-keys). |
     | Vyberte, jak se má projekt otevřít. | **Otevřít v aktuálním okně** | Otevře projekt v aktuálním Visual Studio Codem okně. |
 
-1. Po krátké době zpráva, která indikuje, že byl vytvořen nový projekt. V **Průzkumníkovi**je pro funkci vytvořena podsložka a Visual Studio Code otevře  *\_ \_soubor\_init\_. py* , který obsahuje výchozí kód funkce:
+1. Po krátké době zpráva, která indikuje, že byl vytvořen nový projekt. V **Průzkumníkovi**je pro funkci vytvořena podsložka. 
+
+1. Pokud ještě není otevřený, otevřete  *\_ \_soubor\_init\_. py* , který obsahuje výchozí kód funkce:
 
     [![Výsledek vytvoření nového projektu funkcí Pythonu](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > Pokud vám Visual Studio Code upozorní, že při **otevření  *\_ \_příkazu\_init\_. py*nemáte vybraný překladač Pythonu, otevřete paletu příkazů (F1), vyberte Python: Vyberte** příkaz interpret a potom vyberte virtuální prostředí v místní `.env` složce (která byla vytvořena jako součást projektu). Prostředí musí být založené na Python 3.6 x konkrétně, jak bylo uvedeno dříve v části [požadavky](#prerequisites).
+    > Když Visual Studio Code upozorní vás, že při **otevření  *\_ \_příkazu\_init\_. py*nemáte vybraný překladač Pythonu, otevřete paletu příkazů (F1), vyberte Python: Vyberte** příkaz interpret a potom vyberte virtuální prostředí v místní `.env` složce (která byla vytvořena jako součást projektu). Prostředí musí být založené na Python 3.6 x konkrétně, jak bylo uvedeno dříve v části [požadavky](#prerequisites).
     >
     > ![Výběr virtuálního prostředí vytvořeného pomocí projektu](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> Kdykoli budete chtít vytvořit další funkci ve stejném projektu, použijte příkaz **Create Function** v **Azure: V** Průzkumníku funkcí nebo otevřete paletu příkazů (F1) a **vyberte Azure Functions: Příkaz Create** Function V obou příkazech se zobrazí výzva k zadání názvu funkce (což je název koncového bodu) a pak se vytvoří podsložka s výchozími soubory.
->
-> ![Nový příkaz funkce v Azure: Průzkumník funkcí](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>Prověřte soubory kódu
 
-V nově vytvořené podsložce funkce jsou tři soubory:  *\_ \_\_init\_. py* obsahuje kód funkce, *Function. JSON* , který popisuje funkci Azure functions a *Sample. dat* je ukázkový datový soubor. Pokud chcete, můžete soubor *Sample. dat* odstranit, protože existuje jenom k tomu, aby bylo možné přidat další soubory do podsložky.
+V nově vytvořené podsložce funkce _HttpExample_ jsou tři soubory:  *\_ \_\_init\_. py* obsahuje kód funkce, *Function. JSON* , který popisuje funkci do Azure. Functions a *Sample. dat* je ukázkový datový soubor. Pokud chcete, můžete soubor *Sample. dat* odstranit, protože existuje jenom k tomu, aby bylo možné přidat další soubory do podsložky.
 
 Podívejme se nejprve na *Function. JSON* a pak na kód v  *\_ \_init\_\_. py*.
 
@@ -135,7 +142,7 @@ Soubor Function. JSON poskytuje potřebné informace o konfiguraci pro Azure Fun
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ Soubor Function. JSON poskytuje potřebné informace o konfiguraci pro Azure Fun
 
 Vlastnost identifikuje spouštěcí soubor pro kód a tento kód musí obsahovat funkci Pythonu s názvem `main`. `scriptFile` Svůj kód můžete vyhodnotit do více souborů, pokud zde zadaný soubor obsahuje `main` funkci.
 
-`bindings` Element obsahuje dva objekty, jeden pro popis příchozích požadavků a druhý pro popis odpovědi HTTP. U příchozích požadavků (`"direction": "in"`) funkce reaguje na požadavky HTTP GET nebo post a nevyžaduje ověřování. Odpověď (`"direction": "out"`) je odpověď HTTP, která vrací jakoukoli hodnotu `main` z funkce Pythonu.
+`bindings` Element obsahuje dva objekty, jeden pro popis příchozích požadavků a druhý pro popis odpovědi HTTP. U příchozích požadavků (`"direction": "in"`) funkce reaguje na požadavky HTTP GET nebo post a vyžaduje, abyste zadali funkční klíč. Odpověď (`"direction": "out"`) je odpověď HTTP, která vrací jakoukoli hodnotu `main` z funkce Pythonu.
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 Při vytváření nové funkce Azure Functions poskytuje výchozí kód Pythonu v  *\_ \_\_init\_. py*:
 
@@ -233,7 +240,7 @@ Důležité části kódu jsou následující:
 
     Případně vytvořte soubor jako *data. JSON* , který obsahuje `{"name":"Visual Studio Code"}` a použijte příkaz `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`.
 
-1. Chcete-li otestovat ladění funkce, nastavte zarážku na řádku, který `name = req.params.get('name')` čte a znovu vytvoří požadavek na adresu URL. Ladicí program Visual Studio Code by měl na tomto řádku zastavit, což vám umožní kontrolovat proměnné a krokovat kód. (Stručný návod základního ladění najdete v tématu [Visual Studio Code kurzu – konfigurace a spuštění ladicího programu](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
+1. Chcete-li ladit funkci, nastavte zarážku na řádku, který `name = req.params.get('name')` čte a znovu vytvoří požadavek na adresu URL. Ladicí program Visual Studio Code by měl na tomto řádku zastavit, což vám umožní kontrolovat proměnné a krokovat kód. (Stručný návod základního ladění najdete v tématu [Visual Studio Code kurzu – konfigurace a spuštění ladicího programu](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
 
 1. Až budete spokojeni s tím, že jste důkladně otestovali funkci místně, ukončete ladicí program (pomocí příkazu nabídky **ladění** > **Zastavit ladění** nebo příkazu **Odpojit** na panelu nástrojů ladění).
 
@@ -386,7 +393,7 @@ Po prvním nasazení můžete provádět změny kódu, jako je například přid
     }
     ```
 
-1. Spusťte ladicí program stisknutím klávesy F5 nebo **kliknutím na příkaz** > nabídky**Spustit ladění** pro ladění. Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
+1. Spusťte ladicí program stisknutím klávesy F5 nebo kliknutím na > příkaz nabídky**Spustit ladění** pro ladění. Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
 
     ```output
     Http Functions:
@@ -493,7 +500,7 @@ V této části přidáte vazbu úložiště k funkci HttpExample vytvořené d�
 
 Function App, který jste vytvořili, zahrnuje prostředky, které můžou nabývat minimálními náklady (viz [ceny funkcí](https://azure.microsoft.com/pricing/details/functions/)). Prostředky vyčistíte tak, že kliknete pravým tlačítkem na **Function App v Azure: V** Průzkumníku funkcí a vyberte **Odstranit Function App**. Můžete také navštívit [Azure Portal](https://portal.azure.com), vybrat **skupiny prostředků** v navigačním podokně na levé straně, vybrat skupinu prostředků vytvořenou v procesu tohoto kurzu a pak použít příkaz **Odstranit skupinu prostředků** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Blahopřejeme k dokončení tohoto návodu k nasazení kódu Pythonu do Azure Functions! Nyní jste připraveni vytvořit mnoho dalších funkcí bez serveru.
 

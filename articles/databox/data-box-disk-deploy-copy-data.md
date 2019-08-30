@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 08/29/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e883e231988e63d22cb990224d240b1c13fb04b6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147948"
+ms.locfileid: "70164438"
 ---
 ::: zone target="docs"
 
@@ -335,6 +335,6 @@ Při ověřování dat proveďte následující kroky.
 1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
 2. Pomocí možnosti 2 Ověřte soubory a vygenerujte kontrolní součty. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
-    Další informace o ověření dat naleznete v tématu [Validate data](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma [řešení chyb při ověřování](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: target = "_blank"}.
+    Další informace o ověření dat naleznete v tématu [Validate data](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Pokud při ověřování dojde k chybě, přečtěte si téma [řešení chyb při ověřování](data-box-disk-troubleshoot.md).
 
 ::: zone-end

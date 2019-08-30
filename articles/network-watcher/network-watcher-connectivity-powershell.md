@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s připojením pomocí služby Azure Network Watcher – PowerShell | Dokumentace Microsoftu
-description: Další informace o použití připojení k řešení potíží s funkce služby Azure Network Watcher pomocí Powershellu.
+title: Řešení potíží s připojením pomocí Azure Network Watcher – PowerShell | Microsoft Docs
+description: Naučte se používat funkci řešení potíží s připojením pro Azure Network Watcher s využitím PowerShellu.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: fe665c425c2b28678ccb29a06d29c20bb11b5c1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f18140036ac762c7383ed1b1d8081aa8d5f877f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716652"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165121"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením pomocí služby Azure Network Watcher pomocí Powershellu
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Řešení potíží s připojením k Azure Network Watcher pomocí PowerShellu
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
-> - [Rozhraní Azure REST API](network-watcher-connectivity-rest.md)
+> - [REST API Azure](network-watcher-connectivity-rest.md)
 
-Zjistěte, jak používat připojení řešení Chcete-li ověřit, zda lze navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
+Naučte se používat řešení potíží s připojením k ověření, jestli je možné navázat přímé připojení TCP z virtuálního počítače do daného koncového bodu.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-* Instance služby Network Watcher v oblasti, kterou chcete k řešení potíží s připojení.
-* Virtuální počítače k řešení problémů s připojením s.
+* Instance Network Watcher v oblasti, ve které chcete řešit potíže s připojením.
+* Virtuální počítače pro řešení potíží s připojeními.
 
 > [!IMPORTANT]
-> Řešení potíží s připojením vyžaduje, aby měl řešit z virtuálního počítače `AzureNetworkWatcherExtension` nainstalované rozšíření virtuálního počítače. Instalaci rozšíření na virtuálním počítači s Windows najdete [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro virtuální počítač s Linuxem, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Na cílový koncový bod není vyžadován rozšíření.
+> Řešení potíží s připojením vyžaduje, aby virtuální počítač, ze `AzureNetworkWatcherExtension` kterého řešení řešíte, byl nainstalován rozšíření virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). V cílovém koncovém bodě není rozšíření vyžadováno.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Zkontrolujte připojení k virtuálnímu počítači
+## <a name="check-connectivity-to-a-virtual-machine"></a>Ověřte připojení k virtuálnímu počítači.
 
-Tento příklad kontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
+Tento příklad zkontroluje připojení k cílovému virtuálnímu počítači přes port 80. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -57,15 +57,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
 ### <a name="response"></a>Odpověď
 
-Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je **Unreachable**. Uvidíte, že všechny testy odeslání se nezdařilo. Připojení se nezdařilo u tohoto virtuálního zařízení kvůli uživatelem nakonfigurované `NetworkSecurityRule` s názvem **UserRule_Port80**, je nakonfigurovaná tak, aby blokovat příchozí provoz na portu 80. Tyto informace můžete použít pro zkoumání problémů s připojením.
+Následující odpověď je z předchozího příkladu.  V této odpovědi `ConnectionStatus` je nedosažitelný. Vidíte, že se nepovedlo úspěšně odeslat všechny sondy. Připojení k virtuálnímu zařízení se nepovedlo, protože se nakonfiguroval `NetworkSecurityRule` uživatel s názvem **UserRule_Port80**, který je nakonfigurovaný tak, aby blokoval příchozí provoz na portu 80. Tyto informace se dají použít k tomu, aby se nastudovaly problémy s připojením.
 
 ```
 ConnectionStatus : Unreachable
@@ -136,11 +135,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="validate-routing-issues"></a>Ověření problémů se směrováním
+## <a name="validate-routing-issues"></a>Ověřit problémy s směrováním
 
-Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleného koncového bodu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
+Tento příklad kontroluje připojení mezi virtuálním počítačem a vzdáleným koncovým bodem. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -149,15 +148,14 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
 ### <a name="response"></a>Odpověď
 
-V následujícím příkladu `ConnectionStatus` se zobrazuje jako **Unreachable**. V `Hops` podrobnosti, můžete zobrazit v části `Issues` , který provoz se zablokoval kvůli `UserDefinedRoute`. 
+V následujícím příkladu `ConnectionStatus` je zobrazen jako nedosažitelný. V podrobnostech `Issues` vidíte, že provoz `UserDefinedRoute`byl zablokován z důvodu. `Hops` 
 
 ```
 ConnectionStatus : Unreachable
@@ -200,11 +198,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a>Zkontrolujte latenci webu
+## <a name="check-website-latency"></a>Kontrolovat latenci webu
 
-Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
+Následující příklad zkontroluje připojení k webu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -213,8 +211,7 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
@@ -222,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Odpověď
 
-V následující odpověď, uvidíte `ConnectionStatus` ukazovat **dostupné**. Pokud je připojení úspěšné, jsou k dispozici hodnoty latence.
+V následující reakci `ConnectionStatus` vidíte zobrazení jako **dostupné**. Po úspěšném připojení se dodávají hodnoty latence.
 
 ```
 ConnectionStatus : Reachable
@@ -253,11 +250,11 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontrolujte připojení ke koncovému bodu úložiště
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Zkontroluje připojení ke koncovému bodu úložiště.
 
-Následující příklad ověří připojení z virtuálního počítače do účtu úložiště blogu. Tento příklad vyžaduje, abyste měli povolený v oblasti obsahující zdrojového virtuálního počítače Network Watcher.  
+Následující příklad zkontroluje připojení z virtuálního počítače k účtu úložiště blogu. Tento příklad vyžaduje, abyste v oblasti obsahující zdrojový virtuální počítač povolili Network Watcher.  
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```powershell
 $rgName = "ContosoRG"
@@ -267,15 +264,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
 ### <a name="response"></a>Odpověď
 
-Následující kód json je příklad odpovědi z spuštění předchozí rutiny. Jako cíl je dostupný, `ConnectionStatus` vlastnost ukazovat **dostupné**.  Jsou k dispozici podrobné informace o počet skoků potřebné k dosažení objektem blob storage a latenci.
+Následující JSON je příklad reakce na spuštění předchozí rutiny. Jelikož je cíl dosažitelný, zobrazí se `ConnectionStatus` Tato vlastnost jako **dosažitelná**.  Zadali jste podrobnosti o počtu směrování, které vyžaduje, aby se dosáhlo objektu BLOB úložiště a latence.
 
 ```json
 ConnectionStatus : Reachable
@@ -306,8 +302,8 @@ Hops             : [
                    ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Určení, zda některé je povolený provoz do nebo ze svého virtuálního počítače návštěvou [ověření toku protokolu IP zkontrolujte](diagnose-vm-network-traffic-filtering-problem.md).
+Zkontrolujte, jestli je na VIRTUÁLNÍm počítači povolený určitý provoz, a to tak, že navštívíte [kontrolu toku IP](diagnose-vm-network-traffic-filtering-problem.md).
 
-Pokud je blokován provoz a neměl by být, přečtěte si téma [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) vysledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je provoz blokován a neměl by být, přečtěte si téma [Správa skupin zabezpečení sítě](../virtual-network/manage-network-security-group.md) a sledujte skupinu zabezpečení sítě a pravidla zabezpečení, která jsou definována.

@@ -1,177 +1,177 @@
 ---
-title: Vysvětlení čas zpracování ve službě Azure Stream Analytics
-description: Další informace o čas zpracování ve službě Azure Stream Analytics
+title: Principy zpracování času v Azure Stream Analytics
+description: Přečtěte si, jak funguje zpracování času a jak řešit problémy s zpracováním času v Azure Stream Analytics.
 author: jasonwhowell
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692382"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172979"
 ---
-# <a name="understand-time-handling-in-azure-stream-analytics"></a>Vysvětlení čas zpracování ve službě Azure Stream Analytics
+# <a name="understand-time-handling-in-azure-stream-analytics"></a>Principy zpracování času v Azure Stream Analytics
 
-V tomto článku probereme, jak můžete provést volby při návrhu k řešení praktických čas zpracování problémy ve službě Azure Stream Analytics. Čas zpracování návrhu, že rozhodnutí, která jsou úzce souvisí s faktory řazení událostí.
+V tomto článku probereme, jak můžete navrhovat možnosti pro řešení problémů s zpracováním praktických časů ve službě Azure Stream Analytics. Rozhodnutí při návrhu zpracování se úzce vztahují k faktorům řazení událostí.
 
-## <a name="background-time-concepts"></a>Koncepty čas
+## <a name="background-time-concepts"></a>Koncepty času na pozadí
 
-Na lepší rámec diskuse nadefinujeme některé koncepty:
+K lepšímu orámování diskuze můžeme definovat několik konceptů na pozadí:
 
-- **Čas události**: Čas, kdy původní události došlo. Například pokud přesunutí automobilu na komunikacích se blíží stánku linka.
+- **Čas události**: Čas, kdy došlo k původní události. Například když se na silničním automobilu blíží placená kabina.
 
-- **Doba zpracování**: Čas události dosáhne systému zpracování a se vyskytuje. Například když snímačů z mýtných bran linka uvidí Auto a počítači chvíli trvá zpracovat data.
+- **Doba zpracování**: Čas, kdy událost dosáhne systému zpracování a je zaznamenána. Například když senzor rádiového kabiny uvidí auto a počítačový systém bude chvíli zpracovávat data.
 
-- **Vodoznak**: Značka čas události, která určuje až chvíle, jaké byly události ingressed do datového proudu procesoru. Vodoznaky nechejte systém indikoval průběh vymazat ingestuje události. Vzhledem k povaze datové proudy příchozích dat událostí nikdy nezastaví, takže vodoznaky informace o průběhu do určité míry v datovém proudu.
+- **Vodoznak**: Značka času události, která indikuje, k jakým událostem bodu došlo na vstupu procesoru streamování. Meze umožňují systému označovat nejasný průběh přijímání událostí. V rámci povaze datových proudů se příchozí data události nikdy nezastaví, takže vodoznaky indikují průběh určitého bodu v datovém proudu.
 
-   Vodoznak koncept je důležitý. Vodoznaky povolit Stream Analytics můžete určit, kdy systém může vytvářet kompletní a správný a opakovatelné výsledky, které nemusí být stažen. Zaručené tak, aby je předvídatelný a Opakovatelný může dokončení zpracování. Například pokud počet slov je třeba udělat pro podmínku ošetření některých chyb, vodoznaky jsou bezpečné počáteční a koncové body.
+   Koncept meze je důležitý. Meze umožňují Stream Analytics určit, kdy systém může vydávat kompletní, správné a opakující se výsledky, které není potřeba odvolávat. Zpracování se může provádět zaručeným způsobem, který je předvídatelný a možné ho opakovat. Pokud je třeba pro určitou podmínku zpracování chyb provést přepočet, jsou vodoznaky bezpečné počínaje počátečním a koncovým bodem.
 
-Jako další zdroje informací k tomuto tématu, najdete v blogových příspěvků Tyler Akidau [streamování 101](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101) a [streamování 102](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102).
+Jako další materiály k tomuto subjektu si přečtěte téma blogové příspěvky Tyler Akidau [streamování 101](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101) a [streaming 102](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102).
 
-## <a name="choosing-the-best-starting-time"></a>Výběr nejlepší počáteční čas
+## <a name="choosing-the-best-starting-time"></a>Volba nejlepšího času spuštění
 
-Stream Analytics poskytuje uživatelům dvě možnosti pro výběr čas události:
+Stream Analytics poskytuje uživatelům dvě možnosti pro dobu vybírání události:
 
-1. **Čas přijetí**  
+1. **Čas doručení**  
 
-   Čas přijetí jsou přiřazeny v vstupní zdroj události dosáhne zdroji. Čas doručení přístupné prostřednictvím **EventEnqueuedUtcTime** vlastnost pro Event Hubs vstupy **IoTHub.EnqueuedTime** vlastnost pro službu IoT Hub a pomocí **BlobProperties.LastModified**  vlastností pro objekt blob vstup.
+   Čas doručení se přiřadí ve vstupním zdroji, když událost dosáhne zdroje. K času doručení můžete přistupovat pomocí vlastnosti **EventEnqueuedUtcTime** pro Event Hubs vstupy, vlastnosti **IoTHub. EnqueuedTime** pro IoT Hub a pomocí vlastnosti **BlobProperties. LastModified** pro vstup objektu BLOB.
 
-   Použití čas doručení je výchozí chování a nejvhodnější používat pro scénáře, archivaci dat tam, kde je nezbytné žádné temporální logiku.
+   Použití času doručení je výchozí chování, které se nejlépe používá pro scénáře archivace dat, u kterých není nutná dočasná logika.
 
-2. **Čas aplikace** (nazývaná také čas události)
+2. **Čas aplikace** (také pojmenovaný čas události)
 
-   Čas aplikace se přiřadí při vygenerování události a je součástí datové části události. Chcete-li zpracovávat události podle času aplikace, použijte **časového razítka podle** klauzule v dotazu select. Pokud **časového razítka podle** chybí klauzule, čas doručení zpracovává události.
+   Čas aplikace je přiřazen při vygenerování události a je součástí datové části události. Chcete-li zpracovat události podle času aplikace, použijte klauzuli **timestamp by** v dotazu Select. Pokud není k dispozici klauzule **timestamp by** , jsou události zpracovávány časem doručení.
 
-   Je třeba použít časové razítko v datové části, když je zahrnuta temporální logiku. Tímto způsobem, zpoždění ve zdrojovém systému nebo v síti můžou být zahrnuté.
+   Je důležité použít časové razítko v datové části, když je zapojena dočasná logika. Tímto způsobem může být pro vás účtovány zpoždění ve zdrojovém systému nebo v síti.
 
-## <a name="how-time-progresses-in-azure-stream-analytics"></a>Jak se postupuje času ve službě Azure Stream Analytics
+## <a name="how-time-progresses-in-azure-stream-analytics"></a>Jak dlouho probíhá Azure Stream Analytics
 
-Při použití aplikace průběhu času podle příchozí události. Je obtížné pro systém vědět, pokud neexistují žádné události, nebo pokud jsou zpožděné události zpracování datových proudů. Z tohoto důvodu se generuje Azure Stream Analytics heuristické vodoznaky pro každý vstupní oddíl následujícími způsoby:
+Při použití času aplikace je průběh v čase založen na příchozích událostech. Pro systém zpracování datových proudů je obtížné zjistit, jestli neexistují žádné události, nebo pokud dojde ke zpoždění událostí. Z tohoto důvodu Azure Stream Analytics vygeneruje heuristické meze následujícími způsoby pro každý vstupní oddíl:
 
-1. Pokaždé, když neexistuje žádné příchozí události, mez je největší čas události, které jsme zatím viděli minus velikost okna pro toleranci mimo pořadí.
+1. Pokaždé, když dojde k nějaké příchozí události, je vodoznak největší čas události, kterou jsme viděli ještě daleko minus velikost okna tolerance mimo pořadí.
 
-2. Pokaždé, když neexistuje žádné příchozí události, vodoznaku je aktuální čas odhadované doručení (uplynulý čas na pozadí zpracovává události od poslední návštěvy vstupní události je zobrazena plus danou vstupní čas přijetí události virtuálního počítače) minus pozdní okno tolerance pozdního přijetí.
+2. Pokaždé, když není žádná příchozí událost, je vodoznakem aktuální předpokládaná doba příchodu (uplynulý čas na pozadí při zpracování událostí z doby, kdy se objeví vstupní událost a čas doručení vstupní události) mínus okno tolerance doručení v pozdním stavu.
 
-   Čas doručení pouze se dá odhadnout, vzhledem k tomu, že čas doručení skutečné vygenerovaný na zprostředkovatele vstupních událostí, jako jsou Event Hubs a ne Azure Stream Analytics virtuální počítač zpracováním událostí.
+   Čas doručení lze odhadnout pouze v případě, že se čas skutečného doručení generuje na vstupním zprostředkovateli událostí, jako je například Event Hubs, a ne Azure Stream Analytics virtuální počítač zpracovává události.
 
-Návrh má dva další účely, kromě generování vodoznaky:
+Návrh obsluhuje dva další účely, kromě generování vodoznaků:
 
-1. Systém vygeneruje výsledky včas s nebo bez něj příchozí události.
+1. Systém generuje výsledky včas s příchozími událostmi nebo bez nich.
 
-   Budete mít kontrolu nad jak včas chce vidět výstupní výsledky. Na webu Azure Portal na **řazení událostí** stránky vaší úlohy Stream Analytics můžete nakonfigurovat **události mimo pořadí** nastavení. Při konfiguraci tohoto nastavení, zvažte kompromis včasnosti s tolerance mimo pořadí událostí do datového proudu událostí.
+   Máte kontrolu nad tím, jak včas chtějí zobrazit výsledky výstupu. V Azure Portal na stránce **řazení událostí** úlohy Stream Analytics můžete nakonfigurovat nastavení **události mimo pořadí** . Při konfiguraci tohoto nastavení zvažte, jestli máte v datovém proudu událostí k disose časovou osu s tolerancí pro události mimo pořadí.
 
-   Pozdní okno tolerance pozdního přijetí je důležité zachovat generování vodoznaky, dokonce i v případě neexistence příchozí události. V některých případech může být určité odkud pochází žádné příchozí události, například pokud je zhuštěný vstupního datového proudu událostí. Tento problém je vyvolána malé vzdálenosti mezi použitím většího počtu oddílů ve vstupní události Service broker.
+   Okno tolerance pozdního doručení je důležité, aby se vygenerovaly meze, i když neexistují příchozí události. V některých případech může existovat období, ve kterém nepřicházejí žádné příchozí události, například když je vstupní datový proud události zhuštěný. Tento problém je exacerbated pomocí více oddílů ve zprostředkovateli událostí vstupu.
 
-   Streamování systémy zpracování dat bez pozdní okno tolerance pozdního přijetí může být velmi krátká zpožděné výstupy při vstupy jsou zhuštěné a jsou používány více oddílů.
+   V případě, že jsou vstupy zhuštěné a používají se víc oddílů, můžou se systémy zpracování dat streamování bez zpožděných odchylek od opožděného doručení zpomalit.
 
-2. Chování systému musí být opakovatelné. Opakovatelnosti je důležité vlastnosti systému zpracování dat streamování.
+2. Chování systému musí být opakováno. Opakovatelnost je důležitou vlastností systému pro zpracování datových proudů.
 
-   Vodoznak je odvozený od čas doručení a čas aplikace. Obě jsou trvalé v zprostředkovatele událostí a proto opakovatelné. V případě čas doručení musí odhadnout neexistence událostí, Azure Stream Analytics deníky čas odhadované doručení pro opakovatelnost během opětovného přehrání pro účely obnovení po selhání.
+   Meze je odvozená od doby doručení a času použití. Obě jsou trvale v zprostředkovateli událostí, a proto je lze opakovat. V případě, že je nutné čas doručení odhadnout při absenci událostí, Azure Stream Analytics deníky odhadovanou dobu doručení pro opakovatelnost během přehrávání za účelem zotavení po selhání.
 
-Všimněte si, že pokud budete chtít použít **čas doručení** jako čas události, není nutné konfigurovat tolerance mimo pořadí a tolerance pozdního přijetí. Protože **čas doručení** je zaručeno, že bude zvětšovat zvětšovat ve vstupní události Service broker, Azure Stream Analytics jednoduše ignoruje konfigurace.
+Všimněte si, že pokud se rozhodnete použít **čas přijetí** jako čas události, není nutné konfigurovat toleranci mimo pořadí a zpoždění doručení. Vzhledem k tomu, že je zaručeno, že **doba doručení** bude rovnoměrně zvětšující zvyšovat v zprostředkovateli událostí vstupu, Azure Stream Analytics jednoduše tyto konfigurace ignoruje.
 
-## <a name="late-arriving-events"></a>Opravovány událostí
+## <a name="late-arriving-events"></a>Pozdě přicházející události
 
-Podle definice pozdní okno tolerance pozdního přijetí pro každého příchozí události, porovnává Azure Stream Analytics **čas události** s **čas doručení**; Pokud čas události je mimo okno tolerance je můžete nakonfigurovat systém a vyřadit události nebo upravit události. čas musí být v tolerance.
+Podle definice okna tolerance pozdního přijetí pro každou příchozí událost Azure Stream Analytics porovnává **čas události** s **dobou doručení**; Pokud je čas události mimo okno tolerance, můžete systém nakonfigurovat tak, aby buď událost vyřadí, nebo upravit čas události tak, aby byl v rámci tolerance.
 
-Vezměte v úvahu, že po vygenerování vodoznaky, můžete službu potenciálně přijímat události s nižší než vodoznak čas události. Můžete nakonfigurovat službu buď **vyřadit** tyto události nebo **upravit** čas události hodnoty meze.
+Vezměte v úvahu, že po vygenerování vodoznaků může služba potenciálně přijímat události s časem události nižším než meze. Službu můžete nakonfigurovat tak, aby buď **vyřadí** tyto události, nebo **upravte** čas události na hodnotu meze.
 
-Jako součást úpravy, události od **System.Timestamp** je nastavena na novou hodnotu, ale **čas události** vlastní pole se nezmění. Toto nastavení je jedině tam, kde události **System.Timestamp** může lišit od hodnoty v poli času události a může vést k neočekávaným výsledkům, které chcete vygenerovat.
+V rámci úpravy je **System. timestamp** události nastaven na novou hodnotu, ale pole **čas události** se nezměnilo. Tato úprava je jedinou situací, kdy se systém událostí **. časové razítko** může lišit od hodnoty v poli Doba události a může způsobit vygenerování neočekávaných výsledků.
 
-## <a name="handling-time-variation-with-substreams"></a>Čas změny s substreams zpracování
+## <a name="handling-time-variation-with-substreams"></a>Zpracování variace času u podproudů
 
-Generování mechanismus heuristické vodoznak popsaný tady funguje dobře ve většině případů, ve kterém je většinou synchronizované mezi různými odesílatelé událostí. Však v reálném životě, zejména v mnoha scénářích IoT, systém má málo kontrolu nad hodin na odesílatelé událostí. Odesílatelé událostí může být nejrůznější zařízení v terénu, možná na různé verze hardwaru a softwaru.
+Mechanizmus generování heuristického vodoznaku, který je popsaný tady, dobře funguje ve většině případů, kdy je čas většinou synchronizovaný mezi různými odesílateli událostí. V reálném čase, zejména v mnoha scénářích IoT, má však systém malou kontrolu nad hodinami v odesílajících událostech. Odesílatelé událostí můžou být v poli nejrůznější zařízení, třeba na různých verzích hardwaru a softwaru.
 
-Místo použití meze globální do všech událostí do vstupního oddílu, Stream Analytics má jiný mechanismus volá substreams vám pomůže. V úloze, můžete využít substreams napsáním úlohy dotaz, který používá [ **TIMESTAMP BY** ](/stream-analytics-query/timestamp-by-azure-stream-analytics) klauzule a klíčové slovo **přes**. Pokud chcete určit, podproudů, zadejte název sloupce klíče po **přes** – klíčové slovo, například `deviceid`tak, aby systém použije zásady času podle sloupce. Každý podproudů získá svůj vlastní nezávislý vodoznak. Tento mechanismus je užitečné pro povolení generování včas výstupu, kdy zabývají velké hodiny odchylek nebo sítě zpoždění mezi odesílatelé událostí.
+Místo použití globálního vodoznaku pro všechny události ve vstupním oddílu Stream Analytics má jiný mechanismus nazvaný podproudy, které vám pomůžou. Můžete využít podproudy v rámci úlohy vytvořením dotazu úlohy, který používá klauzuli [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) a klíčové slovo **over**. Chcete-li určit podproud, zadejte název klíčového sloupce za klíčovým slovem **over** , `deviceid`takže systém použije pro tento sloupec zásady času. Každý podproud získá vlastní nezávislá vodoznak. Tento mechanismus je vhodný k tomu, aby bylo možné včasné generování výstupu při zpracování velkých hodin nebo zpoždění sítě mezi odesílateli událostí.
 
-Substreams jsou jedinečné řešení, které poskytuje služba Azure Stream Analytics a nejsou nabízeny jiných datových proudů zpracování dat systémů. Stream Analytics se vztahuje na příchozí události v případě substreams používají opožděné okno tolerance pozdního přijetí. Ve výchozím nastavení (5 sekund) je pravděpodobně příliš malá pro zařízení s časovými razítky snižování. Doporučujeme začít s 5 minut a provést úpravy podle způsobu posun hodin jejich zařízení.
+Podproudy jsou jedinečné řešení poskytované Azure Stream Analytics a nejsou nabízeny jinými systémy pro zpracování dat streamování. Když se používají podproudy, Stream Analytics v okně tolerance doručení platit příchozí události. Výchozí nastavení (5 sekund) je pro zařízení s odlišnými časovými razítky asi příliš malé. Doporučujeme, abyste začali s 5 minutami, a provedli úpravy podle jejich modelu zkosených hodin zařízení.
 
-## <a name="early-arriving-events"></a>Časná opravovány události
+## <a name="early-arriving-events"></a>Události předčasného doručení
 
-Mohli jste si všimnout jiné koncept volá včasné doručení okna, které vypadá jako opak pozdní okno tolerance pozdního přijetí. Toto okno je pevně nastavena na 5 minut a slouží k jinému účelu z pozdní doručení, jeden.
+Možná jste si všimli dalšího konceptu s názvem okno předčasného doručení, které vypadá podobně jako opak okna tolerance opožděného doručení. Toto okno je pevně nastavené na 5 minut a má k dispozici jiný účel od pozdního doručení.
 
-Azure Stream Analytics zaručuje vždy generuje úplné výsledky, můžete zadat jenom **úlohy počáteční čas** jako výstup poprvé úlohy, není vstupní čas. Čas spuštění úlohy je potřeba zpracovat okně dokončeno, ne jenom ze střední části okna.
+Protože Azure Stream Analytics garantuje, že vždy generuje úplné výsledky, můžete jako první výstupní čas úlohy zadat jenom **čas spuštění úlohy** , ne vstupní čas. Čas spuštění úlohy je vyžadován, aby bylo dokončeno celé okno, nikoli pouze uprostřed okna.
 
-Stream Analytics je počáteční čas pak odvozen od specifikace dotazu. Ale vzhledem k tomu, že vstupní události zprostředkovatele je pouze indexované podle čas doručení, systém má přeložit počáteční čas na čas doručení událostí. Od tohoto okamžiku ve vstupní události Service broker může systém zahájit zpracování událostí. Časná opravovány okno omezení překlad je jednoduché. Čas události mínus 5 minut dřívější opravovány okno se spouští. Tento výpočet také znamená, že systém zahodí všechny události, které se zobrazují s dobu 5 minut více, než čas doručení událostí.
+Stream Analytics potom odvozuje počáteční čas ze specifikace dotazu. Nicméně, protože zprostředkovatel vstupních událostí je indexován pouze pomocí doby doručení, systém musí přeložit čas počáteční události na čas doručení. Systém může zahájit zpracování událostí z tohoto bodu ve zprostředkovateli událostí vstupu. Při překročení limitu okna při prvním dochodu je převod jednoduchý. Spouští se čas události, který mínus úvodní okno o 5 minutách. Tento výpočet také znamená, že systém vyřazuje všechny události, u kterých se zobrazuje čas události 5 minut větší než čas doručení.
 
-Tento koncept se používá k zajištění, že zpracování je opakovatelné bez ohledu na to, kde můžete začít výstup z. Bez tohoto mechanismu ho by se možné zaručit opakovatelnost jako řada jiných datových proudů systémů deklarací že dělají.
+Tento koncept slouží k zajištění toho, aby se zpracování opakovalo bez ohledu na to, kde začínáte výstup. Bez takového mechanismu by nebylo možné zaručit opakovatelnost, protože to mnoho dalších nárokových systémů streamování udělá.
 
-## <a name="side-effects-of-event-ordering-time-tolerances"></a>Vedlejší efekty čas tolerance řazení událostí
+## <a name="side-effects-of-event-ordering-time-tolerances"></a>Vedlejší účinky odchylek času řazení událostí
 
-Úlohy Stream Analytics obsahuje několik **řazení událostí** možnosti. Dvě lze nastavit na webu Azure Portal: **události mimo pořadí** nastavení (tolerance mimo pořadí) a **události, které dorazí pozdě** nastavení (tolerance pozdního přijetí). **Včasné doručení** proti chybám je pevná a nejde ho upravit. Tyto zásady času se používají ve Stream Analytics k poskytování silné záruky. Ale tato nastavení mají některé někdy neočekávané důsledky:
+Úlohy Stream Analytics mají několik možností **řazení událostí** . Dva můžou být nakonfigurované v Azure Portal: nastavení **události mimo pořadí** (tolerance mimo pořadí) a **události, které dorazí** na nastavení zpožděné (pozdní tolerance doručení). Tolerance **počátečního doručení** je pevná a nelze ji upravit. Tyto časové zásady používá Stream Analytics k poskytování silných záruk. Tato nastavení ale mají některé někdy neočekávané důsledky:
 
-1. Náhodně odesílání událostí, které jsou příliš stará.
+1. Nechtěně odesílá události, které jsou příliš brzy.
 
-   Dřívější události by neměly obsahovat výstup normálně. Je možné, že dřívější události se odešlou do výstupu, pokud se hodiny odesílatele běží příliš rychle ale. Všechny události předčasného opravovány se zahodí, takže se některé z nich ve výstupu nezobrazí.
+   Počáteční události by se neměly normálně zacházet. Je možné, že se události předčasného odeslání do výstupu, pokud jsou hodiny odesilatele spuštěné příliš rychle. Všechny události předčasného doručení jsou vyřazené, takže se z výstupu nezobrazí žádné z nich.
 
-2. Staré události odeslání do Event Hubs slouží ke zpracování Azure Stream Analytics.
+2. Posílání starých událostí Event Hubs ke zpracování pomocí Azure Stream Analytics.
 
-   Zatímco starých událostí se může zdát neškodné na nejprve z důvodu aplikace tolerance pozdního přijetí, může být zrušená staré události. Pokud tyto události jsou příliš stará **System.Timestamp** je hodnota změněna během příjem událostí. Kvůli tomuto chování aktuálně Azure Stream Analytics je vhodnější pro scénáře, namísto zpracování historických událostí scénáře pro zpracování událostí téměř v reálném čase. Můžete nastavit **události, které dorazí pozdě** uvedení na nejvyšší možné hodnotu (20 dnů) Chcete-li toto chování v některých případech.
+   I když se staré události mohou nacházet jako neškodné, z důvodu uplatnění tolerance pozdního doručení mohou být staré události vyřazeny. Pokud jsou události příliš staré, hodnota **System. timestamp** se během příjmu události změní. V důsledku tohoto chování je aktuálně Azure Stream Analytics více možností pro scénáře zpracování událostí prakticky v reálném čase místo historických scénářů zpracování událostí. Můžete nastavit **události, které dorazí pozdě** na největší možnou hodnotu (20 dní), aby se toto chování mohlo v některých případech vyřešit.
 
-3. Výstupy se zdá být zpožděné.
+3. Výstupy se zdají být zpožděné.
 
-   První mez je vygenerováno počítané: **čas maximální události** systému sledoval probíhající zatím minus velikost okna pro toleranci mimo pořadí. Tolerance mimo pořadí je ve výchozím nastavení nakonfigurovaná na nula (00 minut a 00 sekund). Pokud ji nastavíte na hodnotu vyšší, nenulové času, první výstup úlohy streamování je zpožděné podle této hodnoty čas (nebo vyšší) z důvodu vodoznak prvním se počítá.
+   První meze se vygeneruje v počítaném čase: **Maximální doba události** , kterou systém doposud zjistil, mínus velikost okna tolerance mimo pořadí. Ve výchozím nastavení je tolerance mimo pořadí nakonfigurovaná na hodnotu nula (00 minut a 00 sekund). Když nastavíte tuto hodnotu na vyšší, nenulovou časovou hodnotu, bude první výstup úlohy streamování zpožděn o tuto hodnotu času (nebo vyšší) z důvodu vypočtené doby prvního vodoznaku.
 
-4. Vstupy jsou zhuštěný.
+4. Vstupy jsou zhuštěné.
 
-   Pokud v daném oddílu neexistuje žádný vstup, čas vodoznak se počítá jako **čas doručení** minus pozdní okno tolerance pozdního přijetí. V důsledku toho pokud vstupní události jsou zřídka a zhuštěné, výstup můžete změnit podle tohoto množství času. Výchozí hodnota **události, které dorazí pozdě** hodnota je 5 sekund. Měli byste očekávat zobrazíte některých zpoždění při odesílání vstupní události najednou, např. Zpoždění, získáte horší, když nastavíte **události, které dorazí pozdě** okno velké hodnoty.
+   Pokud v daném oddílu není žádný vstup, čas meze se vypočítává jako **čas doručení** mínus okno tolerance zpožděného doručení. Výsledkem je, že pokud jsou vstupní události zřídka a zhuštěné, může být výstup po určitou dobu zpožděn. Výchozí **události, které přijdou do pozdní hodnoty,** jsou 5 sekund. Měli byste očekávat, že při posílání vstupních událostí dojde k jednomu zpoždění, například. Při nastavování **událostí, které přijdou zpožděným** oknu na velkou hodnotu, může dojít ke horšímu zpoždění.
 
-5. **System.Timestamp** hodnota se liší od času v **čas události** pole.
+5. Hodnota **System. timestamp** se liší od času v poli **Doba události** .
 
-   Jak je popsáno výše, nastaví čas události tolerance mimo pořadí nebo pozdní windows tolerance pozdního přijetí systém. **System.Timestamp** hodnota události upravena, ale ne **čas události** pole.
+   Jak bylo popsáno dříve, systém upraví čas události v oknech tolerance mimo pořadí nebo zpoždění doručení. Hodnota **System. timestamp** události je upravena, ale ne pole **čas události** .
 
-## <a name="metrics-to-observe"></a>Sledujte metriky
+## <a name="metrics-to-observe"></a>Metriky, které se mají sledovat
 
-Můžete sledovat počet řazení čas efektů proti chybám prostřednictvím událostí [metriky úlohy Stream Analytics](stream-analytics-monitoring.md). Relevantní jsou následující metriky:
+Pomocí [metriky úloh Stream Analytics](stream-analytics-monitoring.md)můžete sledovat počet efektů tolerance doby řazení událostí. Jsou relevantní následující metriky:
 
 |Metrika  | Popis  |
 |---------|---------|
-| **Události mimo pořadí** | Označuje číslo události mimo pořadí, které byly vyřazeny nebo zadaný upravené časové razítko přijetí. Tato metrika je přímo vliv konfiguraci **události mimo pořadí** nastavení **řazení událostí** stránka úlohy na webu Azure Portal. |
-| **Pozdní vstupní události** | Označuje číslo, které zkazit ze zdroje událostí. Tato metrika zahrnuje události, které byly vynechány nebo měli jejich časového razítka byla upravena. Tato metrika je přímo vliv konfiguraci **události, které dorazí pozdě** nastavení **řazení událostí** stránka úlohy na webu Azure Portal. |
-| **Události předčasného vstupu** | Označuje počet událostí přicházejících již v rané fázi ze zdroje, které buď byla vyřazena, nebo jejich časového razítka byl upraven, pokud jsou nad rámec již v rané fázi 5 minut. |
-| **Zpoždění vodoznak** | Určuje zpoždění úlohy zpracování dat streamování. Zobrazit další informace v následující části.|
+| **Události mimo pořadí** | Označuje počet událostí, které byly obdrženy mimo pořadí, které byly buď vyřazeny nebo předány upravené časové razítko. Tato metrika je přímo ovlivněna konfigurací nastavení **události mimo pořadí** na stránce **řazení událostí** na úloze v Azure Portal. |
+| **Zpožděné vstupní události** | Určuje počet událostí přicházejících pozdě ze zdroje. Tato metrika zahrnuje události, které byly vyřazeny nebo bylo upraveno jejich časové razítko. Tato metrika je přímo ovlivněna konfigurací **událostí, které dorazí** na stránce **řazení událostí** na úlohu v Azure Portal. |
+| **Události předčasného vstupu** | Určuje počet událostí přicházejících do začátku ze zdroje, který byl buď vyřazen, nebo jejich časové razítko bylo upraveno, pokud jsou starší než 5 minut. |
+| **Zpoždění vodoznaku** | Určuje zpoždění úlohy zpracování streamování dat. Další informace najdete v následující části.|
 
-## <a name="watermark-delay-details"></a>Podrobnosti zpoždění vodoznak
+## <a name="watermark-delay-details"></a>Podrobnosti o zpoždění vodoznaku
 
-**Vodoznak zpoždění** metrika je vypočítán jako skutečný čas zpracování uzlu minus největší vodoznak se zatím viděli. Další informace najdete v tématu [vodoznak zpoždění blogový příspěvek](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/).
+Metrika **zpoždění meze** je vypočítána jako čas na zdi v uzlu zpracování minus největší vodoznak, který zatím viděli. Další informace najdete v blogovém [příspěvku o zpoždění vodoznaku](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/).
 
-Může existovat několik důvodů, proč tato hodnota metriky je větší než 0. v rámci normálního provozu:
+Tato hodnota metriky je větší než 0 v normálním provozu, může to mít několik příčin:
 
-1. Vlastní zpracování zpoždění streamovacího kanálu. Obvykle je toto zpoždění nominální.
+1. Vlastní zpoždění zpracování kanálu streamování. Obvykle je toto zpoždění nominální.
 
-2. Okno tolerance mimo pořadí zavedené zpoždění, protože vodoznak se sníží velikost okna pro toleranci.
+2. Okno tolerance mimo pořadí zavedlo zpoždění, protože meze je zmenšena o velikost okna tolerance.
 
-3. Pozdní okno přijetí zavedené zpoždění, protože vodoznak se sníží velikost okna pro toleranci.
+3. Okno opožděné doručení zavedlo zpoždění, protože meze je zmenšena o velikost okna tolerance.
 
-4. Hodin zkreslit zpracování uzlu generování metriku.
+4. Časový posun uzlu zpracování, který generuje metriku
 
-Existuje mnoho dalších prostředků omezení, která může způsobit streamovacího kanálu zpomalovat. Metrika vodoznak zpoždění může narůstat z důvodu:
+Existuje několik dalších omezení prostředků, které můžou způsobit zpomalení kanálu streamování. Metrika zpoždění meze může proniknout z těchto důvodů:
 
-1. Ve službě Stream Analytics ke zpracování objemu události vstupu není dostatek prostředků zpracování. Pokud chcete vertikálně navýšit kapacitu prostředků, přečtěte si téma [principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md).
+1. Pro zpracování objemu vstupních událostí není v Stream Analytics dostatek prostředků pro zpracování. Postup pro horizontální navýšení kapacity najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md).
 
-2. Není dostatek propustnost v rámci zprostředkovatelé vstupních událostí, takže se omezují. Možná řešení, najdete v části [automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure](../event-hubs/event-hubs-auto-inflate.md).
+2. V rámci zprostředkovatelů vstupních událostí není dostatečná propustnost, takže jsou omezeny. Možná řešení najdete v tématu [Automatické škálování jednotek propustnosti Azure Event Hubs](../event-hubs/event-hubs-auto-inflate.md).
 
-3. Výstupní jímky nezřídil s dostatečnou kapacitou, aby se omezují. Možná řešení značně záviset na flavor výstup používaných služeb.
+3. Výstupní jímky nejsou zřízené s dostatečnou kapacitou, takže jsou omezené. Možná řešení se výrazně liší v závislosti na charakteru používané výstupní služby.
 
-## <a name="output-event-frequency"></a>Frekvence událostí výstupu
+## <a name="output-event-frequency"></a>Frekvence výstupní události
 
-Azure Stream Analytics používá pokroku vodoznak jako pouze aktivační událost pro vytvoření výstupních událostí. Protože vodoznak je odvozen ze vstupních dat, je opakovatelné během obnovení po selhání a také v uživatelem iniciované přepracování.
+Azure Stream Analytics využívá jako jediný Trigger k vytváření výstupních událostí průběh meze. Vzhledem k tomu, že je vodoznak odvozen ze vstupních dat, je možné ho opakovat během obnovování selhání a také při opakovaném zpracování iniciované uživatelem.
 
-Při použití [agregací](stream-analytics-window-functions.md), kterou služba produkuje pouze výstupů na konci okna. V některých případech může být vhodné uživatele zobrazíte částečné agregace vygenerované z ovládacího prvku windows. Částečné agregace nejsou aktuálně podporované ve službě Azure Stream Analytics.
+Při použití agregací s využitím [okna](stream-analytics-window-functions.md)vytvoří služba pouze výstupy na konci okna. V některých případech mohou uživatelé chtít zobrazit částečné agregace vygenerované v systému Windows. Částečné agregace nejsou aktuálně podporovány v Azure Stream Analytics.
 
-V jiných datových proudů řešení může být vyhodnocena výstupních událostí v různých fázích aktivační událost, v závislosti na externí okolností. Je možné v některých řešeních, že výstupní události pro dané časové okno nejde generovat více než jednou. Vstupní hodnoty jsou kontrast, se stanou přesnější agregovat výsledky. Události by mohla spekulaci na první a upravené v čase. Například při určitých zařízení je offline ze sítě, může použít odhadovanou hodnotu na systému. Později na stejném zařízení převede do režimu online k síti. Potom data skutečné události mohou být zařazeny do vstupního datového proudu. Výsledky výstupu z dané časové okno zpracování vytváří přesnější výstup.
+V jiných řešeních pro streamování můžou být výstupní události v různých spouštěcích bodech materializované v závislosti na externích okolnostech. V některých řešeních je možné, že výstupní události pro dané časové okno můžou být vygenerované víckrát. Vzhledem k upřesnění vstupních hodnot se agregované výsledky stanou přesnější. Události by se daly v prvé době spekulativní a v průběhu času byly revidovány. Pokud je třeba určité zařízení offline ze sítě, může systém použít odhadovanou hodnotu. Později bude stejné zařízení online v síti. Skutečná data události pak mohou být součástí vstupního datového proudu. Výstup výsledky ze zpracování, které vytváří přesnější výstup.
 
-## <a name="illustrated-example-of-watermarks"></a>Ilustrované příklad vodoznaky
+## <a name="illustrated-example-of-watermarks"></a>Ukázka zobrazených vodoznaků
 
-Následující obrázky znázorňují postup vodoznaky za různých okolností.
+Následující obrázky znázorňují, jak vodoznaky probíhají v různých případech.
 
-Tato tabulka ukazuje ukázková data, která je zobrazena níže. Všimněte si, že času události a čas přijetí lišit, někdy párování a někdy není.
+V této tabulce jsou uvedena ukázková data, která jsou v grafu níže. Všimněte si, že čas události a čas doručení se liší, někdy se shodují a někdy ne.
 
-| čas události | Čas přijetí | DeviceId |
+| Čas události | Čas doručení | DeviceId |
 | --- | --- | --- |
 | 12:07 | 12:07 | device1
 | 12:08 | 12:08 | device2
@@ -186,41 +186,41 @@ Tato tabulka ukazuje ukázková data, která je zobrazena níže. Všimněte si,
 | 12:22 | 12:24 | device2
 | 12:21 | 12:27 | device3
 
-Na tomto obrázku se používají tyto odchylky:
+Na tomto obrázku jsou použity následující tolerance:
 
-- Včasné doručení windows je 5 minut
-- Pozdní opravovány interval je 5 minut
-- Okna pro změnu uspořádání činí 2 minuty
+- Okna včasného doručení je 5 minut.
+- Okno s pozdním doručením je 5 minut.
+- Změna pořadí okna je 2 minuty.
 
-1. Obrázek vodoznaku průběh prostřednictvím těchto událostí:
+1. Ukázka průběhu těchto událostí:
 
    ![Obrázek vodoznaku Azure Stream Analytics](media/stream-analytics-time-handling/WaterMark-graph-1.png)
 
-   Významné procesů znázorněných na předchozím obrázku:
+   Významné procesy znázorněné na předchozím obrázku:
 
-   1. První událost (zařízení1) a druhá událost (device2) přizpůsobily časy a jsou zpracovány bez úprav. Vodoznak postupuje u každé události.
+   1. První událost (zařízení1) a druhá událost (Device2) zarovnala časy a jsou zpracovávány bez úprav. Meze probíhá u každé události.
 
-   2. Při zpracování třetí událost (zařízení1) čas přijetí (12:11) předchází čas události (12:17). Události byly přijaty již v rané fázi, 6 minut, takže události se ignoroval kvůli dřívější tolerance pozdního přijetí 5 minut.
+   2. Když je zpracována třetí událost (zařízení1), doba doručení (12:11) předchází času události (12:17). Událost se dorazila 6 minut včas, takže se událost zahodila z důvodu tolerance prvotního doručení 5 minut.
 
-      Vodoznak nebude pokračovat v tomto případě počáteční událost.
+      V tomto případě předčasné události v tomto případě vodoznak nepokračuje.
 
-   3. Čtvrtý událost (device3) a pátý událost (zařízení1) přizpůsobily časy a jsou zpracovány bez úprav. Vodoznak postupuje u každé události.
+   3. Čtvrtá událost (device3) a pátá událost (zařízení1) zarovnala časy a jsou zpracovávány bez úprav. Meze probíhá u každé události.
 
-   4. Při zpracování šestého událostí (device3) čas přijetí (12:17) a čas události (12:12) je nižší než úroveň vodoznak. Čas události se upraví na úroveň označit vody (12:17).
+   4. Po zpracování šesté události (device3) je čas doručení (12:17) a čas události (12:12) pod úrovní meze. Čas události se upraví na úroveň hladiny vodního měřítka (12:17).
 
-   5. Při zpracování devátého událostí (device3), je čas přijetí (12:27) 6 minut před časem čas události (12:21). Pozdní přijetí zásady platí. Čas události je upravené (12:22), což je víc než horní meze (12:21) proto žádná další úpravy platí.
+   5. Po zpracování deváté události (device3) je čas doručení (12:27) 6 minut před časem události (12:21). Použije se zásada pozdního doručení. Doba události je upravena (12:22), která přesahuje meze (12:21), takže se nepoužije žádná další úprava.
 
-2. Druhý obrázek vodoznaku průběh bez dřívější zásady doručení:
+2. Druhá ukázka průběhu meze bez zásad prvotního doručení:
 
-   ![Azure Stream Analytics žádné dřívější vodoznak obrázek zásad](media/stream-analytics-time-handling/watermark-graph-2.png)
+   ![Obrázek neAzure Stream Analytics žádného vodoznaku prvotní zásady](media/stream-analytics-time-handling/watermark-graph-2.png)
 
-   V tomto příkladu nejsou použity žádné včasného zásady doručení. Pravdu události, které přicházejí již v rané fázi výrazně zvýšit vodoznak. Všimněte si, že třetí událost v tomto scénáři není Vyřazená (deviceId1 v čase 12:11) a vodoznak je vyvolávána s cílem 12:15. Čtvrtý čas události v důsledku je upravené dopředné 7 minut (12:08 až 12:15).
+   V tomto příkladu nejsou aplikovány žádné zásady předčasného doručení. Izolované události, které přinášejí předčasné zvýšení meze. Všimněte si, že třetí událost (deviceId1 v čase 12:11) není v tomto scénáři zahozena a mez je vyvolána na 12:15. Čtvrtá doba události se v důsledku toho upraví o 7 minut (12:08 až 12:15).
 
-3. Na posledním obrázku se používají substreams (přes DeviceId). Více vodoznaky jsou sledovány, jeden pro každý datový proud. Existují menší počet událostí s úspěšností upravena v důsledku.
+3. V konečné ilustraci se používají podproudy (přes DeviceId). Je sledováno více vodoznaků, jeden pro každý datový proud. V důsledku toho je počet událostí s jejich časem upravený.
 
-   ![Azure Stream Analytics substreams obrázek vodoznaku](media/stream-analytics-time-handling/watermark-graph-3.png)
+   ![Obrázek vodoznaku Azure Stream Analytics podproudy](media/stream-analytics-time-handling/watermark-graph-3.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Důležité informace pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md)
-- [Metriky úlohy Stream Analytics](stream-analytics-monitoring.md)
+- [Azure Stream Analytics – požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md)
+- [Stream Analytics metriky úloh](stream-analytics-monitoring.md)

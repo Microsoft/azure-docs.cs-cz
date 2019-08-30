@@ -1,74 +1,74 @@
 ---
-title: Vytvoření fondu hostitele Preview virtuální plochy Windows pomocí šablony Azure Resource Manageru – Azure
-description: Postup vytvoření fondu hostitele v náhledu virtuální plochy Windows pomocí šablony Azure Resource Manageru.
+title: Vytvoření fondu hostitelů ve verzi Preview pro virtuální počítače s Windows pomocí šablony Azure Resource Manager – Azure
+description: Postup vytvoření fondu hostitelů ve verzi Preview ve Windows Virtual desktopu pomocí šablony Azure Resource Manager
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: cdc61aede6e650bce62768b7a97f8640affd594f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620487"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163747"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
-Hostitel fondy jsou kolekce jednoho nebo víc stejných virtuálních počítačů v prostředí klienta Windows virtuální plochy, ve verzi Preview. Každý hostitel fond může obsahovat skupinu aplikací, které mohou uživatelé komunikovat s stejně jako ve fyzických stolním počítači.
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta ve verzi Preview virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
 
-Postupujte podle pokynů v této části a vytvořit tak fond hostitele pro virtuální plochy Windows tenanta pomocí šablony Azure Resource Manageru poskytované společností Microsoft. V tomto článku zjistíte, jak vytvoření hostitele fondu ve virtuální plochy Windows, vytvořte skupinu prostředků s virtuálními počítači v rámci předplatného Azure, připojit tyto virtuální počítače k doméně AD a zaregistrovat virtuální počítače s Windows virtuálního klienta.
+Postupujte podle pokynů v této části a vytvořte fond hostitelů pro tenanta virtuálních klientů Windows se šablonou Azure Resource Manager poskytnutou Microsoftem. V tomto článku se dozvíte, jak vytvořit fond hostitelů na virtuálním počítači s Windows, vytvořit skupinu prostředků s virtuálními počítači v předplatném Azure, připojit tyto virtuální počítače k doméně AD a zaregistrovat virtuální počítače s využitím virtuálního klienta Windows.
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co je potřeba spustit šablonu Azure Resource Manageru
+## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co potřebujete ke spuštění šablony Azure Resource Manager
 
-Ujistěte se, že před spuštěním šablony Azure Resource Manageru znáte následující věci:
+Před spuštěním šablony Azure Resource Manager se ujistěte, že znáte následující věci:
 
-- Pokud je zdroj image, kterou chcete použít. Jde o aktivitu z Galerie Azure, nebo se jedná vlastní?
-- Přihlašovací údaje pro připojení k vaší domény.
-- Vaše přihlašovací údaje virtuálního klienta Windows.
+- Kde je zdroj obrázku, který chcete použít. Je to z Galerie Azure nebo je vlastní?
+- Vaše přihlašovací údaje k doméně
+- Přihlašovací údaje k virtuálnímu počítači s Windows
 
-Při vytváření fondu hostitele virtuální plochy Windows pomocí šablony Azure Resource Manageru můžete vytvořit virtuální počítač z Galerie Azure, bitové kopie spravované nebo nespravované image. Další informace o tom, jak vytvořit Image virtuálních počítačů najdete v tématu [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) a [vytvoření spravované image zobecněného virtuálního počítače v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
 
-## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Spustit šablonu Azure Resource Manageru pro zřízení nového fondu hostitele
+## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Spusťte šablonu Azure Resource Manager pro zřízení nového fondu hostitelů.
 
-Pokud chcete začít, přejděte na [tuto adresu URL Githubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
+Začněte tím, že přejdete na [tuto adresu URL GitHubu](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool).
 
 ### <a name="deploy-the-template-to-azure"></a>Nasazení šablony do Azure
 
-Pokud nasazujete v rámci předplatného Enterprise, posuňte se dolů a vyberte **nasadit do Azure**, pak přeskočit napřed vyplnit parametry podle zdroje obrázku.
+Pokud nasazujete v rámci podnikového předplatného, posuňte se dolů a vyberte **nasadit do Azure**a pak přeskočte před vyplněním parametrů na základě vašeho zdroje imagí.
 
-Pokud nasazení provádíte v rámci předplatného poskytovatele Cloud Solution Provider, postupujte podle těchto kroků nasadíte do Azure:
+Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, proveďte následující postup nasazení do Azure:
 
-1. Posuňte se dolů a klikněte pravým tlačítkem na **nasadit do Azure**a pak vyberte **umístění propojení kopírování**.
-2. Otevřete textový editor, například Poznámkový blok a vložte odkaz existuje.
-3. Hned po "https://portal.azure.com/" a zadejte před hashtagem (#) zavináč (@) následovaný název domény tenantu. Tady je příklad formátu, abyste používali: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
-4. Přihlaste se k webu Azure portal jako uživatel s oprávněními správce nebo přispěvatele pro předplatné poskytovatele Cloud Solution Provider.
-5. Vložte odkaz, který jste zkopírovali do textového editoru, a do adresního řádku.
+1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
+2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
+3. Hned za znakem "https://portal.azure.com/" a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
+5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
-Informace o parametrech, které byste měli zadat pro váš scénář, naleznete v tématu virtuální plochy Windows [souboru Readme](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md). Soubor Readme se aktualizuje vždy s nejnovějšími změnami.
+Pokyny týkající se parametrů, které byste měli zadat pro váš scénář, najdete v [souboru Readme](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool/README.md)pro virtuální počítače s Windows. Soubor Readme se vždycky aktualizuje o nejnovější změny.
 
-## <a name="assign-users-to-the-desktop-application-group"></a>Přiřazení uživatelů ke skupině pro aplikace klasické pracovní plochy
+## <a name="assign-users-to-the-desktop-application-group"></a>Přiřazení uživatelů ke skupině desktopových aplikací
 
-Po dokončení šablonu GitHub Azure Resource Manageru přiřadíte přístup uživatelům před začátkem testování celé relace plochy na virtuálních počítačích.
+Po dokončení šablony Azure Resource Manager GitHubu přiřaďte uživatelský přístup před zahájením testování klientů s úplnými relacemi na virtuálních počítačích.
 
-Nejprve je potřeba [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
-Pokud chcete přiřadit ke skupině pro aplikace klasické pracovní plochy uživatele, otevřete okno Powershellu a spusťte tuto rutinu pro přihlášení k prostředí virtuálního klienta Windows:
+Pokud chcete přiřadit uživatele do skupiny desktopové aplikace, otevřete okno PowerShellu a spuštěním této rutiny se přihlaste k prostředí virtuálních počítačů s Windows:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Potom přidáte uživatele do skupiny aplikace klasické pracovní plochy s touto rutinou:
+Pak přidejte uživatele do skupiny desktopových aplikací pomocí této rutiny:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Hlavním názvem uživatele by měl odpovídat identitu uživatele ve službě Azure Active Directory (například user1@contoso.com). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustíte pro každého uživatele.
+Hlavní název uživatele (UPN user1@contoso.com) by měl odpovídat identitě uživatele v Azure Active Directory (například). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
 
-Po dokončení těchto kroků můžete uživatelé přidaní do skupiny aplikací klasické pracovní plochy přihlášení k virtuálnímu klientovi Windows pomocí podporované klienty vzdálené plochy a zobrazit zdroj pro relaci plochy.
+Po dokončení těchto kroků se uživatelé přidaní do skupiny desktopových aplikací můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 
 >[!IMPORTANT]
->Pomáhají zabezpečit vaše prostředí virtuálního klienta Windows v Azure, doporučujeme, abyste že na virtuálních počítačích není otevřít příchozí port 3389. Virtuální Desktop Windows nevyžaduje otevřít příchozí port 3389 pro uživatele pro přístup k fondu hostitele virtuálních počítačů. Pokud musíte otevřít port 3389 pro účely odstraňování potíží, doporučujeme vám použít [přístup k virtuálním počítačům just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

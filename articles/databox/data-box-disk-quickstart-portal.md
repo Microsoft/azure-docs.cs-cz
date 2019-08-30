@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
-ms.translationtype: MT
+ms.openlocfilehash: 68ceeb2847fa03cd7c50eeb015cca5b84af085f2
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126020"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172739"
 ---
 ::: zone target="docs"
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ::: zone target="chromeless"
 
-Tato příručka popisuje, jak nasadit Azure Data Box Disk v Azure Portal. Tyto kroky zahrnují kontrolu požadavků, odemknutí disků a připojení a kopírování dat na disky, aby se načetly do Azure.
+Tato příručka vás provede jednotlivými kroky při použití Azure Data Box Disk v Azure Portal. Tato příručka vám pomůže zodpovědět následující otázky.
 
 ::: zone-end
 
@@ -60,17 +60,16 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 
 ::: zone target="chromeless"
 
-### <a name="prerequisites"></a>Požadavky
-
-- V tomto [kurzu jste nastavili vaši objednávku pro data box disk: Pořadí Azure Data Box Disk](data-box-disk-deploy-ordered.md).
-- Obdrželi jste disky a stav úlohy na portálu je aktualizovaný na **Dodáno**.
-- Kontrolovali jste počet disků, které jste dostali, a máte jeden připojený kabel na disk.
-- Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
-
-    - Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Mít nainstalovaný [Další požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) , pokud se jedná o klienta Windows.
+> [!div class="checklist"]
+>
+> - **Kontrola požadavků**: Ověřte počet disků a kabelů, operační systém a další software.
+> - **Připojit a odemknout**: Připojte zařízení a odemkněte disk ke zkopírování dat.
+> - **Zkopírujte data na disk a ověřte**: Zkopírujte data na disky do předvytvořených složek.
+> - **Vrátit disky**: Vraťte disky do datového centra Azure, kde se data nahrají do svého účtu úložiště.
+> - **Ověřte data v Azure**: Než odstraníte data ze zdrojového serveru, ověřte, že se data nahrála do vašeho účtu úložiště.
 
 ::: zone-end
+
 
 ::: zone target="docs"
 
@@ -157,7 +156,7 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožňuje importovat data do Azure. Další informace o správě Azure Data Box Disku získáte v následujícímu kurzu:
 

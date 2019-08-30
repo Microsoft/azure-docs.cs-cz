@@ -1,40 +1,54 @@
 ---
-title: Požadavky na systém Microsoft Azure Data Box Disk | Dokumentace Microsoftu
-description: Další informace o softwaru a požadavky na síť pro váš Disk Azure Data Box
+title: Microsoft Azure Data Box Disk požadavky na systém | Microsoft Docs
+description: Seznamte se s požadavky na software a sítě pro vaše Azure Data Box Disk
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 10ddf4c42ac5aa2d1cffd7cbca6930896103d2c5
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147782"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172718"
 ---
-# <a name="azure-data-box-disk-system-requirements"></a>Požadavky na systém Azure Data Box Disk
+::: zone target="docs"
 
-Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Data Box Disk a pro připojení klientů k disku Data Box. Doporučujeme, abyste si informace o pečlivě před nasadit váš Disk Data Box a pak zpátky na ni odkazovat podle potřeby během nasazení a následná operace.
+# <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk požadavky na systém
 
-Požadavky na systém zahrnují podporovaných platforem pro připojení klientů k disky úložiště podporuje účty a typy úložišť.
+Tento článek popisuje důležité systémové požadavky pro vaše Microsoft Azure Data Box Disk řešení a klienty, kteří se připojují k Data Box Disk. Před nasazením Data Box Disk doporučujeme pečlivě zkontrolovat informace a pak je v případě potřeby v průběhu nasazení a následné operace vrátit na ni.
 
+Požadavky na systém zahrnují podporované platformy pro klienty připojující se k diskům, podporované účty úložiště a typy úložišť.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Požadavky
+
+Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
+
+- Spusťte podporovaný operační systém.
+- Máte nainstalovaný další požadovaný software.
+
+::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>Podporované operační systémy pro klienty
 
-Tady je seznam podporovaných operačních systémech pro disk odemknutí a operace kopírování dat prostřednictvím klienty připojené k disku Data Box.
+Tady je seznam podporovaných operačních systémů pro odemknutí disku a operace kopírování dat prostřednictvím klientů připojených k Data Box Disk.
 
-| **Operační systém** | **Otestované verze** |
+| **Operační systém** | **Testované verze** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
 | Windows (64 bitů) |7, 8, 10 |
 |Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
-## <a name="other-required-software-for-windows-clients"></a>Jiného požadovaného softwaru pro klienty Windows
+## <a name="other-required-software-for-windows-clients"></a>Další požadovaný software pro klienty Windows
 
-Pro klienta Windows musí také nainstalovaná následující.
+Pro klienta systému Windows je třeba nainstalovat i následující.
 
 | **Software**| **Verze** |
 | --- | --- |
@@ -43,34 +57,36 @@ Pro klienta Windows musí také nainstalovaná následující.
 | Windows Management Framework |5.0|
 | BitLocker| - |
 
-## <a name="other-required-software-for-linux-clients"></a>Jiného požadovaného softwaru pro klienty Linux
+## <a name="other-required-software-for-linux-clients"></a>Další požadovaný software pro klienty se systémem Linux
 
-Sada nástrojů disku Data Box pro klienta pro Linux, nainstaluje následující požadovaný software:
+Pro klienty se systémem Linux nainstaluje sada nástrojů Data Box Disk následující požadovaný software:
 
-- dislocker
+- Weblock
 - OpenSSL
+
+::: zone target="docs"
 
 ## <a name="supported-connection"></a>Podporované připojení
 
-USB 3.0 nebo novější portu musí mít klientský počítač, který obsahuje data. Disky připojit k tohoto klienta pomocí zadané kabel.
+Klientský počítač obsahující data musí mít port USB 3,0 nebo novější. Disky se připojují k tomuto klientovi pomocí zadaného kabelu.
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Tady je seznam typů podporovaných úložiště pro Data Box Disk.
+Tady je seznam podporovaných typů úložiště pro Data Box Disk.
 
 | **Účet úložiště** | **Poznámky** |
 | --- | --- |
 | Classic | Standard |
-| Obecné použití  |Standardní; verze V1 i V2 podporují. Vrstvy hot a cool nejsou podporovány. |
-| Účet BLOB storage | |
+| Obecné použití  |Standardní jsou podporovány verze V1 a v2. Podporovány jsou horké a studené úrovně. |
+| Účet úložiště objektů BLOB | |
 
 >[!NOTE]
-> Účty Azure Data Lake Storage generace 2 nejsou podporovány.
+> Účty Azure Data Lake Storage Gen 2 nejsou podporovány.
 
 
-## <a name="supported-storage-types-for-upload"></a>Typy podporované úložiště pro nahrání
+## <a name="supported-storage-types-for-upload"></a>Podporované typy úložišť pro nahrání
 
-Tady je seznam typů úložiště, které jsou podporovány pro nahráli do Azure s použitím disku Data Box.
+Tady je seznam typů úložišť podporovaných pro nahrání do Azure pomocí Data Box Disk.
 
 | **Formát souboru** | **Poznámky** |
 | --- | --- |
@@ -82,5 +98,7 @@ Tady je seznam typů úložiště, které jsou podporovány pro nahráli do Azur
 
 ## <a name="next-step"></a>Další krok
 
-* [Nasadit váš Disk Azure Data Box](data-box-disk-deploy-ordered.md)
+* [Nasazení Azure Data Box Disk](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

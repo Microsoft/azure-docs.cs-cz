@@ -1,144 +1,160 @@
 ---
-title: Rychlý start pro Microsoft Azure Data Box těžkých | Dokumentace Microsoftu
-description: Zjistěte, jak rychle nasadit váš Azure Data Box náročné na webu Azure portal
+title: Rychlý Start pro Microsoft Azure Data Box Heavy | Microsoft Docs
+description: Naučte se rychle nasadit Azure Data Box Heavy v Azure Portal
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 433c3ac08d8d7d8158d4cc958979782e3b3192e1
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446738"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164417"
 ---
-# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box náročné pomocí webu Azure portal
+::: zone target = "docs"
 
-Tento rychlý start popisuje způsob nasazení Azure Data Box náročné pomocí webu Azure portal. Kroky zahrnují zapojení, konfigurace a kopírování dat do Data Box náročné tak, aby se odešle do služby Azure. Rychlý start se provádí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
+# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Box Heavy pomocí Azure Portal
 
-Pro podrobné podrobný postup nasazení a pokyny pro sledování, přejděte na [kurzu: Pořadí Azure Data Box náročná na výkon](data-box-heavy-deploy-ordered.md)
+V tomto rychlém startu se dozvíte, jak nasadit Azure Data Box Heavy pomocí Azure Portal. Tento postup zahrnuje způsob, jakým můžete Data Box Heavy kabelem, nakonfigurovat a kopírovat data, aby se načetla do Azure. Rychlý start se provádí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
+
+Podrobné pokyny k [nasazení a sledování najdete v tématu Kurz: Azure Data Box Heavy objednávky](data-box-heavy-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před nasazením zařízení zajistěte splnění následujících požadavků konfigurace pro instalaci lokality, služba Data Box a zařízení.
+Před nasazením zařízení dokončete následující požadavky na konfiguraci pro instalační lokalitu, Data Box službu a zařízení.
 
-### <a name="for-installation-site"></a>Pro instalaci lokality
+### <a name="for-installation-site"></a>Pro instalační Web
 
 Než začnete, ujistěte se, že:
 
-- Zařízení můžete přizpůsobit prostřednictvím všech entryways. Dimenze zařízení jsou: šířka: 26" Délka: 48" height: 28”.
-- Pokud budete chtít nainstalovat floor, než můžete podílet máte přístup pro zařízení prostřednictvím hodnocení nebo doběhu.
-- Máte dva uživatelé ke zpracování zařízení. Zařízení váží přibližně ~ 500 lbs. a pochází na kola.
-- Máte lokalitu bez stromové struktury v datovém centru s blízkosti dostupné síťové připojení, který zvládne zařízení s nároky na toto místo.
+- Zařízení se může vejít do všech entryways. Rozměry zařízení jsou: width: 26 "Délka: 48 "height: 28 ".
+- Máte přístup k zařízení prostřednictvím výtahu nebo rampy, pokud plánujete instalaci na jinou podlahovou desku, než je podlahová plocha.
+- Máte dvě osoby, které zařízení zpracovávají. Zařízení se zaváží přibližně po 500 kg. a přichází na kolech.
+- Máte plochý web v datacentru s blízkým připojením k dostupnému síťovému připojení, které se může na zařízení dopracovat s těmito nároky.
 
 ### <a name="for-service"></a>Služba
 
 Než začnete, ujistěte se, že:
 
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
-- Předplatné, můžete použít pro službu Data Box je [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview), nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Máte přístup přispěvatele nebo vlastníka k předplatnému na vytvoření náročné pole Data objednávky.
+- Předplatné, které používáte pro službu Data Box, je [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+- K předplatnému máte přístup vlastníka nebo přispěvatele, abyste mohli vytvořit objednávku Data Box Heavy.
 
 ### <a name="for-device"></a>Zařízení
 
 Než začnete, ujistěte se, že:
 
-- Můžete si [bezpečnostní pokyny pro vaše Data Box náročné](data-box-safety.md).
-- Máte hostitelský počítač připojený k síti datového centra. Data Box náročné zkopíruje data z tohoto počítače. Musíte spustit hostitelský počítač [s podporovaným operačním systémem](data-box-heavy-system-requirements.md).
-- Máte přenosném počítači pomocí kabelu RJ-45 kategorie pro připojení k místní uživatelského rozhraní a konfigurace zařízení. Pomocí přenosný počítač nakonfigurovat každý uzel zařízení jen jednou.
-- Vaše datové centrum obsahuje vysokorychlostní síťové a vy musíte splnit aspoň jednu 10 GbE připojení.
-- Budete potřebovat jeden kabel 40 GB/s nebo kabel 10 GB/s na jeden uzel zařízení. Zvolte kabely, které jsou kompatibilní s Mellanox MCX314A-BCCT síťové rozhraní:
-    - Pro kabel 40 GB/s musí být QSFP + zařízení konec kabelu.
-    - Kabel 10 GB/s je nutné kabel SFP +, která zpřístupní 10 G přepínač na jednom konci a QSFP + SFP + adaptéru (nebo adaptér podmínky) end, který se připojuje k zařízení.
-- Napájecích kabelů jsou zahrnuty v hlavním zádi zařízení.
+- Prozkoumali jste [pokyny pro zabezpečení data box Heavy](data-box-safety.md).
+- Máte hostitelský počítač připojený k síti datacenter. Data Box Heavy se zkopírují data z tohoto počítače. Na hostitelském počítači musí běžet [podporovaný operační systém](data-box-heavy-system-requirements.md).
+- Máte přenosný počítač s kabelem RJ-45 pro připojení k místnímu uživatelskému rozhraní a konfiguraci zařízení. Pomocí přenosného počítače nakonfigurujete každý uzel zařízení jednou.
+- Vaše datacentrum má vysokorychlostní síť a máte minimálně 1 10 GbE připojení.
+- K jednomu uzlu zařízení potřebujete kabel 1 40-GB nebo kabel s rychlostí 10 GB/s. Výběr kabelů, které jsou kompatibilní se síťovým rozhraním Mellanox MCX314A-BCCT:
+    - Pro kabel 40 GB/s musí být zařízení zakončené kabelem QSFP +.
+    - U kabelu s rychlostí 10 GB/s je potřeba kabel SFP +, který se na jednom konci připojí k přepínači 10 G, a to pomocí QSFP + až SFP + adapteru (nebo adaptéru QUALIFIED Security ASSESSOR) pro konec, který se připojí k zařízení.
+- Napájecí kabely jsou součástí zásobníku na zadní straně zařízení.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="order"></a>Objednání
+## <a name="order"></a>Pořadí
 
 Tento krok trvá přibližně 5 minut.
 
 1. Na webu Azure Portal vytvořte nový prostředek Azure Data Box.
 2. Vyberte stávající předplatné, ve kterém je tato služba povolená, a zvolte typ přenosu **Import**. Do pole **Zdrojová země** zadejte zemi, kde se data nacházejí, a v poli **Cílová oblast Azure** zvolte oblast, kam se mají data přenést.
-3. Vyberte **Data Box náročná na výkon**. Můžete vytvořit více objednávek pro větší velikosti dat maximální využitelné kapacity je 770 TB.
+3. Vyberte **data box Heavy**. Maximální použitelná kapacita je 770 TB a můžete vytvořit více objednávek pro větší velikosti dat.
 4. Zadejte podrobnosti objednávky a informace o dodání. Pokud je služba dostupná ve vaší oblasti, zadejte adresy pro poslání e-mailu s oznámením, zkontrolujte souhrn a vytvořte objednávku.
 
 Po vytvoření objednávky je zařízení připravené k odeslání.
 
-## <a name="cable-for-power"></a>Kabel výkon
+::: zone-end
 
-Tento krok trvá přibližně 5 minut.
+::: zone target = "chromeless"
 
-Když obdržíte náročné pole dat, proveďte následující kroky k zapojení zařízení pro výkon a zapněte zařízení.
+# <a name="cable-and-connect-to-your-device"></a>Připojte se k zařízení přes kabel
+
+Po zkontrolování požadavků budete kabelem a připojením k vašemu zařízení.
+
+::: zone-end
+
+## <a name="cable-for-power"></a>Kabel pro napájení
+
+Tento krok trvá asi 5 minut.
+
+Když obdržíte Data Box Heavy, proveďte následující kroky, které zařízení Zapojte k napájení a zapněte zařízení.
 
 1. Pokud vidíte, že je zařízení poškozené nebo že s ním někdo manipuloval, nepokračujte. Požádejte podporu Microsoftu o dodání náhradního zařízení.
-2. Přesunout zařízení k instalaci lokality a uzamčení zadní kol.
-3. Všechny čtyři napájecích kabelů připojení k zdroji napájení zádi zařízení.
-4. Pomocí tlačítka napájení v rovině front-zapnutí zařízení uzly.
+2. Přesuňte zařízení do instalační lokality a zamkněte zadní kola.
+3. Připojte všechny čtyři napájecí kabely k napájení na zadní straně zařízení.
+4. Pomocí tlačítek napájení v přední rovině zapněte uzly zařízení.
 
-## <a name="cable-first-node-for-network"></a>První uzel kabelové sítě
+## <a name="cable-first-node-for-network"></a>Zapojte se do prvního uzlu sítě.
 
-Tento krok trvá asi 10 až 15 minut.
+Dokončení tohoto kroku trvá přibližně 10-15 minut.
 
 1. Pomocí síťového kabelu RJ-45 kategorie 6 připojte hostitelský počítač k portu pro správu (MGMT) na zařízení.
-2. Použití kabelu Twinax QSFP + mědi připojte alespoň jedno 40 GB/s (upřednostňováno více než 1 GB/s) síťové rozhraní DATA 1 nebo 2 DATA pro data. Pokud používáte přepínač 10 GB/s, pomocí kabelu Twinax SFP + měděného a QSFP + SFP + adaptér (adaptér podmínky) připojte 40 GB/s síťové rozhraní pro data.
+2. Použijte Twinax QSFP + Copper kabel k připojení minimálně 1 40 GB/s (upřednostňované přes 1 GB/s) síťového rozhraní, DATA 1 nebo DATA 2 pro data. Pokud používáte přepínač s rychlostí 10 GB/s, použijte Twinax SFP + Copper kabel s QSFP + a SFP + Adapter (adaptér QUALIFIED Security ASSESSOR) k připojení síťového rozhraní 40-GB/s pro data.
 3. K zařízení připojte kabely, jak vidíte níže.  
 
-    ![Data Box náročné zapojené](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
+    ![Data Box Heavy kabelové](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
 
-## <a name="configure-first-node"></a>Konfigurace první uzel
+## <a name="configure-first-node"></a>Konfigurovat první uzel
 
 Tento krok trvá 5 až 7 minut.
 
-1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**. Stejné heslo se používá pro oba uzly zařízení.
-2. Adaptér sítě Ethernet na počítači, který používáte pro připojení k datové pole v případě velkého přiřadíte statické IP adresy 192.168.100.5 a podsítě 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut.
+1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**. Pro oba uzly zařízení se používá stejné heslo.
+2. Přiřaďte ke adaptéru Ethernet na počítači, který používáte pro připojení k Data Box Heavy statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut.
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
-4. Ve výchozím nastavení jsou nastavení síťového rozhraní (s výjimkou MGMT) nakonfigurované jako DHCP. V případě potřeby můžete nakonfigurovat tato rozhraní jako statické a zadejte IP adresu.
+4. Ve výchozím nastavení jsou nastavení sítě pro rozhraní (s výjimkou správy) nakonfigurovaná jako DHCP. V případě potřeby můžete tato rozhraní nakonfigurovat jako statickou a zadat IP adresu.
 
-## <a name="cable-and-configure-the-second-node"></a>Zapojení a konfiguraci druhého uzlu
+## <a name="cable-and-configure-the-second-node"></a>Kabely a konfigurace druhého uzlu
 
-Tento krok trvá přibližně 15 až 20 minut.
+Dokončení tohoto kroku trvá přibližně 15-20 minut.
 
-Postupujte podle kroků použitá pro první uzel k zapojení a konfiguraci druhého uzlu na zařízení.  
+Použijte postup, který se použije pro první uzel ke kabelovému a konfiguraci druhého uzlu na zařízení.  
 
-## <a name="copy-data"></a>Kopírování dat
 
-Čas k dokončení této operace závisí na velikost vašich dat a rychlosti sítě nad tím, které se kopírují data.
+::: zone target = "docs"
+
+## <a name="copy-data"></a>Kopírovat data
+
+Čas k dokončení této operace závisí na velikosti dat a rychlosti sítě, přes kterou se zkopírují data.
  
-1. Kopírování dat do obou zařízení uzlů pomocí obou 40 GB/s dat rozhraní paralelně.
+1. Zkopírujte data do uzlů zařízení souběžně pomocí obou datových rozhraní 40-GB.
 
-    - Pokud pomocí hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní SMB, jako [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Pokud používáte hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB [](https://technet.microsoft.com/library/ee851678.aspx), jako je například Robocopy.
     - Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`.
-2. Připojte se ke sdíleným složkám na zařízení prostřednictvím dané cesty:`\\<IP address of your device>\ShareName`. Chcete-li získat přihlašovací údaje pro přístup sdílené složky, přejděte na **Connect & copy** stránky v místního webového uživatelského rozhraní náročné pole Data.
-3. Ujistěte se, že sdílené složky a názvy složek a dat podle pokynů popsaných v [omezení služby Azure Storage a Data Box náročné](data-box-heavy-limits.md).
+2. Připojte se ke sdíleným složkám na zařízení pomocí cesty`\\<IP address of your device>\ShareName`:. Přihlašovací údaje pro přístup ke sdílené složce získáte tak, že přejdete na stránku **připojit & kopírování** v místním webovém uživatelském rozhraní data box Heavy.
+3. Ujistěte se, že názvy sdílených složek a složek a data následují podle pokynů popsaných v [omezeních služby Azure Storage a data box Heavy](data-box-heavy-limits.md).
 
-## <a name="prepare-to-ship"></a>Příprava k odeslání
+## <a name="prepare-to-ship"></a>Připravit k odeslání
 
 Doba trvání této operace závisí na množství dat.
 
-1. Až se kopírování dat dokončí bez chyb, přejděte do **přípravu k odeslání** stránce v místním webovém uživatelském rozhraní a zahajte přípravu na odeslání.
-2. Po **přípravu k odeslání** má byla úspěšně dokončena na obou uzlech, vypněte zařízení z místního webového uživatelského rozhraní.
+1. Po dokončení kopírování dat bez chyb můžete přejít na stránku **Příprava k odeslání** v místním webovém uživatelském rozhraní a zahájit přípravu expedice.
+2. Po úspěšném dokončení **Příprava k odeslání** v obou uzlech vypněte zařízení z místního webového uživatelského rozhraní.
 
 ## <a name="ship-to-azure"></a>Odeslání do Azure
 
-Tato operace trvá přibližně 15 až 20 minut.
+Dokončení této operace trvá přibližně 15-20 minut.
 
-1. Odeberte kabely a vrátit je do zásobníku zádi zařízení.
-2. Vyzvednutí naplánujte s vaší místní operátora.
-3. Oslovení [operace s daty pole](mailto:DataBoxOps@microsoft.com) informovat o vyzvednutí a získat zpětný Expediční štítek.
-4. Zpětný Expediční štítek musí být viditelný na přední panel vymazat zařízení.
+1. Odeberte kabely a vraťte je do zásobníku na zadní straně zařízení.
+2. Naplánujte vyzvednutí pomocí svého regionálního dopravce.
+3. Přihlaste se k [data box operací](mailto:DataBoxOps@microsoft.com) , abyste informovali o vyzvednutí a získali expediční štítek s návratem.
+4. Popisek pro návrat z expedice by měl být viditelný na front-Clear panelu zařízení.
 
 ## <a name="verify-data"></a>Ověření dat
 
 Doba trvání této operace závisí na množství dat.
 
-1. Když zařízení Data Box náročné je připojen k síti datového centra Azure, data se automaticky uloží do Azure.
-2. Služba data Box vás upozorní, že se kopírování dat dokončí prostřednictvím webu Azure portal.
+1. Když je zařízení Data Box Heavy připojené k síti datacenter Azure, data se automaticky nahrávají do Azure.
+2. Služba Data Box vás upozorní, že se kopie dat dokončuje prostřednictvím Azure Portal.
 
     1. Zkontrolujte všechna selhání v protokolech chyb a proveďte potřebné kroky.
     2. Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště.
@@ -147,13 +163,15 @@ Doba trvání této operace závisí na množství dat.
 
 Dokončení tohoto kroku trvá 2 až 3 minuty.
 
-- Data Box náročné pořadí na webu Azure Portal můžete zrušit před zpracováním pořadí. Po zpracování objednávky už se objednávka zrušit nedá. Průběh objednávky bude pokračovat až do fáze Dokončeno. Pokud chcete objednávku zrušit, přejděte do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.
+- Pořadí Data Box Heavy v Azure Portal můžete před zpracováním objednávky zrušit. Po zpracování objednávky už se objednávka zrušit nedá. Průběh objednávky bude pokračovat až do fáze Dokončeno. Pokud chcete objednávku zrušit, přejděte do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.
 
 - Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili pole Data náročné umožňující import dat do Azure. Další informace o Azure Data Box náročné správě, přejděte k následujícímu kurzu:
+V tomto rychlém startu jste nasadili Data Box Heavy, která vám pomůžou importovat data do Azure. Pokud se chcete dozvědět víc o správě Azure Data Box Heavy, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Pomocí webu Azure portal ke správě dat pole náročné](data-box-portal-admin.md)
+> [Správa Data Box Heavy pomocí Azure Portal](data-box-portal-admin.md)
+
+::: zone-end

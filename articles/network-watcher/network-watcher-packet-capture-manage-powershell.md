@@ -1,6 +1,6 @@
 ---
-title: Správa zachytávání paketů pomocí služby Azure Network Watcher – PowerShell | Dokumentace Microsoftu
-description: Tato stránka vysvětluje, jak spravovat funkce zachytávání paketů služby Network Watcher pomocí Powershellu
+title: Správa zachytávání paketů pomocí Azure Network Watcher-PowerShellu | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat funkci zachytávání paketů Network Watcher pomocí prostředí PowerShell.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 81b02cc7c7683bcd9abac2ad1b554644035991c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710094"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163950"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí služby Azure Network Watcher pomocí Powershellu
+# <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
-> - [Rozhraní Azure REST API](network-watcher-packet-capture-manage-rest.md)
+> - [REST API Azure](network-watcher-packet-capture-manage-rest.md)
 
-Zachytávání paketů Network Watcher umožňuje vytvořit relace zachycení sledujte provoz do a z virtuálního počítače. Filtry jsou k dispozici pro relace zachytávání zajistit, že zachytíte jenom provoz, který chcete. Zachytávání paketů pomáhá diagnostikovat sítě anomálie reaktivně a proaktivně. Mezi další použití patří shromažďování statistických údajů sítě získat informace o síti vniknutí, chcete-li ladit komunikaci klienta se serverem a spoustu dalších věcí. Díky možnosti vzdáleně spustit zachytávání paketů, tato funkce usnadňuje si museli dělat starosti s zachycení paketů ručně a na požadovaný počítač, což šetří cenný čas.
+Network Watcher Capture paketů umožňuje vytvářet relace zachycení pro sledování provozu do a z virtuálního počítače. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě interaktivně a aktivně. Mezi další použití patří shromažďování statistik sítě a získání informací o neoprávněných vniknutích k síti, k ladění komunikace mezi klientem a serverem a mnohem více. Díky tomu, že je možné vzdáleně aktivovat zachycení paketů, tato schopnost usnadňuje zátěžové zachycení paketů ručně a na požadovaném počítači, který šetří cenný čas.
 
-Tento článek vás provede jiné úlohy, které jsou aktuálně k dispozici pro zachycení paketů.
+Tento článek vás provede různými úlohami správy, které jsou aktuálně k dispozici pro zachytávání paketů.
 
 - [**Spustit zachytávání paketů**](#start-a-packet-capture)
-- [**Zastavit zachytávání paketů**](#stop-a-packet-capture)
-- [**Odstranit zachycení paketů**](#delete-a-packet-capture)
-- [**Stáhněte si zachytávání paketů**](#download-a-packet-capture)
+- [**Zastavení zachytávání paketů**](#stop-a-packet-capture)
+- [**Odstranění zachytávání paketů**](#delete-a-packet-capture)
+- [**Stažení zachytávání paketů**](#download-a-packet-capture)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Tento článek předpokládá, že máte následující prostředky:
+V tomto článku se předpokládá, že máte následující zdroje:
 
-* Instance služby Network Watcher v oblasti, kterou chcete vytvořit zachytávání paketů
+* Instance Network Watcher v oblasti, ve které chcete vytvořit zachytávání paketů
 
-* Virtuální počítač s příponou zachycení paketů povoleno.
+* Virtuální počítač s povoleným rozšířením zachytávání paketů.
 
 > [!IMPORTANT]
-> Zachytávání paketů vyžaduje rozšíření virtuálního počítače `AzureNetworkWatcherExtension`. Instalaci rozšíření na virtuálním počítači s Windows najdete [rozšíření virtuálního počítače Azure Network Watcher Agent pro Windows](../virtual-machines/windows/extensions-nwa.md) a pro virtuální počítač s Linuxem, navštivte [rozšíření virtuálního počítače Azure Network Watcher Agent pro Linux](../virtual-machines/linux/extensions-nwa.md).
+> Zachytávání paketů vyžaduje rozšíření `AzureNetworkWatcherExtension`virtuálního počítače. Pokud chcete nainstalovat rozšíření na virtuální počítač s Windows, přejděte na web [azure Network Watcher Agent Virtual Machine Extension for Windows](../virtual-machines/windows/extensions-nwa.md) a pro Linux VM, navštivte [rozšíření Azure Network Watcher Agent Virtual Machine pro Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálních počítačů
 
@@ -62,10 +62,10 @@ $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>Krok 2
 
-Následující příklad načte rozšíření informací potřebných ke spuštění `Set-AzVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů na virtuálním počítači hosta.
+Následující příklad načte informace o rozšíření potřebné ke spuštění `Set-AzVMExtension` rutiny. Tato rutina nainstaluje agenta zachytávání paketů do hostovaného virtuálního počítače.
 
 > [!NOTE]
-> `Set-AzVMExtension` Rutiny může trvat několik minut.
+> Dokončení `Set-AzVMExtension` rutiny může trvat několik minut.
 
 Pro virtuální počítače s Windows:
 
@@ -75,7 +75,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-Pro virtuální počítače s Linuxem:
+Pro virtuální počítače se systémem Linux:
 
 ```powershell
 $AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
@@ -83,7 +83,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-V následujícím příkladu se po spuštění úspěšné odpovědi `Set-AzVMExtension` rutiny.
+Následující příklad je úspěšná odpověď po spuštění `Set-AzVMExtension` rutiny.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -93,13 +93,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Krok 3
 
-Chcete-li zajistit, že je agent nainstalovaný, spusťte `Get-AzVMExtension` rutiny a předejte mu název virtuálního počítače a název rozšíření.
+Abyste měli jistotu, že je agent nainstalovaný, spusťte `Get-AzVMExtension` rutinu a předejte jí název virtuálního počítače a název rozšíření.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Následující příklad je příkladem odpověď od spuštění `Get-AzVMExtension`
+Následující ukázka je příkladem reakce na spuštění`Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -123,20 +123,19 @@ ForceUpdateTag          :
 
 ## <a name="start-a-packet-capture"></a>Spustit zachytávání paketů
 
-Po dokončení předchozích kroků je nainstalován agent zachytávání paketů na virtuálním počítači.
+Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
 ### <a name="step-1"></a>Krok 1
 
-Dalším krokem je načtení instance Network Watcheru. Tato proměnná je předána `New-AzNetworkWatcherPacketCapture` rutiny v kroku 4.
+Dalším krokem je načtení instance Network Watcher. Tato proměnná je předána `New-AzNetworkWatcherPacketCapture` rutině v kroku 4.
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
 ### <a name="step-2"></a>Krok 2
 
-Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachytávání paketů.
+Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachycení paketů.
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
@@ -144,7 +143,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa1
 
 ### <a name="step-3"></a>Krok 3
 
-Filtry je možné omezit data, která se ukládá pomocí zachytávání paketů. Následující příklad nastaví dva filtry.  Jeden filtr shromažďuje odchozí provoz TCP jenom z IP adresy místní 10.0.0.3 do cílové porty 20, 80 a 443.  Druhý filtr shromažďuje pouze provoz UDP.
+Filtry lze použít k omezení dat uložených zachytáváním paketů. Následující příklad nastaví dva filtry.  Jeden filtr shromažďuje odchozí přenosy TCP pouze z místních IP 10.0.0.3 na cílové porty 20, 80 a 443.  Druhý filtr shromažďuje jenom přenosy UDP.
 
 ```powershell
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -152,17 +151,17 @@ $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
-> Pro zachytávání paketů je možné definovat více filtrů.
+> Pro zachytávání paketů lze definovat více filtrů.
 
 ### <a name="step-4"></a>Krok 4
 
-Spustit `New-AzNetworkWatcherPacketCapture` ke spuštění procesu zachycení paketu předáním požadované hodnoty načíst v předchozích krocích.
+`New-AzNetworkWatcherPacketCapture` Spuštěním rutiny spusťte proces zachytávání paketů a předejte požadované hodnoty načtené v předchozích krocích.
 ```powershell
 
 New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-V následujícím příkladu je očekávaný výstup spuštění `New-AzNetworkWatcherPacketCapture` rutiny.
+Následující příklad je očekávaný výstup z běhu `New-AzNetworkWatcherPacketCapture` rutiny.
 
 ```
 Name                    : PacketCaptureTest
@@ -200,15 +199,15 @@ Filters                 : [
 
 ```
 
-## <a name="get-a-packet-capture"></a>Získat zachytávání paketů
+## <a name="get-a-packet-capture"></a>Získání zachytávání paketů
 
-Spuštění `Get-AzNetworkWatcherPacketCapture` rutiny, načítá stav aktuálně spuštěné nebo dokončené zachytávání paketů.
+`Get-AzNetworkWatcherPacketCapture` Spuštěním rutiny se načte stav aktuálně spuštěného nebo dokončeného zachytávání paketů.
 
 ```powershell
 Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-V následujícím příkladu je výstup `Get-AzNetworkWatcherPacketCapture` rutiny. V následujícím příkladu se po dokončení operace zachycení se. Hodnota PacketCaptureStatus zastavena s Důvoduzastavení TimeExceeded. Tato hodnota ukazuje, že zachytávání paketů byla úspěšná a jeho spuštění.
+Následující příklad je výstupem z `Get-AzNetworkWatcherPacketCapture` rutiny. Následující příklad je po dokončení zachycení. Hodnota PacketCaptureStatus je zastavena s důvoduZastavení TimeExceeded. Tato hodnota ukazuje, že zachycení paketů bylo úspěšné a běželo v čase.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -247,41 +246,41 @@ StopReason              : TimeExceeded
 PacketCaptureError      : []
 ```
 
-## <a name="stop-a-packet-capture"></a>Zastavit zachytávání paketů
+## <a name="stop-a-packet-capture"></a>Zastavení zachytávání paketů
 
-Spuštěním `Stop-AzNetworkWatcherPacketCapture` rutiny, pokud relace zachytávání se v průběhu je zastavená.
+Spuštěním `Stop-AzNetworkWatcherPacketCapture` rutiny, pokud probíhá relace zachycení, je zastavena.
 
 ```powershell
 Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
-> Žádná odpověď vrátí rutina při spuštěné v probíhající relace zachytávání nebo existující relaci, která již byla zastavena.
+> Rutina nevrátí žádnou odpověď, pokud byla spuštěna v aktuálně spuštěné relaci zachycení nebo existující relaci, která je již zastavena.
 
-## <a name="delete-a-packet-capture"></a>Odstranit zachycení paketů
+## <a name="delete-a-packet-capture"></a>Odstranění zachytávání paketů
 
 ```powershell
 Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
-> Odstraňuje se zachycení paketů nedojde k odstranění souboru v účtu úložiště.
+> Odstraněním zachytávání paketů se soubor neodstraní v účtu úložiště.
 
-## <a name="download-a-packet-capture"></a>Stáhněte si zachytávání paketů
+## <a name="download-a-packet-capture"></a>Stažení zachytávání paketů
 
-Po dokončení relace zachycení paketů zachytávací soubor je možné uložit do úložiště objektů blob nebo do místního souboru na virtuálním počítači. Umístění úložiště pro zachytávání paketů je definován při vytvoření relace. Praktický nástroj pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, které je možné stáhnout tady:  https://storageexplorer.com/
+Po dokončení relace zachycení paketů se zachytávací soubor dá nahrát do úložiště objektů BLOB nebo do místního souboru na VIRTUÁLNÍm počítači. Umístění úložiště zachycení paketu je definováno při vytváření relace. Pohodlný nástroj pro přístup k těmto sběrným souborům uloženým do účtu úložiště je Průzkumník služby Microsoft Azure Storage, který se dá stáhnout tady: https://storageexplorer.com/
 
-Pokud je určen účet úložiště, jsou uloženy soubory zachytávání paketů do účtu úložiště v následujícím umístění:
+Pokud je zadaný účet úložiště, soubory zachytávání paketů se uloží do účtu úložiště v následujícím umístění:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak automatizovat zachytávání paketů pomocí virtuálního počítače výstrahy zobrazením [vytvořit zachytávání paketů upozornění aktivovaných](network-watcher-alert-triggered-packet-capture.md)
+Podívejte se, jak automatizovat zachycení paketů s výstrahami virtuálních počítačů zobrazením [Vytvoření výstrahy aktivované zachytávání paketů](network-watcher-alert-triggered-packet-capture.md) .
 
-Najít, jestli některé je povolený provoz do nebo ze svého virtuálního počítače návštěvou [ověření toku protokolu IP zkontrolujte](diagnose-vm-network-traffic-filtering-problem.md)
+Zjistěte, jestli je na VIRTUÁLNÍm počítači povolený určitý provoz, a to tak, že navštíví [kontrolu toku IP](diagnose-vm-network-traffic-filtering-problem.md) .
 
 <!-- Image references -->
 

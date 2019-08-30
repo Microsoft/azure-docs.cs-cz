@@ -1,140 +1,163 @@
 ---
-title: Kurz Azure Data Box náročné nastavit | Dokumentace Microsoftu
-description: Další informace o zapojení a připojte vaše Azure Data Box náročné
+title: Kurz nastavení Azure Data Box Heavy | Microsoft Docs
+description: Informace o tom, jak kabelovat a připojit Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b6b353e0e01f3f598048e5fbb2682603045b1037
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592377"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164467"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Kurz: Zapojení a připojte se k vaší Azure Data Box Heavy
+::: zone target = "docs"
 
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>Kurz: Připojte se k vašemu Azure Data Box Heavy kabelem a připojte se.
 
-Tento kurz popisuje, jak pro zapojení, připojení a zapnout váš Azure Data Box náročné.
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="get-started-with-azure-data-box-heavy"></a>Začínáme s Azure Data Box Heavy
+
+::: zone-end
+
+::: zone target = "docs"
+
+V tomto kurzu se dozvíte, jak můžete Azure Data Box Heavy kabelovat, připojit a zapnout.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Kabel těžkých pole vaše Data
-> * Připojte se k vaší těžkých pole Data
+> * Data Box Heavy kabelem
+> * Připojení k Data Box Heavy
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+Tato příručka poskytuje pokyny pro kontrolu požadavků, kabelů a připojení zařízení, kopírování dat, nahrání do Azure a následné kontrole nahraných dat.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurzu: Pořadí Azure Data Box těžké](data-box-heavy-deploy-ordered.md).
-2. Jste přijali vaše náročné pole Data a stav objednávky na portálu je **dodáno**.
-3. Můžete si [Data Box silná bezpečnostní pokyny](data-box-safety.md).
-4. Musíte mít přístup k lokalitě bez stromové struktury v datovém centru pomocí blízkosti dostupné síťové připojení, který zvládne zařízení s nároky na tomto. Toto zařízení nejde namontováno v racku.
-5. Obdrželi jste čtyři základě konkrétních napájecích kabelů používat s vaším zařízením úložiště.
-6. Máte k síti datacentra připojený hostitelský počítač. Vaše Data Box náročné zkopíruje data z tohoto počítače. Musíte spustit hostitelský počítač [podporovaný operační systém](data-box-heavy-system-requirements.md).
+1. Dokončili [jste kurz: Pořadí Azure Data Box Heavy](data-box-heavy-deploy-ordered.md).
+2. Dostali jste Data Box Heavy se **doručí**stav objednávky na portálu.
+3. Prošli jste si [pokyny pro zabezpečení data box Heavy](data-box-safety.md).
+4. Je nutné mít přístup k plochému webu v datacentru s blízkým připojením k dostupnému síťovému připojení, které může zařízení s těmito nároky přizpůsobit. Toto zařízení se nedá připojit k stojanu.
+5. Obdrželi jste čtyři uzemněné napájecí šňůry, které se používají s vaším úložným zařízením.
+6. Máte k síti datacentra připojený hostitelský počítač. Vaše Data Box Heavy zkopíruje data z tohoto počítače. Na hostitelském počítači musí běžet [podporovaný operační systém](data-box-heavy-system-requirements.md).
 7. Vaše datacentrum má přístup k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. 
-8. Musíte mít přenosném počítači pomocí kabelu RJ-45 kategorie pro připojení k místní uživatelského rozhraní a konfigurace zařízení. Pomocí přenosný počítač nakonfigurovat každý uzel zařízení jen jednou.
-9. Budete potřebovat jeden kabel 40 GB/s nebo kabel 10 GB/s na jeden uzel zařízení.
-    - Zvolte kabely, které jsou kompatibilní s [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) síťové rozhraní.
-    - Pro kabel 40 GB/s musí být QSFP + zařízení konec kabelu.
-    - Kabel 10 GB/s je nutné kabel SFP +, která zpřístupní přepínač 10 GB/s na jednom konci a QSFP + end adaptéru SFP + (nebo adaptér podmínky), který se připojuje k zařízení.
+8. Pokud se chcete připojit k místnímu uživatelskému rozhraní a nakonfigurovat zařízení, musíte mít přenosný počítač s kabelem RJ-45. Pomocí přenosného počítače nakonfigurujete každý uzel zařízení jednou.
+9. K jednomu uzlu zařízení potřebujete kabel 1 40-GB nebo kabel s rychlostí 10 GB/s.
+    - Vyberte kabely, které jsou kompatibilní se síťovým rozhraním [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) .
+    - Pro kabel 40 GB/s musí být zařízení zakončené kabelem QSFP +.
+    - U kabelu s rychlostí 10 GB/s je potřeba kabel SFP +, který se na jednom konci připojí k přepínači s rychlostí 10 GB/s a s QSFP + až SFP + Adapter (nebo adaptér QUALIFIED Security ASSESSOR) pro konec, který se připojí k zařízení.
 
-## <a name="cable-your-device-for-power"></a>Zapojení kabeláže zařízení pro výkon
+::: zone target = "docs"
 
-Proveďte následující kroky a zapojení kabeláže zařízení.
+## <a name="cable-your-device-for-power"></a>Připojte zařízení k elektrickému napájení
 
-1. Zkontrolujte zařízení, zda nenese stopy porušení nebo není zjevně poškozeno. Pokud je zařízení porušené nebo vážně poškozené, nepokračujte. [Obraťte se na Microsoft Support](data-box-disk-contact-microsoft-support.md) okamžitě, abyste si mohli vyhodnotit, jestli je zařízení v dobrém stavu a pokud potřebují k dodání můžou nahradit aktuální soubor.
-2. Přesune zařízení do instalace lokality.
+Pokud chcete zařízení kabelovat, proveďte následující kroky.
 
-    ![Data Box náročné zařízení instalace lokality](media/data-box-heavy-deploy-set-up/data-box-heavy-install-site.png)
+1. Zkontrolujte zařízení, zda nenese stopy porušení nebo není zjevně poškozeno. Pokud je zařízení porušené nebo vážně poškozené, nepokračujte. [Kontaktujte podpora Microsoftu](data-box-disk-contact-microsoft-support.md) hned, abyste pomohli posoudit, jestli je zařízení v dobrém pracovním řádu, a jestli k tomu potřebujete vyměnit.
+2. Přesuňte zařízení na instalační Web.
 
-3. Zamkněte zadní koleček na zařízení, jak je znázorněno níže.
+    ![Lokalita instalace Data Box Heavy zařízení](media/data-box-heavy-deploy-set-up/data-box-heavy-install-site.png)
 
-    ![Data Box náročné koleček zařízení uzamčeno](media/data-box-heavy-deploy-set-up/data-box-heavy-casters-locked.png)
+3. Odblokujte zadní přetypování na zařízení, jak je znázorněno níže.
 
-4. Vyhledejte knoflíky, které odhalují přední a zadní dveře zařízení. Odemknutí a přesuňte branou zarovnán na straně zařízení. Tento postup opakujte s zadní vrátka.
-    Obě dveře musí zůstat otevřít, když je zařízení provozní umožňující optimální air zepředu dozadu toku prostřednictvím zařízení.
+    ![Data Box Heavy přetypování zařízení uzamčeno](media/data-box-heavy-deploy-set-up/data-box-heavy-casters-locked.png)
 
-    ![Data Box náročné dveře open](media/data-box-heavy-deploy-set-up/data-box-heavy-doors-open.png)
+4. Vyhledejte ovladače, které odemknou přední a zadní dveře zařízení. Odemkněte a přesuňte přední dveře, dokud se neuvolní na straně zařízení. Tento postup opakujte i s back-dvířky.
+    Dveře musí zůstat otevřené, když je zařízení v provozu, aby umožňovalo optimální proud vpřed na pozadí přes zařízení.
 
-5. Na hlavním panelu zádi zařízení by měl mít čtyři napájecích kabelů. Odeberte všechny kabely ze zásobníku a umístit je jste si poznamenali.
+    ![Otevřené dveře Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-doors-open.png)
 
-    ![Data Box náročné napájecích kabelů na hlavním panelu](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
+5. Zásobník na zadní straně zařízení by měl mít čtyři napájecí kabely. Odeberte ze zásobníku všechny kabely a umístěte je z libovolného místa.
 
-6. Dalším krokem je identifikace různých portů zádi zařízení. Existují dva uzly zařízení **NODE1** a **NODE2**. Každý uzel má čtyři síťových rozhraní, **MGMT**, **DATA1**, **DATA2**, **DATA3**. **MGMT** slouží ke konfiguraci správy během počáteční konfigurace zařízení. **Data1**-**DATA3** jsou data porty. **MGMT** a **DATA3** porty jsou 1 GB/s, zatímco **DATA1**, **DATA2** může fungovat jako porty 40 GB/s nebo porty 10 GB/s. V dolní části zařízení dva uzly jsou čtyři jednotky dodavatelského power (PSUs), které jsou sdíleny napříč uzly dvě zařízení. Jak jste toto zařízení pro rozpoznávání tváře **PSUs** jsou **PSU1**, **PSU2**, **PSU3**, a **PSU4** zleva doprava.
+    ![Data Box Heavy napájecí šňůry v zásobníku](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
 
-    ![Data Box náročné porty](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
+6. Dalším krokem je identifikace různých portů na zadní straně zařízení. Existují dva uzly zařízení, **Uzel1** a **Uzel2**. Každý uzel má čtyři síťová rozhraní, **správu**, **Data1**, **Data2**, **DATA3**. Ke konfiguraci správy při počáteční konfiguraci zařízení se používá Správa. Data1-**DATA3** jsou datové porty. Porty pro **správu** a **DATA3** mají 1 GB/s, zatímco **Data1**a **Data2** můžou pracovat jako porty 40 GB/s nebo porty s rychlostí 10 GB/s. V dolní části obou uzlů zařízení jsou čtyři jednotky napájení (PSUs), které jsou sdíleny mezi dvěma uzly zařízení. Při obtváření tohoto zařízení jsou PSUsy **PSU1**, **PSU2**, **PSU3**a **PSU4** zleva doprava.
 
-7. Všechny čtyři napájecích kabelů připojení k zařízení napájecí zdroje. Zelený LED zapněte a blink.
-8. Pomocí tlačítka napájení v rovině front-zapnutí zařízení uzly. Zachovat na tlačítku napájení na několik sekund, dokud nebude modré světla stisknuté. Všechny zelené LED pro dodávku napájení zadní zařízení by měl být nyní solid. Přední panel provozní zařízení také obsahuje LED selhání. Při selhání, který svítí LED, znamená to vadným PSU nebo ventilátoru nebo problém s diskové jednotky.  
+    ![Porty Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
 
-    ![Pole náročné přední ops panel dat](media/data-box-heavy-deploy-set-up/data-box-heavy-front-ops-panel.png)
+7. Připojte všechny čtyři napájecí kabely k napájení zařízení. Zelené diody LED zapínají a blikají.
+8. Pomocí tlačítek napájení v přední rovině zapněte uzly zařízení. Nechte tlačítko napájení stisknuté po dobu několika sekund, dokud modré indikátory nepřijde na. Všechny zelené indikátory LED pro napájení v rámci zařízení by teď měly být plné. Front-end zařízení obsahuje také indikátory LED chyb. Je-li indikátor LED chyby osvětlen, znamená to vadné PSU nebo ventilátor nebo problém s diskovou jednotkou.  
 
-## <a name="cable-first-node-for-network"></a>První uzel kabelové sítě
+    ![Data Box Heavy panel front-OPS](media/data-box-heavy-deploy-set-up/data-box-heavy-front-ops-panel.png)
 
-Na jednom z uzlů zařízení proveďte následující kroky pro kabelové sítě.
+## <a name="cable-first-node-for-network"></a>Zapojte se do prvního uzlu sítě.
 
-1. Připojte hostitelský počítač k portu pro správu 1 GB/s pomocí síťového kabelu RJ-45 kategorie CAT 6 (modré kabel na obrázku).
-2. QSFP + kabelu (fiber nebo mědi) slouží k připojení alespoň jedno síťové rozhraní 40 GB/s (vhodnější než 1 GB/s) pro data. Pokud pomocí přepínače 10 GB/s, pomocí kabelu SFP + připojte 40 GB/s síťové rozhraní pro data s a QSFP + SFP + adaptér (adaptér podmínky).
+V jednom z uzlů zařízení proveďte následující kroky, aby se síťový kabel.
 
-    ![Data Box náročné porty zapojené](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
+1. Použijte síťový kabel RJ-45 s CAT 6 (modrý kabel na obrázku) a připojte tak hostitelský počítač k portu pro správu s rychlostí 1 GB/s.
+2. Použijte kabel QSFP + (Fiber nebo měď) pro připojení k datům minimálně 1 40 GB/s (upřednostňovaných přes 1 GB/s) síťového rozhraní. Pokud používáte přepínač s rychlostí 10 GB/s, použijte k připojení síťového rozhraní 40 GB/s (Qualified Security assessor Adapter) pro data síťový adaptér GB/s () kabel SFP +.
+
+    ![Porty Data Box Heavy kabelové](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 
     > [!IMPORTANT]
-    > DATA 1 a DATA2 jsou přepnuté a neshodují, co se zobrazí v místním webovém uživatelském rozhraní.
-    > Adaptér kabel 40 GB/s se připojí při vložení způsob, jak je znázorněno níže.
+    > DATA 1 a DATA2 jsou přepnuta a neodpovídají tomu, co se zobrazuje v místním webovém uživatelském rozhraní.
+    > Kabel 40 GB/s se připojí, když jste vložili způsob, jak je znázorněno níže.
 
-    ![Data adaptér kabel pole náročné 40 GB/s](media/data-box-heavy-deploy-set-up/data-box-heavy-cable-adaptor.png)
+    ![Adaptér kabelu Data Box Heavy 40-GB/s](media/data-box-heavy-deploy-set-up/data-box-heavy-cable-adaptor.png)
 
-## <a name="configure-first-node"></a>Konfigurace první uzel
+## <a name="configure-first-node"></a>Konfigurovat první uzel
 
-Proveďte následující kroky k nastavení zařízení pomocí místní konfiguraci a webu Azure portal.
+Proveďte následující kroky a nastavte zařízení pomocí místní konfigurace a Azure Portal.
 
-1. Stáhněte si z portálu přihlašovací údaje zařízení. Přejděte na **Obecné > Podrobnosti zařízení**. Zkopírujte si **Heslo zařízení**. Tato hesla jsou vázané na určitém pořadí na portálu. Odpovídající dvěma uzly náročné pole dat, se zobrazí dvě zařízení sériová čísla. Heslo správce zařízení pro oba uzly je stejný.
+1. Stáhněte si z portálu přihlašovací údaje zařízení. Přejděte na **Obecné > Podrobnosti zařízení**. Zkopírujte si **Heslo zařízení**. Tato hesla jsou vázaná na konkrétní pořadí na portálu. V případě odpovídajících dvou uzlů v Data Box Heavy se zobrazí dvě sériová čísla zařízení. Heslo správce zařízení pro oba uzly je stejné.
 
-    ![Data Box náročné přihlašovací údaje zařízení](media/data-box-heavy-deploy-set-up/data-box-heavy-device-credentials.png)
+    ![Data Box Heavy přihlašovací údaje zařízení](media/data-box-heavy-deploy-set-up/data-box-heavy-device-credentials.png)
 
-2. Připojení k zařízení pomocí síťového kabelu RJ-45 kategorie CAT6 pracovní stanice klienta.
-3. Nakonfigurujte adaptér sítě Ethernet na počítači, které používáte pro připojení k zařízení se statickou IP adresou z `192.168.100.5` a podsíť `255.255.255.0`.
+2. Připojte klientskou pracovní stanici k zařízení prostřednictvím síťového kabelu CAT6 RJ-45.
+3. Nakonfigurujte adaptér sítě Ethernet na počítači, který používáte pro připojení k zařízení se statickou IP adresou `192.168.100.5` a podsítí. `255.255.255.0`
 
-    ![Data Box náročné připojí k místního webového uživatelského rozhraní](media/data-box-heavy-deploy-set-up/data-box-heavy-connect-local-web-ui.png)
+    ![Data Box Heavy se připojuje k místnímu webovému uživatelskému rozhraní](media/data-box-heavy-deploy-set-up/data-box-heavy-connect-local-web-ui.png)
 
-4. Připojení k místní webové uživatelské rozhraní zařízení na následující adrese URL: `http://192.168.100.10`. Klikněte na tlačítko **Upřesnit** a potom klikněte na tlačítko **pokračujte 192.168.100.10 (unsafe)** .
+4. Připojte se k místnímu webovému uživatelskému rozhraní zařízení na následující adrese `http://192.168.100.10`URL:. Klikněte na **Upřesnit** a potom klikněte na **Přejít k 192.168.100.10 (nezabezpečené)** .
 5. Zobrazí se **přihlašovací** stránka místního webového uživatelského rozhraní.
     
-    - Jeden uzel sériová čísla na této stránce odpovídá přes uživatelské rozhraní portálu a místního webového uživatelského rozhraní. Poznamenejte si číslo uzlu pro mapování sériové číslo. Existují dva uzly a dvěma sériová čísla zařízení na portálu. Toto mapování vám pomůže pochopit který uzel odpovídá která sériové číslo.
+    - Jedna z sériových čísel uzlu na této stránce se shoduje s uživatelským rozhraním portálu i s místním webovým uživatelským rozhraním. Poznamenejte si číslo uzlu pro mapování sériového čísla. Na portálu jsou dva uzly a dvě sériová čísla zařízení. Toto mapování vám pomůže pochopit, který uzel odpovídá sériovému číslu.
     - V tuto chvíli je zařízení uzamčené.
-    - Zadejte heslo správce zařízení, který jste získali v předchozím kroku, a přihlaste se do zařízení. Klikněte na **Přihlásit se**.
+    - Zadejte heslo správce zařízení, které jste získali v předchozím kroku, a přihlaste se k zařízení. Klikněte na **Přihlásit se**.
 
-    ![Přihlaste se k datové pole v případě velkého místního webového uživatelského rozhraní](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
+    ![Přihlášení k Data Box Heavy místního webového uživatelského rozhraní](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
 
-5. Na řídicím panelu Ujistěte se, že jsou nakonfigurovaná síťová rozhraní. Existují čtyři síťová rozhraní v uzlu zařízení, dvě 1 GB/s a dvě 40 GB/s. Jednou z 1 GB/s rozhraní je rozhraní pro správu a proto není konfigurovatelná uživatelem. Zbývající tři síťová rozhraní jsou vyhrazené pro data a dá se uživatel.
+5. Na řídicím panelu zkontrolujte, že jsou nakonfigurovaná síťová rozhraní. Uzel zařízení obsahuje čtyři síťová rozhraní, dvě 1 GB/s a 2 40 GB/s. Jedním z rozhraní s 1 GB/s je rozhraní pro správu, a proto není uživatelsky konfigurovatelné. Zbývající tři síťová rozhraní jsou vyhrazená pro data a můžou je nakonfigurovat uživatel.
 
 - Pokud je ve vašem prostředí povolený protokol DHCP, síťová rozhraní se nakonfigurují automaticky.
-- Pokud není povolený DHCP, přejděte k nastavení síťových rozhraní a přiřazení statických IP adres v případě potřeby.
+- Pokud není protokol DHCP povolený, vyberte v případě potřeby možnost nastavit síťová rozhraní a přiřaďte statické IP adresy.
 
-    ![Data Box náročné řídicí panel uzlu 1](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-1.png)
+    ![Uzel Data Box Heavyho řídicího panelu 1](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-1.png)
 
-## <a name="configure-second-node"></a>Nakonfigurujte druhý uzel
+## <a name="configure-second-node"></a>Konfigurovat druhý uzel
 
-Proveďte kroky popsané v [konfigurace první uzel](#configure-first-node) pro druhý uzel zařízení.
+Proveďte kroky popsané v části [Konfigurace prvního uzlu](#configure-first-node) pro druhý uzel zařízení.
 
-![Data Box náročné řídicí panel uzlu 2](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-2.png)
+![Uzel Data Box Heavyho řídicího panelu 2](media/data-box-heavy-deploy-set-up/data-box-heavy-dashboard-2.png)
 
 Po dokončení nastavení zařízení se můžete připojit ke sdíleným složkám zařízení a zkopírovat do zařízení data z vašeho počítače.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli o Azure Data Box náročné témata, jako:
+V tomto kurzu jste se dozvěděli o Azure Data Box Heavy témata, jako například:
 
 > [!div class="checklist"]
-> * Kabel těžkých pole vaše Data
-> * Připojte se k vaší těžkých pole Data
+> * Data Box Heavy kabelem
+> * Připojení k Data Box Heavy
 
-Přejděte k dalšímu kurzu, přečtěte si, jak kopírovat data na vaše Data Box náročné.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak kopírovat data v Data Box Heavy.
 
 > [!div class="nextstepaction"]
 > [Kopírování dat do Azure Data Boxu](./data-box-heavy-deploy-copy-data.md)
+
+::: zone-end

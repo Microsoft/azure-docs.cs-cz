@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 732192e481f88c0cd3c78e9dac43970eb5be72e6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840517"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163599"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služeb
 
@@ -25,7 +25,11 @@ Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagn
 >[!NOTE]
 > Pro otestování všech budoucích aktualizací doporučujeme opustit fond hostitelů ověřování na místě.
 
-Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), pokud jste to ještě neudělali.
+Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="create-your-host-pool"></a>Vytvoření fondu hostitelů
 
@@ -69,7 +73,7 @@ Výsledky rutiny by měly vypadat podobně jako tento výstup:
 
 Ve verzi Preview se aktualizace služby vyskytují přibližně měsíčně tempo. V případě závažných problémů budou důležité aktualizace k dispozici na častých tempo.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste vytvořili fond hostitelů pro ověření, si můžete přečíst, jak nasadit a připojit se k nástroji pro správu pro správu prostředků virtuálních ploch Microsoftu.
 

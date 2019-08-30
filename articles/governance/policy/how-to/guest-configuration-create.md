@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146124"
+ms.locfileid: "70164923"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Postup vytvoření zásad konfigurace hostů
 
-Konfigurace hosta používá modul prostředku [Konfigurace požadovaného stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování virtuálních počítačů Azure. Konfigurace DSC definuje podmínku, ve které by se měl virtuální počítač nacházet. Pokud se konfigurace nezdařila, je aktivován **audit** účinku zásad a virtuální počítač se považuje za nevyhovující.
+Konfigurace hosta používá modul prostředků [požadované konfigurace stavu](/powershell/dsc) (DSC) k vytvoření konfigurace pro auditování počítačů Azure. Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za nevyhovující.
 
-[Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v rámci virtuálních počítačů. Náprava nastavení v rámci virtuálních počítačů zatím není k dispozici.
+[Konfiguraci hosta Azure Policy](/azure/governance/policy/concepts/guest-configuration) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
-Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu virtuálního počítače Azure.
+Pomocí následujících akcí vytvořte vlastní konfiguraci pro ověření stavu počítače Azure.
 
 > [!IMPORTANT]
 > Vlastní zásady s konfigurací hosta jsou funkcí verze Preview.
@@ -133,18 +133,18 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **Cesta**: Cesta k výstupní složce Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
 - **ChefProfilePath**: Úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
 
-Dokončený balíček musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače. Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) . Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro virtuální počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
+Dokončený balíček musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače. Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) . Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Práce s tajnými kódy v konfiguračních balíčcích hosta
 
 V konfiguraci Azure Policy hosta je optimální způsob, jak spravovat tajné klíče používané v době běhu, ukládat je do Azure Key Vault. Tento návrh se implementuje v rámci vlastních prostředků DSC.
 
-Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem. Identita je používána virtuálními počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+Nejprve v Azure vytvořte spravovanou identitu přiřazenou uživatelem. Tato identita je používána počítači pro přístup k tajným klíčům uloženým v Key Vault. Podrobný postup najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Dále vytvořte instanci Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – PowerShell](../../../key-vault/quick-create-powershell.md).
 Přiřazením oprávnění k instanci udělte přístup k identitám přiřazeným uživateli k tajným klíčům uloženým v Key Vault. Podrobné pokyny najdete v tématu [nastavení a načtení tajného kódu – .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Pak přiřaďte k virtuálnímu počítači identitu přiřazenou uživateli. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Pak přiřaďte počítači identitu přiřazenou uživateli. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ve velkém měřítku přiřaďte tuto identitu pomocí Azure Resource Manager přes Azure Policy. Podrobný postup najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí šablony](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Nakonec v rámci vlastního prostředku použijte ID klienta vygenerované výše pro přístup k Key Vault pomocí tokenu dostupného z počítače. Adresu URL třídy Key Vault lze předat prostředku jako vlastnosti, takže prostředek nebude nutné aktualizovat pro více prostředí nebo v případě, že je třeba změnit hodnoty. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>Testování konfiguračního balíčku hosta
 
-Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete otestovat funkčnost balíčku z prostředí pro pracovní stanici nebo CI/CD. Modul GuestConfiguration zahrnuje rutinu `Test-GuestConfigurationPackage` , která načte stejného agenta ve vývojovém prostředí, protože se používá ve virtuálních počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně ještě předtím, než vydáte účtované/testovací/provozní prostředí.
+Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete otestovat funkčnost balíčku z prostředí pro pracovní stanici nebo CI/CD. Modul GuestConfiguration zahrnuje rutinu `Test-GuestConfigurationPackage` , která načte stejného agenta ve vývojovém prostředí, jak se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně ještě předtím, než vydáte účtované/testovací/provozní prostředí.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ Další informace o tom, jak testovat pomocí parametrů, najdete v níže uvede
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Vytvoření souborů nasazení definice Azure Policy a iniciativa
 
-Po vytvoření balíčku vlastní zásady konfigurace hosta a nahrání do umístění přístupného pro virtuální počítače vytvořte definici zásady konfigurace hosta pro Azure Policy. Rutina používá veřejně přístupný balíček vlastní zásady konfigurace hosta a vytvoří definici zásady **auditIfNotExists** a **deployIfNotExists.** `New-GuestConfigurationPolicy` Vytvoří se také definice iniciativy zásad, která zahrnuje definice obou zásad.
+Po vytvoření balíčku vlastní zásady konfigurace hosta a nahrání do umístění přístupného pro počítače vytvořte definici zásady konfigurace hosta pro Azure Policy. Rutina používá veřejně přístupný balíček vlastní zásady konfigurace hosta a vytvoří definici zásady **auditIfNotExists** a **deployIfNotExists.** `New-GuestConfigurationPolicy` Vytvoří se také definice iniciativy zásad, která zahrnuje definice obou zásad.
 
 Následující příklad vytvoří definice zásad a iniciativ v zadané cestě z balíčku vlastní zásady konfigurace hosta pro Windows a poskytuje název, popis a verzi:
 
@@ -220,7 +220,7 @@ Následující soubory vytvořil `New-GuestConfigurationPolicy`:
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
-Pokud chcete tento příkaz použít k vytvoření uživatelského rozhraní pro vlastní projekt zásad, můžete provádět změny těchto souborů. Příkladem je změna oddílu if, který vyhodnotí, jestli je pro virtuální počítače přítomná konkrétní značka. Podrobnosti o vytváření zásad najdete v tématu [programové vytváření zásad](./programmatically-create.md).
+Pokud chcete tento příkaz použít k vytvoření uživatelského rozhraní pro vlastní projekt zásad, můžete provádět změny těchto souborů. Příkladem je změna oddílu if pro vyhodnocení toho, jestli je pro počítače k dispozici konkrétní značka. Podrobnosti o vytváření zásad najdete v tématu [programové vytváření zásad](./programmatically-create.md).
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Použití parametrů ve vlastních zásadách konfigurace hostů
 
@@ -337,7 +337,7 @@ Po převedení tohoto obsahu výše uvedené kroky pro vytvoření balíčku a j
 Vlastní zásady konfigurace hosta ve výchozím nastavení používají SHA256 hash k ověření, že se balíček zásad nezměnil z okamžiku, kdy byl publikován na serveru, který je auditován.
 V případě potřeby mohou zákazníci také použít certifikát k podepisování balíčků a vynucení rozšíření konfigurace hosta pouze k povolení podepsaného obsahu.
 
-Chcete-li povolit tento scénář, je třeba provést dva kroky. Spusťte rutinu pro podepsání balíčku obsahu a přidejte značku k virtuálním počítačům, které by měly vyžadovat podepsání kódu.
+Chcete-li povolit tento scénář, je třeba provést dva kroky. Spusťte rutinu pro podepsání balíčku obsahu a přidejte značku do počítačů, které by měly vyžadovat podepsání kódu.
 
 Chcete-li použít funkci ověřování podpisem, `Protect-GuestConfigurationPackage` spusťte rutinu pro podepsání balíčku před jeho publikováním. Tato rutina vyžaduje certifikát pro podepsání kódu.
 
@@ -353,17 +353,17 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **PrivateGpgKeyPath**: Privátní cesta ke klíči GPG Tento parametr je podporován pouze při podepisování obsahu pro Linux.
 - **PublicGpgKeyPath**: Cesta k veřejnému klíči GPG Tento parametr je podporován pouze při podepisování obsahu pro Linux.
 
-Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachází v počítačích se systémem Windows v části Důvěryhodné kořenové certifikační autority a v `/usr/local/share/ca-certificates/extra` cestě k počítačům se systémem Linux. Aby mohl uzel ověřit podepsaný obsah, před použitím vlastních zásad nainstalujte na virtuální počítač veřejný klíč certifikátu. Tento proces se dá provést pomocí libovolné techniky uvnitř virtuálního počítače nebo pomocí Azure Policy. [Tady je uvedena](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)Ukázková šablona.
+Agent GuestConfiguration očekává, že se veřejný klíč certifikátu nachází v počítačích se systémem Windows v části Důvěryhodné kořenové certifikační autority a v `/usr/local/share/ca-certificates/extra` cestě k počítačům se systémem Linux. Aby mohl uzel ověřit podepsaný obsah, nainstalujte na počítači veřejný klíč certifikátu a pak použijte vlastní zásady. Tento proces se dá provést pomocí libovolné techniky uvnitř virtuálního počítače nebo pomocí Azure Policy. [Tady je uvedena](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)Ukázková šablona.
 Zásady přístupu Key Vault musí umožňovat poskytovateli výpočetních prostředků přístup k certifikátům během nasazení. Podrobný postup najdete v tématu [nastavení Key Vault pro virtuální počítače v Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Následuje příklad exportu veřejného klíče z podpisového certifikátu pro import do virtuálního počítače.
+Následuje příklad exportu veřejného klíče z podpisového certifikátu pro import do počítače.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Dobrá Reference k vytváření GPG klíčů pro použití s virtuálními počítači se systémem Linux je poskytována článkem na GitHubu, který [generuje nový klíč GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Dobrá Reference k vytváření GPG klíčů pro použití s počítači se systémem Linux je poskytována článkem na GitHubu, který [generuje nový klíč GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
 Po publikování obsahu přidejte značku s názvem `GuestConfigPolicyCertificateValidation` a hodnotou `enabled` do všech virtuálních počítačů, kde by mělo být požadováno podepisování kódu. Tato značka se dá doručovat ve velkém rozsahu pomocí Azure Policy. Podívejte se na ukázku [použít značku a její výchozí hodnotu](../samples/apply-tag-default-value.md) .
 Jakmile je tato značka nastavená, definice zásady vytvořená pomocí `New-GuestConfigurationPolicy` rutiny povolí požadavek prostřednictvím rozšíření konfigurace hosta.

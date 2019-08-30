@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707366"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164786"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý start: Klientská knihovna obličeje pro Python
 
@@ -135,7 +135,7 @@ Následující kód vytvoří samostatnou **osobu** se třemi různými objekty 
 
 ### <a name="create-persongroup"></a>Vytvořit osobu
 
-Chcete-li tento scénář krokovat, je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Pro krokování v tomto scénáři je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 Tato skupina imagí obsahuje tři sady imagí obličeje, které odpovídají třem různým lidem. Kód bude definovat tři objekty **Person** a přidružit je k souborům obrázků, které začínají `woman`na `man`, a `child`.
 
@@ -161,7 +161,7 @@ Jakmile budete mít k plošky, je nutné, abyste vytvořili svoji **osobu** , ab
 
 ## <a name="identify-a-face"></a>Identifikace obličeje
 
-Následující kód přebírá obrázek s více ploškami a hledá identitu každého uživatele v obrázku. Porovnává každou zjištěnou plochu se samostatnou **osobou, databází**různých objektů **Person** , ke kterým má každý z nich přidruženo několik ploch. 
+Následující kód přebírá obrázek s více ploškami a hledá identitu každého uživatele v obrázku. Porovnává každou zjištěnou plochu s **osobou**, databázi různých objektů **osob** , jejichž funkce obličeje jsou známy.
 
 > [!IMPORTANT]
 > Aby bylo možné spustit tento příklad, musíte nejprve spustit kód v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group).
@@ -188,7 +188,7 @@ V tomto příkladu migrujete skupinu **Person** , kterou jste vytvořili v čás
 
 Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést podle kroků v části [Nastavení](#setting-up) . 
 
-Pak v horní části skriptu vytvořte následující proměnné. Budete také muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč a ID předplatného vašeho nového (cílového) účtu. 
+Pak v horní části skriptu vytvořte následující proměnné. Budete také muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 
@@ -255,4 +255,4 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu obličeje pro jaz
 > [Odkaz na Face API (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
 * [Co je Face API?](../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na GitHubu. [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)

@@ -1,19 +1,19 @@
 ---
-title: Ukázky rozšířený dotaz
-description: Použití Azure Graph prostředků ke spuštění některé pokročilé dotazy, včetně VMSS kapacitu, výpis všechny značky, které používají a odpovídající virtuální počítače pomocí regulárních výrazů.
+title: Rozšířené Ukázky dotazů
+description: Pomocí Azure Resource graphu můžete spouštět některé pokročilé dotazy, včetně kapacity sady virtuálních počítačů škálovat, výpisu všech používaných značek a porovnání virtuálních počítačů s regulárními výrazy.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5742d4c14d2599b3efa73e427a5d418e5ef1c1e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691987"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164907"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -22,7 +22,7 @@ Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní zn
 Projdeme následující rozšířené dotazy:
 
 > [!div class="checklist"]
-> - [Získání kapacity škálovací sady virtuálních počítačů a velikost](#vmss-capacity)
+> - [Získat kapacitu a velikost sady škálování virtuálního počítače](#vmss-capacity)
 > - [Vypsat všechny názvy značek](#list-all-tags)
 > - [Virtuální počítače odpovídající regulárnímu výrazu](#vm-regex)
 
@@ -72,8 +72,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Virtuální počítače odpovídající regulárnímu výrazu
 
-Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_).
-**Odpovídá regulárnímu \@**  umožňuje definovat regulární výraz tak, aby odpovídaly, což je `^Contoso(.*)[0-9]+$`. Tato definice regulárního výrazu je vysvětlena jako:
+Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_). **Výraz\@ Matchers** umožňuje definovat regulární výraz, který se má shodovat, což `^Contoso(.*)[0-9]+$`je.
+Tato definice regulárního výrazu je vysvětlena jako:
 
 - `^` – Porovnání musí začít na začátku řetězce.
 - `Contoso` – Řetězec s rozlišováním velkých a malých písmen.
@@ -99,6 +99,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>Zahrnutí názvů tenanta a předplatného do DisplayNames
+
+Tento dotaz pomocí nového parametru **include** s možností _DisplayNames_ přidá do výsledků **subscriptionDisplayName** a **tenantDisplayName** . Tento parametr je k dispozici pouze pro Azure CLI a Azure PowerShell.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Pokud dotaz nepoužívá **aplikaci Project** k určení vrácených vlastností, jsou do výsledků automaticky zahrnuty **subscriptionDisplayName** a **tenantDisplayName** .
+> Pokud dotaz používá **aplikaci Project**, musí být každé pole _DisplayName_ explicitně zahrnuto v **projektu** nebo nebude vráceno ve výsledcích, i když je použit parametr **include** .
 
 ## <a name="next-steps"></a>Další postup
 

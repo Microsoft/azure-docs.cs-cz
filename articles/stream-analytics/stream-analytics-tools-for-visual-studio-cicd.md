@@ -1,6 +1,6 @@
 ---
-title: Průběžnou integraci a vývoj s použitím balíčku NuGet CI/CD pro Azure Stream Analytics
-description: Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí balíčku NuGet CI/CD pro Azure Stream Analytics.
+title: Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj
+description: Tento článek popisuje, jak pomocí Azure Stream Analytics balíčku CI/CD NuGet nastavit proces průběžné integrace a nasazování.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -8,78 +8,78 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f34139dafffe3d4890f17988114dffdd8b480d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47bcd29ca8a1da0c42f7bc39aeb4ffc1ad8e8571
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827312"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172906"
 ---
-# <a name="continuously-integrate-and-develop-with-azure-stream-analytics-cicd-nuget-package"></a>Průběžnou integraci a vývoj s použitím balíčku NuGet CI/CD pro Azure Stream Analytics
-Tento článek popisuje, jak nastavit průběžnou integraci a proces nasazení pomocí balíčku NuGet CI/CD pro Azure Stream Analytics.
+# <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
+Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
 
-Použijte verzi 2.3.0000.0 nebo novější z [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) jak získat podporu pro MSBuild.
+K získání podpory pro MSBuild použijte verzi 2.3.0000.0 nebo novější z [Stream Analytics nástrojů pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) .
 
-Balíček NuGet je k dispozici: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroj MSBuild, místní spuštění a nástroje pro nasazení, které podporují průběžnou integraci a nasazování proces [projektů sady Visual Studio pro Stream Analytics](stream-analytics-vs-tools.md). 
+K dispozici je balíček NuGet: [Microsoft. Azure. Stream Analytics. CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroje pro MSBuild, místní běh a nasazení, které podporují proces průběžné integrace a nasazování [Stream Analytics projektů sady Visual Studio](stream-analytics-vs-tools.md). 
 > [!NOTE]
-> Balíček NuGet lze použít pouze 2.3.0000.0 nebo vyšší než verze nástrojů pro Stream Analytics pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích sady Visual Studio tools, stačí je otevřít 2.3.0000.0 nebo vyšší než verze a uložit. Nové funkce jsou povoleny. 
+> Balíček NuGet se dá použít jenom s 2.3.0000.0 nebo novější verzí Stream Analytics nástrojů pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích nástrojů sady Visual Studio, stačí je otevřít pomocí 2.3.0000.0 nebo novější verze a uložit. Nové funkce jsou pak povoleny. 
 
-Další informace najdete v tématu [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Další informace naleznete v tématu [Stream Analytics Tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="msbuild"></a>MSBuild
-Podobně jako standardní prostředí Visual Studio MSBuild k sestavení projektu máte dvě možnosti. Klikněte pravým tlačítkem na projekt a klikněte na tlačítko **sestavení**. Můžete také použít **MSBuild** v balíčku NuGet z příkazového řádku.
+Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit**. Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-Když projekt sady Visual Studio pro Stream Analytics sestavena úspěšně, generuje následující dvě šablony soubory Azure Resource Manageru v rámci **bin / [ladění/maloobchodní] / Deploy** složky: 
+Po úspěšném sestavení Stream Analytics projektu sady Visual Studio vygeneruje následující dva soubory šablon Azure Resource Manager ve složce **bin/[Debug/Retail]/Deploy** : 
 
-*  Soubor šablony Resource Manageru
+*  Soubor šablony Správce prostředků
 
        [ProjectName].JobTemplate.json 
 
-*  Soubor parametrů Resource Manageru
+*  Soubor parametrů Správce prostředků
 
        [ProjectName].JobTemplate.parameters.json   
 
-Výchozí parametry v souboru parameters.JSON tímto se z nastavení projektu sady Visual Studio. Pokud chcete nasadit do jiného prostředí, nahraďte parametry odpovídajícím způsobem.
+Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu sady Visual Studio. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
 
 > [!NOTE]
-> Pro všechny přihlašovací údaje, výchozí hodnoty jsou nastaveny na hodnotu null. Jste **požadované** nastavit hodnoty před nasazením do cloudu.
+> U všech přihlašovacích údajů jsou výchozí hodnoty nastavené na hodnotu null. Před nasazením do cloudu je **nutné** nastavit hodnoty.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
       "value": null
     },
 ```
-Další informace o tom, jak [nasadit pomocí souboru šablony Resource Manageru a Azure Powershellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Další informace o tom, jak [použití objektu jako parametr v šabloně Resource Manageru](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
-Použití spravované Identity jako výstupní jímku pro Azure Data Lake Store Gen1, budete muset poskytnout přístup ke službě instančního objektu pomocí prostředí PowerShell před nasazením do Azure. Další informace o tom, jak [nasazení Gen1 ADLS s využitím Identity spravované pomocí šablony Resource Manageru](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
+Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
 
-## <a name="command-line-tool"></a>Nástroj příkazového řádku
+## <a name="command-line-tool"></a>Nástroj pro příkazový řádek
 
 ### <a name="build-the-project"></a>Sestavení projektu
-Balíček NuGet je nástroj příkazového řádku, který volá **SA.exe**. Podporuje sestavování projektu a místní testování na libovolný počítač, který můžete použít v průběžnou integraci a průběžné doručování procesu. 
+Balíček NuGet má nástroj příkazového řádku s názvem **SA. exe**. Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
 
-Ve výchozím nastavení jsou soubory nasazení umístěny v aktuálním adresáři. Výstupní cestu můžete zadat pomocí parametru - OutputPath následující:
+Ve výchozím nastavení jsou soubory nasazení umístěny do aktuálního adresáře. Výstupní cestu můžete zadat pomocí následujícího parametru-OutputPath:
 
 ```
 ./tools/SA.exe build -Project [Your Project Full Path] [-OutputPath <outputPath>] 
 ```
 
-### <a name="test-the-script-locally"></a>Testování skriptu místně
+### <a name="test-the-script-locally"></a>Místní otestování skriptu
 
-Pokud váš projekt má zadanou místní vstupní soubory v sadě Visual Studio, můžete spustit test automatického skriptu s použitím *localrun* příkazu. Výstup výsledku je umístěn v aktuálním adresáři.
+Pokud váš projekt má v aplikaci Visual Studio určené místní vstupní soubory, můžete spustit automatický test skriptu pomocí příkazu *localrun* . Výsledek výstupu je umístěn v rámci aktuálního adresáře.
  
 ```
 localrun -Project [ProjectFullPath]
 ```
 
-### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Generovat soubor s definicí úlohy pomocí rozhraní API prostředí PowerShell pro Stream Analytics
+### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Generování souboru definice úlohy pro použití s rozhraním API Stream Analytics PowerShell
 
-*Arm* příkaz má úloha šablony a soubory parametrů šablony úloh generovány pomocí sestavení jako vstup. Potom kombinuje je do souboru JSON definice úlohy, který je možné pomocí rozhraní API prostředí PowerShell pro Stream Analytics.
+Příkaz *ARM* vezme šablonu úlohy a soubory parametrů šablony úlohy vygenerované pomocí Build jako Input. Pak je zkombinuje do souboru JSON definice úlohy, který se dá použít s rozhraním API Stream Analytics PowerShellu.
 
 ```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
@@ -91,8 +91,8 @@ Příklad:
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Rychlé zprovoznění: Vytvořit úlohu Azure Stream Analytics cloudu v sadě Visual Studio](stream-analytics-quick-create-vs.md)
+* [Rychlé zprovoznění: Vytvoření cloudové úlohy Azure Stream Analytics v aplikaci Visual Studio](stream-analytics-quick-create-vs.md)
 * [Testování dotazů Stream Analytics místně pomocí sady Visual Studio](stream-analytics-vs-tools-local-run.md)
-* [Prozkoumejte úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-vs-tools.md)
+* [Prozkoumejte Azure Stream Analytics úlohy pomocí sady Visual Studio](stream-analytics-vs-tools.md)

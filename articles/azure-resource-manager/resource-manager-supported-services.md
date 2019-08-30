@@ -1,6 +1,6 @@
 ---
-title: Poskytovatelé a typy prostředků Azure prostředků | Dokumentace Microsoftu
-description: Popisuje poskytovatele prostředků, které podporují Resource Manageru, jejich schémata a k dispozici verze rozhraní API a oblastí, které můžete hostovat prostředky.
+title: Poskytovatelé prostředků Azure a typy prostředků | Microsoft Docs
+description: Popisuje poskytovatele prostředků, kteří podporují Správce prostředků, jejich schémata a dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -10,29 +10,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2019
+ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702700"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164822"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
-Při nasazování prostředků, můžete často potřebují k načtení informací o prostředku poskytovatelé a typy. V tomto článku získáte informace o těchto tématech:
+Při nasazování prostředků často potřebujete získat informace o poskytovatelích a typech prostředků. Pokud například chcete ukládat klíče a tajné kódy, budete pracovat s poskytovatelem prostředků Microsoft. datatrezoru. Tento poskytovatel prostředků nabízí typ prostředku s názvem trezory pro vytvoření trezoru klíčů.
+
+Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostředku}** . Typ prostředku pro Trezor klíčů je **trezor a trezory společnosti Microsoft.**
+
+V tomto článku získáte informace o těchto tématech:
 
 * Zobrazit všechny poskytovatele prostředků v Azure
-* Zkontrolovat stav registrace poskytovatele prostředků
+* Zkontroluje stav registrace poskytovatele prostředků.
 * Registrace poskytovatele prostředků
-* Zobrazit typy prostředků pro poskytovatele prostředků.
-* Zobrazit platné umístění pro typ prostředku
-* Zobrazit platná verze rozhraní API pro typ prostředku
+* Zobrazení typů prostředků pro poskytovatele prostředků
+* Zobrazit platná umístění pro typ prostředku
+* Zobrazit platné verze rozhraní API pro typ prostředku
 
-Můžete provést tyto kroky prostřednictvím webu Azure portal, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Tyto kroky můžete provádět pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
-Seznam, který se mapuje zprostředkovatelé prostředků služeb Azure najdete v tématu [zprostředkovatelé prostředků služeb Azure](azure-services-resource-providers.md).
+Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -41,38 +45,38 @@ Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby**.
 
-    ![Vyberte předplatné.](./media/resource-manager-supported-services/select-subscriptions.png)
-3. V **všechny služby** zadejte **předplatné**a pak vyberte **předplatná**.
-4. Vyberte předplatné, ze seznamu předplatné zobrazíte.
-5. Vyberte **poskytovatelů prostředků** a zobrazí se seznam dostupných poskytovatelů prostředků.
+    ![vybrat odběry](./media/resource-manager-supported-services/select-subscriptions.png)
+3. V poli **všechny služby** zadejte **předplatné**a pak vyberte předplatná.
+4. Vyberte předplatné ze seznamu odběrů, které chcete zobrazit.
+5. Vyberte **poskytovatele prostředků** a zobrazte seznam dostupných poskytovatelů prostředků.
 
-    ![Zobrazení poskytovatelů prostředků](./media/resource-manager-supported-services/show-resource-providers.png)
+    ![Zobrazit poskytovatele prostředků](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. Registrace poskytovatele prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení jsou automaticky registrované řada poskytovatelů prostředků. Ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění provést `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Chcete-li zaregistrovat poskytovatele prostředků, vyberte **zaregistrovat**. Na předchozím snímku obrazovky **zaregistrovat** odkaz bude vybrán, aby **Microsoft.Blueprint**.
+6. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení je řada poskytovatelů prostředků zaregistrována automaticky. Je ale možné, že budete muset některé poskytovatele prostředků zaregistrovat ručně. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Chcete-li zaregistrovat poskytovatele prostředků, vyberte možnost **Registrovat**. Na předchozím snímku obrazovky se zvýrazní odkaz **zaregistrovat** pro **Microsoft. detail**.
 
-    Pokud stále máte typy prostředků od tohoto poskytovatele prostředků ve vašem předplatném, nelze zrušit registraci poskytovatele prostředků.
+    Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
 
-Chcete-li zobrazit informace pro určitý prostředek zprostředkovatele:
+Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Všechny služby**.
 
-    ![Vyberte všechny služby](./media/resource-manager-supported-services/more-services.png)
+    ![vybrat všechny služby](./media/resource-manager-supported-services/more-services.png)
 
-3. V **všechny služby** zadejte **Průzkumníka prostředků**a pak vyberte **Průzkumníka prostředků**.
-4. Rozbalte **poskytovatelé** tak, že vyberete šipku vpravo.
+3. V poli **všechny služby** zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
+4. Rozbalte položku poskytovatelé a vyberte šipku doprava.
 
-    ![Vybrat zprostředkovatele](./media/resource-manager-supported-services/select-providers.png)
+    ![Vybrat poskytovatele](./media/resource-manager-supported-services/select-providers.png)
 
 5. Rozbalte poskytovatele prostředků a typ prostředku, který chcete zobrazit.
 
-    ![Vyberte typ prostředku](./media/resource-manager-supported-services/select-resource-type.png)
+    ![Vybrat typ prostředku](./media/resource-manager-supported-services/select-resource-type.png)
 
-6. Resource Manager je podporováno ve všech oblastech, ale nemusí být podporován prostředky, které nasadíte ve všech oblastech. Kromě toho může být omezení v rámci předplatného, které brání použití některých oblastí, které podporují prostředku. Průzkumník prostředků zobrazí platné umístění pro typ prostředku.
+6. Správce prostředků se podporují ve všech oblastech, ale prostředky, které nasadíte, nemusí být podporované ve všech oblastech. Kromě toho můžou mít vaše předplatné omezení, které vám brání v používání některých oblastí, které podporují daný prostředek. Průzkumník prostředků zobrazuje platná umístění pro daný typ prostředku.
 
     ![Zobrazit umístění](./media/resource-manager-supported-services/show-locations.png)
 
-7. Rozhraní API verze odpovídá verzi operace REST API, které jsou vydány přes poskytovatele prostředků. Jako poskytovatel prostředků umožňuje nové funkce, vydání nové verze rozhraní REST API. Průzkumník prostředků zobrazí platná verze rozhraní API pro typ prostředku.
+7. Verze rozhraní API odpovídá verzi REST API operací, které jsou vydány poskytovatelem prostředků. V případě, že poskytovatel prostředků poskytuje nové funkce, uvolňuje novou verzi REST API. Průzkumník prostředků zobrazuje platné verze rozhraní API pro daný typ prostředku.
 
     ![Zobrazit verze rozhraní API](./media/resource-manager-supported-services/show-api-versions.png)
 
@@ -86,7 +90,7 @@ Pokud chcete zobrazit všechny poskytovatele prostředků v Azure a stav registr
 Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-Který vrátí výsledky podobné:
+Což vrátí výsledek podobný tomuto:
 
 ```powershell
 ProviderNamespace                RegistrationState
@@ -98,13 +102,13 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Registrace poskytovatele prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení jsou automaticky registrované řada poskytovatelů prostředků. Ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění provést `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník.
+Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení je řada poskytovatelů prostředků zaregistrována automaticky. Je ale možné, že budete muset některé poskytovatele prostředků zaregistrovat ručně. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-Který vrátí výsledky podobné:
+Což vrátí výsledek podobný tomuto:
 
 ```powershell
 ProviderNamespace : Microsoft.Batch
@@ -113,15 +117,15 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
-Pokud stále máte typy prostředků od tohoto poskytovatele prostředků ve vašem předplatném, nelze zrušit registraci poskytovatele prostředků.
+Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
 
-Pokud chcete zobrazit informace pro určitý prostředek zprostředkovatele, použijte:
+Pokud chcete zobrazit informace o konkrétním poskytovateli prostředků, použijte:
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-Který vrátí výsledky podobné:
+Což vrátí výsledek podobný tomuto:
 
 ```powershell
 {ProviderNamespace : Microsoft.Batch
@@ -147,9 +151,9 @@ locations
 locations/quotas
 ```
 
-Rozhraní API verze odpovídá verzi operace REST API, které jsou vydány přes poskytovatele prostředků. Jako poskytovatel prostředků umožňuje nové funkce, vydání nové verze rozhraní REST API.
+Verze rozhraní API odpovídá verzi REST API operací, které jsou vydány poskytovatelem prostředků. V případě, že poskytovatel prostředků poskytuje nové funkce, uvolňuje novou verzi REST API.
 
-Pokud chcete získat k dispozici verze rozhraní API pro typ prostředku, použijte:
+K získání dostupných verzí rozhraní API pro typ prostředku použijte:
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
@@ -165,9 +169,9 @@ Který vrátí:
 2015-07-01
 ```
 
-Resource Manager je podporováno ve všech oblastech, ale nemusí být podporován prostředky, které nasadíte ve všech oblastech. Kromě toho může být omezení v rámci předplatného, které brání použití některých oblastí, které podporují prostředku.
+Správce prostředků se podporují ve všech oblastech, ale prostředky, které nasadíte, nemusí být podporované ve všech oblastech. Kromě toho můžou mít vaše předplatné omezení, které vám brání v používání některých oblastí, které podporují daný prostředek.
 
-Podporovaná umístění pro typ prostředku, použijte.
+Chcete-li získat podporovaná umístění pro typ prostředku, použijte.
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
@@ -191,7 +195,7 @@ Pokud chcete zobrazit všechny poskytovatele prostředků v Azure a stav registr
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-Který vrátí výsledky podobné:
+Což vrátí výsledek podobný tomuto:
 
 ```azurecli
 Provider                         Status
@@ -203,23 +207,23 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Registrace poskytovatele prostředků nakonfiguruje vaše předplatné pro práci s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení jsou automaticky registrované řada poskytovatelů prostředků. Ale budete muset ručně zaregistrovat někteří poskytovatelé prostředků. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění provést `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník.
+Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Obor pro registraci je vždy předplatné. Ve výchozím nastavení je řada poskytovatelů prostředků zaregistrována automaticky. Je ale možné, že budete muset některé poskytovatele prostředků zaregistrovat ručně. Chcete-li zaregistrovat poskytovatele prostředků, musíte mít oprávnění k provedení `/register/action` operace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
-Který vrátí zprávu registrace je na přechod.
+Vrátí zprávu o tom, že probíhá registrace.
 
-Pokud stále máte typy prostředků od tohoto poskytovatele prostředků ve vašem předplatném, nelze zrušit registraci poskytovatele prostředků.
+Pokud v předplatném máte typy prostředků od tohoto poskytovatele prostředků, nemůžete zrušit registraci poskytovatele prostředků.
 
-Pokud chcete zobrazit informace pro určitý prostředek zprostředkovatele, použijte:
+Pokud chcete zobrazit informace o konkrétním poskytovateli prostředků, použijte:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch
 ```
 
-Který vrátí výsledky podobné:
+Což vrátí výsledek podobný tomuto:
 
 ```azurecli
 {
@@ -249,9 +253,9 @@ locations
 locations/quotas
 ```
 
-Rozhraní API verze odpovídá verzi operace REST API, které jsou vydány přes poskytovatele prostředků. Jako poskytovatel prostředků umožňuje nové funkce, vydání nové verze rozhraní REST API.
+Verze rozhraní API odpovídá verzi REST API operací, které jsou vydány poskytovatelem prostředků. V případě, že poskytovatel prostředků poskytuje nové funkce, uvolňuje novou verzi REST API.
 
-Pokud chcete získat k dispozici verze rozhraní API pro typ prostředku, použijte:
+K získání dostupných verzí rozhraní API pro typ prostředku použijte:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
@@ -269,9 +273,9 @@ Result
 2015-07-01
 ```
 
-Resource Manager je podporováno ve všech oblastech, ale nemusí být podporován prostředky, které nasadíte ve všech oblastech. Kromě toho může být omezení v rámci předplatného, které brání použití některých oblastí, které podporují prostředku.
+Správce prostředků se podporují ve všech oblastech, ale prostředky, které nasadíte, nemusí být podporované ve všech oblastech. Kromě toho můžou mít vaše předplatné omezení, které vám brání v používání některých oblastí, které podporují daný prostředek.
 
-Podporovaná umístění pro typ prostředku, použijte.
+Chcete-li získat podporovaná umístění pro typ prostředku, použijte.
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
@@ -291,7 +295,7 @@ West US
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o vytváření šablon Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md). 
-* Schémata šablon zprostředkovatele prostředků najdete v tématu [referenčními informacemi k šablonám](/azure/templates/).
-* Seznam, který se mapuje zprostředkovatelé prostředků služeb Azure najdete v tématu [zprostředkovatelé prostředků služeb Azure](azure-services-resource-providers.md).
-* Operace pro poskytovatele prostředků najdete v tématu [rozhraní Azure REST API](/rest/api/).
+* Další informace o vytváření šablon Správce prostředků najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md). 
+* Chcete-li zobrazit schémata šablon poskytovatele prostředků, přečtěte si téma [reference šablony](/azure/templates/).
+* Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v tématu [poskytovatelé prostředků pro služby Azure](azure-services-resource-providers.md).
+* Pokud chcete zobrazit operace pro poskytovatele prostředků, přečtěte si článek [Azure REST API](/rest/api/).

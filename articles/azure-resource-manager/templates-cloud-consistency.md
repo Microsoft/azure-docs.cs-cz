@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388092"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164773"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 
@@ -47,7 +47,7 @@ Zbývající část tato příručka popisuje oblasti, které je třeba zvážit
 * Ujistěte se, že parametry šablony, které používáte fungovat v cloudech cílové.
 * Ověřte, že jsou k dispozici vlastnosti specifické podle prostředků cílového cloudy.
 
-Úvod do šablon Azure Resource Manageru, najdete v článku [nasazení šablony](resource-group-overview.md#template-deployment).
+Úvod do šablon Azure Resource Manageru, najdete v článku [nasazení šablony](template-deployment-overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Ujistěte se, že šablony funkce
 
@@ -61,7 +61,7 @@ Možnosti služby Azure Resource Manageru vždy představíme na global Azure ne
 
 1. Jakmile máte místní klon úložiště, připojte se do cílového počítače Azure Resource Manageru pomocí Powershellu.
 
-1. Importujte modul psm1 a spusťte rutinu Test-AzureRmureRmTemplateFunctions:
+1. Importujte modul psm1 a spusťte rutinu test-AzureRmureRmTemplateFunctions:
 
    ```powershell
    # Import the module
@@ -154,7 +154,7 @@ V šabloně, odkazy jsou generovány kombinací základního identifikátoru URI
 
 Pomocí tohoto přístupu, výchozí hodnota `_artifactsLocation` parametr se používá. Pokud potřebujete propojenými šablonami se má načíst z jiného umístění, vstupní parametr je možné přepsat výchozí hodnotu v době nasazení, není nutná žádná změna k samotné šablony.
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation nahrazujícím hardcoding odkazy
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation nahrazujícím hardcoding odkazy
 
 Kromě se používají pro vnořené šablony, adresy URL v `_artifactsLocation` parametr se používá jako základ pro všechna související artefakty šablonu nasazení. Některá rozšíření virtuálního počítače zahrnout odkaz na skript uložené mimo šablonu. Pro tato rozšíření by měl pevně odkazy. Rozšíření vlastních skriptů a prostředí PowerShell DSC může například odkazu na externí skript na Githubu, jak je znázorněno: 
 
@@ -211,7 +211,7 @@ K sestavení kompletních absolutní identifikátor URI artefaktu, je použití 
 }
 ```
 
-S tímto přístupem všechny artefakty nasazení, včetně konfigurace, skripty, mohou být uloženy ve stejném umístění se samotné šablony. Chcete-li změnit umístění všechny odkazy, stačí zadat jinou základní adresu URL pro _artifactsLocation parametry_.
+S tímto přístupem všechny artefakty nasazení, včetně konfigurace, skripty, mohou být uloženy ve stejném umístění se samotné šablony. Chcete-li změnit umístění všech odkazů, stačí zadat jinou základní adresu URL pro _parametry artifactsLocation_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Zvážit lišící se místní funkce
 

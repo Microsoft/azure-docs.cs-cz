@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125031"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162385"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -172,6 +172,8 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převod uživatelů z ověřování MFA na uživatele na vícefaktorové ověřování na základě podmíněného přístupu
 
 Pokud byly vaši uživatelé povoleni pomocí povolení a prosazování služby Azure Multi-Factor Authentication, může vám následující PowerShell pomoct při převodu na Multi-Factor Authentication Azure založené na podmíněném přístupu.
+
+Spusťte tento PowerShell v okně ISE nebo ho uložte jako. Soubor PS1, který se má spustit místně
 
 ```PowerShell
 # Disable MFA for all users, keeping their MFA methods intact
@@ -375,7 +377,7 @@ Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Port
 
 Řešení běžných problémů s Azure MFA najdete v [článku řešení potíží s azure Multi-Factor Authentication](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) na centra podpora Microsoftu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Co jsou metody ověřování?](concept-authentication-methods.md)
 * [Povolit sblíženou registraci pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla služby Azure AD](concept-registration-mfa-sspr-converged.md)

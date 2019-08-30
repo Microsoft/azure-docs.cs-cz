@@ -1,91 +1,91 @@
 ---
-title: Azure digitální dvojče běžné vzory dotazů | Dokumentace Microsoftu
-description: Další běžné vzory dotazů na rozhraní API pro správu Azure digitální dvojče.
+title: Běžné vzory dotazů v Azure – digitální vlákna | Microsoft Docs
+description: Seznamte se s běžnými způsoby dotazování rozhraní API pro správu digitálních vláken Azure.
 author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/29/2019
 ms.author: v-adgera
-ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722850"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172797"
 ---
-# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak provádět dotazy digitální dvojče API služby Azure pro běžné úlohy
+# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Dotazování rozhraní API digitálních vláken Azure na běžné úlohy
 
-Tento článek popisuje vzory dotazů vám pomůže při realizaci běžné scénáře pro vaši instanci digitální dvojče Azure. To předpokládá, že je již spuštěna instance digitální dvojče. Můžete použít libovolného klienta REST, jako je Postman. 
+V tomto článku se dozvíte o vzorech dotazů, které vám pomůžou při provádění běžných scénářů pro instanci digitálních vláken Azure. Předpokládá se, že instance digitálního vlákna je už spuštěná. Můžete použít libovolného klienta REST, jako je například post. 
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
 
 ## <a name="queries-for-spaces-and-types"></a>Dotazy na mezery a typy
 
-Tato část ukazuje ukázkové dotazy, chcete-li získat další informace o zřízené mezery. Proveďte ověřené žádosti GET HTTP s ukázkové dotazy, zástupné texty nahraďte hodnotami z vašeho nastavení. 
+V této části najdete Ukázkové dotazy, které vám pomohou získat další informace o zřízených prostorech. Pomocí ukázkových dotazů pořiďte ověřené požadavky GET HTTP a zástupné symboly nahraďte hodnotami z vašeho nastavení. 
 
-- Získejte prostory, které jsou kořenové uzly.
+- Získejte prostory, které jsou kořenovými uzly.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
     ```
 
-- Načíst místo podle názvu a obsahovat zařízení, senzorů, vypočítané hodnoty a hodnoty čidel. 
+- Získejte prostor podle názvu a uveďte zařízení, senzory, vypočítané hodnoty a hodnoty snímačů. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Získat prostorů a jejich zařízení a senzorů, jejichž nadřazený prvek je na dané místo ID a které jsou na úrovni přibližně 2 až 5 [vzhledem k dané místo](how-to-navigate-apis.md#api-navigation). 
+- Získat mezery a jejich informace o zařízení/senzoru, jejichž nadřazeným objektem je dané ID prostoru a které jsou na úrovni dvě až pět [vzhledem k danému místu](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
     ```
 
-- Získání místa s daným ID a zahrnují vypočítané hodnoty snímačů a.
+- Získejte místo se zadaným ID a zahrňte hodnoty vypočtené a snímače.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?ids=YOUR_SPACE_ID&includes=Values,sensors,SensorsValues
     ```
 
-- Získáte klíče vlastnosti pro určité místo.
+- Získá klíče vlastností pro určitý prostor.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Získejte klíč vlastnosti s názvem prostory *AreaInSqMeters* a její hodnota je 30. Můžete také řetězec operace, například get prostory obsahující klíč vlastnosti s `name = X contains Y`.
+- Získá mezery s klíčem vlastnosti s názvem *AreaInSqMeters* a jeho hodnota je 30. Můžete také provádět operace s `name = X contains Y`řetězci, například získat mezery obsahující klíč vlastnosti.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
     ```
 
-- Získat všechny názvy s názvem *teploty* a přidružené závislosti a ontologie.
+- Získejte všechny názvy s *teplotou* názvu a přidruženými závislostmi a ontologie.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/types?names=Temperature&includes=space,ontologies,description,fullpath
     ```
 
 
-## <a name="queries-for-roles-and-role-assignments"></a>Dotazy pro role a přiřazení rolí
+## <a name="queries-for-roles-and-role-assignments"></a>Dotazy na role a přiřazení rolí
 
-Tato část uvádí některé dotazy, chcete-li získat další informace o rolích a jejich přiřazení. 
+V této části jsou uvedeny některé dotazy, které vám pomohou získat další informace o rolích a jejich přiřazeních. 
 
-- Získáte všechny role, které podporuje Azure digitální dvojče.
+- Získejte všechny role podporované pomocí digitálních vláken Azure.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
-- Získáte všechna přiřazení rolí v digitální dvojče instanci. 
+- Získejte všechna přiřazení rolí v instanci digitálního vlákna. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=down
     ```
 
-- Získáte přiřazení rolí na konkrétní cesty.
+- Získá přiřazení rolí na konkrétní cestě.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
@@ -93,125 +93,125 @@ Tato část uvádí některé dotazy, chcete-li získat další informace o rol�
 
 ## <a name="queries-for-devices"></a>Dotazy na zařízení
 
-Tato část uvádí některé příklady použití rozhraní API pro správu k získání konkrétních informací o vašich zařízeních. Všechna volání rozhraní API musí být ověřené žádosti GET HTTP.
+V této části se dozvíte několik příkladů, jak můžete pomocí rozhraní API pro správu získat konkrétní informace o svých zařízeních. Všechna volání rozhraní API musí být ověřena získat požadavky HTTP.
 
-- Získáte všechna zařízení.
+- Získat všechna zařízení.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices
     ```
 
-- Najdete všechny stavy zařízení.
+- Vyhledá všechny stavy zařízení.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/devices/statuses
     ```
 
-- Získání konkrétní zařízení.
+- Získat konkrétní zařízení.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID
     ```
 
-- Získáte všechna zařízení připojená k kořenové místa.
+- Získejte všechna zařízení připojená k kořenovému prostoru.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?maxLevel=1
     ```
 
-- Získáte všechna zařízení připojená k mezery na úrovni 2 až 4.
+- Získejte všechna zařízení připojená k prostorům na úrovních 2 až 4.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4
     ```
 
-- Získat všechna zařízení připojená přímo na konkrétní místo ID.
+- Získejte všechna zařízení přímo připojená k určitému ID prostoru.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID
     ```
 
-- Získáte všechna zařízení připojená k určité místo a jejích potomků.
+- Získejte všechna zařízení připojená k určitému prostoru a jeho následníkům.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down
     ```
 
-- Získáte všechna zařízení připojená k následníky mezeru, s výjimkou toto místo.
+- Získejte všechna zařízení připojená k následníkům prostoru s výjimkou tohoto místa.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true
     ```
 
-- Získáte všechna zařízení připojená k přímé podřízené objekty prostoru.
+- Získejte všechna zařízení připojená k přímým dětem místa.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true
     ```
 
-- Získáte všechna zařízení připojená k jednomu z nadřazených mezerou.
+- Získejte všechna zařízení připojená k jednomu z nadřazených míst v prostoru.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Up&maxLevel=-1&maxRelative=true
     ```
 
-- Získáte všechna zařízení připojená k následníky místo, které jsou menší než nebo roven hodnotě 5 úrovně.
+- Získejte všechna zařízení připojená k následníkům prostoru, který je menší nebo roven 5.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- Získat všechna zařízení připojená k prostory, které jsou na stejné úrovni jako prostor s ID *YOUR_SPACE_ID*.
+- Získejte všechna zařízení připojená k mezerám, které jsou na stejné úrovni jako místo s ID *YOUR_SPACE_ID*.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Získání připojovacího řetězce zařízení služby IoT Hub pro vaše zařízení.
+- Získejte připojovací řetězec IoT Hub zařízení pro vaše zařízení.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString
     ```
 
-- Získejte ID daného hardwaru, včetně připojených senzorů zařízení.
+- Získá zařízení s daným ID hardwaru, včetně připojených senzorů.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=sensors
     ```
 
-- Získání senzorů pro konkrétní datové typy v tomto případě *pohybu* a *teploty*.
+- Získejte senzory pro konkrétní datové typy, v tomto případě *pohyb* a *teplota*.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/sensors?dataTypes=Motion,Temperature
     ```
 
-## <a name="queries-for-matchers-and-user-defined-functions"></a>Dotazy na procesy pro hledání shody a uživatelem definovaných funkcí 
+## <a name="queries-for-matchers-and-user-defined-functions"></a>Dotazy na shody a uživatelsky definované funkce 
 
-- Získáte všechny zřízené procesy pro hledání shody a jejich ID.
+- Získá všechny zřízené shody a jejich ID.
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers
     ```
 
-- Získáte podrobnosti o konkrétní předávaný, včetně mezer a uživatelem definované funkce, které s ním spojená.
+- Získat podrobnosti o konkrétním shodě, včetně mezer a uživatelsky definované funkce, která je k ní přidružená.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID?includes=description, conditions, fullpath, userdefinedfunctions, space
     ```
 
-- Vyhodnocení předávaný proti senzoru a povolení protokolování pro účely ladění. Určuje, zda předávaný a senzor patří na datový typ říká vrátit tuto zprávu HTTP GET. 
+- Vyhodnotit shodu se senzorem a povolit protokolování pro účely ladění. Vrátí tuto zprávu HTTP GET s informacemi o tom, zda se ke stejnému datovému typu shoduje i senzor. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID/evaluate/YOUR_SENSOR_ID?enableLogging=true
     ```
 
-- Získejte ID uživatelem definované funkce. 
+- Získá ID uživatelsky definovaných funkcí. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions
     ```
 
-- Získat obsah konkrétním uživatelem definované funkce 
+- Získá obsah konkrétní uživatelsky definované funkce. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions/YOUR_USER_DEFINED_FUNCTION_ID/contents
@@ -220,15 +220,15 @@ Tato část uvádí některé příklady použití rozhraní API pro správu k z
 
 ## <a name="queries-for-users"></a>Dotazy pro uživatele
 
-Tato část ukazuje několik ukázkových dotazů rozhraní API pro správu uživatelů v digitální dvojče Azure. Ujistěte se, požadavek HTTP GET zástupné texty nahraďte hodnotami z vašeho nastavení. 
+V této části najdete několik ukázkových dotazů k rozhraní API pro správu uživatelů v digitálních Vlákenách Azure. Udělejte požadavek HTTP GET, který nahradí zástupné hodnoty hodnotami z vašeho nastavení. 
 
-- Získáte všechny uživatele. 
+- Získá všechny uživatele. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users
     ```
 
-- Získání konkrétního uživatele.
+- Získá konkrétního uživatele.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
@@ -236,6 +236,6 @@ Tato část ukazuje několik ukázkových dotazů rozhraní API pro správu uži
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak ověřování pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
+Pokud se chcete dozvědět, jak ověřit pomocí rozhraní API pro správu, přečtěte si [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
 
-Další informace o vašich koncových bodů rozhraní API, [použití digitální dvojče Swagger](./how-to-use-swagger.md).
+Pokud chcete získat další informace o vašich koncových bodech rozhraní API, přečtěte si, [Jak používat digitální vlákna Swagger](./how-to-use-swagger.md).

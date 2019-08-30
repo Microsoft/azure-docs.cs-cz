@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967902"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061936"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a datový sklad
 
 Transparentní šifrování dat (TDE) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure Data Warehouse před hrozbou neoprávněné offline aktivity šifrováním dat v klidovém stavu. Provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v reálném čase bez nutnosti změny aplikace. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze SQL Azure. TDE nelze použít k šifrování logické **Hlavní** databáze v SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
 
-TDE se musí ručně povolit pro spravovanou instanci Azure SQL, starší databáze Azure SQL Database nebo Azure SQL Data Warehouse.  
+TDE se musí ručně povolit pro starší databáze Azure SQL Database, Azure SQL Managed instance nebo Azure SQL Data Warehouse.
+Databáze spravované instance vytvořené prostřednictvím obnovení dědí stav šifrování ze zdrojové databáze.
 
 Transparentní šifrování dat šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze. Tento šifrovací klíč databáze je chráněn transparentní ochranou šifrování dat. Ochrana je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v Azure Key Vault (Bring Your Own Key). Ochranu transparentního šifrování dat nastavíte na úrovni serveru pro Azure SQL Database a datový sklad a na úrovni instance pro spravovanou instanci Azure SQL. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
@@ -139,7 +140,7 @@ Pro Azure SQL Database a datový sklad použijte následující sadu příkazů:
 |[Získat konfiguraci transparentní šifrování dat](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Získá transparentní konfiguraci šifrování dat pro databázi.|
 |[Zobrazit seznam výsledků konfigurace transparentní šifrování dat](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Získá výsledek šifrování pro databázi.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Obecný popis transparentního šifrování dat najdete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Další informace o transparentním šifrování dat s podporou Bring Your Own Key Azure SQL Database, spravované instance Azure SQL a datového skladu najdete v tématu [transparentní šifrování dat s podporou Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).

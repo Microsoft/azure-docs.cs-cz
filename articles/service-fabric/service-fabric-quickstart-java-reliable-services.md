@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019
-ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 39bb5191ff0c757fc672d18b4e8e406f91df0509
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977108"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173229"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Reliable Services v jazyce Java pro Service Fabric
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Rychlý start:  Nasazení aplikace Java do Azure Service Fabric v systému Linux
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů.
 
@@ -105,7 +105,7 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
 Touto jednoduchou úlohou správy jste zdvojnásobili prostředky, které má front-end služba k dispozici pro zpracování uživatelské zátěže. Je důležité si uvědomit, že pro spolehlivý provoz služby nepotřebujete více jejích instancí. Pokud služba selže, Service Fabric zajistí v clusteru spuštění nové instance služby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili:
 

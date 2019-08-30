@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1950e55cf669ea7502e8523d7f8fe429c2caeb49
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ca5830a3d02e4127f65e580ade7727ae92cd5c15
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903904"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166688"
 ---
 Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat. Nestrukturovaná data jsou data, která nevyhovují konkrétnímu datovému modelu nebo definici, jako jsou textová nebo binární data.
 
@@ -28,7 +28,7 @@ Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úlo
 * Ukládání dat pro zálohování a obnovování, zotavení po havárii a pro archivaci
 * Ukládání dat, které bude analyzovat místní nebo v Azure hostovaná služba
 
-Uživatelé nebo klientské aplikace mají přístup k objektům v úložišti objektů BLOB přes HTTP/HTTPS odkudkoli na světě. Objekty v úložišti objektů BLOB jsou přístupné prostřednictvím [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage)nebo Azure Storage klientské knihovny. Klientské knihovny jsou dostupné pro celou řadu jazyků, včetně [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node. js](https://azure.github.io/azure-storage-node), [Pythonu](https://docs.microsoft.com/python/azure/), [přechodu](https://github.com/azure/azure-storage-blob-go/), [php](https://azure.github.io/azure-storage-php/)a [Ruby](https://azure.github.io/azure-storage-ruby).
+Uživatelé nebo klientské aplikace mají přístup k objektům v úložišti objektů BLOB přes HTTP/HTTPS odkudkoli na světě. Objekty v úložišti objektů BLOB jsou přístupné prostřednictvím [Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage)nebo Azure Storage klientské knihovny. Klientské knihovny jsou dostupné pro celou řadu jazyků, včetně [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage), [Node. js](https://azure.github.io/azure-storage-node), [Pythonu](/azure/python/), [přechodu](https://github.com/azure/azure-storage-blob-go/), [php](https://azure.github.io/azure-storage-php/)a [Ruby](https://azure.github.io/azure-storage-ruby).
 
 ## <a name="about-azure-data-lake-storage-gen2"></a>O Azure Data Lake Storage Gen2
 

@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385590"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164647"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Vytvoření, úprava nebo rozšiřování JSON pro definice aplikací logiky v Azure Logic Apps
 
-Při vytváření podnikových řešení pro integraci s automatizovanými pracovními postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)používají definice aplikace logiky jednoduché a deklarativní JavaScript Object Notation (JSON) spolu s [jazykem pro definici pracovního postupu (WDL). schéma](../logic-apps/logic-apps-workflow-definition-language.md) pro popis a ověření. Tyto formáty usnadňují čtení definic aplikace logiky a jejich pochopení bez znalosti kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete do [šablon Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment)zahrnout definice aplikace logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) . Pokud chcete vytvářet, spravovat a nasazovat Logic Apps, můžete použít [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)nebo [rozhraní API služby Azure Logic Apps REST](https://docs.microsoft.com/rest/api/logic/).
+Při vytváření podnikových řešení pro integraci s automatizovanými pracovními postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md)používají definice aplikace logiky jednoduché a deklarativní JavaScript Object Notation (JSON) spolu s [jazykem pro definici pracovního postupu (WDL). schéma](../logic-apps/logic-apps-workflow-definition-language.md) pro popis a ověření. Tyto formáty usnadňují čtení definic aplikace logiky a jejich pochopení bez znalosti kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete do [šablon Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md)zahrnout definice aplikace logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) . Pokud chcete vytvářet, spravovat a nasazovat Logic Apps, můžete použít [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)nebo [rozhraní API služby Azure Logic Apps REST](https://docs.microsoft.com/rest/api/logic/).
 
 Chcete-li pracovat s definicemi aplikace logiky ve formátu JSON, otevřete editor zobrazení kódu při práci v Azure Portal nebo v aplikaci Visual Studio nebo zkopírujte definici do libovolného editoru, který chcete. Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -45,7 +45,7 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly vytvoř
 
 1. Otevřete řešení sady Visual Studio nebo projekt [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) , který obsahuje vaši aplikaci logiky.
 
-2. Najděte a otevřete definici aplikace logiky, která se ve výchozím nastavení zobrazuje v [šabloně správce prostředků](../azure-resource-manager/resource-group-overview.md#template-deployment)s názvem **LogicApp. JSON**. Tuto šablonu můžete použít a přizpůsobit pro nasazení v různých prostředích.
+2. Najděte a otevřete definici aplikace logiky, která se ve výchozím nastavení zobrazuje v [šabloně správce prostředků](../azure-resource-manager/template-deployment-overview.md)s názvem **LogicApp. JSON**. Tuto šablonu můžete použít a přizpůsobit pro nasazení v různých prostředích.
 
 3. Otevřete místní nabídku pro definici a šablonu aplikace logiky. Vyberte **Otevřít pomocí Návrháře aplikace logiky**.
 
@@ -64,7 +64,7 @@ V aplikaci Visual Studio můžete otevřít aplikace logiky, které byly vytvoř
 
 Životní cyklus nasazení má obvykle různá prostředí pro vývoj, testování, přípravu a produkci. Pokud máte hodnoty, které chcete znovu použít v rámci aplikace logiky bez zakódujeme nebo které se liší v závislosti na potřebách nasazení, můžete vytvořit [šablonu Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) pro definici pracovního postupu, abyste mohli také automatizovat aplikaci logiky. prostředí. 
 
-Pomocí těchto obecných *kroků můžete místo*toho definovat a používat parametry pro, tyto hodnoty. Hodnoty pak můžete zadat do samostatného souboru parametrů, který tyto hodnoty předá vaší šabloně. Tímto způsobem můžete tyto hodnoty snadněji změnit, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Úplné podrobnosti najdete v tématu [přehled: Automatizujte nasazení Logic Apps pomocí šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
+Pomocí těchto obecných kroků můžetemísto toho definovat a používat parametry pro, tyto hodnoty. Hodnoty pak můžete zadat do samostatného souboru parametrů, který tyto hodnoty předá vaší šabloně. Tímto způsobem můžete tyto hodnoty snadněji změnit, aniž byste museli aktualizovat a znovu nasazovat aplikaci logiky. Úplné podrobnosti najdete v tématu [přehled: Automatizujte nasazení Logic Apps pomocí šablon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Azure Resource Manager.
 
 1. V šabloně definujte parametry šablony a parametry definice pracovního postupu pro přijetí hodnot, které se mají použít při nasazení a modulu runtime v uvedeném pořadí.
 
@@ -283,7 +283,7 @@ Chcete-li formátovat data, můžete použít formátovací moduly řetězců. N
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Spuštění kroků na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Spuštění kroků na základě různých hodnot (příkazy Switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)

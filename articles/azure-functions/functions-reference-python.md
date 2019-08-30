@@ -13,30 +13,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615888"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170535"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
-Tento článek představuje úvod k vývoji Azure Functions s využitím Pythonu. Níže uvedený obsah předpokládá, že už jste si přečetli příručku pro [vývojáře Azure Functions](functions-reference.md).
+Tento článek představuje úvod k vývoji Azure Functions s využitím Pythonu. Níže uvedený obsah předpokládá, že už jste si přečetli příručku pro [vývojáře Azure Functions](functions-reference.md). 
+
+Ukázkové projekty samostatné funkce v Pythonu najdete v [ukázkách funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python). 
 
 ## <a name="programming-model"></a>Programovací model
 
-Funkce Azure by měla být Bezstavová metoda ve skriptu Pythonu, která zpracovává vstup a vytváří výstup. Ve výchozím nastavení očekává modul runtime metodu, která má být implementována jako globální metoda `main()` volána `__init__.py` v souboru.
-
-Výchozí konfiguraci můžete změnit zadáním `scriptFile` vlastností a `entryPoint` v souboru *Function. JSON* . Například _funkce Function. JSON_ níže oznamuje modulu runtime použití `customentry()` metody v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
+Azure Functions očekává ve skriptu Pythonu funkci, která bude mít nestavovou metodu, která zpracuje vstup a vytvoří výstup. Ve výchozím nastavení očekává modul runtime metodu, která má být implementována jako globální metoda `main()` volána `__init__.py` v souboru. Můžete také [zadat alternativní vstupní bod](#alternate-entry-point).
 
 Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody `name` pomocí vlastnosti definované v souboru *Function. JSON* . Například _funkce. JSON_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req`:
 
@@ -66,7 +58,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-Případně pro využití funkcí IntelliSense a automatického dokončování, které poskytuje editor kódu, můžete také deklarovat typy atributů a návratový typ ve funkci pomocí anotace typu Python. 
+typy atributů a návratový typ lze také explicitně deklarovat pomocí anotací typu Python. To vám pomůže používat funkce IntelliSense a automatického dokončování poskytované mnoha editory kódu Python.
 
 ```python
 import azure.functions
@@ -79,9 +71,23 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python) pro svázání vstupu a výstupů s vašimi metodami.
 
+## <a name="alternate-entry-point"></a>Alternativní vstupní bod
+
+Výchozí chování funkce můžete změnit volitelně určením `scriptFile` vlastností a `entryPoint` v souboru *Function. JSON* . Například _funkce Function. JSON_ níže oznamuje modulu runtime použití `customentry()` metody v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
+
 ## <a name="folder-structure"></a>Struktura složek
 
-Struktura složek pro projekt Python Functions vypadá následovně:
+Struktura složek pro projekt Python Functions vypadá jako v následujícím příkladu:
 
 ```
  FunctionApp
@@ -227,12 +233,48 @@ K dispozici jsou další metody protokolování, které umožňují zapisovat do
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| protokolu. **kritická (_zpráva_)**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
-| protokolu. **Chyba (_zpráva_)**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
-| protokolu. **upozornění (_zpráva_)**    | Zapíše zprávu s UPOZORNĚNÍm na úrovni kořenového protokolovacího nástroje.  |
-| protokolu. **informace (_zpráva_)**    | Zapíše zprávu s informacemi o úrovni kořenového protokolovacího nástroje.  |
-| protokolu. **ladit (_zpráva_)** | Zapíše zprávu s LADĚNÍm úrovně na kořenovém protokolovacím nástroji.  |
+| **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
+| **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
+| **`warning(_message_)`**    | Zapíše zprávu s UPOZORNĚNÍm na úrovni kořenového protokolovacího nástroje.  |
+| **`info(_message_)`**    | Zapíše zprávu s informacemi o úrovni kořenového protokolovacího nástroje.  |
+| **`debug(_message_)`** | Zapíše zprávu s LADĚNÍm úrovně na kořenovém protokolovacím nástroji.  |
 
+Další informace o protokolování najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+
+## <a name="http-trigger-and-bindings"></a>Aktivační procedura HTTP a vazby
+
+Aktivační událost HTTP je definována v souboru Function. Jan. `name` Vazba musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název `req` vazby. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
+
+Z objektu [HttpRequest] můžete získat hlavičky žádosti, parametry dotazu, parametry směrování a tělo zprávy. 
+
+Následující příklad pochází ze [šablony triggeru http pro Python](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python). 
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
+```
+
+V této funkci se hodnota `name` parametru dotazu získá `params` z parametru objektu [HttpRequest] . Tělo zprávy s kódováním JSON je čteno pomocí `get_json` metody. 
+
+Podobně můžete nastavit `status_code` a `headers` pro zprávu odpovědi v vráceném objektu [HttpResponse] .
+                                                              
 ## <a name="async"></a>Async
 
 Doporučujeme napsat funkci Azure Function jako asynchronní korutinu pomocí `async def` příkazu.
@@ -245,7 +287,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Pokud je funkce main () synchronní (žádný `async` kvalifikátor), automaticky se spustí funkce `asyncio` ve fondu vláken.
+Pokud je funkce main () synchronní (bez kvalifikátoru), automaticky spustíme funkci ve `asyncio` fondu vláken.
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -297,6 +339,26 @@ def main(req):
     # ... use CACHED_DATA in code
 ```
 
+## <a name="environment-variables"></a>Proměnné prostředí
+
+V funkcích jsou [nastavení aplikace](functions-app-settings.md), jako jsou například připojovací řetězce služby, vystavena jako proměnné prostředí během provádění. K těmto nastavením můžete přistupovat deklarováním `import os` a následným použitím `setting = os.environ["setting-name"]`,.
+
+Následující příklad získá [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)s klíčem s názvem `myAppSetting`:
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+Pro místní vývoj se nastavení aplikace [uchovávají v souboru Local. Settings. JSON](functions-run-local.md#local-settings-file).  
+
 ## <a name="python-version-and-package-management"></a>Verze Pythonu a Správa balíčků
 
 V současné době Azure Functions podporuje jenom Python 3.6. x (oficiální distribuce CPython).
@@ -336,9 +398,9 @@ Chcete-li vytvořit místně a nakonfigurovat požadované binární soubory, [n
 func azure functionapp publish <app name> --build-native-deps
 ```
 
-Pod pokrytí budou základní nástroje používat Docker ke spuštění image [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) jako kontejneru na místním počítači. Pomocí tohoto prostředí pak sestaví a nainstaluje požadované moduly ze distribuce zdrojového kódu, než je zabalí do Azure pro konečné nasazení.
+Pod pokrytí budou základní nástroje používat Docker ke spuštění image [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.com/r/microsoft/azure-functions/) jako kontejneru na místním počítači. Pomocí tohoto prostředí pak bude sestavovat a instalovat požadované moduly ze distribuce zdrojového kódu, než je zabalí do Azure pro konečné nasazení.
 
-K sestavování závislostí a publikování pomocí systému pro průběžné doručování (CD) [použijte kanály Azure DevOps](functions-how-to-azure-devops.md). 
+K sestavování závislostí a publikování pomocí systému pro průběžné doručování (CD) [použijte Azure Pipelines](functions-how-to-azure-devops.md). 
 
 ## <a name="unit-testing"></a>Testování částí
 
@@ -462,6 +524,39 @@ class TestFunction(unittest.TestCase):
 
 Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu [problémů](https://github.com/Azure/azure-functions-python-worker/issues) na GitHubu. Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém a zahrňte podrobný popis problému.
 
+### <a name="cross-origin-resource-sharing"></a>Sdílení prostředků různého původu
+
+Azure Functions podporuje sdílení prostředků mezi zdroji (CORS). CORS se konfiguruje na [portálu](functions-how-to-use-azure-function-app-settings.md#cors) a prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/functionapp/cors). Seznam povolených zdrojů CORS se vztahuje na úrovni aplikace Function App. Pokud je povolená CORS, obsahují `Access-Control-Allow-Origin` odpovědi hlavičku. Další informace naleznete v tématu [Sdílení prostředků různého původu](functions-how-to-use-azure-function-app-settings.md#cors).
+
+Seznam povolených zdrojů [není aktuálně podporován](https://github.com/Azure/azure-functions-python-worker/issues/444) pro aplikace funkcí Pythonu. Z důvodu tohoto omezení je nutné výslovně nastavit `Access-Control-Allow-Origin` hlavičku ve funkcích http, jak je znázorněno v následujícím příkladu:
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+Ujistěte se, že jste taky aktualizovali Function. JSON, aby podporoval metodu HTTP OPTIONS:
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdrojů. 
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v následujících materiálech:
@@ -473,3 +568,7 @@ Další informace naleznete v následujících materiálech:
 * [Vazby HTTP a Webhooku](functions-bindings-http-webhook.md)
 * [Vazby úložiště front](functions-bindings-storage-queue.md)
 * [Trigger časovače](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

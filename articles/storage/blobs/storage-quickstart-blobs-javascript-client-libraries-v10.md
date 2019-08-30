@@ -1,22 +1,20 @@
 ---
 title: Rychlý Start – vytvoření objektu BLOB v Azure Storage pomocí JavaScriptu a HTML v prohlížeči
-description: Zjistěte, jak pomocí instance třídy BlobService nahrávat, vypisovat a odstraňovat objekty blob s využitím JavaScriptu na stránce HTML.
+description: Naučte se nahrávat, vypisovat a odstraňovat objekty BLOB pomocí JavaScriptu na stránce HTML.
 services: storage
-keywords: storage, javascript, html
 author: KarlErickson
 ms.custom: mvc
 ms.service: storage
 ms.author: karler
-ms.reviewer: seguler
-ms.date: 05/20/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: ea5dfe2261be4512d4ba8edda1e7fbd5219a50c0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986881"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172850"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,7 +36,7 @@ Předtím, než může vaše webová aplikace získat přístup k úložišti ob
 
 Vraťte se na web Azure Portal a vyberte svůj účet úložiště. Pokud chcete definovat nové pravidlo CORS, přejděte do části **Nastavení** a klikněte na odkaz **CORS** . Pak kliknutím na tlačítko **Přidat** otevřete okno **Přidat pravidlo CORS**. Pro účely tohoto rychlého startu vytvoříte otevřené pravidlo CORS:
 
-![Nastavení CORS pro účet služby Azure Blob Storage](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
+![Nastavení CORS pro účet služby Azure Blob Storage](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
 Následující tabulka obsahuje popis jednotlivých nastavení CORS a vysvětlení hodnot použitých k definici pravidla.
 

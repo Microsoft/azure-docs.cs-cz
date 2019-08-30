@@ -1,6 +1,6 @@
 ---
-title: Analýza zabezpečení sítě v Azure Network Watcher zobrazení skupin zabezpečení – PowerShell | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí prostředí PowerShell pro analýzu zabezpečení virtuálních počítačů pomocí zobrazení skupin zabezpečení.
+title: Analýza zabezpečení sítě pomocí zobrazení skupiny zabezpečení Azure Network Watcher – PowerShell | Microsoft Docs
+description: Tento článek popisuje, jak pomocí prostředí PowerShell analyzovat zabezpečení virtuálních počítačů pomocí zobrazení skupin zabezpečení.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,55 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 389eab13193b313d8609bfa54d5e0dc42329f5ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720763"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163901"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analyzovat zabezpečení vašich virtuálních počítačů se zobrazením skupin zabezpečení pomocí Powershellu
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Zobrazení skupin zabezpečení vrátí pravidla zabezpečení sítě nakonfigurovaná a efektivní, které se použijí k virtuálnímu počítači. Tato možnost je užitečná k auditování a diagnostice skupiny zabezpečení sítě a pravidel, které jsou nakonfigurované na virtuálním počítači k zajištění provozu se správně povolený nebo zakázaný. V tomto článku ukážeme, jak načíst pravidla nakonfigurovaná a efektivní zabezpečení k virtuálnímu počítači pomocí Powershellu
+Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla zabezpečení sítě, která se používají pro virtuální počítač. Tato funkce je užitečná pro audit a diagnostiku skupin zabezpečení sítě a pravidel nakonfigurovaných na virtuálním počítači, aby se zajistilo správné povolení nebo odepření provozu. V tomto článku vám ukážeme, jak načíst nakonfigurovaná a platná pravidla zabezpečení pro virtuální počítač pomocí prostředí PowerShell.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-V tomto scénáři můžete spustit `Get-AzNetworkWatcherSecurityGroupView` rutina pro načtení informací o pravidlo zabezpečení.
+V tomto scénáři spustíte `Get-AzNetworkWatcherSecurityGroupView` rutinu, která načte informace o pravidlu zabezpečení.
 
-Tento scénář předpokládá, že už jste udělali kroky v [vytvořit Network Watcher](network-watcher-create.md) vytvořit Network Watcher.
+V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
 ## <a name="scenario"></a>Scénář
 
-Scénáře popsané v tomto článku načte pravidla nakonfigurovaná a efektivní zabezpečení pro daný virtuální počítač.
+Scénář popsaný v tomto článku načte nakonfigurovaná a platná pravidla zabezpečení pro daný virtuální počítač.
 
 ## <a name="retrieve-network-watcher"></a>Načíst Network Watcher
 
-Prvním krokem je načtení instance Network Watcheru. Tato proměnná je předána `Get-AzNetworkWatcherSecurityGroupView` rutiny.
+Prvním krokem je načtení instance Network Watcher. Tato proměnná je předána `Get-AzNetworkWatcherSecurityGroupView` rutině.
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Virtuální počítač se vyžaduje pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny proti. Následující příklad načte objekt virtuálního počítače.
+Pro spuštění `Get-AzNetworkWatcherSecurityGroupView` rutiny se vyžaduje virtuální počítač. Následující příklad načte objekt virtuálního počítače.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
-## <a name="retrieve-security-group-view"></a>Načtení zobrazení skupin zabezpečení
+## <a name="retrieve-security-group-view"></a>Načíst zobrazení skupiny zabezpečení
 
-Dalším krokem je načtení výsledný objekt zobrazení skupiny zabezpečení.
+Dalším krokem je načtení výsledku zobrazení skupiny zabezpečení.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -70,7 +69,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="viewing-the-results"></a>Zobrazení výsledků
 
-Následující příklad je zkrácený odpovědi vrácené výsledky. Ve výsledcích zobrazí všechna pravidla zabezpečení efektivní a použité na virtuálním počítači rozdělené ve skupinách **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, a  **EffectiveSecurityRules**.
+Následující příklad je zkrácená odezva vrácených výsledků. Ve výsledcích se zobrazí všechna platná a použitá pravidla zabezpečení na virtuálním počítači rozdělená do skupin **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**a **EffectiveSecurityRules**.
 
 ```
 NetworkInterfaces : [
@@ -131,6 +130,6 @@ NetworkInterfaces : [
 
 ## <a name="next-steps"></a>Další postup
 
-Navštivte [auditování skupiny zabezpečení sítě (NSG) pomocí služby Network Watcher](network-watcher-nsg-auditing-powershell.md) postup automatizace ověření skupiny zabezpečení sítě.
+Informace o tom, jak automatizovat ověřování skupin zabezpečení sítě, najdete [v tématu auditování skupin zabezpečení sítě (NSG) s Network Watcher](network-watcher-nsg-auditing-powershell.md) .
 
 

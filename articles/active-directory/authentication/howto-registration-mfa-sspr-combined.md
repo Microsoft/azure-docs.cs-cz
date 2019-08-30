@@ -1,22 +1,22 @@
 ---
 title: Začínáme s kombinovanou registrací pro Azure AD SSPR a Multi-Factor Authentication (Preview) – Azure Active Directory
-description: Povolení kombinovaného ověřování Azure AD Multi-Factor Authentication a samoobslužné registrace pro resetování hesla (Preview)
+description: Povolit kombinované Multi-Factor Authentication služby Azure AD a registraci samoobslužného resetování hesla (Preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561274"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162297"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Povolit registraci kombinovaných zabezpečení informací (Preview)
 
@@ -45,10 +45,10 @@ Pokud chcete povolit kombinovanou registraci, proveďte tyto kroky:
    ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro službu Multi-Factor Authentication a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Možnosti telefonního hovoru budou pořád dostupné uživatelům v placených klientech Azure AD.
+> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro Multi-Factor Authentication a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Možnosti telefonního hovoru budou pořád dostupné uživatelům v placených klientech Azure AD.
 
 > [!NOTE]
-> Po povolení kombinované registrace si uživatelé, kteří si zaregistrovali nebo potvrdí své telefonní číslo nebo mobilní aplikace prostřednictvím nového prostředí, můžou použít pro vícefaktorové ověřování a SSPR, pokud jsou tyto metody povolené v rámci služby Multi-Factor Authentication a SSPR konfigurovaný. Pokud pak toto prostředí zakážete, `https://aka.ms/ssprsetup` budou se uživatelé, kteří na předchozí registrační stránce SSPR, napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
+> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v Multi-Factor Authentication a SSPR. konfigurovaný. Pokud pak toto prostředí zakážete, `https://aka.ms/ssprsetup` budou se uživatelé, kteří na předchozí registrační stránce SSPR, napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
 
 Pokud jste v Internet Exploreru nakonfigurovali seznam přiřazení lokality k zóně, musí být tyto lokality ve stejné zóně:
 
@@ -87,7 +87,9 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
 1. Nastavte **Povolit zásadu** na **zapnuto** .
 1. Pak klikněte na **vytvořit** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
+[Vynutí uživatele, aby znovu zaregistrovali metody ověřování.](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
 [Dostupné metody pro Multi-Factor Authentication a SSPR](concept-authentication-methods.md)
 

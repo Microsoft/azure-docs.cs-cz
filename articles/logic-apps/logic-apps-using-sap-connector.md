@@ -8,16 +8,21 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907624"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165006"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
+
+> [!IMPORTANT]
+> Předchozí konektory serveru SAP Application Server a server zpráv SAP mají naplánované zastaralé. Aktuální konektor SAP slučuje tyto předchozí konektory SAP, takže nemusíte měnit typ připojení, je plně kompatibilní s předchozími konektory, poskytuje mnoho dalších možností a nadále používá knihovnu SAP .NET Connector ( SAP NCo).
+>
+> U Logic Apps, které používají starší konektory, [migrujte prosím na nejnovější konektor](#migrate) před datem vyřazení. V opačném případě se tyto aplikace logiky projeví při selhání spuštění a nebude možné odesílat zprávy do vašeho systému SAP.
 
 Tento článek ukazuje, jak můžete přistupovat k místním prostředkům SAP zevnitř aplikace logiky pomocí konektoru SAP. Konektor pracuje s klasickými verzemi SAP, jako jsou R/3 a systémy ECC místně. Konektor taky umožňuje integraci s novějšími systémy SAP založenými na HANA, jako je S/4 HANA, ať už jsou hostované místně nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do systémů a ze systému SAP NetWeaver prostřednictvím zprostředkujícího dokumentu (IDoc), rozhraní BAPI (Business Application Programming Interface) nebo vzdáleného volání funkce (RFC).
 
@@ -31,7 +36,7 @@ Pro tyto operace konektor SAP podporuje základní ověřování prostřednictv�
 
 Konektor SAP se integruje s místními systémy SAP prostřednictvím místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Ve scénářích odeslání se například při odeslání zprávy z aplikace logiky do systému SAP chová brána dat jako klient RFC a přepošle žádosti přijaté z aplikace logiky do SAP. Obdobně platí, že brána data Gateway funguje jako server RFC, který přijímá žádosti od SAP a přesměruje je do aplikace logiky.
 
-V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které se integrují s SAP a které pokrývají dříve popsané scénáře integrace.
+V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které se integrují s SAP a které pokrývají dříve popsané scénáře integrace. V tomto článku se pro Logic Apps, které používají starší konektory SAP, dozvíte, jak migrovat aplikace logiky na nejnovější konektor SAP.
 
 <a name="pre-reqs"></a>
 
@@ -63,11 +68,23 @@ Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
 
+<a name="migrate"></a>
+
+## <a name="migrate-to-current-connector"></a>Migrovat na aktuální konektor
+
+1. Pokud jste to ještě neudělali, aktualizujte místní [bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) tak, aby byla k dispozici nejnovější verze. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+
+1. V aplikaci logiky, která používá starší konektor SAP, odstraňte akci **Odeslat do SAP** .
+
+1. Z nejnovějšího konektoru SAP přidejte akci **Odeslat do SAP** . Než budete moct tuto akci použít, znovu vytvořte připojení k vašemu systému SAP.
+
+1. Až budete hotovi, uložte aplikaci logiky.
+
 <a name="add-trigger"></a>
 
 ## <a name="send-to-sap"></a>Odeslat do SAP
 
-V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Aplikace logiky pošle IDoc serveru SAP a vrátí odpověď žadateli, který se nazývá aplikace logiky. 
+V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomocí požadavku HTTP. Aplikace logiky pošle IDoc serveru SAP a vrátí odpověď žadateli, který se nazývá aplikace logiky.
 
 ### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
@@ -235,7 +252,7 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
    Můžete také zadat akci ručně:
 
-   ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+   ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Tady je příklad, který ukazuje, jak se akce zobrazí při nastavení triggeru pro příjem více než jedné zprávy.
 
@@ -259,13 +276,13 @@ Vaše aplikace logiky je teď připravená přijímat zprávy ze systému SAP.
 
 1. Otevřete poslední spuštění, ve kterém se zobrazí zpráva odeslaná ze systému SAP v oddílu aktivační výstupy triggeru.
 
-## <a name="receive-idocs-packets-from-sap"></a>Příjem paketů IDOCs ze SAP
+## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDOC ze SAP
 
 Můžete nastavit SAP pro posílání [IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDOC, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDOC poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDOCs.
 
-Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath): 
+Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu nastavte [aplikaci logiky pomocí triggeru SAP](#receive-from-sap). 
+1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu nastavte [aplikaci logiky pomocí triggeru SAP](#receive-from-sap).
 
    Příklad:
 
@@ -279,7 +296,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pom
 
 1. Chcete-li extrahovat jednotlivé IDOC, přidejte krok, který vytvoří proměnnou pole a uloží kolekci IDOC pomocí jiného `xpath()` výrazu:
 
-   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Získat pole položek](./media/logic-apps-using-sap-connector/get-array.png)
 
@@ -333,18 +350,18 @@ Na panelu nástrojů návrháře vyberte **Uložit**.
 
    1. Zadejte informace o připojení pro váš Server SAP. Pro vlastnost **Brána dat** vyberte bránu dat, kterou jste vytvořili v Azure Portal pro instalaci brány.
 
-      - Pokud je vlastnost **typ přihlášení** nastavená na **aplikační server**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
+      * Pokud je vlastnost **typ přihlášení** nastavená na **aplikační server**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
         ![Vytvořit připojení aplikačního serveru SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Pokud je vlastnost **typ přihlášení** nastavená na **skupiny**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
+      * Pokud je vlastnost **typ přihlášení** nastavená na **skupiny**, vyžadují se tyto vlastnosti, které se obvykle zobrazují jako volitelné:
 
         ![Vytvořit připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
       Ve výchozím nastavení se silné zadání používá ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Přečtěte si další informace o [možnosti bezpečného psaní](#safe-typing).
 
-   1. Až budete hotovi, vyberte **vytvořit**. 
-   
+   1. Až budete hotovi, vyberte **vytvořit**.
+
       Logic Apps nastaví a otestuje připojení, aby se zajistilo správné fungování připojení.
 
 1. Zadejte cestu k artefaktu, pro který chcete vytvořit schéma.
@@ -484,6 +501,30 @@ Když se odesílají zprávy s povoleným bezpečným typováním, TIMS odpově�
 <DATE>99991231</DATE>
 <TIME>235959</TIME>
 ```
+
+## <a name="advanced-scenarios"></a>Pokročilé scénáře
+
+### <a name="confirm-transaction-explicitly"></a>Potvrdit transakci explicitně
+
+Když odesíláte transakce do SAP z Logic Apps, k tomuto systému Exchange dochází ve dvou krocích, jak je popsáno v dokumentu SAP, v tématu [transakční aplikace RFC serveru](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Ve výchozím nastavení zpracuje akce **Odeslat do SAP** jak kroky pro přenos funkce, tak potvrzení transakce v jednom volání. Konektor SAP vám dává možnost oddělit tyto kroky. Můžete odeslat IDOC a místo toho, aby transakce byla automaticky potvrzena, můžete použít akci explicitní **potvrzení ID transakce** .
+
+Tato možnost oddělit potvrzení ID transakce je užitečná v případě, že nechcete provádět duplicitní transakce v SAP, například ve scénářích, kdy může dojít k selhání z důvodu příčin potíží se sítí. Potvrzením ID transakce samostatně se transakce v systému SAP pouze v jednom okamžiku dokončí.
+
+Tady je příklad, který ukazuje tento vzor:
+
+1. Vytvořte prázdnou aplikaci logiky a přidejte Trigger HTTP.
+
+1. Z konektoru SAP přidejte akci **Odeslat IDOC** . Zadejte podrobnosti pro IDOC, které jste odeslali do svého systému SAP.
+
+1. Chcete-li explicitně potvrdit ID transakce v samostatném kroku, ve vlastnosti **Potvrdit TID** vyberte možnost **ne**. U vlastnosti **ID GUID volitelné transakce** můžete buď ručně zadat hodnotu, nebo nechat konektor automaticky generovat a vrátit tento identifikátor GUID v odpovědi z akce Odeslat IDOC.
+
+   ![Odeslat vlastnosti akce IDOC](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
+
+1. Chcete-li explicitně potvrdit ID transakce, přidejte akci **Potvrdit ID transakce** . Klikněte do pole **ID transakce** , aby se zobrazil seznam dynamického obsahu. V tomto seznamu vyberte hodnotu **ID transakce** , která se vrátí z akce **Odeslat IDOC** .
+
+   ![Akce potvrzení ID transakce](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
+
+   Po spuštění tohoto kroku je aktuální transakce označena jako úplná na obou koncích na straně konektoru SAP a na straně systému SAP.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779280"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170658"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -52,8 +52,10 @@ Další informace najdete v tématu [omezení statického přístupu Azure App S
 ## <a name="private-site-access"></a>Privátní přístup k webu
 
 Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, jako je například z Azure Virtual Network. 
-* Přístup k privátní lokalitě je k dispozici v [plánu](functions-scale.md#app-service-plan) [Premium](./functions-premium-plan.md) a App Service, když jsou nakonfigurované **koncové body služby** . Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) .
-    * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
+* Přístup k privátní lokalitě je k dispozici v [plánu](functions-scale.md#app-service-plan) [Premium](./functions-premium-plan.md), [Spotřeba](functions-scale.md#consumption-plan) a App Service, když jsou nakonfigurované **koncové body služby** . 
+    * Koncové body služby je možné nakonfigurovat na základě jednotlivých aplikací v části funkce platformy > sítě > nakonfigurujte omezení přístupu > Přidat pravidlo. Virtuální sítě se teď dají vybrat jako typ pravidla.
+    * Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md) .
+        * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
 * Přístup k privátní lokalitě je také k dispozici u App Service Environment nakonfigurovaných pomocí interního nástroje pro vyrovnávání zatížení (interního nástroje). Další informace najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Integrace virtuální sítě
@@ -99,6 +101,13 @@ Integrace virtuální sítě v rámci funkcí používá sdílenou infrastruktur
 * [Požadovaná brána Integration VNet](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 Další informace o použití integrace virtuální sítě najdete v tématu [integrace aplikace Function App s virtuální sítí Azure](functions-create-vnet.md).
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
+
+> [!note] 
+> Jakmile v účtu úložiště nakonfigurujete omezení přístupu, může vám dočasně trvat až 12 hodin, než se Váš účet úložiště zpřístupní pro vaši aplikaci Function App. Během této doby bude vaše aplikace zcela v režimu offline.
+
+Aby bylo možné zajistit vyšší úroveň zabezpečení, můžete omezit účet úložiště aplikace na virtuální síť. Pak musíte lokalitu integrovat s touto virtuální sítí a získat tak přístup k vašemu účtu úložiště. Tato konfigurace je podporovaná ve všech plánech, které podporují integraci virtuálních sítí.
 
 ## <a name="virtual-network-triggers-non-http"></a>Aktivační události virtuální sítě (jiné než HTTP)
 

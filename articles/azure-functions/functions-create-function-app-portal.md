@@ -1,26 +1,23 @@
 ---
 title: Vytvoření aplikace funkcí na webu Azure Portal | Dokumentace Microsoftu
-description: Vytvořte novou aplikaci funkcí ve službě Azure App Service na portálu.
-services: functions
-documentationcenter: na
+description: Vytvořte v Azure novou aplikaci Function App z portálu.
 author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
-ms.topic: quickstart
-ms.date: 04/11/2017
+ms.topic: conceptual
+ms.date: 08/29/2019
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: eb362ec652b306a12a41e7e96dcbc86638369c17
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085894"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170786"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Vytvoření aplikace funkcí na webu Azure Portal
 
-Azure Function Apps využívá infrastrukturu služby Azure App Service. Toto téma ukazuje, jak vytvořit aplikaci funkcí na webu Azure Portal. Aplikace funkcí je kontejner, který hostuje provádění jednotlivých funkcí. Když vytvoříte aplikaci funkcí v plánu hostování služby App Service, vaše aplikace funkcí může využívat všechny funkce služby App Service.
+V tomto tématu se dozvíte, jak pomocí Azure Functions vytvořit aplikaci Function App v Azure Portal. Aplikace funkcí je kontejner, který hostuje provádění jednotlivých funkcí. 
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
@@ -34,22 +31,22 @@ Po vytvoření aplikace funkcí můžete jednotlivé funkce vytvářet v jednom 
 
 ## <a name="service-plans"></a>Plány služby
 
-Azure Functions má dva různé plány služby: Plán spotřeby a plán App Service. Plán Consumption automaticky přiděluje výpočetní výkon za běhu kódu, podle potřeby se škáluje na více instancí s ohledem na zatížení a pak se škáluje na méně instancí, když kód není spuštěný. Plán služby App Service poskytuje aplikaci funkcí přístup ke všem zařízením služby App Service. Plán služby musíte zvolit při vytváření aplikace funkcí a v současné době nejde změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
+Azure Functions má tři různé plány služby: Plán spotřeby, plán Premium a vyhrazený plán (App Service) Při vytváření aplikace Function App musíte zvolit plán služby a následně ho nelze změnit. Další informace najdete v tématu [Výběr plánu hostování služby Azure Functions](functions-scale.md).
 
-Pokud v plánu služby App Service plánujete spouštět funkce JavaScriptu, měli byste zvolit plán s méně jádry. Další informace najdete v tématu [Referenční informace k JavaScriptu pro službu Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
+Pokud plánujete spustit funkce JavaScriptu na vyhrazeném (App Service) plánu, měli byste zvolit plán s méně jádry. Další informace najdete v tématu [Referenční informace k JavaScriptu pro službu Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
 <a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Při vytváření aplikace funkcí ve službě App Service musíte vytvořit nebo propojit účet služby Azure Storage pro obecné účely, který podporuje Blob, Queue a Table Storage. Služba Functions interně používá službu Storage pro operace, jako jsou správa triggerů a protokolování provádění funkcí. Některé účty úložiště nepodporují fronty a tabulky, například účty úložiště pouze objektů blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací zónově redundantního úložiště. Tyto účty jsou při vytváření aplikace funkcí vyfiltrované z okna Účet úložiště.
+Při vytváření aplikace Function App musíte vytvořit nebo propojit s Azure Storage účet pro obecné účely, který podporuje úložiště objektů blob, front a tabulek. Služba Functions interně používá službu Storage pro operace, jako jsou správa triggerů a protokolování provádění funkcí. Některé účty úložiště nepodporují fronty a tabulky, například účty úložiště pouze objektů blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací zónově redundantního úložiště. Tyto účty jsou při vytváření aplikace funkcí vyfiltrované z okna Účet úložiště.
 
 >[!NOTE]
 >Pokud použijete plán hostování Consumption, kód vaší funkce a vázané konfigurační soubory se ukládají ve službě Azure File Storage v hlavním účtu úložiště. Když odstraníte hlavní účet úložiště, tento obsah se odstraní a není možné ho obnovit.
 
 Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 I když Azure Portal usnadňuje vytváření a vyzkoušení funkcí, doporučujeme [místní vývoj](functions-develop-local.md). Po vytvoření aplikace Function App na portálu stále potřebujete přidat funkci. 
 

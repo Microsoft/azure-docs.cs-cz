@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050011"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s WebEx schůzkami Cisco
 
@@ -78,14 +78,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **schůzky Cisco Webex** vyhledejte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
-
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
-
-1. V části **základní konfigurační oddíl SAML** nahrajte stažený soubor **metadat poskytovatele služby** a nakonfigurujte aplikaci v režimu iniciované **IDP** provedením následujících kroků:
-
-    >[!Note]
-    >Získáte soubor metadat poskytovatele služeb, který je vysvětlen později v části **Konfigurace služby Cisco Webex schůzky SSO** v tomto kurzu. 
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** můžete nakonfigurovat aplikaci v režimu iniciované **IDP** tím, že nahrajete soubor **metadat poskytovatele služby** následujícím způsobem:
 
     a. Klikněte na tlačítko **nahrát soubor metadat**.
 
@@ -93,9 +86,16 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. Po úspěšném dokončení nahrávání souboru metadat poskytovatele služby se v části **základní konfigurace SAML** automaticky naplní hodnoty **adresy URL pro odpovědi** .
 
-5. Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok:
+    >[!Note]
+    >Soubor metadat poskytovatele služeb získáte v části **Konfigurace jednotného přihlašování pro Cisco Webex schůzky** , které jsou vysvětleny dále v tomto kurzu. 
+
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , proveďte následující kroky:  
+
+    a. V části **základní konfigurace SAML** klikněte na ikonu Upravit/pero.
+
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
     
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<customername>.webex.com`
+    b. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:` https://<customername>.my.webex.com`
 
 5. Aplikace WebEx pro schůzky Cisco očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 

@@ -1,5 +1,5 @@
 ---
-title: Uživatelské stavy Azure Multi-Factor Authentication – Azure Active Directory
+title: Uživatelské stavy pro Azure Multi-Factor Authentication – Azure Active Directory
 description: Přečtěte si informace o stavech uživatelů v Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc83f59d51e1552d9d68089d0b9fa23d924f491c
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c0c941ec5010b6f9c35e81fdbcacd2093724eb21
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561288"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162357"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
-Pro Vyžadování dvoustupňového ověřování můžete použít jeden ze dvou kroků. oba vyžadují použití účtu globálního správce. První možností je povolit pro každého uživatele službu Azure Multi-Factor Authentication (MFA). Když jsou uživatelé povoleni samostatně, provádějí dvoustupňové ověřování pokaždé, když se přihlásí (s některými výjimkami, například když se přihlásí z důvěryhodných IP adres nebo když je zapnutá funkce _zapamatovaných zařízení_ ). Druhou možností je nastavit zásadu podmíněného přístupu, která za určitých podmínek vyžaduje dvoustupňové ověřování.
+Pro Vyžadování dvoustupňového ověřování můžete použít jeden ze dvou kroků. oba vyžadují použití účtu globálního správce. První možností je povolit každému uživateli Azure Multi-Factor Authentication (MFA). Když jsou uživatelé povoleni samostatně, provádějí dvoustupňové ověřování pokaždé, když se přihlásí (s některými výjimkami, například když se přihlásí z důvěryhodných IP adres nebo když je zapnutá funkce _zapamatovaných zařízení_ ). Druhou možností je nastavit zásadu podmíněného přístupu, která za určitých podmínek vyžaduje dvoustupňové ověřování.
 
 > [!TIP]
 > Doporučený postup je povolení Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu. Změna stavů uživatele se už nedoporučuje, pokud vaše licence neobsahují podmíněný přístup, protože budou vyžadovat, aby uživatelé při každém přihlášení provedli vícefaktorové ověřování.
@@ -29,13 +29,13 @@ Pro Vyžadování dvoustupňového ověřování můžete použít jeden ze dvou
 
 **Povoleno změnou stavu uživatele** – Toto je tradiční metoda pro Vyžadování dvoustupňového ověřování a je popsána v tomto článku. Funguje s Azure MFA v cloudu i v Azure MFA serveru. Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování **pokaždé, když** se přihlásí, a přepíše zásady podmíněného přístupu.
 
-Povoleno zásadami podmíněného přístupu – toto je nejpružnější způsob, jak pro uživatele povolit dvoustupňové ověřování. Povolení použití zásad podmíněného přístupu funguje jenom pro Azure MFA v cloudu a nabízí prémiovou funkci Azure AD. Další informace o této metodě najdete v [nasazení cloudového ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
+Povoleno zásadami podmíněného přístupu – toto je nejpružnější způsob, jak pro uživatele povolit dvoustupňové ověřování. Povolení použití zásad podmíněného přístupu funguje jenom pro Azure MFA v cloudu a nabízí prémiovou funkci Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](howto-mfa-getstarted.md).
 
 Povoleno pomocí Azure AD Identity Protection – tato metoda používá zásady rizik Azure AD Identity Protection k Vyžadování dvoustupňového ověřování založeného pouze na riziku přihlášení pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
-> Další informace o licencích a cenách najdete na [stránkách s cenami služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
-) a službou [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
+> Další informace o licencích a cenách najdete na [stránce s cenami Azure AD [](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) ](https://azure.microsoft.com/pricing/details/active-directory/
+) a Multi-Factor Authentication.
 
 ## <a name="enable-azure-mfa-by-changing-user-state"></a>Povolení Azure MFA změnou stavu uživatele
 
@@ -58,13 +58,13 @@ Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
 2. Přejít na **Azure Active Directory** > **Uživatelé a skupiny** > **Všichni uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
-   ![Vybrat Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+   ![Vyberte Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Otevře se nová stránka, která zobrazuje stav uživatele.
    ![stav uživatele pro službu Multi-Factor Authentication – snímek obrazovky](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>Změna stavu uživatele
 
-1. Pomocí předchozích kroků se dostanete na stránku Azure Multi-Factor Authentication pro **uživatele** .
+1. Pomocí předchozích kroků se dostanete na stránku Azure Multi-Factor Authentication **Users** .
 2. Vyhledejte uživatele, kterého chcete povolit pro Azure MFA. Možná budete muset změnit zobrazení v horní části.
    ![Na kartě Uživatelé vyberte uživatele, jehož stav chcete změnit.](./media/howto-mfa-userstates/enable1.png)
 3. Zaškrtněte políčko vedle jeho názvu.
@@ -136,7 +136,9 @@ To může být také zkráceno na:
 
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převod uživatelů z ověřování MFA na uživatele na vícefaktorové ověřování na základě podmíněného přístupu
 
-Následující PowerShell vám může pomoci při převodu na ověřování Azure Multi-Factor Authentication založené na podmíněném přístupu.
+Následující PowerShell vám může pomoci při převodu na Multi-Factor Authentication Azure založené na podmíněném přístupu.
+
+Spusťte tento PowerShell v okně ISE nebo ho uložte jako. Soubor PS1, který se má spustit místně
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -197,6 +199,6 @@ Get-MsolUser -All | Disable-MFA -KeepMethods
 
 ## <a name="next-steps"></a>Další postup
 
-* Proč se uživateli zobrazila výzva nebo nezobrazila výzva k provedení MFA? Viz část [Sestava přihlášení k Azure AD v sestavách v dokumentu Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
-* Informace o konfiguraci dalších nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v článku [Konfigurace nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md) .
+* Proč se uživateli zobrazila výzva nebo nezobrazila výzva k provedení MFA? Viz část [Sestava přihlášení k Azure AD v sestavách v dokumentu azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+* Informace o konfiguraci dalších nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v článku [Konfigurace nastavení služby Azure Multi-Factor Authentication](howto-mfa-mfasettings.md) .
 * Informace o správě uživatelských nastavení pro Azure Multi-Factor Authentication najdete v článku [Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md) .

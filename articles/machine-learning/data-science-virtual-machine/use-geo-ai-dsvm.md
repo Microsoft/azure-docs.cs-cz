@@ -16,38 +16,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: vijetaj
-ms.openlocfilehash: 9bca7089e6137b3780e3d22f50887e880be29d8e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565080"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170488"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Použití virtuálního počítače geografickou umělou inteligencí datové vědy
 
-Virtuální počítač pro geograficky AI datové vědy můžete načíst data pro analýzu, provádět tahání dat a vytvářet modely AI aplikací, které spotřebovávají geoprostorové informace. Po zřízení virtuálního počítače geograficky AI datové vědy a přihlášení ArcGIS Pro pomocí svého účtu ArcGIS, můžete začít interakci s ArcGIS plochy a ArcGis online. ArcGIS se můžete dostat taky z rozhraní Python a přemostění jazyka R předem nakonfigurované na virtuální počítač pro geograficky datové vědy. K vytváření aplikací s bohatým obsahem AI, ho spojovat se strojové učení a obsáhlý learning rozhraní a další software vědy data k dispozici na virtuální počítač pro datové vědy.  
+Virtuální počítač pro geograficky AI datové vědy můžete načíst data pro analýzu, provádět tahání dat a vytvářet modely AI aplikací, které spotřebovávají geoprostorové informace. Po zřízení geografického AI Data Science VM a přihlášení k ArcGIS pro prostřednictvím účtu ArcGIS můžete začít pracovat s ArcGIS desktopem a ArcGIs online. K ArcGIS můžete také přistupovat z rozhraní Pythonu a z mostu jazyka R, který je předem nakonfigurovaný na geografickou Data Science VM. Pokud chcete vytvářet bohaté aplikace AI, slučte geografické Data Science VM s architekturami strojového učení a hloubkového učení a dalším softwarem pro datové vědy, který je na něm k dispozici.  
 
 
 ## <a name="configuration-details"></a>Podrobnosti konfigurace
 
-Knihovna Python [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), který se používá k v prostředí conda globální kořenový virtuální počítač datové vědy, který se nachází v umístění je nainstalováno rozhraní s ArcGIS ```c:\anaconda```. 
+Knihovna Pythonu, [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), která se používá k rozhraní ArcGIS, je nainstalovaná v globálním kořenovém conda prostředí data Science VM, které najdete na adrese ```c:\anaconda```.
 
-- Pokud používáte Python v příkazovém řádku, spusťte ```activate``` aktivovat do prostředí conda kořenové Python. 
-- Pokud používáte prostředí IDE nebo aplikace Jupyter notebook, můžete vybrat prostředí nebo jádra Ujistěte se, že jste v prostředí správné conda. 
+- Pokud používáte Python na příkazovém řádku, spusťte ```activate``` příkaz k aktivaci do conda kořenového prostředí Pythonu.
+- Pokud používáte notebook IDE nebo Jupyter, můžete vybrat prostředí nebo jádro, abyste se ujistili, že jste ve správném prostředí conda.
 
-Most R ArcGIS je nainstalován jako knihovny R s názvem [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) v hlavní Microsoft R samostatnou instanci serveru nachází v ```C:\Program Files\Microsoft\ML Server\R_SERVER```. Visual Studio, RStudio a Jupyter jsou už nakonfigurovaná tak, aby použít toto prostředí R a bude mít přístup k ```arcgisbinding``` R knihovny. 
+Most R pro ArcGIS je nainstalován jako knihovna R s názvem [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) v hlavní instanci Microsoft Machine Learning Server samostatnou v umístění ```C:\Program Files\Microsoft\ML Server\R_SERVER```. Sady ```arcgisbinding``` Visual Studio, RStudio a Jupyter už jsou předem nakonfigurované tak, aby používaly toto prostředí jazyka r a budou mít přístup ke knihovně r. 
 
 
 ## <a name="geo-ai-data-science-vm-samples"></a>Virtuální počítač pro geograficky AI datové vědy ukázky
 
-Vedle ML a hloubkové učení založené na platformě ukázky ze základní virtuální počítač pro datové vědy řadu ukázek v geoprostorové také poskytuje jako součást virtuální počítač pro geograficky AI datové vědy. Tyto ukázky vám můžou pomoct vám nastartování vývoje aplikací AI s využitím geoprostorových dat a ArcGIS softwaru. 
+Kromě ukázek na základě architektury strojového učení a hloubkového učení ze základní Data Science VM se jako součást geografického AI Data Science VM poskytuje sada geoprostorovéch ukázek. Tyto ukázky vám mohou pomoci při řešení vývoje aplikací AI pomocí geoprostorových dat a ArcGIS softwaru:
 
 
-1. [Seznámení se geoprostorové analýzou pomocí Pythonu](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní ukázka ukazující, jak pracovat se Geoprostorovémi daty pomocí rozhraní Python k ArcGIS poskytovaného knihovnou [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) . Také ukazuje, jak můžete kombinovat tradiční strojového učení s geoprostorových dat a vizualizaci výsledků na mapě v ArcGIS. 
+1. [Začínáme se geoprostorové analýzou pomocí Pythonu](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní ukázka ukazující, jak pracovat se geoprostorovémi daty prostřednictvím rozhraní Pythonu do ArcGIS, je poskytována knihovnou [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) . Také ukazuje, jak kombinovat tradiční počítačové učení s geoprostorovémi daty a pak vizualizovat výsledek na mapě v ArcGIS.
 
-2. [Načítají se geoprostorové analýzy pomocí jazyka R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní vzorek, který ukazuje, jak pracovat se Geoprostorovémi daty pomocí rozhraní R k ArcGIS poskytovaného knihovnou [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) . 
+2. [Začínáme se geoprostorové analýzou R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní ukázka, která ukazuje, jak pracovat s geoprostorovémi daty pomocí rozhraní R, které je k dispozici v ArcGIS knihovně [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) . 
 
-3. [Klasifikace použití půdy na úrovni pixelů](https://github.com/Azure/pixel_level_land_classification): Kurz, který ukazuje, jak vytvořit model rozsáhlého neuronové sítě, který přijímá leteckou Image jako vstup a vrací popisek pozemkového pokrytí. Příklady pozemního titulní popisků, které jsou "forested" nebo "water". Model vrátí popisek pro každý pixel na obrázku. Model se vytvořil pomocí open source společnosti Microsoft [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) framework hloubkového učení. 
+3. [Klasifikace použití půdy na úrovni pixelů](https://github.com/Azure/pixel_level_land_classification): Kurz, který ukazuje, jak vytvořit model rozsáhlého neuronové sítě, který přijímá leteckou Image jako vstup a vrací popisek pozemkového pokrytí. Příklady štítků na úrovni pozemků jsou *doménové struktury* a *voda*. Model vrátí popisek pro každý pixel na obrázku. Model se sestavuje pomocí architektury hloubkového učení Microsoft Open-source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) .
 
 
 ## <a name="next-steps"></a>Další postup

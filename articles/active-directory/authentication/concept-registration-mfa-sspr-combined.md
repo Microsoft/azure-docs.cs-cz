@@ -1,146 +1,148 @@
 ---
-title: Kombinované registrace pro samoobslužné resetování HESLA Azure AD a Vícefaktorové ověřování (preview) – Azure Active Directory
-description: Azure Multi-Factor Authentication AD a hesla pomocí samoobslužné služby obnovit registraci (preview)
+title: Kombinovaná registrace pro Azure AD SSPR a Multi-Factor Authentication (Preview) – Azure Active Directory
+description: Služba Azure AD Multi-Factor Authentication a registrace samoobslužného resetování hesla (Preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537016"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162424"
 ---
-# <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
+# <a name="combined-security-information-registration-preview"></a>Registrace informací o kombinovaném zabezpečení (Preview)
 
-Před kombinovaná registrace uživatelé registrovaní metody ověřování pro Azure Multi-Factor Authentication a samoobslužné resetování hesla (SSPR) samostatně. Uživatelé byli zaměňovat, podobné metody byly použity pro Vícefaktorové ověřování a samoobslužné resetování HESLA, ale měli zaregistrovat pro obě funkce. Nyní s kombinovaná registrace uživatelé po registraci a získat výhody Vícefaktorové ověřování a samoobslužné resetování HESLA.
+Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
 
 ![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na správce a dokumentaci zaměřené na uživatele, ujistěte se, že rozumíte funkce a účinek této funkce. Trénování založit [dokumentaci pro uživatele](../user-help/user-help-security-info-overview.md) připravit vaši uživatelé pro nové prostředí a pomáhají zajistit úspěšné zavedení.
+Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správci a dokumentaci zaměřenou na uživatele, abyste se ujistili, že jsou funkce a účinky této funkce důležité. Založte školení na [dokumentaci pro uživatele](../user-help/user-help-security-info-overview.md) a připravte uživatele na nové prostředí a pomůžou zajistit úspěšné zavedení.
 
-Azure AD kombinovat bezpečnostním údajům, které registrace není aktuálně k dispozici do národních cloudů, jako jsou Azure US Government, Azure Germany a Azure China 21Vianet.
+Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure USA, Azure Německo nebo Azure Čína 21Vianet.
 
 |     |
 | --- |
-| Kombinované zabezpečení registrační informace pro ověřování službou Multi-Factor Authentication a resetování hesla pomocí samoobslužné služby Azure Active Directory (Azure AD) je funkce ve verzi public preview služby Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Souhrnná registrace informací o zabezpečení pro Multi-Factor Authentication a Azure Active Directory (Azure AD) Samoobslužné resetování hesla je funkce Public Preview služby Azure AD. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 > [!IMPORTANT]
-> Uživatelé, kteří jsou povoleny pro původní verzi preview a vylepšené kombinované registraci prostředí se zobrazí nové chování. Uživatelé, kteří jsou povoleny pro obě možnosti se zobrazí nové prostředí Můj profil. Nové Můj profil v souladu s vzhledu a chování kombinovaná registrace a poskytuje bezproblémové prostředí pro uživatele. Uživatelé vidí můj profil tak, že přejdete do [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+> Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou u obou funkcí povoleni, se zobrazí pouze nové prostředí s profilem. Nový můj profil se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com).
 
-Moje stránky profilu jsou lokalizovány na základě nastavení jazyka počítače přistoupit ke stránce. Společnost Microsoft ukládá nejnovější jazyk používaný v mezipaměti prohlížeče k vykreslení v poslední jazyk používaný bude pokračovat následné pokusy o přístup ke stránce. Pokud jste vymazání mezipaměti, bude znovu zpracovat na stránkách. Pokud chcete vynutit konkrétní jazyk, můžete přidat `?lng=<language>` na konec adresy URL, kde `<language>` je kód jazyka, který chcete vykreslit.
+Stránky s profilem jsou lokalizovány na základě nastavení jazyka počítače, který přistupuje k stránce. Microsoft ukládá nejnovější jazyk používaný v mezipaměti prohlížeče, takže následné pokusy o přístup ke stránkám se budou dál zobrazovat v posledním použitém jazyce. Pokud mezipaměť vymažete, stránky se znovu vykreslí. Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec adresy URL, kde `<language>` je kód jazyka, který chcete vykreslit.
 
-![Nastavení samoobslužného resetování HESLA nebo jiné metody ověření zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![Nastavení SSPR nebo jiných metod ověřování zabezpečení](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
-## <a name="methods-available-in-combined-registration"></a>Metody, které jsou k dispozici v kombinovaná registrace
+## <a name="methods-available-in-combined-registration"></a>Metody dostupné v kombinované registraci
 
-Kombinované registrace podporuje následující metody ověřování a akce:
+Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-|   | Registrace | Změnit | Odstranění |
+|   | Registrovat | Změnit | Odstranění |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
-| Jiné ověřovací aplikaci | Ano (maximálně 5) | Ne | Ano |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
-| Telefon | Ano | Ano | Ano |
-| Alternativní telefonní | Ano | Ano | Ano |
+| Phone | Ano | Ano | Ano |
+| Alternativní telefon | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
 | Email | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
 | Hesla aplikací | Ano | Ne | Ano |
 
 > [!NOTE]
-> Hesla aplikací jsou k dispozici pouze pro uživatele, kteří bylo vynuceno pro ověřování službou Multi-Factor Authentication. Hesla aplikací nejsou k dispozici pro uživatele, kteří jsou povoleny pro ověřování službou Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.
+> Hesla aplikací jsou k dispozici pouze pro uživatele, kteří byli vynutili Multi-Factor Authentication. Hesla aplikací nejsou k dispozici uživatelům, kteří jsou povoleni pro Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.
 
-Uživatelé mohou nastavit jako výchozí metodu ověřování službou Multi-Factor Authentication jednu z následujících možností:
+Uživatelé můžou jako výchozí metodu Multi-Factor Authentication nastavit jednu z následujících možností:
 
-- Microsoft Authenticator – oznámení.
-- Aplikace Authenticator nebo hardware token – kódu.
+- Microsoft Authenticator – oznámení
+- Ověřovací aplikace nebo hardwarový token – kód.
 - Telefonní hovor.
-- Textová zpráva.
+- Textová zpráva
 
-Jak Pokračujeme v do Azure AD přidat další metody ověřování, bude k dispozici v kombinované registraci těchto metod.
+Jak budeme dál přidávat do Azure AD další metody ověřování, budou tyto metody k dispozici v kombinované registraci.
 
-## <a name="combined-registration-modes"></a>Kombinovaná registrace režimy
+## <a name="combined-registration-modes"></a>Režimy kombinované registrace
 
-Existují dva režimy kombinovaná registrace: přerušení a spravovat.
+Existují dva režimy kombinované registrace: přerušení a správa.
 
-- **Režim přerušení** je jako průvodce prostředí, budou zobrazovat uživatelům při registraci nebo aktualizovat svoje bezpečnostní údaje při přihlášení.
+- **Režim přerušení** je prostředí podobné průvodci, které se uživatelům prezentuje při registraci nebo aktualizaci bezpečnostních údajů při přihlášení.
 
-- **Správa režimu** je součástí uživatelský profil a umožňuje uživatelům spravovat svoje bezpečnostní údaje.
+- **Režim správy** je součástí profilu uživatele a umožňuje uživatelům spravovat své bezpečnostní údaje.
 
-Pro oba režimy uživatelů, kteří zaregistrovali dříve metodu, která lze použít pro ověřování službou Multi-Factor Authentication muset provádět ověřování službou Multi-Factor Authentication, než bude moct svoje bezpečnostní údaje.
+V obou režimech budou uživatelé, kteří dříve zaregistrovali metodu, kterou lze použít pro Multi-Factor Authentication, vyžadovat Multi-Factor Authentication předtím, než budou mít přístup k jejich bezpečnostním údajům.
 
 ### <a name="interrupt-mode"></a>Režim přerušení
 
-Kombinovaná registrace dodržuje zásady vícefaktorového ověřování a samoobslužné resetování HESLA, pokud obě jsou povolené pro vašeho tenanta. Tyto zásady řídí, jestli je uživatel přerušena pro registraci při přihlašování a které metody jsou k dispozici pro registraci.
+Kombinovaná registrace respektuje zásady Multi-Factor Authentication a SSPR, pokud jsou obě pro vašeho tenanta povolené. Tyto zásady určují, jestli má uživatel během přihlašování přerušit registraci, a jaké metody jsou k dispozici pro registraci.
 
-Tady je několik scénářů, ve kterých mohou uživatelé vyzváni k registraci nebo aktualizovat svoje bezpečnostní údaje:
+Tady je několik scénářů, ve kterých můžou být uživatelé vyzváni, aby zaregistrovali nebo aktualizovali své bezpečnostní údaje:
 
-- Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Identity Protection: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-- Registrace ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Multi-Factor Authentication na uživatele: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-- Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím podmíněného přístupu nebo jiné zásady: Uživatelé jsou požádáni o registraci při použití prostředek, který vyžaduje Vícefaktorové ověřování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-- Vynucené registrace samoobslužného resetování HESLA: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali pouze metody samoobslužné resetování HESLA.
-- Vynutit aktualizaci samoobslužné resetování HESLA: Uživatelé musí zkontrolovat svoje bezpečnostní údaje v intervalu nastavil na správce. Uživatelům se zobrazí jejich informace o a můžete potvrdit aktuální informace o nebo provést změny v případě potřeby.
+- Multi-Factor Authentication registrace vynutila prostřednictvím Identity Protection: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- Multi-Factor Authentication registrace vynutila prostřednictvím Multi-Factor Authentication pro jednotlivé uživatele: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- Multi-Factor Authentication registrace vynutila prostřednictvím podmíněného přístupu nebo jiných zásad: Uživatelům se zobrazí výzva k registraci při použití prostředku, který vyžaduje Multi-Factor Authentication. Registrují Multi-Factor Authentication metody a metody SSPR (Pokud je uživatel povolený pro SSPR).
+- SSPR se vynutila registrace: Uživatelům se zobrazí výzva k registraci během přihlašování. Registrují pouze metody SSPR.
+- Vynutila se aktualizace SSPR: Uživatelé se musí podívat na své bezpečnostní údaje v intervalu nastaveném správcem. Uživatelům se zobrazí jejich informace a může potvrdit aktuální informace nebo provést změny v případě potřeby.
 
-Při registraci se nevynutí, uživatelům se zobrazí minimální počet metod, které jsou potřeba, aby vyhovovala zásadám Vícefaktorové ověřování a samoobslužné resetování HESLA, od těch s nejvíce alespoň zabezpečení.
+Když se registrace vynutila, zobrazí se uživatelům minimální počet metod, které musí být v souladu se zásadami Multi-Factor Authentication a SSPR, od nejvíce po nejméně bezpečnou.
 
 Příklad:
 
-- Uživatel je povolený pro samoobslužné resetování HESLA. Zásady SSPR vyžaduje dvě metody pro resetování a povolil kód mobilní aplikace, e-mail a telefon.
-   - Tento uživatel je potřeba zaregistrovat dvěma způsoby.
-      - Uživatel se ve výchozím nastavení zobrazí aplikace authenticator a telefon.
-      - Uživatele můžete zaregistrovat e-mailu místo aplikaci authenticator nebo v telefonu.
+- Uživatel je povolený pro SSPR. Zásada SSPR vyžadovala dvě metody resetování a povolení kódu mobilní aplikace, e-mailu a telefonu.
+   - Tento uživatel je nutný k registraci dvou metod.
+      - Ve výchozím nastavení se uživateli zobrazí ověřovací aplikace a telefon.
+      - Uživatel se může rozhodnout zaregistrovat e-mail místo aplikace ověřovatele nebo telefonu.
 
-Tato vývojový diagram popisuje, jaké metody se zobrazí uživateli, když k přerušení k registraci při přihlašování:
+Tento vývojový diagram popisuje, které metody se zobrazí uživateli při přerušení registrace během přihlašování:
 
-![Vývojový diagram kombinované zabezpečení informací](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Diagram kombinovaných bezpečnostních údajů](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
-Pokud máte Vícefaktorové ověřování a samoobslužné resetování HESLA povoleno, doporučujeme vám vynucovat registracích vícefaktorového ověřování.
+Pokud máte povolené Multi-Factor Authentication i SSPR, doporučujeme, abyste vynutili registraci Multi-Factor Authentication.
 
-Pokud zásad samoobslužného resetování HESLA vyžaduje, aby uživatelé zkontrolovat svoje bezpečnostní údaje v pravidelných intervalech, uživatelé jsou při přihlašování k přerušení a zobrazí jejich registrované metody. Pokud je aktuální, nebo pokud je nutné udělat změny mohou potvrdit aktuální informace.
+Pokud zásady SSPR vyžadují, aby si uživatelé zkontrolovali své bezpečnostní údaje v pravidelných intervalech, přeruší se během přihlašování a zobrazí se všechny registrované metody. V případě, že je to aktuální, můžou potvrdit aktuální informace, nebo můžou dělat změny, pokud je potřebují.
 
-### <a name="manage-mode"></a>Správa režimu
+### <a name="manage-mode"></a>Režim správy
 
-Uživatelé mají přístup ke správě režimu tak, že přejdete do [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo) nebo tak, že vyberete **bezpečnostní údaje** z Můj profil. Odtud uživatelů můžete přidat metody, odstranit nebo změnit stávající metody, změnit výchozí metodu a další.
+Uživatelé mají přístup ke správě režimu tak, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) že v něm nebo vyberou **bezpečnostní údaje** z mého profilu. Odtud mohou uživatelé přidávat metody, odstraňovat nebo měnit existující metody, měnit výchozí metodu a další.
 
-## <a name="key-usage-scenarios"></a>Scénáře použití klíče
+## <a name="key-usage-scenarios"></a>Scénáře použití klíčů
 
-### <a name="set-up-security-info-during-sign-in"></a>Nastavte informace o zabezpečení při přihlašování
+### <a name="set-up-security-info-during-sign-in"></a>Nastavení bezpečnostních údajů během přihlášení
 
-Registrace má vynucovat správcem.
+Správce vynutil registraci.
 
-Uživatel nenastavila všechny požadované bezpečnostní údaje a přejde na webu Azure portal. Po zadání uživatelského jména a hesla, bude uživatel vyzván k nastavení bezpečnostní údaje. Uživatel potom následuje kroky uvedené v průvodci k nastavení požadovaná bezpečnostní údaje. Pokud to umožňují vaše nastavení, můžete nastavit uživatele nastavit metody než ty, které zobrazí ve výchozím nastavení. Po dokončení Průvodce uživatelů kontrolovat metody, které nastavené a jejich výchozí metodu ověřování službou Multi-Factor Authentication. K dokončení procesu instalace, uživatel potvrdí informace a bude pokračovat na webu Azure portal.
+Uživatel nenainstaloval všechny požadované bezpečnostní údaje a přejde na Azure Portal. Po zadání uživatelského jména a hesla se uživateli zobrazí výzva k nastavení bezpečnostních údajů. Uživatel pak podle kroků uvedených v průvodci nastaví požadované bezpečnostní údaje. Pokud to nastavení povoluje, může uživatel zvolit možnost nastavit jiné metody než ty, které jsou ve výchozím nastavení zobrazené. Po dokončení průvodce si uživatelé Prohlédněte metody, které nastavili, a jejich výchozí metodu pro Multi-Factor Authentication. K dokončení procesu instalace uživatel potvrdí informace a pokračuje Azure Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Nastavit informace o zabezpečení z Můj profil
+### <a name="set-up-security-info-from-my-profile"></a>Nastavení bezpečnostních údajů z mého profilu
 
-Správce nebyl vynucené registrace.
+Správce vynutil registraci.
 
-Uživatel, který ještě nebyl nastavený všechny požadované bezpečnostní údaje přejde na [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com). Uživatel vybere **bezpečnostní údaje** v levém podokně. Odtud uživatel zvolí možnost přidání metody, vybere některou z metod, které jsou k dispozici a postupuje podle pokynů k nastavení této metodě. Až budete hotovi, uživateli se zobrazí metoda, kterou jste právě nastavili na stránce informace o zabezpečení.
+Uživatel, který ještě nevytvořil všechny požadované bezpečnostní údaje, se dostane [https://myprofile.microsoft.com](https://myprofile.microsoft.com)do. Uživatel vybere v levém podokně **informace o zabezpečení** . Odtud se uživatel rozhodne přidat metodu, vybere některou z dostupných metod a postupuje podle pokynů k nastavení této metody. Po dokončení uživatel uvidí metodu, která se právě nastavila na stránce informace o zabezpečení.
 
-### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z Můj profil
+### <a name="delete-security-info-from-my-profile"></a>Odstranit informace o zabezpečení z mého profilu
 
-Uživatel, který má alespoň jednu metodu dříve nastavil přejde na [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). Uživatel zvolí možnost odstraňte jednu z metody dříve zaregistrovaný. Až budete hotovi, uživateli se už zobrazí tuto metodu na stránce informace o zabezpečení.
+Uživatel, který dříve nainstaloval alespoň jednu metodu, přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Uživatel se rozhodne odstranit jednu z dříve registrovaných metod. Po dokončení již uživatel na stránce informace o zabezpečení nevidí tuto metodu.
 
-### <a name="change-the-default-method-from-my-profile"></a>Změnit výchozí metodu z Můj profil
+### <a name="change-the-default-method-from-my-profile"></a>Změna výchozí metody z mého profilu
 
-Uživatel, který má alespoň jednu metodu, kterou můžete použít k ověření službou Multi-Factor Authentication dříve nastavil přejde na [ https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo). Uživatel změní aktuální výchozí metoda na jiný výchozí metodu. Až budete hotovi, uživateli se zobrazí nový výchozí metodu na stránce informace o zabezpečení.
+Uživatel, který dříve nainstaloval alespoň jednu metodu, kterou lze použít pro Multi-Factor Authentication přejít na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Uživatel změní aktuální výchozí metodu na jinou výchozí metodu. Po dokončení uživatel uvidí novou výchozí metodu na stránce bezpečnostní údaje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Povolení kombinovaná registrace ve vašem tenantovi](howto-registration-mfa-sspr-combined.md)
+[Vynutí uživatele, aby znovu zaregistrovali metody ověřování.](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[Využití samoobslužného resetování HESLA a vícefaktorové ověřování a přehled generování sestav](howto-authentication-methods-usage-insights.md)
+[Povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md)
 
-[Dostupné metody pro Vícefaktorové ověřování a samoobslužné resetování HESLA](concept-authentication-methods.md)
+[Vytváření sestav využití SSPR a MFA a přehledy](howto-authentication-methods-usage-insights.md)
+
+[Dostupné metody pro Multi-Factor Authentication a SSPR](concept-authentication-methods.md)
 
 [Konfigurace samoobslužného resetování hesla](howto-sspr-deployment.md)
 
-[Konfigurovat ověřování Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+[Konfigurace Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

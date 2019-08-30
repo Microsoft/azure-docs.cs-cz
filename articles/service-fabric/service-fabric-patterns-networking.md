@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 0a411e0fe3b89eaaa19f4e18f5e614b03dd1d682
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599428"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073940"
 ---
 # <a name="service-fabric-networking-patterns"></a>Modely Service Fabric sítě
 Svůj cluster Azure Service Fabric můžete integrovat s dalšími síťovými funkcemi Azure. V tomto článku vám ukážeme, jak vytvořit clustery, které používají následující funkce:
@@ -605,7 +605,11 @@ V clusteru typu se dvěma uzly je jeden typ uzlu v externím nástroji pro vyrov
 
 Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrovnávání zatížení. Pokud procházíte nástroji pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a koncové body správy (porty 19000 a 19080) přiřazené k veřejné IP adrese. Také se můžete podívat na statickou interní IP adresu a koncový bod aplikace (port 80) přiřazený internímu nástroji pro vyrovnávání zatížení. Obě služby Vyrovnávání zatížení používají stejný fond back-end sady škálování virtuálních počítačů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="notes-for-production-workloads"></a>Poznámky pro produkční úlohy
+
+Výše uvedené šablony GitHubu jsou navržené tak, aby fungovaly s výchozí SKU pro Azure Standard Load Balancer (SLB), základní SKU. Tato SLB nemá žádnou smlouvu SLA, takže pro produkční úlohy by se měla použít standardní SKU. Další informace najdete v tématu [Přehled Azure Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview). Všechny Service Fabric clustery, které používají standardní SKU pro SLB, musí zajistit, aby každý typ uzlu měl pravidlo umožňující odchozí přenosy na portu 443. To je nezbytné pro dokončení instalace clusteru a jakékoli nasazení bez takového pravidla selže. Ve výše uvedeném příkladu nástroje pro vyrovnávání zatížení musí být do šablony přidán další externí nástroj pro vyrovnávání zatížení s pravidlem, které povoluje odchozí přenosy pro port 443.
+
+## <a name="next-steps"></a>Další kroky
 [Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md)
 
 Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrovnávání zatížení. Pokud procházíte nástroji pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a koncové body správy (porty 19000 a 19080) přiřazené k veřejné IP adrese. Také se můžete podívat na statickou interní IP adresu a koncový bod aplikace (port 80) přiřazený internímu nástroji pro vyrovnávání zatížení. Obě služby Vyrovnávání zatížení používají stejný fond back-end sady škálování virtuálních počítačů.

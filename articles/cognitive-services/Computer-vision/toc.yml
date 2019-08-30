@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: Návody
   items:
-    - name: Použití počítačového zpracování obrazu
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: Volání rozhraní API pro počítačové zpracování obrazu
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Použití kontejnerů

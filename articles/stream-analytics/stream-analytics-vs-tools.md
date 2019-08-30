@@ -1,6 +1,6 @@
 ---
-title: Zobrazit úlohy Azure Stream Analytics v sadě Visual Studio
-description: Tento článek popisuje, jak zobrazit úlohy Stream Analytics v sadě Visual Studio.
+title: Zobrazení Azure Stream Analytics úloh v aplikaci Visual Studio
+description: Tento článek popisuje, jak zobrazit a spravovat Azure Stream Analytics úlohy v aplikaci Visual Studio.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,84 +9,84 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477827"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173013"
 ---
-# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Chcete-li zobrazit úlohy Azure Stream Analytics pomocí sady Visual Studio
+# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh
 
-Nástroje Azure Stream Analytics pro Visual Studio usnadňuje vývojářům spravovat přímo z integrovaného vývojového prostředí svoje úlohy Stream Analytics. Nástroje Azure Stream Analytics vám umožní:
-- [Vytvoření nové úlohy](stream-analytics-quick-create-vs.md)
-- Spuštění, zastavení, a [monitorování úloh](stream-analytics-monitor-jobs-use-vs.md)
-- Zkontrolujte výsledky úlohy
-- Export stávající úlohy do projektu
-- Testovat vstupní a výstupní připojení
-- [Spouštění dotazů místně](stream-analytics-vs-tools-local-run.md)
+Azure Stream Analytics Tools for Visual Studio umožňují vývojářům snadno spravovat úlohy Stream Analytics přímo z integrovaného vývojového prostředí. Pomocí nástrojů pro Azure Stream Analytics můžete:
+- [Vytvořit nové úlohy](stream-analytics-quick-create-vs.md)
+- Spustit, zastavit a [monitorovat úlohy](stream-analytics-monitor-jobs-use-vs.md)
+- Kontrolovat výsledky úlohy
+- Exportovat existující úlohy do projektu
+- Test vstupních a výstupních připojení
+- [Spustit dotazy místně](stream-analytics-vs-tools-local-run.md)
 
-Zjistěte, jak [instalace nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md).
+Přečtěte si, jak [nainstalovat nástroje Azure Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md).
 
-## <a name="explore-the-job-view"></a>Prozkoumejte zobrazení úloh
+## <a name="explore-the-job-view"></a>Prozkoumat zobrazení úlohy
 
-Zobrazení úloh můžete použít k interakci s úlohy Azure Stream Analytics ze sady Visual Studio.
+Můžete použít zobrazení úlohy k interakci s Azure Stream Analytics úlohami ze sady Visual Studio.
 
-### <a name="open-the-job-view"></a>Otevřete zobrazení úloh
+### <a name="open-the-job-view"></a>Otevřete zobrazení úlohy.
 
-1. V **Průzkumníka serveru**vyberte **úlohy Stream Analytics** a pak vyberte **aktualizovat**. Vaše úloha by se měla zobrazit pod **úlohy Stream Analytics**.
+1. V **Průzkumník serveru**vyberte **Stream Analytics úlohy** a pak vyberte **aktualizovat**. Vaše úloha by se měla zobrazit v části **Stream Analytics úlohy**.
 
-    ![Stream Analytics seznam Průzkumníka serveru](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
+    ![Seznam Stream Analytics Průzkumníku serveru](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
 
-2. Rozbalte uzel projektu a dvakrát klikněte na **zobrazení úloh** uzlu otevřete zobrazení úloh.
+2. Rozbalte uzel úlohy a dvojím kliknutím na uzel **zobrazení úlohy** otevřete zobrazení úlohy.
     
-   ![Rozšířené úlohy uzlu](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
+   ![Uzel rozbalené úlohy](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
-### <a name="start-and-stop-jobs"></a>Spuštění a zastavení úlohy
+### <a name="start-and-stop-jobs"></a>Spouštění a zastavování úloh
 
-Úlohy Azure Stream Analytics je plně spravovat v zobrazení úlohy v sadě Visual Studio. Pomocí ovládacích prvků pro spuštění, zastavení nebo odstranění úlohy.
+Azure Stream Analytics úlohy je možné plně spravovat ze zobrazení úloh v aplikaci Visual Studio. Pomocí ovládacích prvků můžete spustit, zastavit nebo odstranit úlohu.
     
    ![Ovládací prvky úlohy Stream Analytics](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
 
-## <a name="check-job-results"></a>Zkontrolujte výsledky úlohy
+## <a name="check-job-results"></a>Kontrolovat výsledky úlohy
 
-Stream Analytics tools for Visual Studio teď podporuje výstup ve verzi preview pro Azure Data Lake Storage a blob storage. Chcete-li zobrazit výsledek, jednoduše dvakrát klikněte na uzel výstup z diagram úloh v **zobrazení úloh** a zadejte příslušné přihlašovací údaje.
+Stream Analytics Tools for Visual Studio v současné době podporuje Náhled výstupu pro Azure Data Lake Storage a úložiště objektů BLOB. Pokud chcete zobrazit výsledek, jednoduše poklikejte na uzel výstup diagramu úloh v **zobrazení úlohy** a zadejte příslušné přihlašovací údaje.
 
-   ![Výstup blob úlohy Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
+   ![Výstup objektu BLOB úlohy Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
 
-## <a name="export-jobs-to-a-project"></a>Export úloh do projektu
+## <a name="export-jobs-to-a-project"></a>Exportovat úlohy do projektu
 
-Existují dva způsoby, můžete to taky existující úlohy do projektu.
+Existují dva způsoby, jak můžete exportovat existující úlohu do projektu.
 
-1. V **Průzkumníka serveru**, pod uzlem úlohy Stream Analytics, klikněte pravým tlačítkem na uzel projektu. Vyberte **exportovat do nového projektu Stream Analytics**.
+1. V **Průzkumník serveru**pod uzlem úlohy Stream Analytics klikněte pravým tlačítkem myši na uzel úlohy. Vyberte **exportovat do nového projektu Stream Analytics**.
     
-   ![Úloha exportu do projektu](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
+   ![Exportovat úlohu do projektu](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    Generovaný projekt se objeví v **Průzkumníka řešení**.
+    Vygenerovaný projekt se zobrazí v **Průzkumník řešení**.
     
    ![Průzkumník řešení](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. V zobrazení úloh, vyberte **generování projektu**.
+2. V zobrazení úlohy vyberte **generovat projekt**.
     
-   ![Vytvořit projekt z zobrazení úloh](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
+   ![Generovat projekt ze zobrazení úlohy](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
-## <a name="test-connections"></a>Testovat připojení
+## <a name="test-connections"></a>Test připojení
 
-Vstupní a výstupní připojení můžete otestovat z **zobrazení úloh** výběrem možnosti z **Test připojení** rozevíracího seznamu.
+Vstupní a výstupní připojení lze testovat ze **zobrazení úlohy** výběrem možnosti z rozevíracího seznamu **Test připojení** .
 
-   ![Test připojení rozevíracího seznamu](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
+   ![Rozevírací seznam testovat připojení](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-**Test připojení** výsledky jsou zobrazeny v **výstup** okna.
+Výsledky **testu připojení** se zobrazí v okně **výstup** .
 
-   ![Výsledky testu připojení](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
+   ![Test výsledků připojení](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Monitorování a Správa úloh Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
+* [Monitorování a správa úloh Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
 * [Rychlé zprovoznění: Vytvoření úlohy Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md)
-* [Kurz: Nasazení úlohy Azure Stream Analytics pomocí Azure kanálů CI/CD](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Kurz: Nasazení úlohy Azure Stream Analytics s využitím CI/CD pomocí Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Průběžná integrace a vývoj s použitím nástrojů Stream Analytics](stream-analytics-tools-for-visual-studio-cicd.md)

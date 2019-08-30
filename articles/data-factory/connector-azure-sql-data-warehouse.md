@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 49a0c7597e8d44e3f60e2d3b6bd4c14cad1524b5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996681"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172624"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -536,6 +536,10 @@ Pokud zdroj dat má řádky větší než 1 MB, můžete chtít svisle rozdělit
 
 Alternativně můžete pro data s takovými roztažitelnémi sloupci použít nezaloženou základnu k načtení dat pomocí automatického podavače (ADF) vypnutím nastavení "zapnout základnu".
 
+### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
+
+K dosažení nejlepší možné propustnost, přiřadíte větší třídu prostředků pro uživatele, který načte data do SQL Data Warehouse pomocí PolyBase.
+
 ### <a name="polybase-troubleshooting"></a>Řešení potíží se základem
 
 **Načítání do desetinného sloupce**
@@ -549,13 +553,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 Řešením je zrušit výběr možnosti**použít výchozí typ**(jako false) ve jímky aktivity kopírování – > základní nastavení. "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )" je základní nativní konfigurace, která určuje, jak se mají zpracovat chybějící hodnoty v textových souborech s oddělovači, když základ dat načte data z textového souboru. 
 
-**Ostatní**
-
-### <a name="sql-data-warehouse-resource-class"></a>Třída prostředků SQL Data Warehouse
-
-K dosažení nejlepší možné propustnost, přiřadíte větší třídu prostředků pro uživatele, který načte data do SQL Data Warehouse pomocí PolyBase.
-
-### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** ve službě Azure SQL Data Warehouse
+**`tableName`v Azure SQL Data Warehouse**
 
 V následující tabulce jsou uvedené příklady toho, jak zadat **tableName** vlastnost v datové sadě JSON. Ukazuje několik kombinace schéma a tabulku názvů.
 
@@ -572,7 +570,7 @@ Pokud se zobrazí následující chyba, problém může být hodnota zadaná pro
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>Sloupce s výchozími hodnotami.
+**Sloupce s výchozími hodnotami**
 
 Funkce PolyBase ve službě Data Factory v současné době přijímá pouze stejný počet sloupců jako v cílové tabulce. Příkladem je tabulka s čtyři sloupce, kde jeden z nich je definované s výchozí hodnotou. Vstupní data stále musí mít čtyři sloupce. Vstupní datová sada třemi sloupci poskytuje zpráva podobná následující zpráva:
 
@@ -623,5 +621,5 @@ Při kopírování dat z nebo do služby Azure SQL Data Warehouse, se používaj
 | Varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky, aktivita kopírování ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -1,8 +1,6 @@
 ---
 title: Vytvoření funkce aktivované protokolem HTTP v Azure
 description: Zjistěte, jak vytvořit první funkce Pythonu v Azure pomocí Azure Functions Core Tools a rozhraní příkazového řádku Azure.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575438"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170892"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -28,7 +26,7 @@ Tento článek je první ze dvou rychlých startů pro Azure Functions. Po dokon
 
 Než začnete, musíte mít následující:
 
-+ Nainstalujte [Python 3,6](https://www.python.org/downloads/).
++ Nainstalujte [Python 3.6. x](https://www.python.org/downloads/).
 
 + Nainstalujte verzi [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1575 nebo novější.
 
@@ -104,7 +102,7 @@ Vytvoří se podsložka s názvem _HttpTrigger_ , která obsahuje následující
 
 Následující příkaz spustí aplikaci Function App, která se spouští místně pomocí stejného Azure Functions modulu runtime, který je v Azure.
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +132,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +166,33 @@ Tento příkaz také zřídí přidruženou instanci služby Azure Application I
 
 Teď jste připraveni publikovat projekt místních funkcí do aplikace Function App v Azure.
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>Nasazení projektu aplikace funkcí do Azure
+
+Po vytvoření aplikace Function App v Azure můžete k nasazení kódu projektu do [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Azure použít příkaz Core Tools. V těchto příkladech nahraďte `<APP_NAME>` názvem vaší aplikace z předchozího kroku.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+`--build remote` Možnost umožňuje v Azure vzdáleně sestavit projekt Pythonu ze souborů v balíčku pro nasazení. 
+
+Zobrazí se výstup podobný následujícímu, který byl zkrácen z důvodu čitelnosti:
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+`Invoke url` Zkopírujte hodnotu`HttpTrigger`pro, kterou teď můžete použít k otestování funkce v Azure. Adresa URL obsahuje `code` hodnotu řetězce dotazu, který je klíčovou funkcí. Tento klíč ztěžuje ostatním uživatelům volání koncového bodu HTTP triggeru v Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555795"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162403"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication v cloudu
 
@@ -32,9 +32,12 @@ Jako správce, který má přiřazenou roli Správce ověřování, můžete vy�
 
 ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Při resetování hesla dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
-2. Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho znovu zaregistroval. v takovém případě bude požádán o nastavení nové metody ověřování MFA.
-3. Odvolání relací MFA vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**.
+   - Při **resetování hesla** dojde k resetování hesla uživatele a přiřazení dočasného hesla, které musí být při příštím přihlášení změněno.
+   - Když se uživatel poprvé přihlásí, bude se vyžadovat, aby si ho **znovu zaregistroval** . v takovém případě bude požádán o nastavení nové metody ověřování MFA.
+   - **Odvolání relací MFA** vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Vyžadovat od uživatelů opětovné poskytnutí metod kontaktu
 
@@ -96,7 +99,7 @@ Při zaškrtnutí políčka **obnovit vícefaktorové ověřování u všech zap
 7. Klikněte na **Uložit**.
 8. Klikněte na **Zavřít**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Získat další informace o tom, jak [nakonfigurovat nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
+- Přečtěte si další informace o [konfiguraci nastavení Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
 - Pokud uživatelé potřebují nápovědu, najeďte je k [uživatelské příručce pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user.md) .

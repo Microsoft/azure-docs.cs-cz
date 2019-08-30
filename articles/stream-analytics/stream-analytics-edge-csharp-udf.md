@@ -1,5 +1,5 @@
 ---
-title: Zápis uživatelem definované funkce jazyka C# pro úlohu Azure Stream Analytics Edge v sadě Visual Studio (Preview)
+title: Zápis C# uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics Edge v aplikaci Visual Studio (Preview)
 description: Zjistěte, jak v sadě Visual Studio psát uživatelem definované funkce jazyka C# pro úlohy Azure Stream Analytics Edge.
 services: stream-analytics
 author: mamccrea
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204110"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173311"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Kurz: Zápis C# uživatelem definovanou funkci pro úlohu Azure Stream Analytics Edge (Preview)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Kurz: Zápis C# uživatelsky definované funkce pro úlohu Azure Stream Analytics Edge (Preview)
 
-Uživatelem definované funkce jazyka C# vytvořené v sadě Visual Studio umožňují rozšířit dotazovací jazyk Azure Stream Analytics o vlastní funkce. V jazyce C# můžete opakovaně používat existující kód (včetně knihoven DLL) a využívat matematickou nebo komplexní logiku. Existují tři způsoby, jak implementovat uživatelem definovanými funkcemi: Projekt CodeBehind souborů ve službě Stream Analytics, funkcí UDF z místního C# projektu nebo UDF z existujícího balíčku z účtu úložiště. V tomto kurzu se k implementaci základní funkce jazyka C# používá metoda se souborem CodeBehind. Funkce uživatelem definovaných funkcí pro úlohy Stream Analytics Edge je v současné době ve verzi a neměla by se používat v produkčních úlohách.
+Uživatelem definované funkce jazyka C# vytvořené v sadě Visual Studio umožňují rozšířit dotazovací jazyk Azure Stream Analytics o vlastní funkce. V jazyce C# můžete opakovaně používat existující kód (včetně knihoven DLL) a využívat matematickou nebo komplexní logiku. Existují tři způsoby, jak implementovat uživatelem definovanými funkcemi: Soubory CodeBehind v Stream Analytics projektu, UDF z místního C# projektu nebo UDF ze stávajícího balíčku z účtu úložiště. V tomto kurzu se k implementaci základní funkce jazyka C# používá metoda se souborem CodeBehind. Funkce uživatelem definovaných funkcí pro úlohy Stream Analytics Edge je v současné době ve verzi a neměla by se používat v produkčních úlohách.
 
 V tomto kurzu se naučíte:
 

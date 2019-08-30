@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s lidmi | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s lidmi | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a lidmi.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826117"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164223"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>Kurz: Integrace uživatelů s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s lidmi
 
 V tomto kurzu se dozvíte, jak integrovat lidi s Azure Active Directory (Azure AD). Když integrujete lidi s Azure AD, můžete:
 
@@ -47,6 +47,9 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Lidé podporují jednotné přihlašování, které iniciuje **SP**
 * Mobilní aplikace pro lidi se teď dá nakonfigurovat se službou Azure AD pro povolení jednotného přihlašování. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
+>[!NOTE]
+>Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="adding-people-from-the-gallery"></a>Přidávání lidí z Galerie
 
 Pokud chcete nakonfigurovat integraci lidí do Azure AD, musíte přidat lidi z Galerie do seznamu spravovaných aplikací SaaS.
@@ -58,21 +61,20 @@ Pokud chcete nakonfigurovat integraci lidí do Azure AD, musíte přidat lidi z 
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **osoby** .
 1. Vyberte **lidé** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>Konfigurace a testování jednotného přihlašování Azure AD pro lidi
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD s lidmi pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v lidech.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s lidmi, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 2. **[NAKONFIGURUJTE jednotné](#configure-people-sso)** přihlašování pro lidi – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-5. **[Vytvořte uživatele s testovacím uživatelem](#create-people-test-user)** – abyste měli protějšek B. Simon v lidech, kteří jsou propojení s reprezentací uživatele v Azure AD.
+    1. **[Vytvořte uživatele s testovacím uživatelem](#create-people-test-user)** – abyste měli protějšek B. Simon v lidech, kteří jsou propojení s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -100,22 +102,6 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 6. V části **nastavit osoby** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
-
-### <a name="configure-people-sso"></a>Konfigurace jednotného přihlašování uživatelů
-
-1. Pokud chcete pro vaši aplikaci nakonfigurovat jednotné přihlašování, musíte se přihlásit k tenantovi vašich lidí jako správce.
-   
-2. V nabídce na levé straně klikněte na **Nastavení**.
-
-    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_001.png)
-
-3. Klikněte na **Společnost**.
-
-    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_002.png)
-
-4. V **souboru METADAT SAML pro nahrání jednotného přihlašování**klikněte na **Procházet** a nahrajte stažený soubor metadat.
-
-    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -147,11 +133,35 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
+## <a name="configure-people-sso"></a>Konfigurace jednotného přihlašování uživatelů
+
+1. Pokud chcete automatizovat konfiguraci v rámci lidí, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavit osoby** , které vás přesměrují do aplikace lidé. Odtud zadejte přihlašovací údaje správce, které se budou přihlašovat lidem. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Chcete-li nastavit osoby ručně, otevřete nové okno webového prohlížeče a přihlaste se k firemnímu webu osoby jako správce a proveďte následující kroky:
+   
+4. V nabídce na levé straně klikněte na **Nastavení**.
+
+    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_001.png)
+
+5. Klikněte na **Společnost**.
+
+    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_002.png)
+
+6. V **souboru METADAT SAML pro nahrání jednotného přihlašování**klikněte na **Procházet** a nahrajte stažený soubor metadat.
+
+    ![Konfigurace jednotného přihlašování](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>Vytvořit lidi testovacího uživatele
 
 V této části vytvoříte uživatele s názvem B. Simon v lidech. Pracujte s [týmem podpory klientů](mailto:customerservices@peoplehr.com) pro uživatele, kteří budou přidávat uživatele na platformě lidí. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -179,3 +189,4 @@ Když kliknete na dlaždici lidé na přístupovém panelu, měli byste se autom
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Vyzkoušejte lidi s Azure AD](https://aad.portal.azure.com)

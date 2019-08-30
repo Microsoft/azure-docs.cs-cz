@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534386"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164060"
 ---
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure, které používáte. 
 
@@ -37,7 +37,10 @@ ms.locfileid: "69534386"
 
 1. Po dokončení konfigurace pracovního prostoru vyberte **vytvořit**. 
 
-   Vytvořit pracovní prostor může chvíli trvat.
+   > [!Warning] 
+   > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
 
-   Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
+   Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. 
+ 
+ 1. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
 

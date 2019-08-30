@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 08/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666368"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172926"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
 
@@ -96,7 +96,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
     Na stránce se potvrdí dokončení nahrávání a zobrazí se zpráva, že **datová sada se úspěšně**nahrála.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Spravujte referenční data](time-series-insights-manage-reference-data-csharp.md) prostřednictvím kódu programu.
 

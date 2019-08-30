@@ -1,71 +1,75 @@
 ---
-title: Správa skupiny aplikací pro Windows Virtual Desktop Preview – Azure
-description: Popisuje, jak nastavit službu Windows Virtual Desktop Preview tenantů ve službě Azure Active Directory.
+title: Správa skupin aplikací pro Windows Virtual Desktop Preview – Azure
+description: Popisuje, jak nastavit klienty Windows Virtual Desktop Preview v Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 73425df1f0cfedd2a681650fc2b536a652b621d5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206680"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163252"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows Virtual Desktop Preview
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupin aplikací pro verzi Preview pro virtuální počítače s Windows
 
-Výchozí skupina aplikace vytvořené pro nový fond hostitele Windows virtuální plochy, ve verzi Preview, publikuje také úplný desktop. Kromě toho můžete vytvořit jeden nebo více skupin aplikací RemoteApp pro fond hostitele. V tomto kurzu vytvořte skupinu aplikací RemoteApp a publikování jednotlivých **Start** nabídku aplikace.
+Výchozí skupina aplikací vytvořená pro nový fond hostitelů ve verzi Preview virtuálních počítačů s Windows také publikuje celou plochu. Kromě toho můžete vytvořit jednu nebo více skupin aplikací RemoteApp pro fond hostitelů. Podle tohoto kurzu vytvořte skupinu aplikací RemoteApp a publikujte jednotlivé aplikace v nabídce **Start** .
 
 V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Vytvoření skupiny Vzdálená aplikace RemoteApp.
-> * Udělení přístupu k aplikacím RemoteApp.
+> * Vytvořte skupinu RemoteApp.
+> * Udělení přístupu k aplikacím vzdálené aplikace RemoteApp.
 
-Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Než začnete, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
-## <a name="create-a-remoteapp-group"></a>Vytvoření skupiny Vzdálená aplikace RemoteApp
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
-1. Spusťte následující rutinu prostředí PowerShell k vytvoření nové prázdné skupiny aplikací RemoteApp.
+## <a name="create-a-remoteapp-group"></a>Vytvoření skupiny vzdálených aplikací RemoteApp
+
+1. Spuštěním následující rutiny prostředí PowerShell vytvořte novou prázdnou skupinu aplikace RemoteApp.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (Volitelné) Pokud chcete ověřit, zda byla vytvořena skupina aplikací, spuštěním následující rutiny můžete zobrazit seznam všech skupin aplikací pro fond hostitele.
+2. Volitelné Pokud chcete ověřit, jestli se vytvořila skupina aplikací, můžete spuštěním následující rutiny zobrazit seznam všech skupin aplikací pro fond hostitelů.
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
    ```
 
-3. Pomocí následující rutiny Získejte seznam sad **Start** nabídky aplikace v imagi virtuálního počítače hostitele fondu. Poznamenejte si hodnoty pro **FilePath**, **IconPath**, **IconIndex**a další důležité informace pro aplikaci, kterou chcete publikovat.
+3. Spuštěním následující rutiny Získejte seznam aplikací nabídky **Start** v imagi virtuálního počítače fondu hostitelů. Zapište hodnoty pro **FilePath**, **IconPath**, **IconIndex**a další důležité informace o aplikaci, kterou chcete publikovat.
 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Spusťte následující rutinu k instalaci aplikace na základě `AppAlias`. `AppAlias` Když spustíte výstup z kroku 3 stane viditelnou.
+4. Spuštěním následující rutiny nainstalujte aplikaci na základě `AppAlias`. `AppAlias`se zobrazí, když spustíte výstup z kroku 3.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Volitelné) Spusťte následující rutinu k publikování aplikace RemoteApp novou skupinu aplikací vytvořili v kroku 1.
+5. Volitelné Spusťte následující rutinu, která publikuje nový program RemoteApp pro skupinu aplikací vytvořenou v kroku 1.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
-6. Pokud chcete ověřit, že aplikace byla publikována, spusťte následující rutinu.
+6. Chcete-li ověřit, zda byla aplikace publikována, spusťte následující rutinu.
 
    ```powershell
    Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
    ```
 
-7. Opakujte kroky 1 až 5 pro každou aplikaci, kterou chcete publikovat pro tuto skupinu aplikací.
-8. Spuštěním následující rutiny můžete uživatelům udělit přístup k programům Vzdálená aplikace RemoteApp ve skupině aplikací.
+7. Opakujte kroky 1 – 5 pro každou aplikaci, kterou chcete publikovat pro tuto skupinu aplikací.
+8. Spuštěním následující rutiny udělte uživatelům přístup k aplikacím RemoteApp ve skupině aplikací.
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
@@ -73,7 +77,7 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak vytvořit skupinu aplikací, přidejte do ní aplikacím RemoteApp a přiřadit uživatele do skupiny aplikací. Zjistěte, jak vytvořit fond ověření hostitele, najdete v následujícím kurzu. Ověření hostitele fondu můžete použít k monitorování služby aktualizací před jejich zavádět do produkčního prostředí.
+V tomto kurzu jste zjistili, jak vytvořit skupinu aplikací, naplnit ji v aplikacích RemoteApp a přiřazovat uživatele do skupiny aplikací. Další informace o tom, jak vytvořit fond ověřovacích hostitelů, najdete v následujícím kurzu. Pomocí fondu hostitelů ověření můžete monitorovat aktualizace služby před jejich vrácením do produkčního prostředí.
 
 > [!div class="nextstepaction"]
-> [Vytvoření fondu hostitele pro ověření aktualizace služeb](./create-validation-host-pool.md)
+> [Vytvoření fondu hostitelů pro ověření aktualizací služby](./create-validation-host-pool.md)

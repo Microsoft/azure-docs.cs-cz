@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669603"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166689"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -37,7 +37,7 @@ Pro verzi Preview jsou tyto funkce podporované:
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
 - East US
 - Východní USA 2
-- Středozápadní USA
+- Západní střed USA
 - USA – západ
 - USA – západ 2
 
@@ -73,7 +73,7 @@ Azure image Builder je plně spravovaná služba Azure, která je přístupná p
 
 1. Vytvořte šablonu obrázku jako soubor. JSON. Tento soubor. JSON obsahuje informace o zdroji, přizpůsobení a distribuci obrázku. V [úložišti GitHub Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)je několik příkladů.
 1. Odešlete ji do služby. tím se vytvoří artefakt šablony obrázku ve skupině prostředků, kterou zadáte. Na pozadí bude tvůrce imagí stahovat zdrojové Image nebo ISO a skripty podle potřeby. Ukládají se do samostatné skupiny prostředků, která se automaticky vytvoří v rámci vašeho předplatného, ve formátu: IT_\<DestinationResourceGroup > _\<> Template. 
-1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí používá šablonu a zdrojové soubory k vytvoření virtuálního počítače, sítě a úložiště v IT_\<DestinationResourceGroup > _\<template > skupiny prostředků.
+1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí používá šablonu a zdrojové soubory k vytvoření virtuálního počítače (D1v2), sítě, veřejné IP adresy a úložiště v IT_\<DestinationResourceGroup > _\<template > skupiny prostředků.
 1. V rámci vytváření image tvůrce imagí distribuuje image podle šablony a pak odstraní další prostředky v IT_\<DestinationResourceGroup > _\<template > Group, která se vytvořila pro proces.
 
 

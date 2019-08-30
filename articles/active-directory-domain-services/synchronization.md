@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011274"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171929"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Způsob synchronizace objektů a přihlašovacích údajů ve spravované doméně Azure AD Domain Services
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje, jak synchronizace funguje mezi Azure služb
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronizace z Azure AD do Azure služba AD DS
 
-Uživatelské účty, členství ve skupinách a hodnoty hash přihlašovacích údajů se synchronizují jedním ze způsobů z Azure AD až do Azure služba AD DS. Tento proces synchronizace je automatický. Tento proces synchronizace nemusíte konfigurovat, monitorovat ani spravovat. Počáteční synchronizace může trvat několik hodin, a to v závislosti na počtu objektů v adresáři služby Azure AD. Po dokončení počáteční synchronizace se změny provedené ve službě Azure AD, například změny hesla nebo atributu, zavedou přibližně 20-30 minut do aktualizace v Azure služba AD DS.
+Uživatelské účty, členství ve skupinách a hodnoty hash přihlašovacích údajů se synchronizují jedním ze způsobů z Azure AD až do Azure služba AD DS. Tento proces synchronizace je automatický. Tento proces synchronizace nemusíte konfigurovat, monitorovat ani spravovat. Počáteční synchronizace může trvat několik hodin, a to v závislosti na počtu objektů v adresáři služby Azure AD. Po dokončení počáteční synchronizace se změny provedené ve službě Azure AD, jako je třeba heslo nebo atributy, automaticky synchronizují do Azure služba AD DS.
 
 Proces synchronizace je jedním ze způsobů a jednosměrný podle návrhu. Z Azure služba AD DS zpátky do Azure AD se nevrátí žádná zpětná synchronizace změn. Spravovaná doména Azure služba AD DS je převážně jen pro čtení s výjimkou vlastních organizačních jednotek, které můžete vytvořit. V rámci spravované domény Azure služba AD DS nemůžete měnit atributy uživatele, hesla uživatelů ani členství ve skupinách.
 

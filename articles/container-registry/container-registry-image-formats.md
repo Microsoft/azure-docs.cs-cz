@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: c804dd7b73ea4a51c02c8b342a4ac60d992ec7c5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310676"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164519"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Formáty obsahu podporované v Azure Container Registry
 
@@ -29,11 +29,17 @@ Podporují se tyto formáty imagí kontejneru Docker:
 
 ## <a name="oci-images"></a>Image OCI
 
-Azure Container Registry podporuje i image, které splňují [specifikaci formátu rozhraní OCI (Open container Initiative)](https://github.com/opencontainers/image-spec/blob/master/spec.md). Formáty balení zahrnují [Formát (SIF) pro jednotné](https://www.sylabs.io/2018/03/sif-containing-your-containers/)přidanou bitovou kopii.
+Azure Container Registry podporuje bitové kopie, které splňují [specifikaci formátu rozhraní OCI (Open container Initiative)](https://github.com/opencontainers/image-spec/blob/master/spec.md). Formáty balení zahrnují [Formát (SIF) pro jednotné](https://www.sylabs.io/2018/03/sif-containing-your-containers/)přidanou bitovou kopii.
+
+## <a name="oci-artifacts"></a>Artefakty OCI
+
+Azure Container Registry podporuje pro ukládání, sdílení, zabezpečení a nasazování imagí kontejnerů a dalších typů obsahu (artefakty) nezávisláou [specifikaci distribuce OCI](https://github.com/opencontainers/distribution-spec), což je neutrální od dodavatele. Specifikace umožňuje registru kromě imagí kontejnerů ukládat široké spektrum artefaktů. Použijete nástroje vhodné pro artefakt k nasdílení a vyžádání artefaktů. Příklad najdete v tématu [push a pull artefaktu OCI pomocí služby Azure Container Registry](container-registry-oci-artifacts.md).
+
+Další informace o artefaktech rozhraní OCI najdete v části [registr OCI jako úložiště (Oras)](https://github.com/deislabs/oras) a v úložišti [artefaktů OCI](https://github.com/opencontainers/artifacts) na GitHubu.
 
 ## <a name="helm-charts"></a>Grafy Helm
 
-Azure Container Registry mohou hostovat úložiště pro [grafy Helm](https://helm.sh/), formát balení používaný k rychlé správě a nasazování aplikací pro Kubernetes. Podpora [klienta Helm](https://docs.helm.sh/using_helm/#installing-helm) verze 2.11.0 nebo vyšší je podporována.
+Azure Container Registry mohou hostovat úložiště pro [grafy Helm](https://helm.sh/), formát balení používaný k rychlé správě a nasazování aplikací pro Kubernetes. Podporuje se [klient Helm](https://docs.helm.sh/using_helm/#installing-helm) verze 2 (2.11.0 nebo novější).
 
 ## <a name="next-steps"></a>Další postup
 

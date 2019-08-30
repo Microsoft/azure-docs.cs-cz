@@ -4,19 +4,19 @@ description: Naučte se publikovat nabídku spravované služby, která zákazn�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011868"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165254"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
-V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravované služby, která [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí [portál partnerů cloudu](https://cloudpartner.azure.com/)a umožňuje zákazníkům, kteří si koupí nabídku, aby se připojili ke správě delegovaných prostředků Azure.
+V tomto článku se dozvíte, jak publikovat veřejnou nebo soukromou nabídku spravovaných služeb, která [Azure Marketplace](https://azuremarketplace.microsoft.com) pomocí [portál partnerů cloudu](https://cloudpartner.azure.com/)a umožňuje zákazníkům, kteří si nabídku koupí, připojit prostředky pro delegovaný prostředek Azure. správu.
 
 > [!NOTE]
 > Aby bylo možné vytvořit a publikovat tyto nabídky, musíte mít platný [účet v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) . Pokud účet ještě nemáte, [proces registrace](https://aka.ms/joinmarketplace) vás provede kroky pro vytvoření účtu v partnerském centru a registraci v programu komerčního tržiště. Vaše ID Microsoft Partner Network (MPN) se [automaticky přidruží](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) k nabídkám, které publikujete, abyste mohli sledovat svůj dopad na zapojení zákazníků.
@@ -128,7 +128,66 @@ Po přidání těchto informací vyberte **Uložit.**
 
 Až budete spokojeni se všemi informacemi, které jste zadali, je dalším krokem publikování nabídky Azure Marketplace. Kliknutím na tlačítko **publikovat** zahajte proces provádění vaší nabídky v reálném čase. Další informace o tomto procesu najdete v tématu [publikování Azure Marketplace a nabídky AppSource](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="the-customer-onboarding-process"></a>Proces zprovoznění zákazníků
+
+Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v horní části stránky poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
+
+Předtím, než bude možné připojit předplatné (nebo skupiny prostředků v rámci předplatného), musí být odběr autorizovaný k registraci tím, že ručně zaregistruje poskytovatele prostředků **Microsoft. ManagedServices** . Uživatel v tenantovi zákazníka s rolí přispěvatel nebo vlastník může postupovat podle kroků uvedených v části [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
+
+Zákazník pak může potvrdit, že předplatné je připravené k registraci, jedním z následujících způsobů.
+
+### <a name="azure-portal"></a>portál Azure
+
+1. V Azure Portal vyberte předplatné.
+1. Vyberte **Poskytovatelé prostředků**.
+1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako zaregistrované.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+Výsledek by měl vypadat přibližně takto:
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+Výsledek by měl vypadat přibližně takto:
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
+
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).
 - V Azure Portal můžete [Zobrazit a spravovat zákazníky](view-manage-customers.md) .

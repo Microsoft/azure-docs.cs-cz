@@ -4,193 +4,113 @@ description: Popisuje, jak Azure Resource Manager využívat k nasazení, správ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1b0135bfff7233367eaf47a2f6dd1ee3ccfbcaf6
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4f9591b26891ab36ccbfa34126fb1ac1bdb9cf52
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205504"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164800"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
-Azure Resource Manager je nasazení a Správa služby pro Azure. Poskytuje konzistentní vrstvu správy, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky ve vašem předplatném Azure. Auditování a označování funkce můžete použít jeho řízení přístupu k zabezpečení a uspořádání prostředků po nasazení.
+Azure Resource Manager je služba pro nasazení a správu pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
 
-Když je provést akce na portálu, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API nebo klientské sady SDK, rozhraní API Azure Resource Manageru zpracovává vaši žádost. Protože všechny požadavky jsou zpracovány prostřednictvím stejného rozhraní API, uvidíte konzistentní výsledky a funkce v různých nástrojích. Všechny možnosti, které jsou k dispozici na portálu jsou dostupné prostřednictvím prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní REST API a klientské sady SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
+Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](template-deployment-overview.md).
 
-Následující obrázek znázorňuje způsob, jakým tyto nástroje interagují se rozhraní API Azure Resource Manageru. Rozhraní API předává požadavky do služby Resource Manageru, která je ověřuje a autorizuje. Resource Manager následně směruje požadavky na příslušnou službu.
+## <a name="consistent-management-layer"></a>Konzistentní vrstva správy
+
+Když uživatel odešle žádost ze všech nástrojů, rozhraní API nebo sad Azure, Správce prostředků obdrží požadavek. Ověřuje a autorizuje požadavek. Správce prostředků odešle požadavek službě Azure, která provede požadovanou akci. Vzhledem k tomu, že všechny požadavky jsou zpracovávány přes stejné rozhraní API, zobrazí se konzistentní výsledky a možnosti ve všech různých nástrojích.
+
+Následující obrázek ukazuje, Azure Resource Manager role hraje při zpracování požadavků Azure. 
 
 ![Model požadavku Resource Manageru](./media/resource-group-overview/consistent-management-layer.png)
+
+Všechny funkce, které jsou k dispozici na portálu, jsou také dostupné prostřednictvím PowerShellu, rozhraní příkazového řádku Azure CLI, rozhraní REST API a klientských sad SDK. Funkce původně vydané prostřednictvím rozhraní API budou na portálu k dispozici do 180 dnů od počátečního vydání.
 
 ## <a name="terminology"></a>Terminologie
 
 Pokud s Azure Resource Managerem začínáte, existuje několik termínů, které možná neznáte.
 
-* **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě jsou příklady zdrojů.
-* **skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků obsahuje prostředky, které chcete spravovat jako skupinu. Můžete rozhodnout, jak přidělit prostředky skupiny prostředků, které jsou založené na co je nejvhodnější pro vaši organizaci. Viz [Skupiny prostředků](#resource-groups).
-* **Poskytovatel prostředků** -služba poskytující prostředky Azure. Například běžné poskytovatele prostředků je **Microsoft.Compute**, který poskytuje prostředek virtuálních počítačů. **Microsoft.Storage** je jiné běžné poskytovatele prostředků. Viz [Poskytovatelé prostředků](#resource-providers).
-* **Šablony Resource Manageru** – soubor A jazyka JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků k nasazení do skupiny prostředků nebo předplatného. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Viz [Nasazení šablon](#template-deployment).
-* **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure.
+* **prostředek** - Spravovatelná položka, která je k dispozici prostřednictvím služby Azure. Příklady prostředků jsou virtuální počítače, účty úložiště, webové aplikace, databáze a virtuální sítě.
+* **skupina prostředků** – Kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků zahrnuje prostředky, které chcete spravovat jako skupinu. Rozhodnete, které prostředky patří do skupiny prostředků na základě toho, co je pro vaši organizaci nejvhodnější. Viz [Skupiny prostředků](#resource-groups).
+* **poskytovatel prostředků** – služba poskytující prostředky Azure. Například běžný poskytovatel prostředků je Microsoft. COMPUTE, který poskytuje prostředek virtuálního počítače. Microsoft. Storage je další společný poskytovatel prostředků. Viz téma [poskytovatelé a typy prostředků](resource-manager-supported-services.md).
+* **Správce prostředků šablona** – soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků nebo předplatného. Šablony lze použít k nasazení prostředků konzistentně a opakovaně. Další informace najdete v tématu [přehled Template Deployment](template-deployment-overview.md).
+* **deklarativní syntaxe** – Syntaxe, která umožňuje prohlásit „Toto mám v úmyslu vytvořit“, aniž by k tomu bylo nutné psát sekvence programových příkazů. Šablona Resource Manageru je příkladem deklarativní syntaxe. V souboru definujete vlastnosti pro infrastrukturu k nasazení do Azure.  Další informace najdete v tématu [přehled Template Deployment](template-deployment-overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Výhody použití Resource Manageru
 
-Resource Manager poskytuje několik výhod:
+Pomocí Správce prostředků můžete:
 
-* Můžete všechny prostředky pro vaše řešení nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
-* Můžete svoje řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
-* Infrastrukturu můžete spravovat pomocí deklarativních šablon místo skriptů.
-* Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
-* Můžete využít řízení přístupu pro všechny služby ve vaší skupině prostředků, protože do platformy pro správu je nativně integrováno řízení přístupu na základě role (RBAC).
-* Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
-* Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
+* Spravujte svoji infrastrukturu prostřednictvím deklarativních šablon místo skriptů.
+
+* Nasaďte, spravujte a monitorujte všechny prostředky pro vaše řešení jako skupinu, místo toho, aby se tyto prostředky nemusely zpracovávat jednotlivě.
+
+* Znovu nasaďte řešení v průběhu životního cyklu vývoje a měli byste mít jistotu, že se prostředky nasazují v konzistentním stavu.
+
+* Definujte závislosti mezi prostředky tak, aby byly nasazeny ve správném pořadí.
+
+* Použijte řízení přístupu pro všechny služby ve vaší skupině prostředků, protože Access Control na základě rolí je nativně integrovaná do platformy pro správu.
+
+* Použijte značky pro prostředky k logickému uspořádání všech prostředků v rámci vašeho předplatného.
+
+* Vyjasnění fakturace vaší organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
-Azure nabízí čtyři úrovně oboru: [skupin pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
+Azure poskytuje čtyři úrovně rozsahu: [skupiny pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
-Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Například při použití [zásady](../governance/policy/overview.md) do předplatného, které zásady platí pro všechny skupiny prostředků a prostředků ve vašem předplatném. Při použití zásady na skupinu prostředků, zásady se použijí skupinu prostředků a všechny její prostředky. Jiné skupiny prostředků, ale nemá přiřazení zásad.
+Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Když například použijete [zásadu](../governance/policy/overview.md) pro předplatné, zásada se použije na všechny skupiny prostředků a prostředky v rámci vašeho předplatného. Když použijete zásadu pro skupinu prostředků, tato zásada se použije pro skupinu prostředků a všechny její prostředky. U jiné skupiny prostředků ale tato přiřazení zásad neplatí.
 
-Šablony můžete nasadit do skupin pro správu, předplatná nebo skupiny prostředků.
-
-## <a name="guidance"></a>Doprovodné materiály
-
-Následující návrhy vám pomohou při práci s vašimi řešeními plně využít výhod Resource Manageru.
-
-* K definování a nasazení infrastruktury využijte deklarativní syntaxi v šablonách Resource Manageru, nikoli imperativní příkazy.
-* V šabloně definujte všechny kroky nasazení a konfigurace. K nastavení svého řešení byste neměli využívat žádné ruční kroky.
-* Ke správě vašich prostředků využijte imperativní příkazy, například pro spuštění nebo zastavení aplikace nebo počítače.
-* Prostředky se stejným životním cyklem uspořádejte do skupiny prostředků. K ostatnímu uspořádání prostředků využijte značky.
-
-Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
-
-Doporučení k vytváření šablon Resource Manageru, najdete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
+Šablony můžete nasadit do skupin pro správu, předplatných nebo skupin prostředků.
 
 ## <a name="resource-groups"></a>Skupiny prostředků
+
 Při definování skupin prostředků byste měli vzít v úvahu některé důležité faktory:
 
 * Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud některý z prostředků, například databázový server, musí mít jiný cyklus nasazení, měl by být v jiné skupině prostředků.
+
 * Každý prostředek může být jenom v jedné skupině prostředků.
+
 * Prostředky je možné do skupiny prostředků kdykoli přidat nebo naopak odebrat.
+
 * Prostředky je možné přesouvat mezi skupinami. Další informace najdete v tématu, které se zabývá [přesunutím prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
+
 * Skupina prostředků může obsahovat prostředky, které se nacházejí v různých oblastech.
+
 * Skupinu prostředků lze využít k určení rozsahu řízení přístupu pro akce správy.
+
 * Prostředek může interagovat s prostředky v dalších skupinách prostředků. Tato interakce je běžná v případě, že spolu tyto dva prostředky souvisejí, ale nesdílejí stejný životní cyklus (například webové aplikace, které se připojují k databázi).
 
-Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
+Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [návrhu spolehlivých aplikací Azure](/azure/architecture/reliability/).
+Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/reliability/).
 
-## <a name="resource-providers"></a>Poskytovatelé prostředků
+## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manager
 
-Každý poskytovatel prostředků nabízí sadu prostředků a operací pro práci s těmito prostředky. Pokud například chcete ukládat klíče a tajné klíče, využijete poskytovatele prostředků **Microsoft.KeyVault**. Tento poskytovatel prostředků nabízí typ prostředků nazvaný **trezory** pro vytvoření trezoru klíčů.
+Služba Azure Resource Manager je navržena pro zajištění odolnosti a nepřetržité dostupnosti. Správce prostředků a řídící operace roviny (požadavky odeslané na management.azure.com) v REST API jsou:
 
-Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostředku}** . Typ prostředku pro trezor klíčů je **Microsoft.KeyVault/vaults**.
+* Distribuované napříč oblastmi. Některé služby jsou regionální.
 
-Než začnete nasazovat prostředky, měli byste získat přehled o dostupných poskytovatelích prostředků. Znalost názvů poskytovatelů prostředků a samotných prostředků vám umožní definovat prostředky, které chcete nasadit do Azure. Také je potřeba vědět platná umístění a verze rozhraní API pro každý typ prostředku. Další informace najdete v tématu [Zprostředkovatelé a typy prostředků](resource-manager-supported-services.md).
+* Distribuováno mezi Zóny dostupnosti (jako v oblastech) v umístěních, která mají více Zóny dostupnosti.
 
-Všechny operace nabízené poskytovatelů prostředků najdete v článku [rozhraní Azure REST API](/rest/api/azure/).
+* Nezávislá na jednom logickém datovém centru.
 
-## <a name="template-deployment"></a>Nasazení šablon
+* Pro aktivity údržby se nikdy neukončí.
 
-Pomocí Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
+Tato odolnost se vztahuje na služby, které přijímají požadavky prostřednictvím Správce prostředků. Například Key Vault výhody z této odolnosti.
 
-Další informace o formátu šablony a způsobu jejího sestavení najdete v tématu [Princip struktury a syntaxe šablon Azure Resource Manageru](resource-group-authoring-templates.md). Syntaxi JSON pro typy prostředků najdete v tématu [Definování prostředků v šablonách Azure Resource Manageru](/azure/templates/).
+## <a name="next-steps"></a>Další kroky
 
-Resource Manager zpracovává šablonu stejně jako ostatní požadavky. Parsuje šablonu a převede její syntaxi na operace rozhraní REST API pro příslušné poskytovatele prostředků. Když například Resource Manager obdrží šablonu s následující definicí prostředku:
+* Informace o všech operacích nabízených poskytovateli prostředků najdete v tématu [rozhraní API Azure REST](/rest/api/azure/).
 
-```json
-"resources": [
-  {
-    "apiVersion": "2016-01-01",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "mystorageaccount",
-    "location": "westus",
-    "sku": {
-      "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {
-    }
-  }
-]
-```
+* Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.
 
-Převede definici na následující operaci rozhraní REST API, která se odešle do poskytovatele prostředků Microsoft.Storage:
+* Další informace o označování prostředků najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 
-```HTTP
-PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
-REQUEST BODY
-{
-  "location": "westus",
-  "properties": {
-  }
-  "sku": {
-    "name": "Standard_LRS"
-  },
-  "kind": "Storage"
-}
-```
+* Další informace o uzamykání prostředků najdete v tématu [uzamčení prostředků, aby nedocházelo k neočekávaným změnám](resource-group-lock-resources.md).
 
-Záleží pouze na vás, jak definujete šablony a skupiny prostředků a jak chcete spravovat své řešení. Například můžete nasadit svou třívrstvou aplikaci prostřednictvím jediné šablony do jedné skupiny prostředků.
-
-![třívrstvá šablona](./media/resource-group-overview/3-tier-template.png)
-
-Není však nutné definovat celou infrastrukturu v jediné šabloně. Často má smysl rozdělit požadavky nasazení do několika cílených šablon, které jsou zaměřené na konkrétní účel. Tyto šablony můžete snadno opakovaně použít pro různá řešení. Chcete-li nasadit konkrétní řešení, vytvoříte hlavní šablonu, která propojí všechny požadované šablony. Následující obrázek znázorňuje způsob nasazení třívrstvého řešení prostřednictvím nadřazené šablony, která obsahuje tři vnořené šablony.
-
-![šablona vnořených vrstev](./media/resource-group-overview/nested-tiers-template.png)
-
-Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly, můžete tyto tři vrstvy nasadit do samostatných skupin prostředků. Všimněte si, že prostředky mohou být stále propojené s prostředky v jiných skupinách prostředků.
-
-![šablona vrstvy](./media/resource-group-overview/tier-templates.png)
-
-Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
-
-Azure Resource Manager analyzuje závislosti a zajistí, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
-
-Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona definuje prostředek, který již existuje, Resource Manager aktualizuje stávající prostředek místo vytvoření nového.
-
-Resource Manager poskytuje rozšíření pro scénáře, kdy potřebujete další operace, jako je například instalace konkrétního softwaru, který není zahrnutý v původní instalaci. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v tématu [rychlý start: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Šablonu pro stávající skupinu prostředků můžete také získat tak, že vyexportujete aktuální stav této skupiny prostředků nebo zobrazíte šablonu použitou pro konkrétní nasazení. Zobrazení [vyexportované šablony](./manage-resource-groups-portal.md#export-resource-groups-to-templates) vám pomůže blíže se seznámit se syntaxí šablony.
-
-Šablona se také stane součástí zdrojového kódu vaší aplikace. Můžete ji vrátit se změnami do vašeho úložiště zdrojového kódu a aktualizovat ji podle toho, jak se bude vaše aplikace vyvíjet. K úpravě šablony můžete použít Visual Studio.
-
-Po definování šablony jste připraveni k nasazení prostředků do Azure. Nasazení prostředků najdete v tématu:
-
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](resource-group-template-deploy-portal.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](resource-group-template-deploy-rest.md)
-
-## <a name="safe-deployment-practices"></a>Postupy bezpečného nasazení
-
-Při nasazení komplexní služby pro Azure, můžete potřebovat k nasazení služby do několika oblastí a zkontrolujte jeho stav, než budete pokračovat k dalšímu kroku. Použijte [Azure Deployment Manager](deployment-manager-overview.md) ke koordinaci postupného zavedení služby. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud nepotřebujete tato opatření, lepší volbou jsou operace nasazení v předchozím oddílu.
-
-Deployment Manager je momentálně ve verzi Public Preview.
-
-## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manageru
-
-Azure Resource Manageru service je navržená pro zajištění odolnosti a nepřetržitou dostupnost. Resource Manager a prvek operacím roviny (žádosti odeslané management.azure.com) v rozhraní REST API jsou:
-
-* Distribuované napříč oblastmi. Některé služby jsou místní.
-
-* Distribuované napříč zónami dostupnosti (jako dobře oblastí) v umístění, které mají několika zónami dostupnosti.
-
-* Není závislá na jedné logické datové centrum.
-
-* Nikdy neobsadila pro činnosti údržby.
-
-Tato odolnost proti chybám se vztahuje na služby, které příjem požadavků prostřednictvím Resource Manageru. Například služby Key Vault těží z této odolnost proti chybám.
-
-[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
-
-## <a name="next-steps"></a>Další postup
-
-V tomto článku jste se dozvěděli, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure. V dalším článku se dozvíte, jak vytvořit první šablonu Azure Resource Manageru.
-
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vytvoření a nasazení šablon Azure Resource Manageru pomocí webu Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)
+* Informace o vytváření šablon pro nasazení najdete v tématu [template Deployment Overview](template-deployment-overview.md).
