@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087576"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186766"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
@@ -61,7 +61,7 @@ Můžete také použít [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Účet RunAs
 
-Ve výchozím nastavení používá Hybrid Runbook Worker pro spouštění Runbooků místní systém pro Windows a speciální `nxautomation` uživatelský účet pro Linux. Místo toho, aby Runbooky poskytovaly vlastní ověřování pro místní prostředky, můžete zadat účet **runas** pro skupinu hybridních pracovních procesů. Zadáte [Asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, a všechny Runbooky se spustí pod těmito přihlašovacími údaji při spuštění na Hybrid Runbook Worker ve skupině.
+Ve výchozím nastavení používá Hybrid Runbook Worker pro spouštění Runbooků místní systém pro Windows a speciální `nxautomation` uživatelský účet pro Linux. Místo toho, aby Runbooky poskytovaly vlastní ověřování pro místní prostředky, můžete zadat účet **runas** pro skupinu hybridních pracovních procesů. Zadáte [Asset přihlašovacích údajů](automation-credentials.md) , který má přístup k místním prostředkům, včetně úložišť certifikátů, a všechny Runbooky spouštěné pod těmito přihlašovacími údaji při spuštění na Hybrid Runbook Worker ve skupině.
 
 Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
 

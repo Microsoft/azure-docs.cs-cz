@@ -2,7 +2,7 @@
 title: Dovednost pro vyhledávání pojmenovaných entit – Azure Search
 description: Extrahujte pojmenované entity pro osobu, umístění a organizaci z textu v kanálu vyhledávání Azure Searchho rozpoznávání.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: b689b577ed940dad03cdf25570187bde98222ee3
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f91d0b17cfc984ccf56ad4a25ef2ece651dcbed5
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635858"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183336"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání pojmenovaných entit
 

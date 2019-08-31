@@ -2,7 +2,7 @@
 title: 'Rychlý Start Java: Vytváření, načítání a dotazování indexů v jazyce Java'
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API pro Azure Search.
 author: lisaleib
-manager: cgronlun
+manager: nitinme
 ms.author: jjed
 tags: azure-portal
 services: search
@@ -11,12 +11,12 @@ ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.openlocfilehash: eff5674f2675d7764a068f72f7d7aa35660b62e4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eec22d14c2d71a94f21a2403463315d477032ede
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047659"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186730"
 ---
 # <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Rychlý start: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API pomocí Java
 > [!div class="op_single_selector"]
@@ -827,7 +827,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu v jazyce Java jste pracovali pomocí řady úkolů, abyste mohli vytvořit index, načíst ho s dokumenty a spouštět dotazy. Pokud jste obeznámeni se základními pojmy, doporučujeme pro hlubší učení následující články.
 

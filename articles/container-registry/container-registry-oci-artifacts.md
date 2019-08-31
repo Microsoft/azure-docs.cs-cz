@@ -6,15 +6,15 @@ author: SteveLasker
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/28/2019
+ms.date: 08/30/2019
 ms.author: stevelas
 ms.custom: ''
-ms.openlocfilehash: 0448e5983b552b0677ba4d33e99aaae1ab75e61c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
-ms.translationtype: HT
+ms.openlocfilehash: 69423f85aecdc3f8049a7e784888e1f71d0bc702
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166495"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182707"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
 
@@ -135,12 +135,12 @@ Here is an artifact!
 
 ## <a name="remove-the-artifact-optional"></a>Odebrat artefakt (volitelné)
 
-Pokud chcete odebrat artefakt ze služby Azure Container Registry, použijte příkaz [AZ ACR úložiště Delete][az-acr-repository-delete] . Následující příklad odebere úložiště a jakýkoli artefakt, který jste uložili:
+Pokud chcete odebrat artefakt ze služby Azure Container Registry, použijte příkaz [AZ ACR úložiště Delete][az-acr-repository-delete] . Následující příklad odebere artefakt, který jste uložili:
 
 ```azurecli
 az acr repository delete \
     --name myregistry \
-    --repository samples/artifact
+    --image samples/artifact:1.0
 ```
 
 ## <a name="next-steps"></a>Další postup

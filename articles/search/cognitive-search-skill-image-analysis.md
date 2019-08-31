@@ -2,7 +2,7 @@
 title: Dovednost pro vyhledávání rozpoznávání obrázků v analýze – Azure Search
 description: Extrahujte sémantický text prostřednictvím analýzy obrázků s využitím ImageAnalysis vnímání v kanálu rozšíření Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 07969a92286837f8f72b533173ac8d170378d0ea
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128193"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183394"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 

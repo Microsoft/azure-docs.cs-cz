@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: MT
+ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423453"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165023"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 
@@ -44,19 +44,31 @@ Maximální počet přímých odkazů, které lze procházet pro extrakci QnAs z
 
 ## <a name="metadata-limits"></a>Omezení metadat
 
+### <a name="by-azure-search-pricing-tier"></a>Podle Azure Search cenové úrovně
+
 Maximální počet polí metadat na bázi znalostní báze je založený na vašich **[omezeních Azure Search úrovně](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
 |**Vrstva Azure Search** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
 |---|---|---|---|---|---|----|
 |Pole maximální metadat na službu QnA Maker (v rámci všech znalostní báze)|1 000|100 *|1 000|1 000|1 000|1 000|
 
+### <a name="by-name-and-value"></a>Podle názvu a hodnoty
+
+Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následující tabulce.
+
+|Položka|Povolené znaky|Porovnávání vzorů regulárního výrazu|Maximální počet znaků|
+|--|--|--|--|
+|Name|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_`podtržítkem|`^[a-zA-Z0-9_]+$`|100|
+|Value|Umožňuje vše kromě<br>`:`kolon<br>`|`(vertikální svislá čára)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
 Celkové limitů na obsah znalostní báze knowledge base:
 * Délka textu odpovědi: 25,000
 * Délka textu otázky: 1 000
 * Délka textu klíč/hodnota metadat: 100
-* Podporované znaky pro název metadat: Abecedy, číslice a _  
-* Podporované znaky pro hodnotu metadat: Vše kromě: a | 
+* Podporované znaky pro název metadat: Abecedy, číslice a`_`  
+* Podporované znaky pro hodnotu metadat: Vše kromě `:` a`|` 
 * Délka názvu souboru: 200
 * Podporované formáty souborů: "TSV", ".pdf", ".txt", ".docx", ".xlsx".
 * Maximální počet alternativních otázek: 300

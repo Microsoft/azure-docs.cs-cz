@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 08/28/2019
+ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138418"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182616"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
 
@@ -51,10 +51,11 @@ Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít p
 
      ![Výběr nového virtuálního počítače](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
-1. Zadejte název vašeho virtuálního počítače. Potom vyberte **Vytvořit**.
+1. Zadejte název vašeho virtuálního počítače. 
+   + Název virtuálního počítače poznámkového bloku musí mít délku 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak-znaku.  
+   + Název musí být taky jedinečný v rámci vašeho předplatného Azure.
 
-    > [!NOTE]
-    > Název virtuálního počítače poznámkového bloku musí mít délku 2 až 16 znaků. Platné znaky jsou písmena, číslice a znak-znaku.  Název musí být taky jedinečný v rámci vašeho předplatného Azure.
+1. Potom vyberte **Vytvořit**. Nastavení virtuálního počítače může chvíli trvat.
 
 1. Počkejte, než se stav změnína spuštěno.
 
@@ -66,43 +67,16 @@ Po spuštění virtuálního počítače pomocí části **virtuální počíta�
 
     ![Spuštění serveru Jupyter notebook](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-    Odkaz spustí svůj server poznámkového bloku a otevře webovou stránku Jupyter poznámkového bloku na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která virtuální počítač vytvořila. Každý uživatel pracovního prostoru musí vytvořit svůj vlastní virtuální počítač.
+   Odkaz spustí svůj server poznámkového bloku a otevře webovou stránku Jupyter poznámkového bloku na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která virtuální počítač vytvořila. Každý uživatel pracovního prostoru musí vytvořit svůj vlastní virtuální počítač.
 
-1. Na webové stránce poznámkového bloku Jupyter je hlavní název_složky vaším uživatelským jménem.  Vyberte tuto složku.
+1. Na webové stránce poznámkového bloku Jupyter vyberte hlavní název_složky, který má vaše uživatelské jméno.  
 
-    > [!TIP]
-    > Tato složka se nachází v [účtu úložiště](concept-workspace.md#resources) ve vašem pracovním prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Virtuální počítač poznámkového bloku můžete odstranit a pořád zachovat veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
+   Tato složka existuje v [účtu úložiště](concept-workspace.md#resources) pracovního prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Pokud odstraníte virtuální počítač poznámkového bloku, pořád budete mít veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
 
-1. `samples-*` Otevřete podadresář a pak otevřete`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+1. `samples-*` Otevřete podadresář a pak otevřete Poznámkový blok Jupyter.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 
-> [!Warning]
-> Ujistěte se, že `tutorial-1st-experiment-sdk-train.ipynb` soubor otevřete , nikoli `.yml` soubor > stejným názvem. 
-
-Ve **druhé části** kurzu spouštíte kód v `tutorial-1st-experiment-sdk-train.ipynb` nástroji pro výuku modelu strojového učení.
-
-## <a name="end"></a>Vyčištění prostředků
-
-Tuto část neprovádějte, pokud plánujete pokračovat v **části 2** tohoto kurzu.
-
-### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
-
-Pokud jste použili server cloudového poznámkového bloku, zastavte virtuální počítač, pokud ho nepoužíváte ke snížení nákladů.
-
-1. V pracovním prostoru vyberte **virtuální počítače poznámkového bloku**.
-
-   ![Zastavení serveru VM](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. V seznamu vyberte virtuální počítač.
-
-1. Vyberte **zastavit**.
-
-1. Až budete chtít znovu použít server, vyberte **Spustit**.
-
-### <a name="delete-everything"></a>Odstranit vše
-
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
-
-Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
+   > [!Warning]
+   > Ujistěte se, že `tutorial-1st-experiment-sdk-train.ipynb` soubor otevřete , nikoli `.yml` soubor > stejným názvem. 
 
 ## <a name="next-steps"></a>Další postup
 
@@ -111,7 +85,10 @@ V tomto kurzu jste dokončili tyto úkoly:
 * Byl vytvořen pracovní prostor služby Azure Machine Learning Service.
 * Vytvořili a nakonfigurovali jste v pracovním prostoru Server cloudového poznámkového bloku.
 
-Pokračujte v **části 2** tohoto kurzu a Naučte se jednoduchý model strojového učení.
+Ve **druhé části** kurzu spouštíte kód v `tutorial-1st-experiment-sdk-train.ipynb` nástroji pro výuku modelu strojového učení. 
 
 > [!div class="nextstepaction"]
 > [Kurz: Výuka prvního modelu](tutorial-1st-experiment-sdk-train.md)
+
+> [!IMPORTANT]
+> Pokud neplánujete tuto část tohoto kurzu nebo žádné jiné kurzy, měli byste [zastavit virtuální počítač se serverem cloudového poznámkového bloku](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , pokud ho nepoužíváte ke snížení nákladů.

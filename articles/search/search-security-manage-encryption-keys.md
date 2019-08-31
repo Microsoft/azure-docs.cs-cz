@@ -2,19 +2,19 @@
 title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem v Azure Key Vault (Preview) – Azure Search
 description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Search prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault.
 author: NatiNimni
-manager: jlembicz
+manager: nitinme
 ms.author: natinimn
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ce7a8af1416664a3a94b248c95203c8e775e805c
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779102"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182412"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem v Azure Key Vault
 

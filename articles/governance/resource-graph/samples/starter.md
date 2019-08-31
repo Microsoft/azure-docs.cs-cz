@@ -1,6 +1,6 @@
 ---
-title: Úvodní ukázky dotazů
-description: Použití Azure Graph prostředků ke spuštění některých starter dotazuje, včetně počítání prostředky objednávání prostředků, nebo s konkrétní značkou.
+title: Ukázky počátečních dotazů
+description: Pomocí Azure Resource graphu můžete spouštět některé úvodní dotazy, včetně počítání prostředků, řazení prostředků nebo konkrétní značky.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/23/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 98b05f74f0d6f7d20b5aa7ed77047818f217f147
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a2e315cee204d0fee6f53112af83b4d24e8d3974
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691173"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186705"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
@@ -33,7 +33,7 @@ Projdeme následující úvodní dotazy:
 > - [Seznam prostředků s konkrétní hodnotou značky](#list-tag)
 > - [Seznam všech účtů úložiště s konkrétní hodnotou značky](#list-specific-tag)
 > - [Zobrazit aliasy pro prostředek virtuálního počítače](#show-aliases)
-> - [Zobrazit různé hodnoty pro konkrétní alias](#distinct-alias-values)
+> - [Zobrazit odlišné hodnoty pro konkrétní alias](#distinct-alias-values)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozšíření) podporují Azure Resource Graph. Před spuštěním jakéhokoli z následujících dotazů zkontrolujte, že je vaše prostředí připravené. Zobrazte [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) a [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) pro pokyny k instalaci a ověření vašeho výběru prostředí.
 
-## <a name="a-namecount-resourcescount-azure-resources"></a><a name="count-resources"/>Prostředky Azure počet
+## <a name="a-namecount-resourcescount-azure-resources"></a><a name="count-resources"/>Počet prostředků Azure
 
 Tento dotaz vrátí počet prostředků Azure, které existují v předplatných, ke kterým máte přístup. Tento dotaz je také vhodný k ověření, že vaše vybrané prostředí má nainstalované a funkční odpovídající komponenty služby Azure Resource Graph.
 
@@ -59,7 +59,7 @@ az graph query -q "summarize count()"
 Search-AzGraph -Query "summarize count()"
 ```
 
-## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a><a name="list-resources"/>Výpis prostředků seřazené podle názvu
+## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a><a name="list-resources"/>Vypsat prostředky seřazené podle názvu
 
 Tento dotaz vrátí jakýkoli typ prostředku, ale pouze vlastnosti **name** (Název), **type** (Typ) a **location** (Umístění). Pomocí klauzule `order by` seřadí vlastnosti podle vlastnosti **name** (Název) ve vzestupném pořadí (`asc`).
 
@@ -76,7 +76,7 @@ az graph query -q "project name, type, location | order by name asc"
 Search-AzGraph -Query "project name, type, location | order by name asc"
 ```
 
-## <a name="a-nameshow-vmsshow-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms"/>Zobrazit všechny virtuální počítače, které jsou seřazené podle názvu v sestupném pořadí
+## <a name="a-nameshow-vmsshow-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms"/>Zobrazit všechny virtuální počítače seřazené podle názvu v sestupném pořadí
 
 Když chceme vypsat pouze virtuální počítače (typ `Microsoft.Compute/virtualMachines`), můžeme ve výsledcích porovnat shodu vlastnosti **type** (Typ). Podobně jako v předchozím dotazu musí být změny `desc` `order by` být řazeny sestupně. `=~` ve shodě typu říká Azure Resource Graphu aby nerozlišoval malá a velká písmena.
 
@@ -94,9 +94,9 @@ az graph query -q "project name, location, type| where type =~ 'Microsoft.Comput
 Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
-## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typ operačního systému
+## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému
 
-Tento dotaz bude používat `limit` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` říká Azure Resource Graph, které vlastnosti použít.
+Tento dotaz bude používat `top` pouze k načtení pěti odpovídajících záznamů, které jsou řazeny podle názvu. Typ prostředku Azure je `Microsoft.Compute/virtualMachines`. `project` říká Azure Resource Graph, které vlastnosti použít.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -168,8 +168,8 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a><a name="list-publicip"/>Vypsat všechny veřejné IP adresy
 
 Podobně jako v předchozím dotazu se vyhledají všechny záznamy, jejichž typ obsahuje slovo **publicIPAddresses**.
-Tento dotaz rozšíří na tomto vzoru zahrnout pouze výsledky kde **properties.ipAddress**
-`isnotempty`, který vrátí pouze **properties.ipAddress**a získat `limit` výsledky v horní části
+Tento dotaz rozbalí tento model tak, aby obsahoval jenom výsledky, ve kterých **Vlastnosti. IPAddress**
+`isnotempty`vrátí jenom **Vlastnosti. IPAddress**, a `limit` výsledky podle horní části.
 100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
 
 ```kusto
@@ -186,7 +186,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
-## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip"/>Spočítat prostředky, které mají IP adresy nakonfigurované podle předplatného
+## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip"/>Počet prostředků, které mají IP adresy nakonfigurované pomocí předplatného
 
 Pomocí předchozího ilustračního dotazu a přidáním `summarize` a `count()`, získáme seznam podle předplatného prostředků s nakonfigurovanými IP adresami.
 
@@ -203,7 +203,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
-## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a><a name="list-tag"/>Seznam prostředků s konkrétní značkou hodnotou
+## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a><a name="list-tag"/>Vypíše prostředky s určitou hodnotou značky.
 
 Rozsah výsledků můžeme omezit podle vlastností jiných než typ prostředku Azure, jako je například značka. V tomto příkladu vyfiltrujeme prostředky Azure s názvem značky **Environment** (Prostředí) s hodnotou **Internal** (Interní).
 
@@ -235,7 +235,7 @@ az graph query -q "where tags.environment=~'internal' | project name, tags"
 Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 ```
 
-## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag"/>Vypsat všechny účty úložiště s konkrétní značkou hodnotou
+## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag"/>Vypíše všechny účty úložiště s určitou hodnotou značky.
 
 Zkombinujte funkci filtrování z předchozího příkladu a vyfiltrujte typ prostředku Azure podle vlastnosti **type** (Typ). Tento dotaz naše hledání omezuje také na konkrétní typy prostředků Azure s konkrétním názvem a hodnotou značky.
 
@@ -257,7 +257,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 
 ## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"/>Zobrazit aliasy pro prostředek virtuálního počítače
 
-[Azure zásad aliasy](../../policy/concepts/definition-structure.md#aliases) se zásadami Azure používají ke správě dodržování předpisů prostředkem. Azure Graph prostředků můžete vrátit _aliasy_ typu prostředku. Tyto hodnoty jsou užitečné pro porovnávání aktuální hodnotu aliasy při vytváření vlastní definice zásady. _Aliasy_ pole není k dispozici ve výchozím nastavení ve výsledcích dotazu. Použití `project aliases` chcete explicitně přidat do výsledků.
+[Azure Policy aliasy](../../policy/concepts/definition-structure.md#aliases) používají Azure Policy ke správě dodržování předpisů prostředků. Graf prostředků Azure může vracet _aliasy_ typu prostředku. Tyto hodnoty jsou užitečné při porovnávání aktuální hodnoty aliasů při vytváření vlastní definice zásad. Pole _aliasy_ není ve výchozím nastavení k dispozici ve výsledcích dotazu. Slouží `project aliases` k explicitnímu přidání do výsledků.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -270,12 +270,12 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 |
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
-## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Zobrazit různé hodnoty pro konkrétní alias
+## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Zobrazit odlišné hodnoty pro konkrétní alias
 
-Zobrazuje hodnotu aliasy na jediném prostředku je užitečné, ale nezobrazí hodnotu true pomocí grafu prostředků Azure k dotazování napříč předplatnými. Tento příklad zobrazuje všechny hodnoty konkrétní alias a vrátí jedinečné hodnoty.
+Zobrazení hodnoty aliasů u jednoho prostředku je užitečné, ale nezobrazuje skutečnou hodnotu použití Azure Resource graphu k dotazování napříč předplatnými. Tento příklad vyhledá všechny hodnoty konkrétního aliasu a vrátí jedinečné hodnoty.
 
 ```kusto
 where type=~'Microsoft.Compute/virtualMachines'
@@ -291,7 +291,7 @@ az graph query -q "where type=~'Microsoft.Compute/virtualMachines' | extend alia
 Search-AzGraph -Query "where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o [dotazovacím jazyku](../concepts/query-language.md)
 - Naučte se [prozkoumat prostředky](../concepts/explore-resources.md)

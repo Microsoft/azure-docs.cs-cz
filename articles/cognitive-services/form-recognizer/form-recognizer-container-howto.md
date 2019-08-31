@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051202"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164541"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů
 
@@ -58,28 +58,25 @@ Minimální a doporučené PROCESORové jádro a paměť k přidělení pro kaž
 
 | Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 jádra, 4 GB paměti | 4 jádra, 8 GB paměti |
+| Rozpoznávání formulářů | 2 jádra, 4 GB paměti | 4 jádra, 8 GB paměti |
+| Rozpoznávání textu | 1 jádro, 8 GB paměti | 2 jádra, 8 GB paměti |
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
-* TPS-transakcí za sekundu
 * Základní a paměť odpovídají `--cpus` nastavení a `--memory` , která se `docker run` používají jako součást příkazu.
 
 > [!Note]
 > Minimální a doporučené hodnoty jsou založené na omezeních Docker, a *ne* na zdrojích hostitelských počítačů.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>Získání image kontejneru pomocí příkazu docker pull
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>Získání imagí kontejneru pomocí příkazu docker pull
 
-Image kontejneru pro nástroj pro rozpoznávání formulářů jsou k dispozici v následujícím úložišti:
+Image kontejneru pro **rozpoznávání formulářů** a **rozpoznávání textu** nabídky jsou k dispozici v následujícím registru kontejneru:
 
-| Kontejner | Úložiště |
+| Kontejner | Plně kvalifikovaný název bitové kopie |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Rozpoznávání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Pokud máte v `cognitive-services-recognize-text` úmyslu použít [kontejner](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)místo služby pro rozpoznávání formulářů, ujistěte se, `docker pull` že jste použili příkaz se správným názvem kontejneru: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+Budete potřebovat oba kontejnery, Upozorňujeme, že textový kontejner **pro rozpoznávání** se [podrobně popisuje mimo tento článek.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Chcete-li získat kontejner pro rozpoznávání formulářů, použijte následu
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Vyžádané čtení Docker pro kontejner Rozpoznávání textu
+
+#### <a name="recognize-text"></a>Rozpoznávání textu
+
+Chcete-li získat kontejner Rozpoznávání textu, použijte následující příkaz:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejner

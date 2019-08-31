@@ -1,8 +1,8 @@
 ---
-title: moreLikeThis ve službě Azure Search (preview) – Azure Search
-description: Předběžná dokumentace pro funkci moreLikeThis (preview) v rozhraní REST API Azure Search.
+title: moreLikeThis v Azure Search (Preview) – Azure Search
+description: Předběžná dokumentace k funkci moreLikeThis (Preview), která je dostupná v REST API Azure Search
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4d1c691e570d3cfc7e0475c02e4c60ed6ffa8440
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485353"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182321"
 ---
-# <a name="morelikethis-in-azure-search"></a>moreLikeThis ve službě Azure Search
+# <a name="morelikethis-in-azure-search"></a>moreLikeThis v Azure Search
 
 > [!Note]
-> moreLikeThis je ve verzi preview a není určen pro použití v produkčním prostředí. [Rozhraní REST API verze 2019-05-06-Preview](search-api-preview.md) tuto funkci poskytuje. Není dostupná podpora .NET SDK v současnosti.
+> moreLikeThis je ve verzi Preview a není určená pro použití v produkčním prostředí. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 
-`moreLikeThis=[key]` je parametr dotazu v [rozhraní API pro vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , který vyhledá dokumenty podobný dokument určený pomocí klíče dokumentu. Po provedení požadavku na hledání s `moreLikeThis`, dotazu je vytvořen s hledané termíny extrahují z daného dokumentu, které popisují nejlepší tohoto dokumentu. Generování dotazu se pak použije k odeslání požadavku hledání. Ve výchozím nastavení, obsah všechna prohledatelná pole jsou považovány za, po odečtení všech s omezeným přístupem polí, které jste zadali pomocí `searchFields` parametru. `moreLikeThis` Parametr nelze použít s parametrem vyhledávání `search=[string]`.
+`moreLikeThis=[key]`je parametr dotazu v [rozhraní API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , který najde dokumenty podobné dokumentu určenému klíčem dokumentu. Když se `moreLikeThis`vytvoří požadavek na hledání, vygeneruje se dotaz s hledanými výrazy z daného dokumentu, které tento dokument nejlépe popisují. Vygenerovaný dotaz se pak použije k vytvoření žádosti o vyhledávání. Ve výchozím nastavení se považuje obsah všech prohledávatelných polí, mínus všechna pole s omezením, která jste zadali `searchFields` pomocí parametru. Parametr nelze použít společně s `search=[string]`parametrem Search. `moreLikeThis`
 
-Ve výchozím nastavení jsou považovány za obsah všechna prohledatelná pole nejvyšší úrovně. Pokud chcete místo toho zadejte konkrétní pole, můžete použít `searchFields` parametru. 
+Ve výchozím nastavení se považuje obsah všech vyhledávacích polí na nejvyšší úrovni. Chcete-li místo toho zadat konkrétní pole, můžete použít `searchFields` parametr. 
 
-MoreLikeThis nelze použít v prohledávatelných dílčích polí v [komplexní typ](search-howto-complex-data-types.md).
+MoreLikeThis nelze použít pro prohledávatelné dílčí pole ve [složitém typu](search-howto-complex-data-types.md).
 
 ## <a name="examples"></a>Příklady 
 
-Níže je příklad dotazu moreLikeThis. Tento dotaz najde dokumentů, jejichž popis pole jsou nejvíc podobný pole zdrojový dokument určený `moreLikeThis` parametru.
+Níže je uveden příklad dotazu moreLikeThis. Dotaz vyhledá dokumenty, jejichž pole popisu jsou nejvíce podobná poli zdrojového dokumentu, jak je uvedeno v `moreLikeThis` parametru.
 
 ```
 Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
@@ -47,7 +47,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 
 ## <a name="next-steps"></a>Další postup
 
-Všechny webové nástroje pro testování můžete experimentovat s touto funkcí.  Doporučujeme použít nástroj Postman pro účely tohoto cvičení.
+K experimentování s touto funkcí můžete použít libovolný nástroj webového testování.  Pro toto cvičení doporučujeme použít metodu post.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman](search-get-started-postman.md)
+> [Prozkoumejte Azure Search rozhraní REST API pomocí post](search-get-started-postman.md)

@@ -1,7 +1,7 @@
 ---
 title: Mapování rozpoznávání vyhledávání obohacená vstupní pole do výstupních polí – Azure Search
 description: Extrahování a obohacení zdrojových datových polí a mapování na výstupní pole v indexu Azure Search.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 1d1ef7be83601a1ccf09ac52f87d0fcc953c605c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0e422d2453fe12280da9e9b0b5dc7aa391f97b9f
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639192"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186400"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Mapování obohacených polí na index s možností prohledávání
 

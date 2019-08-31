@@ -2,18 +2,18 @@
 title: Připojení ke službě Azure SQL Managed instance pro indexování vyhledávání – Azure Search
 description: Povolte veřejný koncový bod, aby bylo možné povolit připojení ke spravovaným instancím SQL z indexeru na Azure Search.
 author: vl8163264128
-manager: briansmi
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: victliu
-ms.openlocfilehash: ae947e85f600b3bc380898ad5820239aa823794d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 07bc1a55c0222fda87b28acbaa8bfe552fb8e6ed
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229125"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186664"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-managed-instance"></a>Konfigurace připojení z Azure Search indexeru na spravovanou instanci SQL
 Jak je uvedeno v části [připojení Azure SQL Database k Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexerů pro **spravované instance SQL** podporuje Azure Search prostřednictvím veřejného koncového bodu.

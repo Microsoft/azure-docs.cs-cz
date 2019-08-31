@@ -1,8 +1,8 @@
 ---
-title: Jak modelování komplexních datových typů – Azure Search
-description: Vnořené nebo hierarchické datových struktur můžete modelovat v indexu Azure Search pomocí typu ComplexType a kolekce datových typů.
+title: Postup modelování komplexních datových typů – Azure Search
+description: Vnořené nebo hierarchické datové struktury lze modelovat v Azure Search indexu pomocí datových typů ComplexType a Collections.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 services: search
@@ -10,31 +10,31 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e7e6ddefd13d669c949389bc4fad85fb6cff4d3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621365"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183211"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Jak modelování komplexních datových typů ve službě Azure Search
+# <a name="how-to-model-complex-data-types-in-azure-search"></a>Postup modelování složitých datových typů v Azure Search
 
-Externích datových sad použitých k naplnění indexu Azure Search můžou mít více tvarů. Někdy patří mezi ně hierarchické, nebo jsou vnořené používání dílčích struktur. Příklady můžou zahrnovat více adres pro jednoho zákazníka, více barvy a velikosti pro jeden SKU, více autoři jednoho adresáře a tak dále. V modelovacích podmínky, může se zobrazit tyto struktury říká *komplexní*, *složené*, *složené*, nebo *agregační* datové typy. Termín, který používá služba Azure Search pro tento koncept je **komplexní typ**. Ve službě Azure Search, komplexní typy jsou modelovány pomocí **komplexní pole**. Komplexní pole je pole, která obsahuje podřízené položky (dílčích polí), které mohou být libovolného datového typu, včetně jiných komplexních typů. Tento postup funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
+Externí datové sady, které slouží k naplnění indexu Azure Search, mohou být v mnoha tvarech. Někdy zahrnují hierarchické nebo vnořené podstruktury. Příklady mohou zahrnovat několik adres pro jednoho zákazníka, více barev a velikostí pro jednu SKU, více autorů jedné knihy a tak dále. V rámci modelovacích podmínek se tyto struktury můžou zobrazit jako *komplexní*, *složené*, *složené*nebo agregované datové typy. Termín Azure Search použití pro tento koncept je **komplexní typ**. V Azure Search komplexní typy jsou modelovány pomocí **složitých polí**. Komplexní pole je pole, které obsahuje podřízené položky (podpole), které mohou být libovolného datového typu, včetně jiných složitých typů. Funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
 
-Komplexní pole představují jeden objekt v dokumentu nebo pole objektů, v závislosti na typu dat. Pole typu `Edm.ComplexType` představují jednotlivé objekty při pole typu `Collection(Edm.ComplexType)` představuje pole objektů.
+Složitá pole zastupují buď jeden objekt v dokumentu, nebo pole objektů, v závislosti na datovém typu. Pole typu `Edm.ComplexType` reprezentují jednotlivé objekty, zatímco pole typu `Collection(Edm.ComplexType)` reprezentují pole objektů.
 
-Služba Azure Search nativně podporuje komplexní typy a kolekce. Tyto typy umožňují vám modelovat téměř jakoukoli strukturu JSON do indexu Azure Search. V předchozích verzích rozhraní API služby Azure Search sloučí pouze řádek, který nastaví nebylo možné importovat. V nejnovější verzi indexu můžete nyní lépe odpovídají zdrojová data. Jinými slovy Pokud se zdrojová data obsahuje komplexní typy, indexu může mít složité typy také.
+Azure Search nativně podporuje komplexní typy a kolekce. Tyto typy umožňují modelovat skoro jakoukoli strukturu JSON v indexu Azure Search. V předchozích verzích Azure Search rozhraní API se naimportovaly jenom sady řádků s plochými řádky. V nejnovější verzi může váš index nyní přesněji odpovídat zdrojovým datům. Jinými slovy, pokud zdrojová data mají komplexní typy, váš index může mít také komplexní typy.
 
-Abyste mohli začít, doporučujeme, abyste [Hotels datovou sadu](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), které se dají načíst v **importovat data** Průvodce na webu Azure Portal. Průvodce zjistí komplexní typy ve zdroji a navrhne schéma indexu podle zjištěných struktury.
+Chcete-li začít, doporučujeme [sadu dat hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), kterou můžete načíst do průvodce **importem dat** v Azure Portal. Průvodce detekuje ve zdroji komplexní typy a navrhuje schéma indexu založené na zjištěných strukturách.
 
 > [!Note]
-> Podpora pro komplexní typy je všeobecně dostupná v `api-version=2019-05-06`. 
+> Podpora komplexních typů je všeobecně dostupná v `api-version=2019-05-06`. 
 >
-> Pokud vaše hledání řešení je vybudováno na starší řešení plochá datových sad v kolekci, měli byste změnit indexu na komplexní typy jako v nejnovější verzi rozhraní API nepodporuje. Další informace o upgradu verze rozhraní API najdete v tématu [upgradovat na nejnovější verzi rozhraní REST API](search-api-migration.md) nebo [upgradovat na nejnovější verzi sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
+> Pokud je vaše řešení hledání postavené na předchozích řešeních plochých datových sad v kolekci, měli byste index změnit tak, aby zahrnoval komplexní typy, které jsou podporované v nejnovější verzi rozhraní API. Další informace o upgradu verzí rozhraní API najdete v tématu [upgrade na nejnovější verzi REST API](search-api-migration.md) nebo [upgrade na nejnovější verzi sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
-## <a name="example-of-a-complex-structure"></a>Příklad složité struktury
+## <a name="example-of-a-complex-structure"></a>Příklad komplexní struktury
 
-Následující dokument JSON se skládá z jednoduchého polí a polí komplexní. Komplexní pole, jako například `Address` a `Rooms`, mají dílčí pole. `Address` má jednu sadu hodnot pro tyto dílčí pole, protože je jeden objekt v dokumentu. Naproti tomu `Rooms` má víc kopií hodnoty pro jeho dílčí pole, jeden pro každý objekt v kolekci.
+Následující dokument JSON se skládá z jednoduchých polí a složitých polí. Složitá pole, například `Address` a `Rooms`, mají dílčí pole. `Address`má jednu sadu hodnot pro tyto dílčí pole, protože se jedná o jediný objekt v dokumentu. Naproti tomu `Rooms` má více sad hodnot pro své dílčí pole, jeden pro každý objekt v kolekci.
 
 ```json
 {
@@ -63,9 +63,9 @@ Následující dokument JSON se skládá z jednoduchého polí a polí komplexn�
 
 ## <a name="creating-complex-fields"></a>Vytváření složitých polí
 
-Jako v jakékoli definice indexu můžete použít portál, [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/create-index), nebo [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) k vytvoření schématu, která obsahuje komplexní typy. 
+Stejně jako u libovolné definice indexu můžete použít portál, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) k vytvoření schématu, které obsahuje komplexní typy. 
 
-Následující příklad ukazuje schématu indexu JSON s jednoduchou pole, kolekcí a komplexní typy. Všimněte si, že v rámci komplexní typ, každý dílčí pole má typ, může mít atributy, stejně jako nejvyšší úrovně pole. Schéma odpovídá výše uvedeného příkladu s daty. `Address` je komplexní pole, který není kolekce (hotelu má jednu adresu). `Rooms` je komplexní kolekce pole (hotelu má mnoho místnosti).
+Následující příklad ukazuje schéma indexu JSON s jednoduchými poli, kolekcemi a komplexními typy. Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a může mít atributy, stejně jako pole nejvyšší úrovně. Schéma odpovídá výše uvedeným ukázkovým datům. `Address`je komplexní pole, které není kolekcí (Hotel má jednu adresu). `Rooms`je komplexní pole kolekce (Hotel má mnoho místností).
 
 <!---
 For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
@@ -98,71 +98,71 @@ Indexers are a different story. When defining an indexer, in particular one used
 }
 ```
 
-## <a name="updating-complex-fields"></a>Aktualizují se komplexní pole
+## <a name="updating-complex-fields"></a>Aktualizace složitých polí
 
-Všechny [přeindexování pravidla](search-howto-reindex.md) , které se týkají pole obecně stále platí pro komplexní pole. Bylo nutné restartovat některé hlavní pravidel, přidání pole nevyžaduje opětovné sestavení indexu, ale většina úpravy provést.
+Všechna [pravidla](search-howto-reindex.md) přeindexace, která platí pro pole obecně, se stále vztahují na složitá pole. Pokud je zde uvedeno několik hlavních pravidel, přidání pole nevyžaduje opětovné sestavení indexu, ale většina úprav provádí.
 
 ### <a name="structural-updates-to-the-definition"></a>Strukturální aktualizace definice
 
-Můžete přidat nový dílčí pole komplexní pole kdykoli bez nutnosti opětovné sestavení indexu. Například "PSČ" přidání do `Address` nebo "Zařízení" k `Rooms` smí, stejně jako přidávání do indexu pole nejvyšší úrovně. Stávající dokumenty mít hodnotu null pro nové pole, dokud explicitně naplnění těchto polí stačí aktualizovat vaše data.
+Můžete kdykoli přidat nová dílčí pole do komplexního pole bez nutnosti opětovného sestavení indexu. Například přidávání "PSČ" do `Address` nebo "rekreačního" na `Rooms` je povoleno, stejně jako přidání pole nejvyšší úrovně do indexu. Existující dokumenty mají hodnotu null pro nová pole, dokud tato pole explicitně nenastavíte tak, že aktualizujete svá data.
 
-Všimněte si, že v rámci komplexní typ, každý dílčí pole má typ, může mít atributy, stejně jako nejvyšší úrovně pole
+Všimněte si, že v rámci komplexního typu má každé dílčí pole typ a může mít atributy, stejně jako pole nejvyšší úrovně.
 
 ### <a name="data-updates"></a>Aktualizace dat
 
-Aktualizuje se existující dokumenty v indexu s `upload` akce funguje stejným způsobem pro komplexní a jednoduché pole – všechna pole jsou nahrazena. Ale `merge` (nebo `mergeOrUpload` při použití existujícího dokumentu) nebude fungovat stejně ve všech polích. Konkrétně `merge` nepodporuje sloučení elementů v rámci kolekce. Toto omezení existuje pro kolekce primitivních typů a komplexní kolekce. Aktualizujte kolekci, budete potřebovat k načtení hodnoty celé kolekce provedete změny a poté zahrnout do nové kolekce žádosti rozhraní API indexu.
+Aktualizace existujících dokumentů v indexu pomocí `upload` akce funguje stejně jako u složitých a jednoduchých polí – všechna pole se nahrazují. Nicméně (nebo `mergeOrUpload` při použití pro existující dokument) nefungují stejně jako ve všech polích. `merge` `merge` Konkrétně nepodporuje sloučení prvků v rámci kolekce. Toto omezení existuje pro kolekce primitivních typů a komplexních kolekcí. Chcete-li aktualizovat kolekci, je nutné načíst úplnou hodnotu kolekce, provést změny a pak zahrnout novou kolekci do požadavku rozhraní API pro index.
 
-## <a name="searching-complex-fields"></a>Vyhledávání složitých pole
+## <a name="searching-complex-fields"></a>Hledání složitých polí
 
-Volného tvaru hledaných výrazů fungovat podle očekávání s komplexní typy. Pokud je vyhledáno všechny prohledávatelné pole nebo dílčí pole kamkoli v dokumentu, samotný dokument je shoda.
+Výrazy hledání volných formulářů fungují podle očekávání u složitých typů. Pokud se v dokumentu shodují libovolné prohledávatelné pole nebo dílčí pole, pak se jedná o shodu samotného dokumentu.
 
-Dotazy get další odlišování, pokud máte více podmínek a operátory a termíny, které se mají názvy zadané, jako je možné s [syntaxe Lucene](query-lucene-syntax.md). Například tento dotaz se pokusí o porovnání těchto dvou výrazů, "Portland" a "Nebo" proti dvě dílčí pole do pole adresy:
+Dotazy dostanou více odlišit, když máte více podmínek a operátorů, přičemž některé výrazy mají zadané názvy polí, jak je to možné v [syntaxi Lucene](query-lucene-syntax.md). Tento dotaz se například pokusí porovnat dvě podklíče pole adresa, "Portland" a "nebo".
 
     search=Address/City:Portland AND Address/State:OR
 
-Dotazy, jako jsou *bez korelace nejsou* pro fulltextové vyhledávání, na rozdíl od filtry. Filtry, se korelují zadávat dotazy na dílčí pole komplexní kolekci pomocí proměnných rozsahu v [ `any` nebo `all` ](search-query-odata-collection-operators.md). Výše uvedený Lucene dotaz vrátí dokumenty, které obsahují "Portland, Maine" a ", Portland, Oregon", společně s další měst v Oregon. K tomu dochází, protože každou klauzuli platí pro všechny hodnoty jeho pole v celém dokumentu, takže neexistuje koncept "aktuální dílčí dokumentu". Další informace najdete v části [filtry kolekcí OData Principy ve službě Azure Search](search-query-understand-collection-filters.md).
+Podobné dotazy nejsou pro fulltextové vyhledávání na rozdíl od filtrů nekorelační. Ve filtrech jsou dotazy nad dílčími poli komplexní kolekce korelační pomocí proměnných rozsahu v [ `any` nebo `all` ](search-query-odata-collection-operators.md). Výše uvedený dotaz Lucene vrátí dokumenty, které obsahují "Portland, Maine" a "Portlandd, Brno", spolu s ostatními městy v Brno. K tomu dochází, protože každá klauzule se vztahuje na všechny hodnoty svého pole v celém dokumentu, takže neexistuje koncept "aktuálního dílčího dokumentu". Další informace o tomto tématu najdete v článku [porozumění filtrům kolekce OData v Azure Search](search-query-understand-collection-filters.md).
 
 ## <a name="selecting-complex-fields"></a>Výběr komplexních polí
 
-`$select` Parametr se používá k výběru, která pole jsou vráceny ve výsledcích hledání. Chcete-li tento parametr použijte k výběru konkrétního dílčího pole komplexní pole, patří nadřazené pole a dílčí oddělené lomítkem (`/`).
+`$select` Parametr slouží k výběru polí, která se vrátí ve výsledcích hledání. Chcete-li použít tento parametr pro výběr konkrétní dílčí pole složeného pole, zahrňte nadřazené pole a dílčí pole oddělené lomítkem (`/`).
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Pole musí označená jako Retrievable v indexu, pokud chcete ve výsledcích hledání. Může být používáno pouze pole označené jako Retrievable `$select` příkazu.
+Pole musí být označena jako zavedená v indexu, pokud je chcete ve výsledcích hledání. V `$select` příkazu lze použít pouze pole, která jsou označena jako schopná.
 
-## <a name="filter-facet-and-sort-complex-fields"></a>Filtr, omezující vlastnosti a komplexní pole řazení
+## <a name="filter-facet-and-sort-complex-fields"></a>Filtrování, omezující vlastnosti a řazení složitých polí
 
-Stejné [syntaxe cesty OData](query-odata-filter-orderby-syntax.md) použít pro filtrování a fielded vyhledávání je také možné použít pro používání faset, řazení a vyberete pole v požadavku hledání. Pro komplexní typy platí pravidla, kterými se řídí dílčí pole, která může být označený jako sortable a facetable. Další informace o těchto pravidlech najdete v článku [referenční informace k vytvoření indexu API](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Stejnou [syntaxi cesty OData](query-odata-filter-orderby-syntax.md) použitou pro filtrování a hledání v terénu lze také použít pro omezující vlastnosti, řazení a výběr polí v žádosti o vyhledávání. U komplexních typů platí pravidla, která určují, která dílčí pole mohou být označena jako řaditelné nebo plošky. Další informace o těchto pravidlech najdete v referenčních informacích k [rozhraní API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
-### <a name="faceting-sub-fields"></a>Dílčí pole "faceting"
+### <a name="faceting-sub-fields"></a>Podpole omezující vlastnosti
 
-Všechny dílčí pole může být označený jako facetable, pokud se nejedná o typ `Edm.GeographyPoint` nebo `Collection(Edm.GeographyPoint)`.
+Jakékoli dílčí pole může být označeno jako ploška, pokud není typu `Edm.GeographyPoint` nebo. `Collection(Edm.GeographyPoint)`
 
-Počet dokumentů, vrátila ve výsledcích omezující vlastnost se počítají pro nadřazený dokument (hotelu), nikoli dílčí dokumenty v kolekci komplexních (místnosti). Například předpokládejme, že má hotelu 20 místnosti typu "suite". Zadaný parametr tato omezující vlastnost `facet=Rooms/Type`, jeden pro hotelu, ne 20 místnostech omezující vlastnost počet bude.
+Počty dokumentů vracené ve výsledcích omezující vlastnosti jsou vypočítány pro nadřazený dokument (Hotel), nikoli pro dílčí dokumenty ve složité kolekci (místnosti). Předpokládejme například, že Hotel má 20 místností typu "Suite". Pro tento parametr `facet=Rooms/Type`omezující vlastnosti bude počet omezující vlastnosti jeden pro Hotel, ne 20 pro místnosti.
 
-### <a name="sorting-complex-fields"></a>Komplexní pole řazení
+### <a name="sorting-complex-fields"></a>Řazení složitých polí
 
-Operace řazení se nevztahuje na dokumenty (hotely) a není dílčí dokumenty (místnosti). Pokud máte kolekci komplexní typ, jako je například místnosti, je důležité si uvědomit, že nelze řadit v místnosti vůbec. Ve skutečnosti nelze řadit podle žádné kolekce.
+Operace řazení se vztahují na dokumenty (hotely) a ne na poddokumenty (místnosti). Pokud máte komplexní kolekci typů, například místnosti, je důležité si uvědomit, že už nemůžete řadit na místnosti. Ve skutečnosti nemůžete řadit podle žádné kolekce.
 
-Operací řazení fungovat, pokud pole mají jednu hodnotu v jednom dokumentu, zda je pole jednoduché pole nebo dílčí pole v komplexního typu. Například `Address/City` může být to, že existuje pouze jedna adresa za hotelu, proto seřaditelné `$orderby=Address/City` seřadíte hotels podle měst.
+Operace řazení fungují, pokud pole mají jednu hodnotu v jednom dokumentu, ať už je to jednoduché pole, nebo dílčí pole komplexního typu. Například `Address/City` je povoleno seřaditelné, protože existuje pouze jedna adresa pro každý Hotel, takže `$orderby=Address/City` bude setříděno hotely podle města.
 
-### <a name="filtering-on-complex-fields"></a>Filtrování podle komplexní polí
+### <a name="filtering-on-complex-fields"></a>Filtrování u složitých polí
 
-Mohou odkazovat na dílčí pole komplexní pole ve výrazu filtru. Stačí použít stejný [syntaxe cesty OData](query-odata-filter-orderby-syntax.md) , který se používá pro používání faset, řazení a vyberte pole. Například následující filtr vrátí všechny hotely v Kanadě:
+Můžete se podívat na dílčí pole komplexního pole ve výrazu filtru. Stačí použít stejnou [syntaxi cesty OData](query-odata-filter-orderby-syntax.md) , která se používá pro omezující vlastnosti, řazení a výběr polí. Například následující filtr vrátí všechny hotely v Kanadě:
 
     $filter=Address/Country eq 'Canada'
 
-K filtrování podle určitého pole komplexní kolekci, můžete použít **výraz lambda** s [ `any` a `all` operátory](search-query-odata-collection-operators.md). V takovém případě **proměnnou rozsahu** výraz lambda je objekt s dílčích polí. Mohou odkazovat na tyto dílčí pole pomocí standardní syntaxe cesty OData. Například následující filtr vrátí všechny hotels s alespoň jeden deluxe místa a všechny jiné kouření místnosti:
+Chcete-li filtrovat podle komplexního pole kolekce, můžete použít **výraz lambda** s [ `any` operátory a `all` ](search-query-odata-collection-operators.md). V takovém případě **Proměnná rozsahu** výrazu lambda je objekt s podoblastmi. Můžete se podívat na tato dílčí pole se standardní syntaxí cesty OData. Například následující filtr vrátí všechny hotely s aspoň jednou a všemi místnostmi, které nepatří ke kouření:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Jak s jednoduchou pole nejvyšší úrovně, jednoduché dílčích polí komplexní pole lze zahrnout pouze ve filtrech případě, že mají **filterable** atribut nastaven na `true` v definici indexu. Další informace najdete v tématu [referenční informace k vytvoření indexu API](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Stejně jako u jednoduchých polí nejvyšší úrovně lze jednoduchá dílčí pole komplexních polí zahrnout pouze do filtrů, pokud mají atribut Filtered nastaven na `true` hodnotu v definici indexu. Další informace najdete v referenčních informacích k [rozhraní API pro vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zkuste [Hotels datovou sadu](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) v **importovat data** průvodce. Budete potřebovat informace o připojení služby Cosmos DB k dispozici v souboru readme pro přístup k datům.
+V průvodci **importem dat** zkuste [nastavit data hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) . Pro přístup k datům budete potřebovat informace o Cosmos DB připojení, které jsou k dispozici v souboru Readme.
 
-Pomocí těchto informací v dolním je prvním krokem v průvodci k vytvoření nového zdroje dat služby Azure Cosmos DB. Další na v průvodci, při přechodu na cíl indexovou stránku, uvidíte indexu s komplexní typy. Vytvoření a načtení indexu a následné provádění dotazů pochopit novou strukturu.
+Díky těmto informacím je prvním krokem v Průvodci vytvořením nového zdroje dat Azure Cosmos DB. V průvodci se po zobrazení stránky cílový index zobrazí rejstřík se složitými typy. Vytvořte a načtěte tento index a pak spusťte dotazy, abyste pochopili novou strukturu.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Průvodce portálem pro import, indexování a dotazy](search-get-started-portal.md)
+> [Rychlý Start: Průvodce portálem pro import, indexování a dotazy](search-get-started-portal.md)

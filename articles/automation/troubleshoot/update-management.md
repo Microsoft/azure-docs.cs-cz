@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061342"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186221"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Případě Aktualizace instalace bez nasazení
+
+### <a name="issue"></a>Problém
+
+Při registraci počítače se systémem Windows v nástroji Update Management můžete zobrazit aktualizace instalovat bez nasazení.
+
+### <a name="cause"></a>Příčina
+
+Ve Windows se aktualizace nainstalují automaticky, jakmile budou k dispozici. To může způsobit nejasnost, pokud jste neplánovali nasazení aktualizace na počítač.
+
+### <a name="resolution"></a>Řešení
+
+Klíč registru systému Windows je `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` standardně "4" – **Automatické stažení a instalaci**.
+
+U Update Management klientů doporučujeme nastavit tento klíč na "3" – **automaticky stahovat, ale neinstalovat automaticky**.
+
+Další informace najdete v tématu [Konfigurace automatických aktualizací](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ### <a name="nologs"></a>Případě Na portálu se nezobrazují počítače v části Update Management
 

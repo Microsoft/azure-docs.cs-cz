@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847994"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182535"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Použití existujícího modelu s Azure Machine Learning službou
 
@@ -76,23 +76,40 @@ Další informace o registraci modelů obecně najdete v tématu [Správa, nasaz
 
 ## <a name="define-inference-configuration"></a>Definovat odvozenou konfiguraci
 
-Odvozená konfigurace definuje prostředí používané pro spuštění nasazeného modelu. Konfigurace odvození odkazuje na následující soubory, které se používají ke spuštění modelu při jeho nasazení:
+Odvozená konfigurace definuje prostředí používané pro spuštění nasazeného modelu. Konfigurace odvození odkazuje na následující entity, které se používají ke spuštění modelu při jeho nasazení:
 
-* Modul runtime. Jediná platná hodnota pro modul runtime v současnosti je Python.
 * Vstupní skript. Tento soubor (pojmenovaný `score.py`) načte model při spuštění nasazené služby. Zodpovídá taky za příjem dat, předávání do modelu a vrácení odpovědi.
-* Soubor prostředí conda. Tento soubor definuje balíčky Pythonu potřebné ke spuštění modelu a vstupního skriptu. 
+* [Prostředí](how-to-use-environments.md)Azure Machine Learning služby. Prostředí definuje závislosti softwaru potřebné ke spuštění modelu a vstupního skriptu.
 
-Následující příklad ukazuje základní odvozenou konfiguraci pomocí sady Python SDK:
+Následující příklad ukazuje, jak pomocí sady SDK vytvořit prostředí a pak ho použít s konfigurací odvození:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-Další informace najdete v referenčních informacích k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) .
+Další informace najdete v následujících článcích:
+
++ [Jak používat prostředí](how-to-use-environments.md).
++ Odkaz na [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
+
 
 Rozhraní příkazového řádku načte konfiguraci odvození ze souboru YAML:
 
@@ -102,6 +119,20 @@ Rozhraní příkazového řádku načte konfiguraci odvození ze souboru YAML:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+V rozhraní příkazového řádku je prostředí conda definované v `myenv.yml` souboru, na který odkazuje konfigurace odvození. Následující YAML je obsahem tohoto souboru:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
@@ -191,24 +222,6 @@ def predict(text, include_neutral=True):
 
 Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
 
-### <a name="conda-environment"></a>Prostředí conda
-
-Následující YAML popisuje prostředí conda potřebné ke spuštění modelu a vstupního skriptu:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-Další informace najdete v tématu [nasazení modelů pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
-
 ## <a name="define-deployment"></a>Definovat nasazení
 
 Balíček [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) obsahuje třídy používané pro nasazení. Třída, kterou použijete, určuje, kde je model nasazen. Například pro nasazení jako webové služby ve službě Azure Kubernetes použijte [AksWebService. deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-) a vytvořte konfiguraci nasazení.
@@ -284,7 +297,7 @@ print(response.json())
 
 Další informace o tom, jak využít nasazenou službu, najdete v tématu [Vytvoření klienta](how-to-consume-web-service.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)

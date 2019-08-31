@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 47aeafdc2ffb8ca686a2b08243aaae3e743c12c2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
-ms.translationtype: HT
+ms.openlocfilehash: 4c42959d46aa522042275456a87e590f9e009348
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173557"
+ms.locfileid: "70183061"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
-Naučte se, jak omezit přístup k rozhraní API Azure API Management (APIM) na klienty, kteří jsou ověření pomocí Azure Active Directory B2C (Azure AD B2C). Podle kroků v tomto článku vytvořte a otestujte příchozí zásady v APIM, které omezují přístup jenom na ty požadavky, které zahrnují platný přístupový token vydaný Azure AD B2C.
+Přečtěte si, jak omezit přístup k rozhraní API Azure API Management (APIM) na klienty, kteří jsou ověření pomocí Azure Active Directory B2C (Azure AD B2C). Podle kroků v tomto článku vytvořte a otestujte příchozí zásady v APIM, které omezují přístup jenom na ty požadavky, které zahrnují platný přístupový token vydaný Azure AD B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -257,7 +257,7 @@ Následující příklad APIM příchozí zásady znázorňuje, jak přijímat t
 </policies>
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další podrobnosti o zásadách Azure API Management najdete v referenčním [indexu zásad APIM](../api-management/api-management-policies.md).
 

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 483f0c6de81fddaab7895f1686076fec56719676
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
-ms.translationtype: HT
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172662"
+ms.locfileid: "70186752"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Vyberte správnou SKU virtuálního počítače pro váš cluster Azure Průzkumník dat. 
 
@@ -83,7 +83,7 @@ Technické specifikace pro virtuální počítače clusteru Azure Průzkumník d
 |L16s_1| optimalizované pro úložiště | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1 000
 
 * Aktualizovaný seznam SKU pro virtuální počítače můžete zobrazit na jednu oblast pomocí rozhraní Azure Průzkumník dat [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet). 
-* Přečtěte si další informace o [různých skladových](/azure/virtual-machines/windows/sizes-compute)položkách Compute. 
+* Přečtěte si další informace o [různých SKU](/azure/virtual-machines/windows/sizes). 
 
 ## <a name="next-steps"></a>Další kroky
 

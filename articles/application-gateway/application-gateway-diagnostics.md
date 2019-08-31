@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850981"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183574"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-endu, diagnostické protokoly a metriky pro Application Gateway
 
@@ -105,7 +105,7 @@ Pomocí různých typů protokolů v Azure můžete spravovat a řešit potíže
 Protokoly můžete ukládat třemi způsoby:
 
 * **Účet úložiště**: Účty úložiště se nejlépe používají pro protokoly, když jsou protokoly uložené po delší dobu a v případě potřeby se přezkoumávají.
-* **Centra událostí**: Centra událostí jsou skvělou možností pro integraci s dalšími nástroji SEIM (Security Information and Event Management), které vám umožní získat upozornění na vaše prostředky.
+* **Centra událostí**: Centra událostí jsou skvělou možností pro integraci s dalšími nástroji SIEM (Security Information and Event Management), které vám umožní získat upozornění na vaše prostředky.
 * **Protokoly Azure monitor**: Protokoly Azure Monitor se nejlépe používají pro obecné monitorování vaší aplikace v reálném čase nebo při prohlížení trendů.
 
 ### <a name="enable-logging-through-powershell"></a>Povolit protokolování prostřednictvím PowerShellu
@@ -292,7 +292,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 Protokol brány firewall je vygenerován pouze v případě, že jste jej povolili pro každou bránu aplikace, jak je popsáno v předchozích krocích. Tento protokol také vyžaduje, aby byla na aplikační bráně nakonfigurovaná brána firewall webových aplikací. Data se ukládají do účtu úložiště, který jste zadali při povolování protokolování. Zaprotokolují se následující data:
 
 
-|Hodnota  |Popis  |
+|Value  |Popis  |
 |---------|---------|
 |instanceId     | Instance Application Gateway, pro kterou se generují data brány firewall. Pro aplikační bránu s více instancemi je k dispozici jeden řádek na instanci.         |
 |IP adresa klienta     |   Původní IP adresa pro požadavek.      |
@@ -421,7 +421,7 @@ Další informace o oznámeních výstrah najdete v tématu [přijímání ozná
 
 Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vizualizujte protokoly čítačů a událostí pomocí [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md).
 * [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) Blogový příspěvek.

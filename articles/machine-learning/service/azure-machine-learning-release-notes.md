@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 01ee8e5b9d7ab1e8ab4086e559ce8dd8df76252f
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971494"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182697"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -84,6 +84,7 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
     + Umožní uživatelům AutoML vyřadit řadu školení, která nejsou dostatečně dlouhá při prognózování.
     + Povolí uživatelům AutoML odstranit zrna ze sady testů, které neexistují v školicí sadě při prognózování.
     + Nyní AutoMLStep prostřednictvím automl config do back-endu, aby se předešlo jakýmkoli problémům při změnách nebo přidávání nových parametrů konfigurace.
+    + AutoML data Guardrail je teď ve verzi Public Preview. Po školení se uživateli zobrazí sestava Guardrail dat (pro úlohy klasifikace/regrese) a také k ní bude mít přístup prostřednictvím rozhraní SDK API.
   + **azureml-train-core**
     + Přidala se podpora Torch 1,2 v PyTorch Estimator.
   + **AzureML – widgety**
@@ -1011,6 +1012,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).

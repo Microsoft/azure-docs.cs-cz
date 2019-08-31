@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875095"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182798"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -254,14 +254,16 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 
 Šifrování Azure SQL Databasech dat na straně klienta je podporováno prostřednictvím funkce [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) . Always Encrypted používá klíč, který vytvořil a uložil klient. Zákazníci můžou hlavní klíč Uložit do úložiště certifikátů Windows, Azure Key Vault nebo místního modulu hardwarového zabezpečení. Pomocí SQL Server Management Studio uživatelé SQL zvolí, který klíč mají použít k zašifrování, který sloupec.
 
-#### <a name="encryption-model-and-key-management"></a>Model šifrování a Správa klíčů
+#### <a name="encryption-model-and-key-management-table"></a>Model šifrování a tabulka správy klíčů
 
-| **Na straně serveru pomocí klíče spravovaného službou** |**Na straně serveru pomocí klíče spravovaného zákazníkem**| **Na straně klienta pomocí spravovaného klientem** | **AI a Machine Learning**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **Model šifrování a Správa klíčů** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Na straně klienta pomocí spravovaného klientem**      |
+| **AI a Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ano                | -                  | -                  |
 | Azure Machine Learning Service   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
-| Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -               |
+| Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | -                  | -                  |
@@ -282,7 +284,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure SQL Database               | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Azure SQL Database pro MariaDB   | Ano                | -                  | -                  |
 | Azure SQL Database pro MySQL     | Ano                | -                  | -                  |
-| Azure SQL Database pro PostgreSQL | Ano                | -                  | -                 |
+| Azure SQL Database pro PostgreSQL | Ano                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ano                | Ano, RSA 2048-bit  | Ano                |
 | SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Table Storage                    | Ano                | -                  | Ano                |

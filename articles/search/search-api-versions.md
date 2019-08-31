@@ -1,62 +1,62 @@
 ---
 title: Správa verzí rozhraní API pro .NET SDK a rozhraní REST API – Azure Search
-description: Zásada verze rozhraní REST API Azure Search a klientské knihovny v sadě .NET SDK.
+description: Zásady verze pro rozhraní REST API pro Azure Search a knihovnu klienta v sadě .NET SDK.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f400c6fcb2b35e2adcf605c96bb802041cd9e0a9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523807"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182350"
 ---
-# <a name="api-versions-in-azure-search"></a>Verze rozhraní API ve službě Azure Search
-Služba Azure Search zavádění aktualizací funkcí pravidelně. Někdy, ale ne vždy tyto aktualizace vyžadují novou verzi rozhraní API pro zachování zpětné kompatibility. Publikování nové verze umožňuje řídit, kdy a jak integrovat aktualizace služby vyhledávání v kódu.
+# <a name="api-versions-in-azure-search"></a>Verze rozhraní API v Azure Search
+Azure Search pravidelně aktualizuje aktualizace funkcí. V některých případech, ale ne vždy, vyžadují tyto aktualizace novou verzi rozhraní API, aby se zachovala zpětná kompatibilita. Publikování nové verze vám umožní řídit, kdy a jak integrovat aktualizace služby Search do kódu.
 
-Zpravidla publikuje týmu Azure Search nové verze pouze v případě potřeby, protože to může zahrnovat některé úsilí k upgradu vašeho kódu na použití nové verze rozhraní API. Nová verze je nutný jenom v případě, že došlo ke změně některých aspektů rozhraní API tak, aby přeruší zpětné kompatibility. Tyto změny může dojít z důvodu opravy stávajících funkcí nebo z důvodu nových funkcí, které se mění stávající svrchní oblasti rozhraní API.
+V rámci pravidla publikuje Azure Search tým nové verze pouze v případě potřeby, protože může zahrnovat nějaké úsilí při upgradu kódu na použití nové verze rozhraní API. Nová verze je nutná pouze v případě, že se některé aspekty rozhraní API změnily způsobem, který zruší zpětnou kompatibilitu. Tyto změny mohou nastat kvůli opravám existujících funkcí nebo kvůli novým funkcím, které mění existující oblast rozhraní API.
 
-Stejné pravidlo platí i pro aktualizace sady SDK. Následuje SDK služby Azure Search [sémantické správy verzí](https://semver.org/) pravidla, která znamená, že jeho verze má tři části: hlavní verze, podverze a sestavení číslo (například 1.1.0). Pouze pro změny poškozující zpětné kompatibility vydání nové hlavní verze sady SDK. Non nejnovější aktualizace funkcí se zvýší podverze a opravy chyb pouze zvýší verzi sestavení.
+Stejné pravidlo platí pro aktualizace sady SDK. Sada Azure Search SDK dodržuje pravidla [sémantických verzí](https://semver.org/) , což znamená, že jeho verze má tři části: hlavní, vedlejší a číslo sestavení (například 1.1.0). Nová hlavní verze sady SDK se uvolní jenom pro změny, které přeruší zpětnou kompatibilitu. Nepodstatné aktualizace funkcí zvýší dílčí verzi a opravy chyb zvýší pouze verzi buildu.
 
 > [!NOTE]
-> Instance služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Můžete nadále používat verzi, pokud již není nejnovější, ale doporučujeme migrovat kód Refaktorovat pro použití na nejnovější verzi. Při použití rozhraní REST API, je nutné zadat verzi rozhraní API v každé žádosti prostřednictvím parametru verze api-version. Při použití sady .NET SDK, určuje verzi sady SDK, které používáte odpovídající verzi rozhraní REST API. Pokud používáte starší sada SDK, můžete nadále spouštět tento kód beze změny i v případě, že služba se upgraduje na novější verzi rozhraní API podporují.
+> Vaše instance služby Azure Search podporuje několik verzí REST API, včetně nejnovějšího. Můžete i nadále používat verzi, pokud již není nejnovější, ale doporučujeme, abyste si kód migrovali na používání nejnovější verze. Při použití REST API musíte v každé žádosti zadat verzi rozhraní API přes parametr verze API. Pokud používáte sadu .NET SDK, verze sady SDK, kterou používáte, určí odpovídající verzi REST API. Pokud používáte starší sadu SDK, můžete pokračovat ve spuštění tohoto kódu bez změny, i když je služba upgradována na podporu novější verze rozhraní API.
 
-## <a name="snapshot-of-current-versions"></a>Snímek aktuální verze
-Níže je snímek aktuální verze všech programování rozhraní do služby Azure Search.
+## <a name="snapshot-of-current-versions"></a>Snímek aktuálních verzí
+Níže je snímek aktuální verze všech programovacích rozhraní Azure Search.
 
 
-| Rozhraní | Nejnovější hlavní verzi | Status |
+| Rozhraní | Nejnovější hlavní verze | Stav |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně dostupné vydané. května 2019. |
-| [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview) |8.0 – preview |Ve verzi Preview. 2019 dubna všeobecně dostupné |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Obecně dostupné, vydání květen 2019 |
+| [.NET SDK Preview](https://aka.ms/search-sdk-preview) |8,0 – Preview |Preview, vydáno v dubnu 2019 |
 | [Rozhraní API služby REST](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Obecná dostupnost |
-| [Služba REST API 2019-05-06-Preview](search-api-preview.md) |2019-05-06-Preview |Náhled |
+| [Služba REST API 2019-05-06 – Preview](search-api-preview.md) |2019-05-06 – Preview |Náhled |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Obecná dostupnost |
 | [Rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Obecná dostupnost |
 
-Pro rozhraní REST API, včetně `api-version` při každém volání je povinný. Pomocí `api-version` umožňuje snadno cílit na konkrétní verzi, jako je ve verzi preview rozhraní API. Následující příklad ukazuje, jak `api-version` je zadán parametr:
+Pro rozhraní REST API, včetně `api-version` každého volání, je požadováno. Použití `api-version` usnadňuje cílení na konkrétní verzi, jako je rozhraní API verze Preview. Následující příklad ukazuje, `api-version` jak je zadán parametr:
 
     GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
-> I když má každý požadavek `api-version`, doporučujeme používat stejnou verzi pro všechny požadavky rozhraní API. To platí zejména při zavedení nových verzích rozhraní API atributů a operací, které nejsou rozpoznány v předchozích verzích. Kombinace verze rozhraní API může mít nežádoucí důsledky a mělo by se vyhnout.
+> I když každý požadavek má `api-version`, doporučujeme, abyste pro všechny požadavky rozhraní API používali stejnou verzi. To platí hlavně v případě, že nové verze rozhraní API zavádějí atributy nebo operace, které nejsou rozpoznávány předchozími verzemi. Kombinování verzí rozhraní API může mít nezamýšlené důsledky a je třeba se jim vyhnout.
 >
-> Rozhraní REST API služby a rozhraní REST API pro správu se systémovou správou verzí nezávisle na sobě. Každá podobnost v číslech verzí je náhodný.
+> REST API REST API služby a správy jsou samostatně nezávislé na verzi. Jakákoli podobnost v číslech verzí je koincident.
 
-Obecná dostupnost (nebo GA) rozhraní API můžete použít v produkčním prostředí a jsou v souladu s smluv o úrovni služeb Azure. Verze Preview mají seznámit s experimentálními funkcemi, které nejsou vždy migrovat na verzi všeobecné dostupnosti. **Se důrazně doporučuje, abyste se vyhnuli použití ve verzi preview rozhraní API v aplikacích v produkčním prostředí.**
+Obecně dostupná rozhraní API (nebo GA) se dají používat v produkčním prostředí a podléhají smlouvám o úrovni služeb Azure. Verze Preview mají experimentální funkce, které nejsou vždycky migrovány na verzi GA. **Důrazně se doporučuje vyhnout se používání rozhraní API ve verzi Preview v produkčních aplikacích.**
 
-## <a name="about-preview-and-generally-available-versions"></a>O verzích Preview a obecně dostupná
-Služba Azure Search vždy předem uvolní seznámit s experimentálními funkcemi přes rozhraní REST API nejprve, pak prostřednictvím předběžné verze sady .NET SDK.
+## <a name="about-preview-and-generally-available-versions"></a>O verzi Preview a obecně dostupné verze
+Azure Search vždy předem vydává experimentální funkce přes REST API a pak prostřednictvím předprodejní verze sady .NET SDK.
 
-Funkce ve verzi Preview jsou k dispozici pro testování a experimentování, s cílem shromažďování zpětné vazby na funkce návrhu a implementaci. Z tohoto důvodu se můžou časem, případně takovým způsobem, který zpětně porušit kompatibilitu změnit funkce ve verzi preview. To se liší od funkce ve verzi GA, které jsou stabilní a pravděpodobně nebudou měnit s výjimkou malé zpětně kompatibilní s opravami a vylepšeními. Kromě toho funkce ve verzi preview vždy neukládejte ji do verze GA.
+Funkce ve verzi Preview jsou k dispozici pro testování a experimentování s cílem shromažďovat zpětnou vazbu k návrhu a implementaci funkcí. Z tohoto důvodu se funkce verze Preview můžou v průběhu času měnit, možná způsobem, který přeruší zpětnou kompatibilitu. To je na rozdíl od funkcí ve verzi GA, které jsou stabilní a nepravděpodobné, že se nemění s výjimkou malých a nekompatibilních oprav a vylepšení. Funkce ve verzi Preview se také nedělají vždy do verze GA.
 
-Z těchto důvodů nedoporučujeme psaní kódu produkčního prostředí, který je závislá na verze preview. Pokud používáte starší verzi preview, doporučujeme migrovat na verzi všeobecně dostupná (GA).
+Z těchto důvodů doporučujeme před psaním produkčního kódu, který používá závislost ve verzi Preview. Pokud používáte starší verzi Preview, doporučujeme migrovat na všeobecně dostupnou verzi (GA).
 
-Pro sadu .NET SDK: Pokyny k migraci kódu lze nalézt v [Upgrade sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
+Pro sadu .NET SDK: Pokyny k migraci kódu najdete v [části upgrade sady .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
-Obecná dostupnost znamená, že Azure Search je teď v části smlouva o úrovni služeb (SLA). Smlouvy SLA najdete na [smlouvy o úrovni služeb Azure Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Obecná dostupnost znamená, že Azure Search je teď pod smlouvou o úrovni služeb (SLA). Smlouvu SLA najdete na [Azure Search smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

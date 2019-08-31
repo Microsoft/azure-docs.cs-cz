@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613304"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183158"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 
@@ -139,7 +139,9 @@ Změňte hodnotu pomocí ID aplikace Azure AD. `$AppId`
 
 ## <a name="step-2-pre-migration-application-sample"></a>Krok 2: Ukázka předem migrační aplikace
 
-[Stáhněte a spusťte vzorový kód][UserMigrationSample]. Můžete si ho stáhnout jako soubor. zip.
+Ukázku kódu před migrací najdete v úložišti GitHubu udržovaném `azure-ad-b2c/user-migration` komunitou:
+
+[Azure-AD-B2C/User-Migration/pre-Migration][UserMigrationSample-code] GitHubu
 
 ### <a name="step-21-edit-the-migration-data-file"></a>Krok 2,1: Úprava souboru dat migrace
 
@@ -364,7 +366,7 @@ Informace o protokolování můžete zobrazit a monitorovat téměř v reálném
 
 ## <a name="optional-download-the-complete-policy-files"></a>Volitelné Stažení úplných souborů zásad
 
-Po dokončení průvodce Začínáme [s vlastními zásadami][B2C-GetStartedCustom] doporučujeme sestavit svůj scénář pomocí vlastních souborů zásad. Pro váš odkaz jsme zadali [ukázkové soubory zásad][UserMigrationSample].
+Po dokončení průvodce Začínáme [s vlastními zásadami][B2C-GetStartedCustom] doporučujeme sestavit svůj scénář pomocí vlastních souborů zásad. Pro váš odkaz jsme zadali [ukázkové soubory zásad][UserMigrationSample-policy].
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
@@ -375,4 +377,5 @@ Po dokončení průvodce Začínáme [s vlastními zásadami][B2C-GetStartedCust
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration
+[UserMigrationSample-code]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/source-code
+[UserMigrationSample-policy]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/policy

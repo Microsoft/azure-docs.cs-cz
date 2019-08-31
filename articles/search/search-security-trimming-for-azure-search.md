@@ -1,49 +1,49 @@
 ---
-title: Filtry zabezpečení pro oříznutí výsledky – Azure Search
-description: Řízení přístupu u obsahu Azure Search pomocí filtrů zabezpečení a identity uživatelů.
+title: Filtry zabezpečení pro oříznutí výsledků – Azure Search
+description: Řízení přístupu k obsahu Azure Search pomocí filtrů zabezpečení a identit uživatelů.
 ms.service: search
 ms.topic: conceptual
 services: search
 ms.date: 05/02/2019
 author: brjohnstmsft
 ms.author: brjohnst
-manager: jlembicz
+manager: nitinme
 ms.custom: seodec2018
-ms.openlocfilehash: a222b9e506988929c25a560361611b8f78142053
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024372"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186492"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpečení pro oříznutí výsledky ve službě Azure Search
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpečení pro oříznutí výsledků v Azure Search
 
-Můžete použít filtry zabezpečení mají být odebrány výsledky hledání ve službě Azure Search na základě identity uživatele. Tento vyhledávací funkce obvykle vyžaduje porovnání identitu těmi požadavků hledání proti pole obsahující zásady, kteří mají oprávnění k dokumentu. Když je nalezena shoda, uživatel nebo instanční objekt (například skupinu nebo rolí) má přístup k dokumentu.
+Filtry zabezpečení můžete použít k vystřihování výsledků hledání v Azure Search na základě identity uživatele. Toto vyhledávací prostředí obvykle vyžaduje porovnání identity, která se požádá o hledání v poli, které obsahuje zásady, které mají oprávnění k dokumentu. Při nalezení shody má uživatel nebo objekt zabezpečení (například skupina nebo role) přístup k tomuto dokumentu.
 
-Jeden ze způsobů, jak zajistit zabezpečení filtrování je složité disjunkce rovnosti výrazů: například `Id eq 'id1' or Id eq 'id2'`a tak dále. Tento přístup je náchylné, obtížné spravovat a v případech, kde seznam obsahuje stovky nebo tisíce hodnoty, může zpomalit doba odezvy dotazů odpovídala tak počet sekund. 
+Jedním ze způsobů, jak dosáhnout filtrování zabezpečení, je složitá disjunkce výrazů rovnosti: `Id eq 'id1' or Id eq 'id2'`například, a tak dále. Tento přístup je náchylný k chybám, obtížně se udržuje a v případech, kdy seznam obsahuje stovky nebo tisíce hodnot, zpomaluje dobu odezvy na dotaz o mnoho sekund. 
 
-Jednodušší a rychlejší přístup je prostřednictvím `search.in` funkce. Pokud používáte `search.in(Id, 'id1, id2, ...')` namísto výrazu rovnosti, můžete očekávat odpovědi sekunda časy.
+Jednodušší a rychlejší přístup je prostřednictvím `search.in` funkce. Pokud použijete `search.in(Id, 'id1, id2, ...')` místo výrazu rovnosti, můžete očekávat dobu odezvy za sekundu.
 
-Tento článek ukazuje, jak provádět filtrování zabezpečení pomocí následujících kroků:
+V tomto článku se dozvíte, jak provést filtrování zabezpečení pomocí následujících kroků:
 > [!div class="checklist"]
-> * Vytvoření pole, které obsahuje hlavní identifikátory 
-> * Vložit nebo aktualizovat stávající dokumenty s příslušnými identifikátory instančního objektu
-> * Vydat požadavek hledání s `search.in` `filter`
+> * Vytvoření pole obsahujícího hlavní identifikátory 
+> * Nabízení nebo aktualizace stávajících dokumentů s příslušnými hlavními identifikátory
+> * Vystavení žádosti o `search.in` vyhledávání pomocí`filter`
 
 >[!NOTE]
-> Proces načítání identifikátory objektu zabezpečení není zahrnuté v tomto dokumentu. Měli byste ho získat od vašeho zprostředkovatele identity služby.
+> V tomto dokumentu se nezabývá proces načítání hlavních identifikátorů. Měli byste ho získat od poskytovatele služby identity.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že máte [předplatného Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [služby Azure Search](https://docs.microsoft.com/azure/search/search-create-service-portal), a [Azure Search Index](https://docs.microsoft.com/azure/search/search-create-index-portal).  
+V tomto článku se předpokládá, že máte [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [službu Azure Search](https://docs.microsoft.com/azure/search/search-create-service-portal)a [index Azure Search](https://docs.microsoft.com/azure/search/search-create-index-portal).  
 
-## <a name="create-security-field"></a>Vytvoření pole zabezpečení
+## <a name="create-security-field"></a>Vytvořit pole zabezpečení
 
-Dokumenty musí obsahovat pole určující, které skupiny mají přístup. Tyto informace se stane kritéria filtru, kterými dokumenty vybrané nebo zamítnuto sada výsledků vrátila a vydavatele.
-Předpokládejme, že máme indexu zabezpečených souborů a každý soubor je přístupný pomocí jiné sady uživatelů.
-1. Přidat pole `group_ids` (můžete zvolit libovolný název zde) jako `Collection(Edm.String)`. Ujistěte se, že pole má `filterable` atribut nastaven na `true` tak, aby výsledky hledání jsou filtrovány podle má uživatel přístup. Pokud nastavíte například `group_ids` pole `["group_id1, group_id2"]` pro dokument s `file_name` "secured_file_b", jenom uživatelé, kteří patří do skupiny group_id1"ID" nebo "group_id2" mít přístup k souboru pro čtení.
-   Ujistěte se, že pole `retrievable` atribut je nastaven na `false` tak, aby se vrátil jako součást požadavku hledání.
-2. Přidejte také `file_id` a `file_name` polí pro účely tohoto příkladu.  
+Dokumenty musí obsahovat pole určující, které skupiny mají přístup. Tyto informace se stávají kritérii filtru, proti kterým jsou vybrané nebo odmítnuté dokumenty ze sady výsledků vrácené vystavitelem.
+Řekněme, že máme index zabezpečených souborů a každý soubor je přístupný pro jinou sadu uživatelů.
+1. Přidat pole `group_ids` (zde můžete zvolit libovolný název) `Collection(Edm.String)`jako. Ujistěte se, že pole má `filterable` atribut `true` nastaven tak, aby byly výsledky hledání filtrovány podle přístupu uživatele. Pokud například nastavíte `group_ids` pole na `["group_id1, group_id2"]` pro dokument s `file_name` názvem "secured_file_b", budou mít k souboru přístup pro čtení pouze uživatelé, kteří patří do skupin ID "group_id1" nebo "group_id2".
+   Ujistěte se, že je `retrievable` atribut pole `false` nastavený tak, aby se nevrátil jako součást požadavku hledání.
+2. Přidejte `file_id` také pole `file_name` a pro účely tohoto příkladu.  
 
 ```JSON
 {
@@ -56,9 +56,9 @@ Předpokládejme, že máme indexu zabezpečených souborů a každý soubor je 
 }
 ```
 
-## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Vložení dat do indexu pomocí rozhraní REST API
+## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Vložení dat do indexu pomocí REST API
   
-Vydání požadavku HTTP POST do koncového bodu adresy URL vašeho indexu. Text požadavku HTTP je objekt JSON obsahující dokumenty, které se přidají:
+Vydejte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. Tělo požadavku HTTP je objekt JSON, který obsahuje dokumenty, které se mají přidat:
 
 ```
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
@@ -66,7 +66,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-V textu požadavku zadejte obsah dokumentů:
+V textu žádosti zadejte obsah vašich dokumentů:
 
 ```JSON
 {
@@ -93,7 +93,7 @@ V textu požadavku zadejte obsah dokumentů:
 }
 ```
 
-Pokud je potřeba aktualizovat existující dokument s seznam skupin, můžete použít `merge` nebo `mergeOrUpload` akce:
+Pokud potřebujete aktualizovat existující dokument se seznamem skupin, můžete použít `merge` akci nebo: `mergeOrUpload`
 
 ```JSON
 {
@@ -107,16 +107,16 @@ Pokud je potřeba aktualizovat existující dokument s seznam skupin, můžete p
 }
 ```
 
-Úplné podrobnosti o přidání nebo aktualizace dokumentů, můžete si přečíst [upravovat dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Pokud chcete zobrazit úplné podrobnosti o přidávání nebo aktualizaci dokumentů, můžete si přečíst [dokument upravit](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>Použít filtr zabezpečení
 
-Pokud chcete oříznout dokumentů na základě `group_ids` přístup, by měly vydávat vyhledávací dotaz s `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filtru, kde "group_id1 group_id2..." jsou skupiny, do kterých patří vystavitele žádosti o hledání.
-Tento filtr odpovídá všechny dokumenty, u kterého `group_ids` pole obsahuje jeden z dané identifikátory.
-Úplné podrobnosti o vyhledávání dokumentů pomocí Azure Search, můžete si přečíst [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-Všimněte si, že tento příklad ukazuje, jak hledat dokumentů pomocí požadavku POST.
+Aby bylo možné oříznout dokumenty na základě `group_ids` přístupu, měli byste vydávat vyhledávací dotaz `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` s filtrem, kde ' group_id1, group_id2,... ' jsou skupiny, do kterých patří Vydavatel žádosti o vyhledávání.
+Tento filtr odpovídá všem dokumentům, pro `group_ids` které pole obsahuje jeden z daných identifikátorů.
+Úplné podrobnosti o prohledávání dokumentů pomocí Azure Search můžete přečíst v [dokumentu hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Všimněte si, že v této ukázce se dozvíte, jak vyhledávat dokumenty pomocí žádosti POST.
 
-Vydání požadavku HTTP POST:
+Vydejte požadavek HTTP POST:
 
 ```
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
@@ -124,7 +124,7 @@ Content-Type: application/json
 api-key: [admin or query key]
 ```
 
-Zadejte filtr v textu požadavku:
+Zadejte filtr v textu žádosti:
 
 ```JSON
 {
@@ -132,7 +132,7 @@ Zadejte filtr v textu požadavku:
 }
 ```
 
-Měli byste získat dokumenty zpět tam, kde `group_ids` obsahuje "group_id1" nebo "group_id2". Jinými slovy získáte dokumentů, ke kterým má vystavitele žádosti o přístup pro čtení.
+Dokumenty byste měli získat zpátky tam, `group_ids` kde obsahuje buď "group_id1" nebo "group_id2". Jinými slovy získáte dokumenty, na které má Vydavatel požadavků oprávnění ke čtení.
 
 ```JSON
 {
@@ -152,10 +152,10 @@ Měli byste získat dokumenty zpět tam, kde `group_ids` obsahuje "group_id1" ne
 ```
 ## <a name="conclusion"></a>Závěr
 
-To je, jak můžete filtrovat výsledky na základě identity uživatele a Azure Search `search.in()` funkce. Tuto funkci můžete použít k předání v zásadě identifikátory žádajícího uživatele k porovnání s hlavní identifikátory, které jsou spojené s každou cílového dokumentu. Když je zpracována žádost o vyhledávání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory může představovat věci, jako jsou skupiny zabezpečení, role nebo dokonce i vlastní identitu uživatele.
+To je způsob, jak můžete filtrovat výsledky na základě identity uživatelů a `search.in()` Azure Search funkce. Pomocí této funkce můžete předat základní identifikátory pro žádajícího uživatele, aby odpovídaly identifikátorům zabezpečení, které jsou přidruženy k jednotlivým cílovým dokumentům. Když je zpracován požadavek hledání, `search.in` funkce vyfiltruje výsledky hledání, pro které žádný z objektů zabezpečení uživatele nemá oprávnění ke čtení. Hlavní identifikátory můžou představovat například skupiny zabezpečení, role nebo dokonce vlastní identitu uživatele.
  
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-+ [Aktivní řízení přístupu na základě identity adresáře pomocí filtrů Azure Search](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filtry ve službě Azure Search](search-filters.md)
-+ [Řízení přístupu a zabezpečení dat v provozu Azure Search](search-security-overview.md)
++ [Řízení přístupu na základě identity ve službě Active Directory pomocí filtrů Azure Search](search-security-trimming-for-azure-search-with-aad.md)
++ [Filtry v Azure Search](search-filters.md)
++ [Zabezpečení a řízení přístupu k datům v Azure Searchch operacích](search-security-overview.md)

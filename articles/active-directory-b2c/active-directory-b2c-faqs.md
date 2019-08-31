@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061369"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183188"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy
 
@@ -143,7 +143,7 @@ Pomocí těchto kroků odstraňte klienta Azure AD B2C:
 1. Vybrat **Zobrazit všechny aplikace**
 1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit**a po zobrazení výzvy vyberte **Ano** .
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
-1. V části **připojení účtu LinkedIn**vyberte **ne**a pak vyberte **Uložit**.
+1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
 1. V části **Správa přístupu pro prostředky Azure**vyberte **Ano**a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.

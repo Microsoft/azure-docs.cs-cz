@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a31fab8dd1490b58e743c149e4a54cae11bed1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988343"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186287"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -83,7 +83,7 @@ Data auditu můžete filtrovat v následujících polích:
 - Aktivita
 - Stav
 - Target
-- Iniciátor (actor)
+- Spustil(a) (činitel)
 - Rozsah dat
 
 ![Protokoly auditu](./media/concept-audit-logs/filter.png "Protokoly auditu")
@@ -208,7 +208,7 @@ Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 3
 
 Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Referenční informace o aktivitě auditu Azure AD](reference-audit-activities.md)
 - [Referenční informace o uchovávání sestav Azure AD](reference-reports-data-retention.md)

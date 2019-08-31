@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/29/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4323bb3ea7e938d37d8f3f7ce502def7e93f203c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
-ms.translationtype: HT
+ms.openlocfilehash: 25741eebc305c18f789497ab0859adf22687eaa5
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172750"
+ms.locfileid: "70186184"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -85,8 +85,8 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Amsterdam** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | Západní Evropa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amsterdam2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | Západní Evropa | CenturyLink Cloud Connect, DE-CIX, Interxion, Vodafone |
 | **Atlanta** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | neuvedeno | Equinix, Megaport |
-| **Auckland** | Vocus skupina NZ | neuvedeno | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
-| **Busan** |LG CNS | Jižní Korea – jih | LG CNS |
+| **Auckland** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | neuvedeno | Devoli, Kordia, Megaport, Spark NZ, Vocus skupina NZ |
+| **Busan** | [LG CNS](https://datacenter.lgcns.com/Contents/En/Menu_1/Locations_1.aspx) | Jižní Korea – jih | LG CNS |
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | Austrálie – střed | CDC |
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | Austrálie – střed 2| CDC |
 | **Kapské město** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | Jižní Afrika – západ | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
@@ -102,7 +102,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | neuvedeno | DE-CIX, Interxion, oranžová |
 | **Hongkong – zvláštní správní oblast** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | Východní Asie | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Megaport, NTT Communications, oranžová, PCCW Globaled, Tata Communications, Telia Carrier, Verizon |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | Jižní Afrika – sever | British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, oranžová, teraco |
-| **Kuala Lumpur** | TIME dotCom | neuvedeno | TIME dotCom |
+| **Kuala Lumpur** | [DotCom cíle Menara na čas](https://www.aims.com.my/co-location/points-of-presence.html) | neuvedeno | TIME dotCom |
 | **Las Vegas** | [Přepínač LV](https://www.switch.com/las-vegas) | neuvedeno | CenturyLink Cloud Connect, Megaport |
 | **Londýn** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | Velká Británie – jih | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | [Pokojová USA – 2](https://www.telehouse.com/global-data-centers/emea/london-data-centers/telehouse-north-two/) | Velká Británie – jih | IX dosažitelný, Equinix |
@@ -114,7 +114,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Bombaj** | Tata Communications | Indie – západ | Global CloudXchange (GCX), Spoléhácí se na jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | Indie – západ | Airtel, Sify, Vodafone Idea |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | neuvedeno | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
-| **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Colt, Level 3 Communications, data nové generace |
+| **Newport(Wales)** | [Brána firewall příští generace](https://www.nextgenerationdata.co.uk) | Spojené království – západ | British Telecom, Colt, Level 3 Communications, data nové generace |
 | **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | Japonsko – západ | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | Francie – střed | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | neuvedeno | Megaport, NextDC |
@@ -122,7 +122,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | Střed USA – jih | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | Brazílie – jih | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | USA – západ 2 | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Telus, Zayo |
-| **Soul** | KINX | Jižní Korea – střed | KINX, LG CNS, Sejong Telecom |
+| **Soul** | [KINX Gasan IDC](https://www.kinx.net/support/location/?lang=en) | Jižní Korea – střed | KINX, LG CNS, Sejong Telecom |
 | **Silicon Valley** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | USA – západ | Aryaka Networks sítě, v & T NetBond, British Telecom, CenturyLink Cloud Connect, Comcastu, Coresite, Equinix, spolucloud, Internet2, IX dosažitelný, Packet, PacketFabric, Level 3 Communications, Megaport, pomeranče, Sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
 | **Silicon Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | USA – západ | Coresite | 
 | **Singapur** | [Equinix sz1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | Jihovýchodní Asie | Aryaka Networks, AT&T NetBond, British Telecom, Epsilon Global Communications, Equinix, InterCloud, Level 3 Communications, Megaport, NTT Communications, Orange, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
@@ -224,7 +224,7 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 * Zkontrolujte, že jsou splněné všechny požadavky. Viz [Požadavky služby ExpressRoute](expressroute-prerequisites.md).
 

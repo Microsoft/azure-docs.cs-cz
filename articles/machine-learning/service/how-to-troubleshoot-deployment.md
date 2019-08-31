@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358670"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183535"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -204,6 +204,9 @@ print(prediction)
 
 Během místního testování možná budete muset `score.py` soubor aktualizovat, aby se přidalo protokolování nebo pokus o vyřešení všech zjištěných problémů. Chcete-li znovu načíst `score.py` změny v souboru `reload()`, použijte. Například následující kód znovu načte skript pro službu a poté do něj pošle data. Data jsou hodnocena pomocí aktualizovaného `score.py` souboru:
 
+> [!IMPORTANT]
+> `reload` Metoda je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný cíl služby COMPUTE najdete v části aktualizace v tématu [nasazení modelů](how-to-deploy-and-where.md#update).
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí k
 
 Použijte informace v části Kontrola [protokolu Docker](#dockerlog) pro kontrolu protokolů.
 
-## <a name="function-fails-getmodelpath"></a>Selže funkce: get_model_path()
+## <a name="function-fails-get_model_path"></a>Selže funkce: get_model_path()
 
 Často se ve `init()` funkci skriptu bodování volá funkce [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) , která vyhledá soubor modelu nebo složku souborů modelů v kontejneru. Pokud soubor modelu nebo složku nelze nalézt, funkce se nezdařila. Nejjednodušší způsob, jak ladění této chyby je spustit níže uvedeného kódu Pythonu v prostředí kontejneru:
 
@@ -255,7 +258,7 @@ Tento příklad vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontej
 
 Nastavení úrovně protokolování na ladění může způsobit, že budou protokolovány Další informace, které mohou být užitečné při identifikaci selhání.
 
-## <a name="function-fails-runinputdata"></a>Selže funkce: run(input_data)
+## <a name="function-fails-runinput_data"></a>Selže funkce: run(input_data)
 
 Pokud úspěšně nasazení služby, ale jeho dojde k chybě při odesílání dat na bodovací koncový bod, můžete přidat chyby zachytávání příkaz v vaše `run(input_data)` fungovat tak, že místo toho vrátí podrobnou chybovou zprávu. Příklad:
 
@@ -276,7 +279,7 @@ def run(input_data):
 
 ## <a name="http-status-code-503"></a>Stavový kód HTTP 503
 
-Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Automatické škálování je však navrženo pro zpracování postupných  změn v zatížení. Pokud v požadavcích za sekundu obdržíte velké špičky, mohou klienti obdržet stavový kód HTTP 503.
+Nasazení služby Azure Kubernetes podporují automatické škálování, které umožňuje přidat repliky pro podporu dalšího zatížení. Automatické škálování je však navrženo pro zpracování postupných změn v zatížení. Pokud v požadavcích za sekundu obdržíte velké špičky, mohou klienti obdržet stavový kód HTTP 503.
 
 K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 503:
 

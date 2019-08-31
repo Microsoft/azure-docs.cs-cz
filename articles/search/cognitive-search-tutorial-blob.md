@@ -1,7 +1,7 @@
 ---
 title: 'Kurz REST: Sestavení kanálu obohacení AI pomocí vyhledávání rozpoznávání – Azure Search'
 description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka přes obsah v objektech blob JSON pomocí metody post a rozhraní REST API Azure Search.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102818"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186265"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Kurz: Přidání struktury do "nestrukturovaného obsahu" pomocí hledání rozpoznávání
 

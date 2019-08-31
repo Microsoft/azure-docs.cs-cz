@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125474"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182973"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý start: Přidání přihlašování do webové aplikace Java pomocí Microsoftu
 
@@ -39,9 +39,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
-> Aplikaci pro rychlý start můžete spustit dvěma způsoby:
-> * Express [Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Zásah [Možnost 2: Zaregistrujte a manuálně nakonfigurujte svou aplikaci a ukázku kódu.](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Máte dvě možnosti, jak spustit aplikaci pro rychlý Start: Express (možnost 1) nebo ruční (možnost 2).
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
 >
@@ -123,7 +121,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 ### <a name="getting-msal"></a>Získání MSAL
 MSAL4J je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity. Můžete přidat MSAL4J do aplikace pomocí Maven nebo Gradle pro správu závislostí tím, že provedete následující změny v souboru pom. XML nebo Build. Gradle ve vaší aplikaci. 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +137,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Inicializace Msal
 Odkaz na MSAL4J můžete přidat přidáním následujícího kódu do horní části souboru, kde budete používat MSAL4J: 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

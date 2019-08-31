@@ -1,52 +1,52 @@
 ---
-title: Upgrade na Azure Search .NET Management SDK verze 2 – Azure Search
-description: Upgradovat z předchozí verze Azure Search .NET Management SDK verze 2. Zjistěte, co je nového a jaké změny kódu jsou povinné.
+title: Upgrade na sadu Azure Search .NET Management SDK verze 2 – Azure Search
+description: Upgradujte na sadu Azure Search .NET Management SDK verze 2 z předchozích verzí. Podívejte se, co je nového a co je potřeba mít změny kódu.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65025176"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182248"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Upgrade na verzi .NET Management SDK služby Azure Search 
+# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Upgrade na Azure Search .NET Management SDK verze 
 
 > [!Important]
-> Tento obsah je stále zpracovávají. Verze 3.0 Management .NET SDK služby Azure Search je dostupná na webu NuGet. Pracujeme na aktualizaci tohoto průvodce migrací a vysvětluje postup při upgradu na novou verzi. 
+> Tento obsah je stále v konstrukci. V NuGet je dostupná verze 3,0 sady Azure Search Management .NET SDK. Pracujeme na aktualizaci tohoto průvodce migrací, abychom vysvětlují, jak upgradovat na novou verzi. 
 >
 
-Pokud používáte verzi 1.0.2 nebo starší aplikace [Management SDK služby Azure Search .NET](https://aka.ms/search-mgmt-sdk), tento článek vám pomůže při upgradu aplikace použije verzi 2.
+Pokud používáte verzi 1.0.2 [sady .NET Management SDK nebo Azure Search](https://aka.ms/search-mgmt-sdk)starší, Tento článek vám pomůže při upgradu aplikace na použití verze 2.
 
-Verze 2 služby Azure Search .NET Management SDK obsahuje některé změny z předchozích verzí. Toto jsou většinou dílčí, takže změna kódu by měla trvat pouze minimálním úsilím. Zobrazit [kroky pro upgrade](#UpgradeSteps) pokyny o tom, jak změnit váš kód k použití nové verze sady SDK.
+Verze 2 sady Azure Search .NET Management SDK obsahuje některé změny z dřívějších verzí. Jsou to většinou méně významné, takže změna kódu by měla vyžadovat jenom minimální úsilí. Pokyny ke změně kódu pro použití nové verze sady SDK najdete v tématu [Postup upgradu](#UpgradeSteps) .
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2"></a>Co je nového ve verzi 2
-Verze 2 služby Azure Search .NET Management SDK cílí na stejné obecně dostupnou verzi REST API pro správu Azure Search jako předchozí verze sady SDK, konkrétně 2015-08-19. Změny v sadě SDK jsou striktně klientské změny ke zlepšení použitelnosti sama sada SDK. Tyto změny patří:
+Verze 2 sady Azure Search .NET Management SDK cílí na stejnou obecně dostupnou verzi REST API správy Azure Search jako předchozí verze sady SDK, konkrétně 2015-08-19. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Mezi tyto změny patří následující:
 
-* `Services.CreateOrUpdate` a jeho asynchronní verze teď automaticky vyžádají zřizování `SearchService` a nevrátí až do dokončení zřizování služby. To vám ušetří nemusíte psát sami takový kód cyklického dotazování.
-* Pokud chcete dotazovat služby zřizování ručně, můžete použít novou `Services.BeginCreateOrUpdate` metody nebo jeden z jeho asynchronní verze.
-* Nové metody `Services.Update` a jeho asynchronní verze byly přidány k sadě SDK. Tyto metody použít pro podporu přírůstkové aktualizace služby HTTP PATCH. Například teď můžete škálovat služby pomocí předání `SearchService` instance těchto metod, která obsahuje jenom požadované `partitionCount` a `replicaCount` vlastnosti. Starý způsob volání `Services.Get`, úprava vráceného `SearchService`a předá se `Services.CreateOrUpdate` stále podporovány, ale již není nezbytné. 
+* `Services.CreateOrUpdate`a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
+* Pokud přesto chcete, aby se zřizování služby dotazoval ručně, můžete použít novou `Services.BeginCreateOrUpdate` metodu nebo jednu z jejích asynchronních verzí.
+* Nové metody `Services.Update` a její asynchronní verze byly přidány do sady SDK. Tyto metody používají opravu HTTP k podpoře přírůstkové aktualizace služby. Můžete například nyní škálovat službu předáním `SearchService` instance těmto metodám, které obsahují pouze požadované `partitionCount` vlastnosti a `replicaCount` . Starý způsob volání `Services.Get`, úpravy vráceného `SearchService`a jeho předání na `Services.CreateOrUpdate` je stále podporován, ale již není nutný. 
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Kroky pro upgrade
-Nejprve aktualizujte referenci NuGet pro `Microsoft.Azure.Management.Search` pomocí konzoly Správce balíčků NuGet nebo tím, že pravým tlačítkem myši na odkazy projektu a vyberte "Spravovat NuGet balíčky..." v sadě Visual Studio.
+## <a name="steps-to-upgrade"></a>Postup upgradu
+Nejdřív aktualizujte svůj odkaz na NuGet `Microsoft.Azure.Management.Search` pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
-Po stažení nové balíčky a jejich závislostí NuGet znovu sestavte projekt. V závislosti na tom, jak váš kód strukturovaná ji může znovu sestavit úspěšně. Pokud ano, jste připraveni začít!
+Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
 
-Pokud se sestavení nezdaří, je možné, protože jsme implementovali některá rozhraní SDK (například pro účely testování jednotek), které byly změněny. Chcete-li tento problém vyřešit, budete muset implementovat nové metody jako `BeginCreateOrUpdateWithHttpMessagesAsync`.
+Pokud sestavení selhalo, může to být způsobeno tím, že jste implementovali některá rozhraní sady SDK (například pro účely testování částí), které se změnily. Chcete-li tento problém vyřešit, budete muset implementovat nové metody, jako `BeginCreateOrUpdateWithHttpMessagesAsync`je například.
 
-Po jste opravě případných chyb sestavení, můžete aplikace výhod nových funkcí, pokud chcete změnit. Nové funkce v sadě Windows SDK jsou podrobně popsány v [co je nového ve verzi 2](#WhatsNew).
+Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 2](#WhatsNew).
 
 ## <a name="conclusion"></a>Závěr
-Vítáme váš názor na sadě SDK. Pokud narazíte na problémy, neváhejte nás požádat o pomoc na [fórum Azure Search na webu MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Pokud zjistíte chybu, můžete založit problém v [úložiště Azure .NET SDK GitHub](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že jako předpona váš problém název s "[Azure Search]".
+Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, požádejte nás o pomoc na [Azure Search Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou "[Azure Search]".
 
-Děkujeme vám za použití Azure Search.
+Děkujeme, že používáte Azure Search!

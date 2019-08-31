@@ -3,16 +3,16 @@ title: Matice podpory pro agenta Microsoft Azure Recovery Services (MARS) – Az
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 599d3f97ea30b096999d754a995af2ba660c0bc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951982"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186172"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -72,20 +72,22 @@ Omezení sítě | Není k dispozici pro zálohované počítače se systémem Wi
 
 Agenta MARS můžete použít k zálohování přímo do Azure v některých operačních systémech, které běží na místních počítačích a virtuálních počítačích Azure. Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější aktualizace a aktualizace Service Pack. Následující tabulka shrnuje tyto operační systémy:
 
-**Operační systém** | **Soubory/složky** | **Stav systému** 
---- | --- | --- 
-Windows 10 (Enterprise, pro, Home) | Ano | Ne
-Windows 8.1 (Enterprise, pro)| Ano |Ne
-Windows 8 (Enterprise, Pro) | Ano | Ne
-Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne
-Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano
-Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano | Ano
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ano | Ne
-Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne
+**Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
+--- | --- | --- | ---
+Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8 (Enterprise, Pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano | Ano | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe)
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ano | Ne | – .NET 3,5, .NET 4,5 <br> – Windows PowerShell <br> -Kompatibilní Microsoft VC + + Redistributable <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a správa bitových kopií (DISM. exe) <br> – Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
@@ -142,6 +144,6 @@ Pomocí funkce [okamžitého obnovení](backup-instant-restore-capability.md) Az
 
 Zálohy nelze obnovit do cílového počítače, na kterém je spuštěna dřívější verze operačního systému. Například záloha pořízená z počítače se systémem Windows 7 se dá obnovit v systému Windows 8 nebo novějším. Zálohy pořízené z počítače se systémem Windows 8 nelze obnovit v počítači se systémem Windows 7.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [architektuře zálohování, která používá agenta Mars](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Zjistěte, co se podporuje při [spuštění agenta Mars v MABS nebo DPM serveru](backup-support-matrix-mabs-dpm.md).

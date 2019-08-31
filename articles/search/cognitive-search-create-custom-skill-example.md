@@ -1,7 +1,7 @@
 ---
 title: 'Příklad: Vytvoření vlastní dovednosti pro rozpoznávání pomocí rozhraní API Bingu pro vyhledávání entit-Azure Search'
 description: Ukazuje, jak používat službu Vyhledávání entit Bingu ve vlastní dovednosti namapované na kanál indexování vyhledávání pomocí rozpoznávání v Azure Search.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 58f98f3807955db0b32cbcd1ed0d409814e35a76
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d77b4e3a002757bcf6c91b6611876e732273fcf9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639904"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183525"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Příklad: Vytvoření vlastní dovednosti pomocí rozhraní API Bingu pro vyhledávání entit
 
@@ -476,7 +476,7 @@ Tady se počítáme s předdefinovanými dovednostmi pro [rozpoznávání entit]
 },
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Blahopřejeme! Vytvořili jste první vlastní obohacení. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. 
 
 + [Přidání vlastní dovednosti do kanálu vyhledávání rozpoznávání](cognitive-search-custom-skill-interface.md)

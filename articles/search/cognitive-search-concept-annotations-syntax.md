@@ -2,7 +2,7 @@
 title: Referenční vstupy a výstupy v kanálech hledání rozpoznávání – Azure Search
 description: Vysvětluje syntaxi poznámek a postup odkazování na anotaci v vstupech a výstupech dovednosti v kanálu vyhledávání rozpoznávání v Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 5ce2c1aebebe802aa0fd3bda74c168e7a12341c0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e4b94e7a6e41a5c6beaf94069c0fb6bed795ca6d
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639299"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183513"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Postup při odkazování na poznámky v dovednosti hledání v rozpoznávání
 
