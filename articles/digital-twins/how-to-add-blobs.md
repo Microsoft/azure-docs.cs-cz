@@ -53,14 +53,14 @@ Metadata objektu BLOB JSON odpovídají následujícímu modelu:
 
 | Atribut | type | Popis |
 | --- | --- | --- |
-| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
-| **name** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
-| **type** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **parentId** | String | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **name** |String | Uživatelsky přívětivý název objektu BLOB |
+| **type** | String | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
 | **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
-| **subtype** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **subtype** | String | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít podtype a *subtypeId* . |
-| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
-| **sharing** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
+| **název** | String | Přizpůsobený popis objektu BLOB |
+| **sharing** | String | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
 
 Metadata objektů BLOB jsou vždycky dodávána jako první blok s **typem** `application/json` obsahu nebo jako `.json` soubor. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
