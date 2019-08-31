@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.localizationpriority: high
+ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172718"
+ms.locfileid: "70194428"
 ---
 ::: zone target="docs"
 
@@ -27,12 +28,13 @@ Požadavky na systém zahrnují podporované platformy pro klienty připojujíc�
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Požadavky
+# <a name="review-prerequisites"></a>Kontrola požadovaných součástí
 
-Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
+1. K objednání Data Box Disk v tomto kurzu musíte použít: Seřazení Azure Data Box Disk. Dostali jste disky a jeden připojený kabel na disk.
+2. Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
 
-- Spusťte podporovaný operační systém.
-- Máte nainstalovaný další požadovaný software.
+    - Spusťte podporovaný operační systém.
+    - Máte nainstalovaný další požadovaný software.
 
 ::: zone-end
 

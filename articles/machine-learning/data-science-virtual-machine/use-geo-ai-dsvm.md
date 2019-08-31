@@ -1,27 +1,21 @@
 ---
-title: Pomocí geografickou umělou inteligencí virtuální počítač pro datové vědy – Azure | Dokumentace Microsoftu
+title: Použití geografického AI
+titleSuffix: Azure Data Science Virtual Machine
 description: Zjistěte, jak použít počítač pro virtuální Geo AI datové vědy pro analýzu dat a vytvářet modely v závislosti na Geoprostorová data.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 01238885e68a39ff713bd346a9206668e16e7ee4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170488"
+ms.locfileid: "70195276"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Použití virtuálního počítače geografickou umělou inteligencí datové vědy
 
@@ -47,7 +41,7 @@ Kromě ukázek na základě architektury strojového učení a hloubkového uče
 
 2. [Začínáme se geoprostorové analýzou R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Úvodní ukázka, která ukazuje, jak pracovat s geoprostorovémi daty pomocí rozhraní R, které je k dispozici v ArcGIS knihovně [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) . 
 
-3. [Klasifikace použití půdy na úrovni pixelů](https://github.com/Azure/pixel_level_land_classification): Kurz, který ukazuje, jak vytvořit model rozsáhlého neuronové sítě, který přijímá leteckou Image jako vstup a vrací popisek pozemkového pokrytí. Příklady štítků na úrovni pozemků jsou *doménové struktury* a *voda*. Model vrátí popisek pro každý pixel na obrázku. Model se sestavuje pomocí architektury hloubkového učení Microsoft Open-source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) .
+3. [Klasifikace použití půdy na úrovni pixelů](https://github.com/Azure/pixel_level_land_classification): Kurz, který ukazuje, jak vytvořit model rozsáhlého neuronové sítě, který přijímá leteckou Image jako vstup a vrací popisek pozemkového pokrytí. Příklady štítků na úrovni pozemků jsou *doménové struktury* a *voda*. Model vrátí popisek pro každý pixel na obrázku. 
 
 
 ## <a name="next-steps"></a>Další postup

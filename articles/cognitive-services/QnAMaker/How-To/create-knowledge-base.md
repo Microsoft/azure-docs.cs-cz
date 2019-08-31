@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012812"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193562"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Rychlý start: Vytvoření znalostní báze pomocí portálu služby rozhraní API služby QnA Maker
 
@@ -67,7 +67,7 @@ Až se znalostní báze dokončí, odeberte ji na portálu QnA Maker.
 
 ## <a name="next-steps"></a>Další postup
 
-V případě míry úspory nákladů můžete [sdílet](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker) některé, ale ne všechny prostředky Azure vytvořené pro QnA maker.
+V případě míry úspory nákladů můžete [sdílet](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker) některé, ale ne všechny prostředky Azure vytvořené pro QnA maker.
 
 > [!div class="nextstepaction"]
-> [Přidejte osobní chit chat](./chit-chat-knowledge-base.md)
+> [Přidání otázek s metadaty](../quickstarts/add-question-metadata-portal.md)

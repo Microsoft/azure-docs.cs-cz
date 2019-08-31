@@ -9,42 +9,58 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb4f9d2f78857231d0ecd81a2538a75b4b8a2f74
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650298"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193946"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvořit dynamickou skupinu a ověřit stav
 
 V Azure Active Directory (Azure AD) můžete pomocí pravidel určit členství ve skupině na základě vlastností uživatele nebo zařízení. V tomto článku se dozvíte, jak nastavit pravidlo pro dynamickou skupinu v Azure Portal.
 Dynamické členství je podporováno pro skupiny zabezpečení nebo skupiny Office 365. Při použití pravidla členství ve skupině se vyhodnotí atributy uživatelů a zařízení pro shody s pravidlem členství. Když se změní atribut uživatele nebo zařízení, zpracují se všechna pravidla dynamické skupiny v organizaci pro změny členství. Uživatelé a zařízení se přidají nebo odeberou, pokud splňují podmínky pro skupinu. Skupiny zabezpečení lze použít buď pro zařízení, nebo pro uživatele, ale skupiny sady Office 365 mohou být pouze skupiny uživatelů.
 
+## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
+
+Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje vytváření až pěti výrazů. Tvůrce pravidel usnadňuje vytvoření pravidla s několika jednoduchými výrazy, ale nelze ho použít k reprodukování všech pravidel. Pokud tvůrce pravidel nepodporuje pravidlo, které chcete vytvořit, můžete použít textové pole.
+
+Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které doporučujeme sestavit pomocí textového pole:
+
+- Pravidlo s více než pěti výrazy
+- Pravidlo přímých sestav
+- Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+
+> [!NOTE]
+> Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
+
+![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+
 Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla členství najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>Vytvoření pravidla členství ve skupině
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v tenantovi.
-2. Vyberte **skupiny**.
-3. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
+1. Vyberte **skupiny**.
+1. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
 
    ![Vyberte příkaz pro přidání nové skupiny.](./media/groups-create-rule/new-group-creation.png)
 
-4. Na stránce **Skupina** zadejte název a popis nové skupiny. Vyberte **typ členství** buď pro uživatele, nebo pro zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat šest nebo jakékoli následné výrazy, je nutné použít textové pole.
+1. Na stránce **Skupina** zadejte název a popis nové skupiny. Vyberte **typ členství** buď pro uživatele, nebo pro zařízení a pak vyberte **Přidat dynamický dotaz**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
 
    ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Zobrazení vlastních vlastností rozšíření dostupných pro dotaz na členství
+1. Chcete-li zobrazit vlastnosti vlastního rozšíření, které jsou k dispozici pro váš dotaz na členství:
    1. Vyberte **získat vlastnosti vlastního rozšíření** .
-   2. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**.
-6. Po vytvoření pravidla vyberte **Uložit**.
-7. Vyberte **vytvořit** na stránce **Nová skupina** a vytvořte skupinu.
+   1. Zadejte ID aplikace a pak vyberte **aktualizovat vlastnosti**.
+1. Po vytvoření pravidla vyberte **Uložit**.
+1. Vyberte **vytvořit** na stránce **Nová skupina** a vytvořte skupinu.
 
 Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azure na portálu vysvětlení, proč se pravidlo nedalo zpracovat. Pečlivě si přečtěte, abyste zjistili, jak pravidlo opravit.
 
@@ -60,17 +76,17 @@ Stav zpracování členství a datum poslední aktualizace můžete zobrazit na 
 
 Pro stav **zpracování členství** lze zobrazit následující stavové zprávy:
 
-* **Vyhodnocení**:  Byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
-* **Zpracovává**se: Probíhá zpracování aktualizací.
-* **Aktualizace dokončena**: Zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
-* **Chyba zpracování**:  Zpracování se nepodařilo dokončit kvůli chybě při vyhodnocování pravidla členství.
-* **Aktualizace**pozastavena: Správci pozastavili aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
+- **Vyhodnocení**:  Byla přijata změna skupiny a probíhá vyhodnocení aktualizací.
+- **Zpracovává**se: Probíhá zpracování aktualizací.
+- **Aktualizace dokončena**: Zpracování bylo dokončeno a všechny použitelné aktualizace byly provedeny.
+- **Chyba zpracování**:  Zpracování se nepodařilo dokončit kvůli chybě při vyhodnocování pravidla členství.
+- **Aktualizace**pozastavena: Správci pozastavili aktualizace pravidla dynamického členství. MembershipRuleProcessingState je nastavené na pozastaveno.
 
 Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové zprávy:
 
-* &lt;**Datum a čas**&gt;: Čas poslední aktualizace členství.
-* **Probíhá**: Aktuálně probíhá aktualizace.
-* **Neznámý**: Čas poslední aktualizace nelze načíst. Tato skupina může být nová.
+- &lt;**Datum a čas**&gt;: Čas poslední aktualizace členství.
+- **Probíhá**: Aktuálně probíhá aktualizace.
+- **Neznámý**: Čas poslední aktualizace nelze načíst. Tato skupina může být nová.
 
 Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud není možné zpracovat žádné nedokončené dynamické aktualizace členství pro všechny skupiny v tenantovi za více než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
 
@@ -78,8 +94,8 @@ Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chyb
 
 Tyto články poskytují další informace o skupinách v Azure Active Directory.
 
-* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+- [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)

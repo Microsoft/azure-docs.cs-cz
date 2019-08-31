@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650212"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194611"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -27,30 +27,32 @@ V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla zalo�
 
 Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupiny v adresáři, aby zjistil, jestli by změna aktivovala nebo odebrala nějakou skupinu. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, přidají se jako členové této skupiny. Pokud už pravidla nevyhovují, odeberou se. Nemůžete ručně přidat nebo odebrat člena dynamické skupiny.
 
-* Můžete vytvořit dynamickou skupinu pro zařízení nebo pro uživatele, ale nemůžete vytvořit pravidlo, které bude obsahovat uživatele i zařízení.
-* Nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství v zařízeních můžou odkazovat jenom na atributy zařízení.
+- Můžete vytvořit dynamickou skupinu pro zařízení nebo pro uživatele, ale nemůžete vytvořit pravidlo, které bude obsahovat uživatele i zařízení.
+- Nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství v zařízeních můžou odkazovat jenom na atributy zařízení.
 
 > [!NOTE]
 > Tato funkce vyžaduje licenci Azure AD Premium P1 pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin. Nemusíte přiřazovat licence uživatelům, aby byli členy dynamických skupin, ale musíte mít minimální počet licencí v tenantovi pro pokrytí všech takových uživatelů. Pokud byste například měli celkem 1 000 jedinečných uživatelů ve všech dynamických skupinách ve vašem tenantovi, budete potřebovat minimálně 1 000 licencí pro Azure AD Premium P1, aby splňovaly licenční požadavek.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
+## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
 
-Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
+Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje vytváření až pěti výrazů. Tvůrce pravidel usnadňuje vytvoření pravidla s několika jednoduchými výrazy, ale nelze ho použít k reprodukování všech pravidel. Pokud tvůrce pravidel nepodporuje pravidlo, které chcete vytvořit, můžete použít textové pole.
 
-* Vlastnost
-* Operator
-* Value
+Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které doporučujeme sestavit pomocí textového pole:
 
-Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám syntaxe.
+- Pravidlo s více než pěti výrazy
+- Pravidlo přímých sestav
+- Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
+> [!NOTE]
+> Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
 
-Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje až pět pravidel. Chcete-li přidat šest a všechny následné výrazy pravidla, je nutné použít textové pole. Další podrobné pokyny najdete v tématu [Aktualizace dynamické skupiny](groups-update-rule.md).
+Další podrobné pokyny najdete v tématu [Aktualizace dynamické skupiny](groups-update-rule.md).
 
-   ![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Přidat pravidlo členství pro dynamickou skupinu](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Pravidla s jedním výrazem
+### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe pravidla pro jeden výraz
 
 Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu `Property Operator Value`:, kde syntaxe pro vlastnost je název Object. Property.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 Kulaté závorky jsou volitelné pro jeden výraz. Celková délka těla pravidla členství nesmí překročit 2048 znaků.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>Sestavování těla pravidla členství
+
+Pravidlo členství, které automaticky naplní skupinu uživateli nebo zařízeními, je binární výraz, jehož výsledkem je výsledek true nebo false. Mezi tři části jednoduchého pravidla patří:
+
+- Vlastnost
+- Operator
+- Value
+
+Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám syntaxe.
+
 ## <a name="supported-properties"></a>Podporované vlastnosti
 
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
-* Logická hodnota
-* Řetězec
-* Kolekce řetězců
+- Logická hodnota
+- Řetězec
+- Kolekce řetězců
 
 Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
 
@@ -119,7 +131,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 
 Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
 
-## <a name="supported-operators"></a>Podporované operátory
+## <a name="supported-expression-operators"></a>Podporované operátory výrazů
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Následující tipy vám pomůžou pravidlo používat správně.
 
-* **ID správce** je ID objektu správce. Najdete ho v **profilu**správce.
-* Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vašem tenantovi. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
-* Toto pravidlo podporuje pouze přímé sestavy vedoucího správce. Jinými slovy, nemůžete vytvořit skupinu s přímými sestavami manažera *a* jejich sestavami.
-* Toto pravidlo nelze kombinovat s jinými pravidly členství.
+- **ID správce** je ID objektu správce. Najdete ho v **profilu**správce.
+- Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vašem tenantovi. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
+- Toto pravidlo podporuje pouze přímé sestavy vedoucího správce. Jinými slovy, nemůžete vytvořit skupinu s přímými sestavami manažera *a* jejich sestavami.
+- Toto pravidlo nelze kombinovat s jinými pravidly členství.
 
 ### <a name="create-an-all-users-rule"></a>Vytvoří pravidlo pro všechny uživatele.
 
@@ -373,8 +385,8 @@ Je možné použít následující atributy zařízení.
 
 Tyto články poskytují další informace o skupinách v Azure Active Directory.
 
-* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](groups-create-rule.md)
+- [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Správa dynamických pravidel pro uživatele ve skupině](groups-create-rule.md)

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135763"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193181"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kódy chyb autorizace a ověřování
 
@@ -31,7 +31,12 @@ Hledáte informace o kódech chyb AADSTS, které vrací služba tokenů zabezpe�
 > [!NOTE]
 > Tyto informace jsou předběžné a mohou se změnit. Máte dotaz nebo nemůžete najít, co hledáte? Vytvořte problém GitHubu nebo si přečtěte nápovědu [a možnosti pomoci pro vývojáře](active-directory-develop-help-support.md) , kde se dozvíte další informace o tom, jak můžete získat nápovědu a podporu.
 >
-> Tato dokumentace je k dispozici pro vývojáře a pokyny pro správce, ale nikdy by neměla být používána samotným klientem. Kódy chyb se mohou kdykoli změnit, aby byly k dispozici podrobnější chybové zprávy, které mají pomáhat vývojářům při sestavování aplikace. Aplikace, které přijímají závislost na text nebo čísla chybových kódů, budou v průběhu času přerušeny.  
+> Tato dokumentace je k dispozici pro vývojáře a pokyny pro správce, ale nikdy by neměla být používána samotným klientem. Kódy chyb se mohou kdykoli změnit, aby byly k dispozici podrobnější chybové zprávy, které mají pomáhat vývojářům při sestavování aplikace. Aplikace, které přijímají závislost na text nebo čísla chybových kódů, budou v průběhu času přerušeny.
+
+## <a name="lookup-current-error-code-information"></a>Vyhledat aktuální informace o kódu chyby
+Chybové kódy a zprávy mohou být změněny.  Nejaktuálnější informace najdete na [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) stránce, kde najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.  
+
+Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdržíte kód chyby "AADSTS16000", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 
@@ -268,6 +273,6 @@ Hledáte informace o kódech chyb AADSTS, které vrací služba tokenů zabezpe�
 | AADSTS1000002 | BindCompleteInterruptError – vazba byla úspěšně dokončena, ale uživatel musí být informován. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled – aplikace je zakázaná. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Máte dotaz nebo nemůžete najít, co hledáte? Vytvořte problém GitHubu nebo si přečtěte nápovědu [a možnosti pomoci pro vývojáře](active-directory-develop-help-support.md) , kde se dozvíte další informace o tom, jak můžete získat nápovědu a podporu.

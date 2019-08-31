@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706317"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193190"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -194,14 +194,14 @@ Odstraněné nebo zakázané uživatele, kteří se předtím nemohli přihlási
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří moji uživatelé neobdrželi výzvy k ověření Azure Multi-Factor Authentication na zařízeních připojených k Azure AD?
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Otázka: Proč někteří uživatelé nezískali na zařízeních připojených k Azure AD výzvy Multi-Factor Authentication?
 
-**Odpověď:** Uživatel se může ke službě Azure AD připojit nebo zaregistrovat zařízení pomocí služby Multi-Factor Authentication. Pak se samotné zařízení bude pro daného uživatele jednat o důvěryhodný druhý faktor. Když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, služba Azure AD považuje zařízení za druhý faktor. Umožňuje tomuto uživateli bezproblémově přistupovat k aplikacím bez dalších výzev k Multi-Factor Authentication. 
+**Odpověď:** Uživatel se může ke službě Azure AD připojit nebo zaregistrovat zařízení pomocí Multi-Factor Authentication. Pak se samotné zařízení bude pro daného uživatele jednat o důvěryhodný druhý faktor. Když se stejný uživatel přihlásí k zařízení a přistupuje k aplikaci, služba Azure AD považuje zařízení za druhý faktor. Umožňuje tomuto uživateli bezproblémově přistupovat k aplikacím bez dalších výzev Multi-Factor Authentication. 
 
 Toto chování:
 
 - Platí pro připojené služby Azure AD a zařízení registrovaná v Azure AD, ale ne pro zařízení připojená k hybridní službě Azure AD.
-- Neplatí pro žádného jiného uživatele, který se přihlásí k tomuto zařízení. Všichni ostatní uživatelé, kteří přistupují k tomuto zařízení, získají výzvu k Multi-Factor Authentication. Pak mají přístup k aplikacím, které vyžadují službu Multi-Factor Authentication.
+- Neplatí pro žádného jiného uživatele, který se přihlásí k tomuto zařízení. Všichni ostatní uživatelé, kteří přistupují k tomuto zařízení, získají Multi-Factor Authentication výzvou. Pak mají přístup k aplikacím, které vyžadují Multi-Factor Authentication.
 
 ---
 
@@ -281,12 +281,19 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 
 ## <a name="azure-ad-register-faq"></a>Nejčastější dotazy k registru Azure AD
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Otázka: Návody odebrat zařízení registrovaná v Azure AD místně na zařízení?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>Otázka: Návody odebrat místně registrovaný stav služby Azure AD pro zařízení?
 
 **Odpověď:** 
 - U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
 - V případě iOS a Androidu můžete použít Microsoft Authenticator **Nastavení** > aplikace**registrace zařízení** a vybrat zrušit **registraci zařízení**.
 - V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Otázka: Jak zabráním uživatelům v přidávání dalších pracovních účtů (registrovaných v Azure AD) na firemních zařízeních s Windows 10?
+
+**Odpověď:** Pokud chcete uživatelům zablokovat přidávání dalších pracovních účtů do vaší firemní domény, připojené k Azure AD nebo k zařízením s Windows 10 připojeným k Azure AD, povolte následujícímu registru. Tato zásada se dá taky použít k zablokování počítačů připojených k doméně z neúmyslného získání registrace Azure AD se stejným uživatelským účtem. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Otázka: Můžu zaregistrovat zařízení s Androidem nebo iOS BYOD?

@@ -3,15 +3,15 @@ title: Funkce šablon Azure Resource Manager – String | Microsoft Docs
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s řetězci.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698179"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194772"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězcové funkce pro šablony Azure Resource Manager
 
@@ -240,7 +240,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | base64Output | Řetězec | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Řetězec | Jedna dva tři |
@@ -288,7 +288,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | concatOutput | Řetězec | prefix – 5yj4yjf5mbg72 |
 
@@ -405,7 +405,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | Pravda |
 | stringFalse | Bool | False |
@@ -519,7 +519,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | dataUriOutput | Řetězec | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Řetězec | Ahoj světe! |
@@ -583,7 +583,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | Pravda |
 | objectEmpty | Bool | Pravda |
@@ -702,7 +702,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | jeden |
 | stringOutput | Řetězec | O |
@@ -888,7 +888,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | první | Int | 0 |
 | Poslední | Int | 3 |
@@ -1134,7 +1134,7 @@ Následující příklad šablony ukazuje parametr s novým identifikátorem.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | guidOutput | řetězec | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1348,7 +1348,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["tři"] |
 | stringOutput | Řetězec | 2 3 |
@@ -1469,7 +1469,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | Pravda |
 | startsCapTrue | Bool | Pravda |
@@ -1606,7 +1606,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | substringOutput | Řetězec | dva |
 
@@ -1673,7 +1673,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["One"; "Two"] |
 | stringOutput | Řetězec | zapnuté |
@@ -1775,7 +1775,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
 | toLowerOutput | Řetězec | Jedna dva tři |
 | toUpperOutput | Řetězec | JEDNA DVA TŘI |
@@ -2145,7 +2145,7 @@ Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Name | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | utcOutput | řetězec | 20190305T175318Z |
 | utcShortOutput | řetězec | 03/05/2019 |
@@ -2187,7 +2187,7 @@ Další příklad ukazuje, jak použít hodnotu z funkce při nastavení hodnoty
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).

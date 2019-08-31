@@ -1,6 +1,6 @@
 ---
-title: Automatizace procesů Azure Application Insights pomocí Microsoft Flow
-description: Zjistěte, jak můžete pomocí Microsoft Flow k automatizaci rychle opakovatelnou procesů pomocí konektoru služby Application Insights.
+title: Automatizace procesů Azure Application Insights s využitím Microsoft Flow
+description: Naučte se, jak můžete použít Microsoft Flow k rychlé automatizaci opakujících se procesů pomocí konektoru Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,70 +9,75 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 08/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 15299be83758c157bf3bc7d9fb27b50763b9148e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 541d5b70ee56d62831f0947e64b9522e17a07dd9
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60903485"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194907"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Application Insights pomocí konektoru pro Microsoft Flow
 
-Připadá vám sami opakovaného spouštění stejné dotazů na vaše telemetrická data, zkontrolujte, že vaše služba funguje správně? Pokud chcete automatizovat tyto dotazy pro vyhledání trendy a anomálie a následně vytvořit vlastní pracovní postupy kolem sebe? Azure Application Insights connector pro Microsoft Flow je nejvhodnější nástroj pro tyto účely.
+Najdete v datech telemetrie opakované spouštění stejných dotazů, abyste zkontrolovali, jestli služba funguje správně? Chcete tyto dotazy automatizovat pro hledání trendů a anomálií a pak pro ně sestavovat vlastní pracovní postupy? Konektor služby Azure Application Insights pro Microsoft Flow je pravý Nástroj pro tyto účely.
 
-Pomocí této integrace můžete automatizovat řadu procesů aniž byste museli napsat jediný řádek kódu. Po vytvoření toku pomocí Application Insights akci, tok se spustí automaticky vašeho analytického dotazu Application Insights. 
+Díky této integraci teď můžete automatizovat spoustu procesů bez nutnosti psát jediný řádek kódu. Když vytvoříte tok pomocí akce Application Insights, tok automaticky spustí dotaz Application Insights Analytics.
 
-Můžete přidat i další akce. Microsoft Flow je k dispozici stovky akce. Například můžete použít Microsoft Flow automaticky pošle oznámení e-mailu nebo vytvořit chybu ve službě Azure DevOps. Můžete také použít jeden mnoho [šablony](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) , které jsou k dispozici pro konektor pro Microsoft Flow. Tyto šablony zrychlení procesu vytváření toku. 
+Můžete také přidat další akce. Microsoft Flow zpřístupňuje stovky dostupných akcí. Pomocí Microsoft Flow můžete například automaticky odeslat e-mailové oznámení nebo vytvořit chybu v Azure DevOps. Můžete také použít jednu z mnoha [šablon](https://ms.flow.microsoft.com/connectors/shared_applicationinsights/?slug=azure-application-insights) , které jsou k dispozici pro konektor pro Microsoft Flow. Tyto šablony urychlují proces vytváření toku.
 
-<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
+<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). -->
 
-## <a name="create-a-flow-for-application-insights"></a>Vytvoření toku pro službu Application Insights
+## <a name="create-a-flow-for-application-insights"></a>Vytvoření toku pro Application Insights
 
-V tomto kurzu se dozvíte, jak vytvořit tok, který používá algoritmus automatického clusteru Analytics skupiny atributů v datech pro webovou aplikaci. Tento tok automaticky odesílá výsledky e-mailem, pouze jeden příklad použití Microsoft Flow a Application Insights Analytics dohromady. 
+V tomto kurzu se naučíte, jak vytvořit tok, který používá algoritmus analýzy autoclusteru k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete používat Microsoft Flow a Application Insights analýzy společně.
 
 ### <a name="step-1-create-a-flow"></a>Krok 1: Vytvořit tok
+
 1. Přihlaste se k [Microsoft Flow](https://flow.microsoft.com)a pak vyberte **Moje toky**.
-2. Klikněte na tlačítko **nový** pak **vytvořit z prázdné**.
+2. Klikněte na **Nový** a pak na **naplánované – od prázdné**.
 
-    ![Vytvoření nového toku od začátku](./media/automate-with-flow/1createflow.png)
+    ![Vytvořit nový tok z naplánovaného prázdného](./media/automate-with-flow/1-create.png)
 
-### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření aktivační události pro váš tok
-1. V sestavení v kartě vyberte **plán**a pak vyberte **plán – opakování**.
+### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření triggeru pro tok
 
-    ![Vyberte plánování v části sestavení](./media/automate-with-flow/2schedule.png)
+1. V místní nabídce **Sestavte naplánovaný tok**, vyplňte název svého toku a to, jak často se má tok spouštět.
 
-1. V **Interval** zadejte **1**a **frekvence** vyberte **den**.
-2. Klikněte na tlačítko **nový krok**
+    ![Nastavte opakování plánu zadáním četnosti a intervalu.](./media/automate-with-flow/2-schedule.png)
 
-    ![Nastavit plán opakování při zadávání frekvencí a intervalem](./media/automate-with-flow/3schedulerecurrence.png)
+1. Klikněte na možnost **Vytvořit**.
 
+### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Přidat akci Application Insights
 
-### <a name="step-3-add-an-application-insights-action"></a>Krok 3: Přidání akce Application Insights
-1. Vyhledejte **Azure Application Insights**.
-2. Klikněte na tlačítko **Azure Application Insights – vizualizace analytický dotaz**.
- 
-    ![Zvolte akci: Azure vizualizovat analytického dotazu Application Insights](./media/automate-with-flow/4visualize.png)
+1. Vyhledejte **Application Insights**.
+2. Klikněte na **Azure Application Insights – vizualizace dotazu Analytics**.
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: Připojení k prostředku služby Application Insights
+    ![Zvolit akci: Dotaz analýzy Azure Application Insights vizualizace](./media/automate-with-flow/3-visualize.png)
 
-K dokončení tohoto kroku potřebujete ID aplikace a klíč rozhraní API pro váš prostředek. Můžete je znovu načíst z portálu Azure portal, jak je znázorněno v následujícím diagramu:
+3. Vyberte **Nový krok**.
 
-![ID aplikace na webu Azure Portal](./media/automate-with-flow/5apiaccess.png)
+### <a name="step-4-connect-to-an-application-insights-resource"></a>Krok 4: Připojení k prostředku Application Insights
 
-![Klíč rozhraní API na webu Azure Portal](./media/automate-with-flow/6apikey.png)
+K dokončení tohoto kroku potřebujete ID aplikace a klíč rozhraní API pro váš prostředek. Můžete je načíst z Azure Portal, jak je znázorněno v následujícím diagramu:
 
-- Zadejte název připojení, spolu s klíčem rozhraní API a ID aplikace.
+![ID aplikace v Azure Portal](./media/automate-with-flow/5apiaccess.png)
 
-    ![Okno připojení Microsoft Flow](./media/automate-with-flow/7connection.png)
+![Klíč rozhraní API v Azure Portal](./media/automate-with-flow/6apikey.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5: Zadejte typ dotazu a graf Analytics
-Tento příklad dotaz vybere neúspěšných žádostí za poslední den a koreluje s výjimky, ke kterým došlo v rámci operace. Analytics koreluje je na základě identifikátoru operation_Id. Výsledky dotazu pak segmenty pomocí algoritmu autocluster. 
+Zadejte název připojení spolu s ID aplikace a klíčem rozhraní API.
 
-Když vytvoříte vlastní dotazy, ověřte, že fungují správně v Analytics předtím, než ho přidáte do vašeho toku.
+   ![Okno Microsoft Flow připojení](./media/automate-with-flow/4-connection.png)
 
-- Přidejte následující dotaz Analytics a vyberte typ grafu tabulku HTML. Potom vyberte **nový krok**.
+Pokud se okno připojení nezobrazí hned a místo toho bude přímý dotaz na zadání dotazu, klikněte na tlačítko se třemi tečkami vpravo nahoře v poli. Pak vyberte moje připojení nebo použijte existující.
+
+Klikněte na možnost **Vytvořit**.
+
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Krok 5: Zadat dotaz Analytics a typ grafu
+Tento ukázkový dotaz vybírá neúspěšné žádosti za poslední den a koreluje s výjimkami, k nimž došlo v rámci operace. Analýza je koreluje na základě identifikátoru operation_Id. Dotaz pak segmentuje výsledky pomocí algoritmu autocluster.
+
+Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytických prostředí, než je přidáte do vašeho toku.
+
+- Přidejte následující analytický dotaz a vyberte typ grafu tabulky HTML. Pak vyberte **Nový krok**.
 
     ```
     requests
@@ -85,59 +90,53 @@ Když vytvoříte vlastní dotazy, ověřte, že fungují správně v Analytics 
     | evaluate autocluster()
     ```
     
-    ![Okno Konfigurace dotazu Analytics](./media/automate-with-flow/8query.png)
+    ![Okno Konfigurace dotazu Analytics](./media/automate-with-flow/5-query.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>Krok 6: Nakonfigurujte tok poslání e-mailu
+### <a name="step-6-configure-the-flow-to-send-email"></a>Krok 6: Konfigurace toku pro odesílání e-mailů
 
 1. Vyhledejte **Office 365 Outlook**.
-2. Klikněte na tlačítko **Office 365 Outlook – odeslat e-mail**.
+2. Klikněte na **Office 365 Outlook – odeslat e-mail**.
 
-    ![Okno pro výběr Office 365 Outlooku](./media/automate-with-flow/9outlookaction.png)
+    ![Okno pro výběr aplikace Office 365 Outlook](./media/automate-with-flow/6-outlook.png)
 
-1. V **odeslat e-mailu** okno, postupujte takto:
+1. V okně **Odeslat e-mail** :
 
    a. Zadejte e-mailovou adresu příjemce.
 
    b. Zadejte předmět e-mailu.
 
-   c. Klikněte kamkoli do **tělo** pole a pak v nabídce dynamického obsahu, které se otevře na pravé straně vyberte **tělo**.
+   c. Klikněte kamkoli do pole **text** a potom v nabídce dynamického obsahu, který se otevře vpravo, vyberte **text**.
 
-   d. Klikněte na tlačítko **zobrazit pokročilé možnosti**.
+   e. Vyberte **Zobrazit upřesňující možnosti** .
 
-    ![Konfigurace Office 365 Outlooku](./media/automate-with-flow/10sendemailbody.png)
-
-1. V nabídce dynamického obsahu postupujte takto:
+1. V nabídce dynamického obsahu:
 
     a. Vyberte **název přílohy**.
 
     b. Vyberte **obsah přílohy**.
     
-    c. V **je HTML** vyberte **Ano**.
+    c. V poli **je HTML** vyberte **Ano**.
 
-    ![Okno Konfigurace e-mailu Office 365](./media/automate-with-flow/11emailattachment.png)
+    ![Konfigurace Office 365 Outlooku](./media/automate-with-flow/7-email.png)
 
-### <a name="step-7-save-and-test-your-flow"></a>Krok 7: Uložit a testování vašeho toku
-- V **název toku** pole, přidat pro nový tok název a potom klikněte na tlačítko **Uložit**.
+### <a name="step-7-save-and-test-your-flow"></a>Krok 7: Uložení a testování toku
 
-    ![Pojmenujte tok a uložit](./media/automate-with-flow/12nameflow.png)
+Klikněte na **Uložit**.
 
-Můžete počkat, aktivační událost pro spuštění této akce nebo můžete spustit tok okamžitě podle [aktivační událost spouštět na vyžádání](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
+Můžete počkat, až aktivační událost spustí tuto akci, nebo můžete kliknout ![na **test** ikony](./media/automate-with-flow/testicon.png) kádinky testu v horní části.
 
-Při běhu tohoto toku, příjemce, které jste zadali v seznamu e-mailu dostávat e-mailovou zprávu, která vypadá nějak takto:
+Po výběru **testu**:
 
-![Ukázka e-mailu](./media/automate-with-flow/flow9.png)
+1. Vyberte možnost **provedem akci aktivace**.
+2. Vyberte **Spustit tok**.
 
+Po spuštění toku obdrží příjemci, které jste zadali v seznamu e-mailů, e-mailovou zprávu podobnou následující.
+
+![Ukázkový e-mail](./media/automate-with-flow/flow9.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
-- Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
-
-
+- Přečtěte si další informace o vytváření [analytických dotazů](../../azure-monitor/log-query/get-started-queries.md).
+- Přečtěte si další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 <!--Link references-->
-
-
-
-
-

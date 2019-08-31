@@ -1,57 +1,57 @@
 ---
-title: Společnost pracovních účtů a partnerského centra
-description: Jak zkontrolovat, jestli má vaše společnost pracovní účet s Microsoft, vytvořte nový pracovní účet nebo nastavení více pracovních účtů pro použití s partnerského centra.
-author: mattwojo
+title: Pracovní účty společnosti a partnerské Centrum
+description: Jak ověřit, jestli má vaše společnost nastavený pracovní účet s Microsoftem, vytvořte nový pracovní účet nebo nastavte víc pracovních účtů pro použití s partnerským centrem.
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619553"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194273"
 ---
-# <a name="company-work-accounts-and-partner-center"></a>Společnost pracovních účtů a partnerského centra
+# <a name="company-work-accounts-and-partner-center"></a>Pracovní účty společnosti a partnerské Centrum
 
-Partnerské centrum společnosti pracovních účtů, označované také jako tenantů Azure Active Directory (AD) používá ke správě přístupu k účtu pro více uživatelů, řídit oprávnění, skupiny hostitelů a aplikace a spravovat data profilu. Odkazování na váš účet v partnerském centru společnosti pracovní e-mailu účet domény, zaměstnanci vaší společnosti můžete přihlásit do partnerského centra a spravovat své vlastní pracovní účet uživatelských jmen a hesel pomocí nabídky na webu marketplace.
+Partnerské centrum používá pracovní účty společnosti, označované také jako klienti Azure Active Directory (AD), ke správě přístupu k účtu pro více uživatelů, řízení oprávnění, skupin hostitelů a aplikací a údržbě dat profilu. Když propojíte doménu firemního e-mailového účtu s vaším účtem partnerského centra, zaměstnanci vaší společnosti se můžou přihlásit do partnerského centra a spravovat nabídky Marketplace pomocí vlastních uživatelských jmen a hesel pracovního účtu.
 
-## <a name="check-whether-your-company-already-has-a-work-account"></a>Zkontrolujte, jestli už má vaše společnost pracovní účet
+## <a name="check-whether-your-company-already-has-a-work-account"></a>Ověřte, jestli vaše společnost už má pracovní účet.
 
-Pokud vaše společnost se připojila ke cloudové službě Microsoftu, jako je například Azure, Microsoft Intune nebo Office 365, už máte pracovní e-mailu účet domény (také označované jako tenanta služby Azure Active Directory), která lze použít s partnerského centra.
+Pokud se vaše společnost přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Office 365, pak už máte pracovní e-mailový účet (označovaný také jako Azure Active Directory tenant), který se dá použít s partnerským centrem.
 
-Postupujte podle těchto kroků ke kontrole:
-1. Přihlaste se k portálu pro správu Azure na https://portal.azure.com.
-2. Vyberte **Azure Active Directory** z levé navigační nabídce a potom vyberte **vlastní názvy domén**.
-3. Pokud už máte pracovní účet, zobrazí se název domény.
+Pomocí těchto kroků zkontrolujete:
+1. Přihlaste se na portál pro správu https://portal.azure.com Azure na adrese.
+2. V navigační nabídce vlevo vyberte **Azure Active Directory** a pak vyberte **vlastní názvy domén**.
+3. Pokud již máte pracovní účet, bude uveden název vaší domény.
 
-Pokud vaše společnost ještě nemá pracovní účet, bude vytvořen pro vás během procesu registrace partnerského centra.
+Pokud vaše společnost ještě nemá pracovní účet, vytvoří se během procesu registrace v partnerském centru jeden za vás.
 
-## <a name="set-up-multiple-work-accounts"></a>Nastavit víc pracovních účtů
+## <a name="set-up-multiple-work-accounts"></a>Nastavení více pracovních účtů
 
-Než se rozhodnete použít stávající pracovní účet, zvažte, kolik uživatelů použije pracovní účet potřebovat pro přístup k partnerskému centru. Pokud pracovní účet, který nebudete potřebovat pro přístup k partnerskému centru máte uživatele, můžete zvážit vytvoření více pracovních účtů, tak, aby pouze uživatelé, kteří potřebují přístup k partnerskému centru jsou reprezentovány v konkrétním účtu.
+Než se rozhodnete použít stávající pracovní účet, vezměte v úvahu, kolik uživatelů v pracovním účtu bude potřebovat přístup k partnerskému centru. Pokud máte uživatele v pracovním účtu, který nebude potřebovat přístup k partnerskému centru, možná budete chtít zvážit vytvoření více pracovních účtů, aby se na určitém účtu reprezentují jenom uživatelé, kteří budou potřebovat přístup k partnerskému centru.
 
-## <a name="create-a-new-work-account"></a>Vytvořte nový pracovní účet
+## <a name="create-a-new-work-account"></a>Vytvořit nový pracovní účet
 
-K vytvoření nového pracovního účtu vaší společnosti, postupujte podle následujících kroků. Budete muset požádat o pomoc, kdo má oprávnění správce k účtu vaší společnosti Microsoft Azure.
+Chcete-li vytvořit nový pracovní účet pro vaši společnost, postupujte podle následujících kroků. Možná budete muset požádat o pomoc od osoby, která má oprávnění správce na účtu Microsoft Azure vaší společnosti.
 
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
-2. V levé navigační nabídce vyberte **Azure Active Directory** -> **uživatelé**.
-3. Vyberte **nového uživatele** a vytvořit nový účet Azure pracovní tak, že zadáte jméno a e-mailovou adresu. Ujistěte se, že **role adresáře** je nastavena na **uživatele** a vyberte **zobrazit heslo** zaškrtávací políčko v dolní části zobrazení a poznamenejte si automaticky vytvořené heslo.
-4. Vyberte **vytvořit** uložit nového uživatele.
+2. V navigační nabídce vlevo vyberte **Azure Active Directory** -> **Uživatelé**.
+3. Vyberte **Nový uživatel** a vytvořte nový pracovní účet Azure zadáním jména a e-mailové adresy. Ujistěte se, že je **role adresáře** nastavená na hodnotu **uživatel** a v dolní části zaškrtněte políčko **Zobrazit heslo** , a poznamenejte si automaticky vygenerované heslo.
+4. Výběrem **vytvořit** uložte nového uživatele.
 
-E-mailovou adresu pro uživatelský účet musí být název ověřené domény ve vašem adresáři. Můžete vytvořit seznam ověřených domén ve vašem adresáři tak, že vyberete **Azure Active Directory** -> **vlastní názvy domén** v levé navigační nabídce.
+E-mailová adresa uživatelského účtu musí být ověřený název domény v adresáři. Všechny ověřené domény v adresáři můžete zobrazit tak, že v nabídce vlevo vyberete **Azure Active Directory** -> **vlastní názvy domén** .
 
-Další informace o přidávání vlastních domén v Azure Active Directory najdete v tématu [přidat nebo přidružení domény ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Další informace o přidávání vlastních domén v Azure Active Directory najdete v tématu [Přidání nebo přidružení domény ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
 
-## <a name="troubleshoot-work-email-sign-in"></a>Řešení potíží s přihlášení pracovní e-mailu
+## <a name="troubleshoot-work-email-sign-in"></a>Řešení potíží s přihlášením k pracovnímu e-mailu
 
-Pokud máte potíže při přihlašování ke svému pracovnímu účtu (označované také jako vašeho tenanta Azure AD), najít že scénář v diagramu níže, které bude nejlépe odpovídá vaší situaci a proveďte doporučené kroky.
+Pokud máte potíže s přihlášením ke svému pracovnímu účtu (známému taky jako tenant Azure AD), najděte scénář na diagramu níže, který nejlépe odpovídá vaší situaci, a postupujte podle doporučených kroků.
 
-![Diagram pro řešení potíží s přihlášením pracovní účet](./media/onboarding-aad-flow.png)
+![Diagram pro řešení potíží s přihlášením k pracovnímu účtu](./media/onboarding-aad-flow.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- [Správa účtu komerční Marketplace v partnerském centru](./manage-account.md) 
+- [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md) 

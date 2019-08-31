@@ -1,18 +1,18 @@
 ---
 title: Jak spravovat účet komerčního obchodu Marketplace v partnerském centru
 description: Naučte se spravovat účet komerčního obchodu Marketplace v partnerském centru.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f0557f21e791dd22df16451003d5efcfc72c56b4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/30/2019
+ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164734"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194262"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru 
 
@@ -149,7 +149,7 @@ Další informace najdete v tématu [sledování zákaznického využití Azure 
 
 Partnerské centrum využívá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) pro přístup a správu účtu s více uživateli. Služba Azure AD vaší organizace se v rámci procesu registrace automaticky přidruží k vašemu účtu partnerského centra. 
 
-## <a name="manage-users"></a>Spravovat uživatele
+## <a name="manage-users"></a>Správa uživatelů
 
 Oddíl **Uživatelé** v partnerském centru (v části **Nastavení účtu**) vám umožní spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu partnerského centra, pomocí služby Azure AD. Všimněte si, že aby bylo možné spravovat uživatele, musíte být přihlášeni pomocí svého [pracovního účtu](./company-work-accounts.md) (přidruženého TENANTA Azure AD). Pokud chcete spravovat uživatele v rámci jiného pracovního účtu nebo tenanta, budete se muset odhlásit a pak znovu přihlásit jako uživatel s oprávněním **správce** pro tento pracovní účet nebo tenanta. 
 
@@ -223,7 +223,7 @@ Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, 
 3.  Zobrazí se stránka s potvrzením, která zobrazuje přihlašovací informace pro uživatele, včetně dočasného hesla. Nezapomeňte vytisknout nebo zkopírovat tyto informace a poskytnout ji uživateli, protože po opuštění této stránky nebudete mít přístup k dočasnému heslu.
 
 
-## <a name="manage-groups"></a>Spravovat skupiny
+## <a name="manage-groups"></a>Správa skupin
 
 Skupiny umožňují řídit více rolí uživatelů a oprávnění dohromady.
 
@@ -305,9 +305,15 @@ Pokud vaše aplikace Azure AD čte a zapisuje data v Microsoft Azure AD, bude po
 Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru. 
 
 |**Role**|**Oprávnění**|
-|----------------------------------|:---------------------------------|
-
-| Správce | • má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daňového a výběrového |      | • Může spravovat uživatele, role a pracovní účty (klienty) | | Vývojář | • může spravovat a publikovat nabídky |      | • Může zobrazit některé sestavy vydavatelů | | Globální správce | • není relevantní pro komerční tržiště | | Obchodní Přispěvatel | • není relevantní pro komerční tržiště | | Finanční Přispěvatel | • není relevantní pro komerční tržiště | | Uvedení na trh | • není relevantní pro komerční tržiště |
+|----------------------------------|---------------------------------|
+|Správce|– Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daňových a výběrů.|
+|      |– Může spravovat uživatele, role a pracovní účty (klienty).|
+|Vývojář|– Může spravovat a publikovat nabídky|
+|      |– Může zobrazit některé sestavy vydavatelů.|
+|Globální správce|– Není relevantní pro komerční tržiště|
+|Obchodní Přispěvatel|– Není relevantní pro komerční tržiště|
+|Finanční Přispěvatel|– Není relevantní pro komerční tržiště|
+|Obchodník|– Není relevantní pro komerční tržiště|
 
 Další informace o správě rolí a oprávnění v dalších oblastech partnerského centra, jako je Azure Active Directory (AD), zprostředkovatel Cloud Solution Provider (CSP), ovládací panel dodavatel (CPV), uživatelé typu Host nebo Microsoft Partner Network (MPN), najdete v tématu [přiřazení rolí uživatelů. a oprávnění v partnerském centru](https://docs.microsoft.com/partner-center/permissions-overview).
 
@@ -359,6 +365,6 @@ Když odeberete tenanta, všichni uživatelé, kteří byli přidáni do účtu 
 Pokud jsou k dispozici aktualizace smluv, které vyžadují vaši pozornost, můžou se v horní části této stránky zobrazit **potřebné akce** . Pokud chcete přijmout aktualizovanou smlouvu, nejdřív si přečtěte verzi odkazované smlouvy a pak vyberte **přijmout smlouvu**. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvořit novou nabídku SaaS](./create-new-saas-offer.md)

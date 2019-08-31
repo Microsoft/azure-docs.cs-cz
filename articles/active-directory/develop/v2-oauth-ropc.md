@@ -1,6 +1,6 @@
 ---
-title: Platforma identit Microsoft používá k přihlášení uživatelů pomocí udělení přihlašovacích údajů (ROPC) hesla vlastníka prostředku | Azure
-description: Podpora prohlížeče bez ověřování toky pomocí udělení přihlašovacích údajů heslo vlastníka prostředku.
+title: Použijte Microsoft Identity Platform k přihlašování uživatelů pomocí udělení přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) | Azure
+description: Podporuje toky ověřování bez prohlížeče pomocí udělení přihlašovacích údajů pro heslo vlastníka prostředku.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,46 +12,46 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482388"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193202"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma identit Microsoft a přístupové heslo vlastníka prostředku OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform a přihlašovací údaje pro heslo vlastníka prostředku OAuth 2,0
 
-Microsoft identity platform podporuje [udělit pověření heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), který umožňuje aplikaci přihlásit uživatele pomocí přímo zpracování své heslo. Tok ROPC vyžaduje vysoký stupeň důvěryhodnosti a uživatel vystavení a tento tok měli používat jenom v případě, že toky, které bezpečnější, nelze použít.
+Platforma Microsoft Identity Platform podporuje [udělení přihlašovacích údajů pro heslo vlastníka prostředku (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), které aplikaci umožňuje přihlašovat uživatele přímo při zpracování hesla. Tok ROPC vyžaduje vysoký stupeň důvěry a ohrožení uživatele a tento tok byste měli používat jenom v případě, že se jedná o jiné, bezpečnější toky, které se nedají použít.
 
 > [!IMPORTANT]
 >
-> * Koncový bod Microsoft identity platform podporuje pouze ROPC pro klienty Azure AD, ne osobní účty. To znamená, že je nutné použít koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`) nebo `organizations` koncového bodu.
-> * Osobní účty, které se pozvat do tenanta služby Azure AD nemůže použít ROPC.
-> * Účty, které nemají hesla prostřednictvím ROPC přihlásit. V tomto scénáři doporučujeme místo toho použít odlišný tok pro vaši aplikaci.
-> * Pokud uživatelé muset použít vícefaktorové ověřování (MFA) pro přihlášení k aplikaci, že budou Blokovaní místo.
+> * Koncový bod Microsoft Identity Platform podporuje jenom ROPC pro klienty Azure AD, ne pro osobní účty. To znamená, že musíte použít koncový bod (`https://login.microsoftonline.com/{TenantId_or_Name}`) `organizations` nebo koncový bod specifický pro klienta.
+> * Osobní účty, které jsou pozvány klientovi služby Azure AD, nemůžou používat ROPC.
+> * Účty, které nemají hesla, se nemůžou přihlásit přes ROPC. Pro tento scénář doporučujeme místo toho použít jiný tok pro aplikaci.
+> * Pokud uživatelé potřebují k přihlášení k aplikaci použít vícefaktorové ověřování (MFA), místo toho se zablokují.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
-Následující diagram znázorňuje tok ROPC.
+V následujícím diagramu je znázorněný ROPC tok.
 
-![Diagram znázorňující tok přihlašovacích údajů heslo vlastníka prostředku](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Diagram znázorňující tok přihlašovacích údajů k heslům vlastníka prostředku](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Žádost o autorizaci
 
-Tok ROPC je jeden požadavek&mdash;odešle klientovi identifikace a přihlašovací údaje uživatele pro zprostředkovatele identity a potom na oplátku přijímá tokeny. Klient musí požádat e-mailovou adresu uživatele (UPN) a heslo, než to uděláte. Ihned po úspěšné žádosti by měl klient zabezpečenému vydávání přihlašovacích údajů uživatele z paměti. To je nikdy uložte.
+ROPC flow je jeden požadavek: pošle identifikaci klienta a přihlašovací údaje uživatele do IDP a pak obdrží tokeny při návratu. Klient musí před tím, než to uděláte, požádat o e-mailovou adresu uživatele (UPN) a heslo. Ihned po úspěšné žádosti by měl klient bezpečně uvolnit přihlašovací údaje uživatele z paměti. Nesmí je nikdy Uložit.
 
 > [!TIP]
-> Pokuste se spustit tuto žádost do Postman!
-> [![Zkuste spustit tento požadavek v nástroji Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Zkuste tento požadavek provést v nástroji post!
+> [![Pokus o spuštění této žádosti v předzálohovacím](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
-// Line breaks and spaces are for legibility only.
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -66,15 +66,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenantu Active directory, kterou chcete uživatele do protokolu. To může být ve formátu popisný název nebo identifikátor GUID. Tento parametr nelze nastavit na `common` nebo `consumers`, ale může být nastavená na `organizations`. |
-| `grant_type` | Požaduje se | Musí být nastaveno na `password`. |
-| `username` | Požaduje se | E-mailovou adresu uživatele. |
-| `password` | Požaduje se | Heslo uživatele. |
-| `scope` | Doporučené | Místo oddělený seznam [obory](v2-permissions-and-consent.md), nebo oprávnění, které aplikace vyžaduje. Ve interaktivního toku správce nebo uživatel musí vyjádřit souhlas. do těchto oborů předem. |
+| `tenant` | Požadováno | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na `common` hodnotu `consumers`nebo, ale může být nastaven `organizations`na hodnotu. |
+| `client_id` | Požadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. | 
+| `grant_type` | Požadováno | Musí být nastaveno na `password`. |
+| `username` | Požadováno | E-mailová adresa uživatele |
+| `password` | Požadováno | Heslo uživatele. |
+| `scope` | Doporučené | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel na tyto obory vyjádřit svůj souhlas předem. |
+| `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, `client_secret` nelze ji zahrnout nebo. `client_assertion`  Pokud je aplikace důvěrného klienta, musí být součástí. | 
+| `client_assertion` | Někdy vyžadováno | Jiná forma `client_secret`, generovaná pomocí certifikátu.  Další podrobnosti najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) . | 
 
-### <a name="successful-authentication-response"></a>Ověření úspěšné odpovědi
+### <a name="successful-authentication-response"></a>Úspěšná ověřovací odpověď
 
-Následující příklad ukazuje úspěšné odpovědi tokenu:
+Následující příklad ukazuje úspěšnou odpověď tokenu:
 
 ```json
 {
@@ -89,26 +92,25 @@ Následující příklad ukazuje úspěšné odpovědi tokenu:
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-| `token_type` | String | Vždy nastaven na hodnotu `Bearer`. |
-| `scope` | Oddělené mezerou řetězce | Pokud byl vrácen přístupového tokenu, tento parametr obsahuje obory, které je přístupový token platný pro. |
-| `expires_in`| int | Počet sekund, po které je součástí přístupový token platný pro. |
-| `access_token`| Neprůhledný řetězec | Vydaný pro [obory](v2-permissions-and-consent.md) , které bylo vyžádáno. |
-| `id_token` | JWT | Vydaný if původní `scope` parametr zahrnuté `openid` oboru. |
-| `refresh_token` | Neprůhledný řetězec | Pokud vydaných původní `scope` parametr `offline_access`. |
+| `token_type` | Řetězec | Vždy nastavte na `Bearer`. |
+| `scope` | Řetězce oddělené mezerami | Pokud byl vrácen přístupový token, tento parametr vypíše obory, pro které je přístupový token platný. |
+| `expires_in`| int | Počet sekund, po který je zahrnutý přístupový token platný |
+| `access_token`| Neprůhledný řetězec | Vydány pro [](v2-permissions-and-consent.md) požadované obory. |
+| `id_token` | JWT | Vydáno, pokud původní `scope` parametr `openid` zahrnoval obor. |
+| `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut `offline_access`původní parametr. |
 
-Token obnovení můžete použít k získání nových přístupových tokenů a obnovovacích tokenů pomocí stejný tok podle [dokumentace ke službě flow kód OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
+Pomocí obnovovacího tokenu můžete získat nové přístupové tokeny a aktualizovat tokeny pomocí stejného toku popsaného v [dokumentaci ke službě Flow Code OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
-### <a name="error-response"></a>Odpověď na chybu
+### <a name="error-response"></a>Chybová odezva
 
-Pokud uživatel není k dispozici správné uživatelské jméno nebo heslo, nebo že nedostal klienta požadovanou souhlas, ověření se nezdaří.
+Pokud uživatel nezadal správné uživatelské jméno nebo heslo nebo pokud klient neobdržel požadovaný souhlas, ověřování se nezdaří.
 
 | Chyba | Popis | Akce klienta |
 |------ | ----------- | -------------|
-| `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávná nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory, `consent_required` se vrátí chyba. Pokud k tomu dojde, klient by měl uživatele poslat na výzvu k interaktivní pomocí webview nebo prohlížeče. |
-| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Místo nich se používá `/organizations`. |
-| `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. ROPC je podporována pouze pro veřejné klientské aplikace. |
+| `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávné nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory uděleny, `consent_required` bude vrácena chyba. Pokud k tomu dojde, klient by měl odeslat uživateli interaktivní výzvu pomocí webového zobrazení nebo prohlížeče. |
+| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ grantu není podporován u `/common` kontextů ověřování nebo. `/consumers`  Místo `/organizations` toho použijte nebo ID tenanta. |
 
 ## <a name="learn-more"></a>Víc se uč
 
-* Vyzkoušejte si ROPC sami pomocí [ukázková Konzolová aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
+* Vyzkoušejte si ROPC pro sebe pomocí [ukázkové konzolové aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
+* Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md).

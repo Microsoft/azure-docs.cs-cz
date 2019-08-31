@@ -1,28 +1,20 @@
 ---
-title: Zkoumání a modelování dat pomocí Data Science Virtual Machine
-titleSuffix: Azure
-description: Provádění úloh zkoumání a modelování dat na Data Science Virtual Machine.
+title: Prozkoumat data a model ve Windows
+titleSuffix: Azure Data Science Virtual Machine
+description: Provádění úloh zkoumání a modelování dat na Data Science Virtual Machine Windows.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-editor: cgronlun
-ms.custom: seodec18
-ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 33f1d102f128f7e63d625132c9d3c3834955747b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6af9f2c80915745f995144c24ae1649fb02a31ae
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099452"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192267"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 

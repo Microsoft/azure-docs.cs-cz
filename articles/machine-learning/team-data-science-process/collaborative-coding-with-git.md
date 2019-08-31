@@ -7,110 +7,114 @@ editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 08/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336207"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195437"
 ---
 # <a name="collaborative-coding-with-git"></a>Kódování založené na spolupráci s využitím Gitu
 
-V tomto článku zjistíte, jak provádět vývoj spolupráci kódu pro projekty datových věd jako vývojářská platforma sdílený kód pomocí Gitu. Vysvětluje postup propojíte kódování aktivity a pracovní plánované v [Agilního vývoje](agile-development.md) a jak revizemi kódu.
+Tento článek popisuje, jak použít Git jako architekturu vývoje kódu pro spolupráci pro projekty pro datové vědy. Tento článek popisuje, jak propojit kód v Azure Repos s [agilním vývojem](agile-development.md) pracovních položek v Azure boards, jak provádět revize kódu a jak vytvořit a sloučit žádosti o přijetí změn.
 
+## <a name='Linkaworkitemwithagitbranch-1'></a>Propojení pracovní položky s Azure Reposovou větví 
 
-## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Propojit pracovní položku s větví Git 
+Azure DevOps nabízí pohodlný způsob, jak připojit Azure Boards uživatelský scénář nebo pracovní položku úkolu pomocí Azure Repos větve úložiště Git. Svůj uživatelský scénář nebo úkol můžete propojit přímo s kódem, který je k němu přidružený. 
 
-Služby Azure DevOps poskytuje pohodlný způsob, jak připojit pracovní položky (scénáře nebo úkol) s větví Git. To umožňuje scénáře nebo úloha přímý odkaz na kód s ním spojená. 
-
-Pro připojení pracovní položky na novou větev, dvakrát klikněte na pracovní položku a v místním okně klikněte na tlačítko **vytvořit novou větev** pod **+ přidat odkaz**.  
+Chcete-li připojit pracovní položku k nové větvi, vyberte tři tečky ( **...** ) vedle pracovní položky a v místní nabídce přejděte na a vyberte možnost **Nová větev**.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Zadejte informace pro tuto novou větev, jako je například název větve, základní úložiště Git a pobočky. Úložiště Git, zvolili musí být úložišti v rámci stejného projektu patřící do pracovní položky. Základní větví může být hlavní větev nebo některé existující větev.
+V dialogovém okně **vytvořit větev** zadejte název nové větve a základní Azure Repos úložiště Git a větev. Základní úložiště musí být ve stejném projektu Azure DevOps jako pracovní položka. Základní větví může být hlavní větev nebo jiná existující větev. Vyberte **vytvořit větev**. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
-Dobrým postupem je vytvořit větev Git pro každé pracovní položky scénář. Pak pro každou pracovní položku úkolu, vytvoříte větev na základě větve scénáře. Uspořádání větví v hierarchické díky tomu, který odpovídá pro scénář úkolů vztahů je užitečný, pokud máte více lidem pracovat na různých scénářů stejného projektu nebo mít více lidem pracovat na různých úloh stejné scénáře. Konflikty můžete minimalizovat, když každý člen týmu pracuje na jinou větev a každý člen funguje na různých kódů nebo jiných artefaktů při sdílení větev. 
+Novou větev můžete vytvořit také pomocí následujícího příkazu git bash v systému Windows nebo Linux:
 
-Následující obrázek znázorňuje doporučené strategii větvení pro TDSP. Nemusí potřebovat jako řada větví, jako jsou zde uvedeny, zvláště když máte jen jeden nebo dva lidé začali pracovat na stejném projektu, nebo pouze jeden člověk funguje v jednotlivých úlohách tohoto scénáře. Ale oddělení vývoje větev z hlavní větve je vždy vhodné. To může pomoct zabránit větve vydané verze se přerušila vývojových aktivit. Podrobnější popis modelu větev Git najdete v [A úspěšné Git větvení modelu](https://nvie.com/posts/a-successful-git-branching-model/).
+```bash
+git checkout -b <new branch name> <base branch name>
+
+```
+Pokud nezadáte \<název základní větve >, je nová větev založena na `master`. 
+
+Chcete-li přepnout do své pracovní větve, spusťte následující příkaz: 
+
+```bash
+git checkout <working branch name>
+```
+
+Po přepnutí do pracovní větve můžete začít vyvíjet artefakty kódu nebo dokumentace a dokončit tak pracovní položku. Přepínání `git checkout master` se spouští zpátky `master` do větve.
+
+Je dobrým zvykem vytvořit větev Git pro každou pracovní položku uživatelského scénáře. Pak můžete pro každou pracovní položku úkolu vytvořit větev na základě větve uživatelského scénáře. Uspořádejte větve v hierarchii, které odpovídají vztahu uživatelský scénář – úkol, pokud máte více lidí pracujících v různých uživatelských scénářích pro stejný projekt nebo v různých úlohách pro stejný uživatelský scénář. Můžete minimalizovat konflikty tím, že každý člen týmu pracuje na jiné větvi nebo v jiném kódu nebo jiné artefakty při sdílení větve. 
+
+Následující diagram znázorňuje doporučenou strategii větvení pro TDSP. Možná nebudete potřebovat tolik větví, jak je znázorněno zde, zejména v případě, že na projektu pracuje pouze jedna nebo dvě osoby, nebo pouze jedna osoba pracuje na všech úkolech uživatelského scénáře. Ale oddělení vývojové větve od hlavní větve je vždycky dobrým zvykem a může přispět k tomu, aby se větev vydaných verzí přerušila vývojovým aktivitami. Úplný popis modelu větve Git najdete v [úspěšném modelu větvení Git](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-Pokud chcete přepnout na větev, kterou chcete pracovat, spusťte následující příkaz v příkazovém prostředí (Windows nebo Linuxem). 
-
-    git checkout <branch name>
-
-Změna *< název větve\>*  k **hlavní** přepne zpět do **hlavní** větve. Po přepnutí do pracovní větve, můžete začít pracovat na pracovní položky, vývoj kódu nebo v dokumentaci artefakty potřebné k dokončení položky. 
-
-Můžete také propojit pracovní položky do existující větev. V **podrobností** stránky pracovní položky, místo kliknutí na **vytvořit novou větev**, kliknete na **+ přidat odkaz**. Vyberte větev, který chcete propojit pracovní položku. 
+Můžete také propojit pracovní položky do existující větev. Na stránce **podrobností** pracovní položky vyberte možnost **Přidat odkaz**. Pak vyberte existující větev, na kterou chcete propojit pracovní položku, a vyberte **OK**. 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-Můžete také vytvořit novou větev v Git Bashi příkazy. Pokud < název základní větve\> chybí, < nový název větve\> vychází _hlavní_ větve. 
-    
-    git checkout -b <new branch name> <base branch name>
+## <a name='WorkonaBranchandCommittheChanges-2'></a>Práce na větvi a potvrzení změn 
 
+Po provedení změny pracovní položky, jako je například přidání souboru skriptu R do `script` větve místního počítače, můžete pomocí následujících příkazů Git bash Potvrdit změnu z místní větve na opačnou pracovní větev:
 
-## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Práce na větev a potvrdit změny 
-
-Nyní předpokládejme, že provedete některé změny *data\_ingestování* větev pro potřeby pracovní položky, jako je například přidávání souboru R na větev v místním počítači. Potvrdit R soubory přidané do větve pro tuto pracovní položku, pokud jste v této větvi v prostředí Git pomocí následujících příkazů Git:
-
-    git status
-    git add .
-    git commit -m"added a R scripts"
-    git push origin data_ingestion
+```bash
+git status
+git add .
+git commit -m "added an R script file"
+git push origin script
+```
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3. <a name='CreateapullrequestonVSTS-3'></a>Vytvořit žádost o přijetí změn na služby Azure DevOps 
+## <a name='CreateapullrequestonVSTS-3'></a>Vytvoření žádosti o získání dat
 
-Až budete připravení po pár potvrzení a nasdílení změn, ke sloučení do jeho základní větev aktuální větve můžete odeslat **žádosti o přijetí změn** na služby Azure DevOps. 
+Po jednom nebo několika potvrzeních a nabízených oznámeních, až budete připraveni k sloučení aktuální pracovní větve do své základní větve, můžete vytvořit a odeslat *žádost o* přijetí změn v Azure Repos. 
 
-Přejděte na hlavní stránku vašeho projektu a klikněte na tlačítko **kód**. Vyberte větev, která se má sloučit a název úložiště Git, které chcete sloučit do větve. Klikněte na **žádosti o přijetí změn**, klikněte na tlačítko **nové žádosti o přijetí změn** vytvořit přezkoumání žádosti o přijetí změn před k její základní větve je sloučen práce na větvi.
+Na hlavní stránce projektu Azure DevOps ukažte > na úložiště**žádostí o získání dat** v levém navigačním panelu. Pak vyberte jednu z **nových tlačítek žádosti o** přijetí změn nebo vytvořte odkaz na **žádost** o přijetí změn.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Vyplňte některé popis této žádosti o přijetí změn, přidání revidujících a odeslat ji.
+Na obrazovce **Nová žádost o** přijetí změn v případě potřeby přejděte do úložiště Git a větev, do které chcete sloučit změny. Přidejte nebo změňte jakékoli jiné požadované informace. V části **revidující**přidejte názvy, které potřebujete ke kontrole změn, a pak vyberte **vytvořit**. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## 4. <a name='ReviewandMerge-4'></a>Revize a sloučení 
+## <a name='ReviewandMerge-4'></a>Revize a sloučení
 
-Při vytvoření žádosti o přijetí změn vaši recenzenti získat e-mailové oznámení ke kontrole žádosti o přijetí změn. Revidující se muset zkontrolovat, zda změny pracují, či nikoli a pokud je to možné otestovat změny s žadateli. Na základě jejich posouzení, revidující mohli schválit nebo odmítnout žádosti o přijetí změn. 
+Po vytvoření žádosti o přijetí změn obdrží kontroloři e-mailové oznámení, aby zkontrolovali žádost o přijetí změn. Kontroloři otestují, zda změny fungují, a pokud je to možné, zkontrolujte změny v žadateli. Recenzenti mohou provádět komentáře, požadovat změny a schvalovat nebo odmítat žádosti o přijetí změn na základě jejich posouzení. 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
-
-Po dokončení kontroly pracovní větve je sloučen do jeho základní větve kliknutím **Complete** tlačítko. Můžete odstranit pracovní větev, až se sloučila. 
+Jakmile recenzenti schválí změny, můžete vy nebo někdo jiný s oprávněním sloučit sloučit pracovní větev do její základní větve. Vyberte **Dokončit**a pak v dialogovém okně **kompletní žádost o** přijetí změn vyberte **Dokončit sloučení** . Pracovní větev můžete odstranit poté, co byla sloučena. 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-Potvrďte v levém horním rohu, který požadavek je označen jako **DOKONČENO**. 
+Potvrďte, že je žádost označená jako **Dokončená**. 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Když přejdete zpátky do úložiště v rámci **kód**, jsou řekli, že byl jste přešli do hlavní větve.
+Až se vrátíte do **úložišť** v levém navigačním panelu, uvidíte, že jste přešli do hlavní větve, protože se `script` větev odstranila.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Následující příkazy Gitu můžete také provést sloučení vaší pracovní větve na její základní větev a odstranit pracovní větev po sloučení:
+Pomocí následujících příkazů Git bash můžete sloučit `script` pracovní větev do své základní větve a po sloučení odstranit pracovní větev:
 
-    git checkout master
-    git merge data_ingestion
-    git branch -d data_ingestion
+```bash
+git checkout master
+git merge script
+git branch -d script
+```
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-
- 
 ## <a name="next-steps"></a>Další postup
 
-[Spustit z úloh datových věd](execute-data-science-tasks.md) ukazuje způsob použití nástroje dokončit několik běžných úloh vědeckého zpracování jako je například interaktivní zkoumání dat, analýzy dat, vykazování a vytvoření modelu.
+[Úlohy pro datovou vědu](execute-data-science-tasks.md) ukazují, jak pomocí nástrojů provádět několik běžných úloh vědeckého zpracování dat, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů.
 
-Postupy, které popisují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) článku. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
+[Příklady návodů](walkthroughs.md) obsahuje návody pro konkrétní scénáře s odkazy a popisy miniatur. Propojené scénáře znázorňují, jak kombinovat cloudové a místní nástroje a služby do pracovních postupů nebo kanálů k vytváření inteligentních aplikací. 
 

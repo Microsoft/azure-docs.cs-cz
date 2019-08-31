@@ -3,15 +3,15 @@ title: Azure Resource Manager odstranění režimu dokončení podle typu prost�
 description: Ukazuje, jak typy prostředků zpracovávají úplné odstraňování režimu v Azure Resource Manager šablonách.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7f804e61f77b745aa654852f4c1413a8f4bf53b4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779955"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194393"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro nasazení v úplném režimu
 
@@ -204,7 +204,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- |
 > | aadsupportcases | Ne |
 > | addsservices | Ne |
-> | agenti | Ne |
+> | technici | Ne |
 > | anonymousapiusers | Ne |
 > | konfigurace | Ne |
 > | logs | Ne |
@@ -587,7 +587,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -715,7 +715,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -840,7 +840,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 > | accounts/dataLakeStoreAccounts | Ne |
 > | účty/storageAccounts | Ne |
 > | účty/storageAccounts/kontejnery | Ne |
@@ -851,7 +851,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 > | účty/eventGridFilters | Ne |
 > | účty/firewallRules | Ne |
 
@@ -869,7 +869,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 > | účty/sdílené složky | Ne |
 > | účty/akcie/datové sady | Ne |
 > | účty/akcie/pozvánky | Ne |
@@ -1078,7 +1078,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1201,7 +1201,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
 > | labaccounts | Ano |
-> | uživatelů | Ne |
+> | Uživatelé | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1271,7 +1271,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ano |
+> | accounts | Ano |
 > | účty/eventGridFilters | Ne |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -1559,7 +1559,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | účty | Ne |
+> | accounts | Ne |
 > | sbírk | Ano |
 > | Kolekce/aplikace | Ne |
 > | kolekce/securityprincipals | Ne |
@@ -1609,7 +1609,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | předplatná/prostředky | Ne |
 > | předplatná/TagNames | Ne |
 > | subscriptions/tagNames/tagValues | Ne |
-> | značky | Ne |
+> | Značky | Ne |
 > | tenantů | Ne |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1672,7 +1672,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | securityStatuses | Ne |
 > | securityStatusesSummaries | Ne |
 > | serverVulnerabilityAssessments | Ne |
-> | nastavení | Ne |
+> | Nastavení | Ne |
 > | úlohy | Ne |
 > | topologie | Ne |
 > | workspaceSettings | Ne |
@@ -1698,7 +1698,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | entity | Ne |
 > | entityQueries | Ne |
 > | officeConsents | Ne |
-> | nastavení | Ne |
+> | Nastavení | Ne |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -1908,7 +1908,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Úplné odstranění režimu |
 > | ------------- | ----------- |
-> | storno | Ne |
+> | Zrušit | Ne |
 > | CreateSubscription | Ne |
 > | Přejmenovat | Ne |
 > | SubscriptionDefinitions | Ne |
@@ -2005,6 +2005,6 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Monitor | Ne |
 > | notificationSettings | Ne |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, Stáhněte si [Complete-Mode-deletion. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).

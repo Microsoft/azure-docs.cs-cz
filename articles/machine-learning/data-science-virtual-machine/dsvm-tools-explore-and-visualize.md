@@ -1,28 +1,23 @@
 ---
-title: Nástroje pro zkoumání a vizualizaci dat – Azure | Microsoft Docs
+title: Nástroje pro zkoumání a vizualizaci dat
+titleSuffix: Azure Data Science Virtual Machine
 description: Nástroje pro zkoumání a vizualizaci dat pro Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065909"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191975"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Nástroje pro zkoumání a vizualizaci dat na Data Science Virtual Machine
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Nástroje pro zkoumání a vizualizaci dat na Azure Data Science Virtual Machine
 
 V oblasti datové vědy je klíč pochopit data. Vizualizace a nástroje pro zkoumání dat vám pomůžou urychlit porozumění datům. Následující nástroje, které jsou k dispozici na Data Science Virtual Machine (DSVM), usnadňují tento krok tohoto klíče.
 

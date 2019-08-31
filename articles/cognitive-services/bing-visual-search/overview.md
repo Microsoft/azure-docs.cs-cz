@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594702"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195219"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
-Rozhraní API pro vizuální vyhledávání Bingu vrátí přehledy pro obrázek. Můžete buď nahrát obrázek, nebo zadat adresu URL k jednomu. Přehledy jsou vizuálně podobné obrázky, nákupní zdroje, webové stránky, které obsahují obrázek, a další. Přehledy vrácené rozhraní API pro vizuální vyhledávání Bingu jsou podobné těm, které jsou zobrazené na Bing.com/images.
+Rozhraní API pro vizuální vyhledávání Bingu vrátí přehledy pro obrázek. Můžete buď nahrát obrázek, nebo zadat adresu URL k jednomu. Přehledy jsou vizuálně podobné obrázky, nákupní zdroje, webové stránky, které obsahují obrázek, a další. Přehledy vrácené rozhraní API pro vizuální vyhledávání Bingu jsou podobné těm, které jsou zobrazené na Bing.com/images. 
 
 Pokud použijete [rozhraní API Bingu pro vyhledávání obrázků](../bing-image-search/overview.md), můžete použít tokeny Insight z výsledků hledání rozhraní API pro vizuální vyhledávání Bingu místo nahrání obrázku.
 
@@ -38,6 +38,7 @@ Pomocí Vizuální vyhledávání Bingu můžete zjistit následující přehled
 | Související hledání                     | Související hledání provedené jinými uživateli nebo, která jsou založena na obsahu obrázku.            |
 | Webové stránky, které obsahují obrázek     | Webové stránky, které obsahují vstupní image.            |
 | Složení                              | Webové stránky, které obsahují recepty pro vytváření misky ve vstupní imagi.            |
+| Entity                             | Dobře známé osoby, místa a věci. |
 
 Kromě přehledů Vizuální vyhledávání Bingu vrací různé výrazy (tj. značky) odvozené ze vstupní image. Značky umožňují uživatelům prozkoumat koncepty nalezené v imagi. Pokud je vstupní obrázek například slavných Athlete, jedna z značek může být název Athlete, další značka by mohla být sportovní. Nebo, pokud je vstupní obrázek z Apple výsečového grafu, značky by mohly být Apple koláče, koláče a desserts.
 

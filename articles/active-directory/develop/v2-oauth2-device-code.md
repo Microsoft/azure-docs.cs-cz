@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297662"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192713"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity Platform a tok kódu zařízení OAuth 2,0
 
@@ -35,7 +35,7 @@ Platforma Microsoft identity podporuje [udělení kódu zařízení](https://too
 >
 > Osobní účty, které jsou pozvány klientovi služby Azure AD, budou moci používat udělení toku zařízení, ale pouze v kontextu tenanta.
 >
-> V takovém případě není pole odpovědizahrnutoanipodporováno.`verification_uri_complete`  
+> V takovém případě není pole odpovědizahrnutoanipodporováno.`verification_uri_complete`  Uvádíme to proto, že pokud si přečtete Standard, `verification_uri_complete` který je uvedený jako volitelná součást standardu toku kódu pro zařízení.
 
 > [!NOTE]
 > Koncový bod platformy Microsoft Identity Platform nepodporuje všechny Azure Active Directory scénáře a funkce. Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md).

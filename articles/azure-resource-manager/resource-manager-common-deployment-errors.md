@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: Chyba nasazení, nasazení Azure, nasazení do Azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638540"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194373"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager
 
 Tento článek popisuje některé běžné chyby při nasazení Azure a poskytuje informace pro řešení chyb. Pokud nemůžete najít kód chyby pro vaši chybu nasazení, přečtěte si téma [Hledání kódu chyby](#find-error-code).
 
-Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku k dispozici, dejte nám prosím jistotu. V dolní části této stránky můžete nechat svůj názor. Zpětná vazba je sledována s problémy GitHubu. 
+Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku k dispozici, dejte nám prosím na starosti. V dolní části této stránky můžete nechat svůj názor. Zpětná vazba je sledována s problémy GitHubu. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | ImageNotFound | Ověřte nastavení bitové kopie virtuálního počítače. |  |
 | InUseSubnetCannotBeDeleted | Tato chyba se může zobrazit při pokusu o aktualizaci prostředku a žádost se zpracovává odstraněním a vytvořením prostředku. Ujistěte se, že jste zadali všechny nezměněné hodnoty. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Získat přístupový token pro příslušného tenanta Token můžete získat jenom z tenanta, ke kterému patří váš účet. | |
-| InvalidContentLink | Pravděpodobně došlo k pokusu o propojení s vnořenou šablonou, která není k dispozici. Projděte si identifikátor URI, který jste zadali pro vnořenou šablonu. Pokud šablona existuje v účtu úložiště, ujistěte se, že je identifikátor URI přístupný. Možná budete muset předat token SAS. | [Propojené šablony](resource-group-linked-templates.md) |
+| InvalidContentLink | Pravděpodobně došlo k pokusu o propojení s vnořenou šablonou, která není k dispozici. Projděte si identifikátor URI, který jste zadali pro vnořenou šablonu. Pokud šablona existuje v účtu úložiště, ujistěte se, že je identifikátor URI přístupný. Možná budete muset předat token SAS. V současné době nemůžete propojit šablonu, která se nachází v účtu úložiště za [bránou Azure Storage firewall](../storage/common/storage-network-security.md). Zvažte přesunutí šablony do jiného úložiště, jako je GitHub. | [Propojené šablony](resource-group-linked-templates.md) |
 | InvalidParameter | Jedna z hodnot, které jste zadali pro prostředek, se neshoduje s očekávanou hodnotou. Tato chyba může být způsobena z mnoha různých podmínek. Například heslo může být nedostatečné nebo může být nesprávné jméno objektu BLOB. Chybová zpráva by měla indikovat, která hodnota musí být opravena. | |
 | InvalidRequestContent | Hodnoty nasazení buď obsahují hodnoty, které nebyly rozpoznány, nebo požadované hodnoty chybí. Potvrďte hodnoty pro typ prostředku. | [Referenční informace k šablonám](/azure/templates/) |
 | InvalidRequestFormat | Povolte protokolování ladění při spuštění nasazení a ověřte obsah žádosti. | [Protokolování ladění](#enable-debug-logging) |
@@ -58,13 +58,13 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | MissingRegistrationForLocation | Ověřte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Ověřte stav registrace poskytovatele prostředků. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
-| Nenalezeno | Můžete se pokusit o nasazení závislého prostředku paralelně s nadřazeným prostředkem. Ověřte, zda potřebujete přidat závislost. | [Vyřešit závislosti](resource-manager-not-found-errors.md) |
+| NotFound | Můžete se pokusit o nasazení závislého prostředku paralelně s nadřazeným prostředkem. Ověřte, zda potřebujete přidat závislost. | [Vyřešit závislosti](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Nasazení probíhá pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravte nasazení tak, aby zůstalo v rámci kvót. V opačném případě zvažte, že se bude vyžadovat změna vašich kvót. | [Řešení kvót](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Před vytvořením podřízených prostředků zajistěte, aby existoval nadřazený prostředek. | [Vyřešit nadřazený prostředek](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Možná jste vybrali heslo s příliš velkým počtem znaků nebo jste převedli hodnotu hesla na zabezpečený řetězec, než je předáte jako parametr. Pokud šablona obsahuje parametr **zabezpečeného řetězce** , nemusíte tuto hodnotu převést na zabezpečený řetězec. Zadejte hodnotu pro heslo jako text. |  |
 | PrivateIPAddressInReservedRange | Zadaná IP adresa zahrnuje rozsah adres vyžadovaný službou Azure. Změňte IP adresu, aby se zabránilo rezervovanému rozsahu. | [IP adresy](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PrivateIPAddressNotInSubnet | Zadaná IP adresa je mimo rozsah podsítě. Změňte IP adresu tak, aby klesla do rozsahu podsítí. | [IP adresy](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PropertyChangeNotAllowed | Některé vlastnosti nelze u nasazeného prostředku změnit. Při aktualizaci prostředku omezte změny na povolené vlastnosti. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | Některé vlastnosti se u nasazeného prostředku nedají změnit. Při aktualizaci prostředku omezte změny na povolené vlastnosti. | [Aktualizace prostředku](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásadu prostředků, která brání akci, kterou se pokoušíte provést během nasazování. Vyhledejte zásadu, která zablokuje akci. Pokud je to možné, změňte nasazení tak, aby splňovalo omezení ze zásad. | [Řešení zásad](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Zadejte název prostředku, který neobsahuje rezervovaný název. | [Názvy rezervovaných prostředků](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
@@ -246,7 +246,7 @@ V některých případech nejjednodušší způsob, jak řešit potíže s vaš�
 Nebo Předpokládejme, že dochází k chybám při nasazení, které se domníváte, že jsou v relaci nesprávně nastavené závislosti. Otestujte šablonu tím, že ji rozdělíte na zjednodušené šablony. Nejprve vytvořte šablonu, která nasadí pouze jeden prostředek (například SQL Server). Pokud jste si jisti, že tento prostředek máte správně definovaný, přidejte prostředek, který na něm závisí (například SQL Database). Po správném definování těchto dvou prostředků přidejte další závislé prostředky (například zásady auditování). V rámci každého testovacího nasazení odstraňte skupinu prostředků, abyste se ujistili, že jste správně otestovali závislosti.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Postup při řešení potíží najdete v [kurzu: Řešení potíží s nasazeními šablon Správce prostředků](./resource-manager-tutorial-troubleshoot.md)
 * Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](resource-group-audit.md).

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace nastavení pravidla inteligentního zjišťování Azure Application Insights pomocí šablon Azure Resource Manageru | Dokumentace Microsoftu
-description: Automatizace správy a konfigurace pravidla inteligentního zjišťování Azure Application Insights pomocí šablon Azure Resource Manageru
+title: Konfigurace nastavení pravidla inteligentního zjišťování pro Azure Application Insights pomocí šablon Azure Resource Manager | Microsoft Docs
+description: Automatizace správy a konfigurace pravidel inteligentního zjišťování Application Insights Azure pomocí šablon Azure Resource Manager
 services: application-insights
 documentationcenter: ''
 author: harelbr
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477867"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193720"
 ---
-# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
+# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Správa pravidel inteligentního vyhledávání Application Insights pomocí šablon Azure Resource Manager
 
-Pravidla inteligentního zjišťování ve službě Application Insights je možné spravovat a konfigurovat pomocí [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md).
-Tuto metodu lze použít při nasazování nové prostředky Application Insights s Azure Resource Manageru automation, nebo pro úpravu nastavení existujících prostředků.
+Pravidla inteligentního zjišťování v Application Insights můžou být spravovaná a nakonfigurovaná pomocí [šablon Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
+Tuto metodu lze použít při nasazování nových Application Insightsch prostředků pomocí Automatizace Azure Resource Manager nebo pro úpravu nastavení existujících prostředků.
 
 ## <a name="smart-detection-rule-configuration"></a>Konfigurace pravidla inteligentního zjišťování
 
-Můžete nakonfigurovat následující nastavení pro pravidlo inteligentní zjišťování:
-- Pokud je pravidlo povolené (výchozí hodnota je **true**.)
-- Pokud mají být e-maily zasílány uživatelé přidružení k odběru [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) role, když se najde detekce (výchozí hodnota je **true**.)
-- Žádné další e-mailové příjemce, kteří by měl dostat oznámení při zjištění nebyl nalezen.
-    -  E-mailové konfigurace není k dispozici pro pravidla inteligentního zjišťování označen jako _ve verzi preview_.
+Můžete konfigurovat následující nastavení pravidel inteligentního zjišťování:
+- Pokud je pravidlo povolené (výchozí hodnota je **true**)
+- Pokud se mají e-maily posílat uživatelům přidruženým ke [čtenářům monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) předplatného a k [monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolí přispěvatele, když se najde detekce (výchozí hodnota je **true**)
+- Všichni další příjemci e-mailu, kteří by měli dostávat oznámení, když zjistí detekci.
+    -  Konfigurace e-mailu není k dispozici pro pravidla inteligentního zjišťování označená jako _Náhled_.
 
-Pokud chcete povolit, konfigurace nastavení pravidla prostřednictvím Azure Resource Manageru, konfigurace pravidla inteligentního zjišťování je teď dostupná jako vnitřní prostředků v rámci prostředku Application Insights s názvem **ProactiveDetectionConfigs**.
-Pro maximální flexibilitu a každé pravidlo inteligentní zjišťování můžete použít nastavení jedinečné oznámení.
+Pokud chcete pomocí Azure Resource Manager nakonfigurovat nastavení pravidla, konfigurace pravidla inteligentního zjišťování je teď k dispozici jako vnitřní prostředek v prostředku Application Insights s názvem **ProactiveDetectionConfigs**.
+Pro zajištění maximální flexibility je možné nakonfigurovat každé pravidlo inteligentního zjišťování s jedinečným nastavením oznámení.
 
 ## 
 
 ## <a name="examples"></a>Příklady
 
-Níže jsou příklady ukazující, jak nakonfigurovat nastavení pravidla inteligentního zjišťování pomocí šablon Azure Resource Manageru.
-Všechny ukázky odkazovat na prostředek Application Insights s názvem _"myApplication"_ , a "dlouhý závislost doba trvání inteligentního zjišťování pravidla", který interně názvem _"longdependencyduration"_ .
-Ujistěte se, že chcete nahradit název prostředku Application Insights a k určení příslušné inteligentního zjišťování interní název pravidla. Zkontrolujte v následující tabulce seznamu odpovídající vnitřní názvů Azure Resource Manageru pro každé pravidlo inteligentní zjišťování.
+Níže jsou uvedeny některé příklady, jak nakonfigurovat nastavení pravidel inteligentního vyhledávání pomocí šablon Azure Resource Manager.
+Všechny ukázky odkazují na prostředek Application Insights s názvem _"MyApplication"_ a na pravidlo inteligentního zjišťování trvání celé závislosti, které je interně pojmenované _"longdependencyduration"_ .
+Nezapomeňte nahradit název Application Insights prostředku a zadat odpovídající interní název pravidla inteligentního zjišťování. V následující tabulce najdete seznam odpovídajících vnitřních Azure Resource Manager názvů pro každé pravidlo inteligentního zjišťování.
 
 ### <a name="disable-a-smart-detection-rule"></a>Zakázat pravidlo inteligentního zjišťování
 
@@ -75,7 +75,7 @@ Ujistěte se, že chcete nahradit název prostředku Application Insights a k ur
     }
 ```
 
-### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Zakázat odesílání e-mailová oznámení pro pravidlo inteligentního zjišťování
+### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Zakázat odesílání e-mailových oznámení pro pravidlo inteligentního zjišťování
 
 ```json
 {
@@ -106,7 +106,7 @@ Ujistěte se, že chcete nahradit název prostředku Application Insights a k ur
     }
 ```
 
-### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Přidat další e-mailové příjemce pravidla inteligentního zjišťování
+### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Přidání dalších příjemců e-mailu pro pravidlo inteligentního zjišťování
 
 ```json
 {
@@ -138,9 +138,9 @@ Ujistěte se, že chcete nahradit název prostředku Application Insights a k ur
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Pravidlo výstrahy v2 (který není klasický) anomálie pro selhání
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Pravidlo upozornění na anomálii v2 (neklasické)
 
-Tuto šablonu Azure Resource Manageru ukazuje konfiguraci pravidla upozornění anomálie selhání v2 s závažnost 2. Tato nová verze, pravidlo upozornění na anomálie selhání je součástí nové výstrahy platformy Azure a nahradí klasickou verzi, která se vyřazuje jako součást [classic výstrahy procesu vyřazení](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Tato šablona Azure Resource Manager demonstruje konfiguraci pravidla upozornění na anomálii v2 s závažností 2. Tato nová verze pravidla výstrahy anomálií při selhání je součástí nové platformy pro upozorňování Azure a nahrazuje klasickou verzi, která je vyřazena jako součást procesu odchodu [klasických výstrah](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ```json
 {
@@ -151,6 +151,7 @@ Tuto šablonu Azure Resource Manageru ukazuje konfiguraci pravidla upozornění 
             "type": "microsoft.alertsmanagement/smartdetectoralertrules",
             "apiVersion": "2019-03-01",
             "name": "Failure Anomalies - my-app",
+            "location": "global", 
             "properties": {
                   "description": "Detects a spike in the failure rate of requests or dependencies",
                   "state": "Enabled",
@@ -170,31 +171,31 @@ Tuto šablonu Azure Resource Manageru ukazuje konfiguraci pravidla upozornění 
 ```
 
 > [!NOTE]
-> Tuto šablonu Azure Resource Manageru je jedinečné pro pravidla upozornění anomálie selhání v2 a se liší od jiných classic pravidla inteligentního zjišťování popsaných v tomto článku.   
+> Tato šablona Azure Resource Manager je jedinečná pro pravidlo upozornění nepravidelnosti selhání v2 a liší se od ostatních pravidel inteligentního zjišťování, která jsou popsaná v tomto článku.   
 
 ## <a name="smart-detection-rule-names"></a>Názvy pravidel inteligentního zjišťování
 
-Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objeví na portálu společně s jejich interní názvy, které byste měli použít ve šablony Azure Resource Manageru.
+Níže je tabulka s názvy pravidel inteligentního zjišťování, které se zobrazují na portálu, spolu s jejich interními názvy, které by se měly používat v Azure Resource Manager šabloně.
 
 > [!NOTE]
-> Pravidla inteligentního zjišťování označen jako _ve verzi preview_ nepodporují e-mailová oznámení. Proto lze nastavit pouze _povolené_ vlastnost pro tato pravidla. 
+> Pravidla inteligentního zjišťování označená jako _Preview_ nepodporují e-mailová oznámení. Proto můžete pro tato pravidla nastavit pouze vlastnost _Enabled_ . 
 
-| Název pravidla Azure portal | Interní název
+| Název pravidla Azure Portal | Interní název
 |:---|:---|
-| Čas načítání stránky pomalé | slowpageloadtime |
+| Pomalé načítání stránky | slowpageloadtime |
 | Dlouhá doba odezvy serveru | slowserverresponsetime |
 | Dlouhá doba trvání závislosti | longdependencyduration |
-| Snížení doby odezvy serveru | degradationinserverresponsetime |
+| Prodloužení doby odezvy serveru | degradationinserverresponsetime |
 | Pokles v trvání závislosti | degradationindependencyduration |
-| Snížení výkonnosti v poměru závažnost trasování (preview) | extension_traceseveritydetector |
-| Neobvyklý nárůst počtu výjimek (preview) | extension_exceptionchangeextension |
-| Zjištěna potenciální nevrácená paměť (preview) | extension_memoryleakextension |
-| Zjistil potenciální problém zabezpečení (preview) | extension_securityextensionspackage |
-| Neobvyklý nárůst míry denní objem dat (preview) | extension_billingdatavolumedailyspikeextension |
+| Snížení výkonu v poměru závažnosti trasování (Preview) | extension_traceseveritydetector |
+| Neobvyklé zvýšení objemu výjimek (Preview) | extension_exceptionchangeextension |
+| Zjištěna potenciální nevracení paměti (Preview) | extension_memoryleakextension |
+| Zjištěn potenciální problém se zabezpečením (Preview) | extension_securityextensionspackage |
+| Neobvyklé zvýšení denních objemů dat (Preview) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o automatické zjišťování:
+Další informace o automatickém zjišťování:
 
 - [Anomálie selhání](../../azure-monitor/app/proactive-failure-diagnostics.md)
 - [Nevracení paměti](../../azure-monitor/app/proactive-potential-memory-leak.md)

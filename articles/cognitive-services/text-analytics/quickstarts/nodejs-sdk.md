@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: shthowse
-ms.openlocfilehash: 5b18ba4e06e8a44d7bd59b12a69a14ae15506234
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c3cd64d0a683a60132808bca6a7ceb4aa84db4f1
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134996"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195203"
 ---
 # <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Rychlý start: Klientská knihovna pro analýzu textu pro Node. js
 <a name="HOLTop"></a>
@@ -34,7 +34,7 @@ K provedení této akce použijte klientskou knihovnu Analýza textu pro Node. j
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
+* Aktuální verze [Node. js](https://nodejs.org/).
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -304,7 +304,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)

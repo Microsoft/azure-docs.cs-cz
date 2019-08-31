@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135721"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193227"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím Azure Active Directory s využitím toku poskytování kódů OAuth 2.0
 
@@ -179,7 +179,7 @@ Pokud prostředek webového rozhraní API vrátí `invalid_token` kód chyby, m�
 
 | Parametr | Popis |
 | --- | --- |
-| access_token |Požadovaný [přístupový token](access-tokens.md) jako podepsaný JSON web token (Jwt). Aplikace může tento token použít k ověření zabezpečeného prostředku, jako je například webové rozhraní API. |
+| access_token |Požadovaný přístupový token  Toto je neprůhledný řetězec – závisí na tom, co prostředek očekává, a není určen pro zobrazení klienta. Aplikace může tento token použít k ověření zabezpečeného prostředku, jako je například webové rozhraní API. |
 | token_type |Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je nosič. Další informace o nosných tokenech najdete v [části autorizační rozhraní OAuth 2.0: Použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | expires_on |Čas vypršení platnosti přístupového tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení doby života tokenů uložených v mezipaměti. |
@@ -283,8 +283,6 @@ Přístupové tokeny jsou krátkodobé a po uplynutí jejich platnosti musí bý
 
 Aktualizační tokeny nemají zadané životnosti. Obvykle jsou životnosti aktualizačních tokenů poměrně dlouhé. V některých případech ale platnost tokenů aktualizace vyprší, odvolají se nebo nemají dostatečná oprávnění pro požadovanou akci. Vaše aplikace musí očekávat a zpracovat chyby vrácené koncovým bodem vystavení tokenu správně.
 
-[!NOTE] Životnosti přístupového tokenu najdete tady: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Výchozí hodnota pro přístupové tokeny je 1 hodina a výchozí hodnota pro Refresh tokens je 90 dní. Tyto životnosti je možné změnit nakonfigurováním životností tokenů odpovídajícím způsobem. 
-
 Když obdržíte odpověď s chybou aktualizačního tokenu, zahodíte aktuální obnovovací token a vyžádáte si nový autorizační kód nebo přístupový token. Zejména při použití obnovovacího tokenu v toku udělení autorizačního kódu, pokud obdržíte odpověď s `interaction_required` `invalid_grant` kódy chyb, zahodíte obnovovací token a vyžádáte nový autorizační kód.
 
 Vzorový požadavek na koncový bod pro **konkrétního klienta** (můžete také použít **společný** koncový bod) k získání nového přístupového tokenu pomocí obnovovacího tokenu, který vypadá takto:
@@ -352,3 +350,6 @@ Ukázková chybová odpověď by mohla vypadat takto:
 | correlation_id |Jedinečný identifikátor pro požadavek, který může pomáhat při diagnostice napříč komponentami. |
 
 Popis chybových kódů a doporučené akce klienta najdete v tématu [kódy chyb pro chyby koncového bodu tokenu](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Další postup
+Další informace o koncovém bodu Azure AD v 1.0 a o tom, jak přidat ověřování a autorizaci k webovým aplikacím a webovým rozhraním API, najdete v tématu [ukázkové aplikace](sample-v1-code.md).

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966707"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195261"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Použití aktivního učení ke zlepšení znalostní báze
 
@@ -56,7 +56,7 @@ Je důležité, aby QnA Maker získat explicitní zpětnou vazbu o tom, které o
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade verze modulu runtime pro použití aktivního učení
 
-Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, upgradujte [modul runtime](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) , aby tuto funkci používal. 
+Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, upgradujte [modul runtime](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) , aby tuto funkci používal. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Pokud chcete zobrazit návrhy, zapněte aktivní učení.
 
@@ -194,7 +194,7 @@ Tělo JSON má několik nastavení:
 |Vlastnost těla zprávy JSON|type|Účel|
 |--|--|--|--|
 |`feedbackRecords`|array|Seznam zpětné vazby|
-|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelné.|
+|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelný parametr.|
 |`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinný parametr.|
 |`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 

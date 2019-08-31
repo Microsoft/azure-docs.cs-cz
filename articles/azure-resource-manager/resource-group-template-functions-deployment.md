@@ -1,27 +1,27 @@
 ---
-title: Funkce šablon Azure Resource Manageru – nasazení | Dokumentace Microsoftu
-description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení informací o nasazení.
+title: Funkce šablon Azure Resource Manager – nasazení | Microsoft Docs
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9cf81058d79d474a4d61195850636e428a1dbd0d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 236fbb9e4ed3283ecf9147e6eb5033fb906a127b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206471"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194349"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Nasazení funkce pro šablony Azure Resource Manageru 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
-Resource Manager poskytuje následující funkce pro načtení hodnot z části šablony a hodnoty související s nasazením:
+Správce prostředků poskytuje následující funkce pro získání hodnot z částí šablony a hodnot souvisejících s nasazením:
 
-* [Nasazení](#deployment)
+* [prostředí](#deployment)
 * [parameters](#parameters)
-* [Proměnné](#variables)
+* [variables](#variables)
 
-K získání hodnot z prostředky, skupiny prostředků nebo předplatná, najdete v článku [funkce Resource](resource-group-template-functions-resource.md).
+Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
@@ -30,11 +30,11 @@ K získání hodnot z prostředky, skupiny prostředků nebo předplatná, najde
 ## <a name="deployment"></a>deployment
 `deployment()`
 
-Vrátí informace o aktuální operace nasazení.
+Vrátí informace o aktuální operaci nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Tato funkce vrací objekt, který je předán během nasazení. Vlastnosti vráceného objektu se liší podle toho, jestli je nasazení objekt předán jako odkazu nebo objektu v řádku. Při nasazení nebude předaný objekt v řádku, jako například při použití **- TemplateFile** parametr v prostředí Azure PowerShell přejděte do místního souboru, vráceného objektu má následující formát:
+Tato funkce vrací objekt, který je předán během nasazování. Vlastnosti ve vráceném objektu se liší v závislosti na tom, zda je objekt nasazení předán jako odkaz nebo jako vložený objekt. Když je objekt nasazení předán do řádku, například při použití parametru **-TemplateFile** v Azure PowerShell k odkazování na místní soubor, vrácený objekt má následující formát:
 
 ```json
 {
@@ -56,7 +56,7 @@ Tato funkce vrací objekt, který je předán během nasazení. Vlastnosti vrác
 }
 ```
 
-Pokud objekt je předán jako odkaz, například při použití **- TemplateUri** parametru tak, aby odkazoval na vzdálený objekt, je objekt vrácen v následujícím formátu: 
+Pokud je objekt předán jako odkaz, například při použití parametru **-TemplateUri** k nasměrování na vzdálený objekt, je objekt vrácen v následujícím formátu: 
 
 ```json
 {
@@ -80,11 +80,11 @@ Pokud objekt je předán jako odkaz, například při použití **- TemplateUri*
 }
 ```
 
-Když můžete [nasazení s předplatným Azure](deploy-to-subscription.md), místo skupiny prostředků, vrácený objekt zahrnuje `location` vlastnost. Vlastnost location je součástí nasazení šablony místní nebo externí šablony.
+Když nasadíte [do předplatného Azure](deploy-to-subscription.md)namísto skupiny prostředků, návratový objekt obsahuje `location` vlastnost. Vlastnost Location je obsažena při nasazení místní šablony nebo externí šablony.
 
 ### <a name="remarks"></a>Poznámky
 
-Deployment() můžete propojit s jinou šablonu podle identifikátoru URI nadřazené šablony.
+Nasazení () můžete použít k propojení na jinou šablonu na základě identifikátoru URI nadřazené šablony.
 
 ```json
 "variables": {  
@@ -92,11 +92,11 @@ Deployment() můžete propojit s jinou šablonu podle identifikátoru URI nadřa
 }
 ```  
 
-Pokud provádíte opakované nasazení šablony z historie nasazení na portálu, šablony se nasadí jako místní soubor. `templateLink` Nasazení funkcí není vrácena vlastnost. Pokud vaše šablony závisí na `templateLink` Pokud chcete vytvořit odkaz na jinou šablonu, nepoužívejte na portálu znovu. Místo toho použijte příkazy, které jste použili k nasazení šablony původně.
+Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink` Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá `templateLink` na vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
 ```json
 {
@@ -112,7 +112,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-V předchozím příkladu vrátí následující objekt:
+Předchozí příklad vrátí následující objekt:
 
 ```json
 {
@@ -148,28 +148,28 @@ Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, po
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
-Úroveň předplatného šablony, která používá funkci nasazení, najdete v části [předplatné nasazení funkce](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Nasazuje se s oběma `az deployment create` nebo `New-AzDeployment` příkazy.
+Šablonu na úrovni předplatného, která používá funkci nasazení, najdete v tématu [funkce nasazení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)předplatného. Je nasazen s `az deployment create` příkazy nebo `New-AzDeployment` .
 
 <a id="parameters" />
 
 ## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
-Vrátí hodnotu parametru. Zadaný název parametru musí být definovaný v sekci parametrů šablony.
+Vrátí hodnotu parametru. Zadaný název parametru musí být definován v oddílu Parameters této šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |string |Název parametru se vraťte. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnota zadaná parametru.
+Hodnota zadaného parametru.
 
 ### <a name="remarks"></a>Poznámky
 
-Parametry se obvykle používají k nastavení hodnot prostředku. Následující příklad nastaví název webové stránky na hodnotu parametru předaného během nasazení.
+Obvykle použijete parametry pro nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předaného během nasazení.
 
 ```json
 "parameters": { 
@@ -187,9 +187,9 @@ Parametry se obvykle používají k nastavení hodnot prostředku. Následujíc�
 ]
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušený použití parametry funkce.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
 ```json
 {
@@ -246,13 +246,13 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| stringOutput | String | Možnost 1 |
+| stringOutput | Řetězec | možnost 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"jedna": "a", "2": "b"} |
-| arrayOutput | Pole | [1, 2, 3] |
-| crossOutput | String | Možnost 1 |
+| objectOutput | Object | {"One": "a", "Two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
+| crossOutput | Řetězec | možnost 1 |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -268,24 +268,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="variables" />
 
-## <a name="variables"></a>Proměnné
+## <a name="variables"></a>proměnné
 `variables(variableName)`
 
-Vrátí hodnotu proměnné. Zadaný název proměnné musí být definovaný v sekci proměnných šablony.
+Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v oddílu Variables šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| variableName |Ano |String |Název proměnné, která se vrátí. |
+| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Hodnotu zadanou proměnnou.
+Hodnota zadané proměnné.
 
 ### <a name="remarks"></a>Poznámky
 
-Proměnné se obvykle používají pro zjednodušení šablony tak, že vytváří komplexní hodnoty pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
+Obvykle používáte proměnné pro zjednodušení šablony vytvořením složitých hodnot pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
 
 ```json
 "variables": {
@@ -307,9 +307,9 @@ Proměnné se obvykle používají pro zjednodušení šablony tak, že vytvář
 ],
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrátí různé hodnoty proměnné.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
 ```json
 {
@@ -349,12 +349,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
-| exampleOutput2 | Pole | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Object | {"vlastnost1": "hodnota1", "vlastnost2": "hodnota2"} |
+| exampleOutput1 | Řetězec | MojePromenna |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput3 | Řetězec | MojePromenna |
+| exampleOutput4 |  Object | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
@@ -370,7 +370,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="next-steps"></a>Další postup
 * Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
-* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
+* Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 * K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md).
 * Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

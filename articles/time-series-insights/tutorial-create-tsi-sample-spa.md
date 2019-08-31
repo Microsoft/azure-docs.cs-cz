@@ -4,16 +4,16 @@ description: Naučte se vytvořit jednostránkovou webovou aplikaci, která se d
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720868"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194209"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
@@ -127,6 +127,10 @@ Tento kurz používá také data z Time Series Insightsho prostředí ukázkové
 
       [![Visual Studio – podokno profil publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Tuto možnost vyberte, pokud chcete publikovat novou instanci Azure App Service nebo použít existující.
+
+      [![Vyberte instanci Azure App Service.](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Vyberte předplatné, které chcete použít k publikování aplikace. Vyberte projekt **TsiSpaApp** . Pak vyberte **OK**.
 
       [![Visual Studio – podokno App Service profil publikování](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ Tento kurz používá také data z Time Series Insightsho prostředí ukázkové
 
    1. V podokně **výstup** sady Visual Studio se zobrazí úspěšný protokol publikování. Po dokončení nasazení aplikace Visual Studio otevře webovou aplikaci na kartě prohlížeče a zobrazí výzvu k přihlášení. Po úspěšném přihlášení se ovládací prvky Time Series Insights naplní daty.
 
+   1. Přejděte do své webové aplikace a přihlaste se, abyste zobrazili vykreslená Time Series Insights vizuální data.
+
+      [![Kontrola hostované webové aplikace](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Řešení potíží  
 
 Kód chyby nebo chybová podmínka | Popis
 ---------------------| -----------
-*AADSTS50011: Pro aplikaci není zaregistrována žádná adresa pro odpověď.* | V registraci služby Azure AD chybí vlastnost **Adresa URL odpovědi** . Pro registraci vaší aplikace Azure AD přejít na **Nastavení** > **adresy URL pro odpovědi** . Ověřte, jestli existuje **identifikátor URI pro přesměrování** , který jste zadali v **kroku 2** nebo **4** , pokud jste [zaregistrovali aplikaci pro používání služby Azure AD](#register-with-azure-ad) .
-*AADSTS50011: Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: '\<Identifikátor GUID ID aplikace > '.* |  >  [](#build-and-publish) Zadaná v kroku 6. b v sestavách a publikování webové aplikace se musí shodovat s hodnotou zadanou v nastavení adresy URL odpovědí v registraci aplikace služby Azure AD. `postLogoutRedirectUri` |
+*AADSTS50011: Pro aplikaci není zaregistrována žádná adresa pro odpověď.* | V registraci služby Azure AD chybí vlastnost **URI pro přesměrování** . Pro registraci aplikace služby Azure AD přejít na**identifikátory URI přesměrování** **ověřování** > . Ověřte, jestli existuje **identifikátor URI pro přesměrování** , který jste zadali v **kroku 2** nebo **4** , pokud jste [zaregistrovali aplikaci pro používání služby Azure AD](#register-with-azure-ad) .
+*AADSTS50011: Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: '\<Identifikátor GUID ID aplikace > '.* |  >  [](#build-and-publish) Zadaný v kroku 6. b v sestavách a publikování webové aplikace se musí shodovat s hodnotou zadanou v části ověřování identifikátorů URI přesměrování v registraci aplikace služby Azure AD. `postLogoutRedirectUri` |
 Webová aplikace se načte, ale má nestylované přihlašovací stránky jenom pro text s bílým pozadím. | Ověřte, zda jsou cesty popsané v **kroku 6** v tématu [sestavení a publikování webové aplikace](#build-and-publish) správné. Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -154,7 +162,7 @@ V nabídce Azure Portal vlevo:
 1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou jste vytvořili pro prostředí Time Series Insights. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **Odstranit**.
 1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, kterou vytvořil akcelerátor řešení pro simulaci zařízení. V horní části stránky vyberte **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a pak vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o:
 

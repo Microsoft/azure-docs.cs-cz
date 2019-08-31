@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011346"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193329"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace protokolu Secure LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -63,7 +63,7 @@ Certifikát, který požadujete nebo vytvoříte, musí splňovat následující
 
 * **Důvěryhodný Vystavitel** – certifikát musí být vydán autoritou, která je důvěryhodná pro počítače připojující se ke spravované doméně pomocí protokolu Secure LDAP. Tímto orgánem může být veřejná certifikační autorita nebo certifikační autorita organizace, které tyto počítače důvěřují.
 * **Doba života** – certifikát musí být platný minimálně v následujících 3-6 měsících. Po vypršení platnosti certifikátu dojde k přerušení přístupu k spravované doméně protokol Secure LDAP.
-* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud má například vaše doména název *contoso.com*, musí být název subjektu certifikátu *contoso.com*.
+* **Název subjektu** – název subjektu v certifikátu musí být vaše spravovaná doména. Pokud má například vaše doména název *contoso.com*, musí být název subjektu certifikátu * *. contoso.com*.
     * Název DNS nebo alternativní název subjektu certifikátu musí být certifikátem se zástupným znakem, aby zabezpečený protokol LDAP správně fungoval s Azure AD Domain Services. Řadiče domény používají náhodné názvy a je možné je odebrat nebo přidat, abyste zajistili, že služba zůstane dostupná.
 * **Použití klíče** – certifikát musí být nakonfigurovaný pro *digitální podpisy* a *šifrování klíče*.
 * **Účel certifikátu** – certifikát musí být platný pro ověřování serveru SSL.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 Následující příklad výstupu ukazuje, že certifikát se úspěšně vygeneroval a je uložený v místním úložišti certifikátů (*úložišti LocalMachine\MY*):
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

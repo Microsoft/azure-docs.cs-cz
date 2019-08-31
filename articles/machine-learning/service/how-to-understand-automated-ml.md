@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062129"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192056"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení automatizovaných výsledků strojového učení
 
@@ -102,7 +102,7 @@ weighted_accuracy|Vážená přesnost je přesnost, při které se váha předan
 
 Chybová matice se používá k popisu výkonu model klasifikace. Každý řádek zobrazí instancí třídy true a každý sloupec představuje instance předpokládaná třída. Chybová matice zobrazí správně klasifikované popisky a nesprávně klasifikované popisky pro daný model.
 
-Azure Machine Learning pro klasifikaci problémy automaticky poskytuje chybová matice pro každý model, který je sestaven. Pro každý chybovou matici automatizované ML zobrazí správně klasifikované popisky jako popisky zelené a nesprávně klasifikovaný jako červený. Velikost kruhu představuje počet vzorků v této přihrádky. Kromě toho frekvence počet každý předpokládané popisek a každému popisku true je součástí sousední pruhové grafy. 
+Azure Machine Learning pro klasifikaci problémy automaticky poskytuje chybová matice pro každý model, který je sestaven. U každé nejasnosti se v automatizovaném ML zobrazí frekvence každého předpovězeného popisku a průsečík každého true Label. Čím tmavší je barva, tím vyšší je počet v této konkrétní části matice. V ideálním případě by nejtmavší barvy byly podél diagonály matice. 
 
 Příklad 1: Klasifikační model s nízkou přesností ![model klasifikace s nízkou přesností](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
@@ -214,7 +214,7 @@ Můžete zkontrolovat skóre význam funkce pro model celkové stejně jako na t
 
 Další informace o povolení funkcí pro interpretaci najdete [v tématu Konfigurace automatizovaných experimentů ml v Pythonu](how-to-configure-auto-train.md#explain-the-model-interpretability).  Příklad, který vysvětluje nejlepší model, naleznete v tématu [nejlepší vysvětlení modelu](how-to-auto-train-remote.md#explain).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
 + Vyzkoušejte ukázkový Poznámkový blok pro [automatizovaný Machine Learning model vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) .

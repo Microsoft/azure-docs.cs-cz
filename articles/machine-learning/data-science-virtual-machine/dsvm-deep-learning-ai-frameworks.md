@@ -1,30 +1,23 @@
 ---
 title: '& Rozhraní AI pro hloubkové učení'
-titleSuffix: Azure Data Science Virtual Machines
-description: Architektury a nástroje pro hloubkové učení na platformě Azure Data Science Virtual Machine, včetně TensorFlow, PyTorch, Keras, Caffe, MXNet, Horovod, Theano, chainer a dalších.
+titleSuffix: Azure Data Science Virtual Machine
+description: Dostupné architektury a nástroje pro hloubkové učení na platformě Azure Data Science Virtual Machine, včetně TensorFlow, PyTorch, Keras, Caffe, MXNet, Horovod, Theano, chainer a dalších.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 08/11/2019
-ms.author: vijetaj
-ms.openlocfilehash: 3c9510b99bbdc7db292ecdc0bf59aadc305cf0c8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bcf5228b6d6055c4b2e716ca6b34878a3bb3b870
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035847"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192167"
 ---
-# <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
+# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) podporuje řadu prostorů pro hloubkové učení, které vám pomůžou sestavovat aplikace umělal Intelligence (AI) s využitím prediktivních analýz a funkcí rozpoznávání, jako je obrázek a porozumění jazyka.
 
 K dispozici jsou DSVM architektury pro hloubkové učení, které zahrnují:

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934689"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195084"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 V tomto článku se podíváme na shromažďování osvědčených postupů zabezpečení Azure Identity Management a Access Control. Tyto osvědčené postupy se odvozují z našich zkušeností s [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) a zkušenostmi se zákazníky, jako je sami.
@@ -93,7 +93,7 @@ Organizace, které neintegrují svou místní identitu s jejich cloudovou identi
 > Musíte zvolit, které adresáře se budou nacházet v a jestli se používá pracovní stanice pro správu, kterou používají nové cloudové služby nebo stávající procesy. Používání stávajících procesů správy a zřizování identit může snížit některá rizika, ale může také vytvořit riziko narušení místního účtu a jeho překlopení do cloudu. Můžete chtít použít jinou strategii pro různé role (například správce IT vs. obchodní jednotky Admins). Máte dvě možnosti. První možností je vytvořit účty Azure AD, které nejsou synchronizované s vaší místní instancí Active Directory. Připojte se k pracovní stanici správce k Azure AD, kterou můžete spravovat a opravovat pomocí Microsoft Intune. Druhou možností je použít stávající účty správců synchronizací do místní instance služby Active Directory. Pro správu a zabezpečení použijte existující pracovní stanice v doméně služby Active Directory.
 
 ## <a name="manage-connected-tenants"></a>Spravovat připojené klienty
-Vaše organizace zabezpečení potřebuje viditelnost, aby posoudila riziko a určila, jestli jsou dodržovány zásady vaší organizace a jakékoli zákonné požadavky. Měli byste zajistit, aby vaše organizace zabezpečení měla přehled o všech předplatných připojených k vašemu provoznímu prostředí a síti (prostřednictvím [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). [Globální správce nebo správce společnosti](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) ve službě Azure AD může zvýšit přístup k roli [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) a zobrazit všechna předplatná a spravované skupiny připojené k vašemu prostředí.
+Vaše organizace zabezpečení potřebuje viditelnost, aby posoudila riziko a určila, jestli jsou dodržovány zásady vaší organizace a jakékoli zákonné požadavky. Měli byste zajistit, aby vaše organizace zabezpečení měla přehled o všech předplatných připojených k vašemu provoznímu prostředí a síti (prostřednictvím [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) nebo [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). [Globální správce nebo správce společnosti](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) ve službě Azure AD může zvýšit přístup k roli [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) a zobrazit všechna předplatná a spravované skupiny připojené k vašemu prostředí.
 
 Projděte si téma [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md) , abyste měli jistotu, že máte a vaše skupina zabezpečení budou zobrazovat všechna předplatná nebo skupiny pro správu připojené k vašemu prostředí. Tento přístup se zvýšeným oprávněním byste měli po vyhodnocení rizik odebrat.
 
@@ -139,21 +139,21 @@ Pokud máte více tenantů nebo chcete uživatelům umožnit, aby [obnovili vlas
 
 Doporučujeme, abyste pro všechny uživatele vyžadovali dvoustupňové ověřování. To zahrnuje správce a jiné ve vaší organizaci, kteří můžou mít významný dopad na to, jestli je jejich účet ohrožený (například finanční důstojníci).
 
-K dispozici je více možností pro Vyžadování dvoustupňového ověřování. Nejlepší možnost závisí na vašich cílech, edici Azure AD, kterou používáte, a na licenčním programu. Podívejte se, [jak vyžadovat dvoustupňové ověřování pro uživatele](/azure/active-directory/authentication/howto-mfa-userstates) , abyste mohli určit nejlepší možnost pro vás. Další informace o licencích a cenách najdete na stránkách s cenami [služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
+K dispozici je více možností pro Vyžadování dvoustupňového ověřování. Nejlepší možnost závisí na vašich cílech, edici Azure AD, kterou používáte, a na licenčním programu. Podívejte se, [jak vyžadovat dvoustupňové ověřování pro uživatele](/azure/active-directory/authentication/howto-mfa-userstates) , abyste mohli určit nejlepší možnost pro vás. Další informace o licencích a cenách najdete na stránce s cenami [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) a [Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
 
 Níže jsou uvedené možnosti a výhody pro povolení dvoustupňové ověřování:
 
 **Možnost 1**: [Povolte Multi-Factor Authentication změnou stavu uživatele](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Výhody**: Toto je tradiční metoda pro Vyžadování dvoustupňového ověřování. Funguje s ověřováním [Azure Multi-Factor Authentication v cloudu a na serveru Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
+**Výhody**: Toto je tradiční metoda pro Vyžadování dvoustupňového ověřování. Funguje s [azure Multi-Factor Authentication v cloudu i v azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion). Použití této metody vyžaduje, aby uživatelé prováděli dvoustupňové ověřování pokaždé, když se přihlásí, a přepíše zásady podmíněného přístupu.
 
-Chcete-li zjistit, kde je třeba povolit službu Multi-Factor Authentication, přečtěte si, [kterou verzi Azure MFA má pro moji organizaci právo?](/azure/active-directory/authentication/concept-mfa-whichversion).
+Pokud chcete zjistit, kde Multi-Factor Authentication musí být povolená, podívejte [se, jakou verzi Azure MFA je pro moji organizaci nejvhodnější?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
-**Možnost 2**: [Povolte vícefaktorové ověřování pomocí zásad podmíněného přístupu](/azure/active-directory/authentication/howto-mfa-getstarted).
+**Možnost 2**: [Povolí Multi-Factor Authentication se zásadami podmíněného přístupu](/azure/active-directory/authentication/howto-mfa-getstarted).
 **Výhody**: Tato možnost umožňuje zobrazit dotaz na dvoustupňové ověřování za určitých podmínek pomocí [podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal). Konkrétní podmínky se můžou přihlašovat uživateli z různých umístění, nedůvěryhodných zařízení nebo aplikací, které považujete za rizikové. Definování specifických podmínek, které vyžadují dvoustupňové ověřování, vám umožní vyhnout se tak neustálým dotazům pro uživatele, což může být nepříjemný zážitek uživatele.
 
-Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure Multi-Factor Authentication v cloudu a nabízí prémiovou funkci služby Azure AD. Další informace o této metodě najdete v [nasazení cloudového ověřování Azure Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-getstarted).
+Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure Multi-Factor Authentication v cloudu a je funkcí Premium služby Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Možnost 3**: Službu Multi-Factor Authentication se zásadami podmíněného přístupu vám umožní vyhodnotit rizika pro uživatele a přihlašování [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
+**Možnost 3**: Povolte Multi-Factor Authentication se zásadami podmíněného přístupu vyhodnocením rizika pro uživatele a přihlašování [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
 **Výhody**: Tato možnost vám umožní:
 
 - Detekuje potenciální ohrožení zabezpečení, která ovlivňují identity vaší organizace.
@@ -163,7 +163,7 @@ Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro v
 Tato metoda používá Azure AD Identity Protection hodnocení rizik k určení, jestli se vyžaduje dvoustupňové ověřování na základě rizika uživatele a přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metodě najdete v [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
 
 > [!Note]
-> Možnost 1, povolení ověřování Multi-Factor Authentication změnou stavu uživatele, přepíše zásady podmíněného přístupu. Vzhledem k tomu, že možnosti 2 a 3 používají zásady podmíněného přístupu, nelze s nimi použít možnost 1.
+> Možnost 1, povolení Multi-Factor Authentication změnou stavu uživatele, přepíše zásady podmíněného přístupu. Vzhledem k tomu, že možnosti 2 a 3 používají zásady podmíněného přístupu, nelze s nimi použít možnost 1.
 
 Organizace, které neposkytují další vrstvy ochrany identity, jako je například dvoustupňové ověřování, jsou náchylnější k útoku prostřednictvím krádeže přihlašovacích údajů. Útok krádeže přihlašovacích údajů může vést k ohrožení bezpečnosti dat.
 
@@ -174,7 +174,7 @@ Označení skupin nebo jednotlivých rolí zodpovědných za konkrétní funkce 
 
 Aby mohl váš tým zabezpečení vyhodnocovat a napravovat riziko, musí mít přehled o vašich prostředcích Azure. Pokud má tým zabezpečení provozní zodpovědnost, potřebuje další oprávnění ke své práci.
 
-Pomocí [RBAC](/azure/role-based-access-control/overview) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Oborem přiřazení role může být předplatné, skupina prostředků nebo jeden prostředek.
+Pomocí [RBAC](/azure/role-based-access-control/overview) můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Role se dají přidělovat na úrovni předplatného, skupiny prostředků nebo konkrétního prostředku.
 
 **Osvědčené postupy**: Oddělením povinností v rámci svého týmu a udělení pouze množství přístupu uživatelům, kteří potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění v rámci předplatného Azure nebo prostředků Povolte jenom určité akce v konkrétním oboru.
 **Podrobnosti**: Pomocí [integrovaných rolí RBAC](/azure/role-based-access-control/built-in-roles) v Azure můžete uživatelům přiřadit oprávnění.
@@ -239,10 +239,10 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 **Osvědčené postupy**: V případě nouze je potřeba mít k dispozici proces "break sklo".
 **Podrobnosti**: Postupujte podle kroků v části [zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
 
-**Osvědčené postupy**: Vyžadovat, aby všechny kritické účty správců byly bez hesla (preferované) nebo vyžadovat vícefaktorové ověřování.
+**Osvědčené postupy**: Vyžadovat, aby všechny kritické účty správců byly bez hesla (preferované), nebo vyžadovat Multi-Factor Authentication.
 **Podrobnosti**: Pomocí [aplikace Microsoft Authenticator](/azure/active-directory/authentication/howto-authentication-phone-sign-in) se přihlaste k jakémukoli účtu Azure AD bez použití hesla. Stejně jako ve [Windows Hello pro firmy](/windows/security/identity-protection/hello-for-business/hello-identity-verification)používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou svázané se zařízením, a používá biometrické ověřování nebo PIN kód.
 
-Vyžadovat Azure Multi-Factor Authentication při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte službu [Multi-Factor Authentication pro účty správců](/azure/active-directory/authentication/howto-mfa-userstates) a zajistěte registraci uživatelů účtu správce.
+Vyžadovat Azure Multi-Factor Authentication při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Povolte [Multi-Factor Authentication pro účty správců](/azure/active-directory/authentication/howto-mfa-userstates) a zajistěte, aby se zaregistrovali uživatelé účtu správce.
 
 **Osvědčené postupy**: U důležitých účtů správců máte pracovní stanici správce, kde nejsou provozní úlohy povoleny (například procházení a e-mail). Tím se budou chránit účty správců před vektory útoku, které používají procházení a e-maily, a výrazně snižuje riziko závažného incidentu.
 **Podrobnosti**: Použijte pracovní stanici správce. Vyberte úroveň zabezpečení pracovní stanice:
@@ -265,7 +265,7 @@ Vyžadovat Azure Multi-Factor Authentication při přihlašování pro všechny 
 
 [Zapnout synchronizaci hodnot hash hesel](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Vyžadovat službu Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Vyžadovat Multi-Factor Authentication pro uživatele ve všech privilegovaných rolích a také vyexponovaných uživatelů](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Získání zabezpečeného skóre Office 365 (při použití Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 

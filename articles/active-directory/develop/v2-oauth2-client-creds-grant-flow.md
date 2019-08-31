@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3a097c164628e6d4e4b7886a195901207d83a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852215"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193280"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform a tok přihlašovacích údajů klienta OAuth 2,0
 
@@ -81,7 +81,7 @@ Pokud chcete ve své aplikaci použít oprávnění aplikace, postupujte podle k
 3. Vyhledejte část **oprávnění rozhraní API** a přidejte **oprávnění aplikace** , která vaše aplikace vyžaduje.
 4. **Uložte** registraci aplikace.
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Doporučil Podepsat uživatele do aplikace
+#### <a name="recommended-sign-the-user-into-your-app"></a>Doporučené: Podepsat uživatele do aplikace
 
 Při vytváření aplikace, která používá oprávnění aplikace, obvykle aplikace vyžaduje stránku nebo zobrazení, ve kterém správce schválí oprávnění aplikace. Tato stránka může být součástí toku přihlášení aplikace, části nastavení aplikace nebo může být vyhrazeným tokem "Connect". V mnoha případech má aplikace smysl zobrazit toto zobrazení "připojit" až po přihlášení uživatele pomocí pracovní nebo školní účet Microsoft.
 
@@ -170,7 +170,8 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Parametr | Podmínka | Popis |
@@ -250,10 +251,6 @@ Reakce na chybu vypadá takto:
 | `trace_id` | Jedinečný identifikátor pro požadavek, který vám může pomáhat s diagnostikou. |
 | `correlation_id` | Jedinečný identifikátor požadavku, který bude pomáhat s diagnostikou napříč komponentami. |
 
-> [!NOTE]
-> Aby mohla aplikace získat token v2, můžete aktualizovat soubor manifestu aplikace z portálu Azure Portal. Můžete přidat atribut `accessTokenAcceptedVersion` a nastavit hodnotu na 2 jako `"accessTokenAcceptedVersion": 2`. Další informace o stejné službě najdete v článku [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) . Ve výchozím nastavení aplikace aktuálně recieves token v1. Pokud není definován v manifestu Application/Web API, bude hodnota pro tento atribut v manifestu nastavena na hodnotu 1, takže aplikace obdrží token v1.  
-
-
 ## <a name="use-a-token"></a>Použití tokenu
 
 Teď, když jste získali token, použijte token k vytvoření požadavků na prostředek. Po vypršení platnosti tokenu opakujte požadavek na `/token` koncový bod pro získání nového přístupového tokenu.
@@ -269,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Ukázky kódu a další dokumentace

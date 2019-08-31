@@ -1,103 +1,103 @@
 ---
-title: Aktualizace stávající nabídky komerční Marketplace
-description: Jak provádět aktualizace do stávající obchodní Marketplace nabídku, včetně úpravy, odstraňování koncept, zrušení publikování požadavku, ukončete prodej nabídku nebo plán a synchronizaci privátní cílovým skupinám na místě.
-author: mattwojo
+title: Aktualizace stávající nabídky komerčního obchodu na webu Marketplace
+description: Postup aktualizace stávající nabídky na komerčním webu Marketplace, včetně úprav, odstranění konceptu, zrušení žádosti o publikování, zastavení prodeje nabídky nebo plánu a synchronizace privátních cílových skupin
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f591df0fe93336da09e9c441292c97be09f25a2e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442095"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191758"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na webu Marketplace obchodní
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním webu Marketplace
 
-Svoje stávající nabídky můžete zobrazit na **přehled** karty [portálu komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
+Stávající nabídky si můžete prohlédnout na kartě **Přehled** na [portálu komerčního webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
 
-Aktualizace stávající nabídky, která je aktuálně živě na webu Marketplace: 
+Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace: 
 
-1. Vyberte název nabídku, kterou chcete aktualizovat. Stav nabídky může být uveden jako **Live**, **publikovat v průběhu**, **koncept**, **pozornost potřeby**, nebo **nebude prodávané na webu Marketplace** (Pokud již dříve rozhodli jste se zastavit prodejní nabídky). Po výběru **nabízí přehled** stránka se otevře nabídku.
-2. Vyberte **aktualizovat** z karty přehledu nebo položky nabídky v levém navigačním panelu pro oblasti, která chcete aktualizovat. Můžete chtít aktualizovat **nabízejí nastavení**, **vlastnosti**, **nabízejí výpis**, **ve verzi Preview**, **technické konfigurace** , **Plánování přehled**, nebo **testovací verze**. 
-3. Proveďte požadované změny a pak vyberte **Uložit**. Tento postup opakujte, dokud nebudou dokončeny všechny provedené změny.
+1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uvedený jako **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo neprodávaná na **webu Marketplace** (Pokud jste předtím zvolili možnost ukončit prodej této nabídky). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
+2. Pro oblast, kterou chcete aktualizovat, vyberte na kartě Přehled možnost **aktualizovat** nebo položku nabídky z levé navigace. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**. 
+3. Proveďte požadované změny a pak vyberte **Uložit**. Tento postup opakujte, dokud nebudou všechny změny dokončeny.
 
-## <a name="review-and-publish-an-updated-offer"></a>Zkontrolujte a publikovat v rámci nabídky aktualizace
+## <a name="review-and-publish-an-updated-offer"></a>Kontrola a publikování aktualizované nabídky
 
-Až budete připraveni publikovat vaši aktualizovanou nabídku, vyberte **publikovat** z jakékoli stránky. **Revize a publikovat** stránka se otevře. Na této stránce můžete:
+Až budete připraveni publikovat aktualizovanou nabídku, vyberte **publikovat** z libovolné stránky. Otevře se stránka **Kontrola a publikování** . Na této stránce můžete:
 
 
-- Zobrazíte stav dokončení pro oddíly nabídky, která jste aktualizovali: 
-    - **Nepublikované změny**: V části byl aktualizován a je dokončena. Byl poskytnut všechna požadovaná data a nebyly zjištěny žádné chyby, počínaje aktualizací.
-    - **Neúplné**: Aktualizace provedené v části zavedeny chyby, které je potřeba opravit nebo vyžaduje další údaje.
-- Zadejte další informace, které zkušební tým certifikace zajistit, že testování přejde plynule.
-- Odeslání aktualizovanou nabídku k publikování tak, že vyberete **odeslat**.  Pošleme vám e-mail při vydání ve verzi preview aktualizované nabídky je k dispozici ke kontrole a schválení.
+- Podívejte se na téma stav dokončení pro části nabídky, kterou jste aktualizovali: 
+    - **Nepublikované změny**: Oddíl byl aktualizován a je dokončen. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
+    - **Nedokončeno**: Aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
+- Poskytněte týmu certifikace Další informace, aby se zajistilo plynulé testování.
+- Kliknutím na **Odeslat**aktualizujte aktualizovanou nabídku pro publikování.  Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
 
-**DŮLEŽITÉ:** Nabídka ve verzi preview, musíte zkontrolovat, až bude k dispozici a vyberte **pro uvedení do provozu** publikovat aktualizovanou nabídku na vaše cílová skupina (veřejné nebo soukromé).
+**DŮLEŽITÉ:** Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít na Live** .
 
-## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizovat plán na stávající nabídky
+## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizace plánu v rámci stávající nabídky
 
-Plán na stávající nabídky, kterou jste již publikovali provádět změny:
+Chcete-li provést změny v plánu v rámci stávající nabídky, kterou jste již publikovali:
 
-- S **nabízí přehled** stránce otevřít stávající nabídky, zvolte příslušný plán, který chcete změnit. Pokud není přístupný z plánu **plán přehled** seznamu vyberte **všechny plány**.
-- Můžete také vybrat plán **název**, **cenový model**, nebo **dostupnosti**. *Aktuálně plány jsou dostupné jenom v angličtině (USA)* .
-- Vyberte **Uložit** po provedení požadované změny plánu název, popis, ceny nebo cílové skupiny dostupnosti. 
-- Vyberte **publikovat** až budete připraveni publikovat provedené změny. **[Revize a publikovat](#review-and-publish-an-updated-offer)** bude otevřete a zadejte stav dokončení aktualizace stránky. 
+- Po otevření stránky s **přehledem nabídky** pro existující nabídku vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
+- Můžete vybrat **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)* .
+- Po provedení všech nutných změn názvu plánu, popisu, ceny nebo dostupnosti cílové skupiny vyberte **Uložit** . 
+- Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a poskytne se stav dokončení vašich aktualizací. 
 
-## <a name="delete-a-draft-offer"></a>Odstranění nabídky Nástroje draft
+## <a name="delete-a-draft-offer"></a>Odstranit nabídku konceptu
 
-Návrh nabídky, (jedna, která nebyla publikována) můžete odstranit tak, že vyberete **odstranit koncept** z **nabízí přehled** stránky. Tato možnost nebude k dispozici, pokud jste dříve publikovali nabídky.
+Výběrem možnosti **Odstranit koncept** ze stránky **Přehled nabídky** můžete odstranit koncept nabídky (Nepublikovaná). Tato možnost nebude k dispozici, pokud jste nabídku publikovali již dříve.
 
-Jakmile potvrdíte, že chcete odstranit nabídku koncept, tuto nabídku nebudou přístupné nebo viditelné v partnerském centru a **všechny nabízí** stránka se otevře.
+Po potvrzení, že chcete odstranit koncept nabídky, již nabídka nebude viditelná ani přístupná v partnerském centru a otevře se stránka **všechny nabídky** .
 
-## <a name="delete-a-draft-plan"></a>Odstranit plán návrhu
+## <a name="delete-a-draft-plan"></a>Odstraní pracovní plán.
 
-Pokud chcete odstranit plán, který není publikovaný, vyberte **odstranit koncept** z **plán přehled** stránky. Tato možnost nebude k dispozici, pokud jste dříve publikovali nabídky.
+Pokud chcete odstranit plán, který se nepublikoval, vyberte **Odstranit koncept** na stránce **Přehled plánu** . Tato možnost nebude k dispozici, pokud jste nabídku publikovali již dříve.
 
-Jakmile potvrdíte, že chcete odstranit plán návrhu, plán nebudou přístupné nebo viditelné v partnerském centru.
+Až ověříte, že chcete odstranit plán konceptu, plán už nebude viditelný ani přístupný v partnerském centru.
 
 ## <a name="cancel-publishing"></a>Zrušit publikování
 
-Zrušit nabídky s **publikovat v průběhu** stavu:
+Zrušení nabídky se stavem **publikování** probíhá:
 
-- Vyberte název nabídky otevřete **nabízí přehled** stránky. 
-- Vyberte **zrušit publikování** v pravém horním rohu stránky.
-- Potvrďte, že chcete zastavit nabídka byla publikovaná. 
+- Vyberte název nabídky a otevřete stránku **Přehled nabídky** . 
+- V pravém horním rohu stránky vyberte **Zrušit publikování** .
+- Potvrďte, že chcete zastavit nabídku publikováním. 
 
-Pokud chcete publikovat nabídky kdykoli později, bude nutné začít proces publikování.
+Pokud chcete nabídku publikovat později, budete muset spustit proces publikování.
 
 > [!NOTE]
-> V rámci nabídky zveřejněná pouze v případě, že nabídka ještě nepokročila vydavatele dokončení kroku můžete zastavit. Po výběru **vysílat živě** nebudou mít možnost zrušit publikování déle.
+> Můžete zastavit publikování nabídky pouze v případě, že nabídka ještě neprobíhala na odhlášení vydavatele. Po výběru možnosti **Přejít na Live** nebudete mít možnost zrušit publikování.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Zastavit prodej nabídku nebo plánu
+## <a name="stop-selling-an-offer-or-plan"></a>Zastavení prodeje nabídky nebo plánu
 
-Chcete-li zastavit prodejní nabídky, po které jste už publikovali, vyberte **zastavit prodej** z **nabízí přehled** stránky. Chcete-li zastavit, prodej plán, vyberte **zastavit prodej** z **přehled plánu** stránky. (Možnost zastavit prodej plánu je k dispozici pouze pokud máte více než jeden plán v nabídce. Můžete zastavit prodej jeden plán bez dopadu na ostatní plány v rámci vaší nabídky.)
+Chcete-li ukončit prodej nabídky po jejím publikování, vyberte možnost **ukončit prodej** na stránce s **přehledem nabídky** . Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . (Možnost ukončit prodej plánu je dostupná jenom v případě, že v nabídce máte více než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky.)
 
-Jakmile se ujistíte, že chcete zastavit prodejní nabídky nebo plán, během pár hodin ji se už nebude zobrazovat v Tržišti a žádné nové zákazníky. můžete ji stáhnout. 
+Jakmile ověříte, že chcete ukončit prodej nabídky nebo plánu, během několika hodin už se na webu Marketplace nebude zobrazovat a žádní noví zákazníci si je nebudou moct stáhnout. 
 
-Všechny zákazníky, kteří dříve získali nabídky nebo plán ji mohou dál používat. Můžete si ho stáhnout znovu, ale nebudou dostávat aktualizace, aktualizace a opětovné publikování nabídky nebo plánu později. 
+Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale neobdrží aktualizace, pokud tuto nabídku aktualizujete a znovu publikujete nebo naplánujete na pozdější dobu. 
 
-Po dokončení vaše žádost o zastavení prodej/plán nabídky, zobrazí stále portálu komerční Marketplace na partnerském centru. Odstranit návrhu, vyberte **odstranit koncept** buď z **nabízí přehled** nebo **plánování přehled** stránky. 
+Po skončení žádosti o ukončení prodeje nabídky nebo plánu se na portálu pro partnery na komerčním webu na portálu pro partnery zobrazí i nadále. Chcete-li odstranit koncept, vyberte možnost **Odstranit koncept** ze stránky **Přehled nabídky** nebo **plán** . 
 
-Pokud se rozhodnete seznamu nebo prodávat v rámci této nabídky nebo kteří plánují znovu, postupujte podle pokynů a [aktualizace stávající nabídky](#update-an-existing-offer-in-the-commercial-marketplace). Nezapomeňte, že budete muset **publikovat** nabídky nebo plán znovu po provedení změn.
+Pokud se rozhodnete tuto nabídku nebo plán prodat znovu, postupujte podle pokynů pro [aktualizaci existující nabídky](#update-an-existing-offer-in-the-commercial-marketplace). Nezapomeňte, že po provedení změn budete muset nabídku nebo plán znovu **publikovat** .
 
-## <a name="remove-offers-from-existing-customers"></a>Odebrání nabídky stávající zákazníci
+## <a name="remove-offers-from-existing-customers"></a>Odebrat nabídky od stávajících zákazníků
 
-Odebrání nabídky stávající zákazníci [protokolování žádosti o podporu](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Vyberte typ konkrétní nabídky **typ problému** seznamu a pak vyberte **odebrání publikované nabídky** v **kategorie** seznamu. Odešlete žádost. Tým podpory vás provede proces odebrání nabídky.
+Pokud chcete odebrat nabídky od stávajících zákazníků, Zaprotokolujte [žádost o podporu](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). V seznamu **typ problému** vyberte konkrétní typ nabídky a v seznamu **kategorie** vyberte **Odebrat publikovanou nabídku** . Odešlete žádost. Tým podpory vás provede procesem odebrání nabídky.
 
-## <a name="sync-private-plan-audiences"></a>Cílové skupiny privátní plán synchronizace
+## <a name="sync-private-plan-audiences"></a>Synchronizovat veřejné skupiny plánů
 
-Pokud vaše nabídka zahrnuje jeden nebo více plánů, nakonfigurované tak, aby byla dostupná pouze pro privátní cílové skupiny s omezeným přístupem, je možné aktualizovat pouze na cílovou skupinu, kdo má přístup k privátním plán bez dalších změn do nabídky. 
+Pokud vaše nabídka obsahuje jeden nebo více plánů, které jsou nakonfigurovány tak, aby byly k dispozici pouze pro soukromou omezenou cílovou skupinu, je možné aktualizovat pouze cílovou skupinu, která má přístup k tomuto privátnímu plánu bez publikování dalších změn v nabídce. 
 
-K aktualizaci a synchronizaci privátní skupinou pro vaše plány:
+Aktualizace a synchronizace privátní cílové skupiny pro vaše plány:
 
-- Upravit cílovou skupinu v jedné nebo více privátních plány pomocí + **přidat ID** nebo **importovat zákazníků (csv)** tlačítko a následně změny uložte.
-- Vyberte **synchronizovat privátní cílovou skupinu** z **plánování přehled** stránky.
+- V jednom nebo několika privátních plánech upravte cílovou skupinu pomocí tlačítka + **Přidat ID** nebo **importovat zákazníky (CSV)** a změny uložte.
+- Na stránce **Přehled plánu** vyberte **synchronizovat soukromou cílovou skupinu** .
 
-**Synchronizovat privátní cílovou skupinu** budete publikovat pouze změny do privátní cílové skupiny, bez jakékoli jiné aktualizace, které jste zadali na nabídku Nástroje draft.
+**Synchronizace privátní cílové skupiny** bude publikovat jenom změny vašich privátních cílových skupin bez publikování dalších aktualizací, které jste mohli udělat v rámci nabídky konceptů.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Zkontrolujte stav publikování vaší nabídky komerční Marketplace](./publishing-status.md)
+- [Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.](./publishing-status.md)

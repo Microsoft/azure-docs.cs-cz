@@ -1,35 +1,29 @@
 ---
-title: Ukázky a návody pro virtuální počítače pro datové vědy – Azure | Dokumentace Microsoftu
+title: Ukázky & návody
+titleSuffix: Azure Data Science Virtual Machine
 description: Pomocí těchto ukázek a návodů se dozvíte, jak zpracovávat běžné úlohy a scénáře pomocí Data Science Virtual Machine.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047833"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195674"
 ---
-# <a name="samples-on-data-science-virtual-machines"></a>Ukázky na virtuální počítače pro datové vědy
+# <a name="samples-on-azure-data-science-virtual-machines"></a>Ukázky Virtual Machines pro datové vědy v Azure
 
 Azure Data věda Virtual Machines (DSVMs) zahrnuje komplexní sadu vzorového kódu. Tyto ukázky zahrnují Jupyter poznámkové bloky a skripty v jazycích, jako je Python a R.
 > [!NOTE]
 > Další informace o tom, jak spustit poznámkové bloky Jupyter na virtuálních počítačích pro datové vědy, najdete v části [Access Jupyter](#access-jupyter) .
 
-## <a name="quick-reference-of-samples"></a>Stručná referenční příručka vzorků
+## <a name="available-samples"></a>Dostupné ukázky
 | Ukázky kategorie | Popis | Umístění |
 | ------------- | ------------- | ------------- |
 | Jazyk R  | Ukázky ilustrují scénáře, jako je například připojení k úložištím cloudových dat založených na Azure a postup porovnání Open Source R a Microsoft Machine Learning Server. Také vysvětlují, jak zprovoznění modely na Microsoft Machine Learning Server a SQL Server. <br/> [Jazyk R](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|

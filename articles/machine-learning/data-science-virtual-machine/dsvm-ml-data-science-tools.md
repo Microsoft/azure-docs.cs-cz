@@ -1,34 +1,29 @@
 ---
-title: Machine learning a datové vědy nástrojů – Azure | Dokumentace Microsoftu
+title: Machine Learning & nástroje pro datové vědy
+titleSuffix: Azure Data Science Virtual Machine
 description: Další informace o machine learningu nástrojů a architektur, které jsou předem nainstalované na virtuální počítač pro datové vědy.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565244"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195638"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Nástroje Machine learning a datové vědy
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure virtuální počítače pro datové vědy obsahuje bohatou sadu nástrojů a knihovny pro machine learning (ML) k dispozici v oblíbených jazyků, jako je Python, R a Julie. 
 
 Tady jsou některé z knihoven na virtuální počítače pro datové vědy a ML nástrojů. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+## <a name="azure-machine-learning-sdk-for-python"></a>Sada SDK Azure Machine Learning pro Python
+Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
 |    |           |
 | ------------- | ------------- |
 | Co je to?   |   Azure Machine Learning je Cloudová služba, která můžete použít k vývoji a nasazování modelů ML. Modely můžete sledovat, jak vytvářet, trénovat, škálování a spravovat je pomocí sady Python SDK. Nasazení modelů jako kontejnery a spusťte je v cloudu, v místním prostředí nebo ve službě Azure IoT Edge.   |

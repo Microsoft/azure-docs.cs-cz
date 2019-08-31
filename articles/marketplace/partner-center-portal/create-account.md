@@ -1,18 +1,18 @@
 ---
 title: Postup vytvoření účtu obchodního tržiště v partnerském centru
 description: Přečtěte si, jak vytvořit účet komerčního obchodu v partnerském centru.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b1839316f8f11af7e4f365694fc017c262d00a86
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955574"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191737"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -98,6 +98,6 @@ Jiný uživatel ze stejného Azure Active Directory tenant může přidat novéh
 
 1. Po dokončení procesu můžete spravovat nově vytvořeného vydavatele tak, že v levém navigačním panelu najdeme do programu pro **komerční Marketplace** . Pokud nevidíte komerční program pro **Marketplace** , aktualizujte stránku.  Nový Vydavatel se zobrazí v seznamu **vydavatelé** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md) 

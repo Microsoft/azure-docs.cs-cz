@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011565"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195571"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 
 Díky Azure Machine Learning službě můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
@@ -47,33 +47,9 @@ Služba Azure Machine Learning má různou podporu napříč různými výpočet
 
 Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí služby Azure Machine Learning můžete spustit skript na různých cílových výpočetních prostředích, aniž byste museli změnit svůj skript. 
 
-Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů s **konfigurací spuštění**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon.
+Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon. Podrobnosti o určení prostředí a jeho navázání ke spuštění konfigurace najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md) .
 
 Přečtěte si další informace o [odesílání experimentů](#submit) na konci tohoto článku.
-
-### <a name="manage-environment-and-dependencies"></a>Správa prostředí a závislostí
-
-Při vytváření konfigurace spuštění se musíte rozhodnout, jak spravovat prostředí a závislosti na výpočetním cíli. 
-
-#### <a name="system-managed-environment"></a>Systém spravované prostředí
-
-Použijte prostředí spravované systémem, pokud chcete, aby [conda](https://conda.io/docs/) spravovalo prostředí Pythonu a závislosti skriptů za vás. Ve výchozím nastavení se předpokládá, že se jedná o prostředí spravované systémem a nejběžnější volba. To je užitečné pro vzdálené výpočetní cíle, zejména když nemůžete nakonfigurovat tento cíl. 
-
-Stačí zadat každou závislost balíčku pomocí [třídy CondaDependency](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) a potom conda vytvoří soubor s názvem **conda_dependencies. yml** v adresáři **aml_config** v pracovním prostoru se seznamem závislostí balíčku a Nastaví prostředí Pythonu, když odešlete školicí experiment. 
-
-Počáteční nastavení nového prostředí může trvat několik minut v závislosti na velikosti požadovaných závislostí. Pokud seznam balíčků zůstane beze změny, čas nastavení proběhne pouze jednou.
-  
-Následující kód ukazuje příklad pro prostředí spravované systémem, které vyžaduje scikit-učení:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Uživatel spravován prostředí
-
-V případě prostředí spravovaného uživatelem zodpovídáte za nastavení vašeho prostředí a instalaci každého balíčku, který je potřebný pro školicí skript na výpočetním cíli. Pokud je vaše školicí prostředí již nakonfigurováno (například na místním počítači), můžete přeskočit krok nastavení nastavením `user_managed_dependencies` na hodnotu true. Conda nebude kontrolovat vaše prostředí ani instalovat cokoli za vás.
-
-Následující kód ukazuje příklad konfigurace školicích běhů pro prostředí spravované uživatelem:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Co je Estimator?
 
@@ -390,7 +366,7 @@ Další informace najdete v tématu [Správa prostředků](reference-azure-machi
 
 K pracovním prostorům, které jsou přidruženy k vašemu pracovnímu prostoru pomocí [rozšíření vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) pro Azure Machine Learning službu, můžete přistupovat, vytvářet a spravovat výpočetní cíle.
 
-## <a id="submit"></a>Odeslat školicí běh
+## <a id="submit"></a>Odeslání školicích běhů pomocí sady Azure Machine Learning SDK
 
 Po vytvoření konfigurace spuštění ji použijete ke spuštění experimentu.  Vzor kódu pro odeslání školicího běhu je stejný pro všechny typy výpočetních cílů:
 
@@ -430,8 +406,70 @@ Přepněte stejný experiment ke spuštění v jiném výpočetním cíli pomoc�
 Nebo můžete:
 
 * Odešlete experiment s `Estimator` objektem, jak je znázorněno v [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
-* Odešlete experiment [pomocí rozšíření CLI](reference-azure-machine-learning-cli.md#experiments).
+* Odešlete HyperDrive spuštění pro [ladění pomocí parametrů](how-to-tune-hyperparameters.md).
 * Odešlete experiment prostřednictvím [rozšíření vs Code](how-to-vscode-tools.md#train-and-tune-models).
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Vytvoření konfigurace spuštění a odeslání běhu pomocí Azure Machine Learning CLI
+
+Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [rozšíření CLI Machine Learning](reference-azure-machine-learning-cli.md) můžete vytvářet konfigurace spouštění a odesílat běhy na různých výpočetních cílech. V následujících příkladech se předpokládá, že máte existující pracovní prostor Azure Machine Learning a jste se přihlásili k `az login` Azure pomocí příkazu CLI. 
+
+### <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
+
+Nejjednodušší způsob, jak vytvořit konfiguraci spuštění, je procházení složky, která obsahuje skripty služby Machine Learning v Pythonu, a použití příkazu CLI.
+
+```azurecli
+az ml folder attach
+```
+
+Tento příkaz vytvoří podsložku `.azureml` , která obsahuje konfigurační soubory spouštěné z šablony pro různé výpočetní cíle. Tyto soubory můžete zkopírovat a upravit, abyste mohli přizpůsobit konfiguraci, například přidat balíčky Pythonu nebo změnit nastavení Docker.  
+
+### <a name="create-an-experiment"></a>Vytvoření experimentu
+
+Nejdřív vytvořte experiment pro vaše běhy.
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Spuštění skriptu
+
+Pokud chcete odeslat skript, spusťte příkaz.
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive spuštění
+
+K provedení ladění parametrů můžete použít HyperDrive s Azure CLI. Nejprve vytvořte konfigurační soubor HyperDrive v následujícím formátu. Podrobnosti o parametrech ladění parametrů naleznete v tématu vyladění parametrů [pro modelový](how-to-tune-hyperparameters.md) článek.
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Přidejte tento soubor spolu s konfiguračními soubory spuštění. Pak odešlete HyperDrive běh pomocí:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Všimněte si oddílu *argumenty* v RunConfig a *prostoru parametrů* v souboru Hyperdrive config. Obsahují argumenty příkazového řádku, které se mají předat skriptu pro školení. Hodnota v RunConfig zůstává pro každou iteraci stejná, zatímco rozsah v HyperDrive config se prochází. Nezadávejte v obou souborech stejný argument.
+
+Další podrobnosti o těchto ```az ml``` příkazech CLI a kompletní sadě argumentů najdete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 
@@ -447,7 +485,7 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Kurz: Výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.

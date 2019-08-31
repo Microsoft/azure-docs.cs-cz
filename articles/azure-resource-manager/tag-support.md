@@ -3,15 +3,15 @@ title: Podpora značek Azure Resource Manager pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 452230a263e623f53346fcdb8cf310e73f171aee
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bf10274e8c492363cb54c5610ff8d912ab308d1c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848614"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194730"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů.
@@ -201,7 +201,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ----------- |
 > | aadsupportcases | Ne |Ne |
 > | addsservices | Ne |Ne |
-> | agenti | Ne |Ne |
+> | technici | Ne |Ne |
 > | anonymousapiusers | Ne |Ne |
 > | konfigurace | Ne |Ne |
 > | logs | Ne |Ne |
@@ -584,7 +584,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -712,7 +712,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -837,7 +837,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 > | accounts/dataLakeStoreAccounts | Ne |Ne |
 > | účty/storageAccounts | Ne |Ne |
 > | účty/storageAccounts/kontejnery | Ne |Ne |
@@ -848,7 +848,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 > | účty/eventGridFilters | Ne |Ne |
 > | účty/firewallRules | Ne |Ne |
 
@@ -865,7 +865,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 > | účty/sdílené složky | Ne |Ne |
 > | účty/akcie/datové sady | Ne |Ne |
 > | účty/akcie/pozvánky | Ne |Ne |
@@ -1074,7 +1074,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1197,7 +1197,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
 > | labaccounts | Ano |Ano |
-> | uživatelů | Ne |Ne |
+> | Uživatelé | Ne |Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1267,7 +1267,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ano |Ano |
+> | accounts | Ano |Ano |
 > | účty/eventGridFilters | Ne |Ne |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -1560,7 +1560,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | účty | Ne |Ne |
+> | accounts | Ne |Ne |
 > | sbírk | Ano |Ano |
 > | Kolekce/aplikace | Ne |Ne |
 > | kolekce/securityprincipals | Ne |Ne |
@@ -1610,7 +1610,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | předplatná/prostředky | Ne |Ne |
 > | předplatná/TagNames | Ne |Ne |
 > | subscriptions/tagNames/tagValues | Ne |Ne |
-> | značky | Ne |Ne |
+> | Značky | Ne |Ne |
 > | tenantů | Ne |Ne |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1673,7 +1673,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | securityStatuses | Ne |Ne |
 > | securityStatusesSummaries | Ne |Ne |
 > | serverVulnerabilityAssessments | Ne |Ne |
-> | nastavení | Ne |Ne |
+> | Nastavení | Ne |Ne |
 > | úlohy | Ne |Ne |
 > | topologie | Ne |Ne |
 > | workspaceSettings | Ne |Ne |
@@ -1699,7 +1699,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | entity | Ne |Ne |
 > | entityQueries | Ne |Ne |
 > | officeConsents | Ne |Ne |
-> | nastavení | Ne |Ne |
+> | Nastavení | Ne |Ne |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -1917,7 +1917,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | storno | Ne |Ne |
+> | Zrušit | Ne |Ne |
 > | CreateSubscription | Ne |Ne |
 > | Přejmenovat | Ne |Ne |
 > | SubscriptionDefinitions | Ne |Ne |

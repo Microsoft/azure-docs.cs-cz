@@ -1,49 +1,49 @@
 ---
-title: Azure Resource Manageru šablony funkce – logické | Dokumentace Microsoftu
-description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k určení logické hodnoty.
+title: Funkce šablon Azure Resource Manager – logická | Microsoft Docs
+description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447972"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194783"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manageru
+# <a name="logical-functions-for-azure-resource-manager-templates"></a>Logické funkce pro šablony Azure Resource Manager
 
-Resource Manager poskytuje několik funkcí pro provádění porovnání v šablonách.
+Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
-* [a](#and)
-* [BOOL](#bool)
+* [ani](#and)
+* [logick](#bool)
 * [if](#if)
-* [Not](#not)
+* [mění](#not)
 * [nebo](#or)
 
 ## <a name="and"></a>a
 
 `and(arg1, arg2, ...)`
 
-Kontroluje, zda jsou splněny všechny hodnoty parametrů.
+Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota ke kontrole, jestli má hodnotu true. |
-| arg2 |Ano |boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
-| Další argumenty |Ne |boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud jsou všechny hodnoty true; v opačném případě **False**.
+Vrátí **hodnotu true** , pokud jsou všechny hodnoty true; v opačném případě **false**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
 ```json
 {
@@ -67,12 +67,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Pravda |
 | notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
@@ -85,14 +85,14 @@ Převede parametr na logickou hodnotu.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo int |Hodnota pro převod na logickou hodnotu. |
+| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
 ### <a name="return-value"></a>Návratová hodnota
-Logická hodnota převedená hodnota.
+Logická hodnota převedené hodnoty.
 
 ### <a name="examples"></a>Příklady
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ukazuje, jak pomocí řetězce nebo celočíselná bool.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) ukazuje, jak použít bool s řetězcem nebo celým číslem.
 
 ```json
 {
@@ -122,38 +122,38 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Název | Typ | Value |
 | ---- | ---- | ----- |
-| trueString | Bool | True |
+| trueString | Bool | Pravda |
 | falseString | Bool | False |
-| trueInt | Bool | True |
+| trueInt | Bool | Pravda |
 | falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
 
-Vrátí hodnotu podle toho, jestli je podmínka true nebo false.
+Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| condition |Ano |boolean |Hodnota ke kontrole, jestli je true nebo false. |
-| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota má vrátit, pokud podmínka není splněna. |
+| condition |Ano |boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí druhý parametr, pokud je první parametr **True**; v opačném případě vrátí třetí parametr.
+Vrací druhý parametr, pokud je první parametr **true**; v opačném případě vrátí třetí parametr.
 
 ### <a name="remarks"></a>Poznámky
 
-Pokud je podmínka **True**, je vyhodnocen pouze hodnotu true. Pokud je podmínka **False**, je vyhodnocen pouze hodnota false. S **Pokud** funkce, může obsahovat výrazy, které jsou pouze podmíněně platné. Například můžete odkazovat na prostředek, který existuje v rámci jedné podmínky, ale nikoli v rámci jiné podmínky. V následující části je uveden příklad podmíněně vyhodnocení výrazů.
+Pokud je podmínka **pravdivá**, vyhodnotí se jenom skutečná hodnota. Pokud je podmínka **nepravdivá**, vyhodnotí se jenom hodnota false. Pomocí funkce **if** můžete zahrnout výrazy, které jsou pouze podmíněně platné. Můžete například vytvořit odkaz na prostředek, který existuje v rámci jedné podmínky, ale ne pod druhou podmínkou. Příklad podmíněného vyhodnocování výrazů je uveden v následující části.
 
 ### <a name="examples"></a>Příklady
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje způsob použití `if` funkce.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ukazuje, jak používat `if` funkci.
 
 ```json
 {
@@ -178,15 +178,15 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
-| yesOutput | String | ano |
-| noOutput | String | ne |
+| yesOutput | Řetězec | ano |
+| Výstup | Řetězec | ne |
 | objectOutput | Object | {"test": "hodnota1"} |
 
-Následující [Ukázková šablona](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ukazuje způsob použití této funkce s výrazy, které jsou pouze podmíněně platné.
+Následující [příklad šablony](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) ukazuje, jak použít tuto funkci s výrazy, které jsou pouze podmíněně platné.
 
 ```json
 {
@@ -234,25 +234,25 @@ Následující [Ukázková šablona](https://github.com/krnese/AzureDeploy/blob/
 }
 ```
 
-## <a name="not"></a>Not
+## <a name="not"></a>ne
 
 `not(arg1)`
 
-Logická hodnota se převede na opačnou hodnotu.
+Převede logickou hodnotu na její opačnou hodnotu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |Hodnota k převedení. |
+| arg1 |Ano |boolean |Hodnota, která má být převedena. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** po parametru **False**. Vrátí **False** po parametru **True**.
+Vrátí **hodnotu pravda** , pokud má parametr **hodnotu false**. Vrátí **hodnotu false** , pokud má parametr **hodnotu true**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
 ```json
 {
@@ -276,15 +276,15 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Pravda |
 | notExampleOutput | Bool | False |
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá **není** s [rovná](resource-group-template-functions-comparison.md#equals).
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) používá znaménko **Not** a [Equals](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -300,33 +300,33 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
     }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True |
+| checkNotEquals | Bool | Pravda |
 
-## <a name="or"></a>nebo
+## <a name="or"></a>or
 
 `or(arg1, arg2, ...)`
 
-Kontroluje, zda je true kterákoli hodnota parametru.
+Kontroluje, zda je hodnota parametru pravdivá.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |boolean |První hodnota ke kontrole, jestli má hodnotu true. |
-| arg2 |Ano |boolean |Druhá hodnota ke kontrole, jestli má hodnotu true. |
-| Další argumenty |Ne |boolean |Další argumenty, které chcete zkontrolovat, zda jsou splněny. |
+| arg1 |Ano |boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Ano |boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |Ne |boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Vrátí **True** Pokud libovolná hodnota je true; v opačném případě **False**.
+Vrátí **hodnotu true** , pokud je libovolná hodnota true; v opačném případě **false**.
 
 ### <a name="examples"></a>Příklady
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak pomocí logické funkce.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) ukazuje, jak používat logické funkce.
 
 ```json
 {
@@ -350,12 +350,12 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Výstup z předchozího příkladu je:
+Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Pravda |
 | notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Další postup
