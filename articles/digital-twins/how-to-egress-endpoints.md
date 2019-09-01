@@ -49,14 +49,14 @@ Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) 
 
 | Atribut | type | Popis |
 | --- | --- | --- |
-| id | řetězec | Jedinečný identifikátor události |
-| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
-| data | objekt | Data události specifická pro poskytovatele prostředků. |
-| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verzi schématu. |
-| metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
-| topic | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| id | string | Jedinečný identifikátor události |
+| subject | string | Cesta definovaná vydavatelem k předmětu události |
+| data | object | Data události specifická pro poskytovatele prostředků. |
+| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel definuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| topic | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o schématu Event Grid události:
 
