@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
   title: 'Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetního výkonu a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
+  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlé trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetního výkonu a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlou přípravu dat, trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
+  description: 'Služba Azure Machine Learning poskytuje sady SDK a služby pro rychlé trénování a nasazení modelů strojového učení. Zlepšete produktivitu a snižte náklady díky automatickému škálování výpočetních funkcí a kanálů. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn. Pusťte se do práce pomocí rychlých zprovoznění a kurzů.'
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: Podrobné kurzy
     items:
       - type: paragraph
-        text: 'Naučte se připravovat data, nastavovat experimenty, trénovat a zprovozňovat vaše modely strojového učení.'
+        text: Naučte se nastavovat experimenty a trénovat a zprovozňovat vaše modely strojového učení.
       - type: paragraph
         text: '<b>Pro strojové učení využijte Azure Portal</b>, snadno použitelné rozhraní bez kódu:'
       - type: list

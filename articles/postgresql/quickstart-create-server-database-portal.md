@@ -1,18 +1,18 @@
 ---
-title: Rychlý start – vytvoření Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
-description: Úvodní příručka k vytváření a správě serveru Azure Database for PostgreSQL – jeden Server s použitím portálu Azure uživatelského rozhraní.
+title: Rychlý Start – vytvoření serveru Azure Database for PostgreSQL-Single pomocí Azure Portal
+description: Úvodní příručka k vytvoření a správě Azure Database for PostgreSQL-Single serveru pomocí uživatelského rozhraní Azure Portal
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: 152e93fefecaeaab3502ad5d974ba923727f919b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443115"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195142"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -28,39 +28,39 @@ Otevřete webový prohlížeč a přejděte na [portál](https://portal.azure.co
 Server Azure Database for PostgreSQL se vytvoří s konfigurovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-pricing-tiers.md). Server se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 
 Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
-1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
+1. V levém horním rohu portálu vyberte **vytvořit prostředek** (+).
 
 2. Vyberte **Databáze** > **Azure Database for PostgreSQL**.
 
-    !["Azure Database for PostgreSQL" v nabídce](./media/quickstart-create-database-portal/1-create-database.png)
+    ![V nabídce "Azure Database for PostgreSQL"](./media/quickstart-create-database-portal/1-create-database.png)
 
-3. Vyberte **jeden server** možnost nasazení.
+3. Vyberte možnost nasazení na **jeden server** .
 
-   ![Vyberte – Azure Database for PostgreSQL – možnost nasazení jednoho serveru](./media/quickstart-create-database-portal/select-deployment-option.png)
+   ![Vyberte možnost nasazení na jeden server Azure Database for PostgreSQL.](./media/quickstart-create-database-portal/select-deployment-option.png)
 
-4. Vyplňte **Základy** formuláře následující informace:
+4. Ve formuláři **základy** vyplňte následující informace:
 
     ![Vytvoření serveru](./media/quickstart-create-database-portal/create-basics.png)
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
-    Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
+    Subscription|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
+    Resource group|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. K zadanému názvu serveru se připojí název domény *postgres.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.
-    Zdroj dat | *Žádné* | Vyberte *žádný* vytvořit nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
+    Zdroj dat | *Žádné* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *žádný* . (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
     Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_** .
-    Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % atd.).
+    Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0 až 9) a jiné než alfanumerické znaky (!, $, #,% atd.).
     Location|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
     Version|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
-    Výpočetní prostředky a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **konfigurovat server**. Potom vyberte kartu **Obecné účely**. *5. generace*, *4 virtuální jádra*, *100 GB*, a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci**,  **vCore**, **úložiště**, a **období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jako je nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Výpočty a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. Potom vyberte kartu **Obecné účely**. Výchozími hodnotami pro **výpočetní**výkon, **Vcore**, **úložiště**a **dobu uchování zálohy**jsou *Obecné 5*, *4 virtuální jádra*, *100 GB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    > [!NOTE]
-   > Zvažte použití cenové úrovni Basic Pokud nízký výpočetní a vstupně-výstupní operace jsou dostatečné pro vaši úlohu. Všimněte si, že servery vytvořené v cenové úrovni Basic nelze později škálovat pro obecné účely nebo optimalizované pro paměť. Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) Další informace.
+   > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) .
    > 
 
     ![Podokno Cenová úroveň](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
-5. Vyberte **zkontrolujte + vytvořit** zkontrolujte zvolené položky. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
+5. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
 
 6. Pokud chcete monitorovat proces nasazení, na panelu nástrojů vyberte ikonu **Oznámení** (zvonek). Po dokončení nasazení můžete vybrat **Připnout na řídicí panel** a vytvořit dlaždici pro tento server na řídicím panelu webu Azure Portal, která slouží jako zástupce stránky **Přehled** serveru. Výběr **Přejít k prostředku** otevře stránku **Přehled** serveru.
 
@@ -72,7 +72,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
 
 Azure Database for PostgreSQL vytváří bránu firewall na úrovni serveru. Ta brání externím aplikacím a nástrojům v připojení k serveru a kterékoli databázi na serveru, pokud nevytvoříte pravidlo k otevření brány firewall pro konkrétní IP adresy. 
 
-1. Po dokončení nasazení najděte váš server. V případě potřeby ho můžete vyhledat. Vyberte například **Všechny prostředky** z nabídky na levé straně. Zadejte název vašeho serveru, například ukázkový **mydemoserver**. Vyhledáte tak nově vytvořený server. Vyberte název vašeho serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru a poskytne vám možnosti další konfigurace.
+1. Po dokončení nasazení najděte váš server. V případě potřeby ho můžete vyhledat. Vyberte například **Všechny prostředky** z nabídky na levé straně. Zadejte název vašeho serveru, jako je například **mydemoserver**, a vyhledejte nově vytvořený server. Vyberte název vašeho serveru ze seznamu výsledků hledání. Otevře se stránka **Přehled** vašeho serveru a poskytne vám možnosti další konfigurace.
  
     ![Vyhledání názvu serveru](./media/quickstart-create-database-portal/4-locate.png)
 
@@ -115,7 +115,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
    ```
 
    > [!TIP]
-   > Pokud chcete použít cestu adresy URL pro připojení k Postgres, kódování URL uživatelské jméno se symbolem @ `%40`. Například by být připojovací řetězec pro psql, 
+   > Pokud upřednostňujete použití cesty URL pro připojení k Postgres, adresa URL kódování @ uživatelského jména pomocí `%40`. Například připojovací řetězec pro psql by byl, 
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -136,9 +136,9 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
    > [!TIP]
    > Pokud brána firewall není nakonfigurovaná k povolení IP adresy vašeho klienta, dojde k následující chybě:
    > 
-   > "psql: Závažná chyba: žádný záznam pg_hba.conf pro hostitele `<IP address>`, uživateli "myadmin", database "postgres", SSL on FATAL: Vyžaduje se připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
+   > "psql: Závažná chyba: žádná položka pg_hba. conf `<IP address>`pro hostitele, User "myadmin", Database "Postgres", SSL má závažnou hodnotu SSL: Vyžaduje se připojení SSL. Zadejte možnosti SSL a zkuste to znovu.
    > 
-   > Potvrďte, že je IP adresa vašeho klienta povolený v předchozím kroku pravidla brány firewall.
+   > Ověřte, že je v kroku pravidla brány firewall povolená IP adresa klienta.
 
 2. Vytvořte prázdnou databázi s názvem mypgsqldb zadáním následujícího příkazu na příkazovém řádku:
     ```bash
@@ -170,27 +170,27 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
    ![Karta Připojení](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    Parametr pgAdmin |Hodnota|Popis
+    Parametr pgAdmin |Value|Popis
     ---|---|---
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény ( **\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
-    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *uživatelské jméno\@servername*.
+    Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *UserName\@servername*.
     Heslo | Vaše heslo správce | Heslo, které jste si zvolili při vytváření serveru dříve v tomto rychlém startu.
     Role | Ponechte prázdné | V tuto chvíli není nutné zadávat název role. Ponechte toto pole prázdné.
     Režim SSL | *Vyžadovat* | Na kartě SSL nástroje pgAdmin můžete nastavit režim SSL. Ve výchozím nastavení jsou všechny servery Azure Database for PostgreSQL vytvořené se zapnutým vynucováním SSL. Pokud chcete vynucování SSL vypnout, přečtěte si téma popisující [vynucování SSL](./concepts-ssl-connection-security.md).
     
 5. Vyberte **Uložit**.
 
-6. V levém podokně **Prohlížeč** rozbalte uzel **Servery**. Vyberte server, například **mydemoserver**. Kliknutím se k němu připojte.
+6. V levém podokně **Prohlížeč** rozbalte uzel **Servery**. Vyberte server, například **mydemoserver**, abyste se k němu mohli připojit.
 
 7. Rozbalte uzel serveru a pod ním pak rozbalte **Databáze**. V seznamu by měla být vaše stávající databáze *postgres* a případné další databáze, které jste vytvořili. Na jednom serveru se službou Azure Database for PostgreSQL můžete vytvořit víc databází.
 
-8. Klikněte pravým tlačítkem na **Databáze**, zvolte nabídku **Vytvořit** a pak vyberte **Databáze**.
+8. Klikněte pravým tlačítkem na **databáze**, vyberte nabídku **vytvořit** a pak vyberte **databáze**.
 
-9. Do pole **Databáze** zadejte libovolný název databáze, například **mypgsqldb2**.
+9. Do pole **databáze** zadejte libovolný název databáze, například **mypgsqldb2**.
 
-10. Ze seznamu vyberte **Vlastníka** databáze. Zvolte přihlašovací jméno správce serveru, jako je **myadmin** v příkladu.
+10. Ze seznamu vyberte **Vlastníka** databáze. Vyberte přihlašovací jméno správce serveru, jako je například **Můj správce**.
 
     ![Vytvoření databáze v nástroji pgAdmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
@@ -208,7 +208,7 @@ Prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete v
 Odstranění celé skupiny prostředků, včetně nově vytvořeného serveru:
 1. Vyhledejte skupinu prostředků na portálu. V nabídce na levé straně vyberte **Skupiny prostředků**. Potom vyberte název vaší skupiny prostředků, jako je **myresourcegroup** v tomto příkladu.
 
-2. Na stránce vaší skupiny prostředků vyberte **Odstranit**. Pro potvrzení odstranění zadejte do textového pole název vaší skupiny prostředků, jako je **myresourcegroup** v tomto příkladu. Vyberte **Odstranit**.
+2. Na stránce vaší skupiny prostředků vyberte **Odstranit**. Do textového pole zadejte název vaší skupiny prostředků, jako je například **myresourcegroup**, a potvrďte tak odstranění. Vyberte **Odstranit**.
 
 Odstranění pouze nově vytvořeného serveru:
 1. Vyhledejte váš server na portálu, pokud ho ještě nemáte otevřený. V nabídce na levé straně vyberte **Všechny prostředky**. Pak vyhledejte server, který jste vytvořili.
@@ -217,8 +217,8 @@ Odstranění pouze nově vytvořeného serveru:
 
     ![Tlačítko Odstranit](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Potvrďte název serveru, který chcete odstranit, a zobrazte jeho databáze, které tím ovlivníte. Do textového pole zadejte název vašeho serveru, jako je **mydemoserver** v tomto příkladu. Vyberte **Odstranit**.
+3. Potvrďte název serveru, který chcete odstranit, a zobrazte jeho databáze, které tím ovlivníte. Do textového pole zadejte název vašeho serveru, jako je například **mydemoserver**. Vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)

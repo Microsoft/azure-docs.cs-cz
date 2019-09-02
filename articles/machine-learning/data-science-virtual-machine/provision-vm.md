@@ -1,28 +1,22 @@
 ---
-title: Vytvoření virtuálního počítače Windows datové vědy
-titleSuffix: Azure
+title: 'Rychlý start: Vytvoření Windows'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurace a vytvořit virtuální počítač pro datové vědy v Azure pro účely analýzy a strojového učení.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: vijetaj
-ms.openlocfilehash: 2b328ccf63259c7faf4debdc07313d24381313a5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047686"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195298"
 ---
-# <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení Data Science Virtual Machine Windows v Azure
+# <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Rychlý start: Nastavení Data Science Virtual Machine Windows v Azure
 
 Microsoft Windows Data Science Virtual Machine (DSVM) je image virtuálního počítače (VM) Windows serveru 2016 v Azure. Je součástí předinstalovaného a nakonfigurovaného pomocí nástrojů pro analýzu dat a strojové učení.
 
@@ -231,7 +225,7 @@ Pomocí [Instalace webové platformy Microsoft](https://www.microsoft.com/web/do
 > [!NOTE]
 > V systému Windows Server 2012 verze DSVM a edice Windows Server 2016 do března 2018 je výchozím prostředím Anaconda Python 2,7. Sekundární prostředí je Python 3,5, který se nachází na adrese C:\Anaconda\envs\py35.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
 * Přečtěte si o službě Azure Machine Learning, kterou si přečtete, [co je Azure Machine Learning služba?](../service/overview-what-is-azure-ml.md) a vyzkoušíte [rychlé starty a kurzy](../service/index.yml).

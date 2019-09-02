@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Soubory Azure
+summary: Azure Files nabízí plně spravované multiplatformní sdílené složky v cloudu, které jsou přístupné přes protokol Server Message Block (SMB).
+metadata:
+  title: Soubory Azure
+  description: Připojujte sdílené složky v cloudu i místně v systémech Windows, Linux a macOS. Sdílené složky Azure navíc můžete pomocí služby Synchronizace souborů Azure ukládat do mezipaměti na serverech Windows a zajistit tak místní přístup.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143046"
+landingContent:
+- title: Informace o službě Soubory Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Průvodce plánováním služby Azure Files
+      url: storage-files-planning.md
+    - text: Průvodce plánováním služby Synchronizace souborů Azure
+      url: storage-sync-files-planning.md
+    - text: Co je služba Soubory Azure?
+      url: storage-files-introduction.md
+- title: Začínáme
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Vytvoření/použití sdílených složek – Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Vytvoření sdílených složek úrovně Premium
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Správa serveru s využitím Synchronizace souborů Azure
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
+      url: storage-sync-files-extend-servers.md
+- title: Řešení potíží
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Řešení potíží se službou Azure Files ve Windows
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Řešení potíží se službou Azure Files v Linuxu
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Řešení potíží s výkonem služby Azure Files
+      url: storage-troubleshooting-files-performance.md
+    - text: Řešení potíží se službou Synchronizace souborů Azure
+      url: storage-sync-files-troubleshoot.md

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089189"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207366"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows 
 
@@ -40,6 +40,8 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 Po instalaci ovladače mřížky na virtuálním počítači je potřeba restartovat počítač. Po instalaci ovladače CUDA není nutné restartovat počítač.
 
 ## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
+
+Mějte na paměti, že ovládací panel NVIDIA je dostupný jenom s instalací ovladače mřížky. Pokud jste nainstalovali ovladače CUDA, ovládací panel NVIDIA nebude viditelný.
 
 Instalaci ovladače můžete ověřit v Device Manager. Následující příklad ukazuje úspěšnou konfiguraci karty Tesla K80 na virtuálním počítači Azure NC.
 
@@ -66,7 +68,7 @@ K instalaci nejnovějšího rozšíření verze 1,1 HpcVMDrivers na existující
 Síť RDMA podporuje provoz rozhraní MPI (Message Passing Interface) pro aplikace běžící s [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) nebo Intel MPI 5. x. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vývojáři, kteří sestavují aplikace náročné na grafické PROCESORy NVIDIA Tesla, mohou také stáhnout a nainstalovat nejnovější [sadu CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Další informace najdete v příručce pro [instalaci CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 

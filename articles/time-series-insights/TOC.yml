@@ -142,34 +142,6 @@
       items:
         - name: Javascriptová klientská sada SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
-- name: Související
-  items:
-    - name: Řešení
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Plug and Play
-          href: /azure/iot-pnp
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: Požadavky na zákaznická data

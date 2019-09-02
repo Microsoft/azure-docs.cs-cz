@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835533"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207185"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Postup: Konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace
 
@@ -59,7 +59,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
     ![Stránka vlastností](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Otevřete [Průzkumníka Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) v jiném okně a proveďte následující kroky:
+6. Otevřete [průzkumníka Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) v jiném okně a proveďte následující kroky:
 
     a. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
@@ -186,7 +186,7 @@ Pokud vaše aplikace očekává předávat vlastní role v odpovědi SAML, musí
 
 Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
-1. Otevřete [Průzkumníka Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer).
+1. Otevřete [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
@@ -224,7 +224,7 @@ Chcete-li aktualizovat existující roli, proveďte následující kroky:
 
 Chcete-li odstranit existující roli, proveďte následující kroky:
 
-1. Otevřete [Průzkumníka Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
+1. Otevřete [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
 2. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 

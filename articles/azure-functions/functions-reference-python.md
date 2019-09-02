@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170535"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207210"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -378,6 +378,8 @@ pip install -r requirements.txt
 ## <a name="publishing-to-azure"></a>Publikování do Azure
 
 Až budete připraveni k publikování, ujistěte se, že všechny vaše závislosti jsou uvedeny v souboru *. txt požadavků* , který je umístěn v kořenovém adresáři adresáře projektu. Azure Functions můžou tyto závislosti [vzdáleně sestavit](functions-deployment-technologies.md#remote-build) .
+
+Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore.  
 
 K nasazení do Azure a provedení vzdáleného sestavení použijte následující příkaz:
 

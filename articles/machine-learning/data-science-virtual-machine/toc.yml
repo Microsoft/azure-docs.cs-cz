@@ -4,9 +4,9 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je virtuální počítač pro datové vědy?
+    - name: Co je Data Science Virtual Machine?
       href: overview.md
-    - name: Co je virtuální počítač s geografickou umělou inteligencí pro datové vědy?
+    - name: Co je DSVM s Geo AI?
       href: geo-ai-dsvm-overview.md
 - name: Šablony Rychlý start
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Vytvoření DSVM s CentOS
       href: linux-dsvm-intro.md
-    - name: Vytvoření virtuálního počítače s geografickou umělou inteligencí pro datové vědy
+    - name: Vytvoření DSVM s Geo AI
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172273"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208014"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
@@ -97,8 +97,19 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 * Každá oblast v geograficky replikovaném registru je po nastavení nezávislá. Azure Container Registry SLA platí pro každou geograficky replikovanou oblast.
 * Když nahrajete nebo vyžádáte image z geograficky replikovaného registru, Azure Traffic Manager na pozadí odešle požadavek do registru v oblasti, která je nejblíže vám.
 * Po nahrání obrázku nebo aktualizace značky do nejbližší oblasti trvá Azure Container Registry pro replikaci manifestů a vrstev do zbývajících oblastí, do kterých jste se přihlásili. Větším imagí trvá replikace déle než menší. Image a značky jsou synchronizované v rámci replikačních oblastí s konečným modelem konzistence.
-* Chcete-li spravovat pracovní postupy, které jsou závislé na nabízených aktualizacích do geograficky replikovaného [](container-registry-webhook.md) registru, doporučujeme nakonfigurovat Webhooky, aby reagovaly na nabízené události. Můžete nastavit regionální Webhooky v rámci geograficky replikovaného registru a sledovat tak nabízené události, které se dokončí napříč geograficky replikovanými oblastmi.
+* Aby bylo možné spravovat pracovní postupy, které jsou závislé na nabízených aktualizacích, doporučujeme, abyste [](container-registry-webhook.md) nakonfigurovali Webhooky, které reagují na nabízené události. Můžete nastavit regionální Webhooky v rámci geograficky replikovaného registru a sledovat tak nabízené události, které se dokončí napříč geograficky replikovanými oblastmi.
 
+## <a name="delete-a-replica"></a>Odstranění repliky
+
+Jakmile nakonfigurujete repliku pro svůj registr, můžete ji kdykoli odstranit, pokud už ji nepotřebujete. Odstraňte repliku pomocí Azure Portal nebo jiných nástrojů, jako je příkaz [AZ ACR Replication Delete](/cli/azure/acr/replication#az-acr-replication-delete) v rozhraní příkazového řádku Azure CLI.
+
+Odstranění repliky v Azure Portal:
+
+1. Přejděte do Azure Container Registry a vyberte **replikace**.
+1. Vyberte název repliky a vyberte **Odstranit**. Potvrďte, že chcete repliku odstranit.
+
+> [!NOTE]
+> Repliku registru nemůžete odstranit v *domovské oblasti* registru, tj. na umístění, ve kterém jste registr vytvořili. Domovskou repliku můžete odstranit jedině tak, že odstraníte samotný registr.
 
 ## <a name="geo-replication-pricing"></a>Ceny geografické replikace
 

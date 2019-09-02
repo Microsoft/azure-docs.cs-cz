@@ -1,47 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace brány Azure Firewall
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Firewall
+summary: Zjistěte, jak nasadit Azure Firewall, cloudovou službu zabezpečení sítě.
 metadata:
-  title: 'Dokumentace brány Azure Firewall – kurzy, reference k rozhraní API'
-  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Dokumentace ke službě Azure Firewall
+  description: Zjistěte, jak nasadit Azure Firewall, cloudovou službu zabezpečení sítě.
   services: firewall
-  author: vhorne
   ms.service: firewall
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Zjistěte, jak nasadit Azure Firewall, cloudovou službu zabezpečení sítě. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak vytvářet zásady na úrovni aplikace a na úrovni sítě chránící vaše prostředky virtuální sítě Azure.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Další informace o nasazení brány Azure Firewall
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Nasazení a konfiguraci brány Azure Firewall pomocí webu Azure Portal</a>
-          - html: <a href="/azure/firewall/tutorial-hybrid-ps">Nasazení v hybridní síti</a>
-          - html: <a href="/azure/firewall/tutorial-firewall-dnat">Filtrování příchozího provozu pomocí DNAT</a>
-          - html: <a href="/azure/firewall/tutorial-diagnostics">Monitorování protokolů brány Azure Firewall</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázky skriptů pro běžné úlohy
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">Referenční informace k rozhraní REST API služby Compute</a></p>'
+  ms.date: 08/30/2019
+  ms.openlocfilehash: aba20908401cba2c1b740570f62593b5afb92dc5
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70147303"
+landingContent:
+- title: Další informace o službě Azure Firewall
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je brána Azure Firewall?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Logika zpracování pravidel Azure Firewall
+      url: rule-processing.md
+    - text: Nejčastější dotazy
+      url: firewall-faq.md
+- title: Nasazení Azure Firewallu
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nasazení s využitím webu Azure Portal
+      url: tutorial-firewall-deploy-portal.md
+    - text: Nasazení v hybridní síti
+      url: tutorial-hybrid-portal.md
+    - text: Filtrování příchozího provozu
+      url: tutorial-firewall-dnat.md
+- title: Integrace s nástrojem pro vyrovnávání zatížení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
+      url: integrate-lb.md
+- title: Monitorování Azure Firewallu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Metriky a protokoly Azure Firewallu
+      url: logs-and-metrics.md
+  - linkListType: tutorial
+    links:
+    - text: Monitorování protokolů a metrik Azure Firewallu
+      url: tutorial-diagnostics.md

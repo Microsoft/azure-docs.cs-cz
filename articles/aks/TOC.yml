@@ -306,6 +306,10 @@
               href: istio-install.md
             - name: Inteligentní směrování a testovací verze
               href: istio-scenario-routing.md
+        - name: Použití technologie Hashicorp Consul Connect
+          items:
+            - name: Instalace a konfigurace
+              href: consul-install.md
         - name: Použití služby Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true

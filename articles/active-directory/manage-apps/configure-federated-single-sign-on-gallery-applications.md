@@ -1,6 +1,6 @@
 ---
 title: Jak nakonfigurovat federované jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs
-description: Jak nakonfigurovat federované jednotné přihlašování pro existující aplikaci Galerie Azure AD a použít kurzy k rychlému zprovoznění
+description: Jak nakonfigurovat federované jednotné přihlašování pro existující aplikaci Galerie Azure AD a jak rychle začít pracovat s kurzy
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: bb5d2c693047dd0aa53430ba531dfd246cc77be9
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 8e50a495e1b0406e0c935ac31111dc6b5d0c0821
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422528"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207133"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci Galerie Azure AD
 
-Všechny aplikace v galerii Azure AD povolené s možností podnikového jednotného přihlašování mají k dispozici podrobný kurz. Můžete získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) pro podrobné podrobné pokyny.
+K dispozici je podrobný kurz pro všechny aplikace v galerii Azure Active Directory (Azure AD), které mají schopnost podnikového jednotného přihlašování. Můžete získat přístup k [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) pro podrobné podrobné pokyny.
 
 ## <a name="overview-of-steps-required"></a>Přehled požadovaných kroků
 Ke konfiguraci aplikace z Galerie Azure AD potřebujete:
@@ -44,47 +44,47 @@ Ke konfiguraci aplikace z Galerie Azure AD potřebujete:
 
 ## <a name="add-an-application-from-the-azure-ad-gallery"></a>Přidání aplikace z Galerie Azure AD
 
-Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle následujících kroků:
+Pokud chcete přidat aplikaci z Galerie Azure AD, postupujte podle těchto kroků:
 
-1.  Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se jako **globální správce** nebo **spolusprávce** .
+1.  Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
-2.  Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+2.  Otevřete **rozšíření Azure Active Directory** výběrem možnosti **všechny služby** v horní části hlavní navigační nabídky na levé straně.
 
-3.  Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3.  Do vyhledávacího pole zadejte "Azure Active Directory" a vyberte **Azure Active Directory**.
 
-4.  v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
+4.  Vyberte **podnikové aplikace** z navigační nabídky na levé straně Azure AD.
 
-5.  klikněte na tlačítko **Přidat** v pravém horním rohu podokna **podnikové aplikace** .
+5.  V pravém horním rohu podokna **podnikové aplikace** vyberte **Přidat** .
 
-6.  Do textového pole **Zadejte název** z části **Přidat z Galerie** zadejte název aplikace.
+6.  Do pole **Zadejte název** v části **Přidat z Galerie** zadejte název aplikace.
 
 7.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-8.  Před přidáním aplikace můžete změnit její název z textového pole **název** .
+8.  Před přidáním aplikace můžete změnit její název v poli **název** .
 
-9.  Kliknutím na tlačítko **Přidat** přidejte aplikaci.
+9.  Chcete-li přidat aplikaci, vyberte možnost **Přidat** .
 
-Po krátké době je možné zobrazit podokno konfigurace aplikace.
+Po krátké době byste měli být schopni zobrazit podokno konfigurace aplikace.
 
 ## <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurace jednotného přihlašování pro aplikaci z Galerie Azure AD
 
-Chcete-li nakonfigurovat jednotné přihlašování pro aplikaci, postupujte podle následujících kroků:
+Pro konfiguraci jednotného přihlašování pro aplikaci použijte následující postup:
 
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+2. Otevřete **rozšíření Azure Active Directory** výběrem možnosti **všechny služby** v horní části hlavní navigační nabídky na levé straně.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole zadejte "Azure Active Directory" a vyberte **Azure Active Directory**.
 
-4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
+4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud zde požadovanou aplikaci nevidíte, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** na **všechny aplikace.**
 
 6. Vyberte aplikaci, pro kterou chcete nakonfigurovat jednotné přihlašování.
 
-7. Po načtení aplikace klikněte na tlačítko **jednotného přihlašování** z nabídky navigace na levé straně aplikace.
+7. Po načtení aplikace vyberte **jednotné přihlašování** z navigační nabídky aplikace na levé straně.
 
 8. V rozevíracím seznamu **režim** vyberte možnost přihlašování **založené na SAML** .
 
@@ -94,19 +94,19 @@ Chcete-li nakonfigurovat jednotné přihlašování pro aplikaci, postupujte pod
 
    2. Pokud chcete nakonfigurovat aplikaci jako IdP jednotného přihlašování, adresa URL odpovědi je požadovaná hodnota. U některých aplikací je identifikátor také povinná hodnota.
 
-10. **Volitelné:** Pokud chcete zobrazit nepotřebné hodnoty, klikněte na **Zobrazit upřesňující nastavení adresy URL** .
+10. **Volitelné**: Pokud chcete zobrazit nepotřebné hodnoty, vyberte **Zobrazit upřesňující nastavení adresy URL** .
 
 11. V části **atributy uživatele**vyberte jedinečný identifikátor pro uživatele v rozevíracím seznamu **identifikátor uživatele** .
 
-12. **Volitelné:** kliknutím na **Zobrazit a upravit všechny ostatní atributy uživatele** upravíte atributy, které se mají odeslat do aplikace v tokenu SAML, když se uživatelé přihlásí.
+12. **Volitelné**: Vyberte **Zobrazit a upravit všechny ostatní atributy uživatele** a upravte atributy, které se mají odeslat do aplikace v TOKENu SAML, když se uživatelé přihlásí.
 
     Přidání atributu:
    
-    1. klikněte na **Přidat atribut**. Zadejte **název** a vyberte **hodnotu** z rozevíracího seznamu.
+    1. Vyberte **Přidat atribut**. Zadejte **název** a vyberte **hodnotu** z rozevíracího seznamu.
 
-    1. Klikněte na **Uložit.** V tabulce se zobrazí nový atribut.
+    1. Vyberte **Uložit.** V tabulce se zobrazí nový atribut.
 
-13. Kliknutím **na &lt;konfigurovat název&gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K nastavení jednotného přihlašování v aplikaci máte také k dispozici adresy URL a certifikát metadat.
+13. Vyberte **Konfigurovat &lt;název&gt; aplikace** pro přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K nastavení jednotného přihlašování v aplikaci máte taky potřebné adresy URL a certifikát metadat.
 
 14. Kliknutím na **Uložit** uložte konfiguraci.
 
@@ -114,106 +114,106 @@ Chcete-li nakonfigurovat jednotné přihlašování pro aplikaci, postupujte pod
 
 ## <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Vyberte identifikátor uživatele a přidejte atributy uživatele, které se mají odeslat do aplikace.
 
-Chcete-li vybrat identifikátor uživatele nebo přidat atributy uživatele, postupujte podle následujících kroků:
+Chcete-li vybrat identifikátor uživatele nebo přidat atributy uživatele, použijte následující postup:
 
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+2. Otevřete **rozšíření Azure Active Directory** výběrem možnosti **všechny služby** v horní části hlavní navigační nabídky na levé straně.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole zadejte "Azure Active Directory" a vyberte **Azure Active Directory**.
 
-4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
+4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud zde požadovanou aplikaci nevidíte, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** na **všechny aplikace.**
 
-6. Vyberte aplikaci, u které jste nakonfigurovali jednotné přihlašování.
+6. Vyberte aplikaci, kterou jste nakonfigurovali s jednotným přihlašováním.
 
-7. Po načtení aplikace klikněte na tlačítko **jednotného přihlašování** z nabídky navigace na levé straně aplikace.
+7. Po načtení aplikace vyberte **jednotné přihlašování** z navigační nabídky aplikace na levé straně.
 
 8. V části **atributy uživatele** vyberte jedinečný identifikátor pro uživatele v rozevíracím seznamu **identifikátor uživatele** . Aby bylo možné uživatele ověřit, musí vybraná možnost odpovídat očekávané hodnotě v aplikaci.
 
    >[!NOTE] 
-   >Azure AD vyberte formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v článku [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v části NameIDPolicy.
+   >Azure AD vybere formát pro atribut NameID (identifikátor uživatele) na základě vybrané hodnoty nebo formátu, který vyžádala aplikace v AuthRequest SAML. Další informace najdete v části [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) v oddílu NameIDPolicy.
    >
    >
 
-9. Pokud chcete přidat atributy uživatele, klikněte na **Zobrazit a upravit všechny ostatní atributy uživatele** a upravte atributy, které se mají odeslat do aplikace v tokenu SAML, když se uživatelé přihlásí.
+9. Chcete-li přidat atributy uživatele, vyberte možnost **Zobrazit a upravit všechny ostatní atributy uživatele** a upravte atributy, které se mají odeslat do aplikace v tokenu SAML, když se uživatelé přihlásí.
 
    Přidání atributu:
   
-   1. klikněte na **Přidat atribut**. Zadejte **název** a vyberte **hodnotu** z rozevíracího seznamu.
+   1. Vyberte **Přidat atribut**. Zadejte **název** a vyberte **hodnotu** z rozevíracího seznamu.
 
-   2. Klikněte na **Uložit**. V tabulce se zobrazí nový atribut.
+   2. Vyberte **Uložit**. V tabulce se zobrazí nový atribut.
 
 ## <a name="download-the-azure-ad-metadata-or-certificate"></a>Stažení metadat nebo certifikátů Azure AD
 
-Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte podle následujících kroků:
+Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte takto:
 
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+2. Otevřete **rozšíření Azure Active Directory** výběrem možnosti **všechny služby** v horní části hlavní navigační nabídky na levé straně.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole zadejte "Azure Active Directory" a vyberte **Azure Active Directory**.
 
-4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
+4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
 
-   *  Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace**.
+   *  Pokud zde požadovanou aplikaci nevidíte, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** na **všechny aplikace**.
 
-6. Vyberte aplikaci, u které jste nakonfigurovali jednotné přihlašování.
+6. Vyberte aplikaci, kterou jste nakonfigurovali s jednotným přihlašováním.
 
-7. Po načtení aplikace klikněte na tlačítko **jednotného přihlašování** z nabídky navigace na levé straně aplikace.
+7. Po načtení aplikace vyberte **jednotné přihlašování** z navigační nabídky aplikace na levé straně.
 
-8. Přejděte do části **podpisový certifikát SAML** a pak klikněte na **Stáhnout** sloupec hodnota. V závislosti na tom, co aplikace vyžaduje konfiguraci jednotného přihlašování, se zobrazí buď možnost stáhnout metadata XML nebo certifikát.
+8. V části přejít na **podpisový certifikát SAML** vyberte **Stáhnout** hodnotu sloupce. V závislosti na tom, co aplikace vyžaduje konfiguraci jednotného přihlašování, se zobrazí buď možnost stáhnout metadata XML nebo certifikát.
 
-Azure AD také poskytuje adresu URL pro získání metadat. Podle tohoto vzoru Získejte adresu URL metadat specifickou pro danou aplikaci:`https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`
+Azure AD taky poskytuje adresu URL pro přístup k metadatům. K získání adresy URL metadat specifické pro aplikaci použijte následující model:`https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`
 
 ## <a name="assign-users-to-the-application"></a>Přiřazení uživatelů k aplikaci
 
-Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle následujících kroků:
+Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků:
 
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
+2. Otevřete **rozšíření Azure Active Directory** výběrem možnosti **všechny služby** v horní části hlavní navigační nabídky na levé straně.
 
-3. Zadejte **"Azure Active Directory**" do vyhledávacího pole filtrovat a vybrat **Azure Active Directory** položky.
+3. Do vyhledávacího pole zadejte "Azure Active Directory" a vyberte **Azure Active Directory**.
 
-4. v navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
+4. Vyberte **podnikové aplikace** z navigační nabídky Azure Active Directory vlevo.
 
-5. Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam všech aplikací.
 
-   * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+   * Pokud zde požadovanou aplikaci nevidíte, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** na **všechny aplikace.**
 
 6. Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
-7. Po načtení aplikace klikněte na **Uživatelé a skupiny** v nabídce navigace na levé straně aplikace.
+7. Po načtení aplikace vyberte **Uživatelé a skupiny** z navigační nabídky na levé straně aplikace.
 
-8. Klikněte na tlačítko **přidat** tlačítko nahoře **uživatelů a skupin** seznamu a otevře **přidat přiřazení** podokně.
+8. Kliknutím na tlačítko **Přidat** v horní části seznamu **uživatelů a skupin** otevřete podokno **Přidat přiřazení** .
 
-9. Klikněte na tlačítko **uživatelů a skupin** selektor z **přidat přiřazení** podokně.
+9. V podokně **Přidat přiřazení** vyberte selektor **Uživatelé a skupiny** .
 
-10. Zadejte **celý název** nebo **e-mailová adresa** uživatele zájem o přiřazení do **hledat podle jména nebo e-mailové adresy** vyhledávacího pole.
+10. Do vyhledávacího pole **jméno nebo e-mailová adresa** zadejte **celé jméno** nebo **e-mailovou adresu** uživatele, kterého chcete přiřadit.
 
-11. Najeďte myší **uživatele** v seznamu zobrazíte **zaškrtávací políčko**. Klikněte na zaškrtávací políčko vedle profilové fotky uživatele nebo logo, které chcete přidat uživatele **vybrané** seznamu.
+11. Pokud chcete zobrazit **zaškrtávací**políčko, najeďte myší na **uživatele** v seznamu. Zaškrtněte políčko vedle fotografie profilu uživatele nebo logo a přidejte uživatele do **vybraného** seznamu.
 
-12. **Volitelné** Pokud chcete **Přidat více než jednoho uživatele**, zadejte do vyhledávacího pole **jméno nebo e** -mailová adresa další **jméno** nebo **e-mailovou adresu** a kliknutím na zaškrtávací políčko přidejte tohoto uživatele do **vybraného** seznamu.
+12. **Volitelné**: Pokud chcete **Přidat více než jednoho uživatele**, zadejte do pole **Hledat podle jména nebo e-mailové adresy** jiné **celé jméno** nebo **e-mailovou adresu** a zaškrtnutím políčka přidejte tohoto uživatele do **vybraného** seznamu.
 
-13. Po dokončení výběru uživatelů, klikněte na tlačítko **vyberte** tlačítko pro přidání do seznamu uživatelů a skupin pro přiřazení k aplikaci.
+13. Až budete s výběrem uživatelů hotovi, vyberte tlačítko **Vybrat** a přidejte je do seznamu uživatelů a skupin, které chcete přiřadit k aplikaci.
 
-14. **Volitelné:** klikněte na tlačítko **vybrat roli** oblasti pro výběr **přidat přiřazení** podokně vyberte roli, kterou chcete přiřadit uživatelům, které jste vybrali.
+14. **Volitelné**: Vyberte výběr **role vybrat** v podokně **Přidat přiřazení** a vyberte roli, kterou chcete přiřadit vybraným uživatelům.
 
-15. Klikněte na tlačítko **přiřadit** tlačítko přiřadit aplikaci do vybraného uživatele.
+15. Vyberte tlačítko **přiřadit** a přiřaďte aplikaci k vybraným uživatelům.
 
 Po krátké době možné ke spouštění těchto aplikací pomocí metod popsaných v části popis řešení uživatele, které jste vybrali.
 
 ## <a name="customizing-the-saml-claims-sent-to-an-application"></a>Přizpůsobení deklarací SAML odeslaných do aplikace
 
-Další informace o tom, jak přizpůsobit deklarace identity atributů SAML odeslané do vaší aplikace, najdete v tématu [mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) .
+Informace o tom, jak přizpůsobit deklarace atributů SAML odeslané do vaší aplikace, najdete [v tématu Mapování deklarací v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Poskytovat jednotné přihlašování do aplikací pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
 
 

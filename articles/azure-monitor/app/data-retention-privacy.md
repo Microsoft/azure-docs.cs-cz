@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991178"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207291"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -100,7 +100,7 @@ Může být exportována vámi a členy týmu a může být zkopírována do jin
 Microsoft Data používá jenom k tomu, aby službu poskytovala.
 
 ## <a name="where-is-the-data-held"></a>Kde jsou uložená data?
-* V USA, Evropě nebo jihovýchodní Asie. Umístění můžete vybrat při vytváření nového prostředku Application Insights. 
+* Umístění můžete vybrat při vytváření nového prostředku Application Insights. [Tady](https://azure.microsoft.com/global-infrastructure/services/?products=all)se dozvíte víc o dostupnosti Application Insights v jednotlivých oblastech.
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Znamená to, že moje aplikace musí být hostována v USA, Evropě nebo jihovýchodní Asie?
 * Ne. Vaše aplikace může běžet kdekoli, a to buď na místních hostitelích, nebo v cloudu.

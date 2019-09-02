@@ -1,6 +1,6 @@
 ---
-title: MapReduce se službou Apache Hadoop v HDInsight
-description: Zjistěte, jak spouštět úlohy MapReduce systému Apache Hadoop v clusterech HDInsight.
+title: MapReduce s Apache Hadoop v HDInsight
+description: Naučte se spouštět úlohy MapReduce na Apache Hadoop v clusterech HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,59 +8,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1bb7a6737115f903391997a5430c32f9a40465f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707963"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207105"
 ---
-# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce se v Apache Hadoop v HDInsight
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce v Apache Hadoop ve službě HDInsight
 
-Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. 
-
-## <a id="whatis"></a>Co je MapReduce
-
-Apache Hadoop MapReduce je software platformě pro psaní úlohy, které zpracovávají velké objemy dat. Vstupní data je rozdělený do bloků nezávislé. Každý blok se zpracovávají paralelně napříč uzly v clusteru. Úlohu MapReduce se skládá ze dvou funkcí:
-
-* **Mapovač**: Zpracovává vstupní data, analyzuje je (obvykle pomocí filtrování a řazení) a generuje řazených kolekcí členů (páry klíč hodnota)
-
-* **Reducer**: Využívá řazených kolekcí členů, protože ho vygeneroval Mapovač a provádí operaci summary, která vytvoří menší, kombinované výsledek z Mapovač dat
-
-Jako příklad úlohy MapReduce počet slova je znázorněn v následujícím diagramu:
-
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
-
-Výstupem této úlohy je počet, kolikrát se každé slovo došlo k chybě v textu.
-
-* Mapovač má každý řádek ze vstupního textu jako vstup a rozdělí na slova. Generuje klíč/hodnota pár pokaždé, když dojde k slovo slova následuje 1. Výstup je řazen před odesláním redukční funkci.
-* Redukční funkci Součet těchto počtů jednotlivé pro každé slovo a vysílá dvojici klíč/hodnota, která obsahuje slovo následované součet jeho výskyty.
-
-MapReduce je možné implementovat v různých jazycích. Java je většina běžných implementací a slouží pro účely ukázky v tomto dokumentu.
-
-## <a name="development-languages"></a>Vývojářské jazyky
-
-Jazyků nebo architektur, které jsou založené na jazyce Java a virtuální počítač Java můžete spustit přímo jako úlohu MapReduce. V příkladu v tomto dokumentu se používá aplikace MapReduce v Javě. Java jiné jazyky, jako je C#, Python nebo samostatné spustitelné soubory, musíte použít **streamování Hadoop**.
-
-Streamování Hadoop komunikuje s mapovací a redukční funkci pomocí standardního vstupu a výstupu STDOUT. Mapovací a redukční funkci Číst data po jednom ze STDIN řádku a zapisovat výstup do STDOUT. Každý řádek čtení nebo, protože ho vygeneroval mapovací a redukční funkci musí být ve formátu páru klíč hodnota oddělené tabulátorem:
-
-    [key]/t[value]
-
-Další informace najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
-
-Příklady použití streamování s HDInsight Hadoop najdete v následujícím dokumentu:
-
-* [Vývoj úloh MapReduce C#](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+Naučte se spouštět úlohy MapReduce v clusterech HDInsight.
 
 ## <a id="data"></a>Ukázková data
 
-HDInsight poskytuje různé příklad datové sady, které jsou uloženy v `/example/data` a `/HdiSamples` adresáře. Tyto adresáře jsou ve výchozím nastavení úložiště pro váš cluster. V tomto dokumentu budeme používat `/example/data/gutenberg/davinci.txt` souboru. Tento soubor obsahuje poznámkových bloků Leonardo da Vinci.
+HDInsight poskytuje různé příklady datových sad, které jsou uložené v `/example/data` adresáři a. `/HdiSamples` Tyto adresáře jsou ve výchozím úložišti pro váš cluster. V tomto dokumentu používáme `/example/data/gutenberg/davinci.txt` soubor. Tento soubor obsahuje poznámkové bloky Leonardo da Vinci.
 
 ## <a id="job"></a>Příklad MapReduce
 
-Příklad MapReduce dokumentů aplikace word count je součástí vašeho clusteru HDInsight. V tomto příkladu se nachází na `/example/jars/hadoop-mapreduce-examples.jar` na výchozí úložiště pro váš cluster.
+Cluster HDInsight obsahuje příklad aplikace MapReduce počet slov. Tento příklad se nachází `/example/jars/hadoop-mapreduce-examples.jar` ve výchozím úložišti pro váš cluster.
 
-Následující kód Java je zdrojem MapReduce aplikace součástí `hadoop-mapreduce-examples.jar` souboru:
+Následující kód Java je zdrojem aplikace MapReduce obsažené v `hadoop-mapreduce-examples.jar` souboru:
 
 ```java
 package org.apache.hadoop.examples;
@@ -134,30 +101,29 @@ public class WordCount {
 }
 ```
 
-Pokyny pro psaní vlastních aplikací MapReduce najdete v následujícím dokumentu:
+Pokyny k psaní vlastních aplikací MapReduce naleznete v následujícím dokumentu:
 
 * [Vývoj aplikací Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-## <a id="run"></a>Spustit MapReduce
+## <a id="run"></a>Spusťte MapReduce.
 
-HDInsight můžete spouštět úlohy HiveQL pomocí různých metod. Použijte následující tabulku k rozhodnutí, která metoda je pro vás nejvhodnější a potom na odkaz pro návod.
+HDInsight může spouštět úlohy HiveQL pomocí různých metod. Pomocí následující tabulky se rozhodněte, která metoda je pro vás nejvhodnější, a pak použijte odkaz na návod.
 
 | **Použít**... | **...a tomu** | ...při to **clusteru operačního systému** | ...from to **klientský operační systém** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop prostřednictvím **SSH** |Linux |Linux, Unix, Mac OS X a Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |Použití příkazu Hadoop přes **SSH** |Linux |Linux, UNIX, Mac OS X nebo Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |Vzdálenou úlohu odešlete pomocí **REST** . |Linux nebo Windows |Linux, UNIX, Mac OS X nebo Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Vzdálená úloha se odešle pomocí **Windows PowerShellu** . |Linux nebo Windows |Windows |
 
 ## <a id="nextsteps"></a>Další kroky
 
-Další informace o práci s daty v HDInsight, najdete v následujících dokumentech:
+Další informace o práci s daty v HDInsight najdete v následujících dokumentech:
 
 * [Vývoj programů Java MapReduce pro HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
+* [Použití Apache Hive se službou HDInsight][hdinsight-use-hive]
 
-* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
-
+* [Použití Apache prasete se službou HDInsight][hdinsight-use-pig]
 
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
@@ -167,5 +133,3 @@ Další informace o práci s daty v HDInsight, najdete v následujících dokume
 
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194262"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207971"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru 
 
@@ -149,9 +149,9 @@ Další informace najdete v tématu [sledování zákaznického využití Azure 
 
 Partnerské centrum využívá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) pro přístup a správu účtu s více uživateli. Služba Azure AD vaší organizace se v rámci procesu registrace automaticky přidruží k vašemu účtu partnerského centra. 
 
-## <a name="manage-users"></a>Správa uživatelů
+## <a name="manage-users"></a>Spravovat uživatele
 
-Oddíl **Uživatelé** v partnerském centru (v části **Nastavení účtu**) vám umožní spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu partnerského centra, pomocí služby Azure AD. Všimněte si, že aby bylo možné spravovat uživatele, musíte být přihlášeni pomocí svého [pracovního účtu](./company-work-accounts.md) (přidruženého TENANTA Azure AD). Pokud chcete spravovat uživatele v rámci jiného pracovního účtu nebo tenanta, budete se muset odhlásit a pak znovu přihlásit jako uživatel s oprávněním **správce** pro tento pracovní účet nebo tenanta. 
+Oddíl **Uživatelé** v partnerském centru (v části **Nastavení účtu**) vám umožní spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu partnerského centra, pomocí služby Azure AD. Aby bylo možné spravovat uživatele, musíte být přihlášeni pomocí svého [pracovního účtu](./company-work-accounts.md) (přidruženého TENANTA Azure AD). Pokud chcete spravovat uživatele v rámci jiného pracovního účtu nebo tenanta, budete se muset odhlásit a pak znovu přihlásit jako uživatel s oprávněním **správce** pro tento pracovní účet nebo tenanta. 
 
 Až budete přihlášeni pomocí svého pracovního účtu (tenant Azure AD), můžete:
 - [Přidat nebo odebrat uživatele](#add-or-remove-users)
@@ -223,7 +223,7 @@ Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, 
 3.  Zobrazí se stránka s potvrzením, která zobrazuje přihlašovací informace pro uživatele, včetně dočasného hesla. Nezapomeňte vytisknout nebo zkopírovat tyto informace a poskytnout ji uživateli, protože po opuštění této stránky nebudete mít přístup k dočasnému heslu.
 
 
-## <a name="manage-groups"></a>Správa skupin
+## <a name="manage-groups"></a>Spravovat skupiny
 
 Skupiny umožňují řídit více rolí uživatelů a oprávnění dohromady.
 
@@ -300,20 +300,19 @@ Pokud vaše aplikace Azure AD čte a zapisuje data v Microsoft Azure AD, bude po
 4.  Pokud chcete vytvořit více klíčů, vyberte **Přidat další klíč**.
 
 
-### <a name="define-user-roles-and-permissions"></a>Definování uživatelských rolí a oprávnění
+## <a name="define-user-roles-and-permissions"></a>Definování uživatelských rolí a oprávnění
 
-Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru. 
+Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru:
 
-|**Role**|**Oprávnění**|
-|----------------------------------|---------------------------------|
-|Správce|– Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daňových a výběrů.|
-|      |– Může spravovat uživatele, role a pracovní účty (klienty).|
-|Vývojář|– Může spravovat a publikovat nabídky|
-|      |– Může zobrazit některé sestavy vydavatelů.|
-|Globální správce|– Není relevantní pro komerční tržiště|
-|Obchodní Přispěvatel|– Není relevantní pro komerční tržiště|
-|Finanční Přispěvatel|– Není relevantní pro komerční tržiště|
-|Obchodník|– Není relevantní pro komerční tržiště|
+- **Manager**
+  - Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daně a výběr
+  - Může spravovat uživatele, role a pracovní účty (klienty).
+- **Developer**
+  - Může spravovat a publikovat nabídky.
+  - Může zobrazit některé sestavy vydavatelů.
+
+> [!NOTE]
+> Globální správce, obchodní přispěvatel, finanční přispěvatel a role trhu se nepoužívají v programu komerčního tržiště a nemají žádná přidružená oprávnění.
 
 Další informace o správě rolí a oprávnění v dalších oblastech partnerského centra, jako je Azure Active Directory (AD), zprostředkovatel Cloud Solution Provider (CSP), ovládací panel dodavatel (CPV), uživatelé typu Host nebo Microsoft Partner Network (MPN), najdete v tématu [přiřazení rolí uživatelů. a oprávnění v partnerském centru](https://docs.microsoft.com/partner-center/permissions-overview).
 
@@ -365,6 +364,6 @@ Když odeberete tenanta, všichni uživatelé, kteří byli přidáni do účtu 
 Pokud jsou k dispozici aktualizace smluv, které vyžadují vaši pozornost, můžou se v horní části této stránky zobrazit **potřebné akce** . Pokud chcete přijmout aktualizovanou smlouvu, nejdřív si přečtěte verzi odkazované smlouvy a pak vyberte **přijmout smlouvu**. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vytvořit novou nabídku SaaS](./create-new-saas-offer.md)

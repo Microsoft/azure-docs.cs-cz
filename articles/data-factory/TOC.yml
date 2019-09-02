@@ -187,6 +187,8 @@
           href: iterative-development-debugging.md
     - name: Konektory
       items:
+        - name: Přehled konektorů
+          href: connector-overview.md
         - name: Webová služba Amazon Marketplace
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
@@ -382,40 +384,40 @@
     - name: Transformace dat
       href: transform-data.md
       items:
+        - name: Aktivita funkcí Azure
+          href: control-flow-azure-function-activity.md
+        - name: Vlastní aktivita
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Aktivita Databricks Jar
+          href: transform-data-databricks-jar.md
+        - name: Aktivita poznámkového bloku Databricks
+          href: transform-data-databricks-notebook.md
+        - name: Aktivita Databricks Python
+          href: transform-data-databricks-python.md
+        - name: Aktivita Data Lake U-SQL
+          href: transform-data-using-data-lake-analytics.md
         - name: Aktivita Hivu služby HDInsight
           href: transform-data-using-hadoop-hive.md
-        - name: Aktivita Pig služby HDInsight
-          href: transform-data-using-hadoop-pig.md
         - name: Aktivita MapReduce služby HDInsight
           href: transform-data-using-hadoop-map-reduce.md
-        - name: Aktivita Streamování služby HDInsight
-          href: transform-data-using-hadoop-streaming.md
+        - name: Aktivita Pig služby HDInsight
+          href: transform-data-using-hadoop-pig.md
         - name: Aktivita Spark služby HDInsight
           href: transform-data-using-spark.md
+        - name: Aktivita Streamování služby HDInsight
+          href: transform-data-using-hadoop-streaming.md
         - name: Aktivita spouštění dávek ML
           href: transform-data-using-machine-learning.md
         - name: Aktivita prostředků aktualizace ML
           href: update-machine-learning-models.md
         - name: Aktivita Uložená procedura
           href: transform-data-using-stored-procedure.md
-        - name: Aktivita Data Lake U-SQL
-          href: transform-data-using-data-lake-analytics.md
-        - name: Aktivita poznámkového bloku Databricks
-          href: transform-data-databricks-notebook.md
-        - name: Aktivita Databricks Jar
-          href: transform-data-databricks-jar.md
-        - name: Aktivita Databricks Python
-          href: transform-data-databricks-python.md
-        - name: Vlastní aktivita
-          href: transform-data-using-dotnet-custom-activity.md
         - name: Propojené služby Compute
           href: compute-linked-services.md
     - name: Tok řízení
       items:
         - name: Aktivita připojení proměnné
           href: control-flow-append-variable-activity.md
-        - name: Aktivita funkcí Azure
-          href: control-flow-azure-function-activity.md
         - name: Aktivita spuštění toku dat
           href: control-flow-execute-data-flow-activity.md
         - name: Aktivita spuštění kanálu
@@ -584,6 +586,8 @@
       items:
         - name: Řešení potíží s aktivitami
           href: data-factory-troubleshoot-guide.md
+        - name: Řešení potíží s konektory
+          href: connector-troubleshoot-guide.md
         - name: Řešení potíží se správou Azure-SSIS IR
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR

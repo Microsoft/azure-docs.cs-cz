@@ -1,46 +1,83 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke správě podnikových uživatelů – Azure Active Directory
+summary: Služby pro správu uživatelů služby Azure AD, jako jsou skupiny a přiřazení rolí správců, pomáhají rychleji zvládnout nejdůležitější úlohy. Využijte možnost přiřazovat licence a přístup aplikací ke skupinám nebo uživatelům nebo delegovat oprávnění pro distribuci úlohy správy identit.
 metadata:
-  document_id: null
-  title: 'Dokumentace k uživatelům, skupinám, rolím a licencím služby Azure Active Directory'
-  description: 'Naučte se využívat uživatele, skupiny, role a licence ke správě ověřování s využitím cloudových služeb Azure ve vašem tenantovi.'
+  title: Dokumentace k uživatelům, skupinám, rolím a licencím služby Azure Active Directory
+  description: Naučte se využívat uživatele, skupiny, role a licence ke správě ověřování s využitím cloudových služeb Azure ve vaší organizaci.
   services: active-directory
-  ms.subservice: users-groups-roles
-  author: curtand
-  manager: mtillman
   ms.service: active-directory
+  ms.subservice: users-groups-roles
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 01/31/2019
+  ms.date: 08/28/2019
+  author: curtand
   ms.author: curtand
-abstract:
-  description: 'Nástroje pro správu uživatelů služby Azure AD, jako jsou skupiny a přiřazení rolí správců, vám pomůže rychleji zvládnout nejdůležitější úlohy a zajistit možnost růstu. Licence nebo přístup k aplikacím SaaS můžete místo jednotlivců přiřazovat celým skupinám. Můžete také delegovat oprávnění a distribuovat tak režii spojenou se správou identit Azure AD.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Naučte se používat nástroje pro správu ve službě Azure Active Directory
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Přidání uživatelů do Azure AD</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Přiřazení licencí k uživatelům</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Nastavení konce platnosti pro skupiny vytvořené uživatelem</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Nastavení zásad pojmenování pro skupiny vytvořené uživatelem</a>
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: Další informace o dynamickém naplňování skupin ve službě Azure Active Directory
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Vytvoření dynamicky naplněné skupiny</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Referenční odkazy
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Rutiny Azure AD PowerShellu</a></p>'
+  ms.openlocfilehash: 4689a573bf8d58aa9734af97ea66f78ab4e5707a
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126927"
+landingContent:
+- title: Informace o uživatelích, skupinách, rolích a licencích
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Uživatelé, skupiny, licencování a role pro velké organizace
+      url: directory-overview-user-model.md
+    - text: Přehled vlastních rolí
+      url: roles-custom-overview.md
+  - linkListType: concept
+    links:
+    - text: Delegování správy
+      url: roles-concept-delegation.md
+    - text: Porovnání rolí Azure RBAC a rolí správce Azure AD
+      url: https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Přidání uživatele
+      url: https://review.docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: Nastavení zásad vypršení platnosti pro skupiny
+      url: groups-quickstart-expiration.md
+    - text: Přiřazení licencí k uživatelům
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: Přiřazení rolí správce Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přiřazení rolí s využitím PowerShellu
+      url: roles-assign-powershell.md
+    - text: Přiřazení rolí s využitím Graph API
+      url: roles-assign-graph.md
+    - text: Delegování rolí podle úloh
+      url: roles-delegate-by-task.md
+    - text: Delegování správy aplikací
+      url: roles-delegate-app-roles.md
+- title: Přiřazení licencí
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Licence pro skupinu uživatelů
+      url: licensing-groups-assign.md
+    - text: Příklady licencování PowerShellu
+      url: licensing-ps-examples.md
+- title: Správa skupin
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření dynamické skupiny
+      url: groups-create-rule.md
+    - text: Nastavení skupiny v PowerShellu
+      url: groups-settings-v2-cmdlets.md
+    - text: Nastavení zásad pojmenování pro skupiny
+      url: groups-naming-policy.md
+- title: Přidání domén
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání vlastního názvu domény
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: Správa vlastních názvů domén
+      url: domains-manage.md

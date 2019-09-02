@@ -1,26 +1,20 @@
 ---
-title: Úvod do Azure Data Science Virtual Machine pro Linux a Windows | Microsoft Docs
+title: Co je Azure Data Science Virtual Machine
 description: Důležité analytické scénáře a komponenty pro virtuální počítače pro datové vědy pro Windows a Linux
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
-ms.author: vijetaj
-ms.openlocfilehash: 22192d67a946f9f466848b65b9cd763b16e6c5f0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3295a59ee4496d332f0d886c89ca900ab6b4bcd1
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099372"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191907"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
 

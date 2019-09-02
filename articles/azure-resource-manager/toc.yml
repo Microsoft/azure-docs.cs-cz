@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Koncepty
   items:
+    - name: Nasazení šablon
+      href: template-deployment-overview.md
     - name: Struktura souborů šablon
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: Vytváření šablon
       items:
+        - name: Nástroj pro vývoj – VS Code
+          href: resource-manager-tools-vs-code.md
         - name: Vytvoření šablony
           href: how-to-create-template.md
         - name: Typ a název podřízeného prostředku

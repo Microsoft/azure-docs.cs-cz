@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: Místní konfigurace brány firewall
           href: on-premises-firewall-configuration.md
+        - name: Přístup ke klientovi vSphere
+          href: vcenter-access.md
         - name: Správa uzlů
           items:
             - name: Zřizování uzlů
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: Nastavení připojení sítě VPN
               href: vpn-gateway.md
-            - name: Získání informací o partnerských uzlech pro připojení virtuální sítě ke CloudSimple
+            - name: Připojení virtuální sítě ke CloudSimple
               href: virtual-network-connection.md
-            - name: Přístup ke zvýšení úrovně klientských oprávnění vSphere pro úlohy správy
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: Správa účtů na portálu CloudSimple
           items:
             - name: Zobrazení přehledu účtů
               href: account.md
             - name: Zobrazení seznamu uživatelů
               href: users.md
-            - name: Nastavení připojení virtuální sítě k privátnímu cloudu
-              href: virtual-network-connection.md
-        - name: Nastavení virtuálních počítačů VMware pro privátní cloud
+        - name: Vytvoření virtuálních počítačů CloudSimple
           items:
-            - name: Vytvoření virtuálního počítače v Azure
+            - name: Vytvoření virtuálního počítače CloudSimple v Azure
               href: azure-create-vm.md
-            - name: Správa virtuálních počítačů v Azure
+            - name: Správa virtuálních počítačů CloudSimple v Azure
               href: azure-manage-vm.md
     - name: Návody
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: Sítě privátního cloudu
           items:
-            - name: Připojení VPN mezi místním a privátním cloudem
+            - name: Připojení VPN k privátnímu cloudu
               href: set-up-vpn.md
             - name: Místní síťové připojení s využitím ExpressRoute
               href: on-premises-connection.md
             - name: Připojení virtuální sítě Azure s využitím ExpressRoute
               href: azure-expressroute-connection.md
+            - name: Konfigurace překladu názvů DNS
+              href: on-premises-dns-setup.md
         - name: Platforma VMware
           items:
             - name: Seznámení s modelem oprávnění privátního cloudu

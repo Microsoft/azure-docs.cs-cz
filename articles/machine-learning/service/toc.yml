@@ -145,17 +145,6 @@
         - name: Přidání a registrace datových sad
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: Příprava s využitím azureml.dataprep
-          items:
-            - name: Načtení dat
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: Transformace dat
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: Zápis dat
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
     - name: Trénování modelů
       items:
         - name: Nastavení prostředí trénování
@@ -347,6 +336,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: Rozhodovací les s více třídami
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Posílený rozhodovací strom s několika třídami
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: Zprůměrovaný perceptron se dvěma třídami
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Rozhodovací les se dvěma třídami

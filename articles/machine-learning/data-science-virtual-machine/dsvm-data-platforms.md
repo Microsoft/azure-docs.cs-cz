@@ -10,76 +10,76 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e0ba013f7739e7ade717136cb5507af630263a18
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5dbaf969420f066698a07b8d137d2ba44fc99080
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192209"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208135"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Datové platformy podporované na virtuální počítač pro datové vědy
 
-Na Data virtuálního počítače VĚDY umožňuje sestavovat analýzy pro širokou škálu datových platformách. Kromě rozhraní pro platformy vzdálených dat datové VĚDY poskytuje místní instanci pro rychlý vývoj a vytváření prototypů. 
+Pomocí Data Science Virtual Machine (DSVM) můžete vytvářet analýzy pro nejrůznější datové platformy. Kromě rozhraní pro platformy vzdálených dat datové VĚDY poskytuje místní instanci pro rychlý vývoj a vytváření prototypů.
 
-Následují nástroji datové platformy podporované na datové VĚDY. 
+V DSVM jsou podporovány následující nástroje datové platformy.
 
 ## <a name="sql-server-2016-developer-edition"></a>SQL Server 2016 Developer Edition
 
 | | |
 | ------------- | ------------- |
 | Co je to?   | Instance místní relační databáze      |
-| Podporované DSVM edice      | Windows      |
+| Podporované edice DSVM      | Windows      |
 | Typické použití      | Rychlý vývoj místně s menší datové sady <br/> Využívejte jazyk R v databázi   |
-| Odkazy na ukázky      |    Malý vzorek New York City datové sady je načten do SQL database `nyctaxi`. <br/> Ukázka Jupyter s Microsoft R a analýza v databázi lze najít na:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| Související nástroje na datové VĚDY       | SQL Server Management Studio <br/> Ovladače ODBC/JDBC<br/> modul pyodbc RODBC<br />Apache Drill      |
+| Odkazy na ukázky      |    Do databáze SQL se načte malý vzorek datové sady měst v New Yorku:<br/>  `nyctaxi` <br/> Ukázka Jupyter znázorňující Microsoft Machine Learning Server a analýzy v databázi najdete na adrese:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
+| Související nástroje na DSVM       | SQL Server Management Studio <br/> Ovladače ODBC/JDBC<br/> modul pyodbc RODBC<br />Apache Drill      |
 
 > [!NOTE]
-> Edice SQL Server 2016 developer jde použít jenom pro vývojové a testovací účely. Musíte mít licenci nebo jeden z virtuálních počítačů SQL serveru ke spuštění v produkčním prostředí. 
+> Edice SQL Server 2016 Developer Edition lze použít pouze pro účely vývoje a testování. Musíte mít licenci nebo jeden z virtuálních počítačů SQL serveru ke spuštění v produkčním prostředí.
 
 
-### <a name="setup"></a>Nastavení
+### <a name="setup"></a>Instalace
 
-Databázový server je už nakonfigurovaná a souvisejících služeb Windows na SQL Server (například `SQL Server (MSSQLSERVER)`) jsou nastaveny na automatické spuštění. Pouze manuální krok běžet je umožnit analýza v databázi pomocí Microsoft R. Můžete to provést spuštěním následujícího příkazu jako jeden čas akce v SQL Server Management Studio (SSMS) po přihlásíte jako správce počítači otevřete "Nový dotaz" v aplikaci SSMS, ujistěte se, vybraná databáze není `master` a potom spusťte: 
+Databázový server je již předem nakonfigurován a služby systému Windows, které souvisejí s SQL Server (například `SQL Server (MSSQLSERVER)`), jsou nastaveny na automatické spouštění. Jediný krok ruční krok zahrnuje povolení analýzy v databázi pomocí Microsoft Machine Learning Server. To můžete provést tak, že spustíte následující příkaz jako jednorázovou akci v SQL Server Management Studio (SSMS). Spusťte tento příkaz po přihlášení jako správce počítače, otevřete nový dotaz v SSMS a ujistěte se, že vybraná databáze je `master`:
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
-        (Please replace the %COMPUTERNAME% with your VM name)
+        (Replace %COMPUTERNAME% with your VM name.)
        
-Chcete-li spustit SQL Server Management Studio, můžete vyhledat "SQL Server Management Studio" v seznamu programů nebo pomocí Windows Search můžete najít a spustit ho. Po zobrazení výzvy k zadání pověření, zvolte možnost "Windows Authentication" a použijte název počítače nebo ```localhost``` v názvu SQL serveru. 
+Pokud chcete spustit SQL Server Management Studio, můžete v seznamu programů vyhledat "SQL Server Management Studio" nebo ho vyhledat a spustit pomocí služby Windows Search. Po zobrazení výzvy k zadání přihlašovacích údajů vyberte **ověřování systému Windows** a použijte ```localhost``` název počítače nebo v poli **SQL Server název** .
 
-### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?  
+### <a name="how-to-use-and-run-it"></a>Jak použít a spustit
 
-Databázový server pomocí výchozí instance databáze je ve výchozím nastavení automaticky spuštěn. Nástroje, jako je SQL Server Management Studio na virtuálním počítači můžete použít pro přístup k databázi systému SQL Server místně. Účet místní správci mají přístup správce v databázi. 
+Ve výchozím nastavení se databázový server s výchozí instancí databáze spustí automaticky. Nástroje, jako je SQL Server Management Studio na virtuálním počítači můžete použít pro přístup k databázi systému SQL Server místně. Účty místních správců mají v databázi přístup správce.
 
-Také obsahuje datové VĚDY s ovladači ovladače rozhraní ODBC a JDBC ke komunikaci s SQL Server, Azure SQL Database a Azure SQL Data Warehouse z aplikace napsané v různých jazycích, včetně Python, r 
+Součástí DSVM jsou taky ovladače ODBC a JDBC, které vám pomůžou komunikovat s SQL Server, databázemi SQL Azure a Azure SQL Data Warehouse z aplikací napsaných v několika jazycích, včetně Pythonu a Machine Learning Server.
 
-### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Jak ho nakonfigurovat či nainstalovaná na datové VĚDY? 
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak je nakonfigurovaná a nainstalovaná na DSVM? 
 
-SQL Server je nainstalován ve standardním způsobem. Je možné najít v `C:\Program Files\Microsoft SQL Server`. Instance R v databázi se nachází v umístění `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. Datové VĚDY také má nainstalovaný na instanci R Server samostatného `C:\Program Files\Microsoft\R Server\R_SERVER`. Tyto instance dvou R Nesdílejte knihoven.
+ SQL Server se instaluje standardním způsobem. Je možné najít v `C:\Program Files\Microsoft SQL Server`. Instance Machine Learning Server v databázi se nachází na adrese `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES`. DSVM má také samostatnou samostatnou instanci Machine Learning Server, která je nainstalována v `C:\Program Files\Microsoft\R Server\R_SERVER`. Tyto dvě instance Machine Learning Server nesdílejí knihovny.
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (samostatně)
 
 | | |
 | ------------- | ------------- |
-| Co je to?   | (Jeden uzel v procesu) samostatná Oblíbené platformy Apache Spark, systém pro rychlé rozsáhlé zpracování dat a strojové učení     |
-| Podporované DSVM edice      | Linux <br /> Windows (experimentální)      |
-| Typické použití      | * Rychlý vývoj aplikací Spark/PySpark místně s menší datové sady a později ji nasadit na velkých clusterech Spark, jako je například Azure HDInsight<br/> * Testování kontextu Sparku Microsoft R serveru <br />* Používat ve SparkML nebo společnosti Microsoft open source [MMLSpark](https://github.com/Azure/mmlspark) knihovny k sestavení aplikací ML  |
-| Odkazy na ukázky      |    Jupyter ukázka: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft R Server (kontextu Spark): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| Související nástroje na datové VĚDY       | PySpark, Scala<br/>Jupyter (Spark/PySpark jader)<br/>Microsoft R Server, SparkR, Sparklyr <br />Apache Drill      |
+| Co je to?   | Samostatná instance pro samostatnou Apache Spark platformu (jeden uzel v procesu); systém pro rychlé a rozsáhlé zpracování dat a strojové učení     |
+| Podporované edice DSVM      | Linux <br /> Windows (experimentální)      |
+| Typické použití      | * Rychlý vývoj aplikací Spark/PySpark v místním prostředí s menší datovou sadou a novějším nasazením ve velkých clusterech Spark, jako je Azure HDInsight<br/> * Test Microsoft Machine Learning Server – kontext Sparku <br />* K sestavování aplikací ML použijte knihovnu [MMLSpark](https://github.com/Azure/mmlspark) open source v SparkML nebo Microsoftu. |
+| Odkazy na ukázky      |    Jupyter ukázka: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (kontext Spark):/dsvm/samples/MRS/MRSSparkContextSample.R |
+| Související nástroje na DSVM       | PySpark, Scala<br/>Jupyter (Spark/PySpark jader)<br/>Microsoft Machine Learning Server, SPARKER, Sparklyr <br />Apache Drill      |
 
-### <a name="how-to-use-it"></a>Jak jej používat
-Spark můžete spustit odesláním Sparkových úloh v příkazovém řádku s `spark-submit` nebo `pyspark` příkazy. Poznámkový blok Jupyter můžete vytvořit také tak, že vytvoříte nový poznámkový blok s jádra Spark. 
+### <a name="how-to-use-it"></a>Jak ji použít
+Úlohy Spark můžete odeslat na příkazovém řádku spuštěním `spark-submit` příkazu nebo. `pyspark` Poznámkový blok Jupyter můžete vytvořit také tak, že vytvoříte nový poznámkový blok s jádra Spark.
 
-Můžete použít Spark z R pomocí knihovny jako SparkR, Sparklyr nebo Microsoft R serveru, které jsou k dispozici na datové VĚDY. Zobrazit odkazy na ukázky v předchozí tabulce. 
+Spark z jazyka R lze použít pomocí knihoven jako Spark, Sparklyr a Microsoft Machine Learning Server, které jsou k dispozici na DSVM. Zobrazit odkazy na ukázky v předchozí tabulce.
 
 > [!NOTE]
-> Microsoft R serveru spuštěn v kontextu Spark DSVM je podporována pouze v edici Ubuntu Linux DSVM. 
+> Spuštění Microsoft Machine Learning Server v kontextu Sparku DSVM je podporováno pouze v edici Ubuntu Linux DSVM.
 
 
 
-### <a name="setup"></a>Nastavení
-Před spuštěním v kontextu Sparku Microsoft R serveru na Ubuntu Linuxu DSVM edition, je potřeba jeden čas instalace krok umožňující místní Hadoop HDFS a Yarn instance jednoho uzlu. Ve výchozím nastavení služby Hadoop jsou nainstalované ale deaktivovány datové VĚDY. Chcete-li ji povolit, je třeba spustit následující příkazy jako uživatel root při prvním:
+### <a name="setup"></a>Instalace
+Před spuštěním v kontextu Sparku v Microsoft Machine Learning Server na edici Ubuntu Linux DSVM je nutné provést jednorázový krok nastavení, který povolí místní jeden uzel Hadoop HDFS a instanci příz. Ve výchozím nastavení služby Hadoop jsou nainstalované ale deaktivovány datové VĚDY. Pokud je chcete povolit, spusťte následující příkazy jako první při prvním:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
     cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
@@ -89,15 +89,21 @@ Před spuštěním v kontextu Sparku Microsoft R serveru na Ubuntu Linuxu DSVM e
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop můžete zastavit a souvisejících služeb, když už nejsou potřeba spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` ukázka ukazuje, jak vyvíjet a testovat paní ve vzdálené kontextu Spark (což je samostatné instanci Spark na datové VĚDY), je poskytovaná a k dispozici v `/dsvm/samples/MRS` adresář. 
+Služby související se systémem Hadoop můžete zastavit, pokud je již nepotřebujete spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```nástroje.
+
+Ukázka, která ukazuje, jak vyvíjet a testovat paní ve vzdáleném kontextu Spark (což je samostatná instance Spark na DSVM), je k dispozici v `/dsvm/samples/MRS` adresáři.
 
 
-### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Jak ho nakonfigurovat či nainstalovaná na datové VĚDY? 
+### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>Jak je nakonfigurovaná a nainstalovaná na DSVM? 
 |Platforma|Nainstalujte umístění ($SPARK_HOME)|
 |:--------|:--------|
 |Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Knihovny pro přístup k datům z objektů Blob v Azure nebo Azure Data Lake storage (ADLS) a použití knihovny MMLSpark strojového učení od Microsoftu je předinstalován v $SPARK_HOME/JAR. Tyto kromě souborů JAR jsou automaticky načteny při spuštění Sparku. Ve výchozím nastavení používá Spark data na místním disku. Pro instanci Spark na přístup k datům uloženým na objektů blob v Azure nebo ADLS datové VĚDY je nutné vytvořit a nakonfigurovat `core-site.xml` soubor založený na šabloně v $SPARK_HOME/conf/core-site.xml.template (Pokud je zástupných symbolů pro objekt Blob a ADLS Konfigurace) se správnými přihlašovacími údaji do objektů blob v Azure a Azure Data Lake Storage. Najít další podrobný postup k vytvoření přihlašovacích údajů služby ADLS [tady](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Jakmile přihlašovací údaje pro Azure blob nebo ADLS byly zadány v souboru core-site.xml, odkazovat lze data uložená v těch zdrojích se identifikátor URI předponu wasb: / / nebo adl: / /. 
+Knihovny pro přístup k datům ze služby Azure Blob Storage nebo Azure Data Lake Storage pomocí knihoven strojového učení Microsoft MMLSpark jsou předinstalované v $SPARK _HOME/jar. Tyto kromě souborů JAR jsou automaticky načteny při spuštění Sparku. Ve výchozím nastavení používá Spark data na místním disku. 
+
+Aby instance Spark na DSVM mohla získat přístup k datům uloženým ve službě BLOB Storage nebo Azure Data Lake Storage, je nutné vytvořit a `core-site.xml` nakonfigurovat soubor na základě šablony nalezené v $Spark _home/conf/Core-site. XML. template. Musíte mít také příslušné přihlašovací údaje pro přístup k úložišti objektů BLOB a Azure Data Lake Storage. (Všimněte si, že soubory šablon používají zástupné symboly pro úložiště objektů BLOB a Azure Data Lake Storage konfigurace.)
+
+Podrobnější informace o vytváření přihlašovacích údajů služby Azure Data Lake Storage najdete v tématu [ověřování pomocí Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Po zadání přihlašovacích údajů pro úložiště objektů BLOB nebo Azure Data Lake Storage do souboru Core-site. XML můžete odkazovat na data uložená v těchto zdrojích prostřednictvím předpony identifikátoru URI wasb://nebo adl://.
 

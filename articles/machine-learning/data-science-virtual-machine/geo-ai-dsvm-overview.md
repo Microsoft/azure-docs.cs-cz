@@ -1,30 +1,23 @@
 ---
-title: Virtuální počítač datové vědy přehled geografickou umělou inteligenci
-titleSuffix: Azure
-description: Virtuální počítač geografickou umělou inteligencí datové vědy poskytuje ArcGIS Pro pro práci s zeměpisné údaje. Poskytuje taky Python, R a sady pro datové vědy pro práci s Machine Learningem a umělou logikou (AI).
+title: Co je geograficky umělá inteligentní funkce
+titleSuffix: Azure Data Science Virtual Machine
+description: Geografické umělé Data Science Virtual Machine inteligentních funkcí poskytuje ArcGIS pro pro práci s geografickými daty a také s Pythonem, R a Toolkity pro datové vědy pro práci s ML a AI.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172871"
+ms.locfileid: "70195597"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Úvod do virtuálního počítače geografickou umělou inteligencí datové vědy
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co je geograficky umělá Data Science Virtual Machine inteligentních inteligentních funkcí?
 
 Geografické umělé Data Science Virtual Machine inteligentních analýz (označované také jako geografické AI Data Science VM nebo Geo-DSVM) poskytují možnosti geoprostorové analýzy z Azure Data Science Virtual Machine (DSVM). Konkrétně tento virtuální počítač rozšiřuje sady nástrojů AI a data vědu v [DSVM](overview.md) přidáním špičkového geografického informačního systému [ARCGIS pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) od ersi.
 

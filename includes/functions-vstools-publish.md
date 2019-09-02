@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a0cf557cec0f20d257c3c70290e2d74f077d881a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593803"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70197120"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
@@ -25,7 +25,7 @@ ms.locfileid: "68593803"
     | ------------ |  -------------------------------------------------- |
     | **Plán spotřeby Azure Functions** |   Když publikujete projekt do aplikace Function App, která běží v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), platíte jenom za provádění vaší aplikace Functions. Jiné plány hostování účtují vyšší náklady. Další informace najdete v tématu [škálování Azure functions a hostování](../articles/azure-functions/functions-scale.md). | 
     | **Vytvořit nový** | V Azure se vytvoří nová aplikace Function App se souvisejícími prostředky. Pokud zvolíte **Vybrat existující**, soubory z místního projektu přepíší všechny soubory ve stávající aplikaci funkcí v Azure. Tuto možnost použijte pouze v případě, že znovu publikujete aktualizace stávající aplikace funkcí. |
-    | **Spustit ze souboru balíčku** | Aplikace Function App se nasazuje pomocí funkce [nasazení zip](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) s povoleným režimem [spuštění z balíčku](../articles/azure-functions/run-functions-from-deployment-package.md) . Toto je doporučený způsob spouštění vašich funkcí, což vede k lepšímu výkonu. |
+    | **Spustit ze souboru balíčku** | Aplikace Function App se nasazuje pomocí funkce [nasazení zip](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) s povoleným režimem [spuštění z balíčku](../articles/azure-functions/run-functions-from-deployment-package.md) . Toto je doporučený způsob spouštění vašich funkcí, což vede k lepšímu výkonu. Pokud tuto možnost nepoužíváte, ujistěte se, že jste před publikováním do Azure zastavili spuštění projektu Function App v místním prostředí. |
 
 
 3. Vyberte **Publikovat**. Pokud jste se ještě přihlásili ke svému účtu Azure ze sady Visual Studio, vyberte **Přihlásit**se. Můžete si také vytvořit bezplatný účet Azure.

@@ -1,47 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Základní dokumentace ke službě Azure Active Directory
+summary: Seznamte se se základními koncepty a procesy služby Azure Active Directory (Azure AD) včetně toho, jak vytvářet základní prostředí, uživatele a skupiny pro zahájení práce.
 metadata:
-  document_id: null
   title: Základní dokumentace ke službě Azure Active Directory
-  description: 'Přečtěte si o základních konceptech a procesech, které jsou k dispozici při používání služby Azure Active Directory.'
-  services: active-directory
-  ms.subservice: fundamentals
-  author: msaburnley
+  description: Seznamte se se základními koncepty a procesy služby Azure Active Directory (Azure AD) včetně toho, jak vytvářet základní prostředí, uživatele a skupiny pro zahájení práce.
   manager: daveba
-  ms.service: active-directory
-  ms.topic: landing-page
-  ms.date: 09/07/2018
   ms.author: ajburnle
-abstract:
-  description: 'Seznamte se se základními koncepty a procesy služby Azure Active Directory (Azure AD), včetně toho, jak vytvářet základní uživatele a skupiny a jak vytvořit základní prostředí pro zahájení práce.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Přečtěte si, jak začít pracovat s portálem Azure Active Directory.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: Přístup ke službě Azure AD a vytvoření tenanta
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: Zobrazení skupin a členů
-            href: active-directory-groups-view-azure-portal.md
-  - title: Podrobní průvodci
-    items:
-      - type: paragraph
-        text: Další informace o provádění základních úloh a jejich nastavení ve vašem prostředí Azure Active Directory
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrace do Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Jak přidat vlastní název domény</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Jak vytvořit základní skupinu a přidat členy</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">přidat vlastníky skupiny</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Jak přidat nového uživatele</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Jak uživatelům přiřadit role</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Jak uživatelům přiřadit licence</a>
+  ms.collection: na
+  ms.date: 08/27/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124896"
+landingContent:
+- title: Informace o Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Představení služby Azure Active Directory
+      url: active-directory-whatis.md
+    - text: Novinky ve službě Azure Active Directory
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Architektura Azure AD
+      url: active-directory-architecture.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Přístup k portálu a vytvoření tenanta
+      url: active-directory-access-create-new-tenant.md
+    - text: Zobrazení skupin s přiřazenými členy
+      url: active-directory-groups-view-azure-portal.md
+- title: Vytvoření účtu Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registrace pro edice Azure Active Directory Premium
+      url: active-directory-get-started-premium.md
+    - text: Registrace do Azure AD jako organizace
+      url: sign-up-organization.md
+    - text: Přidání vlastního názvu domény
+      url: add-custom-domain.md
+- title: Vytvoření skupiny v Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření základní skupiny a přidání členů
+      url: active-directory-groups-create-azure-portal.md
+    - text: Přidání nebo odebrání vlastníků skupin
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: Přidání uživatelů a přiřazení jejich rolí a licencí
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání nebo odstranění uživatelů
+      url: add-users-azure-active-directory.md
+    - text: Přiřazení licencí k uživatelům
+      url: license-users-groups.md

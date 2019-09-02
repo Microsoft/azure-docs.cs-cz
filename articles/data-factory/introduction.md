@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/11/2018
-ms.openlocfilehash: 6688fa6bc3180ef878992e1e06b0ac6e90f27ee2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 985d38b75ca99e85c8b066427ecea9eb4d3e90f2
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141538"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194450"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -52,7 +52,7 @@ Prvním krokem při sestavování systému vytváření informací je připojen�
 
 Bez služby Data Factory musí podniky sestavovat vlastní komponenty pro přesun dat nebo vyvíjet vlastní služby pro integraci a zpracování těchto zdrojů dat. Integrace a údržba takových systémů je nákladná a složitá. Kromě toho často postrádají monitorování a upozorňování na podnikové úrovni a ovládací prvky, které může nabídnout plně spravovaná služba.
 
-Se službou Data Factory můžete pomocí [aktivity kopírování](copy-activity-overview.md) v datovém kanálu přesouvat data z místních i cloudových úložišť dat do centralizovaného úložiště v cloudu pro účely další analýzy. Například můžete shromažďovat data v Azure Data Lake Store a později je transformovat pomocí výpočetní služby Azure Data Lake Analytics. Data můžete shromažďovat i ve službě Azure Blob Storage a později je transformovat pomocí clusteru Azure HDInsight Hadoop.
+Se službou Data Factory můžete pomocí [aktivity kopírování](copy-activity-overview.md) v datovém kanálu přesouvat data z místních i cloudových úložišť dat do centralizovaného úložiště v cloudu pro účely další analýzy. Data můžete například shromažďovat v Azure Data Lake Storage a později je transformovat pomocí výpočetní služby Azure Data Lake Analytics. Data můžete shromažďovat i ve službě Azure Blob Storage a později je transformovat pomocí clusteru Azure HDInsight Hadoop.
 
 ### <a name="transform-and-enrich"></a>Transformace a rozšíření
 Jakmile budou data v centralizovaném úložišti dat v cloudu, můžete shromážděná data zpracovat nebo transformovat pomocí výpočetních služeb, jako je HDInsight Hadoop, Spark, Data Lake Analytics a Machine Learning. Budete chtít spolehlivě produkovat transformovaná data podle udržitelného a řízeného plánu, abyste mohli do produkčních prostředí dodávat důvěryhodná data.

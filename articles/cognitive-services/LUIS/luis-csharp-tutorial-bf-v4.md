@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560659"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207328"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: Použití robota webové aplikace s povoleným Language Understanding vC#
 
@@ -54,7 +54,7 @@ Použijte C# k sestavení robota pro chat integrovaný s jazykem porozumění (L
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
-    |Plán služby App Service / umístění|Neměňte z poskytnuté výchozí hodnoty.|
+    |Plán/umístění služby App Service|Neměňte z poskytnuté výchozí hodnoty.|
     |Application Insights|Neměňte z poskytnuté výchozí hodnoty.|
     |ID a heslo aplikace od Microsoftu|Neměňte z poskytnuté výchozí hodnoty.|
 
@@ -80,7 +80,7 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |--|--|
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
-|Žádný|Cokoli mimo doménu aplikace|
+|Žádné|Cokoli mimo doménu aplikace|
 
 ## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
 
@@ -347,7 +347,7 @@ V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web
 
 1. V emulátoru bot zarezervujte let zadáním následujících utterance: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 
@@ -360,7 +360,7 @@ V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na další [ukázky](https://github.com/microsoft/botframework-solutions) s konverzací roboty. 
 

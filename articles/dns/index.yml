@@ -1,94 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Azure DNS
+### YamlMime:Landing
+title: Dokumentace k Azure DNS
+summary: Naučte se používat Azure DNS. Šablony Rychlý start, kurzy, ukázky a další materiály ukazují, jak nastavit a spravovat záznamy a zóny DNS pro názvy domén.
 metadata:
-  title: Dokumentace ke službě Azure DNS
-  meta.description: Learn how to manage your DNS records using Azure Domain Name System. Documentation shows how to set up and manage DNS zones and records for domain names.
+  title: Dokumentace k Azure DNS
+  description: Naučte se používat Azure DNS. Šablony Rychlý start, kurzy, ukázky a další materiály ukazují, jak nastavit a spravovat záznamy a zóny DNS pro názvy domén.
   services: dns
-  author: KumudD
-  manager: jeconnoc
-  layout: LandingPage
-  ms.assetid: na
   ms.service: dns
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 6/13/2018
-  ms.author: kumud
-abstract:
-  description: 'Naučte se používat Azure DNS. Šablony Rychlý start, kurzy, ukázky a další materiály ukazují, jak nastavit a spravovat záznamy a zóny DNS pro názvy domén.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Naučíte se vytvářet záznamy a zóny DNS pro názvy domén.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: portál Azure
-            href: /azure/dns/dns-getstarted-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/dns/dns-getstarted-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: /azure/dns/dns-getstarted-cli
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučíte se hostovat domény v Azure DNS, vytvářet vlastní záznamy DNS pro webovou aplikaci s využitím Azure DNS a vytvářet privátní zónu a záznamy DNS.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Hostování vaší domény v Azure DNS</a>
-          - html: <a href="/azure/dns/dns-web-sites-custom-domain">Vytvoření vlastních záznamů DNS pro webovou aplikaci</a>
-          - html: <a href="/azure/dns/private-dns-getstarted-powershell">Vytvoření privátní zóny a záznamu DNS</a>
-          - html: <a href="/azure/dns/tutorial-alias-pip">Konfigurace záznamu aliasu s odkazem na veřejnou IP adresu Azure</a>
-          - html: <a href="/azure/dns/tutorial-alias-tm">Konfigurace záznamu aliasu pro podporu názvů kořenových domén bez subdomén v Traffic Manageru</a>
-          - html: <a href="/azure/dns/tutorial-alias-rr">Konfigurace záznamu aliasu pro záznamy zón</a>
-  - title: Bezplatné školicí video od Pluralsightu
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Správce Azure
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Architekt řešení Azure
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: Správa Azure pro správce AWS
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázky skriptů pro běžné úlohy
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dns/cli-samples">Azure CLI</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
-          - title: Jazyky
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.dns">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/dns/">Reference k rozhraní REST API</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 08/29/2019
+  ms.openlocfilehash: be93b43a72d8a9b33b75abafe15abf65ab8fb58a
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126036"
+landingContent:
+- title: Další informace o službě Azure DNS
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure DNS?
+      url: dns-overview.md
+- title: Vytvoření záznamu a zóny Azure DNS
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Vytvoření záznamu a zóny Azure DNS s využitím webu Azure Portal
+      url: dns-getstarted-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Hostování domény v Azure DNS
+      url: dns-delegate-domain-azure-dns.md
+- title: Nasazení privátní zóny DNS
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Privátní DNS v Azure?
+      url: private-dns-overview.md
+  - linkListType: concept
+    links:
+    - text: Scénáře pro Azure DNS Private Zones
+      url: private-dns-scenarios.md
+    - text: Nejčastější dotazy k Azure Private DNS
+      url: dns-faq-private.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření privátní zóny Azure DNS s využitím webu Azure Portal
+      url: private-dns-portal.md
+- title: Použití záznamů aliasů
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled záznamů aliasů Azure DNS
+      url: dns-alias.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurace záznamu aliasu pro podporu názvů vrcholových domén v Traffic Manageru
+      url: tutorial-alias-tm.md
+    - text: Konfigurace záznamu aliasu s odkazem na veřejnou IP adresu Azure
+      url: tutorial-alias-pip.md
+    - text: Vytvoření záznamu aliasu odkazujícího na záznam prostředku zóny
+      url: tutorial-alias-rr.md

@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: Restartování nebo změna velikosti virtuálního počítače
   href: restart-resize-error-troubleshooting.md
-- name: Použití sériové konzoly
+- name: Sériová konzola
+  href: serial-console-overview.md
   items:
-    - name: Virtuální počítači s Linuxem
+    - name: Sériová konzola pro Linux
       href: serial-console-linux.md
       items:
         - name: Sériová konzola – GRUB / režim jednoho uživatele
           href: serial-console-grub-single-user-mode.md
         - name: Sériová konzola – NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Virtuální počítač s Windows
+    - name: Sériová konzola pro Windows
       href: serial-console-windows.md
       items:
         - name: Příkazy PowerShellu a CMD
           href: serial-console-cmd-ps-commands.md
+    - name: Povolení a zakázání sériové konzoly
+      href: serial-console-enable-disable.md
+    - name: Možnosti vypnutí v rámci sériové konzoly
+      href: serial-console-power-options.md
+    - name: Běžné chyby sériové konzoly
+      href: serial-console-errors.md
 - name: Chyby při odstraňování prostředků úložiště
   href: storage-resource-deletion-errors.md
 - name: Chyby při odstraňování klasických prostředků úložiště
@@ -153,6 +160,8 @@
 - name: Chyby spouštění
   href: boot-error-troubleshoot.md
   items:
+    - name: Chyba při spouštění virtuálního počítače Azure
+      href: troubleshoot-vm-boot-error.md
     - name: Diagnostika spouštění
       href: boot-diagnostics.md
     - name: Chyby nástroje BitLocker

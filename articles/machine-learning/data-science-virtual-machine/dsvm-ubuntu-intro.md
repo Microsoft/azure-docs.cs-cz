@@ -1,29 +1,22 @@
 ---
-title: Vytvoření virtuálního počítače Ubuntu Linuxem datové vědy
-titleSuffix: Azure
+title: Ubuntu – rychlý Start pro Linux
+titleSuffix: Azure Data Science Virtual Machine
 description: Nakonfigurujte a vytvořte v Azure a provádět analýzy a strojové učení datové vědy virtuálních počítačů pro Linux (Ubuntu).
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-ms.author: vijetaj
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 08/13/2019
-ms.openlocfilehash: 3aa32d8e42079a1aa4bdd7a18a24f7d5d01f7c3e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9b323970e735a3e2a9d2cf418b787ed046c5574d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011662"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192082"
 ---
-# <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý start: Nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Data Science Virtual Machine (DSVM) pro Linux je image virtuálních počítačů založená na Ubuntu, která usnadňuje zprovoznění strojového učení, včetně obsáhlého učení v Azure. Nástroje pro hloubkové učení patří:
 

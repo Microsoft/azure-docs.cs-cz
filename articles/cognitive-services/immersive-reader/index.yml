@@ -1,63 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Asistivní čtečce
+summary: Asistivní čtečka je nástroj, který implementuje osvědčené techniky pro zlepšení míry porozumění čteného textu a je určený pro začínající čtenáře, studenty daného jazyka a osoby s poruchami učení. Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.
 metadata:
-  title: 'Dokumentace ke službě Asistivní čtečka – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs'
-  description: Naučte se využívat Asistivní čtečku ve vaší aplikaci.
-  services: cognitive-services
-  author: metanMSFT
-  manager: nitinme
+  title: Dokumentace k Asistivní čtečce
+  description: Asistivní čtečka je nástroj, který implementuje osvědčené techniky pro zlepšení míry porozumění čteného textu a je určený pro začínající čtenáře, studenty daného jazyka a osoby s poruchami učení. Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.
+  services: service
   ms.service: cognitive-services
   ms.subservice: immersive-reader
   ms.topic: landing-page
-  ms.date: 06/20/2019
-  ms.author: metanMSFT
-abstract:
-  description: 'Asistivní čtečka je nástroj, který implementuje osvědčené techniky pro zlepšení míry porozumění čteného textu a je určený pro začínající čtenáře, studenty daného jazyka a osoby s poruchami učení. Asistivní čtečku můžete využít ve vašich webových aplikacích prostřednictvím sady SDK pro Asistivní čtečku.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/immersive-reader/overview
-            html: <p>Další informace o Asistivní čtečce a její integraci do vašich aplikací</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co je Asistivní čtečka?
-          - href: /azure/cognitive-services/immersive-reader/reference
-            html: <p>Další informace o sadě Javascript SDK pro Asistivní čtečku</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Použití sady SDK pro Asistivní čtečku
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Začínáme s Asistivní čtečkou:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            alt: 'Logo C#'
-            href: quickstart
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se vyvíjet aplikace s využitím Asistivní čtečky:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-nodejs.md">Spuštění Asistivní čtečky s využitím Node.js</a>
-          - html: <a href="tutorial-python.md">Spuštění Asistivní čtečky s využitím Pythonu</a>
-          - html: <a href="tutorial-ios-picture-immersive-reader.md">Spuštění Asistivní čtečky s využitím Swiftu</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Sady SDK
-            html: <p><a href="reference.md">Javascript</a></p>
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 50185a0bbfc3a9677ebc90f326b0c43ab2a2eb13
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70164497"
+landingContent:
+- title: Informace o Asistivní čtečce
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Asistivní čtečka?
+      url: overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Jádro ASP.NET
+      url: quickstart.md
+    - text: Swift (iOS)
+      url: ios-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Node.js
+      url: tutorial-nodejs.md
+    - text: Python
+      url: tutorial-python.md
+    - text: Swift (iOS)
+      url: tutorial-ios-picture-immersive-reader.md
+- title: Seznámení s Asistivní čtečkou
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ověřování pomocí Azure Active Directory
+      url: azure-active-directory-authentication.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md
+    - text: iOS SDK
+      url: ios-reference.md

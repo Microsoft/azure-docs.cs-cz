@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194293"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208093"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migrace účtu z portál partnerů cloudu do partnerského centra
 
@@ -26,13 +26,13 @@ Pokud jste uživatelem s rolí vlastníka v CPP pro daný účet, zobrazí se na
 
 Kliknutím na hlavičku zahajte proces migrace účtu. Očekává se, že zadáte následující položky:
 
-### <a name="work-e-mail-address"></a>Pracovní e-mailová adresa
+### <a name="work-email-address"></a>Pracovní e-mailová adresa
 
-Ve většině případů se přihlaste pomocí e-mailové adresy, které používáte k přihlášení do CPP. V některých případech je třeba použít jinou e-mailovou adresu:
+Ve většině případů se přihlaste pomocí e-mailové adresy, kterou používáte k přihlášení do CPP. V některých případech je třeba použít jinou e-mailovou adresu:
 
-* Microsoft Account: Pokud je účet CPP účtem Microsoft, musíte zadat platnou pracovní e-mailovou adresu přidruženou k tenantovi, pro kterou je ID MPN zaregistrované. 
+* Účet Microsoft: Pokud je účet CPP účet Microsoft, musíte zadat platnou pracovní e-mailovou adresu přidruženou k tenantovi, pro kterou je ID MPN zaregistrované.
 
-* Neshoda tenanta: Pokud vaše pracovní e-mailová adresa nepatří klientovi, který je přidružený k ID Microsoft Partner Network k dispozici ve vašem účtu CPP, zobrazí se chyba. Pokud chcete přesunout předchozí chybu, zadejte e-mailovou adresu přidruženou k tenantovi. Zobrazí se chybová zpráva, která poskytne název tenanta. 
+* Neshoda tenanta: Pokud vaše pracovní e-mailová adresa nepatří klientovi, který je přidružený k ID Microsoft Partner Network k dispozici ve vašem účtu CPP, zobrazí se chyba. Pokud chcete přesunout předchozí chybu, zadejte e-mailovou adresu přidruženou k tenantovi. Zobrazí se chybová zpráva, která poskytne název tenanta.
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>Zaregistrovat se k programu Microsoft Partner Network
 
@@ -68,6 +68,6 @@ Pokud jste vytvořili Dynamics 365 pro zákaznickou zapojení nebo Dynamics 365 
 4. Odešlete každou novou a stávající nabídku k certifikaci, a to i v případě, že byly vaše nabídky dříve certifikovány. Pokud máte nárok, můžete během tohoto procesu požádat o účast na úrovni Premium. Pokud byla vaše nabídka dřív certifikována, **musíte dokončit recertifikaci aplikace do 15. října 2019.** Certifikace nebo recertifikace bude vyžadovat, aby vaše aplikace podporovala nejnovější verzi naší Business Applications platformy.
 5. Přejít na [jeden komerční partner GTM Portal](https://msgtm.azurewebsites.net/en-US/Profile/SignIn) a přidejte adresu URL vašeho seznamu AppSource v části odkazy na Marketplace. Pokud potřebujete s tímto krokem pomáhat, pošlete nám e-mail na cosell@microsoft.comadresu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Správa účtu komerčního tržiště v partnerském centru](./manage-account.md) 

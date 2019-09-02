@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 08/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 21e784320bc2b0785cdd28354947c0df6c35daf4
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098785"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207987"
 ---
 ::: zone target="docs"
 
@@ -23,7 +23,7 @@ ms.locfileid: "70098785"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Začínáme s Azure Data Box Disk pomocí Azure Portal
+# <a name="get-started-with-azure-data-box"></a>Začínáme s Azure Data Box 
 
 ::: zone-end
 
@@ -175,7 +175,7 @@ Dokončení tohoto kroku trvá 2 až 3 minuty.
 
 - Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili Azure Data Box, který vám má pomoci s importem dat do Azure. Další informace o správě Azure Data Boxu získáte v následujícím kurzu: 
 

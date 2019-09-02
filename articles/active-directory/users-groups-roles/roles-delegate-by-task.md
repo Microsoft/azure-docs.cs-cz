@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62814bb1e2934c406dc5fb1eb3b3bc3f3d2ee3b7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135559"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207239"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -143,6 +143,11 @@ Aktualizace zřizování podnikové aplikace | Vlastník podnikové aplikace ([V
 Aktualizovat samoobslužnou službu podnikových aplikací | Vlastník podnikové aplikace ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce cloudové aplikace, Správce aplikací
 Aktualizovat vlastnosti jednotného přihlašování | Vlastník podnikové aplikace ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce cloudové aplikace, Správce aplikací
 
+## <a name="entitlement-management"></a>Správa nároků
+Úloha | Nejnižší privilegovaná role | Další role
+---- | --------------------- | ----------------
+Přidání prostředků do katalogu | Správce uživatelů | Díky správě nároků můžete tuto úlohu delegovat na vlastníka katalogu ([Viz dokumentace](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)).
+Přidat weby SharePointu Online do katalogu | Globální správce
 
 
 ## <a name="groups"></a>Skupiny

@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: Riziková přihlášení
       href: concept-risky-sign-ins.md
-    - name: Rizikové události
+    - name: Detekce rizik
       href: concept-risk-events.md
     - name: Ohrožení uživatelé
       href: concept-user-at-risk.md
+    - name: Protokoly zřizování
+      href: concept-provisioning-logs.md
     - name: Rozhraní API pro generování sestav
       href: concept-reporting-api.md
     - name: Protokoly Azure AD v Azure Monitoru

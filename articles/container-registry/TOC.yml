@@ -59,6 +59,8 @@
       items:
         - name: Nabízená a vyžádaná instalace image
           href: container-registry-get-started-docker-cli.md
+        - name: Nabízená a vyžádaná instalace artefaktu OCI
+          href: container-registry-oci-artifacts.md
         - name: Zobrazení úložišť
           href: container-registry-repositories.md
         - name: Import imagí kontejnerů

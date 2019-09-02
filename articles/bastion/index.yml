@@ -1,35 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Azure Bastion
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Bastion (Preview)
+summary: Zjistěte, jak využívat Azure Bastion pro připojení k virtuálnímu počítači. Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu.
 metadata:
-  document_id: null
-  title: Bastion
-  meta.description: Learn how to use Azure Bastion
-  author: cherylmc
-  ms.service: Bastion
+  title: Dokumentace ke službě Azure Bastion (Preview)
+  description: Zjistěte, jak využívat Azure Bastion pro připojení k virtuálnímu počítači. Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL.
+  services: bastion
+  ms.service: bastion
   ms.topic: landing-page
-  ms.date: 07/02/2019
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 'Zjistěte, jak využívat Azure Bastion pro připojení k virtuálnímu počítači. Nakonfigurujte možnosti bezpečného a bezproblémového připojení RDP/SSH k virtuálním počítačům přímo na webu Azure Portal přes SSL. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
-      width: 250
-    title: 'Práce s Azure Bastionem (1:03)'
-    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
-    width: 250
-sections:
-  - title: Vytvoření a správa Azure Bastionu (Preview)
-    items:
-      - type: paragraph
-        text: 'Zjistěte, jak nakonfigurovat hostitele Azure Bastionu, a pak se připojte k virtuálnímu počítači.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/bastion/bastion-create-host-portal">Vytvoření a úpravy hostitele Azure Bastionu</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Připojení k virtuálnímu počítači s Windows</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Připojení k virtuálnímu počítači s Linuxem</a>
-          - html: <a href="/azure/bastion/bastion-faq">Nejčastější dotazy k Azure Bastionu</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128127"
+landingContent:
+- title: Informace o službě Azure Bastion (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Bastion?
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Nejčastější dotazy ke službě Azure Bastion
+      url: bastion-faq.md
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření opevněného hostitelského počítače
+      url: bastion-create-host-portal.md
+    - text: Připojení k virtuálnímu počítači (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: Připojení k virtuálnímu počítači (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: Práce s Azure Bastionem
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: Práce s relacemi virtuálních počítačů
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Kopírování a vkládání
+      url: bastion-vm-copy-paste.md
+    - text: Zobrazení na celou obrazovku
+      url: bastion-vm-full-screen.md

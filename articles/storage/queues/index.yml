@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Queue Storage – Azure Storage
+summary: Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Ke zprávám můžete přes HTTP nebo HTTPS přistupovat odkudkoli na světě.
+metadata:
+  title: Dokumentace ke službě Azure Queue Storage – Azure Storage
+  description: Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Ke zprávám můžete přes HTTP nebo HTTPS přistupovat odkudkoli na světě.
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 5de22a49dcc985ca95ee97d9de77180e2c56765b
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70129410"
+landingContent:
+- title: Informace o frontách Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co jsou fronty Azure?
+      url: storage-queues-introduction.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření fronty a přidání zprávy s využitím webu Azure Portal
+      url: storage-quickstart-queues-portal.md
+    - text: Použití .NET k vytvoření fronty v Azure Storage
+      url: storage-quickstart-queues-dotnet.md
+- title: Vývoj s využitím front
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
+      url: storage-dotnet-how-to-use-queues.md
+    - text: Používání úložiště Queue z Javy
+      url: storage-java-how-to-use-queue-storage.md
+    - text: Používání úložiště Queue z Node.js
+      url: storage-nodejs-how-to-use-queues.md
+    - text: Používání úložiště Queue z C++
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: Používání úložiště Queue z Pythonu
+      url: storage-python-how-to-use-queue-storage.md
+- title: Správa front
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Provádění operací Azure Queue Storage s využitím Azure PowerShellu
+      url: storage-powershell-how-to-use-queues.md
+- title: Kurz
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Práce s frontami Azure Storage (.NET)
+      url: storage-tutorial-queues.md

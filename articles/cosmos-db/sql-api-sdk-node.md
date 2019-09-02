@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142578"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207957"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK pro SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -414,7 +414,7 @@ Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SD
 Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
 
 > [!WARNING]
-> Všechny verze **1. x** sady SDK pro rozhraní SQL API budou vyřazení od **30. srpna 2020**.
+> Všechny verze **1. x** klientské sady SDK pro rozhraní SQL API budou vyřazeny 30. **srpna 2020**. To má vliv jenom na sadu SDK uzlu na straně klienta a nemá vliv na skripty na straně serveru (uložené procedury, triggery a UDF).
 > 
 >
 <br/>

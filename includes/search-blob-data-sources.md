@@ -4,20 +4,23 @@ ms.service: search
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: magottei
-ms.openlocfilehash: 1a375c438682c7afba2c65c049810d7d7234c808
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8fbdbf96106cdf2bd2990042c30d346dc830d398
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175420"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208269"
 ---
 * PDF
-* Aplikace Microsoft Office formáty: DOCX a DOC, XLSX/XLS, PPTX/PPT, zprávu (e-mailů Outlooku)  
+* Formáty systém Microsoft Office: DOCX/DOC/DOCM, XLSX/XLS/XLSM, PPTX/PPT/PPTM, MSG (Outlook Emails), XML (2003 i 2006 WORD XML)
+* Formáty otevřených dokumentů: ODT, ODS, ODP  
 * HTML
 * XML
-* ZIP
+* VĚŘITEL
+* GZ
+* EPUB
 * EML
 * RTF
-* Soubory ve formátu prostého textu (viz také [indexování prostý text](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
-* JSON (viz [JSON indexování objektů blob](../articles/search/search-howto-index-json-blobs.md))
-* Sdílený svazek clusteru (viz [CSV indexování objektů blob](../articles/search/search-howto-index-csv-blobs.md) funkce ve verzi preview)
+* Soubory prostého textu (viz také [indexování prostého textu](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
+* JSON (viz [indexování objektů BLOB JSON](../articles/search/search-howto-index-json-blobs.md))
+* CSV (viz funkce [indexování objektů BLOB](../articles/search/search-howto-index-csv-blobs.md) ve verzi Preview)

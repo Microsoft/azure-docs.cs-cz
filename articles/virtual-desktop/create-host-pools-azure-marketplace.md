@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163736"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208379"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -44,7 +44,7 @@ Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů:
 2. V okně hledání na Marketplace zadejte **Windows Virtual Desktop** .
 3. Vyberte **virtuální počítač s Windows – zřídit fond hostitelů**a pak vyberte **vytvořit**.
 
-Postupujte podle pokynů a zadejte informace pro příslušné okna.
+Potom postupujte podle pokynů v následující části a zadejte informace pro příslušné listy.
 
 ### <a name="basics"></a>Základní informace
 
@@ -56,6 +56,9 @@ Tady je přehled toho, co je pro okno **základy** :
 4. Vyberte **vytvořit nový** a zadejte název nové skupiny prostředků.
 5. V poli **umístění**vyberte stejné umístění jako virtuální síť, která má připojení k serveru služby Active Directory.
 6. Vyberte **OK**.
+
+>[!IMPORTANT]
+>Pokud používáte čistě Azure Active Directory Domain Services a Azure Active Directory řešení, nezapomeňte nasadit fond hostitelů ve stejné oblasti jako Azure Active Directory Domain Services, abyste se vyhnuli chybám připojení k doméně a přihlašovacím údajům.
 
 ### <a name="configure-virtual-machines"></a>Konfigurace virtuálních počítačů
 
@@ -127,7 +130,7 @@ Tady jsou aktuálně Podporovaní klienti:
 >[!IMPORTANT]
 >Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste provedli fond hostitelů a přiřadili uživatelům přístup k jeho ploše, můžete naplnit fond hostitelů pomocí aplikací RemoteApp. Další informace o správě aplikací ve virtuálním počítači s Windows najdete v tomto kurzu:
 

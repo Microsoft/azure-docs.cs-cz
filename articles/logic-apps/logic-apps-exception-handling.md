@@ -1,21 +1,20 @@
 ---
-title: Zpracování chyb a výjimek – Azure Logic Apps | Microsoft Docs
+title: Zpracování chyb a výjimek – Azure Logic Apps
 description: Přečtěte si o vzorech pro zpracování chyb a výjimek v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996576"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208172"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -219,13 +218,15 @@ Chcete-li zachytit výjimky v neúspěšném rozsahu a spustit akce, které tyto
 
 Omezení pro rozsahy najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md).
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>Získání kontextu a výsledků pro selhání
 
-I když je užitečné zachycení selhání z oboru, můžete také chtít, aby byl kontext, který vám pomůže pochopit přesně to, které akce se nezdařily, a všechny chyby nebo stavové kódy, které byly vráceny. `@result()` Výraz poskytuje kontext pro výsledek všech akcí v oboru.
+I když je užitečné zachycení selhání z oboru, můžete také chtít, aby byl kontext, který vám pomůže pochopit přesně to, které akce se nezdařily, a všechny chyby nebo stavové kódy, které byly vráceny.
 
-`@result()` Výraz přijímá jeden parametr (název oboru) a vrací pole všech výsledků akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako  **\@objekt Actions ()** , jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které selhaly v rámci rozsahu, můžete snadno spárovat  **\@funkci Result ()** s vlastností **runafter šablonové** .
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) Funkce poskytuje kontext o výsledcích ze všech akcí v oboru. `result()` Funkce přijímá jeden parametr, což je název oboru, a vrátí pole, které obsahuje všechny výsledky akce v rámci daného oboru. Tyto objekty akcí zahrnují stejné atributy jako `@actions()` objekt, jako je čas spuštění akce, čas ukončení, stav, vstupy, ID korelace a výstupy. Chcete-li odeslat kontext pro všechny akce, které selhaly v rámci oboru, můžete `@result()` snadno spárovat výraz `runAfter` s vlastností.
 
-Chcete-li spustit akci pro každou akci v oboru, který má **neúspěšný** výsledek, a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat  **\@výsledek ()** s akcí **[filtru pole](../connectors/connectors-native-query.md)** a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Filtrované pole výsledků můžete převzít a provést akci pro každou chybu pomocí příkazu **pro každou** smyčku. 
+Chcete-li spustit akci pro každou akci v oboru, který má **neúspěšný** výsledek, a filtrovat pole výsledků dolů na neúspěšné akce, můžete spárovat `@result()` výraz s akcí [**pole filtru**](../connectors/connectors-native-query.md) a a [**pro každou**](../logic-apps/logic-apps-control-flow-loops.md) smyčku. Filtrované pole výsledků můžete převzít a provést akci pro každou chybu pomocí příkazu **pro každou** smyčku.
 
 Tady je příklad následovaný detailním vysvětlením, který pošle požadavek HTTP POST s textem odpovědi pro všechny akce, které selhaly v rámci oboru "My_Scope":
 
@@ -326,7 +327,7 @@ Předchozí vzory představují skvělý způsob zpracování chyb a výjimek v 
 
 Chcete-li vyhodnotit stavy spuštění, můžete monitorovat protokoly a metriky nebo je publikovat do libovolného nástroje pro monitorování, které dáváte přednost. Jednou z možných možností je streamování všech událostí prostřednictvím Event Hubs do [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). V Stream Analytics můžete psát živé dotazy na základě jakýchkoli anomálií, průměrů nebo chyb z diagnostických protokolů. K posílání informací do jiných zdrojů dat, jako jsou fronty, témata, SQL, Azure Cosmos DB nebo Power BI, můžete použít Stream Analytics.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Podívejte se, jak zákazník sestavuje zpracování chyb pomocí Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Najít další Logic Apps příklady a scénáře](../logic-apps/logic-apps-examples-and-scenarios.md)

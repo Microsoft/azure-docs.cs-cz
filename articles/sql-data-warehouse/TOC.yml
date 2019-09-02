@@ -57,7 +57,7 @@
       items:
         - name: Přehled
           href: sql-data-warehouse-overview-manage-security.md
-        - name: Advanced Data Security
+        - name: Pokročilé zabezpečení dat
           items:
             - name: Přehled
               href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/sql-data-warehouse/toc.json

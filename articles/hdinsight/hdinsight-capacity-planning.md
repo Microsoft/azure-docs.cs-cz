@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114310"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207158"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -60,7 +60,7 @@ Pro cluster 48 doporučujeme 4 až 8 účtů úložiště. I když již může e
 
 ## <a name="choose-a-cluster-type"></a>Zvolit typ clusteru
 
-Typ clusteru určuje zatížení, které je nakonfigurováno pro spuštění clusteru HDInsight, například [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)nebo [Apache Spark](https://spark.apache.org/). Podrobný popis dostupných typů clusterů najdete v tématu [Úvod do Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Každý typ clusteru má konkrétní topologii nasazení, která zahrnuje požadavky na velikost a počet uzlů.
+Typ clusteru určuje zatížení, které je nakonfigurováno pro spuštění clusteru HDInsight, například [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)nebo [Apache Spark](https://spark.apache.org/). Podrobný popis dostupných typů clusterů najdete v tématu [Úvod do Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Každý typ clusteru má konkrétní topologii nasazení, která zahrnuje požadavky na velikost a počet uzlů.
 
 ## <a name="choose-the-vm-size-and-type"></a>Zvolit velikost a typ virtuálního počítače
 
@@ -126,7 +126,7 @@ Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.micr
 
 Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Spark, Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md): Naučte se, jak nastavit a nakonfigurovat clustery v HDInsight pomocí Apache Hadoop, Spark, Kafka, interaktivního podregistru, adaptérů HBA, služeb ML nebo přetvořenosti.
 * [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Seznamte se s klíčovými scénáři pro monitorování clusteru HDInsight, který může mít vliv na kapacitu clusteru.

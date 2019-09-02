@@ -1,29 +1,22 @@
 ---
-title: Vytvořit virtuální počítač CentOS Linux datové vědy
-titleSuffix: Azure
+title: 'Rychlý start: Vytvoření CentOS Linux'
+titleSuffix: Azure Data Science Virtual Machine
 description: Vytvořte a nakonfigurujte Data Science Virtual Machine pro Linux v Azure pro analýzy a strojové učení.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1ab3a527643bc5a567644a937fdd1eb9e31bf567
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047726"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195334"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>Zřízení Data Science Virtual Machine CentOS pro Linux v Azure
+# <a name="quickstart-set-up-a-linux-centos-data-science-virtual-machine-in-azure"></a>Rychlý start: Nastavení Data Science Virtual Machine pro Linux CentOS v Azure
 
 Linux Data Science Virtual Machine (DSVM) je virtuální počítač Azure založený na CentOS. DSVM pro Linux obsahuje kolekci předinstalovaných nástrojů, které můžete použít pro analýzu dat a strojové učení. 
 
@@ -422,7 +415,7 @@ Grafické rozhraní, které má otevřenou sadu karet. Pomocí následujících 
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaný skript R. Nebo použijte skript jako takový a spusťte ho kdykoli, abyste mohli opakovat všechno, co bylo provedeno v uživatelském rozhraní Rattle. Hlavně pro začátečníky v R je to způsob, jak rychle analyzovat a strojové učení v jednoduchém grafickém rozhraní, a to při automatickém generování kódu v jazyce R pro úpravy nebo pro učení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zde je, jak můžete pokračovat v učení a zkoumání:
 

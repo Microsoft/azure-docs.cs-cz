@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033322"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207171"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -70,6 +70,18 @@ V minulosti byl privilegovaný přístup popsán jinými dodavateli jako samosta
 
 Azure AD Privileged Identity Management (PIM) poskytuje další ovládací prvky přizpůsobené zabezpečení přístupových práv k prostředkům, v Azure AD, Azure a dalších online službách Microsoftu.  Přístup za běhu a možnosti upozorňování při změně role poskytované službou Azure AD PIM, kromě služby Multi-Factor Authentication a podmíněného přístupu, poskytují komplexní sadu kontrolních mechanismů, které vám pomůžou zabezpečit firemní prostředky (adresář, Role prostředků Office 365 a Azure). Stejně jako u jiných forem přístupu můžou organizace použít kontroly přístupu ke konfiguraci opakovaného ověření přístupu pro všechny uživatele v rolích správce.
 
+## <a name="least-privileged-roles"></a>Nejnižší privilegované role
+
+Použití PIM umožňuje omezit oprávnění správce na zvýšení zabezpečení. Níže jsou uvedené nejnižší privilegované role adresáře pro konfiguraci ve funkcích zásad správného řízení identit Azure AD: 
+
+| Funkce | Nejnižší privilegovaná role |
+| ------- | --------------------- |
+| Správa nároků | Správce uživatelů (s výjimkou přidávání webů SharePointu Online do katalogů, které vyžadují globálního správce) |
+| Podmínky použití | Správce zabezpečení nebo správce podmíněného přístupu |
+| Kontroly přístupu | Správce uživatelů (s výjimkou kontrol přístupu pro role Azure nebo Azure AD, které vyžadují správce privilegovaných rolí) |
+|Privileged Identity Management | Správce privilegovaných rolí |
+
+
 ## <a name="getting-started"></a>Začínáme
 
 I když pro každého zákazníka není k dispozici žádné dokonalé řešení nebo doporučení, následující konfigurace poskytují průvodce, podle kterého vám základní zásady doporučuje, abyste zajistili bezpečnější a produktivní pracovní síly.
@@ -83,7 +95,7 @@ Můžete si také prohlédnout kartu Začínáme se zásadami **správného ří
 
 Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klikněte na získat zpětnou vazbu **?** v Azure Portal odešlete svůj názor. Tým pravidelně kontroluje vaše názory.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Co je Správa nároků Azure AD? (Preview)](entitlement-management-overview.md)
 - [Co jsou kontroly přístupu Azure AD?](access-reviews-overview.md)

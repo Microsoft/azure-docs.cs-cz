@@ -1,7 +1,7 @@
 ---
 title: Prozkoumat Linux
 titleSuffix: Azure Data Science Virtual Machine
-description: Jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy.
+description: Naučte se, jak dokončit několik běžných úloh pro datové vědy pomocí Data Science Virtual Machine pro Linux.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,72 +9,73 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 0f0f75a3ac6f258cbcd13ee24dabb870f1a37fbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192028"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208292"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
-Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
+# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
-Úloh datových věd v tomto názorném postupu jsme vám ukázali, postupujte podle kroků uvedených v [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview). Tento proces zajišťuje systematický přístup k datové vědy, které umožňuje týmům odborníků přes data efektivně spolupracovat přes životní cyklus sestavovat inteligentní aplikace. Vědecké zpracování dat také poskytuje rozšiřovatelnou platformu pro iterativní pro datové vědy, které může být následován jednotlivec.
+V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové vědy pomocí Data Science Virtual Machine pro Linux (DSVM). Linux DSVM je image virtuálního počítače, která je k dispozici v Azure, která je předinstalována s kolekcí nástrojů běžně používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty se účtují v [rámci zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md). DSVM image usnadňuje zprovoznění datových věd během několika minut, aniž byste museli instalovat a konfigurovat jednotlivé nástroje samostatně. DSVM můžete snadno škálovat, pokud potřebujete, a můžete ji zastavit, když se nepoužívá. Prostředek DSVM je elastický a nákladově efektivní.
 
-Analyzujeme [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) datová sada v tomto názorném postupu. Toto je sada e-mailů, které jsou označené jako spam nebo šunku (tj. nejsou nevyžádané pošty), a také obsahuje statistikami o obsah e-mailů. Statistiky zahrnuté jsou popsány v následujících, ale jeden oddíl.
+Úkoly spojené s datovou vědy, které jsou uvedené v tomto návodu, se řídí postupem popsaným v [části Co je vědecké zpracování týmových dat?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Vědecké zpracování týmových dat je systematický přístup k datovému vědy, který pomáhá týmům s daty efektivně spolupracovat nad životním cyklem vytváření inteligentních aplikací. Vědecké zpracování dat také poskytuje rozšiřovatelnou platformu pro iterativní pro datové vědy, které může být následován jednotlivec.
+
+V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete moct použít virtuální počítač s Linuxem datové vědy, musíte mít následující:
 
-* **Předplatného Azure**. Pokud není ještě nemáte, přečtěte si téma [vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).
-* A [ **pro datovou vědu VM pro Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování tohoto virtuálního počítače, naleznete v tématu [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) v počítači nainstalovaný a otevřít relaci XFCE. Informace o instalaci a konfiguraci **klienta X2Go**najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
-* Pro posouvání plynulost přepnout příznak gfx.xrender.enabled v o: konfigurace v prohlížeči FireFox virtuálních počítačů. [Najdete v článku najdete tady. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Také vzít v úvahu při přepínání *mousewheel.enable_pixel_scrolling* na hodnotu False. [Pokyny v tomto poli.](https://support.mozilla.org/questions/981140)
-* **AzureML účet**. Pokud již nemáte, zaregistrujte si novou na [domovskou stránku Azure ml](https://studio.azureml.net/). Je bezplatné využití vrstvu vám pomůžou začít.
+Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
+
+* **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
+* [**Data Science Virtual Machine Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
+* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* Chcete-li plynulejší posouvání, přepněte `gfx.xrender.enabled` ve webovém prohlížeči DSVM na prohlížeč Firefox `about:config`příznaku. [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False`. [Další informace](https://support.mozilla.org/questions/981140).
+* **Účet Azure Machine Learning**. Pokud ho ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://studio.azureml.net/). Můžete si to vyzkoušet zdarma, abychom vám pomohli začít.
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout spambase datovou sadu
-[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) datová sada je relativně malou sadu dat, která obsahuje pouze 4601 příklady. Je to pohodlné velikost při představením toho, že některé z klíčových funkcí virtuální počítač pro datové vědy protože uchovává požadavky na prostředky středně velká.
+
+Datová sada [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) je relativně malá sada dat, která obsahuje příklady 4 601. Datová sada je vhodná velikost pro demonstraci některých klíčových funkcí DSVM, protože udržuje požadavky na prostředky mírné.
 
 > [!NOTE]
-> Tento návod byl vytvořen na D2 v2 velikosti Data Science virtuálního počítače s Linuxem (CentOS Edition). Tato velikost DSVM je schopna zpracovávat postupy v tomto názorném postupu.
->
->
+> Tento návod byl vytvořen pomocí sady D2 v2 DSVM (CentOS Edition) s velikostí D2. Tuto velikost můžete použít DSVM k dokončení postupů, které jsou znázorněny v tomto návodu.
 
-Pokud potřebujete další úložný prostor, můžete vytvořit další disky a připojte je k vašemu virtuálnímu počítači. Tyto disky prostřednictvím trvalého úložiště Azure, tak jejich data se zachovají i v případě, že server je znovu zajištěny kvůli změně velikosti nebo vypnutí. Přidejte disk a připojit ho k virtuálnímu počítači, postupujte podle pokynů v [přidání disku do virtuálního počítače s Linuxem](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tyto kroky používají rozhraní příkazového řádku Azure (Azure CLI), který je už nainstalovaný na datové VĚDY. Tyto postupy můžete udělat tak zcela v samotných virtuálních počítačů. Další možností pro zvýšení úložiště je použití [soubory Azure](../../storage/files/storage-how-to-use-files-linux.md).
+Pokud potřebujete více úložného prostoru, můžete vytvořit další disky a připojit je k DSVM. Disky používají trvalé úložiště Azure, takže jejich data se zachovají i v případě, že dojde k opětovnému zřízení serveru z důvodu změny velikosti nebo vypnutí. Pokud chcete přidat disk a připojit ho k DSVM, proveďte kroky v části [Přidání disku do virtuálního počítače se systémem Linux](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Postup přidání disku pomocí rozhraní příkazového řádku Azure, který je už nainstalovaný v DSVM. Kroky můžete dokončit úplně z samotného DSVM. Další možností, jak úložiště zvýšit, je použití [souborů Azure](../../storage/files/storage-how-to-use-files-linux.md).
 
-Chcete-li stáhnout data, otevřete okno terminálu a spusťte tento příkaz:
+Chcete-li stáhnout data, otevřete okno terminálu a pak spusťte tento příkaz:
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-Stažený soubor nemá řádek záhlaví, Pojďme vytvořit jiný soubor, který mají záhlaví. Spusťte tento příkaz vytvoří soubor s odpovídající hlavičky:
+Stažený soubor neobsahuje řádek záhlaví. Pojďme vytvořit další soubor, který má hlavičku. Spusťte tento příkaz vytvoří soubor s odpovídající hlavičky:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
-Pak je zřetězí dva soubory společně se příkaz:
+Pak zřetězení dvou souborů dohromady:
 
     cat spambase.data >> headers
     mv headers spambaseHeaders.data
 
-Objekt dataset obsahuje několik typů statistik v každém e-mailu:
+Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* U sloupců obsahujících ***slovo\_frekvence\_slovo*** označuje procento slova v e-mailu, které odpovídají *slovo*. Například pokud *slovo\_frekvence\_zkontrolujte* je 1, pak bylo 1 % všech slov v e-mailu *Ujistěte se,* .
-* U sloupců obsahujících ***char\_frekvence\_CHAR*** označuje procento všechny znaky v e-mailu, které byly *CHAR*.
-* ***velké\_spustit\_délka\_nejdelší*** představuje nejdelší doba posloupnost velká písmena.
-* ***velké\_spustit\_délka\_průměrné*** je průměrná délka všech pořadí velká písmena.
-* ***velké\_spustit\_délka\_celkový*** je celková délka všech pořadí velká písmena.
-* ***spam*** označuje, jestli e-mailu byla považována za spam nebo ne (1 = nevyžádané pošty, 0 = nevyžádanou).
+* Sloupce jako **\_wordové\_frekvence * Word*** označují procento slov v e-mailu, která odpovídají *Wordu*. Pokud je například **slovo\_frekvence\_** nastavené na **1**, pak se v e-mailu provedlo1% všech slov.
+* Sloupce jako **char\_frekvence\_* char*** označují procento všech znaků v e-mailu, které jsou typu *char*.
+* **velké\_spustit\_délka\_nejdelší** představuje nejdelší doba posloupnost velká písmena.
+* **velké\_spustit\_délka\_průměrné** je průměrná délka všech pořadí velká písmena.
+* **velké\_spustit\_délka\_celkový** je celková délka všech pořadí velká písmena.
+* **spam** označuje, jestli e-mailu byla považována za spam nebo ne (1 = nevyžádané pošty, 0 = nevyžádanou).
 
-## <a name="explore-the-dataset-with-microsoft-r-open"></a>Prozkoumejte datovou sadu s Microsoft R Open
-Pojďme prozkoumat data a provádět některé základní strojového učení pomocí jazyka R. Virtuální počítač pro datové vědy se dodává s [Microsoft R Open](https://mran.revolutionanalytics.com/open/) předinstalovaným. Vícevláknové matematické knihovny v této verzi systému R nabízí lepší výkon než různé verze s jedním vláknem. Microsoft R Open také poskytuje reprodukovatelnost pomocí snímku úložiště balíčků CRAN.
+## <a name="explore-the-dataset-by-using-r-open"></a>Prozkoumat datovou sadu pomocí jazyka R Open
 
-K získání kopií ukázky kódu použít v tomto podrobném návodu, naklonujte **Azure-Machine-Learning-datové vědy** úložiště pomocí git, které je předem nainstalované na virtuálním počítači. Z příkazového řádku git spusťte:
+Pojďme se podívat na data a udělat několik základních strojových kurzů pomocí jazyka R. DSVM se dodává s předinstalovaným [Microsoft R Open](https://mran.revolutionanalytics.com/open/) . Vícevláknové matematické knihovny v předinstalované verzi jazyka R nabízejí lepší výkon než verze s jedním vláknem. Jazyk R Open poskytuje také reprodukovatelnost prostřednictvím snímku úložiště balíčků CRAN.
+
+Pokud chcete získat kopie ukázek kódu, které se používají v tomto průvodci, použijte Git a naklonujte úložiště Azure-Machine-Learning-data-věda. Git je předem nainstalovaný na DSVM. Na příkazovém řádku Gitu spusťte:
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Otevřete okno terminálu a spusťte novou relaci r. s interaktivní konzolou R nebo používat RStudio jako předinstalované na počítači.
+Otevřete okno terminálu a spusťte novou relaci R v interaktivní konzole R. Můžete také použít RStudio, který je předinstalován na DSVM.
 
-
-Pokud chcete importovat data a nastavení prostředí, spusťte:
+Import dat a nastavení prostředí:
 
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
@@ -87,27 +88,27 @@ Pro jiné zobrazení dat:
 
     str(data)
 
-Zobrazí typ každou proměnnou a první několik hodnot v datové sadě.
+Toto zobrazení ukazuje typ každé proměnné a prvních několik hodnot v datové sadě.
 
-*Nevyžádané pošty* sloupec byl načten jako celé číslo, ale je ve skutečnosti kategorií proměnné (nebo faktor). Nastavte její typ:
+**Nevyžádané pošty** sloupec byl načten jako celé číslo, ale je ve skutečnosti kategorií proměnné (nebo faktor). Nastavte její typ:
 
     data$spam <- as.factor(data$spam)
 
-Chcete-li provést průzkumné analýzy, použijte [ggplot2](https://ggplot2.tidyverse.org/) balíček, Oblíbené grafovým knihovny pro R, který je už nainstalovaný na virtuálním počítači. Mějte na paměti, z souhrnná data zobrazí dříve, vidíme, že souhrnné statistiky týkající se četnosti znak vykřičník. Pojďme vykreslení těchto frekvencí tady pomocí následujících příkazů:
+K provedení některých průzkumné analýzy použijte balíček [ggplot2](https://ggplot2.tidyverse.org/) , oblíbenou knihovnu grafů pro R, která je předinstalována na DSVM. Na základě souhrnných dat zobrazených dříve máme souhrnnou statistiku o frekvenci znaku vykřičníku. Nyní tyto frekvence vykreslíme tak, že spustíte následující příkazy:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Protože panelu nula je zkosení vykreslení zbavíme ho:
+Vzhledem k tomu, že se nulový pruh grafu zkosí, Pojďme ho eliminovat:
 
     email_with_exclamation = data[data$char_freq_exclamation > 0, ]
     ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Je netriviální hustota výše 1, která vypadá zajímavé. Podívejme se na právě tato data:
+Je netriviálníá hustota nad 1, která vypadá zajímavě. Pojďme se podívat jenom na tato data:
 
     ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Potom ji rozdělte podle šunka vs nevyžádané pošty:
+Pak ho rozdělte pomocí spamu oproti HAM:
 
     ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
     geom_density(lty=3) +
@@ -116,23 +117,22 @@ Potom ji rozdělte podle šunka vs nevyžádané pošty:
     ggtitle("Distribution of spam \nby frequency of !") +
     labs(fill="spam", y="Density")
 
-Tyto příklady by měl umožňují vytvářet podobné vykreslení další sloupce, které chcete prozkoumat data obsažená v nich.
+Tyto příklady by vám pomohly dělat podobné možnosti a prozkoumat data v ostatních sloupcích.
 
-## <a name="train-and-test-an-ml-model"></a>Trénování a testování modelu ML
-Nyní Pojďme trénování několik modelů strojového učení klasifikovat e-maily v datové sadě jako obsahující span nebo šunka. Jsme trénování modelu stromu rozhodnutí a model náhodného doménové struktury v této části a potom otestovat jejich přesnost jejich předpovědi.
+## <a name="train-and-test-a-machine-learning-model"></a>Výuka a testování modelu strojového učení
+
+Vydejte si několik modelů strojového učení pro klasifikaci e-mailů v datové sadě, které obsahují buď spam, nebo HAM. V této části se naučíme model rozhodovacího stromu a náhodný model doménové struktury. Pak otestujeme přesnost předpovědi.
 
 > [!NOTE]
-> Balíček rpart (rekurzivní dělení a regresní stromy) použitý v následujícím kódu je již nainstalována na virtuální počítač pro datové vědy.
->
->
+> Balíček *rpart* (rekurzivní vytváření oddílů a regrese) použitý v následujícím kódu je již na DSVM nainstalován.
 
-První, Pojďme rozdělit datovou sadu na trénovací a testovací sady:
+Nejprve rozdělit datovou sadu na sady školení a sady testů:
 
     rnd <- runif(dim(data)[1])
     trainSet = subset(data, rnd <= 0.7)
     testSet = subset(data, rnd > 0.7)
 
-A pak vytvořte rozhodovacího stromu a klasifikaci e-mailů.
+Pak vytvořte rozhodovací strom pro klasifikaci e-mailů:
 
     require(rpart)
     model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
@@ -141,7 +141,7 @@ A pak vytvořte rozhodovacího stromu a klasifikaci e-mailů.
 
 Tady je výsledek:
 
-![1](./media/linux-dsvm-walkthrough/decision-tree.png)
+![Diagram vytvořeného rozhodovacího stromu](./media/linux-dsvm-walkthrough/decision-tree.png)
 
 Pokud chcete zjistit, jak dobře funguje na cvičnou sadou, použijte následující kód:
 
@@ -157,7 +157,7 @@ Chcete-li zjistit, jak dobře funguje v sadě testů:
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Také si vyzkoušíme model náhodného doménové struktury. Náhodné doménovými strukturami trénování velké množství rozhodovacích stromů a výstup třídu, která je režim klasifikace z všechny jednotlivé rozhodovacích stromů. Poskytují účinnější služby machine learning přístup, jak opravit tendenci modelu rozhodovací strom overfit trénovací datové sady.
+Také si vyzkoušíme model náhodného doménové struktury. Náhodné doménové struktury proškolují velké množství rozhodovacích stromů a zaoutputují třídu, která je režimem klasifikací ze všech jednotlivých rozhodovacích stromů. Poskytují výkonnější přístup strojového učení, protože jsou správné pro dosažení většího počtu rozhodovacích stromů modelu, aby overfit školicí datovou sadu.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -172,82 +172,85 @@ Také si vyzkoušíme model náhodného doménové struktury. Náhodné doménov
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Nasazení modelu do Azure Machine Learning studia
-[Azure Machine Learning Studio](https://studio.azureml.net/) je cloudová služba usnadňující sestavování a nasazování modelů prediktivní analýzy. Jednou z užitečných funkcí aplikace Azure Machine Learning Studio je schopnost publikovat všechny funkce R jako webovou službu. Balíček Azure Machine Learning Studio R usnadňuje nasazení přímo z naší relace jazyka R na DSVM.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Nasazení modelu pro Azure Machine Learning Studio
 
-Nasazení kódu stromu rozhodnutí z předchozí části, budete muset přihlásit k Azure Machine Learning studiu. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Pro vyhledání těchto hodnot a inicializaci Azure Machine Learning proměnných s těmito hodnotami:
+[Azure Machine Learning Studio](https://studio.azureml.net/) je cloudová služba usnadňující sestavování a nasazování modelů prediktivní analýzy. Dobrým prvkem Azure Machine Learning Studio je jeho schopnost publikovat všechny funkce R jako webovou službu. Balíček Azure Machine Learning Studio R usnadňuje nasazení přímo z relace jazyka R v DSVM.
 
-Vyberte **nastavení** v nabídce vlevo. Poznámka: vaše **ID pracovního prostoru**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
+Pokud chcete nasadit kód rozhodovacího stromu z předchozí části, přihlaste se k Azure Machine Learning Studio. Potřebujete ID vašeho pracovního prostoru a autorizační token pro přihlášení. Chcete-li najít tyto hodnoty a inicializovat proměnné Azure Machine Learning, proveďte tyto kroky:
 
-Vyberte **autorizačních tokenech** režie nabídce a Všimněte si vaše **primární autorizační Token**.![ 3](./media/linux-dsvm-walkthrough/workspace-token.png)
+1. V nabídce vlevo vyberte **Nastavení**. Poznamenejte si hodnotu **ID pracovního prostoru**.
 
-Zatížení **AzureML** balíček a pak nastavte hodnoty proměnných se token a pracovní prostor ID v relaci jazyka R na datové VĚDY:
+   ![ID pracovního prostoru Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-    if(!require("AzureML")) install.packages("AzureML")
-    require(AzureML)
-    wsAuth = "<authorization-token>"
-    wsID = "<workspace-id>"
+1. Vyberte kartu **tokeny autorizace** . Poznamenejte si hodnotu **primárního autorizačního tokenu**.
 
+   ![Primární autorizační token Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-token.png)
+1. Načtěte balíček **AzureML** a pak nastavte hodnoty proměnných pomocí tokenu a ID pracovního prostoru v relaci jazyka R na DSVM:
 
-Pojďme model zjednodušit a aby tato ukázka usnadnil. Vyberte tří proměnných v rozhodovacím stromu nejbližší do kořenového adresáře a vytvářet nové větve pomocí jenom těchto tří proměnných:
+        if(!require("AzureML")) install.packages("AzureML")
+        require(AzureML)
+        wsAuth = "<authorization-token>"
+        wsID = "<workspace-id>"
 
-    colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-    smallTrainSet <- trainSet[, colNames]
-    smallTestSet <- testSet[, colNames]
-    model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
+1. Pojďme model zjednodušit a aby tato ukázka usnadnil. Vyberte tři proměnné ve stromovém stromu, které jsou nejblíže kořenovému adresáři a sestavte nový strom pomocí pouze těch tří proměnných:
 
-Potřebujeme předpovědi funkci, která přebírá funkce jako vstup a vrátí predikované hodnoty:
+        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
+        smallTrainSet <- trainSet[, colNames]
+        smallTestSet <- testSet[, colNames]
+        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-    predictSpam <- function(newdata) {
-      predictDF <- predict(model.rpart, newdata = newdata)
-      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-    }
+1. Potřebujeme předpovědi funkci, která přebírá funkce jako vstup a vrátí predikované hodnoty:
 
-
-Pomocí Azure ml publikovat predictSpam funkce **publishWebService** funkce:
-
-    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
+        predictSpam <- function(newdata) {
+        predictDF <- predict(model.rpart, newdata = newdata)
+        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
+        }
 
 
-Tato funkce přijímá **predictSpam** fungovat, vytvoří webovou službu s názvem **spamWebService** s definované vstupy a výstupy a vrátí informace o nový koncový bod.
+1. Publikujte funkci **predictSpam** do AzureML pomocí funkce **publishWebService** :
 
-Zobrazit podrobnosti o nejnovější publikované webové služby, včetně jeho koncový bod rozhraní API a přístupové klíče pomocí příkazu:
+        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
-    s<-tail(services(ws, name = "spamWebService"), 1)
-    ep <- endpoints(ws,s)
-    ep
+1. Tato funkce přijímá funkci **predictSpam** , vytvoří webovou službu s názvem **spamWebService** , která má definované vstupy a výstupy, a potom vrátí informace o novém koncovém bodu.
 
-Můžete vyzkoušet na prvních 10 řádků testu nastavte:
+    Tento příkaz slouží k zobrazení podrobností o nejnovější publikované webové službě, včetně koncového bodu rozhraní API a přístupových klíčů:
 
-    consume(ep, smallTestSet[1:10, ])
+        s<-tail(services(ws, name = "spamWebService"), 1)
+        ep <- endpoints(ws,s)
+        ep
+
+1. Můžete vyzkoušet na prvních 10 řádků testu nastavte:
+
+        consume(ep, smallTestSet[1:10, ])
 
 <a name="deep-learning"></a>
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Podrobné výukové kurzy a názorné postupy
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Výukové kurzy a návody pro hloubkové učení
 
-Kromě ukázky založené na platformě sadu kompletní návody poskytuje se také, který byl ověřen na DLVM. Tyto kurzy vám nastartování vývoje aplikací obsáhlého learningu v doménách, jako je obrázek a text/language understanding. Další kurzy začátku do konce v různých doménách a technologie se nadále přidat.   
+Kromě ukázek založených na rozhraní je k dispozici také sada komplexních návodů. Tyto kurzy vám nastartování vývoje aplikací obsáhlého learningu v doménách, jako je obrázek a text/language understanding.
 
+- [Spouštění neuronovéch sítí napříč různými architekturami](https://github.com/ilkarman/DeepLearningFrameworks): Podrobný návod, který ukazuje, jak migrovat kód z jednoho rozhraní do jiného. Také ukazuje, jak porovnat model a běhový výkon napříč platformami. 
 
-- [Spouštění neuronovéch sítí napříč různými architekturami](https://github.com/ilkarman/DeepLearningFrameworks): Podrobný návod, který ukazuje, jak migrovat kód z jednoho rozhraní do jiného. Také ukazuje, jak porovnat modelu a výkonu v rozhraní. 
+- Návod, [jak sestavit ucelené řešení pro detekci produktů v rámci imagí](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Detekce obrázku je technika, která může vyhledat a klasifikovat objekty v rámci imagí. Technologie nabízí možnost přinést velké výhody v mnoha obchodních doménách, které jsou v reálném čase. Například prodejci, můžete použít tuto techniku k určení, který produkt a zákazníka má neexistoval z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
 
-- Návod [, jak sestavit ucelené řešení pro detekci produktů v rámci imagí](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Detekce obrázku je technika, která může vyhledat a klasifikovat objekty v rámci imagí. Tato technologie má potenciál přenést velké odměny v mnoha obchodních doménách reálném životě. Například prodejci, můžete použít tuto techniku k určení, který produkt a zákazníka má neexistoval z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
+- [Obsáhlý Learning pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): V tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://urbansounddataset.weebly.com/). Tento kurz poskytuje přehled o tom, jak pracovat se zvukovými daty.
 
-- [Hloubkové učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) tento kurz ukazuje, jak pro trénování modelu obsáhlého learningu pro zjištění zvuku události na [datovou sadu urban zvuky](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) a poskytovat přehled o tom, jak pracovat s zvuková data.
+- [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak sestavit a vytvořit výuku dvou různých neuronovéch síťových architektur: Hierarchická síťová pozornost a dlouhodobá krátkodobá paměť (LSTM). Tyto neuronové sítě pomocí rozhraní Keras API pro obsáhlý learning zařazoval dokumenty do textu. Keras je front-end pro tři nejoblíbenější architektury hloubkového učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
 
-- [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak sestavit a vytvořit výuku dvou různých neuronovéch síťových architektur: Hierarchická síť a dlouhodobá krátkodobá paměť (LSTM). Tyto neuronové sítě pomocí rozhraní Keras API pro obsáhlý learning zařazoval dokumenty do textu. Keras je front-end pro tři nejoblíbenější architektury hloubkového učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
+## <a name="other-tools"></a>Jiné nástroje
 
-## <a name="use-other-tools-available"></a>Použít jiné nástroje, které jsou k dispozici
-Zbývající části ukazují, jak používat některé z nástroje nainstalované na virtuálním počítači Linux datové vědy. Tady je seznam nástrojů, které jsou popsány:
+V dalších částech se dozvíte, jak používat některé nástroje, které jsou nainstalované na DSVM Linux. Probereme tyto nástroje:
 
 * XGBoost
 * Python
-* Jupyterhub
+* JupyterHub
 * Rattle
-* PostgreSQL & Squirrel SQL
+* PostgreSQL a SQuirreL SQL
 * SQL Server Data Warehouse
 
-## <a name="xgboost"></a>XGBoost
-[XGBoost](https://xgboost.readthedocs.org/en/latest/) je nástroj, který poskytuje rychlý a přesné Posílený stromu implementaci.
+### <a name="xgboost"></a>XGBoost
+
+[XGBoost](https://xgboost.readthedocs.org/en/latest/) poskytuje rychlou a přesnou zesílenou implementaci stromu.
 
     require(xgboost)
     data <- read.csv("spambaseHeaders.data")
@@ -263,17 +266,16 @@ Zbývající části ukazují, jak používat některé z nástroje nainstalovan
     accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
     print(paste("test accuracy = ", accuracy))
 
-XGBoost můžete také volat z pythonu nebo příkazového řádku.
+XGBoost může také volat z Pythonu nebo z příkazového řádku.
 
-## <a name="python"></a>Python
-Pro vývoj pomocí Pythonu distribuce Anaconda Python 2.7 a 3.5 nainstalovaných v datové VĚDY.
+### <a name="python"></a>Python
+
+V případě vývoje v jazyce Python jsou v DSVM nainstalovány distribuce Anaconda Pythonu 3,5 a 2,7.
 
 > [!NOTE]
-> Zahrnuje distribuční Anaconda [Conda](https://conda.pydata.org/docs/index.html), který slouží k vytvoření vlastního prostředí pro Python, které mají různé verze a/nebo v nich nainstalované balíčky.
->
->
+> Anaconda distribuce zahrnuje [conda](https://conda.pydata.org/docs/index.html). Pomocí conda můžete vytvářet vlastní prostředí Pythonu, která mají v nich nainstalované různé verze nebo balíčky.
 
-Umožňuje číst v některých spambase datové sady a klasifikovat e-maily s počítači vektorové podpory v scikit-informace:
+Pojďme si přečtěte část spambase DataSet a klasifikovat e-maily s podporou vektorových počítačů v Scikit-učení:
 
     import pandas
     from sklearn import svm
@@ -287,14 +289,14 @@ K vytvoření predikcí:
 
     clf.predict(X.ix[0:20, :])
 
-Ukážeme, jak publikovat koncový bod Azure ml, vytvoříme jednodušší modelu tří proměnných jako jsme to udělali při jsme dříve publikovali R modelu.
+Abychom předvedli, jak publikovat Azure Machine Learning koncový bod, vytvoříme ještě více základních modelů. Použijeme tři proměnné, které jsme použili při předchozím publikování modelu R:
 
     X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
 
-Publikování modelu Azure ml:
+Postup publikování modelu pro Azure Machine Learning:
 
     # Publish the model.
     workspace_id = "<workspace-id>"
@@ -314,89 +316,87 @@ Publikování modelu Azure ml:
     # Call the model
     predictSpam.service(1, 1, 1)
 
-> [!NOTE]
-> To je dostupná jenom pro python 2.7 a není dosud nepodporováno u 3.5. Spustit s **/anaconda/bin/python2.7**.
->
->
-
-## <a name="jupyterhub"></a>Jupyterhub
-Anaconda distribuce v datové VĚDY se dodává s poznámkového bloku Jupyter, – multiplatformního prostředí pro sdílení kódu Python, R nebo Helena a analýzy. Poznámkový blok Jupyter je přístupný prostřednictvím JupyterHub. Přihlásit pomocí vašeho místního systému Linux uživatelské jméno a heslo na ***https://\<název DNS virtuálního počítače nebo IP adresu\>: 8000 /***. Všechny konfigurační soubory pro JupyterHub se nacházejí v adresáři **/etc/jupyterhub**.
 
 > [!NOTE]
-> Použití Správce balíčků Pythonu (prostřednictvím `pip` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
+> Tato možnost je k dispozici pouze pro Python 2,7. V Pythonu 3,5 zatím není podporována. Chcete-li spustit, použijte **/Anaconda/bin/python2.7**.
+
+### <a name="jupyterhub"></a>JupyterHub
+
+Anaconda distribuce v DSVM se dodává s Jupyter Notebook, prostředím pro různé platformy pro sdílení kódu Python, R nebo Helena a analýzy. K Jupyter Notebook k dispozici prostřednictvím JupyterHub. Přihlašujete se pomocí místního uživatelského jména a hesla pro Linux na adrese\<https://DSVM DNS nebo IP adrese\>: 8000/. Všechny konfigurační soubory pro JupyterHub se nacházejí v/etc/jupyterhub.
+
+> [!NOTE]
+> Chcete-li použít Správce balíčků Pythonu ( `pip` prostřednictvím příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
+>
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> 
-> 
-> [!NOTE]
-> Použití Instalační služby systému Conda (prostřednictvím `conda` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
+> Chcete-li použít instalační program conda ( `conda` prostřednictvím příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
+>
 >   ```python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
 
-Několik ukázkové poznámkové bloky jsou již nainstalovány ve virtuálním počítači:
+V DSVM je již nainstalováno několik ukázkových poznámkových bloků:
 
-* Zobrazit [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) pro ukázkový poznámkový blok Python.
-* Zobrazit [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) ukázku **R** poznámkového bloku.
-* Zobrazit [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb) pro další ukázku **Python** poznámkového bloku.
+* Ukázkové poznámkové bloky Pythonu:
+  * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
+  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
+* Ukázka poznámkového bloku R:
+  * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
 > [!NOTE]
-> Jazyk Julia je také k dispozici z příkazového řádku na virtuálním počítači Linux datové vědy.
->
->
+> Jazyk Helena je k dispozici také z příkazového řádku na DSVM Linux.
 
-## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) grafického nástroje R pro dolování dat (R analytické nástroje pro další snadno) je. Obsahuje intuitivní rozhraní, které umožňuje snadno načíst, prozkoumat a transformace dat a sestavení a vyhodnocení modelů.  Rattle článku [: Grafické rozhraní dolování dat pro jazyk](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) R poskytuje návod, který předvádí jeho funkce.
+### <a name="rattle"></a>Rattle
 
-Instalace a spuštění Rattle pomocí následujících příkazů:
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *a*nalytická *t*OOL *t*o *L*získat *E*asily) je grafický nástroj R pro dolování dat. Rattle má intuitivní rozhraní, které usnadňuje načítání, prozkoumávání a transformaci dat a vytváření a vyhodnocování modelů. [Rattle: Grafické rozhraní dolování dat pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje funkce Rattle.
+
+Nainstalujte a spusťte Rattle spuštěním těchto příkazů:
 
     if(!require("rattle")) install.packages("rattle")
     require(rattle)
     rattle()
 
 > [!NOTE]
-> Není nutné instalovat na datové VĚDY. Ale Rattle vás můžou přimět k instalaci dalších balíčků při načítání.
->
->
+> Nemusíte instalovat Rattle na DSVM. Při otevření Rattle se ale může zobrazit výzva k instalaci dalších balíčků.
 
-Rattle používá rozhraní založené na kartě. Většina karty odpovídají kroky v [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumáte ho. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Ale poslední karta obsahuje protokol R příkazy se spouští podle Rattle.
+Rattle používá rozhraní založené na kartě. Většina karet odpovídá krokům v rámci vědeckého [zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumání dat. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Poslední karta obsahuje protokol příkazů jazyka R, které byly spuštěny pomocí Rattle.
 
 Načíst a nakonfigurovat datové sady:
 
-* Chcete-li soubor načíst, vyberte **Data** kartu, pak
-* Zvolte volič vedle **Filename** a zvolte **spambaseHeaders.data**.
-* Načíst soubor. Vyberte **Execute** v horní řádek tlačítek. Měli byste vidět shrnutí každého sloupce, včetně jeho identifikované datového typu, ať už jde o vstup, cíl nebo jiným typem proměnné a počtem jedinečných hodnot.
-* Rattle správně zjistila **nevyžádané pošty** sloupce jako cíl. Vyberte sloupec nevyžádané pošty a pak nastavit **cílový datový typ** k **Categoric**.
+1. Chcete-li načíst soubor, vyberte kartu **data** .
+1. Zvolte selektor vedle **filename**a pak vyberte **spambaseHeaders. data**.
+1. Načíst soubor. Vyberte **provést**. Měl by se zobrazit shrnutí každého sloupce, včetně jeho identifikovaného datového typu. bez ohledu na to, zda se jedná o vstup, cíl nebo jiný typ proměnné; a počet jedinečných hodnot.
+1. Rattle správně zjistila **nevyžádané pošty** sloupce jako cíl. Vyberte sloupec **spam** a pak nastavte **cílový datový typ** na **Categoric**.
 
 K prozkoumání dat:
 
-* Vyberte **prozkoumat** kartu.
-* Klikněte na tlačítko **souhrnu**, pak **Execute**, abyste si zobrazili některé informace o typech proměnných a některé souhrnnou statistiku.
-* Chcete-li zobrazit další typy statistické údaje o každé proměnné, vyberte další možnosti, jako je **Describe** nebo **Základy**.
+1. Vyberte **prozkoumat** kartu.
+1. Chcete-li zobrazit informace o typech proměnných a některých souhrnných statistik, vyberte možnost **Souhrn** > **provést**.
+1. Chcete-li zobrazit další typy statistik o jednotlivých proměnných, vyberte další možnosti, například **Popis** nebo **základy**.
 
-**Prozkoumat** kartě můžete také vytvořit mnoho přehledné grafy. K vykreslení histogram dat:
+Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploch. K vykreslení histogram dat:
 
-* Vyberte **distribuce**.
-* Zkontrolujte **Histogram** pro **word_freq_remove** a **word_freq_you**.
-* Vyberte **Provést**. Měli byste vidět oba hustota vykreslení v jednom grafu okno, kde je jasné, že slova "you" zobrazuje mnohem častěji v e-mailů než "remove".
+1. Vyberte **distribuce**.
+1. V případě **word_freq_remove** a **word_freq_you**vyberte **histogram**.
+1. Vyberte **Provést**. V jednom okně grafu by se měla zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
 
-Vykreslení korelace je také zajímavé. Chcete-li vytvořit:
+Tato **korelace** je také zajímavá. Vytvoření grafu:
 
-* Zvolte **korelace** jako **typ**, pak
-* Vyberte **Provést**.
-* Rattle vás upozorní, doporučuje se maximálně 40 proměnné. Vyberte **Ano** k vykreslení zobrazení.
+1. Jako **typ**vyberte **korelace**.
+1. Vyberte **Provést**.
+1. Rattle vás upozorní, doporučuje se maximálně 40 proměnné. Vyberte **Ano** k vykreslení zobrazení.
 
-Existují některé zajímavé korelace, ke kterým: "technologie" je důrazně vztažen k "HP" a "labs", např. To jsou také silně korelována "650", protože kód oblasti dárců datová sada je 650.
+Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_, například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
 
-V okně prozkoumat jsou k dispozici číselné hodnoty korelace mezi slovy. Zajímavé také je poznámka, například, že jsou "technologie" negativně korelována se "vaše" a "peníze".
+Číselné hodnoty pro korelace mezi slovy jsou k dispozici v okně **prozkoumat** . Je zajímavá Poznámka, například tato _technologie_ se negativně koreluje s _vašimi_ _peníze_a.
 
-Rattle můžete transformovat datové sady pro zpracování některé běžné problémy. Například umožňuje měřítko funkce, dává chybějící hodnoty, zpracování odlehlé hodnoty a odeberte proměnné nebo pozorování s chybějící data. Rattle můžete také určit pravidla přidružení mezi připomínky a/nebo proměnné. Tyto karty jsou mimo rozsah pro Tento názorný postup úvodní.
+Rattle můžete transformovat datové sady pro zpracování některé běžné problémy. Může například měnit škálování funkcí, imputace chybějících hodnot, zpracovávat odlehlé hodnoty a odstraňovat proměnné nebo pozorování, které mají chybějící data. Rattle může také identifikovat pravidla přidružení mezi pozorováními a proměnnými. Tyto karty nejsou pokryté v tomto úvodním návodu.
 
-Rattle můžete také provádět analýzu clusteru. Umožňuje vyloučit některé funkce pro usnadnění čtení výstupu. Na **Data** kartě **Ignorovat** vedle každého proměnné s výjimkou těchto deset položek:
+Rattle také může spustit analýzu clusteru. Umožňuje vyloučit některé funkce pro usnadnění čtení výstupu. Na kartě **data** vyberte **Ignorovat** vedle každé z těchto proměnných s výjimkou těchto 10 položek:
 
 * word_freq_hp
 * word_freq_technology
@@ -409,71 +409,69 @@ Rattle můžete také provádět analýzu clusteru. Umožňuje vyloučit někter
 * word_freq_business
 * nevyžádané pošty
 
-Pak přejděte zpátky do **clusteru** kartě **KMeans**a nastavte *počet clusterů* na 4. Potom **provést**. Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvencí "Milan" a "hp" a je pravděpodobně hlediska podniku oprávněný požadavek e-mailů.
+Vraťte se na kartu **clusteru** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Provést**. Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
 
-Sestavení modelu strojového učení stromu jednoduché rozhodnutí:
+Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 
-* Vyberte **modelu** kartě
-* Zvolte **stromu** jako **typ**.
-* Vyberte **Execute** k zobrazení stromu v textové podobě, v okně výstup.
-* Vyberte **nakreslit** tlačítko Zobrazit grafické verze. Ten vypadá velmi podobně jako stromu jsme získali dříve pomocí *rpart*.
+1. Vyberte **modelu** kartě
+1. Pro **typ**vyberte **strom**.
+1. Vyberte **Execute** k zobrazení stromu v textové podobě, v okně výstup.
+1. Vyberte **nakreslit** tlačítko Zobrazit grafické verze. Rozhodovací strom vypadá podobně jako strom, který jsme dříve získali pomocí rpart.
 
-Mezi skvělé funkce Rattle je schopnost rychle vyhodnotit a spustit několik metod machine learning. Tady je postup:
+Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učení a rychle je vyhodnotit. Tady je postup:
 
-* Zvolte **všechny** pro **typ**.
-* Vyberte **Provést**.
-* Po dokončení můžete kliknout na kterýkoli jednotlivý **typ**, třeba **SVM**a prohlédněte si výsledky.
-* Můžete také porovnat výkon jednotlivých modelů na ověření sady s použitím **vyhodnotit** kartu. Například **chybová matice** výběru se dozvíte, chybová matice, celkový chyba a chyba průměrné třídy pro každý model na sadě ověření.
-* Můžete také vykreslení křivky roc s více TŘÍDAMI, provádět analýzu citlivosti a provádět jiné typy vyhodnocení modelu.
+1. Jako **typ**vyberte **vše**.
+1. Vyberte **Provést**.
+1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM**, a zobrazit výsledky.
+1. Můžete také porovnat výkon modelů v sadě ověřování pomocí karty **vyhodnocení** . Například **chybová matice** výběru se dozvíte, chybová matice, celkový chyba a chyba průměrné třídy pro každý model na sadě ověření. Můžete také kreslit křivky ROC, spustit analýzu citlivosti a provádět další typy vyhodnocení modelu.
 
-Jakmile budete hotovi, vytvářet modely, vyberte **protokolu** kartu k zobrazení kódu jazyka R spustit Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
+Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat **exportovat** tlačítko a uložte ho.
 
 > [!NOTE]
-> V aktuální verzi Rattle je chyba. Chcete-li změnit skript nebo použít ho k opakování kroků později, je nutné před *exportem tohoto protokolu* vložit znak #... v textu protokolu.
->
->
+> Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné před exportem **#** tohoto protokolu vložit znak *...* v textu protokolu.
 
-## <a name="postgresql--squirrel-sql"></a>PostgreSQL & Squirrel SQL
-Datové VĚDY se dodává s nainstalovaný systém PostgreSQL. PostgreSQL je relační databáze sofistikované, open source. Tato část ukazuje, jak načíst datovou sadu nevyžádané pošty do PostgreSQL a pak ji dotazujte.
+### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL a SQuirreL SQL
 
-Předtím, než mohou načíst data, budete muset povolit ověřování pomocí hesla z localhost. Na příkazovém řádku:
+Datové VĚDY se dodává s nainstalovaný systém PostgreSQL. PostgreSQL je relační databáze sofistikované, open source. V této části se dozvíte, jak načíst datovou sadu spambase do PostgreSQL a pak na ni zadat dotaz.
+
+Než budete moci načíst data, je nutné, abyste povolili ověřování pomocí hesla od místního hostitele. Na příkazovém řádku spusťte:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
 V dolní části konfiguračního souboru se několik řádků, které podrobně popisují povolených připojení:
 
-    # "local" is for Unix domain socket connections only
+    # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            ident
     # IPv6 local connections:
     host    all             all             ::1/128                 ident
 
-Změňte řádek "Místního připojení prostřednictvím protokolu IPv4" md5 nahrazujícím ident, takže jsme se můžou přihlásit pomocí uživatelského jména a hesla:
+Změňte řádek **místních připojení IPv4** tak, aby používal **MD5** místo **Ident**, abyste se mohli přihlásit pomocí uživatelského jména a hesla:
 
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            md5
 
-A potom restartujte službu postgres:
+Pak restartujte službu PostgreSQL:
 
     sudo systemctl restart postgresql
 
-Chcete-li spustit nástroj psql Terminálové interaktivní pro PostgreSQL jako uživatel integrované postgres, spusťte následující příkaz na příkazovém řádku:
+Pokud chcete jako integrovaného uživatele Postgres spustit *psql* (interaktivní terminál pro PostgreSQL), spusťte tento příkaz:
 
     sudo -u postgres psql
 
-Vytvořte nový uživatelský účet, pomocí stejné uživatelské jméno účtu systému Linux jste aktuálně přihlášeni jako a poskytněte heslo:
+Vytvořte nový uživatelský účet pomocí uživatelského jména účtu systému Linux, který jste použili k přihlášení. Vytvořit heslo:
 
     CREATE USER <username> WITH CREATEDB;
     CREATE DATABASE <username>;
     ALTER USER <username> password '<password>';
     \quit
 
-Potom připojte se k psql jako vaše uživatele:
+Přihlaste se k psql:
 
     psql
 
-A importovat data do nové databáze:
+Importujte data do nové databáze:
 
     CREATE DATABASE spam;
     \c spam
@@ -481,75 +479,75 @@ A importovat data do nové databáze:
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-Teď Pojďme prozkoumat data a spustit potřebné dotazy pomocí **Squirrel SQL**, grafický nástroj, který umožňuje pracovat s databázemi prostřednictvím ovladač JDBC.
+Teď se podívejme na data a spustíme některé dotazy pomocí SQuirreL SQL, což je grafický nástroj, který můžete použít k interakci s databázemi prostřednictvím ovladače JDBC.
 
-Abyste mohli začít, spusťte Squirrel SQL z nabídky aplikace. Nastavení ovladače:
+Začněte tím, že v nabídce **aplikace** otevřete SQuirreL SQL. Nastavení ovladače:
 
-* Vyberte **Windows**, pak **zobrazit ovladače**.
-* Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **upravit ovladače**.
-* Vyberte **Extra třídy cesta**, pak **přidat**.
-* Zadejte ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar*** pro **název souboru** a
-* Vyberte **Open** (Otevřít).
-* Zvolte seznam ovladače a potom vyberte **org.postgresql.Driver** v **název třídy**a vyberte **OK**.
+1. Vyberte možnost **Windows** > **View Drivers**.
+1. Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **Upravit ovladač**.
+1. Vyberte **Další cesta** > ke třídě**Přidat**.
+1. Jako **název souboru**zadejte **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
+1. Vyberte **Open** (Otevřít).
+1. Vyberte možnost **seznam ovladačů**. Jako **název třídy**vyberte **org. PostgreSQL. Driver**a pak vyberte **OK**.
 
 Nastavit připojení k místnímu serveru:
 
-* Vyberte **Windows**, pak **zobrazit aliasy.**
-* Zvolte **+** tlačítko Vytvořit nový alias.
-* Pojmenujte ji *nevyžádané pošty databáze*, zvolte **PostgreSQL** v **ovladač** rozevíracího seznamu.
-* Nastavení adresy URL *jdbc:postgresql://localhost/spam*.
-* Zadejte vaše *uživatelské jméno* a *heslo*.
-* Klikněte na **OK**.
-* Otevřete **připojení** okna, dvakrát klikněte ***nevyžádané pošty databáze*** alias.
-* Vyberte **Connect** (Připojit).
+1. Vyberte možnost **Windows** > **View aliasy.**
+1. Kliknutím na **+** tlačítko vytvořte nový alias. Jako název nového aliasu zadejte **Nevyžádaná databáze**. 
+1. V případě **ovladače**vyberte **PostgreSQL**.
+1. Nastavení adresy URL **jdbc:postgresql://localhost/spam**.
+1. Zadejte své uživatelské jméno a heslo.
+1. Vyberte **OK**.
+1. Otevřete **připojení** okna, dvakrát klikněte **nevyžádané pošty databáze** alias.
+1. Vyberte **Connect** (Připojit).
 
 Pokud chcete spustit některé dotazy:
 
-* Vyberte **SQL** kartu.
-* Například zadejte jednoduchý dotaz `SELECT * from data;` do textového pole dotaz v horní části karty SQL.
-* Stisknutím klávesy **zadejte Ctrl** ho spustit. Ve výchozím nastavení Squirrel SQL vrátí prvních 100 řádků z dotazu.
+1. Vyberte **SQL** kartu.
+1. Do pole dotaz v horní části karty **SQL** zadejte základní dotaz, například `SELECT * from data;`.
+1. Spusťte dotaz stisknutím kombinace kláves CTRL + ENTER. Ve výchozím nastavení vrátí SQuirreL SQL prvních 100 řádků z dotazu.
 
-Existuje mnoho více dotazů, že můžete spustit na tato data prozkoumat. Příklad, jak funguje frekvence slovo *zkontrolujte* se liší mezi nevyžádané pošty se šunkou?
+Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těchto dat. Příklad, jak funguje frekvence slovo *zkontrolujte* se liší mezi nevyžádané pošty se šunkou?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
-Nebo co jsou vlastnosti e-mailů, které často obsahují *3d*?
+Nebo, jaké jsou charakteristiky e-mailu, které často obsahují *3D*?
 
     SELECT * from data order by word_freq_3d desc;
 
-Většina e-mailů, které mají vysokou výskyt *3d* jsou zdánlivě nevyžádané pošty, proto to může být užitečná funkce pro sestavení prediktivního modelu klasifikovat e-maily.
+Většina e-mailů, které mají velký výskyt *3D* , je nevyžádaná. Tyto informace mohou být užitečné při vytváření prediktivního modelu pro klasifikaci e-mailů.
 
-Pokud byste chtěli provést strojového učení s daty uloženými v databázi PostgreSQL, zvažte použití [MADlib](https://madlib.incubator.apache.org/).
+Pokud chcete strojové učení dělat pomocí dat uložených v databázi PostgreSQL, zvažte použití [MADlib](https://madlib.incubator.apache.org/).
 
-## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
-Azure SQL Data Warehouse je cloudová, škálovatelná databáze, která dokáže zpracovávat ohromné objemy dat, relačních i nerelačních. Další informace najdete v tématu [co je Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+
+Azure SQL Data Warehouse je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, relačních i nerelačních. Další informace najdete v tématu [co je Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Pro připojení k datovému skladu a vytvoření tabulky, spusťte následující příkaz z příkazového řádku:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
-Pak do příkazového řádku sqlcmd:
+Na příkazovém řádku nástroje Sqlcmd spusťte tento příkaz:
 
     CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
     GO
 
-Kopírování dat pomocí bcp:
+Zkopírujte data pomocí BCP:
 
     bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
 
 > [!NOTE]
-> Konce řádků ve staženém souboru jsou Windows – vizuální styl, ale bcp očekává stylu systému UNIX, takže potřebujeme říct bcp, která s příznakem - r.
->
->
+> Stažený soubor obsahuje konce řádků ve stylu systému Windows. Nástroj BCP očekává konce řádku ve stylu UNIX. K informování BCP použijte příznak-r.
 
-A dotazování pomocí sqlcmd:
+Pak dotaz pomocí Sqlcmd:
 
     select top 10 spam, char_freq_dollar from spam;
     GO
 
-Také můžete dotazovat pomocí Squirrel SQL. Postupujte podle podobných kroků pro PostgreSQL, pomocí ovladače JDBC Microsoft MSSQL serveru, který se nachází v ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
+Můžete také zadat dotaz pomocí SQuirreL SQL. Použijte postup podobný PostgreSQL pomocí ovladače SQL Server JDBC. Ovladač JDBC je ve složce/usr/share/Java/jdbcdrivers/sqljdbc42.jar.
 
-## <a name="next-steps"></a>Další postup
-Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+## <a name="next-steps"></a>Další kroky
 
-Popis dalších začátku do konce postupy, které popisují kroky v vědecké zpracování týmových dat pro konkrétní scénáře, naleznete v tématu [názorné postupy vědeckého zpracování týmových dat](../team-data-science-process/walkthroughs.md). Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
+Přehled článků, které vás provedou úkoly, které tvoří proces pro datové vědy v Azure, najdete v tématu věnovaném [vědeckému zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+
+Popis komplexních návodů, které ukazují kroky v vědeckém procesu týmového zpracování dat pro konkrétní scénáře, najdete v tématu návody k [týmovým procesům zpracování dat](../team-data-science-process/walkthroughs.md). Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.

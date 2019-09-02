@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516083"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208398"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Reference k funkcím pro jazyk definice pracovního postupu v Azure Logic Apps a Microsoft Flow
 
@@ -23,7 +23,7 @@ Pro definice pracovních postupů v [Azure Logic Apps](../logic-apps/logic-apps-
 > [!NOTE]
 > Tato referenční stránka se vztahuje na Azure Logic Apps i Microsoft Flow, ale zobrazí se v dokumentaci k Azure Logic Apps. I když tato stránka odkazuje konkrétně na Logic Apps, tyto funkce fungují pro toky i aplikace logiky. Další informace o funkcích a výrazech v Microsoft Flow najdete [v tématu použití výrazů v podmínkách](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-Můžete například vypočítat hodnoty pomocí matematických funkcí, jako je například [funkce Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), pokud chcete součet z celých čísel nebo floatů. Tady je několik dalších ukázkových úloh, které můžete provádět s funkcemi:
+Můžete například vypočítat hodnoty pomocí matematických funkcí, jako je například [funkce Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), pokud chcete součet z celých čísel nebo floatů. Zde jsou uvedené Další ukázkové úlohy, které můžete provádět s funkcemi:
 
 | Úloha | Syntaxe funkce | Výsledek |
 | ---- | --------------- | ------ |
@@ -252,6 +252,7 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část výstupu akce, která má více částí. |
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Vrátí výstup akce za běhu. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu parametru, který je popsán v definici pracovního postupu. |
+| [vyústit](../logic-apps/workflow-definition-language-functions-reference.md#result) | Vrátí vstupy a výstupy ze všech akcí uvnitř zadané akce s vymezeným oborem, `For_each`jako například, `Until`a `Scope`. |
 | [signálu](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Vrátí výstup triggeru za běhu nebo jiné páry název-hodnota JSON. Viz také [triggerOutputs](#triggerOutputs) a [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí `body` výstup triggeru za běhu. Viz [Trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Vrátí jednu hodnotu odpovídající názvu klíče v výstupech triggerů *form-data* nebo *Form-Encoded* . |
@@ -638,7 +639,7 @@ A vrátí tento výsledek:`"2018-03-15T00:15:00.0000000Z"`
 
 ### <a name="addproperty"></a>addProperty
 
-Přidejte vlastnost a její hodnotu nebo dvojici název-hodnota do objektu JSON a vraťte aktualizovaný objekt. Pokud objekt již v době běhu existuje, funkce vyvolá chybu.
+Přidejte vlastnost a její hodnotu nebo dvojici název-hodnota do objektu JSON a vraťte aktualizovaný objekt. Pokud vlastnost již v době běhu existuje, funkce se nezdařila a vyvolá chybu.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | Aktualizovaný objekt JSON se zadanou vlastností |
 ||||
 
-*Příklad*
-
-Tento příklad přidá `accountNumber` vlastnost `customerProfile` do objektu, který je převeden na JSON pomocí funkce [JSON ()](#json) .
-Funkce přiřadí hodnotu, která je generována funkcí [GUID ()](#guid) , a vrátí aktualizovaný objekt:
+Chcete-li přidat podřízenou vlastnost do existující vlastnosti, použijte tuto syntaxi:
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| Parametr | Požaduje se | Typ | Popis |
+| --------- | -------- | ---- | ----------- |
+| <*předmětů*> | Ano | Object | Objekt JSON, do kterého chcete přidat vlastnost |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název pro nadřazenou vlastnost, do které chcete přidat podřízenou vlastnost |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má přidat |
+| <*osa*> | Ano | Any | Hodnota, která se má nastavit pro zadanou vlastnost |
+|||||
+
+| Návratová hodnota | type | Popis |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Aktualizovaný objekt JSON, jehož vlastnost nastavena |
+||||
+
+*Příklad 1*
+
+Tento příklad přidá `middleName` vlastnost do objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Objekt již obsahuje `firstName` vlastnosti a `surName` . Funkce přiřadí zadanou hodnotu k nové vlastnosti a vrátí aktualizovaný objekt:
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*Příklad 2*
+
+Tento příklad přidá `middleName` podřízenou vlastnost do existující `customerName` vlastnosti v objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Funkce přiřadí zadanou hodnotu k nové vlastnosti a vrátí aktualizovaný objekt:
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -769,7 +838,7 @@ and(<expression1>, <expression2>, ...)
 
 | Návratová hodnota | type | Popis |
 | ------------ | -----| ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud jsou všechny výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou všechny výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
 ||||
 
 *Příklad 1*
@@ -1683,7 +1752,7 @@ empty([<collection>])
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu pravda, pokud je kolekce prázdná. Vrátí hodnotu false, pokud není prázdná. |
+| true nebo false | Logická hodnota | Vrátí hodnotu pravda, pokud je kolekce prázdná. Vrátí hodnotu false, pokud není prázdná. |
 ||||
 
 *Příklad*
@@ -1720,7 +1789,7 @@ endsWith('<text>', '<searchText>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Boolean | Vrátí hodnotu pravda, pokud je nalezen poslední podřetězec. Pokud se nenajde, vrátí se hodnota false. |
+| true nebo false  | Logická hodnota | Vrátí hodnotu pravda, pokud je nalezen poslední podřetězec. Pokud se nenajde, vrátí se hodnota false. |
 ||||
 
 *Příklad 1*
@@ -1761,7 +1830,7 @@ equals('<object1>', '<object2>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud jsou obě ekvivalentní. Vrátí hodnotu false, pokud není ekvivalentní. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou obě ekvivalentní. Vrátí hodnotu false, pokud není ekvivalentní. |
 ||||
 
 *Příklad*
@@ -2046,7 +2115,7 @@ greater('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo menší než druhá hodnota. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2083,7 +2152,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota větší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota menší než druhá hodnota. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota menší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2149,7 +2218,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*vyjádření*> | Ano | Boolean | Výraz, který se má kontrolovat |
+| <*vyjádření*> | Ano | Logická hodnota | Výraz, který se má kontrolovat |
 | <*valueIfTrue*> | Ano | Any | Hodnota, která se má vrátit, když je výraz pravdivý |
 | <*valueIfFalse*> | Ano | Any | Hodnota, která se má vrátit, pokud je výraz nepravdivý |
 |||||
@@ -2625,7 +2694,7 @@ less('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo větší než druhá hodnota. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2662,7 +2731,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Boolean | Vrátí hodnotu true, pokud je první hodnota menší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota větší než druhá hodnota. |
+| true nebo false  | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota větší než druhá hodnota. |
 ||||
 
 *Příklad*
@@ -2868,12 +2937,12 @@ not(<expression>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*vyjádření*> | Ano | Boolean | Výraz, který se má kontrolovat |
+| <*vyjádření*> | Ano | Logická hodnota | Výraz, který se má kontrolovat |
 |||||
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Boolean | Vrátí hodnotu true, pokud je výraz nepravdivý. Vrátí hodnotu false, pokud má výraz hodnotu true. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je výraz nepravdivý. Vrátí hodnotu false, pokud má výraz hodnotu true. |
 ||||
 
 *Příklad 1*
@@ -2917,7 +2986,7 @@ or(<expression1>, <expression2>, ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*výraz1*>, <*Výraz2*>,... | Ano | Boolean | Výrazy, které mají být zkontrolovány |
+| <*výraz1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
 |||||
 
 | Návratová hodnota | type | Popis |
@@ -3152,7 +3221,7 @@ A vrátí tento výsledek:`"the new string"`
 
 ### <a name="removeproperty"></a>removeProperty
 
-Odebere vlastnost z objektu a vrátí aktualizovaný objekt.
+Odebere vlastnost z objektu a vrátí aktualizovaný objekt. Pokud vlastnost, kterou se pokoušíte odstranit, neexistuje, funkce vrátí původní objekt.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*updated-object*> | Object | Aktualizovaný objekt JSON bez zadané vlastnosti |
 ||||
 
-*Příklad*
-
-Tento příklad odebere `"accountLocation"` vlastnost `"customerProfile"` z objektu, který je převeden na JSON pomocí funkce [JSON ()](#json) a vrátí aktualizovaný objekt:
+Chcete-li odebrat podřízenou vlastnost z existující vlastnosti, použijte tuto syntaxi:
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| Parametr | Požaduje se | Typ | Popis |
+| --------- | -------- | ---- | ----------- |
+| <*předmětů*> | Ano | Object | Objekt JSON, jehož vlastnost se má odebrat |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete odebrat |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název pro podřízenou vlastnost, která se má odebrat |
+|||||
+
+| Návratová hodnota | type | Popis |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Aktualizovaný objekt JSON, jehož podřízená vlastnost byla odebrána |
+||||
+
+*Příklad 1*
+
+Tento příklad odebere `middleName` vlastnost z objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) a vrátí aktualizovaný objekt:
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*Příklad 2*
+
+Tento příklad odebere `middleName` podřízenou vlastnost `customerName` z nadřazené vlastnosti v objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) a vrátí aktualizovaný objekt:
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>výsledek
+
+Vrátí vstupy a výstupy ze všech akcí, které jsou uvnitř zadané akce s vymezeným oborem, jako `For_each`je `Until`například, `Scope` nebo akce. Tato funkce je užitečná pro vrácení výsledků z neúspěšné akce, abyste mohli diagnostikovat a zpracovávat výjimky. Další informace najdete v tématu [získání kontextu a výsledků pro selhání](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+
+```
+result('<scopedActionName>')
+```
+
+| Parametr | Požaduje se | Typ | Popis |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | Ano | Řetězec | Název akce s vymezeným oborem, ze které se mají vrátit vstupy a výstupy ze všech vnitřních akcí |
+||||
+
+| Návratová hodnota | type | Popis |
+| ------------ | ---- | ----------- |
+| <*Array – objekt*> | Array – objekt | Pole, které obsahuje pole vstupů a výstupů z každé akce, která se zobrazí v rámci zadané akce s oborem |
+||||
+
+*Příklad*
+
+Tento příklad vrátí vstupy a výstupy z každé iterace akce http uvnitř `For_each` smyčky `result()` pomocí funkce v `Compose` akci:
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+Zde je uvedeno, jak vrácený příklad pole může vypadat tam, `outputs` kde vnější objekt obsahuje vstupy a výstupy z každé iterace akcí `For_each` uvnitř akce.
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-Nastavte hodnotu vlastnosti objektu a vraťte aktualizovaný objekt.
-Chcete-li přidat novou vlastnost, můžete použít tuto funkci nebo funkci [AddProperty ()](#addProperty) .
+Nastavte hodnotu vlastnosti objektu JSON a vraťte aktualizovaný objekt. Pokud vlastnost, kterou se pokoušíte nastavit, neexistuje, vlastnost se přidá do objektu. Chcete-li přidat novou vlastnost, použijte funkci [AddProperty ()](#addProperty) .
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*osa*> | Ano | Any | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
+Chcete-li nastavit podřízenou vlastnost v podřízeném objektu, použijte `setProperty()` místo toho vnořené volání. V opačném případě funkce vrátí pouze podřízený objekt jako výstup.
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| Parametr | Požaduje se | Typ | Popis |
+| --------- | -------- | ---- | ----------- |
+| <*předmětů*> | Ano | Object | Objekt JSON, jehož vlastnost má být nastavena |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete nastavit |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má nastavit |
+| <*osa*> | Ano | Any | Hodnota, která se má nastavit pro zadanou vlastnost |
+|||||
+
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Aktualizovaný objekt JSON, jehož vlastnost nastavena |
 ||||
 
-*Příklad*
+*Příklad 1*
 
-Tento příklad nastaví `"accountNumber"` vlastnost `"customerProfile"` na objektu, který je převeden na JSON pomocí funkce [JSON ()](#json) .
-Funkce přiřadí hodnotu generovanou funkcí [GUID ()](#guid) a vrátí aktualizovaný objekt JSON:
+Tento příklad nastaví `surName` vlastnost v objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Funkce přiřadí zadanou hodnotu k vlastnosti a vrátí aktualizovaný objekt:
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*Příklad 2*
+
+Tento příklad nastaví `surName` podřízenou vlastnost `customerName` pro nadřazenou vlastnost v objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Funkce přiřadí zadanou hodnotu k vlastnosti a vrátí aktualizovaný objekt:
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+Tady je aktuální objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+Tady je aktualizovaný objekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>
@@ -3384,7 +3702,7 @@ startsWith('<text>', '<searchText>')
 
 | Návratová hodnota | type | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false  | Boolean | Vrátí hodnotu pravda, pokud je nalezen počáteční podřetězec. Pokud se nenajde, vrátí se hodnota false. |
+| true nebo false  | Logická hodnota | Vrátí hodnotu pravda, pokud je nalezen počáteční podřetězec. Pokud se nenajde, vrátí se hodnota false. |
 ||||
 
 *Příklad 1*

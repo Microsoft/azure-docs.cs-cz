@@ -156,6 +156,9 @@
     - name: Aktualizace existujících přiřazení z portálu
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: Konfigurace prostředí pro operátora podrobného plánu
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: Správa podrobných plánů jako kódu (komunita)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: Řešení potíží

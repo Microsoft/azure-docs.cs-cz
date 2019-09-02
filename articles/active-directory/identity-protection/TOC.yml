@@ -32,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: Konfigurace zásad rizik uživatelů
           href: howto-user-risk-policy.md
-        - name: Zavření aktivních rizikových událostí
+        - name: Zavření aktivních detekcí rizik
           href: howto-close-active-risk-events.md
         - name: Odblokování uživatelů
           href: howto-unblock-user.md
-        - name: Simulace rizikových událostí
+        - name: Simulace detekce rizik
           href: playbook.md
         - name: Nejčastější dotazy
           href: faqs.md
@@ -46,9 +46,9 @@
           href: overview-v2.md
         - name: Přehled zabezpečení
           href: security-overview.md
-        - name: Prozkoumávání rizikových uživatelů a přihlášení
-          href: howto-investigate-risky-users-signins.md
-        - name: Poskytnutí zpětné vazby k rizikovým událostem
+        - name: Šetření rizik
+          href: howto-investigate-risk.md
+        - name: Poskytnutí zpětné vazby k detekcím rizik
           href: howto-provide-risk-event-feedback.md
         - name: Konfigurace zásady rizik
           href: howto-configure-risk-policies.md
@@ -58,7 +58,7 @@
   items:
     - name: Použití rozhraní Microsoft Graph API
       href: graph-get-started.md
-    - name: Rizikové události
+    - name: Detekce rizik
       href: risk-events-reference.md
     - name: Glosář
       href: glossary.md

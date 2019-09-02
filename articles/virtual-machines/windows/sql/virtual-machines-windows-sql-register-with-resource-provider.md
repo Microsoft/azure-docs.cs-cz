@@ -7,18 +7,19 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4e217ce3fcfae0f7d103c545ff385f2dffe582d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100495"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208339"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -38,13 +39,15 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem pr
 
 - [Předplatného Azure](https://azure.microsoft.com/free/).
 - [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). 
-- Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) a [PowerShellu](/powershell/azure/new-azureps-module-az). 
+- Nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo [PowerShellu](/powershell/azure/new-azureps-module-az). 
 
 
 ## <a name="register-with-sql-vm-resource-provider"></a>Zaregistrovat u poskytovatele prostředků virtuálního počítače SQL
-Pokud na virtuálním počítači není nainstalované [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , můžete se zaregistrovat s poskytovatelem prostředků SQL VM zadáním režimu zjednodušené správy SQL. V režimu zjednodušené správy SQL bude poskytovatel prostředků SQL VM automaticky instalovat rozšíření SQL IaaS v [jednoduchém režimu](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) a ověřit metadata SQL Server instance; Služba SQL Server službu nebude restartována. Při registraci s poskytovatelem prostředků SQL VM je nutné zadat typ licence SQL Server, který je požadován buď jako "PAYG" nebo "AHUB".
+Pokud na virtuálním počítači není nainstalované [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , můžete s poskytovatelem prostředků SQL VM zaregistrovat zadáním režimu zjednodušené správy SQL. 
 
-Registrace u poskytovatele prostředků virtuálního počítače SQL v [odlehčeném režimu](virtual-machines-windows-sql-server-agent-extension.md#install-in-lightweight-mode) zajistí dodržování předpisů a umožní flexibilní licencování i aktualizace SQL Server edice na pracovišti. Instance clusteru s podporou převzetí služeb při selhání a nasazení s více instancemi se dají zaregistrovat s poskytovatelem prostředků SQL VM jenom ve zjednodušeném režimu. Podle pokynů v Azure Portal můžete upgradovat na [úplný režim](virtual-machines-windows-sql-server-agent-extension.md#install-in-full-mode) a povolit kompletní sadu funkcí spravovatelnosti pomocí SQL Server restartování kdykoli. 
+V případě, že během procesu registrace je určena odlehčená, poskytovatel prostředků virtuálního počítače SQL automaticky nainstaluje rozšíření SQL IaaS v [jednoduchém režimu](#change-management-modes) a ověří metadata SQL Server instance. Služba SQL Server službu nebude restartována. Při registraci s poskytovatelem prostředků SQL VM je nutné zadat typ licence SQL Server, který je požadován buď jako "PAYG" nebo "AHUB".
+
+Registrace u poskytovatele prostředků virtuálního počítače SQL v odlehčeném režimu zajistí dodržování předpisů a umožní flexibilní licencování i aktualizace SQL Server edice na pracovišti. Instance clusteru s podporou převzetí služeb při selhání a nasazení s více instancemi se dají zaregistrovat s poskytovatelem prostředků SQL VM jenom ve zjednodušeném režimu. Můžete kdykoli [upgradovat](#change-management-modes) na režim úplné správy, ale v takovém případě bude služba SQL Server restartována. 
 
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
@@ -59,7 +62,7 @@ Pomocí následujícího fragmentu kódu prostředí PowerShell Zaregistrujte SQ
      # Register SQL VM with 'Lightweight' SQL IaaS agent
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB';sqlManagement='LightWeight'}  
+        -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG';sqlManagement='LightWeight'}  
   
   ```
 
@@ -70,7 +73,7 @@ Pro placené edice (Enterprise nebo Standard):
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
 
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type AHUB 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
 
   ```
 
@@ -83,7 +86,7 @@ Bezplatné edice (Developer, web nebo Express):
   ```
 ---
 
-Pokud je na virtuálním počítači už nainstalovaná přípona SQL IaaS, pak registrace pomocí poskytovatele prostředků SQL VM jednoduše vytvoří prostředek metadat typu Microsoft. SqlVirtualMachine/SqlVirtualMachines. Níže je fragment kódu pro registraci ve zprostředkovateli prostředků SQL VM, pokud je rozšíření SQL IaaS již na virtuálním počítači nainstalováno. Při registraci s poskytovatelem prostředků SQL VM je nutné zadat typ licence SQL Server, který je požadován buď jako "PAYG" nebo "AHUB".
+Pokud se rozšíření SQL IaaS nainstalovalo na virtuální počítač ručně, můžete ho zaregistrovat u poskytovatele prostředků SQL VM v plném režimu tak, že jednoduše vytvoříte prostředek metadat typu Microsoft. SqlVirtualMachine/SqlVirtualMachines. Níže je fragment kódu pro registraci ve zprostředkovateli prostředků SQL VM, pokud je rozšíření SQL IaaS již na virtuálním počítači nainstalováno. Je nutné zadat typ licence SQL Server požadovaná jako ' PAYG ' nebo ' AHUB '. Chcete-li se zaregistrovat v režimu úplné správy, použijte následující příkaz prostředí PowerShell:
 
   ```powershell-interactive
   # Get the existing  Compute VM
@@ -92,13 +95,13 @@ Pokud je na virtuálním počítači už nainstalovaná přípona SQL IaaS, pak 
    # Register with SQL VM resource provider
    New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'}
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'}
   ```
 
 
 ## <a name="register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms"></a>Registrace SQL Server 2008 nebo 2008 R2 na virtuálních počítačích s Windows Serverem 2008
 
-SQL Server 2008 a 2008 R2 nainstalované v systému Windows Server 2008 je možné zaregistrovat u poskytovatele prostředků SQL VM v režimu [No-agent](virtual-machines-windows-sql-server-agent-extension.md) . Tato možnost zaručuje dodržování předpisů a umožňuje monitorovat SQL Server virtuálním počítačem v Azure Portal s omezenými funkcemi.
+SQL Server 2008 a 2008 R2 nainstalované v systému Windows Server 2008 je možné zaregistrovat u poskytovatele prostředků SQL VM v [režimu No-agent](#change-management-modes). Tato možnost zaručuje dodržování předpisů a umožňuje monitorovat SQL Server virtuálním počítačem v Azure Portal s omezenými funkcemi.
 
 Následující tabulka uvádí přijatelné hodnoty pro parametry zadané během registrace:
 
@@ -118,7 +121,7 @@ K registraci instance SQL Server 2008 nebo 2008 R2 v instanci Windows Server 200
           
     New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
       -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
-      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='AHUB'; `
+      -Properties @{virtualMachineResourceId=$vm.Id;SqlServerLicenseType='PAYG'; `
        sqlManagement='NoAgent';sqlImageSku='Standard';sqlImageOffer='SQL2008R2-WS2008'}
   ```
 
@@ -126,7 +129,7 @@ K registraci instance SQL Server 2008 nebo 2008 R2 v instanci Windows Server 200
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
-   --license-type AHUB --sql-mgmt-type NoAgent 
+   --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
 
@@ -166,6 +169,67 @@ Ověřte aktuální SQL Server stav registrace virtuálního počítače pomocí
 ---
 
 Chyba naznačuje, že virtuální počítač SQL Server nebyl zaregistrován u poskytovatele prostředků. 
+
+## <a name="change-management-modes"></a>Režimy správy změn
+
+Existují tři režimy správy pro rozšíření SQL Server IaaS: 
+
+- **Úplný** režim zajišťuje všechny funkce, ale vyžaduje restartování oprávnění SQL Server a správce systému. Tato možnost je nainstalována ve výchozím nastavení. Použijte ji ke správě SQL Server virtuálního počítače s jedinou instancí. 
+
+- **Odlehčený** nevyžaduje restartování SQL Server, ale podporuje pouze změnu typu licence a edice SQL Server. Tuto možnost použijte pro SQL Server virtuálních počítačů s více instancemi nebo pro účast v instanci clusteru s podporou převzetí služeb při selhání (FCI). 
+
+- Neagentem je vyhrazená SQL Server 2008 a SQL Server 2008 R2 nainstalované v systému Windows Server 2008. 
+
+Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí PowerShell: 
+
+  ```powershell-interactive
+     #Get the SqlVirtualMachine
+     $sqlvm = Get-AzResource -Name $vm.Name  -ResourceGroupName $vm.ResourceGroupName  -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines
+     $sqlvm.Properties.sqlManagement
+  ```
+
+SQL Server virtuální počítače, které mají nainstalovanou zjednodušenou příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba odinstalaci rozšíření SQL IaaS a instalaci znovu. 
+
+Postup upgradu režimu agenta na úplný: 
+
+
+### <a name="azure-portal"></a>portál Azure
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přejít na prostředek [virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
+1. Vyberte svůj virtuální počítač SQL Server a vyberte **Přehled**. 
+1. V případě SQL Server virtuálních počítačů pomocí agenta nebo režimu zjednodušeného IaaS vyberte možnost **jediný typ licence a aktualizace edice jsou k dispozici ve zprávě rozšíření SQL IaaS** .
+
+   ![Výběry pro změnu režimu z portálu](media/virtual-machines-windows-sql-server-agent-extension/change-sql-iaas-mode-portal.png)
+
+1. Zaškrtněte políčko **Souhlasím s restartováním služby SQL Server na virtuálním počítači** a pak vyberte **Potvrdit** , abyste upgradovali režim IaaS na úplný. 
+
+    ![Zaškrtávací políčko pro vyjádření souhlasu s restartováním služby SQL Server na virtuálním počítači](media/virtual-machines-windows-sql-server-agent-extension/enable-full-mode-iaas.png)
+
+### <a name="command-line"></a>Příkazový řádek
+
+# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+
+Spusťte následující příkaz AZ CLI Code fragment:
+
+  ```azurecli-interactive
+  # Update to full mode
+
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Spusťte následující fragment kódu prostředí PowerShell:
+
+  ```powershell-interactive
+  # Update to full mode
+
+  $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+  $SqlVm.Properties.sqlManagement="Full"
+  $SqlVm | Set-AzResource -Force
+  ```
+---
 
 ## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>Registrace poskytovatele prostředků virtuálního počítače SQL pomocí předplatného 
 
@@ -296,7 +360,7 @@ Ano. SQL Server instancí clusteru s podporou převzetí služeb při selhání 
 
 Ano. Pokud se účastníte konfigurace skupiny dostupnosti AlwaysOn, neexistují žádná omezení k registraci instance SQL Server na virtuálním počítači Azure s poskytovatelem prostředků SQL VM.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v následujících článcích: 
 
