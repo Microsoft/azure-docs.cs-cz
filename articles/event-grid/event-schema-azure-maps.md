@@ -119,9 +119,9 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | apiCategory | string | Rozhraní API kategorie události. |
 | apiName | string | Název rozhraní API události. |
-| issues | objekt | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
+| issues | object | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
 | responseCode | číslo | Kód odpovědi HTTP |
-| geometries | objekt | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
+| geometries | object | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
 
 Objekt error je vrácena, když dojde k chybě v rozhraní API pro mapy. Objekt error má následující vlastnosti:
 

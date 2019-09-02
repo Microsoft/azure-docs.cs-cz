@@ -110,18 +110,18 @@ Objekty blob vrácené jednotlivě v souladu s následujícím schématem JSON:
 
 | Atribut | type | Popis |
 | --- | --- | --- |
-| **id** | Řetězec | Jedinečný identifikátor objektu BLOB |
-| **name** |Řetězec | Uživatelsky přívětivý název objektu BLOB |
-| **parentId** | Řetězec | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
-| **type** | Řetězec | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
+| **id** | String | Jedinečný identifikátor objektu BLOB |
+| **name** |String | Uživatelsky přívětivý název objektu BLOB |
+| **parentId** | String | Nadřazená entita k přidružení objektu BLOB k (prostorům, zařízením nebo uživatelům) |
+| **type** | String | Typ objektu BLOB – nejde použít *typ* a *typeId* .  |
 | **typeId** | Integer | ID typu objektu BLOB – nelze použít *typ* a *typeId* |
-| **subtype** | Řetězec | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
+| **subtype** | String | Podtyp objektu BLOB – nelze použít *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | ID podtypu objektu BLOB – nejde použít podtype a *subtypeId* . |
-| **sharing** | Řetězec | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
-| **název** | Řetězec | Přizpůsobený popis objektu BLOB |
+| **sharing** | String | Zda je možné objekt BLOB sdílet-enum [`None`, `Tree`, `Global`] |
+| **název** | String | Přizpůsobený popis objektu BLOB |
 | **contentInfos** | Array | Určuje informace o nestrukturovaných metadatech včetně verze |
-| **fullName** | Řetězec | Úplný název objektu BLOB |
-| **spacePaths** | Řetězec | Cesta k prostoru |
+| **fullName** | String | Úplný název objektu BLOB |
+| **spacePaths** | String | Cesta k prostoru |
 
 Metadata objektů BLOB jsou vždycky dodávána jako první blok s **typem** `application/json` obsahu nebo jako `.json` soubor. Data souborů se dodávají ve druhém bloku a můžou být z libovolného podporovaného typu MIME.
 
