@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644882"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209629"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -338,6 +338,10 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 - `CREATE ASSEMBLY FROM FILE`není podporováno. Viz [vytvořit sestavení ze souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nejde odkazovat na soubory. Viz [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Databázová pošta (db_mail)
+ - `sp_send_dbmail`nelze odeslat atachments pomocí @file_attachments parametru. Tento postup nelze vytvořit v místním systému souborů a v jeho rozsahu nebo úložišti objektů BLOB v Azure.
+ - Podívejte se na známé problémy související `@query` s parametrem a ověřením.
+ 
 ### <a name="dbcc"></a>DBCC
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
@@ -536,6 +540,14 @@ Maximální velikost `tempdb` souboru nemůže být větší než 24 GB na jádr
 Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Známé problémy
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověření proto k externím poštovním serverům pomocí zabezpečeného připojení (SSL).
+
+**Datum** Srpna 2019
+
+Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připojení (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) , se nemůže ověřit na některých e-mailových serverech mimo Azure. Jedná se o problém s konfigurací zabezpečení, který bude brzy vyřešen.
+
+**Odstraníte** Dočasné odebrání zabezpečeného připojení (SSL) vytvoří konfiguraci databázového e-mailu, dokud se problém nevyřeší. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.
 

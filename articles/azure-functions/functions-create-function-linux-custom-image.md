@@ -1,22 +1,19 @@
 ---
 title: Vytvoření Azure Functions na platformě Linux s použitím vlastní image
 description: Naučte se vytvářet funkce služby Azure Functions běžící na vlastní imagi Linuxu.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562929"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210172"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce na platformě Linux pomocí vlastní image
 
@@ -56,7 +53,7 @@ Můžete také použít [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="create-the-local-function-app-project"></a>Vytvoření projektu funkce místní aplikace
 
-Spuštěním následujícího příkazu z příkazového řádku vytvoříte projekt aplikace funkcí ve složce `MyFunctionProj` aktuálního místního adresáře.
+Spuštěním následujícího příkazu z příkazového řádku vytvoříte projekt aplikace funkcí ve složce `MyFunctionProj` aktuálního místního adresáře. V případě projektu v Pythonu [musíte běžet ve virtuálním prostředí](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících
 
 * `dotnet`: vytvoří projekt knihovny tříd .NET Core (. csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
-* `python`: vytvoří projekt Pythonu.
+* `python`: vytvoří projekt Pythonu.  
 
 Při spuštění příkazu se zobrazí něco jako následující výstup:
 

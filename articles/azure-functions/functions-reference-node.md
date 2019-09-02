@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68949892"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
@@ -418,7 +418,7 @@ Když pracujete s triggery HTTP, můžete získat přístup k objektům požadav
 
 Následující tabulka ukazuje verzi Node. js, kterou používá každá hlavní verze běhového modulu Functions:
 
-| Verze funkcí | Verze Node.js | 
+| Verze funkcí | Verze Node. js | 
 |---|---|
 | verze | 6.11.2 (uzamčeno modulem runtime) |
 | 2.x  | _Aktivní LTS_ a _Údržba LTS_ verze Node. js (Doporučené 8.11.1 a 10.14.1). Nastavte verzi pomocí [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings)WEBSITE_NODE_DEFAULT_VERSION.|
@@ -688,7 +688,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v následujících materiálech:
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 49f86a6a8858fd0ef3085ed571f3348d33f70c8d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 16dd40a521a9b0a240574c2f177f896c31508a37
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966572"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211701"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -32,6 +32,7 @@ Data z databáze DB2 můžete kopírovat do libovolného podporovaného úloži�
 
 Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB2 s architekturou Distributed relačních databází (DRDA) SQL Access Manager (SQLAM) verze 9, 10 a 11:
 
+* IBM DB2 pro z/OS 12
 * IBM DB2 pro z/OS 11,1
 * IBM DB2 pro z/OS 10,1
 * IBM DB2 pro i 7,3
@@ -106,7 +107,7 @@ Chcete-li kopírovat data z DB2, nastavte vlastnost Type datové sady na **rela�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **Relační objekt** | Ano |
-| tableName | Název tabulky v databázi DB2 | Ne (když je zadán zdroj aktivity "dotaz") |
+| tableName | Název tabulky v databázi DB2 | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

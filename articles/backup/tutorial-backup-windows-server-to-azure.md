@@ -6,15 +6,15 @@ manager: carmonm
 keywords: windows server back up; back up windows server; back up and disaster recovery
 ms.service: backup
 ms.topic: tutorial
-ms.date: 8/22/2018
+ms.date: 08/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: f72e43eab51708365895d37c30d08ff823f93626
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467034"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210093"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -141,7 +141,7 @@ Vytvořili jste plán spouštění úloh zálohování. Server jste však ješt�
 4.  Po dokončení prvotní zálohy se v konzole agenta MARS v podokně **Úlohy** zobrazí stav **Úloha byla dokončena**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky: 
  

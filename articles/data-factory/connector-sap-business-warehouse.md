@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z SAP BW pomocí služby Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z řešení SAP Business Warehouse úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z SAP BW pomocí Azure Data Factory | Microsoft Docs
+description: Naučte se, jak kopírovat data ze SAP Business Warehouse do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,63 +10,66 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cd17dcb7a9f68c25617c9e6b928ddebebcdbddbe
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60309109"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211718"
 ---
-# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat ze SAP Business Warehouse pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Aktuální verze](connector-sap-business-warehouse.md)
 
-Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat z SAP Business Warehouse (BW) ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLe). Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+
+>[!TIP]
+>Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Kopírování dat z řešení SAP Business Warehouse do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z SAP Business Warehouse můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor SAP Business Warehouse podporuje:
 
-- SAP Business Warehouse **verze 7.x**.
-- Kopírování dat z **InfoCubes a QueryCubes** (včetně BEx dotazy) s dotazy MDX.
+- SAP Business Warehouse **verze 7. x**.
+- Kopírování dat z **InfoCubes a QueryCubes** (včetně dotazů BEx) pomocí dotazů MDX.
 - Kopírování dat pomocí základního ověřování.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít tento konektor SAP Business Warehouse, je potřeba:
+K použití tohoto konektoru SAP Business Warehouse potřebujete:
 
-- Nastavte modul Integration Runtime. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
-- Nainstalujte **knihovna SAP NetWeaver** na počítači prostředí Integration Runtime. SAP Netweaver knihovny můžete získat od správce SAPU nebo přímo z [SAP Software Download Center](https://support.sap.com/swdc). Hledat **SAP Poznámka #1025361** na umístění ke stažení nejnovější verze. Ujistěte se, že vyberete **64-bit** SAP NetWeaver knihovny, která odpovídá vaší instalaci modulu Integration Runtime. Nainstalujte všechny soubory zahrnuté v SAP NetWeaver RFC SDK podle SAP Note. SAP NetWeaver knihovny je také součástí instalace SAP Client Tools.
+- Nastavte Integration Runtime pro místní hostování. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
+- Na Integration Runtime počítač nainstalujte **knihovnu SAP NetWeaver** . Knihovnu SAP NetWeaver Library můžete získat od správce SAP nebo přímo z [webu SAP software Download Center](https://support.sap.com/swdc). Vyhledejte **#1025361 poznámky SAP** a získejte umístění pro stažení nejnovější verze. Ujistěte se, že jste vybrali **64** knihovnu SAP NetWeaver, která odpovídá vaší instalaci Integration runtime. Pak nainstalujte všechny soubory zahrnuté v sadě SAP NetWeaver RFC SDK podle poznámky SAP. Knihovna SAP NetWeaver Library je také součástí instalace klientských nástrojů SAP.
 
 >[!TIP]
->Chcete-li potíže s připojením k SAP BW, ujistěte se, že:
->- Všechny závislosti knihoven extrahují z NetWeaver RFC SDK se ve složce %windir%\system32. Má obvykle icudt34.dll icuin34.dll, icuuc34.dll, libicudecnumber.dll, souboru librfc32.dll, libsapucum.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll.
->- Potřebné porty používané pro připojení k serveru SAP jsou povolené na místní prostředí IR počítače, které jsou obvykle port 3300 a 3201.
+>Pokud chcete řešit potíže s připojením SAP BW, ujistěte se, že:
+>- Všechny knihovny závislostí extrahované ze sady NetWeaver RFC SDK jsou umístěné ve složce%Windir%\System32. Obvykle má icudt34. dll, icuin34. dll, icuuc34. dll, libicudecnumber. dll, librfc32. dll, libsapucum. dll, sapcrypto. dll, sapcryto_old. dll, sapnwrfc. dll.
+>- Potřebné porty používané pro připojení k serveru SAP jsou povoleny v místním počítači IR, což jsou obvykle porty 3300 a 3201.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor SAP Business Warehouse.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor SAP Business Warehouse.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **SapBw** | Ano |
-| server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
-| systemNumber | Číslo systému systému SAP BW.<br/>Povolené hodnoty: dvě číslice desetinné číslo reprezentované jako řetězec. | Ano |
-| clientId | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: tři číslice desetinné číslo reprezentované jako řetězec. | Ano |
+| type | Vlastnost Type musí být nastavená na: **SapBw** | Ano |
+| Server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
+| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
+| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
 | userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | password | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
 **Příklad:**
 
@@ -95,9 +98,9 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje datové sady SAP BW.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných sadou SAP BW DataSet.
 
-Ke zkopírování dat z SAP BW, nastavte vlastnost typ datové sady na **RelationalTable**. Přestože nejsou žádné vlastnosti specifické pro typ. podporované pro SAP BW datové sady typu RelationalTable.
+Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **relační**. Neexistují žádné vlastnosti specifické pro typ pro SAP BW datovou sadu relačních objektů typu.
 
 **Příklad:**
 
@@ -117,16 +120,16 @@ Ke zkopírování dat z SAP BW, nastavte vlastnost typ datové sady na **Relatio
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporována zdroji SAP BW.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem SAP BW.
 
 ### <a name="sap-bw-as-source"></a>SAP BW jako zdroj
 
-Ke zkopírování dat z SAP BW, nastavte typ zdroje v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z SAP BW, nastavte typ zdroje v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
-| query | Určuje dotaz MDX číst data z instance SAP BW. | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Ano |
 
 **Příklad:**
 
@@ -160,30 +163,30 @@ Ke zkopírování dat z SAP BW, nastavte typ zdroje v aktivitě kopírování do
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-bw"></a>Mapování datového typu pro SAP BW
+## <a name="data-type-mapping-for-sap-bw"></a>Mapování datových typů pro SAP BW
 
-Kopírování dat ze SAP BW, se používají následující mapování z datových typů SAP BW na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
+Při kopírování dat z SAP BW se z SAP BW datových typů používají následující mapování pro Azure Data Factory dočasných datových typů. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| Typ dat SAP BW | Data factory dočasné datový typ |
+| SAP BW datový typ | Data factory dočasné datový typ |
 |:--- |:--- |
 | ACCP | Int |
 | CHAR | String |
 | CLNT | String |
 | CURR | Decimal |
 | CUKY | String |
-| DEC | Decimal |
+| 18.12 | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | String |
+| JAZYK | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
-| RAW | Byte[] |
+| ZÍSKÁNÍ | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
+| ŘETEZCE | String |
 | UNIT | String |
 | DATS | String |
 | NUMC | String |

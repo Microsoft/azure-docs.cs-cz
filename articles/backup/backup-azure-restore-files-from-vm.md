@@ -7,14 +7,14 @@ manager: carmonm
 keywords: obnovení na úrovni položek; obnovení souborů ze zálohy virtuálního počítače Azure; obnovení souborů z virtuálního počítače Azure
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/01/2019
+ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 67ba9ba9bc85213ec479a90d205ed9570c62bf8c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954611"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210366"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -68,7 +68,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
     - download.microsoft.com
     - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
         - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.com (pro Azure Public zeměpisných oblastech)
-        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.cn (pro Azure Čína)
+        - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.cn (pro Azure Čína 21Vianet)
         - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.us (pro státní správu USA Azure)
         - https:\//pod01-REC2.Geo-Name.Backup.windowsazure.de (pro Německo Azure)
     - odchozí port 3260
@@ -247,7 +247,7 @@ Tato funkce byla sestavena pro přístup k datům virtuálních počítačů, an
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Vybrat bod obnovení (který může vygenerovat skript)
 
-Skript poskytuje přístup k datům virtuálních počítačů, je důležité regulovat, kdo ho může vygenerovat na prvním místě. Jeden se musí přihlásit do Azure Portal a měl by mít autorizaci ke generování skriptu na [RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) .
+Skript poskytuje přístup k datům virtuálních počítačů, je důležité regulovat, kdo ho může vygenerovat na prvním místě. Jedna se musí přihlásit k Azure Portal a měla by mít [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) ke generování skriptu na RBAC.
 
 Obnovení souborů vyžaduje stejnou úroveň autorizace, jakou vyžaduje obnovení virtuálních počítačů a obnovení disků. Jinými slovy, data virtuálních počítačů mohou být vygenerována pouze oprávnění uživatelé.
 

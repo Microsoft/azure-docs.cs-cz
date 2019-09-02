@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066674"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210112"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace s Virtual Network Azure
 Tento dokument popisuje funkci Integrace virtuální sítě Azure App Service a jak ji nastavit pomocí aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuální sítě Azure][VNETOverview] (Virtuální sítě) vám umožní umístit spoustu prostředků Azure do sítě směrovatelné do jiné než internetové sítě.  
@@ -110,7 +110,7 @@ Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Tím d
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru.
+Pokud používáte App Service v systému Linux s vestavěnými bitovými kopiemi, funkce Místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte Web App for Containers, je nutné upravit image Docker, aby bylo možné použít integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavena App Service platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě.
 
 ### <a name="service-endpoints"></a>Koncové body služeb
 

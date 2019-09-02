@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852892"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211856"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volání Microsoft Graph API z konzolové aplikace pomocí identity aplikace
 
@@ -39,9 +39,7 @@ Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/down
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> Aplikaci pro rychlý start můžete spustit dvěma způsoby:
-> * Express [Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Zásah [Možnost 2: Registrace a ruční konfigurace vaší aplikace a ukázky kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Aplikaci pro rychlý start můžete spustit dvěma způsoby: Express (možnost 1 níže) a ruční (možnost 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Zaregistrujte a automaticky nakonfigurujte svoji aplikaci a Stáhněte si ukázku kódu.
 >
@@ -80,12 +78,12 @@ Tento rychlý Start vyžaduje [.NET Core 2,2](https://www.microsoft.com/net/down
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stažení projektu sady Visual Studio
 
-[Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
-1. Otevřete řešení v aplikaci Visual Studio – **daemon-Console. sln** (volitelné).
+1. Otevřete řešení v aplikaci Visual Studio – **1-Call-MSGraph\daemon-Console.sln** (volitelné).
 1. Upravte **appSettings. JSON** a nahraďte hodnoty polí `ClientId` `Tenant` a `ClientSecret` následující:
 
     ```json
@@ -145,7 +143,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Pokud používáte aplikaci Visual Studio, stiskněte klávesu **F5** ke spuštění aplikace, jinak spusťte aplikaci prostřednictvím příkazového řádku nebo konzoly:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
@@ -166,7 +164,7 @@ MSAL ([Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Ide
  MSAL.NET můžete nainstalovat spuštěním následujícího příkazu v **konzole správce balíčků**sady Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Případně, pokud nepoužíváte aplikaci Visual Studio, můžete spustit následující příkaz pro přidání MSAL do projektu:
@@ -221,8 +219,15 @@ Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient
 
 ## <a name="next-steps"></a>Další postup
 
+Další informace o aplikacích démona najdete na cílové stránce scénáře.
+
 > [!div class="nextstepaction"]
-> [Ukázka rozhraní .NET Core daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Aplikace démona, která volá webová rozhraní API](scenario-daemon-overview.md)
+
+Kurz pro aplikace démona najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Kurz pro konzolu .NET Core s démony](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 Další informace o oprávněních a souhlasu:
 
@@ -233,9 +238,6 @@ Další informace o toku ověřování pro tento scénář najdete v tématu tok
 
 > [!div class="nextstepaction"]
 > [Tok OAuth přihlašovacími údaji klienta](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [Tok přihlašovacích údajů klienta s MSAL.NET](https://aka.ms/msal-net-client-credentials)
 
 Pomůžeme nám vylepšit platformu Microsoft identity. Řekněte nám, co si myslíte, díky krátkému průzkumu dvou dotazů.
 

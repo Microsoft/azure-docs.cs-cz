@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 11e83d0a245b2fba70926723edaf303032f90b8e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2f645d290175db9692649d825323313fc207a014
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170584"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210282"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Můžete řešit chyby zjištěné při použití Azure Backup s informacemi uvedenými níže:
@@ -148,7 +148,7 @@ Operace zálohování virtuálního počítače selhala kvůli zpoždění při 
 
 Na příkazovém řádku se zvýšenými oprávněními (správce) spusťte následující příkaz:
 
-```
+```text
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -243,7 +243,7 @@ Zálohování virtuálního počítače se spoléhá na vystavování příkazů
 - **Přístup k síti do úložiště se zablokuje pomocí NSG**. Přečtěte si další informace o tom, jak pomocí povoleného seznamu IP adres nebo prostřednictvím proxy server [vytvořit síťový přístup](backup-azure-arm-vms-prepare.md#establish-network-connectivity) k úložišti.
 - **Virtuální počítače s nakonfigurovaným zálohováním SQL Server můžou způsobit zpoždění úlohy snímku**. Ve výchozím nastavení vytvoří služba Backup VM na virtuálních počítačích s Windows úplnou zálohu stínové kopie svazku (VSS). U virtuálních počítačů, které spouštějí SQL Server s nakonfigurovaným SQL Server zálohováním, může docházet ke zpoždění snímků. Pokud se zpoždění snímků způsobují selhání zálohování, nastavte následující klíč registru:
 
-   ```
+   ```text
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```

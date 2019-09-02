@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6c06d789e6a005c0079f889cead6a75f4d0baf19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c4eba3e08e403243e76ac891d3bfcb59f12cad85
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875702"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211904"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -39,9 +39,29 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 
 Pro přístup k různým oblastem aplikace použijte levou navigační nabídku. Navigační panel můžete rozbalit nebo sbalit výběrem možnosti **<** nebo: **>**
 
-| Nabídka | Popis |
-| ---- | ----------- |
-| ![Levá navigační nabídka](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Na tlačítku **řídicího panelu** se zobrazí řídicí panel aplikace. Jako tvůrce můžete řídicí panel přizpůsobit svým operátorům. Uživatelé také mohou vytvořit vlastní řídicí panely.</li><li>Tlačítko **Device Explorer** uvádí simulovaná a skutečná zařízení přidružená ke každé šabloně zařízení v aplikaci. Jako operátor můžete tlačítko **Device Explorer** (Průzkumník zařízení) použít ke správě připojených zařízení.</li><li>Tlačítko **Device Sets** (Sady zařízení) umožňuje zobrazit a nastavit sady zařízení. Jako operátor můžete vytvořit sady zařízení představující logické kolekce zařízení specifikovaných určitým dotazem.</li><li>Tlačítko **Analytics** (Analýzy) zobrazuje analýzy odvozené z telemetrických dat pro zařízení a sady zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Tlačítko **Jobs** (Úlohy) umožňuje hromadnou správu zařízení tím, že vás nechá vytvořit a spustit úlohy pro provedení aktualizací škálovaně.</li><li>Tlačítko **šablony zařízení** zobrazuje nástroje, které tvůrce používá k vytváření a správě šablon zařízení.</li><li>Tlačítko pro **Export průběžných dat** správce může nakonfigurovat průběžný export na jiné služby Azure, jako je například úložiště a fronty.</li><li>Tlačítko **Administration** (Správa) zobrazí stránky správy aplikace, kde může správce spravovat nastavení aplikace, uživatele a role.</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Device Explorer** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device Sets** enables you to view and create device sets. As an operator, you can create device sets as a logical collection of devices specified by a query.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device sets. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to perform updates at scale.
+    
+      **Device Templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Continuous Data Export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>Hledání, nápověda a podpora
 

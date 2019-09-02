@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 08/30/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 68ceeb2847fa03cd7c50eeb015cca5b84af085f2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
-ms.translationtype: HT
+ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172739"
+ms.locfileid: "70186689"
 ---
 ::: zone target="docs"
 
@@ -40,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ::: zone target="chromeless"
 
-Tato příručka vás provede jednotlivými kroky při použití Azure Data Box Disk v Azure Portal. Tato příručka vám pomůže zodpovědět následující otázky.
+Tento průvodce vás provede jednotlivými kroky použití Azure Data Box Disk v Azure Portal. Tato příručka vám pomůže zodpovědět následující otázky.
 
 ::: zone-end
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996448"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211692"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -181,6 +181,7 @@ Pro každou spuštění aktivity kopírování Azure Data Factory určuje počet
 | Kopírování | Výchozí počet paralelních kopií určené služby |
 | --- | --- |
 | Kopírovat data mezi úložišti souborů |Závisí na velikosti souborů a na počtu DIUs používaných ke kopírování dat mezi dvěma úložišti dat cloudu nebo na fyzické konfiguraci počítače prostředí Integration runtime v místním prostředí. |
+| Kopírování z relačního úložiště dat s povolenou možností oddílu (včetně [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source)a [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopírování dat z libovolného zdrojového úložiště do Azure Table Storage |4 |
 | Dalších scénářů kopírování |1 |
 
@@ -298,7 +299,7 @@ Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovanýc
 * Místní SQL Server: [Monitorujte a Optimalizujte výkon](https://msdn.microsoft.com/library/ms189081.aspx).
 * Místní souborový server: [Ladění výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)

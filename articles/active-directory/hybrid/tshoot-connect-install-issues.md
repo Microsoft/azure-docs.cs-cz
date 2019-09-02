@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure AD Connect instalaci | Dokumentace Microsoftu
-description: Toto téma popisuje kroky pro řešení potíží s instalací Azure AD Connect.
+title: Řešení potíží s Azure AD Connect instalací | Microsoft Docs
+description: V tomto tématu najdete postup řešení potíží při instalaci Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -15,37 +15,37 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454765"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211842"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Řešení potíží: Potíže s instalací služby Azure AD Connect
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>Poradce Potíže s instalací služby Azure AD Connect
 
 ## <a name="recommended-steps"></a>**Doporučené kroky**
-Zkontrolujte prosím, která [typ instalace služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) je vhodný pro vás. Při splnění kritérií Expresní instalace, pak důrazně doporučujeme pro expresní instalace. Expresní instalace poskytuje minimální možnosti, které jsou potřebné k dokončení instalace, proto je menší pravděpodobnost, že případné problémy. 
+Zkontrolujte prosím, který [typ instalace Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) je vhodný pro vás. Pokud splňujete kritéria pro expresní instalaci, důrazně doporučujeme, abyste přešli na expresní instalaci. Expresní instalace poskytuje minimální možnosti potřebné k dokončení instalace, proto je méně pravděpodobné, že dojde k problémům. 
 
-Ale pokud nesplňují kritéria Expresní instalace a musíte provést vlastní instalaci, pak tady jsou některé osvědčené postupy můžete použít, aby běžné problémy. Z důvodu zjednodušení jenom selektivní možností uvedených zde:
+Pokud ale nesplňujete kritéria Expresní instalace a musíte provést vlastní instalaci, pak tady jsou některé osvědčené postupy, které vám pomůžou se vyhnout běžným problémům. V zájmu jednoduchosti jsou zde uvedeny pouze selektivní možnosti:
 
-* Ujistěte se, že máte oprávnění správce na počítači, na který instalujete, AAD Connect. Přihlaste se počítači pomocí stejných přihlašovacích údajů správce.
+* Ujistěte se, že jste správce na počítači, na kterém instalujete AAD Connect. Přihlaste se k počítači se stejnými přihlašovacími údaji správce.
 
-* Umožní všechny možnosti jako výchozí na následující stránce, s výjimkou "Použití existujícího serveru SQL Server", pokud chcete použít existující systém SQL Server. Tady jsou [podrobnosti](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) o tom, jak používat možnosti vlastní instalace. 
+* Pokud chcete použít existující SQL Server, nechte všechny možnosti na následující stránce výchozí, s výjimkou použití existující SQL Server. Tady jsou [Další podrobnosti](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom) o tom, jak používat vlastní možnosti instalace. 
 
-    ![Use Existing SQL Server](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
+    ![Použít existující SQL Server](media/tshoot-connect-install-issues/tshoot-connect-install-issues/useexistingsqlserver.png)
 
-* Na následující stránce vyberte možnost "Vytvořit nové reklamy účet", vyhněte se všechna oprávnění, problémy s existujícím účtem.
+* Na následující stránce vyberte možnost vytvořit nový účet služby AD, abyste se vyhnuli jakýmkoli problémům s oprávněním existujícímu účtu.
 
-    ![AD doménové struktury účtu](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
+    ![Účet doménové struktury AD](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
 ### <a name="common-issues"></a>**Běžné problémy**
 
-* [Problémy s připojením pomocí místní služby Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
+* [Problémy s připojením k místní službě Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools).
 
-* [Problémy s připojením pomocí online Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
+* [Problémy s připojením online Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity).
 
-* [Oprávnění problémy s místním Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
+* [Problémy s oprávněními v místní službě Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account).
 
 ## <a name="recommended-documents"></a>**Doporučené dokumenty**
 * [Požadavky pro Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
@@ -57,8 +57,8 @@ Ale pokud nesplňují kritéria Expresní instalace a musíte provést vlastní 
 * [Co je modul PowerShellu ADConnectivityTools?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>Další postup
-- [Synchronizace Azure AD Connect](how-to-connect-sync-whatis.md).
-- [Co je hybridní identitu? ](whatis-hybrid-identity.md).
+- [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md).
+- [Co je hybridní identita?](whatis-hybrid-identity.md)
 
 
 

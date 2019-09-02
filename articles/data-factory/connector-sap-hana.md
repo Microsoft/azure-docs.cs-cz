@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: e9b024fc3c07670201cf72cf80c0b69bf68f1cc8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 8174b2e8bc63db8954e596d831eb2f9cad2ba440
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726003"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211613"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -25,6 +25,9 @@ ms.locfileid: "68726003"
 > * [Aktuální verze](connector-sap-hana.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze SAP HANA. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+
+>[!TIP]
+>Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -140,8 +143,8 @@ Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **SapHanaTable** | Ano |
-| schema | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "dotaz") |
-| table | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "dotaz") |
+| schema | Název schématu v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
+| table | Název tabulky v databázi SAP HANA. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad:**
 
@@ -226,7 +229,7 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | PŘÍZNAKY               | Byte[]                         |
 | LOGICK               | Byte                           |
 | CLOB               | Řetězec                         |
-| DATE               | Datetime                       |
+| DATE               | DateTime                       |
 | NOTACI            | Decimal                        |
 | KLEPAT             | Double                         |
 | FLOAT              | Double                         |
@@ -234,7 +237,7 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | NCLOB              | Řetězec                         |
 | NVARCHAR           | Řetězec                         |
 | NEMOVITOSTÍ               | Single                         |
-| SECONDDATE         | Datetime                       |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Řetězec                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
@@ -244,7 +247,7 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
 | VARCHAR            | Řetězec                         |
-| TIMESTAMP          | Datetime                       |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="next-steps"></a>Další postup

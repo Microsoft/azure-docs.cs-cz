@@ -1,27 +1,21 @@
 ---
-title: Úvod do prostředí týmového virtuální počítač pro datové vědy – Azure | Dokumentace Microsoftu
+title: Team Analytics a prostředí AI
+titleSuffix: Azure Data Science Virtual Machine
 description: Vzory pro virtuální počítač pro datové vědy v podnikovém prostředí týmu nasazení.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 5f34498fbdacf7fc6e62788913c795ab70ceef23
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: overview
+ms.date: 05/08/2018
+ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991617"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195661"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Datové vědy virtuálního počítače na základě týmu analýzy a AI prostředí 
 [Data Science Virtual Machine](overview.md) (DSVM) poskytuje bohatý prostředí na platformě Azure s předem připraveným softwarem pro umělou Intelligence (AI) a analýzou dat.

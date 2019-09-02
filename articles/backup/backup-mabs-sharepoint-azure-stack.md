@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/8/2018
+ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: ac87fa66b72f2d7eaaf1ae2cd71bfeb827469444
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8200bfb4e99d7847dc1661a4258b2171f24a9aed
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688688"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210264"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure Stack
 Můžete zálohovat farmu služby SharePoint na Azure Stack a Microsoft Azure pomocí Microsoft Azure Backupho serveru (MABS), a to téměř stejným způsobem jako v případě zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. Poskytuje taky možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.

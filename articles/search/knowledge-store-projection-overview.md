@@ -1,7 +1,7 @@
 ---
 title: Práce s projekcemi ve znalostní bázi Knowledge Store (Preview) – Azure Search
 description: Uložení obohacených dat z kanálu indexování AI pro použití ve scénářích jiných než hledání
-manager: eladz
+manager: nitinme
 author: vkurpad
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.subservice: cognitive-search
-ms.openlocfilehash: 4fa669eaf96c08d7a2e1e7255ff6b1f6ff7b4f14
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2dd61a4511d406fefec5aacd0702fa732f79de92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639839"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186228"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Práce s projekcemi v úložišti znalostí v Azure Search
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1b6b5aff52673443fe19da684e85663a5ca8fe19
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4a0c9d16474ddf032ff88382bc240713bc734ff8
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878443"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211897"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Prohlídka uživatelského rozhraní Azure IoT Central (funkce ve verzi Preview)
 
@@ -39,9 +39,31 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 
 Pro přístup k různým oblastem aplikace použijte levou navigační nabídku. Navigační panel můžete rozbalit nebo sbalit výběrem možnosti **<** nebo: **>**
 
-| Nabídka | Popis |
-| ---- | ----------- |
-| ![Levá navigační nabídka](media/overview-iot-central-tour-pnp/navigationbar.png) | <ul><li>Na stránce **řídicího panelu** se zobrazí řídicí panel aplikace. Jako tvůrce můžete řídicí panel přizpůsobit svým operátorům. Uživatelé také mohou vytvořit vlastní řídicí panely.</li><li>Stránka **zařízení** obsahuje seznam simulovaných a reálných zařízení přidružených ke každé šabloně zařízení v aplikaci. Jako operátor můžete **zařízení** používat ke správě připojených zařízení.</li><li>Stránka **skupiny zařízení** umožňuje zobrazit a vytvořit skupiny zařízení. Jako operátor můžete vytvořit skupiny zařízení jako logickou kolekci zařízení, která jsou určená dotazem.</li><li>Na stránce **pravidla** můžete upravovat pravidla, která se aktivují na základě telemetrie zařízení a triggerů přizpůsobitelných akcí.</li><li>Stránka **Analytics** zobrazuje analýzy odvozené ze telemetrie zařízení pro zařízení a skupiny zařízení. Jako operátor můžete vedle dat zařízení vytvářet vlastní zobrazení, která vám pomůžou získat z aplikace požadované informace.</li><li>Stránka **úlohy** umožňuje hromadnou správu zařízení, která vám umožní vytvářet a spouštět úlohy, které aktualizují vaše zařízení ve velkém měřítku.</li><li>Na stránce **šablony zařízení** se zobrazují nástroje, které tvůrce používá k vytváření a správě šablon zařízení.</li><li>Stránka pro **Export dat** umožňuje správci nakonfigurovat průběžný export na jiné služby Azure, jako jsou například úložiště a fronty.</li><li>Stránka **Správa** zobrazuje stránky pro správu aplikací, kde správce může spravovat nastavení aplikace, uživatele a role.</li></ul> |
+:::row:::
+  :::column span="":::
+      ![Left navigation menu](media/overview-iot-central-tour-pnp/navigationbar.png)
+  :::column-end:::
+  :::column span="2":::
+
+      **Dashboard** displays your application dashboard. As a builder, you can customize the dashboard for your operators. Users can also create their own  dashboards.
+    
+      **Devices** lists the simulated and real devices associated with each device template in the application. As an operator, you use the **Device Explorer** to manage your connected devices.
+    
+      **Device groups** lets you view and create device groups. As an operator, you can create device groups as a logical collections of devices specified by a query.
+
+      **Rules** lets you edit rules that fire based on device telemetry and trigger customizable actions.
+    
+      **Analytics** shows analytics derived from device telemetry for devices and device groups. As an operator, you can create custom views on top of device data to derive insights from your application.
+    
+      **Jobs** enables bulk device management by having you create and run jobs to update your devices at scale.
+    
+      **Device templates** shows the tools a builder uses to create and manage device templates.
+    
+      **Data export** enables an administrator to configure a continuous export to other Azure services such as storage and queues.
+    
+      **Administration** shows the application administration pages where an administrator can manage application settings, users, and roles.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="search-help-and-support"></a>Hledání, nápověda a podpora
 
