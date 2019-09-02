@@ -97,8 +97,9 @@
 - name: Restartování nebo změna velikosti virtuálního počítače
   href: restart-resize-error-troubleshooting.md
 - name: Sériová konzola
-  href: serial-console-overview.md
   items:
+    - name: Přehled sériové konzoly
+      href: serial-console-overview.md
     - name: Sériová konzola pro Linux
       href: serial-console-linux.md
       items:
