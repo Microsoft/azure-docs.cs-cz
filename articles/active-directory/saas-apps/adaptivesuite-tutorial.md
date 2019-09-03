@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488951"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213617"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Kurz: Integrace adaptivních přehledů pomocí Azure Active Directory
 
@@ -81,7 +81,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V části **základní konfigurace** SAML proveďte následující kroky:
+1. V části **základní konfigurace SAML** proveďte následující kroky:
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -174,7 +174,7 @@ Aby se uživatelé Azure AD mohli přihlašovat do adaptivních přehledů, mus�
 
 **Při konfiguraci zřizování uživatelů proveďte následující kroky:**
 
-1. Přihlaste se  k firemní síti s adaptivním přehledem jako správce.
+1. Přihlaste se k firemní síti s adaptivním přehledem jako správce.
 
 2. Přejít na **Správa**.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347398"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213604"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Kurz: Integrace prostředků infrastruktury zabezpečení cloudu s Azure Active Directory
 
@@ -104,7 +104,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-5. Chcete-li upravit možnosti **podepisování** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát** SAML.
+5. Chcete-li upravit možnosti **podepisování** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** .
 
     ![Odpověď SAML](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>Vytvoření testovacího uživatele prostředků infrastruktury cloudového zabezpečení
 
-V této části vytvoříte uživatele s názvem B. Simon v prostředcích infrastruktury zabezpečení cloudu. Pokud chcete přidat uživatele na platformě Cloud Security Fabric, pracujte s [týmem podpory infrastruktury zabezpečení cloudu](mailto:support@cloudlock.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon v prostředcích infrastruktury zabezpečení cloudu. Pokud chcete přidat uživatele na platformě Cloud Security Fabric, pracujte s [týmem podpory infrastruktury zabezpečení cloudu](mailto:support@cloudlock.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-sso"></a>Test SSO 
 
