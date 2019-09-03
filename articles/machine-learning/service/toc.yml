@@ -290,12 +290,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Vyčištění chybějících dat
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: Hashování funkcí
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: Extrakce funkcí n-gramů z textu
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Přidání sloupců
               href: ../algorithm-module-reference/add-columns.md
             - name: Přidání řádků
               href: ../algorithm-module-reference/add-rows.md
             - name: Odebrání duplicitních řádků
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Předzpracování textu
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: Spojení dat
               href: ../algorithm-module-reference/join-data.md
             - name: Rozdělení dat

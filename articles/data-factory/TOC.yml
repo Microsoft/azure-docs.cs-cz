@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: Režim ladění
           href: concepts-data-flow-debug-mode.md
+        - name: Zpracování JSON
+          href: concepts-data-flow-json.md
         - name: Posun schématu
           href: concepts-data-flow-schema-drift.md
         - name: Podokno kontroly
@@ -446,6 +448,8 @@
           href: control-flow-webhook-activity.md
     - name: Transformace toku dat
       items:
+        - name: S pevnou šířkou
+          href: how-to-fixed-width.md
         - name: Agregace
           href: data-flow-aggregate.md
         - name: Změna řádku
@@ -600,6 +604,8 @@
           href: data-migration-guidance-overview.md
         - name: Migrace dat z AWS S3 do Azure
           href: data-migration-guidance-s3-azure-storage.md
+        - name: Migrace dat z místního clusteru Hadoop do Azure
+          href: data-migration-guidance-hdfs-azure-storage.md
 - name: Referenční informace
   items:
     - name: .NET
