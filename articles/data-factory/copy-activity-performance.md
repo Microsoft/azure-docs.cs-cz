@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211692"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232343"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -181,7 +181,7 @@ Pro každou spuštění aktivity kopírování Azure Data Factory určuje počet
 | Kopírování | Výchozí počet paralelních kopií určené služby |
 | --- | --- |
 | Kopírovat data mezi úložišti souborů |Závisí na velikosti souborů a na počtu DIUs používaných ke kopírování dat mezi dvěma úložišti dat cloudu nebo na fyzické konfiguraci počítače prostředí Integration runtime v místním prostředí. |
-| Kopírování z relačního úložiště dat s povolenou možností oddílu (včetně [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source)a [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
+| Kopírování z relačního úložiště dat s povolenou možností oddílu (včetně [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source)a [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopírování dat z libovolného zdrojového úložiště do Azure Table Storage |4 |
 | Dalších scénářů kopírování |1 |
 
@@ -193,7 +193,7 @@ Pro řízení zatížení počítačů, které hostují vaše úložiště dat n
 **Ukazuje na poznámku:**
 
 - Při kopírování dat mezi úložišti založenými na souborech Určuje **parallelCopies** paralelismus na úrovni souboru. Blokování v rámci jednoho souboru probíhá automaticky a transparentně. Je navržená tak, aby používala nejvhodnější velikost bloku dat pro daný typ zdrojového úložiště dat, aby se data načetla paralelně a kolmo k **parallelCopies**. Skutečný počet paralelních kopie služba pro přesun dat se používá pro operaci kopírování v době běhu je delší než počet souborů, které máte. Pokud je chování kopírování **mergeFile**, aktivita kopírování nemůže využít paralelismus na úrovni souborů.
-- Při kopírování dat z úložišť, která nejsou založená na souborech (s výjimkou [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulka SAP](connector-sap-table.md#sap-table-as-source)a konektoru [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) jako zdroje s povoleným vytvářením oddílů dat), do úložišť, která jsou založená na souborech, služba pro přesun dat ignoruje vlastnost **parallelCopies** . I v případě, že je zadán paralelismu, není použita v tomto případě.
+- Když kopírujete data z úložišť, která nejsou založená na souborech (s výjimkou [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP](connector-sap-table.md#sap-table-as-source)a [SAP Open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Connector jako zdroj s povoleným vytvářením oddílů dat) do úložišť, která jsou založená na souborech, data Služba přesunu ignoruje vlastnost **parallelCopies** . I v případě, že je zadán paralelismu, není použita v tomto případě.
 - Vlastnost **parallelCopies** je kolmá na **dataIntegrationUnits**. Předchozí se počítá přes všechny jednotky integrace Data.
 - Když zadáte hodnotu vlastnosti **parallelCopies** , zvažte zvýšení zátěže ve zdrojovém a úložišti dat jímky. Zvažte také zvýšení zatížení v místním prostředí Integration runtime, pokud je aktivita kopírování oprávněná, například pro hybridní kopírování. Toto zvýšení zatížení nastane hlavně v případě, že máte více aktivit nebo souběžných spuštění stejných aktivit, které se spouštějí ve stejném úložišti dat. Pokud si všimnete, že úložiště dat nebo místní prostředí Integration runtime je zahlcené zatížením, snižte hodnotu **parallelCopies** k uvolnění zátěže.
 
@@ -299,7 +299,7 @@ Tady jsou odkazy na sledování výkonu a ladění pro některá z podporovanýc
 * Místní SQL Server: [Monitorujte a Optimalizujte výkon](https://msdn.microsoft.com/library/ms189081.aspx).
 * Místní souborový server: [Ladění výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)

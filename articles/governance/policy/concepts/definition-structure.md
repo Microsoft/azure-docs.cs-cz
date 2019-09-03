@@ -7,13 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 44bf3171f9da73dac17b29e86c80fc8f0d011498
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 988fc124a68ef07981c0f36334778be326fff3a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557930"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232274"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -619,7 +618,7 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).

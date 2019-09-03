@@ -1,5 +1,5 @@
 ---
-title: Vytvořit zásadu pro nekompatibilní prostředky
+title: Vytvoření zásady pro prostředky, které nedodržují předpisy
 description: Tento článek vás provede postupem vytvoření definice zásady pro identifikaci prostředků, které nedodržují předpisy.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,13 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 291152b46f97c9b6dd10b67c7ce812fcc791ce09
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979608"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231577"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -30,15 +29,15 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit v
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
-   ![Hledání zásad ve všech služeb](./media/assign-policy-portal/search-policy.png)
+   ![Vyhledat zásady ve všech službách](./media/assign-policy-portal/search-policy.png)
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**. Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
 
-   ![Vyberte stránku přiřazení na stránce Přehled zásad](./media/assign-policy-portal/select-assignments.png)
+   ![Stránka pro výběr přiřazení na stránce Přehled zásad](./media/assign-policy-portal/select-assignments.png)
 
 1. V horní části stránky **Zásady – Přiřazení** vyberte **Přiřadit zásadu**.
 
-   ![Přiřazení definice zásady přiřazení stránce](./media/assign-policy-portal/select-assign-policy.png)
+   ![Přiřazení definice zásady ze stránky přiřazení](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
 
@@ -50,9 +49,9 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit v
 
    - Vynucovat použití značky a její hodnoty
    - Použít značku a její hodnotu
-   - Požadovat SQL Server ve verzi 12.0
+   - Vyžadovat SQL Server verze 12.0
 
-   Částečný seznam dostupných předdefinovaných zásad najdete v tématu [ukázek Azure Policy](./samples/index.md).
+   Částečný seznam dostupných integrovaných zásad najdete v tématu [Azure Policy Samples](./samples/index.md).
 
 1. Prohledejte seznam definic zásad a najděte definici *Audit virtuálních počítačů, které nepoužívají spravované disky*. Klikněte na tuto zásadu a potom na **Vybrat**.
 
@@ -71,7 +70,7 @@ Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy,
 
 Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
-![Podrobnosti o dodržování předpisů na stránce zásady dodržování předpisů](./media/assign-policy-portal/policy-compliance.png)
+![Podrobnosti o kompatibilitě na stránce dodržování zásad](./media/assign-policy-portal/policy-compliance.png)
 
 Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
@@ -95,7 +94,7 @@ Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
 1. Klikněte pravým tlačítkem na přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky** a vyberte **Odstranit přiřazení**.
 
-   ![Odstranit přiřazení ze stránky dodržování předpisů](./media/assign-policy-portal/delete-assignment.png)
+   ![Odstranění přiřazení ze stránky dodržování předpisů](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>Další postup
 

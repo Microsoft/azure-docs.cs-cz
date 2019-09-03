@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195571"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231086"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 Tento příkaz vytvoří podsložku `.azureml` , která obsahuje konfigurační soubory spouštěné z šablony pro různé výpočetní cíle. Tyto soubory můžete zkopírovat a upravit, abyste mohli přizpůsobit konfiguraci, například přidat balíčky Pythonu nebo změnit nastavení Docker.  
+
+### <a name="structure-of-run-configuration-file"></a>Struktura konfiguračního souboru spuštění
+
+Konfigurační soubor spuštění je YAML formátovaný s následujícími oddíly.
+ * Skript, který se má spustit, a jeho argumenty
+ * Název cíle výpočtů, buď místní, nebo název COMPUTE v pracovním prostoru.
+ * Parametry pro spuštění příkazu Run: Framework, Communicator pro distribuované běhy, maximální doba trvání a počet výpočetních uzlů.
+ * Oddíl prostředí. Podrobnosti o polích v této části najdete v tématu [Vytvoření a Správa prostředí pro školení a nasazení](how-to-use-environments.md) .
+   * Chcete-li určit balíčky Pythonu, které mají být nainstalovány pro příkaz Spustit, vytvořit [soubor prostředí conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)a nastavte pole __condaDependenciesFile__ .
+ * Chcete-li určit složku souboru protokolu a povolit nebo zakázat shromažďování výstupu a snímky historie spuštění, podrobnosti o historii spuštění.
+ * Podrobnosti konfigurace specifické pro vybrané rozhraní.
+ * Odkaz na data a podrobnosti úložiště dat.
+ * Podrobnosti konfigurace specifické pro Výpočetní prostředky služby Machine Learning pro vytvoření nového clusteru.
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 

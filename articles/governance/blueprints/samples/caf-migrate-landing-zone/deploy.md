@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: a9ca5c299c2f030436f5a7ea9f4c2c1e136df747
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0125fa20e61890317d4df510cb668f68e5049c43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873339"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231861"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Ukázková ukázka podrobného plánu cílové zóny pro migraci do Azure – nasazení rozhraní Microsoft Cloud
 
@@ -123,7 +123,7 @@ Teď, když jste zkontrolovali postup nasazení ukázky podrobného plánu CAF p
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

@@ -12,12 +12,12 @@ ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd5b1ffa2d66135e0068ef9f459843d616351c19
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162598"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231253"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -69,7 +69,7 @@ Povolení protokolu TLS 1.2:
 1. Restartujte server.
 
 > [!IMPORTANT]
-> Abychom zákazníkům poskytovali nejlepší šifrování ve své třídě, provádíme aktualizace služby proxy aplikací, aby omezily přístup jenom na protokoly TLS 1,2. Na základě změn připravenosti zákazníků se postupně zavádějí jenom na zákazníky, kteří používají jenom protokoly TLS 1,2 a neprojeví žádný vliv na tuto změnu. Vyřazení TLS 1,0 a 1,1 bude dokončeno 31. srpna 2019 a zákazníci dostanou oznámení o přípravě na tuto změnu. Pro přípravu této změny se ujistěte, že jsou všechny kombinace klientských a serverových a prohlížečových serverů aktualizované tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) .
+> Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) .
 
 ## <a name="prepare-your-on-premises-environment"></a>Příprava místního prostředí
 
@@ -213,7 +213,7 @@ Otestování přihlášení k aplikaci:
 
 Informace o řešení potíží najdete v tématu [řešení potíží se službou Application proxy a chybovými zprávami](application-proxy-troubleshoot.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste připravili své místní prostředí pro práci s proxy aplikací a potom jste nainstalovali a zaregistrovali konektor proxy aplikací. Pak jste do svého tenanta služby Azure AD přidali aplikaci. Ověřili jste, že se uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 

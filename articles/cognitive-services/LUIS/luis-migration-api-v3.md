@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932676"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213511"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Verze Preview: Migrace na rozhraní API verze 3. x pro aplikace LUIS
 
@@ -164,7 +164,7 @@ const score = intents[topIntentName];
 Změny schématu JSON odpovědi umožňují:
 
 * Jasně rozlišovat mezi původními utterance `query`, a vrácenou `prediction`předpověď.
-* Jednodušší programový přístup k předpokládaným datům. Namísto vytváření výčtu pomocí pole ve verzi v2 můžete přistupovat k hodnotám podle **pojmenovaného** pro oba záměry i entity. U předpokládaných rolí entit se vrátí název role, protože je v celé aplikaci jedinečný.
+* Jednodušší programový přístup k předpokládaným datům. Místo vytváření výčtu pomocí pole ve verzi v2 můžete získat přístup k hodnotám podle **názvu** pro oba záměry a entity. U předpokládaných rolí entit se vrátí název role, protože je v celé aplikaci jedinečný.
 * Jsou respektovány datové typy, pokud jsou určeny. Číselné znaky již nejsou vraceny jako řetězce.
 * Rozdíl mezi informacemi o předpovědi první priority a dalšími metadaty, které `$instance` jsou vráceny v objektu. 
 
@@ -223,7 +223,7 @@ V v2 je entita identifikována _názvem entity_ role jako vlastnost objektu:
 ]
 ```
 
-V v3 je entita odkazována _rolí entity_ , pokud je předpověď pro roli:
+V v3 je entita odkazována _rolí entity_, pokud je předpověď pro roli:
 
 ```JSON
 "entities":{
@@ -418,7 +418,7 @@ Odeslat následující tělo JSON pro přidání nového podseznamu se synonymy 
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

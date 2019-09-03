@@ -7,12 +7,12 @@ ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 00e60d41b34531462a4e85623a19f1dd22c6e4e6
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4fd162020fc7acf6c005302a1cb8038e8de424d7
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816808"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231701"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Nasazení ukázky ISO 27001 details
 
@@ -111,8 +111,8 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |\[Verze\]Preview: Nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)|Přiřazení zásad|Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
 |\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásad|Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů:\[\]|
-|Povolené skladové položky účtu úložiště|Přiřazení zásad|Seznam povolených SKU úložiště|Seznam skladových položek, které se dají zadat pro účty úložiště|
-|Povolené skladové položky virtuálních počítačů|Přiřazení zásad|Seznam povolených SKU virtuálních počítačů|Seznam skladových položek, které se dají zadat pro virtuální počítače|
+|Povolené skladové položky účtu úložiště|Přiřazení zásad|Seznam povolených SKU úložiště|Seznam SKU, které lze zadat pro účty úložiště.|
+|Povolené skladové položky virtuálních počítačů|Přiřazení zásad|Seznam povolených SKU virtuálních počítačů|Seznam SKU, které lze zadat pro virtuální počítače.|
 |Iniciativa podrobného plánu pro ISO 27001|Přiřazení zásad|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 
 ## <a name="next-steps"></a>Další postup
@@ -125,7 +125,7 @@ Teď, když jste si prohlédli postup nasazení ukázky ISO 27001, najdete v ná
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

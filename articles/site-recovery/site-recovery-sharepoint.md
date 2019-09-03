@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325114"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231471"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -56,7 +56,7 @@ Službu SharePoint lze nasadit na jeden nebo více serverů pomocí vrstvené to
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-Pro vytvoření tohoto článku se použily virtuální počítače VMware s Windows Serverem 2012 R2 Enterprise. Používaly se SharePoint 2013 Enterprise Edition a SQL Server 2014 Enterprise Edition. Jelikož je replikace Site Recovery nezávislá aplikací, očekává se, že zde uvedená doporučení platí i pro následující scénáře.
+Site Recovery je nezávislá aplikace a měl by fungovat s libovolnou verzí SharePointu spuštěnou na podporovaném počítači. Pro vytvoření tohoto článku se použily virtuální počítače VMware s Windows Serverem 2012 R2 Enterprise. Používaly se SharePoint 2013 Enterprise Edition a SQL Server 2014 Enterprise Edition.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
@@ -67,13 +67,6 @@ Pro vytvoření tohoto článku se použily virtuální počítače VMware s Win
 **Fyzický server** | Ano | Ano
 **Azure** | Není k dispozici | Ano
 
-### <a name="sharepoint-versions"></a>Verze SharePointu
-Jsou podporovány následující verze serveru SharePoint.
-
-* SharePoint Server 2013 Standard
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Co je potřeba mít na paměti
 
@@ -109,7 +102,7 @@ Podle [těchto pokynů](site-recovery-vmware-to-azure.md) spusťte replikaci vir
 Pro internetové weby vytvořte v předplatném Azure [profil Traffic Manager typu priorita](../traffic-manager/traffic-manager-create-profile.md) . Pak následujícím způsobem nakonfigurujte DNS a profil Traffic Manager.
 
 
-| **,** | **Zdroj** | **Cílové**|
+| **,** | **Zdroj** | **Cíl**|
 | --- | --- | --- |
 | Veřejná služba DNS | Veřejné DNS pro weby služby SharePoint <br/><br/> Např.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | Místní DNS | sharepointonprem.contoso.com | Veřejná IP adresa v místní farmě |
@@ -206,5 +199,5 @@ Postupujte podle [těchto pokynů](site-recovery-failover.md) pro převzetí slu
 3.  Klikněte na převzetí služeb při selhání.
 4.  Vyberte bod obnovení pro spuštění procesu převzetí služeb při selhání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [replikaci dalších aplikací](site-recovery-workload.md) pomocí Site Recovery najdete v.

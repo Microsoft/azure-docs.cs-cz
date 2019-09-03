@@ -1,5 +1,5 @@
 ---
-title: Konfigurace prostředí pro operátor podrobného plánu
+title: Konfigurace prostředí pro operátora podrobného plánu
 description: Přečtěte si, jak nakonfigurovat prostředí Azure pro použití pomocí předdefinované role řízení přístupu na základě role (RBAC).
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,14 +7,14 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8c39eadc6f1448e19ffee6d741cc50a7b6e09475
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70148606"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231892"
 ---
-# <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátor podrobného plánu
+# <a name="configure-your-environment-for-a-blueprint-operator"></a>Konfigurace prostředí pro operátora podrobného plánu
 
 Správa definic podrobných plánů a přiřazení podrobného plánu se dá přiřadit k různým týmům. Je běžné, že architekt nebo tým zásad správného řízení bude zodpovědný za správu životního cyklu vašich definicí podrobného plánu, zatímco provozní tým zodpovídá za správu přiřazení těchto centrálně kontrolovaných definic podrobných plánů.
 
@@ -38,9 +38,9 @@ Definice podrobného plánu může používat spravované identity přiřazené 
 
 1. Jako **operátor**podrobného plánu [přiřaďte podrobný plán](../create-blueprint-portal.md#assign-a-blueprint) , který používá novou spravovanou identitu přiřazenou uživatelem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)

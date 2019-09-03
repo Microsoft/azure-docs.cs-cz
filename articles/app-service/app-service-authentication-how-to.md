@@ -4,21 +4,21 @@ description: Ukazuje, jak přizpůsobit ověřování a autorizaci v App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098549"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231973"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -130,7 +130,7 @@ Při použití plně kvalifikovaných adres URL musí být adresa URL buď hosto
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-V [Azure Cloud Shell](../cloud-shell/quickstart.md)musíte spustit následující příkaz:
+Spusťte následující příkaz v [Azure Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -197,7 +197,7 @@ Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace]
 
 Po nakonfigurování zprostředkovatele můžete [Najít obnovovací token a čas vypršení platnosti přístupového tokenu](#retrieve-tokens-in-app-code) v úložišti tokenů. 
 
-Chcete-li kdykoli aktualizovat přístupový token, stačí volat `/.auth/refresh` v libovolném jazyce. Následující fragment kódu používá jQuery k aktualizaci přístupových tokenů z JavaScriptového klienta.
+Pokud chcete přístupový token kdykoli aktualizovat, stačí volat `/.auth/refresh` v libovolném jazyce. Následující fragment kódu používá jQuery k aktualizaci přístupových tokenů z JavaScriptového klienta.
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Omezení domény přihlašovacích účtů
 
-Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure Active Directory umožňuje pro přihlašovací účty libovolný počet vlastních domén. Toto chování může být nežádoucí pro interní aplikaci, u které nechcete, aby k nim měl nikdo účet _Outlook.com_ . Chcete-li omezit název domény přihlašovacích účtů, postupujte podle těchto kroků.
+Účet Microsoft i Azure Active Directory vám umožňují přihlašovat se z více domén. Například účet Microsoft umožňuje účty _Outlook.com_, _Live.com_a _hotmail.com_ . Azure AD povoluje pro přihlašovací účty libovolný počet vlastních domén. Můžete ale chtít zrychlit uživatele přímo na přihlašovací stránku služby Azure AD, která je označená `contoso.com`značkou (například). Chcete-li navrhnout název domény přihlašovacích účtů, postupujte podle těchto kroků.
 
 V [https://resources.azure.com](https://resources.azure.com)přejděte na předplatná > název předplatného resourceGroups **_\_\<_** prostředek > . >  **_\<\_ název\_ skupiny >_** **poskytovatelé** **Microsoft. Web**sites >  **_název aplikace\_ >\<_**  >  >  >  >  **Konfigurace**  >  **authsettings**. 
 
@@ -239,6 +239,54 @@ Klikněte na tlačítko **Upravit**, upravte následující vlastnost a pak klik
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Toto nastavení připojí `domain_hint` parametr řetězce dotazu k adrese URL pro přesměrování přihlášení. 
+
+> [!IMPORTANT]
+> Klient může po přijetí adresy URL pro přesměrování odebrat `domain_hint` parametr a pak se přihlásit k jiné doméně. Takže když je tato funkce užitečná, není to funkce zabezpečení.
+>
+
+## <a name="authorize-or-deny-users"></a>Autorizovat nebo Odepřít uživatele
+
+I když App Service postará o nejjednodušší případ autorizace (tj. odmítnout neověřené žádosti), vaše aplikace může vyžadovat přesnější chování autorizace, jako je omezení přístupu jenom na konkrétní skupinu uživatelů. V některých případech je nutné napsat vlastní kód aplikace, aby bylo možné povolit nebo odepřít přístup přihlášenému uživateli. V jiných případech App Service nebo váš poskytovatel identity může pomáhat bez nutnosti změny kódu.
+
+- [Úroveň serveru](#server-level-windows-apps-only)
+- [Úroveň poskytovatele identity](#identity-provider-level)
+- [Úroveň aplikace](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Úroveň serveru (jenom aplikace pro Windows)
+
+U jakékoli aplikace pro Windows můžete definovat chování ověřování webového serveru IIS úpravou souboru *Web. config* . Aplikace pro Linux nepoužívají službu IIS a nelze je konfigurovat pomocí *souboru Web. config*.
+
+1. Přejděte na `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. V Průzkumníkovi prohlížeče souborů App Service přejděte na *lokalitu/wwwroot*. Pokud soubor *Web. config* neexistuje, vytvořte jej výběrem možnosti **+**  >  **nový soubor**. 
+
+1. Vyberte tužku pro *Web. config* a upravte ji. Přidejte následující konfigurační kód a klikněte na **Uložit**. Pokud soubor *Web. config* již existuje, stačí přidat `<authorization>` element s vše v něm. Přidejte účty, které chcete v `<allow>` elementu použít.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
+
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+
+- Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Úroveň aplikace
+
+Pokud žádná z ostatních úrovní neposkytne autorizaci, kterou potřebujete, nebo pokud vaše platforma nebo zprostředkovatel identity není podporována, musíte napsat vlastní kód, který autorizuje uživatele na základě [deklarací identity uživatele](#access-user-claims).
+
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]

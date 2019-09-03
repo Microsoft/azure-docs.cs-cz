@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a2702abd39ecdf506d58b6bd8884f12607e29e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615306"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232380"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
@@ -436,7 +436,7 @@ Další informace o význam data, která je vrácený každou prohledávání pr
 * Dotaz, pro kterou trvá déle než 3 milisekund operace:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * Dotaz, který Agent běží operace:
@@ -448,7 +448,7 @@ Další informace o význam data, která je vrácený každou prohledávání pr
 * Dotaz pro, pokud byly provedeny dlouho běžící operace:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 Další informace o použití nového jazyka pro hledání v protokolu najdete v tématu [vysvětlení prohledávání protokolů v Azure Monitorch protokolech](../log-analytics/log-analytics-log-search-new.md). 
@@ -474,7 +474,7 @@ Následující tabulka popisuje obsah každé položky protokolu.
 | **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |
 | **requestCharge** | **requestCharge_s** | Počet rezervovaných jednotek, které jsou používány operace |
 | **collectionRid** | **collectionId_s** | Jedinečný Identifikátor pro kolekci.|
-| **Doba trvání** | **duration_s** | Doba trvání operace v impulzech. |
+| **Doba trvání** | **duration_s** | Doba trvání operace v milisekundách. |
 | **requestLength** | **requestLength_s** | Délka požadavku v bajtech. |
 | **responseLength** | **responseLength_s** | Délka odpovědi v bytech.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Tato hodnota je prázdný, když [tokenech prostředků](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) se používají pro ověřování. Hodnota odkazuje na ID prostředku uživatele. |

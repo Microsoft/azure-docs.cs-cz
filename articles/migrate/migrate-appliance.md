@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827322"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231145"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -72,6 +72,9 @@ Propustnost zápisu síťových adaptérů (MB za sekundu) | net.transmitted.ave
 
 ## <a name="collected-metadata-vmware"></a>Shromážděná metadata – VMware
 
+> [!NOTE]
+> Metadata zjištěná zařízením Azure Migrate se používají k usnadnění správné velikosti vašich aplikací při jejich migraci do Azure, k provedení analýzy vhodnosti Azure, analýze závislostí aplikací a plánování nákladů. Společnost Microsoft nepoužívá tato data ve vztahu k auditu dodržování předpisů v licencích.
+
 Tady je úplný seznam metadat virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
 **Data** | **Counter**
@@ -122,6 +125,9 @@ Podrobnosti o hostiteli na virtuálním počítači | ((HostSystem)container).VM
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Shromážděná data o výkonu – Hyper-V
+
+> [!NOTE]
+> Metadata zjištěná zařízením Azure Migrate se používají k usnadnění správné velikosti vašich aplikací při jejich migraci do Azure, k provedení analýzy vhodnosti Azure, analýze závislostí aplikací a plánování nákladů. Společnost Microsoft nepoužívá tato data ve vztahu k auditu dodržování předpisů v licencích.
 
 Tady je údaje o výkonu virtuálních počítačů VMware, které zařízení shromažďuje a odesílá do Azure.
 
@@ -206,7 +212,7 @@ Zařízení se upgraduje, protože Azure Migrate agenti, kteří běží na zař
 
 V případě ručních aktualizací nezapomeňte aktualizovat všechny agenty na zařízení ve stejnou dobu, a to pomocí tlačítka **aktualizovat** pro každého zastaralého agenta na zařízení. Nastavení aktualizace můžete kdykoli přepnout zpátky na automatické aktualizace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si, jak](tutorial-assess-vmware.md#set-up-the-appliance-vm) nastavit zařízení pro VMware.
 [Přečtěte si, jak](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) nastavit zařízení pro Hyper-V.

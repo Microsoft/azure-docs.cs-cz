@@ -1,46 +1,45 @@
 ---
-title: Vysvětlení dotazovací jazyk
-description: Popisuje dostupné Kusto operátory a funkce, které jsou použitelné s grafem prostředků Azure.
+title: Porozumění dotazovacímu jazyku
+description: Popisuje dostupné Kusto operátory a funkce použitelné pro Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800514"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231516"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
+# <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
-Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práci a pracují na základě [Průzkumník dat Azure](../../../data-explorer/data-explorer-overview.md).
+Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práce a provoz na základě [Azure Průzkumník dat](../../../data-explorer/data-explorer-overview.md).
 
-Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je začít s dokumentací pro Průzkumník dat Azure [dotazovací jazyk](/azure/kusto/query/index). Poskytuje představu o strukturování jazyk a jak různých podporovány operátory a funkce pracují společně.
+Nejlepším způsobem, jak získat informace o dotazovacím jazyku, který používá graf prostředků, je začít s dokumentaci k [jazyku dotazů](/azure/kusto/query/index)pro Azure Průzkumník dat. Poskytuje informace o tom, jak je jazyk strukturovaný a jak různé podporované operátory a funkce spolupracují.
 
-## <a name="supported-tabular-operators"></a>Nepodporuje tabulkové operátory
+## <a name="supported-tabular-operators"></a>Podporované tabulkové operátory
 
-Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
+Tady je seznam podporovaných tabulkových operátorů v grafu prostředků:
 
 - [count](/azure/kusto/query/countoperator)
 - [distinct](/azure/kusto/query/distinctoperator)
-- [Rozšíření](/azure/kusto/query/extendoperator)
-- [Limit](/azure/kusto/query/limitoperator)
+- [zvětšení](/azure/kusto/query/extendoperator)
+- [počtu](/azure/kusto/query/limitoperator)
 - [Řadit podle](/azure/kusto/query/orderoperator)
 - [project](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
-- [Ukázka](/azure/kusto/query/sampleoperator)
+- [vzorku](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Seřadit podle:](/azure/kusto/query/sortoperator)
-- [shrnutí](/azure/kusto/query/summarizeoperator)
-- [Take](/azure/kusto/query/takeoperator)
-- [nahoru](/azure/kusto/query/topoperator)
-- [vnořené nahoru](/azure/kusto/query/topnestedoperator)
-- [TOP-hitters](/azure/kusto/query/tophittersoperator)
-- [kde](/azure/kusto/query/whereoperator)
+- [Seřadit podle](/azure/kusto/query/sortoperator)
+- [Souhrn](/azure/kusto/query/summarizeoperator)
+- [take](/azure/kusto/query/takeoperator)
+- [vrchol](/azure/kusto/query/topoperator)
+- [horní – vnořený](/azure/kusto/query/topnestedoperator)
+- [horní – hitters](/azure/kusto/query/tophittersoperator)
+- [,](/azure/kusto/query/whereoperator)
 
 ## <a name="supported-functions"></a>Podporované funkce
 
@@ -55,31 +54,31 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 
 ## <a name="escape-characters"></a>Řídicí znaky
 
-Některé názvy vlastností, jako jsou ty, které zahrnují `.` nebo `$`, musí být zabalené nebo uvozeny řídicími znaky v dotazu nebo vlastnost name je nesprávně interpretován a neposkytuje očekávané výsledky.
+Některé názvy vlastností, jako jsou například ty, které `.` obsahují `$`nebo, musí být zabaleny nebo uvozeny v dotazu nebo musí být název vlastnosti interpretován nesprávně a neposkytují očekávané výsledky.
 
-- `.` -Zabalte jako takový název vlastnosti: `['propertyname.withaperiod']`
+- `.`– Název vlastnosti zabalíte takto:`['propertyname.withaperiod']`
   
-  Příklad dotazu, který obtéká vlastnost _odata.type_:
+  Příklad dotazu, který zabalí vlastnost _OData. Type_:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$` -Řídicí znak v názvu vlastnosti. Řídicí znak, který slouží závisí na prostředí spuštění z prostředků grafu.
+- `$`-Řídí znak v názvu vlastnosti. Použitý řídicí znak závisí na grafu prostředků prostředí, ze kterého se spouští.
 
-  - **Bash** - `\`
+  - **bash** - `\`
 
-    Příklad dotazu, aby řídící vlastnost  _\$typ_ v prostředí bash:
+    Příklad dotazu, který řídí  _\$typ_ vlastnosti v bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** -není escape `$` znak.
+  - **cmd** – neřídí `$` znak.
 
   - **PowerShell** - ``` ` ```
 
-    Příklad dotazu, aby řídící vlastnost  _\$typ_ v prostředí PowerShell:
+    Příklad dotazu, který řídí  _\$typ_ vlastnosti v PowerShellu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -87,6 +86,6 @@ Některé názvy vlastností, jako jsou ty, které zahrnují `.` nebo `$`, musí
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md)
-- Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md)
+- Zobrazit jazyk používaný v počátečních [dotazech](../samples/starter.md)
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md)
 - Naučte se [prozkoumat zdroje](explore-resources.md)

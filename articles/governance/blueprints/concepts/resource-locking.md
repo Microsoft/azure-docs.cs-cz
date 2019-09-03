@@ -1,73 +1,72 @@
 ---
-title: Vysvětlení uzamčení prostředků
-description: Další informace o možnosti uzamčení k ochraně prostředků při přiřazování podrobný plán.
+title: Vysvětlení uzamykání prostředků
+description: Přečtěte si o možnostech uzamykání k ochraně prostředků při přiřazování podrobného plánu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719750"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232946"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
-Vytvoření konzistentního prostředí ve velkém měřítku je pouze skutečně cenná tehdy, když je mechanismus pro udržování této konzistence. Tento článek vysvětluje, jak funguje uzamčení prostředků v Azure plány. K prohlédnutí příkladu uzamčení prostředků a použití _zamítnout přiřazení_, najdete v článku [ochrany nové zdroje](../tutorials/protect-new-resources.md) kurzu.
+Vytváření konzistentních prostředí se škálováním je skutečně cenné jenom v případě, že existuje mechanismus pro zachování této konzistence. Tento článek vysvětluje, jak funguje uzamykání prostředků v Azure modrotisky. Příklad uzamčení prostředků a použití _přiřazení odepřít_najdete v kurzu [ochrana nových prostředků](../tutorials/protect-new-resources.md) .
 
 ## <a name="locking-modes-and-states"></a>Režimy zamykání a stavy
 
-Režim uzamčení se vztahuje na přiřazení podrobného plánu a má tři možnosti: **Není zamknout**, **jen pro čtení**, nebo **neodstraňujte**. Režim uzamčení je nakonfigurovali během nasazení artefaktů během přiřazení podrobného plánu. Aktualizují se přiřazení podrobného plánu můžete nastavit jiný režim uzamčení.
-Režimy zamykání, však nelze změnit mimo podrobné plány.
+Režim uzamykání se vztahuje na přiřazení podrobného plánu a má tři možnosti: Nepoužívejte **Zámek**, jen **pro čtení**nebo neodstraňujte. Režim uzamykání se konfiguruje během nasazování artefaktů během přiřazení podrobného plánu. V případě, že aktualizujete přiřazení podrobného plánu, lze nastavit jiný režim uzamykání.
+Blokovací režimy se ale nedají změnit mimo plány.
 
-Prostředky vytvořené v přiřazení podrobného plánu artefakty mají čtyř stavů: **Není uzamčen**, **jen pro čtení**, **nelze upravit nebo odstranit**, nebo **nelze odstranit**. Každý typ artefaktu může být v **není uzamčen** stavu. V následující tabulce můžete použít k určení stavu prostředku:
+Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy:Neuzamčeno, jen **pro čtení**, **nelze upravit/odstranit**nebo jej **nelze odstranit**. Každý typ artefaktu může být ve stavu neuzamčeno. K určení stavu prostředku lze použít následující tabulku:
 
-|Režim|Typ zdroje artefaktů|Stav|Popis|
+|Režim|Typ prostředku artefaktu|State|Popis|
 |-|-|-|-|
-|Není uzamčení|*|Není uzamčen|Prostředky nejsou chráněny podrobné plány. Tento stav se používá také pro prostředky, které jsou přidány do **jen pro čtení** nebo **neodstraňujte** artefaktu skupinu prostředků z mimo přiřazení podrobného plánu.|
-|Jen pro čtení|Skupina prostředků|Nelze upravit nebo odstranit|Skupina prostředků je jen pro čtení a nejde upravit značky pro skupinu prostředků. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
-|Jen pro čtení|Skupina prostředků bez|Jen pro čtení|Prostředek se nedá změnit žádným způsobem – žádné změny a nelze odstranit.|
-|Neodstraňujte|*|Nelze odstranit|Prostředky můžete změnit, ale nejde odstranit. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
+|Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo neodstraňují artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
+|Jen pro čtení|Resource group|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
+|Jen pro čtení|Skupina bez prostředků|Jen pro čtení|Prostředek se nedá změnit jakýmkoli způsobem – bez změn a nedá se odstranit.|
+|Neodstraňovat|*|Nejde odstranit|Prostředky je možné změnit, ale nelze je odstranit. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
 
-## <a name="overriding-locking-states"></a>Přepsání zamykání stavu
+## <a name="overriding-locking-states"></a>Přepsání stavů uzamčení
 
-Je obvykle možné někomu, s odpovídající [řízení přístupu na základě rolí](../../../role-based-access-control/overview.md) (RBAC) v rámci předplatného, jako je například roli "Vlastník", bude moct změnit ani odstranit všechny prostředky. Tento přístup neplatí, když platí plány uzamčení jako součást nasazeného přiřazení. Pokud přiřazení byl nastaven s **jen pro čtení** nebo **neodstraňujte** možnost, není v případě předplatné vlastníkem blokované akci může provést na chráněný prostředek.
+Pro někoho, kdo má v předplatném příslušné [role](../../../role-based-access-control/overview.md) (RBAC), je obvykle možné, jako je role vlastník, aby bylo možné upravovat nebo odstraňovat jakékoli prostředky. Tento přístup se netýká případu, kdy se při nasazení v rámci nasazeného přiřazení používá jako součást zámky. Pokud bylo přiřazení nastaveno s možností jen **pro čtení** nebo **neodstraňovat** , není ani vlastník předplatného, který může u chráněného prostředku provést akci zablokování.
 
-Tato bezpečnostní opatření chrání konzistence definované podrobného plánu a prostředí, ve kterém bylo navrženo vytvořte náhodnému nebo programové odstranění nebo změnu.
+Tato míra zabezpečení chrání konzistenci definovaného podrobného plánu a prostředí, které bylo navrženo pro vytvoření z náhodného nebo neprogramového odstranění nebo změny.
 
-## <a name="removing-locking-states"></a>Odebrání uzamčení stavy
+## <a name="removing-locking-states"></a>Odebírají se stavy zamykání.
 
-Pokud bude nutné k úpravě nebo odstranění prostředku chráněny přiřazení, existují dva způsoby, jak to provést.
+Pokud bude nutné upravit nebo odstranit prostředek chráněný přiřazením, existují dva způsoby, jak to provést.
 
-- Aktualizuje se přiřazení podrobného plánu zamykání režimu **není zámek**
+- Aktualizuje se přiřazení podrobného plánu na režim uzamčení **bez zámku** .
 - Odstranit přiřazení podrobného plánu
 
-Při odebrání přiřazení, se odeberou zámky vytvořené podrobné plány. Ale prostředek se zachovají a bude nutné odstranit normálním způsobem.
+Po odebrání přiřazení se odeberou zámky vytvořené pomocí modrotisky. Prostředek je však ponechán na pozadí a je třeba jej odstranit běžným způsobem.
 
-## <a name="how-blueprint-locks-work"></a>Jak uzamkne podrobný plán práce
+## <a name="how-blueprint-locks-work"></a>Jak podrobný plán funguje zámky
 
-RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) Odepřít akce platí pro zdroje artefaktů během přiřazování podrobný plán vybrali přiřazení **jen pro čtení** nebo **neodstraňujte** možnost. Akce odepřít přidává spravovanou identitu přiřazení podrobného plánu a lze odebrat pouze ze zdroje artefaktů ve stejném spravovanou identitu. Tato bezpečnostní opatření vynucuje mechanismus zamykání a zabraňuje odebrání zámku podrobného plánu mimo podrobné plány.
+Pokud přiřazení vybere možnost **jen pro čtení** nebo neodstraní, je u prostředků artefaktů při přiřazení podrobného plánu použita akce odepřít odmítnutí [přiřazení](../../../role-based-access-control/deny-assignments.md) . Akce odepřít je přidána spravovanou identitou přiřazení podrobného plánu a lze ji odebrat pouze z prostředků artefaktu pomocí stejné spravované identity. Tato míra zabezpečení vynutila blokovací mechanizmus a zabraňuje odebrání zámku podrobného plánu mimo plány.
 
-![Zamítnout přiřazení ve skupině prostředků podrobného plánu](../media/resource-locking/blueprint-deny-assignment.png)
+![Přiřazení podrobného plánu k zamítnutí ve skupině prostředků](../media/resource-locking/blueprint-deny-assignment.png)
 
-[Zamítnout přiřazení vlastnosti](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) každého režimu jsou následující:
+[Vlastnosti přiřazení odepřít](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) pro každý režim jsou následující:
 
-|Režim |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|Režim |Oprávnění. akce |Oprávnění. NotActions |Principals[i].Type |ExcludePrincipals [i]. Účet | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Jen pro čtení |**\*** |**\*/ čtení** |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
-|Neodstraňujte |**\*/ DELETE** | |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
+|Jen pro čtení |**\*** |**\*/read** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Neodstraňovat |**\*/Delete** | |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
 
 > [!IMPORTANT]
-> Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho odeprete přiřazení Odepřít akce u prostředků podrobného plánu nemusí být hned v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.
+> Azure Resource Manager ukládá do mezipaměti Podrobnosti přiřazení role po dobu až 30 minut. V důsledku toho nemusí být přiřazení zamítnutí akcí Odepřít u prostředků podrobného plánu okamžitě platit. Během této doby může být možné odstranit prostředek určený k ochraně pomocí zámků podrobného plánu.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Vyloučení objektu zabezpečení z přiřazení Odepřít
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Vyloučení objektu zabezpečení z přiřazení zamítnutí
 
-V některých scénářích návrh nebo zabezpečení, může být potřeba vyloučit z objektu zabezpečení [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) vytvoří přiřazení podrobného plánu. To se provádí v rozhraní REST API tak, že přidáte až o pěti hodnot **excludedPrincipals** obsahuje pole **zámky** vlastnost při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate).
-Toto je příklad, který obsahuje tělo požadavku **excludedPrincipals**:
+V některých scénářích návrhu nebo zabezpečení může být nutné vyřadit objekt zabezpečení z [přiřazení zamítnutí](../../../role-based-access-control/deny-assignments.md) , které přiřazení podrobného plánu vytvoří. To se provádí v REST API přidáním až pěti hodnot do pole **excludedPrincipals** ve vlastnosti zámky při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate).
+Toto je příklad textu žádosti, který obsahuje **excludedPrincipals**:
 
 ```json
 {
@@ -111,8 +110,8 @@ Toto je příklad, který obsahuje tělo požadavku **excludedPrincipals**:
 
 ## <a name="next-steps"></a>Další postup
 
-- Postupujte podle [chránit nové prostředky](../tutorials/protect-new-resources.md) kurzu.
-- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
+- Postupujte podle kurzu [ochrany nových prostředků](../tutorials/protect-new-resources.md) .
+- Přečtěte si informace o [životním cyklu](lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](sequencing-order.md)
 - Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)

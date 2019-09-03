@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 2499842eeb2dd5a8fa845ed364a6aea7418acc8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824421"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231996"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a použití vlastních pravidel pro webové aplikace firewall v2
 
@@ -127,7 +127,7 @@ A odpovídající kód JSON:
 
 ## <a name="example-2"></a>Příklad 2
 
-Chcete blokovat všechny požadavky z IP adres v rozsahu 198.168.5.4/24.
+Chcete blokovat všechny požadavky z IP adres v rozsahu 198.168.5.0/24.
 
 V tomto příkladu zablokujete veškerý provoz, který pochází z rozsahu IP adres. Název pravidla je *myrule1* a Priorita je nastavená na 100.
 
@@ -140,7 +140,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
@@ -166,7 +166,7 @@ Tady je odpovídající kód JSON:
             "matchVariable": "RemoteAddr",
             "operator": "IPMatch",
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -175,11 +175,11 @@ Tady je odpovídající kód JSON:
   }
 ```
 
-Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.4/24" "id:7001,deny"`
+Odpovídající pravidlo pro počítačový počítač:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Příklad 3
 
-V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.4/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím se zajistí, že se obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.4/24 zablokují.
+V tomto příkladu chcete blokovat *Evilbot*uživatelského agenta a provoz v rozsahu 192.168.5.0/24. K tomu můžete vytvořit dvě samostatné podmínky shody a umístit je do stejného pravidla. Tím se zajistí, že se obě *evilbot* v hlavičce uživatelského agenta **a** IP adresy z rozsahu 192.168.5.0/24 zablokují.
 
 Logic: p **a** q
 
@@ -194,7 +194,7 @@ $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $False
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -229,7 +229,7 @@ Tady je odpovídající kód JSON:
               "operator": "IPMatch", 
               "negateCondition": false, 
               "matchValues": [ 
-                "192.168.5.4/24" 
+                "192.168.5.0/24" 
               ] 
             }, 
             { 
@@ -251,7 +251,7 @@ Tady je odpovídající kód JSON:
 
 ## <a name="example-4"></a>Příklad 4:
 
-V tomto příkladu chcete blokovat, pokud je požadavek mimo rozsah IP adres *192.168.5.4/24*, nebo pokud řetězec uživatelského agenta není *Chrome* (znamená to, že uživatel nepoužívá prohlížeč Chrome). Vzhledem k tomu, že tato logika používá **nebo**, jsou tyto dvě podmínky v samostatných pravidlech, jak je vidět v následujícím příkladu. *myrule1* a *myrule2* musí odpovídat na blokování provozu.
+V tomto příkladu chcete blokovat, pokud je požadavek mimo rozsah IP adres *192.168.5.0/24*, nebo pokud řetězec uživatelského agenta není *Chrome* (znamená to, že uživatel nepoužívá prohlížeč Chrome). Vzhledem k tomu, že tato logika používá **nebo**, jsou tyto dvě podmínky v samostatných pravidlech, jak je vidět v následujícím příkladu. *myrule1* a *myrule2* musí odpovídat na blokování provozu.
 
 Logic: **Not** (p **a** q) = **Not** p **nebo not** q.
 
@@ -266,7 +266,7 @@ $variable2 = New-AzApplicationGatewayFirewallMatchVariable `
 $condition1 = New-AzApplicationGatewayFirewallCondition `
    -MatchVariable $variable1 `
    -Operator IPMatch `
-   -MatchValue "192.168.5.4/24" `
+   -MatchValue "192.168.5.0/24" `
    -NegationCondition $True
 
 $condition2 = New-AzApplicationGatewayFirewallCondition `
@@ -307,7 +307,7 @@ A odpovídající kód JSON:
             "operator": "IPMatch",
             "negateCondition": true,
             "matchValues": [
-              "192.168.5.4/24"
+              "192.168.5.0/24"
             ]
           }
         ]
@@ -493,7 +493,7 @@ Odpovídající kód JSON:
   }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po vytvoření vlastních pravidel se můžete dozvědět, jak zobrazit protokoly WAF. Další informace najdete v tématu [diagnostika Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 

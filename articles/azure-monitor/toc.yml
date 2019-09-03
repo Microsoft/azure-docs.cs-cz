@@ -476,8 +476,6 @@
               items:
                 - name: Weby SharePoint
                   href: app/sharepoint.md
-                - name: Dynamics CRM
-                  href: app/sample-mscrm.md
                 - name: Plocha Windows
                   href: app/windows-desktop.md
         - name: Containers

@@ -5,18 +5,18 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491746"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232189"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jaké úlohy je možné chránit pomocí Azure Site Recovery?
 
-Tento článek popisuje úlohy a aplikace budete moct chránit pro zotavení po havárii pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek popisuje úlohy a aplikace, které můžete chránit při zotavení po havárii pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
 
 
@@ -35,13 +35,13 @@ Site Recovery pro ochranu a obnovení na úrovni aplikací přináší následuj
 * Nerozlišování aplikací a poskytování replikace pro jakoukoli úlohu spuštěnou na podporovaném počítači
 * Téměř synchronní replikace i při úrovni RPO stanovené na 30 sekund, což odpovídá nárokům nejdůležitějších firemních aplikací
 * Snímky konzistentní s jednovrstvými i vícevrstvými aplikacemi
-* Integrace se službami SQL Server AlwaysOn a partnerství s jinými technologiemi replikace na úrovni aplikace, včetně skupiny dostupnosti databáze replikace AlwaysOn serveru SQL, Exchange AD (DAG).
+* Integrace s SQL Server AlwaysOn a partnerství s dalšími technologiemi replikace na úrovni aplikace, včetně replikace AD, SQL AlwaysOn, skupin dostupnosti databáze Exchange (DAG).
 * Flexibilní plány obnovení, které vám umožní obnovit celý zásobník aplikací jediným kliknutím, s možností zahrnout do plánu externí skripty a ručně prováděné akce
 * Pokročilá správa sítě v Site Recovery a Azure pro zjednodušení požadavků na aplikační síť, včetně možnosti rezervovat IP adresy, konfigurovat vyrovnávání zatížení a integrace Azure Traffic Manager pro přepínání sítě s cílem dosáhnout nízké úrovně RTO
 * Bohatá automatizační knihovna obsahující předpřipravené skripty specifické pro aplikace, které je možné stáhnout a integrovat do plánů obnovení
 
 ## <a name="workload-summary"></a>Souhrn úloh
-Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporovaném počítači. Kromě toho jsme ve spolupráci s produktovými týmy provedli dodatečné testování specifické pro aplikace.
+Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporovaném počítači. Kromě toho jsme spolupracovali s produktovým týmem, aby bylo možné provádět další testování pro aplikace uvedené v tabulce.
 
 | **Úloha** |**Replikace virtuálních počítačů Azure do Azure** |**Replikace virtuálních počítačů Hyper-V do sekundární lokality** | **Replikace virtuálních počítačů Hyper-V do Azure** | **Replikace virtuálních počítačů VMware do sekundární lokality** | **Replikace virtuálních počítačů VMware do Azure** |
 | --- | --- | --- | --- | --- |---|
@@ -55,7 +55,7 @@ Site Recovery dokáže replikovat jakoukoli aplikaci spuštěnou na podporované
 | Linux (operační systém a aplikace) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem) |Ano (testováno Microsoftem)|
 | Dynamics AX |Ano |Ano |Ano |Ano |Ano|
 | Souborový server systému Windows |Ano |Ano |Ano |Ano |Ano|
-| Citrix XenApp a XenDesktop |Ano|neuvedeno |Ano |neuvedeno |Ano |
+| Citrix XenApp a XenDesktop |Ano|Není k dispozici |Ano |Není k dispozici |Ano |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikace služby Active Directory a DNS
 Pro většinu firemních aplikací má zásadní význam infrastruktura Active Directory a DNS. Během zotavování po havárii budete muset před obnovením aplikací a úloh ochránit a obnovit tyto součástí infrastruktury.
@@ -154,6 +154,6 @@ K ochraně nasazení Citrix XenApp a XenDesktop použijte Site Recovery následu
 
 [Další informace](site-recovery-citrix-xenapp-and-xendesktop.md) o ochraně nasazení Citrix XenApp a XenDesktop Můžete si také projít [dokument whitepaper od Citrixu](https://aka.ms/citrix-xenapp-xendesktop-with-asr), kde najdete podrobnosti o tomtéž.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Začínáme](azure-to-azure-quickstart.md) s replikací virtuálních počítačů Azure.

@@ -8,18 +8,40 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2f645d290175db9692649d825323313fc207a014
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210282"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232458"
 ---
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
+# <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
+
 Můžete řešit chyby zjištěné při použití Azure Backup s informacemi uvedenými níže:
 
 ## <a name="backup"></a>Zálohovat
+
 Tato část popisuje selhání operace zálohování virtuálního počítače Azure.
+
+### <a name="basic-troubleshooting"></a>Základní řešení potíží
+
+* Ujistěte se, že agent virtuálního počítače (WA Agent) má [nejnovější verzi](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine).
+* Ujistěte se, že je podporovaná verze operačního systému Windows nebo Linux, a podívejte se na [matrici podpory zálohování virtuálního počítače IaaS](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
+* Ověřte, že není spuštěná jiná služba zálohování.
+   * Aby se zajistilo, že nedochází k žádným problémům s rozšířením snímků, [odinstalujte rozšíření pro vynucené načtení a pak zkuste zálohování zopakovat](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).
+* Ověřte, že virtuální počítač má připojení k Internetu.
+   * Ujistěte se, že není spuštěná jiná služba zálohování.
+* Ověřte, že je **spuštěná**služba **agenta hosta systému Windows Azure.** `Services.msc` Pokud chybí služba **Windows Azure Host agent** , nainstalujte ji z [zálohování virtuálních počítačů Azure do trezoru Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
+* **Protokol událostí** může zobrazovat selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování Windows serveru, a není způsobené zálohováním Azure. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
+   * Pokud dojde k chybě při **zálohování** položky ve zdroji nebo zprávě události, ověřte, jestli se zálohy zálohování virtuálních počítačů Azure IaaS úspěšně a jestli se vytvořil bod obnovení s požadovaným typem snímku.
+    * Pokud Azure Backup funguje, bude problém nejspíš s jiným řešením zálohování. 
+    * Tady je příklad chyby prohlížeče událostí, kdy služba Azure Backup fungovala správně, ale "Zálohování Windows Serveru" se nezdařila:<br>
+    ![Zálohování Windows Serveru selhává](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+    * Pokud se Azure Backup nedaří, vyhledejte odpovídající kód chyby v části běžné chyby zálohování virtuálních počítačů v tomto článku. 
+
+## <a name="common-issues"></a>Běžné potíže
+
+Níže jsou uvedené běžné problémy se selháním zálohování virtuálních počítačů Azure.
 
 ## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – při kopírování zálohovaných dat z trezoru vypršel časový limit.
 
@@ -36,7 +58,7 @@ Chybová zpráva: Virtuální počítač není ve stavu, který umožňuje zálo
 Operace zálohování se nezdařila, protože virtuální počítač je v neúspěšném stavu. V případě úspěšného zálohování by měl být stav virtuálního počítače spuštěno, zastaveno nebo Zastaveno (přidělení zrušeno).
 
 * Pokud je virtuální počítač v přechodném stavu mezi **spuštěním** a **vypnutím**, počkejte na změnu stavu. Potom aktivujte úlohu zálohování.
-*  Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra systému Linux s vylepšeným zabezpečením, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalovaná přípona zálohování.
+* Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra systému Linux s vylepšeným zabezpečením, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalovaná přípona zálohování.
 
 ## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nepovedlo se zablokovat jeden nebo více přípojných bodů virtuálního počítače, aby se mohl vytvořit snímek konzistentní se systémem souborů.
 

@@ -7,13 +7,12 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 58470dddafb29b6a2e5fa8ec0b474dd5da778799
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972312"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231541"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -307,7 +306,7 @@ az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where i
 Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [dotazovacím jazyku](query-language.md)
 - Zobrazit jazyk používaný v počátečních [dotazech](../samples/starter.md)

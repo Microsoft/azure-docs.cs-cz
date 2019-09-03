@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e883e231988e63d22cb990224d240b1c13fb04b6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164438"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231380"
 ---
 ::: zone target="docs"
 
@@ -26,7 +27,7 @@ ms.locfileid: "70164438"
 
 ## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopírovat data do Azure Data Box Disk a ověřit
 
-Po připojení a odemčení disků můžete zkopírovat data ze zdrojového datového serveru na disky. Po dokončení kopírování dat byste měli mít data, která jste zkopírovali. Ověřování zajišťuje, že se data úspěšně odesílají do Azure později.
+Po připojení a odemčení disků můžete zkopírovat data ze zdrojového datového serveru na disky. Po dokončení kopírování dat byste měli ověřit data, abyste se ujistili, že se úspěšně nahrála do Azure.
 
 ::: zone-end
 

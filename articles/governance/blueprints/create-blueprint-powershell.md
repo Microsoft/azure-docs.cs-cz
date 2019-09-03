@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7f3a3ac2559e23eecbab46cb801f73fb09c20211
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bfd2d1215e7673f7ff73a0c875973e45362ce6b0
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036448"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231906"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý start: Definování a přiřazení Azure Blueprint pomocí prostředí PowerShell
 
@@ -397,7 +397,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](./concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)

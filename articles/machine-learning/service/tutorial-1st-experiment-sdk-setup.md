@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182616"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231072"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
 
@@ -24,16 +24,14 @@ V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořte pracovní prostor Machine Learning, který chcete použít v dalším kurzu.
+> * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
 > * Vytvořte cloudový virtuální počítač Azure Machine Learning s Jupyter poznámkovým blokem s nainstalovanou a předem nakonfigurovanou sadou Python SDK.
 
-## <a name="prerequisites"></a>Požadavky
-
-Jediným předpokladem pro tento kurz je předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výukě a nasazení modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu v sadě SDK. Pokud již máte pracovní prostor služby Azure Machine Learning, přejděte k [Další části](#azure). V opačném případě vytvořte nyní.
+Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu v sadě SDK. Pokud již máte pracovní prostor služby Azure Machine Learning, přejděte k [Další části](#azure). V opačném případě vytvořte nyní.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -58,10 +56,7 @@ Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít p
 1. Potom vyberte **Vytvořit**. Nastavení virtuálního počítače může chvíli trvat.
 
 1. Počkejte, než se stav změnína spuštěno.
-
-### <a name="launch-jupyter-web-interface"></a>Spustit webové rozhraní Jupyter
-
-Po spuštění virtuálního počítače pomocí části **virtuální počítače poznámkového bloku** spusťte webové rozhraní Jupyter.
+   Po spuštění virtuálního počítače pomocí části **virtuální počítače poznámkového bloku** spusťte webové rozhraní Jupyter.
 
 1. Vyberte **Jupyter** ve sloupci **identifikátor URI** pro váš virtuální počítač.
 
@@ -69,16 +64,8 @@ Po spuštění virtuálního počítače pomocí části **virtuální počíta�
 
    Odkaz spustí svůj server poznámkového bloku a otevře webovou stránku Jupyter poznámkového bloku na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která virtuální počítač vytvořila. Každý uživatel pracovního prostoru musí vytvořit svůj vlastní virtuální počítač.
 
-1. Na webové stránce poznámkového bloku Jupyter vyberte hlavní název_složky, který má vaše uživatelské jméno.  
 
-   Tato složka existuje v [účtu úložiště](concept-workspace.md#resources) pracovního prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Pokud odstraníte virtuální počítač poznámkového bloku, pořád budete mít veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
-
-1. `samples-*` Otevřete podadresář a pak otevřete Poznámkový blok Jupyter.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Ujistěte se, že `tutorial-1st-experiment-sdk-train.ipynb` soubor otevřete , nikoli `.yml` soubor > stejným názvem. 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste dokončili tyto úkoly:
 

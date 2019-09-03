@@ -1,26 +1,25 @@
 ---
-title: Vytvoření zásad pro nekompatibilní prostředky pomocí Azure Powershellu
-description: Použití Azure Powershellu k vytvoření přiřazení Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
+title: Vytvoření zásad pro prostředky, které nedodržují předpisy, pomocí Azure PowerShell
+description: Pomocí Azure PowerShell můžete vytvořit přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 2ff34911dea19b83731b46077bd60c7b085763a4
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5962db75fdd640822feb06ddb93bf7d4f2acd4d5
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979589"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232307"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure Powershellu
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure PowerShell
 
-Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. V tomto rychlém startu vytvoříte přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky. Jakmile budete hotovi, budete identifikovat virtuální počítače, které jsou *neodpovídajících*.
+Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. V tomto rychlém startu vytvoříte přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky. Po dokončení budete identifikovat virtuální počítače, které nedodržují *předpisy*.
 
-Modul Azure PowerShell slouží ke správě prostředků Azure z příkazového řádku nebo ve skriptech.
-Tato příručka vysvětluje, jak modul Az slouží k vytvoření přiřazení zásady.
+Modul Azure PowerShell se používá ke správě prostředků Azure z příkazového řádku nebo ve skriptech.
+V této příručce se dozvíte, jak pomocí funkce AZ Module vytvořit přiřazení zásady.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -28,8 +27,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Než začnete, ujistěte se, že je nainstalovaná nejnovější verze prostředí Azure PowerShell. Zobrazit [instalace modulu Azure PowerShell](/powershell/azure/install-az-ps) podrobné informace.
-- Registrace poskytovatele prostředků Azure Policy Insights pomocí Azure Powershellu. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+- Než začnete, ujistěte se, že je nainstalovaná nejnovější verze Azure PowerShell. Podrobné informace najdete v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-az-ps) .
+- Zaregistrujte poskytovatele prostředků Azure Policy Insights pomocí Azure PowerShell. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -40,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
-V tomto rychlém startu vytvoříte přiřazení zásady pro *Audit virtuálních počítačů bez spravovaných disků* definice. Tato definice zásady identifikuje virtuální počítače bez použití spravovaných disků.
+V tomto rychlém startu vytvoříte přiřazení zásady pro definici *audit virtuálních počítačů bez spravovaných disků* . Tato definice zásady identifikuje virtuální počítače, které nepoužívají spravované disky.
 
 Spuštěním následujících příkazů vytvořte nové přiřazení zásady:
 
@@ -73,7 +72,7 @@ Pomocí následujících informací identifikujte prostředky, které nedodržuj
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-Další informace o tom, jak zásady stavu, najdete v části [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+Další informace o získání stavu zásad najdete v tématu [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 
@@ -95,7 +94,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-Výsledky splňují, co se zobrazí v **dodržování předpisů prostředkem** kartě přiřazení zásady v zobrazení Azure portal.
+Výsledky se shodují s tím, co vidíte na kartě **Kompatibilita prostředků** v přiřazení zásady v zobrazení Azure Portal.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

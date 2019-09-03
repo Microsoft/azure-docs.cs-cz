@@ -1,193 +1,193 @@
 ---
 title: Vytvoření prostředí z ukázky podrobného plánu
-description: Vytvořit definici podrobného plánu, který vytvoří dvě skupiny prostředků a nakonfiguruje pro jednotlivé přiřazení role pomocí vzorového podrobného plánu.
+description: Pomocí ukázky podrobného plánu vytvořte definici podrobného plánu, která nastaví dvě skupiny prostředků a nakonfiguruje přiřazení role pro každou z nich.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798317"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232623"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Kurz: Vytvoření prostředí z ukázky podrobného plánu
 
-Ukázková plány poskytnout příklady, co se dá dělat pomocí Azure podrobné plány. Každá je tady je příklad s specifické cílem nebo účely, ale nepodporuje vytvoření kompletního prostředí samy o sobě. Každá je určena jako výchozí bod k prozkoumání Azure plány pomocí různých kombinací zahrnuté artefakty, návrhy a parametry.
+Ukázkové modrotisky obsahují příklady toho, co můžete udělat pomocí Azure modrotisky. Každá z nich je ukázkou s konkrétním záměrem nebo účelem, ale nevytváří celé prostředí sami. Každá z nich je určena jako počáteční místo pro zkoumání pomocí Azure modrotisky s různými kombinacemi zahrnutých artefaktů, návrhů a parametrů.
 
-V následujícím kurzu se používá **skupin prostředků pomocí RBAC** ukázka podrobný plán k prezentaci různé aspekty plány služby. Jsou zahrnuty následující kroky:
+V následujícím kurzu se k předvedení různých aspektů služby modrotisky používá ukázka **skupiny prostředků s nástrojem RBAC** . details. Postup je popsaný v následujících krocích:
 
 > [!div class="checklist"]
-> - Vytvořte novou definici podrobného plánu z ukázky
-> - Označte si kopii ukázky jako **publikováno**
-> - Přiřazení kopie podrobný plán k existujícímu předplatnému
-> - Kontrola přiřazení nasazených prostředků
-> - Zrušit přiřazení podrobného plánu se odebrat zámky.
+> - Vytvořit novou definici podrobného plánu z ukázky
+> - Označení kopie ukázky jako **publikované**
+> - Přiřazení kopie podrobného plánu k existujícímu předplatnému
+> - Kontrola nasazených prostředků pro přiřazení
+> - Zrušení přiřazení podrobného plánu k odebrání zámků
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, je potřeba předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-blueprint-definition-from-sample"></a>Vytvořit definici podrobného plánu z ukázky
 
-První implementaci vzorku podrobného plánu. Import vytvoří nový plán ve vašem prostředí založené na vzorku.
+Nejdřív implementujte ukázku podrobného plánu. Import vytvoří ve svém prostředí nový podrobný plán založený na ukázce.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Z **Začínáme** stránky na levé straně, vyberte **vytvořit** tlačítko _vytvořit podrobný plán_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Najít **skupin prostředků pomocí RBAC** podrobného plánu ukázky v části _Další ukázky_ a vyberte **fungování této ukázky**.
+1. V části _Další ukázky_ Najděte **skupiny prostředků s** ukázkovým plánem RBAC a vyberte **použít tuto ukázku**.
 
-1. Zadejte _Základy_ vzorku podrobného plánu:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Název podrobného plánu**: Zadejte název pro vaši kopii ukázky podrobného plánu. V tomto kurzu použijeme název _dvě rgs s--přiřazení rolí_.
-   - **Umístění definice**: Použít na tři tečky a vyberte skupiny pro správu nebo předplatného, uložte si kopii vzorku.
+   - **Název**podrobného plánu: Zadejte název pro kopii ukázky podrobného plánu. V tomto kurzu použijeme název _dvou-RGS-s přiřazení role_.
+   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu nebo předplatné, do které chcete kopii ukázky Uložit.
 
-1. Vyberte _artefakty_ kartě v horní části stránky nebo **Další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **další: Artefakty** v dolní části stránky.
 
-1. Projděte si seznam artefakty, které tvoří vzorku podrobného plánu. Tento příklad definuje dvě skupiny prostředků s názvy zobrazení _ProdRG_ a _PreProdRG_. Poslední název a umístění každé skupině prostředků se nastavují při přiřazení podrobného plánu. _ProdRG_ přiřazené skupiny prostředků _Přispěvatel_ role a _PreProdRG_ přiřazené skupiny prostředků _vlastníka_ a  _Čtenáři_ role. Přiřazené v definici role jsou statické, ale je během přiřazení podrobného plánu nastavit uživatele, aplikace nebo skupina, která je přiřazena role.
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Tato ukázka definuje dvě skupiny prostředků s zobrazovanými názvy _ProdRG_ a _PreProdRG_. Konečný název a umístění jednotlivých skupin prostředků se nastaví během přiřazení podrobného plánu. Skupině prostředků _ProdRG_ se přiřadí role _Přispěvatel_ a pro skupinu prostředků _PreProdRG_ se přiřazují role _vlastník_ a _čtenáři_ . Role přiřazené v definici jsou statické, ale uživatel, aplikace nebo skupina, které mají přiřazenou roli, se nastaví během přiřazení podrobného plánu.
 
-1. Vyberte **uložit koncept** až dokončíte revize vzorku podrobného plánu.
+1. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-Tento krok vytvoří kopii ukázková definice podrobného plánu v vybraná skupina pro správu nebo předplatného. Definice podrobného plánu uložené se spravuje stejně jako jakékoli podrobného plánu vytvářet úplně od začátku. Ukázku můžete uložit do vaší skupiny pro správu nebo předplatného tolikrát, kolikrát podle potřeby. Každá kopie však třeba zadat jedinečný název.
+Tento krok vytvoří kopii vzorové definice podrobného plánu ve vybrané skupině nebo předplatném pro správu. Uložená definice podrobného plánu se spravuje stejně jako každý podrobný plán vytvořený od začátku. Ukázku můžete uložit do vaší skupiny pro správu nebo předplatného tolikrát, kolikrát je potřeba. Pro každou kopii je však nutné zadat jedinečný název.
 
-Jakmile **ukládá definice podrobného plánu se úspěšně** portálu oznámení se zobrazí, přejít k dalšímu kroku.
+Po úspěšném zobrazení oznámení na portálu pro **uložení definice** podrobného plánu přejděte k dalšímu kroku.
 
-## <a name="publish-the-sample-copy"></a>Publikování ukázkové kopírování
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaši kopii ukázky podrobného plánu byla vytvořena ve vašem prostředí. Vytvoří se v **koncept** režimu a musí být **publikováno** předtím, než může být přiřazena a nasadit. Kopii ukázky podrobný plán lze přizpůsobit, aby vaše prostředí a požadavky. Pro účely tohoto kurzu jsme neprovede žádné změny.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu konceptu a musí být publikována před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit pro vaše prostředí a potřeby. Pro tento kurz nebudeme dělat žádné změny.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru k vyhledání _dvě rgs s--přiřazení rolí_ podrobný plán definice a potom ho vyberte.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici podrobného plánu _přiřazení dvou RGS-s-role_ a pak ji vyberte.
 
-1. Vyberte **publikovat podrobný plán** v horní části stránky. V novém podokně na pravé straně zadejte **verze** jako _1.0_ vaši kopii ukázky podrobného plánu. Tato vlastnost je užitečná pro, pokud provedete změny později. Zadejte **změnit poznámky** jako "první verze publikovat skupiny prostředků s ukázkou podrobného plánu RBAC." Potom vyberte **publikovat** v dolní části stránky.
+1. V horní části stránky vyberte **publikovat podrobný plán** . V pravém podokně na pravé straně zadejte pro kopii ukázky podrobného plánu **verzi** jako _1,0_ . Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , jako je například "první verze publikovaná ze skupin prostředků s ukázkou podrobného plánu RBAC". Potom v dolní části stránky vyberte **publikovat** .
 
-Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování se můžete stále provádět změny. Další změny, které vyžadují publikování s novou **verze** hodnotu ke sledování rozdíly mezi různé verze stejné definice podrobného plánu.
+Tento krok umožňuje přiřadit podrobný plán k předplatnému. Po publikování můžou být změny pořád připravené. Další změny vyžadují publikování s novou hodnotou **verze** ke sledování rozdílů mezi různými verzemi stejné definice podrobného plánu.
 
-Jednou **publikování podrobný plán definici úspěšné** portálu oznámení se zobrazí, přejít k dalšímu kroku.
+Po úspěšném zobrazení oznámení na portálu definice podrobného plánu **publikování** přejděte k dalšímu kroku.
 
-## <a name="assign-the-sample-copy"></a>Přiřazení kopie vzorku
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Jakmile kopii ukázky podrobný plán byl úspěšně **publikováno**, je možné přiřadit na předplatné v rámci se uložila do skupiny pro správu. Tento krok je, kde jsou k dispozici parametry aby každého nasazení kopii ukázky podrobného plánu jedinečný.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Vyberte **podrobný plán definice** na levé straně stránky. Pomocí filtru k vyhledání _dvě rgs s--přiřazení rolí_ podrobný plán definice a potom ho vyberte.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů vyhledejte definici podrobného plánu _přiřazení dvou RGS-s-role_ a pak ji vyberte.
 
-1. Vyberte **přiřazení podrobného plánu** v horní části stránky definice podrobného plánu.
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
-   - Základy
+   - Základní informace
 
-     - **Předplatná:** Vyberte jednu nebo několik předplatných, které jsou ve skupině pro správu můžete uložit kopii ukázku podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: Název je předem vyplněna můžete vycházet z názvu definice podrobného plánu.
-     - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořen v. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
-       Pro účely tohoto kurzu vyberte _USA – východ 2_.
-     - **Verze definice podrobného plánu**: Vyberte si **publikováno** verze _1.0_ kopie ukázková definice podrobného plánu.
+     - **Předplatná:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: Název je předem vyplněný pro vás na základě názvu definice podrobného plánu.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [Spravované identity pro zdroje Azure](../../../active-directory/managed-identities-azure-resources/overview.md).
+       Pro tento kurz vyberte _východní USA 2_.
+     - **Verze definice**podrobného plánu: Vyberte **publikovanou** verzi _1,0_ kopie definice ukázkového podrobného plánu.
 
    - Uzamknout přiřazení
 
-     Vyberte _jen pro čtení_ režim zámku podrobného plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+     Vyberte režim zámku podrobného plánu. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí nastavení _přiřazenou systémem_ možnost. Další informace najdete v tématu [spravovaných identit](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Ponechte výchozí možnost _přiřazenou systému_ . Další informace najdete v tématu [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md).
 
    - Parametry artefaktů
 
-     Parametry definované v této části se vztahují na artefakt, pod kterým je definována. Tyto parametry jsou [dynamických parametrů](../concepts/parameters.md#dynamic-parameters) protože máte definovaný během přiřazování podrobný plán. Pro každý artefakt, nastavte hodnotu parametru definovaný v **hodnotu** sloupce. Pro `{Your ID}`, vyberte váš uživatelský účet Azure.
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . `{Your ID}`V případě vyberte svůj uživatelský účet Azure.
 
-     |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
+     |Název artefaktu|Typ artefaktu|Název parametru|Value|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků ProdRG|Skupina prostředků|Název|ProductionRG|Definuje název první skupinu prostředků.|
-     |Skupina prostředků ProdRG|Skupina prostředků|Location|Západní USA 2|Nastaví umístění první skupinu prostředků.|
-     |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje, které uživateli nebo skupině udělit _Přispěvatel_ přiřazení rolí v rámci první skupinu prostředků.|
-     |Skupina prostředků PreProdRG|Skupina prostředků|Název|PreProductionRG|Definuje název skupiny prostředků, druhém.|
-     |Skupina prostředků PreProdRG|Skupina prostředků|Location|Západní USA|Nastaví umístění, z druhé skupiny prostředků.|
-     |Vlastník|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje, které uživateli nebo skupině udělit _vlastníka_ přiřazení role v rámci druhé skupiny prostředků.|
-     |Čtenáři|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje, které uživateli nebo skupině udělit _čtenáři_ přiřazení role v rámci druhé skupiny prostředků.|
+     |Skupina prostředků ProdRG|Resource group|Name|ProductionRG|Definuje název první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Resource group|Location|USA – západ 2|Nastaví umístění první skupiny prostředků.|
+     |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým chcete udělit přiřazení role přispěvatele v rámci první skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Resource group|Name|PreProductionRG|Definuje název druhé skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Resource group|Location|USA – západ|Nastaví umístění druhé skupiny prostředků.|
+     |Owner|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým udělíte přiřazení role _vlastníka_ v rámci druhé skupiny prostředků.|
+     |Čtenáři|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu pro udělení přiřazení role _čtenáři_ v rámci druhé skupiny prostředků.|
 
-1. Po zadání všech parametrů se vyberte **přiřadit** v dolní části stránky.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** .
 
-Tento krok definované prostředky nasadí a nakonfiguruje vybraného **zámek přiřazení**. Zámky podrobného plánu může trvat až 30 minut použít.
+Tento krok nasadí definované prostředky a nakonfiguruje vybrané **přiřazení zámku**. Použití zámků podrobného plánu může trvat až 30 minut.
 
-Jednou **přiřazení definice podrobného plánu se úspěšně** portálu oznámení se zobrazí, přejít k dalšímu kroku.
+Jakmile se zobrazí oznámení o **úspěšném přiřazení** na portál definice podrobného plánu, přejděte k dalšímu kroku.
 
-## <a name="inspect-resources-deployed-by-the-assignment"></a>Zkontrolovat prostředky nasazené podle přiřazení
+## <a name="inspect-resources-deployed-by-the-assignment"></a>Kontrola prostředků nasazených přiřazením
 
-Přiřazení podrobného plánu se vytvoří a sleduje artefakty definované v definici podrobného plánu. Můžeme vidět stav prostředků ze stránky přiřazení podrobného plánu a prohlédněte prostředky přímo.
+Přiřazení podrobného plánu vytvoří a sleduje artefakty definované v definici podrobného plánu. Stav prostředků můžeme zobrazit na stránce přiřazení podrobného plánu a prohlížející si prostředky přímo.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Vyberte **přiřazené podrobné plány** na levé straně stránky. Pomocí filtru k vyhledání _Assignment-two-rgs-with-role-assignments_ podrobný plán přiřazení a pak ho vyberte.
+1. Na levé straně vyberte stránku **přiřazené plány** . Použijte filtry k vyhledání přiřazení podrobného plánu přiřazení _-Two-RGS-with-role_ a pak ho vyberte.
 
-   Na této stránce můžeme vidět seznam vytvořených prostředků spolu s jejich stav zámku podrobného plánu a přiřazení proběhlo úspěšně. Pokud aktualizaci přiřazení **operace přiřazení** rozevíracím seznamu zobrazí podrobnosti o nasazení každé definici verze. Každý uvedené prostředek, který byl vytvořen dá kliknout a otevře se stránka vlastností této zdrojů.
+   Z této stránky vidíte úspěšné přiřazení a seznam vytvořených prostředků spolu s jejich stavem zámku podrobného plánu. Pokud je přiřazení aktualizováno, rozevírací seznam **operace přiřazení** zobrazí podrobnosti o nasazení každé verze definice. Na každý vytvořený prostředek se dá kliknout a otevře se stránka vlastností Resources (prostředky).
 
-1. Vyberte **ProductionRG** skupinu prostředků.
+1. Vyberte skupinu prostředků **ProductionRG** .
 
-   Vidíme, že je název skupiny prostředků **ProductionRG** a nikoli zobrazovaný název artefaktu _ProdRG_. Tento název odpovídá hodnotě nastavit během přiřazení podrobného plánu.
+   Ukážeme, že název skupiny prostředků je **ProductionRG** , a ne zobrazovaný název artefaktu _ProdRG_. Tento název se shoduje s hodnotou nastavenou během přiřazení podrobného plánu.
 
-1. Vyberte **řízení přístupu (IAM)** stránky na levé straně a pak **přiřazení rolí** kartu.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-   Tady vidíme, že bylo uděleno účtu _Přispěvatel_ role na rozsahu _tento prostředek_. _Assignment-two-rgs-with-role-assignments_ se přiřazení podrobného plánu _vlastníka_ role, protože byla použita k vytvoření skupiny prostředků. Tato oprávnění se také používají ke správě prostředků pomocí zámků nakonfigurované podrobného plánu.
+   Tady vidíte, že váš účet měl přiřazenou roli _Přispěvatel_ v oboru _tohoto prostředku_. Přiřazení podrobného plánu přiřazení _(dvou-RGS-with-role_ ) má roli _Owner_ , protože se použila k vytvoření skupiny prostředků. Tato oprávnění slouží také ke správě prostředků s konfigurovanými zámky podrobného plánu.
 
-1. Azure portal navigace s popisem cesty, vyberte **Assignment-two-rgs-with-role-assignments** vrátit jednu stránku, vyberte **PreProductionRG** skupinu prostředků.
+1. Z Azure Portal s popisem cesty vyberte **přiřazení – dvě-RGS-s-role – přiřazení** se vrátí zpět jedna stránka a pak vyberte skupinu prostředků **PreProductionRG** .
 
-1. Vyberte **řízení přístupu (IAM)** stránky na levé straně a pak **přiřazení rolí** kartu.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-   Tady vidíme, že váš účet bylo uděleno i _vlastníka_ a _čtečky_ role, na rozsahu _tento prostředek_. Přiřazení podrobného plánu se má také _vlastníka_ role jako první skupinu prostředků.
+   Tady vidíte, že váš účet měl v oboru _tohoto prostředku_udělena role _vlastník_ i _Čtenář_ . Přiřazení podrobného plánu má také roli _vlastníka_ jako první skupinu prostředků.
 
-1. Vyberte **zamítnout přiřazení** kartu.
+1. Vyberte kartu **Odepřít přiřazení** .
 
-   Přiřazení podrobného plánu, který je vytvořen [zamítnout přiřazení](../../../role-based-access-control/deny-assignments.md) nasazený prostředek skupiny k vynucení _jen pro čtení_ režim zámku podrobného plánu. Někdo s příslušná oprávnění přiřazení odepřít brání na _přiřazení rolí_ kartu z konkrétní akci. Přiřazení odepřít ovlivňuje _všechny objekty zabezpečení_.
+   Přiřazení podrobného plánu vytvořilo [přiřazení odepřít](../../../role-based-access-control/deny-assignments.md) pro nasazenou skupinu prostředků, aby se vynutil režim zámku podrobného plánu _pro čtení_ . Přiřazení zamítnutí brání osobě s odpovídajícími právy na kartě _přiřazení rolí_ v tom, aby převzal konkrétní akce. Přiřazení zamítnutí má vliv na _všechny objekty zabezpečení_.
 
-1. Vyberte přiřazení Odepřít a potom **odepření oprávnění** na levé straně stránky.
+1. Vyberte přiřazení odepřít a pak na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení odepřít brání všechny operace s **\*** a **akce** konfigurace, ale umožňuje přístup pro čtení vyloučením  **\* /čtení**prostřednictvím **NotActions**.
+   Přiřazení zamítnutí **\*** brání všem operacím s konfigurací **Akce** a, ale umožňuje přístup pro čtení s výjimkou  **\*/Read** prostřednictvím **NotActions**.
 
-1. Azure portal navigace s popisem cesty, vyberte **PreProductionRG – řízení přístupu (IAM)**. Vyberte **přehled** stránky na levé straně a pak **odstranit skupinu prostředků** tlačítko. Zadejte název _PreProductionRG_ potvrďte odstranění a vyberte **odstranit** v dolní části podokna.
+1. Z Azure Portal s popisem cesty vyberte **PreProductionRG-Access Control (IAM)** . Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadejte název _PreProductionRG_ a potvrďte odstranění a vyberte **Odstranit** v dolní části podokna.
 
-   Na portálu oznámení **odstranit skupinu prostředků se nepovedlo PreProductionRG** se zobrazí. Chyba, která uvádí, zatímco váš účet má oprávnění k odstranění skupiny prostředků, přístup se zamítl podle přiřazení podrobného plánu. Mějte na paměti, že jsme vybrali _jen pro čtení_ režim zámku podrobného plánu během přiřazení podrobného plánu. Podrobný plán zámek je chrání účtu s oprávněním, dokonce i _vlastníka_, z příslušný prostředek odstraníte. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
+   Zobrazuje **se skupina prostředků odstranit** oznámení na portálu PreProductionRG. Chyba uvádí, že zatímco váš účet má oprávnění k odstranění skupiny prostředků, přístup je odepřen přiřazením podrobného plánu. Mějte na paměti, že při přiřazení podrobného plánu jsme vybrali režim zámku podrobný plán _pro čtení_ . Zámek podrobného plánu zabraňuje účtu s oprávněním, dokonce i _vlastníkem_, z odstranění prostředku. Další informace naleznete v tématu [uzamčení zdrojů plánu](../concepts/resource-locking.md).
 
-Tyto kroky ukazují, že naše prostředky se vytvořily, jak jsou definovány a podrobného plánu zámky brání nežádoucí odstranění, dokonce i z účtu s oprávněním.
+Tyto kroky ukazují, že se naše prostředky vytvořily podle definice a zámky podrobného plánu zabraňují nechtěnému odstranění, a to i z účtu s oprávněním.
 
-## <a name="unassign-the-blueprint"></a>Zrušit přiřazení podrobný plán
+## <a name="unassign-the-blueprint"></a>Zrušit přiřazení podrobného plánu
 
-Posledním krokem je odebrat přiřazení podrobný plán a prostředky, které se nasadit.
-Odebrání přiřazení neodebere nasazené artefakty.
+Posledním krokem je odebrání přiřazení podrobného plánu a prostředků, které byly nasazeny.
+Odebráním přiřazení nedojde k odebrání nasazených artefaktů.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Vyberte **přiřazené podrobné plány** na levé straně stránky. Pomocí filtru k vyhledání _Assignment-two-rgs-with-role-assignments_ podrobný plán přiřazení a pak ho vyberte.
+1. Na levé straně vyberte stránku **přiřazené plány** . Použijte filtry k vyhledání přiřazení podrobného plánu přiřazení _-Two-RGS-with-role_ a pak ho vyberte.
 
-1. Vyberte **zrušit přiřazení podrobného plánu** tlačítko v horní části stránky. Přečtěte si upozornění v dialogovém okně potvrzení a pak vyberte **OK**.
+1. V horní části stránky vyberte tlačítko zrušit **přiřazení** podrobného plánu. Přečtěte si upozornění v potvrzovacím dialogovém okně a pak vyberte **OK**.
 
-   Přiřazení podrobného plánu odebrat se taky odeberou zámky podrobného plánu. Vytvořené prostředky můžete odstranit znovu pomocí účtu s oprávněními.
+   Po odebrání přiřazení podrobného plánu jsou také odebrány zámky podrobného plánu. Vytvořené prostředky můžete znovu odstranit pomocí účtu s oprávněními.
 
-1. Vyberte **skupiny prostředků** z nabídky Azure vyberte **ProductionRG**.
+1. V nabídce Azure vyberte **skupiny prostředků** a pak vyberte **ProductionRG**.
 
-1. Vyberte **řízení přístupu (IAM)** stránky na levé straně a pak **přiřazení rolí** kartu.
+1. Na levé straně vyberte stránku **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** .
 
-Zabezpečení pro každé skupiny prostředků má stále přiřazení nasazené rolí, ale už se přiřazení podrobného plánu _vlastníka_ přístup.
+Zabezpečení pro každou skupinu prostředků má stále nasazená přiřazení rolí, ale přiřazení podrobného plánu už nemá přístup _vlastníka_ .
 
-Jakmile **přiřazení podrobného plánu odebrání proběhlo úspěšně.** portálu oznámení se zobrazí, přejít k dalšímu kroku.
+Jakmile se zobrazí oznámení o **úspěšném odebrání přiřazení** podrobného plánu, přejděte k dalšímu kroku.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto kurzu, odstraňte následující prostředky:
+Po dokončení tohoto kurzu odstraňte následující prostředky:
 
-- Skupina prostředků _ProductionRG_
-- Skupina prostředků _PreProductionRG_
-- Podrobný plán definice _dvě rgs s--přiřazení rolí_
+- _ProductionRG_ skupiny prostředků
+- _PreProductionRG_ skupiny prostředků
+- Definice podrobného plánu _2 – RGS-s-role-přiřazení_
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
+- Další informace o [životním cyklu](../concepts/lifecycle.md) podrobného plánu
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
 - Zjistěte, jak používat [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)

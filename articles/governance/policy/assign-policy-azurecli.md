@@ -1,21 +1,20 @@
 ---
-title: Vytvoření zásady pro nekompatibilní prostředky pomocí Azure CLI
-description: Pomocí Azure CLI k vytvoření přiřazení Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
+title: Vytvoření zásady pro prostředky, které nedodržují předpisy, pomocí Azure CLI
+description: Pomocí Azure CLI vytvořte přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 76f457b7d577fb2a08bbcc386328ce4d8e59f902
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: d2436e09ccb1c134d28a1dc471adc298cf090d05
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979622"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231618"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Rychlý start: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí Azure CLI
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
@@ -32,7 +31,7 @@ Tento rychlý start vyžaduje, abyste pro místní používání a instalaci roz
 
 ## <a name="prerequisites"></a>Požadavky
 
-Registrace poskytovatele prostředků Azure Policy Insights pomocí Azure CLI. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+Zaregistrujte poskytovatele prostředků služby Azure Policy Insights pomocí Azure CLI. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'

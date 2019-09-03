@@ -1,5 +1,5 @@
 ---
-title: Prostředky ve službě Azure Media Services | Dokumentace Microsoftu
+title: Prostředky v Azure Media Services | Microsoft Docs
 description: Tento článek obsahuje vysvětlení, co jsou prostředky, a jak se používají Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,30 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670704"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230993"
 ---
 # <a name="assets"></a>Prostředky
 
-Ve službě Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) obsahuje informace o digitální soubory uložené ve službě Azure Storage (včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory s titulky). 
+V Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) obsahuje informace o digitálních souborech uložených v Azure Storage (včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků). 
 
-Prostředek je namapována na kontejner objektů blob ve službě [účtu služby Azure Storage](storage-account-concept.md) a soubory v prostředku se ukládají jako objekty BLOB bloku v tomto kontejneru. Služba Media Services podporuje úrovně objektu Blob, pokud používá účet pro obecné účely v2 (GPv2) úložiště. S účty GPv2, můžete přesunout soubory do [studené nebo archivní úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archiv** úložiště je vhodný pro archivaci zdrojové soubory, pokud už nepotřebujete (například po jejich jsou kódovány).
+Asset se namapuje na kontejner objektů BLOB v [účtu Azure Storage](storage-account-concept.md) a soubory v prostředku se ukládají jako objekty blob bloku v tomto kontejneru. Media Services podporuje úrovně objektů blob, pokud účet používá úložiště pro obecné účely v2 (GPv2). Pomocí GPv2 můžete přesunout soubory do studeného [nebo archivního úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archivní** úložiště je vhodné pro archivaci zdrojových souborů, když už nepotřebujete (například po kódování).
 
-**Archivu** vrstva úložiště se doporučuje jen pro velmi velké zdrojové soubory, které již byly zakódovány a kódování výstupu úlohy byl umístěn do kontejneru objektů blob výstup. Objekty BLOB ve výstupním kontejneru, který chcete přidružit k Asset a použít ke streamování a analyzovat obsah, musí existovat v **Hot** nebo **Cool** vrstvy úložiště.
+**Archivní** úroveň úložiště je doporučena pouze pro velmi velké zdrojové soubory, které již byly zakódovány a výstup úlohy kódování byl vložen do výstupního kontejneru objektů BLOB. Objekty blob ve výstupním kontejneru, které chcete přidružit k Assetu a používají se ke streamování nebo analýze obsahu, musí existovat v **horké** nebo **studené** úrovni úložiště.
 
-## <a name="upload-digital-files-into-assets"></a>Digitální soubory nahrát do prostředků
+### <a name="naming-blobs"></a>Pojmenování objektů BLOB
 
-Po digitální soubory nahrát do služby storage a přidružené k prostředku, můžete použít ve službě Media Services encoding, streamování, analýze obsahu pracovních postupů. Jedním z běžných pracovních Media Services je nahrávání, kódování a streamování do souboru. Tato část popisuje obecné kroky.
+Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na [název objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) a [požadavky na název systému souborů NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Důvodem těchto požadavků jsou soubory, které lze kopírovat z úložiště objektů blob na místní disk NTFS ke zpracování.
+
+## <a name="upload-digital-files-into-assets"></a>Nahrávání digitálních souborů do assetů
+
+Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, dají se použít v Media Services kódování, streamování a analýze pracovních postupů obsahu. Jedním ze běžných Media Services pracovních postupů je nahrání, kódování a streamování souboru. Tato část popisuje obecné kroky.
 
 > [!TIP]
-> Než začnete s vývojem, projděte si [vývoj s využitím rozhraní API služby Media Services v3](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraní API pro vytváření názvů atd.)
+> Než začnete s vývojem, přečtěte si téma [vývoj s Media Services V3 API](media-services-apis-overview.md) (obsahuje informace o přístupu k rozhraním API, konvencím pojmenování atd.
 
 1. Použijte rozhraní API Media Services verze 3 k vytvoření nového vstupního aktiva. Tato operace vytvoří kontejner v účtu úložiště přidruženém k vašemu účtu Media Services. Rozhraní API vrátí název kontejneru (například `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
@@ -46,14 +50,14 @@ Po digitální soubory nahrát do služby storage a přidružené k prostředku,
 2. Získejte adresu URL SAS s oprávněními pro čtení i zápis, která se použije k nahrání digitálních souborů do kontejneru aktiva. K [vypsání adres URL kontejnerů aktiv](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
 3. K nahrání souborů do kontejneru aktiva použijte rozhraní API služby Azure Storage nebo sady SDK (například [Storage REST API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) nebo [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). 
 4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md).
-5. Stream obsahu z "výstupní" asset.
+5. Streamování obsahu z prostředku "Output".
 
-Úplný příklad .NET, který ukazuje, jak: vytvořit Asset, získání zapisovatelné adresy URL SAS prostředku kontejneru v úložišti, nahrajte soubor do kontejneru v úložišti pomocí adresy URL SAS, naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md).
+Úplný příklad rozhraní .NET, který ukazuje, jak vytvořit Asset, získat adresu URL SAS s možností zápisu do kontejneru assetů v úložišti, nahrát soubor do kontejneru v úložišti pomocí adresy URL SAS najdete v tématu [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md).
 
-### <a name="create-a-new-asset"></a>Vytvoření nového prostředku
+### <a name="create-a-new-asset"></a>Vytvořit nový prostředek
 
 > [!NOTE]
-> Vlastnosti prostředku typu datum a čas jsou vždy ve formátu UTC.
+> Vlastnosti prostředku typu DateTime jsou vždycky ve formátu UTC.
 
 #### <a name="rest"></a>REST
 
@@ -61,7 +65,7 @@ Po digitální soubory nahrát do služby storage a přidružené k prostředku,
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Například REST, najdete v článku [vytvořit prostředek s využitím REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) příklad.
+Příklad REST najdete v tématu [Vytvoření assetu pomocí REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) .
 
 Tento příklad ukazuje, jak vytvořit **tělo požadavku**, kde můžete zadat užitečné informace, například popis, název kontejneru, účet úložiště a další informace.
 
@@ -85,23 +89,23 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-Úplný příklad naleznete v tématu [vytvořit vstup úlohy z místního souboru](job-input-from-local-file-how-to.md). V Media Services v3, mohou být také vytvořeny vstupu úlohy z adres URL protokolu HTTPS (viz [vytvořit vstup úlohy z adresy URL HTTPS](job-input-from-http-how-to.md)).
+Úplný příklad najdete v tématu [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md). V Media Services V3 lze také vytvořit vstup úlohy z adres URL protokolu HTTPS (viz [Vytvoření vstupu úlohy z adresy URL protokolu HTTPS](job-input-from-http-how-to.md)).
 
-## <a name="map-v3-asset-properties-to-v2"></a>Mapy – vlastnosti prostředku v3 v2
+## <a name="map-v3-asset-properties-to-v2"></a>Mapování vlastností assetu V3 na v2
 
-Následující tabulka ukazuje jak [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)na vlastnosti ve verzi 3 mapovat na vlastnosti prostředku ve verzi 2.
+Následující tabulka ukazuje, jak vlastnosti [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)v v3 jsou mapovány na vlastnosti assetu ve verzi v2.
 
-|Vlastnosti v3|v2 – vlastnosti|
+|vlastnosti V3|vlastnosti v2|
 |---|---|
-|ID – (jedinečný) úplnou cestu Azure Resource Manageru, viz příklady v [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|název – (jedinečný) najdete v článku [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions) ||
+|ID – (jedinečné) Úplná cesta Azure Resource Manager, viz příklady v [assetu](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|název – (jedinečný) viz [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions) ||
 |alternateId|AlternateId|
-|assetId|ID – začíná (jedinečné) hodnoty `nb:cid:UUID:` předponu.|
-|Vytvoření|Vytvořeno|
+|assetId|Hodnota ID – (jedinečná) začíná `nb:cid:UUID:` předponou.|
+|vytvořené|Vytvořeno|
 |description|Name|
 |lastModified|lastModified|
 |storageAccountName|název_účtu_úložiště|
-|storageEncryptionFormat| Vytvoření (Možnosti)|
+|storageEncryptionFormat| Možnosti (možnosti vytváření)|
 |type||
 
 ## <a name="storage-side-encryption"></a>Šifrování na straně úložiště
@@ -120,10 +124,10 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 
-Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities-overview.md).
+Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
 * [Použití cloudového videorekordéru](live-event-cloud-dvr.md)
-* [Rozdíly mezi Media Services v2 a v3](migrate-from-v2-to-v3.md)
+* [Rozdíly mezi Media Services V2 a V3](migrate-from-v2-to-v3.md)

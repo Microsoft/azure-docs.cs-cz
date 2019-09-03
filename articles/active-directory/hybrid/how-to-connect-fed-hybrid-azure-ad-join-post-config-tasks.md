@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032697"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231235"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
@@ -31,12 +31,12 @@ Po spuštění Azure AD Connect ke konfiguraci vaší organizace pro připojení
 Všechna zařízení připojená k doméně se systémem Windows 10 a Windows Server 2016 se po dokončení všech kroků konfigurace automaticky zaregistrují ve službě Azure AD. Pokud upřednostňujete řízené zavedení místo této automatické registrace, můžete pomocí zásad skupiny selektivně povolit nebo zakázat automatické zavedení.  Tyto zásady skupiny by měly být nastavené před zahájením dalších kroků konfigurace:
 * Vytvořte objekt zásad skupiny ve službě Active Directory.
 * Pojmenujte ji (připojení ke službě Azure AD Hybrid).
-* Upravit & Přejít na:  Konfigurace počítačů > zásady > Šablony pro správu > součásti systému Windows > registrace zařízení.
+* Upravit a přejít na:  Konfigurace počítačů > zásady > Šablony pro správu > součásti systému Windows > registrace zařízení.
 
 >[!NOTE]
 >2012R2 nastavení zásad v části **Konfigurace počítače zásady > > Šablony pro správu > součásti systému Windows > Workplace Join > automatické připojení klientských počítačů k síti** na pracovišti
 
-* Zakázat toto nastavení:  Zaregistrujte počítače připojené k doméně jako zařízení.
+* Povolit toto nastavení:  Zaregistrujte počítače připojené k doméně jako zařízení.
 * Použijte a klikněte na OK.
 * Propojte objekt zásad skupiny s vámi zvoleným umístěním (organizační jednotka, skupina zabezpečení nebo doména pro všechna zařízení).
 

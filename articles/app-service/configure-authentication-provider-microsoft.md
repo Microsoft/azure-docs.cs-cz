@@ -1,6 +1,6 @@
 ---
 title: Konfigurace ověřování účtu Microsoft – Azure App Service
-description: Přečtěte si, jak nakonfigurovat ověřování účtu Microsoft pro vaši aplikaci App Services.
+description: Přečtěte si, jak nakonfigurovat ověřování účtu Microsoft pro vaši aplikaci App Service.
 author: mattchenderson
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 5ef0cb2da26fcc00d1daf4b2dd0faf8bde8b743b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0832c1e5f10cdb8e1d7a2edbb88162230ab13401
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098524"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233082"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Jak nakonfigurovat aplikaci App Service, aby používala přihlášení k účtu Microsoft
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -61,7 +61,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 
 4. Volitelné Pokud chcete omezit přístup k účet Microsoft uživatelům, nastavte **akci, která se má provést, když se žádost neověřuje** pro **přihlášení pomocí účtu Microsoft**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky byly přesměrovány na účet Microsoft pro ověřování.
 
-> [!CAUTION]
+> [!NOTE]
 > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (bez akce)** , pokud se aplikace ručně spouští samotné přihlášení, jak je popsáno [zde](overview-authentication-authorization.md#authentication-flow).
 
 5. Klikněte na **Uložit**.

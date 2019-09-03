@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052005"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233264"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -218,10 +218,10 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 6. Připojte se přímo k libovolné části virtuálního počítače fondu hostitele pomocí vzdálené plochy a otevřete **Průzkumníka souborů.** Pak přejděte do **cesty pro připojení** (v následujícím příkladu se \\jedná \\o cestu pro připojení ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-VOL).
 
-   V rámci této složky by měl existovat profilový virtuální pevný disk, jako je ten v následujícím příkladu.
+   V rámci této složky by měl existovat profil VHD (nebo VHDX), jako je ten v následujícím příkladu.
 
    ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Kontejnery profilů FSLogix můžete použít k nastavení sdílené složky profilu uživatele. Informace o tom, jak vytvořit sdílené složky profilů uživatelů pomocí nových kontejnerů, najdete v tématu [vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).

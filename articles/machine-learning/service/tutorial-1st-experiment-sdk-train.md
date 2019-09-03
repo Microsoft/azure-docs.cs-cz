@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051633"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231101"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
@@ -34,6 +34,29 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
 V této části kurzu spustíte kód v ukázkovém poznámkovém bloku `tutorials/tutorial-1st-experiment-sdk-train.ipynb` Jupyter otevřeném na konci části. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+
+## <a name="launch-jupyter-web-interface"></a>Spustit webové rozhraní Jupyter
+
+1. Na stránce pracovního prostoru v Azure Portal na levé straně vyberte **virtuální počítače poznámkových bloků** .
+
+1. Vyberte **Jupyter** ve sloupci **identifikátor URI** pro virtuální počítač, který jste vytvořili v první části tohoto kurzu.
+
+    ![Spuštění serveru Jupyter notebook](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   Odkaz spustí svůj server poznámkového bloku a otevře webovou stránku Jupyter poznámkového bloku na nové kartě prohlížeče.  Tento odkaz bude fungovat jenom pro osobu, která virtuální počítač vytvořila. Každý uživatel pracovního prostoru musí vytvořit svůj vlastní virtuální počítač.
+
+1. Na webové stránce poznámkového bloku Jupyter vyberte hlavní název_složky, který má vaše uživatelské jméno.  
+
+
+   Tato složka existuje v [účtu úložiště](concept-workspace.md#resources) pracovního prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Pokud odstraníte virtuální počítač poznámkového bloku, pořád budete mít veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
+
+1. `samples-*` Otevřete podadresář a pak otevřete Poznámkový blok Jupyter.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+   > [!Warning]
+   > Ujistěte se, že `tutorial-1st-experiment-sdk-train.ipynb` soubor otevřete , nikoli `.yml` soubor > stejným názvem. 
+
+1. Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  Pokud chcete spustit kód, přepněte se do poznámkového bloku hned.
+
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
@@ -200,7 +223,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující úlohy:
 

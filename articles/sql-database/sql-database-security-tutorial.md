@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640126"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231183"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení jedné nebo sdružené databáze
 
@@ -58,9 +58,9 @@ Pro všechny kroky v tomto kurzu se přihlaste k [Azure Portal](https://portal.a
 
 ## <a name="create-firewall-rules"></a>Vytvoření pravidel brány firewall
 
-Databáze SQL jsou chráněny branami firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázi odmítnou, s výjimkou připojení z jiných služeb Azure. Další informace najdete v tématu [Azure SQL Database pravidla brány firewall na úrovni serveru a databáze](sql-database-firewall-configure.md).
+Databáze SQL jsou chráněny branami firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázi odmítnou. Další informace najdete v tématu [Azure SQL Database pravidla brány firewall na úrovni serveru a databáze](sql-database-firewall-configure.md).
 
-**Pro nejbezpečnější** konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
+Pro nejbezpečnější konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
 
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru Azure SQL Database, pokud správce neotevře port 1433.
@@ -87,9 +87,6 @@ Nastavení pravidla brány firewall na úrovni serveru:
    1. Vyberte **OK** a zavřete stránku **nastavení brány firewall** .
 
 Nyní se můžete pomocí zadané IP adresy nebo rozsahu IP adres připojit k jakékoli databázi na serveru.
-
-> [!IMPORTANT]
-> Ve výchozím nastavení je přístup přes bránu SQL Database firewall povolený pro všechny služby Azure, v části **Povolit přístup ke službám Azure**. Pokud chcete zakázat přístup pro všechny služby Azure, klikněte na **vypnuto** .
 
 ### <a name="setup-database-firewall-rules"></a>Nastavit pravidla brány firewall databáze
 
@@ -339,7 +336,7 @@ Povolení nebo ověření šifrování:
 > [!NOTE]
 > Pokud chcete zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a Dotazujte `encryption_state` sloupec zobrazení [Sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili, abyste vylepšili zabezpečení databáze pomocí několika jednoduchých kroků. Naučili jste se tyto postupy:
 

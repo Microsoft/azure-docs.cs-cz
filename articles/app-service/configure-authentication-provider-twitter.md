@@ -1,6 +1,6 @@
 ---
 title: Konfigurace ověřování na Twitteru – Azure App Service
-description: Přečtěte si, jak nakonfigurovat ověřování na Twitteru pro vaši aplikaci App Services.
+description: Přečtěte si, jak nakonfigurovat ověřování na Twitteru pro vaši aplikaci App Service.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 728eacdcb0ee0d0bee878ff4764b1ca5e430c59c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d49b8bf9c62813023c1a1e06e0f8fc0d7809f48d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088200"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232047"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Postup konfigurace aplikace App Service pro použití služby Twitter Login
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -29,10 +29,10 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service pro použití 
 Chcete-li dokončit postup v tomto tématu, musíte mít účet na Twitteru s ověřenou e-mailovou adresou a telefonním číslem. Pokud chcete vytvořit nový účet na Twitteru, navštivte <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">Twitter.com</a>.
 
 ## <a name="register"> </a>Registrace aplikace na Twitteru
-1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**. Použijete ho ke konfiguraci aplikace Twitter.
+1. Přihlaste se k [Azure Portal]a přejděte do aplikace. Zkopírujte **adresu URL**. Budete ho používat ke konfiguraci aplikace Twitter.
 2. Přejděte na web pro [Vývojáři na Twitteru] na Twitteru, přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a klikněte na **vytvořit novou aplikaci**.
-3. Zadejte **název** a **Popis** nové aplikace. Do **adresy URL** vaší aplikace vložte hodnotu **Web** . Potom pro **adresu URL zpětného volání**vložte **adresu URL zpětného volání** , kterou jste zkopírovali dříve. Toto je vaše mobilní aplikace, která je připojená s cestou, */.auth/Login/Twitter/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
-4. V dolní části stránky si přečtěte a přijměte podmínky. Pak klikněte na **vytvořit aplikaci Twitter**. Tato registrace aplikace zobrazí podrobnosti o aplikaci.
+3. Zadejte **název** a **Popis** nové aplikace. Do **adresy URL** vaší aplikace vložte hodnotu **Web** . Potom pro **adresu URL zpětného volání**zadejte adresu url vaší App Service aplikace a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
+4. V dolní části stránky si přečtěte a přijměte podmínky. Pak klikněte na **vytvořit aplikaci Twitter**. Zobrazí se podrobnosti o aplikaci.
 5. Klikněte na kartu **Nastavení** , zaškrtněte políčko **povolí použití této aplikace pro přihlášení**k Twitteru a pak klikněte na **aktualizovat nastavení**.
 6. Vyberte kartu **klíče a přístupové tokeny** . Poznamenejte si hodnoty **klíč příjemce (klíč rozhraní API)** a tajného kódu **příjemce (tajný klíč rozhraní API)** .
    
@@ -51,7 +51,7 @@ Chcete-li dokončit postup v tomto tématu, musíte mít účet na Twitteru s ov
    Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
 4. Volitelné Pokud chcete omezit přístup k vašemu webu jenom na uživatele ověřené Twitterem, nastavte **akci, která se má provést, když se žádost neověřuje** na **Twitteru**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky se přesměrovaly na Twitter pro ověřování.
 
-> [!CAUTION]
+> [!NOTE]
 > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (bez akce)** , pokud se aplikace ručně spouští samotné přihlášení, jak je popsáno [zde](overview-authentication-authorization.md#authentication-flow).
 
 5. Klikněte na **Uložit**.

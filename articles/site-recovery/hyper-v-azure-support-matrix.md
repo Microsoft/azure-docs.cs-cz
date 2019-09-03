@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845664"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230965"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -151,7 +151,7 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 Hostovaný operační systém | Site Recovery podporuje všechny operační systémy, které [Azure podporuje](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Nepodporovaná Chyba kontroly požadovaných součástí
-Architektura hostovaného operačního systému | 64 bitů | Nepodporovaná Chyba kontroly požadovaných součástí
+Architektura hostovaného operačního systému | 32 – bit (Windows Server 2008)/64-bit | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost disku operačního systému | Až 2 048 GB pro virtuální počítače 1. generace.<br/><br/> Až 300 GB pro virtuální počítače 2. generace.  | Nepodporovaná Chyba kontroly požadovaných součástí
 Počet disků operačního systému | 1 | Nepodporovaná Chyba kontroly požadovaných součástí
 Počet datových disků | 16 nebo méně  | Nepodporovaná Chyba kontroly požadovaných součástí
@@ -166,13 +166,13 @@ Typ virtuálního počítače | Generace 1<br/><br/> Generace 2 – Windows | Vi
 
 ## <a name="recovery-services-vault-actions"></a>Akce trezoru Recovery Services
 
-**Akce** |  **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
+**Akce** |  **Hyper-V s nástrojem VMM** | **Hyper-V bez nástroje VMM**
 --- | --- | ---
 Přesunout trezor mezi skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | Ne | Ne
 Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků<br/><br/> V rámci předplatných a mezi nimi | Ne | Ne
 
 > [!NOTE]
-> Při replikaci virtuálních počítačů Hyper-VM (spravovaných s/bez SCVMM) z místního prostředí do Azure můžete replikovat jenom na jednoho tenanta služby Active Directory z jednoho konkrétního prostředí – webu Hyper-V nebo SCVMM.
+> Při replikaci virtuálních počítačů Hyper-v z místního prostředí do Azure můžete replikovat jenom na jednoho tenanta AD z jednoho konkrétního prostředí – z lokality Hyper-V nebo z Hyper-V s VMM podle potřeby.
 
 
 ## <a name="provider-and-agent"></a>Zprostředkovatel a agent

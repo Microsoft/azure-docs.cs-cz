@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609940"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231304"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa potíží s ochranou Endpoint Protection pomocí Azure Security Center
 Azure Security Center monitoruje stav antimalwarové ochrany a oznamuje ho v okně problémy ochrany koncového bodu. Security Center zvýrazní problémy, jako jsou zjištěné hrozby a nedostatečná ochrana, což může způsobit, že vaše virtuální počítače a počítače budou zranitelné proti malwarovým hrozbám. Pomocí informací v části **problémy s ochranou koncového bodu Endpoint Protection**můžete identifikovat plán, který řeší všechny zjištěné problémy.
@@ -31,12 +31,12 @@ Security Center oznamuje následující problémy ochrany koncového bodu:
 - Stav služby Endpoint Protection:
 
   - Zastaralý podpis – antimalwarové řešení je nainstalované na těchto virtuálních počítačích a počítačích, ale řešení nemá nejnovější antimalwarové signatury.
-  - Bez ochrany v reálném čase – na tyto virtuální počítače a počítače je nainstalované antimalwarové řešení, ale není nakonfigurované na ochranu v reálném čase.   Služba může být zakázaná nebo Security Center nemůže získat stav, protože řešení není podporované. Seznam podporovaných řešení najdete v tématu [integrace partnera](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+  - Bez ochrany v reálném čase – na tyto virtuální počítače a počítače je nainstalované antimalwarové řešení, ale není nakonfigurované na ochranu v reálném čase.   Služba může být zakázaná nebo Security Center nemůže získat stav, protože řešení není podporované. Seznam podporovaných řešení najdete v tématu [integrace partnera](security-center-services.md#endpoint-supported) .
   - Bez hlášení – antimalwarové řešení je nainstalované, ale neoznamuje data.
   - Neznámé – je nainstalované antimalwarové řešení, ale jeho stav je neznámý nebo oznamuje neznámou chybu.
 
     > [!NOTE]
-    > Seznam řešení zabezpečení Endpoint Protection integrovaných s Security Center najdete v tématu věnovaném [integraci řešení zabezpečení](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+    > Seznam řešení zabezpečení Endpoint Protection integrovaných s Security Center najdete v tématu věnovaném [integraci řešení zabezpečení](security-center-services.md#endpoint-supported) .
     >
     >
 
@@ -97,7 +97,7 @@ Otevře se další výsledek hledání s informacemi filtrovanými pouze pro ten
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Tento článek vám ukázal, jak implementovat Security Center doporučení "instalovat Endpoint Protection". Další informace o tom, jak povolit Microsoft Antimalware v Azure, najdete v tomto dokumentu:
 
 * [Microsoft Antimalware pro Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md) – Přečtěte si, jak nasadit Microsoft Antimalware.

@@ -1,6 +1,6 @@
 ---
-title: Živé streamování koncepty ve službě Azure Media Services – živé události a Live výstupy | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled živého streamování konceptů v Azure Media Services v3.
+title: Koncepty živého streamování v Azure Media Services živé události a živé výstupy | Microsoft Docs
+description: Tento článek obsahuje přehled konceptů živého streamování v Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,39 +11,39 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c81c2de180a2c5734f3896d4b6843f2ccccdf45f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605658"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231209"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
-Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. Pokud chcete nakonfigurovat živě streamovaných událostí v Media Services v3, budete muset pochopit principy probírané v tomto článku.
+Azure Media Services vám umožní doručovat živé události zákazníkům v cloudu Azure. Pokud chcete konfigurovat události živého streamování v Media Services V3, potřebujete pochopit koncepty popsané v tomto článku.
 
 > [!TIP]
-> Pro zákazníky, kteří migrace z rozhraní API služby Media Services v2 **živá událost** nahradí entitu **kanál** ve v2 a **Live výstup** nahradí **Program**.
+> Pro zákazníky, kteří migrují z Media Services V2 rozhraní API, nahradí entita **živá událost** **kanál** ve verzi v2 a **program**pro **živý výstup** nahradí.
 
 ## <a name="live-events"></a>Živé události
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Při vytváření živá událost se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod primární a sekundární. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [technologie Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný soubor MP4) vstupní protokol. Pro protokol ingestování RTMP, je možné odeslat obsah v nešifrované podobě (`rtmp://`) nebo bezpečně šifrován na lince (`rtmps://`). Pro technologii Smooth Streaming ingestování, jsou podporovaná schémata URL `http://` nebo `https://`.  
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte živou událost, vytvoří se primární a sekundární vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Vzdálený živý kodér pošle do tohoto vstupního koncového bodu kanál příspěvků pomocí vstupního protokolu [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný-MP4). Pro protokol ingestování RTMP se dá obsah poslat jasným (`rtmp://`) nebo bezpečně šifrovaným na lince (`rtmps://`). Pro protokol Smooth Streaming ingestování jsou `http://` podporovaná schémata URL nebo. `https://`  
 
-## <a name="live-event-types"></a>Live typy událostí
+## <a name="live-event-types"></a>Typy živých událostí
 
-A [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: Předávací tak pro živé kódování. Typy mají nastavený během vytváření pomocí [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+[Živá událost](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: průchozí a živé kódování. Typy jsou nastaveny během vytváření pomocí [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType.None** – místní kodér služby live Encoding odešle datový proud více přenosovými rychlostmi. Ingestované datové proudy prochází živá událost bez dalšího zpracování. 
-* **LiveEventEncodingType.Standard** – místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost a služba Media Services vytvoří různých datových proudů s přenosovou rychlostí. Pokud je příspěvek kanál 720p nebo vyšší rozlišení **Default720p** bude předvolbu kódování sada párů 6 rozlišení a přenosových rychlostí.
-* **LiveEventEncodingType.Premium1080p** – místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost a služba Media Services vytvoří různých datových proudů s přenosovou rychlostí. Přednastavení Default1080p Určuje výstupní sada párů rozlišení a přenosových rychlostí. 
+* **LiveEventEncodingType. None** – místní kodér Live posílá datový proud s více přenosovými rychlostmi. Příjmové streamy procházejí prostřednictvím živé události bez dalšího zpracování. 
+* **LiveEventEncodingType. Standard** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Pokud je informační kanál příspěvku z řešení 720p nebo vyšší, **Default720p** předvolba zakóduje sadu párů s 6 páry rozlišení/přenosů.
+* **LiveEventEncodingType. Premium1080p** – místní Live Encoder odesílá datový proud s jednou přenosovou rychlostí do živé události a Media Services vytvoří více datových proudů s přenosovou rychlostí. Předvolba Default1080p určuje výstupní sadu párů rozlišení/přenosové rychlosti. 
 
 ### <a name="pass-through"></a>Průchod
 
 ![Průchozí](./media/live-streaming/pass-through.svg)
 
-Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Takové vytvoření předávací živé události je optimalizovaná pro dlouho běžící události v reálném čase nebo 24 × 365 lineární živé streamování. Při vytváření tohoto typu živé události zadejte None (LiveEventEncodingType.None).
+Při použití předávané **živé události** se spoléháte na váš místní kodér pro kódování v reálném čase, že vygeneruje stream videa s několika přenosovými rychlostmi a odešle ho jako informační kanál příspěvku do živé události (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost potom přenese příchozí streamy videa bez dalšího zpracování. Taková předávací živá událost je optimalizovaná pro dlouhotrvající živé události nebo 24x365 lineární živé streamování. Při vytváření tohoto typu živé události zadejte None (LiveEventEncodingType.None).
 
 Můžete odeslat informační kanál příspěvku v rozlišeních do 4K a s obnovovací frekvencí 60 snímků za sekundu, s video kodekem buď H.264/AVC, nebo H.265/HEVC a se zvukovým kodekem AAC (AAC-LC, HE-AACv1 nebo HE-AACv2).  Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
 
@@ -57,62 +57,62 @@ Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azur
 
 ![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
-Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). By pak nastavíte živá událost tak, aby zakóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)a zpřístupňuje výstup pro doručování a přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS, Smooth Streamování.
+Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Pak jste nastavili živou událost tak, aby zaznamenala příchozí datový proud s jednou přenosovou rychlostí na [více datových proudů](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), a zpřístupní výstup pro doručování do zařízení přes protokoly, jako jsou MPEG-pomlčka, HLS a Smooth Streaming.
 
-Použijete-li kódování v reálném čase, můžete poslat příspěvek kanálu pouze na rozlišení k rozlišení 1080p rychlostí rámec 30 snímků/druhé kodek H.264/AVC videa a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek. Všimněte si, že předávací živé události může podporovat řešení až po 4 kB na 60 snímků za sekundu. Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
+Při použití živého kódování můžete odeslat kanál příspěvku pouze v rozlišení až do rozlišení 1080p za snímkovou rychlostí 30 snímků za sekundu a s použitím kodeku H. 264/AVC a zvukového kodeku AAC (AAC-LC, HE-AACv1 nebo AACv2). Upozorňujeme, že průchozí živé události můžou podporovat řešení až 4K na 60 snímků za sekundu. Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
 
-Rozlišení a přenosových rychlostí obsažené ve výstupu kodér služby live Encoding je určeno přednastavený kontext. Pokud se používá **standardní** live encoder (LiveEventEncodingType.Standard), pak bude *Default720p* přednastavení určuje sadu párů 6 rychlost řešení/bit mezi 720 p na 3.5Mbps dolů 192 p na 200 kb/s. Jinak, pokud se používá **Premium1080p** live encoder (LiveEventEncodingType.Premium1080p), pak bude *Default1080p* přednastavení určuje sadu párů 6 rychlost řešení/bit mezi 1080 p na 3.5Mbps až 180 p na 200 kb/s. Další informace najdete v tématu [Předvolby sytému](live-event-types-comparison.md#system-presets).
+Rozlišení a přenosové rychlosti obsažené ve výstupu z kodéru Live Encoder se určují pomocí přednastavení. Pokud používáte **standardní** Live Encoder (LiveEventEncodingType. Standard), pak předvolba *Default720p* určí sadu párů s 6 páry rozlišení a přenosové rychlosti z 720P ve 3,5 MB/s až do 192p v 200 KB/s. V opačném případě, pokud používáte **Premium1080p** Live Encoder (LiveEventEncodingType. Premium1080p), pak předvolba *Default1080p* určuje sadu dvojic s 6 MB/bitovou rychlostí z 1080p po 3,5 Mbps až do 180p v 200 KB/s. Další informace najdete v tématu [Předvolby sytému](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Pokud potřebujete přizpůsobit živé kódování předvolbu, otevřete prosím lístek podpory prostřednictvím webu Azure portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva na 720p (Pokud se požaduje přednastavení kodér úrovně Standard za provozu) nebo na 1080p (Pokud se požaduje přednastavení Premium1080p live encoder) a maximálně 6 vrstvy.
+> Pokud potřebujete přizpůsobit živé kódování, otevřete prosím lístek podpory prostřednictvím Azure Portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, zda je v 720p pouze jedna vrstva (Pokud požadujete předvolbu pro standardní Live Encoder) nebo v 1080p (Pokud požadujete přednastavení pro Premium1080p Live Encoder) a maximálně 6 vrstev.
 
-## <a name="live-event-creation-options"></a>Možnosti vytvoření živé události
+## <a name="live-event-creation-options"></a>Možnosti vytváření živých událostí
 
-Při vytváření živá událost, můžete zadat následující možnosti:
+Při vytváření živé události můžete zadat následující možnosti:
 
-* Protokol streamování pro živá událost (v současné době jsou podporovány protokoly RTMP nebo Smooth Streaming).<br/>Možnost protokolu nelze změnit během živá událost nebo jeho přidružené výstupů za běhu. Pokud požadujete různé protokoly, měli byste vytvořit samostatné živá událost pro každý protokol streamování.  
-* Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které jsou povoleno ingestování videa tato živá událost. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: Adresu IpV4 s 4 číslice, rozsah adres CIDR.
-* Při vytváření události můžete nastavit automatické spouštění. <br/>Když automatické spuštění je nastavena na hodnotu true, živá událost se spustí po jeho vytvoření. Účtování začne Jakmile živá událost se spustí. Musíte explicitně volat Stop prostředku živá událost, která zastaví další fakturace. Alternativně můžete spustit událost, když budete chtít spustit streamování. 
+* Protokol streamování pro živou událost (aktuálně se podporují i protokoly RTMP a Smooth Streaming).<br/>Možnost protokolu nejde změnit, pokud je spuštěná živá událost nebo jejich přidružené živé výstupy. Pokud požadujete různé protokoly, měli byste pro každý protokol streamování vytvořit samostatnou živou událost.  
+* Omezení IP adres u ingestování a náhledu. Můžete definovat IP adresy, které můžou ingestovat video do této živé události. Povolené IP adresy se dají zadat jako jedna IP adresa (třeba 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (třeba 10.0.0.1/22) nebo rozsah IP adres a maska podsítě v desítkovém zápisu s tečkou (třeba 10.0.0.1(255.255.252.0)).<br/>Pokud nezadáte žádné IP adresy a neexistuje definice pravidla, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.<br/>IP adresy musí být v jednom z následujících formátů: Adresa IpV4 se čtyřmi čísly, rozsahem adres CIDR.
+* Při vytváření události můžete nastavit automatické spouštění. <br/>Pokud je vlastnost autostart nastavena na hodnotu true, spustí se po vytvoření živá událost. Fakturace začne ihned po spuštění živé události. Chcete-li zastavit další fakturaci, je nutné explicitně volat stop u prostředku živé události. Alternativně můžete událost spustit, až budete připraveni ke spuštění streamování. 
 
-    Další informace najdete v tématu [živá událost stavy a fakturace](live-event-states-billing.md).
+    Další informace najdete v tématu [stavy událostí Live a fakturace](live-event-states-billing.md).
 
-## <a name="live-event-ingest-urls"></a>Živá událost ingestované adresy URL
+## <a name="live-event-ingest-urls"></a>Adresy URL pro příjem živých událostí
 
-Po vytvoření živé události můžete získat adresy URL ingestu, které poskytnete místní kodéru pro kódování v reálném čase. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [doporučené místní kodéry](recommended-on-premises-live-encoders.md). 
+Po vytvoření živé události můžete získat adresy URL ingestu, které poskytnete místní kodéru pro kódování v reálném čase. Kodér pro kódování v reálném čase tyto adresy URL používá ke vkládání živého proudu. Další informace najdete v tématu [Doporučené místní kodéry v reálném čase](recommended-on-premises-live-encoders.md). 
 
 Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL. 
 
 > [!NOTE] 
-> Pro adresu URL ingestování bude prediktivní nastavte režim "vlastní".
+> Aby se adresa URL pro ingestování mohla odhadnout, nastavte režim "individuální".
 
-* Není jednoduché adrese URL
+* Jiná než individuální adresa URL
 
-    Non jednoduché adrese URL je výchozí režim v Media Services v3. Živou událost získáte potenciálně rychle, ale adresa URL ingestu je známá až při spuštění živé události. Pokud živou událost zastavíte nebo spustíte, adresa URL se změní. <br/>Nejednoduché adresy jsou užitečné v situacích, kdy koncový uživatel chce streamovat pomocí aplikace, která chce získat živou událost co nejdříve, a použití dynamické adresy URL ingestu nepředstavuje žádný problém.
+    Jiná než individuální adresa URL je výchozím režimem v Media Services V3. Živou událost získáte potenciálně rychle, ale adresa URL ingestu je známá až při spuštění živé události. Pokud živou událost zastavíte nebo spustíte, adresa URL se změní. <br/>Nejednoduché adresy jsou užitečné v situacích, kdy koncový uživatel chce streamovat pomocí aplikace, která chce získat živou událost co nejdříve, a použití dynamické adresy URL ingestu nepředstavuje žádný problém.
     
-    Pokud klientská aplikace nemusí předběžně generovat adresu URL ingestování před živá událost se vytvoří, stačí nechat Media Services automaticky vygenerovat přístupový Token pro živou událost.
-* Jednoduché adrese URL
+    Pokud klientská aplikace nemusí před vytvořením živé události předem generovat adresu URL pro příjem dat, stačí, když Media Services automaticky vygenerovat přístupový token pro živou událost.
+* Adresa URL individuální
 
     Režim jednoduchých adres preferují velké mediální vysílače, které používají hardwarové kodéry vysílání a nechtějí znovu konfigurovat své kodéry při spuštění živé události. Chtějí předvídatelnou adresu URL ingestu, která se během doby nemění.
     
-    Chcete-li určit tento režim nastavíte `vanityUrl` k `true` v okamžiku vytvoření (výchozí hodnota je `false`). Je také potřeba předat přístupového tokenu (`LiveEventInput.accessToken`) v okamžiku vytvoření. Můžete zadat hodnotu tokenu, aby se zabránilo náhodné token v adrese URL. Přístupový token musí být platný řetězec identifikátoru GUID (s nebo bez pomlčky). Po nastavení režimu nelze aktualizovat.
+    Chcete-li zadat tento režim, `vanityUrl` nastavte `true` na hodnotu při vytváření (výchozí `false`nastavení je). V době vytváření je také potřeba předat vlastní přístupový token`LiveEventInput.accessToken`(). Zadejte hodnotu tokenu, aby se zabránilo náhodnému tokenu v adrese URL. Přístupový token musí být platný řetězec GUID (s pomlčkami nebo bez nich). Až se režim nastaví, nedá se aktualizovat.
 
-    Přístupový token musí být jedinečný ve vašem datovém centru. Pokud vaše aplikace potřebuje používat jednoduché adrese URL, doporučujeme vždy vytváří nové instance identifikátoru GUID pro váš přístupový token (namísto opakovaného použití jakékoli existující identifikátor GUID). 
+    Přístupový token musí být ve vašem datovém centru jedinečný. Pokud vaše aplikace potřebuje použít adresu URL individuální, doporučujeme vždy vytvořit novou instanci GUID pro přístupový token (místo opětovného použití existujícího identifikátoru GUID). 
 
-    Pomocí následující rozhraní API můžete povolit jednoduché adrese URL a nastavit přístupový token platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
+    Pomocí následujících rozhraní API povolte adresu URL individuální a nastavte přístupový token na platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
     
-    |Jazyk|Povolit jednoduché adrese URL|Nastavení přístupového tokenu|
+    |Jazyk|Povolit individuální adresu URL|Nastavení přístupového tokenu|
     |---|---|---|
-    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |Rozhraní příkazového řádku|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Rozhraní příkazového řádku|[--individuální-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[Livestream. VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
-### <a name="live-ingest-url-naming-rules"></a>Živé ingestování – pravidla pojmenování adresy URL
+### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání
 
 * Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).
-* *přístupový token* – neplatný řetězec GUID jste nastavili při použití režimu jednoduché. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *Název datového proudu* – Určuje název datového proudu pro konkrétní připojení. Název hodnoty datového proudu je obvykle přidány za kodér, který používáte. Můžete nakonfigurovat kodér služby live Encoding jakýkoli název, který slouží k popisu připojení, například: "video1_audio1", "video2_audio1", "datový proud stream".
+* *váš přístupový token* – platný řetězec GUID, který jste nastavili při použití režimu individuální. Například, `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *název streamu* – označuje název datového proudu pro konkrétní připojení. Hodnota názvu datového proudu je obvykle přidána živým kodérem, který používáte. Živý kodér můžete nakonfigurovat tak, aby pro popis připojení používal libovolný název, například: "video1_audio1", "video2_audio1", "Stream".
 
-#### <a name="non-vanity-url"></a>Není jednoduché adrese URL
+#### <a name="non-vanity-url"></a>Jiná než individuální adresa URL
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -126,7 +126,7 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 `http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
-#### <a name="vanity-url"></a>Jednoduché adrese URL
+#### <a name="vanity-url"></a>Adresa URL individuální
 
 ##### <a name="rtmp"></a>RTMP
 
@@ -140,36 +140,27 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 `http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 `https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
-## <a name="live-event-preview-url"></a>Náhled adresy URL pro živé události
+## <a name="live-event-preview-url"></a>Adresa URL náhledu živé události
 
-Až živá událost začne dostávat příspěvků datového kanálu, slouží k zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování svůj koncový bod ve verzi preview. Po kontrole, že datový proud ve verzi preview je dobré, můžete zpřístupnit živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) koncové body streamování živá událost. Chcete-li to provést, vytvořte nový [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na živá událost. 
+Jakmile živá událost začne přijímat kanál příspěvků, můžete použít jeho koncový bod Preview k zobrazení náhledu a ověření, že příjem živého datového proudu před dalším publikováním. Po zkontrolování, zda je datový proud verze Preview dobrý, můžete použít živou událost k zajištění dostupnosti živého datového proudu prostřednictvím jednoho nebo více (předem vytvořených) koncových bodů streamování. K tomu je třeba vytvořit nový [živý výstup](https://docs.microsoft.com/rest/api/media/liveoutputs) na živé události. 
 
 > [!IMPORTANT]
-> Ujistěte se, že je video směřující do adresy URL náhledu před pokračováním!
+> Než budete pokračovat, ujistěte se, že video přetéká do adresy URL náhledu.
 
-## <a name="live-event-long-running-operations"></a>Živé události dlouho běžící operace
+## <a name="live-event-long-running-operations"></a>Dlouhodobě běžící operace živé události
 
-Podrobnosti najdete v tématu [dlouho běžící operace](media-services-apis-overview.md#long-running-operations)
+Podrobnosti najdete v tématu [dlouhotrvající operace](media-services-apis-overview.md#long-running-operations) .
 
 ## <a name="live-outputs"></a>Živé výstupy
 
-Jakmile se datový proud plyne do živá událost, streamování událostí můžete začít tak, že vytvoříte [Asset](https://docs.microsoft.com/rest/api/media/assets), [Live výstup](https://docs.microsoft.com/rest/api/media/liveoutputs), a [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators). Za výstupní archivní datový proud, který se ji dejte k dispozici se divákům prostřednictvím [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints).  
+Jakmile datový proud přetéká do živé události, můžete zahájit streamování událostí vytvořením Assetu, živého [](https://docs.microsoft.com/rest/api/media/assets) [výstupu](https://docs.microsoft.com/rest/api/media/liveoutputs)a lokátoru streamování [](https://docs.microsoft.com/rest/api/media/streaminglocators). Živý výstup bude archivovat datový proud a zpřístupní ho návštěvníkům prostřednictvím [koncového bodu streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints).  
 
-> [!NOTE]
-> Live výstupů spuštění při vytvoření a přestanou při odstranění. Při odstranění výstupní Live nejsou odstraněním podkladových prostředků a obsahu v prostředku. 
+Podrobné informace o živých výstupech najdete v tématu [Použití cloudového DVR](live-event-cloud-dvr.md).
 
-Vztah mezi **živá událost** a jeho **Live výstupy** je podobný tradiční televizního vysílání, kterým kanál (živá událost) představuje nepřetržitý datový proud videa a nahrávání (Live Výstup) působí na určité časové segmentů (například večer novinky od 18:30:00 do 19:00:00). Můžete zaznamenat televizoru pomocí záznamu pro digitální Video (DVR) – ekvivalentní funkce v živé události se spravuje přes **archiveWindowLength** vlastnost. Je formátu ISO 8601 časový interval doba trvání (například PTHH:MM:SS), která určuje kapacitu DVR a můžete nastavit na minimálně 3 minuty, které maximálně 25 hodin.
+## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
-Za výstupní objekt je jako pásku záznam, který zachytí a záznam živý datový proud do prostředku ve vašem účtu Media Services. Zaznamenaný obsah bude trvale uložit do účtu služby Azure Storage, který je připojený ke svému účtu, do kontejneru definované pomocí prostředků resource. Výstup živého také umožňuje řídit některé vlastnosti odchozí živého datového proudu, jako je například kolik datového proudu se ukládají v záznamu archivu (například kapacita cloudového DVR) a zda prohlížeče můžete spustit sledování živého datového proudu. Archiv na disku je do kruhové archivu "okno", který obsahuje pouze množství obsahu, který je určený ve vlastnosti archiveWindowLength výstupu za provozu. Obsah, který spadá mimo toto okno se automaticky zruší z kontejneru úložiště a nepůjde obnovit. Můžete vytvořit několik výstupů za provozu (maximálně až tři) na živá událost s nastaveními a archivovat různé délky.  
-
-Pokud jste publikovali výstup živého **Asset** pomocí **Lokátor streamování**, budou moci zobrazit až do vypršení platnosti lokátoru streamování nebo odstranění, bude pokračovat živá událost (až do délky okna DVR) podle toho, co nastane dřív.
-
-Další informace najdete v tématu [pomocí cloudového DVR](live-event-cloud-dvr.md).
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
-
-Podívejte se [komunita Azure Media Services](media-services-community.md) článek a zobrazit různé způsoby můžete klást otázky, poskytnout zpětnou vazbu a aktualizace o Media Services.
+Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
 ## <a name="next-steps"></a>Další postup
 
-[Živé streamování kurz](stream-live-tutorial-with-api.md)
+[Kurz živého streamování](stream-live-tutorial-with-api.md)

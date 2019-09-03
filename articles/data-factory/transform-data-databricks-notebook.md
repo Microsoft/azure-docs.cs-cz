@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: djpmsft
-ms.author: daperlov
+author: nabhishek
+ms.author: abnarain
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140816"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233060"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
 
@@ -111,6 +111,19 @@ Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*
 ```
 
 Další podrobnosti najdete v [dokumentaci](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) k datacihlám pro typy knihoven.
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Předávání parametrů mezi poznámkovými bloky a Data Factory
+
+Parametry datové továrny můžete předat do poznámkových bloků pomocí vlastnosti *baseParameters* v aktivitě datacihly. 
+
+V některých případech je možné, že budete potřebovat předávat určité hodnoty z poznámkového bloku zpátky do služby Data Factory, které se dají použít k řízení toku (podmíněných kontrol) v datové továrně nebo jejich využívání v případě podřízených aktivit (omezení velikosti je 2 MB). 
+
+1. Ve vašem poznámkovém bloku můžete zavolat [dbutils. Poznámkový blok ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) a odpovídající znak "ReturnValue" bude vrácen do objektu pro vytváření dat.
+
+2. Výstup ve službě Data Factory můžete využívat pomocí výrazu, jako je například `'@activity('databricks notebook activity name').output.runOutput'`. 
+
+   > [!IMPORTANT]
+   > Pokud předáváte objekt JSON, můžete načíst hodnoty připojením názvů vlastností. Příklad: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Postup nahrání knihovny v datacihlách
 

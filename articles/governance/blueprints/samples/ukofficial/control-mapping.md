@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515625"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231625"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
@@ -35,11 +35,11 @@ Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptogr
 
 - Je třeba povolit transparentní šifrování dat databází SQL.
 - Na virtuálních počítačích by se mělo použít šifrování disku
-- Proměnné účtu Automation by měly být zašifrované.
+- Proměnné účtu Automation by se měly šifrovat.
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
 - Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
 - Je třeba povolit transparentní šifrování dat databází SQL.
-- Nasadit transparentní šifrování dat SQL DB
+- Nasazení transparentního šifrování dat databáze SQL
 - Vyžadovat šifrování u Data Lake Store účtů
 - Povolená umístění (byla pevně zakódována na Velká Británie – jih a Velká Británie – západ)
 - Povolená umístění pro skupiny prostředků (bylo pevně zakódováno na Velká Británie – jih a Velká Británie – západ)
@@ -48,7 +48,7 @@ Porozumět tomu, kde vaše prostředky Azure můžou mít neoptimální Kryptogr
 
 Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí [](../../../policy/overview.md) přiřazení Azure Policych definic, které monitorují chybějící službu Endpoint Protection, chybějící aktualizace systému, ohrožení zabezpečení operačního systému, chyby zabezpečení SQL a virtuální. ohrožení zabezpečení počítače. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
 
-- Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center
+- Monitorovat chybějící Endpoint Protection v Azure Security Center
 - Do vašich počítačů by se měly nainstalovat aktualizace systému
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
@@ -58,9 +58,9 @@ Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomoc
 
 Tento podrobný plán vám pomůže chránit assety informačních systémů tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které poskytují ochranu před neomezeným přístupem, aktivitou seznamu povolených a hrozbami.
 
-- Auditovat neomezený síťový přístup k účtům úložiště
+- Auditování neomezeného síťového přístupu k účtům úložiště
 - Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
-- Nasazení detekce hrozeb na serverech SQL
+- Nasazení detekce hrozeb na SQL serverech
 - Nasazení výchozích rozšíření Microsoft IaaS anti-malware pro Windows Server
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zabezpečená Správa uživatelů/10 Identita a ověřování
@@ -117,7 +117,7 @@ Tento podrobný plán vám také pomůže řídit přístup k prostředkům Azur
 
 Kromě používání více než 25 zásad pro příslušnou zabezpečenou správu uživatelů tento plán vám pomůže chránit rozhraní služeb před neoprávněným přístupem tím, že přiřazuje definici [Azure Policy](../../../policy/overview.md) , která monitoruje neomezený účet úložiště. Účty úložiště s neomezeným přístupem můžou umožňovat neúmyslný přístup k informacím obsaženým v informačním systému. Tento podrobný plán také přiřadí zásadu, která umožňuje Adaptivní řízení aplikací na virtuálních počítačích.
 
-- Auditovat neomezený síťový přístup k účtům úložiště
+- Auditování neomezeného síťového přístupu k účtům úložiště
 - Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
 
 ## <a name="12-secure-service-administration"></a>12. Správa zabezpečené služby
@@ -153,10 +153,10 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Auditování nastavení diagnostiky
-- Auditovat nastavení auditování SQL na úrovni serveru
+- Auditovat nastavení auditování na úrovni SQL serveru
 - \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
 - \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows
-- Nasazení Network Watcheru při vytvoření virtuálních sítí
+- Při vytváření virtuálních sítí nasadit sledovací proces sítě
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -168,7 +168,7 @@ Teď, když jste zkontrolovali mapování ovládacího prvku OFICIÁLNÍch a NHS
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

@@ -4,8 +4,10 @@
   items:
     - name: Informace o službě Security Center
       href: security-center-intro.md
-    - name: Podporované platformy a funkce služby Security Center
+    - name: Podporované platformy
       href: security-center-os-coverage.md
+    - name: Podporované funkce
+      href: security-center-services.md
 - name: Šablony Rychlý start
   expanded: true
   items:

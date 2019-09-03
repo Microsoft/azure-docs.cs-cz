@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015731"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232154"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
@@ -57,7 +57,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 Před konfigurací iPass SmartConnect pro Automatické zřizování uživatelů pomocí Azure AD bude nutné načíst informace o konfiguraci z konzoly pro správu iPass SmartConnect:
 
 1. Pokud chcete načíst nosný token, který je potřeba k ověření vůči iPassmu koncovému bodu SmartConnect, přečtěte si velmi poprvé, co nastavíte iPass SmartConnect, protože tato hodnota je poskytována pouze potom. 
-2. Pokud nemáte nosný token, přihlaste se k [týmu podpory IPASS SmartConnect] (mailto:help@ipass.com) a načtěte nový.
+2. Pokud nemáte nosný token, přihlaste se k [IPASS týmu podpory SmartConnect](mailto:help@ipass.com) , abyste načetli nový.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>Přidání iPass SmartConnect z Galerie
 
@@ -152,6 +152,6 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

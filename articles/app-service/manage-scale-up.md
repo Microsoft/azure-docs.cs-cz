@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebd6e5c120bdaa5e7dd5b681366e07087cd3498
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069177"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232357"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
@@ -85,11 +85,8 @@ Tabulka omezení, kvót a omezení služby a podporovaných funkcí v jednotliv�
 
 ## <a name="more-resources"></a>Další materiály
 
-Videa o škálování App Servicech aplikací najdete v následujících zdrojích informací:
- 
-* [Kdy škálovat Azure websites – pomocí Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
-* [Automatické škálování Azure websites, procesoru nebo naplánovaných pomocí Stefan Schackow](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
-* [Jak se Azure websites škálují – s Stefan Schackow](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
+[Ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[Konfigurace PremiumV2 úrovně pro App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

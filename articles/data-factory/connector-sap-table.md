@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: faae9ae335e391afac4ed2ef75472f1fecdaca86
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211678"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231332"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -35,9 +35,9 @@ Konkrétně tato konektorová tabulka SAP podporuje:
 - Kopírování dat z tabulky SAP v:
 
   - Součást SAP ERP Central Component (SAP ECC) verze 7,01 nebo novější (v nedávném zásobníku balíčku podpory SAP vydané po 2015).
-  - SAP Business Warehouse (SAP BW) verze 7,01 nebo novější.
+  - SAP Business Warehouse (SAP BW) verze 7,01 nebo novější (v nedávném zásobníku balíčku podpory SAP vydané po 2015).
   - SAP S/4HANA.
-  - Další produkty v SAP Business Suite verze 7,01 nebo novější.
+  - Další produkty v SAP Business Suite verze 7,01 nebo novější (v nedávném zásobníku balíčku podpory SAP vydané po 2015).
 
 - Kopírování dat z transparentní tabulky SAP, tabulky ve fondu, seskupené tabulky a zobrazení.
 - Kopírování dat pomocí základního ověřování nebo zabezpečené síťové komunikace (SNC), pokud je nakonfigurován SNC.
@@ -294,6 +294,6 @@ Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použij�
 | `N`Číselné | `String` |
 | `X`(Binární a nezpracované) | `String` |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

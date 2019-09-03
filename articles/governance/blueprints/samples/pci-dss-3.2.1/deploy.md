@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 237444cde6e9ccd709f61d13669da03094e5be10
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: f6ae466d10d585b46c9c71614cfeff6b688e6e48
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019428"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231643"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
@@ -104,7 +104,7 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 |Nasazení auditování na serverech SQL|Přiřazení zásady|Dny uchování|Uchovávání dat za počet dní Výchozí hodnota je 180, ale sběrnice PCI vyžaduje 365.| 
 |Nasazení auditování na serverech SQL|Přiřazení zásady|Název skupiny prostředků pro účet úložiště|Audit zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který bude sdílen všemi servery v této oblasti).| 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
@@ -114,7 +114,7 @@ Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podr
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

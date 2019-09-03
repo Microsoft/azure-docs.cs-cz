@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: e0309ac70d39272bf045e49ca7ddecd258cc1f36
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 9907bf49b99f3e8a09f2924c386c1f76891a8c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992049"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232553"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -121,10 +121,10 @@ Replika pro čtení je vytvořená jako nový server Azure Database for MySQL. E
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
 
-Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky je možné změnit několik nastavení nezávisle na hlavním serveru: generování výpočetního výkonu, virtuální jádra, úložiště, doba uchování zálohy a verze stroje MySQL. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
+Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Než bude konfigurace hlavního serveru aktualizována na nové hodnoty, aktualizujte konfiguraci repliky na hodnotu stejné nebo větší. Tato akce zajistí, že replika bude udržovat všechny změny provedené v hlavní větvi.
+> Před aktualizací konfigurace hlavního serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 

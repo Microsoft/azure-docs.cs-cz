@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602050"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233214"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Pochopení stavu virtuálních počítačů Azure
 
@@ -285,7 +285,7 @@ Pokud se chcete podívat na aktualizovaný stav, můžete stránku diagnostiky s
 
 Stav Azure Monitor pro virtuální počítače se integruje s [výstrahami Azure](../../azure-monitor/platform/alerts-overview.md). Vyvolá výstrahu v případě, že při zjištění předdefinovaných kritérií dojde ke změně stavu v pořádku na stav není v pořádku. Výstrahy jsou rozdělené podle závažnosti, od závažnost 0 do závažnost 4, s závažnost 0 jako nejvyšší úrovní.
 
-Výstrahy nejsou přidruženy ke skupině akcí, které vám upozorní na aktivaci výstrahy. Vlastník předplatného musí nakonfigurovat oznámení podle kroků uvedených v části [Konfigurace výstrah](#configure-alerts) .
+Výstrahy nejsou přidruženy ke skupině akcí, které vám upozorní na aktivaci výstrahy. Uživatel s rolí vlastníka v oboru předplatného musí nakonfigurovat oznámení podle postupu v části [Konfigurace výstrah](#configure-alerts) .
 
 Celkový počet výstrah stavu virtuálního počítače zařazených do kategorií podle závažnosti je k dispozici na řídicím panelu **stav** v části **výstrahy** . Když vyberete buď celkový počet výstrah, nebo číslo odpovídající úrovni závažnosti, otevře se stránka **výstrahy** a zobrazí se všechny výstrahy odpovídající vašemu výběru.
 
@@ -301,7 +301,7 @@ Toto zobrazení můžete filtrovat výběrem hodnot v rozevíracích nabídkách
 
 |Sloupec |Popis |
 |-------|------------|
-|Subscription |Vyberte předplatné Azure. V zobrazení jsou zahrnuté jenom výstrahy ve vybraném předplatném. |
+|Subscription |Vyberte předplatné služby Azure. V zobrazení jsou zahrnuté jenom výstrahy ve vybraném předplatném. |
 |Skupina prostředků |Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
 |Typ prostředku |Vyberte jeden nebo více typů prostředků. Ve výchozím nastavení jsou vybrané jenom výstrahy cílových **virtuálních počítačů** a zahrnují se v tomto zobrazení. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
 |Resource |Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
@@ -435,7 +435,7 @@ Azure Monitor pro virtuální počítače Health podporuje SMS a e-mailová ozn�
     }
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pokud chcete zjistit omezení a celkový výkon virtuálních počítačů, přečtěte si téma [zobrazení výkonu virtuálního počítače Azure](vminsights-performance.md).
 - Další informace o zjištěných závislostech aplikace najdete v tématu [zobrazení mapy Azure monitor pro virtuální počítače](vminsights-maps.md).

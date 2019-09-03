@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170717"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233117"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Nasazení Pythonu pro Azure Functions s využitím Visual Studio Code
 
@@ -56,7 +56,7 @@ Při [práci s Azure Functions Core Tools](functions-run-local.md#v2)postupujte 
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Jakmile se rozšíření Functions nainstaluje, přihlaste se k účtu Azure tak, že **přejdete na Azure: Průzkumník** funkcí, vyberte **Přihlásit se k Azure**a postupujte podle pokynů.
+Jakmile se rozšíření Functions nainstaluje, přihlaste se k účtu Azure pomocí přechodu **na Azure: Průzkumník** funkcí, vyberte **Přihlásit se k Azure**a postupujte podle pokynů.
 
 ![Přihlaste se k Azure prostřednictvím Visual Studio Code](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -207,7 +207,7 @@ Důležité části kódu jsou následující:
 
 ## <a name="debug-locally"></a>Místní ladění
 
-1. Při vytváření projektu Functions rozšíření Visual Studio Code také vytvoří konfiguraci spuštění v `.vscode/launch.json` nástroji, která obsahuje jednu konfiguraci s názvem **připojit k funkcím Pythonu**. Tato konfigurace znamená, že můžete spustit projekt pouhým stisknutím klávesy F5 nebo pomocí Průzkumníka ladění:
+1. Při vytváření projektu Functions rozšíření Visual Studio Code také vytvoří konfiguraci spuštění v `.vscode/launch.json` nástroji, která obsahuje jednu konfiguraci s názvem **připojit k funkcím Pythonu**. Tato konfigurace znamená, že stačí vybrat **F5** nebo pomocí Průzkumníka ladění spustit projekt:
 
     ![Průzkumník ladění zobrazující konfiguraci spuštění funkcí](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ Po prvním nasazení můžete provádět změny kódu, jako je například přid
     }
     ```
 
-1. Spusťte ladicí program stisknutím klávesy F5 nebo kliknutím na > příkaz nabídky**Spustit ladění** pro ladění. Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
+1. Spusťte ladicí program tak, že vyberete **F5** nebo > vyberete příkaz nabídky**Spustit ladění** . Okno **výstup** by nyní mělo zobrazit oba koncové body v projektu:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ V této části přidáte vazbu úložiště k funkci HttpExample vytvořené d�
             )
     ```
 
-1. Chcete-li tyto změny otestovat místně, spusťte ladicí program znovu v Visual Studio Code stisknutím klávesy F5 nebo výběrem příkazu **ladění** > **Spustit ladění** . Stejně jako předtím by měl okno **výstup** zobrazovat koncové body v projektu.
+1. Chcete-li tyto změny testovat v místním prostředí, spusťte ladicí program znovu v Visual Studio Code tím, že vyberete klávesu **F5** nebo vyberete příkaz **ladění** > **Spustit ladění** . Stejně jako předtím by měl okno **výstup** zobrazovat koncové body v projektu.
 
 1. V prohlížeči přejděte na adresu URL `http://localhost:7071/api/HttpExample?name=VS%20Code` , abyste vytvořili požadavek na koncový bod HttpExample, který by také měl zapisovat zprávu do fronty.
 
 1. Chcete-li ověřit, zda byla zpráva zapsána do fronty "fronta" (s názvem ve vazbě), můžete použít jednu ze tří metod:
 
-    1. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do skupiny prostředků, která obsahuje projekt Functions. V této skupině prostředků klikněte na místní a přejděte do účtu úložiště projektu a pak přejděte do **fronty**. Na této stránce přejděte do části "fronta", která by měla zobrazovat všechny protokolované zprávy.
+    1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pokračujte do skupiny prostředků, která obsahuje váš projekt Functions. V této skupině prostředků vyhledejte a otevřete účet úložiště pro projekt a pak přejděte do **fronty**. Na této stránce přejdete na "vyřadit z fronty", ve kterém se zobrazí všechny protokolované zprávy.
 
-    1. Procházejte a prověřte frontu buď pomocí Průzkumník služby Azure Storage, která se integruje se sadou Visual Studio, jak je popsáno v části [připojení funkcí pro Azure Storage pomocí Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md), zejména v části prohlédnutí [výstupní fronty](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
+    1. Otevřete a prověřte frontu buď pomocí Průzkumník služby Azure Storage, která se integruje se sadou Visual Studio, jak je popsáno v části [připojení funkcí pro Azure Storage pomocí Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md), zejména v části [Kontrola výstupní fronty](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
 
     1. Použijte rozhraní příkazového řádku Azure pro dotazování fronty úložiště, jak je popsáno v tématu [dotazování fronty úložiště](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue).
     
@@ -500,7 +500,7 @@ V této části přidáte vazbu úložiště k funkci HttpExample vytvořené d�
 
 Function App, který jste vytvořili, zahrnuje prostředky, které můžou nabývat minimálními náklady (viz [ceny funkcí](https://azure.microsoft.com/pricing/details/functions/)). Prostředky vyčistíte tak, že kliknete pravým tlačítkem na **Function App v Azure: V** Průzkumníku funkcí a vyberte **Odstranit Function App**. Můžete také navštívit [Azure Portal](https://portal.azure.com), vybrat **skupiny prostředků** v navigačním podokně na levé straně, vybrat skupinu prostředků vytvořenou v procesu tohoto kurzu a pak použít příkaz **Odstranit skupinu prostředků** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Blahopřejeme k dokončení tohoto návodu k nasazení kódu Pythonu do Azure Functions! Nyní jste připraveni vytvořit mnoho dalších funkcí bez serveru.
 

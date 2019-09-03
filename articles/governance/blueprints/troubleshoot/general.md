@@ -1,75 +1,74 @@
 ---
 title: Odstraňování běžných chyb
-description: Informace o řešení potíží s vytvářením, přiřazováním a odebrání podrobné plány.
+description: Přečtěte si, jak řešit problémy při vytváření, přiřazování a odebírání modrotisky.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cbefcbadc14c1249d2783f1539e40c99c3be66c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60874956"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231561"
 ---
-# <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
+# <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
-Pravděpodobně dojde k chybám při vytváření nebo přiřazení podrobné plány. Tento článek popisuje různé chyby, které mohou nastat a způsob jejich řešení.
+Při vytváření nebo přiřazování podrobných plánů můžete spustit chybu. Tento článek popisuje různé chyby, ke kterým může dojít, a jejich řešení.
 
-## <a name="finding-error-details"></a>Jak najít podrobnosti o chybě
+## <a name="finding-error-details"></a>Hledání podrobností o chybě
 
-Mnoho chyb bude výsledek přiřazení podrobný plán oboru. Při přiřazení selže, podrobný plán poskytuje podrobnosti o selhání nasazení. Tato informace indikuje problém tak, aby ho mohli opravit a úspěšném další nasazení.
+Mnohé chyby budou výsledkem přiřazení podrobného plánu k oboru. Pokud přiřazení neproběhne úspěšně, podrobný plán poskytuje podrobnosti o neúspěšném nasazení. Tyto informace označují problém tak, aby se mohl opravit a další nasazení bude úspěšné.
 
-1. Vyberte **všechny služby** v levém podokně. Vyhledejte a vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
-1. Vyberte **přiřazené podrobné plány** ze stránky na levé straně a použijte pole hledání k filtrování přiřazení podrobného plánu se najít přiřazení se nezdařilo. Můžete také řadit tabulce přiřazení podle **Stav zřizování** sloupec zobrazíte všechny neúspěšné přiřazení seskupené dohromady.
+1. Na stránce vlevo vyberte **přiřazené plány** a pomocí vyhledávacího pole vyfiltrujte přiřazení podrobného plánu, abyste našli neúspěšné přiřazení. Můžete také seřadit tabulku přiřazení podle sloupce **stav zřizování** a zobrazit tak všechna neúspěšná přiřazení seskupená dohromady.
 
-1. Klepněte na položku na podrobného plánu se _neúspěšné_ stavu nebo kliknutím pravým tlačítkem a vyberte **zobrazit podrobnosti o přiřazení**.
+1. Klikněte levým tlačítkem na podrobný plán s neúspěšným stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
 
-1. Červený nápis upozornění, že byla neúspěšná přiřazení je v horní části stránky přiřazení podrobného plánu. Klikněte na libovolné místo na banner, abyste získali více podrobností.
+1. Červená zpráva s upozorněním, že přiřazení se nezdařilo, je v horní části stránky přiřazení podrobného plánu. Kliknutím kamkoli na informační proužek získáte další podrobnosti.
 
-Je běžné, že chybu způsobuje artefakt a není podrobný plán jako celek. Pokud Key Vault vytvoří artefakt a Azure Policy brání vytváření služby Key Vault, celý přiřazení selže.
+Je běžné, že chyba je způsobena artefaktem a nikoli úplným plánem. Pokud artefakt vytvoří Key Vault a Azure Policy znemožňuje vytváření Key Vault, celé přiřazení selže.
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="policy-violation"></a>Scénář: Porušení zásad
+### <a name="policy-violation"></a>Případě Porušení zásad
 
 #### <a name="issue"></a>Problém
 
-Nasazení šablony se nezdařilo z důvodu porušení zásad.
+Nasazení šablony se nepovedlo kvůli porušení zásad.
 
 #### <a name="cause"></a>Příčina
 
-Zásady dojít ke konfliktu se nasazení pro z několika důvodů:
+Zásada může být v konfliktu s nasazením z několika důvodů:
 
-- Prostředku vytvořeného omezil zásad (obvykle omezení SKU nebo umístění)
-- Nasazení je nastavení polí, které jsou nakonfigurované zásady (běžné u značky)
+- Vytvářený prostředek je omezený zásadami (obvykle se jedná o omezení umístění SKU nebo místa).
+- Nasazení je nastavené pole, která jsou nakonfigurovaná pomocí zásad (společné pomocí značek).
 
 #### <a name="resolution"></a>Řešení
 
-Podrobný plán měnit, takže není v konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu není možné, je alternativní možnost oboru přiřazení zásady změněna tak podrobný plán je již nejsou v konfliktu s zásady.
+Změňte podrobný plán tak, aby nedošlo ke konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu nemůžete udělat, je alternativním parametrem, že se změní rozsah přiřazení zásady, takže podrobný plán už není v konfliktu se zásadami.
 
-### <a name="escape-function-parameter"></a>Scénář: Parametr podrobného plánu se funkce
+### <a name="escape-function-parameter"></a>Případě Parametr podrobného plánu je funkce.
 
 #### <a name="issue"></a>Problém
 
-Parametry podrobného plánu, které jsou funkce se zpracovávají před předáním artefakty.
+Parametry podrobného plánu, které jsou funkce, jsou zpracovány před předáním artefaktům.
 
 #### <a name="cause"></a>Příčina
 
-Předá parametr podrobného plánu, který používá funkce, jako například `[resourceGroup().tags.myTag]`do artefakt výsledky zpracování výsledku funkce nastavena na artefakt místo dynamickou funkci.
+Předání parametru podrobného plánu, který používá funkci, jako `[resourceGroup().tags.myTag]`je například, na výsledek artefaktu v důsledku zpracování funkce, která je nastavena na artefaktu namísto dynamické funkce.
 
 #### <a name="resolution"></a>Řešení
 
-Funkce prostřednictvím předat jako parametr, řídicí celý řetězec s `[` tak, aby parametr podrobného plánu vypadá jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že podrobné plány. při zpracování podrobný plán považovat hodnotu jako řetězec. Podrobné plány. pak vloží funkci na artefakt, což umožňuje být dynamické podle očekávání. Další informace najdete v tématu [struktura souboru šablony - syntaxe](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu `[[resourceGroup().tags.myTag]`vypadal. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [struktura souborů šablony – syntaxe](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-- Získejte odpovědi od odborníků na Azure prostřednictvím [fóra Azure](https://azure.microsoft.com/support/forums/).
+- Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 - Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.
-- Pokud potřebujete další pomoc, můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+- Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

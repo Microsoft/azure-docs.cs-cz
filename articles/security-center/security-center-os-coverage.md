@@ -1,10 +1,10 @@
 ---
-title: Funkce a platformy podporované aplikací Azure Security Center | Microsoft Docs
-description: Tento dokument obsahuje seznam funkcí a platforem podporovaných nástrojem Azure Security Center.
+title: Platformy podporované aplikací Azure Security Center | Microsoft Docs
+description: Tento dokument poskytuje seznam platforem podporovaných nástrojem Azure Security Center.
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
@@ -12,28 +12,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/03/2019
+ms.date: 8/29/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c094ef5f3e7c7bfa96f95264e137fd8938296bb4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640787"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232214"
 ---
-# <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkce podporované nástrojem Azure Security Center
+# <a name="supported-platforms"></a>Podporované platformy 
 
-Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače, vytvořené pomocí modelu nasazení Classic a Správce prostředků a počítačů.
+## Virtuální počítače a servery<a name="vm-server"></a>
+
+Security Center podporuje virtuální počítače a servery v různých typech hybridních prostředí:
+
+* Jenom Azure
+* Azure a místní
+* Azure a další cloudy
+* Azure, ostatní cloudy a místní
+
+Pro prostředí Azure aktivované v rámci předplatného Azure Azure Security Center automaticky zjišťovat prostředky IaaS nasazené v rámci předplatného.
 
 > [!NOTE]
-> Přečtěte si další informace o [modelech nasazení Classic a správce prostředků](../azure-classic-rm.md) pro prostředky Azure.
->
+> Chcete-li získat kompletní sadu funkcí zabezpečení, je nutné mít [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který je používán Azure Security Center, nainstalován a [správně nakonfigurován k odesílání dat do Azure Security Center](security-center-enable-data-collection.md#manual-agent).
 
-## <a name="platforms-that-support-the-data-collection-agent"></a>Platformy, které podporují agenta shromažďování dat 
-Tato část obsahuje seznam platforem, na kterých je možné spustit agenta Log Analytics, který používá služba Azure Security Center.
 
-### <a name="supported-platforms-for-windows-computers-and-vms"></a>Podporované platformy pro počítače a virtuální počítače s Windows
-Podporovány jsou následující operační systémy Windows:
+V následujících oddílech jsou uvedeny podporované serverové operační systémy, na kterých je možné spustit [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který používá služba Azure Security Center.
+
+### Operační systémy Windows Server<a name="os-windows"></a>
 
 * Windows Server. 2019
 * Windows Server 2016
@@ -43,16 +50,14 @@ Podporovány jsou následující operační systémy Windows:
 * Windows Server 2008
 
 > [!NOTE]
-> Integrace se službou Windows Defender ATP podporuje pouze systémy Windows Server 2012 R2 a Windows Server 2016.
+> Integrace s Microsoft Defender ATP podporuje jenom Windows Server 2012 R2 a Windows Server 2016.
 
-### <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro počítače a virtuální počítače se systémem Linux
+Další informace o podporovaných funkcích pro operační systémy Windows, které jsou uvedené výše, najdete v tématu [funkce podporované virtuálním počítačem/serverem](security-center-services.md##vm-server-features).
 
-Podporovány jsou následující operační systémy Linux:
-
-> [!NOTE]
-> Vzhledem k tomu, že se seznam podporovaných operačních systémů Linux neustále mění, pokud chcete, kliknutím [sem](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte nejaktuálnější seznam podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
+### Operační systémy Linux<a name="os-linux"></a>
 
 64 – bit
+
 * CentOS 6 a 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 a 7
@@ -68,103 +73,57 @@ Podporovány jsou následující operační systémy Linux:
 * Debian GNU/Linux 8 a 9
 * Ubuntu Linux 14,04 LTS a 16,04 LTS
 
-## <a name="vms-and-cloud-services"></a>Virtuální počítače a Cloud Services
+> [!NOTE]
+> Vzhledem k tomu, že se seznam podporovaných operačních systémů Linux neustále mění, pokud chcete, kliknutím [sem](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte nejaktuálnější seznam podporovaných verzí, v případě, že došlo ke změnám od posledního publikování tohoto tématu.
+
+Další informace o podporovaných funkcích pro operační systémy Linux, které jsou uvedené výše, najdete v tématu [funkce podporované virtuálním počítačem/serverem](security-center-services.md##vm-server-features).
+
+### Spravované služby virtuálních počítačů<a name="virtual-machine"></a>
+
+Virtuální počítače se také vytvoří v rámci zákaznického předplatného jako součást některých spravovaných služeb Azure, jako je například Azure Kubernetes (AKS), Azure Databricks a další. Tyto virtuální počítače se taky zjišťují pomocí Azure Security Center a Agent Log Analytics se dá nainstalovat a nakonfigurovat podle podporovaných [operačních systémů Windows/Linux](#os-windows)uvedených výše.
+
+### Cloud Services<a name="cloud-services"></a>
+
 Podporují se také virtuální počítače, které běží v cloudové službě. Monitorují se jenom webové role a role pracovních procesů Cloud Services, které běží v produkčních slotech. Další informace o cloudových službách najdete v tématu [Přehled Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
+## Služby PaaS<a name="paas-services"></a>
 
-## <a name="supported-iaas-features"></a>Podporované funkce IaaS
+Azure Security Center podporují následující prostředky Azure PaaS:
 
-> [!div class="mx-tableFixed"]
-> 
+* SQL
+* PostGreSQL
+* MySQL
+* CosmosDB
+* Účet úložiště
+* App Service
+* Funkce
+* Cloudová služba
+* Virtuální síť
+* Subnet
+* NIC
+* NSG
+* Účet Batch
+* Účet Service Fabric
+* Účet služby Automation
+* Nástroj pro vyrovnávání zatížení
+* Hledat
+* Názvový prostor služby Service Bus
+* Stream Analytics
+* Obor názvů centra událostí
+* Aplikace logiky
+* Redis
+* Data Lake Analytics
+* Data Lake Store
+* Trezor klíčů
 
-|Server|Windows|||Linux|||Ceny|
-|----|----|----|----|----|----|----|----|
-|**Prostředí**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
-||**Virtuální počítač**|**Sada škálování virtuálních počítačů**||**Virtuální počítač**|**Sada škálování virtuálních počítačů**|
-|Výstrahy detekce hrozeb VMBA|✔|✔|✔|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
-|Výstrahy detekce hrozeb založené na síti|✔|✔|X|✔|✔|X|Standard|
-|Integrace ochrany ATP v programu Windows Defender|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|X|X|X|Standard|
-|Chybějící opravy|✔|✔|✔|✔|✔|✔|Zdarma|
-|Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Zdarma|
-|Posouzení služby Endpoint Protection|✔|✔|✔|X|X|X|Zdarma|
-|Přístup k virtuálnímu počítači podle potřeby|✔|X|X|✔|X|X|Standard|
-|Adaptivní řízení aplikací|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
-|Vyhodnocení šifrování disku|✔|✔|X|✔|✔|X|Zdarma|
-|Nasazení třetí strany|✔|X|X|✔|X|X|Zdarma|
-|Posouzení NSG|✔|✔|X|✔|✔|X|Zdarma|
-|Detekce hrozeb v bezsouborovém formátu|✔|✔|✔|X|X|X|Standard|
-|Mapa sítě|✔|✔|X|✔|✔|X|Standard|
-|Adaptivní ovládací prvky sítě|✔|✔|X|✔|✔|X|Standard|
-|Řídicí panel dodržování předpisů & sestavy|✔|✔|✔|✔|✔|✔|Standard|
-|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|X|X|X|✔|✔|✔|Standard|
+Další informace o podporovaných funkcích pro výše uvedený seznam prostředků PaaS najdete v tématu [funkce podporované službami PaaS](security-center-services.md#paas-services).
 
-### <a name="supported-endpoint-protection-solutions"></a>Podporovaná řešení ochrany koncových bodů
+## <a name="next-steps"></a>Další kroky
 
-Následující tabulka poskytuje matrici:
- - Zda můžete k instalaci jednotlivých řešení použít Azure Security Center.
- - Která řešení ochrany koncových bodů Security Center můžou zjistit. Pokud se zjistí jedno z těchto řešení ochrany koncových bodů, Security Center nedoporučuje instalaci.
-
-Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
-
-| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
-|------|------|-----|-----|
-| Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – všechny verze * | Řada Windows Serverů  | Ne | Ano |
-| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano **\***  |
-
- **\*** Stav pokrytí a podpůrná data jsou aktuálně k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným a nereflektují se na portálu Azure Security Center.
-
-> [!NOTE]
-> - Detekce služby System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu 3,0 (nebo v horní verzi).
-> - Detekce funkce Trend Micro Protection je podporovaná pro obsáhlé agenty zabezpečení.  OfficeScan agenti nejsou podporováni.
-
-## <a name="supported-paas-features"></a>Podporované funkce PaaS
-
-
-|Služba|Doporučení (zdarma)|Detekce hrozeb (Standard)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
-|Účty služby Azure Blob Storage|✔| ✔|
-|Aplikační služby|✔| ✔|
-|Cloudové služby|✔| X|
-|Virtuální sítě|✔| Není k dispozici|
-|Podsítě|✔| Není k dispozici|
-|Síťové karty|✔| Není k dispozici|
-|skupin NSG|✔| Není k dispozici|
-|Subscription|✔ **| ✔|
-|Batch|✔| Není k dispozici|
-|Service Fabric|✔| Není k dispozici|
-|Účet služby Automation|✔| Není k dispozici|
-|Nástroj pro vyrovnávání zatížení|✔| Není k dispozici|
-|Hledat|✔| Není k dispozici|
-|Service Bus|✔| Není k dispozici|
-|Stream Analytics|✔| Není k dispozici|
-|Centrum událostí|✔| Není k dispozici|
-|Aplikace logiky|✔| Není k dispozici|
-|Účet úložiště|✔| Není k dispozici|
-|Redis|✔| Není k dispozici|
-|Data Lake Analytics|✔| Není k dispozici|
-|Trezor klíčů|✔| Není k dispozici|
-
-
-
-
-\*Tyto funkce jsou aktuálně podporované ve verzi Public Preview.
-
-\*\*Doporučení AAD jsou dostupná jenom pro standardní odběry.
-
-
-
-## <a name="next-steps"></a>Další postup
-
+- Přečtěte si, jak [Security Center shromažďuje data a agenta Log Analytics](security-center-enable-data-collection.md).
+- Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
+- Seznamte [se s funkcemi dostupnými pro různá cloudová prostředí](security-center-services.md).
 - Přečtěte si další informace o [detekci hrozeb pro virtuální počítače & serverech v Azure Security Center](security-center-alerts-iaas.md).
 - Přečtěte si [Nejčastější dotazy týkající se použití Azure Security Center](security-center-faq.md).
 - Přečtěte si [blogové příspěvky o zabezpečení Azure a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515702"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232689"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Mapování ovládacích prvků pro ukázka PCI-DSS v 3.2.1 podrobný plán
 
@@ -25,7 +25,7 @@ Následující mapování jsou pro ovládací prvky **PCI-DSS v 3.2.1:2018** . P
 
 Tento podrobný plán vám pomůže se správou a řízením sítí tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které monitorují skupiny zabezpečení sítě s povolující pravidla. Pravidla, která jsou příliš neoprávněná, mohou umožňovat neúmyslný přístup k síti a měly by být přezkoumány. Tento podrobný plán přiřadí jednu Azure Policy definice, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
 
-- Auditovat neomezený síťový přístup k účtům úložiště
+- Auditování neomezeného síťového přístupu k účtům úložiště
 - Přístup přes internetový koncový bod by měl být omezený.
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h a 6.5.3 Cryptographic Protection
@@ -37,19 +37,19 @@ Tento podrobný plán vám pomůže vyhovět zásadám pomocí ovládacích prvk
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
 - Je třeba povolit transparentní šifrování dat databází SQL.
 - Na virtuálních počítačích by se mělo použít šifrování disku
-- Proměnné účtu Automation by měly být zašifrované.
+- Proměnné účtu Automation by se měly šifrovat.
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 - Zabezpečený přenos do účtů úložiště by měl být povolený.
 - Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.
 - Je třeba povolit transparentní šifrování dat databází SQL.
-- Nasadit transparentní šifrování dat SQL DB
+- Nasazení transparentního šifrování dat databáze SQL
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 a 11.2.1, kontrola ohrožení zabezpečení a aktualizace systému
 
 Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomocí [](../../../policy/overview.md) přiřazení Azure Policych definic, které monitorují chybějící aktualizace systému, chyby zabezpečení operačního systému, chyby zabezpečení SQL a ohrožení zabezpečení virtuálních počítačů v Azure. Security Center. Azure Security Center poskytuje možnosti vytváření sestav, které vám umožní získat přehled o stavu zabezpečení nasazených prostředků Azure v reálném čase.
 
-- Monitorování chybějící služby Endpoint Protection ve službě Azure Security Center
-- Nasazení výchozího rozšíření Microsoft IaaSAntimalware pro Windows Server
+- Monitorovat chybějící Endpoint Protection v Azure Security Center
+- Nasadit výchozí rozšíření Microsoft IaaSAntimalware pro Windows Server
 - Nasazení detekce hrozeb na SQL serverech
 - Do vašich počítačů by se měly nainstalovat aktualizace systému
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -75,7 +75,7 @@ orgány.
 - V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 - Pro SQL servery by se měl zřídit správce Azure Active Directory.
-- Auditovat používání vlastních pravidel RBAC
+- Auditovat využití vlastních pravidel RBAC
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>Minimální oprávnění 8.1.2 a 8.1.5 a kontrola přístupových práv uživatelů
 
@@ -112,7 +112,7 @@ Diagnostické protokoly poskytují přehled o operacích, které byly provedeny 
 
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Auditování nastavení diagnostiky
-- Auditovat nastavení auditování SQL na úrovni serveru
+- Auditovat nastavení auditování na úrovni SQL serveru
 - Nasazení auditování na serverech SQL
 - Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
 - Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
@@ -134,7 +134,7 @@ Teď, když jste zkontrolovali mapování ovládacího prvku PCI-DSS v 3.2.1, Pr
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Další články věnované podrobným plánům a postupu jejich využití:
 
-- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

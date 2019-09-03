@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186689"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232907"
 ---
 ::: zone target="docs"
 
@@ -67,7 +67,7 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 > - **Připojit a odemknout**: Připojte zařízení a odemkněte disk ke zkopírování dat.
 > - **Zkopírujte data na disk a ověřte**: Zkopírujte data na disky do předvytvořených složek.
 > - **Vrátit disky**: Vraťte disky do datového centra Azure, kde se data nahrají do svého účtu úložiště.
-> - **Ověřte data v Azure**: Než odstraníte data ze zdrojového serveru, ověřte, že se data nahrála do vašeho účtu úložiště.
+> - **Ověřte data v Azure**: Před odstraněním ze zdrojového datového serveru ověřte, že se data nahrála do vašeho účtu úložiště.
 
 ::: zone-end
 
@@ -157,7 +157,7 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožňuje importovat data do Azure. Další informace o správě Azure Data Box Disku získáte v následujícímu kurzu:
 

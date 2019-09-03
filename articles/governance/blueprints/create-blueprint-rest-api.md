@@ -1,19 +1,18 @@
 ---
-title: Vytvořit podrobný plán pomocí rozhraní REST API
-description: Plány Azure slouží k vytváření, definování a je možné nasazovat artefakty pomocí rozhraní REST API.
+title: Vytvořit podrobný plán pomocí REST API
+description: Pomocí Azure modrotisky můžete vytvářet, definovat a nasazovat artefakty pomocí REST API.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 54a4da8e6d2720086b86c3573623f9dac2469ea4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799208"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232919"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý start: Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -69,11 +68,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{YourMG}` -Nahraďte ID skupiny pro správu
+- `{YourMG}`– Nahraďte ID vaší skupiny pro správu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 > [!NOTE]
-> Podrobné plány. mohou také vytvořit na úrovni předplatného. Příklad najdete v tématu [vytvořit podrobný plán na předplatné příklad](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Plány lze také vytvořit na úrovni předplatného. Příklad najdete v tématu vytvoření podrobného plánu [v](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)předplatném.
 
 1. Vytvořte počáteční objekt _blueprint_. **Text požadavku** obsahuje vlastnosti podrobného plánu, vytvářené skupiny prostředků a všechny parametry na úrovni podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
 
@@ -134,7 +133,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného přiřazení role. **Text žádosti** definuje _druh_ artefaktu, vlastnosti odpovídající identifikátoru definice role a hlavní identity předávané jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu. V tomto příkladu _Přispěvatel_ předdefinovanou roli s identifikátorem GUID z `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+1. Přidejte do předplatného přiřazení role. **Text žádosti** definuje _druh_ artefaktu, vlastnosti odpovídající identifikátoru definice role a hlavní identity předávané jako pole hodnot. V následujícím příkladu jsou identity instančního objektu s přiřazenou určenou rolí nakonfigurované na parametr nastavený při přiřazení podrobného plánu. V tomto příkladu se používá předdefinovaná role _Přispěvatel_ s identifikátorem GUID `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
    - Identifikátor URI v REST API
 
@@ -154,7 +153,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného přiřazení zásad. **Text požadavku** definuje _druh_ artefaktu, vlastnosti odpovídající definici zásady nebo iniciativy a konfiguruje přiřazení zásady na použití definovaných parametrů podrobného plánu konfigurovaných při přiřazení podrobného plánu. V tomto příkladu _použít značku a její výchozí hodnotu pro skupiny prostředků_ integrované zásady s identifikátorem GUID z `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Přidejte do předplatného přiřazení zásad. **Text požadavku** definuje _druh_ artefaktu, vlastnosti odpovídající definici zásady nebo iniciativy a konfiguruje přiřazení zásady na použití definovaných parametrů podrobného plánu konfigurovaných při přiřazení podrobného plánu. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identifikátor URI v REST API
 
@@ -182,7 +181,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu _použít značku a její výchozí hodnotu pro skupiny prostředků_ integrované zásady s identifikátorem GUID z `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
+1. Přidejte do předplatného další přiřazenou zásadu pro značku úložiště (znovu použijte parametr _storageAccountType_). Tento další artefakt přiřazené zásady ukazuje, že parametr definovaný v podrobném plánu může používat více artefaktů. V tomto příklad se parametr **storageAccountType** používá k nastavení značky u skupiny prostředků. Tato hodnota poskytuje informace o účtu úložiště, který se vytvoří v dalším kroku. V tomto příkladu se používá _značka Apply a její výchozí hodnota pro předdefinované zásady skupin prostředků_ s identifikátorem GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identifikátor URI v REST API
 
@@ -296,7 +295,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu _vlastníka_ předdefinovanou roli s identifikátorem GUID z `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
+1. Přidejte pod skupinu prostředků přiřazení role. Jde o podobné přiřazení jako při předchozím přiřazení role. V následujícím příkladu se identifikátor definice použije pro roli **Owner** (Vlastník), který jí z podrobného plánu nabídne jiný parametr. V tomto příkladu se používá předdefinovaná role _Owner_ s identifikátorem GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 
    - Identifikátor URI v REST API
 
@@ -331,15 +330,15 @@ Hodnota `{BlueprintVersion}` představuje řetězec složený z písmen, čísli
 
 ## <a name="assign-a-blueprint"></a>Přiřazení podrobného plánu
 
-Po publikování podrobného plánu pomocí rozhraní REST API je možné ho přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud podrobný plán je uložený na předplatné, můžete přiřadit pouze k tomuto předplatnému. **Text požadavku** určuje přiřazovaný podrobný plán, poskytuje název a umístění všech skupin prostředků v definici podrobného plánu a nabízí také všechny parametry definované v podrobném plánu a používané jedním nebo několika připojenými artefakty.
+Po publikování podrobného plánu pomocí rozhraní REST API je možné ho přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému. **Text požadavku** určuje přiřazovaný podrobný plán, poskytuje název a umístění všech skupin prostředků v definici podrobného plánu a nabízí také všechny parametry definované v podrobném plánu a používané jedním nebo několika připojenými artefakty.
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
-- `{tenantId}` -Nahraďte ID vašeho tenanta
-- `{YourMG}` -Nahraďte ID skupiny pro správu
+- `{tenantId}`– Nahraďte ID tenanta.
+- `{YourMG}`– Nahraďte ID vaší skupiny pro správu.
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
-1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppId je statických (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale ID instančního objektu služby se liší podle klienta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
+1. Poskytněte instančnímu objektu Azure Blueprint roli **Owner** (Vlastník) cílového předplatného. AppID je static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale ID instančního objektu se liší podle tenanta. K vyžádání podrobností týkajících se tenanta použijte následující REST API. Používá [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) s jinou autorizací.
 
    - Identifikátor URI v REST API
 
@@ -398,9 +397,9 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      }
      ```
 
-   - Spravovaná identita přiřazená uživateli
+   - Spravovaná identita přiřazená uživatelem
 
-     Přiřazení podrobného plánu můžete použít také [uživatelsky přiřazené identity spravované](../../active-directory/managed-identities-azure-resources/overview.md). V takovém případě **identity** část obsahu žádosti změní následujícím způsobem.  Nahraďte `{yourRG}` a `{userIdentity}` s vaším prostředkem název skupiny a název vaší uživatelsky přiřazené spravovanou identitu, v uvedeném pořadí.
+     Přiřazení podrobného plánu může také používat [uživatelsky přiřazenou spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md). V tomto případě se v těle požadavku mění část **identity** .  `{yourRG}` Nahraďte `{userIdentity}` a názvem vaší skupiny prostředků a názvem vaší uživatelsky přiřazené spravované identity.
 
      ```json
      "identity": {
@@ -412,10 +411,10 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
      },
      ```
 
-     **Uživatelsky přiřazené identity spravované** může být v každé předplatné a skupinu prostředků uživatele přiřazení podrobný plán má oprávnění k.
+     **Spravovaná identita přiřazená uživatelem** může být v jakémkoli předplatném a skupině prostředků, ke které má uživatel přihlášený podrobný plán oprávnění.
 
      > [!IMPORTANT]
-     > Plány nespravuje uživatelsky přiřazené spravovaná identita. Uživatelé nesou zodpovědnost za přiřazení dostatečná rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
+     > Modrotisky nespravují spravovanou identitu přiřazenou uživatelem. Uživatelé zodpovídají za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
 ## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 
@@ -437,9 +436,9 @@ K odebrání samotného podrobného plánu použijte následující operaci REST
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](./concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)

@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567681"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231001"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Kurz: Zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 
@@ -55,10 +55,12 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Omezení přístupu ke spravované instanci
 
-K spravovaným instancím je možné přistupovat pouze přes privátní IP adresu. K dispozici nejsou žádné koncové body služby, které by bylo možné připojit ke spravované instanci mimo síť spravované instance. Podobně jako izolované SQL Server místní prostředí potřebují aplikace nebo uživatelé přístup k síti spravované instance (VNet), aby bylo možné navázat připojení. Další informace najdete v následujícím článku [připojení aplikace ke spravované instanci](sql-database-managed-instance-connect-app.md).
+K spravovaným instancím je možné přistupovat prostřednictvím privátní IP adresy. Podobně jako izolované SQL Server místní prostředí potřebují aplikace nebo uživatelé přístup k síti spravované instance (VNet), aby bylo možné navázat připojení. Další informace najdete v následujícím článku [připojení aplikace ke spravované instanci](sql-database-managed-instance-connect-app.md).
+
+Je také možné nakonfigurovat koncový bod služby ve spravované instanci, která umožňuje veřejné připojení stejným způsobem jako Azure SQL Database. Další informace najdete v následujícím článku [Konfigurace veřejného koncového bodu v Azure SQL Database Managed instance](sql-database-managed-instance-public-endpoint-configure.md).
 
 > [!NOTE] 
-> Vzhledem k tomu, že ke spravovaným instancím lze přistupovat pouze v rámci své virtuální sítě, neplatí [SQL Database pravidla brány firewall](sql-database-firewall-configure.md) . Spravovaná instance má svou vlastní [vestavěnou bránu firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+> I s povolenými koncovými body služby [SQL Database pravidla brány firewall](sql-database-firewall-configure.md) se nevztahují. Spravovaná instance má svou vlastní [vestavěnou bránu firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) pro správu připojení.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Vytvoření objektu zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci pomocí SSMS
 
@@ -149,13 +151,13 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho po
 
    - Active Directory – univerzální s podporou vícefaktorového ověřování
    - Active Directory – heslo
-   - Active Directory – integrované </br>
+   - Integrovaná se službou Active Directory </br>
 
      ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
      Další informace najdete v následujícím článku: [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md)
 
-1. Vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. Tím se zobrazí okno přihlášení k Multi-Factor Authentication (MFA). Přihlaste se pomocí svého hesla služby Azure AD.
+1. Vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. Tím se zobrazí okno přihlášení Multi-Factor Authentication (MFA). Přihlaste se pomocí svého hesla služby Azure AD.
 
     ![MFA-Login-prompt. png](media/sql-database-managed-instance-security-tutorial/mfa-login-prompt.png)
 
@@ -434,7 +436,7 @@ Mezidatabázové dotazy jsou podporovány pro účty Azure AD s objekty zabezpe�
 - E-maily Service Broker a DB je možné nastavit pomocí objektů zabezpečení serveru Azure AD (přihlášení).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="enable-security-features"></a>Povolit funkce zabezpečení
 

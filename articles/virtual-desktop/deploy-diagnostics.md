@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899704"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233254"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -154,7 +154,7 @@ Aby bylo možné zobrazit stav virtuálních počítačů, musíte povolit Log A
 
 Nasazení šablony Azure Resource Management pro nástroj pro diagnostiku:
 
-1.  Přejít na stránku GitHub Azure RDS-Templates.
+1.  Přejít na [stránku GitHub Azure RDS-Templates](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy).
 2.  Nasaďte šablonu do Azure a postupujte podle pokynů v šabloně. Ujistěte se, že máte k dispozici následující informace:
 
     -   ID klienta

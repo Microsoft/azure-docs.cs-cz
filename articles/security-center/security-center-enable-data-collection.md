@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2019
+ms.date: 06/10/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e87ea5f6d8a92f18fc1b289ebf9ffd1cc0326812
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12739bf230eb7a2d5afa4edd57dbc2761907ec4e
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845898"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231346"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Log Analytics také kopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -41,7 +41,7 @@ Chcete-li shromažďovat data z počítačů, měli byste mít nainstalovaného 
 > Automatické zřizování je ve výchozím nastavení vypnuté. Pokud chcete nastavit Security Center mohla nainstalovat ve výchozím nastavení automatického zřizování, nastavte ji na **na**.
 >
 
-Když je Automatické zřizování zapnuté, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Přečtěte si, jak nainstalovat rozšíření agenta Log Analytics](#manualagent).
+Když je Automatické zřizování zapnuté, Security Center zřídí agenta Log Analytics na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Automatické zřizování se důrazně doporučuje, ale ruční instalaci agentů je také k dispozici. [Přečtěte si, jak nainstalovat rozšíření agenta Log Analytics](#manual-agent).
 
 
 
@@ -59,7 +59,7 @@ Povolení automatického zřizování agenta Log Analytics:
 
 >[!NOTE]
 > - Pokyny o tom, jak zřídit existující instalace najdete v tématu [automatické zřizování v případech dříve existující instalace agenta](#preexisting).
-> - Pokyny k ručnímu zřizování najdete v tématu [Ruční instalace rozšíření agenta Log Analytics](#manualagent).
+> - Pokyny k ručnímu zřizování najdete v tématu [Ruční instalace rozšíření agenta Log Analytics](#manual-agent).
 > - Vypnutí automatického zřizování, v tématu [vypnout automatické zřizování](#offprovisioning).
 > - Pokyny, jak připojit Centrum zabezpečení pomocí Powershellu, v tématu [automatizace registrace služby Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 >
@@ -240,7 +240,7 @@ Je-li vypnout automatické zřizování po dříve na:
 >  Při vypnutí automatického zřizování se agent Log Analytics neodebere z virtuálních počítačů Azure, ve kterých se agent zřídil. Informace o odebírání rozšíření OMS najdete v tématu [jak odebrat rozšíření OMS nainstalovaná služba Security Center](security-center-faq.md#remove-oms).
 >
     
-## Ruční zřizování agentů <a name="manualagent"></a>
+## Ruční zřizování agentů <a name="manual-agent"></a>
  
 Existuje několik způsobů, jak ručně nainstalovat agenta Log Analytics. Při instalaci ručně, ujistěte se, že zakážete automatické zřizování.
 

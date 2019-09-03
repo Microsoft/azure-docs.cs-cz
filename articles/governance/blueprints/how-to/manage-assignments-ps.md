@@ -1,39 +1,39 @@
 ---
-title: Jak spravovat přiřazení pomocí Powershellu
-description: Zjistěte, jak spravovat přiřazení podrobného plánu se oficiální plány modul Azure PowerShell, Az.Blueprint.
+title: Správa přiřazení pomocí PowerShellu
+description: Naučte se spravovat přiřazení podrobných plánů pomocí oficiálního modulu PowerShellu pro Azure modrotisky, AZ. detail.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beaa3f4c5ab272592e7fae5a95b40a9b586aaf65
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60682828"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232889"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>Jak spravovat přiřazení pomocí Powershellu
+# <a name="how-to-manage-assignments-with-powershell"></a>Správa přiřazení pomocí PowerShellu
 
-Přiřazení podrobného plánu se dá spravovat **Az.Blueprint** modulu Azure PowerShell. Modul podporuje načítání, vytváření, aktualizace nebo odebrání přiřazení. Modul můžete také načíst podrobnosti pro existující definice podrobného plánu. Tento článek popisuje postup instalace modulu a začít ji používat.
+Přiřazení podrobného plánu je možné spravovat pomocí modulu **AZ. detail** Azure PowerShell Module. Modul podporuje načítání, vytváření, aktualizaci a odebírání přiřazení. Modul může také načíst podrobnosti o stávajících definicích podrobného plánu. Tento článek popisuje, jak nainstalovat modul a začít ho používat.
 
-## <a name="add-the-azblueprint-module"></a>Přidejte modul Az.Blueprint
+## <a name="add-the-azblueprint-module"></a>Přidání modulu AZ. detail Module
 
-Pokud chcete povolit Azure Powershellu ke správě přiřazení podrobného plánu, je nutné přidat modul. Tento modul je možné místně nainstalovaný PowerShell s [Azure Cloud Shell](https://shell.azure.com), nebo se [image Dockeru Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby bylo možné Azure PowerShell spravovat přiřazení podrobných plánů, modul musí být přidán. Tento modul se dá použít s místně nainstalovaným PowerShellem, s [Azure Cloud Shell](https://shell.azure.com), nebo s [imagí Azure PowerShell Docker](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Základní požadavky
 
-Plány Azure modul vyžaduje následující software:
+Modul Azure modrotisky vyžaduje následující software:
 
-- Prostředí Azure PowerShell 1.5.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.5.0 nebo vyšší. Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/powershell/azure/install-az-ps).
 - PowerShellGet 2.0.1 nebo novější. Pokud není nainstalovaný nebo aktualizovaný, postupujte podle [těchto pokynů](/powershell/gallery/installing-psget).
 
-### <a name="install-the-module"></a>Instalace modulu
+### <a name="install-the-module"></a>Nainstalovat modul
 
-Modul plány pro prostředí PowerShell je **Az.Blueprint**.
+Modul modrotisky pro PowerShell je **AZ. detail**.
 
-1. Ze **správu** příkazový řádek Powershellu, spusťte následující příkaz:
+1. Na příkazovém řádku PowerShellu **pro správu** spusťte následující příkaz:
 
    ```azurepowershell-interactive
    # Install the Blueprints module from PowerShell Gallery
@@ -41,9 +41,9 @@ Modul plány pro prostředí PowerShell je **Az.Blueprint**.
    ```
 
    > [!NOTE]
-   > Pokud **Az.Accounts** je už nainstalovaná, může být potřeba použít `-AllowClobber` chcete vynutit instalaci.
+   > Pokud je už nainstalovaná **AZ. Accounts** , může být nutné použít `-AllowClobber` k vynucení instalace.
 
-1. Ověřte, že v modulu byla naimportována a správnou verzi (0.1.0):
+1. Ověřte, že je modul naimportovaný a má správnou verzi (0.1.0):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -52,10 +52,10 @@ Modul plány pro prostředí PowerShell je **Az.Blueprint**.
 
 ## <a name="get-blueprint-definitions"></a>Získat definice podrobného plánu
 
-Prvním krokem při práci s přiřazení je často získání odkazu na definici podrobného plánu.
-`Get-AzBlueprint` Rutina načte jeden nebo více definice podrobného plánu. Rutinu můžete získat definice podrobného plánu ze skupiny pro správu s `-ManagementGroupId {mgId}` nebo předplatné s `-SubscriptionId {subId}`. **Název** parametr získá definice podrobného plánu, ale musí být použit s **ManagementGroupId** nebo **SubscriptionId**. **Verze** jde použít s **název** více explicitně, o kterou definici podrobného plánu se vrátí. Místo **verze**, přepínač `-LatestPublished` získá naposledy publikované verze.
+Prvním krokem pro práci s přiřazením je často získání odkazu na definici podrobného plánu.
+`Get-AzBlueprint` Rutina získá jednu nebo více definic podrobného plánu. Rutina může získat definice podrobného plánu ze skupiny pro `-ManagementGroupId {mgId}` správu s nebo s `-SubscriptionId {subId}`předplatným. Parametr **Name** získá definici podrobného plánu, ale musí být použit s **ManagementGroupId** nebo **SubscriptionId**. **Verzi** lze použít s **názvem** , aby byla lépe explicitní o tom, která definice podrobného plánu se vrátí. Místo **verze**se v přepínači `-LatestPublished` přesměruje naposledy publikovaná verze.
 
-Následující příklad používá `Get-AzBlueprint` zobrazíte všechny verze definice podrobného plánu s názvem "101 plány definice předplatnými" z konkrétní předplatné, které reprezentují `{subId}`:
+Následující příklad používá `Get-AzBlueprint` k získání všech verzí definice podrobného plánu s názvem "101-modrotisky-definition-Subscription" z konkrétního předplatného `{subId}`reprezentovaného jako:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -67,7 +67,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-Příklad výstupu pro definici podrobného plánu s více verzemi vypadá takto:
+Ukázkový výstup pro definici podrobného plánu s více verzemi vypadá takto:
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -82,7 +82,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-[Podrobný plán parametry](../concepts/parameters.md#blueprint-parameters) na podrobný plán se rozšířit definice k poskytnutí dalších informací.
+[Parametry](../concepts/parameters.md#blueprint-parameters) podrobného plánu v definici podrobného plánu lze rozšířit tak, aby poskytovaly Další informace.
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -99,9 +99,9 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 
 ## <a name="get-blueprint-assignments"></a>Získat přiřazení podrobného plánu
 
-Pokud přiřazení podrobného plánu už existuje, můžete získat na ni se odkaz `Get-AzBlueprintAssignment` rutiny. Přijímá rutina **SubscriptionId** a **název** jako volitelné parametry. Pokud **SubscriptionId** není zadán, slouží k nastavení aktuálního kontextu předplatného.
+Pokud přiřazení podrobného plánu už existuje, můžete na něj získat odkaz pomocí `Get-AzBlueprintAssignment` rutiny. Rutina přijímá **SubscriptionId** a **název** jako volitelné parametry. Pokud není zadané **SubscriptionId** , použije se aktuální kontext předplatného.
 
-Následující příklad používá `Get-AzBlueprintAssignment` získat jeden plán přiřazení z konkrétní předplatné reprezentovaná jako s názvem "Přiřazení – lock-resource-groups" `{subId}`:
+Následující příklad používá `Get-AzBlueprintAssignment` k získání jednoho přiřazení podrobného plánu s názvem "přiřazení-zámek-Resource-Groups" z konkrétního předplatného reprezentovaného jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -113,7 +113,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-Příklad výstupu pro přiřazení podrobného plánu vypadá takto:
+Ukázkový výstup přiřazení podrobného plánu vypadá takto:
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -129,45 +129,45 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="create-blueprint-assignments"></a>Vytvořit přiřazení podrobného plánu
 
-Pokud přiřazení podrobného plánu ještě neexistuje, můžete ho vytvořit `New-AzBlueprintAssignment` rutiny. Tato rutina používá následující parametry:
+Pokud přiřazení podrobného plánu ještě neexistuje, můžete ho vytvořit pomocí `New-AzBlueprintAssignment` rutiny. Tato rutina používá následující parametry:
 
-- **Název** [povinné]
-  - Určuje název přiřazení podrobného plánu
-  - Musí být jedinečný a není již existují v **ID předplatného**
-- **Podrobný plán** [povinné]
-  - Určuje definici podrobného plánu přiřazení
-  - Použití `Get-AzBlueprint` k získání odkazu na objekt
-- **Umístění** [povinné]
-  - Určuje oblast pro systém přiřadil spravované identity a předplatné nasazení objektu bude vytvořena ve
-- **Předplatné** (volitelné)
-  - Určuje předplatné, které přiřazení je nasazený do
-  - Pokud není zadaný, použije se výchozí nastavení aktuálního kontextu předplatného
-- **Zámek** (volitelné)
-  - Definuje [podrobný plán uzamčení prostředků](../concepts/resource-locking.md) pro nasazených prostředků
+- **Název** požadovanou
+  - Určuje název přiřazení podrobného plánu.
+  - Musí být jedinečné a v **SubscriptionId** již neexistují.
+- Podrobný **plán** požadovanou
+  - Určuje definici podrobného plánu, která se má přiřadit.
+  - Slouží `Get-AzBlueprint` k získání referenčního objektu.
+- **Umístění** požadovanou
+  - Určuje oblast pro objekt nasazení spravované identity a předplatného přiřazený systémem, který se má vytvořit v.
+- **Předplatné** volitelné
+  - Určuje předplatné, na které se přiřazení nasazuje.
+  - Pokud není zadaný, použije se výchozí kontext aktuálního předplatného.
+- **Zamknout** volitelné
+  - Definuje [uzamykání prostředků](../concepts/resource-locking.md) podrobného plánu, které se má použít pro nasazené prostředky.
   - Podporované možnosti: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-  - Pokud není zadaný, použije se výchozí _None_
-- **SystemAssignedIdentity** (volitelné)
-  - Vyberte systém přiřadil spravovanou identitu pro přiřazení vytvoření a nasazení prostředků
-  - Výchozí nastavení pro sadu parametrů "identity"
-  - Nelze použít s **UserAssignedIdentity**
-- **UserAssignedIdentity** (volitelné)
-  - Určuje uživatelsky přiřazené spravovaná identita má použít pro přiřazení a k nasazení prostředků
-  - Součástí sady "identity"
-  - Nelze použít s **SystemAssignedIdentity**
-- **Parametr** (volitelné)
-  - A [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables) párů klíč/hodnota pro nastavení [dynamických parametrů](../concepts/parameters.md#dynamic-parameters) na přiřazení podrobného plánu
-  - Výchozí pro dynamický parametr je **defaultValue** v definici
-  - Pokud parametr není k dispozici a nemá žádné **defaultValue**, není-li volitelný parametr
+  - Pokud není zadaný, použije se výchozí hodnota _none_ .
+- **SystemAssignedIdentity** volitelné
+  - Tuto možnost vyberte, pokud chcete vytvořit spravovanou identitu přiřazenou systémem pro přiřazení a nasadit prostředky.
+  - Výchozí hodnota pro sadu parametrů identity
+  - Nejde použít s **UserAssignedIdentity**
+- **UserAssignedIdentity** volitelné
+  - Určuje uživatelem přiřazenou identitu, která se má použít pro přiřazení a nasazení prostředků.
+  - Část sady parametrů identity
+  - Nejde použít s **SystemAssignedIdentity**
+- **Parametr** volitelné
+  - [Zatřiďovací tabulka](/powershell/module/microsoft.powershell.core/about/about_hash_tables) párů klíč/hodnota pro nastavení [dynamických parametrů](../concepts/parameters.md#dynamic-parameters) u přiřazení podrobného plánu
+  - Výchozí hodnota pro dynamický parametr je vlastnost **DefaultValue** v definici.
+  - Pokud parametr není zadaný a nemá hodnotu **DefaultValue**, parametr není nepovinný.
 
     > [!NOTE]
-    > **Parametr** secureStrings nepodporuje.
+    > **Parametr** nepodporuje secureStrings.
 
-- **ResourceGroupParameter** (volitelné)
-  - A [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktů skupiny prostředků
-  - Každý prostředek skupiny artefaktů zástupný symbol bude mít páry klíč/hodnota pro dynamicky nastavení **název** a/nebo **umístění** na tento artefakt skupiny prostředků
-  - Pokud parametr skupiny prostředků není k dispozici a nemá žádné **defaultValue**, není-li volitelný parametr skupiny prostředků
+- **ResourceGroupParameter** volitelné
+  - [Zatřiďovací tabulka](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktů skupiny prostředků
+  - Každý zástupný symbol pro všechny skupiny prostředků bude mít páry klíč/hodnota pro dynamické nastavování **názvu** nebo **umístění** v rámci artefaktu skupiny prostředků.
+  - Pokud není zadaný parametr skupiny prostředků a nemá žádnou hodnotu **DefaultValue**, parametr skupiny prostředků není nepovinný.
 
-Následující příklad vytvoří nové přiřazení verze "1.1" definition 'my podrobného plánu' plán pomocí `Get-AzBlueprint`, nastaví spravované identity a přiřazení umístění objektu pro "westus2", uzamkne prostředky s  _AllResourcesReadOnly_a nastaví zatřiďovacích tabulek pro obě **parametr** a **ResourceGroupParameter** na konkrétní předplatné, které jsou reprezentovány jako `{subId}`:
+Následující příklad vytvoří nové přiřazení verze "1,1" definice podrobného plánu "My-detail", která byla načtena s `Get-AzBlueprint`, nastaví spravovanou identitu a umístění objektu přiřazení na hodnotu "westus2", zamkne prostředky pomocí _AllResourcesReadOnly_ a nastaví zatřiďovací tabulky pro **parametr** i **ResourceGroupParameter** pro konkrétní předplatné reprezentované jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -188,7 +188,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-Příklad výstupu pro vytváření přiřazení podrobného plánu vypadá takto:
+Ukázkový výstup pro vytvoření přiřazení podrobného plánu vypadá takto:
 
 ```output
 Name              : my-blueprint-assignment
@@ -204,48 +204,48 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="update-blueprint-assignments"></a>Aktualizovat přiřazení podrobného plánu
 
-Někdy je potřeba aktualizovat přiřazení podrobného plánu, který již byl vytvořen. `Set-AzBlueprintAssignment` Rutina zpracovává tuto akci. Většina stejné parametry přijímá rutina, která `New-AzBlueprintAssignment` rutina nemá povolení cokoli, co byl nastaven na přiřazení aktualizovat. Výjimky jsou _název_, _podrobného plánu_, a _SubscriptionId_. Aktualizují se jenom hodnoty, které jsou k dispozici.
+Někdy je potřeba aktualizovat přiřazení podrobného plánu, který už je vytvořený. `Set-AzBlueprintAssignment` Rutina tuto akci zpracuje. Rutina přebírá většinu stejných parametrů, které `New-AzBlueprintAssignment` provádí rutina, a umožňuje tak, aby se aktualizovala veškerá nastavení na přiřazení. Výjimkou jsou _název_, podrobný _plán_a _SubscriptionId_. Aktualizují se jenom zadané hodnoty.
 
-Vysvětlení, co se stane při aktualizaci přiřazení podrobného plánu, najdete v tématu [pravidla aktualizace přiřazení](./update-existing-assignments.md#rules-for-updating-assignments).
+Informace o tom, co se stane při aktualizaci přiřazení podrobného plánu, najdete v tématu [pravidla pro aktualizaci přiřazení](./update-existing-assignments.md#rules-for-updating-assignments).
 
-- **Název** [povinné]
-  - Určuje název přiřazení podrobného plánu aktualizace
-  - Používaná k nalezení přiřazení aktualizovat, nechcete změnit přiřazení
-- **Podrobný plán** [povinné]
-  - Určuje definici podrobného plánu přiřazení podrobného plánu
-  - Použití `Get-AzBlueprint` k získání odkazu na objekt
-  - Používaná k nalezení přiřazení aktualizovat, nechcete změnit přiřazení
-- **Umístění** (volitelné)
-  - Určuje oblast pro systém přiřadil spravované identity a předplatné nasazení objektu bude vytvořena ve
-- **Předplatné** (volitelné)
-  - Určuje předplatné, které přiřazení je nasazený do
-  - Pokud není zadaný, použije se výchozí nastavení aktuálního kontextu předplatného
-  - Používaná k nalezení přiřazení aktualizovat, nechcete změnit přiřazení
-- **Zámek** (volitelné)
-  - Definuje [podrobný plán uzamčení prostředků](../concepts/resource-locking.md) pro nasazených prostředků
+- **Název** požadovanou
+  - Určuje název přiřazení podrobného plánu, který se má aktualizovat.
+  - Slouží k vyhledání přiřazení, které se má aktualizovat, nikoli Změna přiřazení.
+- Podrobný **plán** požadovanou
+  - Určuje definici podrobného plánu přiřazení podrobného plánu.
+  - Slouží `Get-AzBlueprint` k získání referenčního objektu.
+  - Slouží k vyhledání přiřazení, které se má aktualizovat, nikoli Změna přiřazení.
+- **Umístění** volitelné
+  - Určuje oblast pro objekt nasazení spravované identity a předplatného přiřazený systémem, který se má vytvořit v.
+- **Předplatné** volitelné
+  - Určuje předplatné, na které se přiřazení nasazuje.
+  - Pokud není zadaný, použije se výchozí kontext aktuálního předplatného.
+  - Slouží k vyhledání přiřazení, které se má aktualizovat, nikoli Změna přiřazení.
+- **Zamknout** volitelné
+  - Definuje [uzamykání prostředků](../concepts/resource-locking.md) podrobného plánu, které se má použít pro nasazené prostředky.
   - Podporované možnosti: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (volitelné)
-  - Vyberte systém přiřadil spravovanou identitu pro přiřazení vytvoření a nasazení prostředků
-  - Výchozí nastavení pro sadu parametrů "identity"
-  - Nelze použít s **UserAssignedIdentity**
-- **UserAssignedIdentity** (volitelné)
-  - Určuje uživatelsky přiřazené spravovaná identita má použít pro přiřazení a k nasazení prostředků
-  - Součástí sady "identity"
-  - Nelze použít s **SystemAssignedIdentity**
-- **Parametr** (volitelné)
-  - A [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables) párů klíč/hodnota pro nastavení [dynamických parametrů](../concepts/parameters.md#dynamic-parameters) na přiřazení podrobného plánu
-  - Výchozí pro dynamický parametr je **defaultValue** v definici
-  - Pokud parametr není k dispozici a nemá žádné **defaultValue**, není-li volitelný parametr
+- **SystemAssignedIdentity** volitelné
+  - Tuto možnost vyberte, pokud chcete vytvořit spravovanou identitu přiřazenou systémem pro přiřazení a nasadit prostředky.
+  - Výchozí hodnota pro sadu parametrů identity
+  - Nejde použít s **UserAssignedIdentity**
+- **UserAssignedIdentity** volitelné
+  - Určuje uživatelem přiřazenou identitu, která se má použít pro přiřazení a nasazení prostředků.
+  - Část sady parametrů identity
+  - Nejde použít s **SystemAssignedIdentity**
+- **Parametr** volitelné
+  - [Zatřiďovací tabulka](/powershell/module/microsoft.powershell.core/about/about_hash_tables) párů klíč/hodnota pro nastavení [dynamických parametrů](../concepts/parameters.md#dynamic-parameters) u přiřazení podrobného plánu
+  - Výchozí hodnota pro dynamický parametr je vlastnost **DefaultValue** v definici.
+  - Pokud parametr není zadaný a nemá hodnotu **DefaultValue**, parametr není nepovinný.
 
     > [!NOTE]
-    > **Parametr** secureStrings nepodporuje.
+    > **Parametr** nepodporuje secureStrings.
 
-- **ResourceGroupParameter** (volitelné)
-  - A [zatřiďovací tabulku](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktů skupiny prostředků
-  - Každý prostředek skupiny artefaktů zástupný symbol bude mít páry klíč/hodnota pro dynamicky nastavení **název** a/nebo **umístění** na tento artefakt skupiny prostředků
-  - Pokud parametr skupiny prostředků není k dispozici a nemá žádné **defaultValue**, není-li volitelný parametr skupiny prostředků
+- **ResourceGroupParameter** volitelné
+  - [Zatřiďovací tabulka](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktů skupiny prostředků
+  - Každý zástupný symbol pro všechny skupiny prostředků bude mít páry klíč/hodnota pro dynamické nastavování **názvu** nebo **umístění** v rámci artefaktu skupiny prostředků.
+  - Pokud není zadaný parametr skupiny prostředků a nemá žádnou hodnotu **DefaultValue**, parametr skupiny prostředků není nepovinný.
 
-Následující příklad aktualizuje přiřazení verze "1.1" definice podrobného plánu 'my podrobného plánu' pomocí `Get-AzBlueprint` tak, že změníte režim uzamčení:
+Následující příklad aktualizuje přiřazení verze "1,1" definice podrobného plánu "My-detailed", která byla načtena `Get-AzBlueprint` se změnou režimu zámku:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -258,7 +258,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-Příklad výstupu pro vytváření přiřazení podrobného plánu vypadá takto:
+Ukázkový výstup pro vytvoření přiřazení podrobného plánu vypadá takto:
 
 ```output
 Name              : my-blueprint-assignment
@@ -274,9 +274,9 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>Odebrat přiřazení podrobného plánu
 
-Až nastane čas pro přiřazení podrobného plánu, která se má odebrat, `Remove-AzBlueprintAssignment` rutina zpracovává tuto akci. Rutina přebírá buď **název** nebo **InputObject** k určení podrobný plán přiřazení k odebrání. **SubscriptionId** je _požadované_ a ve všech případech musí být zadaná.
+Když je čas na odebrání přiřazení podrobného plánu, `Remove-AzBlueprintAssignment` rutina tuto akci zpracuje. Rutina přebírá buď **název** , nebo **položky InputObject** , který určuje, které přiřazení podrobného plánu se má odebrat. **SubscriptionId** je _povinné_ a musí být zadáno ve všech případech.
 
-Následující příklad načte existující přiřazení podrobného plánu se `Get-AzBlueprintAssignment` a odstraní ji z konkrétní předplatné, které jsou reprezentovány jako `{subId}`:
+Následující příklad načte existující přiřazení podrobného plánu s `Get-AzBlueprintAssignment` a pak ho odebere z konkrétního předplatného, které je reprezentované jako: `{subId}`
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -288,9 +288,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Příklad kódu začátku do konce
+## <a name="end-to-end-code-example"></a>Příklad kódu na konci
 
-Spojuje všechny kroky v následujícím příkladu získá definice podrobného plánu, pak vytvoří, aktualizuje a odebere přiřazení podrobného plánu v konkrétní předplatné, které jsou reprezentovány jako `{subId}`:
+Když propojíte všechny kroky společně, následující příklad získá definici podrobného plánu a pak vytvoří, aktualizuje a odebere přiřazení podrobného plánu v rámci konkrétního `{subId}`předplatného reprezentovaného jako:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -330,9 +330,9 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 #endregion
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [životním cyklu podrobného plánu](../concepts/lifecycle.md)
+- Přečtěte si informace o [životním cyklu](../concepts/lifecycle.md)podrobného plánu.
 - Principy použití [statických a dynamických parametrů](../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../concepts/resource-locking.md)

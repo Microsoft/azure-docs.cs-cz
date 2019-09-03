@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873335"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231124"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Import leteckých a počasí dat do sparkových datových rámců
 
-Teď k importu povětrnostních a leteckých dat do Spark dataframes používáme funkci Spark [()](http://spark.apache.org/docs/latest/api/R/read.df.html) pro import počasí. Tato funkce, podobně jako mnoho dalších metod Spark, je spouštěna laxně vytvářená, což znamená, že jsou zařazeny do fronty pro provedení, ale nebudou vykonány, dokud není vyžadováno.
+Teď k importu povětrnostních a leteckých dat do Spark dataframes používáme funkci Spark [()](https://spark.apache.org/docs/latest/api/R/read.df.html) pro import počasí. Tato funkce, podobně jako mnoho dalších metod Spark, je spouštěna laxně vytvářená, což znamená, že jsou zařazeny do fronty pro provedení, ale nebudou vykonány, dokud není vyžadováno.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Připojení k povětrnostním a leteckým datům
 
-Nyní používáme funkci Spark [Join ()](http://spark.apache.org/docs/latest/api/R/join.html) k provedení levého vnějšího spojení se leteckou a povětrnostním objemem dat odchodu AirportID a DateTime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat i v případě, že neexistují žádná data, která by odpovídala počasí. Po připojení odebereme některé nadbytečné sloupce a přejmenujeme zachované sloupce, aby se odebrala příchozí předpona dataframe, kterou služba JOIN zavedla.
+Nyní používáme funkci Spark [Join ()](https://spark.apache.org/docs/latest/api/R/join.html) k provedení levého vnějšího spojení se leteckou a povětrnostním objemem dat odchodu AirportID a DateTime. Vnější spojení nám umožňuje uchovávat všechny záznamy leteckých dat i v případě, že neexistují žádná data, která by odpovídala počasí. Po připojení odebereme některé nadbytečné sloupce a přejmenujeme zachované sloupce, aby se odebrala příchozí předpona dataframe, kterou služba JOIN zavedla.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
