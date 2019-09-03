@@ -117,7 +117,7 @@ Pravidlo směrování protokolu HTTP se skládá z následujících vlastností:
 * `name`– odkaz na pravidlo, které může být libovolný řetězec podle vašeho výběru 
 * `port`– port, na kterém se má naslouchat příchozím žádostem 
 * `hosts`– pole zásad, které se vztahují na požadavky přicházející do různých hostitelů na výše uvedeném portu. Hostitelé jsou sada aplikací a služeb, které mohou být spuštěny v síti a mohou obsluhovat příchozí požadavky, tj. webovou aplikaci. Zásady hostitele jsou interpretovány v pořadí, takže byste měli vytvořit následující v sestupných úrovních specifičnosti.
-    * `name`– název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu můžete vytvořit pravidla směrování pro všechny hostitele.
+    * `name`– název DNS hostitele, pro který jsou zadána následující pravidla směrování. Pomocí tohoto postupu "*" můžete vytvořit pravidla směrování pro všechny hostitele.
     * `routes`– pole zásad pro tohoto konkrétního hostitele
         * `match`– specifikace příchozí struktury požadavků pro toto pravidlo, které se má použít, na základě`path`
             * `path`-obsahuje `value` (příchozí identifikátor URI `rewrite` ) (jak chcete přesměrovat požadavek) a `type` (může aktuálně být jenom "prefix").
