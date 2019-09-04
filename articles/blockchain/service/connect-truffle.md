@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6768c1e26435ace60b26adb46c9955d080029828
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 822402f548fe0fc866051a9c77adef6e37c3fa75
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705155"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240896"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>Rychlý start: Použití Truffle pro připojení k síti služby Azure blockchain
+# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Rychlý start: Použití Truffle pro připojení k uzlu transakce
 
-Truffle je blockchain vývojové prostředí, které můžete použít pro připojení k uzlu služby Azure blockchain.
+Truffle je blockchain vývojové prostředí, které můžete použít pro připojení k uzlu transakce služby Azure blockchain.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

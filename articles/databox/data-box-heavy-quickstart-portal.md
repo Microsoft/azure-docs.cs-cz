@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 433c3ac08d8d7d8158d4cc958979782e3b3192e1
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164417"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241380"
 ---
 ::: zone target = "docs"
 
@@ -128,7 +129,7 @@ Použijte postup, který se použije pro první uzel ke kabelovému a konfigurac
  
 1. Zkopírujte data do uzlů zařízení souběžně pomocí obou datových rozhraní 40-GB.
 
-    - Pokud používáte hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB [](https://technet.microsoft.com/library/ee851678.aspx), jako je například Robocopy.
+    - Pokud používáte hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je například [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
     - Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`.
 2. Připojte se ke sdíleným složkám na zařízení pomocí cesty`\\<IP address of your device>\ShareName`:. Přihlašovací údaje pro přístup ke sdílené složce získáte tak, že přejdete na stránku **připojit & kopírování** v místním webovém uživatelském rozhraní data box Heavy.
 3. Ujistěte se, že názvy sdílených složek a složek a data následují podle pokynů popsaných v [omezeních služby Azure Storage a data box Heavy](data-box-heavy-limits.md).

@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 21e784320bc2b0785cdd28354947c0df6c35daf4
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.localizationpriority: high
+ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207987"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241371"
 ---
 ::: zone target="docs"
 
@@ -72,7 +73,7 @@ Než začnete:
 Než začnete, ujistěte se, že máte následující:
 
 1. Dokončili [jste kurz: Pořadí Azure Data Box](data-box-deploy-ordered.md).
-2. Obdrželi jste Data Box se doručí stav objednávky na portálu. 
+2. Obdrželi jste Data Box se **doručí**stav objednávky na portálu. 
 3. Byly zkontrolovány [pokyny pro bezpečnost data box](data-box-safety.md).
 4. Přijala se jedna pozemní napájecí šňůra, která se má použít s úložným zařízením s 100 TB.
 5. Přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box. Hostitelský počítač musí splňovat tyto požadavky:

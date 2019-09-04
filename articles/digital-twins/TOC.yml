@@ -73,32 +73,6 @@
   items:
     - name: Klientská knihovna uživatelem definovaných funkcí
       href: reference-user-defined-functions-client-library.md
-- name: Související
-  items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-accelerators
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: 'Ukázky Azure Digital Twins pro C# (.NET)'

@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: 'Azure Cosmos DB je plně spravovaná databázová služba s globální distribucí na klíč a transparentní multimasterovou replikací. Využijte možnost spouštět na transakčních datech ve vašich databázích globálně distribuované provozní analýzy a AI s nízkou latencí. Naučte se používat Azure Cosmos DB prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
   aside:

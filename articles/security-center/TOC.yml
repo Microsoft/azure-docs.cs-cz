@@ -131,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Sestavy hrozeb
           href: security-center-threat-report.md
-        - name: Vlastní výstrahy
-          href: security-center-custom-alert.md
         - name: Skóre spolehlivosti výstrah
           href: security-center-confidence-score.md
-        - name: Analýza hrozeb a mapa výstrah zabezpečení
-          href: security-center-threat-intel.md
         - name: Šetření
           href: security-center-investigation.md
         - name: Správa uživatelských dat šetření
           href: security-center-investigation-user-data.md
         - name: Playbooky Logic Apps
           href: security-center-playbooks.md
-        - name: Search
-          href: security-center-search.md
         - name: Plánování a provoz
           href: security-center-planning-and-operations-guide.md
-        - name: Přizpůsobení konfigurací zabezpečení
-          href: security-center-customize-os-security-config.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API

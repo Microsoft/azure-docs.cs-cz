@@ -2,22 +2,22 @@
 title: Rychlý start Azure – Nastavení a načtení tajného klíče ze služby Key Vault pomocí PowerShellu | Microsoft Docs
 description: ''
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 8d6260d462b4c244dfb41630e06710a1ce8baf6c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 5753384d12d31016dff7a33175899835c8bd1fec
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726780"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259258"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Powershellu
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče z Azure Key Vault pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Typ `$PSVersionTable.PSVersion` k vyhledání verze. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz Azure PowerShell verze modulu 1.0.0 nebo novější. Pro `$PSVersionTable.PSVersion` nalezení verze zadejte. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzAccount` pro vytvoření připojení k Azure.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -57,8 +57,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 Výstup této rutiny zobrazuje vlastnosti nově vytvořeného trezoru klíčů. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru**: V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další rutiny Key Vault.
-* **Identifikátor URI trezoru**: V tomto příkladu, který je https://contosokeyvault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **Název trezoru**: V příkladu, který je **Contoso-Vault2**. Tento název budete používat pro další rutiny Key Vault.
+* **Identifikátor URI trezoru**: V tomto příkladu je https://contosokeyvault.vault.azure.net/ to. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 Po vytvoření trezoru bude jakékoli operace s tímto novým trezorem moct provádět pouze váš účet Azure.
 
@@ -66,7 +66,7 @@ Po vytvoření trezoru bude jakékoli operace s tímto novým trezorem moct prov
 
 ## <a name="adding-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, stačí provést několik kroků. V tomto případě přidáte heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a uloží hodnotu **hVFkk965BuUv** v ní.
+Pokud chcete do trezoru přidat tajný klíč, stačí provést několik kroků. V tomto případě přidáte heslo, které může používat aplikace. Heslo se nazývá **ExamplePassword** a ukládá do něj hodnotu **hVFkk965BuUv** .
 
 Nejprve převeďte hodnotu **hVFkk965BuUv** na zabezpečený řetězec zadáním:
 
@@ -74,7 +74,7 @@ Nejprve převeďte hodnotu **hVFkk965BuUv** na zabezpečený řetězec zadáním
 $secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
 ```
 
-Zadáním následujících příkazů Powershellu k vytvoření tajného klíče ve službě Key Vault volá **ExamplePassword** s hodnotou **hVFkk965BuUv** :
+Potom zadejte níže uvedené příkazy PowerShellu pro vytvoření tajného klíče v Key Vault s názvem **ExamplePassword** s hodnotou **hVFkk965BuUv** :
 
 ```azurepowershell-interactive
 $secret = Set-AzKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
@@ -92,7 +92,7 @@ Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetl
 
  Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
 
-Pokud už je nepotřebujete, můžete použít [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odebrání skupiny prostředků, služby Key Vault a všech souvisejících prostředků.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, Key Vault a všech souvisejících prostředků použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ContosoResourceGroup
@@ -100,9 +100,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili službu Key Vault a uložili do ní softwarový klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
+V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-Informace o čtení tajného klíče ze služby Key Vault z webové aplikace s využitím spravované identity pro prostředky Azure, pokračujte v následujícím kurzu
-
-> [!div class="nextstepaction"]
-> [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key vault](quick-create-net.md).
+- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
+- Přečtěte si referenční informace pro [rutiny Azure PowerShell Key Vault](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)

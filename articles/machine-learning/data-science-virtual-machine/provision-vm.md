@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ac4b9b4d32d05083ceabd41207243eb483648baa
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195298"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278602"
 ---
 # <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Rychlý start: Nastavení Data Science Virtual Machine Windows v Azure
 
@@ -24,7 +24,7 @@ Microsoft Windows Data Science Virtual Machine (DSVM) je image virtuálního po�
 
 DSVM jsou součástí těchto nástrojů:
 
-* Python SDK pro [službu Azure Machine Learning](../service/index.yml).
+* Python SDK pro [službu Azure Machine Learning](../index.yml).
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
 * Anaconda distribuci jazyka Python.
 * Poznámkový blok Jupyter s R, Python nebo PySpark jádrech.
@@ -185,7 +185,7 @@ Několik nástrojů pro Azure jsou nainstalované na virtuálním počítači:
 
 * Zástupce na ploše přejde na dokumentaci k sadě Azure SDK.
 * Pomocí AzCopy můžete kopírovat data z účtu služby Azure Storage a z něj. Pokud chcete zobrazit využití, zadejte **Azcopy** z příkazového řádku.
-* Pomocí Průzkumník služby Azure Storage můžete procházet objekty, které ukládáte v účtu úložiště Azure. Také kopíruje data do a z Azure Storage. Chcete-li získat přístup k tomuto nástroji, zadejte do vyhledávacího pole **Průzkumník služby Storage** . Nebo vyhledejte ji na Windows **Start** nabídky.
+* Pomocí Průzkumník služby Azure Storage můžete procházet objekty, které ukládáte v účtu úložiště Azure. Také kopíruje data do a z Azure Storage. Chcete-li získat přístup k tomuto nástroji, zadejte do **vyhledávacího** pole **Průzkumník služby Storage** . Nebo vyhledejte ji na Windows **Start** nabídky.
 * AdlCopy kopíruje data do Azure Data Lake. Pokud chcete zobrazit využití, zadejte **adlcopy** v příkazovém řádku.
 * Nástroj dtui kopíruje data do a z Azure Cosmos DB databáze NoSQL v cloudu. Zadejte **dtui** v příkazovém řádku.
 * Prostředí Integration runtime kopíruje data mezi místními zdroji dat a cloudem. Používá se v rámci nástroje, jako je Azure Data Factory.
@@ -228,7 +228,7 @@ Pomocí [Instalace webové platformy Microsoft](https://www.microsoft.com/web/do
 ## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
-* Přečtěte si o službě Azure Machine Learning, kterou si přečtete, [co je Azure Machine Learning služba?](../service/overview-what-is-azure-ml.md) a vyzkoušíte [rychlé starty a kurzy](../service/index.yml).
+* Přečtěte si o službě Azure Machine Learning, kterou si přečtete, [co je Azure Machine Learning služba?](../service/overview-what-is-azure-ml.md) a vyzkoušet si [kurzy](../index.yml).
 * V Průzkumníku souborů přejděte do složky C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts, kde najdete ukázky, které používají knihovnu RevoScaleR v jazyce R, která podporuje analýzu dat v podnikovém měřítku. 
 * Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).

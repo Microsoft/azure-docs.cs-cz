@@ -10,21 +10,21 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 791017fffe96455157388fb43e0c1d65faba8933
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071521"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241914"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
-[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Pokud vaše aplikace vyžaduje vyšší úroveň přístupu, než předkonfigurované prostředí umožňuje, můžete místo toho nasadit vlastní kontejner s Windows. Tento rychlý start ukazuje, jak nasadit aplikaci ASP.NET v imagi s Windows do [Centra Dockeru](https://hub.docker.com/) ze sady Visual Studio a spustit ji ve vlastním kontejneru v Azure App Service.
+[Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí systému Windows zamkne operační systém od přístupu pro správu, instalací softwaru, změn v globální mezipaměti sestavení atd. Další informace najdete v tématu [funkce operačního systému na Azure App Service](operating-system-functionality.md). Pokud vaše aplikace vyžaduje vyšší úroveň přístupu, než předkonfigurované prostředí umožňuje, můžete místo toho nasadit vlastní kontejner s Windows.
 
-![](media/app-service-web-get-started-windows-container/app-running-vs.png)
+V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Windows do [Docker Hub](https://hub.docker.com/) ze sady Visual Studio. Aplikaci spustíte ve vlastním kontejneru v Azure App Service.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,101 +33,98 @@ K provedení kroků v tomto kurzu je potřeba:
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalovat Visual Studio 2017</a> se sadami funkcí **Vývoj pro ASP.NET a web** a **Vývoj pro Azure**. Pokud už máte sadu Visual Studio 2017 nainstalovanou:
-    - Nainstalujte nejnovější aktualizace sady Visual Studio kliknutím na **Nápověda** > **Vyhledat aktualizace**.
-    - Kliknutím na **Nástroje** > **Získat nástroje a funkce** přidejte do sady Visual Studio tyto sady funkcí.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
+
+    - Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu** > vyhledat**aktualizace**.
+    - Přidejte úlohy do sady Visual Studio tak, že vyberete **nástroje** > **získat nástroje a funkce**.
 
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 
-Ve Visual Studiu vytvořte projekt tak, že vyberete **Soubor > Nový > Projekt**. 
+Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
-V dialogovém okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET (.NET Framework)** .
+1. Otevřete Visual Studio a pak vyberte **vytvořit nový projekt**.
 
-Aplikaci pojmenujte _myFirstAzureWebApp_ a pak vyberte **OK**.
-   
-![Dialogové okno Nový projekt](./media/app-service-web-get-started-windows-container/new-project.png)
+1. V možnosti **vytvořit nový projekt**vyhledejte a zvolte **Webová aplikace ASP.NET (.NET Framework)** pro C#a pak vyberte **Další**.
 
-Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. V tomto kurzu Rychlý start vyberte šablonu **MVC** a ujistěte se, že u ověřování je nastavena možnost **Bez ověření**.
+1. V části **Konfigurovat nový projekt**pojmenujte aplikaci _myFirstAzureWebApp_a pak vyberte **vytvořit**.
 
-Vyberte **Povolit podporu pro Docker Compose**.
+   ![Konfigurace projektu webové aplikace](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
-Vyberte **OK**.
+1. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET. Pro tento rychlý Start vyberte šablonu **MVC** .
 
-![Dialogové okno Nový projekt ASP.NET](./media/app-service-web-get-started-windows-container/select-mvc-template.png)
+1. Vyberte možnost **Podpora Docker**a ujistěte se, že je ověřování nastaveno na **bez ověřování**. Vyberte **Vytvořit**.
 
-Pokud se soubor _Dockerfile_ neotevře automaticky, otevřete ho z **Průzkumníka řešení**.
+   ![Vytvoření webové aplikace v ASP.NET](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
-Je nutné použít [podporovanou nadřazenou image](#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem a soubor uložíte:
+1. Pokud se soubor _Dockerfile_ neotevře automaticky, otevřete ho z **Průzkumníka řešení**.
 
-```Dockerfile
-FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
-```
+1. Potřebujete [podporovanou nadřazenou image](#use-a-different-parent-image). Nadřazenou image změníte tak, že řádek `FROM` nahradíte následujícím kódem a soubor uložíte:
 
-V nabídce vyberte **Ladit > Spustit bez ladění** a spusťte tak webovou aplikaci místně.
+   ```Dockerfile
+   FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
+   ```
 
-![Místní spuštění aplikace](./media/app-service-web-get-started-windows-container/local-web-app.png)
+1. V nabídce sady Visual Studio vyberte **ladit** > **Spustit bez ladění** , aby se webová aplikace spouštěla místně.
+
+   ![Místní spuštění aplikace](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>Publikování do Centra Dockeru
 
-V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberte možnost **Publikovat**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **MyFirstAzureWebApp** a vyberte **publikovat**.
 
-![Publikování z Průzkumníka řešení](./media/app-service-web-get-started-windows-container/solution-explorer-publish.png)
+1. Zvolte **App Service** a pak vyberte **publikovat**.
 
-Průvodce publikováním se spustí automaticky. Vyberte **Container Registry** > **Centrum Dockeru** > **Publikovat**.
+1. V nabídce vyberte **cíl publikování**vyberte **Container Registry** a **Docker Hub**a potom klikněte na **publikovat**.
 
-![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-windows-container/publish-to-docker.png)
+   ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-windows-container/publish-to-docker-vs2019.png)
 
-Zadejte přihlašovací údaje účtu Centra Dockeru a klikněte na **Uložit**. 
+1. Zadejte přihlašovací údaje účtu Docker Hub a vyberte **Uložit**.
 
-Počkejte, než se nasazení dokončí. Na stránce **Publikovat** se teď zobrazuje název úložiště, který použijete později v App Service.
+   Počkejte, než se nasazení dokončí. Na stránce **publikovat** se teď zobrazuje název úložiště, který se má použít později.
 
-![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-windows-container/published-docker-repository.png)
+   ![Publikování ze stránky přehledu projektu](./media/app-service-web-get-started-windows-container/published-docker-repository-vs2019.png)
 
-Zkopírujte si tento název úložiště pro pozdější použití.
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+1. Zkopírujte si tento název úložiště pro pozdější použití.
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
+1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
+
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
-2. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte **Web App for Containers**.
+1. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte **Web App for Containers**a vyberte **vytvořit**.
 
-3. Zadejte název aplikace, například *win-container-demo*, přijměte výchozí nastavení, aby se vytvořila nová skupina prostředků, a v poli **OS** klikněte na **Windows (Preview)** .
+1. V možnosti **vytvořit webovou aplikaci**vyberte předplatné a **skupinu prostředků**. V případě potřeby můžete vytvořit novou skupinu prostředků.
 
-    ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
+1. Zadejte název aplikace, jako je například *Win-Container-demo* a vyberte **Windows** pro **operační systém**. Vyberte **další: Docker** pro pokračování.
 
-4. Vytvořte plán služby App Service kliknutím na **Plán služby App Service / umístění** > **Vytvořit nový**. Zadejte název nového plánu, přijměte výchozí hodnoty a klikněte na **OK**.
+   ![Vytvoření Web App for Containers](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
-    ![](media/app-service-web-get-started-windows-container/portal-create-plan.png)
+1. Pro **zdroj obrázku**vyberte **Docker Hub** a pro **image a tag**zadejte název úložiště, který jste zkopírovali v části [publikovat do Docker Hub](#publish-to-docker-hub).
 
-5. Klikněte na **Konfigurovat kontejner**. V poli **Image a nepovinná značka** použijte název úložiště, který jste si zkopírovali v postupu [Publikování do Centra Dockeru](#publish-to-docker-hub), a klikněte na **OK**.
-
-    ![](media/app-service-web-get-started-windows-container/portal-configure-container-vs.png)
+   ![Nakonfigurujte Web App for Containers](media/app-service-web-get-started-windows-container/configure-web-app-continer.png)
 
     Pokud máte vlastní image pro svou webovou aplikaci někde jinde, například ve službě [Azure Container Registry](/azure/container-registry/) nebo v jakémkoli jiném soukromém úložišti, tady ji můžete nakonfigurovat.
 
-6. Klikněte na **Vytvořit** a počkejte, až Azure vytvoří požadované prostředky.
+1. Vyberte **zkontrolovat a vytvořit** a pak **vytvořte** a počkejte, než Azure vytvoří požadované prostředky.
 
 ## <a name="browse-to-the-container-app"></a>Přechod do aplikace typu kontejner
 
 Po dokončení operace Azure se zobrazí okno s oznámením.
 
-![](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Nasazení bylo úspěšné.](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Klikněte na **Přejít k prostředku**.
 
-2. Na stránce aplikace klikněte na odkaz v části **Adresa URL**.
+1. V přehledu tohoto prostředku použijte odkaz vedle **adresy URL**.
 
-Na nové stránce prohlížeče se otevře následující stránka:
+Otevře se nová stránka prohlížeče na následující stránce:
 
-![](media/app-service-web-get-started-windows-container/app-starting.png)
+![Spouští se aplikace pro Windows Container.](media/app-service-web-get-started-windows-container/app-starting.png)
 
 Počkejte několik minut a zkuste to znovu, dokud se nezobrazí úvodní stránka ASP.NET:
 
-![](media/app-service-web-get-started-windows-container/app-running-vs.png)
+![Spuštěná aplikace kontejneru Windows](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
 **Blahopřejeme!** Spustili jste svůj první vlastní kontejner s Windows ve službě Azure App Service.
 
@@ -150,24 +147,24 @@ Streamované protokoly vypadají přibližně takto:
 
 ## <a name="update-locally-and-redeploy"></a>Místní aktualizace a opětovné nasazení
 
-Z **Průzkumníku řešení** otevřete _Views\Home\Index.cshtml_.
+1. V aplikaci Visual Studio v **Průzkumník řešení**otevřete **zobrazení** > **Domů** > **index. cshtml**.
 
-Najděte HTML značku `<div class="jumbotron">` poblíž začátku a nahraďte celý element následujícím kódem:
+1. Najděte HTML značku `<div class="jumbotron">` poblíž začátku a nahraďte celý element následujícím kódem:
 
-```HTML
-<div class="jumbotron">
-    <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
-</div>
-```
+   ```HTML
+   <div class="jumbotron">
+       <h1>ASP.NET in Azure!</h1>
+       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+   </div>
+   ```
 
-Opětovné nasazení do služby Azure provedete tak, že v **Průzkumníku řešení** kliknete pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberete **Publikovat**.
+1. Pokud se chcete znovu nasadit do Azure, klikněte pravým tlačítkem na projekt **myFirstAzureWebApp** v **Průzkumník řešení** a vyberte **publikovat**.
 
-Na stránce Publikovat vyberte **Publikovat** a počkejte, než se publikování dokončí.
+1. Na stránce Publikovat vyberte **Publikovat** a počkejte, než se publikování dokončí.
 
-Restartujte aplikaci, aby služba App Service dostala informaci, že má z Centra Dockeru načíst novou image. Zpátky na portálu na stránce aplikace klikněte na **Restartovat** > **Ano**.
+1. Restartujte aplikaci, aby služba App Service dostala informaci, že má z Centra Dockeru načíst novou image. Zpátky na portálu na stránce aplikace klikněte na **Restartovat** > **Ano**.
 
-![Restartování webové aplikace v Azure](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
+   ![Restartování webové aplikace v Azure](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 
 Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po aktualizaci webové stránky by se aplikace měla napřed vrátit na stránku Spouštění a pak za pár minut by měla znovu zobrazit aktualizovanou webovou stránku.
 
@@ -175,7 +172,7 @@ Znovu [přejděte do aplikace typu kontejner](#browse-to-the-container-app). Po 
 
 ## <a name="use-a-different-parent-image"></a>Použití jiné nadřazené image
 
-Ke spuštění vaší aplikace můžete použít i jinou vlastní image Dockeru. Musíte však zvolit správnou [nadřazenou image](https://docs.docker.com/develop/develop-images/baseimages/) pro požadovanou architekturu: 
+Pro spuštění vaší aplikace můžete použít jinou vlastní image Docker. Musíte však zvolit správnou [nadřazenou image](https://docs.docker.com/develop/develop-images/baseimages/) pro požadovanou architekturu:
 
 - K nasazení aplikací .NET Framework použijte nadřazenou bitovou kopii na základě verze Windows Server Core 2019 [(LTSC) (dlouhodobá údržba kanálu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
 - Pokud chcete nasadit aplikace .NET Core, použijte nadřazenou bitovou kopii založenou na vydání Windows Server nano 1809 [(konzola pro správu)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
@@ -183,7 +180,7 @@ Ke spuštění vaší aplikace můžete použít i jinou vlastní image Dockeru.
 Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas spuštění však můžete zkrátit použitím některé z následujících nadřazených imagí, které jsou již uložené v mezipaměti ve službě Azure App Service:
 
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – Toto je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) imagí Microsoft Windows nano serveru.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – tento obrázek je základní kontejner používaný v Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) imagí Microsoft Windows nano serveru.
 
 ## <a name="next-steps"></a>Další postup
 

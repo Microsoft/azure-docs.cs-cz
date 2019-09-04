@@ -7,12 +7,12 @@ ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 54a4da8e6d2720086b86c3573623f9dac2469ea4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f5c2b58fc6877bc196eb98faab88712f474523cb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232919"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241331"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rychlý start: Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -27,8 +27,6 @@ Seznamte se s principy vytváření a přiřazování podrobných plánů, abyst
 > - Odebrání podrobného plánu přiřazeného k předplatnému
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started-with-rest-api"></a>Začínáme s REST API
 
@@ -72,7 +70,7 @@ Každý identifikátor URI v REST API používá proměnné, které je potřeba 
 - Proměnnou `{subscriptionId}` nahraďte ID předplatného.
 
 > [!NOTE]
-> Plány lze také vytvořit na úrovni předplatného. Příklad najdete v tématu vytvoření podrobného plánu [v](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)předplatném.
+> Plány lze také vytvořit na úrovni předplatného. Příklad najdete v tématu vytvoření podrobného plánu [v předplatném](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Vytvořte počáteční objekt _blueprint_. **Text požadavku** obsahuje vlastnosti podrobného plánu, vytvářené skupiny prostředků a všechny parametry na úrovni podrobného plánu. Tyto parametry se nastaví při přiřazení a používají je artefakty přidané v dalších krocích.
 
@@ -438,7 +436,7 @@ K odebrání samotného podrobného plánu použijte následující operaci REST
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o [životním cyklu](./concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](./concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](./concepts/resource-locking.md)

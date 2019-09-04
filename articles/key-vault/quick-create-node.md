@@ -3,18 +3,18 @@ title: Rychlý Start – Nastavení a načtení tajného klíče z Azure Key Vau
 description: V tomto rychlém startu nastavíte a načtete tajný klíč z Azure Key Vault pomocí webové aplikace Node.
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934461"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259233"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče z Azure Key Vault pomocí webové aplikace Node 
 
@@ -69,7 +69,7 @@ V dalším kroku vytvoříte Trezor klíčů pomocí skupiny prostředků, ktero
 
 * Název trezoru klíčů
 * Název skupiny prostředků. Název musí být řetězec 3-24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a spojovník (-).
-* Umístění: **Východní USA**.
+* Oblasti **Východní USA**.
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -194,7 +194,11 @@ git push azure master
 
 Po přechodu na `https://<app_name>.azurewebsites.net`adresu vidíte tajnou hodnotu. Ujistěte se, že jste nahradili `<YourKeyVaultName>` název názvem vašeho trezoru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Azure SDK pro Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+V tomto rychlém startu jste vytvořili Key Vault a uložili do něj tajný klíč. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+
+- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
+- Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .
+- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)

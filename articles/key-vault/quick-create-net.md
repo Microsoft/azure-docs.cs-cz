@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 01d1183d82d4d3a0f9d423a2dd64876fb4e3d6a4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c4f80c977ea56da14d90d4c0d1784bc379d3a5e9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147558"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259272"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Rychlý start: Klientská knihovna Azure Key Vault pro .NET
 
@@ -81,7 +81,7 @@ dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
-V tomto rychlém startu se používá předem vytvořený Trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v rychlém startu [Azure CLI](quick-create-cli.md), [Azure PowerShell rychlý Start](quick-create-powershell.md)nebo v rychlém startu [Azure Portal](quick-create-portal.md). Případně můžete jednoduše spustit příkazy rozhraní příkazového řádku Azure CLI.
+V tomto rychlém startu se používá předem vytvořený Trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [Azure PowerShell rychlý Start](quick-create-powershell.md)nebo v [rychlém startu Azure Portal](quick-create-portal.md). Případně můžete jednoduše spustit příkazy rozhraní příkazového řádku Azure CLI.
 
 > [!Important]
 > Každý Key Vault musí mít jedinečný název. Následující příklad vytvoří Key Vault s názvem *myKV*, ale je nutné, abyste si pojmenovali něco jiného a použili tento název v rámci tohoto rychlého startu.
@@ -210,5 +210,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit [celou konzolovou aplikaci v GitHubu](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)
-- [Další informace o Key Vault](key-vault-whatis.md)
+V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Podívejte se na [celou konzolovou aplikaci v GitHubu](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
+
+Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
+
+- Implementace [ověřování služby-služba pro Azure Key Vault pomocí .NET](service-to-service-authentication.md)
+- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
+- Další informace najdete v [příručce pro vývojáře Azure Key Vault](key-vault-developers-guide.md) .
+- Další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)

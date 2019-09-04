@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/22/2019
+ms.date: 09/03/2019
 ms.author: jgao
-ms.openlocfilehash: b27caa3d91d67ad63bfbf5e7c549d690980cdd7b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 13ac8b9f6d82cc8b0060f87237ef3140cb245379
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934443"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259204"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rychlý start: Nastavení a načtení tajného klíče z Azure Key Vault pomocí šablony Správce prostředků
 
@@ -66,7 +66,7 @@ K dokončení tohoto článku potřebujete:
     * **ID uživatele AD**: Zadejte ID vašeho uživatelského objektu Azure AD, které jste získali z [požadovaných součástí](#prerequisites).
     * **Název tajného**kódu: zadejte název tajného klíče, který ukládáte do trezoru klíčů.  Například **AdminPassword**.
     * **Hodnota tajného klíče**: zadejte tajnou hodnotu.  Pokud ukládáte heslo, doporučuje se použít vygenerované heslo, které jste vytvořili v části požadavky.
-    * **Souhlasím s výše uvedenými podmínkami a ujednáními**: Vybrat
+    * **Souhlasím s výše uvedenými podmínkami a ujednáními**: Vybrali.
 3. Vyberte **Koupit**.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
@@ -101,7 +101,9 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Další postup
 
-* [Domovská stránka služby Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
-* [Dokumentace ke službě Azure Key Vault](index.yml)
-* [Azure SDK pro Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
-* [Reference k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/keyvault/)
+V tomto rychlém startu jste vytvořili Trezor klíčů a tajný klíč pomocí šablony Azure Resource Manageru a nasazování jste ověřili. Další informace o Key Vault a Azure Resource Manager najdete dál v článcích níže.
+
+- Přečtěte si [přehled Azure Key Vault](key-vault-overview.md)
+- Další informace o [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+- Získat další informace o [klíčích, tajných klíčích a certifikátech](about-keys-secrets-and-certificates.md)
+- Kontrola [Azure Key Vault osvědčených postupů](key-vault-best-practices.md)
