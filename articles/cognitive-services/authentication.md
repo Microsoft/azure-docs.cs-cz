@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467518"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276781"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
 
@@ -66,7 +66,7 @@ Následující video demonstruje použití Cognitive Servicesho klíče.
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Ověřování pomocí klíče předplatného s více službami
 
 >[!WARNING]
-> V tuto chvíli **tyto služby** nepodporují klíče s více službami: QnA Maker, hlasové služby a Custom Vision.
+> V tuto chvíli tyto služby nepodporují klíče s **více službami:** QnA Maker, služba Speech Services, Custom Vision a detektor anomálií.
 
 Tato možnost také používá k ověření požadavků klíč předplatného. Hlavní rozdíl spočívá v tom, že klíč předplatného není vázaný na konkrétní službu, ale jeden klíč lze použít k ověření požadavků na více Cognitive Services. Informace o místní dostupnosti, podporovaných funkcích a cenách najdete v tématu [Cognitive Services ceny](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 

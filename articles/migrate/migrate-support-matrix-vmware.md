@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018131"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279601"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
@@ -35,8 +35,7 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 **Podpora** | **Podrobnosti**
 --- | ---
 **Oprávnění Azure** | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
-**Omezení VMware**  | Vyhodnoťte až 35 000 virtuálních počítačů VMware v jednom projektu. V předplatném Azure můžete vytvořit více projektů.
-**Omezení projektu** | Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
+**Omezení VMware**  | Vyhodnoťte až 35 000 virtuálních počítačů VMware v jednom projektu. V předplatném Azure můžete vytvořit více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
 **Zeměpisné oblasti** | Azure Migrate projekt můžete vytvořit v řadě geografických oblastí. I když v těchto geografických oblastech můžete vytvářet pouze projekty, můžete vyhodnocovat nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
@@ -70,14 +69,15 @@ Pro posouzení potřebujete účet jen pro čtení vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Posouzení – požadavky na zařízení
 
-Zařízení Azure Migrate pro VMware je nasazeno pomocí šablony vajíček importované do vCenter Server.
+Azure Migrate spouští odlehčené zařízení pro zjišťování virtuálních počítačů VMware a posílání metadat a dat o výkonu virtuálních počítačů do Azure Migrate. Zařízení pro VMware je nasazeno pomocí šablony vajíček importované do vCenter Server. Následující tabulka shrnuje požadavky na zařízení.
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**vCenter Server** | K přidělení virtuálního počítače 32 GB RAM, 8 vCPU a externímu virtuálnímu přepínači potřebujete dostatek prostředků na vCenter Server.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.
-**ESXi** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.
-**Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu.
-**vCenter Server** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
+**Nasazení zařízení** | Zařízení nasadíte jako virtuální počítač VMware. K přidělení virtuálního počítače 32 GB RAM, 8 vCPU a externímu virtuálnímu přepínači potřebujete dostatek prostředků na vCenter Server.<br/><br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/> Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější. 
+**Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 virtuálních počítačů.
+**Rozpoznávání** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
+**Skupina posouzení** | Do jedné skupiny můžete přidat až 35 000 počítačů.
+**Posouzení** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 
 ## <a name="assessment-url-access-requirements"></a>Posouzení – požadavky na přístup k adresám URL
@@ -107,6 +107,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 Zařízení | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Odchozí připojení na portu 443, 5671 a 5672 pro odeslání metadat zjišťování a výkonu pro Azure Migrate.
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
 
+## <a name="migration---limitations"></a>Migrace – omezení
+Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud chcete migrovat více počítačů, proveďte replikaci do skupin po 10. Pro migraci bez agentů VMware můžete současně spustit až 100 replikace.
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Migrace bez agentů – požadavky na server VMware
 
@@ -334,7 +336,7 @@ Všechny místní virtuální počítače replikované do Azure musí splňovat 
 
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Ověřte podporované operační systémy pro [virtuální počítače VMware pomocí replikace](#agentless-migration-vmware-vm-requirements)bez agentů a pro [virtuální počítače VMware pomocí replikace založené na agentech](#agent-based-migration-vmware-vm-requirements).<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Hostovaný operační systém | Ověřte podporované operační systémy pro [virtuální počítače VMware pomocí replikace bez agentů](#agentless-migration-vmware-vm-requirements)a pro [virtuální počítače VMware pomocí replikace založené na agentech](#agent-based-migration-vmware-vm-requirements).<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
@@ -349,6 +351,6 @@ Připojit po migraci – Windows | Připojení k virtuálním počítačům Azur
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Připravte se na](tutorial-prepare-vmware.md) vyhodnocení a migraci VMware.

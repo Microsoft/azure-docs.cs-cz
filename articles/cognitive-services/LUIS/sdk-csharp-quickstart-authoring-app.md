@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: d186d0477fd05f4948bd0280ee9ce677ad1b7542
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207305"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258770"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro .NET
 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro .
 * Přidání funkcí, jako je seznam frází
 * Výuka a publikování aplikace
 
-[Ukázky knihovny dokumentace dokumentace ke](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [ C# ](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs) zdrojovému balíčku pro vytváření[zdrojových kódů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)  | 
+[Ukázky knihovny dokumentace dokumentace ke](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | zdrojovému balíčku pro vytváření[zdrojových kódů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [ C# ](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)  | 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,9 +37,9 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro .
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Získání vlastního klíče pro vytváření Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
 
-Získejte svůj [klíč pro vytváření obsahu](luis-how-to-account-settings.md)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `COGNITIVESERVICE_AUTHORING_KEY`.
+Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `COGNITIVESERVICE_AUTHORING_KEY`.
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace
 
@@ -140,7 +140,7 @@ V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru ne
     [!code-csharp[Create a LUIS app](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateApplication)]
 
 ## <a name="create-intent-for-the-app"></a>Vytvořit záměr pro aplikaci
-Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením záměrů uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní zamýšlenou odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.   
+Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením _záměrů_uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní _zamýšlenou_ odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.   
 
 Vytvořte [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modelcreateobject?view=azure-dotnet) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a ModelCreateObject do metody [model. AddIntentAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addintentasync?view=azure-dotnet) . Odpověď je ID záměru.
 
@@ -198,7 +198,7 @@ dotnet run
 
 Pokud chcete vyčistit, můžete aplikaci LUIS odstranit. Odstranění aplikace se provádí pomocí metody [Apps. DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet) . Aplikaci můžete také odstranit z [portálu Luis](https://www.luis.ai). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 >[Použití sady .NET SDK k dotazování koncového bodu předpovědi](sdk-csharp-quickstart-query-prediction-endpoint.md)

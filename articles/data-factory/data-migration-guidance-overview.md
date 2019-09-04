@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 6b13eab0824307ef42f25d52a293f0f22818c1aa
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 937a076b3e0e3c5170779d3449776f0aa1cf5b49
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210033"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259006"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure 
 
@@ -57,7 +57,8 @@ Pokud chcete dokončit migraci dat během dvou týdnů (migrační okno), může
 > Výhodou přístupu k online migraci je, že můžete dosáhnout historických dat a přírůstkových informačních kanálů, které končí jedním nástrojem.  Díky tomu mohou být data synchronizována mezi existujícím a novým úložištěm během celého okna migrace, abyste mohli znovu sestavit logiku ETL v novém úložišti s aktualizovanými daty. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Migrace dat z AWS S3 do Azure](data-migration-guidance-s3-azure-storage.md)
 - [Migrace dat z místního clusteru Hadoop do Azure](data-migration-guidance-hdfs-azure-storage.md)
+- [Migrace dat z místního serveru Netezza do Azure](data-migration-guidance-netezza-azure-sqldw.md)

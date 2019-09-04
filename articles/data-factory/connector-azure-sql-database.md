@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a8ab2039cde11876d853b411ca09a51e96e2ca0a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c9192a6d6b8cf122092963f2352af8bb6e5a6c21
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233040"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275926"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -30,7 +30,7 @@ Tento článek popisuje, jak kopírovat data do a z Azure SQL Database. Další 
 
 Tento konektor Azure SQL Database se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s podporovanou tabulkou [matice zdroje/jímky](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou tabulkou matice zdroje/jímky](copy-activity-overview.md)
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
@@ -42,7 +42,7 @@ Konkrétně tento konektor Azure SQL Database podporuje tyto funkce:
 - Jako jímky, připojení dat do cílové tabulky nebo vyvolání uložené procedury s vlastní logikou během kopírování.
 
 >[!NOTE]
->Tento konektor teď nepodporuje Azure SQL Database [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a SQL Server ovladač ODBC prostřednictvím prostředí Integration runtime v místním prostředí. Postupujte [](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current) podle pokynů ke stažení ovladače ODBC a konfigurací připojovacích řetězců.
+>Tento konektor teď nepodporuje Azure SQL Database [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a SQL Server ovladač ODBC prostřednictvím prostředí Integration runtime v místním prostředí. Postupujte [podle pokynů ke](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current) stažení ovladače ODBC a konfigurací připojovacích řetězců.
 
 > [!IMPORTANT]
 > Pokud kopírujete data pomocí prostředí Azure Data Factory Integration runtime, nakonfigurujte [bránu azure SQL Server Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby mohli služby Azure přistupovat k serveru.
@@ -140,7 +140,7 @@ Chcete-li použít ověřování pomocí tokenu aplikace služby Azure AD založ
 
 2. Pokud jste to ještě neudělali, [zřiďte správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) pro Azure SQL Server na Azure Portal. Správce Azure AD musí být uživatel služby Azure AD nebo skupina Azure AD, ale nemůže se jednat o instanční objekt. Tento krok provedete tak, že v dalším kroku můžete pomocí identity Azure AD vytvořit uživatele databáze s omezením pro instanční objekt.
 
-3. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro instanční objekt. Připojte se k databázi z nebo na kterou chcete kopírovat data pomocí nástrojů, jako je SQL Server Management Studio, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL: 
+3. [Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) pro instanční objekt. Připojte se k databázi z nebo na kterou chcete kopírovat data pomocí nástrojů, jako je SQL Server Management Studio, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL: 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
@@ -190,7 +190,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 
 1. Pokud jste to ještě neudělali, [zřiďte správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) pro Azure SQL Server na Azure Portal. Správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud skupině udělíte roli správce spravovanou identitou, přeskočte kroky 3 a 4. Správce má úplný přístup k databázi.
 
-2. [Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) s omezením pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo na kterou chcete kopírovat data pomocí nástrojů, jako je SQL Server Management Studio, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL: 
+2. [Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) pro Azure Data Factory spravovanou identitu. Připojte se k databázi z nebo na kterou chcete kopírovat data pomocí nástrojů, jako je SQL Server Management Studio, s identitou Azure AD, která má alespoň změnu oprávnění uživatele. Spusťte následující příkaz T-SQL: 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -234,7 +234,9 @@ Chcete-li kopírovat data z nebo do Azure SQL Database, jsou podporovány násle
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** datové sady musí být nastavená na **AzureSqlTable**. | Ano |
-| tableName | Název tabulky nebo zobrazení v instanci Azure SQL Database, na kterou odkazuje propojená služba. | Ne pro zdroj, Ano pro jímku |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a. `table` | Ne pro zdroj, Ano pro jímku |
 
 #### <a name="dataset-properties-example"></a>Příklad vlastnosti datové sady
 
@@ -250,7 +252,8 @@ Chcete-li kopírovat data z nebo do Azure SQL Database, jsou podporovány násle
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -473,7 +476,7 @@ Připojení dat je výchozím chováním tohoto konektoru Azure SQL Database jí
 
 **Možnost 1:** Pokud máte ke kopírování velké množství dat, použijte následující postup k Upsert: 
 
-- Nejdřív použijte dočasnou [tabulku s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) k hromadnému načtení všech záznamů pomocí aktivity kopírování. Vzhledem k tomu, že operace s dočasnými tabulkami s rozsahem databáze nejsou protokolovány, můžete načíst miliony záznamů během několika sekund.
+- Nejdřív použijte [dočasnou tabulku s rozsahem databáze](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) k hromadnému načtení všech záznamů pomocí aktivity kopírování. Vzhledem k tomu, že operace s dočasnými tabulkami s rozsahem databáze nejsou protokolovány, můžete načíst miliony záznamů během několika sekund.
 - Spuštěním aktivity uložené procedury v Azure Data Factory použijte příkaz [Merge](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) nebo INSERT/Update. Použijte dočasnou tabulku jako zdroj k provedení všech aktualizací nebo vložení jako jedné transakce. Tímto způsobem se sníží počet operací Round Trip a log. Na konci aktivity uložená procedura můžete dočasnou tabulku zkrátit, aby byla připravená na další Upsert cyklus.
 
 Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury**. Předchozí kopie dat ze zdrojového úložiště do Azure SQL Database dočasné tabulky, například **# #UpsertTempTable**, jako název tabulky v datové sadě. Potom druhá potom vyvolá uloženou proceduru ke sloučení zdrojových dat z dočasné tabulky do cílové tabulky a vyčištění dočasné tabulky.
@@ -521,7 +524,7 @@ Když kopírujete data do Azure SQL Database, můžete také nakonfigurovat a vy
 
 Uloženou proceduru můžete použít, pokud předdefinované mechanismy kopírování neslouží k tomuto účelu. Příkladem je, že chcete použít dodatečné zpracování před konečným vložením zdrojových dat do cílové tabulky. Některé další příklady zpracování jsou, když chcete sloučit sloupce, vyhledat další hodnoty a vložit je do více než jedné tabulky.
 
-Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v Azure SQL Database. Předpokládejme, že vstupní data a marketingová tabulka jímky mají tři sloupce: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
+Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v Azure SQL Database. Předpokládejme, že vstupní data a **marketingová** tabulka jímky mají tři sloupce: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
 
 1. V databázi Definujte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky je stejné jako schéma vrácené vašimi vstupními daty.
 

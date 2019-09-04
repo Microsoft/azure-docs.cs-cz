@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015641"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259388"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Použití Azure CLI s Azure Storage
 
@@ -25,15 +25,15 @@ V této příručce se dozvíte, jak pomocí rozhraní příkazového [řádku A
 
 V příkladech v průvodci se předpokládá použití prostředí bash v Ubuntu, ale další platformy by se měly provádět podobně. 
 
-[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
-
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 V tomto průvodci se předpokládá, že rozumíte základním konceptům Azure Storage. Také předpokládá, že budete schopní splnit požadavky na vytvoření účtu, které jsou uvedené níže pro Azure a službu úložiště.
 
 ### <a name="accounts"></a>Účty
-* **Účet Azure**: Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* **Účet Azure:** Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 * **Účet úložiště**: Přečtěte si téma [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v tématu [informace o účtech úložiště Azure](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
@@ -236,7 +236,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 > Všechny příklady v následujících částech tohoto článku předpokládají, že jste nastavili `AZURE_STORAGE_ACCOUNT` proměnné prostředí a. `AZURE_STORAGE_KEY`
 
 ## <a name="create-and-manage-blobs"></a>Vytváření a správa objektů BLOB
-Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. V této části se předpokládá, že už jste obeznámeni s koncepty služby Azure Blob Storage. Podrobné informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí](../blobs/storage-dotnet-how-to-use-blobs.md) konceptů .NET a [služby BLOB Service](/rest/api/storageservices/blob-service-concepts).
+Azure Blob Storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým se dá dostat odkudkoli na světě přes HTTP nebo HTTPS. V této části se předpokládá, že už jste obeznámeni s koncepty služby Azure Blob Storage. Podrobné informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí](../blobs/storage-dotnet-how-to-use-blobs.md) [konceptů .NET a služby BLOB Service](/rest/api/storageservices/blob-service-concepts).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 Každý objekt BLOB ve službě Azure Storage musí být v kontejneru. Kontejner můžete vytvořit pomocí `az storage container create` příkazu:
@@ -341,7 +341,7 @@ az storage blob update
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Vytváření a Správa sdílených složek
-Služba soubory Azure nabízí sdílené úložiště pro aplikace, které používají protokol SMB (Server Message Block). Microsoft Azure virtuálních počítačů a cloudových služeb i v místních aplikacích může sdílet souborová data prostřednictvím připojených sdílených složek. Pomocí Azure CLI můžete spravovat sdílené složky a data souborů. Další informace o službě soubory Azure najdete v tématu Seznámení [se soubory Azure](../files/storage-files-introduction.md).
+Služba soubory Azure nabízí sdílené úložiště pro aplikace, které používají protokol SMB (Server Message Block). Microsoft Azure virtuálních počítačů a cloudových služeb i v místních aplikacích může sdílet souborová data prostřednictvím připojených sdílených složek. Pomocí Azure CLI můžete spravovat sdílené složky a data souborů. Další informace o službě soubory Azure najdete v tématu [Seznámení se soubory Azure](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Vytvoření sdílené složky
 Sdílená složka Azure je sdílená složka SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka může ukládat neomezený počet souborů až do omezení kapacity účtu úložiště. Následující příklad vytvoří sdílenou složku s názvem **myshare**.

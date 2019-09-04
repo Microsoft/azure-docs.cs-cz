@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598013"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274424"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalace balíčků z v rámci poznámkového bloku
 
@@ -40,13 +40,13 @@ Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak 
 
 ## <a name="r"></a>R
 
-Balíčky jazyka r můžete nainstalovat pomocí CRAN nebo GitHub pomocí `install.packages` funkce do buňky kódu:
+Balíčky v R můžete nainstalovat z Cran nebo GitHubu pomocí `install.packages` funkce v buňce kódu:
 
 ```r
 install.packages("package_name")
 ```
 
-Můžete také nainstalovat předprodejních verzí a další balíčky pro vývoj z Githubu pomocí devtools knihovny:
+Předprodejní verze a další vývojové balíčky můžete také nainstalovat z GitHubu pomocí knihovny devtools:
 
 ```r
 options(unzip = 'internal')
@@ -66,12 +66,22 @@ Nainstalujte balíčky:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+Pak načtěte generátor paket:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+Otevřete knihovnou:
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>Další postup
 
 - [Postup: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postup: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)
+- [Postupy: Prezentace prezentace](present-jupyter-notebooks-slideshow.md)

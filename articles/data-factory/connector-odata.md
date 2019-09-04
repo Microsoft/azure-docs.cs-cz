@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a31f0618f7e9dc8fdb0e9b2988d3d3c32fefcf64
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966476"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277675"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí Azure Data Factory
 
@@ -212,6 +212,7 @@ Chcete-li kopírovat data z OData, nastavte vlastnost **Type** datové sady na *
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -232,11 +233,11 @@ V této části najdete seznam vlastností, které podporuje zdroj OData.
 
 ### <a name="odata-as-source"></a>OData as source
 
-Chcete-li kopírovat data z OData, nastavte typ **zdroje** v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z OData, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **RelationalSource**. | Ano |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **ODataSource**. | Ano |
 | query | Možnosti dotazu OData pro filtrování dat Příklad: `"$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:** Konektor OData kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad**
@@ -260,7 +261,7 @@ Chcete-li kopírovat data z OData, nastavte typ **zdroje** v aktivitě kopírov�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "ODataSource",
                 "query": "$select=Name,Description&$top=5"
             },
             "sink": {
@@ -270,6 +271,8 @@ Chcete-li kopírovat data z OData, nastavte typ **zdroje** v aktivitě kopírov�
     }
 ]
 ```
+
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
 ## <a name="data-type-mapping-for-odata"></a>Mapování datového typu pro OData
 
@@ -283,20 +286,20 @@ Při kopírování dat z OData se používají následující mapování mezi da
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| EDM. Single | Single |
+| Edm.Single | Single |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | String |
-| EDM. time | TimeSpan |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
 > Komplexní datové typy OData (například **Object**) se nepodporují.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat, která aktivitu kopírování, která podporuje jako zdroje a jímky ve službě Azure Data Factory najdete v tématu [podporovaných úložišť dat a formáty](copy-activity-overview.md##supported-data-stores-and-formats).

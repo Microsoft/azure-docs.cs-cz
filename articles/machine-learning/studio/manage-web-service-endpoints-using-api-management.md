@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138565"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279266"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
@@ -301,7 +301,7 @@ Tento průvodce ukazuje funkční příklad v Pythonu. Budete muset změnit **pr
     except urllib2.HTTPError, error:
         printHttpError(error)
         return
-    with open(output_file, "w+") as f:
+    with open(output_file, "wb+") as f:
         f.write(response.read())
     print(resultsLabel + " have been written to the file " + output_file)
     return

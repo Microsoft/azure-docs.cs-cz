@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142217"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279507"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Nejčastější dotazy
 
@@ -27,7 +27,7 @@ Podívejte se na [seznam pro VMware](https://docs.microsoft.com/azure/migrate/mi
 
 Azure Migrate poskytuje centralizované centrum pro zahájení migrace, spouštění a sledování zjišťování a hodnocení počítačů a zatížení a provádění a sledování migrace počítačů a úloh do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) je řešení zotavení po havárii. Migrace Azure Migrate serveru používá Azure Site Recovery na back-endu k povolení migračních scénářů migrace místních počítačů pomocí přebírání a posunutí.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Zařízení Azure Migrate (VMware/fyzické servery)
+## <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Jak se zařízení Azure Migrate připojuje k Azure?
 
@@ -87,6 +87,9 @@ U technologie Hyper-V používá zjišťování přihlašovací údaje hostitele
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Kolik virtuálních počítačů je možné zjistit pomocí jediného zařízení migrace?
 
 Můžete zjistit až 10 000 virtuálních počítačů VMware a až 5 000 virtuálních počítačů Hyper-V s jedním zařízením migrace. Pokud máte ve svém místním prostředí více počítačů, Naučte se škálovat [technologie Hyper-V](scale-hyper-v-assessment.md) a odhad [VMware](scale-vmware-assessment.md) .
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Můžu z projektu odstranit zařízení Azure Migrate?
+V současné době odstranění zařízení z projektu se nepodporuje. Jediným způsobem, jak zařízení odstranit, je odstranit skupinu prostředků, která má Azure Migrate projekt, přidružená k zařízení, ale zároveň odstraní další registrovaná zařízení, zjištěný inventář, posouzení a všechny další artefakty Azure. přidruženo k projektu ve skupině prostředků.
 
 ## <a name="azure-migrate-server-assessment"></a>Vyhodnocování serveru Azure Migrate
 
@@ -186,7 +189,7 @@ Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazen
 Zobrazí seznam [operačních systémů Windows a Linux, které Azure monitor pro virtuální počítače podporuje](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Je možné vizualizovat závislosti v Azure Migrate po dobu delší než hodinu?
-Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k dotazování na [data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+Ne. Závislosti můžete vizualizovat až o hodinu. Můžete se vrátit k určitému datu v historii, pokud je to v měsíci zpátky, ale maximální doba trvání vizualizace je hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v rámci jednoho hodiny okna. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
 
 ### <a name="can-i-use-dependency-visualization-for-groups-that-contain-more-than-10-vms"></a>Můžu použít vizualizaci závislostí pro skupiny, které obsahují více než 10 virtuálních počítačů?
 Můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , které obsahují až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.

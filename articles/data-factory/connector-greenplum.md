@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 50b3b04170f3544017446613a46d4c2ed6537d95
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f0aa1fdb1377b44aee1689e5fdd0372e7cc1d943
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966531"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275062"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Kopírování dat z Greenplum pomocí Azure Data Factory
 
@@ -108,7 +108,9 @@ Ke zkopírování dat z Greenplum, nastavte vlastnost typ datové sady na **Gree
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **GreenplumTable** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
+| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -117,11 +119,12 @@ Ke zkopírování dat z Greenplum, nastavte vlastnost typ datové sady na **Gree
     "name": "GreenplumDataset",
     "properties": {
         "type": "GreenplumTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Greenplum linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

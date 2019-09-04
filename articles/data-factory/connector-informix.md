@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 66ae9fa1ff4038a77ecc0b7046434d4d606f5015
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4c9d4e84be59ab50174350c20e505f34919d5041
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842566"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276309"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložišť dat IBM Informix pomocí Azure Data Factory
 
@@ -83,7 +83,7 @@ Pro propojenou službu Informix jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou Informix.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou Informix.
 
 Chcete-li kopírovat data z Informix, jsou podporovány následující vlastnosti:
 

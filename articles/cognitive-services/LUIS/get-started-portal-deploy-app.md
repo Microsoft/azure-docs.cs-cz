@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564080"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257075"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý start: Nasazení aplikace na portálu LUIS
 
@@ -59,11 +59,11 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
 
-1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **klíče a koncové body**.
+1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **prostředky Azure**.
 
-1. Chcete-li přidat LUIS, vyberte **přiřadit prostředek +** .
+1. Chcete-li přidat LUIS, vyberte **Přidat prostředek předpovědi**.
 
-   [![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřazení prostředků**.
 
@@ -87,7 +87,7 @@ Jakmile budete připraveni na jeho testování, prohlaste si aplikaci. Publikujt
 
 1. Vyberte adresu URL koncového bodu přidruženou k vašemu novému názvu prostředku. Tato akce otevře webový prohlížeč se správnou vytvořenou adresou URL, která vytvoří `GET` požadavek na modul runtime koncového bodu předpovědi.
 
-1. Na konci adresy URL je krátká pro dotaz a je místo, kde se utterance uživatele připojí k žádosti Get.  `q=` Po zadání zadejte stejný utterance uživatele ,kterýjstepoužilinakoncipředchozíhorychléhostartu:`q=`
+1. Na konci adresy URL je krátká pro dotaz a je místo, kde se utterance uživatele připojí k žádosti Get. `q=` Po zadání zadejte stejný utterance uživatele ,kterýjstepoužilinakoncipředchozíhorychléhostartu:`q=`
 
     ```Is there a form named hrf-234098```
 

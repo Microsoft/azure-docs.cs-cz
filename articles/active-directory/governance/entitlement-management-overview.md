@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032547"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241695"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je správa nároků Azure AD? (Preview)
 
@@ -84,7 +84,7 @@ Můžete také řídit přístup k dalším prostředkům, které spoléhají na
 
 ## <a name="what-are-access-packages-and-policies"></a>Co jsou balíčky a zásady přístupu?
 
-Správa nároků zavádí koncept *balíčku pro přístup*. Balíček pro přístup je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Prostředky zahrnují přístup ke skupinám, aplikacím nebo webům. Přístupové balíčky slouží k řízení přístupu k vašim interním zaměstnancům a také uživatelům mimo vaši organizaci. Balíčky přístupu jsou definované v kontejnerechnazývaných katalogy.
+Správa nároků zavádí koncept *balíčku pro přístup*. Balíček pro přístup je sada všech prostředků, které uživatel potřebuje k práci na projektu nebo k provedení jejich práce. Prostředky zahrnují přístup ke skupinám, aplikacím nebo webům. Přístupové balíčky slouží k řízení přístupu k vašim interním zaměstnancům a také uživatelům mimo vaši organizaci. Balíčky přístupu jsou definované v kontejnerech nazývaných *katalogy*.
 
 Balíčky pro přístup také obsahují jednu nebo více *zásad*. Zásady definují pravidla nebo guardrails pro přístup k balíčku přístupu. Povolení zásad vynutilo, že přístup k správným prostředkům a ke správnému času získá jenom oprávnění uživatelé.
 
@@ -140,7 +140,19 @@ Abyste lépe pochopili správu nároků a dokumentaci, měli byste si projít n�
 
 Specializované cloudy, například Azure Government, Azure Německo a Azure Čína 21Vianet, nejsou v tuto chvíli k dispozici pro použití v této verzi Preview.
 
-## <a name="next-steps"></a>Další kroky
+### <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
+
+Pokud máte aktivní členské uživatele, musí mít váš tenant aspoň tolik licencí Azure AD Premium P2. Mezi aktivní členské uživatele v řízení nároků patří:
+
+- Uživatel, který iniciuje nebo schválí požadavek na balíček pro přístup
+- Uživatel, kterému byl přiřazen balíček přístupu. 
+- Uživatel, který spravuje přístupové balíčky.
+
+V rámci licencí pro členské uživatele můžete také uživatelům dovolit, aby mohli pracovat s řízením nároků na řadu uživatelů typu Host. Informace o tom, jak vypočítat počet uživatelů typu Host, které můžete zahrnout, najdete v tématu [Azure Active Directory doprovodné materiály k licencování B2B pro spolupráci](../b2b/licensing-guidance.md).
+
+Informace o tom, jak přiřadit licence uživatelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Vytvoření prvního přístupového balíčku](entitlement-management-access-package-first.md)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

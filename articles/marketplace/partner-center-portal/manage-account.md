@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207971"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259178"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru 
 
@@ -43,7 +43,7 @@ Pokud jste to ještě neudělali, měli byste vy (nebo správce vaší organizac
 
 ### <a name="open-developer-settings"></a>Otevřít nastavení vývojáře
 
-Nastavení účtu se nachází v pravém horním rohu řídicího [panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v partnerském centru. Vyberte ikonu ozubeného kolečka (blízko pravého horního rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**. 
+Nastavení účtu se nachází v pravém horním rohu [řídicího panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace) v partnerském centru. Vyberte ikonu ozubeného kolečka (blízko pravého horního rohu řídicího panelu) a pak vyberte **Nastavení vývojáře**. 
 
 ![Nabídka nastavení účtu v partnerském centru](./media/dashboard-developer-settings.png)
 
@@ -78,7 +78,7 @@ Pokud plánujete pouze výpis bezplatných nabídek, nemusíte nastavovat účet
 Účet pro výběr je bankovní účet, na který se z prodeje posílají výnosy. Tento bankovní účet musí být ve stejné zemi, ve které jste zaregistrovali účet partnerského centra.
 
 Pokud chcete nastavit svůj účet pro výběr, musíte **přidružit svůj účet Microsoft**:
-1. V **Nastavení účtu**v části **finanční podrobnosti** vyberte přidružit **svůj účet Microsoft**. 
+1. V **Nastavení účtu**v části **finanční podrobnosti** vyberte **přidružit svůj účet Microsoft**. 
 2. Po zobrazení výzvy se přihlaste pomocí účtu Microsoft (MSA). Tento účet už nemůže být přidružený k jinému účtu partnerského centra. 
 3. Pokud chcete dokončit nastavení svého účtu druhu, odhlaste se úplně od partnerského centra a pak se znovu přihlaste pomocí účtu Microsoft (místo pracovního účtu). 
 
@@ -91,7 +91,7 @@ Teď, když je účet Microsoft spojený, přidáte účet typu výběr, budete 
 
 #### <a name="tax-profile"></a>Daňový profil
 
-Zkontrolujte aktuální stav daňového profilu a zobrazí se správné **informace o** **typu entity** a daňovém certifikátu. Vyberte **Upravit** , pokud chcete aktualizovat nebo dokončit všechny požadované formuláře.
+Zkontrolujte aktuální stav daňového profilu a zobrazí se správné informace o **typu entity** a **daňovém certifikátu** . Vyberte **Upravit** , pokud chcete aktualizovat nebo dokončit všechny požadované formuláře.
 
 Aby bylo možné stanovit svůj daňový stav, musíte určit svou zemi bydliště a občanství a dokončit příslušné daňové formuláře spojené s vaší zemí nebo oblastí.
 
@@ -115,9 +115,9 @@ Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Ty
 
 Společnost Microsoft standardně odesílá platby měsíčně. Máte ale možnost zablokovat vaše výběry, což zabrání odeslání plateb vašemu účtu. Pokud se rozhodnete, že se vaše výběry zablokují, budeme nahrávat všechny výnosy, které získáte, a poskytnout podrobné údaje v **souhrnu**výběru. Do vašeho účtu ale nepošleme žádné platby, dokud ho neodeberete. 
 
-Pokud chcete své platby zablokovat, přečtěte si **Nastavení účtu**. V části **finanční informace**v části **stav blokování výběr** přepněte posuvník na zapnuto. Stav blokování můžete kdykoli změnit, ale mějte na paměti, že vaše rozhodnutí bude mít vliv na další měsíční výběr. Pokud například chcete pozastavit výběr **z** dubna, ujistěte se, že jste na konci března nastavili stav blokování vstupu na zapnuto.
+Pokud chcete své platby zablokovat, přečtěte si **Nastavení účtu**. V části **finanční informace**v části **stav blokování výběr** přepněte posuvník na **zapnuto**. Stav blokování můžete kdykoli změnit, ale mějte na paměti, že vaše rozhodnutí bude mít vliv na další měsíční výběr. Pokud například chcete pozastavit výběr z dubna, ujistěte se, že jste na konci března nastavili stav blokování vstupu na **zapnuto** .
 
-Jakmile nastavíte stav blokování výběr na zapnuto, budou všechny výběry podrženy, dokud nepřepnete posuvník zpět na **vypnuto**. Když to uděláte, budete zahrnuti během měsíčního cyklu výběrů (za předpokladu, že byly splněny příslušné prahové hodnoty plateb). Například pokud máte vaše výběry podrženy, ale chcete mít vygenerovaný výběr v červnu, nezapomeňte přepnout stav typu blokování na **vypnuto** před koncem květen.
+Jakmile nastavíte stav blokování výběr na **zapnuto**, budou všechny výběry podrženy, dokud nepřepnete posuvník zpět na **vypnuto**. Když to uděláte, budete zahrnuti během měsíčního cyklu výběrů (za předpokladu, že byly splněny příslušné prahové hodnoty plateb). Například pokud máte vaše výběry podrženy, ale chcete mít vygenerovaný výběr v červnu, nezapomeňte přepnout stav typu blokování na **vypnuto** před koncem květen.
 
 > [!NOTE]
 > Výběr **stavu blokování** výběru se vztahuje na **všechny** zdroje příjmů placené prostřednictvím partnerského centra Microsoftu, včetně Azure Marketplace, AppSource, Microsoft Store, reklamy atd.). Pro každý zdroj výnosů nemůžete vybrat jiné stavy blokování.
@@ -312,7 +312,7 @@ Uživatelům vaší společnosti můžete přiřadit následující role a oprá
   - Může zobrazit některé sestavy vydavatelů.
 
 > [!NOTE]
-> Globální správce, obchodní přispěvatel, finanční přispěvatel a role trhu se nepoužívají v programu komerčního tržiště a nemají žádná přidružená oprávnění.
+> V případě programu komerčního obchodu se nepoužívají globální správce, obchodní přispěvatel, finanční přispěvatel a role na trhu. Přiřazení těchto rolí uživatelům se nijak neprojeví. Oprávnění uživatelům přidělují jenom role správce a vývojář.
 
 Další informace o správě rolí a oprávnění v dalších oblastech partnerského centra, jako je Azure Active Directory (AD), zprostředkovatel Cloud Solution Provider (CSP), ovládací panel dodavatel (CPV), uživatelé typu Host nebo Microsoft Partner Network (MPN), najdete v tématu [přiřazení rolí uživatelů. a oprávnění v partnerském centru](https://docs.microsoft.com/partner-center/permissions-overview).
 
@@ -327,7 +327,7 @@ Můžete nastavit více tenantů pro použití s partnerským centrem. Každý u
 
 K přidružení jiného tenanta Azure AD k vašemu účtu partnerského centra:
 
-1.  Na stránce **klienti** (v části **Nastavení účtu**) vyberte přidružit **jiného tenanta Azure AD**.
+1.  Na stránce **klienti** (v části **Nastavení účtu**) vyberte **přidružit jiného tenanta Azure AD**.
 2. Zadejte svoje přihlašovací údaje Azure AD pro tenanta, kterého chcete přidružit.
 3. Zkontrolujte název organizace a domény pro vašeho tenanta Azure AD. Přidružení dokončíte výběrem **Potvrdit**.
 

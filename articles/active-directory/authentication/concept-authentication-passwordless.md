@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae8f6854241240249cb3b7494872cbbd8fd41e6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823765"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240872"
 ---
-# <a name="what-is-passwordless"></a>Co není heslo?
+# <a name="what-is-passwordless"></a>Co je přístup bez hesla?
 
 Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé získají frustrovaní s dodatečnou vrstvou a zapamatují si jejich hesla. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co jste vy nebo něco věděli.
 
@@ -26,7 +26,7 @@ Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši org
 | --- | --- | --- |
 | Bez hesla | Telefonní nebo bezpečnostní klíč | Biometrika nebo PIN |
 
-Každá organizace má při ověřování jiné požadavky. Microsoft v současnosti nabízí Windows Hello, naše pro počítače s Windows. Přidáváme aplikaci Microsoft Authenticator a bezpečnostní klíče FIDO2 k rodině, která nepoužívá hesla.
+Každá organizace má při ověřování jiné požadavky. Microsoft v současné době nabízí Windows Hello pro naše počítače s Windows. Přidáváme aplikaci Microsoft Authenticator a bezpečnostní klíče FIDO2 k rodině, která nepoužívá hesla.
 
 ## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
 
@@ -78,7 +78,7 @@ Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které 
    - Microsoft Authenticator aplikace: Bude fungovat v situacích, kdy se používá ověřování Azure AD, včetně všech prohlížečů, během instalace systému Windows 10 (OOBE) a s integrovanými mobilními aplikacemi v jakémkoli operačním systému.
    - Klíče zabezpečení: Bude fungovat na zamykací obrazovce pro Windows 10 verze 1809 nebo vyšší a na webu v podporovaných prohlížečích, jako je Microsoft Edge.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Povolení možností passwordlesss klíče zabezpečení FIDO2 ve vaší organizaci](howto-authentication-passwordless-security-key.md)
 

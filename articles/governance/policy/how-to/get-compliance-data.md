@@ -7,12 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232719"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239148"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -26,9 +26,7 @@ Přístup k informacím o dodržování předpisů, generovaných zásady a při
 Před zobrazením metody k vytvoření sestavy dodržování předpisů, Podívejme se na při aktualizaci informací o dodržování předpisů a četnost a události, které aktivují cyklu hodnocení.
 
 > [!WARNING]
-> Pokud je stav dodržování předpisů hlášen jakoneregistrované, ověřte, zda je poskytovatel prostředků **Microsoft. PolicyInsights** zaregistrován a zda má uživatel příslušná oprávnění řízení přístupu na základě role (RBAC), jak je popsáno v části [RBAC v. Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+> Pokud je stav dodržování předpisů hlášen jako **neregistrované**, ověřte, zda je poskytovatel prostředků **Microsoft. PolicyInsights** zaregistrován a zda má uživatel příslušná oprávnění řízení přístupu na základě role (RBAC), jak je popsáno v části [RBAC v. Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Vyhodnocení aktivační události
 
@@ -111,8 +109,8 @@ V tomto příkladu potřebujete dávejte pozor na bezpečnostní rizika. Teď, k
 Kromě **kompatibilní** a **nekompatibilní**, zásady a prostředky mají tři stavy ostatních:
 
 - **Konfliktní**: Existují dvě nebo více zásad s konfliktními pravidly. Například dvě zásady připojení stejnou značku s různými hodnotami.
-- Nespuštěno: Cyklus vyhodnocení se pro zásady nebo prostředek nespustil.
-- Neregistrováno: Poskytovatel prostředků Azure Policy nebyl zaregistrován nebo přihlášený účet nemá oprávnění ke čtení dat dodržování předpisů.
+- **Nespuštěno**: Cyklus vyhodnocení se pro zásady nebo prostředek nespustil.
+- **Neregistrováno**: Poskytovatel prostředků Azure Policy nebyl zaregistrován nebo přihlášený účet nemá oprávnění ke čtení dat dodržování předpisů.
 
 Azure Policy používá pole **typ** a **název** v definici k určení, jestli se jedná o shodu prostředku. Když odpovídá na prostředek, je považován za příslušné a je ve stavu buď **kompatibilní** nebo **nekompatibilní**. Pokud **typ** nebo **název** je jediná vlastnost v definici, pak všechny prostředky jsou považovány za použitelné a jsou vyhodnocovány.
 
@@ -144,7 +142,7 @@ Klikněte pravým tlačítkem na řadu událostí, které chcete shromažďovat 
 
 <a name="change-history-preview"></a>
 
-Pokud je zjištěno, že prostředky nejsou **kompatibilní**, existuje mnoho možných důvodů. Informace o tom, proč prostředek nedodržuje **předpisy** nebo najít odpovědné změny, najdete v tématu [určení nedodržení předpisů](./determine-non-compliance.md).
+Pokud je zjištěno, že prostředky nejsou **kompatibilní**, existuje mnoho možných důvodů. Informace o tom, proč prostředek **nedodržuje předpisy** nebo najít odpovědné změny, najdete v tématu [určení nedodržení předpisů](./determine-non-compliance.md).
 
 ## <a name="command-line"></a>Příkazový řádek
 
@@ -415,12 +413,12 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z Activity log Analyticsho [řešení](../../../azure-monitor/platform/activity-log-collect.md) svázaného s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu `AzureActivity` pomocí jednoduchých dotazů Kusto a stolní. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log-collect.md) svázaného s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu `AzureActivity` pomocí jednoduchých dotazů Kusto a stolní. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 
 ![Azure Policy dodržování předpisů pomocí protokolů Azure Monitor](../media/getting-compliance-data/compliance-loganalytics.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).

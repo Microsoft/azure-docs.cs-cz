@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668721"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242415"
 ---
 # <a name="feature-evaluation"></a>Vyhodnocení funkcí
 
@@ -32,9 +32,9 @@ Důležitější funkce mají v modelu silnější váhy. Vzhledem k tomu, že t
 
 ## <a name="getting-feature-importance-evaluation"></a>Získávání hodnocení důležitosti funkce
 
-Chcete-li zobrazit výsledky důležitosti funkcí, je nutné spustit vyhodnocení. Výsledné informace o funkci důležitost představují aktuální model online přizpůsobování. Vyhodnocení analyzuje důležitost funkcí modelu uloženého v konečném datu zkušebního období. 
+Chcete-li zobrazit výsledky důležitosti funkcí, je nutné spustit vyhodnocení. Vyhodnocení vytváří uživatelsky čitelné popisky funkcí na základě názvů funkcí zjištěných během zkušebního období.
 
-Vyhodnocení vytváří uživatelsky čitelné popisky funkcí na základě názvů funkcí zjištěných během zkušebního období.
+Výsledné informace o funkci důležitost představují aktuální model online přizpůsobování. Vyhodnocení analyzuje důležitost funkcí modelu uloženého v konečném datu zkušebního období, a to po absolvování všech školení provedených během hodnocení s aktuálními zásadami online učení. 
 
 Výsledky důležitosti funkcí neodpovídají jiným zásadám a modelům testovaným nebo vytvořeným během hodnocení.  Vyhodnocení nebude zahrnovat funkce odeslané do přizpůsobení po konci zkušebního období.
 
@@ -79,7 +79,7 @@ K běžným chybám při odesílání funkcí patří následující:
 * U velkého počtu uživatelů je pravděpodobné, že interakce jednotlivých uživatelů bude mít za to více než všechny interakce, takže odeslání ID uživatele (i v případě, že Nepii) bude pravděpodobně do modelu přidávat větší šum než hodnota.
 * Posílání polí data a času jako přesná časová razítka místo hodnot natrénuje Time. Funkce, jako je například Context. TimeStamp. Day = pondělí nebo "Context. TimeStamp. hour" = "13", jsou užitečnější. Pro každý z nich bude k dispozici maximálně 7 nebo 24 hodnot funkcí. Ale "Context. TimeStamp": "1985-04-12T23:20:50.52 Z" je tak přesným způsobem, že se z něj nebudete moct učit, protože k tomu nikdy nedojde.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o [škálovatelnosti a výkonu](concepts-scalability-performance.md) pomocí přizpůsobení
 

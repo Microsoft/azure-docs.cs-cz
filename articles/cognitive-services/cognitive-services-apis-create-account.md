@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697914"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274577"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
-V tomto rychlém startu můžete začít s Azure Cognitive Services pomocí Azure Portal. Cognitive Services jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) Azure, které vytvoříte ve svém předplatném Azure. Po vytvoření prostředku použijte k ověření vašich aplikací klíče a koncový bod, který jste vygenerovali. 
+Pomocí tohoto rychlého startu vytvoříte prostředek Azure Cognitive Services pomocí Azure Portal. Po úspěšném vytvoření prostředku Cognitive Services obdržíte koncový bod a klíč, který můžete použít k ověření svých aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Platné předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
+* Platné předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
@@ -34,35 +34,68 @@ Před vytvořením prostředku Cognitive Services musíte mít skupinu prostřed
 
     ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
-2. Dostupné Cognitive Services můžete najít následujícími způsoby:
-    * Použijte panel hledání a zadejte název služby, ke které se chcete přihlásit.
-        * Prostředek s více službami vytvoříte tak, že na panelu hledání zadáte **Cognitive Services** a vyberete prostředek **Cognitive Services** .
+2. Jak bylo vysvětleno dříve, můžete vytvořit prostředek Cognitive Services dvěma způsoby – pomocí prostředku s více službami nebo prostředku s jednou službou.
 
-        ![Hledat Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Prostředek s více službami](#tab/multiservice)
 
-    * Pokud chcete zobrazit všechny dostupné služby pro rozpoznávání, vyberte v části **Azure Marketplace** **AI a Machine Learning**. Pokud nevidíte službu, kterou vás zajímá, klikněte na **Zobrazit vše** a posuňte se na **Cognitive Services**. Kliknutím na **Další** zobrazíte celý katalog rozhraní API služeb Cognitive Services.
+    Prostředek s více službami vytvoříte tak, že na panelu hledání zadáte **Cognitive Services** .
+
+    ![Hledat Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+
+    Na stránce Cognitive Services vyberte **vytvořit**.
+
+    ![Vytvořit účet Cognitive Services](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Prostředek s jednou službou](#tab/singleservice)
+
+    Pokud chcete zobrazit všechny dostupné služby pro rozpoznávání, vyberte v části **Azure Marketplace** **AI a Machine Learning**. Pokud nevidíte službu, kterou vás zajímá, klikněte na **Zobrazit vše** a posuňte se na **Cognitive Services**. Kliknutím na **Zobrazit další** zobrazíte celý katalog Cognitive Services.
+
+    Jakmile budete u služby, které vás zajímá, klikněte na **vytvořit**.
     
-        ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
+    ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
+    ***
 3. Na stránce **vytvořit** zadejte následující informace:
 
-    > [!IMPORTANT]
-    > Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services.
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Prostředek s více službami](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *MyCognitiveServicesAccount*. |
+    | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *MyCognitiveServicesResource*. |
     | **Předplatné** | Vyberte jedno z dostupných předplatných Azure. |
-    | **Location** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. |
+    | **Location** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
     | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
-    | **Skupina prostředků** | [Skupina prostředků Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , která bude obsahovat váš prostředek Cognitive Services. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
+    | **Skupina prostředků** | Skupina prostředků Azure, která bude obsahovat váš prostředek Cognitive Services. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
+
+    ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+
+    Klikněte na možnost **Vytvořit**.
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Prostředek s jednou službou](#tab/singleservice)
+
+    |    |    |
+    |--|--|
+    | **Název** | Popisný název prostředku služby pro rozpoznávání. Například *TextAnalyticsResource*. |
+    | **Předplatné** | Vyberte jedno z dostupných předplatných Azure. |
+    | **Location** | Umístění instance služby vyvnímání. Různá umístění můžou způsobit latenci, ale nemají žádný vliv na dostupnost vašeho prostředku za běhu. Zapamatujte si umístění Azure, jak ho budete možná potřebovat při volání Azure Cognitive Services. |
+    | **Cenová úroveň** | Náklady na účet Cognitive Services závisí na možnostech, které zvolíte, a na vašem využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
+    | **Skupina prostředků** | Skupina prostředků Azure, která bude obsahovat váš prostředek Cognitive Services. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
 
     ![Obrazovka pro vytvoření prostředku](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
+    Klikněte na možnost **Vytvořit**.
+
+    ***
 
 ## <a name="get-the-keys-for-your-resource"></a>Získat klíče pro svůj prostředek
 
-Po vytvoření prostředku můžete k němu získat přístup z řídicího panelu Azure, pokud jste ho připnuli. V opačném případě ji můžete najít ve **skupinách prostředků**. Po výběru prostředku můžete klíče získat výběrem **klíče** v části **Správa prostředků**.
+Po úspěšném vytvoření prostředku se v pravém horním rohu obrazovky zobrazí automaticky otevírané oznámení. V oznámení klikněte na **Přejít k prostředku** a zobrazí se prostředek služby pro rozpoznávání, který jste vytvořili. 
+
+![Přejít na prostředek služby rozpoznávání](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+
+V otevřeném podokně pro rychlé zprovoznění máte přístup ke svému koncovému bodu a klíči.
+
+![Získat klíč a koncový bod](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
@@ -71,7 +104,7 @@ Po vytvoření prostředku můžete k němu získat přístup z řídicího pane
 Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z počtu transakcí, které odešlete pomocí ověřovacích informací. Každá cenová úroveň určuje:
 * maximální počet povolených transakcí za sekundu (TPS).
 * funkce služby povolené v rámci cenové úrovně.
-* Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v podrobnostech o [cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
+* Náklady na předdefinovaný počet transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

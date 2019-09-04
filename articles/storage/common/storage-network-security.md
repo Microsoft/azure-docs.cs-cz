@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981142"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241745"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
-Azure Storage poskytuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit vaše účty úložiště s konkrétní sadou podporované sítí. Když jsou nakonfigurovaná pravidla sítě, pouze aplikace vyžadující data z více než zadaných sítí můžou k účtu úložiště.
+Azure Storage poskytuje vrstvený model zabezpečení. Tento model vám umožní zabezpečit účty úložiště na určitou podmnožinu sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k účtu úložiště můžete omezit na požadavky pocházející ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí ve virtuálních sítích Azure.
 
-Aplikace, který přistupuje k účtu úložiště, když pravidla sítě jsou aktivní, vyžaduje řádné autorizace v požadavku. Autorizace se podporuje s přihlašovacími údaji služby Azure Active Directory (Azure AD) pro objekty BLOB a front, s platným klíčem pro přístup k účtu nebo s tokenem SAS.
+Aplikace, která přistupuje k účtu úložiště v případě, že jsou platná síťová pravidla, vyžaduje správnou autorizaci žádosti. Autorizace se podporuje s přihlašovacími údaji služby Azure Active Directory (Azure AD) pro objekty BLOB a front, s platným klíčem pro přístup k účtu nebo s tokenem SAS.
 
 > [!IMPORTANT]
-> Ve výchozím nastavení, zapnutí pravidla brány firewall pro váš účet úložiště blokuje příchozí požadavky na data, není-li, požadavky pocházejí z služba, která je zpracovávána v rámci služby Azure Virtual Network (VNet). Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.
+> Zapnutím pravidel brány firewall pro váš účet úložiště se ve výchozím nastavení zablokuje příchozí požadavky na data, pokud žádosti pocházejí ze služby, která se nepoužívá v rámci Azure Virtual Network (VNet). Požadavky, které jsou blokovány mezi patří zařízení se od ostatních služeb Azure z webu Azure portal, protokolování a metrik služby a tak dále.
 >
-> Můžete udělit přístup ke službám Azure, které pracují z v rámci virtuální sítě tím, že podsíť bude instance služby. Povolit omezený počet scénářů prostřednictvím [výjimky](#exceptions) mechanismus je popsáno v následující části. Pro přístup k webu Azure portal, musíte být na počítači v rámci důvěryhodné hranice (IP nebo virtuální síť), které jste nastavili.
+> Přístup ke službám Azure, které provozují v rámci virtuální sítě, můžete udělit povolením provozu z podsítě hostující instanci služby. Pomocí mechanismu [výjimek](#exceptions) popsaných v následující části můžete také povolit omezený počet scénářů. Pokud chcete získat přístup k datům z účtu úložiště prostřednictvím Azure Portal, musíte být na počítači v rámci důvěryhodné hranice (buď IP nebo VNet), kterou jste nastavili.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scénáře
 
-Ve výchozím nastavení konfigurace účtů úložiště k odepření přístupu k provozu ze všech sítí (včetně přenosů z Internetu). Pak udělují přístup na provoz z konkrétní virtuálních sítí. Tato konfigurace umožňuje vytvořit zabezpečené ohraničení sítě pro vaše aplikace. Můžete také udělit přístup k veřejnému Internetu rozsahy IP adres, povolení připojení z konkrétní Internetu nebo místních klientů.
+Chcete-li zabezpečit svůj účet úložiště, je třeba nejprve nakonfigurovat pravidlo pro odepření přístupu k provozu ze všech sítí (včetně internetového provozu) ve výchozím nastavení. Pak byste měli nakonfigurovat pravidla, která udělí přístup k provozu z konkrétních virtuální sítě. Tato konfigurace umožňuje vytvořit zabezpečené ohraničení sítě pro vaše aplikace. Můžete taky nakonfigurovat pravidla pro udělení přístupu k provozu z výběru rozsahů veřejných IP adres, které umožňují připojení z určitých internetových nebo místních klientů.
 
-Na všech síťových protokolů do úložiště Azure, včetně REST a protokolu SMB se vynucují pravidla sítě. Pro přístup k datům pomocí nástrojů, jako je Azure portal, Průzkumníka služby Storage a AZCopy, se vyžadují explicitní pravidla.
+Na všech síťových protokolů do úložiště Azure, včetně REST a protokolu SMB se vynucují pravidla sítě. Chcete-li získat přístup k datům pomocí nástrojů, jako jsou Azure Portal, Průzkumník služby Storage a AZCopy, musí být nakonfigurována explicitní Síťová pravidla.
 
 Pravidla sítě můžete použít pro existující účty úložiště nebo vytvořit nové účty úložiště.
 
@@ -50,7 +50,7 @@ Nespravované disky v účtech úložiště můžete použít s pravidly sítě 
 Účty úložiště ve výchozím nastavení, přijímat připojení z klientů v síti. Chcete-li omezit přístup k vybrané sítě, musíte nejdřív změnit výchozí akci.
 
 > [!WARNING]
-> Provádění změn pravidel sítě může mít vliv na vaše aplikace možnost připojení k Azure Storage. Nastavit výchozí pravidlo sítě **Odepřít** blokuje všechna přistupovat k datům, není-li konkrétní síťové pravidla pro **udělit** přístupu jsou použita také. Je potřeba udělit přístup k žádné povolené sítě pomocí pravidel pro sítě, než změníte výchozí pravidlo pro odepření přístupu.
+> Provádění změn pravidel sítě může mít vliv na vaše aplikace možnost připojení k Azure Storage. Nastavením výchozího síťového pravidla na **Odepřít** znemožníte přístup k datům, pokud nejsou použita specifická Síťová pravidla, která **udělují** přístup. Je potřeba udělit přístup k žádné povolené sítě pomocí pravidel pro sítě, než změníte výchozí pravidlo pro odepření přístupu.
 
 ### <a name="managing-default-network-access-rules"></a>Správa výchozího pravidla přístupu k síti
 
@@ -112,9 +112,9 @@ Můžete spravovat výchozí pravidla přístupu k síti pro účty úložiště
 
 ## <a name="grant-access-from-a-virtual-network"></a>Udělení přístupu z virtuální sítě
 
-Můžete nakonfigurovat účty úložiště pro povolení přístupu jenom z konkrétních virtuálních sítí.
+Účty úložiště můžete nakonfigurovat tak, aby povolovaly přístup jenom z konkrétních podsítí. Povolené podsítě můžou patřit do virtuální sítě ve stejném předplatném nebo v jiném předplatném, včetně předplatných, která patří do jiného tenanta Azure Active Directory.
 
-Povolit [koncový bod služby](/azure/virtual-network/virtual-network-service-endpoints-overview) pro službu Azure Storage v rámci virtuální sítě. Tento koncový bod poskytuje optimální směrování provozu do služby Azure Storage. Identity virtuální síť a podsíť také přenášejí spolu s každou žádostí. Správci pak můžete nakonfigurovat pravidla sítě pro účet úložiště, které umožňují požadavků bude moct přijmout z konkrétních podsítí ve virtuální síti. Klienti udělen přístup přes tyto pravidel sítě musí i dál splňuje požadavky na povolení účtu úložiště pro přístup k datům.
+Povolit [koncový bod služby](/azure/virtual-network/virtual-network-service-endpoints-overview) pro službu Azure Storage v rámci virtuální sítě. Koncový bod služby směruje provoz z virtuální sítě prostřednictvím optimální cesty ke službě Azure Storage. Identity podsítě a virtuální sítě se také odesílají s každým požadavkem. Správci potom můžou nakonfigurovat Síťová pravidla pro účet úložiště, který povoluje příjem požadavků z konkrétních podsítí ve virtuální síti. Klienti udělen přístup přes tyto pravidel sítě musí i dál splňuje požadavky na povolení účtu úložiště pro přístup k datům.
 
 Každý účet úložiště podporuje až 100 pravidel virtuální sítě, které mohou být spojeny s [pravidel sítě IP](#grant-access-from-an-internet-ip-range).
 
@@ -131,7 +131,10 @@ Při plánování zotavení po havárii během oblastního výpadku, měli byste
 
 Použít pravidlo virtuální sítě pro účet úložiště, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Je nutná oprávnění *připojit ke službě Service k podsíti* a je součástí *Přispěvatel účtů úložiště* předdefinovaná role. Mohou být přidány také do vlastní definice rolí.
 
-Účet úložiště a virtuální sítí udělen přístup může být v různých předplatných, ale tato předplatná musí být součástí stejného tenanta služby Azure AD.
+Účet úložiště a udělený přístup k virtuálním sítím můžou být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
+
+> [!NOTE]
+> Konfigurace pravidel, která udělují přístup k podsítím ve virtuálních sítích, které jsou součástí jiného tenanta Azure Active Directory, se v současné době podporují jenom prostřednictvím PowerShellu, CLI a rozhraní REST API. Taková pravidla nelze konfigurovat prostřednictvím Azure Portal, i když je lze zobrazit na portálu.
 
 ### <a name="managing-virtual-network-rules"></a>Správa pravidel virtuální sítě
 
@@ -149,6 +152,8 @@ Můžete spravovat pravidla virtuální sítě pro účty úložiště pomocí w
 
     > [!NOTE]
     > Pokud koncový bod služby pro službu Azure Storage se dříve nakonfigurované pro vybranou virtuální síť a podsítě, musíte ho nakonfigurovat jako součást této operace.
+    >
+    > V současné době se při vytváření pravidel zobrazují jenom virtuální sítě patřící do stejného Azure Active Directory tenanta. Pokud chcete udělit přístup k podsíti ve virtuální síti patřící jinému tenantovi, použijte PowerShell, rozhraní příkazového řádku nebo rozhraní REST API.
 
 1. Pokud chcete odstranit virtuální síť nebo podsítě pravidlo, klikněte na tlačítko **...**  otevřete kontextovou nabídku pro virtuální síť nebo podsíť, a klikněte na **odebrat**.
 
@@ -176,6 +181,9 @@ Můžete spravovat pravidla virtuální sítě pro účty úložiště pomocí w
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Pokud chcete přidat síťové pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikovaný parametr **VirtualNetworkResourceId** ve formátu "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/subnets/Subnet-Name".
 
 1. Odeberte pravidlo pro sítě pro virtuální síť a podsíť.
 
@@ -209,6 +217,11 @@ Můžete spravovat pravidla virtuální sítě pro účty úložiště pomocí w
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Pokud chcete přidat pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikované ID podsítě ve formátu "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name".
+    > 
+    > Pomocí parametru **Subscription** můžete načíst ID podsítě pro virtuální síť patřící jinému Tenantovi služby Azure AD.
 
 1. Odeberte pravidlo pro sítě pro virtuální síť a podsíť.
 
@@ -344,7 +357,7 @@ Pravidla sítě můžete povolit zabezpečené síťové konfigurace pro větši
 
 Některé služby společnosti Microsoft, které pracují s účty úložiště provoz ze sítě, které nelze udělit přístup pomocí pravidel sítě.
 
-Abychom tento typ služby práce tak, jak má, umožňují sadu důvěryhodným službám Microsoftu obejít pravidel sítě. Tyto služby pak bude používat silné ověřování pro přístup k účtu úložiště.
+Aby mohly některé služby fungovat tak, jak jsou určené, je nutné, aby bylo možné podmnožině důvěryhodných služeb Microsoftu obejít pravidla sítě. Tyto služby pak bude používat silné ověřování pro přístup k účtu úložiště.
 
 Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto služby (při registraci v rámci vašeho předplatného), je udělen přístup k účtu úložiště:
 

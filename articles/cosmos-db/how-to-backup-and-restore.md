@@ -1,63 +1,63 @@
 ---
-title: Postup obnovení dat služby Azure Cosmos DB ze zálohy
-description: Tento článek popisuje, jak obnovit data služby Azure Cosmos DB ze zálohy, jak kontaktovat podporu Azure o obnovení dat, kroky po obnovení dat.
+title: Postup obnovení dat Azure Cosmos DB ze zálohy
+description: Tento článek popisuje, jak obnovit Azure Cosmos DB data ze zálohy, jak kontaktovat podporu Azure za účelem obnovení dat, kroky, které je potřeba provést po obnovení dat.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c32c333de94d1ed0089323e00e6dbbaaebb36488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241052"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240767"
 ---
-# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovte data ze zálohy ve službě Azure Cosmos DB 
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Obnovení dat ze zálohy v Azure Cosmos DB 
 
-Pokud omylem odstraníte, databáze nebo kontejner, můžete si [lístek podpory]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [obraťte se na podporu Azure]( https://azure.microsoft.com/support/options/) data obnovit z automatických záloh online. Podpora Azure je dostupný pro vybrané plány například pouze **standardní**, **Developer**a vyšší, než je plány. Podpora Azure není k dispozici **základní** plánu. Další informace o plánech podpory různých, najdete v článku [plánů podpory Azure](https://azure.microsoft.com/support/plans/) stránky. 
+Pokud databázi nebo kontejner omylem odstraníte, můžete si [vytvořit lístek podpory]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [zavolat podporu Azure]( https://azure.microsoft.com/support/options/) a obnovit data z automatických online zálohování. Podpora Azure je dostupná jenom pro vybrané plány, jako je **Standard**, **vývojář**a plány vyšší než. Podpora Azure není k dispozici u plánu **Basic** . Další informace o různých plánech podpory najdete na stránce [plány podpory Azure](https://azure.microsoft.com/support/plans/) . 
 
-K obnovení konkrétní snímek zálohy, Azure Cosmos DB vyžaduje, že data jsou k dispozici po dobu trvání cyklu zálohování tohoto snímku.
+Aby bylo možné obnovit konkrétní snímek zálohy, Azure Cosmos DB vyžaduje, aby data byla k dispozici po dobu trvání cyklu zálohování pro daný snímek.
 
-## <a name="request-a-restore"></a>Žádost o obnovení
+## <a name="request-a-restore"></a>Požadavek na obnovení
 
-Než požádáte o obnovení byste měli mít následující podrobnosti:
+Před vyžádáním obnovení byste měli mít následující podrobnosti:
 
-* Máte připravený ID vašeho předplatného.
+* Připravte si ID předplatného.
 
-* Založené na tom, jak byla odstraněna nebo upravena data náhodně, měli byste mít další informace. Doporučuje se mít k dispozici informace o dopředu a zpět, které mohou být škodlivé v některých případech citlivé čas minimalizovat.
+* Na základě toho, jak se data omylem odstranila nebo změnila, byste měli připravit na Další informace. Doporučuje se, abyste měli k dispozici informace pro minimalizaci back-in, které by mohly být v některých případech v případě citlivého času škodlivé.
 
-* Pokud se odstraní celý účet služby Azure Cosmos DB, musíte zadat název odstraněný účet. Pokud vytvořte další účet se stejným názvem jako odstraněný účet, sdílejte, které se na tým podpory pomáhá určit správný účet k výběru. Doporučujeme pro lístky žádostí o podporu různých souboru pro každý odstraněný účet, protože minimalizuje zmatek způsobený stavu obnovení.
+* Pokud se odstraní celý účet Azure Cosmos DB, musíte zadat název odstraněného účtu. Pokud vytvoříte další účet se stejným názvem jako odstraněný účet, sdílejte ho s týmem podpory, protože pomáhá určit správný účet pro výběr. Doporučuje se pro každý odstraněný účet zaregistrovat různé lístky podpory, protože minimalizují nejasnost stavu obnovení.
 
-* Pokud jeden nebo více databází se odstraní, by měla poskytnout účet Azure Cosmos, stejně jako názvy databází Azure Cosmos a určete, jestli nové databáze se stejným názvem existuje.
+* Pokud odstraníte jednu nebo více databází, měli byste poskytnout účet Azure Cosmos a také názvy databází Azure Cosmos a určit, jestli existuje nová databáze se stejným názvem.
 
-* Pokud jeden nebo více kontejnerů se odstraní, by měla poskytnout název účtu Azure Cosmos, názvy databáze a názvu kontejneru. A určete, zda existuje kontejner se stejným názvem.
+* Pokud se odstraní aspoň jeden kontejner, měli byste zadat název účtu Azure Cosmos, názvy databází a názvy kontejnerů. A určete, zda kontejner se stejným názvem existuje.
 
-* Pokud jste omylem odstraněn nebo poškozen vaše data, měli byste požádat [podpory Azure](https://azure.microsoft.com/support/options/) do 8 hodin tak, aby tým služby Azure Cosmos DB může pomoci obnovíte data ze zálohy.
+* Pokud jste data omylem odstranili nebo jste poškodili, měli byste kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) do 8 hodin, aby tým Azure Cosmos DB vám mohl pomoci obnovit data ze zálohy.
   
-  * Pokud jste omylem odstranili databázi nebo kontejneru, otevřete případ podpory závažnost B nebo závažnost C Azure. 
-  * Pokud jste omylem odstraněn nebo poškozen některé dokumenty v rámci kontejneru, otevřete případ podpory záv. A. 
+  * Pokud jste databázi nebo kontejner omylem odstranili, otevřete případ podpory Azure závažnost B nebo závažnost C. 
+  * Pokud jste omylem odstranili nebo poškodili některé dokumenty v rámci kontejneru, otevřete závažnost A případ podpory. 
 
-Pokud dojde k poškození dat, a pokud se změnily nebo odstranily, dokumenty v rámci kontejneru **co nejdříve odstranit kontejner**. Tak, že odstraníte kontejner, se můžete vyhnout služby Azure Cosmos DB přepsání zálohy. Pokud z nějakého důvodu není možné odstranění, jste měli lístek co nejdříve. Kromě názvu účtu Azure Cosmos, názvy databází, názvy kolekcí měli byste určit bod v čase, ke kterému lze obnovit data. Je důležité, aby bylo co nejpřesnější, které pomáhají určit nejlepší dostupné zálohy v daném čase. Je také důležité určit čas ve standardu UTC. 
+Pokud dojde k poškození dat a pokud se dokumenty v rámci kontejneru upravují nebo odstraňují, **odstraňte kontejner co nejdříve**. Odstraněním kontejneru se můžete vyhnout Azure Cosmos DB přepsání záloh. Pokud z nějakého důvodu není odstranění možné, měli byste považovat lístek za co nejdříve. Kromě názvu účtu Azure Cosmos, názvů databází a názvů kontejnerů byste měli určit bod v čase, do kterého lze data obnovit. Je důležité, aby bylo co nejpřesněji možné určit nejlepší dostupné zálohy v daném čase. Je také důležité zadat čas ve standardu UTC. 
 
-Následující snímek obrazovky ukazuje, jak vytvořit žádost o podporu pro container(collection/graph/table) k obnovení dat pomocí webu Azure portal. Poskytují další podrobnosti, jako je typ dat, cílem obnovení, čas při data byla odstraněna, aby nám pomohou určit prioritu žádosti.
+Následující snímek obrazovky ukazuje, jak vytvořit žádost o podporu pro kontejner (kolekce/graf/tabulka) pro obnovení dat pomocí Azure Portal. Zadejte další podrobnosti, jako je například typ dat, účel obnovení, čas odstranění dat, který nám pomůžete určit prioritu žádosti.
 
-![Vytvoření žádosti o podporu zálohování pomocí webu Azure portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+![Vytvoření žádosti o podporu zálohování pomocí Azure Portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
 
-## <a name="post-restore-actions"></a>Po obnovení akce
+## <a name="post-restore-actions"></a>Akce po obnovení
 
-Po obnovení dat, dostanete oznámení o název nového účtu (je obvykle ve formátu `<original-name>-restored1`) a čas, kdy se obnovilo účet. Obnovené účtu budou mít stejné zřízená propustnost zásadám indexování a je ve stejné oblasti jako původní účet. Uživatel, který je správcem předplatného nebo coadmin můžete zobrazit obnovené účtu.
+Po obnovení dat se zobrazí oznámení o názvu nového účtu (obvykle ve formátu `<original-name>-restored1`) a času, kdy byl účet obnoven. Obnovený účet bude mít stejnou zřízenou propustnost, zásady indexování a je ve stejné oblasti jako původní účet. Obnovený účet může zobrazit uživatel, který je správcem předplatného nebo spolusprávce.
 
-Po obnovení dat by měla kontrolovat a ověřování dat v obnovené účtu a ujistěte se, že obsahuje verze, které jste očekávali. Pokud vše vypadá v pořádku, by měl migrovat data zpět na původní účet pomocí [kanálu změn služby Azure Cosmos DB](change-feed.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Po obnovení dat byste měli zkontrolovat a ověřit data v obnoveném účtu a ujistit se, že obsahuje verzi, kterou očekáváte. Pokud vše vypadá dobře, měli byste migrovat data zpátky na původní účet pomocí [Azure Cosmos DB změnit informační kanál](change-feed.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
-Doporučujeme odstranit kontejner nebo databáze okamžitě po provedení migrace data. Pokud neprovedete odstranění obnovenou databází nebo kontejnery, bude vám být naúčtovány náklady za jednotky žádostí, úložiště a výchozí přenos.
+Doporučuje se odstranit kontejner nebo databázi hned po migraci dat. Pokud obnovené databáze nebo kontejnery neodstraníte, budou se vám účtovat náklady na jednotky, úložiště a výstupy žádostí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak migrovat data zpět do původního účtu pomocí následujících článcích:
+V dalším kroku se dozvíte, jak migrovat data zpátky na původní účet pomocí následujících článků:
 
-* Chcete-li obnovení žádostí, obraťte se na podporu Azure, [lístek na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-* [Cosmos DB pomocí kanálu změn](change-feed.md) pro přesun dat do služby Azure Cosmos DB.
+* Pokud chcete vytvořit žádost o obnovení, obraťte se na podporu Azure, poznamenejte si [lístek z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* K přesunu dat do Azure Cosmos DB [použijte Cosmos DB změnit informační kanál](change-feed.md) .
 
-* [Použití Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) pro přesun dat do služby Azure Cosmos DB.
+* K přesunu dat do Azure Cosmos DB [použijte Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) .

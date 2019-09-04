@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231332"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259020"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Data z tabulky SAP můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce podporovaná [úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
+Data z tabulky SAP můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Konkrétně tato konektorová tabulka SAP podporuje:
 
@@ -294,6 +294,6 @@ Když kopírujete data z tabulky SAP, v datových typech tabulky SAP se použij�
 | `N`Číselné | `String` |
 | `X`(Binární a nezpracované) | `String` |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

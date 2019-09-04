@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344661"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278613"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
 
 Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a nasazení. Tento článek popisuje, jak používat **interaktivní zkoumání dat, analýzu a vytváření sestav (IDEAR)** a **automatizované modelování a vytváření sestav (AMAR)** nástroje dokončit několik běžných úloh datové vědy například interaktivní zkoumání dat, analýzy dat, vykazování a vytvoření modelu. Popisuje také možnosti pro model nasazení do produkčního prostředí používají různé platformy, sady nástrojů a dat, jako je následující:
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [SQL Server pomocí služby ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ Další informace najdete v tématu [automatizované modelování a vytváření
 ### <a name="model-management"></a>Správa modelů
 Po sestavené více modelů, obvykle potřebujete mít systém pro registraci a správu modelů. Obvykle budete potřebovat kombinaci skripty nebo rozhraní API a back-endové databáze nebo správu verzí systému. Několik možností, které mohou být užitečné pro tyto úlohy správy jsou:
 
-1. [Azure Machine Learning – služba Správa modelů](../service/index.yml)
+1. [Azure Machine Learning – služba Správa modelů](../index.yml)
 2. [ModelDB z MIT](https://mitdbg.github.io/modeldb/) 
 3. [SQL server jako systém správy modelů](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

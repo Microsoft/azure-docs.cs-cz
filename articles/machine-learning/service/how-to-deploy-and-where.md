@@ -11,18 +11,18 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: e3c2c7e4f3bb6c4c06d2f445adc5056c854a7503
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 14ced5ed45bcc91e6b6c812f2d1cbb61e139cc4f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278953"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
 Naučte se, jak nasadit model strojového učení jako webovou službu v cloudu Azure nebo IoT Edge zařízení.
 
-Pracovní postup je podobný bez ohledu na [to, kam](#target) model nasazujete:
+Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 1. Zaregistrujte model.
 1. Příprava na nasazení (určení prostředků, využití, výpočetního cíle).
@@ -37,7 +37,7 @@ Další informace o konceptech, které jsou součástí pracovního postupu nasa
 
 - Model. Pokud nemáte školený model, můžete použít soubory závislostí & modelu, které jsou k dispozici v [tomto kurzu](https://aka.ms/azml-deploy-cloud).
 
-- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)nebo [rozšíření Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
+- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
 
 ## <a name="connect-to-your-workspace"></a>Připojení k vašemu pracovnímu prostoru
 
@@ -78,7 +78,7 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
 
 + **Používání sady SDK**
 
-  Při použití sady SDK k vytvoření výukového modelu můžete v závislosti na způsobu, jakým jste si model vypracovali, získat buď objekt [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) nebo [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) . Každý objekt lze použít k registraci modelu vytvořeného spuštěním experimentu.
+  Při použití sady SDK k vytvoření výukového modelu můžete v závislosti na způsobu, jakým jste si model [vypracovali](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) , získat buď objekt Run nebo [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) . Každý objekt lze použít k registraci modelu vytvořeného spuštěním experimentu.
 
   + Registrace modelu z `azureml.core.Run` objektu:
  
@@ -562,7 +562,7 @@ Další informace naleznete v referenční dokumentaci pro [LocalWebservice](htt
 Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu:
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
@@ -820,7 +820,7 @@ Oba balíčky lze použít k získání místní image Docker.
 > Vytvoření balíčku je podobné jako nasazení modelu, protože používá registrovaný model a odvozenou konfiguraci.
 
 > [!IMPORTANT]
-> Funkce, jako je stažení plně sestavené Image nebo vytváření image místně, vyžadují instalaci [](https://www.docker.com) pracovního Docker na vaše vývojové prostředí.
+> Funkce, jako je stažení plně sestavené Image nebo vytváření image místně, vyžadují instalaci pracovního [Docker](https://www.docker.com) na vaše vývojové prostředí.
 
 ### <a name="download-a-packaged-model"></a>Stažení zabaleného modelu
 
@@ -940,7 +940,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 
 Další informace naleznete v referenční dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)

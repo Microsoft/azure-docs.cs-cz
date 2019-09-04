@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fba6feb035e47cfdfbe830ea628fc91cb483a907
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ef47426d80011b1c3e5f65675e4206a2afb98ef8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840273"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275168"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopírování dat ze služby Google Cloud Storage pomocí Azure Data Factory
 
@@ -84,12 +84,12 @@ Zde naleznete příklad:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text s oddělovači, Avro a datovou sadu binárního formátu](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
 
-Chcete-li kopírovat data z **Parquet, text nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro úložiště Google Cloud v části `location` nastavení v datové sadě založené na formátu:
+Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), [Formát Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro úložiště Google Cloud v části `location` nastavení v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -130,7 +130,7 @@ Chcete-li kopírovat data z **Parquet, text nebo binárního formátu**, přečt
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Pokud chcete kopírovat data ze služby Google Cloud Storage ve **formátu ORC/Avro/JSON**, podporují se tyto vlastnosti:
+Pokud chcete kopírovat data ze služby Google Cloud Storage ve **formátu ORC/JSON**, podporují se tyto vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -183,12 +183,12 @@ Pokud chcete kopírovat data ze služby Google Cloud Storage ve **formátu ORC/A
 
 ### <a name="google-cloud-storage-as-source"></a>Google Cloud Storage jako zdroj
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Chcete-li kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a zdroj binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro úložiště Google Cloud v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
+Pokud chcete kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro úložiště Google Cloud v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -247,7 +247,7 @@ Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přeč
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Pokud chcete kopírovat data ze služby Google Cloud Storage ve **formátu ORC/Avro/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data ze služby Google Cloud Storage ve **formátu ORC/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

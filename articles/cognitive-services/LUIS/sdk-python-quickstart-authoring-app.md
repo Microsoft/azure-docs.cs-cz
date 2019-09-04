@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f5756c479d47e905e0110c9919cf4b5be4e75099
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932132"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258769"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro Python
 
@@ -37,9 +37,9 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro P
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Získání vlastního klíče pro vytváření Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
 
-Získejte svůj vlastní [klíč pro vytváření](luis-how-to-account-settings.md)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `LUIS_AUTHORING_KEY` a proměnnou prostředí pro oblast klíče. `LUIS_REGION`
+Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `LUIS_AUTHORING_KEY` a proměnnou prostředí pro oblast klíče. `LUIS_REGION`
 
 ### <a name="install-the-python-library-for-luis"></a>Instalace knihovny Pythonu pro LUIS
 
@@ -101,7 +101,7 @@ Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/pytho
 
 
 ## <a name="create-intent-for-the-app"></a>Vytvořit záměr pro aplikaci
-Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením záměrů uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní zamýšlenou odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.   
+Primárním objektem v modelu aplikace LUIS je záměr. Záměr se zarovnává se seskupením _záměrů_uživatelů utterance. Uživatel může požádat o dotaz nebo vytvořit příkaz, který hledá konkrétní _zamýšlenou_ odpověď z robota (nebo jiné klientské aplikace). Příklady záměrů je vyúčtování letu, dotazování na počasí v cílovém městě a dotazování na kontaktní informace pro zákaznické služby.   
 
 Použijte [model. Přidejte metodu _intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) s názvem jedinečného záměru a potom předejte ID aplikace, ID verze a název nového záměru. 
 

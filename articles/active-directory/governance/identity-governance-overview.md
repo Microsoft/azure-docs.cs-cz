@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207171"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241453"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -42,7 +42,7 @@ Konkrétně je určena k tomu, aby organizacím pomáhaly řešit tyto čtyři k
 
 ## <a name="identity-lifecycle"></a>Životní cyklus identity
 
-Řízení identit pomáhá organizacím dosáhnout rovnováhy mezi produktivitou – jak rychle může osoba získat přístup k potřebným prostředkům, například když se připojí k mojí organizaci? A *zabezpečení* – jak se má v průběhu času měnit přístup, například kvůli změnám stavu zaměstnanosti této osoby?  Správa životního cyklu identit je základem pro řízení identit a efektivní řízení škálování vyžaduje modernizaci infrastrukturu správy životního cyklu identit pro aplikace.
+Řízení identit pomáhá organizacím dosáhnout rovnováhy mezi *produktivitou* – jak rychle může osoba získat přístup k potřebným prostředkům, například když se připojí k mojí organizaci? A *zabezpečení* – jak se má v průběhu času měnit přístup, například kvůli změnám stavu zaměstnanosti této osoby?  Správa životního cyklu identit je základem pro řízení identit a efektivní řízení škálování vyžaduje modernizaci infrastrukturu správy životního cyklu identit pro aplikace.
 
 ![Životní cyklus identity](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management (PIM) poskytuje další ovládací prvky
 
 ## <a name="least-privileged-roles"></a>Nejnižší privilegované role
 
-Použití PIM umožňuje omezit oprávnění správce na zvýšení zabezpečení. Níže jsou uvedené nejnižší privilegované role adresáře pro konfiguraci ve funkcích zásad správného řízení identit Azure AD: 
+Osvědčeným postupem je použití minimální privilegované role k provádění úloh správy v řízení identit. K provedení těchto úloh doporučujeme použít Azure AD PIM k aktivaci role podle potřeby. Níže jsou uvedené nejnižší privilegované role adresáře ke konfiguraci funkcí zásad správného řízení identit: 
 
 | Funkce | Nejnižší privilegovaná role |
 | ------- | --------------------- |
@@ -93,7 +93,7 @@ Můžete si také prohlédnout kartu Začínáme se zásadami **správného ří
 
 ![Začínáme se zásadami správného řízení identity](./media/identity-governance-overview/getting-started.png)
 
-Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klikněte na získat zpětnou vazbu **?** v Azure Portal odešlete svůj názor. Tým pravidelně kontroluje vaše názory.
+Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klikněte na získat **zpětnou vazbu?** v Azure Portal odešlete svůj názor. Tým pravidelně kontroluje vaše názory.
 
 ## <a name="next-steps"></a>Další postup
 

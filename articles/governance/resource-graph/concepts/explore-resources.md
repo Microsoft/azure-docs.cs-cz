@@ -7,18 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 58470dddafb29b6a2e5fa8ec0b474dd5da778799
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241130"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
 Azure Resource Graph nabízí možnost prozkoumat a zjišťovat prostředky Azure rychle a ve velkém měřítku. Je to skvělý způsob, jak se naučit vaše prostředí a také informace o vlastnostech, které tvoří prostředky Azure.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>Prozkoumat virtuální počítače
 
@@ -42,7 +40,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, `ConvertTo-Json` použije se rutina. Výchozí hodnota hloubky je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
+> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, `ConvertTo-Json` použije se rutina. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
 
 Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
@@ -178,7 +176,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> Další způsob, jak získat SKU, je použít vlastnost aliass **Microsoft. COMPUTE/virtualMachines/SKU. Name**. Podívejte se na příklady [Zobrazit aliasy](../samples/starter.md#show-aliases) a [Zobrazit odlišné hodnoty aliasu](../samples/starter.md#distinct-alias-values) .
+> Další způsob, jak získat SKU, je použít vlastnost **aliass** **Microsoft. COMPUTE/virtualMachines/SKU. Name**. Podívejte se na příklady [Zobrazit aliasy](../samples/starter.md#show-aliases) a [Zobrazit odlišné hodnoty aliasu](../samples/starter.md#distinct-alias-values) .
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -309,5 +307,5 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | whe
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [dotazovacím jazyku](query-language.md)
-- Zobrazit jazyk používaný v počátečních [dotazech](../samples/starter.md)
+- Zobrazit jazyk používaný v [počátečních dotazech](../samples/starter.md)
 - Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md)

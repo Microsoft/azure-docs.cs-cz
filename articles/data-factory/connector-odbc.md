@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277634"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do datových úložišť rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -114,13 +114,13 @@ Pro propojenou službu ODBC jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou ODBC.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou ODBC.
 
-Chcete-li kopírovat data z/do úložiště dat kompatibilního s rozhraním ODBC, nastavte vlastnost typ datové sady na **relační**. Podporovány jsou následující vlastnosti:
+Pro kopírování dat z úložiště dat kompatibilních s rozhraním ODBC jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **Relační objekt** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **ODBC –** | Ano |
 | tableName | Název tabulky v úložišti dat rozhraní ODBC. | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
 
 **Příklad**
@@ -129,7 +129,8 @@ Chcete-li kopírovat data z/do úložiště dat kompatibilního s rozhraním ODB
 {
     "name": "ODBCDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "OdbcTable",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ODBC linked service name>",
             "type": "LinkedServiceReference"
@@ -141,17 +142,19 @@ Chcete-li kopírovat data z/do úložiště dat kompatibilního s rozhraním ODB
 }
 ```
 
+Pokud jste `RelationalTable` používali typovou datovou sadu, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
+
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem rozhraní ODBC.
 
 ### <a name="odbc-as-source"></a>ODBC jako zdroj
 
-Chcete-li kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, nastavte typ zdroje v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Pokud chcete kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OdbcSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -175,7 +178,7 @@ Chcete-li kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, 
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "OdbcSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -185,6 +188,8 @@ Chcete-li kopírovat data z úložiště dat kompatibilního s rozhraním ODBC, 
     }
 ]
 ```
+
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
 ### <a name="odbc-as-sink"></a>ODBC jako jímka
 
@@ -283,5 +288,5 @@ Pokud chcete řešit problémy s připojením, použijte kartu diagnostika **Int
 4. Zadejte **připojovací řetězec** , který se používá pro připojení k úložišti dat, vyberte **ověřování** a zadejte **uživatelské jméno**, **heslo**a/nebo **přihlašovací údaje**.
 5. Klikněte na **Test připojení** a otestujte připojení k úložišti dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

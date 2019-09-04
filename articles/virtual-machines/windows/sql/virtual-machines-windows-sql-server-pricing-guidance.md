@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 116ffa31fb540897f9a769b73c3a6474dda45b88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70280172"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Doprovodné materiály k ceníkům pro SQL Server virtuálních počítačů Azure
 
@@ -31,11 +31,11 @@ Tento článek poskytuje cenové poradenství pro [SQL Server virtuální počí
 >
 > ![Stránka s cenami na základě uživatelského rozhraní na virtuálním počítači](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
 >
-> Případně můžete k [](https://azure.microsoft.com/pricing/#explore-cost) přidání a konfiguraci virtuálního počítače použít cenovou kalkulačku. 
+> Případně můžete k přidání a konfiguraci virtuálního počítače použít [cenovou kalkulačku](https://azure.microsoft.com/pricing/#explore-cost) . 
 
 ## <a name="free-licensed-sql-server-editions"></a>Bezplatné licencované SQL Server edice
 
-Pokud chcete vyvíjet, testovat nebo sestavovat testování konceptu, pak použijte edici s licencí zdarma pro **SQL Server Developer**. Tato edice obsahuje všechny funkce edice SQL Server Enterprise, což vám umožňuje vytvářet a testovat jakýkoli typ aplikace. V produkčním prostředí však nemůžete edici Developer Edition spustit. Virtuální počítač s SQL Server Developer Edition se účtuje jenom za náklady na virtuální počítač, protože neexistují žádné přidružené licenční náklady SQL Server.
+Pokud chcete vyvíjet, testovat nebo sestavovat testování konceptu, pak použijte **edici**s licencí zdarma pro SQL Server Developer. Tato edice obsahuje všechny funkce edice SQL Server Enterprise, což vám umožňuje vytvářet a testovat jakýkoli typ aplikace. V produkčním prostředí však nemůžete edici Developer Edition spustit. Virtuální počítač s SQL Server Developer Edition se účtuje jenom za náklady na virtuální počítač, protože neexistují žádné přidružené licenční náklady SQL Server.
 
 Pokud chcete provozovat odlehčené úlohy v produkčním prostředí (< 4 jádra, < 1 GB paměti, < 10 GB/databáze), použijte zdarma licencovanou **edici SQL Server Express**. Virtuální počítač s SQL Server Express Edition se taky účtuje jenom za náklady na virtuální počítač.
 
@@ -101,7 +101,7 @@ Pokud chcete vytvořit virtuální počítač s SQL Server 2017 s jedním z těc
 > Image BYOL vyžadují smlouva Enterprise se Software Assurance. V tuto chvíli nejsou k dispozici jako součást partnera Azure Cloud Solution partner (CSP). Zákazníci CSP můžou využít vlastní licenci nasazením image s průběžnými platbami a následným povolením [zvýhodněné hybridní využití Azure](virtual-machines-windows-sql-ahb.md).
 
 > [!NOTE]
-> Image BYOL jsou teď dostupné jenom pro virtuální počítače s Windows. SQL Server ale můžete nainstalovat ručně jenom na virtuální počítač jenom se systémem Linux. Pokyny najdete v tématu Nejčastější dotazy k VIRTUÁLNÍm počítačům se [systémem Linux SQL](../../linux/sql/sql-server-linux-faq.md).
+> Image BYOL jsou teď dostupné jenom pro virtuální počítače s Windows. SQL Server ale můžete nainstalovat ručně jenom na virtuální počítač jenom se systémem Linux. Pokyny najdete v tématu [Nejčastější dotazy k virtuálním počítačům se systémem Linux SQL](../../linux/sql/sql-server-linux-faq.md).
 
 Poskytování vlastních licencí SQL prostřednictvím License Mobility se doporučuje pro:
 
@@ -113,7 +113,7 @@ Pokud chcete používat BYOL s virtuálním počítačem s SQL Server, musíte m
 
 | Zvýhodnění BYOL | Popis |
 |-----|-----|
-| **Úspora nákladů** | [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) nabízí úspory až 55%. Další informace najdete v tématu [přepínač licencování modelu] (Virtual-Machines-Windows-SQL-ahb.md |
+| **Úspora nákladů** | [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) nabízí úspory až 55%. Další informace najdete v tématu [Přepnutí modelu licencování](virtual-machines-windows-sql-ahb.md) . |
 | **Bezplatná pasivní sekundární replika** | Další výhodou uvedení vlastní licence je [bezplatné licence pro jednu pasivní sekundární repliku](https://azure.microsoft.com/pricing/licensing-faq/) na SQL Server pro účely vysoké dostupnosti. To snižuje náklady na licence na vysoce dostupné SQL Server nasazení (například pomocí skupin dostupnosti Always On). Práva na spuštění pasivní sekundární služby se poskytují prostřednictvím výhod programu Software Assurance pro převzetí služeb při selhání. |
 
 Pokud chcete vytvořit virtuální počítač s SQL Server 2017 s jedním z těchto imagí s vlastní licencí, podívejte se na virtuální počítače s předponou {BYOL}:
@@ -153,7 +153,7 @@ V předchozím příkladu vidíte, že specifikace pro **Standard_DS14v2** a **S
 
 Pokud používáte nějaké úlohy, které neběží nepřetržitě, zvažte vypnutí virtuálního počítače během neaktivních období. Platíte jenom za to, co používáte.
 
-Pokud například jednoduše vyzkoušíte SQL Server na virtuálním počítači Azure, nebudete se vám účtovat poplatky, protože by to mělo běžet po dobu týdnů. Jedním z řešení je použití [funkce automatického](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)vypínání.
+Pokud například jednoduše vyzkoušíte SQL Server na virtuálním počítači Azure, nebudete se vám účtovat poplatky, protože by to mělo běžet po dobu týdnů. Jedním z řešení je použití [funkce automatického vypínání](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
 ![Automatické vypnutí virtuálního počítače SQL](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-auto-shutdown.png)
 

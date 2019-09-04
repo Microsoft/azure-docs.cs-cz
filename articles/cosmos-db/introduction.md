@@ -4,14 +4,14 @@ description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně di
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 07/23/2019
+ms.date: 09/01/2019
 ms.author: rimman
-ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905294"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240704"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -49,11 +49,11 @@ Cosmos DB navržená pomocí transparentního horizontálního dělení a replik
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garantovaná nízká latence na 99. percentilu, po celém světě
 
-Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním škály. Díky novému serveru pro více hlavních serverů replikace a databázovému stroji, který je s podporou pro [zápis a optimalizaci pro zápis](index-policy.md), Cosmos DB zaručuje méně než 10 MS latence pro čtení (indexované) a zápisy na 99 percentilu, a to vše po celém světě. Tato schopnost umožňuje tolerovat přijímání dat a neuvěřitelně rychlé dotazy pro vysoce reagující aplikace.
+Pomocí Cosmos DB můžete vytvářet vysoce reagující aplikace globálním škály. Díky novému serveru pro více hlavních serverů replikace a [databázovému stroji](index-policy.md), který je s podporou pro zápis a optimalizaci pro zápis, Cosmos DB zaručuje méně než 10 MS latence pro čtení (indexované) a zápisy na 99 percentilu, a to vše po celém světě. Tato schopnost umožňuje tolerovat přijímání dat a neuvěřitelně rychlé dotazy pro vysoce reagující aplikace.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Přesně definované, vícenásobné volby konzistence
 
-Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený tak, aby nabízel [pět jasně definovaných možností](consistency-levels.md) - konzistence*silné*, ohraničené neaktuálnost, *relace*, *konzistentní předpony*a konečné.– pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
+Při sestavování globálně distribuovaných aplikací v Cosmos DB už nemusíte provádět extrémní [kompromisy mezi konzistencí, dostupností, latencí a propustností](consistency-levels-tradeoffs.md). Protokol replikace s více hlavními servery Cosmos DB je pečlivě navržený tak, aby nabízel -  [pět jasně definovaných možností konzistence](consistency-levels.md)*silné*, *ohraničené neaktuálnost*, *relace*, *konzistentní předpony* *a konečné.* – pro intuitivní programovací model s nízkou latencí a vysokou dostupností pro globálně distribuovanou aplikaci.
 
 ### <a name="no-schema-or-index-management"></a>Žádná Správa schématu ani indexu
 

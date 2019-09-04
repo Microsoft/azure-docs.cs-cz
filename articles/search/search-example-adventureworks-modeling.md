@@ -1,27 +1,27 @@
 ---
 title: 'Příklad: Modelování databáze inventáře AdventureWorks – Azure Search'
 description: Naučte se modelovat relační data, transformovat je na sloučenou datovou sadu pro indexování a fulltextové vyhledávání v Azure Search.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649921"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274042"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Příklad: Modelování databáze inventáře AdventureWorks pro Azure Search
 
-Modelování obsahu strukturované databáze do efektivního indexu hledání je výjimečným cvičením. Pro plánování a změnu v rámci správy existuje výzva k denormalizaci zdrojových řádků z jejich stavu připojeného k tabulkám na uživatelsky přívětivé entity pro vyhledávání. Tento článek používá ukázková data společnosti AdventureWorks, která jsou k dispozici online, k zdůraznění běžných zkušeností v přechodu z databáze k hledání. 
+Azure Search přijímá sloučené sady řádků jako vstupy [kanálu indexování (přijímání dat)](search-what-is-an-index.md). Pokud zdrojová data pocházejí z SQL Server relační databáze, Tento článek ukazuje jeden přístup k vytvoření ploché sady řádků před indexováním pomocí ukázkové databáze AdventureWorks jako příklad.
 
 ## <a name="about-adventureworks"></a>O AdventureWorks
 
-Pokud máte instanci SQL Server, možná budete obeznámeni s ukázkovou databází AdventureWorks. Mezi tabulkami, které jsou součástí této databáze, patří pět tabulek, které zveřejňují informace o produktu.
+Pokud máte instanci SQL Server, možná budete obeznámeni s [ukázkovou databází AdventureWorks](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Mezi tabulkami, které jsou součástí této databáze, patří pět tabulek, které zveřejňují informace o produktu.
 
 + **ProductModel**: název
 + **Produkt**: název, barva, náklady, velikost, váha, obrázek, kategorie (každý řádek se připojí ke konkrétnímu ProductModel)
@@ -29,7 +29,7 @@ Pokud máte instanci SQL Server, možná budete obeznámeni s ukázkovou databá
 + **ProductModelProductDescription**: locale (každý řádek spojuje ProductModel ke konkrétnímu jazyku ProductDescription pro určitý jazyk)
 + **ProductCategory**: název, Nadřazená kategorie
 
-Kombinování všech těchto dat do ploché sady řádků, které lze ingestovat do indexu vyhledávání, je úkol na ruce. 
+V tomto příkladu jsou kombinována všechna tato data do ploché sady řádků, které lze ingestit do indexu vyhledávání. 
 
 ## <a name="considering-our-options"></a>Zvážení našich možností
 
@@ -43,7 +43,7 @@ Vyřešení tohoto problému není tak jednoduché jako přesunutí cílového i
 
 ## <a name="use-a-collection-data-type"></a>Použití datového typu kolekce
 
-Správný přístup je využití funkce vyhledávacího schématu, která nemá přímý paralelní v modelu databáze: **Collection (EDM. String)** . Datový typ kolekce se používá, pokud máte seznam jednotlivých řetězců, nikoli velmi dlouhý (jeden) řetězec. Pokud máte značky nebo klíčová slova, měli byste pro toto pole použít datový typ kolekce.
+Správný přístup je využití funkce vyhledávacího schématu, která nemá přímý paralelní v modelu databáze: **Collection (EDM. String)** . Tento konstruktor je definován ve schématu indexu Azure Search. Datový typ kolekce se používá v případě, že je nutné reprezentovat seznam jednotlivých řetězců, nikoli velmi dlouhý (jeden) řetězec. Pokud máte značky nebo klíčová slova, měli byste pro toto pole použít datový typ kolekce.
 
 Při definování polí indexu s více hodnotami **kolekce (EDM. String)** pro "Color", "size" a "image" jsou pomocné informace uchovány pro omezující vlastnosti a pro filtrování bez zneznečištění indexu s duplicitními položkami. Podobně použijte agregační funkce na pole číselného produktu a indexování **minListPrice** místo každého jednotlivého produktu **listPrice**.
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [Příklad: Taxonomie omezující vlastnosti na více úrovních v Azure Search](search-example-adventureworks-multilevel-faceting.md)
-
-

@@ -7,20 +7,18 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: d158950749a9704276a666b58101bb5ad9dcbc42
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1039073aaaf9d1a6b7bd9ac21a95c73871ce3ba3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232632"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239025"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
 Tento článek vás provede programově vytváření a Správa zásad. Azure Policy definice vynutila různá pravidla a vliv na vaše prostředky. Vynucení zajišťuje, že prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni.
 
 Informace o dodržování předpisů najdete v tématu [získávají data dodržování předpisů](getting-compliance-data.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -101,7 +99,7 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
    - Předplatné – `/subscriptions/{subId}/`
    - Skupina pro správu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Další informace o správě zásad prostředků pomocí modulu Azure Resource Manager PowerShellu najdete v tématu [AZ.](/powershell/module/az.resources/#policies)Resources.
+Další informace o správě zásad prostředků pomocí modulu Azure Resource Manager PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Vytvoření a přiřazení definice zásady pomocí ARMClient
 

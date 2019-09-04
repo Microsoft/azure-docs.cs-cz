@@ -4,19 +4,58 @@ description: Popisuje, jak odstranit skupiny prostředků a prostředky. Popisuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991697"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275077"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager skupiny prostředků a odstraňování prostředků
 
 Tento článek popisuje, jak odstranit skupiny prostředků a prostředky. Popisuje, jak Azure Resource Manager při odstraňování skupiny prostředků vyřadí odstranění prostředků.
+
+## <a name="how-order-of-deletion-is-determined"></a>Jak je určeno pořadí odstranění
+
+Když odstraníte skupinu prostředků, Resource Manager určuje pořadí, odstraňte prostředky. Použije následujícím pořadí:
+
+1. Se odstraní všechny prostředky vnořená ().
+
+2. Dále se odstraní prostředky, které spravují další prostředky. Prostředek může mít `managedBy` nastavenou k označení, že jiný prostředek spravuje ho. Pokud je tato vlastnost nastavena, před dalším prostředkům odstranění prostředku, který spravuje jiný prostředek.
+
+3. Zbývající prostředky odstraní po předchozí dvě kategorie.
+
+Po pořadí je určeno, vydá Resource Manageru operace odstranění pro každý zdroj. Čeká nějak záviset na dokončení, než budete pokračovat.
+
+U synchronních operací může kódy úspěšné odpovědi očekávané jsou:
+
+* 200
+* 204
+* 404
+
+Pro asynchronní operace je očekávané úspěšné odpovědi 202. Resource Manager sleduje hlavičky location nebo hlavičce azure asynchronní operace k určení stavu asynchronní operaci.
+  
+### <a name="deletion-errors"></a>Chyby odstranění
+
+Při operaci delete vrátí chybu, správce prostředků zopakuje pokus o volání aktualizace. Opakované pokusy se provede pro 5xx, 429 a 408 stavové kódy. Výchozí časový interval opakování je 15 minut.
+
+## <a name="after-deletion"></a>Po jeho odstranění
+
+Resource Manager vydává volání GET u jednotlivých prostředků, které se pokusil odstranit. Odpověď na toto volání GET má být 404. Resource Manager získá 404, považuje se odstraňování byly úspěšně dokončeny. Resource Manager Odstraní prostředek uloženou v mezipaměti.
+
+Ale pokud volání GET s prostředkem vrátí 200 nebo 201, znovu správce prostředků vytvoří prostředek.
+
+Pokud operace GET vrátí chybu, Resource Manager opakuje GET pro následující kód chyby:
+
+* Méně než 100
+* 408
+* 429
+* Větší než 500
+
+Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
 
 ## <a name="delete-resource-group"></a>Odstranit skupinu prostředků
 
@@ -25,13 +64,13 @@ Chcete-li odstranit skupinu prostředků, použijte jednu z následujících met
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name <resource-group-name>
+Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az group delete --name <resource-group-name>
+az group delete --name ExampleResourceGroup
 ```
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
@@ -80,48 +119,8 @@ az resource delete \
 
 ---
 
-## <a name="how-order-of-deletion-is-determined"></a>Jak je určeno pořadí odstranění
 
-Když odstraníte skupinu prostředků, Resource Manager určuje pořadí, odstraňte prostředky. Použije následujícím pořadí:
-
-1. Se odstraní všechny prostředky vnořená ().
-
-2. Dále se odstraní prostředky, které spravují další prostředky. Prostředek může mít `managedBy` nastavenou k označení, že jiný prostředek spravuje ho. Pokud je tato vlastnost nastavena, před dalším prostředkům odstranění prostředku, který spravuje jiný prostředek.
-
-3. Zbývající prostředky odstraní po předchozí dvě kategorie.
-
-Po pořadí je určeno, vydá Resource Manageru operace odstranění pro každý zdroj. Čeká nějak záviset na dokončení, než budete pokračovat.
-
-U synchronních operací může kódy úspěšné odpovědi očekávané jsou:
-
-* 200
-* 204
-* 404
-
-Pro asynchronní operace je očekávané úspěšné odpovědi 202. Resource Manager sleduje hlavičky location nebo hlavičce azure asynchronní operace k určení stavu asynchronní operaci.
-  
-### <a name="errors"></a>Chyby
-
-Při operaci delete vrátí chybu, správce prostředků zopakuje pokus o volání aktualizace. Opakované pokusy se provede pro 5xx, 429 a 408 stavové kódy. Výchozí časový interval opakování je 15 minut.
-
-## <a name="after-deletion"></a>Po jeho odstranění
-
-Resource Manager vydává volání GET u jednotlivých prostředků, které se pokusil odstranit. Odpověď na toto volání GET má být 404. Resource Manager získá 404, považuje se odstraňování byly úspěšně dokončeny. Resource Manager Odstraní prostředek uloženou v mezipaměti.
-
-Ale pokud volání GET s prostředkem vrátí 200 nebo 201, znovu správce prostředků vytvoří prostředek.
-
-### <a name="errors"></a>Chyby
-
-Pokud operace GET vrátí chybu, Resource Manager opakuje GET pro následující kód chyby:
-
-* Méně než 100
-* 408
-* 429
-* Větší než 500
-
-Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Koncepce Resource Manageru, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).
 * Odstranění příkazy naleznete v tématu [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [rozhraní příkazového řádku Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), a [rozhraní REST API](/rest/api/resources/resourcegroups/delete).

@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088185"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258601"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití Key Vault odkazů pro App Service a Azure Functions (Preview)
 
@@ -184,3 +184,27 @@ Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 
 > [!NOTE] 
 > V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli `WEBSITE_ENABLE_SYNC_UPDATE_SITE` nastavení aplikace, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
+
+## <a name="troubleshooting-key-vault-references"></a>Řešení potíží s Key Vaultmi odkazy
+
+Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má `@Microsoft.KeyVault(...)` syntaxi. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
+
+Nejčastěji to je způsobeno neznámým nastavením [zásad přístupu Key Vault](#granting-your-app-access-to-key-vault). Může to ale také být způsobeno tím, že už existující tajný kód nebo Chyba syntaxe samotného odkazu.
+
+Je-li syntaxe správná, můžete zobrazit další příčiny chyby kontrolou aktuálního stavu řešení pomocí integrovaného detektoru.
+
+### <a name="using-the-detector-for-app-service"></a>Použití detektoru pro App Service
+
+1. Na portálu přejděte do aplikace.
+2. Vyberte možnost **diagnostikovat a vyřešit prolems**.
+3. Zvolte možnost **dostupnost a výkon** a vyberte možnost **Webová aplikace dolů.**
+4. Najděte **Key Vault Diagnostika nastavení aplikace** a klikněte na **Další informace**.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Použití detektoru pro Azure Functions
+
+1. Na portálu přejděte do aplikace.
+2. Přejděte k **funkcím platformy.**
+3. Vyberte možnost **diagnostikovat a vyřešit prolems**.
+4. Zvolte možnost **dostupnost a výkon** a vyberte **funkce aplikace dolů nebo hlášení chyb.**
+5. Klikněte na **Key Vault Diagnostika nastavení aplikace.**

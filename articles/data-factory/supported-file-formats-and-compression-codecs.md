@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840270"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277094"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -35,7 +35,7 @@ Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (biná
 ## <a name="text-format"></a>Formát textu
 
 >[!NOTE]
->Data Factory představil nový textový formát s oddělovači datset, viz článek [textový formát](format-delimited-text.md) s oddělovači s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
+>Data Factory představil novou datovou sadu s oddělovači v podobě textu, viz článek s [oddělovači textu](format-delimited-text.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 Pokud chcete pro čtení z textového souboru nebo zápis do textového souboru, nastavte `type` vlastnost `format` části datové sady na **TextFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu TextFormat](#textformat-example).
 
@@ -413,7 +413,7 @@ Výstupní datová sada typu **JsonFormat** je definovaná následujícím způs
 ## <a name="parquet-format"></a>Formát parquet
 
 >[!NOTE]
->Data Factory zavedli nové datset formátu Parquet, přečtěte si článek o [formátu Parquet](format-parquet.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
+>Data Factory zavedli novou datovou sadu formátu Parquet, viz článek o [formátu Parquet](format-parquet.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet, nastavte vlastnost `format` `type` na hodnotu **Format**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
@@ -521,6 +521,9 @@ Pro kopírování běžící v prostředí IR v místním prostředí s ORC seri
 
 ## <a name="avro-format"></a>Formát AVRO
 
+>[!NOTE]
+>Data Factory zavedli novou datovou sadu formátu Avro, viz článek o [formátu avri](format-avro.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
+
 Pokud chcete analyzovat soubory Avro nebo zapisovat data ve formátu Avro, nastavte vlastnost `format` `type` na hodnotu **AvroFormat**. V oddílu Format v části typeProperties není potřeba zadávat žádné vlastnosti. Příklad:
 
 ```json
@@ -593,7 +596,7 @@ Pokud chcete zadat komprese datové sady, použijte **komprese** vlastnost v dat
 K transformaci souborů, které nejsou podporované, můžete použít funkce rozšíření Azure Data Factory.
 Mezi dvě možnosti patří Azure Functions a vlastní úkoly pomocí Azure Batch.
 
-Můžete vidět ukázku, která používá funkci Azure k extrakci [obsahu souboru tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivita Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+Můžete vidět ukázku, která používá funkci Azure k [extrakci obsahu souboru tar](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). Další informace najdete v tématu [aktivita Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
 Tuto funkci můžete také vytvořit pomocí vlastní aktivity dotnet. Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) .
 

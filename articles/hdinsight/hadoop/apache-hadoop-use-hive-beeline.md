@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072929"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259132"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
@@ -44,9 +44,9 @@ Nahraďte `<headnode-FQDN>` plně kvalifikovaným názvem domény hlavnímu uzlu
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>Do clusteru HDInsight Balíček zabezpečení podniku (ESP)
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Do clusteru HDInsight Balíček zabezpečení podniku (ESP) pomocí protokolu Kerberos
 
-Když se připojujete z klienta k clusteru balíček zabezpečení podniku (ESP) připojenému k Azure Active Directory (AAD) na počítači ve stejné sféře clusteru, musíte zadat taky název `<AAD-Domain>` domény a název účtu uživatele domény s oprávněním k. přístup ke clusteru `<username>`:
+Když se připojujete z klienta k clusteru balíček zabezpečení podniku (ESP) připojenému k Azure Active Directory (AAD) – DS na počítači ve stejné sféře clusteru, musíte taky zadat název `<AAD-Domain>` domény a název účtu uživatele domény. oprávnění pro přístup ke clusteru `<username>`:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Nahraďte `<username>` názvem účtu v doméně, který má oprávnění pro p�
 
 ---
 
-### <a name="over-public-internet"></a>Přes veřejný Internet
+### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-Když se připojujete ke clusteru ESP připojenému k jiným než ESP nebo Azure Active Directory (AAD) přes veřejný Internet, musíte zadat název přihlašovacího účtu clusteru ( `admin`výchozí) a heslo. Například pomocí Beeline z klientského systému se připojte k `<clustername>.azurehdinsight.net` adrese. Toto připojení se provádí přes port `443`a je šifrované pomocí protokolu SSL:
+Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `<clustername>.azurehdinsight.net` adrese. Toto připojení se provádí přes port `443`a je šifrované pomocí protokolu SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+nebo pro soukromý koncový bod:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro svůj cluster. Nahraďte `password` heslem přihlašovacího účtu clusteru.
@@ -73,13 +79,21 @@ Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `
 
 Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy označuje jako server Spark Thrift. Tato služba používá Spark SQL k překladu dotazů namísto podregistru a může poskytovat lepší výkon v závislosti na vašem dotazu.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Přes veřejný Internet s Apache Spark
+#### <a name="through-public-or-private-endpoints"></a>Prostřednictvím veřejných nebo privátních koncových bodů
 
-Připojovací řetězec, který se používá při připojování přes Internet, se mírně liší. Místo, kde `httpPath=/hive2` je `httpPath/sparkhive2`obsaženo:
+Použitý připojovací řetězec je trochu odlišný. Místo, kde `httpPath=/hive2` je `httpPath/sparkhive2`obsaženo:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+nebo pro soukromý koncový bod:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` přihlašovacím účtem clusteru pro svůj cluster. Nahraďte `password` heslem přihlašovacího účtu clusteru.
 
 ---
 
@@ -194,7 +208,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
    > [!NOTE]  
    > Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například automatizovaný proces odesílání dat nebo operace MapReduce.
    >
-   > Vyřazení externí tabulky neodstraní data, pouze definici tabulky.
+   > Vyřazení externí tabulky **neodstraní data** , pouze definici tabulky.
 
     Výstup tohoto příkazu je podobný následujícímu textu:
 
@@ -232,7 +246,7 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
     nano query.hql
     ```
 
-2. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní tabulku s názvem protokolu chyb:
+2. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem**protokolu chyb:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -241,9 +255,9 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
 
     Tyto příkazy provádějí následující akce:
 
-   * **Create Table Pokud není** k dispozici – Pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.
+   * **Create Table Pokud není k dispozici** – Pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.
    * **Uloženo jako ORC** – ukládá data ve formátu optimalizovaného řádku (Orc). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
-   * **VLOŽIT PŘEPSÁNÍ... Vyberte** možnost – vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží do tabulky chyb.
+   * **VLOŽIT PŘEPSÁNÍ... Vyberte** možnost – vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží do **tabulky chyb** .
 
     > [!NOTE]  
     > Na rozdíl od externích tabulek odstraní interní tabulka také podkladová data.
@@ -259,7 +273,7 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
     > [!NOTE]  
     > Parametr spustí Beeline a spustí příkazy `query.hql` v souboru. `-i` Po dokončení `jdbc:hive2://headnodehost:10001/>` dotazu se zobrazí výzva. Můžete také spustit soubor pomocí `-f` parametru, který ukončí Beeline po dokončení dotazu.
 
-5. Chcete-li ověřit , zda byla vytvořena tabulka chyb protokolu chyb, použijte následující příkaz, který vrátí všechnyřádky z chyb protokolu chyb:
+5. Chcete-li ověřit, zda byla **vytvořena tabulka chyb** protokolu chyb, použijte následující příkaz, který vrátí všechny řádky z chyb protokolu **chyb:**
 
     ```hiveql
     SELECT * from errorLogs;

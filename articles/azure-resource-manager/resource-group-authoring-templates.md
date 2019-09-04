@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9858e8a52888304edd48893db02faa992b356b3b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 53b2f9783b33c859ca2c5de5f35353b8482ea5c7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774907"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275135"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopení struktury a syntaxe šablon Azure Resource Manager
 
@@ -48,57 +48,6 @@ V nejjednodušší struktuře má šablona následující prvky:
 | [outputs](#outputs) |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek má vlastnosti, které lze nastavit. V tomto článku jsou podrobněji popsány části šablony.
-
-## <a name="syntax"></a>Syntaxe
-
-Základní syntaxí šablony je JSON. Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí závorkami: `[` a `]`v uvedeném pořadí. Hodnota výrazu je vyhodnocena při nasazení šablony. Výraz může vracet řetězec, celé číslo, logickou hodnotu, pole nebo objekt. Následující příklad ukazuje výraz ve výchozí hodnotě parametru:
-
-```json
-"parameters": {
-  "location": {
-    "type": "string",
-    "defaultValue": "[resourceGroup().location]"
-  }
-},
-```
-
-Syntaxe `resourceGroup()` v rámci výrazu volá jednu z funkcí, které správce prostředků poskytují pro použití v rámci šablony. Stejně jako v jazyce JavaScript jsou volání funkcí formátována `functionName(arg1,arg2,arg3)`jako. Syntaxe `.location` načte jednu vlastnost z objektu vráceného touto funkcí.
-
-Funkce šablon a jejich parametry rozlišují velká a malá písmena. Například Správce prostředků vyřeší **proměnné (' var1 ')** a **proměnné (' var1 ')** jako stejné. Je-li tato funkce vyhodnocena, pokud funkce Express nemění velká a malá písmena (například toUpper nebo toLower), funkce zachovává případ. Některé typy prostředků mohou mít požadavky na případy bez ohledu na to, jak jsou funkce vyhodnoceny.
-
-Chcete-li, aby byl řetězcový literál začínat levou hranatou `[` závorkou `]`a končit pravou závorkou, ale nebyl interpretován jako výraz, přidejte další hranatou závorku, `[[`která zahájí řetězec s. Například proměnná:
-
-```json
-"demoVar1": "[[test value]"
-```
-
-Přeloží `[test value]`na.
-
-Nicméně pokud literální řetězec nekončí závorkou, nezařídí první vymezovač. Například proměnná:
-
-```json
-"demoVar2": "[test] value"
-```
-
-Přeloží `[test] value`na.
-
-Chcete-li předat řetězcovou hodnotu jako parametr funkci, použijte jednoduché uvozovky.
-
-```json
-"name": "[concat('storage', uniqueString(resourceGroup().id))]"
-```
-
-Chcete-li ve výrazu, jako je například přidání objektu JSON do šablony, řídicí dvojité uvozovky, použijte zpětné lomítko.
-
-```json
-"tags": {
-    "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
-},
-```
-
-Výraz šablony nemůže být delší než 24 576 znaků.
-
-Úplný seznam funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
 
@@ -392,7 +341,7 @@ Při definování uživatelské funkce existují určitá omezení:
 * Funkce nemá přístup k proměnným.
 * Funkce může používat pouze parametry, které jsou definovány ve funkci. Použijete-li [funkci Parameters](resource-group-template-functions-deployment.md#parameters) v rámci uživatelsky definované funkce, budete omezeni na parametry této funkce.
 * Funkce nemůže volat jiné uživatelsky definované funkce.
-* Funkce nemůže používat odkazovou [funkci](resource-group-template-functions-resource.md#reference).
+* Funkce nemůže používat [odkazovou funkci](resource-group-template-functions-resource.md#reference).
 * Parametry pro funkci nemohou mít výchozí hodnoty.
 
 Vaše funkce vyžadují hodnotu oboru názvů, aby se zabránilo konfliktům názvů s funkcemi šablon. Následující příklad ukazuje funkci, která vrací název účtu úložiště:
@@ -501,11 +450,11 @@ Provedete definování prostředků s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| condition | Ne | Logická hodnota, která označuje, jestli se prostředek zřídí během tohoto nasazení. Kdy `true`se prostředek vytvoří během nasazování. Kdy `false`se prostředek pro toto nasazení přeskočí. Zobrazit [podmínku](#condition). |
+| condition | Ne | Logická hodnota, která označuje, jestli se prostředek zřídí během tohoto nasazení. Kdy `true`se prostředek vytvoří během nasazování. Kdy `false`se prostředek pro toto nasazení přeskočí. Viz [podmíněné nasazení](conditional-resource-deployment.md). |
 | apiVersion |Ano |Verze REST API, která se má použít k vytvoření prostředku Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací oboru názvů poskytovatele prostředků a typu prostředku (například **Microsoft. Storage/storageAccounts**). Chcete-li zjistit dostupné hodnoty, přečtěte si téma [Reference k šabloně](/azure/templates/). U podřízených prostředků závisí formát typu na tom, jestli je vnořený v nadřazeném prostředku nebo definovaný mimo nadřazený prostředek. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
 | name |Ano |Název prostředku. Název musí splňovat omezení součásti identifikátoru URI definovaná v RFC3986. Kromě toho služby Azure, které zveřejňují název prostředku mimo jiné, ověřují název, abyste se ujistili, že se nejedná o pokus o falšování jiné identity. U podřízeného prostředku formát názvu závisí na tom, jestli je vnořený v nadřazeném prostředku nebo definovaný mimo nadřazený prostředek. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
-| location |Různé |Podporovaná geografická umístění poskytnutého prostředku Můžete vybrat kterékoli z dostupných umístění, ale obvykle dává smysl vybrat, která je blízko vašim uživatelům. Obvykle má smysl umístit prostředky, které vzájemně spolupracují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (například přiřazení role) nevyžadují umístění. |
+| location |Různé |Podporovaná geografická umístění poskytnutého prostředku Můžete vybrat kterékoli z dostupných umístění, ale obvykle dává smysl vybrat, která je blízko vašim uživatelům. Obvykle má smysl umístit prostředky, které vzájemně spolupracují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (například přiřazení role) nevyžadují umístění. Viz [Nastavení umístění prostředku](resource-location.md) . |
 | značky |Ne |Značky, které jsou přidruženy k prostředku. Použijte značky pro logickou organizaci prostředků v rámci vašeho předplatného. |
 | vyjádření |Ne |Poznámky k dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
 | Kopírovat |Ne |Pokud je potřeba více než jedna instance, počet prostředků, které se mají vytvořit. Výchozí režim je paralelní. Zadejte sériový režim, pokud nechcete, aby se nasadily všechny nebo prostředky. Další informace najdete v tématu [vytvoření několika instancí prostředků v Azure Resource Manager](resource-group-create-multiple.md). |
@@ -515,31 +464,6 @@ Provedete definování prostředků s následující strukturou:
 | plnění | Ne | Některé prostředky umožňují hodnotu definující typ prostředku, který nasadíte. Můžete například zadat typ Cosmos DB, který se má vytvořit. |
 | rozhraní | Ne | Některé prostředky umožňují hodnoty definující plán, který se má nasadit. Můžete například zadat image Marketplace pro virtuální počítač. | 
 | prostředky |Ne |Podřízené prostředky závislé na definovaném prostředku. Poskytněte jenom typy prostředků, které jsou povolené schématem nadřazeného prostředku. Nepředpokládá se závislost na nadřazeném prostředku. Tuto závislost musíte explicitně definovat. Viz [Nastavení názvu a typu pro podřízené prostředky](child-resource-name-type.md). |
-
-### <a name="condition"></a>Podmínka
-
-V `condition` případě, že je nutné se při nasazení rozhodnout, zda chcete vytvořit prostředek, použijte element. Hodnota pro tento prvek je přeložena na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořen. Pokud je hodnota false, prostředek se nevytvoří. Hodnota se dá použít jenom u celého prostředku.
-
-Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek nebo použít existující. Pokud třeba chcete určit, jestli se má nový účet úložiště nasadit nebo použít existující účet úložiště, použijte:
-
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
-```
-
-Kompletní příklad šablony, která používá `condition` element, najdete v tématu [virtuální počítač s novým nebo existujícím Virtual Network, úložištěm a veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
-
-Použijete-li funkci [reference](resource-group-template-functions-resource.md#reference) nebo [list](resource-group-template-functions-resource.md#list) s prostředkem, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen. Pokud funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci [if](resource-group-template-functions-logical.md#if) a ujistěte se, že je funkce vyhodnocena pouze pro podmínky při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
 ### <a name="resource-names"></a>Názvy prostředků
 
@@ -592,65 +516,6 @@ U typů prostředků, ke kterým většinou přistupujete pomocí jiného prost�
   "type": "firewallrules",
   "name": "AllowAllWindowsAzureIps",
   ...
-}
-```
-
-### <a name="resource-location"></a>Umístění prostředku
-
-Při nasazování šablony je nutné zadat umístění každého prostředku. Různé typy prostředků jsou podporovány v různých umístěních. Pokud chcete získat podporovaná umístění pro typ prostředku, přečtěte si téma [poskytovatelé a typy prostředků Azure](resource-manager-supported-services.md).
-
-Pomocí parametru zadejte umístění pro prostředky a nastavte výchozí hodnotu na `resourceGroup().location`.
-
-Následující příklad ukazuje účet úložiště, který je nasazený do umístění zadaného jako parametr:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_ZRS",
-        "Premium_LRS"
-      ],
-      "metadata": {
-        "description": "Storage Account type"
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Location for all resources."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('storage', uniquestring(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "[parameters('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "storageAccountName": {
-      "type": "string",
-      "value": "[variables('storageAccountName')]"
-    }
-  }
 }
 ```
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 8174b2e8bc63db8954e596d831eb2f9cad2ba440
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 72019b3bf5c17525b9a0dd8afc126f1bfc248041
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211613"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274448"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -136,7 +136,7 @@ Pokud jste používali SAP HANA propojenou službu s následující datovou čá
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných sadou SAP HANA DataSet.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou SAP HANA DataSet.
 
 Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnosti:
 

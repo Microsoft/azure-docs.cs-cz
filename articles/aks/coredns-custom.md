@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 5a69882f6bb38ac8e005ce5552fe57383a58cc63
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 40c170575e0b6e6264eed8a464ac73012cbe8627
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542576"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276508"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
 Služba Azure Kubernetes Service (AKS) používá projekt [CoreDNS][coredns] pro správu DNS clusteru a řešení u všech clusterů *1.12. x* a vyšších. Dříve se použil projekt Kube-DNS. Tento projekt Kube-DNS je nyní zastaralý. Další informace o přizpůsobení CoreDNS a Kubernetes najdete v [oficiální dokumentaci pro odesílání dat][corednsk8s].
 
-Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci pro CoreDNS ( *CoreFile*). Místo toho použijete Kubernetes *ConfigMap* k přepsání výchozích nastavení. Pokud chcete zobrazit výchozí AKS CoreDNS ConfigMaps, použijte `kubectl get configmaps -namespace=kube-system coredns -o yaml` příkaz.
+Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci pro CoreDNS ( *CoreFile*). Místo toho použijete Kubernetes *ConfigMap* k přepsání výchozích nastavení. Pokud chcete zobrazit výchozí AKS CoreDNS ConfigMaps, použijte `kubectl get configmaps --namespace=kube-system coredns -o yaml` příkaz.
 
 V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS.
 
 > [!NOTE]
-> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není zpětně kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
+> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
 
 ## <a name="before-you-begin"></a>Před zahájením
 

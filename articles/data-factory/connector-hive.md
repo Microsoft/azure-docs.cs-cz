@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9bfa5aca56352f616b3527e65eec26fa635d1771
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 40f97c3b31a7e49c9a5ecc790e3cc762572ecaa3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966998"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276357"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 
@@ -94,7 +94,9 @@ Ke zkopírování dat z Hive, nastavte vlastnost typ datové sady na **HiveObjec
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **HiveObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
+| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky včetně části schématu Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a. `table` | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -103,11 +105,12 @@ Ke zkopírování dat z Hive, nastavte vlastnost typ datové sady na **HiveObjec
     "name": "HiveDataset",
     "properties": {
         "type": "HiveObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Hive linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

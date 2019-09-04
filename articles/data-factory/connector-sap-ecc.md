@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: a419bdcda3507dd82ec92f621e7405c87f0cb98f
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 3f51ad3d0a75ab1f0662ea0b747852fcb98e5026
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211637"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259048"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -51,7 +51,7 @@ Obecně SAP ECC zpřístupňuje entity prostřednictvím služby OData prostřed
 
 - **Nastavte bránu SAP**. Pro servery s verzemi SAP NetWeaver novějšími než 7,4 je už nainstalovaná brána SAP. V případě starších verzí musíte nainstalovat vloženou bránu SAP nebo centrum brány SAP a teprve potom vystavit data SAP ECC prostřednictvím služeb OData. Informace o nastavení brány SAP najdete v [instalační příručce](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
-- **Aktivujte a nakonfigurujte službu SAP OData**. Službu OData můžete aktivovat prostřednictvím TCODE SICF během několika sekund. Můžete taky nakonfigurovat, které objekty je potřeba zveřejnit. Další informace najdete v podrobných [pokynech](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
+- **Aktivujte a nakonfigurujte službu SAP OData**. Službu OData můžete aktivovat prostřednictvím TCODE SICF během několika sekund. Můžete taky nakonfigurovat, které objekty je potřeba zveřejnit. Další informace najdete v [podrobných pokynech](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
 
 ## <a name="prerequisites"></a>Požadavky
 

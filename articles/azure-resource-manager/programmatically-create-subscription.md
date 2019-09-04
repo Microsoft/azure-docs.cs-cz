@@ -1,18 +1,18 @@
 ---
 title: Vytváření předplatných Azure Enterprise prostřednictvím kódu programu | Microsoft Docs
-description: Naučte se vytvářet další předplatná Azure Enterprise nebo Enterprise pro vývoj/testování prostřednictvím kódu programu.
+description: Naučte se vytvářet další předplatná Azure Enterprise nebo Enterprise pro vývoj/testování programově.
 services: azure-resource-manager
 author: jureid
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: d6ae863aed629f5f5b1497d5a6e0f8108f4703c8
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 755eabe97508b403205ff04a8d2d35feee314eb9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848702"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258932"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Vytváření předplatných Azure Enterprise (Preview) prostřednictvím kódu programu
 
@@ -173,7 +173,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | Ne       | Řetězec | E-mailová adresa libovolného uživatele, který chcete přidat jako vlastníka RBAC v předplatném, když se vytvoří. Tento parametr můžete použít místo `OwnerObjectId`.|
 | `OwnerApplicationId` | Ne       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka RBAC v předplatném, když se vytvoří. Tento parametr můžete použít místo `OwnerObjectId`. Při použití tohoto parametru musí instanční objekt mít k [adresáři přístup pro čtení](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
 
-Úplný seznam všech parametrů naleznete v části [New-AzSubscription](/powershell/module/az.subscription.preview).
+Úplný seznam všech parametrů naleznete v části [New-AzSubscription](/powershell/module/az.subscription).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -203,7 +203,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 - Pomocí tohoto rozhraní API se dají vytvořit jenom předplatná Azure Enterprise.
 - Pro každý registrační účet je povolený limit 200 předplatných. Další předplatná pro tento účet se pak dají vytvořit jenom prostřednictvím centra účtů. Pokud chcete vytvořit další odběry prostřednictvím rozhraní API, vytvořte další účet pro zápis.
 - Uživatelé, kteří nejsou vlastníkem účtu, ale Přidali se k účtu pro zápis přes RBAC, nemůžou vytvářet předplatná pomocí centra účtů.
-- Nemůžete vybrat tenanta, ve kterém se má předplatné vytvořit. Předplatné se vždy vytvoří v domovském tenantovi vlastníka účtu. Pokud chcete přesunout předplatné do jiného tenanta, přečtěte si téma [Změna tenanta](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)předplatného.
+- Nemůžete vybrat tenanta, ve kterém se má předplatné vytvořit. Předplatné se vždy vytvoří v domovském tenantovi vlastníka účtu. Pokud chcete přesunout předplatné do jiného tenanta, přečtěte si téma [Změna tenanta předplatného](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="next-steps"></a>Další postup
 

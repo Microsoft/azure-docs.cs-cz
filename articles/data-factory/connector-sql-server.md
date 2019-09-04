@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 90d77d511c76d8d718c8b0b3dea9ef8536b2e864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 136f7e290947066e6d4ea4e9bb89d06fe9b2cac7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172646"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274535"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -40,7 +40,7 @@ Konkrétně tento konektor SQL Server podporuje:
 [SQL Server Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb?view=sql-server-2017) se nepodporuje.
 
 >[!NOTE]
->Tento konektor teď nepodporuje SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač SQL Server ODBC. Postupujte [](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) podle pokynů ke stažení ovladače ODBC a konfigurací připojovacích řetězců.
+>Tento konektor teď nepodporuje SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) . Pokud chcete tento problém obejít, můžete použít [obecný konektor ODBC](connector-odbc.md) a ovladač SQL Server ODBC. Postupujte [podle pokynů ke](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) stažení ovladače ODBC a konfigurací připojovacích řetězců.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -145,7 +145,7 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou SQL Server.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou SQL Server.
 
 Chcete-li kopírovat data z a do databáze SQL Server, jsou podporovány následující vlastnosti:
 
@@ -390,7 +390,7 @@ Připojení dat je výchozím chováním tohoto konektoru SQL Server jímky. Azu
 
 **Možnost 1:** Pokud máte ke kopírování velké množství dat, použijte následující postup k Upsert: 
 
-- Nejdřív použijte dočasnou [tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) k hromadnému načtení všech záznamů pomocí aktivity kopírování. Vzhledem k tomu, že operace s dočasnými tabulkami nejsou protokolovány, můžete načíst miliony záznamů během několika sekund.
+- Nejdřív použijte [dočasnou tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) k hromadnému načtení všech záznamů pomocí aktivity kopírování. Vzhledem k tomu, že operace s dočasnými tabulkami nejsou protokolovány, můžete načíst miliony záznamů během několika sekund.
 - Spuštěním aktivity uložené procedury v Azure Data Factory použijte příkaz [Merge](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) nebo INSERT/Update. Použijte dočasnou tabulku jako zdroj k provedení všech aktualizací nebo vložení jako jedné transakce. Tímto způsobem se sníží počet operací Round Trip a log. Na konci aktivity uložená procedura můžete dočasnou tabulku zkrátit, aby byla připravená na další Upsert cyklus.
 
 Jako příklad můžete v Azure Data Factory vytvořit kanál s **aktivitou kopírování** zřetězenou s **aktivitou uložené procedury**. Předchozí kopie dat ze zdrojového úložiště do dočasné tabulky databáze, například **# #UpsertTempTable**, jako název tabulky v datové sadě. Potom druhá potom vyvolá uloženou proceduru ke sloučení zdrojových dat z dočasné tabulky do cílové tabulky a vyčištění dočasné tabulky.
@@ -438,7 +438,7 @@ Když kopírujete data do databáze SQL Server, můžete také nakonfigurovat a 
 
 Uloženou proceduru můžete použít, pokud předdefinované mechanismy kopírování neslouží k tomuto účelu. Příkladem je, že chcete použít dodatečné zpracování před konečným vložením zdrojových dat do cílové tabulky. Některé další příklady zpracování jsou, když chcete sloučit sloupce, vyhledat další hodnoty a vložit data do více než jedné tabulky.
 
-Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v databázi SQL Server. Předpokládejme, že vstupní data a marketingová tabulka jímky mají tři sloupce: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
+Následující příklad ukazuje, jak použít uloženou proceduru k provedení Upsert do tabulky v databázi SQL Server. Předpokládejme, že vstupní data a **marketingová** tabulka jímky mají tři sloupce: **ProfileID**, **State**a **Category**. Proveďte Upsert na základě sloupce **ProfileID** a použijte ho jenom pro konkrétní kategorii s názvem "produkt".
 
 1. V databázi Definujte typ tabulky se stejným názvem jako **sqlWriterTableType**. Schéma typu tabulky je stejné jako schéma vrácené vašimi vstupními daty.
 
@@ -544,5 +544,5 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 5. Vytvořte **pravidlo pro bránu Windows Firewall** na počítači, aby se povolil příchozí přenos prostřednictvím tohoto portu. 
 6. **Ověřit připojení**: Pokud se chcete připojit k SQL Server pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z jiného počítače. Příklad: `"<machine>.<domain>.corp.<company>.com,1433"`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md##supported-data-stores-and-formats).

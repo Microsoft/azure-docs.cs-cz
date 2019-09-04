@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868686"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279425"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -48,7 +48,8 @@ Pro plánování použijte omezení shrnutá v této tabulce.
 **Plánování** | **Omezení**
 --- | --- 
 **Azure Migrate projekty** | Vyhodnoťte až 35 000 virtuálních počítačů v projektu.
-**Zařízení Azure Migrate** | Zařízení se může připojit jenom k jednomu vCenter Server.<br/><br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/> Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů.
+**Zařízení Azure Migrate** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů.<br/> Zařízení se může připojit jenom k jednomu vCenter Server.<br/> Zařízení může být přidruženo pouze k jednomu Azure Migrate projektu.<br/>  K jednomu Azure Migrate projektu může být přidružen libovolný počet zařízení. <br/><br/> 
+**Skupina** | Do jedné skupiny můžete přidat až 35 000 virtuálních počítačů.
 **Posouzení Azure Migrate** | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
 
 Tato omezení jsou uvedená v některých ukázkových nasazeních:
@@ -56,10 +57,10 @@ Tato omezení jsou uvedená v některých ukázkových nasazeních:
 
 **Server vCenter** | **Virtuální počítače na serveru** | **Doporučení** | **Akce**
 ---|---|---
-hodinu | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
-hodinu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
-Několik | < 10 000 |  Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
-Několik | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Hodinu | < 10 000 | Jeden Azure Migrate projekt.<br/> Jedno zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.
+Hodinu | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Nastavte zařízení pro každý virtuální počítač 10 000.<br/><br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Vícenásobný | < 10 000 |  Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Jeden účet vCenter pro zjišťování. | Nastavte zařízení, připojte se k vCenter Server pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
+Vícenásobný | > 10 000 | Jeden Azure Migrate projekt.<br/> Více zařízení.<br/> Několik účtů vCenter. | Pokud vCenter Server Discovery < 10 000 virtuálních počítačů, nastavte zařízení pro jednotlivé vCenter Server.<br/><br/> Pokud vCenter Server Discovery > 10 000 virtuálních počítačů, nastavte zařízení pro každých 10 000 virtuálních počítačů.<br/> Nastavte účty vCenter a vydělte inventář, abyste omezili přístup k účtu na méně než 10 000 virtuálních počítačů.<br/> Připojte každé zařízení k vCenter serveru pomocí účtu.<br/> Můžete analyzovat závislosti mezi počítači, které jsou zjištěny s různými zařízeními.
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Plánování zjišťování v prostředí s více klienty
@@ -99,7 +100,7 @@ V souladu s požadavky na plánování udělejte toto:
 Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-assess-vmware.md) .
     
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku:
  

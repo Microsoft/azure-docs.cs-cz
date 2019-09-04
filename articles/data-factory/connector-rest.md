@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966866"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276627"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu REST pomocí Azure Data Factory
 
@@ -61,7 +61,7 @@ Pro propojenou službu REST jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** musí být nastavená na **RestService**. | Ano |
 | url | Základní adresa URL služby REST. | Ano |
-| enableServerCertificateValidation | Určuje, zda se má při připojování ke koncovému bodu ověřit certifikát SSL na straně serveru. | Ne<br /> (výchozí hodnota je **true**) |
+| enableServerCertificateValidation | Zda se má při připojování ke koncovému bodu ověřit certifikát SSL na straně serveru. | Ne<br /> (výchozí hodnota je **true**) |
 | authenticationType | Typ ověřování, který se používá pro připojení ke službě REST Povolené hodnoty jsou **anonymní**, **Basic**, **AadServicePrincipal** a **ManagedServiceIdentity**. Další informace a příklady najdete v odpovídajících částech. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije tato vlastnost výchozí Azure Integration Runtime. |Ne |
 
@@ -175,50 +175,23 @@ Chcete-li kopírovat data z REST, jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** datové sady musí být nastavená na **RestResource**. | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Pokud tato vlastnost není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. | Ne |
-| requestMethod | Metoda HTTP Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
-| additionalHeaders | Další hlavičky požadavku HTTP | Ne |
-| částmi | Tělo požadavku HTTP | Ne |
-| paginationRules | Pravidla stránkování pro vytváření žádostí o další stránku. Podrobnosti najdete v části [Podpora stránkování](#pagination-support) . | Ne |
 
-**Příklad 1: Použití metody Get se stránkováním**
+Pokud jste `requestMethod`nastavování `additionalHeaders`, `requestBody` , `paginationRules` a v datové sadě, je stále podporováno tak, jak jsou, a když jste se rozhodli použít nový model ve zdroji aktivity, který je dál k dispozici.
+
+**Příklad:**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**Příklad 2: Použití metody post**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -237,10 +210,14 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **RestSource**. | Ano |
+| requestMethod | Metoda HTTP. Povolené hodnoty jsou **Get** (default) a **post**. | Ne |
+| additionalHeaders | Další hlavičky požadavku HTTP | Ne |
+| částmi | Tělo požadavku HTTP | Ne |
+| paginationRules | Pravidla stránkování pro vytváření žádostí o další stránku. Podrobnosti najdete v části [Podpora stránkování](#pagination-support) . | Ne |
 | httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Výchozí hodnota je **00:01:40**.  | Ne |
 | requestInterval | Doba, po kterou se má čekat před odesláním žádosti o další stránku. Výchozí hodnota je **00:00:01** . |  Ne |
 
-**Příklad**
+**Příklad 1: Použití metody Get se stránkováním**
 
 ```json
 "activities":[
@@ -262,6 +239,46 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+**Příklad 2: Použití metody post**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -274,7 +291,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 
 ## <a name="pagination-support"></a>Podpora stránkování
 
-Normálně REST API omezit velikost datové části odpovědi na jednu žádost v rozumném čísle; i když vrátí velké množství dat, rozdělí výsledek na více stránek a vyžaduje volajícím odeslání po sobě jdoucích požadavků na získání další stránky výsledku. Požadavek na jednu stránku je obvykle dynamický a skládá se z informací vrácených z odpovědi na předchozí stránku.
+Za normálních okolností REST API omezuje velikost datové části odpovědi na jednu žádost v rozumném čísle. i když vrátí velké množství dat, rozdělí výsledek na více stránek a vyžaduje volajícím odeslání po sobě jdoucích požadavků na získání další stránky výsledku. Požadavek na jednu stránku je obvykle dynamický a skládá se z informací vrácených z odpovědi na předchozí stránku.
 
 Tento obecný konektor REST podporuje následující vzory stránkování: 
 
@@ -285,7 +302,7 @@ Tento obecný konektor REST podporuje následující vzory stránkování:
 * Hlavička další žádosti = hodnota vlastnosti v aktuálním těle odpovědi
 * Hlavička další žádosti = hodnota hlavičky v aktuálních hlavičkách odpovědi
 
-**Pravidla stránkování** jsou definována jako slovník v datové sadě, který obsahuje jednu nebo více párů klíč-hodnota s rozlišováním velkých a malých písmen. Konfigurace se použije k vygenerování požadavku od druhé stránky. Konektor ukončí iteraci, když Získá stavový kód HTTP 204 (žádný obsah) nebo žádný výraz JSONPath v rámci "paginationRules" vrátí hodnotu null.
+**Pravidla stránkování** jsou definována jako slovník v datové sadě, který obsahuje jednu nebo více párů klíč-hodnota s rozlišováním velkých a malých písmen. Konfigurace se použije k vygenerování požadavku od druhé stránky. Konektor ukončí iteraci, když Získá stavový kód HTTP 204 (žádný obsah) nebo žádný z výrazů JSONPath v "paginationRules" vrátí hodnotu null.
 
 **Podporované klíče** v pravidlech stránkování:
 
@@ -336,23 +353,19 @@ Facebook Graph API vrátí odpověď v následující struktuře, kde adresa URL
 }
 ```
 
-Odpovídající konfigurace pro datovou sadu REST `paginationRules` je obzvláště následující:
+Odpovídající konfigurace zdroje aktivity pro kopírování REST `paginationRules` je obzvláště následující:
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```

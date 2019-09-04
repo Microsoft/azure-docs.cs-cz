@@ -1,26 +1,26 @@
 ---
-title: Kurz k filtrování, analýza dat pomocí výpočetních na hraničních zařízeních Azure Data Box | Dokumentace Microsoftu
+title: Kurz, ve kterém můžete filtrovat, analyzovat data s využitím výpočtů Azure Data Box Edge | Microsoft Docs
 description: Zjistěte, jak na Data Boxu Edge nakonfigurovat výpočetní roli a použít ji k transformaci dat před odesláním do Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924339"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277157"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Kurz: Transformace dat pomocí Azure Data Box Edge
 
-Tento kurz popisuje, jak nakonfigurovat výpočetní roli na zařízení s Azure Data Box Edge. Po dokončení konfigurace výpočetní roli Edge dat pole můžete transformovat data před jejich odesláním do Azure.
+V tomto kurzu se dozvíte, jak na zařízení Azure Data Box Edge nakonfigurovat výpočetní roli. Po nakonfigurování výpočetní role Data Box Edge může data před odesláním do Azure transformovat.
 
-Tento postup může trvat asi 10 až 15 minut na dokončení.
+Dokončení této procedury může trvat přibližně 10 až 15 minut.
 
 V tomto kurzu se naučíte:
 
@@ -33,107 +33,110 @@ V tomto kurzu se naučíte:
  
 ## <a name="prerequisites"></a>Požadavky
 
-Před nastavením výpočetní roli na vašem zařízení Data Box Edge, ujistěte se, že:
+Před nastavením výpočetní role na zařízení Data Box Edge se ujistěte, že:
 
-- Po dokončení aktivace zařízení Data Box Edge, jak je popsáno v [připojení, nastavení a aktivovat Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md).
+- Aktivovali jste zařízení Data Box Edge, jak je popsáno v tématu [připojení, nastavení a aktivace Azure Data box Edge](data-box-edge-deploy-connect-setup-activate.md).
 
 
 ## <a name="configure-compute"></a>Konfigurace výpočtů
 
-Konfigurace výpočtů na hranici vaší datové pole, vytvoříte prostředek služby IoT Hub.
+Pokud chcete na svém Data Box Edge nakonfigurovat výpočetní prostředky, vytvoříte prostředek IoT Hub.
 
-1. Na portálu Azure Data Box Edge prostředku přejdete na Přehled. V pravém podokně na **Compute** dlaždice, vyberte **Začínáme**.
+1. V Azure Portal prostředku Data Box Edge si přečtěte přehled. V pravém podokně na dlaždici **výpočty** **vyberte Začínáme**.
 
-    ![Začínáme s výpočetními prostředky](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
+    ![Začínáme se službou COMPUTE](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
 
-2. Na **nakonfigurovat hraniční výpočetní** dlaždice, vyberte **konfigurace výpočtů**.
-3. Na **nakonfigurovat hraniční výpočetní** okně zadejte následující:
+2. Na dlaždici **Konfigurace hraničních výpočtů** vyberte **Konfigurovat výpočetní**prostředky.
+3. V okně **Konfigurace hraničních výpočtů** zadejte následující:
 
    
-    |Pole  |Hodnota  |
+    |Pole  |Value  |
     |---------|---------|
-    |IoT Hub     | Vyberte si z **nové** nebo **existující**. <br> Ve výchozím nastavení slouží úrovně Standard (S1) a vytvoří prostředek IoT. Použít prostředek na úrovni free IoT, vytvořte si ho a potom vyberte existující prostředek. <br> V obou případech prostředek služby IoT Hub používá stejné předplatné a skupinu prostředků, která používá okraj pole Data prostředků.     |
-    |Název     |Zadejte název pro prostředek služby IoT Hub.         |
+    |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Data Box Edge.     |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
-    ![Začínáme s výpočetními prostředky](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
+    ![Začínáme se službou COMPUTE](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
-4. Vyberte **Vytvořit**. Vytvoření služby IoT Hub prostředků trvá několik minut. Po vytvoření prostředku služby IoT Hub **konfigurace výpočtů** dlaždice aktualizuje a zobrazí konfiguraci výpočtů. Potvrďte, že byl nakonfigurován hraniční výpočetní roli vyberte **zobrazení Compute** na **konfigurace výpočtů** dlaždici.
+4. Vyberte **Vytvořit**. Vytvoření prostředku IoT Hub trvá několik minut. Po vytvoření prostředku IoT Hub se aktualizuje a zobrazí **se konfigurace výpočtů na dlaždici** . Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte na dlaždici **Konfigurovat výpočty** možnost **Zobrazit výpočetní** prostředky.
     
-    ![Začínáme s výpočetními prostředky](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
+    ![Začínáme se službou COMPUTE](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
-    Když výpočetní roli okraj nastaven na hraniční zařízení, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení lze zobrazit v prostředku služby IoT Hub. Modul Runtime IoT Edge běží na tomto zařízení IoT Edge. V tomto okamžiku je pouze platformě Linux k dispozici pro zařízení IoT Edge.
+    > [!NOTE]
+    > Pokud je dialogové okno **Konfigurovat výpočetní** prostředí ukončeno, než je IoT Hub přidruženo k zařízení data box Edge, bude IoT Hub vytvořeno, ale není zobrazeno v konfiguraci výpočtů. 
+    
+    Když se na hraničním zařízení nastaví role hraničního zpracování, vytvoří se dvě zařízení: zařízení IoT a zařízení IoT Edge. Obě zařízení je možné zobrazit v prostředku IoT Hub. V tomto zařízení IoT Edge je spuštěn také modul runtime IoT Edge. V tomto okamžiku je k dispozici pouze Platforma Linux pro vaše zařízení IoT Edge.
 
 
 ## <a name="add-shares"></a>Přidat sdílené složky
 
-Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě složky: jedna sdílená složka Edge a jiné místní sdílenou složkou Edge.
+Pro jednoduché nasazení v tomto kurzu budete potřebovat dvě sdílené složky: jednu hranovou sdílenou složku a další hranovou místní sdílenou složku.
 
-1. Přidáte do sdílené složky Edge na zařízení podle následujících kroků:
+1. Pomocí následujících kroků přidejte na zařízení sdílenou složku Edge:
 
-    1. V prostředku okraj pole dat, přejděte na **hrany výpočetní > Začínáme**.
-    2. Na **přidání sdílených složek** dlaždice, vyberte **přidat**.
-    3. Na **přidat sdílenou složku** okně zadejte název sdílené složky a vyberte typ sdílené složky.
-    4. Chcete-li připojit sdílenou složku Edge, zaškrtněte políčko pro **použít sdílenou složku s výpočetními prostředky na Edge**.
-    5. Vyberte **účtu úložiště**, **službu Storage**, existující uživatele a pak vyberte **vytvořit**.
+    1. Ve svém prostředku Data Box Edge jděte na **Edge compute > Začínáme**.
+    2. Na dlaždici **Přidat sdílené složky** vyberte **Přidat**.
+    3. V okně **Přidat sdílenou složku** zadejte název sdílené složky a vyberte typ sdílené složky.
+    4. Pokud chcete připojit hraniční sdílenou složku, zaškrtněte políčko pro **použití sdílené složky s hraničními výpočty**.
+    5. Vyberte **účet úložiště**, **službu úložiště**, stávající uživatel a pak vyberte **vytvořit**.
 
-        ![Přidat do sdílené složky Edge](./media/data-box-edge-deploy-configure-compute/add-edge-share-1.png) 
+        ![Přidat hraniční sdílenou složku](./media/data-box-edge-deploy-configure-compute/add-edge-share-1.png) 
 
-    Pokud jste vytvořili místní sdílené složky systému souborů NFS, použijte možnost vzdáleného synchronizace (rsync) příkaz pro kopírování souborů do sdílené složky:
+    Pokud jste vytvořili místní sdílenou složku NFS, ke zkopírování souborů do sdílené složky použijte následující příkaz vzdálené synchronizace (rsync):
 
     `rsync <source file path> < destination file path>`
 
-    Další informace o příkaz rsync, přejděte na [Rsync dokumentaci](https://www.computerhope.com/unix/rsync.htm).
+    Další informace o příkazu rsync najdete v [dokumentaci k rsync](https://www.computerhope.com/unix/rsync.htm).
 
-    Vytvoření sdílené složky Edge a obdržíte oznámení o úspěšném vytvoření. Seznam sdílená složka může být aktualizován, ale musíte počkat, pro vytvoření sdílené složky na dokončení.
+    Vytvoří se sdílená složka Edge a obdržíte oznámení o úspěšném vytvoření. Seznam sdílených složek se může aktualizovat, ale musíte počkat na dokončení vytváření sdílené složky.
 
-2. Přidat do sdílené složky místní Edge na hraniční zařízení tak, že zopakujete všech kroků v předchozím kroku a zaškrtněte políčko pro **konfigurovat jako místní sdílený adresář Edge**. Data v místní sdílené složky zůstanou v zařízení.
+2. Přidejte do hraničního zařízení místní sdílenou složku tak, že zopakujete všechny kroky v předchozím kroku a zaškrtnete políčko **Konfigurovat jako hraniční místní sdílení**. Data v místní sdílené složce zůstanou v zařízení.
 
-    ![Přidat do sdílené složky místní Edge](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
+    ![Přidat místní sdílenou položku Edge](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. Vyberte **přidání sdílených složek** chcete zobrazit aktualizovaný seznam sdílených složek.
+3. Vyberte **Přidat sdílené složky** a zobrazte aktualizovaný seznam sdílených složek.
 
     ![Aktualizovaný seznam sdílených složek](./media/data-box-edge-deploy-configure-compute/add-edge-share-3.png) 
  
 
 ## <a name="add-a-module"></a>Přidat modul
 
-Můžete přidat vlastní nebo předem sestavených modulu. Neexistují žádné vlastní moduly na hraniční zařízení. Zjistěte, jak vytvořit vlastní modul, přejděte na [vývoje C# modulu pro vaše zařízení Data Box Edge](data-box-edge-create-iot-edge-module.md).
+Můžete přidat vlastní nebo předem sestavený modul. Na tomto hraničním zařízení nejsou žádné vlastní moduly. Další informace o tom, jak vytvořit vlastní modul, najdete v tématu [vývoj C# modulu pro zařízení data box Edge](data-box-edge-create-iot-edge-module.md).
 
-V této části přidáte do zařízení IoT Edge, které jste vytvořili vlastní modul [vývoje C# modulu pro vaše Data Box Edge](data-box-edge-create-iot-edge-module.md). Tento vlastní modul přijímá soubory z hraničních místní sdílenou složkou na hraniční zařízení a přesune je do sdílené složky Edge (cloud) na zařízení. Cloudové sdílené složky souborů předá do účtu úložiště Azure, který je spojen s cloudové sdílené složky.
+V této části přidáte vlastní modul do zařízení IoT Edge, které jste vytvořili v tématu [vývoj C# modulu pro data box Edge](data-box-edge-create-iot-edge-module.md). Tento vlastní modul přebírá soubory z hraniční místní sdílené složky na hraničním zařízení a přesouvá je do hraniční sdílené složky (Cloud) na zařízení. Sdílená složka cloudu pak tyto soubory vloží do účtu služby Azure Storage, který je přidružený ke sdílené složce cloudu.
 
-1. Přejděte na **hrany výpočetní > Začínáme**. Na **přidat moduly** dlaždice, vyberte typ scénáře jako **jednoduché**. Vyberte **Přidat**.
-2. V **konfigurace a přidání modulu** okně zadejte následující hodnoty:
+1. Začněte tím, že přejdete na **Edge compute >** . Na dlaždici **přidat moduly** vyberte typ scénáře **jednoduché**. Vyberte **Přidat**.
+2. V okně **Konfigurovat a přidat modul** zadejte následující hodnoty:
 
     
     |Pole  |Hodnota  |
     |---------|---------|
-    |Název     | Jedinečný název modulu. Tento modul je kontejner dockeru, který nasadíte do zařízení IoT Edge, přiřazené k hranici Data Box.        |
-    |Identifikátor URI image     | Obrázek, identifikátor URI pro odpovídající image kontejneru pro modul.        |
-    |Vyžadují se přihlašovací údaje.     | Pokud je zaškrtnuto, uživatelské jméno a heslo slouží k načtení modulů s odpovídající adresy URL.        |
-    |Vstupní sdílené složky     | Vyberte vstupní sdílené složky. Edge místní sdílené složky v tomto případě je vstupní sdílené složky. Modul se tady použít přesune soubory ze sdílené složky místní Edge do sdílené složky Edge ve kterém se nahrají do cloudu.        |
-    |Sdílená složka pro výstup     | Vyberte sdílenou složku výstupu. Výstup sdílená složka je sdílená složka Edge v tomto případě.        |
-    |Typ aktivační události     | Vyberte z **souboru** nebo **plán**. Soubor aktivační událost aktivuje se při každém výskytu události souborů, jako je soubor zapsán do vstupní sdílené složky. Naplánovanou aktivační událost se aktivuje, podle plánu, které jste definovali.         |
-    |Název triggeru     | Jedinečný název pro trigger.         |
-    |Proměnné prostředí| Volitelné informace, které vám pomohou definují prostředí, ve kterém se spustí modul.   |
+    |Name     | Jedinečný název modulu. Tento modul je kontejner Docker, který můžete nasadit do zařízení IoT Edge, které je přidružené k vašemu Data Box Edge.        |
+    |Identifikátor URI image     | Identifikátor URI image pro odpovídající image kontejneru pro modul        |
+    |Vyžadují se přihlašovací údaje.     | Pokud je zaškrtnuto, uživatelské jméno a heslo slouží k načtení modulů s porovnávací adresou URL.        |
+    |Vstupní sdílená složka     | Vyberte vstupní sdílenou složku. V tomto případě je v tomto případě vstupní sdílená složka Edge v místním prostředí. Pomocí tohoto modulu se přesunuly soubory z místní sdílené složky Edge do hraniční sdílené složky, kam se nahrají do cloudu.        |
+    |Výstupní sdílená složka     | Vyberte výstupní sdílenou složku. Sdílená složka Edge je v tomto případě výstupní sdílenou složkou.        |
+    |Typ aktivační události     | Vyberte ze **souboru** nebo **plánu**. Aktivační událost se aktivuje vždy, když dojde k události souboru, jako je například soubor, který je zapsán do vstupní sdílené složky. Naplánovaná aktivační událost se aktivuje na základě vámi definovaného plánu.         |
+    |Název triggeru     | Jedinečný název aktivační události.         |
+    |Proměnné prostředí| Volitelné informace, které vám pomůžou definovat prostředí, ve kterém se modul spustí   |
 
     ![Přidat a nakonfigurovat modul](./media/data-box-edge-deploy-configure-compute/add-module-1.png)
 
-3. Vyberte **Přidat**. Přidá modul. **Přidat modul** dlaždice aktualizuje a indikuje, že v modulu nasazení. 
+3. Vyberte **Přidat**. Modul se přidá. Aktualizace dlaždice **Přidat modul** , která označuje, že je modul nasazený 
 
-    ![Modul nasazení](./media/data-box-edge-deploy-configure-compute/add-module-2.png)
+    ![Nasazený modul](./media/data-box-edge-deploy-configure-compute/add-module-2.png)
 
 ### <a name="verify-data-transform-and-transfer"></a>Ověření transformace dat a jejich přenos
 
-V posledním kroku je zajistit, že modul je připojené a běží podle očekávání. Stav běhu modulu by měl být spuštěn pro vaše zařízení IoT Edge v prostředku služby IoT Hub.
+Posledním krokem je ujistit se, že je modul připojený a spuštěný podle očekávání. Běhový stav modulu by měl být spuštěný pro vaše IoT Edge zařízení v prostředku IoT Hub.
 
-Pokud chcete ověřit, zda je spuštěna v modulu, postupujte takto:
+Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
 
-1. Vyberte **přidat modul** dlaždici. Tím přejdete **moduly** okno. V seznamu modulů Identifikujte modul, který jste nasadili. Stav modulu runtime modulu, který jste přidali by měl být *systémem*.
+1. Vyberte dlaždici **Přidat modul** . Tím přejdete do okna **moduly** . V seznamu modulů Identifikujte modul, který jste nasadili. Běhový stav modulu, který jste přidali, by měl být *spuštěný*.
 
     ![Ověření transformace dat](./media/data-box-edge-deploy-configure-compute/verify-data-1.png)
  
-1.  V Průzkumníku souborů připojte místní hraniční a sdílených složek Edge, který jste vytvořili dříve.
+1.  V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
     ![Ověření transformace dat](./media/data-box-edge-deploy-configure-compute/verify-data-2.png) 
  
@@ -145,11 +148,11 @@ Pokud chcete ověřit, zda je spuštěna v modulu, postupujte takto:
 
     ![Ověření transformace dat](./media/data-box-edge-deploy-configure-compute/verify-data-4.png)  
 
-    Data a odešle na účet úložiště z cloudové sdílené složky. K zobrazení dat, přejděte Průzkumníka služby Storage.
+    Data se pak odešlou ze sdílené složky cloudu do účtu úložiště. Data zobrazíte tak, že přejdete na Průzkumník služby Storage.
 
     ![Ověření transformace dat](./media/data-box-edge-deploy-configure-compute/verify-data-5.png) 
  
-Dokončení procesu ověření.
+Dokončili jste proces ověření.
 
 
 ## <a name="next-steps"></a>Další postup
@@ -162,7 +165,7 @@ V tomto kurzu jste se naučili:
 > * Přidání výpočetního modulu
 > * Ověření transformace dat a jejich přenos
 
-Další informace o správě zařízení Data Box Edge najdete v tématu:
+Informace o tom, jak spravovat zařízení Data Box Edge, najdete tady:
 
 > [!div class="nextstepaction"]
 > [Správa Data Boxu Edge pomocí místního webového uživatelského rozhraní](data-box-edge-manage-access-power-connectivity-mode.md)

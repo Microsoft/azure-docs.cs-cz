@@ -7,18 +7,16 @@ ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f88ecb782598cabacc29f97ee3225a5abf280a84
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232324"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241143"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
 Prostředky, které jsou pro nekompatibilní **deployIfNotExists** zásady můžou být přepnuté do vyhovujícího stavu prostřednictvím **nápravy**. K nápravě se dá dát pokyn Azure Policy, aby se na vašich stávajících prostředcích spouštěla **deployIfNotExists** účinek přiřazených zásad. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Jak funguje opravy zabezpečení
 
@@ -187,7 +185,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 Další rutiny a příklady pro nápravu najdete v tématu [AZ. PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) Module.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).

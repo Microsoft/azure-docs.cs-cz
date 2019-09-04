@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 25741eebc305c18f789497ab0859adf22687eaa5
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 5469bd835b189df66c22a3fc13e91c435b4be73f
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257713"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -76,7 +76,7 @@ Připojení přes geopolitické oblasti není pomocí standardní SKU pro Expres
 
 Následující tabulka uvádí umístění připojení a poskytovatele služby pro každé umístění. Seznam poskytovatelů služeb a umístění, ve kterých působí, najdete v článku [Umístění podle poskytovatelů služeb](expressroute-locations.md). 
 
-**Místní oblasti Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) v každém umístění partnerského vztahu mají přístup. není k dispozici, znamená to, že ExpressRoute Local není v tomto umístění partnerského vztahu k dispozici.
+**Místní oblasti Azure** jsou ty, které [ExpressRoute místní](expressroute-faqs.md) v každém umístění partnerského vztahu mají přístup. není **k dispozici, znamená to** , že ExpressRoute Local není v tomto umístění partnerského vztahu k dispozici.
 
 
 ### <a name="production-azure"></a>Produkční prostředí Azure
@@ -96,8 +96,8 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Kodaňských** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | neuvedeno | Interxion |
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | neuvedeno | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | Západní střed USA | CoreSite, Megaport, Zayo |
-| **Dubai** | Etisalat Spojené arabské emiráty | Spojené arabské emiráty – sever | Etisalat Spojené arabské emiráty |
-| **Dubai2** | du dataměna | Spojené arabské emiráty – sever | du dataměna, Orixcom |
+| **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | Spojené arabské emiráty – sever | Etisalat Spojené arabské emiráty |
+| **Dubai2** | [du dataměna](http://datamena.com/solutions/data-centre) | Spojené arabské emiráty – sever | du dataměna, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | Severní Evropa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | neuvedeno | DE-CIX, Interxion, oranžová |
 | **Hongkong – zvláštní správní oblast** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | Východní Asie | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Megaport, NTT Communications, oranžová, PCCW Globaled, Tata Communications, Telia Carrier, Verizon |
@@ -118,7 +118,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | Japonsko – západ | Colt, Equinix, Internet Initiative Japonska Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | Francie – střed | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | neuvedeno | Megaport, NextDC |
-| **Québec** | 4Degrees | Kanada – východ | Bell Canada, Megaport |
+| **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | Kanada – východ | Bell Canada, Megaport |
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | Střed USA – jih | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | Brazílie – jih | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | USA – západ 2 | Aryaka Networks, Equinix, Level 3 Communications, Megaport, Telus, Zayo |

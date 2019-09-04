@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fcf56e8088af25c14c022039bf8862f2dc21c77a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172555"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277707"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -144,13 +144,13 @@ Pokud jste používali propojenou službu MySQL s následující datovou část�
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou MySQL.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou MySQL.
 
-Chcete-li kopírovat data z MySQL, nastavte vlastnost Type datové sady na **relační**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **Relační objekt** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **MySql** | Ano |
 | tableName | Název tabulky v databázi MySQL | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
@@ -160,15 +160,18 @@ Chcete-li kopírovat data z MySQL, nastavte vlastnost Type datové sady na **rel
     "name": "MySQLDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "MySqlTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MySQL linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Pokud jste `RelationalTable` používali typovou datovou sadu, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -176,11 +179,11 @@ Chcete-li kopírovat data z MySQL, nastavte vlastnost Type datové sady na **rel
 
 ### <a name="mysql-as-source"></a>MySQL jako zdroj
 
-Pokud chcete kopírovat data z MySQL, nastavte typ zdroje v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z MySQL, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MySqlSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -204,7 +207,7 @@ Pokud chcete kopírovat data z MySQL, nastavte typ zdroje v aktivitě kopírová
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "MySqlSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -214,6 +217,8 @@ Pokud chcete kopírovat data z MySQL, nastavte typ zdroje v aktivitě kopírová
     }
 ]
 ```
+
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
 ## <a name="data-type-mapping-for-mysql"></a>Mapování datových typů pro MySQL
 

@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak vytvořit a používat databáze, kont
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: de9b0a372d04b40a24b6dc0a8952722129f4a55f
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598497"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241213"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databázemi, kontejnery a položkami v Azure Cosmos DB
 
@@ -64,7 +64,7 @@ Kontejner služby Azure Cosmos je nezávislý na schématu kontejner položek. P
 
 Můžete nastavit [hodnotu TTL (Time to Live)](time-to-live.md) u vybraných položek v kontejneru Azure Cosmos nebo pro celý kontejner, aby se tyto položky korektně vymazaly ze systému. Azure Cosmos DB po vypršení platnosti položky automaticky odstraní. Také zaručuje, že dotaz prováděný na kontejneru nevrátí položky s vypršenou platností v rámci pevné vazby. Další informace najdete v tématu [Konfigurace TTL pro váš kontejner](how-to-time-to-live.md).
 
-Můžete použít možnost [změnit kanál](change-feed.md) k přihlášení k odběru protokolu operací, který je spravovaný pro každý logický oddíl vašeho kontejneru. Změna kanálu poskytuje protokol všech aktualizací provedených v kontejneru spolu s obrázky před a po. Další informace najdete v tématu sestavování reaktivních [aplikací pomocí změny kanálu](serverless-computing-database.md). Dobu uchování pro kanál změn můžete nakonfigurovat také pomocí zásady změnit kanál na kontejneru. 
+Můžete použít možnost [změnit kanál](change-feed.md) k přihlášení k odběru protokolu operací, který je spravovaný pro každý logický oddíl vašeho kontejneru. Změna kanálu poskytuje protokol všech aktualizací provedených v kontejneru spolu s obrázky před a po. Další informace najdete v tématu [sestavování reaktivních aplikací pomocí změny kanálu](serverless-computing-database.md). Dobu uchování pro kanál změn můžete nakonfigurovat také pomocí zásady změnit kanál na kontejneru. 
 
 Můžete registrovat [uložené procedury, triggery, uživatelsky definované funkce (UDF)](stored-procedures-triggers-udfs.md)a [postupy sloučení](how-to-manage-conflicts.md) pro váš kontejner Azure Cosmos. 
 
@@ -74,7 +74,7 @@ Kontejner Azure Cosmos je specializovaný na entity specifické pro rozhraní AP
 
 | Entita Azure Cosmos | SQL API | Rozhraní Cassandra API | Rozhraní API služby Azure Cosmos DB pro MongoDB | Rozhraní Gremlin API | Rozhraní Table API |
 | --- | --- | --- | --- | --- | --- |
-|Kontejner Azure Cosmos | Collection | Table | Kolekce | Graph | Table |
+|Kontejner Azure Cosmos | Kontejner | Table | Kolekce | Graph | Table |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Vlastnosti kontejneru Azure Cosmos
 
@@ -136,7 +136,7 @@ Položky Azure Cosmos podporují následující operace. K provedení operací m
 | --- | --- | --- | --- | --- | --- | --- |
 | Vložit, nahradí, odstranit, Upsert, přečtěte si | Ne | Ano | Ano | Ano | Ano | Ano |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o těchto úlohách a konceptech:
 

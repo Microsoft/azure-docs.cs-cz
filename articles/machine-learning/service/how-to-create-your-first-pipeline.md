@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: e81cc39157231c98e38305c70e046111ec062732
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128295"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278861"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
-V tomto článku se naučíte, jak pomocí [sady Azure Machine Learning SDK](https://aka.ms/aml-sdk)vytvořit, publikovat, spouštět a sledovat [kanál strojového učení](concept-ml-pipelines.md) .  Pomocí **kanálů ml** můžete vytvořit pracovní postup, který spojuje různé fáze ml, a pak tento kanál publikovat do svého pracovního prostoru Azure Machine Learning pro pozdější přístup nebo sdílení s ostatními.  Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními. 
+V tomto článku se naučíte, jak pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)vytvořit, publikovat, spouštět a sledovat [kanál strojového učení](concept-ml-pipelines.md) .  Pomocí **kanálů ml** můžete vytvořit pracovní postup, který spojuje různé fáze ml, a pak tento kanál publikovat do svého pracovního prostoru Azure Machine Learning pro pozdější přístup nebo sdílení s ostatními.  Kanály ML jsou ideální pro scénáře dávkového vyhodnocování, které používají různé výpočetní prostředky, místo jejich spouštění a sdílení pracovních postupů ML s ostatními. 
 
 I když můžete použít jiný typ kanálu, který se nazývá [kanál Azure](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2Fmachine-learning%2Fservice%2Fcontext%2Fml-context&view=azure-devops&tabs=yaml) pro automatizaci úloh v ml/CD pro CI, tento typ kanálu se nikdy neuloží do vašeho pracovního prostoru. [Porovnejte tyto různé kanály](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
 
@@ -163,9 +163,9 @@ Před použitím vytvořte pracovní prostor Azure Databricks. Pokud chcete vytv
 
 Pokud chcete připojit Azure Databricks jako cíl výpočetních prostředků, zadejte následující informace:
 
-* __Název výpočtu__datacihly: Název, který chcete přiřadit k tomuto výpočetnímu prostředku.
-* __Název pracovního prostoru__datacihly: Název pracovního prostoru Azure Databricks.
-* __Přístupový token__datacihly: Přístupový token, který se používá k ověření Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+* __Název výpočtu datacihly__: Název, který chcete přiřadit k tomuto výpočetnímu prostředku.
+* __Název pracovního prostoru datacihly__: Název pracovního prostoru Azure Databricks.
+* __Přístupový token datacihly__: Přístupový token, který se používá k ověření Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
 
 Následující kód ukazuje, jak připojit Azure Databricks jako výpočetní cíl s Azure Machine Learning SDK:
 
@@ -206,7 +206,7 @@ except ComputeTargetException:
     databricks_compute.wait_for_completion(True)
 ```
 
-Podrobnější příklad najdete v ukázkovém poznámkovém [bloku](https://aka.ms/pl-databricks) na GitHubu.
+Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-databricks) na GitHubu.
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
@@ -256,7 +256,7 @@ except ComputeTargetException:
     adla_compute.wait_for_completion(True)
 ```
 
-Podrobnější příklad najdete v ukázkovém poznámkovém [bloku](https://aka.ms/pl-adla) na GitHubu.
+Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-adla) na GitHubu.
 
 > [!TIP]
 > Azure Machine Learning kanály funguje jenom s daty uloženými v úložišti dat výchozího účtu Data Lake Analytics. Pokud data, je potřeba pracovat s je v jiné než výchozí úložiště, můžete použít [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke kopírování dat před školení.
@@ -270,9 +270,9 @@ from azureml.pipeline.steps import PythonScriptStep
 
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", processed_data1],
+    arguments=["--input", blob_input_data, "--output", output_data1],
     inputs=[blob_input_data],
-    outputs=[processed_data1],
+    outputs=[output_data1],
     compute_target=compute_target,
     source_directory=project_folder
 )
@@ -434,7 +434,7 @@ Můžete ho znovu povolit pomocí `p.enable()`. Další informace naleznete v t�
 
 Aby bylo možné optimalizovat a přizpůsobit chování kanálů, můžete provést několik věcí při ukládání do mezipaměti a opakovaném použití. Můžete například zvolit:
 + **Vypněte výchozí opakované použití pro krok spustit výstup** `allow_reuse=False` nastavením během [definice kroku](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Při použití kanálů ve spolupráci prostředí je klíč znovu použitelný, protože odstranění zbytečných běhů nabízí flexibilitu. Můžete se ale odhlásit z opakovaného použití.
-+ Rozšíříte pomocí **algoritmu hash nad skriptem**také absolutní cestu nebo relativní cesty k source_directory jiným souborům a adresářům pomocí`hash_paths=['<file or directory']` 
++ **Rozšíříte pomocí algoritmu hash nad skriptem**také absolutní cestu nebo relativní cesty k source_directory jiným souborům a adresářům pomocí`hash_paths=['<file or directory']` 
 + **Vynutí generování výstupu pro všechny kroky v běhu** s`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 Ve výchozím nastavení `allow_reuse` je pro kroky povolený a jenom hlavní soubor skriptu se vyhodnotí jako hash. Takže pokud skript pro daný krok zůstane stejný (`script_name`, vstupy a parametry), bude se znovu používat výstup spuštění předchozího kroku, úloha se neodešle do výpočetní služby a výsledky z předchozího běhu jsou hned dostupné pro další krok. .  
@@ -449,7 +449,7 @@ step = PythonScriptStep(name="Hello World",
 ```
  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Použití [tyto poznámkové bloky Jupyter v Githubu](https://aka.ms/aml-pipeline-readme) prozkoumat machine learning další kanály.
 - Podívejte se na referenční nápovědu sady SDK pro balíček [AzureML-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a balíček [AzureML-Pipelines-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 79a960b106cc9de4116e8e59b2fa17f48c896221
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 796d2a4730f5de8d2f294fb2b30a0616b81f3e59
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061455"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276237"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložišť dat z aplikace Microsoft Access pomocí Azure Data Factory
 
@@ -86,7 +86,7 @@ Pro propojenou službu Microsoft Access jsou podporovány následující vlastno
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou Microsoft Access.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou Microsoft Access.
 
 Chcete-li kopírovat data z aplikace Microsoft Access, jsou podporovány následující vlastnosti:
 

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061522"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276322"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -315,12 +315,12 @@ Tyto vlastnosti jsou podporovány pro Azure Blob propojené služby storage:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu s oddělovači](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
 
-Chcete-li kopírovat data z a do úložiště objektů BLOB v Parquet, textovém nebo binárním formátu, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro Azure BLOB v `location` nastavení v datové sadě založené na formátu:
+Chcete-li kopírovat data do úložiště objektů BLOB a z něj v Parquet, oddělený text, Avro nebo binární formát, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro Azure BLOB v `location` nastavení v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -362,7 +362,7 @@ Chcete-li kopírovat data z a do úložiště objektů BLOB v Parquet, textovém
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Chcete-li kopírovat data z a do úložiště objektů BLOB ve formátu ORC/Avro/JSON, nastavte vlastnost Type datové sady na **azureblobu**. Jsou podporovány následující vlastnosti.
+Chcete-li kopírovat data z a do úložiště objektů BLOB ve formátu ORC/JSON, nastavte vlastnost Type datové sady na **azureblobu**. Jsou podporovány následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -413,12 +413,12 @@ Chcete-li kopírovat data z a do úložiště objektů BLOB ve formátu ORC/Avro
 
 ### <a name="blob-storage-as-a-source-type"></a>Úložiště objektů BLOB jako typ zdroje
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Pokud chcete kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači a zdrojový soubor binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Chcete-li kopírovat data z a do úložiště objektů BLOB v **Parquet, textovém nebo binárním formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro Azure Blob `storeSettings` v nastavení ve zdroji kopírování založeném na formátu:
+Chcete-li kopírovat data do úložiště objektů BLOB a z něj v **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporu. možnost. Následující vlastnosti jsou podporovány pro Azure Blob `storeSettings` v nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Chcete-li kopírovat data z a do úložiště objektů BLOB v **Parquet, textov�
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Pokud chcete kopírovat data z úložiště objektů BLOB ve **formátu Orc, Avro nebo JSON**, nastavte typ zdroje v aktivitě kopírování na **BlobSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
+Pokud chcete kopírovat data z úložiště objektů BLOB ve **formátu ORC nebo JSON**, nastavte typ zdroje v aktivitě kopírování na **BlobSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Pokud chcete kopírovat data z úložiště objektů BLOB ve **formátu Orc, Avr
 
 ### <a name="blob-storage-as-a-sink-type"></a>Úložiště objektů BLOB jako typ jímky
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Pokud chcete kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači a zdrojový soubor binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Pokud chcete kopírovat data z úložiště objektů BLOB v **Parquet, textovém nebo binárním formátu**, přečtěte si článek formát [Parquet](format-parquet.md), formát [textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro Azure Blob `storeSettings` v nastavení v jímky kopírování na základě formátu:
+Chcete-li kopírovat data z úložiště objektů BLOB ve **formátu Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro Azure Blob `storeSettings` v nastavení v jímky kopírování na základě formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Pokud chcete kopírovat data z úložiště objektů BLOB v **Parquet, textovém
 
 #### <a name="other-format-sink"></a>Další jímka formátu
 
-Chcete-li kopírovat data do úložiště objektů BLOB ve **formátu ORC/Avro/JSON**, nastavte typ jímky v aktivitě kopírování na **BlobSink**. Následující vlastnosti jsou podporovány v **jímky** oddílu.
+Chcete-li kopírovat data do úložiště objektů BLOB ve **formátu ORC/JSON**, nastavte typ jímky v aktivitě kopírování na **BlobSink**. Následující vlastnosti jsou podporovány v **jímky** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

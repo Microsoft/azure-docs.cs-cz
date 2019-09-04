@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 6d122b3ac1504db0a2d22fea749c6c94174e4ff9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233144"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241785"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -114,7 +114,9 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že AKS je zdarma, nedají se uhradit žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
+V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že je AKS zdarma, nejsou k dispozici žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
+
+Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nemohu nastavit maxPods nižší než 30?
 
@@ -204,6 +206,7 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

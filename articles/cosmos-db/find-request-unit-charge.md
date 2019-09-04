@@ -4,14 +4,14 @@ description: Naučte se, jak najít poplatek za jednotku žádosti (RU) pro vše
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: 682273524269682f62cd386de1c9161888747f16
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093708"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240787"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najděte poplatek za jednotku žádosti v Azure Cosmos DB
 
@@ -176,7 +176,7 @@ V současné době můžete poplatek za požadavek najít v Azure Portal jenom p
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) a zajistěte ho s daty nebo vyberte existující účet, který už obsahuje data.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte kolekci, na které chcete pracovat.
+1. Otevřete podokno **Průzkumník dat** a pak vyberte kontejner, na kterém chcete pracovat.
 
 1. Vyberte **Nový dotaz**.
 
@@ -188,7 +188,7 @@ V současné době můžete poplatek za požadavek najít v Azure Portal jenom p
 
 ### <a name="use-the-mongodb-net-driver"></a>Použití ovladače MongoDB .NET
 
-Při použití oficiálního [ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/)můžete spustit příkazy voláním `RunCommand` metody pro `IMongoDatabase` objekt. Tato metoda vyžaduje implementaci `Command<>` abstraktní třídy:
+Při použití [oficiálního ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/)můžete spustit příkazy voláním `RunCommand` metody pro `IMongoDatabase` objekt. Tato metoda vyžaduje implementaci `Command<>` abstraktní třídy:
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -219,7 +219,7 @@ Další informace najdete v tématu [rychlý Start: Vytvoření webové aplikace
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>Použití ovladače MongoDB Node. js
 
-Při použití oficiálního [ovladače MongoDB Node. js](https://mongodb.github.io/node-mongodb-native/)lze spustit příkazy voláním `command` metody pro `db` objekt:
+Při použití [oficiálního ovladače MongoDB Node. js](https://mongodb.github.io/node-mongodb-native/)lze spustit příkazy voláním `command` metody pro `db` objekt:
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -301,7 +301,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 Další informace najdete v tématu [rychlý Start: Sestavte rozhraní API pro tabulky aplikaci pomocí sady .NET SDK a Azure Cosmos DB](create-table-dotnet.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o optimalizaci spotřeby RU najdete v těchto článcích:
 

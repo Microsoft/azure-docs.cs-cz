@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ae186209395078ed56a046aafdbe01bb513fc3a0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195261"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277432"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Použití aktivního učení ke zlepšení znalostní báze
 
@@ -28,7 +28,7 @@ Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte
 QnA Maker se učí nové variace otázek s implicitní a explicitní zpětnou vazbou.
  
 * [Implicitní zpětná vazba](#how-qna-makers-implicit-feedback-works) – seznámení s tím, že má uživatelská otázka více odpovědí s výsledky, které jsou velmi blízko a považuje se za zpětnou vazbu. K tomu nemusíte nic dělat.
-* [Explicitní názory](#how-you-give-explicit-feedback-with-the-train-api) – Pokud se ve znalostní bázi Knowledge Base vrátí více odpovědí s malým kolísáním skóre, klientská aplikace se zeptá, který dotaz je na správnou otázku. Explicitní zpětná vazba uživatele se pošle QnA Maker s využitím [rozhraní API](#train-api)pro vlaky. 
+* [Explicitní názory](#how-you-give-explicit-feedback-with-the-train-api) – Pokud se ve znalostní bázi Knowledge Base vrátí více odpovědí s malým kolísáním skóre, klientská aplikace se zeptá, který dotaz je na správnou otázku. Explicitní zpětná vazba uživatele se pošle QnA Maker s využitím [rozhraní API pro vlaky](#train-api). 
 
 Obě metody poskytují pořadí s podobnými dotazy, které jsou v clusteru.
 
@@ -56,7 +56,7 @@ Je důležité, aby QnA Maker získat explicitní zpětnou vazbu o tom, které o
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade verze modulu runtime pro použití aktivního učení
 
-Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, upgradujte [modul runtime](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) , aby tuto funkci používal. 
+Aktivní učení je podporované v modulu runtime verze 4.4.0 a vyšší. Pokud byla znalostní báze vytvořena v dřívější verzi, [upgradujte modul runtime](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) , aby tuto funkci používal. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Pokud chcete zobrazit návrhy, zapněte aktivní učení.
 
@@ -108,7 +108,7 @@ Robot nebo jiná klientská aplikace by se měli pomocí tohoto toku architektur
 * Robot určí explicitní zpětnou vazbu:
     * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)vyfiltrujte nízká skóre.
     * V robotu nebo klientské aplikaci můžete zobrazit seznam možných odpovědí na uživatele a získat zvolenou odpověď uživatele.
-* Robot [pošle vybranou odpověď zpátky do QnA maker](#bot-framework-sample-code) s využitím [rozhraní API](#train-api)pro vlaky.
+* Robot [pošle vybranou odpověď zpátky do QnA maker](#bot-framework-sample-code) s využitím [rozhraní API pro vlaky](#train-api).
 
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použijte vlastnost Top v žádosti GenerateAnswer k získání několika vyhovujících odpovědí.
@@ -196,7 +196,7 @@ Tělo JSON má několik nastavení:
 |`feedbackRecords`|array|Seznam zpětné vazby|
 |`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelný parametr.|
 |`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinný parametr.|
-|`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
+|`qnaID`|number|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 
 Ukázkový text JSON vypadá takto:
 
@@ -390,7 +390,7 @@ Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje 
 
 Osvědčené postupy při používání aktivního učení najdete v tématu [osvědčené postupy](../Concepts/best-practices.md#active-learning).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
  
 > [!div class="nextstepaction"]
 > [Použití metadat s rozhraním API GenerateAnswer](metadata-generateanswer-usage.md)

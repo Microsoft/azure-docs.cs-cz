@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147557"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277012"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -108,7 +108,7 @@ Tady je několik věcí, které můžete udělat ke snížení objemu dat:
 * [Omezte počet volání AJAX, která mohou být uvedena](../../azure-monitor/app/javascript.md#configuration) v každém zobrazení stránky, nebo vypněte vytváření sestav AJAX.
 * [Úpravou souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) vypněte moduly shromažďování, které nepotřebujete. Můžete se třeba rozhodnout, že čítače výkonu nebo data závislostí jsou nepostradatelná.
 * Rozdělení telemetrie mezi samostatné klíče instrumentace. 
-* Předem agregované metriky. Pokud do své aplikace vložíte volání TrackMetric, můžete snížit provoz pomocí přetížení, které přijímá výpočet průměrné a směrodatné odchylky dávky měření. Nebo můžete použít předagregaci [balíčku](https://www.myget.org/gallery/applicationinsights-sdk-labs).
+* Předem agregované metriky. Pokud do své aplikace vložíte volání TrackMetric, můžete snížit provoz pomocí přetížení, které přijímá výpočet průměrné a směrodatné odchylky dávky měření. Nebo můžete použít [předagregaci balíčku](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
 ## <a name="manage-the-maximum-daily-data-volume"></a>Správa maximální denní objem dat
 
@@ -119,6 +119,8 @@ Místo používání denního limitu objemu použijte [vzorkování](../../azure
 Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Application Insights klikněte na stránce **využití a odhadované náklady** na **denní limit**.
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-003.png)
+
+Chcete-li [změnit denní limit pomocí Azure Resource Manager](../../azure-monitor/app/powershell.md), vlastnost, která se má `dailyQuota`změnit, je.  Prostřednictvím Azure Resource Manager můžete také nastavit `dailyQuotaResetTime` a denní `warningThreshold`limit. 
 
 ## <a name="sampling"></a>Vzorkování
 [Vzorkování](../../azure-monitor/app/sampling.md) je metoda snížení míry, s jakou se telemetrie posílá do vaší aplikace, a přitom zachovává schopnost najít související události během vyhledávání diagnostiky. Zachováváte si také správné počty událostí.
@@ -179,7 +181,7 @@ Pro včasnou přihlášené služby Azure Application Insights stále existují 
 Aktuální ceny v měně a oblasti najdete v tématu [Application Insights ceny](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> V dubnu 2018 jsme zavedli nový cenový model pro monitorování Azure. [](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak [posoudit dopad přechodu na tento model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vašich způsobů používání a [jak se vyjádřit k novému modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model) .
+> V dubnu 2018 jsme [zavedli](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá jednoduchý model průběžných plateb v rámci kompletního portfolia monitorovacích služeb. Přečtěte si další informace o [novém cenovém modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak [posoudit dopad přechodu na tento model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vašich způsobů používání a [jak se vyjádřit k novému modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model) .
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Nároky na úroveň a předplatné Operations Management Suite
 
@@ -224,7 +226,7 @@ Vzhledem k tomu, že tato úroveň platí jenom pro zákazníky s předplatným 
 Pomocí správy prostředků Azure můžete napsat skript pro nastavení cenové úrovně. [Zjistěte jak](powershell.md#price).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vzorkování](../../azure-monitor/app/sampling.md)
 

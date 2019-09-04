@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616972"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241272"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Použití knihovny hromadného prováděcího modulu .NET k provádění hromadných operací v Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Aplikace "BulkImportSample" vygeneruje náhodné dokumenty a hromadně je naimpo
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   Programu pro import hromadné vytvoří novou databázi a kolekci s názvem databáze, název kolekce a propustnost hodnoty zadané v souboru App.config. 
+   Hromadný import vytvoří novou databázi a kontejner s názvem databáze, názvem kontejneru a hodnotami propustnosti zadanými v souboru App. config. 
 
 3. Následující objekt DocumentClient se inicializuje s přímým režimem připojení TCP:  
 
@@ -196,5 +196,5 @@ Zvažte následující body pro zajištění lepšího výkonu při použití hr
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o podrobnostech balíčku NuGet a poznámkách k verzi hromadné prováděcí knihovny .NET najdete v tématu[hromadné prováděcí informace sady SDK](sql-api-sdk-bulk-executor-dot-net.md). 

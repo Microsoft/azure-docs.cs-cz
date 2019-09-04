@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165196"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278814"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -40,7 +40,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s [](#notebookvm)vlastním cloudovým notebookem, [DSVM](#dsvm), [Azure Databricks](#aml-databricks)nebo [Azure Notebooks](#aznotebooks).
+Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)nebo [Azure Notebooks](#aznotebooks).
 
 Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local), [Jupyter Notebook Server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
@@ -76,7 +76,7 @@ Virtuální počítač poznámkového bloku je:
 
 + **Přizpůsobitelná**. I když máte spravovanou a zabezpečenou nabídku virtuálních počítačů, zachováte plný přístup k hardwarovým funkcím a přizpůsobíte ji na přání srdce. Můžete například rychle vytvořit nejnovější virtuální počítač s technologií NVidia V100 a provést tak podrobné ladění nové architektury sítě neuronové.
 
-Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, zastavte [virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
+Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, [zastavte virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
 
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
@@ -289,12 +289,12 @@ Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Posky
 
 Jak Azure Databricks spolupracuje se službou Azure Machine Learning:
 + Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
-+ Automatické funkce strojového [učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
++ [Automatické funkce strojového učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
 + Azure Databricks můžete použít jako cíl pro výpočetní prostředky z [kanálu Azure Machine Learning](concept-ml-pipelines.md).
 
 ### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru datacihly
 
-Vytvořte [cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)datacihly. Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
+Vytvořte [cluster datacihly](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
 **Vytvoření clusteru bude trvat několik minut.**
 
 Použijte tato nastavení:
@@ -326,10 +326,10 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte **připojit** .
 
-1. Monitoruje chyby, dokud se změnystavu nepřipojí, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
+1. Monitoruje chyby, dokud se změny stavu **nepřipojí**, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
 
    Zkuste cluster restartovat pomocí:
-   1. V levém podokně vyberte clustery.
+   1. V levém podokně vyberte **clustery**.
    1. V tabulce vyberte název vašeho clusteru.
    1. Na kartě **knihovny** vyberte **restartovat**.
 
@@ -408,8 +408,7 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
     Tento kód zapíše konfigurační soubor do souboru *. AzureML/config. JSON* .
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
-- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk)
-- Další informace o [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

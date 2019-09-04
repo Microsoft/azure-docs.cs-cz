@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535051"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279742"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Možnosti a požadavky transakce komerčního tržiště
 
@@ -75,7 +75,7 @@ Když publikujete nabídku bezplatné licence nebo přinesete vlastní licenci, 
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Ceny za průběžné platby a předplatné (založené na webu)
 
-Ceny pro WPay s průběžnými platbami a předplatnými při publikování nabídky s průběžnými platbami nebo předplatnými, společnost Microsoft poskytuje technologie a služby pro zpracování nákupů licencí softwaru, jejich vrácení a vratek. V tomto scénáři Vydavatel udělí Microsoftu, aby pro tyto účely jednal jako agent. Vydavatel umožňuje Microsoftu usnadňovat vydávání licenčních transakcí softwaru a přitom zachovává své označení jako prodávající, poskytovatel, distributor a poskytovatel licence.
+Při publikování nabídky s průběžnými platbami nebo předplatnými poskytuje společnost Microsoft technologii a služby pro zpracování nákupů licencí softwaru, vrácení a vratek. V tomto scénáři Vydavatel udělí Microsoftu, aby pro tyto účely jednal jako agent. Vydavatel umožňuje Microsoftu usnadňovat vydávání licenčních transakcí softwaru a přitom zachovává své označení jako prodávající, poskytovatel, distributor a poskytovatel licence.
 
 Microsoft umožňuje zákazníkům objednat, licencovat a používat software vydavatele v souvislosti s podmínkami a ujednáními z komerčního tržiště společnosti Microsoft i s licenční smlouvou pro koncového uživatele vydavatele. Vydavatelé musí poskytnout licenční smlouvu s koncovým uživatelem nebo vybrat [standardní kontrakt](https://docs.microsoft.com/azure/marketplace/standard-contract) při vytváření nabídky.
 

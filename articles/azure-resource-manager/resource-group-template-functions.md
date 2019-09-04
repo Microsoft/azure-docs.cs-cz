@@ -6,15 +6,15 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5333bfd8c7f7d24e497e4b7ba7da3543aee54da6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194765"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258886"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager funkce šablon
-Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](resource-group-authoring-templates.md#syntax).
+Tento článek popisuje všechny funkce, které můžete použít v šabloně Azure Resource Manager. Informace o používání funkcí v šabloně najdete v tématu [syntaxe šablony](template-expressions.md).
 
 Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definované funkce](resource-group-authoring-templates.md#functions).
 

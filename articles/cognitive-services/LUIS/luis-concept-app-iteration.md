@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2a540606a6f9cfa790a2244628e7f0b7bef35986
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639260"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256929"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>Cyklus vytváření aplikací pro LUIS
 Služba LUIS učí nejlepší v iterativní cyklus změny modelu, příklady utterance, publikování a shromažďování dat z koncového bodu dotazů. 
@@ -38,12 +38,12 @@ Dáte pokyn LUIS ignorovat projevy, které nejsou relevantní pro doménu vaší
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
 Až 15 až 30 různých projevy v každém záměru, s povinnými entitami, které jsou označené, budete muset [vlak](luis-how-to-train.md) [publikovat](luis-how-to-publish-app.md). Od publikovat oznámení o úspěchu použijte odkaz zobrazíte vašich koncových bodů. Ujistěte se, že jste aplikaci vytvořili a publikovali tak, aby byla dostupná v [oblastech koncového bodu](luis-reference-regions.md) , které potřebujete. 
 
-## <a name="https-endpoint-testing"></a>Testování koncového bodu HTTPS
-Umožní otestovat vaši aplikaci LUIS z koncového bodu HTTPS. Testování z koncového bodu umožňuje LUIS vybrat libovolný projevy s nízkou mírou spolehlivosti ke [kontrole](luis-how-to-review-endpoint-utterances.md).  
+## <a name="https-prediction-endpoint-testing"></a>Testování koncového bodu předpovědi HTTPS
+Aplikaci LUIS můžete testovat z koncového bodu předpovědi HTTPS. Testování z koncového bodu předpovědi umožňuje LUIS vybrat libovolný projevy s nízkou mírou spolehlivosti ke [kontrole](luis-how-to-review-endpoint-utterances.md).  
 
 ## <a name="recycle"></a>Koš
 
-Jakmile budete hotovi s cyklem vytváření, můžete začít znovu. Začněte s [kontrolou koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) Luis označený s nízkou spolehlivostí. Zkontrolujte tyto projevy záměr a entity. Jakmile zkontrolujete projevy, zkontrolujte seznam by měl být prázdný.  
+Jakmile budete hotovi s cyklem vytváření, můžete začít znovu. Začněte s [revizí koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) Luis označeného s nízkou spolehlivostí. Zkontrolujte tyto projevy záměr a entity. Jakmile zkontrolujete projevy, zkontrolujte seznam by měl být prázdný.  
 
 Zvažte [klonování](luis-concept-version.md#clone-a-version) aktuální verze do nové verze a pak zahajte změny v obsahu nové verze. 
 
@@ -53,4 +53,4 @@ Zvažte [klonování](luis-concept-version.md#clone-a-version) aktuální verze 
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [spolupráci](luis-concept-collaborator.md).
+Seznamte se s koncepty [spolupráci](luis-concept-keys.md).

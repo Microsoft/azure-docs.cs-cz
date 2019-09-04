@@ -4,15 +4,15 @@ description: Získejte odpovědi na nejčastější dotazy ohledně služby Azur
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066081"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240805"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -119,7 +119,7 @@ Když nastavíte oblast, mějte na paměti, že služby Azure Cosmos DB respektu
 
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Je možné přejít z úrovně propustnosti kontejneru zřizování zřizování úrovně propustnosti databáze? Nebo naopak
 
-Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabídky a přepínání mezi některý z těchto vyžadují migraci dat ze zdroje do cíle. Což znamená, že budete muset vytvořit novou databázi nebo nové kolekce a potom migrovat data s využitím [hromadné prováděcí modul knihovny](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabídky a přepínání mezi některý z těchto vyžadují migraci dat ze zdroje do cíle. To znamená, že je potřeba vytvořit novou databázi nebo nový kontejner a pak migrovat data pomocí [knihovny hromadného prováděcího modulu](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Služby Azure cosmos DB podporuje řadu analýza?
 
@@ -149,7 +149,8 @@ Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako Java
 
 Kontejner je skupina dokumentů a jejich přidružené logiky Javascriptové aplikace. Kontejner je fakturovatelná entita, kde [náklady](performance-levels.md) se určuje podle propustnosti a úložiště použít. Kontejnery můžou pokrývat jeden nebo více oddílů nebo serverů a můžete škálovat tak, aby zvládaly prakticky neomezené objemy úložišť a propustnosti.
 
-* Pro rozhraní SQL API a rozhraní Cosmos DB API pro účty MongoDB se kontejner mapuje na kolekci.
+* Pro rozhraní SQL API se kontejner mapuje na kontejner.
+* Pro Cosmos DB rozhraní API pro účty MongoDB se kontejner mapuje na kolekci.
 * Pro účty Cassandra a rozhraní Table API služby kontejneru mapuje na tabulku.
 * Pro účty rozhraní Gremlin API kontejner mapuje do grafu.
 
@@ -157,7 +158,7 @@ Kontejnery jsou také entitami fakturace pro službu Azure Cosmos DB. Každý ko
 
 ### <a name="how-do-i-create-a-database"></a>Jak vytvořím databázi?
 
-Databáze můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com), jak je popsáno v [přidat kolekci](create-sql-api-java.md#add-a-container), jeden z [sady SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/cosmos-db/).
+Databáze můžete vytvářet pomocí [Azure Portal](https://portal.azure.com), jak je popsáno v tématu [Přidání kontejneru](create-sql-api-java.md#add-a-container), jedna ze sady [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)nebo [rozhraní REST API](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak nastavím uživatele a oprávnění?
 
@@ -179,7 +180,7 @@ Chcete-li použít optimistickou souběžnost v rozhraní .NET, použijte [Acces
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Jak provádět transakce v rozhraní SQL API?
 
-Rozhraní SQL API podporuje transakce integrované do jazyka prostřednictvím JavaScriptu uložené procedury a triggery. Všechny databázové operace ve skriptech se spouští v izolaci snímku. Pokud se jedná kolekci s jedním oddílem, provádění působí na kolekci. Pokud je kolekce rozdělená na oddíly, provádění působí na dokumenty se stejnou hodnotou klíče oddílu v rámci kolekce. Na začátku transakce se pořídí snímek verzí dokumentů (ETagy) a k potvrzení dojde pouze v případě, že skript uspěje. Pokud JavaScript vyvolá chybu, transakce se vrátí zpět. Další informace najdete v tématu [programování v jazyce JavaScript na straně serveru pro službu Azure Cosmos DB](stored-procedures-triggers-udfs.md).
+Rozhraní SQL API podporuje transakce integrované do jazyka prostřednictvím JavaScriptu uložené procedury a triggery. Všechny databázové operace ve skriptech se spouští v izolaci snímku. Pokud se jedná o kontejner s jedním oddílem, je spuštění vymezeno na kontejner. Pokud je kontejner rozdělený, je spuštění vymezeno na dokumenty se stejnou hodnotou klíče oddílu v rámci kontejneru. Na začátku transakce se pořídí snímek verzí dokumentů (ETagy) a k potvrzení dojde pouze v případě, že skript uspěje. Pokud JavaScript vyvolá chybu, transakce se vrátí zpět. Další informace najdete v tématu [programování v jazyce JavaScript na straně serveru pro službu Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak lze I hromadného vložení dokumenty do služby Cosmos DB?
 
@@ -191,7 +192,7 @@ Vám může hromadného vložení dokumenty do služby Azure Cosmos DB v jednom 
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Podporuje rozhraní SQL API podpory resource link ukládání do mezipaměti?
 
-Ano, protože Azure Cosmos DB je služba RESTful, odkazy na prostředky jsou neměnné a lze uložit do mezipaměti. Rozhraní SQL API klientů můžete zadat hlavičku "If-None-Match" pro čtení pro libovolný dokument jako prostředek nebo kolekci a pak aktualizujte své místní kopie po změně verze serveru.
+Ano, protože Azure Cosmos DB je služba RESTful, odkazy na prostředky jsou neměnné a lze uložit do mezipaměti. Klienti rozhraní SQL API mohou zadat hlavičku "If-None-Match" pro čtení na libovolný dokument nebo kontejner, který odpovídá prostředkům, a po změně verze serveru aktualizovat jejich místní kopie.
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Je k dispozici místní instance systému SQL API?
 
@@ -225,7 +226,7 @@ Spolu s běžnými kódy chyb MongoDB má rozhraní API Azure Cosmos DB pro Mong
 
 | Chyba               | Kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je větší než počet zřízených jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů Azure portal nebo opakuje akci. |
+| TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je vyšší než zřízené procento požadavků a Jednotková sazba pro daný kontejner a byla omezena. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů Azure portal nebo opakuje akci. |
 | ExceededMemoryLimit | 16501 | Jako víceklientská služba operace přešel přes klienta přidělení paměti. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad: <em> &nbsp; DB.&nbsp;GetCollection (' Users '). Aggregate ([ &nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {Age:-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Je ovladač Simba pro MongoDB podporovaný pro použití s rozhraním API Azure Cosmos DB pro MongoDB?
@@ -523,7 +524,7 @@ Poplatek za RU vychází z pracovní sady dat procházení a nastavte není výs
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaký je maximální rozsah, který může mít databázi grafu v rozhraní Gremlin API služby Azure Cosmos DB?
 
-Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky adresu zvýšení požadavky na úložiště a propustnost. Maximální propustnost a úložiště kapacitu úloh se určuje podle počtu oddílů, které jsou spojené s danou kolekci. Rozhraní Gremlin API kolekce má ale konkrétní sadu pokynů k zajištění řádné výkon ve velkém měřítku. Další informace o vytváření oddílů a osvědčených postupech najdete v části [dělení ve službě Azure Cosmos DB](partition-data.md) článku.
+Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky adresu zvýšení požadavky na úložiště a propustnost. Maximální propustnost a kapacita úložiště úloh se určují podle počtu oddílů, které jsou přidružené k danému kontejneru. Kontejner rozhraní API Gremlin ale obsahuje specifickou sadu pokynů, které zajistí správné prostředí výkonu ve velkém měřítku. Další informace o vytváření oddílů a osvědčených postupech najdete v části [dělení ve službě Azure Cosmos DB](partition-data.md) článku.
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače?
 

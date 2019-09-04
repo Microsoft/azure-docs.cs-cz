@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186445"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259156"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postup zpracování a extrakce informací z imagí ve scénářích hledání v rozpoznávání
 
@@ -34,16 +34,15 @@ Normalizaci imagí nelze vypnout. Dovednosti, které iterují na obrázky, oček
 | Konfigurační parametr | Popis |
 |--------------------|-------------|
 | imageAction   | Nastavte na None, pokud by se při výskytu vložených obrázků nebo souborů obrázků neměla dělat žádná akce. <br/>Nastavte na "generateNormalizedImages", aby se vygenerovalo pole normalizovaných imagí jako součást odhalujícího dokumentu.<br/>Nastavte na "generateNormalizedImagePerPage", chcete-li generovat pole normalizovaných imagí, kde pro soubory PDF ve zdroji dat jsou jednotlivé stránky vykresleny do jedné výstupní image.  Funkce je stejná jako "generateNormalizedImages" pro typy souborů, které nejsou ve formátu PDF.<br/>V případě jakékoli možnosti, která není "none", budou obrázky zobrazeny v poli *normalized_images* . <br/>Výchozí hodnota je None. Tato konfigurace je relevantní pouze pro zdroje dat objektů blob, pokud je "dataToExtract" nastaven na "contentAndMetadata". <br/>Z daného dokumentu bude extrahováno maximálně 1000 imagí. Pokud je v dokumentu více než 1000 obrázků, bude extrahován první 1000 a bude vygenerováno upozornění. |
-|  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000.|
-|  normalizedImageMaxHeight | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000.|
+|  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. Maximální povolená hodnota je 10000. | 
+|  normalizedImageMaxHeight | Maximální výška (v pixelech) pro vygenerované normalizované bitové kopie. Výchozí hodnota je 2000. Maximální povolená hodnota je 10000.|
 
 > [!NOTE]
 > Pokud nastavíte vlastnost *imageAction* na jinou hodnotu než None, nebudete moci nastavit vlastnost *parsingMode* na jinou hodnotu než "default".  V konfiguraci indexeru můžete nastavit jenom jednu z těchto dvou vlastností na jinou než výchozí hodnotu.
 
 Nastavte parametr **parsingMode** na `json` (Chcete-li indexovat každý objekt BLOB jako jeden dokument `jsonArray` ) nebo (Pokud objekty blob obsahují pole JSON a potřebujete, aby každý prvek pole byl považován za samostatný dokument).
 
-Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). Pokud zvýšíte maximální limity, zpracování na větších obrázcích by mohlo selhat.
-
+Výchozí hodnota 2000 pixelů pro normalizované maximální šířky a výšky obrázků je založena na maximální velikosti podporované [dovedností OCR](cognitive-search-skill-ocr.md) a [dovedností analýzy obrázků](cognitive-search-skill-image-analysis.md). [Dovednost optického rozpoznávání znaků](cognitive-search-skill-ocr.md) podporuje maximální šířku a výšku 4200 pro jiné než anglické jazyky a 10000 pro angličtinu.  Pokud zvýšíte maximální limity, zpracování na větších obrázcích může selhat v závislosti na definici dovednosti a jazyku dokumentů. 
 
 ImageAction v [definici indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer) zadáte následujícím způsobem:
 

@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164375"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240300"
 ---
 ::: zone target = "docs"
 

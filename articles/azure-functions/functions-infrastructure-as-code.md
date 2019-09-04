@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 3d60e5e4aae3457ae04cd7e4ecfe4f9253a04751
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085401"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276828"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -195,16 +195,22 @@ Plán spotřeby není nutné definovat. Při vytváření samotného prostředku
 Plán spotřeby je speciální typ prostředku "serverová farma". V případě systému Windows jej můžete zadat pomocí `Dynamic` hodnoty `computeMode` vlastností a `sku` :
 
 ```json
-{
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "computeMode": "Dynamic",
-        "sku": "Dynamic"
-    }
+{  
+   "type":"Microsoft.Web/serverfarms",
+   "apiVersion":"2016-09-01",
+   "name":"[variables('hostingPlanName')]",
+   "location":"[resourceGroup().location]",
+   "properties":{  
+      "name":"[variables('hostingPlanName')]",
+      "computeMode":"Dynamic"
+   },
+   "sku":{  
+      "name":"Y1",
+      "tier":"Dynamic",
+      "size":"Y1",
+      "family":"Y",
+      "capacity":0
+   }
 }
 ```
 
@@ -511,7 +517,7 @@ Aplikace pro Linux by měly také `linuxFxVersion` obsahovat `siteConfig`vlastno
 }
 ```
 
-Pokud nasazujete [vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](/azure/app-service/containers). Nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` také na `false`, protože obsah vaší aplikace je k dispozici v kontejneru samotném:
+Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](/azure/app-service/containers). Nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` také na `false`, protože obsah vaší aplikace je k dispozici v kontejneru samotném:
 
 ```json
 {

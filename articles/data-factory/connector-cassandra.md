@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b42313a83be413a9c34a45fca946ea165f8fc9a3
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7d3f29327f9a671a631b01ad688da3a523a7b0c8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967042"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275846"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -93,7 +93,7 @@ Pro propojenou službu Cassandra jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných Cassandra DataSet.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných Cassandra DataSet.
 
 Chcete-li kopírovat data z Cassandra, nastavte vlastnost Type datové sady na **CassandraTable**. Podporovány jsou následující vlastnosti:
 

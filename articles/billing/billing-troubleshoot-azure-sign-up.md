@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657070"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242434"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Řešení potíží s registrací Azure
 
@@ -55,7 +55,7 @@ Pomocí následujících kroků aktualizujte nastavení souborů cookie v prohl�
 
 1. Pokud používáte Chrome, vyberte **Nastavení** > **Zobrazit upřesňující nastavení** > **Nastavení obsahu** **ochrany osobních údajů** > . Vymazat **blokování souborů cookie třetích stran a dat lokality**.
 
-2. Pokud používáte Microsoft Edge, vyberte **Nastavení** > **Zobrazit Upřesnit nastavení** > **soubory cookie** > neblokovat**soubory cookie**.
+2. Pokud používáte Microsoft Edge, vyberte **Nastavení** > **Zobrazit Upřesnit nastavení** > **soubory cookie** > **neblokovat soubory cookie**.
 
 3. Aktualizujte přihlašovací stránku Azure a potom zkontrolujte, jestli je problém vyřešený.
 
@@ -80,15 +80,15 @@ Když dostanete textovou zprávu nebo telefonní hovor, zadejte kód, který se 
 
 ### <a name="credit-card-declined-or-not-accepted"></a>Platební karta byla zamítnuta nebo přijata.
 
-Virtuální nebo předem placené kreditní a debetní karty se jako platba za předplatná Azure neakceptují. Další informace o tom, co další může způsobit odmítnutí vaší karty, najdete v článku o [registraci v Azure](https://support.microsoft.com/help/4042960), pokud se vaše debetní karta nebo platební karta neodmítly.
+Virtuální nebo předem placené kreditní a debetní karty se jako platba za předplatná Azure neakceptují. Další informace o tom, co další může způsobit odmítnutí vaší karty, najdete v článku o registraci v Azure, pokud se vaše debetní karta nebo platební karta [neodmítly](https://support.microsoft.com/help/4042960).
 
 ### <a name="free-trial-is-not-available"></a>Bezplatná zkušební verze není k dispozici.
 
-Použili jste v minulosti předplatné Azure? Smlouva o podmínkách použití Azure omezuje aktivaci bezplatné zkušební verze pouze na nové uživatele Azure. Pokud jste už měli nějaký jiný typ předplatného Azure, nemůžete si aktivovat bezplatnou zkušební verzi. Zvažte registraci k předplatnému s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
+Použili jste v minulosti předplatné Azure? Smlouva o podmínkách použití Azure omezuje aktivaci bezplatné zkušební verze pouze na nové uživatele Azure. Pokud jste už měli nějaký jiný typ předplatného Azure, nemůžete si aktivovat bezplatnou zkušební verzi. Zvažte registraci k [předplatnému](https://azure.microsoft.com/offers/ms-azr-0003p/)s průběžnými platbami.
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Na účtu bezplatné zkušební verze se mi účtuje poplatek
 
-Po registraci se na účtu platební karty může zobrazit malý ověřovací symbol. Tento postup je odebraný do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o tom, jak [zabránit](billing-getting-started.md)neočekávaným nákladům.
+Po registraci se na účtu platební karty může zobrazit malý ověřovací symbol. Tento postup je odebraný do tří až pěti dnů. Pokud máte obavy o správu nákladů, přečtěte si další informace o tom, jak [zabránit neočekávaným nákladům](billing-getting-started.md).
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Nejde aktivovat plán výhod Azure, jako je MSDN, BizSpark, BizSparkPlus nebo MPN.
 
@@ -96,17 +96,17 @@ Ujistěte se, že používáte správné přihlašovací údaje pro přihlášen
 
 - MSDN 
   - Ověřte svůj stav způsobilosti na [stránce účtu MSDN](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Pokud nemůžete ověřit svůj stav, obraťte se na [centra služeb zákazníkům MSDN](https://msdn.microsoft.com/library/aa493452.aspx)pro předplatná.
+  - Pokud nemůžete ověřit svůj stav, obraťte se na [centra služeb zákazníkům MSDN pro předplatná](https://msdn.microsoft.com/library/aa493452.aspx).
 - Microsoft for Startups
   - Přihlaste se k [portálu Microsoftu pro spouštění](https://startups.microsoft.com/#start-two) a ověřte si stav nároku pro Microsoft pro spouštění.
   - Pokud nemůžete ověřit svůj stav, můžete získat pomoc ve [fórech Microsoftu pro spouštění](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN 
-  - Přihlaste se k [portálu MPN](https://mspartner.microsoft.com/Pages/Locale.aspx) a ověřte svůj stav nároku. Pokud máte příslušné kompetence pro [cloudovou platformu](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), můžete mít nárok na další výhody.
+  - Přihlaste se k [portálu MPN](https://mspartner.microsoft.com/Pages/Locale.aspx) a ověřte svůj stav nároku. Pokud máte příslušné [kompetence pro cloudovou platformu](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx), můžete mít nárok na další výhody.
   - Pokud nemůžete ověřit svůj stav, obraťte se na [podporu programu MPN](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Nejde aktivovat nové předplatné Azure v otevřeném předplatném.
 
-Pokud chcete vytvořit předplatné Azure v programu Open, musíte mít platný klíč OSA (Online Service Activation), ke kterému je přidružený aspoň jeden Azure v otevřeném tokenu. Pokud nemáte klíč OSA, kontaktujte některého z partnerů Microsoftu, kteří jsou uvedení v [Microsoft Pinpoint](http://pinpoint.microsoft.com/).
+Pokud chcete vytvořit předplatné Azure v programu Open, musíte mít platný klíč OSA (Online Service Activation), ke kterému je přidružený aspoň jeden Azure v otevřeném tokenu. Pokud nemáte klíč OSA, kontaktujte některého z partnerů Microsoftu, kteří jsou uvedení v [Microsoft Pinpoint](https://pinpoint.microsoft.com/).
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Chyba: *Nemáte nárok na předplatné Azure.*
 

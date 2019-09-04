@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: b7d34095568fa1d98c5f2987a70397ca042c8867
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036396"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279988"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
-Ujistěte se, že cluster vždycky používá podporovanou verzi Azure Service Fabric. Minimálně 60 dní poté, co oznamuje vydání nové verze Service Fabric, podpora pro předchozí verze. Oznámení o nových vydáních najdete na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Ujistěte se, že cluster vždycky používá podporovanou verzi Azure Service Fabric. Minimálně 60 dní poté, co oznamuje vydání nové verze Service Fabric, podpora pro předchozí verze. Oznámení o nových vydáních najdete na [blogu týmu Service Fabric](https://azure.microsoft.com/updates/?product=service-fabric).
 
 Podrobnosti o tom, jak udržovat cluster s podporovanou Service Fabric verzí, najdete v následujících dokumentech:
 

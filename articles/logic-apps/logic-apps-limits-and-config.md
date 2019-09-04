@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099431"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242374"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -189,7 +189,7 @@ Každé předplatné Azure má tento účet pro integraci:
   | SKU ISE | Omezení účtu pro integraci |
   |---------|----------------------------|
   | **Premium** | 5 Total – pouze [standardní](../logic-apps/logic-apps-pricing.md#integration-accounts) účty, včetně jednoho standardního účtu zdarma. Nejsou povoleny žádné bezplatné nebo základní účty. |
-  | **Developer** | 5 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtu (s omezením na 1 účet [](../logic-apps/logic-apps-pricing.md#integration-accounts) ) a kombinovaný nebo všechny standardní účty. Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
+  | **Developer** | 5 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtu (s omezením na 1 účet [) a kombinovaný nebo všechny standardní účty](../logic-apps/logic-apps-pricing.md#integration-accounts) . Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
   |||
 
 Další náklady se vztahují na účty pro integraci, které přidáte nad rámec účtů pro integraci, které jsou součástí ISE. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -258,13 +258,11 @@ Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfigurace brány firewall: IP adresy
 
-Všechny Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte brány firewall se *všemi* příchozími [](#inbound) *a* [odchozími](#outbound) IP adresami, které používá služba Logic Apps. , a to na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti. 
+Všechny Logic Apps ve stejné oblasti používají stejné rozsahy IP adres. Aby bylo možné podporovat volání, která vaše aplikace logiky přímo provádí pomocí [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)a dalších požadavků HTTP, nastavte brány firewall se *všemi* [příchozími](#inbound) *a* [odchozími](#outbound) IP adresami, které používá služba Logic Apps. , a to na základě oblastí, kde existují aplikace logiky. Tyto adresy se zobrazí pod položkami **příchozí** a **odchozí** v této části a jsou seřazené podle oblasti. 
 
-Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti.
+Aby bylo možné podporovat volání, která vytváří [konektory spravované Microsoftem](../connectors/apis-list.md) , nastavte bránu firewall se *všemi* [odchozími](#outbound) IP adresami používanými těmito konektory na základě oblastí, ve kterých existují vaše aplikace logiky. Tyto adresy se zobrazí pod **výstupní** hlavičkou v této části a jsou seřazené podle oblasti. U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-U aplikací logiky, které běží v prostředí ISE (Integration Service Environment), nezapomeňte [tyto porty otevřít](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
-
-Pro [Azure Government](../azure-government/documentation-government-overview.md) a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)nejsou aktuálně k dispozici rezervované IP adresy pro konektory.
+Pro vlastní konektory, [Azure Government](../azure-government/documentation-government-overview.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/)nejsou k dispozici pevné nebo rezervované IP adresy.
 
 > [!IMPORTANT]
 >

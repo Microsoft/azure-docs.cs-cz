@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508894"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276693"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopírování dat z Presto pomocí Azure Data Factory (Preview)
 
@@ -44,7 +44,7 @@ Presto propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Presto** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Presto** | Ano |
 | host | IP adresu nebo název hostitele serveru, Presto. (to znamená 192.168.222.160)  | Ano |
 | serverVersion | Verze Presto serveru. (to znamená 0.148-t)  | Ano |
 | catalog | Kontext pro všechny žádosti na serveru, který katalogu.  | Ano |
@@ -91,8 +91,10 @@ Ke zkopírování dat z Presto, nastavte vlastnost typ datové sady na **PrestoO
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **PrestoObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| type | Vlastnost Type datové sady musí být nastavená na: **PrestoObject** | Ano |
+| schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
+| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -101,11 +103,12 @@ Ke zkopírování dat z Presto, nastavte vlastnost typ datové sady na **PrestoO
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,7 +123,7 @@ Ke zkopírování dat z Presto, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **PrestoSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PrestoSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

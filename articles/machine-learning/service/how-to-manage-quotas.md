@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 110040592474ec432912e7f545abad19ca3ae1ff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: bc0455b34ebdcb080e0cd702e58d8163228b60ff
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991977"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278070"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 
@@ -78,7 +78,7 @@ K dispozici prostředky:
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning kanály
 U Azure Machine Learningch kanálů existuje kvótový limit počtu kroků v kanálu a počtu spuštění publikovaných kanálů na základě plánu na oblast v rámci předplatného.
 - Maximální počet kroků povolených v kanálu je 30 000.
-- Maximální počet spuštění publikovaných kanálů na základě plánu na předplatné za měsíc je 100 000
+- Maximální počet spuštění založených na plánech a přijetí změn objektů BLOB pro plány publikovaných kanálů publikovaných na blogu v rámci předplatného za měsíc je 100 000
 
 > [!NOTE]
 > Pokud chcete tento limit zvýšit, kontaktujte [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
@@ -99,7 +99,7 @@ Platí omezení na počet účtů úložiště na oblast i v rámci daného pře
 
 Zobrazení vaší kvóty pro různé prostředky, jako jsou virtuální počítače, úložiště, sítě, je snadné prostřednictvím webu Azure portal.
 
-1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte předplatná.
+1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte **předplatná** .
 
 1. Seznam předplatných vyberte předplatné, jehož kvóty, které hledáte.
 

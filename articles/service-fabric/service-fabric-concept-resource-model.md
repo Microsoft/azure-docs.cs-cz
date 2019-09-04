@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623832"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241824"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Co je model prostředků aplikace Service Fabric?
 Doporučuje se Service Fabric aplikace nasadit do Service Fabric clusteru prostřednictvím Azure Resource Manager. Tato metoda umožňuje popsat aplikace a služby ve formátu JSON a nasazovat je do stejné šablony Správce prostředků jako váš cluster. Na rozdíl od nasazení a správy aplikací přes PowerShell nebo Azure CLI není nutné čekat na to, aby cluster byl připravený. Proces registrace, zřizování a nasazování aplikací potom může probíhat v jediném kroku. Je to osvědčený postup pro správu životního cyklu aplikací ve vašem clusteru. Další informace najdete v článku [osvědčené postupy](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -35,7 +35,7 @@ Chcete-li nasadit aplikaci a její služby pomocí modelu Azure Resource Manager
           
 Pak vytvořte šablonu Azure Resource Manager, aktualizujte soubor parametrů s podrobnostmi o aplikaci a nasaďte ji do clusteru Service Fabric. [Tady](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)najdete ukázky.
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu Storage 
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště 
 Nasazení aplikace ze šablony Správce prostředků vyžaduje účet úložiště pro přípravu image aplikace. Můžete znovu použít existující účet úložiště nebo vytvořit nový účet úložiště pro přípravu svých aplikací. Pokud chcete použít existující účet úložiště, můžete tento krok přeskočit. 
 
 ![vytvořit účet úložiště][CreateStorageAccount]
@@ -154,6 +154,10 @@ Získat informace o modelu prostředků aplikace:
 
 * [Modelování aplikace v Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
 * [Service Fabric manifestů aplikací a služeb](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+
+## <a name="see-also"></a>Viz také
+* [Osvědčené postupy](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Správa aplikací a služeb jako prostředků Azure](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

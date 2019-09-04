@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e0626d847b22c11ce5acca5633c9b1291c03742d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839873"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276048"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -74,7 +74,7 @@ Chcete-li použít ověřování instančního objektu, zaregistrujte entitu apl
 
 >[!IMPORTANT]
 > Udělte instančnímu objektu správné oprávnění v Data Lake Store:
->- **Jako zdroj**: V **Průzkumníku** > dat udělte oprávnění k vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
+>- **Jako zdroj**: V **Průzkumníku** > dat udělte**oprávnění k**vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
 >- **Jako jímka**: V okně**přístup k**aplikaci **data** > Access udělte oprávnění k vytváření podřízených položek ve složce alespoň pro **zápis + Execute** . Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Pokud používáte prostředí Azure Integration runtime ke kopírování (zdroj i jímka jsou v cloudu), udělte v IAM aspoň roli **Čtenář** , aby data Factory rozpoznat oblast pro data Lake Store. Pokud se chcete této roli IAM vyhnout, explicitně [vytvořte prostředí Azure Integration runtime](create-azure-integration-runtime.md#create-azure-ir) s umístěním Data Lake Store. Například pokud je vaše Data Lake Store v Západní Evropa, vytvořte prostředí Azure Integration runtime s umístěním nastaveným na "Západní Evropa". Přidružte je v propojené službě Data Lake Store, jak je znázorněno v následujícím příkladu.
 
 >[!NOTE]
@@ -128,7 +128,7 @@ Použití spravované identity pro ověřování prostředků Azure:
 
 >[!IMPORTANT]
 > Ujistěte se, že udělíte patřičná oprávnění pro spravovanou identitu pro datovou továrnu v Data Lake Store:
->- **Jako zdroj**: V **Průzkumníku** > dat udělte oprávnění k vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
+>- **Jako zdroj**: V **Průzkumníku** > dat udělte**oprávnění k**vypsání alespoň oprávnění **ke čtení** a kopírování souborů do složek a podsložek. Nebo můžete udělit oprávnění **ke čtení** pro kopírování jednoho souboru. Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Řízení přístupu na úrovni účtu (IAM) není nutné.
 >- **Jako jímka**: V okně**přístup k**aplikaci **data** > Access udělte oprávnění k vytváření podřízených položek ve složce alespoň pro **zápis + Execute** . Můžete zvolit, že se má do **této složky a všech podřízených objektů** přidat rekurzivní a přidat jako **oprávnění k přístupu a výchozí položku oprávnění**. Pokud používáte prostředí Azure Integration runtime ke kopírování (zdroj i jímka jsou v cloudu), udělte v IAM aspoň roli **Čtenář** , aby data Factory rozpoznat oblast pro data Lake Store. Pokud se chcete této roli IAM vyhnout, explicitně [vytvořte prostředí Azure Integration runtime](create-azure-integration-runtime.md#create-azure-ir) s umístěním Data Lake Store. Přidružte je v propojené službě Data Lake Store, jak je znázorněno v následujícím příkladu.
 
 >[!NOTE]
@@ -163,12 +163,12 @@ V Azure Data Factory nemusíte kromě obecných Data Lake Store informací v pro
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text s oddělovači, Avro a datovou sadu binárního formátu](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
 
-Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení.
+Chcete-li kopírovat data do a z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení.
 Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v části `location` nastavení v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
@@ -209,7 +209,7 @@ Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v č�
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Chcete-li kopírovat data do a z Azure Data Lake Store Gen1 ve **formátu ORC/Avro/JSON**, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do a z Azure Data Lake Store Gen1 ve **formátu ORC/JSON**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -223,7 +223,7 @@ Chcete-li kopírovat data do a z Azure Data Lake Store Gen1 ve **formátu ORC/Av
 
 
 >[!TIP]
->Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Chcete-li zkopírovat jeden soubor s určitým názvem, zadejte **FolderPath** s částí složky a názvem souboru s názvem souboru.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků. 
+>Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Chcete-li zkopírovat jeden soubor s určitým názvem, zadejte **FolderPath** s částí **složky a názvem souboru s** názvem souboru.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků. 
 
 **Příklad:**
 
@@ -261,12 +261,12 @@ Chcete-li kopírovat data do a z Azure Data Lake Store Gen1 ve **formátu ORC/Av
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store jako zdroj
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Chcete-li kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a zdroj binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení.  Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
+Chcete-li kopírovat data z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), [Formát Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. .  Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -324,7 +324,7 @@ Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přeč
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Chcete-li kopírovat data z Azure Data Lake Store Gen1 ve **formátu Orc, Avro nebo JSON**, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+Chcete-li kopírovat data z Azure Data Lake Store Gen1 ve **formátu ORC nebo JSON**, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -366,12 +366,12 @@ Chcete-li kopírovat data z Azure Data Lake Store Gen1 ve **formátu Orc, Avro n
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store jako jímka
 
-- Chcete-li kopírovat na **Parquet, textový nebo binární formát**, přečtěte si část [Parquet, text s oddělovači a binární formát](#format-based-sink) .
-- Chcete-li kopírovat do jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část s [dalšími formátovacími jímkami](#other-format-sink) .
+- Chcete-li kopírovat do **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a jímka binárního formátu](#format-based-sink) .
+- Chcete-li kopírovat do jiných formátů, jako je například **Formát ORC/JSON**, přečtěte si [Další část formátování jímky](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, oddělený text a jímka binárního formátu
+#### <a name="format-based-sink"></a>Jímka Parquet, s oddělovači textu, Avro a binárního formátu
 
-Chcete-li kopírovat data na **Parquet, textový nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro jímku aktivity kopírování založené na formátu a podporovaná nastavení.  Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v části `storeSettings` nastavení v jímky kopírování na základě formátu:
+Pokud chcete kopírovat data na **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro jímku aktivity kopírování založené na formátu a podporovaná nastavení.  Následující vlastnosti jsou podporovány pro Azure Data Lake Store Gen1 v části `storeSettings` nastavení v jímky kopírování na základě formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -419,7 +419,7 @@ Chcete-li kopírovat data na **Parquet, textový nebo binární formát**, pře�
 
 #### <a name="other-format-sink"></a>Další jímka formátu
 
-Chcete-li kopírovat data do Azure Data Lake Store Gen1 ve **formátu Orc, Avro nebo JSON**, jsou v části **jímky** podporovány následující vlastnosti:
+Chcete-li kopírovat data do Azure Data Lake Store Gen1 ve **formátu ORC nebo JSON**, v oddílu **jímky** jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -491,6 +491,6 @@ Pokud chcete replikovat seznamy řízení přístupu (ACL) spolu s datovými sou
 
 Přečtěte si další informace o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v funkci toku dat mapování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

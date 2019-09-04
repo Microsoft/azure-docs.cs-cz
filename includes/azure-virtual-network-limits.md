@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904024"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242627"
 ---
-<a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům](../articles/networking/check-usage-against-limits.md)předplatného.
+<a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager následujících omezení se vztahují jenom na síťové prostředky spravované prostřednictvím **Azure Resource Manager** pro jednotlivé oblasti a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
 > Nedávno jsme zvýšili všechna výchozí omezení na jejich maximální limity. Pokud není sloupec maximální limit, prostředek nemá nastavitelný limit. Pokud jste tyto limity zvýšili díky podpoře v minulosti a nevidíte aktualizovaná omezení v následujících tabulkách, [otevřete online žádost o zákaznickou podporu bez poplatků](../articles/azure-resource-manager/resource-manager-quota-errors.md) .
@@ -51,11 +51,11 @@ ms.locfileid: "69904024"
 | --- | --- | --- |
 | Veřejné IP adresy – dynamická | 1 000 pro Basic. |Kontaktujte podporu. |
 | Veřejné IP adresy – static | 1 000 pro Basic. |Kontaktujte podporu. |
-| Veřejné IP adresy – static | 200 pro standard.|Kontaktujte podporu. |
+| Veřejné IP adresy – static | 1 000 pro standard.|Kontaktujte podporu. |
 | Délka předpony veřejné IP adresy | /28 | Kontaktujte podporu. |
 
 #### <a name="load-balancer"></a>Omezení pro vyrovnávání zatížení
-Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům](../articles/networking/check-usage-against-limits.md)předplatného.
+Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
 | Resource | Výchozí/maximální limit |
 | --- | --- |
@@ -73,7 +73,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 <sup>1</sup> Limit je až 150 prostředků, v libovolné kombinaci prostředků samostatného virtuálního počítače, prostředků skupiny dostupnosti a prostředků sady škálování virtuálních počítačů.
 
-#### <a name="virtual-networking-limits-classic"></a>Následující omezení platí jenom pro síťové prostředky spravované přes model nasazení **Classic** na předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům](../articles/networking/check-usage-against-limits.md)předplatného.
+#### <a name="virtual-networking-limits-classic"></a>Následující omezení platí jenom pro síťové prostředky spravované přes model nasazení **Classic** na předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
 
 | Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |

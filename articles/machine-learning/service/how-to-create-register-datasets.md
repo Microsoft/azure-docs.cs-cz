@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: e5d5d36e82914f1d6d03299db0ed1427ac5a389a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2ce64df5eeb8aa44ef714d6b465b7f2e1819635d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147586"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259295"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytvoření a přístup k datovým sadám (Preview) v Azure Machine Learning
 
@@ -47,7 +47,7 @@ K vytváření a práci s datovými sadami potřebujete:
 
 Datové sady jsou rozdělené do různých typů na základě toho, jak je uživatelé využívají při školení. Seznam typů datových sad:
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. To vám umožní vyhodnotit data do PANDAS dataframe. `TabularDataset` Objekt se dá vytvořit ze souboru CSV, TSV, souborů Parquet, výsledků dotazu SQL atd. Úplný seznam najdete v naší [dokumentaci](https://aka.ms/tabulardataset-api-reference).
-* Soubor DataSet odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Získáte tak možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Soubory můžou být libovolného formátu, což umožňuje rozšířit řadu scénářů strojového učení, včetně obsáhlého učení.
+* Soubor [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Získáte tak možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Soubory můžou být libovolného formátu, což umožňuje rozšířit řadu scénářů strojového učení, včetně obsáhlého učení.
 
 Další informace o nadcházejících změnách rozhraní API najdete [tady](https://aka.ms/tabular-dataset).
 
@@ -55,7 +55,7 @@ Další informace o nadcházejících změnách rozhraní API najdete [tady](htt
 
 Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
 
-Aby byla data přístupná službou Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure](how-to-access-data.md) datastores nebo veřejných webových adresách URL.
+Aby byla data přístupná službou Azure Machine Learning, musí být datové sady vytvořené z cest v [Azure datastores](how-to-access-data.md) nebo veřejných webových adresách URL.
 
 Vytvoření datových sad z [úložiště Azure DataStore](how-to-access-data.md):
 
@@ -177,7 +177,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pomocí automatizovaného strojového učení [se TabularDatasets naučíte](https://aka.ms/automl-dataset).
-* Další příklady školení k datovým sadám najdete v ukázkových [poznámkových blocích](https://aka.ms/dataset-tutorial).
+* Další příklady školení k datovým sadám najdete v [ukázkových poznámkových blocích](https://aka.ms/dataset-tutorial).

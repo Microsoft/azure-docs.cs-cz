@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619704"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256880"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Vysvětlení, jak a kdy použít verzi LUIS
 
@@ -48,7 +48,7 @@ Verzi můžete importovat na úrovni aplikace. Tato verze se zobrazí jako aktiv
 
 Verzi můžete exportovat na úrovni aplikace nebo můžete exportovat verzi na úrovni verze. Jediným rozdílem je, že vyexportovaná verze na úrovni aplikace je aktuálně aktivní verze, zatímco na úrovni verze můžete na stránce **[Nastavení](luis-how-to-manage-versions.md)** zvolit libovolnou verzi, kterou chcete exportovat. 
 
-Exportovaný soubor neobsahuje informace zjištěné počítačem, protože aplikace je po importu znovu přeučena. Exportovaný soubor neobsahuje spolupracovníky – po importu verze do nové aplikace je budete muset přidat zpátky.
+Exportovaný soubor neobsahuje informace zjištěné počítačem, protože aplikace je po importu znovu přeučena. Exportovaný soubor neobsahuje informace o přispěvateli.
 
 ## <a name="export-each-version-as-app-backup"></a>Exportovat každou verzi jako zálohu aplikace
 Pokud chcete zálohovat aplikaci LUIS, exportujte každou verzi na stránce **[Nastavení](luis-how-to-manage-versions.md)** .
@@ -59,10 +59,25 @@ Všechny verze kromě aktivní verze můžete odstranit ze stránky seznam verz�
 ## <a name="version-availability-at-the-endpoint"></a>Dostupnost verze na koncovém bodu
 Vyškolené verze nejsou automaticky dostupné ve vašem [koncovém bodě](luis-glossary.md#endpoint)aplikace. Je nutné [publikovat](luis-how-to-publish-app.md) nebo znovu publikovat verzi, aby byla k dispozici ve vašem koncovém bodě aplikace. Můžete publikovat do **přípravy** a **výroby**, což vám poskytne až dvě verze aplikace, která je k dispozici na koncovém bodu. Pokud potřebujete další verze aplikace, kterou máte k dispozici na koncovém bodu, měli byste verzi exportovat a znovu importovat do nové aplikace. Nová aplikace má jiné ID aplikace.
 
-## <a name="collaborators"></a>Spolupracovníci
-Vlastník a všichni spolupracovníci mají plný přístup ke všem verzím aplikace. [](luis-how-to-collaborate.md)
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
+Začněte tím, že [klonování](luis-how-to-manage-versions.md#clone-a-version), od základní verze, pro jednotlivé autory. 
 
-## <a name="next-steps"></a>Další postup
+Každý autor provádí změny ve své vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
+
+Exportované aplikace jsou soubory ve formátu JSON, které je možné porovnat změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace. 
+
+Tato metoda umožňuje mít jeden aktivní verze, jedna fáze a jednu publikovanou verzi. Výsledky aktivní verze můžete porovnat s publikovanou verzí (fáze nebo produkce) v [podokně interaktivní testování](luis-interactive-test.md).
+
+## <a name="manage-multiple-versions-as-apps"></a>Spravovat více verzí jako aplikace
+[Export](luis-how-to-manage-versions.md#export-version) základní verze. Jednotlivé autory importuje verze. Osoba, která importuje aplikace je vlastníkem verze. Když se provádí úpravy aplikace a export verze. 
+
+Exportované aplikace jsou soubory ve formátu JSON, které můžete ve srovnání s exportem základní změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace.
+
+## <a name="contributions-from-collaborators"></a>Příspěvky od spolupracovníků
+
+Přečtěte si další informace o vytváření příspěvků od [spolupracovníků](luis-how-to-collaborate.md).
+
+## <a name="next-steps"></a>Další kroky
 
 Další informace najdete v tématu Postup přidání [správy verzí](luis-how-to-manage-versions.md) na stránce nastavení aplikace. 
 

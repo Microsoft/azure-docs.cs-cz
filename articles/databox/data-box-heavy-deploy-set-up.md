@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b6b353e0e01f3f598048e5fbb2682603045b1037
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164467"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241419"
 ---
 ::: zone target = "docs"
 
@@ -86,7 +87,7 @@ Pokud chcete zařízení kabelovat, proveďte následující kroky.
 
     ![Data Box Heavy napájecí šňůry v zásobníku](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
 
-6. Dalším krokem je identifikace různých portů na zadní straně zařízení. Existují dva uzly zařízení, **Uzel1** a **Uzel2**. Každý uzel má čtyři síťová rozhraní, **správu**, **Data1**, **Data2**, **DATA3**. Ke konfiguraci správy při počáteční konfiguraci zařízení se používá Správa. Data1-**DATA3** jsou datové porty. Porty pro **správu** a **DATA3** mají 1 GB/s, zatímco **Data1**a **Data2** můžou pracovat jako porty 40 GB/s nebo porty s rychlostí 10 GB/s. V dolní části obou uzlů zařízení jsou čtyři jednotky napájení (PSUs), které jsou sdíleny mezi dvěma uzly zařízení. Při obtváření tohoto zařízení jsou PSUsy **PSU1**, **PSU2**, **PSU3**a **PSU4** zleva doprava.
+6. Dalším krokem je identifikace různých portů na zadní straně zařízení. Existují dva uzly zařízení, **Uzel1** a **Uzel2**. Každý uzel má čtyři síťová rozhraní, **správu**, **Data1**, **Data2**, **DATA3**. Ke konfiguraci správy při počáteční konfiguraci **zařízení se používá Správa.** Data1-**DATA3** jsou datové porty. Porty pro **správu** a **DATA3** mají 1 GB/s, zatímco **Data1**a **Data2** můžou pracovat jako porty 40 GB/s nebo porty s rychlostí 10 GB/s. V dolní části obou uzlů zařízení jsou čtyři jednotky napájení (PSUs), které jsou sdíleny mezi dvěma uzly zařízení. Při obtváření tohoto zařízení jsou **PSUsy** **PSU1**, **PSU2**, **PSU3**a **PSU4** zleva doprava.
 
     ![Porty Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
 

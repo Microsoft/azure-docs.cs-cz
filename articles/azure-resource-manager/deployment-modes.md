@@ -1,84 +1,84 @@
 ---
-title: Režimy nasazení Azure Resource Manageru | Dokumentace Microsoftu
-description: Popisuje, jak určit, jestli se má použít režim úplné nebo přírůstkové nasazení pomocí Azure Resource Manageru.
+title: Režimy nasazení Azure Resource Manager | Microsoft Docs
+description: Popisuje, jak určit, jestli se má použít kompletní nebo přírůstkový režim nasazení s Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508201"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258965"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
+# <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
-Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru. Výchozí režim je přírůstkový.
+Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace.  Hlavním rozdílem mezi těmito dvěma režimy je způsob, jakým Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně. Výchozí režim je přírůstkový.
 
-Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Resource Manageru. Není-li prostředek již existuje ve skupině prostředků a její nastavení jsou beze změny, žádná operace provedena pro daný prostředek. Při změně hodnoty vlastnosti pro určitý prostředek, prostředek se aktualizuje s těmito novými hodnotami. Pokud se pokusíte aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
+V obou režimech se Správce prostředků pokusí vytvořit všechny prostředky, které jsou uvedené v šabloně. Pokud prostředek ve skupině prostředků už existuje a jeho nastavení se nezměnilo, pro tento prostředek se nebere žádná operace. Pokud změníte hodnoty vlastností prostředku, prostředek se aktualizuje o tyto nové hodnoty. Pokud se pokusíte aktualizovat umístění nebo typ existujícího prostředku, nasazení dojde k chybě. Místo toho nasaďte nový prostředek s umístěním nebo typem, který potřebujete.
 
-## <a name="complete-mode"></a>Úplný režim
+## <a name="complete-mode"></a>Režim dokončení
 
-V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou v této šabloně specifikovaný, ale není nasazena, protože [podmínku](resource-group-authoring-templates.md#condition) vyhodnotí na hodnotu false, nebudou odstraněny.
+V režimu úplné Správce prostředků **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. Prostředky, které jsou zadány v šabloně, ale nejsou nasazeny, protože [Podmínka](conditional-resource-deployment.md) je vyhodnocena jako false, nejsou odstraněna.
 
-Úplný režim s rozvahou [zkopírujte smyčky](resource-group-create-multiple.md). Odstraní se všechny prostředky, které nejsou v této šabloně specifikovaný, po vyřešení kopírovací smyčkou.
+Použití kompletního režimu s [kopírováním smyček](resource-group-create-multiple.md)vám bude opatrní. Všechny prostředky, které nejsou zadány v šabloně po vyřešení smyčky kopírování, jsou odstraněny.
 
-Existují určité rozdíly v jak postupovat při odstranění úplný režim typy prostředků. Nadřazené prostředky jsou po není v šabloně, která je nasazena v režimu dokončení automaticky odstraní. Pokud není v šabloně nejsou automaticky odstraněny některé podřízené prostředky. Tyto podřízené prostředky se odstraní, ale pokud se nadřazený prostředek odstraní. 
+Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek. 
 
-Například pokud vaše skupina prostředků obsahuje zóny DNS (typ prostředku Microsoft.Network/dnsZones) a záznam CNAME (typ prostředku Microsoft.Network/dnsZones/CNAME), zóny DNS je nadřazeným prostředkem pro záznam CNAME. Pokud nasadíte s režimem dokončení a nezahrnují zóny DNS v šabloně, zóny DNS a záznamu CNAME se obě odstraní. Pokud do šablony zahrnout zónu DNS, ale neobsahují záznam CNAME, záznam CNAME se neodstraní. 
+Například pokud vaše skupina prostředků obsahuje zónu DNS (typ prostředku Microsoft. Network/dnsZones) a záznam CNAME (typ prostředku Microsoft. Network/dnsZones/CNAME), zóna DNS je nadřazeným prostředkem pro záznam CNAME. Pokud nasadíte nástroj s úplným režimem a nezadáte do šablony zónu DNS, odstraní se zóna DNS a záznam CNAME. Pokud zahrnete zónu DNS do šablony, ale nezahrnete záznam CNAME, záznam CNAME se neodstraní. 
 
-Seznam jak postupovat při odstraňování typů prostředků najdete v tématu [odstranění Azure prostředky pro nasazení úplný režim](complete-mode-deletion.md).
+Seznam způsobu, jakým se zpracovávají typy prostředků, najdete v tématu [odstranění prostředků Azure pro nasazení v režimu úplného režimu](complete-mode-deletion.md).
 
-Pokud skupina prostředků je [uzamčen](resource-group-lock-resources.md), úplný režim nedojde k odstranění prostředky.
+Pokud je skupina prostředků [zamčená](resource-group-lock-resources.md), režim úplného režimu neodstraní prostředky.
 
 > [!NOTE]
-> Režim dokončení nasazení podporují pouze šablon na kořenové úrovni. Pro [propojené nebo vnořené šablony](resource-group-linked-templates.md), je nutné použít přírůstkový režim. 
+> Pouze šablony na kořenové úrovni podporují režim úplného nasazení. U [propojených nebo vnořených šablon](resource-group-linked-templates.md)je nutné použít přírůstkový režim. 
 >
-> [Nasazení na úrovni předplatného](deploy-to-subscription.md) nepodporují úplný režim.
+> [Nasazení na úrovni předplatného](deploy-to-subscription.md) nepodporují režim úplného přístupu.
 >
-> Na portálu v současné době nepodporuje úplný režim.
+> Portál v současné době nepodporuje režim úplného režimu.
 >
 
 ## <a name="incremental-mode"></a>Přírůstkový režim
 
-V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
+V přírůstkovém režimu Správce prostředků **opustí nezměněné** prostředky, které existují ve skupině prostředků, ale nejsou zadané v šabloně.
 
-Pokud však opětovného nasazení existující prostředek v přírůstkovém režimu, výsledek je jiný. Zadejte všechny vlastnosti prostředku, nejen ty, které chcete aktualizovat. Je běžné neporozumění myslíte, že jsou vlastnosti, které nejsou zadány vlevo beze změny. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
+Pokud však dojde k opětovnému nasazení stávajícího prostředku v přírůstkovém režimu, výsledek je jiný. Zadejte všechny vlastnosti prostředku, nikoli jenom ty, které aktualizujete. Běžným srozumitelným porozuměním je, aby nedošlo ke změně vlastností, které nejsou zadané. Pokud nezadáte určité vlastnosti, Správce prostředků interpretuje aktualizaci jako přepsání těchto hodnot.
 
 ## <a name="example-result"></a>Příklad výsledku
 
-Pro znázornění rozdílu mezi režimy přírůstkové a úplné, vezměte v úvahu následující scénář.
+K ilustraci rozdílu mezi režimy přírůstkového a úplného použití zvažte následující scénář.
 
 **Skupina prostředků** obsahuje:
 
-* Prostředku A
+* Prostředek A
 * Prostředek B
-* Prostředek jazyka C
+* Prostředek C
 
 **Šablona** obsahuje:
 
-* Prostředku A
+* Prostředek A
 * Prostředek B
 * Prostředek D
 
-Při nasazení v **přírůstkové** režimu, skupina prostředků obsahuje:
+Při nasazení v **přírůstkovém** režimu má skupina prostředků:
 
-* Prostředku A
+* Prostředek A
 * Prostředek B
-* Prostředek jazyka C
+* Prostředek C
 * Prostředek D
 
-Při nasazení v **kompletní** režimu C prostředků se odstraní. Skupina prostředků obsahuje:
+Při nasazení v režimu **úplné** se odstraní prostředek C. Skupina prostředků má:
 
-* Prostředku A
+* Prostředek A
 * Prostředek B
 * Prostředek D
 
 ## <a name="set-deployment-mode"></a>Nastavit režim nasazení
 
-Chcete-li nastavit režim nasazení při nasazení pomocí Powershellu, použijte `Mode` parametru.
+Chcete-li nastavit režim nasazení při nasazení pomocí prostředí PowerShell, `Mode` použijte parametr.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -88,7 +88,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Chcete-li nastavit režim nasazení při nasazení pomocí Azure CLI, použijte `mode` parametru.
+Pokud chcete nastavit režim nasazení při nasazení pomocí Azure CLI, použijte `mode` parametr.
 
 ```azurecli-interactive
 az group deployment create \
@@ -99,7 +99,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Následující příklad ukazuje šablonu propojené nastavený režim přírůstkové nasazení:
+Následující příklad ukazuje propojenou šablonu nastavenou na režim přírůstkového nasazení:
 
 ```json
 "resources": [
@@ -117,6 +117,6 @@ Následující příklad ukazuje šablonu propojené nastavený režim přírůs
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o vytváření šablon Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
-* Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
-* Operace pro poskytovatele prostředků najdete v tématu [rozhraní Azure REST API](/rest/api/).
+* Další informace o vytváření šablon Správce prostředků najdete v tématu [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](resource-group-template-deploy.md).
+* Pokud chcete zobrazit operace pro poskytovatele prostředků, přečtěte si článek [Azure REST API](/rest/api/).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542985"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258849"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Doporučené postupy pro šablonu Azure Resource Manager
 
@@ -149,7 +149,7 @@ Informace v této části mohou být užitečné při práci s [parametry](resou
 
 ## <a name="variables"></a>Proměnné
 
-Následující informace můžou být užitečné při práci s proměnnými [](resource-group-authoring-templates.md#variables):
+Následující informace můžou být užitečné při práci s [proměnnými](resource-group-authoring-templates.md#variables):
 
 * Pro názvy proměnných použijte ve stylu CamelCase Case.
 
@@ -159,7 +159,7 @@ Následující informace můžou být užitečné při práci s proměnnými [](
 
 * Nepoužívejte proměnné pro `apiVersion` prostředek. Verze rozhraní API Určuje schéma prostředku. Často nemůžete změnit verzi, aniž byste museli měnit vlastnosti prostředku.
 
-* V části **proměnné** v šabloně nemůžete použít [odkazovou](resource-group-template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v části Resources nebo Outputs šablony.
+* V části **proměnné** v šabloně nemůžete použít [odkazovou](resource-group-template-functions-resource.md#reference) funkci. **Odkazovaná** funkce odvozuje svou hodnotu z běhového stavu prostředku. Proměnné jsou však při počáteční analýze šablony vyřešeny. Sestavte hodnoty, které vyžadují **odkazovou** funkci přímo v **části** **Resources** nebo Outputs šablony.
 
 * Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
 
@@ -175,7 +175,7 @@ Při rozhodování, jaké [závislosti](resource-group-define-dependencies.md) s
 
 * Nastavte podřízený prostředek jako závislý na svém nadřazeném prostředku.
 
-* Prostředky s [prvkem podmínky](resource-group-authoring-templates.md#condition) nastavenou na hodnotu false jsou automaticky odebrány z pořadí závislostí. Nastavte závislosti, jako by byl prostředek vždy nasazen.
+* Prostředky s [prvkem podmínky](conditional-resource-deployment.md) nastavenou na hodnotu false jsou automaticky odebrány z pořadí závislostí. Nastavte závislosti, jako by byl prostředek vždy nasazen.
 
 * Závislosti se dají uspořádat bez explicitního nastavování. Například váš virtuální počítač závisí na virtuálním síťovém rozhraní a rozhraní virtuální sítě závisí na virtuální síti a veřejných IP adresách. Proto se virtuální počítač nasadí po všech třech prostředcích, ale virtuální počítač se explicitně nenastaví jako závislý na všech třech prostředcích. Tento přístup objasňuje pořadí závislostí a usnadňuje změnu šablony později.
 
@@ -200,7 +200,7 @@ Následující informace můžou být užitečné při práci s [prostředky](re
    ]
    ```
 
-* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), neprovádějte *pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
+* Pokud v šabloně používáte *veřejný koncový bod* (například veřejný koncový bod služby Azure Blob Storage), *neprovádějte pevný kód* oboru názvů. K dynamickému načtení oboru názvů použijte **odkazovou** funkci. Tento přístup můžete použít k nasazení šablony do různých prostředí veřejného oboru názvů, aniž byste museli ručně měnit koncový bod v šabloně. Nastavte verzi rozhraní API na stejnou verzi, kterou používáte pro účet úložiště v šabloně:
    
    ```json
    "osDisk": {

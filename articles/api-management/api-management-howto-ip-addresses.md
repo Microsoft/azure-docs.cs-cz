@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072418"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242487"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP adresy API Management Azure
 
@@ -27,7 +27,9 @@ Pomocí IP adres můžete vytvořit pravidla brány firewall, filtrovat přícho
 
 ## <a name="ip-addresses-of-api-management-service"></a>IP adresy služby API Management
 
-Pokud vaše služba API Management je služba pro vývojáře, úroveň Basic, Standard nebo Premium, můžete získat IP adresy z řídicího panelu přehled prostředku v Azure Portal.
+Každá API Management instance služby v úrovni Developer, Basic, Standard nebo Premium má veřejné IP adresy, které jsou výhradně k této instanci služby (nejsou sdíleny s jinými prostředky). 
+
+IP adresy můžete načíst z řídicího panelu přehled prostředku v Azure Portal.
 
 ![API Management IP adresa](media/api-management-howto-ip-addresses/public-ip.png)
 
@@ -98,7 +100,7 @@ Pro účely omezení provozu můžete použít rozsah IP adres datových center 
 V API Management úrovně pro vývojáře, Basic, Standard a Premium jsou veřejné IP adresy (VIP) pro celou dobu životnosti služby statické, s následujícími výjimkami:
 
 * Služba se odstraní a pak znovu vytvoří.
-* Předplatné služby je pozastavené nebo se [varuje](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro nedoplatk) a pak se znovu obnoví. [](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)
+* Předplatné služby je [pozastavené](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) nebo se [varuje](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (například pro nedoplatk) a pak se znovu obnoví.
 * Služba Azure Virtual Network je do služby přidána nebo odebrána.
 
 Při [nasazení s více oblastmi](api-management-howto-deploy-multi-region.md)se místní IP adresa změní, pokud je oblast uvolněné a pak se znovu obnoví.

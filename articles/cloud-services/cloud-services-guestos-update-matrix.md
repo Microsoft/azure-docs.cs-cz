@@ -10,20 +10,20 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 9/4/2019
 ms.author: raiye
-ms.openlocfilehash: 63c0502cb7b5abf6b6005683cc97d3229ec90e47
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9e93cb6cf57a42463e631332fb4714457b9b675f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945430"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275495"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
 
 > [!IMPORTANT]
-> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. Nevztahuje se na IaaS Virtual Machines.
+> Tato stránka se vztahuje na Cloud Services webové a pracovní role, které se spouštějí nad hostovaným operačním systémem. **Nevztahuje se na IaaS** Virtual Machines.
 >
 >
 
@@ -41,6 +41,9 @@ Poskytuje aktuální informace o nejnovějších vydáních hostovaného operač
 Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizace zpráv
+
+###### <a name="september-4-2019"></a>**4. září 2019**
+Hostovaný operační systém od srpna vydala.
 
 ###### <a name="july-26-2019"></a>**26. července 2019**
 Hostovaný operační systém v červenci byl uvolněn.
@@ -100,8 +103,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-6.10 _201908-01 |  4\. srpna 2019  |  Post 6,12  |  
 | WA-HOST-OS-WA _201907-01 |26. července 2019 |Post 6,11 |
-| WA-GUEST-OS-6.8_201906-01 |8\. července 2019 |Post 6,10 |
+|~~WA-HOST-OS-6.8 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-6.7 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26. března 2019 |6\. června 2019 |
@@ -122,8 +126,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-5.34 _201908-01  |  4\. srpna 2019  |  Post 5,36  |  
 | WA-HOST-OS-5.33 _201907-01 |26. července 2019 |Post 5,35 |  
-| WA-GUEST-OS-5.32_201906-01 |8\. července 2019 |Post 5,34 |
+|~~WA-HOST-OS-5.32 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-5.31 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26. března 2019 |6\. června 2019 |
@@ -141,8 +146,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-4.69 _201908-01 |  4\. srpna 2019  |  Post 4,71  |  
 | WA-HOST-OS-4.68 _201907-01 | 26. července 2019  |Post 4,70 |
-| WA-GUEST-OS-4.67_201906-01 |8\. července 2019 |Post 4,69 |
+|~~WA-HOST-OS-4.67 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-4.66 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26. března 2019 |6\. června 2019 |
@@ -160,8 +166,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-3.76 _201908-01 |  4\. srpna 2019  |  Post 3,78  |  
 | WA-HOST-OS-3,75 _201907-01 | 26. července 2019 |Post 3,77 |
-| WA-GUEST-OS-3.74_201906-01 |8\. července 2019 |Post 3,76 |
+|~~WA-HOST-OS-3.74 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-3.73 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26. března 2019 |6\. června 2019 |
@@ -179,8 +186,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-HOST-OS-2.89 _201908-01 |  4\. srpna 2019  |  Post 2,91  |  
 | WA-HOST-OS-2,88 _201907-01 | 26. července 2019 |Post 2,90 |
-| WA-GUEST-OS-2.87_201906-01 |8\. července 2019 |Post 2,89 |
+|~~WA-HOST-OS-2.87 _201906-01~~|8\. července 2019 |4\. srpna 2019 |
 |~~WA-HOST-OS-2.86 _201905-01~~ |6\. června 2019 |26. července 2019 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |7\. května 2019 |8\. července 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26. března 2019 |6\. června 2019 |
@@ -209,7 +217,7 @@ I když [zásada vyřazení pro sadu Azure SDK][retire policy sdk] uvádí, že 
 ## <a name="guest-os-release-information"></a>Informace k vydání hostovaného operačního systému
 Existují tři kalendářní data, která jsou důležitá pro vydání hostovaných operačních systémů: datum **vydání** , datum **zakázání** a datum **vypršení platnosti** . Hostovaný operační systém se považuje za dostupný, když je na portálu a dá se vybrat jako cílový hostovaný operační systém. Když hostovaný operační systém dosáhne data **zakázání** , odebere se z Azure. Nicméně všechny cloudové služby, které cílí na hostovaný operační systém, budou i nadále fungovat jako normálně.
 
-Okno mezi zakázaným datem a datem **vypršení platnosti** poskytuje vyrovnávací paměť, která umožňuje snadný přechod z jednoho hostovaného operačního systému na jeden novější. Pokud používáte *Automatické* použití jako hostovaný operační systém, budete mít vždycky na nejnovější verzi a nemusíte si dělat starosti s tím, že vyprší platnost.
+Okno mezi **zakázaným** datem a datem **vypršení platnosti** poskytuje vyrovnávací paměť, která umožňuje snadný přechod z jednoho hostovaného operačního systému na jeden novější. Pokud používáte *Automatické* použití jako hostovaný operační systém, budete mít vždycky na nejnovější verzi a nemusíte si dělat starosti s tím, že vyprší platnost.
 
 Po uplynutí data **vypršení platnosti** budou všechny cloudové služby, které tento hostovaný operační systém stále používají, zastaveny, odstraněny nebo vynuceny upgradovat. [Tady][retirepolicy]si můžete přečíst další informace o zásadách pro vyřazení.
 

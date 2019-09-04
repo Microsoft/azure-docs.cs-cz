@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879035"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274476"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>Odesílání dat do rozhraní API pro rozpoznávání rukopisu 
 
@@ -30,7 +30,7 @@ Rozhraní API pro rozpoznávání rukopisu nepoužívá optické rozpoznávání
 Rozhraní API pro rozpoznávání rukopisu vyžaduje souřadnice X a Y, které reprezentují tahy rukopisu vytvořené vstupním zařízením, od okamžiku, kdy se dotkne roviny detekce na okamžik, kdy se přeruší. Body každého tahu musí být řetězcem hodnot oddělených čárkami a formátovány ve formátu JSON, podobně jako v následujícím příkladu. Každý tah inkoustu navíc musí mít v každém požadavku jedinečný identifikátor. Pokud se ID opakuje v rámci stejné žádosti, rozhraní API vrátí chybu. Pro nejpřesnější výsledky rozpoznávání musí mít za desetinnou čárkou aspoň osm číslic. Počátek (0, 0) plátna se považuje za levý horní roh plátna pro rukopis.
 
 > [!NOTE]
-> Následující příklad není platný formát JSON. Na GitHubu můžete najít úplný požadavek na JSON pro rozpoznávání [](https://go.microsoft.com/fwlink/?linkid=2089909)rukopisu.
+> Následující příklad není platný formát JSON. Na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089909)můžete najít úplný požadavek na JSON pro rozpoznávání rukopisu.
  
 ```json
 {
@@ -82,7 +82,7 @@ Výsledkem rozpoznávání se předem získáte informace o vlastnostech tahů p
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Integrace rozhraní API pro rozpoznávání rukopisu pomocí Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) nabízí nástroje a technologie, které umožňují digitální psaní digitálních zážitků na nejrůznějších zařízeních. Pomocí rozhraní API pro rozpoznávání rukopisu můžete kombinovat platformu Windows Ink k vytváření aplikací, které zobrazují a interpretují tahy digitálního pera.
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) nabízí nástroje a technologie, které umožňují digitální psaní digitálních zážitků na nejrůznějších zařízeních. Platformu Windows Ink API můžete kombinovat s rozhraním API pro rozpoznávání rukopisu k vytváření aplikací, které zobrazují a interpretují tahy digitálního pera.
 
 ## <a name="next-steps"></a>Další postup
 

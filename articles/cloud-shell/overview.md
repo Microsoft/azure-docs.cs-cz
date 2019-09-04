@@ -12,19 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: f3d7edf21edf116732eceb332cb8725a0dee85dc
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742018"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240844"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled Azure Cloud Shell
-Azure Cloud Shell je interaktivní prostředí přístupné pro prohlížeč, které slouží ke správě prostředků Azure.
-Nabízí flexibilitu při výběru prostředí, které nejlépe vyhovuje způsobu práce.
-Uživatelé Linuxu si mohou vybrat Bash. Uživatelé Windows se mohou rozhodnout pro PowerShell.
+Azure Cloud Shell je interaktivní, ověřené prostředí přístupné pro prohlížeč pro správu prostředků Azure.
+Nabízí flexibilitu při výběru prostředí, které nejlépe vyhovuje způsobu práce, a to buď bash nebo PowerShell.
 
 Vyzkoušejte si shell.azure.com Kliknutím níže.
 

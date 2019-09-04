@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cd17dcb7a9f68c25617c9e6b928ddebebcdbddbe
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 4ee9048202a5953ff27ea83cfb39cb1af0739e7a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211718"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277509"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat ze SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -98,9 +98,9 @@ Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány n�
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných sadou SAP BW DataSet.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou SAP BW DataSet.
 
-Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **relační**. Neexistují žádné vlastnosti specifické pro typ pro SAP BW datovou sadu relačních objektů typu.
+Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **SapBwCube**. Neexistují žádné vlastnosti specifické pro typ pro SAP BW datovou sadu relačních objektů typu.
 
 **Příklad:**
 
@@ -108,15 +108,18 @@ Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **re
 {
     "name": "SAPBWDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapBwCube",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Pokud jste `RelationalTable` používali typovou datovou sadu, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -124,11 +127,11 @@ Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **re
 
 ### <a name="sap-bw-as-source"></a>SAP BW jako zdroj
 
-Chcete-li kopírovat data z SAP BW, nastavte typ zdroje v aktivitě kopírování na **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z SAP BW, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapBwSource** | Ano |
 | query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Ano |
 
 **Příklad:**
@@ -152,7 +155,7 @@ Chcete-li kopírovat data z SAP BW, nastavte typ zdroje v aktivitě kopírován�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapBwSource",
                 "query": "<MDX query for SAP BW>"
             },
             "sink": {
@@ -162,6 +165,8 @@ Chcete-li kopírovat data z SAP BW, nastavte typ zdroje v aktivitě kopírován�
     }
 ]
 ```
+
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
 ## <a name="data-type-mapping-for-sap-bw"></a>Mapování datových typů pro SAP BW
 

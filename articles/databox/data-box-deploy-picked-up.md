@@ -8,12 +8,13 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.localizationpriority: high
+ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098831"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241432"
 ---
 ::: zone target="docs"
 
@@ -202,7 +203,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 

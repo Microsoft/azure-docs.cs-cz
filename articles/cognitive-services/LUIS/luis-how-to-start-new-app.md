@@ -9,19 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 87244169aa8e50ddd503086121dd84f5d50c5df4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932777"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258505"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Můžete vytvořit aplikaci LUIS v [LUIS](https://www.luis.ai) portálu, nebo prostřednictvím LUIS vytváření [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>Na portálu služby LUIS
+
 Vytvoření nové aplikace na portálu služby LUIS několika způsoby:
 
 * Začít s prázdnou aplikaci a vytvořit záměrů, projevy a entity.
@@ -39,6 +40,8 @@ Vytvořit novou aplikaci s rozhraním API pro vytváření obsahu v několika zp
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
  
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
@@ -87,6 +90,6 @@ Možné chyby:
 1. V nabídce vyberte **Odstranit** .
 1. V potvrzovacím okně vyberte **OK** .
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vaše první úkol v aplikaci je [přidání záměrů](luis-how-to-add-intents.md).

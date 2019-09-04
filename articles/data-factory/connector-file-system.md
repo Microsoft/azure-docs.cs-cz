@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cd88a58df4334180174fae9f0e651b5281e320e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 677f3cbb6416086843ceb530abd07d412c8b38f0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966549"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275423"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopírování dat do nebo ze systému souborů pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -99,12 +99,12 @@ Pro službu propojenou systému souborů jsou podporovány následující vlastn
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text s oddělovači, Avro a datovou sadu binárního formátu](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
 
-Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti systému souborů:
+Chcete-li kopírovat data do a z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti systému souborů:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -113,7 +113,7 @@ Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární form�
 | fileName   | Název souboru pod daným folderPath. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
 
 > [!NOTE]
-> Datová sada typu Shared s Parquet/textovým formátem, která je uvedená v dalším oddílu, je stále podporovaná tak, jak je pro aktivitu kopírování/vyhledávání nebo GetMetadata, ale nefunguje s tokem dat mapování. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
+> Datová sada typu **Shared** s Parquet/textovým formátem, která je uvedená v dalším oddílu, je stále podporovaná tak, jak je pro aktivitu kopírování/vyhledávání nebo GetMetadata, ale nefunguje s tokem dat mapování. Budete navrženi, že budete chtít tento nový model použít a že uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování těchto nových typů.
 
 **Příklad:**
 
@@ -143,7 +143,7 @@ Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární form�
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Chcete-li kopírovat data do systému souborů ve **formátu ORC/Avro/JSON**, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do systému souborů ve **formátu ORC/JSON**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -197,12 +197,12 @@ Chcete-li kopírovat data do systému souborů ve **formátu ORC/Avro/JSON**, js
 
 ### <a name="file-system-as-source"></a>Systém souborů jako zdroj
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Chcete-li kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a zdroj binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. Pro systém `storeSettings` souborů jsou podporovány následující vlastnosti v nastavení ve zdroji kopírování založeném na formátu:
+Chcete-li kopírovat data z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), [Formát Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. . Pro systém `storeSettings` souborů jsou podporovány následující vlastnosti v nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -260,7 +260,7 @@ Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přeč
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Chcete-li kopírovat data ze systému souborů ve **formátu ORC/Avro/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data ze systému souborů ve **formátu ORC/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -302,12 +302,12 @@ Chcete-li kopírovat data ze systému souborů ve **formátu ORC/Avro/JSON**, v 
 
 ### <a name="file-system-as-sink"></a>Systém souborů jako jímka
 
-- Chcete-li kopírovat na **Parquet, textový nebo binární formát**, přečtěte si část [Parquet, text s oddělovači a binární formát](#format-based-sink) .
-- Chcete-li kopírovat do jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část s [dalšími formátovacími jímkami](#other-format-sink) .
+- Chcete-li kopírovat do **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a jímka binárního formátu](#format-based-sink) .
+- Chcete-li kopírovat do jiných formátů, jako je například **Formát ORC/JSON**, přečtěte si [Další část formátování jímky](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, oddělený text a jímka binárního formátu
+#### <a name="format-based-sink"></a>Jímka Parquet, s oddělovači textu, Avro a binárního formátu
 
-Chcete-li kopírovat data v **Parquet, textovém nebo binárním formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro jímku aktivity kopírování založené na formátu a podporovaná nastavení. V nastavení v části `storeSettings` nastavení v jímky kopírování na základě formátu jsou podporovány následující vlastnosti systému souborů:
+Chcete-li kopírovat data v **Parquet, text, Avro nebo binárním formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro jímku aktivity kopírování na základě formátu a podporovaná nastavení. V nastavení v části `storeSettings` nastavení v jímky kopírování na základě formátu jsou podporovány následující vlastnosti systému souborů:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -355,7 +355,7 @@ Chcete-li kopírovat data v **Parquet, textovém nebo binárním formátu**, př
 
 #### <a name="other-format-sink"></a>Další jímka formátu
 
-Chcete-li kopírovat data do systému souborů ve **formátu ORC/Avro/JSON**, v oddílu **jímky** jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do systému souborů ve **formátu ORC/JSON**, v oddílu **jímky** jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

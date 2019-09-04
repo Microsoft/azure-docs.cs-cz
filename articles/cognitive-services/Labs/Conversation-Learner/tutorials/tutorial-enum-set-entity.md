@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: nolachar
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 429570d81f7e15758d8ea60951bb4d01b96f8f2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706981"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256490"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Kdy použít entity ENUM a nastavit akce entit
 
@@ -39,21 +39,21 @@ V tomto kurzu se zavedou dvě nové funkce. Nový typ entity s názvem ENUM (Sho
 
 V konverzacích jsou případy, kde význam slov závisí na kontextu.  Popsána klíčová slova se běžně učí a extrahují pomocí služby porozumění jazyku, ale v těchto případech se nemusí být schopni naučit používat příklady s popisky.
 
-Představte si, že jste overhear část konverzace mezi lidmi a vy uslyšíte jenom slovo "Ano". Nevíte, že "Ano" souhlasí s tím, že jste před tím, než jste si poznamenali dotaz předtím, nevěděli nebo potvrdili. Otázka, na kterou jste požádáni, je kontextem, což dává smysl k odpovědi. Podobně vzhledem k tomu, že "Ano" představuje běžnou reakci na mnoho různých otázek, které se nedají zjistit, protože byste se [](04-introduction-to-entities.md) mohli seznámit s vlastními školenými entitami, protože se tak naučíte označovat každé "Ano" jako tuto entitu.
+Představte si, že jste overhear část konverzace mezi lidmi a vy uslyšíte jenom slovo "Ano". Nevíte, že "Ano" souhlasí s tím, že jste před tím, než jste si poznamenali dotaz předtím, nevěděli nebo potvrdili. Otázka, na kterou jste požádáni, je kontextem, což dává smysl k odpovědi. Podobně vzhledem k tomu, že "Ano" představuje běžnou reakci na mnoho různých otázek, které se nedají zjistit, protože byste se mohli seznámit s [vlastními školenými](04-introduction-to-entities.md) entitami, protože se tak naučíte označovat každé "Ano" jako tuto entitu.
 
 ### <a name="example"></a>Příklad
 
 Pojďme dál objasnit s následujícím příkladem:
 
 Dole Líbí se vám Azure Cognitive Services?
-Uživatel: Ano, robot: Líbí se vám zmrzlina?
-Uživatel: Ano
+Uživatelský Ano, robot: Líbí se vám zmrzlina?
+Uživatelský Ano
 
 V předchozích kurzech jsme se podívali na [vlastní výukové](04-introduction-to-entities.md) entity a vaši úvodní myšlenku mohli vytvořit entitu s názvem "likesCogServices" a označit jako tuto entitu první "Ano".  Systém však také označí druhý "Ano". Po pokusu o opravu popisku druhé "Ano" na "likesIceCream" by se vytvořil konflikt dvou stejných vstupů "Ano", což znamená, že bude zablokováno.
 
 V těchto případech je potřeba použít entity ENUM a SET_ENTITY akce.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Kdy použít výčty nebo SET_ENTITY akce
+## <a name="when-to-use-enums-or-set_entity-actions"></a>Kdy použít výčty nebo SET_ENTITY akce
 
 Pomocí těchto pravidel můžete zjistit, kdy používat entity ENUM a akce SET_ENTITY:
 
@@ -66,13 +66,13 @@ Jinými slovy, můžete je použít pro všechny výzvy zavřít a ukončit, jak
 > V současné době máme omezení až o 5 hodnot na jednu entitu výčtu. Každá hodnota používá jeden z slotů v aktuálním limitu 64. Viz [CL-Values-a-hranice](../cl-values-and-boundaries.md)
 
 Příklad: Dole Je vaše objednávka správná?
-Uživatel: Ano
+Uživatelský Ano
 
 Když jsou možné hodnoty entity otevřené – ukončené a neopravené, bude nutné použít alternativní funkci, jako je [očekávaná entita](05-expected-entity.md).
 
 Příklad: Dole Jak se jmenuješ?
-Uživatel: Matný robot: Jaká je vaše oblíbená barva?
-Uživatel: Stříbrný
+Uživatelský Matný robot: Jaká je vaše oblíbená barva?
+Uživatelský Stříbrný
 
 Tyto výzvy se považují za otevřené – ukončené, protože by mohly být zodpovězeny pomocí libovolných hodnot.
 

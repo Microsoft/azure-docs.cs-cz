@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 1882e994c5d062d3ca841025edb61965f7eb0aa0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e21ae2f8eda4521effa5b7db686fe72241aa4cdb
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967061"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276285"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -111,7 +111,7 @@ Chcete-li použít ověřování instančního objektu, postupujte podle těchto
 
 2. Udělte instančnímu objektu správné oprávnění. Další informace o tom, jak oprávnění funguje v Data Lake Storage Gen2 ze [seznamů řízení přístupu u souborů a adresářů](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)
 
-    - **Jako zdroj**: V Průzkumník služby Storage Udělte alespoň oprávnění ke **spuštění** ze zdrojového systému souborů společně s oprávněním **ke čtení** pro soubory ke zkopírování. Případně můžete v řízení přístupu (IAM) udělit alespoň roli čtečky **dat objektů BLOB úložiště** .
+    - **Jako zdroj**: V Průzkumník služby Storage Udělte alespoň oprávnění ke **spuštění** ze zdrojového systému souborů společně s oprávněním **ke čtení** pro soubory ke zkopírování. Případně můžete v řízení přístupu (IAM) udělit alespoň roli **čtečky dat objektů BLOB úložiště** .
     - **Jako jímka**: V Průzkumník služby Storage udělte aspoň oprávnění **Execute** počínaje systémem souborů jímky společně s oprávněním k **zápisu** do složky jímky. Případně můžete v řízení přístupu (IAM) udělit alespoň roli **Přispěvatel dat objektu BLOB úložiště** .
 
 >[!NOTE]
@@ -165,7 +165,7 @@ Pokud chcete používat spravované identity pro ověřování prostředků Azur
 
 2. Udělte spravované identitě správné oprávnění. Další informace o tom, jak oprávnění funguje v Data Lake Storage Gen2 ze [seznamů řízení přístupu u souborů a adresářů](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 
-    - **Jako zdroj**: V Průzkumník služby Storage Udělte alespoň oprávnění ke **spuštění** ze zdrojového systému souborů společně s oprávněním **ke čtení** pro soubory ke zkopírování. Případně můžete v řízení přístupu (IAM) udělit alespoň roli čtečky **dat objektů BLOB úložiště** .
+    - **Jako zdroj**: V Průzkumník služby Storage Udělte alespoň oprávnění ke **spuštění** ze zdrojového systému souborů společně s oprávněním **ke čtení** pro soubory ke zkopírování. Případně můžete v řízení přístupu (IAM) udělit alespoň roli **čtečky dat objektů BLOB úložiště** .
     - **Jako jímka**: V Průzkumník služby Storage udělte aspoň oprávnění **Execute** počínaje systémem souborů jímky společně s oprávněním k **zápisu** do složky jímky. Případně můžete v řízení přístupu (IAM) udělit alespoň roli **Přispěvatel dat objektu BLOB úložiště** .
 
 >[!NOTE]
@@ -207,12 +207,12 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v tématu [datové sady](concepts-datasets-linked-services.md).
 
-- V případě **Parquet, oddělený text a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu](#format-based-dataset) s oddělovači.
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu s oddělovači](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, text a datová sada binárních formátů s oddělovači
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
 
-Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `location` nastavení v datové sadě založené na formátu:
+Chcete-li kopírovat data do a z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `location` nastavení v datové sadě založené na formátu:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -253,7 +253,7 @@ Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární form�
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Chcete-li kopírovat data do a z Data Lake Storage Gen2 ve **formátu ORC/Avro/JSON**, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data do a z Data Lake Storage Gen2 ve **formátu ORC/JSON**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -266,7 +266,7 @@ Chcete-li kopírovat data do a z Data Lake Storage Gen2 ve **formátu ORC/Avro/J
 | compression | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně **Optimal** a **nejrychlejší**. |Ne |
 
 >[!TIP]
->Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Chcete-li zkopírovat jeden soubor se zadaným názvem, zadejte **FolderPath** s částí složky a názvem souboru s názvem.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků. 
+>Zkopírujte všechny soubory ve složce, zadejte **folderPath** pouze.<br>Chcete-li zkopírovat jeden soubor se zadaným názvem, zadejte **FolderPath** s částí **složky a názvem souboru s** názvem.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků. 
 
 **Příklad:**
 
@@ -304,12 +304,12 @@ Chcete-li kopírovat data do a z Data Lake Storage Gen2 ve **formátu ORC/Avro/J
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>Azure Data Lake Storage Gen2 jako typ zdroje
 
-- Chcete-li kopírovat z **Parquet, textového a binárního formátu**, přečtěte si oddíl [Parquet, text s oddělovači textu a binární formát](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Pokud chcete kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači a zdrojový soubor binárního formátu](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, text a zdroj binárního formátu s oddělovači
+#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
 
-Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
+Chcete-li kopírovat data z **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), [Formát Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování založené na formátu a podporovaná nastavení. . Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -367,7 +367,7 @@ Chcete-li kopírovat data z **Parquet, textu nebo binárního formátu**, přeč
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Chcete-li kopírovat data z Data Lake Storage Gen2 ve **formátu ORC/Avro/JSON**, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+Chcete-li kopírovat data z Data Lake Storage Gen2 ve **formátu ORC/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -409,12 +409,12 @@ Chcete-li kopírovat data z Data Lake Storage Gen2 ve **formátu ORC/Avro/JSON**
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>Azure Data Lake Storage Gen2 jako typ jímky
 
-- Chcete-li kopírovat na **Parquet, textový nebo binární formát**, přečtěte si část [Parquet, text s oddělovači a binární formát](#format-based-sink) .
-- Chcete-li kopírovat do jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část s [dalšími formátovacími jímkami](#other-format-sink) .
+- Pokud chcete kopírovat do **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si oddíl [Parquet, text s oddělovači a binární formát](#format-based-sink) .
+- Chcete-li kopírovat do jiných formátů, jako je například **Formát ORC/JSON**, přečtěte si [Další část formátování jímky](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, oddělený text a jímka binárního formátu
+#### <a name="format-based-sink"></a>Jímka Parquet, s oddělovači textu, Avro a binárního formátu
 
-Chcete-li kopírovat data na **Parquet, textový nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), [Formát textu](format-delimited-text.md) s oddělovači a [binární formát](format-binary.md) pro jímku aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `storeSettings` nastavení v jímky kopírování na základě formátu:
+Pokud chcete kopírovat data na **Parquet, oddělený text, Avro nebo binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro jímku aktivity kopírování založené na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro data Lake Storage Gen2 v části `storeSettings` nastavení v jímky kopírování na základě formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -462,7 +462,7 @@ Chcete-li kopírovat data na **Parquet, textový nebo binární formát**, pře�
 
 #### <a name="other-format-sink"></a>Další jímka formátu
 
-Chcete-li kopírovat data do Data Lake Storage Gen2 ve **formátu ORC/Avro/JSON**, jsou v části **jímky** podporovány následující vlastnosti:
+Chcete-li kopírovat data do Data Lake Storage Gen2 ve **formátu ORC/JSON**, v oddílu **jímky** jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -590,6 +590,6 @@ Tady je příklad konfigurace JSON (viz `preserve`):
 
 Přečtěte si další informace o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v funkci toku dat mapování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

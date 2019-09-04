@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241018"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
 
@@ -25,8 +25,8 @@ Dva kontejnery řeči jsou **Převod řeči na text** a **Převod textu na řeč
 
 |Funkce|Funkce|Latest (Nejnovější)|
 |-|-|--|
-|Převod řeči na text| <li>Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky.|1.1.3|
-|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. s prostým textem Input nebo SSML (Speech syntézy Language). |1.1.0|
+|Převod řeči na text| <li>Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky.|1.2.0|
+|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. s prostým textem Input nebo SSML (Speech syntézy Language). |1.2.0|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -101,10 +101,10 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu, `<culture
 Následující značka je příkladem formátu:
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod řeči na text** ve verzi 1.1.3 kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod řeči na text** ve verzi 1.2.0 kontejneru:
 
 |Jazykové prostředí|Tags|
 |--|--|
@@ -129,10 +129,10 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu, `<culture
 Následující značka je příkladem formátu:
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod textu na řeč** v 1.1.0 verzi kontejneru:
+V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod textu na řeč** v 1.2.0 verzi kontejneru:
 
 |Jazykové prostředí|Tags|Podporované hlasy|
 |--|--|--|
@@ -167,7 +167,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejner
 
-Jakmile je kontejner na hostitelském [počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
+Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
 1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194373"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275744"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager
 
@@ -32,7 +32,7 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | AllocationFailed | V clusteru nebo oblasti nejsou dostupné prostředky nebo nemůžou podporovat požadovanou velikost virtuálního počítače. Opakujte požadavek později nebo si vyžádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)přidělením pro [problémy se systémem Linux, zřizováním a přidělením pro Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a [odstraňování potíží s přidělováním](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžné operace. | |
 | AuthorizationFailed | Váš účet nebo objekt služby nemá dostatečný přístup k dokončení nasazení. Ověřte, do jaké role účet patří, a jeho přístup k oboru nasazení.<br><br>Tato chyba se může zobrazit, když požadovaný poskytovatel prostředků není zaregistrován. | [Access Control na základě rolí Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Vyřešit registraci](resource-manager-register-provider-errors.md) |
-| BadRequest | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-group-authoring-templates.md#resource-location) |
+| BadRequest | Odeslali jste hodnoty nasazení, které se neshodují s tím, co očekává Správce prostředků. Pro pomoc s řešením potíží se podívejte na vnitřní stavovou zprávu. | [Odkaz na šablonu](/azure/templates/) a [podporovaná umístění](resource-location.md) |
 | Konflikt | Požadujete operaci, která není v aktuálním stavu prostředku povolena. Například změna velikosti disku je povolená jenom při vytváření virtuálního počítače nebo při uvolnění virtuálního počítače. | |
 | DeploymentActive | Počkejte, než se dokončí souběžné nasazení do této skupiny prostředků. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neposkytuje podrobnosti potřebné k vyřešení chyby. Vyhledejte v podrobnostech o chybě kód chyby, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
@@ -53,12 +53,12 @@ Pokud hledáte informace o kódu chyby a tyto informace nejsou v tomto článku 
 | InvalidTemplateCircularDependency | Odeberte zbytečné závislosti. | [Vyřešit cyklické závislosti](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Ověřte, jestli váš účet patří ke stejnému tenantovi jako skupina prostředků, do které nasazujete. | |
 | LinkedInvalidPropertyId | ID prostředku neřeší správně. Ověřte, že jste zadali všechny požadované hodnoty pro ID prostředku, včetně ID předplatného, názvu skupiny prostředků, typu prostředku, názvu nadřazeného prostředku (v případě potřeby) a názvu prostředku. | |
-| LocationRequired | Zadejte umístění prostředku. | [Nastavení umístění](resource-group-authoring-templates.md#resource-location) |
+| LocationRequired | Zadejte umístění prostředku. | [Nastavení umístění](resource-location.md) |
 | MismatchingResourceSegments | Ujistěte se, že vnořený prostředek má v názvu a typu správný počet segmentů. | [Vyřešit segmenty prostředků](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Ověřte stav registrace poskytovatele prostředků a podporovaná umístění. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Zaregistrujte své předplatné u poskytovatele prostředků. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Ověřte stav registrace poskytovatele prostředků. | [Vyřešit registraci](resource-manager-register-provider-errors.md) |
-| NotFound | Můžete se pokusit o nasazení závislého prostředku paralelně s nadřazeným prostředkem. Ověřte, zda potřebujete přidat závislost. | [Vyřešit závislosti](resource-manager-not-found-errors.md) |
+| Nenalezeno | Můžete se pokusit o nasazení závislého prostředku paralelně s nadřazeným prostředkem. Ověřte, zda potřebujete přidat závislost. | [Vyřešit závislosti](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Nasazení probíhá pokus o operaci, která překračuje kvótu pro předplatné, skupinu prostředků nebo oblast. Pokud je to možné, upravte nasazení tak, aby zůstalo v rámci kvót. V opačném případě zvažte, že se bude vyžadovat změna vašich kvót. | [Řešení kvót](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Před vytvořením podřízených prostředků zajistěte, aby existoval nadřazený prostředek. | [Vyřešit nadřazený prostředek](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Možná jste vybrali heslo s příliš velkým počtem znaků nebo jste převedli hodnotu hesla na zabezpečený řetězec, než je předáte jako parametr. Pokud šablona obsahuje parametr **zabezpečeného řetězce** , nemusíte tuto hodnotu převést na zabezpečený řetězec. Zadejte hodnotu pro heslo jako text. |  |

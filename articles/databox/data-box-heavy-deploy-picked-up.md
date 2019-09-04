@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d8d9478441ffe3962f450bed7bfddf2776386617
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164394"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240351"
 ---
 ::: zone target = "docs"
 
@@ -76,7 +77,7 @@ Teď jste připraveni dodávat své zařízení zpátky.
     2. Pro naplánování vyzvednutí zavolejte místní číslo pro vašeho přepravce.
     3. Zajistěte, aby se expediční štítek zobrazoval na vnějšku dodávky.
     4. Ujistěte se, že se ze zařízení odeberou staré expediční štítky z předchozí dodávky.
-3. Jakmile se Data Box Heavy vyzvednout a prohledá váš operátor, stav objednávky na portálu se aktualizuje na vyskladněno. Zobrazí se také ID sledování.
+3. Jakmile se Data Box Heavy vyzvednout a prohledá váš operátor, stav objednávky na portálu se aktualizuje na **vyskladněno**. Zobrazí se také ID sledování.
 
 ::: zone target = "docs"
 
@@ -128,7 +129,7 @@ Po dokončení nahrávání do Azure se data z disků Data Boxu vymažou v soula
 
 ::: zone target = "docs"
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 

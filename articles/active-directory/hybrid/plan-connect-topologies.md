@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Podporované topologie | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Podporované topologie | Microsoft Docs'
 description: Toto téma podrobně popisuje podporované a nepodporované topologie pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -16,185 +16,185 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383583"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275220"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
-Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.
+Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
 
 
-Tady je legendy pro obrázky v následujícím článku:
+Tady je legenda k obrázkům v článku:
 
-| Popis | Symbol |
+| Popis | Písmeno |
 | --- | --- |
-| Místní doménové struktuře služby Active Directory |![Místní doménové struktuře služby Active Directory](./media/plan-connect-topologies/LegendAD1.png) |
-| V místní službě Active Directory filtrované importu |![Active Directory filtrované importu](./media/plan-connect-topologies/LegendAD2.png) |
-| Server synchronizace Azure AD Connect |![Server synchronizace Azure AD Connect](./media/plan-connect-topologies/LegendSync1.png) |
-| Server synchronizace Azure AD Connect "pracovní režim" |![Server synchronizace Azure AD Connect "pracovní režim"](./media/plan-connect-topologies/LegendSync2.png) |
-| GALSync s Forefront Identity Manageru (FIM) 2010 nebo Microsoft Identity Manageru (MIM) 2016 |![GALSync s FIM 2010 a program MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect synchronizační server, podrobné |![Azure AD Connect synchronizační server, podrobné](./media/plan-connect-topologies/LegendSync4.png) |
+| Místní doménová struktura služby Active Directory |![Místní doménová struktura služby Active Directory](./media/plan-connect-topologies/LegendAD1.png) |
+| Místní služba Active Directory s filtrovaným importem |![Služba Active Directory s filtrovaným importem](./media/plan-connect-topologies/LegendAD2.png) |
+| Server Azure AD Connect Sync |![Server Azure AD Connect Sync](./media/plan-connect-topologies/LegendSync1.png) |
+| Server Azure AD Connect Sync "pracovní režim" |![Server Azure AD Connect Sync "pracovní režim"](./media/plan-connect-topologies/LegendSync2.png) |
+| GALSync se službou Forefront Identity Manager (FIM) 2010 nebo Microsoft Identity Manager (MIM) 2016 |![GALSync s FIM 2010 nebo MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
+| Server Azure AD Connect Sync, podrobný |![Server Azure AD Connect Sync, podrobný](./media/plan-connect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
 | Nepodporovaný scénář |![Nepodporovaný scénář](./media/plan-connect-topologies/LegendUnsupported.png) |
 
 
 > [!IMPORTANT]
-> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo konfigurace nebo akce, které jsou formálně zdokumentované. Některé z těchto konfigurací nebo akce může způsobit nekonzistentní nebo nepodporovaný stav synchronizace Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
+> Společnost Microsoft nepodporuje úpravu ani provozní Azure AD Connect synchronizaci mimo konfigurace nebo akce, které jsou zdokumentovány formálně. Kterákoli z těchto konfigurací nebo akcí může způsobit nekonzistentní nebo nepodporovaný stav Azure AD Connect synchronizace. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Jedna doménová struktura, jeden tenant Azure AD
 ![Topologie pro jednu doménovou strukturu a jednoho tenanta](./media/plan-connect-topologies/SingleForestSingleDirectory.png)
 
-Nejběžnější topologie je jedné místní doménové struktury s jednou nebo více domén a jedné službě Azure AD tenanta. Pro ověřování Azure AD se používá synchronizaci hodnot hash hesel. Expresní instalace služby Azure AD Connect podporuje pouze této topologie.
+Nejběžnější topologie je jediná místní doménová struktura s jednou nebo více doménami a jedním tenanta Azure AD. Pro ověřování Azure AD se používá synchronizace hodnot hash hesel. Expresní instalace Azure AD Connect podporuje pouze tuto topologii.
 
-### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Jedna doménová struktura, víc synchronizačních serverů do jednoho tenanta Azure AD
-![Nepodporovaná, která jsou filtrovaná topologie pro jednu doménovou strukturu](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
+### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Jedna doménová struktura, několik synchronizačních serverů do jednoho tenanta Azure AD
+![Nepodporovaná, filtrovaná topologie pro jednu doménovou strukturu](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
 
-S víc synchronizačních serverů služby Azure AD Connect je připojen ke stejnému tenantovi Azure AD se nepodporuje, s výjimkou [pracovní server](#staging-server). To má nepodporovanou i v případě, že tyto servery jsou nakonfigurovány pro synchronizaci se vzájemně se vylučující sadu objektů. Může mít za tuto topologii Pokud nebudete mít přístup všechny domény v doménové struktuře než jeden server nebo pokud chcete distribuovat zatížení napříč několika servery.
+Více Azure AD Connect synchronizačních serverů připojených ke stejnému tenantovi služby Azure AD není podporováno, s výjimkou [přípravného serveru](#staging-server). Nepodporovaná ani v případě, že tyto servery jsou nakonfigurovány pro synchronizaci s vzájemně exkluzivní sadou objektů. Pokud se nemůžete spojit se všemi doménami v doménové struktuře z jednoho serveru nebo pokud chcete distribuovat zatížení mezi několik serverů, možná se tato topologie považuje za považovat za tuto topologii.
 
-## <a name="multiple-forests-single-azure-ad-tenant"></a>Více doménových struktur, jeden tenant Azure AD
+## <a name="multiple-forests-single-azure-ad-tenant"></a>Víc doménových struktur, jeden tenant Azure AD
 ![Topologie pro více doménových struktur a jednoho tenanta](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
 
-Řada organizací má prostředí s více místními doménovými strukturami služby Active Directory. Existují různé důvody pro s více než jednu místní doménovou strukturu služby Active Directory. Typické příklady jsou návrhy s doménových struktur prostředků účtu a výsledek je fúze nebo akvizice.
+Mnoho organizací má prostředí s několika místními doménovými strukturami služby Active Directory. Existují různé důvody pro používání více než jedné místní doménové struktury služby Active Directory. Typické příklady jsou návrhy s doménovými strukturami prostředků a výsledkem fúze nebo akvizice.
 
-Pokud máte několik doménových struktur, všechny doménové struktury musí být dostupná pro jeden server synchronizace Azure AD Connect. Nemáte připojení serveru k doméně. V případě potřeby kontaktovat všechny doménové struktury, můžete umístit na server v hraniční síti (označované také jako DMZ, demilitarizovaná zóna a monitorovaná podsíť).
+Pokud máte více doménových struktur, musí být všechny doménové struktury dosažitelné jedním Azure AD Connect synchronizačním serverem. Server musí být připojený k doméně. Pokud je to nutné pro dosažení všech doménových struktur, můžete server umístit do hraniční sítě (označované také jako DMZ, demilitarizovaná Zone a monitorovaná podsíť).
 
-Průvodce instalací Azure AD Connect nabízí několik možností, jak konsolidovat uživatelé, kteří jsou reprezentovány ve více doménových strukturách. Cílem je, že uživatel je reprezentován jenom jednou ve službě Azure AD. Zde jsou některé běžné topologie, ve kterých můžete nakonfigurovat vlastní instalační cestě v Průvodci instalací. Na **Jednoznačná identifikace uživatelů** vyberte odpovídající možnost, která představuje topologii. Sloučení je nakonfigurován pouze pro uživatele. Duplicitní skupiny nejsou konsolidovat s výchozí konfigurací.
+Průvodce instalací Azure AD Connect nabízí několik možností pro konsolidaci uživatelů, kteří jsou zastoupeni ve více doménových strukturách. Cílem je, že se uživatel ve službě Azure AD reprezentuje jenom jednou. Existují některé běžné topologie, které lze konfigurovat v cestě k vlastní instalaci v Průvodci instalací nástroje. Na stránce **jedinečně identifikující uživatele** vyberte odpovídající možnost, která představuje vaši topologii. Konsolidace je nakonfigurovaná jenom pro uživatele. Duplicitní skupiny nejsou konsolidovány s výchozí konfigurací.
 
-Běžné topologie jsou popsány v oddílech o samostatné topologie [úplné síť](#multiple-forests-full-mesh-with-optional-galsync), a [topologie prostředek účtu](#multiple-forests-account-resource-forest).
+Běžné topologie jsou popsány v oddílech týkajících se samostatných topologií, [celé sítě](#multiple-forests-full-mesh-with-optional-galsync)a [topologie prostředků účtů](#multiple-forests-account-resource-forest).
 
-Předpokládá se výchozí konfigurace ve službě Azure AD Connect sync:
+Výchozí konfigurace v Azure AD Connect synchronizace předpokládá:
 
-* Každý uživatel má pouze jeden povolený účet a doménové struktury, ve kterém se nachází tento účet se používá k ověření uživatele. Tento předpoklad je synchronizace hodnot hash hesel, předávacího ověřování a federace. UserPrincipalName a sourceAnchor/immutableID pocházet z této doménové struktuře.
-* Každý uživatel má pouze jedna poštovní schránka.
-* Doménové struktury, který je hostitelem poštovních schránek pro uživatele je nejlepší kvalita dat pro atributy, které jsou viditelné v globální adresy seznamu (GAL) systému Exchange. Pokud neexistuje žádný poštovní schránky pro uživatele, lze použít jakoukoli doménovou strukturu přispívat tyto hodnoty atributů.
-* Pokud máte propojená poštovní schránka, je zde i účet použít pro přihlášení do jiné doménové struktuře.
+* Každý uživatel má pouze jeden povolený účet a doménová struktura, kde se tento účet nachází, slouží k ověření uživatele. Tento předpoklad je pro synchronizaci hodnot hash hesel, předávací ověřování a federaci. Třídy UserPrincipalName a sourceAnchor/immutableID pocházejí z této doménové struktury.
+* Každý uživatel má pouze jednu poštovní schránku.
+* Doménová struktura, která hostuje poštovní schránku pro uživatele, má nejlepší kvalitu dat pro atributy viditelné v seznamu globálních adres (globálního adresáře) systému Exchange. Pokud není k dispozici poštovní schránka pro uživatele, lze použít jakoukoli doménovou strukturu k přispívání těchto hodnot atributů.
+* Pokud máte propojenou poštovní schránku, je k dispozici také účet v jiné doménové struktuře, který se používá pro přihlášení.
 
-Pokud vaše prostředí se neshoduje s těchto předpokladů, stane se následující věcí:
+Pokud vaše prostředí neodpovídá těmto předpokladům, dojde k následujícím akcím:
 
-* Pokud máte více než jeden aktivní účet nebo poštovní schránky více než jeden synchronizační modul jednu vybere a ignoruje druhý.
-* Poštovní schránku propojenou s žádný aktivní účet není exportovány do služby Azure AD. Uživatelský účet není reprezentován jako člena v libovolné skupině. Propojená poštovní schránky v DirSync vždy reprezentované jako normální poštovní schránky. Tato změna je záměrně různé chování pro zajištění lepší podpory pro scénáře s více doménovými strukturami.
+* Pokud máte více než jeden aktivní účet nebo více než jednu poštovní schránku, synchronizační modul ho vybere a ignoruje druhý.
+* Propojená poštovní schránka bez dalšího aktivního účtu se do Azure AD neexportuje. Uživatelský účet není reprezentován jako člen v žádné skupině. Propojená poštovní schránka v DirSync je vždy reprezentována jako normální poštovní schránka. Tato změna je záměrně jiné chování pro lepší podporu scénářů s více doménovými strukturami.
 
-Můžete najít další informace naleznete v [Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md).
+Další podrobnosti najdete v [části Principy výchozí konfigurace](concept-azure-ad-connect-sync-default-configuration.md).
 
-### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Více doménových struktur, víc synchronizačních serverů do jednoho tenanta Azure AD
-![Nepodporovaná topologie pro více doménových struktur a víc synchronizačních serverů](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
+### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>Několik doménových struktur, několik synchronizačních serverů do jednoho tenanta Azure AD
+![Nepodporovaná topologie pro více doménových struktur a více synchronizačních serverů](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
 
-S více než jeden server synchronizace Azure AD Connect připojené do jednoho tenanta Azure AD se nepodporuje. Výjimkou je použití [pracovní server](#staging-server).
+K jednomu klientovi Azure AD se nepodporuje víc než jeden Azure AD Connect synchronizační Server. Výjimkou je použití [přípravného serveru](#staging-server).
 
-Tato topologie se liší od uvedený níže v tomto **víc synchronizačních serverů** připojené k jedné službě Azure AD tenanta nepodporuje.
+Tato topologie se liší od toho, že **více synchronizačních serverů** připojených k jednomu klientovi Azure AD není podporováno.
 
-### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Více doménových struktur, jeden synchronizační server, jsou uživatelé reprezentovaní ve pouze jeden adresář
-![Možnost představující ve všech adresářích jenom jednou uživatelů](./media/plan-connect-topologies/MultiForestUsersOnce.png)
+### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Více doménových struktur, jeden synchronizační Server, uživatelé jsou zastoupeni pouze v jednom adresáři.
+![Možnost pro reprezentaci uživatelů jenom ve všech adresářích](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![Znázornění více doménových struktur a samostatné topologie](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
+![Znázornění několika doménových struktur a samostatných topologií](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
-V tomto prostředí jsou všechny místní doménové struktury považovány za samostatné entity. Žádný uživatel se nenachází v jiné doménové struktury. Každé doménové struktuře má své vlastní organizace Exchange a neexistuje žádná GALSync mezi doménovými strukturami. Tato topologie může být situace po fúze nebo akvizice, nebo v organizaci, kde jednotlivé obchodní jednotky funguje nezávisle na sobě. Těchto doménových strukturách jsou ve stejné organizaci ve službě Azure AD a objeví se jednotné GAL. Na předchozím obrázku každý objekt v každé doménové struktuře je reprezentována jednou v úložišti metaverse a agregovat v cílovém tenantovi Azure AD.
+V tomto prostředí se všechny místní doménové struktury považují za samostatné entity. Žádný uživatel není přítomen v žádné jiné doménové struktuře. Každá doménová struktura má svou vlastní organizaci Exchange a mezi doménovými strukturami neexistuje žádný GALSync. Tato topologie může představovat situaci, kdy se fúze nebo akvizice nebo v organizaci, kde každá obchodní jednotka pracuje nezávisle na sobě. Tyto doménové struktury jsou ve stejné organizaci ve službě Azure AD a zobrazují se v rámci sjednoceného globálního adresáře. V předchozím obrázku je každý objekt v každé doménové struktuře v úložišti Metaverse uveden jednou a agregovaný v cílovém tenantovi služby Azure AD.
 
-### <a name="multiple-forests-match-users"></a>Více doménových struktur: vyhledání uživatelů
-Na všech těchto scénářích platí, že distribuce a skupiny zabezpečení může obsahovat kombinaci uživatele, kontakty a cizí objekty zabezpečení (FSP). FSP se používají ve službě Active Directory Domain Services (AD DS) k reprezentaci členů z jiných doménových struktur ve skupině zabezpečení. Všechny FSP, jsou vyhodnoceny na reálnému objektu ve službě Azure AD.
+### <a name="multiple-forests-match-users"></a>Více doménových struktur: Vyhledání uživatelů
+Společné pro všechny tyto scénáře je, že distribuce a skupiny zabezpečení můžou obsahovat kombinaci uživatelů, kontaktů a cizích objektů zabezpečení (FSPs). FSPs se používají v Active Directory Domain Services (služba AD DS) k zastupování členů z jiných doménových struktur ve skupině zabezpečení. Všechny FSPs se přeloží na skutečný objekt ve službě Azure AD.
 
-### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Více doménových struktur: úplné síť s volitelné GALSync
-![Možnost pro použití atributu e-mailu pro porovnávání, pokud existuje identit uživatelů napříč více adresářů](./media/plan-connect-topologies/MultiForestUsersMail.png)
+### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Více doménových struktur: celá síť s volitelným GALSync
+![Možnost použití atributu mail pro porovnání, pokud existují identity uživatelů v několika adresářích](./media/plan-connect-topologies/MultiForestUsersMail.png)
 
-![Vícecestná topologie pro více doménových struktur](./media/plan-connect-topologies/MultiForestFullMesh.png)
+![Úplná topologie sítě pro více doménových struktur](./media/plan-connect-topologies/MultiForestFullMesh.png)
 
-Vícecestná topologie umožňuje uživatelům a prostředky nacházely ve všech doménových strukturách. Mezi doménovými strukturami se běžně, obousměrný vztah důvěryhodnosti.
+Topologie celé sítě umožňuje umístění uživatelů a prostředků do jakékoli doménové struktury. Mezi doménovými strukturami obvykle existují obousměrné vztahy důvěryhodnosti.
 
-Pokud je k dispozici ve více doménových strukturách systému Exchange, může být (volitelně) místním řešením GALSync. Každý uživatel je pak reprezentován jako kontakt v jiných doménových strukturách. GALSync je obvykle implementovány pomocí FIM 2010 a program MIM 2016. Azure AD Connect nelze použít pro místní GALSync.
+Pokud je Exchange k dispozici ve více než jedné doménové struktuře, může to být (volitelně) místní řešení GALSync. Každý uživatel je pak reprezentován jako kontakt ve všech ostatních doménových strukturách. GALSync se běžně implementuje prostřednictvím FIM 2010 nebo MIM 2016. Azure AD Connect nelze použít pro místní GALSync.
 
-V tomto scénáři jsou připojené objekty identity prostřednictvím atributu e-mailu. Uživatel, který má poštovní schránku v jedné doménové struktuře je spojen s kontakty v jiných doménových strukturách.
+V tomto scénáři jsou objekty identity připojené prostřednictvím atributu mail. Uživatel, který má poštovní schránku v jedné doménové struktuře, je připojen ke kontaktům v jiných doménových strukturách.
 
-### <a name="multiple-forests-account-resource-forest"></a>Více doménových struktur: doménové struktury účtu prostředku
-![Možnost použití atributy ObjectSID a msExchMasterAccountSID pro porovnávání, pokud existuje identit napříč více adresářů](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
+### <a name="multiple-forests-account-resource-forest"></a>Více doménových struktur: účet-doménová struktura prostředků
+![Možnost použití atributů ObjectSID a msExchMasterAccountSID pro porovnání, pokud existují identity v několika adresářích](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
 
-![Prostředek účtu doménovou strukturu pro více doménových struktur](./media/plan-connect-topologies/MultiForestAccountResource.png)
+![Účet – topologie doménové struktury prostředků pro více doménových struktur](./media/plan-connect-topologies/MultiForestAccountResource.png)
 
-V účtu prostředku-doménovou strukturu, budete mít jeden nebo více *účet* doménových strukturách s účty aktivního uživatele. Máte také jeden nebo více *prostředků* doménové struktury se zakázanými účty.
+V topologii doménové struktury prostředků účtů máte jednu nebo více doménových struktur *účtů* s aktivními uživatelskými účty. Máte také jednu nebo více doménových struktur *prostředků* se zakázanými účty.
 
-V tomto scénáři vztahy důvěryhodnosti doménové struktury prostředku (nejméně) všech doménových struktur účtů. Doménové struktury prostředku má obvykle rozšířeným schématem služby Active Directory s Exchange a Lync. Všechny služby Lync a Exchange služby, společně s dalšími službami sdílené jsou umístěné v této doménové struktuře. Uživatelé mají zakázáno uživatelský účet v této doménové struktuře a poštovní schránku je propojený s účtem doménové struktury.
+V tomto scénáři jedna (nebo víc) doménová struktura prostředků důvěřuje všem doménovým strukturám účtů. Doménová struktura prostředků má obvykle rozšířené schéma služby Active Directory se systémem Exchange a Lync. Všechny služby Exchange a Lync spolu s dalšími sdílenými službami se nacházejí v této doménové struktuře. Uživatelé mají v této doménové struktuře zakázaný uživatelský účet a poštovní schránka je propojená s doménovou strukturou účtu.
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 a aspekty topologie
-Některé úlohy Office 365 mají určitá omezení na podporované topologie:
+## <a name="office-365-and-topology-considerations"></a>Otázky k sadě Office 365 a topologii
+Některé úlohy Office 365 mají určitá omezení pro podporované topologie:
 
 | Úloha | Omezení |
 | --------- | --------- |
-| Exchange Online | Další informace o hybridní topologie podporované službou Exchange Online najdete v tématu [hybridní nasazení s více doménovými strukturami služby Active Directory](https://technet.microsoft.com/library/jj873754.aspx). |
-| Skype pro firmy | Pokud používáte více místními doménovými strukturami, je podporována pouze doménovou strukturu prostředků účtu. Další informace najdete v tématu [prostředí požadavky pro Skype pro Business Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
+| Exchange Online | Další informace o hybridních topologiích podporovaných systémem Exchange Online najdete v tématu [hybridní nasazení s několika doménovými strukturami služby Active Directory](https://technet.microsoft.com/library/jj873754.aspx). |
+| Skype pro firmy | Pokud používáte více místních doménových struktur, je podporována pouze topologie doménové struktury prostředků účtů. Další informace najdete v tématu [požadavky na životní prostředí pro Skype pro firmy Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
-Pokud máte větší organizaci, pak byste měli zvážit použití [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) funkce. Umožňuje definovat v konkrétních oblastech datacenter jsou umístěny prostředky uživatele.
+Pokud jste větší organizaci, měli byste zvážit použití funkce [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) . Umožňuje definovat, ve které oblasti datacentra se nacházejí prostředky uživatele.
 
 ## <a name="staging-server"></a>Pracovní server
 ![Pracovní server v topologii](./media/plan-connect-topologies/MultiForestStaging.png)
 
-Azure AD Connect podporuje instalaci druhého serveru v *pracovním režimu*. Server v tomto režimu čte data ze všech připojených adresářů ale nezapíše nic do připojených adresářů. Použijí se normální synchronizační cyklus a proto má aktualizovanou kopii dat identity.
+Azure AD Connect podporuje instalaci druhého serveru v *pracovním režimu*. Server v tomto režimu čte data ze všech připojených adresářů, ale do připojených adresářů nezapisuje cokoli. Používá normální synchronizační cyklus a proto má aktualizovanou kopii dat identity.
 
-V po havárii, kde dojde k selhání primárního serveru vás může převzetí služeb při selhání na testovacím serveru. To provedete v průvodce službou Azure AD Connect. Tento druhý server může být umístěný v jiném datovém centru, protože žádnou infrastrukturu se sdílí s primárním serverem. Změny konfigurace provedené na primárním serveru na druhý server musíte ručně zkopírovat.
+V případě havárie, kde selže primární server, můžete převzít služby při selhání na pracovním serveru. To provedete v průvodci Azure AD Connect. Tento druhý server se může nacházet v jiném datovém centru, protože na primárním serveru se nesdílí žádná infrastruktura. Všechny změny konfigurace provedené na primárním serveru musíte ručně zkopírovat na druhý server.
 
-Pracovní server můžete použít k testování novou vlastní konfiguraci a jeho vliv na vaše data. Můžete zobrazit náhled změn a upravovat konfiguraci. Až budete spokojení s novou konfigurací, můžete nastavit pracovní server jako aktivní a nastavit starý server aktivní pracovní režim.
+Pomocí přípravného serveru můžete otestovat novou vlastní konfiguraci a její vliv na vaše data. Můžete zobrazit náhled změn a upravit konfiguraci. Až budete s novou konfigurací spokojeni, můžete nastavit pracovní server jako aktivní a nastavit původní aktivní server na pracovní režim.
 
-Tuto metodu lze také použít k nahrazení aktivní synchronizační server. Připravte nový server a nastavte ho na pracovní režim. Ujistěte se, že je v dobrém stavu, zakázat pracovní režim (toho, že aktivní) a vypnout aktivní server.
+Tuto metodu můžete použít také k nahrazení aktivního synchronizačního serveru. Připravte nový server a nastavte ho do pracovního režimu. Ujistěte se, že je v dobrém stavu, zakažte pracovní režim (aktivní) a vypněte aktuálně aktivní server.
 
-Je možné mít víc než jeden pracovní server, pokud chcete mít více záloh v různých datových centrech.
+Pokud chcete mít více záloh v různých datových centrech, je možné mít více než jeden pracovní server.
 
-## <a name="multiple-azure-ad-tenants"></a>Více tenantů Azure AD
-Doporučujeme, abyste s jedním tenantem ve službě Azure AD pro organizaci.
-Než budete chtít použít více tenantů Azure AD, najdete v článku [Správa administrativních jednotek v Azure AD](../users-groups-roles/directory-administrative-units.md). Zahrnuje obvyklé scénáře, ve kterém můžete použít jednoho tenanta.
+## <a name="multiple-azure-ad-tenants"></a>Několik tenantů Azure AD
+V rámci organizace doporučujeme mít v Azure AD jeden tenant.
+Než budete chtít používat víc tenantů Azure AD, přečtěte si článek [Správa administrativních jednotek v Azure AD](../users-groups-roles/directory-administrative-units.md). Zahrnuje běžné scénáře, kdy můžete použít jednoho tenanta.
 
 ![Topologie pro více doménových struktur a více tenantů](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
 
-Existuje vztah 1:1 mezi server synchronizace služby Azure AD Connect a tenanta služby Azure AD. Pro každého tenanta Azure AD budete potřebovat jeden instalace serveru synchronizace služby Azure AD Connect. Instance tenanta Azure AD jsou izolovány záměrné. To znamená neuvidí uživatelé do jednoho tenanta uživatelé v druhém tenantovi. Pokud chcete toto oddělení, jedná se o podporované konfiguraci. V opačném případě byste měli použít jednoho modelu tenanta Azure AD.
+Mezi Azure AD Connect synchronizačním serverem a klientem služby Azure AD je 1:1 vztah. Pro každého tenanta Azure AD potřebujete jednu Azure AD Connect synchronizaci serveru. Instance tenanta Azure AD jsou izolované podle návrhu. To znamená, že uživatelé v jednom tenantovi neuvidí uživatele v jiném tenantovi. Pokud chcete toto oddělení, jedná se o podporovanou konfiguraci. V opačném případě byste měli použít jeden model tenanta Azure AD.
 
-### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Každý objekt pouze jednou v tenantovi Azure AD
-![Filtrované topologie pro jednu doménovou strukturu](./media/plan-connect-topologies/SingleForestFiltered.png)
+### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Každý objekt jenom jednou v tenantovi Azure AD
+![Filtrovaná topologie pro jednu doménovou strukturu](./media/plan-connect-topologies/SingleForestFiltered.png)
 
-V této topologii je jeden synchronizační server Azure AD Connect připojen ke každému tenantovi Azure AD. Synchronizační servery Azure AD Connect nastavené pro filtrování tak, aby každý má vzájemně se vylučující sadu objektů má operace provést. Můžete například omezit rozsah každého serveru pro určitou doménu nebo organizační jednotka.
+V této topologii je jeden Azure AD Connect synchronizační server připojen ke každému tenantovi služby Azure AD. Azure AD Connect synchronizace serverů musí být nakonfigurovány pro filtrování, takže každá z nich má vzájemně exkluzivní sadu objektů pro provoz. Můžete například oborovat každý server na určitou doménu nebo organizační jednotku.
 
-Doména DNS mohou být registrovány v jedné tenanta Azure AD. Názvy UPN uživatelů v místní službě Active Directory, musíte taky použít samostatné obory názvů. V předchozím obrázku, například tři samostatné přípony UPN jsou registrovány v místní instanci Active Directory: contoso.com, fabrikam.com a wingtiptoys.com. Uživatelé v každé doméně místní služby Active Directory použít jiný obor názvů.
+Doménu DNS je možné zaregistrovat jenom v jednom tenantovi Azure AD. UPN uživatelů v místní instanci služby Active Directory musí také používat samostatné obory názvů. Například na předchozím obrázku jsou tři samostatné přípony UPN registrovány v místní instanci služby Active Directory: contoso.com, fabrikam.com a wingtiptoys.com. Uživatelé v každé místní doméně služby Active Directory používají jiný obor názvů.
 
 >[!NOTE]
->Globální synchronizace adresáře (GalSync) v této topologii neprovádí automaticky a vyžaduje další vlastní implementaci MIM k zajištění, že každý tenant má dokončení globálního seznamu adres v systému Exchange Online a Skype for Business Online.
+>Synchronizace globálního seznamu adres (GalSync) se v této topologii neprovádí automaticky a vyžaduje další vlastní implementaci MIM, aby měl každý tenant úplný globální seznam adres (globálního adresáře) v Exchange Online a Online Skypu pro firmy.
 
 
 Tato topologie má následující omezení pro jiné podporované scénáře:
 
-* Hybridní Exchange s místní instancí Active Directory můžete povolit pouze jeden z tenantů Azure AD.
-* Zařízení s Windows 10 může být přidružená jenom k jednomu tenantovi Azure AD.
-* Jednotné přihlašování (SSO) možnost pro synchronizace a předávací ověřování hodnoty hash hesla je možné pomocí pouze jednoho tenanta Azure AD.
+* Jenom jeden z tenantů Azure AD může povolit hybridní platformu Exchange s místní instancí Active Directory.
+* Zařízení s Windows 10 se dají přidružit jenom k jednomu klientovi Azure AD.
+* Možnost jednotného přihlašování (SSO) pro synchronizaci hodnot hash hesel a předávací ověřování se dá použít jenom s jedním tenanta Azure AD.
 
-Požadavek na vzájemně se vylučující sadu objektů platí také pro zpětný zápis. Některé funkce zpětný zápis nejsou podporovány s touto topologií, protože předpokládají jednomu místnímu konfigurace. Mezi tyto funkce patří:
+Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Mezi tyto funkce patří:
 
-* Skupina zpětný zápis s výchozí konfigurací.
-* Zpětný zápis zařízení.
+* Zpětný zápis skupin s výchozí konfigurací.
+* Zpětný zápis zařízení
 
-### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Každý objekt více než jednou v tenantovi Azure AD
+### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Každý objekt vícekrát v tenantovi Azure AD
 ![Nepodporovaná topologie pro jednu doménovou strukturu a více tenantů](./media/plan-connect-topologies/SingleForestMultiDirectoryUnsupported.png) ![Nepodporovaná topologie pro jednu doménovou strukturu a více konektorů](./media/plan-connect-topologies/SingleForestMultiConnectorsUnsupported.png)
 
-Tyto úlohy nejsou podporovány:
+Tyto úlohy nejsou podporované:
 
-* Synchronizace stejného uživatele s více tenanty Azure AD.
-* Zkontrolujte konfiguraci změnit tak, aby uživatelé do jednoho tenanta Azure AD se zobrazí jako kontakty v jiném tenantovi Azure AD.
-* Upravte synchronizace Azure AD Connect pro připojení k více tenantů Azure AD.
+* Synchronizovat stejného uživatele s více klienty služby Azure AD.
+* Proveďte změnu konfigurace, aby se uživatelé v jednom tenantovi služby Azure AD zobrazili jako kontakty v jiném tenantovi služby Azure AD.
+* Upravte Azure AD Connect synchronizace pro připojení k více klientům služby Azure AD.
 
-### <a name="galsync-by-using-writeback"></a>GALSync s použitím zpětný zápis
-![Nepodporovaná topologie pro více doménovými strukturami a adresářů více, pomocí GALSync, zaměřuje se na Azure AD](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Nepodporovaná topologie pro více doménových struktur a více adresářů, pomocí GALSync zaměřením na místní služby Active Directory](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+### <a name="galsync-by-using-writeback"></a>GALSync pomocí zpětného zápisu
+![Nepodporovaná topologie pro více doménových struktur a více adresářů s GALSync se zaměřením na Azure AD](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![Nepodporovaná topologie pro více doménových struktur a více adresářů s GALSync se zaměřením na místní službu Active Directory](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
 
-Záměrně jsou izolované klienty Azure AD. Tyto úlohy nejsou podporovány:
+Klienti Azure AD jsou izolováni podle návrhu. Tyto úlohy nejsou podporované:
 
-* Změňte konfiguraci synchronizace Azure AD Connect číst data z jiného tenanta Azure AD.
-* Exportujte uživatele jako kontakty do jiné instance místní služby Active Directory pomocí synchronizace Azure AD Connect.
+* Změňte konfiguraci Azure AD Connect synchronizace, aby se načetla data z jiného tenanta Azure AD.
+* Exportujte uživatele jako kontakty do jiné místní instance služby Active Directory pomocí Azure AD Connect synchronizace.
 
-### <a name="galsync-with-on-premises-sync-server"></a>GALSync s místním synchronizační server
-![GALSync v topologii pro několik doménových struktur a více adresářů](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
+### <a name="galsync-with-on-premises-sync-server"></a>GALSync pomocí místního synchronizačního serveru
+![GALSync v topologii pro více doménových struktur a více adresářů](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
-FIM 2010 nebo MIM 2016 místní můžete použít pro synchronizaci uživatelů (prostřednictvím GALSync) mezi dvěma organizacemi Exchange. Uživatelé v jedné organizaci se zobrazí jako cizí uživatelé/contacts v jiné organizaci. Tyto různé místní služby Active Directory instance můžete synchronizováni s vlastní tenanty Azure AD.
+K synchronizaci uživatelů (přes GALSync) mezi dvěma organizacemi Exchange můžete použít produkt FIM 2010 nebo místní MIM 2016. Uživatelé v jedné organizaci se zobrazí jako cizí uživatelé/kontakty v jiné organizaci. Tyto různé místní instance služby Active Directory se pak dají synchronizovat s vlastními klienty Azure AD.
 
-## <a name="next-steps"></a>Další postup
-Zjistěte, jak nainstalovat Azure AD Connect pro tyto scénáře, naleznete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md).
+## <a name="next-steps"></a>Další kroky
+Informace o tom, jak nainstalovat Azure AD Connect pro tyto scénáře, najdete v tématu [vlastní instalace Azure AD Connect](how-to-connect-install-custom.md).
 
-Další informace o [synchronizace Azure AD Connect](how-to-connect-sync-whatis.md) konfigurace.
+Přečtěte si další informace o konfiguraci [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) .
 
-Další informace o [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).
+Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).

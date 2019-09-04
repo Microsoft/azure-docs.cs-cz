@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494793"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258900"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iterace prostředku, vlastnosti nebo proměnné v šablonách Azure Resource Manager
 
@@ -43,15 +43,15 @@ Při použití s proměnnou nebo vlastností má objekt kopírování následuj�
 
 Obě použití jsou podrobněji popsány v tomto článku. Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 
-Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](resource-group-authoring-templates.md#condition).
+Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](conditional-resource-deployment.md).
 
 ## <a name="copy-limits"></a>Omezení kopírování
 
 Chcete-li zadat počet iterací, zadejte hodnotu pro vlastnost Count. Počet nemůže být větší než 800.
 
-Počet nemůže být záporné číslo. Pokud nasadíte šablonu s REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze REST API pro počet nepodporují nulu. V současné době Azure CLI nebo PowerShell nepodporují pro tento počet nulu, ale tato podpora se přidá v budoucí verzi.
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novější nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze PowerShellu a REST API pro počet nepodporují nulu. V současné době Azure CLI nepodporuje pro tento počet nulu, ale tato podpora bude přidána v budoucí verzi.
 
-Pomocí úplného [nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
+Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
 
 Omezení pro počet jsou stejná, ať už se používá u prostředku, proměnné nebo vlastnosti.
 
@@ -526,7 +526,7 @@ Následující příklady znázorňují běžné scénáře pro vytvoření víc
 |[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby, jak iterace proměnných vymezit. |
 |[Více pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí několik pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří pravidla zabezpečení z parametru. Pro parametr viz [více souborů parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Kurz najdete v tématu [kurz: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./resource-manager-tutorial-create-multiple-instances.md).
 

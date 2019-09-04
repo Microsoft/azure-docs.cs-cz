@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 988fc124a68ef07981c0f36334778be326fff3a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232274"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239190"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -66,8 +66,6 @@ Například následující kód JSON ukazuje zásadu, která omezí, ve které j
 ```
 
 Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md).
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="mode"></a>Režim
 
@@ -353,7 +351,7 @@ Tato ukázka pravidla zásad používá **hodnotu** ke kontrole, jestli se výsl
 
 #### <a name="avoiding-template-failures"></a>Předcházení chybám šablon
 
-Použití šablonových _funkcí_ v **hodnotě** umožňuje mnoho komplexních vnořených funkcí. Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Příklad **hodnoty** , která se v některých scénářích nezdařila:
+Použití _šablonových funkcí_ v **hodnotě** umožňuje mnoho komplexních vnořených funkcí. Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Příklad **hodnoty** , která se v některých scénářích nezdařila:
 
 ```json
 {
@@ -369,7 +367,7 @@ Použití šablonových _funkcí_ v **hodnotě** umožňuje mnoho komplexních v
 }
 ```
 
-Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane účinkem odepření.
+Vzorové pravidlo výše uvedené používá [podřetězec ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) pro porovnání prvních tří znaků **názvu** s **ABC**. Pokud je **název** kratší než tři znaky, `substring()` výsledkem funkce je chyba. Tato chyba způsobí, že se zásada stane účinkem **odepření** .
 
 Místo toho použijte funkci [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) ke kontrole, zda první tři znaky **názvu** odpovídají **ABC** bez povolení **názvu** kratšího než tři znaky, aby došlo k chybě:
 
@@ -516,7 +514,7 @@ Některé aliasy, které jsou k dispozici máte verzi, která se zobrazí jako '
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a konkrétní vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. Pomocí **ipRules [\*]** je třeba ověřit, že každá _Akce_ je zamítnutá, ale nedělejte si starosti, kolik pravidel existuje nebo jaká je _hodnota_ IP. Toto ukázkové pravidlo vyhledá všechny shody **ipRules [\*]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
+Alias **[\*]** umožňuje porovnání s hodnotou každého prvku v poli a konkrétní vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. Pomocí **ipRules [\*]** je třeba ověřit, že každá _Akce_ je _Zamítnutá_, ale nedělejte si starosti, kolik pravidel existuje nebo jaká je _hodnota_ IP. Toto ukázkové pravidlo vyhledá všechny shody **ipRules [\*]. Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
 
 ```json
 "policyRule": {
@@ -618,7 +616,7 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195638"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278786"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure virtuální počítače pro datové vědy obsahuje bohatou sadu nástrojů a knihovny pro machine learning (ML) k dispozici v oblíbených jazyků, jako je Python, R a Julie. 
@@ -24,15 +24,16 @@ Tady jsou některé z knihoven na virtuální počítače pro datové vědy a ML
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Sada SDK Azure Machine Learning pro Python
 Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Azure Machine Learning je Cloudová služba, která můžete použít k vývoji a nasazování modelů ML. Modely můžete sledovat, jak vytvářet, trénovat, škálování a spravovat je pomocí sady Python SDK. Nasazení modelů jako kontejnery a spusťte je v cloudu, v místním prostředí nebo ve službě Azure IoT Edge.   |
-| Podporované edice     | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36)    |
-| Typické použití      | Obecné ML platformy      |
-| Jak je nakonfigurován nebo nainstalovat?      |  Nainstalovaná s podporou GPU   |
-| Jak používat nebo ji spustit      | Jako Python SDK a Azure CLI. Aktivovat prostředí conda `AzureML` v edici Windows *nebo* k `py36` na edice pro Linux.      |
-| Odkaz na ukázky      | Jsou součástí ukázkové poznámkové bloky Jupyter `AzureML` adresáře v části poznámkových bloků.  |
-| Související nástroje      | Visual Studio Code, Jupyter   |
+| Co je to? |   Azure Machine Learning je Cloudová služba, která můžete použít k vývoji a nasazování modelů ML. Modely můžete sledovat, jak vytvářet, trénovat, škálování a spravovat je pomocí sady Python SDK. Nasazení modelů jako kontejnery a spusťte je v cloudu, v místním prostředí nebo ve službě Azure IoT Edge. |
+| Podporované edice  | Windows (prostředí conda: AzureML), Linux (prostředí conda: py36) |
+| Typické použití      | Obecné ML platformy  |
+| Jak je nakonfigurován nebo nainstalovat? |  Nainstalovaná s podporou GPU |
+| Jak používat nebo ji spustit | Jako Python SDK a Azure CLI. Aktivovat prostředí conda `AzureML` v edici Windows *nebo* k `py36` na edice pro Linux.  |
+| Odkaz na ukázky | Jsou součástí ukázkové poznámkové bloky Jupyter `AzureML` adresáře v části poznámkových bloků.  |
+| Související nástroje  | Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

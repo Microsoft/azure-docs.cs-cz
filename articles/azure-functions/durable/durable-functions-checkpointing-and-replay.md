@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087458"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241062"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opakované přehrání v Durable Functions (Azure Functions)
 
@@ -145,6 +145,9 @@ Chování při opětovném přehrání vytvoří omezení pro typ kódu, který 
   Pokud se nástroj Orchestrator potřebuje zpozdit, může použít rozhraní API [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) nebo `createTimer` (JavaScript).
 
 * Kód Orchestrator nesmí **iniciovat žádnou asynchronní operaci** s výjimkou použití [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) rozhraní API DurableOrchestrationContext `context.df` nebo rozhraní API objektu. Například ne `Task.Run`, `Task.Delay` `setTimeout()` nebo `HttpClient.SendAsync` v rozhraní .NET nebo`setInterval()` v jazyce JavaScript. Prostředí trvalého úkolu spouští kód Orchestrator v jednom vlákně a nemůže pracovat s jinými vlákny, které by mohly být naplánovány jinými asynchronními rozhraními API. Pokud k tomu dojde `InvalidOperationException` , je vyvolána výjimka.
+
+> [!NOTE]
+> Rozhraní [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) API provádí asynchronní vstupně-výstupní operace, která není ve funkci Orchestrator povolena a lze ji použít pouze ve funkcích, které nejsou součástí nástroje Orchestrator.
 
 * **Nekonečná smyčka by se měla** v kódu Orchestrator vyhnout. Vzhledem k tomu, že architektura trvalého úlohy ukládá historii spouštění, protože funkce orchestrace pokračuje, může nekonečná smyčka způsobit nedostatek paměti z důvodu instance nástroje Orchestrator. V případě scénářů nekonečné smyčky použijte rozhraní API, jako je [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .NET) nebo (JavaScript), a restartujte provádění funkce a zahoďte předchozí historii spuštění.
 

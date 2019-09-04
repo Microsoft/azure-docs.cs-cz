@@ -1,6 +1,6 @@
 ---
 title: Průvodce přizpůsobením úlohy Microsoft Azure Security Code Analysis
-description: Tento článek se týká přizpůsobení úloh v rozšíření analýza kódu zabezpečení.
+description: Tento článek popisuje přizpůsobení úloh v rozšíření Microsoft Security Code Analysis.
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,168 +12,193 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ab219b71eb8cd6f6172b7d02a639301c67811b49
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: c0d49c3ce06f6fa72daf7aff466ef65e09ced09a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718350"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241797"
 ---
-# <a name="how-to-configure--customize-the-build-tasks"></a>Jak: Konfigurace & přizpůsobení úloh sestavení
+# <a name="configure-and-customize-the-build-tasks"></a>Konfigurace a přizpůsobení úloh sestavení
 
-Tato stránka podrobně popisuje možnosti konfigurace, které jsou k dispozici v jednotlivých úlohách sestavení, počínaje úlohami nástrojů pro analýzu kódu zabezpečení následovanými úlohami po zpracování.
+Tento článek podrobně popisuje možnosti konfigurace, které jsou k dispozici v jednotlivých úkolech sestavení. Článek začíná úkoly nástroje pro analýzu kódu zabezpečení. Končí úlohami po zpracování.
 
 ## <a name="anti-malware-scanner-task"></a>Úloha skeneru ochrany proti malwaru
 
-> [!NOTE]
-> Úloha sestavení proti malwaru vyžaduje, aby byl agent sestavení s povoleným Windows Defenderem, který má hodnotu true u "hostovaného VS2017" a novějších agentů sestavení. (Nespustí se na hostovaném agentovi starší/VS2015) Podpisy nelze na těchto agentech aktualizovat, ale signatura by měla být vždy poměrně aktuální, méně než 3 hodiny staré.
+>[!NOTE]
+> Úloha sestavení pro kontrolu proti malwaru vyžaduje, aby byl v programu Windows Defender povolen agent sestavení. Hostitelem sady Visual Studio 2017 a novějších je například agent. V hostovaném agentu sady Visual Studio 2015 se úloha sestavení nespustí.
+>
+> I když signatury nelze na těchto agentech aktualizovat, signatury by měly být vždy méně než tři hodiny staré.
 
-Snímek obrazovky a podrobnosti o konfiguraci níže.
+Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazovky a textu.
 
-![Přizpůsobení úlohy sestavení pro kontrolu proti malwaru](./media/security-tools/5-add-anti-malware-task600.png) 
+![Konfigurace úlohy sestavení pro kontrolu proti malwaru](./media/security-tools/5-add-anti-malware-task600.png)
 
-- Nastavení pro typ = **základní**
-- K přizpůsobení kontroly můžete zadat typ = **vlastní**, argumenty příkazového řádku.
+V poli se seznamem **typů** na snímku obrazovky je vybrána možnost **základní** . Vyberte možnost **vlastní** a zadejte argumenty příkazového řádku, které prověřování přizpůsobují.
 
-Windows Defender používá klienta web Windows Update ke stažení a instalaci signatur. Pokud se aktualizace signatury v agentu sestavení nezdařila, kód chyby HRESULT bude nejspíš přijít z web Windows Update. Další informace o chybách web Windows Update a jejich zmírnění najdete na [této stránce](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) a na této [stránce na webu TechNet](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx) .
+Windows Defender používá klienta web Windows Update ke stažení a instalaci signatur. Pokud se aktualizace signatury v agentu sestavení nezdařila, kód chyby **HRESULT** bude nejspíš přijít z web Windows Update.
+
+Další informace o chybách web Windows Update a jejich zmírnění najdete v tématu [web Windows Update kódy chyb podle součásti](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) a článku [web Windows Update agenta – kódy chyb](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
 ## <a name="binskim-task"></a>BinSkim – úloha
 
 > [!NOTE]
-> Podmínkou pro spuštění úlohy BinSkim by vaše sestavení mělo splňovat jednu z následujících podmínek.
+> Předtím, než můžete spustit úlohu BinSkim, musí sestavení splňovat jednu z těchto podmínek:
 >    - Sestavení vytváří binární artefakty ze spravovaného kódu.
->    - Máte navázané binární artefakty, které byste chtěli analyzovat pomocí BinSkim.
+>    - Máte potvrzené binární artefakty, které chcete analyzovat pomocí BinSkim.
 
-Snímek obrazovky a podrobnosti o konfiguraci níže. 
+Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazovky a seznamu.
 
-![Nastavení BinSkim](./media/security-tools/7-binskim-task-details.png)  
-1. Nastavte konfiguraci sestavení na ladit, aby se vytvořily soubory ladění * **. pdb** . Používají se v BinSkim k mapování problémů nalezených ve výstupním binárním souboru zpátky do zdrojového kódu. 
-2. Pokud se chcete vyhnout opakovanému vyhledávání a vytváření vlastního příkazového řádku, vyberte typ = **základní** & funkce = **analyzovat** . 
-3. **Target** – jeden nebo více specifikátorů pro soubor, adresář nebo vzor filtru, který se překládá na jeden nebo více binárních souborů, které se mají analyzovat. 
-    - Více cílů by mělo být odděleno **středníkem (;)** . 
-    - Může to být jeden soubor nebo obsahovat zástupné znaky.
-    - Adresáře by vždy měly končit\*
+![Konfigurace úlohy sestavení BinSkim](./media/security-tools/7-binskim-task-details.png)
+
+- Nastavte konfiguraci sestavení na ladit tak, aby byly vytvořeny soubory ladění. pdb. BinSkim tyto soubory používá k namapování problémů ve výstupních binárních souborech zpátky do zdrojového kódu.
+- Aby nedošlo k opakovanému vyhledávání a vytváření vlastního příkazového řádku:
+     - V seznamu **typ** vyberte **základní**.
+     - V seznamu **funkce** vyberte **analyzovat**.
+- Do vlastnosti **cíl**zadejte jeden nebo více specifikátorů pro soubor, adresář nebo vzor filtru. Tyto specifikátory jsou přeloženy na jeden nebo více binárních souborů, které mají být analyzovány:
+    - Více zadaných cílů musí být oddělených středníkem (;).
+    - Specifikátorem může být jeden soubor nebo obsahovat zástupné znaky.
+    - Specifikace adresáře musí vždy končit \\znakem *.
     - Příklady:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
-4. Pokud vyberete typ = **příkazový řádek**, 
-     - Ujistěte se, že první argument **BinSkim. exe** je příkaz **analyzovat** pomocí úplných cest nebo cest relativně ke zdrojovému adresáři.
-     - V případě vstupu z **příkazového řádku** by mělo být více cílů odděleno mezerou.
-     - Můžete vynechat parametr souboru **/o** nebo **/Output** ; bude přidáno pro vás nebo nahrazeno. 
-     - **Konfigurace standardního příkazového řádku** 
+
+- Pokud v seznamu **typ** vyberete položku **příkazový řádek** , je nutné spustit binskim. exe:
+     - Ujistěte se, že první argumenty pro binskim. exe jsou příkazy **analyzovat** následované jednou nebo více specifikacemi cesty. Každá cesta může být buď úplná cesta, nebo cesta relativní ke zdrojovému adresáři.
+     - Více cílových cest musí být odděleny mezerou.
+     - Můžete vynechat možnost **/o** nebo **/Output** . Výstupní hodnota je přidána nebo nahrazena.
+     - Standardní konfigurace příkazového řádku jsou uvedené níže.
 
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
-          > [!NOTE]
-          > V případě zadání \* adresáře nebo adresářů pro cíl je koncový čas velmi důležitý. 
 
-Další podrobnosti o BinSkim o argumentech příkazového řádku najdete v části pravidla podle ID nebo ukončovacích kódů najdete v [uživatelské příručce k BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md) .
+          > [!NOTE]
+          > Koncový \\znak * je důležitý, pokud zadáte adresáře pro cíl.
+
+Další informace o argumentech příkazového řádku BinSkim, pravidlech podle ID nebo ukončovacích kódech najdete v [uživatelské příručce k BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
 ## <a name="credential-scanner-task"></a>Úloha pro kontrolu přihlašovacích údajů
-Snímek obrazovky a podrobnosti o konfiguraci níže.
- 
-![Vlastní nastavení skeneru přihlašovacích údajů](./media/security-tools/3-taskdetails.png)
 
-K dispozici jsou tyto možnosti: 
-  - **Formát výstupu** – TSV/CSV/SARIF/Fast
-  - **Verze nástroje** Doporučil Nejnovější
-  - **Složka pro skenování** – složka v úložišti, která se má prohledat
-  - **Typ souboru vyhledávacích vyhledávačů** – možnosti pro vyhledání vyhledávacích souborů používaných ke skenování.
-  - **Soubor potlačení** – soubor [JSON](https://json.org/) se dá použít k potlačení problémů v protokolu výstupu (další podrobnosti najdete v části Resources). 
-  - **Podrobný výstup** – vysvětlivekný 
-  - **Velikost dávky** – počet souběžných vláken používaných k paralelnímu spouštění skenerů přihlašovacích údajů. Výchozí hodnota je 20 (hodnota musí být v rozsahu od 1 do 2147483647).
-  - **Časový limit shody** – doba strávená pokusem o vyrovnávání výsledků hledání před opuštěním kontroly. 
-  - **Velikost vyrovnávací paměti pro čtení prohledávání souborů** – velikost vyrovnávací paměti při čtení obsahu v bajtech (Výchozí hodnota je 524288) 
-  - **Maximální počet čtení z kontroly souborů** – maximální počet bajtů ke čtení z daného souboru během analýzy obsahu. (Výchozí hodnota je 104857600) 
-  - **Spustit tuto úlohu** (v části **možnosti ovládacího prvku**) – určuje, kdy se má úloha spustit. Pokud chcete zadat složitější podmínky, zvolte vlastní podmínky. 
-  - Verze úlohy sestavení **verze** v rámci služby Azure DevOps. Nepoužívá se často. 
+Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazovky a seznamu.
+
+![Konfigurace úlohy sestavení pro kontrolu přihlašovacích údajů](./media/security-tools/3-taskdetails.png)
+
+K dispozici jsou tyto možnosti:
+
+  - **Výstupní formát**: K dispozici jsou tyto hodnoty: **TSV**, **CSV**, **SARIF**a **Fast**.
+  - **Verze nástroje**: Doporučujeme vybrat možnost **nejnovější**.
+  - **Složka pro skenování**: Složka úložiště, která se má zkontrolovat
+  - **Typ souboru vyhledávacích souborů**: Možnosti pro vyhledání souboru vyhledávacích souborů, který se používá ke skenování.
+  - **Soubor potlačení**: Soubor [JSON](https://json.org/) může potlačit problémy ve výstupním protokolu. Další informace o scénářích potlačení najdete v části Nejčastější dotazy v tomto článku.
+  - **Podrobný výstup**: Zřejmá.
+  - **Velikost dávky**: Počet souběžných vláken používaných ke spuštění skeneru přihlašovacích údajů. Výchozí hodnota je 20. Možné hodnoty jsou v rozsahu od 1 do 2 147 483 647.
+  - **Časový limit shody**: Doba v sekundách, po kterou se při pokusu o přijetí změn shoduje se se zadaným vyhledávacím objektem, než zrušíte kontrolu.
+  - **Velikost vyrovnávací paměti pro čtení prohledávání souborů**: Velikost vyrovnávací paměti použité při čtení obsahu v bajtech Výchozí hodnota je 524 288.  
+  - **Maximální počet přečtených bajtů při kontrole souborů**: Maximální počet bajtů, které mají být čteny ze souboru při analýze obsahu. Výchozí hodnota je 104 857 600.
+  - **Možnosti ovládacích prvků** **spouštějí tuto úlohu:**  >  Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
+  - **Verze**: Verze úlohy sestavení v rámci služby Azure DevOps. Tato možnost se často nepoužívá.
 
 ## <a name="microsoft-security-risk-detection-task"></a>Úloha zjišťování rizik zabezpečení společnosti Microsoft
+
 > [!NOTE]
-> Aby bylo možné tuto úlohu používat, je nutné vytvořit a nakonfigurovat účet se službou zjišťování rizik jako předpokladem. Tato služba vyžaduje samostatný proces připojování. u většiny ostatních úloh v tomto rozšíření není plug and Play. Přečtěte si prosím [zjišťování rizik Microsoftu](https://aka.ms/msrddocs) a [zjišťování rizik Microsoftu pro zabezpečení: ](https://docs.microsoft.com/security-risk-detection/how-to/) Postup pro pokyny.
+> Před použitím úlohy MSRD je nutné vytvořit a nakonfigurovat účet se službou Microsoft Security rizikovost Detection (MSRD). Tato služba vyžaduje samostatný proces připojování. Na rozdíl od většiny ostatních úloh v tomto rozšíření Tato úloha vyžaduje samostatné předplatné s MSRD.
+>
+> Přečtěte si prosím [zjišťování rizik Microsoftu](https://aka.ms/msrddocs) a [zjišťování rizik Microsoftu pro zabezpečení: ](https://docs.microsoft.com/security-risk-detection/how-to/) Postup pro pokyny.
 
-Podrobnosti o konfiguraci níže.
+Podrobnosti o konfiguraci této úlohy jsou uvedené v následujícím seznamu. Pro libovolný prvek uživatelského rozhraní můžete na tento prvek umístit ukazatel myši a získat tak nápovědu.
 
-Zadejte požadovaná data. Každá možnost má textovou podobu myši.
-   - **Název koncového bodu služby Azure DevOps pro MSRD**: Pokud jste vytvořili obecný typ koncového bodu služby Azure DevOps k uložení adresy URL instance MSRD (připojili jste k) a REST API přístupového tokenu, můžete zvolit koncový bod služby. V takovém případě klikněte na odkaz Správa a vytvořte a nakonfigurujte nový koncový bod služby pro tuto úlohu MSRD. 
-   - **ID účtu**: Je to identifikátor GUID, který se dá načíst z adresy URL účtu MSRD.
-   - **Adresy URL pro binární soubory**: Seznam veřejně dostupných adres URL oddělený středníkem (který se použije pro přibližný počítač ke stažení binárních souborů).
-   - **Adresy URL počátečních souborů**: Seznam veřejně dostupných adres URL oddělený středníkem (který se použije pro přibližný počítač ke stažení semen). Toto pole je volitelné, pokud jsou soubory počáteční hodnoty staženy společně s binárními soubory.
-   - **Typ platformy operačního systému**: Typ platformy operačního systému (Windows nebo Linux) počítačů, na kterých má běžet Přibližná úloha.
-   - Edice **Windows/Linux Edition**: Edice operačních systémů počítačů, na kterých má běžet fuzzy úlohu. Výchozí hodnotu můžete přepsat, pokud vaše počítače mají jinou edici operačního systému.
-   - **Instalační skript balíčku**: Zadejte skript, který bude spuštěn na testovacím počítači pro instalaci cílového programu testu a jeho závislostí před odesláním fuzzy úlohy.
+   - **Název koncového bodu služby Azure DevOps pro MSRD**: Obecný typ koncového bodu služby Azure DevOps ukládá adresu URL instance připojeného MSRD a váš přístupový token REST API. Pokud jste takový koncový bod vytvořili, můžete ho zadat tady. V opačném případě vyberte odkaz **Spravovat** pro vytvoření a konfiguraci nového koncového bodu služby pro tuto úlohu MSRD.
+   - **ID účtu**: Identifikátor GUID, který se dá načíst z adresy URL účtu MSRD.
+   - **Adresy URL pro binární soubory**: Seznam veřejně dostupných adres URL oddělený středníkem. Rozmazaný počítač používá tyto adresy URL ke stažení binárních souborů.
+   - **Adresy URL počátečních souborů**: Seznam veřejně dostupných adres URL oddělený středníkem. Rozmazaný počítač používá tyto adresy URL ke stažení semen. Zadání této hodnoty je volitelné, pokud jsou soubory počáteční hodnoty staženy společně s binárními soubory.
+   - **Typ platformy operačního systému**: Platforma operačního systému (OS) počítačů, které spouštějí úlohu s fuzzy logikou. Dostupné hodnoty jsou **Windows** a **Linux**.
+   - Edice **Windows/Linux Edition**: Edice operačních systémů počítačů, které spouštějí fuzzy úlohu. Výchozí hodnotu můžete přepsat, pokud vaše počítače mají jinou edici operačního systému.
+   - **Instalační skript balíčku**: Skript, který má být spuštěn na testovacím počítači. Tento skript nainstaluje cílový program testu a jeho závislosti před odesláním přibližné úlohy.
    - **Parametry odeslání úlohy**:
        - **Počáteční adresář**: Cesta k adresáři v přibližném počítači, který obsahuje semena.
-       - **Rozšíření počáteční**hodnoty: Přípona souboru semen
+       - **Rozšíření počáteční**hodnoty: Přípona názvu souboru semen.
        - **Spustitelný soubor testovacího ovladače**: Cesta k cílovému spustitelnému souboru v rozmazaných počítačích.
-       - **Architektura spustitelných souborů testovacího ovladače**: Architektura cílového spustitelného souboru (x86 nebo amd64).
-       - **Argumenty testovacího ovladače**: Argumenty příkazového řádku předané do spustitelného souboru cíle testu. Všimněte si, že symbol "% Testfile%", včetně dvojitých uvozovek, bude automaticky nahrazen úplnou cestou k cílovému souboru, a proto se očekává, že testovací ovladač má být analyzován a je požadován.
-       - **Proces testovacího ovladače se ukončí při dokončení testu**: Po dokončení zkontrolujte, že se testovací ovladač ukončí. Zrušte kontrolu, zda je nutné vynutit ukončení testovacího ovladače.
-       - **Maximální doba trvání (v sekundách)** : Zadejte odhad nejdelšího předpokládaného času, který vyžaduje, aby cílový program analyzoval vstupní soubor. Přesnější tento odhad, efektivnější běh.
-       - **Testovací ovladač lze spustit opakovaně**: Zkontrolujte, zda lze testovací ovladač spustit opakovaně bez závislosti na trvalém/sdíleném globálním stavu.
-       - **Testovací ovladač lze přejmenovat**: Zkontrolujte, zda lze přejmenovat spustitelný soubor testovacího ovladače a zda stále funguje správně.
-       - **Fuzzy aplikace běží jako jeden proces operačního systému**: Zkontrolujte, zda testovací ovladač běží v rámci jednoho procesu operačního systému. Zrušte kontrolu, zda ovladač testu sekryje další procesy.
-
+       - **Architektura spustitelných souborů testovacího ovladače**: Architektura cílového spustitelného souboru. Dostupné hodnoty jsou **x86** a **amd64**.
+       - **Argumenty testovacího ovladače**: Argumenty příkazového řádku předané do spustitelného souboru testu. Argument "% Testfile%", včetně uvozovek, je automaticky nahrazen úplnou cestou k cílovému souboru. Tento soubor se analyzuje pomocí ovladače testu a je povinný.
+       - **Proces testovacího ovladače se ukončí při dokončení testu**: Toto políčko zaškrtněte, pokud má být test ovladače po dokončení ukončen. Vymažte je, pokud je třeba test ovladače vynuceně zavřít.
+       - **Maximální doba trvání (v sekundách)** : Odhad nejdelší rozumně očekávané doby, kterou cílový program vyžaduje k analýze vstupního souboru. Přesnější odhad, efektivnější spuštění aplikace.
+       - **Testovací ovladač lze spustit opakovaně**: Toto políčko zaškrtněte, pokud testovací ovladač může běžet opakovaně bez závislosti na trvalém nebo sdíleném globálním stavu.
+       - **Testovací ovladač lze přejmenovat**: Toto políčko zaškrtněte, pokud se spustitelný soubor testovacího ovladače dá přejmenovat a pořád funguje správně.
+       - **Fuzzy aplikace běží jako jeden proces operačního systému**: Toto políčko zaškrtněte, pokud testovací ovladač běží v rámci jednoho procesu operačního systému. Pokud testovací ovladač setrvá další procesy, vymažte ho.
 
 ## <a name="roslyn-analyzers-task"></a>Úloha analyzátorů Roslyn
-> [!NOTE]
-> Aby bylo možné spustit úlohu Roslyn Analyzer, musí vaše sestavení splňovat následující podmínky.
->  - Vaše definice sestavení zahrnuje vestavěný úkol MSBuild nebo VSBuild sestavení pro kompilaci C# kódu (nebo VB). Tato úloha spoléhá na vstup a výstup této konkrétní úlohy sestavení pro opětovné spuštění kompilace MSBuild s povolenými analyzátory Roslyn.
->  - Agent sestavení spouštějící tuto úlohu sestavení má nainstalovanou verzi sady Visual Studio 2017 v 15.5 nebo novější (kompilátor verze 2.6. x).
->
-
-Podrobnosti o konfiguraci níže.
-
-K dispozici jsou tyto možnosti: 
-- Vyžaduje se **RuleSet** -SDL, doporučuje se SDL nebo můžete použít vlastní RuleSet.
-- **Verze analyzátorů** Doporučil Nejnovější
-- **Upozornění kompilátoru potlačuje soubor** – textový soubor se seznamem ID upozornění, která by se měla potlačit. 
-- **Spustit tuto úlohu** (v části **možnosti ovládacího prvku**) – určuje, kdy se má úloha spustit. Pokud chcete zadat složitější podmínky, zvolte**vlastní podmínky**. 
 
 > [!NOTE]
-> - Analyzátory Roslyn jsou integrované kompilátorem a dají se spustit jenom jako součást kompilace CSC. exe. Proto tato úloha vyžaduje opětovné přehrání nebo opětovné spuštění příkazu kompilátoru, který byl spuštěn dříve v sestavení. To se provádí dotazování na VSTS pro protokoly úloh sestavení MSBuild (neexistuje žádný jiný způsob, jak úlohu spolehlivě získat příkazový řádek kompilace MSBuild z definice sestavení; měli byste zvážit přidání volného textového pole, které umožní uživatelům zadat příkazové řádky. , ale je obtížné je udržet v aktuálním stavu a synchronizovat s hlavním sestavením. Vlastní sestavení vyžadují opakované přehrání celé sady příkazů, nikoli jenom příkazy kompilátoru, a není triviální ani spolehlivá, aby v těchto případech povolila analyzátory Roslyn. 
-> - Analyzátory Roslyn jsou integrovány s kompilátorem a vyžadují vyvolání kompilace. Tato úloha sestavení je implementována opětovnou C# kompilací projektů, které již byly vytvořeny pomocí pouze úlohy sestavení MSBuild/VSBuild, ve stejné definici sestavení nebo sestavení, ale v tomto případě s povolenými analyzátory. Pokud je tato úloha sestavení spuštěna ve stejném agentě jako původní úloha sestavení, výstup původní úlohy sestavení MSBuild/VSBuild bude přepsán ve složce sources "Source" na základě výstupu této úlohy sestavení. Výstup sestavení bude stejný, ale doporučujeme, abyste spustili nástroj MSBuild, zkopírovali výstup do pracovního adresáře artefakty a pak spustili Roslyn.
+> Předtím, než budete moci spustit úlohu analyzátorů Roslyn, musí sestavení splňovat tyto podmínky:
+> - Vaše definice sestavení zahrnuje vestavěný úkol MSBuild nebo VSBuild sestavení pro zkompilování C# nebo Visual Basic kódu. Úloha analyzátory spoléhá na vstup a výstup vestavěné úlohy ke spuštění kompilace MSBuild s povolenými analyzátory Roslyn.
+> - Agent sestavení spouštějící tuto úlohu sestavení má nainstalovanou aplikaci Visual Studio 2017 verze 15,5 nebo novější, aby používala kompilátor verze 2,6 nebo novější.
+
+Podrobnosti o konfiguraci úlohy jsou uvedené v následujícím seznamu a Poznámka.
+
+K dispozici jsou tyto možnosti:
+
+- **RuleSet**: Hodnoty jsou **vyžadovány v SDL**, doporučuje se pro **SDL**nebo vlastní sada pravidel.
+- **Verze analyzátorů**: Doporučujeme vybrat možnost **nejnovější**.
+- **Soubor potlačení upozornění kompilátoru**: Textový soubor se seznamem ID upozornění, které se potlačí.
+- **Možnosti ovládacích prvků** **spouštějí tuto úlohu:**  >  Určuje, kdy se úloha spustí. Zvolte **vlastní podmínky** a určete složitější podmínky.
+
+> [!NOTE]
+> - Analyzátory Roslyn jsou integrovány s kompilátorem a lze je spustit pouze jako součást kompilace CSc. exe. Proto tato úloha vyžaduje, aby byl příkaz kompilátoru, který byl dříve v sestavení spuštěn, znovu přehrán nebo znovu spuštěn. Toto přehrajte nebo spusťte dotazování v Visual Studio Team Services (VSTS) pro protokoly úloh sestavení MSBuild.
 >
+>   Neexistuje žádný jiný způsob, jak úlohu spolehlivě získat příkazový řádek kompilace MSBuild z definice sestavení. Doporučujeme přidat textové pole volného tvaru, které uživatelům umožní zadat jejich příkazové řádky. Ale pak by bylo obtížné tyto příkazové řádky udržovat v aktuálním stavu a synchronizovat s hlavním sestavením.
+>
+>   Vlastní sestavení vyžadují opakované přehrání celé sady příkazů, nikoli jenom příkazů kompilátoru. V těchto případech není povolení analyzátorů Roslyn triviální ani spolehlivější.
+>
+> - Analyzátory Roslyn jsou integrovány s kompilátorem. Aby se vyvolaly, analyzátory Roslyn vyžadují kompilaci.
+>
+>   Tato nová úloha sestavení je implementována opětovnou C# kompilací projektů, které již byly vytvořeny. Nový úkol používá jako původní úlohu pouze úlohy sestavení MSBuild a VSBuild ve stejném sestavení nebo definici sestavení. V tomto případě se ale nové úlohy používají s povolenými analyzátory Roslyn.
+>
+>   Pokud je nová úloha spuštěna na stejném agentě jako původní úloha, bude výstup nové úlohy přepsat výstup původní úlohy ve složce zdroje *s* . I když je výstup sestavení stejný, doporučujeme, abyste spustili nástroj MSBuild, zkopírovali výstup do pracovního adresáře artefakty a pak spustili analyzátory Roslyn.
 
-Další zdroje informací pro analyzátory Roslyn pro kontrolu úloh analyzátory [Roslyn na Microsoft docs](https://docs.microsoft.com/dotnet/standard/analyzers/)
+Další zdroje pro úlohu analyzátorů Roslyn najdete v [části analyzátory založené na Roslyn](https://docs.microsoft.com/dotnet/standard/analyzers/) na Microsoft docs.
 
-Balíček analyzátoru nainstalovaného a používaného tímto úkolem sestavení najdete [tady](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers) . 
+Balíček analyzátoru nainstalovaný a používaný touto úlohou sestavení můžete najít na stránce NuGet [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
 ## <a name="tslint-task"></a>TSLint – úloha
 
-Další informace o TSLint najdete v [úložišti GitHub TSLint](https://github.com/palantir/tslint) .
+Další informace o TSLint najdete v [úložišti GitHub TSLint](https://github.com/palantir/tslint).
+
 >[!NOTE] 
->Vzhledem k tomu, že si možná budete vědomi, TSLint se už v 2019 (zdroj: [Úložiště GitHub TSLint](https://github.com/palantir/tslint)) Tým aktuálně zkoumá [ESLint](https://github.com/eslint/eslint) jako alternativu a vytvoření nové úlohy pro ESLint je v plánu.
+>Jak si můžete být vědomi, Domovská stránka [úložiště GitHub TSLint](https://github.com/palantir/tslint) říká, že TSLint bude v průběhu 2019 zastaralá. Microsoft zkoumá [ESLint](https://github.com/eslint/eslint) jako alternativní úkol.
 
 ## <a name="publish-security-analysis-logs-task"></a>Úloha publikování protokolů analýzy zabezpečení
-Snímek obrazovky a podrobnosti o konfiguraci níže.
 
-![Přizpůsobení analýzy zabezpečení publikování](./media/security-tools/9-publish-security-analsis-logs600.png)  
+Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazovky a seznamu.
 
-- **Název artefaktu** – může to být libovolný identifikátor řetězce.
-- **Typ artefaktu** – můžete publikovat protokoly na serveru Azure-DevOps nebo do sdílené složky, která je pro agenta sestavení přístupná. 
-- **Nástroje** – můžete si vybrat, že zachováte protokoly pro jednotlivé nebo specifické nástroje, nebo vyberete **všechny nástroje** , abyste zachovali všechny protokoly. 
+![Konfigurace úlohy sestavení pro publikování protokolů analýzy zabezpečení](./media/security-tools/9-publish-security-analsis-logs600.png)  
+
+- **Název artefaktu**: Libovolný identifikátor řetězce.
+- **Typ artefaktu**: V závislosti na výběru můžete publikovat protokoly na server Azure DevOps nebo do sdíleného souboru, ke kterému má agent sestavení přístup.
+- **Nástroje**: Můžete si vybrat, že zachováte protokoly pro konkrétní nástroje, nebo můžete vybrat **všechny nástroje** pro zachování všech protokolů.
 
 ## <a name="security-report-task"></a>Úloha sestavy zabezpečení
-Snímek obrazovky a podrobnosti o konfiguraci níže.  
-![Nastavení po analýze](./media/security-tools/4-createsecurityanalysisreport600.png) 
-- **Sestavy** – vyberte soubory sestav, které chcete vytvořit; jedna se vytvoří v **konzole**formátů, **TSV**a/nebo **HTML** . 
-- **Nástroje** – vyberte nástroje v definici sestavení, pro které byste chtěli zjistit souhrn zjištěných problémů. Pro každý vybraný nástroj může být k dispozici možnost vybrat, jestli chcete zobrazit jenom chyby, nebo jak chyby, tak upozornění v sestavě. 
-- **Pokročilé možnosti** – můžete si zvolit, že se má zaznamenat upozornění nebo chyba (a úloha selže) pro případ, že nejsou k dispozici žádné protokoly pro jeden z vybraných nástrojů.
-Můžete přizpůsobit složku základních protokolů, kde se protokoly mají najít, ale toto není Typický scénář. 
+
+Podrobnosti o konfiguraci sestavy zabezpečení jsou uvedeny na následujícím snímku obrazovky a seznamu.
+
+![Konfigurace úlohy sestavení sestavy zabezpečení](./media/security-tools/4-createsecurityanalysisreport600.png)
+
+- **Sestavy**: Vyberte libovolnou **konzolu kanálu**, **soubor TSV**a formáty **souborů HTML** . Pro každý vybraný formát se vytvoří jeden soubor sestavy.
+- **Nástroje**: Vyberte nástroje v definici sestavení, pro které chcete souhrn zjištěných problémů. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda se zobrazí pouze chyby, nebo zobrazit chyby a upozornění v sestavě Shrnutí.
+- **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
+- **Základní složka protokolů**: Můžete přizpůsobit složku základních protokolů, kde budou nalezeny protokoly. Tato možnost se obvykle nepoužívá.
 
 ## <a name="post-analysis-task"></a>Úkol po analýze
-Snímek obrazovky a podrobnosti o konfiguraci níže.
 
-![Přizpůsobení po analýze](./media/security-tools/a-post-analysis600.png) 
-- **Nástroje** – vyberte nástroje v definici sestavení, pro které chcete vložit přerušení sestavení na základě jeho zjištění. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda chcete přerušit pouze chyby nebo chyby a upozornění. 
-- **Sestava** – můžete volitelně napsat výsledky, které jsou nalezeny a které způsobují přerušení sestavení v okně konzoly Azure DevOps a souboru protokolu. 
-- **Pokročilé možnosti** – můžete si zvolit, že se má zaznamenat upozornění nebo chyba (a úloha selže) pro případ, že nejsou k dispozici žádné protokoly pro jeden z vybraných nástrojů.
+Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazovky a seznamu.
+
+![Konfigurace úlohy sestavení po analýze](./media/security-tools/a-post-analysis600.png)
+
+- **Nástroje**: Vyberte nástroje v definici sestavení, pro které chcete podmíněně vložit přerušení sestavení. Pro každý vybraný nástroj může být k dispozici možnost vybrat, zda chcete přerušit pouze chyby nebo jak na chyby, tak i na upozornění.
+- **Sestava**: Volitelně můžete napsat výsledky, které způsobují přerušení sestavení. Výsledky se zapisují do okna konzoly Azure DevOps a do souboru protokolu.
+- **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte další dotazy týkající se rozšíření a nabízených nástrojů, podívejte se na [stránku Nejčastější dotazy.](security-code-analysis-faq.md)
-
-
+Pokud máte další dotazy týkající se rozšíření analýzy kódu zabezpečení a nabízených nástrojů, podívejte se na [stránku Nejčastější dotazy](security-code-analysis-faq.md).

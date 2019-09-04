@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615646"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241245"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k Azure Cosmos DB rozhraní API Cassandra ze Sparku
 
@@ -29,7 +29,7 @@ Tento článek je jedním z řady článků o Azure Cosmos DB rozhraní API Cass
 
 * **Azure Cosmos DB pomocná knihovna pro rozhraní API Cassandra:** Kromě konektoru Spark potřebujete další knihovnu nazvanou [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z Azure Cosmos DB. Tato knihovna obsahuje třídy zásad vlastního vytváření připojení a opakování.
 
-  Zásady opakování v Azure Cosmos DB jsou nakonfigurované tak, aby zpracovávala stavový kód HTTP 429 ("četnost požadavků"). Azure Cosmos DB rozhraní API Cassandra tyto výjimky překládá na chyby přetížení v nativním protokolu Cassandra a můžete je opakovat pomocí back-startů. Vzhledem k tomu, že Azure Cosmos DB používá zřízený model propustnosti, při nárůstu počtu vstupních/výstupních rychlostí dojde k výjimkám omezení rychlosti požadavků. Zásady opakování chrání vaše úlohy Spark proti špičkám dat, které dokončují propustnost přidělené pro vaši kolekci.
+  Zásady opakování v Azure Cosmos DB jsou nakonfigurované tak, aby zpracovávala stavový kód HTTP 429 ("četnost požadavků"). Azure Cosmos DB rozhraní API Cassandra tyto výjimky překládá na chyby přetížení v nativním protokolu Cassandra a můžete je opakovat pomocí back-startů. Vzhledem k tomu, že Azure Cosmos DB používá zřízený model propustnosti, při nárůstu počtu vstupních/výstupních rychlostí dojde k výjimkám omezení rychlosti požadavků. Zásady opakování chrání vaše úlohy Spark proti špičkám dat, které dokončují propustnost přidělené pro váš kontejner.
 
   > [!NOTE] 
   > Zásady opakování můžou chránit vaše úlohy Sparku jenom v momentech pouze těch špiček. Pokud jste nenakonfigurovali dostatek ru potřebných ke spuštění úlohy, pak se zásady opakování nepoužijí a třída zásad opakování vyvolá výjimku znovu.
@@ -79,7 +79,7 @@ I když byly výše uvedené části specifické pro služby PaaS založené na 
 #### <a name="connector-dependencies"></a>Závislosti konektoru:
 
 1. Přidáním souřadnic Maven získáte [konektor Cassandra pro Spark](cassandra-spark-generic.md#dependencies-for-connectivity) .
-2. Přidání souřadnic Maven pro pomocnou [knihovnu Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) pro rozhraní API Cassandra
+2. Přidání souřadnic Maven pro [pomocnou knihovnu Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) pro rozhraní API Cassandra
 
 #### <a name="imports"></a>Objem
 

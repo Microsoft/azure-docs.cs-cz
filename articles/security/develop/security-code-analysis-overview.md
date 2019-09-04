@@ -1,6 +1,6 @@
 ---
-title: Přehled dokumentace k analýze kódů zabezpečení Microsoft Azure
-description: Tento článek představuje přehled rozšíření analýzy kódu zabezpečení.
+title: Přehled dokumentace analýzy kódu zabezpečení společnosti Microsoft
+description: Tento článek představuje přehled rozšíření analýzy kódu Microsoft Security.
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,93 +12,106 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 283d63bafc583f2ac9da3294644aaebd17d7c950
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718285"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242319"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informace o analýze kódu zabezpečení společnosti Microsoft
 
-**Rozšíření pro analýzu kódu Microsoft Security** umožňuje týmům plynule integrovat analýzu kódu zabezpečení do jejich kanálů CI/CD DevOps Azure, jak doporučuje odborníci na rozhraní [SDL (Secure Development Lifecycle)](https://www.microsoft.com/securityengineering/sdl/practices) v Microsoftu. Zabezpečení je zjednodušené díky konzistentnímu UŽIVATELSKÉmu prostředí, které vyabstrakcí složité spouštění různých nástrojů. Díky doručování nástrojů na základě NuGet už týmy nepotřebují spravovat ani instalovat nástroje. Díky rozhraním příkazového řádku a základnímu sestavování úloh pro všechny uživatele, od Gurus nástrojů až po každodenní vývojáře, může mít méně nebo tolik toho, co chtějí nástroje podle svých přání. Týmy mohou také využít výkonné funkce pro následné zpracování, jako je publikování protokolů pro uchovávání, generování sestav zaměřených na vývojáře & konfiguraci konců sestavení na regresích.
+Díky rozšíření Microsoft Security Code Analysis může týmy přidat analýzu kódu zabezpečení do svých kanálů Azure DevOps průběžné integrace a doručování (CI/CD). Tuto analýzu doporučuje odborníci na [zabezpečení SDL (Secure Development Lifecycle)](https://www.microsoft.com/securityengineering/sdl/practices) v Microsoftu.
 
-## <a name="why-microsoft-security-code-analysis"></a>Důvody analýzy kódu zabezpečení společnosti Microsoft
+Konzistentní uživatelské prostředí zjednodušuje zabezpečení skrytím složitosti spuštěných nástrojů. Díky doručování nástrojů na základě NuGet už týmy nepotřebují spravovat instalaci ani aktualizaci nástrojů. Pomocí obou rozhraní příkazového řádku a základního rozhraní pro úlohy sestavení může mít všichni uživatelé co nejvíc ovládat nástroje, jak chtějí.
+
+Týmy můžou také využívat výkonné postprocessing možnosti, jako například:
+
+- Publikování protokolů pro uchování
+- Generují se akce zaměřené na vývojáře.
+- Konfigurace konců sestavení u regresních testů.
+
+## <a name="why-should-i-use-microsoft-security-code-analysis"></a>Proč mám použít analýzu kódu zabezpečení Microsoftu?
 
 ### <a name="security-simplified"></a>Zjednodušené zabezpečení
 
-Přidávání nástrojů pro analýzu kódu zabezpečení do kanálu Azure DevOps je jednoduché jako přidávání nových úloh. Přizpůsobte si je nebo použijte výchozí nastavení. Úlohy se spouštějí jako součást kanálu DevOps a vytváří protokoly podrobně o všech druzích zjištění.
+Přidávání nástrojů pro analýzu kódu Microsoft Security do vašeho kanálu Azure DevOps je jednoduché jako přidávání nových úloh. Přizpůsobte úkoly nebo použijte své výchozí chování. Úlohy se spouštějí jako součást kanálu Azure DevOps a vytváří protokoly, které podrobně popisují mnoho druhů výsledků.
 
 ### <a name="clean-builds"></a>Vyčistit sestavení
 
-Po vyřešení počátečních problémů hlášených nástroji můžete nakonfigurovat rozšíření pro přerušení sestavení při nových problémech. Nastavení průběžné integrace na každé žádosti o přijetí změn nebylo nikdy jednoduché.
+Po vyřešení počátečních problémů hlášených nástroji můžete nakonfigurovat rozšíření pro přerušení sestavení při nových problémech. Nastavení průběžné integrace na každé žádosti o přijetí změn je snadné.
 
 ### <a name="set-it-and-forget-it"></a>Nastavit a zapomenout
 
-Úlohy a nástroje sestavení lze nastavit tak, aby byly stále aktuální (a jsou ve výchozím nastavení). Pokud je k dispozici aktualizovaná verze nástroje, není nutné ji stahovat a instalovat. Toto rozšíření se za vás zajímá. 
+Ve výchozím nastavení jsou úlohy a nástroje sestavení stále aktuální. Pokud je k dispozici aktualizovaná verze nástroje, nemusíte ji stahovat a instalovat. Rozšíření se za vás postará o aktualizaci.
 
->>>
-### <a name="under-the-hood"></a>Pod kapotou
+### <a name="under-the-hood"></a>Pohled pod kapotu
 
-Úlohy sestavení rozšíření Microsoft Security Code Analysis jsou složité:
-  - Spouští se nástroje pro statickou analýzu zabezpečení a
+Úlohy sestavení rozšíření skryjí složitosti:
+  - Spouští se nástroje pro statickou analýzu zabezpečení.
   - Zpracování výsledků ze souborů protokolu pro vytvoření souhrnné sestavy nebo přerušení sestavení.
->>>
 
-## <a name="security-code-analysis-toolset"></a>Sada nástrojů pro analýzu kódu zabezpečení
+## <a name="microsoft-security-code-analysis-tool-set"></a>Sada nástrojů pro analýzu kódu zabezpečení společnosti Microsoft
 
-Rozšíření pro analýzu kódu Microsoft Security vám nabízí snadno dostupné verze důležitých analytických nástrojů. Rozšíření zahrnuje interní i open source nástroje Microsoftu. Po nakonfigurování & spuštění kanálu pomocí odpovídající úlohy sestavení se nástroje automaticky stáhnou do agenta hostovaného v cloudu. Níže je uvedená sada nástrojů, které jsou dnes k dispozici v rozšíření. Udržujte si lepší přehled a pošlete nám svoje návrhy na nástroje, které by se daly přidat.
+Rozšíření Microsoft Security Code Analysis Extension zpřístupňuje nejnovější verze důležitých analytických nástrojů, které jsou vám k dispozici. Toto rozšíření zahrnuje nástroje spravované od Microsoftu i open source nástroje.
+
+Tyto nástroje se automaticky stáhnou do agenta hostovaného v cloudu po použití odpovídající úlohy sestavení ke konfiguraci a spuštění kanálu.
+
+V této části jsou uvedeny sady nástrojů, které jsou aktuálně k dispozici v rozšíření. Sledujte přidání dalších nástrojů. Pošlete nám také svoje návrhy na nástroje, které chceme přidat.
 
 ### <a name="anti-malware-scanner"></a>Skener proti malwaru
 
-Úloha sestavení pro kontrolu proti malwaru je teď součástí rozšíření Microsoft Security Code Analysis Extension. Musí být spuštěn na agentu sestavení, který má již nainstalovaný program Windows Defender. Další informace najdete na [webu Defenderu](https://aka.ms/defender) . 
+Úloha sestavení pro kontrolu proti malwaru je teď součástí rozšíření Microsoft Security Code Analysis Extension. Tato úloha musí být spuštěna na agentu sestavení, který je již nainstalován v programu Windows Defender. Další informace najdete na [webu Windows Defender](https://aka.ms/defender).
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim je přenosný spustitelný soubor (PE) na nejvyšší úrovni, který ověřuje nastavení kompilátoru/linkeru a další binární charakteristiky související se zabezpečením. Úloha sestavení poskytuje obálku příkazového řádku kolem aplikace BinSkim. exe. BinSkim je open source nástroj a další informace najdete [v BinSkim na GitHubu](https://github.com/Microsoft/binskim) .
+BinSkim je přenosný spustitelný soubor (PE), který ověřuje nastavení kompilátoru, nastavení linkeru a další charakteristiky binárních souborů souvisejících se zabezpečením. Tato úloha sestavení poskytuje obálku příkazového řádku kolem konzolové aplikace binskim. exe. BinSkim je open source nástroj. Další informace najdete v tématu [BinSkim na GitHubu](https://github.com/Microsoft/binskim).
 
 ### <a name="credential-scanner"></a>Skener přihlašovacích údajů
 
-Hesla a další tajné kódy uložené ve zdrojovém kódu jsou momentálně významným problémem. Skener přihlašovacích údajů je proprietární statický Nástroj pro analýzu, který detekuje přihlašovací údaje, tajné kódy, certifikáty a další citlivý obsah ve zdrojovém kódu a ve výstupu sestavení.
+Hesla a další tajné kódy uložené ve zdrojovém kódu jsou významné problémy. Skener přihlašovacích údajů je proprietární Nástroj pro statickou analýzu, který pomáhá tento problém vyřešit. Nástroj detekuje přihlašovací údaje, tajné kódy, certifikáty a další citlivý obsah ve zdrojovém kódu a ve výstupu sestavení.
 
 ### <a name="microsoft-security-risk-detection"></a>Zjišťování rizik zabezpečení společnosti Microsoft
 
-Detekce rizik zabezpečení je jedinečná cloudová služba pro přibližné testování od Microsoftu, která identifikuje zneužití chyb zabezpečení v softwaru. Tato služba vyžaduje samostatný proces připojování. Další informace najdete [na webu MSRD na docs.Microsoft.com](https://docs.microsoft.com/security-risk-detection/) .
+Zjišťování rizik společnosti Microsoft (MSRD) je cloudová služba pro účely přibližného testování. Identifikuje zneužití chyb zabezpečení v softwaru. Tato služba vyžaduje samostatný proces připojování. Další informace najdete v centru pro [vývojáře v MSRD](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Analyzátory Roslyn
 
-Statická analýza integrovaná s kompilátorem Microsoftu pro analýzu spravovaného kódu (C# a VB). Další informace najdete [v analyzátorech Roslyn na docs.Microsoft.com](https://docs.microsoft.com/dotnet/standard/analyzers/) .
+Analyzátory Roslyn jsou nástrojem integrovaným kompilátorem Microsoftu pro statickou analýzu spravovaného C# a Visual Basicho kódu. Další informace najdete v tématu [analyzátory založené na Roslyn](https://docs.microsoft.com/dotnet/standard/analyzers/).
 
 ### <a name="tslint"></a>TSLint
 
-TSLint je rozšiřitelný Nástroj pro statickou analýzu, který kontroluje kód TypeScriptu pro čtení, udržovatelnost a chyby funkcí. Je široce podporovaná napříč moderními editory a systémy sestavení a je možné ji přizpůsobit vlastními pravidly Lint, konfiguracemi a formátovacími moduly. TSLint je open source nástroj a další informace najdete [v TSLint na GitHubu](https://github.com/palantir/tslint) .
+TSLint je rozšiřitelný Nástroj pro statickou analýzu, který kontroluje čitelnost, udržovatelnost a chyby ve funkcích v kódu TypeScript. Je široce podporován moderními editory a systémy pro sestavování. Můžete ji přizpůsobit vlastními pravidly Lint, konfiguracemi a formátovacími moduly. TSLint je open source nástroj. Další informace najdete v tématu [TSLint na GitHubu](https://github.com/palantir/tslint).
 
 ## <a name="analysis-and-post-processing-of-results"></a>Analýza a následné zpracování výsledků
 
-Rozšíření Microsoft Security Code Analysis má také tři užitečné úlohy následného zpracování, které vám pomůžou zpracovat a analyzovat výsledky zjištěné úlohami nástrojů zabezpečení. Obvykle se přidávají do kanálu po všech ostatních úkolech nástroje.
+Rozšíření Microsoft Security Code Analysis má také tři úlohy postprocessing. Tyto úlohy vám pomůžou analyzovat výsledky zjištěné úkoly nástroje Security. Při přidání do kanálu se tyto úlohy obvykle řídí všemi ostatními úlohami nástroje.
 
 ### <a name="publish-security-analysis-logs"></a>Publikování protokolů analýzy zabezpečení
-Úloha sestavení protokoly analýzy zabezpečení zachovává soubory protokolů, které jsou spuštěny během sestavení pro účely šetření a následné zpracování.
 
-Mohou být publikovány do artefaktů serveru Azure (jako soubor ZIP) nebo zkopírovány do přístupné sdílené složky z vašeho privátního agenta sestavení.
+Úloha sestavení protokoly analýzy zabezpečení zachovává soubory protokolů nástrojů zabezpečení, které jsou spuštěny během sestavení. Tyto protokoly si můžete přečíst pro účely šetření a následného zpracování.
+
+Soubory protokolu můžete publikovat, aby Azure Artifacts jako soubor. zip. Můžete je také zkopírovat do přístupné sdílené složky z vašeho privátního agenta sestavení.
 
 ### <a name="security-report"></a>Sestava zabezpečení
-Úloha sestavení sestavy zabezpečení analyzuje soubory protokolů vytvořené pomocí nástrojů zabezpečení spouštěných během sestavení a vytvoří jeden soubor souhrnných sestav se všemi problémy, které nalezly analytické nástroje.
 
-Úkol lze nakonfigurovat tak, aby nahlásil nálezy pro konkrétní nástroje nebo pro všechny nástroje, a můžete také zvolit, jakou úroveň problémů mají být hlášeny (chyby nebo chyby a upozornění).
+Úloha sestavení sestavy zabezpečení analyzuje soubory protokolů. Tyto soubory jsou vytvořeny pomocí nástrojů zabezpečení, které jsou spuštěny během sestavení. Úloha sestavení potom vytvoří jeden souhrnný soubor sestavy. Tento soubor zobrazuje všechny problémy zjištěné nástroji pro analýzu.
+
+Tuto úlohu můžete nakonfigurovat tak, aby nahlásila výsledky pro konkrétní nástroje nebo pro všechny nástroje. Můžete také zvolit, jakou úroveň problému chcete ohlásit, jako pouze chyby nebo chyby a upozornění.
 
 ### <a name="post-analysis-build-break"></a>Po analýze (přerušení sestavení)
-Úloha sestavení po analýze umožňuje zákazníkovi vložit přerušení sestavení a selže sestavení v případě, že jeden z dalších analytických nástrojů ohlásí výsledky nebo problémy v kódu.
 
-Úkol lze nakonfigurovat tak, aby přerušil sestavení pro problémy nalezené konkrétními nástroji nebo pro všechny nástroje a také na základě závažnosti problémů zjištěných (chyby nebo varování).
+Pomocí úlohy sestavení po analýze můžete vložit přerušení sestavení, které záměrně způsobí selhání sestavení. Zadáte zalomení sestavení, pokud jeden nebo více sestav nástroje pro analýzu ohlásí problémy v kódu.
+
+Tuto úlohu můžete nakonfigurovat pro přerušení sestavení pro problémy nalezené konkrétními nástroji nebo všemi nástroji. Můžete ji také nakonfigurovat na základě závažnosti zjištěných problémů, jako jsou chyby nebo upozornění.
 
 >[!NOTE]
->Jednotlivé úlohy sestavení budou úspěšné, a to tak dlouho, dokud se nástroj úspěšně dokončí, ať už se jedná o zjištění, nebo ne, aby bylo sestavení možné spustit, aby se mohly spouštět všechny nástroje.
+>Podle návrhu je každá úloha sestavení úspěšná, pokud se úloha úspěšně dokončí. To je pravdivé bez ohledu na to, zda nástroj najde problémy, aby bylo možné spustit sestavení pomocí povolení všech nástrojů.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokyny k registraci a instalaci analýzy kódu zabezpečení najdete v naší [příručce k registraci a instalaci](security-code-analysis-onboard.md) .
+Pokyny, jak připojit a nainstalovat Microsoft Security Code Analysis, najdete v naší [příručce k registraci a instalaci](security-code-analysis-onboard.md).
 
-Další informace o konfiguraci úloh sestavení najdete v našem [Průvodci konfigurací](security-code-analysis-customize.md) .
+Další informace o konfiguraci úloh sestavení najdete v našem [Průvodci konfigurací](security-code-analysis-customize.md).
 
-Pokud máte další dotazy týkající se rozšíření a nabízených nástrojů, podívejte se na [stránku Nejčastější dotazy.](security-code-analysis-faq.md)
+Pokud máte další dotazy týkající se rozšíření a nástrojů, které jsou k dispozici, podívejte se na [stránku Nejčastější dotazy](security-code-analysis-faq.md).

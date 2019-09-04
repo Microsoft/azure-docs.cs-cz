@@ -7,30 +7,28 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 054f9ed21ee0d7ef725c2b7eee8174c53374b5bc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232256"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274951"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
 Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Azure může Azure Policy auditovat nastavení v rámci počítače. Ověření se provede tak, že rozšíření konfigurace hosta a klienta. Toto rozšíření prostřednictvím klienta, ověří nastavení jako konfigurace operačního systému, konfigurace aplikace nebo přítomnost, nastavení prostředí a další.
 
-V současné době Azure Policy konfigurace hosta provede jenom audit upravena vlastním nastavením v rámci počítače.
+V současné době Azure Policy konfigurace hosta provede jenom audit nastavení v rámci počítače.
 Konfigurace není ještě možné použít.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Rozšíření a klienta
 
 Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) . Rozšíření stahuje použitelné zásady přiřazení a odpovídající definici konfigurace.
 
-### <a name="limits-set-on-the-exension"></a>Omezení nastavená na exension
+### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
 
 Aby bylo rozšíření možné omezit proti ovlivnění aplikací spuštěných v počítači, může konfigurace hostů maximálně překročit 5% využití procesoru.
-Jedná se o true BOH pro konfigurace poskytované Microsoftem jako "integrovaná" a vlastní konfigurace, které vytvářejí zákazníci.
+To platí jak pro konfigurace poskytované společností Microsoft jako "předdefinované", tak pro vlastní konfigurace vytvořené zákazníky.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Registrace poskytovatele prostředků konfigurace hosta
 
@@ -104,7 +102,7 @@ U seznamů IP adres můžete stáhnout [Microsoft Azure rozsahy IP adres datové
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na konfiguraci hosta definice
 
-Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . Definice **DeployIfNotExists** slouží k přípravě počítače s agentem konfigurace hosta a dalšími komponentami pro podporu ověřovacích [nástrojů](#validation-tools).
+Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . Definice **DeployIfNotExists** slouží k přípravě počítače s agentem konfigurace hosta a dalšími komponentami pro podporu [ověřovacích nástrojů](#validation-tools).
 
 **DeployIfNotExists** definici zásad ověří a řeší následující položky:
 
@@ -144,6 +142,32 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 Kde `<version>` odkazuje na aktuální číslo verze.
+
+### <a name="collecting-logs-remotely"></a>Vzdálené shromažďování protokolů
+
+Prvním krokem při řešení potíží s konfiguracemi konfigurace hostů nebo moduly by měl být `Test-GuestConfigurationPackage` použití rutiny podle kroků v části [test konfiguračního balíčku hosta](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).  Pokud se to nepodaří, můžou se shromažďovat klientské protokoly, které vám pomůžou diagnostikovat problémy.
+
+#### <a name="windows"></a>Windows
+
+Pokud chcete k zachycení informací ze souborů protokolů v počítačích s Windows použít příkaz spuštění virtuálního počítače Azure, může být užitečné následující ukázkový skript PowerShellu. Podrobnosti o spuštění skriptu z webu Azure Portal nebo použití Azure PowerShell najdete v tématu [spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Pokud chcete pro zachycení informací ze souborů protokolů na počítačích se systémem Linux použít funkci příkazu spuštění virtuálního počítače Azure, může být užitečný následující ukázkový skript bash. Podrobnosti o spuštění skriptu z webu Azure Portal nebo pomocí rozhraní příkazového řádku Azure najdete v tématu [spuštění skriptů prostředí na virtuálním počítači se systémem Linux pomocí příkazu Run](../../../virtual-machines/linux/run-command.md) .
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
 
 ## <a name="guest-configuration-samples"></a>Ukázky konfigurace hosta
 

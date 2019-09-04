@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a47bb70ef87783d9b275329452c94526c67a2c3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: d82f843cb5cdd7b910c734f26a93144374061b74
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211737"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274501"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 
@@ -145,11 +145,8 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
 | openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
-| excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
-| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId větším, **než** je hodnota této vlastnosti.  | Ne |
 
->[!TIP]
->Pokud vaše otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo pokud pro test spustíte jenom DTP jenom jednou, nezapomeňte zrušit kontrolu možnosti "excludeLastRequest", aby bylo možné zkopírovat d. ATA.
+Pokud jste `excludeLastRequest` nacházeli `baseRequestId` a v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
 **Příklad:**
 
@@ -158,12 +155,13 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -175,7 +173,16 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 
 ### <a name="sap-bw-open-hub-as-source"></a>SAP BW otevřít centrum jako zdroj
 
-Chcete-li kopírovat data z SAP BW otevřete centrum, nastavte typ zdroje v aktivitě kopírování na **SapOpenHubSource**. V části **zdroje** aktivity kopírování nejsou potřeba žádné další vlastnosti specifické pro daný typ.
+Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
+| excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
+| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
+
+>[!TIP]
+>Pokud vaše otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo pokud pro test spustíte jenom DTP jenom jednou, nezapomeňte zrušit kontrolu možnosti "excludeLastRequest", aby bylo možné zkopírovat d. ATA.
 
 Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`parallelCopies`](copy-activity-performance.md#parallel-copy) , aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies`. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
@@ -200,7 +207,8 @@ Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`par
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"
@@ -226,5 +234,5 @@ Při kopírování dat z SAP BW otevřeném centru, se z SAP BW datových typů 
 | N (NUMC) | Řetězec |
 | X (Binary and Raw) | Řetězec |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

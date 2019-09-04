@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990487"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278205"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 
@@ -133,7 +133,7 @@ Postupujte podle pokynů:
 * Používání nasazeného modelu
 * Odstranění nasazené služby
 
-K vytvoření definice služby použijte [sadu SDK Azure Machine Learning pro Python](https://aka.ms/aml-sdk) . Definice služby je soubor popisující kanál grafů (vstup, featurizer a klasifikátor) založený na TensorFlow. Příkaz pro nasazení automaticky komprimuje definice a grafy do souboru ZIP a nahraje soubor ZIP do úložiště objektů BLOB v Azure. DNN je už nasazené pro běh na FPGA.
+K vytvoření definice služby použijte [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . Definice služby je soubor popisující kanál grafů (vstup, featurizer a klasifikátor) založený na TensorFlow. Příkaz pro nasazení automaticky komprimuje definice a grafy do souboru ZIP a nahraje soubor ZIP do úložiště objektů BLOB v Azure. DNN je už nasazené pro běh na FPGA.
 
 ### <a name="load-azure-ml-workspace"></a>Načíst pracovní prostor Azure ML
 
@@ -183,7 +183,7 @@ print(feature_tensor.shape)
 
 ### <a name="add-classifier"></a>Přidat klasifikátor
 
-Na datové sadě ImageNet byla vyškolila tento třídění.  V sadě ukázkových poznámkových [bloků](https://aka.ms/aml-notebooks)jsou k dispozici příklady pro učení a školení pro vaše vlastní váhy.
+Na datové sadě ImageNet byla vyškolila tento třídění.  V sadě [ukázkových poznámkových bloků](https://aka.ms/aml-notebooks)jsou k dispozici příklady pro učení a školení pro vaše vlastní váhy.
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -245,7 +245,7 @@ Dostupné modely a odpovídající výchozí hodnoty pro výstup třídění jso
 
 ### <a name="register-model"></a>Registrace modelu
 
-[](./concept-model-management-and-deployment.md) Zaregistrujte model pomocí sady SDK se souborem zip v úložišti objektů BLOB v Azure. Přidání značek a dalších metadat k modelu vám pomůže sledovat vaše vyškolené modely.
+[Zaregistrujte](./concept-model-management-and-deployment.md) model pomocí sady SDK se souborem zip v úložišti objektů BLOB v Azure. Přidání značek a dalších metadat k modelu vám pomůže sledovat vaše vyškolené modely.
 
 ```python
 from azureml.core.model import Model

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c10055a7f85f849fc366211eb41382c4c3039b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808883"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275200"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí služby Azure Data Factory
 
@@ -127,8 +127,10 @@ Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady, musí být nastavená na: **GoogleBigQueryObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| type | Vlastnost Type datové sady musí být nastavená na: **GoogleBigQueryObject** | Ano |
+| integrován | Název datové sady Google BigQuery |Ne (když je zadán zdroj aktivity "query")  |
+| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `dataset` a. `table` | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -137,11 +139,12 @@ Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na 
     "name": "GoogleBigQueryDataset",
     "properties": {
         "type": "GoogleBigQueryObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

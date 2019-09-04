@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186506"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241839"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Návodu Kombinování dat z více zdrojů dat v jednom Azure Search indexu
 
@@ -56,7 +56,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 
 Abyste mohli komunikovat se službou Azure Search, budete potřebovat adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
 1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
@@ -68,13 +68,13 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních hotelů. Jedna sada popisuje hotely samotné a načte se do databáze Azure Cosmos DB. Druhá sada obsahuje podrobnosti o hotelu místností a poskytuje se jako sedm samostatných souborů JSON, které se mají nahrát do Azure Blob Storage.
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com)a potom přejděte na stránku přehled účtu Azure Cosmos DB.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com)a potom přejděte na stránku přehled účtu Azure Cosmos DB.
 
-1. V řádku nabídek klikněte na přidat kontejner. Zadejte "vytvořit novou databázi" a použijte název **Hotel-místnosti – DB**. Zadejte pro název kolekce **hotelové místnosti** a **/HotelId** pro klíč oddílu. Kliknutím na tlačítko **OK** vytvořte databázi a kontejner.
+1. V řádku nabídek klikněte na přidat kontejner. Zadejte "vytvořit novou databázi" a použijte název **Hotel-místnosti – DB**. Zadejte **hotely** pro název kolekce a **/HotelId** pro klíč oddílu. Kliknutím na tlačítko **OK** vytvořte databázi a kontejner.
 
    ![Přidat Azure Cosmos DB kontejner](media/tutorial-multiple-data-sources/cosmos-add-container.png "Přidání kontejneru Azure Cosmos DB")
 
-1. Přejít na Cosmos DB Průzkumník dat a vyberte element Items v kontejneru **hotely** v rámci databáze **hotelových místností** . Pak na panelu příkazů klikněte na **nahrát položku** .
+1. Přejít na Cosmos DB Průzkumník dat a vyberte element **Items** v kontejneru **hotely** v rámci databáze **hotelových místností** . Pak na panelu příkazů klikněte na **nahrát položku** .
 
    ![Nahrát do kolekce Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-upload.png "Nahrát do kolekce Cosmos DB")
 
@@ -86,7 +86,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 ## <a name="prepare-sample-blob-data"></a>Příprava ukázkových dat objektů BLOB
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
 
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) s názvem **hotelové místnosti** pro uložení ukázkových souborů JSON pro hotelovou místnost. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
@@ -344,7 +344,7 @@ V seznamu klikněte na rejstřík hotelových místností. Pro index se zobrazí
 
 Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Existuje několik přístupů a několik možností indexování objektů BLOB JSON. Pokud zdrojová data obsahují obsah JSON, můžete si projít tyto možnosti, abyste viděli, co nejlépe vyhovuje vašemu scénáři.
 

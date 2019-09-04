@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232458"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258988"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -34,10 +34,10 @@ Tato část popisuje selhání operace zálohování virtuálního počítače A
 * Ověřte, že je **spuštěná**služba **agenta hosta systému Windows Azure.** `Services.msc` Pokud chybí služba **Windows Azure Host agent** , nainstalujte ji z [zálohování virtuálních počítačů Azure do trezoru Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
 * **Protokol událostí** může zobrazovat selhání zálohování, které se nachází v jiných zálohovacích produktech, například zálohování Windows serveru, a není způsobené zálohováním Azure. K určení, zda se jedná o problém s Azure Backup, použijte následující postup:
    * Pokud dojde k chybě při **zálohování** položky ve zdroji nebo zprávě události, ověřte, jestli se zálohy zálohování virtuálních počítačů Azure IaaS úspěšně a jestli se vytvořil bod obnovení s požadovaným typem snímku.
-    * Pokud Azure Backup funguje, bude problém nejspíš s jiným řešením zálohování. 
+    * Pokud Azure Backup funguje, bude problém nejspíš s jiným řešením zálohování.
     * Tady je příklad chyby prohlížeče událostí, kdy služba Azure Backup fungovala správně, ale "Zálohování Windows Serveru" se nezdařila:<br>
     ![Zálohování Windows Serveru selhává](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
-    * Pokud se Azure Backup nedaří, vyhledejte odpovídající kód chyby v části běžné chyby zálohování virtuálních počítačů v tomto článku. 
+    * Pokud se Azure Backup nedaří, vyhledejte odpovídající kód chyby v části běžné chyby zálohování virtuálních počítačů v tomto článku.
 
 ## <a name="common-issues"></a>Běžné potíže
 
@@ -81,9 +81,9 @@ Chybová zpráva: Instalace nebo operace rozšíření se nezdařila z důvodu c
 Kód chyby: ExtensionInstallationFailedMDTC <br/>
 Chybová zpráva: Instalace rozšíření se nezdařila s chybou "COM+ se nepovedlo kontaktovat Microsoft DTC (Distributed Transaction Coordinator) <br/>
 
-Operace zálohování se nezdařila z důvodu problému se systémovou aplikací **com+** služby Windows.  Pokud chcete tento problém vyřešit, postupujte následovně:
+Operace zálohování se nezdařila z důvodu problému se **systémovou aplikací com+** služby Windows.  Pokud chcete tento problém vyřešit, postupujte následovně:
 
-* Zkuste spustit nebo restartovat systémovou **aplikaci modelu COM+** služby Windows (z příkazového řádku se zvýšenými oprávněními **– net start COMSysApp**).
+* Zkuste spustit nebo restartovat **systémovou aplikaci modelu COM+** služby Windows (z příkazového řádku se zvýšenými oprávněními **– net start COMSysApp**).
 * Ujistěte se, že služba **DTC (Distributed Transaction Coordinator)** Services běží jako účet **síťové služby** . Pokud ne, změňte ji tak, aby běžela jako účet **síťové služby** , a restartujte **systémovou aplikaci modelu COM+** .
 * Pokud službu nemůžete restartovat, přeinstalujte **DTC (Distributed Transaction Coordinator)** službu pomocí následujících kroků:
     * Zastavte službu DTC (Distributed Transaction Coordinator).
@@ -108,16 +108,16 @@ Restartujte zapisovače služby VSS, které jsou ve špatném stavu. Z příkazo
 Kód chyby: ExtensionConfigParsingFailure<br/>
 Chybová zpráva: Při analýze konfigurace zálohovacího rozšíření se stala chyba.
 
-K této chybě dochází, protože se změnila oprávnění v adresáři MachineKeys: **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
-Spusťte následující příkaz a ověřte, zda jsou oprávnění v adresáři MachineKeys výchozí:**Icacls%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+K této chybě dochází, protože se změnila oprávnění v adresáři **MachineKeys** : **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+Spusťte následující příkaz a ověřte, zda jsou oprávnění v adresáři **MachineKeys** výchozí:**Icacls%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 
 Výchozí oprávnění jsou následující:
 * Všemi (R, W)
 * BUILTIN\Administrators (F)
 
-Pokud se v adresáři MachineKeys nacházejí oprávnění, která se liší od výchozích hodnot, použijte následující postup pro správné oprávnění, odstraňte certifikát a spusťte zálohování.
+Pokud se v adresáři **MachineKeys** nacházejí oprávnění, která se liší od výchozích hodnot, použijte následující postup pro správné oprávnění, odstraňte certifikát a spusťte zálohování.
 
-1. Opravte oprávnění v adresáři MachineKeys. Pomocí vlastnosti zabezpečení Průzkumníka a pokročilého nastavení zabezpečení v adresáři obnovte oprávnění zpět na výchozí hodnoty. Odeberte všechny objekty uživatele kromě výchozích hodnot z adresáře a ujistěte se, že oprávnění **Everyone** má zvláštní přístup, a to následujícím způsobem:
+1. Opravte oprávnění v adresáři **MachineKeys** . Pomocí vlastnosti zabezpečení Průzkumníka a pokročilého nastavení zabezpečení v adresáři obnovte oprávnění zpět na výchozí hodnoty. Odeberte všechny objekty uživatele kromě výchozích hodnot z adresáře a ujistěte se, že oprávnění **Everyone** má zvláštní přístup, a to následujícím způsobem:
 
     * Výpis složky/čtení dat
     * Číst atributy
@@ -193,7 +193,7 @@ Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta.
 | **Kód chyby**: VmNotInDesirableState <br/> **Chybová zpráva**:  Virtuální počítač není ve stavu, který umožňuje zálohování. |<ul><li>Pokud je virtuální počítač v přechodném stavu mezi **spuštěním** a **vypnutím**, počkejte na změnu stavu. Potom aktivujte úlohu zálohování. <li> Pokud se jedná o virtuální počítač se systémem Linux a používá modul jádra systému Linux s vylepšeným zabezpečením, vylučte cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalovaná přípona zálohování.  |
 | Agent virtuálního počítače se na virtuálním počítači nenachází: <br>Nainstalujte libovolný požadavek a agenta virtuálního počítače. Pak restartujte operaci. |Přečtěte si další informace o [instalaci agenta virtuálního počítače a o tom, jak ověřit instalaci agenta virtuálního počítače](#vm-agent). |
 | **Kód chyby**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Chybová zpráva**: Operace snímku se nezdařila, protože došlo k chybě při vytváření zabezpečeného kanálu síťové komunikace. | <ol><li> Spusťte Editor registru spuštěním programu **Regedit. exe** v režimu zvýšených oprávnění. <li> Identifikujte všechny verze .NET Framework přítomné ve vašem systému. Jsou přítomny v rámci hierarchie klíče registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Pro každý .NET Framework přítomný v klíči registru přidejte následující klíč: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
-| **Kód chyby**: ExtensionVCRedistInstallationFailure <br/> **Chybová zpráva**: Operace snímku se nezdařila, protože došlo k C++ chybě při instalaci vizuální distribuovatelné sady visual Studio 2012. | Přejděte na C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion a nainstalujte vcredist2012_x64.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastavte **počáteční** hodnotu v **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.  |
+| **Kód chyby**: ExtensionVCRedistInstallationFailure <br/> **Chybová zpráva**: Operace snímku se nezdařila, protože došlo k C++ chybě při instalaci vizuální distribuovatelné sady visual Studio 2012. | Přejděte na C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion a nainstalujte vcredist2013_x64.<br/>Ujistěte se, že hodnota klíče registru, která umožňuje instalaci služby, je nastavená na správnou hodnotu. To znamená, že nastavte **počáteční** hodnotu v **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** a ne **4**. <br><br>Pokud stále máte problémy s instalací, restartujte instalační službu spuštěním příkazu **msiexec/unregister** následovaným příkazem **msiexec/Register** z příkazového řádku se zvýšenými oprávněními.  |
 
 
 ## <a name="jobs"></a>Úlohy

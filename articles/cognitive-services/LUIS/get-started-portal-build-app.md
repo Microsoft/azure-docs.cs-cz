@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3bdada262df3778ab8781f967fdbd64a780009b2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560869"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258289"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý start: Vytvoření nové aplikace na portálu LUIS
 
@@ -23,9 +23,9 @@ V tomto rychlém startu vytvoříte novou aplikaci na [portálu Luis](https://ww
 
 Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budete připraveni k nasazení aplikace, přečtěte si [rychlý Start k nasazení aplikace](get-started-portal-deploy-app.md). Ukazuje, jak vytvořit prostředek služby pro rozpoznávání Azure a přiřadit ho k aplikaci.
 
-## <a name="create-an-app"></a>Vytvoření nové aplikace
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Otevřete [portál Luis](https://www.luis.ai) v prohlížeči a přihlaste se. Pokud se přihlašujete poprvé, musíte vytvořit uživatelský účet bezplatného portálu LUIS.
+## <a name="create-an-app"></a>Vytvoření nové aplikace
 
 1. Na panelu nástrojů kontextu vyberte **vytvořit novou aplikaci** .
 
@@ -33,7 +33,7 @@ Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budet
 
 1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
 
-   |Název nastavení| Hodnota | Účel|
+   |Název nastavení| Value | Účel|
    |--|--|--|
    |Name|`myEnglishApp`|Jedinečný název aplikace LUIS<br>povinné|
    |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>povinné|
@@ -49,7 +49,7 @@ Po vytvoření aplikace LUIS je potřeba vytvořit záměry. Záměry je způsob
  1. Najít a použít pro úlohy
  1. Najít formuláře, které se mají použít pro úlohy
 
-Dvě různé záměry aplikace  jsou v souladu s následujícími záměry:
+Dvě různé _záměry_ aplikace jsou v souladu s následujícími záměry:
 
 |Záměr|Příklad textu od uživatele<br>známé jako _utterance_|
 |--|--|
@@ -58,11 +58,11 @@ Dvě různé záměry aplikace  jsou v souladu s následujícími záměry:
 
 Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace se nacházíte na stránce záměry  v části **sestavení** . Vyberte **Create new intent** (Vytvořit nový záměr).
+1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Create new intent** (Vytvořit nový záměr).
 
    [![Tlačítko pro výběr vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Zadejte název `FindForm`záměru a potom vyberte Hotovo .
+1. Zadejte název `FindForm`záměru a potom vyberte **Hotovo**.
 
    ![Zadejte název záměru pro FindForm.](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
@@ -124,7 +124,7 @@ Záměr **none** není záložním záměrem a neměl by být ponechán prázdn�
 
 Příklad projevy záměru **none** by měl být mimo vaši doménu klientské aplikace.
 
-1. V  nabídce vlevo vyberte záměry a pak v seznamu záměry vyberte **žádné** .
+1. V nabídce vlevo vyberte **záměry** a pak v seznamu záměry vyberte **žádné** .
 
 1. Do záměru přidejte následující příklad projevy:
 
@@ -142,7 +142,7 @@ V nabídce v pravém horním rohu vyberte možnost **vlak** , aby se projevily z
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulární výraz v příkladu projevy
 
-1. Ověřte, že se entita nachází v **FindForm** záměru tím  , že v nabídce vlevo vyberete záměry. Pak vyberte **FindForm** záměr.
+1. Ověřte, že se entita nachází v **FindForm** záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
 
    Entita je označena tak, jak se zobrazuje v příkladu projevy. Chcete-li zobrazit původní text místo názvu entity, přepínejte **zobrazení entit** z panelu nástrojů.
 

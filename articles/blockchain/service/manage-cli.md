@@ -1,6 +1,6 @@
 ---
-title: Správa služby Azure Blockchain s použitím rozhraní příkazového řádku Azure
-description: Jak vytvořit a spravovat službu Azure Blockchain v Azure CLI
+title: Správa služby Azure blockchain pomocí Azure CLI
+description: Jak vytvořit a spravovat službu Azure blockchain pomocí Azure CLI
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,24 +10,24 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: d078ca181b2eed4b80d4f12f1c03b42f4e242194
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154440"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240972"
 ---
-# <a name="manage-azure-blockchain-service-with-azure-cli"></a>Správa služby Azure Blockchain pomocí Azure CLI
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
 
-Kromě webu Azure portal můžete použít rozhraní příkazového řádku Azure k rychlému vytváření a správě blockchain členy a transakce uzly pro vaši službu Azure Blockchain.
+Kromě Azure Portal můžete použít rozhraní příkazového řádku Azure ke správě členů blockchain a uzlů transakcí pro službu Azure blockchain.
 
-Ujistěte se, že máte nainstalovanou nejnovější verzi [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a jste přihlášení k účtu Azure pomocí `az login`.
+Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlásili jste se k `az login`účtu Azure v nástroji.
 
-V následujících příkladech nahraďte příklad `<parameter names>` vlastními hodnotami.
+V následujících příkladech nahraďte příklady `<parameter names>` vlastními hodnotami.
 
 ## <a name="create-blockchain-member"></a>Vytvořit člena blockchain
 
-Příklad vytvoří ve službě Azure Blockchain Service, na kterém běží hlavní knihy protokol kvora v nové consortium blockchain člena.
+Příklad vytvoří člena blockchain ve službě Azure blockchain, která spouští protokol hlavní knihy kvora v nové konsorcium.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
@@ -35,35 +35,34 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Název skupiny prostředků, ve kterém jsou vytvořeny prostředky služeb Azure Blockchain. |
-| **name** | Jedinečný název, který identifikuje vaši službu Azure Blockchain blockchain člena. Název se používá pro adresu veřejný koncový bod. Například, `myblockchainmember.blockchain.azure.com`. |
-| **location** | Oblasti Azure, ve kterém je vytvořena blockchain člena. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
-| **Heslo** | Heslo účtu člena. Člen heslo účtu se používá k ověření na člen blockchain veřejný koncový bod pomocí základního ověřování. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolumn(;)|
-| **Protokol** | Ve verzi Public preview podporuje kvora. |
-| **consortium** | Název consortium připojit nebo vytvořit. |
-| **consortiumManagementAccountPassword** | Heslo pro správu consortium. Heslo se používá pro připojení k konsorcium. |
-| **RuleName** | Název pravidla pro rozsah IP adres na seznam povolených. Volitelný parametr pro pravidla brány firewall.|
-| **startIpAddress** | Počáteční rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall. |
-| **endIpAddress** | Koncový rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall. |
-| **skuName** | Typ vrstvy. Použijte S0 Standard a B0 Basic. |
+| **resource-group** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
+| **name** | Jedinečný název, který identifikuje svého člena blockchain služby Azure blockchain. Název se používá pro adresu veřejného koncového bodu. Například, `myblockchainmember.blockchain.azure.com`. |
+| **location** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
+| **Heslo** | Heslo k členskému účtu. Heslo pro členský účet se používá k ověření veřejného koncového bodu člena blockchain pomocí základního ověřování. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak, který není číslo znaku (#), procenta (%), čárka (,), hvězdička (*), návratová uvozovka. (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a semicolumn (;)|
+| **protokol** | Verze Public Preview podporuje kvorum. |
+| **consortium** | Název konsorcia, která se má připojit nebo vytvořit |
+| **consortiumManagementAccountPassword** | Heslo pro správu konsorcia. Heslo se používá pro připojení k konsorciu. |
+| **ruleName** | Název pravidla povoleného rozsahu IP adres. Volitelný parametr pro pravidla brány firewall.|
+| **startIpAddress** | Začátek rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall. |
+| **endIpAddress** | Konec rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall. |
+| **skuName** | Typ vrstvy Pro Basic použijte S0 for Standard a B0. |
 
-## <a name="change-blockchain-member-password"></a>Změna hesla člen blockchain
+## <a name="change-blockchain-member-password"></a>Změnit heslo člena blockchain
 
-Příklad změní heslo blockchain člena.
+Příklad změní heslo člena blockchain.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.password="<myStrongPassword>" --remove properties.consortiumManagementAccountAddress
 ```
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Název skupiny prostředků, ve kterém jsou vytvořeny prostředky služeb Azure Blockchain. |
-| **name** | Název, který identifikuje vaši službu Azure Blockchain člena. |
-| **Heslo** | Heslo účtu člena. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolon(;). |
-
+| **resource-group** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
+| **name** | Název, který identifikuje člena služby Azure blockchain. |
+| **Heslo** | Heslo k členskému účtu. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak, který není číslo znaku (#), procenta (%), čárka (,), hvězdička (*), návratová uvozovka. (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;). |
 
 ## <a name="create-transaction-node"></a>Vytvořit uzel transakce
 
-Vytvořte transakci uzel do existujícího člena blockchain. Přidáním uzlů transakce můžete zvýšit zabezpečení, izolace a distribuci zatížení. Například můžete mít koncový bod transakce uzel pro různé klientské aplikace.
+Vytvoří uzel transakce v existujícím členu blockchain. Přidáním uzlů transakce můžete zvýšit izolaci zabezpečení a distribuovat zatížení. Například můžete mít koncový bod uzlu transakce pro různé klientské aplikace.
 
 ```azurecli
 az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
@@ -71,17 +70,17 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Název skupiny prostředků, ve kterém jsou vytvořeny prostředky služeb Azure Blockchain. |
-| **name** | Název člena blockchain služba Blockchain v Azure, která zahrnuje i nový název uzlu transakce. |
-| **location** | Oblasti Azure, ve kterém je vytvořena blockchain člena. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
-| **Heslo** | Uzel heslo transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolon(;). |
-| **RuleName** | Název pravidla pro rozsah IP adres na seznam povolených. Volitelný parametr pro pravidla brány firewall. |
-| **startIpAddress** | Počáteční rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall. |
-| **endIpAddress** | Koncový rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall.|
+| **resource-group** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
+| **location** | Oblast Azure, ve které je vytvořen člen blockchain. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure. |
+| **Heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak, který není číslo znaku (#), procenta (%), čárka (,), hvězdička (*), návratová uvozovka. (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;). |
+| **ruleName** | Název pravidla povoleného rozsahu IP adres. Volitelný parametr pro pravidla brány firewall. |
+| **startIpAddress** | Začátek rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall. |
+| **endIpAddress** | Konec rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall.|
 
-## <a name="change-transaction-node-password"></a>Změna hesla uzel transakce
+## <a name="change-transaction-node-password"></a>Změnit heslo uzlu transakce
 
-Příklad změní heslo uzel transakce.
+Příklad změní heslo uzlu transakce.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --set properties.password="<myStrongPassword>"
@@ -89,13 +88,13 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena blockchain služba Blockchain v Azure, která zahrnuje i nový název uzlu transakce. |
-| **Heslo** | Uzel heslo transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolon(;). |
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
+| **Heslo** | Heslo uzlu transakce. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak, který není číslo znaku (#), procenta (%), čárka (,), hvězdička (*), návratová uvozovka. (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;). |
 
-## <a name="change-consortium-management-account-password"></a>Heslo účtu consortium správy změn
+## <a name="change-consortium-management-account-password"></a>Změnit heslo účtu správy konsorcia
 
-Účet správy consortium se používá pro správu členství consortium. Každý člen je jedinečně identifikovaný účet správy consortium a můžete změnit heslo tohoto účtu pomocí následujícího příkazu.
+Účet správy konsorcia se používá pro správu členství v konsorciu. Každý člen je jednoznačně identifikovaný účtem správy konsorcia a heslo tohoto účtu můžete změnit pomocí následujícího příkazu.
 
 ```azurecli
 az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.consortiumManagementAccountPassword="<myConsortiumManagementAccountPassword>" --remove properties.consortiumManagementAccountAddress
@@ -103,9 +102,9 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Název skupiny prostředků, ve kterém jsou vytvořeny prostředky služeb Azure Blockchain. |
-| **name** | Název, který identifikuje vaši službu Azure Blockchain člena. |
-| **consortiumManagementAccountPassword** | Heslo účtu správy consortium. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí od 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslici a 1 speciální znak, který ne číslo znaku, procentech (%), čárkou (,), star(*), zadní uvozovky (\`), dvojité quote("), jeden uvozovky ('), pomlčky a semicolon(;). |
+| **resource-group** | Název skupiny prostředků, kde se vytvářejí prostředky služby Azure blockchain. |
+| **name** | Název, který identifikuje člena služby Azure blockchain. |
+| **consortiumManagementAccountPassword** | Heslo účtu správy konsorcia. Heslo musí splňovat tři z následujících čtyř požadavků: délka musí být v rozmezí 12 & 72 znaků, 1 malé písmeno, 1 velké písmeno, 1 číslice a 1 speciální znak, který není číslo znaku (#), procenta (%), čárka (,), hvězdička (*), návratová uvozovka. (\`), dvojité uvozovky ("), jednoduché uvozovky ('), pomlčky (-) a středník (;). |
   
 ## <a name="update-firewall-rules"></a>Aktualizovat pravidla brány firewall
 
@@ -115,15 +114,15 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena blockchain služba Blockchain v Azure. |
-| **RuleName** | Název pravidla pro rozsah IP adres na seznam povolených. Volitelný parametr pro pravidla brány firewall.|
-| **startIpAddress** | Počáteční rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall.|
-| **endIpAddress** | Koncový rozsah IP adres pro přidávání na seznam povolených. Volitelný parametr pro pravidla brány firewall.|
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain. |
+| **ruleName** | Název pravidla povoleného rozsahu IP adres. Volitelný parametr pro pravidla brány firewall.|
+| **startIpAddress** | Začátek rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall.|
+| **endIpAddress** | Konec rozsahu IP adres pro seznam povolených. Volitelný parametr pro pravidla brány firewall.|
 
-## <a name="list-api-keys"></a>Klíče rozhraní API seznamu
+## <a name="list-api-keys"></a>Vypsat klíče rozhraní API
 
-Klíče rozhraní API můžete použít pro přístup k uzlu, podobně jako uživatelské jméno a heslo. Existují dva klíče rozhraní API pro podporu obměny klíče. Použijte následující příkaz pro výpis klíčů rozhraní API.
+Klíče rozhraní API je možné použít pro přístup k uzlům podobně jako uživatelské jméno a heslo. K dispozici jsou dva klíče rozhraní API pro podporu rotace klíče. K výpisu klíčů rozhraní API použijte následující příkaz.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "listApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers
@@ -131,12 +130,12 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena blockchain služba Blockchain v Azure, která zahrnuje i nový název uzlu transakce. |
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
 
 ## <a name="regenerate-api-keys"></a>Znovu vygenerovat klíče rozhraní API
 
-Použijte následující příkaz se znovu vygenerovat klíče rozhraní API.
+K opětovnému vygenerování klíčů rozhraní API použijte následující příkaz.
 
 ```azurecli
 az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "regenerateApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers --request-body '{"keyName":"<keyValue>"}'
@@ -145,13 +144,13 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena blockchain služba Blockchain v Azure, která zahrnuje i nový název uzlu transakce. |
-| **keyName** | Nahraďte \<párů klíč-hodnota\> s key1 a key2. |
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu. |
+| **keyName** | Nahraďte \<hodnotu\> key2 buď klíč1 nebo. |
 
-## <a name="delete-a-transaction-node"></a>Odstranit uzel transakce
+## <a name="delete-a-transaction-node"></a>Odstraní uzel transakce.
 
-Příklad odstraní uzel blockchain člen transakce.
+Příklad odstraní uzel transakcí členů blockchain.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -159,12 +158,12 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName>/tran
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena blockchain služba Blockchain v Azure, která zahrnuje i nový název uzlu transakce má být odstraněn. |
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název členu blockchain služby Azure blockchain, který obsahuje také název nového transakčního uzlu, který se má odstranit. |
 
-## <a name="delete-a-blockchain-member"></a>Odstraní člena blockchain
+## <a name="delete-a-blockchain-member"></a>Odstranění člena blockchain
 
-Příklad odstraní blockchain člena.
+Příklad odstraní člen blockchain.
 
 ```azurecli
 az resource delete --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers
@@ -172,8 +171,8 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName> --re
 
 | Parametr | Popis |
 |---------|-------------|
-| **resource-group** | Pokud existují prostředky služeb Azure Blockchain název skupiny prostředků. |
-| **name** | Název člena služba Blockchain v Azure blockchain odstranit. |
+| **resource-group** | Název skupiny prostředků, ve které existují prostředky služby Azure blockchain. |
+| **name** | Název člena blockchain služby Azure blockchain, který se má odstranit |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -185,13 +184,13 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 
 | Parametr | Popis |
 |---------|-------------|
-| **Role** | Název role Azure AD. |
-| **assignee** | Azure AD ID uživatele. Například `user@contoso.com`. |
-| **Obor** | Rozsah přiřazení role. Můžete být členem blockchain transakce uzlu. |
+| **role** | Název role Azure AD. |
+| **assignee** | ID uživatele Azure AD. Například `user@contoso.com`. |
+| **oboru** | Rozsah přiřazení role Může být buď blockchain člen uzlu transakce. |
 
 **Příklad:**
 
-Udělit přístup k uzlu pro uživatele Azure AD pro blockchain **člen**:
+Udělit přístup k uzlu pro uživatele Azure AD k blockchain **členu**:
 
 ```azurecli
 az role assignment create \
@@ -202,7 +201,7 @@ az role assignment create \
 
 **Příklad:**
 
-Udělit přístup k uzlu pro uživatele Azure AD pro blockchain **transakce uzel**:
+Udělit přístup k uzlu pro uživatele Azure AD na **uzel blockchain transakce**:
 
 ```azurecli
 az role assignment create \
@@ -211,20 +210,20 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
-### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Udělit přístup k uzlu pro Azure AD skupinu nebo aplikaci role
+### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Udělení přístupu k uzlu pro roli skupiny nebo aplikace Azure AD
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id>
 ```
 | Parametr | Popis |
 |---------|-------------|
-| **Role** | Název role Azure AD. |
-| **assignee-object-id** | ID skupiny Azure AD nebo aplikací ID. |
-| **Obor** | Rozsah přiřazení role. Můžete být členem blockchain transakce uzlu. |
+| **role** | Název role Azure AD. |
+| **assignee-object-id** | ID skupiny nebo ID aplikace služby Azure AD. |
+| **oboru** | Rozsah přiřazení role Může být buď blockchain člen uzlu transakce. |
 
 **Příklad:**
 
-Udělit přístup k uzlu pro **aplikační role**
+Udělení přístupu k uzlu pro **roli aplikace**
 
 ```azurecli
 az role assignment create \
@@ -233,7 +232,7 @@ az role assignment create \
   --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-### <a name="remove-azure-ad-node-access"></a>Odebrat přístup k uzlu služby Azure AD
+### <a name="remove-azure-ad-node-access"></a>Odebrat přístup k uzlu Azure AD
 
 ```azurecli
 az role assignment delete --role <myRole> --assignee <assignee> --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
@@ -241,11 +240,11 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 
 | Parametr | Popis |
 |---------|-------------|
-| **Role** | Název role Azure AD. |
-| **assignee** | Azure AD ID uživatele. Například `user@contoso.com`. |
-| **Obor** | Rozsah přiřazení role. Můžete být členem blockchain transakce uzlu. |
+| **role** | Název role Azure AD. |
+| **assignee** | ID uživatele Azure AD. Například `user@contoso.com`. |
+| **oboru** | Rozsah přiřazení role Může být buď blockchain člen uzlu transakce. |
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Konfigurace uzlů transakce služba Blockchain v Azure pomocí webu Azure portal](configure-transaction-nodes.md)
+> [Nakonfigurujte uzly transakcí služby Azure blockchain pomocí Azure Portal](configure-transaction-nodes.md)

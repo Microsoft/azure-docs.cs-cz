@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: f303e6ba30b8b68f1bed4c5bcacd746932cbe156
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873813"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279932"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Volba správného nasazení v Azure SQL
 
@@ -33,7 +33,7 @@ Jednou z nejdůležitějších věcí, které je potřeba chápat, pokud se poro
 
 Jak je vidět v diagramu, jednotlivé nabídky je možné charakterizovat podle úrovně správy, kterou máte v infrastruktuře, a podle stupně efektivity nákladů.
 
-V Azure můžete mít vaše SQL Server úlohy spuštěné jako hostovanou službu ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) nebo hostovanou infrastrukturu ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). V rámci PaaS máte v rámci každé možnosti nasazení více možností nasazení a úrovní služeb. Klíčovou otázkou, kterou potřebujete klást při rozhodování mezi PaaS nebo IaaS, chcete spravovat svou databázi, použít opravy, provést zálohování nebo chcete tyto operace delegovat na Azure?
+V Azure můžete mít vaše SQL Server úlohy spuštěné jako hostovanou službu ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) nebo hostovanou infrastrukturu ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). V rámci PaaS máte v rámci každé možnosti nasazení více možností nasazení a úrovní služeb. Klíčovou otázkou, kterou potřebujete klást při rozhodování mezi PaaS nebo IaaS, chcete spravovat svou databázi, použít opravy a provádět zálohy, nebo chcete tyto operace delegovat na Azure?
 
 V závislosti na odpovědi máte následující možnosti:
 

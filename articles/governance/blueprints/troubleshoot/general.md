@@ -7,12 +7,12 @@ ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 8cbefcbadc14c1249d2783f1539e40c99c3be66c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231561"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257177"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -26,7 +26,7 @@ Mnohé chyby budou výsledkem přiřazení podrobného plánu k oboru. Pokud př
 
 1. Na stránce vlevo vyberte **přiřazené plány** a pomocí vyhledávacího pole vyfiltrujte přiřazení podrobného plánu, abyste našli neúspěšné přiřazení. Můžete také seřadit tabulku přiřazení podle sloupce **stav zřizování** a zobrazit tak všechna neúspěšná přiřazení seskupená dohromady.
 
-1. Klikněte levým tlačítkem na podrobný plán s neúspěšným stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
+1. Klikněte levým tlačítkem na podrobný plán s _neúspěšným_ stavem nebo klikněte pravým tlačítkem a vyberte **Zobrazit podrobnosti o přiřazení**.
 
 1. Červená zpráva s upozorněním, že přiřazení se nezdařilo, je v horní části stránky přiřazení podrobného plánu. Kliknutím kamkoli na informační proužek získáte další podrobnosti.
 
@@ -63,7 +63,7 @@ Předání parametru podrobného plánu, který používá funkci, jako `[resour
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu `[[resourceGroup().tags.myTag]`vypadal. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [struktura souborů šablony – syntaxe](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
+Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu `[[resourceGroup().tags.myTag]`vypadal. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Další postup
 

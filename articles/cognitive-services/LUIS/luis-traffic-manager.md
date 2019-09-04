@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650541"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256606"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
 Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Snímek obrazovky Azure Portalu se dva klíče LUIS ve skupině prostředků luis. traffic Manageru](./media/traffic-manager/luis-keys.png)
 
-2. Na webu [Luis][LUIS] v části **Spravovat** na stránce **klíče a koncové body** přiřaďte klíče k aplikaci a znovu publikujte aplikaci výběrem tlačítka **publikovat** v pravé horní nabídce. 
+2. Na webu [Luis][LUIS] v části **Spravovat** na stránce **prostředky Azure** přiřaďte klíče k aplikaci a znovu publikujte aplikaci, a to tak, že v pravé horní nabídce kliknete na tlačítko **publikovat** . 
 
     Příklad adresy URL v **koncový bod** sloupec používá požadavek GET s klíče koncového bodu jako parametr dotazu. Zkopírování adresy URL koncových bodů dvě nové klíče. Používají se jako součást konfigurace Traffic Manageru dále v tomto článku.
 

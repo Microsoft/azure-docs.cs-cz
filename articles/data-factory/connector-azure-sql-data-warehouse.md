@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bfb094994bcc6f41044a08aab6eb0155967638e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231427"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275860"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -30,7 +30,7 @@ Tento článek popisuje, jak kopírovat data do a z Azure SQL Data Warehouse. Da
 
 Tento konektor Azure Blob Connector se podporuje pro následující činnosti:
 
-- [Aktivita kopírování](copy-activity-overview.md) s podporovanou tabulkou [matice zdroje/jímky](copy-activity-overview.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou tabulkou matice zdroje/jímky](copy-activity-overview.md)
 - [Mapování toku dat](concepts-data-flow-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
@@ -190,7 +190,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 
 1. **[Zřízení správce Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro váš server Azure SQL na portálu Azure portal, pokud jste tak již neučinili. Správce Azure AD může být skupina Azure AD nebo uživatel Azure AD. Pokud skupině udělíte roli správce spravovanou identitou, přeskočte kroky 3 a 4. Správce bude mít plný přístup k databázi.
 
-2. **[Vytvořte uživatele databáze](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** s omezením pro Data Factory spravovanou identitu. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
+2. **[Vytvořte uživatele databáze s omezením](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** pro Data Factory spravovanou identitu. Připojení k datovému skladu z nebo na který se má ke kopírování dat pomocí nástrojů, jako je SSMS, identity Azure AD, který má alespoň oprávnění ALTER ANY uživatele. Spusťte následující příkaz T-SQL. 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
@@ -234,7 +234,9 @@ Chcete-li kopírovat data z nebo do Azure SQL Data Warehouse, jsou podporovány 
 | Vlastnost  | Popis                                                  | Požaduje se                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | **Typ** musí být nastavena vlastnost datové sady **AzureSqlDWTable**. | Ano                         |
-| tableName | Název tabulky nebo zobrazení v instanci Azure SQL Data Warehouse, která odkazuje propojenou službu. | Ne pro zdroj, Ano pro jímku |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a. `table` | Ne pro zdroj, Ano pro jímku |
 
 #### <a name="dataset-properties-example"></a>Příklad vlastnosti datové sady
 
@@ -250,7 +252,8 @@ Chcete-li kopírovat data z nebo do Azure SQL Data Warehouse, jsou podporovány 
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -429,7 +432,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
     >[!IMPORTANT]
     >Pokud je vaše Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si, [Jaký je dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z oddílu [ověřování identity spravovaného pomocí objektů BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a v části [ověřování identity spravované Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 
-2. **Zdrojový formát dat** je **Parquet**, **ORC**nebo text s **oddělovači**, s následujícími konfiguracemi:
+2. **Zdrojový formát dat** je **Parquet**, **ORC**nebo **text s oddělovači**, s následujícími konfiguracemi:
 
    1. Cesta ke složce neobsahuje filtr zástupných znaků.
    2. Název souboru je prázdný nebo odkazuje na jeden soubor. Pokud v aktivitě kopírování zadáte název souboru se zástupnými znaky `*` , `*.*`může to být pouze nebo.

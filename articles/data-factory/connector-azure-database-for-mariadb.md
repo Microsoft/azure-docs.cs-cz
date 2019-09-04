@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3325cb7170ebe42962c403d25d04c9fe2bae3b45
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966564"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276033"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopírování dat z Azure Database for MariaDB pomocí Azure Data Factory 
 
@@ -41,7 +41,7 @@ Pro Azure Database for MariaDB propojenou službu jsou podporovány následujíc
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **MariaDB** | Ano |
+| type | Vlastnost Type musí být nastavená na: **AzureMariaDB** | Ano |
 | connectionString | Připojovací řetězec pro připojení k Azure Database for MariaDB. Můžete ji najít z Azure Portal > připojovacích řetězců Azure Database for MariaDB-> – > ADO.NET 1. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a načíst `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
@@ -51,7 +51,7 @@ Pro Azure Database for MariaDB propojenou službu jsou podporovány následujíc
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
@@ -72,7 +72,7 @@ Pro Azure Database for MariaDB propojenou službu jsou podporovány následujíc
 {
     "name": "AzureDatabaseForMariaDBLinkedService",
     "properties": {
-        "type": "MariaDB",
+        "type": "AzureMariaDB",
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
@@ -99,12 +99,12 @@ Pro Azure Database for MariaDB propojenou službu jsou podporovány následujíc
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou Azure Database for MariaDB DataSet.
 
-Chcete-li kopírovat data z Azure Database for MariaDB, nastavte vlastnost Type datové sady na **MariaDBTable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Azure Database for MariaDB, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **MariaDBTable** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
+| type | Vlastnost Type datové sady musí být nastavená na: **AzureMariaDBTable** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -112,12 +112,13 @@ Chcete-li kopírovat data z Azure Database for MariaDB, nastavte vlastnost Type 
 {
     "name": "AzureDatabaseForMariaDBDataset",
     "properties": {
-        "type": "MariaDBTable",
+        "type": "AzureMariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Database for MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -128,11 +129,11 @@ Chcete-li kopírovat data z Azure Database for MariaDB, nastavte vlastnost Type 
 
 ### <a name="azure-database-for-mariadb-as-source"></a>Azure Database for MariaDB jako zdroj
 
-Chcete-li kopírovat data z Azure Database for MariaDB, nastavte typ zdroje v aktivitě kopírování na **MariaDBSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z Azure Database for MariaDB, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MariaDBSource** | Ano |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureMariaDBSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -156,7 +157,7 @@ Chcete-li kopírovat data z Azure Database for MariaDB, nastavte typ zdroje v ak
         ],
         "typeProperties": {
             "source": {
-                "type": "MariaDBSource",
+                "type": "AzureMariaDBSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {

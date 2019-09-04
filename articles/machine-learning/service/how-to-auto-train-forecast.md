@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848169"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278185"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -199,4 +199,4 @@ Zopakováním potřebných kroků načtěte tato budoucí data do datového rám
 ## <a name="next-steps"></a>Další postup
 
 * V tomto [kurzu](tutorial-auto-train-models.md) se naučíte vytvářet experimenty pomocí automatizovaného strojového učení.
-* Podívejte se na referenční dokumentaci k [sadě Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) .
+* Podívejte se na referenční dokumentaci k [sadě Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .

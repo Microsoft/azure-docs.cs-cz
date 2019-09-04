@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/08/2019
-ms.openlocfilehash: 8851a4dfb7deafab7ad77ef80619dd49ca46ed71
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 08/16/2019
+ms.openlocfilehash: c2f7575dca5432d90bf421afa5a39a4a4cd79744
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947848"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983044"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scénář: BindException – adresa se už používá ve službě Azure HDInsight.
 
@@ -31,30 +31,30 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Příčina
 
-Restartování serverů oblastí HBA během náročné aktivity úlohy. Níže najdete informace o tom, co se stane na pozadí, když uživatel zahájí operaci restartování na adaptérech HBA serveru oblasti z uživatelského rozhraní Ambari:
+Restartování serverů oblastí Apache HBA během náročné aktivity úlohy. Níže najdete informace o tom, co se stane na pozadí, když uživatel zahájí operaci restartování na Hbach serveru oblasti z uživatelského rozhraní Apache Ambari:
 
 1. Agent Ambari odešle požadavek na zastavení na server oblasti.
 
-1. Agent Ambari počká, až 30 sekund, aby server oblasti mohl řádně vypnout.
+1. Agent Ambari počká 30 sekund, aby se server oblasti mohl řádně vypnout.
 
-1. Pokud se aplikace i nadále připojuje k serveru oblastí, nebude okamžitě ukončena a platnost časového limitu 30 sekund vyprší dřív.
+1. Pokud se vaše aplikace nadále připojuje k serveru oblastí, server se nevypne hned. Časový limit 30 sekund vyprší, než dojde k vypnutí.
 
-1. Po vypršení platnosti 30 sekund agent Ambari odešle vynucené dezaktivační (kill-9) na server oblasti.
+1. Po 30 sekundách pošle agent Ambari na server oblasti příkaz Force-`kill -9`Kill ().
 
 1. Z důvodu tohoto náhlého vypnutí se i když proces serveru oblasti ukončí, port přidružený k procesu se nemusí uvolnit, což nakonec vede k `AddressBindException`tomu.
 
 ## <a name="resolution"></a>Řešení
 
-Před zahájením restartování snižte zatížení serverů oblastí HBA.
+Před zahájením restartování snižte zatížení serverů oblastí HBA. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční informace o tom, jak vyprázdnit tabulky [, najdete v tématu HDInsight HBA: Jak vylepšit dobu restartování clusteru Apache HBA vyprázdněním tabulek](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Případně můžete zkusit ručně restartovat servery oblastí na pracovních uzlech pomocí následujících příkazů:
+Případně se pokuste ručně restartovat servery oblastí na pracovních uzlech pomocí následujících příkazů:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh start regionserver"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

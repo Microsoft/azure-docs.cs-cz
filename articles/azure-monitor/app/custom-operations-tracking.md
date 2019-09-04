@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498353"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276848"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -318,7 +318,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     {
         // Update status code and success as appropriate.
         telemetry.Stop();
-        telemetryClient.Track(telemetry);
+        telemetryClient.TrackDependency(telemetry);
     }
 
     return null;
@@ -492,10 +492,10 @@ Aktivity jsou občany první třídy v Application Insights a Automatická závi
 
 Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Activity` – při `StartOperation` volání funkce se vytvoří aktivita pod ní. `StartOperation`je doporučeným způsobem, jak ručně sledovat telemetrií požadavků nebo závislostí, a zajistit, aby vše bylo korelujé.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Seznamte se se základy [korelace telemetrie](correlation.md) v Application Insights.
-- Seznamte [](../../azure-monitor/app/data-model.md) se s datovým modelem pro Application Insights typy a datový model.
+- Seznamte se s [datovým modelem](../../azure-monitor/app/data-model.md) pro Application Insights typy a datový model.
 - Vykázat vlastní [události a metriky](../../azure-monitor/app/api-custom-events-metrics.md) na Application Insights.
 - Podívejte se na standardní [konfiguraci](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) pro kolekci vlastností kontextu.
 - Podívejte se na [uživatelskou příručku System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde zjistíte, jak korelace telemetrie.

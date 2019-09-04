@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: b08ce504e96d09b7406f3d8fb1b2afc2c1925e90
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164151"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241073"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -173,7 +173,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Operace upgradu a škálování v clusteru nebo ve fondu uzlů se vzájemně vylučují. Cluster ani fond uzlů nemůžete současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. Další informace najdete v našem [Průvodci odstraňováním potíží](https://aka.ms/aks-pending-upgrade).
 
-Pokud byl cluster AKS vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro počáteční fond uzlů. K dispozici jsou různé příkazy pro upgrade verze Kubernetes roviny ovládacího prvku a fondu uzlů. Příkaz se používá k upgradu roviny ovládacího prvku, `az aks nodepool upgrade` zatímco se používá k upgradu samostatného fondu uzlů. `az aks upgrade`
+Pokud byl cluster AKS vytvořen v prvním kroku, `--kubernetes-version` byl zadán parametr *1.13.10* . Tím se nastaví verze Kubernetes pro rovinu ovládacího prvku i pro počáteční fond uzlů. K dispozici jsou různé příkazy pro upgrade verze Kubernetes roviny ovládacího prvku a fondu uzlů, které jsou vysvětleny [níže](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Verze bitové kopie operačního systému fondu uzlů je svázána s verzí Kubernetes clusteru. Po upgradu clusteru budete dostávat jenom upgrady imagí operačního systému.
@@ -190,7 +190,7 @@ az aks nodepool upgrade \
 ```
 
 > [!Tip]
-> Chcete-li upgradovat rovinu ovládacího prvku `az aks upgrade -k 1.14.6`na *1.14.6*, spusťte.
+> Chcete-li upgradovat rovinu ovládacího prvku `az aks upgrade -k 1.14.6`na *1.14.6*, spusťte. Přečtěte si další informace o [upgradech řídicí roviny s více fondy uzlů](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Seznam stavů fondů uzlů znovu vypište pomocí příkazu [AZ AKS Node Pool list][az-aks-nodepool-list] . Následující příklad ukazuje, že *mynodepool* je ve stavu *upgradu* na *1.13.10*:
 
@@ -229,14 +229,32 @@ Upgrade uzlů na zadanou verzi trvá několik minut.
 
 V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v clusteru AKS na stejnou verzi Kubernetes. Možnost upgradovat fondy jednotlivých uzlů vám umožní provést postupný upgrade a naplánovat mezi fondy uzlů, aby se zachovala doba provozu aplikace v rámci výše zmíněných omezení.
 
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade řídicí plochy clusteru s více fondy uzlů
+
 > [!NOTE]
 > Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny i počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku, ale platí následující omezení:
 > 
 > * Verze fondu uzlů musí mít stejnou hlavní verzi jako rovina ovládacího prvku.
 > * Verze fondu uzlů může být jedna podverze nižší než verze řídicí roviny.
 > * Verze fondu uzlů může být libovolná verze opravy, pokud jsou dodržena jiná dvě omezení.
-> 
-> Chcete-li upgradovat verzi Kubernetes řídicí plochy, použijte `az aks upgrade`. Pokud má cluster pouze jeden fond uzlů, `az aks upgrade` příkaz bude také upgradovat verzi Kubernetes fondu uzlů.
+
+Cluster AKS má dva objekty prostředků clusteru. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů a každá z nich má svou vlastní verzi Kubernetes. Chování operace upgradu závisí na tom, který prostředek je zaměřen a jaká verze základního rozhraní API je volána.
+
+1. Upgrade roviny ovládacího prvku vyžaduje použití`az aks upgrade`
+   * Pokud má cluster jeden fond agentů, bude upgradována jak rovina ovládacího prvku, tak i jeden fond agentů.
+   * Pokud má cluster více fondů agentů, bude upgradována pouze řídicí plocha.
+1. Upgrade pomocí`az aks nodepool upgrade`
+   * Tím se upgraduje jenom cílový fond uzlů s určenou verzí Kubernetes.
+
+Vztah mezi verzemi Kubernetes uchovávanými fondy uzlů musí také následovat po sadě pravidel.
+
+1. Nelze downgradovat buď plochu ovládacího prvku, nebo Kubernetes verzi fondu uzlů.
+1. Pokud není zadána verze Kubernetes roviny ovládacího prvku, výchozí hodnota bude aktuální existující verze roviny ovládacího prvku.
+1. Pokud není zadána verze Kubernetes fondu uzlů, výchozí hodnota bude verze řídicí plochy.
+1. Můžete buď upgradovat, nebo škálovat úroveň ovládacího prvku nebo fondu uzlů v daném čase, nelze odeslat obě operace současně.
+1. Verze Kubernetes fondu uzlů musí být stejná hlavní verze jako plocha ovládacího prvku.
+1. Verze Kubernetes fondu uzlů může být nejvýše dvě (2) menší verze menší než Řídicí rovina, nikdy větší.
+1. Fond uzlů může být libovolná verze opravy Kubernetes, která je menší nebo rovna rovině ovládacího prvku, nikdy větší.
 
 ## <a name="scale-a-node-pool-manually"></a>Ruční škálování fondu uzlů
 
@@ -412,7 +430,7 @@ Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je mo
 
 Další informace o použití pokročilých Kubernetes naplánovaných funkcí najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][taints-tolerations] .
 
-V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu [kubectl chuti uzel][kubectl-taint] . Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost neplánovat:
+V tomto příkladu aplikujte na uzel založený na GPU pomocí příkazu [kubectl chuti uzel][kubectl-taint] . Z výstupu předchozího `kubectl get nodes` příkazu zadejte název uzlu založeného na GPU. Chuti se použije jako *klíč: hodnota* a pak možnost plánování. Následující příklad používá dvojici *SKU = GPU* a definuje lusky, jinak mají možnost *neplánovat* :
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -603,7 +621,7 @@ Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pom
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak vytvořit a spravovat více fondů uzlů v clusteru AKS. Další informace o tom, jak ovládat lusky napříč fondy uzlů, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 

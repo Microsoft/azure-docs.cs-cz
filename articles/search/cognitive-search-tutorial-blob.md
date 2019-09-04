@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186265"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274112"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Kurz: Přidání struktury do "nestrukturovaného obsahu" pomocí hledání rozpoznávání
 
@@ -22,10 +22,10 @@ Pokud máte nestrukturované textové nebo obrázkové obsahy, funkce pro [vyhle
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, MD, DOCX a PPTX v úložišti objektů BLOB v Azure.
-> * Vytvoření kanálu, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
+> * Definujte kanál, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
 > * Definujte index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
-> * Spusťte kanál pro vytvoření a načtení indexu.
-> * Prozkoumejte obsah pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
+> * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
+> * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
 
 K provedení tohoto postupu budete potřebovat několik služeb, a to včetně [aplikace po pracovní ploše](https://www.getpostman.com/) nebo jiného nástroje pro testování webu, aby se REST API volání. 
 
@@ -43,7 +43,7 @@ Tento návod používá Azure Search pro indexování a dotazy, Cognitive Servic
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
 
 1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
@@ -99,7 +99,7 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-search"></a>Získat klíč rozhraní API pro správu a adresu URL pro Azure Search
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
 
 2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
@@ -490,7 +490,7 @@ Pokud chcete dokumenty znovu indexovat s novými definicemi:
 2. Upravit objekty.
 3. Znovu vytvořte službu pro spuštění kanálu. 
 
-Portál můžete použít k odstranění indexů, indexerů a dovednosti nebo k zadání adresy URL pro každý objekt. Následující příkaz odstraní indexer.
+Portál **můžete použít k** odstranění indexů, indexerů a dovednosti nebo k zadání adresy URL pro každý objekt. Následující příkaz odstraní indexer.
 
 ```http
 DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06

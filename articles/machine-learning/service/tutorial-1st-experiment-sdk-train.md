@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231101"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241294"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: Výuka prvního modelu ML
 
@@ -47,25 +47,21 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku `tutorial
 
 1. Na webové stránce poznámkového bloku Jupyter vyberte hlavní název_složky, který má vaše uživatelské jméno.  
 
-
    Tato složka existuje v [účtu úložiště](concept-workspace.md#resources) pracovního prostoru, nikoli na samotném virtuálním počítači poznámkového bloku.  Pokud odstraníte virtuální počítač poznámkového bloku, pořád budete mít veškerou práci.  Když později vytvoříte nový virtuální počítač s poznámkovým blokem, načte se tato složka. Pokud svůj pracovní prostor sdílíte s ostatními, uvidí vaši složku a zobrazí se jejich.
 
-1. `samples-*` Otevřete podadresář a pak otevřete Poznámkový blok Jupyter.`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Ujistěte se, že `tutorial-1st-experiment-sdk-train.ipynb` soubor otevřete , nikoli `.yml` soubor > stejným názvem. 
-
-1. Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  Pokud chcete spustit kód, přepněte se do poznámkového bloku hned.
-
+1. Otevřete podadresář a pak `tutorials/tutorial-1st-experiment-sdk-train.ipynb`otevřete Poznámkový blok Jupyter, **nikoli** `.yml` soubor se stejným názvem. `samples-*` 
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
+
+> [!Important]
+> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
+>
+> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
+> Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Nebo spusťte celý Poznámkový blok výběrem **buňky > spustit vše** v horní nabídce.
 
 Naimportujte `config.json`třídua načtěte informace o předplatném ze souboru pomocí `from_config().` funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete zadat i parametr cesty, který bude odkazovat na soubor. `Workspace` pomocí `from_config(path="your/file/path")`. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
-
-> [!TIP]
-> Pokud s Jupyter poznámkami začínáte, spusťte kód tak, že kliknete na buňku kódu a zapnete **SHIFT + ENTER** , aby se buňky spouštěly po jednom. Pokud chcete spustit celý Poznámkový blok najednou, klikněte na **buňku** v horním řádku nabídky a pak klikněte na **Spustit vše**.
 
 ```python
 from azureml.core import Workspace
@@ -223,7 +219,7 @@ Pokud jste použili server cloudového poznámkového bloku, zastavte virtuáln�
 
 Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující úlohy:
 
@@ -233,4 +229,4 @@ V tomto kurzu jste provedli následující úlohy:
 > * Zobrazení výsledků školení na portálu a načítajících se modely
 
 [Nasazení modelu](tutorial-deploy-models-with-aml.md) službou Azure Machine Learning.
-Naučte se vyvíjet [automatizované](tutorial-auto-train-models.md) experimenty strojového učení.
+Naučte se vyvíjet [automatizované experimenty strojového učení](tutorial-auto-train-models.md) .

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0ee573f26f717c0ed8ad36f1a06fe557d423e3c1
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720410"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274716"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z webové tabulky pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -80,7 +80,7 @@ Pro propojenou službu webové tabulky jsou podporovány následující vlastnos
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných datovou sadou webových tabulek.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou webových tabulek.
 
 Chcete-li kopírovat data z webové tabulky, nastavte vlastnost typ datové sady na **webtable**. Podporovány jsou následující vlastnosti:
 
@@ -178,5 +178,5 @@ Chcete-li získat index tabulky, kterou potřebujete nakonfigurovat ve [vlastnos
 Pokud používáte Excel 2013, použijte k získání indexu [Microsoft Power Query pro Excel](https://www.microsoft.com/download/details.aspx?id=39379) . Podrobnosti najdete v článku [připojení k webové stránce](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) . Postup je podobný, pokud používáte [Microsoft Power BI pro Desktop](https://powerbi.microsoft.com/desktop/).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

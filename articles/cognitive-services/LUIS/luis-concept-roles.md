@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b4bd61ea74055a04718d8a9d8d5ccd42671af2ac
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eead9e0fec8ac4322bc7816de4a4774f8be8129c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638347"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257954"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Role entit pro kontextové podtypy
 
@@ -27,7 +27,7 @@ Role umožňují entitám mít pojmenované podtypy. Roli lze použít pro libov
 
 ## <a name="machine-learned-entity-example-of-roles"></a>Příklad rolí, které se naučily pro počítač
 
-V utterance "koupit **lístek od Praha** do **Brna**jsou města Praha i Londýn, ale každá z nich má ve větě jiný význam. New York city původu a Londýn je město cílové. 
+V utterance "koupit lístek od Praha do **Brna**jsou **města Praha i** Londýn, ale každá z nich má ve větě jiný význam. New York city původu a Londýn je město cílové. 
 
 ```
 buy a ticket from New York to London
@@ -48,7 +48,7 @@ V utterance "plánování schůzky od 8 do 9" obě čísla označují čas, ale 
 Schedule the meeting from 8 to 9
 ```
 
-|Typ entity|Název role|Hodnota|
+|Typ entity|Název role|Value|
 |--|--|--|
 |Předem připravené datetimeV2|Spuštění|8|
 |Předem připravené datetimeV2|EndTime|9|
@@ -93,11 +93,11 @@ Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny d
 
 ## <a name="entity-roles-versus-collaborator-roles"></a>Role entit versus role spolupracovníka
 
-Role entit se vztahují na datový model aplikace LUIS. [](luis-concept-collaborator.md) Role spolupracovníka se vztahují na úrovně přístupu pro vytváření. 
+Role entit se vztahují na datový model aplikace LUIS. [Spolupracovníci nebo role přispěvatele](luis-concept-keys.md#contributions-from-other-authors) se vztahují na úrovně přístupu pro vytváření. 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Využijte [praktickou výuku](tutorial-entity-roles.md) s využitím rolí entit s entitami, které se nestrojově naučily.
 * Zjistěte, jak přidat [role](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

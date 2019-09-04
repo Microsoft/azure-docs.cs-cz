@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726221"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275938"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
@@ -75,7 +75,7 @@ Pro Azure Search propojenou službu jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. V této části najdete seznam vlastností podporovaných sadou Azure Search DataSet.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou Azure Search DataSet.
 
 Chcete-li kopírovat data do Azure Search, jsou podporovány následující vlastnosti:
 
@@ -170,7 +170,7 @@ Následující tabulka určuje, zda je podporován datový typ Azure Search.
 
 | Azure Search datový typ | Podporované v Azure Search jímka |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
+| String | Ano |
 | Int32 | Ano |
 | Int64 | Ano |
 | Double | Ano |

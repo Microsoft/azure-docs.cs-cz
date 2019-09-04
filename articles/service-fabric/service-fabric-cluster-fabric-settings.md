@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191744"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241755"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Přizpůsobení Service Fabricho nastavení clusteru
 Tento článek popisuje různá nastavení prostředků infrastruktury pro váš Service Fabric cluster, který můžete přizpůsobit. Pro clustery hostované v Azure můžete nastavení přizpůsobit prostřednictvím [Azure Portal](https://portal.azure.com) nebo pomocí Azure Resource Manager šablony. Další informace najdete v tématu [Upgrade konfigurace clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). U samostatných clusterů můžete upravit nastavení aktualizací souboru *ClusterConfig. JSON* a provést upgrade konfigurace v clusteru. Další informace najdete v tématu [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -28,7 +28,7 @@ Existují tři různé zásady upgradu:
 
 - **Dynamické** – změny dynamické konfigurace nezpůsobí restartování žádného procesu Service Fabricch procesů ani procesů hostování služby. 
 - **Statické** – změny statické konfigurace způsobí, že se uzel Service Fabric restartuje, aby se změna projevila. Služby na uzlech budou restartovány.
-- Nelůjelné – tato nastavení nelze upravovat. Změna těchto nastavení vyžaduje, aby se cluster zničil a vytvořil nový cluster. 
+- **Nelůjelné** – tato nastavení nelze upravovat. Změna těchto nastavení vyžaduje, aby se cluster zničil a vytvořil nový cluster. 
 
 Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsobit, Uspořádáno podle části.
 
@@ -311,7 +311,7 @@ Následuje seznam nastavení prostředků infrastruktury, která lze přizpůsob
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Logická hodnota, výchozí hodnota je false. |Static|Zásady hodnocení stavu clusteru: Povolit pro vyhodnocení stavu podle typu aplikace. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 500 |Dynamické|Maximální počet zpráv o stavu, které může entita mít, než vyvolává obavy o logice vytváření sestav o stavu sledovacího zařízení. Každá entita o stavu by měla mít relativně malý počet sestav o stavu. Pokud počet sestav překročí toto číslo, mohou nastat problémy s implementací sledovacího zařízení. Entita s příliš mnoha sestavami je označena prostřednictvím sestavy stavu upozornění, když je entita vyhodnocena. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, výchozí hodnota je 100 |Dynamické|Maximální počet zpráv o stavu, které může entita mít, než vyvolává obavy o logice vytváření sestav o stavu sledovacího zařízení. Každá entita o stavu by měla mít relativně malý počet sestav o stavu. Pokud počet sestav překročí toto číslo, mohou nastat problémy s implementací sledovacího zařízení. Entita s příliš mnoha sestavami je označena prostřednictvím sestavy stavu upozornění, když je entita vyhodnocena. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 

@@ -1,19 +1,19 @@
 ---
 title: 'Příklad: Omezující vlastnosti na více úrovních – Azure Search'
 description: Naučte se vytvářet strukturální struktury pro taxonomie na více úrovních a vytváření vnořené navigační struktury, kterou můžete zahrnout na stránky aplikace.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: chstone
-ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: heidist
+ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649935"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274082"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Příklad: Víceúrovňové omezující vlastnosti v Azure Search
 

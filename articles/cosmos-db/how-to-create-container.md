@@ -4,14 +4,14 @@ description: Zjistěte, jak vytvořit kontejner ve službě Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: mjbrown
-ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093481"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240753"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
@@ -25,15 +25,15 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner**. Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
-   * Zadejte ID kolekce.
+   * Zadejte ID kontejneru.
    * Zadejte klíč oddílu.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-![Snímek obrazovky s oknem Průzkumník dat s zvýrazněnou novou kolekcí](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Snímek obrazovky s podoknem Průzkumník dat s zvýrazněným novým kontejnerem](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>Rozhraní API pro MongoDB Azure Cosmos DB
 
@@ -41,15 +41,15 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový kontejner**. Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
-   * Zadejte ID kolekce.
+   * Zadejte ID kontejneru.
    * Zadejte horizontálních oddílů klíč.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
    * Vyberte **OK**.
 
-![Snímek obrazovky Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kolekci](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Snímek obrazovky Azure Cosmos DB API pro MongoDB, dialogové okno Přidat kontejner](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Rozhraní API Cassandra
 

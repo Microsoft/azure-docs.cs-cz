@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952127"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279576"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -37,7 +37,7 @@ Migrace serverů Hyper-V spravovaných pomocí System Center Virtual Machine Man
 --- | ---
 Oprávnění Azure | Chcete-li vytvořit projekt Azure Migrate, potřebujete oprávnění přispěvatele nebo vlastníka v rámci předplatného.
 Virtuální počítače Hyper-V | Vyhodnoťte až 35 000 virtuálních počítačů Hyper-V v jednom projektu. V předplatném Azure můžete mít více projektů. Projekt může zahrnovat virtuální počítače VMware i virtuální počítače Hyper-V, a to až do limitů hodnocení.
-Geografie | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních ographies, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
+Geografie | Azure Migrate projekty lze vytvořit v řadě geografických oblastí. I když můžete vytvářet projekty v konkrétních geografických oblastech, můžete vyhodnotit nebo migrovat počítače pro jiná cílová umístění. Geografie projektu se používá pouze k uložení zjištěných metadat.
 
   **Zeměpisné oblasti** | **Umístění úložiště metadat**
   --- | ---
@@ -82,8 +82,13 @@ Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťován�
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
-| **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> Můžete zjistit až 5000 virtuálních počítačů Hyper-V s jedním zařízením.
-| **Hyper-V**    |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Zadaný virtuální počítač zařízení je Hyper-V VM verze 5,0.<br/> Na hostiteli virtuálního počítače musí být spuštěný systém Windows Server 2012 R2 nebo novější.<br/> Potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU a 1 externího přepínače pro virtuální počítač zařízení.<br/> Zařízení vyžaduje statickou nebo dynamickou IP adresu a přístup k Internetu.
+| **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU a 1 externího přepínače pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
+| **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 virtuálních počítačů.
+| **Hostitelé Hyper-V**          | Zařízení se může připojit k až 300 hostitelům Hyper-V.
+| **Rozpoznávání**              | Jedno zařízení může zjistit až 5000 virtuálních počítačů.
+| **Skupina posouzení**       | Do jedné skupiny můžete přidat až 35 000 počítačů.
+| **Posouzení**             | V jednom posouzení můžete vyhodnotit až 35 000 virtuálních počítačů.
+
 
 
 ## <a name="assessment-appliance-url-access"></a>Posouzení – přístup k adrese URL zařízení
@@ -98,7 +103,7 @@ K vyhodnocení virtuálních počítačů Azure Migrate zařízení potřebuje p
 **Adresa URL** | **Podrobnosti**  
 --- | ---
 *.portal.azure.com | Navigace na Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlásit k předplatnému Azure
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Přihlaste se ke svému předplatnému Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 management.azure.com | Vytváření Azure Active Directorych aplikací pro komunikaci mezi zařízením a službami.
 dc.services.visualstudio.com | Protokolování a monitorování
@@ -116,6 +121,9 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Odchozí připojení na portech 443, 5671 a 5672 pro posílání metadat zjišťování a výkonu Azure Migrate.
 **Hostitel nebo cluster Hyper-V** | Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu virtuálních počítačů Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
+
+## <a name="migration-limitations"></a>Migrace – omezení
+Pro replikaci můžete vybrat až 10 virtuálních počítačů najednou. Pokud chcete migrovat více počítačů, proveďte replikaci do skupin po 10.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migrace – požadavky na hostitele Hyper-V
 

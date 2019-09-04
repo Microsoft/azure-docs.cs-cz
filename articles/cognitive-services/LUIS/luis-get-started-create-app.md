@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 08/25/2019
 ms.author: diberry
-ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34978d552b2a5002906b65c06e0c8ad76f58761b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563926"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258152"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace pro domácí automatizaci
 
@@ -26,10 +26,10 @@ V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem př
 
 Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na portálu LUIS na webu [https://www.luis.ai](https://www.luis.ai). 
 
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
+
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace). 
-
-1. Přihlaste se k portálu LUIS.
 
 2. Vyberte **Create new app** (Vytvořit novou aplikaci).
 
