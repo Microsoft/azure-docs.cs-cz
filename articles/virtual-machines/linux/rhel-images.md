@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091386"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309226"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux imagí v Azure
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -133,12 +133,12 @@ RHEL-SAP-HANA | 6.7      | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HA
 |             | 7.3      | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA
 RHEL-SAP-APPS | 6.8      | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,8 pro SAP Business Applications
 |             | 7.3      | LVM    | Linuxový agent | RHEL 7,3 pro SAP Business Applications
-RHEL-HA       | 7.4      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,4 s doplňkem HA
-|             | 7.5      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,5 s doplňkem HA
-|             | 7,6      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,6 s doplňkem HA
-RHEL-SAP-HA   | 7.4      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,4 pro SAP s doplňkem HA
-|             | 7.5      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,5 pro SAP s doplňkem HA
-|             | 7,6      | ZÍSKÁNÍ    | Linuxový agent | RHEL 7,6 pro SAP s doplňkem HA
+RHEL-HA       | 7.4      | LVM    | Linuxový agent | RHEL 7,4 s doplňkem HA
+|             | 7.5      | LVM    | Linuxový agent | RHEL 7,5 s doplňkem HA
+|             | 7,6      | LVM    | Linuxový agent | RHEL 7,6 s doplňkem HA
+RHEL-SAP-HA   | 7.4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP s doplňkem HA
+|             | 7.5      | LVM    | Linuxový agent | RHEL 7,5 pro SAP s doplňkem HA
+|             | 7,6      | LVM    | Linuxový agent | RHEL 7,6 pro SAP s doplňkem HA
 
 ### <a name="old-naming-convention"></a>Stará konvence vytváření názvů
 Řada imagí RHEL 7 a RHEL 6 rodina imagí používala ve svých SKU konkrétní verze, až do výše popsané změny konvence pojmenování.
@@ -159,6 +159,6 @@ Aktualizujeme jenom aktuální dílčí verzi v dané rodině imagí. S vydání
 ## <a name="image-retention-policy"></a>Zásady uchovávání imagí
 Naše aktuální zásada zachová všechny dříve publikované image. Vyhrazujeme si právo odebrat obrázky, u kterých se říká, že způsobují problémy jakéhokoli druhu. Například Image s nesprávnou konfigurací z důvodu pozdější aktualizace platformy nebo součásti mohou být odebrány. Obrázky, které se dají odebrat, se budou řídit aktuálními zásadami Marketplace a oznámení se budou zobrazovat až po dobu 30 dnů před odebráním obrázku.
 
-## <a name="next-steps"></a>Další postup
-* Přečtěte si další informace o infrastruktuře aktualizací Red [](https://aka.ms/rhui-update)Hat pro Azure.
+## <a name="next-steps"></a>Další kroky
+* Přečtěte [si další informace o infrastruktuře aktualizací](https://aka.ms/rhui-update)Red Hat pro Azure.
 * Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .

@@ -1,5 +1,5 @@
 ---
-title: Analýza mínění – LUIS
+title: 'Kurz: Analýza mínění – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat pozitivní, negativní a neutrální mínění z projevy. Mínění se určuje z celé promluvy.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563578"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307574"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění z utterance
 
@@ -173,7 +173,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu se přidá analýza mínění jako nastavení publikování tak, aby se extrahovaly hodnoty mínění z promluvy jako celku.
 
 > [!div class="nextstepaction"] 

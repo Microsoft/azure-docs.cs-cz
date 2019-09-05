@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 9ef35e0865a7c5bbfb4accc058a8d63bb6f1e80b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 246e3550650dfd458b4aeecda3b5b7733e49f017
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243071"
+ms.locfileid: "70307335"
 ---
 # <a name="use-powershell-to-accept-a-data-share-invitation"></a>Použití PowerShellu k přijetí pozvánky ke sdílení dat
 
@@ -42,8 +42,8 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.resources/get-azdatashareinvitation) | Načte a vypíše pozvánky pro sdílení odeslaných dat. |
-| [New-AzDataShareSubscription](/powershell/module/az.resources/get-azdatashareinvitation) | Vytvořte předplatné pro sdílení dat. |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Načte a vypíše pozvánky pro sdílení odeslaných dat. |
+| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Vytvořte předplatné pro sdílení dat. |
 |||
 
 ## <a name="next-steps"></a>Další postup

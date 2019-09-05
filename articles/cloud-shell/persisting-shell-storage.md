@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: f60125123d019cbfa93bfc1b06da7ac90b54e311
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b2823c935d11ae99ab1d87ae708945721820ad8c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742040"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306731"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -31,18 +31,35 @@ Cloud Shell uchovává soubory prostřednictvím obou následujících metod:
 > [!NOTE]
 > Všechny soubory ve vašem `$Home` adresáři, jako jsou klíče SSH, jsou trvalé na uživatelském disku, který je uložený v připojené sdílené složce souborů. Pokud uchováváte informace ve vašem `$Home` adresáři a připojené sdílené složce, použijte doporučené postupy.
 
-## <a name="bash-specific-commands"></a>Příkazy specifické pro bash
+## <a name="clouddrive-commands"></a>příkazy clouddrive
 
 ### <a name="use-the-clouddrive-command"></a>`clouddrive` Použití příkazu
-Pomocí bash v Cloud Shell můžete spustit příkaz s názvem `clouddrive`, který umožňuje ručně aktualizovat sdílenou složku, která je připojená k Cloud Shell.
+V Cloud Shell můžete spustit příkaz s názvem `clouddrive`, který umožňuje ručně aktualizovat sdílenou složku, která je připojená k Cloud Shell.
 ![Spuštění příkazu "clouddrive"](media/persisting-shell-storage/clouddrive-h.png)
+
+### <a name="list-clouddrive"></a>Seznamu`clouddrive`
+Pokud chcete zjistit `clouddrive`, která sdílená složka je připojená `df` , spusťte příkaz. 
+
+Cesta k souboru clouddrive zobrazuje název vašeho účtu úložiště a sdílenou složku v adrese URL. Například `//storageaccountname.file.core.windows.net/filesharename`.
+
+```
+justin@Azure:~$ df
+Filesystem                                          1K-blocks   Used  Available Use% Mounted on
+overlay                                             29711408 5577940   24117084  19% /
+tmpfs                                                 986716       0     986716   0% /dev
+tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
+/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
+shm                                                    65536       0      65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
+justin@Azure:~$
+```
 
 ### <a name="mount-a-new-clouddrive"></a>Připojit nový clouddrive
 
 #### <a name="prerequisites-for-manual-mounting"></a>Předpoklady ručního připojení
 Sdílenou složku, která je přidružená k Cloud Shell, můžete aktualizovat pomocí `clouddrive mount` příkazu.
 
-Pokud připojíte existující sdílenou složku, musí být účty úložiště umístěny ve vaší vybrané Cloud Shell oblasti. Načtěte umístění spuštěním `env` z bash a `ACC_LOCATION`kontrolou.
+Pokud připojíte existující sdílenou složku, musí být účty úložiště umístěny ve vaší vybrané Cloud Shell oblasti. Načtěte umístění spuštěním `env` a `ACC_LOCATION`kontrolou.
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` Příkaz
 
@@ -70,24 +87,7 @@ Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Clou
 ![Spuštění clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell `$Home` vymaže vaši image disku adresáře a všechny soubory ve sdílené složce. Tato akce je nevratná
-
-### <a name="list-clouddrive"></a>Seznamu`clouddrive`
-Pokud chcete zjistit `clouddrive`, která sdílená složka je připojená `df` , spusťte příkaz. 
-
-Cesta k souboru clouddrive zobrazuje název vašeho účtu úložiště a sdílenou složku v adrese URL. Například `//storageaccountname.file.core.windows.net/filesharename`.
-
-```
-justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
-```
+> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell `$Home` vymaže vaši image disku adresáře a všechny soubory ve sdílené složce. Tuto akci nelze vrátit zpět.
 ## <a name="powershell-specific-commands"></a>Příkazy specifické pro PowerShell
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Vypsat `clouddrive` sdílené složky Azure
@@ -104,8 +104,7 @@ Sdílenou složku Azure, která je připojená k Cloud Shell, můžete kdykoli o
 
 Poznámka: Pokud potřebujete definovat funkci v souboru a zavolat ji z rutin PowerShellu, musí být zahrnut operátor tečka. Například:. .\MyFunctions.ps1
 
-## <a name="next-steps"></a>Další postup
-[Bash v rychlém startu Cloud Shell](quickstart.md) <br>
-[PowerShell v Cloud Shell rychlý Start](quickstart-powershell.md) <br>
+## <a name="next-steps"></a>Další kroky
+[Rychlý Start Cloud Shell](quickstart.md) <br>
 [Informace o úložišti Microsoft Azurech souborů](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Další informace o značkách úložiště](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

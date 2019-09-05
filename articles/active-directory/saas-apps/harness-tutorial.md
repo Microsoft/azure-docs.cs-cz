@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014073"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305944"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci se systémem do služby Azure AD, musíte 
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text.
+1. V části **Přidat z Galerie** **Zadejte do** vyhledávacího pole text.
 1. Na panelu výsledků vyberte možnost **svazek** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-harness"></a>Konfigurace a testování jednotného přihlašování Azure AD pro svazek
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace na více počítačích najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **integrace aplikace na** více počítačích najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -131,17 +131,25 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-harness-sso"></a>Konfigurace jednotného přihlašování ke kabelům
 
-1. Otevřete nové okno webového prohlížeče a přihlaste se k webovému serveru společnosti jako správce.
+1. Chcete-li automatizovat konfiguraci v rámci rozšíření, je nutné nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření**.
 
-1. V pravém horním rohu stránky klikněte na**nastavení ověřování**pro **správu** > nepřetržitého přístupu **zabezpečení** >.
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **instalační program** , který vás nasměruje do aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení ke službě. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit vlastní nastavení ručně, otevřete nové okno webového prohlížeče a přihlaste se k webovému serveru společnosti jako správce a proveďte následující kroky:
+
+4. V pravém horním rohu stránky klikněte na**nastavení ověřování**pro **správu** >  **nepřetržitého přístupu zabezpečení** .>
 
     ![Konfigurace svazku](./media/harness-tutorial/configure01.png)
 
-1. V části **Zprostředkovatelé jednotného přihlašování** klikněte na **+ Přidat poskytovatele** >jednotného přihlašování **SAML**.
+5. V části **Zprostředkovatelé jednotného přihlašování** klikněte na > **+ Přidat poskytovatele jednotného přihlašování** **SAML**.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure03.png)
 
-1. V automaticky otevíraném okně **zprostředkovatele SAML** proveďte následující kroky:
+6. V automaticky otevíraném okně **zprostředkovatele SAML** proveďte následující kroky:
 
     ![Konfigurace svazku](./media/harness-tutorial/configure02.png)
 
@@ -161,7 +169,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke svým kabelů
 
 1. Přihlaste se ke službě jako správce.
 
-1. V pravém horním rohu stránky klikněte na nepřetržitý**uživatel** **pro správu** >  **zabezpečení** >přístupu.
+1. V pravém horním rohu stránky klikněte na **nepřetržitý** >**uživatel** **pro správu** > zabezpečení přístupu.
 
     ![Konfigurace svazku](./media/harness-tutorial/configure04.png)
 

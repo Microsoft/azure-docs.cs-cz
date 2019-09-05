@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311865"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308343"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -32,13 +32,13 @@ Aby bylo možné získat přístup k Media Services prostředkům a rozhraní Me
 * **Ověřování instančního objektu** – používá se k ověření služby (například webové aplikace, aplikace Function App, Logic Apps, API a mikroslužby). Aplikace, které běžně používají tuto metodu ověřování, jsou aplikace, které spouštějí služby démon, služby střední vrstvy nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
 * **Ověřování uživatele** – používá se k ověření osoby, která aplikaci používá k interakci s Media Servicesmi prostředky. Interaktivní aplikace by nejdřív měla uživatele vyzvat k zadání přihlašovacích údajů uživatele. Příkladem je aplikace konzoly pro správu používaná autorizovanými uživateli k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **** , ale budou k dispozici jenom operace **Get** nebo **list**   . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
+Rozhraní Media Services API vyžaduje, aby uživatel nebo aplikace, které mají žádosti REST API, měly přístup k prostředku Media Services účtu a používají roli **Přispěvatel** nebo **vlastník** . K rozhraní API se dá získat přístup **, ale** budou k dispozici jenom operace **Get** nebo **list**   . Další informace najdete v tématu [řízení přístupu na základě role pro účty Media Services](rbac-overview.md).
 
 Místo Vytvoření instančního objektu zvažte použití spravovaných identit pro prostředky Azure pro přístup k rozhraní Media Services API prostřednictvím Azure Resource Manager. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="azure-ad-service-principal"></a>Instanční objekt služby Azure AD 
 
-Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte přispěvateli aplikace nebo roli **** **vlastníka** přístup k účtu Media Services. 
+Pokud vytváříte aplikaci a instanční objekt služby Azure AD, musí být aplikace ve vlastním tenantovi. Po vytvoření aplikace udělte **přispěvateli** aplikace nebo roli **vlastníka** přístup k účtu Media Services. 
 
 Pokud si nejste jistí, jestli máte oprávnění k vytvoření aplikace služby Azure AD, přečtěte si téma [požadovaná oprávnění](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
@@ -75,7 +75,11 @@ Na názvy prostředků služby Azure Media Services v3 (například prostředky,
 
 Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
 
-Další informace o Azure Resource Manager pojmenování najdete v tématech: [Požadavky](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) na pojmenování a zásady [vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Další informace o Azure Resource Manager pojmenování najdete v tématech: [Požadavky na pojmenování](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a zásady [vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+
+### <a name="names-of-filesblobs-within-an-asset"></a>Názvy souborů/objektů BLOB v rámci assetu
+
+Názvy souborů nebo objektů BLOB v rámci assetu musí splňovat požadavky na [název objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) a [požadavky na název systému souborů NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Důvodem těchto požadavků jsou soubory, které lze kopírovat z úložiště objektů blob na místní disk NTFS ke zpracování.
 
 ## <a name="long-running-operations"></a>Dlouhodobě běžící operace
 
@@ -129,7 +133,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 
 [Průzkumník Azure Media Services](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je WinForms neboC# aplikace, které odesílají, stahují, kódují, streamování vod a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
 
-AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues) problémy). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v nejčastějších dotazech k kodexu opencode@microsoft.com nebo na kontaktování s dalšími dotazy nebo komentáři. [](https://opensource.microsoft.com/codeofconduct/faq/)
+AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny https://github.com/Azure/Azure-Media-Services-Explorer/issues) problémy). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v [nejčastějších dotazech k kodexu](https://opensource.microsoft.com/codeofconduct/faq/) nebo na kontaktování opencode@microsoft.com s dalšími dotazy nebo komentáři.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 

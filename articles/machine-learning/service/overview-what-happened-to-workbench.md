@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 42c6671479c299c3229a3769a0410223274bc87f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 22f9ff8c493e850152e1fd74c8787e2cde507685
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279073"
+ms.locfileid: "70308854"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -100,7 +100,7 @@ Další informace najdete v těchto článcích:
 
 ## <a name="what-about-the-old-sdk-and-cli"></a>Co je to stará sada SDK a rozhraní příkazového řádku?
 
-Ano, budou i nadále fungovat až do ledna. Podívejte se na předchozí [časovou osu](#timeline). Doporučujeme začít vytvářet nové experimenty a modely pomocí nejnovější sady SDK nebo rozhraní příkazového řádku.
+Podívejte se na předchozí [časovou osu](#timeline). Doporučujeme začít vytvářet nové experimenty a modely pomocí nejnovější sady SDK nebo rozhraní příkazového řádku.
 
 Pomocí nové sady Python SDK v nejnovější verzi můžete komunikovat se službou Azure Machine Learning v jakémkoli prostředí Pythonu. Přečtěte si, jak nainstalovat nejnovější sadu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>. Můžete také použít aktualizované [rozšíření Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) s bohatou sadou `az ml` příkazů pro interakci se službou v jakémkoli prostředí příkazového řádku, včetně Azure Cloud Shell.
 

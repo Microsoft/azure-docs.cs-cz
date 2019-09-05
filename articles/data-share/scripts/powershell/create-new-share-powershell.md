@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: c76dfea83d0f736dbd48239cc3be3496a88ec8a2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 54d5dc35cf230b62cbe5f8c3cb4a1dc81eccf1e3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242993"
+ms.locfileid: "70307246"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>Použití PowerShellu k vytvoření sdílené složky dat v Azure
 
@@ -41,10 +41,10 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShare](/powershell/module/az.resources/new-azdatashare) | Vytvoří sdílenou složku dat. |
+| [New-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Vytvoří sdílenou složku dat. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

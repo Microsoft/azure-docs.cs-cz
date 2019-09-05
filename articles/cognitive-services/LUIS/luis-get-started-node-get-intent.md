@@ -1,5 +1,5 @@
 ---
-title: Získat záměr, Node. js – LUIS
+title: 'Rychlý start: Získat záměr, Node. js – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Node.js odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 084d717c1001604a7fb8ed60518777f956dec8b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 78df1eb546d285b6b477a6dd53efa0d3dd9d7ce8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563807"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375459"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Získání záměru pomocí Node. js
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172192"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308027"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -36,26 +36,9 @@ Cyklus vývoje vnitřních smyček, iterativní proces psaní kódu, sestavován
 
 Než začnete s prvním řádkem kódu, funkce [Rychlé úlohy](container-registry-tutorial-quick-task.md) ACR úkoly může poskytovat integrované vývojové prostředí tím, že převede přesměrování sestavení imagí kontejneru do Azure. Pomocí rychlých úloh můžete ověřit své automatizované definice sestavení a zachytit potenciální problémy před potvrzením kódu.
 
-Pomocí známého `docker build` formátu převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI *kontext* (sadu souborů k sestavení), odešle IT úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
+Pomocí známého `docker build` formátu převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odešle IT úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
 
 Úvod najdete v tématu rychlý Start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) v Azure Container Registry.  
-
-Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
-
-| Umístění kontextu | Popis | Příklad |
-| ---------------- | ----------- | ------- |
-| Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
-| Větev hlavní větve GitHubu | Soubory v hlavní větvi úložiště GitHub (nebo jiné výchozí).  | `https://github.com/gituser/myapp-repo.git` |
-| Větev GitHubu | Konkrétní větev úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Podsložka GitHubu | Soubory v podsložce v úložišti GitHubu. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
-
-Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. `--platform` Zadejte značku pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). V případě architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
-
-| OS | Architektura|
-| --- | ------- | 
-| Linux | AMD<br/>ARM<br/>arm64<br/>386 |
-| Windows | AMD |
 
 ACR úkoly jsou navržené jako primitivní životní cyklus kontejneru. Například Integrujte úlohy ACR do řešení CI/CD. Po provedení příkazu [AZ Login][az-login] s [instančním objektem][az-login-service-principal]by vaše řešení CI/CD mohl vydat příkazy [AZ ACR Build][az-acr-build] , aby se aktivovaly sestavení imagí.
 
@@ -106,9 +89,30 @@ Můžete například vytvořit úlohu s více kroky, která automatizuje násled
 
 Přečtěte si o úlohách s více kroky při [spouštění více kroků sestavení, testování a oprav úloh v ACR úlohách](container-registry-tasks-multi-step.md).
 
+## <a name="context-locations"></a>Umístění kontextu
+
+Následující tabulka ukazuje několik příkladů podporovaných umístění kontextu pro úlohy ACR:
+
+| Umístění kontextu | Popis | Příklad |
+| ---------------- | ----------- | ------- |
+| Místní systém souborů | Soubory v adresáři v místním systému souborů. | `/home/user/projects/myapp` |
+| Větev hlavní větve GitHubu | Soubory v hlavní větvi úložiště GitHub (nebo jiné výchozí).  | `https://github.com/gituser/myapp-repo.git` |
+| Větev GitHubu | Konkrétní větev úložiště GitHubu.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| Podsložka GitHubu | Soubory v podsložce v úložišti GitHubu. Příklad zobrazuje kombinaci specifikace větve a podsložky. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Vzdálená tarballu | Soubory v komprimovaném archivu na vzdáleném serveru webserver. | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>Image – platformy
+
+Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. `--platform` Zadejte značku pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). V případě architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
+
+| OS | Architektura|
+| --- | ------- | 
+| Linux | AMD<br/>ARM<br/>arm64<br/>386 |
+| Windows | AMD |
+
 ## <a name="view-task-logs"></a>Zobrazit protokoly úloh
 
-Každý běh úlohy generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. Pokud k aktivaci úlohy použijete příkaz [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)nebo [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , výstup protokolu pro spuštění úlohy se streamuje do konzoly a také se uloží pro pozdější načtení. Zobrazte protokoly spuštění úlohy ve Azure Portal nebo použijte příkaz [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) .
+Každý běh úlohy generuje výstup protokolu, který můžete zkontrolovat, abyste zjistili, jestli se kroky úlohy úspěšně spustily. Pokud k aktivaci úlohy použijete příkaz [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)nebo [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , výstup protokolu pro spuštění úlohy se streamuje do konzoly a také se uloží pro pozdější načtení. Když se úkol automaticky aktivuje, například potvrzením zdrojového kódu nebo obnovením základní image, ukládají se jenom protokoly úloh. Zobrazte protokoly spuštění úlohy ve Azure Portal nebo použijte příkaz [AZ ACR Task logs](/cli/azure/acr/task#az-acr-task-logs) .
 
 Od července 2019 budou data a protokoly pro úlohy spuštěné v registru standardně uchovány po dobu 30 dnů a pak automaticky vymazány. Pokud chcete archivovat data pro spuštění úlohy, povolte archivaci pomocí příkazu [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Následující příklad umožňuje archivaci úlohy spustit *CF11* v registru *myregistry*.
 
@@ -116,7 +120,7 @@ Od července 2019 budou data a protokoly pro úlohy spuštěné v registru stand
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Až budete připraveni k automatizaci automatických oprav operačního systému a architektury sestavením imagí kontejneru v cloudu, podívejte se na [řadu kurzů ACR úloh](container-registry-tutorial-quick-task.md)tři části.
 

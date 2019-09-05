@@ -1,31 +1,31 @@
 ---
 title: 'Rychlý start: Rozpoznávání řeči, C# (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. V reálném čase přepíšete řeč z mikrofonu zařízení na text. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
+description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. V reálném čase přepíšete řeč z mikrofonu zařízení na text. Aplikace je sestavená pomocí balíčku NuGet sady Speech SDK a Microsoft Visual Studio 2019.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5ea75f1956b70b6bfebebcf29e27542eba0ca0cf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: fe5ff376a7895e2ca5246c0b9eb575752b07c7a1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839951"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382283"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK
 
-K dispozici jsou také rychlé starty pro převod [textu na řeč](quickstart-text-to-speech-csharp-uwp.md), [rozpoznávání řeči](quickstart-translate-speech-uwp.md) a [hlasového prvního virtuálního pomocníka](quickstart-virtual-assistant-csharp-uwp.md).
+K dispozici jsou také rychlé starty pro [syntézu řeči](quickstart-text-to-speech-csharp-uwp.md), [Překlad řeči a funkce](quickstart-translate-speech-uwp.md)pro [virtuální asistenty hlasu First](quickstart-virtual-assistant-csharp-uwp.md).
 
-V případě potřeby vyberte jiný programovací jazyk nebo prostředí:<br/>
+Pokud chcete, vyberte jiný programovací jazyk nebo prostředí:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Windows verze 1709 novější) pomocí [sady Cognitive Services Speech SDK](speech-sdk.md). Z mikrofonu vašeho zařízení bude program přepisovat řeč v reálném čase na text. Aplikace je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017 nebo novější (libovolná edice).
+V tomto článku vyvíjíte aplikaci C# Univerzální platforma Windows (UWP) pomocí sady Cognitive Services [Speech SDK](speech-sdk.md). Program transcribes hlas do textu v reálném čase z mikrofonu vašeho zařízení. Aplikace je sestavená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2019 (libovolná edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -34,7 +34,7 @@ V tomto článku vyvíjíte C# Univerzální platforma Windows (UWP; Aplikace Wi
 
 K tomuto rychlému startu potřebujete:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo novější
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](get-started.md).
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -43,37 +43,43 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Uživatelské rozhraní aplikace je definované pomocí XAML. Otevřete `MainPage.xaml` v Průzkumníku řešení. V zobrazení XAML návrháře vložte do značky Grid (mezi `<Grid>` a `</Grid>`) následující fragment kódu XAML.
+Nyní přidejte kód jazyka XAML, který definuje uživatelské rozhraní aplikace, a přidejte implementaci kódu na C# pozadí.
+
+1. V **Průzkumník řešení**otevřete `MainPage.xaml`.
+
+1. V zobrazení jazyka XAML návrháře vložte následující fragment kódu XAML do značky **Grid** (mezi `<Grid>` a `</Grid>`):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. Otevřete zdrojový soubor s kódem `MainPage.xaml.cs` (je seskupený pod `MainPage.xaml`). Veškerý kód nahraďte následujícím kódem.
+1. V **Průzkumník řešení**otevřete zdrojový soubor `MainPage.xaml.cs`kódu na pozadí. (Je seskupena pod `MainPage.xaml`.)
+
+1. Nahraďte veškerý kód v něm následujícím fragmentem kódu:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-1. V obslužné rutině `SpeechRecognitionFromMicrophone_ButtonClicked` v tomto souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
+1. V `SpeechRecognitionFromMicrophone_ButtonClicked` obslužné rutině zdrojového souboru vyhledejte řetězec `YourSubscriptionKey`a nahraďte ho klíčem předplatného.
 
-1. V obslužné rutině `SpeechRecognitionFromMicrophone_ButtonClicked` nahraďte řetězec `YourServiceRegion` [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. V obslužné rutině Najděte řetězec `YourServiceRegion`a nahraďte ho oblastí, která je přidružená k vašemu předplatnému. [](regions.md) `SpeechRecognitionFromMicrophone_ButtonClicked` (Například použijte `westus` pro předplatné bezplatné zkušební verze.)
 
-1. Uložte všechny změny do projektu.
+1. V řádku **nabídek výběrem možnosti** > **Uložit vše** uložte změny.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. Sestavte aplikaci. V řádku nabídek vyberte **Sestavení** > **Sestavit řešení**. Kód by se teď měl zkompilovat bez chyb.
+Teď jste připraveni sestavit a otestovat svoji aplikaci.
 
-    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Sestavit řešení](media/sdk/qs-csharp-uwp-08-build.png "Úspěšné sestavení")
+1. V řádku nabídek vyberte **sestavení** > sestavit**řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. Spusťte aplikaci. V řádku nabídek vyberte **Ladit** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 
-    ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-uwp-09-start-debugging.png "Spuštění aplikace s laděním")
+   ![Ukázková aplikace pro rozpoznávání řeči C# UWP v rychlém startu](media/sdk/qs-csharp-uwp-helloworld-window.png)
 
-1. Otevře se okno. Vyberte **Povolit mikrofon** a potvrďte žádost o oprávnění, která se otevře.
+1. Vyberte možnost **Povolit mikrofon**a když se zobrazí žádost o přístupové oprávnění, vyberte **Ano**.
 
-    ![Snímek obrazovky s žádostí o oprávnění](media/sdk/qs-csharp-uwp-10-access-prompt.png "Spuštění aplikace s laděním")
+   ![Žádost o oprávnění k přístupu k mikrofonu](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
 1. Vyberte **Rozpoznávání řeči se vstupem z mikrofonu** a vyslovte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší do služby Speech Services a přepisu na text, který se zobrazí v okně.
 
-    ![Snímek obrazovky uživatelského rozhraní pro rozpoznávání řeči](media/sdk/qs-csharp-uwp-11-ui-result.png)
+   ![Uživatelské rozhraní rozpoznávání řeči](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -82,6 +88,5 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="see-also"></a>Viz také:
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
-- [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
-- [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
+- [Rychlé zprovoznění: Převod řeči pomocí sady Speech SDK pro C# (UWP)](quickstart-translate-speech-uwp.md)
+- [Výuka modelu pro Custom Speech](how-to-custom-speech-train-model.md)

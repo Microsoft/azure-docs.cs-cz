@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: e44acfc66a8faf76068af9c31233e89c45ee02f7
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b50c7c0fbd2ef2c3825ba4c69232b69188d7ffbb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953169"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308295"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -25,7 +25,7 @@ Cost Management zahrnuje veškeré využití a nákupy, včetně rezervací a na
 
 ## <a name="supported-microsoft-azure-offers"></a>Podporované nabídky Microsoft Azure
 
-Následující informace zobrazují aktuálně podporované [Microsoft Azure nabídky](https://azure.microsoft.com/support/legal/offer-details/) v Azure cost management. Nabídka Azure je typ předplatného Azure, které máte. Data jsou k dispozici v Cost Management od **data k dispozici** . Pokud se změní předplatné, nebudou k dispozici náklady ještě před datem změny nabídky. 
+Následující informace zobrazují aktuálně podporované [Microsoft Azure nabídky](https://azure.microsoft.com/support/legal/offer-details/) v Azure cost management. Nabídka Azure je typ předplatného Azure, které máte. Data jsou k dispozici v Cost Management od **data k dispozici** . Pokud se změní předplatné, nebudou k dispozici náklady ještě před datem změny nabídky.
 
 | **Kategorie**  | **Název nabídky** | **ID kvóty** | **Číslo nabídky** | **Data dostupná z** |
 | --- | --- | --- | --- | --- |
@@ -41,7 +41,6 @@ Následující informace zobrazují aktuálně podporované [Microsoft Azure nab
 | **Průběžné platby** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)      | MPN_2014-09-01 | MS-AZR-0025P | 2\. října 2018<sup>2</sup> |
 | **Průběžné platby** | [Bezplatná zkušební verze](https://azure.microsoft.com/offers/ms-azr-0044p) <sup>4</sup> .         | FreeTrial_2014-09-01 | MS-AZR-0044P | 2\. října 2018<sup>2</sup> |
 | **Průběžné platby** | [Systém Azure v rámci licenčního programu Open](https://azure.microsoft.com/offers/ms-azr-0111p) <sup>4</sup> .      | AzureInOpen_2014-09-01 | MS-AZR-0111P | 2\. října 2018<sup>2</sup> |
-| **Průběžné platby** | [Azure pro studenty](https://azure.microsoft.com/offers/ms-azr-0170p) <sup>4</sup> . | AzureForStudents_2018-01-01 | MS-AZR-0170P | 2\. října 2018<sup>2</sup> |
 | **Průběžné platby** | Azure Pass<sup>4</sup>                                                            | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P | 2\. října 2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p) <sup>4</sup> .     | MPN_2014-09-01 | MS-AZR-0029P | 2\. října 2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 2\. října 2018<sup>2</sup> |
@@ -66,6 +65,7 @@ Následující nabídky ještě nejsou podporované:
 | **Poskytovatel Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Poskytovatel Cloud Solution Provider (CSP)** | Azure Germany v CSP pro Microsoft Cloud Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
 | **Průběžné platby**                 | Azure for Students Starter | DreamSpark_2015 – 02 – 01 | MS-AZR-0144P |
+| **Průběžné platby** | [Azure pro studenty](https://azure.microsoft.com/offers/ms-azr-0170p) <sup>4</sup> . | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **Průběžné platby**                 | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **Plány podpory** | Standard Support                    | Default_2014-09-01 | MS-AZR-0041P |
 | **Plány podpory** | Podpora Professional Direct         | Default_2014-09-01 | MS-AZR-0042P |
@@ -76,7 +76,7 @@ Následující nabídky ještě nejsou podporované:
 | **Plány podpory** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
 ## <a name="determine-your-offer-type"></a>Určení typu nabídky
-Pokud nevidíte data pro předplatné a chcete zjistit, jestli vaše předplatné spadá do podporovaných nabídek, můžete ověřit, jestli je vaše předplatné podporované. Pokud chcete ověřit, jestli je předplatné Azure podporované, přihlaste se k [Azure Portal](https://portal.azure.com). Pak v levém podokně nabídky vyberte **všechny služby** . V seznamu služeb vyberte předplatná. V nabídce seznam předplatných klikněte na odběr, který chcete ověřit. Vaše předplatné se zobrazí na kartě Přehled, kde můžete zobrazit **nabídku** a **ID nabídky**. Příklad ukazuje následující obrázek.
+Pokud nevidíte data pro předplatné a chcete zjistit, jestli vaše předplatné spadá do podporovaných nabídek, můžete ověřit, jestli je vaše předplatné podporované. Pokud chcete ověřit, jestli je předplatné Azure podporované, přihlaste se k [Azure Portal](https://portal.azure.com). Pak v levém podokně nabídky vyberte **všechny služby** . V seznamu služeb vyberte **předplatná**. V nabídce seznam předplatných klikněte na odběr, který chcete ověřit. Vaše předplatné se zobrazí na kartě Přehled, kde můžete zobrazit **nabídku** a **ID nabídky**. Příklad ukazuje následující obrázek.
 
 ![Příklad karty Přehled předplatného zobrazující nabídku a ID nabídky](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 

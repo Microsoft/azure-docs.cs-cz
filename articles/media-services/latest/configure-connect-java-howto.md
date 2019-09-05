@@ -1,6 +1,6 @@
 ---
-title: Připojení k rozhraní API služby Azure Media Services v3 – Java
-description: Zjistěte, jak se připojit k Media Services v3 API s využitím Javy.
+title: Připojení k Azure Media Services V3 API – Java
+description: Naučte se připojit k rozhraní Media Services V3 API pomocí Java.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,50 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: b7ee54c852ce3332415b69ca6105b472dab0ab8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f89e5cc434403e4edc3501d24ce2e94664d13ae9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480268"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307851"
 ---
-# <a name="connect-to-media-services-v3-api---java"></a>Připojení k rozhraní API služby Media Services v3 – Java
+# <a name="connect-to-media-services-v3-api---java"></a>Připojení k Media Services V3 API – Java
 
-Tento článek popisuje, jak se připojit k Azure Media Services v3 Java SDK pomocí přihlašovacího instančního objektu služby v metodě.
+V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Java SDK pomocí metody přihlašování instančního objektu.
 
-V tomto článku se používá Visual Studio Code pro vývoj ukázkovou aplikaci.
+V tomto článku se k vývoji ukázkové aplikace používá Visual Studio Code.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Postupujte podle [zápis Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) k instalaci:
+- Po [napsání Java pomocí Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial) nainstalujte:
 
    - JDK
    - Apache Maven
-   - Balíčkem rozšíření Java
-- Nezapomeňte nastavit `JAVA_HOME` a `PATH` proměnné prostředí.
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Je potřeba pamatovat název skupiny prostředků a název účtu Media Services.
-- Postupujte podle pokynů [přístup k rozhraní API](access-api-cli-how-to.md) tématu. Zaznamenejte ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný klíč) a ID tenanta, který budete potřebovat v pozdějším kroku.
+   - Balíček rozšíření Java
+- Ujistěte se, že `JAVA_HOME` jste `PATH` nastavili a proměnné prostředí.
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný kód) a ID tenanta, které budete potřebovat v pozdějším kroku.
 
-Také zkontrolujte:
+Také si přečtěte:
 
-- [Java v aplikaci Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
-- [Řízení projektů Java v nástroji VS Code](https://code.visualstudio.com/docs/java/java-project)
+- [Java v Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
+- [Správa projektů v jazyce Java v VS Code](https://code.visualstudio.com/docs/java/java-project)
 
-## <a name="create-a-maven-project"></a>Vytvořte projekt Maven
+> [!IMPORTANT]
+> Přečtěte si [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions).
 
-Otevřete nástroj příkazového řádku a `cd` do adresáře, ve kterém chcete vytvořit projekt.
+## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
+
+Otevřete nástroj příkazového řádku a `cd` v adresáři, ve kterém chcete vytvořit projekt.
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou vytvořeny. 
+Při spuštění příkazu `pom.xml`se vytvoří soubory, `App.java`a. 
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Ve Visual Studio Code otevřete složku, ve kterém je váš projekt
-1. Najít a otevřít `pom.xml`
-1. Přidá potřebné závislosti
+1. V Visual Studio Code otevřete složku, ve které je váš projekt
+1. Vyhledejte a otevřete`pom.xml`
+1. Přidat potřebné závislosti
 
     ```xml
    <dependency>
@@ -76,14 +79,14 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
    </dependency>
     ```
 
-## <a name="connect-to-the-java-client"></a>Připojte se k klientskou sadou Java
+## <a name="connect-to-the-java-client"></a>Připojení k klientovi Java
 
-1. Otevřít `App.java` soubor `src\main\java\com\azure\ams` a ujistěte se, že váš balíček je zahrnuté v horní části:
+1. Otevřete soubor pod `src\main\java\com\azure\ams` a ujistěte se, že je balíček zahrnutý v horní části: `App.java`
 
     ```java
     package com.azure.ams;
     ```
-1. V rámci příkazu balíčku, přidejte tyto příkazy import:
+1. V rámci příkazu Package přidejte tyto příkazy importu:
    
    ```java
    import com.microsoft.azure.AzureEnvironment;
@@ -91,7 +94,7 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. Vytvoření přihlašovacích údajů Active Directory, které potřebujete k podání žádostí o, přidejte následující kód k metodě hlavní třídy App a nastavit hodnoty, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md):
+1. Pokud chcete vytvořit přihlašovací údaje služby Active Directory, které potřebujete k vytvoření žádostí, přidejte do metody Main třídy App následující kód a nastavte hodnoty, které jste získali z [rozhraní API pro přístup](access-api-cli-how-to.md):
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -116,13 +119,13 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
    ```
 1. Spusťte aplikaci.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 
-- [Koncepty služby Media Services](concepts-overview.md)
+- [Media Services koncepty](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
 - [Reference k Javě](https://aka.ms/ams-v3-java-ref)
 - [com.microsoft.azure.mediaservices.v2018_07_01:azure-mgmt-media](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní můžete zahrnout `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` a začít manipulaci s entitami.
+Nyní můžete zahrnout `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` a začít pracovat s entitami.

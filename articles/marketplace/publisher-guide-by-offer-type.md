@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876059"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308225"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -34,7 +34,7 @@ Typy nabídek Azure Marketplace jsou uvedeny v následující tabulce.
 | **Typ nabídky**    | **Popis**  |
 | :------------------- | :-------------------|
 | [**Virtual Machines**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
-| [**Šablony řešení**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Použijte typ nabídky šablony řešení, pokud vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jednoduchý virtuální počítač. |
+| [**Šablony řešení**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Použijte typ nabídky šablona řešení (označovaný také jako aplikace Azure), pokud vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jednoduchý virtuální počítač. Šablony řešení můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.  |
 | [**Spravované aplikace**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Použití aplikace Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky: <br> <ul> <li> K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS. </li> <li>Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. </li> <ul> |
 | [**SaaS aplikace**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Pomocí typu nabídky aplikace SaaS můžete zákazníkům povolit, aby si koupili vaše technické řešení založené na SaaS jako předplatné. |
 | [**Nabídky kontejnerů**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Typ nabídky kontejneru použijte, pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service. |

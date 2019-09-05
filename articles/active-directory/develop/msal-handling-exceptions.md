@@ -16,12 +16,12 @@ ms.date: 08/19/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135809"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305054"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Zpracování výjimek a chyb pomocí MSAL
 Výjimky v knihovně Microsoft Authentication Library (MSAL) jsou určené vývojářům aplikací k řešení potíží a nikoli k jejich zobrazení koncovým uživatelům. Zprávy výjimek nejsou lokalizovány.
@@ -142,7 +142,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>Podmíněný přístup a výzvy k deklaracím
-Při tichém získávání tokenů může vaše aplikace obdržet chyby, [](conditional-access-dev-guide.md) když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA, jako je například zásada MFA.
+Při tichém získávání tokenů může vaše aplikace obdržet chyby, když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
 
 Vzor, který zpracovává tuto chybu, je interaktivní získání tokenu pomocí MSAL. Při interaktivním získání tokenu se uživateli zobrazí výzva, aby si vyžádali splnění požadovaných zásad podmíněného přístupu.
 
@@ -154,7 +154,7 @@ Při volání rozhraní API, které vyžaduje podmíněný přístup ze MSAL.NET
 Pro zpracování výzvy deklarací identity budete muset použít `.WithClaim()` metodu `PublicClientApplicationBuilder` třídy.
 
 ### <a name="javascript"></a>JavaScript
-Při tichém získávání tokenů ( `acquireTokenSilent`pomocí) pomocí MSAL. js může vaše aplikace obdržet chyby, [](conditional-access-dev-guide.md) když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásadu MFA, jako je například zásada MFA.
+Při tichém získávání tokenů ( `acquireTokenSilent`pomocí) pomocí MSAL. js může vaše aplikace obdržet chyby, když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásadu MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
 
 Vzor pro zpracování této chyby je provést interaktivní volání metody získání tokenu v MSAL. js, `acquireTokenPopup` jako je například nebo `acquireTokenRedirect` jako v následujícím příkladu:
 
@@ -179,7 +179,7 @@ K interaktivnímu získání tokenu se uživateli zobrazí výzva a dává jim m
 
 Při volání rozhraní API, které vyžaduje podmíněný přístup, můžete z rozhraní API obdržet výzvu s deklarací identity. V takovém případě můžete předat deklarace vracené v chybě do `claimsRequest` pole `AuthenticationParameters.ts` třídy, aby splňovala příslušné zásady. 
 
-Další informace najdete v tématu [vyžádání dalších deklarací identity]() .
+Další informace najdete v tématu [vyžádání dalších deklarací identity](active-directory-optional-claims.md) .
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Opakování po chybách a výjimkách
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828914"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305080"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Povolit přihlašování k neheslovým klíčům zabezpečení pro Azure AD (Preview)
 
 ## <a name="requirements"></a>Požadavky
 
-* Služba Azure Multi-Factor Authentication
+* Azure Multi-Factor Authentication
 * Kombinovaná registrace ve verzi Preview s povolenými uživateli pro SSPR
 * FIDO2 Security Key Preview vyžaduje kompatibilní klíče zabezpečení FIDO2.
 * Operace WebAuthN vyžaduje Microsoft Edge ve Windows 10 verze 1809 nebo vyšší.
@@ -54,12 +54,12 @@ Pokud chcete cílit na konkrétní skupiny zařízení a povolit poskytovatele p
    1. Název: Klíče zabezpečení pro přihlášení k Windows
    1. Popis: Povolí použití klíčů zabezpečení FIDO během přihlašování Windows.
    1. Platforma: Windows 10 a novější
-   1. Typ platformy: Vlastní
+   1. Typ profilu: Vlastní
    1. Vlastní nastavení OMA-URI:
       1. Název: Zapnout přihlášení k Windows FIDO klíče zabezpečení
       1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Datový typ: Integer
-      1. Hodnota: 1 
+      1. Osa 1 
 1. Tato zásada se dá přiřadit konkrétním uživatelům, zařízením nebo skupinám. Další informace najdete v článku [přiřazení profilů uživatelů a zařízení v Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
 ![Vytvoření vlastní zásady konfigurace zařízení v Intune](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
@@ -101,7 +101,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 ### <a name="enable-new-passwordless-authentication-method"></a>Povolit novou metodu ověřování s nehesly
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-1. Přejítna **Azure Active Directory** > zásady > ověřovánímetodyověřování >  **(Preview)**
+1. Přejít na **Azure Active Directory** > zásadyověřování > metody ověřování **(Preview)**  > 
 1. V části jednotlivé **metody**vyberte následující možnosti.
    1. **Povolit** – Ano nebo ne
    1. **Cíl** – všichni uživatelé nebo vybrat uživatele
@@ -118,14 +118,14 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 1. Přejít na[https://myprofile.microsoft.com](https://myprofile.microsoft.com)
 1. Přihlásit se, pokud ještě není
 1. Kliknout na **zabezpečení – informace**
-   1. Pokud už uživatel má zaregistrovanou aspoň jednu metodu Azure Multi-Factor Authentication, může hned zaregistrovat FIDO2 bezpečnostní klíč.
-   1. Pokud nemají zaregistrovanou alespoň jednu metodu Azure Multi-Factor Authentication, musí ji přidat.
+   1. Pokud má uživatel již alespoň jednu zaregistrovanou metodu Azure Multi-Factor Authentication, může ihned zaregistrovat klíč zabezpečení FIDO2.
+   1. Pokud nemají zaregistrovanou alespoň jednu metodu služby Azure Multi-Factor Authentication, musí ji přidat.
 1. Přidejte klíč zabezpečení FIDO2, a to tak, že kliknete na **Přidat metodu** a zvolíte **klíč zabezpečení** .
 1. Zvolit **zařízení USB** nebo **zařízení NFC**
 1. Připravte si klíč a vyberte **Další** .
 1. Zobrazí se okno s žádostí o vytvoření nebo zadání kódu PIN pro klíč zabezpečení a potom pro svůj klíč použijte možnost biometrika nebo dotykové ovládání.
 1. Vrátíte se do kombinovaného prostředí pro registraci a budete požádáni o poskytnutí smysluplného názvu pro váš token, abyste mohli zjistit, který z nich máte, pokud máte víc. Klikněte na **Další**.
-1. Kliknutím na Hotovo dokončete proces.
+1. Kliknutím na **Hotovo** dokončete proces.
 
 ### <a name="manage-security-key-biometric-pin-or-reset-security-key"></a>Správa klíčového bezpečnostního biometriky, PIN kódu nebo resetování klíče zabezpečení
 
@@ -167,8 +167,8 @@ Uživatelé, kteří se spoléhají na jednotné přihlašování, které použ�
 
 Pracujeme na podpoře funkce, která umožňuje změnit hlavní název uživatele (UPN) na hybridních AADJ a AADJ zařízeních. Pokud se změní hlavní název uživatele (UPN), nebudete už moct měnit bezpečnostní klíče FIDO2 k tomuto účtu. Jediným přístupem je resetování zařízení a uživatel se musí znovu zaregistrovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Další informace o registraci zařízení](../devices/overview.md)
 
-[Další informace o službě Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Přečtěte si o Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

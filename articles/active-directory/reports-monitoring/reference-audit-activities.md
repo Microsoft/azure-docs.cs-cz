@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127134"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306011"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -408,6 +408,14 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání zprostředkovatelů identity pro konkrétní tok správy|
 |Správa adresářů|Získání seznamu všech toků správy|
 |Správa adresářů|Získání seznamu značek pro všechny toky správy všech uživatelů|
+|Správa skupin|Členové skupiny hromadného stahování – zahájeno|
+|Správa skupin|Členové skupiny hromadného stahování – dokončeno|
+|Správa skupin|Členové skupiny hromadného importu – spuštěno|
+|Správa skupin|Členové skupiny hromadného importu – dokončeno|
+|Správa skupin|Hromadné odebrání členů skupiny – zahájeno|
+|Správa skupin|Hromadné odebrání členů skupiny – dokončeno|
+|Správa skupin|Hromadné stažení skupin – zahájeno|
+|Správa skupin|Hromadné stažení skupin – dokončeno|
 |Správa skupin|Získání seznamu tenantů pro uživatele|
 |Správa skupin|Získání deklarací identity s vlastním potvrzením pro místní účty|
 |Správa skupin|Získání kódu JSON lokalizovaného prostředku|
@@ -454,28 +462,42 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa rolí|Odstranění konfigurace zařízení|
 |Správa rolí|Zařízení už nevyhovuje předpisům|
 |Správa rolí|Zařízení už není spravované|
-|Správa uživatelů|Odebrání registrovaného vlastníka ze zařízení|
-|Správa uživatelů|Odebrání registrovaných uživatelů ze zařízení|
-|Správa uživatelů|Aktualizovat zařízení|
-|Správa uživatelů|Aktualizace konfigurace zařízení|
-|Správa uživatelů|Přidání oprávněného člena do role|
-|Správa uživatelů|Přidání člena do role|
-|Správa uživatelů|Přidání přiřazení role do definice role|
-|Správa uživatelů|Přidání role ze šablony|
-|Správa uživatelů|Přidání vymezeného člena do role|
-|Správa uživatelů|Odebrání oprávněného člena z role|
-|Správa uživatelů|Odebrat člena z role|
-|Správa uživatelů|Odebrání přiřazení role z definice role|
-|Správa uživatelů|Odebrání vymezeného člena z role|
-|Správa uživatelů|Aktualizace role|
 |Správa uživatelů|AccessReview_Review|
 |Správa uživatelů|AccessReview_Update|
 |Správa uživatelů|ActivationAborted|
 |Správa uživatelů|ActivationApproved|
 |Správa uživatelů|ActivationCanceled|
 |Správa uživatelů|ActivationRequested|
+|Správa uživatelů|Přidání oprávněného člena do role|
+|Správa uživatelů|Přidání člena do role|
+|Správa uživatelů|Přidání přiřazení role do definice role|
+|Správa uživatelů|Přidání role ze šablony|
+|Správa uživatelů|Přidání vymezeného člena do role|
 |Správa uživatelů|Přidáno|
 |Správa uživatelů|Přiřadit|
+|Správa uživatelů|Hromadné vytvoření uživatelů – spuštěné|
+|Správa uživatelů|Hromadné vytvoření uživatelů – dokončeno|
+|Správa uživatelů|Hromadné odstranění uživatelů – spuštěné|
+|Správa uživatelů|Hromadné odstranění uživatelů – dokončeno|
+|Správa uživatelů|Uživatelé hromadného stahování – spuštěno|
+|Správa uživatelů|Uživatelé hromadného stahování – dokončeno|
+|Správa uživatelů|Hromadné obnovení odstraněných uživatelů-zahájeno|
+|Správa uživatelů|Hromadné obnovení odstraněných uživatelů – dokončeno|
+|Správa uživatelů|Uživatelé hromadného pozvání – spuštěno|
+|Správa uživatelů|Hromadná Pozvánka uživatelů – dokončeno|
+|Správa uživatelů|Odebrání registrovaného vlastníka ze zařízení|
+|Správa uživatelů|Odebrání registrovaných uživatelů ze zařízení|
+|Správa uživatelů|Odebrání oprávněného člena z role|
+|Správa uživatelů|Odebrat člena z role|
+|Správa uživatelů|Odebrání přiřazení role z definice role|
+|Správa uživatelů|Odebrání vymezeného člena z role|
+|Správa uživatelů|Aktualizovat zařízení|
+|Správa uživatelů|Aktualizace konfigurace zařízení|
+|Správa uživatelů|Aktualizace role|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Ochrana identit

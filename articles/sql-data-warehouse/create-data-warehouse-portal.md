@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575197"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375838"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal
 
@@ -98,7 +98,7 @@ Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru. Tato br
 > SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 
 1. Po dokončení nasazení vyberte v nabídce na levé straně **všechny služby** . Vyberte **databáze**. Pokud chcete přidat datové sklady SQL do oblíbených položek, vyberte hvězdičku vedle **SQL Data Warehouse** .
-1. V nabídce na levé straně vyberte **SQL Data Warehouse** a pak na stránce **SQL Data Warehouse** klikněte na **mySampleDatabase** . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci.
+1. V nabídce na levé straně vyberte **SQL Data Warehouse** a pak na stránce **SQL Data Warehouse** klikněte na **mySampleDataWarehouse** . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci.
 1. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v tomto a dalším rychlém startu. Pokud chcete otevřít nastavení serveru, klikněte na název serveru.
 
    ![vyhledání názvu serveru](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
@@ -145,7 +145,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **MyNewServer-20180430.Database.Windows.NET**. |
    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Přihlásit se | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
@@ -202,7 +202,7 @@ Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 

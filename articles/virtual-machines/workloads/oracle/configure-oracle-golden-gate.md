@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101552"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309607"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka podrobně popisuje, jak pomocí rozhraní příkazového řádku Azure nasadit databázi Oracle 12c z Image Galerie Azure Marketplace. 
 
-V tomto dokumentu se dozvíte, jak vytvořit, nainstalovat a nakonfigurovat Oracle zlatou bránu na virtuálním počítači Azure.
+V tomto dokumentu se dozvíte, jak vytvořit, nainstalovat a nakonfigurovat Oracle zlatou bránu na virtuálním počítači Azure. V tomto kurzu jsou dva virtuální počítače nastavené ve skupině dostupnosti v jedné oblasti. Stejný kurz se dá použít k nastavení brány OracleGolden pro virtuální počítače v různých Zóny dostupnosti v jedné oblasti Azure nebo pro nastavení virtuálních počítačů ve dvou různých oblastech.
 
 Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v tématu [Průvodce instalací Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: f3d2439c4456c34e5c554a5399a77f19a954a9e3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4f3148a4d5bd0d39ccfcf7e92e80300a7e19effa
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243084"
+ms.locfileid: "70307222"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Použití PowerShellu k monitorování využití odeslané sdílené datové složky
 
@@ -47,11 +47,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShareTrigger](/powershell/module/az.resources/new-azdatasharetrigger) | Vytvořte Trigger snímku sdílené složky. |
-| [Get-AzDataShareTrigger](/powershell/module/az.resources/get-azdatasharetrigger) | Získá nastavení synchronizace pro synchronizaci sdílené složky. |
+| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | Vytvořte Trigger snímku sdílené složky. |
+| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Získá nastavení synchronizace pro synchronizaci sdílené složky. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

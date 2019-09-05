@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992188"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308994"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Čtení replik v Azure Database for MariaDB
 
 Funkce replika čtení umožňuje replikovat data z Azure Database for MariaDB serveru do serveru jen pro čtení. Z hlavního serveru je můžete replikovat až na pět replik. Repliky se asynchronně aktualizují pomocí technologie replikace v binárním protokolu (binlog) modulu MariaDB s ID globálního transakce (GTID). Další informace o replikaci binlog najdete v tématu [Přehled replikace binlog](https://mariadb.com/kb/en/library/replication-overview/).
-
-> [!IMPORTANT]
-> Repliku pro čtení můžete vytvořit ve stejné oblasti jako váš hlavní server nebo v libovolné jiné oblasti Azure podle vašeho výběru. Repliky čtení (stejné oblasti a mezi oblastí) jsou momentálně ve verzi Public Preview.
 
 Repliky jsou nové servery, které spravujete podobně jako běžné Azure Database for MariaDB servery. Pro každou repliku čtení se vám bude účtovat zajištěné výpočetní prostředky v virtuální jádra a úložišti v GB/měsíc.
 
@@ -37,9 +34,6 @@ Funkce replika čtení používá asynchronní replikaci. Tato funkce není urč
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
-
-> [!IMPORTANT]
-> Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
 
 Hlavní server můžete mít v libovolné [Azure Database for MariaDB oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky.
 
@@ -126,7 +120,7 @@ Replika pro čtení je vytvořená jako nový server Azure Database for MariaDB.
 Replika je vytvořena pomocí stejné konfigurace serveru jako hlavní. Po vytvoření repliky je možné změnit několik nastavení nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště, doba uchování zálohy a verze stroje MariaDB. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 > [!IMPORTANT]
-> Než bude konfigurace hlavního serveru aktualizována na nové hodnoty, aktualizujte konfiguraci repliky na hodnotu stejné nebo větší. Tato akce zajistí, že replika bude udržovat všechny změny provedené v hlavní větvi.
+> Před aktualizací konfigurace hlavního serveru na nové hodnoty aktualizujte konfiguraci repliky na stejné nebo vyšší hodnoty. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
 
 ### <a name="stopped-replicas"></a>Zastavené repliky
 

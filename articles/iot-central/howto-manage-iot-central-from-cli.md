@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 021341406f1a7269aadf18eb3a748e539cbb5bf5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 421d41f95eff0ba0fdbca02c588d4a9a0c461a84
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086957"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381061"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -67,6 +67,9 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 | iotc-demo@1.0.0          | Vytvoří aplikaci, která zahrnuje již vytvořenou šablonu zařízení pro chladící prodejní automat. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
 | iotc-devkit-sample@1.0.0 | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s některým z těchto zařízení. |
+
+> [!NOTE]
+> Šablona **aplikace Preview** je aktuálně dostupná pouze v oblastech **Severní Evropa** a **střed USA** .
 
 ## <a name="view-your-applications"></a>Zobrazení vašich aplikací
 

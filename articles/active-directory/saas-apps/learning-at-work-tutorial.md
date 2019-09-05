@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823683"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376080"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Kurz: Integrace učení v práci s Azure Active Directory
 
@@ -90,9 +90,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se [na tým podpory pracovního klienta](https://www.learninga-z.com/site/contact/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Aplikace Learning on work očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**.
+5. Aplikace Learning on work očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**.
 
-    Hodnotu **NameIdentifier** ve službě Azure AD můžete aktualizovat na základě nastavení vaší organizace. Tato hodnota se musí shodovat s **ID uživatele** v cloudu Saba, aby bylo nutné upravit mapování atributů kliknutím na ikonu **Upravit** . a změňte mapování atributů.
+    Hodnotu **NameIdentifier** ve službě Azure AD můžete aktualizovat na základě nastavení vaší organizace. Tato hodnota se musí shodovat s **ID uživatele** v cloudu Saba, aby bylo nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 ### <a name="configure-learning-at-work-sso"></a>Konfigurace učení při práci s jednotným přihlašováním
 
-Ke konfiguraci jednotného přihlašování při **učení** na pracovišti je potřeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory práce](https://www.learninga-z.com/site/contact/support). Nastaví toto nastavení tak, aby se správně nastavilo připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování při **učení na pracovišti** je potřeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory práce](https://www.learninga-z.com/site/contact/support). Nastaví toto nastavení tak, aby se správně nastavilo připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -140,7 +140,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-learning-at-work-test-user"></a>Vytvořit učení v pracovním testu uživatele
 
-V této části vytvoříte uživatele s názvem B. Simon ve výukovém kurzu v práci. Pracujte s [výukou v týmu podpory pro práci](https://www.learninga-z.com/site/contact/support) a přidejte uživatele na platformě učení na pracovišti. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon ve výukovém kurzu v práci. Pracujte s [výukou v týmu podpory pro práci](https://www.learninga-z.com/site/contact/support) a přidejte uživatele na platformě učení na pracovišti. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-sso"></a>Test SSO 
 

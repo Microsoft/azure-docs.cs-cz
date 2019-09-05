@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359072"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306764"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace Node. js pomocí Socket.IO v cloudové službě Azure
 
@@ -62,7 +62,7 @@ Pro tento projekt použijeme příklad chatu z [úložiště GitHub Socket.IO]. 
    
    ![Průzkumník a zobrazení obsahu adresáře příkladů\\chatu extrahované z archivu][chat-contents]
    
-   Zvýrazněné položky na snímku obrazovky jsou soubory zkopírované z adresáře **příkladů\\chatu** .
+   Zvýrazněné položky na snímku obrazovky jsou soubory zkopírované z adresáře **\\příkladů chatu** .
 3. V adresáři **C:\\node\\chatapp\\WorkerRole1** odstraňte soubor **Server. js** a potom přejmenujte soubor **App. js** na **Server. js**. Tím se odebere výchozí soubor **Server. js** vytvořený pomocí rutiny **Add-AzureNodeWorkerRole** a nahradí ho souborem aplikace z příkladu chatu.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Upravit server. js a nainstalovat moduly
@@ -144,7 +144,7 @@ Vaše aplikace je teď spuštěná v Azure a může přenášet zprávy konverza
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikaci hostovanou v cloudové službě Azure. Informace o tom, jak hostovat tuto aplikaci na webu Azure, najdete v tématu [sestavení chatovací aplikace Node. js pomocí Socket.IO na webu Azure][chatwebsite].
 
-Další informace najdete v tématu také [středisko pro vývojáře Node. js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
+Další informace najdete v tématu také [středisko pro vývojáře Node. js](https://docs.microsoft.com/azure/javascript/).
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

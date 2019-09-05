@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
-ms.custom: mvc, seo-java-august2019
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 1f05e9916a87f7258dad358ac8fff91c5ba7f25e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172937"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306486"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Rychlý start: Řízení zařízení připojeného ke službě Azure IoT Hub pomocí Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu a spravovat zařízení z cloudu. V tomto rychlém startu použijete *přímou metodu* k řízení simulovaného zařízení připojeného k centru IoT. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT.
+V tomto rychlém startu použijete *přímou metodu* k řízení simulovaného zařízení připojeného ke službě Azure IoT Hub pomocí aplikace Java. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu a spravovat zařízení z cloudu. 
 
 Rychlý start používá dvě předem napsané aplikace Java:
 
@@ -177,7 +177,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpověděli na přímé volání metody v aplikaci simulovaného zařízení.
 

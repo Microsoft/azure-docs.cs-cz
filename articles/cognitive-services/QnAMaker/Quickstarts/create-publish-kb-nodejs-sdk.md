@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: dd2bb5fc4d6ecf2cac0fa629c59abb0e017d43b0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dcbbaa2f4c6ebe709c879909f873b212f238ff2a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857289"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375863"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Rychlý start: QnA Maker klientskou knihovnu pro Node. js
 
@@ -27,7 +27,7 @@ Pomocí klientské knihovny QnA Maker pro Node. js:
 * Správa znalostní báze
 * Publikování znalostní báze
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/qnamaker?view=azure-node-latest) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | knihovny dokumentace[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Referenční dokumentace](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | knihovny dokumentace[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Klient QnA Maker je objekt [QnAMakerClient](https://docs.microsoft.com/javascrip
 
 Po vytvoření klienta použijte vlastnost [znalostní báze](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnamakerclient?view=azure-node-latest#knowledgebase) vytvořit, spravovat a publikovat znalostní bázi. 
 
-Spravujte znalostní bázi odesláním objektu JSON. Pro okamžité operace metoda obvykle vrací objekt JSON indikující stav. V případě dlouhotrvajících operací je odpověď ID operace. Zavolejte [klientovi. Operations.](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--servicecallback-operation--) GetDetails – metoda s ID operace, která určuje [stav žádosti](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operationstatetype?view=azure-node-latest). 
+Spravujte znalostní bázi odesláním objektu JSON. Pro okamžité operace metoda obvykle vrací objekt JSON indikující stav. V případě dlouhotrvajících operací je odpověď ID operace. Zavolejte [klientovi. Operations. GetDetails](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operations?view=azure-node-latest#getdetails-string--servicecallback-operation--) – metoda s ID operace, která určuje [stav žádosti](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/operationstatetype?view=azure-node-latest). 
 
  
 ## <a name="code-examples"></a>Příklady kódu
@@ -118,7 +118,7 @@ Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](ht
 * Pro **soubory**použijte objekt [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) . 
 * Pro **adresy URL**použijte seznam řetězců.
 
-Zavolejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) a potom předejte vrácené ID operace do metody [Operations.](#get-status-of-an-operation) GetDetails pro dotazování na stav. 
+Zavolejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) a potom předejte vrácené ID operace do metody [Operations. GetDetails](#get-status-of-an-operation) pro dotazování na stav. 
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
@@ -164,7 +164,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 >[Kurz: Vytvoření a odpověď na KB](../tutorials/create-publish-query-in-portal.md)

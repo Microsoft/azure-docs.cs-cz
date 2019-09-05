@@ -1,5 +1,5 @@
 ---
-title: Jednoduchá entita, seznam frází – LUIS
+title: 'Kurz: Jednoduchá entita, seznam frází – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu extrahujete pomocí jednoduché entity data z pracovní úlohy, která se naučila z utterance. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648610"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376273"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahování názvů pomocí jednoduchých entit a seznamu frází
 
@@ -235,7 +235,7 @@ Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognit
 
     Pokud chcete přidat další slova do seznamu frází, vyberte znovu **příkaz** , zkontrolujte nové **související hodnoty** a přidejte relevantní. 
 
-    Ujistěte se, že **jsou tyto hodnoty** zaměnitelné, protože by se měly všechny tyto hodnoty považovat za synonyma pro úlohy. Přečtěte si další informace o [konceptech seznamu frází](luis-concept-feature.md#how-to-use-phrase-lists), které se nemění.
+    Ujistěte se, že **jsou tyto hodnoty zaměnitelné** , protože by se měly všechny tyto hodnoty považovat za synonyma pro úlohy. Přečtěte si další informace o [konceptech seznamu frází](luis-concept-feature.md#how-to-use-phrase-lists), které se nemění.
 
 1. Vyberte **Hotovo** a aktivujte seznam frází.
 
@@ -294,7 +294,7 @@ Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognit
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu aplikace Human Resources používá strojově naučenou jednoduchou entitu k vyhledání názvů pracovních pozic v promluvách. Vzhledem k tomu, že názvy pracovních pozic mohou obsahovat celou škálu slov a frází, potřebovala aplikace seznam frází, pomocí nichž lépe rozpozná slova názvu pracovní pozice. 
 

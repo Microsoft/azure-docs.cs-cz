@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015645"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376448"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
@@ -43,7 +43,7 @@ Mezi další Azure Storage možnosti redundance patří úložiště redundantn�
 > [!WARNING]
 > Geograficky redundantní úložiště přináší riziko ztráty dat. Data se replikují do sekundární oblasti asynchronně, což znamená, že mezi daty zapsanými do primární oblasti dojde k zápisu do sekundární oblasti. V případě výpadku dojde ke ztrátě operací zápisu do primárního koncového bodu, které ještě nebyly replikovány do sekundárního koncového bodu.
 
-## <a name="design-for-high-availability"></a>Návrh pro vysokou dostupnost
+## <a name="design-for-high-availability"></a>Návrh pro zajištění vysoké dostupnosti
 
 Je důležité navrhnout aplikaci pro zajištění vysoké dostupnosti od začátku. Pokyny pro návrh aplikace a plánování zotavení po havárii najdete v těchto prostředcích Azure:
 
@@ -113,7 +113,7 @@ Chcete-li se vyhnout zásadní ztrátě dat, před navrácením služeb po obnov
 
 ## <a name="initiate-an-account-failover"></a>Zahájení převzetí služeb při selhání účtu
 
-Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o inicializaci převzetí služeb při [selhání (Preview)](storage-initiate-account-failover.md).
+Převzetí služeb při selhání účtu můžete iniciovat z rozhraní API Azure Portal, PowerShellu, Azure CLI nebo poskytovatele prostředků Azure Storage. Další informace o tom, jak iniciovat převzetí služeb při selhání, najdete v tématu o [inicializaci převzetí služeb při selhání (Preview)](storage-initiate-account-failover.md).
 
 ## <a name="about-the-preview"></a>O verzi Preview
 
@@ -168,7 +168,6 @@ Mějte na paměti, že při vypnutí virtuálního počítače dojde ke ztrátě
 Pro převzetí služeb při selhání účtu verze Preview nejsou podporované tyto funkce nebo služby:
 
 - Azure File Sync nepodporuje převzetí služeb při selhání účtu úložiště. Účty úložiště obsahující sdílené složky Azure, které se používají jako koncové body cloudu v Azure File Sync by neměly přenášet služby při selhání. Tím dojde k tomu, že synchronizace přestane fungovat a může také způsobit neočekávanou ztrátu dat v případě nově vrstvených souborů.  
-- Účty úložiště používající Azure Data Lake Storage Gen2 hierarchickém oborem názvů nejde převzít služby při selhání.
 - Účet úložiště obsahující archivované objekty blob nejde převzít služby při selhání. Udržujte archivované objekty BLOB v samostatném účtu úložiště, u kterých neplánujete převzít služby při selhání.
 - Nepovedlo se převzít služby účtů úložiště obsahující objekty blob bloku Premium. Účty úložiště, které podporují objekty blob bloku Premium, v současné době nepodporují geografickou redundanci.
 - Po dokončení převzetí služeb při selhání přestane následující funkce fungovat, pokud jsou původně povolené: [Odběry událostí](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zásady životního cyklu](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)a [protokolování analýza úložiště](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

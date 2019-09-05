@@ -1,5 +1,5 @@
 ---
-title: Předpověď záměrů – LUIS
+title: 'Kurz: Předpověď záměrů – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 249ac689f855d175fa5df7cc5fed9438c0873289
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560383"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375823"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavování aplikace LUIS pro určení záměrů uživatelů
 
@@ -139,7 +139,7 @@ Vraťte se na portál LUIS a vytvořte nový záměr, abyste zjistili, jestli se
 
 1. V nabídce vpravo nahoře vyberte **Build** (Sestavení) a vraťte se k vytváření aplikace.
 
-1. V  nabídce vlevo můžete vybrat záměry a získat tak seznam záměrů.
+1. V nabídce vlevo můžete vybrat **záměry** a získat tak seznam záměrů.
 
 1. Vyberte **Create new intent** (Vytvořit nový záměr) a zadejte název `ApplyForJob`. 
 
@@ -231,7 +231,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 * [Robot Azure bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili aplikaci Human Resources, dva záměry, přidali jste ukázkové promluvy jednotlivých záměrů, přidali jste ukázkové promluvy do záměru None a vytrénovali, publikovali a otestovali jste aplikaci na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
 

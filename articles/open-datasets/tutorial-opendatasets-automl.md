@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845811"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309262"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Kurz: Sestavujte regresní model pomocí automatizovaného strojového učení a otevřených datových sad.
 
@@ -69,7 +69,7 @@ V tomto příkladu se používá prostředí Anaconda s poznámkovým blokem Jup
     jupyter notebook
     ```
 
-Po dokončení těchto kroků naklonujte [úložiště poznámkového bloku Open DataSets](https://github.com/Azure/OpenDatasetsNotebooks) a otevřete Poznámkový blok s výukou **/taxi-automl/01-tutorial-opendatasets-automl. ipynb** a spusťte ho.
+Po dokončení těchto kroků naklonujte [úložiště poznámkového bloku Open DataSets](https://github.com/Azure/OpenDatasetsNotebooks) a otevřete Poznámkový blok s **výukou/taxi-automl/01-tutorial-opendatasets-automl. ipynb** a spusťte ho.
 
 ## <a name="download-and-prepare-data"></a>Stažení a Příprava dat
 
@@ -148,7 +148,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>0,98</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,921715</td>
       <td>40,766682</td>
       <td>-73,916908</td>
@@ -171,7 +171,7 @@ green_taxi_df.head(10)
       <td>2016-01-02 00:00:00</td>
       <td>1</td>
       <td>3,08</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,979973</td>
       <td>40,677071</td>
@@ -219,8 +219,8 @@ green_taxi_df.head(10)
       <td>2016-01-04 18:03:43</td>
       <td>1</td>
       <td>2,87</td>
-      <td>Žádný</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,977730</td>
       <td>40,684647</td>
       <td>-73,931259</td>
@@ -268,7 +268,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2.25</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,830894</td>
       <td>40,759434</td>
       <td>-73,842422</td>
@@ -291,7 +291,7 @@ green_taxi_df.head(10)
       <td>2016-01-14 00:54:16</td>
       <td>1</td>
       <td>1.93</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73.927109</td>
       <td>40,762848</td>
@@ -316,7 +316,7 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>0,80</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,881195</td>
       <td>40,741779</td>
       <td>-73,872086</td>
@@ -363,7 +363,7 @@ green_taxi_df.head(10)
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
       <td>2,82</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,845200</td>
       <td>40,722134</td>
@@ -453,7 +453,7 @@ green_taxi_df.head(10)
       <td>2016-01-20 17:46:33</td>
       <td>1</td>
       <td>0,98</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,921715</td>
       <td>40,766682</td>
@@ -478,7 +478,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>3,08</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,979973</td>
       <td>40,677071</td>
       <td>-73,934349</td>
@@ -526,7 +526,7 @@ green_taxi_df.head(10)
       <td>1</td>
       <td>2,87</td>
       <td>Žádné</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>-73,977730</td>
       <td>40,684647</td>
       <td>-73,931259</td>
@@ -549,7 +549,7 @@ green_taxi_df.head(10)
       <td>2016-01-13 08:52:16</td>
       <td>1</td>
       <td>0.50</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,942589</td>
       <td>40,841423</td>
@@ -621,8 +621,8 @@ green_taxi_df.head(10)
       <td>2016-01-09 14:32:48</td>
       <td>2</td>
       <td>0,80</td>
-      <td>Žádný</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,881195</td>
       <td>40,741779</td>
       <td>-73,872086</td>
@@ -669,7 +669,7 @@ green_taxi_df.head(10)
       <td>2016-01-24 21:04:03</td>
       <td>6</td>
       <td>2,82</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>Žádné</td>
       <td>-73,845200</td>
       <td>40,722134</td>
@@ -883,7 +883,7 @@ holidays_df.head(5)
       <th>40689</th>
       <td>Alžírsko</td>
       <td>Den nového roku</td>
-      <td>Žádný</td>
+      <td>Žádné</td>
       <td>DZ</td>
       <td>Den nového roku</td>
       <td>2008-01-01</td>
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 Znovu zavolejte `pandas.Series.dt.normalize` `datetime` na pole v datech počasí, aby odpovídala časovému klíči v `taxi_holidays_df`. Odstraňte nepotřebné sloupce a vyfiltrujte záznamy, u kterých je `NaN`teplota.
 
-Dále seskupte data o počasí, aby bylo možné denní agregované hodnoty počasí. Definujte Dict – `aggregations` k definování, jak agregovat každé pole na denní úrovni. Pro `snowDepth` `precipTime` `precipDepth` a `temperature` vybere střední hodnotu a pro a denní maximum. `groupby()` Použijte funkci spolu s agregacemi k seskupení dat. Zobrazte náhled dat a ujistěte se, že je jeden záznam denně.
+Dále seskupte data o počasí, aby bylo možné denní agregované hodnoty počasí. Definujte dict – s názvem `aggregations` k definování, jak agregovat každé pole na denní úrovni. Pro `snowDepth` `precipTime` `precipDepth` a `temperature` vybere střední hodnotu a pro a denní maximum. `groupby()` Použijte funkci spolu s agregacemi k seskupení dat. Zobrazte náhled dat a ujistěte se, že je jeden záznam denně.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()
@@ -1369,7 +1369,7 @@ weather_df_grouped.head(10)
 </div>
 
 > [!NOTE]
-> Příklady v tomto kurzu sloučí data pomocí funkcí PANDAS a vlastních agregací, ale sada SDK Open DataSet obsahuje třídy navržené pro snadné sloučení a obohacení datových sad. Příklady příkladů kódu těchto vzorů návrhu naleznete v poznámkovém [bloku](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) .
+> Příklady v tomto kurzu sloučí data pomocí funkcí PANDAS a vlastních agregací, ale sada SDK Open DataSet obsahuje třídy navržené pro snadné sloučení a obohacení datových sad. Příklady příkladů kódu těchto vzorů návrhu naleznete v [poznámkovém bloku](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) .
 
 ### <a name="cleanse-data"></a>Vyčistit data
 
@@ -1942,7 +1942,7 @@ Pokud neplánujete použít prostředky, které jste vytvořili, odstraňte je, 
 1. Vyberte **Odstranit skupinu prostředků**.
 1. Zadejte název skupiny prostředků. Vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další příklady kódu najdete v poznámkových [blocích](https://github.com/Azure/OpenDatasetsNotebooks) Open DataSets pro Azure.
+* Další příklady kódu najdete v [poznámkových blocích](https://github.com/Azure/OpenDatasetsNotebooks) Open DataSets pro Azure.
 * Pokud [Chcete](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) získat další informace o automatizovaném strojovém učení ve službě Azure Machine Learning, postupujte podle pokynů.
