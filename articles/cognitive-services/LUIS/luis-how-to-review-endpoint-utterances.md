@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 9b809681b68fe3347a68cb2b2006c41783a356a6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932813"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382357"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Postup kontroly služby Endpoint projevy na portálu LUIS pro aktivní učení
 
@@ -25,11 +25,11 @@ ms.locfileid: "68932813"
 
 ## <a name="enable-active-learning"></a>Povolit aktivní učení
 
-Pokud chcete povolit aktivní učení, Zaprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=true` parametrem a hodnotou QueryString.
+Pokud chcete povolit aktivní učení, Zaprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) s `log=true` parametrem a hodnotou QueryString.
 
 ## <a name="disable-active-learning"></a>Zakázat aktivní učení
 
-Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) s `log=false` parametrem a hodnotou QueryString.
+Pokud chcete zakázat aktivní učení, Neprotokolujte uživatelské dotazy. Toho je možné dosáhnout nastavením [dotazu koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) s `log=false` parametrem a hodnotou QueryString.
 
 ## <a name="filter-utterances"></a>Filtrovat projevy
 

@@ -1,31 +1,28 @@
 ---
-title: Vytvoření služby application gateway pomocí adresy URL na základě cest pravidla směrování – Azure PowerShell | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit na základě cest pravidly směrování adres URL pro application gateway a virtual machine škálovací sady pomocí Azure Powershellu.
+title: Vytvoření aplikační brány s pravidly směrování na základě cesty URL – Azure PowerShell | Microsoft Docs
+description: Naučte se vytvářet pravidla směrování na základě cest URL pro aplikační bránu a sadu škálování virtuálních počítačů pomocí Azure PowerShell.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: ef80ca290d2bd78ccdcd5e4109f9b1d7ecdab4f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebe09e2c10bed1779d9189755f66bbea9bca1d43
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729690"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306260"
 ---
-# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Vytvoření služby application gateway pomocí adresy URL na základě cest pravidla směrování pomocí prostředí Azure PowerShell
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Vytvoření aplikační brány s pravidly směrování na základě cesty URL pomocí Azure PowerShell
 
-Prostředí Azure PowerShell můžete použít ke konfiguraci [pravidla směrování na základě cest URL](application-gateway-url-route-overview.md) při vytváření [služba application gateway](application-gateway-introduction.md). V tomto kurzu vytvoříte pomocí back-endové fondy [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování, která Ujistěte se, že webový provoz dorazí na příslušné servery ve fondech.
+Pomocí Azure PowerShell můžete nakonfigurovat [pravidla směrování na základě cest URL](application-gateway-url-route-overview.md) při vytváření [aplikační brány](application-gateway-introduction.md). V tomto kurzu vytvoříte back-end fondy pomocí [sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření služby application gateway pomocí adresy URL mapy
+> * Vytvoření aplikační brány s mapou URL
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 
 ![Příklad směrování na základě adresy URL](./media/application-gateway-create-url-route-arm-ps/scenario.png)
@@ -36,11 +33,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, tento kurz vyžaduje modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz modul Azure PowerShell. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Abyste vytvořili skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -48,7 +45,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Vytvořte Konfigurace podsítí *myAGSubnet* a *myBackendSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfigurací podsítě. A konečně, vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
+Vytvořte konfigurace podsítě *myAGSubnet* a *myBackendSubnet* pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) s konfiguracemi podsítí. Nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -74,7 +71,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
-Přidružit *myAGSubnet* , který jste předtím vytvořili pro aplikační bránu pomocí [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Přiřazení *myAGPublicIPAddress* na aplikační bránu pomocí [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
+Přidružte k aplikační bráně *myAGSubnet* , kterou jste dříve vytvořili, pomocí [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration). Přiřaďte *myAGPublicIPAddress* k aplikační bráně pomocí [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -97,7 +94,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Vytvoření výchozího fondu a nastavení
 
-Vytvořit výchozí back-endový fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Konfigurace nastavení fondu back-endu s využitím [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
+Vytvořte výchozí back-end fond s názvem *appGatewayBackendPool* pro aplikační bránu pomocí [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool). Nakonfigurujte nastavení pro back-end fond pomocí [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting).
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -114,7 +111,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 Naslouchací proces je potřeba k tomu, aby brána Application Gateway mohla správně směrovat provoz na back-endový fond. V tomto kurzu vytvoříte dva naslouchací procesy. První základní naslouchací proces, který vytvoříte, naslouchá provozu na kořenové adrese URL. Druhý naslouchací proces, který vytvoříte, naslouchá provozu na konkrétních adresách URL.
 
-Vytvořit výchozí naslouchací proces s názvem *myDefaultListener* pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s front-endová konfigurace a front-endový port, který jste předtím vytvořili. Pravidlo je potřeba k tomu, aby naslouchací proces poznal, který back-endový fond má použít pro příchozí provoz. Vytvořte základní pravidlo s názvem *pravidla 1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
+Vytvořte výchozí naslouchací proces s názvem *myDefaultListener* pomocí [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) s konfigurací front-endu a portem front-endu, který jste vytvořili dříve. Pravidlo je potřeba k tomu, aby naslouchací proces poznal, který back-endový fond má použít pro příchozí provoz. Vytvořte základní pravidlo s názvem *rule1* pomocí [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -132,7 +129,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Teď, když jste vytvořili potřebné podpůrné prostředky, zadejte parametry služby application gateway s názvem *myAppGateway* pomocí [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)a vytvořte ji pomocí [Nové AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
+Teď, když jste vytvořili potřebné podpůrné prostředky, určete parametry služby Application Gateway s názvem *myAppGateway* pomocí [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)a pak ji vytvořte pomocí [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -155,7 +152,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a videa
 
-Můžete přidat back-endové fondy s názvem *imagesBackendPool* a *videoBackendPool* pro vaši bránu application gateway s využitím [přidat AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Přidejte port front-endu pro fondy pomocí [přidat AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Potom odešlete změny na aplikační bránu pomocí [Set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
+K aplikační bráně můžete přidat back-end fondy s názvem *imagesBackendPool* a *videoBackendPool* pomocí [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Port front-endu pro fondy přidáte pomocí [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Pak odešlete změny do aplikační brány pomocí [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -176,7 +173,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-backend-listener"></a>Přidání back-endového naslouchacího procesu
 
-Přidejte naslouchací proces back-end s názvem *backendListener* , který je nezbytný pro směrování provozu pomocí [přidat AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
+Přidejte naslouchací proces back-endu s názvem *backendListener* , který je potřeba ke směrování provozu pomocí [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -198,7 +195,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-url-path-map"></a>Přidání mapy cest adres URL
 
-Mapy cest adres URL zajišťují přesměrování konkrétních adres URL na konkrétní back-endové fondy. Můžete vytvořit s názvem mapy cest URL *imagePathRule* a *videoPathRule* pomocí [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) a [ Přidat AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig).
+Mapy cest adres URL zajišťují přesměrování konkrétních adres URL na konkrétní back-endové fondy. Můžete vytvořit mapy cest URL s názvem *imagePathRule* a *videoPathRule* pomocí [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) a [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -237,7 +234,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rule"></a>Přidání pravidla směrování
 
-Pravidlo směrování přidružuje mapu adres URL k naslouchacímu procesu, který jste vytvořili. Můžete přidat pravidlo s názvem **rule2* pomocí [přidat AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
+Pravidlo směrování přidružuje mapu adres URL k naslouchacímu procesu, který jste vytvořili. Pravidlo s názvem **Rule2* můžete přidat pomocí [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -306,6 +303,7 @@ for ($i=1; $i -le 3; $i++)
     -ImageReferenceOffer WindowsServer `
     -ImageReferenceSku 2016-Datacenter `
     -ImageReferenceVersion latest
+    -OsDiskCreateOption FromImage
   Set-AzVmssOsProfile $vmssConfig `
     -AdminUsername azureuser `
     -AdminPassword "Azure123456!" `
@@ -347,7 +345,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) k získání veřejné IP adresy služby application gateway. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Jako jsou například `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`, nebo `http://52.168.55.24:8080/video/test.htm`.
+K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`nebo. `http://52.168.55.24:8080/video/test.htm`
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -355,11 +353,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Otestování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Změňte adresu URL na `http://<ip-address>:8080/video/test.htm`, nahraďte IP adresy pro `<ip-address>`, a by měl vypadat přibližně jako v následujícím příkladu:
+Změňte adresu URL na `http://<ip-address>:8080/video/test.htm`, nahraďte vaši IP `<ip-address>`adresu, a mělo by se zobrazit něco jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Změňte adresu URL na `http://<ip-address>:8080/video/test.htm` a by měl vypadat přibližně jako v následujícím příkladu:
+Změňte adresu URL na `http://<ip-address>:8080/video/test.htm` a měli byste vidět něco jako v následujícím příkladu:
 
 ![Testování adresy URL videa v aplikační bráně](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
@@ -369,7 +367,7 @@ V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvoření služby application gateway pomocí adresy URL mapy
+> * Vytvoření aplikační brány s mapou URL
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
 
-Další informace o aplikačních bran a jejich souvisejících prostředcích najdete i nadále články s postupy.
+Další informace o aplikačních branách a jejich souvisejících prostředcích najdete v článcích s postupy.

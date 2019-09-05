@@ -10,16 +10,16 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574853"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306229"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý start: Škálování výpočetních prostředků v Azure SQL Data Warehouse PowerShellu
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Rychlý start: Škálování výpočetních prostředků v Azure SQL Data Warehouse Azure PowerShell
 
-Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí PowerShellu. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+Škálujte výpočetní prostředky v Azure SQL Data Warehouse pomocí Azure PowerShell. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

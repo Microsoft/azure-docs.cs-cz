@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b600740f24a16d68e896638e65b9bf3c09e33bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 197df5c5467a9cea9a76c888569752ed2576d2d2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192669"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375746"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -44,12 +44,12 @@ Tato stránka se aktualizuje každý měsíc, takže návštěvě pravidelně. P
 ### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Plán změny: Vyřazení balíčků obsahu Power BI
 
 **Textový** Plánování změn  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 Od 1. října 2019 začne Power BI začínat všechny balíčky obsahu, včetně balíčku obsahu Power BI Azure AD. Jako alternativu k tomuto balíčku obsahu můžete použít sešity Azure AD a získat přehled o službách souvisejících s Azure AD. Další sešity se připravují, včetně sešitů o zásadách podmíněného přístupu v režimu pouze sestavy, přehledů na základě souhlasu aplikace a dalších.
 
-Další informace o sešitech najdete v tématu [Jak používat Azure monitor sešity pro Azure Active Directory sestavy](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Další informace o vyřazení balíčků obsahu najdete v blogovém příspěvku s oznámením o [obecných dostupnosti pro Power BI šablonových aplikací](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
+Další informace o sešitech najdete v tématu [Jak používat Azure monitor sešity pro Azure Active Directory sestavy](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Další informace o vyřazení balíčků obsahu najdete v blogovém příspěvku s [oznámením o obecných dostupnosti pro Power BI šablonových aplikací](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) .
 
 ---
 
@@ -74,7 +74,7 @@ Pokud potřebujete další oprávnění nebo prostředky, které se v tuto chví
 K dispozici jsou nové protokoly zřizování, které vám pomůžou monitorovat a řešit potíže s nasazením zřizování uživatelů a skupin. Tyto nové soubory protokolu obsahují informace o:
 
 - Které skupiny byly úspěšně vytvořeny v [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)
-- Jaké role byly naimportovány z [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on)
+- Jaké role byly naimportovány z [Amazon Web Services (AWS)](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-and-test-azure-ad-single-sign-on)
 - Kteří zaměstnanci nebyli naimportovali z [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)
 
 Další informace najdete v tématu [zřizování sestav na portálu Azure Active Directory (Preview)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs).
@@ -97,7 +97,7 @@ Moderní sestavy zabezpečení poskytují další možnosti ze starších verzí
 - Stav rizika, pokrytí: Ohrožené, neúspěšné, opravené a potvrzené ohrožení
 - Nové detekce související s riziky (k dispozici pro Azure AD Premium předplatitele)
 
-Další informace najdete v tématech [rizikové uživatele](https://aka.ms/RiskyUsersDocs), [rizikové přihlašovací](https://aka.ms/RiskySigninsDocs)údaje a [detekce rizik](https://aka.ms/RiskDetectionsDocs).
+Další informace najdete v tématech [rizikové uživatele](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report), [rizikové přihlašovací](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report)údaje a [detekce rizik](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections-report).
 
 ---
 
@@ -143,7 +143,7 @@ Další informace o tomto problému naleznete v tématu [Azure Active Directory 
 
 V srpnu 2019 jsme do Galerie aplikací přidali tyto 26 nových aplikací s podporou federace:
 
-[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos OPS Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial), [Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial), [Viareport portál Inativ (Evropa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), docházka pro [Academy](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial), [prioritní matrice](https://sync.appfluence.com/pmwebng/), [Cousto MySpace](https://cousto.platformers.be/account/login), [Uploadcare](https://uploadcare.com/accounts/signup/), [Carbonite Backup pro koncové body](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial), [CPQSync podle Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial), [Chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee--tutorial), [Delivery. Media™ Portal](https://portal.deliver.media), [prvotní vzdělávání](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat AD připojení](https://www.stashcat.com), [blikání](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [Vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [sledování pomocí barev](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial), [](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)přecházení a [EAB navigace strategické péče](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial)
+[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos OPS Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial), [Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial), [Viareport portál Inativ (Evropa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), [Docházka pro Academy](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial), [prioritní matrice](https://sync.appfluence.com/pmwebng/), [Cousto MySpace](https://cousto.platformers.be/account/login), [Uploadcare](https://uploadcare.com/accounts/signup/), [Carbonite Backup pro koncové body](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial), [CPQSync podle Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial), [Chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial), [Delivery. Media™ Portal](https://portal.deliver.media), [prvotní vzdělávání](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat AD připojení](https://www.stashcat.com), [blikání](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [Vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [sledování pomocí barev](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial), [](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial) [přecházení a EAB navigace strategické péče](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial)
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -197,7 +197,7 @@ Další informace najdete v [příkladu vytváření kontrol přístupu Azure AD
 ### <a name="azure-ad-activity-logs-are-now-available-for-government-cloud-instances-in-azure-monitor"></a>Protokoly aktivit Azure AD jsou teď dostupné pro státní cloudové instance v Azure Monitor
 
 **Textový** Změněná funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 S radostí oznamujeme, že protokoly aktivit Azure AD jsou teď dostupné pro státní cloudové instance v Azure Monitor. Protokoly Azure AD teď můžete odesílat do svého účtu úložiště nebo do centra událostí, abyste je mohli integrovat s SIEM nástroji, jako je [SumoLogic](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-sumologic), [Splunk](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-splunk)a [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight). 
@@ -291,7 +291,7 @@ Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady
 
 26. července 2019 jsme změnili, jak poskytujeme tokeny jenom pro aplikace prostřednictvím [udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Dříve mohli aplikace získat tokeny pro volání jiných aplikací bez ohledu na to, jestli klientská aplikace byla v tenantovi. Toto chování jsme aktualizovali tak, aby se prostředky jednoho tenanta, někdy označované jako webové rozhraní API, mohly volat jenom pro klientské aplikace, které existují v tenantovi prostředků.
 
-Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s informacemi o tom, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` jak tento problém vyřešit, musíte vytvořit instanční objekt klientské aplikace v tenantovi, a to pomocí koncového [bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [přes PowerShell. ](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell), který zajišťuje, aby měl váš tenant oprávnění aplikace pro práci v rámci tenanta.
+Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s informacemi o tom, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` jak tento problém vyřešit, musíte vytvořit instanční objekt klientské aplikace v tenantovi, a to pomocí [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [přes PowerShell. ](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell), který zajišťuje, aby měl váš tenant oprávnění aplikace pro práci v rámci tenanta.
 
 Další informace najdete v tématu [co je nového pro ověřování?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -402,7 +402,7 @@ Všichni Správci služby Azure AD teď můžou v horní části existujících 
 
 - Stav rizika, pokrytí: Ohrožené, neúspěšné, opravené a potvrzené ohrožení
 
-Další informace najdete v tématu Sestava [rizikových uživatelů](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risky-users-signins#risky-users-report) a [sestavy rizikových přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risky-users-signins#risky-sign-ins-report).
+Další informace najdete v tématu Sestava [rizikových uživatelů](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report) a [sestavy rizikových přihlášení](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report).
 
 ---
 
@@ -483,7 +483,7 @@ V současné době se na obrazovkách registrace aplikace Azure Portal pořád z
 ### <a name="activity-logs-ms-graph-apis-for-azure-ad-are-now-available-through-powershell-cmdlets"></a>Protokoly aktivit (rozhraní API MS Graph) pro službu Azure AD jsou teď dostupné prostřednictvím rutin PowerShellu.
 
 **Textový** Nová funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 S radostí oznamujeme, že protokoly aktivit Azure AD (sestavy auditu a přihlášení) jsou teď dostupné prostřednictvím modulu Azure AD PowerShellu. Dřív jste mohli vytvořit vlastní skripty pomocí koncových bodů MS Graph API a teď jsme tuto možnost rozšířili na rutiny PowerShellu.
@@ -495,7 +495,7 @@ Další informace o tom, jak tyto rutiny použít, najdete v tématu [rutiny Azu
 ### <a name="updated-filter-controls-for-audit-and-sign-in-logs-in-azure-ad"></a>Aktualizované ovládací prvky filtru pro audit a protokoly přihlašování v Azure AD
 
 **Textový** Změněná funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 Aktualizovali jsme sestavy protokolu auditu a přihlašování, takže teď můžete použít různé filtry, aniž byste je museli přidávat jako sloupce na obrazovkách sestavy. Navíc teď můžete rozhodnout, kolik filtrů chcete na obrazovce zobrazit. Tyto aktualizace společně usnadňují čtení a větší rozsah vašich potřeb vašich sestav.
@@ -526,7 +526,7 @@ Další informace najdete v [referenční dokumentaci k rozhraní API pro detekc
 
 Do června 2019 jsme do Galerie aplikací přidali tyto 22 nových aplikací s podporou federace:
 
-[Azure AD SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klient VPN Azure](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), pomocná [pomocná](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial)sada, [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Mercedes-Benz](https://me.secure.mercedes-benz.com/), skore [](https://app.justskore.it/),, [Konzola cloudové infrastruktury Oracle](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [CyberArk ověřování SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), Oracle Access Manager pro Oracle Maloobchodní prodej, Oracle Access Manager pro Oracle E-Business Suite, Oracle IDCS pro E-Business Suite, Oracle IDCS pro PeopleSoft spouštěných místně, Oracle IDCS pro řešení JD Edwards
+[Azure AD SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial), [Otsuka Shokai (大塚商会)](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial), [ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial), [klient VPN Azure](https://portal.azure.com/), [ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial), pomocná [pomocná](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial)sada, [Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial), [GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial), [Mercedes-Benz](https://me.secure.mercedes-benz.com/), skore [,,](https://app.justskore.it/) [Konzola cloudové infrastruktury Oracle](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial), [CyberArk ověřování SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial), Oracle Access Manager pro Oracle Maloobchodní prodej, Oracle Access Manager pro Oracle E-Business Suite, Oracle IDCS pro E-Business Suite, Oracle IDCS pro PeopleSoft spouštěných místně, Oracle IDCS pro řešení JD Edwards
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -696,7 +696,7 @@ Další informace najdete v [referenční dokumentaci k rozhraní API pro riziko
 
 V květnu 2019 jsme do Galerie aplikací přidali tyto 21 nových aplikací s podporou federace:
 
-[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial), [skutečné odkazy](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [Simple Sign](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial), [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial), [DisplayName](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial), [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial), Marketo [Sales](https://toutapp.com/login)propojování, [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial), [](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial)subsystémy, [META4 Global HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial), [ Pracoviště](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial), [kobalt](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial), [webMethods API Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial), [Control](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial), [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial), [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial), [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial), [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
+[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial), [skutečné odkazy](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [Simple Sign](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial), [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial), [DisplayName](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial), [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial), [Marketo Sales](https://toutapp.com/login)propojování, [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial), [subsystémy](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial), [META4 Global HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial), [ Pracoviště](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial), [kobalt](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial), [webMethods API Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial), [Control](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial), [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial), [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial), [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial), [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -745,7 +745,7 @@ Další informace najdete v tématu [vymáhání zásady pojmenování pro skupi
 ### <a name="microsoft-graph-api-endpoints-are-now-available-for-azure-ad-activity-logs-general-availability"></a>Pro protokoly aktivit Azure AD jsou teď dostupné koncové body rozhraní Microsoft Graph API (Obecná dostupnost).
 
 **Textový** Změněná funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 S radostí oznamujeme obecnou dostupnost Microsoft Graph Podpora koncových bodů rozhraní API pro protokoly aktivit služby Azure AD. V této verzi teď můžete používat protokol auditu Azure AD verze 1,0 jak v protokolu, tak i v protokolech rozhraní API pro přihlášení.
@@ -770,7 +770,7 @@ Správci teď můžou vytvořit zásady podmíněného přístupu pro použití 
 
 - Uživatelé souhlasí s podmínkami použití organizace (podmínky použití).
 
-Další informace o podmíněném přístupu a resetování hesla najdete v blogovém [příspěvku o podmíněném přístupu pro kombinované MFA a registraci resetování hesel služby Azure AD](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Conditional-access-for-the-Azure-AD-combined-MFA-and-password/ba-p/566348). Další informace o zásadách podmíněného přístupu pro kombinovaný proces registrace najdete v tématu [zásady podmíněného přístupu pro kombinovanou registraci](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined#conditional-access-policies-for-combined-registration). Další informace o funkci Azure AD terms of use najdete v tématu [funkce Azure Active Directory podmínek použití](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
+Další informace o podmíněném přístupu a resetování hesla najdete v [blogovém příspěvku o podmíněném přístupu pro kombinované MFA a registraci resetování hesel služby Azure AD](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Conditional-access-for-the-Azure-AD-combined-MFA-and-password/ba-p/566348). Další informace o zásadách podmíněného přístupu pro kombinovaný proces registrace najdete v tématu [zásady podmíněného přístupu pro kombinovanou registraci](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined#conditional-access-policies-for-combined-registration). Další informace o funkci Azure AD terms of use najdete v tématu [funkce Azure Active Directory podmínek použití](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -819,7 +819,7 @@ Další informace najdete v tématu [vymáhání zásady pojmenování pro skupi
 ### <a name="azure-ad-activity-logs-are-now-available-in-azure-monitor-general-availability"></a>Protokoly aktivit Azure AD jsou teď dostupné v Azure Monitor (Obecná dostupnost).
 
 **Textový** Nová funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 Abychom vám pomohli vyřešit svůj názor na vizualizace pomocí protokolů aktivit Azure AD, zavádíme nové funkce Insights v Log Analytics. Tato funkce vám pomůže získat přehled o prostředcích Azure AD pomocí našich interaktivních šablon nazývaných sešity. Tyto předem připravené sešity můžou poskytovat podrobné informace pro aplikace nebo uživatele a zahrnovat:
@@ -844,7 +844,7 @@ Další informace najdete v tématu [použití Azure Monitorch sešitů pro sest
 
 V dubnu 2019 jsme do Galerie aplikací přidali tyto 21 nových aplikací s podporou federace:
 
-[SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks Single Signing](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [percolate](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), MileIQ [](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), PageDNA, [](https://mileiq.onelink.me/991934284/7e980085)EduBrite, [](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial) [RStudio LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial)a [Connect ](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [Mitel Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba Cloud (jednotné přihlašování založené na rolích)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Správa Certent akcií](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Sectigo Certificate Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [Monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [SurveyMonkey Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
+[SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks Single Signing](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [percolate](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), MileIQ [, PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [EduBrite](https://mileiq.onelink.me/991934284/7e980085), [](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial) [RStudio LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial)a [Connect ](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [Mitel Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba Cloud (jednotné přihlašování založené na rolích)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Správa Certent akcií](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Sectigo Certificate Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [Monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [SurveyMonkey Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
 
 Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomocí Azure Active Directory](https://aka.ms/appstutorial). Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -914,7 +914,7 @@ Další informace najdete v tématu [Postup při vyžadování zásad ochrany ap
 
 Vylepšili jsme podporu Azure AD pro Microsoft Edge, včetně poskytování nové podpory pro jednotné přihlašování a podmíněný přístup Azure AD. Pokud jste už dřív používali Microsoft Intune Managed Browser, teď můžete místo toho použít Microsoft Edge.
 
-Další informace o nastavení a správě zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) a vyžadování [schválených klientských aplikací pro přístup k cloudovým aplikacím s podmíněným přístupem. ](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o správě přístupu pomocí Microsoft Edge se zásadami Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí Microsoft Intune prohlížeče chráněného zásadami](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Další informace o nastavení a správě zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadování spravovaných zařízení pro cloudovou aplikaci přístup s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) a [vyžadování schválených klientských aplikací pro přístup k cloudovým aplikacím s podmíněným přístupem. ](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o správě přístupu pomocí Microsoft Edge se zásadami Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí Microsoft Intune prohlížeče chráněného zásadami](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ---
 
@@ -980,7 +980,7 @@ Další informace o tom, jak lépe zabezpečit organizaci prostřednictvím auto
 
 Odstraněné skupiny Office 365 teď můžete zobrazit a spravovat z portálu Azure AD. Tato změna vám pomůže zjistit, které skupiny jsou k dispozici pro obnovení, spolu s tím, že vám umožní trvale odstranit všechny skupiny, které nepotřebuje vaše organizace.
 
-Další informace najdete v tématu [obnovení skupin s ukončenou platností nebo](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-restore-deleted#view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore)odstraněných.
+Další informace najdete v tématu [obnovení skupin s ukončenou platností nebo odstraněných](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-restore-deleted#view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore).
 
 ---
 
@@ -1009,7 +1009,7 @@ Tato aktualizace pošle `invalid_grant` chybu: `AADSTS50196: The server terminat
 ### <a name="new-audit-logs-user-experience-now-available"></a>Nové protokoly auditu – uživatelské prostředí teď k dispozici
 
 **Textový** Změněná funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 Vytvořili jsme novou stránku **protokolů auditu** Azure AD, které vám pomůžou zlepšit čitelnost a jak hledat vaše informace. Pokud chcete zobrazit stránku nové **protokoly auditu** , vyberte v části **aktivita** v Azure AD možnost **protokoly auditu** .
@@ -1043,7 +1043,7 @@ Aktualizovali jsme naše stávající prostředí s využitím, abychom vylepši
 ### <a name="new-azure-ad-activity-logs-download-experience-available"></a>Nové prostředí pro stažení protokolů aktivit služby Azure AD k dispozici
 
 **Textový** Změněná funkce  
-**Kategorie služby:** Sestavy  
+**Kategorie služby:** Vytváření sestav  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
 Nyní můžete stahovat velké objemy protokolů aktivit přímo z Azure Portal. Tato aktualizace vám umožní:

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ead314e4c889b79892857eb07ecdd63377131b12
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559827"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376354"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Získejte odpovědi na otázku ze znalostní báze.C#
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Rychlý start: Získejte odpovědi na otázku ze znalostní báze.C#
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď. 
 

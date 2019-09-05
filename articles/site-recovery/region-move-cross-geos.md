@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967314"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376129"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Přesun virtuálních počítačů Azure mezi Azure Government a veřejnými regiony 
 
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure mezi Azu
 > * Zahodí prostředky ve zdrojové oblasti.
 
 > [!IMPORTANT]
-> V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure mezi Azure Government a veřejné oblasti nebo mezi páry oblastí, které nejsou podporované běžným řešením zotavení po havárii pro virtuální počítače Azure. V případě, že jsou [podporovány](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)páry zdrojové a cílové oblasti, přečtěte si tento [dokument](azure-to-azure-tutorial-migrate.md) . Pokud vaše požadavky vylepšit dostupnost přesunutím virtuálních počítačů ve skupině dostupnosti do připnuté virtuální počítače v jiné oblasti, přečtěte si tento kurz [](move-azure-VMs-AVset-Azone.md).
+> V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure mezi Azure Government a veřejné oblasti nebo mezi páry oblastí, které nejsou podporované běžným řešením zotavení po havárii pro virtuální počítače Azure. V případě, že jsou [podporovány](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)páry zdrojové a cílové oblasti, přečtěte si tento [dokument](azure-to-azure-tutorial-migrate.md) . Pokud vaše požadavky vylepšit dostupnost přesunutím virtuálních počítačů ve skupině dostupnosti do připnuté virtuální počítače v jiné oblasti, přečtěte si [Tento kurz.](move-azure-VMs-AVset-Azone.md)
 
 > [!IMPORTANT]
 > Tuto metodu není vhodné používat ke konfiguraci DR mezi nepodporovanými páry oblastí, protože páry jsou definované tak, aby zachovává latenci dat, což je pro scénář zotavení po havárii důležité.
@@ -98,8 +98,8 @@ Na každém serveru, který chcete replikovat, musí být nainstalovaná služba
      Pro vytvoření nejčastěji používaných síťových prostředků, které jsou pro vás relevantní, použijte následující dokumenty v závislosti na konfiguraci zdrojového virtuálního počítače.
 
     - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Veřejná IP adresa](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
+    - [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     
     Další síťové součásti najdete v dokumentaci k síti [.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 
@@ -178,7 +178,7 @@ Vyberte a zkontrolujte cílové prostředky.
     ![Zásady replikace](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
-Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace zásadou pro replikaci, vytvoří se zásady navrácení služeb po obnovení. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
+Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace zásadou pro **replikaci** , vytvoří se zásady navrácení služeb **po obnovení.** Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
 
 ### <a name="enable-replication"></a>Povolení replikace
 

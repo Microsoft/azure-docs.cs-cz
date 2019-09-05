@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbee98d64d37b2cdfc515eb733324902e238a768
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087535"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383108"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -51,7 +51,7 @@ Tady jsou některé poznámky k triggeru orchestrace:
 * **Návratové hodnoty** – návratové hodnoty jsou serializovány do formátu JSON a trvalé v tabulce historie orchestrace v úložišti tabulek Azure. Na tyto návratové hodnoty se může dotázat vazba klienta Orchestration, která je popsána dále.
 
 > [!WARNING]
-> Funkce nástroje Orchestrator by nikdy neměly používat žádné vstupní ani výstupní vazby kromě triggeru triggeru orchestrace. To by mohlo způsobit problémy s rozšířením trvalé úlohy, protože tyto vazby nepodléhají pravidlům v jednom vláknu a I/O.
+> Funkce nástroje Orchestrator by nikdy neměly používat žádné vstupní ani výstupní vazby kromě triggeru triggeru orchestrace. To by mohlo způsobit problémy s rozšířením trvalé úlohy, protože tyto vazby nepodléhají pravidlům v jednom vláknu a I/O. Pokud chcete použít jiné vazby, přidejte je do funkce aktivity volané z vaší funkce Orchestrator.
 
 > [!WARNING]
 > Funkce Orchestrator jazyka JavaScript by nikdy neměly `async`být deklarovány.
@@ -60,7 +60,7 @@ Tady jsou některé poznámky k triggeru orchestrace:
 
 Aktivační vazba Orchestration podporuje vstupy i výstupy. Zde je několik věcí, které je potřeba znát při zpracování vstupu a výstupu:
 
-* **vstupy** – funkce orchestrace .NET podporují jako typ parametru jenom [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) . Deserializace vstupů přímo v signatuře funkce není podporována. Aby bylo možné načíst vstupy funkcí nástroje Orchestrator, kód musí použít `getInput` metodu [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) nebo (JavaScript). Tyto vstupy musí být typy serializovatelných hodnot JSON.
+* **vstupy** – funkce orchestrace .NET podporují jako typ parametru jenom [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) . Deserializace vstupů přímo v signatuře funkce není podporována. Aby bylo možné načíst vstupy funkcí nástroje Orchestrator, kód musí použít `getInput` metodu [\<GetInput T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) nebo (JavaScript). Tyto vstupy musí být typy serializovatelných hodnot JSON.
 * **výstupy** – triggery orchestrace podporují výstupní hodnoty a také vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnoty a musí být serializovatelný pomocí formátu JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` uloží se jako výstup hodnota.
 
 ### <a name="trigger-sample"></a>Ukázka triggeru
@@ -159,9 +159,9 @@ Zde jsou některé poznámky týkající se triggeru aktivity:
 
 Vazba triggeru aktivity podporuje vstupy i výstupy, stejně jako Trigger orchestrace. Zde je několik věcí, které je potřeba znát při zpracování vstupu a výstupu:
 
-* **vstupy** – funkce aktivity .NET nativně používají [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Alternativně lze funkci aktivity deklarovat s libovolným typem parametru, který je serializovatelný pomocí JSON. Při použití `DurableActivityContext`můžete volat GetInput [\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) pro načtení a deserializaci vstupu funkce Activity.
+* **vstupy** – funkce aktivity .NET nativně používají [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Alternativně lze funkci aktivity deklarovat s libovolným typem parametru, který je serializovatelný pomocí JSON. Při použití `DurableActivityContext`můžete volat [\<GetInput T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) pro načtení a deserializaci vstupu funkce Activity.
 * **výstupy** – funkce aktivity podporují výstupní hodnoty a také vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnoty a musí být serializovatelný pomocí formátu JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` uloží se jako výstup hodnota.
-* funkce aktivit rozhraní .NET může vytvořit vazby k `string instanceId` parametru, aby získala ID instance nadřazené orchestrace.
+* funkce **aktivit rozhraní .NET** může vytvořit vazby k `string instanceId` parametru, aby získala ID instance nadřazené orchestrace.
 
 ### <a name="trigger-sample"></a>Ukázka triggeru
 
@@ -240,6 +240,35 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
         }
     };
 }
+```
+
+### <a name="using-input-and-output-bindings"></a>Použití vstupních a výstupních vazeb
+
+Kromě vazby triggeru aktivity můžete použít regulární vstupní a výstupní vazby. Můžete například převést vstup na vazbu aktivity a odeslat zprávu centru EventHub pomocí výstupní vazby EventHub:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "message",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "eventHub",
+      "name": "outputEventHubMessage",
+      "connection": "EventhubConnectionSetting",
+      "eventHubName": "eh_messages",
+      "direction": "out"
+  }
+  ]
+}
+```
+
+```javascript
+module.exports = async function (context) {
+    context.bindings.outputEventHubMessage = context.bindings.message;
+};
 ```
 
 ## <a name="orchestration-client"></a>Klient Orchestration
@@ -362,7 +391,7 @@ Další podrobnosti o počátečních instancích najdete ve [správě instancí
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o chování kontrolního bodu a přehrání](durable-functions-checkpointing-and-replay.md)

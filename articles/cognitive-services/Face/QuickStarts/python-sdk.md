@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2a74dbe9c306c1bf2420fdaac78a9b9183cacab1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164786"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376136"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rychlý start: Klientská knihovna obličeje pro Python
 
@@ -26,6 +26,7 @@ Pomocí klientské knihovny obličeje pro Python:
 * Vyhledání podobných tváří
 * Vytvoření a výuka skupiny osob
 * Identifikace obličeje
+* Ověřit plošky
 * Pořídit snímek migrace dat
 
 [](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Ukázky](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0) balíčku | [zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | knihovny Referenční dokumentace[(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)
@@ -90,6 +91,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úkoly s klientskou
 * [Hledání podobných plošek](#find-similar-faces)
 * [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group)
 * [Identifikace obličeje](#identify-a-face)
+* [Ověřit plošky](#verify-faces)
 * [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
@@ -107,7 +109,15 @@ Následující kód detekuje obličej ve vzdálené imagi. Vytiskne ID zjištěn
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
-Další scénáře detekce najdete v [](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) ukázkovém kódu na GitHubu.
+Další scénáře detekce najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) .
+
+### <a name="display-and-frame-faces"></a>Zobrazit a orámovat obličeje
+
+Následující kód vytvoří výstup daného obrázku do zobrazení a Nakreslí obdélníky kolem obličeje pomocí vlastnosti DetectedFace. faceRectangle.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![Mladé ženu s červeným rámečkem vykreslen kolem typ písma](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Vyhledání podobných tváří
 
@@ -178,6 +188,32 @@ Metoda **Identifikace** vezme pole zjištěných plošek a porovná je s objekte
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
 
+## <a name="verify-faces"></a>Ověřit plošky
+
+Operace ověření bere v případě ID obličeje a buď jiné ID obličeje, nebo objekt **Person** a určuje, zda patří stejné osobě.
+
+Následující kód detekuje plošky ve dvou zdrojových obrázcích a pak je ověřuje proti obličeji zjištěnému z cílové image.
+
+### <a name="get-test-images"></a>Získání imagí testu
+
+Následující bloky kódu deklaruje proměnné, které budou ukazovat na zdrojové a cílové image pro operaci ověřování.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>Detekovat obličeje pro ověření
+
+Následující kód detekuje plošky ve zdrojových a cílových obrázcích a ukládá je do proměnných.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>Získat výsledky ověřování
+
+Následující kód porovnává každý zdrojový obraz s cílovou imagí a vytiskne zprávu, která označuje, zda patří stejné osobě.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
+
 ## <a name="take-a-snapshot-for-data-migration"></a>Pořídit snímek migrace dat
 
 Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete chtít použít například v případě, že jste vytvořili objekt **Person** pomocí bezplatné zkušební verze předplatného a teď ho chcete migrovat na placené předplatné. Přehled funkce snímků najdete v tématu [migrace dat](../Face-API-How-to-Topics/how-to-migrate-face-data.md) o ploše.
@@ -202,7 +238,7 @@ Později ve svém skriptu uložte aktuální objekt klienta jako zdrojový klien
 
 Zbývající operace snímku se provádějí v rámci asynchronní funkce. 
 
-1. Prvním krokem je pořídit snímek, který ukládá data z původního předplatného do dočasného cloudového umístění. Tato metoda vrací ID, které slouží k dotazování na stav operace.
+1. Prvním krokem je **pořídit** snímek, který ukládá data z původního předplatného do dočasného cloudového umístění. Tato metoda vrací ID, které slouží k dotazování na stav operace.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
 

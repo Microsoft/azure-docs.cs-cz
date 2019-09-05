@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: cbf039a932c16269f703818e9f0ffef4ce852686
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 72e46ca55193bf79971818665a77be49ca5243e1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018744"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382871"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DB prostředků rozhraní SQL API
 
@@ -40,7 +40,6 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -48,16 +47,22 @@ V této části se seznámíte s vytvořením účtu Azure Cosmos a nastavením 
 
 ### <a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
-Následující kód vytvoří účet Azure Cosmos s konzistencí relací. Účet je replikován v `South Central US` a. `North Central US` Vyberte tlačítko **vyzkoušet** a vložte kód pro spuštění ve službě Azure Cloud Shell. 
+Pokud k vytvoření účtu Azure Cosmos použijete možnost [vyzkoušet Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) , je nutné vytvořit účet Azure Cosmos DB typu **SQL API**. Pro vás už je vytvořený testovací účet Azure Cosmos DB. Účet není nutné vytvářet explicitně, takže můžete tuto část přeskočit a přejít k další části.
+
+Pokud máte vlastní předplatné Azure nebo jste předplatné vytvořili zdarma, měli byste účet Azure Cosmos vytvořit explicitně. Následující kód vytvoří účet Azure Cosmos s konzistencí relací. Účet je replikován v `South Central US` a. `North Central US`  
+
+K vytvoření účtu Azure Cosmos můžete použít Azure Cloud Shell. Azure Cloud Shell je interaktivní, ověřené prostředí přístupné pro prohlížeč pro správu prostředků Azure. Nabízí flexibilitu při výběru prostředí, které nejlépe vyhovuje způsobu práce, a to buď bash nebo PowerShell. Pro tento rychlý Start vyberte režim **bash** . Azure Cloud Shell také vyžaduje účet úložiště, můžete ho po zobrazení výzvy vytvořit.
+
+Vyberte tlačítko **vyzkoušet** vedle následujícího kódu, zvolte režim **bash** , vyberte **vytvořit účet úložiště** a přihlaste se Cloud Shell. Další zkopírujte a vložte následující kód do Azure Cloud Shell a spusťte ho. Název účtu Azure Cosmos musí být globálně jedinečný, před spuštěním příkazu se ujistěte, `mysqlapicosmosdb` že jste aktualizovali hodnotu.
 
 ```azurecli-interactive
 
 # Set variables for the new SQL API account, database, and container
 resourceGroupName='myResourceGroup'
 location='southcentralus'
-accountName='mysqlapicosmosdb' 
-databaseName='FamilyDatabase'
-containerName='FamilyContainer'
+
+# The Azure Cosmos account name must be globally unique, make sure to update the `mysqlapicosmosdb` value before you run the command
+accountName='mysqlapicosmosdb'
 
 # Create a resource group
 az group create \
@@ -75,9 +80,11 @@ az cosmosdb create \
 
 ```
 
+Vytvoření účtu Azure Cosmos trvá chvilku, jakmile bude operace úspěšná, můžete zobrazit výstup potvrzení. Po úspěšném dokončení příkazu se přihlaste k [Azure Portal](https://portal.azure.com/) a ověřte, že účet Azure Cosmos se zadaným názvem existuje. Po vytvoření prostředku můžete okno Azure Cloud Shell zavřít. 
+
 ### <a id="create-dotnet-core-app"></a>Vytvoření nové aplikace .NET
 
-Vytvořte novou aplikaci .NET v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). V okně konzoly spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem `todo`.
+Vytvořte novou aplikaci .NET v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu.  Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem `todo`. Parametr--langversion – nastaví vlastnost langversion – v souboru vytvořeného projektu.
 
 ```console
 dotnet new console --langVersion 7.1 -n todo
@@ -118,13 +125,13 @@ Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřov�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Přejděte k účtu Azure Cosmos. 
+1. Přejděte k účtu Azure Cosmos.
 
 1. Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu. V dalším kroku přidáte hodnoty identifikátoru URI a Keys do proměnné prostředí.
 
 ### <a name="set-the-environment-variables"></a>Nastavení proměnných prostředí
 
-Po zkopírování identifikátoru **URI** a **primárního klíče** účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno konzoly a spusťte následující příkaz. Nezapomeňte nahradit `<Your_Azure_Cosmos_account_URI>` hodnoty a `<Your_Azure_Cosmos_account_PRIMARY_KEY>` .
+Po zkopírování **identifikátoru URI** a **primárního klíče** účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno konzoly a spusťte následující příkaz. Nezapomeňte nahradit `<Your_Azure_Cosmos_account_URI>` hodnoty a `<Your_Azure_Cosmos_account_PRIMARY_KEY>` .
 
 **Windows**
 
@@ -136,15 +143,15 @@ setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 **Linux**
 
 ```bash
-export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
-export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
 **MacOS**
 
 ```bash
-export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
-export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
  ## <a id="object-model"></a>Objektový model
@@ -240,7 +247,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-`program.cs file`Do přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte objekty, `Database`a. `CosmosClient` `Container` Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
+Do souboru **program.cs** přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte objekty, `Database`a. `CosmosClient` `Container` Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
 
 ```csharp
 namespace todo
@@ -355,7 +362,7 @@ private async Task AddItemsToContainerAsync()
         },
         Address = new Address { State = "WA", County = "King", City = "Seattle" },
         IsRegistered = false
- };
+    };
 
 try
 {
@@ -370,6 +377,7 @@ catch(CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
 
     // Note that after creating the item, we can access the body of the item with the Resource property off the ItemResponse. We can also access the RequestCharge property to see the amount of RUs consumed on this request.
     Console.WriteLine("Created item in database with id: {0} Operation consumed {1} RUs.\n", andersenFamilyResponse.Resource.Id, andersenFamilyResponse.RequestCharge);
+}
 }
 
 ```
@@ -429,14 +437,11 @@ Po definování všech požadovaných metod je proveďte v `GetStartedDemoAsync`
 public async Task GetStartedDemoAsync()
 {
     // Create a new instance of the Cosmos Client
-    this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+    this.cosmosClient = new CosmosClient(EndpointUrl, PrimaryKey);
     await this.CreateDatabaseAsync();
     await this.CreateContainerAsync();
     await this.AddItemsToContainerAsync();
     await this.QueryItemsAsync();
-    await this.ReplaceFamilyItemAsync();
-    await this.DeleteFamilyItemAsync();
-    //await this.DeleteDatabaseAndCleanupAsync();
 }
 ```
 
@@ -477,7 +482,7 @@ Můžete ověřit, že se data vytvoří, když se přihlásíte k Azure Portal 
 Pokud už je nepotřebujete, můžete k odebrání účtu Azure Cosmos a odpovídající skupiny prostředků použít Azure CLI nebo Azure PowerShell. Následující příkaz ukazuje, jak odstranit skupinu prostředků pomocí Azure CLI:
 
 ```azurecli
-az group delete -g "myResourceGroup" -l "southcentralus"
+az group delete -g "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>Další kroky

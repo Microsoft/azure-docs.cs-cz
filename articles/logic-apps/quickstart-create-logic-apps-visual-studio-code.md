@@ -12,12 +12,12 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: f0b568289a50b9883e6e0f1cba6b793c9e6e90e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051724"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309002"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Rychlý start: Vytváření a Správa automatizovaných pracovních postupů aplikací logiky – Visual Studio Code
 
@@ -25,7 +25,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a Visual Studio
 
 I když tyto stejné úlohy můžete provádět v Azure Portal (https://portal.azure.com) a v aplikaci Visual Studio, můžete začít rychleji v Visual Studio Code, když už jste obeznámení s definicemi aplikace logiky a chcete pracovat přímo v kódu. Můžete například zakázat, povolit, odstranit a aktualizovat již vytvořené aplikace logiky. Můžete také pracovat na Logic Apps a účtech pro integraci z libovolné vývojové platformy, kde Visual Studio Code běžet, jako je Linux, Windows nebo Mac.
 
-V tomto článku můžete vytvořit stejnou aplikaci logiky jako v rychlém startu [pro vytvoření aplikace logiky v Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), která se zaměřuje na základní koncepty. V Visual Studio Code aplikace logiky vypadá jako v tomto příkladu:
+V tomto článku můžete vytvořit stejnou aplikaci logiky jako v [rychlém startu pro vytvoření aplikace logiky v Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), která se zaměřuje na základní koncepty. V Visual Studio Code aplikace logiky vypadá jako v tomto příkladu:
 
 ![Hotová aplikace logiky](./media/create-logic-apps-visual-studio-code/overview.png)
 
@@ -41,7 +41,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 * Pokud je ještě nemáte, stáhněte a nainstalujte tyto nástroje: 
 
-  * [Visual Studio Code verze 1.25.1 nebo novější]("https://code.visualstudio.com/), což je zdarma
+  * [Visual Studio Code verze 1.25.1 nebo novější](https://code.visualstudio.com/), což je zdarma
 
   * Visual Studio Code rozšíření pro Azure Logic Apps
 
@@ -94,7 +94,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
-1. Pokud jste se přihlásili ke svému předplatnému Azure z Visual Studio Code v rámci služby, přihlaste se [hned](#sign-in-azure)podle kroků v tomto článku.
+1. Pokud jste se přihlásili ke svému předplatnému Azure z Visual Studio Code v rámci služby, [Přihlaste se hned](#sign-in-azure)podle kroků v tomto článku.
 
 1. V místní nabídce vašeho předplatného vyberte **vytvořit**.
 
@@ -202,7 +202,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 Pokud chcete pracovat na stávající aplikaci logiky, která je už nasazená v Azure, můžete otevřít soubor definice pracovního postupu této aplikace v Visual Studio Code.
 
-1. Pokud jste se přihlásili ke svému předplatnému Azure z Visual Studio Code v rámci služby, přihlaste se [hned](#sign-in-azure)podle kroků v tomto článku.
+1. Pokud jste se přihlásili ke svému předplatnému Azure z Visual Studio Code v rámci služby, [Přihlaste se hned](#sign-in-azure)podle kroků v tomto článku.
 
 1. V okně Azure v části **Logic Apps**rozbalte své předplatné Azure a vyberte aplikaci logiky, kterou chcete. 
 
@@ -222,7 +222,7 @@ Pokud chcete pracovat na stávající aplikaci logiky, která je už nasazená v
 
    ![Nahrání úprav](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > * [Vytváření aplikací logiky pomocí sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209629"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383142"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -29,7 +29,7 @@ Existují některá omezení PaaS, která se zavádějí do spravované instance
 - [Dostupnost](#availability) zahrnuje rozdíly v části [vždy zapnuto](#always-on-availability) a [zálohování](#backup).
 - [Zabezpečení](#security) zahrnuje rozdíly v [auditování](#auditing), [certifikáty](#certificates), [přihlašovací údaje](#credential), [zprostředkovatele kryptografických](#cryptographic-providers)služeb, [přihlášení a uživatele](#logins-and-users)a [klíč služby a hlavní klíč služby](#service-key-and-service-master-key).
 - [Konfigurace](#configuration) zahrnuje rozdíly v [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [řazení](#collation), [úrovně kompatibility](#compatibility-levels), [zrcadlení databáze](#database-mirroring), [Možnosti databáze](#database-options), [SQL Server agenta](#sql-server-agent)a [Možnosti tabulky](#tables).
-- Mezi [funkce](#functionalities) patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable)vlastnost, fulltextový zápis. [ Sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
+- Mezi [funkce](#functionalities) patří [Bulk INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [Rozšířené události](#extended-events), [externí knihovny](#external-libraries), [FileStream a Souborová](#filestream-and-filetable)vlastnost, [fulltextový zápis. Sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [základní](#polybase), [replikace](#replication), [obnovení](#restore-statement), [Service Broker](#service-broker), [uložené procedury, funkce a triggery](#stored-procedures-functions-and-triggers).
 - [Nastavení prostředí](#Environment) , jako jsou například virtuální sítě a konfigurace podsítí.
 
 Většina těchto funkcí je omezení architektury a představuje funkce služby.
@@ -481,7 +481,7 @@ Určitá
 - `.BAK`soubory, které obsahují více souborů protokolu, nelze obnovit.
 - Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo více než 280 souborů nemohou být obnoveny v instanci Pro obecné účely. 
 - Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
-Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
+Informace o příkazech Restore naleznete v tématu [Restore restatements](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Služba Service Broker
 
@@ -541,6 +541,14 @@ Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispoz
 
 ## <a name="Issues"></a>Známé problémy
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb
+
+**Datum** SEP 2019
+
+Funkce [Správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k úloze uživatele, může po převzetí služeb při selhání nebo na základě uživatelem iniciované změny úrovně služby (například změna maximálního počtu Vcore nebo maximální instance) nesprávně klasifikovat některé uživatelské úlohy. velikost úložiště).
+
+**Alternativní řešení**: Spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která spustí úlohu SQL při spuštění instance, pokud používáte [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověření proto k externím poštovním serverům pomocí zabezpečeného připojení (SSL).
 
 **Datum** Srpna 2019
@@ -584,6 +592,12 @@ Pokud je transakční replikace povolená v databázi ve skupině automatického
 SQL Server Management Studio a SQL Server Data Tools Fuly podporují přihlášení a uživatele v Azure ACCT-Directory.
 - Používání objektů zabezpečení serveru Azure AD (přihlášení) a uživatelů (Public Preview) s nástroji SQL Server Data Tools aktuálně není podporováno.
 - V SQL Server Management Studio se nepodporuje skriptování pro objekty zabezpečení serveru Azure AD (přihlášení) a uživatele (ve verzi Public Preview).
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>Během operace obnovení se používá dočasná databáze.
+
+Když se databáze na spravované instanci obnovuje, služba obnovení nejprve vytvoří prázdnou databázi s požadovaným názvem k přidělení názvu v instanci. Po určité době bude tato databáze vyřazena a bude spuštěna obnova skutečné databáze. Databáze, ve které je stav *obnovení* , bude mít dočasné místo názvu hodnotu NÁHODNÉho identifikátoru GUID. Po dokončení procesu obnovení bude dočasný název změněn na požadovaný název zadaný `RESTORE` v příkazu. V počáteční fázi může uživatel přistupovat k prázdné databázi a dokonce vytvářet tabulky nebo načítat data v této databázi. Tato dočasná databáze se vynechá, když služba obnovení spustí druhou fázi.
+
+**Alternativní řešení**: Nepoužívejte přístup k databázi, kterou obnovujete, dokud neuvidíte, že obnovení bylo dokončeno.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
 
@@ -651,7 +665,7 @@ Moduly CLR umístění do spravované instance a propojené servery nebo distrib
 
 **Odstraníte** Pokud je to možné, použijte připojení kontextu v modulu CLR.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md) .
 - Seznam funkcí a porovnání najdete v tématu [Azure SQL Database porovnání funkcí](sql-database-features.md).

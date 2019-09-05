@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 1a799823a71fcbc4aebf4b869a3fd0dd9fc66de1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 8a9366005ceef5a99fd66f0ec0cd53c98b481ee1
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907856"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309320"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak vytvořit a spravovat čtení replik ve službě Azure Database for MySQL pomocí Azure CLI
 
 V tomto článku se dozvíte, jak vytvořit a spravovat čtení replik v rámci stejné oblasti Azure jako hlavní v služba Azure Database for MySQL pomocí Azure CLI.
-
-> [!IMPORTANT]
-> Repliku pro čtení můžete vytvořit ve stejné oblasti jako váš hlavní server nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
 
 ## <a name="prerequisites"></a>Požadavky
 

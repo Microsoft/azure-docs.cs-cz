@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639273"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382880"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS: 
@@ -29,7 +29,7 @@ Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
 
 Po [publikování](luis-how-to-publish-app.md)aplikace použijte cyklus vytváření k přidání funkcí, publikování a testování z koncového bodu. Přidáním další příklad projevy nezačínají dalšího vývojového cyklu. Který neumožňuje LUIS další modelu pomocí projevy reálné uživatele. 
 
-Aby LUIS účinný na svou úlohu učení nelze rozbalit projevy až do aktuální sady příklad a koncového bodu projevy vrací předpovědi jistí, vysoké skóre. Vylepšete skóre pomocí [seznamů](luis-concept-feature.md) [aktivních kurzů](luis-concept-review-endpoint-utterances.md), [schémat](luis-concept-patterns.md)a frází. 
+Aby LUIS účinný na svou úlohu učení nelze rozbalit projevy až do aktuální sady příklad a koncového bodu projevy vrací předpovědi jistí, vysoké skóre. Vylepšete skóre pomocí seznamů [aktivních kurzů](luis-concept-review-endpoint-utterances.md), [schémat](luis-concept-patterns.md)a [frází](luis-concept-feature.md). 
 
 ## <a name="do-and-dont"></a>Proveďte a není
 Následující seznam obsahuje osvědčené postupy pro aplikace LUIS:
@@ -80,11 +80,11 @@ Další informace:
 
 Osvědčeným postupem je nepoužívat tyto postupy předtím, než byla aplikace testována. Měli byste porozumět tomu, jak se aplikace chová před přidáním [seznamů frází](luis-concept-feature.md) a [vzorů](luis-concept-patterns.md) , protože tyto funkce jsou vážeější, než je například projevy a jejich spolehlivost bude zkreslené. 
 
-Jakmile pochopíte, jak se vaše aplikace chová bez nich, přidejte každou z těchto funkcí tak, jak se vztahují k vaší aplikaci. Tyto funkce není nutné přidávat s každou iterací nebo [](luis-concept-app-iteration.md) měnit funkce s každou verzí. 
+Jakmile pochopíte, jak se vaše aplikace chová bez nich, přidejte každou z těchto funkcí tak, jak se vztahují k vaší aplikaci. Tyto funkce není nutné přidávat s každou [iterací](luis-concept-app-iteration.md) nebo měnit funkce s každou verzí. 
 
 Nemusíte je přidávat na začátek návrhu modelu, ale je snazší zjistit, jak se jednotlivé funkce po otestování modelu s projevy snadněji dostanou měnit. 
 
-Osvědčeným postupem je testování prostřednictvím koncového [bodu](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) , abyste získali přidanou výhodu [aktivního učení](luis-concept-review-endpoint-utterances.md). [Podokno interaktivní testování](luis-interactive-test.md) je také platná metodologie testu. 
+Osvědčeným postupem je testování prostřednictvím [koncového bodu](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) , abyste získali přidanou výhodu [aktivního učení](luis-concept-review-endpoint-utterances.md). [Podokno interaktivní testování](luis-interactive-test.md) je také platná metodologie testu. 
  
 
 ### <a name="phrase-lists"></a>Seznamy frází
@@ -101,7 +101,7 @@ Další informace:
 
 Projevy uživatelů z koncového bodu, velmi podobné k sobě navzájem, může odhalit vzory voleb aplikace word a umístění. [Vzor](luis-concept-patterns.md) funkce přebírá tato volba slov a umístění spolu s regulárních výrazů ke zlepšení vaší přesnost předpovědi. Ve vzoru regulárního výrazu umožňuje slova a interpunkční znaménka, které máte v úmyslu ignorovat při stále odpovídající vzoru. 
 
-Použijte volitelnou [syntaxi](luis-concept-patterns.md) vzoru pro interpunkční znaménka, aby bylo možné interpunkční znaménko ignorovat. K kompenzaci vzoru použijte [explicitní seznam](luis-concept-patterns.md#explicit-lists) . jakékoli problémy s syntaxí. 
+Použijte [volitelnou syntaxi](luis-concept-patterns.md) vzoru pro interpunkční znaménka, aby bylo možné interpunkční znaménko ignorovat. K kompenzaci vzoru použijte [explicitní seznam](luis-concept-patterns.md#explicit-lists) . jakékoli problémy s syntaxí. 
 
 Další informace:
 * " [Vzorce zlepšují přesnost předpovědi](luis-concept-patterns.md)

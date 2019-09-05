@@ -6,26 +6,29 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/03/2019
 ms.author: danlep
-ms.openlocfilehash: d555ba6b8c2b32fc6ec56d6c51dda9626b6f0cb0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325546"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307717"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnerů v Azure Container Instances
 
-Během normálního provozu instancí kontejnerů může být nutné, abyste zjistili, že je potřeba aktualizovat kontejnery ve skupině kontejnerů. Například můžete chtít aktualizovat verzi image, změnit název DNS, aktualizovat proměnné prostředí nebo aktualizovat stav kontejneru, u kterého došlo k chybě aplikace.
+Během normálního provozu instancí kontejnerů může být nutné aktualizovat běžící kontejnery ve [skupině kontejnerů](container-instances-container-groups.md). Například můžete chtít aktualizovat verzi image, změnit název DNS, aktualizovat proměnné prostředí nebo aktualizovat stav kontejneru, u kterého došlo k chybě aplikace.
+
+> [!NOTE]
+> Ukončené nebo odstraněné skupiny kontejnerů nelze aktualizovat. Jakmile se skupina kontejnerů ukončí (je v úspěšném nebo neúspěšném stavu) nebo se odstranila, musí být skupina nasazená jako nová.
 
 ## <a name="update-a-container-group"></a>Aktualizace skupiny kontejnerů
 
-Aktualizujte kontejnery ve skupině kontejnerů tak, že znovu nasadíte stávající skupinu s aspoň jednou upravenou vlastností. Když aktualizujete skupinu kontejnerů, všechny spuštěné kontejnery ve skupině se restartují místně.
+Aktualizujte kontejnery ve spuštěné skupině kontejnerů tak, že znovu nasadíte stávající skupinu s aspoň jednou upravenou vlastností. Když aktualizujete skupinu kontejnerů, všechny spuštěné kontejnery ve skupině se restartují místně, obvykle na stejném podkladovém hostiteli kontejneru.
 
-Znovu nasaďte existující skupinu kontejnerů vyvoláním příkazu CREATE (nebo použijte Azure Portal) a zadejte název existující skupiny. Při vydávání příkazu CREATE pro aktivaci opětovného nasazení upravte alespoň jednu platnou vlastnost skupiny. Ne všechny vlastnosti skupiny kontejnerů jsou platné pro opětovné nasazení. Seznam nepodporovaných vlastností najdete v tématu [vlastnosti, které vyžadují odstranění](#properties-that-require-container-delete) .
+Znovu nasaďte existující skupinu kontejnerů vyvoláním příkazu CREATE (nebo použijte Azure Portal) a zadejte název existující skupiny. Upravte alespoň jednu platnou vlastnost skupiny při vydávání příkazu CREATE pro aktivaci opětovného nasazení a nechejte zbývající vlastnosti beze změny (nebo pokračujte v používání výchozích hodnot). Ne všechny vlastnosti skupiny kontejnerů jsou platné pro opětovné nasazení. Seznam nepodporovaných vlastností najdete v tématu [vlastnosti, které vyžadují odstranění](#properties-that-require-container-delete) .
 
-Následující příklad Azure CLI aktualizuje skupinu kontejnerů pomocí nového popisku názvu DNS. Vzhledem k tomu, že se upraví vlastnost popisku názvu DNS skupiny, skupina kontejnerů se znovu nasadí a její kontejnery se restartují.
+Následující příklad Azure CLI aktualizuje skupinu kontejnerů pomocí nového popisku názvu DNS. Vzhledem k tomu, že vlastnost jmenovky názvu DNS skupiny je ta, kterou je možné aktualizovat, skupina kontejnerů se znovu nasadí a její kontejnery se restartují.
 
 Počáteční nasazení s popiskem názvu DNS *MyApplication – Příprava*:
 
@@ -35,10 +38,10 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Aktualizace skupiny kontejnerů pomocí nového popisku názvu DNS, *MyApplication*:
+Aktualizujte skupinu kontejnerů pomocí nového popisku názvu DNS, *MyApplication*a nechejte zbývající vlastnosti beze změny:
 
 ```azurecli-interactive
-# Update container group (restarts container)
+# Update DNS name label (restarts container), leave other properties unchanged
 az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
@@ -73,7 +76,7 @@ Tyto vlastnosti vyžadují před znovu nasazením odstranění skupiny kontejner
 
 Když skupinu kontejnerů odstraníte a znovu vytvoříte, nebude se znovu nasazovat, ale vytvořila se nová. Všechny vrstvy imagí jsou z registru načítány z mezipaměti, nikoli z těch, které jsou uložené v mezipaměti v předchozím nasazení. IP adresa kontejneru se může také změnit, protože se nasazuje na jiného základního hostitele.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku je uvedeno několik případů, kde je **Skupina kontejnerů**. Každý kontejner ve Azure Container Instances je nasazený ve skupině kontejnerů a skupiny kontejnerů můžou obsahovat více než jeden kontejner.
 
@@ -81,10 +84,10 @@ V tomto článku je uvedeno několik případů, kde je **Skupina kontejnerů**.
 
 [Nasazení skupiny s více kontejnery](container-instances-multi-container-group.md)
 
+[Ruční zastavení nebo spuštění kontejnerů v Azure Container Instances](container-instances-stop-start.md)
+
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

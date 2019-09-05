@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015929"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309577"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -42,7 +42,7 @@ ms.locfileid: "69015929"
 
 Soubory Azure nabízí dva, vestavěné a pohodlný metody přístupu k datům, které můžete použít samostatně, nebo v kombinaci s ostatními, pro přístup k datům:
 
-1. **Přímý přístup**do cloudu: Všechny sdílené složky Azure je možné připojit pomocí [systému Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)nebo [Linux](storage-how-to-use-files-linux.md) s standardním oborem protokolu SMB (Server Message Block) nebo prostřednictvím souboru REST API. Pomocí protokolu SMB se čtení a zápisy do souborů ve sdílené složce provádějí přímo ve sdílené složce v Azure. Aby klient SMB v operačním systému mohl připojit virtuální počítač v systému Azure, musí podporovat minimálně protokol SMB 2,1. Pro místní připojení, jako je například pracovní stanice uživatele, musí klient SMB podporovaný pracovní stanicí podporovat minimálně protokol SMB 3,0 (s šifrováním). Kromě protokolu SMB můžou nové aplikace nebo služby získat přímý přístup ke sdílené složce přes soubor REST, který poskytuje jednoduché a škálovatelné programovací rozhraní aplikace pro vývoj softwaru.
+1. **Přímý přístup do cloudu**: Všechny sdílené složky Azure je možné připojit pomocí [systému Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)nebo [Linux](storage-how-to-use-files-linux.md) s standardním oborem protokolu SMB (Server Message Block) nebo prostřednictvím souboru REST API. Pomocí protokolu SMB se čtení a zápisy do souborů ve sdílené složce provádějí přímo ve sdílené složce v Azure. Aby klient SMB v operačním systému mohl připojit virtuální počítač v systému Azure, musí podporovat minimálně protokol SMB 2,1. Pro místní připojení, jako je například pracovní stanice uživatele, musí klient SMB podporovaný pracovní stanicí podporovat minimálně protokol SMB 3,0 (s šifrováním). Kromě protokolu SMB můžou nové aplikace nebo služby získat přímý přístup ke sdílené složce přes soubor REST, který poskytuje jednoduché a škálovatelné programovací rozhraní aplikace pro vývoj softwaru.
 2. **Azure File Sync**: Pomocí Azure File Sync můžete sdílet sdílené složky na serverech Windows v místním prostředí nebo v Azure. Vaši uživatelé mají přístup ke sdílené složce přes Windows Server, jako je například přes sdílenou složku SMB nebo NFS. To je užitečné ve scénářích, kdy k datům budou mít data v datovém centru Azure, například ve scénáři firemní pobočky, a to daleko beze změny. Data je možné replikovat mezi několika koncovými body Windows serveru, například mezi více pobočkami. Nakonec můžou být data vrstvená do souborů Azure, takže všechna data jsou stále přístupná prostřednictvím serveru, ale server nemá úplnou kopii dat. Místo toho jsou data bez problémů znovu volána, když je uživatel otevřel.
 
 Následující tabulka ukazuje, jak můžou uživatelé a aplikace získat přístup ke sdílené složce Azure:
@@ -114,7 +114,7 @@ Sdílené složky musí být zřízené v 1 přírůstcích GiB. Minimální vel
 >
 > rychlost příchozího přenosu dat = 40 MiB/s + 0,04 * zřízené GiB
 
-Velikost sdílené složky se dá kdykoli prodloužit, ale může se snížit jenom po 24 hodinách od posledního zvýšení. Po čekání na 24 hodin bez zvýšení velikosti můžete velikost sdílené složky snížit tolikrát, kolikrát chcete, dokud je znovu nezvýšíte. Změny v rozsahu IOPS/propustnosti budou platit během několika minut od změny velikosti.
+Velikost zřízené sdílené složky je určena kvótou sdílené složky. Kvótu sdílení můžete kdykoli prodloužit, ale můžete ji snížit až 24 hodin od posledního zvýšení. Po čekání na 24 hodin bez zvýšení kvóty můžete kvótu sdílení snížit tolikrát, kolikrát chcete, a to až do jejich opětovného zvýšení. Změny v rozsahu IOPS/propustnosti budou platit během několika minut od změny velikosti.
 
 Velikost zřízené sdílené složky můžete snížit pod použitou GiB. Pokud to uděláte, neztratíte data, ale bude se vám stále účtovat využitá velikost a bude se vám účtovat výkon (počet vstupně-výstupních operací za sekundu, propustnost a shlukové IOPS) zřízené sdílené složky, nikoli použitou velikost.
 
@@ -265,7 +265,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

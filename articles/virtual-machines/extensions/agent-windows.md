@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: ba82b026fe69bd22b3afa89ddb73373dfd194472
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092695"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382825"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
 Agent virtuálního počítače Microsoft Azure (agent virtuálního počítače) je zabezpečený a odlehčený proces, který spravuje interakci virtuálních počítačů s řadičem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a provádění rozšíření virtuálních počítačů Azure. Rozšíření virtuálních počítačů umožňují konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálních počítačů také umožňují funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nejde spustit rozšíření virtuálních počítačů.
@@ -67,6 +67,9 @@ Agenta virtuálního počítače můžete nainstalovat dvojitým kliknutím na s
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
 
+### <a name="prerequisites"></a>Požadavky
+Aby bylo možné spustit agenta virtuálního počítače s Windows, musí být v rozhraní .NET Framework 4,0 alespoň Windows Server 2008 R2 (64-bitů).
+
 ## <a name="detect-the-vm-agent"></a>Zjištění agenta virtuálního počítače
 
 ### <a name="powershell"></a>PowerShell
@@ -108,5 +111,5 @@ Když se přihlásíte k virtuálnímu počítači s Windows, můžete ke kontro
 Agent virtuálního počítače Azure pro Windows se upgraduje automaticky. Když se do Azure nasadí nové virtuální počítače, dostanou nejnovějšího agenta virtuálního počítače při zřizování virtuálních počítačů. Vlastní image virtuálních počítačů by se měly aktualizovat ručně, aby se při vytváření image zahrnul nový agent virtuálního počítače.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Batch test – LUIS
+title: 'Kurz: Batch test – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 08/20/2019
+ms.topic: tutorial
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 45520d39c822c734e3fc725bca3375e93983a118
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a0aa4d334dc5a42da8a3a8f269f70c874c9ad54d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637460"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375521"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: Sady dat dávkového testu
 
@@ -123,7 +123,7 @@ Přidání projevů soubor tyto služby batch na správné záměr je zdánlivě
 
 Může vás také zajímat o odebrání projevy z **ApplyForJob** dokud množství utterance je stejný jako **GetJobInformation**. Který lze pravděpodobně vyřešit výsledky testů, ale bude bránit LUIS z přesně předpovídat tohoto záměru příště. 
 
-Opravou je přidání dalších projevy k **GetJobInformation**. Nezapomeňte změnit délku utterance, volbu slov a uspořádání slov, zatímco stále cílíte na záměr najít informace o úloze , a nemusíte je použít pro úlohu.
+Opravou je přidání dalších projevy k **GetJobInformation**. Nezapomeňte změnit délku utterance, volbu slov a uspořádání slov, zatímco stále cílíte na záměr najít informace o úloze, a _nemusíte_ je použít pro úlohu.
 
 ### <a name="add-more-utterances"></a>Přidání další projevů
 

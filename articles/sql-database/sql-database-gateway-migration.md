@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981293"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306004"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 
@@ -41,11 +41,11 @@ První kolo migrace provozu na novější brány se plánuje na **14. října 20
 - Východní Asie
 
 Migrace provozu změní veřejnou IP adresu, kterou služba DNS pro váš SQL Database vyřeší.
-Bude to mít vliv, pokud máte
+Bude to mít vliv, pokud máte následující:
 - Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
 - Všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
 
-Nebudete mít vliv na 
+Nebudete mít vliv na tyto akce:
 - Přesměrování jako zásady připojení
 - Připojení k SQL Database v rámci Azure a používání značek služeb
 - Připojení pomocí podporovaných verzí ovladače JDBC pro SQL Server se nijak neprojeví. Podporované verze JDBC najdete v tématu [Stažení ovladače Microsoft JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

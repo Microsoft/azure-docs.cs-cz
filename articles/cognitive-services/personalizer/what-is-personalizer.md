@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663669"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383390"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -29,7 +29,7 @@ Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nej
 
 ## <a name="how-does-personalizer-work"></a>Jak funguje přizpůsobování?
 
-Přizpůsobení používá modely strojového učení k zjištění, jaká akce má být v kontextu v určitém pořadí nejvyšší. Klientská aplikace nabízí seznam možných akcí s informacemi o nich. a informace o kontextu, které mohou obsahovat informace o uživateli, zařízení atd. Přizpůsobení Určuje akci, která má být provedena. Jakmile klientská aplikace použije zvolenou akci, poskytuje zpětnou vazbu k přizpůsobenému programu ve formě skóre záměna. Po přijetí zpětné vazby automaticky upraví vlastní model, který se používá pro budoucí pořadí.
+Přizpůsobení používá modely strojového učení k zjištění, jaká akce má být v kontextu v určitém pořadí nejvyšší. Klientská aplikace nabízí seznam možných akcí s informacemi o nich. a informace o kontextu, které mohou obsahovat informace o uživateli, zařízení atd. Přizpůsobení Určuje akci, která má být provedena. Jakmile klientská aplikace použije zvolenou akci, poskytuje zpětnou vazbu k přizpůsobenému programu ve formě skóre záměna. Po přijetí zpětné vazby automaticky upraví vlastní model, který se používá pro budoucí pořadí. V průběhu času bude přizpůsobovat jeden model, který může navrhnout nejlepší akci pro výběr v jednotlivých kontextech na základě jejich funkcí.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Návody použít modul pro přizpůsobení?
 
@@ -53,16 +53,22 @@ Klientská aplikace může například přidat přizpůsobení do:
 * Vyberte odpověď robota pro chat k objasnění záměru uživatele nebo navrhnout akci.
 * Určete prioritu návrhů toho, co má uživatel dělat jako další krok v obchodním procesu.
 
+Přizpůsobování není služba pro uchovávání a správu informací o profilu uživatele nebo k protokolování předvoleb nebo historie jednotlivých uživatelů. Přizpůsobování se učí z funkcí jednotlivých interakcí v akci a kontextu jediného modelu, který může získat maximální ceny, když dojde k podobným funkcím. 
+
 ## <a name="personalization-for-developers"></a>Individuální nastavení pro vývojáře
 
 Služba pro přizpůsobení má dvě rozhraní API:
 
-* Odeslat informace o __ vašich uživatelích a obsahu (akcích) __ pro přizpůsobení. Přizpůsobuje odezvu na horní akci.
+* Odeslat informace o vašich uživatelích a obsahu (_akcích_ _) pro_přizpůsobení. Přizpůsobuje odezvu na horní akci.
 * Pošlete nám svůj názor na přizpůsobené informace o tom, jak dobře se hodnocení vypracovalo jako číslo obvykle mezi 0 a 1 (předchozí oddíl uvádíme-1 a 1). 
 
 ![Základní sekvence událostí pro přizpůsobení](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby vC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby v Node. js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
+* [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby v Pythonu](python-quickstart-commandline-feedback-loop.md)
+* [Informace o funkcích a akcích pro požadavek na řazení](concepts-features.md)
+* [Informace o určování skóre pro žádost o odměnu](concept-rewards.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

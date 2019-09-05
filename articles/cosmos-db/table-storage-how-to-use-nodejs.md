@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 45925b1c4252b0ff0080a2c287e7ed2fae444168
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986281"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308411"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -459,6 +459,6 @@ Další informace najdete v následujících materiálech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * Úložiště [sady SDK služby Azure Storage pro Node.js](https://github.com/Azure/azure-storage-node) na GitHubu
-* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/azure/javascript/)
 * [Vytvoření webové aplikace Node.js v Azure](../app-service/app-service-web-get-started-nodejs.md)
 * [Sestavení a nasazení aplikace Node.js v cloudové službě Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí Windows PowerShellu)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000004"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309017"
 ---
 # <a name="marketplace-faqs"></a>Nejčastější dotazy k Marketplace
 
@@ -36,7 +36,7 @@ Azure Marketplace nabízí technická řešení a služby Microsoftu a partnerů
 
 * základní operační systémy
 * databases
-* security
+* zabezpečení
 * identity
 * Sítě
 * Blockchain
@@ -185,7 +185,7 @@ Zákazníkům smlouva Enterprise (EA) se účtuje jejich EA. Konkrétní Azure M
 
 **Kde se můžu podívat na podrobnosti předplatného Azure Marketplace a informace o fakturaci?**
 
-MOSP – zákazníci s předplatným [Microsoft Online](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) můžou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části [Azure Portal]cost management + fakturace.
+MOSP – zákazníci s [předplatným Microsoft Online](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) můžou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části [Azure Portal]cost management + fakturace.
 
 Zákazníci smlouva Enterprise (EA) mohou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části Cost Management + fakturace [Azure Portal].
 
@@ -263,7 +263,7 @@ Azure Marketplace je navržená pro odborníky v oblasti IT a cloudové vývojá
 
 **Proč mám svou aplikaci publikovat na Azure Marketplace a jak to přináší?**
 
-Azure Marketplace poskytuje pro partnery Microsoftu trh, který umožňuje propagovat a prodávat produkty a služby zákazníkům Azure. Vydavatelé okamžitě získají přístup k 140 celosvětovým trhům, našim 300 000 + partnerům a síti Azure pro podnikové zákazníky.  Marketplace zahrnuje více než 90% společností Fortune 500 a mnoho špičkových vývojářů na světě. Noví partneři v Azure Marketplace automaticky nabízejí sadu [výhod pro uvedení na trh bez jakýchkoli nákladů](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) , které vám pomohou zvýšit povědomí o nabídkách na webu Azure Marketplace.
+Azure Marketplace poskytuje pro partnery Microsoftu trh, který umožňuje propagovat a prodávat produkty a služby zákazníkům Azure. Vydavatelé okamžitě získají přístup k 140 celosvětovým trhům, našim 300 000 + partnerům a síti Azure pro podnikové zákazníky.  Marketplace zahrnuje více než 90% společností Fortune 500 a mnoho špičkových vývojářů na světě. Noví partneři v Azure Marketplace automaticky nabízejí sadu [výhod pro uvedení na trh bez jakýchkoli nákladů](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) , které vám pomohou zvýšit povědomí o nabídkách na webu Azure Marketplace.
 
 **Jaký je rozdílový faktor mezi Azure Marketplace a AppSource?**
 
@@ -305,7 +305,7 @@ Pokud potřebujete další informace a chcete začít s povolením zkušební ve
 
 **Návody začít s registrací centra pro vývoj?**
 
-Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že [](https://account.microsoft.com/account/) se přihlásíte pomocí účet Microsoft, které se přidruží k účtu vývojáře.
+Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že se [přihlásíte](https://account.microsoft.com/account/) pomocí účet Microsoft, které se přidruží k účtu vývojáře.
 
 Pokud ještě nemáte účet Microsoft, můžete [vytvořit účet](https://signup.live.com/) (například contoso_marketplace@live.com).
 
@@ -376,7 +376,7 @@ Další informace o našich výhodách GTM a možnostech, jak rozšiřovat své 
 
 **Kde jsou Azure Marketplace řešení povýšená v rámci webových vlastností Microsoftu?**
 
-Řešení Azure Marketplace jsou k dispozici na webu Microsoft [Azure Portal]a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Vývojáři cloudu a IT profesionálové, kteří používají Azure, mají při každém přihlášení expozici partnerským řešením. Podmnožina partnerských řešení se taky prezentuje a otáčí na stránce [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) domovskou [stránku a řešení Azure](https://azure.microsoft.com/solutions/).
+Řešení Azure Marketplace jsou k dispozici na webu Microsoft [Azure Portal]a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Vývojáři cloudu a IT profesionálové, kteří používají Azure, mají při každém přihlášení expozici partnerským řešením. Podmnožina partnerských řešení se taky prezentuje a otáčí na stránce [Azure Marketplace domovskou](https://azuremarketplace.microsoft.com/marketplace) [stránku a řešení Azure](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Fakturace a platby
 
@@ -406,7 +406,7 @@ V případě problémů s fakturací a předplatnými Azure Marketplace nákupu 
 
 **Na koho se mám obrátit s dotazy ohledně publikování nebo správy nabídek?**
 
-Projděte si příručku pro [Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete pomocí [Podpora Microsoftu v portál partnerů cloudu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)protokolovat lístek.
+Projděte si [příručku pro Azure Marketplace Publisher](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete pomocí [Podpora Microsoftu v portál partnerů cloudu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)protokolovat lístek.
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
 
@@ -445,7 +445,7 @@ Transakce se dají provádět v následujících 17 měnách: AUD, BRL, CAD, CHF
 
 Nabídka předplatného úrovně Free je trvale zadarmo.  Bezplatná zkušební verze softwaru (vyzkoušejte si ji teď) je placené předplatné, zdarma jenom po omezené časové období.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](/azure/marketplace/marketplace-publishers-guide) .
 

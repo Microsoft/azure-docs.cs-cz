@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907382"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309313"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Azure Database for PostgreSQL z Azure Portal. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Repliku pro čtení můžete vytvořit ve stejné oblasti jako váš hlavní server nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -174,7 +171,7 @@ Metrika **prodlevy repliky** zobrazuje čas od poslední opakované transakce v 
 
 1. V Azure Portal vyberte Azure Database for PostgreSQL replice pro čtení.
 
-2. Vyberte **Metriky**. V okně **metriky** vyberte prodlevu **repliky**.
+2. Vyberte **Metriky**. V okně **metriky** vyberte **prodlevu repliky**.
 
    ![Sledování prodlevy repliky](./media/howto-read-replicas-portal/select-replica-lag.png)
  

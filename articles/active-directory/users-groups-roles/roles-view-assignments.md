@@ -8,23 +8,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf45d45481712e30d40bacec9a3c4d80d1ed56b6
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707549"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382582"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Zobrazení přiřazení vlastních rolí v Azure Active Directory
 
-Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v Azure Active Directory (Azure AD). V Azure Active Directory (Azure AD) se role dají přiřadit na úrovni adresáře nebo s rozsahem jedné aplikace. Přiřazení rolí v oboru adresáře se přidají do seznamu přiřazení rolí s jednou aplikací, ale přiřazení rolí v jednom oboru aplikace se do seznamu přiřazení na úrovni adresáře přidají.
+Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v Azure Active Directory (Azure AD). V Azure Active Directory (Azure AD) se role dají přiřadit v oboru celé organizace nebo v oboru s jednou aplikací.
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-the-azure-ad-portal"></a>Zobrazení přiřazení role s oborem adresáře pomocí portálu Azure AD
+- Přiřazení rolí v oboru v rámci organizace se přidávají do a dají se zobrazit v seznamu přiřazení jedné aplikační role.
+- Přiřazení rolí v rámci jedné aplikace nejsou přidána do a nelze je zobrazit v seznamu přiřazení s rozsahem v rámci organizace.
+
+## <a name="view-role-assignments-in-the-azure-portal"></a>Zobrazit přiřazení rolí v Azure Portal
+
+Tento postup popisuje zobrazení přiřazení role s rozsahem v rámci organizace.
 
 1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 1. Vyberte **Azure Active Directory**, vyberte **role a správci**a pak vyberte roli, kterou chcete otevřít, a zobrazte její vlastnosti.
@@ -32,9 +37,9 @@ Tento článek popisuje, jak zobrazit vlastní role, které jste přiřadili v A
 
     ![Zobrazení přiřazení rolí a oprávnění při otevření role ze seznamu](./media/roles-view-assignments/role-assignments.png)
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-azure-ad-powershell"></a>Zobrazení přiřazení role s oborem adresáře pomocí Azure AD PowerShellu
+## <a name="view-role-assignments-using-azure-ad-powershell"></a>Zobrazení přiřazení rolí pomocí Azure AD PowerShellu
 
-Můžete automatizovat, jak přiřadíte role správce Azure AD uživatelům pomocí Azure PowerShell. Tento článek používá modul [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
+Tato část popisuje zobrazení přiřazení role s rozsahem v rámci organizace. Tento článek používá modul [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) . Pokud chcete zobrazit přiřazení rozsahu jedné aplikace pomocí PowerShellu, můžete použít rutiny v části [přiřazení vlastních rolí k prostředí PowerShell](roles-assign-powershell.md).
 
 ### <a name="prepare-powershell"></a>Příprava PowerShellu
 
@@ -71,7 +76,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-microsoft-graph-api"></a>Zobrazení přiřazení role s oborem adresáře pomocí rozhraní Microsoft Graph API
+## <a name="view-role-assignments-using-microsoft-graph-api"></a>Zobrazení přiřazení rolí pomocí rozhraní Microsoft Graph API
+
+Tato část popisuje zobrazení přiřazení role s rozsahem v rámci organizace.  Chcete-li zobrazit přiřazení oboru jedné aplikace pomocí Graph API, můžete použít operace v části [přiřazení vlastních rolí s Graph API](roles-assign-graph.md).
 
 Požadavek HTTP na získání přiřazení role pro danou definici role
 
@@ -93,18 +100,20 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview"></a>Zobrazení přiřazení role s oborem jedné aplikace pomocí portálu Azure AD (Preview)
+## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>Zobrazení přiřazení role s oborem jedné aplikace (Preview)
+
+Tato část popisuje zobrazení přiřazení role s oborem jedné aplikace.
 
 1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte Azure Active Directory, vyberte **Registrace aplikací**a pak vyberte registraci aplikace a zobrazte její vlastnosti. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
+1. Vyberte **Registrace aplikací**a pak vyberte registraci aplikace a zobrazte její vlastnosti. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vytvoření nebo úprava registrací aplikací ze stránky Registrace aplikací](./media/roles-create-custom/appreg-all-apps.png)
 
-1. Vyberte **role a správci**a pak výběrem role zobrazíte její vlastnosti.
+1. V registraci aplikace vyberte **role a správci**a pak výběrem role zobrazíte její vlastnosti.
 
     ![Zobrazit přiřazení rolí registrace aplikace ze stránky Registrace aplikací](./media/roles-view-assignments/appreg-assignments.png)
 
-1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli.
+1. Vyberte **přiřazení** a zobrazte přiřazení pro danou roli. Otevřením zobrazení přiřazení v rámci registrace aplikace zobrazíte přiřazení vymezená tomuto prostředku Azure AD.
 
     ![Zobrazení přiřazení role registrace aplikace z vlastností registrace aplikace](./media/roles-view-assignments/appreg-assignments-2.png)
 

@@ -17,16 +17,16 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989596"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383174"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
-Na základě informací poskytnutých sestavou [přihlášení uživatelů](concept-sign-ins.md)najdete odpovědi na otázky, jako například:
+Na základě informací poskytnutých [sestavou přihlášení uživatelů](concept-sign-ins.md)najdete odpovědi na otázky, jako například:
 
 - Kdo se přihlásil k aplikaci?
 - Které aplikace se přihlásily k?
@@ -105,7 +105,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |50126|Neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo.|
 |50127|Aby mohl uživatel získat přístup k tomuto obsahu, musí nainstalovat aplikaci zprostředkovatele.|
 |50128|Neplatný název domény – nenašly se žádné informace zjištěné v žádosti ani žádné informace, které se nevedly v zadaných přihlašovacích údajích.|
-|50129|Zařízení není připojené k pracovišti – k registraci zařízení je potřeba **připojení k síti** na pracovišti.|
+|50129|Zařízení není připojené k pracovišti – k registraci zařízení je potřeba **připojení k síti na pracovišti** .|
 |50130|Hodnotu deklarace identity nejde interpretovat jako známou metodu ověřování.|
 |50131|Používá se v různých chybách podmíněného přístupu. Například špatný stav zařízení s Windows, zablokování požadavku z důvodu podezřelé aktivity nebo rozhodnutí zásad přístupu a zabezpečení.|
 |50132|Přihlašovací údaje byly odvolány z následujících důvodů:<ul><li>Artefakt jednotného přihlašování je neplatný nebo mu platnost vypršela.</li><li>Relace není pro aplikaci dostatečně nová.</li><li>Požadavek na přihlášení v tichému režimu byl odeslán, ale uživatelova relace s Azure AD je neplatná nebo skončila její platnost.</li></ul>|
@@ -153,6 +153,8 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |70018|Neplatný ověřovací kód z důvodu zadání špatného uživatelského kódu pro tok kódu zařízení. Autorizace není schválená.|
 |70019|Platnost ověřovacího kódu vypršela. Přihlaste se znovu, aby se uživatel znovu přihlásil.|
 |70037|Odpověď na výzvu nebyla správná. Vzdálený přístup k relaci byl odepřen.|
+|70043|Správa relací podmíněného přístupu Azure vynutí vypršení platnosti relace.|
+|70044|Správa relací podmíněného přístupu Azure vynutí vypršení platnosti relace.|
 |75001|Během vytváření vazby zprávy SAML došlo k chybě.|
 |75003|Aplikace vrátila chybu související s nepodporovanou vazbou (odpověď protokolu SAML nelze odeslat prostřednictvím jiné vazby než HTTP POST). Obraťte se na vlastníka aplikace.|
 |75005|Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné přihlášení. Obraťte se na vlastníka aplikace.|

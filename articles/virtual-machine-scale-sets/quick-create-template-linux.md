@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 9afc2e2362721fd2905b2a241960507aec9b15a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66151087"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375950"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Linuxem pomocí šablony Azure
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí šablony Azure Resource Manageru.
@@ -36,15 +36,15 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 ## <a name="define-a-scale-set-in-a-template"></a>Definice škálovací sady v šabloně
 Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. Šablony se píší ve formátu JavaScript Object Notation (JSON) a definují celé prostředí infrastruktury Azure pro vaši aplikaci. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím webu Azure Portal, Azure CLI nebo Azure PowerShellu nebo z kanálů kontinuální integrace / průběžného doručování (CI/CD).
 
-Další informace o šablonách najdete v tématu [přehled Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment). Syntaxi JSON a vlastnostech najdete v tématu [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) referenčními informacemi k šablonám.
+Další informace o šablonách najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Informace o syntaxi a vlastnostech JSON najdete v referenčních informacích k šabloně [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) .
 
 Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
 
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| Typ                         | Typ prostředku Azure, který se má vytvořit                            | Microsoft.Compute/virtualMachineScaleSets |
+| type                         | Typ prostředku Azure, který se má vytvořit                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | Název škálovací sady                                       | myScaleSet                                |
-| location                     | Umístění, ve kterém se škálovací sada vytvoří                     | USA – východ                                   |
+| location                     | Umístění, ve kterém se škálovací sada vytvoří                     | East US                                   |
 | sku.name                     | Velikost virtuálního počítače pro všechny instance škálovací sady                  | Standard_A1                               |
 | sku.capacity                 | Počet instancí virtuálních počítačů, které se mají zpočátku vytvořit           | 2                                         |
 | upgradePolicy.mode           | Režim upgradů instance virtuálního počítače, kdy dochází ke změnám              | Automaticky                                 |
@@ -161,7 +161,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http:\//publicIpAddress:9000 / do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
+Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http:\//publicIpAddress: 9000/do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
 
 ![Výchozí webová stránka na serveru NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

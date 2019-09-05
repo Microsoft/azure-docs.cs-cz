@@ -4,15 +4,15 @@ description: V této části najdete popis postupu při přípravě na posouzen�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b623675343d63385213091b66e220c5358c6437
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013422"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383330"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Příprava virtuálních počítačů VMware pro posouzení a migraci do Azure
 
@@ -93,7 +93,7 @@ Přiřaďte oprávnění přiřazení role ke skupině prostředků, ve které s
 1. Ve skupině prostředků v Azure Portal vyberte **řízení přístupu (IAM)** .
 2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění.
 
-    - Aby bylo možné spustit vyhodnocení serveru, jsou dostatečná oprávnění přispěvatele.
+    - Aby bylo možné spustit vyhodnocení serveru, jsou dostatečná oprávnění **přispěvatele** .
     - Pokud chcete spustit migraci serveru bez agenta, měli byste mít oprávnění **vlastníka** (nebo **přispěvatele** a **Správce přístupu uživatelů**).
 
 3. Pokud nemáte požadovaná oprávnění, požádejte je od vlastníka skupiny prostředků. 
@@ -107,7 +107,7 @@ K přípravě na vyhodnocení virtuálních počítačů VMware je nutné ověř
 ### <a name="verify-vmware-settings"></a>Ověření nastavení VMware
 
 1. [Ověřit](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Požadavky na server VMware pro vyhodnocování virtuálních počítačů.
-2. [](migrate-support-matrix-vmware.md#assessment-port-requirements) Ujistěte se, že jsou na vCenter serverech otevřené požadované porty.
+2. [Ujistěte se, že](migrate-support-matrix-vmware.md#assessment-port-requirements) jsou na vCenter serverech otevřené požadované porty.
 
 
 ### <a name="set-up-an-account-for-assessment"></a>Nastavení účtu pro posouzení

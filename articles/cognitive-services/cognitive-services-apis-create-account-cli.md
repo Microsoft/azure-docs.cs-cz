@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697892"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383254"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -23,12 +23,12 @@ V tomto rychlém startu můžete začít s Azure Cognitive Services pomocí [roz
 
 V tomto rychlém startu se dozvíte, jak se zaregistrovat k Azure Cognitive Services a vytvořit účet, který má předplatné s jednou nebo více službami, pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Tyto služby jsou reprezentovány [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)Azure, které vám umožňují připojit se k jednomu nebo více rozhraní API služeb Cognitive Services Azure.
 
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Platné předplatné Azure – [Vytvořte si ho](https://azure.microsoft.com/free/) zdarma.
 * [Rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Instalace rozhraní příkazového řádku Azure a přihlášení 
 
@@ -168,7 +168,7 @@ Pomocí příkazu [AZ cognitiveservices Account Account Keys list](https://docs.
 Cenové úrovně (a množství, které se vám bude účtovat), vycházejí z počtu transakcí, které odešlete pomocí ověřovacích informací. Každá cenová úroveň určuje:
 * maximální počet povolených transakcí za sekundu (TPS).
 * funkce služby povolené v rámci cenové úrovně.
-* Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v podrobnostech o [cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
+* Náklady na předdefinovaný objem transakcí. Po překročení této částky se bude účtovat další poplatek, který je uvedený v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) vaší služby.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 09/04/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422684"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308320"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -161,10 +161,10 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Východní USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | USA – západ | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | USA – západ 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Středozápadní USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Středoseverní USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Středojižní USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| Střední USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Západní střed USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Střed USA – sever | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Střed USA – jih | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Střed USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Kanada – střed | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Kanada – východ | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Jižní Amerika** | |
@@ -211,7 +211,7 @@ Všechny trasy inzerované Microsoftem budou označené odpovídající hodnotou
 > 
 
 ### <a name="service-to-bgp-community-value"></a>Hodnota služby pro komunitu BGP
-Kromě výše uvedeného bude Microsoft také označovat předpony podle služby, ke které patří. To se týká jenom partnerského vztahu Microsoftu. Následující tabulka poskytuje mapování služby na hodnotu komunity protokolu BGP.
+Kromě výše uvedeného bude Microsoft také označovat předpony podle služby, ke které patří. To se týká jenom partnerského vztahu Microsoftu. Následující tabulka poskytuje mapování služby na hodnotu komunity protokolu BGP. Pomocí rutiny Get-AzBgpServiceCommunity můžete spustit úplný seznam nejnovějších hodnot.
 
 | **Služba** | **Hodnota komunity protokolu BGP** |
 | --- | --- |

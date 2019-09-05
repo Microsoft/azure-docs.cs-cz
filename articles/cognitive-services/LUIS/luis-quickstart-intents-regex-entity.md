@@ -1,5 +1,5 @@
 ---
-title: Regulární výraz entity – LUIS
+title: 'Kurz: Regulární výraz entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Extrahování konzistentně formátovaných dat z promluvy s využitím entity regulárního výrazu
 services: cognitive-services
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563591"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307590"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získat dobře formátovaná data z utterance
-V tomto kurzu vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity regulárního **výrazu** .
+V tomto kurzu vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity **regulárního výrazu** .
 
 **V tomto kurzu se naučíte:**
 
@@ -179,7 +179,7 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili nový záměr, přidali příklady promluv a pak vytvořili entitu regulárního výrazu k extrahování správně formátovaných data z promluv. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
 > [!div class="nextstepaction"]

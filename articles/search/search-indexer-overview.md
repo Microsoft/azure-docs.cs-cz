@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: af01b6127a8a3e20edfac19ce3b54cecb9d561d1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e50d88181a27dcc46da858f220404eb09ad9b4bd
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640587"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308970"
 ---
 # <a name="indexers-in-azure-search"></a>Indexery ve službě Azure Search
 
@@ -48,11 +48,7 @@ Všechny operace související s indexery, včetně požadavků GET pro stav neb
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md) 
-
-> [!Note]
-> Pro [vyhledávání rozpoznávání](cognitive-search-concept-intro.md)se nepodporuje Azure Table Storage.
->
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
 ## <a name="basic-configuration-steps"></a>Postup základní konfigurace
 Indexery můžou nabízet funkce, které jsou jedinečné pro daný zdroj dat. Z toho důvodu se budou některé aspekty konfigurace indexeru nebo zdroje dat lišit podle typu indexeru. Všechny indexery ale sdílejí stejné základní složení a požadavky. Níže najdete popis kroků společných pro všechny indexery.

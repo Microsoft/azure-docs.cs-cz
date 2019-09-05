@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997747"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383017"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co je Azure IoT Central (funkce verze Preview)?
 
@@ -62,7 +62,7 @@ Tento článek popisuje, jak IoT Central Azure:
 - Typy schématu pole nejsou podporovány.
 - Export šablony aplikace a kopie aplikace nejsou podporovány.
 - Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
-- Je dostupná jenom ve vybraných oblastech.
+- Je dostupná jenom v oblastech Severní Evropa a střední USA.
 
 ## <a name="personas"></a>Osoby
 

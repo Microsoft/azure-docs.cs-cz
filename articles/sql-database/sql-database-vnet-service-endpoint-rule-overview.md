@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098919"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309624"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
 *Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje komunikaci. které se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se nevztahuje na nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
+> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [koncovým bodem služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, na které se má odkazovat.
 
@@ -71,8 +71,6 @@ V Azure máte možnost použít [řízení přístupu na základě role (RBAC)][
 ## <a name="limitations"></a>Omezení
 
 Pro Azure SQL Database funkce pravidla virtuální sítě má následující omezení:
-
-- Webová aplikace může být namapovaná na soukromou IP adresu ve virtuální síti nebo podsíti. I když jsou koncové body služby zapnuté z dané virtuální sítě nebo podsítě, budou připojení z webové aplikace k serveru mít zdroj veřejné IP adresy Azure, ne virtuální síť nebo zdroj podsítě. Pokud chcete povolit připojení z webové aplikace k serveru, který má pravidla brány firewall virtuální sítě, musíte **Povolit službám Azure přístup k serveru** na serveru.
 
 - V bráně firewall pro SQL Database se každé pravidlo virtuální sítě odkazuje na podsíť. Všechny tyto odkazované podsítě musí být hostované ve stejné geografické oblasti, která hostuje SQL Database.
 

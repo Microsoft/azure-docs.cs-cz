@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377366"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375983"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Použít vložené závislosti
 
-ASP.NET Core používá vkládání konstruktoru k zpřístupnění vašich závislostí vaší funkci. Následující příklad ukazuje, jak jsou `IMyService` tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP.
+ASP.NET Core používá vkládání konstruktoru k zpřístupnění vašich závislostí vaší funkci. Následující příklad ukazuje, jak jsou `IMyService` tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP. 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-Použití injektáže konstruktoru znamená, že pokud chcete využít výhod vkládání závislostí, neměli byste používat statické funkce.
+Použití injektáže konstruktoru znamená, že pokud chcete využít výhod vkládání závislostí, neměli byste používat statické funkce. Pro klienta Cosmos [to](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs)odkazují.
 
 ## <a name="service-lifetimes"></a>Životnost služeb
 
@@ -146,7 +146,7 @@ Pokud existují další služby, na kterých chcete převzít závislost, [vytvo
 
 Přepsání služeb poskytovaných hostitelem není aktuálně podporováno.  Pokud existují služby, které chcete přepsat, [vytvořte problém a navrhněte je na GitHubu](https://github.com/azure/azure-functions-host).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v následujících materiálech:
 

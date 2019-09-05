@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279576"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376101"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci Hyper-V
 
@@ -82,7 +82,7 @@ Pro posouzení Azure Migrate spouští odlehčené zařízení pro zjišťován�
 
 | **Podpora**                | **Podrobnosti**               
 | :-------------------       | :------------------- |
-| **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU a 1 externího přepínače pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
+| **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
 | **Azure Migrate projekt**  |  Zařízení může být přidruženo k jednomu projektu.<br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> V projektu můžete vyhodnotit až 35 000 virtuálních počítačů.
 | **Hostitelé Hyper-V**          | Zařízení se může připojit k až 300 hostitelům Hyper-V.
 | **Rozpoznávání**              | Jedno zařízení může zjistit až 5000 virtuálních počítačů.

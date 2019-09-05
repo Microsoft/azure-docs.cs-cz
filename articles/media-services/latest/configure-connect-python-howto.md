@@ -1,6 +1,6 @@
 ---
-title: Připojení k rozhraní API služby Azure Media Services v3 – Python
-description: Zjistěte, jak se připojit k rozhraní API služby Media Services v3 s využitím Pythonu.
+title: Připojení k Azure Media Services V3 API – Python
+description: Přečtěte si, jak se připojit k rozhraní Media Services V3 API pomocí Pythonu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,30 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 971e36b600a2c6be516e39ce84ca5780a2f23bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ceebd88f4988f23bf9cd32bd827aaca67d70461
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60733092"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307858"
 ---
-# <a name="connect-to-media-services-v3-api---python"></a>Připojení k rozhraní API služby Media Services v3 – Python
+# <a name="connect-to-media-services-v3-api---python"></a>Připojení k Media Services V3 API – Python
 
-Tento článek popisuje, jak se připojit k Azure Media Services v3 Python SDK pomocí přihlašovacího instančního objektu služby v metodě.
+V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 Python SDK pomocí metody přihlašování instančního objektu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Stáhněte si Python z [python.org](https://www.python.org/downloads/)
-- Nezapomeňte nastavit `PATH` proměnné prostředí
-- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Je potřeba pamatovat název skupiny prostředků a název účtu Media Services.
-- Postupujte podle pokynů [přístup k rozhraní API](access-api-cli-how-to.md) tématu. Zaznamenejte ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný klíč) a ID tenanta, který budete potřebovat v pozdějším kroku.
+- Stažení Pythonu z [Python.org](https://www.python.org/downloads/)
+- Ujistěte se, `PATH` že jste nastavili proměnnou prostředí.
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services.
+- Postupujte podle kroků v tématu [rozhraní API pro přístup](access-api-cli-how-to.md) . Poznamenejte si ID předplatného, ID aplikace (ID klienta), ověřovací klíč (tajný klíč) a ID tenanta, které budete potřebovat v pozdějším kroku.
+
+> [!IMPORTANT]
+> Přečtěte si [zásady vytváření názvů](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
-Pro práci s Azure Media Services pomocí Pythonu, budete muset nainstalovat tyto moduly.
+Pokud chcete pracovat s Azure Media Services pomocí Pythonu, musíte tyto moduly nainstalovat.
 
 * `azure-mgmt-resource` Modul, který zahrnuje moduly Azure pro Active Directory.
-* `azure-mgmt-media` Modulu, které zahrnuje entity Media Services.
+* `azure-mgmt-media` Modul, který obsahuje entity Media Services.
 
 Otevřete nástroj příkazového řádku a pomocí následujících příkazů nainstalujte moduly.
 
@@ -45,13 +48,13 @@ pip3 install azure-mgmt-resource
 pip3 install azure-mgmt-media==1.1.1
 ```
 
-## <a name="connect-to-the-python-client"></a>Připojte se ke klientovi Pythonu
+## <a name="connect-to-the-python-client"></a>Připojení k klientovi Python
 
-1. Vytvořte soubor s `.py` rozšíření
-1. Otevřete soubor ve svém oblíbeném editoru
-1. Přidejte kód, který následuje do souboru. Kód importuje požadované moduly. a vytvoří objekt přihlašovacích údajů služby Active Directory, který je nutné se připojit ke službě Media Services.
+1. Vytvoření souboru s `.py` příponou
+1. Otevřete soubor ve svém oblíbeném editoru.
+1. Do souboru přidejte kód, který následuje. Kód importuje požadované moduly a vytvoří objekt přihlašovacích údajů služby Active Directory, ke kterému se potřebujete připojit Media Services.
 
-      Nastavte hodnoty proměnné na hodnoty, které jste získali z [přístup k rozhraní API](access-api-cli-how-to.md)
+      Nastavte hodnoty proměnných na hodnoty, které jste získali z [rozhraní API pro přístup](access-api-cli-how-to.md) .
 
       ```
       import adal
@@ -96,9 +99,9 @@ pip3 install azure-mgmt-media==1.1.1
       print (client.assets.list(RESOUCE_GROUP_NAME, ACCOUNT_NAME).get(0))
       ```
 
-1. Spusťte soubor
+1. Spustit soubor
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Použití [Python SDK](https://aka.ms/ams-v3-python-sdk).
-- Projděte si Media Services [Python ref](https://aka.ms/ams-v3-python-ref) dokumentaci.
+- Použijte [Python SDK](https://aka.ms/ams-v3-python-sdk).
+- Přečtěte si referenční dokumentaci k Media Services [Pythonu](https://aka.ms/ams-v3-python-ref) .

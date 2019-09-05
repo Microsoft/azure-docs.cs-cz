@@ -1,6 +1,6 @@
 ---
-title: Vyžaduje hybridní identita porty a protokoly – Azure | Dokumentace Microsoftu
-description: Tato stránka je stránka technické reference pro porty, které musí být otevřen pro služby Azure AD Connect
+title: Porty a protokoly, které vyžaduje hybridní identita – Azure | Microsoft Docs
+description: Tato stránka je technickou referenční stránkou pro porty, které je potřeba otevřít pro Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,95 +16,99 @@ ms.date: 08/02/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9277e35fceb382fbccd009e5bbfe63ce57b8361
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387298"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305176"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Porty a protokoly, které vyžaduje hybridní identita
-Následující dokument je technické referenční informace k požadované porty a protokoly pro implementaci řešení s hybridní identitou. Použijte následující obrázek a najdete v příslušné tabulce.
+Následující dokument představuje technické informace o požadovaných portech a protokolech pro implementaci řešení hybridní identity. Použijte následující obrázek a přečtěte si odpovídající tabulku.
 
 ![Co je služba Azure AD Connect](./media/reference-connect-ports/required3.png)
 
-## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>Tabulka 1 - Azure AD Connect a místní služby AD
-Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi serverem Azure AD Connect a místní AD.
+## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>Tabulka 1 – Azure AD Connect a místní služba AD
+V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi Azure AD Connect serverem a místní službou AD.
 
 | Protocol | Porty | Popis |
 | --- | --- | --- |
-| DNS |53 (TCP/UDP) |Vyhledávání DNS v cílové doménové struktuře. |
-| Protokol Kerberos |88 (TCP/UDP) |Ověřování pomocí protokolu Kerberos k doménové struktuře AD. |
-| MS-RPC |135 (TCP/UDP) |Použít během počáteční konfiguraci průvodce Azure AD Connect, když se váže k doménové struktuře AD a také během synchronizace hesel. |
-| LDAP |389 (TCP/UDP) |Používá se pro import dat ze služby AD. Data se šifrují pomocí protokolu Kerberos podepsat a zapečetění. |
-| SMB | 445 (TCP/UDP) |Bezproblémové jednotné přihlašování se používá k vytvoření účtu počítače v doménové struktuře AD. |
-| LDAP/SSL |636 (TCP/UDP) |Používá se pro import dat ze služby AD. Přenos dat je podepsaný a zašifrovaný. Použít pouze pokud používáte protokol SSL. |
-| RPC |49152 - 65535 (Random vysokou RPC Port)(TCP/UDP) |Použít během počáteční konfigurace služby Azure AD Connect, když se váže k doménových struktur AD a během synchronizace hesel. Zobrazit [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), a [KB224196](https://support.microsoft.com/kb/224196) Další informace. |
+| DNS |53 (TCP/UDP) |Hledání DNS v cílové doménové struktuře. |
+| Kerberos |88 (TCP/UDP) |Ověřování protokolem Kerberos pro doménovou strukturu AD. |
+| MS-RPC |135 (TCP/UDP) |Používá se při počáteční konfiguraci Průvodce Azure AD Connect při vytváření vazby k doménové struktuře služby AD a také při synchronizaci hesel. |
+| LDAP |389 (TCP/UDP) |Používá se pro import dat ze služby AD. Data se šifrují pomocí podpisu protokolu Kerberos & zapečetit. |
+| SMB | 445 (TCP/UDP) |Pomocí bezproblémového jednotného přihlašování můžete v doménové struktuře služby AD vytvořit účet počítače. |
+| LDAP/SSL |636 (TCP/UDP) |Používá se pro import dat ze služby AD. Přenos dat je podepsaný a zašifrovaný. Používá se pouze v případě, že používáte protokol SSL. |
+| RPC |49152-65535 (náhodný port vysokého protokolu RPC) (TCP/UDP) |Používá se při počáteční konfiguraci Azure AD Connect při vytváření vazby k doménovým strukturám AD a při synchronizaci hesel. Další informace najdete v tématech [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)a [KB224196](https://support.microsoft.com/kb/224196) . |
+|WinRM  | 5985 (TCP/UDP) |Používá se jenom v případě, že instalujete AD FS pomocí Průvodce Azure AD Connectm v nástroji gMSA.|
+|služba AD DS webové služby | 9389 (TCP/UDP) |Používá se jenom v případě, že instalujete AD FS pomocí Průvodce Azure AD Connectm v nástroji gMSA. |
 
-## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tabulka 2 - Azure AD Connect a službou Azure AD
-Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi serverem Azure AD Connect a službou Azure AD.
+## <a name="table-2---azure-ad-connect-and-azure-ad"></a>Tabulka 2 – Azure AD Connect a Azure AD
+Tato tabulka popisuje porty a protokoly, které jsou vyžadovány pro komunikaci mezi Azure AD Connect serverem a službou Azure AD.
 
 | Protocol | Porty | Popis |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |Používá ke stahování seznamů odvolaných certifikátů (seznamy odvolaných certifikátů) k ověření certifikátů SSL. |
-| HTTPS |443(TCP/UDP) |Používá k synchronizaci se službou Azure AD. |
+| HTTP |80 (TCP/UDP) |Slouží ke stažení seznamů CRL (seznamy odvolaných certifikátů) k ověření certifikátů SSL. |
+| HTTPS |443 (TCP/UDP) |Používá se k synchronizaci s Azure AD. |
 
-Seznam adres URL a IP adresy, budete muset otevřít v bráně firewall najdete v článku [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Seznam adres URL a IP adres, které musíte otevřít v bráně firewall, najdete v tématu [adresy URL a rozsahy IP adres Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>Tabulka 3 – Azure AD Connect a AD FS federační servery/WAP
-Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi serverem Azure AD Connect a servery AD FS federace/WAP.  
+V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi serverem Azure AD Connect a servery AD FS federačního/WAP.  
 
 | Protocol | Porty | Popis |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |Používá ke stahování seznamů odvolaných certifikátů (seznamy odvolaných certifikátů) k ověření certifikátů SSL. |
-| HTTPS |443(TCP/UDP) |Používá k synchronizaci se službou Azure AD. |
-| WinRM |5985 |Naslouchací proces služby WinRM |
+| HTTP |80 (TCP/UDP) |Slouží ke stažení seznamů CRL (seznamy odvolaných certifikátů) k ověření certifikátů SSL. |
+| HTTPS |443 (TCP/UDP) |Používá se k synchronizaci s Azure AD. |
+| WinRM |5985 |Naslouchací proces WinRM |
 
-## <a name="table-4---wap-and-federation-servers"></a>Tabulka 4 - WAP a federační servery
-Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi federačními servery a servery WAP.
-
-| Protocol | Porty | Popis |
-| --- | --- | --- |
-| HTTPS |443(TCP/UDP) |Slouží k ověření. |
-
-## <a name="table-5---wap-and-users"></a>Tabulka 5 - WAP a uživatelé
-Tato tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi uživateli a servery WAP.
+## <a name="table-4---wap-and-federation-servers"></a>Tabulka 4 – WAP a federační servery
+V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi federačními servery a servery WAP.
 
 | Protocol | Porty | Popis |
 | --- | --- | --- |
-| HTTPS |443(TCP/UDP) |Používá se pro ověřování zařízení. |
-| TCP |49443 (TCP) |Použít pro ověření certifikátu. |
+| HTTPS |443 (TCP/UDP) |Používá se pro ověřování. |
 
-## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>Tabulka 6a & 6b - předávací ověřování pomocí jednotného přihlašování (SSO) a synchronizací hodnot Hash hesel se jednotné přihlašování (SSO)
-Následující tabulka popisuje porty a protokoly, které jsou nutné pro komunikaci mezi Azure AD Connect a službou Azure AD.
+## <a name="table-5---wap-and-users"></a>Tabulka 5 – WAP a uživatelé
+V této tabulce jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi uživateli a servery WAP.
 
-### <a name="table-6a---pass-through-authentication-with-sso"></a>Tabulka 6a - předávacího ověřování s jednotným Přihlašováním
+| Protocol | Porty | Popis |
+| --- | --- | --- |
+| HTTPS |443 (TCP/UDP) |Používá se pro ověřování zařízení. |
+| TCP |49443 (TCP) |Používá se pro ověřování certifikátů. |
+
+## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>Tabulka 6a & 6b – předávací ověřování s jednotným přihlašováním (SSO) a synchronizace hodnot hash hesel s jednotným přihlašováním (SSO)
+V následujících tabulkách jsou popsány porty a protokoly, které jsou vyžadovány pro komunikaci mezi Azure AD Connect a službou Azure AD.
+
+### <a name="table-6a---pass-through-authentication-with-sso"></a>Tabulka 6a – předávací ověřování s jednotným přihlašováním
 |Protocol|Číslo portu|Popis
 | --- | --- | ---
-|HTTP|80|Povolení odchozího přenosu protokolu HTTP pro bezpečnostní ověření, např. SSL. Nutná pro funkce Automatické aktualizace konektoru fungovat správně.
-|HTTPS|443| Povolte odchozí přenosy HTTPS pro operace, jako je povolení a zakázání funkce, registrace konektory, stahování aktualizace konektoru a zpracovává všechny přihlášení požadavky uživatelů.
+|HTTP|80|Povolte odchozí přenosy HTTP pro ověření zabezpečení, jako je například SSL. Také je nutné, aby funkce automaticky aktualizovaného konektoru správně fungovala.
+|HTTPS|443| Povolte odchozí přenosy HTTPS pro operace, jako je povolení a zakázání funkce, registrace konektorů, stahování aktualizací konektoru a zpracování všech uživatelských žádostí o přihlášení.
 
-Kromě toho musí být schopný navázat přímé připojení IP do služby Azure AD Connect [Azure datových center rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653).
+Kromě toho Azure AD Connect třeba umožnit přímé připojení IP k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
-### <a name="table-6b---password-hash-sync-with-sso"></a>Tabulka 6b – synchronizace hodnot Hash hesel s jednotným Přihlašováním
+### <a name="table-6b---password-hash-sync-with-sso"></a>Tabulka 6b – synchronizace hodnot hash hesel pomocí jednotného přihlašování
 
 |Protocol|Číslo portu|Popis
 | --- | --- | ---
-|HTTPS|443| Povolení jednotného přihlašování k registraci (vyžadováno pouze u registračního procesu jednotné přihlašování).
+|HTTPS|443| Povolit registraci jednotného přihlašování (vyžaduje se jenom pro proces registrace jednotného přihlašování)
 
-Kromě toho musí být schopný navázat přímé připojení IP do služby Azure AD Connect [Azure datových center rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653). Důvodem jsou opět pouze požadované pro proces registrace jednotného přihlašování.
+Kromě toho Azure AD Connect třeba umožnit přímé připojení IP k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Tato operace se bude vyžadovat jenom pro proces registrace jednotného přihlašování.
 
-## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabulka 7a & 7b – Azure AD a Azure AD Connect Health agent pro (AD FS/synchronizace)
-Následující tabulky popisují koncových bodů, porty a protokoly, které jsou nutné pro komunikaci mezi agenty Azure AD Connect Health a Azure AD
+## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabulka 7a & Azure AD Connect Health agenta pro (AD FS/synchronizaci) a Azure AD
+V následujících tabulkách jsou popsány koncové body, porty a protokoly, které jsou vyžadovány pro komunikaci mezi agenty Azure AD Connect Health a službou Azure AD.
 
-### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabulka 7a – porty a protokoly pro agenta Azure AD Connect Health pro (AD FS/Sync) a Azure AD
-Tato tabulka popisuje následující Odchozí porty a protokoly, které jsou nutné pro komunikaci mezi agenty Azure AD Connect Health a Azure AD.  
+### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabulka 7a – porty a protokoly pro agenta Azure AD Connect Health pro (AD FS/synchronizovat) a Azure AD
+Tato tabulka popisuje následující Odchozí porty a protokoly, které jsou vyžadovány pro komunikaci mezi agenty Azure AD Connect Health a službou Azure AD.  
 
 | Protocol | Porty | Popis |
 | --- | --- | --- |
-| HTTPS |443(TCP/UDP) |Odchozí |
-| Azure Service Bus |5671 (TCP/UDP) |Odchozí |
+| HTTPS |443 (TCP) |Odchozí |
+| Azure Service Bus |5671 (TCP) |Odchozí |
 
-### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b – koncové body pro agenta Azure AD Connect Health pro (AD FS/Sync) a Azure AD
-Seznam koncových bodů najdete v tématu [část požadavky pro Azure AD Connect Health agent](how-to-connect-health-agent-install.md#requirements).
+Azure Service Bus port 5671 již není požadován pro nejnovější verzi agenta. Nejnovější verze agenta Azure AD Connect Health vyžaduje pouze port 443.
+
+### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b – koncové body pro agenta Azure AD Connect Health pro (AD FS/synchronizovat) a Azure AD
+Seznam koncových bodů najdete v [části požadavky pro agenta Azure AD Connect Health](how-to-connect-health-agent-install.md#requirements).
 

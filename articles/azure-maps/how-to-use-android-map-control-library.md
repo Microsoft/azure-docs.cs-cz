@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9abe9eb9cdad6351f49fba2dace64095783455cf
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839430"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376006"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
@@ -109,7 +109,18 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     * Nastavení ověřovacích informací Azure Maps
     * získání instance mapového ovládacího prvku v metodě **Create**
 
-    Nastavení ověřovacích informací pro třídu AzureMaps globálně pomocí metod setSubscriptionKey nebo setAadProperties ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. Mapový ovládací prvek obsahuje vlastní metody životního cyklu pro správu životního cyklu OpenGL pro Android, které musí být volány přímo z obsažené aktivity. Aby mohla vaše aplikace správně fungovat, zavolejte metody životního cyklu mapového ovládacího prvku, je nutné přepsat následující metody životního cyklu v aktivitě, která obsahuje mapový ovládací prvek a volat příslušnou metodu mapového ovládacího prvku. 
+    Nastavení ověřovacích informací `AzureMaps` třídy globálně `setSubscriptionKey` pomocí metod nebo `setAadProperties` ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
+
+    Mapový ovládací prvek obsahuje vlastní metody životního cyklu pro správu životního cyklu OpenGL pro Android, které musí být volány přímo z obsažené aktivity. Aby mohla vaše aplikace správně fungovat, zavolejte metody životního cyklu mapového ovládacího prvku, je nutné přepsat následující metody životního cyklu v aktivitě, která obsahuje mapový ovládací prvek a volat příslušnou metodu mapového ovládacího prvku. 
+
+    * Create (sada) 
+    * OnStart () 
+    * proces obnovení () 
+    * pozastaveno () 
+    * zarážka () 
+    * Odstranit () 
+    * onSaveInstanceState (sada) 
+    * onLowMemory() 
 
     Upravte soubor **MainActivity. Java** následujícím způsobem:
     
@@ -140,13 +151,24 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -178,7 +200,6 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
 
     ```

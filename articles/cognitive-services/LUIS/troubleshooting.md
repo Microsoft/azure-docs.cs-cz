@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258791"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382344"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
@@ -265,7 +265,7 @@ Klíč pro vytváření/starter je povolený jenom 1000 koncový bod dotazů za 
 Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mimo middleware LUIS. 
 
 #### <a name="resolve-issue-in-luis"></a>Řešení potíží v LUIS
-Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Běžné chyby patří:
+Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Pokud se zobrazí chyba, vyřešte problém v LUIS, dokud nebude chyba nadále vrácena. Běžné chyby patří:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`– Tento problém znamená, že buď potřebujete změnit z klíčového obsahu na [klíč koncového bodu](luis-how-to-azure-subscription.md) , nebo potřebujete změnit [úrovně služeb](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
@@ -329,7 +329,7 @@ Videa:
 
 * [Jak používat konverzační službu Azure ke škálování vašeho podnikání pro novou generaci](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o LUIS, najdete v následujících zdrojích:
 * [Dotazy přetečení zásobníku označené LUIS](https://stackoverflow.com/questions/tagged/luis)

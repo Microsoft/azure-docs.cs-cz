@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254348"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306550"
 ---
 # <a name="specify-a-face-recognition-model"></a>Určení modelu rozpoznávání obličeje
 
@@ -23,7 +23,7 @@ V této příručce se dozvíte, jak zadat model rozpoznávání obličeje pro r
 
 Face API používá modely strojového učení k provádění operací na lidských plochách na obrázcích. I nadále vylepšujeme přesnost našich modelů na základě zpětné vazby od zákazníků a pokrok ve výzkumu a poskytujeme tato vylepšení jako aktualizace modelu. Vývojáři mají možnost určit, kterou verzi modelu rozpoznávání obličeje má použít; můžou zvolit model, který nejlépe odpovídá jejich případu použití.
 
-Pokud jste nový uživatel, doporučujeme použít nejnovější model. Přečtěte si, kde se dozvíte, jak ho zadat v různých tvářových operacích a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a nejste si jistí, jestli byste měli přepnout na nejnovější model, přejděte k části vyhodnotit [různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
+Pokud jste nový uživatel, doporučujeme použít nejnovější model. Přečtěte si, kde se dozvíte, jak ho zadat v různých tvářových operacích a vyhnout se konfliktům modelu. Pokud jste pokročilý uživatel a nejste si jistí, jestli byste měli přepnout na nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) , abyste vyhodnotili nový model a porovnali výsledky pomocí aktuální datové sady.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +107,8 @@ Pokud obvykle zadáte prahovou hodnotu spolehlivosti (hodnota mezi 0 a 1, která
 
 V tomto článku jste zjistili, jak určit model rozpoznávání pro použití s různými rozhraními API služby obličeje. Potom postupujte podle pokynů k rychlému zprovoznění a začněte používat rozpoznávání tváře.
 
-* [Detekce plošek v obrázku](../quickstarts/csharp-detect-sdk.md)
+* [Sada Face .NET SDK](../Quickstarts/csharp-sdk.md)
+* [Sada SDK pro tváře v Pythonu](../Quickstarts/python-sdk.md)
 
 [Rozpoznávání obličeje]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Plocha – najít podobné]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

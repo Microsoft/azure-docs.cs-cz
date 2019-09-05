@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2a5190cada0ca834cada4e02bfe7549dc43da4b8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309518"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Omezení prostředků pro elastické fondy pomocí omezení nákupního modelu založeného na vCore
 
@@ -140,8 +140,8 @@ Omezení pro nákupní model založený na DTU najdete v tématu [SQL Database o
 |Vstupně-výstupní latence (přibližné)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
 |Cílové IOPS (64 KB)|7000|7000|7000|7000|7000|7000|7000|
 |Omezení rychlosti protokolu (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
-|Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
-|Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
+|Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
+|Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
 |Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
@@ -280,7 +280,7 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 | Maximální velikost úložiště na databázi |Maximální velikost databáze nastavená uživatelem pro databázi ve fondu. Databáze ve fondu sdílejí přidělené úložiště fondu, takže velikost databáze může dosáhnout je omezená na menší zbývající velikost úložiště fondu a velikosti databáze. Maximální velikost databáze odkazuje na maximální velikost datových souborů a nezahrnuje místo využívané soubory protokolu. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Omezení prostředků vCore pro izolovanou databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na Vcore](sql-database-vcore-resource-limits-single-databases.md) .
 - Omezení prostředků DTU pro jednu databázi najdete v tématu [omezení prostředků pro izolované databáze pomocí nákupního modelu založeného na DTU](sql-database-dtu-resource-limits-single-databases.md) .

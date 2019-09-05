@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 008ecf221dfcc069f6ac3b2ee3d8e5e46056c83c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559844"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308135"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Získejte odpovědi na otázku ze znalostní báze Java.
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Rychlý start: Získejte odpovědi na otázku ze znalostní báze Java.
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/data-sources-supported.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď. 
 
@@ -95,7 +95,7 @@ Sestavit a spustit program z příkazového řádku. Automaticky se odešle pož
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

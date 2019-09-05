@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137539"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382990"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: Použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Budete muset vytvořit prostředek Počítačové zpracování obrazu pro svůj účet Azure. Tento prostředek spravuje váš přístup k Počítačové zpracování obrazu službě Azure. 
 
-1. Podle pokynů v části [vytvoření prostředku Azure Cognitive Services](../../cognitive-services-apis-create-account.md#single-service-resource) vytvořte prostředek počítačové zpracování obrazu.
+1. Podle pokynů v části [vytvoření prostředku Azure Cognitive Services](../../cognitive-services-apis-create-account.md) vytvořte prostředek počítačové zpracování obrazu.
 
 1. Pak přejděte do nabídky pro skupinu prostředků a klikněte na předplatné rozhraní API pro počítačové zpracování obrazu, které jste právě vytvořili. Zkopírujte adresu URL pod **koncovým bodem** , abyste ji mohli snadno načíst za chvíli. Pak klikněte na **Zobrazit přístupové klíče**.
 
@@ -70,7 +70,7 @@ Pak v Průzkumník řešení klikněte pravým tlačítkem na projekt a pomocí 
 
 Dále přidáte kód, který ve skutečnosti využívá službu Počítačové zpracování obrazu k vytváření metadat pro image. Tyto kroky se vztahují na aplikaci ASP.NET v testovacím prostředí, ale můžete je přizpůsobit na vlastní aplikaci. Důležité je, že v tomto okamžiku máte webovou aplikaci ASP.NET, která může nahrávat obrázky do kontejneru Azure Storage, číst z něj obrázky a zobrazovat je v zobrazení. Pokud si o tom nejste jisti, je vhodné postupovat podle [cvičení 3 Azure Storageho testovacího prostředí](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3). 
 
-1. Otevřete soubor *HomeController.cs* ve složce Controllers projektu a na začátek souboru přidejte následující `using` příkazy:
+1. Otevřete soubor *HomeController.cs* ve složce **Controllers** projektu a na začátek souboru přidejte následující `using` příkazy:
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f23a1f8e60567e1c2ed89b27f0eb2bab4ca5912
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5d607809b6e0356c8807879962927e99f2bd12fd
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061810"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382726"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -138,7 +138,7 @@ Pokud je vaše skupina pro správu System Center Operations Manager připojená 
 * Aktualizace sady pro správu nasazení
 
 > [!NOTE]
-> Pokud máte skupinu pro správu Operations Manager 1807 s agenty nakonfigurovanými na úrovni skupiny pro správu, které se mají přidružit k pracovnímu prostoru, aktuální alternativní řešení, které se zobrazí, je přepsat **IsAutoRegistrationEnabled** na **hodnotu true** v Pravidlo **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** .
+> Pokud máte skupinu pro správu Operations Manager 1807 nebo 2019 s agenty nakonfigurovanými na úrovni skupiny pro správu, která má být přidružena k pracovnímu prostoru, aktuální alternativní řešení, které se zobrazí, je přepsat **IsAutoRegistrationEnabled** na **hodnotu true** . pravidlo **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** .
 
 Další informace o tom, jak se aktualizují sady Management Pack řešení, najdete v tématu [připojení Operations Manager k Azure monitor protokolů](../azure-monitor/platform/om-agents.md).
 
@@ -371,7 +371,7 @@ Následující adresy jsou vyžadovány konkrétně pro Update Management. Komun
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
-U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz.  Aktualizovaný seznam požadovaných koncových bodů najdete v problémech [souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
+U počítačů s Windows musíte taky u všech koncových bodů vyžadovaných nástrojem web Windows Update umožňovat provoz.  Aktualizovaný seznam požadovaných koncových bodů najdete v [problémech souvisejících s HTTP/proxy serverem](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Pokud máte místní [web Windows Update Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musíte taky na serveru, který určíte v [klíči služby WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry), povolený provoz.
 
 U počítačů se systémem Red Hat Linux uveďte požadované koncové body na [IP adresách pro servery RHUI Content Delivery](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) . Další distribuce pro Linux najdete v dokumentaci pro poskytovatele.
 
@@ -423,7 +423,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy na posuzování virtuálních počítačů Azure (Linux)
 
-U některých Linux distribuce se neshoduje [](https://en.wikipedia.org/wiki/Endianness) s hodnotou VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
+U některých Linux distribuce se [neshoduje s hodnotou](https://en.wikipedia.org/wiki/Endianness) VMUUID, která pochází z Azure Resource Manager a co je uložená v protokolech Azure monitor. Následující dotaz vyhledá shodu na základě typu endian. Vyměňte hodnoty VMUUID pomocí formátu big-endian a little endian identifikátoru GUID, aby byly výsledky vráceny správně. VMUUID, která se má použít, můžete najít spuštěním následujícího dotazu v protokolech Azure Monitor:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Chybějící souhrn aktualizací

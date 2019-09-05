@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 98cb6d8eb665121e5991508056aa2fd9edc0629d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170892"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376047"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -38,7 +38,7 @@ Než začnete, musíte mít následující:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Vytvoření a aktivace virtuálního prostředí (volitelné)
 
-Pro místní vývoj a testování funkcí Pythonu se doporučuje používat prostředí Python 3,6. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`.
+Pro místní vývoj a testování funkcí Pythonu se doporučuje používat prostředí Python 3,6. Spusťte následující příkazy k vytvoření a aktivace do virtuálního prostředí s názvem `.venv`. K instalaci venv použijte příkaz: sudo apt-get install python3-venv
 
 ### <a name="bash"></a>Bash
 

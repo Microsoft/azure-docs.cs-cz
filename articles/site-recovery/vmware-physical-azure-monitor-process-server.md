@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972178"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383213"
 ---
 # <a name="monitor-the-process-server"></a>Monitorování procesového serveru
 
@@ -57,10 +57,12 @@ Procesový Server vygeneruje množství upozornění na stav, shrnuté v násled
 ![Upozornění][yellow] | Využití CPU > 80% za posledních 15 minut
 ![Upozornění][yellow] | Využití paměti > 80% za posledních 15 minut.
 ![Upozornění][yellow] | Volné místo ve složce mezipaměti < 30% za posledních 15 minut
+![Upozornění][yellow] | Site Recovery monitorovat nevyřízená nebo odchozí data každých pět minut a odhadne, že data v mezipaměti procesového serveru nejde do 30 minut nahrát do Azure.
 ![Upozornění][yellow] | Služby procesového serveru nejsou spuštěné za posledních 15 minut.
 ![Kritická][red] | Využití CPU > 95% za posledních 15 minut
 ![Kritická][red] | Využití paměti > 95% za posledních 15 minut.
 ![Kritická][red] | Volné místo ve složce mezipaměti < 25% za posledních 15 minut
+![Kritická][red] | Site Recovery monitorovat nevyřízená nebo odchozí data každých pět minut a odhadne, že data v mezipaměti procesového serveru nejde do Azure nahrávat během 45 minut.
 ![Kritická][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut.
 
 ![Klíč tabulky](./media/vmware-physical-azure-monitor-process-server/table-key.png)
@@ -79,7 +81,7 @@ Stav serverů procesů můžete monitorovat následujícím způsobem:
 
     ![Stav procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. Včásti stav procesového serveru můžete monitorovat stav procesového serveru. Podrobnosti najdete v podrobnostech.
+4. V části stav **procesového**serveru můžete monitorovat stav procesového serveru. Podrobnosti najdete v podrobnostech.
 
     ![Podrobnosti procesového serveru na řídicím panelu virtuálních počítačů](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -91,7 +93,7 @@ Stav serverů procesů můžete monitorovat následujícím způsobem:
 Můžete také monitorovat procesní servery v trezoru v části **Site Recovery infrastruktura**. V oblasti **Správa infrastruktury Site Recovery**klikněte na **konfigurační servery**. Vyberte konfigurační server přidružený k procesu serveru a přejděte k podrobnostem o procesovém serveru.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Pokud máte nějaké problémy s procesovým serverem, postupujte podle pokynů pro [řešení potíží](vmware-physical-azure-troubleshoot-process-server.md) .
 - Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123841"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309247"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL Server
 
@@ -110,8 +110,7 @@ Další možností rozšíření úložiště je rozšíření stávající jedn
 
 V této části najdete referenční informace ke změnám konfigurace úložiště, které Azure během zřizování a konfigurace virtuálního počítače SQL automaticky provede během Azure Portal.
 
-* Pokud jste pro svůj virtuální počítač vybrali méně než dvě služby TBs úložiště, Azure nevytvoří fond úložiště.
-* Pokud jste pro virtuální počítač vybrali aspoň dvě služby TBs úložiště, Azure nakonfiguruje fond úložiště. V další části tohoto tématu najdete podrobné informace o konfiguraci fondu úložiště.
+* Azure nakonfiguruje fond úložiště z úložiště vybraného z virtuálního počítače. V další části tohoto tématu najdete podrobné informace o konfiguraci fondu úložiště.
 * Automatická konfigurace úložiště vždycky používá datové disky [Premium SSD](../disks-types.md) P30. V důsledku toho je k dispozici mapování 1:1 mezi vybraným počtem terabajtů a počtem datových disků připojených k VIRTUÁLNÍmu počítači.
 
 Informace o cenách najdete na stránce s [cenami za úložiště](https://azure.microsoft.com/pricing/details/storage) na kartě **Disk Storage** .
@@ -149,6 +148,6 @@ Následující tabulka popisuje tři dostupné možnosti typu úlohy a jejich od
 > [!NOTE]
 > Typ úlohy můžete zadat jenom při zřizování virtuálního počítače SQL, a to tak, že ho vyberete v kroku konfigurace úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).

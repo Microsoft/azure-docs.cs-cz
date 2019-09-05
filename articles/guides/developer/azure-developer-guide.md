@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f04dd628ae0999edd202c98521526ae70e1ff0af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141222"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308584"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -234,7 +234,7 @@ Azure je založený na sadě rozhraní REST API, které podporují uživatelské
 Kromě rozhraní REST API umožňují řada služeb Azure také programově spravovat prostředky z vašich aplikací pomocí sad Azure SDK specifických pro konkrétní platformy, včetně sad SDK pro následující vývojové platformy:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -273,7 +273,7 @@ Předplatné je logické seskupení služeb Azure, které jsou propojené s úč
 
 #### <a name="resource-groups"></a>Skupiny prostředků
 
-Když zřizujete nové služby Azure, provedete to v daném předplatném. Jednotlivé služby Azure, které se také nazývají prostředky, se vytvářejí v kontextu skupiny prostředků. Skupiny prostředků usnadňují nasazení a správu prostředků vaší aplikace. Skupina prostředků by měla obsahovat všechny prostředky pro vaši aplikaci, se kterými chcete pracovat jako s jednotkou. Prostředky můžete přesouvat mezi skupinami prostředků a dokonce i s různými předplatnými. Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](../../resource-group-move-resources.md)předplatného.
+Když zřizujete nové služby Azure, provedete to v daném předplatném. Jednotlivé služby Azure, které se také nazývají prostředky, se vytvářejí v kontextu skupiny prostředků. Skupiny prostředků usnadňují nasazení a správu prostředků vaší aplikace. Skupina prostředků by měla obsahovat všechny prostředky pro vaši aplikaci, se kterými chcete pracovat jako s jednotkou. Prostředky můžete přesouvat mezi skupinami prostředků a dokonce i s různými předplatnými. Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../../resource-group-move-resources.md).
 
 Azure Resource Explorer je skvělý nástroj pro vizualizaci prostředků, které jste už ve svém předplatném vytvořili. Další informace najdete v tématu [použití Azure Resource Explorer k zobrazení a úpravě prostředků](../../resource-manager-resource-explorer.md).
 
@@ -307,6 +307,6 @@ Azure poskytuje sadu rozhraní REST API pro fakturaci, která poskytují příst
 
 #### <a name="predict-future-costs"></a>Předpověď budoucích nákladů
 
-I když je obtížné odhadnout náklady předem, Azure má cenovou kalkulačku [](https://azure.microsoft.com/pricing/calculator/) , kterou můžete použít při odhadu nákladů na nasazené prostředky. Můžete také použít okno fakturace na portálu a fakturační rozhraní REST API k odhadu budoucích nákladů na základě aktuální spotřeby.
+I když je obtížné odhadnout náklady předem, Azure má [cenovou kalkulačku](https://azure.microsoft.com/pricing/calculator/) , kterou můžete použít při odhadu nákladů na nasazené prostředky. Můžete také použít okno fakturace na portálu a fakturační rozhraní REST API k odhadu budoucích nákladů na základě aktuální spotřeby.
 
 >**Začínáme**: Viz [Přehled využití fakturace Azure a rozhraní RateCard API](../../billing-usage-rate-card-overview.md).

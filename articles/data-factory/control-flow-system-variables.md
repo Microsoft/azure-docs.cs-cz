@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141636"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376438"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporované nástrojem Azure Data Factory
 Tento článek popisuje systémové proměnné, které podporuje Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování Data Factory entit.
@@ -39,8 +39,8 @@ Na tyto systémové proměnné se dá odkazovat kdekoli v triggeru JSON, pokud j
 
 | Název proměnné | Popis |
 | --- | --- |
-| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z` `2017-06-01T22:29:00Z` , `2017-06-01T22:25:00Z`v uvedeném pořadí.|
-| @trigger().startTime |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:29:00.9935483Z` , `2017-06-01T22:25:00.7958577Z`v uvedeném pořadí. (Poznámka: Časové razítko je ve výchozím nastavení ve formátu ISO 8601.)|
+| @trigger().scheduledTime |Čas, kdy byla aktivační událost naplánována k vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, tato proměnná vrátí `2017-06-01T22:20:00Z` `2017-06-01T22:30:00Z` , `2017-06-01T22:25:00Z`v uvedeném pořadí.|
+| @trigger().startTime |Čas, kdy se Trigger **skutečně** vyvolal pro vyvolání spuštění kanálu. Například pro Trigger, který se aktivuje každých 5 minut, může tato proměnná vracet něco podobného `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:30:00.9935483Z` , `2017-06-01T22:25:00.7958577Z`v uvedeném pořadí. (Poznámka: Časové razítko je ve výchozím nastavení ve formátu ISO 8601.)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Rozsah triggeru pro bubnový interval
 Na tyto systémové proměnné se dá odkazovat kdekoli v triggeru JSON, pokud je Trigger typu: "TumblingWindowTrigger."

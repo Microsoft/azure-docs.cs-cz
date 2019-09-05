@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406086"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381792"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru a databáze Azure Průzkumník dat
 
@@ -53,11 +53,11 @@ Vytvořte cluster Azure Průzkumník dat s definovanou sadou výpočetních pros
     |---|---|---|
     | Subscription | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj cluster.|
     | Resource group | Vaše skupina prostředků | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
-    | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a čísla. Musí obsahovat 4 až 22 znaků.
+    | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a číslice. Musí obsahovat 4 až 22 znaků.
     | Oblast | *Západní USA* nebo *západní USA 2* | Pro tento rychlý Start vyberte *západní USA* nebo *západní USA 2* (Pokud používáte zóny dostupnosti). Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
-    | Zóny dostupnosti | *1*, *2*a/nebo *3* | U oblastí, které podporují redundanci, vyberte, ve kterých zónách budou vaše instance umístěny (volitelné). Uzly clusteru se ve výchozím nastavení vytvoří ve stejném datovém centru. Pomocí [zóny dostupnosti Azure](/azure/availability-zones/az-overview) umístěte instance clusteru do různých zón dostupnosti ve stejné oblasti. Výběrem několika zón dostupnosti můžete eliminovat jediný bod selhání a zajistit vysokou dostupnost. 
+    | Zóny dostupnosti | *1*, *2*a/nebo *3* | Instance clusteru umístěte do různých zón dostupnosti ve stejné oblasti (volitelné). [Zóny dostupnosti Azure](/azure/availability-zones/az-overview) jsou jedinečná fyzická umístění v rámci stejné oblasti Azure. Chrání cluster Azure Průzkumník dat a data z částečného selhání oblasti. Uzly clusteru se ve výchozím nastavení vytvoří ve stejném datovém centru. Výběrem několika zón dostupnosti můžete eliminovat jediný bod selhání a zajistit vysokou dostupnost. Nasazení do zón dostupnosti je možné jenom během vytváření clusteru a nedá se upravit později.
     | Specifikace výpočetních prostředků | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
-    | | |
+    | | | |
 
 1. Vyberte **zkontrolovat + vytvořit** a Prohlédněte si podrobnosti o clusteru a **vytvořte** si cluster zřídit. Zřizování obvykle trvá přibližně 10 minut.
 

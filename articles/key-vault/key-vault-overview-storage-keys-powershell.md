@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136569"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382703"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault spravovaného účtu úložiště – PowerShell
 
@@ -59,11 +59,11 @@ Set-AzContext -SubscriptionId <subscriptionId>
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorizovat Key Vault k přístupu k vašemu účtu úložiště
 
 > [!IMPORTANT]
-> Tenant **[služby](/azure/active-directory/develop/developer-glossary#service-principal-object)** Azure AD poskytuje každou registrovanou aplikaci s instančním objektem, který slouží jako identita aplikace. ID aplikace instančního objektu se používá, když udělujete oprávnění pro přístup k jiným prostředkům Azure prostřednictvím řízení přístupu na základě role (RBAC). Vzhledem k tomu, že Key Vault je aplikace Microsoftu, je předregistrovaná ve všech klientech Azure AD pod stejným ID aplikace v rámci každého cloudu Azure:
+> Tenant služby Azure AD poskytuje každou registrovanou aplikaci s **[instančním objektem](/azure/active-directory/develop/developer-glossary#service-principal-object)** , který slouží jako identita aplikace. ID aplikace instančního objektu se používá, když udělujete oprávnění pro přístup k jiným prostředkům Azure prostřednictvím řízení přístupu na základě role (RBAC). Vzhledem k tomu, že Key Vault je aplikace Microsoftu, je předregistrovaná ve všech klientech Azure AD pod stejným ID aplikace v rámci každého cloudu Azure:
 > - Klienti Azure AD v cloudu Azure pro státní správu používají `7e7c393b-45d0-48b1-a35e-2905ddf8183c`ID aplikace.
 > - Klienti Azure AD ve veřejném cloudu Azure a všichni ostatní používají ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`aplikace.
 
-Předtím, než Key Vault mít přístup a spravovat klíče účtu úložiště, musíte autorizovat svůj přístup k vašemu účtu úložiště. Aplikace Key Vault vyžaduje oprávnění k vypsání a *obnovení* klíčů pro váš účet úložiště. Tato oprávnění se povolují prostřednictvím předdefinované role [služby klíčového operátoru klíče účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)RBAC. 
+Předtím, než Key Vault mít přístup a spravovat klíče účtu úložiště, musíte autorizovat svůj přístup k vašemu účtu úložiště. Aplikace Key Vault vyžaduje oprávnění k *vypsání* a *obnovení* klíčů pro váš účet úložiště. Tato oprávnění se povolují prostřednictvím předdefinované role [služby klíčového operátoru klíče účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)RBAC. 
 
 Přiřaďte tuto roli k Key Vault instančnímu objektu, čímž omezíte rozsah na svůj účet úložiště, a to pomocí následujících kroků. Nezapomeňte aktualizovat `$resourceGroupName`proměnné, `$storageAccountName`, `$storageAccountKey`a `$keyVaultName` před spuštěním skriptu:
 
@@ -111,7 +111,7 @@ Pomocí stejné relace PowerShellu aktualizujte zásady přístupu Key Vault pro
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 ```
 
 Všimněte si, že oprávnění k účtům úložiště nejsou k dispozici na stránce zásady přístupu na účtu úložiště v Azure Portal.
@@ -166,7 +166,7 @@ Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Ukázky klíčů spravovaného účtu úložiště](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)

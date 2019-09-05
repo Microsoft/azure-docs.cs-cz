@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 69ec6062d0dba1f1044f9a7dcfbe75924887d2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7c1c616ec6ce36ee58f32dbcada8ead6fc339f2e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559417"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306974"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči pomocí sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Aplikace je založena na sadě Speech SDK for JavaScript ([Stáhnout verzi 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založena na sadě Speech SDK for JavaScript ([Stáhnout verzi 1.6.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +107,7 @@ Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tent
 
 Pokud chcete aplikaci spustit, otevřete oblíbený webový prohlížeč a přejděte na veřejnou adresu URL, na které složku hostujete. Zadejte vaši [oblast](regions.md) a aktivujte rozpoznávání s využitím mikrofonu. Pokud je tak nakonfigurovaná, aplikace získá token z vašeho zdroje tokenu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky JavaScriptu na GitHubu](https://aka.ms/csspeech/samples)

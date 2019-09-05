@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d4d2a843248985c4fe17bf5401b261862d71fecf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100954"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383032"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 
@@ -40,6 +40,9 @@ Nyní vyberte **vytvořit**.
 ![Portál pro správu: Prostředek IoT Central](media/howto-manage-iot-central-from-portal/image0c1.png)
 
 Vyplňte všechna pole ve formuláři. Tento formulář je podobný formuláři, který vyplníte, abyste mohli vytvářet aplikace na webu [Správce aplikací Azure IoT Central](https://aka.ms/iotcentral) . Další informace najdete v tématu rychlý Start [k vytvoření IoT Central aplikace](quick-deploy-iot-central.md) .
+
+> [!NOTE]
+> Šablona **aplikace Preview** je aktuálně dostupná pouze v oblastech **Severní Evropa** a **střed USA** .
 
 ![Portál pro správu: vytvoření prostředku IoT Central](media/howto-manage-iot-central-from-portal/image1a.png)  
 

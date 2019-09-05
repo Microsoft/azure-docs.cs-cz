@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: b1839316f8f11af7e4f365694fc017c262d00a86
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191737"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383247"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -20,7 +20,7 @@ Pokud chcete publikovat své nabídky [Azure Marketplace](https://azuremarketpla
 
 ## <a name="create-a-partner-center-account"></a>Vytvořit účet partnerského centra
 
-V tomto článku se dozvíte, jak vytvořit účet partnerského centra, včetně postupu: 
+V tomto článku se dozvíte, jak vytvořit účet partnerského centra, včetně postupu:
 
 - [Registrace pomocí stránky pro registraci v partnerském centru](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [Přihlášení pomocí pracovního účtu](#sign-in-with-a-work-account)
@@ -56,11 +56,11 @@ Bude nutné souhlasit s podmínkami a ujednáními v rámci [smlouvy Microsoft M
 
 #### <a name="provide-your-publisher-profile"></a>Zadejte svůj profil vydavatele.
 
-Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste to ještě neudělali, musíte se připojit k [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po připojení k Microsoft Partner Network budete mít k dispozici ID MPN. 
+Váš profil vydavatele obsahuje název vaší společnosti a ID MPN. Pokud jste to ještě neudělali, musíte se připojit k [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po připojení k Microsoft Partner Network budete mít k dispozici ID MPN.
 
-Vytvořte vydavatele s ID. Vaše ID vydavatele jednoznačně identifikuje vaši společnost a vaše nabídky na webu Marketplace a v AppSource. 
+Vytvořte vydavatele s ID. Vaše ID vydavatele jednoznačně identifikuje vaši společnost a vaše nabídky na webu Marketplace a v AppSource.
 
-Po potvrzení informací o profilu vydavatele vyjádřete souhlas s podmínkami a ujednáními a vytvořte účet partnerského centra výběrem možnosti **přijmout a pokračovat**. 
+Po potvrzení informací o profilu vydavatele vyjádřete souhlas s podmínkami a ujednáními a vytvořte účet partnerského centra výběrem možnosti **přijmout a pokračovat**.
 
 >[!Important]
 >*Abyste mohli přijmout tyto podmínky, musíte být oprávněni jednat jménem vaší společnosti.*

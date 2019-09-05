@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 7fd98c7bb2cd049da8f5f68a5d2401081822eb22
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 183030a063faa212d7d5788792aa525f530d18ef
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779180"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308397"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a Správa rozpočtů Azure
 
 Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
 
-Měsíční rozpočty se vyhodnocují na základě útraty každé čtyři hodiny. Data a oznámení pro spotřebované prostředky jsou však k dispozici do osmi hodin.  
+Měsíční rozpočty se vyhodnocují na základě útraty každé čtyři hodiny. Data pro spotřebované prostředky jsou ale k dispozici do osmi hodin. Pokud je dodržena prahová hodnota rozpočtu, e-mailová oznámení dostávají obvykle za méně než osm hodin. 
 
 Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnu. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
 
@@ -58,7 +58,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 Rozpočet předplatné Azure můžete vytvořit pro měsíčně, čtvrtletně nebo roční období. Váš navigační obsah v Azure Portal určuje, zda vytvoříte rozpočet pro předplatné nebo skupinu pro správu.
 
-Chcete-li vytvořit nebo zobrazit rozpočet, otevřete požadovaný obor v Azure Portal a v nabídce vyberte rozpočty. Přejděte například na odběry, vyberte předplatné ze seznamu a potom v nabídce vyberte rozpočty . Pomocí panelu **Rozsah** můžete v rozpočtech přepnout na jiný obor, například na skupinu pro správu. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
+Chcete-li vytvořit nebo zobrazit rozpočet, otevřete požadovaný obor v Azure Portal a v nabídce vyberte **rozpočty** . Přejděte například na **odběry**, vyberte předplatné ze seznamu a potom v nabídce vyberte **rozpočty** . Pomocí panelu **Rozsah** můžete v rozpočtech přepnout na jiný obor, například na skupinu pro správu. Další informace o oborech najdete v tématu [pochopení a práce s obory](understand-work-scopes.md).
 
 Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednoduché zobrazení.
 
@@ -112,7 +112,7 @@ Následující příklad ukazuje prahové hodnoty rozpočtu nastavené na 50%, 7
 
 ![Příklad znázorňující podmínky výstrah nakonfigurované s různými skupinami akcí a typem akcí](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

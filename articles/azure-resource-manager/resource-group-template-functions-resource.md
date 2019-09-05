@@ -4,14 +4,14 @@ description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194810"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306930"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -61,7 +61,6 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft.CognitiveServices/accounts | [klíče Listkey](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
@@ -399,7 +398,7 @@ Odkaz na funkci jde použít jenom ve vlastnosti definice prostředku a část O
 
 V výstupech [vnořené šablony](resource-group-linked-templates.md#nested-template) nelze použít referenční funkci pro vrácení prostředku, který jste nasadili ve vnořené šabloně. Místo toho použijte [propojenou šablonu](resource-group-linked-templates.md#external-template-and-external-parameters).
 
-Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud odkazovaná funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
+Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud **odkazovaná** funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](resource-group-template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
 ### <a name="implicit-dependency"></a>Implicitní závislost
 
@@ -582,7 +581,7 @@ Vlastnost **ManagedBy** je vrácena pouze pro skupiny prostředků, které obsah
 
 ### <a name="remarks"></a>Poznámky
 
-Funkci nelze použít v šabloně, která je nasazena [na úrovni](deploy-to-subscription.md)předplatného. `resourceGroup()` Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků.
+Funkci nelze použít v šabloně, která je [nasazena na úrovni předplatného.](deploy-to-subscription.md) `resourceGroup()` Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků.
 
 K vytváření prostředků ve stejném umístění jako skupina prostředků se běžně používá funkci skupina prostředků. Následující příklad používá umístění skupiny prostředků přiřadit umístění pro webový server.
 
@@ -685,7 +684,7 @@ Pokud chcete získat ID prostředku v jiném předplatném a skupině prostředk
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Při použití s nasazením `resourceId()` na [úrovni](deploy-to-subscription.md)předplatného může funkce načíst jenom ID prostředků nasazených na dané úrovni. Můžete například získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. U nasazení do skupiny prostředků má opak hodnotu true. Nemůžete získat ID prostředku nasazeného na úrovni předplatného.
+Při použití s `resourceId()` [nasazením na úrovni předplatného](deploy-to-subscription.md)může funkce načíst jenom ID prostředků nasazených na dané úrovni. Můžete například získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. U nasazení do skupiny prostředků má opak hodnotu true. Nemůžete získat ID prostředku nasazeného na úrovni předplatného.
 
 Pokud chcete získat ID prostředku na úrovni předplatného při nasazení v oboru předplatného, použijte:
 

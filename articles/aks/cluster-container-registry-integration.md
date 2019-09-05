@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114232"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305151"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Preview – ověření pomocí Azure Container Registry služby Azure Kubernetes
 
@@ -31,13 +31,13 @@ AKS můžete nastavit na integraci ACR v několika jednoduchých příkazech pom
 
 Musíte mít následující:
 
-* Role **vlastníka** nebo **správce účtu Azure** v předplatném **Azure**
+* Role **vlastníka** nebo **správce účtu Azure** v **předplatném Azure**
 * Budete také potřebovat Azure CLI verze 2.0.70 nebo novější a rozšíření 0.4.8 AKS-Preview.
-* Potřebujete do [](https://docs.docker.com/install/) svého klienta nainstalovaného Docker a potřebujete přístup k dokovacímu [centru](https://hub.docker.com/) .
+* Potřebujete do svého klienta [nainstalovaného Docker](https://docs.docker.com/install/) a potřebujete přístup k [dokovacímu centru](https://hub.docker.com/) .
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>Nainstalovat nejnovější rozšíření AKS CLI Preview
 
-Potřebujete rozšíření **AKS-Preview 0.4.8** nebo novější.
+Potřebujete rozšíření **AKS-Preview 0.4.13** nebo novější.
 
 ```azurecli
 az extension remove --name aks-preview 
@@ -46,25 +46,33 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Vytvoření nového clusteru AKS s integrací ACR
 
-Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku vytvoří ACR ve skupině prostředků, kterou zadáte, a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Pokud *název ACR* ve skupině prostředků, kterou zadáte, neexistuje, automaticky `aks<resource-group>acr` se vytvoří výchozí ACR název.  Zadejte platné hodnoty pro následující parametry.  Parametry v hranatých závorkách jsou volitelné.
+Během počátečního vytváření clusteru AKS můžete nastavit integraci AKS a ACR.  Pokud chcete, aby cluster AKS spolupracoval s ACR, použije se Azure Active Directory **instanční objekt** . Následující příkaz rozhraní příkazového řádku umožňuje autorizovat stávající ACR ve vašem předplatném a nakonfiguruje příslušnou roli **ACRPull** pro instanční objekt. Zadejte platné hodnoty pro následující parametry.  Parametry v hranatých závorkách jsou volitelné.
 ```azurecli
 az login
-az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
+az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
+az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
 \* * ID prostředku ACR má následující formát: 
 
-/Subscriptions/< předplatné-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/<name> 
+/Subscriptions/< předplatné-d >/resourceGroups/< Resource-Group-Name >/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Dokončení tohoto kroku může trvat několik minut.
 
-## <a name="create-acr-integration-for-existing-aks-clusters"></a>Vytvoření integrace ACR pro existující clustery AKS
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Konfigurace integrace ACR pro existující clustery AKS
 
 Integrujte stávající ACR s existujícími clustery AKS zadáním platných hodnot pro **ACR-Name** nebo **ACR-Resource-ID** , jak je uvedeno níže.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acr-resource-id>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+Integraci mezi ACR a clusterem AKS taky můžete odebrat pomocí následujících kroků:
+```azurecli
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
+```
+
 
 ## <a name="log-in-to-your-acr"></a>Přihlaste se k ACR
 

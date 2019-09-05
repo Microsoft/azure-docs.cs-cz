@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966771"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307024"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Úprava znalostní báze v nástroje QnA Maker
 
@@ -54,7 +54,7 @@ Nástroj QnA Maker umožňuje spravovat obsah znalostní báze tím, že poskytu
 
 ## <a name="add-a-qna-pair"></a>Přidání páru otázky a odpovědi
 
-Na stránce **Nastavení** vyberte **Přidat dvojici QnA** a přidejte nový řádek do tabulky znalostní báze.
+Na stránce **Upravit** vyberte **Přidat dvojici QnA** a přidejte nový řádek do tabulky znalostní báze.
 
 ![Přidat dvojici QnA](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 

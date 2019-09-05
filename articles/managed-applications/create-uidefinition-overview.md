@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 013e861bb93d76454f2f0fd9c36259197dd671b9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575648"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308666"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. JSON pro prostředí pro vytváření spravované aplikace Azure
 
@@ -54,7 +54,7 @@ Zahrnutí `$schema` je doporučeno, ale volitelné. Je-li tento parametr zadán 
 
 Pomocí editoru JSON můžete vytvořit createUiDefinition a potom ho otestovat v [izolovaném prostoru createUiDefinition](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) a zobrazit jeho náhled. Další informace o izolovaném prostoru naleznete v tématu [Test rozhraní portálu pro Azure Managed Applications](test-createuidefinition.md).
 
-## <a name="basics"></a>Základy
+## <a name="basics"></a>Základní informace
 
 Základy je první krok vygenerovaný při Azure Portal analyzuje soubor. Kromě zobrazení prvků určených v `basics`portálu vloží portál prvky pro uživatele pro výběr předplatného, skupiny prostředků a umístění pro nasazení. Pokud je to možné, v tomto kroku by se měly použít prvky, které dotazují parametry pro nasazení na úrovni pro nasazení, jako je název clusteru nebo přihlašovací údaje správce.
 
@@ -97,7 +97,7 @@ Chcete-li filtrovat dostupná umístění pouze do těch umístění, která pod
 
 CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro práci s vstupy a výstupy prvků a funkcemi, jako jsou podmíněné. Tyto funkce jsou podobné v syntaxi a funkcích pro Azure Resource Manager funkcí šablon.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Samotný soubor createUiDefinition. JSON má jednoduché schéma. Skutečná hloubka se nachází ze všech podporovaných elementů a funkcí. Tyto položky jsou popsány podrobněji na adrese:
 
@@ -106,4 +106,4 @@ Samotný soubor createUiDefinition. JSON má jednoduché schéma. Skutečná hlo
 
 Aktuální schéma JSON pro createUiDefinition je k dispozici zde https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json:.
 
-Příklad souboru uživatelského rozhraní naleznete v tématu [createUiDefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Příklad souboru uživatelského rozhraní naleznete v tématu [createUiDefinition. JSON](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json).

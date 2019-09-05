@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 09/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bc42edc3e97aa68c5fe9d2b3162913e8925df4ee
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67786648"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375655"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Sada Azure Cognitive Services Počítačové zpracování obrazu SDK pro Python
 
@@ -105,9 +105,9 @@ ACCT_NAME=<computervision-account-name>
 
 ### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>Pro uživatele předplatného Azure Získejte přihlašovací údaje pro klíč a koncový bod.
 
-Pokud si nepamatujete koncový bod a klíč, můžete je najít pomocí následujícího postupu. Pokud potřebujete vytvořit klíč a koncový bod, můžete použít metodu pro držitele předplatného [Azure](#if-you-have-an-azure-subscription) nebo pro [uživatele bez předplatného Azure](#if-you-dont-have-an-azure-subscription).
+Pokud si nepamatujete koncový bod a klíč, můžete je najít pomocí následujícího postupu. Pokud potřebujete vytvořit klíč a koncový bod, můžete použít metodu pro [držitele předplatného Azure](#if-you-have-an-azure-subscription) nebo pro [uživatele bez předplatného Azure](#if-you-dont-have-an-azure-subscription).
 
-Pomocí níže uvedeného fragmentu [Azure CLI][cloud_shell] naplňte dvě proměnné prostředí pomocí koncového **bodu** účtu počítačové zpracování obrazu a některého z jeho **klíčů** (tyto hodnoty můžete v [Azure Portal][azure_portal]taky najít). Fragment kódu je naformátován pro prostředí bash.
+Pomocí níže uvedeného fragmentu [Azure CLI][cloud_shell] naplňte dvě proměnné prostředí pomocí **koncového bodu** účtu počítačové zpracování obrazu a některého z jeho **klíčů** (tyto hodnoty můžete v [Azure Portal][azure_portal]taky najít). Fragment kódu je naformátován pro prostředí bash.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>

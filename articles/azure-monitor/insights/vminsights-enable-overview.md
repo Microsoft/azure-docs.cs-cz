@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
 ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "69905576"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
@@ -68,7 +68,7 @@ Pracovní prostor můžete také vytvořit, když povolíte monitorování pro j
 
 Pokud chcete nastavit scénář ve velkém měřítku, který používá Azure Policy, Azure PowerShell nebo šablony Azure Resource Manager, v pracovním prostoru Log Analytics:
 
-* Nainstalujte řešení ServiceMap a InfrastructureInsights. Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo na kartě Začínáme vyberte **Konfigurovat pracovní prostor**.
+* Nainstalujte řešení ServiceMap a InfrastructureInsights. Tuto instalaci můžete dokončit pomocí zadané Azure Resource Manager šablony. Nebo **na kartě Začínáme** vyberte **Konfigurovat pracovní prostor**.
 * Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
 Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítku, použijte jednu z následujících metod:
@@ -101,7 +101,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 <sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače je k dispozici pouze ze služby Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 
 >[!NOTE]
->Funkce stavu Azure Monitor pro virtuální počítače nepodporuje vnořenou virtualizaci [](../../virtual-machines/windows/nested-virtualization.md) na virtuálním počítači Azure.
+>Funkce stavu Azure Monitor pro virtuální počítače nepodporuje [vnořenou virtualizaci](../../virtual-machines/windows/nested-virtualization.md) na virtuálním počítači Azure.
 >
 
 >[!NOTE]
@@ -252,6 +252,6 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou informace o monitorování k dispozici pro analýzu v Azure Monitor pro virtuální počítače.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).

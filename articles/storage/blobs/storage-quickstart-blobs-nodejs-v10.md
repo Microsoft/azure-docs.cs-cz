@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: cada5c3dd74832140fd76cbdd637554b5f829c33
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9d709d19f179dc29b5e290a141d446f3353f4971
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722006"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306021"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Rychlý start: Nahrávání, stahování, výpis a odstraňování objektů BLOB pomocí Azure Storage v10 za účelem SDK pro JavaScript
 
@@ -342,10 +342,10 @@ console.log(`Container "${containerName}" is deleted`);
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento rychlý start ukazuje, jak spravovat objekty blob a kontejnery v úložišti objektů blob v Azure pomocí Node.js. Další informace o práci s touto sadou SDK najdete v úložišti GitHubu.
 
 > [!div class="nextstepaction"]
 > [Úložiště sady Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-storage-js)
-> [Referenční informace k rozhraní JavaScript API](https://docs.microsoft.com/javascript/api/overview/azure/storage/client?view=azure-node-preview)
+> [Referenční informace k rozhraní JavaScript API](https://docs.microsoft.com/javascript/api/overview/azure/storage/client)

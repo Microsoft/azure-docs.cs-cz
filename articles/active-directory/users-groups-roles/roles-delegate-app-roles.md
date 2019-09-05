@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837872"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382489"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
-Tento článek popisuje, jak používat oprávnění aplikace ve vlastních rolích ve službě Azure Active Directory (Azure AD) k řešení vašich potřeb správy aplikací. Azure Active Directory (Azure AD) umožňuje delegovat oprávnění k vytváření a správě aplikací následujícími způsoby:
+Tento článek popisuje, jak pomocí oprávnění udělených vlastními rolemi v Azure Active Directory (Azure AD) řešit potřeby správy aplikací. V Azure AD můžete delegovat vytváření aplikací a oprávnění pro správu následujícími způsoby:
 
 - [Omezení toho, kdo může vytvářet aplikace](#restrict-who-can-create-applications) a spravovat aplikace, které vytvářejí. Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registrovat registrace aplikací a spravovat všechny aspekty aplikací, které vytvářejí. Dá se omezit tak, aby se povolily jenom vybraným lidem, které mají oprávnění.
 - [Přiřazení jednoho nebo více vlastníků k aplikaci](#assign-application-owners). Toto je jednoduchý způsob, jak někomu udělit možnost spravovat všechny aspekty konfigurace Azure AD pro konkrétní aplikaci.
@@ -40,14 +40,14 @@ Ve výchozím nastavení ve službě Azure AD mohou všichni uživatelé registr
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Zakázání výchozí možnosti vytváření registrací aplikací nebo jejich souhlasu s aplikacemi
 
 1. Přihlaste se ke svojí organizaci Azure AD pomocí účtu s nárokem na roli globálního správce ve vaší organizaci Azure AD.
-1. Po získání dostatečných oprávnění nastavte jednu nebo obě z následujících možností:
+1. Nastavte jednu nebo obě z těchto možností:
 
     - Na [stránce uživatelská nastavení pro vaši organizaci](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)nastavte možnost **Uživatelé můžou registrovat nastavení aplikace** na ne. Tím se zakáže výchozí možnosti pro vytváření registrací aplikací pro uživatele.
     - V [nastaveních uživatelů pro podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)můžete nastavit, aby **uživatelé měli souhlas s aplikacemi, které přistupují k firemním datům v nastavení jejich jménem** na ne. Tím se zakáže výchozí možnosti pro uživatele, kteří budou souhlasit s přístupem k podnikovým datům za jejich jménem.
 
 ### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>Udělení individuálních oprávnění k vytváření a souhlasům s aplikacemi, když je výchozí možnost zakázaná
 
-Přiřaďte roli vývojáře aplikace, aby udělila možnost vytvářet registrace aplikací, když **Uživatelé mohou registrovat** aplikace nastavení je nastaveno na ne. Tato role také uděluje oprávnění k souhlasu jednoho vlastního uživatele, když **Uživatelé můžou udělit souhlas s aplikacemi** , které přistupují k firemním datům, v nastavení jejich jménem je nastavené na ne. Když uživatel vytvoří novou registraci aplikace jako chování systému, automaticky se přidá jako první vlastník. Oprávnění k vlastnictví poskytují uživateli možnost spravovat všechny aspekty registrace aplikace nebo podnikové aplikace, které vlastní.
+Přiřaďte roli vývojáře aplikace, aby udělila možnost vytvářet registrace aplikací, když **Uživatelé mohou registrovat** aplikace nastavení je nastaveno na ne. Tato role také uděluje oprávnění k souhlasu jednoho vlastního uživatele, když **Uživatelé můžou udělit souhlas s aplikacemi, které přistupují k firemním datům, v nastavení jejich jménem** je nastavené na ne. Když uživatel vytvoří novou registraci aplikace jako chování systému, automaticky se přidá jako první vlastník. Oprávnění k vlastnictví poskytují uživateli možnost spravovat všechny aspekty registrace aplikace nebo podnikové aplikace, které vlastní.
 
 ## <a name="assign-application-owners"></a>Přiřazení vlastníků aplikace
 
@@ -63,7 +63,7 @@ V některých případech podniková aplikace vytvořená z Galerie aplikací za
 
 1. Přihlaste se ke  [svojí organizaci Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)pomocí účtu, který má nárok na správce aplikace nebo správce cloudové aplikace pro organizaci.
 1. Na [stránce](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) registrace aplikací pro organizaci vyberte aplikaci. otevře se stránka přehled pro aplikaci.
-1. Pokud ****  chcete zobrazit seznam vlastníků aplikace, vyberte vlastníci.
+1. Pokud chcete zobrazit seznam vlastníků aplikace, vyberte **vlastníci** .
 1. Vyberte **Přidat** a vyberte jednu nebo více vlastníků, které chcete přidat do aplikace.
 
 > [!IMPORTANT]
@@ -93,7 +93,7 @@ Vytváření vlastních rolí a přiřazování vlastních rolí je samostatné 
 - [Vytvořte vlastní *definici role* ](roles-create-custom.md) a [přidejte do ní oprávnění z přednastaveného seznamu](roles-custom-available-permissions.md). Jedná se o stejná oprávnění, která se používají ve vestavěných rolích.
 - [Vytvořte *přiřazení role* ](roles-assign-powershell.md) , abyste přiřadili vlastní roli.
 
-Toto oddělení vám umožní vytvořit jednu definici role a pak ji v různých oborech přiřadit mnohokrát. Vlastní roli je možné přiřadit v oboru v rámci organizace nebo ji můžete přiřadit v oboru, pokud je jeden objekt Azure AD. Příkladem oboru objektu je jediná registrace aplikace. V různých oborech je možné přiřadit stejnou definici role Sallyům přes všechny registrace aplikací v organizaci a pak Naveen jenom přes registraci aplikace se sestavami výdajů společnosti Contoso.
+Toto oddělení vám umožní vytvořit jednu definici role a pak ji v různých *oborech*přiřadit mnohokrát. Vlastní roli je možné přiřadit v oboru v rámci organizace nebo ji můžete přiřadit v oboru, pokud je jeden objekt Azure AD. Příkladem oboru objektu je jediná registrace aplikace. V různých oborech je možné přiřadit stejnou definici role Sallyům přes všechny registrace aplikací v organizaci a pak Naveen jenom přes registraci aplikace se sestavami výdajů společnosti Contoso.
 
 Tipy při vytváření a používání vlastních rolí pro delegování správy aplikací:
 - Vlastní role udělují přístup jenom v aktuálních oknech pro registraci aplikací na portálu Azure AD. Neudělují přístup v okně registrace starší verze aplikace.
@@ -102,7 +102,7 @@ Tipy při vytváření a používání vlastních rolí pro delegování správy
 
 Další informace o základech vlastních rolí najdete v tématu [Přehled vlastních rolí](roles-custom-overview.md)a také o tom, jak [vytvořit vlastní roli](roles-create-custom.md) a jak [přiřadit roli](roles-assign-powershell.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Podtypy a oprávnění registrace aplikace](roles-custom-available-permissions.md)
 - [Odkaz na roli správce Azure AD](directory-assign-admin-roles.md)

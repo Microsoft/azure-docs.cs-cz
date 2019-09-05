@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892026"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382902"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
 ## <a name="virtual-network-basics"></a>Základy Virtual Network
 
 ### <a name="what-is-an-azure-virtual-network-vnet"></a>Co je Azure Virtual Network (VNet)?
-Azure Virtual Network (VNet) je reprezentace vaší vlastní sítě v cloudu. Je to logická izolace cloudu Azure vyhrazeného pro vaše předplatné. Virtuální sítě můžete použít ke zřízení a správě virtuálních privátních sítí (VPN) v Azure a volitelně k propojení virtuální sítě s ostatními virtuální sítě v Azure nebo s místní infrastrukturou IT pro vytváření hybridních nebo mezimístěných řešení. Každá virtuální síť, kterou vytvoříte, má vlastní blok CIDR a může být propojena s jinými virtuální sítě a místními sítěmi, pokud se bloky CIDR nepřekrývají. Také máte kontrolu nad nastavením serveru DNS pro virtuální sítě a segmentace virtuální sítě do podsítí.
+Azure Virtual Network (VNet) je reprezentace vaší vlastní sítě v cloudu. Je to logická izolace cloudu Azure vyhrazeného pro vaše předplatné. Virtuální sítě můžete použít ke zřízení a správě virtuálních privátních sítí (VPN) v Azure a volitelně k propojení virtuální sítě s ostatními virtuální sítě v Azure nebo s místní infrastrukturou IT pro vytváření hybridních nebo mezimístěných řešení. Každá virtuální síť, kterou vytvoříte, má svůj vlastní blok CIDR a může být propojena s jinými virtuální sítě a místními sítěmi, pokud se bloky CIDR nepřekrývají. Také máte kontrolu nad nastavením serveru DNS pro virtuální sítě a segmentace virtuální sítě do podsítí.
 
 Použít virtuální sítě k:
 
@@ -241,7 +241,7 @@ Partnerský vztah virtuálních sítí (nebo partnerský vztah virtuálních sí
 Ano. Globální VNet peering umožňuje peer virtuální sítě v různých oblastech. Globální síť VNet peering je dostupná ve všech veřejných oblastech Azure, Číně v oblasti cloudu a oblastech cloudu pro státní správu. Z veřejných oblastí Azure se nemůžete globálně peere navázat na národní oblasti cloudu.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Jaká jsou omezení týkající se globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení?
-Pokud jsou dvě virtuální sítě v jiné oblasti (globální partnerské vztahy virtuálních sítí), nemůžete se připojit k prostředkům, které používají základní Load Balancer. Můžete se připojit k prostředkům, které používají Standard Load Balancer.
+Pokud jsou dvě virtuální sítě v různých oblastech (globální partnerské vztahy virtuálních sítí), nemůžete se připojit k prostředkům, které používají základní Load Balancer. Můžete se připojit k prostředkům, které používají Standard Load Balancer.
 Následující zdroje využívají základní nástroje pro vyrovnávání zatížení, což znamená, že nemůžete komunikovat s nimi v globálním partnerském vztahu virtuálních sítí:
 - Virtuální počítače za základními nástroji pro vyrovnávání zatížení
 - Virtual Machine Scale Sets se základními nástroji pro vyrovnávání zatížení 
@@ -257,16 +257,16 @@ Následující zdroje využívají základní nástroje pro vyrovnávání zatí
 - AKS
 - App Service Environment
 
-K tomuto prostředku se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Můžu povolit partnerský vztah virtuálních sítí, pokud moje virtuální sítě patří k předplatným v rámci různých klientů Azure Active Directory?
 Ano. Je možné vytvořit partnerský vztah virtuální sítě (místní nebo globální), pokud vaše předplatná patří do různých klientů Azure Active Directory. Můžete to provést prostřednictvím PowerShellu nebo rozhraní příkazového řádku. Portál ještě není podporovaný.
 
-### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v inicializovaném stavu, proč se nemůžu připojit?
-Pokud je připojení partnerského vztahu v inicializovaném stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno.*
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v *inicializovaném* stavu, proč se nemůžu připojit?
+Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno*.
 
-### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v odpojeném stavu, proč nemůžu vytvořit připojení partnerského vztahu?
-Pokud je připojení partnerského vztahu virtuálních sítí v odpojeném stavu, znamená to, že se odstranila jedna z vytvořených odkazů. Aby bylo možné znovu vytvořit partnerské připojení, bude nutné odstranit odkaz a znovu vytvořit.
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v *odpojeném* stavu, proč nemůžu vytvořit připojení partnerského vztahu?
+Pokud je připojení partnerského vztahu virtuálních sítí v *odpojeném* stavu, znamená to, že se odstranila jedna z vytvořených odkazů. Aby bylo možné znovu vytvořit partnerské připojení, bude nutné odstranit odkaz a znovu ho vytvořit.
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Můžu na virtuální síť navázat partnerský virtuální síť v jiném předplatném?
 Ano. Můžete peer virtuální sítě napříč předplatnými a různými oblastmi.
@@ -280,8 +280,8 @@ Za vytvoření připojení partnerského vztahu virtuálních sítí se neúčtu
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Je provoz partnerských vztahů virtuálních sítí zašifrovaný?
 Ne. Provoz mezi prostředky v virtuální sítě s partnerským vztahem je privátní a izolovaný. Zůstane v páteřním rámci společnosti Microsoft celá.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Proč je moje připojení partnerského vztahu v odpojeném stavu?
-Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do odpojeného stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Proč je moje připojení partnerského vztahu v *odpojeném* stavu?
+Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do *odpojeného* stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Pokud se mi partnerském peer-to-VNetB and I peer VNetB to sítí vnetc, znamená to, že se jedná o partnerský vztah partnerském a sítí vnetc?
 Ne. Přenosných partnerských vztahů se nepodporuje. Aby bylo možné provést tuto službu, je nutné, aby byly partnerské partnerském a sítí vnetc.
@@ -301,7 +301,7 @@ V oblasti služby Virtual Network klepněte na možnost Náhled je dostupná ve 
 Možnosti filtrování nejsou v této virtuální síti v rámci verze Preview podporované. Když se v síťovém rozhraní přidá konfigurace klepnutím do síťového rozhraní se vytvoří hluboká kopie všech přenosů dat příchozího a odchozího přenosu v síťovém rozhraní do datového proudu klepnutím na cíl.
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Je možné do monitorovaného síťového rozhraní přidat několik konfigurací klepnutí?
-Monitorované síťové rozhraní může mít jenom jednu konfiguraci klepnutím. Podívejte se na jednotlivá [Partnerská řešení](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) , abyste mohli zasílat streamování několika kopií v případě provozu do analytických nástrojů podle vašeho výběru.
+Monitorované síťové rozhraní může mít jenom jednu konfiguraci klepnutím. Podívejte se na jednotlivá [Partnerská řešení](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) , abyste mohli zasílat streamování několika kopií přenosů klepnutím do analytických nástrojů podle vašeho výběru.
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Může stejná virtuální síť KLEPNOUT na agregovaný provoz prostředků z monitorovaných síťových rozhraní ve více než jedné virtuální síti?
 Ano. K agregaci zrcadleného provozu z monitorovaných síťových rozhraní v partnerských virtuálních sítích ve stejném předplatném nebo v jiném předplatném se dá použít stejná virtuální síť klepněte na prostředek. Virtuální síť klepněte na prostředek a cílový Nástroj pro vyrovnávání zatížení nebo cílové síťové rozhraní musí být ve stejném předplatném. Všechna předplatná musí být ve stejném Azure Active Directory tenantovi.
@@ -321,7 +321,7 @@ Existují dva kroky pro zabezpečení prostředku služby Azure prostřednictví
 1. Zapněte koncové body služby pro službu Azure.
 2. Nastavení seznamů ACL pro virtuální sítě ve službě Azure
 
-Prvním krokem je operace na straně sítě a druhý krok je operace na straně prostředku služby. Oba kroky může provést stejný správce nebo různí správci na základě oprávnění RBAC udělených roli správce. Před nastavením seznamů ACL virtuální sítě na straně služby Azure doporučujeme, abyste nejdřív zapnuli koncové body služby pro virtuální síť. Proto je nutné kroky provést v uvedeném pořadí výše a nastavit koncové body služby virtuální sítě.
+Prvním krokem je operace na straně sítě a druhý krok je operace na straně prostředku služby. Oba kroky může provést stejný správce nebo různí správci na základě oprávnění RBAC udělených roli správce. Před nastavením seznamů ACL virtuální sítě na straně služby Azure doporučujeme, abyste nejdřív zapnuli koncové body služby pro virtuální síť. Proto je třeba provést kroky v pořadí uvedeném výše a nastavit koncové body služby virtuální sítě.
 
 >[!NOTE]
 > Aby bylo možné omezit přístup služby Azure na povolenou virtuální síť a podsíť, musí být obě výše popsané operace dokončené. Pouze zapnutí koncových bodů služby pro službu Azure na straně sítě vám neposkytuje omezený přístup. Kromě toho musíte také na straně služby Azure nastavit seznamy ACL pro virtuální sítě.
@@ -330,13 +330,13 @@ Některé služby (například SQL a CosmosDB) umožňují výjimky z výše uve
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Budou se všechny služby Azure nacházet ve virtuální síti Azure poskytované zákazníkem? Jak funguje koncový bod služby VNet se službami Azure?
 
-Ne, ne všechny služby Azure se nacházejí ve virtuální síti zákazníka. Většina datových služeb Azure, jako jsou Azure Storage, Azure SQL a Azure Cosmos DB, jsou víceklientské služby, ke kterým se dá přistup přes veřejné IP adresy. Další informace o integraci služby Virtual Network pro Azure najdete [tady](virtual-network-for-azure-services.md). 
+Ne, ne všechny služby Azure se nacházejí ve virtuální síti zákazníka. Většina datových služeb Azure, jako jsou Azure Storage, Azure SQL a Azure Cosmos DB, je víceklientské služby, ke kterým je možné přistupovat přes veřejné IP adresy. Další informace o integraci služby Virtual Network pro Azure najdete [tady](virtual-network-for-azure-services.md). 
 
 Když použijete funkci koncové body služby virtuální sítě (zapnete koncový bod služby virtuální sítě na straně sítě a nastavíte příslušné seznamy ACL pro virtuální síť na straně služby Azure), přístup ke službě Azure se omezí z povolené virtuální sítě a podsítě.
 
 ### <a name="how-does-vnet-service-endpoint-provide-security"></a>Jak koncový bod služby virtuální sítě poskytuje zabezpečení?
 
-Funkce koncového bodu služby virtuální sítě (zapnutí koncového bodu služby virtuální sítě na straně sítě a nastavení odpovídajících seznamů ACL pro virtuální síť na straně služby Azure) omezuje přístup ke službě Azure na povolenou virtuální síť a podsíť, čímž zajišťuje zabezpečení a izolaci na úrovni sítě. provoz služeb Azure. Veškerý provoz využívající koncové body služby virtuální sítě natéká přes páteřní síť Microsoftu a zajišťuje další vrstvu izolace z veřejného Internetu. Zákazníci si navíc můžou vybrat možnost plně odebrat veřejný internetový přístup k prostředkům služby Azure a pomocí kombinace seznamů ACL protokolu IP a virtuální sítě, které budou umožňovat provoz jenom z jejich virtuální sítě, a tím chránit prostředky služby Azure před neoprávněným přístupem. stoupit.      
+Funkce koncového bodu služby virtuální sítě (zapnutí koncového bodu služby virtuální sítě na straně sítě a nastavení odpovídajících seznamů ACL pro virtuální síť na straně služby Azure) omezuje přístup ke službě Azure na povolenou virtuální síť a podsíť, což zajišťuje zabezpečení na úrovni sítě a izolace provozu služby Azure. Veškerý provoz využívající koncové body služby virtuální sítě natéká přes páteřní síť Microsoftu a zajišťuje další vrstvu izolace z veřejného Internetu. Zákazníci si navíc můžou vybrat možnost plně odebrat veřejný internetový přístup k prostředkům služby Azure a pomocí kombinace seznamů ACL protokolu IP a virtuální sítě, které budou umožňovat provoz jenom z jejich virtuální sítě, a tím chránit prostředky služby Azure před neoprávněným přístupem. stoupit.      
 
 ### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Co jsou prostředky ochrany koncových bodů služby virtuální sítě nebo služba Azure?
 Koncové body služby virtuální sítě vám pomůžou chránit prostředky služeb Azure. Prostředky virtuální sítě jsou chráněné pomocí skupin zabezpečení sítě (skupin zabezpečení sítě).
@@ -352,35 +352,35 @@ Ano, je to možné. Virtuální sítě a prostředky služeb Azure můžou být 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Můžu zapnout koncové body služby virtuální sítě a nastavit seznamy ACL pro virtuální sítě, pokud virtuální síť a prostředky služeb Azure patří do různých tenantů služby AD?
 Ne, koncové body služby virtuální sítě a seznamy ACL virtuální sítě nejsou v klientech služby AD podporované.
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Může IP adresa místního zařízení připojená prostřednictvím služby Azure Virtual Network Gateway (VPN) nebo brány Express Route přístup k Azure PaaS Service prostřednictvím koncových bodů služby virtuální sítě?
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Může IP adresa místního zařízení připojená prostřednictvím služby Azure Virtual Network Gateway (VPN) nebo brány ExpressRoute přistupovat ke službě Azure PaaS prostřednictvím koncových bodů služby VNet?
 Prostředky služeb Azure svázané s virtuálními sítěmi ve výchozím nastavení nejsou přístupné z místních sítí. Pokud chcete povolený provoz z místního prostředí, musíte taky z místního nebo ExpressRoute povolených IP adres veřejných (obvykle NAT). Tyto IP adresy je možné přidat prostřednictvím konfigurace brány firewall protokolu IP pro prostředky služeb Azure.
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>Můžu použít funkci koncového bodu služby virtuální sítě k zabezpečení služby Azure na více podsítí ve virtuální síti nebo napříč více virtuálními sítěmi?
-Chcete-li zabezpečit služby Azure na více podsítí v rámci virtuální sítě nebo napříč více virtuálními sítěmi, povolte koncové body služby na straně sítě v každé z těchto podsítí nezávisle a potom Zabezpečte prostředky služeb Azure na všechny podsítě nastavením příslušné seznamy ACL pro virtuální sítě na straně služby Azure.
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Můžu použít funkci koncového bodu služby VNet k zabezpečení služby Azure na více podsítí v rámci virtuální sítě nebo napříč více virtuálními sítěmi?
+Chcete-li zabezpečit služby Azure na více podsítí v rámci virtuální sítě nebo napříč více virtuálními sítěmi, povolte koncové body služby na straně sítě v každé z těchto podsítí nezávisle a potom Zabezpečte prostředky služby Azure do všech podsítí nastavením příslušné seznamy ACL pro virtuální sítě na straně služby Azure.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Jak mohu filtrovat odchozí provoz z virtuální sítě do služeb Azure a pořád používat koncové body služby?
 Pokud chcete prozkoumat nebo filtrovat provoz směřující do služby Azure z virtuální sítě, můžete v rámci virtuální sítě nasadit síťové virtuální zařízení. Pak můžete použít koncové body služby pro podsíť, ve které je virtuální síťové zařízení nasazené, a zabezpečit prostředky služby Azure jenom pro tuto podsíť prostřednictvím seznamů ACL pro virtuální sítě. Tento scénář může být užitečný i v případě, že chcete omezit přístup služby Azure z vaší virtuální sítě jenom na konkrétní prostředky Azure pomocí filtrování síťového virtuálního zařízení. Další informace najdete v popisu [výchozího přenosu dat se síťovými virtuálními zařízeními](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co se stane, když přistupujete k účtu služby Azure, který má povolený seznam řízení přístupu k virtuální síti (ACL) mimo virtuální síť?
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co se stane, když přistupujete k účtu služby Azure, který má povolený seznam řízení přístupu (ACL) k virtuální síti, mimo virtuální síť?
 Vrátí se chyba HTTP 403 nebo HTTP 404.
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Mají podsítě virtuální sítě vytvořené v různých oblastech povolený přístup k účtu služby Azure v jiné oblasti? 
 Ano, pro většinu služeb Azure mají virtuální sítě vytvořené v různých oblastech přístup ke službám Azure v jiné oblasti prostřednictvím koncových bodů služby virtuální sítě. Pokud je například účet Azure Cosmos DB v Západní USA nebo Východní USA a virtuální sítě jsou ve více oblastech, může k Azure Cosmos DB přistupovat tato virtuální síť. Úložiště a SQL jsou výjimky a jsou v podstatě regiony a virtuální síť i služba Azure musí být ve stejné oblasti.
   
-### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Může služba Azure mít jak seznam ACL virtuální sítě, tak bránu firewall protokolu IP?
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Může služba Azure mít jak seznam ACL virtuální sítě, tak bránu firewall protokolu IP?
 Ano, seznam ACL virtuální sítě a brána firewall protokolu IP můžou existovat souběžně. Obě funkce se vzájemně doplňují, aby se zajistila izolace a zabezpečení.
  
 ### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Co se stane, když odstraníte virtuální síť nebo podsíť s povoleným koncovým bodem služby pro službu Azure?
-Odstranění virtuální sítě a podsítí jsou nezávislé operace a podporují se i v případě, že jsou pro služby Azure zapnuté koncové body služby. V případech, kdy jsou u služeb Azure nastavené seznamy ACL virtuální sítě pro tyto virtuální sítě a podsítě, jsou informace seznamů ACL virtuální sítě přidružené k této službě Azure zakázané, když se odstraní virtuální síť nebo podsíť, která má zapnutý koncový bod služby virtuální sítě.
+Odstranění virtuální sítě a podsítí jsou nezávislé operace a podporují se i v případě, že jsou pro služby Azure zapnuté koncové body služby. V případech, kdy jsou u služeb Azure nastavené seznamy ACL virtuální sítě pro tyto virtuální sítě a podsítě, jsou informace seznamu ACL virtuální sítě přidružené k této službě Azure zakázané, když se odstraní virtuální síť nebo podsíť, která má zapnutý koncový bod služby virtuální sítě.
  
-### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>Co se stane, když se odstraní účet služby Azure s povoleným koncovým bodem služby VNet?
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>Co se stane, když se odstraní účet služby Azure s povoleným koncovým bodem služby virtuální sítě?
 Odstranění účtu služby Azure je nezávislá operace a podporuje se i v případě, že je koncový bod služby povolen na straně sítě a seznamy ACL pro virtuální síť jsou nastavené na straně služby Azure. 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Co se stane se zdrojovou IP adresou prostředku (jako je třeba virtuální počítač v podsíti) s povoleným koncovým bodem služby VNet?
-Když jsou povoleny koncové body služby virtuální sítě, zdrojové IP adresy prostředků v podsíti virtuální sítě přecházejí z použití veřejných IPV4 adres na privátní IP adresy virtuální sítě Azure pro provoz do služby Azure. Všimněte si, že to může způsobit selhání specifické brány firewall protokolu IP, která se dřív na službě Azure nastavila na veřejnou IPV4 adresu. 
+Když jsou povoleny koncové body služby virtuální sítě, zdrojové IP adresy prostředků v podsíti virtuální sítě přecházejí z použití veřejných IPV4 adres na privátní IP adresy virtuální sítě Azure pro provoz do služby Azure. Všimněte si, že to může způsobit, že specifické brány firewall protokolu IP, které se v předchozích verzích služby Azure nastavily na veřejnou IPV4 adresu, nejsou úspěšné. 
 
-### <a name="does-service-endpoint-route-always-take-precedence"></a>Má vždy přednost směrování koncového bodu služby?
-Koncové body služby přidávají systémovou trasu, která má přednost před trasami protokolu BGP a zajišťuje optimální směrování provozu koncového bodu služby. Koncové body služby vždy přebírají provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Další informace o tom, jak Azure vybírá trasu, najdete v tématu [směrování provozu virtuální sítě Azure](virtual-networks-udr-overview.md).
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Má vždy přednost směrování koncového bodu služby?
+Koncové body služby přidávají systémovou trasu, která má přednost před trasami protokolu BGP a poskytuje optimální směrování provozu koncového bodu služby. Koncové body služby vždy přebírají provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Microsoft Azure. Další informace o tom, jak Azure vybírá trasu, najdete v tématu [směrování provozu virtuální sítě Azure](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak funguje NSG v podsíti s koncovými body služby?
 Aby se dosáhlo služby Azure, skupin zabezpečení sítě musí umožňovat odchozí připojení. Pokud se vaše skupin zabezpečení sítě otevřou na veškerý internetový odchozí provoz, měl by provoz koncového bodu služby fungovat. Odchozí provoz na IP adresy služeb taky můžete omezit jenom pomocí značek služeb.  
@@ -395,10 +395,10 @@ Zásady koncového bodu služby Virtual Network (VNet) umožňují filtrovat pro
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Podporuje Azure Active Directory (Azure AD) koncové body služby virtuální sítě?
 
-Azure Active Directory (Azure AD) nepodporují nativní koncové body služby. Úplný seznam služeb Azure, které podporují koncové body služby virtuální sítě, najdete [tady](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Všimněte si, že značka Microsoft. Azureactivedirectory selhala uvedená v části služby podporující koncové body služby se používá pro podporu koncových bodů služby na ADLSu Gen 1. V případě ADLS 1 pro obecné služby Virtual Network Integration Service pro Azure Data Lake Storage Gen1 využívá zabezpečení koncového bodu služby virtuální sítě mezi vaší virtuální sítí a Azure Active Directory (Azure AD) ke generování dalších deklarací zabezpečení v přístupovém tokenu. Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu. Přečtěte si další informace o [Azure Data Lake Store integraci virtuální sítě pro obecné 1] (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. JSON
+Azure Active Directory (Azure AD) nepodporují nativní koncové body služby. Úplný seznam služeb Azure, které podporují koncové body služby virtuální sítě, najdete [tady](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Všimněte si, že značka "Microsoft. Azureactivedirectory selhala" uvedená v části služby podporující koncové body služby se používá pro podporu koncových bodů služby ADLS pro obecné 1. V případě ADLS 1 pro obecné služby Virtual Network Integration Service pro Azure Data Lake Storage Gen1 využívá zabezpečení koncového bodu služby virtuální sítě mezi vaší virtuální sítí a Azure Active Directory (Azure AD) ke generování dalších deklarací zabezpečení v přístupovém tokenu. Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu. Přečtěte si další informace o [Azure Data Lake Store integraci virtuální sítě pro obecné 1] (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. JSON
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Existují nějaká omezení počtu koncových bodů služby virtuální sítě, které můžu nastavit z mé virtuální sítě?
-Celkový počet koncových bodů služby virtuální sítě ve virtuální síti není nijak omezený. Pro prostředky služeb Azure (například účet služby Azure Storage) můžou služby vynucovat omezení počtu podsítí použitých k zabezpečení příslušného prostředku. Následující tabulka uvádí některé příklady omezení: 
+Celkový počet koncových bodů služby virtuální sítě ve virtuální síti není nijak omezený. Pro prostředek služby Azure (například účet Azure Storage) můžou služby vymáhat omezení počtu podsítí používaných k zabezpečení prostředku. Následující tabulka uvádí některé příklady omezení: 
 
 |||
 |---|---|

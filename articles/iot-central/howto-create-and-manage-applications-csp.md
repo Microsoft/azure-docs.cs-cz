@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019804"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383130"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako CSP vytvořte a spravujte aplikaci IoT Central Azure jménem svého zákazníka. 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako CSP vytvořte a spravujte aplikaci IoT Central Azure jménem svého zákazníka.
 
 Program poskytovatele řešení Microsoft Cloud (CSP) je program pro prodej v Microsoftu. Jejím záměrem je poskytnout našim partnerům pro partnery, kteří budou moci znovu prodávat všechny komerční online služby Microsoftu. Přečtěte si další informace o [programu Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider).
 
@@ -72,6 +72,9 @@ Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.
 ## <a name="region"></a>Oblast
 
 Vyberte oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
+
+> [!NOTE]
+> Šablona **aplikace Preview** je aktuálně dostupná pouze v oblastech **Severní Evropa** a **střed USA** .
 
 Další informace najdete v tématu [oblasti Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
 

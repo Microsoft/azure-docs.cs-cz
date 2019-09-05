@@ -1,5 +1,5 @@
 ---
-title: Kontextová data s rolemi – LUIS
+title: 'Kurz: Kontextová data s rolemi – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Najde související data na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2eac05712dc7b3deceba52681195101f9bf2b40c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560008"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308040"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Kurz: Extrakce kontextově souvisejících dat z utterance
 
@@ -83,7 +83,7 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 
 1. Vyberte **entity** z navigace na levé straně.
 
-1. Vyberte **Přidat**předem vytvořenou entitu a `geo` pak vyberte na panelu hledání, abyste mohli filtrovat předem připravené entity. 
+1. Vyberte **Přidat předem vytvořenou entitu**a `geo` pak vyberte na panelu hledání, abyste mohli filtrovat předem připravené entity. 
 
     ![Přidat předem vytvořenou entitu geographyV2 do aplikace](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Zaškrtněte políčko a vyberte **Hotovo**.
@@ -120,32 +120,32 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
       "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
         "intent": "MoveEmployeeToCity",
-        "score": 0.979823351
+        "score": 0.9706451
       },
       "intents": [
         {
           "intent": "MoveEmployeeToCity",
-          "score": 0.979823351
+          "score": 0.9706451
         },
         {
           "intent": "None",
-          "score": 0.0156363435
+          "score": 0.0307451729
         }
       ],
       "entities": [
         {
-          "entity": "geographyV2",
-          "role": "Destination",
-          "startIndex": 41,
-          "endIndex": 48,
-          "score": 0.6044041
-        },
-        {
-          "entity": "geographyV2",
-          "role": "Origin",
+          "entity": "tampa",
+          "type": "builtin.geographyV2.city",
           "startIndex": 32,
           "endIndex": 36,
-          "score": 0.739491045
+          "role": "Origin"
+        },
+        {
+          "entity": "portland",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 41,
+          "endIndex": 48,
+          "role": "Destination"
         }
       ]
     }
@@ -167,7 +167,7 @@ Předem sestavená entita, geographyV2, extrahuje informace o poloze, včetně n
 * [Testování na portálu LUIS](luis-interactive-test.md)
 * [Role](luis-concept-roles.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili nový záměr a Přidali jste příklad projevy pro kontextové naučená data o původu a cílovém umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
 

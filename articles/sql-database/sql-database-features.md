@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fc56a2900a291ff600433a6e660dca274c7b92e7
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135275"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382857"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database versus SQL Server
 
@@ -42,7 +42,7 @@ V následující tabulce jsou uvedeny hlavní funkce SQL Server a poskytuje info
 | [Příkaz BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Ne, jenom automatické zálohy iniciované systémem – viz [automatizované zálohování](sql-database-automated-backups.md) | Ano, uživatel inicioval zálohy jenom pro kopírování do Azure Blob Storage (automatické zálohování systému nejde iniciovat uživatelem) – Podívejte se na [rozdíly v zálohování](sql-database-managed-instance-transact-sql-information.md#backup) . |
 | [Předdefinované funkce](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivé funkce | Ano – viz [uložené procedury, funkce, rozdíly ve triggerech](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) | 
 | [Příkaz BULK INSERT](https://docs.microsoft.com/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ano, ale jenom z Azure Blob Storage jako zdroj. | Ano, ale jenom z Azure Blob Storage jako zdroj – zobrazení [rozdílů](sql-database-managed-instance-transact-sql-information.md#bulk-insert--openrowset). |
-| [Certifikáty a asymetrické klíče](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace. | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace – viz [rozdíly](sql-database-managed-instance-transact-sql-information.md#certificates)v certifikátech. | 
+| [Certifikáty a asymetrické klíče](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace. | Ano, bez přístupu k systému souborů pro `BACKUP` a `CREATE` operace – viz [rozdíly v certifikátech](sql-database-managed-instance-transact-sql-information.md#certificates). | 
 | [Change Data Capture-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
 | [Kolace – Server/instance](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace `SQL_Latin1_General_CP1_CI_AS` logického serveru se vždycky používá. | Ano, lze nastavit, když [je instance vytvořena](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) a nelze ji později aktualizovat. |
 | [Indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úroveň Standard – S3 a vyšší, pro obecné účely vrstva a pro důležité obchodní informace úrovně](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
@@ -116,9 +116,10 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | --- | --- | --- |
 | [Aktivní geografická replikace](sql-database-active-geo-replication.md) | Ano – všechny úrovně služeb jiné než měřítko | Ne, další informace najdete v tématu [skupiny automatického převzetí služeb při selhání (Preview)](sql-database-auto-failover-group.md) . |
 | [Skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) | Ano – všechny úrovně služeb jiné než měřítko | Ano, ve [verzi Public Preview](sql-database-auto-failover-group.md)|
-| Automatické škálování | Ano, v [modelu bez serveru](sql-database-serverless.md) | Ne, musíte zvolit rezervované výpočetní prostředky a úložiště. |
+| Automatické škálování | Ano, ale pouze v [modelu bez serveru](sql-database-serverless.md). V modelu bez serveru je změna úrovně služby (změna vCore, úložiště nebo DTU) rychlá a online. Změna vrstvy služeb vyžaduje minimální nebo žádné výpadky. | Ne, musíte zvolit rezervované výpočetní prostředky a úložiště. Změna úrovně služby (úložiště vCore nebo max) je online a vyžaduje minimální nebo žádné výpadky. |
 | [Automatické zálohování](sql-database-automated-backups.md) | Ano. Úplné zálohování se vytváří každých 7 dní, rozdílových 12 hodin a záloh protokolů každých 5-10 min. | Ano. Úplné zálohování se vytváří každých 7 dní, rozdílových 12 hodin a záloh protokolů každých 5-10 min. |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
+| [Zóny dostupnosti](/azure/availability-zones/az-overview) | Ano | Ne |
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Ano | Ne |
 | Uchování záloh | Ano. ve výchozím nastavení je to 7 dní, maximálně 35 dní. | Ano. ve výchozím nastavení je to 7 dní, maximálně 35 dní. |
 | [Služba migrace dat (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Ano | Ano |
@@ -132,6 +133,7 @@ Platforma Azure poskytuje řadu funkcí PaaS, které se přidají do standardní
 | [Obnovení databáze bodu v čase](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ano – všechny úrovně služeb jiné než škálování – viz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ano – viz [SQL Database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Fondy zdrojů | Ano, jako [elastické fondy](sql-database-elastic-pool.md) | Ne. Jedna spravovaná instance může mít více databází, které sdílejí stejný fond prostředků. Spravované instance nemůžou sdílet prostředky. |
 | Horizontální navýšení nebo snížení kapacity (online) | Ano, můžete buď změnit DTU nebo rezervované virtuální jádra nebo max. úložiště s minimálními prostoji. | Ano, můžete změnit rezervované úložiště virtuální jádra nebo Max a minimální prostoje. |
+| Alias SQL | Ano, viz [alias DNS](dns-alias-overview.md) | Ne |
 | [Analýza SQL](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
 | [Synchronizace dat SQL](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatná cloudová služba Azure. |
@@ -171,7 +173,7 @@ K přesunu dat mezi SQL Server, Izolovaná databáze a databázemi spravované i
 | Izolovaná databáze | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
 | MI | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** [Soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) | **Online** [Transakční replikace](sql-database-managed-instance-transactional-replication.md) <br/> **Stav** Obnovení v časovém intervalu mezi instancemi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) nebo [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [nativní zálohování a obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [soubor BacPac (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [replikace snímků](sql-database-managed-instance-transactional-replication.md) |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Společnost Microsoft nadále přidává funkce do Azure SQL Database. Navštivte webovou stránku aktualizace služby pro Azure, kde najdete nejnovější aktualizace pomocí těchto filtrů:
 

@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183574"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306195"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-endu, diagnostické protokoly a metriky pro Application Gateway
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
 Pomocí Azure Application Gateway můžete monitorovat prostředky následujícími způsoby:
 
@@ -22,7 +22,7 @@ Pomocí Azure Application Gateway můžete monitorovat prostředky následujíc�
 
 * [Protokoly](#diagnostic-logging): Protokoly umožňují, aby se pro účely monitorování uložily nebo využily údaje o výkonu, přístupu a dalších datech.
 
-* [Metriky](#metrics): Application Gateway v současné době má sedm metrik pro zobrazení čítačů výkonu.
+* [Metriky](application-gateway-metrics.md): Application Gateway má několik metrik, které vám pomůžou ověřit, že systém funguje podle očekávání.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do b
 
 V portálu je stav back-end k dispozici automaticky. V existující aplikační bráně vyberte **monitorování** > **stavu back-endu**. 
 
-Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku**, nejsou v pořádku a nejsou **známy**.
+Každý člen ve fondu back-end je uveden na této stránce (bez ohledu na to, zda se jedná o síťovou kartu, IP adresu nebo plně kvalifikovaný název domény). Zobrazí se název záložního fondu, port, back-end nastavení HTTP a stav. Platné hodnoty pro stav stavu jsou **v pořádku** **, nejsou v pořádku a**nejsou **známy**.
 
 > [!NOTE]
 > Pokud vidíte stav back-endu **Neznámý**, zajistěte, aby byl přístup k back-endu zablokován pravidlem NSG, uživatelem definovanou trasou (udr) nebo vlastním DNS ve virtuální síti.
@@ -172,7 +172,7 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
 |timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol SSL. Platné hodnoty jsou zapnuté a vypnuté.|
-|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud přeskočíte back-end hostname, tento název bude odpovídat.|
+|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
 ```json
 {
@@ -360,68 +360,7 @@ Můžete se také připojit k účtu úložiště a načíst položky protokolu 
 
 Publikovali jsme Správce prostředků šablonu, která nainstaluje a spustí oblíbený analyzátor protokolů [GoAccess](https://goaccess.io/) pro Application Gateway protokoly přístupu. GoAccess poskytuje cennou statistiku přenosů HTTP, jako jsou například jedineční návštěvníci, požadované soubory, hostitelé, operační systémy, prohlížeče, stavové kódy HTTP a další. Další podrobnosti najdete v [souboru Readme ve složce šablony Správce prostředků v GitHubu](https://aka.ms/appgwgoaccessreadme).
 
-## <a name="metrics"></a>Metriky
-
-Metriky jsou funkce pro určité prostředky Azure, kde můžete zobrazit čítače výkonu na portálu. Pro Application Gateway jsou k dispozici následující metriky:
-
-- **Aktuální připojení**
-- **Neúspěšné žádosti**
-- **Počet hostitelů v pořádku**
-
-   Můžete filtrovat podle fondu back-endu a zobrazit v něm v pořádku/poškozené hostitele v konkrétním back-end fondu.
-
-
-- **Stav odpovědi**
-
-   Distribuci stavového kódu odpovědi lze dále kategorizovat, aby zobrazovala odpovědi v kategoriích 2xx, 3xx, 4xx a 5xx.
-
-- **Propustnost**
-- **Celkový počet požadavků**
-- **Počet hostitelů není v pořádku**
-
-   Můžete filtrovat podle fondu back-endu a zobrazit v něm v pořádku/poškozené hostitele v konkrétním back-end fondu.
-
-Přejděte na aplikační bránu a v části **monitorování** vyberte **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
-
-Na následujícím obrázku vidíte příklad se třemi metrikami zobrazenými za posledních 30 minut:
-
-[![](media/application-gateway-diagnostics/figure5.png "Zobrazení metriky")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-Pokud chcete zobrazit aktuální seznam metrik, přečtěte si téma [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md).
-
-### <a name="alert-rules"></a>Pravidla výstrah
-
-Můžete spustit pravidla upozornění založená na metrikách prostředku. Například výstraha může zavolat Webhook nebo poslat e-mailem správce, pokud je propustnost služby Application Gateway nad, níže nebo za stanovenou dobu.
-
-Následující příklad vás provede vytvořením pravidla upozornění, které pošle e-mailem správci po porušení propustnosti prahovou hodnotu:
-
-1. Vyberte **Přidat výstrahu metriky** a otevřete stránku **Přidat pravidlo** . Tuto stránku můžete také kontaktovat ze stránky metriky.
-
-   ![Tlačítko Přidat upozornění na metriku][6]
-
-2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
-
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **Větší než**, **větší než nebo rovno**, **menší**nebo rovno nebo **menší než nebo rovno**.
-
-   * V selektoru **období** vyberte období od pěti minut po 6 hodin.
-
-   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu**, může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
-
-   ![Přidat stránku pravidla][7]
-
-Pokud dojde k porušení prahové hodnoty, přijde e-mail podobný tomu na následujícím obrázku.
-
-![E-mail pro porušení prahové hodnoty][8]
-
-Po vytvoření výstrahy metriky se zobrazí seznam výstrah. Poskytuje přehled o všech pravidlech výstrah.
-
-![Seznam výstrah a pravidel][9]
-
-Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)o výstrahách.
-
-Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vizualizujte protokoly čítačů a událostí pomocí [Azure monitor protokolů](../azure-monitor/insights/azure-networking-analytics.md).
 * [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) Blogový příspěvek.

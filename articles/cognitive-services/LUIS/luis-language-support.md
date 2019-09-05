@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932698"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307445"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -38,6 +38,7 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Francouzština (Francie) |`fr-FR` |-| ✔ |✔ |✔|
 | Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Němčina |`de-DE` |-| ✔ |✔ |✔|
+| Hindština | `hi-IN`|-|-|-|-|
 | italština |`it-IT` |-| ✔ |✔|✔|
 | *[Japonština](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Pouze klíčových frází|
 | Korejština |`ko-KR` |-|   -   |-|Pouze klíčových frází|
@@ -53,7 +54,7 @@ Podpora jazyků se liší u [předem připravených entit](luis-reference-prebui
 
  - V `zh-cn` jazykovou verzi, LUIS očekává zjednodušené čínštiny znakové sady namísto tradičních znakovou sadu.
  - Názvy tříd Intent, entity, funkce a regulární výrazy mohou být znaky čínské nebo římské číslice.
- - Informace o [](luis-reference-prebuilt-domains.md) tom, které předem sestavené domény jsou v `zh-cn` jazykové verzi podporované, najdete v referenčních informacích k předdefinovaným doménám.
+ - Informace o tom, které předem sestavené domény jsou v `zh-cn` jazykové verzi podporované, najdete v referenčních informacích k [předdefinovaným doménám](luis-reference-prebuilt-domains.md) .
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japonské podporuje poznámky
@@ -88,6 +89,7 @@ Pro strojové učení, LUIS, rozdělí do utterance [tokeny](luis-glossary.md#to
 |Francouzština (fr-FR)|✔||||
 |Francouzština (fr-CA)|✔||||
 |Němčina|||✔|✔|
+| Hindština |✔|-|-|-|-|
 |italština|✔||||
 |Japonština||||✔|
 |Korejština||✔||✔|

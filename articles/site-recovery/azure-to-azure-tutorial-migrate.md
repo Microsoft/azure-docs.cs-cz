@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3790b543a1a6dcbb793dbf661441700e6fa24232
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611890"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376249"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -71,7 +71,7 @@ V tomto kurzu provedete následující:
 
     Pokud chcete vytvořit nejčastěji používané síťové prostředky, které jsou relevantní pro vás na základě konfigurace zdrojového virtuálního počítače, přečtěte si následující dokumentaci:
     - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
     -  [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     - Další síťové součásti najdete v [dokumentaci k síti](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 
@@ -117,10 +117,10 @@ Následující postup ukazuje, jak provést přesun do cílové oblasti.
 
 ## <a name="discard"></a>Zahodit 
 
-Pokud jste si přepnuli přesunutý virtuální počítač a potřebujete ho změnit na bod převzetí služeb při selhání nebo se chcete vrátit k předchozímubodu, v replikovaných položkách klikněte pravým tlačítkem myši na položku virtuální počítač > **změnit bod obnovení**. Tento krok poskytuje možnost zadat jiný bod obnovení a převzetí služeb při selhání. 
+Pokud jste si přepnuli přesunutý virtuální počítač a potřebujete ho změnit na bod převzetí služeb při selhání nebo se chcete vrátit k předchozímu bodu, v **replikovaných položkách**klikněte pravým tlačítkem myši na položku virtuální počítač > **změnit bod obnovení**. Tento krok poskytuje možnost zadat jiný bod obnovení a převzetí služeb při selhání. 
 
 
-## <a name="commit"></a>Potvrzení 
+## <a name="commit"></a>Potvrdit 
 
 Jakmile jste si kontrolovali přesunutý virtuální počítač a jste připraveni tuto změnu potvrdit, v **replikovaných položkách**vyberte virtuální počítač > **potvrzením**kliknutím pravým tlačítkem. Tento krok dokončí proces přesunutí do cílové oblasti. Počkejte, než se dokončí úloha potvrzení změn.
 

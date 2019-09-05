@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165092"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383053"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Konektor Azure Průzkumník dat pro Apache Spark (Preview)
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165092"
 Konektor Azure Průzkumník dat pro Spark implementuje zdroj dat a datovou jímku pro přesouvání dat napříč clustery Azure Průzkumník dat a Sparkem, aby používaly obě jejich schopnosti. Pomocí Azure Průzkumník dat a Apache Spark můžete vytvářet rychlé a škálovatelné aplikace zaměřené na scénáře řízené daty, jako je Machine Learning (ML), extrakce, transformace-načtení (ETL) a Log Analytics. Zápis do Azure Průzkumník dat lze provést v režimu dávek a streamování.
 Čtení z Azure Průzkumník dat podporuje vyřazení sloupců a převod predikátu směrem dolů, což snižuje objem přenesených dat vyfiltrováním dat ve službě Azure Průzkumník dat.
 
-Konektor Azure Průzkumník dat Spark je [otevřený zdrojový projekt](https://github.com/Azure/azure-kusto-spark) , který se dá spustit na jakémkoli clusteru Spark.
+Konektor Azure Průzkumník dat Spark je [otevřený zdrojový projekt](https://github.com/Azure/azure-kusto-spark) , který se dá spustit na jakémkoli clusteru Spark. Konektor služby Azure Průzkumník dat Spark zpřístupňuje Azure Průzkumník dat platné úložiště dat pro standardní operace Spark source a jímky, jako je například zápis, čtení a writeStream. 
 
 > [!NOTE]
 > I když některé z následujících příkladů odkazují na cluster [Azure Databricks](https://docs.azuredatabricks.net/) Spark, služba Azure Průzkumník dat Spark Connector nepoužívá přímé závislosti na datacihlech ani na jiné distribuci Spark.
@@ -103,7 +103,7 @@ Další informace najdete v tématu [použití konektoru](https://github.com/Azu
 
 ## <a name="authentication"></a>Ověřování
 
-Konektor Azure Průzkumník dat Spark umožňuje ověřování pomocí služby Azure Active Directory (Azure AD) pomocí [aplikace Azure AD](#azure-ad-application-authentication), přístupového [tokenu Azure AD](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), [ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro neprodukční scénáře) nebo [klíče Azure. Trezor](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). Uživatel musí nainstalovat balíček Azure-webtrezoru a zadat přihlašovací údaje aplikace pro přístup k prostředku Key Vault.
+Konektor Azure Průzkumník dat Spark umožňuje ověřování pomocí služby Azure Active Directory (Azure AD) pomocí [aplikace Azure AD](#azure-ad-application-authentication), [přístupového tokenu Azure AD](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), [ověřování zařízení](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (pro neprodukční scénáře) nebo [klíče Azure. Trezor](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). Uživatel musí nainstalovat balíček Azure-webtrezoru a zadat přihlašovací údaje aplikace pro přístup k prostředku Key Vault.
 
 ### <a name="azure-ad-application-authentication"></a>Ověřování aplikací Azure AD
 
@@ -120,7 +120,7 @@ Většina jednoduchých a běžných metod ověřování. Tato metoda se doporu�
 V clusteru Azure Průzkumník dat musí být udělena následující oprávnění:
 
 * Pro čtení (zdroj dat) musí mít aplikace služby Azure AD oprávnění *prohlížeče* v cílové databázi nebo oprávnění *správce* cílové tabulky.
-* Pro psaní (jímka dat) musí aplikace Azure AD mít v cílové databázi oprávnění pro ingestování. Aby bylo možné vytvářet nové tabulky, musí mít také *uživatelská* oprávnění k cílové databázi. Pokud cílová tabulka již existuje, lze nakonfigurovat oprávnění *správce* v cílové tabulce.
+* Pro psaní (jímka dat) musí aplikace Azure *AD mít v* cílové databázi oprávnění pro ingestování. Aby bylo možné vytvářet nové tabulky, musí mít také *uživatelská* oprávnění k cílové databázi. Pokud cílová tabulka již existuje, lze nakonfigurovat oprávnění *správce* v cílové tabulce.
  
 Další informace o rolích zabezpečení Azure Průzkumník dat najdete v tématu [autorizace na základě rolí](/azure/kusto/management/access-control/role-based-authorization). Informace o správě rolí zabezpečení najdete v tématu [Správa rolí zabezpečení](/azure/kusto/management/security-roles).
 

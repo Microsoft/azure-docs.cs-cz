@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 388583b42d36a21ceb53a59e7c37392bf0eb8333
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: bfbe3d6aac6e97f3568c3c0ce3643bb215726a0b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534301"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376179"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Windows pomocí šablony Azure
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="define-a-scale-set-in-a-template"></a>Definice škálovací sady v šabloně
 Šablony Azure Resource Manageru umožňují nasazení skupin souvisejících prostředků. Šablony se píší ve formátu JavaScript Object Notation (JSON) a definují celé prostředí infrastruktury Azure pro vaši aplikaci. V jediné šabloně můžete vytvořit škálovací sadu virtuálních počítačů, nainstalovat aplikace a nakonfigurovat pravidla automatického škálování. Díky použití proměnných a parametrů se může tato šablona použít opakovaně k aktualizaci stávajících nebo vytvoření dalších škálovacích sad. Šablony můžete nasadit prostřednictvím webu Azure Portal, Azure CLI nebo Azure PowerShellu nebo z kanálů kontinuální integrace / průběžného doručování (CI/CD).
 
-Další informace o šablonách najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment). Informace o syntaxi a vlastnostech JSON najdete v referenčních informacích k šabloně [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) .
+Další informace o šablonách najdete v tématu [přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process). Informace o syntaxi a vlastnostech JSON najdete v referenčních informacích k šabloně [Microsoft. COMPUTE/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) .
 
 Šablona definuje konfiguraci pro každý typ prostředků. Typ prostředku škálovací sady virtuálních počítačů je podobný samostatnému virtuálnímu počítači. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
 

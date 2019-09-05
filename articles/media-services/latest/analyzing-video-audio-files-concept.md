@@ -1,6 +1,6 @@
 ---
-title: Analýza videosouborů a zvukových souborů pomocí služby Azure Media Services | Dokumentace Microsoftu
-description: Při použití služby Azure Media Services, můžete analyzovat vaše audio a video contnet pomocí AudioAnalyzerPreset a VideoAnalyzerPreset.
+title: Analýza videosouborů a zvukových souborů pomocí Azure Media Services | Microsoft Docs
+description: Při použití Azure Media Services můžete analyzovat zvuk a video obsah pomocí AudioAnalyzerPreset a VideoAnalyzerPreset.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,63 +11,63 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689371"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376191"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
-Azure Media Services v3 umožňuje extrakce poznatků z videí a zvukových souborů s modulem Video Indexer prostřednictvím přednastavení analyzátor v3 AMS (popsané v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Azure Media Services V3 vám umožní extrahovat přehledy z vašich videosouborů a zvukových souborů s Video Indexer prostřednictvím přednastavených analyzátoru AMS V3 (popsané v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Analyzovat obsah pomocí služby Media Services v3 přednastavení, vytvoříte **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) nebo **AudioAnalyzerPreset**. V následujícím článku ukazuje, jak používat **VideoAnalyzerPreset**: [Kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md).
+K analýze obsahu pomocí přednastavených Media Services V3 vytvoříte **transformaci** a odešlete **úlohu** , která používá jedno z těchto přednastavení: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) nebo **AudioAnalyzerPreset**. Následující článek ukazuje, jak používat **VideoAnalyzerPreset**: [Návodu Analyzujte videa pomocí](analyze-videos-tutorial-with-api.md)Azure Media Services.
 
 > [!NOTE]
 > Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
 
 ## <a name="built-in-presets"></a>Předdefinované předvolby
 
-Služba Media Services aktuálně podporuje následující předdefinované analyzátor předvolby:  
+Media Services aktuálně podporuje následující předdefinované předvolby analyzátoru:  
 
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza zvuku|Přednastavení platí předdefinovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. Přednastavení v současné době podporuje zpracování obsahu pomocí jednoho zvuková stopa, která obsahuje řeči v jednom jazyce. Vyberte jazyk datové části zvukový vstup ve formátu BCP-47 "jazyk oblast značky". Podporované jazyky jsou angličtina ("en US" a 'en-GB'), španělština ("es-ES" a "es-MX"), francouzština ("fr-FR"), italština ("it-IT"), japonština ("ja-JP"), portugalština ("pt-BR"), čínština ("zh-CN"), němčina ("de-DE"), arabština ("ar – např.), ruština ("ru-RU"), hindština ("hi v. ) a korejština ("ko-KR").<br/><br/> Pokud jazyk není zadaná nebo nastavená na hodnotu null a automatické zjišťování bude zvolte první jazyk zjištěna a zpracovat vybraný jazyk po dobu trvání souboru. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Nepodporuje aktuálně dynamicky přepínání mezi jazyky po první jazyk se detekuje. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně jasně řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejde zpět na angličtinu.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Rozpoznání tváře ve videu|Popisuje nastavení, které se použije při analýze video k rozpoznávání tváří k dispozici.|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza zvuku|Přednastavení používá předdefinovanou sadu operací analýzy založených na AI, včetně přepisu řeči. V současné době přednastavení podporuje zpracování obsahu pomocí jedné zvukové stopy, která obsahuje řeč v jednom jazyce. Jazyk pro datovou část zvuku ve vstupu můžete určit pomocí formátu BCP-47 pro ' Language tag-region '. Podporované jazyky jsou angličtina ("en-US" a "en-GB"), španělština (ES-ES a ES-MX), francouzština (' fr-FR '), italština (' IT-IT '), japonština (' ja-JP '), portugalština (' pt-BR '), čínština (' zh-CN '), němčina (' de-DE '), Arabština (' ar-EG '), ruština (' ru-RU '), hindština (' Hi-IN '). ) a korejština (' ko-KR ').<br/><br/> Pokud jazyk není zadán nebo je nastaven na hodnotu null, automatické rozpoznání jazyka vybere první nalezený jazyk a zpracuje s vybraným jazykem po dobu trvání souboru. Funkce automatického rozpoznávání jazyka aktuálně podporuje angličtinu, čínštinu, francouzštinu, němčinu, italštinu, japonštinu, španělštinu, ruštinu a portugalštinu. V současné době nepodporují dynamické přepínání mezi jazyky po zjištění prvního jazyka. Funkce automatického rozpoznávání jazyka funguje nejlépe se zvukovým záznamem, který má jasně discernible řeč. Pokud automatické zjišování jazyka nenajde jazyk, přepis se vrátí do angličtiny.|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Zjišťování všech plošek přítomných ve videu|Popisuje nastavení, která se mají použít při analýze videa za účelem zjištění všech přítomných plošek.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
-Přednastavení umožňuje poznatky více zvuk ze souboru zvuku nebo videa. Výstup obsahuje soubor JSON (všechny přehledy) a soubor VTT přepisu zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk, který vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězec. Zahrnout zvukové insights:
+Přednastavení umožňuje extrahovat z zvukového nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor JSON (se všemi přehledy) a soubor VTT pro přepis zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězce. Mezi zvukové poznatky patří:
 
-* Přepisování zvukového záznamu – přepis mluveného slova s časovými razítky. Podporuje více jazyků
-* Mluvčího indexování – mapování mluvčích a odpovídající mluveného slova
-* Provést analýzu subjektivního hodnocení řeči – výstup analýzy mínění na přepisování zvukového záznamu
-* Klíčová slova – klíčová slova, která se extrahují z přepisování zvukového záznamu.
+* Přepis zvuku – přepis mluvených slov s časovými razítky. Podporuje se několik jazyků.
+* Indexování mluvčích – mapování mluvčích a odpovídajících mluvených slov
+* Analýza mínění řeči – výstup analýzy mínění provedených na přepisu zvuku
+* Klíčová slova – Klíčová slova, která jsou extrahována z přepisu zvuku.
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-Přednastavení umožňuje extrahovat více audio a video přehledy z videosouboru. Výstup obsahuje soubor JSON (s všechny přehledy), soubor VTT pro přepis videa a kolekce miniatur. Tato předvolba přijímá také [BCP47](https://tools.ietf.org/html/bcp47) string (představující jazyk videa) jako vlastnost. Poznatky z videí zahrnout všechny zvukové přehledy uvedených výše a navíc následující položky:
+Přednastavení umožňuje extrahovat z videosouboru více zvukových a vizuálních přehledů. Výstup obsahuje soubor JSON (se všemi poznatky), soubor VTT pro přepis videa a kolekci miniatur. Tato předvolba také přijímá řetězec [BCP47](https://tools.ietf.org/html/bcp47) (představující jazyk videa) jako vlastnost. Video přehledy obsahují všechny výše uvedené zvukové poznatky a následující další položky:
 
-* Sledování pro rozpoznávání tváře – čas, během které tváře nacházejí ve videu. Každý obličej má id pro rozpoznávání tváře a odpovídající kolekci miniatur
-* Visual text – text, který je zjištěn prostřednictvím optické rozpoznávání znaků. Text je čas razítkem a také použít k extrahování klíčových slov (navíc k přepisu zvuku)
+* Sledování obličeje – čas, během kterého se ve videu nacházejí obličeje. Každá ploška má ID obličeje a odpovídající kolekci miniatur.
+* Vizuální text – text, který se detekuje pomocí optického rozpoznávání znaků. Text je v časovém razítku a používá se také k extrakci klíčových slov (kromě zvukového přepisu).
 * Klíčové snímky – kolekce klíčových snímků, které se extrahují z videa
-* Moderování obsahu Visual – část videa, která jsou opatření příznakem jako pro dospělé nebo pikantního ze své podstaty
-* Poznámka – výsledek přidávání poznámek videa podle předem daného objektový model
+* Moderování vizuálního obsahu – část videí označená jako dospělý nebo pikantní v podstatě
+* Anotace – výsledek přidávání poznámek k videím na základě předem definovaného objektového modelu
 
 ##  <a name="insightsjson-elements"></a>insights.json elements
 
-Výstup obsahuje všechny informace, které byly nalezeny v video nebo zvuk soubor JSON (insights.json). Ve formátu json může obsahovat následující prvky:
+Výstup obsahuje soubor JSON (Insights. JSON) se všemi přehledy, které byly nalezeny ve videu nebo ve zvukovém souboru. JSON může obsahovat následující prvky:
 
-### <a name="transcript"></a>přepis
+### <a name="transcript"></a>záznamy
 
 |Name|Popis|
 |---|---|
-|id|ID řádku.|
-|text|Přepis samotný.|
-|language|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
-|instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
+|id|ID řádku|
+|text|Samotný přepis.|
+|jazyk|Jazyk přepisu. Má sloužit k podpoře přepisu, kde každý řádek může mít jiný jazyk.|
+|instance|Seznam časových rozsahů, ve kterých se zobrazil tento řádek Pokud je instance přepisu, bude mít pouze jednu instanci.|
 
 Příklad:
 
@@ -98,15 +98,15 @@ Příklad:
 ] 
 ```
 
-### <a name="ocr"></a>optické rozpoznávání znaků
+### <a name="ocr"></a>OCR
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
-|id|ID OCR řádku.|
-|text|OCR textu.|
-|spolehlivosti|Rozpoznávání spolehlivosti.|
-|language|OCR jazyk.|
-|instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
+|id|ID řádku OCR|
+|text|Text OCR|
+|jistotou|Spolehlivost rozpoznávání.|
+|jazyk|Jazyk OCR.|
+|instance|Seznam časových rozsahů, ve kterých se zobrazilo toto optické rozpoznávání znaků (stejné optické rozpoznávání znaků se může několikrát zobrazit).|
 
 ```json
 "ocr": [
@@ -141,21 +141,21 @@ Příklad:
   ],
 ```
 
-### <a name="faces"></a>tváří
+### <a name="faces"></a>emotikon
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
-|id|ID tváře.|
-|name|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
-|spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
-|description|Popis celebrity. |
-|thumbnailId|ID miniatury této pro rozpoznávání tváře.|
-|knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
-|referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
-|referenceType|Aktuálně jenom Bingu.|
-|název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
-|imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
-|instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
+|id|ID obličeje|
+|name|Název obličeje Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
+|jistotou|Spolehlivost identifikace obličeje.|
+|description|Popis celebrit. |
+|thumbnailId|ID miniatury této plochy.|
+|knownPersonId|Pokud se jedná o známého uživatele, jeho interní ID.|
+|referenceId|Pokud se jedná o celebrit Bingu, jeho ID Bingu.|
+|referenceType|Aktuálně pouze Bing.|
+|název|Pokud se jedná o celebrit, jeho titul (například "generální ředitel společnosti Microsoft").|
+|imageUrl|Pokud se jedná o celebrit, jeho adresu URL obrázku.|
+|instance|Jedná se o instance, kde se v zadaném časovém rozsahu objevila plocha. Každá instance má také thumbnailsId. |
 
 ```json
 "faces": [{
@@ -186,13 +186,13 @@ Příklad:
 }]
 ```
 
-### <a name="shots"></a>snímky
+### <a name="shots"></a>řizování
 
 |Name|Popis|
 |---|---|
-|id|Snímek ID.|
-|keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
-|instance|Seznam časových rozsahů tento snímek (snímky mají jenom 1 instance).|
+|id|ID snímku|
+|Klíčové snímky|Seznam klíčových snímků v rámci tohoto snímku (každý má ID a seznam časových rozsahů instancí). Instance klíčových snímků mají pole thumbnailId s ID miniatury klíčového snímku.|
+|instance|Seznam časových rozsahů tohoto snímku (snímky mají pouze 1 instanci).|
 
 ```json
 "Shots": [
@@ -243,27 +243,27 @@ Příklad:
   ]
 ```
 
-### <a name="statistics"></a>statistiky
+### <a name="statistics"></a>týkají
 
 |Name|Popis|
 |---|---|
-|CorrespondenceCount|Počet srovnávací ve videu.|
-|WordCount|Počet slov za mluvčího.|
-|SpeakerNumberOfFragments|Množství fragmenty mluvčího se ve videu.|
-|SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
-|SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
+|CorrespondenceCount|Počet korespondencí ve videu.|
+|WordCount|Počet slov na mluvčí.|
+|SpeakerNumberOfFragments|Množství fragmentů, které má mluvčí ve videu.|
+|SpeakerLongestMonolog|Nejdelší monolog mluvčího. Pokud mluvčí obsahuje tiché v monolog, je součástí. Odstraní se tiché na začátku a na konci monolog.| 
+|SpeakerTalkToListenRatio|Výpočet vychází z doby strávené monologem mluvčího (bez ticha v mezi) dělený celkovým časem videa. Čas se zaokrouhluje na třetí desetinnou čárku.|
 
 
-### <a name="sentiments"></a>zabarvení
+### <a name="sentiments"></a>mínění
 
-Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
+Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
-|id|ID mínění.|
-|averageScore |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
-|instance|Seznam časových rozsahů, ve kterém se objevil tento mínění.|
-|sentimentType |Typ může být "Pozitivní", 'Neutrální' nebo "Záporné".|
+|id|ID mínění|
+|averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
+|instance|Seznam časových rozsahů, ve kterých se tento mínění objevil.|
+|sentimentType |Typ může být "pozitivní", "neutrální" nebo "negativní".|
 
 ```json
 "sentiments": [
@@ -293,12 +293,12 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 
 ### <a name="labels"></a>popisky
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
-|id|ID popisku.|
+|id|ID popisku|
 |name|Název popisku (například "Computer", "TV").|
-|language|Popisek názvu jazyka (při překladu). BCP-47|
-|instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
+|jazyk|Název jazyka popisku (při překladu). BCP-47|
+|instance|Seznam časových rozsahů, ve kterých se tento popisek objevil (popisek se může zobrazit víckrát). Každá instance má pole s jistotou. |
 
 
 ```json
@@ -354,11 +354,11 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 
 |Name|Popis|
 |---|---|
-|id|ID – klíčové slovo.|
-|text|Text – klíčové slovo.|
-|spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
-|language|Jazyk – klíčové slovo (při překladu).|
-|instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
+|id|ID klíčového slova.|
+|text|Text klíčového slova|
+|jistotou|Spolehlivost rozpoznávání klíčového slova|
+|jazyk|Jazyk klíčového slova (při překladu).|
+|instance|Seznam časových rozsahů, ve kterých se toto klíčové slovo objevilo (klíčové slovo se může zobrazit víckrát).|
 
 ```json
 "keywords": [
@@ -399,16 +399,16 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-Blok visualContentModeration obsahuje časových rozsahů, které můžou mít obsah pro dospělé Video Indexer. Pokud visualContentModeration je prázdný, není žádný obsah pro dospělé, který byl identifikován.
+Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nalezené pro potenciálně obsah pro dospělé. Pokud je visualContentModeration prázdné, není k dispozici žádný obsah určený pro dospělé.
 
-Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být k dispozici pouze privátní zobrazení. Uživatelé mají možnost odeslat žádost pro lidskou kontrolu obsahu, ve kterém bude obsahovat případ atribut IsAdult výsledek kontrolu člověkem.
+K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mají možnost Odeslat žádost o revizi obsahu. v takovém případě bude atribut pro dospělé obsahovat výsledek lidské recenze.
 
 |Name|Popis|
 |---|---|
-|id|ID visual moderování obsahu.|
-|adultScore|Hodnocení obsahu pro dospělé (z content moderatoru).|
-|racyScore|Hodnocení obsahu pro dospělé (z moderování obsahu).|
-|instance|Seznam časových rozsahů, ve kterém se objevil tento visual moderování obsahu.|
+|id|ID moderování vizuálního obsahu.|
+|adultScore|Skóre dospělého (od moderátora obsahu).|
+|racyScore|Pikantní skóre (z Moderování obsahu).|
+|instance|Seznam časových rozsahů, ve kterých se objevilo moderování tohoto vizuálu obsahu|
 
 ```json
 "VisualContentModeration": [

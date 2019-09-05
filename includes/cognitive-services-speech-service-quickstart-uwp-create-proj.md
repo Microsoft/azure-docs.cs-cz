@@ -2,56 +2,106 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 08/19/2019
 ms.author: erhopf
-ms.openlocfilehash: faa93b75bde3a14e48baa7d27a3eb6439a137e44
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0140981a694a7a7cd8556f7139a90d0656679d7d
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482307"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381978"
 ---
-1. Start Visual Studio 2019.
+Chcete-li vytvořit projekt sady Visual Studio pro Univerzální platforma Windows (UWP), je nutné nastavit vývojové možnosti sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu, nastavit záznam zvuku a nainstalovat sadu Speech SDK.
 
-1. Ověřte, že je k dispozici sada funkcí **Vývoj pro Univerzální platformu Windows**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno.
+### <a name="set-up-visual-studio-development-options"></a>Nastavení možností vývoje pro Visual Studio
 
-    ![Snímek obrazovky instalačního programu sady Visual Studio se zvýrazněnou kartou Sady funkcí](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
+Pokud chcete začít, ujistěte se, že jste správně nastavili v sadě Visual Studio pro vývoj UWP:
 
-    V opačném případě zaškrtněte políčko **Vývoj multiplatformních aplikací pomocí rozhraní .NET** a vyberte **Změnit** v pravém dolním rohu dialogového okna. Instalace nové funkce chvíli trvá.
+1. Otevřete Visual Studio 2019 pro zobrazení okna **Start** .
 
-1. Vytvořte prázdnou univerzální aplikaci pro Windows v jazyce Visual C#. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#**  > **Univerzální aplikace pro Windows**  v levém podokně. Pak vyberte **Prázdná aplikace (univerzální pro Windows)** . Jako název projektu zadejte *helloworld*.
+   ![Spustit okno – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
-    ![Snímek obrazovky s dialogovým oknem Nový projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
+1. Pokud chcete přejít na integrované vývojové prostředí (IDE) sady Visual Studio, vyberte **pokračovat bez kódu** .
 
-1. Sadou SDK pro řeč vyžaduje, že je sestavená vaše aplikace pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)** . V **cílovou verzi** pole, vyberte tato verze nebo novější verze a potom klikněte na tlačítko **OK**.
+1. V řádku nabídek sady Visual Studio vyberte **nástroje** > **získat nástroje a funkce** . otevře se instalační program pro Visual Studio a zobrazí se dialogové okno **změny** .
 
-    ![Snímek obrazovky s oknem Nový projekt univerzální platformy Windows](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+   ![Karta úlohy, změny dialogového okna, Instalační program pro Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
-1. Pokud používáte 64bitovou verzi Windows, můžete pomocí rozevírací nabídky na panelu nástrojů sady Visual Studio přepnout platformu sestavení na `x64`. (64bitová verze Windows dokáže spouštět 32bitové aplikace, takže pokud chcete, můžete ponechat nastavení `x86`.)
+1. Na kartě **úlohy** v části **Windows**Najděte **Univerzální platforma Windows vývojové** úlohy. Pokud je zaškrtnuté políčko vedle této úlohy, zavřete dialogové okno **Úpravy** a pokračujte na krok 6.
 
-   ![Snímek obrazovky panelu nástrojů sady Visual Studio se zvýrazněnou možností x64](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
+1. Zaškrtněte políčko **Univerzální platforma Windows vývoje** , vyberte **Upravit**a potom v dialogovém okně **před** spuštěním vyberte **pokračovat** a nainstalujte úlohu vývoje UWP. Instalace nové funkce může chvíli trvat.
 
-   > [!NOTE]
-   > Sadou SDK pro řeč podporuje pouze procesory kompatibilní s verzí Intel. Procesory ARM nejsou momentálně podporované.
+1. Zavřete Instalační program pro Visual Studio.
 
-1. Nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a vytvořte na něho odkaz. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **Spravovat balíčky NuGet pro řešení**.
+### <a name="create-the-project-and-select-the-target-architecture"></a>Vytvořit projekt a vybrat cílovou architekturu
 
-    ![Snímek obrazovky s Průzkumníkem řešení a zvýrazněnou možností Spravovat balíčky NuGet pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
+Potom vytvořte projekt:
 
-1. V poli **Zdroj balíčku** v pravém horním rohu vyberte **nuget.org**. Vyhledejte balíček `Microsoft.CognitiveServices.Speech` a nainstalujte ho do projektu **helloworld**.
+1. V řádku nabídek sady Visual Studio vyberte **soubor** > **Nový** > **projekt** , aby se zobrazilo okno **vytvořit nový projekt** .
 
-    ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png "Instalace balíčku NuGet")
+   ![Vytvořit nový projekt – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
-1. Přijměte zobrazenou licenci a zahajte instalaci tohoto balíčku NuGet.
+1. Najděte a vyberte **prázdná aplikace (univerzální pro Windows)** . Ujistěte se, že jste vybrali C# verzi tohoto typu projektu (na rozdíl od Visual Basic).
 
-    ![Snímek obrazovky s dialogovým oknem Souhlas s podmínkami licence](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-06-nuget-license.png "Přijetí licence")
+1. Kliknutím na tlačítko **Další** zobrazíte obrazovku **Konfigurovat nový projekt** . 
 
-1. V konzole Správce balíčků se zobrazí následující řádek výstupu.
+   ![Konfigurace nového projektu – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
-   ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.5.0' to helloworld
-   ```
+1. Do **název projektu**zadejte `helloworld`.
 
-1. Protože aplikace používá mikrofon pro hlasový vstup, přidejte do projektu schopnost **Mikrofon**. V Průzkumníku řešení dvakrát klikněte na **Package.appxmanifest** a upravte manifest aplikace. Přepněte na kartu **Schopnosti**, zaškrtněte políčko u schopnosti **Mikrofon** a uložte provedené změny.
+1. V části **umístění**přejděte na a vyberte nebo vytvořte složku, do které chcete projekt uložit.
 
-   ![Snímek obrazovky s manifestem aplikace sady Visual Studio a zvýrazněnými volbami Schopnosti a Mikrofon](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-07-capabilities.png)
+1. Výběrem možnosti **vytvořit** přejdete do okna **Nový Univerzální platforma Windows projektu** .
+
+   ![Dialogové okno Nový projekt Univerzální platforma Windows – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+
+1. V **minimální verzi** (druhý rozevírací seznam) vyberte **Windows 10 poklesnout Creators Update (10,0; Sestavení 16299)** , což je minimální požadavek pro sadu Speech SDK.
+
+1. V **cílové verzi** (první rozevírací seznam) vyberte hodnotu, která je stejná nebo vyšší než hodnota v **minimální verzi**.
+
+1. Vyberte **OK**. Vrátíte se do integrovaného vývojového prostředí sady Visual Studio s novým projektem vytvořeným a zobrazeným v podokně **Průzkumník řešení** .
+
+   ![projekt HelloWorld – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
+
+Teď vyberte cílovou architekturu platformy. Na panelu nástrojů sady Visual Studio Najděte rozevírací seznam **platformy řešení** . (Pokud ji nevidíte, vyberte možnost **Zobrazit** > **panely nástrojů** > **standardní** a zobrazte panel nástrojů obsahující **platformy řešení**.) Pokud používáte 64-bit Windows, v rozevíracím seznamu vyberte **x64** . 64-bitová okna můžou spouštět i 32 aplikace, takže pokud chcete, můžete vybrat možnost **x86** .
+
+> [!NOTE]
+> Sada Speech SDK podporuje pouze procesory kompatibilní s procesorem Intel. Procesory ARM se aktuálně nepodporují.
+
+### <a name="set-up-audio-capture"></a>Nastavení záznamu zvuku
+
+Pak umožněte zachytávání zvukového vstupu v projektu:
+
+1. V **Průzkumník řešení**dvakrát klikněte na **Package. appxmanifest** a otevřete manifest aplikace balíčku.
+
+1. Vyberte kartu **Možnosti** .
+
+   ![Karta Možnosti, manifest aplikace balíčku – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-07-capabilities.png)
+
+1. Zaškrtněte políčko pro schopnost **mikrofonu** .
+
+1. V řádku nabídek vyberte **soubor** > **Uložit balíček. appxmanifest** a uložte provedené změny.
+
+### <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
+
+Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/nuget)a odkažte na sadu Speech SDK v projektu:
+
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na vaše řešení a vyberte **Spravovat balíčky NuGet pro řešení** , abyste přešli do okna **NuGet – řešení** .
+
+1. Vyberte **Procházet**.
+
+   ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+
+1. Ve **zdroji balíčku**vyberte možnost **NuGet.org**.
+
+1. Do **vyhledávacího** pole zadejte `Microsoft.CognitiveServices.Speech`a po zobrazení ve výsledcích hledání zvolte tento balíček.
+
+   ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+
+1. V podokně stav balíčku vedle výsledků hledání vyberte svůj projekt **HelloWorld** .
+
+1. Vyberte **Install** (Nainstalovat).
+
+1. V dialogovém okně **Náhled změn** vyberte **OK**.
+
+1. V dialogovém okně **přijetí licence** si prohlédněte licenci a pak vyberte **Souhlasím**. Spustí se instalace balíčku. po dokončení instalace se v podokně **výstup** zobrazí zpráva podobná následujícímu textu: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`.

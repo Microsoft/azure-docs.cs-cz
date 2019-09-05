@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a71eb00ce4d4ace6ccc17e050946b39debed929c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 23475fb77210eeea0568bb996529c81458db9c6c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034889"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382767"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Postup aktualizace modulů Azure PowerShell v Azure Automation
 
@@ -49,10 +49,6 @@ V následující části jsou některé předpoklady, které je potřeba vzít v
 * Pokud chcete použít konkrétní verzi modulu Azure PowerShell namísto nejnovějšího dostupného Galerie prostředí PowerShell, předejte tyto verze volitelnému `ModuleVersionOverrides` parametru sady Runbook **Update-AutomationAzureModulesForAccount** . Příklady najdete v [tématu sada Runbook Update-AutomationAzureModulesForAccount.](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) ps1. Azure PowerShell moduly, které nejsou uvedené v `ModuleVersionOverrides` parametru, se aktualizují pomocí nejnovějších verzí modulu v Galerie prostředí PowerShell. Pokud do `ModuleVersionOverrides` parametru nepředáte žádnou hodnotu, všechny moduly se aktualizují s nejnovějšími verzemi modulu na galerie prostředí PowerShell. Toto chování je stejné jako u tlačítka **aktualizovat moduly Azure** .
 
-## <a name="known-issues"></a>Známé problémy
-
-Došlo k známému problému s aktualizací AzureRM modulů v účtu Automation, který je ve skupině prostředků s číselným názvem, který začíná na 0. Pokud chcete v účtu Automation aktualizovat moduly Azure, musí být ve skupině prostředků, která má alfanumerický název. Skupiny prostředků s číselnými názvy začínající hodnotou 0 nemůžou v tuto chvíli aktualizovat moduly AzureRM.
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o této službě najdete v části open source [Update Runbook modules Runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) .

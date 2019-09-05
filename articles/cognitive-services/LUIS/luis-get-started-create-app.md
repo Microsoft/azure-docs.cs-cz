@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/25/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 34978d552b2a5002906b65c06e0c8ad76f58761b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1704b62cae6375d376fc43fb7a2940cd9c717072
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258152"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382509"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace pro domácí automatizaci
 
@@ -65,7 +65,7 @@ V levém navigačním podokně vyberte **Intents** (Záměry) a podívejte se na
 
 Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam promluv, které jsou označené entitami.
 
-[![Snímek obrazovky HomeAutomation.TurnOff záměr](media/luis-quickstart-new-app/home-automation-turnon.png "snímek obrazovky HomeAutomation.TurnOff záměr")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![Snímek obrazovky HomeAutomation.TurnOff záměr](media/luis-quickstart-new-app/home-automation-turnoff.png "snímek obrazovky HomeAutomation.TurnOff záměr")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
@@ -80,10 +80,14 @@ Turn off the lights
 
 Zkontrolujte, že záměr s nejvyšším bodováním odpovídá záměru, který jste pro jednotlivé testovací promluvy očekávali.
 
-V tomto příkladu je „Turn off the lights“ (Vypnout světla) správně identifikovaný jako záměr s nejvyšším bodováním pro „HomeAutomation.TurnOff“.
+V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
 [![Snímek obrazovky testovací panel utterance zvýrazněnou](media/luis-quickstart-new-app/test.png "panelu testů snímek obrazovky s utterance zvýrazněnou")](media/luis-quickstart-new-app/test.png)
 
+
+Pokud si chcete prohlédnout Další informace o předpovědi, vyberte **zkontrolovat** .
+
+![Snímek obrazovky testovacího panelu se zvýrazněným utterance](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
 Znovu vyberte **Test** (Testovat) a sbalte podokno testování. 
 
@@ -93,14 +97,134 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
+## <a name="query-the-v2-api-prediction-endpoint"></a>Dotaz na koncový bod předpovědi rozhraní v2 API
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Na konec adresy URL zadejte `turn off the living room light` a stiskněte Enter. Prohlížeč zobrazí odpověď JSON koncového bodu HTTP.
+1. Na konec adresy URL zadejte `turn off the living room light` a stiskněte Enter. V prohlížeči se zobrazí verze **v2 API** odpovědi na váš koncový bod HTTP.
 
-    [![Snímek obrazovky prohlížeče s výsledkem JSON zjistí záměru vypnutí](media/luis-quickstart-new-app/turn-off-living-room.png "snímek obrazovky prohlížeče s výsledkem JSON zjistí záměru vypnutí")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    ```json
+    {
+      "query": "turn off the living room light",
+      "topScoringIntent": {
+        "intent": "HomeAutomation.TurnOff",
+        "score": 0.9753089
+      },
+      "intents": [
+        {
+          "intent": "HomeAutomation.TurnOff",
+          "score": 0.9753089
+        },
+        {
+          "intent": "HomeAutomation.QueryState",
+          "score": 0.01027893
+        },
+        {
+          "intent": "HomeAutomation.TurnUp",
+          "score": 0.006881481
+        },
+        {
+          "intent": "HomeAutomation.SetDevice",
+          "score": 0.006786365
+        },
+        {
+          "intent": "HomeAutomation.TurnDown",
+          "score": 0.005145787
+        },
+        {
+          "intent": "HomeAutomation.TurnOn",
+          "score": 0.004114749
+        },
+        {
+          "intent": "None",
+          "score": 0.000598924
+        }
+      ],
+      "entities": [
+        {
+          "entity": "living room",
+          "type": "HomeAutomation.Location",
+          "startIndex": 13,
+          "endIndex": 23,
+          "score": 0.94558233
+        },
+        {
+          "entity": "living room light",
+          "type": "HomeAutomation.DeviceName",
+          "startIndex": 13,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "living room light"
+            ]
+          }
+        },
+        {
+          "entity": "light",
+          "type": "HomeAutomation.DeviceType",
+          "startIndex": 25,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "light"
+            ]
+          }
+        }
+      ]
+    }
+    ```
     
+## <a name="query-the-v3-api-prediction-endpoint"></a>Dotaz na koncový bod prediktivního rozhraní API V3
+
+Pro [dotaz rozhraní API V3](luis-migration-api-v3.md)v prohlížeči změňte požadavek metody Get https a změňte hodnoty v lomených závorkách na vaše vlastní hodnoty. 
+
+**Adresa URL v2 s metodou Get**:
+
+https://\<region >. API. vnímání. Microsoft. com/Luis/**v 2.0**/Apps/\<AppID >? verbose = true & Subscription-Key =\<YOUR_KEY > &**q =\<User-utterance-text >**
+
+**Adresa URL v3 s metodou Get**:
+
+https://\<region >. API. vnímání. Microsoft. com/Luis/**v 3.0-Preview**/Apps/\<AppID >/**sloty**/**produkční**/**předpověď**? verbose = true & Subscription-Key =\<YOUR_KEY > &**dotaz =\<User-utterance-text >**
+
+V prohlížeči se zobrazí verze **V3 rozhraní API** pro váš koncový bod HTTP s odpovědí JSON.
+
+```json
+{
+    "query": "turn off the lights",
+    "prediction": {
+        "normalizedQuery": "turn off the lights",
+        "topIntent": "HomeAutomation.TurnOff",
+        "intents": {
+            "HomeAutomation.TurnOff": {
+                "score": 0.99649024
+            }
+        },
+        "entities": {
+            "HomeAutomation.DeviceType": [
+                [
+                    "light"
+                ]
+            ],
+            "$instance": {
+                "HomeAutomation.DeviceType": [
+                    {
+                        "type": "HomeAutomation.DeviceType",
+                        "text": "lights",
+                        "startIndex": 13,
+                        "length": 6,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]

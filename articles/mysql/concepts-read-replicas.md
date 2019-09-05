@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 9907bf49b99f3e8a09f2924c386c1f76891a8c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.date: 09/04/2019
+ms.openlocfilehash: f567eefee84cf6a01afad4e5245337dd92b8cc48
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232553"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309431"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
 Funkce repliky pro čtení umožňuje replikovat data ze serveru Azure Database for MySQL na server jen pro čtení. Z hlavního serveru je můžete replikovat až na pět replik. Repliky se aktualizují asynchronně s využitím technologie replikace na základě pozice v souboru binárního protokolu (binlog) nativní pro stroj MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
-
-> [!IMPORTANT]
-> Repliku pro čtení můžete vytvořit ve stejné oblasti jako váš hlavní server nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
 
 Repliky jsou nové servery, které spravujete podobně jako běžné Azure Database for MySQL servery. Pro každou repliku čtení se vám bude účtovat zajištěné výpočetní prostředky v virtuální jádra a úložišti v GB/měsíc.
 
@@ -36,9 +33,6 @@ Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce nen�
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Z hlavního serveru můžete vytvořit repliku pro čtení v jiné oblasti. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
-
-> [!IMPORTANT]
-> Replikace mezi oblastmi je aktuálně ve verzi Public Preview.
 
 Hlavní server můžete mít v libovolné [Azure Database for MySQL oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=mysql).  Hlavní server může mít repliku ve své spárované oblasti nebo oblastech univerzální repliky.
 

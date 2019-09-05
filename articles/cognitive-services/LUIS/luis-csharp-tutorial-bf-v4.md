@@ -1,5 +1,5 @@
 ---
-title: Language Understanding robot C# v4
+title: 'Kurz: Language Understanding robot C# v4'
 titleSuffix: Azure Cognitive Services
 description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Robot má vytvořenou verzi bot Framework verze 4 a službu Azure Web App bot.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 79f75fbae9a13db985f46408145c7d6762ff56b9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207328"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375587"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Kurz: Použití robota webové aplikace s povoleným Language Understanding vC#
 
@@ -312,7 +312,7 @@ V sadě Visual Studio spusťte robota. Otevře se okno prohlížeče s webem Web
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru bot k otestování robota
 
 1. Spusťte emulátor bot a vyberte **otevřít robot**.
-1. V automaticky **otevřeném** okně robota zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
+1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
 1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **appSettings. JSON** v kořenovém adresáři kódu robota, který jste stáhli.
 
     Volitelně můžete vytvořit novou konfiguraci robota a zkopírovat `appId` a `appPassword` ze souboru **appSettings. JSON** v projektu sady Visual Studio pro robot. Název konfiguračního souboru robota by měl být stejný jako název bot. 

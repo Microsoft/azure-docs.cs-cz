@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019100"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376300"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -226,7 +226,7 @@ Chcete-li vytvořit mnoho podřízených spuštění efektivně [`create_childre
 
 Podřízené běhy lze také odeslat z nadřazeného spuštění. To vám umožňuje vytvářet hierarchie nadřazených a podřízených spuštění, z nichž každý běží v různých cílových výpočetních prostředích, které jsou propojeny běžným ID nadřazeného spuštění.
 
-Použijte metodu [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) pro odeslání podřízeného spuštění v rámci nadřazeného spuštění. Pokud to chcete provést v nadřazeném skriptu spuštění, Získejte kontext spuštění a odešlete podřízený běh pomocí metody submit_child instance kontextu.
+Použijte metodu [submit_child ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) pro odeslání podřízeného spuštění v rámci nadřazeného spuštění. Pokud to chcete provést v nadřazeném skriptu spuštění, Získejte kontext spuštění a odešlete podřízený běh pomocí metody submit_child instance kontextu.
 
 ```python
 ## In parent run script
@@ -337,7 +337,7 @@ Následující poznámkové bloky ukazují koncepty v tomto článku:
 
 * Další informace o rozhraních API pro protokolování najdete v [poznámkovém bloku rozhraní API pro protokolování](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
 
-* Další informace o správě běžících v sadě Azure Machine Learning SDK najdete v poznámkovém [bloku spravovat běhy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
+* Další informace o správě běžících v sadě Azure Machine Learning SDK najdete v [poznámkovém bloku spravovat běhy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
 
 ## <a name="next-steps"></a>Další postup
 

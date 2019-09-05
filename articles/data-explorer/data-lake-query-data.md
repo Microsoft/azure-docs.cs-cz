@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950143"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383366"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat (Preview)
 
@@ -50,6 +50,7 @@ Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Stora
     > * Větší výkon se očekává s podrobnějším rozdělením na oddíly. Například dotazy u externích tabulek s denními oddíly budou mít lepší výkon než dotazy s měsíčně rozdělenými tabulkami.
     > * Při definování externí tabulky s oddíly se očekává, že struktura úložiště bude shodná.
 Pokud je tabulka definovaná například pomocí oddílu DateTime ve formátu RRRR/MM/DD (výchozí), cesta k souboru úložiště identifikátoru URI by měla být *container1/rrrr/mm/dd/all_exported_blobs*. 
+    > * Pokud je externí tabulka rozdělená podle sloupce data a času, vždy do dotazu zahrňte časový filtr pro uzavřený rozsah (například dotaz- `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` -by měl vykonat lepší hodnotu než tento (otevřený rozsah) One- `ArchivedProducts | where Timestamp > ago(1h)` ). 
 
 1. Externí tabulka se zobrazí v levém podokně webového uživatelského rozhraní.
 
@@ -57,7 +58,7 @@ Pokud je tabulka definovaná například pomocí oddílu DateTime ve formátu RR
 
 ### <a name="create-an-external-table-with-json-format"></a>Vytvoření externí tabulky ve formátu JSON
 
-Externí tabulku můžete vytvořit ve formátu JSON. Další informace najdete v [](/azure/kusto/management/externaltables) tématu věnovaném externím tabulkovým příkazům
+Externí tabulku můžete vytvořit ve formátu JSON. Další informace najdete v tématu věnovaném [externím tabulkovým příkazům](/azure/kusto/management/externaltables)
 
 1. Pomocí příkazu vytvořte tabulku s názvem ExternalTableJson: `.create external table`
 
@@ -231,6 +232,6 @@ Tento dotaz používá dělení na oddíly, které optimalizuje čas a výkon do
   
 Můžete napsat další dotazy ke spuštění na externí tabulce *TaxiRides* a získat další informace o datech. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dotazování na data v Azure Data Lake pomocí Azure Průzkumník dat. Naučte se [vytvářet dotazy](write-queries.md) a odvodit další poznatky z vašich dat.

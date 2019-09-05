@@ -10,14 +10,14 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 220d2aefd714cd3546fa4d5c2ac8852d2786b8ac
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575418"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306088"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý start: Pozastavení a obnovení výpočtů v Azure SQL Data Warehouse pomocí PowerShellu
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Pozastavení a obnovení výpočtů v Azure SQL Data Warehouse s využitím Azure PowerShell
 
 Pomocí PowerShellu můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
 
@@ -76,7 +76,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Variace, tento další příklad načte databázi do objektu $database. Pak objekt přeruší na [AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). Výsledky jsou uloženy v objektu resultDatabase. Poslední příkaz zobrazí výsledky.
+Variace, tento další příklad načte databázi do objektu $database. Pak objekt [přeruší na AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). Výsledky jsou uloženy v objektu resultDatabase. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -134,7 +134,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nyní jste pozastavili a obnovili výpočetní výkon pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: yushwang
-ms.openlocfilehash: 343bbf5c84ce97feb7b7d170523845f5a2f7c10d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 323db6e7274db1a53e49b5bd7d33b2eb3700a62b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668420"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376427"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -49,7 +49,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Cisco |Meraki |Není k dispozici |Není kompatibilní |Není kompatibilní |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 a vyšší |[Průvodce konfigurací](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Není kompatibilní |
 | F5 |Řada BIG-IP |12.0 |[Průvodce konfigurací](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Průvodce konfigurací](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
-| Fortinet |FortiGate |FortiOS 5.6 |  |[Průvodce konfigurací](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/030680/connecting-a-local-fortigate-to-an-azure-fortigate-via-site-to-site-vpn) |
+| Fortinet |FortiGate |FortiOS 5.6 |  |[Průvodce konfigurací](https://docs.fortinet.com/document/fortigate/6.2.0/azure-cookbook/989216/connecting-a-local-fortigate-to-an-azure-vnet-vpn) |
 | Internet Initiative Japan (IIJ) |Řada SEIL |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Průvodce konfigurací](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Není kompatibilní |
 | Juniper |SRX |PolicyBased JunOS 10,2<br>Routebased JunOS 11,4 |Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |Řada J |PolicyBased JunOS 10.4 R9<br>RouteBased JunOS 11,4 |Podporováno |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
@@ -154,7 +154,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádný         |
+| 3 |3DES          |SHA1              |Žádné         |
 | 4 |AES256        |SHA256            |Žádné         |
 | 5 |AES128        |SHA1              |Žádné         |
 | 6 |3DES          |SHA256            |Žádné         |
@@ -167,9 +167,9 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 | 2 |AES256        |SHA1              |Žádný         |
 | 3 |3DES          |SHA1              |Žádné         |
 | 4 |AES256        |SHA256            |Žádné         |
-| 5 |AES128        |SHA1              |Žádný         |
+| 5 |AES128        |SHA1              |Žádné         |
 | 6 |3DES          |SHA256            |Žádné         |
-| 7 |DES           |SHA1              |Žádný         |
+| 7 |DES           |SHA1              |Žádné         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |

@@ -1,6 +1,6 @@
 ---
-title: Další informace o šablonách škálovacích sad virtuálních počítačů | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit šablonu základní škálovací sadu pro škálovací sady virtuálních počítačů
+title: Seznamte se se šablonami sady škálování virtuálních počítačů | Microsoft Docs
+description: Naučte se vytvořit šablonu základní sady škálování pro Virtual Machine Scale Sets.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 267c715de67df57abd30ac18966b8b3b8440810c
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868899"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376106"
 ---
-# <a name="learn-about-virtual-machine-scale-set-templates"></a>Další informace o šablonách škálovacích sad virtuálních počítačů
-[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů ukazuje, jak vytvořit šablonu základní škálovací sady a jak upravit tuto šablonu tak, aby odpovídala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss).
+# <a name="learn-about-virtual-machine-scale-set-templates"></a>Seznamte se se šablonami sady škálování virtuálních počítačů
+[Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů se dozvíte, jak vytvořit šablonu základní sady škálování a jak tuto šablonu upravit tak, aby vyhovovala různým scénářům. Všechny příklady pocházejí z tohoto [úložiště GitHubu](https://github.com/gatneil/mvss).
 
-Tato šablona je určena být jednoduché. Kompletní příklady škálovací sady šablon naleznete v tématu [úložišti šablon Azure Quickstart na Githubu](https://github.com/Azure/azure-quickstart-templates) a vyhledejte složky, které obsahují řetězec `vmss`.
+Tato šablona je určená pro jednoduché. Další kompletní příklady šablon sady škálování najdete v [úložišti GitHub šablon pro Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates) a hledání složek, které obsahují řetězec `vmss`.
 
-Pokud jste již obeznámeni s vytvořením šablony, můžete přeskočit k části "Další kroky" a uvidíte, jak upravit tuto šablonu.
+Pokud jste už obeznámení s vytvářením šablon, můžete přejít k části Další kroky a podívat se, jak tuto šablonu upravit.
 
-## <a name="define-schema-and-contentversion"></a>Definování $schema a contentversion –
-Nejprve definujte `$schema` a `contentVersion` v šabloně. `$schema` Element definuje verze jazyka šablony a používá se pro Visual Studio zvýraznění syntaxe a podobné funkce ověřování. `contentVersion` Není použit element v Azure. Místo toho pomáhá udržovat přehled o verzi šablony.
+## <a name="define-schema-and-contentversion"></a>Definování $schema a Contentversion –
+Nejprve definujte `$schema` a `contentVersion` v šabloně. `$schema` Element definuje verzi jazyka šablony a používá se pro zvýrazňování syntaxe sady Visual Studio a podobné funkce ověřování. `contentVersion` Element se nepoužívá v Azure. Místo toho vám pomůže udržet si přehled o verzi šablony.
 
 ```json
 {
@@ -39,7 +39,7 @@ Nejprve definujte `$schema` a `contentVersion` v šabloně. `$schema` Element de
 ```
 
 ## <a name="define-parameters"></a>Definovat parametry
-Dále definujte dva parametry, `adminUsername` a `adminPassword`. Parametry jsou hodnoty, které zadáte v době nasazování. `adminUsername` Parametr se používá jednoduchý `string` typu, ale protože `adminPassword` je tajný, uveďte ji zadejte `securestring`. Později tyto parametry jsou předány do konfigurace škálovací sady.
+Dále definujte dva parametry `adminUsername` a. `adminPassword` Parametry jsou hodnoty, které zadáte v době nasazování. Parametr je `adminPassword` prostě typ, ale protože je tajný klíč, poskytněte mu typ `securestring`. `string` `adminUsername` Později tyto parametry jsou předány do konfigurace sady škálování.
 
 ```json
   "parameters": {
@@ -52,20 +52,20 @@ Dále definujte dva parametry, `adminUsername` a `adminPassword`. Parametry jsou
   },
 ```
 ## <a name="define-variables"></a>Definování proměnných
-Šablony Resource Manageru vám také umožní definujte proměnné, které se použije později v šabloně. V příkladu nepoužívá žádné proměnné objektu JSON je prázdný.
+Šablony Správce prostředků také umožňují definovat proměnné, které se použijí později v šabloně. Příklad nepoužívá žádné proměnné, takže objekt JSON je prázdný.
 
 ```json
   "variables": {},
 ```
 
 ## <a name="define-resources"></a>Definování prostředků
-Dále je část zdroje šablony. Tady můžete definovat, co vlastně chcete nasadit. Na rozdíl od `parameters` a `variables` (které jsou objekty JSON), `resources` je seznam objektů JSON JSON.
+Dále je oddíl Resources v šabloně. Tady můžete definovat, co skutečně chcete nasadit. Na rozdíl `parameters` od `variables` a (které jsou objekty JSON) `resources` , je seznam JSON objektů JSON.
 
 ```json
    "resources": [
 ```
 
-Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlastnosti. První prostředek v tomto příkladu má typ [sítí Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)a názvem `myVnet`a verze rozhraní API `2018-11-01`. (Nejnovější verze rozhraní API pro typ prostředku, najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).)
+Všechny prostředky vyžadují `type` `name` vlastnosti`location` , `apiVersion`, a. Prvním prostředkem tohoto příkladu je typ [Microsoft. Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks), name `myVnet`a apiVersion. `2018-11-01` (Pokud chcete najít nejnovější verzi rozhraní API pro typ prostředku, přečtěte si [referenční informace o šabloně Azure Resource Manager](/azure/templates/).)
 
 ```json
      {
@@ -74,15 +74,15 @@ Všechny prostředky vyžadují `type`, `name`, `apiVersion`, a `location` vlast
        "apiVersion": "2018-11-01",
 ```
 
-## <a name="specify-location"></a>Zadejte umístění
-Chcete-li zadat umístění pro virtuální síť, použijte [funkce šablony Resource Manageru](../azure-resource-manager/resource-group-template-functions.md). Tato funkce musí být uzavřen v uvozovkách a hranaté závorky takto: `"[<template-function>]"`. V takovém případě použijte `resourceGroup` funkce. Přijímá bez argumentů a vrátí objekt JSON s metadata, které toto nasazení se nasazuje do skupiny prostředků. Skupina prostředků je nastavil uživatel v době nasazování. Tato hodnota se pak indexovaných do tohoto objektu JSON s `.location` chcete zjistit polohu z objektu JSON.
+## <a name="specify-location"></a>Zadat umístění
+Pokud chcete zadat umístění pro virtuální síť, použijte [funkci správce prostředků šablony](../azure-resource-manager/resource-group-template-functions.md). Tato funkce musí být uzavřena do uvozovek a hranatých závorek takto `"[<template-function>]"`:. V takovém případě použijte `resourceGroup` funkci. Trvá to bez argumentů a vrátí objekt JSON s metadaty týkající se skupiny prostředků, do které se nasazení nasazuje. Skupina prostředků je nastavená uživatelem v době nasazení. Tato hodnota je pak indexována do tohoto objektu JSON `.location` s cílem získat umístění z objektu JSON.
 
 ```json
        "location": "[resourceGroup().location]",
 ```
 
-## <a name="specify-virtual-network-properties"></a>Zadejte vlastnosti virtuální sítě
-Jednotlivé prostředky Resource Manageru má svoji vlastní `properties` části konfigurace specifické pro prostředek. V takovém případě zadejte, že virtuální síť by měla mít jednu podsíť s použitím rozsah privátních IP adres `10.0.0.0/16`. Škálovací sada je vždy součástí jedné podsítě. Nelze pracovat nad podsítě.
+## <a name="specify-virtual-network-properties"></a>Zadat vlastnosti virtuální sítě
+Každý správce prostředků prostředek má vlastní `properties` oddíl pro konfigurace specifické pro daný prostředek. V takovém případě určete, že má virtuální síť mít jednu podsíť s použitím rozsahu `10.0.0.0/16`privátních IP adres. Sada škálování je vždy obsažena v jedné podsíti. Nemůže zabírat podsítě.
 
 ```json
        "properties": {
@@ -104,9 +104,9 @@ Jednotlivé prostředky Resource Manageru má svoji vlastní `properties` část
 ```
 
 ## <a name="add-dependson-list"></a>Přidat seznam dependsOn
-Kromě požadovaných `type`, `name`, `apiVersion`, a `location` vlastnosti, každý prostředek může mít volitelně `dependsOn` seznam řetězců. Tento seznam určuje, které další prostředky z tohoto nasazení musíte dokončit před nasazením tento prostředek.
+`type`Kromě požadovaných `apiVersion` `dependsOn` vlastností, `name`, a`location` mohou mít jednotlivé prostředky volitelný seznam řetězců. Tento seznam určuje, které další prostředky z tohoto nasazení musí být před nasazením tohoto prostředku dokončeny.
 
-V seznamu, virtuální sítě z předchozího příkladu je v tomto případě pouze jeden element. Můžete zadat tuto závislost, protože škálovací sada musí existovat před vytvořením virtuálních síti. Tímto způsobem škálovací sadu můžete poskytnout tyto virtuální počítače s privátní IP adresy z rozsahu IP adres dříve zadanou ve vlastnostech síťového. Formát každý řetězec v seznamu dependsOn `<type>/<name>`. Použijte stejný `type` a `name` použili v definici prostředků virtuální sítě.
+V tomto případě existuje pouze jeden prvek v seznamu, virtuální síť z předchozího příkladu. Tuto závislost zadáte, protože sada škálování vyžaduje, aby síť existovala před vytvořením virtuálních počítačů. Díky tomu může sada škálování dát těmto virtuálním počítačům privátní IP adresy z rozsahu IP adres, který jste dříve zadali ve vlastnostech sítě. Formát každého řetězce v seznamu dependsOn je `<type>/<name>`. Použijte stejné `type` a `name` použité dřív v definici prostředků virtuální sítě.
 
 ```json
      {
@@ -118,10 +118,10 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
          "Microsoft.Network/virtualNetworks/myVnet"
        ],
 ```
-## <a name="specify-scale-set-properties"></a>Zadejte vlastnosti škálovací sady
-Škálovací sady mají mnoho vlastností pro přizpůsobení virtuálních počítačů ve škálovací sadě. Úplný seznam těchto vlastností najdete v tématu [referenčními informacemi k šablonám](/azure/templates/microsoft.compute/virtualmachinescalesets). Pro účely tohoto kurzu jsou nastavené pouze několik běžně používaných vlastností.
-### <a name="supply-vm-size-and-capacity"></a>Zadejte velikost virtuálního počítače a kapacita
-Škálovací sada je potřeba vědět, jaké velikosti virtuálního počítače na vytvoření ("název sku") a kolik takových virtuálních počítačů k vytvoření ("kapacita skladové položky"). Chcete-li zjistit, jaké velikosti virtuálních počítačů jsou k dispozici, najdete v článku [dokumentaci velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
+## <a name="specify-scale-set-properties"></a>Zadat vlastnosti sady škálování
+Sady škálování mají mnoho vlastností pro přizpůsobení virtuálních počítačů v sadě škálování. Úplný seznam těchto vlastností najdete v [referenčních informacích k šabloně](/azure/templates/microsoft.compute/virtualmachinescalesets). V tomto kurzu se nastaví jenom několik běžně používaných vlastností.
+### <a name="supply-vm-size-and-capacity"></a>Zadejte velikost a kapacitu virtuálního počítače.
+Sada škálování musí znát, jakou velikost virtuálního počítače se má vytvořit ("název SKU") a kolik takových virtuálních počítačů se má vytvořit ("kapacita SKU"). Pokud chcete zjistit, jaké velikosti virtuálních počítačů jsou k dispozici, přečtěte si [dokumentaci velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 
 ```json
        "sku": {
@@ -130,8 +130,8 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
        },
 ```
 
-### <a name="choose-type-of-updates"></a>Zvolte typ aktualizace
-Škálovací sady také je potřeba vědět, jak se pro zpracování aktualizací ve škálovací sadě. V současné době jsou tři možnosti `Manual`, `Rolling` a `Automatic`. Další informace o rozdílech mezi těmito dvěma, naleznete v dokumentaci na [postup upgradu škálovací sady](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+### <a name="choose-type-of-updates"></a>Zvolit typ aktualizací
+Sada škálování taky potřebuje informace o tom, jak zpracovávat aktualizace v sadě škálování. V současné době existují tři možnosti, `Manual` `Rolling` a `Automatic`. Další informace o rozdílech mezi těmito dvěma postupy najdete v dokumentaci k [upgradu sady škálování](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ```json
        "properties": {
@@ -140,8 +140,8 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
          },
 ```
 
-### <a name="choose-vm-operating-system"></a>Vyberte operační systém virtuálního počítače
-Škálovací sada je potřeba vědět, jaký operační systém umístit na virtuálních počítačích. Tady vytvořte virtuální počítače s plně opravené image Ubuntu 16.04 LTS.
+### <a name="choose-vm-operating-system"></a>Výběr operačního systému virtuálního počítače
+Sada škálování musí znát operační systém, který se má umístit na virtuální počítače. Tady vytvořte virtuální počítače s plně opravenou imagí Ubuntu 16,04-LTS.
 
 ```json
          "virtualMachineProfile": {
@@ -155,10 +155,10 @@ V seznamu, virtuální sítě z předchozího příkladu je v tomto případě p
            },
 ```
 
-### <a name="specify-computernameprefix"></a>Zadejte computerNamePrefix
-Škálovací sada nasadíte několik virtuálních počítačů. Místo určení každý název virtuálního počítače, zadejte `computerNamePrefix`. Škálovací sady přidá indexu předponu pro každý virtuální počítač, tak názvy virtuálních počítačů mít formát _služba ._protokol `<computerNamePrefix>_<auto-generated-index>`.
+### <a name="specify-computernameprefix"></a>Zadat computerNamePrefix
+Sada škálování nasadí několik virtuálních počítačů. Místo zadání názvu každého virtuálního počítače zadejte `computerNamePrefix`. Sada škálování připojí index k předponě pro každý virtuální počítač, takže názvy virtuálních počítačů mají tvar `<computerNamePrefix>_<auto-generated-index>`.
 
-Následující fragment kódu použijte parametry z před nastavte uživatelské jméno správce a heslo pro všechny virtuální počítače ve škálovací sadě. Tento proces používá `parameters` šablony funkce. Tato funkce přebírá řetězec, který určuje parametr, který neodkazuje na a uloží hodnotu tohoto parametru.
+V následujícím fragmentu kódu použijte parametry z části před a nastavte uživatelské jméno a heslo správce pro všechny virtuální počítače v sadě škálování. Tento proces používá `parameters` funkci šablony. Tato funkce přebírá řetězec, který určuje, který parametr se má odkazovat na, a výstup hodnoty pro tento parametr.
 
 ```json
            "osProfile": {
@@ -168,12 +168,12 @@ Následující fragment kódu použijte parametry z před nastavte uživatelské
            },
 ```
 
-### <a name="specify-vm-network-configuration"></a>Zadejte konfigurace sítě virtuálních počítačů
-Nakonec zadejte příslušnou konfiguraci sítě pro virtuální počítače ve škálovací sadě. V takovém případě stačí zadat ID podsítě vytvořili dříve. To říká škálovací sady do síťových rozhraní v této podsíti.
+### <a name="specify-vm-network-configuration"></a>Zadat konfiguraci sítě virtuálních počítačů
+Nakonec zadejte konfiguraci sítě pro virtuální počítače v sadě škálování. V takovém případě stačí zadat jenom ID podsítě, kterou jste vytvořili dříve. Tato operace oznamuje, že sada škálování nastavuje síťová rozhraní v této podsíti.
 
-Můžete získat ID virtuální sítě podsíť obsahující pomocí `resourceId` šablony funkce. Tato funkce přijímá typ a název prostředku a vrátí úplný identifikátor prostředku. Toto ID má formát: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+ID virtuální sítě obsahující podsíť můžete získat pomocí `resourceId` funkce šablony. Tato funkce přebírá typ a název prostředku a vrací plně kvalifikovaný identifikátor tohoto prostředku. Toto ID má podobu:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
-Ale identifikátor virtuální sítě není dostatečná. Zadejte konkrétní podsítě, škálovací sady virtuálních počítačů musí být v. K tomuto účelu zřetězit `/subnets/mySubnet` ID virtuální sítě. Výsledkem je plně kvalifikované ID podsítě. Proveďte toto zřetězení s `concat` funkci, která přebírá řadu řetězce a vrátí jejich zřetězení.
+Identifikátor virtuální sítě ale není dostatečný. Zadejte konkrétní podsíť, ve které by se měly virtuální počítače sady škálování nacházet. Provedete to zřetězením `/subnets/mySubnet` s identifikátorem virtuální sítě. Výsledkem je plně kvalifikované ID podsítě. Udělejte to zřetězení `concat` funkcí, která přebírá v řadě řetězců a vrací jejich zřetězení.
 
 ```json
            "networkProfile": {
