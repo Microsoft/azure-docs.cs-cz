@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: MT
+ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697954"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982352"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -136,9 +136,25 @@ Místo na disku pro službu App Service může být plné. Postup opravy místa 
 
 Ne, nemusíte používat [rozhraní bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Bot Service umožňuje rychlý vývoj inteligentních robotů prostřednictvím Microsoft Bot Framework a běží v prostředí bez serveru.
 
-### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak lze vytvořit robota pomocí nástroje QnA Maker?
+### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Jak můžu vytvořit nový robot s QnA Maker?
 
 Postupujte podle pokynů v [to](./Tutorials/create-qna-bot.md) dokumentaci k vytvoření vašeho robota pomocí služby Azure Bot Service.
+
+### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Návody použít jinou znalostní bázi se stávající službou Azure bot Service?
+
+Musíte mít následující informace o znalostní bázi Knowledge Base:
+
+* ID znalostní báze
+* Název hostitele publikovaného koncového bodu znalostní báze byl po publikování nalezen na stránce **Nastavení** .
+* Klíč publikovaného koncového bodu znalostní báze – byl po publikování na stránce **Nastavení** nalezen. 
+
+Tyto informace najdete v Azure Portal do App Service bot. V části **Nastavení-> konfigurace-> nastavení aplikace**změňte tyto hodnoty.  
+
+Klíč koncového bodu znalostní báze je označený `QnAAuthkey` ve službě ABS. 
+
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Můžou dvě nebo víc klientských aplikací sdílet znalostní bázi? 
+
+Ano, znalostní bázi se můžete dotazovat z libovolného počtu klientů. Pokud se odezva ze znalostní báze jeví jako pomalá nebo časový limit, zvažte možnost upgradovat úroveň služby pro službu App Service přidruženou ke znalostní bázi.
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak se dá služba QnA Maker vložit na web?
 
