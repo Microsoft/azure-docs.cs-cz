@@ -8,23 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982352"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277487"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
 Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomůže s tím, že službu povedete rychleji a s lepšími výsledky.
 
+
+## <a name="how-to-get-the-qnamaker-service-hostname"></a>Jak získat název hostitele služby QnA maker
+
+Název hostitele služby QnA maker je užitečné pro účely ladění, když požádáte podporu QnA maker nebo UserVoice. Název hostitele je adresa URL v tomto formátu: https:// *{hostname}* . azurewebsites.NET.
+    
+1. Přejděte do služby QnA maker (skupinu prostředků) [webu Azure portal](https://portal.azure.com)
+
+    ![Skupina prostředků Azure QnA maker na webu Azure portal](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+
+1. Vyberte App Service přidružené k prostředku QnA Maker. Názvy jsou obvykle stejné.
+
+     ![Vyberte službu QnA maker App Service](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
+1. Název hostitele adresy URL je k dispozici v části Přehled
+
+    ![Název hostitele QnA maker](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    
+
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Použití robota pro Help na portálu QnA Maker
 
-QnA Maker poskytuje na portálu QnA maker robota pomocníka, která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
+QnA Maker poskytuje na portálu QnA Maker robota **pomocníka** , která vám může pomáhat. Robot pro usnadnění je k dispozici na každé webové stránce. Robot používá QnA maker k poskytnutí odpovědí a poskytuje [ C# projekt kódu bot Framework](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) pro robota, takže můžete rychle začít pracovat s vlastními roboty na základě odpovědí. 
 
 ![! [QnA Maker k dispozici je znak * * Help * * robot v rámci portálu QnA Maker, který vám může pomáhat.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
@@ -98,6 +116,14 @@ Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatné služby pr
 
 Aktualizovat službu app service, pokud je ikona upozornění vedle hodnoty verze pro znalostní báze v **klíče koncového bodu** tabulky na **uživatelská nastavení** [stránky](https://www.qnamaker.ai/UserSettings).
 
+### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Odstranil (a) jsem stávající vyhledávací službu. Jak mohu tuto situaci opravit?
+
+Odstraníte-li index Azure Search, operace je finální a index nelze obnovit. 
+
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Odstranil (a `testkb` ) jsem svůj index ve vyhledávací službě. Jak mohu tuto situaci opravit? 
+
+Stará data se nedají obnovit. Vytvořte nový prostředek QnA Maker a znovu vytvořte znalostní bázi.
+
 ### <a name="when-should-i-refresh-my-endpoint-keys"></a>Kdy mám obnovit klíče Moje koncový bod?
 
 Aktualizujte klíče koncového bodu, pokud máte podezření, že byl napaden.
@@ -108,7 +134,7 @@ Pokud chcete použít víc jazyků a více znalostních bází, má uživatel a 
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Jak můžete změnit název prostředku Azure Search používá nástroj QnA Maker?
 
-Název prostředku Azure Search je název prostředku QnA Maker se některé náhodné písmena přidán na konec. Díky tomu se obtížně rozlišovat mezi více hledat prostředky pro nástroj QnA Maker. Vytvoření samostatné služby Azure Search (pojmenování tak, jak byste chtěli) a připojení ke službě QnA. Postup je podobný postupu je potřeba udělat, abyste [upgrade Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
+Název prostředku Azure Search je název prostředku QnA Maker se některé náhodné písmena přidán na konec. Díky tomu se obtížně rozlišovat mezi více hledat prostředky pro nástroj QnA Maker. Vytvoření samostatné služby Azure Search (pojmenování tak, jak byste chtěli) a připojení ke službě QnA. Postup je podobný postupům, které je třeba provést při [upgradu služby Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service).
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Když QnA maker vrátí `Runtime core is not initialized,` , jak ho mám opravit?
 
@@ -120,7 +146,7 @@ Místo na disku pro službu App Service může být plné. Postup opravy místa 
 1. Přejděte do _lokality/wwwroot/data/qnamakerem/_ Directory.
 1. Odeberte všechny složky, jejichž název začíná `rd`na. 
 
-    Neodstraňujte následující:
+    **Neodstraňujte** následující:
 
     * KbIdToRankerMappings. txt – soubor
     * Soubor EndpointSettings. JSON
