@@ -712,6 +712,8 @@
       items:
         - name: Použití Power BI
           href: powerbi-visualize.md
+        - name: Vytvoření živého řídicího panelu s počasím
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Použití Qlik Sense
           href: visualize-qlik-sense.md
     - name: Integrace s ostatními službami Azure

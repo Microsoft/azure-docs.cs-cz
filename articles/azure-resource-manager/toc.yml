@@ -60,9 +60,6 @@
   items:
     - name: Nasazení šablon
       href: template-deployment-overview.md
-    - name: Struktura souborů šablon
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Osvědčené postupy pro šablony
       href: template-best-practices.md
     - name: Šablony pro konzistenci cloudu
@@ -85,26 +82,38 @@
   items:
     - name: Vytváření šablon
       items:
-        - name: Nástroj pro vývoj – VS Code
+        - name: Použití editoru VS Code
           href: resource-manager-tools-vs-code.md
-        - name: Vytvoření šablony
-          href: how-to-create-template.md
-        - name: Typ a název podřízeného prostředku
-          href: child-resource-name-type.md
-        - name: Vytvoření prostředků a skupin prostředků v předplatném
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Definování závislostí prostředků
-          href: resource-group-define-dependencies.md
+        - name: Zápis výrazů šablon
+          href: template-expressions.md
+        - name: Parametry
+          href: template-parameters.md
+        - name: Proměnné
+          href: template-variables.md
+        - name: Uživatelsky definované funkce
+          href: template-user-defined-functions.md
+        - name: Zdroje a prostředky
+          items:
+            - name: Typ a název podřízeného prostředku
+              href: child-resource-name-type.md
+            - name: Podmíněné nasazení
+              href: conditional-resource-deployment.md
+            - name: Nastavení závislostí prostředků
+              href: resource-group-define-dependencies.md
+            - name: Nastavení umístění prostředků
+              href: resource-location.md
+            - name: Použití rozšíření šablon
+              href: resource-manager-use-extensions.md
+        - name: Výstupy
+          href: template-outputs.md
         - name: Modularizace šablon
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Vytvoření několika instancí
           href: resource-group-create-multiple.md
-        - name: Použití rozšíření šablon
-          href: resource-manager-use-extensions.md
-        - name: Aktualizace prostředků
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Vytvoření prostředků a skupin prostředků v předplatném
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Nasazení šablon
       items:
         - name: Nasazení – portál
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Referenční informace
   items:
+    - name: Struktura souborů šablon
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Referenční informace k šablonám
       href: /azure/templates/
     - name: Funkce šablon

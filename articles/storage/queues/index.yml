@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Queue Storage – Azure Storage
+title: Dokumentace ke službě Azure Queue Storage
 summary: Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Ke zprávám můžete přes HTTP nebo HTTPS přistupovat odkudkoli na světě.
 metadata:
-  title: Dokumentace ke službě Azure Queue Storage – Azure Storage
+  title: Dokumentace ke službě Azure Queue Storage
   description: Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Ke zprávám můžete přes HTTP nebo HTTPS přistupovat odkudkoli na světě.
   services: storage
   ms.service: storage
@@ -12,12 +12,12 @@ metadata:
   author: mhopkins-msft
   ms.author: mhopkins
   ms.date: 08/27/2019
-  ms.openlocfilehash: 5de22a49dcc985ca95ee97d9de77180e2c56765b
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 4dcf6ae4e9a5a65e060b647f02761b2c46238d13
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70129410"
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70277906"
 landingContent:
 - title: Informace o frontách Azure
   linkLists:

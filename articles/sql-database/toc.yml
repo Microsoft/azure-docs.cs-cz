@@ -219,10 +219,16 @@
       items:
         - name: Dokumentace ke spravovaným instancím
           href: sql-database-managed-instance-index.yml
-        - name: Možnosti spravované instance
+        - name: Přehled spravovaných instancí
           href: sql-database-managed-instance.md
         - name: Nejčastější dotazy ke spravované instanci
           href: sql-database-managed-instance-faq.md
+        - name: Fondy instancí
+          items:
+            - name: Přehled fondů instancí
+              href: sql-database-instance-pools.md
+            - name: Praktický průvodce fondy instancí
+              href: sql-database-instance-pools-how-to.md
         - name: Referenční informace k rozhraní API pro správu
           href: sql-database-managed-instance-create-manage.md
         - name: Omezení prostředků

@@ -1,57 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k nástroji Machine Learning Studio
+### YamlMime:Landing
+title: Dokumentace k nástroji Azure Machine Learning Studio
+summary: Machine Learning Studio je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
 metadata:
-  title: 'Dokumentace k nástroji Azure Machine Learning Studio – kurzy, reference | Microsoft Docs'
-  description: 'Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.'
+  title: Dokumentace k nástroji Machine Learning Studio – Azure
+  description: Machine Learning Studio je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: 'Azure Machine Learning Studio je nástroj pro spolupráci, ve kterém je možné přetahováním sestavovat, testovat a nasazovat řešení prediktivní analýzy dat. Kurzy, videa a ukázkové modely ukazují, jak pomocí nástroje Studio vytvářet a nasazovat modely Machine Learningu.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Postupujte podle rozšířených kurzů, které vás provedou vytvořením a nasazením modelů:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="create-experiment">Vytvoření prvního experimentu s využitím Studia</a>
-          - html: <a href="tutorial-part1-credit-risk">Vytvoření a nasazení prediktivního řešení pro úvěrová rizika</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="powershell-module">Moduly PowerShellu</a></p>
-          - title: Moduly
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">Referenční materiály k modulům a algoritmům</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">Rozhraní API pro správu REST</a></p><p><a href="web-service-error-codes">Kódy chyb webových služeb</a></p>'
-  - title: Další technologie Azure Machine Learningu
-    items:
-      - type: paragraph
-        text: 'Další technologie dostupné ve službách Azure Machine Learning:'
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Služba Azure Machine Learning
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: Virtuální počítač pro datové vědy
-            href: /azure/machine-learning/data-science-virtual-machine/
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 774c63e1df815b509a88b9de25b8199b53bfafa1
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70278016"
+landingContent:
+- title: Informace o nástroji Machine Learning Studio
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Studio?
+      url: what-is-ml-studio.md
+    - text: Porovnání našich produktů ML
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+- title: Začínáme se sadou Studio
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření prvního experimentu ML
+      url: create-experiment.md
+    - text: Vytvoření prediktivního řešení
+      url: tutorial-part1-credit-risk.md
+- title: Odkazy
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Moduly příkazového řádku PowerShellu
+      url: powershell-module.md
+    - text: Referenční materiály k modulům a algoritmům
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: Rozhraní PRI pro správu REST
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Kódy chyb webových služeb
+      url: web-service-error-codes.md
+- title: Další technologie Azure Machine Learningu
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Služba Azure Machine Learning
+      url: /azure/machine-learning/
+    - text: Azure Data Science Virtual Machine
+      url: /azure/machine-learning/data-science-virtual-machine

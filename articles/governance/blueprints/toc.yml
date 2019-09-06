@@ -153,6 +153,9 @@
     - name: Správa přiřazení s využitím PowerShellu
       displayName: 'create, update, remove'
       href: ./how-to/manage-assignments-ps.md
+    - name: Import a export s využitím PowerShellu
+      displayName: 'import, export, folders'
+      href: ./how-to/import-export-ps.md
     - name: Aktualizace existujících přiřazení z portálu
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md

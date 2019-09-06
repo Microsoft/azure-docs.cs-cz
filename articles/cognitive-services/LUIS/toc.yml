@@ -124,13 +124,13 @@
     - name: Plánování aplikace
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Vytváření aplikací
+    - name: Klíče pro vytváření obsahu a běhové klíče
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: Vytvoření modelu aplikace
       items:
         - name: Cyklus vytváření
           href: luis-concept-app-iteration.md
-        - name: Spolupráce
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: Správa verzí
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: Entity
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Role entit
+          href: luis-concept-roles.md
         - name: Projevy
           href: luis-concept-utterance.md
-        - name: Role
-          href: luis-concept-roles.md
         - name: Předem připravené modely
           href: luis-concept-prebuilt-model.md
     - name: Zvýšení výkonu aplikací
@@ -180,13 +180,6 @@
         - name: Strategie návrhu
           href: luis-concept-enterprise.md
           displayName: import
-    - name: Zabezpečení
-      items:
-        - name: Přístup k aplikacím
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: Vytváření a klíče koncových bodů
-          href: luis-concept-keys.md
 - name: Návody
   items:
     - name: Vytvoření nové aplikace
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: Správa aplikace
       items:
-        - name: Použití klíčů předplatného s aplikací LUIS
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: Klíče pro vytváření obsahu a běhové klíče
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Správa verzí
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: Správa autorů a spolupracovníků
+        - name: Migrace na klíč pro vytváření
+          items:
+            - name: Přehled
+              href: luis-migration-authoring.md
+            - name: Jak migrovat
+              href: luis-migration-authoring-steps.md
+        - name: Autoři a spolupracovníci
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: Správa klíčů pro vytváření obsahu
-          href: luis-how-to-account-settings.md
-        - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
+        - name: S využitím verzí
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: S využitím Traffic Manageru
           href: luis-traffic-manager.md
     - name: Migrace rozhraní API
       items:

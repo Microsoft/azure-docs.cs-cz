@@ -9,12 +9,8 @@
   items:
     - name: S využitím klientské sady SDK
       items:
-        - name: Rozpoznávání tváří na obrázku
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python SDK
           href: QuickStarts/python-sdk.md
     - name: S využitím REST API

@@ -1,85 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k Azure Database for PostgreSQL
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Database for PostgreSQL
+summary: Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres. Jde o nabídku plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování. Je k dispozici ve dvou možnostech nasazení, jako jeden server a jako Hyperscale (Citus) (Preview). Možnost Hyperscale (Citus) horizontálně škáluje dotazy napříč několika počítači s využitím horizontálního dělení a obsluhuje aplikace, které vyžadují větší škálování a výkon. Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: 'Dokumentace k Azure PostgreSQL – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
   description: Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje PostgreSQL.
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 04/26/2019
-abstract:
-  description: 'Azure Database for PostgreSQL je služba relačních databází založená na open source databázovém stroji Postgres.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem, zabezpečením, vysokou dostupností a možností dynamického škálování. Je k dispozici ve dvou možnostech nasazení, Single Server a Hyperscale (Citus) (Preview). Možnost Hyperscale (Citus) horizontálně škáluje dotazy napříč několika počítači s využitím horizontálního dělení a obsluhuje aplikace, které vyžadují větší škálování a výkon. Naučte se používat Azure Database for Azure Database for PostgreSQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se vytvářet databáze PostgreSQL s použitím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Single Server – Azure Portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Single Server – Azure CLI
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Hyperscale (Citus) – Azure Portal
-            href: /azure/postgresql/quickstart-create-hyperscale-portal
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Pro Single Server:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Návrh databáze&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Web Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Vytvoření webové aplikace pomocí Pythonu a rozhraní příkazového řádku</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorování a vyladění služby</a>
-      - type: paragraph
-        text: 'Pro Hyperscale (Citus) (Preview):'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Návrh víceklientské databáze</a>
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Návrh databáze v reálném čase</a>
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Vytvoření serveru Azure Database for PostgreSQL
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">Další interaktivní výuka...</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Vyhledání skriptů pro správu běžných úkolů
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/postgres">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Šablony Resource Manageru</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259164"
+landingContent:
+- title: Informace o službě Azure Database for PostgreSQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Database for PostgreSQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Podívejte se na náš blog.
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Vytvoření jednoho serveru
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření serveru s využitím webu Azure Portal
+      url: quickstart-create-server-database-portal.md
+    - text: Vytvoření serveru s využitím Azure CLI
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Výukový modul: Vytvoření serveru Azure Database for PostgreSQL'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Cenové úrovně
+      url: concepts-pricing-tiers.md
+    - text: Omezení
+      url: concepts-limits.md
+    - text: Verze PostgreSQL
+      url: concepts-supported-versions.md
+    - text: Rozšíření PostgreSQL – jeden server
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Návrh databáze s využitím webu Azure Portal
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Návrh databáze s využitím Azure CLI
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Vytvoření webové aplikace s využitím Pythonu a rozhraní příkazového řádku
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: Monitorování a vyladění služby
+      url: tutorial-monitor-and-tune.md
+- title: Vytvoření clusteru Hyperscale (Citus) (Preview)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření clusteru Hyperscale (Citus) (Preview) na webu Azure Portal
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Návrh víceklientské databáze
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Návrh databáze v reálném čase
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: Rozšíření PostgreSQL – Hyperscale
+      url: concepts-hyperscale-extensions.md
+    - text: Vysvětlení uzlů
+      url: concepts-hyperscale-nodes.md
+    - text: Vysvětlení distribuovaných dat
+      url: concepts-hyperscale-distributed-data.md
+    - text: Konfigurace možností výkonu
+      url: concepts-hyperscale-configuration-options.md
+- title: Připojení k jednomu serveru
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení brány firewall
+      url: concepts-firewall-rules.md
+    - text: Vytvoření pravidel brány firewall
+      url: howto-manage-firewall-using-portal.md
+    - text: Konfigurace SSL
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Připojení s využitím Pythonu
+      url: connect-python.md
+    - text: Připojení s využitím Node.js
+      url: connect-nodejs.md
+    - text: Připojení s využitím Javy
+      url: connect-java.md
+    - text: Připojení s využitím Ruby
+      url: connect-ruby.md
+    - text: Připojení s využitím PHP
+      url: connect-php.md
+    - text: Připojení s využitím .NET
+      url: connect-csharp.md
+    - text: Připojení s využitím Go
+      url: connect-go.md
+- title: Kódování s rozhraními API pro programování
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Skripty Azure CLI pro běžné úlohy
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Referenční informace pro vývojáře k Azure CLI
+      url: /rest/api/postgresql/
+    - text: Referenční informace pro vývojáře k REST API
+      url: /cli/azure/postgres
+    - text: Šablony Azure Resource Manageru
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: Zálohování a migrace dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování a obnovení na jednom serveru
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Obnovení serveru s využitím webu Azure Portal
+      url: howto-restore-server-portal.md
+    - text: Obnovení serveru s využitím Azure CLI
+      url: howto-restore-server-cli.md
+    - text: Migrace databáze s využitím výpisu a obnovení
+      url: howto-migrate-using-dump-and-restore.md
+    - text: Migrace databáze s využitím exportu a importu
+      url: howto-migrate-using-export-and-import.md
+    - text: Migrace s minimem výpadků
+      url: howto-migrate-online.md

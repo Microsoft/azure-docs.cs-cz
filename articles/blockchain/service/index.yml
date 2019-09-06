@@ -1,57 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Blockchain
+summary: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a správě blockchainových aplikací v Azure.
 metadata:
-  title: 'Dokumentace ke službě Azure Blockchain – kurzy, reference k rozhraní API'
-  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a správě blockchainových aplikací v Azure.'
+  title: Dokumentace ke službě Azure Blockchain – kurzy, reference k rozhraní API
+  description: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a správě blockchainových aplikací v Azure.
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využít službu Azure Blockchain k vytváření, vývoji a využití blockchainových aplikací v Azure.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Naučíte se vytvářet členy konsorcia v Azure a připojovat se k nim.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: Vytvoření člena konsorcia
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: Připojení s využitím rozšíření MetaMask
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: Připojení s využitím rozšíření geth
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: Připojení s využitím rozšíření Truffle
-            href: /azure/blockchain/service/connect-truffle
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučíte se vytvářet, konfigurovat a vyvíjet blockchainové aplikace v Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">Vytvoření člena služby Azure Blockchain a odeslání transakce</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: c5816bb2278c138a8df07c5c289d53a818614d86
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240839"
+landingContent:
+- title: Informace o službě Azure Blockchain
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Blockchain Service?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Privátní blockchainové sítě konsorcia
+      url: consortium.md
+    - text: Zabezpečení a přístup k datům
+      url: data-security.md
+    - text: Vývojářské nástroje
+      url: develop.md
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Vytvoření člena blockchainu – portál
+      url: create-member.md
+    - text: Vytvoření člena blockchainu – CLI
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: Použití rozšíření MetaMask k připojení a Remix k nasazení inteligentního kontraktu
+      url: connect-metamask.md
+    - text: Použití rozšíření Geth pro připojení k transakčnímu uzlu
+      url: connect-geth.md
+    - text: Použití rozšíření Truffle pro připojení k transakčnímu uzlu
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Použití inteligentních kontraktů ve službě Azure Blockchain Service
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: Nasazení a konfigurace vaší sítě
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: Psaní a testování inteligentních kontraktů s využitím editoru VS Code
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: Odeslání dat do registru
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: Publikování dat registru a událostí
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa členů blockchainu – CLI
+      url: manage-cli.md
+    - text: Správa členů konsorcia – PowerShell
+      url: manage-consortium-powershell.md
+    - text: Konfigurace transakčních uzlů
+      url: configure-transaction-nodes.md
+    - text: Konfigurace přístupu k Active Directory
+      url: configure-aad.md
+- title: Rozhraní API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/blockchain

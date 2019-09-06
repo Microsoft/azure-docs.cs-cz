@@ -1,36 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Blockchain Workbench
+summary: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a spravovat blockchainové aplikace v Azure.
 metadata:
-  title: 'Dokumentace ke službě Azure Blockchain Workbench – kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a spravovat blockchainové aplikace v Azure.'
-  services: blockchain-workbench
-  author: patricka
-  manager: femila
-  ms.service: blockchain-workbench
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Dokumentace ke službě Azure Blockchain Workbench – kurzy, reference k rozhraní API
+  description: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a spravovat blockchainové aplikace v Azure.
+  services: azure-blockchain
+  ms.service: azure-blockchain
   ms.topic: landing-page
-  ms.date: 04/17/2018
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a využívat blockchainové aplikace v Azure.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučíte se nasazovat, vytvářet a používat blockchainové aplikace v Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-deploy">Nasazení služby Azure Blockchain Workbench</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-create-app">Vytvoření blockchainové aplikace</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-use">Použití blockchainové aplikace</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/azure-blockchain-workbench">REST API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240811"
+landingContent:
+- title: Informace o aplikaci Azure Blockchain Workbench
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Blockchain Workbench?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Architektura
+      url: architecture.md
+  - linkListType: video
+    links:
+    - text: Seznámení se službou Azure Blockchain Workbench
+      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
+- title: Začínáme
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Nasazení služby Azure Blockchain Workbench
+      url: deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření aplikace Blockchain Workbench
+      url: create-app.md
+    - text: Použití aplikace Blockchain Workbench
+      url: use.md
+  - linkListType: video
+    links:
+    - text: Vytvoření první aplikace Azure Blockchain Workbench
+      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+- title: Ukázkové kontrakty
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Jednoduchý marketplace
+      url: https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/simple-marketplace
+    - text: Základní informace o původu
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/basic-provenance
+    - text: Digitální zámek
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/digital-locker
+    - text: Doprava chladírenskými a mrazicími vozy
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation
+    - text: Převod majetku
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer
+    - text: Pokročilý marketplace s několika pracovními postupy
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/bazaar-item-listing
+- title: Spravovat
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa uživatelů aplikací
+      url: manage-users.md
+    - text: Konfigurace aplikací
+      url: configuration.md
+    - text: Správa verzí aplikací
+      url: version-app.md
+- title: Integrace
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vzory integrace inteligentních kontraktů
+      url: integration-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: Připojení k databázi mimo blockchain
+      url: getdb-details.md
+    - text: Použití dat v Excelu
+      url: data-excel.md
+    - text: Použití dat v Power BI
+      url: data-powerbi.md
+    - text: Použití dat v sadě SQL Management Studio
+      url: data-sql-management-studio.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: use-api.md
+    - text: Rozhraní API pro zasílání zpráv
+      url: messages-overview.md
+    - text: Zobrazení databáze
+      url: database-views.md

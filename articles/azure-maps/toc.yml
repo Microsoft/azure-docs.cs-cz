@@ -125,6 +125,14 @@
               href: map-events.md
             - name: Zpřístupnění aplikace
               href: map-accessibility.md
+        - name: Nástroje pro kreslení
+          items:
+            - name: Přidání panelu nástrojů pro kreslení
+              href: map-add-drawing-toolbar.md
+            - name: Nastavení možností kreslení
+              href: set-drawing-options.md
+            - name: Získání dat tvaru
+              href: map-get-shape-data.md
         - name: Modul služeb
           items:
             - name: Použití modulu služeb
@@ -198,7 +206,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Podmínky použití služby Azure Maps
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Ceny služby Azure Maps
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Cenová kalkulačka
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Videa služby Azure Maps
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Případové studie služby Azure Maps
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Glosář služby Azure Maps
       href: glossary.md
     - name: Aktualizace služeb

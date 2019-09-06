@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Spravované instance Azure SQL Database
+title: Spravovaná instance Azure SQL Database
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Dokumentace k spravovanou instanci – kurzy, Reference k rozhraní API'
+  title: 'Dokumentace ke spravovaným instancím – kurzy, reference k rozhraní API'
   meta.description: Learn how to use a managed instance in Azure SQL Database.
   services: sql-database
   author: jovanpop-msft
@@ -18,14 +18,14 @@ metadata:
   ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
-  description: 'Spravovaná instance Azure SQL Database je plně spravované instanci SQL serveru databáze modul hostované v cloudu Azure. Toto je nejlepší PaaS možností pro migraci databáze SQL serveru do cloudu. Zjistěte, jak vytvořit a použít Managed Instance pomocí našich šablon rychlý start, kurzů a ukázek.'
+  description: 'Spravovaná instance v Azure SQL Database je plně spravovaná instance databázového stroje SQL Serveru hostovaná v cloudu Azure. Je to nejvhodnější možnost PaaS pro migraci vaší databáze SQL Serveru do cloudu. Naučte se vytvářet a spravovat spravované instance prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
   aside:
     image:
       alt: null
       height: 110
       src: media/sql-database-managed-instance-index/intro.png
       width: 250
-    title: 'Úvod do spravované instance Azure SQL Database (5:38)'
+    title: 'Představujeme spravovanou instanci ve službě Azure SQL Database (5:38)'
     href: 'https://www.youtube.com/watch?v=W8feSZXm2Ec'
     width: 250
 sections:
@@ -37,54 +37,55 @@ sections:
         items:
           - title: Přehled
             href: /azure/sql-database/sql-database-managed-instance
-            html: <p>Přečtěte si další informace o spravované instance Azure SQL Database.</p>
-          - title: Bohaté plocha
+            html: <p>Další informace o spravované instanci v Azure SQL Database</p>
+          - title: Oblast s bohatými možnostmi
             href: '/azure/sql-database/sql-database-managed-instance#sql-features-supported'
-            html: <p>Téměř 100 % kompatibilitu funkce SQL pomocí nejnovější verze databázového stroje SQL Server.</p>
+            html: <p>Téměř 100% kompatibilita funkcí SQL s nejnovější verzí databázového stroje SQL Serveru</p>
           - title: Integrace virtuální sítě
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
-            html: <p>Služba Zabezpečené umístěné ve vaší privátní virtuální sítě Azure pomocí privátních IP adres.</p>
+            html: <p>Zabezpečená služba umístěná ve vaší privátní virtuální síti Azure s privátními IP adresami</p>
           - title: Snadná migrace
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
-            html: <p>Vaše místní databáze můžete snadno migrate do cloudu Azure pomocí nativní obnovení.</p>
+            html: <p>Snadná migrace vašich místních databází do cloudu Azure s využitím nativního obnovení</p>
           - title: Migrace bez výpadků
             href: /azure/dms/tutorial-sql-server-to-managed-instance
-            html: <p>Migrace počtu databází s minimálními prostoji pomocí služby Database Migration Service.</p>
+            html: <p>Migrace vašich databází s minimálními výpadky pomocí Database Migration Service</p>
           - title: Ceny
             href: 'https://azure.microsoft.com/pricing/hybrid-benefit/'
-            html: <p>Uložte až 40 % se Azure Hybrid Benefit (AHB) s vaší stávající místní licence.</p>
-          - title: Možnosti modelu PaaS
+            html: "<p>Úspora až 40\_% při využití programu Zvýhodněné hybridní využití Azure (AHB) s vašimi stávajícími místními licencemi</p>"
+          - title: Možnosti PaaS
             href: /azure/sql-database/sql-database-paas
-            html: '<p>Azure PaaS vám umožní použít 99,99 % k dispozici instance s minimálními správy.</p>'
+            html: '<p>Azure PaaS umožňující využít instanci s 99,99% dostupností a minimální správou</p>'
           - title: Úrovně služby
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>Výběr mezi obecné účely a pro důležité obchodní informace úrovně služeb v závislosti na vašich obchodních potřeb.</p>
+            html: <p>Možnost volby mezi úrovní služby Pro obecné účely a Pro důležité obchodní informace v závislosti na vašich obchodních potřebách</p>
           - title: Pokročilé zabezpečení
             href: /azure/sql-database/sql-database-security-index
-            html: <p>Zabezpečte své instance a databáze pomocí integrovaných funkcí zabezpečení služby Azure SQL database.<p>
-  - title: Nové a funkce ve verzi preview
+            html: <p>Zabezpečení vašich instancí a databází s využitím integrovaných funkcí zabezpečení databází Azure SQL<p>
+  - title: Nové funkce a funkce Preview
     items:
       - type: paragraph
-        text: 'Průběžně vylepšujeme spravované instance s novými funkcemi:'
+        text: 'Spravovanou instanci neustále vylepšujeme o nové funkce:'
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuální jádra na generace hardwaru Gen5</a>'
-          - html: 'Podpora pro předplatná s <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > měsíční kredit Azure pro předplatitele sady Visual Studio </a>'
+          - html: <a href="/azure/sql-database/sql-database-instance-pools"> Fondy instancí</a> (Preview) – pohodlný a hospodárný způsob migrací menších instancí SQL do cloudu
+          - html: '<a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na hardwaru 5. generace</a>'
+          - html: 'Podpora pro předplatná s <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > měsíčním kreditem Azure pro předplatitele sady Visual Studio</a>'
           - html: 'Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Nakonfigurujte časové pásmo</a> při vytváření instance.'
-          - html: 'Vytváření instancí s <a href="https://aka.ms/managed-instance-collation">kolace na úrovni serveru podle vašeho výběru</a>.'
-          - html: 'Funkce geografické obnovení umožňuje <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>.'
-          - html: '(Preview) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Znovu vytvořit vyřadit databáze pomocí Powershellu</a>'
-          - html: Spravované instance jsou chráněné službou <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované firewall</a>.
-          - html: '(Preview) <a href="https://aka.ms/managed-instance-tde-byok">Přineste vlastní šifrovací klíče</a> během migrace místních databází, které už jste povolili transparentní šifrování dat (TDE).'
-          - html: '(Preview) Použití <a href="https://aka.ms/managed-instance-failover-groups">skupiny převzetí služeb při selhání geograficky distribuované</a> Ujistěte se, že vaše data budou k dispozici i v případě regionálního a zachová kopii instance v jiné oblasti.'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dnů</a> pro obnovení k určitému bodu v čase. Všimněte si, že dlouhodobého uchovávání záloh (až 10 let) stále nebude povolená, abyste mohli používat <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Copy-only zálohy</a> jako alternativu.'
-          - html: '(Preview) Vytvoření <a href="https://aka.ms/managed-instance-aadlogins">na úrovni Instance serveru služby Azure AD (přihlášení) – objekty zabezpečení</a> pomocí <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit z EXTERNÍHO zprostředkovatele přihlášení</a> .'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurace časového pásma</a> během vytváření instance'
+          - html: 'Vytváření instancí s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni serveru podle vaší volby</a>'
+          - html: 'Funkce geografického obnovení umožňující <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">obnovit databázi do jiného datového centra s využitím PowerShellu</a>'
+          - html: '<a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Opětovné vytvoření vyřazených databází s využitím PowerShellu</a> (Preview)'
+          - html: Ochrana spravovaných instancí pomocí <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované brány firewall</a>
+          - html: '<a href="https://aka.ms/managed-instance-tde-byok">Použití vlastních šifrovacích klíčů</a> při migraci místních databází, které mají povolené transparentní šifrování dat (Preview)'
+          - html: 'Použití <a href="https://aka.ms/managed-instance-failover-groups">geograficky distribuovaných skupin převzetí služeb při selhání</a> k uchování kopie instance v jiné oblasti a zajištění dostupnosti dat i v případě místní havárie (Preview)'
+          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dnů</a> pro obnovení k určitému bodu v čase (Upozorňujeme, že dlouhodobé uchovávání záloh (až 10 let) ještě není aktivované, takže jako alternativu můžete využít <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">zálohování pouhým kopírováním</a>.)'
+          - html: 'Vytvoření <a href="https://aka.ms/managed-instance-aadlogins">objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> s využitím <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>'
   - title: Zprovoznění během 5 minut
     items:
       - type: paragraph
-        text: 'Spravovaná instance umožňuje snadno provádět základní úlohy správy pomocí webu Azure portal, rozhraní příkazového řádku Azure a Azure Powershellu. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:'
+        text: 'Spravovaná instance umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a Azure PowerShellu. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:'
       - type: table
         style: dataMatrix
         columns:
@@ -101,19 +102,19 @@ sections:
               src: media/index/logo_arm.svg
             title: Šablona Azure Resource Manageru
         rows:
-          - title: Vytvoření nové Instance
+          - title: Vytvoření nové instance
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-          - title: Upravit Instance
+          - title: Úprava instance
             values:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
               - href: null
-          - title: Konfigurace prostředí sítě Azure
+          - title: Konfigurace síťového prostředí Azure
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
@@ -125,13 +126,13 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/restore-azsqlinstancedatabase#examples'
               - href: null
-          - title: Obnovení databáze do jiné instance
+          - title: Obnovení databáze do jiného instance
             values:
               - href: null
               - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/'
               - href: 'https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?view=azps-2.0.0#examples'
               - href: null
-          - title: Obnovit databázi
+          - title: Obnovení vyřazené databáze
             values:
               - href: null
               - href: null
@@ -143,41 +144,41 @@ sections:
               - href: null
               - href: /azure/sql-database/scripts/sql-managed-instance-restore-geo-backup
               - href: null
-          - title: Sada koncový bod veřejné IP adresy
+          - title: Nastavení koncového bodu s veřejnou IP adresou
             values:
               - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal'
               - href: null
               - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell'
               - href: null
-  - title: Podrobné kurzy a studijní materiály
+  - title: Podrobné kurzy a výukové materiály
     items:
       - type: paragraph
-        text: 'Zjistěte, jak vytvářet, spravovat a používat spravované instance.'
+        text: 'Naučte se vytvářet, spravovat a používat spravované instance.'
       - type: list
         style: ordered
         items:
-          - html: 'Zjistěte, jak rychle <a href="sql-database-managed-instance-quickstart-guide.md">začít pracovat s spravovanou instanci</a> pomocí naší příručky rychlý start.'
-          - html: 'Další informace o <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">vlastností hardwaru a omezení</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">rozdílů jazyka Transact-SQL</a>, a <a href="/azure/sql-database/sql-database-managed-instance-create-manage">příkazů jazyka Transact-SQL, PowerShell, rozhraní API rozhraní příkazového řádku Azure pro konfiguraci spravovaná instance<a/>.'
-          - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurace</a> virtuální síť Azure, kam se nasadí spravovanou instanci.'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Ověření</a> , lze použít existující virtuální sítě Azure k nasazení spravované instance.'
-          - html: 'Připojte se k instanci pomocí <a href="sql-database-managed-instance-public-endpoint-securely">koncový bod veřejné IP adresy</a>, <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojeníPoint-to-site</a>, nebo <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikací</a>.'
-          - html: 'Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.'
-          - html: Přeneste databází do spravované instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativní obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a>.
-          - html: 'Přesuňte své balíčky SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS tabulkových modelů za účelem <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">službu Azure Analysis Services</a>, a sestavy SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>.'
-          - html: 'Další informace o vrstvě úložiště v <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">úrovni General Purpose</a> a použít <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">úložiště osvědčené postupy z hlediska výkonu a důležité informace pro úroveň služby pro obecné účely</a>.'
-          - html: 'Najít osvědčené postupy a doporučení pro <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpečení vaší instance</a>.'
-          - html: 'Další informace najdete <a href="sql-database-howto-managed-instance.md">provede postupy</a> , která můžete nakonfigurovat spravované instance.'
-  - title: Reference
+          - html: 'Pomocí našich průvodců rychlým zprovozněním zjistěte, jak <a href="sql-database-managed-instance-quickstart-guide.md">rychle začít využívat spravované instance</a>.'
+          - html: 'Seznamte se s <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">omezeními a charakteristikami hardwaru</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">rozdíly v jazyce Transact-SQL</a> a využitím <a href="/azure/sql-database/sql-database-managed-instance-create-manage">Transact-SQL, PowerShellu a Azure CLI API pro konfiguraci spravované instance<a/>.'
+          - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Nakonfigurujte</a> virtuální síť Azure, ve které bude tato spravovaná instance nasazená.'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Ověřte</a>, že se vaše stávající virtuální síť Azure VNet dá využít k nasazení spravovaných instancí.'
+          - html: 'Připojte se k vaší instanci pomocí <a href="sql-database-managed-instance-public-endpoint-securely">koncového bodu s veřejnou IP adresou</a>, <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">virtuálního počítače Azure</a> nebo <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">připojení typu point-to-site</a>, nebo k tomu využijte <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikace</a>.'
+          - html: 'Ověřte, že se vaše databáze dá migrovat s využitím <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistanta</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Pomocníka pro experimentování s databázemi</a>.'
+          - html: Přeneste své databáze do spravované instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativního obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">služby migrace dat</a>.
+          - html: 'Přesuňte vaše balíčky SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, tabulkové modely SSAS do <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a> a sestavy SSRS do <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premium</a>.'
+          - html: 'Seznamte se blíž s vrstvou úložiště na <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">úrovni Pro obecné účely</a> a využijte <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">osvědčené postupy a důležité informace k zajištění výkonu úložiště pro úroveň Pro obecné účely</a>.'
+          - html: 'Vyhledejte si osvědčené postupy a doporučení pro <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpečení vaší instance</a>.'
+          - html: 'Vyhledejte další <a href="sql-database-howto-managed-instance.md">praktické průvodce</a>, které pomáhají s konfigurací spravovaných instancí.'
+  - title: Referenční informace
     items:
       - type: list
         style: cards
         className: cardsD
         items:
           - title: Blogy
-            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Střední</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Medium</a></p>'
           - title: Nejčastější dotazy
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
-          - title: Komunity channel
-            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Komunita SQL (spravované Instance)</a></p>'
+          - title: Kanál komunity
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Komunita Sql (spravovaná instance)</a></p>'
           - title: Školicí materiály
-            html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Praktická cvičení</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Instrukce vedla labs</a></p>'
+            html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Praktická cvičení</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Cvičení vedená instruktorem</a></p>'

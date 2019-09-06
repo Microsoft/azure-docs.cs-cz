@@ -81,8 +81,10 @@
       items:
         - name: Sonda stavu
           href: application-gateway-probe-overview.md
-        - name: Diagnostika
+        - name: Diagnostické protokoly a stav back-endu
           href: application-gateway-diagnostics.md
+        - name: Metriky
+          href: application-gateway-metrics.md
     - name: Podpora více tenantů a webová aplikace App Service
       href: application-gateway-web-app-overview.md
     - name: Podpora protokolu WebSocket
@@ -225,6 +227,8 @@
           href: resource-health-overview.md
         - name: Použití Log Analytics
           href: log-analytics.md
+        - name: Problémy se stavem back-endu
+          href: application-gateway-backend-health-troubleshooting.md
     - name: Migrace z v1 na v2
       href: migrate-v1-v2.md
 - name: Referenční informace
