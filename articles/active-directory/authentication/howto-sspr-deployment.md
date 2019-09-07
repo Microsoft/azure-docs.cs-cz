@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879233"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743246"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení samoobslužného resetování hesla služby Azure AD
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Nasazení samoobslužného resetování hesla Azure AD
 
 Samoobslužné resetování hesla (SSPR) je funkce Azure Active Directory, která zaměstnancům umožňuje resetovat hesla bez nutnosti kontaktovat pracovníky oddělení IT. Před použitím služby se zaměstnanci musí zaregistrovat pro Samoobslužné resetování hesla nebo je zaregistrovat. Během registrace zvolí zaměstnanec jednu nebo více metod ověřování povolených organizací.
 
@@ -37,7 +37,7 @@ Před nasazením SSPR organizace mohou chtít určit, kolik v průběhu času pr
 
 ## <a name="licensing-considerations"></a>Požadavky na licencování
 
-Azure Active Directory je licence pro jednotlivé uživatele, což znamená, že každý uživatel musí mít odpovídající licenci na funkce, které využívají.
+Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel musí mít odpovídající licenci na funkce, které využívají.
 
 Další informace o licencování najdete na stránce s [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .
 
@@ -47,7 +47,7 @@ Společnost Microsoft doporučuje, aby organizace povolily kombinované prostře
 
 ![Registrace informací o kombinovaném zabezpečení](./media/howto-sspr-deployment/combined-security-info.png)
 
-Kombinované možnosti registrace nevyžadují, aby organizace SSPR i službu Azure Multi-Factor Authentication. Kombinované prostředí pro registraci poskytuje organizacím lepší uživatelské prostředí v porovnání s tradičními jednotlivými komponentami. Další informace o kombinované registraci a o tom, jak ji povolit, najdete v článku [o registraci informací o zabezpečení (Preview)](concept-registration-mfa-sspr-combined.md) .
+V kombinovaném prostředí pro registraci není nutné, aby organizace povolily SSPR i službu Azure Multi-Factor Authentication. Kombinované prostředí pro registraci poskytuje organizacím lepší uživatelské prostředí v porovnání s tradičními jednotlivými komponentami. Další informace o kombinované registraci a o tom, jak ji povolit, najdete v článku [o registraci informací o zabezpečení (Preview)](concept-registration-mfa-sspr-combined.md) .
 
 ## <a name="plan-the-configuration"></a>Plánování konfigurace
 
@@ -59,7 +59,7 @@ K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nas
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
 |   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
 | **Registrace** | Při přihlášení vyžadovat registraci uživatelů | Ano |
-|   | Počet dní, než se uživatelům zobrazí výzva k potvrzení jejich ověřovacích informací | 90 – 180 dnů |
+|   | Počet dní, než se uživatelům zobrazí výzva k opětovnému potvrzení ověřovacích informací | 90 – 180 dnů |
 | **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
 |   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
 | **Uživatelských** | Přizpůsobit odkaz na helpdesk | Ano |
@@ -118,7 +118,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 
 ### <a name="communications-plan"></a>Plán komunikace
 
-Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikujte s uživateli, jak používat službu a co můžou dělat, aby vám pomohly získat pomoc, pokud něco nefunguje podle očekávání. V materiálech pro [uvedení samoobslužného resetování hesla na webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56768) najdete nápady, jak naplánovat strategii komunikace koncovým uživatelům.
+Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikujte s uživateli, jak používat službu a co můžou dělat, aby vám pomohly získat pomoc, pokud něco nefunguje podle očekávání. V [materiálech pro uvedení samoobslužného resetování hesla na webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56768) najdete nápady, jak naplánovat strategii komunikace koncovým uživatelům.
 
 ### <a name="testing-plan"></a>Plán testování
 

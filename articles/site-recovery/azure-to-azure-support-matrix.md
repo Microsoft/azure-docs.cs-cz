@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dc98a0ab47e269aa99f21d3f10952cdabe2c897f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884108"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736043"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
@@ -53,6 +53,7 @@ Austrálie   | Austrálie – východ, Austrálie – jihovýchod, Austrálie �
 Azure Government    | US GOV) – Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD – východ, US DOD – střed 
 Německo | Německo – střed, Německo – severovýchod
 Čína | Čína – východ, Čína – sever, Čína North2, Čína – východ 2
+Omezené oblasti rezervované pro zotavení po havárii v zemi |Německo – sever vyhrazena pro Německo – středozápad, Švýcarsko – západ vyhrazena pro Švýcarsko – sever, Francie – jih vyhrazena pro francouzské centrální zákazníky 
 
 >[!NOTE]
 >
@@ -257,6 +258,6 @@ Akcelerované síťové služby | Podporováno | Na zdrojovém virtuálním poč
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si [pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md) pro replikaci virtuálních počítačů Azure.
 - Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](site-recovery-azure-to-azure.md).

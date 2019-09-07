@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934176"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744875"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Azure Key Vault a Azure CLI 
 
@@ -41,7 +41,7 @@ Když použijete funkci klíče spravovaného účtu úložiště, vezměte v ú
 
 ### <a name="service-principal-application-id"></a>ID aplikace instančního objektu
 
-Tenant [služby](/azure/active-directory/develop/developer-glossary#service-principal-object)Azure AD poskytuje každou registrovanou aplikaci s instančním objektem. Instanční objekt slouží jako identita aplikace (ID). ID aplikace se používá během autorizačního nastavení pro přístup k jiným prostředkům Azure prostřednictvím RBAC.
+Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním objektem](/azure/active-directory/develop/developer-glossary#service-principal-object). Instanční objekt slouží jako identita aplikace (ID). ID aplikace se používá během autorizačního nastavení pro přístup k jiným prostředkům Azure prostřednictvím RBAC.
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrovaný pod stejným ID aplikace a v rámci každého cloudu Azure.
 
@@ -67,7 +67,7 @@ Existují čtyři základní kroky použití Key Vault ke správě klíčů úč
 
 1. Získá existující účet úložiště.
 1. Načte existující Trezor klíčů.
-1. Přidejte do trezoru účet spravovaného úložiště Key Vault. Nastaví `key1` se jako aktivní klíč s dobou obnovení 180 dnů.
+1. Přidejte do trezoru účet spravovaného úložiště Key Vault. Nastaví `key1` se jako aktivní klíč s dobou obnovení 90 dnů.
 1. Použijte `key1` k nastavení kontextu úložiště pro zadaný účet úložiště.
 
 > [!NOTE]

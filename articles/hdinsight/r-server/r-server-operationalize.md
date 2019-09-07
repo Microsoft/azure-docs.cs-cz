@@ -1,6 +1,6 @@
 ---
-title: Zprovoznění služby ML na HDInsight – Azure
-description: Zjistěte, jak zprovoznit služby ML v Azure HDInsight.
+title: Služby zprovoznění ML ve službě HDInsight – Azure
+description: Naučte se, jak zprovoznění datový model a vytvořit předpovědi se službami ML ve službě Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,37 +8,37 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448974"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736218"
 ---
-# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Zprovoznění služby ML clusteru v Azure HDInsight
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Cluster služeb zprovoznění ML ve službě Azure HDInsight
 
-Po použití služby ML clusteru v HDInsight k dokončení modelování vašich dat, které můžete model operacionalizovat za účelem provádění předpovědí. Tento článek obsahuje pokyny k provedení této úlohy.
+Po použití clusteru ML Services ve službě HDInsight k dokončení modelování dat můžete zprovoznění model a vytvořit předpovědi. Tento článek poskytuje pokyny k provedení této úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služby ML v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **služby ML** pro **typ clusteru**.
+* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 
-* Klient Secure Shell (SSH): Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient Secure Shell (SSH): Klient SSH se používá pro vzdálené připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Zprovoznění clusteru služby ML pomocí konfigurace
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Cluster služeb zprovoznění ML s jedním polem konfigurace
 
 > [!NOTE]  
-> Následující postup platí pro R Server 9.0 a ML serveru 9.1. ML Server 9.3, najdete v tématu [použít nástroje pro správu ke správě konfigurace operacionalizace](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+> Následující postup se týká R Server 9,0 a ML Server 9,1. Informace o ML Server 9,3 najdete v tématu [Správa konfigurace provozu pomocí nástroje pro správu](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Připojte se přes SSH k hraničnímu uzlu.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-    Pokyny k použití SSH se službou Azure HDInsight, naleznete v tématu [použití SSH s HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Pokyny k použití SSH se službou Azure HDInsight najdete v tématu [Použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Přejděte do adresáře příslušné verze a sudo dot net knihovny dll: 
+1. Změňte adresář pro příslušnou verzi a sudo síťovou knihovnu DLL s tečkou: 
 
-    - Microsoft ML Server 9.1:
+    - Pro Microsoft ML Server 9,1:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -48,39 +48,39 @@ Po použití služby ML clusteru v HDInsight k dokončení modelování vašich 
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. Zobrazí se možnosti lze vybírat. Zvolte první možnost, jak je znázorněno na následujícím snímku obrazovky, na **ML konfigurovat Server pro Operacionalizaci**.
+1. Zobrazí se možnosti, ze kterých si můžete vybrat. Vyberte první možnost, jak je znázorněno na následujícím snímku obrazovky, abyste **nakonfigurovali ml Server pro provozuschopnost**.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. Nyní se zobrazí možnost zvolte, jak chcete zprovoznit ML Server. Z uvedených možností, vyberte první z nich tak, že zadáte **A**.
+1. Nyní máte k dispozici možnost zvolit způsob, jakým se má zprovoznění ML Server. Z prezentovaných možností vyberte **první zadáním.**
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-1. Po zobrazení výzvy zadejte a znovu zadejte heslo místního správce.
+1. Po zobrazení výzvy zadejte a znovu zadejte heslo pro místního uživatele s oprávněními správce.
 
-1. Měli byste vidět výstupy navrhuje, že operace byla úspěšná. Také budete vyzváni k výběru jiné možnosti z nabídky. Vyberte E přejděte zpět do hlavní nabídky.
+1. Měli byste vidět výstupy naznačující, že operace byla úspěšná. Také se zobrazí výzva, abyste v nabídce vybrali jinou možnost. Vyberte E a vraťte se do hlavní nabídky.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-1. Volitelně můžete provést diagnostické kontroly spuštěním diagnostického testu následujícím způsobem:
+1. Volitelně můžete provádět diagnostické kontroly spuštěním diagnostického testu následujícím způsobem:
 
-    a. V hlavní nabídce vyberte **6** spustit diagnostické testy.
+    a. V hlavní nabídce vyberte **6** a spusťte diagnostické testy.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-1.png)
 
-    b. V nabídce diagnostické testy, zvolte **A**. Po zobrazení výzvy zadejte heslo, které jste zadali pro místního správce.
+    b. **V nabídce diagnostické testy vyberte.** Po zobrazení výzvy zadejte heslo, které jste zadali pro místního uživatele s oprávněními správce.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-2.png)
 
-    c. Ověřte, že výstup ukazuje, že celkový stav z hlediska pass.
+    c. Ověřte, že výstup ukazuje, že celkový stav je Pass.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/diagnostic-3.png)
 
-    d. V možnostech nabídky zobrazí, zadejte **E** vrátit do hlavní nabídky a pak zadejte **8** ukončete nástroj pro správu.
+    d. V zobrazených možnostech nabídky zadejte **E** pro návrat do hlavní nabídky a pak zadáním **8** ukončete nástroj pro správu.
 
-### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Dlouhá zpoždění při využívání webové služby na Apache Sparku
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Dlouhá prodlevy při využívání webové služby v Apache Spark
 
-Pokud dochází k dlouhým zpožděním při pokusech o využívání webové služby vytvořené pomocí funkcí mrsdeploy ve Apache Spark výpočetním kontextu, budete muset přidat některé chybějící složky. Pokaždé, když je aplikace Spark vyvolaná z webové služby pomocí funkcí mrsdeploy, patří uživateli *rserve2*. Náhradní řešení tohoto problému:
+Pokud dojde k dlouhým prodlevám při pokusu o využívání webové služby vytvořené pomocí funkcí mrsdeploy ve výpočetním kontextu Apache Spark, možná budete muset přidat některé chybějící složky. Pokaždé, když je aplikace Spark vyvolaná z webové služby pomocí funkcí mrsdeploy, patří uživateli *rserve2*. Náhradní řešení tohoto problému:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -96,9 +96,9 @@ Pokud dochází k dlouhým zpožděním při pokusech o využívání webové sl
     rxSparkConnect(reset = TRUE)
 
 
-V této fázi je konfigurace operacionalizace dokončena. Teď můžete použít `mrsdeploy` balíček na vašem klientovi RClient připojit k operacionalizaci na hraničním uzlu a začít používat funkce operacionalizace, například [vzdálené spuštění](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH. Následující části vysvětlují, jak tento tunel nastavit.
+V této fázi je konfigurace operacionalizace dokončena. Nyní můžete použít `mrsdeploy` balíček na klientovi rclient pro připojení k provozu na hraničním uzlu a začít používat jeho funkce, jako je [vzdálené spuštění](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH. Následující části vysvětlují, jak tento tunel nastavit.
 
-### <a name="ml-services-cluster-on-virtual-network"></a>Cluster se službou ML Services ve virtuální síti
+### <a name="ml-services-cluster-on-virtual-network"></a>Cluster služeb ML ve virtuální síti
 
 Ověřte, že je na hraničním uzlu povolený provoz přes port 12800. Tímto způsobem můžete hraniční uzel použít pro připojení k funkci operacionalizace.
 
@@ -112,15 +112,15 @@ Ověřte, že je na hraničním uzlu povolený provoz přes port 12800. Tímto z
     )
 
 
-Pokud se metoda `remoteLogin()` nemůže připojit k hraničnímu uzlu, ale můžete se k němu připojit přes SSH, budete muset ověřit, jestli je správně nastavené pravidlo pro povolení provozu na portu 12800. Pokud bude tento problém přetrvávat, můžete jako alternativní řešení použít nastavení přesměrování portu tunelovým propojením přes SSH. Pokyny najdete v tématu v následující části:
+Pokud se metoda `remoteLogin()` nemůže připojit k hraničnímu uzlu, ale můžete se k němu připojit přes SSH, budete muset ověřit, jestli je správně nastavené pravidlo pro povolení provozu na portu 12800. Pokud bude tento problém přetrvávat, můžete jako alternativní řešení použít nastavení přesměrování portu tunelovým propojením přes SSH. Pokyny najdete v následující části:
 
-### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Cluster se službou ML Services nastavený mimo virtuální síť
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Cluster služeb ML není nastavený ve virtuální síti
 
 Pokud váš cluster není nastavený ve virtuální síti nebo máte potíže s připojením přes virtuální síť, můžete použít přesměrování portu tunelovým propojením přes SSH:
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Jakmile je aktivní relaci SSH, provoz z portu 12800 vašeho místního počítače je předán hraničního uzlu prostřednictvím relace SSH port 12800. Nezapomeňte v metodě `remoteLogin()` použít adresu `127.0.0.1:12800`. Přihlásí operacionalizaci hraničního uzlu prostřednictvím přesměrování portu.
+Jakmile bude relace SSH aktivní, provoz z portu 12800 vašeho místního počítače se přepošle na port 12800 hraničního uzlu prostřednictvím relace SSH. Nezapomeňte v metodě `remoteLogin()` použít adresu `127.0.0.1:12800`. Tato operace se zaznamená do provozu hraničního uzlu prostřednictvím předávání portů.
 
 
     library(mrsdeploy)
@@ -132,55 +132,55 @@ Jakmile je aktivní relaci SSH, provoz z portu 12800 vašeho místního počíta
     )
 
 
-## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Škálování zprovozněný výpočetních uzlů na pracovní uzly HDInsight
+## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Škálování provozních výpočetních uzlů na pracovních uzlech HDInsight
 
-Pokud chcete škálovat výpočetní uzly, nejprve vyřadit z provozu pracovní uzly a pak konfigurace výpočetních uzlů na vyřazených pracovních uzlů.
+Chcete-li škálovat výpočetní uzly, nejprve vyřaďte z provozu pracovní uzly a pak nakonfigurujte výpočetní uzly na vyřazených pracovních uzlech.
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Vyřazení pracovních uzlů z provozu
 
-Cluster se službou ML Services není spravován přes [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Pokud pracovní uzly nevyřadí, správce prostředků YARN nebude fungovat podle očekávání, protože nebude vědět o prostředcích, které server. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
+Cluster služeb ML není spravován prostřednictvím [Apache HADOOP příze](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Pokud se pracovní uzly nevyřadí z provozu, Správce prostředků PŘÍZe nefunguje podle očekávání, protože neví o prostředcích, které server zabere. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
 
-Použijte následující postup vyřazení pracovních uzlů z provozu:
+Pomocí těchto kroků vyřaďte z provozu pracovní uzly:
 
-1. Přihlaste se ke konzole Ambari clusteru a klikněte na **hostitele** kartu.
+1. Přihlaste se ke konzole Ambari clusteru a klikněte na kartu **hostitelé** .
 
-1. Výběr pracovních uzlů (Vyřazená z provozu).
+1. Vyberte pracovní uzly (budou vyřazeny z provozu).
 
-1. Klikněte na tlačítko **akce** > **Selected Hosts** > **hostitele** > **zapnout režim údržby**. Například na následujícím obrázku jsme vybrali k vyřazení z provozu uzly wn3 a wn4.  
+1. Klikněte na **Akce** > **vybrané hostitelé** > **hostitelé** > **zapnout režim údržby**. Například na následujícím obrázku jsme vybrali k vyřazení z provozu uzly wn3 a wn4.  
 
    ![vyřazení pracovních uzlů z provozu](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Vyberte **akce** > **Selected Hosts** > **DataNodes** > klikněte na tlačítko **Decommission**.
-* Vyberte **akce** > **Selected Hosts** > **NodeManagers** > klikněte na tlačítko **Decommission**.
-* Vyberte **akce** > **Selected Hosts** > **DataNodes** > klikněte na tlačítko **Zastavit**.
-* Vyberte **akce** > **Selected Hosts** > **NodeManagers** > klikněte na **Zastavit**.
-* Vyberte **akce** > **Selected Hosts** > **hostitele** > klikněte na tlačítko **zastavit všechny komponenty**.
+* Vyberte **Akce** > **Vybraní hostitelé** > – datové**uzly** > klikněte na **vyřadit z provozu**.
+* Vyberte **Akce** > **vybrané hostitelé** > **NodeManagers** > klikněte na **vyřadit z provozu**.
+* Vyberte **Akce** > , které jsou**Vybraní hostitelé** > :**datanode** > klikněte na **zastavit**.
+* Vyberte **Akce** > **vybrané hostitele** > **NodeManagers** > klikněte na **zastavit**.
+* Vyberte **Akce** > **vybrané**hostitele > **hostitelé** > klikněte na **Zastavit všechny součásti**.
 * Zrušte výběr pracovních uzlů a vyberte hlavní uzly.
-* Vyberte **akce** > **Selected Hosts** > "**hostitele** > **restartovat všechny komponenty**.
+* Vyberte **Akce** > **vybrané hostitele** > "**hostitelé** > **restartují všechny součásti**.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurace výpočetních uzlů na všech vyřazených pracovních uzlech
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurace výpočetních uzlů pro každý vyřazený pracovní uzel (é)
 
 1. Přihlaste se přes SSH do každého vyřazeného pracovního uzlu.
 
-1. Spusťte nástroj pro správu používající knihovnu DLL relevantní pro cluster služby ML, který máte. Pro ML serveru 9.1 Spusťte následující příkaz:
+1. Spusťte nástroj pro správu pomocí příslušné knihovny DLL pro cluster služeb ML, který máte. Pro ML Server 9,1 Spusťte následující příkaz:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. Zadejte **1** možnost **ML konfigurovat Server pro Operacionalizaci**.
+1. Zadejte **1** pro výběr možnosti **Konfigurovat ml Server pro provozuschopnost**.
 
-1. Zadejte **C** možnost `C. Compute node`. Tím se na pracovním uzlu nakonfiguruje výpočetní uzel.
+1. Zadejte **C** pro výběr možnosti `C. Compute node`. Tím se na pracovním uzlu nakonfiguruje výpočetní uzel.
 
 1. Ukončete nástroj pro správu.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Přidání podrobností o výpočetních uzlech do webového uzlu
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Přidat podrobnosti výpočetních uzlů na webový uzel
 
-Jakmile budou všechny vyřazené pracovní uzly jsou nakonfigurovány na spuštění výpočetního uzlu, přejděte zpět hraničního uzlu a přidejte IP adresy vyřazených pracovních uzlů do konfigurace webového uzlu ML serveru:
+Jakmile budou všechny vyřazené pracovní uzly nakonfigurované tak, aby spouštěly výpočetní uzel, vraťte se do hraničního uzlu a přidejte IP adresy vyřazených pracovních uzlů do konfigurace ML Server webového uzlu:
 
 1. Připojte se přes SSH k hraničnímu uzlu.
 
 1. Spusťte `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`.
 
-1. Vyhledejte část "Uris" a přidejte pracovní uzel IP adresy a porty.
+1. Vyhledejte část URI a přidejte podrobnosti o IP a portech pracovního uzlu.
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",

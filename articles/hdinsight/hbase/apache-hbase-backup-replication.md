@@ -1,6 +1,6 @@
 ---
-title: Nastavení zálohování Apache HBase a vrstvou Apache Phoenix a replikace – Azure HDInsight
-description: Nastavení zálohování a replikace pro HBase a Phoenix.
+title: Zálohování a replikace pro Apache HBA a Apache Phoenix ve službě Azure HDInsight
+description: Nastavte zálohování a replikaci pro adaptéry HBA a Phoenix.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,69 +8,69 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: e60aef7b1848197f41f96a1b5f5414bb0c8f4a15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1b6e850fab5e9b9b651de9d02ee7981d71a343c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696383"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735895"
 ---
-# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikaci pro Apache HBase a vrstvou Apache Phoenix v HDInsight
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace pro Apache HBA a Apache Phoenix v HDInsight
 
-Apache HBase podporuje několik přístupů pro zabezpečení proti ztrátě dat:
+Apache HBA podporují několik přístupů, které chrání před ztrátou dat:
 
-* Kopírovat `hbase` složky
-* Export pak Import
-* Kopírování tabulek
+* `hbase` Kopírování složky
+* Exportovat a pak importovat
+* Kopírovat tabulky
 * Snímky
 * Replikace
 
 > [!NOTE]  
-> Apache Phoenix ukládá jeho metadata v tabulkách HBase, tak, aby se metadata zálohovány při zálohování tabulky HBase systém katalogu.
+> Apache Phoenix ukládá metadata do tabulek HBA, aby se metadata zálohovali při zálohování tabulek systémového katalogu HBA.
 
-Následující části popisují scénáře použití pro každou z těchto přístupů.
+Následující části popisují scénář použití pro každý z těchto přístupů.
 
-## <a name="copy-the-hbase-folder"></a>Zkopírujte složku hbase
+## <a name="copy-the-hbase-folder"></a>Kopírovat složku HBA
 
-S tímto přístupem zkopírování všech dat HBase, aniž by bylo možné vybrat podmnožinu tabulek nebo rodin sloupců. Následující přístupy poskytují větší kontrolu.
+Pomocí tohoto přístupu zkopírujete všechna data HBA, aniž by bylo možné vybrat podmnožinu tabulek nebo rodin sloupců. Další přístupy poskytují lepší kontrolu.
 
-HBase v HDInsight používá výchozí úložiště, které vybrali při vytváření clusteru, objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. V obou případech se ukládá HBase jeho data a metadata soubory v následující cestě:
+HBA v HDInsight používá výchozí úložiště vybrané při vytváření clusteru, buď Azure Storage objektů blob, nebo Azure Data Lake Storage. V obou případech adaptéry HBA ukládají svoje data a soubory metadat v následující cestě:
 
     /hbase
 
-* V účtu služby Azure Storage `hbase` je umístěn v kořenové složce kontejneru objektů blob:
+* V Azure Storage účtu se `hbase` složka nachází v kořenovém adresáři kontejneru objektů BLOB:
 
     ```
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* Ve službě Azure Data Lake Storage `hbase` je umístěn v kořenové cestě, které jste zadali při vytváření clusteru. Tato kořenová cesta má obvykle `clusters` složky podsložku s názvem po vašeho clusteru HDInsight:
+* V Azure Data Lake Storage složka `hbase` se nachází pod kořenovou cestou, kterou jste zadali při zřizování clusteru. Tato kořenová cesta má `clusters` obvykle složku s podsložkou s názvem po vašem clusteru HDInsight:
 
     ```
     /clusters/<clusterName>/hbase
     ```
 
-V obou případech `hbase` složka obsahuje všechna data, která má HBase se vyprázdní na disku, ale nemusí obsahovat data v paměti. Předtím, než můžete spolehnout na tuto složku jako přesnou reprezentací dat HBase, musíte vypnout clusteru.
+V obou případech `hbase` složka obsahuje všechna data, která se v adaptérech HBA vyprázdní na disk, ale nemusí obsahovat data v paměti. Než budete moct spoléhat na tuto složku jako přesnou reprezentaci dat HBA, musíte cluster vypnout.
 
-Po odstranění clusteru můžete ponechat data na místě, nebo zkopírovat data do nového umístění:
+Po odstranění clusteru můžete ponechat data na místě nebo zkopírovat data do nového umístění:
 
-* Vytvořte novou instanci HDInsight odkazující na aktuální umístění úložiště. Nová instance je vytvořena s existujícími daty.
+* Vytvořte novou instanci HDInsight ukazující na aktuální umístění úložiště. Vytvoří se nová instance se všemi existujícími daty.
 
-* Kopírovat `hbase` složky do jiné služby Azure Storage blob nebo kontejneru umístění Data Lake Storage a pak spusťte nový cluster s daty. Pro službu Azure Storage, použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro použití Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* `hbase` Zkopírujte složku do jiného Azure Storage kontejneru objektů BLOB nebo umístění Data Lake Storage a pak spusťte nový cluster s těmito daty. Pro Azure Storage použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro data Lake Storage použijte [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
-## <a name="export-then-import"></a>Export pak Import
+## <a name="export-then-import"></a>Exportovat a pak importovat
 
-Ve zdrojovém clusteru HDInsight použijte nástroj exportu (zahrnutá v HBase) k exportu dat ze zdrojové tabulky do výchozí připojené úložiště. Pak můžete zkopírovat exportované složku do cílového umístění úložiště a spusťte nástroj importu v cílovém clusteru HDInsight.
+V případě zdrojového clusteru HDInsight použijte nástroj pro export (který je součástí adaptérů HBA) a exportujte data ze zdrojové tabulky do výchozího připojeného úložiště. Potom můžete zkopírovat exportovanou složku do cílového umístění úložiště a spustit nástroj pro import v cílovém clusteru HDInsight.
 
-Export tabulky, první SSH k hlavnímu uzlu clusteru HDInsight zdroje a pak spusťte následující příkaz `hbase` příkaz:
+Pokud chcete exportovat tabulku, nejdřív se SSH do hlavního uzlu vašeho zdrojového clusteru HDInsight a pak spusťte následující `hbase` příkaz:
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-Chcete-li importovat tabulku, SSH k hlavnímu uzlu clusteru HDInsight cílové a potom spusťte následující příkaz `hbase` příkaz:
+Pokud chcete importovat tabulku, SSH do hlavního uzlu vašeho cílového clusteru HDInsight a pak spusťte následující `hbase` příkaz:
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
 
-Zadejte export úplnou cestu k výchozí úložiště nebo některou z možností připojené úložiště. Například ve službě Azure Storage:
+Zadejte úplnou cestu pro export do výchozího úložiště nebo libovolné možnosti připojeného úložiště. Například v Azure Storage:
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
@@ -82,21 +82,21 @@ V Azure Data Lake Storage Gen1 syntaxe je:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
-Tento přístup nabízí tabulky úrovni členitosti. Můžete také zadat rozsah dat pro řádků, které chcete zahrnout, což umožňuje procesu provádět přírůstkové. Každé datum je v milisekundách od epochy Unix.
+Tento přístup nabízí členitost na úrovni tabulky. Můžete také zadat rozsah kalendářních dat, který má být zahrnut do řádků, což vám umožní provést proces přírůstkově. Každé datum je v milisekundách od epocha systému UNIX.
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
 
-Všimněte si, že budete muset zadat několik verzí od jednotlivých řádků pro export. Chcete-li zahrnout všechny verze rozsah dat, nastavte `<numberOfVersions>` k hodnotě větší, než vaše verze maximální možné řádku, jako je například 100000.
+Všimněte si, že musíte zadat počet verzí každého řádku, který se má exportovat. Pokud chcete zahrnout všechny verze v rozsahu kalendářních dat `<numberOfVersions>` , nastavte na hodnotu větší než maximální možné verze řádků, například 100000.
 
-## <a name="copy-tables"></a>Kopírování tabulek
+## <a name="copy-tables"></a>Kopírovat tabulky
 
-Nástroj CopyTable kopíruje data ze zdrojové tabulky řádek po řádku, do existující cílová tabulka se stejným schématem jako zdroj. Cílové tabulky mohou být na stejném clusteru nebo na jiný cluster HBase.
+Nástroj pro kopírování kopíruje data ze zdrojové tabulky, řádku podle řádku do existující cílové tabulky se stejným schématem jako se zdrojem. Cílová tabulka může být ve stejném clusteru nebo v různých clusterech HBA.
 
-Použít CopyTable v rámci clusteru, SSH k hlavnímu uzlu clusteru HDInsight zdroje a pak spusťte toto `hbase` příkaz:
+Pokud chcete použít kopírovací sadu v rámci clusteru, požádejte SSH do hlavního uzlu zdrojového clusteru HDInsight a pak spusťte tento `hbase` příkaz:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
 
-Chcete-li použít CopyTable ke zkopírování do tabulky na jiném clusteru, přidejte `peer` přepnout adresou cílového clusteru:
+Pokud chcete použít kopírovací tabulku ke kopírování do tabulky v jiném clusteru, přidejte `peer` přepínač s adresou cílového clusteru:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
 
@@ -104,48 +104,48 @@ Cílová adresa se skládá z následujících tří částí:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` je čárkou oddělený seznam uzlů Apache ZooKeeper, například:
+* `<ZooKeeperQuorum>`je čárkami oddělený seznam uzlů Apache ZooKeeper, například:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>` na výchozí 2181, HDInsight a `<ZnodeParent>` je `/hbase-unsecure`, takže kompletní `<destinationAddress>` by být:
+* `<Port>`ve výchozím nastavení má HDInsight hodnotu 2181 `<ZnodeParent>` a `/hbase-unsecure`je to proto, `<destinationAddress>` že dokončení bude:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-Zobrazit [ruční shromažďování seznamu Apache ZooKeeper kvora](#manually-collect-the-apache-zookeeper-quorum-list) v tomto článku najdete podrobnosti o tom, jak načíst tyto hodnoty pro váš cluster HDInsight.
+Podrobnosti o tom, jak načíst tyto hodnoty pro cluster HDInsight, najdete v tématu [ruční shromáždění seznamu kvora Apache Zookeeper](#manually-collect-the-apache-zookeeper-quorum-list) v tomto článku.
 
-Nástroj CopyTable také podporuje parametry se mají zadat časový rozsah řádků kopírovat a zadejte do něj podmnožinu rodin sloupců v tabulce ke kopírování. Pokud chcete zobrazit úplný seznam podporovaných CopyTable parametry, spusťte CopyTable bez parametrů:
+Nástroj pro kopírování také podporuje parametry pro určení časového rozsahu kopírování řádků a k určení podmnožiny rodin sloupců v tabulce ke zkopírování. Chcete-li zobrazit úplný seznam parametrů podporovaných kopírovacími rutinami, spusťte příkaz Copy bez parametrů:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable
 
-CopyTable prohledává celý zdrojový obsah tabulky, která se překopírovaly do cílové tabulky. Zatímco CopyTable provede to může snížit výkon HBase cluster.
+Kopírovací tabulka kontroluje celý obsah zdrojové tabulky, který se zkopíruje do cílové tabulky. To může snížit výkon clusteru HBA, zatímco se provádí kopírovací služba.
 
 > [!NOTE]  
-> K automatizaci kopírování dat mezi tabulkami, najdete v článku `hdi_copy_table.sh` skript v [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) úložišti na Githubu.
+> Pokud chcete automatizovat kopírování dat mezi tabulkami, přečtěte `hdi_copy_table.sh` si skript v úložišti [Azure HBA](https://github.com/Azure/hbase-utils/tree/master/replication) na GitHubu.
 
-### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ručně shromáždit kvora Apache ZooKeeper seznamu
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ruční shromáždění seznamu Apache ZooKeeper kvora
 
-Když oba clustery HDInsight jsou ve stejné virtuální síti, jak je popsáno výše, je automatický interní překlad názvů. Pro účely CopyTable clusterů HDInsight v dvě samostatné virtuální sítě připojený prostřednictvím brány sítě VPN, musíte poskytnout hostitele IP adresy uzly Zookeeper v kvora.
+Pokud jsou oba clustery HDInsight ve stejné virtuální síti, jak je popsáno dříve, je překlad interního názvu hostitele automatický. Pokud chcete použít kopírovací sadu pro clustery HDInsight ve dvou samostatných virtuálních sítích, které jsou připojené pomocí VPN Gateway, budete muset zadat IP adresy hostitele uzlů Zookeeper v kvoru.
 
-Chcete-li získat názvy hostitelů kvora, spusťte následující příkaz curl:
+Chcete-li získat názvy hostitelů kvora, spusťte následující příkaz složeného příkazu:
 
     curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
 
-Příkaz curl načte dokument JSON se informace o konfiguraci HBase a grep příkaz vrátí jenom položky "hbase.zookeeper.quorum", například:
+Příkaz kudrlinkou načte dokument JSON s informacemi o konfiguraci HBA a příkaz grep vrátí pouze položku "adaptéry HBA. Zookeeper. kvora", například:
 
     "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
 
-Hodnota názvy hostitele kvora se celý řetězec napravo od dvojtečka.
+Hodnota názvy hostitelů kvora je celý řetězec napravo od dvojtečky.
 
-Pokud chcete načíst IP adresy pro tyto hostitele, použijte následující příkaz curl pro každého hostitele v předchozím seznamu:
+Chcete-li načíst IP adresy pro tyto hostitele, použijte následující příkaz kudrlinkou pro každého hostitele v předchozím seznamu:
 
     curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
 
-V tomto příkazu curl `<zookeeperHostFullName>` je úplný název DNS o hostiteli ZooKeeper, například v příkladu `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`. Výstup tohoto příkazu obsahuje IP adresu pro zadané hostitele, například:
+V tomto příkazu složeného `<zookeeperHostFullName>` příkazu je úplný název DNS hostitele Zookeeper, jako je například příklad. `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net` Výstup příkazu obsahuje IP adresu pro zadaného hostitele, například:
 
     100    "ip" : "10.0.0.9",
 
-Jakmile shromáždíte IP adres pro všechny uzly ZooKeeper vaše kvora, znovu sestavte cílovou adresu:
+Po shromáždění IP adres pro všechny uzly ZooKeeper v kvoru znovu sestavte cílovou adresu:
 
     <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
 
@@ -155,57 +155,57 @@ V našem příkladu:
 
 ## <a name="snapshots"></a>Snímky
 
-Snímky umožňují vytvořit zálohu dat v daném okamžiku v vaše úložiště dat HBase. Snímky mají minimální režií a dokončit během několika sekund, protože operace vytvoření snímku je v podstatě operace metadat zachytávání názvy všech souborů v úložišti v tomto okamžiku. V době snímku žádná skutečná data zkopírována. Snímky využívají neměnné povaze dat uložených v HDFS, kde aktualizace, odstraňování a vkládání jsou všechny reprezentovány jako nová data. Můžete obnovit (*klonování*) snímku na stejném clusteru nebo export snímku do jiného clusteru.
+Pomocí snímků můžete v úložišti dat HBA (HBA) vytvořit zálohu dat v určitém bodě v čase. Snímky mají minimální režii a dokončení během několika sekund, protože operace snímku je efektivně zachytávání názvů všech souborů v úložišti. V okamžiku snímku se nekopírují žádná skutečná data. Snímky spoléhají na neproměnlivou povahu dat uložených v HDFS, kde jsou všechny aktualizace, odstranění a vložení znázorněny jako nová data. Můžete obnovit (*klonovat*) snímek ve stejném clusteru nebo exportovat snímek do jiného clusteru.
 
-K vytvoření snímku, SSH k hlavnímu uzlu vaše HDInsight HBase v clusteru a spuštění `hbase` prostředí:
+Pokud chcete vytvořit snímek, přihlaste se přes SSH do hlavního uzlu clusteru HDInsight HBA a spusťte `hbase` prostředí:
 
     hbase shell
 
-V rámci prostředí hbase použijte příkaz snímku s názvy tabulky a z tohoto snímku:
+V prostředí HBA použijte příkaz Snapshot s názvy tabulky a tohoto snímku:
 
     snapshot '<tableName>', '<snapshotName>'
 
-Chcete-li obnovit snímek podle názvu v rámci `hbase` prostředí, nejdřív zakázat v tabulce, potom obnovení snímku a znovu povolit v tabulce:
+Chcete-li obnovit snímek podle názvu v `hbase` rámci prostředí, nejprve tabulku zakažte a pak obnovte snímek a znovu povolte tabulku:
 
     disable '<tableName>'
     restore_snapshot '<snapshotName>'
     enable '<tableName>'
 
-Pokud chcete obnovit snímek do nové tabulky, použijte clone_snapshot:
+Chcete-li obnovit snímek do nové tabulky, použijte clone_snapshot:
 
     clone_snapshot '<snapshotName>', '<newTableName>'
 
-Exportovat snímek do HDFS pro použití podle jiného clusteru, nejprve vytvořte snímek, jak je popsáno dříve a pak použít nástroj ExportSnapshot. Tento nástroj spusťte z v rámci relace SSH k hlavnímu uzlu není v rámci `hbase` prostředí:
+Pokud chcete exportovat snímek do HDFS pro použití jiným clusterem, vytvořte nejprve snímek, jak je popsáno výše, a pak použijte nástroj ExportSnapshot. Spusťte tento nástroj z relace SSH do hlavního uzlu, nikoli v rámci `hbase` prostředí:
 
      hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
 
-`<hdfsHBaseLocation>` Může být kterýkoli z umístění úložiště přístupná pro zdrojový cluster a by odkazoval na složku hbase používané cílový cluster. Například pokud máte sekundární účet služby Azure Storage připojené k vašemu clusteru zdroje a tento účet poskytuje přístup ke kontejneru používá výchozí úložiště bude cílový cluster, můžete použít tento příkaz:
+`<hdfsHBaseLocation>` Může to být libovolné umístění úložiště dostupné pro váš zdrojový cluster a mělo by odkazovat na složku HBA, kterou používá cílový cluster. Například pokud máte ke zdrojovému clusteru připojený sekundární Azure Storage účet a tento účet poskytuje přístup ke kontejneru, který používá výchozí úložiště cílového clusteru, můžete použít tento příkaz:
 
     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 
-Po exportu snímku příkazu SSH k hlavnímu uzlu clusteru cílový a obnovení snímku pomocí restore_snapshot jak bylo popsáno dříve.
+Po exportu snímku SSH do hlavního uzlu cílového clusteru a obnovte snímek pomocí příkazu restore_snapshot, jak je popsáno výše.
 
-Snímky poskytují úplnou zálohu tabulky v době `snapshot` příkazu. Snímky se neposkytuje možnost k provedení přírůstkových snímků ve windows čas ani k určení podmnožiny rodin sloupců zahrnout snímek.
+Snímky poskytují úplnou zálohu tabulky v okamžiku `snapshot` příkazu. Snímky neposkytují možnost provádět přírůstkové snímky ve Windows čase, ani Neurčovat podmnožiny sloupců, které se mají zahrnout do snímku.
 
 ## <a name="replication"></a>Replikace
 
-Replikace HBase automaticky odesílá transakce z clusteru zdroje do cílového clusteru pomocí mechanismu asynchronní s minimální režií na zdrojovém clusteru. V HDInsight, můžete nastavit replikaci mezi clustery kde:
+HBA replikace automaticky přenáší transakce ze zdrojového clusteru do cílového clusteru pomocí asynchronního mechanismu s minimálními nároky na zdrojový cluster. Ve službě HDInsight můžete nastavit replikaci mezi clustery, kde:
 
-* Clustery zdrojových a cílových jsou ve stejné virtuální síti.
-* Clustery zdroje a cíle jsou v různých virtuálních sítích, které jsou připojené prostřednictvím brány VPN gateway, ale existují obou clusterech ve stejné zeměpisné umístění.
-* Cluster zdroje a cíle clustery jsou v různých virtuálních sítích, které jsou připojené prostřednictvím brány sítě VPN a každý cluster existuje v jiném geografickém umístění.
+* Zdrojové a cílové clustery jsou ve stejné virtuální síti.
+* Zdrojové a cílové clustery jsou v různých virtuálních sítích, které jsou připojené pomocí brány VPN, ale oba clustery existují ve stejném geografickém umístění.
+* Zdrojový cluster a cílové clustery jsou v různých virtuálních sítích, které jsou připojené přes bránu VPN, přičemž každý cluster existuje v jiném geografickém umístění.
 
-Obecné kroky pro nastavení replikace jsou:
+Pro nastavení replikace jsou k dishlavní kroky:
 
-1. Ve zdrojovém clusteru se vytvořily tabulky a naplnit data.
-2. V cílovém clusteru vytvořte prázdný cílových tabulek s schématu zdrojové tabulky.
-3. Cílový cluster zaregistrujte jako partnera pro zdrojový cluster.
-4. Povolte replikaci na požadovanou zdrojové tabulky.
-5. Kopírovat existující data ze zdrojových tabulek do cílových tabulek.
-6. Replikace automaticky zkopíruje nové změny dat do zdrojových tabulek do cílových tabulek.
+1. Ve zdrojovém clusteru vytvořte tabulky a naplňte data.
+2. V cílovém clusteru Vytvořte prázdné cílové tabulky se schématem zdrojové tabulky.
+3. Zaregistrujte cílový cluster jako partnerský uzel na zdrojový cluster.
+4. Povolte replikaci u požadovaných zdrojových tabulek.
+5. Zkopírujte existující data ze zdrojových tabulek do cílových tabulek.
+6. Replikace automaticky kopíruje nové změny dat do zdrojových tabulek do cílových tabulek.
 
-Pokud chcete povolit replikaci na HDInsight, použijte akci skriptu ke clusteru HDInsight spuštěný zdroje. Postup povolení replikace ve vašem clusteru, nebo můžete experimentovat s replikací v clusterech ukázka vytvoří v virtuálních sítí pomocí šablon Azure Resource Manageru, najdete v části [replikace nakonfigurovat Apache HBase](apache-hbase-replication.md). Tento článek také obsahuje pokyny pro povolení replikace Phoenix metadat.
+Pokud chcete povolit replikaci ve službě HDInsight, použijte pro spuštěný zdrojový cluster HDInsight akci skriptu. Návod k povolení replikace v clusteru nebo experimentování s replikací na ukázkových clusterech vytvořených ve virtuálních sítích pomocí šablon správy prostředků Azure najdete v tématu [Konfigurace replikace Apache HBA](apache-hbase-replication.md). Tento článek také obsahuje pokyny pro povolení replikace metadat služby Phoenix.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace replikace Apache HBase](apache-hbase-replication.md)
+* [Konfigurace replikace Apache HBA](apache-hbase-replication.md)

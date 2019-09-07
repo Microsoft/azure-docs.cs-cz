@@ -1,22 +1,22 @@
 ---
 title: Použití škálování a Sparku v Azure HDInsight
-description: Použití škálování a Sparku se službami ML v HDInsight
+description: Použití škálování a Sparku pro manipulaci s daty a vývoj modelů pomocí služeb ML ve službě Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a91d2d569b4900e3d5b787145c242a75b928d822
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231124"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733371"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
-V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí modelu logistické regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
+V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
 
 I když oba balíčky běží na spouštěcím modulu Sparku Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každá z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
 
@@ -24,7 +24,7 @@ Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario 
 
 Kód byl původně napsán pro ML Server běžící na Sparku v clusteru HDInsight v Azure. Ale koncept kombinace použití Sparku a nástroje pro škálování v jednom skriptu je platný i v kontextu místních prostředí.
 
-Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře [](https://spark.apache.org/docs/2.1.0/sparkr.html) se zavedete do Sparku.
+Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře se zavedete do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
 

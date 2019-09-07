@@ -1,0 +1,89 @@
+---
+title: Nasazení aplikace Docker na Linux-Azure App Service
+description: Postup nasazení bitové kopie Docker do Azure App Services pro Linux
+author: msangapu
+ms.author: msangapu
+ms.date: 08/28/2019
+ms.topic: quickstart
+ms.service: app-service
+ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70392111"
+---
+# <a name="deploy-to-azure-using-docker"></a>Nasazení do Azure pomocí Docker
+
+App Service v systému Linux poskytuje předdefinované zásobníky aplikací v systému Linux s podporou pro jazyky, jako je například .NET, PHP, Node. js a další. Můžete také použít vlastní image Dockeru a spouštět webovou aplikaci v zásobníku aplikací, který ještě není v Azure definovaný. V tomto rychlém startu se dozvíte, jak nasadit image z [Azure Container Registry](/azure/container-registry) (ACR) do App Service.
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Účet Azure](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* [Docker](https://www.docker.com/community-edition)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Azure App Service rozšíření pro vs Code](vscode:extension/ms-azuretools.vscode-azureappservice). Toto rozšíření můžete použít k vytváření, správě a nasazování Web Apps pro Linux na platformě Azure jako službu (PaaS).
+* [Rozšíření Docker pro vs Code](vscode:extension/ms-azuretools.vscode-docker). Pomocí tohoto rozšíření můžete zjednodušit správu místních imagí a příkazů Docker a nasazovat do Azure sestavené image aplikací.
+
+## <a name="create-an-image"></a>Vytvoření image
+
+K dokončení tohoto rychlého startu budete potřebovat vhodnou image webové aplikace uloženou v [Azure Container Registry](/azure/container-registry). Postupujte podle pokynů v [rychlém startu: Vytvořte kontejner privátního kontejneru pomocí Azure Portal](/azure/container-registry/container-registry-get-started-portal), ale `mcr.microsoft.com/azuredocs/go` použijte obrázek místo `hello-world` obrázku.
+
+> [!IMPORTANT]
+> Nezapomeňte nastavit možnost uživatel s **oprávněními správce** , aby se **povolil** při vytváření registru kontejneru. Můžete ji také nastavit v části **přístupové klíče** stránky registru v Azure Portal. Toto nastavení se vyžaduje pro App Service přístup.
+
+## <a name="sign-in"></a>Přihlášení
+
+Dále spusťte VS Code a přihlaste se k účtu Azure pomocí rozšíření App Service. Pokud to chcete provést, vyberte na řádku aktivity logo Azure, přejděte do Průzkumníka **služby App Service** , vyberte možnost **Přihlásit se k Azure** a postupujte podle pokynů.
+
+![Přihlaste se k Azure](./media/quickstart-docker/sign-in.png)
+
+## <a name="check-prerequisites"></a>Ověřit požadavky
+
+Nyní můžete zkontrolovat, zda máte správně nainstalované a nakonfigurované požadavky.
+
+V VS Code byste měli na stavovém řádku a v rámci vašeho předplatného v Průzkumníkovi **služby App Service** vidět vaši e-mailovou adresu Azure.
+
+Pak ověřte, že máte nainstalovaný a spuštěný Docker. V následujícím příkazu se zobrazí verze Docker, pokud je spuštěná.
+
+```bash
+docker --version
+```
+
+Nakonec zajistěte, aby byl váš Azure Container Registry připojený. Pokud to chcete provést, vyberte na panelu aktivity logo Docker a pak přejděte do části **Registry**.
+
+![Registry](./media/quickstart-docker/registries.png)
+
+## <a name="deploy-the-image-to-azure-app-service"></a>Nasaďte bitovou kopii na Azure App Service
+
+Teď, když je všechno nakonfigurované, můžete image nasadit do [Azure App Service](https://azure.microsoft.com/services/app-service/) přímo z Průzkumníka rozšíření Docker.
+
+Najděte obrázek pod uzlem **Registry** v Průzkumníkovi **Docker** a rozbalte ho, aby se zobrazily jeho značky. Klikněte pravým tlačítkem na značku a pak vyberte **nasadit obrázek do Azure App Service**.
+
+Tady můžete podle pokynů zvolit předplatné, globálně jedinečný název aplikace, skupinu prostředků a plán App Service. Pro cenovou úroveň vyberte **B1 Basic** a oblast.
+
+Po nasazení je vaše aplikace k dispozici `http://<app name>.azurewebsites.net`na adrese.
+
+**Skupina prostředků** je pojmenovaná kolekce všech prostředků vaší aplikace v Azure. Například skupina prostředků může obsahovat odkaz na web, databázi a funkci Azure Functions.
+
+**Plán App Service** definuje fyzické prostředky, které se budou používat k hostování vašeho webu. V tomto rychlém startu se používá **základní** plán hostování v infrastruktuře **Linux** , což znamená, že lokalita bude hostována v počítači se systémem Linux společně s ostatními weby. Pokud začnete s plánem **Basic** , můžete k horizontálnímu navýšení kapacity použít Azure Portal, aby se na počítači používala jediná lokalita.
+
+## <a name="browse-the-website"></a>Přejděte na web
+
+Panel **výstup** se otevře během nasazování, aby označoval stav operace. Až se operace dokončí, Najděte aplikaci, kterou jste vytvořili v Průzkumníkovi **služby App Service** , klikněte na ni pravým tlačítkem myši a vyberte **Procházet web** a otevřete web v prohlížeči.
+
+> [!div class="nextstepaction"]
+> [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
+
+## <a name="next-steps"></a>Další postup
+
+Blahopřejeme, úspěšně jste dokončili tento rychlý Start.
+
+Pak se podívejte na další rozšíření Azure.
+
+* [Databáze Cosmos](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Nástroje rozhraní příkazového řádku Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Nástroje Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+
+Nebo si je všechny nainstalujte pomocí balíčku rozšíření [nástroje Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) .

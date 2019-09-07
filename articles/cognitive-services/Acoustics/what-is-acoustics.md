@@ -11,24 +11,27 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932982"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390311"
 ---
 # <a name="what-is-project-acoustics"></a>Co je Project Acoustics?
-Akustické navýšení projektu je akustický modul Wave pro 3D interaktivní prostředí. Modely IT se podobají efektům vln, jako je Diffraction, portáling a reverb, v komplexních scénách bez nutnosti ručního označování zóny. Zahrnuje také herní a audio modul pro integraci middlewaru. Akustické filozofiey projektu se podobají statickému osvětlení: zanesli podrobné fyzika offline k poskytování fyzických standardních hodnot a použití zjednodušeného modulu runtime s ovládacími prvky pro vyjádření návrhu pro uspokojení vašich uměleckéch cílů.
+Akustické navýšení projektu je akustický modul Wave pro 3D interaktivní prostředí. Modely IT napodobují účinky vlny, jako je překrytí, překážka, na portál a reverberation, v komplexních scénách bez nutnosti ručního označení zóny nebo raytracing náročné na procesor. Zahrnuje také herní a audio modul pro integraci middlewaru. Akustické filozofiey projektu jsou podobné statickému osvětlení: zanesli podrobné fyzika offline pro zajištění fyzických standardních hodnot a použití zjednodušeného modulu runtime s ovládacími prvky pro vyjádření návrhu pro splnění vašich uměleckéch cílů pro účely akustického vývoje z vašeho virtuálního světa.
 
 ![Snímek obrazovky z ozubeného kolace války 4 ukazující akustické voxels](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>Použití fyzika Wave pro interaktivní akustické práce
-Metody akustického množství založené na ray mohou kontrolovat překrytí pomocí jediného přetypování zdroje na naslouchací proces, nebo na reverb pomocí odhadu lokálního objemu scény s několika paprsky. Tyto techniky ale můžou být nespolehlivé, protože Pebble occludes, a to mnohem jako Boulder. Paprsky nezpůsobují způsob, jakým se zvuk roztéká kolem objektů, což je tento jev známý jako Diffraction. Simulace akustického projektu zachycuje tyto efekty pomocí simulace založené na vlnovce. Výsledek je předvídatelný a spolehlivý.
+Metody akustického množství založené na ray mohou kontrolovat překrytí pomocí jediného přetypování zdroje na naslouchací proces, nebo na reverb pomocí odhadu lokálního objemu scény s několika paprsky. Tyto techniky ale můžou být nespolehlivé, protože Pebble occludes, a to mnohem jako Boulder. Paprsky nezpůsobují způsob, jakým se zvuk roztéká kolem objektů, což je tento jev známý jako Diffraction. Simulace akustického projektu zachycuje tyto efekty pomocí simulace založené na vlnovce. Akustické a přesné a bezproblémové zvukové.
 
-Klíčové inovace s využitím klíčových projektů je k pro pár akustické simulace s tradičními koncepty návrhu zvuku. Překládá výsledky simulace do tradičních parametrů DSP pro překrytí, na portáling a reverb. Návrhář používá ovládací prvky nad tímto procesem překladu. Další informace o základních technologiích, které jsou na akustickém projektu, najdete na [stránce výzkumného projektu](https://www.microsoft.com/en-us/research/project/project-triton/).
+Cloudové inovace s využitím cloudu jsou v rámci tradičních konceptů návrhu zvuku spojeny s akustickou simulací zvuku Wave. Překládá výsledky simulace do tradičních parametrů DSP pro překrytí, na portáling a reverb. Návrhář používá ovládací prvky nad tímto procesem překladu. Další informace o základních technologiích, které jsou na akustickém projektu, najdete na [stránce výzkumného projektu](https://www.microsoft.com/en-us/research/project/project-triton/).
 
 ![Animace ukazující horizontální 2D řez šíření vlny prostřednictvím scény](media/wave-simulation.gif)
+
+## <a name="video-presentation-from-gdc-2019-30-min"></a>Prezentace videa z GDC 2019 (~ 30 min)
+Video akustického videa(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "kliknutím přehrát") video [ ![]
 
 ## <a name="setup"></a>Instalace
 Cloudová [integrace Unity](unity-integration.md) je přetažena myší a obsahuje modul plug-in pro zvukové moduly Unity. Rozšiřte ovládací prvky zdroje zvuku ve službě Unity tím, že připojíte komponentu C# ovládacích prvků projekt ke každému zvukovému objektu.
@@ -63,5 +66,5 @@ Modul plug-in Editor akustického projektu je k dispozici pro následující pla
 
 ## <a name="next-steps"></a>Další postup
 * Vyzkoušejte si [rychlý Start akustického projektu pro Unity](unity-quickstart.md) nebo [Unreal](unreal-quickstart.md)
-* Seznamte se s [návrhem zvuku filozofie akustického množství projektů](design-process.md)
+* [Seznamte se s návrhem zvuku filozofie akustického množství projektů](design-process.md)
 

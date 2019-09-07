@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970439"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743805"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker
 
@@ -24,9 +24,9 @@ Tato funkce je znázorněna na následujícím obrázku:
 
 ![Přehled funkce Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Každý Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, kterou zadáte při instalaci agenta. Skupina může obsahovat jediného agenta, ale můžete do skupiny nainstalovat více agentů pro zajištění vysoké dostupnosti.
+Každý Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, kterou zadáte při instalaci agenta. Skupina může obsahovat jediného agenta, ale můžete do skupiny nainstalovat více agentů pro zajištění vysoké dostupnosti. Každý počítač může hostovat jeden Hybrid Worker hlášení na jeden účet Automation.
 
-Při spuštění sady Runbook na Hybrid Runbook Worker zadáte skupinu, ve které je spuštěna. Každý pracovní proces ve skupině se Azure Automation dotazuje, zda jsou k dispozici nějaké úlohy. Pokud je úloha k dispozici, první pracovní proces, který úlohu získá, ji vezme. Doba zpracování fronty úloh závisí na hardwarovém profilu a zatížení hybridního pracovního procesu. Nemůžete zadat konkrétního pracovního procesu. Hybridní pracovní procesy Runbooku nesdílejí spoustu omezení, která mají Azure sandboxs. Nemají stejná omezení místa na disku, paměti nebo síťových soketů. Procesy Hybrid Runbook Worker jsou omezeny pouze prostředky na samotném Hybrid Runbook Worker. Kromě toho hybridní pracovní procesy Runbooku nesdílejí limit 180 minut pro [sdílení](automation-runbook-execution.md#fair-share) s reálným limitem, který Azure sandboxy udělá. Další informace o omezení služby pro izolované pracovní prostory Azure a procesy Hybrid Runbook Worker najdete na stránce [omezení](../azure-subscription-service-limits.md#automation-limits) úloh.
+Při spuštění sady Runbook na Hybrid Runbook Worker zadáte skupinu, ve které je spuštěna. Každý pracovní proces ve skupině se Azure Automation dotazuje, zda jsou k dispozici nějaké úlohy. Pokud je úloha k dispozici, první pracovní proces, který úlohu získá, ji vezme. Doba zpracování fronty úloh závisí na hardwarovém profilu a zatížení hybridního pracovního procesu. Nemůžete zadat konkrétního pracovního procesu. Hybridní pracovní procesy Runbooku nesdílejí spoustu omezení, která mají Azure sandboxs. Nemají stejná omezení místa na disku, paměti nebo síťových soketů. Procesy Hybrid Runbook Worker jsou omezeny pouze prostředky na samotném Hybrid Runbook Worker. Kromě toho hybridní pracovní procesy Runbooku nesdílejí limit 180 minut pro [sdílení s reálným](automation-runbook-execution.md#fair-share) limitem, který Azure sandboxy udělá. Další informace o omezení služby pro izolované pracovní prostory Azure a procesy Hybrid Runbook Worker najdete na stránce [omezení](../azure-subscription-service-limits.md#automation-limits) úloh.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalace Hybrid Runbook Worker
 
@@ -133,7 +133,7 @@ Pokud máte účet Automation, který je definovaný pro konkrétní oblast, mů
 | Velká Británie – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby [](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru ve službě Stažení softwaru.
+Seznam IP adres oblastí, nikoli názvy oblastí, si můžete stáhnout ze služby Stažení [softwaru ve službě](https://www.microsoft.com/download/details.aspx?id=41653) stažení softwaru.
 
 > [!NOTE]
 > Soubor XML IP adresy datacentra Azure obsahuje seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Soubor zahrnuje výpočetní prostředky, SQL a rozsahy úložiště.

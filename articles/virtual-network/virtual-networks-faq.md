@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382902"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389706"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Virtual Networku (FAQ)
 
@@ -42,7 +42,7 @@ Začněte tím, že přejdete do dokumentace ke službě [Virtual Network](https
 Ano. Virtuální síť můžete použít bez připojení k vašemu pracovišti. Můžete například spustit řadiče domény služby Active Directory systému Microsoft Windows Server a farmy služby SharePoint výhradně ve virtuální síti Azure.
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Můžu provést optimalizaci sítě WAN mezi virtuální sítě nebo virtuální sítí a místním datovým centrem?
-Ano. [Virtuální zařízení pro optimalizaci sítě WAN](https://azure.microsoft.com/marketplace/?term=wan+optimization) můžete nasadit od několika dodavatelů prostřednictvím Azure Marketplace.
+Ano. [Virtuální zařízení pro optimalizaci sítě WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) můžete nasadit od několika dodavatelů prostřednictvím Azure Marketplace.
 
 ## <a name="configuration"></a>Konfiguraci
 

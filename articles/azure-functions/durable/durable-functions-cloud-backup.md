@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db98039ae057e48867c91d1081c38066067c621
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087438"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735240"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Scénář ventilátoru/ventilátoru – ve scénáři v Durable Functions-cloudové zálohování – příklad
 
@@ -66,7 +66,7 @@ Tato funkce nástroje Orchestrator má v podstatě následující:
 4. Čeká na dokončení všech nahrávání.
 5. Vrátí celkový počet bajtů odeslaných do Azure Blob Storage.
 
-Všimněte si řádkůC# `yield context.df.Task.all(tasks);` () a (JavaScript). `await Task.WhenAll(tasks);` Nebyla očekávána všechna jednotlivá volání `E2_CopyFileToBlob` funkce. To je úmyslné, aby je bylo možné spouštět paralelně. Když `Task.WhenAll` projdeme toto pole úkolů do (C#) nebo `context.df.Task.all` (JavaScript), vrátíme úlohu, která nebude dokončena, dokud nebudou dokončeny *všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) nebo v jazyce JavaScript, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy můžou běžet na několika virtuálních počítačích současně a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné před dokončením.
+Všimněte si řádkůC# `yield context.df.Task.all(tasks);` () a (JavaScript). `await Task.WhenAll(tasks);` Nebyla očekávána všechna jednotlivá volání `E2_CopyFileToBlob` funkce. To je úmyslné, aby je bylo možné spouštět paralelně. Když `Task.WhenAll` projdeme toto pole úkolů do (C#) nebo `context.df.Task.all` (JavaScript), vrátíme úlohu, která nebude dokončena, dokud nebudou *dokončeny všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) nebo v jazyce JavaScript, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy můžou běžet na několika virtuálních počítačích současně a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné před dokončením.
 
 > [!NOTE]
 > Přestože jsou úkoly koncepčně podobné příslibů JavaScriptu, měly by funkce Orchestrator `context.df.Task.all` používat a `context.df.Task.any` místo `Promise.all` a `Promise.race` spravovat paralelní zpracování úkolů.
@@ -179,7 +179,7 @@ Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 ## <a name="next-steps"></a>Další postup
 
-Tato ukázka ukázala, jak implementovat vzorek ventilátoru nebo ventilátoru. Další příklad ukazuje, jak implementovat model monitorování pomocí trvalých [časovačů](durable-functions-timers.md).
+Tato ukázka ukázala, jak implementovat vzorek ventilátoru nebo ventilátoru. Další příklad ukazuje, jak implementovat model monitorování pomocí [trvalých časovačů](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
 > [Spuštění ukázky monitorování](durable-functions-monitor.md)

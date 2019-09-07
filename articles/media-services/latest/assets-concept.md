@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 3dc1866a3c0339bca0c27fb53894a14581e88490
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230993"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390507"
 ---
 # <a name="assets"></a>Prostředky
 
 V Azure Media Services [Asset](https://docs.microsoft.com/rest/api/media/assets) obsahuje informace o digitálních souborech uložených v Azure Storage (včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků). 
 
-Asset se namapuje na kontejner objektů BLOB v [účtu Azure Storage](storage-account-concept.md) a soubory v prostředku se ukládají jako objekty blob bloku v tomto kontejneru. Media Services podporuje úrovně objektů blob, pokud účet používá úložiště pro obecné účely v2 (GPv2). Pomocí GPv2 můžete přesunout soubory do studeného [nebo archivního úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archivní** úložiště je vhodné pro archivaci zdrojových souborů, když už nepotřebujete (například po kódování).
+Asset se namapuje na kontejner objektů BLOB v [účtu Azure Storage](storage-account-concept.md) a soubory v prostředku se ukládají jako objekty blob bloku v tomto kontejneru. Media Services podporuje úrovně objektů blob, pokud účet používá úložiště pro obecné účely v2 (GPv2). Pomocí GPv2 můžete přesunout soubory do [studeného nebo archivního úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archivní** úložiště je vhodné pro archivaci zdrojových souborů, když už nepotřebujete (například po kódování).
 
 **Archivní** úroveň úložiště je doporučena pouze pro velmi velké zdrojové soubory, které již byly zakódovány a výstup úlohy kódování byl vložen do výstupního kontejneru objektů BLOB. Objekty blob ve výstupním kontejneru, které chcete přidružit k Assetu a používají se ke streamování nebo analýze obsahu, musí existovat v **horké** nebo **studené** úrovni úložiště.
 
@@ -48,7 +48,7 @@ Až se digitální soubory nahrají do úložiště a přidruží se k Assetu, d
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. Získejte adresu URL SAS s oprávněními pro čtení i zápis, která se použije k nahrání digitálních souborů do kontejneru aktiva. K [vypsání adres URL kontejnerů aktiv](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) můžete použít rozhraní API Media Services.
-3. K nahrání souborů do kontejneru aktiva použijte rozhraní API služby Azure Storage nebo sady SDK (například [Storage REST API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) nebo [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). 
+3. Použijte rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) k nahrání souborů do kontejneru assetů. 
 4. Pomocí rozhraní API služby Media Services verze 3 můžete vytvořit transformaci a úlohu ke zpracování vstupního aktiva. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md).
 5. Streamování obsahu z prostředku "Output".
 
@@ -126,7 +126,7 @@ K ochraně vašich prostředků v klidovém stavu, prostředky by se měla šifr
 
 Viz téma [filtrování, řazení, stránkování Media Services entit](entities-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Streamování souboru](stream-files-dotnet-quickstart.md)
 * [Použití cloudového videorekordéru](live-event-cloud-dvr.md)

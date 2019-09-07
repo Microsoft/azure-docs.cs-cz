@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6b2a2029dec917672d6f4ee8db24aed60e4f5bc5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568662"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744444"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 
@@ -42,7 +42,7 @@ Tady můžete udělat libovolnou kombinaci následujících změn a všechny je 
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
-Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve fondu Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete vytvořit a spravovat servery SQL Database pro elastický fond, přečtěte si téma [Vytvoření a Správa serverů SQL Database](sql-database-servers.md). Pokud chcete vytvořit a spravovat pravidla brány firewall, přečtěte si téma [Vytvoření a Správa pravidel brány firewall pomocí PowerShellu](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
+Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve fondu Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete vytvořit a spravovat servery SQL Database pro elastický fond, přečtěte si téma [Vytvoření a Správa serverů SQL Database](sql-database-servers.md). Pokud chcete vytvořit a spravovat pravidla brány firewall, přečtěte si téma [Vytvoření a Správa pravidel brány firewall pomocí PowerShellu](sql-database-firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules).
 
 > [!TIP]
 > Ukázkové skripty PowerShellu najdete v tématech [vytváření elastických fondů a přesun databází mezi fondy a ven z fondu pomocí prostředí PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) a [použití PowerShellu k monitorování a škálování elastického fondu SQL v Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -82,7 +82,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy pomocí [Azure 
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Správa databází ve fondu
 
-Chcete-li vytvořit a přesunout databáze v rámci stávajících elastických fondů nebo vrátit informace o SQL Database elastickém fondu pomocí jazyka Transact-SQL, použijte následující příkazy T-SQL. Tyto příkazy můžete vydat pomocí Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs)nebo jakéhokoli jiného programu, který se může připojit k serveru Azure SQL Database a předat příkazy jazyka Transact-SQL. Chcete-li vytvořit a spravovat pravidla brány firewall pomocí T-SQL, přečtěte si téma [Správa pravidel brány firewall pomocí jazyka Transact-SQL](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql).
+Chcete-li vytvořit a přesunout databáze v rámci stávajících elastických fondů nebo vrátit informace o SQL Database elastickém fondu pomocí jazyka Transact-SQL, použijte následující příkazy T-SQL. Tyto příkazy můžete vydat pomocí Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs)nebo jakéhokoli jiného programu, který se může připojit k serveru Azure SQL Database a předat příkazy jazyka Transact-SQL. Chcete-li vytvořit a spravovat pravidla brány firewall pomocí T-SQL, přečtěte si téma [Správa pravidel brány firewall pomocí jazyka Transact-SQL](sql-database-firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules).
 
 > [!IMPORTANT]
 > Nemůžete vytvořit, aktualizovat nebo odstranit Azure SQL Database elastický fond pomocí jazyka Transact-SQL. Můžete přidat nebo odebrat databáze z elastického fondu a pomocí zobrazení dynamické správy vracet informace o existujících elastických fondech.

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8f12f07d22387e5625b10e564cd05109e5bc73fc
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383142"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744400"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -339,7 +339,7 @@ Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a sl
 - `ALTER ASSEMBLY`nejde odkazovat na soubory. Viz [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Databázová pošta (db_mail)
- - `sp_send_dbmail`nelze odeslat atachments pomocí @file_attachments parametru. Tento postup nelze vytvořit v místním systému souborů a v jeho rozsahu nebo úložišti objektů BLOB v Azure.
+ - `sp_send_dbmail`přílohy nelze odeslat pomocí @file_attachments parametru. Tento postup nelze vytvořit v místním systému souborů a v jeho rozsahu nebo úložišti objektů BLOB v Azure.
  - Podívejte se na známé problémy související `@query` s parametrem a ověřením.
  
 ### <a name="dbcc"></a>DBCC

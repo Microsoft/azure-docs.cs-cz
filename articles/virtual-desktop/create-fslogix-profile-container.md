@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233264"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390824"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -24,7 +24,7 @@ V této příručce se dozvíte, jak nastavit účet Azure NetApp Files a vytvo�
 
 V tomto článku se předpokládá, že už máte [fondy hostitelů](create-host-pools-azure-marketplace.md) nastavené a seskupené do jednoho nebo víc tenantů v prostředí virtuálních počítačů s Windows. Informace o tom, jak nastavit klienty, najdete v tématu [Vytvoření tenanta v rámci virtuálního počítače s Windows](tenant-setup-azure-active-directory.md) a [našeho příspěvku na blogu pro technickou komunitu](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
-Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuálními počítači s Windows. Pokud hledáte obecnější informace o tom, jak nastavit Azure NetApp Files a vytvořit kontejnery profilů FSLogix mimo virtuální počítač s Windows, přečtěte si téma [nastavení Azure NetApp Files a vytvoření svazku NFS](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)v rychlém startu.
+Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuálními počítači s Windows. Pokud hledáte obecnější informace o tom, jak nastavit Azure NetApp Files a vytvořit kontejnery profilů FSLogix mimo virtuální počítač s Windows, přečtěte si téma [nastavení Azure NetApp Files a vytvoření svazku NFS v rychlém](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)startu.
 
 >[!NOTE]
 >Tento článek se nezabývá osvědčenými postupy pro zabezpečení přístupu ke sdílené Azure NetApp Files.
@@ -195,11 +195,11 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 4. Spuštěním následujících rutin přiřaďte uživatele ke skupině vzdálené plochy:
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Ujistěte se, že uživatelé mají přístup ke sdílené složce Azure NetApp.
@@ -222,6 +222,6 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
    ![Snímek obrazovky obsahu složky v cestě pro připojení Uvnitř je jeden soubor VHD s názvem "Profile_ssbb".](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Kontejnery profilů FSLogix můžete použít k nastavení sdílené složky profilu uživatele. Informace o tom, jak vytvořit sdílené složky profilů uživatelů pomocí nových kontejnerů, najdete v tématu [vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).

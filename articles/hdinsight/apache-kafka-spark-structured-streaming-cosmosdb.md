@@ -1,19 +1,19 @@
 ---
-title: Apache Spark strukturovaného streamování z Apache Kafka do Azure Cosmos DB – Azure HDInsight
+title: Apache Spark dat z Apache Kafka do Azure Cosmos DB – Azure HDInsight
 description: Naučte se používat strukturované streamování Apache Spark ke čtení dat z Apache Kafka a jejich následnému uložení do Azure Cosmos DB. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c2d2f56f2a0686b23a3a907686dcee0760d37365
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 546dd094614a72cada2aff60704c4fc191301ad2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947068"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734942"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB
 
@@ -69,7 +69,7 @@ I když můžete vytvořit clustery Azure Virtual Network, Kafka a Spark ručně
    
     ![Vlastní nasazení HDInsight](./media/apache-kafka-spark-structured-streaming-cosmosdb/parameters.png)
 
-    * **Předplatné**: Vyberte své předplatné Azure.
+    * **Předplatné:** Vyberte své předplatné Azure.
    
     * **Skupina prostředků**: Vytvořte skupinu nebo vyberte některou existující. Tato skupina obsahuje cluster HDInsight.
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení clusteru pro Apache Hadoop, Apache Spark, Apache Kafka, Apache HBA nebo R Server – Azure HDInsight
+title: Nastavení clusteru pro Apache Hadoop, Spark, Kafka, HBA nebo R Server – Azure
 description: Nastavte clustery Hadoop, Kafka, Spark, HBA, R Server nebo neplní clustery pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure Classic, Azure PowerShell, REST nebo sady SDK.
 keywords: instalace clusteru Hadoop, instalace clusteru Kafka, instalace clusteru Spark, co je cluster v Hadoop
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113700"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733493"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
@@ -254,7 +254,7 @@ Další informace o používání služby Azure Virtual Network s HDInsight najd
 Příklad použití dvou typů clusterů v rámci virtuální sítě Azure najdete v tématu [použití Apache Spark strukturovaného streamování s Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Další informace o používání služby HDInsight s virtuální sítí, včetně specifických požadavků na konfiguraci pro virtuální síť, najdete v tématu [plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Řešení chyb při vytváření clusteru s Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 - [Co jsou HDInsight, Apache Hadoop ekosystém a clustery Hadoop?](hadoop/apache-hadoop-introduction.md)

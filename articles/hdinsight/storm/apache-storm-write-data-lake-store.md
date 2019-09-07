@@ -1,5 +1,5 @@
 ---
-title: Kurz – použití Apache Storm k zápisu do úložiště/Data Lake Storage – Azure HDInsight
+title: Kurz – Apache Storm zápisy do úložiště/Data Lake Storage – Azure HDInsight
 description: Kurz – Naučte se používat Apache Storm k zápisu do úložiště kompatibilního s HDFS pro Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 17cb1091d34c8c0800d0b4dd1f9044fee0ef313f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 752bf1919634d29221a00d983b4e88fefaf628d5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946454"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736340"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Kurz: Zápis do Apache Hadoop HDFS z Apache Storm ve službě Azure HDInsight
 
@@ -160,7 +160,7 @@ Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpů
     hdfs.url: wasbs:///
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__ , pak __Y__ a nakonec __ENTER__ . Hodnoty v tomto souboru nastavily adresu URL úložiště a název adresáře, do kterého se data zapisují.
+    Pokud chcete soubor uložit, použijte __CTRL + X__, pak __Y__a nakonec __ENTER__. Hodnoty v tomto souboru nastavily adresu URL úložiště a název adresáře, do kterého se data zapisují.
 
 1. K zahájení topologie použijte následující příkaz:
 
@@ -205,11 +205,11 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__ . Zobrazí se seznam skupin prostředků.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak používat Apache Storm k zápisu dat do úložiště kompatibilního se systémem HDFS používaného Apache Storm v HDInsight.
 

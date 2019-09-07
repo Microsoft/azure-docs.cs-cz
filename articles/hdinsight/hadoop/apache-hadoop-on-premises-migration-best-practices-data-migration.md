@@ -1,6 +1,6 @@
 ---
-title: Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
-description: Přečtěte si osvědčené postupy migrace dat pro migrace místních Hadoop clusterů pro Azure HDInsight.
+title: Migrace místních Apache Hadoopových clusterů do Azure HDInsight – migrace dat
+description: Naučte se osvědčené postupy migrace dat pro migraci místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -8,77 +8,77 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 732cb118b7a0eebdbf28c7d7fe6ced435ce7920e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713720"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735916"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy pro migraci dat
 
-Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. To je součástí série, která poskytuje osvědčené postupy pro pomoc s migrací místních systémů Apache Hadoop do Azure HDInsight.
+Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. Je součástí série, která poskytuje osvědčené postupy, které vám pomůžou s migrací místních Apache Hadoop systémů do Azure HDInsight.
 
 ## <a name="migrate-on-premises-data-to-azure"></a>Migrace místních dat do Azure
 
-Existují dvě hlavní možnosti, jak migrovat data z místního prostředí Azure:
+Existují dvě hlavní možnosti migrace dat z místního prostředí do prostředí Azure:
 
 1.  Přenos dat přes síť pomocí protokolu TLS
-    1. Přes internet – můžete přenést data do úložiště Azure přes regulární připojení k Internetu pomocí některého z několik nástrojů, jako: Průzkumník služby Azure Storage, AzCopy, Azure Powershellu a Azure CLI.  Zobrazit [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) Další informace.
-    2. Expressroute – ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datacentry Microsoftu a infrastrukturou ve vlastních prostorách nebo v společně umístěného zařízení. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a rychlost s nižší latencí než Typická připojení přes Internet. Další informace najdete v tématu [vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
-    1. Přenosy dat online pole dat – okraj pole Data a brána pole dat jsou online data převodu produkty, které fungují jako sítě úložiště brány pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure dokumentaci služby Data Box – Online přenos](https://docs.microsoft.com/azure/databox-online/).
-1.  Přesouvání dat do offline režimu
-    1. Data pole přenosy dat offline – zařízení Data Box Data Box Disk, a zařízení Data Box náročné umožňují přenos velkých objemů dat do Azure, pokud síť není možné. Tato zařízení pro offline přenos dat se převážejí mezi vaší organizací a datacentrem Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení. Další informace o zařízení Data Box offline převodu naleznete v tématu [dokumentaci služby Azure Data Box - Offline převodu](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů systému Hadoop najdete v tématu [použití Azure Data Box pro migraci z úložiště místní HDFS do služby Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+    1. Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI.  Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) .
+    2. Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a rychlost s nižší latencí než Typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    1. Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](https://docs.microsoft.com/azure/databox-online/).
+1.  Přenos dat do režimu offline
+    1. Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení pro offline přenos dat se převážejí mezi vaší organizací a datacentrem Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
-Následující tabulka má dobu přenosu přibližné dat na základě dat svazku a síťové šířky pásma. Pokud se očekává, že migrace dat trvat více než tři týdny, použijte Data box.
+Následující tabulka má přibližnou dobu trvání přenosu dat na základě objemu dat a šířky pásma sítě. Pokud se očekává, že migrace dat trvá déle než tři týdny, použijte data box.
 
 |**Množství dat**|**Šířka pásma sítě**||||
 |---|---|---|---|---|
 || **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 dny|1 den| 2 hodiny|14 minut|
-|10 TB|22 dnů|10 dnů|1 den|2 hodiny|
-|35 TB|76 dnů|34 dnů|3 dny.|8 hodin|
-|80 TB|173 dnů|78 dnů|8 dní|19 hodin|
-|100 TB|216 dnů|97 dnů|10 dnů|1 den|
-|200 TB|1 rok|194 dnů|19 dnů|2 dny|
+|10 TB|22 dní|10 dní|1 den|2 hodiny|
+|35 TB|76 dní|34 dní|3 dny|8 hodin|
+|80 TB|173 dní|78 dní|8 dní|19 hodin|
+|100 TB|216 dní|97 dní|10 dní|1 den|
+|200 TB|1 rok|194 dní|19 dní|2 dny|
 |500 TB|3 roky|1 rok|49 dní|5 dní|
-|1 PB|6 let|3 roky|97 dnů|10 dnů|
-|2 PB|12 let|5 let.|194 dnů|19 dnů|
+|1 PB|6 let|3 roky|97 dní|10 dní|
+|2 PB|12 let|5 let|194 dní|19 dní|
 
-Nástroje pro nativní pro Azure, jako jsou Apache Hadoop DistCp, Azure Data Factory a AzureCp, je možné posílat data přes síť. Nástroj třetí strany WANDisco lze použít také ke stejnému účelu. Nástroje Mirrormaker Apache Kafka a Apache Sqoop slouží pro přenosy probíhající dat z místního systémů služby Azure storage.
+Nástroje, které jsou nativní pro Azure, například Apache Hadoop DistCp, Azure Data Factory a AzureCp, se dají použít k přenosu dat přes síť. Nástroj WANDisco třetí strany se dá použít i pro stejný účel. Apache Kafka nástroje MirrorMaker a Apache Sqoop je možné použít pro průběžné přenosy dat z místního prostředí do systémů úložiště Azure.
 
 
 ## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Požadavky na výkon při použití Apache Hadoop DistCp
 
 
-DistCp je projekt Apache, který používá k přenosu dat, zpracování chyb a zotavení z těchto chyb úlohu MapReduce mapy. Každý úkol mapy přiřazuje seznam zdrojových souborů. Úloha mapy všechny své přiřazené soubory pak zkopíruje do cíle. Existuje několik postupů může zlepšit výkon DistCp.
+DistCp je projekt Apache, který používá úlohu mapování MapReduce k přenosu dat, zpracování chyb a zotavení z těchto chyb. Přiřadí seznam zdrojových souborů ke každé úloze mapy. Úloha mapy pak zkopíruje všechny přiřazené soubory do cílového umístění. Existuje několik postupů, které mohou zlepšit výkon DistCp.
 
-### <a name="increase-the-number-of-mappers"></a>Zvýšit počet Mapovačů
+### <a name="increase-the-number-of-mappers"></a>Zvýšení počtu mapovačů
 
-DistCp se pokusí vytvořit mapu úlohy tak, aby každý z nich zkopíruje přibližně stejný počet bajtů. Ve výchozím nastavení používají 20 mapovačů DistCp úlohy. Pomocí více Mapovačů Distcp (s na mě "parametr příkazového řádku) během procesu přenosu dat se zvyšuje paralelismu a snižuje délce přenosu dat. Nicméně existují dvě věci k uvážení při zvýšení počtu Mapovačů:
+DistCp se pokusí vytvořit úlohy mapování, aby každá z nich přibližně stejný počet bajtů měla. Ve výchozím nastavení používají úlohy DistCp 20 mapovačů. Použití většího počtu mapovačů pro Distcp (s parametrem ' m ' na příkazovém řádku) zvyšuje paralelismus během procesu přenosu dat a snižuje délku přenosu dat. Při zvyšování počtu mapovačů je ale potřeba vzít v úvahu dvě věci:
 
-1. DistCp na nejnižší členitost je jeden soubor. Určení počtu Mapovačů větší než počet zdrojových souborů nepomůže a bude plýtvání prostředky clusteru k dispozici.
-1. Vezměte v úvahu dostupnou paměť Yarn clusteru k určení počtu Mapovačů. Každý úkol mapování se spustí jako kontejneru Yarn. Za předpokladu, že v clusteru běží bez náročných úloh, můžete určit počet Mapovačů tento vzorec: m = (počet uzlů pracovního procesu \* paměti YARN pro každý pracovní uzel) / YARN velikost kontejneru. Ale pokud jiné aplikace používají paměti, vyberte pouze použít část paměti YARN pro úlohy DistCp.
+1. Nejnižší členitost DistCp je jeden soubor. Zadání počtu mapovačů, než je počet zdrojových souborů, nepomůže a zachová dostupné prostředky clusteru.
+1. Vezměte v úvahu dostupnou paměť příze v clusteru, abyste zjistili počet mapovačů. Každá úloha mapy se spustí jako kontejner příze. Za předpokladu, že v clusteru nejsou spuštěny žádné jiné náročné úlohy, lze počet mapovačů určit pomocí následujícího vzorce: m = (počet pracovních uzlů \* příze paměti pro každý pracovní uzel)/velikost kontejneru příz. Pokud však jiná aplikace používá paměť, pak zvolte možnost použít pouze část paměti PŘÍZe pro úlohy DistCp.
 
-### <a name="use-more-than-one-distcp-job"></a>Použití více než jednu úlohu DistCp
+### <a name="use-more-than-one-distcp-job"></a>Použití víc než jedné úlohy DistCp
 
-Pokud velikost datové sady, přesunout je větší než 1 TB, použijte více než jednu úlohu DistCp. Pomocí více než jedné úlohy se omezuje dopad selhání. Pokud některé z úloh selže, stačí restartovat tuto konkrétní úlohu, ne všechny úlohy.
+Pokud je velikost datové sady, která má být přesunuta, větší než 1 TB, použijte více než jednu úlohu DistCp. Používání více než jedné úlohy omezuje dopad selhání. Pokud dojde k chybě některé úlohy, stačí pouze restartovat konkrétní úlohu, nikoli všechny úlohy.
 
 ### <a name="consider-splitting-files"></a>Zvažte rozdělení souborů
 
-Pokud existují malé množství velkých souborů, zvažte jejich rozdělení do souboru 256 MB bloků dat, chcete-li získat další potenciální souběžnosti ovládacím prvkem více Mapovačů.
+Pokud existuje malý počet velkých souborů, zvažte jejich rozdělení na bloky dat souborů 256 MB, aby se získalo více potenciálních souběžnosti s více mapovači.
 
-### <a name="use-the-strategy-command-line-parameter"></a>Použijte parametr příkazového řádku 'strategií.
+### <a name="use-the-strategy-command-line-parameter"></a>Použijte parametr příkazového řádku strategie.
 
-Zvažte použití `strategy = dynamic` parametrů v příkazovém řádku. Výchozí hodnota `strategy` parametr `uniform size`, v takovém případě zkopíruje každý mapy přibližně stejný počet bajtů. Pokud tento parametr se změní na `dynamic`, soubor výpisu je rozdělený do několika "bloků dat souborů". Počet bloků dat souborů, které je násobkem počet mapy. Každý úkol mapa má přiřazenou jednu bloků dat souborů. Po zpracování všech cest v bloku dat, se odstraní aktuální blok dat a získat nový blok. Proces pokračuje, dokud nejsou k dispozici žádné další bloky. Tento přístup "dynamické" umožňuje rychlejší mapy úkoly k využívání více cest než ty pomalejší, tedy urychlení celkové DistCp úlohy.
+Zvažte použití `strategy = dynamic` parametru v příkazovém řádku. Výchozí hodnota `strategy` parametru je `uniform size`, v takovém případě Každá mapa kopíruje přibližně stejný počet bajtů. Když se tento parametr změní na `dynamic`, soubor výpisu se rozdělí do několika "bloků souborů". Počet souborů bloku je násobek počtu map. Každé úloze mapování se přiřadí jeden ze souborů bloku. Po zpracování všech cest v bloku dat se odstraní aktuální blok a získá se nový blok. Proces pokračuje, dokud nebudou k dispozici žádné další bloky. Tento "dynamický" přístup umožňuje rychlejší mapování – úlohy pro využívání více cest než pomalejších, čímž se celková rychlost DistCp úlohy.
 
 ### <a name="increase-the-number-of-threads"></a>Zvýšení počtu vláken
 
-Pokud zvýšení `-numListstatusThreads` parametr zvyšuje výkon. Tento parametr řídí počet vláken pro vytvoření souboru výpisu a maximální hodnota je 40.
+Podívejte se `-numListstatusThreads` , jestli zvýšením parametru zlepšíte výkon. Tento parametr řídí počet vláken, která se mají použít pro sestavování seznamu souborů, a 40 je maximální hodnota.
 
-### <a name="use-the-output-committer-algorithm"></a>Použít algoritmus potvrzovatelem výstupu
+### <a name="use-the-output-committer-algorithm"></a>Použití algoritmu výstupního potvrzení
 
-Pokud předávání parametru `-Dmapreduce.fileoutputcommitter.algorithm.version=2` zlepšuje výkon DistCp. Tento výstup potvrzovatelem algoritmus využívající dlaždice má optimalizace kolem zápis výstupní soubory do cílového umístění. Následující příkaz je příklad, který ukazuje použití různé parametry:
+Podívejte se, jestli předání `-Dmapreduce.fileoutputcommitter.algorithm.version=2` parametru vylepšuje DistCp výkon. Tento algoritmus vypisování výstupu obsahuje optimalizace pro zápis výstupních souborů do cíle. Následující příkaz je příklad, který ukazuje použití různých parametrů:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/
@@ -88,19 +88,19 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ### <a name="apache-hive"></a>Apache Hive
 
-Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace databáze.
+Podregistr metastore lze migrovat buď pomocí skriptů, nebo pomocí replikace databáze.
 
-#### <a name="hive-metastore-migration-using-scripts"></a>Migrace metastore Hive pomocí skriptů
+#### <a name="hive-metastore-migration-using-scripts"></a>metastore Hive migrace pomocí skriptů
 
-1. Generovat DDLs Hive z na místě metastore Hive. Tento krok lze provést pomocí [skriptu bash obálky](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
-1. Upravte vygenerovaný DDL nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL.
-1. Aktualizované DDL spouštět metastore z clusteru HDInsight.
-1. Ujistěte se, že verze metastore Hive je kompatibilní mezi místním prostředím a cloudem.
+1. Vygenerujte podregistr DDLs z místního metastore Hive. Tento krok se dá udělat pomocí [skriptu bash obálky](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. Upravte vygenerovanou položku DDL tak, aby nahradila adresu URL HDFS pomocí adres URL WASB/ADLS/ABFS.
+1. Spusťte aktualizovaný skript DDL v metastore z clusteru HDInsight.
+1. Ujistěte se, že je verze metastore Hive kompatibilní mezi místním prostředím a cloudem.
 
-#### <a name="hive-metastore-migration-using-db-replication"></a>Migrace metastore Hive pomocí replikace databáze
+#### <a name="hive-metastore-migration-using-db-replication"></a>metastore Hive migrace pomocí replikace databáze
 
-- Nastavení replikace databáze mezi metastore Hive místní databáze a HDInsight metastore DB.
-- Nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL, třeba pomocí "Hive MetaTool":
+- Nastavte replikaci databáze mezi místními metastore Hive DB a HDInsight metastore DB.
+- Pomocí příkazu "podregistr MetaTool" nahraďte adresu URL HDFS adresami URL WASB/ADLS/ABFS, například:
 
 ```bash
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -108,12 +108,12 @@ Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace datab
 
 ### <a name="apache-ranger"></a>Apache Ranger
 
-- Export místní zásady Ranger pro soubory xml.
-- Transformace v místním prostředí konkrétních systémem HDFS cest WASB nebo ADLS pomocí některého nástroje, například XSLT.
-- Importujte zásady k Ranger systémem HDInsight.
+- Exportujte zásady místních Ranger do souborů XML.
+- Transformujte místní konkrétní cesty na základě HDFS na WASB/ADLS pomocí nástroje, jako je XSLT.
+- Importujte zásady na Ranger běžící na HDInsight.
 
 ## <a name="next-steps"></a>Další postup
 
 Přečtěte si další článek v této sérii:
 
-- [Osvědčené postupy pro Azure HDInsight Hadoop migrace místní zabezpečení a DevOps](apache-hadoop-on-premises-migration-best-practices-security-devops.md)
+- [Osvědčené postupy zabezpečení a DevOps migrace z místního prostředí do Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-security-devops.md)

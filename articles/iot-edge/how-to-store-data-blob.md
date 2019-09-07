@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f2b26e3418e264c2613a183570c7e27f75ab5d63
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 1a48088d0d7ef1e14614629340ee477833535861
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208237"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390390"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge
 
@@ -121,7 +121,7 @@ Zajistěte, aby uživatel v zařízení IoT mohl číst a zapisovat do vzdálen�
 Pro nasazení `<storage mount>` může být hodnota **G:/ContainerData: C:/BlobRoot**. 
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Udělení přístupu k adresáři uživateli kontejneru v systému Linux
-Pokud jste v možnostech vytváření pro kontejnery pro Linux používali [připojení svazku](https://docs.docker.com/storage/volumes/) pro úložiště, nemusíte provádět žádné další kroky, ale pokud jste použili [připojení](https://docs.docker.com/storage/bind-mounts/) k vazbě, jsou tyto kroky nezbytné ke správnému spuštění služby.
+Pokud jste v možnostech vytváření pro kontejnery pro Linux používali [připojení svazku](https://docs.docker.com/storage/volumes/) pro úložiště, nemusíte provádět žádné další kroky, ale pokud jste použili [připojení k vazbě](https://docs.docker.com/storage/bind-mounts/) , jsou tyto kroky nezbytné ke správnému spuštění služby.
 
 V rámci principu minimálního oprávnění pro omezení oprávnění k přístupu pro uživatele, aby neprováděli minimální oprávnění, která potřebují k práci, tento modul obsahuje uživatele (název: absie, ID: 11000) a skupina uživatelů (název: absie, ID: 11000). Pokud je kontejner spuštěný jako **kořen** (výchozí uživatel je **kořenový**), bude naše služba spuštěná jako uživatel s nízkými oprávněními **absie** . 
 
@@ -152,7 +152,7 @@ sudo chmod -R 700 <blob-dir>
 
 ## <a name="configure-log-files"></a>Konfigurace souborů protokolu
 
-Informace o konfiguraci souborů protokolu pro váš modul najdete v tématu věnovaném osvědčeným postupům pro [produkční](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)prostředí.
+Informace o konfiguraci souborů protokolu pro váš modul najdete v tématu věnovaném [osvědčeným postupům pro produkční](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)prostředí.
 
 ## <a name="connect-to-your-blob-storage-module"></a>Připojení k modulu úložiště objektů blob
 
@@ -173,7 +173,6 @@ Dokumentace k Azure Blob Storage obsahuje ukázkový kód pro rychlý Start v n�
 Následující ukázky pro rychlý Start používají jazyky, které jsou podporované také nástrojem IoT Edge, takže je můžete nasadit jako IoT Edge moduly společně s modulem úložiště objektů BLOB:
 
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
     - Při použití této sady SDK máme známý problém, protože tato verze modulu nevrací čas vytvoření objektu BLOB. Proto některé metody, jako jsou objekty blob seznamu, nefungují. Jako alternativní řešení nastavila explicitně verzi rozhraní API u klienta objektů blob na hodnotu 2017-04-17. <br>Příklad:  `block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)

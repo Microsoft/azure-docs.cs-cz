@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872994"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744580"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery
 Díky Azure Monitor pro kontejnery můžete pomocí grafů výkonu a stavu monitorovat zatížení clusterů Azure Kubernetes Service (AKS) ze dvou perspektiv. Můžete monitorovat přímo z clusteru AKS nebo můžete monitorovat všechny clustery AKS v rámci předplatného z Azure Monitor. Zobrazení Azure Container Instances je také možné při monitorování konkrétního clusteru AKS.
@@ -60,8 +60,8 @@ Zahrnuté stavy stavu jsou:
 * **Kritické**: Zjistili jsme jeden nebo několik kritických problémů, které je potřeba vyřešit tak, aby se v normálním provozním stavu obnovila podle očekávání.
 * **Upozornění**: Zjistil se jeden nebo víc problémů, které je potřeba vyřešit, nebo se může stát kritickým stavem.
 * **Neznámý**: Pokud by služba nemohla vytvořit spojení s uzlem nebo pod, stav se změní na neznámý stav.
-* Nenalezeno: Odstranil se pracovní prostor, skupina prostředků nebo předplatné obsahující pracovní prostor pro toto řešení.
-* Neautorizováno: Uživatel nemá požadovaná oprávnění ke čtení dat v pracovním prostoru.
+* **Nenalezeno**: Odstranil se pracovní prostor, skupina prostředků nebo předplatné obsahující pracovní prostor pro toto řešení.
+* **Neautorizováno**: Uživatel nemá požadovaná oprávnění ke čtení dat v pracovním prostoru.
 * **Chyba:** Při pokusu o čtení dat z pracovního prostoru došlo k chybě.
 * **Nesprávně nakonfigurované**: V zadaném pracovním prostoru nebyla správně nakonfigurovaná Azure Monitor pro kontejnery.
 * **Žádná data:** Data nebyla v pracovním prostoru hlášena za posledních 30 minut.
@@ -92,7 +92,7 @@ V seznamu clusterů můžete přejít na stránku **clusteru** tak, že vyberete
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>Výkon zobrazení přímo z clusteru AKS
 
-Přístup k Azure Monitor pro kontejnery je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně vyberete přehledy. Informace o clusteru AKS jsou uspořádány do čtyř perspektiv:
+Přístup k Azure Monitor pro kontejnery je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně vyberete **přehledy** . Informace o clusteru AKS jsou uspořádány do čtyř perspektiv:
 
 - Cluster
 - Uzly 
@@ -118,18 +118,18 @@ Azure Monitor for Containers také podporuje [Průzkumníka metrik](../platform/
 
 V Průzkumníku metrik můžete zobrazit agregované metriky využití uzlů a pod Azure Monitor pro kontejnery. Následující tabulka shrnuje podrobnosti, které vám pomůžou pochopit, jak používat grafy metrik k vizualizaci metrik kontejnerů.
 
-|Obor názvů | Metrika |
-|----------|--------|
+|Obor názvů | Metrika | Popis | 
+|----------|--------|-------------|
 | insights.container/nodes | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | Agregované měření využití procesoru napříč clusterem. Jedná se o jádro procesoru rozdělené na 1000 jednotek (lisovny = 1000). Slouží k určení použití jader v kontejneru, kde mnoho aplikací může používat jeden Core.| 
+| | cpuUsagePercentage | Celkové průměrné využití procesoru měřené v procentech v rámci clusteru.|
+| | memoryRssBytes | Využitá paměť RSS kontejneru v bajtech| 
+| | memoryRssPercentage | Paměť RSS kontejneru využitá v procentech|
+| | memoryWorkingSetBytes | Využité paměti pracovní sady kontejneru.| 
+| | memoryWorkingSetPercentage | Paměť pracovní sady kontejneru využitá v procentech | 
+| | nodesCount | Počet uzlů z Kubernetes.|
 | insights.container/pods | |
-| | PodCount |
+| | PodCount | Počet pod z Kubernetes.|
 
 Můžete [rozdělit](../platform/metrics-charts.md#apply-splitting-to-a-chart) metriku tak, aby se zobrazila podle dimenze, a vizualizovat, jak vzájemně porovnávají různé segmenty. Pro uzel můžete graf rozdělit podle dimenze *hostitele* . Z pod pod můžete segmentovat podle následujících dimenzí:
 
@@ -168,9 +168,9 @@ Z rozbaleného uzlu můžete procházet hierarchii pod nebo kontejnerem, který 
  
 ![Příklad přechodu k podrobnostem z uzlu na kontroler v zobrazení výkonu](./media/container-insights-analyze/drill-down-node-controller.png)
 
-V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli prohlédnout stav a využití prostředků u těchto objektů. Pokud chcete zkontrolovat využití paměti, vyberte v rozevíracím seznamu metrika možnost **paměť RSS** nebo **pracovní sada paměti**. **Paměť RSS** se podporuje jenom pro Kubernetes verze 1.8 a novější. V opačném případě zobrazení hodnot pro **Min&nbsp; %**  jako *NaN&nbsp;%* , má hodnotu číselný datový typ, který představuje Nedefinovaná nebo přičtení hodnotu.
+V horní části stránky vyberte řadiče nebo kontejnery, abyste si mohli prohlédnout stav a využití prostředků u těchto objektů. Pokud chcete zkontrolovat využití paměti, vyberte v rozevíracím seznamu **metrika** možnost **paměť RSS** nebo **pracovní sada paměti**. **Paměť RSS** se podporuje jenom pro Kubernetes verze 1.8 a novější. V opačném případě zobrazení hodnot pro **Min&nbsp; %**  jako *NaN&nbsp;%* , má hodnotu číselný datový typ, který představuje Nedefinovaná nebo přičtení hodnotu.
 
-**Pracovní sada paměti** zobrazuje jak rezidentní paměť, tak virtuální paměť (mezipaměť) a je celkový počet aplikací, které aplikace používá. **RSS paměti** zobrazuje pouze hlavní paměť, což je rezidentní paměť. Tato metrika zobrazuje skutečnou kapacitu dostupné paměti.
+**Pracovní sada paměti** zobrazuje jak rezidentní paměť, tak virtuální paměť (mezipaměť) a je celkový počet aplikací, které aplikace používá. **RSS paměti** zobrazuje pouze hlavní paměť (což není nic, ale rezidentní paměť jinými slovy). Tato metrika zobrazuje skutečnou kapacitu dostupné paměti.
 
 ![Zobrazení výkonu uzly kontejneru](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -222,7 +222,7 @@ Informace, které se zobrazí při zobrazení řadičů, jsou popsány v násled
 | Sloupec | Popis | 
 |--------|-------------|
 | Název | Název kontroleru.|
-| Stav | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo pozastaveno. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
+| Stav | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
 | Minimální&nbsp;%, prům&nbsp;.%,&nbsp;50%,&nbsp;90%,&nbsp;95.%, max.&nbsp;%| Souhrn průměrem průměrnou procentuální hodnotu Každá entita pro vybranou metriku a percentil. |
 | Min, AVG, 50, 90, 95., Max  | Souhrn průměrné využití procesoru millicore nebo paměti výkon kontejneru pro vybrané percentil. Průměrné hodnoty se měří z procesoru nebo paměti limitu nastaveného pro pod. |
 | Containers | Celkový počet kontejnerů pro kontroler nebo pod. |
@@ -306,7 +306,7 @@ Přístup k těmto sešitům získáte tak, že v rozevíracím seznamu **Zobraz
 
 ![Zobrazit rozevírací seznam sešitů](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si téma [vytvoření výstrah výkonu pomocí Azure monitor pro kontejnery](container-insights-alerts.md) , kde se dozvíte, jak vytvořit výstrahy s vysokým využitím procesoru a paměti, aby podporovaly vaše DevOps nebo provozní procesy a postupy.
 - V [příkladech dotazů protokolu](container-insights-log-search.md#search-logs-to-analyze-data) si můžete prohlédnout předdefinované dotazy a příklady pro vyhodnocení nebo přizpůsobení výstrah, vizualizaci nebo analýze clusterů.

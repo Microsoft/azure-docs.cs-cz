@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití Apache Storm ke čtení a zápisu dat pomocí Apache Kafka – Azure HDInsight'
+title: 'Kurz: Apache Storm ke čtení, psaní pomocí Apache Kafka-Azure HDInsight'
 description: Přečtěte si, jak vytvořit streamovací kanál pomocí systémů Apache Storm a Apache Kafka ve službě HDInsight. V tomto kurzu použijete komponenty KafkaBolt a KafkaSpout ke streamování dat ze systému Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 62452937d51c80a59e24e6d254d29337552b1af2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840252"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734738"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Storm s Apache Kafka v HDInsight
 
@@ -58,7 +58,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >
-> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu Naplánování [služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
+> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [Naplánování služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
 ## <a name="storm-and-kafka"></a>Storm a Kafka
 
@@ -471,9 +471,9 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
     Vrácená hodnota je obdobná následujícímu textu:
 
-        ```output
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        ```
+    ```output
+    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+     ```
 
     > [!IMPORTANT]  
     > V clusteru sice můžete mít víc než dva zprostředkovatelské hostitele, není však nutné poskytovat klientům jejich úplný seznam. Jeden nebo dva jsou postačující.
@@ -631,7 +631,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak používat topologii [Apache Storm](https://storm.apache.org/) k zápisu do [Apache Kafka](https://kafka.apache.org/) ve službě HDInsight a čtení z nich. Zjistili jste také, jak ukládat data do úložiště kompatibilního s [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) používaného službou HDInsight.
 

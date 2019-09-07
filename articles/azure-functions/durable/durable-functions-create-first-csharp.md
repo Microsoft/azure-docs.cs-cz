@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40e25fc0cfc9d08ef59092929d2cf1d51dcf83d1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e34d000f77ca5a5ac75fadab61b4280d528c6805
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087562"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735297"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 

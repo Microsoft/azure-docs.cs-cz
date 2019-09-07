@@ -1,5 +1,5 @@
 ---
-title: Migrace na podrobný přístup založený na rolích pro konfigurace clusteru – Azure HDInsight
+title: Migrace na podrobný přístup založený na rolích – konfigurace clusteru Azure HDInsight
 description: Přečtěte si o změnách vyžadovaných v rámci migrace až na podrobný přístup založený na rolích pro konfigurace clusteru HDInsight.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983022"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733238"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -156,7 +156,7 @@ Aktualizujte [rutinu AZ PowerShell verze 2.0.0](https://www.powershellgallery.co
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Přidání přiřazení role operátora clusteru HDInsight uživateli
 
-Uživatel s rolí [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) může přiřadit roli operátora [clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) uživatelům, kteří by měli mít přístup pro čtení a zápis k citlivým hodnotám konfigurace clusteru HDInsight (například přihlašovací údaje brány clusteru a klíče účtu úložiště).
+Uživatel s rolí [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) může přiřadit roli [operátora clusteru HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) uživatelům, kteří by měli mít přístup pro čtení a zápis k citlivým hodnotám konfigurace clusteru HDInsight (například přihlašovací údaje brány clusteru a klíče účtu úložiště).
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 

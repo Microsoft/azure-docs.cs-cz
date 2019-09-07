@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569346"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744472"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -38,7 +38,7 @@ Z perspektivy databáze existují čtyři scénáře s případnými výpadky:
 - Výpadek datového centra, možná způsobené přírodní katastrofou. Tento scénář vyžaduje určitou úroveň geografické redundance s převzetím služeb při selhání do alternativního datového centra.
 - Chyby upgradu nebo údržby, neočekávané problémy, ke kterým dojde během plánované údržby nebo údržby infrastruktury, mohou vyžadovat rychlé vrácení zpět do předchozího stavu databáze.
 
-Pro zmírnění selhání místního hardwaru a softwaru SQL Database zahrnuje architekturu s [vysokou dostupností](sql-database-high-availability.md), která garantuje automatické obnovení z těchto selhání s 99,995% dostupností smlouvy SLA.  
+Pro zmírnění selhání místního hardwaru a softwaru SQL Database zahrnuje [architekturu s vysokou dostupností](sql-database-high-availability.md), která garantuje automatické obnovení z těchto selhání s 99,995% dostupností smlouvy SLA.  
 
 Z důvodu ochrany vaší firmy před ztrátou dat SQL Database automaticky vytvoří úplné zálohy databáze každý týden, odrozdílové zálohy databáze každých 12 hodin a zálohování protokolů transakcí každé 5-10 minut. Zálohy se ukládají do úložiště RA-GRS po dobu alespoň 7 dnů pro všechny úrovně služeb. Všechny úrovně služeb s výjimkou podpora Basic konfigurovatelný doba uchovávání záloh pro obnovení k určitému bodu v čase, až 35 dní. 
 
@@ -46,7 +46,7 @@ SQL Database také nabízí několik funkcí provozní kontinuity, které může
 
 - [Dočasné tabulky](sql-database-temporal-tables.md) umožňují obnovit verze řádků z jakéhokoli bodu v čase.
 - [Integrované automatické zálohování](sql-database-automated-backups.md) a obnovení k určitému [bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) umožňují obnovení kompletní databáze k určitému časovému okamžiku v rámci nakonfigurované doby uchování až do 35 dnů.
-- Odstraněnou [databázi můžete obnovit](sql-database-recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byla odstraněna, pokud **SQL Database Server nebyl odstraněn**.
+- [Odstraněnou databázi můžete obnovit](sql-database-recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byla odstraněna, pokud **SQL Database Server nebyl odstraněn**.
 - [Dlouhodobé uchovávání záloh](sql-database-long-term-retention.md) umožňuje uchovávat zálohy až po dobu 10 let.
 - [Aktivní geografická replikace](sql-database-active-geo-replication.md) umožňuje vytvářet čitelné repliky a ručně převzetí služeb při selhání pro všechny repliky v případě výpadku datového centra nebo upgradu aplikace.
 - [Skupina automatického převzetí služeb při selhání](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umožňuje aplikaci automaticky obnovit v případě výpadku datového centra.
@@ -78,7 +78,7 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Při výpadku dojde k narušení provozu, které může trvat jen několik minut nebo až několik hodin.
 
 - Jednou z možností je počkat, až výpadek skončí a databáze se vrátí do režimu online. Tento postup funguje pro aplikace, které si mohou dovolit mít databázi v režimu offline. Například vývojový projekt nebo bezplatná zkušební verze, na které nemusíte neustále pracovat. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že už nepotřebujete databázi.
-- Další možností je obnovit databázi na jakémkoli serveru v libovolné oblasti Azure pomocí geograficky [redundantních záloh databáze](sql-database-recovery-using-backups.md#geo-restore) (geografické obnovení). Geografické obnovení používá jako zdroj geograficky redundantní zálohu a dá se použít k obnovení databáze i v případě, že je databáze nebo datacentrum nedostupné kvůli výpadku.
+- Další možností je obnovit databázi na jakémkoli serveru v libovolné oblasti Azure pomocí [geograficky redundantních záloh databáze](sql-database-recovery-using-backups.md#geo-restore) (geografické obnovení). Geografické obnovení používá jako zdroj geograficky redundantní zálohu a dá se použít k obnovení databáze i v případě, že je databáze nebo datacentrum nedostupné kvůli výpadku.
 - Nakonec můžete rychle obnovit z výpadku, pokud jste nakonfigurovali geograficky sekundární pomocí [aktivní geografické replikace](sql-database-active-geo-replication.md) nebo [skupiny automatického převzetí služeb při selhání](sql-database-auto-failover-group.md) pro vaši databázi nebo databáze. V závislosti na vaší volbě těchto technologií můžete použít buď ruční nebo automatické převzetí služeb při selhání. I když převzetí služeb při selhání zabere jenom pár sekund, bude tato služba při aktivaci trvat aspoň 1 hodinu. To je nezbytné k tomu, aby bylo zajištěno, že převzetí služeb při selhání je v rámci škálování výpadku oprávněné. Převzetí služeb při selhání může také vést k malé ztrátě dat z důvodu povahy asynchronní replikace. 
 
 Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu úplného zotavení aplikace po ničivé události. Čas potřebný k úplnému obnovení aplikace je známý jako cíl doby obnovení (RTO). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování z neplánované události rušivého vlivu na ztrátu. Potenciální ztráta dat se označuje jako cíl bodu obnovení (RPO).
@@ -92,7 +92,7 @@ Různé metody obnovení nabízejí různé úrovně bodu RPO a RTO. Můžete zv
 | Ruční převzetí služeb při selhání databáze | 30 s | 5 s |
 
 > [!NOTE]
-> *Ruční převzetí služeb při selhání databáze* odkazuje na převzetí služeb při selhání izolované databáze na geograficky replikovanou sekundární práci pomocí neplánovaného [režimu](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities).
+> *Ruční převzetí služeb při selhání databáze* odkazuje na převzetí služeb při selhání izolované databáze na geograficky replikovanou sekundární práci pomocí [neplánovaného režimu](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities).
 Podrobnosti o automatických převzetí služeb při selhání RTO a RPO najdete v tabulce výše v tomto článku.
 
 
@@ -130,7 +130,7 @@ Pokud jako mechanismus obnovení používáte aktivní geografickou replikaci ne
 
 ### <a name="perform-a-geo-restore"></a>Provést geografickou obnovu
 
-Pokud používáte automatizované zálohování s geograficky redundantním úložištěm (povoleno ve výchozím nastavení), můžete obnovit databázi pomocí geografického [obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). K obnovení obvykle dochází během 12 hodin – s ztrátou dat po dobu až jedné hodiny, kterou určuje čas, kdy byla provedena a replikována poslední záloha protokolu. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Poznámka: geografická obnova obnovuje databázi pouze do posledního dostupného bodu v čase.
+Pokud používáte automatizované zálohování s geograficky redundantním úložištěm (povoleno ve výchozím nastavení), můžete obnovit databázi pomocí [geografického obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). K obnovení obvykle dochází během 12 hodin – s ztrátou dat po dobu až jedné hodiny, kterou určuje čas, kdy byla provedena a replikována poslední záloha protokolu. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Poznámka: geografická obnova obnovuje databázi pouze do posledního dostupného bodu v čase.
 
 > [!NOTE]
 > Pokud se datové centrum vrátí do režimu online předtím, než přepnete aplikaci do obnovené databáze, můžete obnovení zrušit.
@@ -140,7 +140,7 @@ Pokud používáte automatizované zálohování s geograficky redundantním úl
 Po obnovení s použitím libovolného mechanismu musíte provést následující dodatečné úlohy, abyste pro uživatele zprovoznili své aplikace:
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
-- Zajistěte, aby se pro uživatele připojovala příslušná pravidla brány firewall na úrovni serveru, aby je bylo možné povolit, aby mohli používat [brány firewall na úrovni databáze](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) .
+- Zajistěte, aby se pro uživatele připojovala příslušná pravidla brány firewall na úrovni serveru, aby je bylo možné povolit, aby mohli používat [brány firewall na úrovni databáze](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
 - Ujistěte se, že se používají odpovídající přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [obsažené uživatelé](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a04221a61ae057185ddd8ad37bbba2d387ee5eda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 788693698e75a24269e29c54e03af35c1853f1f6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097977"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735211"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
 
@@ -94,11 +94,11 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Ukončení orchestrace externí
 
-Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, Nevolejte `ContinueAsNew` vše, co je potřeba udělat, a nechejte funkci ukončit.
+Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, `ContinueAsNew` *Nevolejte vše* , co je potřeba udělat, a nechejte funkci ukončit.
 
 Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte k zastavení metodu [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) . Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Naučte se implementovat orchestrace singleton.](durable-functions-singletons.md)

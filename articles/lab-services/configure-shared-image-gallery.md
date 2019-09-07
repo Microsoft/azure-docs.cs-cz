@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941804"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389951"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurace galerie sdílených imagí v Azure DevTest Labs
 DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Uživatelům testovacího prostředí umožňuje přístup k imagím ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomáhá také vytvořit strukturu a zajistit organizaci související s imagemi virtuálních počítačů s vlastní správou. Funkce Galerie sdílených imagí podporuje:
@@ -32,6 +32,9 @@ DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machi
 Další informace najdete v [dokumentaci Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md). 
  
 Pokud máte velký počet spravovaných imagí, které potřebujete spravovat, a chcete je zpřístupnit v rámci vaší společnosti, můžete galerii sdílených imagí využít jako úložiště, které usnadňuje jejich aktualizaci a sdílení. Jako vlastník testovacího prostředí můžete galerii sdílených imagí k tomuto prostředí připojit. Jakmile je galerie připojená, uživatelé mohou z těchto imagí vytvářet počítače. Klíčovou výhodou této funkce je, že DevTest Labs může využívat výhody sdílení imagí mezi testovacími prostředími, předplatnými i oblastmi. 
+
+> [!NOTE]
+> Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Požadavky
 - Současně můžete k testovacímu prostředí připojit jenom jednu galerii sdílených imagí. Pokud chcete připojit jinou galerii, budete muset odpojit stávající a připojit další. 

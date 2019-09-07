@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 192c5c7a2d4c671aec0dcf72bef78abd1845b1ea
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946082"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387942"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Sestavení aplikace LUIS programově pomocí Node.js
 
@@ -26,11 +26,11 @@ LUIS poskytuje programový rozhraní API, která provádí všechno, co, který 
 
 * Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření.
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* Tento kurz pracuje s sdíleného svazku clusteru pro soubory protokolů hypotetické společnosti uživatelských požadavků. Stáhněte si ho [tady](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Tento článek začíná na CSV pro soubory protokolu hypotetické společnosti pro požadavky uživatelů. Stáhněte si ho [tady](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Nainstalujte nejnovější Node.js pomocí NPM. Stáhněte si ji z [tady](https://nodejs.org/en/download/).
 * **[Doporučuje]**  Visual Studio Code pro technologii IntelliSense a ladění, si ji stáhnout z [tady](https://code.visualstudio.com/) zdarma.
 
-Veškerý kód v tomto kurzu je k dispozici v [úložišti Azure-samples Language Understanding GitHubu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
+Veškerý kód v tomto článku je k dispozici v [úložišti Azure-samples Language Understanding GitHubu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Dříve existující data mapy a záměry a entity
 I když máte systému, který nebyl vytvořen pomocí služby LUIS v úvahu, pokud obsahuje textová data, která mapuje se na různé věci uživatele chcete udělat, je možné a navrhněte mapování z existující kategorie záměry v LUIS vstup uživatele. Pokud můžete identifikovat důležité slova nebo fráze v co říci uživatelům, může tato slova namapovat na entity.

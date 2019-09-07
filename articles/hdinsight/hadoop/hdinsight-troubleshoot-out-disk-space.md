@@ -1,17 +1,17 @@
 ---
 title: Uzel clusteru nemá volné místo na disku v Azure HDInsight.
-description: Uzel clusteru nemá volné místo na disku v Azure HDInsight.
+description: Řešení potíží s Apache Hadoop problémy s místem na disku uzlu clusteru ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 696327a00135ba6b3414c773732b8bc99ce4100c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139fb0e77f8f6960e7b13899f9586dd78bf46a92
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842449"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735851"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scénář: Uzel clusteru nemá volné místo na disku v Azure HDInsight.
 
@@ -37,7 +37,7 @@ Mezipaměť aplikace Apache nitě mohla spotřebovat veškeré dostupné místo 
 
 1. Chcete-li tento problém vyřešit, optimalizujte svou aplikaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

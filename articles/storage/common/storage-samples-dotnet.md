@@ -3,191 +3,80 @@ title: Ukázky Azure Storage pomocí .NET | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště .NET.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/03/2019
+ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: cec6b0498adf55428fade7ae00db6550496a20bd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 57249bd2fa4d3c8aefe19a85ec9a2b6b584b00d2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721859"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743958"
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázky Azure Storage pomocí .NET
 
-## <a name="net-sample-index"></a>Vzorový index .NET
-
 Následující tabulka poskytuje přehled našich ukázek úložiště a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
-<tr> 
-<td rowspan="16"><b>Objekt blob</b></td>
-<td>Připojit objekt blob</td> 
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144">Začínáme s objekty blob</a></td> 
-</tr> 
-<tr> 
-<td>Objekt blob bloku</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Webová aplikace Fotogalerie pro Azure Blob Storage</a></td>
-</tr> 
-<tr> 
-<td>Šifrování na straně klienta</td>
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs">Ukázky šifrování objektů BLOB</a></td>
-</tr> 
-<tr> 
-<td>Zkopírování objektu Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Vytvoření kontejneru</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Webová aplikace Fotogalerie pro Azure Blob Storage</a></td>
-</tr> 
-<tr> 
-<td>Odstranit objekt Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Webová aplikace Fotogalerie pro Azure Blob Storage</a></td>
-</tr> 
-<tr> 
-<td>Odstranění kontejneru</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Metadata, vlastnosti/statistiky objektu BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Seznam ACL/metadata/vlastnosti kontejneru</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Webová aplikace Fotogalerie pro Azure Blob Storage</a></td>
-</tr> 
-<tr> 
-<td>Získat rozsahy stránek</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Objekt BLOB nebo kontejner zapůjčení</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Výpis objektu BLOB nebo kontejneru</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s objekty blob</a></td>
-</tr> 
-<tr> 
-<td>Objekt blob stránky</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Začínáme s objekty blob</a></td>
-</tr>
-<tr> 
-<td>SAS</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr>   
-<tr> 
-<td>Vlastnosti služby</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">Začínáme s objekty blob</a></td>
-</tr>           
-<tr> 
-<td>Objekt BLOB snímku</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">Zálohování disků virtuálních počítačů Azure pomocí přírůstkových snímků</a></td>
-</tr> 
-<tr> 
-<td rowspan="9"><b>File</b></td>
-<td>Vytváření sdílených složek, adresářů a souborů</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr>
-<tr> 
-<td>Odstranit sdílené složky/adresáře/soubory</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs">Začínáme se službou Azure File Service v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Vlastnosti nebo metadata adresáře</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr> 
-<tr> 
-<td>Stažení souborů</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr> 
-<tr> 
-<td>Vlastnosti souboru/metadata/metriky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr> 
-<tr> 
-<td>Vlastnosti souborové služby</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr> 
-<tr> 
-<td>Výpis adresářů a souborů</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr>
-<tr> 
-<td>Vypsat sdílené složky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr>
-<tr> 
-<td>Vlastnosti sdílené složky/metadata/statistiky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Ukázka File Storage Azure Storage .NET</a></td> 
-</tr>
-<tr> 
-<td rowspan="8"><b>Provedených</b></td>
-<td>Přidat zprávu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Šifrování na straně klienta</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage šifrování na straně klienta .NET Queue</a></td> 
-</tr> 
-<tr> 
-<td>Vytvořit fronty</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Odstranit zprávu/frontu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Prohlížet zprávu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Seznam ACL fronty/metadata/statistiky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Vlastnosti služby Queue</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizovat zprávu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Začínáme se službou Azure Queue v .NET</a></td> 
-</tr> 
-<tr> 
-<td rowspan="7"><b>Tabulka</b></td>
-<td>Vytvořit tabulku</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Správa souběžnosti pomocí Azure Storage ukázkové aplikace</a></td> 
-</tr> 
-<tr> 
-<td>Odstranit entitu/tabulku</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Začínáme se službou Azure Table Storage pomocí rozhraní .NET</a></td> 
-</tr> 
-<tr> 
-<td>Vložit/sloučit/nahradit entitu</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Správa souběžnosti pomocí Azure Storage ukázkové aplikace</a></td> 
-</tr> 
-<tr> 
-<td>Entity dotazu</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Začínáme se službou Azure Table Storage pomocí rozhraní .NET</a></td> 
-</tr> 
-<tr> 
-<td>Tabulky dotazů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">Začínáme se službou Azure Table Storage pomocí rozhraní .NET</a></td> 
-</tr> 
-<tr> 
-<td>Seznam ACL/vlastnosti tabulky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">Začínáme se službou Azure Table Storage pomocí rozhraní .NET</a></td> 
-</tr> 
-<tr> 
-<td>Aktualizovat entitu</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Správa souběžnosti pomocí Azure Storage ukázkové aplikace</a></td> 
-</tr> 
-</tbody> 
-</table>
-<br/>
+## <a name="blob-samples"></a>Ukázky objektů BLOB
+
+| **Scénář** | **Vzorový kód** |
+|--------------|-----------------|
+| Připojit objekt blob | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| Objekt blob bloku | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Šifrování na straně klienta | [Ukázky šifrování objektů BLOB](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
+| Zkopírování objektu Blob | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Vytvoření kontejneru | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Odstranit objekt Blob | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Odstranění kontejneru | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Metadata, vlastnosti/statistiky objektu BLOB | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Seznam ACL/metadata/vlastnosti kontejneru | [Webová aplikace Fotogalerie pro Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Získat rozsahy stránek | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Objekt BLOB nebo kontejner zapůjčení | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Výpis objektu BLOB nebo kontejneru | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
+| Objekt blob stránky | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
+| SAS | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Vlastnosti služby | [Začínáme s objekty blob](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Objekt BLOB snímku | [Zálohování disků virtuálních počítačů Azure pomocí přírůstkových snímků](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
+
+## <a name="file-samples"></a>Ukázky souborů
+
+| **Scénář** | **Vzorový kód** |
+|--------------|-----------------|
+| Vytváření sdílených složek, adresářů a souborů | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| Odstranit sdílené složky/adresáře/soubory | [Začínáme se službou Azure File Service v .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
+| Vlastnosti nebo metadata adresáře | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| Stažení souborů | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| Vlastnosti souboru/metadata/metriky | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| Vlastnosti souborové služby | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| Výpis adresářů a souborů | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| Vypsat sdílené složky | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| Vlastnosti sdílené složky/metadata/statistiky | [Ukázka File Storage Azure Storage .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+
+## <a name="queue-samples"></a>Ukázky front
+
+| **Scénář** | **Vzorový kód** |
+|--------------|-----------------|
+| Přidat zprávu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| Šifrování na straně klienta | [Azure Storage šifrování na straně klienta .NET Queue](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
+| Vytvořit fronty | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| Odstranit zprávu/frontu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| Prohlížet zprávu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| Seznam ACL fronty/metadata/statistiky | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
+| Vlastnosti služby Queue | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
+| Aktualizovat zprávu | [Začínáme se službou Azure Queue v .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+
+## <a name="table-samples"></a>Ukázky tabulek
+
+| **Scénář** | **Vzorový kód** |
+|--------------|-----------------|
+| Vytvořit tabulku | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| Odstranit entitu/tabulku | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| Vložit/sloučit/nahradit entitu | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| Entity dotazu | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| Tabulky dotazů | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| Seznam ACL/vlastnosti tabulky | [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs) |
+| Aktualizovat entitu | [Správa souběžnosti pomocí Azure Storage ukázkové aplikace](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 
 ## <a name="azure-code-samples-library"></a>Knihovna ukázek kódu Azure
 
@@ -209,4 +98,5 @@ Pokud hledáte pokyny k instalaci a Začínáme s klientskými knihovnami Azure 
 Informace o ukázkách pro jiné jazyky:
 
 * Java: [Ukázky pro Azure Storage s použitím Javy](storage-samples-java.md)
+* Python: [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
 * Všechny ostatní jazyky: [Ukázky Azure Storage](../storage-samples.md)

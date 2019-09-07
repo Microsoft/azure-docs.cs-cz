@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171402"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s přiblížením
 
@@ -44,7 +44,8 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Přiblížení podporuje jednotné přihlašování (SSO) iniciované **SP**
+* Přiblížení podporuje jednotné přihlašování, které iniciuje **SP** a 
+* Přiblížení podporuje [ **automatizované** zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial).
 
 ## <a name="adding-zoom-from-the-gallery"></a>Přidání přiblížení z Galerie
 
@@ -67,7 +68,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s p�
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 2. **[Nakonfigurujte přihlašování k přiblížení](#configure-zoom-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte uživatele](#create-zoom-test-user)** s přiblížením pro přiblížení, abyste měli protějšek B. Simon v přiblížení, který je propojený s reprezentací uživatele Azure AD.
+    1. **[Vytvořte uživatele s přiblížením pro přiblížení](#create-zoom-test-user)** , abyste měli protějšek B. Simon v přiblížení, který je propojený s reprezentací uživatele Azure AD.
 3. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
@@ -87,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<companyname>.zoom.us`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro lupu](https://support.zoom.us/hc/en-us) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro lupu](https://support.zoom.us/hc/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -101,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 > Informace o tom, jak nakonfigurovat roli v Azure AD, najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 > [!NOTE]
-> Přiblížení může očekávat deklaraci skupiny v datové části SAML. Pokud jste vytvořili nějaké skupiny, obraťte se na [tým podpory pro přiblížení klientů](https://support.zoom.us/hc/en-us) s informacemi o skupině, aby mohli na svém konci konfigurovat informace o skupině. Také je nutné zadat ID objektu pro [přiblížení týmu podpory klientů](https://support.zoom.us/hc/en-us) , aby mohli na konci nakonfigurovat ID objektu. Pokud chcete získat ID objektu, přečtěte si téma [Konfigurace přiblížení pomocí Azure](https://support.zoom.us/hc/en-us/articles/115005887566).
+> Přiblížení může očekávat deklaraci skupiny v datové části SAML. Pokud jste vytvořili nějaké skupiny, obraťte se na [tým podpory pro přiblížení klientů](https://support.zoom.us/hc/) s informacemi o skupině, aby mohli na svém konci konfigurovat informace o skupině. Také je nutné zadat ID objektu pro [přiblížení týmu podpory klientů](https://support.zoom.us/hc/) , aby mohli na konci nakonfigurovat ID objektu. Pokud chcete získat ID objektu, přečtěte si téma [Konfigurace přiblížení pomocí Azure](https://support.zoom.us/hc/articles/115005887566).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -149,7 +150,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     a. Do textového pole **Adresa URL přihlašovací stránky** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    b. V případě hodnoty **URL stránky** pro odhlášení musíte přejít na Azure Portal a kliknout na **Azure Active Directory** na levé straně a přejít na **Registrace aplikací**.
+    b. V případě hodnoty **URL stránky pro odhlášení** musíte přejít na Azure Portal a kliknout na **Azure Active Directory** na levé straně a přejít na **Registrace aplikací**.
 
     ![Tlačítko Azure Active Directory](./media/zoom-tutorial/appreg.png)
 
@@ -163,7 +164,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity** .
 
-    f. Do textového pole vystavitele vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal. 
+    f. Do textového pole **vystavitele** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal. 
 
     g. Klikněte na **Uložit**.
 
@@ -172,30 +173,10 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-zoom-test-user"></a>Vytvořit test uživatele lupy
 
-Aby se uživatelé Azure AD mohli přihlašovat k přiblížení, musí se zřídit k přiblížení. V případě přiblížení je zřizování ručním úkolem.
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Chcete-li zřídit uživatelský účet, proveďte následující kroky:
-
-1. Přihlaste se k webu **zvětšení** vaší společnosti jako správce.
-
-2. Klikněte na kartu **Správa účtů** a potom klikněte na možnost **Správa uživatelů**.
-
-3. V části Správa uživatelů klikněte na **Přidat uživatele**.
-
-    ![Správa uživatelů](./media/zoom-tutorial/ic784703.png "Správa uživatelů")
-
-4. Na stránce **Přidat uživatele** proveďte následující kroky:
-
-    ![Přidat uživatele](./media/zoom-tutorial/ic784704.png "Přidat uživatele")
-
-    a. Jako **typ uživatele**vyberte **základní**.
-
-    b. Do textového pole **e-maily** zadejte e-mailovou adresu platného účtu Azure AD, který chcete zřídit.
-
-    c. Klikněte na **Přidat**.
+Cílem této části je vytvořit uživatele s názvem B. Simon v přiblížení. Přiblížení podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) konfigurace automatického zřizování uživatelů.
 
 > [!NOTE]
-> K zřizování Azure Active Directory uživatelských účtů můžete použít jakékoli jiné nástroje pro vytvoření nebo rozhraní API pro přiblížení účtu uživatele, které poskytuje přiblížení.
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory přiblížení klienta](https://support.zoom.us/hc/) .
 
 ## <a name="test-sso"></a>Test SSO 
 

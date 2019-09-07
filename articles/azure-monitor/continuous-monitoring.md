@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967753"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744499"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -56,7 +56,7 @@ Aplikace jsou stejně spolehlivé jako základní infrastruktura. Monitorování
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Kombinování prostředků ve skupinách prostředků Azure
 Typická aplikace v Azure dnes zahrnuje několik prostředků, jako jsou virtuální počítače a App Services nebo mikroslužby hostované v Cloud Services, clusterech AKS nebo Service Fabric. Tyto aplikace často využívají závislosti jako Event Hubs, úložiště, SQL a Service Bus.
 
-- Kombinováním prostředků do skupin prostředků Azure získáte úplnou viditelnost všech prostředků, které tvoří různé aplikace. [Azure monitor pro skupiny prostředků](../azure-monitor/insights/resource-group-insights.md) nabízí jednoduchý způsob, jak sledovat stav a výkon celé aplikace v plném zásobníku a umožňuje přechod na příslušné komponenty při jakémkoli vyšetřování nebo ladění.
+- Kombinováním prostředků ve skupinách prostředků Azure získáte úplnou viditelnost všech prostředků, které tvoří vaše různé aplikace. [Azure monitor pro skupiny prostředků](../azure-monitor/insights/resource-group-insights.md) nabízí jednoduchý způsob, jak sledovat stav a výkon celé aplikace v plném zásobníku a umožňuje přechod na příslušné komponenty při jakémkoli vyšetřování nebo ladění.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Zajištění kvality prostřednictvím průběžného nasazování
 Průběžná integrace a průběžné nasazování umožňují automaticky integrovat a nasazovat změny kódu do vaší aplikace na základě výsledků automatizovaného testování. Zjednodušuje proces nasazení a zajišťuje kvalitu všech změn před přechodem do produkčního prostředí.
@@ -72,7 +72,7 @@ Důležitý aspekt monitorování je proaktivní informování správců všech 
 
 - [V Azure monitor vytvořte výstrahy](../azure-monitor/platform/alerts-overview.md) na základě protokolů a metrik a Identifikujte předvídatelné stavy selhání. Měli byste mít na cíl, aby všechny výstrahy mohly reagovat na to, že představují skutečné kritické podmínky a snaží se snížit počet falešně pozitivních hodnot. Použijte [dynamické prahové hodnoty](platform/alerts-dynamic-thresholds.md) k automatickému výpočtu standardních hodnot dat metriky, ale nemusíte definovat své vlastní statické prahové hodnoty. 
 - Definujte akce pro výstrahy, které budou používat nejúčinnější způsob upozorňování správců. Dostupné [akce pro oznámení](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) jsou zprávy SMS, e-maily, nabízená oznámení nebo hlasové hovory.
-- Pomocí pokročilejších akcí se můžete [připojit k nástroji ITSM](platform/itsmc-overview.md) nebo jiným systémům pro správu [](platform/activity-log-alerts-webhook.md)výstrah pomocí webhooků.
+- Pomocí pokročilejších akcí se můžete [připojit k nástroji ITSM](platform/itsmc-overview.md) nebo jiným systémům pro správu výstrah pomocí [webhooků](platform/activity-log-alerts-webhook.md).
 - Opravte situace zjištěné v výstrahách i [Azure Automation Runbooky](../automation/automation-webhooks.md) nebo [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , které lze spustit z výstrahy pomocí webhooků. 
 - Pomocí automatického [škálování](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) můžete dynamicky zvyšovat a snižovat výpočetní prostředky na základě shromážděných metrik.
 

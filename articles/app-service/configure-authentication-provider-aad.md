@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233099"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743257"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurace aplikace pro App Service, aby používala Azure Active Directory přihlášení
 
@@ -36,11 +36,11 @@ Doporučuje se nakonfigurovat každou aplikaci App Service s vlastní registrac�
 ## <a name="express"> </a>Konfigurace pomocí expresního nastavení
 
 1. V [Azure Portal]přejděte do aplikace App Service. V levém navigačním panelu vyberte **ověřování/autorizace**.
-2. Pokud není povolená možnost **ověřování/autorizace** ,vyberte zapnuto.
+2. Pokud není povolená možnost **ověřování/autorizace** , vyberte **zapnuto**.
 3. Vyberte **Azure Active Directory**a potom v **režimu správy**vyberte **Express** .
 4. Výběrem **OK** zaregistrujete aplikaci App Service do Azure Active Directory. Tím se vytvoří nová registrace aplikace. Pokud chcete místo toho zvolit existující registraci aplikace, klikněte na **Vybrat existující aplikaci** a vyhledejte název dříve vytvořené registrace aplikace ve vašem tenantovi. Kliknutím vyberte registraci aplikace a klikněte na **OK**. Pak na stránce nastavení Azure Active Directory klikněte na **OK** .
 Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace.
-5. Volitelné Pokud chcete omezit přístup k aplikaci jenom na uživatele ověřené pomocí Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se přihlásila **pomocí Azure Active Directory**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky byly přesměrovány na Azure Active Directory pro ověřování.
+5. Volitelné Pokud chcete omezit přístup k aplikaci jenom na uživatele ověřené pomocí Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. To vyžaduje, aby všechny požadavky byly ověřené a všechny neověřené požadavky byly přesměrovány na Azure Active Directory pro ověřování.
 
     > [!NOTE]
     > Omezení přístupu tímto způsobem se vztahuje na všechna volání aplikace, která nemusí být žádoucí pro aplikace, které mají veřejně dostupnou domovskou stránku, stejně jako v mnoha aplikacích s jednou stránkou. U takových aplikací může být upřednostňována možnost **povolení anonymních požadavků (bez akce)** , pokud se aplikace ručně spouští samotné přihlášení, jak je popsáno [zde](overview-authentication-authorization.md#authentication-flow).
@@ -71,7 +71,7 @@ Při ručním vytváření registrace aplikace si poznamenejte tři informace, k
 ### <a name="secrets"> </a>Přidání informací o Azure Active Directory do aplikace App Service
 
 1. V [Azure Portal]přejděte do aplikace App Service. V nabídce vlevo vyberte **ověřování/autorizace**. Pokud není povolená funkce ověřování/autorizace, vyberte **zapnuto**. 
-1. Volitelné Ve výchozím nastavení App Service ověřování umožňuje neověřený přístup k vaší aplikaci. Pokud chcete vyhovět ověřování uživatele, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se přihlásila **pomocí Azure Active Directory**.
+1. Volitelné Ve výchozím nastavení App Service ověřování umožňuje neověřený přístup k vaší aplikaci. Pokud chcete vyhovět ověřování uživatele, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**.
 1. V části zprostředkovatelé ověřování vyberte **Azure Active Directory**.
 1. V **režimu správy**vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
 
@@ -81,6 +81,9 @@ Při ručním vytváření registrace aplikace si poznamenejte tři informace, k
     |ID vystavitele| Pomocí `https://login.microsoftonline.com/<tenant-id>`a nahraďte  *\<> ID tenanta* ID **adresáře (tenanta)** registrace aplikace. |
     |Tajný kód klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali v registraci aplikace.|
     |Povolené cílové skupiny tokenu| Pokud se jedná o *back-endové* aplikace a chcete u front-endové aplikace zakázat ověřovací tokeny, přidejte sem **identifikátor URI ID aplikace** pro *front* -end. |
+
+    > [!NOTE]
+    > Nakonfigurované **ID klienta** se *vždycky* implicitně považuje za povolenou cílovou skupinu, a to bez ohledu na to, jak jste nakonfigurovali **povolené cílové skupiny tokenů**.
 1. Vyberte **OK**a pak vyberte **Uložit**.
 
 Nyní jste připraveni použít Azure Active Directory pro ověřování ve vaší aplikaci App Service.

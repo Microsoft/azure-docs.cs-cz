@@ -1,5 +1,5 @@
 ---
-title: Předem připravené záměry a entity – LUIS
+title: 'Kurz: Předem připravené záměry a entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu přidáte do aplikace předem připravené záměry a entity, abyste rychle získali předpověď záměrů a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 4697bad15a374bed0de08b7cabc5aceaad7f1259
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876705"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390987"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Kurz: Identifikace běžných záměrů a entit
 
@@ -61,7 +61,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 1. Vyberte tlačítko **Add prebuilt entity** (Přidat předem připravenou entitu).
 
-1. V seznamu předem vytvořených entit vyberte následující entity a potom vyberte Hotovo:
+1. V seznamu předem vytvořených entit vyberte následující entity a potom vyberte **Hotovo**:
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
@@ -199,7 +199,7 @@ Další informace o práci s aplikací LUIS:
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Díky přidávání předem připravených záměrů a entit může klientská aplikace určovat běžné záměry uživatelů a extrahovat běžné datové typy.  
 

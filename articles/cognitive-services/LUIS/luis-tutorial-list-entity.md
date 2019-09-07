@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946053"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390276"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
-Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  
+Tento článek ukazuje použití [entity seznam](luis-concept-entity-types.md) k zvýšení detekce entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  
 
-V tomto kurzu se naučíte:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření seznamu entit 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!Tip]
 > Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Veškerý kód v tomto kurzu je k dispozici v [úložišti GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
+Veškerý kód v tomto článku je k dispozici v [úložišti GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
 ## <a name="use-homeautomation-app"></a>Používání HomeAutomation aplikace
 Umožňuje aplikaci HomeAutomation například zahřívání a vychladnutí ovládací prvky řízení zařízení, například světla, systémy pro zábavu a prostředí. Tyto systémy obsahovat několik jiné názvy, které mohou obsahovat názvy, přezdívky, zkratky a slangem výrobce. 
@@ -59,7 +59,7 @@ HomeAutomation.Device entity se skvěle hodí pro malý počet zařízení nebo 
 
 A **seznam entit** je dobrou volbou pro tento scénář, protože sadu podmínek pro zařízení v budově nebo areálu je sada známých i v případě, že je velmi velké sady. Pomocí seznamu entit může LUIS přijímat všechny možné hodnoty v sadě pro termostat a vyřešit dolů jedno zařízení "termostat". 
 
-V tomto kurzu bude vytvoření seznamu entit pomocí termostat. Alternativní názvy pro termostat v tomto kurzu jsou následující: 
+V tomto článku se vytvoří seznam entit s termostatem. Alternativní názvy pro termostat v tomto článku jsou: 
 
 |alternativní názvy pro termostat|
 |--|

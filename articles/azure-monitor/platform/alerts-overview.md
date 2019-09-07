@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034817"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735114"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -53,6 +53,7 @@ Signály **signálu** jsou vydávány cílovým prostředkem a mohou být v něk
 **Popis výstrahy** – popis pravidla výstrahy nakonfigurovaného uživatelem
 
 **Závažnost** – po splnění kritérií zadaných v pravidle výstrahy se zobrazí Závažnost výstrahy. Závažnost může být v rozsahu od 0 do 4.
+Závažnost 0 = kritická závažnost 1 = Error závažnost 2 = Warning závažnost 3 = informativní závažnost 4 = verbose
 
 **Action** – konkrétní akce provedená při vyvolání výstrahy. Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md).
 
@@ -83,7 +84,7 @@ Podporovány jsou následující stavy upozornění.
 | Potvrzení | Správce zkontroloval výstrahu a začal na ní pracovat. |
 | Zavřeno | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
 
-**Stav výstrahy** se liší a nezávisle na **stavu monitorování**. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*. Pokud je podkladová podmínka, která způsobila výstrahu, vyhodnocena jako nejasná, je stav monitorování nastaven na hodnotu *Vyřešeno*. Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
+**Stav výstrahy** se liší a nezávisle na **stavu monitorování**. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*. Pokud je podkladová podmínka, která způsobila výstrahu, *vyhodnocena*jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno. Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
 
 ## <a name="smart-groups"></a>Inteligentní skupiny 
 Inteligentní skupiny jsou ve verzi Preview. 
@@ -94,7 +95,7 @@ Inteligentní skupiny jsou agregace výstrah na základě algoritmů strojového
 ## <a name="alerts-experience"></a>Prostředí výstrah 
 Stránka výchozí výstrahy poskytuje souhrn výstrah, které jsou vytvořeny v konkrétním časovém intervalu. Zobrazuje celkový počet výstrah pro každou závažnost se sloupci, které identifikují celkový počet výstrah v jednotlivých stavech pro každou závažnost. Výběrem libovolné závažnosti otevřete stránku [všechny výstrahy](#all-alerts-page) filtrované podle této závažnosti.
 
-Případně můžete [pomocí rozhraní REST API programově vytvořit výčet instancí výstrah generovaných ve vašich](#manage-your-alert-instances-programmatically)předplatných.
+Případně můžete [pomocí rozhraní REST API programově vytvořit výčet instancí výstrah generovaných ve vašich předplatných](#manage-your-alert-instances-programmatically).
 
 > [!NOTE]
    >  V uživatelském rozhraní nebo prostřednictvím rozhraní REST API můžete mít k dispozici jenom výstrahy vygenerované za posledních 30 dní.

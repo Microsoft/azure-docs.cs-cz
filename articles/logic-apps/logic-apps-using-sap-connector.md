@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165006"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390109"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
 > [!IMPORTANT]
-> Předchozí konektory serveru SAP Application Server a server zpráv SAP mají naplánované zastaralé. Aktuální konektor SAP slučuje tyto předchozí konektory SAP, takže nemusíte měnit typ připojení, je plně kompatibilní s předchozími konektory, poskytuje mnoho dalších možností a nadále používá knihovnu SAP .NET Connector ( SAP NCo).
+> Starší konektory serveru SAP Application Server a server zpráv SAP jsou naplánovány na zastaralé 30. listopadu 2019. Aktuální konektor SAP slučuje tyto předchozí konektory SAP, takže nemusíte měnit typ připojení, je plně kompatibilní s předchozími konektory, poskytuje mnoho dalších možností a nadále používá knihovnu SAP .NET Connector ( SAP NCo).
 >
 > U Logic Apps, které používají starší konektory, [migrujte prosím na nejnovější konektor](#migrate) před datem vyřazení. V opačném případě se tyto aplikace logiky projeví při selhání spuštění a nebude možné odesílat zprávy do vašeho systému SAP.
 
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které s
 
 Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, zaregistrujte [si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Aplikace logiky, ze které chcete získat přístup k systému SAP, a Trigger, který spouští pracovní postup vaší aplikace logiky. Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvořte svou první aplikaci](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiky.
 
@@ -278,7 +278,7 @@ Vaše aplikace logiky je teď připravená přijímat zprávy ze systému SAP.
 
 ## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDOC ze SAP
 
-Můžete nastavit SAP pro posílání [IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDOC, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDOC poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDOCs.
+Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDOC, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDOC poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDOCs.
 
 Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
@@ -495,7 +495,7 @@ Když je povoleno **bezpečné psaní** , schéma MAPUJE typy dat a TIMS na pole
 </xs:element>
 ```
 
-Když se odesílají zprávy s povoleným bezpečným typováním, TIMS odpověď dat a odpovědí bude vypadat jako v tomto příkladu:
+Když se odesílají zprávy s povoleným **bezpečným typováním** , TIMS odpověď dat a odpovědí bude vypadat jako v tomto příkladu:
 
 ```xml
 <DATE>99991231</DATE>
@@ -538,7 +538,7 @@ Tady jsou aktuálně známé problémy a omezení konektoru SAP:
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/sap/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Připojte se k místním systémům](../logic-apps/logic-apps-gateway-connection.md) z Azure Logic Apps.
 * Naučte se, jak pomocí [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)ověřit, transformovat a používat jiné operace se zprávou.

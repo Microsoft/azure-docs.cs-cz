@@ -1,19 +1,19 @@
 ---
-title: Použití rozšířeného serveru pro historii Spark k ladění a diagnostice aplikací Spark – Azure HDInsight
+title: Rozšířený server pro historii Sparku pro ladění aplikací Spark – Azure HDInsight
 description: Použití rozšířeného serveru pro historii Spark k ladění a diagnostice aplikací Spark – Azure HDInsight.
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 09/04/2019
+ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377257"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736460"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použití serveru historie rozšířených Apache Spark k ladění a diagnostice Apache Spark aplikací
 
@@ -45,7 +45,7 @@ Webové uživatelské rozhraní serveru historie Sparku vypadá takto:
 ## <a name="data-tab-in-spark-history-server"></a>Karta data v historii serveru Spark
 Vyberte ID úlohy a potom v nabídce Nástroje klikněte na **data** , aby se zobrazila data.
 
-+ Zkontrolujte **vstupy**a výstupy a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
++ Zkontrolujte **vstupy**a **výstupy**a **operace s tabulkami** , a to tak, že karty vyberete samostatně.
 
     ![Karty dat](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
 
@@ -122,7 +122,7 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
     > Přehrávání jednotlivých úloh je povoleno. Pro nekompletní úlohu není přehrávání podporované.
 
 
-+ Myš se posouvá a přiblíží se k přiblížení nebo zobrazení grafu úloh nebo  klikněte na tlačítko přiblížit, aby se vešlo na obrazovku.
++ Myš se posouvá a přiblíží se k přiblížení nebo zobrazení grafu úloh nebo klikněte na tlačítko **přiblížit** , aby se vešlo na obrazovku.
  
     ![přizpůsobit zobrazení grafu](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
 
@@ -158,7 +158,7 @@ Vyberte ID úlohy a potom kliknutím na **graf** v nabídce nástroje Získejte 
 
 
 ## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta Diagnostika v serveru historie Apache Spark
-Vyberte ID úlohy a potom  kliknutím na diagnóza v nabídce nástroje Získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
+Vyberte ID úlohy a potom kliknutím na **diagnóza** v nabídce nástroje Získejte zobrazení diagnostiky úlohy. Karta Diagnostika zahrnuje analýzu **dat**, **zkosení času**a **analýzy využití prováděcího modulu**.
     
 + Výběrem karet v uvedeném pořadí ověřte, jak se mají **Přezkosit data**, **Zkosit**a **analyzovat využití prováděcích** modulů.
 
@@ -189,7 +189,7 @@ Na kartě **časové zkosení** se zobrazují zkreslené úkoly na základě dob
 ### <a name="executor-usage-analysis"></a>Analýza využití prováděcího modulu
 Graf využití prováděcího modulu, který vizualizuje skutečné přidělení prováděcího modulu úlohy Spark a stav spuštění.  
 
-+ Klikněte na možnost **Analýza využití prováděcího modulu**, potom čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích**modulů, **spuštěných**prováděcích modulů, nečinných prováděcích modulů a **maximálního počtu instancí** U přidělených prováděcích modulů dojde ke zvýšení nebo snížení přidělených prováděcích modulů každý "prováděcí modul" nebo "exekutor" odebraný ", a proto můžete na kartě úlohy zaškrtnout možnost časová osa události.
++ Klikněte na možnost **Analýza využití prováděcího modulu**, potom čtyři typy křivky o použití prováděcího modulu jsou koncepty, včetně **přidělených prováděcích**modulů, **spuštěných**prováděcích modulů,**nečinných prováděcích**modulů a **maximálního počtu instancí** U přidělených prováděcích modulů dojde ke zvýšení nebo snížení přidělených prováděcích modulů každý "prováděcí modul" nebo "exekutor" odebraný ", a proto můžete na kartě úlohy zaškrtnout možnost časová osa události.
 
     ![Karta prováděcích modulů](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -323,7 +323,7 @@ Pokud chcete upgradovat pomocí opravy hotfix, použijte následující skript, 
 
 2.  Vstupní/výstupní data pomocí RDD se nezobrazí na kartě data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)
 * [Konfigurace nastavení Apache Spark](apache-spark-settings.md)

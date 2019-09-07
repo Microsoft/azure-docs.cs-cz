@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 156486f4f4f0df3d4bb4ab76492709bbecfb8eb5
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906548"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393918"
 ---
 ## <a name="set-up"></a>Nastavení
 
@@ -23,4 +23,4 @@ Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste
 Po získání klíče ze zkušebního předplatného nebo prostředku vytvořte dvě [proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `TRANSLATOR_TEXT_SUBSCRIPTION_KEY`– Klíč předplatného pro váš prostředek Translator Text.
-* `TRANSLATOR_TEXT_ENDPOINT`– Místní koncový bod nebo název vlastní subdomény pro váš prostředek.
+* `TRANSLATOR_TEXT_ENDPOINT`– Globální koncový bod pro Translator Text. Použijte `https://api.cognitive.microsofttranslator.com/`.

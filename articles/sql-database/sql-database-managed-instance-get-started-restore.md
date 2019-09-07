@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567466"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744407"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý start: Obnovení databáze do spravované instance
 
@@ -37,6 +37,7 @@ Tento rychlý start:
 - Vyžaduje použití SSMS k připojení ke spravované instanci. V těchto rychlých startech se můžete podívat, jak se připojit:
   - [Připojení ke spravované instanci Azure SQL Database z virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md)
   - [Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md).
+- Vyžaduje účet Azure Blob Storage (například Standard_LRS v2) pro **veřejnou IP adresu** chráněnou **přihlašovacími** `rw` údaji SAS s oprávněním. [Privátní IP adresy pro úložiště objektů BLOB chráněné bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) a koncovými body služby Azure Blob Storage se v tuto chvíli nepodporují.
 
 > [!NOTE]
 > Další informace o zálohování a obnovení databáze SQL Server pomocí služby Azure Blob Storage a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)najdete v tématu [SQL Server zálohování na adresu URL](sql-database-managed-instance-get-started-restore.md).

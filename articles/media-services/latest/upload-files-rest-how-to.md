@@ -1,6 +1,6 @@
 ---
-title: Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST | Dokumentace Microsoftu
-description: Další informace o získání mediálního obsahu do Media Services pomocí vytváření a nahrávání prostředky.
+title: Nahrání souborů do účtu Azure Media Services pomocí REST | Microsoft Docs
+description: Naučte se, jak získat mediální obsah do Media Services vytvořením a nahráním prostředků.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,53 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703884"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389806"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Media Services pomocí REST
 
-Ve službě Media Services můžete digitální soubory nahrát do kontejneru objektů blob přidružený k assetu. [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) entita může obsahovat video, zvuk, obrázky, kolekci miniatur, text sleduje a skryté titulky soubory (a metadata o těchto souborech). Jakmile se soubory nahrají do kontejneru assetu, váš obsah bezpečně uložen v cloudu pro další zpracování a streamování.
+V Media Services nahrajete digitální soubory do kontejneru objektů BLOB přidruženého k assetu. Entita [assetu](https://docs.microsoft.com/rest/api/media/operations/asset) může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech). Po nahrání souborů do kontejneru assetu se váš obsah bezpečně uloží do cloudu pro další zpracování a streamování.
 
-Tento článek popisuje, jak k nahrání místního souboru pomocí rozhraní REST.
+V tomto článku se dozvíte, jak nahrát místní soubor pomocí REST.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků popsaných v tomto tématu, budete muset:
 
-- Kontrola [Asset koncept](assets-concept.md).
+- Projděte si [koncept assetu](assets-concept.md).
 - [Konfigurace nástroje Postman pro volání REST API služby Azure Media Services](media-rest-apis-with-postman.md).
     
-    Ujistěte se, že chcete postupovat podle poslední krok v tomto tématu [získat Azure AD na Token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Nezapomeňte postupovat podle posledního kroku v tématu [získání tokenu Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
 ## <a name="create-an-asset"></a>Vytvoření assetu
 
-Tato část ukazuje, jak vytvořit nový prostředek.
+V této části se dozvíte, jak vytvořit nový prostředek.
 
-1. Vyberte **prostředky** -> **vytvořit nebo aktualizovat prostředek**.
+1. Vyberte assety**vytvořit nebo aktualizovat Asset**. -> 
 2. Stiskněte **Odeslat**.
 
     ![Vytvoření assetu](./media/upload-files/postman-create-asset.png)
 
-Zobrazí **odpovědi** s informacemi o nově vytvořeného prostředku.
+Zobrazí se **odpověď** s informacemi o nově vytvořeném prostředku.
 
-## <a name="get-a-sas-url-with-read-write-permissions"></a>Získat adresu URL SAS s oprávněními pro čtení i zápis 
+## <a name="get-a-sas-url-with-read-write-permissions"></a>Získat adresu URL SAS s oprávněním pro čtení i zápis 
 
-Tato část ukazuje, jak získat adresu URL SAS, který byl vygenerován pro vytvořený materiál. Adresa URL SAS byl vytvořen pomocí oprávnění pro čtení i zápis a slouží k digitální soubory nahrát do Assetu kontejneru.
+V této části se dozvíte, jak získat adresu URL SAS, která byla vygenerována pro vytvořený Asset. Adresa URL SAS byla vytvořena s oprávněním pro čtení i zápis a lze ji použít k nahrání digitálních souborů do kontejneru assetů.
 
-1. Vyberte **prostředky** -> **seznam adres URL prostředku**.
+1. Vyberte **položku assets** **list adresy URL assetů.**  -> 
 2. Stiskněte **Odeslat**.
 
-    ![Nahrání souboru](./media/upload-files/postman-create-sas-locator.png)
+    ![Nahrát soubor](./media/upload-files/postman-create-sas-locator.png)
 
-Zobrazí **odpovědi** s informacemi o adresy URL prostředku. Zkopírujte adresu URL první a použít ho k odeslání souboru.
+Zobrazí se **odpověď** s informacemi o adresách URL prostředku. Zkopírujte první adresu URL a použijte ji k nahrání souboru.
 
-## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Nahrání souboru do úložiště objektů blob pomocí adresy URL pro odeslání
+## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Nahrání souboru do úložiště objektů BLOB pomocí adresy URL pro nahrání
 
-Pomocí rozhraní API služby Azure Storage nebo sady SDK (například [REST API pro Storage](../../storage/common/storage-rest-api-auth.md), [sady JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), nebo [sady .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
+Použijte rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 ## <a name="next-steps"></a>Další postup
 

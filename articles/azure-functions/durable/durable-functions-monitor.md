@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098019"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734341"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
-Model monitorování odkazuje na flexibilní opakovaný proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
+Model monitorování odkazuje na flexibilní *opakovaný* proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -67,7 +67,7 @@ Funkce **E3_Monitor** používá standardní *funkci Function. JSON* pro funkce 
 
 Zde je kód, který implementuje funkci:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi
 
 A zde je implementace. Podobně jako POCOs, který se používá pro přenos dat, je logika pro zpracování volání rozhraní API a analýza JSON odpovědi je abstraktní na sdílenou C#třídu v. Můžete ji najít v rámci [ukázkového kódu sady Visual Studio](#run-the-sample).
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ Funkce **E3_SendGoodWeatherAlert** používá vazbu Twilio k odeslání zprávy 
 
 A zde je kód, který odesílá zprávu SMS:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
@@ -183,7 +183,7 @@ Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
 
 ## <a name="next-steps"></a>Další postup
 
-Tato ukázka ukázala, jak použít Durable Functions k monitorování stavu externího zdroje pomocí trvalých [časovačů](durable-functions-timers.md) a podmíněné logiky. Další příklad ukazuje, jak použít externí události a [trvalé časovače](durable-functions-timers.md) pro zpracování lidské interakce.
+Tato ukázka ukázala, jak použít Durable Functions k monitorování stavu externího zdroje pomocí [trvalých časovačů](durable-functions-timers.md) a podmíněné logiky. Další příklad ukazuje, jak použít externí události a [trvalé časovače](durable-functions-timers.md) pro zpracování lidské interakce.
 
 > [!div class="nextstepaction"]
 > [Spuštění ukázky lidské interakce](durable-functions-phone-verification.md)

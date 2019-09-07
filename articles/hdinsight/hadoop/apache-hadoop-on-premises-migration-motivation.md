@@ -1,5 +1,5 @@
 ---
-title: Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
+title: Migrace místních Apache Hadoop do Azure HDInsight – motivace a výhody
 description: Seznamte se s motivací a výhodami migrace místních clusterů Hadoop do Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442072"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736101"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů do Azure HDInsight – motivace a výhody
 
@@ -64,7 +64,7 @@ Azure HDInsight je cloudová distribuce komponent systému Hadoop. Azure HDInsig
     - Azure SQL Database
     - Azure Analysis Services
 
-- **Procesy a součásti** pro samočinné retušování – HDInsight nepřetržitě kontroluje infrastruktury a open source komponenty pomocí vlastní monitorovací infrastruktury. Také automaticky obnoví kritické chyby, jako je například nedostupnost open source komponent a uzlů. Výstrahy se aktivují v Ambari, pokud se nějaká součást OSS nezdařila.
+- **Procesy a součásti pro samočinné retušování** – HDInsight nepřetržitě kontroluje infrastruktury a open source komponenty pomocí vlastní monitorovací infrastruktury. Také automaticky obnoví kritické chyby, jako je například nedostupnost open source komponent a uzlů. Výstrahy se aktivují v Ambari, pokud se nějaká součást OSS nezdařila.
 
 Další informace najdete v článku [co je Azure HDInsight a Apache Hadoop Technology Stack](../hadoop/apache-hadoop-introduction.md).
 

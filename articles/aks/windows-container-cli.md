@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147211"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387339"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
-* Pro clustery vytvořené po úspěšném zaregistrování služby *WindowsPreview*jsou k dispozici více fondů uzlů. Při registraci funkcí *MultiAgentpoolPreview* a *VMSSPreview* pro vaše předplatné jsou k dispozici také více fondů uzlů. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tyto funkce úspěšně zaregistrovaly.
+* Pro clustery vytvořené po úspěšném zaregistrování služby *WindowsPreview*jsou k dispozici více fondů uzlů. K dispozici je také více fondů uzlů, pokud zaregistrujete funkci *MultiAgentpoolPreview* pro vaše předplatné. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tato funkce úspěšně zaregistrovala.
 * Nemůžete odstranit první fond uzlů.
 
 I když je tato funkce ve verzi Preview, platí následující další omezení:
@@ -300,7 +300,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste nasadili cluster Kubernetes a do něj jste nasadili ukázkovou aplikaci ASP.NET v kontejneru Windows serveru. Přihlaste [se k webovému řídicímu panelu Kubernetes][kubernetes-dashboard] pro cluster, který jste právě vytvořili.
 

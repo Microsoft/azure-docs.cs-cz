@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087248"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735180"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -43,7 +43,9 @@ Parametry [StartNewAsync](https://azure.github.io/azure-functions-durable-extens
 * **Vstup**: Všechna data serializovatelných JSON, která by měla být předána jako vstup do funkce Orchestrator.
 * **InstanceId**: Volitelné Jedinečné ID instance Pokud tento parametr nezadáte, použije metoda náhodné ID.
 
-Tady je jednoduchý C# příklad:
+Následuje několik příkladů:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -537,7 +539,7 @@ Pokud dojde k selhání orchestrace z neočekávaného důvodu, můžete instanc
 > [!NOTE]
 > Toto rozhraní API není určeno jako náhrada za správné zpracování chyb a zásady opakování. Místo toho je určeno pro použití pouze v případě, že instance Orchestration selžou z neočekávaných důvodů. Další informace o zpracování chyb a zásadách opakování najdete v tématu o [zpracování chyb](durable-functions-error-handling.md) .
 
-K umístění orchestrace zpátky do běžícího stavu použijte rozhraní API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) nebo `rewindAsync` (JavaScript ). Znovu spusťte činnost nebo selhání provádění suborchestrace, které způsobily selhání orchestrace.
+K umístění orchestrace zpátky do *běžícího* stavu použijte rozhraní API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) nebo `rewindAsync` (JavaScript). Znovu spusťte činnost nebo selhání provádění suborchestrace, které způsobily selhání orchestrace.
 
 Řekněme například, že máte pracovní postup zahrnující řadu [lidských schválení](durable-functions-concepts.md#human). Předpokládejme, že existuje řada funkcí aktivity, které upozorní uživatele, že je potřeba jejich schválení, a vyčkejte na odpověď v reálném čase. Po přijetí odpovědí nebo vypršení časového limitu u všech aktivit schválení dojde k chybě z důvodu nesprávné konfigurace aplikace, jako je například Neplatný připojovací řetězec databáze. Výsledkem je selhání orchestrace hluboko do pracovního postupu. S rozhraním API `rewindAsync` (.NET)nebo(JavaScript)můžesprávceaplikaceopravitchybukonfiguraceapřevinoutneúspěšnouorchestracizpátkydostavuhnedpředselháním.`RewindAsync` Žádný z kroků interakce mezi lidmi není nutné znovu schválit a orchestraci je teď možné úspěšně dokončit.
 
@@ -592,6 +594,8 @@ Chcete-li odebrat všechna data přidružená k orchestraci, můžete historii i
 
  Metoda má dvě přetížení. První z nich vyprázdní historii ID instance orchestrace:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 Druhý příklad ukazuje funkci aktivovanou časovačem, která vyprázdní historii pro všechny instance orchestrace, které byly dokončeny po zadaném časovém intervalu. V takovém případě dojde k odebrání dat pro všechny instance, které byly dokončeny před 30 nebo více dny. Je naplánováno, že se spustí jednou za den, ve 12 dop.:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -652,7 +658,7 @@ Následující příkaz odstraní všechna data služby Azure Storage přidruže
 func durable delete-task-hub --task-hub-name UserTest
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Naučte se používat rozhraní API HTTP pro správu instancí.](durable-functions-http-api.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953015"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389759"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -38,7 +38,7 @@ Je taky možné, že se silnější ověřování hesla bude týkat stávající
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Degradování řadiče domény se nezdařilo kvůli slabému heslu místního správce.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete vynutit, aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
+Po rozumnou dobu funguje v režimu auditu v režimu auditování, a pokud chcete *Vynutit* , aby se vyžadovalo bezpečnější heslo, můžete přepnout konfiguraci z *auditu* . Cílené monitorování během této doby je dobrý nápad.
 
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
@@ -142,7 +142,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
+        > Tento režim se nezdařil, pokud pro váš účet potřebujete Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. K řešení tohoto problému můžete použít jiný účet, který podporuje VÍCEFAKTOROVÉ ověřování v jednom z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
         >
@@ -186,7 +186,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
         ```
 
         > [!NOTE]
-        > Tento režim se nezdařil, pokud je pro váš účet vyžadováno ověřování Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
+        > Tento režim se nezdařil, pokud pro váš účet potřebujete Azure Multi-Factor Authentication. V takovém případě použijte jeden z předchozích dvou režimů ověřování nebo místo toho použijte jiný účet, který nevyžaduje MFA.
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. K řešení tohoto problému můžete použít jiný účet, který podporuje VÍCEFAKTOROVÉ ověřování v jednom z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure. Provedete to tak, že přejdete na portál pro správu Azure, přejdete na Azure Active Directory, pak na zařízení a pak na nastavení zařízení a pak nastavíte "vyžadovat vícefaktorové ověřování pro připojení zařízení" na ne. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na Ano, jakmile se registrace dokončí.
         >
@@ -295,7 +295,7 @@ Pokud je k dispozici novější verze softwaru proxy ochrany heslem služby Azur
 
 Není nutný k odinstalaci aktuální verze softwaru proxy – instalační program provede místní upgrade. Při upgradu softwaru proxy by se neměl vyžadovat restart. Upgrade softwaru může být automatizovaný pomocí standardních procedur MSI, například: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
-Agent proxy podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý a může být povolený nebo zakázaný pomocí rutiny Set-AzureADPasswordProtectionProxyConfiguration. Pomocí rutiny Get-AzureADPasswordProtectionProxyConfiguration se dá zadat dotaz na aktuální nastavení. Microsoft doporučuje, aby byl automatický upgrade ponechán zapnutý.
+Agent proxy podporuje automatický upgrade. Automatický upgrade používá službu aktualizace agenta Microsoft Azure AD Connect, která je nainstalovaná souběžně s proxy službou. Automatický upgrade je ve výchozím nastavení zapnutý a mohl by být povolený nebo `Set-AzureADPasswordProtectionProxyConfiguration` zakázaný pomocí rutiny. Pomocí `Get-AzureADPasswordProtectionProxyConfiguration` rutiny se dá zadat dotaz na aktuální nastavení. Microsoft doporučuje, aby byl automatický upgrade ponechán zapnutý.
 
 `Get-AzureADPasswordProtectionProxy` Rutina se dá použít k dotazování verze softwaru všech aktuálně nainstalovaných agentů proxy v doménové struktuře.
 

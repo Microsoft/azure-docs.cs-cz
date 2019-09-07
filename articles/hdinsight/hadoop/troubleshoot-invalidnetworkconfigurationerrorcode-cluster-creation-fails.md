@@ -1,17 +1,17 @@
 ---
-title: Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
+title: InvalidNetworkConfigurationErrorCode z vytváření clusteru ve službě Azure HDInsight
 description: Různé důvody pro neúspěšné vytváření clusterů pomocí InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9d55041e05101c610a050574f2e940c40dac991a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1f60ef5e267b0ee3233f9adb9dc9e8ccd3ac1c65
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817144"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734775"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 
@@ -59,7 +59,7 @@ Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí př
 
 * Pokud váš cluster používá [skupinu zabezpečení sítě (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
-    Přejít na Azure Portal a Identifikujte NSG, která je přidružená k podsíti, ve které se cluster nasazuje. V části **odchozí pravidla zabezpečení** povolte odchozí přístup k Internetu bez omezení (Všimněte si, že tady je nižší priorita, což znamená vyšší prioritu). V části **podsítě** také potvrďte, zda je tento NSG použit pro podsíť clusteru.
+    Přejít na Azure Portal a Identifikujte NSG, která je přidružená k podsíti, ve které se cluster nasazuje. V části **odchozí pravidla zabezpečení** povolte odchozí přístup k Internetu bez omezení (Všimněte si, že tady je **nižší priorita** , což znamená vyšší prioritu). V části **podsítě** také potvrďte, zda je tento NSG použit pro podsíť clusteru.
 
 * Pokud váš cluster používá [trasy definované uživatelem (udr)](../../virtual-network/virtual-networks-udr-overview.md).
 

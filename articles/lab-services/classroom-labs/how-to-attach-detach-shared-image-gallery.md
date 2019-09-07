@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 18a14981c97af8e9d90480f7b04d50fc6df6b01d
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382707"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390029"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services
 Učitelé/správce testovacího prostředí může uložit image virtuálního počítače šablony do [Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md) Azure, aby ji mohli znovu použít jiní uživatelé. Jako první krok správce testovacího prostředí připojí existující galerii sdílených imagí k účtu testovacího prostředí. Jakmile je galerie sdílených imagí připojená, laboratoře vytvořené v účtu testovacího prostředí můžou ukládat image do galerie sdílených imagí. Ostatní učitelé můžou tuto image vybrat z Galerie sdílených imagí a vytvořit tak šablonu pro své třídy. 
 
 V tomto článku se dozvíte, jak připojit nebo odpojit galerii sdílených imagí k účtu testovacího prostředí. 
+
+> [!NOTE]
+> Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytváření účtu testovacího prostředí
 Když vytváříte účet testovacího prostředí, můžete k účtu testovacího prostředí připojit galerii sdílených imagí. Z rozevíracího seznamu můžete buď vybrat existující galerii sdílených imagí, nebo vytvořit novou. Pokud chcete galerii sdílených imagí vytvořit a připojit k účtu testovacího prostředí, vyberte **vytvořit novou**, zadejte název galerie a zadejte **OK**. 

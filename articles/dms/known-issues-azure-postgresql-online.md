@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855016"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743538"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy/omezení migrace pro online migrace do Azure DB pro PostgreSQL
 
@@ -30,7 +30,7 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
     > [!NOTE]
     > Pro PostgreSQL verze 10 v současné době DMS podporuje pouze migraci verze 10,3 na Azure Database for PostgreSQL. Plánujeme, aby se už brzy podporovaly novější verze PostgreSQL.
 
-- Pokud chcete povolit logickou replikaci ve zdrojovém souboru **PostgreSQL PostgreSQL. conf** , nastavte následující parametry:
+- Pokud chcete povolit logickou replikaci ve **zdrojovém souboru PostgreSQL PostgreSQL. conf** , nastavte následující parametry:
   - **wal_level** = logická
   - **max_replication_slots** = [maximální počet databází pro migraci]; Pokud chcete migrovat 4 databáze, nastavte hodnotu na 4.
   - **max_wal_senders** = [počet databází, které jsou spuštěny souběžně]; Doporučená hodnota je 10.
@@ -88,6 +88,8 @@ Známé problémy a omezení související s online migracemi z PostgreSQL do Az
 - **Omezení**: Pokud v tabulkách není žádný primární klíč, průběžná synchronizace se nezdaří.
 
     **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku, aby bylo možné pokračovat v migraci. Po dokončení migrace dat můžete primární klíč odebrat.
+
+- **Omezení**: Datový typ JSONB se pro migraci nepodporuje.
 
 ## <a name="lob-limitations"></a>Omezení LOB
 

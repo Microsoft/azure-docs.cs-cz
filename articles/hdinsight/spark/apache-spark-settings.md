@@ -1,6 +1,6 @@
 ---
 title: Konfigurace nastavení Sparku – Azure HDInsight
-description: Jak nakonfigurovat Spark pro cluster Azure HDInsight.
+description: Jak zobrazit a nakonfigurovat nastavení Apache Spark pro cluster Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441921"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736028"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -91,13 +91,13 @@ Tři klíčové parametry, které se často upravují pro optimalizaci konfigura
 > [!NOTE]  
 > Tyto tři konfigurační parametry lze nakonfigurovat na úrovni clusteru (pro všechny aplikace, které jsou spuštěny v clusteru) a také jsou určeny pro každou jednotlivou aplikaci.
 
-Dalším zdrojem informací o prostředcích, které používají vykonavatelé Spark, je uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní Spark vyberte kartu **vykonavatelé** , chcete-li zobrazit souhrnné a podrobné zobrazení konfigurace a prostředků, které vykonavatelé využívané.  Tato zobrazení vám pomůžou určit, jestli se mají změnit výchozí hodnoty pro vykonavatele Spark pro celý cluster, nebo konkrétní sadu spuštění úloh.
+Dalším zdrojem informací o prostředcích, které využívají exekutory Spark, je uživatelské rozhraní aplikace Spark.  V uživatelském rozhraní Spark vyberte kartu **vykonavatelé** , chcete-li zobrazit souhrnné a podrobné zobrazení konfigurace a prostředků, které vykonavatelé využívané.  Tato zobrazení vám můžou pomoct určit, jestli máte změnit výchozí hodnoty exekutorů Spark pro celý cluster, nebo pro provádění konkrétní sady úloh.
 
 ![Prováděče Spark](./media/apache-spark-settings/spark-executors.png)
 
 Alternativně můžete pomocí REST API Ambari programově ověřit nastavení konfigurace clusteru HDInsight a Spark.  Další informace najdete v referenčních informacích k [rozhraní Apache Ambari API na GitHubu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-V závislosti na úloze Sparku se můžete rozhodnout, že konfigurace Sparku, která není výchozí, poskytuje optimalizované spouštění úloh Sparku.  Testování můžete provádět pomocí ukázkových úloh, abyste ověřili všechny konfigurace clusteru, které nejsou výchozí.  Některé z běžných parametrů, které můžete zvážit, jsou:
+V závislosti na konkrétní úloze Spark můžete zjistit, že jiná než výchozí konfigurace Sparku zajistí optimálnější provádění úloh Spark.  Při ověřování jakékoli jiné než výchozí konfigurace clusteru byste měli provést srovnávací testování s ukázkovými úlohami.  Tady je několik běžných parametrů, jejichž úpravu můžete zvážit:
 
 * `--num-executors`Nastaví počet prováděcích modulů.
 * `--executor-cores`Nastaví počet jader pro každý prováděcí modul. Doporučujeme používat vykonavatele střední velikosti, protože jiné procesy využívají také určitou část dostupné paměti.
@@ -144,7 +144,7 @@ Následující kód ukazuje, jak změnit konfiguraci aplikace běžící v Jupyt
 
 Existuje několik základních nastavení konfigurace, která je potřeba monitorovat a upravovat, aby se zajistilo, že se úlohy Spark budou spouštět předvídatelným a vykonávajícím způsobem. Tato nastavení vám pomůžou určit nejlepší konfiguraci clusteru Spark pro vaše konkrétní úlohy.  Také budete muset monitorovat spouštění dlouhotrvajících úloh Sparku, které jsou náročné na prostředky a/nebo.  Nejběžnějším centrem pro problémy s tlakem na paměť v důsledku nesprávných konfigurací (zvláště nesprávně používaných prováděcích modulů), dlouhotrvajících operací a úloh, jejichž výsledkem jsou operace kartézském.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Apache Hadoop součásti a verze, které jsou k dispozici v HDInsight?](../hdinsight-component-versioning.md)
 * [Správa prostředků pro cluster Apache Spark v HDInsight](apache-spark-resource-manager.md)

@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight – Azure HDInsight
-description: Diagnostikujte a vyřešte problém s pomalým nebo neúspěšným clusterem HDInsight.
+description: Diagnostika a řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8c50068914c1519a5522372310bd0f5863a94b39
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573601"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735789"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Řešení potíží s pomalými nebo neúspěšnými úlohami v clusteru HDInsight
 
@@ -90,7 +90,7 @@ HDInsight spoléhá na několik služeb Azure. Spouští virtuální servery v A
 
 #### <a name="check-azure-service-usage-limits"></a>Ověřit omezení využití služeb Azure
 
-Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Pokud spouštíte velký cluster nebo jste současně spustili mnoho clusterů, cluster může selhat, pokud jste překročili limit služeb Azure. Omezení služby se liší v závislosti na vašem předplatném Azure. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 Můžete požádat o to, aby Microsoft zvýšil počet dostupných prostředků služby HDInsight (například jader virtuálních počítačů a instancí virtuálních počítačů) s [žádostí o zvýšení kvóty správce prostředků jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 #### <a name="check-the-release-version"></a>Ověřit verzi pro vydání

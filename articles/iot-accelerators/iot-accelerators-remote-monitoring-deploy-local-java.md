@@ -1,6 +1,6 @@
 ---
-title: Nasazení řešení vzdáleného monitorování místně (pomocí IntelliJ integrované vývojové prostředí) – Azure | Dokumentace Microsoftu
-description: Tato příručka ukazuje, jak do svého místního počítače pro vývoj a testování pomocí IntelliJ nasazení akcelerátoru řešení vzdáleného monitorování.
+title: Místní nasazení řešení vzdáleného monitorování (přes IntelliJ IDE) – Azure | Microsoft Docs
+description: V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pomocí IntelliJ pro testování a vývoj.
 author: v-krghan
 manager: dominicbetts
 ms.author: v-krghan
@@ -8,226 +8,232 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015431"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70743321"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - IntelliJ
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak spouštět mikroslužby v IntelliJ. Nasazení místního mikroslužeb používá tyto cloudové služby: Služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
+V tomto článku se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pro testování a vývoj. Naučíte se, jak spustit mikroslužby v IntelliJ. Místní nasazení mikroslužeb bude používat tyto cloudové služby: IoT Hub, Azure Cosmos DB, Azure Stream Analytics a Azure Time Series Insights.
 
-Pokud chcete spustit akcelerátor řešení vzdálené monitorování v Dockeru na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
+Pokud chcete spustit akcelerátor řešení vzdáleného monitorování v Docker na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K nasazení služby Azure používá akcelerátor řešení vzdálené monitorování, potřebujete aktivní předplatné Azure.
+Pokud chcete nasadit služby Azure používané akcelerátorem řešení vzdáleného monitorování, potřebujete aktivní předplatné Azure.
 
-Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Instalace počítače
+### <a name="machine-setup"></a>Nastavení počítače
 
-K dokončení místní nasazení, budete potřebovat následující nástroje nainstalované na místním vývojovém počítači:
+K dokončení místního nasazení potřebujete na svém místním vývojovém počítači nainstalované následující nástroje:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
-* [IntelliJ Plugin Scala](https://plugins.jetbrains.com/plugin/1347-scala)
-* [IntelliJ Plugin SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
-* [Prováděcí modul plug-in IntelliJ SBT](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
-* [Server Nginx](https://nginx.org/en/download.html)
-* [Node.js v8](https://nodejs.org/) -tento software je předpokladem pro počítače s CLI, skripty použít k vytvoření prostředků Azure. Nepoužívejte Node.js v10.
+* [Modul plug-in IntelliJ Scala](https://plugins.jetbrains.com/plugin/1347-scala)
+* [Modul plug-in IntelliJ SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
+* [Modul plug-in prováděcího modulu SBT IntelliJ](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
+* [Nginx](https://nginx.org/en/download.html)
+* [V8 Node. js](https://nodejs.org/)
+
+V8 Node. js je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem.
 
 > [!NOTE]
-> IntelliJ integrovaného vývojového prostředí je k dispozici pro Windows a Mac.
+> IntelliJ IDE je k dispozici pro Windows a Mac.
 
-## <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
+## <a name="download-the-source-code"></a>Stažení zdrojového kódu
 
-Úložišť zdrojového kódu vzdáleného monitorování zahrnují zdrojový kód a soubory konfigurace Dockeru, které potřebujete pro spuštění imagí Dockeru mikroslužeb.
+Mezi úložiště zdrojového kódu vzdáleného monitorování patří zdrojový kód a konfigurační soubory Docker, které potřebujete ke spuštění imagí Docker mikroslužeb.
 
-Klonovat a vytvořte místní verzi úložiště, použijte prostředí příkazového řádku přejděte do složky na místním počítači vhodný. Poté spustíte jeden z následující sady příkazů naklonujte úložiště java:
+Pokud chcete klonovat a vytvořit místní verzi úložiště, použijte prostředí příkazového řádku pro přechod do vhodné složky na místním počítači. Pak spuštěním jedné z následujících sad příkazů naklonujte úložiště Java:
 
-Pokud chcete stáhnout nejnovější verzi implementace mikroslužeb java, spusťte:
+* Chcete-li stáhnout nejnovější verzi mikroslužeb Java, spusťte následující příkaz:
 
+  ```cmd/sh
+  git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+  ```
 
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+* Chcete-li načíst nejnovější dílčí moduly, spusťte následující příkazy:
 
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
-```
+   ```cmd/sh
+   cd azure-iot-pcs-remote-monitoring-java
+   git submodule foreach git pull origin master
+    ```
 
 > [!NOTE]
-> Tyto příkazy stáhnout zdrojový kód pro všechny mikroslužby kromě skripty, které používáte ke spouštění mikroslužby lokálně. I když není nutné zdrojový kód pro spuštění mikroslužby v Dockeru, zdrojový kód je užitečné, pokud budete později chtít upravit akcelerátor řešení a místní test provedených změn.
+> Tyto příkazy stáhnou zdrojový kód pro všechny mikroslužby Kromě skriptů používaných k místnímu spouštění mikroslužeb. Zdrojový kód nepotřebujete ke spouštění mikroslužeb v Docker. Zdrojový kód je ale užitečný, pokud později plánujete změnit akcelerátor řešení a testovat změny místně.
 
-## <a name="deploy-the-azure-services"></a>Nasazení služby Azure
+## <a name="deploy-the-azure-services"></a>Nasazení služeb Azure
 
-I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na spouštění v cloudu služby Azure. Pomocí následujícího skriptu pro nasazení služby Azure. Následující příklady skriptu se předpokládá, že používáte úložiště java na počítači s Windows. Pokud pracujete s jiným prostředím, cesty, přípony souboru a oddělovače cest odpovídajícím způsobem nastavte.
+I když v tomto článku se dozvíte, jak místně spustit mikroslužby, závisí na službách Azure spuštěných v cloudu. Pomocí následujícího skriptu nasaďte služby Azure. V příkladech skriptu se předpokládá, že používáte úložiště Java v počítači s Windows. Pokud pracujete v jiném prostředí, upravte správně cesty, přípony souborů a oddělovače cest.
 
-### <a name="create-new-azure-resources"></a>Vytvářet nové prostředky Azure
+### <a name="create-new-azure-resources"></a>Vytvoření nových prostředků Azure
 
-Pokud jste dosud vytvořili požadované prostředky Azure, postupujte podle těchto kroků:
+Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle těchto kroků:
 
-1. Ve vašem prostředí příkazového řádku, přejděte **\services\scripts\local\launch** složky v klonovaném kopii úložiště.
+1. V prostředí příkazového řádku přejdete do složky **\services\scripts\local\launch** v klonované kopii úložiště.
 
-1. Spusťte následující příkazy pro instalaci **počítače** rozhraní příkazového řádku nástroje a přihlaste se ke svému účtu Azure:
+1. Spuštěním následujících příkazů nainstalujte nástroj pro **počítače** CLI a přihlaste se ke svému účtu Azure:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Spustit **start.cmd** skriptu. Skript vyzve k zadání následujících informací:
+1. Spusťte skript **Start. cmd** . Skript vás vyzve k zadání následujících informací:
+
    * Název řešení.
    * Předplatné Azure, které se má použít.
-   * Umístění datového centra Azure používat.
+   * Umístění datacentra Azure, které se má použít.
 
-     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Jakmile už nepotřebujete odpovídající prostředky můžete odstranit tuto skupinu prostředků.
+   Skript vytvoří v Azure skupinu prostředků, která má název vašeho řešení. Tato skupina prostředků obsahuje prostředky Azure, které používá akcelerátor řešení. Tuto skupinu prostředků můžete odstranit, i když už nepotřebujete odpovídající prostředky.
 
-     Skript také přidá sadu proměnných prostředí s předponou **počítače** do místního počítače. Tyto proměnné prostředí zadejte podrobnosti pro vzdálené monitorování bude moct číst z prostředku Azure Key Vault. Tento prostředek Key Vault je vzdálené monitorování bude načteno jeho konfigurační hodnoty z.
+   Skript také přidá do místního počítače sadu proměnných prostředí. Každý název proměnné má předpony **počítačů**. Tyto proměnné prostředí poskytují podrobné informace, které umožňují vzdálené monitorování číst hodnoty konfigurace z prostředku Azure Key Vault.
 
-     > [!TIP]
-     > Po dokončení skriptu, také uloží proměnné prostředí do souboru s názvem  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** . Můžete je použít pro nasazení akcelerátoru řešení budoucí. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+   > [!TIP]
+   > Až se skript dokončí, uloží proměnné prostředí do souboru s názvem  **\<vaše domovská složka\>\\. osobní\\řešení počítače\>\<název. env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty **v\\\\\\souboru**
 
-1. Výstup z prostředí příkazového řádku.
+1. Zavřete prostředí příkazového řádku.
 
-### <a name="use-existing-azure-resources"></a>Použít existující prostředky Azure
+### <a name="use-existing-azure-resources"></a>Použití existujících prostředků Azure
 
-Pokud jste již vytvořili požadované prostředky Azure, vytvořte odpovídající proměnné prostředí v místním počítači.
-Nastavení proměnných prostředí pro následující:
-* **PCS_KEYVAULT_NAME** – název prostředku Azure Key Vault
-* **PCS_AAD_APPID** – ID aplikace AAD
-* **PCS_AAD_APPSECRET** -tajný klíč aplikace AAD
+Pokud jste již vytvořili požadované prostředky Azure, nastavte odpovídající proměnné prostředí v místním počítači:
+* **PCS_KEYVAULT_NAME**: Název prostředku Key Vault.
+* **PCS_AAD_APPID**: ID aplikace Azure Active Directory (Azure AD).
+* **PCS_AAD_APPSECRET**: Tajný kód aplikace Azure AD.
 
-Hodnoty konfigurace budou číst z tohoto prostředku Azure Key Vault. Tyto proměnné prostředí mohou být uloženy v  **\<domovskou složku\>\\.pcs\\\<název řešení\>.env** souboru z nasazení. Všimněte si, že proměnné prostředí nastavené v místním počítači přepsat hodnoty v **služby\\skripty\\místní\\.env** souboru při spuštění **docker-compose**.
+Z tohoto prostředku Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se dají uložit do  **\<\>\\\\složky snázvem\>. ENV v souboru. env z nasazení.\<** Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\\\. env skriptu\\služby** , když spustíte **Docker-Dock**.
 
-Některé konfigurace vyžaduje mikroslužby je uložené v instanci **služby Key Vault** , která byla vytvořena na původním nasazení. Odpovídající proměnné v trezoru klíčů by měl být upraven podle potřeby.
+Některá z konfigurací, které potřebuje mikroslužba, je uložená v instanci Key Vault, která byla vytvořena při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být podle potřeby upraveny.
 
-## <a name="run-the-microservices"></a>Spouštět mikroslužby
+## <a name="run-the-microservices"></a>Spustit mikroslužby
 
-V této části spustíte mikroslužeb vzdáleného monitorování. Spuštění ve webovém uživatelském rozhraní nativně, simulace zařízení, služba vícefaktorového ověřování a správce Azure Stream Analytics v Dockeru a mikroslužby v IntelliJ.
+V této části spustíte mikroslužby vzdáleného monitorování. Spustíte:
 
-### <a name="run-the-device-simulation-service"></a>Spusťte službu simulace zařízení
+* Webové uživatelské rozhraní nativně.
+* Služby pro simulaci, ověřování a Azure Stream Analytics Správce zařízení Azure IoT v Docker.
+* Mikroslužby v IntelliJ.
 
-Otevřete nové okno příkazového řádku, ujistěte se, že máte přístup k proměnným prostředí nastavil **start.cmd** skript v předchozí části.
+### <a name="run-the-device-simulation-service"></a>Spuštění služby simulace zařízení
 
-Spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu pro simulaci zařízení. Služba simuluje zařízení pro řešení vzdáleného monitorování.
+Otevřete nové okno příkazového řádku. Ověřte, zda máte přístup k proměnným prostředí nastaveným skriptem **Start. cmd** v předchozí části.
+
+Spuštěním následujícího příkazu otevřete kontejner Docker pro službu pro simulaci zařízení. Služba simuluje zařízení pro řešení vzdáleného monitorování.
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-auth-service"></a>Spuštění služby ověření
+### <a name="run-the-auth-service"></a>Spustit ověřovací službu
 
-Otevřete nové okno příkazového řádku a spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu ověřování. Služba umožňuje spravovat uživatele, oprávnění k přístupu k řešení Azure IoT.
+Otevřete nové okno příkazového řádku a spusťte následující příkaz, kterým otevřete kontejner Docker pro ověřovací službu. Pomocí této služby můžete spravovat uživatele, kteří mají oprávnění pro přístup k řešením Azure IoT.
 
 ```cmd
 <path_to_cloned_repository>\services\auth\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-asa-manager-service"></a>Spusťte službu správce Azure Stream Analytics
+### <a name="run-the-stream-analytics-manager-service"></a>Spuštění služby Stream Analytics Manager
 
-Otevřete nové okno příkazového řádku a spuštěním následujícího příkazu spusťte kontejner Dockeru pro službu Azure Stream Analytics správce. Služba umožňuje správu úloh Azure Stream Analytics (ASA), včetně nastavení konfigurace a spouštění, zastavování a sledování jejich stavy.
+Otevřete nové okno příkazového řádku a spusťte následující příkaz, kterým otevřete kontejner Docker pro službu Stream Analytics Manager. Pomocí této služby můžete spravovat Stream Analytics úlohy. Taková Správa zahrnuje nastavení úlohy konfigurace a spouštění, zastavování a monitorování stavu úlohy.
 
 ```cmd
 <path_to_cloned_repository>\services\asa-manager\scripts\docker\run.cmd
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>Nasadit všechny mikroslužby v místním počítači
+### <a name="deploy-all-other-microservices-on-your-local-machine"></a>Nasazení všech ostatních mikroslužeb na místním počítači
 
-Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování v IntelliJ:
+Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorování v IntelliJ.
 
-#### <a name="import-project"></a>Import projektu
+#### <a name="import-a-project"></a>Importovat projekt
 
-1. Launch IntelliJ IDE
-1. Vyberte **Importovat projekt** a zvolte **azure-iot-pcs-remote-monitoring-java\services\build.sbt**
+1. Otevřete integrované vývojové prostředí (IntelliJ).
+1. Vyberte **Importovat projekt**.
+1. Vyberte **Azure-IoT-PCs-Remote-Monitoring-java\services\build.SBT**.
 
-#### <a name="create-run-configurations"></a>Vytvoření konfigurace spuštění
+#### <a name="create-run-configurations"></a>Vytvoření konfigurací spuštění
 
-1. Vyberte **spuštění > Upravit konfigurace**
-1. Vyberte **přidat novou konfiguraci > sbt úkolu** 
-1. Zadejte **název** a zadejte **úlohy** spuštění 
-1. Vyberte **pracovní adresář** podle služby, které chcete spustit
-1. Klikněte na tlačítko **použít > Ok** uložit vaše volby.
-1. Vytvoření konfigurace spuštění pro následující služby:
+1. Vyberte **Spustit** > **úpravy konfigurace**.
+1. Vyberte **Přidat nový konfigurační** > **SBT úlohu**.
+1. Zadejte **název**a potom zadejte **úlohy** jako **Spustit**.
+1. V závislosti na službě, kterou chcete spustit, vyberte **pracovní adresář** .
+1. Výběrem možnosti **použít** > **OK** uložte své volby.
+1. Vytvořit konfigurace spouštění pro následující webové služby:
     * WebService (services\config)
-    * Webové služby (services\device telemetrická data)
-    * WebService (services\iothub-manager)
-    * WebService (services\storage-adapter)
+    * WebService (services\device-Telemetry)
+    * WebService (services\iothub-Manager)
+    * WebService (services\storage-Adapter)
 
-Například následující obrázek znázorňuje přidává se konfigurace služby:
+Například následující obrázek ukazuje, jak přidat konfiguraci pro službu:
 
-[![Přidat konfiguraci](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![Snímek obrazovky okna konfigurace spuštění nebo ladění IntelliJ IDE zobrazující možnost storageAdapter zvýrazněnou v seznamu úlohy SBT v levém podokně a položky v polích název, úkoly, pracovní adresář a parametry virtuálního počítače v pravém podokně.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
+#### <a name="create-a-compound-configuration"></a>Vytvoření složené konfigurace
 
-#### <a name="create-compound-configuration"></a>Vytvoření složeného konfigurace
+1. Chcete-li spustit všechny služby dohromady, vyberte možnost **Přidat novou konfiguraci** >  **.**
+1. Zadejte **název**a pak vyberte **Přidat úlohy SBT**.
+1. Výběrem možnosti **použít** > **OK** uložte své volby.
 
-1. Ke spuštění všech služeb, společně vyberte **přidat novou konfiguraci > složené**
-1. Zadejte **název** a **přidat sbt úlohy**
-1. Klikněte na tlačítko **použít > Ok** uložit vaše volby.
+Například následující obrázek ukazuje, jak přidat všechny úlohy SBT do jedné konfigurace:
 
-Například následující obrázek ukazuje, přidává všechny úkoly sbt jediné konfiguraci:
+[![Snímek obrazovky okna konfigurace spuštění nebo ladění IntelliJ IDE zobrazující možnost AllServices zvýrazněnou v složeném seznamu v levém podokně a možnost deviceTelemetry úlohy SBT, která je v pravém podokně zvýrazněna.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+Vyberte možnost **Spustit** a sestavte a spusťte webové služby na místním počítači.
 
-Klikněte na tlačítko **spustit** sestavení a spuštění webové služby na místním počítači.
+Každá webová služba otevře okno příkazového řádku a okno webového prohlížeče. Na příkazovém řádku vidíte výstup z běžící služby. Okno prohlížeče vám umožní monitorovat stav. Nezavírejte okno příkazového řádku Windows ani webové stránky, protože tyto akce zastaví webovou službu.
 
-Každou webovou službu se otevře okno příkazového řádku a webové prohlížeče. Na příkazovém řádku se zobrazí výstup ze spuštěné služby a okna prohlížeče vám umožní monitorovat stav. Nezavírejte příkazové řádky nebo webové stránky, tato akce zastaví webové služby.
+Chcete-li získat přístup ke stavu služeb, přejděte na následující adresy URL:
 
+* Správce IoT Hub:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Telemetrie zařízení:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* Konfigurace[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* adaptér úložiště:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
-Pro přístup k stav služeb, můžete přejít na následující adresy URL:
-* IoT-Hub Manager [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Telemetrie zařízení  [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* Konfigurace [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* Adaptér úložiště [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+### <a name="start-the-stream-analytics-job"></a>Spustit úlohu Stream Analytics
 
-
-### <a name="start-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
-
-Postupujte podle těchto kroků spustíte úlohu Stream Analytics:
+Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte **skupiny prostředků** vytvořen pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění **start.cmd** skriptu.
-1. Klikněte na tlačítko **úlohy Stream Analytics** v seznamu prostředků.
-1. V úloze Stream Analytics **přehled** stránky, klikněte na tlačítko **Start** tlačítko. Pak klikněte na tlačítko **Start** ihned spustíte úlohu.
+1. Přejít na **skupinu prostředků** vytvořenou pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění skriptu **Start. cmd** .
+1. V seznamu prostředků vyberte **úlohu Stream Analytics** .
+1. Na stránce **Přehled** úlohy Stream Analytics vyberte tlačítko **Start** a potom výběrem tlačítka **Spustit** spusťte úlohu.
 
 ### <a name="run-the-web-ui"></a>Spuštění webového uživatelského rozhraní
 
-V tomto kroku spuštění ve webovém uživatelském rozhraní. Otevřete nové okno příkazového řádku, ujistěte se, že máte přístup k proměnným prostředí nastavil **start.cmd** skriptu. Přejděte **webui** složky ve své místní kopie úložiště a spusťte následující příkazy:
+V tomto kroku spustíte webové uživatelské rozhraní. Otevřete nové okno příkazového řádku. Ověřte, zda máte přístup k proměnným prostředí nastaveným pomocí skriptu **Start. cmd** . V místní kopii úložiště otevřete složku **WebUI** a pak spusťte následující příkazy:
 
 ```cmd
 npm install
 npm start
 ```
 
-Po dokončení spuštění v prohlížeči zobrazí na stránce **http:\//localhost:3000 / řídicí panel**. Chyby na této stránce se očekává. Chcete-li zobrazit aplikaci bez chyby, proveďte následující kroky.
+Po dokončení příkazu **Start** se v prohlížeči zobrazí stránka na adrese [http://localhost:3000/dashboard](http://localhost:3000/dashboard). Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující kroky.
 
-### <a name="configure-and-run-nginx"></a>Nakonfigurování a spuštění serveru NGINX
+### <a name="configure-and-run-nginx"></a>Konfigurace a spuštění Nginx
 
-Reverzní proxy server nastavte propojení webové aplikace a mikroslužeb spouštěných v místním počítači:
+Nastavte reverzní proxy server, která propojí webovou aplikaci s mikroslužbami běžícími na vašem místním počítači:
 
-* Kopírování **nginx.conf** ze soubor **webui\scripts\localhost** složky místní kopie úložiště **nginx\conf** instalační adresář.
-* Spustit **nginx**.
+1. Zkopírujte soubor **Nginx. conf** ze složky **webui\scripts\localhost** v místní kopii úložiště do instalačního adresáře **nginx\conf** .
+1. Spusťte Nginx.
 
-Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](https://nginx.org/en/docs/windows.html).
+Další informace o spuštění Nginx najdete v tématu [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
-### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
+### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na http:\//localhost:9000 v prohlížeči.
+Pokud chcete získat přístup k řídicímu panelu řešení vzdáleného http://localhost:9000 monitorování, přejděte do části v prohlížeči.
 
 ## <a name="clean-up"></a>Vyčištění
 
-Aby se zabránilo zbytečným poplatky, po dokončení testování odebrat cloudovým službám z vašeho předplatného Azure. Pokud chcete odebrat služby, přejděte [webu Azure portal](https://ms.portal.azure.com) a odstranit prostředek skupiny, která **start.cmd** skript vytvořený.
+Abyste se vyhnuli zbytečným poplatkům, po dokončení testování odeberte cloudové služby z předplatného Azure. Chcete-li odebrat služby, otevřete [Azure Portal](https://ms.portal.azure.com)a odstraňte skupinu prostředků, kterou vytvořil skript **Start. cmd** .
 
-Můžete také odstranit místní kopie úložiště vzdálené monitorování vytvoří, když jste naklonovali zdrojový kód z Githubu.
+Můžete také odstranit místní kopii úložiště vzdáleného monitorování, která byla vytvořena při klonování zdrojového kódu z GitHubu.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když nasadíte řešení vzdáleného monitorování, dalším krokem je [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).
+Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).

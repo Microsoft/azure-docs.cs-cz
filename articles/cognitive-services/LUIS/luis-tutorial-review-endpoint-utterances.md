@@ -1,5 +1,5 @@
 ---
-title: Kontrola koncového bodu projevy-LUIS
+title: 'Kurz: Kontrola koncového bodu projevy-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Vylepšete predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS, které nemusí být správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: dd5c0012bad567623fdfc0a70760f692aafe0e3e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563343"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387525"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte nejistotu předpovědi kontrolou Endpoint projevy
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
@@ -85,15 +85,17 @@ Použijte k tomu následující postup:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job – "Natural Language Process"|
 
-    Přidáním utterance se přesune utterance z koncového **bodu recenze projevy** do záměru **GetJobInformation** . Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
+    Pokud chcete `natural language processing` změnit entitu keyPhrase na entitu úlohy, vyberte ji a pak v seznamu vyberte možnost **úloha** . Pokud chcete pro jinou entitu vybrat jenom část textu keyPhrase, musíte keyPhrase odebrat jako entitu, označit jinou entitu a pak znovu použít entitu keyPhrase do aplikace. 
+
+    Přidáním utterance se přesune utterance z **koncového bodu recenze projevy** do záměru **GetJobInformation** . Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
 
     Spolu s správným zarovnáním tohoto utteranceu by se měl přidat další projevy k **GetJobInformation** záměru. To necháme na vás jako cvičení, které si můžete provést sami. Každý záměr s výjimkou záměru **None** by měl mít přibližně stejný počet ukázkových promluv. Záměr **None** by měl mít 10 % z celkového počtu promluv v aplikaci. 
 
-1. Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
+    Zkontrolujte zbývající promluvy v tomto záměru, označte je a opravte nastavený záměr (**Aligned intent**), pokud je nesprávný.
 
-1. Seznam už by toto promluvy neměl obsahovat. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
+    Seznam **projevya koncového bodu Endpoint** by již neměl mít tyto projevy. Pokud se zobrazí další promluvy, pokračujte v práci s tímto seznamem a opravujte záměry a označujte všechny chybějící entity, dokud tento seznam nebude prázdný. 
 
-1. Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
+    Vyberte další záměr v seznamu filtru a potom pokračujte v opravách promluv a označování entit. Nezapomeňte, že posledním krokem každého záměru je buď vybrat **Add to aligned intent** (Přidat do nastaveného záměru) na řádku promluvy, nebo zaškrtnout políčko vedle každého záměru a vybrat **Add selected** (Přidat vybrané) nad tabulkou.
 
     Pokračujte tak dlouho, dokud v seznamu filtru nebudou žádné záměry a entity. Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut. 
 

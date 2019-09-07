@@ -1,6 +1,6 @@
 ---
-title: Použití Apache Hadoop Hive pomocí Curl v HDInsight – Azure
-description: Zjistěte, jak vzdáleně odesílat úlohy Apache Pig do HDInsight, pomocí příkazu Curl.
+title: Použití Apache Hadoopho podregistru s kudrlinkou v HDInsight – Azure
+description: Naučte se vzdáleně odesílat úlohy Apache prasete do Azure HDInsight pomocí funkce kudrlinkou.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,55 +8,55 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 334d7b886aa4e2130a12f0c8a7919986fdac55d1
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: e1fbeb48acdfd9d09cad2616aed9793e2ff513ad
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508127"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736089"
 ---
-# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spustit dotazy Apache Hive s Apache Hadoop v HDInsight pomocí rozhraní REST
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Apache Hive pomocí Apache Hadoop ve službě HDInsight pomocí REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Zjistěte, jak spustit dotazy Apache Hive v clusteru Azure HDInsight s Apache Hadoop pomocí rozhraní REST API WebHCat.
+Naučte se používat REST API WebHCat ke spouštění dotazů Apache Hive s Apache Hadoop v clusteru Azure HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Apache Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](./apache-hadoop-linux-tutorial-get-started.md).
+* Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Klient REST. Tento dokument používá [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) v prostředí Windows PowerShell a [Curl](https://curl.haxx.se/) na [Bash](https://docs.microsoft.com/windows/wsl/install-win10).
+* Klient REST. Tento dokument používá rutinu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve Windows PowerShellu a [oblé](https://curl.haxx.se/) v [bash](https://docs.microsoft.com/windows/wsl/install-win10).
 
-* Pokud používáte prostředí Bash, budete také potřebovat jq příkazového řádku procesoru JSON.  Zobrazit [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/).
+* Pokud používáte bash, budete také potřebovat JQ procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-## <a name="base-uri-for-rest-api"></a>Základní identifikátor URI pro Rest API
+## <a name="base-uri-for-rest-api"></a>Základní identifikátor URI pro rozhraní REST API
 
-Základní identifikátor URI (Uniform Resource) pro rozhraní REST API na HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI **malá a velká písmena**.  Zatímco název clusteru v části plně kvalifikovaný název (FQDN) identifikátoru URI (`CLUSTERNAME.azurehdinsight.net`) je velká a malá písmena, další výskyty v identifikátoru URI jsou malá a velká písmena.
+Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI`CLUSTERNAME.azurehdinsight.net`() rozlišuje velká a malá písmena, jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
-Pokud používáte cURL nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). K zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server, vždy proveďte požadavky pomocí Secure HTTP (HTTPS).
+Při použití kudrlinkou nebo jakékoli jiné komunikace REST s WebHCat je nutné ověřit požadavky zadáním uživatelského jména a hesla pro správce clusteru HDInsight. Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Aby se zajistilo, že se přihlašovací údaje odesílají na server bezpečně, vždy proveďte požadavky pomocí protokolu HTTPS (Secure HTTP).
 
 ### <a name="setup-preserve-credentials"></a>Nastavení (zachovat přihlašovací údaje)
-Zachovat svoje přihlašovací údaje, aby se zabránilo pokuste pro každý příklad.  Název clusteru budou zachovány v samostatný krok.
+Zachovejte přihlašovací údaje, abyste je nemuseli znovu zadávat pro každý příklad.  Název clusteru se zachová v samostatném kroku.
 
 **A. Bash**  
-Níže uvedený skript upravte tak, že nahradíte `PASSWORD` s vlastní heslo.  Potom zadejte příkaz.
+Následující skript upravte tak, že `PASSWORD` nahradíte vlastní heslo.  Pak zadejte příkaz.
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. Prostředí PowerShell** spusťte níže uvedený kód a zadejte svoje přihlašovací údaje v automaticky otevíraném okně:
+**B. PowerShell** spustí níže uvedený kód a v automaticky otevíraném okně zadejte svoje přihlašovací údaje:
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>Zjištění názvu správně malá a velká použita clusteru
-Skutečné malých a velkých písmen na název clusteru může být jiný než byste očekávali, v závislosti na způsobu vytvoření clusteru.  Zde uvedené kroky se zobrazí skutečné velká a malá písmena a uložte ho do proměnné pro všechny další příklady.
+### <a name="identify-correctly-cased-cluster-name"></a>Identifikace správného názvu clusteru použita
+V závislosti na tom, jak byl cluster vytvořen, může být skutečná velikost názvu clusteru odlišná, než očekáváte.  V následujících krocích se zobrazí skutečná velikost písmen a pak se uloží do proměnné pro všechny následující příklady.
 
-Upravit skripty níže nahraďte `CLUSTERNAME` názvem vašeho clusteru. Potom zadejte příkaz. (Název clusteru plně kvalifikovaného názvu domény není malá a velká písmena.)
+Úpravou následujících skriptů nahraďte `CLUSTERNAME` název vašeho clusteru. Pak zadejte příkaz. (Název clusteru pro plně kvalifikovaný název domény nerozlišuje velká a malá písmena.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -73,9 +73,9 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>Spuštění dotazu Hive
+## <a id="curl"></a>Spustit dotaz na podregistr
 
-1. Pokud chcete ověřit, zda se můžete připojit ke clusteru HDInsight, použijte jednu z následujících příkazů:
+1. Chcete-li ověřit, zda se můžete připojit ke clusteru HDInsight, použijte jeden z následujících příkazů:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/status
@@ -88,7 +88,7 @@ $clusterName
     $resp.Content
     ```
 
-    Můžete zobrazit odpověď podobná následujícímu textu:
+    Dostanete odpověď podobnou následujícímu textu:
 
     ```json
     {"status":"ok","version":"v1"}
@@ -96,10 +96,10 @@ $clusterName
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * `-u` -Uživatelské jméno a heslo použité pro ověření žádosti.
-    * `-G` – Znamená, že tuto žádost o operaci GET.
+    * `-u`– Uživatelské jméno a heslo použité k ověření žádosti.
+    * `-G`– Označuje, že je tento požadavek operace GET.
 
-1. Počáteční adresa URL, `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, je stejný pro všechny požadavky. Cesta, `/status`, signalizuje požadavek vrátit stav WebHCat (také známé jako Templeton) pro server. Můžete také požádat o verzi Hive pomocí následujícího příkazu:
+1. Začátek adresy URL `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`je stejný pro všechny požadavky. Cesta `/status`, označuje, že požadavek má vrátit stav WebHCat (označovaný také jako Templeton) pro server. Verzi podregistru můžete požádat také pomocí následujícího příkazu:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -112,13 +112,13 @@ $clusterName
     $resp.Content
     ```
 
-    Tento požadavek vrátí odpověď podobná následujícímu textu:
+    Tato žádost vrátí odpověď podobnou následujícímu textu:
 
     ```json
     {"module":"hive","version":"1.2.1000.2.6.5.3008-11"}
     ```
 
-1. Pomocí následujícího postupu vytvořte tabulku s názvem **log4jLogs**:
+1. K vytvoření tabulky s názvem **log4jLogs**použijte následující:
 
     ```bash
     jobid=$(curl -s -u admin:$password -d user.name=admin -d execute="DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$clusterName.azurehdinsight.net/templeton/v1/hive | jq -r .id)
@@ -136,32 +136,32 @@ $clusterName
     $jobID
     ```
 
-    Tento požadavek používá metodu POST, který odesílá data jako součást požadavku na rozhraní REST API. Následující hodnoty data se odesílají v požadavku:
+    Tato žádost používá metodu POST, která odesílá data jako součást požadavku na REST API. S požadavkem se odesílají následující hodnoty dat:
 
-     * `user.name` -Uživatel, který spouští příkaz.
-     * `execute` K provedení – příkazy HiveQL.
-     * `statusdir` -Adresáře, který stavu pro tuto úlohu je zapsán do.
+     * `user.name`– Uživatel, který spouští příkaz.
+     * `execute`– Příkazy HiveQL ke spuštění.
+     * `statusdir`– Adresář, do kterého se zapisuje stav této úlohy.
 
-   Tyto příkazy provádět následující akce:
+   Tyto příkazy provádějí následující akce:
 
-   * `DROP TABLE` – Pokud je tabulka již existuje, je odstranit.
-   * `CREATE EXTERNAL TABLE` -Vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložte definici tabulky Hive. Data zůstane v původním umístění.
+   * `DROP TABLE`– Pokud tabulka již existuje, je odstraněna.
+   * `CREATE EXTERNAL TABLE`– Vytvoří novou tabulku External v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.
 
      > [!NOTE]  
-     > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat další operaci MapReduce nebo procesu.
+     > Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například automatizovaný proces odesílání dat nebo jiná operace MapReduce.
      >
-     > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
+     > Vyřazení externí tabulky **neodstraní data** , pouze definici tabulky.
 
-   * `ROW FORMAT` -Způsob formátování data. Pole v každém protokolu jsou oddělené mezerou.
-   * `STORED AS TEXTFILE LOCATION` -Data se mají ukládat (do adresáře příkladu/dat) a, která je uložená jako text.
-   * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
+   * `ROW FORMAT`– Způsob formátování dat Pole v každém protokolu jsou oddělená mezerou.
+   * `STORED AS TEXTFILE LOCATION`– Kde jsou data uložená (příklad/adresář dat) a že se ukládají jako text.
+   * `SELECT`– Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
 
      > [!NOTE]  
-     > Všimněte si, že jsou nahrazené mezery mezi příkazy HiveQL `+` znaků při použití s Curl. Hodnoty v uvozovkách, které obsahují mezeru, jako jsou oddělovač, by neměly být nahrazen `+`.
+     > Všimněte si, že mezery mezi příkazy HiveQL jsou nahrazeny `+` znakem při použití s kudrlinkou. Hodnoty v uvozovkách, které obsahují mezeru, jako je například oddělovač, by neměly být nahrazeny hodnotou `+`.
 
-      Tento příkaz vrátí ID úlohy, který slouží ke kontrole stavu úlohy.
+      Tento příkaz vrátí ID úlohy, která se dá použít ke kontrole stavu úlohy.
 
-1. Pokud chcete zkontrolovat stav úlohy, použijte následující příkaz:
+1. Chcete-li zjistit stav úlohy, použijte následující příkaz:
 
     ```bash
     curl -u admin:$password -d user.name=admin -G https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobid | jq .status.state
@@ -179,21 +179,21 @@ $clusterName
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Pokud úloha dokončí, je stav **SUCCEEDED**.
+    Pokud se úloha dokončí, stav se **podařilo**.
 
-1. Jakmile se stav úlohy se změnila na **SUCCEEDED**, můžete načíst výsledky úlohy z úložiště objektů Blob v Azure. `statusdir` Parametr předaný s dotazem obsahuje umístění výstupního souboru; v takovém případě `/example/rest`. Tato adresa se ukládá výstup v `example/curl` ve výchozím úložištěm clustery.
+1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. Parametr předaný dotazu obsahuje umístění výstupního souboru, `/example/rest`v tomto případě. `statusdir` Tato adresa uchovává výstup v `example/curl` adresáři ve výchozím úložišti clusterů.
 
-    Můžete seznam a stáhnout tyto soubory [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o použití Azure CLI s Azure Storage, najdete v článku [pomocí Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentu.
+    Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure s Azure Storage najdete v dokumentu [použití Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) .
 
 ## <a id="nextsteps"></a>Další kroky
 
-Obecné informace o Hive s HDInsight:
+Obecné informace o podregistru služby HDInsight:
 
-* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hive s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
-Další informace o dalších způsobech můžete pracovat s Hadoop v HDInsight:
+Další informace o dalších způsobech práce se systémem Hadoop ve službě HDInsight:
 
-* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití systému Apache prasete s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce s Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Další informace o rozhraní REST API v tomto dokumentu najdete v tématu [WebHCat odkaz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
+Další informace o REST API používaných v tomto dokumentu najdete v [referenčním dokumentu WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) .

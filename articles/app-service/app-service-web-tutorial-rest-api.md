@@ -1,5 +1,5 @@
 ---
-title: Hostování rozhraní RESTful API s CORS – služba Azure App Service | Dokumentace Microsoftu
+title: 'Kurz: Rozhraní API pro hostování RESTful s CORS – Azure App Service'
 description: Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138613"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743865"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
 
@@ -39,7 +39,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat .NET Core](https://www.microsoft.com/net/core/).
@@ -58,7 +58,7 @@ Ukázkové úložiště naklonujete spuštěním následujícího příkazu.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Toto úložiště obsahuje aplikaci, která je vytvořena na základě následujícího kurzu: [Stránky nápovědy ASP.NET Core webového rozhraní API pomocí Swaggeru](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
+Toto úložiště obsahuje aplikaci, která je vytvořená na základě následujícího kurzu: [Stránky s ASP.NET Core webové rozhraní API pomocí Swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio) Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
@@ -132,7 +132,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 V prohlížeči přejděte na adresu `http://<app_name>.azurewebsites.net/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 Ve vlastnosti `properties.cors.allowedOrigins` můžete nastavit více než jednu adresu URL klienta (`"['URL1','URL2',...]"`). Můžete také povolit všechny adresy URL klientů pomocí `"['*']"`.
 
 > [!NOTE]
-> Pokud vaše aplikace vyžaduje přihlašovací údaje, jako jsou soubory cookie nebo ověřovací tokeny k odeslání, můžou vyžadovat prohlížeče `ACCESS-CONTROL-ALLOW-CREDENTIALS` hlaviček v odpovědi. Chcete-li povolit ve službě App Service, nastavte `properties.cors.supportCredentials` k `true` v konfiguraci CORS. IP adresa nesmí být povolen `allowedOrigins` zahrnuje `'*'`.
+> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč `ACCESS-CONTROL-ALLOW-CREDENTIALS` vyžadovat hlavičku odpovědi. Pokud to chcete v App Service povolit, `properties.cors.supportCredentials` nastavte `true` v konfiguraci CORS. Tato možnost se nedá povolit `allowedOrigins` , `'*'`Pokud zahrnuje.
 
 ### <a name="test-cors-again"></a>Opětovný test CORS
 
@@ -211,4 +211,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak ověřovat a autorizovat uživatele.
 
 > [!div class="nextstepaction"]
-> [Kurz: Ověřování a autorizaci uživatelů začátku do konce](app-service-web-tutorial-auth-aad.md)
+> [Kurz: Kompletní ověřování a autorizace uživatelů](app-service-web-tutorial-auth-aad.md)

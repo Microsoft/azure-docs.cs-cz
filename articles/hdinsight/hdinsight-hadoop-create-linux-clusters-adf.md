@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytváření clusterů Apache Hadoop na vyžádání v Azure HDInsight pomocí Data Factory '
+title: 'Kurz: Clustery Apache Hadoop na vyžádání v Azure HDInsight – Data Factory'
 description: Kurz – Naučte se vytvářet clustery Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854988"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736167"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 * Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) installed.
 
-* Objekt Azure Active Directory služby. Po vytvoření instančního objektu se ujistěte, že jste načetli **ID aplikace** a **ověřovací klíč** podle pokynů v odkazovaném článku. Tyto hodnoty budete potřebovat později v tomto kurzu. Také se ujistěte, že instanční objekt je členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytváří. Pokyny k načtení požadovaných hodnot a přiřazení správných rolí najdete v tématu [vytvoření Azure Active Directory instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).
+* Objekt Azure Active Directory služby. Po vytvoření instančního objektu se ujistěte, že jste načetli **ID aplikace** a **ověřovací klíč** podle pokynů v odkazovaném článku. Tyto hodnoty budete potřebovat později v tomto kurzu. Také se ujistěte, že instanční objekt je členem role *přispěvatele* předplatného nebo skupiny prostředků, ve které se cluster vytváří. Pokyny k načtení požadovaných hodnot a přiřazení správných rolí najdete v tématu [vytvoření Azure Active Directory instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-preliminary-azure-objects"></a>Vytvoření předběžných objektů Azure
 
@@ -187,7 +187,7 @@ V tomto článku nakonfigurujete aktivitu podregistru tak, aby se vytvořil clus
 
 3. Zadejte nebo vyberte následující hodnoty pro novou dlaždici **objektu pro vytváření dat** :
 
-    |Vlastnost  |Hodnota  |
+    |Vlastnost  |Value  |
     |---------|---------|
     |Name | Zadejte název objektu pro vytváření dat. Tento název musí být globálně jedinečný.|
     |Subscription | Vyberte své předplatné Azure. |
@@ -278,7 +278,7 @@ V této části vytvoříte ve vaší datové továrně dvě propojené služby.
 
     ![Vytvoření kanálu v Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Vytvoření kanálu v Azure Data Factory")
 
-2. Na panelu nástrojů **aktivity** rozbalte **HDInsight**a přetáhněte aktivitu podregistru na plochu návrháře kanálu. Na kartě **Obecné** zadejte název aktivity.
+2. Na panelu nástrojů **aktivity** rozbalte **HDInsight**a přetáhněte aktivitu **podregistru** na plochu návrháře kanálu. Na kartě **Obecné** zadejte název aktivity.
 
     ![Přidání aktivit do kanálu Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Přidání aktivit do kanálu Data Factory")
 
@@ -356,7 +356,7 @@ Případně můžete odstranit celou skupinu prostředků, kterou jste pro tento
 
 1. Zadáním názvu skupiny prostředků potvrďte odstranění a pak vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak pomocí Azure Data Factory vytvořit cluster HDInsight na vyžádání a spouštět úlohy [Apache Hive](https://hive.apache.org/) . V dalším článku se dozvíte, jak vytvářet clustery HDInsight s vlastní konfigurací.
 
 > [!div class="nextstepaction"]

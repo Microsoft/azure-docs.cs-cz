@@ -1,5 +1,5 @@
 ---
-title: Nástroj QnA bot – Azure Bot Service – QnA Maker
+title: 'Kurz: Nástroj QnA bot – Azure Bot Service – QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Vytvořte QnA chat robota ze stránky publikování pro existující znalostní bázi. Tato robot používá sadu robot Framework SDK v4. Nemusíte psát žádný kód pro sestavování robota, veškerý kód je k dispozici za vás.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697995"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390906"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: Vytvoření QnA robota s Azure Bot Service v4
 
@@ -57,7 +57,7 @@ Vytvořte robot jako klientskou aplikaci pro znalostní bázi.
     |App name (Název aplikace)|`my-tutorial-kb-bot-app`|Toto je webová aplikace, která podporuje pouze robot. Nemělo by se jednat o stejný název aplikace, protože vaše služba QnA Maker už používá. Sdílení webové aplikace QnA Maker s jakýmkoli jiným prostředkem není podporováno.|
     |Jazyk sady SDK|C#|Toto je základní programovací jazyk používaný sadou robot Framework SDK. Vaše volby jsou [C#](https://github.com/Microsoft/botbuilder-dotnet) nebo [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA ověřovací klíč|**Neměnit**|Tato hodnota je vyplněna za vás.|
-    |Plán služby App Service / umístění|**Neměnit**|Pro tento kurz není umístění důležité.|
+    |Plán/umístění služby App Service|**Neměnit**|Pro tento kurz není umístění důležité.|
     |Azure Storage|**Neměnit**|Data konverzace se ukládají v Azure Storagech tabulkách.|
     |Application Insights|**Neměnit**|Do Application Insights se pošle protokolování.|
     |ID aplikace Microsoftu|**Neměnit**|Je nutné zadat uživatele a heslo služby Active Directory.|

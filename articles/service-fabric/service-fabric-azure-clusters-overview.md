@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusterů Azure Service Fabric ve Windows serveru a Linuxu | Dokumentace Microsoftu
-description: Clustery Service Fabricu spouštět na Windows Server a Linux, což znamená, že budete mít k nasazení a hostování aplikací Service Fabric kdekoli můžete spustit systém Windows Server nebo Linux.
+title: Vytváření clusterů Azure Service Fabric v systému Windows Server a Linux | Microsoft Docs
+description: Clustery Service Fabric běží na Windows serveru a Linux, což znamená, že budete moct nasazovat a hostovat Service Fabric aplikace kdekoli, kde můžete používat Windows Server nebo Linux.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,110 +14,115 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310917"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390381"
 ---
-# <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled Service Fabric clustery v Azure
-Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel clusteru. Clustery je možné škálovat na tisíce uzlů. Pokud přidáte nové uzly do clusteru Service Fabric znovu vytvoří rovnováhu replik oddílů služby a instance napříč zvýšeného počtu uzlů. Celkově zlepšuje výkon aplikací a snižuje kolize pro přístup k paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu znovu vytvoří rovnováhu replik oddílů a instancí napříč snížený počet uzlů, abyste měli lepší využití hardwaru na každém uzlu.
+# <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
+Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
 
-Typ uzlu definuje velikost, počet a vlastnosti pro sadu uzlů (virtuálních počítačích) v clusteru. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Typy uzlů se používají k definování rolí pro sadu uzlů clusteru, například „front-end“ nebo „back-end“. Cluster může mít více než jeden typ uzlu, ale v případě produkčních clusterů musí existovat alespoň pět virtuálních počítačů primárního typu (nebo minimálně tři virtuální počítače v případě testovacích clusterů). V uzlech primárního typu jsou umístěny [systémové služby Service Fabric](service-fabric-technical-overview.md#system-services). 
+Typ uzlu definuje velikost, číslo a vlastnosti pro sadu uzlů (virtuálních počítačů) v clusteru. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. Typy uzlů se používají k definování rolí pro sadu uzlů clusteru, například „front-end“ nebo „back-end“. Cluster může mít více než jeden typ uzlu, ale v případě produkčních clusterů musí existovat alespoň pět virtuálních počítačů primárního typu (nebo minimálně tři virtuální počítače v případě testovacích clusterů). V uzlech primárního typu jsou umístěny [systémové služby Service Fabric](service-fabric-technical-overview.md#system-services). 
 
 ## <a name="cluster-components-and-resources"></a>Součásti clusteru a prostředky
-Cluster Service Fabric v Azure je prostředek Azure, která používá a pracuje v jiných prostředcích Azure:
+Cluster Service Fabric v Azure je prostředek Azure, který používá a komunikuje s dalšími prostředky Azure:
 * Virtuální počítače a virtuální síťové karty
 * škálovací sady virtuálních počítačů
 * virtuální sítě
-* Nástroje pro vyrovnávání zatížení
-* Účty úložiště
-* Veřejné IP adresy
+* nástroje pro vyrovnávání zatížení
+* účty úložiště
+* veřejné IP adresy
 
 ![Cluster Service Fabric][Image]
 
 ### <a name="virtual-machine"></a>Virtuální počítač
-A [virtuální počítač](/azure/virtual-machines/) , která nepatří do clusteru, i když technicky vzato uzlu clusteru je proces modulu runtime Service Fabric, se nazývá uzel. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají určité charakteristiky, jako například [vlastnosti umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Každý počítač nebo virtuální počítač má automaticky spouštěná služba, *FabricHost.exe*, která se spustí při spuštění a spustí dvě spustitelné soubory, *Fabric.exe* a *FabricGateway.exe* , které tvoří uzlu. Produkční nasazení je jeden uzel na fyzický nebo virtuální počítač. Pro testovací scénáře, může hostovat více uzlů na jeden počítač nebo virtuální počítač spuštěním několika instancí *Fabric.exe* a *FabricGateway.exe*.
+[Virtuální počítač](/azure/virtual-machines/) , který je součástí clusteru, se nazývá uzel, i když je technicky, uzel clusteru je proces Service Fabric runtime. Každému uzlu je přiřazen název uzlu (řetězec). Uzly mají charakteristiky, jako jsou [vlastnosti umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints). Každý počítač nebo virtuální počítač má automaticky spuštěnou službu *hostitele fabrichost vrátilo. exe*, která spouští při spuštění a potom spustí dva spustitelné soubory, *Fabric. exe* a *FabricGateway. exe*, které tvoří uzel. Produkční nasazení je jedním uzlem na fyzický nebo virtuální počítač. V případě testovacích scénářů můžete hostovat více uzlů na jednom počítači nebo VIRTUÁLNÍm počítači spuštěním několika instancí *Fabric. exe* a *FabricGateway. exe*.
 
-Každý virtuální počítač je přidružený k virtuální síťové karty (NIC) a každé síťové rozhraní je mu přiřazená privátní IP adresu.  Virtuální počítač je přiřazena k virtuální síti a místní nástroje pro vyrovnávání prostřednictvím síťové rozhraní
+Každý virtuální počítač je přidružen k virtuální síťové kartě (NIC) a každé síťové kartě je přiřazena privátní IP adresa.  Virtuální počítač je přiřazený k virtuální síti a místnímu nástroji pro vyrovnávání zatížení prostřednictvím síťového rozhraní.
 
-Všechny virtuální počítače v clusteru jsou umístěny ve virtuální síti.  Všechny uzly v stejný uzel typu/škálovací sady jsou umístěny ve stejné podsíti ve virtuální síti.  Tyto uzly pouze privátní IP adresy a nejsou přímo adresovatelnými mimo virtuální síť.  Klienti mají přístup k službám na uzlech prostřednictvím služby Azure load balancer.
+Všechny virtuální počítače v clusteru jsou umístěné ve virtuální síti.  Všechny uzly ve stejné sadě typů nebo škálování jsou umístěné ve stejné podsíti ve virtuální síti.  Tyto uzly mají pouze privátní IP adresy a nejsou přímo adresovatelné mimo virtuální síť.  Klienti mají přístup ke službám v uzlech prostřednictvím nástroje pro vyrovnávání zatížení Azure.
 
-### <a name="scale-setnode-type"></a>Škálovací sada/uzel typu
-Při vytváření clusteru, definovat jeden nebo více typů uzlů.  Uzly nebo virtuální počítače, typu mít stejné velikosti a vlastnosti, jako je například počet procesorů, paměti, počtu disků a diskových vstupně-výstupních operací.  Jeden typ uzlu může být například malé, front-endový virtuální počítače s porty otevřené k Internetu, i když může být jiný typ uzlu pro velké a back-end virtuální počítače, které zpracovávají data. V Azure clustery, každý typ uzlu je namapován na [škálovací sadu virtuálních počítačů](/azure/virtual-machine-scale-sets/).
+### <a name="scale-setnode-type"></a>Sada nebo typ škálování na více uzlů
+Při vytváření clusteru definujete jeden nebo více typů uzlů.  Uzly nebo virtuální počítače v typu uzlu mají stejnou velikost a charakteristiky jako počet procesorů, paměti, počet disků a vstupně-výstupní operace disku.  Například jeden typ uzlu může být pro malé, front-end virtuální počítače s porty otevřenými na internetu, zatímco jiný typ uzlu může být pro velké, back-endové virtuální počítače zpracovávající data. V clusterech Azure se každý typ uzlu mapuje na [sadu škálování virtuálního počítače](/azure/virtual-machine-scale-sets/).
 
-Škálovací sady můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric nastaví samostatné škálovací sady. Modul runtime Service Fabric je polohy na každý virtuální počítač ve škálovací sadě pomocí rozšíření virtuálního počítače Azure. Můžete nezávisle na sobě horizontální i vertikální škálování každého typu uzlu, změnit skladová položka operačního systému, které běží na všech uzlech clusteru, mají různé sady otevřených portů a použít různé metriky kapacity. Škálovací sady má pět [upgradovacích doménách](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) až pět [domén selhání](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) a může obsahovat až 100 virtuálních počítačů.  Clustery s více než 100 uzlů vytvoříte tak, že vytvoříte více typů škálovací sady nebo uzel.
+Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastaví samostatnou sadu škálování. Modul runtime Service Fabric je zaveden do každého virtuálního počítače v sadě škálování pomocí rozšíření virtuálního počítače Azure. Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity. Sada škálování má pět [domén upgradu](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) a pět [domén selhání](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) a může mít až 100 virtuálních počítačů.  Clustery s více než 100 uzly vytvoříte tak, že vytvoříte vícenásobné sady nebo typy uzlů pro škálování.
 
 > [!IMPORTANT]
-> Výběr počet typů uzlů pro váš cluster a vlastnosti každého typu uzlu (velikost, primární, připojení k Internetu, počet virtuálních počítačů, atd.) je důležitá úloha.  Další informace najdete v článku [informace o plánování kapacity clusteru](service-fabric-cluster-capacity.md).
+> Důležitým úkolem je výběr počtu typů uzlů pro váš cluster a vlastností každého typu uzlu (velikost, primární, internetový, počet virtuálních počítačů atd.).  Další informace najdete v tématu [předpoklady pro plánování kapacity clusteru](service-fabric-cluster-capacity.md).
 
-Další informace najdete v článku [typy uzlů Service Fabric a virtuálního počítače škálovací sady](service-fabric-cluster-nodetypes.md).
+Další informace najdete v [Service Fabric typech uzlů a virtuálních počítačů Scale Sets](service-fabric-cluster-nodetypes.md).
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
-Instance virtuálních počítačů jsou připojené za [nástroji Azure load balancer](/azure/load-balancer/load-balancer-overview), který je přidružený [veřejnou IP adresu](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) a název DNS.  Při zřizování clusteru s  *&lt;clustername&gt;* , název DNS  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com* je název DNS, který je přidružený k vyrovnávání zatížení před škálovací sady.
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](/azure/load-balancer/load-balancer-overview), který je přidružený k [veřejné IP adrese](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) a popisku DNS.  Když zřizujete cluster s  *&lt;názvem název_clusteru&gt;*  *&lt;,název&lt; DNS, název_clusteru.&gt; Location&gt;. cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
 
-Virtuální počítače v clusteru mají pouze [privátních IP adres](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Přenos pro správu a provoz služeb jsou směrovány veřejný internetový nástroj pro vyrovnávání zatížení.  Síťový provoz se směruje na těchto počítačích prostřednictvím pravidla překladu adres (klienti připojit k určité uzly/instance) nebo pravidla Vyrovnávání zatížení (provoz směruje do virtuálních počítačů round robin).  Nástroj pro vyrovnávání zatížení má přidružená veřejná IP adresa s názvem DNS ve formátu:  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com*.  Veřejná IP adresa je dalším prostředkem Azure ve skupině prostředků.  Pokud definujete více typy uzlů v clusteru, nástroj pro vyrovnávání zatížení se vytvoří pro každý uzel typu/škálovací sady. Nebo můžete nastavit nástroj pro vyrovnávání zatížení pro víc typů uzlů.  Primární typ uzlu je název DNS  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com*, máte název DNS jiné typy uzlů  *&lt;clustername&gt;-&lt;nodetype&gt;.&lt; umístění&gt;. cloudapp.azure.com*.
+Virtuální počítače v clusteru mají jenom [privátní IP adresy](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu:  *&lt;název_clusteru&gt;.&lt; Location&gt;. cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název  *&lt;&gt;klastru DNS.&lt; Location&gt;. cloudapp.Azure.com*, jiné typy uzlů mají  *&lt;&gt;názevclusteru-DNS&gt;NodeType.&lt;&lt; Location&gt;. cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Účty úložiště
-U každého typu uzlu clusteru je podporována [účtu služby Azure storage](/azure/storage/common/storage-introduction) a spravované disky.
+Každý typ uzlu clusteru je podporovaný účtem služby [Azure Storage](/azure/storage/common/storage-introduction) a spravovanými disky.
 
 ## <a name="cluster-security"></a>Zabezpečení clusteru
-Cluster Service Fabric je prostředek, který vlastníte.  Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. 
+Cluster Service Fabric je prostředek, který vlastníte.  Je vaše zodpovědnost za zabezpečení clusterů, aby se zabránilo neoprávněným uživatelům v jejich připojení. Zabezpečený cluster je obzvláště důležitý při spuštění produkčních úloh v clusteru. 
 
 ### <a name="node-to-node-security"></a>Zabezpečení mezi uzly
-Zabezpečení mezi uzly zabezpečuje komunikaci mezi virtuálními počítači nebo počítačích v clusteru. Tento scénář zabezpečení zajistíte, že jenom počítače, které mají oprávnění k připojení clusteru mohl podílet na hostování aplikací a služeb v clusteru. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací.  Certifikát clusteru je potřeba zabezpečit provoz clusteru a clusteru a serverem ověřování.  Vlastní certifikáty podepsané lze použít pro testovací clustery, ale certifikát od důvěryhodné certifikační autority by měla sloužit k zabezpečené produkční clustery.
+Zabezpečení mezi uzly zabezpečuje komunikaci mezi virtuálními počítači nebo počítači v clusteru. Tento scénář zabezpečení zajišťuje, že se můžou účastnit hostování aplikací a služeb v clusteru jenom počítače, které jsou autorizované pro připojení ke clusteru. Service Fabric k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací používá certifikáty X. 509.  Certifikát clusteru je nutný k zabezpečení provozu clusteru a k zajištění ověřování clusteru a serveru.  Certifikáty podepsané svým držitelem se dají použít pro testovací clustery, ale k zabezpečení produkčních clusterů by se měly použít certifikát od důvěryhodné certifikační autority.
 
-Další informace najdete v článku [zabezpečení mezi uzly](service-fabric-cluster-security.md#node-to-node-security)
+Další informace najdete v článku [zabezpečení mezi](service-fabric-cluster-security.md#node-to-node-security) uzly.
 
-### <a name="client-to-node-security"></a>Uzel klienta zabezpečení
-Uzel klienta zabezpečení ověřuje klienty a pomáhá zajistit komunikaci mezi klientem a jednotlivým uzlům v clusteru. Tento typ zabezpečení pomáhá zajistit, že jenom Autorizovaní uživatelé přístup ke clusteru a aplikace, které jsou nasazené na clusteru. Klienti jsou jednoznačně identifikované pomocí kteréhokoliv svoje přihlašovací údaje zabezpečení certifikátu X.509. Libovolný počet volitelné klientské certifikáty lze použít k ověřování klientů správce nebo uživatel s clusterem.
+### <a name="client-to-node-security"></a>Zabezpečení klient-uzel
+Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunikaci mezi klientem a jednotlivými uzly v clusteru. Tento typ zabezpečení pomáhá zajistit, že ke clusteru a aplikacím nasazeným v clusteru mají přístup jenom autorizovaní uživatelé. Klienti se jednoznačně identifikují pomocí přihlašovacích údajů zabezpečení certifikátů X. 509. K ověřování klientů správce nebo uživatelů s clusterem lze použít libovolný počet volitelných klientských certifikátů.
 
-Kromě klientských certifikátů je Azure Active Directory také nakonfigurovat k ověřování klientů s clusterem.
+Kromě klientských certifikátů je možné Azure Active Directory taky nakonfigurovat na ověřování klientů pomocí clusteru.
 
-Další informace najdete v článku [uzel klienta zabezpečení](service-fabric-cluster-security.md#client-to-node-security)
+Další informace najdete v článku [zabezpečení mezi klienty a uzly](service-fabric-cluster-security.md#client-to-node-security) .
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
-Řízení přístupu na základě rolí (RBAC) umožňuje přiřadit velice přesně kontrolovat přístup ovládací prvky pro prostředky Azure.  Můžete přiřadit různá přístupová pravidla pro předplatná, skupiny prostředků a prostředky.  RBAC pravidla jsou odvozeny podél hierarchie prostředků na nižší úrovni nepřepíšete.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů v AAD pomocí RBAC pravidel tak, aby určeným uživatelů a skupin můžete změnit váš cluster.  Další informace najdete v článku [přehled Azure RBAC](/azure/role-based-access-control/overview).
+Access Control na základě rolí (RBAC) umožňuje přiřadit podrobné řízení přístupu k prostředkům Azure.  K předplatným, skupinám prostředků a prostředkům můžete přiřadit různá pravidla přístupu.  Pravidla RBAC jsou zděděna v hierarchii prostředků, pokud nejsou přepsána na nižší úrovni.  Můžete přiřadit všechny uživatele nebo skupiny uživatelů ve službě AAD s pravidly RBAC, aby mohli vlastní určení uživatelé a skupiny upravovat cluster.  Další informace najdete v tématu [Přehled Azure RBAC](/azure/role-based-access-control/overview).
 
-Service Fabric také podporuje řízení přístupu k omezení přístupu k určité operace clusteru pro různé skupiny uživatelů. To pomáhá lépe zabezpečit clusteru. Klienti připojující se ke clusteru podporují dva typy ovládacích prvků přístupu: Role správce a role uživatele.  
+Service Fabric také podporuje řízení přístupu pro omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, se podporují dva typy řízení přístupu: Role správce a role uživatele.  
 
-Další informace najdete v článku [Service Fabric Role-Based řízení přístupu (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
+Další informace najdete v [Service Fabric Access Control na základě rolí (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac).
 
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
-Skupiny zabezpečení sítě (Nsg) řídit příchozí a odchozí provoz z podsítě, virtuální počítač nebo konkrétní síťový adaptér  Ve výchozím nastavení když několik virtuálních počítačů jsou umístěny ve stejné virtuální síti komunikovat mezi sebou přes libovolný port.  Pokud chcete omezit komunikaci mezi počítače můžete definovat skupiny Nsg k segmentu sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte více typy uzlů v clusteru, můžete použít skupiny Nsg na podsítě, aby se zabránilo počítače, které patří do jiného uzlu typy komunikaci mezi sebou.  
+Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  
 
-Další informace, přečtěte si informace o [skupin zabezpečení](/azure/virtual-network/security-overview)
+Další informace najdete v článku o [skupinách zabezpečení](/azure/virtual-network/security-overview) .
 
 ## <a name="scaling"></a>Škálování
 
-Požadavky na aplikace v průběhu času měnit. Budete muset zvýšit prostředky clusteru k zajištění provozu aplikace vyšší zatížení nebo sítě nebo omezovat prostředky clusteru, jakmile poptávka poklesne. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly). Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru. Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
+Aplikace vyžaduje změnu v průběhu času. Možná budete muset zvýšit prostředky clusteru tak, aby splňovaly zvýšené zatížení aplikace nebo síťový provoz nebo snížili prostředky clusteru, když na vyžádání klesne požadavek. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů). Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru. I když se cluster škáluje, vaše aplikace se automaticky škálují.
 
-Další informace najdete v článku [Azure škálování clusterů](service-fabric-cluster-scaling.md).
+Další informace najdete v článku [škálování clusterů Azure](service-fabric-cluster-scaling.md).
 
 ## <a name="upgrading"></a>Upgrade
-Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně spravovaného společností Microsoft. Microsoft je zodpovědná za použití dílčích oprav základního operačního systému a inovacích modulu runtime Service Fabric ve vašem clusteru. Můžete nastavit cluster pro příjem upgradů automatické modulu runtime, když společnost Microsoft vydává nové verze, nebo vybrat podporovaná verze modulu runtime, který chcete. Kromě toho upgrade modulu runtime můžete také aktualizovat konfiguraci clusteru, například certifikáty nebo porty aplikací.
+Cluster Azure Service Fabric je prostředek, který vlastníte, ale částečně ho spravuje Microsoft. Společnost Microsoft zodpovídá za opravy základního operačního systému a provádění Service Fabricch upgradů modulu runtime v clusteru. Cluster můžete nastavit tak, aby přijímal automatické upgrady za běhu, když společnost Microsoft vydává novou verzi, nebo vybrat podporovanou verzi modulu runtime, kterou požadujete. Kromě upgradů za běhu můžete také aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací.
 
-Další informace najdete v článku [upgradu clusterů](service-fabric-cluster-upgrade.md).
+Další informace najdete v článku [upgrade clusterů](service-fabric-cluster-upgrade.md).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Budete moct vytvářet clustery na virtuálních počítačích s těmito operačními systémy:
+Můžete vytvářet clustery na virtuálních počítačích, na kterých běží tyto operační systémy:
 
-* Windows Server 2012 R2
-* Windows Server 2016 
-* Windows Server 1709
-* Windows Server 1803
-* Linux Ubuntu 16.04
-* Red Hat Enterprise Linux 7.4 (podpora ve verzi preview)
+| Operační systém | Nejstarší podporovaná verze Service Fabric |
+| --- | --- |
+| Windows Server 2012 R2 | Všechny verze |
+| Windows Server 2016 | Všechny verze |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4 |
+| Windows Server 1809 | 6.4.654.9590 |
+| Windows Server. 2019 | 6.4.654.9590 |
+| Linux Ubuntu 16,04 | 6.0 |
+
+Další informace najdete v tématu [podporované verze clusteru v Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems) .
 
 > [!NOTE]
-> Pokud se rozhodnete nasadit Service Fabric ve Windows serveru 1709, mějte prosím na paměti, že (1) není dlouhodobém horizontu obslužná větev, takže možná budete muset přesunout verze v budoucnu a (2) Pokud nasazujete kontejnery, kontejnery, založená na Windows serveru 2016 nefungují na Windows serveru  1709 a naopak (budete muset znovu nasadit).
+> Pokud se rozhodnete nasadit Service Fabric v systému Windows Server 1709, Upozorňujeme, že (1) Tato větev není dlouhodobá obsluha, takže možná budete muset přesunout verze v budoucnu a (2) Pokud nasazujete kontejnery, kontejnery postavené na Windows serveru 2016 nefungují na Windows serveru.  1709 a naopak (při jejich nasazení je budete muset znovu sestavit).
 >
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [zabezpečení](service-fabric-cluster-security.md), [škálování](service-fabric-cluster-scaling.md), a [upgrade](service-fabric-cluster-upgrade.md) clustery Azure.
+Přečtěte si další informace o [zabezpečení](service-fabric-cluster-security.md), [škálování](service-fabric-cluster-scaling.md)a [upgradu](service-fabric-cluster-upgrade.md) clusterů Azure.
 
-Další informace o [možnosti podpory pro Service Fabric](service-fabric-support.md).
+Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).
 
 [Image]: media/service-fabric-azure-clusters-overview/Cluster.PNG

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932720"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735058"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
 
@@ -46,7 +46,7 @@ Než aplikaci provedete, řídicí panel neobsahuje žádné návrhy na opravy. 
 
 ## <a name="check-your-publishing-status"></a>Zkontroluje stav publikování.
 
-Stavová karta **publikování** obsahuje informace o posledním publikování aktivní verze. 
+**Stavová karta publikování** obsahuje informace o posledním publikování aktivní verze. 
 
 Ověřte, že aktivní verze je verze, kterou chcete opravit. 
 
@@ -62,7 +62,7 @@ Karta **hodnocení školení** obsahuje agregovaný souhrn celkové přesnosti v
 
 Graf indikuje správné předpovězené záměry a problematické oblasti s různými barvami. Při vylepšování aplikace pomocí návrhů se toto skóre zvyšuje. 
 
-Navrhované opravy jsou oddělené podle typu problému a jsou pro vaši aplikaci nejvýznamnější. Pokud budete chtít zkontrolovat a opravit problémy na záměr, použijte kartu záměry **[s chybami](#intents-with-errors)** v dolní části stránky. 
+Navrhované opravy jsou oddělené podle typu problému a jsou pro vaši aplikaci nejvýznamnější. Pokud budete chtít zkontrolovat a opravit problémy na záměr, použijte kartu **[záměry s chybami](#intents-with-errors)** v dolní části stránky. 
 
 Každá problematická oblast má záměry, které je třeba opravit. Když vyberete název záměru, otevře se stránka **záměr** s filtrem použitým pro projevy. Tento filtr vám umožní soustředit se na projevy, které způsobují problém.
 
@@ -80,7 +80,7 @@ Přidání příkladu projevy by mělo dělat osoba, která:
 
 * má vysoký stupeň porozumění, co projevy jsou v různých záměrech.
 * ví, jak může být projevy v jednom záměru zaměňovat s jiným záměrem.
-* je možné rozhodnout, zda dva záměry, které jsou často zaměňovány, by měly být sbaleny do jediného záměru a různá data vydaná entitami.
+* je možné rozhodnout, zda dva záměry, které jsou často zaměňovány, by měly být sbaleny do jediného záměru. V takovém případě musí být různá data vydaná s entitami.
 
 ### <a name="patterns-and-phrase-lists"></a>Seznamy vzorů a frází
 
@@ -90,7 +90,7 @@ Stránka Analytics neindikuje, kdy použít [vzory](luis-concept-patterns.md) ne
 
 Začněte s tímto problémem – může to být hlavní příčina dalších problémů.
 
-Seznam záměrů nevyrovnanosti **dat** zobrazuje záměry, které vyžadují více projevy, aby bylo možné opravit nerovnováhu mezi daty. 
+Seznam záměrů **nevyrovnanosti dat** zobrazuje záměry, které vyžadují více projevy, aby bylo možné opravit nerovnováhu mezi daty. 
 
 **Chcete-li tento problém vyřešit**:
 
@@ -104,7 +104,7 @@ Nepřidávejte projevy do záměru None pouze v případě, že to není navrže
 
 ### <a name="review-incorrect-predictions"></a>Kontrola nesprávných předpovědi
 
-Nesprávný seznam záměrů **předpovědi** zobrazuje záměry, které mají projevy, které se používají jako příklady pro určitý záměr, ale jsou předpovězeny pro různé záměry. 
+**Nesprávný** seznam záměrů předpovědi zobrazuje záměry, které mají projevy, které se používají jako příklady pro určitý záměr, ale jsou předpovězeny pro různé záměry. 
 
 **Chcete-li tento problém vyřešit**:
 
@@ -113,7 +113,7 @@ Nesprávný seznam záměrů **předpovědi** zobrazuje záměry, které mají p
 
 ### <a name="review-unclear-predictions"></a>Kontrola nejasného předpovědiu
 
-Seznam nejasných záměrů **předpovědi** ukazuje záměry s projevy s skóre předpovědi, která nejsou dostatečně velká z nejbližších rival, že se nejvyšší záměr utterance může u dalšího školení změnit z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data).
+Seznam **nejasných** záměrů předpovědi ukazuje záměry s projevy s skóre předpovědi, která nejsou dostatečně velká z nejbližších rival, že se nejvyšší záměr utterance může u dalšího školení změnit z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data).
 
 **Chcete-li tento problém vyřešit**;
 
@@ -169,6 +169,6 @@ Co je důležité skóre pro předpověď spolehlivosti? Na začátku vývoje ap
 
 Tyto dva filtry umožňují najít projevy na vybraném záměru nad rámec vaší prahové hodnoty. Tyto dva procentní podíly si můžete představit jako procento chyb. Pokud jste spokojeni s 10-15% chybou pro předpovědi, nastavte prahovou hodnotu pro filtr na 15% a vyhledejte všechny projevy nad touto hodnotou. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Správa prostředků Azure](luis-how-to-azure-subscription.md)

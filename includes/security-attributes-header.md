@@ -2,15 +2,15 @@
 author: msmbaldwin
 ms.service: security
 ms.topic: include
-ms.date: 07/23/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4aea8c1d1d7112ac1f9ff9042ff01d173ed986c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440891"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743785"
 ---
-Atribut zabezpečení je kvalita nebo funkce služby Azure. Přispívá k schopnostem služby zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
+Řízení zabezpečení je kvalita nebo funkce služby Azure, která přispívá ke schopnostem služby zabránit, zjišťovat a reagovat na ohrožení zabezpečení.
 
-V každé kategorii zobrazujeme "Ano" nebo "ne" k označení toho, zda je atribut použit. U některých služeb se pro nepoužitý atribut zobrazuje "N/A". Můžete také zadat poznámku nebo odkaz na Další informace o atributu.
+Pro každý ovládací prvek používáme "Ano" nebo "ne" k označení, zda je v současnosti pro službu, "N/A" pro ovládací prvek, který není použitelný pro službu. Můžete také zadat poznámku nebo odkazy na Další informace o atributu.

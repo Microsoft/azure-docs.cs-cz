@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139383"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736006"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – reference skriptování JSON
 > [!NOTE]
@@ -284,7 +284,7 @@ Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu J
 
 | Vlastnost | Popis | Požadováno | Výchozí |
 | --- | --- | --- | --- |
-| name | Název datové sady Pravidla pro pojmenování najdete v tématu pravidla pro pojmenovávání [Azure Data Factory](data-factory-naming-rules.md) . |Ano |Není k dispozici |
+| name | Název datové sady Pravidla pro pojmenování najdete v tématu [pravidla pro Pojmenovávání Azure Data Factory](data-factory-naming-rules.md) . |Ano |Není k dispozici |
 | type | Typ datové sady Zadejte jeden z typů, které podporuje Azure Data Factory (například: Azureblobu, AzureSqlTable). V části [úložiště dat](#data-stores) najdete všechna úložiště dat a typy datových sad podporované nástrojem Data Factory. |
 | structure | Schéma datové sady Obsahuje sloupce, jejich typy atd. | Ne |Není k dispozici |
 | typeProperties | Vlastnosti odpovídající vybranému typu. Podporované typy a jejich vlastnosti najdete v části [úložiště dat](#data-stores) . |Ano |Není k dispozici |
@@ -597,7 +597,7 @@ Pro definování propojené služby Azure Data Lake Store nastavte typ propojen�
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano (pro ověřování instančního objektu) |
 | servicePrincipalKey | Zadejte klíč aplikace. | Ano (pro ověřování instančního objektu) |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Podržením ukazatele myši v pravém horním rohu webu Azure portal můžete načíst ji. | Ano (pro ověřování instančního objektu) |
-| authorization | V **editoru Data Factory** klikněte na tlačítko autorizovat a zadejte své přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Ano (pro ověření přihlašovacích údajů uživatele)|
+| authorization | V **editoru Data Factory** klikněte na tlačítko **autorizovat** a zadejte své přihlašovací údaje, které přiřadí automaticky vygenerované autorizační URL k této vlastnosti. | Ano (pro ověření přihlašovacích údajů uživatele)|
 | sessionId | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Toto nastavení se generuje automaticky, když použijete Editor Data Factory. | Ano (pro ověření přihlašovacích údajů uživatele) |
 
 #### <a name="example-using-service-principal-authentication"></a>Příklad: použití ověřování instančního objektu
@@ -2260,7 +2260,7 @@ encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetěz
 Další informace najdete v článku [konektor SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat SAP BW datovou sadu, nastavte **typ** datové sady na **relační**. Pro SAP BW datovou sadu relačních objektů typu není podporována žádná vlastnost specifickápro typ.
+Chcete-li definovat SAP BW datovou sadu, nastavte **typ** datové sady na **relační**. Pro SAP BW datovou sadu **relačních**objektů typu není podporována žádná vlastnost specifická pro typ.
 
 #### <a name="example"></a>Příklad
 
@@ -2368,7 +2368,7 @@ encryptedCredential | Šifrovaný řetězec přihlašovacích údajů. | řetěz
 Další informace najdete v článku [konektor SAP HANA](data-factory-sap-hana-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat SAP HANA datovou sadu, nastavte **typ** datové sady na **relační**. Pro SAP HANA datovou sadu relačních objektů typu není podporována žádná vlastnost specifickápro typ.
+Chcete-li definovat SAP HANA datovou sadu, nastavte **typ** datové sady na **relační**. Pro SAP HANA datovou sadu **relačních**objektů typu není podporována žádná vlastnost specifická pro typ.
 
 #### <a name="example"></a>Příklad
 
@@ -3366,7 +3366,7 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 Další informace najdete v [článku konektor systému souborů](data-factory-onprem-file-system-connector.md#linked-service-properties).
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datovou sadu systému souborů, nastavte **typ** datové sadyna Shared a v části **typeProperties** zadejte následující vlastnosti:
+Chcete-li definovat datovou sadu systému souborů, nastavte **typ** datové sady na **Shared**a v části **typeProperties** zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
@@ -3632,7 +3632,7 @@ Pokud chcete definovat propojenou službu FTP, nastavte **typ** propojené služ
 Další informace najdete v článku [konektor FTP](data-factory-ftp-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datovou sadu serveru FTP, nastavte **typ** datovésady na Shared a v části **typeProperties** zadejte následující vlastnosti:
+Chcete-li definovat datovou sadu serveru FTP, nastavte **typ** datové sady na **Shared**a v části **typeProperties** zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
@@ -3774,7 +3774,7 @@ Pokud chcete definovat propojenou službu HDFS, nastavte **typ** propojené slu�
 Další informace najdete v článku o konektoru HDFS.
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datovou sadu HDFS, nastavte **typ** datové sadyna Shared a v části **typeProperties** zadejte následující vlastnosti:
+Chcete-li definovat datovou sadu HDFS, nastavte **typ** datové sady na **Shared**a v části **typeProperties** zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
@@ -3974,7 +3974,7 @@ Chcete-li použít základní ověřování `authenticationType` , `SshPublicKey
 Další informace najdete v článku [konektor SFTP](data-factory-sftp-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat datovou sadu SFTP, nastavte **typ** datové sadyna Shared a v části **typeProperties** zadejte následující vlastnosti:
+Chcete-li definovat datovou sadu SFTP, nastavte **typ** datové sady na **Shared**a v části **typeProperties** zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požadováno |
 | --- | --- | --- |
@@ -4739,11 +4739,11 @@ Chcete-li definovat webovou propojenou službu, nastavte **typ** propojené slu�
 Další informace najdete v článku [konektor pro web Table](data-factory-web-table-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Datová sada
-Chcete-li definovat webovou datovou sadu, nastavte **typ** datové sadyna webtable a v části **typeProperties** zadejte následující vlastnosti:
+Chcete-li definovat webovou datovou sadu, nastavte **typ** datové sady na **webtable**a v části **typeProperties** zadejte následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Typ datové sady musí být nastavené na webtable. |Ano |
+| type |Typ datové sady musí být nastavené na **Webtable** . |Ano |
 | path |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
 | index |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části získání indexu tabulky v oddílu stránky HTML. |Ano |
 
@@ -4771,7 +4771,7 @@ Chcete-li definovat webovou datovou sadu, nastavte **typ** datové sadyna webtab
 Další informace najdete v článku [konektor pro web Table](data-factory-web-table-connector.md#dataset-properties) .
 
 ### <a name="web-source-in-copy-activity"></a>Webový zdroj v aktivitě kopírování
-Pokud kopírujete data z webové tabulky, nastavte **typ zdroje** aktivity kopírování na websource. V současné době platí, že pokud je zdroj v aktivitě kopírování typu **websource**, nejsou podporovány žádné další vlastnosti.
+Pokud kopírujete data z webové tabulky, nastavte **typ zdroje** aktivity kopírování na **websource**. V současné době platí, že pokud je zdroj v aktivitě kopírování typu **websource**, nejsou podporovány žádné další vlastnosti.
 
 #### <a name="example"></a>Příklad
 
@@ -4822,14 +4822,14 @@ Následující tabulka uvádí výpočetní prostředí podporovaná nástrojem 
 
 | Výpočetní prostředí | Aktivity |
 | --- | --- |
-| [Cluster HDInsight na vyžádání](#on-demand-azure-hdinsight-cluster) nebo [vlastní cluster HDInsight](#existing-azure-hdinsight-cluster) |[Vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita](#hdinsight-hive-activity)v podregistru, aktivita [prasete](#hdinsight-pig-activity), aktivita [MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity) |
+| [Cluster HDInsight na vyžádání](#on-demand-azure-hdinsight-cluster) nebo [vlastní cluster HDInsight](#existing-azure-hdinsight-cluster) |[Vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita v podregistru](#hdinsight-hive-activity), aktivita [prasete](#hdinsight-pig-activity), aktivita [MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[Vlastní aktivita .NET](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Aktivita spuštění Machine Learning dávky](#machine-learning-batch-execution-activity) [Machine Learning aktivity aktualizovat prostředek](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[U-SQL Data Lake Analytics](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database-1), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-1) [SQL Server](#sql-server-1) |[Uložená procedura](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse) [SQL Server](#sql-server-1) |[Uložená procedura](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Cluster Azure HDInsight na vyžádání
-Služba Azure Data Factory může automaticky vytvořit cluster HDInsight na vyžádání založený na Windows/Linux pro zpracování dat. Cluster se vytvoří ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName ve formátu JSON) přidružený ke clusteru. V této propojené službě můžete spustit následující aktivity transformace: [vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita](#hdinsight-hive-activity)v podregistru, aktivita [prasete](#hdinsight-pig-activity), aktivita [MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity).
+Služba Azure Data Factory může automaticky vytvořit cluster HDInsight na vyžádání založený na Windows/Linux pro zpracování dat. Cluster se vytvoří ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName ve formátu JSON) přidružený ke clusteru. V této propojené službě můžete spustit následující aktivity transformace: [vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita v podregistru](#hdinsight-hive-activity), aktivita [prasete](#hdinsight-pig-activity), aktivita [MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity).
 
 ### <a name="linked-service"></a>Propojená služba
 V následující tabulce najdete popis vlastností použitých v definici Azure JSON pro propojenou službu HDInsight na vyžádání.
@@ -4867,7 +4867,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 Další informace najdete v článku věnovaném [COMPUTE propojeným službám](data-factory-compute-linked-services.md) .
 
 ## <a name="existing-azure-hdinsight-cluster"></a>Existující cluster Azure HDInsight
-Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastní cluster HDInsight s Data Factory. V této propojené službě můžete spustit následující aktivity transformace dat: [vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita](#hdinsight-hive-activity)v podregistru, aktivita [prasete](#hdinsight-pig-activity), [aktivita MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity).
+Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastní cluster HDInsight s Data Factory. V této propojené službě můžete spustit následující aktivity transformace dat: [vlastní aktivita rozhraní .NET](#net-custom-activity), [aktivita v podregistru](#hdinsight-hive-activity), aktivita [prasete](#hdinsight-pig-activity), [aktivita MapReduce](#hdinsight-mapreduce-activity), aktivita streamování Hadoop, [aktivita Sparku](#hdinsight-spark-activity).
 
 ### <a name="linked-service"></a>Propojená služba
 V následující tabulce najdete popis vlastností použitých v definici Azure JSON propojené služby Azure HDInsight.
@@ -4970,7 +4970,7 @@ Následující tabulka uvádí popis vlastností použitých v definici JSON pro
 | type |Vlastnost Type by měla být nastavená na: **AzureDataLakeAnalytics**. |Ano |
 | accountName |Azure Data Lake Analytics název účtu. |Ano |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics identifikátor URI. |Ne |
-| authorization |Autorizační kód se načte automaticky po kliknutí na tlačítko autorizovat v editoru Data Factory a dokončuje se přihlašovací jméno OAuth. |Ano |
+| authorization |Autorizační kód se načte automaticky po kliknutí na tlačítko **autorizovat** v editoru Data Factory a dokončuje se přihlašovací jméno OAuth. |Ano |
 | subscriptionId |ID předplatného Azure |Ne (Pokud není zadaný, použije se předplatné datové továrny). |
 | resourceGroupName |Název skupiny prostředků Azure |Ne (Pokud není zadaný, použije se skupina prostředků objektu pro vytváření dat). |
 | sessionId |ID relace z autorizační relace OAuth. Každé ID relace je jedinečné a dá se použít jenom jednou. Když použijete Editor Data Factory, toto ID se automaticky vygeneruje. |Ano |
@@ -4995,58 +4995,6 @@ Následující příklad poskytuje definici JSON pro propojenou službu Azure Da
     }
 }
 ```
-
-## <a name="azure-sql-database"></a>Azure SQL Database
-Vytvoříte propojenou službu Azure SQL a použijete ji s [aktivitou uložené procedury](#stored-procedure-activity) k vyvolání uložené procedury z data Factoryho kanálu.
-
-### <a name="linked-service"></a>Propojená služba
-Pro definování propojené služby Azure SQL Database nastavte **typ** propojené služby na **AzureSqlDatabase**a v části **typeProperties** zadejte následující vlastnosti:
-
-| Vlastnost | Popis | Požadováno |
-| --- | --- | --- |
-| connectionString |Zadejte informace potřebné pro připojení k instanci Azure SQL Database pro vlastnost connectionString. |Ano |
-
-#### <a name="json-example"></a>Příklad JSON
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Podrobnosti o této propojené službě najdete v článku [konektor Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) .
-
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Vytvoříte propojenou službu Azure SQL Data Warehouse a použijete ji s [aktivitou uložené procedury](data-factory-stored-proc-activity.md) k vyvolání uložené procedury z kanálu Data Factory.
-
-### <a name="linked-service"></a>Propojená služba
-Pro definování propojené služby Azure SQL Data Warehouse nastavte **typ** propojené služby na **AzureSqlDW**a v části **typeProperties** zadejte následující vlastnosti:
-
-| Vlastnost | Popis | Požadováno |
-| --- | --- | --- |
-| connectionString |Zadejte informace potřebné pro připojení k instanci Azure SQL Data Warehouse pro vlastnost connectionString. |Ano |
-
-#### <a name="json-example"></a>Příklad JSON
-
-```json
-{
-    "name": "AzureSqlDWLinkedService",
-    "properties": {
-        "type": "AzureSqlDW",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Další informace najdete v článku [konektor Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) .
 
 ## <a name="sql-server"></a>SQL Server
 Vytvoříte propojenou službu SQL Server a použijete ji s [aktivitou uložené procedury](data-factory-stored-proc-activity.md) k vyvolání uložené procedury z kanálu Data Factory.
@@ -5166,7 +5114,7 @@ Následující JSON definuje aktivitu podregistru HDInsight v kanálu.
 }
 ```
 
-Další informace najdete v článku [](data-factory-hive-activity.md) o aktivitě podregistru.
+Další informace najdete v článku o [aktivitě podregistru](data-factory-hive-activity.md) .
 
 ## <a name="hdinsight-pig-activity"></a>Aktivita Pig služby HDInsight
 V definici JSON aktivity prasete můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **HDInsightPig**. Nejprve musíte vytvořit propojenou službu HDInsight a zadat její název jako hodnotu pro vlastnost **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na HDInsightPig:
@@ -5293,7 +5241,7 @@ V definici JSON aktivity streamování Hadoop můžete zadat následující vlas
 | GetDebugInfo – | Volitelný element. Pokud je nastavená chyba, protokoly se stáhnou pouze při selhání. Pokud je nastavené na vše, protokoly se stáhnou vždycky bez ohledu na stav spuštění. |
 
 > [!NOTE]
-> Pro aktivitu streamování Hadoop pro vlastnost Outputs je nutné zadat výstupní datovou sadu. Tato datová sada může být pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu (každou hodinu, každý den atd.). Pokud aktivita nepřijímá vstup, můžete přeskočit určení vstupní datové sady pro aktivitu pro vlastnost **Inputs** .
+> Pro aktivitu streamování Hadoop **pro vlastnost Outputs je nutné** zadat výstupní datovou sadu. Tato datová sada může být pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu (každou hodinu, každý den atd.). Pokud aktivita nepřijímá vstup, můžete přeskočit určení vstupní datové sady pro aktivitu pro vlastnost **Inputs** .
 
 ## <a name="json-example"></a>Příklad JSON
 
@@ -5395,7 +5343,7 @@ Je třeba počítat s následujícím:
     > Doporučujeme, abyste tuto vlastnost nestavili na hodnotu vždy v produkčním prostředí, pokud neřešíte problém.
 - Oddíl **výstupy** obsahuje jednu výstupní datovou sadu. Výstupní datovou sadu musíte zadat i v případě, že program Spark nevytváří žádný výstup. Výstupní datová sada nařídí plán pro kanál (každou hodinu, každý den atd.).
 
-Další informace o aktivitě najdete v článku [](data-factory-spark.md) o aktivitě Sparku.
+Další informace o aktivitě najdete v článku o [aktivitě Sparku](data-factory-spark.md) .
 
 ## <a name="machine-learning-batch-execution-activity"></a>Aktivita Provedení dávky služby Machine Learning
 V definici JSON aktivity spuštění dávky Azure Machine Learning studia můžete zadat následující vlastnosti. Vlastnost Type aktivity musí být: **AzureMLBatchExecution**. Nejprve musíte vytvořit propojenou službu Azure Machine Learning a zadat její název jako hodnotu pro vlastnost **linkedServiceName** . Následující vlastnosti jsou podporovány v části **typeProperties** při nastavení typu aktivity na AzureMLBatchExecution:

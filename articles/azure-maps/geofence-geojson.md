@@ -1,6 +1,6 @@
 ---
-title: Formát dat GeoJSON monitorové geografické zóny ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o formátu GeoJSON monitorové geografické zóny dat ve službě Azure Maps
+title: Formát geografických dat geografického formátu JSON v Azure Maps | Microsoft Docs
+description: Seznamte se s geografickými datovými formáty geografického formátu JSON v Azure Maps
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5946180c161a38a30f44e235ce0b626fd70a5400
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723567"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735141"
 ---
-# <a name="geofencing-geojson-data"></a>Monitorování geografických zón GeoJSON dat
+# <a name="geofencing-geojson-data"></a>Geografická data geografických zón
 
-Azure Maps [získat monitorové geografické zóny](/rest/api/maps/spatial/getgeofence) a [monitorové geografické zóny příspěvek](/rest/api/maps/spatial/postgeofence) rozhraní API umožňují načíst blízkosti souřadnice vzhledem k zadané monitorové geografické zóny nebo sadu ohrazení. Tento článek podrobně popisuje, jak připravit data monitorové geografické zóny, který lze použít v Azure Maps GET a POST API.
+Rozhraní API pro monitorování geografických [zón](/rest/api/maps/spatial/getgeofence) a Azure Maps jejich [vystavování](/rest/api/maps/spatial/postgeofence) vám umožní získat blízkost souřadnic vzhledem k poskytnuté geografické ohrazení nebo sadě plotů. Tento článek podrobně popisuje, jak připravit data o geografickosti, která se dají použít v Azure Maps GET a POST API.
 
-Data pro monitorové geografické zóny nebo sadu monitorovaná geografická zóna je reprezentována `Feature` objektu a `FeatureCollection` objekt `GeoJSON` formátu, který je definován v [rfc7946](https://tools.ietf.org/html/rfc7946). Kromě:
+Data pro geografickou nebo množinu geografických plotů jsou reprezentována `Feature` objektem a `GeoJSON` `FeatureCollection` objektem ve formátu, který je definován v [rfc7946](https://tools.ietf.org/html/rfc7946). Kromě toho:
 
-* Typ objektu GeoJSON může být `Feature` objektu nebo `FeatureCollection` objektu.
-* Může být typ objektu Geometry `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, a `GeometryCollection`.
-* By měl obsahovat všechny vlastnosti funkce `geometryId`, který se používá k identifikaci monitorové geografické zóny.
-* Funkce s `Point`, `MultiPoint`, `LineString`, `MultiLineString` musí obsahovat `radius` ve vlastnostech. `radius` v metrech, se měří hodnota `radius` hodnotu od 1 do 10000.
-* Funkce s `polygon` a `multipolygon` typ geometry nemá vlastnost radius.
-* `validityTime` je volitelná vlastnost, která umožňuje uživateli nastavit čas vypršení platnosti a platnosti časové období pro data monitorové geografické zóny. Pokud není zadán, nikdy data vypršení platnosti a je vždy platný.
-* `expiredTime` Je datum vypršení platnosti a čas dat monitorování geografických zón. Pokud hodnota `userTime` v požadavku je novější než tato hodnota, odpovídající monitorové geografické zóny data se považují za data s prošlou platností a není dotazovat. Na kterých geometryId tento monitorové geografické zóny se zahrnou data `expiredGeofenceGeometryId` pole v rámci odpovědi monitorové geografické zóny.
-* `validityPeriod` Je seznam platnosti období monitorové geografické zóny. Pokud hodnota `userTime` v požadavku spadá mimo období platnosti, odpovídající data monitorové geografické zóny, je považován za jako neplatná a nebude možné dotazovat. Je součástí geometryId tato data monitorové geografické zóny `invalidPeriodGeofenceGeometryId` pole v rámci odpovědi monitorové geografické zóny. V následující tabulce jsou uvedeny vlastnosti prvku validityPeriod.
+* Typ objektu pro typ objektivu JSON může `Feature` být objekt `FeatureCollection` nebo objekt.
+* Typ objektu `Point`geometrie může být, `MultiPoint`, `LineString` `MultiLineString` ,,`MultiPolygon`, a .`GeometryCollection` `Polygon`
+* Všechny vlastnosti funkce by měly obsahovat `geometryId`a, který se používá k identifikaci geografického ohraničení.
+* Funkce se `Point`systémem `MultiPoint`, `LineString`, ,`MultiLineString` musí obsahovat`radius` vlastnosti. `radius`hodnota se měří v metrech, `radius` hodnota rozsahu od 1 do 10000.
+* Funkce s `polygon` typem `multipolygon` a geometrie nemá vlastnost poloměr.
+* `validityTime`je volitelná vlastnost, která umožňuje uživateli nastavit dobu platnosti a dobu platnosti pro data geografické hodnoty. Pokud není zadán, data budou nikdy vypršet a jsou vždy platná.
+* `expiredTime` Je datum a čas vypršení platnosti dat geografických zón. Pokud je hodnota `userTime` v žádosti pozdější než tato hodnota, považují se odpovídající data o geografickou část považována za data s vypršenou platností a nedotazují se na ně. Na základě toho se geometryId z těchto geografických dat `expiredGeofenceGeometryId` do pole v rámci reakce na geografické ploty.
+* `validityPeriod` Je seznam časových období platnosti geografické zóny. Pokud hodnota `userTime` v žádosti spadá mimo období platnosti, považují se odpovídající data o geografickou oblast za neplatnou a nebudou se dotazovat. GeometryId těchto geografických dat je součástí `invalidPeriodGeofenceGeometryId` pole v rámci reakce na geografické ploty. V následující tabulce jsou uvedeny vlastnosti elementu validityPeriod.
 
-| Název | Type | Povinné  | Popis |
+| Name | type | Povinné  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | DateTime  | true (pravda) | Počáteční datum a čas platnosti časového období. |
-| endTime   | DateTime  | true (pravda) |  Koncové datum a čas platnosti časového období. |
-| recurrenceType | string | false (nepravda) |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`, nebo `Yearly`. Výchozí hodnota je `Daily`.|
-| businessDayOnly | Boolean | false (nepravda) |  Označuje, zda data pouze platné během pracovních dnů. Výchozí hodnota je `false`.|
+| startTime | Datetime  | true | Datum a čas zahájení období platnosti. |
+| endTime   | Datetime  | true |  Datum a čas konce období platnosti. |
+| recurrenceType | řetězec | false |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`nebo. `Yearly` Výchozí hodnota je `Daily`.|
+| businessDayOnly | Logická hodnota | false |  Určuje, jestli jsou data platná jenom během pracovních dnů. Výchozí hodnota je `false`.|
 
 
-* Všechny hodnoty souřadnic jsou reprezentovány ve formě [latitude, longitude] definované v `WGS84`.
-* Pro každou funkci, která obsahuje `MultiPoint`, `MultiLineString`, `MultiPolygon` , nebo `GeometryCollection`, vlastnosti, které se použijí na všechny prvky. Příklad: Všechny body v `MultiPoint` bude používat stejný radius k vytvoření více kruh monitorové geografické zóny.
-* Ve scénáři kruh bod, kruh geometrie lze znázornit pomocí `Point` geometrický objekt s vlastnostmi rozpracovaného v [rozšíření GeoJSON geometrie](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
+* Všechny hodnoty souřadnic jsou reprezentovány jako [Zeměpisná délka, `WGS84`Zeměpisná šířka] definovaná v.
+* Pro každou funkci, která obsahuje `MultiPoint`, `MultiLineString`, `MultiPolygon` nebo `GeometryCollection`, jsou vlastnosti aplikovány na všechny prvky. například: Všechny body v `MultiPoint` nástroji budou používat stejný poloměr pro vytvoření více geografických paprsků.
+* V bodovém scénáři je možné znázornit geometrii kruhu pomocí `Point` objektu geometrie s vlastnostmi, které jsou vypracované v rámci rozšíření geografického [geometriíového formátu JSON](https://docs.microsoft.com/azure/azure-maps/extend-geojson).      
 
-Tady je ukázkový text žádosti pro monitorové geografické zóny, vyjádřené geometrii kruh monitorové geografické zóny v `GeoJSON` pomocí středový bod a poloměr. Platná doba monitorové geografické zóny dat začíná od 2018-10-22, 9: 00 do 17: 00, opakuje každý den, s výjimkou víkendu. `expiredTime` označuje tato data monitorové geografické zóny se budou považovat za vypršela platnost, pokud `userTime` v požadavku je pozdější než `2019-01-01`.  
+Následuje ukázkový text žádosti o geografickou ochranou, která je vyjádřena jako geometrie geografického `GeoJSON` tónu v používání středového bodu a poloměru. Platné období dat o geografickosti začíná od 2018-10-22 9:00 do 17:00, opakuje se každý den s výjimkou víkendu. `expiredTime`označuje, že tato data geografické plotu budou považována `userTime` za prošlá, pokud je `2019-01-01`v žádosti později než.  
 
 ```json
 {

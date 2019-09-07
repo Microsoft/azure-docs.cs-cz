@@ -1,5 +1,5 @@
 ---
-title: Application Insights C# – Luis
+title: 'Kurz: Application Insights C# – Luis'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se pro Application Insights úložiště dat telemetrie přidají informace o robotech a Language Understanding.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 93a75945025b2ab98541f1e1cf678145ddff0123
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560065"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388000"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>Přidání výsledků LUIS do Application Insights z robota vC#
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Kurz: Přidání výsledků LUIS do Application Insights z robota vC#
 
 V tomto kurzu se pro [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie přidají informace o robotech a Language Understanding. Jakmile tato data máte, můžete je pomocí jazyka Kusto nebo Power BI analyzovat, agregovat a sestavovat v reálném čase a entity utterance. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 

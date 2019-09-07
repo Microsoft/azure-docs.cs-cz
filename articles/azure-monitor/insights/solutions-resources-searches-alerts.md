@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: MT
+ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662910"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744482"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložených hledání a upozornění do řešení pro správu (Preview)
 
 > [!IMPORTANT]
-> Jak [jsme oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [Azure Resource Manager šablony](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a PowerShellu. [ rutina](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci si můžou snadno [Přepnout do preferovaných způsobů správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, zvýšené lookback časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
+> Jak jsme [oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [Azure Resource Manager šablony](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a [PowerShellu. rutina](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci si můžou snadno [Přepnout do preferovaných způsobů správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, zvýšené lookback časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
 
 > [!NOTE]
 > Toto je předběžná dokumentace k vytváření řešení pro správu, která jsou momentálně ve verzi Preview. Jakékoli schéma popsané níže se může změnit.
@@ -131,7 +131,7 @@ Prostředek plánu by měl záviset na uloženém hledání tak, aby byl vytvoř
 Plán může mít více akcí. Akce může definovat jeden nebo více procesy provádět například poslání e-mailu nebo spuštění sady runbook nebo ji může definovat prahové hodnoty, která určuje, kdy výsledky hledání odpovídají kritérií. Některé akce budou definovat i tak, aby procesy, které jsou prováděny při splnění prahovou hodnotu.
 Akce lze definovat pomocí prostředku prostředků nebo prostředku akce [Action Group].
 
-Vlastnost **Type** obsahuje dva typy prostředku akce. Plán vyžaduje jednu akci s výstrahou, která definuje Podrobnosti pravidla výstrahy a akce, které se mají provést při vytvoření výstrahy. Prostředky akce mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
+Vlastnost **Type** obsahuje dva typy prostředku akce. Plán vyžaduje jednu akci s **výstrahou** , která definuje Podrobnosti pravidla výstrahy a akce, které se mají provést při vytvoření výstrahy. Prostředky akce mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
 
 Akce výstrahy mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
 
@@ -169,30 +169,30 @@ Akce výstrahy mají následující strukturu. To zahrnuje společné proměnné
 
 Vlastnosti pro prostředky akce výstrah jsou popsány v následujících tabulkách.
 
-| Název elementu | Požaduje se | description |
+| Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| type | Ano | Typ akce.  Toto **Upozornění se upozorní** na akce výstrah. |
-| name | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
-| description | Ne | Volitelný popis výstrahy |
-| severity | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **kritické**<br>**Upozornění**<br>**informativní**
+| `Type` | Ano | Typ akce.  Toto **Upozornění se upozorní** na akce výstrah. |
+| `Name` | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
+| `Description` | Ne | Volitelný popis výstrahy |
+| `Severity` | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **kritické**<br>**Upozornění**<br>**informativní**
 
 
 #### <a name="threshold"></a>Prahová hodnota
 Tato část je povinná. Definuje vlastnosti prahové hodnoty pro výstrahu.
 
-| Název elementu | Požaduje se | description |
+| Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| Operator | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
-| Value | Ano | Hodnota pro porovnání výsledků. |
+| `Operator` | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
+| `Value` | Ano | Hodnota pro porovnání výsledků. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Tato část je volitelná. Zahrňte pro upozornění měření metriky.
 
-| Název elementu | Požaduje se | description |
+| Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
-| TriggerCondition | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový<br>počet po sobě jdoucích** |
-| Operator | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
-| Value | Ano | Počet, kolikrát musí být splněna kritéria pro aktivaci výstrahy. |
+| `TriggerCondition` | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový<br>počet po sobě jdoucích** |
+| `Operator` | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
+| `Value` | Ano | Počet, kolikrát musí být splněna kritéria pro aktivaci výstrahy. |
 
 
 #### <a name="throttling"></a>Omezování
@@ -407,6 +407,6 @@ Následující soubor parametrů poskytuje ukázkové hodnoty pro toto řešení
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Přidejte zobrazení](solutions-resources-views.md) do řešení pro správu.
 * [Přidejte Runbooky Automation a další prostředky](solutions-resources-automation.md) do řešení pro správu.

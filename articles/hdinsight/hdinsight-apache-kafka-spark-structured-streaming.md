@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Apache Spark strukturovaného streamování s využitím Apache Kafka-Azure HDInsight'
+title: Kurz Apache Spark strukturované streamování s využitím Apache Kafka-Azure HDInsight
 description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: bf877b9422581cd77349a2a9eddf0ab262977062
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406021"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734756"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Spark s Apache Kafka v HDInsight
 
@@ -33,7 +33,7 @@ Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit
 
 * JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* Seznamte se s používáním poznámkových [bloků Jupyter](https://jupyter.org/) s Sparkem ve službě HDInsight. Další informace najdete v tématu [načtení dat a spuštění dotazů s Apache Spark v dokumentu HDInsight](spark/apache-spark-load-data-run-query.md) .
+* Seznamte se s používáním [poznámkových bloků Jupyter](https://jupyter.org/) s Sparkem ve službě HDInsight. Další informace najdete v tématu [načtení dat a spuštění dotazů s Apache Spark v dokumentu HDInsight](spark/apache-spark-load-data-run-query.md) .
 
 * Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
 
@@ -44,7 +44,7 @@ Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >
-> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu Naplánování [služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
+> Další informace o používání služby HDInsight ve virtuální síti najdete v tématu [Naplánování služby Virtual Network for HDInsight](hdinsight-plan-virtual-network-deployment.md) .
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s Apache Kafka
 

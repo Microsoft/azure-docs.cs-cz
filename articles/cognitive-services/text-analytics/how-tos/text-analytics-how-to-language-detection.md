@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 361dc10aad6f65230e1e0f4c563534d44b45f902
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697807"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387790"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: Zjistit jazyk pomocí Analýza textu
 
@@ -69,7 +69,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvoření žádosti POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-+ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. Musí zahrnovat `/languages` prostředek: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
++ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. Do adresy URL `/text/analytics/v2.1/languages` musíte zahrnout. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -269,7 +269,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro detekci jazyka po
 
 + [Detekce jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) je dostupná pro nejrůznější jazyky, varianty, dialekty a některé regionální nebo kulturní jazyky.
 + Dokumenty JSON v textu požadavku obsahují ID a text.
-+ Požadavek post je na `/languages` koncový bod pomocí přizpůsobeného přístupového [klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
++ Požadavek post je na `/languages` koncový bod pomocí přizpůsobeného [přístupového klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 + Výstup odpovědi se skládá z identifikátorů jazyka pro každé ID dokumentu. Výstup se dá streamovat do jakékoli aplikace, která přijímá JSON. Mezi příklady aplikací patří Excel a Power BI, aby se pojmenoval několik.
 
 ## <a name="see-also"></a>Viz také:

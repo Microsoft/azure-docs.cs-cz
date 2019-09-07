@@ -10,18 +10,18 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 124b10607f710ddfb76787eac09dea7ec6ffc03c
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3302402ae791ac17b8ac09ab91b061a558eb7c75
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173054"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390363"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: Vytvoření vysoce dostupné aplikace s úložištěm objektů BLOB
 
 Tento kurz je první částí série. V takovém případě se naučíte, jak zajistit vysokou dostupnost dat aplikace v Azure.
 
-Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a načte objekt BLOB z účtu úložiště s geograficky [redundantním přístupem pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS).
+Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a načte objekt BLOB z účtu úložiště s [geograficky redundantním přístupem pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS).
 
 RA-GRS funguje replikací transakcí z primární oblasti do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Aplikace používá ke zjištění, ke kterému koncovému bodu, ke kterému se má připojit, způsob [přerušení okruhu](/azure/architecture/patterns/circuit-breaker) , automaticky přepínání mezi koncovými body jako se selháním a obnovením se simuluje.
 
@@ -49,11 +49,6 @@ K provedení kroků v tomto kurzu je potřeba:
 
 * Nainstalovat [Python](https://www.python.org/downloads/).
 * Stáhnout a nainstalovat [sadu SDK služby Azure Storage pro Python](https://github.com/Azure/azure-storage-python)
-
-# <a name="java-v10-sdktabjava-v10"></a>[Sada Java v10 za účelem SDK](#tab/java-v10)
-
-* Nainstalovat a nakonfigurovat [Maven](https://maven.apache.org/download.cgi) pro práci z příkazového řádku
-* Nainstalovat a nakonfigurovat sadu [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -107,14 +102,6 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Sada Java v10 za účelem SDK](#tab/java-v10)
-
-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs) a extrahujte soubor storage-java-ragrs.zip. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci v Javě.
-
-```bash
-git clone https://github.com/Azure-Samples/storage-java-V10-ha-ra-grs
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Vzorový projekt obsahuje základní aplikaci Node. js.
@@ -165,24 +152,6 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="java-v10-sdktabjava-v10"></a>[Sada Java v10 za účelem SDK](#tab/java-v10)
-
-Tato ukázka vyžaduje, abyste bezpečně ukládali název a klíč vašeho účtu úložiště. Uložte je do proměnných prostředí místně do počítače, na kterém se spustí ukázka. Použijte příklad systému Linux nebo Windows v závislosti na operačním systému k vytvoření proměnných prostředí. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
-
-### <a name="linux-example"></a>Příklad pro Linux
-
-```
-export AZURE_STORAGE_ACCOUNT="<youraccountname>"
-export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
-```
-
-### <a name="windows-example"></a>Příklad pro Windows
-
-```powershell
-setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
-setx AZURE_STORAGE_ACCESS_KEY "<youraccountkey>"
-```
-
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
 Pokud chcete tuto ukázku spustit, musíte do `.env.example` souboru přidat svoje přihlašovací údaje účtu úložiště a pak ho přejmenovat na. `.env`
@@ -222,49 +191,6 @@ Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opak
 
 Před stažením je definována funkce Service Object [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) . Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
-# <a name="java-v10-sdktabjava-v10"></a>[Sada Java v10 za účelem SDK](#tab/java-v10)
-
-Chcete-li spustit ukázku, použijte Maven na příkazovém řádku.
-
-1. Otevřete prostředí a přejděte do **úložiště – objekty blob – Java-v10 za účelem – rychlý Start** v klonovaném adresáři.
-2. Zadejte `mvn compile exec:java`.
-
-Tato ukázka vytvoří testovací soubor ve výchozím adresáři. Pro uživatele Windows je tento adresář **AppData\Local\Temp**. Ukázka pak zobrazí následující možnosti příkazů, které můžete zadat:
-
-- Pokud zadáte **P** pro provedení operace Put blob, tento příkaz nahraje dočasný soubor do svého účtu úložiště.
-- Pokud chcete provést operaci objektu BLOB seznamu, zadejte **L** . Tento příkaz zobrazí seznam objektů blob, které jsou aktuálně ve vašem kontejneru.
-- Zadáte-li **G** k provedení operace Get blob, tento příkaz stáhne soubor z účtu úložiště do místního počítače.
-- Pokud chcete spustit operaci odstranění objektu blob, zadejte **D** . Tento příkaz odstraní objekt BLOB z vašeho účtu úložiště.
-- Zadáním **E** zavřete ukázku. Tento příkaz také odstraní všechny prostředky, které vytvořila ukázka.
-
-Tento příklad ukazuje výstup při spuštění aplikace ve Windows.
-
-```
-Created quickstart container
-Enter a command
-(P)utBlob | (L)istBlobs | (G)etBlob | (D)eleteBlobs | (E)xitSample
-# Enter a command :
-P
-Uploading the sample file into the container: https://<storageaccount>.blob.core.windows.net/quickstart
-# Enter a command :
-L
-Listing blobs in the container: https://<storageaccount>.blob.core.windows.net/quickstart
-Blob name: SampleBlob.txt
-# Enter a command :
-G
-Get the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-The blob was downloaded to C:\Users\<useraccount>\AppData\Local\Temp\downloadedFile13097087873115855761.txt
-# Enter a command :
-D
-Delete the blob: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-
-# Enter a command :
->> Blob deleted: https://<storageaccount>.blob.core.windows.net/quickstart/SampleBlob.txt
-E
-Cleaning up the sample and exiting!
-```
-
-Máte možnost ovládat tuto ukázku a zadat příkazy, které spustí kód. Vstupy rozlišují velká a malá písmena.
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
@@ -389,18 +315,6 @@ def response_callback(response):
         if secondary_read_count >= secondary_threshold:
             blob_client.location_mode = LocationMode.PRIMARY
             secondary_read_count = 0
-```
-
-# <a name="java-v10-sdktabjava-v10"></a>[Sada Java v10 za účelem SDK](#tab/java-v10)
-
-Se sadou Java v10 za účelem SDK není nutné definovat obslužné rutiny zpětného volání, takže sada SDK má teď některé zásadní rozdíly ze sady v7 SDK. Místo LocationMode máme sekundární **kanál**. Sekundární kanál můžete definovat přes **RequestRetryOptions** a pokud je definován, umožní aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
-
-```java
-// We create pipeline options here so that they can be easily used between different pipelines
-PipelineOptions myOptions = new PipelineOptions();
-myOptions.withRequestRetryOptions(new RequestRetryOptions(RetryPolicyType.EXPONENTIAL, 3, 10, 500L, 1000L, accountName + "-secondary.blob.core.windows.net"));
-// We are using a default pipeline here, you can learn more about it at https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview
-final ServiceURL serviceURL = new ServiceURL(new URL("https://" + accountName + ".blob.core.windows.net"), StorageURL.createPipeline(creds, myOptions));
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

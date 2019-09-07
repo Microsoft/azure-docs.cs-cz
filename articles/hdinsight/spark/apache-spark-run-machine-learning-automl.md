@@ -1,5 +1,5 @@
 ---
-title: Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight
+title: Spouštění Azure Machine Learning úloh v Apache Spark ve službě Azure HDInsight
 description: Naučte se spouštět úlohy Azure Machine Learning pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141188"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736050"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight
 
@@ -22,7 +22,7 @@ Azure Machine Learning zjednodušuje a zrychluje sestavování, školení a nasa
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Instalace Azure Machine Learning v clusteru HDInsight
 
 Obecné kurzy k automatizovanému strojovém učení najdete [v tématu Kurz: Pomocí automatizovaného strojového učení Sestavte](../../machine-learning/service/tutorial-auto-train-models.md)regresní model.
-Všechny nové clustery HDInsight-Spark jsou předinstalované se sadou AutoML SDK. Pomocí tohoto ukázkového poznámkového [bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)můžete začít s AutoML ve službě HDInsight. Tento Jupyter Notebook ukazuje, jak používat automatizované třídění strojového učení pro jednoduchý problém klasifikace.
+Všechny nové clustery HDInsight-Spark jsou předinstalované se sadou AutoML SDK. Pomocí tohoto [ukázkového poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)můžete začít s AutoML ve službě HDInsight. Tento Jupyter Notebook ukazuje, jak používat automatizované třídění strojového učení pro jednoduchý problém klasifikace.
 
 > [!Note]
 > Balíčky Azure Machine Learning se instalují do prostředí conda pro python3. Nainstalovaný Poznámkový blok Jupyter by se měl spustit pomocí jádra PySpark3.
@@ -73,7 +73,7 @@ dataflow_with_token = dprep.read_csv(
 
 V případě [automatizované konfigurace strojového učení](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)by vlastnost `spark_context` měla být nastavena pro balíček, který má být spuštěn v distribuovaném režimu. Vlastnost `concurrent_iterations`, která má maximální počet spuštěných iterací paralelně, by měla být nastavena na číslo nižší než jádro vykonavatele aplikace Spark.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o motivaci na základě automatizovaného strojového učení najdete v tématu věnovaném [vydávání modelů na základě automatizovaného strojového učení od Microsoftu.](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * Další informace o používání funkcí automatizovaného ML v Azure ML najdete v tématu [nové možnosti automatizovaného strojového učení ve službě Azure Machine Learning Service](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/) .

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření kanálu Apache Spark Machine Learning – Azure HDInsight
-description: Pomocí knihovny Apache Spark Machine Learning můžete vytvářet datové kanály.
+description: Pomocí knihovny Apache Spark Machine Learning můžete vytvářet datové kanály ve službě Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 4ad68ef33eb469c7949c3f3efcd55d6765da4158
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441865"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736383"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Apache Sparku
 
@@ -130,7 +130,7 @@ peek.show()
 only showing top 20 rows
 ```
 
-`model` Objekt se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu sestavování [aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
+`model` Objekt se teď dá použít k vytvoření předpovědi. Úplnou ukázku této aplikace pro strojové učení a podrobné pokyny pro její spuštění najdete v tématu [sestavování aplikací Apache Spark Machine Learning v Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
 
 ## <a name="see-also"></a>Viz také:
 

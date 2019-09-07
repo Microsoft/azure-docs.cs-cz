@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Provedení extrakce, transformace, načítání (ETL) operací pomocí interaktivního dotazu v Azure HDInsight'
-description: Kurz – zjistěte, jak extrahovat data z datové sady nezpracovaná sdíleného svazku clusteru, transformují je na HDInsight Interactive Query a pak nahrajte Transformovaná data do služby Azure SQL database s využitím Apache Sqoop.
+title: 'Kurz: Provádění operací ETL pomocí interaktivního dotazu ve službě Azure HDInsight'
+description: Kurz – Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí interaktivního dotazu ve službě HDInsight a pak načíst transformovaná data do služby Azure SQL Database pomocí Apache Sqoop.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807387"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735830"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí interaktivního dotazu v Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: Extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
-V tomto kurzu trvat nezpracovaný datový soubor CSV veřejně dostupné zapisovači letových údajů, importovat do úložiště clusteru HDInsight a pak transformace dat pomocí interaktivního dotazu v Azure HDInsight. Po transformaci dat, načtete data do databáze Azure SQL pomocí [Apache Sqoop](https://sqoop.apache.org/).
+V tomto kurzu budete mít nezpracovaný datový soubor CSV s veřejně dostupnými letovými daty, naimportujete ho do úložiště clusteru HDInsight a pak data Transformujte pomocí interaktivního dotazu ve službě Azure HDInsight. Data se po transformaci načítají do Azure SQL Database pomocí [Apache Sqoop](https://sqoop.apache.org/).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -25,20 +25,20 @@ Tento kurz se zabývá následujícími úkony:
 > * Stažení ukázkových údajů o letech
 > * Nahrání dat do clusteru HDInsight
 > * Transformace dat pomocí interaktivního dotazu
-> * Vytvoření tabulky ve službě Azure SQL database
-> * Použít Sqoop k exportování dat do Azure SQL database
+> * Vytvoření tabulky ve službě Azure SQL Database
+> * Použití Sqoop k exportu dat do Azure SQL Database
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Interactive Query v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **Interactive Query** pro **typ clusteru**.
+* Interaktivní cluster dotazů v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **interaktivního dotazu** pro **typ clusteru**.
 
 * Azure SQL Database. Databázi Azure SQL použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL na webu Azure Portal](/azure/sql-database/sql-database-single-database-get-started).
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Stažení letových údajů
 
-1. Přejděte do [výzkumu a inovativní technologie správy, Bureau of Transportation statistiky](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Přejděte do části [výzkum a inovativní Správa technologie, Statistika dopravy](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
@@ -46,7 +46,7 @@ Tento kurz se zabývá následujícími úkony:
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
-   | Fields (Pole) |Rok, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původu, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Fields (Pole) |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, původ, OriginCityName, OriginState, DestAirportID, cíl, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
 
@@ -54,21 +54,21 @@ Tento kurz se zabývá následujícími úkony:
 
 Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoha způsoby. V této části k nahrání dat použijete `scp`. Informace o dalších způsobech nahrání dat najdete v tématu [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md).
 
-1. Nahrajte soubor ZIP do hlavního uzlu clusteru HDInsight. Upravte následující příkaz tak, že nahradíte `FILENAME` s názvem souboru ZIP a `CLUSTERNAME` s názvem clusteru HDInsight. Pak otevřete příkazový řádek, nastavte pracovní adresář na umístění souboru a potom zadejte příkaz.
+1. Nahrajte soubor. zip do hlavního uzlu clusteru HDInsight. Níže uvedený příkaz upravte nahrazením `FILENAME` názvem souboru. zip a `CLUSTERNAME` názvem clusteru HDInsight. Pak otevřete příkazový řádek, nastavte pracovní adresář na umístění souboru a potom zadejte příkaz.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Pokud budete vyzváni k zadání Ano nebo Ne, chcete-li pokračovat, Ano zadejte na příkazovém řádku a stiskněte klávesu enter. Text není zobrazená v okně během psaní.
+    Pokud se zobrazí výzva k zadání Ano nebo ne, zadejte na příkazovém řádku Ano a stiskněte klávesu ENTER. Text není při psaní zobrazený v okně.
 
-2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem clusteru HDInsight. Potom zadejte následující příkaz:
+2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Níže uvedený příkaz upravte nahrazením `CLUSTERNAME` názvem clusteru HDInsight. Potom zadejte následující příkaz:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Nastavte proměnnou prostředí po vytvoření připojení SSH. Nahraďte `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`, a `SQL_PASWORD` příslušnými hodnotami. Potom zadejte příkaz:
+3. Po navázání připojení SSH nastavte proměnnou prostředí. `FILE_NAME`Nahraďte `SQL_SERVERNAME` ,,`SQL_USER`, a odpovídajícímihodnotami.`SQL_PASWORD` `SQL_DATABASE` Pak zadejte příkaz:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -78,13 +78,13 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
     export SQLPASWORD='SQL_PASWORD'
     ```
 
-4. Rozbalte soubor .zip tak, že zadáte následující příkaz:
+4. Rozbalte soubor. zip zadáním následujícího příkazu:
 
     ```bash
     unzip $FILENAME.zip
     ```
 
-5. Vytvoření adresáře ve službě HDInsight storage a potom tento soubor .csv zkopírujte do adresáře tak, že zadáte následující příkaz:
+5. Vytvořte adresář v úložišti HDInsight a pak zkopírujte soubor. CSV do adresáře tak, že zadáte následující příkaz:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -93,11 +93,11 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
 
 ## <a name="transform-data-using-a-hive-query"></a>Transformace dat pomocí dotazu Hive
 
-Úlohu Hive můžete v clusteru HDInsight spustit různými způsoby. V této části použijete [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) ke spuštění úlohy Hive. Informace o dalších metodách spuštění úlohy Hive najdete v tématu [použití Apache Hive s HDInsight](../hadoop/hdinsight-use-hive.md).
+Úlohu Hive můžete v clusteru HDInsight spustit různými způsoby. V této části použijete [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) ke spuštění úlohy podregistru. Informace o dalších metodách spuštění úlohy podregistru najdete v tématu [použití Apache Hive ve službě HDInsight](../hadoop/hdinsight-use-hive.md).
 
 V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s názvem **Delays** (Zpoždění).
 
-1. Z řádku SSH, které už máte pro HDInsight cluster, pomocí následujícího příkazu vytvořte a upravte nový soubor s názvem **flightdelays.hql**:
+1. Z příkazového řádku SSH, který už máte pro cluster HDInsight, použijte následující příkaz k vytvoření a úpravě nového souboru s názvem **flightdelays. HQL**:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
     FROM delays_raw;
     ```
 
-3. Chcete-li soubor uložit, stiskněte **Ctrl + X**, pak **y**, stiskněte enter.
+3. Soubor uložíte tak, že stisknete **kombinaci kláves CTRL + X**, pak **y**a pak zadáte.
 
 4. Spusťte Hive a soubor **flightdelays.hql** pomocí následujícího příkazu:
 
@@ -199,7 +199,7 @@ V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s náz
 
 Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit tabulku. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
 
-1. K instalaci FreeTDS, použijte následující příkaz z otevřené připojení SSH ke clusteru:
+1. K instalaci FreeTDS použijte následující příkaz z otevřeného připojení SSH ke clusteru:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -232,7 +232,7 @@ Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit 
     GO
     ```
 
-    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tento příkaz vytvoří tabulku s názvem **zpoždění**, pomocí clusterovaného indexu.
+    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tento příkaz vytvoří tabulku s názvem **zpoždění**s clusterovaným indexem.
 
     K ověření vytvoření tabulky použijte následující dotaz:
 
@@ -250,27 +250,27 @@ Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit 
 
 4. Zadáním `exit` na příkazovém řádku `1>` ukončete nástroj tsql.
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Export dat do SQL database s použitím Apache Sqoop
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Export dat do SQL Database s využitím Apache Sqoop
 
 V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z `/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili v databázi Azure SQL.
 
-1. Ověřte, že Sqoop vidí vaše databáze SQL tak, že zadáte následující příkaz:
+1. Zadáním následujícího příkazu ověřte, že Sqoop může zobrazit vaši databázi SQL:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Tento příkaz vrátí seznam databází, včetně databáze, ve které jste vytvořili `delays` tabulky dříve.
+    Tento příkaz vrátí seznam databází, včetně databáze, ve které jste `delays` tabulku vytvořili dříve.
 
-2. Export dat z `/tutorials/flightdelays/output` k `delays` tabulku tak, že zadáte následující příkaz:
+2. Exportujte data z `/tutorials/flightdelays/output` `delays` do tabulky zadáním následujícího příkazu:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop se připojí k databázi, která obsahuje `delays` tabulky a exportuje data z `/tutorials/flightdelays/output` do adresáře `delays` tabulky.
+    Sqoop se připojí k databázi `delays` obsahující tabulku a exportuje data `/tutorials/flightdelays/output` z adresáře do `delays` tabulky.
 
-3. Po dokončení příkazu sqoop pomocí tsql nástroje pro připojení k databázi zadáním následujícího příkazu:
+3. Až se příkaz Sqoop dokončí, připojte se k databázi pomocí nástroje TSQL, a to zadáním následujícího příkazu:
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -291,11 +291,11 @@ V předchozích částech jste zkopírovali transformovaná data do umístění 
 
 Po dokončení kurzu můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli nezpracovaná data souboru CSV, importovat do úložiště clusteru HDInsight a pak Transformovaná data v Azure HDInsight Interactive Query.  Přejděte k dalšímu kurzu se dozvíte o konektoru skladu Apache Hive.
+V tomto kurzu jste udělali nezpracovaný datový soubor CSV, naimportovali ho do úložiště clusteru HDInsight a pak data transformoval pomocí interaktivního dotazu ve službě Azure HDInsight.  Přejděte k dalšímu kurzu, kde se dozvíte o konektoru Apache Hive Warehouse.
 
 > [!div class="nextstepaction"]
->[Integrujte Apache Spark a Apache Hivu se službou konektoru sklad Hive](./apache-hive-warehouse-connector.md)
+>[Integrace Apache Spark a Apache Hive s konektorem skladu podregistru](./apache-hive-warehouse-connector.md)

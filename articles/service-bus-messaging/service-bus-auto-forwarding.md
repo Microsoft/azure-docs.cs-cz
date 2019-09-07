@@ -1,6 +1,6 @@
 ---
-title: Automatickým přeposíláním entity pro zasílání zpráv Azure Service Bus | Dokumentace Microsoftu
-description: Jak řetězit frontu služby Service Bus nebo předplatné do jiné fronty nebo tématu.
+title: Automatické předávání Azure Service Bus entit zasílání zpráv | Microsoft Docs
+description: Postup zřetězení Service Bus fronty nebo předplatného do jiné fronty nebo tématu.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686135"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390131"
 ---
-# <a name="chaining-service-bus-entities-with-autoforwarding"></a>Řetězení entit služby Service Bus s autoforwarding
+# <a name="chaining-service-bus-entities-with-autoforwarding"></a>Zřetězení Service Bus entit pomocí procesu autopřesměrovávání
 
-Service Bus *autoforwarding* funkce vám umožní řetězit k fronty nebo odběru do jiné fronty nebo tématu, který je součástí stejný obor názvů. Pokud je povolená autoforwarding, Service Bus automaticky odebere zprávy, které jsou umístěny v první fronty nebo odběru (zdroj) a umístí je do druhé fronty nebo tématu (cíl). Je stále možné přímo odeslat zprávu do cílové entity.
+Funkce *autopřesměrovávání* Service Bus umožňuje řetězit frontu nebo předplatné do jiné fronty nebo tématu, které je součástí stejného oboru názvů. Pokud je povoleno automatické přeposílání, Service Bus automaticky odebere zprávy, které jsou umístěny v první frontě nebo předplatném (zdroj), a umístí je do druhé fronty nebo tématu (cíle). Je stále možné odeslat zprávu cílové entitě přímo.
 
-## <a name="using-autoforwarding"></a>Pomocí autoforwarding
+## <a name="using-autoforwarding"></a>Použití autopřesměrovávání
 
-Můžete povolit autoforwarding nastavením [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] nebo [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] vlastnosti [QueueDescription] [ QueueDescription] nebo [SubscriptionDescription] [ SubscriptionDescription] objekty pro zdroj, stejně jako Následující příklad:
+Můžete povolit autopřesměrovávání nastavením vlastností [QueueDescription. ForwardTo][QueueDescription.ForwardTo] nebo [SubscriptionDescription. ForwardTo][SubscriptionDescription.ForwardTo] na objektech [QueueDescription][QueueDescription] nebo [SubscriptionDescription][SubscriptionDescription] pro zdroj, jako v Následující příklad:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,44 +35,46 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-Cílová entita musí existovat v době, kdy se vytvoří zdrojové entity. Pokud Cílová entita neexistuje, vrátí služby Service Bus výjimku, když se zobrazí výzva k vytvoření zdrojové entity.
+Cílová entita musí existovat v okamžiku, kdy je zdrojová entita vytvořena. Pokud cílová entita neexistuje, Service Bus vrátí výjimku, pokud se zobrazí výzva k vytvoření zdrojové entity.
 
-Autoforwarding můžete horizontálně navýšit kapacitu jednotlivých tématu. Omezení služby Service Bus [počet předplatných na dané téma](service-bus-quotas.md) do 2000. Další předplatná můžete přizpůsobit tak, že vytvoříte témata druhé úrovně. I v případě, že Service Bus omezení nejsou vázány na počet předplatných, přidává druhou úroveň témata zlepšují celkovou propustnost vašeho tématu.
+K horizontálnímu navýšení kapacity jednotlivých témat můžete použít automatické přeposílání. Service Bus omezuje [počet předplatných v daném tématu](service-bus-quotas.md) na 2 000. Další předplatná můžete přizpůsobit vytvořením témat druhé úrovně. I v případě, že nejste vázáni omezením Service Bus pro počet předplatných, může přidání druhé úrovně témat zlepšit celkovou propustnost vašeho tématu.
 
-![Scénář automatickým přeposíláním][0]
+![Scénář automatického předávání][0]
 
-Můžete také použít autoforwarding oddělit odesílatelé zpráv od příjemce. Představte si třeba ERP systémem, který se skládá ze tří modulů: pořadí zpracování, řízení zásob a řízení vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou ve frontě do příslušné téma. Alice a Bob jsou obchodní zástupci, které zajímá všechny zprávy, které se vztahují na zákazníky. Pro příjem těchto zpráv, Alice a Bob vytvořit osobní fronty a předplatné na každé z témat ERP, které automaticky předávat všechny zprávy do jejich fronty.
+K oddálení odesílatelů zpráv z přijímačů můžete použít také autopřesměrovávání. Představte si třeba systém ERP, který se skládá ze tří modulů: zpracování objednávek, Správa inventáře a Správa vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou zařazeny do odpovídajícího tématu. Alice a Bob jsou obchodní zástupci, kteří mají zájem o všechny zprávy, které se vztahují ke svým zákazníkům. Chcete-li přijímat tyto zprávy, Alice a Bob vytvoří osobní frontu a předplatné pro každé téma ERP, které automaticky předají všechny zprávy do fronty.
 
-![Scénář automatickým přeposíláním][1]
+![Scénář automatického předávání][1]
 
-Pokud Alice přejde na dovolenou, své osobní fronty, nikoli tématu ERP, zaplní. V tomto scénáři protože obchodní zástupce nedostal žádné zprávy, žádná témata ERP někdy dosažení kvóty.
+Pokud Alice přijde na dovolenou, jeho osobní fronta místo tématu ERP vyplní. V tomto scénáři vzhledem k tomu, že prodejní zástupce neobdržel žádné zprávy, není k dispozici žádná z témat pro ERP.
 
 > [!NOTE]
-> Instalační program po autoforwarding hodnota AutoDeleteOnIdle v cíli automaticky nastaví maximální hodnotu datového typu.
-> To se provádí, aby se zajistilo, že vždy cíl, aby zpráva přepošle.
+> Pokud je nastaveno automatické přeposílání, hodnota AutoDeleteOnIdle na **zdrojovém i cílovém umístění** je automaticky nastavena na maximální hodnotu datového typu.
+> 
+>   - Funkce autopřesměrovává na straně zdroje funguje jako operace Receive. Proto zdroj, který má nastavení pro přeposílání, není nikdy ve skutečnosti "nečinný".
+>   - Na straně cíle je to, aby se zajistilo, že je vždy cíl, na který se zpráva přepošle.
 
-## <a name="autoforwarding-considerations"></a>Důležité informace o Autoforwarding
+## <a name="autoforwarding-considerations"></a>Předpoklady pro autopřesměrovávání
 
-Pokud Cílová entita nahromadí příliš velkého počtu zpráv a překračuje kvótu nebo Cílová entita je zakázaná, zdrojové entitě přidá zprávy, které mají jeho [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) až do místa v cílovém umístění (nebo entitu nebude znovu povoleno). Tyto zprávy se nadále live ve frontě nedoručených zpráv, takže se musí explicitně zobrazí a jejich zpracování z fronty nedoručených zpráv.
+Pokud cílová entita načítá příliš mnoho zpráv a překračuje kvótu, nebo je cílová entita zakázaná, přidá zdrojová entita zprávy do [fronty nedoručených](service-bus-dead-letter-queues.md) zpráv, dokud v cílovém umístění není mezera (nebo je entita znovu povolená). Tyto zprávy pokračují v provozu ve frontě nedoručených zpráv, takže je musíte explicitně přijímat a zpracovávat z fronty nedoručených zpráv.
 
-Při zřetězení jednotlivá témata k získání složené téma s mnoha předplatnými, doporučuje se, že máte střední počet odběrů na téma na první úrovni a mnoha předplatná na témata druhé úrovně. Například téma první úrovně 20 předplatná, každý z nich připojený k tématu druhé úrovně se 200 odběry, umožňuje vyšší propustnost než tématu první úrovně se 200 odběry, každý připojený k tématu druhé úrovně se 20 odběry.
+Při zřetězení jednotlivých témat k získání složeného tématu s mnoha předplatnými doporučujeme, abyste měli k dispozici střední počet předplatných na první úrovni a celou řadu předplatných v tématech druhé úrovně. Například téma první úrovně s 20 předplatnými, každý z nich zřetězené s podmnožinou druhé úrovně s 200 odběry, umožňuje vyšší propustnost než v tématu první úrovně s 200 předplatnými, každý zřetězení k druhému tématu s 20 odběry.
 
-Service Bus se účtuje jedna operace pro každou přesměrovaná zpráva. Například odeslání zprávy do tématu s 20 předplatnými, každý z nich nakonfigurovat tak, aby autoforward zprávy do jiné fronty nebo tématu, se účtuje jako 21 operace Pokud všechna předplatná na první úrovni obdrží kopii zprávy.
+Service Bus účtuje jednu operaci pro každou předanou zprávu. Například odeslání zprávy do tématu s 20 odběry, každé z nich nakonfigurované na automatického přeposílání zpráv do jiné fronty nebo tématu se účtuje jako 21 operací, pokud všechna předplatná na první úrovni obdrží kopii zprávy.
 
-Jak vytvoříte odběr, který je zřetězené do jiné fronty nebo tématu, musíte mít Tvůrce odběru **spravovat** oprávnění pro zdrojové i cílové entity. Odesílání zpráv do tématu zdroje vyžaduje pouze **odeslat** oprávnění k danému tématu zdroje.
+Aby bylo možné vytvořit odběr zřetězený s jinou frontou nebo tématem, musí mít tvůrce předplatného oprávnění **Spravovat** ke zdrojové i cílové entitě. Odesílání zpráv do zdrojového tématu vyžaduje pouze oprávnění **Odeslat** ve zdrojovém tématu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Podrobné informace o autoforwarding najdete v těchto tématech:
+Podrobné informace o autopřesměrovávání najdete v následujících referenčních tématech:
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Další informace o vylepšení výkonu služby Service Bus, najdete v článku 
+Další informace o vylepšení výkonu Service Bus najdete v tématu. 
 
 * [Doporučené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus](service-bus-performance-improvements.md)
-* [Segmentované entity zasílání zpráv][Partitioned messaging entities].
+* [Dělené entity zasílání zpráv][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

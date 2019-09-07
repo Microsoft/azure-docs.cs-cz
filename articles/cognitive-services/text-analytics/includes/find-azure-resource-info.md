@@ -9,16 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/07/2019
 ms.author: aahi
-ms.openlocfilehash: 93d2af6d011c28d1f7f0495b49a732401d62a184
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 221bcdf3a98a48646bab5abf780dc2a69c8e10f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881018"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387488"
 ---
 > [!TIP]
 > Pokud chcete najít klíč a koncový bod na Azure Portal:
 > 1. Přejděte k prostředku Azure na adrese https://portal.azure.com/.
 > 2. Klikněte na **Rychlé spuštění**, které najdete pod **správou prostředků**.
->
-> Nezapomeňte odebrat `/text/analytics/<version>` příponu z koncového bodu, pokud obsahuje jednu z nich. Tato přípona není nutná pro použití s klientskými knihovnami.

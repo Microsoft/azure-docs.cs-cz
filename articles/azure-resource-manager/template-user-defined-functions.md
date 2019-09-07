@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 71c166b9c596c3c8628f943ae5c7dbebd9c2d51c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 227ecb57b125264e7d0eba56e634966d677e0f58
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384135"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387290"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Uživatelsky definované funkce v šabloně Azure Resource Manager
 
@@ -73,11 +73,11 @@ Při definování uživatelské funkce existují určitá omezení:
 * Funkce nemá přístup k proměnným.
 * Funkce může používat pouze parametry, které jsou definovány ve funkci. Použijete-li funkci [Parameters](resource-group-template-functions-deployment.md#parameters) v rámci uživatelsky definované funkce, budete omezeni na parametry této funkce.
 * Funkce nemůže volat jiné uživatelsky definované funkce.
-* Funkce nemůže používat [odkazy](resource-group-template-functions-resource.md#reference) ani funkce [seznamu](resource-group-template-functions-resource.md#list) .
+* Funkce nemůže používat [odkazovou](resource-group-template-functions-resource.md#reference) funkci ani žádnou z funkcí [seznamu](resource-group-template-functions-resource.md#list) .
 * Parametry pro funkci nemohou mít výchozí hodnoty.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o dostupných vlastnostech uživatelsky definovaných funkcí naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Seznam dostupných funkcí šablon naleznete v tématu [Azure Resource Manager Functions Template](resource-group-template-functions.md).

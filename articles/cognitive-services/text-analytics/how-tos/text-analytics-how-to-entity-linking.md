@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697849"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390260"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -52,14 +52,14 @@ Použití propojení entit v různých jazycích vyžaduje použití odpovídaj�
 | Množství      | Currency      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
-| Datetime      | NENÍ K DISPOZICI\*         | "4. února 2012 – 18:30"      |
-| Datetime      | Date          | "2. května 2017", "2. 5. 2017"   |
-| Datetime      | Time          | "8:00", "8:00"  |
-| Datetime      | Rozsah dat     | "2. května až 5. května"    |
-| Datetime      | Časový rozsah     | "18:00 až 19:00"     |
-| Datetime      | Trvání      | "1 minuta a 45 sekund"   |
-| Datetime      | Sada           | "každé úterý"     |
-| Datetime      | časové pásmo      |    |
+| DateTime      | NENÍ K DISPOZICI\*         | "4. února 2012 – 18:30"      |
+| DateTime      | Date          | "2. května 2017", "2. 5. 2017"   |
+| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | Rozsah dat     | "2. května až 5. května"    |
+| DateTime      | Časový rozsah     | "18:00 až 19:00"     |
+| DateTime      | Trvání      | "1 minuta a 45 sekund"   |
+| DateTime      | Sada           | "každé úterý"     |
+| DateTime      | časové pásmo      |    |
 | URL           | NENÍ K DISPOZICI\*         | "https:\//www.Bing.com"    |
 | Email         | NENÍ K DISPOZICI\*         | "support@contoso.com" |
 
@@ -98,7 +98,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API pro entity](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavte koncový bod HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout `/text/analytics/v2.1/entities`. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 

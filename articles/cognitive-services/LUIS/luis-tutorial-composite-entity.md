@@ -1,5 +1,5 @@
 ---
-title: Kurz složených entit – LUIS
+title: 'Kurz: Kurz složených entit – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 698635b3f216c556e1e36a033703b8786a028e38
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946130"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388034"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Kurz: Seskupení a extrakce souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -69,11 +69,11 @@ Požadavek Move by měl obsahovat název oddělení a jméno zaměstnance.
 
 Služba LUIS poskytuje několik předem připravených entit pro extrakci běžných dat. 
 
-1. V horním navigačním panelu vyberte sestavovat a pak v levé navigační nabídce vyberte **entity** .
+1. V horním navigačním panelu vyberte **sestavovat** a pak v levé navigační nabídce vyberte **entity** .
 
 1. Vyberte tlačítko **Manage prebuilt entity** (Spravovat předem připravenou entitu).
 
-1. V seznamu předem vytvořených entit vyberte **[Person](luis-reference-prebuilt-person.md)** a potom vyberte Hotovo.
+1. V seznamu předem vytvořených entit vyberte **[Person](luis-reference-prebuilt-person.md)** a potom vyberte **Hotovo**.
 
     ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
@@ -198,7 +198,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu vytvořili složený entity k zapouzdření existující entity. To umožňuje klientské aplikaci najít skupinu souvisejících dat v různých datových typů, chcete-li pokračovat v konverzaci. Klientská aplikace pro tuto aplikaci lidských zdrojů může požádat, jaký den a čas přechodu musí začínat a končit. Může se také zeptat na další logistiku přesunutí, jako je třeba fyzický telefon. 
 

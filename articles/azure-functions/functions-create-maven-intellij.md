@@ -1,30 +1,30 @@
 ---
-title: Vytvořit funkci Azure pomocí Javy a IntelliJ | Dokumentace Microsoftu
-description: Zjistěte, jak vytvářet a publikovat jednoduchou aplikaci aktivovanou protokolem HTTP, bez serveru v Azure pomocí Javy a IntelliJ.
+title: Vytvoření funkce Azure pomocí jazyků Java a IntelliJ | Microsoft Docs
+description: Naučte se vytvářet a publikovat jednoduchou aplikaci bez serveru s protokolem HTTP spuštěnou v Azure pomocí Java a IntelliJ.
 services: functions
 documentationcenter: na
 author: jeffhollan
 manager: jpconnock
-keywords: Azure functions, funkce, zpracování událostí, výpočetních, architektury bez serveru, java
+keywords: funkce Azure Functions, Functions, zpracování událostí, výpočetní prostředí, architektura bez serveru, Java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
+ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61342171"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70743981"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Vytvoření první funkce Azure pomocí Javy a IntelliJ
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Vytvoření první funkce Azure pomocí Java a IntelliJ
 
-V tomto článku se dozvíte:
-- Jak vytvořit [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) projekt Functions s IntelliJ IDEA a Apache Maven
-- Kroky pro testování a ladění funkcí v integrovaném vývojovém prostředí (IDE) ve vašem počítači
-- Pokyny pro nasazení projektu funkce Azure Functions
+V tomto článku se dozvíte, jak:
+- Postup vytvoření projektu funkce bez [serveru](https://azure.microsoft.com/overview/serverless-computing/) s IntelliJ nápadem a Apache Maven
+- Postup testování a ladění funkce v integrovaném vývojovém prostředí (IDE) ve vašem počítači
+- Pokyny pro nasazení projektu funkce pro Azure Functions
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
@@ -32,80 +32,80 @@ V tomto článku se dozvíte:
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
-K vývoji funkce pomocí Javy a IntelliJ, nainstalujte následující software:
+K vývoji funkcí Java a IntelliJ nainstalujte následující software:
 
-- [Java Developer Kit](https://www.azul.com/downloads/zulu/) (JDK), verze 8
-- [Nástroje Apache Maven](https://maven.apache.org), verze 3.0 nebo vyšší
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/download), komunity nebo Ultimate verze pomocí Mavenu
+- [Sada Java Developer Kit](https://www.azul.com/downloads/zulu/) (JDK), verze 8
+- [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
+- [INTELLIJ nápad](https://www.jetbrains.com/idea/download), verze z komunity nebo Ultimate s Maven
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT]
-> Proměnná prostředí JAVA_HOME musí nastavit na umístění instalace sady JDK k dokončení kroků v tomto článku.
+> Aby bylo možné dokončit kroky v tomto článku, musí být proměnná prostředí JAVA_HOME nastavena na umístění instalace JDK.
 
- Doporučujeme, abyste nainstalovali [nástrojů Azure Functions Core, verze 2](functions-run-local.md#v2). Poskytuje místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions.
+ Doporučujeme nainstalovat [Azure Functions Core Tools, verze 2](functions-run-local.md#v2). Poskytuje místní vývojové prostředí pro psaní, spouštění a ladění Azure Functions.
 
-## <a name="create-a-functions-project"></a>Vytvoření projektu funkce
+## <a name="create-a-functions-project"></a>Vytvoření projektu Functions
 
-1. V IntelliJ IDEA, vyberte **vytvořit nový projekt**.  
-1. V **nový projekt** okně **Maven** v levém podokně.
-1. Vyberte **vytvořit z archetype** zaškrtněte políčko a potom vyberte **přidat Archetype** pro [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-1. V **přidat Archetype** okna, vyplňte následující pole:
+1. V IntelliJ NÁPADu vyberte **vytvořit nový projekt**.  
+1. V okně **Nový projekt** vyberte v levém podokně možnost **Maven** .
+1. Zaškrtněte políčko **vytvořit z Archetype** a pak vyberte **Přidat Archetype** pro [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
+1. V okně **Přidat Archetype** vyplňte pole následujícím způsobem:
     - _GroupId_: com.microsoft.azure
-    - _ArtifactId_: azure-functions-archetype
-    - _Verze_: Používat nejnovější verzi z [centrální úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![vytvořte projekt Maven z archetype v IntelliJ IDEA](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _ArtifactId_: Azure-Functions – Archetype
+    - _Verze_: Použití nejnovější verze **1,22** z [centrálního úložiště](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![vytvoření projektu Maven z Archetype v IntelliJ nápadu](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. Vyberte **OK**a pak vyberte **Další**.
-1. Zadejte podrobnosti o pro aktuální projekt a vyberte **Dokončit**.
+1. Zadejte podrobnosti pro aktuální projekt a vyberte **Dokončit**.
 
-Maven vytvoří soubory projektu do nové složky se stejným názvem jako _ArtifactId_ hodnotu. Generovaný kód projektu je jednoduchý [aktivovanou protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkce, která vypisuje text spouštěcí požadavku HTTP.
+Maven vytvoří soubory projektu v nové složce se stejným názvem, jako má hodnota _ArtifactId_ . Generovaný kód projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.
 
-## <a name="run-functions-locally-in-the-ide"></a>Spuštění funkce místně v rozhraní IDE
+## <a name="run-functions-locally-in-the-ide"></a>Místní spuštění funkcí v integrovaném vývojovém prostředí
 
 > [!NOTE]
-> Ke spuštění a ladění funkcí místně, ujistěte se, že jste nainstalovali [nástrojů Azure Functions Core, verze 2](functions-run-local.md#v2).
+> Chcete-li spustit a ladit funkce místně, ujistěte se, že jste nainstalovali [Azure Functions Core Tools, verze 2](functions-run-local.md#v2).
 
 1. Importovat změny ručně nebo povolit [Automatický import](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
-1. Otevřít **projektech Maven** nástrojů.
-1. Rozbalte **životního cyklu**a pak otevřete **balíčku**. Toto řešení je sestavení a zabalení do nově vytvořeného cílový adresář.
-1. Rozbalte **moduly plug-in** > **azure functions** a otevřete **azure-functions: spuštění** spustit místní modul runtime Azure Functions.  
-  ![Maven nástrojů pro službu Azure Functions](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
+1. Otevřete panel nástrojů **Maven projekty** .
+1. Rozbalte **životní cyklus**a pak otevřete **balíček**. Řešení je sestaveno a zabaleno v nově vytvořeném cílovém adresáři.
+1. Rozbalení **modulů plug-in** > **Azure – funkce** a otevření **Azure-Functions: Run** spustí Azure Functions místní modul runtime.  
+  ![Panel nástrojů Maven pro Azure Functions](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
-1. Zavřete dialogové okno spustit po dokončení testování vaší funkce. Jenom jednu funkci hostitel může být aktivní a v chodu místně v čase.
+1. Až skončíte s testováním funkce, zavřete dialogové okno spustit. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
 ## <a name="debug-the-function-in-intellij"></a>Ladění funkce v IntelliJ
 
-1. Chcete-li spustit hostitele funkce v režimu ladění, přidejte **- DenableDebug** jako argument při spuštění funkce. Můžete buď změnit konfiguraci v [cíle maven](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) nebo v okně terminálu spusťte následující příkaz:  
+1. Chcete-li spustit hostitele funkce v režimu ladění, přidejte parametr **-DenableDebug** jako argument při spuštění funkce. Můžete buď změnit konfiguraci v [Maven cílech](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) nebo spustit následující příkaz v okně terminálu:  
 
    ```
    mvn azure-functions:run -DenableDebug
    ```
 
-   Tento příkaz způsobí, že funkce hostitele pro otevření portu pro ladění na 5005.
+   Tento příkaz způsobí, že hostitel funkce otevře port pro ladění v 5005.
 
-1. Na **spustit** nabídce vyberte možnost **upravit konfigurace**.
-1. Vyberte **(+)** přidáte **vzdálené**.
-1. Dokončení _název_ a _nastavení_ pole a pak vyberte **OK** uložte konfiguraci.
-1. Po dokončení instalace, vybrat **ladění < název vzdáleného konfigurace >** nebo stiskněte klávesy Shift + F9 kláves pro spuštění ladění.
+1. V nabídce **Spustit** vyberte **Upravit konfigurace**.
+1. Pokud chcete přidat **vzdálené úložiště**, vyberte **(+)** .
+1. Dokončete pole _název_ a _Nastavení_ a pak kliknutím na **tlačítko OK** konfiguraci uložte.
+1. Po nastavení vyberte **ladit < název vzdálené konfigurace >** nebo stiskněte SHIFT + F9 na klávesnici a spusťte ladění.
 
-   ![Ladění funkcí ve IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
+   ![Funkce ladění v IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
-1. Jakmile budete hotovi, ukončete ladicí program a spuštěnému procesu. Jenom jednu funkci hostitel může být aktivní a v chodu místně v čase.
+1. Až budete hotovi, ukončete ladicí program a běžící proces. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-1. Funkci můžete nasadit do Azure, je nutné nejprve [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. Než budete moct nasadit funkci do Azure, musíte se [přihlásit pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Nasaďte svůj kód do nové funkce s použitím `azure-functions:deploy` cíle Maven. Můžete také vybrat **azure functions: nasazení** možnost v okně projekty Maven.
+1. Nasaďte svůj kód do nové funkce pomocí `azure-functions:deploy` cíle Maven. Můžete také vybrat možnost **Azure-Functions: Deploy** v okně projekty Maven.
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. Po úspěšném nasazení funkce vyhledejte adresu URL funkce ve výstupu rozhraní příkazového řádku Azure.
+1. Po úspěšném nasazení funkce vyhledejte v výstupu Azure CLI adresu URL vaší funkce.
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -118,4 +118,4 @@ Maven vytvoří soubory projektu do nové složky se stejným názvem jako _Arti
 ## <a name="next-steps"></a>Další postup
 
 - V [příručce pro vývojáře funkcí v Javě](functions-reference-java.md) najdete další informace o vývoji funkcí v Javě.
-- Přidat další funkce s jinými triggery s do svého projektu pomocí `azure-functions:add` cíle Maven.
+- Přidejte do projektu další funkce s různými triggery pomocí `azure-functions:add` cíle Maven.

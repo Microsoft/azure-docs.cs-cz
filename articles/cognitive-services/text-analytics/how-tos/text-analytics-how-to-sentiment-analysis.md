@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697735"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390216"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Příklad: Rozpoznávání mínění pomocí Analýza textu
 
@@ -80,14 +80,14 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvoření žádosti POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro analýza mínění](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Nastavte koncový bod HTTP pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musí zahrnovat `/sentiment` prostředek: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
++ Nastavte koncový bod HTTP pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Do adresy URL `/text/analytics/v2.1/sentiment` musíte zahrnout. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
 + V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použijte [post](text-analytics-how-to-call-api.md) nebo otevřete konzolu **testování API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) , abyste mohli strukturu žádosti strukturovat a odeslat ji do služby.
+> Použijte [post](text-analytics-how-to-call-api.md) nebo otevřete **konzolu testování API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) , abyste mohli strukturu žádosti strukturovat a odeslat ji do služby.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Publikování žádosti
 
@@ -139,8 +139,8 @@ Následující příklad ukazuje odpověď pro kolekci dokumentů v tomto člán
 > [!NOTE]
 > * Formát požadavku Analýza mínění v3 a [omezení dat](../overview.md#data-limits) jsou stejné jako předchozí verze.
 > * V tuto chvíli Analýza mínění V3:
->    * V současné době podporuje pouze anglický jazyk.
->    * Je k dispozici v následujících oblastech `Central US`: `Central Canada`, `East Asia`a.
+>    * V současné době podporuje angličtinu, zjednodušenou čínštinu a japonské jazyky.
+>    * Je k dispozici v následujících oblastech `Central US`: `Central Canada`, `East Asia`a. 
 
 |Funkce |Popis  |
 |---------|---------|
@@ -265,7 +265,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 
 + [Rozhraní analýza mínění API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) je k dispozici pro vybrané jazyky.
 + Dokumenty JSON v textu požadavku zahrnují ID, text a kód jazyka.
-+ Požadavek post je na `/sentiment` koncový bod pomocí přizpůsobeného přístupového [klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
++ Požadavek post je na `/sentiment` koncový bod pomocí přizpůsobeného [přístupového klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 + Výstup odpovědi, který se skládá z mínění skóre pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON. Mezi příklady aplikací patří Excel a Power BI, aby se pojmenoval několik.
 
 ## <a name="see-also"></a>Viz také:

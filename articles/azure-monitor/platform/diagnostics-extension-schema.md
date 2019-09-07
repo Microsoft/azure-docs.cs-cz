@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527317"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735090"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics verze a historie schématu konfigurace rozšíření
 Tato stránka indexuje Azure Diagnostics verze schématu rozšíření dodávané jako součást sady Microsoft Azure SDK.  
@@ -54,20 +54,14 @@ Rozšíření Azure Diagnostics se používá s dalšími produkty pro diagnosti
  Počínaje sadou SDK 2,5 (diagnostická verze 1,2) se Diagnostika Azure stala modelu rozšíření. Nástroje pro využívání nových funkcí byly dostupné jenom v novějších sadách Azure SDK, ale kterákoli služba využívající diagnostiku Azure by si z Azure vybrala nejnovější verzi expedice přímo z Azure. Například kdokoli, který dál používá sadu SDK 2,5, načte nejnovější verzi zobrazenou v předchozí tabulce bez ohledu na to, jestli používají novější funkce.  
 
 ## <a name="schemas-index"></a>Index schémat  
-Různé verze diagnostiky Azure používají různá schémata konfigurace.
-
-[Schéma konfigurace diagnostiky 1,0](diagnostics-extension-schema-1dot0.md)  
-
-[Schéma konfigurace diagnostiky 1,2](diagnostics-extension-schema-1dot2.md)  
-
-[Diagnostika 1,3 a novější schéma konfigurace](diagnostics-extension-schema-1dot3.md)  
+Různé verze diagnostiky Azure používají různá schémata konfigurace. Schéma 1,0 a 1,2 jsou zastaralé. Další informace o verzi 1,3 a novějších najdete v tématu věnovaném [konfiguračnímu schématu diagnostiky 1,3 a novější](diagnostics-extension-schema-1dot3.md) .  
 
 ## <a name="version-history"></a>Historie verzí
 
 ### <a name="diagnostics-extension-111"></a>Diagnostické rozšíření 1,11
 Přidání podpory pro Azure Monitor jímku. Tato jímka se vztahuje pouze na čítače výkonu. Umožňuje odesílat čítače výkonu shromážděné na VIRTUÁLNÍm počítači, VMSS nebo cloudovou službu, aby se Azure Monitor jako vlastní metriky. Jímka Azure Monitor podporuje:
 * Načítání všech čítačů výkonu odeslaných do Azure Monitor prostřednictvím [rozhraní API pro Azure monitor metriky.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
-* Upozorňování na všechny čítače výkonu odesílané do Azure Monitor prostřednictvím nového [jednotného prostředí](../../azure-monitor/platform/alerts-overview.md) s výstrahami v Azure monitor
+* Upozorňování na všechny čítače výkonu odesílané do Azure Monitor prostřednictvím nového [jednotného prostředí s výstrahami](../../azure-monitor/platform/alerts-overview.md) v Azure monitor
 * Zpracovávání operátoru zástupného znaku v čítačích výkonu jako dimenze instance v rámci metriky. Pokud jste si například shromáždili čítač "logický disk\*()/DiskWrites/SEC", mohli byste filtrovat a rozdělit na dimenzi "instance", která vykreslí nebo upozorní na zápisy disku/s pro každý logický disk (C:, D: atd.).
 
 Definování Azure Monitor jako nové jímky v konfiguraci diagnostického rozšíření
@@ -206,7 +200,7 @@ Předpokládejme například, že zaškrtnete toto políčko a určíte `UseDeve
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Rozdíly v diagnostických funkcích mezi Azure SDK 2,4 a starším a Azure SDK 2,5 a novějším
 Pokud upgradujete projekt ze sady Azure SDK 2,4 na sadu Azure SDK 2,5 nebo novější, měli byste mít na paměti následující rozdíly v těchto diagnostických funkcích.
 
-* **Rozhraní API pro konfiguraci jsou** zastaralá – Programová konfigurace diagnostiky je k dispozici v sadě azure SDK 2,4 nebo starších verzích, ale je zastaralá v sadě azure SDK 2,5 a novější. Pokud je konfigurace diagnostiky aktuálně definovaná v kódu, budete muset tato nastavení znovu nakonfigurovat od nuly v migrovaném projektu, aby Diagnostika fungovala. Konfigurační soubor diagnostiky pro sadu Azure SDK 2,4 je Diagnostics. wadcfg a Diagnostics. wadcfgx pro sadu Azure SDK 2,5 a novější.
+* **Rozhraní API pro konfiguraci jsou zastaralá** – Programová konfigurace diagnostiky je k dispozici v sadě azure SDK 2,4 nebo starších verzích, ale je zastaralá v sadě azure SDK 2,5 a novější. Pokud je konfigurace diagnostiky aktuálně definovaná v kódu, budete muset tato nastavení znovu nakonfigurovat od nuly v migrovaném projektu, aby Diagnostika fungovala. Konfigurační soubor diagnostiky pro sadu Azure SDK 2,4 je Diagnostics. wadcfg a Diagnostics. wadcfgx pro sadu Azure SDK 2,5 a novější.
 * **Diagnostiku aplikací cloudových služeb lze konfigurovat pouze na úrovni role, nikoli na úrovni instance.**
 * Při **každém nasazení aplikace se konfigurace diagnostiky aktualizuje** – to může způsobit problémy s paritou, pokud změníte konfiguraci diagnostiky z Průzkumník serveru a pak znovu nasadíte aplikaci.
 * **V sadě Azure SDK 2,5 a novějších jsou výpisy stavu systému nakonfigurovány v konfiguračním souboru diagnostiky, nikoli v kódu** – Pokud máte výpisy stavu systému nakonfigurované v kódu, bude nutné ručně přenést konfiguraci z kódu do konfiguračního souboru, protože došlo k chybě. Při migraci do sady Azure SDK 2,6 se výpisy paměti nepřenášejí.

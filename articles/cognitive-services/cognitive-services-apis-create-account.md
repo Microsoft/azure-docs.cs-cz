@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381773"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743850"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Vytvoření prostředku Cognitive Services pomocí Azure Portal
 
@@ -32,12 +32,17 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 1. Vytvořte prostředek.
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Prostředek s více službami](#tab/multiservice)
-
+    
     Prostředek s více službami se jmenuje **Cognitive Services** na portálu. [Vytvořte prostředek Cognitive Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
-    V tuto chvíli se tyto služby **nedají** volat pomocí klíčů s více službami: QnA Maker, služba Speech Services, Custom Vision a detektor anomálií.
+    Prostředek s více službami v současnosti umožňuje přístup k následujícím Cognitive Services:
     
-
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Počítačové zpracování obrazu  | Content Moderator                                    | Tvář               | Language Understanding (LUIS) | Analýza textu   |
+    | Translator Text  | Vyhledávání Bingu v7 <br>(Web, obrázek, novinky, video, vizuál) | Vlastní vyhledávání Bingu | Vyhledávání entit Bingu            | Automatické návrhy Bingu |
+    | Kontrola pravopisu Bingu |                                                      |                    |                               |                  |
+    
     #### <a name="single-service-resourcetabsingleservice"></a>[Prostředek s jednou službou](#tab/singleservice)
 
     K vytvoření prostředku pro dostupné Cognitive Services použijte odkazy níže:
@@ -85,13 +90,13 @@ V tomto rychlém startu můžete začít používat Azure Cognitive Services. Po
 
 ## <a name="get-the-keys-for-your-resource"></a>Získat klíče pro svůj prostředek
 
-Po úspěšném nasazení prostředku klikněte v části **Další kroky**na **Přejít k prostředku** .
+1. Po úspěšném nasazení prostředku klikněte v části **Další kroky**na **Přejít k prostředku** .
 
-![Hledat Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
+    ![Hledat Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-V otevřeném podokně pro rychlé zprovoznění máte přístup ke svému klíči a koncovému bodu.
+2. V otevřeném podokně pro rychlé zprovoznění máte přístup ke svému klíči a koncovému bodu.
 
-![Získat klíč a koncový bod](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
+    ![Získat klíč a koncový bod](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 

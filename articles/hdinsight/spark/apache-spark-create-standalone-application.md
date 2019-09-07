@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření Maven aplikace Scala pro Spark ve službě Azure HDInsight pomocí IntelliJ'
+title: 'Kurz: Aplikace Scala Maven pro Spark s IntelliJ – Azure HDInsight'
 description: Kurz – vytvoření aplikace Spark napsané v Scala s Apache Maven jako systém sestavení a stávající Maven Archetype pro Scala poskytované IntelliJ NÁPADem.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839720"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736445"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -175,7 +175,7 @@ K instalaci modulu plug-in Scala proveďte následující kroky:
 
     1. V nabídce **soubor** vyberte možnost **struktura projektu...** .
 
-    2. V okně **struktura projektu** přejděte na > artefakty**symbol plus +**  > **jar** > **od modulů se závislostmi...** .
+    2. V > okně **struktura projektu** přejděte na **artefakty** **symbol plus +**  > **jar** > **od modulů se závislostmi...** .
 
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
@@ -195,7 +195,7 @@ K instalaci modulu plug-in Scala proveďte následující kroky:
 
         Zajistěte, aby bylo zaškrtnuto políčko **zahrnout do sestavení projektu** , které zajistí, že jar bude vytvořen pokaždé, když je projekt sestaven nebo aktualizován. Vyberte **použít** a pak **OK**.
 
-    7. Chcete-li vytvořit jar, přejděte > k sestavení**artefakty** > sestavení Builds. Projekt se zkompiluje přibližně po 30 sekundách.  Výstupní soubor JAR se vytvoří v adresáři **\out\artifacts**.
+    7. Chcete-li vytvořit jar, přejděte **k** > sestavení**artefakty** > sestavení Builds **.** Projekt se zkompiluje přibližně po 30 sekundách.  Výstupní soubor JAR se vytvoří v adresáři **\out\artifacts**.
 
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/output.png)
 

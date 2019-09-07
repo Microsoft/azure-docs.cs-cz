@@ -1,31 +1,31 @@
 ---
-title: Použití Grafana v Azure HDInsight
-description: Zjistěte, jak získat přístup k Grafana v Azure HDInsight.
+title: Použití Grafana ve službě Azure HDInsight
+description: Přečtěte si, jak získat přístup k řídicímu panelu Grafana s clustery Apache Hadoop ve službě Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: a8d79e15a0c967c4b00f337928f00e76f6d296fd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458808"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733213"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Grafana přístupu v Azure HDInsight
+# <a name="access-grafana-in-azure-hdinsight"></a>Přístup k Grafana ve službě Azure HDInsight
 
 
-[Grafana](https://grafana.com/) je Oblíbené, open source grafů a řídicích panelů Tvůrce. Grafana je funkce bohaté; nejen nemá umožníte uživatelům vytvářet přizpůsobitelný a ke sdílení řídicích panelů, nabízí také bez vizuálního vzhledu/skripty řídicí panely, integrace protokolu LDAP, více zdrojů dat a další.
+[Grafana](https://grafana.com/) je oblíbený Open Source tvůrce grafů a řídicích panelů. Grafana je funkce bohatá; neumožňuje uživatelům vytvářet přizpůsobitelné řídicí panely a sdílet je, ale také nabízí šablony/skripty řídicí panely, integraci protokolu LDAP, více zdrojů dat a další.
 
-V současné době v Azure HDInsight, Grafana podporuje typy clusterů Hbase a Interactive Query.
+V současné době se v Azure HDInsight Grafana podporuje s typy clusterů HBA a interaktivních dotazů.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="create-an-apache-hadoop-cluster"></a>Vytvořit cluster Apache Hadoop
+## <a name="create-an-apache-hadoop-cluster"></a>Vytvoření clusteru Apache Hadoop
 
-V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablony Azure Resource Manageru. Zkušenosti se šablonami Resource Manageru se k postupu podle tohoto článku nevyžadují. 
+V této části vytvoříte pomocí šablony Azure Resource Manager interaktivní cluster dotazů v HDInsight. Zkušenosti se šablonami Resource Manageru se k postupu podle tohoto článku nevyžadují. 
 
 1. Klikněte na následující tlačítko **Nasadit do Azure**, přihlaste se k Azure a otevřete šablonu Resource Manageru na webu Azure Portal. 
    
@@ -48,11 +48,11 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
     |**Skupina prostředků**     | Vytvořte skupinu prostředků nebo vyberte existující.  Skupina prostředků je kontejner komponent Azure.  V tomto případě skupina prostředků obsahuje cluster HDInsight a závislý účet služby Azure Storage. |
     |**Umístění**     | Vyberte umístění Azure, ve kterém chcete cluster vytvořit.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
     |**Typ clusteru**     | Vyberte **hadoop**. |
-    |**Název clusteru**     | Zadejte název pro cluster Apache Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků a může obsahovat písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
+    |**Název clusteru**     | Zadejte název clusteru Apache Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků a může obsahovat písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
     |**Přihlašovací jméno a heslo clusteru**     | Výchozí přihlašovací jméno je **admin** (správce). Heslo musí mít minimálně 10 znaků a musí obsahovat alespoň jedno číslo, jedno velké písmeno, jedno malé písmeno a jeden jiný než alfanumerický znak (kromě znaků ' " ` \). **Nezadávejte** běžné heslo, jako je „Pass@word1“.|
     |**Uživatelské jméno a heslo SSH**     | Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Uživatelské jméno SSH můžete změnit.  Pro heslo uživatele SSH platí stejné požadavky jako pro přihlašovací heslo clusteru.|
        
-    Některé vlastnosti jsou v šabloně pevně kódované.  Takové hodnoty můžete konfigurovat v šabloně. Další vysvětlení těchto vlastností najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+    Některé vlastnosti jsou v šabloně pevně kódované.  Takové hodnoty můžete konfigurovat v šabloně. Další vysvětlení těchto vlastností najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a **Připnout na řídicí panel** a pak vyberte **Koupit**. Na řídicím panelu portálu by se měla zobrazit nová dlaždice s názvem **Odesílá se nasazení**. Vytvoření clusteru trvá přibližně 20 minut.
 
@@ -62,29 +62,29 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
    
     ![Počáteční skupina prostředků HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Skupina prostředků clusteru Azure HDInsight")
     
-5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. HDInsight cluster a jeho výchozí účet úložiště, musí být umístěny společně ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
+5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být společně umístěné ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
     
 
 > [!NOTE]  
-> Další metody vytváření clusterů a principy vlastnosti používaných v tomto článku, najdete v tématu [clusterů HDInsight vytvořit](../hdinsight-hadoop-provision-linux-clusters.md). 
+> Další metody vytváření clusterů a porozumění vlastnostem používaným v tomto článku najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). 
 
-## <a name="access-the-grafana-dashboard"></a>Přístup k řídicím panelem Grafana
+## <a name="access-the-grafana-dashboard"></a>Přístup k řídicímu panelu Grafana
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyberte **clustery HDInsight**a pak vyberte název clusteru, který jste vytvořili v předchozí části.
+2. Vyberte **clustery HDInsight**a potom vyberte název clusteru, který jste vytvořili v poslední části.
 
-3. V části **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**.
+3. V části **Rychlé odkazy**klikněte na **řídicí panel clusteru**.
 
-    ![Portál řídicí panel clusteru HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "řídicí panel clusteru HDInsight na portálu")
+    ![Portál pro řídicí panel clusteru HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "Řídicí panel clusteru HDInsight na portálu")
 
-4. Z řídicího panelu, klikněte na tlačítko **Grafana** dlaždici. Alternativně přejděte `/grafana/` cestu adresy URL vašeho clusteru. Například, `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Na řídicím panelu klikněte na dlaždici **Grafana** . Případně přejděte k `/grafana/` cestě k adrese URL vašeho clusteru. Například, `https://<clustername>.azurehdinsight.net/grafana/`.
 
-5. Zadejte přihlašovací údaje clusteru Hadoop.
+5. Zadejte přihlašovací údaje uživatele clusteru Hadoop.
 
-6. Řídicím panelem Grafana se zobrazí a bude vypadat jako v tomto příkladu:
+6. Zobrazí se řídicí panel Grafana, který bude vypadat jako v tomto příkladu:
 
-    ![Řídicím panelem HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "řídicím panelem HDInsight Grafana")
+    ![Řídicí panel HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "Řídicí panel HDInsight Grafana")
 
    
 
@@ -105,10 +105,10 @@ Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight
 3. Vyberte **Odstranit skupinu prostředků** a odstraňte skupinu prostředků obsahující cluster a výchozí účet úložiště. Upozorňujeme, že odstraněním skupiny prostředků odstraníte účet úložiště. Pokud chcete zachovat účet úložiště, zvolte odstranění samotného clusteru.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak vytvořit cluster HDInsight se systémem Linux pomocí šablony Resource Manageru a jak provádět základní dotazy Apache Hive. V dalším článku se dozvíte, jak pomocí Hadoopu ve službě HDInsight provést operaci ETL (extrakce, transformace a načítání).
+V tomto článku jste zjistili, jak vytvořit cluster HDInsight se systémem Linux pomocí šablony Správce prostředků a jak provádět základní dotazy Apache Hive. V dalším článku se dozvíte, jak pomocí Hadoopu ve službě HDInsight provést operaci ETL (extrakce, transformace a načítání).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načítání dat pomocí na HDInsight Interactive Query](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+>[Extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Pokud chcete začít pracovat s vlastními daty a potřebujete další informace o ukládání dat službou HDInsight nebo o tom, jak data do této služby nahrát, přečtěte si následující články:
 
@@ -117,8 +117,8 @@ Pokud chcete začít pracovat s vlastními daty a potřebujete další informace
 
 Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
 
-* Další informace o používání Hivu se službou HDInsight, včetně postupu provádění dotazů Hivu ze sady Visual Studio, naleznete v tématu [použití Apache Hivu se službou HDInsight](../hdinsight-use-hive.md).
-* Další informace o jazyce používaném k transformaci dat, Pig najdete [použití Apache Pig s HDInsight](../hdinsight-use-pig.md).
+* Další informace o použití podregistru se službou HDInsight, včetně postupu pro provádění dotazů na podregistry ze sady Visual Studio, najdete v tématu [použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md).
+* Další informace o prasečím jazyce, který slouží k transformaci dat, najdete v tématu [použití nástroje Apache prasete se službou HDInsight](../hdinsight-use-pig.md).
 * Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight](../hdinsight-use-mapreduce.md).
 * Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight najdete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 

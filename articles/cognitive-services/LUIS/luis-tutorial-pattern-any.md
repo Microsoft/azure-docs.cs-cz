@@ -1,5 +1,5 @@
 ---
-title: Vzor. jakékoli entity – LUIS
+title: 'Kurz: Vzor. jakékoli entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Pomocí entity Pattern.any můžete extrahovat data ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 165163d0a889e0bd5f1faef8d7f6a17d28c2b4f7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563276"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390286"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahujte data z volných formulářů pomocí vzoru. libovolná entita
 

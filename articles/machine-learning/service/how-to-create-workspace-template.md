@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 34522c9a672de51cfa53ce52c5a6a6506fcd5454
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873150"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390518"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro službu Azure Machine Learning
 
@@ -55,6 +55,11 @@ Příklad šablony má dva parametry:
 * **Název pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
 
     Názvy ostatních služeb jsou vygenerovány náhodně.
+
+> [!TIP]
+> Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Pokud je v pracovním prostoru registr kontejnerů, vytvoří se při provedení operace, která vyžaduje registr kontejnerů, vytvoří se jedna. Například školení nebo nasazení modelu.
+>
+> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager.
 
 Další informace o šablonách najdete v následujících článcích:
 
@@ -115,7 +120,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 * Zkontrolujte zásady přístupu Key Vault a pak pomocí těchto zásad nastavte vlastnost accessPolicies šablony.
 * Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Například přidejte parametr, který umožňuje zakázat vytvoření prostředku Key Vault, pokud již existuje.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nasazení prostředků pomocí Správce prostředků šablon a Správce prostředků REST API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
 * [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio'
+title: 'Rychlý start: RStudio Server pro spouštění R v rámci služeb ML – Azure HDInsight'
 description: V rychlém startu spustíte skript R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d87e46b522bb7c7e55c711194cc6456fcd89e92
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876298"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736214"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238053"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735100"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1,3 a novější schéma konfigurace
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238053"
 >
 > Tato stránka je relevantní pouze v případě, že používáte některou z těchto služeb.
 
-Tato stránka je platná pro verze 1,3 a novější (Azure SDK 2,4 a novější). Novější konfigurační oddíly jsou komentáře, aby se zobrazily informace o tom, jaká verze byla přidána.  
+Tato stránka je platná pro verze 1,3 a novější (Azure SDK 2,4 a novější). Novější konfigurační oddíly jsou komentáře, aby se zobrazily informace o tom, jaká verze byla přidána. Archivovaná verze 1,0 a 1,2 schématu byla archivována a již není k dispozici. 
 
 Konfigurační soubor, který je zde popsán, slouží k nastavení konfigurace diagnostiky při spuštění monitorování diagnostiky.  
 
 Rozšíření se používá ve spojení s dalšími produkty pro diagnostiku Microsoftu, jako je Azure Monitor, což zahrnuje Application Insights a Log Analytics.
-
-
 
 Stáhněte si definici schématu veřejného konfiguračního souboru spuštěním následujícího příkazu PowerShellu:  
 
@@ -421,7 +419,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
 |**PublicConfig**|Povinný parametr. Viz popis jinde na této stránce.|  
-|**PrivateConfig**|Volitelné. Viz popis jinde na této stránce.|  
+|**PrivateConfig**|Volitelný parametr. Viz popis jinde na této stránce.|  
 |**IsEnabled**|Datového. Viz popis jinde na této stránce.|  
 
 ## <a name="publicconfig-element"></a>Element PublicConfig  
@@ -451,7 +449,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |----------------|-----------------|  
 | **overallQuotaInMB** | Maximální místo na místním disku, které mohou být spotřebovány různými typy diagnostických dat shromažďovaných Azure Diagnostics. Výchozí nastavení je 4096 MB.<br />
 |**useProxyServer** | Nakonfigurujte Azure Diagnostics, aby používala nastavení proxy server nastavená v nastavení IE.|
-|**jímky** | Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
+|**jímky** | Přidáno v 1,5. Volitelný parametr. Odkazuje na umístění jímky, aby také odesílal diagnostická data pro všechny podřízené prvky, které podporují jímky. Příklad jímky je Application Insights nebo Event Hubs.|  
 
 
 <br /> <br />
@@ -476,9 +474,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Popis|  
 |----------------|-----------------|  
-|**containerName**|Volitelné. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
-|**crashDumpType**|Volitelné.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
-|**directoryQuotaPercentage**|Volitelné.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
+|**containerName**|Volitelný parametr. Název kontejneru objektů BLOB v účtu Azure Storage, který se má použít k ukládání výpisů stavu systému.|  
+|**crashDumpType**|Volitelný parametr.  Nakonfiguruje Azure Diagnostics ke shromažďování minimálních nebo úplných výpisů stavu systému.|  
+|**directoryQuotaPercentage**|Volitelný parametr.  Nastaví procentuální hodnotu **overallQuotaInMB** , která se má rezervovat pro výpisy stavu systému na virtuálním počítači.|  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
@@ -584,7 +582,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače.|
-|**jímky** | Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
+|**jímky** | Přidáno v 1,5. Volitelný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
 
 
 
@@ -612,10 +610,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atribut|type|Popis|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Volitelné. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Volitelné. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
-|**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
-|**jímky** |**string**| Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Volitelný parametr. Určuje maximální velikost úložiště systému souborů, která je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
+|**scheduledTransferLogLevelFilter**|**string**|Volitelný parametr. Určuje minimální úroveň závažnosti pro přenesené položky protokolu. Výchozí hodnota není **definována**, což přenáší všechny protokoly. Další možné hodnoty (v pořadí od nejvyšších po nejnižší) jsou **podrobné**, **informace**, **varování**, **Chyba**a **kritická**.|  
+|**scheduledTransferPeriod**|**Doba trvání**|Volitelný parametr. Určuje interval mezi plánovanými přenosy dat, zaokrouhlený na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**jímky** |**string**| Přidáno v 1,5. Volitelný parametr. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Application Insights nebo Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Strukturu Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*

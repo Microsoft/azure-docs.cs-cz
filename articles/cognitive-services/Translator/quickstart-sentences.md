@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: c48e6912c907fe16343aac457c2171e96af90e8f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 97db9e145c290e97dbda63a6207f5101a80d67ec
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906816"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393934"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Rychlý start: K určení délky věty použijte Translator Text API.
 

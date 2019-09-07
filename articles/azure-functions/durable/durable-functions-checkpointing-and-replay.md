@@ -3,18 +3,17 @@ title: Kontrolní body a přehrávání v Durable Functions – Azure
 description: Přečtěte si, jak se v rozšíření Durable Functions pro Azure Functions funguje kontrolní bod a odpověď.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241062"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735249"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opakované přehrání v Durable Functions (Azure Functions)
 
@@ -128,17 +127,9 @@ Chování při opětovném přehrání vytvoří omezení pro typ kódu, který 
 
   Pokud kód Orchestrator potřebuje získat aktuální datum a čas, měl by používat rozhraní API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) nebo `currentUtcDateTime` (JavaScript), které je bezpečné pro opětovné přehrání.
 
-  Pokud kód Orchestrator potřebuje vygenerovat náhodný identifikátor GUID, měl by používat rozhraní API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET), které je bezpečné pro opětovné přehrání, nebo delegovat generování identifikátoru GUID na funkci Activity (JavaScript), jako v tomto příkladu:
+  Pokud kód Orchestrator potřebuje vygenerovat náhodný identifikátor GUID, měl by použít buď rozhraní [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET), nebo `newGuid` rozhraní API (JavaScript), které je bezpečné pro opětovné přehrání.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  Nedeterministické operace se musí provádět ve funkcích aktivit. To zahrnuje jakoukoli interakci s dalšími vstupními nebo výstupními vazbami. Tím se zajistí, že se při prvním spuštění vygeneruje všechny nedeterministické hodnoty a uloží se do historie spouštění. Další vykonání se pak automaticky použije uložená hodnota.
+   Kromě těchto zvláštních případů je nutné, aby nedeterministické operace byly provedeny v funkcích aktivit. To zahrnuje jakoukoli interakci s dalšími vstupními nebo výstupními vazbami. Tím se zajistí, že se při prvním spuštění vygeneruje všechny nedeterministické hodnoty a uloží se do historie spouštění. Další vykonání se pak automaticky použije uložená hodnota.
 
 * Kód Orchestrator by neměl být **zablokován**. Například to znamená, že nejsou žádné vstupně-výstupní operace ani žádná `Thread.Sleep` volání rozhraní (.NET) nebo ekvivalentní rozhraní API.
 
@@ -171,7 +162,7 @@ Chování, které se tady popisuje, by vám mělo porozumět tomu, proč `await`
 
 Pokud chcete získat další informace o tom, jak architektura trvalého úlohy spouští funkce nástroje Orchestrator, je nejlepší postup, jak se obrátit na [trvalý zdrojový kód úlohy na GitHubu](https://github.com/Azure/durabletask). Zejména viz [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o správě instancí](durable-functions-instance-management.md)

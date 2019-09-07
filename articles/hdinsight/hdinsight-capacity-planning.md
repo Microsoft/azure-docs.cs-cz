@@ -1,6 +1,6 @@
 ---
 title: Plánování kapacity clusteru v Azure HDInsight
-description: Jak určit cluster HDInsight pro kapacitu a výkon.
+description: Identifikujte klíčové otázky pro plánování kapacity a výkonu clusteru Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207158"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734668"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -126,7 +126,7 @@ Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.micr
 
 Existují však omezení pevné kvóty, například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Spark, Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md): Naučte se, jak nastavit a nakonfigurovat clustery v HDInsight pomocí Apache Hadoop, Spark, Kafka, interaktivního podregistru, adaptérů HBA, služeb ML nebo přetvořenosti.
 * [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Seznamte se s klíčovými scénáři pro monitorování clusteru HDInsight, který může mít vliv na kapacitu clusteru.

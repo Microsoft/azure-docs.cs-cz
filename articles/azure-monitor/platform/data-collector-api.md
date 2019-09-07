@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a34faeb42fce0a1ee7960f71ffce176492495f9c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813928"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744507"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro C#PowerShell, a Python.
@@ -59,7 +59,7 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 | Záhlaví | Popis |
 |:--- |:--- |
 | Authorization |Podpis autorizace. Později v článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC-SHA256. |
-| Typ protokolu |Zadejte typ záznamu dat, která se odesílají. Omezení velikosti pro tento parametr je 100 znaků. |
+| Typ protokolu |Zadejte typ záznamu dat, která se odesílají. Může obsahovat pouze písmena, číslice a podtržítka (_) a nesmí překročit 100 znaků. |
 | x-ms-date |Datum zpracování žádosti ve formátu RFC 1123. |
 | x-ms-AzureResourceId | ID prostředku prostředku Azure, ke kterému by se měla data přidružit Tím se naplní vlastnost [_ResourceId](log-standard-properties.md#_resourceid) a povolí zahrnutí dat do dotazů [kontextu prostředků](design-logs-deployment.md#access-mode) . Pokud toto pole není zadáno, data nebudou obsažena v dotazech kontextu prostředků. |
 | pole vygenerované časem | Název pole v datech, které obsahuje časové razítko datové položky. Pokud zadáte pole, bude jeho obsah použit pro **TimeGenerated**. Pokud toto pole není zadané, výchozí hodnota pro **TimeGenerated** je čas, kdy se zpráva ingestuje. Obsah pole zpráva by měl odpovídat formátu ISO 8601 RRRR-MM-DDThh: mm: ssZ. |
@@ -100,7 +100,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 Ukázky v dalších částech obsahují vzorový kód, který vám pomůže vytvořit autorizační hlavičku.
 
 ## <a name="request-body"></a>Text požadavku
-Tělo zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů s páry název vlastnosti a hodnota v tomto formátu:
+Tělo zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů s páry název vlastnosti a hodnota v následujícím formátu. Název vlastnosti může obsahovat jenom písmena, číslice a podtržítka (_).
 
 ```json
 [
@@ -164,7 +164,7 @@ Pokud pak toto další odeslání provedete, Azure Monitor by vytvořila nové v
 
 ![Vzorový záznam 3](media/data-collector-api/record-03.png)
 
-Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, argumentem, **boolean_s**a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
+Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, **argumentem**, **boolean_s**a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
 
 ![Vzorový záznam 4](media/data-collector-api/record-04.png)
 
@@ -202,7 +202,7 @@ Tato tabulka uvádí kompletní sadu stavových kódů, které může služba vr
 | 403 |Zakázáno |InvalidAuthorization |Službě se nepovedlo ověřit požadavek. Ověřte, zda je ID pracovního prostoru a klíč připojení platné. |
 | 404 |Nenalezené | | Buď zadaná adresa URL není správná, nebo je požadavek příliš velký. |
 | 429 |Příliš mnoho žádostí | | Ve službě dochází k velkému objemu dat z vašeho účtu. Opakujte prosím požadavek později. |
-| 500 |Vnitřní chyba serveru |UnspecifiedError |U této služby došlo k vnitřní chybě. Opakujte prosím požadavek. |
+| 500 |Vnitřní chyba serveru |UnspecifiedError |V této službě došlo k vnitřní chybě. Opakujte prosím požadavek. |
 | 503 |Služba není dostupná |ServiceUnavailable |Služba momentálně není k dispozici pro příjem požadavků. Opakujte prosím požadavek. |
 
 ## <a name="query-data"></a>Dotazování dat

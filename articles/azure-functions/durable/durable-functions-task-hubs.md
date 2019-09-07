@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097799"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734328"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
@@ -101,6 +101,8 @@ Název centra úloh se nastaví na hodnotu `MyTaskHub` nastavení aplikace. Nás
 
 Tady je předkompilovaný C# příklad, jak napsat funkci, která používá [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) k práci s centrem úloh, které je nakonfigurované jako nastavení aplikace:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-A níže je požadovaná konfigurace pro JavaScript. Vlastnost Centrum úkolů v `function.json` souboru se nastavuje prostřednictvím nastavení aplikace:
+### <a name="javascript"></a>JavaScript
 
+Vlastnost Centrum úkolů v `function.json` souboru se nastavuje prostřednictvím nastavení aplikace:
 ```json
 {
     "name": "input",
@@ -135,7 +138,7 @@ Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a čís
 > [!NOTE]
 > Název se odlišuje od jednoho centra úkolů v případě, že je ve sdíleném účtu úložiště víc Center úkolů. Pokud máte více aplikací Function App sdílejících sdílený účet úložiště, je nutné explicitně nakonfigurovat různé názvy pro každé centrum úloh v souborech *Host. JSON* . V opačném případě budou aplikace s více aplikacemi navzájem konkurovat pro zprávy, což by mohlo vést k nedefinovanému chování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Informace o tom, jak zpracovávat správu verzí](durable-functions-versioning.md)

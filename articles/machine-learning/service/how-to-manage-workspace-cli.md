@@ -1,0 +1,342 @@
+---
+title: Použití rozhraní příkazového řádku Azure k vytvoření pracovního prostoru
+titleSuffix: Azure Machine Learning service
+description: Naučte se používat rozhraní příkazového řádku Azure a vytvořit nový pracovní prostor služby Azure Machine Learning.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.author: larryfr
+author: Blackmist
+ms.date: 08/30/2019
+ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70392672"
+---
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro službu Azure Machine Learning
+
+V tomto článku se dozvíte, jak vytvořit pracovní prostor služby Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s prostředky služby Azure Machine Learning.
+
+## <a name="prerequisites"></a>Požadavky
+
+* **Předplatného Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi služby Azure Machine Learning](https://aka.ms/AMLFree).
+
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+    Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>Připojení rozhraní příkazového řádku k předplatnému Azure
+
+> [!IMPORTANT]
+> Pokud používáte Azure Cloud Shell, můžete tuto část přeskočit. Cloud Shell se automaticky ověřuje pomocí účtu, který se přihlašujete k předplatnému Azure.
+
+Existuje několik způsobů, jak můžete z CLI ověřit předplatné Azure. Nejzákladnější je interaktivní ověřování pomocí prohlížeče. Chcete-li provést interaktivní ověřování, otevřete příkazový řádek nebo terminál a použijte následující příkaz:
+
+```azurecli
+az login
+```
+
+Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
+
+Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+
+## <a name="install-the-machine-learning-extension"></a>Instalace rozšíření Machine Learning
+
+Pokud chcete nainstalovat rozšíření Machine Learning, použijte následující příkaz:
+
+```azurecli-interactive
+az extension add -n azure-cli-ml
+```
+
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+
+Pracovní prostor služby Azure Machine Learning spoléhá na tyto služby nebo entity Azure:
+
+> [!IMPORTANT]
+> Pokud nezadáte existující službu Azure, vytvoří se během vytváření pracovního prostoru automaticky. Vždy je nutné zadat skupinu prostředků.
+
+| Služba | Parametr pro určení existující instance |
+| ---- | ---- |
+| **Skupina prostředků Azure** | `-g <resource-group-name>`
+| **Azure Storage Account** | `--storage-account <service-id>` |
+| **Azure Application Insights** | `--application-insights <service-id>` |
+| **Azure Key Vault** | `--keyvault <service-id>` |
+| **Azure Container Registry** | `--container-registry <service-id>` |
+
+### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Pracovní prostor služby Azure Machine Learning se musí vytvořit v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
+
+> [!TIP]
+> Vyberte oblast, ve které je služba Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+
+```azurecli-interactive
+az group create --name <resource-group-name> --location <location>
+```
+
+Odpověď z tohoto příkazu je podobná následujícímu kódu JSON:
+
+```json
+{
+  "id": "/subscriptions/<subscription-GUID>/resourceGroups/<resourcegroupname>",
+  "location": "<location>",
+  "managedBy": null,
+  "name": "<resource-group-name>",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": null
+}
+```
+
+Další informace o práci se skupinami prostředků najdete v tématu [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
+
+### <a name="automatically-create-required-resources"></a>Automaticky vytvářet požadované prostředky
+
+Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__, použijte následující příkaz:
+
+```azurecli-interactive
+az ml workspace create -w <workspace-name> -g <resource-group-name>
+```
+
+Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+```json
+{
+  "applicationInsights": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>",
+  "containerRegistry": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.containerregistry/registries/<acr-name>",
+  "creationTime": "2019-08-30T20:24:19.6984254+00:00",
+  "description": "",
+  "friendlyName": "<workspace-name>",
+  "id": "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>",
+  "identityPrincipalId": "<GUID>",
+  "identityTenantId": "<GUID>",
+  "identityType": "SystemAssigned",
+  "keyVault": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.keyvault/vaults/<key-vault-name>",
+  "location": "<location>",
+  "name": "<workspace-name>",
+  "resourceGroup": "<resource-group-name>",
+  "storageAccount": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.storage/storageaccounts/<storage-account-name>",
+  "type": "Microsoft.MachineLearningServices/workspaces",
+  "workspaceid": "<GUID>"
+}
+```
+
+### <a name="use-existing-resources"></a>Použití existujících prostředků
+
+Pokud chcete vytvořit pracovní prostor, který používá stávající prostředky, musíte zadat ID pro prostředky. Pro získání ID pro služby použijte následující příkazy:
+
+> [!IMPORTANT]
+> Nemusíte zadávat všechny existující prostředky. Můžete zadat jednu nebo více. Můžete například zadat existující účet úložiště a pracovní prostor vytvoří další prostředky.
+
++ **Účet Azure Storage**:`az storage account show --name <storage-account-name> --query "id"`
+
+    Odpověď z tohoto příkazu je podobná následujícímu textu a je ID účtu úložiště:
+
+    `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
++ **Application Insights Azure**:
+
+    1. Instalace rozšíření Application Insights:
+
+        ```bash
+        az extension add -n application-insights
+        ```
+
+    2. Získejte ID vaší služby Application Insight:
+
+        ```bash
+        az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"
+        ```
+
+        Odpověď z tohoto příkazu je podobná následujícímu textu a je ID vaší služby Application Insights:
+
+        `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
+
++ **Azure Key Vault**: "AZ klíčů trezor show--Name < Key-trezor-Name >--Query" ID "
+
+    Odpověď z tohoto příkazu je podobná následujícímu textu a je ID vašeho trezoru klíčů:
+
+    `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
+
++ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
+
+    Odpověď z tohoto příkazu je podobná následujícímu textu a je ID pro registr kontejneru:
+
+    `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
+
+    > [!IMPORTANT]
+    > Aby bylo možné používat službu Azure Machine Learningho pracovního prostoru služby, musí mít v registru kontejneru povolený [účet správce](/azure/container-registry/container-registry-authentication#admin-account) .
+
+Jakmile budete mít ID prostředků, které chcete používat s pracovním prostorem, použijte základní `az workspace create -w <workspace-name> -g <resource-group-name>` příkaz a přidejte parametry a ID pro existující prostředky. Například následující příkaz vytvoří pracovní prostor, který používá existující registr kontejnerů:
+
+```azurecli-interactive
+az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
+```
+
+Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+```json
+{
+  "applicationInsights": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>",
+  "containerRegistry": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.containerregistry/registries/<acr-name>",
+  "creationTime": "2019-08-30T20:24:19.6984254+00:00",
+  "description": "",
+  "friendlyName": "<workspace-name>",
+  "id": "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>",
+  "identityPrincipalId": "<GUID>",
+  "identityTenantId": "<GUID>",
+  "identityType": "SystemAssigned",
+  "keyVault": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.keyvault/vaults/<key-vault-name>",
+  "location": "<location>",
+  "name": "<workspace-name>",
+  "resourceGroup": "<resource-group-name>",
+  "storageAccount": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.storage/storageaccounts/<storage-account-name>",
+  "type": "Microsoft.MachineLearningServices/workspaces",
+  "workspaceid": "<GUID>"
+}
+```
+
+## <a name="list-workspaces"></a>Vypsat pracovní prostory
+
+Pokud chcete zobrazit seznam všech pracovních prostorů pro vaše předplatné Azure, použijte následující příkaz:
+
+```azurecli-interactive
+az ml workspace list
+```
+
+Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+```json
+[
+  {
+    "resourceGroup": "myresourcegroup",
+    "subscriptionId": "<subscription-id>",
+    "workspaceName": "myml"
+  },
+  {
+    "resourceGroup": "anotherresourcegroup",
+    "subscriptionId": "<subscription-id>",
+    "workspaceName": "anotherml"
+  }
+]
+```
+
+Další informace najdete v dokumentaci [AZ ml Workspace list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) .
+
+## <a name="get-workspace-information"></a>Získat informace o pracovním prostoru
+
+Chcete-li získat informace o pracovním prostoru, použijte následující příkaz:
+
+```azurecli-interactive
+az ml workspace show -w <workspace-name> -g <resource-group-name>
+```
+
+Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+```json
+{
+  "applicationInsights": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/application-insight-name>",
+  "creationTime": "2019-08-30T18:55:03.1807976+00:00",
+  "description": "",
+  "friendlyName": "",
+  "id": "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>",
+  "identityPrincipalId": "<GUID>",
+  "identityTenantId": "<GUID>",
+  "identityType": "SystemAssigned",
+  "keyVault": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.keyvault/vaults/<key-vault-name>",
+  "location": "<location>",
+  "name": "<workspace-name>",
+  "resourceGroup": "<resource-group-name>",
+  "storageAccount": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.storage/storageaccounts/<storage-account-name>",
+  "tags": {},
+  "type": "Microsoft.MachineLearningServices/workspaces",
+  "workspaceid": "<GUID>"
+}
+```
+
+Další informace najdete v tématu o tom, jak [zobrazit dokumentaci AZ ml Workspace](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) .
+
+## <a name="update-a-workspace"></a>Aktualizovat pracovní prostor
+
+Chcete-li aktualizovat pracovní prostor, použijte následující příkaz:
+
+```azurecli-interactive
+az ml workspace update -w <workspace-name> -g <resource-group-name>
+```
+
+Výstup tohoto příkazu je podobný následujícímu formátu JSON:
+
+```json
+{
+  "applicationInsights": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/application-insight-name>",
+  "creationTime": "2019-08-30T18:55:03.1807976+00:00",
+  "description": "",
+  "friendlyName": "",
+  "id": "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>",
+  "identityPrincipalId": "<GUID>",
+  "identityTenantId": "<GUID>",
+  "identityType": "SystemAssigned",
+  "keyVault": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.keyvault/vaults/<key-vault-name>",
+  "location": "<location>",
+  "name": "<workspace-name>",
+  "resourceGroup": "<resource-group-name>",
+  "storageAccount": "/subscriptions/<service-GUID>/resourcegroups/<resource-group-name>/providers/microsoft.storage/storageaccounts/<storage-account-name>",
+  "tags": {},
+  "type": "Microsoft.MachineLearningServices/workspaces",
+  "workspaceid": "<GUID>"
+}
+```
+
+Další informace najdete v dokumentaci [AZ ml Workspace Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) .
+
+## <a name="share-a-workspace-with-another-user"></a>Sdílení pracovního prostoru s jiným uživatelem
+
+Pokud chcete sdílet pracovní prostor s jiným uživatelem v předplatném, použijte následující příkaz:
+
+```azurecli-interactive
+az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
+```
+
+Další informace o řízení přístupu na základě rolí (RBAC) pomocí služby Azure Machine Learning Service najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
+
+Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) .
+
+## <a name="sync-keys-for-dependent-resources"></a>Synchronizace klíčů pro závislé prostředky
+
+Pokud změníte přístupové klíče pro jeden z prostředků používaných vaším pracovním prostorem, pomocí následujícího příkazu synchronizujte nové klíče s pracovním prostorem:
+
+```azurecli-interactive
+az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
+```
+
+Další informace o změně klíčů najdete v tématu [obnovení přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
+
+Další informace najdete v dokumentaci [AZ ml pracovní prostor Sync-Keys](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
+
+## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
+
+Pokud chcete pracovní prostor odstranit poté, co už ho nepotřebujete, použijte tento příkaz:
+
+```azurecli-interactive
+az ml workspace delete -w <workspace-name> -g <resource-group-name>
+```
+
+> [!IMPORTANT]
+> Odstranění pracovního prostoru neodstraní přehled aplikací, účet úložiště, Trezor klíčů nebo registr kontejnerů, které používá pracovní prostor.
+
+Můžete také odstranit skupinu prostředků, která odstraní pracovní prostor a všechny ostatní prostředky Azure ve skupině prostředků. Pokud chcete odstranit skupinu prostředků, použijte následující příkaz:
+
+```azurecli-interactive
+az group delete -g <resource-group-name>
+```
+
+Další informace najdete v tématu [AZ ml Workspace Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) .

@@ -1,17 +1,17 @@
 ---
-title: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
+title: Chyba serveru Jupyter 404 z důvodu "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
 description: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 57ecf081b48097b04d8379119d9a08f0b980494d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 291fc7f385f652005f44c3e0cd52d4929e914989
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68664963"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736188"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scénář: Jupyter Server 404 "nenalezen" v důsledku "blokování rozhraní API pro více zdrojů" ve službě Azure HDInsight
 
@@ -54,7 +54,7 @@ Tato chyba může být způsobena několika způsoby:
 
 Toto je méně bezpečné než nastavení, které jsme už nastavili. Ale předpokládá se, že přístup ke clusteru je omezený a že jeden z nich se může připojit ke clusteru, protože jsme NSGi na místě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

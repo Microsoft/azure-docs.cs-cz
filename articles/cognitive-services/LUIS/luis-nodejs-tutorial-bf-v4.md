@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 8227a7683c1333b21537630f7f074f624926f984
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
-ms.translationtype: MT
+ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375778"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735029"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: Použití robota webové aplikace s podporou Language Understanding v Node. js 
 
@@ -80,16 +80,17 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |--|--|
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
+|Getpočasí|`what's the weather like?`|
 |Žádné|Cokoli mimo doménu aplikace|
 
 ## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
 
 1. I když jste stále v Azure Portal pro nový robot, vyberte **test na webu chat**. 
-1. Do textového pole **text zprávy** zadejte text `hello`. Robot reaguje na informace o rozhraní robota a příklady dotazů na konkrétní LUIS model, jako je například rezervace letu do Paříž. 
+1. Do textového pole **text zprávy** zadejte text `Book a flight from Seattle to Berlin tomorrow`. Robot odpoví s ověřením, že chcete zarezervovat let. 
 
     ![Snímek obrazovky Azure Portal zadejte text Hello.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    Pro rychlé testování robota můžete použít funkci testu. Pro úplnější testování, včetně ladění, Stáhněte si kód robota a použijte Visual Studio. 
+    K rychlému testování robota můžete použít funkci test. Pro úplnější testování, včetně ladění, Stáhněte si kód robota a použijte Visual Studio. 
 
 ## <a name="download-the-web-app-bot-source-code"></a>Stažení zdrojového kódu robota webové aplikace
 Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve svém místním počítači. 
@@ -108,242 +109,128 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Přečtěte si kód, který odešle utterance do LUIS a získá odpověď.
 
-1. Otevřete **dialogová okna – > souboru luisHelper. js** . Tady se uživatelská promluva zadaná do robota odešle do služby LUIS. Odpověď z LUIS je vrácena z metody jako objekt **bookDetails** JSON. Když vytvoříte vlastní robot, měli byste také vytvořit vlastní objekt, který vrátí podrobnosti z LUIS. 
+1. Chcete-li odeslat uživatele utterance do koncového bodu předpovědi LUIS, otevřete **dialogová okna > flightBookingRecognizer. js** . Tady se uživatelská promluva zadaná do robota odešle do služby LUIS. Odpověď z LUIS je vrácena z metody **executeLuisQuery** .  
 
-    ```nodejs
-    // Copyright (c) Microsoft Corporation. All rights reserved.
-    // Licensed under the MIT License.
-    
-    const { LuisRecognizer } = require('botbuilder-ai');
-    
-    class LuisHelper {
+    ````javascript
+    class FlightBookingRecognizer {
+
+        ...
+
         /**
          * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
-         * @param {*} logger
          * @param {TurnContext} context
          */
-        static async executeLuisQuery(logger, context) {
-            const bookingDetails = {};
-    
-            try {
-                const recognizer = new LuisRecognizer({
-                    applicationId: process.env.LuisAppId,
-                    endpointKey: process.env.LuisAPIKey,
-                    endpoint: `https://${ process.env.LuisAPIHostName }`
-                }, {}, true);
-    
-                const recognizerResult = await recognizer.recognize(context);
-    
-                const intent = LuisRecognizer.topIntent(recognizerResult);
-    
-                bookingDetails.intent = intent;
-    
-                if (intent === 'Book_flight') {
-                    // We need to get the result from the LUIS JSON which at every level returns an array
-    
-                    bookingDetails.destination = LuisHelper.parseCompositeEntity(recognizerResult, 'To', 'Airport');
-                    bookingDetails.origin = LuisHelper.parseCompositeEntity(recognizerResult, 'From', 'Airport');
-    
-                    // This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
-                    // TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
-                    bookingDetails.travelDate = LuisHelper.parseDatetimeEntity(recognizerResult);
-                }
-            } catch (err) {
-                logger.warn(`LUIS Exception: ${ err } Check your LUIS configuration`);
-            }
-            return bookingDetails;
+        async executeLuisQuery(context) {
+            return await this.recognizer.recognize(context);
         }
-    
-        static parseCompositeEntity(result, compositeName, entityName) {
-            const compositeEntity = result.entities[compositeName];
-            if (!compositeEntity || !compositeEntity[0]) return undefined;
-    
-            const entity = compositeEntity[0][entityName];
-            if (!entity || !entity[0]) return undefined;
-    
-            const entityValue = entity[0][0];
-            return entityValue;
-        }
-    
-        static parseDatetimeEntity(result) {
-            const datetimeEntity = result.entities['datetime'];
-            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
-    
-            const timex = datetimeEntity[0]['timex'];
-            if (!timex || !timex[0]) return undefined;
-    
-            const datetime = timex[0].split('T')[0];
-            return datetime;
-        }
-    }
-    
-    module.exports.LuisHelper = LuisHelper;
-    ```
 
-1. Otevřete **dialogová okna – > bookingDialog. js** , abyste porozuměli tomu, jak se objekt BookingDetails používá ke správě toku konverzace. Podrobnosti o cestách se dotazují v krocích, potom se potvrdí celá rezervace a nakonec se vrátí zpět uživateli. 
+        ...
 
-    ```nodejs
-    // Copyright (c) Microsoft Corporation. All rights reserved.
-    // Licensed under the MIT License.
-    
-    const { TimexProperty } = require('@microsoft/recognizers-text-data-types-timex-expression');
-    const { ConfirmPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
-    const { CancelAndHelpDialog } = require('./cancelAndHelpDialog');
-    const { DateResolverDialog } = require('./dateResolverDialog');
-    
-    const CONFIRM_PROMPT = 'confirmPrompt';
-    const DATE_RESOLVER_DIALOG = 'dateResolverDialog';
-    const TEXT_PROMPT = 'textPrompt';
-    const WATERFALL_DIALOG = 'waterfallDialog';
-    
-    class BookingDialog extends CancelAndHelpDialog {
-        constructor(id) {
-            super(id || 'bookingDialog');
-    
-            this.addDialog(new TextPrompt(TEXT_PROMPT))
-                .addDialog(new ConfirmPrompt(CONFIRM_PROMPT))
-                .addDialog(new DateResolverDialog(DATE_RESOLVER_DIALOG))
-                .addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-                    this.destinationStep.bind(this),
-                    this.originStep.bind(this),
-                    this.travelDateStep.bind(this),
-                    this.confirmStep.bind(this),
-                    this.finalStep.bind(this)
-                ]));
-    
-            this.initialDialogId = WATERFALL_DIALOG;
-        }
-    
-        /**
-         * If a destination city has not been provided, prompt for one.
-         */
-        async destinationStep(stepContext) {
-            const bookingDetails = stepContext.options;
-    
-            if (!bookingDetails.destination) {
-                return await stepContext.prompt(TEXT_PROMPT, { prompt: 'To what city would you like to travel?' });
-            } else {
-                return await stepContext.next(bookingDetails.destination);
-            }
-        }
-    
-        /**
-         * If an origin city has not been provided, prompt for one.
-         */
-        async originStep(stepContext) {
-            const bookingDetails = stepContext.options;
-    
-            // Capture the response to the previous step's prompt
-            bookingDetails.destination = stepContext.result;
-            if (!bookingDetails.origin) {
-                return await stepContext.prompt(TEXT_PROMPT, { prompt: 'From what city will you be travelling?' });
-            } else {
-                return await stepContext.next(bookingDetails.origin);
-            }
-        }
-    
-        /**
-         * If a travel date has not been provided, prompt for one.
-         * This will use the DATE_RESOLVER_DIALOG.
-         */
-        async travelDateStep(stepContext) {
-            const bookingDetails = stepContext.options;
-    
-            // Capture the results of the previous step
-            bookingDetails.origin = stepContext.result;
-            if (!bookingDetails.travelDate || this.isAmbiguous(bookingDetails.travelDate)) {
-                return await stepContext.beginDialog(DATE_RESOLVER_DIALOG, { date: bookingDetails.travelDate });
-            } else {
-                return await stepContext.next(bookingDetails.travelDate);
-            }
-        }
-    
-        /**
-         * Confirm the information the user has provided.
-         */
-        async confirmStep(stepContext) {
-            const bookingDetails = stepContext.options;
-    
-            // Capture the results of the previous step
-            bookingDetails.travelDate = stepContext.result;
-            const msg = `Please confirm, I have you traveling to: ${ bookingDetails.destination } from: ${ bookingDetails.origin } on: ${ bookingDetails.travelDate }.`;
-    
-            // Offer a YES/NO prompt.
-            return await stepContext.prompt(CONFIRM_PROMPT, { prompt: msg });
-        }
-    
-        /**
-         * Complete the interaction and end the dialog.
-         */
-        async finalStep(stepContext) {
-            if (stepContext.result === true) {
-                const bookingDetails = stepContext.options;
-    
-                return await stepContext.endDialog(bookingDetails);
-            } else {
-                return await stepContext.endDialog();
-            }
-        }
-    
-        isAmbiguous(timex) {
-            const timexPropery = new TimexProperty(timex);
-            return !timexPropery.types.has('definite');
-        }
     }
-    
-    module.exports.BookingDialog = BookingDialog;
-    ```
+    ````
+
+1. **Dialogy-> mainDialog** zachycuje utterance a pošle je do executeLuisQuery v metodě actStep.
+
+
+    ````javascript
+    class MainDialog extends ComponentDialog {
+
+        ...
+
+        /**
+         * Second step in the waterfall.  This will use LUIS to attempt to extract the origin, destination and travel dates.
+         * Then, it hands off to the bookingDialog child dialog to collect any remaining details.
+         */
+        async actStep(stepContext) {
+
+            ...
+
+            const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
+
+            switch (LuisRecognizer.topIntent(luisResult)) {
+                    case 'BookFlight':
+                        // Extract the values for the composite entities from the LUIS result.
+                        const fromEntities = this.luisRecognizer.getFromEntities(luisResult);
+                        const toEntities = this.luisRecognizer.getToEntities(luisResult);
+            
+                        // Show a warning for Origin and Destination if we can't resolve them.
+                        await this.showWarningForUnsupportedCities(stepContext.context, fromEntities, toEntities);
+            
+                        // Initialize BookingDetails with any entities we may have found in the response.
+                        bookingDetails.destination = toEntities.airport;
+                        bookingDetails.origin = fromEntities.airport;
+                        bookingDetails.travelDate = this.luisRecognizer.getTravelDate(luisResult);
+                        console.log('LUIS extracted these booking details:', JSON.stringify(bookingDetails));
+            
+                        // Run the BookingDialog passing in whatever details we have from the LUIS call, it will fill out the remainder.
+                        return await stepContext.beginDialog('bookingDialog', bookingDetails);
+            
+                    case 'GetWeather':
+                        // We haven't implemented the GetWeatherDialog so we just display a TODO message.
+                        const getWeatherMessageText = 'TODO: get weather flow here';
+                        await stepContext.context.sendActivity(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
+                        break;
+            
+                    default:
+                        // Catch all for unhandled intents
+                        const didntUnderstandMessageText = `Sorry, I didn't get that. Please try asking in a different way (intent was ${ LuisRecognizer.topIntent(luisResult) })`;
+                        await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
+                    }
+            
+                    return await stepContext.next();
+
+        }
+
+        ...
+
+    }
+    ````
 
 
 ## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Instalace závislostí a spuštění kódu robota v aplikaci Visual Studio
 
 1. V VSCode, z integrovaného terminálu, nainstalujte závislosti pomocí příkazu `npm install`.
-1. Také z integrovaného terminálu spusťte robot pomocí příkazu `npm start`. 
+1. Také z integrovaného terminálu spusťte robot pomocí příkazu `npm start`. Tím se spustí webová aplikace pro robota s koncovým bodem HTTP. Konzola poskytuje adresu URL a číslo portu pro přístup k běžícímu webu. Číslo portu budete potřebovat v další části tohoto kurzu.
 
+    ```console
+    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
+    > node ./index.js
+    
+    
+    restify listening to http://[::]:3978
+    
+    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
+    ```
+
+## <a name="create-an-environment-file-and-add-luis-values"></a>Vytvoření souboru prostředí a přidání hodnot LUIS
+
+Emulátor robota potřebuje přístup k vašemu prostředku LUIS, aby poskytoval podrobné výsledky LUIS.
+
+1. V kořenovém adresáři projektu vytvořte soubor s názvem `.env` a přidejte následující proměnné prostředí:
+
+    ```console
+    LuisAppId= 
+    LuisAPIKey=
+    LuisAPIHostName=
+    ```
+
+1. Z Azure Portal pro prostředek robota otevřete nastavení konfigurace App Service aplikace.
+1. Otevřete **Rozšířené úpravy**a zobrazte hodnotu pro každé nastavení.
+
+    ![Otevřete * * rozšířené úpravy * *, aby se zobrazila hodnota pro každé nastavení.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
+
+<a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru bot k otestování robota
 
+Zeptejte se robota na záměr na knihu letu.
+
 1. Spusťte emulátor bot a vyberte **otevřít robot**.
 1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
-1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
 
-    Volitelně můžete vytvořit novou konfiguraci robota a zkopírovat `MicrosoftAppId` soubor a `MicrosoftAppPassword` ze souboru **. env** v projektu sady Visual Studio pro robot. Název konfiguračního souboru robota by měl být stejný jako název bot. 
-
-    ```json
-    {
-        "name": "<bot name>",
-        "description": "<bot description>",
-        "services": [
-            {
-                "type": "endpoint",
-                "appId": "<appId from .env>",
-                "appPassword": "<appPassword from .env>",
-                "endpoint": "http://localhost:3978/api/messages",
-                "id": "<don't change this value>",
-                "name": "http://localhost:3978/api/messages"
-            }
-        ],
-        "padlock": "",
-        "version": "2.0",
-        "overrides": null,
-        "path": "<local path to .bot file>"
-    }
-    ```
-
-1. V emulátoru bot zadejte `Hello` a získejte stejnou reakci na základní bot, jak jste dostali v **testu na webu chat**.
+1. V emulátoru bot zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v **testu na webu chat**.
 
     [![Základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
-
-
-## <a name="ask-bot-a-question-for-the-book-flight-intent"></a>Zeptat se robota na záměr pro let
-
-1. V emulátoru bot zarezervujte let zadáním následujících utterance: 
-
-    ```console
-    Book a flight from Paris to Berlin on March 22, 2020
-    ```
-
-    Emulátor bot se zeptá, jestli se má potvrdit. 
 
 1. Vyberte **Ano**. Robot odpoví souhrnem jeho akcí. 
 1. V protokolu emulátoru bot vyberte řádek, který obsahuje `Luis Trace`. Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.

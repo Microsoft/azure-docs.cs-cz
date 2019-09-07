@@ -4,6 +4,8 @@
   items:
     - name: Co je Resource Manager?
       href: resource-group-overview.md
+    - name: Přehled šablon
+      href: template-deployment-overview.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Koncepty
   items:
-    - name: Nasazení šablon
-      href: template-deployment-overview.md
     - name: Osvědčené postupy pro šablony
       href: template-best-practices.md
     - name: Šablony pro konzistenci cloudu

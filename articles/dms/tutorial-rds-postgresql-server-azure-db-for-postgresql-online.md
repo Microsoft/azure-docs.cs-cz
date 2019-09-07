@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Pomocí Azure Database Migration Service online migrace vzdálené plochy postgresql do služby Azure Database for PostgreSQL | Dokumentace Microsoftu'
-description: Zjistěte, jak provést online migrace ze vzdálené plochy PostgreSQL do služby Azure Database for PostgreSQL s využitím Azure Database Migration Service.
+title: 'Kurz: Použití Azure Database Migration Service pro online migraci RDS PostgreSQL do Azure Database for PostgreSQL | Microsoft Docs'
+description: Naučte se provádět online migraci z RDS PostgreSQL do Azure Database for PostgreSQL pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -10,87 +10,84 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/28/2019
-ms.openlocfilehash: 17fb83bc845de61f7ec0e674f09c0dc73537f2fd
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.date: 09/06/2019
+ms.openlocfilehash: 6cb10f09772bf6666e197a4b622792c5b62d3ace
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461585"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734790"
 ---
-# <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace vzdálené plochy PostgreSQL do služby Azure Database for PostgreSQL online pomocí DMS
+# <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL VP pro Azure Database for PostgreSQL online pomocí DMS
 
-Azure Database Migration Service můžete použít k migraci databází z instance PostgreSQL vzdálené plochy k [– Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) když zdrojová databáze zůstane online v průběhu migrace. Jinými slovy můžete dosáhnout migrace s minimálními prostoji do aplikace. V tomto kurzu, migrujete **DVD pronájem** ukázkovou databázi z instance 9.6 PostgreSQL vzdálené plochy ke službě Azure Database for PostgreSQL s využitím online migrace aktivity v Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z instance služby RDS PostgreSQL do [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) , zatímco zdrojová databáze zůstane během migrace online. Jinými slovy, migraci je možné dosáhnout s minimálními výpadky aplikace. V tomto kurzu migrujete ukázkovou databázi **pronájmu DVD** z instance služby RDS PostgreSQL 9,6 na Azure Database for PostgreSQL pomocí online aktivity migrace v Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
-> * Migrace schématu vzorku pomocí nástroje pg_dump.
-> * Vytvoření instance služby Azure Database Migration Service.
-> * Vytvořte projekt migrace s využitím Azure Database Migration Service.
+> * Pomocí nástroje pg_dump migrujte vzorové schéma.
+> * Vytvořte instanci Azure Database Migration Service.
+> * Vytvořte projekt migrace pomocí Azure Database Migration Service.
 > * Spuštění migrace
 > * Monitorování migrace
 
 > [!NOTE]
-> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance založené na cenovou úroveň Premium. Další informace najdete v tématu Azure Database Migration Service [ceny](https://azure.microsoft.com/pricing/details/database-migration/) stránky.
+> Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/database-migration/) Azure Database Migration Service.
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Tento článek popisuje, jak provést online migraci z místní instance PostgreSQL do služby Azure Database for PostgreSQL.
+Tento článek popisuje, jak provést online migraci z místní instance PostgreSQL do Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-* Stáhněte a nainstalujte [PostgreSQL community edition](https://www.postgresql.org/download/) 9.5, 9.6 nebo 10. Zdrojový PostgreSQL Server verze musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+* Stáhněte a nainstalujte si [PostgreSQL community edition](https://www.postgresql.org/download/) 9,5, 9,6 nebo 10. Verze zdrojového PostgreSQL serveru musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
-    Verze PostgreSQL vzdálené plochy kromě toho musí odpovídat na Azure Database for PostgreSQL. RDS PostgreSQL 9.5.11.5 můžete třeba migrovat pouze ke službě Azure Database for PostgreSQL 9.5.11 a ne na verzi 9.6.7.
+    Kromě toho musí verze PostgreSQL služby RDS odpovídat verzi Azure Database for PostgreSQL. Například služba RDS PostgreSQL 9.5.11.5 se dá migrovat jenom na Azure Database for PostgreSQL 9.5.11 a ne na verzi 9.6.7.
 
-    > [!NOTE]
-    > Pro PostgreSQL verze 10 aktuálně DMS podporuje jenom migrace z verze 10.3 ke službě Azure Database for PostgreSQL.
-
-* Vytvoření instance [– Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal). Tomto [části](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) dokumentu podrobnosti o tom, jak se připojit k serveru PostgreSQL pomocí nástroje pgAdmin.
-* Vytvoření služby Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manageru, který poskytuje připojení site-to-site k vašich zdrojových serverů s místními pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě, najdete v článku [dokumentace k Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a hlavně článků rychlý start s podrobný.
-* Zajistěte, aby pravidla skupiny zabezpečení virtuální sítě neblokovala následující komunikační porty pro službu Azure Database Migration Service: 53, 443, 9354, 445 a 12000. Další podrobnosti o filtrování provozu skupiny zabezpečení sítě Azure VNet najdete v článku [filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Vytvořte instanci [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal). Podrobnosti o tom, jak se připojit k serveru PostgreSQL pomocí pgAdmin, najdete v této [části](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) dokumentu.
+* Vytvořte Azure Virtual Network (VNet) pro Azure Database Migration Service pomocí modelu nasazení Azure Resource Manager, který zajišťuje připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN. ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Další informace o vytvoření virtuální sítě najdete v dokumentaci k [Virtual Network](https://docs.microsoft.com/azure/virtual-network/)a zejména v článcích rychlý Start s podrobnými údaji.
+* Zajistěte, aby pravidla skupiny zabezpečení virtuální sítě neblokovala následující komunikační porty pro službu Azure Database Migration Service: 443, 53, 9354, 445 a 12000. Další podrobnosti o filtrování přenosů Azure VNet NSG najdete v článku [filtrování provozu sítě pomocí skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Nakonfigurujte bránu [Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Otevřete bránu Windows firewall a povolit Azure Database Migration Service přístup k serveru PostgreSQL zdroj, který ve výchozím nastavení je TCP port 5432.
+* Otevřete bránu Windows Firewall, abyste povolili Azure Database Migration Service přístup ke zdrojovému serveru PostgreSQL, který je ve výchozím nastavení port TCP 5432.
 * Pokud před zdrojovými databázemi používáte zařízení brány firewall, možná bude potřeba přidat pravidla brány firewall, která službě Azure Database Migration Service povolí přístup ke zdrojovým databázím za účelem migrace.
-* Vytvořte úrovni serveru [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pro Azure Database for PostgreSQL server Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě pro Azure Database Migration Service.
+* Vytvořte [pravidlo brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) na úrovni serveru pro Azure Database for PostgreSQL Server, aby bylo možné Azure Database Migration Service přístup k cílovým databázím. Zadejte rozsah podsítě virtuální sítě, která se používá pro Azure Database Migration Service.
 
-### <a name="set-up-aws-rds-postgresql-for-replication"></a>Nastavení AWS RDS PostgreSQL pro replikaci
+### <a name="set-up-aws-rds-postgresql-for-replication"></a>Nastavení AWS VP PostgreSQL pro replikaci
 
-1. Pokud chcete vytvořit novou skupinu parametrů, postupujte podle pokynů od AWS v článku [práce se skupinami parametr DB](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html).
-2. Použijte hlavní uživatelské jméno pro připojení ke zdroji ze služby Azure Database Migration Service. Pokud používáte jiný než účet hlavního uživatele, aby účet měl rds_superuser roli a roli rds_replication. Rds_replication role uděluje oprávnění ke správě slotů logické a streamování dat s využitím logické sloty.
-3. Vytvořit novou skupinu parametrů s následující konfigurací:. Nastavte parametr rds.logical_replication ve vaší skupině DB parametr na hodnotu 1.
-    b. max_wal_senders = [počet souběžných úloh] - parametr max_wal_senders nastaví počet souběžných úloh, které můžete spustit, doporučujeme 10 úkolů.
-    c. max_replication_slots – = [počet slotů], doporučujeme nastavena na 5 slotů.
-4. Přidružte skupina parametrů, které jste vytvořili instanci PostgreSQL vzdálené plochy.
+1. Pokud chcete vytvořit novou skupinu parametrů, postupujte podle pokynů uvedených v AWS v článku [práce se skupinami parametrů DB](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html).
+2. Pomocí hlavního uživatelského jména se připojte ke zdroji z Azure Database Migration Service. Pokud používáte jiný účet než hlavní uživatelský účet, musí mít účet roli rds_superuser a roli rds_replication. Role rds_replication uděluje oprávnění ke správě logických slotů a ke streamování dat pomocí logických slotů.
+3. Vytvořte novou skupinu parametrů s následující konfigurací: a. Nastavte parametr RDS. logical_replication ve skupině parametrů databáze na hodnotu 1.
+    b. max_wal_senders = [počet souběžných úloh] – parametr max_wal_senders nastaví počet souběžných úloh, které mohou být spuštěny, doporučí 10 úkolů.
+    c. max_replication_slots – = [počet slotů], doporučuje se nastavit na pět slotů.
+4. Přidružte skupinu parametrů, kterou jste vytvořili, do instance RDS PostgreSQL.
 
 ## <a name="migrate-the-schema"></a>Migrace schématu
 
-1. Extrahování schématu ze zdrojové databáze a použít na cílovou databázi a dokončit migraci všech databázových objektů, jako jsou schémata tabulek, indexů a uložené procedury.
+1. Extrahujte schéma ze zdrojové databáze a použijte ho pro cílovou databázi k dokončení migrace všech databázových objektů, jako jsou schémata tabulky, indexy a uložené procedury.
 
-    Nejjednodušší způsob, jak migrovat pouze schématu je použití pg_dump s parametrem -s. Další informace najdete v tématu [příklady](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) v tomto kurzu pg_dump Postgres.
+    Nejjednodušší způsob, jak migrovat jenom schéma, je použít pg_dump s možností-s. Další informace najdete v [příkladech](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) v kurzu Postgres pg_dump.
 
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
 
-    Například soubor schématu pro se stavem systému **dvdrental** databáze, použijte následující příkaz:
+    Chcete-li například vypsat soubor schématu pro databázi **dvdrental** , použijte následující příkaz:
 
     ```
     pg_dump -o -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
     ```
 
-2. Vytvoření prázdné databáze v cílové služby, která je – Azure Database for PostgreSQL. Se připojte a vytvořte databázi, odkazovat na jeden z následujících článků:
+2. V cílové službě vytvořte prázdnou databázi, která je Azure Database for PostgreSQL. Informace o připojení a vytvoření databáze najdete v jednom z následujících článků:
 
-    * [Vytvoření serveru Azure Database for PostgreSQL pomocí webu Azure portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
+    * [Vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
     * [Vytvoření Azure Database for PostgreSQL pomocí Azure CLI](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-azure-cli)
 
-3. Importujte schéma do cílové služby, která je – Azure Database for PostgreSQL. Chcete-li obnovit soubor s výpisem paměti schématu, spusťte následující příkaz:
+3. Importujte schéma do cílové služby, což je Azure Database for PostgreSQL. Chcete-li obnovit soubor s výpisem stavu schématu, spusťte následující příkaz:
 
     ```
     psql -h hostname -U db_username -d db_name < your_schema.sql
@@ -102,7 +99,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
     ```
 
-4. Pokud vaše schéma obsahuje cizí klíče, počáteční načtení a průběžná synchronizace migrace selžou. Extrahovat rozevírací cizího klíče skriptů a přidat skript cizí klíče v cílovém umístění (Azure Database for PostgreSQL), spusťte následující skript v nástroji PgAdmin nebo psql:
+4. Pokud vaše schéma obsahuje cizí klíče, počáteční načtení a průběžná synchronizace migrace selžou. Chcete-li extrahovat skript cizího klíče a přidat do cílového umístění skript cizího klíče (Azure Database for PostgreSQL), spusťte následující skript v PgAdmin nebo v psql:
   
     ```
     SELECT Queries.tablename
@@ -130,11 +127,11 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
       GROUP BY Queries.tablename;
     ```
 
-5. Přetažení cizí klíč (což je druhý sloupec) spusťte ve výsledku dotazu. odpojení cizí klíč.
+5. Spuštěním odkládacího klíče (který je druhým sloupcem) ve výsledku dotazu vyřaďte cizí klíč.
 
-6. Pokud máte v datech aktivační události (insert nebo update aktivovat), vynutí integrity dat v cílové před replikaci dat ze zdroje. Doporučuje se zakázat aktivační události ve všech tabulkách *v cílovém* během migrace a potom povolit aktivačních událostí po migrace dokončit.
+6. Pokud jste v datech triggery (vložení nebo aktualizace triggeru), vynutili integritu dat v cíli před replikací dat ze zdroje. Doporučením je zakázat aktivační události ve všech tabulkách *v cíli* během migrace a poté povolit triggery po dokončení migrace.
 
-    Chcete-li zakázat aktivační události v cílové databázi:
+    Zakázání triggerů v cílové databázi:
 
     ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
@@ -146,15 +143,15 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
    ![Zobrazení předplatných na portálu](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-subscription1.png)
 
-2. Vyberte předplatné, ve kterém chcete vytvořit instanci služby Azure Database Migration Service a pak vyberte **poskytovatelů prostředků**.
+2. Vyberte předplatné, ve kterém chcete vytvořit instanci Azure Database Migration Service a pak vyberte **poskytovatelé prostředků**.
 
     ![Zobrazení poskytovatelů prostředků](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-select-resource-provider.png)
 
 3. Vyhledejte „migration“ a pak napravo od **Microsoft.DataMigration** vyberte **Zaregistrovat**.
 
-    ![Registrace poskytovatele prostředků](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-register-resource-provider.png)
+    ![Zaregistrovat poskytovatele prostředků](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/portal-register-resource-provider.png)
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Vytvoření instance služby Azure Database Migration Service
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Vytvoření instance Azure Database Migration Service
 
 1. Na webu Azure Portal vyberte **+ Vytvořit prostředek**, vyhledejte „Azure Database Migration Service“ a pak v rozevíracím seznamu vyberte **Azure Database Migration Service**.
 
@@ -166,15 +163,15 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
   
 3. Na obrazovce **Vytvořit službu Migration Service** zadejte název služby, předplatné a novou nebo existující skupinu prostředků.
 
-4. Vyberte umístění, ve kterém chcete vytvořit instanci služby Azure Database Migration Service.
+4. Vyberte umístění, ve kterém chcete vytvořit instanci Azure Database Migration Service.
 
 5. Vyberte existující virtuální síť nebo vytvořte novou.
 
-    Virtuální síť Azure Database Migration Service poskytuje přístup k PostgreSQL je zdrojovou a cílovou službu Azure Database for postgresql – instance.
+    Virtuální síť poskytuje Azure Database Migration Service s přístupem ke zdrojové instanci PostgreSQL a cílové Azure Database for PostgreSQL instance.
 
-    Další informace o tom, jak vytvořit síť VNet na portálu Azure portal najdete v článku [vytvořit virtuální síť pomocí webu Azure portal](https://aka.ms/DMSVnet).
+    Další informace o tom, jak vytvořit virtuální síť v Azure Portal, najdete v článku [vytvoření virtuální sítě pomocí Azure Portal](https://aka.ms/DMSVnet).
 
-6. Vyberte cenovou úroveň; pro tuto online migraci je nutné vybrat Premium: 4vCores cenovou úroveň.
+6. Vyberte cenovou úroveň; u této online migrace nezapomeňte vybrat Premium: cenová úroveň 4vCores
 
     ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings4.png)
 
@@ -193,41 +190,41 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
      ![Vyhledání instance služby Azure Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-instance-search.png)
 
 3. Vyberte **+ Nový projekt migrace**.
-4. Na **nový projekt migrace** obrazovky, zadejte název projektu, v **serveru typ zdroje** textového pole, vyberte **AWS RDS pro PostgreSQL**a pak **Cílový server typ** textového pole, vyberte **– Azure Database for PostgreSQL**.
-5. V **zvolte typ aktivity** vyberte **Online data migrace**.
+4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **typ zdrojového serveru** vyberte **AWS VP pro PostgreSQL**a potom do textového pole **typ cílového serveru** vyberte **Azure Database for PostgreSQL** .
+5. V části **Zvolte typ aktivity** vyberte možnost **migrace online dat**.
 
     > [!IMPORTANT]
-    > Je potřeba vybrat možnost **Online data migrace**; offline migrace nejsou podporované pro tento scénář.
+    > Ujistěte se, že jste vybrali **online migraci dat**; offline migrace nejsou v tomto scénáři podporovány.
 
     ![Vytvoření projektu Database Migration Service](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-create-project5.png)
 
     > [!NOTE]
-    > Alternativně můžete zvolit **pouze vytvořit projekt** teď vytvořit projekt migrace a spustit migraci později.
+    > Alternativně můžete zvolit **vytvořit projekt pouze** k vytvoření projektu migrace a provést migraci později.
 
 6. Vyberte **Uložit**.
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 
     > [!NOTE]
-    > Ujistěte se prosím poznámku o požadavky potřebné k nastavení online migrace v okně vytváření projektu.
+    > Poznamenejte si požadavky potřebné k nastavení online migrace v okně pro vytvoření projektu.
 
 ## <a name="specify-source-details"></a>Zadání podrobností o zdroji
 
-* Na **podrobnosti zdroje migrace** obrazovky, zadat podrobnosti připojení pro PostgreSQL instanci zdroje.
+* Na obrazovce **Podrobnosti o zdroji migrace** zadejte podrobnosti o připojení ke zdrojové instanci PostgreSQL.
 
    ![Podrobnosti zdroje](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-source-details4.png)
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
-1. Vyberte **Uložit**a pak na **cílit na podrobnosti** obrazovky, zadat podrobnosti připojení pro cílovou službu Azure Database for postgresql – server, který je předem zřízený a má **DVD Pronajme** nasazeným v rámci pg_dump schématu.
+1. Vyberte **Uložit**a pak na obrazovce **cílové podrobnosti** zadejte podrobnosti o připojení pro cílový Azure Database for PostgreSQL Server, který je předem zřízený a má schéma zaplacení **DVD** nasazené pomocí pg_dump.
 
     ![Výběr cíle](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-select-target4.png)
 
 2. Vyberte **Uložit** a pak na obrazovce **Mapovat na cílové databáze** namapujte zdrojovou a cílovou databázi pro migraci.
 
-    Pokud cílová databáze obsahuje název stejné databáze jako zdrojové databáze, vybere Azure Database Migration Service ve výchozím nastavení cílové databázi.
+    Pokud cílová databáze obsahuje stejný název databáze jako zdrojová databáze, Azure Database Migration Service ve výchozím nastavení vybere cílovou databázi.
 
-    ![Mapování na cílové databáze](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-targets-activity5.png)
+    ![Mapovat na cílové databáze](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-targets-activity5.png)
 
 3. Vyberte **Uložit**, na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace a pak zkontrolujte souhrnné informace a ujistěte se, že podrobnosti zdroje a cíle odpovídají dříve zadaným informacím.
 
@@ -243,32 +240,32 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 1. Na obrazovce aktivity migrace vyberte **Aktualizovat** a aktualizujte zobrazení, dokud se **Stav** migrace nezmění na **Spuštěno**.
 
-    ![Stav aktivity – spuštění](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-activity-status3.png)
+    ![Stav aktivity – spuštěno](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-activity-status3.png)
 
-2. V části **NÁZEV_DATABÁZE**, vyberte konkrétní databázi k získání stavu migrace pro **úplné načtení dat** a **Přírůstková synchronizace dat** operace.
+2. V části **název databáze**vyberte konkrétní databázi, abyste získali stav migrace pro operace **úplného načtení dat** a **přírůstkové synchronizace dat** .
 
-    **Úplné načtení dat** zobrazuje stav migrace počátečním načtení, zatímco **Přírůstková synchronizace dat** ukazuje změnit stav data capture (CDC).
+    **Úplné načtení dat** znázorňuje počáteční stav migrace zatížení, zatímco **přírůstkové synchronizace dat** zobrazuje stav Change Data Capture (CDC).
 
-    ![Načtení inventáře obrazovky – úplná](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-full-load.png)
+    ![Obrazovka inventáře – úplné zatížení dat](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-full-load.png)
 
-    ![Obrazovka inventáře - Přírůstková synchronizace dat](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-incremental.png)
+    ![Obrazovka inventáře – přírůstková synchronizace dat](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-incremental.png)
 
 ## <a name="perform-migration-cutover"></a>Provedení přímé migrace
 
-Po dokončení počáteční úplné načtení databází se označí **připravení Cutover**.
+Po dokončení počátečního úplného načtení budou databáze označeny jako **připravené k přímou migraci**.
 
 1. Jakmile budete připraveni dokončit migraci databází, vyberte **Spustit přímou migraci**.
 
-    ![Začněte od začátku vyjmutí](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
+    ![Spustit střih](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
 
 2. Ujistěte se, že jste zastavili všechny příchozí transakce do zdrojové databáze a počkejte, dokud se v čítači **Probíhající změny** nezobrazí **0**.
 3. Vyberte **Potvrdit** a pak **Použít**.
-4. Když se zobrazí stav migrace databáze **dokončeno**, připojení aplikací k nový cíl – Azure Database pro databázi PostgreSQL.
+4. Až se stav migrace databáze zobrazí jako **dokončený**, připojte své aplikace k nové cílové Azure Database for PostgreSQL databázi.
 
-Online migrace z místní instance PostgreSQL do služby Azure Database for PostgreSQL je nyní dokončena.
+Online migrace místní instance PostgreSQL do Azure Database for PostgreSQL je teď dokončená.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Informace o službě Azure Database for PostgreSQL, najdete v článku [co je Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
-* Další otázky, e-mailu [požádejte migracemi databází Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com) alias.
+* Informace o Azure Database for PostgreSQL najdete v článku [co je Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Další otázky získáte v e-mailu s názvem požádat o alias [migrace databáze Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com) .

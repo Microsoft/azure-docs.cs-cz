@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208339"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743919"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -29,7 +29,7 @@ Nasazení Azure Marketplace image SQL Server virtuálního počítače pomocí A
 
 - **Dodržování předpisů**: Podle podmínek produktu společnosti Microsoft musí zákazníci informovat společnost Microsoft, když používají [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). V takovém případě se musí zaregistrovat u poskytovatele prostředků virtuálního počítače SQL. 
 
-- **Výhody funkcí**: Registrace SQL Server virtuálního počítače pomocí poskytovatele prostředků odemkne [automatizované opravy](virtual-machines-windows-sql-automated-patching.md), [automatizované zálohování](virtual-machines-windows-sql-automated-backup-v2.md)a možnosti monitorování a správy. Také odemkne licencování [](virtual-machines-windows-sql-ahb.md) a flexibilitu [edice](virtual-machines-windows-sql-change-edition.md) . Dříve byly tyto funkce k dispozici pouze pro SQL Server imagí virtuálních počítačů z Azure Marketplace.
+- **Výhody funkcí**: Registrace SQL Server virtuálního počítače pomocí poskytovatele prostředků odemkne [automatizované opravy](virtual-machines-windows-sql-automated-patching.md), [automatizované zálohování](virtual-machines-windows-sql-automated-backup-v2.md)a možnosti monitorování a správy. Také odemkne [licencování](virtual-machines-windows-sql-ahb.md) a flexibilitu [edice](virtual-machines-windows-sql-change-edition.md) . Dříve byly tyto funkce k dispozici pouze pro SQL Server imagí virtuálních počítačů z Azure Marketplace.
 
 Aby bylo možné využít poskytovatele prostředků virtuálního počítače SQL, musíte také zaregistrovat poskytovatele prostředků virtuálního počítače SQL s vaším předplatným. To můžete provést pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu. 
 
@@ -178,7 +178,7 @@ Existují tři režimy správy pro rozšíření SQL Server IaaS:
 
 - **Odlehčený** nevyžaduje restartování SQL Server, ale podporuje pouze změnu typu licence a edice SQL Server. Tuto možnost použijte pro SQL Server virtuálních počítačů s více instancemi nebo pro účast v instanci clusteru s podporou převzetí služeb při selhání (FCI). 
 
-- Neagentem je vyhrazená SQL Server 2008 a SQL Server 2008 R2 nainstalované v systému Windows Server 2008. 
+- **Neagentem** je vyhrazená SQL Server 2008 a SQL Server 2008 R2 nainstalované v systému Windows Server 2008. 
 
 Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí PowerShell: 
 
@@ -188,7 +188,7 @@ Aktuální režim SQL Server agenta IaaS můžete zobrazit pomocí prostředí P
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server virtuální počítače, které mají nainstalovanou zjednodušenou příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba odinstalaci rozšíření SQL IaaS a instalaci znovu. 
+SQL Server virtuální počítače, které mají nainstalovanou *zjednodušenou* příponu IaaS, mohou upgradovat režim na _úplný_ s použitím Azure Portal. SQL Server virtuálních počítačů v režimu _bez agenta_ se může upgradovat na _úplný_ , až se operační systém upgraduje na Windows 2008 R2 a novější. Není možné nadowngradovat – k tomu je potřeba odinstalaci rozšíření SQL IaaS a instalaci znovu. 
 
 Postup upgradu režimu agenta na úplný: 
 
@@ -276,7 +276,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 **Mám zaregistrovat SQL Server virtuální počítač zřízený z SQL Server Image v Azure Marketplace?**
 
-Ne. Microsoft automaticky registruje virtuální počítače zřízené z SQL Server imagí v Azure Marketplace. Registrace u poskytovatele prostředků virtuálního počítače SQL se vyžaduje jenom v případě, že se virtuální počítač nezřídil z SQL Server imagí v Azure Marketplace a SQL Server byl samoobslužně nainstalován.
+Ne. Microsoft automaticky registruje virtuální počítače zřízené z SQL Server imagí v Azure Marketplace. Registrace u poskytovatele prostředků virtuálního počítače SQL se vyžaduje jenom v případě, že se virtuální počítač *nezřídil z* SQL Server imagí v Azure Marketplace a SQL Server byl samoobslužně nainstalován.
 
 **Je poskytovatel prostředků virtuálního počítače SQL dostupný pro všechny zákazníky?** 
 
@@ -338,7 +338,7 @@ Ano. Upgrade režimu spravovatelnosti z jednoduchého na plný se podporuje pře
 
 Ne. Přechod do režimu spravovatelnosti rozšíření SQL Server IaaS se nepodporuje. Režim spravovatelnosti nejde downgradovat z režimu úplného režimu na odlehčený nebo bez agenta a nedá se downgradovat z prostého režimu na režim bez agenta. 
 
-Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, odeberte rozšíření SQL Server IaaS. Pak vyřaďte prostředek Micorsoft. SqlVirtualMachine a znovu zaregistrujte SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL.
+Chcete-li změnit režim spravovatelnosti z možnosti úplné správy, odeberte rozšíření SQL Server IaaS. Pak vyřaďte prostředek Microsoft. SqlVirtualMachine a znovu zaregistrujte SQL Server virtuálního počítače pomocí poskytovatele prostředků virtuálního počítače SQL.
 
 **Můžu se zaregistrovat k poskytovateli prostředků SQL VM z Azure Portal?**
 
@@ -346,7 +346,7 @@ Ne. Registrace u poskytovatele prostředků virtuálního počítače SQL není 
 
 **Je možné zaregistrovat virtuální počítač s poskytovatelem prostředků SQL VM před tím, než se SQL Server nainstaluje?**
 
-Ne. Aby se virtuální počítač mohl úspěšně zaregistrovat u poskytovatele prostředků virtuálního počítače SQL, musí mít aspoň jednu instanci SQL Server. Pokud na virtuálním počítači není žádná instance SQL Server, nový prostředek obraťte. SqlVirtualMachine bude ve stavu selhání.
+Ne. Aby se virtuální počítač mohl úspěšně zaregistrovat u poskytovatele prostředků virtuálního počítače SQL, musí mít aspoň jednu instanci SQL Server. Pokud na virtuálním počítači není žádná SQL Server instance, nový prostředek Microsoft. SqlVirtualMachine bude ve stavu selhání.
 
 **Je možné zaregistrovat virtuální počítač s poskytovatelem prostředků SQL VM, pokud existuje více instancí SQL Server?**
 
@@ -360,7 +360,7 @@ Ano. SQL Server instancí clusteru s podporou převzetí služeb při selhání 
 
 Ano. Pokud se účastníte konfigurace skupiny dostupnosti AlwaysOn, neexistují žádná omezení k registraci instance SQL Server na virtuálním počítači Azure s poskytovatelem prostředků SQL VM.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v následujících článcích: 
 

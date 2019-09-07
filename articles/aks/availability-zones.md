@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 690d22eadf37a24b4679ce10838074533ac65fcb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033140"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390076"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Preview – vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti
 
@@ -34,7 +34,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.66 nebo nově
 
 ### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
 
-K vytváření clusterů AKS, které používají zóny dostupnosti, potřebujete rozšíření *AKS-Preview* CLI 0.4.1 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
+K vytváření clusterů AKS, které používají zóny dostupnosti, potřebujete rozšíření *AKS-Preview* CLI 0.4.1 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>Registrace příznaků funkcí pro vaše předplatné
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>Registrace příznaku funkce AvailabilityZonePreview pro vaše předplatné
 
-Pokud chcete vytvořit cluster AKS, který má zóny dostupnosti, nejdřív u vašeho předplatného povolte některé příznaky funkcí. Clustery používají pro správu nasazení a konfigurace uzlů Kubernetes sadu škálování virtuálního počítače. K zajištění odolnosti síťových komponent pro směrování provozu do vašeho clusteru se vyžaduje taky *standardní* SKU nástroje pro vyrovnávání zatížení Azure. Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznaky funkcí *AvailabilityZonePreview*, *AKSAzureStandardLoadBalancer*a *VMSSPreview* , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit cluster AKS, který má zóny dostupnosti, nejdřív u svého předplatného povolte příznak funkce *AvailabilityZonePreview* . Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznak funkce *AvailabilityZonePreview* , jak je znázorněno v následujícím příkladu:
 
 > [!CAUTION]
 > Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
@@ -90,7 +86,7 @@ Při vytváření clusteru AKS pomocí zón dostupnosti platí následující om
 * Clustery s povolenými zónami dostupnosti vyžadují pro distribuci mezi zónami použití služby Azure Load Balancer úrovně Standard.
 * Chcete-li nasadit standardní nástroje pro vyrovnávání zatížení, musíte použít Kubernetes verze 1.13.5 nebo vyšší.
 
-Clustery AKS, které používají zóny dostupnosti, musí používat *standardní* SKU nástroje pro vyrovnávání zatížení Azure. Výchozí *základní* skladová položka služby Vyrovnávání zatížení Azure nepodporuje distribuci mezi zónami dostupnosti. Další informace a omezení standardního nástroje pro vyrovnávání zatížení najdete v tématu [omezení služby Azure Load Balancer úrovně Standard ve verzi Preview][standard-lb-limitations].
+Clustery AKS, které používají zóny dostupnosti, musí používat *standardní* SKU nástroje pro vyrovnávání zatížení Azure. Výchozí *základní* skladová položka služby Vyrovnávání zatížení Azure nepodporuje distribuci mezi zónami dostupnosti. Další informace a omezení standardního nástroje pro vyrovnávání zatížení najdete v tématu [omezení standardních SKU služby Azure Load Balancer][standard-lb-limitations].
 
 ### <a name="azure-disks-limitations"></a>Omezení disků Azure
 

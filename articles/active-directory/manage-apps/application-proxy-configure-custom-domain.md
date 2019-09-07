@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851709"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390779"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
@@ -40,7 +40,7 @@ Doporučujeme, abyste nastavili vlastní domény pro vaše aplikace, kdykoli je 
 
 Než začnete konfigurovat vlastní doménu, ujistěte se, že máte připravené následující požadavky: 
 - A [ověřené domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
-- Vlastní certifikát pro doménu, ve formě souboru PFX. 
+- Vlastní certifikát pro doménu, ve formě souboru PFX.
 - Aplikace v místním [publikované prostřednictvím Proxy aplikací](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurace vlastní domény
@@ -72,6 +72,8 @@ Až budete mít tyto tři požadavky na Připraveno, použijte následující po
 Neexistuje žádné omezení na certifikátu podpisu metody. Šifrování ECC (Elliptic Curve), alternativní název předmětu (SAN) a další běžné typy certifikátů jsou všechny podporované. 
 
 Certifikát se zástupným znakem slouží jako zástupný znak odpovídá požadované externí adresu URL.
+
+Certifikát musí obsahovat privátní klíč.
 
 Certifikáty vydané vaší vlastní infrastrukturou veřejných klíčů (PKI) je možné použít, pokud je v klientských zařízeních nainstalovaný řetěz certifikátů. Intune se dá použít k nasazení těchto certifikátů na spravovaná zařízení. U nespravovaných zařízení se tyto certifikáty musí nainstalovat ručně.
 

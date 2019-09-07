@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241073"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389937"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Preview – vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Registrovat poskytovatele funkcí více fondů uzlů
 
-Pokud chcete vytvořit cluster AKS, který může používat víc fondů uzlů, povolte nejdřív ve svém předplatném dva příznaky funkcí. Clustery s více uzly používají ke správě nasazení a konfigurace uzlů Kubernetes virtuální počítač VMSS (Virtual Machine Scale set). Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznaky funkcí *MultiAgentpoolPreview* a *VMSSPreview* , jak je znázorněno v následujícím příkladu:
+Pokud chcete vytvořit cluster AKS, který může používat víc fondů uzlů, nejdřív u svého předplatného povolte příznak funkce. Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznak funkce *MultiAgentpoolPreview* , jak je znázorněno v následujícím příkladu:
 
 > [!CAUTION]
 > Když zaregistrujete funkci v rámci předplatného, nemůžete tuto funkci v tuto chvíli zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zj
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [AZ Provider Register][az-provider-register] :
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
-* Pro clustery vytvořené po úspěšném zaregistrování funkcí *MultiAgentpoolPreview* a *VMSSPreview* pro vaše předplatné je k dispozici jen více fondů uzlů. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tyto funkce úspěšně zaregistrovaly.
+* Více fondů uzlů je k dispozici pouze pro clustery vytvořené po úspěšné registraci funkce *MultiAgentpoolPreview* pro vaše předplatné. Nemůžete přidat ani spravovat fondy uzlů s existujícím clusterem AKS vytvořeným před tím, než se tato funkce úspěšně zaregistrovala.
 * Nemůžete odstranit první fond uzlů.
 * Nelze použít doplněk směrování aplikace HTTP.
 * Nemůžete přidat nebo aktualizovat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.

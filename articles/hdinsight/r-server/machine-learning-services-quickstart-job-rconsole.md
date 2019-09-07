@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Spustit skript R v clusteru služby ML v Azure HDInsight pomocí konzoly R'
-description: V tomto rychlém startu můžete spustit skript R v clusteru služby ML v Azure HDInsight pomocí konzoly R.
+title: 'Rychlý start: Spuštění skriptu R na ML Services pomocí konzoly R – Azure HDInsight'
+description: V rychlém startu spustíte skript R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,29 +8,29 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 682ee4f44dcdd2619668645fa7a8aa22cb645273
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450923"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736366"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rychlý start: Spustit skript R v clusteru služby ML v Azure HDInsight pomocí konzoly R
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Rychlý start: Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí konzoly R
 
-ML služeb v Azure HDInsight umožňuje skripty R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služby ML Určuje, jak jsou spouštěny nastavení výpočetního kontextu volání. Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkce RevoScaleR mezi jádry hraničního uzlu serveru. Můžete také spustit je na uzlech clusteru s použitím jeho RevoScaleR Hadoop Map Reduce nebo kontexty služby compute Apache Spark.
+Služba ML Services v Azure HDInsight umožňuje skriptům R používat Apache Spark a Apache Hadoop MapReduce ke spouštění distribuovaných výpočtů. Služba ML řídí, jak se spouštějí volání, nastavením výpočetního kontextu. Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce RevoScaleR napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí RevoScaleR mapy Hadoop pro redukci nebo Apache Spark výpočetních kontextů.
 
-V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, který předvádí použití Sparku k distribuovaným výpočtům jazyka r. Bude definovat výpočetní kontext provádět výpočty místně na hraničním uzlu a znovu distribuovány napříč uzly v clusteru HDInsight.
+V tomto rychlém startu se dozvíte, jak spustit skript R s konzolou R, která demonstruje použití Sparku pro distribuované výpočty R. Definujete výpočetní kontext pro místní provádění výpočtů na hraničním uzlu a znovu rozšíříte napříč uzly v clusteru HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služby ML v HDInsight. Zobrazit [vytvořit Apache Hadoop clusterů pomocí webu Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a vyberte **služby ML** pro **typ clusteru**.
+* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
 
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
-## <a name="connect-to-r-console"></a>Připojte se ke konzole R
+## <a name="connect-to-r-console"></a>Připojit ke konzole R
 
-1. Připojení k hraničnímu uzlu clusteru ML služby HDInsight pomocí SSH. Upravte následující příkaz tak, že nahradíte `CLUSTERNAME` s názvem vašeho clusteru a potom zadejte příkaz:
+1. Pomocí SSH se připojte k hraničnímu uzlu clusteru HDInsight služby ML. Níže uvedený příkaz upravte nahrazením `CLUSTERNAME` názvem vašeho clusteru a zadáním příkazu:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net
@@ -82,9 +82,9 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
      rxHadoopCopyFromLocal(source, bigDataDirRoot)
     ```
 
-    Tento krok může trvat přibližně 10 minut na dokončení.
+    Dokončení tohoto kroku může trvat přibližně 10 minut.
 
-1. Některé informace o datech a nadefinujeme dva zdroje dat. V konzole R, zadejte následující kód:
+1. Vytvořte nějaké informace o datech a definujte dva zdroje dat. Do konzoly R zadejte následující kód:
 
     ```R
     # Define the HDFS (WASB) file system
@@ -111,7 +111,7 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Spusťte logistickou regresi přes data s využitím **místní** výpočetního kontextu. V konzole R, zadejte následující kód:
+1. Spusťte z dat logistickou regresi pomocí **místního** výpočetního kontextu. Do konzoly R zadejte následující kód:
 
     ```R
     # Set a local compute context
@@ -126,7 +126,7 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
      summary(modelLocal)
     ```
 
-    Výpočtů by se měla dokončit během 7 minut. Byste měli vidět výstup, který končí řádky podobný následujícímu fragmentu kódu:
+    Výpočty by měly být dokončeny během přibližně 7 minut. Měl by se zobrazit výstup, který končí řádky podobné následujícímu fragmentu kódu:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -156,7 +156,7 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
       Number of iterations: 7
     ```
 
-1. Spusťte stejnou logistickou regresi pomocí **Spark** kontextu. Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight. V konzole R, zadejte následující kód:
+1. Spusťte stejnou logistickou regresi pomocí kontextu **Spark** . Kontext Spark distribuuje zpracování do všech pracovních uzlů v clusteru HDInsight. Do konzoly R zadejte následující kód:
 
     ```R
     # Define the Spark compute context
@@ -174,7 +174,7 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
      summary(modelSpark)
     ```
 
-    Výpočtů by se měla dokončit během 5 minut.
+    Výpočty by měly být dokončeny během přibližně 5 minut.
 
 1. Pokud chcete konzolu R zavřít, použijte následující příkaz:
 
@@ -184,13 +184,13 @@ V tomto rychlém startu se dozvíte, jak chcete spustit skript R s konzoly R, kt
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány.
 
-Odstranění clusteru, naleznete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, Powershellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak chcete spustit skript R s konzoly R, který jsme vám ukázali použití Sparku k distribuovaným výpočtům jazyka r.  Přejděte k dalšímu článku další možnosti, které jsou k dispozici k určení, zda a jak je provádění paralelizována přes jader hraničním uzlu nebo clusteru HDInsight.
+V tomto rychlém startu jste zjistili, jak spustit skript R s konzolou R, která ukázala použití Sparku pro distribuované výpočty R.  V dalším článku se dozvíte, jaké možnosti jsou k dispozici pro určení toho, zda a jak je provádění paralelně v jádrech hraničního uzlu nebo clusteru HDInsight.
 
 > [!div class="nextstepaction"]
 >[Možnosti výpočetního kontextu pro služby ML v HDInsight](./r-server-compute-contexts.md)

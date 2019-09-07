@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516184"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734453"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Kurz: Vytvoření tenanta ve verzi Preview pro virtuální počítač s Windows
 
@@ -49,7 +49,7 @@ Udělení oprávnění ke službě:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Přihlaste se na stránku pro vyjádření souhlasu s virtuálním počítačem s Windows pomocí účtu globálního správce. Pokud jste například používali organizaci Contoso, váš účet může být admin@contoso.com nebo. admin@contoso.onmicrosoft.com  
+2. Přihlaste se na stránku pro vyjádření souhlasu s virtuálním počítačem s Windows pomocí účtu globálního správce. Pokud jste například používali organizaci Contoso, váš účet může být admin@contoso.com nebo. admin@contoso.onmicrosoft.com
 3. Vyberte **Přijmout**.
 4. Počkejte jednu minutu, aby služba Azure AD mohla nahrávat souhlas.
 5. Otevřete prohlížeč a zahajte postup souhlasu správce s [klientskou aplikací pro virtuální počítače s Windows](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
@@ -78,6 +78,7 @@ Přiřazení role aplikace TenantCreator:
    ![Snímek obrazovky uživatelů a skupin přiřazený ke správě podnikové aplikace "virtuální plocha Windows" Snímek obrazovky zobrazuje pouze jedno přiřazení, které je pro "výchozí přístup".](media/tenant-default-access.png)
 5. Vyberte **Přidat uživatele**a pak v okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 6. Vyhledejte uživatelský účet, který vytvoří tenanta pro virtuální počítače s Windows. Pro jednoduchost může to být účet globálního správce.
+   - Pokud používáte poskytovatele identity Microsoftu, jako contosoadmin@live.com je nebo contosoadmin@outlook.com, možná se nebudete moct přihlásit k virtuálnímu počítači s Windows. Doporučujeme použít účet specifický pro doménu, jako admin@contoso.com je nebo admin@contoso.onmicrosoft.com místo.
 
    ![Snímek obrazovky s výběrem uživatele, který chcete přidat jako "TenantCreator".](media/tenant-assign-user.png)
 
@@ -100,10 +101,10 @@ Zjištění ID tenanta Azure Active Directory (nebo **ID adresáře**):
    ![Snímek obrazovky s vlastnostmi Azure Active Directory. Myš najede myší na ikonu schránky pro položku "ID adresáře", která se má zkopírovat a vložit.](media/tenant-directory-id.png)
 
 Pokud chcete zjistit ID vašeho předplatného Azure:
-1. Ve stejné Azure Portal relaci vyhledejte odběry na panelu hledání a vyberte položku, která se zobrazí v kategorii **služby** .
+1. Ve stejné Azure Portal relaci vyhledejte **odběry** na panelu hledání a vyberte položku, která se zobrazí v kategorii **služby** .
    ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledek hledání v části služby je zvýrazněný.](media/tenant-search-subscription.png)
 2. Vyberte předplatné Azure, které chcete použít pro příjem oznámení služby Windows Virtual Desktop.
-3. Vyhledejte **ID**předplatného a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .
+3. Vyhledejte **ID předplatného**a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .
    ![Snímek obrazovky vlastností předplatného Azure Myš najede myší na ikonu schránky pro "ID předplatného" ke zkopírování a vložení.](media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Vytvoření tenanta verze Preview pro Windows Virtual Desktop
@@ -130,7 +131,7 @@ Hodnoty v závorkách nahraďte hodnotami, které jsou relevantní pro vaši org
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření tenanta budete muset vytvořit instanční objekt v Azure Active Directory a přiřadit mu roli v rámci virtuálního klienta Windows. Instanční objekt vám umožní úspěšně nasadit virtuální plochu Windows Azure Marketplace nabídku a vytvořit fond hostitelů. Další informace o fondech hostitelů najdete v kurzu vytváření fondu hostitelů na virtuálním počítači s Windows.
 

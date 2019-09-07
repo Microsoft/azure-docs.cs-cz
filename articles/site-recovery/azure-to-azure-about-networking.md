@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876462"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736401"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O sítích v Azure do replikace Azure
 
@@ -113,7 +113,11 @@ Site Recovery rozsahy IP adres jsou následující:
    Čína – sever 2 | 40.73.35.193 | 40.73.33.230
    Čína – východ | 42.159.205.45 | 42.159.132.40
    Čína – východ 2 | 40.73.118.52| 40.73.100.125
-  
+   Německo – sever| 51.116.208.58| 51.116.58.128
+   Německo – středozápad | 51.116.156.176 | 51.116.154.192
+   Švýcarsko – západ | 51.107.231.223| 51.107.154.128
+   Švýcarsko – sever | 51.107.68.31| 51.107.58.128
+
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
 Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuálního počítače.
@@ -172,7 +176,7 @@ V rámci virtuální sítě můžete vytvořit koncový bod síťové služby pr
 
 Výchozí systémovou trasu Azure pro předponu adresy 0.0.0.0/0 můžete přepsat [vlastní trasou](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrováním provozu virtuálního počítače do místního síťového virtuálního zařízení (síťové virtuální zařízení), ale tato konfigurace se nedoporučuje pro Site Recovery replikaci. Pokud používáte vlastní trasy, měli byste ve virtuální síti [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) pro úložiště, aby provoz replikace neopouští hranice Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Začněte chránit své úlohy [replikací virtuálních počítačů Azure](site-recovery-azure-to-azure.md).
 - Další informace o [uchovávání IP adres](site-recovery-retain-ip-azure-vm-failover.md) pro převzetí služeb při selhání virtuálního počítače Azure
 - Přečtěte si další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute](azure-vm-disaster-recovery-with-expressroute.md).

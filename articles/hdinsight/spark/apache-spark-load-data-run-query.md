@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight '
-description: Kurz – zjistěte, jak načíst data a spouštět interaktivní dotazy Spark clustery v Azure HDInsight.
+title: 'Kurz: Načtení dat a spuštění dotazů na Apache Spark clusteru v Azure HDInsight'
+description: Kurz – Naučte se načítat data a spouštět interaktivní dotazy na clusterech Spark v Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 05/16/2019
-ms.openlocfilehash: e4ed8bb2631b4dc2f760dc4d92247377db591160
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 109ed1a2ef22e498c2d19fd2e4f1848f289e9b55
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295692"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735274"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spuštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
-V tomto kurzu se dozvíte, jak vytvořit datový rámec ze souboru csv a jak spouštět interaktivní dotazy Spark SQL na [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
+V tomto kurzu se naučíte, jak vytvořit datový rámec ze souboru CSV a jak spouštět interaktivní dotazy Spark SQL s [Apache Sparkm](https://spark.apache.org/) clusterem v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -26,19 +26,19 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Cluster Apache Spark ve službě HDInsight. Zobrazit [vytvořit cluster Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
+Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Vytvoření poznámkového bloku Jupyter
 
 Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace. 
 
-1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` nahrazením `SPARKCLUSTER` s názvem vašeho clusteru Spark. Potom zadejte adresu URL upravených ve webovém prohlížeči. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
+1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` tak, `SPARKCLUSTER` že nahradíte název vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
 
-2. Z Jupyter webové stránky, vyberte **nový** > **PySpark** vytvoření poznámkového bloku. 
+2. Z webové stránky Jupyter vyberte **Nový** > **PySpark** a vytvořte Poznámkový blok. 
 
    ![Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření poznámkového bloku Jupyter pro spuštění interaktivního dotazu Spark SQL")
 
-   Nový poznámkový blok se vytvoří a otevře s názvem bez názvu (`Untitled.ipynb`).
+   Vytvoří se nový Poznámkový blok a otevře se s názvem bez názvu`Untitled.ipynb`().
 
     > [!NOTE]  
     > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
@@ -49,7 +49,7 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
     
 ![Snímek dat pro interaktivní dotaz Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Snímek dat pro interaktivní dotaz Spark SQL")
 
-1. Vložte následující kód do prázdné buňky poznámkového bloku Jupyter a potom stiskněte klávesu **SHIFT + ENTER** spuštění kódu. Kód naimportuje typy potřebné pro tento scénář:
+1. Vložte následující kód do prázdné buňky Jupyter poznámkového bloku a stisknutím klávesy **SHIFT + ENTER** kód spusťte. Kód naimportuje typy potřebné pro tento scénář:
 
     ```python
     from pyspark.sql import *
@@ -87,13 +87,13 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
     ![Plošný graf výsledku interaktivního dotazu Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf výsledku interaktivního dotazu Spark")
 
-3. V panelu nabídek poznámkového bloku, přejděte na **souboru** > **uložit a kontrolního bodu**.
+3. V řádku nabídek poznámkového bloku přejděte na **soubor** > **Uložit a kontrolní bod**.
 
-4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypnout a uvolnit tak prostředky clusteru Poznámkový blok: přejděte na panelu nabídek poznámkového bloku **souboru** >  **zavřít a zastavit**.
+4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor** >  **Zavřít a**zastavte.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-HDInsight vaše data a poznámkové bloky Jupyter uloží ve službě Azure Storage nebo Azure Data Lake Storage, takže je můžete clusteru bezpečně odstranit, až nebude používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
+Se službou HDInsight jsou vaše data a Jupyter poznámkové bloky uložené v Azure Storage nebo Azure Data Lake Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
 
 Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
@@ -101,9 +101,9 @@ Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 
 Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny prostředků a pak vybrat **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků odstraníte cluster HDInsight Spark i výchozí účet úložiště.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit datový rámec ze souboru csv a jak spouštět interaktivní dotazy Spark SQL proti clusteru Apache Spark v Azure HDInsight. Přejděte k dalšímu článku, pokud chcete zobrazit, jak můžete načíst data, která jste zaregistrovali v Apache Spark na nástroj pro analýzu BI, jako je Power BI.
+V tomto kurzu jste zjistili, jak vytvořit datový rámec ze souboru CSV a jak spouštět interaktivní dotazy Spark SQL s Apache Sparkm clusterem v Azure HDInsight. V dalším článku zjistíte, jak se data, která jste zaregistrovali v Apache Spark můžete načíst do nástroje BI Analytics, jako je například Power BI.
 
 > [!div class="nextstepaction"]
 > [Analýza dat pomocí nástrojů BI](apache-spark-use-bi-tools.md)

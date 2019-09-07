@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087275"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734273"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API HTTP v Durable Functions (Azure Functions)
 
@@ -33,7 +33,11 @@ Každé z těchto rozhraní API HTTP je operace Webhooku, která je zpracována 
 
 Třída [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) zpřístupňuje rozhraní [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API, které lze použít ke generování datové části odpovědi HTTP obsahující odkazy na všechny podporované operace. Tady je příklad funkce triggeru HTTP, která ukazuje, jak používat toto rozhraní API:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>PředkompilovanéC#
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C#Pravidel
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 

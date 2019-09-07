@@ -4,46 +4,74 @@ description: Popisuje způsob použití šablon Azure Resource Manager pro nasaz
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 95c127b3a7c9c47c96b292066bf1597a02896806
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4f273a04322246a2b4112c0b5b8a062732bab555
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166521"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390717"
 ---
 # <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Pomocí Azure Resource Manager můžete vytvořit šablony, které definují, co chcete nasadit do Azure. Šablona je soubor JavaScript Object Notation (JSON), který obsahuje infrastrukturu a konfiguraci vašeho řešení Azure. Pomocí šablony můžete řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
+Díky přesunu do cloudu mnoho týmů přijalo agilní metody vývoje. Tyto týmy iterují rychle. Potřebují opakovaně a spolehlivě nasazovat svá řešení do cloudu. Rozdělení mezi operacemi a vývojem zmizelo, protože týmy potřebují spravovat infrastrukturu a zdrojový kód v jednom procesu.
 
-Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
+Jedním z řešení těchto problémů je automatizace nasazení a použití postupů infrastruktury jako kódu. Použijte kód k definování toho, co je potřeba nasadit, a spravujte tento kód pomocí stejného procesu jako zdrojový kód. Infrastrukturu ukládáte jako kód ve zdrojovém úložišti a verzi.
+
+Azure Resource Manager umožňuje implementovat infrastrukturu jako kód prostřednictvím šablon Správce prostředků. Šablona je soubor JavaScript Object Notation (JSON), který obsahuje infrastrukturu a konfiguraci pro vaše řešení Azure. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. V šabloně určíte prostředky, které chcete nasadit, a vlastnosti těchto prostředků.
 
 ## <a name="benefits-of-resource-manager-templates"></a>Výhody šablon Správce prostředků
 
-Šablony Správce prostředků poskytují několik výhod:
+Šablony Správce prostředků poskytují několik výhod. Můžete:
 
-* Můžete všechny prostředky pro vaše řešení nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
+* Nasaďte, spravujte a monitorujte všechny prostředky pro vaše řešení jako skupinu, místo toho, aby se tyto prostředky nemusely zpracovávat jednotlivě.
 
-* Můžete svoje řešení opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
+* Opakovaně nasaďte řešení v průběhu životního cyklu vývoje a měli byste mít jistotu, že se prostředky nasazují v konzistentním stavu.
 
-* Infrastrukturu můžete spravovat pomocí deklarativních šablon místo skriptů.
+* Spravujte svoji infrastrukturu prostřednictvím deklarativních šablon místo skriptů.
 
-* Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
+* Definujte závislosti mezi prostředky tak, aby byly nasazeny ve správném pořadí.
 
-Následující návrhy vám pomohou při práci s vašimi řešeními plně využít výhod Resource Manageru.
+* Využijte výhod nových verzí a služeb hned, protože jiné strany nevyžadují žádnou mezilehlou práci.
 
-* K definování a nasazení infrastruktury využijte deklarativní syntaxi v šablonách Resource Manageru, nikoli imperativní příkazy.
+## <a name="template-file"></a>Soubor šablony
 
-* V šabloně definujte všechny kroky nasazení a konfigurace. K nastavení svého řešení byste neměli využívat žádné ruční kroky.
+V rámci šablony můžete napsat [výrazy šablony](template-expressions.md) , které přesahují možnosti formátu JSON. Tyto výrazy využívají [funkce](resource-group-template-functions.md) poskytované správce prostředků.
 
-* Ke správě vašich prostředků využijte imperativní příkazy, například pro spuštění nebo zastavení aplikace nebo počítače.
+Šablona obsahuje následující oddíly:
 
-* Postupujte podle [osvědčených postupů pro šablonu Azure Resource Manager](template-best-practices.md).
+* [Parametry](template-parameters.md) – poskytněte hodnoty během nasazení, které umožňují používat stejnou šablonu v různých prostředích.
+
+* [Proměnné](template-variables.md) – definujte hodnoty, které se používají v šablonách.
+
+* [Uživatelsky definované funkce](template-user-defined-functions.md) – vytváření přizpůsobených funkcí, které zjednodušují vaši šablonu.
+
+* [Prostředky](resource-group-authoring-templates.md#resources) – zadejte prostředky, které chcete nasadit.
+
+* [Výstupy](template-outputs.md) – vrací hodnoty z nasazených prostředků.
+
+## <a name="dependencies"></a>Závislosti
+
+Azure Resource Manager analyzuje závislosti a zajistí, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
+
+## <a name="conditional-deployment"></a>Podmíněné nasazení
+
+Prostředek můžete přidat do šablony a případně ho nasadit. Obvykle předáte hodnotu parametru, která určuje, zda prostředek musí být nasazen. Další informace najdete v tématu [podmíněné nasazení v šablonách správce prostředků](conditional-resource-deployment.md).
+
+## <a name="create-multiple-instances"></a>Vytvoření několika instancí
+
+Namísto opakujících se bloků JSON ve vaší šabloně je možné použít kopírovací element k určení více než jedné instance proměnné, vlastnosti nebo prostředku. Další informace naleznete v tématu [iterace prostředků, vlastností nebo proměnných v šablonách Azure Resource Manager](resource-group-create-multiple.md).
+
+## <a name="export-templates"></a>Export šablon
+
+Šablonu pro stávající skupinu prostředků můžete získat buď exportováním aktuálního stavu skupiny prostředků, nebo zobrazením šablony použité pro konkrétní nasazení. Zobrazení [vyexportované šablony](export-template-portal.md) vám pomůže blíže se seznámit se syntaxí šablony.
+
+Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v tématu [rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
 
 ## <a name="template-deployment-process"></a>Proces Template deployment
 
-Když nasadíte šablonu, Správce prostředků analyzuje šablonu a převede její syntaxi na operace REST API. Odesílá tyto operace příslušným poskytovatelům prostředků. Když například Resource Manager obdrží šablonu s následující definicí prostředku:
+Když nasadíte šablonu, Správce prostředků analyzuje šablonu a převede její syntaxi na operace REST API. Když například Resource Manager obdrží šablonu s následující definicí prostředku:
 
 ```json
 "resources": [
@@ -79,40 +107,27 @@ REQUEST BODY
 }
 ```
 
-## <a name="template-structure"></a>Struktura šablon
+Pokud prostředek ve skupině prostředků již existuje a požadavek neobsahuje žádné aktualizace vlastností, není provedena žádná akce. Pokud prostředek existuje, ale změnily se vlastnosti, je existující prostředek aktualizovaný. Pokud prostředek neexistuje, vytvoří se nový prostředek. Tento přístup usnadňuje opětovné nasazení šablony a ví, že prostředky zůstávají v konzistentním stavu.
+
+## <a name="template-design"></a>Návrh šablony
 
 Záleží pouze na vás, jak definujete šablony a skupiny prostředků a jak chcete spravovat své řešení. Například můžete nasadit svou třívrstvou aplikaci prostřednictvím jediné šablony do jedné skupiny prostředků.
 
-![třívrstvá šablona](./media/resource-group-overview/3-tier-template.png)
+![třívrstvá šablona](./media/template-deployment-overview/3-tier-template.png)
 
 Není však nutné definovat celou infrastrukturu v jediné šabloně. Často má smysl rozdělit požadavky nasazení do několika cílených šablon, které jsou zaměřené na konkrétní účel. Tyto šablony můžete snadno opakovaně použít pro různá řešení. Chcete-li nasadit konkrétní řešení, vytvoříte hlavní šablonu, která propojí všechny požadované šablony. Následující obrázek znázorňuje způsob nasazení třívrstvého řešení prostřednictvím nadřazené šablony, která obsahuje tři vnořené šablony.
 
-![šablona vnořených vrstev](./media/resource-group-overview/nested-tiers-template.png)
+![šablona vnořených vrstev](./media/template-deployment-overview/nested-tiers-template.png)
 
 Pokud si představíte, že vaše vrstvy mají tři samostatné životní cykly, můžete tyto tři vrstvy nasadit do samostatných skupin prostředků. Všimněte si, že prostředky mohou být stále propojené s prostředky v jiných skupinách prostředků.
 
-![šablona vrstvy](./media/resource-group-overview/tier-templates.png)
+![šablona vrstvy](./media/template-deployment-overview/tier-templates.png)
 
 Informace o vnořených šablonách najdete v tématu [Použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
 
-Azure Resource Manager analyzuje závislosti a zajistí, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), nastavíte závislost. Další informace najdete v tématu [Definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md).
-
-Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona definuje prostředek, který již existuje, Správce prostředků aktualizuje existující prostředek namísto vytvoření nového.
-
-Resource Manager poskytuje rozšíření pro scénáře, kdy potřebujete další operace, jako je například instalace konkrétního softwaru, který není zahrnutý v původní instalaci. Pokud již využíváte službu pro správu konfigurace, jako je DSC, Chef nebo Puppet, můžete tuto službu s pomocí rozšíření používat i nadále. Informace o rozšířeních virtuálních počítačů najdete v tématu [Funkce a rozšíření virtuálních počítačů](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-Když vytvoříte řešení z portálu, bude toto řešení automaticky zahrnovat šablonu nasazení. Šablonu nemusíte vytvářet od začátku, protože můžete začít se šablonou pro své řešení a upravit ji tak, aby vyhovovala vašim konkrétním potřebám. Ukázku najdete v tématu [rychlý Start: Vytváření a nasazování šablon Azure Resource Manager pomocí Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Šablonu pro stávající skupinu prostředků můžete také získat tak, že vyexportujete aktuální stav této skupiny prostředků nebo zobrazíte šablonu použitou pro konkrétní nasazení. Zobrazení [vyexportované šablony](./manage-resource-groups-portal.md#export-resource-groups-to-templates) vám pomůže blíže se seznámit se syntaxí šablony.
-
-Šablona se také stane součástí zdrojového kódu vaší aplikace. Můžete ji vrátit se změnami do vašeho úložiště zdrojového kódu a aktualizovat ji podle toho, jak se bude vaše aplikace vyvíjet. K úpravě šablony můžete použít Visual Studio.
-
 ## <a name="next-steps"></a>Další postup
 
-Další informace o souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Informace o vlastnostech v souborech šablon naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](resource-group-authoring-templates.md).
+* Chcete-li začít s vývojem šablony, přečtěte si téma [použití Visual Studio Code k vytvoření šablon Azure Resource Manager](resource-manager-tools-vs-code.md).
 
-Po definování šablony jste připraveni k nasazení prostředků do Azure. Informace o nasazení prostředků najdete v těchto tématech:
-
-* [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](resource-group-template-deploy.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a rozhraní příkazového řádku Azure](resource-group-template-deploy-cli.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a webu Azure Portal](resource-group-template-deploy-portal.md)
-* [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](resource-group-template-deploy-rest.md)
 

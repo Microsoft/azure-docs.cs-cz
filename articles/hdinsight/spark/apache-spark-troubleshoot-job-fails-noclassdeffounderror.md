@@ -1,17 +1,17 @@
 ---
-title: Úloha streamování Apache Spark, která načítá data z Apache Kafka clusteru, se nezdařila s NoClassDefFoundError ve službě Azure HDInsight.
+title: NoClassDefFoundError – Apache Spark s Apache Kafka daty ve službě Azure HDInsight
 description: Úloha streamování Apache Spark, která načítá data z Apache Kafka clusteru, se nezdařila s NoClassDefFoundError ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 986b1dd2e749a0968c744f861feb0ac0bf2376e8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b7cbf4d460f872f33c447d0eea8430916d65bd18
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700480"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736271"
 ---
 # <a name="scenario-apache-spark-streaming-job-that-reads-data-from-an-apache-kafka-cluster-fails-with-a-noclassdeffounderror-in-azure-hdinsight"></a>Scénář: Úloha streamování Apache Spark, která načítá data z Apache Kafka clusteru, se nezdařila s NoClassDefFoundError ve službě Azure HDInsight.
 
@@ -47,7 +47,7 @@ spark-submit \
 
 Použijte příkaz Spark-submit s `–packages` možností a zajistěte, aby verze souboru jar-streaming-Kafka byla stejná jako verze clusteru Kafka, kterou používáte.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

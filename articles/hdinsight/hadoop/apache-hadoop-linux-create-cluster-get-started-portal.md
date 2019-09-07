@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Začínáme s Apache Hadoop a Apache Hive pomocí Azure Portal – Azure HDInsight'
+title: 'Rychlý start: Apache Hadoop a Apache Hive v HDInsight pomocí Azure Portal'
 description: V tomto rychlém startu použijete Azure Portal k vytvoření clusteru HDInsight Hadoop.
 keywords: začínáme používat hadoop, hadoop linux, hadoop rychlý start, hive začínáme, hive rychlý start
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5becea8c9cb525d86dac09ead40ab1604abdbbed
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a22fef717acdc0cd619ddfe1efdf256b1255dbf9
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207375"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735960"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Hadoop ve službě Azure HDInsight pomocí Azure Portal
 
