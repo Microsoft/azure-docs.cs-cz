@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes pomocí kontejnerů, mikroslužeb a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 146812a5553643d3cbe3b308d6b7d7bed1e66dad
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725861"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772662"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Ladění a iterace pomocí Visual Studio Code a Java v Kubernetes pomocí Azure Dev Spaces
 
@@ -40,7 +40,7 @@ Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. N
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
@@ -159,7 +159,7 @@ Místo opětovného sestavování a opětovného nasazení nové image kontejner
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
 

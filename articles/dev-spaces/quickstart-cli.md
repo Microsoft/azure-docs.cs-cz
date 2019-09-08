@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Nasazení mikroslužeb v AKS s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 39fb7658140a2eda948cd0dc0e58d71b0b9a053b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 6ce5338bd2b3d6153255fcdb67cb8afe10e8101c
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67706271"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772584"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj aplikace v Kubernetes pomocí Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -34,7 +34,7 @@ Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. N
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS

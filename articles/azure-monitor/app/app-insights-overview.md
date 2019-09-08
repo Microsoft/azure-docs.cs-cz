@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7c4a0aa01b1895ece2e77bed5ee4837704546b4b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774737"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773078"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -116,7 +116,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
 * **[Analýza využití mobilních aplikací](../../azure-monitor/learn/mobile-center-quickstart.md)** díky integraci s Visual Studio App Center.
 * **[Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)** – Příkazem ping z našich serverů pravidelně testujte váš web.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začínáme při spuštění:
 
 * [Virtuální počítače Azure a škálování sady virtuálních počítačů Azure – aplikace hostované službou IIS](../../azure-monitor/app/azure-vm-vmss-apps.md)
@@ -139,12 +139,6 @@ Začínáme při vývoji:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Blog Application Insights](https://azure.microsoft.com/blog/tag/application-insights)
-
-## <a name="videos"></a>Videa
-
-- Externí video: [konfigurace Application Insights s využitím aplikace ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA)
-- Externí video: [konfigurace Application Insights s využitím ASP.NET Core a sady Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
-- Externí video: [konfigurace Application Insights s využitím ASP.NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 
