@@ -3,15 +3,15 @@ title: Přesunout podporu operace podle typu prostředku Azure
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: conceptual
-ms.date: 08/23/2019
+ms.topic: reference
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194846"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801362"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 Tento článek uvádí, jestli typ prostředku Azure podporuje operaci přesunu. Poskytuje taky informace o zvláštních podmínkách, které je potřeba vzít v úvahu při přesunu prostředku.
@@ -374,7 +374,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -448,7 +448,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -528,14 +528,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -667,7 +667,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
@@ -722,7 +722,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 > | actiongroups | Ano | Ano |
 > | activitylogalerts | Ne | Ne |
 > | alertrules | Ano | Ano |
@@ -737,7 +737,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | workbooks | Ano | Ano |
 
 > [!IMPORTANT]
-> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty](../azure-subscription-service-limits.md#azure-monitor-limits)předplatného.
+> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty předplatného](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -784,14 +784,14 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -825,7 +825,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 > | účty/pracovní prostory | Ne | Ne |
 > | účty/pracovní prostory/projekty | Ne | Ne |
 > | teamaccounts | Ne | Ne |
@@ -837,7 +837,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
@@ -865,7 +865,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ano | Ano |
+> | účty | Ano | Ano |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -981,7 +981,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | workspaces | Ano | Ano |
 
 > [!IMPORTANT]
-> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty](../azure-subscription-service-limits.md#azure-monitor-limits)předplatného.
+> Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty předplatného](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1032,7 +1032,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | accounts | Ne | Ne |
+> | účty | Ne | Ne |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1345,7 +1345,7 @@ Přejít na obor názvů poskytovatele prostředků:
 
 Služby třetích stran aktuálně nepodporují operaci přesunu.
 
-## <a name="next-steps"></a>Další postup
-Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.
+## <a name="next-steps"></a>Další kroky
+Příkazy pro přesunutí prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 
 Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, Stáhněte si [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).

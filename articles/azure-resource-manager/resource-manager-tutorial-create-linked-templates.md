@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035999"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802062"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manager
 
@@ -287,7 +287,7 @@ Odvolání z [kurzu: Vytváření Azure Resource Manager šablon se závislými]
 
 Protože účet úložiště je teď definovaný v propojené šabloně, je nutné aktualizovat následující dva prvky prostředku `Microsoft.Compute/virtualMachines`.
 
-* Změňte konfiguraci prvku `dependOn`. Definice účtu úložiště je přesunuta na propojenou šablonu.
+* Změňte konfiguraci prvku `dependsOn`. Definice účtu úložiště je přesunuta na propojenou šablonu.
 * Změňte konfiguraci prvku `properties/diagnosticsProfile/bootDiagnostics/storageUri`. V části [Vytvoření propojené šablony](#create-the-linked-template), jste přidali výstupní hodnotu:
 
     ```json

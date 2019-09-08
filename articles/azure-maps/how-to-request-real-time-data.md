@@ -1,113 +1,115 @@
 ---
-title: Jak si vyžádat data v reálném čase ve službě Azure Maps | Dokumentace Microsoftu
-description: Žádost o data v reálném čase pomocí služby Azure Maps Mobility.
+title: Jak vyžádat data v reálném čase v Azure Maps | Microsoft Docs
+description: Vyžádejte data v reálném čase pomocí služby Azure Maps mobility.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 06/05/2019
+ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: aaab5ef4d8fc3d60a12f9e9f85f2846695fd1ab4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 75fe9c120eae99e517aa52b704fbd6c170e78649
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329664"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802291"
 ---
-# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Žádost o data v reálném čase pomocí služby Mobility Azure Maps
+# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Vyžádat data v reálném čase pomocí služby Azure Maps mobility
 
-V tomto článku se dozvíte, jak používat Azure Maps [služby Mobility](https://aka.ms/AzureMapsMobilityService) požadovat data v reálném čase přenosu.
+V tomto článku se dozvíte, jak používat [službu Azure Maps mobility](https://aka.ms/AzureMapsMobilityService) k vyžádání přenosových dat v reálném čase.
 
 V tomto článku se dozvíte, jak:
 
 
- * Požádat o další příchozích v reálném čase pro všechny řádky přicházejících u daného stop
- * Žádost o informace v reálném čase pro danou kol dokovací stanice.
+ * Požádat o další doručení v reálném čase pro všechny řádky přicházející v daném zastavení
+ * Vyžádat informace v reálném čase pro příslušnou dokovací stanici kola
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby všechna volání do veřejné přenosu Azure Maps rozhraní API, budete potřebovat účet Maps a klíč. Informace o vytváření účtu a klíč načítání, najdete v části [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md).
+Aby bylo možné volat Azure Maps rozhraní API pro veřejné průjezdy, potřebujete účet a klíč mapy. Informace o vytvoření účtu a získání klíče najdete v tématu [Správa účtu Azure Maps a klíčů](how-to-manage-account-keys.md).
 
-Tento článek používá [aplikaci Postman](https://www.getpostman.com/apps) vytvářet volání REST. Můžete použít všechny vývojové prostředí rozhraní API, které dáváte přednost.
+V tomto článku se k sestavení volání REST používá [aplikace pro publikování](https://www.getpostman.com/apps) . Můžete použít libovolné vývojové prostředí API, které dáváte přednost.
 
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>Žádost o přijetí v reálném čase pro zarážku
+## <a name="request-real-time-arrivals-for-a-stop"></a>Vyžádat doručení v reálném čase o zastavení
 
-Aby bylo možné požádat o data v reálném čase doručení pro konkrétní veřejné přenosu stop, budete muset vytvořit žádost o [rozhraní API v reálném čase doručení](https://aka.ms/AzureMapsMobilityRealTimeArrivals) Azure Maps [služby Mobility](https://aka.ms/AzureMapsMobilityService). Budete potřebovat **metroID** a **stopID** dokončit žádost. Další informace o tom, jak tyto parametry žádosti, naleznete v tématu naše postupy průvodce [požádat o veřejné tranzitní směrování](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
+Aby bylo možné vyžádat data o doručení v reálném čase pro konkrétní zastavení veřejného přenosu, budete muset vytvořit žádost o [rozhraní API doručení](https://aka.ms/AzureMapsMobilityRealTimeArrivals) [služby Azure Maps mobility](https://aka.ms/AzureMapsMobilityService)v reálném čase. K dokončení žádosti budete potřebovat **metroID** a **stopID** . Další informace o tom, jak si vyžádat tyto parametry, najdete v našem průvodci, který vám pomůže [požádat o trasy veřejných přenosů](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
 
-Umožňuje použít jako naše metro "522" ID, které je metro ID pro oblasti "Seattle – Tacoma – Bellevue, WA" a potom použijte ID stop "2060603", které je na sběrnici zastavit na "Ne 24th St & ložit 162nd Ne, Bellevue WA". Žádost o následujících pět data v reálném čase doručení pro všechny další živé doručení na tomto stop, proveďte následující kroky:
+Pojďme použít "522" jako naše ID Metro, což je ID Metro pro oblast Praha – Tacoma – Bellevue, WA a použijte stop ID "522---2060603", což je zarážka sběrnice v "24 července St & 162nd Ave No, Bellevue WA". Chcete-li požádat o pět dat doručení v reálném čase pro všechna další živá přijetí v tomto zastavení, proveďte následující kroky:
 
-1. Vytvořte kolekci, ve kterých se mají ukládat požadavky. V aplikaci Postman vyberte **nový**. V **vytvořit nový** okně **kolekce**. Název kolekce a vyberte **vytvořit** tlačítko.
+1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
 
-2. Pokud chcete vytvořit žádost, vyberte **nový** znovu. V **vytvořit nový** okně **požádat o**. Zadejte **název žádosti** žádosti, vyberte kolekci, do které jste vytvořili v předchozím kroku jako umístění, ve kterém uložte požadavek a pak vyberte **Uložit**.
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** , vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost uložit, a pak vyberte **Uložit**.
 
-    ![Vytvořit žádost o v nástroji Postman](./media/how-to-request-transit-data/postman-new.png)
+    ![Vytvoření žádosti v post](./media/how-to-request-transit-data/postman-new.png)
 
-3. Vyberte metodu GET HTTP na kartě tvůrce a zadejte následující adresu URL k vytvoření žádosti GET.
+3. Na kartě tvůrce vyberte metodu GET HTTP a zadejte následující adresu URL pro vytvoření žádosti o získání.
 
     ```HTTP
-    https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=2060603&transitType=bus
+    https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Po úspěšném požadavku zobrazí se následující odpověď.  Všimněte si, že tento parametr 'parametr-scheduleType' Definuje, zda čas doručení odhadované podle dat v reálném čase nebo statické.
+4. Po úspěšné žádosti se zobrazí následující odpověď.  Všimněte si, že parametr ' scheduleType ' definuje, zda je předpokládaná doba doručení založena na statických datech v reálném čase.
 
     ```JSON
     {
         "results": [
             {
-                "arrivalMinutes": 4,
+                "arrivalMinutes": 8,
                 "scheduleType": "realTime",
-                "patternId": 3860436,
+                "patternId": "522---4143196",
                 "line": {
-                    "lineId": 2756599,
-                    "lineGroupId": 666063,
-                    "direction": "forward",
-                    "agencyId": 5872,
+                    "lineId": "522---3760143",
+                    "lineGroupId": "522---666077",
+                    "direction": "backward",
+                    "agencyId": "522---5872",
                     "agencyName": "Metro Transit",
-                    "lineNumber": "226",
-                    "lineDestination": "Bellevue Transit Center Crossroads",
+                    "lineNumber": "249",
+                    "lineDestination": "South Bellevue S Kirkland P&R",
                     "transitType": "Bus"
                 },
                 "stop": {
-                    "stopId": 2060603,
+                    "stopId": "522---2060603",
                     "stopKey": "71300",
                     "stopName": "NE 24th St & 162nd Ave NE",
+                    "stopCode": "71300",
                     "position": {
                         "latitude": 47.631504,
                         "longitude": -122.125275
                     },
                     "mainTransitType": "Bus",
-                    "mainAgencyId": 5872,
+                    "mainAgencyId": "522---5872",
                     "mainAgencyName": "Metro Transit"
                 }
             },
             {
-                "arrivalMinutes": 30,
-                "scheduleType": "scheduledTime",
-                "patternId": 3860436,
+                "arrivalMinutes": 25,
+                "scheduleType": "realTime",
+                "patternId": "522---3510227",
                 "line": {
-                    "lineId": 2756599,
-                    "lineGroupId": 666063,
+                    "lineId": "522---2756599",
+                    "lineGroupId": "522---666063",
                     "direction": "forward",
-                    "agencyId": 5872,
+                    "agencyId": "522---5872",
                     "agencyName": "Metro Transit",
                     "lineNumber": "226",
                     "lineDestination": "Bellevue Transit Center Crossroads",
                     "transitType": "Bus"
                 },
                 "stop": {
-                    "stopId": 2060603,
+                    "stopId": "522---2060603",
                     "stopKey": "71300",
                     "stopName": "NE 24th St & 162nd Ave NE",
+                    "stopCode": "71300",
                     "position": {
                         "latitude": 47.631504,
                         "longitude": -122.125275
                     },
                     "mainTransitType": "Bus",
-                    "mainAgencyId": 5872,
+                    "mainAgencyId": "522---5872",
                     "mainAgencyName": "Metro Transit"
                 }
             }
@@ -116,26 +118,26 @@ Umožňuje použít jako naše metro "522" ID, které je metro ID pro oblasti "S
     ```
 
 
-## <a name="real-time-data-for-bike-docking-station"></a>Data v reálném čase pro kol dokovací stanice
+## <a name="real-time-data-for-bike-docking-station"></a>Data v reálném čase pro dokovací stanice kol
 
-[Získat informace o API Dock přenosu](https://aka.ms/AzureMapsMobilityTransitDock) služby Mobility Azure Maps, umožňuje požádat o statické, tak v reálném čase informace, jako je dostupnost a volných informace pro danou kolo nebo scooter dokovací stanice. Učiníme požadavek na získání dat v reálném čase pro dokovací stanice kol.
+[Rozhraní API pro přístup k informacím o přeložení do dokovací](https://aka.ms/AzureMapsMobilityTransitDock) služby Azure Maps mobility umožňuje vyžádat si statické a v reálném čase informace, jako jsou dostupnost a informace o volném místě pro dané kolo nebo dokovací stanice Scooter. Vytvoříme žádost o získání dat v reálném čase pro dokovací stanice pro kolaci.
 
-Aby bylo možné žádost o získání přenosu Dock informace o API, budete potřebovat **dockId** pro příslušnou stanici. Můžete získat ID ukotvení tím, že žádost o vyhledávání na [získání rozhraní API blízké přenosu](https://aka.ms/AzureMapsMobilityNearbyTransit) a nastavení **objectType** parametr "bikeDock". Podle následujících pokynů k získání dat v reálném čase z dokovací stanice kol.
+Aby bylo možné vytvořit požadavek na rozhraní API pro získání informací o přeložení, budete potřebovat **dockId** pro tuto stanici. ID Dock můžete získat tak, že vytvoříte požadavek hledání na [rozhraní API pro získání nejbližšího přenosu](https://aka.ms/AzureMapsMobilityNearbyTransit) a nastavíte parametr **ObjectType** na hodnotu "bikeDock". Podle následujících kroků Získejte data dokovací stanice pro kola v reálném čase.
 
 
-### <a name="get-dock-id"></a>Získejte ID ukotvení
+### <a name="get-dock-id"></a>Získat ID Docku
 
-Chcete-li získat **dockID**, postupujte podle pokynů můžete vytvořit žádost o získání blízké přenosu rozhraní API:
+Pokud chcete získat **dockID**, postupujte podle následujících kroků a vytvořte si požadavek na rozhraní API pro získání nejbližšího přenosu:
 
-1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **Get ukotvit ID**.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte ho **získat ID Dock**.
 
-2.  Na kartě tvůrce, vyberte **získat** metodu HTTP, zadejte následující adresu URL požadavku a klikněte na tlačítko **odeslat**.
+2.  Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL požadavku a klikněte na **Odeslat**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
     ```
 
-3. Po úspěšném požadavku zobrazí se následující odpověď. Všimněte si, že nyní je k dispozici **id** v odpovědi, které je možné později jako parametr dotazu v žádosti o získání přenosu Dock informace o API.
+3. Po úspěšné žádosti se zobrazí následující odpověď. Všimněte si, že teď máme **ID** v odpovědi, které se dá použít později jako parametr dotazu v požadavku do rozhraní API pro získání informací o přeložení k přenosu.
 
     ```JSON
     {
@@ -145,10 +147,10 @@ Chcete-li získat **dockID**, postupujte podle pokynů můžete vytvořit žádo
                 "type": "bikeDock",
                 "objectDetails": {
                     "availableVehicles": 0,
-                    "vacantLocations": 30,
-                    "lastUpdated": "2019-05-21T20:06:59-04:00",
+                    "vacantLocations": 31,
+                    "lastUpdated": "2019-09-07T00:55:19Z",
                     "operatorInfo": {
-                        "id": "80",
+                        "id": "121---80",
                         "name": "Citi Bike"
                     }
                 },
@@ -172,31 +174,31 @@ Chcete-li získat **dockID**, postupujte podle pokynů můžete vytvořit žádo
     ```
 
 
-### <a name="get-real-time-bike-dock-status"></a>Získání stavu v reálném čase kol ukotvení
+### <a name="get-real-time-bike-dock-status"></a>Získat stav Dock kol na kolo v reálném čase
 
-Postupujte podle pokynů můžete vytvořit žádost o získání přenosu ukotvit informace o rozhraní API k získání dat v reálném čase pro vybrané docku.
+Použijte následující postup, chcete-li vytvořit požadavek na rozhraní API získat informace o tom, jak získat data pro vybrané ukotvení v reálném čase.
 
-1. V nástroji Postman, klikněte na tlačítko **novou žádost o** | **požadavek GET** a pojmenujte ho **získání dat v reálném čase dock**.
+1. V příspěvku klikněte na **nový požadavek** | **získat žádost** a pojmenujte si **data Dock v reálném čase**.
 
-2.  Na kartě tvůrce, vyberte **získat** metodu HTTP, zadejte následující adresu URL požadavku a klikněte na tlačítko **odeslat**.
+2.  Na kartě tvůrce vyberte metodu **Get** http, zadejte následující adresu URL požadavku a klikněte na **Odeslat**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
     ```
 
-3. Po úspěšné žádosti se zobrazí odpověď následující strukturu:
+3. Po úspěšné žádosti se zobrazí odpověď na následující strukturu:
 
     ```JSON
     {
-        "availableVehicles": 1,
-        "vacantLocations": 29,
+        "availableVehicles": 0,
+        "vacantLocations": 31,
         "position": {
             "latitude": 40.767128,
             "longitude": -73.962246
         },
-        "lastUpdated": "2019-05-21T20:26:47-04:00",
+        "lastUpdated": "2019-09-07T00:55:19Z",
         "operatorInfo": {
-            "id": "80",
+            "id": "121---80",
             "name": "Citi Bike"
         }
     }
@@ -205,12 +207,12 @@ Postupujte podle pokynů můžete vytvořit žádost o získání přenosu ukotv
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak požádat o přenosu dat pomocí služby Mobility:
+Informace o tom, jak požadovat přenosová data pomocí služby mobility:
 
 > [!div class="nextstepaction"]
-> [Jak si vyžádat přenosu dat](how-to-request-transit-data.md)
+> [Požadavky na přenosová data](how-to-request-transit-data.md)
 
-Projděte si dokumentaci rozhraní API služby Mobility Azure Maps:
+Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility:
 
 > [!div class="nextstepaction"]
 > [Dokumentace k rozhraní API služby mobility](https://aka.ms/AzureMapsMobilityService)

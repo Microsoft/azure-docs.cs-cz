@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6ae466d10d585b46c9c71614cfeff6b688e6e48
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 430cf7cde22cc8de337d33e1f083121503d084f5
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231643"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802339"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Nasazení ukázky pro PCI-DSS v 3.2.1 podrobný plán
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
@@ -47,9 +47,9 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 ## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu konceptu a musí být publikována před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard PCI-DSS v 3.2.1.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard PCI-DSS v 3.2.1.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -59,7 +59,7 @@ Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí.
 
 Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -114,7 +114,7 @@ Teď, když jste si prohlédli postup nasazení ukázky pro PCI-DSS v 3.2.1 podr
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

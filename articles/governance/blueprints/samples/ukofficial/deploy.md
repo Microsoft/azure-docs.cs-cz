@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 10d1e2fc607df205ea8922a81a1322d4121f30f7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 21c5ad69a5e2b09e973b7b348690f554fca5dbe2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232288"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802330"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
@@ -47,9 +47,9 @@ Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobn�
 
 ## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu konceptu a musí být publikována před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -59,7 +59,7 @@ Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí.
 
 Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. Vyberte **všechny služby** a vyhledejte a v levém podokně vyberte **zásady** . Na stránce **zásady** vyberte **plány**.
+1. V levém podokně vyberte **všechny služby** . Vyhledejte a vyberte **plány**.
 
 1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
@@ -102,17 +102,17 @@ Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Linux, který se má přidat do oboru (zásady: \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače se systémem Linux) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: Seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru (zásady: \[Verze\]Preview: Nasazení agenta Log Analytics pro virtuální počítače s Windows) |Volitelné Výchozí hodnota je _none_. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste si prohlédli kroky k nasazení ukázek OFICIÁLNÍch a NHS podrobných plánů na Velká Británie, najdete v následujících článcích informace o přehledu a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
 > [Oficiální a NHS plány Spojené království – přehled](./index.md)
-> oficiálních a britských[NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
+> [oficiálních a britských NHS modrotisky – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si informace o [životním cyklu](../../concepts/lifecycle.md)podrobného plánu.
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
 - Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
 - Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)

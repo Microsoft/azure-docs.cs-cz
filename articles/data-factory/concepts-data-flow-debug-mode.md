@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991929"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801698"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991929"
 
 ## <a name="overview"></a>Přehled
 
-V horní části návrhové plochy se dá přepnout do režimu ladění toku dat Azure Data Factory pomocí tlačítka ladění toku dat. Při navrhování toků dat umožňuje zapnutí režimu ladění interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu.
+Azure Data Factory režim ladění toku dat umožňuje interaktivně sledovat transformaci datových tvarů při sestavování a ladění toků dat. Ladicí relaci lze použít jak v relacích návrhu toku dat, tak i při provádění ladění toků při ladění kanálu. Pokud chcete zapnout režim ladění, použijte v horní části návrhové plochy tlačítko "ladění toku dat".
 
-![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
+![Posuvník ladění](media/data-flow/debugbutton.png "Posuvník ladění")
+
+Jakmile posuvník zapnete, zobrazí se výzva, abyste vybrali konfiguraci prostředí Integration runtime, kterou chcete použít. Pokud je zvolená možnost AutoResolveIntegrationRuntime, provedou se cluster s osmi jádry obecného COMPUTE s 60 minutou až do živého času. Další informace o modulu runtime integrace toku dat najdete v tématu [výkon toku dat](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+
+![Ladění infračerveného výběru](media/data-flow/debugbutton2.png "Ladění infračerveného výběru")
 
 Když je režim ladění zapnutý, budete interaktivně vytvářet tok dat s aktivním clusterem Spark. Po vypnutí ladění v Azure Data Factory dojde k ukončení relace. Měli byste si uvědomit, že hodinové poplatky vzniklé Azure Databricks v době, kdy máte zapnutou relaci ladění.
 
 Ve většině případů je vhodné sestavovat toky dat v režimu ladění, abyste před publikováním práce v Azure Data Factory mohli ověřit svou obchodní logiku a zobrazit transformace dat. K otestování toku dat v kanálu použijte tlačítko ladit na panelu kanálů.
-
-> [!NOTE]
-> I když je světlo režimu ladění na panelu nástrojů Data Factory zelený, bude se vám účtovat rychlost ladění toku dat 8 jader/HR obecného COMPUTE s 60 minutou až do živého času. 
 
 ## <a name="cluster-status"></a>Stav clusteru
 
@@ -81,11 +82,11 @@ Jakmile vyberete úpravu, náhled dat se okamžitě aktualizuje. Kliknutím na *
 
 ### <a name="data-profiling"></a>Profilace dat
 
-Výběr sloupců na kartě náhledu dat a kliknutí na **Statistika** na panelu nástrojů Náhled dat zobrazí graf na pravém okraji datové mřížky s podrobnými údaji o jednotlivých polích. Azure Data Factory se určí na základě vzorkování dat, který typ grafu se má zobrazit. Pole s vysokou mohutnou hodnotou budou mít jako výchozí hodnotu NULL nebo ne grafy, zatímco kategorií a číselná data s nízkou mohutnost budou zobrazovat pruhové grafy zobrazující frekvenci hodnot dat. Zobrazí se také hodnota Max/len pro pole řetězců, minimální/maximální hodnoty v číselném poli, standardní dev, percentily, počty a průměr.
+Výběr sloupce na kartě náhledu dat a kliknutí na **Statistika** na panelu nástrojů Náhled dat zobrazí graf na pravém okraji datové mřížky s podrobnými údaji o jednotlivých polích. Azure Data Factory se určí na základě vzorkování dat, který typ grafu se má zobrazit. Pole s vysokou mohutnou hodnotou budou mít jako výchozí hodnotu NULL nebo ne grafy, zatímco kategorií a číselná data s nízkou mohutnost budou zobrazovat pruhové grafy zobrazující frekvenci hodnot dat. Zobrazí se také hodnota Max/len pro pole řetězců, minimální/maximální hodnoty v číselném poli, standardní dev, percentily, počty a průměr.
 
 ![Statistiky sloupců](media/data-flow/stats.png "Statistiky sloupců")
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Až dokončíte sestavování a ladění toku dat, [Spusťte ho z kanálu.](control-flow-execute-data-flow-activity.md)
 * Při testování kanálu pomocí toku dat použijte [možnost spuštění ladění kanálu.](iterative-development-debugging.md)

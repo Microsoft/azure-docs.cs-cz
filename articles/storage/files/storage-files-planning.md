@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309577"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802392"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -206,14 +206,17 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny soubory
 
 Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB. V některých oblastech je k dispozici s omezením 100 TiB, tyto oblasti jsou uvedeny v následující tabulce:
 
-|Oblast |Podporovaná redundance |Podporuje existující účty úložiště. |Podpora portálu *   |
+|Oblast |Podporovaná redundance |Podporuje existující účty úložiště. |Podpora portálu * |
 |-------|---------|---------|---------|
-|Austrálie – východ  |LRS     |Ne    |Ano|
-|Francie – střed  |LRS     |Ne    |Zatím ne|
-|Francie – jih    |LRS     |Ne    |Zatím ne|
-|Jihovýchodní Asie  |LRS, ZRS|Ne    |Ano|
-|Západní Evropa     |LRS, ZRS|Ne    |Ano|
-|USA – západ 2       |LRS, ZRS|Ne    |Ano|
+|Austrálie – východ |LRS     |Ne    |Ano|
+|Austrálie – jihovýchod|LRS     |Ne    |Zatím ne|
+|Střed Indie  |LRS     |Ne    |Zatím ne|
+|Francie – střed  |LRS, ZRS|Ne    |LRS-Yes, ZRS – zatím ne|
+|Jižní Indie    |LRS     |Ne    |Zatím ne|
+|Jihovýchodní Asie |LRS, ZRS|Ne    |Ano|
+|Západní střed USA|LRS     |Ne    |Zatím ne|
+|Západní Evropa    |LRS, ZRS|Ne    |Ano|
+|USA – západ 2      |LRS, ZRS|Ne    |Ano|
 
 \* Pro oblasti bez podpory portálu můžete i nadále používat PowerShell nebo rozhraní příkazového řádku Azure (CLI) k vytvoření většího než 5 TiB sdílených složek. Případně můžete vytvořit novou sdílenou složku prostřednictvím portálu bez určení kvóty. Tím se vytvoří sdílená složka s výchozí velikostí 100 TiB, která se dá později aktualizovat prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
@@ -265,7 +268,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

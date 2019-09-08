@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 09/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: cdfaca32b31d5392ffb59e6750729cad9db1c725
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 7df117dbb071081473a5651a953927cee8ddaa03
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735937"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801448"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -137,6 +137,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Podporováno |Podporováno |Chicago, Silicon Valley, Washington DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Podporováno |Podporováno |Chicago, Hongkong – zvláštní správní oblast, Londýn |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Podporováno |Podporováno |Soul |
+| **ŠETŘENÍ** | Podporováno |Podporováno | Washington |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Podporováno |Podporováno |Čennaj, Bombaj2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Podporováno |Podporováno |Singapur, Singapur2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Podporováno |Podporováno |Ósaka, Tokio |
@@ -156,6 +157,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporováno |Podporováno |Praha, + Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporováno |Podporováno |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Hongkong – zvláštní správní oblast, Londýn, Bombaj, Silicon sedla, Singapur, Sydney, Tokio, Toronto, Washington DC |
+| **Viasat** | Podporováno | Podporováno | Washington DC2 |
 | **[Vocus skupina NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Podporováno | Podporováno | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporováno |Podporováno |Amsterdam2, Londýn, Singapur |
 | **Vodafone Idea** | Podporováno | Podporováno | Bombaj, Mumbai2 |
