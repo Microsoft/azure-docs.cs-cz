@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Úložiště kontejnerů a obrázky
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Dvě tabulky reprezentující Registry kontejnerů, úložiště a názvy imagí pro všechny nabídky služby pro rozpoznávání.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051230"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775840"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
 Níže uvedené tabulky jsou vyčerpávajícím seznamem dostupných imagí kontejneru nabízených službou Azure Cognitive Services.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Veřejné (kontejnerový registr `mcr.microsoft.com`:)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (registr kontejneru `mcr.microsoft.com`:)
 
-Microsoft Container Registry hostuje všechny kontejnery všeobecné dostupnosti (GA) pro Cognitive Services.
+Microsoft Container Registry hostuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services.
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
@@ -21,9 +30,9 @@ Microsoft Container Registry hostuje všechny kontejnery všeobecné dostupnosti
 | [Analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Analýza mínění | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Public Preview (registr kontejneru: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "gated" Preview (registr kontejneru: `containerpreview.azurecr.io`)
 
-Registry Preview kontejneru hostují všechny kontejnery "Public Preview" pro Cognitive Services, které ještě neprobíhaly při obecné dostupnosti (GA). Tyto kontejnery vyžadují formální žádost o přístup, aby je bylo možné spotřebovat.
+Registry Preview kontejneru hostují všechny veřejně dostupné kontejnery "gated" pro Cognitive Services. Tyto kontejnery vyžadují formální žádost o přístup, aby je bylo možné spotřebovat.
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|

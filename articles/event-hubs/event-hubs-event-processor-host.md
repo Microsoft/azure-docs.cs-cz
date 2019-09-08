@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 013200295f3a6a48d6d96663f98bce506808cd70
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277377"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772159"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 
@@ -184,6 +184,10 @@ Nedoporučujeme používat aplikace, kde jste vytvořili přijímač s epocha a 
 - Pokud již byl vytvořen přijímač s epocha E1 a aktivně přijímá události a vytvoří se nový příjemce bez epocha, vytvoření nového přijímače se nezdaří. Epocha příjemci mají vždy přednost v systému.
 - Pokud byl již vytvořen přijímač s epocha E1 a byl odpojen a vytvoří se nový příjemce bez epocha na novém MessagingFactory, vytváření nového přijímače bude úspěšné. Tady se dozvíte, že po uplynutí 10 minut náš systém zjistí "odpojení přijímače".
 - Pokud je vytvořeno jedno nebo více přijímačů bez epocha a vytvoří se nový příjemce s epocha E1, všichni původní příjemci se odpojí.
+
+
+> [!NOTE]
+> Pro aplikace, které používají epochs, doporučujeme používat různé skupiny uživatelů, které nepoužívají epochs, aby se předešlo chybám. 
 
 
 ## <a name="next-steps"></a>Další postup

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096038"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773060"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
@@ -65,7 +65,7 @@ Můžete použít `localhost` odkazu na funkci uvnitř stejné aplikace function
 
  
 >[!Note]  
->Pokud vaše funkce používá *funkci, správce nebo sys* úrovní autorizace, budete muset zadat kód a clientId, podle původní adresu URL funkce. V tomto případě odkaz vypadat nějak takto: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>Pokud vaše funkce používá *funkci, správce nebo sys* úrovní autorizace, budete muset zadat kód a clientId, podle původní adresu URL funkce. V takovém případě by odkaz vypadal takto: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`Tyto klíče doporučujeme uložit v [nastavení aplikace] a odkazovat na ně v proxy serverech. Tím se vyhnete ukládání tajných kódů ve zdrojovém kódu. 
 
 ### <a name="request-parameters"></a>Odkaz na parametry žádosti
 

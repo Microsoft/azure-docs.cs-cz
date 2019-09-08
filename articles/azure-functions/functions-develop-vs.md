@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905684"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773160"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -41,6 +41,8 @@ Další prostředky, které potřebujete, například účet Azure Storage, se v
 
 > [!NOTE]
 > V aplikaci Visual Studio 2017 nainstalují úlohy vývoje Azure nástroje Azure Functions jako samostatné rozšíření. Při aktualizaci sady Visual Studio 2017 se ujistěte, že používáte nejnovější [verzi](#check-your-tools-version) Azure Functions nástrojů. V následujících částech se dozvíte, jak kontrolovat a (v případě potřeby) aktualizovat rozšíření Azure Functions nástrojů v aplikaci Visual Studio 2017. 
+>
+> Pokud používáte Visual Studio 2019, přeskočte prosím tyto oddíly.
 
 ### <a name="check-your-tools-version"></a>Podívejte se na verzi nástrojů v aplikaci Visual Studio 2017
 
@@ -84,7 +86,7 @@ Další informace naleznete v tématu [Functions Class Library Project](function
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Nastavení v Local. Settings. JSON nejsou nahrána automaticky při publikování projektu. Abyste se ujistili, že tato nastavení existují i ve vaší aplikaci Function App v Azure, musíte je po publikování projektu nahrát. Další informace najdete v tématu [nastavení aplikace Function App](#function-app-settings).
+Nastavení v Local. Settings. JSON se při publikování projektu automaticky neodesílají. Abyste se ujistili, že tato nastavení existují i ve vaší aplikaci Function App v Azure, musíte je po publikování projektu nahrát. Další informace najdete v tématu [nastavení aplikace Function App](#function-app-settings).
 
 Hodnoty v **connectionStrings** se nikdy nepublikují.
 

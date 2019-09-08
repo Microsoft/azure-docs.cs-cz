@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c56d469360814cb663b4c5c11689961225eebb2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544666"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772348"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
 
@@ -24,7 +24,7 @@ Tabulky brány firewall a přidružená pravidla umožňují určit omezení pro
 
 ## <a name="add-a-new-firewall-table"></a>Přidat novou tabulku brány firewall
 
-1. [Přejděte na portál CloudSimple](monitor-activity.md) a v postranní nabídce vyberte **síť** .
+1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
 2. Vyberte **tabulky brány firewall**.
 3. Vyberte **vytvořit tabulku brány firewall**.
 
@@ -32,7 +32,7 @@ Tabulky brány firewall a přidružená pravidla umožňují určit omezení pro
 
 4. Zadejte název tabulky.
 5. Zobrazí se výchozí pravidlo pro tabulku. Kliknutím na **vytvořit nové pravidlo** vytvořte další pravidlo. Podrobnosti najdete v následujícím postupu.
-6. Kliknutím na Hotovo uložte tabulku brány firewall.
+6. Kliknutím na **Hotovo** uložte tabulku brány firewall.
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 
@@ -60,7 +60,7 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
 
     ![Přidat pravidlo pro tabulku brány firewall](media/firewall-rule-create.png)
 
-3. Kliknutím na Hotovo uložte pravidlo a přidejte ho do seznamu pravidel pro tabulku brány firewall.
+3. Kliknutím na **Hotovo** uložte pravidlo a přidejte ho do seznamu pravidel pro tabulku brány firewall.
 
 ## <a name="attach-vlanssubnets"></a>Připojit sítě VLAN a podsítě
 

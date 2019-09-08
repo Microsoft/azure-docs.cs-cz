@@ -1,49 +1,49 @@
 ---
-title: Query Store osvědčené postupy ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje osvědčené postupy pro Query Store ve službě Azure Database for PostgreSQL – jeden Server.
+title: Osvědčené postupy pro úložiště dotazů Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje osvědčené postupy pro úložiště dotazů na Azure Database for PostgreSQL jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 798a7a3edbf11c8421848871d26ba55b5bada0b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067240"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764223"
 ---
-# <a name="best-practices-for-query-store"></a>Osvědčené postupy pro Query Store
+# <a name="best-practices-for-query-store"></a>Osvědčené postupy pro úložiště dotazů
 
-**Platí pro:** Azure Database for PostgreSQL – jeden Server 9.6 a 10
+**Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6, 10, 11
 
-Tento článek popisuje doporučené postupy pro používání Query Store ve službě Azure Database for PostgreSQL.
+Tento článek popisuje osvědčené postupy pro používání úložiště dotazů v Azure Database for PostgreSQL.
 
-## <a name="set-the-optimal-query-capture-mode"></a>Nastavit režim zachycení optimální dotazu
-Query Store vám umožňují zachytit data, které vás zajímají. 
+## <a name="set-the-optimal-query-capture-mode"></a>Nastavení optimálního režimu zachycení dotazů
+Umožněte, aby úložiště dotazů zachytává data, která vás zajímá. 
 
 |**pg_qs.query_capture_mode** | **Scénář**|
 |---|---|
-|_Vše_  |Analýza úloh důkladně z hlediska všechny dotazy a jejich Frekvence spouštění a další statistiky. Identifikujte nové dotazy ve vašich úloh. Rozpoznat, pokud ad hoc dotazy se používají k identifikaci příležitostí pro uživatele nebo Parametrizace automaticky. _Všechny_ dodává se náklady na spotřebu zvýšenou prostředků. |
-|_nahoru_  |Zaměřte se na nejčastější dotazy – vydávaných klienty vaši pozornost.
-|_Žádné_ |Jste zaznamenali sadě dotazu a časový interval, který chcete prozkoumat a chcete vyloučit rozptýlení, které mohou zavést další dotazy. _Žádný_ je vhodný pro testování a zkušebním označení prostředí. _Žádný_ třeba používat opatrně, protože můžete přijít o možnost sledovat a optimalizovat důležité nové dotazy. Nelze obnovit data na těchto posledních časových oken. |
+|_Vše_  |Důkladně Analyzujte své úlohy z pohledu všech dotazů a jejich frekvencí spuštění a dalších statistik. Identifikujte nové dotazy v úlohách. Zjišťuje, jestli se k identifikaci příležitostí pro uživatele nebo automatické Parametrizace používají ad hoc dotazy. _Vše_ přináší zvýšené náklady na spotřebu prostředků. |
+|_Vrchol_  |Zaměřte pozornost na nejčastější dotazy, které vystavili klienti.
+|_Žádné_ |Již jste zaznamenali sadu dotazů a časové okno, které chcete prozkoumat, a chcete eliminovat, že by mohly zavádět další dotazy. _Žádná_ je vhodná pro testování a označování prostředí. _Žádné_ by se měly používat opatrně, protože byste mohli přijít o příležitost sledovat a optimalizovat důležité nové dotazy. Nemůžete obnovit data v předchozích časových oknech. |
 
-Query Store také úložiště pro statistiky čekání. Není dotaz režimu další snímek, který řídí statistiky čekání: **pgms_wait_sampling.query_capture_mode** může být nastaven na _žádný_ nebo _všechny_. 
+Úložiště dotazů zahrnuje i úložiště pro statistiku čekání. K dispozici je další dotaz na režim sběru dat, který řídí statistiku čekání: **pgms_wait_sampling. query_capture_mode** lze nastavit na _hodnotu None_ nebo _All_. 
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. Pokud je pg_qs.query_capture_mode _žádný_, pgms_wait_sampling.query_capture_mode nastavení nemá žádný vliv. 
+> **pg_qs. query_capture_mode** nahrazuje **pgms_wait_sampling. query_capture_mode**. Pokud pg_qs. query_capture_mode je _none_, nastavení pgms_wait_sampling. query_capture_mode nemá žádný vliv. 
 
 
-## <a name="keep-the-data-you-need"></a>Uchovávání dat, které potřebujete
-**Pg_qs.retention_period_in_days** parametr určuje ve dnech období uchovávání dat pro Query Store. Starší data dotazů a statistické údaje se odstraní. Query Store je ve výchozím nastavení nakonfigurovaná uchovávání dat po dobu 7 dní. Vyhněte se uchovávání historických dat, které nechcete použít. Zvyšte hodnotu, pokud je potřeba uchovávat data déle.
+## <a name="keep-the-data-you-need"></a>Zachování potřebných dat
+Parametr **pg_qs. retention_period_in_days** určuje ve dnech dobu uchovávání dat pro úložiště dotazů. Data ze staršího dotazu a statistiky se odstranila. Ve výchozím nastavení je úložiště dotazů nakonfigurované tak, aby zachovalo data po dobu 7 dnů. Vyhněte se zachování historických dat, která neplánujete použít. Zvyšte hodnotu, pokud potřebujete zachovat data déle.
 
 
-## <a name="set-the-frequency-of-wait-stats-sampling"></a>Nastavte četnost statistiky čekání vzorkování 
-**Pgms_wait_sampling.history_period** parametr určuje, jak často (v milisekundách) čekání události jsou odebírána data. Čím kratší doby, čím častější vzorkování. Další informace je načtena, ale který se dodává spolu s náklady na vyšší využití prostředků. Pokud je server zatížení nebo nepotřebujete členitost zvýšit toto období
+## <a name="set-the-frequency-of-wait-stats-sampling"></a>Nastavení četnosti vzorkování statistik čekání 
+Parametr **pgms_wait_sampling. history_period** určuje, jak často (v milisekundách) se mají vzorkovat události čekání. Kratší doba je vzorkování častější. Další informace jsou načteny, ale jsou k dispozici s náklady na větší spotřebu prostředků. Tuto dobu zvyšte, pokud je server v zatížení nebo pokud nepotřebujete členitost.
 
 
-## <a name="get-quick-insights-into-query-store"></a>Získat rychlý přehled o Query Store
-Můžete použít [Query Performance Insight](concepts-query-performance-insight.md) na webu Azure Portal Získejte rychlý přehled o datech v Query Store. Vizualizace povrchové nejdelší spuštěné dotazy a nejdelší počkejte události v čase.
+## <a name="get-quick-insights-into-query-store"></a>Získat rychlé přehledy do úložiště dotazů
+Pomocí [Query Performance Insight](concepts-query-performance-insight.md) v Azure Portal můžete získat rychlý přehled o datech v úložišti dotazů. Vizualizace povrchují nejdelší běžící dotazy a nejdelší čekací události v průběhu času.
 
 ## <a name="next-steps"></a>Další postup
-- Zjistěte, jak získat nebo nastavit parametry s využitím [webu Azure portal](howto-configure-server-parameters-using-portal.md) nebo [rozhraní příkazového řádku Azure](howto-configure-server-parameters-using-cli.md).
+- Naučte se, jak získat nebo nastavit parametry pomocí [Azure Portal](howto-configure-server-parameters-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](howto-configure-server-parameters-using-cli.md).

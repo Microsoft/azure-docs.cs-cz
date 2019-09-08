@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309226"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764307"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux imagí v Azure
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -114,18 +114,19 @@ Pro obecné použití jsou momentálně dostupné tyto nabídky:
 
 Nabídka| SKU | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7 – rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
-|             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7 – rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
-|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 – rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
-|             | 6.7      | ZÍSKÁNÍ    | Linuxový agent | Image RHEL 6,7, staré konvence vytváření názvů
-|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 6,8
-|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 6,9
-|             | 6.10     | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 6,10
-|             | 7.2      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 7,2
-|             | 7.3      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 7,3
-|             | 7.4      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 7,4. <br> Připojí se k úložištím EUS ve výchozím nastavení od dubna 2019.
-|             | 7.5      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 7,5. <br> Připojeno k úložištím EUS ve výchozím nastavení od června 2019
-|             | 7,6      | ZÍSKÁNÍ    | Linuxový agent | Stejné jako u RHEL 7,6. <br> Připojeno k úložištím EUS ve výchozím nastavení jako květen 2019
+RHEL          | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7. x rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
+|             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7. x rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7. x rodina imagí. <br> Nepřipojeno k úložištím EUS ve výchozím nastavení.
+|             | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 6.10     | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7.2      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7.3      | ZÍSKÁNÍ    | Linuxový agent |
+|             | 7.4      | ZÍSKÁNÍ    | Linuxový agent | Připojí se k úložištím EUS ve výchozím nastavení od dubna 2019.
+|             | 7.5      | ZÍSKÁNÍ    | Linuxový agent | Připojeno k úložištím EUS ve výchozím nastavení od června 2019.
+|             | 7,6      | ZÍSKÁNÍ    | Linuxový agent | Připojeno k úložištím EUS ve výchozím nastavení jako květen 2019.
+|             | 7,7      | LVM    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
 RHEL-SAP      | 7.4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA a obchodní aplikace
 |             | 7.5      | LVM    | Linuxový agent | RHEL 7,5 pro SAP HANA a obchodní aplikace
 RHEL-SAP-HANA | 6.7      | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA

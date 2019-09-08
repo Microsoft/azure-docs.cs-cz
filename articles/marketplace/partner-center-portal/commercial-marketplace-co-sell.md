@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076105"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773224"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost společného prodeje v partnerském centru
 
@@ -47,10 +47,10 @@ Oblasti řešení usnadňují definování scénářů, na které je vaše nabí
 
 | **Document**    | **Popis**  |
 | :------------------- | :-------------------|
-| *Zákazník – jeden – pager* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon: <br> <ul> <li> [Microsoft Azure šablonu s jedním stránkováním](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Microsoft Dynamics 365 1 – Šablona stránkování](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1 – Šablona stránkování](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1 – Šablona stránkování](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Zákazník – jeden – pager* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon, které jsou k dispozici v partnerském centru: <br> <ul> <li> Microsoft Azure šablonu s jedním stránkováním </li> <li> Microsoft Dynamics 365 1 – Šablona stránkování </li> <li> Office 365 1 – Šablona stránkování </li> <li> Windows 10 1 – Šablona stránkování </li> </ul>
  |
-| *Prezentace zákazníků* | Posunutí balíčku k rozteči vašeho řešení a jeho umístění hodnoty Když si zajistěte, aby vaše nabídka byla připravená pro zákazníky, prodejní týmy Microsoftu můžou prezentaci sdílet se zákazníky, aby vyjadřují hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat to, co vaše řešení dělá, jak může pomáhat zákazníkům, v jakém odvětví je řešení a jak se porovnává s konkurenčními řešeními. <br> <br> Další informace najdete v tématu [šablona prezentace zákazníků](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Případová studie zákazníka* | Tyto informace zobrazují potenciální zákazníky, jak vy a Microsoft úspěšně nasadili toto řešení v předchozích případech. <br> <br> Další informace najdete v tématu [Šablona případových studií](https://aka.ms/GTM_Case_Study_Template). |
+| *Prezentace zákazníků* | Posunutí balíčku k rozteči vašeho řešení a jeho umístění hodnoty Když si zajistěte, aby vaše nabídka byla připravená pro zákazníky, prodejní týmy Microsoftu můžou prezentaci sdílet se zákazníky, aby vyjadřují hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat to, co vaše řešení dělá, jak může pomáhat zákazníkům, v jakém odvětví je řešení a jak se porovnává s konkurenčními řešeními. <br> <br> Použijte šablonu dostupnou v partnerském centru.|
+| *Případová studie zákazníka* | Tyto informace zobrazují potenciální zákazníky, jak vy a Microsoft úspěšně nasadili toto řešení v předchozích případech. <br> <br> Použijte šablonu dostupnou v partnerském centru. |
 | *Ověřitelné odběratele služby WINS (volitelné)* | Konkrétní příklady úspěšnosti zákazníků po nasazení vašeho řešení |
 | *Balíček pro rozteč kanálů (volitelné)* | Snímková balíček s informacemi, které pomůžou prodejcům kanálů získat další informace o vašem řešení a připravit své prodejní týmy na prodej vaší nabídky. Obvykle zahrnuje rozteč výtahů, informace o cílových zákaznících, otázky týkající se zákazníků, mluvích bodů a odkazy na videa, dokumentaci a informace o podpoře. |
 | *Diagramy referenční architektury* | Dokument znázorňující model, který představuje IP adresu vytvořenou partnerem, spolu se vztahem k cloudovým službám Microsoftu a jak splňuje technické požadavky programu pro spoluprodejní IP adresy. |
@@ -83,6 +83,6 @@ Můžete také exportovat existující seznam kontaktů nabídky a následně pr
 
 * *Země/provincie (volitelné):*  Při vyplňování šablony použijte formát XX-XX, jak je uvedeno v [tabulce stavy/provincie](./commercial-marketplace-co-sell-states.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace najdete v tématu [prodej s Microsoftem](https://partner.microsoft.com/membership/sell-with-microsoft).

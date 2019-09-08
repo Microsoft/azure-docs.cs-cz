@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611715"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773233"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
@@ -110,13 +110,19 @@ Pokud se jedná o chybu; například spárované nesprávné oblasti při počá
 
 Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 
-1. Při plánování převzetí služeb při selhání, měli byste také zvážit faktor čas. Například pokud ztratíte připojení po dobu delší než 15 až 20 minut, můžete se rozhodnout k zahájení převzetí služeb při selhání. 
+1. V rámci návrhu Event Hubs geograficky zotavení po havárii nereplikují data, a proto nemůžete znovu použít starou hodnotu posunu primárního centra událostí v sekundárním centru událostí. K restartování přijímače událostí doporučujeme použít jednu z následujících možností:
+
+- *EventPosition. FromStart ()* – Pokud chcete číst všechna data v sekundárním centru událostí.
+- *EventPosition. FromEnd ()* – Pokud chcete číst všechna nová data z doby připojení k sekundárnímu centru událostí.
+- *EventPosition. FromEnqueuedTime (DateTime)* – Pokud chcete číst všechna data přijatá v sekundárním centru událostí počínaje od daného data a času.
+
+2. Při plánování převzetí služeb při selhání, měli byste také zvážit faktor čas. Například pokud ztratíte připojení po dobu delší než 15 až 20 minut, můžete se rozhodnout k zahájení převzetí služeb při selhání. 
  
-2. Fakt, že žádná data se replikují znamená, že momentálně se nereplikují aktivní relace. Plánované zprávy a duplicit navíc nemusí fungovat. Nové relace, plánované zprávy a nové duplikáty budou fungovat. 
+3. Fakt, že žádná data se replikují znamená, že momentálně se nereplikují aktivní relace. Plánované zprávy a duplicit navíc nemusí fungovat. Nové relace, plánované zprávy a nové duplikáty budou fungovat. 
 
-3. Přebírání služeb při selhání komplexní distribuované infrastruktury by měla být [vyzkoušená](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) alespoň jednou. 
+4. Přebírání služeb při selhání komplexní distribuované infrastruktury by měla být [vyzkoušená](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) alespoň jednou. 
 
-4. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu.
+5. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu.
 
 ## <a name="availability-zones"></a>Zóny dostupnosti 
 

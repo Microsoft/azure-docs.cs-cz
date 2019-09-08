@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018190"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773175"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -355,7 +355,7 @@ Mezi podporované certifikáty patří:
 
 * **Certifikát X. 509 podepsaný certifikační autoritou**. Pokud chcete identifikovat zařízení a ověřit ho pomocí IoT Hub, můžete použít certifikát X. 509 generovaný a podepsaný certifikační autoritou (CA). Funguje buď s kryptografickým otiskem, nebo s ověřováním CA.
 
-* **Samostatně generovaný certifikát X-509 podepsaný**svým držitelem. Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku. 
+* **Samostatně generovaný certifikát X-509 podepsaný svým držitelem**. Výrobce zařízení nebo interní nástroj pro nasazení může tyto certifikáty vygenerovat a uložit odpovídající privátní klíč (a certifikát) na zařízení. K tomuto účelu můžete použít nástroje, jako je [OpenSSL](https://www.openssl.org/) a nástroj [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) Utility. Funguje pouze s ověřováním pomocí kryptografického otisku. 
 
 Zařízení může buď použít certifikát X. 509, nebo token zabezpečení pro ověřování, ale ne obojí.
 
@@ -363,7 +363,7 @@ Další informace o ověřování pomocí certifikační autority najdete v tém
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Registrace certifikátu X. 509 pro zařízení
 
-[Sada Azure IoT Service SDK pro C# ](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (verze 1.0.8 +) podporuje registraci zařízení, které používá pro ověřování certifikát X. 509. Další rozhraní API, jako je například import a export zařízení, podporují také certifikáty X. 509.
+[Sada Azure IoT Service SDK pro C# ](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (verze 1.0.8 +) podporuje registraci zařízení, které používá pro ověřování certifikát X. 509. Další rozhraní API, jako je například import a export zařízení, podporují také certifikáty X. 509.
 
 Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) ke konfiguraci certifikátů X. 509 pro zařízení.
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>Použití certifikátu X. 509 během operací run-time
 
-[Sada SDK pro zařízení Azure IoT pro .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (verze 1.0.11 +) podporuje použití certifikátů X. 509.
+[Sada SDK pro zařízení Azure IoT pro .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (verze 1.0.11 +) podporuje použití certifikátů X. 509.
 
 ### <a name="c-support"></a>Podpora\# jazyka C
 
@@ -406,7 +406,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-and-module-authentication"></a>Vlastní ověřování zařízení a modulů
 
-IoT Hub [registru identit](iot-hub-devguide-identity-registry.md) můžete použít ke konfiguraci přihlašovacích údajů zabezpečení podle zařízení/modulu a přístupového řízení přístupu [](iot-hub-devguide-security.md#security-tokens)pomocí tokenů. Pokud řešení IoT již obsahuje vlastní registr identit nebo schéma ověřování, zvažte vytvoření *služby tokenů* pro integraci této infrastruktury s IoT Hub. Tímto způsobem můžete ve vašem řešení použít další funkce IoT.
+IoT Hub [registru identit](iot-hub-devguide-identity-registry.md) můžete použít ke konfiguraci přihlašovacích údajů zabezpečení podle zařízení/modulu a přístupového řízení přístupu pomocí [tokenů](iot-hub-devguide-security.md#security-tokens). Pokud řešení IoT již obsahuje vlastní registr identit nebo schéma ověřování, zvažte vytvoření *služby tokenů* pro integraci této infrastruktury s IoT Hub. Tímto způsobem můžete ve vašem řešení použít další funkce IoT.
 
 Služba tokenů je vlastní cloudová služba. Používá *zásady sdíleného přístupu* IoT Hub s oprávněním **DeviceConnect** nebo **ModuleConnect** k vytváření tokenů v *oboru zařízení* nebo *modulu* . Tyto tokeny umožňují zařízení a modul připojit se ke službě IoT Hub.
 
@@ -462,7 +462,7 @@ Další referenční témata v IoT Hub příručce pro vývojáře zahrnují:
 
 * [Podpora IoT Hub MQTT](iot-hub-mqtt-support.md) poskytuje další informace o podpoře IoT Hub pro protokol MQTT.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se seznámili s řízením přístupu IoT Hub, může vás zajímat následující témata IoT Hub příručka pro vývojáře:
 

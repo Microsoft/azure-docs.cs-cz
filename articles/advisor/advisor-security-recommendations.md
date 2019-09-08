@@ -1,6 +1,6 @@
 ---
-title: Zabezpečit prostředky s využitím Azure Advisoru | Dokumentace Microsoftu
-description: Použití Azure Advisoru a pomáhá zvyšovat bezpečnost vašich nasazení Azure.
+title: Zvýšení zabezpečení prostředků pomocí Azure Advisor | Microsoft Docs
+description: Pomocí Azure Advisor můžete zlepšit zabezpečení nasazení Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467676"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772285"
 ---
-# <a name="make-resources-more-secure-with-azure-advisor"></a>Zabezpečit prostředky s využitím Azure Advisoru
+# <a name="make-resources-more-secure-with-azure-advisor"></a>Zvýšení zabezpečení prostředků pomocí Azure Advisor
 
-Azure Advisor vám poskytuje konzistentní vzhledem k aplikacím, konsolidované zobrazení doporučení pro všechny vaše prostředky Azure. Integruje se službou Azure Security Center, aby vám doporučení týkající se zabezpečení. Můžete získat doporučení zabezpečení od **zabezpečení** karty na řídicí panel služby Advisor.
+Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s Azure Security Center, aby vám pomohli doporučení týkající se zabezpečení. Doporučení zabezpečení můžete získat na kartě **zabezpečení** na řídicím panelu poradce.
 
-Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provede procesem konfigurace ovládacích prvků, které potřebujete. 
+Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provede procesem konfigurace potřebných ovládacích prvků. 
 
-Další informace o doporučeních zabezpečení najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Další informace o doporučeních zabezpečení najdete [v tématu Správa doporučení zabezpečení v Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
-## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučení zabezpečení v Azure Advisoru
+## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučením zabezpečení v Azure Advisor
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a pak otevřete [Poradce](https://aka.ms/azureadvisordashboard).
 
-2.  Na řídicím panelu služby Advisor, klikněte na tlačítko **zabezpečení** kartu.
+2.  Na řídicím panelu Advisor klikněte na kartu **zabezpečení** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o doporučení Advisoru, naleznete v tématu:
-* [Úvod do služby Advisor](advisor-overview.md)
+Další informace o doporučení Advisoru najdete tady:
+* [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
-* [Náklady na doporučení advisoru](advisor-performance-recommendations.md)
-* [Poradce doporučení k výkonu](advisor-performance-recommendations.md)
-* [Poradce doporučení k vysoké dostupnosti](advisor-high-availability-recommendations.md)
+* [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
+* [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)
+* [Doporučení pro vysokou dostupnost poradce](advisor-high-availability-recommendations.md)
 
 
  

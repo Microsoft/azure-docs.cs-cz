@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566693"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773209"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v modelu nákupu založeném na DTU
 
@@ -37,7 +37,7 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 |Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|
 |Uchování záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|Vstupně-výstupní propustnost (přibližné) |2.5 vstupně-výstupních operací za DTU| 2.5 vstupně-výstupních operací za DTU | 48 vstupně-výstupních operací za DTU|
+|Vstupně-výstupní propustnost (přibližné) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |Vstupně-výstupní latence (přibližné)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
 |Indexu Columnstore |neuvedeno|S3 a novější|Podporováno|
 |OLTP v paměti|neuvedeno|neuvedeno|Podporováno|

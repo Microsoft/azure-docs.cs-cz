@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897325"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772523"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Použití SSL k zabezpečení webové služby prostřednictvím Azure Machine Learning
 
@@ -32,7 +32,7 @@ Protokoly TLS a SSL závisí na *digitálních certifikátech*, které vám pom�
 > [!WARNING]
 > Pokud pro webovou službu nepoužíváte protokol HTTPS, data odesílaná do a ze služby mohou být viditelná i pro ostatní na internetu.
 >
-> Protokol HTTPS taky umožňuje klientovi ověřit pravost serveru, ke kterému se připojuje. Tato funkce chrání klienty proti [](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) útokům prostředníkem.
+> Protokol HTTPS taky umožňuje klientovi ověřit pravost serveru, ke kterému se připojuje. Tato funkce chrání klienty proti [útokům prostředníkem](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) .
 
 Toto je obecný proces zabezpečení webové služby:
 
@@ -55,7 +55,7 @@ Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domé
 
 ## <a name="get-an-ssl-certificate"></a>Získat certifikát SSL
 
-Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační autority (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
+Existuje mnoho způsobů, jak získat certifikát SSL (digitální certifikát). Nejběžnější je koupit si ho od certifikační *autority* (CA). Bez ohledu na to, kde certifikát obdržíte, potřebujete následující soubory:
 
 * A **certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
 * A **klíč**. Klíč musí být také zakódovaný v PEM.
@@ -77,7 +77,7 @@ Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem SSL, nast
   > [!NOTE]
   > Informace v této části platí také při nasazení zabezpečené webové služby pro vizuální rozhraní. Pokud nejste obeznámeni s používáním sady Python SDK, přečtěte si téma [co je Azure Machine Learning SDK pro Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existující.
+Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existující. Další informace o vytvoření nebo připojení clusteru najdete v tématu [nasazení modelu do clusteru služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
   
 -  Pokud vytvoříte nový cluster, použijete **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
 - Pokud připojíte existující cluster, použijete **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Vrátí objekt konfigurace, který obsahuje metodu **Enable_ssl** .
@@ -104,7 +104,7 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
     attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * Když použijete *certifikát, který jste*zakoupili, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
+  * Když použijete *certifikát, který jste zakoupili*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
 
     ```python
     from azureml.core.compute import AksCompute

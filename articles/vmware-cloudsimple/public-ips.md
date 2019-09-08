@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12a6af73dc0abc9598184f6c83e9d7652973a99e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544445"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773799"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Přidělit veřejné IP adresy pro prostředí privátního cloudu
 
 Otevřete kartu veřejné IP adresy na stránce síť a přidělte veřejné IP adresy pro virtuální počítače ve vašem prostředí privátního cloudu.
 
-1. [Přejděte na portál CloudSimple](monitor-activity.md) a v postranní nabídce vyberte **síť** .
+1. [Přejděte na portál CloudSimple](access-cloudsimple-portal.md) a v postranní nabídce vyberte **síť** .
 2. Vyberte **veřejné IP adresy**.
 3. Klikněte na **nová veřejná IP adresa**.
 

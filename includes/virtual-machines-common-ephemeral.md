@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669602"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775838"
 ---
 Dočasné disky s operačním systémem se vytvářejí na místním úložišti virtuálních počítačů a neukládají se do vzdáleného Azure Storage. Dočasné disky s operačním systémem fungují pro bezstavové úlohy, kde jsou aplikace odolné proti selhání jednotlivých virtuálních počítačů, ale mají vyšší vliv na dobu nasazení virtuálních počítačů nebo obnovování imagí jednotlivých instancí virtuálních počítačů. S dočasným diskem s operačním systémem získáte nižší latenci čtení a zápisu na disk s operačním systémem a rychlejší přebitovou kopii virtuálního počítače. 
  
@@ -175,7 +175,7 @@ Pomocí šablony můžete nasadit virtuální počítač s dočasným diskem s o
 
 
 ## <a name="reimage-a-vm-using-rest"></a>Obnovení virtuálního počítače z Image pomocí REST
-V současné době jedinou metodou, jak obnovit instanci virtuálního počítače s dočasným diskem s operačním systémem, je použití REST API. Pro sady škálování je už obnovení imagí dostupné prostřednictvím PowerShellu, CLI a portálu.
+Můžete obnovit instanci virtuálního počítače s dočasným diskem s operačním systémem pomocí REST API, jak je popsáno níže, a prostřednictvím webu Azure Portal, a to tak, že se zobrazí okno s přehledem virtuálního počítače. Pro sady škálování je už obnovení imagí dostupné prostřednictvím PowerShellu, CLI a portálu.
 
 ```
 POST https://management.azure.com/subscriptions/{sub-

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012719"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773033"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -88,7 +88,7 @@ $TriggerMetadata.sys
 | MethodName | Název aktivované funkce     | řetězec   |
 | RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | řetězec   |
 
-Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje ,`InsertionTime` ,`DequeueCount`,mimo jiné. `Id` Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue.md#trigger---message-metadata). V dokumentaci k aktivačním [událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
+Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje ,`InsertionTime` ,`DequeueCount`,mimo jiné. `Id` Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue.md#trigger---message-metadata). V dokumentaci k [aktivačním událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
 
 ## <a name="bindings"></a>Vazby
 
@@ -305,7 +305,7 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext`, kte
 
 | Vlastnost  | Description                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | objekt |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Řetězec < slovníku, řetězec ><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | Řetězec < slovníku, řetězec ><sup>*</sup> |
@@ -320,7 +320,7 @@ Objekt Response, který byste měli poslat zpátky, je typu `HttpResponseContext
 
 | Vlastnost      | Description                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | objekt                    |
+| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | object                    |
 | **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | řetězec                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
 | **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
@@ -403,14 +403,18 @@ Aktuální verzi můžete zobrazit pomocí tisku `$PSVersionTable` z libovolné 
 
 ## <a name="dependency-management"></a>Správa závislostí
 
-Funkce PowerShellu podporují správu modulů Azure pomocí služby. Úpravou souboru Host. JSON a nastavením vlastnosti managedDependency Enabled na hodnotu true se zpracuje soubor požadavky. psd1. Nejnovější moduly Azure budou automaticky staženy a zpřístupněny této funkci.
+Funkce PowerShellu podporují stažení a správu modulů [Galerie prostředí PowerShell](https://www.powershellgallery.com) prostřednictvím služby. Úpravou souboru Host. JSON a nastavením vlastnosti managedDependency Enabled na hodnotu true se zpracuje soubor požadavky. psd1. Zadané moduly budou automaticky staženy a zpřístupněny této funkci. 
+
+Maximální počet modulů, které jsou aktuálně podporovány, je 10. Podporovanou syntaxí je MajorNumber. * nebo přesná verze modulu, jak je znázorněno níže. Když se vytvoří nová aplikace funkce PowerShellu, ve výchozím nastavení se zahrnou modul Azure AZ.
+
+Modul Language Worker při restartování vybere všechny aktualizované moduly.
 
 host.json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ požadavky. psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-Použití vlastních modulů nebo modulů z [Galerie prostředí PowerShell](https://powershellgallery.com) je trochu jiné, než byste to proznamenali normálně.
+Využití vlastních modulů je trochu jiné, než jak byste to prostupovali normálně.
 
 Když modul nainstalujete do místního počítače, přejde do jedné z globálních dostupných složek v `$env:PSModulePath`. Vzhledem k tomu, že vaše funkce běží v Azure, nebudete mít přístup k modulům nainstalovaným na vašem počítači. To vyžaduje, aby `$env:PSModulePath` se aplikace funkce PowerShellu odlišná `$env:PSModulePath` na běžném skriptu PowerShellu.
 
@@ -433,16 +438,19 @@ Ve funkcích `PSModulePath` obsahuje dvě cesty:
 
 ### <a name="function-app-level-modules-folder"></a>Složka na úrovni `Modules` aplikace Function App
 
-Chcete-li použít vlastní moduly nebo moduly prostředí PowerShell z Galerie prostředí PowerShell, můžete umístit moduly, na kterých jsou funkce závislé `Modules` ve složce. Z této složky jsou moduly automaticky dostupné pro modul runtime Functions. Všechny funkce ve Function App můžou tyto moduly používat.
+Chcete-li použít vlastní moduly, můžete umístit moduly, na kterých jsou vaše funkce `Modules` závislé ve složce. Z této složky jsou moduly automaticky dostupné pro modul runtime Functions. Všechny funkce ve Function App můžou tyto moduly používat. 
 
-Pokud chcete tuto funkci využít, vytvořte `Modules` složku v kořenovém adresáři aplikace Function App. Uložte moduly, které chcete použít, do svých funkcí v tomto umístění.
+> [!NOTE]
+> Moduly zadané v souboru požadavků. psd1 se automaticky stáhnou a zahrnou do cesty, takže je nemusíte vkládat do složky moduly. Ty jsou uložené lokálně ve složce $env: LOCALAPPDATA/AzureFunctions a ve složce/data/ManagedDependencies při spuštění v cloudu.
+
+Pokud chcete využít funkci vlastního modulu, vytvořte `Modules` složku v kořenovém adresáři aplikace Function App. Do tohoto umístění zkopírujte moduly, které chcete použít ve svých funkcích.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Slouží `Save-Module` k uložení všech modulů, které vaše funkce používají, nebo `Modules` ke zkopírování vlastních modulů do složky. Ve složce modulů by vaše aplikace Function App měla mít následující strukturu složek:
+Ve složce modulů by vaše aplikace Function App měla mít následující strukturu složek:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 Když spustíte aplikaci Function App, pracovní proces PowerShellu přidá tuto `Modules` složku `$env:PSModulePath` na, takže se můžete spoléhat na automatické načítání modulu stejně jako v běžném skriptu PowerShellu.
@@ -503,17 +512,7 @@ Tuto proměnnou prostředí nastavíte v [nastavení aplikace](functions-app-set
 
 ### <a name="considerations-for-using-concurrency"></a>Předpoklady pro použití souběžnosti
 
-PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Tato funkce je způsob, jakým funguje modul runtime Azure Functions PowerShellu.
-
-Tento přístup má několik nevýhod.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Souběžnost je stejně dobrá jako počítač, na kterém je spuštěný.
-
-Pokud vaše aplikace Function App běží na [App Service plánu](functions-scale.md#app-service-plan) , který podporuje jenom jeden jádro, pak souběžnost nebude mít spoustu. To je proto, že nejsou k dispozici žádné další jádra, které by pomohly vyrovnávat zatížení. V takovém případě se výkon může lišit v případě, že jeden jádro má kontextový přepínač mezi prostředí runspace.
-
-[Plán spotřeby](functions-scale.md#consumption-plan) běží jenom s jedním jádrem, takže nemůžete využít souběžnost. Pokud chcete plně využít výhod souběžnosti, nasaďte funkce do aplikace Function App běžící na vyhrazeném App Service plánu s dostatečnými jádry.
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell stav
+PowerShell je ve výchozím nastavení jediným skriptovacím jazykem s _více vlákny_ . Souběžnost se však dá přidat pomocí několika prostředí runspace prostředí PowerShell v jednom procesu. Vytvořené množství prostředí runspace se bude shodovat s nastavením aplikace PSWorkerInProcConcurrencyUpperBound. Propustnost bude mít vliv na množství CPU a paměti, které jsou k dispozici ve vybraném plánu.
 
 Azure PowerShell používá některé kontexty _na úrovni procesu_ a stav, které vám pomůžou ušetřit nadměrné typování. Pokud však zapnete souběžnost ve vaší aplikaci Function App a vyvoláte akce, které mění stav, můžete se zaměřit na konflikty časování. Tyto konflikty časování je obtížné ladit, protože jedno vyvolání spoléhá na určitý stav a druhé vyvolání změnilo stav.
 

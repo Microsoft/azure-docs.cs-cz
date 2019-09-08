@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509108"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770705"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (verze Preview)
 
@@ -31,7 +31,7 @@ Následující tabulka popisuje typy clusterů a verze, které jsou kompatibiln�
 | HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
 | HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
 | HDInsight 3,6 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
-| HDInsight 3,6 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
+| HDInsight 4,0 s ESP | Ano | Ano | Ne | Ne | Ne | Ne | Ne |
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -43,7 +43,7 @@ Pro cluster HDInsight můžete zvolit škálování na základě zatížení neb
 
 Automatické škálování průběžně monitoruje cluster a shromažďuje následující metriky:
 
-* **Celkový počet**nevyřízených procesorů: Celkový počet jader potřebných ke spuštění provádění všech nevyřízených kontejnerů.
+* **Celkový počet nevyřízených procesorů**: Celkový počet jader potřebných ke spuštění provádění všech nevyřízených kontejnerů.
 * **Celkový počet nevyřízených paměti**: Celková paměť (v MB) požadovaná k zahájení provádění všech kontejnerů, které čekají na zpracování.
 * **Celkový bezplatný procesor**: Součet všech nevyužitých jader v aktivních pracovních uzlech.
 * **Celková volná paměť**: Součet nevyužité paměti (v MB) na aktivních pracovních uzlech.

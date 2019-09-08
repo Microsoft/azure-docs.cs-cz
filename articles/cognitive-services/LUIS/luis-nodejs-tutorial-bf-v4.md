@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735029"
+ms.locfileid: "70772904"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: Použití robota webové aplikace s podporou Language Understanding v Node. js 
 
@@ -101,7 +101,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
     [![Stažení zdrojového kódu robota webové aplikace pro základní bot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Když se automaticky otevře okno s dotazem **zahrnout nastavení aplikace ve staženém souboru ZIP?** vyberte **Ano**.
+1. Když se automaticky otevře okno s dotazem **zahrnout nastavení aplikace ve staženém souboru ZIP?** vyberte **Ano**. To poskytuje LUIS nastavení. 
 
 1. Když se zdrojový kód zazipuje, zobrazí se zpráva s odkazem na stažení kódu. Vyberte odkaz. 
 
@@ -134,6 +134,13 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
     ````javascript
     class MainDialog extends ComponentDialog {
+
+        constructor(luisRecognizer, bookingDialog) {
+            ...
+            this.luisRecognizer = luisRecognizer;
+            ...
+        }
+
 
         ...
 
@@ -185,40 +192,6 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
     }
     ````
-
-
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Instalace závislostí a spuštění kódu robota v aplikaci Visual Studio
-
-1. V VSCode, z integrovaného terminálu, nainstalujte závislosti pomocí příkazu `npm install`.
-1. Také z integrovaného terminálu spusťte robot pomocí příkazu `npm start`. Tím se spustí webová aplikace pro robota s koncovým bodem HTTP. Konzola poskytuje adresu URL a číslo portu pro přístup k běžícímu webu. Číslo portu budete potřebovat v další části tohoto kurzu.
-
-    ```console
-    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
-    > node ./index.js
-    
-    
-    restify listening to http://[::]:3978
-    
-    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
-    ```
-
-## <a name="create-an-environment-file-and-add-luis-values"></a>Vytvoření souboru prostředí a přidání hodnot LUIS
-
-Emulátor robota potřebuje přístup k vašemu prostředku LUIS, aby poskytoval podrobné výsledky LUIS.
-
-1. V kořenovém adresáři projektu vytvořte soubor s názvem `.env` a přidejte následující proměnné prostředí:
-
-    ```console
-    LuisAppId= 
-    LuisAPIKey=
-    LuisAPIHostName=
-    ```
-
-1. Z Azure Portal pro prostředek robota otevřete nastavení konfigurace App Service aplikace.
-1. Otevřete **Rozšířené úpravy**a zobrazte hodnotu pro každé nastavení.
-
-    ![Otevřete * * rozšířené úpravy * *, aby se zobrazila hodnota pro každé nastavení.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
-
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>Použití emulátoru bot k otestování robota
@@ -227,6 +200,7 @@ Zeptejte se robota na záměr na knihu letu.
 
 1. Spusťte emulátor bot a vyberte **otevřít robot**.
 1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
+1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
 
 1. V emulátoru bot zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v **testu na webu chat**.
 

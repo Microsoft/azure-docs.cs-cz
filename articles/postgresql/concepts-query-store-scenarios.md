@@ -1,61 +1,61 @@
 ---
-title: Scénáře použití Query Store ve službě Azure Database for PostgreSQL – jeden Server
-description: Tento článek popisuje některé scénáře pro Query Store ve službě Azure Database for PostgreSQL – jeden Server.
+title: Scénáře použití úložiště dotazů v Azure Database for PostgreSQL – jeden server
+description: Tento článek popisuje některé scénáře pro úložiště dotazů na serveru Azure Database for PostgreSQL-Single.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067330"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764280"
 ---
-# <a name="usage-scenarios-for-query-store"></a>Mezi scénáře použití pro Query Store
+# <a name="usage-scenarios-for-query-store"></a>Scénáře použití pro úložiště dotazů
 
-**Platí pro:** Azure Database for PostgreSQL – jeden Server 9.6 a 10
+**Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6, 10, 11
 
-Query Store v širokou škálu scénářů, ve kterých je nejdůležitější výkon sledování a údržba předvídatelné zatížení můžete použít. Vezměte v úvahu následující příklady: 
-- Identifikace a optimalizace nákladné nejčastější dotazy 
+Úložiště dotazů můžete použít v nejrůznějších scénářích, ve kterých je sledování a udržování předvídatelného výkonu úloh velmi důležité. Vezměte v úvahu následující příklady: 
+- Identifikace a ladění hlavních náročných dotazů 
 - A / B testování 
-- Zachování výkonu stabilní během upgradu 
-- Identifikace a zlepšení ad hoc úlohy 
+- Udržení stabilního výkonu během upgradů 
+- Identifikace a vylepšení úloh ad hoc 
 
-## <a name="identify-and-tune-expensive-queries"></a>Identifikovat a vyladit nákladným dotazům 
+## <a name="identify-and-tune-expensive-queries"></a>Identifikace a optimalizace nákladných dotazů 
 
-### <a name="identify-longest-running-queries"></a>Identifikujte nejdelší spuštěných dotazů 
-Použití [Query Performance Insight](concepts-query-performance-insight.md) zobrazení na webu Azure Portal rychle identifikovat nejdelší spuštěné dotazy. Tyto dotazy se obvykle mají spotřebovávat značné množství prostředků. Optimalizace nejdéle probíhající dotazy lze vylepšit výkon uvolnění prostředků pro použití jiné dotazy spuštěnými ve vašem systému. 
+### <a name="identify-longest-running-queries"></a>Identifikujte nejdelší běžící dotazy 
+Pomocí zobrazení [Query Performance Insight](concepts-query-performance-insight.md) v Azure Portal můžete rychle identifikovat nejdelší běžící dotazy. Tyto dotazy obvykle často využívají významné množství prostředků. Optimalizace nejdelších dotazů může zvýšit výkon tím, že se uvolní prostředky pro použití jinými dotazy běžícími ve vašem systému. 
 
-### <a name="target-queries-with-performance-deltas"></a>Cíl dotazů s rozdíly výkonu 
-Query Store řezy data o výkonu do časových oken, takže můžete sledovat výkon dotazu v čase. To vám pomůže přesně určit která přispívají dotazy ke zvýšení celkového času stráveného. Díky tomu vám pomůžou cílové Poradce při potížích pro vaši úlohu.
+### <a name="target-queries-with-performance-deltas"></a>Cílové dotazy s rozdíly ve výkonu 
+V úložišti dotazů jsou data o výkonu rozdělená do oken času, takže můžete sledovat výkon dotazů v průběhu času. To vám pomůže identifikovat přesně to, které dotazy přispívají k nárůstu v celkové době strávené. Výsledkem je, že můžete provést cílené řešení potíží s úlohou.
 
-### <a name="tuning-expensive-queries"></a>Ladění nákladným dotazům 
-Při určování dotazu s výkonem neoptimální akci, kterou zvolíte, závisí na povaze problému: 
-- Použití [doporučení k výkonu](concepts-performance-recommendations.md) k určení, jestli se nějaké navrhované indexy. Pokud ano, vytvořte index a potom Query Store slouží k vyhodnocení výkonu dotazů po vytvoření indexu. 
-- Ujistěte se, že jsou statistiky aktuální pro základní tabulky používán dotazem.
-- Spotřebovávaly nákladným dotazům. Například využít výhod Parametrizace dotazů a snížení využití dynamické SQL. Při čtení dat, jako jsou použití filtrování na straně databáze, ne na straně aplikace data, implementovat optimální logiku. 
+### <a name="tuning-expensive-queries"></a>Optimalizace nákladných dotazů 
+Pokud identifikujete dotaz s optimálním výkonem, záleží na tom, jakou akci chcete provést: 
+- Použijte [doporučení k výkonu](concepts-performance-recommendations.md) k určení, jestli existují nějaké navrhované indexy. Pokud ano, vytvořte index a pak pomocí úložiště dotazů vyhodnoťte výkon dotazu po vytvoření indexu. 
+- Ujistěte se, že jsou statistiky aktuální pro podkladové tabulky používané dotazem.
+- Zvažte přepsání drahých dotazů. Můžete například využít výhod dotazů Parametrizace a snížit používání dynamického jazyka SQL. Implementujte optimální logiku při čtení dat, jako je použití filtrování dat na straně databáze, nikoli na straně aplikace. 
 
 
 ## <a name="ab-testing"></a>A / B testování 
-Použijte dotaz Store porovnat výkon úloh před a po ní, které máte v plánu zavedení aplikace mění. Příklady scénářů pro použití Query Store k vyhodnocení dopadu prostředí nebo aplikace změnit na výkon úloh: 
-- Zavádí novou verzi aplikace. 
-- Přidání další prostředky na server. 
-- Vytvoření chybějících indexů na tabulky odkazované procedurou aktivovanou nákladným dotazům. 
+Použijte úložiště dotazů pro porovnání výkonu úloh před a po změně plánu, který chcete zavést. Příklady scénářů použití úložiště dotazů k vyhodnocení dopadu změny prostředí nebo aplikace na výkon úlohy: 
+- Zavedení nové verze aplikace 
+- Přidání dalších prostředků na server. 
+- Vytváření chybějících indexů na tabulkách, na které odkazují nákladné dotazy. 
  
-V některém z těchto scénářů platí následující pracovní postup: 
-1. Spuštění vaší úlohy pomocí služby Query Store před změnou plánované ke generování základní úrovně výkonu. 
-2. Použijte změny aplikace, které se v tuto chvíli řízené v čase. 
-3. Pokračujte v dostatečně dlouho spuštěná úloha pro generování bitové kopie systému výkonu po provedení změny. 
-4. Porovnání výsledků z před a po provedení změny. 
-5. Rozhodněte, jestli se má zachovat změn nebo vrácení zpět. 
+V některém z těchto scénářů použijte následující pracovní postup: 
+1. Spusťte své zatížení s úložištěm dotazů předtím, než plánovaná změna vygeneruje směrný plán výkonu. 
+2. Použijte změny aplikace v řízeném okamžiku v čase. 
+3. Pokračujte v běhu úlohy dostatečně dlouho, aby se po provedení změny vygenerovala image výkonu systému. 
+4. Porovnat výsledky před změnou a po ní. 
+5. Rozhodněte, jestli chcete zachovat změnu nebo vrácení změn. 
 
 
-## <a name="identify-and-improve-ad-hoc-workloads"></a>Identifikujte a Zlepšete ad hoc úlohy 
-Některé úlohy není třeba dominantní dotazy, které můžete optimalizovat pro zvýšení výkonu aplikací. Tyto úlohy jsou obvykle rozdělení s relativně velký počet jedinečných dotazy, každý z nich využívání část systémové prostředky. Každá jedinečná dotaz provádí zřídka, takže jednotlivě že využití modulu runtime není důležité. Na druhé straně vzhledem k tomu, že aplikace vygenerovala neustále nové dotazy, podstatnou část systémové prostředky stráveného při kompilaci dotazu, což není ideální. Obvykle taková situace nastane, pokud vaše aplikace generuje dotazy (namísto použití uložené procedury a parametrizované dotazy), nebo pokud závisí na objektově relační mapování rozhraní, které generují dotazů ve výchozím nastavení. 
+## <a name="identify-and-improve-ad-hoc-workloads"></a>Identifikace a vylepšení úloh ad hoc 
+Některé úlohy nemají dominantní dotazy, které můžete ladit pro zlepšení celkového výkonu aplikace. U těchto úloh se obvykle používá poměrně velký počet jedinečných dotazů, přičemž každý z nich spotřebovává část systémových prostředků. Každý jedinečný dotaz je spuštěn zřídka, takže jeho spotřeba za běhu není kritická. Na druhé straně, vzhledem k tomu, že aplikace generuje nové dotazy po celou dobu, je při kompilaci dotazů vyčerpána podstatná část systémových prostředků, která není optimální. K této situaci obvykle dochází, pokud vaše aplikace generuje dotazy (namísto použití uložených procedur nebo parametrizovaných dotazů) nebo pokud spoléhá na objektově relační rozhraní mapování, která ve výchozím nastavení generují dotazy. 
  
-Pokud máte pod kontrolou kódu aplikace, můžete zvážit přepisování vrstvy přístupu k datům pomocí uložené procedury nebo parametrizovaných dotazů. Ale tato situace může také zlepšit beze změn aplikací vynucením Parametrizace dotazů pro celou databázi (všechny dotazy) nebo pro konkrétní dotaz šablony se stejnou hodnotu hash dotazu. 
+Pokud ovládáte kód aplikace, můžete zvážit přepsání vrstvy přístupu k datům, aby bylo možné použít uložené procedury nebo parametrizované dotazy. Tato situace se ale dá taky zlepšit bez změn aplikace tím, že se vynutí Parametrizace dotazů pro celou databázi (všechny dotazy) nebo pro jednotlivé šablony dotazů se stejnou hodnotou hash dotazu. 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [osvědčené postupy pro používání Query Store](concepts-query-store-best-practices.md)
+- Další informace o [osvědčených postupech pro používání úložiště dotazů](concepts-query-store-best-practices.md)

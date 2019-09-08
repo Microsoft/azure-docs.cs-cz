@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210172"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773142"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Vytvoření funkce na platformě Linux pomocí vlastní image
 
@@ -143,9 +143,8 @@ Když už v místním kontejneru Dockeru běží vlastní image, ověřte správ
 
 ![Místní testování aplikace Function App](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-Volitelně můžete funkci otestovat znovu, tentokrát v místním kontejneru s použitím následující adresy URL:
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> V tomto okamžiku se při pokusu o volání konkrétní funkce HTTP zobrazí chybová odpověď HTTP 401. Je to proto, že vaše funkce běží v místním kontejneru jako v Azure, což znamená, že se vyžaduje klíč funkce. Vzhledem k tomu, že kontejner ještě nebyl publikován do aplikace Function App, není k dispozici žádný funkční klíč. Později uvidíte, že pokud k publikování kontejneru použijete základní nástroje, zobrazí se vám funkční klíče. Chcete-li otestovat funkci spuštěnou v místním kontejneru, můžete změnit [autorizační klíč](functions-bindings-http-webhook.md#authorization-keys) na `anonymous`. 
 
 Po ověření aplikace Function App v kontejneru můžete aplikaci zastavit. Teď můžete vlastní image odeslat do svého účtu Docker Hubu.
 
@@ -159,7 +158,7 @@ Než budete moct odeslat image, musíte se přihlásit k Docker Hubu pomocí př
 docker login --username <docker-id>
 ```
 
-Zpráva „login succeeded“ (Přihlášení proběhlo úspěšně) potvrzuje, že jste přihlášení. Po přihlášení odešlete image do Docker Hubu pomocí příkazu [docker push](https://docs.docker.com/engine/reference/commandline/push/).
+Zpráva o úspěšném přihlášení potvrzuje, že jste přihlášeni. Po přihlášení odešlete image do Docker Hubu pomocí příkazu [docker push](https://docs.docker.com/engine/reference/commandline/push/).
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -187,7 +186,7 @@ Teď můžete image použít jako zdroj nasazení nové aplikace Function App v 
 
 Hostování Linux pro kontejnery vlastních funkcí podporované na [vyhrazených plánech (App Service)](functions-scale.md#app-service-plan) a [plánech Premium](functions-premium-plan.md#features). V tomto kurzu se používá plán Premium, který se může podle potřeby škálovat. Další informace o hostování najdete v [porovnání plánů hostování služby Azure Functions](functions-scale.md).
 
-Následující příklad `myPremiumPlan` vytvoří plán Premium pojmenovaný v cenové úrovni elastické **Premium 1** (`--sku EP1`) v západní USA oblasti (`-location WestUS`) a v kontejneru Linux (`--is-linux`).
+Následující příklad vytvoří `myPremiumPlan` plán Premium pojmenovaný v cenové úrovni **elastické Premium 1** (`--sku EP1`) v západní USA oblasti (`-location WestUS`) a v kontejneru Linux (`--is-linux`).
 
 ```azurecli-interactive
 az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
@@ -209,7 +208,7 @@ Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hub
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
 
-Funkce potřebuje k připojení k výchozímu účtu úložiště připojovací řetězec. Při publikování vlastní image do účtu privátního kontejneru byste měli místo toho určit tato nastavení aplikace jako proměnné prostředí v souboru Dockerfile pomocí [instrukce ENV](https://docs.docker.com/engine/reference/builder/#env) nebo něčeho podobného.
+Funkce potřebuje k připojení k výchozímu účtu úložiště připojovací řetězec. Když publikujete vlastní image na účet privátního kontejneru, měli byste tato nastavení aplikace nastavit jako proměnné prostředí v souboru Dockerfile pomocí [instrukcí ENV](https://docs.docker.com/engine/reference/builder/#env)nebo podobného.
 
 V tomto případě je `<storage_name>` název účtu úložiště, který jste vytvořili. Připojovací řetězec zobrazíte pomocí příkazu [az storage account show-connection-string](/cli/azure/storage/account). Pomocí příkazu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) přidejte tato nastavení aplikace do aplikace Function App.
 
@@ -247,7 +246,7 @@ az functionapp deployment container config --enable-cd \
 
 Tento příkaz vrátí adresu URL Webhooku nasazení po povolení průběžného nasazování. K vrácení této adresy URL můžete použít také příkaz [AZ functionapp Deployment Container show-CD-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) . 
 
-Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, klikněte na kartu Webhooky, zadejte **název** Webhooku Webhooku, vložte adresu URL do Webhookua pak zvolte znaménko plus ( **+** ).
+Zkopírujte adresu URL nasazení a vyhledejte úložiště Dockerhubu, klikněte na kartu **Webhooky** , zadejte **název** Webhooku Webhooku, vložte adresu URL do **Webhooku**a pak zvolte znaménko plus ( **+** ).
 
 ![Přidání Webhooku do úložiště Dockerhubu](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 

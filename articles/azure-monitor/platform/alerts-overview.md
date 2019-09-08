@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735114"
+ms.locfileid: "70773011"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -53,7 +53,11 @@ Signály **signálu** jsou vydávány cílovým prostředkem a mohou být v něk
 **Popis výstrahy** – popis pravidla výstrahy nakonfigurovaného uživatelem
 
 **Závažnost** – po splnění kritérií zadaných v pravidle výstrahy se zobrazí Závažnost výstrahy. Závažnost může být v rozsahu od 0 do 4.
-Závažnost 0 = kritická závažnost 1 = Error závažnost 2 = Warning závažnost 3 = informativní závažnost 4 = verbose
+   - Závažnost 0 = kritický
+   - Závažnost 1 = chyba
+   - Závažnost 2 = upozornění
+   - Závažnost 3 = informativní
+   - Závažnost 4 = verbose 
 
 **Action** – konkrétní akce provedená při vyvolání výstrahy. Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md).
 

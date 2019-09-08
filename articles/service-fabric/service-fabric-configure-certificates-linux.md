@@ -11,14 +11,14 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
+ms.date: 09/06/2019
 ms.author: chackdan
-ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102996"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773258"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení v clusterech se systémem Linux
 
@@ -30,7 +30,7 @@ Service Fabric obvykle očekává, že se v adresáři */var/lib/sfcerts* v uzle
 
 U clusterů se systémem Linux Service Fabric očekává, že se certifikáty nacházejí jako soubor. pem, který obsahuje certifikát i privátní klíč, nebo jako soubor. CRT, který obsahuje certifikát a soubor. Key, který obsahuje soukromý klíč. Všechny soubory musí být ve formátu PEM. 
 
-Pokud certifikát nainstalujete z Azure Key Vault pomocí [Správce prostředků šablony](./service-fabric-cluster-creation-create-template.md) nebo příkazů PowerShellu, [](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) certifikát se nainstaluje do správného formátu v adresáři */var/lib/sfcerts* na každém uzlu. Pokud certifikát nainstalujete pomocí jiné metody, musíte se ujistit, že je certifikát správně nainstalovaný na uzlech clusteru.
+Pokud certifikát nainstalujete z Azure Key Vault pomocí [Správce prostředků šablony](./service-fabric-cluster-creation-create-template.md) nebo příkazů [PowerShellu](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) , certifikát se nainstaluje do správného formátu v adresáři */var/lib/sfcerts* na každém uzlu. Pokud certifikát nainstalujete pomocí jiné metody, musíte se ujistit, že je certifikát správně nainstalovaný na uzlech clusteru.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certifikáty, na které se odkazuje v manifestu aplikace
 
@@ -42,7 +42,7 @@ U některých služeb můžete nakonfigurovat certifikáty X. 509 v [ConfigPacka
 
 ### <a name="using-x509-securitycredentialstype"></a>Použití x509 SecurityCredentialsType
 
-Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. `X509Credentials` To odpovídá typu ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/Java)[](https://docs.microsoft.com/java/api/system.fabric.x509credentials)systému `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` typu ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java) systému](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 Odkaz **x509** vyhledá certifikát v úložišti certifikátů. Následující kód XML ukazuje parametry používané k určení umístění certifikátu:
 
@@ -73,7 +73,7 @@ Následující kód XML ukazuje oddíl **TransportSettings** na základě tohoto
 
 ### <a name="using-x509_2-securitycredentialstype"></a>Použití X509_2 SecurityCredentialsType
 
-Pomocí sady Java SDK můžete pro **SecurityCredentialsType**zadat **X509_2** . To odpovídá `X509Credentials2` typu[](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` (Java) ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Pomocí sady Java SDK můžete pro **SecurityCredentialsType**zadat **X509_2** . To `X509Credentials2` odpovídá[typu](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` (Java) ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
 Pomocí odkazu **X509_2** zadáte parametr cesty, takže můžete najít certifikát v jiném adresáři než */var/lib/sfcerts*.  Následující kód XML ukazuje parametry používané k určení umístění certifikátu: 
 

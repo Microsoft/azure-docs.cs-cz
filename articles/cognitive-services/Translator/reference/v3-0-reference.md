@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595003"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772791"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -99,7 +99,7 @@ Když použijete tajný klíč s více službami, musíte do své žádosti zahr
 
 Pro předplatné rozhraní API pro více služeb text je vyžadována oblast. Oblast, kterou jste vybrali, je jediná oblast, kterou můžete použít pro překlad textu při použití klíče předplatného s více službami a musí se jednat o stejnou oblast, jakou jste zvolili při registraci k předplatnému více služeb prostřednictvím Azure Portal.
 
-Dostupné oblasti jsou `australiaeast`, `brazilsouth`, `canadacentral` ,`centraluseuap`,, ,`eastus`,,,, ,`southcentralus`, `eastasia` `eastus2` `japaneast` `northeurope` `centralindia` `southeastasia` `uksouth`, ,`westcentralus` ,a`westus2`. `westeurope` `westus`
+Dostupné oblasti jsou `australiaeast`, `brazilsouth`, `canadacentral` ,`centralus`,, ,`eastasia`,,,, ,`japaneast`, `centraluseuap` `eastus` `eastus2` `francecentral` `centralindia` `japanwest` `koreacentral`, ,`northcentralus` ,,`southeastasia`, ,`westcentralus`,, ,`westus`a. `southcentralus` `westeurope` `uksouth` `northeurope` `westus2` `southafricanorth`
 
 Pokud předáte tajný klíč v řetězci dotazu s parametrem `Subscription-Key`, je nutné zadat oblast s parametrem `Subscription-Region`dotazu.
 

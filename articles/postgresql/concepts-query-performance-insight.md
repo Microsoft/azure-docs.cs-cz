@@ -6,16 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cd07656ab4e6e0f684eecf35d241eac539b7a552
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907472"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764438"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
-**Platí pro:** Azure Database for PostgreSQL – jeden server 9,6 a 10
+**Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6, 10, 11
 
 Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dotazy, jak se v průběhu času mění a co se na ně budou jejich vlivovat.
 
@@ -43,9 +43,9 @@ Vyberte kartu **Statistiky čekání** k zobrazení odpovídající vizualizace 
 ![Query Performance Insight čeká na statistiku](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="considerations"></a>Požadavky
-* Query Performance Insight není pro repliky [čtení](concepts-read-replicas.md)k dispozici.
+* Query Performance Insight není pro [repliky čtení](concepts-read-replicas.md)k dispozici.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o [sledování a ladění ](concepts-monitoring.md) ve službě Azure Database for PostgreSQL.
 
 

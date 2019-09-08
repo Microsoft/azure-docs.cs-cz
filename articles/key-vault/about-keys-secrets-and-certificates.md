@@ -1,71 +1,71 @@
 ---
-title: Informace o klíčích, tajných kódů a certifikátů – Azure Key Vault Azure Key Vault
-description: Přehled Azure Key Vault REST rozhraní a pro vývojáře podrobnosti pro klíče, tajné kódy a certifikáty.
+title: Informace o Azure Key Vault klíčů, tajných klíčích a certifikátech – Azure Key Vault
+description: Přehled rozhraní Azure Key Vault REST a podrobností pro vývojáře pro klíče, tajné klíče a certifikáty.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8ea7fc5a318775b05c03166df3d9b457ec004273
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703915"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773125"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
+# <a name="about-keys-secrets-and-certificates"></a>O klíčích, tajných klíčích a certifikátech
 
-Služba Azure Key Vault umožňuje uživatelům ukládat a používat několik typů tajného kódu a klíče dat a aplikací Microsoft Azure:
+Azure Key Vault umožňuje aplikacím a uživatelům Microsoft Azure ukládat a používat několik typů tajných dat a klíčů:
 
-- Kryptografické klíče: Podporuje více typy klíčů a algoritmy a umožňuje použití z moduly hardwarového zabezpečení (HSM) pro vysoká hodnota klíče. 
-- Tajné kódy: Poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce.
-- Certifikáty: Podporuje certifikáty, které jsou vytvořené s využitím klíče a tajné kódy a přidat funkci automatického obnovení.
-- Azure Storage: Klíče účtu úložiště Azure můžete spravovat za vás. Interně jsou služby Key Vault můžete vypsat klíče (sync) pomocí účtu služby Azure Storage a znovu vygenerovat (Otočit) klíče pravidelně. 
+- Kryptografické klíče: Podporuje více typů klíčů a algoritmy a umožňuje použití modulů hardwarového zabezpečení (HSM) pro klíče s vysokými hodnotami. 
+- Záleží Poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce.
+- Certifikáty Podporuje certifikáty, které jsou postavené na klíčích a tajných klíčích a přidávají funkci automatického obnovení.
+- Azure Storage: Může spravovat klíče účtu Azure Storage za vás. Interně Key Vault možné vypsat (synchronizovat) klíče s účtem Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. 
 
-Další obecné informace o službě Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+Obecnější informace o Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-whatis)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
-Následující části nabízí obecné informace napříč implementace služby Key Vault.
+Následující části obsahují obecné informace, které se vztahují k implementaci služby Key Vault.
 
-### <a name="supporting-standards"></a>Podpora standardů
+### <a name="supporting-standards"></a>Podpůrné standardy
 
-Zápis JSON (JavaScript Object) a specifikace jazyka JavaScript objekt podepisování a šifrování (blog JOSE) jsou důležité informace.  
+Specifikace JavaScript Object Notation (JSON) a JOSE (JavaScript Object Signing and Encryption) jsou důležité informace na pozadí.  
 
--   [Webového klíče JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [Šifrování webové JSON (pomocí JWE.)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON Web podpis (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [Webový klíč JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [Webové šifrování JSON (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [Webové algoritmy JSON (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [Webový podpis JSON (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Typy dat
 
-Odkazovat na blog JOSE specifikace pro příslušné datové typy klíčů, šifrování a podepisování.  
+V tématu Specifikace JOSE najdete relevantní datové typy pro klíče, šifrování a podepisování.  
 
--   **algoritmus** – podporované algoritmus klíče operace, například RSA1_5  
--   **Hodnota šifrovaného textu** -šifer oktety text, kódované pomocí Base64URL  
--   **Hodnota ověřování algoritmem Digest** -výstupu algoritmu hash kódovaný pomocí Base64URL  
--   **Typ klíče** – jeden z podporovaných typů klíčů, třeba RSA (Rivest-Shamir-Adleman).  
--   **Hodnota prostého textu** -oktety ve formátu prostého textu, kódované pomocí Base64URL  
--   **hodnota podpisu** – výstupní algoritmu podpisu kódovaný pomocí Base64URL  
--   **base64URL** – Base64URL [RFC4648] kódování binární hodnota  
--   **Logická** – true nebo false  
--   **Identita** – identit z Azure Active Directory (AAD).  
--   **IntDate** – Desítková hodnota JSON představující počet sekund od 1970-01-01T0:0:0Z UTC až do zadaného data a času UTC. Viz zejména RFC3339 podrobnosti týkající se date/times obecně a standardem UTC.  
+-   **Algorithm** – podporovaný algoritmus pro klíčové operace, například RSA1_5  
+-   **šifrovaný text-hodnota** – oktety textu šifry, kódované pomocí Base64URL  
+-   **Digest-Value** – výstup algoritmu hash, kódovaný pomocí Base64URL  
+-   **typ klíče** – jeden z podporovaných typů klíčů, například RSA (Rivest-Shamir-Adleman).  
+-   oktety ve formátu **prostého** textu a prostého textu kódované pomocí Base64URL  
+-   **Signatura-hodnota** – výstup algoritmu podpisu kódovanýho pomocí Base64URL  
+-   **base64URL** – binární hodnota kódovaná v BASE64URL [RFC4648]  
+-   **Boolean** – buď true, nebo false  
+-   **Identita** – identita z Azure Active Directory (AAD).  
+-   **IntDate** – Desítková hodnota JSON představující počet sekund od roku 1970-01-01T0:0: 0Z UTC až do zadaného data a času UTC. Podrobnosti týkající se data a času, obecně a UTC, najdete v tématu RFC3339.  
 
-### <a name="objects-identifiers-and-versioning"></a>Objekty, identifikátory a správy verzí
+### <a name="objects-identifiers-and-versioning"></a>Objekty, identifikátory a správa verzí
 
-Objekty uložené ve službě Key Vault se systémovou správou verzí pokaždé, když je vytvořena nová instance objektu. Každá verze je přiřazen jedinečný identifikátor a adresu URL. Při prvním vytvoření objektu má daný identifikátor jedinečný verze a označena jako aktuální verze objektu. Vytvoření nové instance se stejným názvem objektu poskytuje nový objekt verze jedinečný identifikátor, by ji k aktuální verzi.  
+Objekty uložené v Key Vault jsou tvořeny verzí pokaždé, když je vytvořena nová instance objektu. Každé verzi je přiřazen jedinečný identifikátor a adresa URL. Při prvním vytvoření objektu se mu přidaný jedinečný identifikátor verze a označen jako aktuální verze objektu. Vytvoření nové instance se stejným názvem objektu udělí novému objektu jedinečný identifikátor verze, což způsobí, že se stane aktuální verzí.  
 
-Objekty ve službě Key Vault se dají řešit pomocí aktuální identifikátor nebo identifikátor konkrétní verze. Mějme například klíč s názvem `MasterKey`, provádění operací s aktuální identifikátor způsobí, že systém použít nejnovější dostupnou verzi. Provádění operací s identifikátorem specifické pro verzi způsobí, že systém na tuto konkrétní verzi objektu.  
+Objekty v Key Vault lze řešit pomocí aktuálního identifikátoru nebo identifikátoru specifického pro verzi. Například při zadání klíče s názvem `MasterKey`, provádění operací s aktuálním identifikátorem způsobí, že systém použije nejnovější dostupnou verzi. Provádění operací s identifikátorem specifickým pro verzi způsobí, že systém použije určitou konkrétní verzi objektu.  
 
-Objekty se jednoznačně identifikují v rámci služby Key Vault pomocí adresy URL. Žádné dva objekty v systému mají stejnou adresu URL, bez ohledu na to geografického umístění. Úplnou adresu URL na objekt, se nazývá identifikátor objektu. Adresa URL se skládá z předpony, který identifikuje Key Vault, typ objektu, uživatel zadal název objektu a Object Version. Název objektu je velká a malá písmena a neměnné. Identifikátory, které neobsahují verze objektu se označují jako základ identifikátory.  
+Objekty se jednoznačně identifikují v rámci Key Vault pomocí adresy URL. Žádné dva objekty v systému nemají stejnou adresu URL, bez ohledu na geografickou polohu. Úplná adresa URL objektu se nazývá identifikátor objektu. Adresa URL se skládá z předpony, která identifikuje Key Vault, typ objektu, uživatelem poskytnutý název objektu a verzi objektu. Název objektu rozlišuje velká a malá písmena. Identifikátory, které neobsahují verzi objektu, jsou označovány jako základní identifikátory.  
 
-Další informace najdete v tématu [ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
+Další informace najdete v tématu [ověřování, žádosti a odpovědi](authentication-requests-and-responses.md) .
 
-Identifikátor objektu má následující obecné formát:  
+Identifikátor objektu má následující obecný formát:  
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
@@ -73,407 +73,407 @@ Kde:
 
 |||  
 |-|-|  
-|`keyvault-name`|Název pro trezor klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault názvy jsou vybrané uživatelem a globálně jedinečný.<br /><br /> Název služby Key Vault musí být řetězec 3 až 24 znaků obsahující pouze 0-9, a – z, A-Z a -.|  
-|`object-type`|Typ objektu, "klíče" nebo "tajné".|  
-|`object-name`|`object-name` Je k dispozici uživatelské jméno a musí být jedinečné v rámci služby Key Vault. Název musí být řetězec 1 – 127 znaků obsahující pouze 0-9, a – z, A-Z a -.|  
-|`object-version`|`object-version` Se generována, 32 identifikátor řetězce znaků, která je volitelně používat k adresování jedinečnou verzi objektu.|  
+|`keyvault-name`|Název trezoru klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault jména vybere uživatel a jsou globálně jedinečné.<br /><br /> Key Vault název musí být řetězec znaků 3-24, který obsahuje pouze 0-9, a-z, a-Z a-.|  
+|`object-type`|Typ objektu, buď klíče, nebo tajné klíče.|  
+|`object-name`|`object-name` Je název zadaný uživatelem pro a musí být jedinečný v rámci Key Vault. Název musí být řetězec znaků 1-127, který obsahuje pouze 0-9, a-z, a-Z a-.|  
+|`object-version`|`object-version` Je systémem generovaný identifikátor řetězce znaků 32, který se volitelně používá * o pro jedinečnou verzi objektu.|  
 
-## <a name="key-vault-keys"></a>Klíče služby Key Vault
+## <a name="key-vault-keys"></a>Key Vault klíče
 
-### <a name="keys-and-key-types"></a>Klíče a typy klíčů
+### <a name="keys-and-key-types"></a>Typy klíčů a klíčů
 
-Kryptografické klíče ve službě Key Vault jsou reprezentovány ve formě objektů webového klíče JSON [JWK]. Základní specifikace JWK/DŽWA jsou také rozšířeny Pokud chcete povolit typy klíčů jedinečné pro implementaci služby Key Vault. Import klíče pomocí modulu hardwarového zabezpečení specifické pro výrobce balení, například umožňuje zabezpečený přenos sady klíčů, které se dá použít jenom v modulů HSM služby Key Vault.  
+Kryptografické klíče v Key Vault jsou reprezentovány jako objekty webového klíče JSON [JWK]. Základní specifikace JWK/JWA se také rozšiřují tak, aby umožňovaly použití typů klíčů jedinečných pro Key Vault implementaci. Například import klíčů pomocí balení specifického pro dodavatele HSM umožňuje zabezpečenou přepravu klíčů, které se dají používat jenom v Key Vault HSM.  
 
-- **"Text soft" klíče**: Klíč zpracovány v softwaru ve službě Key Vault, ale se šifrují při nečinnosti pomocí systému klíč, který je v modulu hardwarového zabezpečení. Klienti mohou importovat existující klíč RSA nebo ES (Elliptic Curve) nebo požadavku, že Key Vault vygenerovat.
-- **"Pevné" klíče**: Klíč zpracovány v modulu hardwarového zabezpečení (modulu hardwarového zabezpečení). Tyto klíče jsou chráněné v jedné z Světy zabezpečení Key Vault HSM (je jeden Security World podle zeměpisné oblasti, aby se zachovala izolace). Klienti mohou importovat klíč RSA nebo ES, měkké formuláře nebo tak, že vyexportujete z kompatibilní zařízení HSM. Klienti mohou také požádat o službě Key Vault ke generování klíče. Tento typ klíče přidá atribut T JWK získat pro přenesení klíče HSM.
+- **"Předběžné" klíče**: Klíč zpracovaný v softwaru Key Vault, ale je zašifrovaný v klidovém formátu pomocí systémového klíče, který je v modulu HARDWAROVÉho zabezpečení. Klienti mohou importovat stávající klíč RSA nebo EC (eliptická křivka) nebo požádat, aby ho Key Vault vygeneroval.
+- **Klíče "Hard"** : Klíč zpracovaný v modulu HSM (Hardware Security Module). Tyto klíče jsou chráněné v jednom z Key Vault Zabezpečení HSM světů (pro zachování izolace existuje jeden celosvětový svět na geografickou oblast). Klienti mohou importovat klíč RSA nebo ES, v případě slabé formy nebo exportováním z kompatibilního zařízení HSM. Klienti si taky můžou vyžádat Key Vault, aby vygenerovali klíč. Tento typ klíče přidá atribut key_hsm do JWK, který získá, aby se provedl materiál klíče HSM.
 
-     Další informace o zeměpisných hranic najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
+     Další informace o geografických hranicích najdete v tématu [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) .  
 
-Key Vault podporuje jenom klíče RSA a eliptické křivky. 
+Key Vault podporuje pouze klíče RSA a eliptické křivky. 
 
--   **EC**: "Text soft" klíč eliptické křivky.
--   **EC-HSM**: "Pevné" klíč eliptické křivky.
--   **RSA**: "Text soft" klíč RSA.
--   **RSA-HSM**: "Pevné" klíč RSA.
+-   **ES**: "Měkký" klíč eliptické křivky.
+-   **EC-HSM**: "Tvrdý" klíč eliptické křivky.
+-   **RSA**: "Měkký" klíč RSA.
+-   **RSA-HSM**: "Tvrdý" klíč RSA.
 
-Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí. Key Vault podporuje eliptické křivky klíč typy p-256, p-384, p-521 a P-256_K (SECP256K1).
+Key Vault podporuje klíče RSA velikosti 2048, 3072 a 4096. Key Vault podporuje typy klíčů eliptické křivky P-256, P-384, P-521 a P-256 (SECP256K1).
 
-### <a name="cryptographic-protection"></a>Ochrana kryptografických
+### <a name="cryptographic-protection"></a>Kryptografická ochrana
 
-Kryptografických modulů, které používá služby Key Vault, zda HSM nebo software, jsou ověřené podle standardu FIPS (Federal Information Processing Standards). Nemusíte dělat nic zvláštního ke spuštění v režimu FIPS. Klíče **vytvořili** nebo **importovat** jako chráněné pomocí HSM jsou zpracovány uvnitř modulu hardwarového zabezpečení, ověření podle standardu FIPS 140-2 úrovně 2. Klíče **vytvořili** nebo **importovat** jako chráněný softwarem, jsou zpracovávány v kryptografických modulů, které jsou ověřené na FIPS 140-2 úrovně 1. Další informace najdete v tématu [klíče a typy klíčů](#keys-and-key-types).
+Kryptografické moduly, které Key Vault používá, je-li modul HARDWAROVÉho zabezpečení nebo software, ověřovány pomocí standardu FIPS (Federal Information Processing Standards). Ke spuštění v režimu FIPS nemusíte nic dělat zvlášť. Klíče **vytvořené** nebo **importované** jako chráněné HSM se zpracovávají v modulu hardwarového zabezpečení, který je ověřený na úrovni FIPS 140-2 Level 2. Klíče **vytvořené** nebo **importované** jako chráněný software se zpracovávají v rámci kryptografických modulů ověřených na FIPS 140-2 úrovně 1. Další informace naleznete v tématu [klíče a typy klíčů](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>Algoritmy ES
- Podporují se následující identifikátory algoritmus s klíči ES a ES HSM ve službě Key Vault. 
+ Následující identifikátory algoritmu jsou podporovány s klíči ES a modulem ES-HSM v Key Vault. 
 
-#### <a name="curve-types"></a>Typy křivky
+#### <a name="curve-types"></a>Typy křivek
 
--   **P-256** – The NIST křivky p-256, definované v [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256_K** – The s křivky SECP256K1 definované na [s 2: Doporučené parametry domény eliptické křivky](https://www.secg.org/sec2-v2.pdf).
--   **P-384** – The NIST křivky p-384 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-521** – The NIST křivky p-521 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256** – křivka NIST p-256, definovaná na [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256** – křivka s SECP256K1, definovaná v [sekundách 2: Doporučené parametry](https://www.secg.org/sec2-v2.pdf)domény eliptické křivky
+-   **P-384** – křivka NIST p-384, definovaná na [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-521** – křivka NIST p-521, definovaná na [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
-#### <a name="signverify"></a>/ OVĚŘENÍ
+#### <a name="signverify"></a>PODEPSAT/OVĚŘIT
 
--   **ES256** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky p-256. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
--   **ES256K** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky P-256_K. Čeká na tento algoritmus normalizace.
--   **ES384** – hodnoty Digest ECDSA pro SHA-384 a klíče vytvořené pomocí křivky p-384. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
--   **ES512** – hodnoty Digest pro algoritmus SHA-512 ECDSA a klíče vytvořené pomocí křivky p-521. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES256** -ECDSA pro výtahy SHA-256 a klíče vytvořené pomocí křivky P-256. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES256K** -ECDSA pro SHA-256 Digest a klíče vytvořené pomocí křivky P-256. Tento algoritmus čeká na standardizaci.
+-   **ES384** -ECDSA pro výtahy SHA-384 a klíče vytvořené pomocí křivky P-384. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES512** -ECDSA pro výtahy SHA-512 a klíče vytvořené pomocí křivky P-521. Tento algoritmus je popsaný na adrese [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>Algoritmy RSA  
- Podporují se následující identifikátory algoritmus s klíči RSA a RSA HSM ve službě Key Vault.  
+ Následující identifikátory algoritmu jsou podporovány u klíčů RSA a RSA-HSM v Key Vault.  
 
-#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY A UNWRAPKEY, ŠIFROVÁNÍ/DEŠIFROVÁNÍ
+#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ŠIFROVAT/DEŠIFROVAT
 
--   **RSA1_5** -šifrování klíče RSAES V1_5 PKCS1 [RFC3447]  
--   **RSA OAEP** – RSAES optimální asymetrického šifrování odsazení (OAEP) [RFC3447], pomocí zadané podle RFC. v části podle A.2.1 3447 výchozí parametry. Tyto výchozí parametry jsou pomocí funkce hash SHA-1 a funkce generování maska MGF1 pomocí algoritmu SHA-1.  
+-   **RSA1_5** -RSAES-výplně PKCS1-V1_5 [RFC3447] šifrování klíče  
+-   **RSA-výplně OAEP** -RSAES s použitím optimálního odsazení asymetrického šifrování (výplně OAEP) [RFC3447] s výchozími parametry URČENÝMI specifikací RFC 3447 v oddílu A. 2.1. Tyto výchozí parametry používají funkci hash SHA-1 a funkci generování masky MGF1 s SHA-1.  
 
-#### <a name="signverify"></a>/ OVĚŘENÍ
+#### <a name="signverify"></a>PODEPSAT/OVĚŘIT
 
--   **RS256** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-256. Hodnotu digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-256 a musí mít délku 32 bajtů.  
--   **RS384** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-384. Hodnota ověřování algoritmem digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-384 a musí být aspoň 48 bajtů v délce.  
--   **RS512** – RSASSA-PKCS-v1_5 pomocí algoritmu SHA-512. Hodnotu digest aplikace zadán musí být vypočítán pomocí algoritmu SHA-512 a musí mít délku 64 bajtů.  
--   **RSNULL** – viz [RFC2437] specializované případu použití k povolení určitých scénářích TLS.  
+-   **RS256** -RSASSA-PKCS-V1_5 pomocí SHA-256. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-256 a musí být 32 bajtů.  
+-   **RS384** -RSASSA-PKCS-V1_5 pomocí SHA-384. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-384 a musí být 48 bajtů.  
+-   **RS512** -RSASSA-PKCS-V1_5 pomocí SHA-512. Hodnota algoritmu Digest poskytnutá aplikací musí být počítaná pomocí SHA-512 a musí být 64 bajtů.  
+-   **RSNULL** – viz [RFC2437], specializovaný případ použití pro povolení určitých scénářů TLS.  
 
 ###  <a name="key-operations"></a>Klíčové operace
 
-Key Vault podporuje následující operace na klíčové objekty:  
+Key Vault podporuje pro klíčové objekty následující operace:  
 
--   **Vytvoření**: Umožňuje klientovi vytvoření klíče v Key Vault. Hodnotu klíče je generována pomocí služby Key Vault a uloženy a není vydané do klienta. Asymetrické klíče mohou být vytvořeny ve službě Key Vault.  
--   **Import**: Umožňuje klientovi importovat existující klíč služby Key Vault. Asymetrické klíče mohou importovat do služby Key Vault pomocí několika různých balení metod v rámci JWK konstrukce. 
--   **Aktualizace**: Umožňuje klientovi s dostatečnými oprávněními k úpravě metadat (klíčové atributy) přidružené k dříve uložené ve službě Key Vault klíč.  
--   **Odstranit**: Umožňuje klientovi s dostatečnými oprávněními k odstranění klíče ze služby Key Vault.  
--   **Seznam**: Umožňuje klientovi seznam všech klíčů v dané službě Key Vault.  
--   **Seznam verzí**: Umožňuje klientovi seznam všech verzí daného klíče v dané službě Key Vault.  
--   **Získat**: Umožňuje klientovi načíst veřejnou částí daného klíče ve službě Key Vault.  
--   **Zálohování**: Exportuje klíče ve formě chráněné.  
--   **Obnovit**: Importovat dříve zálohovaná klíč.  
+-   **Vytvořit**: Umožňuje klientovi vytvořit klíč v Key Vault. Hodnota klíče je vygenerována Key Vault a uložená a není klientovi uvolněna. V Key Vault lze vytvořit asymetrické klíče.  
+-   **Importovat**: Umožňuje klientovi importovat existující klíč do Key Vault. Asymetrické klíče mohou být importovány do Key Vault pomocí řady různých metod balení v rámci konstrukce JWK. 
+-   **Aktualizace**: Umožňuje klientovi s dostatečnými oprávněními upravovat metadata (atributy klíčů) přidružená k klíči, který byl dřív uložený v Key Vault.  
+-   **Odstranit**: Povolí klientovi s dostatečnými oprávněními k odstranění klíče z Key Vault.  
+-   **Seznam**: Umožňuje klientovi zobrazit seznam všech klíčů v daném Key Vault.  
+-   **Verze seznamu**: Umožňuje klientovi zobrazit seznam všech verzí daného klíče v daném Key Vault.  
+-   **Získat**: Umožňuje klientovi načíst veřejné části daného klíče v Key Vault.  
+-   **Záloha**: Exportuje klíč do chráněného formuláře.  
+-   **Obnovit**: Importuje dříve zálohovaný klíč.  
 
-Další informace najdete v tématu [klíče operací v Key Vault REST API odkaz](/rest/api/keyvault).  
+Další informace naleznete v tématu [klíčové operace v Key Vault REST API](/rest/api/keyvault).  
 
-Po vytvoření klíče ve službě Key Vault může následující kryptografické operace provádějí pomocí klíče:  
+Po vytvoření klíče v Key Vault můžou pomocí klíče provádět následující kryptografické operace:  
 
--   **Přihlášení a ověření**: Tato operace je přísně "hodnota hash podpisu" nebo "ověřit", jak Key Vault nepodporuje hashování obsahu jako součást vytváření podpis. Aplikace by měla hash data, která mají být podepsané místně, a pak žádost o přihlášení služby Key Vault-the-hash. Ověření hodnoty hash podepsaný držitelem je podporovaný jako pohodlí operace pro aplikace, které nemusí mít přístup k [veřejná] materiál klíče. Pro zajištění nejlepšího výkonu aplikace ověřte, že operace se provádějí místně.  
--   **Šifrování klíče / obtékání**: Klíč uložený ve službě Key Vault slouží k ochraně klíče jiného, obvykle symetrického obsahu šifrovacího klíče (CEK). Po asymetrického klíče v Key Vault se používá šifrování pomocí klíče. Například operace WRAPKEY a UNWRAPKEY a RSA OAEP jsou ekvivalentní k šifrování a DEŠIFROVÁNÍ. Po symetrický klíč ve službě Key Vault klíč wrapping se používá. Například AES KW. WRAPKEY operace je podporována v zájmu usnadnění práce pro aplikace, které nemusí mít přístup k [veřejná] materiál klíče. Pro zajištění nejlepšího výkonu aplikace WRAPKEY operace je třeba provést místně.  
--   **Šifrování a dešifrování**: Klíč uložený ve službě Key Vault slouží k šifrování a dešifrování dat jeden blok. Velikost bloku je určen podle typu klíče a vybrané šifrovací algoritmus. Operace šifrování se poskytuje pro usnadnění práce pro aplikace, které nemusí mít přístup k [veřejná] materiál klíče. Pro zajištění nejlepšího výkonu aplikace šifrování operace by měl provádět místně.  
+-   **Podepsat a ověřit**: Výhradně Tato operace je "Sign hash" nebo "verify hash", protože Key Vault v rámci vytváření podpisu nepodporuje Hashování obsahu. Aplikace by měly vyhodnotit data, která se mají místně podepsat, a pak požadovat, Key Vault podepsat hodnotu hash. Ověřování podepsaných hodnot hash se podporuje jako pohodlná operace pro aplikace, které nemusí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací ověřte, zda jsou operace prováděny místně.  
+-   **Šifrování a zabalení klíče**: Klíč uložený v Key Vault může být použit k ochraně jiného klíče, obvykle symetrického šifrovacího klíče symetrického obsahu (CEK). Když je klíč v Key Vault asymetrická, použije se šifrování klíče. Například operace RSA-výplně OAEP a operace WRAPKEY/UNWRAPKEY jsou ekvivalentem šifrování/dešifrování. Když je klíč v Key Vault symetrický, používá se zalamování kláves. Například AES-KW. Operace WRAPKEY je podporována jako pohodlí pro aplikace, které nemusejí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací by se operace WRAPKEY měly provádět místně.  
+-   **Šifrování a dešifrování**: Klíč uložený v Key Vault lze použít k šifrování nebo dešifrování jednoho bloku dat. Velikost bloku je určena typem klíče a vybraným šifrovacím algoritmem. Operace šifrování je poskytována pro usnadnění pro aplikace, které nemusí mít přístup k klíčovému materiálu [public]. Pro dosažení optimálního výkonu aplikací by se operace šifrování měly provádět místně.  
 
-Při WRAPKEY a UNWRAPKEY pomocí asymetrických klíčů se může zdát nadbytečný (jak operace je ekvivalentní k šifrování a DEŠIFROVÁNÍ), je důležité používat různé operace. Rozdíl poskytuje sémantické a povolení oddělení těchto operací a konzistence, když jiné typy klíčů jsou podporovány službou.  
+I když se WRAPKEY/UNWRAPKEY s použitím asymetrických klíčů může zdát nadbytečných (protože operace je ekvivalentní zašifrování nebo dešifrování), je důležité použití jedinečných operací. Rozlišení poskytuje sémantiku a oddělení autorizace těchto operací a konzistenci v případě, že služba podporuje jiné typy klíčů.  
 
-Key Vault nepodporuje operace EXPORTU. Po zřízení klíčem v systému není možné extrahovat nebo změnit jeho klíče. Uživatelé služby Key Vault však může vyžadovat svůj klíč pro případy, například jako po byla odstraněna další použití. V takovém případě může používají operace zálohování a obnovení pro export a import klíče ve formě chráněné. Klíče vytvořené operací zálohování nejsou použitelné mimo služby Key Vault. Alternativně se operace IMPORTU lze proti více instancí služby Key Vault.  
+Key Vault nepodporuje operace exportu. Jakmile se v systému zřídí klíč, nedá se extrahovat ani upravovat materiál klíče. Uživatelé Key Vault však mohou vyžadovat jejich klíč pro jiné případy použití, například po odstranění. V takovém případě mohou pomocí operací zálohování a obnovení exportovat nebo importovat klíč v chráněném formuláři. Klíče vytvořené operací zálohování nejsou použitelné mimo Key Vault. Alternativně lze operaci importu použít pro více instancí Key Vault.  
 
-Uživatelé mohou omezit všechny kryptografické operace, které služby Key Vault podporuje na základě za klíč pomocí vlastnosti key_ops JWK objektu.  
+Uživatelé mohou omezit jakékoli kryptografické operace, které Key Vault podporuje na základě klíče, pomocí vlastnosti key_ops objektu JWK.  
 
-Další informace o objektech JWK, naleznete v tématu [JSON Web klíč (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+Další informace o objektech JWK naleznete v tématu [JSON web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
 
 ###  <a name="key-attributes"></a>Klíčové atributy
 
-Kromě materiál klíče je možné zadat následující atributy. V požadavku JSON, atributy – klíčové slovo a složené závorky ' {""} ", jsou požadovány, i když nejsou žádné atributy určené.  
+Kromě klíčového materiálu lze zadat následující atributy. V požadavku JSON jsou klíčové slovo atributů a složené závorky ({' '} ') vyžadovány i v případě, že nejsou zadány žádné atributy.  
 
-- *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Určuje, zda je klávesa aktivní a použitelný pro kryptografické operace. *Povolené* atribut se používá ve spojení s *nbf* a *exp*. Při operaci dochází mezi *nbf* a *exp*, se budou jenom povoleny Pokud *povolené* je nastavena na **true**. Operace mimo *nbf* / *exp* okno automaticky jsou zakázané, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations).
-- *nbf*: Volitelné, výchozí IntDate, je teď. *Nbf* (ne před) atribut určuje dobu, před kterým musí klíč není používán pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *nbf* atribut vyžaduje, že aktuální datum a čas musí nastat po nebo rovno nikoli-před podle data a času *nbf* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *exp*: Volitelné, IntDate, výchozí hodnota je "navždy". *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti nebo později, který klíč nesmí použít pro kryptografické operace, s výjimkou určitých typů operace v rámci [konkrétní podmínky](#date-time-controlled-operations). Zpracování *exp* atribut vyžaduje, že aktuální datum a čas musí být před datum a čas vypršení platnosti uvedené v *exp* atribut. Key Vault může poskytnout pro některé malé volnost, obvykle více než několik minut, aby se zohlednily hodin zkreslit. Hodnotou musí být číslo obsahující hodnotu IntDate.  
+- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Určuje, jestli je klíč povolený a použitelný pro kryptografické operace. Atribut *Enabled* se používá ve spojení s *NBF* a *exp*. Pokud dojde k operaci mezi *NBF* a *exp*, bude povoleno pouze v případě, že je vlastnost *Enabled* nastavena na **hodnotu true**. Operace mimo okno s*expem* *NBF* / se automaticky nepovolují, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations).
+- *NBF*: IntDate, volitelné, výchozí nastavení je nyní. Atribut *NBF* (nikoli před) určuje dobu, po jejímž uplynutí nesmí být klíč použit pro kryptografické operace, s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *NBF* vyžaduje, aby aktuální datum a čas musel být pozdější nebo rovno datu a času, které je uvedené v atributu *NBF* . Key Vault může poskytovat některé malé Leeway, obvykle ne více než několik minut, aby se zohlednila časová zkosená část. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
+- *exp*: IntDate, volitelné, výchozí nastavení je "navždy". Atribut *exp* (čas vypršení platnosti) identifikuje čas vypršení platnosti nebo po jehož uplynutí se klíč nesmí používat pro kryptografickou operaci s výjimkou určitých typů operací za určitých [podmínek](#date-time-controlled-operations). Zpracování atributu *exp* vyžaduje, aby aktuální datum a čas musely být před datem a časem vypršení platnosti uvedené v atributu *exp* . Key Vault může poskytovat malým leewayům, obvykle ne více než několik minut, pro účet pro časové zkosení. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 
-Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která zahrnuje klíčové atributy:  
+Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odpovědi, která obsahuje klíčové atributy:  
 
-- *vytvoření*: IntDate volitelné. *Vytvořili* atribut označuje, kdy byla vytvořena tato verze klíče. Je hodnota null pro klíče vytvořené před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *updated*: IntDate volitelné. *Aktualizovat* atribut označuje, kdy došlo k aktualizaci této verze klíče. Je hodnota null pro klíče, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
+- *Vytvořeno*: IntDate, volitelné. *Vytvořený* atribut označuje, kdy byla tato verze klíče vytvořena. Pro klíče vytvořené před přidáním tohoto atributu je hodnota null. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
+- *Aktualizováno*: IntDate, volitelné. *Aktualizovaný* atribut určuje, kdy byla tato verze klíče aktualizována. Hodnota je null u klíčů, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
 
-Další informace o IntDate a jiné datové typy najdete v tématu [datové typy](#data-types)  
+Další informace o IntDate a dalších datových typech najdete v tématu [datové typy](#data-types) .  
 
-#### <a name="date-time-controlled-operations"></a>Operace řízené datum a čas
+#### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Není dosud platný a jeho platnost klíče, mimo *nbf* / *exp* okna, bude fungovat pro **dešifrovat**, **rozbalení**a **ověřte** operací (nevrátí 403, zakázáno). Důvody pro použití není dosud platný stavu je umožnit klíč, který má být testována před použití v produkčním prostředí. Důvody pro použití vypršela platnost je umožnit operace obnovení pro data, která byla vytvořena, když byl platný klíč. Kromě toho můžete zakázat přístup ke klíči pomocí služby Key Vault zásad nebo aktualizací *povolené* klíčový atribut k **false**.
+Neplatných klíčů a klíčů s vypršenou platností / mimo okno*exp exp* budou fungovat pro **dešifrování**, **rozbalení**a **ověření** operací (nevrátí 403, zakázáno). K tomu, aby bylo možné použít neplatný stav, je povolení testování klíče před použitím v produkčním prostředí. Odůvodnění použití stavu s vypršenou platností je povolení operací obnovení u dat, která byla vytvořena při platnosti klíče. Můžete také zakázat přístup k klíči pomocí zásad Key Vault nebo aktualizací atributu *Enabled* Key na **hodnotu false (NEPRAVDA**).
 
-Další informace o typech dat najdete v části [datové typy](#data-types).
+Další informace o typech dat najdete v tématu [datové typy](#data-types).
 
-Další informace o dalších atributů je to možné, najdete v článku [JSON Web klíč (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Další informace o dalších možných atributech najdete v tématu [webový klíč JSON (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
-### <a name="key-tags"></a>Klíče značek
+### <a name="key-tags"></a>Klíčové značky
 
-Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 znaků názvu a hodnoty 256 znaků.  
+Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
 
 >[!Note]
->Značky jsou přečíst volající v případě, že mají *seznamu* nebo *získat* oprávnění pro tento typ objektu (klíče, tajné kódy nebo certifikáty).
+>Značky mohou číst volající, pokud mají *seznam* , nebo *získat* oprávnění k tomuto typu objektu (klíče, tajné klíče nebo certifikáty).
 
 ###  <a name="key-access-control"></a>Řízení přístupu ke klíčům
 
-Řízení přístupu pro klíče spravované službou Key Vault je zadaná na úrovni, která funguje jako kontejner klíčů služby Key Vault. Zásada řízení přístupu pro klíče, se liší od zásad řízení přístupu pro tajné kódy ve stejné službě Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení klíče a jsou nutné k údržbě scénář odpovídající segmentaci a správu klíčů. Řízení přístupu pro klíče je nezávislé na řízení přístupu pro tajné kódy.  
+Řízení přístupu pro klíče spravované pomocí Key Vault je k dispozici na úrovni Key Vault, která funguje jako kontejner klíčů. Zásady řízení přístupu pro klíče se liší od zásad řízení přístupu pro tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro blokování klíčů a jsou požadovány pro zachování vhodného segmentace a správy klíčů ve scénáři. Řízení přístupu pro klíče je nezávisle na řízení přístupu tajných kódů.  
 
-Tato oprávnění lze udělit, na za uživatele / service základem v položky řízení přístupu klíče v trezoru. Tato oprávnění úzce zrcadlí přípustné na klíče objektu operace.  Udělení přístupu instančnímu objektu ve službě key vault je jednorázová operace a zůstane stejný pro všechna předplatná Azure. Můžete ji nasadit libovolný počet certifikátů, jak chcete. 
+Následující oprávnění se dají udělit na základě jednotlivých uživatelů nebo instančních objektů v položce řízení přístupu klíčů v trezoru. Tato oprávnění pečlivě zrcadlí operace povolené u objektu klíče.  Udělení přístupu k instančnímu objektu v trezoru klíčů je operace jednorázová a ta zůstane stejná pro všechna předplatná Azure. Můžete ji použít k nasazení libovolných certifikátů, kolik chcete. 
 
 - Oprávnění pro operace správy klíčů
-  - *get*: Přečtěte si části veřejný klíč a jeho atributy
-  - *Seznam*: Seznam klíčů nebo verze klíč uložený ve službě key vault
-  - *update*: Aktualizovat atributy pro klíč
-  - *Vytvoření*: Vytvářet nové klíče
-  - *import*: Import klíče do trezoru klíčů
+  - *získat*: Přečtěte si veřejnou část klíče a její atributy.
+  - *seznam*: Výpis klíčů nebo verzí klíče uloženého v trezoru klíčů
+  - *aktualizace*: Aktualizace atributů klíče
+  - *vytvořit*: Vytvořit nové klíče
+  - *importovat*: Import klíče do trezoru klíčů
   - *Odstranit*: Odstranit objekt klíče
-  - *Obnovit*: Obnovení odstraněné klíče
-  - *Zálohování*: Zálohování klíče v trezoru klíčů
-  - *Obnovit*: Obnovení zálohovaného klíč do trezoru klíčů
+  - *obnovit*: Obnovit odstraněný klíč
+  - *záloha*: Zálohování klíče v trezoru klíčů
+  - *obnovit*: Obnovení zálohovaného klíče do trezoru klíčů
 
 - Oprávnění pro kryptografické operace
-  - *dešifrování*: Použít klíč k odemknutí pořadí bajtů
-  - *šifrování*: Použít klíč pro ochranu libovolného pořadí bajtů
-  - *unwrapKey*: Použít klíč k odemknutí zabalené symetrické klíče
-  - *wrapKey*: Použít klíč k ochraně symetrický klíč
-  - *Ověřte*: Použít klíč k ověření přehledu  
-  - *znaménko*: Použít klíč k podepsání přehledu
+  - *dešifrovat*: K odemknutí posloupnosti bajtů použijte klávesu.
+  - *Šifrovat*: Použití klíče k ochraně libovolné posloupnosti bajtů
+  - *unwrapKey*: K odemknutí zabaleného symetrického klíče použijte klávesu
+  - *wrapKey*: Použití klíče k ochraně symetrického klíče
+  - *ověřit*: Pomocí klíče ověřte hodnoty Digest.  
+  - *podpis*: Použijte klíč k podepsání výtahů.
     
-- Oprávnění u privilegovaných operací
-  - *Vyprázdnit*: Vymazat (trvale odstranit) odstraněné klíče
+- Oprávnění pro privilegované operace
+  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný klíč
 
-Další informace o práci s klíči najdete v tématu [klíče operací v Key Vault REST API odkaz](/rest/api/keyvault). Informace o vytvářejí se oprávnění najdete v tématu [trezory - vytvořit nebo aktualizovat](/rest/api/keyvault/vaults/createorupdate) a [trezorů – aktualizace zásad přístupu](/rest/api/keyvault/vaults/updateaccesspolicy). 
+Další informace o práci s klíči naleznete v tématu [klíčové operace v odkazu Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="key-vault-secrets"></a>Tajné klíče služby Key Vault 
+## <a name="key-vault-secrets"></a>Key Vault tajných klíčů 
 
 ### <a name="working-with-secrets"></a>Práce s tajnými kódy
 
-Rozhraní API Key Vault z pohledu vývojáře přijímají a vrací hodnoty tajných kódů jako řetězce. Interně služby Key Vault uchovává a spravuje tajné kódy jako sekvence oktety (8 bitů v bajtech), s maximální velikostí 25 tisíc bajtů. Služba Key Vault neposkytuje sémantiku tajnými kódy. Je pouze přijímá data, šifruje, uloží ho a vrátí identifikátor tajného kódu ("id"). Tento identifikátor slouží k načtení tajný kód později.  
+Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. Interně Key Vault ukládá a spravuje tajné klíče jako sekvence oktetů (8bitové bajty) a maximální velikost 25k bajtů. Služba Key Vault neposkytuje sémantiku tajných kódů. Přijímá pouze data, šifruje je, ukládá je a vrací tajný identifikátor (ID). Identifikátor lze použít k pozdějšímu načtení tajného klíče.  
 
-Pro vysoce citlivá data klienti měli zvážit další vrstvy ochrany pro data. Šifrování dat pomocí klíče samostatné ochrany před úložiště ve službě Key Vault je jedním z příkladů.  
+Pro vysoce citlivá data by klienti měli zvážit další vrstvy ochrany dat. Šifrování dat pomocí samostatného klíče ochrany před úložištěm v Key Vault je jedním příkladem.  
 
-Key Vault podporuje také pole contentType tajnými kódy. Klienti mohou zadat typ obsahu pomáhat při interpretaci tajných dat při načítání tajného kódu. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované využívá jako Nápověda pro interpretaci tajná data. Například implementace může ukládat hesla a certifikáty jako tajné kódy a pak toto pole použít k rozlišení. Neexistují žádné předdefinované hodnoty.  
+Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou určit typ obsahu tajného kódu, který pomůže při interpretaci tajných dat při jejich načítání. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako pomocný parametr pro interpretaci tajných dat. Implementace může například ukládat hesla i certifikáty jako tajné klíče a pak je odlišit pomocí tohoto pole. Nejsou k dispozici žádné předdefinované hodnoty.  
 
-### <a name="secret-attributes"></a>Atributy tajného kódu
+### <a name="secret-attributes"></a>Tajné atributy
 
 Kromě tajných dat lze zadat následující atributy:  
 
-- *exp*: Je volitelný, výchozí IntDate, **navždy**. *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které tajná data by měla nelze načíst, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** účely jen informuje uživatele ze služby key vault, nelze použít konkrétní tajný klíč. Hodnotou musí být číslo obsahující hodnotu IntDate.   
-- *nbf*: Je volitelný, výchozí IntDate, **nyní**. *Nbf* (ne před) atribut určuje dobu, před kterým by MĚL nebyla načtena tajných dat, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** pouze účely. Hodnotou musí být číslo obsahující hodnotu IntDate. 
-- *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Tento atribut určuje, zda lze načíst tajné údaje. Atribut enabled se používá ve spojení s *nbf* a *exp* dojde operaci mezi *nbf* a *exp*, bude pouze povolené, pokud je povoleno je nastavená na **true**. Operace mimo *nbf* a *exp* okno se automaticky zakázaná, s výjimkou v [konkrétní situace](#date-time-controlled-operations).  
+- *exp*: IntDate, volitelné, výchozí nastavení je **trvale**. Atribut *exp* (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům, protože informuje uživatele služby trezoru klíčů, že není možné použít konkrétní tajný klíč. Jeho hodnota musí být číslo obsahující hodnotu IntDate.   
+- *NBF*: IntDate, volitelné, výchozí nastavení je **nyní**. Atribut *NBF* (nikoli dřív) určuje čas, před kterým by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům. Jeho hodnota musí být číslo obsahující hodnotu IntDate. 
+- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Tento atribut určuje, zda mohou být načtena tajná data. Atribut enabled se používá ve spojení s *NBF* a *exp* , pokud dojde k operaci mezi *NBF* a *exp*, ale bude povolená jenom v případě, že je povolená možnost nastavená na **hodnotu true**. Operace mimo okno *NBF* a *exp* se automaticky nepovolují, s výjimkou [zvláštních situací](#date-time-controlled-operations).  
 
-Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která zahrnuje tajný atributy:  
+Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odpovědi, která obsahuje tajné atributy:  
 
-- *vytvoření*: IntDate volitelné. Vytvořený atribut označuje, kdy byla vytvořena tato verze tajného klíče. Je tato hodnota null pro tajné klíče vytvořené před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.  
-- *updated*: IntDate volitelné. Aktualizovaný atribut označuje, kdy došlo k aktualizaci této verzi tajného klíče. Je tato hodnota null pro tajné kódy, které byly aktualizovány naposledy před přidáním tohoto atributu. Hodnotou musí být číslo obsahující hodnotu IntDate.
+- *Vytvořeno*: IntDate, volitelné. Vytvořený atribut označuje, kdy byla tato verze tajného kódu vytvořena. Tato hodnota je null pro tajné klíče vytvořené před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
+- *Aktualizováno*: IntDate, volitelné. Aktualizovaný atribut určuje, kdy byla tato verze tajného kódu aktualizována. Tato hodnota je null pro tajné kódy, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.
 
-#### <a name="date-time-controlled-operations"></a>Operace řízené datum a čas
+#### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Tajného **získat** operace bude fungovat pro tajné klíče není dosud platný a jejichž platnost vypršela, mimo *nbf* / *exp* okna. Volání tajného **získat** operaci pro není dosud platný tajný kód, lze použít pro účely testování. Načítání (**získat**nocení) vypršela platnost tajného klíče, lze použít pro operace obnovení.
+Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno*exp* pro *NBF* / . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání**nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
 
-Další informace o typech dat najdete v části [datové typy](#data-types).  
+Další informace o typech dat najdete v tématu [datové typy](#data-types).  
 
 ### <a name="secret-access-control"></a>Řízení přístupu k tajným klíčům
 
-Řízení přístupu pro tajné klíče spravované ve službě Key Vault, je k dispozici na úrovni služby Key Vault, která obsahuje tyto tajné kódy. Zásady řízení přístupu pro tajné klíče, se liší od zásad řízení přístupu pro klíče ve stejné službě Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení tajných kódů a jsou nutné k údržbě scénář odpovídající segmentaci a správu tajných kódů.   
+Access Control pro tajné klíče spravované v Key Vault je k dispozici na úrovni Key Vault, které tyto tajné kódy obsahují. Zásada řízení přístupu tajných klíčů je odlišná od zásad řízení přístupu pro klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro blokování tajných kódů a jsou vyžadovány pro udržení vhodného segmentace a správy tajných kódů.   
 
-Tato oprávnění můžete použít, na základě na objekt v položky řízení přístupu tajné klíče v trezoru a úzce zrcadlení přípustné tajného kódu objektu operace:  
+Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru a při tom pozorně zrcadlit operace povolené u tajného objektu:  
 
-- Oprávnění pro operace správy tajných kódů
-  - *get*: Čtení tajného klíče  
-  - *Seznam*: Seznam tajných kódů nebo verzí tajného klíče do služby Key Vault  
-  - *set*: Vytvoření tajného klíče  
+- Oprávnění pro operace správy tajných klíčů
+  - *získat*: Čtení tajného klíče  
+  - *seznam*: Výpis tajných kódů nebo verzí tajného kódu uložených ve Key Vault  
+  - *nastavit*: Vytvoření tajného kódu  
   - *Odstranit*: Odstranění tajného klíče  
-  - *Obnovit*: Obnovení odstraněné tajného kódu
-  - *Zálohování*: Zálohování tajný klíč v trezoru klíčů
-  - *Obnovit*: Obnovení zálohovaného až tajného klíče do trezoru klíčů
+  - *obnovit*: Obnovení odstraněných tajných kódů
+  - *záloha*: Zálohování tajného klíče v trezoru klíčů
+  - *obnovit*: Obnovení zálohovaného tajného klíče do trezoru klíčů
 
-- Oprávnění u privilegovaných operací
-  - *Vyprázdnit*: Vymazat (trvale odstranit) odstraněné tajného kódu
+- Oprávnění pro privilegované operace
+  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný tajný kód
 
-Další informace o práci s tajnými kódy, naleznete v tématu [tajných kódů operací v Key Vault REST API odkaz](/rest/api/keyvault). Informace o vytvářejí se oprávnění najdete v tématu [trezory - vytvořit nebo aktualizovat](/rest/api/keyvault/vaults/createorupdate) a [trezorů – aktualizace zásad přístupu](/rest/api/keyvault/vaults/updateaccesspolicy). 
+Další informace o práci s tajnými kódy naleznete [v tématu tajné operace v odkazu na Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-### <a name="secret-tags"></a>Značky tajného kódu  
-Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 znaků názvu a hodnoty 256 znaků.  
-
->[!Note]
->Značky jsou přečíst volající v případě, že mají *seznamu* nebo *získat* oprávnění pro tento typ objektu (klíče, tajné kódy nebo certifikáty).
-
-## <a name="key-vault-certificates"></a>Certifikátů trezor klíčů
-
-Podpora certifikáty služby Key Vault nabízí pro správu vaší x509 certifikáty a následujícího chování:  
-
--   Umožňuje vlastníkovi certifikátů k vytvoření certifikátu prostřednictvím procesu vytváření služby Key Vault nebo importu stávajícího certifikátu. Zahrnuje podepsané svým držitelem i a vygenerovat certifikáty certifikační autority.
--   Umožňuje vlastníkovi certifikát služby Key Vault implementací zabezpečeného úložiště a správy X509 certifikáty bez interakce s materiál privátního klíče.  
--   Umožňuje vlastníkovi certifikát můžete vytvořit zásadu, která přesměruje služby Key Vault pro správu životního cyklu certifikátu.  
--   Umožňuje vlastníkům certifikát lze zadat kontaktní informace pro oznámení o události životního cyklu vypršení platnosti a obnovení certifikátu.  
--   Podporuje automatické obnovení s vybranou vystavitelů - Key Vault partnera X509 certifikát poskytovatele / certifikační autority.
+### <a name="secret-tags"></a>Tajné značky  
+Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
 
 >[!Note]
->Partnerství jiných poskytovatelů nebo autority jsou také povoleny, ale nebude podporovat funkci automatického obnovení.
+>Značky mohou číst volající, pokud mají *seznam* , nebo *získat* oprávnění k tomuto typu objektu (klíče, tajné klíče nebo certifikáty).
+
+## <a name="key-vault-certificates"></a>Key Vault certifikátů
+
+Podpora certifikátů Key Vault poskytuje správu certifikátů x509 a následující chování:  
+
+-   Umožňuje vlastníkovi certifikátu vytvořit certifikát prostřednictvím procesu vytváření Key Vault nebo pomocí importu existujícího certifikátu. Zahrnuje certifikáty podepsané svým držitelem i certifikáty vygenerované certifikační autoritou.
+-   Umožňuje vlastníkovi Key Vault certifikátu implementovat zabezpečené úložiště a správu certifikátů x509 bez interakce s materiálem privátního klíče.  
+-   Umožňuje vlastníkovi certifikátu vytvořit zásadu, která směruje Key Vault pro správu životního cyklu certifikátu.  
+-   Umožňuje vlastníkům certifikátů poskytovat kontaktní informace pro oznámení o událostech životního cyklu vypršení platnosti a obnovení certifikátu.  
+-   Podporuje automatické obnovení s vybranými vystaviteli – Key Vault poskytovatelé certifikátů a certifikačních autorit partnerů x509.
+
+>[!Note]
+>Neposkytovatelé nebo autority, které nejsou partnerskými servery, jsou také povoleny, ale nebudou podporovat funkci automatického obnovení.
 
 ### <a name="composition-of-a-certificate"></a>Složení certifikátu
 
-Když se vytvoří certifikátem Key Vaultu, se stejným názvem, vytvoří také adresovatelný klíč a tajný klíč služby. Klíč služby Key Vault umožňuje operace klíče a tajného kódu Key Vault umožňuje načíst hodnotu certifikát jako tajný kód. Certifikát služby Key Vault také obsahuje veřejné x509 certifikátu metadat.  
+Když se vytvoří certifikát Key Vault, vytvoří se také adresovatelný klíč a tajný kód se stejným názvem. Klíč Key Vault umožňuje operace s klíči a Key Vault tajný klíč umožňuje načtení hodnoty certifikátu jako tajného klíče. Certifikát Key Vault obsahuje také veřejná metadata certifikátu x509.  
 
-Identifikátor a verzi certifikátů je podobný tomu klíčů a tajných kódů. Konkrétní verzi adresovatelný klíč a tajný kód s verzí certifikát služby Key Vault je k dispozici v odpovědi certifikátu služby Key Vault.
+Identifikátor a verze certifikátů jsou podobné klíčům a tajným klíčům. V odpovědi na certifikát Key Vault je dostupná konkrétní verze adresovatelného klíče a tajného klíče vytvořeného pomocí Key Vault verze certifikátu.
  
-![Certifikáty jsou komplexních objektů](media/azure-key-vault.png)
+![Certifikáty jsou komplexní objekty.](media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>Exportovatelné nebo jiných exportovatelné klíče
+### <a name="exportable-or-non-exportable-key"></a>Exportovatelné nebo neexportované klíče
 
-Když se vytvoří certifikátem Key Vaultu, se dá načíst z adresovatelný tajného kódu s privátním klíčem ve formátu PFX nebo PEM. Zásady použité k vytvoření certifikátu musí uvádět, že klíč je možné exportovat. Pokud zásady označuje neexportovatelného, privátní klíč není součástí hodnotu, pokud načíst jako tajný kód.  
+Když se vytvoří certifikát Key Vault, dá se načíst z adresního tajemství s privátním klíčem ve formátu PFX nebo PEM. Zásady použité k vytvoření certifikátu musí označovat, že klíč lze exportovat. Pokud zásada indikuje, že není exportovaná, privátní klíč není součástí hodnoty, když se načte jako tajný kód.  
 
-Adresovatelný klíč se stane relevantnější neexportovatelného KV certifikáty. Operace adresovatelný KV klíč mapování z *keyusage* Zásady certifikátů KV použilo k vytvoření certifikátu KV pole.  
+Adresovatelný klíč se bude důležitější s neexportovatelnými certifikáty KV. Operace s adresovatelnými klávesami se mapují z pole *použití* zásad certifikátu KV, které slouží k vytvoření certifikátu kV.  
 
-Podporuje dva typy klíče – *RSA* nebo *RSA HSM* pomocí certifikátů. Exportovatelné je povolen pouze v RSA, není podporována RSA modulu hardwarového zabezpečení.  
+Podporovány jsou dva typy klíčů – modul *hardwarového* zabezpečení *RSA* nebo RSA s certifikáty. Exportovatelné je povolené jenom s šifrováním RSA, které nepodporuje modul HARDWAROVÉho zabezpečení RSA.  
 
-### <a name="certificate-attributes-and-tags"></a>Certifikát atributy a značky
+### <a name="certificate-attributes-and-tags"></a>Atributy a značky certifikátů
 
-Kromě metadaty certifikátu, adresovatelný klíč a adresovatelný tajný klíč certifikátem Key Vaultu taky obsahuje atributy a značky.  
+Kromě metadat certifikátu obsahuje Key Vault certifikát také atributy a značky, které mají adresovatelný klíč a adresovatelný tajný klíč.  
 
 #### <a name="attributes"></a>Atributy
 
-Atributy adresovatelný klíč a tajný klíč vytvořený při vytváření certifikátu KV jsou zrcadleny atributy certifikátu.  
+Atributy certifikátu se zrcadlí do atributů adresovatelného klíče a tajného klíče vytvořeného při vytvoření certifikátu KV.  
 
-Certifikát služby Key Vault má následující atributy:  
+Key Vault certifikát má následující atributy:  
 
--   *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Je možné zadat pro označení, pokud je možné načíst data certifikátu jako provozuschopného jako klíče nebo tajného kódu. Také se používá ve spojení s *nbf* a *exp* dojde operaci mezi *nbf* a *exp*a budou povoleny pouze pokud je povoleno je nastavena na hodnotu true. Operace mimo *nbf* a *exp* okna jsou automaticky zakázány.  
+-   *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp*a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
 
-Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi:
+V odpovědi jsou k dispozici další atributy jen pro čtení, které jsou k dispozici:
 
--   *vytvoření*: IntDate: Určuje, kdy byla vytvořena tato verze certifikátu.  
--   *updated*: IntDate: Určuje, kdy došlo k aktualizaci této verze certifikátu.  
--   *exp*: IntDate: obsahuje hodnotu Datum vypršení platnosti x509 certifikát.  
--   *nbf*: IntDate: obsahuje hodnotu Datum x509 certifikát.  
+-   *Vytvořeno*: IntDate: udává, kdy byla vytvořena tato verze certifikátu.  
+-   *Aktualizováno*: IntDate: udává, kdy se tato verze certifikátu aktualizovala.  
+-   *exp*: IntDate: obsahuje hodnotu data vypršení platnosti certifikátu x509.  
+-   *NBF*: IntDate: obsahuje hodnotu data certifikátu x509.  
 
 > [!Note] 
-> Pokud vyprší platnost certifikátu služby Key Vault, je adresovatelný klíč a tajný kód nefunkčnost.  
+> Pokud Key Vault certifikát vyprší, bude se adresovat klíč a tajný kód nebude fungovat.  
 
 #### <a name="tags"></a>Tags
 
- Klient zadaného slovníku páry klíč-hodnota, podobně jako značky v klíči a tajnými kódy.  
+ Klient zadal slovník párů klíčových hodnot, podobně jako značky v klíčích a tajných klíčích.  
 
  > [!Note]
-> Značky jsou přečíst volající v případě, že mají *seznamu* nebo *získat* oprávnění pro tento typ objektu (klíče, tajné kódy nebo certifikáty).
+> Značky mohou číst volající, pokud mají *seznam* , nebo *získat* oprávnění k tomuto typu objektu (klíče, tajné klíče nebo certifikáty).
 
-### <a name="certificate-policy"></a>Zásady certifikátů
+### <a name="certificate-policy"></a>Zásady certifikátu
 
-Zásady certifikátu obsahuje informace o tom, jak vytvářet a spravovat životní cyklus certifikátem Key Vaultu. Při importu certifikátu s privátním klíčem do služby key vault, najdete x509 se vytvoří výchozí zásady certifikátu.  
+Zásady certifikátu obsahují informace o tom, jak vytvořit a spravovat životní cyklus certifikátu Key Vault. Když se certifikát s privátním klíčem importuje do trezoru klíčů, vytvoří se výchozí zásada načtením certifikátu x509.  
 
-Když certifikátem Key Vaultu je vytvořený z nuly, zásady musí být zadán. Tato zásada určuje, jak vytvořit verzi této služby Key Vault certifikátu nebo na další verzi certifikátu služby Key Vault. Po vytvoření zásady, není to nutné s po sobě jdoucích vytvoření operací pro budoucí verze. Existuje pouze jedna instance zásady pro všechny verze sady certifikátem Key Vaultu.  
+Když se od začátku vytvoří certifikát Key Vault, musí se zadat zásada. Zásada určuje, jak se má vytvořit tato Key Vault verze certifikátu nebo další verze certifikátu Key Vault. Jakmile je zásada navázána, nepožaduje se u následných operací vytvoření budoucích verzí. Pro všechny verze Key Vaultho certifikátu existuje jenom jedna instance zásady.  
 
-Zásady certifikátu na vysoké úrovni obsahuje následující informace:  
+Zásady certifikátu na nejvyšší úrovni obsahují následující informace:  
 
--   X509 certifikátu vlastnosti: Obsahuje název subjektu, alternativní názvy subjektu a další vlastnosti použít k vytvoření x x509 žádost o certifikát.  
--   Vlastnosti klíče: obsahuje typ klíče, délka, exportovat, klíče a znovu použít pole klíče. Tato pole dáte pokyn, aby služby key vault o tom, jak vygenerovat klíč.  
--   Vlastnosti tajného kódu: obsahuje vlastnosti tajného kódu, jako je například typ obsahu adresovatelný tajný kód k vygenerování tajná hodnota pro načtení certifikát jako tajný kód.  
--   Doba života akce: obsahuje akce životnosti KV certifikátu. Obsahuje všechny akce životnost:  
+-   Vlastnosti certifikátu x509: Obsahuje název subjektu, alternativní názvy předmětu a další vlastnosti používané k vytvoření žádosti o certifikát x509.  
+-   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a znovu použít klíčová pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč.  
+-   Vlastnosti tajného klíče: obsahuje tajné vlastnosti, jako je typ obsahu adresovatelných tajných klíčů, aby se vygenerovala tajná hodnota pro načtení certifikátu jako tajného klíče.  
+-   Akce životního cyklu: obsahuje akce životního cyklu pro certifikát KV. Každá akce životnosti obsahuje:  
 
-     - Aktivační události: Zadaný přes dní před vypršení platnosti nebo doba života procento rozpětí  
+     - Aktivační událost: zadáno přes dny před vypršením platnosti nebo procentem rozsahu platnosti  
 
-     - Akce: určení typu akce – *emailContacts* nebo *aktualizují*  
+     - Akce: určení typu akce – *emailContacts* nebo *autorenew*  
 
--   Vystavitel: Parametry o používat certifikáty x509 vystavitele certifikátu.  
--   Zásad atributy: obsahuje atributy přidružených k zásadě  
+-   Stavil Parametry vystavitele certifikátu, který se má použít k vydávání certifikátů x509  
+-   Atributy zásad: obsahuje atributy přidružené k zásadě.  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>X509 mapování využití služby Key Vault
+#### <a name="x509-to-key-vault-usage-mapping"></a>Mapování x509 na Key Vault mapování použití
 
-Následující tabulka představuje mapování x509 zásady použití klíče pro efektivní klíčové operace klíče vytvořené jako součást vytváření certifikátů služby Key Vault.
+Následující tabulka představuje mapování zásad použití klíče x509 na efektivní klíčové operace klíče vytvořené jako součást vytváření certifikátu Key Vault.
 
-|**X509 příznaky použití klíče**|**Ops klíčů služby Key Vault**|**Výchozí chování**|
+|**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
 |DataEncipherment|šifrování, dešifrování| Není k dispozici |
-|DecipherOnly|dešifrování| Není k dispozici  |
-|Bity DigitalSignature|podepsání, ověření| Výchozí služby Key Vault bez specifikace využití v okamžiku vytvoření certifikátu | 
+|DecipherOnly|mohli| Není k dispozici  |
+|DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
 |EncipherOnly|encrypt| Není k dispozici |
-|KeyCertSign|podepsání, ověření|Není k dispozici|
-|KeyEncipherment|wrapKey, unwrapKey| Výchozí služby Key Vault bez specifikace využití v okamžiku vytvoření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsání, ověření| Není k dispozici |
-|crlsign|podepsání, ověření| Není k dispozici |
+|KeyCertSign|podepsat, ověřit|Není k dispozici|
+|KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Není k dispozici |
+|bit crlsign|podepsat, ověřit| Není k dispozici |
 
 ### <a name="certificate-issuer"></a>Vystavitel certifikátu
 
-Objekt certifikátu služby Key Vault uchovává konfigurace používá ke komunikaci se zprostředkovateli vybraný certifikát vystavitele pořadí x509 certifikáty.  
+Objekt certifikátu Key Vault obsahuje konfiguraci, která se používá ke komunikaci s vybraným poskytovatelem vystavitele certifikátu pro řazení certifikátů x509.  
 
--   Partneři služby Key Vault s následujícím poskytovatelé vystavitele certifikátu pro certifikáty SSL
+-   Key Vault partneři s následujícími poskytovateli vystavitelů certifikátů pro certifikáty SSL
 
-|**Název poskytovatele**|**Umístění**|
+|**Název zprostředkovatele**|**Umístění**|
 |----------|--------|
-|DigiCert|Podporováno ve všech umístěních služby key vault ve veřejném cloudu a Azure Government|
-|GlobalSign|Podporováno ve všech umístěních služby key vault ve veřejném cloudu a Azure Government|
+|DigiCert|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
+|GlobalSign|Podporuje se ve všech umístěních služby trezoru klíčů ve veřejném cloudu a Azure Government|
 
-Vystavitel certifikátu bylo možné vytvořit ve službě Key Vault, musí úspěšně provedli následující požadované kroky 1 a 2.  
+Předtím, než je možné vytvořit vystavitele certifikátu v Key Vault, je nutné provést následující kroky 1 a 2 úspěšně.  
 
-1. Připojení ke zprostředkovatelům certifikátu autority (CA)  
+1. Připojení zprostředkovatelů certifikační autority (CA)  
 
-    -   Správce organizace musíte připojit své společnosti (např.) Contoso) s aspoň jednoho poskytovatele certifikační Autority.  
+    -   Správce organizace musí být na své společnosti na své společnosti (např. Contoso) s alespoň jedním poskytovatelem CA.  
 
-2. Správce vytvoří žadatel přihlašovacích údajů pro službu Key Vault k registraci (a obnovit) certifikáty SSL  
+2. Správce vytvoří přihlašovací údaje žadatele pro Key Vault k registraci (a obnovení) certifikátů SSL.  
 
-    -   Poskytuje konfigurace se použije k vytvoření objektu Vystavitel zprostředkovatele ve službě key vault  
+    -   Poskytuje konfiguraci, která se má použít k vytvoření objektu vystavitele zprostředkovatele v trezoru klíčů.  
 
-Další informace o vytváření objektů vystavitele z portálu certifikáty, najdete v článku [Key Vault Certificates blogu](https://aka.ms/kvcertsblog)  
+Další informace o vytváření objektů vystavitele z portálu Certificates najdete na [blogu Key Vault Certificates](https://aka.ms/kvcertsblog) .  
 
-Key Vault umožňuje vytvoření více objektů vystavitele s konfigurací poskytovatele jinou vystavitele. Jakmile je vytvořen objekt vystavitelů, jeho název může být odkazováno v jedné nebo více certifikátů. Odkazování na objekt vystavitelů dává pokyn Key Vault a při žádosti x509 použít konfigurace uvedená v objektu vystavitele certifikátu od poskytovatele certifikační Autority během vytváření certifikátu a obnovení.  
+Key Vault umožňuje vytvoření více objektů vystavitele s jinou konfigurací zprostředkovatele vystavitele. Po vytvoření objektu vystavitele se na jeho název dá odkazovat v jedné nebo několika zásadách certifikátu. Odkazování na objekt vystavitele instruuje Key Vault pro použití konfigurace, jak je uvedeno v objektu vystavitele při vyžádání certifikátu x509 od poskytovatele CA během vytváření a obnovování certifikátu.  
 
-Vystavitel objekty jsou vytvořeny v trezoru a jde použít jenom s certifikáty KV ve stejném trezoru.  
+Objekty vystavitele se vytvoří v trezoru a dají se použít jenom u certifikátů KV ve stejném trezoru.  
 
 ### <a name="certificate-contacts"></a>Kontakty certifikátu
 
-Kontakty certifikátu obsahovat kontaktní informace k zasílání oznámení aktivovaného událostmi, doba platnosti certifikátu. Informace o kontakty sdílí všechny certifikáty ve službě key vault. Všechny zadané kontaktů pro událost pro jakýkoliv certifikát ve službě key vault je odesláno upozornění.  
+Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů.  
 
-Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oznámení o následujících událostech.  
+Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na následující události oznámení.  
 
 - Před obnovením certifikátu
-- Po obnovení certifikátu, s informacemi o tom, pokud byl úspěšně obnovený certifikát, nebo pokud došlo k chybě, které vyžadují ruční prodloužení platnosti certifikátu.  
+- Po obnovení certifikátu uveďte, jestli se certifikát úspěšně obnovil, nebo jestli došlo k chybě, která vyžaduje ruční obnovení certifikátu.  
 
-  Když se zásady certifikátu, který je nastaven na ručně obnovit (pouze pro e-mailu), jsou oznámení odesílána až nastane čas na obnovení certifikátu.  
+  Když se zásada certifikátu, která je nastavená na ruční obnovení (jenom e-mailem), pošle, pošle se oznámení, když se certifikát obnoví.  
 
-### <a name="certificate-access-control"></a>Řízení přístupu na certifikát
+### <a name="certificate-access-control"></a>Access Control certifikátu
 
- Řízení přístupu pro certifikáty je spravovaný službou Key Vault a poskytuje služby Key Vault, která obsahuje tyto certifikáty. Zásada řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné kódy ve stejné službě Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení certifikáty pro zajištění odpovídající segmentace scénář a správu certifikátů.  
+ Řízení přístupu pro certifikáty je spravované pomocí Key Vault a poskytuje Key Vault, které tyto certifikáty obsahují. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  
 
- Na základě na objekt v položky řízení přístupu tajné klíče v trezoru klíčů a úzce zrcadlení přípustné tajného kódu objektu operace lze použít následující oprávnění:  
+ Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru klíčů a pozorně zrcadlí operace povolené u tajného objektu:  
 
 - Oprávnění pro operace správy certifikátů
-  - *get*: Získání aktuální verze certifikátu nebo jakoukoli verzi nástroje certifikát 
-  - *Seznam*: Zobrazí aktuální certifikáty nebo verze certifikátu  
-  - *update*: Aktualizace certifikátu
-  - *Vytvoření*: Vytvořit certifikát služby Key Vault
-  - *import*: Naimportujte certifikát materiálu certifikátem Key Vaultu
+  - *získat*: Získání aktuální verze certifikátu nebo libovolné verze certifikátu 
+  - *seznam*: Vypíše aktuální certifikáty nebo verze certifikátu.  
+  - *aktualizace*: Aktualizace certifikátu
+  - *vytvořit*: Vytvoření certifikátu Key Vault
+  - *importovat*: Importovat materiál certifikátu do certifikátu Key Vault
   - *Odstranit*: Odstranit certifikát, jeho zásady a všechny jeho verze  
-  - *Obnovit*: Obnovení odstraněné certifikátu
-  - *Zálohování*: Zálohování certifikátu ve službě key vault
-  - *Obnovit*: Obnovení certifikátu zálohovaná do trezoru klíčů
-  - *managecontacts*: Správa služby Key Vault kontakty certifikátu  
-  - *manageissuers*: Správa služby Key Vault autority/vystavitelů certifikátů
-  - *getissuers*: Získání certifikátu autority/vystavitele
-  - *listissuers*: Výpis certifikátu autority/vystavitele  
-  - *setissuers*: Vytvořit nebo aktualizovat autority/vystavitelů certifikátem Key Vaultu  
-  - *deleteissuers*: Odstranit certifikát služby Key Vault autority/vystavitelů  
+  - *obnovit*: Obnovení odstraněného certifikátu
+  - *záloha*: Zálohování certifikátu v trezoru klíčů
+  - *obnovit*: Obnovení zálohovaného certifikátu do trezoru klíčů
+  - *managecontacts*: Správa kontaktů certifikátů Key Vault  
+  - *manageissuers*: Správa Key Vaultch certifikačních autorit/vystavitelů
+  - *getissuers*: Získat autority nebo vystavitele certifikátu
+  - *listissuers*: Výpis autorit a vystavitelů certifikátu  
+  - *setissuers*: Vytvořit nebo aktualizovat autority nebo vystavitele certifikátu Key Vault  
+  - *deleteissuers*: Odstranění autorit/vystavitelů certifikátu Key Vault  
  
-- Oprávnění u privilegovaných operací
-  - *Vyprázdnit*: Vymazat (trvale odstranit) certifikát odstranil
+- Oprávnění pro privilegované operace
+  - *vyprázdnit*: Vymazat (trvale odstranit) odstraněný certifikát
 
-Další informace najdete v tématu [operace v referenci rozhraní REST API služby Key Vault s certifikáty](/rest/api/keyvault). Informace o vytvářejí se oprávnění najdete v tématu [trezory - vytvořit nebo aktualizovat](/rest/api/keyvault/vaults/createorupdate) a [trezorů – aktualizace zásad přístupu](/rest/api/keyvault/vaults/updateaccesspolicy).
+Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-## <a name="azure-storage-account-key-management"></a>Azure správu klíčů účtu úložiště
+## <a name="azure-storage-account-key-management"></a>Správa klíčů účtu Azure Storage
 
-Key Vault můžete spravovat klíče účtu úložiště Azure:
+Key Vault můžou spravovat klíče účtu úložiště Azure:
 
-- Key Vault interně, můžete zobrazit seznam klíčů (sync) pomocí účtu služby Azure storage. 
-- Key Vault obnoví (obmění) klíče pravidelně.
-- Hodnoty klíče se nikdy vrátí odpověď na volajícího.
-- Key Vault slouží ke správě klíčů účtů úložiště a klasických účtů úložiště.
+- Interně Key Vault možné vypsat (synchronizovat) klíče s účtem služby Azure Storage. 
+- Key Vault znovu vygeneruje (otáčí) klíče pravidelně.
+- Hodnoty klíče se nikdy nevrátí v reakci na volajícího.
+- Key Vault spravuje klíče účtů úložiště i klasických účtů úložiště.
 
-Další informace najdete v tématu [klíčů k účtu úložiště Azure Key Vault](key-vault-ovw-storage-keys.md)
+Další informace najdete v tématu [Azure Key Vault klíčů účtu úložiště](key-vault-ovw-storage-keys.md) .
 
 ### <a name="storage-account-access-control"></a>Řízení přístupu k účtu úložiště
 
-Tato oprávnění lze použít při autorizaci uživatele nebo instančního objektu aplikace k provádění operací na spravovaný účet úložiště:  
+Následující oprávnění se dají použít při autorizaci objektu zabezpečení uživatele nebo aplikace k provádění operací na spravovaném účtu úložiště:  
 
-- Oprávnění pro spravovaný účet úložiště a definice SaS operace
-  - *get*: Získá informace o účtu úložiště 
-  - *Seznam*: Seznam účtů úložiště spravované službou Key Vault
-  - *update*: Aktualizace účtu úložiště
+- Oprávnění pro spravovaný účet úložiště a operace definice SaS
+  - *získat*: Načte informace o účtu úložiště. 
+  - *seznam*: Výpis účtů úložiště spravovaných Key Vault
+  - *aktualizace*: Aktualizace účtu úložiště
   - *Odstranit*: Odstranění účtu úložiště  
-  - *Obnovit*: Obnovení odstraněného účtu
-  - *Zálohování*: Vytvoření účtu úložiště zálohy
-  - *Obnovit*: Obnovení účtu úložiště zálohovaných do služby Key Vault
-  - *set*: Vytvořit nebo aktualizovat účet úložiště
-  - *regeneratekey*: Znovu vygenerovat zadanou hodnotou klíče účtu úložiště
-  - *getsas*: Získejte informace o definici SAS účtu úložiště
-  - *listsas*: Seznam definice SAS úložiště pro účet úložiště
+  - *obnovit*: Obnovení odstraněného účtu úložiště
+  - *záloha*: Zálohování účtu úložiště
+  - *obnovit*: Obnovení účtu zálohovaného úložiště na Key Vault
+  - *nastavit*: Vytvoření nebo aktualizace účtu úložiště
+  - *RegenerateKey*: Znovu vygenerovat zadanou hodnotu klíče pro účet úložiště
+  - *getsas*: Získat informace o definici SAS pro účet úložiště
+  - *listsas*: Seznamte se s definicemi SAS úložiště pro účet úložiště.
   - *deletesas*: Odstranění definice SAS z účtu úložiště
-  - *setsas*: Vytvořit nebo aktualizovat nové SAS definice/atributy pro účet úložiště
+  - *setsas*: Vytvoří nebo aktualizuje novou definici nebo atributy SAS pro účet úložiště.
 
-- Oprávnění u privilegovaných operací
-  - *Vyprázdnit*: Vymazat (trvale odstranit) spravovaný účet úložiště
+- Oprávnění pro privilegované operace
+  - *vyprázdnit*: Vyprázdnit (trvale odstranit) spravovaný účet úložiště
 
-Další informace najdete v tématu [operace účtů úložiště v referenci rozhraní REST API služby Key Vault](/rest/api/keyvault). Informace o vytvářejí se oprávnění najdete v tématu [trezory - vytvořit nebo aktualizovat](/rest/api/keyvault/vaults/createorupdate) a [trezorů – aktualizace zásad přístupu](/rest/api/keyvault/vaults/updateaccesspolicy).
+Další informace najdete v referenčních informacích o [operacích účtu úložiště v Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="see-also"></a>Viz také
 
-- [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
+- [Ověřování, žádosti a odpovědi](authentication-requests-and-responses.md)
 - [Průvodce vývojáře pro službu Key Vault](/azure/key-vault/key-vault-developers-guide)
