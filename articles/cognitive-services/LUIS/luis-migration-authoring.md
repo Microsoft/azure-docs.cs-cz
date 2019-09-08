@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 7fe35edfbfc8f50aa9428e41e7d807a0838417ec
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259659"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801461"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -43,7 +43,7 @@ Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratn�
 Migrace není: 
 
 * Proces, který shromažďuje spolupracovníky a automaticky přesouvá nebo přidává do prostředku pro vytváření obsahu Azure. Jako vlastník aplikace je potřeba tento krok dokončit. Tento krok vyžaduje oprávnění k příslušnému prostředku.
-* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](/luis-how-to-azure-subscription.md#create-runtime-resource-in-the-azure-portal) a nemění se. 
+* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) a nemění se. 
 
 ## <a name="how-are-the-apps-migrating"></a>Jak se aplikace migrují?
 

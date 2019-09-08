@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562840"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801468"
 ---
 # <a name="inspect-custom-speech-data"></a>Kontrola Custom Speech dat
 
 > [!NOTE]
 > Tato stránka předpokládá, že jste si přečetli [data pro přípravu testu pro Custom Speech](how-to-custom-speech-test-data.md) a nahráli jste datovou sadu pro kontrolu.
 
-Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z portálu Custom Speech můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám umožní rychle zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, aniž by se musel přepisovat libovolná zvuková data.
+Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z [portálu Custom Speech](https://speech.microsoft.com/customspeech)můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám umožní rychle zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, aniž by se musel přepisovat libovolná zvuková data.
 
 V tomto dokumentu se dozvíte, jak vizuálně kontrolovat kvalitu modelu pomocí školicích dat, která jste předtím nahráli.
 
@@ -32,17 +32,18 @@ Na této stránce se dozvíte, jak vizuálně kontrolovat kvalitu základního r
 
 Při vytváření testu postupujte podle těchto pokynů:
 
-1. **> Custom Speech > testování**, přejděte na text na řeč.
-2. Klikněte na **Přidat test**.
-3. Vyberte možnost **kontrolovat kvalitu (jenom zvuková data)** . Dejte testu název, popis a vyberte vaši zvukovou datovou sadu.
-4. Vyberte až dva modely, které chcete testovat.
-5. Klikněte na možnost **Vytvořit**.
+1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+2. **> Custom Speech > testování**, přejděte na text na řeč.
+3. Klikněte na **Přidat test**.
+4. Vyberte možnost **kontrolovat kvalitu (jenom zvuková data)** . Dejte testu název, popis a vyberte vaši zvukovou datovou sadu.
+5. Vyberte až dva modely, které chcete testovat.
+6. Klikněte na možnost **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat modely vedle sebe.
 
 ## <a name="side-by-side-model-comparisons"></a>Porovnání modelů souběžného sdílení
 
-Po úspěšném stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady.
+Po *úspěšném*stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady.
 
 Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v jednotlivých sloupcích (ukazující přepis a výsledky dvou typů řeči na text) se můžete rozhodnout, který model vyhovuje vašim potřebám a kde jsou nutná vylepšení.
 

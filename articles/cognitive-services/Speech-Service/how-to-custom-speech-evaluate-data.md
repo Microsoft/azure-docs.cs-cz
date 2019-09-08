@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562864"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801538"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Vyhodnotit přesnost Custom Speech
 
@@ -51,11 +51,12 @@ Pokud chcete testovat kvalitu modelu standardních hodnot řeči od Microsoftu n
 
 Chcete-li vyhodnotit modely vedle sebe:
 
-1. **> Custom Speech > testování**, přejděte na text na řeč.
-2. Klikněte na **Přidat test**.
-3. Vyberte možnost vyhodnotit **přesnost**. Dejte testu název, popis a vyberte si zvukovou datovou sadu přepisu a s popiskem.
-4. Vyberte až dva modely, které chcete testovat.
-5. Klikněte na možnost **Vytvořit**.
+1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+2. **> Custom Speech > testování**, přejděte na text na řeč.
+3. Klikněte na **Přidat test**.
+4. Vyberte možnost **vyhodnotit přesnost**. Dejte testu název, popis a vyberte si zvukovou datovou sadu přepisu a s popiskem.
+5. Vyberte až dva modely, které chcete testovat.
+6. Klikněte na možnost **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat výsledky vedle sebe.
 

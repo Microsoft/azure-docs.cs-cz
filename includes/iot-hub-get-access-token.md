@@ -4,19 +4,19 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175661"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803002"
 ---
-## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Azure Resource Manageru
-Azure Active Directory se musí ověřovat všechny úkoly, které můžete provádět s prostředky pomocí Azure Resource Manageru. V příkladu je vidět tady používá ověřování pomocí hesla, naleznete v části Další přístupy [požadavků ověřování Azure Resource Manageru][lnk-authenticate-arm].
+## <a name="obtain-an-azure-resource-manager-token"></a>Získání tokenu Azure Resource Manager
+Azure Active Directory musí ověřovat všechny úlohy, které provedete na prostředky pomocí Azure Resource Manager. Zde uvedený příklad používá ověřování hesla pro jiné přístupy, viz [ověřování Azure Resource Manager požadavků][lnk-authenticate-arm].
 
-1. Přidejte následující kód, který **hlavní** metody v souboru Program.cs načíst token ze služby Azure AD pomocí id aplikace a heslo.
+1. Přidejte následující kód do metody **Main** v program.cs k načtení tokenu z Azure AD pomocí ID a hesla aplikace.
    
-    ```
+    ```csharp
     var authContext = new AuthenticationContext(string.Format  
       ("https://login.microsoftonline.com/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
@@ -29,16 +29,16 @@ Azure Active Directory se musí ověřovat všechny úkoly, které můžete prov
       return;
     }
     ```
-2. Vytvoření **ResourceManagementClient** objekt, který používá token přidáním následujícího kódu na konec objektu **hlavní** metody:
+2. Vytvořte objekt **ResourceManagementClient** , který používá token přidáním následujícího kódu na konec metody **Main** :
    
-    ```
+    ```csharp
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. Vytvoření nebo získání odkazu na skupinu prostředků, které používáte:
+3. Vytvořte nebo získejte odkaz na skupinu prostředků, kterou používáte:
    
-    ```
+    ```csharp
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
         new ResourceGroup("East US"));
     if (rgResponse.Properties.ProvisioningState != "Succeeded")

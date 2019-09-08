@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 6d697cd49363139cfeae2753a4f1ae40fca6e6b2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892041"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802490"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -25,17 +25,17 @@ ms.locfileid: "69892041"
 
 Abyste mohli provádět cokoli s Custom Speech, budete potřebovat účet Azure a předplatné služby Speech Services. Jakmile budete mít účet, můžete si nechat data, naučit a testovat vaše modely, kontrolovat kvalitu rozpoznávání, hodnotit přesnost a nakonec nasazovat a používat vlastní model řeči na text.
 
-Tento diagram zvýrazňuje části, které tvoří portál Custom Speech. Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
+Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https://speech.microsoft.com/customspeech). Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
 
 ![Zvýrazní různé komponenty, které tvoří portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. Přihlaste se [k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služeb řeči. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a Custom Speech Portal. Pak pomocí svého předplatného služby Speech Services vytvořte svůj první Custom Speech projekt.
+1. [Přihlaste se k odběru a vytvořte projekt](#set-up-your-azure-account) – vytvořte účet Azure a přihlaste se k odběru služeb řeči. Toto jednotné předplatné vám umožní přístup k převodu řeči na text, převod textu na řeč, rozpoznávání řeči a [Custom Speech Portal](https://speech.microsoft.com/customspeech). Pak pomocí svého předplatného služby Speech Services vytvořte svůj první Custom Speech projekt.
 
 2. [Nahrání testovacích](how-to-custom-speech-test-data.md) dat – nahrání testovacích dat (zvukové soubory) k vyhodnocení nabídky pro vaše aplikace, nástroje a produkty od Microsoftu na text
 
-3. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md) – pomocí Custom Speechového portálu můžete přehrát nahraný zvuk a zkontrolovat kvalitu rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
+3. [Kontrola kvality rozpoznávání](how-to-custom-speech-inspect-data.md) – pomocí [Custom Speechového portálu](https://speech.microsoft.com/customspeech) můžete přehrát nahraný zvuk a zkontrolovat kvalitu rozpoznávání řeči vašich testovacích dat. Kvantitativní měření najdete v tématu [Kontrola dat](how-to-custom-speech-inspect-data.md).
 
-4. [Vyhodnotit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit přesnost modelu řeči na text. Portál Custom Speech poskytne *Četnost chyb slov*, která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
+4. [Vyhodnotit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov*, která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
 
 5. Vylepšete [model](how-to-custom-speech-train-model.md) – zvyšte přesnost vašeho modelu řeči na text tím, že poskytnete písemné přepisy (10 – 1000 hodin) a související text (< 200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení, opětovném testování a pokud jste s výsledkem spokojeni, můžete model nasadit.
 
@@ -43,12 +43,12 @@ Tento diagram zvýrazňuje části, které tvoří portál Custom Speech. Pomoc�
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
-Aby bylo možné použít portál Custom Speech k vytvoření vlastního modelu, je nutné předplatné služby Speech Services. Pokud chcete vytvořit standardní předplatné služby Speech Services, postupujte podle těchto pokynů: [Vytvořte předplatné pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
+Aby bylo možné použít [portál Custom Speech](https://speech.microsoft.com/customspeech) k vytvoření vlastního modelu, je nutné předplatné služby Speech Services. Pokud chcete vytvořit standardní předplatné služby Speech Services, postupujte podle těchto pokynů: [Vytvořte předplatné pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
 
 > [!NOTE]
 > Nezapomeňte prosím vytvořit standardní předplatné (S0), odběry bezplatné zkušební verze (F0) se nepodporují.
 
-Po vytvoření účtu Azure a předplatného služby Speech Services se budete muset přihlásit k portálu Custom Speech a připojit své předplatné.
+Po vytvoření účtu Azure a předplatného služby Speech Services se budete muset přihlásit k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a připojit své předplatné.
 
 1. Získejte klíč předplatného služby Speech Services z Azure Portal.
 2. Přihlaste se k [portálu Custom Speech](https://aka.ms/custom-speech).
@@ -57,7 +57,7 @@ Po vytvoření účtu Azure a předplatného služby Speech Services se budete m
 
 ## <a name="how-to-create-a-project"></a>Jak vytvořit projekt
 
-Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** na portálu Custom Speech. Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
+Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** na [portálu Custom Speech](https://speech.microsoft.com/customspeech). Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
 
 Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Speech**a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu by se vám měly zobrazit čtyři karty: **Data**, **testování**, **školení**a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663602"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802512"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -35,7 +35,7 @@ Soubory by měly být seskupené podle typu do datové sady a nahrané jako soub
 
 ## <a name="upload-data"></a>Nahrání dat
 
-Až budete připraveni k nahrávání dat, klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
+Až budete připraveni k nahrávání dat, přejděte na [portál Custom Speech](https://speech.microsoft.com/customspeech)a pak klikněte na **nahrát data** . spustí se průvodce a vytvoří se první datová sada. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
 ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -52,7 +52,7 @@ Zvuková data jsou ideální pro testování přesnosti základního rozpoznáv�
 
 Pomocí této tabulky zajistěte, aby byly vaše zvukové soubory správně formátované pro použití s Custom Speech:
 
-| Vlastnost | Hodnota |
+| Vlastnost | Value |
 |----------|-------|
 | Formát souboru | RIFF (WAV) |
 | Vzorkovací frekvence | 8 000 Hz nebo 16 000 Hz |
@@ -94,9 +94,9 @@ Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování s
 > [!NOTE]
 > Přepis by měl být kódovaný ve formátu UTF-8 BOM (značka pořadí bajtů).
 
-Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existuje však několik důležitých normalizací, které musí uživatel provést _před_ nahráním dat do služby Custom Speech Service. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu](how-to-custom-speech-human-labeled-transcriptions.md) s popiskem.
+Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existuje však několik důležitých normalizací, které musí uživatel provést _před_ nahráním dat do služby Custom Speech Service. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
 
-Až shromáždíte zvukové soubory a odpovídající přepisy, měli byste je před nahráním na portál Custom Speech zabalit jako jeden soubor. zip. Toto je ukázková datová sada se třemi zvukovými soubory a soubor přepisu s popiskem:
+Až shromáždíte zvukové soubory a odpovídající přepisy, měli byste je před nahráním na [portál Custom Speech](https://speech.microsoft.com/customspeech)zabalit jako jeden soubor. zip. Toto je ukázková datová sada se třemi zvukovými soubory a soubor přepisu s popiskem:
 
 ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Pokud máte názvy produktů nebo funkce, které jsou jedinečné, a chcete se u
 | Projevy a/nebo věty | Ty můžou zlepšit přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Ty můžou zlepšit výslovnost neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
 
-Projevy lze zadat jako jeden nebo více textových souborů. Čím blíže jsou textová data, která se budou přecházet, tím větší je pravděpodobnost zvýšení přesnosti. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na Custom Speech portál.
+Projevy lze zadat jako jeden nebo více textových souborů. Čím blíže jsou textová data, která se budou přecházet, tím větší je pravděpodobnost zvýšení přesnosti. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na [Custom Speech portál](https://speech.microsoft.com/customspeech).
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Pokyny k vytvoření souboru projevy
 
@@ -161,7 +161,7 @@ Pomocí této tabulky zajistěte, aby váš související datový soubor pro vý
 | počet výslovnosti na řádek | 1 |
 | Maximální velikost souboru | 1 MB (1 KB pro úroveň Free) |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)

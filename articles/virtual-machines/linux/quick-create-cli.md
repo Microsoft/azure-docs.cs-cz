@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI | Microsoft Docs
+title: 'Rychlý start: Použití rozhraní příkazového řádku Azure k vytvoření virtuálního počítače se systémem Linux'
 description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI vytvořit virtuální počítač s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 3d69157bb6c8c493d7ea4baed35bb8c89a99a911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082377"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801054"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
