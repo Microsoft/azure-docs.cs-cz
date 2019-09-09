@@ -87,7 +87,7 @@ Událost má následující dat nejvyšší úrovně:
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
 | eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
-| data | objekt | Data události úložiště objektů BLOB. |
+| data | object | Data události úložiště objektů BLOB. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
 | metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
