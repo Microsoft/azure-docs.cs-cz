@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 344613c50f46337ffbd7e786f6753e8030c2af22
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072246"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806326"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Chraňte rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management
 
 V této příručce se dozvíte, jak nakonfigurovat instanci Azure API Management k ochraně rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory (Azure AD). 
+
+> [!NOTE]
+> Tato funkce je dostupná v úrovních **Developer**, **Standard** a **Premium** API Management.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
@@ -210,7 +213,7 @@ Pomocí zásady [ověřit token JWT](api-management-access-restriction-policies.
 
 V této příručce jste použili konzolu pro vývojáře v API Management jako ukázková klientská aplikace pro volání `Echo API` chráněného OAuth 2,0. Další informace o tom, jak sestavit aplikaci a implementovat OAuth 2,0, najdete v tématu [Azure Active Directory Samples Code](../active-directory/develop/sample-v1-code.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
 * Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.
 * Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](api-management-howto-mutual-certificates.md).

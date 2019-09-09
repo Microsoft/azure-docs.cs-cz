@@ -1,5 +1,5 @@
 ---
-title: Použití automatizovaného ML k sestavení a nasazení modelů strojového učení
+title: Použití automatizovaného rozhraní ML Azure ke školení & nasazení modelů
 titleSuffix: Azure Machine Learning service
 description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení v Azure Portal
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990575"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813659"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
@@ -38,7 +38,7 @@ Přejděte do levého podokna pracovního prostoru. V části vytváření obsah
 
  Pokud se jedná o vaše první experimenty, uvidíte **úvodní obrazovku pro automatizované Machine Learning** . 
 
-V opačném případě uvidíte na automatizovaném řídicím panelu **Machine Learning** přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
+V opačném případě uvidíte na **automatizovaném** řídicím panelu Machine Learning přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
@@ -59,7 +59,7 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
       Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
       >[!NOTE]
-      > Váš název COMPUTE určí, jestli je povolená možnost *profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
+      > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
 
 1. Vyberte účet úložiště pro vaše data. 
 
@@ -75,12 +75,12 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
 
 1. Pomocí karet náhled a profil můžete dále konfigurovat data pro tento experiment.
 
-    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných tlačítek přepínače v jednotlivých sloupcích funkce.
+    1. Na kartě **Náhled** určete, jestli data obsahují záhlaví, a vyberte funkce (sloupce) pro školení pomocí integrovaných **tlačítek přepínače v** jednotlivých sloupcích funkce.
 
     1. Na kartě **profil** můžete zobrazit [datový profil](#profile) podle funkcí a také rozdělení, typ a souhrn statistik (střední, střední, Max/min atd.) každého.
 
         >[!NOTE]
-        > Pokud váš výpočetní kontext není profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
+        > Pokud váš výpočetní **kontext není** profilace povolený, zobrazí se následující chybová zpráva: *Profilace dat je k dispozici pouze pro cíle výpočetní služby, které jsou již spuštěny*.
 
 1. Vyberte typ úlohy školení: klasifikace, regrese nebo prognózování.
 
@@ -194,7 +194,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
 Nyní máte provozní webovou službu, která generuje předpovědi.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Vyzkoušejte si kompletní [kurz tvorby prvního automatizovaného experimentu v Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md) a Azure Machine Learning.

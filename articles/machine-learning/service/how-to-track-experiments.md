@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946390"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812287"
 ---
-# <a name="log-metrics-during-training-runs"></a>Metriky protokolu během školicích běhů
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Sledování metrik školení pro Machine Learning pomocí Azure Machine Learning
 
-Vylepšete proces vytváření modelů sledováním experimentů a metrik monitorování. V tomto článku se dozvíte, jak přidat protokolování do školicího skriptu, jak odeslat experiment, monitorovat běh a zobrazit výsledky spuštění ve službě Azure Machine Learning.
+Vylepšete proces vytváření modelů sledováním experimentů a metrik monitorování. V tomto článku se dozvíte, jak přidat kód protokolování do školicího skriptu, odeslat experiment, monitorovat a zkontrolovat výsledky ve službě Azure Machine Learning.
 
 > [!NOTE]
-> Služba Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je AutoML nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
+> Služba Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je automatické spuštění strojového učení nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
 
-## <a name="list-of-training-metrics"></a>Seznam metrik školení 
+## <a name="available-metrics-to-track"></a>Dostupné metriky ke sledování
 
 Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [spuštění třídy referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ Pro spuštění při školení experiment lze přidat následující metriky. Ch
 > [!NOTE]
 > Metriky pro skaláry, seznamy, řádků a tabulky může mít typ: float, celé číslo nebo řetězec.
 
-## <a name="start-logging-metrics"></a>Spustit protokolování metrik
+## <a name="choose-a-logging-option"></a>Zvolit možnost protokolování
 
 Pokud chcete sledovat nebo sledovat experimentu, musíte přidat kód pro spuštění protokolování při odesílání příkazu run. Následují způsoby, jak aktivovat spuštění odeslání:
 * __Run.start_logging__ – přidání funkce protokolování do trénovací skript a spustit relaci interactive protokolování v zadané experimentu. **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 87ac2283e96081297fdd54c1c131aa5b78a5973a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489843"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814257"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -48,7 +48,7 @@ Když otevřete položku zatmění, nástroj HDInsight automaticky zjistí, jest
 
 Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-subscription)nebo [připojit cluster HDInsight](#link-a-cluster) pomocí Ambari uživatelského jména/hesla nebo přihlašovacího údaje připojeného k doméně a spustit ho. 
 
-## <a name="sign-in-to-your-azure-subscription"></a>Přihlásit k předplatnému Azure
+## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 1. Spusťte prostředí IDE pro zatmění a otevřete Průzkumníka Azure. V nabídce **okno** vyberte **Zobrazit zobrazení**a pak vyberte **Další**. V dialogovém okně, které se otevře, rozbalte **Azure**, vyberte **Průzkumník Azure**a pak vyberte **OK**.
 
    ![Zobrazit dialogové okno zobrazení](./media/apache-spark-eclipse-tool-plugin/view-explorer-1.png)
@@ -61,7 +61,7 @@ Uživatel se může [přihlásit k předplatnému Azure](#sign-in-to-your-azure-
    ![Dialogové okno vybrat odběry](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 1. Na kartě **Azure Explorer** rozbalte **HDInsight** , abyste viděli clustery HDInsight Spark v rámci vašeho předplatného.
    
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
+   ![Clustery HDInsight Spark v Azure Explorer3](./media/apache-spark-eclipse-tool-plugin/view-explorer-3.png)
 1. Uzel názvu clusteru můžete dále rozšířit, aby se zobrazily prostředky (například účty úložiště) přidružené ke clusteru.
    
    ![Rozšíření názvu clusteru pro zobrazení prostředků](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
@@ -235,16 +235,16 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
        
 2. V **Azure Exploreru**rozbalte **HDInsight** pro zobrazení clusterů HDInsight, které jsou ve vašem předplatném. Clustery označené jako **role: čtenář** mají pouze oprávnění role jen pro čtení.
 
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
+    ![Clustery HDInsight Spark v čtečce rolí Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-6.png)
 
 3. Klikněte pravým tlačítkem na cluster s oprávněním role jen pro čtení. Pokud chcete propojit cluster, vyberte **propojit tento cluster** z kontextové nabídky. Zadejte uživatelské jméno a heslo pro Ambari.
 
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
+    ![Odkazy na clustery HDInsight Spark v Azure Explorer](./media/apache-spark-eclipse-tool-plugin/view-explorer-7.png)
 
 4. Pokud je cluster úspěšně propojený, služba HDInsight se aktualizuje.
    Fáze clusteru se stane propojená.
   
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
+    ![Clustery HDInsight Spark v aplikaci Azure Explorer propojeny](./media/apache-spark-eclipse-tool-plugin/view-explorer-8.png)
 
 
 
@@ -254,7 +254,7 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
    
 2. Kliknutím na **propojit tento cluster** propojíte cluster.
    
-    ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
+    ![Clustery HDInsight Spark v Azure Explorer9](./media/apache-spark-eclipse-tool-plugin/view-explorer-9.png)
 
 ### <a name="link-cluster-from-spark-submission-window"></a>Propojit cluster s oknem odeslání Spark
 
@@ -262,23 +262,23 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
 
 2. Klikněte pravým tlačítkem na balíček. Pak vyberte **Odeslat aplikaci Spark do HDInsight**.
    
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
+   ![Odeslání clusterů HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-11.png)
 
 3. Vyberte cluster, který má oprávnění role jen pro čtení pro **název clusteru**. Zpráva upozornění se zobrazí. Kliknutím na **propojit tento cluster** můžete propojit cluster.
    
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
+   ![Propojování clusterů HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-15.png)
    
 ### <a name="view-storage-accounts"></a>Zobrazit účty úložiště
 
 * U clusterů s oprávněním role jen pro čtení klikněte na uzel **účty úložiště** , na okno **přístup k úložišti** se zobrazí stavová zařízení. 
      
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
+   ![Clustery HDInsight Spark v Azure Exploreru Storage](./media/apache-spark-eclipse-tool-plugin/view-explorer-13.png)
 
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
+   ![Clustery HDInsight Spark v Azure Exploreru se zamítly.](./media/apache-spark-eclipse-tool-plugin/view-explorer-12.png)
 
 * U propojených clusterů klikněte na uzel **účty úložiště** , na okno **přístup k úložišti** se zobrazí stavová aplikace. 
      
-   ![Clustery HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
+   ![Clustery HDInsight Spark v Azure Exploreru denied2](./media/apache-spark-eclipse-tool-plugin/view-explorer-14.png)
 
 ## <a name="known-problems"></a>Známé problémy
 Když propojíte cluster, doporučujeme vám poskytnout přihlašovací údaje úložiště.
@@ -287,9 +287,9 @@ Když propojíte cluster, doporučujeme vám poskytnout přihlašovací údaje �
 
 Existují dva režimy, jak odeslat úlohy. Pokud je zadané přihlašovací údaje úložiště, použije se k odeslání úlohy dávkový režim. V opačném případě bude použit interaktivní režim. Pokud je cluster zaneprázdněný, může se zobrazit chyba níže.
 
-![Při zaneprázdněném clusteru se zobrazí chyba funkce zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+Při ![zaneprázdněném clusteru se zobrazí chyba funkce zatmění] Při (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "zaneprázdněném clusteru se zobrazí chyba funkce zatmění")
 
-![Při zaneprázdněném clusteru se zobrazí chyba funkce zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
+Při ![zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění] Při (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "zaneprázdněném přízi clusteru se zobrazí chyba funkce zatmění")
 
 ## <a name="seealso"></a>Viz také
 * [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)

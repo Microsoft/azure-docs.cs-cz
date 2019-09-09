@@ -1,87 +1,87 @@
 ---
-title: Nastavení zotavení po havárii pro virtuální počítače Azure po migraci do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje postup přípravy počítačů k nastavení zotavení po havárii mezi oblastmi Azure po migraci do Azure pomocí Azure Site Recovery.
+title: Nastavení zotavení po havárii pro virtuální počítače Azure po migraci do Azure pomocí Azure Site Recovery
+description: Tento článek popisuje, jak připravit počítače na nastavení zotavení po havárii mezi oblastmi Azure po migraci do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399524"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814533"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
 
-Postupujte podle tohoto článku, pokud jste [migraci místních počítačů na virtuálních počítačích Azure](tutorial-migrate-on-premises-to-azure.md) pomocí [Site Recovery](site-recovery-overview.md) služby a teď chcete získat virtuálních počítačů nastavení pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje Ujistěte se, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačů a odebrat službu Site Recovery Mobility, který se má po dokončení migrace už nepotřebujete.
+Postupujte podle tohoto článku, pokud jste [migrovali místní počítače do virtuálních počítačů Azure](tutorial-migrate-on-premises-to-azure.md) pomocí služby [Site Recovery](site-recovery-overview.md) a teď chcete získat virtuální počítače nastavené pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje, jak zajistit, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačích a jak odebrat službu Site Recovery mobility, kterou už po migraci nepotřebujete.
 
 
 
 ## <a name="verify-migration"></a>Ověření migrace
 
-Před nastavením zotavení po havárii, ujistěte se, že migrace byla dokončena podle očekávání. K provedení migrace úspěšně, po převzetí služeb při selhání, byste měli vybrat **dokončit migraci** možnost pro každý počítač, který chcete migrovat. 
+Před nastavením zotavení po havárii se ujistěte, že se migrace dokončila podle očekávání. Po úspěšném dokončení migrace byste měli po převzetí služeb při selhání vybrat možnost **kompletní migrace** pro každý počítač, který chcete migrovat. 
 
-## <a name="verify-the-azure-vm-agent"></a>Ověřte, že agent virtuálního počítače Azure
+## <a name="verify-the-azure-vm-agent"></a>Ověření agenta virtuálního počítače Azure
 
-Musí mít každý virtuální počítač Azure [agenta virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) nainstalované. Pokud chcete replikovat virtuální počítače Azure, Site Recovery nainstaluje rozšíření v agentovi.
+Každý virtuální počítač Azure musí mít nainstalovaný [Agent virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) . Pokud chcete replikovat virtuální počítače Azure, Site Recovery do agenta nainstaluje rozšíření.
 
-- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery Mobility, které služba Mobility na virtuálních počítačích s Windows je automaticky nainstalován agent virtuálního počítače Azure. Ve starších verzích služby Mobility musíte agenta nainstalovat automaticky.
-- Pro virtuální počítače s Linuxem je nutné nainstalovat agenta virtuálního počítače Azure ručně. Budete muset nainstalovat agenta virtuálního počítače Azure, pokud se službou Mobility nainstalovanou na migrovaných počítačů v9.6 nebo dřívější.
+- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery mobility, agent virtuálního počítače Azure se automaticky nainstaluje ve službě mobility na virtuální počítače s Windows. V dřívějších verzích služby mobility je potřeba agenta nainstalovat automaticky.
+- Pro virtuální počítače se systémem Linux je nutné ručně nainstalovat agenta virtuálního počítače Azure. Agenta virtuálního počítače Azure je potřeba nainstalovat jenom v případě, že je služba mobility nainstalovaná na migrovaném počítači v 9.6 nebo starší verzi.
 
 
-### <a name="install-the-agent-on-windows-vms"></a>Nainstalujte agenta na virtuálních počítačích s Windows
+### <a name="install-the-agent-on-windows-vms"></a>Instalace agenta na virtuální počítače s Windows
 
-Pokud máte spuštěnou verzi starší než 9.7.0.0 službu mobility Site Recovery, nebo nemáte další požadavky pro instalaci agenta ručně, postupujte takto:  
+Pokud používáte verzi služby Site Recovery mobility starší než 9.7.0.0 nebo máte nějaké jiné potřebné k ruční instalaci agenta, udělejte toto:  
 
-1. Ujistěte se, že máte oprávnění správce na virtuálním počítači.
+1. Ujistěte se, že máte na virtuálním počítači oprávnění správce.
 2. Stáhněte si [instalační program agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 3. Spusťte instalační soubor.
 
 #### <a name="validate-the-installation"></a>Ověření instalace
-Chcete-li zkontrolovat, zda je agent nainstalovaný:
+Chcete-li ověřit, zda je agent nainstalován:
 
-1. Na virtuálním počítači Azure, ve složce C:\WindowsAzure\Packages měli byste vidět přítomný soubor WaAppAgent.exe.
-2. Klikněte pravým tlačítkem na soubor a v **vlastnosti**, vyberte **podrobnosti** kartu.
-3. Ověřte, že **verze produktu** pole zobrazí 2.6.1198.718 nebo vyšší.
+1. Na virtuálním počítači Azure ve složce C:\WindowsAzure\Packages by se měl zobrazit soubor WaAppAgent. exe.
+2. Klikněte na soubor pravým tlačítkem a v okně **vlastnosti**vyberte kartu **Podrobnosti** .
+3. Ověřte, že se v poli **verze produktu** zobrazuje 2.6.1198.718 nebo vyšší.
 
-[Další informace](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) o instalaci agenta pro Windows.
+[Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) o instalaci agenta pro Windows.
 
-### <a name="install-the-agent-on-linux-vms"></a>Nainstalujte agenta na virtuální počítače s Linuxem
+### <a name="install-the-agent-on-linux-vms"></a>Instalace agenta na virtuální počítače se systémem Linux
 
-Nainstalujte [Linuxový virtuální počítač Azure](../virtual-machines/extensions/agent-linux.md) agenta ručně takto:
+Nainstalujte agenta [virtuálního počítače Azure Linux](../virtual-machines/extensions/agent-linux.md) ručně následujícím způsobem:
 
-1. Ujistěte se, že máte oprávnění správce na počítači.
-2. Důrazně doporučujeme nainstalovat agenta virtuálního počítače s Linuxem pomocí RPM nebo DEB balíček z úložiště balíčků vaší distribuce. Všechny [poskytovatelé distribuce schválené pro](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) balíček agenta Azure Linux integrovat do své Image a úložiště.
-    - Důrazně doporučujeme aktualizovat agenta pouze prostřednictvím distribuce úložiště.
-    - Nedoporučujeme instalace agenta virtuálního počítače s Linuxem přímo z Githubu a aktualizacích.
-    -  Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. 
+1. Ujistěte se, že máte na počítači oprávnění správce.
+2. Důrazně doporučujeme nainstalovat agenta virtuálního počítače se systémem Linux pomocí balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrují balíček agenta Azure Linux do svých imagí a úložišť.
+    - Důrazně doporučujeme, abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště.
+    - Nedoporučujeme instalovat agenta virtuálního počítače se systémem Linux přímo z GitHubu a aktualizovat ho.
+    -  Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. 
 
 #### <a name="validate-the-installation"></a>Ověření instalace 
 
-1. Spusťte tento příkaz: **ps -e** zajistit, že Azure agent běží na Linuxovém virtuálním počítači.
-2. Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
-    - Pro Ubuntu: **služby walinuxagent start**
-    - Pro jiné distribuce: **služby waagent start**
+1. Spusťte tento příkaz: **PS-e** a ujistěte se, že na virtuálním počítači se systémem Linux běží agent Azure.
+2. Pokud proces není spuštěný, restartujte ho pomocí následujících příkazů:
+    - Pro Ubuntu: **Služba walinuxagent Start**
+    - Pro ostatní distribuce: **Service waagent Start**
 
 
-## <a name="uninstall-the-mobility-service"></a>Odinstalujte službu Mobility
+## <a name="uninstall-the-mobility-service"></a>Odinstalace služby mobility
 
-1. Ručně odinstalujte službu Mobility virtuálního počítače Azure, pomocí jedné z následujících metod. 
-    - Pro Windows v Ovládacích panelech > **přidat nebo odebrat programy**, odinstalujte **Microsoft Azure Site Recovery Mobility Service/hlavní cílový server**. Na příkazovém řádku se zvýšenými oprávněními spusťte příkaz:
+1. Ručně odinstalujte službu mobility z virtuálního počítače Azure pomocí jedné z následujících metod. 
+    - V případě systému Windows v Ovládacích panelech > **Přidat nebo odebrat programy**, odinstalovat **Microsoft Azure Site Recovery službu mobility nebo hlavní cílový server**. Na příkazovém řádku se zvýšenými oprávněními spusťte příkaz:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Pro Linux Přihlaste se jako uživatel root. V terminálu přejděte do **/user/local/ASR**, a spusťte následující příkaz:
+    - Pro Linux se přihlaste jako uživatel root. V terminálu přejděte na **/User/Local/ASR**a spusťte následující příkaz:
         ```
         ./uninstall.sh -Y
         ```
-2. Než začnete konfigurovat replikaci, restartujte virtuální počítač.
+2. Před konfigurací replikace restartujte virtuální počítač.
 
 ## <a name="next-steps"></a>Další postup
 
-[Řešení potíží zkontrolujte](site-recovery-extension-troubleshoot.md) pro rozšíření služby Site Recovery na agenta virtuálního počítače Azure.
-[Rychle replikovat](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.
+[Přečtěte si téma řešení potíží](site-recovery-extension-troubleshoot.md) s rozšířením Site Recovery na AGENTOVI virtuálního počítače Azure.
+[Rychlá replikace](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.

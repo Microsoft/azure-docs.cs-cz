@@ -1,9 +1,9 @@
 ---
-title: Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM-Azure Active Directory | Microsoft Docs
+description: Naučte se konfigurovat výstrahy zabezpečení pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,48 +12,48 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/02/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7ce8b79644a9ffc9481ba825ec5623a9268983
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 177f61392c3e441c891ba1b531301b3dae8c0db2
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476332"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804231"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM
-Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na stránky s upozorněními. 
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generuje výstrahy v případě podezřelé nebo nebezpečné aktivity ve vašem prostředí. Když se aktivuje výstraha, zobrazí se na stránce s výstrahami. 
 
-![Prostředky Azure – seznam upozornění, úroveň rizika a počet stránky s upozorněními](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
+![Prostředky Azure – výstrahy výpisu stránky výstrah, úroveň rizika a počet](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
-## <a name="review-alerts"></a>Zkontrolujte výstrahy
-Výběrem výstrahy zobrazíte sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu, spolu s Rady nápravu.
+## <a name="review-alerts"></a>Zkontrolovat výstrahy
+Vyberte výstrahu, chcete-li zobrazit sestavu se seznamem uživatelů nebo rolí, které výstrahu aktivovaly, spolu s doporučeními k nápravě.
 
-![Sestava výstrahy zobrazuje poslední kontroly času, popis, kroky pro zmírnění rizika, typ, závažnosti, dopad na zabezpečení a jak tomu příště předejít](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
+![Zpráva výstrahy ukazující čas poslední kontroly, popis, kroky pro zmírnění rizika, typ, závažnost, dopad na zabezpečení a způsob, jakým se má příště zabránit](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 | Výstrahy | severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
-| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Příliš mnoho uživatelů mít roli vlastníka. |Projděte si uživatelé ze seznamu a znovu přiřadíte některé méně privilegovaným rolím. |
-| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |Příliš mnoho uživatelů jsou trvale přiřazené k roli. |Projděte si uživatelé ze seznamu a u změnit přiřazení některé vyžadují také aktivaci role používat. |
-| **Vytvořila se duplicitní role** |Střední |Stejná kritéria mají více role. |Použijte pouze jednu z těchto rolí. |
+| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Role vlastníka má příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte k méně privilegovaným rolím. |
+| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |K roli je trvale přiřazeno příliš mnoho uživatelů. |Zkontrolujte uživatele v seznamu a znovu je přiřaďte, aby vyžadovaly aktivaci pro použití role. |
+| **Duplicitní role se vytvořila.** |Střední |Více rolí má stejné kritérium. |Použijte pouze jednu z těchto rolí. |
 
 
 ### <a name="severity"></a>severity
-* **Vysoká**: Vyžaduje okamžitý zásah kvůli porušení zásad. 
-* **Střední**: Není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
-* **Nízká**: Není potřeba reagovat okamžitě, ale navrhuje Změna upřednostňovaného zásad.
+* **Vysoká**: Vyžaduje okamžitou akci kvůli porušení zásad. 
+* **Střední**: Nevyžaduje okamžitou akci, ale signalizuje potenciální porušení zásad.
+* **Nízká úroveň**: Nevyžaduje okamžitou akci, ale navrhuje upřednostňovanou změnu zásad.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurace nastavení výstrah zabezpečení
-Ze stránky s upozorněními, přejděte na **nastavení**.
+Na stránce s výstrahami přejít na **Nastavení**.
 
-![Stránky s upozorněními s nastavením se zvýrazněnou](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
+![Stránka upozornění s zvýrazněným nastavením](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
-Upravte nastavení na jednotlivých výstrah pro práci s vaším prostředím a cíle zabezpečení.
+Přizpůsobení nastavení různých výstrah pro práci s vaším prostředím a cíli zabezpečení
 
-![Nastavení stránky výstraze, abyste mohli povolit a konfigurovat nastavení](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
+![Stránka nastavení pro výstrahu, která povolí a nakonfiguruje nastavení](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)

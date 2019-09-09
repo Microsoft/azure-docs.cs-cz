@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081403"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813443"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure
 Virtuální počítače se systémem Linux v Azure jsou obvykle spravovány z příkazového řádku pomocí připojení Secure Shell (SSH). Když je novinkou pro Linux nebo rychlé řešení potíží, může být používání vzdálené plochy jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([desktop Xfce](https://www.xfce.org)) a vzdálenou plochu ([xrdp](https://www.xrdp.org)) pro virtuální počítač se systémem Linux pomocí modelu nasazení Správce prostředků.
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 Teď, když máte nainstalované desktopové prostředí, nakonfigurujte službu Vzdálená plocha, aby naslouchala příchozím připojením. [xrdp](http://xrdp.org) je server open source protokol RDP (Remote Desktop Protocol) (RDP), který je k dispozici ve většině distribucí systému Linux, a funguje dobře s desktop Xfce. Nainstalujte xrdp na virtuální počítač s Ubuntu následujícím způsobem:
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 
@@ -136,7 +136,7 @@ Jiné distribuce systému Linux, například Red Hat Enterprise Linux a SUSE, mo
 Pokud neobdržíte žádnou odpověď v klientovi vzdálené plochy a nezobrazují žádné události v systémovém protokolu, toto chování indikuje, že přenos z vzdálené plochy se nemůže připojit k virtuálnímu počítači. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že máte pravidlo, které povoluje TCP na portu 3389. Další informace najdete v tématu [řešení potíží s připojením k aplikacím](../windows/troubleshoot-app-connection.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o vytváření a používání klíčů SSH s virtuálními počítači se systémem Linux najdete v tématu [vytváření klíčů ssh pro virtuální počítače se systémem Linux v Azure](mac-create-ssh-keys.md).
 
 Informace o použití SSH ze systému Windows najdete v tématu [použití klíčů ssh v systému Windows](ssh-from-windows.md).

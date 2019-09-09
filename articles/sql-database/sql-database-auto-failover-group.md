@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/30/2019
-ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/06/2019
+ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208346"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806608"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -183,13 +183,16 @@ Následující diagram znázorňuje typickou konfiguraci geograficky redundantn�
 ![automatické převzetí služeb při selhání](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> Podrobný kurz přidávání spravované instance do skupiny převzetí služeb při selhání najdete v tématu [Přidání spravované instance](sql-database-managed-instance-failover-group-tutorial.md) pro použití skupiny převzetí služeb při selhání. 
+> Podrobný kurz přidávání spravované instance do [skupiny převzetí služeb při selhání najdete v tématu Přidání spravované instance](sql-database-managed-instance-failover-group-tutorial.md) pro použití skupiny převzetí služeb při selhání. 
 
 Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postupujte při navrhování provozní kontinuity podle těchto obecných pokynů:
 
 - **Vytvoření sekundární instance ve stejné zóně DNS jako primární instance**
 
   Pro zajištění nepřerušeného připojení k primární instanci po převzetí služeb při selhání musí být primární i sekundární instance ve stejné zóně DNS. Zaručujeme, že stejný certifikát s více doménami (SAN) se dá použít k ověření připojení klientů ke kterékoli z těchto dvou instancí ve skupině převzetí služeb při selhání. Když je vaše aplikace připravená na produkční nasazení, vytvořte sekundární instanci v jiné oblasti a ujistěte se, že se zóna DNS sdílí s primární instancí. Můžete to provést zadáním `DNS Zone Partner` volitelného parametru pomocí Azure Portal, PowerShellu nebo REST API. 
+
+> [!IMPORTANT]
+> První instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.   
 
   Další informace o vytvoření sekundární instance ve stejné zóně DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
@@ -237,6 +240,10 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
   > [!IMPORTANT]
   > Ruční převzetí služeb při selhání můžete použít k přesunu primárních souborů zpátky do původního umístění. Pokud dojde ke zmírnění výpadku, který způsobil převzetí služeb při selhání, můžete primární databáze přesunout do původního umístění. K tomu je potřeba zahájit ruční převzetí služeb při selhání skupiny.
+
+- **Potvrzení známých omezení skupin převzetí služeb při selhání**
+
+  Přejmenování databáze a změna velikosti instance se u instancí ve skupině převzetí služeb při selhání nepodporují. Aby bylo možné tyto akce provést, budete muset dočasně odstranit skupinu převzetí služeb při selhání.
 
 ## <a name="failover-groups-and-network-security"></a>Skupiny převzetí služeb při selhání a zabezpečení sítě
 

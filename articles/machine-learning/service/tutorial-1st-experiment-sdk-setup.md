@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f1003324e9f4b3762b5d8eca703af4a1fbd4613a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231072"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308822"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Kurz: Začněte vytvářet první experiment v ML
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 
 V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Portal i sady SDK.
 
@@ -55,7 +55,7 @@ Z pracovního prostoru vytvoříte cloudový prostředek, abyste mohli začít p
 
 1. Potom vyberte **Vytvořit**. Nastavení virtuálního počítače může chvíli trvat.
 
-1. Počkejte, než se stav změnína spuštěno.
+1. Počkejte, než se stav změní na **spuštěno**.
    Po spuštění virtuálního počítače pomocí části **virtuální počítače poznámkového bloku** spusťte webové rozhraní Jupyter.
 
 1. Vyberte **Jupyter** ve sloupci **identifikátor URI** pro váš virtuální počítač.

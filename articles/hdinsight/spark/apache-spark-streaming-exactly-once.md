@@ -1,73 +1,73 @@
 ---
-title: Vytvoření úlohy streamování Sparku s přesně-událostí zpracování – Azure HDInsight
-description: Jak vytvořit streamování Sparku pro zpracování událostí pouze jednou a jednou.
+title: Úlohy streamování Sparku s právě jedním zpracováním událostí – Azure HDInsight
+description: Jak nastavit streamování Spark pro zpracování události jednou a jenom jednou.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 388723624fde73899809b95ff8ae4ee23cf49a9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705103"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735994"
 ---
-# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Apache Sparku s přesně-událostí zpracování
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí
 
-Stream zpracování aplikací využít různé přístupy jak jejich zpracování opětovné zpracování zpráv po některé selhání v systému:
+Aplikace pro zpracování datových proudů využívají různé přístupy k tomu, jak zpracovávají zprávy znovu po určité chybě v systému:
 
-* Alespoň jednou: Každá zpráva je zaručeno, že má být zpracován, ale může získat zpracuje více než jednou.
-* Nanejvýš jednou: Každá zpráva může nebo nemusí být zpracován. Pokud zpráva se zpracuje, to je zpracována pouze jednou.
-* Právě jednou: Každá zpráva je zaručeno, že mají být zpracovány pouze jednou a jednou.
+* Aspoň jednou: U každé zprávy je zaručeno, že bude zpracována, ale může být zpracována více než jednou.
+* Nejvýše jednou: Každá zpráva může nebo nemusí být zpracována. Pokud je zpráva zpracována, je zpracována pouze jednou.
+* Právě jednou: U každé zprávy je zaručeno, že bude zpracována pouze jednou a pouze jednou.
 
-Tento článek ukazuje, jak nakonfigurovat Spark Streaming k dosažení přesně – jedno zpracování.
+V tomto článku se dozvíte, jak nakonfigurovat streamování Sparku tak, aby bylo možné provést právě jedno zpracování.
 
-## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Přesně-jednou sémantika s Apache Spark Streaming
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Sémantika právě jednou pomocí Apache Spark streaming
 
-Nejprve, zvažte, jak všechny body selhání systému restartuje se vyskytl problém, a jak se můžete vyhnout ztrátě dat. Aplikace Spark Streaming má:
+Nejprve zvažte, jak se všechny systémové body po selhání restartují po problému a jak se můžete vyhnout ztrátě dat. Aplikace pro streamování Spark má:
 
 * Vstupní zdroj.
-* Jeden nebo více procesů příjemce, které o přijetí změn dat ze vstupního zdroje.
+* Jeden nebo více procesů přijímače, které vyžádají data ze vstupního zdroje.
 * Úlohy, které zpracovávají data.
-* Výstupní jímky.
-* Ovladač proces, který spravuje dlouho běžící úlohy.
+* Výstupní jímka.
+* Proces ovladače, který spravuje dlouhodobě běžící úlohu.
 
-Přesně – Jakmile sémantiku vyžaduje, aby se neztratí kdykoli a zpracování této zprávy je restartování, bez ohledu na to, kde dojde k selhání.
+Sémantika právě jednou vyžaduje, aby nedošlo ke ztrátě dat, a zpracování zprávy je znovu spuštěno bez ohledu na to, kde dojde k selhání.
 
-### <a name="replayable-sources"></a>Opakovatelná zdroje
+### <a name="replayable-sources"></a>Prohrajteelné zdroje
 
-Aplikace Spark Streaming je čtení události ze zdroje musí být *opakovatelná*. To znamená, že v případech, ve kterém zpráva se načetla, ale pak systém selhal předtím, než může být zachována nebo zpracovat zprávu, zdroj musí poskytnout stejnou zprávu znovu.
+Zdroj aplikace streamování Sparku čte vaše události z musí být možné *Přehrát*. To znamená, že v případech, kdy byla zpráva načtena, ale systém selhal předtím, než mohla být zpráva trvala nebo zpracována, zdroj musí znovu zadat stejnou zprávu.
 
-V Azure, jak Azure Event Hubs a [Apache Kafka](https://kafka.apache.org/) na HDInsight poskytují opakovatelná zdroje. Další příklad opakovatelná zdroje je odolné proti chybám souborový systém jako [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), objekty BLOB služby Azure Storage nebo Azure Data Lake Storage, ve kterém všechna data se ukládají navždy a v libovolném okamžiku můžete znovu načtěte data v celém rozsahu.
+V Azure můžou Azure Event Hubs i [Apache Kafka](https://kafka.apache.org/) v HDInsight poskytovat nahrajteelné zdroje. Dalším příkladem opakovaného zdroje je souborový systém odolný proti chybám, jako je [Apache HADOOP HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), Azure Storage BLOBs nebo Azure Data Lake Storage, kde jsou všechna data trvale zachovaná a v jakémkoli okamžiku můžete data znovu přečíst.
 
-### <a name="reliable-receivers"></a>Spolehlivé příjemců
+### <a name="reliable-receivers"></a>Spolehlivé přijímače
 
-Ve Spark Streaming, zdrojů, jako jsou Event Hubs a Kafka *spolehlivé příjemci*, kde každý příjemce uchovává informace o průběhu čtení zdroji. Spolehlivé příjemce nevyřeší stavu do úložiště odolné proti chybám, buď v rámci [Apache ZooKeeper](https://zookeeper.apache.org/) nebo Spark Streaming kontrolní body zapisovat do rozhraní HDFS. Pokud takový příjemce selže a je pozdější restartování, ho můžete pokračovat tam, kde skončila.
+Ve streamování Spark mají zdroje, jako je Event Hubs a Kafka, *spolehlivé přijímače*, kde každý příjemce sleduje svůj průběh čtení zdroje. Spolehlivý přijímač uchovává svůj stav do úložiště odolného proti chybám, a to buď v [Apache Zookeeper](https://zookeeper.apache.org/) , nebo ve kontrolním bodu Spark streamování zapsaným na HDFS. Pokud takový přijímač neuspěje a později se restartuje, může se tam, kde se přestal, nacházet.
 
-### <a name="use-the-write-ahead-log"></a>Použití protokolu dávky zápisu
+### <a name="use-the-write-ahead-log"></a>Použijte protokol zápisu předem.
 
-Spark Streaming podporuje použití dávky zápisu protokolu, kde každé přijaté události, je nejprve zapisovat do adresáře kontrolního bodu pro Spark ve službě storage odolné proti chybám a pak uloženy v odolné Distributed Dataset (RDD). V Azure je odolné úložiště HDFS se opírá o Azure Storage nebo Azure Data Lake Storage. V aplikaci Spark Streaming dávky zápisu protokolu se povoluje pro všechny příjemce nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace `true`. Dávky zápisu protokolu poskytuje odolnost proti chybám pro selhání ovladače a prováděcí moduly.
+Služba Spark streamování podporuje použití protokolu pro zápis do paměti, kdy každá přijatá událost je nejdřív zapsaná do adresáře kontrolního bodu Sparku v úložišti odolném proti chybám a pak se uloží do odolné distribuované datové sady (RDD). V Azure je úložiště odolné proti chybám HDFS v Azure Storage nebo Azure Data Lake Storage. V aplikaci pro streamování Sparku je protokol pro zápis k dispozici pro všechny příjemce `spark.streaming.receiver.writeAheadLog.enable` nastavením nastavení konfigurace na. `true` Protokol zápisu vpřed poskytuje odolnost proti chybám při selhání ovladače i prováděcích modulů.
 
-Pro pracovní procesy spuštěné úkoly s daty události je každý RDD podle definice replikovat i distribuované napříč několika pracovních procesů. Pokud se úkol nezdaří, protože pracovní proces spuštění by došlo k chybě, úloha se restartuje u dalšího pracovního procesu, která má repliku dat událostí, takže události nedojde ke ztrátě.
+Pro pracovníky, kteří spouštějí úlohy s daty události, je každá RDD podle definice replikovaná i distribuovaná napříč více procesy. Pokud úloha selže, protože v pracovním procesu došlo k chybě, úloha bude restartována v jiném pracovním procesu, který má repliku dat události, takže nedojde ke ztrátě události.
 
 ### <a name="use-checkpoints-for-drivers"></a>Použití kontrolních bodů pro ovladače
 
-Ovladače úlohy musí být nabízet možnost restartování. Pokud dojde k chybě ovladač spuštění aplikace Spark Streaming, trvá s ním všechny spuštěné přijímače, úkoly a všechny Rdd ukládání dat událostí. V takovém případě musíte být schopni uložit průběh úlohy, takže ji lze později obnovit. To lze provést pomocí vytváření kontrolních bodů orientovaného acyklický graf (DAG) z DStream pravidelně do úložiště odolné proti chybám. DAG metadata obsahují konfigurace použité k vytvoření datových proudů aplikace, operace, které definují aplikaci a všechny listy, které jsou zařazeny do fronty, ale ještě není dokončený. Tato metadata umožňuje selhání ovladače restartovat z kontrolního bodu informací. Po restartování ovladač spustí nové příjemce, že sami zpět do z protokolu předběžné Rdd obnovit data události.
+Ovladače úlohy je potřeba spustit znovu. Pokud ovladač, který spouští aplikaci streamování Sparku, selže, poběží se všemi běžícími přijímači, úlohami a všemi RDD uloženými daty události. V takovém případě musíte být schopni Uložit průběh úlohy, abyste ji mohli později obnovit. K tomu je potřeba vytvořit kontrolní bod orientovaného acyklického grafu (DAG) DStream v pravidelných intervalech do úložiště odolného proti chybám. Metadata DAG obsahují konfiguraci, která se používá k vytvoření aplikace pro streamování, operací, které definují aplikaci, a všech dávek, které jsou ve frontě, ale ještě nedokončené. Tato metadata umožňují restartování ovladače, který selhal, z informací kontrolního bodu. Po restartování ovladače se spustí noví příjemci, kteří sami obnoví data události zpátky do RDD z protokolu s zápisem předem.
 
-Kontrolní body jsou povolené v Spark Streaming ve dvou krocích. 
+Kontrolní body jsou povolené ve streamování Sparku ve dvou krocích. 
 
-1. V objektu StreamingContext konfiguraci cesty úložiště pro body obnovení:
+1. V objektu StreamingContext nakonfigurujte cestu úložiště pro kontrolní body:
 
     ```Scala
     val ssc = new StreamingContext(spark, Seconds(1))
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    V HDInsight uložit do výchozího úložiště připojené k vašemu clusteru služby Azure Storage nebo Azure Data Lake Storage tyto kontrolní body.
+    V HDInsight by se měly tyto kontrolní body ukládat do výchozího úložiště připojeného ke clusteru, a to buď Azure Storage, nebo Azure Data Lake Storage.
 
-2. Dále určete kontrolního bodu interval (v sekundách) na DStream. V každém intervalu se ukládají data o stavu odvozené ze vstupních událostí do úložiště. Trvalý stav dat může snížit výpočetní potřeby při opětovném sestavování stav ze zdroje události.
+2. Dále zadejte interval kontrolního bodu (v sekundách) na DStream. V každém intervalu jsou data o stavu odvozená ze vstupní události trvale uložena do úložiště. Trvalá data stavu můžou snižovat výpočet potřebný při sestavování stavu ze zdrojové události.
 
     ```Scala
     val lines = ssc.socketTextStream("hostname", 9999)
@@ -76,17 +76,17 @@ Kontrolní body jsou povolené v Spark Streaming ve dvou krocích.
     ssc.awaitTermination()
     ```
 
-### <a name="use-idempotent-sinks"></a>Použití idempotentní jímky
+### <a name="use-idempotent-sinks"></a>Použití jímky idempotentní
 
-Cílové jímky, do které vaši úlohu zapisuje výsledky musí být schopný zvládnout situaci, kdy se klíči přiřadí stejného výsledku více než jednou. Jímka musí být schopen rozpoznat tyto duplicitní výsledky a je ignorovat. *Idempotentní* jímky lze volat vícekrát se stejnými daty beze změny stavu.
+Cílová jímka, do které vaše úloha zapisuje výsledky, musí být schopna zpracovat situaci, kdy je výsledkem stejného výsledku více než jednou. Jímka musí být schopna detekovat takové duplicitní výsledky a ignorovat je. Jímka *idempotentní* může být volána vícekrát se stejnými daty bez změny stavu.
 
-Implementací logiku, která zkontroluje existenci příchozí výsledek v úložišti dat, můžete vytvořit jímky idempotentní. Pokud výsledek již existuje, zápis by se měla zobrazit na úspěšné z hlediska vaší úlohy Spark, ale ve skutečnosti vaším úložištěm dat ignorována duplicitní data. Pokud výsledek neexistuje, pak jímka vhodné vložit tento nový výsledek do jeho úložiště. 
+Můžete vytvořit idempotentní jímka pomocí implementace logiky, která nejprve kontroluje existenci příchozího výsledku v úložišti dat. Pokud výsledek již existuje, měl by se zdát, že zápis bude úspěšný z perspektivy vaší úlohy Sparku, ale ve skutečnosti vaše úložiště dat ignoruje duplicitní data. Pokud výsledek neexistuje, jímka by měla tento nový výsledek vložit do svého úložiště. 
 
-Můžete například použít uloženou proceduru s Azure SQL Database, která se vloží do tabulky událostí. Tuto uloženou proceduru nejprve vyhledal události na základě klíčových polí a jenom v případě, že není žádná odpovídající událost nalezen záznam vloženy do tabulky.
+Můžete například použít uloženou proceduru s Azure SQL Database, která vloží události do tabulky. Tato uložená procedura nejprve vyhledá událost pomocí klíčových polí a pouze v případě, že se nenajde žádná shodná událost, záznam vložený do tabulky.
 
-Dalším příkladem je pomocí systému souborů oddílů, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. V tomto případě logiky jímky nemusí kontrolovat přítomnost souboru. Pokud existuje soubor, který na událost, jednoduše přepíše se stejnými daty. V opačném případě se vytvoří nový soubor v umístění počítaný.
+Dalším příkladem je použití děleného systému souborů, například Azure Storage objektů BLOB nebo Azure Data Lake Storage. V takovém případě nemusí logika jímky kontrolovat existenci souboru. Pokud soubor představující událost existuje, je jednoduše přepsán stejnými daty. V opačném případě se vytvoří nový soubor na vypočítané cestě.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Apache Spark Streaming přehled](apache-spark-streaming-overview.md)
-* [Vytvoření vysoce dostupné úlohy streamování Apache Sparku v Apache Hadoop YARN](apache-spark-streaming-high-availability.md)
+* [Přehled streamování Apache Spark](apache-spark-streaming-overview.md)
+* [Vytváření úloh s vysokou dostupností Apache Spark streamování v Apache Hadoop nitě](apache-spark-streaming-high-availability.md)

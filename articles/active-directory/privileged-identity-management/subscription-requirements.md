@@ -1,9 +1,9 @@
 ---
-title: Licenční požadavky pro použití služby Azure Active Directory v PIM – | Dokumentace Microsoftu
-description: Popisuje licenční požadavky na používání Azure AD Privileged Identity Management (PIM).
+title: Licenční požadavky na použití PIM-Azure Active Directory | Microsoft Docs
+description: Popisuje licenční požadavky pro použití Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/16/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437452"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804070"
 ---
-# <a name="license-requirements-to-use-pim"></a>Licenční požadavky pro použití PIM
+# <a name="license-requirements-to-use-pim"></a>Licenční požadavky na používání PIM
 
-Pokud chcete používat Azure Active Directory (Azure AD) Privileged Identity Management (PIM), adresář musí mít platnou licenci. Kromě toho musí přiřadit licence pro správce i uživatele relevantní. Tento článek popisuje licenční požadavky pro použití PIM.
+Aby bylo možné používat Azure Active Directory (Azure AD) Privileged Identity Management (PIM), musí mít adresář platnou licenci. Kromě toho musí být licence přiřazeny správcům a relevantním uživatelům. Tento článek popisuje licenční požadavky na používání PIM.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete používat PIM, adresáři musí mít jeden z následujících placené nebo zkušební licence:
+Aby bylo možné použít PIM, musí mít váš adresář jednu z následujících placených nebo zkušebních licencí:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
@@ -40,31 +40,31 @@ Další informace najdete v tématu [Co je Azure Active Directory?](../fundament
 
 ## <a name="which-users-must-have-licenses"></a>Kteří uživatelé musí mít licence?
 
-Každý správce nebo uživatel, který komunikuje se službou nebo přijímá na výhodu plynoucí z PIM musí mít licenci. Příklady obsahují:
+Každý správce nebo uživatel, který komunikuje s nebo obdrží výhodu od PIM, musí mít licenci. Příklady obsahují:
 
-- Správci s rolí Azure AD spravují pomocí PIM
-- Správci se spravují pomocí PIM role prostředků Azure
-- Správcům, přiřazena k roli správce privilegovaných rolí
-- Uživatelům přiřadit jako nárok na role Azure AD spravují pomocí PIM
-- Uživatelé moct schvalovat a odmítat žádosti v PIM
-- Uživatelé přiřazení k roli prostředků Azure s just-in-time nebo přímým přístupem (podle času) přiřazení  
-- Uživatelé s kontroly přístupu
-- Uživatelé, kteří provádění kontroly přístupu
+- Správci s rolemi Azure AD spravovanými pomocí PIM
+- Správci s rolemi prostředků Azure spravovanými pomocí PIM
+- Správci přiřazení k roli správce privilegovaných rolí
+- Uživatelé přiřazení k rolím služby Azure AD, které jsou spravovány pomocí PIM
+- Uživatelé mohou schvalovat nebo odmítat požadavky v PIM
+- Uživatelé přiřazení k roli prostředku Azure pomocí přiřazení za běhu nebo přímo (podle času)  
+- Uživatelé přiřazení k recenzi přístupu
+- Uživatelé, kteří provádějí kontroly přístupu
 
-Informace o tom, jak přiřadit licence pro vaše používá, najdete v části [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
+Informace o tom, jak přiřadit licence k vašim účelům, najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
-## <a name="what-happens-when-a-license-expires"></a>Co se stane, když vyprší platnost licence?
+## <a name="what-happens-when-a-license-expires"></a>Co se stane, když platnost licence vyprší?
 
-Pokud Azure AD Premium P2, EMS E5 nebo zkušební licence vyprší, funkce PIM již nebude k dispozici ve vašem adresáři:
+Pokud vyprší platnost Azure AD Premium P2, EMS E5 nebo zkušební licence, funkce PIM už nebudou ve vašem adresáři k dispozici:
 
-- Přiřazení trvalých rolí pro role Azure AD, zůstanou beze změn.
-- Služba PIM v na webu Azure portal, jakož i rutiny rozhraní Graph API a prostředí PowerShell rozhraní PIM, nebudou k dispozici pro uživatele k aktivovat privilegované role, Správa privilegovaného přístupu nebo provedení kontroly přístupu privilegovaných rolí.
-- Role oprávněné přiřazení role Azure AD se odebere, jak uživatelé už nebudou moci uživatel aktivovat privilegované role.
-- Žádné kontroly přístupu probíhající rolí Azure AD se ukončí a odebere se konfigurace nastavení PIM.
-- PIM už pošle e-mailů na změny v přiřazení role.
+- Trvalá přiřazení rolí k rolím Azure AD nebudou mít vliv na.
+- Služba PIM v Azure Portal a také rutiny Graph API a rozhraní PowerShell služby PIM již nebudou uživatelům k dispozici, aby mohli aktivovat privilegované role, spravovat privilegovaný přístup nebo provádět kontroly přístupu privilegovaných rolí.
+- Budou odebrána oprávněná přiřazení rolí rolí Azure AD, protože uživatelé již nebudou moci aktivovat privilegované role.
+- Všechny průběžné kontroly přístupu rolí Azure AD skončí a nastavení konfigurace PIM se odebere.
+- PIM už nebude posílat e-maily na změny přiřazení role.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Nasazení PIM](pim-deployment-plan.md)
 - [Zahájení práce s PIM](pim-getting-started.md)
-- [Role, které nelze spravovat v PIM](pim-roles.md)
+- [Role, které nemůžete spravovat v PIM](pim-roles.md)

@@ -1,84 +1,83 @@
 ---
-title: Nastavení IP adres pro připojení k sekundární místní lokality po převzetí služeb při selhání pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Popisuje postup nastavení přidělování IP adres pro připojení k virtuálním počítačům v sekundární místní lokality po zotavení po havárii a převzetí služeb při selhání pomocí Azure Site Recovery.
-services: site-recovery
+title: Nastavení IP adresování pro připojení k sekundární místní lokalitě po převzetí služeb při selhání pomocí Azure Site Recovery
+description: Popisuje postup nastavení IP adres pro připojení k virtuálním počítačům v sekundární místní lokalitě po zotavení po havárii a převzetí služeb při selhání pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 8e4dca61016adce209bdce356ea4280fee525c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397966"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813681"
 ---
-# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adres pro připojení po převzetí služeb při selhání do sekundární místní lokality
+# <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adresování pro připojení k sekundárnímu místnímu webu po převzetí služeb při selhání
 
-Po převzetí služeb při selhání virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality, potřebujete mít možnost připojení k virtuální počítače replik. Tento článek pomůže vám to udělat. 
+Po převzetí služeb při selhání virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality je nutné se připojit k virtuálním počítačům repliky. Tento článek vám pomůže to udělat. 
 
 ## <a name="connection-options"></a>Možnosti připojení
 
-Po převzetí služeb při selhání existuje několik způsobů, jak zpracovat přidělování IP adres pro virtuální počítače repliky: 
+Po převzetí služeb při selhání existuje několik způsobů, jak zpracovávat IP adresy pro virtuální počítače repliky: 
 
-- **Zachovat stejné IP adresy po převzetí služeb při selhání**: V tomto scénáři má replikovaný virtuální počítač stejnou IP adresu jako primární virtuální počítač. To zjednodušuje sítě související s problémy po převzetí služeb při selhání, ale vyžaduje úkony infrastruktury.
-- **Použít jinou IP adresu po převzetí služeb při selhání**: V tomto scénáři virtuální počítač dostane novou IP adresu po převzetí služeb při selhání. 
+- **Po převzetí služeb při selhání zachovat stejnou IP adresu**: V tomto scénáři má replikovaný virtuální počítač stejnou IP adresu jako primární virtuální počítač. Tato činnost zjednodušuje problémy související se sítí po převzetí služeb při selhání, ale vyžaduje určitou práci v infrastruktuře.
+- **Po převzetí služeb při selhání použít jinou IP adresu**: V tomto scénáři po převzetí služeb při selhání Získá virtuální počítač novou IP adresu. 
  
 
 ## <a name="retain-the-ip-address"></a>Zachovat IP adresu
 
-Pokud chcete zachovat IP adresy z primární lokality, po převzetí služeb při selhání do sekundární lokality, můžete:
+Pokud chcete zachovat IP adresy z primární lokality, po převzetí služeb při selhání do sekundární lokality můžete:
 
-- Nasazení roztažených podsítě mezi primární a sekundární lokality.
-- Převzetí služeb úplné podsítě z primární do sekundární lokality. Je potřeba aktualizovat trasy a určete nové umístění IP adresy.
-
-
-### <a name="deploy-a-stretched-subnet"></a>Nasazení roztažených podsítě
-
-V konfiguraci s roztažené podsíť je k dispozici současně v primárních a sekundárních lokalit. V roztažených podsítě při přesunu na počítači a jeho konfigurace adresy IP (vrstva 3) do sekundární lokality v síti automaticky směruje provoz do nového umístění. 
-
-- Z pohledu vrstvy 2 (data link layer) je nutné síťová zařízení, která může spravovat roztažené sítě VLAN.
-- Roztáhnout sítě VLAN, potenciální doména selhání rozšiřuje na oba weby. To se stává jediným bodem selhání. Zatímco je nepravděpodobné, v takové situaci není možné k izolaci incidentem, jako je například vysílání storm. 
+- Nasaďte roztaženou podsíť mezi primárním a sekundárním webovým serverem.
+- Proveďte celou podsíť převzetí služeb při selhání z primární na sekundární lokalitu. Je potřeba aktualizovat trasy, aby označovaly nové umístění IP adres.
 
 
-### <a name="fail-over-a-subnet"></a>Převzetí služeb při selhání podsíť
+### <a name="deploy-a-stretched-subnet"></a>Nasazení roztažené podsítě
 
-Můžete převzetí služeb při selhání celé podsítě pro získání výhod roztažené podsítě, aniž by ve skutečnosti roztažení. V tomto řešení podsíť je k dispozici ve zdrojové nebo cílové lokalitě, ale ne v obou současně.
+V roztažené konfiguraci je podsíť dostupná současně jak v primárních, tak i v sekundárních lokalitách. Když v roztažené podsíti přesunete počítač a jeho konfiguraci adresy IP (vrstvy 3) do sekundární lokality, síť automaticky směruje provoz do nového umístění. 
 
-- Pokud chcete zachovat v případě selhání adresní prostor IP adres, můžete prostřednictvím kódu programu uspořádat infrastruktury směrovače přesunout podsítě z jedné lokality do jiného.
-- Když dojde k selhání, přesouvat podsítě s jejich přidružených virtuálních počítačích.
-- Hlavní nevýhodou tohoto přístupu je, že v případě selhání, je nutné přesunout celé podsítě.
-
-#### <a name="example"></a>Příklad:
-
-Tady je příklad podsítě dokončení převzetí služeb při selhání. 
-
-- Před převzetí služeb při selhání má primární lokalita aplikace běžící v podsíti 192.168.1.0/24.
-- Během převzetí služeb při selhání všechny virtuální počítače v této podsíti jsou převzetí služeb při selhání do sekundární lokality a zachování jejich IP adresy. 
-- Trasy mezi všemi lokalitami je potřeba upravit tak, aby odrážely skutečnost, že všechny virtuální počítače v podsíti 192.168.1.0/24 nyní přesunuty do sekundární lokality.
-
-Následujících obrázcích je znázorněno podsítí před a po převzetí služeb při selhání.
+- Z perspektivy vrstvy 2 (Data Link Layer) potřebujete síťové vybavení, které může spravovat roztažené sítě VLAN.
+- Roztažením sítě VLAN se potenciální doména selhání rozšíří do obou lokalit. To se stalo jediným bodem selhání. V takovém případě pravděpodobně nebudete schopni izolovat incident, jako je například všesměrové vysílání. 
 
 
-**Před převzetí služeb při selhání**
+### <a name="fail-over-a-subnet"></a>Převzetí služeb při selhání v podsíti
 
-![Před převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design2.png)
+V celé podsíti můžete převzít služby při selhání, aby se získaly výhody roztažené podsítě, aniž byste je museli natáhnou. V tomto řešení je podsíť dostupná ve zdrojové nebo cílové lokalitě, ale ne současně.
+
+- Chcete-li zachovat adresní prostor IP adres v případě převzetí služeb při selhání, můžete programově uspořádat, aby infrastruktura směrovače přesunula podsítě z jedné lokality do jiné.
+- Když dojde k převzetí služeb při selhání, přesunou se podsítě s přidruženými virtuálními počítači.
+- Hlavní nevýhodou tohoto přístupu je, že v případě selhání musíte přesunout celou podsíť.
+
+#### <a name="example"></a>Příklad
+
+Tady je příklad kompletního převzetí služeb při selhání podsítě. 
+
+- Před převzetím služeb při selhání mají primární lokalita aplikace spuštěné v podsíti 192.168.1.0/24.
+- Během převzetí služeb při selhání se u všech virtuálních počítačů v této podsíti převezmou sekundární lokalita a uchovávají se jejich IP adresy. 
+- Trasy mezi všemi lokalitami je potřeba upravit tak, aby odrážely skutečnost, že všechny virtuální počítače v podsíti 192.168.1.0/24 se teď přesunuly do sekundární lokality.
+
+Následující obrázek ilustruje podsítě před a po převzetí služeb při selhání.
+
+
+**Před převzetím služeb při selhání**
+
+![Před převzetím služeb při selhání](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Po převzetí služeb při selhání**
 
 ![Po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design3.png)
 
-Site Recovery po převzetí služeb při selhání, přidělí IP adresu pro každé síťové rozhraní ve virtuálním počítači. Adresa se přiděluje z fondu statických IP adres v příslušné síti jednotlivých instancí virtuálních počítačů.
+Po převzetí služeb při selhání Site Recovery přidělí IP adresu pro každé síťové rozhraní virtuálního počítače. Adresa je přidělena z fondu statických IP adres v příslušné síti pro každou instanci virtuálního počítače.
 
-- Pokud fond IP adres v sekundární lokalitě je stejné jako zdrojové lokality, Site Recovery přiděluje stejnou IP adresu (zdrojový virtuální počítač), replikovanému virtuálnímu počítači. IP adresa je vyhrazená v nástroji VMM, ale není nastaven jako IP adresu převzetí služeb při selhání na hostiteli Hyper-V. IP adresa převzetí služeb při selhání na hostiteli Hyper-v je nastavená těsně před převzetí služeb při selhání.
-- Pokud není k dispozici stejné IP adresy, Site Recovery přiděluje další dostupnou IP adresu z fondu.
-- Pokud virtuální počítače používají protokol DHCP, Site Recovery nebude spravovat IP adresy. Je potřeba zkontrolovat, že server DHCP v sekundární lokalitě můžete přidělit adresy ze stejného rozsahu jako zdrojové lokality.
+- Pokud je fond IP adres v sekundární lokalitě stejný jako u zdrojové lokality, Site Recovery přidělí stejnou IP adresu (zdrojovému virtuálnímu počítači) k virtuálnímu počítači repliky. IP adresa je vyhrazená v nástroji VMM, ale není nastavená jako IP adresa pro převzetí služeb při selhání na hostiteli Hyper-V. IP adresa převzetí služeb při selhání na hostiteli Hyper-v je nastavená těsně před převzetím služeb při selhání.
+- Pokud stejná IP adresa není k dispozici, Site Recovery přidělí další dostupnou IP adresu z fondu.
+- Pokud virtuální počítače používají protokol DHCP, Site Recovery nespravuje IP adresy. Je potřeba ověřit, že server DHCP v sekundární lokalitě může přidělovat adresy ze stejného rozsahu, jako je zdrojová lokalita.
 
-### <a name="validate-the-ip-address"></a>Ověření IP adresu
+### <a name="validate-the-ip-address"></a>Ověřit IP adresu
 
-Po povolení ochrany pro virtuální počítač, můžete použít následující ukázkový skript Ověřte adresu přiřazenou k virtuálnímu počítači. Tato IP adresa je nastaven jako IP adresu převzetí služeb při selhání a přiřazené k virtuálnímu počítači v okamžiku převzetí služeb při selhání:
+Po povolení ochrany pro virtuální počítač můžete pomocí následujícího ukázkového skriptu ověřit adresu přiřazenou k virtuálnímu počítači. Tato IP adresa se nastaví jako IP adresa pro převzetí služeb při selhání a přiřadí se k virtuálnímu počítači v době převzetí služeb při selhání:
 
     ```
     $vm = Get-SCVirtualMachine -Name <VM_NAME>
@@ -89,10 +88,10 @@ Po povolení ochrany pro virtuální počítač, můžete použít následujíc�
 
 ## <a name="use-a-different-ip-address"></a>Použít jinou IP adresu
 
-V tomto scénáři se změní IP adresy virtuálních počítačů, které převzetí služeb při selhání. Nevýhodou toto řešení je údržba vyžaduje.  Záznamy DNS a mezipaměti může být nutné aktualizovat. To může způsobit výpadek, které se dají zmírnit následujícím způsobem:
+V tomto scénáři se změní IP adresy virtuálních počítačů, u kterých došlo k převzetí služeb při selhání. Nevýhodou tohoto řešení je potřeba údržba.  Je možné, že bude potřeba aktualizovat položky DNS a mezipaměti. To může vést k výpadkům, což může být omezeno následujícím způsobem:
 
-- Pomocí nízké hodnoty TTL pro intranetové aplikace.
-- Pomocí následujícího skriptu v plánu obnovení Site Recovery pro včasnou aktualizaci serveru DNS. Pokud používáte dynamickou registraci DNS nepotřebujete skriptu.
+- Pro intranetové aplikace používejte nedostatečné hodnoty TTL.
+- Pro včasné aktualizace serveru DNS použijte následující skript v plánu obnovení Site Recovery. Pokud používáte dynamickou registraci DNS, nepotřebujete skript.
 
     ```
     param(
@@ -106,27 +105,27 @@ V tomto scénáři se změní IP adresy virtuálních počítačů, které přev
     Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
     ```
     
-### <a name="example"></a>Příklad: 
+### <a name="example"></a>Příklad 
 
-V tomto příkladu máme různých IP adresách v primárních a sekundárních lokalit, a je třetí lokalita, ze kterých aplikací hostovaných na primární server nebo obnovení lokality je přístupný.
+V tomto příkladu máme v primárních a sekundárních lokalitách různé IP adresy a existuje třetí lokalita, ze které je možné přistupovat aplikace hostované v primární lokalitě nebo lokalitě pro obnovení.
 
-- Před převzetí služeb při selhání jsou aplikace hostované podsítě 192.168.1.0/24 v primární lokalitě.
+- Před převzetím služeb při selhání jsou aplikace hostovány podsítí 192.168.1.0/24 v primární lokalitě.
 - Po převzetí služeb při selhání se aplikace konfigurují v podsíti 172.16.1.0/24 v sekundární lokalitě.
-- Všechny tři servery mají přístup k sobě navzájem.
-- Aplikace se po převzetí služeb při selhání, obnoví v podsíti pro obnovení.
-- V tomto scénáři není nutné převzít služby při selhání celé podsítě a nevyžaduje žádné změny k překonfigurování VPN nebo síťové trasy. Převzetí služeb při selhání a nějaké aktualizace služby DNS, ujistěte se, že aplikace zůstanou přístupné.
-- Pokud DNS je nakonfigurovaná k povolení dynamické aktualizace, pak virtuální počítače se zaregistrovat pomocí nové IP adresy, při spuštění po převzetí služeb při selhání.
+- Všechny tři lokality mají přístup k sobě navzájem.
+- Po převzetí služeb při selhání budou aplikace obnoveny v podsíti pro obnovení.
+- V tomto scénáři není nutné převzít služby při selhání celé podsítě a nebude nutné provádět žádné změny pro překonfigurování směrování sítě VPN nebo sítě. Převzetí služeb při selhání a některé aktualizace DNS zajistí, že aplikace zůstanou přístupné.
+- Pokud je služba DNS nakonfigurovaná tak, aby umožňovala dynamické aktualizace, virtuální počítače se při spuštění po převzetí služeb při selhání registrují sami pomocí nové IP adresy.
 
-**Před převzetí služeb při selhání**
+**Před převzetím služeb při selhání**
 
-![Různé IP adresy – před převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design10.png)
+![Jiná IP adresa – před převzetím služeb při selhání](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Po převzetí služeb při selhání**
 
-![Různé IP adresy – po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design11.png)
+![Jiná IP adresa – po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Převzetí služeb při selhání](hyper-v-vmm-failover-failback.md)
+[Spuštění převzetí služeb při selhání](hyper-v-vmm-failover-failback.md)
 

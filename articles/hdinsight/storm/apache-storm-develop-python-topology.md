@@ -1,6 +1,6 @@
 ---
 title: Apache Storm s komponentami Pythonu – Azure HDInsight
-description: Naučte se vytvářet Apache Storm topologii, která používá součásti Pythonu.
+description: Naučte se vytvářet Apache Storm topologii, která používá komponenty Pythonu ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache pro Python
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b9faf33734ba17e9912246fe9c5c2ac45c55ba44
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a15506632e90edae235c3d1889603ca4997a3398
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598474"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813892"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
@@ -37,7 +37,7 @@ Kód pro tento projekt je k dispozici [https://github.com/Azure-Samples/hdinsigh
 
 ## <a name="storm-multi-language-support"></a>Podpora více jazyků
 
-Apache Storm byla navržena pro práci s komponentami napsanými pomocí libovolného programovacího jazyka. Komponenty musí pochopit, jak pracovat s definicí [Thrift pro](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)zaplavení. V jazyce Python je modul poskytován jako součást projektu Apache Storm, který umožňuje jednoduché rozhraní se zaplavou. Tento modul můžete najít na adrese [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm byla navržena pro práci s komponentami napsanými pomocí libovolného programovacího jazyka. Komponenty musí pochopit, jak pracovat s [definicí Thrift pro](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift)zaplavení. V jazyce Python je modul poskytován jako součást projektu Apache Storm, který umožňuje jednoduché rozhraní se zaplavou. Tento modul můžete najít na adrese [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 Přetečení je proces Java, který běží na prostředí Java Virtual Machine (JVM). Komponenty napsané v jiných jazycích jsou spouštěny jako podprocesy. Zaplave komunikuje s těmito podprocesy pomocí zpráv JSON odesílaných přes STDIN/STDOUT. Další podrobnosti o komunikaci mezi komponentami najdete v dokumentaci k [protokolu multi-lang](https://storm.apache.org/documentation/Multilang-protocol.html) .
 
