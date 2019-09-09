@@ -155,7 +155,7 @@ Všechny události obsahovat stejná data nejvyšší úrovně:
 | subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
 | eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| data | objekt | Data událostí služby IoT Hub.  |
+| data | object | Data událostí služby IoT Hub.  |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
 | metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
