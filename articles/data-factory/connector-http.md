@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: cdd7cfcb9d835c2ccac1dc367b9a1b34b509e8cf
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 880f5624af03e08e3a91ec5b230e593025d979a5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276432"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813012"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -166,12 +166,12 @@ Pokud pro ověřování používáte **certThumbprint** a certifikát se instalu
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text s oddělovači, Avro a datovou sadu binárního formátu](#format-based-dataset) .
-- Pro jiné formáty, jako je **Formát ORC/Avro/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [Parquet, oddělený text, JSON, Avro a binární formát binárního formátu](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, JSON, Avro a binární formát
 
-Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární formát**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokol HTTP `location` v nastavení v datové sadě založené na formátu:
+Chcete-li kopírovat data do a z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. . Následující vlastnosti jsou podporovány pro protokol HTTP `location` v nastavení v datové sadě založené na formátu:
 
 | Vlastnost    | Popis                                                  | Požaduje se |
 | ----------- | ------------------------------------------------------------ | -------- |
@@ -212,7 +212,7 @@ Chcete-li kopírovat data do a z **Parquet, oddělený text nebo binární form�
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC/JSON**, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC**, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -274,12 +274,12 @@ V této části najdete seznam vlastností, které zdroj HTTP podporuje.
 
 ### <a name="http-as-source"></a>HTTP as source
 
-- Chcete-li kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači, Avro a zdroj binárního formátu](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/Avro/JSON**, přečtěte si část [source source Format](#other-format-source) .
+- Chcete-li kopírovat z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [zdrojové části Parquet, oddělovače text, JSON, Avro a Binary Format](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je například **Formát ORC**, přečtěte si část [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
+#### <a name="format-based-source"></a>Parquet, oddělený text, JSON, Avro a binární formát formátu
 
-Pokud chcete kopírovat data z **Parquet, textu nebo binárního formátu**, přečtěte si článek [Formát Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaná nastavení. Následující vlastnosti jsou podporovány pro protokol HTTP `storeSettings` v nastavení ve zdroji kopírování založeném na formátu:
+Chcete-li kopírovat data z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet](format-parquet.md), formát [textu s oddělovači](format-delimited-text.md), formát [Avro](format-avro.md) a [binární formát](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaný. možnost. Následující vlastnosti jsou podporovány pro protokol HTTP `storeSettings` v nastavení ve zdroji kopírování založeném na formátu:
 
 | Vlastnost                 | Popis                                                  | Požaduje se |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -336,7 +336,7 @@ Pokud chcete kopírovat data z **Parquet, textu nebo binárního formátu**, př
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Pokud chcete kopírovat data z HTTP ve **formátu ORC/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z protokolu HTTP ve **formátu ORC**, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

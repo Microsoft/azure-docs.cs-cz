@@ -1,6 +1,6 @@
 ---
-title: Architektura Apache Hadoopu – Azure HDInsight
-description: Popisuje Apache Hadoop, ukládání a zpracování v clusterech HDInsight.
+title: Architektura Apache Hadoop – Azure HDInsight
+description: Popisuje Apache Hadoop ukládání a zpracování v clusterech Azure HDInsight.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -8,46 +8,46 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 3fd85232ff7044c699a3e68ce34b267bf50c4dc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d41d671cf773bdab20c3f105c7d1abb6c7bde840
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257857"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810233"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
-[Apache Hadoop](https://hadoop.apache.org/) zahrnuje dva základní součásti: [Apache Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) , která poskytuje úložiště, a [Apache Hadoop ještě další Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , který poskytuje zpracování. S úložištěm a možnosti zpracování, cluster bude schopný běžet [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programy k provedení požadované zpracování dat.
+[Apache Hadoop](https://hadoop.apache.org/) obsahuje dvě základní komponenty: [Apache HADOOP systém souborů DFS (Distributed File System) (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) , která poskytuje úložiště, a [Apache HADOOP ještě jiný Negociační (příz)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , který poskytuje zpracování. Díky funkcím úložiště a zpracování se cluster bude schopný spouštět programy [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) a provádět požadované zpracování dat.
 
 > [!NOTE]  
-> HDFS není obvykle nasazený v clusteru HDInsight k poskytování úložiště. Vrstva rozhraní HDFS kompatibilního místo toho používá komponenty Hadoop. Funkce skutečného úložiště poskytuje Azure Storage nebo Azure Data Lake Storage. Pro Hadoop spuštění v clusteru HDInsight úlohy mapreduce je možné spustit jako kdyby byly k dispozici HDFS a proto nevyžadují žádné změny pro podporu jejich požadavky na úložiště. V systému Hadoop v HDInsight je zajištěný vnějším zdrojem úložiště, ale YARN zpracování zůstane základní součást. Další informace najdete v tématu [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md).
+> HDFS není obvykle nasazen v rámci clusteru HDInsight, aby poskytoval úložiště. Místo toho se používají komponenty Hadoop, které jsou kompatibilní s HDFS. Skutečná schopnost úložiště je poskytována buď Azure Storage, nebo Azure Data Lake Storage. Pro Hadoop MapReduce úlohy spuštěné v clusteru HDInsight, jako kdyby existovala HDFS, a proto nevyžadují žádné změny, které by podporovaly jejich požadavky na úložiště. V systému Hadoop ve službě HDInsight je úložiště ve zdroji, ale zpracování PŘÍZe zůstává základní komponentou. Další informace najdete v tématu [Úvod do Azure HDInsight](hadoop/apache-hadoop-introduction.md).
 
-Tento článek představuje YARN a jak koordinuje spuštění aplikace v HDInsight.
+Tento článek představuje nitě a způsob, jakým koordinuje spouštění aplikací v HDInsight.
 
-## <a name="apache-hadoop-yarn-basics"></a>Základní informace o Apache Hadoop YARN 
+## <a name="apache-hadoop-yarn-basics"></a>Základy Apache Hadoop nitě 
 
-YARN řídí a orchestruje zpracování dat v Hadoopu. YARN má dvě základní služby, které běží jako proces na uzly v clusteru: 
+PŘÍZe řídí a orchestruje zpracování dat v Hadoop. PŘÍZ má dvě základní služby, které běží jako procesy na uzlech v clusteru: 
 
 * ResourceManager 
 * NodeManager
 
-ResourceManager uděluje clusteru výpočetní prostředky, které aplikace, jako je úloh MapReduce. ResourceManager uděluje tyto prostředky jako kontejnery, ve kterém každý kontejner se skládá z přidělení jader procesoru a paměti RAM. Pokud kombinovat všem prostředkům dostupným v clusteru a poté distribuován jader a paměti v blocích, každý blok prostředků je kontejner. Každý uzel v clusteru má kapacitu pro počet kontejnerů, proto cluster má pevný limit počtu kontejnerů, které jsou k dispozici. Plnění zdroje v kontejneru je možné konfigurovat. 
+Správce prostředků uděluje výpočetní prostředky clusteru aplikacím jako MapReduce úlohy. Správce prostředků tyto prostředky uděluje jako kontejnery, kde se každý kontejner skládá z přidělení PROCESORových jader a paměti RAM. Pokud jste spojili všechny prostředky, které jsou k dispozici v clusteru, a poté byly distribuovány jádra a paměť v blocích, každý blok prostředků je kontejnerem. Každý uzel v clusteru má kapacitu pro určitý počet kontejnerů, proto má cluster pevný limit počtu dostupných kontejnerů. Plnění prostředků v kontejneru lze konfigurovat. 
 
-Když MapReduce aplikace běží na clusteru, ResourceManager poskytuje aplikaci kontejnery, ve kterém chcete spustit. ResourceManager sleduje stav spouštění aplikací, kapacita clusteru k dispozici a sleduje aplikací při jejich dokončování a uvolněte své prostředky. 
+Když aplikace MapReduce běží na clusteru, správce prostředků poskytne aplikaci kontejnery, ve kterých se má provést. Správce prostředků sleduje stav spuštěných aplikací, dostupnou kapacitu clusteru a sleduje aplikace podle jejich dokončení a uvolní své prostředky. 
 
-ResourceManager poběží i v procesu webového serveru, který poskytuje webové uživatelské rozhraní pro monitorování stavu aplikace.
+Správce prostředků taky spouští proces webového serveru, který poskytuje webové uživatelské rozhraní pro monitorování stavu aplikací.
 
-Když uživatel odešle aplikace MapReduce, která běží na clusteru, aplikace se odešle do Správce prostředků. Pak ResourceManager přiděluje kontejner uzlech NodeManager k dispozici. Uzly NodeManager jsou, kde ve skutečnosti spustí aplikaci. První kontejner přidělené spustí zvláštní aplikace volá se, ApplicationMaster. Tato ApplicationMaster zodpovídá za získávají se prostředky v podobě dalších kontejnerů potřebných ke spuštění odeslanou aplikaci. ApplicationMaster zkontroluje v jednotlivých fázích aplikaci, jako je mapa fáze a snížit fáze a faktory v tom, kolik dat je potřeba zpracovat. Pak požadavky ApplicationMaster (*vyjedná*) prostředků ze Správce prostředků jménem aplikace. ResourceManager zase uděluje prostředky z NodeManagers v clusteru ApplicationMaster pro jeho použití v provádění aplikace. 
+Když uživatel odešle aplikaci MapReduce ke spuštění v clusteru, aplikace se odešle do Správce prostředků. Správce prostředků pak přiděluje kontejner na dostupných uzlech NodeManager. Uzly NodeManager jsou místo, kde se aplikace skutečně spouští. První přidělený kontejner spustí speciální aplikaci s názvem ApplicationMaster. Tento ApplicationMaster zodpovídá za získání prostředků ve formě dalších kontejnerů potřebných ke spuštění odeslané aplikace. ApplicationMaster prověřuje fáze aplikace, jako je například fáze mapy a zmenšení fáze, a okolnosti, kolik dat je potřeba zpracovat. ApplicationMaster pak vyžádá (*vyjednávat*) prostředky od správce prostředků jménem aplikace. Správce prostředků pak udělí prostředky z NodeManagers v clusteru do ApplicationMaster, aby ho mohl použít při spouštění aplikace. 
 
-NodeManagers spouštět úlohy, které tvoří aplikace, pak zprávy jejich průběhu a stavu zpět ApplicationMaster. ApplicationMaster zase hlásí stav aplikace zpět do Správce prostředků. ResourceManager vrátí klientovi žádné výsledky.
+NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich průběh a stav zpět do ApplicationMaster. ApplicationMaster v nástroji zase hlásí stav aplikace zpět do Správce prostředků. Správce prostředků vrátí všechny výsledky klientovi.
 
-## <a name="yarn-on-hdinsight"></a>YARN v HDInsight
+## <a name="yarn-on-hdinsight"></a>PŘÍZe v HDInsight
 
-Všechny typy clusterů HDInsight nasadit YARN. Správce prostředků se nasazuje pro zajištění vysoké dostupnosti s primární a sekundární instanci, která se spustí na prvním a druhém hlavní uzly v rámci clusteru názvů. Současně je aktivní jenom jednu instanci ResourceManager. Instance NodeManager provozovat dostupných pracovních uzlů v clusteru.
+Všechny typy clusterů HDInsight nasazují PŘÍZi. Správce prostředků je nasazen pro vysokou dostupnost s primární a sekundární instancí, která běží na prvním a druhém hlavním uzlu v rámci clusteru. V jednom okamžiku je aktivní jenom jedna instance Správce prostředků. Instance NodeManager se spouštějí napříč dostupnými pracovními uzly v clusteru.
 
-![YARN v HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
+![PŘÍZe v HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
 
 ## <a name="next-steps"></a>Další postup
 
 * [Použití MapReduce v Apache Hadoopu ve službě HDInsight](hadoop/hdinsight-use-mapreduce.md)
-* [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md)
+* [Seznámení se službou Azure HDInsight](hadoop/apache-hadoop-introduction.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7df117dbb071081473a5651a953927cee8ddaa03
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e758707511989cca64fdef45b1c673dd3d96d6d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801448"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812131"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -161,7 +161,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Vocus skupina NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Podporováno | Podporováno | Auckland, Sydney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporováno |Podporováno |Amsterdam2, Londýn, Singapur |
 | **Vodafone Idea** | Podporováno | Podporováno | Bombaj, Mumbai2 |
-| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Denver, Londýn, Los Angeles, Montreal, New York, Paříž, Seattle, Silicon sedl, Toronto, Washington DC |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Denver, Londýn, Los Angeles, Montreal, New York, Paříž, Seattle, Silicon sedl, Toronto, Washington DC, Washington DC2 |
 
  **+** označuje brzké uvedení.
 
@@ -198,7 +198,7 @@ Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsa
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporováno  | Není podporováno | Berlín |
 | **T-Systems** |Podporováno |Není podporováno |Berlín |
 
-## <a name="connectivity-through-exchange-providers"></a>Možnosti připojení prostřednictvím poskytovatelů Exchange
+## <a name="connectivity-through-exchange-providers"></a>Připojení prostřednictvím poskytovatelů Exchange
 
 Pokud poskytovatel připojení není v předchozích částech uvedený, můžete přesto vytvořit připojení.
 
@@ -216,7 +216,14 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 * Abyste se připojili k Microsoftu, objednejte si okruh ExpressRoute s výměnou jako poskytovatel připojení.
   * Při nastavení připojení postupujte podle kroků v tématu [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
 
-## <a name="connectivity-through-additional-service-providers"></a>Možnosti připojení prostřednictvím dalších poskytovatelů služeb
+## <a name="connectivity-through-satellite-operators"></a>Konektivita prostřednictvím satelitních operátorů
+Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat další možnosti připojení, můžete následující satelitní operátory ověřit. 
+
+* Intelsat
+* ŠETŘENÍ
+* Viasat
+
+## <a name="connectivity-through-additional-service-providers"></a>Připojení prostřednictvím dalších poskytovatelů služeb
 
 | **Poskytovatel připojení** | **Výměna** | **Umístění** |
 | --- | --- | --- |
@@ -278,7 +285,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[Zertia](https://www.zertia.es)**| Level 3 | Madrid |
 | **[Zirro](https://zirro.com/services/)**| Cologix, Equinix | Montreal, Toronto |
 
-## <a name="connectivity-through-datacenter-providers"></a>Možnosti připojení prostřednictvím poskytovatelů datacenter
+## <a name="connectivity-through-datacenter-providers"></a>Připojení prostřednictvím poskytovatelů Datacenter
 
 | **Poskytovatel** | **Exchange** |
 | --- | --- |
@@ -295,7 +302,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[vXchnge](https://www.vxchnge.com/colocation-services/interconnection)** | IX dosažitelný, Megaport |
 | **[Datacentra T5](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
-## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Možnosti připojení prostřednictvím sítí národního výzkumu a vzdělávání (NREN)
+## <a name="connectivity-through-national-research-and-education-networks-nren"></a>Připojení přes národní výzkumné a vzdělávací sítě (NREN)
 
 | **Poskytovatel**|
 | --- |

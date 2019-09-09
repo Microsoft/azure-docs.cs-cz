@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879913"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812830"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
 
@@ -68,7 +68,7 @@ Aby bylo možné konfigurovat a implementovat Azure Proxy aplikací služby AD, 
 
 * **Omezení služby**: Pro zajištění ochrany před zneužitím prostředků jednotlivými klienty jsou nastavené limity omezení pro jednotlivé aplikace a klienty. Pokud se chcete podívat na tato omezení, přečtěte si omezení [a omezení služby Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Tyto limity omezování jsou založené na testu výkonnosti mnohem nad běžným objemem využití a poskytují rozsáhlou vyrovnávací paměť pro většinu nasazení.
 
-* **Veřejný certifikát**: Pokud používáte vlastní názvy domén, musíte si vyřídit veřejný certifikát vystavený důvěryhodnou certifikační autoritou od jiného subjektu než Microsoftu. V závislosti na požadavcích vaší organizace může získání certifikátu nějakou dobu trvat a doporučujeme začít proces co nejdříve. Azure Application proxy podporuje certifikáty založené na standardu, zástupném [znaku](application-proxy-wildcard.md)nebo síti SAN.
+* **Veřejný certifikát**: Pokud používáte vlastní názvy domén, musíte si vyřídit veřejný certifikát vystavený důvěryhodnou certifikační autoritou od jiného subjektu než Microsoftu. V závislosti na požadavcích vaší organizace může získání certifikátu nějakou dobu trvat a doporučujeme začít proces co nejdříve. Azure Application proxy podporuje certifikáty založené na standardu, [zástupném znaku](application-proxy-wildcard.md)nebo síti SAN.
 
 * **Požadavky na doménu**: Jednotné přihlašování k publikovaným aplikacím pomocí vynuceného delegování protokolu Kerberos (KCD) vyžaduje, aby server, na kterém běží konektor, a server, na kterém je spuštěná aplikace, byl připojený k doméně a součástí stejné domény nebo důvěřujících domén.
 Podrobné informace o tomto tématu najdete v tématu [KCD pro jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) pomocí proxy aplikací. Služba konektoru běží v kontextu místního systému a neměla by být nakonfigurována pro použití vlastní identity.
@@ -85,7 +85,7 @@ Podrobné informace o tomto tématu najdete v tématu [KCD pro jednotné přihla
 
    * **Publikování a Správa aplikací** vyžaduje roli *správce aplikace* . Správci aplikací můžou spravovat všechny aplikace v adresáři včetně registrací, nastavení jednotného přihlašování, přiřazení uživatelů a skupin a licencí, nastavení proxy aplikací a souhlasu. Neuděluje možnost spravovat podmíněný přístup. Role *správce cloudové aplikace* má všechny schopnosti správce aplikace, s tím rozdílem, že neumožňuje správu nastavení proxy aplikací.
 
-* **Licencování**: Proxy aplikace je k dispozici prostřednictvím předplatného Azure AD Basic. Úplný seznam možností a funkcí licencování najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .  
+* **Licencování**: Proxy aplikace je k dispozici prostřednictvím předplatného Azure AD Premium. Úplný seznam možností a funkcí licencování najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .  
 
 ### <a name="application-discovery"></a>Zjišťování aplikací
 
@@ -265,13 +265,13 @@ K podpoře Proxy aplikací služby AD Azure je možné použít následující f
 
 * Podmíněný přístup na základě uživatelů a umístění: Chránit citlivá data omezením přístupu uživatelů na základě geografického umístění nebo IP adresy pomocí [zásad podmíněného přístupu na základě umístění](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
-* Podmíněný přístup podle zařízení: Zajistěte, aby k firemním datům měli přístup jenom registrovaná, schválená a vyhovující zařízení s podmíněným [přístupem na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications).
+* Podmíněný přístup podle zařízení: Zajistěte, aby k firemním datům měli přístup jenom registrovaná, schválená a vyhovující zařízení s [podmíněným přístupem na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications).
 
 * Podmíněný přístup na základě aplikace: Pokud uživatel není v podnikové síti, nemusí se práce zastavit. [Zabezpečený přístup k podnikovému cloudu a místním aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) a udržování řízení pomocí podmíněného přístupu.
 
 * Podmíněný přístup na základě rizik: Chraňte svá data proti škodlivým podvodníkům pomocí [zásad podmíněného přístupu na základě rizik](https://www.microsoft.com/cloud-platform/conditional-access) , která je možné použít pro všechny aplikace a všechny uživatele, ať už místně, nebo v cloudu.
 
-* Přístupový panel Azure AD: Když máte nasazenou službu proxy aplikací a aplikace jsou bezpečně publikované, poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Zvyšte produktivitu díky samoobslužným funkcím, jako je třeba možnost požádat o přístup k novým aplikacím a skupinám nebo spravovat přístup k těmto prostředkům jménem jiné prostřednictvím přístupového [panelu](https://aka.ms/AccessPanelDPDownload).
+* Přístupový panel Azure AD: Když máte nasazenou službu proxy aplikací a aplikace jsou bezpečně publikované, poskytněte uživatelům jednoduché centrum pro zjišťování a přístup ke všem jejich aplikacím. Zvyšte produktivitu díky samoobslužným funkcím, jako je třeba možnost požádat o přístup k novým aplikacím a skupinám nebo spravovat přístup k těmto prostředkům jménem jiné prostřednictvím [přístupového panelu](https://aka.ms/AccessPanelDPDownload).
 
 ## <a name="manage-your-implementation"></a>Správa implementace
 

@@ -1,17 +1,17 @@
 ---
 title: Nepovedlo se přihlásit ke clusteru Azure HDInsight.
-description: Nepovedlo se přihlásit ke clusteru Azure HDInsight.
+description: Řešení potíží s tím, proč se nepovedlo přihlásit Apache Hadoop clusteru v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: eb7249fc88f37e5c15447e5a8907468a851d2416
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: bd020576f6939ad195c73ebe390d370d0319b5f9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737443"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810536"
 ---
 # <a name="scenario-unable-to-log-into-azure-hdinsight-cluster"></a>Scénář: Nepovedlo se přihlásit ke clusteru Azure HDInsight.
 

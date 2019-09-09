@@ -1,6 +1,6 @@
 ---
 title: Správa clusterů HDInsight s podnikovým zabezpečením Enterprise – Azure
-description: Naučte se spravovat clustery HDInsight pomocí Balíček zabezpečení podniku.
+description: Naučte se spravovat clustery Azure HDInsight pomocí Balíček zabezpečení podniku.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488725"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811020"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 Seznamte se s uživateli a rolemi v HDInsight Balíček zabezpečení podniku (ESP) a Správa clusterů ESP.
@@ -34,7 +34,7 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
    
 3. Propojený cluster můžete zobrazit pomocí **clusteru seznamu**příkazů. Nyní můžete odeslat skript do tohoto odkazovaného clusteru.
 
-   ![propojený cluster](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![propojený cluster](./media/apache-domain-joined-manage/linked-cluster.png "propojený cluster")
 
 4. Můžete také odpojit cluster pomocí zprovoznění **služby HDInsight: Odpojte cluster** od palety příkazů.
 
@@ -43,11 +43,11 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`). 
 1. Klikněte na **propojit cluster** z **Azure Exploreru**.
 
-   ![místní nabídka propojit cluster](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![propojit kontextovou nabídku clusteru IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**. Pokud se ověření nezdaří, je nutné ověřit uživatelské jméno a heslo. Volitelně můžete přidat účet úložiště, klíč úložiště a pak vybrat kontejner z kontejneru úložiště. Informace o úložišti jsou pro Průzkumníka služby Storage v levém stromu.
    
-   ![Dialogové okno propojit cluster](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![Dialogové okno propojit cluster IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
@@ -56,22 +56,22 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
    
 3. Pokud jsou zadané informace správné, můžete zobrazit propojený cluster v uzlu **HDInsight** . Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
-   ![propojený cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![propojený cluster IntelliJ](./media/apache-domain-joined-manage/linked-cluster-intellij.png "propojený cluster IntelliJ]")
 
 4. Cluster taky můžete odpojit od **Azure Exploreru**.
    
-   ![nepropojený cluster](./media/apache-domain-joined-manage/unlink.png)
+   ![nepropojená IntelliJ clusteru](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí Eclipse
 
 Běžný cluster můžete propojit pomocí spravovaného uživatelského jména v Ambari, taky propojit cluster systému Hadoop Security pomocí uživatelského jména domény (například: `user1@contoso.com`).
 1. Klikněte na **propojit cluster** z **Azure Exploreru**.
 
-   ![místní nabídka propojit cluster](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![propojit kontextovou nabídku clusteru](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**a potom klikněte na tlačítko OK pro propojení clusteru. Volitelně můžete zadat účet úložiště, klíč úložiště a pak vybrat kontejner úložiště pro Průzkumníka služby Storage, aby fungoval v levém stromovém zobrazení.
    
-   ![Dialogové okno propojit cluster](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   ![propojit cluster – zatmění](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
    > [!NOTE]  
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
@@ -79,11 +79,11 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 3. Odkazovaný cluster můžete zobrazit v uzlu **HDInsight** po kliknutí na tlačítko OK, pokud jsou zadané informace správné. Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
-   ![propojený cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![odkaz na propojený cluster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Cluster taky můžete odpojit od **Azure Exploreru**.
    
-   ![nepropojený cluster](./media/apache-domain-joined-manage/unlink.png)
+   ![nepropojený clusterový zatmění](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Přístup ke clusterům pomocí Balíček zabezpečení podniku.
 
@@ -220,6 +220,6 @@ HDInsight Balíček zabezpečení podniku má následující role:
 2. V nabídce vlevo klikněte na **role**.
 3. Pokud chcete přiřadit uživatele a skupiny k různým rolím, klikněte na **Přidat uživatele** nebo **Přidat skupinu** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
 * Informace o konfiguraci zásad podregistru a spouštění dotazů na podregistr najdete v tématu [Konfigurace zásad Apache Hive pro clustery HDInsight s](apache-domain-joined-run-hive.md)protokolem ESP.

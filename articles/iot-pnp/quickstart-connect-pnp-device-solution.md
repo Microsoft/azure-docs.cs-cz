@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 246d3eac8f9d8aff6d603ea8686e430ce0f772ea
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a082e4b7896b317bf2b28971d3693bada95a3445
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878247"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806558"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution"></a>Rychlý start: Interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení
 
@@ -28,6 +28,9 @@ Stáhněte a nainstalujte Node. js z [NodeJS.org](https://nodejs.org).
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
 K dokončení tohoto rychlého startu budete také potřebovat službu Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+> [!NOTE]
+> Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
 
 Přidejte Microsoft Azure rozšíření IoT pro Azure CLI:
 
@@ -240,7 +243,7 @@ Pokud chcete odstranit jenom zařízení, které jste zaregistrovali ve svém Io
 az iot hub device-identity delete --hub-name [YourIoTHubName] --device-id [YourDevice]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se dozvěděli, jak připojit zařízení IoT technologie Plug and Play k řešení IoT. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 

@@ -1,20 +1,19 @@
 ---
-title: Nastavení zotavení po havárii mezi místními lokalitami pro virtuální počítače Hyper-V pomocí Azure Site Recovery | Microsoft Docs
+title: Nastavení zotavení po havárii pro virtuální počítače Hyper-V mezi místními lokalitami pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii mezi místními lokalitami pro místní virtuální počítače Hyper-V pomocí Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398411"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813759"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -65,7 +64,7 @@ Připravte VMM následujícím způsobem:
 
 Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 
-1. Klikněte na tlačítko **Site Recovery** > **krok 1: Příprava infrastruktury** > **cíl ochrany**.
+1. Klikněte na **Site Recovery** > **krok 1: Připravte** **cíl ochrany**infrastruktury. > 
 2. Vyberte **Do lokality pro obnovení** a vyberte **Ano, s technologií Hyper-V**.
 3. Vyberte **Ano**, abyste určili, že ke správě hostitelů Hyper-V používáte VMM.
 4. Vyberte **Ano**, pokud máte sekundární server VMM. Pokud nasazujete replikaci mezi cloudy na jeden server VMM, klikněte na **Ne**. Pak klikněte na **OK**.
@@ -134,7 +133,7 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 2. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý bude interval uchovávání dat pro jednotlivé body obnovení. Replikované počítače je možné obnovit do libovolného bodu v rámci tohoto intervalu.
 3. V části **Frekvence pořizování snímků konzistentních vzhledem k aplikacím** určete, jak často (1–12 hodin) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Technologie Hyper-V používá dva typy snímků:
     - **Standardní snímek**: Poskytuje přírůstkový snímek celého virtuálního počítače.
-    - **Snímky konzistentní s aplikací**: Pořídí snímek dat aplikací ve virtuálním počítači v daném okamžiku. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
+    - **Snímek konzistentní vzhledem k aplikacím**: Vytvoří snímek dat aplikace v rámci virtuálního počítače v určitém časovém bodě. Služba Stínová kopie svazku (VSS) zajišťuje, že aplikace budou při pořízení snímku v konzistentním stavu. Povolení snímků konzistentních vzhledem k aplikacím má vliv na výkon aplikací na zdrojových virtuálních počítačích. Nastavte hodnotu menší než počet dalších bodů obnovení, které nakonfigurujete.
 4. V části **Komprese přenosu dat** určete, jestli se mají přenášená data replikace komprimovat.
 5. Výběrem možnosti **Odstranit repliku virtuálního počítače** určíte, že se má v případě, že zakážete ochranu zdrojového virtuálního počítače, odstranit jeho replika. Pokud povolíte toto nastavení, pak se v případě, že zakážete ochranu zdrojového virtuálního počítače, tento virtuální počítač odebere z konzoly Site Recovery, z konzoly VMM se odeberou nastavení Site Recovery pro VMM a odstraní se příslušná replika.
 6. Pokud provádíte replikaci přes síť, v části **Metoda počáteční replikace** určete, jestli se má spustit počáteční replikace, nebo ji naplánujte. Pokud chcete snížit využití šířky pásma, měli byste ji naplánovat na dobu mimo špičky. Pak klikněte na **OK**.
@@ -154,6 +153,6 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 
 Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **Dokončení ochrany** bude počáteční replikace dokončená a virtuální počítač bude připravený na převzetí služeb při selhání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Spuštění postupu zotavení po havárii](hyper-v-vmm-test-failover.md)

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d1beae9ebd86035e075f75b088618ec55595e876
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: b69000e251bb71bc08ea97b24a7422daf2cd89e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035689"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813830"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu C IoT Edge pro zařízení s Windows
 
@@ -265,12 +265,12 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
        if (IoTHubModuleClient_LL_SetInputMessageCallback(iotHubModuleClientHandle, "input1", InputQueue1Callback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetInputMessageCallback(\"input1\")..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else if (IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, moduleTwinCallback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetModuleTwinCallback(default)..........FAILED!\r\n");
-           ret = 1;
+           ret = MU_FAILURE;
        }
        else
        {
@@ -309,7 +309,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste do **CM
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`nástroje. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu [přihlašovací](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) Reference k Docker.
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití `--password-stdin`nástroje. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 2. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu, který chcete sestavit. Výchozí název je **AzureIotEdgeApp1** a vzhledem k tomu, že vytváříte modul systému Windows, musí být přípona **Windows. amd64**. 
 
@@ -344,7 +344,7 @@ K zobrazení zpráv při jejich doručování do IoT Hub můžete použít rozš
 
 2. V seznamu **Akce** vyberte možnost **Spustit sledování integrovaného koncového bodu události**. 
 
-3. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože IoT Edge zařízení musí přijmout nové nasazení a spustit všechny moduly. Změny, které jsme provedli v kódu CModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také výstrahu typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty. 
+3. Zobrazení zpráv přicházejících do IoT Hub. Doručení zpráv může chvíli trvat, protože IoT Edge zařízení musí přijmout nové nasazení a spustit všechny moduly. Změny, které jsme provedli v kódu CModule, čekají, dokud teplota počítače nedosáhne 25 stupňů před odesláním zpráv. Přidá také **výstrahu** typu zpráva pro všechny zprávy, které dosáhnou prahové hodnoty teploty. 
 
    ![Zobrazení zpráv přicházejících na IoT Hub](./media/tutorial-c-module-windows/view-d2c-message.png)
 

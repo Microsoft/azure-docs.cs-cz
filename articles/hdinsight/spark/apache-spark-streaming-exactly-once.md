@@ -1,18 +1,18 @@
 ---
 title: Úlohy streamování Sparku s právě jedním zpracováním událostí – Azure HDInsight
-description: Jak nastavit streamování Spark pro zpracování události jednou a jenom jednou.
+description: Jak nastavit streamování Apache Spark pro zpracování události jednou a jenom jednou.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: ce2cff6a1a6bf769f52940ecc0d1dc5a4678cbd5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735994"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814029"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytváření úloh Apache Spark streamování s právě jedním zpracováním událostí
 

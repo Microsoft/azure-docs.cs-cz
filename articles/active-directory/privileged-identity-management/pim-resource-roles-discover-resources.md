@@ -1,9 +1,9 @@
 ---
-title: Vyhledejte prostředky Azure ke správě v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak zjistit prostředky Azure pro správu v Azure AD Privileged Identity Management (PIM).
+title: Zjištění prostředků Azure pro správu v PIM-Azure Active Directory | Microsoft Docs
+description: Naučte se zjišťovat prostředky Azure pro správu v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,59 +12,59 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b9ca4862f129b2da23a1d1ad8bb0b1bd0a5078f
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ef1f1712ab7474747829c8744a39e74b78777668
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476278"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804160"
 ---
-# <a name="discover-azure-resources-to-manage-in-pim"></a>Vyhledejte prostředky Azure ke správě v PIM
+# <a name="discover-azure-resources-to-manage-in-pim"></a>Zjištění prostředků Azure pro správu v PIM
 
-Pomocí Azure Active Directory (Azure AD) Privileged Identity Management (PIM), můžete zlepšit ochranu vašich prostředků Azure. To je užitečné pro organizace, které už používají k ochraně role Azure AD PIM a vlastníkům správu skupin a předplatné, kteří chtějí zabezpečit prostředky v produkčním prostředí.
+Pomocí služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete zlepšit ochranu vašich prostředků Azure. To je užitečné pro organizace, které už používají PIM k ochraně rolí Azure AD, a ke skupině pro správu a vlastníky předplatného, které hledají informace o zabezpečení produkčních prostředků.
 
-Když poprvé nastavujete PIM pro prostředky Azure, budete muset zjistit a vyberte prostředky, které chcete chránit pomocí PIM. Neexistuje žádné omezení počtu prostředků, které můžete spravovat pomocí služby PIM. Však doporučujeme začít s prostředky těch nejdůležitějších (produkce).
+Při nastavování PIM pro prostředky Azure je třeba zjistit a vybrat prostředky pro ochranu pomocí PIM. Neexistuje žádné omezení počtu prostředků, které můžete spravovat pomocí PIM. Doporučujeme však začít s vašimi nejdůležitějšími (provozními) prostředky.
 
-## <a name="discover-resources"></a>Zjišťování prostředků
+## <a name="discover-resources"></a>Zjistit prostředky
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **prostředky Azure**.
+1. Klikněte na **prostředky Azure**.
 
-    Pokud je toto vaše první přihlášení pomocí PIM pro prostředky Azure, uvidíte podokno zjišťování prostředků.
+    Pokud použijete PIM pro prostředky Azure, zobrazí se podokno vyhledat prostředky.
 
-    ![Zjišťovat prostředky podokno se žádné prostředky uvedené pro první zkušenosti čas](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Vyhledat podokno prostředků bez prostředků uvedených v prvním časovém intervalu](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
-    Pokud jiný prostředek nebo adresáře správce ve vaší organizaci je už správu prostředků Azure v PIM, zobrazí se vám seznam prostředků, které jsou aktuálně spravován.
+    Pokud jiný správce prostředků nebo adresářů ve vaší organizaci už spravuje prostředky Azure v PIM, zobrazí se seznam prostředků, které se v tuto chvíli spravují.
 
-    ![Zjistit prostředky podokně výpis prostředků, které jsou aktuálně spravován](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![V podokně vyhledat prostředky výpis aktuálně spravovaných prostředků](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. Klikněte na tlačítko **zjistit prostředky** ke spuštění prostředí pro zjišťování.
+1. Kliknutím na **Vyhledat prostředky** spusťte zjišťování.
 
-    ![Podokno zjišťování výpisy seznamů prostředků, které jde spravovat jako jsou předplatná a skupiny pro správu](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Podokno zjišťování se seznamem prostředků, které se dají spravovat, jako jsou předplatná a skupiny pro správu](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. V podokně zjišťování pomocí **filtr stavu prostředků** a **vyberte typ prostředku** filtrovat správu skupiny nebo předplatného máte oprávnění k zápisu do. To je pravděpodobně nejjednodušším začít **všechny** původně.
+1. V podokně zjišťování použijte **Filtr stavu prostředku** a **Vyberte typ prostředku** pro filtrování skupin pro správu nebo odběrů, ke kterým máte oprávnění k zápisu. Je pravděpodobné, že začne začít se **všemi** počátečními.
 
-    Je možné pouze vyhledejte a vyberte správu skupiny nebo předplatného prostředky spravovat pomocí PIM. Když spravujete skupinu pro správu nebo předplatného v PIM, můžete také spravovat její podřízené prostředky.
+    Můžete vyhledat a vybrat skupinu pro správu nebo prostředky předplatného, které chcete spravovat pomocí PIM. Když spravujete skupinu pro správu nebo předplatné v PIM, můžete také spravovat její podřízené prostředky.
 
-1. Přidáte značku zaškrtnutí vedle všech nespravovaných prostředků, které chcete spravovat.
+1. Přidejte zaškrtnutí vedle všech nespravovaných prostředků, které chcete spravovat.
 
-1. Klikněte na tlačítko **prostředky spravovat** k zahájení správy vybrané prostředky.
+1. Pokud chcete začít spravovat vybrané prostředky, klikněte na **Spravovat prostředek** .
 
     > [!NOTE]
-    > Po nastavení skupiny pro správu nebo předplatného je spravovat, nemůže nespravované. Odebírá se nastavení PIM tomu jiný správce prostředků.
+    > Jakmile je skupina pro správu nebo předplatné nastavené na spravované, nemůže být nespravované. Tím se zabrání dalšímu správci prostředků v odebrání nastavení PIM.
 
-    ![Zjišťování podokno s vybraného zdroje a zvýrazněnou možností prostředků spravovat](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Podokno zjišťování se zvýrazněným prostředkem a vybranou možností spravovat prostředek](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Pokud se zobrazí zpráva k potvrzení onboarding vybraného prostředku ke správě, klikněte na tlačítko **Ano**.
+1. Pokud se zobrazí zpráva, abyste potvrdili připojování vybraného prostředku ke správě, klikněte na **Ano**.
 
-    ![Zpráva s potvrzením připojení vybrané prostředky pro správu](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![Zpráva potvrzující, že se má připojit vybrané prostředky pro správu](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Další postup
 
 - [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
-- [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)
+- [Přiřazení rolí prostředků Azure v PIM](pim-resource-roles-assign-roles.md)

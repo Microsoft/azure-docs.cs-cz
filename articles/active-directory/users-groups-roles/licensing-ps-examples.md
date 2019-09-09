@@ -1,6 +1,6 @@
 ---
-title: Příklady prostředí PowerShell a Graph pro licencování skupiny – Azure Active Directory | Dokumentace Microsoftu
-description: Prostředí PowerShell a Graph příklady a scénáře pro licencování na základě skupin Azure Active Directory
+title: Příklady PowerShellu a grafu pro skupiny licencí – Azure Active Directory | Microsoft Docs
+description: Příklady a scénáře PowerShellu a grafu pro Azure Active Directory licencování na základě skupin
 services: active-directory
 keywords: Licencování Azure AD
 documentationcenter: ''
@@ -14,26 +14,26 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6ac548a4b7599857b116e8059acc51c21fdf4e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065501"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812259"
 ---
-# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell a Graph pro licencování na základě skupiny ve službě Azure AD
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady PowerShellu a grafu pro licencování na základě skupin ve službě Azure AD
 
-Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně podpora prostředí PowerShell a Microsoft Graph je omezena na operacím jen pro čtení. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
+Plná funkčnost pro licencování na základě skupin je dostupná prostřednictvím [Azure Portal](https://portal.azure.com)a aktuálně je PowerShell a podpora Microsoft Graph omezená jenom na operace jen pro čtení. Existují však některé užitečné úlohy, které lze provést pomocí stávajících [rutin prostředí PowerShell pro MSOnline](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. V tomto dokumentu najdete příklady toho, co je možné.
 
 > [!NOTE]
-> Než začnete, spuštěním rutin, ujistěte se, že připojení k vaší organizaci poprvé, spuštěním `Connect-MsolService`  rutiny.
+> Než začnete používat rutiny, ujistěte se, že jste nejdřív připojili k vaší organizaci spuštěním `Connect-MsolService`  rutiny.
 
 > [!WARNING]
-> Tento kód slouží jako příklad pro demonstrační účely. Pokud máte v úmyslu používat ve vašem prostředí, zvažte nejprve testování v malém měřítku, nebo v samostatné testovacího tenanta. Bude pravděpodobně nutné upravit kód pro konkrétní potřeby vašeho prostředí.
+> Tento kód je k dispozici jako příklad pro demonstrační účely. Pokud máte v úmyslu použít ho ve svém prostředí, zvažte jeho první testování v malém měřítku nebo v samostatném testovacím tenantovi. Možná budete muset upravit kód tak, aby splňoval konkrétní potřeby vašeho prostředí.
 
-## <a name="view-product-licenses-assigned-to-a-group"></a>Licence na produkty zobrazení přiřazen ke skupině
+## <a name="view-product-licenses-assigned-to-a-group"></a>Zobrazení licencí k produktu přiřazených ke skupině
 
-[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) rutina slouží k načtení objektu skupiny a zkontrolujte *licence* vlastnost: Vypíše všechny licence produktů aktuálně přiřazené ke skupině.
+Pomocí rutiny [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) můžete načíst objekt skupiny a ověřit vlastnost *licence* : zobrazí seznam všech licencí produktu, které jsou aktuálně přiřazeny ke skupině.
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
@@ -48,12 +48,12 @@ EMSPREMIUM
 ```
 
 > [!NOTE]
-> Data jsou omezená na informace o produktu (SKU). Není možné vypsat plánech zakázaná v licenci.
+> Data jsou omezená na informace o produktu (SKU). V licenci není možné vypsat plány služeb zakázané.
 
-Chcete-li získat stejná data z Microsoft Graphu, použijte následující ukázku.
+Pomocí následující ukázky můžete získat stejná data z Microsoft Graph.
 
 ```
-GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
 Výstup:
 ```
@@ -78,13 +78,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="get-all-groups-with-licenses"></a>Získání všech skupin s licencemi
+## <a name="get-all-groups-with-licenses"></a>Získat všechny skupiny s licencemi
 
-Můžete najít všechny skupiny s jakoukoli licenci přiřadit spuštěním následujícího příkazu:
+Všechny skupiny s přiřazenou licencí můžete najít spuštěním následujícího příkazu:
 ```powershell
 Get-MsolGroup | Where {$_.Licenses}
 ```
-O jaké produkty jsou přiřazeny lze zobrazit další podrobnosti:
+Můžete zobrazit další podrobnosti o přiřazených produktech:
 ```powershell
 Get-MsolGroup | Where {$_.Licenses} | Select `
     ObjectId, `
@@ -102,8 +102,8 @@ cf41f428-3b45-490b-b69f-a349c8a4c38e PowerBi - Licensed users POWER\_BI\_STANDAR
 c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM,EMSPREMIUM}
 ```
 
-## <a name="get-statistics-for-groups-with-licenses"></a>Získání statistiky pro skupiny s licencemi
-Můžete sestavy základních statistik pro skupiny s licencemi. V následujícím příkladu jsou uvedeny skript počet celkový počet uživatelů, počtu uživatelů s licencemi, které jsou přiřazeny skupině a počtu uživatelů, pro které nebylo možné přiřadit licence ve skupině.
+## <a name="get-statistics-for-groups-with-licenses"></a>Získat statistiku pro skupiny s licencemi
+Pro skupiny s licencemi můžete vykázat základní statistiky. V následujícím příkladu se ve skriptu zobrazí celkový počet uživatelů, počet uživatelů s licencemi, které už skupina přiřadily, a počet uživatelů, pro které se jim nepodařilo přiřadit licence.
 
 ```powershell
 #get all groups with licenses
@@ -160,8 +160,8 @@ O365 E5 - EXO     102fb8f4-bbe7-462b-83ff-2145e7cdd6ed ENTERPRISEPREMIUM        
 Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK                     4                 3                 1
 ```
 
-## <a name="get-all-groups-with-license-errors"></a>Získat všechny skupiny s chybami licence
-K nalezení skupin, které obsahují některé uživatele, pro které nebylo možné přiřadit licence:
+## <a name="get-all-groups-with-license-errors"></a>Získat všechny skupiny s chybami licencí
+Chcete-li najít skupiny obsahující některé uživatele, pro které nelze přiřadit licence:
 ```powershell
 Get-MsolGroup -HasLicenseErrorsOnly $true
 ```
@@ -171,7 +171,7 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
-Použijte následující příkaz pro získat stejná data z Microsoft Graphu
+K získání stejných dat z Microsoft Graph použijte následující.
 ```
 GET https://graph.microsoft.com/v1.0/groups?$filter=hasMembersWithLicenseErrors+eq+true
 ```
@@ -199,9 +199,9 @@ HTTP/1.1 200 OK
 ```
 
 
-## <a name="get-all-users-with-license-errors-in-a-group"></a>Získání všech uživatelů s chybami licence ve skupině
+## <a name="get-all-users-with-license-errors-in-a-group"></a>Získat všechny uživatele s chybami licencí ve skupině
 
-Zadaný skupinu, která obsahuje nějaké chyby související s licencí, můžete nyní zobrazit seznam všech uživatelích dotčených opravu těchto chyb. Uživatel může mít příliš chyby z jiných skupin. Ale v tomto příkladu jsme omezit výsledky pouze na chyby, které jsou relevantní pro dané skupiny tak, že zkontrolujete **ReferencedObjectId** vlastnosti každého **IndirectLicenseError** položku na uživatele.
+V případě skupiny, která obsahuje některé chyby související s licencí, teď můžete seznamovat všechny uživatele ovlivněné těmito chybami. Uživatel může mít chyby z jiných skupin. V tomto příkladu ale omezíme výsledky jenom na chyby, které jsou relevantní pro danou skupinu, a to tak, že zkontrolujete vlastnost **ReferencedObjectId** každého záznamu **IndirectLicenseError** na uživateli.
 
 ```powershell
 #a sample group with errors
@@ -227,7 +227,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-Chcete-li získat stejná data z Microsoft Graphu, použijte následující:
+K získání stejných dat z Microsoft Graph použijte následující:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Získat všichni uživatelé s licencí chyb v celém tenantovi
+## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Získat všechny uživatele s chybami licencí v celém tenantovi
 
-Tento skript je možné získat všichni uživatelé, kteří mají licenci chyby z jednoho nebo více skupin. Skript vypíše jeden řádek na uživatele a Chyba licence, které umožňuje zdroje každé chyby se tak jasně identifikovat.
+Pomocí následujícího skriptu můžete získat všechny uživatele, kteří mají chyby licencí z jedné nebo více skupin. Skript vytiskne jeden řádek na uživatele, na základě chyby licence, což vám umožní jasně identifikovat zdroj každé chyby.
 
 > [!NOTE]
-> Tento skript vytvoří výčet všech uživatelů v rámci tenanta, který nemusí být optimální pro velké tenanty.
+> Tento skript vytvoří výčet všech uživatelů v tenantovi, které nemusí být optimální pro velké klienty.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -282,7 +282,7 @@ Catherine Gibson 6d325baf-22b7-46fa-a2fc-a2500613ca15 11151866-5419-4d93-9141-06
 Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-129a3c471332 MutuallyExclusiveViolation
 ```
 
-Tady je jiná verze skriptu, který vyhledá pouze prostřednictvím skupiny, které obsahují chyby licencí. To může být více optimalizované pro scénáře, kde plánujete mít několik skupin s problémy.
+Tady je další verze skriptu, který vyhledává jenom skupiny, které obsahují chyby licencí. Může být více optimalizované pro scénáře, ve kterých očekáváte, že mají několik skupin s problémy.
 
 ```powershell
 $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
@@ -297,11 +297,11 @@ $groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
     } 
 ``` 
 
-## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Zkontrolujte, jestli uživatelské licence je přímo přiřadit nebo zděděno od skupiny
+## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Zjistit, jestli je uživatelská licence přiřazená přímo nebo zděděná ze skupiny
 
-Pro objekt uživatele je možné zkontrolujte, jestli konkrétní licence se přiřadí ze skupiny, nebo pokud se přiřadí přímo.
+U objektu uživatele je možné zjistit, jestli je konkrétní licence na produkt přiřazená ze skupiny, nebo jestli se přiřadí přímo.
 
-Následující dvě ukázkové funkce lze použít k analýze typ přiřazení pro jednotlivé uživatele:
+Pomocí těchto dvou vzorových funkcí lze analyzovat typ přiřazení pro jednotlivé uživatele:
 
 ```powershell
 #Returns TRUE if the user has the license assigned directly
@@ -364,7 +364,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Tento skript spustí tyto funkce u každého uživatele v tenantovi pomocí SKU ID jako vstup – v tomto příkladu nás zajímají licence na *Enterprise Mobility + Security*, která v našich tenanta je reprezentována identifikátorem  *Contoso:EMS*:
+Tento skript provádí tyto funkce na všech uživatelích v tenantovi pomocí ID SKU jako vstupu. v tomto příkladu vás zajímáme o licenci pro *Enterprise mobility + Security*, která v našem tenantovi je zastoupena s ID *Contoso:*
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Graf nemá přímý způsob, jak zobrazit výsledek, ale lze ji zobrazit z tohoto rozhraní API:
+Graf nemá jednoduchý způsob, jak zobrazit výsledek, ale lze ho vidět z tohoto rozhraní API:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -443,11 +443,11 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Odeberte přímé licence pro uživatele s licencemi skupiny
+## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Odebrání přímých licencí pro uživatele s licencemi skupin
 
-Tento skript slouží k odebrání nepotřebných s přímým přístupem licencí uživatelů, kteří už licence, které jsou stejné dědit ze skupiny; například jako součást [přechod na licencování na základě skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
+Účelem tohoto skriptu je odebrat zbytečné přímé licence pro uživatele, kteří už stejnou licenci zdědili od skupiny. například jako součást [přechodu na licencování na základě skupin](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
 > [!NOTE]
-> Je důležité nejdřív ověřit, že přímé licence k odebrání nepovolujte další funkce služby než zděděné licence. Odebírání přímých licencí, jinak může zakázat přístup ke službám a dat uživatelů. Aktuálně není možné zkontrolovat přes PowerShell, které služby jsou povolené prostřednictvím zděděné licence vs s přímým přístupem. Ve skriptu určíme minimální úroveň služeb, které jsme si vědomi se dědí ze skupin a zkontrolujte, proti které Ujistěte se, že uživatelé nepřišli neočekávaně přístup ke službám.
+> Nejdřív je důležité ověřit, že přímé licence, které se mají odebrat, neumožňují více funkcím služby než děděné licence. V opačném případě může odebrání přímé licence zakázat přístup ke službám a datům pro uživatele. V současné době není možné kontrolovat prostřednictvím prostředí PowerShell, které služby jsou povolené prostřednictvím zděděných licencí vs Direct. Ve skriptu určíme minimální úroveň služeb, které ví, že se dědí ze skupin a kontrolujeme, že uživatelé neočekávaně ztratí přístup ke službám.
 
 ```powershell
 #BEGIN: Helper functions used by the script
@@ -617,13 +617,13 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Aktualizujte hodnoty pro proměnné `$skuId` a `$groupId`  což je cílený na odebrání přímé licence závislosti na vašem testovacím prostředí před spuštěním skriptu výše. 
+> Aktualizujte hodnoty proměnných `$skuId` a `$groupId`  zacílení na odebrání přímých licencí podle testovacího prostředí před spuštěním výše uvedeného skriptu. 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o sadě pro správu licencí pomocí skupin funkcí, naleznete v následujících článcích:
+Další informace o sadě funkcí pro správu licencí prostřednictvím skupin najdete v následujících článcích:
 
-* [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)

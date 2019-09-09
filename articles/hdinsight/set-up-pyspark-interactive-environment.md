@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736415"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814236"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení PySpark interaktivního prostředí pro Visual Studio Code
 
@@ -24,13 +24,13 @@ K sestavení virtuálního prostředí v cestě domů používáme příkaz **Py
 1. Nainstalujte [Python](https://www.python.org/downloads/) a [PIP](https://pip.pypa.io/en/stable/installing/).
    
    + Nainstalujte Python z [https://www.python.org/downloads/](https://www.python.org/downloads/).
-   + Nainstalujte PIP z [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/). (Pokud není nainstalováno z instalace Pythonu)
-   + Ověřování Pythonu a PIP se úspěšně nainstalovaly pomocí následujících příkazů. Volitelné
+   + Nainstalujte PIP z [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Pokud není nainstalovaný z instalace Pythonu).
+   + Pomocí následujících příkazů ověřte, zda jsou Python a PIP úspěšně nainstalovány. Volitelné
  
         ![Verze Python PIP](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Místo používání výchozí verze MacOS se doporučuje ručně nainstalovat Python.
+     > Místo používání výchozí verze macOS se doporučuje ručně nainstalovat Python.
 
 
 2. Nainstalujte **virtualenv** spuštěním příkazu níže.
@@ -39,19 +39,21 @@ K sestavení virtuálního prostředí v cestě domů používáme příkaz **Py
    pip install virtualenv
    ```
 
-3. V případě systému Linux nainstalujte požadované balíčky spuštěním příkazů níže, pokud dojde k chybové zprávě.
-   
-    ![Verze Python PIP](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>Další balíčky
 
-   ```
-   sudo apt-get install python-dev
-   ```
+Pokud narazíte na chybovou zprávu, nainstalujte požadované balíčky spuštěním následujících příkazů:
 
-4. Restartujte vs Code a pak se vraťte do editoru skriptů, na kterém běží **HDInsight: PySpark Interactive**
+   ![Verze Python PIP](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+Restartujte vs Code a pak se vraťte do editoru skriptů, na kterém běží **HDInsight: PySpark Interactive**
 
 ## <a name="next-steps"></a>Další postup
 

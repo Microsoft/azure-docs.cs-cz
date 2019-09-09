@@ -1,17 +1,17 @@
 ---
 title: OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
-description: Různé výjimky OutOfMemoryError pro Apache Spark ve službě Azure HDInsight
+description: Různé výjimky OutOfMemoryError pro cluster Apache Spark ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/15/2019
-ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 6e7157f4e40dbc585d19affaf0c12af2e6ba60c1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543482"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813914"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError výjimky pro Apache Spark ve službě Azure HDInsight
 
@@ -242,7 +242,7 @@ Všechny položky odstraňte pomocí kroků popsaných níže.
 
 ---
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

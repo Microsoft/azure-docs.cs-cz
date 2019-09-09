@@ -1,9 +1,9 @@
 ---
-title: Kontrola přístupu pro role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak kontrolovat přístup role Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Kontrola přístupu k rolím Azure AD v PIM-Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak zkontrolovat přístup k rolím Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/21/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3850af026ea13e1920aea65e18358ebb04ef0d25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bd548041b086eef8d788a696497163c756fd5b7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65140965"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804420"
 ---
-# <a name="review-access-to-azure-ad-roles-in-pim"></a>Kontrola přístupu pro role Azure AD v PIM
+# <a name="review-access-to-azure-ad-roles-in-pim"></a>Kontrola přístupu k rolím Azure AD v PIM
 
-Azure Active Directory (AD) Privileged Identity Management (PIM) zjednodušuje, jak podniky spravovat privilegovaný přístup k prostředkům v Azure AD a dalších online službách Microsoftu jako Office 365 nebo Microsoft Intune.  
+Azure Active Directory (AD) Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je například sada Office 365 nebo Microsoft Intune.  
 
-Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.
+Pokud jste přihlášeni k roli správce, může správce privilegovaných rolí vaší organizace požádat o pravidelné potvrzení, že pro vaši úlohu stále potřebujete tuto roli. Můžete obdržet e-mail, který obsahuje odkaz, nebo můžete přejít přímo na [Azure Portal](https://portal.azure.com). Postupujte podle kroků v tomto článku a proveďte si vlastní kontrolu vašich přiřazených rolí.
 
-Pokud jste správcem privilegovaných rolí nebo globální správce zájem o kontroly přístupu, získáte další podrobnosti najdete v [zahájení kontroly přístupu](pim-how-to-start-security-review.md).
+Pokud jste správce privilegovaných rolí nebo globální správce, kteří mají zájem o kontroly přístupu, získáte další podrobnosti o [tom, jak spustit kontrolu přístupu](pim-how-to-start-security-review.md).
 
 ## <a name="add-the-privileged-identity-management-application"></a>Přidání aplikace Privileged Identity Management
-Můžete použít v aplikaci Azure AD Privileged Identity Management (PIM) [webu Azure portal](https://portal.azure.com/) provádět revizi.  Pokud nemáte aplikaci Azure AD Privileged Identity Management na portálu, postupujte podle těchto kroků, abyste mohli začít.
+K provedení kontroly můžete použít aplikaci Azure AD Privileged Identity Management (PIM) v [Azure Portal](https://portal.azure.com/) .  Pokud na portálu nemáte aplikaci Azure AD Privileged Identity Management, začněte pomocí těchto kroků.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte své uživatelské jméno v pravém horním rohu webu Azure portal a vyberte adresář, kde se dozvíte, jak můžete pracovat.
+2. V pravém horním rohu Azure Portal vyberte své uživatelské jméno a vyberte adresář, ve kterém budete pracovat.
 3. Vyberte **Všechny služby** a pomocí textového pole Filtr najděte **Azure AD Privileged Identity Management**.
 4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
 
-## <a name="approve-or-deny-access"></a>Schvalte nebo zamítněte přístup
-Pokud, schvalte nebo zamítněte přístup, je právě tím rozdílem, revidující, zda stále použít tuto roli nebo ne. Zvolte **schválit** Pokud budete chtít zůstat v roli, nebo **Odepřít** Pokud už nepotřebujete přístup. Stav nezmění hned, dokud revidující se vztahuje výsledky.
-Postupujte podle těchto kroků můžete najít a dokončení kontroly přístupu:
+## <a name="approve-or-deny-access"></a>Schválit nebo zamítnout přístup
+Když schválíte nebo odepřete přístup, stačí pouze sdělit kontrolorovi, zda tuto roli stále používáte. Vyberte **schválit** , pokud chcete zůstat v roli, nebo **zakažte** , pokud už nepotřebujete přístup. Stav se hned nemění, dokud kontrolor nepoužije výsledky.
+Pomocí těchto kroků můžete najít a dokončit kontrolu přístupu:
 
-1. V aplikaci PIM vyberte **revize privilegovaný přístup**. Pokud máte k dispozici žádné kontroly přístupu, se zobrazí v okně kontrol přístupu Azure AD.
-2. Vyberte revizi, kterou chcete provést.
-3. Pokud jste vytvořili revizi, vypadá jako jediným uživatelem v revizi. Vyberte zaškrtávací políčko vedle vašeho názvu.
-4. Zvolte buď **schválit** nebo **Odepřít**. Možná budete muset zahrnout důvod pro své rozhodnutí v **zadat příslušný důvod** textového pole.  
-5. Zavřít **revize Azure AD role** okno.
+1. V aplikaci PIM vyberte **zkontrolovat privilegovaný přístup**. Pokud máte nějaké recenze, které čekají na přístup, zobrazí se v okně kontroly přístupu Azure AD.
+2. Vyberte revizi, kterou chcete dokončit.
+3. Pokud jste tuto kontrolu nevytvořili, zobrazí se jako jediný uživatel v revizi. Zaškrtněte políčko vedle svého jména.
+4. Vyberte buď **schválit** , nebo **Odepřít**. Do textového pole **Zadejte důvod** možná budete muset zahrnout důvod svého rozhodnutí.  
+5. Zavřete okno **Kontrola rolí Azure AD** .
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup

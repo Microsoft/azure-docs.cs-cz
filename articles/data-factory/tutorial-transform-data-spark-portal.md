@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312313"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812283"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -104,7 +104,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Jako **Verzi** vyberte **V2**.
 1. Jako **Umístění** vyberte umístění datové továrny. 
 
-   Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
+   Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
 
 1. Vyberte **Vytvořit**.
 
@@ -147,13 +147,13 @@ V této části vytvoříte tyto dvě propojené služby:
    
    b. Ověřte, že je v poli **Typ** vybraná možnost **HDInsight na vyžádání**.
    
-   c. Pro **propojená služba Azure Storage**vyberte **AzureBlobStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
+   c. Pro **Azure Storage propojená služba**vyberte **AzureBlobStorage1**. Tuto propojenou službu jste vytvořili dříve. Pokud jste použili jiný název, zadejte sem správný název. 
    
    d. V poli **Typ clusteru** vyberte **spark**.
    
    e. V poli **ID instančního objektu** zadejte ID instančního objektu s oprávněním k vytvoření clusteru HDInsight. 
    
-      Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Další informace najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md).
+      Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Další informace najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu** je ekvivalentní *ID aplikace*a **klíč instančního objektu** je ekvivalentní hodnotě pro *tajný klíč klienta*.
    
    f. Do pole **Klíč instančního objektu** zadejte klíč. 
    
@@ -189,7 +189,7 @@ V této části vytvoříte tyto dvě propojené služby:
    ![Zadání propojené služby HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Přepněte na kartu **Skripty/Jar** a proveďte následující kroky: 
 
-   a. Pro **propojená služba úloh**vyberte **AzureBlobStorage1**.
+   a. V případě **propojené služby úlohy**vyberte **AzureBlobStorage1**.
    
    b. Klikněte na **Procházet úložiště**.
 
@@ -206,7 +206,7 @@ V této části vytvoříte tyto dvě propojené služby:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Aktivace spuštění kanálu
-Vyberte **přidat aktivační událost** na panelu nástrojů a pak vyberte **aktivovat**. 
+Vyberte **Přidat aktivační událost** na panelu nástrojů a pak vyberte **aktivovat nyní**. 
 
 ![Tlačítka Aktivační událost a Aktivovat](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Vyberte **přidat aktivační událost** na panelu nástrojů a pak vyberte **ak
 
    ![Stav spuštění kanálu](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   Zpět na zobrazení spuštění kanálu můžete přepnout výběrem **všechna spuštění kanálu** odkazu v horní části.
+   Zpět na zobrazení spuštění kanálu můžete přepnout výběrem odkazu **všechny spuštění kanálu** v horní části.
 
    ![Zobrazení Spuštění aktivit](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -253,7 +253,7 @@ Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené sl
 Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu: 
 
 > [!div class="nextstepaction"]
-> [Kurz: Transformace dat pomocí Hivu ve službě Azure Virtual Network](tutorial-transform-data-hive-virtual-network-portal.md).
+> [Kurz: Transformujte data pomocí podregistru v](tutorial-transform-data-hive-virtual-network-portal.md)Azure Virtual Network.
 
 
 

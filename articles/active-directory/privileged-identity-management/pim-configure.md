@@ -1,9 +1,9 @@
 ---
 title: Co je Privileged Identity Management? – Azure Active Directory | Dokumentace Microsoftu
-description: Poskytuje přehled služby Azure AD Privileged Identity Management (PIM).
+description: Poskytuje přehled Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,68 +11,68 @@ ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 5009310dd4ea4e99e1da2871085ee2d2d99a6eab
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473696"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804511"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
-Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) je služba, která vám umožní spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. To zahrnuje přístup k prostředkům v Azure AD, prostředkům Azure a dalším online službám Microsoftu jako Office 365 nebo Microsoft Intune.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) je služba, která umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci. To zahrnuje přístup k prostředkům v Azure AD, prostředkům Azure a dalším online službám Microsoftu jako Office 365 nebo Microsoft Intune.
 
-## <a name="why-should-i-use-pim"></a>Proč by měl používat PIM?
+## <a name="why-should-i-use-pim"></a>Proč mám použít PIM?
 
-Organizace chcete minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informace nebo materiály, protože, které snižují riziko škodlivý objekt actor tento přístup nebo neúmyslně vliv na prostředek citlivé autorizovaný uživatel. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Uživatelům můžete udělit organizace just-in-time (JIT) privilegovaný přístup k prostředkům Azure a Azure AD. Je potřeba pro dohled nad pro tyto činnosti uživatelů s jejich oprávněními správce. PIM pomáhá zmírnit riziko nadměrné, zbytečným nebo potenciálně nebezpečného přístupová práva.
+Organizace chtějí minimalizovat počet uživatelů, kteří mají přístup k zabezpečeným informacím nebo prostředkům, protože snižuje riziko, že škodlivý objekt actor získá takový přístup, nebo oprávněný uživatel neúmyslně ovlivnit citlivý prostředek. Uživatelé však i nadále potřebují provádět privilegované operace v Azure AD, Azure, Office 365 nebo aplikacích SaaS. Organizace můžou uživatelům, kteří mají privilegovaný přístup k prostředkům Azure a službě Azure AD, poskytovat privilegovaný přístup za běhu (just-in-time). Je potřeba mít přehled o tom, co dělají uživatelé s oprávněními správce. PIM pomáhá zmírnit riziko nadměrných, zbytečných nebo nepoužívaných přístupových práv.
 
-## <a name="what-can-i-do-with-pim"></a>Co můžu dělat s PIM?
+## <a name="what-can-i-do-with-pim"></a>Co můžu s PIM dělat?
 
-PIM v podstatě umožňuje správu na kdo, co, kdy, kde a proč pro prostředky, které vás zajímají. Tady jsou některé klíčové funkce PIM:
+PIM v podstatě pomáhá spravovat uživatele, co, kdy, kde a proč pro prostředky, které vás zajímají. Tady jsou některé z klíčových funkcí PIM:
 
-- Zadejte **just-in-time** privilegovaný přístup k Azure AD a prostředků Azure
-- Přiřadit **časově omezenou** přístupu k prostředkům pomocí počáteční a koncové datum
-- Vyžadovat **schválení** aktivovat privilegované role
-- Vynutit **ověřování službou Multi-Factor Authentication** aktivaci všechny role
-- Použití **odůvodnění** pochopit, proč uživatelé aktivovat
-- Získat **oznámení** při aktivaci privilegované role
-- Chování **kontrol přístupu** zajistit uživatelé stále potřebují role
-- Stáhněte si **historie auditu** pro interní nebo externí auditu
+- Poskytnutí privilegovaného přístupu **za běhu** do prostředků Azure AD a Azure
+- Přiřazení **časově náročného** přístupu k prostředkům pomocí počátečního a koncového data
+- Vyžadovat **schválení** pro aktivaci privilegovaných rolí
+- Vyvynuťte službu **Multi-Factor Authentication** pro aktivaci libovolné role.
+- Vysvětlení, proč se uživatelé aktivují, pomocí **zdůvodnění**
+- Dostávat **oznámení** , když se aktivují privilegované role
+- Kontrola **přístupu** k zajištění toho, aby uživatelé stále potřebovali role
+- Stáhnout **historii auditu** pro interní nebo externí audit
 
 ## <a name="terminology"></a>Terminologie
 
-Abyste lépe pochopili PIM a jeho dokumentace, měli byste zkontrolovat následující podmínky.
+Chcete-li lépe porozumět PIM a dokumentaci, měli byste si projít následující výrazy.
 
 | Ukončení nebo koncept | Kategorie přiřazení role | Popis |
 | --- | --- | --- |
-| Oprávněné | Type | Přiřazení role, které musí uživatel provést jeden nebo více akcí umožňujících využití roli. Pokud uživatel provedl oprávněné pro roli, znamená to, že se aktivovat roli, kdy potřebují k provedení privilegovaných úloh. Není žádný rozdíl v přístupu k někdo s trvalou oproti přiřazení oprávněné role. Jediným rozdílem je, že někteří uživatelé nepotřebují tento přístup neustále. |
-| aktivní | Type | Přiřazení role, která nevyžaduje, aby uživatel podnikat žádné kroky, chcete-li použít roli. Přiřazeno jako aktivní uživatelé mají oprávnění přiřazená k roli. |
-| aktivovat |  | Proces provedení jedné nebo více akcí umožňujících využití roli, jejímž je uživatel nárok. Akce může zahrnovat provedení kontroly ověřování službou Multi-Factor Authentication (MFA), poskytuje obchodní odůvodnění, nebo z určených schvalovatelů odesílání žádostí o schválení. |
-| Přiřazeno | Stav | Uživatel, který má aktivní přiřazení role. |
-| Aktivovat | Stav | Jako uživatel, který má přiřazení oprávněné role provádět akce, které chcete aktivovat roli a je teď aktivní.  Po aktivaci, může uživatel použít roli zadanou dobu období sady-předtím, než je nutné znovu aktivovat. |
-| trvalé oprávněné | Doba trvání | Přiřazení role, kde je uživatel vždy nárok na aktivaci role. |
-| Trvalá aktivní | Doba trvání | Přiřazení role, ve kterém může uživatel vždy používat roli bez provedení nějaké akce. |
-| vypršení platnosti oprávnění | Doba trvání | Přiřazení role, kde je uživatel nárok na aktivaci role v rámci zadané počáteční a koncové datum. |
-| vypršení platnosti je aktivní | Doba trvání | Přiřazení role, ve kterém může uživatel používat roli bez provedení libovolné akce v rámci zadané počáteční a koncové datum. |
-| přístup k just-in-time (JIT) |  | Model ve kterém uživatelé dostanou dočasné oprávnění k provedení privilegovaných úlohy, což zabrání zlými úmysly nebo neoprávněným uživatelům v získání přístupu po vypršení platnosti oprávnění. Přístup je udělen jenom v případě, že ji uživatelé potřebovat. |
-| Princip nejnižších oprávnění přístupu |  | Doporučené zabezpečení praxe, ve kterém je každý uživatel součástí pouze minimální oprávnění jsou nutné k provedení úlohy, které mají oprávnění k provedení. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní správce role pro určité scénáře. |
+| způsobil | type | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
+| aktivní | type | Přiřazení role, které nevyžaduje, aby uživatel prováděl žádnou akci pro použití role. Uživatelé přiřazení jako aktivní mají oprávnění přiřazená k roli. |
+| aktivovat |  | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
+| přiřazení | State | Uživatel, který má přiřazené aktivní roli. |
+| Aktivujte | State | Uživatel, který má oprávněné přiřazení role, provedl akce pro aktivaci role a je teď aktivní.  Po aktivaci může uživatel tuto roli použít pro předem nakonfigurovanou časovou dobu, než se bude muset znovu aktivovat. |
+| trvalé oprávněné | Trvání | Přiřazení role, kde má uživatel vždy nárok na aktivaci role. |
+| trvalé aktivní | Trvání | Přiřazení role, kde může uživatel vždy používat roli bez provedení jakýchkoli akcí. |
+| vypršet nárok | Trvání | Přiřazení role, kde má uživatel nárok na aktivaci role během zadaného počátečního a koncového data. |
+| vyprší aktivní | Trvání | Přiřazení role, kde může uživatel používat roli bez provádění všech akcí v zadaném počátečním a koncovém datu. |
+| přístup JIT (just-in-time) |  | Model, ve kterém uživatelé obdrží dočasná oprávnění k provádění privilegovaných úloh, což zabrání škodlivým nebo neoprávněným uživatelům získat přístup po vypršení platnosti oprávnění. Přístup se udělí jenom v případě, že ho uživatelé potřebují. |
+| Princip minimálního přístupu k oprávněním |  | Doporučený postup zabezpečení, při kterém je každý uživatel k dispozici pouze s minimálními oprávněními potřebnými k provádění úloh, které mají autorizaci provádět. Tento postup minimalizuje počet globálních správců a místo toho používá konkrétní role správce pro určité scénáře. |
 
-## <a name="what-does-pim-look-like"></a>Jak vypadá PIM?
+## <a name="what-does-pim-look-like"></a>Co vypadá PIM?
 
-Po nastavení PIM, zobrazí se vám **úlohy**, **spravovat**, a **aktivity** možnosti v levé navigační nabídce. Jako správce, vyberete možnost mezi správou **role Azure AD** a **prostředků Azure** role. Když vyberete typ role pro správu, uvidíte podobnou sadu možností pro daný typ role.
+Po nastavení PIM se v levé navigační nabídce zobrazí možnosti **úlohy**, **Správa**a **aktivity** . Jako správce si zvolíte, že budete spravovat **role Azure AD** a role **prostředků Azure** . Když zvolíte typ rolí, které se mají spravovat, zobrazí se podobná sada možností pro daný typ role.
 
-![Snímek obrazovky s PIM na portálu Azure portal](./media/pim-configure/pim-overview.png)
+![Snímek PIM v Azure Portal](./media/pim-configure/pim-overview.png)
 
-## <a name="who-can-do-what-in-pim"></a>Kdo může co dělat v PIM?
+## <a name="who-can-do-what-in-pim"></a>Kdo může dělat co v PIM?
 
-Pokud jste první, kdo používat PIM, se automaticky přiřazují [správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v daném adresáři.
+Pokud jste první, kdo používá PIM, přiřadíte automaticky role správce [zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v adresáři.
 
-Pro role Azure AD jenom uživatel, který je v roli správce privilegovaných rolí můžou Spravovat přiřazení pro jiní správci v PIM. Je možné [udělit přístup na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení a čtenáři zabezpečení můžete zobrazit přiřazení role Azure AD PIM.
+Pro role Azure AD může přiřazení pro ostatní správce v PIM spravovat jenom uživatel, který je v roli správce privilegované role. [Pro správu PIM můžete udělit přístup dalším správcům](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení a čtenáři zabezpečení můžou zobrazovat přiřazení rolí Azure AD v PIM.
 
-Pro role prostředků Azure, pouze správce předplatného, vlastník prostředku nebo prostředku správce přístupu uživatelů můžou Spravovat přiřazení pro jiní správci v PIM. Uživatelé, kteří jsou správci privilegovaných rolí, správci zabezpečení nebo čtenáře zabezpečení není ve výchozím nastavení mají přístup k zobrazení přiřazení role prostředků Azure v PIM.
+Pro role prostředků Azure může přiřazení pro jiné správce v PIM spravovat jenom Správce předplatného, vlastník prostředku nebo správce přístupu k prostředkům. Uživatelé, kteří jsou správci privilegovaných rolí, správci zabezpečení nebo čtenáři zabezpečení, nemají ve výchozím nastavení přístup k zobrazení přiřazení k rolím prostředků Azure v PIM.
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -90,7 +90,7 @@ PIM podporuje následující scénáře:
 - Schvalovat nebo zamítat žádosti o zvýšení oprávnění role (jednotně nebo hromadně)
 - Uvést odůvodnění schválení nebo zamítnutí 
 
-**Jako uživatel s oprávněné role vám umožňuje:**
+**Jako uživatel oprávněné role můžete:**
 
 - Požádat o aktivaci role, která vyžaduje schválení
 - Zobrazit stav vaší žádosti o aktivaci
@@ -104,6 +104,6 @@ Informace o licencích pro uživatele najdete v tématu [licenční požadavky p
 
 ## <a name="next-steps"></a>Další postup
 
-- [Licenční požadavky pro použití PIM](subscription-requirements.md)
+- [Licenční požadavky na používání PIM](subscription-requirements.md)
 - [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Nasazení PIM](pim-deployment-plan.md)

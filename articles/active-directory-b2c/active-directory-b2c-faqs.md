@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183188"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809199"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy
 
@@ -124,9 +124,9 @@ Ne, Azure AD B2C nepodporuje stejnou sadu sestav jako Azure AD Premium. Existuje
 
 Ano!  Přečtěte si o [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md), který je ve verzi Public Preview. Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Můžu vlastní adresy URL používat na přihlašovacích a přihlašovacích stránkách, které obsluhuje Azure AD B2C? Například je možné změnit adresu URL z login.microsoftonline.com na login.contoso.com?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Můžu vlastní adresy URL používat na přihlašovacích a přihlašovacích stránkách, které obsluhuje Azure AD B2C? Například je možné změnit adresu URL z contoso.b2clogin.com na login.contoso.com?
 
-Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **domény** v Azure Portal nedosahuje tohoto cíle.
+Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **domény** v Azure Portal nedosahuje tohoto cíle. V b2clogin.com ale nabízíme [neutrální doménu nejvyšší úrovně](b2clogin.md), takže externí vzhled se dá implementovat bez zmínky o Microsoftu.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Návody odstranit můj tenant Azure AD B2C?
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9f757d5fb2c8d3a807e325068d386e16a7d6caa7
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047602"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806573"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
@@ -41,7 +41,7 @@ Ve službě Security Center představuje bezpečnostní incident souhrn všech v
 
     ![Reakce na incidenty zabezpečení v Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-1. Chcete-li získat další informace o jednotlivých výstrahách, klikněte na výstrahu. Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. 
+1. Chcete-li získat další informace o jednotlivých výstrahách, klikněte na výstrahu. Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení.
 
    > [!NOTE]
    > Stejná výstraha může existovat jako součást incidentu a také bude viditelná jako samostatná výstraha.

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 5d3cbaf76489058624e56bec50b37eeb18a99ba7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477064"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812510"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Postup: Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -48,12 +48,7 @@ Tento článek ukazuje, jak zobrazit seznam aplikací v galerii aplikací Azure 
 
 - V případě jednotného přihlašování k heslu zajistěte, aby vaše aplikace podporovala ověřování formuláře, aby bylo možné provést jednotné přihlašování podle očekávání.
 
-- Pro automatické požadavky na zřizování uživatelů by měla být aplikace uvedená v galerii s funkcí jednotného přihlašování, která je povolená pomocí SAML 2.0/WS. Pro jednotné přihlašování a zřizování uživatelů můžete požádat na portálu, pokud už není uvedený.
-
 - Je potřeba mít stálý účet pro testování s registrovanými alespoň 2 uživateli.
-
->[!NOTE]
->Používáme s vysokým počtem požadavků konektoru SCIM, takže jsme na našem portálu zastavili nové žádosti. Počkejte prosím na své žádosti, dokud neproběhne další oznámení. V této prodlevě se omluvá za toto zpoždění a případné komplikace, které to mohly způsobovat.
 
 ## <a name="submit-the-request-in-the-portal"></a>Odeslat žádost na portálu
 
@@ -87,7 +82,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nej
     * Pokud chcete přidat aplikaci do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID připojit & OAuth 2,0** výše.
     * Pokud máte nějaké problémy týkající se přístupu, obraťte se na [tým Integration Team pro jednotné přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-- **SAML 2,0** nebo **WS-** podáváno: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem služby Azure AD pomocí [pokynů k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
+- **SAML 2,0** nebo **WS-podáváno**: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem služby Azure AD pomocí [pokynů k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
 
   ![Časová osa výpisu aplikace SAML 2,0 nebo WS-nakrmená do galerie](./media/howto-app-gallery-listing/saml.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview) '
-description: Podrobné pokyny k používání nástrojů HDInsight v Azure Toolkit for IntelliJ pro vzdálené ladění aplikací na clusterech HDInsight pomocí SSH
+description: Doprovodné materiály k ladění aplikací pomocí nástrojů HDInsight v Azure Toolkit for IntelliJ
 keywords: dálková ladění IntelliJ, vzdálené ladění IntelliJ, SSH, IntelliJ, HDInsight, ladění IntelliJ, ladění
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: aff9f0f70377ebc6e741618b22ff82bc06251521
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a07dcd58263674aa6fd360e138c0b9c999ea644e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295917"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814147"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Selhání ladění úloh Sparku pomocí Azure Toolkit for IntelliJ (Preview)
 
@@ -83,7 +83,7 @@ Vytvořte aplikaci Spark Scala/Java a spusťte aplikaci v clusteru Spark pomocí
 
 6. ID aplikace můžete ověřit v okně výstup.
    
-   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
+   ![Výsledek vzdáleného spuštění](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
 
 ## <a name="download-failed-job-profile"></a>Neúspěšný profil úlohy stažení
 
@@ -91,9 +91,9 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 
 1. Otevřete **Průzkumník služby Microsoft Azure Storage**, vyhledejte účet HDInsight clusteru pro neúspěšnou úlohu, Stáhněte neúspěšné prostředky úlohy z příslušného umístění: **\hdp\spark2-Events\\. Spark\\ – chyby.ID\<aplikace >** do místní složky. V okně **aktivity** se zobrazí průběh stahování.
 
-   ![soubor neúspěšného stažení](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![stažení chyby Soubor1](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![soubor neúspěšného stažení](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
+   ![stažení chyby soubor2](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>Konfigurace místního ladicího prostředí a ladění při selhání
 
@@ -101,13 +101,13 @@ Pokud se odeslání úlohy nepovede, můžete pro další ladění stáhnout pro
 
 2. V IntelliJ NÁPADu vytvořte konfigurační soubor **ladění chyby Sparku** , vyberte soubor FTD z dříve stažených zdrojů neúspěšných úloh pro pole **umístění kontextu selhání úlohy Spark** .
    
-   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![Konfigurace selhání Crete](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 4. Na panelu nástrojů klikněte na tlačítko místní spuštění. chyba se zobrazí v okně Spustit.
    
-   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![spuštění – chyba – configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![Tlačítko pro vzdálené spuštění](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![spuštění – chyba – configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 5. Nastavte bod přerušení, který označuje protokol, a pak klikněte na tlačítko místní ladění a proveďte místní ladění stejně jako normální projekty Scala/Java v IntelliJ.
 

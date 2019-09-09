@@ -1,17 +1,17 @@
 ---
 title: Apache Hive se nepodařilo navázat připojení Apache Zookeeper – Azure HDInsight
-description: Zobrazení podregistru je nedostupné kvůli problémům s Zookeeper.
+description: Zobrazení Apache Hive nedostupné kvůli problémům s Apache Zookeeper v Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: b5822e69f2e16e5fb24064862a64764e7516dbd7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 25c333a8cee7dde85d61545a33b5e1ee527dd005
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733109"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811349"
 ---
 # <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Scénář: Apache Hive se nepodařilo navázat připojení k Apache Zookeeper v Azure HDInsight.
 
@@ -42,7 +42,7 @@ Může dojít k selhání podregistru při navázání připojení k Zookeeper, 
 
 1. Pokud chcete znovu vytvořit připojení, restartujte uzly Zookeeper a restartujte HiveServer2.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

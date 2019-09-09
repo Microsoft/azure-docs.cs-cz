@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 83e9e1364293601337f854f083bbb279361e29c5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734951"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810997"
 ---
-# <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
+# <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurace Balíček zabezpečení podniku s využitím Azure Active Directory Domain Services ve službě HDInsight
 
 Clustery Balíček zabezpečení podniku (ESP) poskytují přístup k více uživatelům v clusterech Azure HDInsight. Clustery HDInsight s protokolem ESP jsou připojené k doméně, aby uživatelé domény mohli k ověřování s clustery používat svoje přihlašovací údaje v doméně a spouštět úlohy s velkými objemy dat.
 
@@ -118,9 +118,9 @@ Následující snímek obrazovky ukazuje úspěšnou konfiguraci v Azure Portal:
 
 Spravovanou identitu, kterou jste vytvořili, si můžete vybrat v rozevíracím seznamu uživatelsky přiřazené spravované identity při vytváření nového clusteru.
 
-![Konfigurace služby Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Azure HDInsight ESP Active Directory Domain Services spravovaná identita](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o konfiguraci zásad podregistru a spouštění dotazů na podregistr najdete v tématu [Konfigurace zásad Apache Hive pro clustery HDInsight s](apache-domain-joined-run-hive.md)protokolem ESP.
 * Informace o použití SSH pro připojení ke clusterům HDInsight s protokolem ESP najdete v tématu [Použití SSH se systémem linux Apache Hadoop v HDInsight ze systému Linux, UNIX nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

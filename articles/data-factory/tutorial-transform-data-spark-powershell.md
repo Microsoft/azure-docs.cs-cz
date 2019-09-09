@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: f273237431373aa69423ba244d4e7c509ffe7bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335449"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813434"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, který transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádání. V tomto kurzu provedete následující kroky:
@@ -137,7 +137,7 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 
 - **hostSubscriptionId**. Místo &lt;subscriptionID&gt; použijte ID vašeho předplatného Azure. Cluster HDInsight na vyžádání se vytvoří v tomto předplatném. 
 - **tenant**. Místo &lt;tenantID&gt; použijte ID vašeho tenanta Azure. 
-- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). 
+- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). **ID instančního objektu** je ekvivalentní *ID aplikace* a **klíč instančního objektu** je ekvivalentní hodnotě pro *tajný klíč klienta*.
 - **clusterResourceGroup**. Nahraďte &lt;resourceGroupOfHDICluster&gt; názvem skupiny prostředků, ve které se má cluster HDInsight vytvořit. 
 
 > [!NOTE]
@@ -201,7 +201,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
         

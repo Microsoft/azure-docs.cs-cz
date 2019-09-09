@@ -1,9 +1,9 @@
 ---
-title: Přiřazení role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přiřadit role Azure AD v Azure AD Privileged Identity Management (PIM).
+title: Přiřazení rolí Azure AD v PIM-Azure Active Directory | Microsoft Docs
+description: Naučte se přiřazovat role Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,145 +11,145 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1760d0e0bd356a05d84c07eda005e0526da5d13
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 64c08f2dcf6df67401160775db60bf613d1c5241
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476514"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804457"
 ---
-# <a name="assign-azure-ad-roles-in-pim"></a>Přiřazení role Azure AD v PIM
+# <a name="assign-azure-ad-roles-in-pim"></a>Přiřazení rolí Azure AD v PIM
 
-S Azure Active Directory (Azure AD), globální správce může nastavit **trvalé** přiřazení rolí správce Azure AD. Tato přiřazení rolí můžete vytvořit pomocí [webu Azure portal](../users-groups-roles/directory-assign-admin-roles.md) nebo pomocí [příkazy prostředí PowerShell](/powershell/module/azuread#directory_roles).
+S Azure Active Directory (Azure AD) může globální správce vytvořit **trvalá** přiřazení rolí správce Azure AD. Tato přiřazení rolí se dají vytvořit pomocí [Azure Portal](../users-groups-roles/directory-assign-admin-roles.md) nebo pomocí [příkazů PowerShellu](/powershell/module/azuread#directory_roles).
 
-Služba Azure AD Privileged Identity Management (PIM) také umožňuje správci privilegovaných rolí, chcete-li nastavit jako trvalého správce přiřazení rolí. Kromě toho správce privilegovaných rolí, můžete nastavit uživatele **oprávněné** pro role Azure AD. Správce může aktivovat roli, když ho potřebují, a potom jejich oprávnění vyprší po jejich dokončení.
+Služba Azure AD Privileged Identity Management (PIM) taky umožňuje správcům privilegovaných rolí vytvářet trvalá přiřazení rolí správce. Správci privilegovaných rolí taky můžou uživatelům, kteří **mají nárok** na role správce Azure AD, provádět oprávnění. Oprávněný správce může roli aktivovat, když ji potřebují, a pak jejich oprávnění vyprší po dokončení.
 
-## <a name="make-a-user-eligible-for-a-role"></a>Nastavit jako oprávněné pro roli uživatele
+## <a name="make-a-user-eligible-for-a-role"></a>Nastavit pro roli uživatele, který má nárok
 
-Následujícím postupem nastavit uživatele jako oprávněné pro roli správce Azure AD.
+Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli správce Azure AD.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatel, který je členem skupiny [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) role.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 
-    Informace o tom, jak udělit jiný přístup správce ke správě PIM, naleznete v tématu [udělit přístup na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md).
+    Informace o tom, jak udělit přístup jinému správci ke správě PIM, najdete v tématu [udělení přístupu jiným správcům pro správu PIM](pim-how-to-give-access-to-pim.md).
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-    Pokud jste nezahájili PIM na portálu Azure portal ještě, přejděte na [začít používat PIM](pim-getting-started.md).
+    Pokud jste v Azure Portal ještě nezahájili PIM, pokračujte na [začátek používání PIM](pim-getting-started.md).
 
-1. Klikněte na tlačítko **role Azure AD**.
+1. Klikněte na **role Azure AD**.
 
-1. Klikněte na tlačítko **role** nebo **členy**.
+1. Klikněte na **role** nebo **Členové**.
 
-    ![Zvýrazněný role Azure AD s možností nabídky role a členy](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
+    ![Zvýrazněné možnosti role Azure AD s nabídkami role a členové](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
-1. Klikněte na tlačítko **přidat člena** otevřete přidat spravované členy.
+1. Kliknutím na **Přidat člena** otevřete přidat spravované členy.
 
-1. Klikněte na tlačítko **vybrat roli**, klikněte na roli, kterou chcete spravovat a pak klikněte na **vyberte**.
+1. Klikněte na **Vybrat roli**, klikněte na roli, kterou chcete spravovat, a potom klikněte na **Vybrat**.
 
-    ![Vyberte roli podokno obsahující seznam rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Vybrat podokno role s výpisem rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. Klikněte na tlačítko **výběr členů**, vyberte uživatele, kterou chcete přiřadit k roli a potom klikněte na tlačítko **vyberte**.
+1. Klikněte na **Vybrat členy**, vyberte uživatele, které chcete přiřadit k roli, a pak klikněte na **Vybrat**.
 
-    ![Vyberte členy podokno, kde můžete vybrat uživatele](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Vybrat podokno členů, kde můžete vybrat uživatele](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. V přidat kliknutím na spravované členy **OK** přidejte uživatele k roli.
+1. V části Přidat spravované členy kliknutím na tlačítko **OK** přidejte uživatele do role.
 
-1. V seznamu rolí vyberte roli, kterou právě přiřazené zobrazíte seznam členů.
+1. V seznamu rolí klikněte na roli, kterou jste právě přiřadili, a zobrazte seznam členů.
 
-     Pokud se role přiřadí, uživatele, který jste vybrali se zobrazí v seznamu členů jako **oprávněné** pro danou roli.
+     Po přiřazení role se uživatel, kterého jste vybrali, zobrazí v seznamu Členové jako **způsobilý** pro danou roli.
 
-    ![Členové role patří spolu s jejich stav aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
+    ![Členové role jsou uvedeni spolu s jejich stavem aktivace.](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. Teď, když uživatel není oprávněný pro roli, informujte je, že si ji můžou aktivovat podle pokynů v [aktivovat Moje role Azure AD v PIM](pim-how-to-activate-role.md).
+1. Teď, když má uživatel nárok na roli, dejte jim jistotu, že ho můžou aktivovat podle pokynů v tématu [Aktivace rolí Azure AD v PIM](pim-how-to-activate-role.md).
 
-    Oprávnění správce se zobrazí výzva k registraci pro Azure Multi-Factor Authentication (MFA) při aktivaci. Pokud uživatele nelze zaregistrovat pro vícefaktorové ověřování, nebo se pomocí účtu Microsoft (obvykle @outlook.com), je třeba provést je trvalé v jejich role.
+    Způsobilí správci jsou během aktivace požádáni o registraci k Azure Multi-Factor Authentication (MFA). Pokud se uživatel nemůže zaregistrovat pro MFA nebo používá účet Microsoft (obvykle @outlook.com), musíte je v všech svých rolích nastavit jako trvalé.
 
-## <a name="make-a-role-assignment-permanent"></a>Trvalé přiřazení role
+## <a name="make-a-role-assignment-permanent"></a>Nastavit trvalé přiřazení role
 
-Ve výchozím nastavení noví uživatelé mají nárok jenom roli správce Azure AD. Pokud chcete, aby byly trvalé přiřazení role, postupujte podle těchto kroků.
+Ve výchozím nastavení mají noví uživatelé nárok jenom na roli správce Azure AD. Pokud chcete nastavit trvalé přiřazení role, postupujte podle těchto kroků.
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role Azure AD**.
+1. Klikněte na **role Azure AD**.
 
-1. Klikněte na tlačítko **členy**.
+1. Klikněte na tlačítko **Členové**.
 
-    ![Role Azure AD – seznam členů zobrazující stav role a aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Role Azure AD – seznam členů zobrazující role a stav aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Klikněte na tlačítko **oprávněné** role, která má být trvalé.
+1. Klikněte na **oprávněnou** roli, kterou chcete nastavit jako trvalou.
 
-1. Klikněte na tlačítko **Další** a potom klikněte na tlačítko **zkontrolujte oprávnění**.
+1. Klikněte na tlačítko **Další** a potom klikněte na tlačítko **nastavit oprávnění**.
 
-    ![Otevřete podokno výpis jako uživatel, který má nárok na role s více možností v nabídce](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
+    ![Podokno s výpisem uživatele, který má nárok na roli s dalšími možnostmi nabídky otevřené](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
-    Role je nyní uveden jako **trvalé**.
+    Role je nyní uvedena jako **trvalá**.
 
-    ![Zobrazuje stav role a aktivace, která je teď trvalá seznam členů](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
+    ![Seznam členů znázorňující stav role a aktivace, která je teď trvalá](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
 ## <a name="remove-a-user-from-a-role"></a>Odebrání uživatele z role
 
-Odebrat uživatele z přiřazení rolí, ale ujistěte se, že je vždy alespoň jeden uživatel, který je globální správce je trvalý. Pokud si nejste jistí, které uživatelé stále potřebují svá přiřazení rolí, můžete si [zahájení kontroly přístupu pro roli](pim-how-to-start-security-review.md).
+Uživatele můžete odebrat z přiřazení rolí, ale ujistěte se, že je vždy aspoň jeden uživatel, který je trvalého globálního správce. Pokud si nejste jistí, kteří uživatelé stále potřebují přiřazení jejich rolí, můžete [pro roli spustit kontrolu přístupu](pim-how-to-start-security-review.md).
 
-Následujícím postupem můžete odebrat konkrétní uživatele z role správce Azure AD.
+Pomocí těchto kroků můžete z role správce Azure AD odebrat konkrétního uživatele.
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role Azure AD**.
+1. Klikněte na **role Azure AD**.
 
-1. Klikněte na tlačítko **členy**.
+1. Klikněte na tlačítko **Členové**.
 
-    ![Role Azure AD – členy seznamu stat zobrazující role a aktivace](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
+    ![Role Azure AD – seznam členů s informacemi o rolích a aktivaci](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
 1. Klikněte na přiřazení role, kterou chcete odebrat.
 
-1. Klikněte na tlačítko **Další** a potom klikněte na tlačítko **odebrat**.
+1. Klikněte na tlačítko **Další** a pak klikněte na tlačítko **Odebrat**.
 
-    ![Otevřete podokno výpis jako uživatel, který má roli trvalé víc možností nabídky](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
+    ![Podokno se seznamem uživatelů s trvalou rolí s otevřenými možnostmi další nabídky](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
-1. Ve zprávě s žádostí o potvrzení, klikněte na tlačítko **Ano**.
+1. Ve zprávě, která vás vyzve k potvrzení, klikněte na **Ano**.
 
-    ![Zpráva s dotazem, pokud chcete odebrání člena z role](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
+    ![Zpráva s dotazem, zda chcete odebrat člena z role](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
-    Odebrání přiřazení role.
+    Přiřazení role se odebralo.
 
-## <a name="authorization-error-when-assigning-roles"></a>Chyba autorizace při přiřazování role
+## <a name="authorization-error-when-assigning-roles"></a>Chyba autorizace při přiřazování rolí
 
-Pokud jste nedávno povolili PIM pro předplatné a při pokusu o nastavit jako oprávněné pro roli správce Azure AD uživatel se dojde k chybě autorizace, může to být způsobeno instančnímu objektu MS-PIM ještě nemá příslušná oprávnění. Musí mít instančnímu objektu MS-PIM [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator) roli přiřadit role jiným uživatelům. Namísto čekání, dokud MS-PIM má přiřazenou roli správce uživatelských přístupů, ji můžete přiřadit ručně.
+Pokud jste u předplatného nedávno povolili správce cloudu a při pokusu o vytvoření uživatele s oprávněním pro roli správce Azure AD dojde k chybě autorizace, může to být způsobeno tím, že zásada služby MS-PIM zatím nemá příslušná oprávnění. Aby bylo možné přiřadit role jiným uživatelům, musí mít role správce přístupu ke službě MS-PIM roli [Správce přístupu k uživateli](../../role-based-access-control/built-in-roles.md#user-access-administrator) . Místo čekání na přiřazení role správce přístupu k uživateli přes MS-PIM ho můžete přiřadit ručně.
 
-Postupujte podle těchto kroků přiřazení role správce přístupu uživatelů k MS PIM instanční objekt pro předplatné.
+Pomocí těchto kroků přiřaďte roli správce přístupu uživatele k instančnímu objektu MS-PIM pro předplatné.
 
-1. Přihlaste se na webu Azure portal jako globální správce.
+1. Přihlaste se k Azure Portal jako globální správce.
 
-1. Zvolte **všechny služby** a potom **předplatná**.
+1. Zvolte **všechny služby** a potom **předplatné**.
 
 1. Zvolte vaše předplatné.
 
 1. Zvolte **Řízení přístupu (IAM)** .
 
-1. Zvolte **přiřazení rolí** zobrazíte aktuální seznam přiřazení rolí v oboru předplatného.
+1. Zvolením možnosti **přiřazení rolí** zobrazíte aktuální seznam přiřazení rolí v oboru předplatného.
 
-   ![Okno pro kontrolu (IAM) přístup k předplatnému](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
+   ![Okno řízení přístupu (IAM) pro předplatné](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
-1. Zkontrolujte, zda **MS-PIM** instančnímu objektu přiřadí **správce uživatelských přístupů** role.
+1. Ověřte, jestli je instančnímu objektu **MS-PIM** přiřazená role **Správce přístupu k uživateli** .
 
-1. Pokud ne, zvolte **přidat přiřazení role** otevřít **přidat přiřazení role** podokně.
+1. Pokud ne, kliknutím na **Přidat přiřazení role** otevřete podokno **Přidat přiřazení role** .
 
-1. V **Role** rozevíracího seznamu, vyberte **správce uživatelských přístupů** role.
+1. V rozevíracím seznamu **role** vyberte roli **Správce přístupu uživatele** .
 
-1. V **vyberte** seznamu vyhledejte a vyberte **MS-PIM** instančního objektu.
+1. V seznamu **Vybrat** vyhledejte a vyberte instanční objekt **MS-PIM** .
 
-   ![Přidání podokna přiřazení rolí – přidání oprávnění pro instanční objekt MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+   ![Přidat podokno přiřazení role – přidání oprávnění pro instanční objekt MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
 
-1. Zvolte **Uložit** přiřazení role.
+1. Pro přiřazení role klikněte na tlačítko **Uložit** .
 
-   Po chvíli MS-PIM instanční objekt je přiřazena role správce uživatelských přístupů v oboru předplatného.
+   Po chvíli se instančnímu objektu MS-PIM přiřadí role správce přístupu uživatele v oboru předplatného.
 
-   ![Okno pro kontrolu (IAM) přístup správce uživatelských přístupů zobrazující přiřazení role PIM MS](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+   ![Okno řízení přístupu (IAM) zobrazující přiřazení role správce přístupu uživatele pro MS-PIM](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
 - [Konfigurace nastavení role správce Azure AD v PIM](pim-how-to-change-default-settings.md)
-- [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)
+- [Přiřazení rolí prostředků Azure v PIM](pim-resource-roles-assign-roles.md)

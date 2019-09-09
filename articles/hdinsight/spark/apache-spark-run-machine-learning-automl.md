@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736050"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814036"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení (AutoML) v Apache Spark ve službě Azure HDInsight
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Spouštění Azure Machine Learning úloh pomocí automatizovaného strojového učení na Apache Spark ve službě HDInsight
 
 Azure Machine Learning zjednodušuje a zrychluje sestavování, školení a nasazení modelů strojového učení. V rámci automatizovaného strojového učení (AutoML) začnete s školicími daty, která mají definovanou cílovou funkci, a pak iterovat kombinací algoritmů a výběrů funkcí tak, aby automaticky vybrali nejlepší model pro vaše data na základě výsledků školení. HDInsight umožňuje zákazníkům zřídit clustery se stovkami uzlů. AutoML běžící na Sparku v clusteru HDInsight umožňuje uživatelům používat výpočetní kapacitu na těchto uzlech ke spouštění školicích úloh v rámci škálování a spouštění více školicích úloh paralelně. Díky tomu můžou uživatelé spouštět AutoML experimenty při sdílení výpočtů s ostatními úlohami s velkými objemy dat.
  
@@ -73,7 +73,7 @@ dataflow_with_token = dprep.read_csv(
 
 V případě [automatizované konfigurace strojového učení](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)by vlastnost `spark_context` měla být nastavena pro balíček, který má být spuštěn v distribuovaném režimu. Vlastnost `concurrent_iterations`, která má maximální počet spuštěných iterací paralelně, by měla být nastavena na číslo nižší než jádro vykonavatele aplikace Spark.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o motivaci na základě automatizovaného strojového učení najdete v tématu věnovaném [vydávání modelů na základě automatizovaného strojového učení od Microsoftu.](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * Další informace o používání funkcí automatizovaného ML v Azure ML najdete v tématu [nové možnosti automatizovaného strojového učení ve službě Azure Machine Learning Service](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/) .

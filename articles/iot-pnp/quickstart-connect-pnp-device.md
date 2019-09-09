@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b233fcecfe80d1ce4464d2d02fdddb188f9265a7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878240"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806535"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Rychlý start: Připojit ukázkovou aplikaci IoT technologie Plug and Play ve verzi Preview pro IoT Hub
 
@@ -36,6 +36,9 @@ Stáhněte a nainstalujte si nástroj Azure IoT Explorer ze stránky [nejnověj�
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
 K dokončení tohoto rychlého startu budete také potřebovat službu Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+> [!NOTE]
+> Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
 
 Přidejte Microsoft Azure rozšíření IoT pro Azure CLI:
 
@@ -131,7 +134,7 @@ Aplikace zařízení spouští odesílání dat do IoT Hub.
 
 1. Rozbalte **název**vlastnosti, aktualizujte ho novým názvem a vyberte možnost **aktualizovat zapisovatelnou vlastnost**. 
 
-1. Chcete-li zobrazit nový název zobrazený ve sloupci nahlášená **vlastnost** , klikněte na tlačítko **aktualizovat** v horní části stránky.
+1. Chcete-li zobrazit nový název zobrazený ve sloupci **nahlášená vlastnost** , klikněte na tlačítko **aktualizovat** v horní části stránky.
 
 1. Výběrem stránky **příkazů** zobrazíte všechny příkazy, které zařízení podporuje.
 
@@ -139,7 +142,7 @@ Aplikace zařízení spouští odesílání dat do IoT Hub.
 
 1. Přejít na simulované zařízení a ověřte, že se příkaz provedl podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste se naučili připojit zařízení IoT technologie Plug and Play ke službě IoT Hub. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 

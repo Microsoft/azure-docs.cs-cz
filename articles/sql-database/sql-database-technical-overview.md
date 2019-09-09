@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279904"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812191"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database Service
 
@@ -54,7 +54,7 @@ Dynamická škálovatelnost se liší od automatického škálování. K automat
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Nákup modelů, úrovní služeb, velikostí výpočtů a částek úložiště
 
 SQL Database nabízí dva nákupní modely:
-- [Nákupní model založený na vCoreech](sql-database-service-tiers-vcore.md) umožňuje zvolit počet virtuální jádra, velikost paměti a množství a rychlost úložiště. Nákupní model založený na vCoreech vám také umožní použít [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) k získání úspory nákladů. Další informace o Zvýhodněné hybridní využití Azure najdete v tématu [Nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
+- [Nákupní model založený na vCoreech](sql-database-service-tiers-vcore.md) umožňuje zvolit počet virtuální jádra, velikost paměti a velikost a rychlost úložiště. Nákupní model založený na vCoreech vám také umožní použít [Zvýhodněné hybridní využití Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) k získání úspory nákladů. Další informace o Zvýhodněné hybridní využití Azure najdete v tématu [Nejčastější dotazy](#sql-database-frequently-asked-questions-faq).
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí kombinaci výpočetních, paměťových a vstupně-výstupních prostředků ve třech úrovních služeb, aby se podporovaly odlehčené a těžké databázové úlohy. Výpočetní velikosti v rámci jednotlivých vrstev poskytují různé kombinace těchto prostředků, do kterých můžete přidat další prostředky úložiště.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků

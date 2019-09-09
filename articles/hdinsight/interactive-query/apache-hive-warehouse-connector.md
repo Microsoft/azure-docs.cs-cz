@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983085"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811660"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
 
@@ -229,10 +229,10 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
 1. Použijte zásadu maskování sloupců, která zobrazuje jenom poslední čtyři znaky sloupce.  
     1. Přejít do uživatelského rozhraní správce Ranger na `https://CLUSTERNAME.azurehdinsight.net/ranger/`adrese.
     1. Klikněte na podregistr Service pro váš cluster v **podregistru**.
-        ![Ukázková tabulka před použitím zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. Klikněte na kartu **maskování** a pak na **Přidat nový** ![seznam zásad zásad.](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. Klikněte na kartu **maskování** a pak **přidejte seznam nových** ![zásad pro podregistr zásad.](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
     1. Zadejte požadovaný název zásad. Vybrat databázi: **Výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
-                ![seznam zásad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 
     ![Ukázková tabulka po použití zásad Ranger](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0c8c2f2adb11a30b438fb41dca07519b2f74baf7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275860"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813592"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -382,6 +382,7 @@ Ke zkopírování dat do Azure SQL Data Warehouse, nastavte typ jímky v aktivit
 | writeBatchSize    | Počet řádků, které mají být vloženy do tabulky SQL **na dávku**. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **celé číslo** (počet řádků). Ve výchozím nastavení Data Factory dynamicky určovat odpovídající velikost dávky na základě velikosti řádku. | Ne                                            |
 | writeBatchTimeout | Čekací doba pro dávkové operace insert dokončit před uplynutím časového limitu. Platí, pouze pokud není použit PolyBase.<br/><br/>Je povolená hodnota **timespan**. Příklad: "00:30:00" (30 minut). | Ne                                            |
 | preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Data Warehouse při každém spuštění. Tuto vlastnost použijte k vyčištění dat předem. | Ne                                            |
+| tableOption | Určuje, jestli se má automaticky vytvořit tabulka jímky, pokud na základě schématu zdroje neexistuje. Vytvoření automatické tabulky není podporováno, je-li v aktivitě kopírování konfigurována Příprava kopie. Povolené hodnoty jsou: `none` (výchozí), `autoCreate`. |Ne |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je například SQL Data Warehouse DWU, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, `true` určete, jestli ho chcete vypnout. | Ne (výchozí nastavení `false`je) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>Příklad jímku SQL Data Warehouse

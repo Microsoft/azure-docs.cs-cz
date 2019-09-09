@@ -249,10 +249,10 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| authorization | objekt | Požadovaná oprávnění pro operaci. |
-| claims | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| authorization | object | Požadovaná oprávnění pro operaci. |
+| claims | object | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | ID operace odstraňování potíží. |
-| httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
+| httpRequest | object | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
 | resourceProvider | string | Poskytovatel prostředků pro operaci. |
 | resourceUri | string | Identifikátor URI prostředku v operaci. |
 | operationName | string | Operace, která byla provedena. |

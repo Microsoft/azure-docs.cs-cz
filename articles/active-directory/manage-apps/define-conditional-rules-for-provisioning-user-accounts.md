@@ -1,6 +1,6 @@
 ---
-title: Zřizování aplikací s filtry oborů | Dokumentace Microsoftu
-description: Další informace o použití filtrů oborů objekty v aplikacích, které podporují zřizování automatizované uživatelů z zřizuje, pokud objekt nevyhovují vašim podnikovým požadavkům.
+title: Zřizování aplikací s filtry oborů | Microsoft Docs
+description: Naučte se používat filtry oborů, abyste zabránili tomu, aby objekty v aplikacích, které podporují automatizované zřizování uživatelů, nebyly zřízené, pokud objekt nesplňuje vaše podnikové požadavky.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,107 +15,107 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c831fc7ab1a646d41c0dc08d0e1a66380fe1232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824717"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812682"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
-Cílem tohoto článku je vysvětlují, jak používat filtry oborů k definování pravidel založených na atributech, které určují, které uživatelé jsou přiřazeni k aplikaci.
+Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
 
-## <a name="scoping-filter-use-cases"></a>Případy použití filtrů oborů
+## <a name="scoping-filter-use-cases"></a>Případy použití filtru oboru
 
-Filtr oborů umožňuje Azure Active Directory (Azure AD) služby zřizování pro zahrnutí nebo vyloučení všechny uživatele, kteří mají atribut, který se shoduje s konkrétní hodnotou. Například při zřizování uživatelů z Azure AD k aplikaci SaaS, používá prodejní tým, určíte, že jenom uživatelé s atributem "Oddělení", "Prodeje" by měla být v oboru pro zřizování.
+Filtr oboru umožňuje službě zřizování služby Azure Active Directory (Azure AD) zahrnout nebo vyloučit všechny uživatele, kteří mají atribut, který odpovídá konkrétní hodnotě. Když například zřídíte uživatele ze služby Azure AD do aplikace SaaS, kterou používá prodejní tým, můžete určit, že pro zřizování by měl být v oboru pouze uživatelé s atributem "oddělení".
 
-Filtry oborů lze různě v závislosti na typu zřizování konektoru:
+Filtry oborů se dají použít různě v závislosti na typu konektoru pro zřizování:
 
-* **Odchozí zřizování ze služby Azure AD k aplikacím SaaS**. Pokud Azure AD je systém zdroj [přiřazení uživatelů a skupin](assign-user-or-group-access-portal.md) jsou nejčastější metodou pro určení, kteří uživatelé jsou v oboru pro zřizování. Tato přiřazení také se používají pro povolení jednotného přihlašování a poskytnout jedinou metodu ke správě přístupu a zřizování. Filtry oborů je možné volitelně kromě přiřazení nebo místo nich k filtrování uživatelů podle hodnot atributů.
+* **Odchozí zřizování z Azure AD do aplikací SaaS**. Když je služba Azure AD zdrojem zdrojového systému, jsou [přiřazení uživatelů a skupin](assign-user-or-group-access-portal.md) Nejběžnější metodou určení toho, kteří uživatelé jsou v oboru pro zřizování. Tato přiřazení se taky používají k povolení jednotného přihlašování a k poskytnutí jediné metody správy přístupu a zřizování. Filtry oborů lze použít k filtrování uživatelů na základě hodnot atributů, a to i v případě, že jsou také přiřazení, nebo místo nich.
 
     >[!TIP]
-    > Můžete zakázat zřizování na základě přiřazení pro podniková aplikace změnou nastavení [oboru](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) nabídky v části Nastavení zřizování, které se **synchronizovat všechny uživatele a skupiny**. Pomocí této možnosti plus založených na atributech filtry oborů nabízí vyšší výkon než pomocí přiřazení na základě skupin.  
+    > Zřizování můžete zakázat na základě přiřazení pro podnikovou aplikaci změnou nastavení v nabídce [obor](user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) v části Nastavení zřizování na **synchronizovat všechny uživatele a skupiny**. Použití této možnosti plus filtry oboru založené na atributech nabízí rychlejší výkon než použití přiřazení na základě skupin.  
 
-* **Příchozí zřizování z HCM aplikací do služby Azure AD a služby Active Directory**. Když [HCM aplikaci, jako je například Workday](../saas-apps/workday-tutorial.md) je zdrojový systém filtry oborů jsou primární metodou pro určení, kteří by mělo proběhnout zřízení ze systémů HCM aplikaci do služby Active Directory nebo Azure AD.
+* **Příchozí zřizování z aplikací HCM do služby Azure AD a služby Active Directory**. Když je [aplikace HCM, jako](../saas-apps/workday-tutorial.md) je například Workday, zdrojovým systémem, jsou filtry oborů primární metodou určení toho, kteří uživatelé by se měli zřídit z aplikace HCM do služby Active Directory nebo Azure AD.
 
-Ve výchozím nastavení konektory pro zřizování Azure AD není nutné žádné založených na atributech filtry oborů nakonfigurované. 
+Ve výchozím nastavení nemají konektory zřizování služby Azure AD nakonfigurované žádné filtry oborů založené na atributech. 
 
-## <a name="scoping-filter-construction"></a>Vytváření oborů filtru
+## <a name="scoping-filter-construction"></a>Vytváření filtru oborů
 
-Filtr oborů se skládá z jednoho nebo více *klauzule*. Klauzule určit, kteří uživatelé jsou povoleno předávání filtr oborů vyhodnocením atributy každého uživatele. Například můžete mít jednu klauzuli, která vyžaduje, že atribut uživatele "Stavu" rovno "New York", tak jenom uživatelé v New Yorku, které jsou zřízené do aplikace. 
+Filtr oboru se skládá z jedné nebo více *klauzulí*. Klauzule určují, kteří uživatelé mají povolený průchod filtrem oboru vyhodnocením atributů každého uživatele. Například můžete mít jednu klauzuli, která vyžaduje, aby se atribut "State" uživatele rovnal "New York", takže se do aplikace zřídí pouze noví uživatelé Praha. 
 
-Jedna klauzule definuje jednu podmínku pro jeden atribut hodnotu. Pokud více klauzulí jsou vytvořené v jednom oboru filtru, se vyhodnocují dohromady pomocí logiky "A". To znamená, že všechny klauzule se musí vyhodnotit na "true" v pořadí pro uživatele, které se mají zřídit.
+Jedna klauzule definuje jednu podmínku pro jednu hodnotu atributu. Pokud je v jednom oboru filtru vytvořeno více klauzulí, jsou vyhodnocovány společně pomocí logiky "a". To znamená, že všechny klauzule se musí vyhodnotit na "true", aby bylo možné uživatele zřídit.
 
-Nakonec více filtrů oborů lze vytvořit pro jednu aplikaci. Pokud je zadáno více filtrů oborů jsou k dispozici, se vyhodnocují dohromady pomocí logiky "Nebo". To znamená, že pokud mají všechny klauzule v některém z nakonfigurovaných filtry oborů "true", uživatel je zřízený.
+Nakonec lze pro jednu aplikaci vytvořit více filtrů oborů. Pokud je přítomno více filtrů oborů, jsou vyhodnocovány společně pomocí logiky "nebo". To znamená, že pokud jsou všechny klauzule v některém z nakonfigurovaných filtrů oborů vyhodnoceny na hodnotu "true", bude uživatel zřízen.
 
-Každý uživatel nebo skupina zpracovává zřizovací služba Azure AD se vždy vyhodnocují zvlášť pro každý filtr oborů.
+Každý uživatel nebo skupina, které zpracovala služba zřizování služby Azure AD, se vždycky vyhodnocují jednotlivě na základě každého filtru oborů.
 
-Jako příklad vezměte v úvahu následující filtr oborů:
+Zvažte například následující filtr oboru:
 
-![Filtr oborů](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Filtr oboru](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
-Podle tohoto oboru filtru uživatelé musí splňovat následující kritéria, které se mají zřídit:
+Podle tohoto filtru oboru musí uživatelé splnit následující kritéria, která se mají zřídit:
 
 * Musí být v New Yorku.
-* Musí pracovat v oddělení inženýrství.
+* Musí fungovat v technickém oddělení.
 * ID zaměstnance společnosti musí být mezi 1 000 000 a 2 000 000.
-* Jejich pracovní pozice nesmí být null ani prázdný.
+* Jejich název úlohy nesmí být null ani prázdný.
 
 ## <a name="create-scoping-filters"></a>Vytvoření filtrů oborů
-Filtry oborů se nakonfigurují jako součást mapování atributů pro každého uživatele Azure AD zřizování konektoru. Následující postup předpokládá, že jste již nastavili automatické zřizování pro [jednu z podporovaných aplikací](../saas-apps/tutorial-list.md) a do ní přidat filtr oborů.
+Filtry oborů se konfigurují jako součást mapování atributů pro jednotlivé konektory zřizování uživatelů Azure AD. Následující postup předpokládá, že jste již nastavili Automatické zřizování pro [jednu z podporovaných aplikací](../saas-apps/tutorial-list.md) a přidáte do ní filtr oborů.
 
-### <a name="create-a-scoping-filter"></a>Vytvořit filtr oborů
-1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory** > **podnikové aplikace** > **všechnyaplikace** oddílu.
+### <a name="create-a-scoping-filter"></a>Vytvoření filtru oboru
+1. V [Azure Portal](https://portal.azure.com)přejdete do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
 
-2. Vyberte aplikaci, pro který jste nakonfigurovali automatické zřizování: například "ServiceNow".
+2. Vyberte aplikaci, pro kterou jste nakonfigurovali Automatické zřizování: například "ServiceNow".
 
-3. Vyberte **zřizování** kartu.
+3. Vyberte kartu **zřizování** .
 
-4. V **mapování** vyberte, kterou chcete konfigurovat filtr oborů pro mapování: například "synchronizace Azure Active Directory uživatelům k ServiceNow".
+4. V části **mapování** vyberte mapování, pro které chcete nakonfigurovat filtr oboru: například "synchronizovat Azure Active Directory uživatelů do ServiceNow".
 
-5. Vyberte **zdrojového objektu oboru** nabídky.
+5. Vyberte nabídku **obor zdrojového objektu** .
 
-6. Vyberte **přidat filtr oborů**.
+6. Vyberte **Přidat filtr oborů**.
 
-7. Definování klauzule tak, že vyberete zdroj **název atributu**, **operátor**a **hodnota atributu** k porovnání. Jsou podporovány následující operátory:
+7. Definujte klauzuli tak, že vyberete **název zdrojového atributu**, **operátor**a **hodnotu atributu** pro porovnání. Podporovány jsou následující operátory:
 
-   a. **SE ROVNÁ**. Klauzule vrací hodnotu "true" Pokud vyhodnocený atribut přesně odpovídá vstupní řetězcovou hodnotu (rozlišuje velikost písmen).
+   a. **JE ROVNO**. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá hodnotě vstupního řetězce (rozlišuje velká a malá písmena).
 
-   b. **NENÍ ROVNO**. Klauzule vrací hodnotu "true", pokud atribut Vyhodnocená neodpovídá vstupní řetězcovou hodnotu (rozlišuje velikost písmen).
+   b. **NENÍ ROVNO**. Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje s hodnotou vstupního řetězce (rozlišuje velká a malá písmena).
 
-   c. **MÁ HODNOTU TRUE**. Klauzule vrací hodnotu "true", pokud vyhodnocený atribut neobsahuje logickou hodnotu true.
+   c. **MÁ HODNOTU TRUE**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu true.
 
-   d. **MÁ HODNOTU FALSE**. Klauzule vrací hodnotu "true", pokud vyhodnocený atribut neobsahuje logickou hodnotu false.
+   d. **JE FALSE**. Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje logickou hodnotu false.
 
-   e. **MÁ HODNOTU NULL**. Klauzule vrací hodnotu "true", pokud vyhodnocený atributu je prázdný.
+   e. **MÁ HODNOTU NULL**. Klauzule vrátí "true", pokud je vyhodnocený atribut prázdný.
 
-   f. **NENÍ ROVNO HODNOTĚ NULL**. Klauzule vrací hodnotu "true", pokud vyhodnocený atribut není prázdný.
+   f. NENÍ **NULL**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
 
-   g. **REGULÁRNÍHO VÝRAZU SHODY**. Klauzule vrací hodnotu "true", pokud atribut Vyhodnocená odpovídá vzoru regulárního výrazu. Například: ([1-9][0-9]) odpovídá jakémukoliv číslu mezi 10 a 99.
+   g. **POROVNÁVÁNÍ REGULÁRNÍCH**ZNAKŮ. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
-   h. **NEODPOVÍDÁ REGULÁRNÍMU**. Klauzule vrací hodnotu "true", pokud atribut Vyhodnocená neodpovídá vzoru regulárního výrazu.
+   h. **NESHODA S REGULÁRNÍM VÝRAZEM** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
 
-8. Vyberte **novou klauzuli oboru přidat**.
+8. Vyberte **Přidat novou klauzuli oboru**.
 
-9. Opakováním kroků 7. a 8 přidat více klauzulí oborů.
+9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 
-10. V **název filtru oborů**, přidejte název oboru filtru.
+10. V části **název filtru oboru**přidejte název filtru oborů.
 
 11. Vyberte **OK**.
 
-12. Vyberte **OK** znovu na **filtry oborů** obrazovky. Volitelně opakujte kroky 6 – 11 přidat jiný filtr oborů.
+12. Na obrazovce **filtry oboru** vyberte znovu **OK** . Volitelně můžete opakováním kroků 6-11 přidat další filtr oborů.
 
-13. Vyberte **Uložit** na **mapování atributů** obrazovky. 
+13. Na obrazovce **mapování atributů** vyberte **Uložit** . 
 
 >[!IMPORTANT] 
-> Ukládání nových oborů filtru triggerů nové úplnou synchronizaci pro aplikaci, ve kterém všichni uživatelé ve zdrojovém systému vyhodnocují znovu nový filtr oborů. Pokud uživatel v aplikaci byl dříve v oboru pro zřizování, ale spadá mimo rozsah, jejich účet je zakázán nebo zrušení zřízení v aplikaci.
+> Uložení nového filtru oboru aktivuje novou úplnou synchronizaci pro aplikaci, kde všichni uživatelé ve zdrojovém systému jsou znovu vyhodnocováni proti novému filtru oborů. Pokud byl uživatel v aplikaci dříve v oboru pro zřizování, ale nespadají do oboru, je jeho účet v aplikaci zakázán nebo zrušen. Pokud chcete toto výchozí chování přepsat, přečtěte si téma [přeskočení odstranění u uživatelských účtů, které se nacházejí mimo rozsah](skip-out-of-scope-deletions.md).
 
 
 ## <a name="related-articles"></a>Související články
-* [Automatizace zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
+* [Automatizace zřizování a rušení uživatelů pro aplikace SaaS](user-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](customize-application-attributes.md)
 * [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
-* [Oznámení o zřizování účtů](user-provisioning.md)
-* [Povolit automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](use-scim-to-provision-users-and-groups.md)
-* [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
+* [Oznámení zřizování účtů](user-provisioning.md)
+* [Pomocí SCIM můžete povolit Automatické zřizování uživatelů a skupin od Azure Active Directory k aplikacím.](use-scim-to-provision-users-and-groups.md)
+* [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)
 

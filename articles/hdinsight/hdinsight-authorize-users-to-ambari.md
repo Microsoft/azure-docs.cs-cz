@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442176"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810697"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
@@ -91,13 +91,13 @@ Pro uživatele a skupiny existuje pět rolí zabezpečení, které jsou uvedené
 * Operátor služby
 * Uživatel clusteru
 
-Pokud chcete spravovat role, přejděte na **stránku Správa Ambari**a pak vyberte odkaz **role** v rámci skupiny  nabídky clustery na levé straně.
+Pokud chcete spravovat role, přejděte na **stránku Správa Ambari**a pak vyberte odkaz **role** v rámci skupiny nabídky *clustery* na levé straně.
 
 ![Odkaz na nabídku rolí](./media/hdinsight-authorize-users-to-ambari/roles-link.png)
 
 Pokud chcete zobrazit seznam oprávnění udělených jednotlivým rolím, klikněte na modré otazník vedle záhlaví tabulky **role** na stránce role.
 
-![Odkaz na nabídku rolí](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Oprávnění pro odkazy v nabídce role](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "Oprávnění pro odkazy v nabídce role")
 
 Na této stránce jsou k dispozici dvě různá zobrazení, která můžete použít ke správě rolí pro uživatele a skupiny: Zablokování a výpis.
 

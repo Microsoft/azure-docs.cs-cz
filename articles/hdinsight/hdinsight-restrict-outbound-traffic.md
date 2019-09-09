@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405968"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811960"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall (Preview)
 
@@ -48,7 +48,7 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
 Z Azure Portal vyberte nový **test brány firewall – FW01** . Klikněte na **pravidla** v části **Nastavení** > **kolekce** > pravidel aplikace**přidat kolekci pravidel aplikace**.
 
-![Název: Přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Hlava Přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Na obrazovce **přidat kolekci pravidel aplikací** proveďte následující kroky:
 
@@ -67,7 +67,7 @@ Na obrazovce **přidat kolekci pravidel aplikací** proveďte následující kro
 
 1. Klikněte na **Přidat**.
 
-   ![Název: Zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Hlava Zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí síťových pravidel
 
@@ -93,7 +93,7 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
 1. Kliknutím na **Přidat** dokončete vytvoření kolekce pravidel sítě.
 
-   ![Název: Zadejte podrobnosti kolekce pravidel aplikace.](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Hlava Zadat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Vytvoření a konfigurace směrovací tabulky
 
@@ -107,7 +107,7 @@ Vytvořte směrovací tabulku s následujícími položkami:
 Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvořený v oblasti USA "Střed USA", použijte následující postup:
 
 1. Přihlaste se k portálu Azure.
-1. Vyberte Azure firewall **test-FW01**. Zkopírujte **privátní IP adresu** uvedenou na stránce **Přehled** . V tomto příkladu použijeme ukázkovou **adresu 10.1.1.4** .
+1. Vyberte Azure firewall **test-FW01**. Zkopírujte **privátní IP adresu** uvedenou na stránce **Přehled** . V tomto příkladu použijeme **ukázkovou adresu 10.1.1.4** .
 1. Vytvoří novou směrovací tabulku.
 1. V části **Nastavení**klikněte na **trasy** .
 1. Klikněte na tlačítko **Přidat** a vytvořte trasy pro IP adresy v následující tabulce.
@@ -124,7 +124,7 @@ Pokud chcete například nakonfigurovat směrovací tabulku pro cluster vytvoře
 
 Dokončete konfiguraci směrovací tabulky:
 
-1. Přiřaďte směrovací tabulku, kterou jste vytvořili v podsíti HDInsight, v části **Nastavení** klikněte na **podsítě** a pak na přidružit.
+1. Přiřaďte směrovací tabulku, kterou jste vytvořili v podsíti HDInsight, v části **Nastavení** klikněte na **podsítě** a pak na **přidružit**.
 1. Na obrazovce **přidružit podsíť** vyberte virtuální síť, do které byl cluster vytvořen, a **podsíť HDInsight** , kterou jste použili pro cluster HDInsight.
 1. Klikněte na **OK**.
 
@@ -208,6 +208,6 @@ Předchozí pokyny vám pomůžou nakonfigurovat Azure Firewall pro omezení odc
 | ocsp.msocsp.com:80                                                |
 | ocsp.digicert.com:80                                                |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Architektura virtuální sítě Azure HDInsight](hdinsight-virtual-network-architecture.md)

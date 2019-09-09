@@ -1,9 +1,9 @@
 ---
-title: Dokončení kontroly přístupu z role prostředků Azure v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak dokončení kontroly přístupu z role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Dokončení kontroly přístupu pro role prostředků Azure v PIM-Azure Active Directory | Microsoft Docs
+description: Naučte se, jak dokončit kontrolu přístupu k rolím prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,57 +12,57 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/02/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9903bb82a82291febf571829fb9874ba66d2eab2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3b9563a4032011b999bf867fc782ba4cbb9c3fac
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476363"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804260"
 ---
-# <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Dokončení kontroly přístupu z role prostředků Azure v PIM
-Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup po [se spustila kontrola přístupu](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) automaticky odesílá e-mail, který vyzve uživatele ke kontrole jejich přístupu. Pokud uživatel e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-resource-roles-perform-access-review.md).
+# <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Dokončení kontroly přístupu pro role prostředků Azure v PIM
+Správci privilegovaných rolí můžou po [spuštění kontroly přístupu](pim-resource-roles-start-access-review.md)zkontrolovat privilegovaný přístup. Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automaticky pošle e-mail s výzvou uživatelům, aby zkontrolovali přístup. Pokud uživatel neobdrží e-mail, můžete jim poslat pokyny, [Jak provést kontrolu přístupu](pim-resource-roles-perform-access-review.md).
 
-Po období kontroly přístupu, nebo po dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
+Po uplynutí doby kontroly přístupu nebo po skončení vlastního přezkoumání všemi uživateli postupujte podle pokynů v tomto článku a spravujte kontrolu a podívejte se na výsledky.
 
-## <a name="manage-access-reviews"></a>Správa kontroly přístupu
-1. Přejděte na [Azure Portal](https://portal.azure.com/). Vyberte na řídicím panelu **prostředky Azure** aplikace.
+## <a name="manage-access-reviews"></a>Správa kontrol přístupu
+1. Přejděte na [Azure Portal](https://portal.azure.com/). Pak na řídicím panelu vyberte aplikaci **prostředků Azure** .
 
 2. Vyberte prostředek.
 
-3. Vyberte **kontrol přístupu** část řídicího panelu.
+3. Vyberte část kontroly **přístupu** na řídicím panelu.
 
-    ![Role zobrazení seznamu, vlastník, počáteční datum, datum ukončení a stav kontroly přístupu prostředky Azure –](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
+    ![Prostředky Azure – seznam kontrol přístupu, který zobrazuje roli, vlastníka, datum zahájení, datum ukončení a stav](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
-4. Vyberte kontroly přístupu, kterou chcete spravovat.
+4. Vyberte kontrolu přístupu, kterou chcete spravovat.
 
-V okně Podrobnosti o kontrolu přístupu existuje mnoho možností pro správu této revize. Možnosti jsou následující:
+V okně podrobností kontroly přístupu je k dispozici několik možností pro správu této recenze. Možnosti jsou následující:
 
-![Možnosti pro správu přezkoumání - Stop, obnovení, použít Delete](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
+![Možnosti správy revize – zastavení, resetování, použití, odstranění](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>Zastavit
-Všechny kontroly přístupu mají koncové datum, ale můžete použít **Zastavit** tlačítko pro dokončení včas. Všichni uživatelé, kteří nedokončili svoji kontrolu té doby nebude možné ji dokončit po zastavení revize. Kontrola nelze restartovat po byla zastavena.
+Všechny kontroly přístupu mají koncové datum, ale k jeho dokončení můžete použít tlačítko **zastavit** . Všichni uživatelé, kteří nedokončili svou kontrolu v této době, ji nebudou moct dokončit po zastavení revize. Po zastavení nemůžete kontrolu znovu spustit.
 
-### <a name="reset"></a>Resetovat
-Kontroly přístupu k odebrání všech rozhodnutí, které jsou provedeny v něm můžete resetovat. Poté, co jste změnili kontroly přístupu, všichni uživatelé jsou označeny jako znovu neprovedla kontrola. 
+### <a name="reset"></a>Obnovit
+Chcete-li odebrat všechna rozhodnutí, která jsou v něm provedena, můžete obnovit kontrolu přístupu. Po obnovení kontroly přístupu budou všichni uživatelé označení jako nerevidováni. 
 
 ### <a name="apply"></a>Použít
-Po dokončení kontroly přístupu používat **použít** tlačítko k implementaci výsledek kontroly. Pokud v revizi byl odepřen přístup uživatelů, tento krok Odstraní přiřazení role.  
+Po dokončení kontroly přístupu použijte tlačítko **použít** k implementaci výsledku revize. Pokud byl přístup uživatele při revizi zamítnutý, tento krok odebere přiřazení role.  
 
 ### <a name="delete"></a>Odstranění
-Můžete se v případě zájmu revize víc, odstraňte jej. **Odstranit** tlačítko kontroly odebere z aplikace PIM.
+Pokud se vám žádné informace nejímá, odstraňte je. Tlačítko **Odstranit** odebere revizi z aplikace PIM.
 
 ## <a name="results"></a>Výsledky
-Na **výsledky** stránce, zobrazit a stáhnout seznam výsledků kontroly. 
+Na stránce **výsledky** zobrazte seznam výsledků kontroly a Stáhněte si ho. 
 
-![Výsledky stránku se seznamem uživatelů, výsledek, z důvodu zkontroloval použil(a) a použít výsledek](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
+![Stránka výsledků výpis uživatelů, výsledek, důvod, revize, uplatněno a výsledek použití](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>Revidující
-Zobrazení a přidání revidujících k vaší existující kontrolu přístupu. Připomeňte revidujících k dokončení jejich revize.
+Zobrazení a přidání revidujících ke stávající kontrole přístupu. Připomenout kontrolorům, aby dokončili své recenze.
 
-![Revidující stránku se seznamem název a hlavní název uživatele](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
+![Jméno a název zobrazení stránky revidujících a hlavní název uživatele](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
 ## <a name="next-steps"></a>Další postup
 

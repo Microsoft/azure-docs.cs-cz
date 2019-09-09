@@ -1,6 +1,6 @@
 ---
-title: Použití Apache Sparku k analýze dat v Azure Data Lake Storage Gen1
-description: Spuštění úlohy Spark analyzovat data uložená v Azure Data Lake Storage Gen1
+title: Použití Apache Spark k analýze dat v Azure Data Lake Storage Gen1
+description: Spuštění úloh Apache Spark pro analýzu dat uložených v Azure Data Lake Storage Gen1
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,56 +8,56 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 5a98cb2356c25329e091514dd1d6181dfc2690be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f57d054134b9f2c8b327fe157e7a5b5e3d5ff183
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448661"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813919"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Storage Gen1
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
-V tomto článku budete používat [Poznámkový blok Jupyter](https://jupyter.org/) s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage k dispozici.
+V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](../../data-lake-store/data-lake-store-get-started-portal.md).
+* Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Cluster Azure HDInsight Spark s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů na adrese [rychlý start: Nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v [části rychlý Start: Nastavte clustery v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Příprava dat
 
 > [!NOTE]  
-> Není potřeba tento krok proveďte, pokud jste vytvořili HDInsight cluster s Data Lake Storage jako výchozí úložiště. V procesu vytváření clusteru přidá nějaká ukázková data v účtu Data Lake Storage, který zadáte při vytváření clusteru. Přejděte ke clusteru HDInsight Spark pomocí oddílu s Data Lake Storage.
+> Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako výchozí úložiště, nemusíte tento krok provádět. Proces vytvoření clusteru přidá ukázková data do účtu Data Lake Storage, který zadáte při vytváření clusteru. Přejděte k části použití clusteru HDInsight Spark s Data Lake Storage.
 
-Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další úložiště a Azure Storage Blob jako výchozím úložištěm, měli byste nejprve zkopírovat přes nějaká ukázková data do účtu Data Lake Storage. Můžete tak ukázku, kterou data z Azure Storage Blob přidružené ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](https://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
+Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úložiště a Azure Storage Blob jako výchozí úložiště, měli byste nejdřív zkopírovat ukázková data do účtu Data Lake Storage. Můžete použít ukázková data z Azure Storage Blob přidružená ke clusteru HDInsight. K tomu můžete použít [Nástroj ADLCopy](https://aka.ms/downloadadlcopy) . Stáhněte a nainstalujte si nástroj z odkazu.
 
-1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
+1. Otevřete příkazový řádek a přejděte do adresáře, kde je nainstalovaný AdlCopy, obvykle `%HOMEPATH%\Documents\adlcopy`.
 
-2. Spusťte následující příkaz pro kopírování jen konkrétní objekt blob z zdrojového kontejneru do Data Lake Storage:
+2. Spusťte následující příkaz ke zkopírování konkrétního objektu BLOB ze zdrojového kontejneru do Data Lake Storage:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    Kopírovat **HVAC.csv** ukázková data souboru **/HdiSamples/HdiSamples/SensorSampleData/hvac/** do účtu úložiště Azure Data Lake. Fragment kódu by měl vypadat:
+    Zkopírujte Ukázkový datový soubor **TVK. csv** na **/HdiSamples/HdiSamples/SensorSampleData/hvac/** do účtu Azure Data Lake Storage. Fragment kódu by měl vypadat takto:
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]  
-   > Ujistěte se, že názvy souborů a cestu použijte správná velká písmena.
+   > Ujistěte se, že názvy souborů a cest používají správnou velikost písmen.
 
-3. Zobrazí se výzva k zadání přihlašovacích údajů předplatného Azure, ve kterém máte účtu Data Lake Storage. Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
+3. Zobrazí se výzva k zadání přihlašovacích údajů k předplatnému Azure, pod kterým máte účet Data Lake Storage. Zobrazí se výstup, který bude podobný následujícímu fragmentu kódu:
 
         Initializing Copy.
         Copy Started.
         100% data copied.
         Copy Completed. 1 file copied.
 
-    Datový soubor (**HVAC.csv**) v rámci složky budou zkopírovány **/hvac** v účtu Data Lake Storage.
+    Datový soubor (**TVK. csv**) se zkopíruje do složky **/hvac** v účtu Data Lake Storage.
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Cluster HDInsight Spark pomocí Data Lake Storage Gen1
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark s Data Lake Storage Gen1
 
-1. Z [webu Azure Portal](https://portal.azure.com/), z úvodního panelu klikněte na dlaždici pro váš cluster Apache Spark (Pokud je připnutý na úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
+1. Na webu [Azure Portal](https://portal.azure.com/)klikněte v úvodní panel na dlaždici pro váš cluster Apache Spark (Pokud jste ho připnuli k úvodní panel). Můžete také přejít na cluster pod položkou **Procházet vše** > **Clustery HDInsight**.
 
 2. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
@@ -78,21 +78,21 @@ Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další
 
      ![Stav úlohy poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Stav úlohy poznámkového bloku Jupyter")
 
-5. Načtení ukázkových dat do dočasné tabulky pomocí **HVAC.csv** soubor zkopírován do účtu Data Lake Storage Gen1. Můžete přistupovat k datům v účtu Data Lake Storage pomocí následující vzor adresy URL.
+5. Načtěte ukázková data do dočasné tabulky pomocí souboru **TVK. csv** , který jste zkopírovali do účtu Data Lake Storage Gen1. K datům v účtu Data Lake Storage můžete přistupovat pomocí následujícího vzoru adresy URL.
 
-   * Pokud máte Data Lake Storage Gen1 jako výchozím úložištěm, HVAC.csv bude v cestě podobně jako na následující adresu URL:
+   * Pokud máte Data Lake Storage Gen1 jako výchozí úložiště, TVK. csv bude na cestě podobnou této adrese URL:
 
            adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-       Nebo můžete také použít zkrácenou formát jako je následující:
+       Nebo můžete použít také zkrácený formát, například následující:
 
            adl:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 
-   * Pokud máte Data Lake Storage jako další úložiště, HVAC.csv bude v umístění, kam jste zkopírovali, jako například:
+   * Pokud máte Data Lake Storage jako další úložiště, bude v umístění, kde jste ho zkopírovali, na místo, kam jste ho zkopírovali, například:
 
            adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** se název účtu Data Lake Storage a stisknutím klávesy **SHIFT + ENTER**. Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK**.
+     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** názvem účtu Data Lake Storage a stiskněte **SHIFT + ENTER**. Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK**.
 
            # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
            hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -109,7 +109,7 @@ Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK**, kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` magic a také dalších Magic, které jsou k dispozici s jádrem pyspark, naleznete v tématu [jádra dostupná v poznámkových blocích Jupyter s clustery Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK**, kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -125,9 +125,9 @@ Pokud jste vytvořili cluster služby HDInsight s Data Lake Storage jako další
 8. Po dokončení spuštění aplikace byste měli poznámkový blok vypnout a uvolnit tak prostředky. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Dojde k vypnutí a zavření poznámkového bloku.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření samostatného Scala aplikaci pro spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
-* [Vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin.md)
-* [Vytváření aplikací Apache Spark pro cluster HDInsight Spark Linux pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse](apache-spark-eclipse-tool-plugin.md)
-* [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Vytvoření samostatné aplikace v Scala ke spuštění v clusteru Apache Spark](apache-spark-create-standalone-application.md)
+* [Použití nástrojů HDInsight v Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro cluster HDInsight Spark Linux](apache-spark-intellij-tool-plugin.md)
+* [Použití nástrojů HDInsight v Azure Toolkit for Eclipse k vytvoření Apache Sparkch aplikací pro cluster HDInsight Spark Linux](apache-spark-eclipse-tool-plugin.md)
+* [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375910"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812452"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak: Plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -149,7 +149,7 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | ----- | ----- | ----- | ----- |
 | Balíček | Federovaná | Z verze 1703 | Obecně dostupná |
 | Bez směrování | Federovaná | Z verze 1803 | Obecně dostupná |
-| Balíček | Spravovaní | Nepodporuje se | |
+| Balíček | Spravovaní | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
 | Bez směrování | Spravovaní | Nepodporuje se | |
 
 ## <a name="next-steps"></a>Další postup

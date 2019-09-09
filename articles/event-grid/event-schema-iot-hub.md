@@ -173,7 +173,7 @@ Pro **zařízení připojeno** a **odpojení zařízení** události služby IoT
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | moduleId | string | Jedinečný identifikátor modulu. Toto pole je výstup pouze pro zařízení se modul. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| deviceConnectionStateEventInfo | objekt | Informace o události stavu připojení zařízení
+| deviceConnectionStateEventInfo | object | Informace o události stavu připojení zařízení
 | sequenceNumber | string | Číslo, která pomáhá určit pořadí připojeno zařízení nebo zařízení odpojí události. Nejnovější událost může mít pořadové číslo, které je vyšší než předchozí události. Toto číslo může změnit ve více než 1, ale přísné zvýšení. Zobrazit [použití pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Pro **Telemetrii zařízení** událostí služby IoT Hub, datový objekt obsahuje zprávu typu zařízení cloud ve [formát zprávy služby IoT hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
@@ -188,7 +188,7 @@ Pro **zařízení vytvořit** a **zařízení odstraní** události služby IoT 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| twin | objekt | Informace o dvojčeti zařízení, což je cloudové reprezentace metadat zařízení aplikace. | 
+| twin | object | Informace o dvojčeti zařízení, což je cloudové reprezentace metadat zařízení aplikace. | 
 | deviceID | string | Jedinečný identifikátor dvojčeti zařízení. | 
 | etag | string | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
 | deviceEtag| string | Validátor pro zajištění konzistence aktualizací do registru zařízení. Každý deviceEtag je musí být jedinečný na registr zařízení. |
@@ -202,8 +202,8 @@ Pro **zařízení vytvořit** a **zařízení odstraní** události služby IoT 
 | primaryThumbprint | string | Primární kryptografický otisk pro x509 certifikátu. |
 | secondaryThumbprint | string | Sekundární kryptografický otisk pro x509 certifikátu. | 
 | version | integer | Celé číslo, které je zvýšen o každý čas zařízení dvojčete se aktualizuje. |
-| desired | objekt | Část vlastnosti, které může zapisovat pouze pomocí back endové aplikace a číst zařízení. | 
-| reported | objekt | Část vlastnosti, které může zapisovat pouze podle zařízení a číst back endové aplikace. |
+| desired | object | Část vlastnosti, které může zapisovat pouze pomocí back endové aplikace a číst zařízení. | 
+| reported | object | Část vlastnosti, které může zapisovat pouze podle zařízení a číst back endové aplikace. |
 | lastUpdated | string | Aktualizovat ISO8601 časové razítko poslední vlastnosti dvojčete zařízení. | 
 
 ## <a name="next-steps"></a>Další postup

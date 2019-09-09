@@ -9,12 +9,12 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abbd436e5d1c88c53af95fd8ba9add20fa67c8e4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640893"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813371"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -22,7 +22,7 @@ Při přístupu k datům objektů BLOB nebo front pomocí [Azure Portal](https:/
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Oprávnění potřebná pro přístup k datům objektů BLOB nebo front
 
-V závislosti na tom, jak chcete autorizovat přístup k objektu BLOB nebo data front v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění k dispozici prostřednictvím řízení přístupu na základě role (RBAC). Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
+V závislosti na tom, jak chcete autorizovat přístup k datům objektů BLOB nebo Queue v Azure Portal, budete potřebovat specifická oprávnění. Ve většině případů jsou tato oprávnění k dispozici prostřednictvím řízení přístupu na základě role (RBAC). Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="account-access-key"></a>Přístupový klíč účtu
 
@@ -81,7 +81,7 @@ Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvý
 
 ![Pokud účet Azure AD nepodporuje přístup, zobrazí se chyba.](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 
-Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup** k klávesám a znovu použijte přístupovou klávesu pro ověřování.
+Všimněte si, že v seznamu se nezobrazí žádné objekty blob, pokud váš účet Azure AD nemá oprávnění k jejich zobrazení. Klikněte na odkaz **Přepnout na přístup k klávesám** a znovu použijte přístupovou klávesu pro ověřování.
 
 ### <a name="azure-ad-account"></a>Účet Azure AD
 

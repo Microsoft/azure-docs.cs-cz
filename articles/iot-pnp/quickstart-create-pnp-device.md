@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050131"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806493"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Rychlý start: Vytvoření zařízení IoT technologie Plug and Play pomocí modelu schopností zařízení
 
@@ -49,6 +49,9 @@ _Připojovací řetězec úložiště modelů společnosti_ můžete najít na p
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
 K dokončení tohoto rychlého startu budete také potřebovat službu Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+> [!NOTE]
+> Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
 
 Přidejte Microsoft Azure rozšíření IoT pro Azure CLI:
 
@@ -102,13 +105,13 @@ V tomto rychlém startu použijete existující Vzorový model zařízení a př
 1. Stáhněte si [model funkce zařízení](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) a [ukázku rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) a uložte soubory do `pnp_app` složky.
 
     > [!TIP]
-    > Pokud chcete stáhnout soubor z GitHubu, přejděte do souboru, klikněte pravým tlačítkemna nezpracovaný a pak vyberte **Uložit odkaz jako**.
+    > Pokud chcete stáhnout soubor z GitHubu, přejděte do souboru, klikněte pravým tlačítkem na **nezpracovaný**a pak vyberte **Uložit odkaz jako**.
 
 1. Otevřete `pnp_app` složku s vs Code. Můžete zobrazit soubory pomocí IntelliSense:
 
     ![Model schopností zařízení](media/quickstart-create-pnp-device/dcm.png)
 
-1. V souborech, které jste stáhli `<YOUR_COMPANY_NAME_HERE>` , nahraďte `schema` `@id` v polích a jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)nevlákenového identifikátoru.
+1. V souborech, které jste stáhli `<YOUR_COMPANY_NAME_HERE>` , nahraďte `schema` `@id` v polích a jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>Generovat zástupný kód kódu jazyka C
 
@@ -215,7 +218,7 @@ K ověření kódu zařízení v **Azure IoT Exploreru**je potřeba publikovat s
 1. Výběrem stránky **vlastnosti (zapisovatelné)** zobrazíte vlastnosti, které můžete aktualizovat.
 
 1. Rozbalte **název**vlastnosti, aktualizujte ho novým názvem a vyberte možnost **aktualizovat zapisovatelnou vlastnost**. 
-2. Chcete-li zobrazit nový název zobrazený ve sloupci nahlášená **vlastnost** , klikněte na tlačítko **aktualizovat** v horní části stránky.
+2. Chcete-li zobrazit nový název zobrazený ve sloupci **nahlášená vlastnost** , klikněte na tlačítko **aktualizovat** v horní části stránky.
 
 1. Výběrem stránky **příkazů** zobrazíte všechny příkazy, které zařízení podporuje.
 
@@ -223,7 +226,7 @@ K ověření kódu zařízení v **Azure IoT Exploreru**je potřeba publikovat s
 
 1. Přejít na simulované zařízení a ověřte, že se příkaz provedl podle očekávání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak vytvořit zařízení IoT technologie Plug and Play pomocí DCM.
 

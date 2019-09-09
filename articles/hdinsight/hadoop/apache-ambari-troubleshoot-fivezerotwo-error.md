@@ -1,17 +1,17 @@
 ---
 title: Chyba uživatelského rozhraní Apache Ambari 502 ve službě Azure HDInsight
-description: Chyba uživatelského rozhraní Apache Ambari 502 ve službě Azure HDInsight
+description: Chyba uživatelského rozhraní Apache Ambari 502 při pokusu o přístup ke clusteru Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 1b79ef044271c926bf8c4255d0cee67943a0e58b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8e911fcb68fb318ce0a9c1178eee1c7d126728e0
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886699"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810927"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scénář: Chyba uživatelského rozhraní Apache Ambari 502 ve službě Azure HDInsight
 

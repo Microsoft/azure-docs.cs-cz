@@ -1,17 +1,17 @@
 ---
 title: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
-description: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
+description: Problémy s připojením mezi Apache HBA a Apache Phoenix ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/14/2019
-ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 03b861ecff492518db338df06af8882bb70417ef
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575741"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810299"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scénář: Problémy s připojením Apache Phoenix ve službě Azure HDInsight
 
@@ -57,7 +57,7 @@ V uživatelském rozhraní Apache Ambari proveďte následující kroky a restar
 
 Může trvat až pět minut, než se služba HBase Master stabilizovat a dokončí obnovení. Až se `SYSTEM.CATALOG` tabulka vrátí do normálního režimu, problém s připojením k Apache Phoenix by se měl automaticky vyřešit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

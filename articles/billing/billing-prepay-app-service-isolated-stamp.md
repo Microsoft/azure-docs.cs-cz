@@ -1,31 +1,31 @@
 ---
-title: Platba za Azure App Service izolované poplatky za razítko s rezervovanou kapacitou
-description: Přečtěte si, jak můžete zaplatit za Azure App Service izolované poplatky za razítko s rezervovanou kapacitou pro úspory peněz.
+title: Úspora nákladů pro Azure App Service izolované poplatky za razítko s rezervovanou kapacitou
+description: Přečtěte si, jak můžete ušetřit náklady na Azure App Service izolované poplatky za razítko s rezervovanou kapacitou.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780014"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806372"
 ---
-# <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Platba za Azure App Service izolované poplatky za razítko s rezervovanou kapacitou
+# <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Úspora nákladů pro Azure App Service izolované poplatky za razítko s rezervovanou kapacitou
 
-Můžete ušetřit peníze na Azure App Service izolované poplatky za razítko, a to Předplacením používání razítek po dobu tří let. Pokud si chcete koupit vyhrazenou kapacitu rezervovaného razítka, musíte zvolit oblast Azure, ve které se razítko nasadí, a počet razítek k nákupu.
+Můžete ušetřit peníze na Azure App Service izolované poplatky za razítko tím, že potvrdíte rezervaci za používání razítek po dobu tří let. Pokud si chcete koupit vyhrazenou kapacitu rezervovaného razítka, musíte zvolit oblast Azure, ve které se razítko nasadí, a počet razítek k nákupu.
 
 Když si zakoupíte rezervaci, neúčtují se použití izolovaného razítka, které odpovídá atributům rezervace, na základě tarifů průběžných plateb. Rezervace se automaticky použije na počet izolovaných razítek, která se shodují s rozsahem rezervované kapacity a oblastí. Nemusíte přiřazovat rezervaci izolovanému razítku. Rezervace se nevztahuje na pracovníky, takže jakékoli další prostředky spojené s tímto razítkem se účtují samostatně.
 
-Až vyprší platnost rezervované kapacity, budou izolovaná razítka nadále běžet, ale budou se účtovat podle sazby za průběžné platby. Rezervace se neobnovují automaticky.
+Až vyprší platnost rezervované kapacity, budou izolovaná razítka nadále běžet, ale budou se účtovat podle sazby za průběžné platby. Rezervace se automaticky neprodlužují.
 
 ## <a name="determine-the-right-reservation-to-purchase"></a>Určení správné rezervace k nákupu
 
-Když si koupíte rezervaci, předem platíte za použití rezervovaných množství po dobu dalších tří let. Zkontrolujte data o využití, abyste zjistili, kolik Služba App Service v izolovaném prostředích razítek konzistentně používáte a v budoucnu se můžou používat.
+Když si koupíte rezervaci, potvrzujete, že za další tři roky budete používat rezervované množství. Zkontrolujte data o využití, abyste zjistili, kolik Služba App Service v izolovaném prostředích razítek konzistentně používáte a v budoucnu se můžou používat.
 
 Navíc se ujistěte, jak izolované razítko vysílá systém Linux nebo měřič Windows.
 
@@ -39,7 +39,7 @@ Kupte si rezervace razítka systému Windows, pokud na razítku máte jeden nebo
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Koupit vyhrazenou kapacitu izolovaného razítka
 
-Rezervovanou kapacitu rezervovaného razítka si můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka aspoň u jednoho podnikového předplatného nebo u každého předplatného s tarify průběžných plateb.
+Rezervovanou kapacitu rezervovaného razítka si můžete koupit v [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Platíte za rezervaci [předem nebo s měsíčními platbami](billing-monthly-payments-reservations.md). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka aspoň u jednoho podnikového předplatného nebo u každého předplatného s tarify průběžných plateb.
 
 - V případě předplatných Enterprise musí být na [portálu EA](https://ea.azure.com/)povolená možnost **Přidat rezervované instance** . Nebo, pokud je nastavení zakázané, musíte být správce EA.
 - V případě programu Cloud Solution Provider (CSP) mohou SQL Data Warehouse rezervované kapacity koupit pouze agenti správce nebo prodejní agenti.
@@ -47,12 +47,12 @@ Rezervovanou kapacitu rezervovaného razítka si můžete koupit v [Azure Portal
 **K nákupu:**
 
 1. Přejít na [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Vyberte předplatné. Pomocí seznamu předplatných vyberte předplatné, které se používá k placení rezervované kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervovanou kapacitu. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
+1. Vyberte předplatné. Pomocí seznamu **předplatných** vyberte předplatné, které se používá k placení rezervované kapacity. Platební metodou předplatného se účtují náklady na rezervovanou kapacitu. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo průběžné platby (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P) nebo předplatné CSP.
     - V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití.
     - V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.
 1. Vyberte **obor** pro výběr oboru předplatného.
     - **Obor jedné skupiny prostředků** – aplikuje slevu na rezervované prostředky jenom na ty, které jsou ve vybrané skupině prostředků.
-    - **Rozsah jednoho** předplatného – aplikuje slevu na rezervované prostředky ve vybraném předplatném.
+    - **Rozsah jednoho předplatného** – aplikuje slevu na rezervované prostředky ve vybraném předplatném.
     - **Sdílený rozsah** – použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky smlouva Enterprise je fakturačním kontextem registrace. U jednotlivých předplatných s tarify průběžných plateb jsou oborem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 1. Vyberte **oblast** a zvolte oblast Azure, která je pokrytá rezervovanou kapacitou, a přidejte rezervaci na košík.
 1. Vyberte typ izolovaného plánu a pak klikněte na **Vybrat**.  
@@ -72,9 +72,9 @@ Data o využití mají platnou cenu za využití, která vrací slevu za rezerva
 
 Další informace o tom, jak se slevou rezervace zobrazuje v datech využití, najdete v tématu [získání smlouva Enterprise nákladů na rezervaci a využití](billing-understand-reserved-instance-usage-ea.md) v případě, že jste zákazníkem smlouva Enterprise (EA). V opačném případě se podívejte na téma [použití rezervací Azure pro vaše individuální předplatné s tarify](billing-understand-reserved-instance-usage.md)průběžných plateb.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o Azure Reservations najdete v následujících článcích:
   - [Co jsou Azure Reservations?](billing-save-compute-costs-reservations.md)
   - [Vysvětlení způsobu použití Azure App Service slev izolovaného razítka](billing-reservation-discount-app-service-isolated-stamp.md)
-  - [Vysvětlení použití rezervací pro podnikovou registraci](billing-understand-reserved-instance-usage-ea.md)
+  - [Vysvětlení využití rezervací u smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

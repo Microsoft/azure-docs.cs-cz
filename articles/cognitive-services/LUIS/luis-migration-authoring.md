@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801461"
+ms.locfileid: "70803891"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -91,8 +91,8 @@ Můžete zvolit export aplikace, kterou jste spolupracovníka, a pak aplikaci im
 
 ### <a name="after-the-app-is-migrated"></a>Po migraci aplikace
 
-Po dokončení procesu migrace je potřeba, abyste vlastníkem aplikace přidali do prostředku pro vytváření obsahu Azure.  
+Pokud potřebujete přístup k původní aplikaci, musíte po dokončení migrace přidat do prostředku pro vytváření Azure jako spolupracovníka vlastníka aplikace.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Postup migrace aplikace do prostředku pro vytváření](luis-migration-authoring-steps.md)

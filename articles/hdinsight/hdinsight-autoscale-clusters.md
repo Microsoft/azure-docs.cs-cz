@@ -1,6 +1,6 @@
 ---
 title: Automatické škálování clusterů Azure HDInsight (verze Preview)
-description: Automatické škálování clusterů pomocí funkce automatického škálování HDInsight
+description: Použití funkce automatického škálování Azure HDInsight k automatickému Apache Hadoop škálování clusterů
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 877fc3a4e29fc1753d7b4f92091b34d4b2537846
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70770705"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810323"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (verze Preview)
 
@@ -85,7 +85,7 @@ Pokud chcete funkci automatického škálování povolit s škálováním na zá
     * **Minimální** počet uzlů pracovního procesu.  
     * **Maximální** počet pracovních uzlů.  
 
-    ![Povolit možnost automatického škálování na základě zatížení pracovních uzlů](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Povolit automatické škálování na základě zatížení pracovních uzlů](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 Počáteční počet uzlů pracovního procesu musí být mezi minimální a maximální (včetně). Tato hodnota určuje počáteční velikost clusteru při jeho vytvoření. Minimální počet uzlů pracovního procesu musí být větší než nula.
 
@@ -103,7 +103,7 @@ Pokud chcete funkci automatického škálování povolit s škálováním na zá
 1. Upravte čas uplatnění podmínky a počet uzlů, na které se má cluster škálovat.
 1. V případě potřeby přidejte další podmínky.
 
-    ![Povolit možnost automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Povolit vytváření na základě plánu pracovních uzlů](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
 Počet uzlů musí být mezi 1 a počtem pracovních uzlů, které jste zadali před přidáním podmínek.
 
@@ -111,7 +111,7 @@ Počet uzlů musí být mezi 1 a počtem pracovních uzlů, které jste zadali p
 
 Pro škálování na základě zatížení a na základě plánu vyberte typ virtuálního počítače pro pracovní uzly tak, že kliknete na **Velikost uzlu pracovní uzel** a **velikost hlavního uzlu**. Po výběru typu virtuálního počítače pro každý typ uzlu můžete zobrazit odhadované rozsahy nákladů pro celý cluster. Upravte typy virtuálních počítačů tak, aby odpovídaly vašemu rozpočtu.
 
-![Povolit možnost automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![Povolit velikost uzlu automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 Vaše předplatné má kvótu kapacity pro každou oblast. Celkový počet jader hlavních uzlů v kombinaci s maximálním počtem pracovních uzlů nemůže překročit kvótu kapacity. Tato kvóta je ale měkké omezení; kdykoli můžete vytvořit lístek podpory, abyste ho mohli snadno zvýšit.
 
@@ -189,7 +189,7 @@ Cluster HDInsight s automatickým škálováním na základě plánu můžete vy
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 Pokud chcete povolit automatické škálování na běžícím clusteru, vyberte v části **Nastavení** **Velikost clusteru** . Pak klikněte na **Povolit automatické škálování**. Vyberte typ automatického škálování, který chcete, a zadejte možnosti pro škálování na základě zatížení nebo na základě plánu. Nakonec klikněte na **Uložit**.
 
-![Povolit možnost automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Povolit automatické škálování na základě plánu pracovních uzlů v clusteru](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>S využitím REST API
 Pokud chcete povolit nebo zakázat automatické škálování ve spuštěném clusteru pomocí REST API, vytvořte požadavek POST na koncový bod automatického škálování, jak je znázorněno v následujícím fragmentu kódu:
@@ -231,7 +231,7 @@ Běžící úlohy budou i nadále spouštěny a dokončeny. Čekající úlohy b
 
 Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity automatického škálování.
 
-![Povolit možnost automatického škálování na základě zatížení pracovních uzlů](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Povolit stav clusteru automatického škálování na základě zatížení pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
@@ -251,7 +251,7 @@ Historii škálování a škálování clusteru můžete zobrazit v rámci metri
 
 V části **monitorování**vyberte **metriky** . Pak v rozevíracím seznamu **metrika** klikněte na **Přidat metriku** a **Počet aktivních pracovníků** . Chcete-li změnit časový rozsah, klikněte na tlačítko v pravém horním rohu.
 
-![Povolit možnost automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![Povolit metriku automatického škálování na základě plánu pracovního uzlu](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>Další postup

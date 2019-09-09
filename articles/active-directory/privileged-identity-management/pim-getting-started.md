@@ -1,9 +1,9 @@
 ---
-title: Začněte používat PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak povolit a začít používat Azure AD Privileged Identity Management (PIM) na webu Azure Portal.
+title: Začněte používat PIM-Azure Active Directory | Microsoft Docs
+description: Naučte se, jak povolit a začít používat Azure AD Privileged Identity Management (PIM) v Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,127 +11,127 @@ ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476493"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804528"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
 
-S Azure Active Directory (Azure AD) Privileged Identity Management (PIM), můžete spravovat, řídit a monitorovat přístup ve vaší organizaci. Tento obor zahrnuje přístup k prostředkům Azure, Azure AD a dalších online služeb Microsoftu jako Office 365 nebo Microsoft Intune.
+S Azure Active Directory (Azure AD) Privileged Identity Management (PIM) můžete spravovat, řídit a monitorovat přístup v rámci vaší organizace. Tento obor zahrnuje přístup k prostředkům Azure, Azure AD a dalších online služeb Microsoftu jako Office 365 nebo Microsoft Intune.
 
 Tento článek popisuje, jak povolit a začít používat PIM.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete používat PIM, musí mít jeden z těchto licencí:
+Pokud chcete použít PIM, musíte mít jednu z těchto licencí:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
 Další informace najdete v tématu [licenční požadavky pro použití PIM](subscription-requirements.md).
 
-## <a name="first-person-to-use-pim"></a>První, kdo používat PIM
+## <a name="first-person-to-use-pim"></a>První osoba pro použití PIM
 
-Pokud jste první, kdo ve vašem adresáři používat PIM, se automaticky přiřazují [správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v daném adresáři. Pouze správci privilegovaných rolí můžou Spravovat přiřazení rolí uživatelů Azure AD. Kromě toho můžete spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazováním prostředí.
+Pokud jste první, kdo bude ve vašem adresáři používat PIM, přiřadíte automaticky role správce [zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v adresáři. Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí Azure AD pro uživatele. Kromě toho se můžete rozhodnout spustit [Průvodce zabezpečením](pim-security-wizard.md) , který vás provede počátečním zjišťováním a přiřazením.
 
-## <a name="enable-pim"></a>Povolení PIM
+## <a name="enable-pim"></a>Povolit PIM
 
-Pokud chcete začít používat PIM ve vašem adresáři, musíte nejprve povolit PIM.
+Pokud chcete ve svém adresáři začít používat PIM, musíte nejdřív povolit PIM.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce adresáře.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce vašeho adresáře.
 
-    Musíte být globální správce s účtem organizace (například @yourdomain.com), ne účet Microsoft (třeba @outlook.com), abyste umožnili PIM pro adresář.
+    Chcete-li povolit PIM pro adresář, musíte být globálním správcem s účtem @yourdomain.comorganizace (například), nikoli účet Microsoft ( @outlook.comnapříklad).
 
-1. Klikněte na tlačítko **všechny služby** a najít **Azure AD Privileged Identity Management** služby.
+1. Klikněte na **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 
-    ![Azure AD Privileged Identity Management ve všech služeb](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management ve všech službách](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknutím otevřete rychlý start PIM.
+1. Kliknutím otevřete rychlý Start PIM.
 
-1. V seznamu, klikněte na tlačítko **souhlas s PIM**.
+1. V seznamu klikněte na **souhlas s PIM**.
 
-    ![Souhlas s PIM povolení PIM](./media/pim-getting-started/consent-pim.png)
+    ![Souhlas s PIM pro povolení PIM](./media/pim-getting-started/consent-pim.png)
 
-1. Klikněte na tlačítko **ověřit moji identitu** ověřit svoji identitu pomocí Azure MFA. Budete vyzváni k výběru účtu.
+1. Klikněte na **ověřit moji identitu** a ověřte svoji identitu pomocí Azure MFA. Zobrazí se výzva k výběru účtu.
 
-    ![Vyberte si oknem účtu k ověření vaší identity](./media/pim-getting-started/pick-account.png)
+    ![Vyberte okno účtu a ověřte svoji identitu.](./media/pim-getting-started/pick-account.png)
 
-1. Je-li další informace jsou nezbytné k ověření, provedeme vás procesem. Další informace najdete v tématu [potřebujete pomoc s dvoustupňovým ověřováním](https://go.microsoft.com/fwlink/p/?LinkId=708614).
+1. Pokud se k ověření požaduje více informací, provedete vás procesem. Další informace najdete v tématu [získání pomoc s dvoustupňové ověřováním](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Další informace o požadované okno, pokud vaše organizace potřebuje další informace](./media/pim-getting-started/more-information-required.png)
+    ![Pokud vaše organizace potřebuje další informace, požádejte o další informace požadované okno.](./media/pim-getting-started/more-information-required.png)
 
-    Například může být požádáni o zadání ověření pomocí telefonu.
+    Můžete být například požádáni o poskytnutí ověření pro telefon.
 
-    ![Další bezpečnostní ověření stránka s dotazem, jak můžete kontaktovat](./media/pim-getting-started/additional-security-verification.png)
+    ![Stránka pro další ověření zabezpečení s dotazem, jak vás kontaktovat](./media/pim-getting-started/additional-security-verification.png)
 
-1. Po dokončení procesu ověřování, klikněte na tlačítko **souhlas** tlačítko.
+1. Po dokončení procesu ověřování klikněte na tlačítko **souhlasu** .
 
-1. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano** souhlas ke službě PIM.
+1. Ve zprávě, která se zobrazí, klikněte na **Ano** a odsouhlaste službu PIM.
 
-    ![Souhlas s PIM zprávy k dokončení procesu souhlas](./media/pim-getting-started/consent-pim-message.png)
+    ![Souhlas se zprávou PIM k dokončení procesu souhlasu](./media/pim-getting-started/consent-pim-message.png)
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>Zaregistrovat PIM pro role Azure AD
+## <a name="sign-up-pim-for-azure-ad-roles"></a>Registrace PIM pro role Azure AD
 
-Jakmile pro svůj adresář povolíte PIM, budete muset zaregistrovat PIM pro role Azure AD spravovat.
+Jakmile pro svůj adresář povolíte PIM, budete se muset ke správě rolí Azure AD zaregistrovat PIM.
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role Azure AD**.
+1. Klikněte na **role Azure AD**.
 
-    ![Zaregistrovat PIM pro role Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+    ![Registrace PIM pro role Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
-1. Klikněte na tlačítko **zaregistrovat**.
+1. Klikněte na **zaregistrovat**se.
 
-1. Ve zprávě, která se zobrazí, klikněte na tlačítko **Ano** přihlášení ke správě rolí Azure AD PIM.
+1. Ve zprávě, která se zobrazí, se kliknutím na tlačítko **Ano** Zaregistrujte PIM a spravujte role Azure AD.
 
-    ![Zaregistrovat PIM pro role zpráv služby Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
+    ![Zaregistrujte si zprávu PIM pro role Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
 
-    Po dokončení registrace se povolí možnosti Azure AD. Můžete potřebovat po aktualizaci portálu.
+    Po dokončení registrace se povolí možnosti Azure AD. Může být potřeba aktualizovat portál.
 
-    Informace o tom, jak vyhledat a vybrat prostředky Azure k ochraně pomocí služby PIM, naleznete v tématu [prostředků zjistit Azure ke správě v PIM](pim-resource-roles-discover-resources.md).
+    Informace o tom, jak zjistit a vybrat prostředky Azure, které se mají chránit pomocí PIM, najdete v tématu [zjištění prostředků Azure pro správu v PIM](pim-resource-roles-discover-resources.md).
 
 ## <a name="navigate-to-your-tasks"></a>Přechod k úkolům
 
-Po nastavení PIM můžete provádět úkoly správy identity.
+Po nastavení PIM můžete provádět úlohy správy identit.
 
-![Navigačním okně v PIM zobrazení úlohy a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigační okno v PIM zobrazující úkoly a spravovat možnosti](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Úlohy a spravovat | Popis |
+| Úkol a Správa | Popis |
 | --- | --- |
-| **Moje role**  | Zobrazí seznam oprávněných a aktivních rolí přiřazených vám. Toto je místo, kde můžete aktivovat jakoukoli přiřazenou oprávněnou roli. |
-| **Moje žádosti** | Zobrazí vaše žádosti čekající na aktivaci přiřazení oprávněné role. |
-| **Schvalování žádostí** | Zobrazí seznam žádostí o aktivaci oprávněných rolí uživatelů v adresáři, které jsou určené ke schválení. |
-| **Zkontrolovat přístup** | Zobrazí seznam aktivních kontrol přístupu, které jsou přiřazeny k dokončení, ať už kontrolujete přístup sobě nebo někomu jinému. |
-| **Role Azure AD** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
-| **Prostředky Azure** | Zobrazí se řídicí panel a nastavení správci privilegovaných rolí můžou Spravovat přiřazení rolí prostředků Azure. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
+| **Moje role**  | Zobrazí seznam oprávněných a aktivních rolí, které vám jsou přiřazeny. Toto je místo, kde můžete aktivovat jakoukoli přiřazenou oprávněnou roli. |
+| **Moje žádosti** | Zobrazí vaše nedokončené žádosti o aktivaci přiřazení oprávněných rolí. |
+| **Schvalování žádostí** | Zobrazí seznam žádostí o aktivaci oprávněných rolí uživateli ve vašem adresáři, který jste určili ke schválení. |
+| **Zkontrolovat přístup** | Zobrazí seznam aktivních kontrol přístupu, které jste přiřadili k dokončení, ať už kontrolujete přístup sami nebo někomu jinému. |
+| **Role Azure AD** | Zobrazí řídicí panel a nastavení pro správce privilegovaných rolí ke správě přiřazení rolí Azure AD. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
+| **Prostředky Azure** | Zobrazí řídicí panel a nastavení pro správce privilegovaných rolí ke správě přiřazení rolí prostředků Azure. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta. |
 
-## <a name="add-a-pim-tile-to-the-dashboard"></a>Přidat dlaždici PIM do řídicího panelu
+## <a name="add-a-pim-tile-to-the-dashboard"></a>Přidání dlaždice PIM na řídicí panel
 
-Aby bylo snazší otevřete PIM, měli byste přidat PIM dlaždice na řídicí panel portálu Azure.
+Chcete-li usnadnit otevírání PIM, měli byste na řídicí panel Azure Portal přidat dlaždici PIM.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Klikněte na tlačítko **všechny služby** a najít **Azure AD Privileged Identity Management** služby.
+1. Klikněte na **všechny služby** a vyhledejte službu **Azure AD Privileged Identity Management** .
 
-    ![Azure AD Privileged Identity Management ve všech služeb](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management ve všech službách](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknutím otevřete rychlý start PIM.
+1. Kliknutím otevřete rychlý Start PIM.
 
-1. Zkontrolujte **Připnout okno na řídicí panel** připnutí v okně rychlého PIM do řídicího panelu.
+1. Ověřte **okno připnout na řídicí panel** , abyste mohli připnout okno rychlý Start PIM na řídicí panel.
 
-    ![Ikonu připínáčku PIM Připnout okno na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Ikona připínáček pro připnutí okna PIM na řídicí panel](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
-    Na řídicím panelu Azure se zobrazí dlaždice s tímto způsobem:
+    Na řídicím panelu Azure se zobrazí dlaždice podobná této:
 
-    ![Rychlý start PIM dlaždice na řídicím panelu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Dlaždice PIM pro rychlý Start na řídicím panelu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Vyhledejte prostředky Azure ke správě v PIM](pim-resource-roles-discover-resources.md)
+- [Přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Zjištění prostředků Azure pro správu v PIM](pim-resource-roles-discover-resources.md)

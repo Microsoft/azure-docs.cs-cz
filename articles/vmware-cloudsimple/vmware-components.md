@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972341"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814570"
 ---
 # <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
 
@@ -30,10 +30,10 @@ Zásobník VMware privátního cloudu je nasazený s následující verzí softw
 
 | Komponenta | Version | Licencovaná verze |
 |-----------|---------|------------------|
-| ESXi | 6.7 U1 | Enterprise Plus |
-| vCenter | 6.7 U1 | vCenter úrovně Standard |
+| ESXi | 6.7 U2 | Enterprise Plus |
+| vCenter | 6.7 U2 | vCenter úrovně Standard |
 | vSAN | 6.7 | Enterprise |
-| Datové centrum NSX | 2.3 | Upřesnit |
+| Datové centrum NSX | 2.4.1 | Upřesnit |
 
 ## <a name="esxi"></a>ESXi
 
@@ -47,13 +47,13 @@ zařízení vCenter Server (VCSA) poskytuje funkce ověřování, správy a orch
 
 ### <a name="vcenter-single-sign-on"></a>jednotné přihlašování vCenter
 
-Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter**s jednotným přihlašováním.  Název domény je **cloudsimple. Local**.  Pro přístup k **CloudOwner@cloudsimple.com** serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
+Služba Embedded Platform Service Controller v VCSA je přidružená k **doméně vCenter s jednotným přihlašováním**.  Název domény je **cloudsimple. Local**.  Pro přístup k **CloudOwner@cloudsimple.com** serveru vCenter se vytvoří výchozí uživatel.  Pro vCenter můžete přidat své místní nebo [zdroje identit](set-vcenter-identity.md)služby Azure Active Directory.
 
 ## <a name="vsan-storage"></a>úložiště síti vSAN
 
 Privátní cloudy se vytvářejí s plně nakonfigurovaným úložištěm síti vSAN, které je místní pro cluster.  K vytvoření clusteru vSphere s úložištěm dat síti vSAN se vyžadují minimální tři uzly stejné SKU.  Ve výchozím nastavení jsou v úložišti dat síti vSAN povoleny pouze duplicity a komprese.  V každém uzlu clusteru vSphere se vytvoří dvě skupiny disků. Každá skupina disků obsahuje jeden disk mezipaměti a tři disky s kapacitou.
 
-V clusteru vSphere se vytvoří výchozí zásada úložiště síti vSAN a použije se pro úložiště dat síti vSAN.  Tato zásada určuje, jak se zřídí objekty úložiště virtuálního počítače a které se přidělují v úložišti dat, aby se zaručila požadovaná úroveň služby.  Zásady úložiště definují **selhání pro tolerovat (FTT)** a **metodu odolnosti**proti chybám.  Můžete vytvořit nové zásady úložiště a použít je na virtuální počítače. Aby bylo možné udržovat smlouvu SLA, musí být v úložišti síti vSAN DataStore udržována 25% volná kapacita.  
+V clusteru vSphere se vytvoří výchozí zásada úložiště síti vSAN a použije se pro úložiště dat síti vSAN.  Tato zásada určuje, jak se zřídí objekty úložiště virtuálního počítače a které se přidělují v úložišti dat, aby se zaručila požadovaná úroveň služby.  Zásady úložiště definují **selhání pro tolerovat (FTT)** a **metodu odolnosti proti chybám**.  Můžete vytvořit nové zásady úložiště a použít je na virtuální počítače. Aby bylo možné udržovat smlouvu SLA, musí být v úložišti síti vSAN DataStore udržována 25% volná kapacita.  
 
 ### <a name="default-vsan-storage-policy"></a>Výchozí zásady úložiště síti vSAN
 

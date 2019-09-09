@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400084"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814502"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -29,11 +29,14 @@ V tomto kurzu se dozvíte, jak migrovat místní servery s Windows Serverem 2008
 
 V části Omezení a známé problémy najdete několik omezení a alternativních řešení známých problémů, se kterými se můžete setkat při migraci počítačů s Windows Serverem 2008 do Azure. 
 
+> [!NOTE]
+> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-services-overview.md).
+
 
 ## <a name="supported-operating-systems-and-environments"></a>Podporované operační systémy a prostředí
 
 
-|Operační systém  | V místním prostředí  |
+|Operační systém  | Místní prostředí  |
 |---------|---------|
 |Windows Server 2008 SP2 – 32bitová a 64bitová verze(IA-32 a x86-64)</br>– Standard</br>– Enterprise</br>– Datacenter   |     Virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery    |
 |Windows Server 2008 R2 SP1 – 64bitová verze</br>– Standard</br>– Enterprise</br>– Datacenter     |     Virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery|
@@ -51,7 +54,7 @@ Pokud chcete migrovat virtuální počítače Hyper-V s Windows Serverem 2008 ne
 
 Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuální počítače VMware a fyzické servery s Windows Serverem 2008 nebo 2008 R2.
 > [!TIP]
-> Hledáte bez agentů způsob, jak migrovat virtuální počítače VMware do Azure? [Kliknutím sem](https://aka.ms/migrateVMs-signup)
+> Hledáte způsob, jak bez agenta migrovat virtuální počítače VMware do Azure? [Klikněte sem](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
@@ -72,7 +75,7 @@ Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuál
 
 - K serverům s 32bitovým operačním systémem Windows Server 2008 R2 se možná nebudete moct připojit pomocí protokolu RDP ihned poté, co u nich dojde k převzetí služeb při selhání nebo testovacímu převzetí služeb při selhání do Azure. Na webu Azure Portal restartujte virtuální počítač, u kterého došlo k převzetí služeb při selhání, a zkuste se připojit znovu. Pokud se pořád nemůžete připojit, zkontrolujte, jestli je server nakonfigurovaný tak, aby povoloval připojení ke vzdálené ploše, a ujistěte se, že připojení neblokují žádná pravidla brány firewall ani skupiny zabezpečení sítě. 
   > [!TIP]
-  > Před migrací serverů se důrazně doporučuje provést testovací převzetí služeb při selhání. Ujistěte se, že jste provedli aspoň jeden úspěšné testovací převzetí služeb při selhání na každém serveru, kterou migrujete. V rámci testovacího převzetí služeb při selhání se připojte k počítači, u kterého došlo k testovacímu převzetí služeb při selhání, a zkontrolujte, že vše funguje podle očekávání.
+  > Před migrací serverů se důrazně doporučuje provést testovací převzetí služeb při selhání. Ujistěte se, že jste na každém serveru, který migrujete, provedli aspoň jedno úspěšné testovací převzetí služeb při selhání. V rámci testovacího převzetí služeb při selhání se připojte k počítači, u kterého došlo k testovacímu převzetí služeb při selhání, a zkontrolujte, že vše funguje podle očekávání.
   >
   >Operace testovacího převzetí služeb při selhání je nenarušující a pomáhá testovat migrace tím, že vytváří virtuální počítače v izolované síti podle vašeho výběru. Na rozdíl od operace převzetí služeb při selhání během operace testovacího převzetí služeb při selhání dál pokračuje replikace dat. Než budete připraveni na migraci, můžete provést tolik testovacích převzetí služeb při selhání, kolik budete chtít. 
   >
@@ -90,7 +93,7 @@ Provedením následujících úloh připravte předplatné Azure a VMware v mís
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte na tlačítko **vytvořit prostředek** > **nástroje pro správu** > **Backup a Site Recovery**.
+2. Klikněte **na vytvořit** > **nástroje** > pro správu prostředků**zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název **W2K8-migration**. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků **w2k8migrate**.
 5. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -120,15 +123,15 @@ Vyberte a zkontrolujte cílové prostředky.
 1. Novou zásadu replikace vytvoříte tak, že kliknete na **Infrastruktura Site Recovery** > **Zásady replikace** >  **+ Zásada replikace**.
 2. V části **Vytvoření zásad replikace** zadejte název zásady.
 3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Když cíl bodu obnovení replikace překročí tento limit, vygeneruje se upozornění.
-4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované servery můžete obnovit do libovolného bodu v tomto okně. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
+4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované servery lze obnovit do libovolného bodu v tomto okně. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
 5. V části **Frekvence pořizování snímků konzistentních vzhledem k aplikacím** zadejte **Vypnuto**. Kliknutím na tlačítko **OK** vytvořte zásadu.
 
 Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
 
 > [!WARNING]
-> Ujistěte se, že v nastavení Frekvence pořizování snímků konzistentních vzhledem k aplikacím v zásadě replikace zadáte **VYPNUTO**. Při replikaci serverů s Windows Serverem 2008 se podporují pouze body obnovení konzistentní vzhledem k selháním. Určení žádné jiná hodnota frekvence snímků konzistentní vzhledem k způsobí falešným výstrahám to zapnutím kritické z důvodu nedostatku bodů obnovení konzistentních stav replikace serveru.
+> Ujistěte se, že v nastavení Frekvence pořizování snímků konzistentních vzhledem k aplikacím v zásadě replikace zadáte **VYPNUTO**. Při replikaci serverů s Windows Serverem 2008 se podporují pouze body obnovení konzistentní vzhledem k selháním. Zadáním jakékoli jiné hodnoty frekvence snímků konzistentní vzhledem k aplikacím dojde k nepravdivým výstrahám, protože stav replikace je kritický pro server z důvodu nedostatku bodů obnovení konzistentního vzhledem k aplikacím.
 
-   ![Vytvoření zásady replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Vytvoření zásad replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -147,7 +150,7 @@ Spusťte [testovací převzetí služeb při selhání](tutorial-dr-drill-azure.
    ![Testovací převzetí služeb při selhání](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Migrace do Azure
+## <a name="migrate-to-azure"></a>Migrovat do Azure
 
 Spusťte převzetí služeb při selhání pro počítače, které chcete migrovat.
 
@@ -155,13 +158,13 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Vyberte nejnovější bod obnovení.
 3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Služba Site Recovery se před aktivací převzetí služeb při selhání pokusí server vypnout. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 4. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
-5. V **replikované položky**, klikněte pravým tlačítkem na server > **dokončit migraci**. To provede následující akce:
+5. V části **replikované položky**klikněte pravým tlačítkem na server > **dokončení migrace**. Provede následující akce:
 
-    - Proce migrace, zastaví se replikace pro server a zastaví se fakturace služby Site Recovery pro poskytování.
-    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
+    - Dokončí proces migrace, zastaví replikaci serveru a zastaví Site Recovery fakturace pro obsluhu.
+    - Tento krok vyčistí data replikace. Migrované virtuální počítače se neodstraňují.
 
-   ![Dokončení migrace](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Dokončit migraci](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Nepřerušujte převzetí služeb při selhání v průběhu**: Před spuštěním převzetí služeb při selhání se zastaví replikace serveru. Je-li zrušit převzetí služeb při selhání v průběhu převzetí služeb při selhání zastaví, ale server nebude nadále replikovat.
+> **Nerušit probíhající převzetí služeb při selhání**: Před spuštěním převzetí služeb při selhání se zastaví replikace serveru. Pokud zrušíte probíhající převzetí služeb při selhání, převzetí služeb při selhání se zastaví, ale server nebude nadále replikovat.

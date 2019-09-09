@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: ashishth
-ms.openlocfilehash: f07c7b7a6b1eea05ba41a875e9e78f31404c5f32
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733200"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811896"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix ve službě HDInsight
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix ve službě Azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) je open source vysoce paralelní relační databázová vrstva založená na [Apache HBA](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy podobné SQL přes HBA. V Phoenixu používá ovladače JDBC pod tím, že uživatelům umožňuje vytvářet, odstraňovat, měnit tabulky, indexy, zobrazení a sekvence a Upsert řádky, a to samostatně a hromadně. Phoenixu používá ke kompilaci dotazů nativní kompilaci noSQL a nepoužívá MapReduce k vytváření aplikací s nízkou latencí nad adaptéry HBA. Phoenix přidává spoluprocesory k podpoře spouštění kódu zadaného klientem v adresním prostoru serveru a provádění kódu společně umístěného s daty. Tento přístup minimalizuje přenos dat mezi klientem a serverem.
 

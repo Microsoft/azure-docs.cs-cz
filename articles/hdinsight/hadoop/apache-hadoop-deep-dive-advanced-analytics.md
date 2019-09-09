@@ -1,6 +1,6 @@
 ---
-title: Podrobné informace – pokročilé analýzy – Azure HDInsight
-description: Zjistěte, jak pokročilou analýzu ke zpracování velkých objemů dat používá algoritmy.
+title: Rozsáhlá podrobněa – Pokročilá analýza – Azure HDInsight
+description: Přečtěte si, jak Pokročilá analýza používá algoritmy ke zpracování velkých objemů dat ve službě Azure HDInsight.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,129 +8,129 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712390"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810849"
 ---
-# <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
+# <a name="deep-dive---advanced-analytics"></a>Rozsáhlá podrobněa – Pokročilá analýza
 
-## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co je pokročilé analýzy pro HDInsight?
+## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co je Pokročilá analýza pro HDInsight?
 
-HDInsight poskytuje schopnost získávat cenné informace z velké objemy strukturovaných, nestrukturovaných a rychlé tempo data. Pokročilé analýzy je použití vysoce škálovatelnou architekturu, statistické a modely strojového učení a inteligentní řídicích panelů můžete poskytnout smysluplný Přehled. Strojové učení, nebo *prediktivní analýzy*, používá algoritmy, které identifikují a Učte se z relací ve vašich datech a vytvářením předpovědí a provede vaše rozhodnutí.
+HDInsight nabízí možnost získat hodnotný přehled z velkých objemů strukturovaných, nestrukturovaných a rychlých přesunů dat. Pokročilá analýza využívá vysoce škálovatelné architektury, statistické modely a modely strojového učení a inteligentní řídicí panely, které poskytují smysluplné přehledy. Strojové učení nebo *prediktivní analýza*využívá algoritmy, které identifikují a zjišťují relace ve vašich datech, aby předpovědi a zajistila vaše rozhodnutí.
 
-## <a name="advanced-analytics-process"></a>Proces pokročilých analýz
+## <a name="advanced-analytics-process"></a>Proces pokročilé analýzy
 
 ![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
-Poté, co jste identifikovali obchodního problému a spustili shromažďování a zpracování dat, budete potřebovat pro vytvoření modelu, který představuje dotaz chcete předpovědět. Váš model použije jeden nebo více algoritmů strojového učení k vytvoření typu predikcí, který nejlépe vyhovuje vašim obchodním potřebám.  Většina dat by měla sloužit k natrénování modelu, s využitím rest použít k otestování nebo vyhodnocení ho. 
+Po zjištění obchodního problému a zahájení shromažďování a zpracování dat je potřeba vytvořit model, který představuje otázku, kterou chcete předpovědět. Model bude používat jeden nebo více algoritmů strojového učení, aby vytvářely typ předpovědi, který nejlépe vyhovuje vašim obchodním potřebám.  Většina vašich dat by měla být použita ke školení vašeho modelu se zbytkem, který se používá k otestování nebo vyhodnocení. 
 
-Po vytvoření, načtení, testování a vyhodnocení modelu, dalším krokem je jak model nasadit tak, aby začne zadání odpovědi na své otázky. Posledním krokem je monitorovat výkon vašich modelů a vyladit podle potřeby. 
+Až vytvoříte, nasadíte, otestujete a vyhodnocujete svůj model, dalším krokem je nasazení modelu tak, aby bylo zahájeno zadávání odpovědí na vaše otázky. Posledním krokem je monitorovat výkon svého modelu a ladit ho podle potřeby. 
 
 ## <a name="common-types-of-algorithms"></a>Běžné typy algoritmů
 
-Pokročilá analytická řešení poskytují sadu algoritmů strojového učení. Zde je uveden seznam kategorií algoritmy a přidružené běžných obchodních případů použití.
+Pokročilá Analytická řešení poskytují sadu algoritmů strojového učení. Tady je souhrn kategorií algoritmů a přidružených běžných případů použití firmy.
 
-![Ve službě Machine Learning případy použití](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![Případy použití Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
 
-Společně s výběrem nejlepší těsně algoritmy, je potřeba zvážit, jestli je potřeba zadat data pro vzdělávání. Algoritmy strojového učení jsou rozdělené následujícím způsobem:
+Společně s výběrem nejlépe přidaných algoritmů je potřeba zvážit, jestli potřebujete zadat data pro školení. Algoritmy strojového učení jsou rozdělené takto:
 
-* Pod dohledem – algoritmus je potřeba předtím, než může poskytnout výsledky trénink na sadu dat s popiskem
-* Částečně pod dohledem - algoritmus může být rozšířen o prostřednictvím interaktivního dotazu službou trainer, zvláštní cíle, které nebyly k dispozici během počáteční fázi přípravy
-* Nastavenou možnost bez dohledu – algoritmus nevyžaduje Cvičná data 
-* Posílení - algoritmus používá software agentů k určení ideální chování v určitém kontextu (často používají v robotika)
+* Pod dohledem – algoritmus musí být vyškolený pro sadu dat s popiskem, než může poskytnout výsledky.
+* Částečně pod dohledem – algoritmus se dá rozšířit o další cíle prostřednictvím interaktivního dotazu podle Trainer, které nebyly během úvodní fáze školení dostupné.
+* Bez dohledu-algoritmus nevyžaduje školicí data. 
+* Výztužný algoritmus používá softwarové agenty k určení ideálního chování v rámci konkrétního kontextu (často se používá v robotech).
 
 
-| Algoritmus kategorie| Použití | Typ studijního | Algoritmy |
+| Kategorie algoritmu| Použití | Typ učení | Algoritmy |
 | --- | --- | --- | -- |
-| Klasifikace | Klasifikace lidé, případně věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, neuronových sítí |
-| Vytváření clusterů | Rozdělení sadu příklady do homogenní skupin | Nastavenou možnost bez dohledu | K-means clustering |
-| Vzor detekce | Určení častým přidružení v datech | Nastavenou možnost bez dohledu | Asociačních pravidel |
-| Regrese | Předpověď číselných výsledků | Pod dohledem | Lineární regrese, neuronových sítí |
-| Posílení | Určit optimální chování pro roboty | Posílení | Simulace typu Monte Carlo, DeepMind |
+| Klasifikace | Klasifikovat lidi nebo věci do skupin | Jenom pod dohledem | Rozhodovací stromy, logistické regrese, sítě neuronové |
+| Clustering | Dělení sady příkladů do homogenních skupin | Bez dohledu | K-znamená clustering |
+| Detekce vzoru | Identifikace častých přidružení v datech | Bez dohledu | Pravidla přidružení |
+| Regrese | Předpověď číselných výsledků | Jenom pod dohledem | Lineární regrese, neuronové sítě |
+| Zpětnovazební | Určení optimálního chování pro roboty | Zpětnovazební | Simulace Monte Carlo, DeepMind |
 
-## <a name="machine-learning-on-hdinsight"></a>Strojové učení v HDInsight
+## <a name="machine-learning-on-hdinsight"></a>Machine Learning v HDInsight
 
-HDInsight obsahuje několik strojového učení možnosti pro pokročilou analýzu pracovní postup:
+HDInsight má několik možností strojového učení pro pracovní postup pokročilé analýzy:
 
-* Machine Learning a Apache Sparku
-* R a služby ML
+* Machine Learning a Apache Spark
+* Služby R a ML
 * Azure Machine Learning a Apache Hive
-* Apache Spark a obsáhlého learningu
+* Apache Spark a obsáhlý Learning
 
-### <a name="machine-learning-and-apache-spark"></a>Machine Learning a Apache Sparku
-
-
-[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Apache Spark](https://spark.apache.org/), sjednoceném open source, rozhraní framework paralelní zpracování dat, která používá zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
+### <a name="machine-learning-and-apache-spark"></a>Machine Learning a Apache Spark
 
 
-Existují tři škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí:
+[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka Azure hostovaná s využitím [Apache Spark](https://spark.apache.org/)sjednoceného Open Source architektury paralelního zpracování dat, která využívá zpracování v paměti ke zvýšení analýz velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
 
-* [**MLlib** ](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib obsahuje původní rozhraní API, které jsou postavené na Sparku Rdd.
-* [**Ve SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -ve SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavené na Sparku datových rámců.
-* [**MMLSpark** ](https://github.com/Azure/mmlspark) – knihovna Microsoft Machine Learning pro Apache Spark (MMLSpark) je navržené tak, aby odborníci přes data zvýšit produktivitu práce ve Sparku, zvýšit frekvenci experimentování a využívá nejmodernější machine learning techniky, včetně obsáhlého learningu na velmi rozsáhlých datových sadách. Knihovna MMLSpark zjednodušuje běžné úkoly modelování pro vytváření modelů v PySpark. 
 
-### <a name="r-and-ml-services"></a>R a služby ML
+Existují tři škálovatelné knihovny strojového učení, které přinášejí možnosti algoritmu modelování do tohoto distribuovaného prostředí:
 
-Jako součást HDInsight, můžete vytvořit cluster služby HDInsight s [služby ML](../r-server/r-server-overview.md) připravená k použití s velkými datovými sadami a modely. Tato nová funkce poskytuje odborníkům přes data a statistikům pomocí známých rozhraní R, kterou chcete škálovat na vyžádání prostřednictvím HDInsight, bez režie nastavení clusteru a údržby.
+* [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib obsahuje původní rozhraní API postavené na Spark RDD.
+* [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML je novější balíček, který poskytuje rozhraní API na vyšší úrovni sestavené nad datovými snímky Spark pro vytváření kanálů ml.
+* [**MMLSpark**](https://github.com/Azure/mmlspark) – knihovna Microsoft Machine Learning library for Apache Spark (MMLSpark) je navržená tak, aby se zvýšila produktivita vědeckých dat ve Sparku, aby se zvýšila frekvence experimentů a využili jsme špičkové techniky strojového učení, včetně obsáhlý Learning, ve velkých datových sadách. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark. 
+
+### <a name="r-and-ml-services"></a>Služby R a ML
+
+V rámci služby HDInsight můžete vytvořit cluster HDInsight se [službami ml](../r-server/r-server-overview.md) , které jsou připravené k použití s obrovskými datovými sadami a modely. Tato nová funkce zajišťuje odborníky na data a statistiku se známým rozhraním jazyka R, které dokáže škálovat na vyžádání prostřednictvím služby HDInsight bez režie instalace a údržby clusteru.
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning a Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) poskytuje nástroje, které model prediktivní analýzy, stejně jako plně spravovanou službu, můžete své prediktivní modely nasazovat jako připravené využívání webových služeb. Azure Machine Learning poskytuje nástroje pro vytváření kompletních řešení prediktivní analýzy v cloudu a rychle vytvářet, testovat, zprovoznit a spravovat prediktivní modely. Vyberte od velké knihovny algoritmů, použít studio založeného na webu pro vytváření modelů a snadno model nasadit jako webovou službu.
+[Azure Machine Learning Studio](https://studio.azureml.net/) poskytuje nástroje pro modelování prediktivních analýz a také plně spravovanou službu, kterou můžete použít k nasazení prediktivních modelů jako připravených webových služeb. Azure Machine Learning poskytuje nástroje pro vytváření kompletních řešení prediktivní analýzy v cloudu, aby bylo možné rychle vytvářet, testovat, zprovoznění a spravovat prediktivní modely. Vyberte si z velké knihovny algoritmů, použijte webové Studio pro vytváření modelů a jednoduše nasaďte model jako webovou službu.
 
-### <a name="apache-spark-and-deep-learning"></a>Apache Spark a obsáhlého learningu
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark a obsáhlý Learning
 
-[Obsáhlý learning](https://www.microsoft.com/research/group/dltc/) je větev služby machine learning, která používá *hluboké neuronové sítě* (dopředné), která vychází z biologických procesy lidský mozek. Mnoho výzkumní pracovníci naleznete v tématu obsáhlý learning jako slibně přístup pro umělou inteligenci. Některé příklady obsáhlý learning jsou mluvený jazyk překladatele, systémy rozpoznávání obrazu a posuzování počítače. Abyste předem své vlastní práci v obsáhlého learningu, společnost Microsoft vyvinula open-source zdarma, snadno použitelný, [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Se sadou nástrojů používá výrazně širokou škálu produktů společnosti Microsoft, společností po celém světě s museli nasazovat hloubkového učení ve velkém měřítku a studenty zájem o nejnovější algoritmy a postupy. 
+[Obsáhlý Learning](https://www.microsoft.com/research/group/dltc/) je větev strojového učení, která využívá *rozsáhlé neuronové sítě* (hluboké), nechte inspirovat biologických procesů lidského mozku. Mnoho výzkumných pracovníků zobrazuje obsáhlý Learning jako slibový přístup pro umělou analýzu. Některé příklady obsáhlého učení jsou mluvené překlady jazyka, systémy pro rozpoznávání obrázků a důvody pro počítače. Společnost Microsoft vyvinula bezplatný a snadno použitelný [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)open source, aby mohla lépe využít svou vlastní práci v obsáhlém učení. Sada nástrojů se často používá širokou škálou produktů Microsoftu, a to společnostmi po celém světě s potřebou nasazení hloubkového učení ve velkém měřítku a studentům, kteří mají zájem o nejnovější algoritmy a techniky. 
 
-## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scénář – skóre Imagí pro identifikaci vzorů v rozvoje měst
+## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scénář – obrázky skóre pro identifikaci vzorů v městském vývoji
 
-Pojďme se podívat na příklad pokročilé analýzy strojového učení pomocí HDInsight kanál.
+Pojďme se podívat na příklad kanálu strojového učení s pokročilým analýzou pomocí HDInsight.
 
-V tomto scénáři uvidíte, jak dopředné vytvořené v rámci obsáhlý learning Microsoft Cognitive Toolkit (CNTK), můžete se mají zprovoznit pro vyhodnocování kolekce velký obrázek uložených v účtu služby Azure Blob Storage pomocí PySpark na cluster HDInsight Spark. Tento přístup se použije pro běžné DNN případ použití, klasifikace leteckých snímků a slouží k identifikaci poslední vzorů v rozvoje měst.  Použijete model klasifikace předem natrénovaných obrázků. Model je předem vytrénovaných na [datovou sadu CIFAR 10](https://www.cs.toronto.edu/~kriz/cifar.html) a použily na 10 000 odmítnuté imagí.
+V tomto scénáři se dozvíte, jak hluboké vytvářely v rámci systému hloubkového učení, a Microsoft Cognitive Toolkit (CNTK) je možné provozovat pro vyhodnocování rozsáhlých kolekcí imagí uložených v účtu Azure Blob Storage pomocí PySpark v clusteru HDInsight Spark. Tento přístup se použije na společný DNN případ použití, klasifikaci leteckého obrazu a dá se použít k identifikaci nedávných vzorů při vývoji měst.  Budete používat předem vyškolený model klasifikace imagí. Model je předem vyškolený pro [datovou sadu CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) a byl použit na 10 000 odmítnutých imagí.
 
-V tomto scénáři pokročilých analýz existují tři klíčové úkoly:
+Tento scénář pokročilých analýz obsahuje tři klíčové úlohy:
 
-1. Vytvoření clusteru Azure HDInsight Hadoop Apache Spark 2.1.0 rozdělení. 
-2. Spusťte vlastní skript pro instalaci sady Microsoft Cognitive Toolkit na všech uzlech clusteru Azure HDInsight Spark. 
-3. Nahrajte předem sestavených poznámkového bloku Jupyter pro váš cluster HDInsight Spark pro použití trénovaného Microsoft Cognitive Toolkit hloubkového učení modelu do souborů v účtu úložiště objektů Blob v Azure pomocí rozhraní Python API služby Spark (PySpark). 
+1. Vytvořte cluster Azure HDInsight Hadoop s distribucí Apache Spark 2.1.0. 
+2. Spusťte vlastní skript pro instalaci Microsoft Cognitive Toolkit na všech uzlech Azure HDInsight Spark clusteru. 
+3. Nahrajte předem připravený Jupyter Poznámkový blok do vašeho clusteru HDInsight Spark, abyste mohli použít školicí model Microsoft Cognitive Toolkit hloubkového učení pro soubory v účtu Azure Blob Storage pomocí rozhraní Spark Python API (PySpark). 
 
-Tento příklad používá sada kompilované a distribuované Alex Krizhevsky, Vinod Nair a Geoffrey Hinton CIFAR 10 obrázků. Datová sada CIFAR 10 obsahuje 60 000 32 × 32 bitové kopie, které patří k 10 vzájemně se vylučuje třídám barev:
+V tomto příkladu se používá sada imagí CIFAR-10 zkompilovaná a distribuovaná Alex Krizhevsky, Vinoed Nair a Geoffrey Hinton. Datová sada CIFAR-10 obsahuje 60 000 32 × 32 barev obrázků, které patří 10 vzájemně se vylučující třídy:
 
 ![Obrázky](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
 
-Podrobné informace o datové sady, naleznete v tématu Alex Krizhevsky [Learning funkce více vrstev z velmi malé obrázky](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
+Další podrobnosti o datové sadě najdete v tématu učení Alex Krizhevsky [s více vrstvami funkcí z drobných imagí](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
-Datová sada se rozdělené do trénovací sady 50 000 obrázků a testovací sady 10 000 obrázků. První sada byla použita k trénování konvoluční dvacet. vrstvy hloubkové plyne ze zbytkových sítě (modelem ResNet) model s použitím Microsoft Cognitive Toolkit pomocí následujících [v tomto kurzu](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) z úložiště Cognitive Toolkit GitHub. Zbývající 10 000 bitové kopie byly použity pro účely testování přesnosti modelu. To přichází distribuovaného zpracování dat do hry: Úloha předběžného zpracování a vyhodnocování Image je vysoce paralelizovat. Uložené trénovaného modelu v dolním jsme použili:
+Datová sada byla rozdělená na školicí sadu 50 000 imagí a sadu testů 10 000 imagí. První sada se použila k vytvoření modelu ResNet (konvoluční reziduální sítě s přímým odkazem) pomocí Microsoft Cognitive Toolkit pomocí [tohoto kurzu](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) z úložiště GitHub Cognitive Toolkit. Zbývající image 10 000 byly použity pro testování přesnosti modelu. Sem patří distribuované výpočetní prostředí: úloha předběžného zpracování a bodování imagí je vysoce paralelizovat. Díky uloženému škole modelu jsme použili:
 
-* PySpark pro distribuci bitové kopie a trénovaného modelu k pracovním uzlům clusteru.
-* Python předběžné zpracování imagí na každém uzlu clusteru HDInsight Spark.
-* Sada cognitive Toolkit se načíst model a score předběžného zpracování imagí na každém uzlu.
-* Poznámkové bloky Jupyter pro spuštění skriptu PySpark agregovat výsledky a použít [Matplotlib](https://matplotlib.org/) můžete vizualizovat výkon modelů.
+* PySpark pro distribuci imagí a trained model do pracovních uzlů clusteru.
+* Python pro předběžné zpracování imagí v každém uzlu clusteru HDInsight Spark.
+* Cognitive Toolkit načíst model a určit skóre předzpracovaných imagí na jednotlivých uzlech.
+* Jupyter poznámkové bloky pro spuštění skriptu PySpark, agregované výsledky a použití [matplotlib](https://matplotlib.org/) k vizualizaci výkonu modelu.
 
-Na clusteru se 4 uzly pracovního procesu celý předběžného zpracování nebo vyhodnocení 10 000 obrázků trvá méně než jedna minuta. Tento model předpovídá přesné štítky ~ 9,100 (91 %) bitové kopie. Chybová matice ukazuje nejběžnější chyby klasifikace. Matice příkladu mislabeling PSI jako koček a naopak vyvolá se, že více často než pro ostatní kombinace popisek.
+Celý proces předzpracování nebo bodování imagí 10 000 trvá méně než jednu minutu v clusteru se 4 pracovními uzly. Model přesně předpovídá popisky ~ 9 100 (91%) fotografií. Nejasná matice ilustrují nejběžnější chyby klasifikace. Matice například ukazuje, že nepopisení psi jako kočky a naopak probíhá častěji než u jiných párů popisků.
 
 ![Výsledky](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
 ### <a name="try-it-out"></a>Vyzkoušejte si to!
 
-Postupujte podle [v tomto kurzu](../spark/apache-spark-microsoft-cognitive-toolkit.md) k implementaci tohoto řešení začátku do konce: nastavit cluster HDInsight Spark, nainstalujte sadu Cognitive Toolkit a spusťte Poznámkový blok Jupyter, která stanoví skóre 10 000 CIFAR imagí.
+Postupujte podle [tohoto kurzu](../spark/apache-spark-microsoft-cognitive-toolkit.md) a implementujte toto řešení do konce: nastavte cluster HDInsight Spark, nainstalujte Cognitive Toolkit a spusťte Jupyter notebook, který vyhodnotí 10 000 imagí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Apache Hive a Azure Machine Learning
 
-* [Apache Hive nebo Azure Machine Learning end-to-end](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Apache Hive a Azure Machine Learning od začátku do konce](../../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Použití clusteru Azure HDInsight Hadoop pro datovou sadu 1 TB](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
 Apache Spark a MLLib
 
-* [Strojové učení s Apache Spark v HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Apache Spark s Machine Learning: Použití Apache Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Použití Apache Spark v HDInsight k předpovědím výsledků kontroly potravin](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Machine Learning s Apache Spark ve službě HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark s Machine Learning: Použití Apache Spark ve službě HDInsight k analýze teploty budovy pomocí dat TVK](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Apache Spark v HDInsight](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
-Obsáhlý Learning, Cognitive Toolkit a dalších
+Obsáhlý Learning, Cognitive Toolkit a další
 
-* [Vědecké zpracování dat virtuálních počítačů Azure](../../machine-learning/data-science-virtual-machine/overview.md)
-* [Představujeme H2O.ai v Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)
+* [Virtuální počítač Azure pro datové vědy](../../machine-learning/data-science-virtual-machine/overview.md)
+* [Představujeme H2O.ai do Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

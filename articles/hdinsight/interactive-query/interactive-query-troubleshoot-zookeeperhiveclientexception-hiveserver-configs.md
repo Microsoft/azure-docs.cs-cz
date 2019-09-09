@@ -1,17 +1,17 @@
 ---
 title: Apache Hive překladač Zeppelin poskytuje chybu Zookeeper ve službě Azure HDInsight
-description: Překladač JDBC podregistru Zeppelin odkazuje na nesprávnou adresu URL.
+description: Překladač JDBC pro podregistr Apache Zeppelin odkazuje na nesprávnou adresu URL ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: f623d2516a2cf069b6347ebe8366b9b437228a87
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 308e1cc44fc1c87003a9cb64922f0d933bbfe92d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781345"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811403"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scénář: Apache Hive překladač Zeppelin poskytuje chybu Zookeeper ve službě Azure HDInsight
 
@@ -39,7 +39,7 @@ Překladač JDBC podregistru Zeppelin odkazuje na nesprávnou adresu URL.
 
 1. Uložte a pak dotaz opakujte.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

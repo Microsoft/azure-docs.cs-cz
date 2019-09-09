@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/9/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883959"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813333"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -29,6 +29,7 @@ Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použit�
 |Oblast|Omezení|
 |--|:--|
 | [Název aplikace][luis-get-started-create-app] | \* Znak výchozí maximální |
+| Aplikace| 500 aplikací na prostředek Azure |
 | [Dávkové testování][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
 | Externí entity | žádná omezení |
@@ -44,7 +45,7 @@ Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použit�
 | [Role](luis-concept-roles.md)|300 role na aplikaci. 10 rolemi na entitu|
 | [Utterance][utterances] | 500 znaků|
 | [Projevy][utterances] | 15 000 na aplikaci – počet projevy na záměr není nijak omezený.|
-| [Verze](luis-concept-version.md)| bez omezení |
+| [Verze](luis-concept-version.md)| verze 100 na aplikaci |
 | [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a tečky (.) |
 
 \* Znak výchozí maximální počet je 50 znaků. 
@@ -68,6 +69,8 @@ Porozumění jazyku má samostatné klíče, jeden typ pro vytváření obsahu a
 
 Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LUIS platí pouze pro dotazy na koncový bod.
 
+* 500 aplikací na prostředek Azure 
+* verze 100 na aplikaci
 
 |Klíč|Vytváření obsahu|Koncový bod|Účel|
 |--|--|--|--|

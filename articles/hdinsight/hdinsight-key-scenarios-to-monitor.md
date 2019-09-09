@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 591fd2e0f5c6d36ad6b84b1f3ec035488fa02614
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 2caa96e0ad036bbb872de43a7d8736969cf33c42
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733253"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812044"
 ---
-# <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
 Monitorování stavu a výkonu clusteru HDInsight je nezbytné pro zachování optimálního výkonu a využití prostředků. Monitorování vám taky může pomáhat při detekci a adresování chyb konfigurace clusteru a potíží s uživatelským kódem.
 

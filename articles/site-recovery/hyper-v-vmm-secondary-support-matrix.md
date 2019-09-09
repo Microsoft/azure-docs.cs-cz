@@ -1,26 +1,25 @@
 ---
-title: Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V v nástroji VMM cloudů do sekundární lokality pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Shrnuje podporu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery.
-services: site-recovery
+title: Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery
+description: Shrnuje podporu replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399352"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813616"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
-Tento článek shrnuje, co je podporováno při použití [Azure Site Recovery](site-recovery-overview.md) služby pro replikaci virtuálních počítačů Hyper-V spravované v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality. Pokud chcete replikovat virtuální počítače Hyper-V do Azure, přečtěte si [tento systém podpory replikace z](hyper-v-azure-support-matrix.md).
+Tento článek shrnuje, co je podporováno při používání služby [Azure Site Recovery](site-recovery-overview.md) k replikaci virtuálních počítačů Hyper-V spravovaných v cloudech System Center Virtual Machine Manager (VMM) do sekundární lokality. Pokud chcete replikovat virtuální počítače Hyper-V do Azure, přečtěte si [tuto matrici podpory](hyper-v-azure-support-matrix.md).
 
 > [!NOTE]
-> Můžete pouze replikace do sekundární lokality Pokud jsou vaši hostitelé Hyper-V spravované v cloudech VMM.
+> Replikaci do sekundární lokality můžete provést pouze v případě, že jsou hostitelé Hyper-V spravováni v cloudech VMM.
 
   
 
@@ -28,93 +27,93 @@ Tento článek shrnuje, co je podporováno při použití [Azure Site Recovery](
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Windows Server 2012 R2 | Servery musí být spuštěná nejnovější aktualizace.
-Windows Server 2016 |  Cloudy VMM 2016 s kombinaci systému Windows Server 2016 a 2012 R2 hostitele se momentálně nepodporují.<br/><br/> Nasazení, která upgradu ze System Center 2012 R2 VMM 2012 R2 na System Center 2016 nejsou aktuálně podporovány.
+Windows Server 2012 R2 | Na serverech musí běžet nejnovější aktualizace.
+Windows Server 2016 |  V současnosti se nepodporují cloudy VMM 2016 se směsí Windows Server 2016 a 2012 hostitelé R2.<br/><br/> Nasazení, která se upgradují z System Center 2012 R2 VMM 2012 R2 na System Center 2016, se v tuto chvíli nepodporují.
 
 
-## <a name="replicated-vm-support"></a>Replikované podpora virtuálních počítačů
+## <a name="replicated-vm-support"></a>Podpora replikovaných virtuálních počítačů
 
-Následující tabulka shrnuje podporu operačního systému pro počítače pomocí služby Site Recovery replikovat. Jakékoli úlohy můžou běžet na podporovaný operační systém.
+Následující tabulka shrnuje podporu operačních systémů pro počítače replikované pomocí Site Recovery. V podporovaném operačním systému může běžet libovolný pracovní postup.
 
-**Verze Windows** | **Technologie Hyper-V (s VMM)**
+**Verze Windows** | **Hyper-V (s VMM)**
 --- | ---
-Windows Server 2016 | Žádný hostovaný operační systém [podporuje technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) na Windows serveru 2016 
-Windows Server 2012 R2 | Žádný hostovaný operační systém [podporuje technologie Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) v systému Windows Server 2012 R2
+Windows Server 2016 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) v systému Windows Server 2016 
+Windows Server 2012 R2 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) v systému Windows Server 2012 R2
 
-## <a name="linux-machine-storage"></a>Úložiště počítače Linux
+## <a name="linux-machine-storage"></a>Úložiště počítačů se systémem Linux
 
-Je možné replikovat jenom počítače s Linuxem pomocí následující úložiště:
+Replikovat se dají jenom počítače se systémem Linux s následujícím úložištěm:
 
-- Systém (EXT3 ETX4, ReiserFS, XFS) souborů.
-- Mapování více cest softwaru zařízení.
+- Systém souborů (EXT3, ETX4, ReiserFS, XFS).
+- Multipath software – Mapovač zařízení.
 - Správce svazků (LVM2).
-- Fyzické servery s HP CCISS řadič úložiště nejsou podporované.
-- Systém souborů ReiserFS je podporován pouze v operačním systémem SUSE Linux Enterprise Server 11 SP3.
+- Fyzické servery s úložištěm řadiče HP CCISS se nepodporují.
+- Systém souborů ReiserFS je podporován pouze v SUSE Linux Enterprise Server 11 SP3.
 
-## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě - hostitele nebo hosta virtuálního počítače
+## <a name="network-configuration---hostguest-vm"></a>Konfigurace sítě – virtuální počítač hosta/hosta
 
 **Konfigurace** | **Podporuje se**  
 --- | --- 
-Hostitel – seskupování síťových adaptérů | Ano 
-Host - VLAN | Ano 
-Hostitel – protokolu IPv4 | Ano 
+Seskupování síťových adaptérů hosta | Ano 
+Hostitel-síť VLAN | Ano 
+Hostitel – IPv4 | Ano 
 Hostitel – IPv6 | Ne 
-Hosta virtuálního počítače – seskupování síťových adaptérů | Ne
-Hosta virtuálního počítače – protokolu IPv4 | Ano
-Hosta virtuálního počítače – IPv6 | Ne
-Hostovaný virtuální počítač – Windows/Linux - statická IP adresa | Ano
-Hosta virtuálního počítače – s více síťovými Kartami | Ano
+Virtuální počítač hosta – seskupování síťových adaptérů | Ne
+Virtuální počítač hosta – IPv4 | Ano
+Virtuální počítač hosta – IPv6 | Ne
+Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
+Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
-NFS | neuvedeno
+NFS | Není k dispozici
 SMB 3.0 |  Ano
-SAN (ISCSI) | Ano
-Více cest (MPIO) | Ano
+SÍŤ SAN (ISCSI) | Ano
+Multipath (multi-Path) | Ano
 
-### <a name="guest-or-physical-server-storage"></a>Host nebo fyzický server úložiště
+### <a name="guest-or-physical-server-storage"></a>Úložiště hostů nebo fyzických serverů
 
 **Konfigurace** | **Podporuje se**
 --- | --- | 
-VMDK |  neuvedeno
+VMDK |  Není k dispozici
 VHD/VHDX | Ano (až 16 disků)
-Virtuální počítače 2. generace | Ano
-Sdílený disk clusteru | Ne
-Šifrovaného disku | Ne
-UEFI| neuvedeno
+Virtuální počítač 2. generace | Ano
+Disk sdíleného clusteru | Ne
+Zašifrovaný disk | Ne
+UEFI| Není k dispozici
 NFS | Ne
 SMB 3.0 | Ne
-RDM | neuvedeno
+RDM | Není k dispozici
 Disk > 1 TB | Ano
-Svazek s prokládané disk > 1 TB<br/><br/> LVM | Ano
+Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ano
-Přidání nebo odebrání horké disku | Ne
+Hot Add/Remove disk | Ne
 Vyloučení disku | Ano
-Více cest (MPIO) | Ano
+Multipath (multi-Path) | Ano
 
 ## <a name="vaults"></a>Trezory
 
 **Akce** | **Podporuje se**
 --- | --- 
-Přesun trezorů služby mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) |  Ne
-Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků (v rámci předplatného ani mezi předplatnými) | Ne
+Přesun trezorů mezi skupinami prostředků (v rámci předplatného nebo mezi nimi) |  Ne
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků (v rámci předplatných nebo mezi nimi) | Ne
 
-## <a name="azure-site-recovery-provider"></a>Zprostředkovatele Azure Site Recovery
+## <a name="azure-site-recovery-provider"></a>Poskytovatel Azure Site Recovery
 
-Zprostředkovatel koordinuje komunikaci mezi servery VMM. 
+Poskytovatel koordinuje komunikaci mezi servery VMM. 
 
-**nejnovější** | **Aktualizace**
+**Nejnovější** | **Aktualizace**
 --- | --- 
-5.1.19 ([dostupná z portálu](https://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
+5.1.19 ([k dispozici z portálu](https://aka.ms/downloaddra) | [Nejnovější funkce a opravy](https://support.microsoft.com/kb/3155002)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality](tutorial-vmm-to-vmm.md)
 

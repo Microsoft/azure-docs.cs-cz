@@ -1,125 +1,125 @@
 ---
-title: Informace o zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek poskytuje přehled o zotavení po havárii virtuálních počítačů VMware do Azure pomocí služby Azure Site Recovery.
+title: O zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek poskytuje přehled zotavení po havárii virtuálních počítačů VMware do Azure pomocí služby Azure Site Recovery.
 author: raynew
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 9/09/2019
 ms.author: raynew
-ms.openlocfilehash: a00c129126886bd71c82940aa340a8db29cf7a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417792"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814310"
 ---
-# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informace o zotavení po havárii virtuálních počítačů VMware do Azure
+# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>O zotavení po havárii virtuálních počítačů VMware do Azure
 
-Tento článek poskytuje přehled o zotavení po havárii pro místní virtuální počítače VMware do Azure s využitím [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek poskytuje přehled zotavení po havárii pro místní virtuální počítače VMware do Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
 ## <a name="what-is-bcdr"></a>Co je BCDR?
 
-Zajištění provozní kontinuity a po havárii (BCDR) strategii zotavení pomáhá chránit vaši firmu, rychle zprovoznit. Při plánovaných nebo neočekávaných výpadků BCDR zajišťuje zabezpečení a dostupných dat a zajišťuje, že aplikace pokračovat v běhu. Kromě funkcemi BCDR platformy, jako jsou oblastní párování a úložiště s vysokou dostupností poskytuje Azure Recovery Services jako nedílnou součástí vašeho řešení BCDR. Obnovení služby patří: 
+Strategie pro provozní kontinuitu a zotavení po havárii (BCDR) pomáhá udržet vaše podnikání v provozu. Při plánovaném výpadku a neočekávaných výpadkech udržuje BCDR data bezpečná a dostupná a zajišťuje, aby aplikace pokračovaly v běhu. Kromě funkcí BCDR platforem, jako jsou místní párování a úložiště s vysokou dostupností, poskytuje Azure Recovery Services jako nedílnou součást vašeho řešení BCDR. Služba Recovery Services zahrnuje: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) zálohuje vaše místní a data virtuálního počítače Azure. Můžete zálohovat soubor a složky, konkrétní úlohy nebo celý virtuální počítač. 
-- [Azure Site Recovery](site-recovery-overview.md) poskytuje odolnost a zotavení po havárii pro aplikace a úlohy běžící na místních počítačích nebo virtuálních počítačů Azure IaaS. Site Recovery orchestruje replikace a zpracovává převzetí služeb při selhání do Azure, když dojde k výpadku. Také obstará obnovení z Azure do primární lokality. 
+- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) zálohuje vaše místní a data virtuálních počítačů Azure. Můžete zálohovat soubor a složky, konkrétní úlohy nebo celý virtuální počítač. 
+- [Azure Site Recovery](site-recovery-overview.md) poskytuje odolnost a zotavení po havárii pro aplikace a úlohy běžící na místních počítačích nebo virtuálních počítačích Azure IaaS. Site Recovery orchestruje replikaci a zpracovává převzetí služeb při selhání do Azure, pokud dojde k výpadku. Také zpracovává obnovení z Azure do primární lokality. 
 
-## <a name="how-does-site-recovery-do-disaster-recovery"></a>Jak Site Recovery poskytnout zotavení po havárii?
+## <a name="how-does-site-recovery-do-disaster-recovery"></a>Jak Site Recovery zotavení po havárii?
 
-1. Po přípravě Azure a místní sítí, nastavení a povolení replikace pro místní počítače.
-2. Site Recovery orchestruje počáteční replikace počítače, v souladu se nastavení zásad.
-3. Po počáteční replikaci Site Recovery replikuje rozdílových dat do Azure. 
-4. Pokud vše, co je replikace podle očekávání, spuštění postupu zotavení po havárii.
-    - Na postup zotavení pomáhá zajistit, že tento převzetí služeb při selhání bude fungovat podle očekávání, pokud skutečné potřeby.
-    - Na postup zotavení provede test převzetí bez dopadu na vaše produkční prostředí.
-5. Pokud dojde k výpadku, spusťte úplné převzetí služeb při selhání do Azure. Je převzetí služeb při selhání jednoho počítače, nebo můžete vytvořit plán obnovení, který převezme služby při selhání více počítačů současně.
-6. Na převzetí služeb při selhání se vytvoří virtuální počítače Azure z dat virtuálního počítače v Managed disks a účtech úložiště. Uživatelé můžou dál přístup k aplikací a úloh virtuálního počítače Azure
-7. Pokud vaše místní lokalita opět dostupná, převezme služby při obnovení z Azure.
-8. Po navrácení služeb po obnovení a ještě jednou pracují z primární lokality, můžete spustit znovu replikaci místních virtuálních počítačů do Azure.
-
-
-## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Jak poznám, jestli je vhodný pro zotavení po havárii do Azure Moje prostředí?
-
-Site Recovery dokáže replikovat jakoukoli úlohu spuštěnou na podporovaném virtuálním počítači VMware nebo fyzický server. Tady jsou věci, které je potřeba zkontrolovat ve vašem prostředí:
-
-- Pokud provádíte replikaci virtuálních počítačů VMware, používáte správné verze virtualizační servery VMware? [Tady](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
-- Jsou počítače, které chcete replikovat, spuštěn podporovaný operační systém? [Tady](vmware-physical-azure-support-matrix.md#replicated-machines).
-- Pro zotavení po havárii pro Linux počítače běží na podporované souborové úložiště systému/hosta? [Zkontrolujte, zde](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- Počítače, které chcete replikovat v souladu s požadavky na Azure? [Tady](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-- Podporované konfigurace sítě [Tady](vmware-physical-azure-support-matrix.md#network).
-- Podporované konfigurace úložiště [Tady](vmware-physical-azure-support-matrix.md#storage).
+1. Po přípravě Azure a místní lokality můžete nastavit a povolit replikaci místních počítačů.
+2. Site Recovery orchestruje počáteční replikaci počítače v souladu s nastavením zásad.
+3. Po počáteční replikaci Site Recovery replikují rozdílové změny do Azure. 
+4. Když se všechno replikuje podle očekávání, spustíte postup zotavení po havárii.
+    - Tato kontrola pomáhá zajistit, že převzetí služeb při selhání bude fungovat podle očekávání, když dojde k reálné potřebě.
+    - Přechod k testovacímu převzetí služeb při selhání bez dopadu na produkční prostředí
+5. Pokud dojde k výpadku, spustíte úplné převzetí služeb při selhání do Azure. Můžete převzít služby při selhání jednoho počítače nebo můžete vytvořit plán obnovení, který převezme více počítačů současně.
+6. Při převzetí služeb při selhání se virtuální počítače Azure vytvářejí z dat virtuálních počítačů ve spravovaných discích nebo účtech úložiště. Uživatelé můžou dál přistupovat k aplikacím a úlohám z virtuálního počítače Azure.
+7. Až bude vaše místní lokalita opět dostupná, vraťte se z Azure zpátky.
+8. Po navrácení služeb po obnovení a jejich práci z primární lokality můžete znovu spustit replikaci místních virtuálních počítačů do Azure.
 
 
-## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Co je potřeba nastavit v Azure před mám začít?
+## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Návody o tom, jestli je moje prostředí vhodné pro zotavení po havárii do Azure?
 
-V Azure budete muset připravit následující:
+Site Recovery může replikovat jakékoli úlohy spuštěné na podporovaném virtuálním počítači VMware nebo fyzickém serveru. Tady jsou tyto věci, které potřebujete pro kontrolu vašeho prostředí:
 
-1. Ověřte, že váš účet Azure má oprávnění k vytvoření virtuálních počítačů v Azure.
-2. Vytvořte síť Azure, ke které virtuální počítače Azure připojí při jejich vytvoření z účtů úložiště nebo spravovaných disků po převzetí služeb při selhání.
-3. Nastavte trezor služby Azure Recovery Services pro Site Recovery. Trezor se nachází na webu Azure Portal a slouží k nasazení, konfigurace, Orchestrace, monitorování a řešení potíží s nasazením Site Recovery.
-
-*Potřebujete další pomoc?*
-
-Zjistěte, jak nastavit službu Azure podle [ověření vašeho účtu](tutorial-prepare-azure.md#verify-account-permissions), vytváření [sítě](tutorial-prepare-azure.md#set-up-an-azure-network), a [nastavení trezoru](tutorial-prepare-azure.md#create-a-recovery-services-vault).
-
+- Pokud provádíte replikaci virtuálních počítačů VMware, spouštíte správné verze virtualizačních serverů VMware? [Podívejte se sem](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
+- Jsou počítače, které chcete replikovat, spuštěn podporovaný operační systém? [Podívejte se sem](vmware-physical-azure-support-matrix.md#replicated-machines).
+- V případě zotavení po havárii systému Linux jsou počítače s podporovaným systémem souborů/Host Storage? [Zaškrtnout](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- Jsou počítače, které chcete replikovat, v dodržování požadavků Azure? [Podívejte se sem](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
+- Je vaše konfigurace sítě podporovaná? [Podívejte se sem](vmware-physical-azure-support-matrix.md#network).
+- Je vaše konfigurace úložiště podporovaná? [Podívejte se sem](vmware-physical-azure-support-matrix.md#storage).
 
 
-## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Co je potřeba nastavit místní než začnu?
+## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Co musím před zahájením nastavovat v Azure?
 
-Pro místní zde je, co je potřeba udělat:
+V Azure je potřeba připravit toto:
 
-1. Budete muset nastavit několik účtů:
-
-    - Pokud provádíte replikaci virtuálních počítačů VMware, je potřeba účet pro přístup k serveru vCenter nebo hostiteli vSphere ESXi za Site Recovery k automatickému zjišťování virtuálních počítačů.
-    - Účet je potřebný k instalaci agenta služby Site Recovery Mobility na každý fyzický počítač nebo virtuální počítač, který chcete replikovat.
-
-2. Je potřeba zkontrolovat kompatibilitu vaší infrastruktury VMware, pokud jste to dřív.
-3. Zkontrolujte, zda se můžete připojit k virtuálním počítačům Azure po převzetí služeb. Nastavíte RDP na místních počítačích Windows nebo SSH na počítačích s Linuxem.
+1. Ověřte, že váš účet Azure má oprávnění k vytváření virtuálních počítačů v Azure.
+2. Vytvořte síť Azure, ke které se virtuální počítače Azure připojí po vytvoření z účtů úložiště nebo spravovaných disků po převzetí služeb při selhání.
+3. Nastavte pro Site Recovery trezor služby Azure Recovery Services. Trezor se nachází v Azure Portal a používá se k nasazení, konfiguraci, orchestraci, monitorování a řešení potíží s nasazením Site Recovery.
 
 *Potřebujete další pomoc?*
-- Příprava účty pro [automatické zjišťování](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) a [instalace služby Mobility](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
-- [Ověřte](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) vaše nastavení VMware musí být kompatibilní.
-- [Příprava](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) tak, aby připojení v Azure po převzetí služeb při selhání.
-- Pokud chcete podrobnější nápovědu o nastavení přidělování IP adres pro virtuální počítače Azure po převzetí služeb při selhání, [v tomto článku](concepts-on-premises-to-azure-networking.md).
 
-## <a name="how-do-i-set-up-disaster-recovery"></a>Jak nastavit zotavení po havárii?
+Naučte se, jak nastavit Azure pomocí [ověření účtu](tutorial-prepare-azure.md#verify-account-permissions), vytvoření [sítě](tutorial-prepare-azure.md#set-up-an-azure-network)a [Nastavení trezoru](tutorial-prepare-azure.md#create-a-recovery-services-vault).
 
-Jakmile máte infrastrukturu Azure a místní na místě, můžete nastavit zotavení po havárii.
 
-1. Seznámení s komponentami, které budete potřebovat k nasazení, najdete v tématu [replikaci z VMware do Azure architektury](vmware-azure-architecture.md)a [z fyzických prostředků do Azure architektury](physical-azure-architecture.md). Existuje několik komponent, takže je důležité pochopit, jak všechny zapadají.
-2. **Zdrojové prostředí**: Jako první krok při nasazení nastavit zdrojové prostředí replikace. Určíte, co chcete replikovat, a ve které chcete replikovat.
-3. **Konfigurační server**: Budete muset nastavit konfigurační server ve svém zdrojovém prostředí v místním:
-    - Konfigurační server je jeden místní počítač. Pro zotavení po havárii VMware doporučujeme nasadit jako virtuální počítač VMware, které se dají nasadit z ke stažení šablony OVF.
-    - Konfigurační server koordinuje komunikaci mezi místním a Azure
-    - Několik dalších komponent spustit na počítači serveru konfigurace.
-        - Procesový server přijímá, optimalizuje a odesílá data replikace do účtu úložiště mezipaměti v Azure. Také obstará automatickou instalaci služby Mobility na počítače, které chcete replikovat, a provádí automatické zjišťování virtuálních počítačů na servery VMware.
+
+## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Co potřebuji k nastavení místního prostředí před zahájením?
+
+V místním prostředí je to, co je potřeba udělat:
+
+1. Musíte nastavit několik účtů:
+
+    - Pokud provádíte replikaci virtuálních počítačů VMware, účet je potřebný k tomu, Site Recovery pro přístup k vCenter Server nebo k hostitelům ESXi pro vSphere k automatickému zjišťování virtuálních počítačů.
+    - K instalaci agenta služby mobility Site Recovery na každém fyzickém počítači nebo VIRTUÁLNÍm počítači, který chcete replikovat, se vyžaduje účet.
+
+2. Pokud jste to předtím neudělali, musíte ověřit kompatibilitu vaší infrastruktury VMware.
+3. Ujistěte se, že se můžete připojit k virtuálním počítačům Azure po převzetí služeb při selhání. Protokol RDP nastavíte na místních počítačích s Windows nebo na počítačích se systémem Linux.
+
+*Potřebujete další pomoc?*
+- Připravte účty pro [automatické zjišťování](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) a pro [instalaci služby mobility](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
+- [Ověřte](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) , zda jsou nastavení VMware kompatibilní.
+- [Připravte](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) se, abyste se po převzetí služeb při selhání připojili v Azure.
+- Pokud chcete podrobnější nápovědu k nastavení adresování IP pro virtuální počítače Azure po převzetí služeb při selhání, [Přečtěte si tento článek](concepts-on-premises-to-azure-networking.md).
+
+## <a name="how-do-i-set-up-disaster-recovery"></a>Návody nastavit zotavení po havárii?
+
+Jakmile budete mít k dispozici svoji místní infrastrukturu Azure a místní infrastruktury, můžete nastavit zotavení po havárii.
+
+1. Abyste pochopili komponenty, které budete muset nasadit, Projděte si [architekturu VMware to Azure](vmware-azure-architecture.md)a [fyzickou do architektury Azure](physical-azure-architecture.md). K dispozici je celá řada součástí, takže je důležité pochopit, jak se všechny vejdou dohromady.
+2. **Zdrojové prostředí**: V prvním kroku nasazení nastavíte zdrojové prostředí replikace. Určete, co chcete replikovat, a kam se chcete replikovat.
+3. **Konfigurační server**: Je potřeba nastavit konfigurační server v místním zdrojovém prostředí:
+    - Konfigurační server je jeden místní počítač. Pro zotavení po havárii VMware doporučujeme, abyste ho nasadili jako virtuální počítač VMware, který se dá nasadit ze šablony OVF ke stažení.
+    - Konfigurační server koordinuje komunikaci mezi místními prostředími a Azure.
+    - Na počítači konfiguračního serveru běží několik dalších komponent.
+        - Procesový server přijímá, optimalizuje a odesílá data replikace do účtu úložiště mezipaměti v Azure. Také zpracovává automatickou instalaci služby mobility na počítačích, které chcete replikovat, a provádí automatické zjišťování virtuálních počítačů na serverech VMware.
         - Hlavní cílový server zpracovává replikační data během navrácení služeb z Azure po obnovení.
-    - Nastavení zahrnuje registrace konfiguračního serveru v trezoru, stahování MySQL Server a VMware PowerCLI a určení účty vytvořené pro automatické zjišťování a instalace služby Mobility.
-4. **Cílové prostředí**: Můžete nastavit cílové prostředí Azure tak, že zadáte své předplatné Azure a nastavení sítě.
-5. **Zásady replikace**: Určíte, jak by měla replikace. Nastavení zahrnuje jak často body obnovení jsou vytvořeny a uloženy a, jestli se má vytvořit snímky konzistentní.
-6. **Povolení replikace**. Povolení replikace místních počítačů. Pokud jste vytvořili účet, který chcete nainstalovat službu Mobility, pak ho nainstaluje, když povolíte replikaci pro počítač. 
+    - Nastavení zahrnuje registraci konfiguračního serveru v trezoru, stahování serveru MySQL a VMware PowerCLI a určení účtů vytvořených pro automatické zjišťování a instalaci služby mobility.
+4. **Cílové prostředí**: Vaše cílové prostředí Azure nastavíte tak, že zadáte svoje předplatné Azure a nastavení sítě.
+5. **Zásady replikace**: Určete, jak se má replikace provádět. Nastavení zahrnuje jak často se vytvářejí a ukládají body obnovení a jestli se mají vytvářet snímky konzistentní vzhledem k aplikacím.
+6. **Povolte replikaci**. Povolíte replikaci pro místní počítače. Pokud jste vytvořili účet pro instalaci služby mobility, nainstaluje se, až povolíte replikaci pro daný počítač. 
 
 *Potřebujete další pomoc?*
 
-- Rychlý návod z těchto kroků můžete vyzkoušet naše [VMware kurzu](vmware-azure-tutorial.md), a [fyzický server návod](physical-azure-disaster-recovery.md).
-- [Další informace](vmware-azure-set-up-source.md) o nastavení zdrojového prostředí.
-- [Další informace o](vmware-azure-deploy-configuration-server.md) požadavky na konfiguraci serveru a nastavení konfiguračního serveru pomocí šablony OVF pro replikaci VMware. Pokud z nějakého důvodu nemůžete použít šablonu, nebo replikaci fyzických serverů, [těmito pokyny se řiďte](physical-azure-set-up-source.md#set-up-the-source-environment).
-- [Další informace](vmware-azure-set-up-target.md) o nastavení cíle.
-- [Další informace získáte](vmware-azure-set-up-replication.md) o nastavení zásad replikace.
-- [Přečtěte si](vmware-azure-enable-replication.md) povolení replikace, a [vyloučit](vmware-azure-exclude-disk.md) disky z replikace.
+- Rychlý návod k těmto krokům si můžete vyzkoušet v [kurzu VMware](vmware-azure-tutorial.md)a na [fyzických serverech](physical-azure-disaster-recovery.md).
+- [Přečtěte si další informace](vmware-azure-set-up-source.md) o nastavení zdrojového prostředí.
+- [Seznamte](vmware-azure-deploy-configuration-server.md) se s požadavky na konfigurační server a nastavením konfiguračního serveru pomocí šablony OVF pro replikaci VMware. Pokud z nějakého důvodu nemůžete šablonu použít nebo pokud provádíte replikaci fyzických serverů, [použijte tyto pokyny](physical-azure-set-up-source.md#set-up-the-source-environment).
+- [Přečtěte si další informace](vmware-azure-set-up-target.md) o nastavení cíle.
+- [Získejte další informace](vmware-azure-set-up-replication.md) o nastavení zásad replikace.
+- [Naučte](vmware-azure-enable-replication.md) se, jak povolit replikaci a [vyloučit](vmware-azure-exclude-disk.md) disky z replikace.
 
 
-## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Něco neproběhlo, jak řešit?
+## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Něco se nepovedlo, jak řešit potíže?
 
-- Jako první krok, zkuste [monitorování vašeho nasazení](site-recovery-monitor-and-troubleshoot.md) ověřte stav replikované položky, úloh a problémů s infrastrukturou, a identifikovat chyby.
-- Pokud nemůžete pro dokončení prvotní replikace nebo probíhající replikaci nefunguje podle očekávání, [k tomuto článku](vmware-azure-troubleshoot-replication.md) pro běžné chyby a tipy pro řešení potíží.
-- Pokud máte problémy s automatickou instalaci služby Mobility na počítačích, které chcete replikovat, zkontrolujte běžné chyby v [v tomto článku](vmware-azure-troubleshoot-push-install.md).
-- Pokud převzetí služeb při selhání nefunguje podle očekávání, zkontrolujte běžné chyby [v tomto článku](site-recovery-failover-to-azure-troubleshoot.md).
-- Pokud se navrácení služeb po obnovení není funkční, zkontrolujte, zda se zobrazí váš problém v [v tomto článku](vmware-azure-troubleshoot-failback-reprotect.md).
+- Jako první krok zkuste [sledovat nasazení](site-recovery-monitor-and-troubleshoot.md) a ověřit stav replikovaných položek, úloh a problémů infrastruktury a Identifikujte případné chyby.
+- Pokud nemůžete dokončit počáteční replikaci nebo probíhající replikace nefunguje podle očekávání, [Přečtěte si tento článek](vmware-azure-troubleshoot-replication.md) , kde najdete běžné chyby a tipy pro řešení potíží.
+- Pokud máte problémy s automatickou instalací služby mobility na počítačích, které chcete replikovat, zkontrolujte běžné chyby v [tomto článku](vmware-azure-troubleshoot-push-install.md).
+- Pokud převzetí služeb při selhání nefunguje podle očekávání, Projděte si běžné chyby v [tomto článku](site-recovery-failover-to-azure-troubleshoot.md).
+- Pokud navrácení služeb po obnovení nefunguje, ověřte, jestli se problém zobrazuje v [tomto článku](vmware-azure-troubleshoot-failback-reprotect.md).
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-S replikací nyní na místě, měli byste [spuštění postupu zotavení po havárii](tutorial-dr-drill-azure.md) zajistit, že převzetí služeb při selhání funguje podle očekávání. 
+Díky replikaci teď můžete [Spustit postup zotavení po havárii](tutorial-dr-drill-azure.md) , abyste zajistili, že převzetí služeb při selhání funguje podle očekávání. 

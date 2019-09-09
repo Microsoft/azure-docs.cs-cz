@@ -1,6 +1,6 @@
 ---
-title: 'Ladění Apache Hadoop: Zobrazit protokoly a interpretace chybových zpráv – Azure HDInsight'
-description: Další informace o chybové zprávy, které se může zobrazit při správě HDInsight pomocí Powershellu a kroky, které můžete provést při obnově.
+title: 'Apache Hadoop ladění: Zobrazení protokolů a interpretace chybových zpráv – Azure HDInsight'
+description: Přečtěte si o chybových zprávách, které se můžou zobrazit při správě HDInsight pomocí PowerShellu, a krocích, které můžete provést pro obnovení.
 ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
@@ -8,22 +8,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720996"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810876"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
 
-Každý cluster Apache Hadoop v Azure HDInsight obsahuje účet úložiště Azure používat jako výchozí systém souborů. Účet úložiště se označuje jako výchozí účet úložiště. Cluster používá služby Azure Table storage a Blob storage na výchozí účet úložiště k ukládání svých protokolů.  Výchozí účet úložiště pro váš cluster najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Protokoly uchovávat v účtu úložiště i po odstranění clusteru.
+Každý Apache Hadoop cluster v Azure HDInsight má účet úložiště Azure, který se používá jako výchozí systém souborů. Účet úložiště se označuje jako výchozí účet úložiště. Cluster používá úložiště tabulek Azure a BLOB Storage ve výchozím účtu úložiště pro ukládání protokolů.  Pokud chcete zjistit výchozí účet úložiště pro váš cluster, přečtěte si téma [správa Apache Hadoopch clusterů ve službě HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Protokoly se uchovávají v účtu úložiště i po odstranění clusteru.
 
-## <a name="logs-written-to-azure-tables"></a>Protokoly se zapisují do tabulek Azure
+## <a name="logs-written-to-azure-tables"></a>Protokoly zapsané do tabulek Azure
 
-Protokoly zapisují do tabulek Azure poskytují jednu úroveň přehled o tom, co se děje s clusterem HDInsight.
+Protokoly zapsané do tabulek Azure poskytují jednu úroveň přehledu o tom, co se děje s clusterem HDInsight.
 
-Při vytváření clusteru služby HDInsight šest tabulky vytvářejí automaticky pro clustery založené na Linuxu ve výchozí tabulce úložiště:
+Při vytváření clusteru HDInsight se automaticky vytvoří šest tabulek pro clustery se systémem Linux ve výchozím úložišti tabulek:
 
 * hdinsightagentlog
 * syslog
@@ -32,13 +32,13 @@ Při vytváření clusteru služby HDInsight šest tabulky vytvářejí automati
 * ambariserverlog
 * ambariagentlog
 
-Soubor názvy tabulek jsou **u\<Název_clusteru > DDMonYYYYatHHMMSSsss\<název_tabulky >** .
+Název souboru tabulky je **u\<názvu clusteru > TableName >\<DDMonYYYYatHHMMSSsss**.
 
 Tyto tabulky obsahují následující pole:
 
 * ClusterDnsName
 * Název komponenty
-* eventTimestamp
+* EventTimestamp
 * Host
 * MALoggingHash
 * Message
@@ -46,273 +46,273 @@ Tyto tabulky obsahují následující pole:
 * PreciseTimeStamp
 * Role
 * RowIndex
-* Tenant
+* Klient
 * TIMESTAMP
 * TraceLevel
 
-### <a name="tools-for-accessing-the-logs"></a>Nástroje pro přístup k protokoly
-Celá řada nástrojů, k dispozici pro přístup k datům v těchto tabulkách:
+### <a name="tools-for-accessing-the-logs"></a>Nástroje pro přístup k protokolům
+K dispozici je řada nástrojů pro přístup k datům v těchto tabulkách:
 
 * Visual Studio
 * Azure Storage Explorer
 * Power Query pro Excel
 
-#### <a name="use-power-query-for-excel"></a>Pomocí Power Query pro Excel
-Power Query lze instalovat z [Microsoft Power Query pro Excel](https://www.microsoft.com/en-us/download/details.aspx?id=39379). Zobrazit stránku ke stažení pro požadavky na systém.
+#### <a name="use-power-query-for-excel"></a>Použití Power Query pro Excel
+Power Query lze nainstalovat z [Microsoft Power Query pro Excel](https://www.microsoft.com/en-us/download/details.aspx?id=39379). Požadavky na systém najdete na stránce pro stažení.
 
-**Pomocí Power Query k otevření a analýza protokolů služby**
+**Pomocí Power Query otevřít a analyzovat protokol služby**
 
-1. Otevřít **aplikaci Microsoft Excel**.
-2. Z **Power Query** nabídky, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **z Microsoft Azure Table storage**.
+1. Otevřete **aplikaci Microsoft Excel**.
+2. V nabídce **Power Query** klikněte na **z Azure**a pak klikněte na **z Microsoft Azure úložiště tabulek**.
    
-    ![HDInsight Hadoop Excel PowerQuery otevřete Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
-3. Zadejte název účtu úložiště, krátký název nebo plně kvalifikovaný název.
-4. Zadejte klíč účtu úložiště. Zobrazí seznam tabulek:
+    ![HDInsight Hadoop v Excelu PowerQuery otevřít Azure Table Storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
+3. Zadejte název účtu úložiště, buď krátký název, nebo plně kvalifikovaný název domény.
+4. Zadejte klíč účtu úložiště. Zobrazí se seznam tabulek:
    
-    ![Protokoly HDInsight Hadoop ve službě Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
-5. Klikněte pravým tlačítkem na tabulku hadoopservicelog v **Navigátor** podokně a vyberte **upravit**. Zobrazí se čtyři sloupce. Volitelně můžete odstranit **klíč oddílu**, **klíč řádku**, a **časové razítko** sloupců a že je vyberete a pak kliknete **odebrat sloupce** z Možnosti na pásu karet.
-6. Klikněte na ikonu rozbalení v obsahu sloupce vybrat sloupce, které chcete importovat do Excelové tabulky. Pro tuto ukázku volba TraceLevel a název komponenty: To lze uvést některé základní informace, na kterém součásti vyskytly problémy.
+    ![Protokoly HDInsight Hadoop uložené ve službě Azure Table Storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
+5. V podokně **navigátor** klikněte pravým tlačítkem na tabulku hadoopservicelog a vyberte **Upravit**. Zobrazí se čtyři sloupce. Volitelně můžete odstranit **klíč oddílu**, **klíč řádku**a **časové razítko** , a to tak, že je vyberete a pak kliknete na **odebrat sloupce** z možností na pásu karet.
+6. Klikněte na ikonu rozbalit ve sloupci obsah a vyberte sloupce, které chcete importovat do excelové tabulky. V této ukázce zvolím TraceLevel a Component: Může mi poskytnout některé základní informace o tom, které součásti byly problémy.
    
-    ![HDInsight Hadoop protokoly zvolit sloupce](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
-7. Klikněte na tlačítko **OK** importovat data.
-8. Vyberte **TraceLevel**, Role, a **ComponentName** sloupce a pak klikněte na tlačítko **Group** ovládacího prvku na pásu karet.
-9. Klikněte na tlačítko **OK** v dialogovém okně Group By
-10. Klikněte na ** použít & Zavřít **.
+    ![Protokoly HDInsight Hadoop výběr sloupců Excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "Protokoly HDInsight Hadoop výběr sloupců Excel")
+7. Kliknutím na tlačítko **OK** importujte data.
+8. Vyberte sloupce **TraceLevel**, role a **Component** a pak na pásu karet klikněte na **Seskupit podle** ovládacího prvku.
+9. Klikněte na **OK** v dialogovém okně Seskupit podle.
+10. Klikněte na * * použít & Zavřít * *.
 
-Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete zahrnout další sloupce (jako je například zpráva) Pokud chcete přejít na problémy, když k nim dojde, ale výběru a seskupování sloupců výše popsané poskytuje vrazíme přehled o co se děje s služby Hadoop. Stejné nápad lze použít pro setuplog a hadoopinstalllog tabulky.
+Nyní můžete použít aplikaci Excel k filtrování a řazení podle potřeby. Je možné zahrnout další sloupce (například zprávy), aby bylo možné přejít k podrobnostem o problémech, ale výběr a seskupení výše uvedených sloupců poskytuje dátý přehled o tom, co se děje se službami Hadoop. Stejný nápad lze použít pro tabulky Setuplog a hadoopinstalllog.
 
 #### <a name="use-visual-studio"></a>Použití Visual Studia
 **Použití sady Visual Studio**
 
 1. Otevřít Visual Studio.
-2. Z **zobrazení** nabídky, klikněte na tlačítko **Průzkumníka cloudu**. Nebo jednoduše klikněte na tlačítko **CTRL +\, CTRL + X**.
-3. Z **Průzkumníka cloudu**vyberte **typy prostředků**.  Je k dispozici možnost **skupiny prostředků**.
-4. Rozbalte **účty úložiště**, výchozí účet úložiště pro váš cluster a potom **tabulky**.
-5. Dvakrát klikněte na panel **hadoopservicelog**.
+2. V nabídce **zobrazení** klikněte na **Průzkumník cloudu**. Nebo jednoduše klikněte na **CTRL\, + CTRL + X**.
+3. V **Průzkumníku cloudu**vyberte **typy prostředků**.  Další dostupnou možností jsou **skupiny prostředků**.
+4. Rozbalte **účty úložiště**, výchozí účet úložiště pro váš cluster a pak **tabulky**.
+5. Dvakrát klikněte na **hadoopservicelog**.
 6. Přidejte filtr. Příklad:
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop protokoly zvolit sloupce](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+    ![Protokoly Hadoop HDInsight výběr sloupců vs](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "Protokoly Hadoop HDInsight výběr sloupců vs")
    
-    Další informace o vytváření filtrů najdete v tématu [vytváření řetězce filtru pro návrháře tabulky](../../vs-azure-tools-table-designer-construct-filter-strings.md).
+    Další informace o sestavování filtrů naleznete v tématu [konstrukce řetězců filtru pro návrháře tabulky](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
-## <a name="logs-written-to-azure-blob-storage"></a>Protokoly se zapisují do úložiště objektů Blob v Azure
-Protokoly zapisují do tabulek Azure poskytují jednu úroveň přehled o tom, co se děje s clusterem HDInsight. Tyto tabulky však neposkytují úroveň úkolu protokoly, které mohou být užitečné při procházení k dalším potížím, které se objeví. Kvůli této další úroveň podrobností clustery HDInsight umožňují zapisovat protokoly úlohy do svého účtu úložiště objektů Blob pro úlohy, které je odeslána prostřednictvím Templeton. Prakticky to znamená, že pomocí rutin prostředí Azure PowerShell nebo rozhraní .NET API odeslání úlohy, není odeslaných přes RDP/příkazového řádku přístup ke clusteru úloh odeslaných úloh. 
+## <a name="logs-written-to-azure-blob-storage"></a>Protokoly zapsané do Azure Blob Storage
+Protokoly zapsané do tabulek Azure poskytují jednu úroveň přehledu o tom, co se děje s clusterem HDInsight. Tyto tabulky ale neposkytují protokoly na úrovni úloh, které mohou být užitečné při procházení dalších problémů, když k nim dojde. Pokud chcete tuto další úroveň podrobností poskytnout, clustery HDInsight se nakonfigurují tak, aby na účet Blob Storage napsaly protokoly úloh pro každou úlohu odeslanou prostřednictvím Templeton. Prakticky to znamená, že se úlohy odeslaly pomocí rutin Microsoft Azure PowerShell nebo rozhraní API pro odeslání úlohy .NET, a ne úlohy odeslané prostřednictvím přístupu RDP/příkazového řádku ke clusteru. 
 
-Pokud chcete zobrazit protokoly, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v HDInsight se systémem Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
-
-
-Další informace o aplikačních protokolů najdete v tématu [zjednodušuje správu přihlášení uživatele a přístup v Apache Hadoop YARN](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+Pokud chcete zobrazit protokoly, přečtěte si téma [přístup Apache HADOOP nitě protokoly aplikací v HDInsight se systémem Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 
-## <a name="view-cluster-health-and-job-logs"></a>Zobrazit protokoly stavu a úlohy clusteru
-### <a name="access-the-ambari-ui"></a>Přístup k rozhraní Ambari
-Na webu Azure Portal klikněte na název clusteru HDInsight a otevřete tak podokno clusteru. V podokně clusteru, klikněte na tlačítko **řídicí panel**.
+Další informace o protokolech aplikací naleznete v tématu [zjednodušení správy uživatelských protokolů a přístup v Apache HADOOP nitě](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
+
+## <a name="view-cluster-health-and-job-logs"></a>Zobrazení protokolů stavu clusteru a úloh
+### <a name="access-the-ambari-ui"></a>Přístup k uživatelskému rozhraní Ambari
+V Azure Portal kliknutím na název clusteru HDInsight otevřete podokno clusteru. V podokně clusteru klikněte na **řídicí panel**.
 
 ![Spustit řídicí panel clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
-### <a name="access-the-yarn-ui"></a>Přístup k Yarn uživatelského rozhraní
-Na webu Azure Portal klikněte na název clusteru HDInsight a otevřete tak podokno clusteru. V podokně clusteru, klikněte na tlačítko **řídicí panel**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. V Ambari, vyberte **YARN** ze seznamu služeb na levé straně. Na stránce, která se zobrazí, vyberte **rychlé odkazy**, vyberte položku aktivní hlavní uzel a uživatelské rozhraní správce prostředků.
+### <a name="access-the-yarn-ui"></a>Přístup k uživatelskému rozhraní příze
+V Azure Portal kliknutím na název clusteru HDInsight otevřete podokno clusteru. V podokně clusteru klikněte na **řídicí panel**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. V Ambari v seznamu služeb vlevo vyberte možnost **příze** . Na stránce, která se zobrazí, vyberte možnost **Rychlé odkazy**a pak vyberte položku aktivní hlavní uzel a správce prostředků uživatelské rozhraní.
 
-Rozhraní YARN můžete provádět následující akce:
+Pomocí uživatelského rozhraní PŘÍZe můžete provádět následující akce:
 
-* **Získat stav clusteru**. V levém podokně rozbalte **clusteru**a klikněte na tlačítko **o**. Toto současné clusteru podrobnosti o stavu, jako je Celková přidělená paměť, jader využívaných, stav cluster resource Manageru, verze clusteru a tak dále.
+* **Získá stav clusteru**. V levém podokně rozbalte **cluster**a klikněte na **o**. Toto jsou podrobné informace o stavu clusteru, jako je celková přidělená paměť, používané jádra, stav Správce prostředků clusteru, verze clusteru atd.
   
-    ![Spustit řídicí panel clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
-* **Získat stav uzlu**. V levém podokně rozbalte **clusteru**a klikněte na tlačítko **uzly**. Vypíšou se všechny uzly v clusteru, adresu HTTP každého uzlu prostředky přidělené na každý uzel atd.
-* **Monitorovat stav úlohy**. V levém podokně rozbalte **clusteru**a potom klikněte na tlačítko **aplikací** zobrazte seznam všech úloh v clusteru. Pokud se chcete podívat na úloh v určitém stavu (jako je například nový, odeslané, spuštění, atd.), klikněte na příslušný odkaz pod **aplikací**. Dále můžete kliknout na název úlohy zobrazíte další informace o úloze takové včetně výstup, protokoly atd.
+    ![Spustit přízi na řídicím panelu clusteru](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Spustit přízi na řídicím panelu clusteru")
+* **Získá stav uzlu**. V levém podokně rozbalte **cluster**a klikněte na **uzly**. Zobrazí se seznam všech uzlů v clusteru, adresa HTTP každého uzlu, prostředky přidělené každému uzlu atd.
+* **Monitorovat stav úlohy**. V levém podokně rozbalte **cluster**a potom klikněte na **aplikace** . zobrazí se seznam všech úloh v clusteru. Chcete-li se podívat na úlohy v určitém stavu (například nový, odesláno, spuštěno atd.), klikněte na příslušný odkaz v části **aplikace**. Další informace o úloze získáte tak, že kliknete na název úlohy, včetně výstupu, protokolů atd.
 
-### <a name="access-the-hbase-ui"></a>Přístup k rozhraní HBase
-Na webu Azure Portal klikněte na název clusteru HDInsight HBase a otevřete tak podokno clusteru. V podokně clusteru, klikněte na tlačítko **řídicí panel**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Vyberte HBase v Ambari, v seznamu služeb. Vyberte **rychlé odkazy** nahoře na stránce, přejděte na odkaz aktivní uzel Zookeeper a potom klikněte na hlavní uživatelské rozhraní HBase.
+### <a name="access-the-hbase-ui"></a>Přístup k uživatelskému rozhraní HBA
+V Azure Portal kliknutím na název clusteru HDInsight HBA otevřete podokno clusteru. V podokně clusteru klikněte na **řídicí panel**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. V Ambari vyberte adaptéry HBA ze seznamu služeb. V horní části stránky vyberte **Rychlé odkazy** , přesuňte ukazatel na aktivní odkaz na uzel Zookeeper a pak klikněte na HBase Master uživatelské rozhraní.
 
 ## <a name="hdinsight-error-codes"></a>Kódy chyb HDInsight
-Chybové zprávy najdete v této části jsou k dispozici k poskytování pomoci uživatelům systému Hadoop v Azure HDInsight, pochopit možné chybové stavy, se kterými se můžete setkat při správě služby pomocí Azure Powershellu a upozorňují na kroky, které je možné provést Obnovit z chyby.
+Chybové zprávy uvedené v této části jsou k dispozici, aby uživatelům systému Hadoop ve službě Azure HDInsight porozuměli možným chybovým stavům, se kterými se mohou setkat při správě služby pomocí Azure PowerShell a jejich informování o krocích, které je možné učinit. k zotavení z chyby.
 
-Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal při se používá ke správě clusterů HDInsight. Další chybové zprávy, které můžete narazit, ale jsou méně granulární z důvodu omezení na nápravné akce v tomto kontextu je to možné. Další chybové zprávy jsou k dispozici v kontextech, ve kterém je zřejmý omezení rizik. 
+Některé z těchto chybových zpráv se taky můžou zobrazit ve Azure Portal, když se používají ke správě clusterů HDInsight. Jiné chybové zprávy, se kterými se můžete setkat, ale mají méně podrobnější vliv na omezení na nápravných akcích, které jsou v tomto kontextu možné. Další chybové zprávy jsou k dispozici v kontextech, ve kterých je toto zmírnění zřejmé. 
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
-* **Popis**: Chcete-li použít vlastní nastavení u metaúložiště Hive a Oozie zadejte podrobnosti databáze Azure SQL pro nejméně jednu součást.
-* **Zmírnění dopadů**: Uživatel musí zadat platné metastore SQL Azure a opakujte žádost.  
+* **Popis**: Pokud chcete použít vlastní nastavení pro podregistr a Oozie metaúložiště, poskytněte prosím podrobnosti o službě Azure SQL Database alespoň pro jednu komponentu.
+* **Omezení rizik**: Uživatel musí dodat platný SQL Azure metastore a opakovat požadavek.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
-* **Popis**: Nelze vytvořit cluster v oblasti *nameOfYourRegion*. Použijte platný oblasti HDInsight a opakujte žádost.
-* **Zmírnění dopadů**: Zákazník měli vytvořit oblasti clusteru, který je aktuálně podporuje: Jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.  
+* **Popis**: Nepovedlo se vytvořit cluster v oblasti *nameOfYourRegion*. Použijte platnou oblast HDInsight a opakujte požadavek.
+* **Omezení rizik**: Zákazník by měl vytvořit oblast clusteru, která je v současné době podporuje: Jihovýchodní Asie, Západní Evropa, Severní Evropa, Východní USA nebo Západní USA.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **Popis**: Server nemohl najít záznam požadovaný cluster.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Popis**: Serveru se nepovedlo najít požadovaný záznam clusteru.  
+* **Omezení rizik**: Zkuste operaci zopakovat.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Popis**: Název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
-* **Zmírnění dopadů**: Ujistěte se, zda používáte platný název DNS pro váš cluster, který začíná a končí alfanumerické znaky a žádné speciální obsahuje i jiné znaky než čárka "-" a pak zkuste operaci zopakovat.
+* **Popis**: Název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím, že název začíná a končí alfanumerickým znakem a může obsahovat jenom speciální znak-.  
+* **Omezení rizik**: Ujistěte se, že jste pro cluster použili platný název DNS, který začíná a končí alfanumerickými znaky a neobsahuje žádné speciální znaky jiné než pomlčku "-" a potom operaci opakujte.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
 * **Popis**: Název clusteru *yourClusterName* není k dispozici. Vyberte prosím jiný název.  
-* **Zmírnění dopadů**: Uživatel by neměl zadejte název clusteru, který je jedinečný a existují a zkuste to znovu. Pokud uživatel je na portálu, rozhraní se upozorní je, pokud název clusteru je již používán během kroků vytvořit.
+* **Omezení rizik**: Uživatel by měl zadat název clusteru, který je jedinečný a neexistuje, a zkuste to znovu. Pokud uživatel používá portál, uživatelské rozhraní je upozorní, pokud se název clusteru už používá během postupu vytvoření.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Popis**: Heslo clusteru je neplatné. Heslo musí být minimálně 10 znaků a musí obsahovat alespoň jednu číslici, velké písmeno, malé písmeno a speciální znaky bez mezer a nesmí obsahovat uživatelské jméno jako jeho součástí.  
-* **Zmírnění dopadů**: Zadejte platný cluster heslo a zkuste operaci zopakovat.
+* **Popis**: Heslo clusteru je neplatné. Heslo musí mít aspoň 10 znaků a musí obsahovat aspoň jedno číslo, velké písmeno, malé písmeno a speciální znak bez mezer a nesmí obsahovat uživatelské jméno v rámci této části.  
+* **Omezení rizik**: Zadejte platné heslo clusteru a zkuste operaci zopakovat.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **Popis**: Uživatelské jméno clusteru je neplatné. Ujistěte se prosím, že uživatelské jméno nemůže obsahovat speciální znaky ani mezery.  
-* **Zmírnění dopadů**: Zadejte uživatelské jméno platným clusterem a zkuste operaci zopakovat.
+* **Popis**: Uživatelské jméno clusteru je neplatné. Ujistěte se prosím, že uživatelské jméno neobsahuje speciální znaky nebo mezery.  
+* **Omezení rizik**: Zadejte platné uživatelské jméno clusteru a zkuste operaci zopakovat.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Popis**: Název DNS clusteru *yourDnsClusterName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
-* **Zmírnění dopadů**: Zadejte platné uživatelské jméno clusteru DNS a zkuste operaci zopakovat.
+* **Popis**: Název DNS clusteru *yourDnsClusterName* je neplatný. Ujistěte se prosím, že název začíná a končí alfanumerickým znakem a může obsahovat jenom speciální znak-.  
+* **Omezení rizik**: Zadejte platné uživatelské jméno clusteru DNS a zkuste operaci zopakovat.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **Popis**: Název kontejneru v identifikátoru URI *yourcontainerURI* a název DNS *yourDnsName* v žádosti subjekt musí být stejné.  
-* **Zmírnění dopadů**: Ujistěte se, že název kontejneru a název DNS jsou stejné a zkuste operaci zopakovat.
+* **Popis**: Název kontejneru v identifikátoru URI *yourcontainerURI* a název DNS *yourDnsName* v textu požadavku musí být stejný.  
+* **Omezení rizik**: Ujistěte se, že název kontejneru a název DNS jsou stejné, a zkuste operaci zopakovat.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
-* **Popis**: Konfigurace clusteru neplatný. Nepovedlo se najít žádné definice data uzlu v velikost uzlu.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Popis**: Neplatná konfigurace clusteru Nepovedlo se najít žádné definice datových uzlů v velikost uzlu.  
+* **Omezení rizik**: Zkuste operaci zopakovat.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Popis**: Nepovedlo se odstranit nasazení clusteru  
-* **Zmírnění dopadů**: Zkuste operaci odstranění.
+* **Popis**: Nepovedlo se odstranit nasazení clusteru.  
+* **Omezení rizik**: Opakujte operaci odstranění.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Popis**: Konfigurace služby došlo k chybě. Požadované informace mapování DNS nebyl nalezen.  
-* **Zmírnění dopadů**: Odstranění clusteru a vytvoření nového clusteru.
+* **Popis**: Chyba konfigurace služby Požadované informace o mapování DNS se nenašly.  
+* **Omezení rizik**: Odstraňte cluster a vytvořte nový cluster.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
-* **Popis**: Duplicitní pokus o vytvoření clusteru kontejneru. Existuje záznam pro *nameOfYourContainer* ale značek etag se neshodují.
-* **Zmírnění dopadů**: Zadejte jedinečný název kontejneru a zkuste operaci vytvoření.
+* **Popis**: Pokus o vytvoření kontejneru clusteru je duplicitní. Záznam existuje pro *nameOfYourContainer* , ale značky ETag se neshodují.
+* **Omezení rizik**: Zadejte jedinečný název pro kontejner a opakujte operaci vytvoření.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Popis**: Hostovaná služba *nameOfYourHostedService* již obsahuje cluster. Hostovaná služba nemůže obsahovat více clusterů  
-* **Zmírnění dopadů**: Hostování clusteru v jiné hostované služby.
+* **Popis**: *NameOfYourHostedService* hostované služby už cluster obsahuje. Hostovaná služba nemůže obsahovat víc clusterů.  
+* **Omezení rizik**: Hostování clusteru v jiné hostované službě.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Popis**: Serveru se nepovedlo aktualizovat stav nasazení clusteru.  
-* **Zmírnění dopadů**: Zkuste operaci zopakovat. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
+* **Omezení rizik**: Zkuste operaci zopakovat. Pokud k tomu dojde několikrát, kontaktujte šablonu stylů CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Popis**: Cluster *yourClusterName* byla odstraněna jako součást údržby. Znovu prosím vytvořte cluster.
-* **Zmírnění dopadů**: Znovu vytvořte cluster.
+* **Popis**: Clusterový *yourClusterName* se odstranil jako součást údržby. Vytvořte prosím cluster znovu.
+* **Omezení rizik**: Vytvořte znovu cluster.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
-* **Popis**: Konfigurace clusteru neplatný. Požadované konfigurace hlavního uzlu se nenašla v velikosti uzlů.
-* **Zmírnění dopadů**: Zkuste operaci zopakovat.
+* **Popis**: Neplatná konfigurace clusteru Požadovaná konfigurace hlavního uzlu nebyla nalezena v velikostech uzlů.
+* **Omezení rizik**: Zkuste operaci zopakovat.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Popis**: Nejde vytvořit hostovanou službu *nameOfYourHostedService*. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek.
+* **Popis**: Nepovedlo se vytvořit *nameOfYourHostedService*hostované služby. Zkuste prosím žádost znovu.  
+* **Omezení rizik**: Opakujte požadavek.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Popis**: Hostovaná služba *nameOfYourHostedService* už má produkčního nasazení. Hostovaná služba nemůže obsahovat více nasazení v produkčním prostředí. Zkuste požadavek s jiný název clusteru.
-* **Zmírnění dopadů**: Použijte jiný název clusteru a opakujte žádost.
+* **Popis**: Hostovaná služba *nameOfYourHostedService* už má produkční nasazení. Hostovaná služba nemůže obsahovat více produkčních nasazení. Opakujte požadavek s jiným názvem clusteru.
+* **Omezení rizik**: Použijte jiný název clusteru a opakujte požadavek.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Popis**: Hostovaná služba *nameOfYourHostedService* pro cluster se nenašel.  
-* **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, odstraňte ho a pak to zkuste znovu.
+* **Popis**: *NameOfYourHostedService* hostované služby pro cluster se nepovedlo najít.  
+* **Omezení rizik**: Pokud je cluster v chybovém stavu, odstraňte jej a akci opakujte.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Popis**: Hostovaná služba *nameOfYourHostedService* nemá žádné přidružené nasazení.  
-* **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, odstraňte ho a pak to zkuste znovu.
+* **Popis**: *NameOfYourHostedService* hostované služby nemá žádné přidružené nasazení.  
+* **Omezení rizik**: Pokud je cluster v chybovém stavu, odstraňte jej a akci opakujte.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **Popis**: ID předplatného *yourSubscriptionId* nemá vlevo jádra k vytvoření clusteru *yourClusterName*. Požadováno: *resourcesRequired*, k dispozici: *resourcesAvailable*.  
-* **Zmírnění dopadů**: Uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
+* **Popis**: SubscriptionId *yourSubscriptionId* nemá zbývající jádra k vytvoření clusteru *yourClusterName*. Požadováno: *resourcesRequired*, Available: *resourcesAvailable*.  
+* **Omezení rizik**: Uvolněte prostředky v předplatném nebo zvyšte prostředky dostupné pro předplatné a pokuste se cluster vytvořit znovu.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
-* **Popis**: ID předplatného *yourSubscriptionId* nemá žádné kvóty pro novou hostovanou službu a vytvořte cluster *yourClusterName*.  
-* **Zmírnění dopadů**: Uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
+* **Popis**: ID předplatného *yourSubscriptionId* nemá kvótu pro nový hostované službě pro vytvoření clusteru *yourClusterName*.  
+* **Omezení rizik**: Uvolněte prostředky v předplatném nebo zvyšte prostředky dostupné pro předplatné a pokuste se cluster vytvořit znovu.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Popis**: Na serveru došlo k vnitřní chybě. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek.
+* **Popis**: Došlo k vnitřní chybě serveru. Zkuste prosím žádost znovu.  
+* **Omezení rizik**: Opakujte požadavek.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Popis**: Umístění úložiště Azure *dataRegionName* není platné umístění. Ujistěte se, že oblast je správný a opakujte žádost.
-* **Zmírnění dopadů**: Vyberte umístění úložiště, který podporuje HDInsight, zkontrolujte, jestli je váš cluster společně a zkuste operaci zopakovat.
+* **Popis**: Azure Storage umístění *DataRegion* není platné umístění. Přesvědčte se, zda je oblast správná, a opakujte požadavek.
+* **Omezení rizik**: Vyberte umístění úložiště, které podporuje HDInsight, ověřte, jestli je váš cluster umístěný společně, a zkuste operaci zopakovat.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **Popis**: Neplatná velikost virtuálního počítače pro datové uzly. Pro všechny datové uzly se podporuje jenom velikost velký virtuální počítač.  
-* **Zmírnění dopadů**: Zadat velikost uzlu podporované pro datový uzel a zkuste operaci zopakovat.
+* **Popis**: Neplatná velikost virtuálního počítače pro datové uzly. Pro všechny datové uzly je podporována pouze velikost "velký virtuální počítač".  
+* **Omezení rizik**: Zadejte podporovanou velikost uzlu pro datový uzel a opakujte operaci.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **Popis**: Neplatná velikost virtuálního počítače pro hlavní uzel. Pro hlavní uzel je podporována pouze velikost "ExtraLarge virtuálního počítače".  
-* **Zmírnění dopadů**: Zadejte velikost uzlu podporované pro hlavní uzel a opakujte operaci
+* **Popis**: Neplatná velikost virtuálního počítače pro hlavní uzel Pro hlavní uzel je podporována pouze velikost virtuálního počítače ExtraLarge.  
+* **Omezení rizik**: Zadejte podporovanou velikost uzlu pro hlavní uzel a opakujte operaci.
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
-* **Popis**: ID předplatného *yourSubscriptionId* používá nemá dostatečná oprávnění k provedení operace odstranění clusteru *yourClusterName*.  
-* **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, vyřaďte ho a pak to zkuste znovu.  
+* **Popis**: Používané ID předplatného *yourSubscriptionId* nemá dostatečná oprávnění k provedení operace odstranění pro cluster *yourClusterName*.  
+* **Omezení rizik**: Pokud je cluster v chybovém stavu, vyřaďte ho a pak to zkuste znovu.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Popis**: Název kontejneru objektů blob v účtu externího úložiště *yourContainerName* je neplatný. Ujistěte se, že název začíná písmenem a obsahuje jenom malá písmena, číslice a pomlčky.  
-* **Zmírnění dopadů**: Zadejte název kontejneru objektů blob v účtu úložiště platný a zkuste operaci zopakovat.
+* **Popis**: Název kontejneru objektů BLOB externího účtu úložiště *yourContainerName* je neplatný. Ujistěte se, že název začíná písmenem a obsahuje jenom malá písmena, číslice a spojovníky.  
+* **Omezení rizik**: Zadejte platný název kontejneru objektů BLOB pro účet úložiště a zkuste operaci zopakovat.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **Popis**: Konfigurace pro externí účet úložiště *yourStorageAccountName* musí mít tajného klíče podrobnosti o nastavení.  
-* **Zmírnění dopadů**: Zadejte platný tajný klíč pro účet úložiště a zkuste operaci zopakovat.
+* **Popis**: Aby bylo možné nastavit podrobnosti tajného klíče, musí být konfigurace pro účet externího úložiště *yourStorageAccountName* .  
+* **Omezení rizik**: Zadejte platný tajný klíč pro účet úložiště a zkuste operaci zopakovat.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
-* **Popis**: Hlavička verze *yourVersionHeader* není v platném formátu rrrr mm-dd.  
-* **Zmírnění dopadů**: Zadejte platný formát pro hlavičku verze a opakujte žádost.
+* **Popis**: Hlavička verze *yourVersionHeader* není v platném formátu yyyy-MM-DD.  
+* **Omezení rizik**: Zadejte platný formát pro záhlaví verze a opakujte požadavek.
 
 ### <a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode
-* **Popis**: Konfigurace clusteru neplatný. Nalezeno více než jednu konfiguraci hlavního uzlu.  
-* **Zmírnění dopadů**: Upravte konfiguraci tak, že je zadán pouze jeden hlavní uzel.
+* **Popis**: Neplatná konfigurace clusteru Našla se víc než jedna konfigurace hlavního uzlu.  
+* **Omezení rizik**: Upravte konfiguraci tak, aby byl zadán pouze jeden hlavní uzel.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **Popis**: Operaci nelze dokončit v povoleném čase nebo maximální počet opakovaných pokusů je to možné. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek.
+* **Popis**: Operaci nelze dokončit v povoleném čase nebo maximální možné pokusy o opakování. Zkuste prosím žádost znovu.  
+* **Omezení rizik**: Opakujte požadavek.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
-* **Popis**: Parametr *yourParameterName* nemůže být null ani prázdný.  
-* **Zmírnění dopadů**: Zadejte platnou hodnotu parametru.
+* **Popis**: Parametr *yourParameterName* nemůže mít hodnotu null ani být prázdný.  
+* **Omezení rizik**: Zadejte platnou hodnotu parametru.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Popis**: Jeden nebo více vstupů žádost o vytvoření clusteru není platný. Ujistěte se, že vstupní hodnoty jsou správné a opakujte žádost.  
-* **Zmírnění dopadů**: Ujistěte se, že vstupní hodnoty jsou správné a opakujte žádost.
+* **Popis**: Nejméně jeden vstup žádosti o vytvoření clusteru není platný. Přesvědčte se, zda jsou vstupní hodnoty správné, a opakujte požadavek.  
+* **Omezení rizik**: Přesvědčte se, zda jsou vstupní hodnoty správné, a opakujte požadavek.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Popis**: Oblast funkce není k dispozici pro oblast *yourRegionName* a ID předplatného *yourSubscriptionId*.  
-* **Zmírnění dopadů**: Zadejte oblast, která podporuje clustery HDInsight. Jsou veřejně podporovaných oblastí: Jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.
+* **Popis**: Možnost oblastí není k dispozici pro oblast *yourRegionName* a ID předplatného *yourSubscriptionId*.  
+* **Omezení rizik**: Zadejte oblast, která podporuje clustery HDInsight. Veřejně podporované oblasti: Jihovýchodní Asie, Západní Evropa, Severní Evropa, Východní USA nebo Západní USA.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Popis**: Účet úložiště *yourStorageAccountName* je v oblasti *currentRegionName*. By měla být stejná jako oblast clusteru *yourClusterRegionName*.  
-* **Zmírnění dopadů**: Buď zadejte účet úložiště ve stejné oblasti, ve které váš cluster, nebo pokud máte už data v účtu úložiště, vytvořte nový cluster ve stejné oblasti jako existující účet úložiště. Pokud používáte na portálu, rozhraní upozorní je tento problém předem.
+* **Popis**: *YourStorageAccountName* účtu úložiště je v oblasti *currentRegionName*. Měl by být stejný jako *yourClusterRegionName*oblasti clusteru.  
+* **Omezení rizik**: Buď zadejte účet úložiště ve stejné oblasti, ve které je váš cluster, nebo pokud jsou vaše data v účtu úložiště, vytvořte nový cluster ve stejné oblasti jako existující účet úložiště. Pokud používáte portál, uživatelské rozhraní je předem upozorní na tento problém.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
 * **Popis**: Zadané ID předplatného *yourSubscriptionId* není aktivní.  
-* **Zmírnění dopadů**: Znovu aktivovat vaše předplatné nebo si nové předplatné platný.
+* **Omezení rizik**: Opětovná aktivace předplatného nebo získání nového platného předplatného.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
-* **Popis**: ID předplatného *yourSubscriptionId* nebyl nalezen.  
-* **Zmírnění dopadů**: Zkontrolujte, že ID vašeho předplatného je platný a zkuste operaci zopakovat.
+* **Popis**: ID předplatného *yourSubscriptionId* se nepovedlo najít.  
+* **Omezení rizik**: Ověřte, jestli je ID vašeho předplatného platné, a zkuste operaci zopakovat.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Popis**: Nejde přeložit DNS *yourDnsUrl*. Ujistěte se prosím, že je k dispozici plně kvalifikovanou adresu URL pro koncový bod objektu blob.  
-* **Zmírnění dopadů**: Zadejte adresu URL platný objekt blob. Adresa URL musí být plně platný, včetně počínaje *http://* a končící na *.com*.
+* **Popis**: Nepovedlo se přeložit DNS *yourDnsUrl*. Ujistěte se prosím, že je k dispozici plně kvalifikovaná adresa URL koncového bodu objektu BLOB.  
+* **Omezení rizik**: Zadejte platnou adresu URL objektu BLOB. Adresa URL musí být plně platná, včetně počátečního řetězce *http://* a končí *. com*.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
-* **Popis**: Nepodařilo se ověřit umístění prostředku *yourDnsUrl*. Ujistěte se prosím, že je k dispozici plně kvalifikovanou adresu URL pro koncový bod objektu blob.  
-* **Zmírnění dopadů**: Zadejte adresu URL platný objekt blob. Adresa URL musí být plně platný, včetně počínaje *http://* a končící na *.com*.
+* **Popis**: Nepovedlo se ověřit umístění *yourDnsUrl*prostředků. Ujistěte se prosím, že je k dispozici plně kvalifikovaná adresa URL koncového bodu objektu BLOB.  
+* **Omezení rizik**: Zadejte platnou adresu URL objektu BLOB. Adresa URL musí být plně platná, včetně počátečního řetězce *http://* a končí *. com*.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Popis**: Funkce verze není k dispozici pro verzi *specifiedVersion* a ID předplatného *yourSubscriptionId*.  
-* **Zmírnění dopadů**: Vyberte verzi, která je k dispozici a zkuste operaci zopakovat.
+* **Popis**: Možnost verze není dostupná pro *specifiedVersion* verzí a ID předplatného *yourSubscriptionId*.  
+* **Omezení rizik**: Vyberte verzi, která je k dispozici, a zkuste operaci zopakovat.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Popis**: Verze *specifiedVersion* není podporován.
-* **Zmírnění dopadů**: Vyberte verzi, která je podporována a zkuste operaci zopakovat.
+* **Popis**: *SpecifiedVersion* verze není podporována.
+* **Omezení rizik**: Vyberte podporovanou verzi a zkuste operaci zopakovat.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Popis**: Verze *specifiedVersion* není k dispozici v oblasti Azure *specifiedRegion*.  
-* **Zmírnění dopadů**: Vyberte verzi, která je podporována v zadanou oblast a zkuste operaci zopakovat.
+* **Popis**: *SpecifiedVersion* verze není k dispozici v Azure region *specifiedRegion*.  
+* **Omezení rizik**: Vyberte verzi, která je podporovaná v zadané oblasti, a zkuste operaci zopakovat.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound
-* **Popis**: Konfigurace clusteru neplatný. Nebyl nalezen v externí účty požadované konfigurace s účtu WASB.  
-* **Zmírnění dopadů**: Ověřte, že účet existuje a je správně zadaný v konfiguraci a zkuste operaci zopakovat.
+* **Popis**: Neplatná konfigurace clusteru Požadovaná konfigurace účtu WASB se v externích účtech nenašla.  
+* **Omezení rizik**: Ověřte, že účet existuje a je správně zadaný v konfiguraci, a zkuste operaci zopakovat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

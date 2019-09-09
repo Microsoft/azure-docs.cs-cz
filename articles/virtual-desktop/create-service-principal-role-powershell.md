@@ -1,54 +1,50 @@
 ---
-title: Vytvoření instančních objektů Preview virtuální plochy Windows a přiřazení role pomocí prostředí PowerShell – Azure
-description: Postup vytvoření instančních objektů a přiřadit role pomocí prostředí PowerShell ve verzi Preview virtuální pro plochu Windows.
+title: Vytvoření instančních objektů a přiřazení rolí ve Windows Virtual desktopu pomocí PowerShellu – Azure
+description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve verzi Preview služby Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206663"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811319"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: Vytvoření instančních objektů a přiřazení role pomocí prostředí PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
 
-Instanční objekty jsou identit, které vytvoříte v Azure Active Directory a přiřadit role a oprávnění pro konkrétní účel. Windows virtuální Desktop ve verzi Preview je můžete vytvořit instanční objekt pro:
+Instanční objekty jsou identity, které můžete vytvořit v Azure Active Directory k přiřazení rolí a oprávnění pro konkrétní účel. Ve verzi Preview služby Windows Virtual Desktop můžete vytvořit instanční objekt pro:
 
-- Automatizace úloh správy konkrétní virtuální plochy Windows.
-- Použijte jako přihlašovací údaje místo vyžaduje vícefaktorové ověřování uživatelů při spuštění jakékoli šablony Azure Resource Manageru pro virtuální plochy Windows.
+- Automatizujte určité úlohy správy virtuálních počítačů s Windows.
+- Použijte jako přihlašovací údaje místo uživatelů MFA – povinné při spuštění libovolné šablony Azure Resource Manager pro virtuální počítač s Windows.
 
 V tomto kurzu se dozvíte, jak:
 
 > [!div class="checklist"]
-> * Vytvoření instančního objektu v Azure Active Directory.
-> * Vytvořte přiřazení role v virtuální plochy Windows.
-> * Přihlaste se k virtuálnímu klientovi Windows s použitím instančního objektu.
+> * Vytvořte instanční objekt v Azure Active Directory.
+> * Vytvořte přiřazení role na virtuálním počítači s Windows.
+> * Přihlaste se k virtuálnímu počítači s Windows pomocí instančního objektu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moct vytvořit instanční objekty a přiřazení rolí, je třeba provést tři věci:
+Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte udělat tři věci:
 
-1. Instalace modulu Azure AD. K instalaci modulu, spusťte PowerShell jako správce a spusťte následující rutinu:
+1. Nainstalujte modul AzureAD. Pokud chcete modul nainstalovat, spusťte PowerShell jako správce a spusťte následující rutinu:
 
     ```powershell
     Install-Module AzureAD
     ```
 
-2. Spusťte následující rutiny s hodnotami v uvozovkách nahrazen hodnotami, které jsou relevantní pro vaši relaci.
+2. [Stažení a import modulu PowerShellu pro virtuální počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
 
-    ```powershell
-    $myTenantName = "<my-tenant-name>"
-    ```
-
-3. Proveďte všechny pokyny v tomto článku v téže relaci prostředí PowerShell. Nemusí fungovat, pokud okno zavřete a vrátíte se k němu později.
+3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Nemusí fungovat, pokud okno zavřete a vrátíte se k němu později.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu v Azure Active Directory
 
-Po splněny požadavky v relaci Powershellu spusťte následující rutiny Powershellu pro vytvoření objektu víceklientské služby na Azure.
+Po splnění požadavků v relaci PowerShellu spusťte následující rutiny PowerShellu pro vytvoření instančního objektu služby s více klienty v Azure.
 
 ```powershell
 Import-Module AzureAD
@@ -57,37 +53,13 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Vytvořit přiřazení role v náhledu virtuální plochy Windows
+## <a name="view-your-credentials-in-powershell"></a>Zobrazení přihlašovacích údajů v PowerShellu
 
-Teď, když jste vytvořili službu objektu zabezpečení, můžete ho použít pro přihlášení k virtuálnímu klientovi Windows. Ujistěte se, že se přihlásit pomocí účtu, který má oprávnění k vytvoření přiřazení role.
+Před ukončením relace PowerShellu si prohlédněte své přihlašovací údaje a zapište je pro budoucí potřebu. Heslo je obzvláště důležité, protože po zavření této relace PowerShellu ho nebudete moct načíst.
 
-Nejprve je potřeba [stáhněte a naimportujte modul Powershellu virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) použít v relaci Powershellu, pokud jste tak již neučinili.
+Tady jsou tři přihlašovací údaje, které byste měli napsat, a rutiny, které je potřeba spustit, abyste je získali:
 
-Spusťte následující rutiny Powershellu pro připojení k virtuálnímu klientovi Windows a přiřazení rolí pro službu vytvořit instanční objekt.
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
-```
-
-## <a name="sign-in-with-the-service-principal"></a>Přihlaste se pomocí instančního objektu služby
-
-Po vytvoření přiřazení role pro službu objektu zabezpečení, ujistěte se, že instanční objekt můžete přihlásit k virtuálnímu klientovi Windows spuštěním následující rutiny:
-
-```powershell
-$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
-```
-
-Po přihlášení, ujistěte se, že vše funguje tak, že testování několik rutin Windows Powershellu virtuální plochy se instanční objekt.
-
-## <a name="view-your-credentials-in-powershell"></a>Zobrazit svoje přihlašovací údaje v prostředí PowerShell
-
-Než ukončíte relaci Powershellu, zobrazit svoje přihlašovací údaje a zapište pro budoucí použití. Heslo je obzvláště důležité, protože nebude možné ji moct načíst i po zavření této relace Powershellu.
-
-Tady jsou tři přihlašovací údaje, které si musí zapsat a rutiny, které potřebujete ke spuštění, aby je:
-
-- Heslo:
+- Zadáno
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -105,9 +77,37 @@ Tady jsou tři přihlašovací údaje, které si musí zapsat a rutiny, které p
     $svcPrincipal.AppId
     ```
 
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Vytvoření přiřazení role ve verzi Preview pro virtuální počítač s Windows
+
+V dalším kroku vytvoříte přiřazení role RDS na virtuálním ploše Windows pro instanční objekt, což umožní instančnímu objektu přihlašovat se k virtuálnímu klientovi Windows. Ujistěte se, že používáte účet, který má oprávnění k vytváření přiřazení rolí vzdálené plochy.
+
+Spusťte následující rutiny PowerShellu, které se připojí k virtuální ploše Windows a zobrazí se vaši klienti služby Vzdálená plocha.
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+Get-RdsTenant | FL
+```
+
+Pro správného tenanta použijte tenanta a spuštěním následujících rutin PowerShellu vytvořte přiřazení role pro instanční objekt v zadaném tenantovi.
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+```
+
+## <a name="sign-in-with-the-service-principal"></a>Přihlaste se pomocí instančního objektu.
+
+Po vytvoření přiřazení role pro instanční objekt se ujistěte, že se instanční objekt může přihlásit k virtuálnímu počítači s Windows spuštěním následující rutiny:
+
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
+```
+
+Až se přihlásíte, ujistěte se, že vše funguje tak, že otestuje několik rutin PowerShellu pro virtuální počítače s Windows s instančním objektem.
+
 ## <a name="next-steps"></a>Další postup
 
-Po vytvoření instančního objektu a přiřazenou roli ve vašem tenantovi virtuální plochy Windows, můžete k vytvoření fondu hostitele. Další informace o fondech hostitele, pokračujte ke kurzu pro vytváření hostitele fondu ve virtuální plochy Windows.
+Jakmile vytvoříte instanční objekt a přiřadíte mu roli v tenantovi virtuálních klientů s Windows, můžete ho použít k vytvoření fondu hostitelů. Další informace o fondech hostitelů najdete v kurzu vytváření fondu hostitelů na virtuálním počítači s Windows.
 
  > [!div class="nextstepaction"]
- > [Kurz fondu hostitele virtuálního klienta Windows](./create-host-pools-azure-marketplace.md)
+ > [Kurz fondu hostitelů virtuálních počítačů s Windows](./create-host-pools-azure-marketplace.md)

@@ -1,17 +1,17 @@
 ---
 title: Nízký výkon Apache Hive dotazy LLAP ve službě Azure HDInsight
-description: Dotazy v Apache Hive LLAP jsou spouštěny pomaleji, než se očekávalo.
+description: Dotazy v Apache Hive LLAP ve službě Azure HDInsight běží pomaleji, než se očekává.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: b9d98d4aa73bef417d253901744445b848d60066
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d05febbe6ba9e30ef46f5e961af155d37c76c205
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700285"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811357"
 ---
 # <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>Scénář: Nízký výkon Apache Hive dotazy LLAP ve službě Azure HDInsight
 
@@ -47,7 +47,7 @@ Můžete také zvýšit využití mezipaměti LLAP, aby se zvýšil výkon s ná
 hive.fetch.task.conversion=none
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

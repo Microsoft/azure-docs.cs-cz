@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277094"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812308"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -87,6 +87,9 @@ Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quot
 * Kopírujete text z textového souboru a chcete vynechat několik prvních řádků, které neobsahují data ani informace záhlaví. Zadáním `skipLineCount` určete, kolik řádků se má přeskočit. Pokud zbytek souboru obsahuje řádek záhlaví, můžete také zadat `firstRowAsHeader`. Pokud je zadaný parametr `skipLineCount` i `firstRowAsHeader`, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví.
 
 ## <a name="json-format"></a>Formát JSON
+
+>[!NOTE]
+>Data Factory zavedli novou datovou sadu formátu JSON, přečtěte si článek [JSON](format-json.md) s podrobnostmi. Následující konfigurace pro datovou sadu datového úložiště založeného na souborech je stále podporovaná tak, jak je to pro zpětnou compabitility. Navrhnete použití nového modelu.
 
 K **Importovat/exportovat soubor JSON jako – je do nebo ze služby Azure Cosmos DB**, naleznete v části dokumentů JSON importu a exportu v [přesun dat do a ze služby Azure Cosmos DB](connector-azure-cosmos-db.md) článku.
 

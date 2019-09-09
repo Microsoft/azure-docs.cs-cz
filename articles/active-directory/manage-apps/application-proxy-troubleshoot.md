@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5b6d4cadf4592fbaa19c89a969b20e9eb69b6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424268"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812722"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 
-Při řešení potíží s proxy aplikací doporučujeme začít s kontrolou toku řešení potíží, laděním [problémů konektoru proxy aplikací](application-proxy-debug-connectors.md)a zjištěním, zda jsou konektory proxy aplikací správně nakonfigurovány. Pokud stále dochází k potížím s připojením k aplikaci, postupujte podle pokynů v části řešení potíží s [aplikací proxy při ladění aplikace](application-proxy-debug-apps.md).
+Při řešení potíží s proxy aplikací doporučujeme začít s kontrolou toku řešení potíží, [laděním problémů konektoru proxy aplikací](application-proxy-debug-connectors.md)a zjištěním, zda jsou konektory proxy aplikací správně nakonfigurovány. Pokud stále dochází k potížím s připojením k aplikaci, postupujte podle pokynů v části řešení potíží s [aplikací proxy při ladění aplikace](application-proxy-debug-apps.md).
 
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
 
@@ -82,7 +82,7 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 | Web nelze zobrazit stránku. | Uživatel může zobrazit tato chyba při pokusu o přístup k aplikaci, kterou jste publikovali, pokud je aplikace OWA. To může být způsobeno jedním z následujících:<br><li>Definované hlavního názvu služby pro tuto aplikaci je nesprávný. Ujistěte se, že je správný název SPN konfigurované pro tuto aplikaci.</li><li>Uživatel, který pokusu o přístup k aplikaci je pomocí účtu Microsoft, nikoli na řádné podnikový účet pro přihlášení, nebo je uživatel uživatele typu Host. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci. Account Microsoft uživatelů a hostů nemá přístup k aplikacím IWA.</li><li>Uživatel, který se pokusil o přístup k aplikaci, není pro tuto aplikaci na místní straně správně definován. Ujistěte se, že tento uživatel má správná oprávnění definovaná pro tuto back-end aplikaci na místním počítači. |
 | Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že chcete přiřadit uživatele s přístupem k této aplikaci. | Při pokusu o přístup k aplikaci, kterou jste publikovali při použití účtů Microsoft namísto jejich podnikového účtu, se může zobrazit tato chyba. Tato chyba může zobrazit také uživatele typu Host. Uživatelé Microsoft Account a hosté nelze přístup k aplikacím IWA. Ujistěte se, že uživatel přihlásí pomocí firemního účtu, který odpovídá doméně publikovanou aplikaci.<br><br>Nemusí mít přiřazené uživatele pro tuto aplikaci. Přejděte na **aplikace** kartu a v části **uživatelů a skupin**, přiřaďte tento uživatel nebo skupina uživatelů k této aplikaci. |
 | Teď je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Při pokusu o přístup k aplikaci, kterou jste publikovali, se tato chyba může zobrazit, pokud nejsou správně definované pro tuto aplikaci na místní straně. Ujistěte se, že uživatelé mají správná oprávnění definovaná pro tuto back-end aplikaci na místním počítači. |
-| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Při pokusu o přístup k aplikaci, kterou jste publikovali, se může zobrazit tato chyba, pokud správce předplatitele explicitně nepřiřadil licenci Premium/Basic. Přejděte do služby Active Directory účastníka **licence** kartu a ujistěte se, že tento uživatel nebo skupina uživatelů je přiřazená licence Premium nebo Basic. |
+| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění přistupovat k této aplikaci. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium. | K této chybě může uživatel získat přístup při pokusu o přístup k aplikaci, kterou jste publikovali, pokud správce předplatitele nepřiřadil explicitně licenci na prémii. Klikněte na kartu **licence** pro předplatitele služby Active Directory a ujistěte se, že je tomuto uživateli nebo skupině uživatelů přiřazena licence Premium. |
 | Server se zadaným názvem hostitele se nepovedlo najít. | Při pokusu o přístup k aplikaci, kterou jste publikovali v případě, že vlastní doména aplikace není správně nakonfigurovaná, může se uživateli zobrazit tato chyba. Postupujte podle kroků v části [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md) Ujistěte se, že jste nahráli certifikát pro doménu a správně nakonfigurovali záznam DNS. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Moje chyby se zde uvedené.

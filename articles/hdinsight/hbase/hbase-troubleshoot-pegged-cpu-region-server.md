@@ -1,17 +1,17 @@
 ---
 title: Dodaný procesor na serveru oblasti v Apache HBA clusteru v Azure HDInsight
-description: Dodaný procesor na serveru oblasti v Apache HBA clusteru v Azure HDInsight
+description: Řešení potíží s dodaným PROCESORem na serveru oblastí v clusteru Apache HBA ve službě Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/01/2019
-ms.openlocfilehash: 3c48671595b0d7d7013519f59db5204272bf8b27
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b1fba84e7841713b005e387bcd806344f6a9e7a1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781371"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810800"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Scénář: Dodaný procesor na serveru oblasti v Apache HBA clusteru v Azure HDInsight
 
@@ -49,7 +49,7 @@ Chcete-li ověřit, zda byl upgrade úspěšný, zkontrolujte, zda jsou příslu
 ps -aux | grep regionserver, and verify the version like '''/usr/lib/jvm/java-8-openjdk-amd64/bin/java
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 

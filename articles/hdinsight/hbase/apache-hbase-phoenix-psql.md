@@ -1,6 +1,6 @@
 ---
-title: Hromadné načítání do Apache Phoenixu s využitím psql – Azure HDInsight
-description: Pomocí nástroje psql načítání hromadné načtení dat do Phoenixu tabulek.
+title: Hromadné načítání do Apache Phoenix s využitím psql – Azure HDInsight
+description: Načtení dat hromadného načtení do Apache Phoenix tabulek v Azure HDInsight pomocí nástroje psql
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,32 +8,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15bb65e004de916862297f91278328cddb16487d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718640"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810410"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Hromadné načtení dat do Apache Phoenixu s využitím psql
 
-[Apache Phoenix](https://phoenix.apache.org/) je masivně paralelní relační databáze založená na open source [Apache HBase](../hbase/apache-hbase-overview.md). Phoenix nabízí podobném SQL dotazy nad HBase. Phoenix používá ovladače JDBC umožňuje uživatelům vytvářet, odstraňovat a změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, k vytvoření aplikace s nízkou latencí nad HBase. Phoenix přidá společné procesory, které podporují spouštění kódu dodaná klientem v adresním prostoru serveru, spouští kód společně umístěné s daty. Tím se minimalizují přenos dat klienta nebo serveru.  Pro práci s daty v HDInsight pomocí Phoenix, vytvoření tabulky a pak načíst data do nich.
+[Apache Phoenix](https://phoenix.apache.org/) je open source, široce paralelní relační databáze postavená na [Apache HBA](../hbase/apache-hbase-overview.md). Phoenix poskytuje dotazy podobné SQL přes HBA. Phoenix používá ovladače JDBC k tomu, aby uživatelům umožnila vytvářet, odstraňovat a měnit tabulky, indexy, zobrazení a sekvence SQL a Upsert řádky jednotlivě a hromadně. Phoenix používá nativní kompilaci noSQL namísto použití MapReduce ke kompilaci dotazů a k vytváření aplikací s nízkou latencí nad adaptéry HBA. Phoenix přidá spoluprocesory pro podporu spouštění kódu zadaného klientem v adresním prostoru serveru a provádění kódu společně umístěného s daty. Tím se minimalizuje přenos dat mezi klientem a serverem.  Chcete-li pracovat s daty pomocí nástroje Phoenix v HDInsight, nejprve vytvořte tabulky a potom do nich načtěte data.
 
-## <a name="bulk-loading-with-apache-phoenix"></a>Hromadné načtení se Apache Phoenix
+## <a name="bulk-loading-with-apache-phoenix"></a>Hromadné načítání pomocí Apache Phoenix
 
-Existuje více způsobů, jak dostat data do HBase, včetně použití klientského rozhraní API pro úlohu MapReduce s TableOutputFormat, nebo vložení dat ručně pomocí prostředí HBase. Phoenix nabízí dvě metody pro načítání dat ve formátu CSV do tabulky Phoenix: klient načítá nástroj s názvem `psql`a nástroj zatížení na základě MapReduce hromadně.
+Existuje několik způsobů, jak získat data do adaptérů HBA, včetně použití klientských rozhraní API, úlohy MapReduce s TableOutputFormat, nebo vložení dat ručně pomocí prostředí HBA. Phoenix poskytuje dvě metody pro načítání dat CSV do tabulek Phoenix: Nástroj pro načítání klientů s `psql`názvem a nástroj pro hromadné načítání založené na MapReduce.
 
-`psql` Nástroj je s jedním vláknem a je nejvhodnější pro načítání megabajtech nebo gigabajtech data. Všechny soubory sdíleného svazku clusteru, který se má načíst musí mít příponu "CSV".  Můžete také určit soubory skriptů SQL v `psql` příkazového řádku s příponou ".sql".
+Tento `psql` nástroj je založený na jednom vlákně a je nejvhodnější pro načítání megabajtů a gigabajtů dat. Všechny soubory CSV, které mají být načteny, musí mít příponu souboru. csv.  Soubory skriptu SQL můžete zadat také na `psql` příkazovém řádku s příponou souboru. SQL.
 
-Hromadné načtení se MapReduce se používá pro větší objemy dat, obvykle v produkčních scénářích, jako MapReduce používá více vláken.
+Hromadné načítání pomocí MapReduce se používá pro mnohem větší objemy dat, obvykle v produkčních scénářích, protože MapReduce používá více vláken.
 
-Než začnete, načítání dat, ověřte, že je povoleno Phoenix a zda jsou nastavení časového limitu dotazu podle očekávání.  Přístup k vašemu clusteru HDInsight [Apache Ambari](https://ambari.apache.org/) řídicí panel, vyberte HBase a potom na kartě konfigurace.  Přejděte dolů a ověřte, že Apache Phoenix nastavený na `enabled` uvedeno:
+Než začnete s načtením dat, ověřte, že je povolená možnost Phoenix a že nastavení časového limitu dotazu jsou očekávaná.  Přejděte na řídicí panel [Apache Ambari](https://ambari.apache.org/) clusteru HDInsight, vyberte adaptéry HBA a pak kartu konfigurace.  Posuňte se dolů a ověřte, že Apache Phoenix `enabled` je nastavená na jak je znázorněno níže:
 
-![Nastavení clusteru HDInsight Apache Phoenix](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix nastavení clusteru HDInsight](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
 
-### <a name="use-psql-to-bulk-load-tables"></a>Použití `psql` hromadné načítání tabulek
+### <a name="use-psql-to-bulk-load-tables"></a>Použít `psql` k hromadnému načítání tabulek
 
-1. Vytvořit novou tabulku a pak uložte dotaz s názvem souboru `createCustomersTable.sql`.
+1. Vytvořte novou tabulku a pak dotaz uložte pomocí názvu souboru `createCustomersTable.sql`.
 
     ```sql
     CREATE TABLE Customers (
@@ -44,7 +44,7 @@ Než začnete, načítání dat, ověřte, že je povoleno Phoenix a zda jsou na
         Country varchar);
     ```
 
-2. Kopírování souboru CSV (ukazuje příklad obsah) jako `customers.csv` do `/tmp/` adresáře pro načtení do nově vytvořené tabulky.  Použití `hdfs` příkazu kopírování souboru CSV do požadovaného zdrojového umístění.
+2. Zkopírujte soubor CSV (příklad zobrazeného obsahu) jako `customers.csv` `/tmp/` adresář pro načtení do nově vytvořené tabulky.  `hdfs` Pomocí příkazu zkopírujte soubor CSV do požadovaného zdrojového umístění.
 
     ```
     1,Samantha,260000.0,18,US
@@ -57,14 +57,14 @@ Než začnete, načítání dat, ověřte, že je povoleno Phoenix a zda jsou na
     hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
     ```
 
-3. Vytvořit dotaz SQL SELECT k ověření správně načíst vstupní data a pak uložte dotaz s názvem souboru `listCustomers.sql`. Můžete použít jakýkoli dotaz SQL.
+3. Vytvořte dotaz SQL SELECT a ověřte, zda jsou správně načtena vstupní data, a pak dotaz uložte `listCustomers.sql`pomocí názvu souboru. Můžete použít libovolný dotaz SQL.
      ```sql
     SELECT Name, Income from Customers group by Country;
     ```
 
-4. Hromadné načtení dat tak, že otevřete *nové* Hadoop příkazové okno. Nejprve přejděte do adresáře spuštění s `cd` příkaz a pak použít `psql` nástroj (Python `psql.py` příkaz). 
+4. Hromadně načtěte data otevřením *nového* okna příkazového řádku Hadoop. Nejprve změňte umístění spouštěcího adresáře pomocí `cd` příkazu a pak `psql` použijte nástroj (příkaz Python `psql.py` ). 
 
-    Následující příklad očekává, že jste si zkopírovali `customers.csv` souboru z účtu úložiště do vašeho místního dočasného adresáře pomocí `hdfs` jako v kroku 2 výše.
+    Následující příklad očekává, že jste zkopírovali `customers.csv` soubor z účtu úložiště do místního dočasného adresáře pomocí `hdfs` as v kroku 2 výše.
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
@@ -73,40 +73,40 @@ Než začnete, načítání dat, ověřte, že je povoleno Phoenix a zda jsou na
     ```
 
     > [!NOTE]   
-    > Chcete-li zjistit `ZookeeperQuorum` název, vyhledejte [Apache ZooKeeper](https://zookeeper.apache.org/) kvora řetězce v souboru `/etc/hbase/conf/hbase-site.xml` s názvem vlastnosti `hbase.zookeeper.quorum`.
+    > Chcete-li `ZookeeperQuorum` zjistit název, vyhledejte [Apache Zookeeper](https://zookeeper.apache.org/) řetězec kvora v souboru `/etc/hbase/conf/hbase-site.xml` s názvem `hbase.zookeeper.quorum`vlastnosti.
 
-5. Po `psql` operace dokončí, zobrazí se zpráva v příkazovém okně:
+5. Po dokončení `psql` operace by se měla zobrazit zpráva v příkazovém okně:
 
     ```
     CSV Upsert complete. 5000 rows upserted
     Time: 4.548 sec(s)
     ```
 
-## <a name="use-mapreduce-to-bulk-load-tables"></a>Použití MapReduce pro hromadné načítání tabulek
+## <a name="use-mapreduce-to-bulk-load-tables"></a>Použití MapReduce k hromadnému načítání tabulek
 
-Pro vyšší propustnost načítání distribuované přes clusteru, použijte nástroj zatížení MapReduce. Tento zavaděč nejprve převádí HFiles všechna data a pak poskytuje vytvořený HFiles HBase.
+Pro nahrání vyšší propustnosti distribuované přes cluster použijte nástroj pro načtení MapReduce. Tento zavaděč nejprve převede všechna data na HFiles a potom poskytne vytvořenou HFiles pro adaptéry HBA.
 
-1. Spustit zavaděč MapReduce sdíleného svazku clusteru pomocí `hadoop` příkaz jar Phoenix klienta:
+1. Spusťte zavaděč sdíleného svazku clusteru MapReduce pomocí `hadoop` příkazu s jar klienta v Phoenixu:
 
     ```bash
     hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
     ```
 
-2. Vytvořit novou tabulku s příkazem SQL, stejně jako u `CreateCustomersTable.sql` v předchozím kroku 1.
+2. Vytvořte novou tabulku pomocí příkazu jazyka SQL, jako `CreateCustomersTable.sql` v předchozím kroku 1.
 
-3. Pokud chcete ověřit schéma tabulky, spusťte `!describe inputTable`.
+3. Chcete-li ověřit schéma tabulky, spusťte příkaz `!describe inputTable`.
 
-4. Určit cestu k umístění na vstupní data, například ukázkový `customers.csv` souboru. Vstupní soubory mohou být ve vašem účtu úložiště WASB nebo ADLS. V tomto ukázkovém scénáři se v vstupní soubory `<storage account parent>/inputFolderBulkLoad` adresáře.
+4. Určete cestu k umístění vstupních dat, jako je například soubor příkladu `customers.csv` . Vstupní soubory můžou být ve vašem účtu úložiště WASB/ADLS. V tomto ukázkovém scénáři se vstupní soubory nacházejí v `<storage account parent>/inputFolderBulkLoad` adresáři.
 
-5. Přejděte do adresáře spuštění pro příkaz MapReduce hromadné načtení:
+5. Přejděte do spouštěcího adresáře pro příkaz MapReduce Bulk Load:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-6. Vyhledejte vaši `ZookeeperQuorum` hodnota v `/etc/hbase/conf/hbase-site.xml`, s názvem vlastnosti `hbase.zookeeper.quorum`.
+6. Vyhledejte hodnotu v `/etc/hbase/conf/hbase-site.xml`umístění s názvem `hbase.zookeeper.quorum`vlastnosti. `ZookeeperQuorum`
 
-7. Cesta k třídě a spustit `CsvBulkLoadTool` nástroj příkazu:
+7. Nastavte cestu k cestě a spusťte `CsvBulkLoadTool` příkaz nástroje:
 
     ```bash
     /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
@@ -114,7 +114,7 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. Použití MapReduce se službou Azure Data Lake Storage, vyhledejte kořenovém adresáři Data Lake Storage, který je `hbase.rootdir` hodnota v `hbase-site.xml`. V následujícím příkazu je kořenový adresář Data Lake Storage `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. V tomto příkazu zadejte vstupní Data Lake Storage a výstupní složky jako parametry:
+8. Pokud chcete použít MapReduce s Azure Data Lake Storage, vyhledejte Data Lake Storage kořenový adresář, což je `hbase.rootdir` hodnota v. `hbase-site.xml` V následujícím příkazu je `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`Data Lake Storage kořenový adresář. V tomto příkazu zadejte vstupní a výstupní složky Data Lake Storage jako parametry:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -126,21 +126,21 @@ Pro vyšší propustnost načítání distribuované přes clusteru, použijte n
 
 ## <a name="recommendations"></a>Doporučení
 
-* Použijte stejné střední úložiště pro vstupní a výstupní složky, Azure Storage (WASB) nebo Azure Data Lake Storage (ADL). Přenos dat do Data Lake Storage ze služby Azure Storage, můžete použít `distcp` příkaz:
+* Pro vstupní i výstupní složky použijte stejné paměťové médium, buď Azure Storage (WASB) nebo Azure Data Lake Storage (ADL). Chcete-li přenést data z Azure Storage do data Lake Storage, můžete použít `distcp` příkaz:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder
     ```
 
-* Použijte větší velikost pracovních uzlů. Mapa procesu hromadného kopírování MapReduce vytvořit velké množství dočasná výstupní, které vyplnit místo k dispozici bez-systému souborů DFS. Pro velký objem hromadné načítání použijte další a větší velikost pracovních uzlů. Počet uzlů pracovního procesu, kterou můžete přidělit přímo do vašeho clusteru má vliv na rychlost zpracování.
+* Použijte pracovní uzly větší velikosti. Mapové procesy MapReduce hromadné kopie vytvářejí velké objemy dočasného výstupu, které naplňují dostupný prostor, který není DFS. Pro velké množství hromadných načtení použijte více a větší pracovní uzly. Počet pracovních uzlů přidělených vašemu clusteru má přímý vliv na rychlost zpracování.
 
-* Rozdělte vstupních souborů do bloků ~ 10 GB. Hromadné načítání je operace náročné na úložiště, takže rozdělení vstupních souborů do více bloků výsledkem lepší výkon.
+* Oddělte vstupní soubory do bloků o velikosti až 10 GB. Hromadné načítání je operace náročná na úložiště, takže rozdělení vstupních souborů do více bloků má za následek lepší výkon.
 
-* Vyhněte se hotspotům serveru oblasti. Pokud váš klíč řádku monotónně narůstá, sekvenční zápisy HBase může vyvolávat hotspotting serveru oblasti. *Solení* klíč řádku snižuje sekvenční zápisy. Phoenix poskytuje způsob, jak transparentně salt klíč řádku s "solení" bajtů pro určité tabulce, jak je uvedeno níže.
+* Vyhněte se hotspotům serveru oblastí. Pokud je váš klíč řádku rovnoměrně zvětšujícíý, můžou se sekvenční zápisy vyvolávat v oblasti Server hotspotting. *Nasolení* klíče řádku zkracuje sekvenční zápis. Phoenix poskytuje způsob, jak transparentně nasolete klíč řádku s použitím dvoubajtového bajtu pro konkrétní tabulku, jak je odkazováno níže.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Hromadné načítání dat s Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
-* [Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
-* [Solené tabulky](https://phoenix.apache.org/salted.html)
-* [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html)
+* [Hromadné načítání dat pomocí Apache Phoenix](https://phoenix.apache.org/bulk_dataload.html)
+* [Použití Apache Phoenix s clustery Apache HBA založenými na systému Linux v HDInsight](../hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Nasolené tabulky](https://phoenix.apache.org/salted.html)
+* [Gramatika Apache Phoenix](https://phoenix.apache.org/language/index.html)

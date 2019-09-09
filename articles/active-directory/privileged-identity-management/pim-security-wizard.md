@@ -1,9 +1,9 @@
 ---
-title: Průvodce zabezpečením role Azure AD v PIM – Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje zabezpečení průvodce, který slouží k přiřazení role Azure AD převést trvalé privilegovaného na oprávněné pomocí Azure AD Privileged Identity Management (PIM).
+title: Průvodce zabezpečením rolí Azure AD v PIM-Azure Active Directory | Microsoft Docs
+description: Popisuje Průvodce zabezpečením, který můžete použít k převodu trvalých přiřazení rolí Azure AD na oprávněné pomocí Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,63 +11,63 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4fd850ac2116dc7f353eea87845501fff020bb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0d6d94df29ba16ecee06d70f5edac15a96a4299d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476224"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804014"
 ---
-# <a name="azure-ad-roles-security-wizard-in-pim"></a>Průvodce zabezpečením role Azure AD v PIM
+# <a name="azure-ad-roles-security-wizard-in-pim"></a>Průvodce zabezpečením rolí Azure AD v PIM
 
-Pokud jste první, kdo ke spuštění služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) pro vaši organizaci, zobrazí se průvodce. Průvodce vám pomůže pochopit bezpečnostní rizika privilegované identity a jak používat PIM ke snížení rizika. Není nutné měnit stávající přiřazení rolí v průvodci, pokud chcete to udělat později.
+Pokud jste první, kdo bude pro vaši organizaci používat službu Azure Active Directory (Azure AD) Privileged Identity Management (PIM), zobrazí se průvodce. Průvodce vám pomůže porozumět bezpečnostním rizikům privilegovaných identit a používání PIM k omezení těchto rizik. V průvodci nemusíte dělat žádné změny v existujících přiřazeních rolí, pokud to budete chtít udělat později.
 
-## <a name="wizard-overview"></a>Průvodce – přehled
+## <a name="wizard-overview"></a>Přehled Průvodce
 
-Před zahájením vaší organizace pomocí PIM jsou trvalé všechna přiřazení rolí: uživatelům se vždycky nacházejí v těchto rolích i v případě, že nejsou potřeba v současné době jejich oprávnění. První krok průvodce zobrazí seznam rolí vysokými a kolik uživatelů je aktuálně v těchto rolích. Můžete přejít na konkrétní roli Další informace o uživatelích, pokud jeden nebo více z nich neznáte.
+Předtím, než se vaše organizace začne používat PIM, jsou všechna přiřazení rolí trvalá: uživatelé jsou vždycky v těchto rolích, i když k nim zatím nepotřebují jejich oprávnění. V prvním kroku průvodce se zobrazí seznam rolí s vysokou úrovní oprávnění a počet uživatelů, kteří jsou v těchto rolích aktuálně. Můžete přejít k určité roli a získat další informace o uživatelích, pokud některé z nich nejsou známé.
 
-Druhý krok průvodce vám dává možnost změnit přiřazení rolí správce.  
+Druhý krok průvodce vám nabídne možnost změnit přiřazení rolí správce.  
 
 > [!WARNING]
-> Je důležité, abyste měli aspoň jeden globální správce a více než jeden správce privilegovaných rolí pomocí účtu organizace (ne účet Microsoft). Pokud existuje jenom jeden správce privilegovaných rolí, organizaci nebude možné spravovat PIM, pokud tento účet je odstraněný.
-> Také zachovat přiřazení rolí trvalé, pokud má uživatel účet Microsoft (účtu, které používají pro přihlášení ke službám Microsoftu, jako je Skype nebo Outlook.com). Pokud budete chtít vyžadovat vícefaktorové ověřování pro aktivaci pro tuto roli, tento uživatel bude uzamčena na.
+> Je důležité, abyste měli aspoň jednoho globálního správce a více než jednoho správce privilegované role s účtem organizace (ne účet Microsoft). Pokud je k dispozici pouze jeden správce privilegovaných rolí, organizace nebude moci spravovat PIM, pokud je tento účet odstraněn.
+> I když má uživatel účet Microsoft (účet, který se používá pro přihlášení ke službám Microsoftu, jako je Skype nebo Outlook.com), zachovejte i přiřazení role trvalé. Pokud máte v úmyslu pro aktivaci pro tuto roli vyžadovat MFA, bude tento uživatel uzamčen.
 
 ## <a name="run-the-wizard"></a>Spuštění průvodce
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Otevřít **Azure AD Privileged Identity Management**.
+1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Klikněte na tlačítko **role Azure AD** a potom klikněte na tlačítko **průvodce**.
+1. Klikněte na **role Azure AD** a potom klikněte na **Průvodce**.
 
-    ![Role Azure AD – Průvodce stránky zobrazující 3 kroky ke spuštění Průvodce](./media/pim-security-wizard/wizard-start.png)
+    ![Role Azure AD – stránka průvodce zobrazující 3 kroky pro spuštění Průvodce](./media/pim-security-wizard/wizard-start.png)
 
-1. Klikněte na tlačítko **1 zjistit privilegované role**.
+1. Klikněte na **1 zjistit privilegované role**.
 
-1. Projděte si seznam privilegovaných rolí, které chcete zjistit, kteří uživatelé jsou trvalé nebo oprávněné.
+1. Projděte si seznam privilegovaných rolí a zjistěte, kteří uživatelé jsou trvalé nebo oprávněné.
 
-    ![Zjistit privilegované role – podokno Role zobrazující trvalý a bude možné členy](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Vyhledat privilegované role – podokno role zobrazující trvalé a oprávněné členy](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. Klikněte na tlačítko **Další** vyberte členy, které chcete nastavit jako oprávněné.
+1. Kliknutím na tlačítko **Další** vyberte členy, které chcete nastavit jako oprávněné.
 
-    ![Převést členy oprávněné stránku s možnostmi a vyberte členy, které chcete nastavit jako oprávněné role](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Převeďte členy na stránku s nárokem s možnostmi výběru členů, které chcete nastavit jako oprávněné pro role.](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. Po výběru členů, klikněte na tlačítko **Další**.
+1. Po výběru členů klikněte na **Další**.
 
-    ![Zkontrolujte změny stránky zobrazující členů se přiřazení trvalé rolí, které budou převedeny](./media/pim-security-wizard/review-changes.png)
+    ![Stránka zkontrolovat změny zobrazující členy s trvalými přiřazeními rolí, které se budou převádět](./media/pim-security-wizard/review-changes.png)
 
-1. Klikněte na tlačítko **OK** pro převod na trvalé přiřazení oprávněné.
+1. Kliknutím na tlačítko **OK** převedete trvalá přiřazení na oprávněné.
 
-    Po dokončení převodu, zobrazí se vám oznámení.
+    Po dokončení převodu se zobrazí oznámení.
 
-    ![Oznámení zobrazující stav převodu](./media/pim-security-wizard/notification-completion.png)
+    ![Oznámení znázorňující stav převodu](./media/pim-security-wizard/notification-completion.png)
 
-Pokud je potřeba převést na oprávněné. ostatní přiřazení privilegovaných rolí, můžete znovu spustit průvodce. Pokud chcete použít rozhraní PIM místo průvodce, přečtěte si téma [přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md).
+Pokud potřebujete převést další přiřazení privilegovaných rolí na oprávněné, můžete průvodce spustit znovu. Pokud chcete použít rozhraní PIM místo průvodce, přečtěte si téma [přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přiřazení role Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Udělení přístupu na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md)
+- [Přiřazení rolí Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Udělení přístupu jiným správcům pro správu PIM](pim-how-to-give-access-to-pim.md)

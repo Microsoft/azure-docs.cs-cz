@@ -1,44 +1,44 @@
 ---
-title: Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
-description: Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
+title: Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové učení
+description: Pro distribuované hloubkové učení ve službě Azure HDInsight použijte Caffe na Apache Spark.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31911c6c2456ab8b4949bab6ef8e541b91fc8a2c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721510"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814198"
 ---
-# <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
+# <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe na Azure HDInsight Spark pro distribuované hloubkové učení
 
 
 ## <a name="introduction"></a>Úvod
 
-Obsáhlý learning se dopadu na všechno od zdravotní péče na transportation do výroby a další. Podniky přecházejí ke hloubkového učení řeší těžké problémy, jako je třeba [klasifikace obrázků](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznávání řeči](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)objektu rozpoznávání a počítač překladu. 
+Obsáhlý Learning má vliv na vše od zdravotní péče až po dopravu do výroby a další. Společnosti usnadňují podrobné učení, aby vyřešily pevné problémy, jako je [klasifikace obrázků](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznávání řeči](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), rozpoznávání objektů a strojový překlad. 
 
-Existují [mnoho oblíbených architektur](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, atd. [Caffe](https://caffe.berkeleyvision.org/) je jedno z rozhraní nejslavnějšího-symbolické (imperativní) neuronové sítě a běžně používá v mnoha oblastech, včetně pro počítačové zpracování obrazu. Kromě toho [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinuje Caffe s Apache Sparkem v takovém případě obsáhlý learning můžete snadno použít v existujícím clusteru Hadoop. Obsáhlý learning spolu s kanály Spark ETL, snížení složitosti systému a latence můžete použít pro učení tak získají kompletní řešení.
+Existuje [spousta oblíbených rozhraní](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano atd. [Caffe](https://caffe.berkeleyvision.org/) je jedním z nejvíce slavnýchch (imperativních) neuronové síťových rozhraní a často se používá v mnoha oblastech, včetně počítačové vize. [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) navíc spojuje Caffe s Apache Spark. v takovém případě je možné snadno použít rozsáhlou výuku v existujícím clusteru Hadoop. Obsáhlý Learning můžete použít spolu s kanály Spark ETL, snížením složitosti systému a latencí pro kompletní výuku řešení.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) je nabídka Apache Hadoop v cloudu, který poskytuje optimalizované opensourcové analytické clustery pro Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache Kafka a služby ML. HDInsight je zajištěná smlouvou SLA 99,9 %. Každá z těchto technologií pro velké objemy dat a aplikace nezávislých výrobců softwaru je jednoduše nasadit jako spravovaný cluster se zabezpečením a monitorováním pro podniky.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) je cloudová Apache Hadoop nabídka, která poskytuje optimalizované Open Source analytické clustery pro Apache Spark, Apache Hive, Apache Hadoop, Apache hba, Apache Storm, Apache Kafka a ml služby. HDInsight je zajištěné smlouvou SLA 99,9%. Každou z těchto technologií pro velké objemy dat a ISV aplikace je snadno nasaditelné jako spravované clustery se zabezpečením a monitorováním pro podniky.
 
-Tento článek ukazuje, jak nainstalovat [Caffe ve Sparku](https://github.com/yahoo/CaffeOnSpark) pro HDInsight cluster. Tento článek také používá integrované ukázka mnist ručně k věnovaných ukázce používání distribuovaných hloubkového učení pomocí Sparku v HDInsight v procesorech.
+Tento článek ukazuje, jak nainstalovat [Caffe ve Sparku](https://github.com/yahoo/CaffeOnSpark) pro cluster HDInsight. V tomto článku se také používá integrovaná ukázka MNIST ručně zapsaných, která ukazuje, jak používat distribuovaný hloubkový Learning pomocí HDInsight Spark na procesorech.
 
-Existují čtyři kroky ke splnění úkolu:
+Úkol se dá provést čtyřmi kroky:
 
-1. Nainstalujte požadované závislosti na všechny uzly
-2. Vytvoření hlavního uzlu Caffe ve Sparku pro HDInsight
-3. Distribuovat požadované knihovny do všech pracovních uzlů
-4. Vytvoření modelu Caffe a spustíte ji v distribuovanému.
+1. Nainstalovat požadované závislosti na všech uzlech
+2. Sestavování Caffe na Spark pro HDInsight na hlavní uzel
+3. Distribuujte požadované knihovny do všech pracovních uzlů.
+4. Vytvořte Caffe model a spusťte ho distribuovaným způsobem.
 
-HDInsight je řešení PaaS, nabízí skvělou platformou funkce – tak, aby byl snadno provádět některé úlohy. Jedna funkce použité v tomto blogovém příspěvku se nazývá [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), pomocí kterého můžete spustit příkazy prostředí přizpůsobit uzly clusteru (hlavního uzlu, pracovním uzlu nebo hraničnímu uzlu).
+Vzhledem k tomu, že HDInsight je PaaS řešení, nabízí skvělé funkce platformy – díky tomu je snadné provádět některé úlohy. Jedna z funkcí, které se používají v tomto blogovém příspěvku, se nazývá [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), pomocí které můžete provádět příkazy prostředí pro přizpůsobení uzlů clusteru (hlavní uzel, pracovní uzel nebo hraniční uzel).
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Krok 1:  Nainstalujte požadované závislosti na všechny uzly
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Krok 1:  Nainstalovat požadované závislosti na všech uzlech
 
-Abyste mohli začít, musíte nainstalovat závislosti. Lokality Caffe a [CaffeOnSpark lokality](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) nabízí některé užitečné wiki pro instalaci závislosti na režimu YARN pro Spark. HDInsight také využívá Spark v režimu YARN. Musíte však přidat několik Další závislosti na platformě HDInsight. Uděláte to tak, použijte akci skriptu a spusťte ho na všechny hlavní uzly a uzly pracovního procesu. Tuto akci se skripty trvá přibližně 20 minut, jak tyto závislosti také závisí na jiné balíčky. Ji by měl umístit do umístění, které je dostupné pro váš cluster HDInsight, jako je například umístění Githubu nebo výchozí účet úložiště objektů BLOB.
+Abyste mohli začít, musíte nainstalovat závislosti. Lokalita Caffe a [CaffeOnSpark web](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) nabízí několik užitečných wiki pro instalaci závislostí pro Spark v režimu příze. HDInsight používá také Spark v režimu PŘÍZe. Pro platformu HDInsight ale potřebujete přidat několik dalších závislostí. K tomu je třeba použít akci skriptu a spustit ji ve všech hlavních uzlech a pracovních uzlech. Tato akce skriptu trvá přibližně 20 minut, protože závislosti závisejí i na dalších balíčcích. Měli byste ho umístit do nějakého umístění, které je přístupné pro váš cluster HDInsight, jako je například umístění GitHubu nebo výchozí účet BLOB Storage.
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
@@ -59,18 +59,18 @@ Abyste mohli začít, musíte nainstalovat závislosti. Lokality Caffe a [CaffeO
     echo "protobuf installation done"
 
 
-Existují dva kroky v akci skriptu. Prvním krokem je instalace potřebných knihoven. Tyto knihovny zahrnují potřebné knihovny pro kompilaci Caffe (například gflags, glog) i s Caffe (například numpy). Používáte libatlas optimalizace využití procesoru, ale vždy provedením CaffeOnSpark wikiwebu o instalaci jiných optimalizace knihoven, jako je například MKL nebo CUDA (pro GPU).
+Akce skriptu obsahuje dva kroky. Prvním krokem je instalace všech požadovaných knihoven. Tyto knihovny zahrnují potřebné knihovny pro kompilaci Caffe (například Gflags, glog) a spouštění Caffe (například NumPy). používáte libatlas pro optimalizaci procesoru, ale při instalaci dalších knihoven optimalizace, jako je MKL nebo CUDA (pro GPU), můžete vždy postupovat podle wikiwebu CaffeOnSpark.
 
-Druhým krokem je ke stažení, kompilaci a instalace protobuf 2.5.0 Caffe za běhu. Protobuf 2.5.0 [vyžádáním](https://github.com/yahoo/CaffeOnSpark/issues/87), ale tato verze není k dispozici jako balíček na Ubuntu 16, takže je musíte je zkompilovat ze zdrojového kódu. Existují také několik prostředků na Internetu o tom, jak jej zkompilovat. Další informace najdete v tématu [tady](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+Druhým krokem je stažení, kompilování a instalace protobuf 2.5.0 pro Caffe během běhu. [Vyžaduje](https://github.com/yahoo/CaffeOnSpark/issues/87)se Protobuf 2.5.0, ale tato verze není k dispozici jako balíček na Ubuntu 16, takže je potřeba ji zkompilovat ze zdrojového kódu. K dispozici je také několik prostředků na internetu, jak je zkompilovat. Další informace najdete [tady](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-Abyste mohli začít, lze pouze spustit tuto akci se skripty u vašeho clusteru na všechny uzly pracovního procesu a hlavní uzly (pro HDInsight 3.5). Můžete spustit skript akce v existujícím clusteru, nebo při vytváření clusteru pomocí skriptových akcí. Další informace o akcí skriptů najdete v dokumentaci [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+Chcete-li začít, stačí spustit tuto akci skriptu pro váš cluster na všechny uzly pracovních procesů a hlavní uzly (pro HDInsight 3,5). Můžete buď spustit akce skriptu pro existující cluster, nebo použít akce skriptu během vytváření clusteru. Další informace o akcích skriptu najdete v dokumentaci [zde](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
-![Skript akce instalace závislostí](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![Akce skriptů pro instalaci závislostí](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Sestavení Caffe na Apache Sparku pro HDInsight hlavního uzlu
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Sestavování Caffe na Apache Spark pro HDInsight na hlavní uzel
 
-Druhým krokem je vytvoření Caffe v hlavního uzlu a pak distribuovat kompilovaných knihoven do všech pracovních uzlů. V tomto kroku je nutné [ssh do vašeho hlavního uzlu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Poté je třeba dodržovat [proces sestavení CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Níže je skript, který můžete použít k sestavení CaffeOnSpark v několika dalších krocích. 
+Druhým krokem je sestavování Caffe na hlavnímu uzlu a následné distribuci kompilovaných knihoven do všech pracovních uzlů. V tomto kroku musíte [ke svému hlavnímu uzluu SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Potom je nutné postupovat podle [procesu sestavení CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Níže je skript, který můžete použít k sestavování CaffeOnSpark pomocí několika dalších kroků. 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -109,35 +109,35 @@ Druhým krokem je vytvoření Caffe v hlavního uzlu a pak distribuovat kompilov
     hadoop fs -put CaffeOnSpark/caffe-distri/distribute/lib/* /CaffeOnSpark/caffe-distri/distribute/lib/
     hadoop fs -put CaffeOnSpark/caffe-public/distribute/lib/* /CaffeOnSpark/caffe-public/distribute/lib/
 
-Budete muset provést více než co dokumentace CaffeOnSpark říká. Změny jsou tyto:
-- Změnit pouze na CPU a použít libatlas pro tento konkrétní účel.
-- Umístěte datové sady do úložiště objektů BLOB, který je sdílené umístění, která je přístupná pro všechny uzly pracovního procesu pro pozdější použití.
-- Vložit kompilovaných knihoven Caffe do úložiště objektů BLOB a později zkopírujete těchto knihoven na všech uzlech, pomocí akce skriptu, aby čas další kompilace.
+Možná budete muset udělat víc, než kolik dokumentace CaffeOnSpark říká. Změny jsou následující:
+- Změňte pouze na CPU a k tomuto konkrétnímu účelu použijte libatlas.
+- Datové sady vložte do úložiště objektů BLOB, což je sdílené umístění, které je přístupné pro všechny uzly pracovního procesu pro pozdější použití.
+- Zkompilované knihovny Caffe umístěte do úložiště objektů BLOB a později je zkopírujte do všech uzlů pomocí akcí skriptu, aby nedocházelo k další době kompilace.
 
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Řešení potíží: Došlo Ant BuildException: exec vrátila: 2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Při Došlo k ANT BuildException: exec vrátil: 2
 
-Při prvním pokusu o sestavení CaffeOnSpark, někdy stavu
+Při prvním pokusu o sestavení CaffeOnSpark se někdy říká
 
     failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
-Vyčistit úložiště kódu pomocí "provést čisté" a spuštění "Zkontrolujte sestavení" Tento problém odstranit, dokud máte správnými závislostmi.
+Vyčistěte úložiště kódu pomocí příkazu "vyčistit" a potom spuštěním příkazu "vytvořit sestavení" vyřešte tento problém, pokud máte správné závislosti.
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>Řešení potíží: Časový limit připojení úložiště maven
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>Při Časový limit připojení úložiště Maven
 
-Někdy maven poskytuje k připojení vypršení časového limitu, podobně jako následující fragment kódu:
+Někdy Maven poskytuje chybu časového limitu připojení, podobně jako následující fragment kódu:
 
     Retry:
     [INFO] Downloading: https://repo.maven.apache.org/maven2/com/twitter/chill_2.11/0.8.0/chill_2.11-0.8.0.jar
     Feb 01, 2017 5:14:49 AM org.apache.maven.wagon.providers.http.httpclient.impl.execchain.RetryExec execute
     INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
-Za pár minut, zkuste to znovu.
+Po několika minutách se musíte opakovat.
 
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>Řešení potíží: Selhání testu pro Caffe
+### <a name="troubleshooting-test-failure-for-caffe"></a>Při Selhání testu pro Caffe
 
-Pravděpodobně uvidíte při poslední kontrole CaffeOnSpark selhání testu. To je pravděpodobně týkající se kódování UTF-8, ale by neměla mít vliv na použití Caffe
+Při závěrečné kontrole CaffeOnSpark se pravděpodobně zobrazí chyba testu. To se pravděpodobně týká kódování UTF-8, ale nemělo by mít vliv na použití Caffe.
 
     Run completed in 32 seconds, 78 milliseconds.
     Total number of tests run: 7
@@ -145,76 +145,76 @@ Pravděpodobně uvidíte při poslední kontrole CaffeOnSpark selhání testu. T
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Krok 3: Distribuovat požadované knihovny do všech pracovních uzlů
+## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Krok 3: Distribuujte požadované knihovny do všech pracovních uzlů.
 
-Dalším krokem je pro distribuci knihoven (v podstatě knihovny v CaffeOnSpark/caffe – veřejné/distribuovat/lib/a CaffeOnSpark/caffe distribuční/rozdělit/lib /) na všech uzlech. V kroku 2 vložte tyto knihovny v úložišti objektů BLOB a v tomto kroku pomocí akcí skriptů a zkopírujte ho do hlavní uzly a uzly pracovního procesu.
+Dalším krokem je distribuce knihoven (v podstatě knihovny v CaffeOnSpark/Caffe-Public/Distributed/lib/a CaffeOnSpark/Caffe-distribuční/Distribute/lib/) na všechny uzly. V kroku 2 umístíte tyto knihovny do úložiště objektů BLOB a v tomto kroku použijete akce skriptů ke zkopírování do všech hlavních uzlů a pracovních uzlů.
 
-K tomu, spustíte akci skriptu, jak je znázorněno v následujícím fragmentu kódu:
+Chcete-li to provést, spusťte akci skriptu, jak je znázorněno v následujícím fragmentu kódu:
 
     #!/bin/bash
     hadoop fs -get wasb:///CaffeOnSpark /home/changetoyourusername/
 
-Ujistěte se, že potřebujete, přejděte na správném místě konkrétní cluster)
+Ujistěte se, že je potřeba nasměrovat do správného umístění, které je specifické pro váš cluster.)
 
-Vzhledem k tomu, že v kroku 2, vložíte ho v úložišti objektů BLOB, která je přístupná pro všechny uzly, v tomto kroku stačí ho zkopírovat do všech uzlů.
+Vzhledem k tomu, že v kroku 2 ho umístíte do úložiště objektů BLOB, které je přístupné pro všechny uzly, v tomto kroku ho stačí zkopírovat do všech uzlů.
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>Krok 4: Vytvoření modelu Caffe a spustíte ji v distribuovanému
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>Krok 4: Vytvoření modelu Caffe a jeho spuštění distribuovaným způsobem
 
-Caffe je instalovat až po dokončení spuštění v předchozích krocích. Dalším krokem je napsat modelu Caffe. 
+Caffe se nainstaluje po spuštění předchozích kroků. Dalším krokem je vytvoření modelu Caffe. 
 
-Caffe používá "výrazové architekturu", kde pro vytváření modelu, stačí definovat konfiguračního souboru, a bez psaní kódu vůbec (ve většině případů). Pojďme se podívat existuje. 
+Caffe používá "" užitečnou architekturu ", kde pro sestavování modelu stačí definovat pouze konfigurační soubor a bez kódování (ve většině případů). Pojďme si to udělat tady. 
 
-Model, který tréninku je ukázkový model pro trénování mnist ručně. Databázi mnist ručně zapsaných číslic má sadu 60 000 příklady trénovací a testovací sadu 10 000 příklady. Je podmnožinou s větším NIST k dispozici. Číslice se velikost normalizovaných a uprostřed image s pevnou velikostí. CaffeOnSpark má některé skripty stáhnout datovou sadu a převést na správný formát.
+Model, který je výukový, je ukázkový model pro školení MNIST ručně zapsaných. Databáze MNIST ručně zapsaných psaných číslic má školicí sadu 60 000 příkladů a sadu testů 10 000 příkladů. Je podmnožinou větší sady, která je k dispozici z NIST. Velikost číslic byla normalizovaná a zarovnané na střed v imagi s pevnou velikostí. CaffeOnSpark obsahuje některé skripty pro stažení této datové sady a jejich převádění do správného formátu.
 
-CaffeOnSpark uvádí některé ukázkové topologie sítě pro trénování mnist ručně. Má dobrý návrh rozdělení síťovou architekturu (topologie sítě) a optimalizace. V takovém případě se vyžaduje dva soubory: 
+CaffeOnSpark poskytuje některé síťové topologie jako příklad pro školení MNIST ručně zapsaných. Má dobrý návrh na rozdělení síťové architektury (topologie sítě) a optimalizaci. V tomto případě jsou vyžadovány dva soubory: 
 
-soubor "Solver" (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) se používá pro dohled optimalizace a generování parametrů aktualizace. Například definuje, jestli CPU nebo GPU se používá, co je podpora, kolik iterací jsou, atd. Definuje také topologie sítě které neuron program používejte (což je druhý soubor, který potřebujete). Další informace o řešení, najdete v části [Caffe dokumentaci](https://caffe.berkeleyvision.org/tutorial/solver.html).
+pro zobrazení optimalizace a generování aktualizací parametrů se používá soubor Řešitel ($ {CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt). Například definuje, zda se používá CPU nebo GPU, co je potenciál, kolik iterací atd. Také definuje, která topologie sítě neuron by měla používat program (což je druhý soubor, který potřebujete). Další informace o Řešiteli najdete v [dokumentaci k Caffe](https://caffe.berkeleyvision.org/tutorial/solver.html).
 
-V tomto příkladu vzhledem k tomu, že používáte procesoru spíše než GPU, by měl změnit na poslední řádek:
+V tomto příkladu, protože používáte procesor spíše než GPU, byste měli poslední řádek změnit na:
 
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Konfigurace Caffe](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe Config1](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
 
 Podle potřeby můžete změnit další řádky.
 
-Druhý soubor (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definuje, jak síť neuron vypadá a relevantní vstupní a výstupní soubor. také musíte aktualizovat soubor tak, aby odrážely umístění dat školení. Změňte následující součásti na lenet_memory_train_test.prototxt (potřebujete tak, aby odkazovala na správné umístění, které jsou specifické pro váš cluster):
+Druhý soubor ($ {CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definuje, jak bude síť neuron vypadat jako a příslušný vstupní a výstupní soubor. také je nutné soubor aktualizovat tak, aby odrážel umístění školicích dat. Změňte následující část v lenet_memory_train_test. prototxt (musíte odkazovat na správné umístění specifické pro váš cluster):
 
-- Změňte "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" na "wasb: / / / projektů/machine_learning/image_dataset/mnist_train_lmdb"
-- Změňte "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" na "wasb: / / / projektů/machine_learning/image_dataset/mnist_test_lmdb"
+- Změňte "File:/Users/mridul/bigml/demodl/mnist_train_lmdb" na "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
+- Změňte "File:/Users/mridul/bigml/demodl/mnist_test_lmdb/" na "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Konfigurace Caffe](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe Config2](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
-Další informace o tom, jak definovat v síti, zkontrolujte, [Caffe dokumentaci na datové sadě mnist ručně](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
+Další informace o tom, jak definovat síť, najdete v [dokumentaci k Caffe v datové sadě mnist ručně zapsaných](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) .
 
-Pro účely tohoto článku můžete použít tento příklad mnist ručně. Spuštěním následujících příkazů z hlavního uzlu:
+Pro účely tohoto článku použijete tento MNIST ručně zapsaných příklad. Z hlavního uzlu spusťte následující příkazy:
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
-Ve výstupu předchozího příkazu distribuuje požadované soubory (lenet_memory_solver.prototxt a lenet_memory_train_test.prototxt) pro každý kontejner YARN. Příkaz také nastaví příslušné cesty každý ovladač Spark/vykonavatele LD_LIBRARY_PATH. LD_LIBRARY_PATH je definována v předchozím fragmentu kódu a odkazuje na umístění, které obsahuje CaffeOnSpark knihovny. 
+Předchozí příkaz distribuuje požadované soubory (lenet_memory_solver. prototxt a lenet_memory_train_test. prototxt) do každého kontejneru PŘÍZe. Příkaz také nastaví příslušnou cestu jednotlivých ovladačů a prováděcích modulů Spark na LD_LIBRARY_PATH. LD_LIBRARY_PATH je definována v předchozím fragmentu kódu a odkazuje na umístění, které obsahuje knihovny CaffeOnSpark. 
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
-Vzhledem k tomu, že používáte režim clusteru YARN, v takovém případě ovladač Spark přehrávání bude naplánován libovolného kontejneru (a libovolný pracovní uzel) byste měli vidět jenom v konzole něco jako výstup:
+Vzhledem k tomu, že používáte režim clusteru PŘÍZe, v takovém případě se ovladač Spark naplánuje na libovolný kontejner (a na libovolný pracovní uzel), který byste měli vidět jenom v konzole, jako je například:
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
-Pokud chcete vědět, co se stalo, obvykle potřebujete získat ovladače protokolu, který obsahuje další informace o Sparku. V takovém případě budete muset přejít do uživatelského rozhraní YARN najít relevantní protokoly YARN. Můžete využít uživatelské rozhraní YARN pomocí této adresy URL: 
+Pokud chcete zjistit, co se stalo, je obvykle potřeba získat protokol ovladače Spark, který obsahuje další informace. V takovém případě je nutné přejít na uživatelské rozhraní PŘÍZe a najít relevantní protokoly PŘÍZe. Pomocí této adresy URL můžete získat uživatelské rozhraní PŘÍZe: 
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![UŽIVATELSKÉ ROZHRANÍ YARN](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![ROZHRANÍ PŘÍZE](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
 
-Podívejte se na tom, kolik prostředky se přidělují pro tuto konkrétní aplikaci můžete využít. Můžete kliknout na odkaz "Plánovač" a uvidíte, že pro tuto aplikaci neexistují devět kterých kontejnerech je spuštěná. Požádejte YARN poskytnout osm prováděcí moduly a jiný kontejner pro proces ovladačů. 
+Můžete si prohlédnout, kolik prostředků je pro tuto konkrétní aplikaci přiděleno. Můžete kliknout na odkaz Scheduler (Plánovač) a potom uvidíte, že pro tuto aplikaci jsou spuštěné devět kontejnerů. požádáte o PŘÍZi, aby poskytovala osm prováděcích modulů, a další kontejner pro proces ovladače. 
 
-![Plánovač YARN](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![Plánovač PŘÍZe](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
 
-Můžete chtít zkontrolujte ovladač protokolů nebo protokoly kontejneru, zda nedochází k chybám. Pro protokoly ovladačů můžete kliknutím na ID aplikace v uživatelském rozhraní YARN a pak klikněte na tlačítko "Protokoly". Protokoly ovladačů se zapisují do stderr.
+Pokud dojde k selhání, můžete chtít ověřit protokoly ovladačů nebo protokoly kontejnerů. V případě protokolů ovladačů můžete kliknout na ID aplikace v uživatelském rozhraní PŘÍZe a potom kliknout na tlačítko protokoly. Protokoly ovladačů se zapisují do stderr.
 
-![UŽIVATELSKÉ ROZHRANÍ YARN 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![PŘÍZOVÉ UŽIVATELSKÉ ROZHRANÍ 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
 
-Například může se zobrazit některé chyby pod z protokolů ovladač oznamující, že přidělíte příliš mnoho prováděcí moduly.
+Například se může zobrazit některá z následujících chyb z protokolů ovladačů, což značí, že přidělíte příliš mnoho prováděcích modulů.
 
     17/02/01 07:26:06 ERROR ApplicationMaster: User class threw exception: java.lang.IllegalStateException: Insufficient training data. Please adjust hyperparameters or increase dataset.
     java.lang.IllegalStateException: Insufficient training data. Please adjust hyperparameters or increase dataset.
@@ -227,7 +227,7 @@ Například může se zobrazit některé chyby pod z protokolů ovladač oznamuj
         at java.lang.reflect.Method.invoke(Method.java:498)
         at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:627)
 
-V některých případech problému může dojít ve prováděcí moduly spíše než ovladače. V takovém případě musíte zkontrolovat protokoly kontejneru. Můžete vždy získat protokoly kontejneru a pak získat kontejneru se nezdařilo. Například může splňovat toto selhání při spouštění Caffe.
+Někdy k problému může dojít v vykonavatelích, nikoli v ovladačích. V takovém případě je nutné ověřit protokoly kontejneru. Vždy můžete získat protokoly kontejneru a pak získat kontejner, který selhal. Tuto chybu můžete například splnit při spuštění Caffe.
 
     17/02/01 07:12:05 WARN YarnAllocator: Container marked as failed: container_1485916338528_0008_05_000005 on host: 10.0.0.14. Exit status: 134. Diagnostics: Exception from container-launch.
     Container id: container_1485916338528_0008_05_000005
@@ -250,26 +250,26 @@ V některých případech problému může dojít ve prováděcí moduly spíše
 
     Container exited with a non-zero exit code 134
 
-V takovém případě budete muset získat ID neúspěšné kontejner (v případě výše je container_1485916338528_0008_05_000005). Pak budete muset spustit 
+V takovém případě musíte získat ID neúspěšného kontejneru (ve výše uvedeném případě je to container_1485916338528_0008_05_000005). Pak je potřeba spustit 
 
     yarn logs -containerId container_1485916338528_0008_03_000005
 
-z hlavního uzlu. Po zkontrolování chyby kontejneru, je způsobena režimu GPU (kde používejte režimu procesoru místo) v lenet_memory_solver.prototxt.
+z hlavnímu uzlu. Po kontrole selhání kontejneru je to způsobeno použitím režimu GPU (místo toho byste měli použít režim procesoru) v lenet_memory_solver. prototxt.
 
     17/02/01 07:10:48 INFO LMDB: Batch size:100
     WARNING: Logging before InitGoogleLogging() is written to STDERR
     F0201 07:10:48.309725 11624 common.cpp:79] Cannot use GPU in CPU-only Caffe: check mode.
 
 
-## <a name="getting-results"></a>Získání výsledků
+## <a name="getting-results"></a>Získávání výsledků
 
-Protože jsou přidělování 8 prováděcí moduly a topologie sítě je jednoduché, má pouze trvat přibližně 30 minut výsledky spuštění. Z příkazového řádku můžete zobrazit nechte modelu wasb:///mnist.model a vložení výsledků do složky s názvem wasb: / / / / / mnist_features_result.
+Vzhledem k tomu, že přidělujete 8 prováděcích modulů a topologie sítě je jednoduchá, měla by být výsledkem spuštění pouze zhruba 30 minut. Z příkazového řádku vidíte, že model vložíte do wasb:///mnist.model a výsledky vložíte do složky s názvem wasb:///mnist_features_result.
 
 Výsledky můžete získat spuštěním
 
     hadoop fs -cat hdfs:///mnist_features_result/*
 
-a výsledek bude vypadat takto:
+a výsledek vypadá takto:
 
     {"SampleID":"00009597","accuracy":[1.0],"loss":[0.028171852],"label":[2.0]}
     {"SampleID":"00009598","accuracy":[1.0],"loss":[0.028171852],"label":[6.0]}
@@ -281,20 +281,20 @@ a výsledek bude vypadat takto:
     {"SampleID":"00009604","accuracy":[0.97],"loss":[0.0677709],"label":[3.0]}
     {"SampleID":"00009605","accuracy":[0.97],"loss":[0.0677709],"label":[4.0]}
 
-SampleID představuje ID v datové sadě mnist ručně a popisek je číslo identifikující modelu.
+SampleID představuje ID v datové sadě MNIST ručně zapsaných a popisek je číslo, které model identifikuje.
 
 
 ## <a name="conclusion"></a>Závěr
 
-V této dokumentaci jste se pokusili nainstalovat CaffeOnSpark se spouštěním jednoduchý příklad. HDInsight je plně spravované cloudovou distribuované výpočetní platforma a je nejlepším místem pro spouštění úlohy pokročilých analýz a strojového učení na velkých sadách dat a pro distribuované obsáhlého learningu, může použití Caffe pro HDInsight Spark k provádění hloubkové učení úlohy.
+V této dokumentaci jste se pokusili nainstalovat CaffeOnSpark se spuštěným jednoduchým příkladem. HDInsight je plně spravovaná cloudová platforma pro distribuované výpočetní prostředí a je to nejlepší místo pro provoz strojového učení a pokročilé analýzy pro velkou datovou sadu a pro distribuované hloubkové učení. k zajištění hloubkového učení můžete použít Caffe v HDInsight Spark. provádění.
 
 
 ## <a name="seealso"></a>Viz také
-* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
+* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)

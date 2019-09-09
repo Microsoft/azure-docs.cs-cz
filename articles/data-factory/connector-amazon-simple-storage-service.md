@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: aebcefadf4dfdb9301a01b0b4117e8aa2e429898
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e11c6d23e93701e1608e1c444deb47c80543789e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276518"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813289"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -25,7 +25,8 @@ ms.locfileid: "70276518"
 
 Tento článek popisuje, jak kopírovat data ze služby Amazon Simple Storage Service (Amazon S3). Další informace o Azure Data Factory najdete v článku [úvodní článek](introduction.md).
 
-V případě scénáře migrace dat ze služby Amazon S3 do Azure Storage se dozvíte víc o tom, jak [pomocí Azure Data Factory migrovat data z Amazon S3 do Azure Storage](data-migration-guidance-s3-azure-storage.md).
+>[!TIP]
+>V případě scénáře migrace dat ze služby Amazon S3 do Azure Storage se dozvíte víc o tom, jak [pomocí Azure Data Factory migrovat data z Amazon S3 do Azure Storage](data-migration-guidance-s3-azure-storage.md).
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -100,12 +101,12 @@ Zde naleznete příklad:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. 
 
-- Pro **Parquet, oddělený text, Avro a binární formát**, přečtěte si část [Parquet, text a datovou sadu binárního formátu s oddělovači](#format-based-dataset) .
-- Pro jiné formáty, jako je **Formát ORC/JSON**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
+- Pro **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [Parquet, oddělený text, JSON, Avro a binární formát binárního formátu](#format-based-dataset) .
+- Pro jiné formáty, jako je **Formát ORC**, se podívejte na [jiný oddíl formátu DataSet](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, Avro a binární formát
+### <a name="format-based-dataset"></a>Datová sada Parquet, oddělený text, JSON, Avro a binární formát
 
-Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, textovém Avro nebo binárním formátu**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro datovou sadu založenou na formátu a podporovaná nastavení. V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
+Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro datovou sadu založenou na formátu a podporu. možnost. V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
 
 | Vlastnost   | Popis                                                  | Požaduje se |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +148,7 @@ Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, textovém Avro ne
 
 ### <a name="other-format-dataset"></a>Jiná Formátová datová sada
 
-Pokud chcete kopírovat data z Amazon S3 ve **formátu ORC/JSON**, podporují se tyto vlastnosti:
+Pokud chcete kopírovat data ze služby Amazon S3 ve **formátu ORC**, podporují se tyto vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -229,12 +230,12 @@ Pokud chcete kopírovat data z Amazon S3 ve **formátu ORC/JSON**, podporují se
 
 ### <a name="amazon-s3-as-source"></a>Jako zdroj Amazon S3
 
-- Chcete-li kopírovat z **Parquet, oddělený text, Avro a binární formát**, přečtěte si oddíl [Parquet, text s oddělovači a zdroj binárního formátu](#format-based-source) .
-- Chcete-li kopírovat z jiných formátů, jako je **Formát ORC/JSON**, informace naleznete v části [Další zdrojový formát](#other-format-source) .
+- Chcete-li kopírovat z **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si část [zdrojové části Parquet, oddělovače text, JSON, Avro a Binary Format](#format-based-source) .
+- Chcete-li kopírovat z jiných formátů, jako je například **Formát ORC**, přečtěte si část [Další zdrojový formát](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, oddělený text, Avro a zdroj binárního formátu
+#### <a name="format-based-source"></a>Parquet, oddělený text, JSON, Avro a binární formát formátu
 
-Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, textovém Avro nebo binárním formátu**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaná nastavení. V části `storeSettings` nastavení ve zdroji kopírování založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
+Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, oddělený text, JSON, Avro a binární formát**, přečtěte si článek [Parquet Format](format-parquet.md), formated [Text Format](format-delimited-text.md), [Avro Format](format-avro.md) a [Binary Format](format-binary.md) pro zdroj aktivity kopírování na základě formátu a podporovaná nastavení. V části `storeSettings` nastavení ve zdroji kopírování založené na formátu jsou podporovány následující vlastnosti služby Amazon S3:
 
 | Vlastnost                 | Popis                                                  | Požaduje se                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -293,7 +294,7 @@ Pokud chcete kopírovat data ze služby Amazon S3 v **Parquet, textovém Avro ne
 
 #### <a name="other-format-source"></a>Jiný zdroj formátu
 
-Pokud chcete kopírovat data ze služby Amazon S3 ve **formátu ORC/JSON**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data ze služby Amazon S3 ve **formátu ORC**, v části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |

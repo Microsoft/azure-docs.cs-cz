@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 04/29/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 01772fc9bd988cb6e4c3f7a946a03235fc63dd93
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390168"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813410"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -244,7 +244,7 @@ Ověřte, jestli brána firewall na procesovém serveru blokuje přístup na zá
 Zvyšte šířku pásma mezi procesovým serverem a Azure a potom zkontrolujte, jestli k problému stále dochází.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
 
