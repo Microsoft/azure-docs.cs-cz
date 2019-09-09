@@ -1,6 +1,6 @@
 ---
-title: Průvodce programováním pro SCP.NET pro Storm v Azure HDInsight
-description: Další informace o použití SCP.NET vytvořit. Na základě NET topologií Storm pro použití se Stormem spuštěné v Azure HDInsight.
+title: Průvodce programováním v SCP.NET pro zaplavení ve službě Azure HDInsight
+description: Naučte se používat SCP.NET k vytvoření. Topologie nenáročného zaplavení pro použití s více operačními systémy v Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,43 +8,44 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7bb26cd35daf67a3337907aded18e3302b19d81
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692472"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813880"
 ---
-# <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
-Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](https://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](https://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
+# <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Průvodce programováním SCP pro Apache Storm ve službě Azure HDInsight
 
-Pouze projekt spojovací bod služby přenést Storm ve Windows, ale také projekt přidán rozšíření a přizpůsobení pro ekosystém Windows. Rozšíření patří prostředí pro vývojáře .NET a knihovny, přizpůsobení zahrnuje nasazení založené na Windows. 
+SCP je platforma pro sestavování v reálném čase, spolehlivém, konzistentním a vysoce výkonném aplikaci pro zpracování dat. Je postavená na [Apache Storm](https://storm.incubator.apache.org/) – systém zpracování datových proudů navržený komunitou OSS. Zaplavování je navržené pomocí Nathan Marz a otevřelo ho pomocí Twitteru. Využívá [Apache Zookeeper](https://zookeeper.apache.org/), jiný projekt Apache, který umožňuje vysoce spolehlivou distribuovanou koordinaci a správu stavu. 
 
-Rozšíření a přizpůsobení se provádí tak, že jsme není nutné vytvořit fork projekty OSS a abychom mohli využívat odvozené ekosystémů postavené na Storm.
+V systému Windows není pouze port spojovacího bodu služby, ale také projekt přidal rozšíření a přizpůsobení ekosystému systému Windows. Mezi tato rozšíření patří prostředí pro vývojáře .NET a knihovny, přizpůsobení zahrnuje nasazení založené na systému Windows. 
 
-## <a name="processing-model"></a>Zpracování modelu
-Data v spojovací bod služby je modelovaná jako nepřetržité proudy řazených kolekcí členů. Obvykle řazené kolekce členů tok do některé fronty nejprve pak vyzvedávání a transformovat obchodní logiky, které hostují uvnitř topologie Storm, nakonec výstup může rourou jako řazené kolekce členů do jiného systému spojovací bod služby, nebo se zaměřuje na úložiště, jako je distribuovaný systém souborů nebo databáze jako je SQL Server.
+Rozšíření a přizpůsobení se provádí takovým způsobem, že nepotřebujete rozvětvit projekty OSS a můžeme využít odvozené ekosystémy, které jsou postaveny nad sebou.
 
-![Diagram fronty tak data pro zpracování, které se předají úložiště dat](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+## <a name="processing-model"></a>Model zpracování
+Data ve spojovacím bodu služby jsou modelována jako kontinuální streamování řazených kolekcí členů. Obvykle se řazené kolekce členů napřed do některé fronty a následně vybírají a transformují se pomocí obchodní logiky hostované v rámci topologie s více podsítěmi, takže výstup může být rozdělený jako řazené kolekce členů do jiného systému SCP nebo je možné ho považovat za úložiště, jako je distribuovaný systém souborů nebo databáze. Podobně jako SQL Server.
 
-Storm definuje výpočetní graf, topologie aplikací. Každý uzel v topologii obsahuje logiku zpracování a vazby mezi uzly označení datového toku. Uzly se vložit vstupní data do topologie se nazývají _spouts_, který slouží k sekvencování data. Vstupní data může nacházet v souboru protokolů, transakční databází, čítače výkonu systému atd. Uzly s toky oba vstupní a výstupní data se nazývají _bolts_, který proveďte filtrování skutečná data a výběry a agregaci.
+![Diagram dat s dořazením do fronty pro zpracování, který informační kanály ukládá do úložiště dat](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-Spojovací bod služby podporuje maximální úsilí na alespoň jedno a přesně-jednou data zpracování. Do aplikace distribuované zpracování datových proudů různých chybám může dojít během zpracování dat, jako je výpadek sítě, selhání počítače nebo Chyba kódu uživatele atd. Na alespoň jedno zpracování zajistí, že všechna data se zpracuje alespoň jednou po přehrání automaticky stejná data, když dochází k chybě. V alespoň jedno zpracování je jednoduché a spolehlivé a vyhovuje také mnoho aplikací. Pokud aplikace vyžaduje přesně počítání, na alespoň jedno zpracování je však nedostatečné od stejných dat může potenciálně možné přehrát v topologii aplikace. V takovém, přesně-po zpracování slouží k Ujistěte se, že výsledek je správný, i když data mohou být znovu přehrát a zpracování více než jednou.
+V sestavení je topologie aplikace definována grafem výpočtu. Každý uzel v topologii obsahuje logiku zpracování a odkazy mezi uzly označují tok dat. Uzly pro vložení vstupních dat do topologie se nazývají _spoutů_, které lze použít k sesekvencování dat. Vstupní data se můžou nacházet v protokolech souborů, transakční databázi, čítači výkonu systému atd. Uzly, které mají vstupní i výstupní datové toky, se nazývají _šrouby_, což znamená skutečné filtrování a výběr dat a agregace.
 
-Spojovací bod služby umožňuje vývojářům .NET k vývoji aplikací procesu reálném čase data přitom můžete využívat na jazyce Java Virtual Machine (JVM) pomocí Stormu na pozadí. .NET a JVM komunikovat přes místní sockety TCP. V podstatě každý Spout/Bolt je pár .NET nebo Javě procesu, kde logiku uživatelského běží v procesu .NET jako modul plug-in.
+Spojovací bod služby podporuje nejlepší úsilí, nejméně jednou a zpracování dat právě jednou. V aplikaci pro zpracování distribuovaného streamování může během zpracování dat dojít k různým chybám, jako je výpadek sítě, selhání počítače nebo chyba uživatelského kódu atd. Při nesprávném zpracování se všechna data zpracují aspoň jednou přehráním, když se automaticky přehrají stejná data, když dojde k chybě. Nejméně jeden proces zpracování je jednoduchý a spolehlivý a dobře vyhovuje spoustě aplikací. Nicméně pokud aplikace vyžaduje přesné počítání, nestačí zpracování nejméně jednou, protože stejná data by mohla být v topologii aplikace potenciálně přehrána. V takovém případě je zpracování právě jednou navrženo tak, aby bylo zajištěno, že výsledek je správný i v případě, že data mohou být znovu přehrána a zpracována vícekrát.
 
-Jak vytvořit aplikaci zpracování dat nad rámec spojovací bod služby, jsou potřeba několik kroků:
+Spojovací bod služby umožňuje vývojářům rozhraní .NET vyvíjet aplikace zpracovávající data v reálném čase při využití prostředí Java Virtual Machine (JVM) se zachováním na základě vazeb. Rozhraní .NET a JVM komunikují prostřednictvím místních soketů TCP. V podstatě každý Spout/šroub je dvojicí procesů .NET/Java, kde je logika uživatele spouštěna v procesu .NET jako modul plug-in.
 
-* Navrhujte a implementujte Spoutů, aby se načetla data z fronty.
-* Návrh a implementaci funkce Bolts ke zpracování vstupních dat a ukládání dat do externího úložiště, například do databáze.
-* Návrh topologie, Odeslat a spustit topologii. Topologie definuje vrcholů a data toky mezi vrcholů. Spojovací bod služby bude trvat specifikaci topologie a nasadit virtuální počítač na cluster Storm, kde každý vrchol běží na jednom uzlu logické. Převzetí služeb při selhání a škálování se postarat Storm Plánovač úloh.
+Pokud chcete vytvořit aplikaci pro zpracování dat v rámci spojovacího bodu služby, je potřeba provést několik kroků:
 
-Tento dokument vás provede postupem vytvořte aplikaci pro zpracování dat pomocí spojovacího bodu služby pomocí několik jednoduchých příkladů.
+* Navrhněte a implementujte rozhraní Spoutů, které se bude načítat do dat z fronty.
+* Navrhněte a implementujte šrouby pro zpracování vstupních dat a uložte data do externích úložišť, jako je třeba databáze.
+* Navrhněte topologii a pak tuto topologii odešlete a spusťte. Topologie definuje vrcholy a datové toky mezi vrcholy. Spojovací bod služby převezme specifikaci topologie a nasadí ji do clusteru s více podmnožinami, kde každý vrchol běží na jednom logickém uzlu. Převzetí služeb při selhání a škálování bude mít na starosti Plánovač úloh.
 
-## <a name="scp-plugin-interface"></a>Rozhraní modulu plug-in spojovací bod služby
-Samostatné souborů EXE, které oba a můžete spouštět v sadě Visual Studio během vývojové fáze, se zapojí se do kanálu Storm po nasazení v produkčním prostředí jsou moduly plug-in spojovací bod služby (a aplikace). Psaní modulu plug-in spojovací bod služby je stejně jako všechny ostatní standardní Windows konzolové aplikace psaní. Platforma SCP.NET deklaruje několik rozhraní pro funkcí spout/bolt a uživatelský kód modulu plug-in by měla tato rozhraní implementují. Hlavním účelem tohoto návrhu je, že uživatel zaměřit na své vlastní obchodní logics a opuštění jiné zpracovávat SCP.NET platformy.
+Tento dokument používá několik jednoduchých příkladů, které vám pomůžou při sestavování aplikace pro zpracování dat pomocí spojovacího bodu služby.
 
-Modul plug-in kód uživatele musí implementovat jedno z těchto hodnot rozhraní, závisí na tom, jestli topologie transakční či netransakční a určuje, zda je součást funkcích spout nebo bolt.
+## <a name="scp-plugin-interface"></a>Rozhraní Plug-in spojovacího bodu služby
+Moduly plug-in SCP (nebo aplikace) jsou samostatné exe, které je možné spustit uvnitř sady Visual Studio během vývojové fáze a připojit se k kanálu po nasazení v produkčním prostředí. Zápis modulu plug-in SCP je stejný jako při psaní jakýchkoli jiných standardních konzolových aplikací pro Windows. Platforma SCP.NET deklaruje některé rozhraní pro Spout/šroub a kód modulu plug-in uživatele by měl implementovat tato rozhraní. Hlavním účelem tohoto návrhu je, že se uživatel může soustředit na své vlastní obchodní logiky a nechat jiné věci, které mají být zpracovány platformou SCP.NET.
+
+Kód modulu plug-in uživatele by měl implementovat jedno z následujících rozhraní, záleží na tom, jestli je topologie transakční, nebo netransakční, a jestli je součástí Spout nebo šroub.
 
 * ISCPSpout
 * ISCPBolt
@@ -52,14 +53,14 @@ Modul plug-in kód uživatele musí implementovat jedno z těchto hodnot rozhran
 * ISCPBatchBolt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
-ISCPPlugin je společné rozhraní pro všechny druhy moduly plug-in. V současné době je fiktivní rozhraní.
+ISCPPlugin je společné rozhraní pro všechny druhy modulů plug-in. V současné době se jedná o fiktivní rozhraní.
 
     public interface ISCPPlugin 
     {
     }
 
 ### <a name="iscpspout"></a>ISCPSpout
-ISCPSpout je rozhraní pro netransakční spout.
+ISCPSpout je rozhraní pro netransakční Spout.
 
      public interface ISCPSpout : ISCPPlugin                    
      {
@@ -68,28 +69,28 @@ ISCPSpout je rozhraní pro netransakční spout.
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-Když `NextTuple()` je volána z jazyka C\# kód uživatele může vysílat jeden nebo více řazené kolekce členů. Pokud není nic ke generování, tato metoda by měla vrátit bez generování cokoli. Je třeba poznamenat, že `NextTuple()`, `Ack()`, a `Fail()` jsou volány v těsné smyčce v jednom vlákně v jazyce C\# procesu. Pokud neexistují žádné řazených kolekcí členů a vygenerovat, je zdvořilý mít z režimu spánku NextTuple krátkém čase (například 10 milisekund) tak, aby odpad příliš mnoho procesoru.
+Při `NextTuple()` volání metody může uživatelský kód\# C vygenerovat jednu nebo více řazených kolekcí členů. Pokud není nic k vygenerování, tato metoda by měla vracet bez nutnosti vysílat nic. Je nutné poznamenat, `NextTuple()`že `Ack()`, a `Fail()` jsou volány v těsné smyčce v jednom vlákně v procesu\# jazyka C. Pokud neexistují žádné řazené kolekce členů k vygenerování, je Courteous NextTuple režimu spánku po krátkou dobu (například 10 milisekund), aby nedocházelo k příliš velkému množství PROCESORů.
 
-`Ack()` a `Fail()` jsou volány pouze při potvrzení mechanismus je povolené v specifikace souboru. `seqId` Slouží k identifikaci řazené kolekce členů, které jsou potvrzeny nebo se nezdařilo. Takže pokud je potvrzení je povoleno v netransakční topologii, byste měli použít následující funkce vygeneruje ve Spout:
+`Ack()`a `Fail()` jsou volány pouze v případě, že je v souboru spec povolen mechanismus ACK. `seqId` Slouží k identifikaci řazené kolekce členů, která je potvrzena nebo se nezdařila. Takže pokud je možnost ACK povolena v jiné než transakční topologii, měla by být v Spout použita následující funkce Emit:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
-Pokud ack není podporován v netransakční topologii, `Ack()` a `Fail()` může být ponecháno prázdné funkce.
+Pokud se ACK nepodporuje v jiné než transakční topologii, `Ack()` může být a funkce a `Fail()` může být ponechána jako prázdná.
 
-`parms` Vstupní parametr v těchto funkcí je prázdný slovník, je vyhrazený pro budoucí použití.
+`parms` Vstupní parametr v těchto funkcích je prázdný slovník, který je vyhrazen pro budoucí použití.
 
 ### <a name="iscpbolt"></a>ISCPBolt
-ISCPBolt je rozhraní pro netransakční bolt.
+ISCPBolt je rozhraní pro netransakčního šroubu.
 
     public interface ISCPBolt : ISCPPlugin 
     {
     void Execute(SCPTuple tuple);           
     }
 
-Pokud nový řazené kolekce členů je k dispozici, `Execute()` voláním funkce se ji zpracovat.
+Je-li k dispozici nová `Execute()` řazená kolekce členů, je volána funkce pro její zpracování.
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
-ISCPTxSpout je rozhraní pro transakční spout.
+ISCPTxSpout je rozhraní transakčního Spout.
 
     public interface ISCPTxSpout : ISCPPlugin
     {
@@ -98,16 +99,16 @@ ISCPTxSpout je rozhraní pro transakční spout.
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-Stejně jako jejich netransakční čítače část `NextTx()`, `Ack()`, a `Fail()` jsou volány v těsné smyčce v jednom vlákně v jazyce C\# procesu. Pokud nejsou žádná data a vygenerovat, je zdvořilý mít `NextTx` krátkého času (10 milisekund) tak, aby odpad příliš mnoho využití procesoru v režimu spánku.
+Stejně jako `NextTx()`jejich netransakční součást,, `Ack()` `Fail()` a jsou všechny volány v těsné smyčce v jednom vlákně v procesu C\# . Pokud neexistují žádná data, která by se dala vysílat `NextTx` , je Courteous, aby se v režimu spánku po krátkou dobu (10 milisekund), takže neodpade příliš mnoho CPU.
 
-`NextTx()` volá se, že spustit novou transakci, výstupní parametr `seqId` slouží k identifikaci transakce, která se používá také v `Ack()` a `Fail()`. V `NextTx()`, uživatele může vysílat dat na straně Java. Jsou data uložená v ZooKeeper pro podporu opětovného přehrání. Vzhledem k tomu, že je omezená kapacita ZooKeeper, uživatel by měl pouze poskytl metadata, není hromadné dat v transakční spout.
+`NextTx()`je volána pro spuštění nové transakce, parametr `seqId` out slouží k identifikaci transakce, která je také použita v `Ack()` a `Fail()`. V `NextTx()`nástroji může uživatel vysílat data na stranu Java. Data se ukládají do ZooKeeper pro podporu opětovného přehrání. Vzhledem k tomu, že kapacita ZooKeeper je omezená, by měl uživatel generovat jenom metadata, nikoli Hromadná data v transakčních Spout.
 
-Bude Storm přehrát transakce automaticky, pokud selže, tak `Fail()` by neměla být volána v normální. Pokud spojovací bod služby můžete zkontrolovat, protože ho vygeneroval transakční spout metadata, můžete volat, ale `Fail()` při metadat je neplatný.
+Zaplavení znovu spustí transakci automaticky, pokud selže, takže `Fail()` by neměl být volán v normálním případě. Pokud spojovací bod služby může ale kontrolovat metadata generovaná transakčním Spout, může zavolat `Fail()` , když metadata nejsou platná.
 
-`parms` Vstupní parametr v těchto funkcí je prázdný slovník, je vyhrazený pro budoucí použití.
+`parms` Vstupní parametr v těchto funkcích je prázdný slovník, který je vyhrazen pro budoucí použití.
 
 ### <a name="iscpbatchbolt"></a>ISCPBatchBolt
-ISCPBatchBolt je rozhraní pro transakční bolt.
+ISCPBatchBolt je rozhraní pro transakční šroub.
 
     public interface ISCPBatchBolt : ISCPPlugin           
     {
@@ -115,25 +116,25 @@ ISCPBatchBolt je rozhraní pro transakční bolt.
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-`Execute()` je volána, když je nový řazené kolekce členů přicházejících u bolt. `FinishBatch()` je volána, když je tato transakce skončila. `parms` Vstupní parametr je vyhrazená pro budoucí použití.
+`Execute()`se volá, když se dorazí na šroub nové řazené kolekce členů. `FinishBatch()`se volá, když se tato transakce ukončí. `parms` Vstupní parametr je vyhrazen pro budoucí použití.
 
-Pro transakční topologii je důležitý koncept – `StormTxAttempt`. Má dvě pole, `TxId` a `AttemptId`. `TxId` slouží k identifikaci konkrétní transakcí a pro dané transakce, může mít více pokusů transakce selže a je znovu přehrát. SCP.NET vytvoří nový objekt ISCPBatchBolt ke zpracování jednotlivých `StormTxAttempt`, stejně jako co dělá Storm v jazyce Java. Účelem tohoto návrhu je podporu paralelní zpracování transakcí. Uživatel byste jej zachovat v paměti, že pokud se pokus o transakci skončí, odpovídající objekt ISCPBatchBolt zničen a uvolněna z paměti.
+V případě transakční topologie existuje důležitý koncept – `StormTxAttempt`. Má dvě pole `TxId` a `AttemptId`. `TxId`slouží k identifikaci konkrétní transakce a pro danou transakci, může dojít k několika pokusům o více pokusů, pokud transakce selhává a je znovu přehrána. SCP.NET vytvoří nový objekt ISCPBatchBolt ke zpracování každého `StormTxAttempt`, stejně jako v jazyce Java. Účelem tohoto návrhu je podpora zpracování paralelních transakcí. Uživatel by měl mít na paměti, že pokud je pokus o transakci dokončený, je odpovídající objekt ISCPBatchBolt zničený a je uvolněný z paměti.
 
-## <a name="object-model"></a>Objektový Model
-SCP.NET také poskytuje jednoduchou sadu vývojářům programovat s klíčovými objekty. Jsou **kontextu**, **úložiště stavu**, a **SCPRuntime**. V zbývající část této části jsou uvedeny.
+## <a name="object-model"></a>Objektový model
+SCP.NET také poskytuje jednoduchou sadu klíčových objektů, pomocí kterých můžou vývojáři programovat. Jsou to **kontextové**, **úložiště stavu SMP**a **SCPRuntime**. Jsou popsány v části zbytek této části.
 
 ### <a name="context"></a>Kontext
-Kontext poskytuje prostředí spuštěné aplikaci. Každá instance ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) má odpovídající instance kontextu. Funkce poskytované službou kontextu je možné rozdělit do dvou částí: (1) statické části, která je k dispozici v celé C\# zpracování, (2) je dynamická část, která je dostupná jenom pro konkrétní instance kontextu.
+Kontext nabízí běžící prostředí pro aplikaci. Každá instance ISCPPlugin (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) má odpovídající kontextovou instanci. Funkčnost poskytovaná kontextem může být rozdělena do dvou částí: (1) statická část, která je k dispozici v celém procesu\# jazyka C, (2) dynamické součásti, která je k dispozici pouze pro konkrétní instanci kontextu.
 
-### <a name="static-part"></a>Statické části
+### <a name="static-part"></a>Statická část
     public static ILogger Logger = null;
     public static SCPPluginType pluginType;                      
     public static Config Config { get; set; }                    
     public static TopologyContext TopologyContext { get; set; }  
 
-`Logger` je k dispozici pro účely protokolování.
+`Logger`je k dispozici pro účely protokolování.
 
-`pluginType` slouží k určení typu modulu plug-in c\# procesu. Pokud C\# je proces spuštěn v režimu místního testovacího (bez Java), typ modulu plug-in je `SCP_NET_LOCAL`.
+`pluginType`slouží k označení typu modulu plug-in v procesu\# jazyka C. Pokud je proces\# jazyka C spuštěn v místním testovacím režimu (bez Java), je `SCP_NET_LOCAL`typ modulu plug-in.
 
     public enum SCPPluginType 
     {
@@ -144,12 +145,12 @@ Kontext poskytuje prostředí spuštěné aplikaci. Každá instance ISCPPlugin 
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config` je k dispozici zobrazíte parametry konfigurace ze strany Java. Parametry jsou předány ze strany Java při C\# inicializovat modul plug-in. `Config` Parametry jsou rozděleny do dvou částí: `stormConf` a `pluginConf`.
+`Config`je k dispozici pro získání parametrů konfigurace z boku Java. Parametry jsou předány ze strany Java při inicializaci\# modulu plug-in jazyka C. Parametry jsou rozděleny do dvou částí: `stormConf` a `pluginConf`. `Config`
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` je parametry definované pomocí Stormu a `pluginConf` je parametry definované podle spojovací bod služby. Příklad:
+`stormConf`jsou parametry definované pomocí parametru, `pluginConf` který je definován pomocí spojovacího bodu služby. Příklad:
 
     public class Constants
     {
@@ -163,7 +164,7 @@ Kontext poskytuje prostředí spuštěné aplikaci. Každá instance ISCPPlugin 
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext` je k dispozici získat kontext topologie, je zvláště užitečná pro komponenty s více paralelismu. Zde naleznete příklad:
+`TopologyContext`je k dispozici pro získání kontextu topologie, je nejužitečnější pro komponenty s více paralelismu. Zde naleznete příklad:
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -179,8 +180,8 @@ Kontext poskytuje prostředí spuštěné aplikaci. Každá instance ISCPPlugin 
         Context.Logger.Info("taskNum: {0}", componentTasks.Count);                    
     }
 
-### <a name="dynamic-part"></a>Dynamické části
-Následující rozhraní se vztahují k určité instance kontextu. Instance kontextu je vytvořena platformou SCP.NET a předat kód uživatele:
+### <a name="dynamic-part"></a>Dynamická část
+Následující rozhraní jsou relevantní pro určitou instanci kontextu. Instance kontextu je vytvořena platformou SCP.NET a předána do uživatelského kódu:
 
     // Declare the Output and Input Stream Schemas
 
@@ -192,21 +193,21 @@ Následující rozhraní se vztahují k určité instance kontextu. Instance kon
     // Emit tuple to the specific stream.
     public abstract void Emit(string streamId, List<object> values);  
 
-Pro podporu ack netransakční spout je k dispozici následující metodu:
+V případě netransakčního spoutu, který podporuje potvrzení, je k dispozici Tato metoda:
 
     // for non-transactional Spout which supports ack
     public abstract void Emit(string streamId, List<object> values, long seqId);  
 
-Pro podporu ack netransakční bolt, by měl explicitně `Ack()` nebo `Fail()` obdržel řazené kolekce členů. A když se generují nový řazené kolekce členů, kromě toho musí určovat kotvy nové řazené kolekce členů. Následující metody jsou k dispozici.
+U netransakčního šroubu podporujícího potvrzení by se `Ack()` mělo `Fail()` explicitně nebo řazená kolekce členů přijmout. A při generování nové řazené kolekce členů musí také určovat kotvy nové řazené kolekce členů. K dispozici jsou následující metody.
 
     public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values); 
     public abstract void Ack(SCPTuple tuple);
     public abstract void Fail(SCPTuple tuple);
 
-### <a name="statestore"></a>Úložiště stavu
-`StateStore` poskytuje metadatových služeb, monotónní posloupnosti generování a čekání bez koordinace. Abstrakce vyšší úrovně distribuované souběžnosti se dají `StateStore`, včetně distribuované zámky, distribuované fronty, překážek a transakce služby.
+### <a name="statestore"></a>Úložiště stavu SMP
+`StateStore`poskytuje služby metadat, generování sekvencí monotónní a koordinaci bez čekání. Distribuované abstrakce souběžnosti vyšší úrovně můžou být postavené na `StateStore`, včetně distribuovaných zámků, distribuovaných front, bariér a transakčních služeb.
 
-Spojovací bod služby aplikace mohou používat `State` objekt a zachová některé informace v [Apache ZooKeeper](https://zookeeper.apache.org/), zejména pro transakční topologie. To proto, pokud transakční spout dojde k chybě a restartování, můžete získat potřebné informace z ZooKeeper a restartujte kanálu.
+Aplikace spojovacího bodu služby `State` mohou použít objekt k uchování některých informací v [Apache Zookeeper](https://zookeeper.apache.org/), zejména pro transakční topologii. V případě, že dojde k selhání transakčního Spout a restartování, může načíst potřebné informace z ZooKeeper a restartovat kanál.
 
 `StateStore` Objekt hlavně má tyto metody:
 
@@ -289,26 +290,26 @@ Spojovací bod služby aplikace mohou používat `State` objekt a zachová někt
     /// <returns>State Attribute</returns>               
     public T GetAttribute<T>(string key);                    
 
-Pro `Commit()` metodu, pokud simpleMode je nastavena na hodnotu true, odstraní odpovídající ZNode v ZooKeeper. V opačném případě odstraní aktuální ZNode a přidání nového uzlu v POTVRZENO\_CESTU.
+`Commit()` Pro metodu, pokud je simpleMode nastaveno na hodnotu true, odstraní odpovídající ZNode v Zookeeper. V opačném případě odstraní aktuální ZNode a do svěřené\_cesty přidá nový uzel.
 
 ### <a name="scpruntime"></a>SCPRuntime
-SCPRuntime obsahuje následující dvě metody:
+SCPRuntime poskytuje následující dvě metody:
 
     public static void Initialize();
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()` slouží k inicializaci běhové prostředí spojovací bod služby. V této metodě jazyka C\# proces připojí k straně Java a získá parametry konfigurace a topologie kontext.
+`Initialize()`slouží k inicializaci běhového prostředí spojovacího bodu služby. V této metodě se proces C\# připojí k části Java a získá parametry konfigurace a kontext topologie.
 
-`LaunchPlugin()` slouží k pusťte se do smyčky zpracování zpráv. V této smyčce C\# modulu plug-in přijímá zprávy formuláře Java straně (včetně signály řazených kolekcí členů a ovládací prvek), a pak zpracování zprávy, třeba volání metody rozhraní poskytují pomocí uživatelského kódu. Vstupní parametr metody `LaunchPlugin()` je delegát, který může vrátit objekt, který ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt rozhraní implementovat.
+`LaunchPlugin()`slouží k ukončení smyčky zpracování zpráv. V této smyčce modul plug-\# in jazyka C přijímá zprávy ve formě na straně Java (včetně řazených kolekcí členů a řídicích signálů) a pak zpracovává zprávy, třeba volání metody rozhraní, kterou poskytuje uživatelský kód. Vstupní parametr metody `LaunchPlugin()` je delegát, který může vracet objekt, který implementuje rozhraní ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt.
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
-Pro ISCPBatchBolt, abychom se mohli `StormTxAttempt` z `parms`a použít ho k posoudit, jestli je přehraná pokus. Kontrola opakování pokusu o se často provádí na bolt potvrzení a je znázorněn v `HelloWorldTx` příklad.
+Pro ISCPBatchBolt můžeme získat `StormTxAttempt` z `parms`a použít ho k posouzení, zda se jedná o povedený pokus o přehrání. Pokus o opakované přehrání se často provádí na poli potvrzení a je znázorněno v `HelloWorldTx` příkladu.
 
-Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou režimech tady:
+Moduly plug-in SCP můžou být běžně spuštěné ve dvou režimech:
 
-1. Místní Test režim: V tomto režimu, moduly plug-in spojovací bod služby (C\# uživatelský kód) spustit ve fázi vývoje v sadě Visual Studio. `LocalContext` je možné v tomto režimu, který poskytuje metody k serializaci emitovaný řazené kolekce členů k místním souborům a přečtěte si je zpět do paměti.
+1. Místní testovací režim: V tomto režimu se moduly plug-in SCP (\# kód uživatele jazyka C) spouštějí v rámci sady Visual Studio během fáze vývoje. `LocalContext`dá se použít v tomto režimu, který poskytuje metodu pro serializaci vygenerovaných řazených kolekcí členů do místních souborů a jejich čtení zpátky do paměti.
    
         public interface ILocalContext
         {
@@ -316,9 +317,9 @@ Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou re
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Běžný režim: V tomto režimu je procesem java pro storm spuštěných modulů plug-in spojovací bod služby.
+2. Normální režim: V tomto režimu se moduly plug-in SCP spustí procesem zaplavení Java.
    
-    Tady je příklad spuštění modulu plug-in spojovací bod služby:
+    Tady je příklad spuštění modulu plug-in SCP:
    
         namespace Scp.App.HelloWorld
         {
@@ -344,59 +345,59 @@ Obecně řečeno moduly plug-in spojovací bod služby může běžet ve dvou re
         }
         }
 
-## <a name="topology-specification-language"></a>Topologie jazyka
-Určení topologie spojovací bod služby je jazyka specifického pro doménu pro popisující a konfiguraci topologie spojovací bod služby. Je založen na pro Storm Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) a je rozšířena podle spojovací bod služby.
+## <a name="topology-specification-language"></a>Jazyk specifikace topologie
+Specifikace topologie spojovacího bodu služby je jazyk specifický pro doménu, který popisuje a konfiguruje topologie SCP. Vychází z Clojure DSL (<https://storm.incubator.apache.org/documentation/Clojure-DSL.html>) a je rozšířeno pomocí spojovacího bodu služby.
 
-Specifikace topologie můžete odeslat přímo do clusteru storm pro spouštění prostřednictvím ***runspec*** příkazu.
+Specifikace topologie je možné odeslat přímo do clusteru nečinnosti, aby je bylo možné spustit pomocí příkazu ***runspec*** .
 
-SCP.NET přidal následující funkce pro definování transakční topologie:
+SCP.NET přidal následující funkce pro definování transakčních topologií:
 
 | **Nové funkce** | **Parametry** | **Popis** |
 | --- | --- | --- |
-| **tx-topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definujte transakční topologii s názvem topologie &nbsp;spouts definice mapování a mapování definice funkce bolts |
-| **scp-tx-spout** |Exec – název<br />args<br />Pole |Definujte transakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout |
-| **scp-tx-batch-bolt** |Exec – název<br />args<br />Pole |Definujte transakční dávky Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args.***<br /><br />Pole je výstupních polí pro bolt. |
-| **scp-tx-commit-bolt** |Exec – název<br />args<br />Pole |Definujte bolt transakční potvrzení. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt |
-| **nontx-topolopy** |název topologie<br />spout mapy<br />bolt mapy |Definovat topologii netransakční s názvem topologie&nbsp; spouts definice mapování a mapování definice funkce bolts |
-| **scp-spout** |Exec – název<br />args<br />Pole<br />parameters |Definujte netransakční spout. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro spout<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
-| **scp-bolt** |Exec – název<br />args<br />Pole<br />parameters |Definujte netransakční Bolt. Spuštění aplikace s ***exec-name*** pomocí ***args***.<br /><br />***Pole*** je výstupních polí pro bolt<br /><br />***Parametry*** jsou volitelné, jeho použití k zadání některých parametrů, třeba "nontransactional.ack.enabled". |
+| **TX – topolopy** |název topologie<br />Spout – mapa<br />Mapa šroubů |Definice transakční topologie s názvem topologie, &nbsp;mapou definice spoutů a mapou definice šrouby |
+| **scp-tx-spout** |Exec – název<br />args<br />pole |Definujte transakční Spout. Spustí aplikaci s ***názvem Exec-Name*** pomocí ***argumentů***.<br /><br />***Pole*** jsou výstupní pole pro Spout |
+| **SCP – TX-Batch-šroub** |Exec – název<br />args<br />pole |Definujte transakčního dávkovacího šroubu. Spustí aplikaci s ***názvem Exec-Name*** pomocí ***argumentů.***<br /><br />Pole jsou výstupní pole pro šroub. |
+| **scp-tx-commit-bolt** |Exec – název<br />args<br />pole |Definujte hodnotu transakčního potvrzení. Spustí aplikaci s ***názvem Exec-Name*** pomocí ***argumentů***.<br /><br />***Pole*** jsou výstupní pole pro šroub |
+| **nontx-topolopy** |název topologie<br />Spout – mapa<br />Mapa šroubů |Definice netransakční topologie s názvem topologie,&nbsp; mapou definice spoutů a mapou definice šrouby |
+| **scp-spout** |Exec – název<br />args<br />pole<br />parameters |Definujte netransakční Spout. Spustí aplikaci s ***názvem Exec-Name*** pomocí ***argumentů***.<br /><br />***Pole*** jsou výstupní pole pro Spout<br /><br />***Parametry*** jsou volitelné a používají je k určení některých parametrů, například "netransakční transakce. ACK. Enabled". |
+| **scp-bolt** |Exec – název<br />args<br />pole<br />parameters |Definování netransakčního šroubu Spustí aplikaci s ***názvem Exec-Name*** pomocí ***argumentů***.<br /><br />***Pole*** jsou výstupní pole pro šroub<br /><br />***Parametry*** jsou volitelné a používají je k určení některých parametrů, například "netransakční transakce. ACK. Enabled". |
 
-SCP.NET má definovaný následující klíčová slova:
+SCP.NET má definovaná následující klíčová slova:
 
 | **klíčová slova** | **Popis** |
 | --- | --- |
-| **: název** |Definovat název topologie |
-| **: topologie** |Definovat topologii pomocí předchozí funkce a sestavení v těch, které jsou. |
-| **:p** |Definujte paralelismu nápovědu pro každý funkcích spout nebo bolt. |
-| **:config** |Definování konfigurace parametru nebo aktualizovat existující |
-| **:schema** |Definujte schéma Stream. |
+| **: název** |Zadejte název topologie. |
+| **: topologie** |Definování topologie pomocí předchozích funkcí a sestavení v nich. |
+| **:p** |Definujte pomocný parametr paralelismus pro každý Spout nebo šroub. |
+| **: config** |Definovat parametr konfigurace nebo aktualizovat existující |
+| **:schema** |Definujte schéma streamu. |
 
-A často používaných parametry:
+A často používané parametry:
 
 | **Parametr** | **Popis** |
 | --- | --- |
-| **"plugin.name"** |Název souboru EXE modulu plug-in C# |
+| **"plugin.name"** |název souboru exe C# modulu plug-in |
 | **"plugin.args"** |argumenty modulu plug-in |
-| **"output.schema"** |Schéma výstupu |
-| **"nontransactional.ack.enabled"** |Určuje, zda je povoleno potvrzení pro topologii s netransakční |
+| **"output.schema"** |Výstupní schéma |
+| **"netransakční. ACK. Enabled"** |Zda je povoleno potvrzení pro netransakční topologii |
 
-Příkaz runspec byl nasazen spolu s bity, využívá jako:
+Příkaz runspec je nasazený společně s bity, použití je například:
 
     .\bin\runSpec.cmd
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
     ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-***Prostředků dir*** parametr je nepovinný, je potřeba ho zadat, pokud chcete připojit a C\# aplikace a tento adresář obsahuje aplikace, závislostí a konfigurace.
+Parametr ***Resource-dir*** je nepovinný, je nutné ho zadat, pokud chcete připojit aplikaci jazyka C\# a tento adresář obsahuje aplikaci, závislosti a konfigurace.
 
-***Cesta k třídě*** parametr je nepovinný. Používá se k určení cesta třídy Java, pokud obsahuje specifikace souboru Java Spout nebo Bolt.
+Parametr ***classpath*** je také volitelný. Používá se k určení cesty třídy Java, pokud soubor specifikace obsahuje Java Spout nebo šroub.
 
 ## <a name="miscellaneous-features"></a>Různé funkce
-### <a name="input-and-output-schema-declaration"></a>Vstup a výstup schématu deklarace
-Uživatele může vysílat řazenými kolekcemi členů v C\# procesy, platformu potřebuje k serializaci řazené kolekce členů do byte [], převod na stranu Java a Storm přenášet této řazené kolekce členů k cílům. Mezitím v podřízené součásti C\# procesy přijímat řazených kolekcí členů zpět ze strany java a převést na typ původní podle platformy, všechny tyto operace jsou skryté platformou.
+### <a name="input-and-output-schema-declaration"></a>Vstupní a výstupní deklarace schématu
+Uživatelé mohou nasílat řazené\# kolekce členů v procesech jazyka C, platforma musí serializovat řazenou kolekci členů na Byte [], přenést na stranu Java a tato řazená kolekce členů převede do cílů. \# Procesy v rámci navazujících součástí dostanou řazené kolekce členů zpátky ze strany Java a převádějí je na původní typy podle platformy. všechny tyto operace jsou pro platformu skryté.
 
-Pro podporu serializace a deserializace, je potřeba deklarovat schéma vstupy a výstupy uživatelského kódu.
+Aby bylo možné podporovat serializaci a deserializaci, musí kód uživatele deklarovat schéma vstupů a výstupů.
 
-Schéma pro vstupní a výstupní datový proud je definován jako slovník. Klíč je StreamId. Hodnota je typy sloupců. Komponenta může mít více datových proudů deklarován.
+Schéma vstupního/výstupního datového proudu je definováno jako slovník. Klíčem je StreamId. Hodnota je typy sloupců. Komponenta může mít deklarované více datových proudů.
 
     public class ComponentStreamSchema
     {
@@ -410,16 +411,16 @@ Schéma pro vstupní a výstupní datový proud je definován jako slovník. Kl�
     }
 
 
-V kontextu objektu jsme přidali následující API:
+V objektu Context máme přidané toto rozhraní API:
 
     public void DeclareComponentSchema(ComponentStreamSchema schema)
 
-Vývojáři musí zajistit, aby řazených kolekcí členů, protože ho dodržují schématu definované pro tento datový proud, v opačném případě systém vyvolá výjimku při běhu.
+Vývojáři musí zajistit, aby se řazené kolekce členů řídily podle schématu definovaného pro tento datový proud, jinak systém vyvolá výjimku za běhu.
 
-### <a name="multi-stream-support"></a>Podpora více streamů
-Spojovací bod služby podporuje uživatelský kód posílat nebo přijímat z několika různých datových proudů ve stejnou dobu. Podpora odráží v objektu Context podle vygeneruje metoda přijímá parametr ID volitelné datového proudu.
+### <a name="multi-stream-support"></a>Podpora více proudů
+Spojovací bod služby podporuje uživatelský kód pro vygenerování nebo příjem z více různých datových proudů současně. Podpora odráží kontextový objekt, protože metoda Emit přebírá volitelný parametr ID streamu.
 
-Přidali jsme dvě metody v objektu SCP.NET Context. Používají se ke generování řazené kolekce členů nebo řazené kolekce členů k určení StreamId. StreamId je řetězec a musí se jednat o konzistentní vzhledem k aplikacím v obou C\# a specifikace definice topologie.
+Byly přidány dvě metody v objektu kontextu SCP.NET. Slouží k vygenerování řazené kolekce členů nebo řazené kolekce členů k určení StreamId. StreamId je řetězec, který musí být konzistentní jak v jazyce C\# , tak ve specifikaci definice topologie.
 
         /* Emit tuple to the specific stream. */
         public abstract void Emit(string streamId, List<object> values);
@@ -427,12 +428,12 @@ Přidali jsme dvě metody v objektu SCP.NET Context. Používají se ke generov�
         /* for non-transactional Spout only */
         public abstract void Emit(string streamId, List<object> values, long seqId);
 
-Generování do datového proudu neexistující způsobí, že výjimky modulu CLR.
+Vygenerování do neexistujícího datového proudu způsobí výjimky za běhu.
 
 ### <a name="fields-grouping"></a>Seskupení polí
-Předdefinované skupiny polí v Storm v SCP.NET nepracuje správně. Na straně Java Proxy všechny datové typy pole jsou ve skutečnosti byte [] a pole seskupení používá hodnota hash objektu byte [] provádět seskupení. Hodnota hash objektu byte [] je adresa tohoto objektu v paměti. Seskupení tak bude nesprávný pro dva bajty [] objektů, které sdílejí stejný obsah, ale ne stejnou adresu.
+Vestavěná pole seskupování v rámci přetvoření nefungují správně v SCP.NET. Na straně proxy Java jsou všechna pole datových typů skutečně Byte [] a seskupení polí používá k provedení seskupení kód hodnoty hash objektu Byte []. Bajtový kód hodnoty hash objektu je adresa tohoto objektu v paměti. Takže seskupení bude chybné pro dva bajty objektů, které sdílejí stejný obsah, ale ne stejnou adresu.
 
-SCP.NET přidá metodu přizpůsobené seskupení a používá obsah byte [] provést seskupení. V **specifikace** soubor, je syntaxe jako:
+SCP.NET přidá přizpůsobenou metodu seskupení a pomocí obsahu Byte [] provede seskupení. V souboru **spec** je syntaxe stejná jako:
 
     (bolt-spec
         {
@@ -444,15 +445,15 @@ SCP.NET přidá metodu přizpůsobené seskupení a používá obsah byte [] pro
 
 Tady
 
-1. "spojovací bod služby skupiny polí" znamená "Vlastní pole seskupení implementované spojovací bod služby".
-2. ": tx"nebo": bez tx" znamená, že pokud je transakční topologie. Tyto informace potřebujeme, protože se liší v USA a mimo USA topologie počáteční index.
-3. [0,1] znamená, že sada hash ID pole, počínaje od 0.
+1. "SCP-Field-Group" znamená "přizpůsobené seskupení polí implementované spojovacím bod služby".
+2. ": TX" nebo ": non-TX" znamená, že je transakční topologie. Tyto informace potřebujeme, protože počáteční index se liší v topologiích TX vs. non-TX.
+3. [0, 1] znamená sadu hodnot hash ID polí od 0.
 
 ### <a name="hybrid-topology"></a>Hybridní topologie
-Nativní Storm je napsána v jazyce Java. A SCP.NET vylepšili jej a povolte C\# vývojářům umožňuje psát C\# kód pro zpracování své obchodní logiky. Ale podporuje i hybridní topologie, která obsahuje nejen C\# spoutů a boltů, ale také Java Spout/Boltů.
+Nativní přepisování je napsané v jazyce Java. A SCP.NET je rozšířila, aby umožnila vývojářům v\# jazyce c\# psát kód jazyka c pro zpracování obchodní logiky. Podporuje ale také hybridní topologie, které neobsahují jenom C\# spoutů/šrouby, ale také Java Spout/šrouby.
 
-### <a name="specify-java-spoutbolt-in-spec-file"></a>Zadat Java funkcí Spout/Bolt specifikace souboru
-Specifikace souboru "spojovací bod služby spout" a "spojovací bod služby bolt" lze použít také k určení Java Spouts a Bolty, tady je příklad:
+### <a name="specify-java-spoutbolt-in-spec-file"></a>Zadat Java Spout/šroub v souboru spec
+V souboru spec se dá také použít spojovací bod služby (SCP-Spout) a spojovací bod služby (SCP-šroub) k určení Java Spoutů a šrouby, tady je příklad:
 
     (spout-spec 
       (microsoft.scp.example.HybridTopology.Generator.)           
@@ -460,21 +461,21 @@ Specifikace souboru "spojovací bod služby spout" a "spojovací bod služby bol
 
 Tady `microsoft.scp.example.HybridTopology.Generator` je název třídy Java Spout.
 
-### <a name="specify-java-classpath-in-runspec-command"></a>Zadejte v příkazu runSpec cesta třídy Java
-Pokud chcete odeslat topologii obsahující Java Spouts nebo Bolty, musíte nejprve zkompilujte Java Spouts nebo Bolty a získat soubory Jar. Pak je třeba zadat cesta třídy java, která obsahuje soubory Jar, při odesílání topologie. Zde naleznete příklad:
+### <a name="specify-java-classpath-in-runspec-command"></a>Určení cesty tříd Java v příkazu runSpec
+Pokud chcete odeslat topologii obsahující Java Spoutů nebo šrouby, musíte nejdřív zkompilovat Java Spoutů nebo šrouby a získat soubory jar. Pak byste měli zadat cestu třídy Java, která obsahuje soubory jar při odesílání topologie. Zde naleznete příklad:
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 
-Tady **příklady\\HybridTopology\\java\\cílové\\**  je ve složce obsahující soubor Jar funkcí Spout/Bolt jazyka Java.
+Tady **jsou\\příklady\\HybridTopologyJava\\target\\**  je složka obsahující soubor JAR Spout/šroubu Java.
 
 ### <a name="serialization-and-deserialization-between-java-and-c"></a>Serializace a deserializace mezi Java a C\#
-Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo možné pracovat s nativní Java Spoutů a Boltů, musí být provedena serializaci/deserializaci mezi straně Java a C\# straně, jak je znázorněno v následujícím grafu.
+Komponenta SCP zahrnuje stranu Java a stranu\# C. Aby bylo možné pracovat s nativním Java spoutů/šrouby, je třeba provést serializaci nebo deserializaci mezi stranou Java a\# stranou C, jak je znázorněno v následujícím grafu.
 
-![Diagram komponent v jazyce java odesílání do komponenty spojovací bod služby odesílá komponent v jazyce Java](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+![Diagram součástí, které se odesílají do komponenty SCP odeslání do komponenty jazyka Java](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
-1. **Serializace v Javě na straně a deserializaci v jazyce C\# na straně**
+1. **Serializace na straně jazyka Java a deserializace\# v oblasti C**
    
-   Nejprve poskytujeme výchozí implementace k serializaci v Javě na straně a deserializaci v jazyce C\# straně. Metoda serializace v Javě na straně se dá nastavit v specifikace souboru:
+   Nejprve poskytujeme výchozí implementaci serializace na straně Java a deserializaci v oblasti\# C. Metodu serializace na straně Java lze zadat v souboru specifikace:
    
        (scp-bolt
            {
@@ -484,23 +485,23 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
                "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
            })
    
-   Metoda serializace v jazyce C\# straně musí být zadán v jazyce C\# uživatelský kód:
+   Metoda deserializace na straně c\# by měla být specifikována v\# uživatelském kódu jazyka c:
    
        Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
        inputSchema.Add("default", new List<Type>() { typeof(Person) });
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
    
-   Tato výchozí implementace pracovat většinou zadaný datový typ není příliš složitý. Pro určité případy, protože uživatelský datový typ je příliš složitý nebo protože výkonu našich výchozí implementace nesplňuje požadavek na uživatele, uživatelé můžou modulu plug-in vlastní implementaci.
+   Tato výchozí implementace by měla zpracovat většinu případů za předpokladu, že datový typ není příliš složitý. V některých případech buď vzhledem k tomu, že datový typ uživatele je příliš složitý, nebo protože výkon naší výchozí implementace nesplňuje požadavky uživatele, uživatelé můžou vlastní implementaci připojit.
    
-   Serializace rozhraní java straně je definována takto:
+   Rozhraní serializace na straně Java je definováno jako:
    
        public interface ICustomizedInteropJavaSerializer {
            public void prepare(String[] args);
            public List<ByteBuffer> serialize(List<Object> objectList);
        }
    
-   Deserialize rozhraní v jazyce C\# straně je definován jako:
+   Deserializovat rozhraní na straně C\# je definováno jako:
    
    veřejné rozhraní ICustomizedInteropCSharpDeserializer
    
@@ -508,15 +509,15 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
        {
            List<Object> Deserialize(List<byte[]> dataList, List<Type> targetTypes);
        }
-2. **Serializace v jazyce C\# straně a deserializace straně Java**
+2. **Serializace na\# straně C a deserializace v jazyce Java**
    
-   Metoda serializace v jazyce C\# straně musí být zadán v jazyce C\# uživatelský kód:
+   Metoda serializace na straně\# c by měla být specifikována\# v uživatelském kódu jazyka c:
    
        this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
    
-   Metoda serializace v Javě na straně musí být zadán v specifikace souboru:
+   Metoda deserializace na straně Java by měla být specifikována v souboru SPEC:
    
-     (scp-spout
+     (SCP – Spout
    
        {
          "plugin.name" "HybridTopology.exe"
@@ -525,16 +526,16 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
          "customized.java.deserializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" "microsoft.scp.example.HybridTopology.Person"]
        })
    
-   Následuje název deserializátor "microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" a "microsoft.scp.example.HybridTopology.Person" je, že je deserializovat cílové třídy dat. do.
+   Tady je "Microsoft. SCP. CustomizedInteropJSONDeserializer. getlang." je název deserializátoru a "Microsoft. SCP. example. HybridTopology. Person" je cílová třída, na kterou se data deserializovat.
    
-   Uživatele můžete také zařadit vlastní implementaci C\# serializátor a deserializátor Java. Tento kód je rozhraní pro jazyk C\# serializátoru:
+   Uživatel může také připojit svou vlastní implementaci serializátoru jazyka\# C a deserializaci Java. Tento kód je rozhraní serializátoru jazyka\# C:
    
        public interface ICustomizedInteropCSharpSerializer
        {
            List<byte[]> Serialize(List<object> dataList);
        }
    
-   Tento kód je rozhraní pro deserializátor Java:
+   Tento kód je rozhraní pro deserializaci jazyka Java:
    
        public interface ICustomizedInteropJavaDeserializer {
            public void prepare(String[] targetClassNames);
@@ -542,7 +543,7 @@ Součást bodu připojení služby zahrnuje straně Java a C\# straně. Aby bylo
        }
 
 ## <a name="scp-host-mode"></a>SCP Host Mode
-V tomto režimu může uživatel kompilaci jejich kódy, které knihovny DLL a SCPHost.exe poskytované spojovací bod služby používat k odesílání topologie. Specifikace souboru bude vypadat přibližně takto:
+V tomto režimu může uživatel zkompilovat své kódy do knihovny DLL a pomocí SCPHost. exe, který poskytuje spojovací bod služby (SCP) k odeslání topologie. Soubor specifikace vypadá jako tento kód:
 
     (scp-spout
       {
@@ -551,19 +552,19 @@ V tomto režimu může uživatel kompilaci jejich kódy, které knihovny DLL a S
         "output.schema" {"default" ["sentence"]}
       })
 
-Tady `plugin.name` je zadán jako `SCPHost.exe` poskytované spojovací bod služby SDK. SCPHost.exe přijímá tři parametry:
+Tady je `plugin.name` zadaný, jak `SCPHost.exe` poskytuje sada SCP SDK. SCPHost. exe přijímá tři parametry:
 
-1. První z nich je název knihovny DLL, která je `"HelloWorld.dll"` v tomto příkladu.
-2. Druhá je název třídy, která je `"Scp.App.HelloWorld.Generator"` v tomto příkladu.
-3. Třetí příkaz je název veřejné statické metody, který lze vyvolat a získat instanci ISCPPlugin.
+1. První z nich je název knihovny DLL, který je `"HelloWorld.dll"` v tomto příkladu.
+2. Druhá je název třídy, který je `"Scp.App.HelloWorld.Generator"` v tomto příkladu.
+3. Třetí z nich je název veřejné statické metody, kterou lze vyvolat pro získání instance ISCPPlugin.
 
-V režimu hostitele uživatelský kód je zkompilován jako knihovnu DLL a vyvolání platformou spojovací bod služby. Spojovací bod služby platformy tak můžete získat plnou kontrolu nad celou zpracování logiky. Proto doporučujeme, abyste našim zákazníkům odeslat topologii v režimu spojovacího bodu služby hostitele, protože můžete zjednodušit vývojové prostředí a nám novější verze také přináší větší flexibilitu a zpětnou kompatibilitu.
+V režimu hostitele je kód uživatele kompilován jako knihovna DLL a je vyvoláno platformou SCP. Proto platforma SCP může získat úplnou kontrolu nad celou logikou zpracování. Proto doporučujeme, aby naši zákazníci mohli odeslat topologii v hostitelském režimu spojovacího bodu služby, protože můžou zjednodušit vývojové prostředí a zvýšit flexibilitu a lepší zpětnou kompatibilitu pro pozdější vydání.
 
-## <a name="scp-programming-examples"></a>Příklady programování spojovací bod služby
-### <a name="helloworld"></a>HelloWorld
-**HelloWorld** je jednoduchý příklad, který znázorňuje představu o tom SCP.NET. Používá netransakční topologie s spout volá **generátor**a dvě funkce bolts volá **rozdělovač** a **čítač**. Spout **generátor** náhodně generuje věty a posílat tyto věty a **rozdělovač**. Bolt **rozdělovač** rozdělí vět do slov a generování těchto slov chcete **čítač** bolt. Bolt "čítač" slovník používá k zaznamenání počet výskytů jednotlivých slov.
+## <a name="scp-programming-examples"></a>Příklady programování SCP
+### <a name="helloworld"></a>Hell
+**HelloWorld** je jednoduchý příklad pro zobrazení vkusu SCP.NET. Používá netransakční topologii s Spout nazvaný **generátor**a má dvě šrouby označované jako **rozdělovač** a **čítač**. **Generátor** Spout náhodně generuje věty a vygeneruje tyto věty do **rozdělovače**. **Rozdělovač** šroub rozdělí věty na slova a vygeneruje tato slova na **čítač** . Hodnota šroubu používá slovník k záznamu počtu výskytů každého slova.
 
-Existují dva specifikace soubory **HelloWorld.spec** a **HelloWorld\_EnableAck.spec** pro účely tohoto příkladu. V C\# kódu, ho můžete zjistit, zda je povoleno potvrzení tím, že získáme pluginConf ze strany Java.
+V tomto příkladu jsou dva soubory specifikace: **HelloWorld. spec** a **\_HelloWorld EnableAck. spec** . V kódu jazyka\# C může zjistit, zda je povoleno potvrzení, získáním pluginConf ze strany Java.
 
     /* demo how to get pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
@@ -572,7 +573,7 @@ Existují dva specifikace soubory **HelloWorld.spec** a **HelloWorld\_EnableAck.
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-Pokud je povoleno potvrzení, v spout, slouží slovník pro ukládání do mezipaměti řazených kolekcí členů, které nebyly potvrzeny. Pokud je volána Fail(), je znovu přehrát neúspěšné řazené kolekce členů:
+Pokud je v Spout povolená možnost ACK, použije se slovník k ukládání řazených kolekcí členů, které nebyly potvrzeny. Pokud je volána metoda Fail (), dojde k neúspěšnému přehrání řazené kolekce členů:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {
@@ -593,15 +594,15 @@ Pokud je povoleno potvrzení, v spout, slouží slovník pro ukládání do mezi
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-**HelloWorldTx** příklad ukazuje, jak implementovat topologii transakční. Má jeden spout volá **generátor**, volá batch bolt **partial-count**, bolt potvrzení změn s názvem **součet počtu**. Existují tři soubory txt předem vytvořené: **DataSource0.txt**, **DataSource1.txt**, a **DataSource2.txt**.
+Příklad **HelloWorldTx** ukazuje, jak implementovat transakční topologii. Má jeden Spout nazvaný **generátor**, dávkovou hodnotu s názvem **částečný počet**a potvrzovací šroub s názvem **Count-suma**. K dispozici jsou také tři předem vytvořené soubory TXT: **DataSource0. txt**, **DataSource1. txt**a **DataSource2. txt**.
 
-V každé transakci spout **generátor** náhodně vybere dva soubory z předem vytvořených tři soubory a generovat názvy dvou souborů **partial-count** bolt. Bolt **partial-count** získá soubor název z přijatý řazené kolekce členů, pak otevřete soubor a počet slov v tomto souboru a nakonec generování slovo číslo, které má **součet počtu** bolt. **Součet počtu** bolt shrnuje celkový počet.
+V každé transakci **generátor** Spout náhodně vybere dva soubory z předem vytvořených tří souborů a vygeneruje tyto dva názvy souborů do šroubů s **částečným počtem** . **Částečný počet** šroubů Získá název souboru z přijaté řazené kolekce členů, pak otevře soubor a spočítá počet slov v tomto souboru a nakonec vygeneruje slovo číslo do pole **Count-suma** . Hodnota **čítače Count-suma** shrnuje celkový počet.
 
-K dosažení **právě jednou** sémantiku, bolt potvrzení **součet počtu** potřeba posoudit, jestli je přehraná transakce. V tomto příkladu má proměnná statický člen:
+Chcete-li dosáhnout **přesně jedné** sémantiky, je nutné, aby **součet hodnot** šroubů byl posuzovat, zda se jedná o přehrajte transakci. V tomto příkladu má statickou členskou proměnnou:
 
     public static long lastCommittedTxId = -1; 
 
-Když je vytvořena ISCPBatchBolt instance, získá `txAttempt` ze vstupních parametrů:
+Když je vytvořena instance ISCPBatchBolt, získá `txAttempt` ze vstupních parametrů:
 
     public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
     {
@@ -617,7 +618,7 @@ Když je vytvořena ISCPBatchBolt instance, získá `txAttempt` ze vstupních pa
         }
     }
 
-Když `FinishBatch()` je volána `lastCommittedTxId` budou aktualizováni, pokud není přehraná transakce.
+Když `FinishBatch()` je volána `lastCommittedTxId` , bude aktualizována, pokud se nejedná o převedenou transakci.
 
     public void FinishBatch(Dictionary<string, Object> parms)
     {
@@ -635,15 +636,15 @@ Když `FinishBatch()` je volána `lastCommittedTxId` budou aktualizováni, pokud
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-Tato topologie obsahuje Java Spout a a C\# Bolt. Použije se výchozí serializace a deserializace implementace, která poskytuje platformu spojovací bod služby. Najdete v článku **HybridTopology.spec** v **příklady\\HybridTopology** podrobné specifikace souboru, složky a **SubmitTopology.bat** pro určení Java Cesta k třídě.
+Tato topologie obsahuje Java Spout a šroub v jazyce\# C. Používá výchozí serializaci a deserializaci, která je poskytována platformou SCP. V tématu **HybridTopology. spec** v **\\příkladech HybridTopology** složky najdete podrobnosti souboru specifikace a **SubmitTopology. bat** , jak zadat cestu třídy jazyka Java.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
-Tento příklad je stejný jako HelloWorld v podstatě. Jediným rozdílem je, že uživatelský kód je zkompilován jako knihovnu DLL a topologii se odešle pomocí SCPHost.exe. V části "Spojovací bod služby hostitele režim" podrobnější vysvětlení.
+Tento příklad je stejný jako HelloWorld v podstatě. Jediným rozdílem je, že kód uživatele je kompilován jako knihovna DLL a topologie je odeslána pomocí SCPHost. exe. Podrobnější vysvětlení najdete v části "režim hostitele spojovacího bodu služby".
 
 ## <a name="next-steps"></a>Další kroky
-Příklady topologií Apache Storm, které jsou vytvořené pomocí spojovacího bodu služby najdete v následujících dokumentech:
+Příklady topologií Apache Storm vytvořených pomocí spojovacího bodu služby (SCP) najdete v následujících dokumentech:
 
-* [Vývoj topologií C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
-* [Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
-* [Zpracování dat snímače vozidla ze služby Event Hubs pomocí Apache Storm v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Extrakce, transformace a načítání (ETL) ze služby Azure Event Hubs pro Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Vývoj C# topologií pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Zpracování událostí z Azure Event Hubs s využitím Apache Storm ve službě HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
+* [Zpracování dat snímače vozidla z Event Hubs pomocí Apache Storm v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Extrakce, transformace a načítání (ETL) z Azure Event Hubs do Apache HBA](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

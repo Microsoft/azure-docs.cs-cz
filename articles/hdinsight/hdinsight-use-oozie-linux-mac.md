@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b21847d27dc7f444afaf1b73efa19b0b0087cfe4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623903"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811680"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Hadoop k definování a spuštění pracovního postupu pro Azure HDInsight se systémem Linux
 
@@ -634,7 +634,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
     ![Karta úlohy koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
 
-    **Další** položka vymaterializování obsahuje při příštím spuštění úlohy.
+    **Další položka Vymaterializování** obsahuje při příštím spuštění úlohy.
 
 8. Podobně jako u předchozí úlohy pracovního postupu, pokud vyberete položku úlohy ve webovém uživatelském rozhraní, zobrazí se informace o úloze:
 
@@ -643,7 +643,7 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
     > [!NOTE]  
     > Tento obrázek zobrazuje pouze úspěšné běhy úlohy, nikoli jednotlivé akce v rámci naplánovaného pracovního postupu. Chcete-li zobrazit jednotlivé akce, vyberte jednu z položek **Akce** .
 
-    ![Informace o akci](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Informace o akci koordinátora](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -659,7 +659,7 @@ Níže najdete konkrétní chyby, se kterými se můžete setkat, a jejich řeš
 
 ### <a name="ja009-cannot-initialize-cluster"></a>JA009: Nejde inicializovat cluster.
 
-**Příznaky**: Stav úlohy se změní napozastaveno. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Výběrem této akce se zobrazí následující chybová zpráva:
+**Příznaky**: Stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Výběrem této akce se zobrazí následující chybová zpráva:
 
     JA009: Cannot initialize Cluster. Please check your configuration for map
 
@@ -669,7 +669,7 @@ Níže najdete konkrétní chyby, se kterými se můžete setkat, a jejich řeš
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltusergt"></a>JA002: Oozie není povoleno zosobnit &lt;uživatele.&gt;
 
-**Příznaky**: Stav úlohy se změní napozastaveno. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
+**Příznaky**: Stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
 
     JA002: User: oozie is not allowed to impersonate <USER>
 
@@ -706,7 +706,7 @@ Například pro úlohu v tomto dokumentu použijte následující postup:
     <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak spustit úlohu Oozie. Další informace o tom, jak pracovat se službou HDInsight, najdete v následujících článcích:
 

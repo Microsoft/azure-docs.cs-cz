@@ -1,6 +1,6 @@
 ---
-title: Architektura služby Azure HDInsight s balíčkem Enterprise Security Package
-description: Informace o plánování zabezpečení HDInsight s balíčkem Enterprise Security Package.
+title: Architektura Azure HDInsight s Balíček zabezpečení podniku
+description: Naučte se plánovat zabezpečení Azure HDInsight pomocí Balíček zabezpečení podniku.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,86 +8,86 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e7983c4da4803965dabaa6a471fbea8a2fba5229
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720433"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810956"
 ---
-# <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
+# <a name="use-enterprise-security-package-in-hdinsight"></a>Použití Balíček zabezpečení podniku ve službě HDInsight
 
-Standardní cluster Azure HDInsight je Jednouživatelský cluster. Je vhodný pro většinu společností, které mají menší aplikační týmy sestavující úlohy velkých objemů dat. Každý uživatel můžete vytvořit vyhrazenou clusteru na vyžádání a zničit ho, když ho už nepotřebují. 
+Standardní cluster Azure HDInsight je cluster s jedním uživatelem. Je vhodný pro většinu společností, které mají menší aplikační týmy vytvářející velké datové úlohy. Každý uživatel může vytvořit vyhrazený cluster na vyžádání a zničit ho, když už ho nepotřebujete. 
 
-Řada podniků přešli k modelu, ve kterém se týmy Správa clusterů a sdílí je několik aplikačních týmů. Tyto větší podniky potřebují více uživateli přístup na každý cluster v Azure HDInsight.
+Řada podniků se přesunula k modelu, ve kterém IT týmy spravují clustery, a několik týmů aplikací sdílí clustery. Tyto větší podniky potřebují pro každý cluster ve službě Azure HDInsight přístup s více uživateli.
 
-HDInsight spoléhá na zprostředkovatele oblíbených identity – Active Directory – spravované způsobem. Díky integraci služby HDInsight s [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/overview.md), dostanete clustery pomocí vašich přihlašovacích údajů domény. 
+HDInsight spoléhá na oblíbeného poskytovatele identity – Active Directory – spravovaný způsob. Integrací služby HDInsight s [Azure Active Directory Domain Services (Azure služba AD DS)](../../active-directory-domain-services/overview.md)můžete ke clusterům přistupovat pomocí svých přihlašovacích údajů do domény. 
 
-Virtuální počítače (VM) v HDInsight jsou domény připojené k zadané doméně. Ano všechny služby spuštěné v HDInsight (Apache Ambari, server Apache Hive, Apache Ranger, server Apache Spark thrift a další) fungují pro ověřeného uživatele. Správci pak mohou vytvářet zásady silné ověřování s použitím Apache Ranger k poskytování řízení přístupu na základě rolí pro prostředky v clusteru.
+Virtuální počítače v HDInsight jsou připojené k doméně zadané doméně. Všechny služby spuštěné v HDInsight (Apache Ambari, Apache Hive Server, Apache Ranger, Apache Spark Thrift Server a další) pro ověřeného uživatele bezproblémově fungují. Správci pak můžou vytvořit silné zásady autorizace pomocí Apache Ranger a poskytovat řízení přístupu na základě rolí pro prostředky v clusteru.
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>Integrace služby HDInsight s Active Directory
 
-Open source Apache Hadoop, závisí na protokolu Kerberos pro ověřování a zabezpečení. Proto jsou uzly clusteru HDInsight s Enterprise Security Package (ESP) připojený k doméně, který je spravovaný službou Azure AD DS. Zabezpečení protokolu Kerberos je nakonfigurován pro součásti platformy Hadoop v clusteru. 
+Open Source Apache Hadoop spoléhá na protokol Kerberos pro ověřování a zabezpečení. Uzly clusteru HDInsight s Balíček zabezpečení podniku (ESP) jsou proto připojené k doméně spravované pomocí Azure služba AD DS. Zabezpečení protokolu Kerberos je nakonfigurované pro součásti systému Hadoop v clusteru. 
 
-Automaticky vytvoří následující věci:
+Automaticky se vytvoří tyto věci:
 
-- objekt služby pro jednotlivé komponenty systému Hadoop
-- objekt počítače pro každý počítač, který je připojený k doméně
-- Organizační jednotce (OU) pro každý cluster pro uchovávání objektů tyto služby a počítače
+- Instanční objekt pro každou komponentu Hadoop
+- Objekt zabezpečení počítače pro každý počítač, který je připojený k doméně
+- Organizační jednotka (OU) pro každý cluster, do které se mají ukládat tyto služby a objekty zabezpečení počítače
 
-Souhrnně řečeno, musíte nastavit prostředí pomocí:
+Pro Shrnutí musíte nastavit prostředí pomocí:
 
-- Domény služby Active Directory (spravované službou Azure AD DS). **Název domény musí být 39 znaků nebo méně pro práci s Azure HDInsight.**
-- Zabezpečený LDAP (LDAPS) povolena ve službě Azure AD DS.
-- Správné síťové připojení z virtuální sítě HDInsight do Azure AD DS virtuální sítě, pokud se rozhodnete pro ně samostatné virtuální sítě. Virtuální počítač ve virtuální síti HDInsight by měl mít dohled do služby Azure AD DS prostřednictvím partnerského vztahu virtuální sítě. Pokud HDInsight a Azure AD DS jsou nasazené ve stejné virtuální síti, připojení se automaticky k dispozici a není potřeba žádná další akce.
+- Doména služby Active Directory (spravovaná pomocí Azure služba AD DS). **Aby bylo možné pracovat se službou Azure HDInsight, název domény musí mít 39 znaků nebo méně.**
+- Protokol Secure LDAP (LDAPs) povoleno ve službě Azure služba AD DS.
+- Správné síťové připojení z virtuální sítě HDInsight do služby Azure služba AD DS Virtual Network, pokud pro ně zvolíte samostatné virtuální sítě. Virtuální počítač uvnitř virtuální sítě HDInsight by měl mít přehled o službě Azure služba AD DS prostřednictvím partnerského vztahu virtuálních sítí. Pokud jsou služby HDInsight a Azure služba AD DS nasazeny ve stejné virtuální síti, je připojení automaticky zajištěno a není nutné provádět žádné další akce.
 
-## <a name="set-up-different-domain-controllers"></a>Nastavit různými řadiči domény
-HDInsight aktuálně podporuje pouze Azure AD DS jako řadič domény hlavním cluster používá pro komunikaci pomocí protokolu Kerberos. Ale jiné komplexní nastavení služby Active Directory je to možné, tak dlouho, dokud taková konfigurace vede k povolení služby Azure AD DS pro přístup k HDInsight.
+## <a name="set-up-different-domain-controllers"></a>Nastavení různých řadičů domény
+HDInsight aktuálně podporuje jenom Azure služba AD DS jako hlavní řadič domény, který cluster používá pro komunikaci pomocí protokolu Kerberos. Ale další komplexní nastavení služby Active Directory je možné, pokud nastavení vede k povolení služby Azure služba AD DS pro přístup k HDInsight.
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
-[Azure AD DS](../../active-directory-domain-services/overview.md) poskytuje spravovanou doménu, která je plně kompatibilní s Windows Server Active Directory. Microsoft se postará o správu, použití dílčích oprav a sledování domény v s vysokou dostupností (HA) nastavení. Cluster můžete nasadit bez starostí o údržbu řadičů domény. 
+[Azure služba AD DS](../../active-directory-domain-services/overview.md) poskytuje spravovanou doménu, která je plně kompatibilní se službou Windows Server Active Directory. Microsoft se postará o správu, opravy a monitorování domény v nastavení vysoké dostupnosti (HA). Cluster můžete nasadit, aniž byste se museli starat o údržbu řadičů domény. 
 
-Uživatelé, skupiny a hesla jsou synchronizovaná ze služby Azure AD. Jednosměrné synchronizaci z vaší instance služby Azure AD do služby Azure AD DS umožňuje uživatelům přihlášení ke clusteru pomocí stejné podnikové přihlašovací údaje. 
+Uživatelé, skupiny a hesla se synchronizují ze služby Azure AD. Jednosměrná synchronizace z vaší instance Azure AD do Azure služba AD DS umožňuje uživatelům přihlásit se ke clusteru pomocí stejných podnikových přihlašovacích údajů. 
 
-Další informace najdete v tématu [konfigurace HDInsight clustery s využitím Azure AD DS ESP](./apache-domain-joined-configure-using-azure-adds.md).
+Další informace najdete v tématu [konfigurace clusterů HDInsight s protokolem ESP pomocí Azure služba AD DS](./apache-domain-joined-configure-using-azure-adds.md).
 
-### <a name="on-premises-active-directory-or-active-directory-on-iaas-vms"></a>V místní službě Active Directory nebo Active Directory na virtuálních počítačích IaaS
+### <a name="on-premises-active-directory-or-active-directory-on-iaas-vms"></a>Místní služba Active Directory nebo Active Directory na virtuálních počítačích s IaaS
 
-Pokud máte složitější nastavení služby Active Directory nebo instance místní služby Active Directory pro vaši doménu, můžete tyto identity do služby Azure AD synchronizovat s použitím služby Azure AD Connect. Pak můžete povolit Azure AD DS na tohoto tenanta Active Directory. 
+Pokud máte místní instanci služby Active Directory nebo složitější nastavení služby Active Directory pro vaši doménu, můžete tyto identity synchronizovat do Azure AD pomocí Azure AD Connect. Pak můžete povolit Azure služba AD DS v tomto tenantovi Active Directory. 
 
-Protože protokol Kerberos závisí na hodnot hash hesel, je nutné [povolení synchronizace hodnot hash hesel ve službě Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
+Vzhledem k tomu, že protokol Kerberos spoléhá na hodnoty hash hesla, musíte [Povolit synchronizaci hodnot hash hesel v Azure služba AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
 
-Pokud používáte federace s Active Directory Federation Services (AD FS), musíte povolit synchronizaci hodnot hash hesel. (Doporučené nastavení, najdete v části [toto video](https://youtu.be/qQruArbu2Ew).) Synchronizace hodnot hash hesel pomáhá s zotavení po havárii v případě selhání infrastruktury služby AD FS a také pomáhá zajistit ochranu úniku přihlašovacích údajů. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Pokud používáte federaci s Active Directory Federation Services (AD FS) (AD FS), musíte povolit synchronizaci hodnot hash hesel. (Pro doporučené nastavení se podívejte na [Toto video](https://youtu.be/qQruArbu2Ew).) Synchronizace hodnot hash hesel pomáhá při zotavení po havárii v případě selhání infrastruktury AD FS a také pomáhá zajistit ochranu proti nevráceným přihlašovacím údajům. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
-Pomocí místní služby Active Directory nebo Active Directory na virtuálních počítačích IaaS samostatně, bez Azure AD a Azure AD DS, není podporované konfigurace pro clustery HDInsight se ESP.
+Použití místní služby Active Directory nebo Active Directory na virtuálních počítačích s IaaS bez použití Azure AD a Azure služba AD DS není podporovanou konfigurací pro clustery HDInsight s protokolem ESP.
 
-Pokud federace se právě používá a jsou správnou synchronizaci hodnot hash hesel ale se zobrazuje počet selhání ověření, zkontrolujte, jestli je povolené ověřování pomocí hesla cloud pro instanční objekt prostředí PowerShell. Pokud ne, je nutné nastavit [domácí sféry zjišťování domovské SFÉRY zásad](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) pro vašeho tenanta Azure AD. Ke kontrole a nastavení zásad HRD:
+Pokud se používá federace a hodnoty hash hesel se synchronizují správně, ale dojde k chybám ověřování, ověřte, jestli je pro instanční objekt PowerShellu povolené ověřování heslem cloudu. Pokud ne, musíte nastavit [zásadu zjišťování domovské sféry (HRD)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) pro vašeho TENANTA Azure AD. Postup kontroly a nastavení zásad HRD:
 
-1. Nainstalovat verzi preview [modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
+1. Nainstalujte si náhled [modulu Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
 
    ```powershell
    Install-Module AzureAD
    ```
 
-2. Připojte se pomocí přihlašovacích údajů globálního správce (správce klienta).
+2. Připojte se pomocí přihlašovacích údajů globálního správce (Správce klienta).
    
    ```powershell
    Connect-AzureAD
    ```
 
-3. Zkontrolujte, zda prostředí Azure PowerShell instanční objekt již byl vytvořen.
+3. Ověřte, zda již byl vytvořen Microsoft Azure PowerShell instanční objekt.
 
    ```powershell
    Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. Pokud neexistuje, vytvořte instanční objekt služby.
+4. Pokud neexistuje, vytvořte instanční objekt.
 
    ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
    ```
 
-5. Vytvořte a připojte zásady na tento instanční objekt.
+5. Vytvořte a připojte zásadu k tomuto instančnímu objektu.
 
    ```powershell
     # Determine whether policy exists
@@ -109,8 +109,8 @@ Pokud federace se právě používá a jsou správnou synchronizaci hodnot hash 
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Konfigurace clusterů HDInsight s ESP](apache-domain-joined-configure-using-azure-adds.md)
-* [Konfigurace zásad Apache Hivu pro clustery HDInsight s ESP](apache-domain-joined-run-hive.md)
-* [Správa clusterů HDInsight s ESP](apache-domain-joined-manage.md) 
+* [Konfigurace zásad Apache Hive pro clustery HDInsight s ESP](apache-domain-joined-run-hive.md)
+* [Správa clusterů HDInsight pomocí protokolu ESP](apache-domain-joined-manage.md) 
