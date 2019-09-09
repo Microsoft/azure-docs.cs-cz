@@ -250,6 +250,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Přizpůsobení koncového bodu funkce HTTP
           href: functions-create-serverless-api.md
+        - name: Správa místních prostředků
+          href: functions-hybrid-powershell.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s úložištěm

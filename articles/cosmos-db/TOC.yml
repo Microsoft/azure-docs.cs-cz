@@ -455,6 +455,10 @@
           items:
             - name: 1. Dotazování dat
               href: tutorial-query-graph.md
+        - name: Referenční informace
+          items:
+            - name: Hlavičky odpovědi
+              href: gremlin-headers.md
         - name: Návody
           items:
             - name: Modelování dat grafů

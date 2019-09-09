@@ -97,20 +97,12 @@
       items:
         - name: Přehled
           href: platform/alerts-overview.md
-        - name: Klasická upozornění
-          href: platform/alerts-classic.overview.md
         - name: Upozornění metrik
           href: platform/alerts-metric-overview.md
         - name: Výstrahy protokolu
           href: platform/alerts-unified-log.md
         - name: Upozornění protokolu aktivit
           href: platform/activity-log-alerts.md
-        - name: Běžné schéma upozornění
-          href: platform/alerts-common-schema.md
-        - name: Pravidla akcí
-          href: platform/alerts-action-rules.md
-        - name: Inteligentní skupiny
-          href: platform/alerts-smartgroups-overview.md
         - name: Analýza změn
           href: app/change-analysis.md
     - name: Vizualizace dat
@@ -516,11 +508,7 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Monitorování Dockeru a kontejnerů s Windows
               href: insights/containers.md
-        - name: Storage
-          items:
-            - name: Azure Monitor pro Storage
-              href: insights/storage-insights-overview.md
-        - name: Virtuální počítače
+        - name: Operační systém (virtuální počítače a další)
           items:
             - name: Agenti
               items:
@@ -530,26 +518,38 @@
                   items:
                     - name: Přehled
                       href: platform/diagnostics-extension-overview.md
-                    - name: Odeslání do Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Odeslání do Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Odeslání do Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Řešení potíží
-                      href: platform/diagnostics-extension-troubleshooting.md
-                    - name: Příprava pro formát řádkových diagnostických protokolů JSON
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: Host virtuálního počítače do metriky
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: Hostovaný operační systém do linuxového virtuálního počítače metriky (Telegraf)
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-                    - name: Host škálovací sady virtuálních počítačů do metriky
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                    - name: Klasický host virtuálního počítače do metriky
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
-                    - name: Host cloudové služby do metriky
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Windows
+                      items:
+                        - name: Historie verzí
+                          href: platform/diagnostics-extension-schema.md
+                        - name: Schéma
+                          href: platform/diagnostics-extension-schema-1dot3.md
+                        - name: Odeslání do Azure Storage
+                          href: platform/diagnostics-extension-to-storage.md
+                        - name: Odeslání do Application Insights
+                          href: platform/diagnostics-extension-to-application-insights.md
+                        - name: Odeslání do Event Hubs
+                          href: platform/diagnostics-extension-stream-event-hubs.md
+                        - name: Odeslání do Azure Monitoru jako vlastní metriky
+                          items:
+                            - name: Virtuální počítač
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                            - name: Škálovací sada virtuálních počítačů
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                            - name: Klasický virtuální počítač
+                              href: platform/collect-custom-metrics-guestos-vm-classic.md
+                            - name: Cloudová služba
+                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                        - name: Formát řádkových diagnostických protokolů JSON
+                          href: platform/diagnostic-logs-append-blobs.md
+                        - name: Řešení potíží
+                          href: platform/diagnostics-extension-troubleshooting.md
+                    - name: Linux
+                      items:
+                        - name: Použití s virtuálními počítači
+                          href: ../virtual-machines/extensions/diagnostics-linux.md
+                        - name: Vlastní metriky s využitím Telegrafu
+                          href: platform/collect-custom-metrics-linux-telegraf.md
                 - name: Agenti Log Analytics
                   items:
                     - name: Přehled
@@ -645,13 +645,21 @@
               href: platform/computer-groups.md
             - name: Configuration Manager
               href: platform/collect-sccm.md
-        - name: Databáze
-          items:
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
         - name: Prostředky Azure
+          items:
+            - name: Diagnostické protokoly
+              items:
+                - name: Přehled
+                  href: platform/diagnostic-logs-overview.md
+                - name: Shromažďování v protokolech
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Shromažďování ze služby Azure Storage
+                  href: platform/azure-storage-iis-table.md
+                - name: Archivace do úložiště
+                  href: platform/archive-diagnostic-logs.md
+                - name: Povolení s využitím šablon Resource Manageru
+                  href: platform/diagnostic-logs-stream-template.md
+        - name: předplatné Azure
           items:
             - name: Protokol aktivit
               items:
@@ -667,20 +675,6 @@
                   href: platform/activity-log-export.md
                 - name: Schéma
                   href: platform/activity-log-schema.md
-            - name: Diagnostické protokoly
-              items:
-                - name: Přehled
-                  href: platform/diagnostic-logs-overview.md
-                - name: Shromažďování v protokolech
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Shromažďování ze služby Azure Storage
-                  href: platform/azure-storage-iis-table.md
-                - name: Archivace do úložiště
-                  href: platform/archive-diagnostic-logs.md
-                - name: Streamování dat do Event Hubs
-                  href: platform/diagnostic-logs-stream-event-hubs.md
-                - name: Povolení s využitím šablon Resource Manageru
-                  href: platform/diagnostic-logs-stream-template.md
             - name: Streamování dat do Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -689,6 +683,16 @@
               href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
             - name: Monitorování skupin prostředků
               href: insights/resource-group-insights.md
+        - name: Storage
+          items:
+            - name: Azure Monitor pro Storage
+              href: insights/storage-insights-overview.md
+        - name: Databáze
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: SQL Server
+              href: insights/sql-assessment.md
         - name: Sítě
           items:
             - name: Analýza sítě
@@ -729,18 +733,20 @@
           items:
             - name: Vlastní metriky
               href: platform/metrics-custom-overview.md
+            - name: Rozhraní REST API pro metriky
+              href: platform/metrics-store-custom-rest-api.md
             - name: Rozhraní API kolekce dat služby Log Analytics
               href: platform/data-collector-api.md
             - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
               href: platform/create-pipeline-datacollector-api.md
-            - name: Rozhraní REST API pro metriky
-              href: platform/metrics-store-custom-rest-api.md
         - name: Využití řešení System Center
           items:
             - name: Připojení Operations Managera
               href: platform/om-agents.md
             - name: Posouzení Operations Manageru
               href: insights/scom-assessment.md
+        - name: Streamování dat do Event Hubs
+          href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Analýza dat
       items:
         - name: Metriky
@@ -873,7 +879,7 @@
               href: app/monitor-web-app-availability.md
             - name: Upozornění metrik
               href: app/alerts.md
-        - name: Pravidla upozornění metriky platformy
+        - name: Pravidla upozornění metrik
           items:
             - name: Správa upozornění metrik
               href: platform/alerts-metric.md
@@ -899,28 +905,40 @@
               href: platform/alerts-activity-log.md
             - name: Migrace událostí správy na upozornění protokolu aktivit
               href: platform/migrate-management-alerts.md
-        - name: Skupiny akcí
+        - name: Upozornění na stav služby v protokolu aktivit
           items:
+            - name: Zobrazení oznámení
+              href: platform/service-notifications.md
+            - name: Konfigurace upozornění pro události oznámení
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Oznámení a akce
+          items:
+            - name: Pravidla akcí (Preview)
+              href: platform/alerts-action-rules.md
             - name: Vytvoření skupiny akcí
               href: platform/action-groups.md
-            - name: Schéma webhooku
-              href: platform/activity-log-alerts-webhook.md
+            - name: Běžné schéma upozornění
+              href: platform/alerts-common-schema.md
             - name: Definice běžných schémat upozornění
               href: platform/alerts-common-schema-definitions.md
+            - name: Integrace schématu běžných upozornění s Logic Apps
+              href: platform/alerts-common-schema-integrations.md
+            - name: Schéma webhooku
+              href: platform/activity-log-alerts-webhook.md
             - name: Chování upozornění SMS
               href: platform/alerts-sms-behavior.md
-            - name: Omezení četnosti upozornění
+            - name: Omezení četnosti oznámení
               href: platform/alerts-rate-limiting.md
             - name: Vytvoření skupiny akcí s využitím Resource Manageru
               href: platform/action-groups-create-resource-manager-template.md
             - name: Implementace akce aplikace logiky
               href: platform/action-groups-logic-app.md
-            - name: Integrace schématu běžných upozornění s Logic Apps
-              href: platform/alerts-common-schema-integrations.md
         - name: Řešení Alert Managementu
           href: platform/alert-management-solution.md
         - name: Uživatelské rozhraní upozornění
           items:
+            - name: Informace o inteligentních skupinách
+              href: platform/alerts-smartgroups-overview.md
             - name: Správa instancí upozornění
               href: platform/alerts-managing-alert-instances.md
             - name: Správa inteligentních skupin
@@ -931,6 +949,8 @@
               href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Migrace klasických pravidel upozornění
           items:
+            - name: Informace o klasických upozorněních
+              href: platform/alerts-classic.overview.md
             - name: Příprava migrace
               href: platform/alerts-prepare-migration.md
             - name: Vysvětlení nástroje pro migraci
@@ -945,12 +965,6 @@
               href: platform/alerts-enable-template.md
             - name: Klasické upozornění metriky s voláním webhooku
               href: platform/alerts-webhooks.md
-        - name: Upozornění na stav služby v protokolu aktivit
-          items:
-            - name: Zobrazení oznámení
-              href: platform/service-notifications.md
-            - name: Konfigurace upozornění pro události oznámení
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Rozhraní API pro výstrahy
           href: platform/api-alerts.md
         - name: Správa služeb IT
@@ -1057,6 +1071,18 @@
               href: app/data-model-metric-telemetry.md
             - name: Kontext
               href: app/data-model-context.md
+            - name: Integrace s Azure Functions
+              href: app/azure-functions-supported-features.md
+    - name: Metriky
+      items:
+        - name: Podporované metriky
+          href: platform/metrics-supported.md
+        - name: Podporované metriky pro novější upozornění
+          href: platform/alerts-metric-near-real-time.md
+    - name: Diagnostické protokoly
+      items:
+        - name: 'Služby, kategorie a schémata pro diagnostické protokoly'
+          href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI – Application Insights (Preview)
@@ -1081,25 +1107,6 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Protokoly
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Metriky
-      items:
-        - name: Podporované metriky
-          href: platform/metrics-supported.md
-        - name: Podporované metriky pro novější upozornění
-          href: platform/alerts-metric-near-real-time.md
-    - name: Diagnostické protokoly
-      items:
-        - name: 'Služby, kategorie a schémata pro diagnostické protokoly'
-          href: platform/diagnostic-logs-schema.md
-        - name: Schéma rozšíření Azure Diagnostics
-          href: platform/diagnostics-extension-schema.md
-          items:
-            - name: 1.3 a novější
-              href: platform/diagnostics-extension-schema-1dot3.md
-            - name: 1.2
-              href: platform/diagnostics-extension-schema-1dot2.md
-            - name: 1
-              href: platform/diagnostics-extension-schema-1dot0.md
     - name: Vyřazení funkcí a rozhraní API z provozu
       items:
         - name: Klasické rozhraní API pro metriky a automatické škálování

@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: Transformace toku dat
       items:
-        - name: S pevnou šířkou
-          href: how-to-fixed-width.md
         - name: Agregace
           href: data-flow-aggregate.md
         - name: Změna řádku
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Migrace dat z místního serveru Netezza do Azure
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Transformace s využitím mapování toků dat
+      items:
+        - name: Zpracování textových souborů s pevnou šířkou
+          href: how-to-fixed-width.md
 - name: Referenční informace
   items:
     - name: .NET

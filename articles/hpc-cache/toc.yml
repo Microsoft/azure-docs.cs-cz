@@ -1,0 +1,34 @@
+- name: Dokumentace ke službě Azure HPC Cache
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure HPC Cache?
+      href: hpc-cache-overview.md
+- name: Koncepty
+  items:
+    - name: Použití agregovaného oboru názvů
+      href: hpc-cache-namespace.md
+    - name: Naplnění nového úložiště objektů blob
+      href: hpc-cache-ingest.md
+    - name: Alternativní metody příjmu dat
+      items:
+        - name: Naplnění mezipaměti s využitím paralelní kopie
+          href: hpc-cache-ingest-parallelcp.md
+        - name: Naplnění mezipaměti s využitím msrsync
+          href: hpc-cache-ingest-msrsync.md
+        - name: Naplnění mezipaměti s využitím ruční kopie souborů
+          href: hpc-cache-ingest-manual.md
+- name: Návody
+  items:
+    - name: Požadavky
+      href: hpc-cache-prereqs.md
+    - name: Vytvoření mezipaměti
+      href: hpc-cache-create.md
+    - name: Přidání úložiště
+      href: hpc-cache-add-storage.md
+    - name: Připojení k mezipaměti
+      href: hpc-cache-mount.md
+- name: Zdroje a prostředky
+  items:
+    - name: Otevření lístku podpory
+      href: hpc-cache-support-ticket.md

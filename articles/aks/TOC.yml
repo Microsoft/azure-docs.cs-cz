@@ -159,7 +159,7 @@
               href: configure-azure-cni.md
         - name: Vytvořte interní nástroj pro vyrovnávání zatížení.
           href: internal-lb.md
-        - name: Použití Load Balanceru úrovně Standard (Preview)
+        - name: Použití standardního nástroje pro vyrovnávání zatížení
           href: load-balancer-standard.md
         - name: Použití statické IP adresy
           href: static-ip.md

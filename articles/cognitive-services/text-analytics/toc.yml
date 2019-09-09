@@ -12,7 +12,7 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Klient
+    - name: Klientská knihovna
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: Volání rozhraní Text Analytics API
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: Zjištění jazyka
+    - name: Rozpoznávání jazyka
       href: How-tos/text-analytics-how-to-language-detection.md
     - name: Analýza mínění
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
     - name: Extrakce klíčových frází
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Volání rozpoznávání pojmenovaných entit
+    - name: Rozpoznávání pojmenovaných entit
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Použití kontejnerů
       items:

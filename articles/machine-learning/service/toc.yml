@@ -113,10 +113,12 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: Návody
   items:
-    - name: Správa pracovních prostorů
+    - name: Vytváření a správa pracovních prostorů
       items:
-        - name: Použití portálu pro pracovní prostory
+        - name: Použití webu Azure Portal
           href: how-to-manage-workspace.md
+        - name: Použití Azure CLI
+          href: how-to-manage-workspace-cli.md
         - name: Použití šablony Resource Manageru
           displayName: arm
           href: how-to-create-workspace-template.md

@@ -1,168 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Event Hubs
+summary: Naučte se využívat službu Event Hubs k ingestování milionů událostí za sekundu z připojených aplikací a zařízení.
 metadata:
-  document_id: ''
-  title: 'Dokumentace ke službě Azure Event Hubs – kurzy, rychlá zprovoznění, reference k rozhraní API'
-  meta.description: Learn how to use Event Hubs to ingest millions of events per second from connected IoT devices and applications on a broad set of platforms.
+  title: Dokumentace ke službě Azure Event Hubs
+  description: Naučte se využívat službu Event Hubs k ingestování milionů událostí za sekundu z připojených aplikací a zařízení.
   services: event-hubs
-  author: spelluru
-  manager: timlt
   ms.service: event-hubs
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 10/15/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: 'Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Event Hubs pro Apache Kafka umožňuje nativním klientům Kafka, nástrojům a aplikacím, jako jsou Mirror Maker, Apache Flink a Akka Streams, bez problémů pracovat se službou Event Hubs se změnami jenom v konfiguraci.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: /azure/event-hubs/media/index/stream-big-data-kafka-event-hubs.png
-      width: 250
-    title: 'Streamování velkých objemů dat v Azure s využitím Kafka a Event Hubs (1: 20:13)'
-    href: 'https://azure.microsoft.com/resources/videos/streaming-big-data-in-azure-with-kafka-and-event-hubs/'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se <b>vytvořit</b> centrum událostí:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/portal.svg
-            text: portál Azure
-            href: /azure/event-hubs/event-hubs-quickstart-portal
-          - image:
-              src: /azure/event-hubs/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-hubs/event-hubs-quickstart-cli
-          - image:
-              src: /azure/event-hubs/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-hubs/event-hubs-quickstart-powershell
-          - image:
-              src: /azure/event-hubs/media/index/logo_arm.svg
-            text: Šablona Azure Resource Manageru
-            href: /azure/event-hubs/event-hubs-resource-manager-namespace-event-hub
-      - type: paragraph
-        text: 'Naučte se <b>odesílat</b> a <b>přijímat události</b> z centra událostí:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/logo_net.svg
-            text: .NET Framework
-            href: /azure/event-hubs/event-hubs-dotnet-framework-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_netcore.svg
-            text: .NET Standard
-            href: /azure/event-hubs/event-hubs-dotnet-standard-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_java.svg
-            text: Java
-            href: /azure/event-hubs/event-hubs-java-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_python.svg
-            text: Python
-            href: /azure/event-hubs/event-hubs-python-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/event-hubs/event-hubs-node-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_go.svg
-            text: Přejít
-            href: /azure/event-hubs/event-hubs-go-get-started-send
-          - image:
-              src: /azure/event-hubs/media/index/logo_c.svg
-            text: C
-            href: /azure/event-hubs/event-hubs-c-getstarted-send
-          - image:
-              src: /azure/event-hubs/media/index/storm_r.svg
-            text: Apache Storm
-            href: /azure/event-hubs/event-hubs-storm-getstarted-receive
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Informace o vytváření, správě a streamování událostí s využitím Azure Event Hubs'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Čtení streamu dat Event Hubs s využitím Azure Stream Analytics a vizualizace anomálií</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/store-captured-data-data-warehouse">Zpracování a migrace zachycených dat služby Event Hubs do služby SQL Data Warehouse pomocí Event Gridu a Azure Functions</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-databricks/databricks-stream-from-eventhubs">Streamování dat do Azure Databricks pomocí služby Event Hubs</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-mirror-maker-tutorial">Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Kafka</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-flink-tutorial">Připojení Apache Flinku k centrům událostí s podporou Kafka</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-akka-streams-tutorial">Připojení Akka Streams k centrům událostí s podporou Kafka</a>'
-  - title: Získávání dovedností pomocí Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Povolení spolehlivého zasílání zpráv pro aplikace s velkými objemy dat pomocí Azure Event Hubs
-            href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
-            image:
-              src: 'https://docs.microsoft.com/learn/achievements/enable-reliable-messaging-for-big-data-apps-using-azure-event-hubs.svg'
-              href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-event-hubs">Další interaktivní výuka...</a>
-  - title: Bezplatné školicí video od Pluralsightu
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Event Hubs pro vývojáře v .NET – základy
-            href: 'https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals'
-  - title: Ukázky
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-hubs/media/index/logo_net.svg
-            text: .NET Framework
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet'
-          - image:
-              src: /azure/event-hubs/media/index/logo_java.svg
-            text: Java
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Java'
-          - image:
-              src: /azure/event-hubs/media/index/logo_python.svg
-            text: Python
-            href: 'https://github.com/Azure/azure-event-hubs-python/tree/master/examples'
-          - image:
-              src: /azure/event-hubs/media/index/logo_nodejs.svg
-            text: Node.js
-            href: 'https://github.com/Azure/azure-event-hubs-node'
-          - image:
-              src: /azure/event-hubs/media/index/logo_go.svg
-            text: Přejít
-            href: 'https://github.com/Azure/azure-event-hubs-go/tree/master/_examples'
-          - image:
-              src: /azure/event-hubs/media/index/cli.svg
-            text: Azure CLI
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI'
-          - image:
-              src: /azure/event-hubs/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: 'https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/powershell/module/az.eventhub/">Azure PowerShell</a></p><p><a href="/cli/azure/eventhubs">Azure CLI</a></p>
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.eventhubs">.NET Standard</a></p><p><a href="/java/api/overview/azure/eventhub">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/eventhub/">Reference k rozhraní REST API</a></p>
+  ms.date: 09/05/2019
+  ms.openlocfilehash: bd96fbc12285faa7c18f9fcd09638ec8816865c8
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70773186"
+landingContent:
+- title: Informace o službě Event Hubs
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Event Hubs?
+      url: event-hubs-about.md
+    - text: Co je Event Hubs pro Apache Kafka?
+      url: event-hubs-for-kafka-ecosystem-overview.md
+    - text: Co je funkce Event Hubs Capture?
+      url: event-hubs-capture-overview.md
+    - text: Co je Event Hubs úrovně Dedicated?
+      url: event-hubs-dedicated-overview.md
+- title: Vytvoření centra událostí
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: portál Azure
+      url: event-hubs-create.md
+    - text: Azure CLI
+      url: event-hubs-quickstart-cli.md
+    - text: Azure PowerShell
+      url: event-hubs-quickstart-powershell.md
+    - text: Šablona Azure Resource Manageru
+      url: event-hubs-resource-manager-namespace-event-hub.md
+- title: Vytvoření vyhrazeného clusteru
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Event Hubs úrovně Dedicated?
+      url: event-hubs-dedicated-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření vyhrazeného clusteru služby Event Hubs
+      url: event-hubs-dedicated-cluster-create-portal.md
+- title: Integrace s Apache Kafka
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Event Hubs pro Apache Kafka?
+      url: event-hubs-for-kafka-ecosystem-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Streamování do služby Event Hubs pro Apache Kafka
+      url: event-hubs-quickstart-kafka-enabled-event-hubs.md
+  - linkListType: tutorial
+    links:
+    - text: Zpracování událostí pomocí Stream Analytics
+      url: event-hubs-kafka-stream-analytics.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření centra událostí s podporou Apache Kafka
+      url: event-hubs-create-kafka-enabled.md
+    - text: Zrcadlení zprostředkovatele Kafka v centru událostí
+      url: event-hubs-kafka-mirror-maker-tutorial.md
+    - text: Připojení Apache Sparku k centru událostí
+      url: event-hubs-kafka-spark-tutorial.md
+    - text: Připojení Apache Flinku k centru událostí
+      url: event-hubs-kafka-flink-tutorial.md
+    - text: Integrace nástroje Apache Kafka Connect s centrem událostí
+      url: event-hubs-kafka-connect-tutorial.md
+    - text: Připojení Akka Streams k centru událostí
+      url: event-hubs-kafka-akka-streams-tutorial.md
+- title: Odesílání a příjem událostí
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET Core
+      url: event-hubs-dotnet-standard-getstarted-send.md
+    - text: Java
+      url: event-hubs-java-get-started-send.md
+    - text: Python
+      url: event-hubs-python-get-started-send.md
+    - text: Node.js
+      url: event-hubs-node-get-started-send.md
+    - text: Apache Kafka
+      url: event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs
+    - text: Apache Storm (jenom příjem)
+      url: event-hubs-storm-getstarted-receive.md
+    - text: Přejít
+      url: event-hubs-go-get-started-send.md
+- title: Zachycení událostí
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Zachycení událostí ve službě Azure Blob Storage nebo Azure Data Lake Storage
+      url: event-hubs-dedicated-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Využití webu Azure Portal k povolení zachytávání událostí
+      url: event-hubs-capture-enable-through-portal.md
+    - text: Použití šablony Resource Manageru
+      url: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - text: Povolení zachytávání z aplikace v Pythonu
+      url: event-hubs-capture-python.md
+- title: Zpracování událostí
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vizualizace datových anomálií v datových streamech Event Hubs
+      url: event-hubs-tutorial-visualize-anomalies.md
+    - text: Zpracování Event Hubs pro události Apache Kafka s využitím Stream Analytics
+      url: event-hubs-kafka-stream-analytics.md
+    - text: Streamování dat do Azure Databricks pomocí služby Event Hubs
+      url: ../azure-databricks/databricks-stream-from-eventhubs.md
+- title: Monitorování a správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Monitorování služby Event Hubs pomocí služby Azure Monitor
+      url: event-hubs-metrics-azure-monitor.md
+    - text: Nastavení diagnostických protokolů
+      url: event-hubs-diagnostic-logs.md
+    - text: Automatické vertikální navýšení kapacity jednotek propustnosti
+      url: event-hubs-auto-inflate.md
+    - text: Řešení potíží s výjimkami
+      url: event-hubs-messaging-exceptions.md
+- title: Zabezpečení
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití pravidel brány firewall
+      url: event-hubs-ip-filtering.md
+    - text: Použití koncových bodů služby pro virtuální síť
+      url: event-hubs-service-endpoints.md
+    - text: Konfigurace klíčů spravovaných zákazníkem pro šifrování neaktivních uložených dat
+      url: configure-customer-managed-key.md
+    - text: Povolení bran firewall a integrace virtuálních sítí
+      url: event-hubs-tutorial-virtual-networks-firewalls.md

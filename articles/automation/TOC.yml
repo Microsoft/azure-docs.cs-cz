@@ -22,6 +22,11 @@
       href: how-to/move-account.md
     - name: Automatizace onboardingu služeb automatizace
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
+    - name: Podporované oblasti pro mapování pracovního prostoru Log Analytics
+      href: how-to/region-mappings.md
+    - name: Správa dat Azure Automation
+      href: automation-managing-data.md
+      displayName: backup
 - name: Automatizace procesů
   items:
     - name: Přehled funkce Hybrid Runbook Worker
@@ -39,16 +44,10 @@
       items:
         - name: Vytvoření runbooku
           href: automation-quickstart-create-runbook.md
-    - name: Onboarding
-      items:
-        - name: Onboarding několika virtuálních počítačů z portálu
-          href: automation-onboard-solutions-from-browse.md
-        - name: Připojení z virtuálního počítače Azure
-          href: automation-onboard-solutions-from-vm.md
-        - name: Připojení z účtu služby Automation
-          href: automation-onboard-solutions-from-automation-account.md
     - name: Návody
       items:
+        - name: Spuštění/zastavení virtuálních počítačů mimo špičku
+          href: automation-solution-vm-management.md
         - name: Správa runbooků
           href: manage-runbooks.md
         - name: Vytváření runbooků
@@ -86,8 +85,6 @@
               href: automation-child-runbooks.md
             - name: Předání objektu JSON do runbooku Azure Automation
               href: automation-pass-json-string.md
-            - name: Spuštění/zastavení virtuálních počítačů mimo špičku
-              href: automation-solution-vm-management.md
         - name: Monitorování runbooků
           items:
             - name: Výstup runbooku
@@ -98,15 +95,6 @@
               displayName: 'fair share, activity log'
             - name: Zpracování chyb v grafických runbookách
               href: automation-runbook-graphical-error-handling.md
-            - name: Integrace správy zdrojového kódu
-              href: source-control-integration.md
-              displayName: 'github, vsts, azure devops, personal access token'
-            - name: Integrace správy zdrojového kódu – stará verze
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: Správa dat Azure Automation
-              href: automation-managing-data.md
-              displayName: backup
         - name: Hybrid Runbook Worker
           items:
             - name: Nasazení funkce Hybrid Runbook Worker pro Windows
@@ -120,6 +108,19 @@
             - name: Sledování aktualizovaných souborů pomocí úloh sledovacích procesů
               href: automation-watchers-tutorial.md
               displayName: 'hybrid runbook worker, hybrid worker, trigger'
+        - name: Integrace správy zdrojového kódu
+          items:
+            - name: Integrace správy zdrojového kódu
+              href: source-control-integration.md
+              displayName: 'github, vsts, azure devops, personal access token'
+            - name: Integrace správy zdrojového kódu – stará verze
+              href: automation-source-control-integration-legacy.md
+              displayname: github
+            - name: Integrace správy zdrojového kódu pomocí GitHub Enterprise
+              href: automation-scenario-source-control-integration-with-github-ent.md
+              displayName: 'CI, runbooks'
+            - name: Integrace správy zdrojového kódu pomocí Azure DevOps
+              href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s funkcí Hybrid Runbook Worker
@@ -297,7 +298,7 @@
       href: automation-connections.md
     - name: Přihlašovací údaje
       href: automation-credentials.md
-    - name: Integrační moduly
+    - name: Moduly
       href: automation-integration-modules.md
     - name: Plány
       href: automation-schedules.md
@@ -321,11 +322,6 @@
       displayName: 'Monitor, Azure Monitor'
     - name: Vytvoření virtuálního počítače webové služby Amazon
       href: automation-scenario-aws-deployment.md
-    - name: Integrace správy zdrojového kódu pomocí GitHub Enterprise
-      href: automation-scenario-source-control-integration-with-github-ent.md
-      displayName: 'CI, runbooks'
-    - name: Integrace správy zdrojového kódu pomocí Azure DevOps
-      href: automation-scenario-source-control-integration-with-VSTS.md
       displayName: 'VSTS, CI, runbooks'
     - name: Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
       href: automation-deploy-template-runbook.md
@@ -348,14 +344,10 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
-    - name: Azure PowerShell (klasické)
-      href: /powershell/module/azure/?view=azuresmps-3.7.0
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-    - name: REST (Classic)
-      href: 'https://msdn.microsoft.com/library/azure/mt163781'
 - name: Zdroje a prostředky
   items:
     - name: Úvodní video ke službě Automation

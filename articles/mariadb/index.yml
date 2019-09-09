@@ -1,58 +1,121 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Azure Database for MariaDB
+summary: Azure Database for MariaDB je relační databázová služba založená na opensourcovém serverovém stroji MariaDB.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MariaDB s využitím opensourcových nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MariaDB prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
 metadata:
-  title: 'Dokumentace ke službě Azure MariaDB – kurzy, reference k rozhraní API'
   description: Azure Database for MariaDB je relační databázová služba v cloudu Microsoftu vytvořená pro vývojáře na základě opensourcového databázového stroje MariaDB.
   author: ajlam
   ms.author: andrela
+  ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.date: 03/25/2019
-abstract:
-  description: 'Azure Database for MariaDB je relační databázová služba založená na opensourcovém serverovém stroji MariaDB.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MariaDB s využitím opensourcových nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MariaDB prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.'
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Naučte se vytvářet databáze MariaDB v Azure s použitím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se navrhovat databáze a vyvíjet aplikace:'
-      - type: list
-        style: unordered
-        items:
-          - html: 'Návrh databáze&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Web Azure Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>'
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Vyhledání skriptů pro správu běžných úkolů
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/mariadb/sample-scripts-azure-cli">Azure CLI</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/mariadb/">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbformariadb/allversions">Šablony Resource Manageru</a></p>
+  ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
+  ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70735375"
+landingContent:
+- title: Informace o službě Azure Database for MariaDB
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Database for MariaDB?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Přechod na náš blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/bg-p/ADforMariaDB
+- title: Vytvoření serveru
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření serveru s využitím webu Azure Portal
+      url: quickstart-create-mariadb-server-database-using-azure-portal.md
+    - text: Vytvoření serveru s využitím Azure CLI
+      url: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: Vysvětlení cenových úrovní
+      url: concepts-pricing-tiers.md
+    - text: Pochopení limitů
+      url: concepts-limits.md
+    - text: Vysvětlení podporovaných verzí MariaDB
+      url: concepts-supported-versions.md
+    - text: Konfigurace parametrů serveru
+      url: howto-server-parameters.md
+    - text: Plánování pro vysokou dostupnost
+      url: concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Návrh databáze s využitím webu Azure Portal
+      url: tutorial-design-database-using-portal.md
+    - text: Návrh databáze s využitím Azure CLI
+      url: tutorial-design-database-cli.md
+- title: Zálohování a obnovení dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zálohování a obnovení
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Obnovení serveru s využitím webu Azure Portal
+      url: howto-restore-server-portal.md
+    - text: Obnovení serveru s využitím Azure CLI
+      url: howto-restore-server-cli.md
+- title: Připojení ke službě Azure Database for MariaDB
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení brány firewall
+      url: concepts-firewall-rules.md
+    - text: Vysvětlení SSL
+      url: concepts-ssl-connection-security.md
+    - text: Vysvětlení virtuálních sítí
+      url: concepts-data-access-security-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření pravidel brány firewall
+      url: howto-manage-firewall-portal.md
+    - text: Konfigurace připojení SSL
+      url: howto-configure-ssl.md
+    - text: Vytvoření uživatelů
+      url: howto-create-users.md
+    - text: Správa virtuálních sítí
+      url: howto-manage-vnet-portal.md
+    - text: Řešení potíží s připojením
+      url: howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: Připojení s využitím MySQL Workbenche
+      url: connect-workbench.md
+    - text: Připojovací řetězce
+      url: howto-connection-string.md
+- title: Replikace dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení replikace příchozích dat
+      url: concepts-data-in-replication.md
+    - text: Vysvětlení replik pro čtení
+      url: concepts-read-replicas.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace replikace příchozích dat
+      url: howto-data-in-replication.md
+    - text: Vytvoření repliky pro čtení s využitím webu Azure Portal
+      url: howto-read-replicas-portal.md
+- title: Kódování s rozhraními API pro programování
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Skripty Azure CLI pro běžné úlohy
+      url: /azure/mariadb/sample-scripts-azure-cli/
+  - linkListType: reference
+    links:
+    - text: Referenční informace pro vývojáře v Azure CLI
+      url: /rest/api/mariadb/
+    - text: Referenční informace pro vývojáře v REST API
+      url: /cli/azure/mariadb
+    - text: Šablony Azure Resource Manageru
+      url: /azure/templates/microsoft.dbformariadb/allversions

@@ -1,57 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace ke službě Azure Service Bus Relay
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Relay
+summary: Naučte se využívat službu Azure Relay, která umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud.
 metadata:
-  title: Dokumentace ke službě Azure Service Bus Relay
-  meta.description: 'Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.'
+  title: Dokumentace ke službě Azure Relay
+  description: Naučte se využívat službu Azure Relay, která umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud.
   services: service-bus-relay
-  author: spelluru
-  manager: femila
   ms.service: service-bus-relay
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 08/21/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: 'Služba Azure Relay podporuje hybridní aplikace mezi místními a cloudovými prostředími v rámci podnikové sítě a veřejného cloudu, a to bez nutnosti otevřít připojení brány firewall nebo provést výraznější změny v infrastruktuře podnikové sítě.'
-sections:
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: '<b>Hybrid Connections:</b>'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">Odesílání a příjem zpráv – webové sokety .NET</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">Odesílání a příjem zpráv – .NET HTTP</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">Odesílání a příjem zpráv – webové sokety Node.js</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">Odesílání a příjem zpráv – Node.js HTTP</a>
-      - type: paragraph
-        text: '<b>Propojení Windows Communication Foundation (WCF):</b>'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">Zveřejnění místní služby WCF pro webovou aplikaci v cloudu</a>
-          - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">Zveřejnění místní služby WCF pro klienta WCF mimo vaši síť</a>
-          - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">Zveřejnění místní služby WCF pro aplikaci mimo vaši síť</a>
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázky na GitHubu
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">Hybridní připojení</a>'
-          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Jazyky
-            html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicebus/">Reference k rozhraní REST API</a></p>
+  ms.date: 09/06/2019
+  ms.openlocfilehash: f4d186169998aad628dc8efa4781dc55f457edd4
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70770415"
+landingContent:
+- title: Informace o službě Azure Relay
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Relay?
+      url: relay-what-is-it.md
+- title: Hybridní připojení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Odesílání a příjem zpráv s využitím webových soketů – .NET
+      url: relay-hybrid-connections-dotnet-get-started.md
+    - text: Odesílání a příjem zpráv s využitím HTTP – .NET
+      url: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - text: Odesílání a příjem zpráv s využitím webových soketů – Node.js
+      url: relay-hybrid-connections-node-get-started.md
+    - text: Odesílání a příjem zpráv s využitím HTTP – Node.js
+      url: relay-hybrid-connections-http-requests-node-get-started.md
+  - linkListType: download
+    links:
+    - text: Ukázky na GitHubu
+      url: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+- title: WCF Relay
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zveřejnění místní služby WCF pro webovou aplikaci v cloudu
+      url: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - text: Zveřejnění místní služby WCF pro službu WCF mimo vaši síť
+      url: service-bus-relay-tutorial.md
+    - text: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
+      url: service-bus-relay-rest-tutorial.md
+  - linkListType: download
+    links:
+    - text: Ukázky na GitHubu
+      url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: Referenční informace k rozhraní API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.relay?view=azure-dotnet
+    - text: REST
+      url: /rest/api/relay/

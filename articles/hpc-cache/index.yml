@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure HPC Cache Preview
+summary: Využití služby Azure HPC Cache k urychlení přístupu k souborům pro úlohy výkonného výpočetního prostředí (HPC) náročné na čtení
+metadata:
+  title: Microsoft Azure HPC Cache
+  description: Naučte se vytvářet a používat Azure HPC Cache k řešení potíží s latencí mezi výpočetními prostředky a úložištěm. Služba Azure HPC Cache je určená pro souborové úlohy náročné na čtení a může vytvořit agregovaný virtuální systém souborů, který zahrnuje soubory v úložišti objektů blob v Azure a na místním hardwaru.
+  ms.service: hpc-cache
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ekpgh
+  ms.author: v-erkell
+  ms.date: 08/30/2019
+  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70774551"
+landingContent:
+- title: Informace o službě Azure HPC Cache
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure HPC Cache?
+      url: hpc-cache-overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace požadavků pro Azure HPC Cache
+      url: hpc-cache-prereqs.md
+    - text: Vytvoření mezipaměti
+      url: hpc-cache-create.md
+    - text: Přidání úložiště
+      url: hpc-cache-add-storage.md
+    - text: Připojení klientů
+      url: hpc-cache-mount.md
+  - linkListType: concept
+    links:
+    - text: Konfigurace agregovaného oboru názvů
+      url: hpc-cache-namespace.md
+    - text: Naplnění nového úložiště objektů blob
+      url: hpc-cache-ingest.md
+- title: Řešení potíží
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Otevření lístku podpory
+      url: hpc-cache-support-ticket.md
