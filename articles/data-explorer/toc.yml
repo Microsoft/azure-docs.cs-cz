@@ -132,6 +132,8 @@
           href: using-metrics.md
     - name: Integrace s ostatními nástroji
       items:
+        - name: Hromadné kopírování dat s využitím šablony Azure Data Factory
+          href: data-factory-template.md
         - name: Konektor Apache Spark
           href: spark-connector.md
         - name: Připojení z Databricks pomocí Pythonu

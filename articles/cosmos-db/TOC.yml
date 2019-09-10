@@ -469,6 +469,8 @@
               href: bulk-executor-graph-dotnet.md
             - name: Optimalizace dotazů Gremlinu
               href: graph-execution-profile.md
+            - name: Použití tokenů prostředků
+              href: how-to-use-resource-tokens-gremlin.md
             - name: Vizualizace dat grafu
               href: graph-visualization.md
             - name: Ukládání a správa služby Spring Data

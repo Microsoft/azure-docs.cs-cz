@@ -770,6 +770,8 @@
                   href: log-query/get-started-portal.md
                 - name: Kurz dotazů k protokolům
                   href: log-query/get-started-queries.md
+                - name: Prostředí Simple Logs
+                  href: log-query/simple-logs.md
             - name: Protokolování dat
               items:
                 - name: Datová struktura protokolů

@@ -228,10 +228,14 @@
               href: Customize-application-attributes.md
             - name: Filtry oborů
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: Přeskočení odstranění pro uživatele mimo rozsah
+              href: skip-out-of-scope-deletions.md
             - name: Kontrola stavu zřizování
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Sestavy pro automatické zřizování uživatelů
               href: check-status-user-account-provisioning.md
+            - name: Export a import vaší konfigurace
+              href: export-import-provisioning-configuration.md
         - name: Řešení potíží se zřizováním uživatelů
           items:
             - name: Řešení potíží se zřizováním uživatelů
