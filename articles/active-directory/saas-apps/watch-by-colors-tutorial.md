@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0882be0419cbbbc7d94cb8d517e27bdb06a780
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014136"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861297"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se sledováním podle barev
 
@@ -56,7 +56,6 @@ Pokud chcete nakonfigurovat integraci sledování podle barev do služby Azure A
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **sledování podle barev** .
 1. Vyberte možnost **sledovat podle barev** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Konfigurace a testování jednotného přihlašování Azure AD pro sledování pomocí barev
 
@@ -123,17 +122,25 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-watch-by-colors-sso"></a>Konfigurace sledování pomocí jednotného přihlašování barev
 
-1. Otevřete nové okno webového prohlížeče a přihlaste se ke svému kukátku pomocí barev webu společnosti jako správce a proveďte následující kroky:
+1. Chcete-li automatizovat konfiguraci v rámci sledování pomocí barev, je nutné nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření**.
 
-1. V pravém horním rohu stránky klikněte na **profil** > **Nastavení** > účtu**SSO (jednotné přihlašování)** .
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+2. Po přidání rozšíření do prohlížeče klikněte na **Nastavení sledování podle barev** , které vás přesměruje na aplikaci Watch podle barev. Odtud zadejte přihlašovací údaje správce, které se budou přihlašovat ke sledování barev. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+3. Pokud chcete nastavit sledování pomocí barev ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému kukátku pomocí barev webu společnosti jako správce a proveďte následující kroky:
+
+4. V pravém horním rohu stránky klikněte na **profil** > **Nastavení** > účtu**SSO (jednotné přihlašování)** .
 
     ![Sledovat podle konfigurace barev](./media/watch-by-colors-tutorial/config01.png)
 
-1. Na stránce **jednotné přihlašování (SSO)** proveďte následující kroky:
+5. Na stránce **jednotné přihlašování (SSO)** proveďte následující kroky:
 
     ![Sledovat podle konfigurace barev](./media/watch-by-colors-tutorial/config02.png)
 
-    a. Přepněte **možnost Povolit** protokolSAML na zapnuto.
+    a. Přepněte **možnost povolit protokol SAML** na **zapnuto**.
 
     b. Do textového pole **Adresa URL** vložte **adresu URL federačních metadat**, kterou jste zkopírovali z Azure Portal.
 
@@ -183,5 +190,5 @@ Když kliknete na dlaždici sledovat podle barev na přístupovém panelu, měli
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Vyzkoušejte si časovou rezervu pomocí Azure AD](https://aad.portal.azure.com/)
+- [Vyzkoušejte si sledování barev pomocí Azure AD](https://aad.portal.azure.com/)
 

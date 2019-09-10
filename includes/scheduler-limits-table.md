@@ -9,29 +9,29 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175383"
 ---
-Následující tabulka popisuje každý z hlavní kvót, omezení, výchozí hodnoty a omezení ve službě Azure Scheduler.
+Následující tabulka popisuje jednotlivé hlavní kvóty, omezení, výchozí hodnoty a omezení v Azure Scheduleru.
 
 | Resource | Popis omezení |
 | -------- | ----------------- |
-| **Velikost úlohy** | Maximální velikost je 16 000. Pokud PUT nebo PATCH operace výsledkem úlohy velikost větší než tento limit, vrátí se stavový kód 400 Chybný požadavek. | 
-| **Kolekce úloh** | Maximální počet kolekcí úloh na předplatné Azure je 200 000. | 
-| **Počet úloh v kolekci** | Ve výchozím nastavení je maximální počet úloh pět úloh v kolekci úloh free a 50 úloh v kolekci standard. <p>Můžete změnit maximální počet úloh na kolekci úloh. Všechny úlohy v kolekci úloh jsou omezené na hodnotu nastavenou na kolekci úloh. Pokud se pokusíte vytvořit víc úloh než kvóta maximální úlohy, požadavek selže s kódem stavu 409 konflikt. | 
-| **Čas spuštění** | Maximální počet "čas spuštění" je 18 měsíců. |
-| **Rozsah opakování** | Období maximální počet opakování je 18 měsíců. | 
-| **Frekvence** | Výchozí kvóta maximální frekvence je v kolekci úloh free jednu hodinu a minutu v kolekci standardní úloh. <p>Můžete nastavit maximální frekvence na kolekci úloh nižší než maximální délka. Všechny úlohy v kolekci úloh jsou omezené na hodnotu nastavenou na kolekci úloh. Při pokusu o vytvoření úlohy s vyšší frekvencí, než je maximální četnost na kolekci úloh, požadavek selže s kódem stavu 409 konflikt. | 
-| **Velikost textu** | Velikost maximální tělo pro žádost je 8192 znaků. |
-| **Velikost adresy URL požadavku** | Maximální velikost pro adresu URL žádosti je 2 048 znaků. |
-| **Počet hlaviček** | Záhlaví maximální počet je 50 záhlaví. | 
-| **Velikost agregační záhlaví** | Záhlaví maximální agregovaná velikost je 4 096 znaků. |
-| **časový limit** | Časový limit žádosti je statická, to znamená, nejde konfigurovat. a je 60 sekund pro akce HTTP. Delší probíhajících operací postupujte podle asynchronní protokoly HTTP. Například vrátit 202 okamžitě, ale pokračovat v práci na pozadí. | 
-| **Historie úlohy** | Text maximální odpovědi, které jsou uloženy v historii úloh je 2 048 bajtů. |
-| **Uchování historie úlohy** | Historie úlohy, zůstane po dobu až dvou měsíců nebo až po poslední 1 000 spuštění. | 
-| **Dokončené a chybnou úloha uchovávání** | Dokončené a chybnou úlohy uchovávají po dobu 60 dnů. |
+| **Velikost úlohy** | Maximální velikost úlohy je 16 000. Pokud operace PUT nebo PATCH způsobí velikost úlohy větší, než je tento limit, vrátí se stavový kód 400 Špatný požadavek. | 
+| **Kolekce úloh** | Maximální počet kolekcí úloh na jedno předplatné Azure je 200 000. | 
+| **Počet úloh na kolekci** | Ve výchozím nastavení je maximální počet úloh pět úloh v bezplatné kolekci úloh a 50 úloh ve standardní kolekci úloh. <p>Můžete změnit maximální počet úloh v kolekci úloh. Všechny úlohy v kolekci úloh jsou omezeny na hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit více úloh než maximální kvóta úloh, požadavek se nezdaří s kódem stavu konfliktu 409. | 
+| **Čas spuštění** | Maximum "čas spuštění" je 18 měsíců. |
+| **Interval opakování** | Maximální délka opakování je 18 měsíců. | 
+| **Frekvence** | Ve výchozím nastavení je maximální kvóta frekvence jedna hodina v bezplatné kolekci úloh a jedna minuta ve standardní kolekci úloh. <p>Maximální četnost pro kolekci úloh můžete nastavit na nižší, než je maximum. Všechny úlohy v kolekci úloh jsou omezeny na hodnotu nastavenou v kolekci úloh. Pokud se pokusíte vytvořit úlohu s vyšší frekvencí, než je maximální frekvence v kolekci úloh, požadavek se nezdaří s kódem stavu konfliktu 409. | 
+| **Velikost textu** | Maximální velikost těla požadavku je 8 192 znaků. |
+| **Velikost adresy URL požadavku** | Maximální velikost adresy URL požadavku je 2 048 znaků. |
+| **Počet hlaviček** | Maximální počet hlaviček je 50 hlaviček. | 
+| **Agregovaná velikost záhlaví** | Maximální velikost agregované hlavičky je 4 096 znaků. |
+| **Prodlev** | Časový limit žádosti je statický, to znamená, že není možné konfigurovat. a pro akce HTTP je 60 sekund. V případě delšího provozu použijte asynchronní protokoly HTTP. Například vrátí 202 hned, ale pokračuje v práci na pozadí. | 
+| **Historie úlohy** | Maximální tělo odpovědi uložené v historii úlohy je 2 048 bajtů. |
+| **Uchování historie úloh** | Historie úloh je udržována po dobu až dvou měsíců nebo až do posledního 1 000 spuštění. | 
+| **Dokončené a chybné uchování úlohy** | Dokončené a chybné úlohy se uchovávají po dobu 60 dnů. |
 ||| 
 

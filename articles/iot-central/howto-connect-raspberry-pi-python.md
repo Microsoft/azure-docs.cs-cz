@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3f91e09e35eec0685cb4333802b860fb08412cb6
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 5c6e99c62d199c36081113011845a3bf2607bcb3
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019745"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842557"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojení k aplikaci Azure IoT Central k aplikaci v jazyce malin – PI (Python)
 
@@ -70,13 +70,13 @@ Následující postup popisuje, jak stáhnout a nakonfigurovat ukázkovou aplika
 
 1. Spuštěním následujícího příkazu nainstalujte klienta IoT Central Python:
 
-    ```sh
+    ```bash
     pip install iotc
     ```
 
 1. Stáhněte si vzorový kód Pythonu:
 
-    ```sh
+    ```bash
     curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
     ```
 
@@ -87,7 +87,7 @@ Následující postup popisuje, jak stáhnout a nakonfigurovat ukázkovou aplika
 
 1. Pomocí následujícího příkazu spusťte ukázku:
 
-    ```sh
+    ```bash
     python app.py
     ```
 
@@ -140,9 +140,9 @@ Přepnout nastavení
 
 | type            | Display name | Název pole | Datový typ |
 | --------------- | ------------ | ---------- | --------- |
-| Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
+| Vlastnost zařízení | Číslo Die   | dieNumber  | number    |
 | Text            | Location     | location   | Není k dispozici       |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak připojit malinu PI ke svojí aplikaci IoT Central Azure, je doporučeným dalším krokem postup pro [nastavení vlastní šablony zařízení](howto-set-up-template.md) pro vlastní zařízení IoT.

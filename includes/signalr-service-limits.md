@@ -1,6 +1,6 @@
 ---
-title: Službě Azure SignalR omezuje tabulky
-description: Popisuje systému limity pro služby Azure SignalR.
+title: Tabulka omezení služby signálů Azure
+description: Popisuje omezení systému pro službu Azure Signal Service.
 services: signalr
 documentationcenter: signalr
 author: sffamily
@@ -14,21 +14,21 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175408"
 ---
 | Resource | Výchozí omezení | Maximální omezení | 
 | --- | --- | --- |
-| Bezplatná úroveň jednotek služby SignalR na instanci služby Azure |1 |1 |
-| Jednotek služby Azure SignalR služby a instanci pro úroveň Standard |100 |100 |
-| Bezplatná úroveň jednotek služby Azure SignalR služby na předplatné a oblast|5 |5 |
-| Vrátí celkový počet jednotek služby Azure SignalR na předplatné a oblast |150 |Unlimited |
-| Připojení na jednotku a den bezplatné vrstvy |20 |20 |
-| Připojení na jednotku a den pro úroveň Standard |1 000 |1 000|
-| Zprávy součástí za jednotku za den zdarma vrstvy.|20,000 |20,000 |
-| Zprávy součástí za jednotku za den pro úroveň Standard|1 000 000 |1 000 000 |
+| Jednotky služby signálu Azure na instanci pro úroveň Free |1 |1 |
+| Jednotky služby signálu Azure na instanci pro úroveň Standard |100 |100 |
+| Jednotky služby signálu Azure na předplatné na oblast pro úroveň Free|5 |5 |
+| Celkový počet jednotek služby signálů Azure na předplatné na oblast |150 |Unlimited |
+| Počet připojení za jednotku a den pro úroveň Free |20 |20 |
+| Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
+| Zahrnuté zprávy na jednotku za den pro úroveň Free|20,000 |20,000 |
+| Zahrnuté zprávy na jednotku za den pro úroveň Standard|1 000 000 |1 000 000 |
 
-O aktualizaci pro vaše předplatné výchozí omezení, otevřete lístek podpory. 
+Pokud chcete požádat o aktualizaci výchozích omezení vašich předplatných, otevřete lístek podpory. 

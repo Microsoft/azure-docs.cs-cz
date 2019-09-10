@@ -1,6 +1,6 @@
 ---
-title: Aplikace klasické pracovní plochy, že volání webových rozhraní API (registrace aplikace) – platforma identit Microsoft
-description: Zjistěte, jak vytvářet aplikace klasické pracovní plochy, že volání webových rozhraní API (registrace aplikace)
+title: Aplikace klasické pracovní plochy, která volá webová rozhraní API (registrace aplikací) – platforma Microsoftu identity
+description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (registrace aplikace)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,54 +13,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057217"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860883"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikace klasické pracovní plochy, že volání webového rozhraní API – registrace aplikace
+# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API – registrace aplikace
 
-Tento článek obsahuje zvláštností registrace aplikace pro aplikace klasické pracovní plochy.
+Tento článek obsahuje specifické pro registraci aplikací pro desktopovou aplikaci.
 
-## <a name="supported-accounts-types"></a>Typy podporovaných účtů
+## <a name="supported-accounts-types"></a>Podporované typy účtů
 
-Typy účtů, které jsou podporovány v aplikaci klasické pracovní plochy závisí na prostředí chcete nahoru světla, a proto u těchto toků chcete použít.
+Typy účtů podporované v desktopové aplikaci závisí na prostředí, které chcete vysvětlit. Z důvodu tohoto vztahu jsou podporované typy účtů závislé na tokůch, které chcete použít.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Cílová skupina pro interaktivní získání tokenu
+### <a name="audience-for-interactive-token-acquisition"></a>Cílová skupina pro získání interaktivního tokenu
 
-Pokud vaše aplikace klasické pracovní plochy používá interaktivní ověřování, se můžete přihlásit uživatele z libovolného [typ účtu](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)
+Pokud vaše aplikace klasické pracovní plochy používá interaktivní ověřování, můžete se přihlásit z libovolného [typu účtu](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
 
-### <a name="audience-for-desktop-app-silent-flows"></a>Cílová skupina pro aplikace klasické pracovní plochy tiché toků
+### <a name="audience-for-desktop-app-silent-flows"></a>Cílová skupina pro tiché toky aplikace klasické pracovní plochy
 
-- Pokud máte v úmyslu použít ověření integrované Windows nebo uživatelského jména a hesla, vaše aplikace potřebuje k přihlášení uživatelů do vašeho vlastního tenanta (obchodní Vývojář) nebo v Azure Active directory organizace (scénář nezávislých výrobců softwaru). Tyto toky ověřování nejsou podporovány pro osobní účty Microsoft
-- Pokud chcete použít tok kódu zařízení, nemůžete se přihlásit uživatele pomocí svých osobních účtů Microsoft ještě
-- Pokud přihlášení uživatelů se sociálními identitami předáním B2C autority a zásad, můžete použít jenom ověřování interaktivní a uživatelského jména hesla.
+- Pokud chcete použít integrované ověřování systému Windows nebo uživatelské jméno/heslo, vaše aplikace musí přihlašovat uživatele ve vašem vlastním tenantovi (LOB Developer) nebo v organizacích Azure Active Directory (ISV). Tyto toky ověřování nejsou podporované pro osobní účty Microsoft.
+- Pokud chcete tok kódu zařízení použít, nemůžete zatím přihlašovat uživatele pomocí osobních účtů Microsoftu.
+- Pokud se přihlašujete uživatelům pomocí sociálních identit, které procházejí autoritou B2C a zásadou, můžete použít jenom interaktivní ověřování pomocí uživatelského jména a hesla.
 
 ## <a name="redirect-uris"></a>Identifikátory URI pro přesměrování
 
-Znovu identifikátory URI pro použití v aplikaci klasické pracovní plochy pro přesměrování, bude záviset na tok, který chcete použít.
+Identifikátory URI pro přesměrování používané v desktopové aplikaci budou záviset na toku, který chcete použít.
 
-- Pokud používáte **interaktivní ověřování** nebo **toku kódu zařízení**, budete chtít použít `https://login.microsoftonline.com/common/oauth2/nativeclient`. Dosáhnete kliknutím na odpovídající adresu URL v této konfiguraci **ověřování** oddílu pro vaši aplikaci
+- Pokud používáte **interaktivní ověřování** nebo **tok kódu zařízení**, budete chtít použít `https://login.microsoftonline.com/common/oauth2/nativeclient`. Tuto konfiguraci dosáhnete kliknutím na odpovídající adresu URL v části **ověřování** pro vaši aplikaci.
   
   > [!IMPORTANT]
-  > Dnes MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v desktopové aplikace běžící na Windows (`urn:ietf:wg:oauth:2.0:oob`). V budoucnu budete chceme změnit toto výchozí nastavení, a proto vám doporučujeme použít `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  > V současné době MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v desktopových aplikacích spuštěných ve Windows (`urn:ietf:wg:oauth:2.0:oob`). V budoucnu bude vhodné změnit toto výchozí nastavení, proto doporučujeme, abyste používali`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Pokud vaše aplikace používá pouze ověření integrované Windows, uživatelské jméno a heslo, není nutné zaregistrovat na identifikátor URI přesměrování pro aplikaci. Ve skutečnosti tyto toky provést výměnu zpráv pro koncový bod v2.0 Microsoft identity platform a vaše aplikace nebude volána zpět na žádné konkrétní identifikátor URI. 
-- Aby bylo možné rozlišit zařízení toku kódu, integrované ověřování Windows a uživatelského jména a hesla z toku aplikace důvěrnému klientovi, který nemá identifikátory URI pro přesměrování buď (klienta přihlašovacích údajů tok používaný v aplikacích démon), budete muset express vaše aplikace je aplikace veřejným klientem. Tato konfigurace zajišťuje tak, že přejdete **ověřování** pro vaši aplikaci a v části **upřesňující nastavení** podsekce, zvolte **Ano**, na otázku **Považovat aplikace veřejným klientem** (v **výchozí typ klienta** odstavci)
+- Pokud je vaše aplikace jenom pomocí integrovaného ověřování systému Windows nebo uživatelského jména a hesla, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky se týkají odezvy koncového bodu Microsoft Identity Platform v 2.0 a vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
+- Chcete-li odlišit tok kódu zařízení, integrované ověřování systému Windows a uživatelské jméno/heslo z toku důvěrné klientské aplikace, které nemají identifikátory URI pro přesměrování (tok přihlašovacích údajů klienta použitý v aplikacích démon), musíte vyjádřit, že vaše aplikace je veřejná klientská aplikace. Pokud chcete dosáhnout této konfigurace, přečtěte si část **ověřování** pro vaši aplikaci. Pak v podčásti **Upřesnit nastavení** v části **výchozí typ klienta** zvolte možnost **Ano** pro dotaz **zpracovat aplikaci jako veřejný klient**.
 
-  ![Povolit veřejné klienta](media/scenarios/default-client-type.png)
+  ![Povolení veřejného klienta](media/scenarios/default-client-type.png)
 
-## <a name="api-permissions"></a>Oprávnění k rozhraní API
+## <a name="api-permissions"></a>Oprávnění rozhraní API
 
-Desktopové aplikace volat rozhraní API jménem přihlášeného uživatele. Budou muset požadovat delegovaná oprávnění. Jejich nemohou požadovat oprávnění aplikací (které jsou zpracovávány pouze v [démon aplikace](scenario-daemon-overview.md))
+Aplikace klasické pracovní plochy volají rozhraní API pro přihlášeného uživatele. Potřebují požádat o delegovaná oprávnění. Nemůžou ale žádat o oprávnění aplikace, která se zpracují jenom v [aplikacích démona](scenario-daemon-overview.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Aplikace klasické pracovní plochy – konfigurace aplikace](scenario-desktop-app-configuration.md)
+> [Desktopová aplikace – konfigurace aplikace](scenario-desktop-app-configuration.md)

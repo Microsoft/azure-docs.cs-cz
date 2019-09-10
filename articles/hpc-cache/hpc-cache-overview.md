@@ -6,14 +6,14 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: da853cd92797c6ec778043ddc39c7854d8f5e832
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d772f66d14e0c0ab5ac73603e8faeb7e31e9891f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774718"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843781"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Co je mezipaměť prostředí Azure HPC?
+# <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
 Azure HPC ukládá přístup k vašim datům pro úlohy využívající vysoce výkonné výpočetní prostředí (HPC). Díky ukládání souborů do mezipaměti v Azure zajišťuje škálovatelnost cloud computingu, a to i pro pracovní postupy, ve kterých jsou vaše data uložená v sítích WAN, jako třeba v prostředí místního síťového úložiště (NAS) připojené k síti datacentra.
 
@@ -56,10 +56,10 @@ Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
 * Jihovýchodní Asie
 * USA – západ 2
 
-Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](<https://azure.microsoft.com/services/hpc-cache>) .
+Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o jeho funkcích najdete na [stránce produktu Azure HPC cache](<https://azure.microsoft.com/services/hpc-cache>) .
+* Další informace o jeho funkcích najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 * Další informace o [požadavcích](hpc-cache-prereqs.md) produktu
 * [Vytvoření mezipaměti prostředí Azure HPC](hpc-cache-create.md) z Azure Portal

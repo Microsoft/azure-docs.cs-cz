@@ -1,6 +1,6 @@
 ---
 title: Začínáme s Průzkumníkem metrik Azure
-description: Zjistěte, jak vytvořit první graf metrik s Průzkumníkem metrik Azure.
+description: Naučte se, jak vytvořit první graf metriky pomocí Průzkumníka metrik Azure.
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,66 +8,69 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595448"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861077"
 ---
-# <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
+# <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Azure Průzkumník metrik
 
 ## <a name="where-do-i-start"></a>Kde mám začít
-Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje zobrazování grafů, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Pomocí Průzkumníka metrik k prozkoumání stavu a využití vašich prostředků. Spusťte v následujícím pořadí:
+Azure Monitor Průzkumník metrik je součástí portál Microsoft Azure, která umožňuje vykreslovat grafy, vizuálně korelovat trendy a zkoumat špičky a rozmítají metriky v hodnotách metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků. Začněte v tomto pořadí:
 
-1. [Vyberte prostředek a metriku](#create-your-first-metric-chart) a zobrazí se základní graf. Potom [vyberte časový rozsah](#select-a-time-range) , který je relevantní pro šetření.
+1. [Vyberte prostředek a metriku](#create-your-first-metric-chart) a uvidíte základní graf. Pak [vyberte časový rozsah](#select-a-time-range) , který je pro vaše šetření relevantní.
 
-1. Zkuste [použití filtrů dimenzí a rozdělování](#apply-dimension-filters-and-splitting). Filtry a rozdělování umožňují analyzovat, které segmenty metriky přispívat na hodnotu celkové metriky a identifikovat odlehlé hodnoty je to možné.
+1. Zkuste [použít filtry dimenzí a rozdělení](#apply-dimension-filters-and-splitting). Filtry a rozdělení umožňují analyzovat, které segmenty metriky přispívají k celkové hodnotě metriky a identifikují možné odlehlé hodnoty.
 
-1. Použití [upřesňující nastavení](#advanced-chart-settings) přizpůsobení grafu před připnutím na řídicí panely. [Konfigurace výstrah](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotou.
+1. Před připnutím k řídicím panelům můžete graf přizpůsobit pomocí [rozšířených nastavení](#advanced-chart-settings) . [Nakonfigurujte výstrahy](alerts-metric-overview.md) pro příjem oznámení, když hodnota metriky překročí nebo klesne pod prahovou hodnotu.
 
 ## <a name="create-your-first-metric-chart"></a>Vytvoření prvního grafu metriky
 
-Chcete-li vytvořit grafu metrik z prostředků, skupinu prostředků, předplatné nebo zobrazení monitorování Azure, otevřete **metriky** kartu a postupujte podle těchto kroků:
+Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení , otevřete kartu metriky a proveďte následující kroky:
 
-1. Pomocí nástroje pro výběr prostředků vyberte prostředek, pro kterou chcete zobrazit metriky. (Pokud jste otevřeli je předem vybraná prostředek **metriky** v kontextu konkrétní prostředek).
+1. Pomocí ovládacího prvku pro výběr prostředku vyberte prostředek, pro který chcete zobrazit metriky. (Prostředek je předem vybraný, pokud jste spustili **metriky** v kontextu konkrétního prostředku).
 
-    > ![Výběr prostředku](./media/metrics-getting-started/resource-picker.png)
+    > ![Vybrat prostředek](./media/metrics-getting-started/resource-picker.png)
 
-2. Pro některé zdroje musíte vybrat obor názvů. Obor názvů je pouze způsob uspořádání metrik tak, že je budete moci snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání metriky pro soubory, tabulky, objekty BLOB a fronty. Mnoho typů prostředků mít pouze jeden obor názvů.
+2. U některých prostředků je nutné vybrat obor názvů. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.
 
 3. Vyberte metriku ze seznamu dostupných metrik.
 
-    > ![Vyberte metriku.](./media/metrics-getting-started/metric-picker.png)
+    > ![Vyberte metriku](./media/metrics-getting-started/metric-picker.png)
 
-4. Volitelně můžete změnit agregace metrik. Například může být vhodné grafu zobrazíte minimální, maximální a průměrné hodnoty metriky.
+4. Volitelně můžete změnit agregaci metriky. Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
 
 > [!NOTE]
-> Použití **přidat metriku** tlačítko a opakujte tyto kroky, pokud chcete zobrazit několik metrik zobrazených ve stejném grafu. Několik grafů v jednom zobrazení, vyberte **přidat graf** tlačítko v horní části.
+> Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **přidat graf** nahoře.
 
-## <a name="select-a-time-range"></a>Vyberte časový rozsah
+## <a name="select-a-time-range"></a>Vybrat časový rozsah
 
-Tento graf zobrazuje ve výchozím nastavení, posledních 24 hodin data metrik. Použití **výběr času** panel změnit časový rozsah, Přiblížit nebo oddálit v grafu. 
+Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. Panel **pro výběr času** použijte ke změně časového rozsahu, přiblížení nebo oddálení v grafu. 
 
-![Panel rozsahu změnu času](./media/metrics-getting-started/time-picker.png)
+![Panel změnit rozsah času](./media/metrics-getting-started/time-picker.png)
+
+> [!NOTE]
+> Použijte **časový štětec** k prozkoumání zajímavé oblasti grafu (špička nebo DIP). Umístěte ukazatel myši na začátek oblasti, klikněte na levé tlačítko myši, přetáhněte ho na druhou stranu oblasti a pak uvolněte tlačítko. Graf se v tomto časovém rozsahu přiblíží. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Použití filtrů dimenzí a rozdělení
 
-[Filtrování](metrics-charts.md#apply-filters-to-charts) a [rozdělení](metrics-charts.md#apply-splitting-to-a-chart) jsou výkonné diagnostické nástroje pro metriky, které mají dimenze. Tyto funkce Zobrazit celkovou hodnotu metriky dopad jak různé metriky segmentů ("hodnoty dimenze") a umožní vám identifikovat možné odlehlé hodnoty.
+[Filtrování](metrics-charts.md#apply-filters-to-charts) a [rozdělení](metrics-charts.md#apply-splitting-to-a-chart) jsou výkonné diagnostické nástroje pro metriky, které mají rozměry. Tyto funkce ukazují, jak různé segmenty metrik ("hodnoty dimenzí") ovlivňují celkovou hodnotu metriky a umožňují identifikovat možné odlehlé hodnoty.
 
-- **Filtrování** umožní vybrat hodnot dimenzí, které jsou zahrnuty v grafu. Například můžete chtít zobrazit úspěšné žádosti při vytvoření grafu *doba odezvy serveru* metriku. Je třeba použít filtr *úspěch požadavku* dimenze. 
+- **Filtrování** umožňuje zvolit, které hodnoty dimenze budou zahrnuty v grafu. Například můžete chtít zobrazit úspěšné požadavky při vytváření grafu metriky *Doba odezvy serveru* . Je nutné použít filtr na *úspěch dimenze požadavku* . 
 
-- **Rozdělení** ovládací prvky, zda se v grafu zobrazí samostatné řádky pro každou hodnotu dimenze nebo agreguje hodnoty do jednoho řádku. Můžete například zobrazit jeden řádek pro průměrné doby odezvy napříč všemi instancemi serveru nebo najdete v samostatných řádků pro každý server. Je třeba použít rozdělení na *instance serveru* dimenze zobrazíte na samostatných řádcích.
+- **Rozdělení** ovládacích prvků určuje, zda graf zobrazuje samostatné řádky pro každou hodnotu dimenze, nebo agreguje hodnoty do jednoho řádku. Například můžete zobrazit jeden řádek pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo zobrazit samostatné řádky pro každý server. Aby se zobrazily samostatné řádky, museli byste použít rozdělení na dimenzi *instance serveru* .
 
-Zobrazit [příklady grafy](metric-chart-samples.md) , filtrování a rozdělování použily. Tento článek ukazuje, že postup se používá ke konfiguraci grafy.
+Podívejte [se na příklady grafů](metric-chart-samples.md) , které mají použité filtrování a rozdělení. Tento článek popisuje kroky, které byly použity ke konfiguraci grafů.
 
-## <a name="advanced-chart-settings"></a>Nastavení pokročilých grafu
+## <a name="advanced-chart-settings"></a>Upřesnit nastavení grafu
 
-Můžete přizpůsobit styl grafu, title a upravit nastavení pokročilé grafu. Až budete hotovi s přizpůsobováním, můžete ji připnete na řídicí panel a práci uložte. Můžete také nastavit upozornění metriky. Postupujte podle [dokumentaci k produktu](metrics-charts.md) Další informace o těchto a dalších pokročilých funkcí Průzkumník metrik Azure monitoru.
+Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu. Po dokončení přizpůsobení ho připněte na řídicí panel, abyste mohli svoji práci uložit. Můžete také nakonfigurovat výstrahy metrik. V [dokumentaci k produktu](metrics-charts.md) se dozvíte další informace o těchto a dalších pokročilých funkcích Azure monitor Průzkumníku metrik.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o pokročilých funkcích sady Průzkumník metrik](metrics-charts.md)
-* [Řešení potíží s Průzkumníkem metrik](metrics-troubleshoot.md)
-* [Podívejte se do seznamu dostupných metrik pro služby Azure](metrics-supported.md)
-* [Podívejte se na příklady nakonfigurované grafů](metric-chart-samples.md)
+* [Další informace o rozšířených funkcích Průzkumník metrik](metrics-charts.md)
+* [Řešení potíží s Průzkumník metrik](metrics-troubleshoot.md)
+* [Seznam dostupných metrik pro služby Azure](metrics-supported.md)
+* [Příklady nakonfigurovaných grafů](metric-chart-samples.md)

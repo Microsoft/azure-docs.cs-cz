@@ -1,49 +1,49 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní Azure REST API a Javy.'
+title: 'Rychlý start: Rozpoznávání ploch v imagi pomocí REST API Azure a Java'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní Azure REST API pro rozpoznávání tváře s Javou rozpoznávání tváří v obrázku.
+description: V tomto rychlém startu použijete REST API Azure Face a Java k detekci ploch v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: d014785a0e866301e228458fe3742b899bd1f192
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 30e4852668fc12c38cd7d1794c461041acd654db
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606954"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859189"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Java
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a Java
 
-V tomto rychlém startu použijete rozhraní Azure REST API pro rozpoznávání tváře s Javou detekovat lidské tváře v obrázku.
+V tomto rychlém startu použijete REST API Azure Face a Java k detekci lidských plošek v obraze.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
-- Žádné prostředí Java IDE podle svého výběru.
+- Jakékoli Java IDE podle vašeho výběru.
 
-## <a name="create-the-java-project"></a>Vytvoření projektu jazyka Java
+## <a name="create-the-java-project"></a>Vytvoření projektu Java
 
-1. Vytvoření nové aplikace v Javě příkazového řádku v prostředí IDE a přidejte **hlavní** třídy s **hlavní** metoda.
+1. Vytvořte novou aplikaci příkazového řádku Java v integrovaném vývojovém prostředí a přidejte do ní **Hlavní** třídu s metodou **Main** .
 1. Následující knihovny naimportujte do projektu Java. Pokud používáte Maven, jsou k dispozici souřadnice Maven pro každou knihovnu.
-   - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.6)
-   - [Jádro serveru Apache HTTP](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.10)
+   - [Klient Apache HTTP](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: HttpClient: 4.5.6)
+   - [Jádro Apache HTTP Core](https://hc.apache.org/downloads.cgi) (org. Apache. httpcomponents: httpcore: 4.4.10)
    - [Knihovna JSON](https://github.com/stleary/JSON-java) (org.json:json:20180130)
-   - [Protokolování Apache Commons](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (commons-protokolování: commons-protokolování: 1.1.2)
+   - [Protokolování Apache-nahlašování](https://commons.apache.org/proper/commons-logging/download_logging.cgi) (přečtení z protokolu: přečtení z protokolu: 1.1.2)
 
-## <a name="add-face-detection-code"></a>Přidejte kód pro rozpoznávání tváře detekce
+## <a name="add-face-detection-code"></a>Přidat kód pro detekci obličeje
 
-Otevřete třídu hlavní vašeho projektu. Zde přidejte kód potřebný k načtení bitové kopie a rozpoznávání tváří.
+Otevřete hlavní třídu projektu. Zde přidáte kód potřebný k načtení obrázků a detekci ploch.
 
 ### <a name="import-packages"></a>Import balíčků
 
-Přidejte následující `import` příkazy do horní části souboru.
+Na začátek souboru `import` přidejte následující příkazy.
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -63,26 +63,21 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 ```
 
-### <a name="add-essential-fields"></a>Přidat nezbytné pole
+### <a name="add-essential-fields"></a>Přidat důležitá pole
 
-Nahradit **hlavní** třídy následujícím kódem. Tato data Určuje, jak se připojit ke službě pro rozpoznávání tváře a kde se stáhnout vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `uriBase` řetězec tak, aby obsahoval oblasti správný identifikátor (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všech oblastí Koncové body). Možná budete také chtít nastavit `imageWithFaces` hodnotu na cestu, která odkazuje na jiný soubor obrázku.
+Nahraďte **Hlavní** třídu následujícím kódem. Tato data určují, jak se připojit ke službě obličeje a kde získat vstupní data. Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a `uriBase` změnit řetězec tak, aby obsahoval správný řetězec koncového bodu. Můžete také chtít nastavit `imageWithFaces` hodnotu na cestu, která odkazuje na jiný soubor obrázku.
 
-`faceAttributes` Pole je jednoduše seznam určitých typů atributů. Určí které informace se mají načíst informace o zjištěných tváří.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+`faceAttributes` Pole je jednoduše seznamem určitých typů atributů. Určí, které informace se mají načíst o zjištěných plochách.
 
 ```Java
 public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // NOTE: You must use the same region in your REST call as you used to
-    // obtain your subscription keys. For example, if you obtained your
-    // subscription keys from westus, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        "https://<My Endpoint String>.com/face/v1.0/detect";
 
     private static final String imageWithFaces =
         "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
@@ -91,9 +86,9 @@ public class Main {
         "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Volání rozhraní REST API pro rozpoznávání tváře
+### <a name="call-the-face-detection-rest-api"></a>Volání detekce obličeje REST API
 
-Přidat **hlavní** metodu s následujícím kódem. Sestaví volání REST API pro rozpoznávání tváře k detekci informací o rozpoznávání tváře ve bitovou vzdálenou ( `faceAttributes` řetězec Určuje, které pro rozpoznávání tváře atributy k načtení). Pak zapíše výstupní data na řetězec formátu JSON.
+Přidejte metodu **Main** s následujícím kódem. Vytvoří volání REST do Face API k detekci informací o obličejích ve vzdálené imagi ( `faceAttributes` řetězec Určuje, které atributy obličeje mají být načteny). Pak zapíše výstupní data do řetězce JSON.
 
 ```Java
     public static void main(String[] args) {
@@ -127,7 +122,7 @@ Přidat **hlavní** metodu s následujícím kódem. Sestaví volání REST API 
 
 ### <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-Přímo pod předchozím kódu přidejte následující blok, který převádí vrácená data JSON do více snadno čitelného formátu před tiskem do konzoly. A konečně, zavřete bloku try-catch **hlavní** metody a **hlavní** třídy.
+Přímo pod předchozím kódem přidejte následující blok, který převede vracená data JSON do čitelnějšího formátu před jeho tiskem do konzoly. Nakonec zavřete blok try-catch, metodu **Main** a **hlavní** třídu.
 
 ```Java
             if (entity != null)
@@ -159,7 +154,7 @@ Přímo pod předchozím kódu přidejte následující blok, který převádí 
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Zkompilování kódu a spustíme ji. Úspěšná odpověď se zobrazí data pro rozpoznávání tváře ve snadno čitelném formátu JSON v okně konzoly. Příklad:
+Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Příklad:
 
 ```json
 [{
@@ -251,9 +246,9 @@ Zkompilování kódu a spustíme ji. Úspěšná odpověď se zobrazí data pro 
 }]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci Java, který používá volání REST pomocí rozhraní API pro rozpoznávání tváře Azure k rozpoznávání tváří v obrázku a vrátí jejich atributy. Dále se naučíte lepší pomocí této funkce v aplikaci pro Android.
+V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci v jazyce Java, která používá volání REST s Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. V dalším kroku se dozvíte, jak s touto funkcí v aplikaci pro Android dělat víc.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření aplikace pro Android ke zjišťování a snímků tváří](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Kurz: Vytvoření aplikace pro Android pro detekci a orámování řezů](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

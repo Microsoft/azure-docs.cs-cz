@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67449944"
 ---
-| Resource | Standardní sdílené složky | Premium sdílené složky |
+| Resource | Standardní sdílené složky | Soubory ke sdílení souborů úrovně Premium |
 |----------|---------------|------------------------------------------|
-| Minimální velikost sdílené složky | Žádné minimální; průběžné platby | 100 GB; zřízené |
-| Maximální velikost sdílené složky | 5 TiB (GA), 100 TB (preview) | 100 TiB |
+| Minimální velikost sdílené složky | Bez minima; průběžné platby | 100 GiB; zřízené |
+| Maximální velikost sdílené složky | 5 TiB (GA), 100 TiB (Preview) | 100 TiB |
 | Maximální velikost souboru ve sdílené složce | 1 TiB | 1 TiB |
 | Maximální počet souborů ve sdílené složce | Bez omezení | Bez omezení |
-| Maximální IOPS na sdílenou složku | 1 000 IOPS (GA), 10 000 IOPS (preview) | 100 000 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ |
-| Maximální počet uložené zásady přístupu na soubor sdílet | 5 | 5 |
-| Nastavte propustnost s jedním sdílené složky | Až 60 MiB/sec (GA), až 300 MiB/sec (preview) | Zobrazit hodnoty premium soubor sdílenou složku příchozí a odchozí|
-| Maximální výchozí přenos dat u jedné sdílené složky | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 6,204 MiB/s |
-| Maximální příchozí přenos dat pro sdílení souborů | Zobrazit standardní soubor propustnost cílové sdílené složky | Až 4,136 MiB/s |
-| Maximální otevřené popisovače směrem na soubor | 2 000 otevřených popisovačů | 2 000 otevřených popisovačů |
-| Maximální počet snímků sdílené složky | snímky sdílené složky 200 | snímky sdílené složky 200 |
-| Délka názvu maximální objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |
-| Komponenta maximální cesta (v cestě \A\B\C\D, každé písmeno je součást) | 255 znaků | 255 znaků |
+| Maximální počet IOPS na sdílenou složku | 1 000 IOPS (GA), 10 000 IOPS (Preview) | 100 000 IOPS |
+| Maximální počet uložených zásad přístupu na sdílení souborů | 5 | 5 |
+| Cílová propustnost pro jednu sdílenou složku | Až 60 MiB/s (GA), až 300 MiB/s (Preview) | Viz hodnoty příchozího a odchozího sdílení souborů Premium|
+| Maximální počet odchozích dat pro jednu sdílenou složku | Viz standardní propustnost cíle sdílení souborů | Až 6 204 MiB/s |
+| Maximální příchozí přenos dat pro jednu sdílenou složku | Viz standardní propustnost cíle sdílení souborů | Až 4 136 MiB/s |
+| Maximální počet otevřených popisovačů na soubor | 2 000 otevřených popisovačů | 2 000 otevřených popisovačů |
+| Maximální počet snímků sdílené složky | 200 snímky sdílené složky | 200 snímky sdílené složky |
+| Maximální délka názvu objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |
+| Maximální součást cesty (v cestě \A\B\C\D je každé písmeno součásti) | 255 znaků | 255 znaků |

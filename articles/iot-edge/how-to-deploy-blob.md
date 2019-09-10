@@ -1,20 +1,20 @@
 ---
 title: Nasazení modulu Azure Blob Storage do zařízení – Azure IoT Edge | Microsoft Docs
 description: Modul služby Azure Blob Storage nasadíte do zařízení IoT Edge k ukládání dat na hraničních zařízeních.
-author: kgremban
-ms.author: kgremban
+author: arduppal
+ms.author: arduppal
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.reviewer: kgremban
+ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 089c90abb999751db77bbe1d89d1d118ae712b52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e5420bbe7f65dcef4997d909b3bc4ede00dd9902
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947079"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844223"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení služby Azure Blob Storage v modulu IoT Edge do zařízení
 
@@ -93,7 +93,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly chcete nasad
      > [!IMPORTANT]
      > Neměňte druhou polovinu hodnoty připojení úložiště, která odkazuje na konkrétní umístění v modulu. Připojení úložiště by mělo vždy končit **:/blobroot** for Linux Containers a **: C:/blobroot** for Windows Containers.
 
-1. Nastavte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a vlastnosti [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro modul tak, že zkopírujete následující kód JSON a vložíte ho do pole **požadované vlastnosti vlákna v modulu set** . Nakonfigurujte každou vlastnost s odpovídající hodnotou, uložte ji a pokračujte v nasazení.
+1. Nastavte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a vlastnosti [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro modul tak, že zkopírujete následující kód JSON a vložíte ho do pole **požadované vlastnosti vlákna v modulu set** . Nakonfigurujte každou vlastnost s odpovídající hodnotou, uložte ji a pokračujte v nasazení. Pokud používáte simulátor IoT Edge, nastavte hodnoty na související proměnné prostředí pro tyto vlastnosti, které najdete v části vysvětlení v tématu [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties).
 
    ```json
    {
@@ -207,7 +207,7 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
      > [!IMPORTANT]
      > Neměňte druhou polovinu hodnoty připojení úložiště, která odkazuje na konkrétní umístění v modulu. Připojení úložiště by mělo vždy končit **:/blobroot** for Linux Containers a **: C:/blobroot** for Windows Containers.
 
-1. Nakonfigurujte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro svůj modul přidáním následujícího kódu JSON do souboru *Deployment. template. JSON* . Nakonfigurujte každou vlastnost s odpovídající hodnotou a uložte soubor.
+1. Nakonfigurujte [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) pro svůj modul přidáním následujícího kódu JSON do souboru *Deployment. template. JSON* . Nakonfigurujte každou vlastnost s odpovídající hodnotou a uložte soubor. Pokud používáte simulátor IoT Edge, nastavte hodnoty na související proměnné prostředí pro tyto vlastnosti, které najdete v části vysvětlení v tématu [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) a [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) .
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
@@ -256,7 +256,7 @@ Upravit **možnosti vytvoření kontejneru** (v Azure Portal) nebo pole `HostPor
 
 Když se připojíte k modulům další objekt blob úložiště, změňte koncový bod tak, aby odkazoval na aktualizovaném hostiteli port.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o [Azure Blob Storage v IoT Edge](how-to-store-data-blob.md)
 
 Další informace o způsobu práce manifesty nasazení a o tom, k jejich vytvoření najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).

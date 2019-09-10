@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: 15ec46511f1269606e0b0416c7c4a25f93012bec
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6c16b38cce31c45158a5871c10dbd01339da9203
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736904"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845434"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -440,7 +440,7 @@ Tento příklad šablony s více zabezpečenými definicemi parametrů, které `
 | Název parametru | Popis |
 |----------------|-------------|
 | `TemplatePasswordParam` | Parametr šablony, který přijímá heslo, které je pak předáno `basicAuthPasswordParam` parametru definice pracovního postupu |
-| `TemplatePasswordParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno `basicAuthUserNameParam` parametru definice pracovního postupu |
+| `TemplateUsernameParam` | Parametr šablony, který přijímá uživatelské jméno, které je pak předáno `basicAuthUserNameParam` parametru definice pracovního postupu |
 | `basicAuthPasswordParam` | Parametr definice pracovního postupu, který přijímá heslo pro základní ověřování v akci HTTP |
 | `basicAuthUserNameParam` | Parametr definice pracovního postupu, který přijímá uživatelské jméno pro základní ověřování v akci HTTP |
 |||
@@ -592,7 +592,7 @@ Tady je několik způsobů, jak můžete zabezpečit koncové body, ve kterých 
 
     [Azure API Management](../api-management/api-management-key-concepts.md) poskytuje možnosti místního připojení, jako je virtuální privátní síť Site-to-site a integrace ExpressRoute pro zabezpečený proxy a komunikaci s místními systémy. Z pracovního postupu aplikace logiky v návrháři aplikace logiky můžete vybrat rozhraní API, které je vystaveno API Management, které poskytuje rychlý přístup k místním systémům.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření šablon nasazení](logic-apps-create-deploy-template.md)  
 * [Monitorování aplikací logiky](logic-apps-monitor-your-logic-apps.md)  

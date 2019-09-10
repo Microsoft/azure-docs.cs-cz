@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 145b643999ff6e4af99ec50c9b0120fc9f11a212
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840151"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858942"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -39,7 +39,10 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [Vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
+>[!TIP]
+>Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
+
+Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení prostředí pro vývoj kontejnerů pro Linux: [Vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * [Zařízení se systémem Linux se spuštěným Azure IoT Edge](quickstart-linux.md)
@@ -51,7 +54,7 @@ Pokud chcete vytvořit modul IoT Edge se službou Custom Vision, nainstalujte na
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* Rozšíření [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) pro Visual Studio Code
+* [Rozšíření Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Vytvoření klasifikátoru obrázků s využitím služby Custom Vision
 
@@ -167,7 +170,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejne
 
 ### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
 
-V současné době Visual Studio Code může vyvíjet moduly pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64. 
+V současné době Visual Studio Code může vyvíjet moduly pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64, kterou budeme používat pro tento kurz. 
 
 1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení**Edge nebo na bočním panelu v dolní části okna vyberte ikonu zástupce. 
 
@@ -191,7 +194,7 @@ V současné době Visual Studio Code může vyvíjet moduly pro zařízení se 
 
 6. Otevřete soubor **module.json** ve složce classifier. 
 
-7. Aktualizujte parametr **platforms** tak, aby odkazoval na nový soubor Dockerfile, který jste přidali, a odeberte možnosti architektury ARM32 a AMD64.debug, které modul služby Custom Vision nepodporuje. 
+7. Aktualizujte parametr **Platforms** tak, aby odkazoval na nový souboru Dockerfile, který jste přidali, a odeberte všechny možnosti kromě AMD64, což je jediná architektura, kterou používáme pro tento kurz. 
 
    ```json
    "platforms": {
@@ -351,7 +354,7 @@ Místo toho, abychom k poskytování kanálu obrázků pro tento scénář použ
 
 3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do složky **modules** / **cameraCapture**. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
 
-3. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture. (ARM32 se v současné době v modulu služby Custom Vision nepodporuje). 
+3. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture. 
 
 4. Za řádek, který určuje pracovní adresář (`WORKDIR /app`) přidejte následující řádek kódu: 
 
@@ -445,7 +448,7 @@ V opačném případě můžete odstranit místní konfigurace a prostředky Azu
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste natrénovali model služby Custom Vision a nasadili jste ho jako modul do zařízení IoT Edge. Potom jste vytvořili modul, který může odesílat dotazy do služby klasifikace obrázků a hlásit její výsledky zpět do služby IoT Hub. 
 

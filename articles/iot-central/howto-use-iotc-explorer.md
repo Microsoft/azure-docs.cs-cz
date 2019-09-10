@@ -1,6 +1,6 @@
 ---
-title: Monitorování připojení zařízení pomocí Průzkumníka Azure IoT Central
-description: Monitorování zprávy typu zařízení a sledovat změny dvojče zařízení pomocí IoT Central Průzkumník rozhraní příkazového řádku.
+title: Monitorování připojení zařízení pomocí Azure IoT Central Exploreru
+description: Sledujte zprávy zařízení a sledujte změny v zařízeních přes rozhraní příkazového řádku IoT Central Explorer.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/17/2019
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4d17f0e5273c7397bd9c6a71d14b7992d8652768
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165864"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845689"
 ---
-# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitorování připojení zařízení pomocí Průzkumníka Azure IoT Central
+# <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Monitorování připojení zařízení pomocí Azure IoT Central Exploreru
 
-*Toto téma platí pro tvůrce a správce.*
+*Toto téma se týká tvůrců a správců.*
 
-Pomocí IoT Central Průzkumník rozhraní příkazového řádku můžete zobrazit zprávy zařízení odesílají do IoT Central a sledovat změny v dvojčeti služby IoT Hub. Získávejte hlubší vhled do stavu připojení zařízení a diagnostikovat problémy zprávy typu zařízení nedosáhne cloudu nebo přestane reagovat na změny dvojčete zařízení můžete použít tento nástroj open source.
+Pomocí rozhraní příkazového řádku IoT Central Explorer můžete zobrazit zprávy, které vaše zařízení odesílají do IoT Central, a sledovat změny ve IoT Hub zdvojené. Tento Open source nástroj můžete použít k získání hlubšího přehledu o stavu připojení zařízení a diagnostikování problémů se zprávami zařízení, které nedosáhnou cloudu, nebo zařízení, která nereagují na nereagující změny.
 
-[Navštivte iotc Průzkumníka úložiště Githubu.](https://aka.ms/iotciotcexplorercligithub)
+[Navštivte úložiště Průzkumníka IOTC v GitHubu.](https://aka.ms/iotciotcexplorercligithub)
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Verze Node.js 8.x nebo vyšší - https://nodejs.org
-+ Správce aplikace musí generování přístupového tokenu pro použití v iotc-explorer
++ Node. js verze 8. x nebo vyšší – https://nodejs.org
++ Správce vaší aplikace musí vygenerovat přístupový token, který můžete použít v IOTC – Průzkumník.
 
-## <a name="install-iotc-explorer"></a>Nainstalujte iotc-explorer
+## <a name="install-iotc-explorer"></a>Instalace součásti IOTC – Průzkumník
 
 Spusťte následující příkaz z příkazového řádku pro instalaci:
 
@@ -37,43 +37,43 @@ npm install -g iotc-explorer
 ```
 
 > [!NOTE]
-> Je obvykle potřeba spustit příkaz install s `sudo` v prostředí na bázi systému Unix.
+> Obvykle je potřeba spustit příkaz `sudo` install v prostředích podobných platformě UNIX.
 
-## <a name="run-iotc-explorer"></a>Spusťte iotc-explorer
+## <a name="run-iotc-explorer"></a>Spustit IOTC – Průzkumník
 
-Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `iotc-explorer`. Chcete-li zobrazit úplnou sadu příkazů a možností, předejte `--help` k `iotc-explorer` nebo některý z jeho dílčích příkazů.
+Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `iotc-explorer`. Chcete-li zobrazit úplnou sadu příkazů a možností, `--help` předejte `iotc-explorer` nebo libovolné dílčí příkazy.
 
-### <a name="login"></a>Přihlásit
+### <a name="login"></a>Přihlásit se
 
-Předtím, než můžete začít, musíte mít správce vaší aplikace IoT Central pro získání přístupového tokenu pro použití. Správce má následující kroky:
+Než začnete, musíte mít správce aplikace IoT Central, abyste mohli získat přístupový token, který můžete použít. Správce provede následující kroky:
 
-1. Přejděte do **správu** pak **přístupové tokeny**.
-1. Vyberte **vygenerovat Token**.
-    ![Snímek obrazovky stránky tokenu přístupu](media/howto-use-iotc-explorer/accesstokenspage.png)
+1. Přejděte do **správy** a pak **přístupové tokeny**.
+1. Vyberte **Generovat token**.
+    ![Snímek obrazovky stránky přístupového tokenu](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. Zadejte název tokenu, vyberte **Další**a potom **kopírování**.
+1. Zadejte název tokenu, klikněte na **Další**a pak na **Kopírovat**.
     > [!NOTE]
-    > Hodnota tokenu se zobrazí pouze jednou, takže musí být zkopírovány před jeho zavřením dialogu. Po zavření dialogového okna, se nikdy znovu zobrazí.
+    > Hodnota tokenu se zobrazuje jenom jednou, takže je potřeba před zavřením dialogu zkopírovat. Po zavření dialogového okna se znovu nezobrazí.
 
-    ![Zkopírovat snímek dialogové okno tokenu přístupu](media/howto-use-iotc-explorer/copyaccesstoken.png)
+    ![Snímek obrazovky dialogového okna kopírovat přístupový token](media/howto-use-iotc-explorer/copyaccesstoken.png)
 
-Použití tokenu k přihlášení k rozhraní příkazového řádku takto:
+Token můžete použít k přihlášení do CLI následujícím způsobem:
 
 ```cmd/sh
 iotc-explorer login "<Token value>"
 ```
 
-Pokud dáváte přednost není token uchovávaných v historii vašeho prostředí, můžete nechat token out a místo toho ho po zobrazení výzvy zadat:
+Pokud si nepřejete, aby byl token uložený v historii prostředí, můžete token opustit a místo toho ho zadat po zobrazení výzvy:
 
 ```cmd/sh
 iotc-explorer login
 ```
 
-### <a name="monitor-device-messages"></a>Monitorování zprávy typu zařízení
+### <a name="monitor-device-messages"></a>Monitorování zpráv zařízení
 
-Můžete se podívat zprávy přicházející z určitého zařízení nebo všechna zařízení ve vaší aplikaci pomocí `monitor-messages` příkazu. Tento příkaz spustí sledování, které průběžně výstupy nové zprávy při jejich doručení:
+Zprávy přicházející z konkrétního zařízení nebo ze všech zařízení v aplikaci můžete sledovat pomocí `monitor-messages` příkazu. Tento příkaz spustí sledovací proces, který průběžně vypíše nové zprávy při jejich doručení:
 
-Sledovat všechna zařízení ve vaší aplikaci, spusťte následující příkaz:
+Chcete-li sledovat všechna zařízení v aplikaci, spusťte následující příkaz:
 
 ```cmd/sh
 iotc-explorer monitor-messages
@@ -81,23 +81,23 @@ iotc-explorer monitor-messages
 
 Výstup:
 
-![výstup příkazu monitorování zprávy](media/howto-use-iotc-explorer/monitormessages.png)
+![Monitor – výstup příkazu zpráv](media/howto-use-iotc-explorer/monitormessages.png)
 
-Ke sledování konkrétních zařízení, stačí přidat na konec příkazu id zařízení:
+Pokud chcete sledovat konkrétní zařízení, stačí přidat ID zařízení na konec příkazu:
 
 ```cmd/sh
 iotc-explorer monitor-messages <your-device-id>
 ```
 
-Můžete také výstupní formát počítačů vhodných tak, že přidáte `--raw` možnost příkazu:
+Přidáním `--raw` možnosti do příkazu můžete také výstupem více strojově přívětivého formátu:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 
-### <a name="get-device-twin"></a>Získáte, dvojče zařízení
+### <a name="get-device-twin"></a>Získat dvojitou dvojici zařízení
 
-Můžete použít `get-twin` příkaz má být získán obsah dvojčete zařízení IoT Central. Chcete-li tak učinit, spusťte následující příkaz:
+K získání obsahu vlákna `get-twin` IoT Central zařízení můžete použít příkaz. Uděláte to tak, že spustíte následující příkaz:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id>
@@ -105,9 +105,9 @@ iotc-explorer get-twin <your-device-id>
 
 Výstup:
 
-![výstup příkazu GET-twin](media/howto-use-iotc-explorer/getdevicetwin.png)
+![výstup příkazu Get-zdvojený](media/howto-use-iotc-explorer/getdevicetwin.png)
 
-Stejně jako u `monitor-messages`, můžete získat další počítač popisný výstup předáním `--raw` možnost:
+Stejně jako `monitor-messages`u můžete získat více uživatelsky přívětivého výstupu `--raw` předáním možnosti:
 
 ```cmd/sh
 iotc-explorer get-twin <your-device-id> --raw
@@ -115,4 +115,4 @@ iotc-explorer get-twin <your-device-id> --raw
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jsme zjistili, jak pomocí Průzkumníka IoT Central, navrhované dalším krokem je prozkoumat [správy zařízení IoT Central](howto-manage-devices.md).
+Teď, když jste se naučili, jak používat IoT Central Exploreru, je navržený další krok prozkoumat [správu zařízení IoT Central](howto-manage-devices.md).

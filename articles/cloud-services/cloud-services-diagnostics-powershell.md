@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: gwallace
-ms.openlocfilehash: 4beed4dd874c23c36e125b5855e2e8380859ef83
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: f2b7e51971cc2e540ee7745b3b44571c58359613
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359158"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860214"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolení diagnostiky v Azure Cloud Services s využitím PowerShellu
 Můžete shromažďovat diagnostická data, jako jsou protokoly aplikací, čítače výkonu atd. z cloudové služby pomocí rozšíření Azure Diagnostics. Tento článek popisuje, jak povolit rozšíření Azure Diagnostics pro cloudovou službu pomocí PowerShellu.  Potřebné předpoklady pro tento článek najdete v tématu [Postup instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
@@ -131,5 +131,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>Další kroky
 * Další pokyny týkající se používání diagnostiky Azure a dalších postupů k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
+* [Schéma konfigurace diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot3) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
 * Informace o tom, jak povolit rozšíření diagnostiky pro Virtual Machines, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) .

@@ -1,7 +1,7 @@
 ---
 title: Nastavení vývojového prostředí v Pythonu
 titleSuffix: Azure Machine Learning service
-description: Naučte se konfigurovat vývojové prostředí při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, Azure Notebooks, IDEs, editory kódu a Data Science Virtual Machine.
+description: Naučte se konfigurovat vývojové prostředí při práci se službou Azure Machine Learning. V tomto článku se dozvíte, jak používat prostředí Conda, vytvářet konfigurační soubory a konfigurovat vlastní cloudový notebook Jupyter, poznámkové bloky, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278814"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860572"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -30,7 +30,7 @@ Následující tabulka uvádí každé vývojové prostředí popsané v tomto �
 | [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
 | [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudového poznámkového bloku (Python a SDK jsou předem nainstalované), ale mají předinstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovým VIRTUÁLNÍm počítačem poznámkového bloku se pomaleji Začínáme. |
-| [Azure Notebooks](#aznotebooks) | Bezplatné a odlehčené prostředí Začínáme s předinstalovaným Pythonem a sadou SDK. | V porovnání s cloudovým virtuálním počítačem poznámkového bloku jsou dostupné méně výkonné virtuální počítače. Izolované od pracovního prostoru a dalších prostředků. |
+
 
 Tento článek také nabízí další tipy k používání následujících nástrojů:
 
@@ -40,7 +40,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm), [Azure Databricks](#aml-databricks)nebo [Azure Notebooks](#aznotebooks).
+Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření pracovního prostoru služby Azure Machine Learning](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
 
 Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local), [Jupyter Notebook Server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
@@ -76,7 +76,7 @@ Virtuální počítač poznámkového bloku je:
 
 + **Přizpůsobitelná**. I když máte spravovanou a zabezpečenou nabídku virtuálních počítačů, zachováte plný přístup k hardwarovým funkcím a přizpůsobíte ji na přání srdce. Můžete například rychle vytvořit nejnovější virtuální počítač s technologií NVidia V100 a provést tak podrobné ladění nové architektury sítě neuronové.
 
-Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, [zastavte virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
+Pokud chcete zastavit poplatky za virtuální počítač poznámkového bloku, zastavte [virtuální počítač pro notebook](tutorial-1st-experiment-sdk-train.md#clean-up-resources). 
 
 ## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
@@ -289,12 +289,12 @@ Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Posky
 
 Jak Azure Databricks spolupracuje se službou Azure Machine Learning:
 + Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
-+ [Automatické funkce strojového učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
++ Automatické funkce strojového [učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
 + Azure Databricks můžete použít jako cíl pro výpočetní prostředky z [kanálu Azure Machine Learning](concept-ml-pipelines.md).
 
 ### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru datacihly
 
-Vytvořte [cluster datacihly](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
+Vytvořte [cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)datacihly. Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
 **Vytvoření clusteru bude trvat několik minut.**
 
 Použijte tato nastavení:
@@ -326,10 +326,10 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte **připojit** .
 
-1. Monitoruje chyby, dokud se změny stavu **nepřipojí**, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
+1. Monitoruje chyby, dokud se změnystavu nepřipojí, což může trvat několik minut.  Pokud tento krok neproběhne úspěšně, ověřte následující:
 
    Zkuste cluster restartovat pomocí:
-   1. V levém podokně vyberte **clustery**.
+   1. V levém podokně vyberte clustery.
    1. V tabulce vyberte název vašeho clusteru.
    1. Na kartě **knihovny** vyberte **restartovat**.
 
@@ -352,17 +352,6 @@ Vyzkoušet:
   I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**
 
 + Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
-
-## <a id="aznotebooks"></a>Poznámkových bloků Azure
-
-[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je to snadný způsob, jak začít s vývojem Azure Machine Learning.
-
-* Sada Azure Machine Learning SDK je už nainstalovaná.
-* Po vytvoření pracovního prostoru služby Azure Machine Learning v Azure Portal můžete kliknutím na tlačítko automaticky nakonfigurovat prostředí poznámkového bloku Azure pro práci s pracovním prostorem.
-
-Pomocí [Azure Portal](https://portal.azure.com) můžete začít s Azure Notebooks.  Otevřete pracovní prostor a v části **Přehled** vyberte **Začínáme v Azure Notebooks**.
-
-Ve výchozím nastavení používá Azure Notebooks k dispozici bezplatnou úroveň služby, která je omezená na 4 GB paměti a 1 GB dat. Tyto limity však můžete odebrat připojením instance Data Science Virtual Machine k projektu Azure Notebooks. Další informace najdete v tématu [Správa a konfigurace Azure Notebooksch projektů – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
 

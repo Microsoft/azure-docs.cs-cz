@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048002"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858990"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Co je IoT technologie Plug and Play Preview?
 
@@ -26,7 +26,7 @@ IoT technologie Plug and Play Preview umožňuje vývojářům řešení integro
 
 Můžete opakovaně používat rozhraní napříč modely schopností zařízení, aby se usnadnila spolupráce a urychlila vývoj.
 
-Aby mohla aplikace IoT technologie Plug and Play bez problémů pracovat s digitálními úkoly [Azure](../digital-twins/about-digital-twins.md), je schéma IoT technologie Plug and Play definované pomocí [DTDL (Digital Definition Language)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT technologie Plug and Play a DTDL jsou otevřené komunitě a Microsoft vítá spolupráci se zákazníky, partnery a odvětvím. Obě jsou založené na otevřených standardech W3C, jako jsou JSON-LD a RDF, což umožňuje snazší přijímání mezi službami a nástroji. Kromě toho se neúčtují žádné další poplatky za použití IoT technologie Plug and Play a DTDL. Standardní sazby za [azure IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/overview-iot-central.md)a další služby Azure zůstávají stejné.
+Aby mohla aplikace IoT technologie Plug and Play bez problémů pracovat s [digitálními úkoly Azure](../digital-twins/about-digital-twins.md), je schéma IoT technologie Plug and Play definované pomocí [DTDL (Digital Definition Language)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). IoT technologie Plug and Play a DTDL jsou otevřené komunitě a Microsoft vítá spolupráci se zákazníky, partnery a odvětvím. Obě jsou založené na otevřených standardech W3C, jako jsou JSON-LD a RDF, což umožňuje snazší přijímání mezi službami a nástroji. Kromě toho se neúčtují žádné další poplatky za použití IoT technologie Plug and Play a DTDL. Standardní sazby za [azure IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/overview-iot-central.md)a další služby Azure zůstávají stejné.
 
 Řešení založená na IoT Hub nebo IoT Central můžou těžit ze technologie Plug and Play IoT.
 
@@ -63,7 +63,7 @@ Jako vývojář zařízení můžete vyvíjet hardwarový produkt IoT, který po
 
 1. Vytvořte software nebo firmware zařízení, který implementuje možnosti deklarované v modelu a rozhraních schopností zařízení. Sada Azure IoT SDK obsahuje rozhraní API pro implementaci modelů schopností zařízení.
 
-Rozšíření [IoT Device Workbench pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) poskytuje mnoho funkcí, které vám pomůžou. Například jako vývojář zařízení můžete použít rozšíření k vygenerování kostry projektu jazyka C z modelu schopností. K vytváření a implementaci modelů schopností zařízení ale můžete použít jakékoli integrované vývojové prostředí.
+Rozšíření [Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack poskytuje mnoho funkcí, které vám pomůžou. Například jako vývojář zařízení můžete použít rozšíření k vygenerování kostry projektu jazyka C z modelu schopností. K vytváření a implementaci modelů schopností zařízení ale můžete použít jakékoli integrované vývojové prostředí.
 
 ## <a name="certify-an-iot-plug-and-play-device"></a>Certifikace zařízení technologie Plug and Play IoT
 
@@ -76,12 +76,13 @@ Jako vývojář zařízení můžete odeslat hardwarové produkty IoT pro certif
 - Publikujte do katalogu zařízení Certified for IoT.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
+
 Ve verzi Public Preview je IoT technologie Plug and Play k dispozici v oblastech Severní Evropa, Střed USA a Japonsko – východ. Ujistěte se prosím, že jste vytvořili centrum v jedné z těchto oblastí.
 
 ## <a name="message-quotas-in-iot-hub"></a>Kvóty zpráv v IoT Hub
 Během veřejné verze Preview zařízení IoT technologie Plug and Play odesílají samostatné zprávy na jedno rozhraní, což může zvýšit počet zpráv započítaných do vaší [kvóty zpráv](../iot-hub/iot-hub-devguide-quotas-throttling.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když máte přehled o IoT technologie Plug and Play, navržený další krok si vyzkoušíme jedno z rychlých startů:
 

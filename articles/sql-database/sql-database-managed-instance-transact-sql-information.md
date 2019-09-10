@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8f12f07d22387e5625b10e564cd05109e5bc73fc
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744400"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858559"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -201,7 +201,7 @@ Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a může být zadán
 
 ### <a name="compatibility-levels"></a>Úrovně kompatibility
 
-- Podporované úrovně kompatibility jsou 100, 110, 120, 130 a 140.
+- Podporované úrovně kompatibility jsou 100, 110, 120, 130, 140 a 150.
 - Úrovně kompatibility nižší než 100 nejsou podporovány.
 - Výchozí úroveň kompatibility pro nové databáze je 140. V případě obnovených databází zůstane úroveň kompatibility beze změny, pokud byla 100 a vyšší.
 
@@ -367,7 +367,7 @@ V-Database R a Pythonu se zatím nepodporují externí knihovny. Viz [SQL Server
 
 ### <a name="filestream-and-filetable"></a>FileStream a FileTable
 
-- Data FILESTREAM nejsou podporována.
+- data FILESTREAM nejsou podporována.
 - Databáze nemůže obsahovat skupiny souborů s `FILESTREAM` daty.
 - `FILETABLE`není podporováno.
 - Tabulky nemůžou `FILESTREAM` mít typy.
@@ -481,7 +481,7 @@ Určitá
 - `.BAK`soubory, které obsahují více souborů protokolu, nelze obnovit.
 - Zálohy obsahující databáze větší než 8TB, aktivní objekty OLTP v paměti nebo více než 280 souborů nemohou být obnoveny v instanci Pro obecné účely. 
 - Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
-Informace o příkazech Restore naleznete v tématu [Restore restatements](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+Informace o příkazech Restore naleznete [](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)v tématu Restore restatements.
 
 ### <a name="service-broker"></a>Služba Service Broker
 
@@ -665,7 +665,7 @@ Moduly CLR umístění do spravované instance a propojené servery nebo distrib
 
 **Odstraníte** Pokud je to možné, použijte připojení kontextu v modulu CLR.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o spravovaných instancích najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md) .
 - Seznam funkcí a porovnání najdete v tématu [Azure SQL Database porovnání funkcí](sql-database-features.md).

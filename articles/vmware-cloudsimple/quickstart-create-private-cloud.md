@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575491"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845490"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý Start – konfigurace prostředí privátního cloudu
 
@@ -46,7 +46,7 @@ Privátní cloudy se spravují prostřednictvím portálu CloudSimple. Mají sv�
 9. Klikněte **na další: Rozšířené možnosti**.
 10. Zadejte rozsah CIDR pro podsítě vSphere/síti vSAN. Ujistěte se, že se rozsah CIDR nepřekrývá s žádnou místní nebo jinou podsítí Azure (virtuální sítě) nebo s podsítí brány.
 
-    **Možnosti rozsahu CIDR:** /24,/23,/22 nebo/21. Rozsah CIDR/24 v rozsahu podporuje až devět uzlů, rozsah CIDR/23 podporuje až 41 uzlů a rozsah CIDR/22 a/21 podporuje až 64 uzlů (maximální počet uzlů v privátním cloudu).
+    **Možnosti rozsahu CIDR:** /24,/23,/22 nebo/21. Rozsah CIDR a/24 podporuje až 26 uzlů, a/23 rozsah CIDR podporuje až 58 uzlů, a/22 a/21 rozsah CIDR podporuje 64 uzlů (maximální počet uzlů v privátním cloudu).  Další informace a sítě VLAN a podsítě najdete v tématu [Přehled sítí VLAN a podsítí](cloudsimple-vlans-subnets.md).
 
       > [!IMPORTANT]
       > IP adresy v rozsahu vSphere/síti vSAN CIDR jsou vyhrazené pro použití v infrastruktuře privátního cloudu.  Nepoužívejte IP adresu v tomto rozsahu na žádném virtuálním počítači.
@@ -112,7 +112,7 @@ Klient VPN je potřebný pro připojení k CloudSimple z počítače.  Stáhnět
 4. Vyberte možnost **Uživatelé**.
 5. Klikněte na **Stáhnout konfiguraci sítě VPN**.
 
-    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
+    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
 
 6. Naimportujte konfiguraci do svého klienta VPN.
 
@@ -202,7 +202,7 @@ Pokud chcete změnit heslo, postupujte podle pokynů v části [instalace NSX Ma
 Postup vytvoření distribuované skupiny portů v vSphere:
 
 1. Postupujte podle pokynů v části "Přidání distribuované skupiny portů" v tématu [Průvodce sítí vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf).
-2. Při nastavování distribuované skupiny portů zadejte ID sítě VLAN vytvořené v části [vytvoření sítě VLAN pro vaše virtuální počítače](#create-a-vlan-for-your-workload-vms)s úlohami.
+2. Při nastavování distribuované skupiny portů zadejte ID sítě VLAN vytvořené v části [vytvoření sítě VLAN pro vaše virtuální počítače s úlohami](#create-a-vlan-for-your-workload-vms).
 
 ## <a name="next-steps"></a>Další postup
 

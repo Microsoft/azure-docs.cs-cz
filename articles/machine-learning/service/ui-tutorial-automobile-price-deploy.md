@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 64062aeab9a807d2aee7f4bca05d4019a3d9b736
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891619"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858631"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasazení modelu Machine Learning pomocí vizuálního rozhraní
 
@@ -41,7 +41,7 @@ Než nasadíte experiment jako webovou službu, musíte nejprve převést *škol
 
     Když vyberete možnost **vytvořit prediktivní experiment**, nastane několik věcí:
     
-    * Trained model je uložený jako modul **trained modelu** v paletě modulu. Najdete ho pod školenými **modely**.
+    * Trained model je uložený jako modul **trained modelu** v paletě modulu. Najdete ho pod **školenými modely**.
     * Moduly, které byly použity pro vzdělávání se odeberou; konkrétně:
       * Trénování modelu
       * Rozdělení dat
@@ -97,7 +97,7 @@ Uživatelé teď můžou odesílat požadavky rozhraní API na webovou službu A
 
 **Požadavek nebo odpověď** – uživatel pošle jednu nebo více řádků dat automobilu do služby pomocí protokolu HTTP. Služba reaguje s jednou nebo více sadami výsledků.
 
-Ukázková volání REST můžete najít na stránce s podrobnostmi webové služby na kartě spotřebovat.
+Ukázková volání REST můžete najít na stránce s podrobnostmi webové služby na kartě **spotřebovat** .
 
    ![Snímek obrazovky znázorňující ukázkové volání REST, které uživatelé můžou najít na kartě spotřebovat](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
 
@@ -118,6 +118,8 @@ Nasazení modelů a webových služeb, která vytvoříte v rámci vizuálního 
 1. Vyberte **nasazení**. zobrazí se seznam všech webových služeb, které používají model. Vyberte název webové služby, který se bude nacházet na stránce s podrobnostmi webové služby. Na této stránce můžete získat podrobnější informace o webové službě.
 
     [![Podrobná sestava spuštění snímku obrazovky](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
+
+Tyto modely a nasazení můžete najít také v částech **modely** a **koncové body** [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

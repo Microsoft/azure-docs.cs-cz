@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278697"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858736"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 
@@ -30,7 +30,7 @@ Naučte se používat službu Azure Machine Learning k nasazení modelu jako web
 
 Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který je __připojený k vašemu pracovnímu prostoru__. Existují dva způsoby, jak připojit cluster AKS k vašemu pracovnímu prostoru:
 
-* Vytvořte cluster AKS pomocí sady SDK služby Azure Machine Learning, Machine Learning CLI nebo Azure Portal. Tento proces automaticky připojí cluster k pracovnímu prostoru.
+* Vytvořte cluster AKS pomocí sady SDK služby Azure Machine Learning Machine Learning CLI, [Azure Portal](https://portal.azure.com) nebo na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com). Tento proces automaticky připojí cluster k pracovnímu prostoru.
 * Připojte existující cluster AKS k pracovnímu prostoru služby Azure Machine Learning. Cluster se dá připojit pomocí sady Azure Machine Learning Service SDK, Machine Learning CLI nebo Azure Portal.
 
 > [!IMPORTANT]

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1f5f2dc6babbca219f0efbb1d7013d4e6e3270e6
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814457"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873305"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -95,11 +95,11 @@ Když se po migraci vytvoří virtuální počítače Azure (převzetí služeb 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Sítě** >
    **Virtuální síť**.
 3. Do pole **Název** zadejte **myMigrationNetwork**.
-4. V části **Adresní prostor** nechte výchozí hodnotu.
+4. U **adresního prostoru** ponechte výchozí hodnotu (musí zadat hodnotu).
 5. V rozevíracím seznamu **Předplatné** vyberte předplatné, které chcete použít.
 6. V části **Skupina prostředků** vyberte **Použít existující** a potom vyberte **migrationRG**.
 7. Jako **umístění** vyberte **Západní Evropa**.
-8. V části **Podsíť** nechte v polích **Název** a **Rozsah IP adres** výchozí hodnoty.
+8. V části **podsíť**ponechte výchozí hodnoty pro **název** a **Rozsah IP adres (je třeba zadat hodnotu)** .
 9. Přidejte pokyny pro nastavení ochrany DDoS Protection.
 10. Možnost **Koncové body služby** nechte zakázanou.
 11. Přidejte pokyny pro nastavení brány firewall.

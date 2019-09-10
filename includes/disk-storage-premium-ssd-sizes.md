@@ -9,14 +9,14 @@ ms.date: 05/21/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 67f1293ecb5b69e09ad3ce4db35c3920e2dfd9ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67174943"
 ---
-| Velikosti úrovně Premium SSD | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
+| Velikosti SSD úrovně Premium | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| Velikost disku v GB | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,096 | 8 192 | 16,384 | 32,767 |
-| Vstupně-výstupní operace za sekundu / disk | Až 120 | Až 240 | Až 500 | Až 1100 | Až 2,300 | Až 5 000 | Až 7500 | Až 7500 | Až 16 000 | Až 18 000 | Až 20 000 |
-| Propustnost / disk | Až pro 25 MiB za sekundu | Až na 50 MiB za sekundu | Až 100 MiB/s | Až 125 MiB za sekundu | Až 150 MiB za sekundu | Až 200 MiB za sekundu | Až 250 MiB za sekundu | Až 250 MiB za sekundu| Až 500 MiB/s | Až 750 MiB za sekundu | Až 900 MiB za sekundu |
+| Velikost disku v GiB | 32 | 64 | 128 | 256 | 512 | 1,024 | 2 048 | 4 096 | 8 192 | 16 384 | 32,767 |
+| Vstupně-výstupní operace za sekundu / disk | Až 120 | Až 240 | Až 500 | Až 1 100 | Až 2 300 | Až 5 000 | Až 7 500 | Až 7 500 | Až 16 000 | Až 18 000 | Až 20 000 |
+| Propustnost / disk | Až 25 MiB/s | Až 50 MiB/s | Až 100 MiB/s | Až 125 MiB/s | Až 150 MiB/s | Až 200 MiB/s | Až 250 MiB/s | Až 250 MiB/s| Až 500 MiB/s | Až 750 MiB/s | Až 900 MiB/s |

@@ -1,33 +1,33 @@
 ---
-title: Kurz – konfigurace clusteru v Azure HDInsight pomocí Ansible | Dokumentace Microsoftu
-description: Zjistěte, jak použít Ansible k vytvoření a změna velikosti Azure HDInsight
-keywords: ansible v azure, devops, bash, playbooku, apache hadoop, hdinsight
+title: Kurz – konfigurace clusteru ve službě Azure HDInsight pomocí Ansible | Microsoft Docs
+description: Naučte se používat Ansible k vytvoření a změně velikosti Azure HDInsight.
+keywords: Ansible, Azure, DevOps, bash, PlayBook, Apache Hadoop, HDInsight
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230289"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861269"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Kurz: Konfigurace clusteru v Azure HDInsight pomocí Ansible
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Kurz: Konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) je služba pro zpracování dat analytická Hadoop. HDInsight je nástroj ETL (extrakce, transformace, načtení) používané k práci s velkými objemy dat – strukturovaná nebo nestrukturovaná. HDInsight podporuje několik [typy clusterů](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight) kde každý typ podporuje odlišnou sadu komponent. 
+[Azure HDInsight](/azure/hdinsight/) je analytická služba založená na Hadoop pro zpracování dat. HDInsight je nástroj ETL (extrakce, transformace, načítání), který se používá pro práci s velkými objemy dat, ať už strukturovaného, nebo nestrukturovaného. HDInsight podporuje několik [typů clusterů](/azure/hdinsight/hadoop/apache-hadoop-introduction) , kde každý typ podporuje jinou sadu komponent. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Vytvoření účtu úložiště pro HDInsight
-> * Konfigurace [clusteru HDInsight Spark](/azure/hdinsight/spark/apache-spark-overview).
-> * Změnit velikost clusteru
+> * Nakonfigurujte [cluster HDInsight Spark](/azure/hdinsight/spark/apache-spark-overview).
+> * Změna velikosti clusteru
 > * Odstranění clusteru
 
 ## <a name="prerequisites"></a>Požadavky
@@ -35,9 +35,9 @@ ms.locfileid: "65230289"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Vytvořit náhodný přípony
+## <a name="create-a-random-postfix"></a>Vytvoření náhodné přípony
 
-Playbook kód v této části vytvoří náhodný příponový používat jako součást názvu clusteru Azure HDInsight.
+Kód PlayBook v této části vytvoří náhodnou příponu pro použití jako součást názvu clusteru Azure HDInsight.
 
 ```yml
 - hosts: localhost
@@ -52,9 +52,9 @@ Playbook kód v této části vytvoří náhodný příponový používat jako s
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logický kontejner, ve které se nasazují a spravují prostředky.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Playbook kódu v této části se vytvoří skupinu prostředků.
+Kód PlayBook v této části vytvoří skupinu prostředků.
 
 
 ```yml
@@ -67,9 +67,9 @@ Playbook kódu v této části se vytvoří skupinu prostředků.
 
 ## <a name="create-a-storage-account-and-retrieve-key"></a>Vytvoření účtu úložiště a načtení klíče
 
-Účet úložiště Azure se používá jako výchozí úložiště pro HDInsight cluster. 
+Účet služby Azure Storage se používá jako výchozí úložiště pro cluster HDInsight. 
 
-Playbook kódu v této části se načte klíč používaný pro přístup k účtu úložiště.
+Kód PlayBook v této části načte klíč, který se používá pro přístup k účtu úložiště.
 
 ```yml
 - name: Create storage account
@@ -97,7 +97,7 @@ Playbook kódu v této části se načte klíč používaný pro přístup k ú�
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>Vytvoření clusteru HDInsight Spark
 
-Playbook kód v této části se vytvoří cluster Azure HDInsight.
+Kód PlayBook v této části vytvoří cluster Azure HDInsight.
 
 ```yml
 - name: Create instance of Cluster
@@ -138,13 +138,13 @@ Playbook kód v této části se vytvoří cluster Azure HDInsight.
           password: MuABCPassword!!@123
 ```
 
-Vytvoření instance může trvat několik minut.
+Dokončení vytvoření instance může trvat několik minut.
 
 ## <a name="resize-the-cluster"></a>Změna velikosti clusteru
 
-Po vytvoření clusteru je jen nastavení, které můžete změnit počet uzlů pracovního procesu. 
+Po vytvoření clusteru je jediným nastavením, které můžete změnit, počet pracovních uzlů. 
 
-Playbook kódu v této části zvýší počet uzlů pracovního procesu aktualizací `target_instance_count` v rámci `workernode`.
+Kód PlayBook v této části zvyšuje počet pracovních uzlů aktualizací `target_instance_count` v rámci. `workernode`
 
 ```yml
 - name: Resize cluster
@@ -188,11 +188,11 @@ Playbook kódu v této části zvýší počet uzlů pracovního procesu aktuali
   register: output
 ```
 
-## <a name="delete-the-cluster-instance"></a>Odstraňte instanci clusteru
+## <a name="delete-the-cluster-instance"></a>Odstranění instance clusteru
 
-Za clustery HDInsight se fakturuje za minutu. 
+Fakturace za clustery HDInsight se účtuje poměrnou rychlostí za minutu. 
 
-Playbook kódu v této části odstraní cluster.
+Kód PlayBook v tomto oddílu odstraní cluster.
 
 ```yml
 - name: Delete instance of Cluster
@@ -202,10 +202,10 @@ Playbook kódu v této části odstraní cluster.
     state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Získat ukázky playbook
+## <a name="get-the-sample-playbook"></a>Získat ukázkovou PlayBook
 
-Existují dva způsoby, jak získat playbook úplnou ukázku:
-- [Stáhnout příručku](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) a uložit ho. tím `hdinsight_create.yml`.
+Existují dva způsoby, jak získat úplnou ukázkovou PlayBook:
+- [Stáhněte si PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) a uložte ho do `hdinsight_create.yml`souboru.
 - Vytvořte nový soubor s názvem `hdinsight_create.yml` a zkopírujte do něj následující obsah:
 
 ```yml
@@ -348,14 +348,14 @@ Existují dva způsoby, jak získat playbook úplnou ukázku:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>Spustit playbook vzorku
+## <a name="run-the-sample-playbook"></a>Spuštění ukázkové PlayBook
 
-V této části se spusťte playbook pro testování různých funkcí uvedených v tomto článku.
+V této části spustíte PlayBook k otestování různých funkcí, které jsou uvedené v tomto článku.
 
-Před spuštěním playbooku, proveďte následující změny:
-- V `vars` části, nahraďte `{{ resource_group_name }}` zástupný symbol s názvem vaší skupiny prostředků.
+Před spuštěním PlayBook proveďte následující změny:
+- V části nahraďte zástupný symbol názvem vaší skupiny prostředků. `{{ resource_group_name }}` `vars`
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí `ansible-playbook` příkazu:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -365,7 +365,7 @@ ansible-playbook hdinsight.yml
 
 Pokud už je nepotřebujete, odstraňte prostředky vytvořené v tomto článku. 
 
-Uložte následující kód jako `cleanup.yml`:
+Následující kód uložte jako `cleanup.yml`:
 
 ```yml
 - hosts: localhost
@@ -379,7 +379,7 @@ Uložte následující kód jako `cleanup.yml`:
         state: absent
 ```
 
-Spuštění playbooku pomocí `ansible-playbook` příkaz:
+Spusťte PlayBook pomocí `ansible-playbook` příkazu:
 
 ```bash
 ansible-playbook cleanup.yml

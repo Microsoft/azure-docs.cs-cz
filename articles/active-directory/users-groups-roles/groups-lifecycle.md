@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837938"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844316"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -35,7 +35,7 @@ Jakmile nastavíte vypršení platnosti skupiny:
 V současné době se pro skupiny Office 365 v rámci jednoho tenanta dá nakonfigurovat jenom jedna zásada vypršení platnosti.
 
 > [!NOTE]
-> Konfigurace a použití zásad vypršení platnosti pro skupiny Office 365 vyžaduje, abyste měli licence Azure AD Premium pro členy všech skupin, na které se zásady vypršení platnosti používají.
+> Konfigurace a použití zásad vypršení platnosti pro skupiny Office 365 vyžaduje, abyste měli k disAzure AD Premium licence pro členy všech skupin, na které se zásady vypršení platnosti aplikují, ale ne nutně.
 
 Informace o tom, jak stáhnout a nainstalovat rutiny Azure AD PowerShellu, najdete v tématu [Azure Active Directory PowerShellu pro graf 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
@@ -69,8 +69,11 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
   - Až budete hotovi, uložte nastavení kliknutím na **Uložit**.
 
 > [!NOTE]
-> Když nastavíte vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 30 dní do vypršení platnosti. První e-mail s oznámením o obnovení se pošle během dne. Například skupina A byla vytvořena před 400 dny a interval vypršení platnosti je nastaven na 180 dnů. Když použijete zásady vypršení platnosti, Skupina A bude mít 30 dní, než se odstraní, pokud je vlastník neobnoví.
+> Když nakonfigurujete vypršení platnosti, všechny skupiny, které jsou starší než interval vypršení platnosti, se nastaví na 30 dní do vypršení platnosti, dokud ji vlastník neobnoví. První e-mail s oznámením o obnovení se pošle během dne.
+>
 > Když se dynamická skupina odstraní a obnoví, zobrazuje se jako nová skupina a znovu se vyplní podle pravidla. Tento proces může trvat až 24 hodin.
+>
+> Oznámení o vypršení platnosti skupin používaných v týmech se zobrazí v informačním kanálu vlastník týmů.
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 
@@ -160,7 +163,7 @@ Následující rutiny se dají použít ke konfiguraci zásad podrobněji. Dalš
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto články poskytují další informace o skupinách Azure AD.
 

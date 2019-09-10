@@ -9,48 +9,48 @@ ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
 ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67333370"
 ---
 | Resource | Výchozí/maximální limit |
 | --- | --- |
-| Prostředky Azure branou služby na předplatné | 100 |
-| Front-endu hostitele, včetně vlastních domén pro každý prostředek | 100 |
-| Pravidla směrování pro každý prostředek | 100 |
-| Fondy back-end pro každý prostředek | 50 |
-| Back-EndY za back endového fondu | 100 |
-| Vzorů cest, které je nutné u pravidla směrování | 25 |
-| Pravidla brány firewall na vlastní webové aplikace podle zásad | 10 |
-| Zásady brány firewall webových aplikací pro každý prostředek | 100 |
+| Prostředky služby front-dveří pro Azure na předplatné | 100 |
+| Hostitelé front-endu, mezi které patří vlastní domény na prostředek | 100 |
+| Pravidla směrování na prostředek | 100 |
+| Fondy back-endu na prostředek | 50 |
+| Back-endy na fond back-endu | 100 |
+| Vzor cesty, který se má shodovat s pravidlem směrování | 25 |
+| Vlastní pravidla firewallu webových aplikací na jednu zásadu | 10 |
+| Zásada firewallu webových aplikací na prostředek | 100 |
 | Podmínky shody brány firewall webových aplikací na vlastní pravidlo | 10 |
-| Web application firewall rozsahy IP adres za odpovídají podmínce | 600 |
-| Hodnoty shody webové aplikace brány firewall na řetězec za podmínce shody | 10 |
-| Hodnota délky řetězce shody webové aplikace brány firewall | 256 |
-| Firewall webových aplikací délka názvu parametru text příspěvku | 256 |
-| Firewall webových aplikací délka názvu záhlaví HTTP | 256 |
-| Délka názvu webové aplikace brány firewall souboru cookie | 256 |
-| Webové aplikace brány firewall protokolu HTTP požadavku velikost textu zkontroloval | 128 KB |
-| Délka textu webových aplikací brány firewall vlastní odpovědi | 2 KB |
+| Rozsahy IP adres firewallu webových aplikací na shodnou podmínku | 600 |
+| Hodnoty shody řetězců firewallu webových aplikací za shodné podmínky | 10 |
+| Délka hodnoty shody řetězců firewallu webových aplikací | 256 |
+| Délka názvu parametru POST firewallu webových aplikací | 256 |
+| Délka názvu záhlaví protokolu HTTP brány firewall webových aplikací | 256 |
+| Délka názvu souboru cookie pro bránu firewall webových aplikací | 256 |
+| Kontrola velikosti textu požadavku protokolu HTTP v bráně firewall webových aplikací | 128 KB |
+| Délka textu vlastní odpovědi firewallu webových aplikací | 2 KB |
 
 ### <a name="timeout-values"></a>Hodnoty časového limitu
-#### <a name="client-to-front-door"></a>Klient branou
-- Přední dveře má TCP připojení časový limit nečinnosti 61 sekund.
+#### <a name="client-to-front-door"></a>Klient do front-dveří
+- Vypršel časový limit připojení TCP na přední dveře 61 sekund.
 
-#### <a name="front-door-to-application-back-end"></a>Přední dveře k back endové aplikace
-- Pokud je odpověď na odezvu bloku, 200 je vrácena, pokud nebo při přijetí prvního bloku.
-- Po předá požadavek protokolu HTTP back-endu branou počká 30 sekund pro první paket z back-endu. Došlo k chybě 503 pak vrátí klientovi.
-- Po přijetí prvního paketu z back-endu branou počká 30 sekund za časový limit nečinnosti. Došlo k chybě 503 pak vrátí klientovi.
-- Přední dveře k back-end časový limit relace TCP je 30 minut.
+#### <a name="front-door-to-application-back-end"></a>Přední dveře do back-endu aplikace
+- Pokud je odpověď blokové odpovědi, vrátí se 200, pokud nebo dojde k přijetí prvního bloku.
+- Po přeposílání požadavku HTTP na back-end zaznamená přední dveře po dobu 30 sekund prvního paketu z back-endu. Pak vrátí klientovi chybu 503.
+- Po přijetí prvního paketu z back-endu budou přední dveře čekat po dobu 30 sekund v nečinném intervalu. Pak vrátí klientovi chybu 503.
+- Přední dveře do back-endu TCP relace vypršela 30 minut.
 
-### <a name="upload-and-download-data-limit"></a>Nahrávání a stahování dat limit
+### <a name="upload-and-download-data-limit"></a>Nahrávání a stahování omezení dat
 
-|  | S blokového kódování (CTE) přenosu | Bez dat protokolu HTTP |
+|  | S kódováním přenosu v bloku dat (CTE) | Bez bloků HTTP |
 | ---- | ------- | ------- |
-| **Stáhnout** | Neexistuje žádné omezení na velikost ke stažení. | Neexistuje žádné omezení na velikost ke stažení. |
-| **Nahrávání** |  Neexistuje žádné omezení, dokud každý nahraný CTE je menší než 2 GB. | Velikost nesmí být větší než 2 GB. |
+| **Stáhnout** | Velikost stahovaných velikostí není nijak omezena. | Velikost stahovaných velikostí není nijak omezena. |
+| **Upload** |  Neexistují žádné limity, pokud je každé nahrání CTE menší než 2 GB. | Velikost nemůže být větší než 2 GB. |
 
 ### <a name="other-limits"></a>Další omezení
-- Maximální velikost adresy URL – 8 192 bajtů - určuje maximální délku nezpracované adresy URL (schéma název hostitele a port + cesta + řetězec adresy URL dotazu) - maximální řetězec dotazu velikost - 4 096 bajtů - určuje maximální délku řetězce dotazu v bajtech.
+- Maximální velikost adresy URL-8 192 bajtů – určuje maximální délku nezpracované adresy URL (schéma + hostname + port + cesta a řetězec dotazu adresy URL) – maximální velikost řetězce dotazu-4 096 bajtů – určuje maximální délku řetězce dotazu v bajtech.

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3113ad050ec6040d4f7964e940c507024bcf002d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011521"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844986"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 
@@ -24,7 +24,7 @@ V tomto článku se naučíte, jak používat službu Azure Machine Learning k n
 Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
 
 > [!IMPORTANT]
-> Odvození GPU se podporuje jenom ve službě Azure Kubernetes.
+> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [spuštění dávkového předpovědi](how-to-run-batch-predictions.md). 
 
 > [!TIP]
 > I když fragmenty kódu v tomto článku Usee model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.

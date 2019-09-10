@@ -9,21 +9,21 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175385"
 ---
-| Resource | Free (Preview) | Developer | Basic | Standard | Premium |
+| Resource | Free (Preview) | Vývojář | Basic | Standard | Premium |
 | --- | --- | --- | --- | --- | --- |
-| Horizontální navýšení kapacity |neuvedeno |neuvedeno |Ano, v přírůstcích po 1 jednotce Basic |Ano, v přírůstcích po 1 jednotce Standard |Ano, v přírůstcích po 1 jednotce Premium |
-| Limit škálování |neuvedeno |neuvedeno |Až na 8 jednotek |Až na 8 jednotek |Až na 8 jednotek |
-| Mosty EAI na jednotku |neuvedeno |25 |25 |125 |500 |
-| Smlouvy EDI na jednotku |neuvedeno |10 |50 |250 |1 000 |
+| Horizontální navýšení kapacity |Není k dispozici |Není k dispozici |Ano, v přírůstcích po 1 jednotce Basic |Ano, v přírůstcích po 1 jednotce Standard |Ano, v přírůstcích po 1 jednotce Premium |
+| Limit škálování |Není k dispozici |Není k dispozici |Až 8 jednotek |Až 8 jednotek |Až 8 jednotek |
+| Mosty EAI na jednotku |Není k dispozici |25 |25 |125 |500 |
+| Smlouvy EDI na jednotku |Není k dispozici |10 |50 |250 |1 000 |
 | Hybridní připojení na jednotku |5 |5 |10 |50 |100 |
-| Přenos dat hybridním připojením (GB) na jednotku |5 |5 |50 |250 |500 |
-| Počet připojení, které používají služby BizTalk Adapter Service za jednotku |neuvedeno |1 |2 |5 |25 |
-| Archivace |neuvedeno |K dispozici |neuvedeno |neuvedeno |K dispozici |
-| Vysoká dostupnost |neuvedeno |neuvedeno |K dispozici |K dispozici |K dispozici |
+| Přenos dat hybridního připojení (GB) na jednotku |5 |5 |50 |250 |500 |
+| Počet připojení, která používají službu BizTalk Adapter na jednotku |Není k dispozici |1 |2 |5 |25 |
+| Archivace |Není k dispozici |K dispozici |Není k dispozici |Není k dispozici |K dispozici |
+| Vysoká dostupnost |Není k dispozici |Není k dispozici |K dispozici |K dispozici |K dispozici |
 

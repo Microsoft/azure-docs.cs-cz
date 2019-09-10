@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128282"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858705"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Pomocí služby Azure Machine Learning můžete sledovat vstupy modelu nasazené
 + Posílat výstrahy na posun dat e-mailem
 
 > [!Note]
-> Tato služba je v (Preview) a omezená z možností konfigurace. Podrobnosti a aktualizace najdete v naší [dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) a v poznámkách k [verzi](azure-machine-learning-release-notes.md) . 
+> Tato služba je v (Preview) a omezená z možností konfigurace. Podrobnosti a aktualizace najdete v naší [dokumentaci k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) a v [poznámkách k verzi](azure-machine-learning-release-notes.md) . 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Jak se monitoruje posun dat ve službě Azure Machine Learning
 
@@ -134,6 +134,7 @@ Existují různé způsoby, jak zobrazit metriky pro posun:
 * Použijte widget [Jupyter.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
 * Funkci použijte u libovolného `datadrift` objektu run. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
 * Zobrazte metriky v Azure Portal modelu.
+* Podívejte se na metriky v části **modely** na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
 
 Následující příklad Pythonu ukazuje, jak vykreslovat relevantní metriky pro posun dat. Pomocí vrácené metriky můžete vytvářet vlastní vizualizace:
 
@@ -158,7 +159,7 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Konfigurace detektoru posunu dat se může zobrazit na stránce s podrobnostmi modelu v Azure Portal.
+Konfiguraci rozpoznávání přenosů dat můžete zobrazit na stránce s podrobnostmi modelu na stránce Azure Portal nebo na cílové stránce pracovního prostoru (Preview).
 
 ![Azure Portal konfigurace pro posun dat](media/how-to-monitor-data-drift/drift_config.png)
 
@@ -167,6 +168,8 @@ Konfigurace detektoru posunu dat se může zobrazit na stránce s podrobnostmi m
 Pokud chcete zobrazit výsledky v pracovním prostoru v [Azure Portal](https://portal.azure.com), přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Karta posun dat (Preview) je teď dostupná pro vizualizaci metriky posunu dat. 
 
 ![Azure Portal posun dat](media/how-to-monitor-data-drift/drift_ui.png)
+
+Výsledky jsou také k dispozici v podrobnostech modelu na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
 
 ## <a name="receiving-drift-alerts"></a>Přijímání upozornění na posun
 
@@ -188,6 +191,6 @@ Pokud se data odsadí negativně vlivem na výkon nasazeného modelu, je čas na
 
 ## <a name="next-steps"></a>Další postup
 
-* Úplný příklad použití posunu dat najdete v poznámkovém [bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
+* Úplný příklad použití posunu dat najdete v [poznámkovém bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
 
 * Rádi bychom si výrazně vyhodnotili vaše dotazy, komentáře a návrhy, protože se pohyb dat blíží k všeobecné dostupnosti. Použijte následující tlačítko pro odeslání názoru na produkt. 

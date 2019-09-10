@@ -1,125 +1,125 @@
 ---
-title: Architektura služby Azure Blockchain Workbench
-description: Přehled architektury Azure Blockchain Workbench a jeho součástí.
+title: Architektura Azure blockchain Workbench Preview
+description: Přehled architektury Azure blockchain Workbench Preview a jejích komponent.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060903"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845210"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Architektura služby Azure Blockchain Workbench
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Architektura Azure blockchain Workbench Preview
 
-Azure Blockchain Workbench zjednodušuje vývoj aplikací pro blockchain tím, že poskytuje řešení pomocí několika komponentami Azure. Blockchain Workbench se dá nasadit pomocí šablony řešení na webu Azure Marketplace. Šablona umožňuje vybrat moduly a komponenty pro nasazení včetně blockchain zásobníku, typ klientské aplikace a podporu pro integraci IoT. Po nasazení Blockchain Workbench umožňuje přístup k webové aplikace, aplikace pro iOS a aplikace pro Android.
+Azure blockchain Workbench Preview zjednodušuje vývoj aplikací blockchain tím, že poskytuje řešení s využitím několika komponent Azure. Blockchain Workbench se dá nasadit pomocí šablony řešení v Azure Marketplace. Šablona umožňuje vybrat moduly a komponenty, které chcete nasadit, včetně blockchain zásobníku, typu klientské aplikace a podpory pro integraci IoT. Po nasazení poskytuje blockchain Workbench přístup k webové aplikaci, aplikaci pro iOS a aplikaci pro Android.
 
-![Architektura Blockchain Workbench](./media/architecture/architecture.png)
+![Architektura blockchain Workbench](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>Identita a ověřování
 
-Používající Blockchain Workbench, konsorcium může provést federaci jejich podnikových identit pomocí Azure Active Directory (Azure AD). Aplikace Workbench generuje nové uživatelské účty ve řetězu identit s identitami enterprise uložená ve službě Azure AD. Mapování identit usnadňuje ověřeného přihlášení pro klientské rozhraní API a aplikace a využívá zásady ověřování organizací. Aplikace Workbench také poskytuje možnost k přidružení podnikových identit pro konkrétní role v rámci dané inteligentní kontraktu. Kromě toho aplikace Workbench také poskytuje mechanismus pro identifikaci akce, které tyto role můžete provést a zároveň.
+Pomocí blockchain Workbench může konsorcium federovat své podnikové identity pomocí Azure Active Directory (Azure AD). Workbench generuje nové uživatelské účty pro identity v řetězcích s podnikovými identitami uloženými ve službě Azure AD. Mapování identit usnadňuje ověřené přihlášení k klientským rozhraním API a aplikacím a používá zásady ověřování organizací. Workbench také umožňuje přidružit podnikové identity k určitým rolím v rámci dané inteligentní smlouvy. Aplikace Workbench také poskytuje mechanismus pro identifikaci akcí, které mohou tyto role provádět a v jakém čase.
 
-Po nasazení Blockchain Workbench umožňuje uživatelům interakci s Blockchain Workbench přes klientských aplikací, rozhraní API založené na protokolu REST klienta nebo rozhraní API zasílání zpráv. Ve všech případech musí být ověřené interakce přes Azure Active Directory (Azure AD) nebo přihlašovací údaje pro konkrétní zařízení.
+Po nasazení aplikace blockchain Workbench uživatelé komunikují s blockchain Workbench prostřednictvím klientských aplikací, rozhraní API klienta založeného na REST nebo rozhraní API pro zasílání zpráv. Ve všech případech musí být interakce ověřené buď prostřednictvím Azure Active Directory (Azure AD) nebo pomocí přihlašovacích údajů specifických pro zařízení.
 
-Uživatelé Federovat svých identit Azure AD konsorcium zasláním e-mailovou pozvánku účastníků v e-mailová adresa. Při přihlašování, tito uživatelé ověřeni pomocí jméno, heslo a zásady. Například dvojúrovňového ověřování jejich organizace.
+Uživatelé federovat své identity do konsorcia Azure AD odesláním e-mailových pozvánek účastníkům na jejich e-mailové adrese. Při přihlášení se tito uživatelé ověřují pomocí jména, hesla a zásad. Například dvojúrovňové ověřování organizace.
 
-Azure AD slouží ke správě všichni uživatelé, kteří mají přístup k Blockchain Workbench. Každé zařízení, připojení k inteligentní smlouvy je také službou Azure AD.
+Služba Azure AD se používá ke správě všech uživatelů, kteří mají přístup k blockchain Workbench. Všechna zařízení, která se připojují k vaší inteligentní smlouvě, jsou také přidružená k Azure AD.
 
-Azure AD také umožňuje přiřadit uživatele do skupiny speciální správce. Uživatelé přidružení k skupiny správců je udělen přístup k oprávnění a akcím v rámci Blockchain Workbench, včetně nasazení smluv a udělení oprávnění pro uživatele pro přístup k kontrakt. Uživatelé mimo této skupiny nemají přístup k akcím správce.
+Služba Azure AD se používá také k přiřazení uživatelů ke speciální skupině správců. Uživatelům přidruženým ke skupině správců se uděluje přístup k právům a akcím v rámci blockchain Workbench, včetně nasazení smluv a udělení oprávnění uživateli k přístupu ke smlouvě. Uživatelé mimo tuto skupinu nemají přístup k akcím správce.
 
 ## <a name="client-applications"></a>Klientské aplikace
 
-Aplikace Workbench poskytuje aplikace automaticky generovaného klienta pro webové a mobilní zařízení (iOS, Android), který slouží k ověření, testování a zobrazení blockchainové aplikace. Rozhraní aplikace generuje dynamicky na základě metadat inteligentní smlouvy a může obsahovat libovolný případu použití. Klientské aplikace front-endu přístupných dodat kompletní blockchainové aplikace vygenerované Blockchain Workbench. Klientské aplikace ověřovat uživatele pomocí služby Azure Active Directory (Azure AD) a pak prezentujte uživatelské prostředí přizpůsobené obchodní kontext inteligentní kontraktu. Činnost koncového uživatele umožňuje vytvoření nové instance inteligentní kontraktu podle autorizované jednotlivce a potom zobrazí možnosti provádět některé typy transakcí ve vhodných míst v obchodním procesu, kterou představuje inteligentní kontraktu.
+Workbench poskytuje automaticky generované klientské aplikace pro web a mobilní zařízení (iOS, Android), které se dají použít k ověřování, testování a zobrazování aplikací blockchain. Aplikační rozhraní se dynamicky generuje na základě metadat inteligentních kontraktů a může podkládat případ použití. Klientské aplikace dodávají front-end pro uživatele k kompletním aplikacím blockchain vygenerovaným aplikací blockchain Workbench. Klientské aplikace ověřují uživatele prostřednictvím služby Azure Active Directory (Azure AD) a pak prezentují uživatelské prostředí, které je přizpůsobeno obchodnímu kontextu inteligentních kontraktů. Činnost koncového uživatele umožňuje vytvořit nové instance inteligentních kontraktů autorizovanými osobami a pak zaznamená možnost spouštět určité typy transakcí v příslušných bodech v obchodním procesu, který představuje inteligentní smlouva.
 
-Ve webové aplikaci můžou Autorizovaní uživatelé přístup ke konzole správce. Konzole je k dispozici pro uživatele do skupiny správců ve službě Azure AD a poskytuje přístup k následujícím funkcím:
+Ve webové aplikaci mají oprávnění uživatelé přístup ke konzole správce. Konzola je k dispozici uživatelům ve skupině správce ve službě Azure AD a poskytuje přístup k následujícím funkcím:
 
-* Microsoft poskytuje kontraktů uzpůsobených pro oblíbené scénáře nasazení. Například majetku přenos scénáři.
-* Nahrání a nasazení vlastních chytrých kontraktů.
-* Přiřazení uživatelského přístupu k inteligentní smlouvy v kontextu konkrétní roli.
+* V případě oblíbených scénářů nasaďte společnosti Microsoft poskytnuté inteligentní smlouvy. Například scénář přenosu assetů.
+* Nahrajte a nasaďte vlastní inteligentní kontrakty.
+* Přiřaďte uživateli přístup k této inteligentní smlouvě v kontextu konkrétní role.
 
-Další informace najdete v tématu [Azure Blockchain Workbench ukázka klientské aplikace na Githubu](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
+Další informace najdete v tématu [ukázkové klientské aplikace Azure blockchain Workbench na GitHubu](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
 ## <a name="gateway-service-api"></a>Rozhraní API služby brány
 
-Blockchain Workbench zahrnuje rozhraní API služby brány založené na protokolu REST. Při zápisu do blockchain, rozhraní API generuje a předává zprávy ostatním zprostředkovatele událostí. Při vyžádání dat pomocí rozhraní API, dotazy se odesílají do služby SQL database mimo řetězec. SQL database obsahuje repliku dat na řetězce a metadata, která poskytuje kontext a informace o konfiguraci pro podporované chytrých kontraktů. Dotazy vrací požadovaná data z repliky mimo řetězec ve formátu zajistí informovanost metadat pro kontrakt.
+Blockchain Workbench obsahuje rozhraní API služby brány založené na REST. Při zápisu do blockchain rozhraní API generuje a doručuje zprávy zprostředkovateli událostí. Když rozhraní API požaduje data, odesílají se dotazy do offline databáze SQL mimo řetěz. SQL Database obsahuje repliku dat a metadat v řetězcích, které poskytují informace o kontextu a konfiguraci pro podporované inteligentní kontrakty. Dotazy vrátí požadovaná data z repliky z nepoužívaného řetězce ve formátu informující o metadatech pro kontrakt.
 
-Vývojáři mají přístup k rozhraní API služby brány sestavovat nebo integrovat blockchainová řešení bez nutnosti spoléhat se na Blockchain Workbench klientské aplikace.
+Vývojáři mají přístup k rozhraní API služby brány, aby mohli vytvářet nebo integrovat řešení blockchain, aniž by se museli spoléhat na klientské aplikace blockchain Workbench.
 
 > [!NOTE]
-> Povolit ověřený přístup k rozhraní API, dva klientské aplikace zaregistrovaní ve službě Azure Active Directory. Azure Active Directory vyžaduje registrace různých aplikací všechny typy aplikací (nativní a webové). 
+> K povolení ověřeného přístupu k rozhraní API se v Azure Active Directory zaregistrují dvě klientské aplikace. Azure Active Directory vyžaduje odlišnou registraci aplikací pro každý typ aplikace (nativní a webový). 
 
-## <a name="message-broker-for-incoming-messages"></a>Zprostředkovatele zpráv pro příchozí zprávy
+## <a name="message-broker-for-incoming-messages"></a>Zprostředkovatel zpráv pro příchozí zprávy
 
-Vývojáři, kteří se mají odesílat zprávy přímo Blockchain Workbench umožňuje odesílat zprávy přímo do služby Service Bus. Zprávy API může například použít pro integraci na systému nebo zařízení IoT.
+Vývojáři, kteří chtějí odesílat zprávy přímo do aplikace blockchain Workbench, mohou odesílat zprávy přímo do Service Bus. Například můžete použít rozhraní API zprávy pro integraci systému do systému nebo zařízení IoT.
 
-## <a name="message-broker-for-downstream-consumers"></a>Zprostředkovatele zpráv pro příjem dat uživatele
+## <a name="message-broker-for-downstream-consumers"></a>Zprostředkovatel zpráv pro příjemce pro příjem dat
 
-Během životního cyklu aplikace dojde k událostem. Události se dá spouštět podle rozhraní API brány nebo na hlavní knihy. Oznamování událostí, může iniciovat podřízený kód založený na události.
+Během životního cyklu aplikace dojde k události. Události může aktivovat rozhraní API brány nebo v hlavní knize. Oznámení událostí mohou spustit podřízený kód na základě události.
 
-Blockchain Workbench umožňuje automaticky nasadí dva druhy příjemci událostí. Jednoho příjemce se aktivuje události blockchain k naplnění úložiště mimo řetězec SQL. Zachytit metadata pro události generované modulem rozhraní API související s nahrávání a úložiště dokumentů je další příjemce.
+Blockchain Workbench automaticky nasadí dva typy uživatelů událostí. Jeden příjemce se spustí blockchain událostmi k naplnění úložiště SQL pro off-Chain. Druhým příjemcem je zaznamenat metadata pro události generované rozhraním API, které souvisí s nahráváním a ukládáním dokumentů.
 
 ## <a name="message-consumers"></a>Příjemci zpráv
 
- Příjemci zpráv přijmout zprávy ze služby Service Bus. Základní model zpracování událostí pro příjemci zpráv umožňuje rozšíření dalších služeb a systémů. Například můžete přidat podporu k naplnění služby cosmos DB nebo vyhodnocení zprávy pomocí Azure Stream Analytics. Následující části popisují příjemci zpráv, které jsou součástí Blockchain Workbench.
+ Příjemci zpráv přebírají zprávy od Service Bus. Základní model událostí pro příjemce zpráv umožňuje rozšíření dalších služeb a systémů. Můžete například přidat podporu k naplnění CosmosDB nebo vyhodnocení zpráv pomocí Azure Stream Analytics. V následujících částech jsou popsány příjemce zpráv zahrnuté v blockchain Workbench.
 
-### <a name="distributed-ledger-consumer"></a>Příjemce distribuované účetní knihy
+### <a name="distributed-ledger-consumer"></a>Příjemce distribuované hlavní knihy
 
-Zprávy (DLT) technologií distribuované účetní knihy obsahovat metadata pro transakce má být proveden zápis blockchainu. Příjemce načte zprávy a odesílá data do Tvůrce transakce, podepsaný a směrovače.
+Zprávy o službě distribuované hlavní knihy (DLT) obsahují metadata pro transakce, které mají být zapsány do blockchain. Příjemce načte zprávy a vloží data do Tvůrce transakcí, podepisujícího a směrovače.
 
 ### <a name="database-consumer"></a>Příjemce databáze
 
-Příjemce databáze přijímá zprávy ze služby Service Bus a odesílá data do připojené databázi, jako je SQL database.
+Příjemce databáze přebírá zprávy od Service Bus a vkládá data do připojené databáze, jako je například SQL Database.
 
-### <a name="storage-consumer"></a>Úložiště uživatelů
+### <a name="storage-consumer"></a>Příjemce úložiště
 
-Úložiště uživatelů přijímá zprávy ze služby Service Bus a odesílá data do připojené úložiště. Například ukládat hodnoty hash dokumenty ve službě Azure Storage.
+Uživatel úložiště přebírá zprávy od Service Bus a vkládá data do připojeného úložiště. Například ukládání dokumentů s algoritmem hash do Azure Storage.
 
-## <a name="transaction-builder-and-signer"></a>Tvůrce transakce a podepisující osoba
+## <a name="transaction-builder-and-signer"></a>Tvůrce a podepisující transakce
 
-Pokud zprávu na zprostředkovatele příchozích zpráv musí být napsaný pro blockchainu, zpracuje se DLT příjemce. Příjemce DLT je služba, která načte zprávu obsahující metadata pro požadovaný transakci ke spuštění a pak odešle informace, které *Tvůrce transakce a podepisuje*. *Tvůrce transakce a podepisuje* sestaví blockchain transakce na základě dat a cíl požadovaného blockchain. Jakmile sestaví, transakce je podepsán. Soukromé klíče jsou uložené ve službě Azure Key Vault.
+Pokud je nutné zapsat zprávu v zprostředkovateli příchozích zpráv do blockchain, bude zpracována příjemcem služby DLT. Příjemce DLT je služba, která načte zprávu obsahující metadata pro požadovanou transakci, která se má provést, a pak tyto informace odešle do *Tvůrce a podpisu transakce*. *Tvůrce transakce a podepisující osoba* sestaví transakci blockchain na základě dat a požadovaného cíle blockchain. Po sestavení je transakce podepsána. Privátní klíče jsou uloženy v Azure Key Vault.
 
- Blockchain Workbench načte příslušný privátní klíč ze služby Key Vault a podepíše transakce mimo službu Key Vault. Po přihlášení, je odeslána transakce transakce směrovače a účetní knihy.
+ Blockchain Workbench načte příslušný privátní klíč z Key Vault a podepíše transakci mimo Key Vault. Po podepsání se transakce posílá do transakčních směrovačů a do knih.
 
-## <a name="transaction-routers-and-ledgers"></a>Transakce směrovače a účetní knihy
+## <a name="transaction-routers-and-ledgers"></a>Směrovače transakcí a hlavní knihy
 
-Transakce směrovače a účetní knihy trvat podepsaný transakce a přesměrovávala je vhodné po blockchain. Blockchain Workbench v současné době podporuje Etherea jako svůj blockchain cíl.
+Směrovače a účetní deníky transakcí berou podepsané transakce a směrují je na příslušné blockchain. V současné době blockchain Workbench podporuje Ethereem jako cílovou blockchain.
 
-## <a name="dlt-watcher"></a>DLT sledovacího procesu
+## <a name="dlt-watcher"></a>Sledovací proces DLT
 
-Sledování distribuované účetní knihy technologie (DLT) sleduje události, ke kterým dochází v bloku řetězy připojené k Blockchain Workbench.
-Události zahrnují informace, které jsou relevantní pro jednotlivce a systémy. Například vytváření nových instancí kontraktu, provádění transakcí a následně se změní stav. Zachycení a odeslat zprostředkovatele odchozích zpráv, aby mohou být spotřebovány podřízené příjemci událostí.
+Sledovací proces distribuované hlavní knihy (DLT) monitoruje události, ke kterým dochází v řetězcích bloků připojených k blockchain Workbench.
+Události odrážejí informace, které jsou relevantní pro jednotlivce a systémy. Například vytváření nových instancí kontraktů, provádění transakcí a změny stavu. Události jsou zachyceny a odesílány do zprostředkovatele odchozích zpráv, aby je mohli využívat i příjemci s dalšími uživateli.
 
-Například SQL příjemce sleduje události, je využívá a naplní databázi SQL s hodnotách zahrnutých. Kopie umožňuje opětovnému vytvoření repliky ve řetězu dat v úložišti mimo řetězec.
+Například příjemce SQL monitoruje události, spotřebovává je a naplní databázi SQL pomocí zahrnutých hodnot. Kopírování umožňuje rekreaci v úložišti s neplatnými daty v neznámém řetězci.
 
-## <a name="azure-sql-database"></a>Databáze Azure SQL
+## <a name="azure-sql-database"></a>Databáze SQL Azure
 
-Azure SQL database, připojené k Blockchain Workbench ukládá definice kontraktu, konfigurace metadat a přístupná pro SQL repliku dat uložených v blockchainu. Tato data můžete snadno být dotazována, vizualizovat nebo analyzovaným přímý přístup k databázi. Vývojářům a dalším uživatelům můžete použít databázi pro vytváření sestav, analytics nebo jiné datově orientovaných integrace. Uživatelům například můžete vizualizovat data transakcí pomocí Power BI.
+Azure SQL Database připojená k blockchain Workbench ukládá definice kontraktů, metadata konfigurace a repliky přístupné pro SQL data uložená v blockchain. Tato data lze snadno dotazovat, vizuálně nebo analyzovat přímým přístupem k databázi. Vývojáři a jiní uživatelé mohou používat databázi pro vytváření sestav, analýzy nebo jiné integrace zaměřené na data. Například uživatelé mohou vizualizovat data transakcí pomocí Power BI.
 
-Tímto úložištěm mimo řetězec dává organizace provádět dotazy na data v SQL, nikoli v blockchainu knihy. Navíc tak můžete standardizovat na standardní schéma, které se nerozlišují zásobníky technologií blockchain, umožňuje úložiště mimo řetězec opakované použití sestav a další artefakty napříč projekty, scénáře a organizacemi.
+Toto úložiště s neplatnými prostředky umožňuje podnikovým organizacím dotazovat se na data v SQL, a ne na blockchain hlavní knihy. Kromě toho, díky standardizaci na standardním schématu, které je nezávislá z blockchainch technologických zásobníků, umožňuje úložiště s neplatnými možnostmi opětovného použití sestav a dalších artefaktů v projektech, scénářích a organizacích.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage se využívá k ukládání smluv a metadata spojená s kontrakty.
+Azure Storage slouží k uložení smluv a metadat přidružených ke smlouvám.
 
-Dokumenty z nákupních objednávek a náložní, k imagím videa pocházející z continuum včetně policejní kamery textu a obrázků hlavní pohybu, používané zprávy a lékařských dokumentů hrají roli v mnoha scénářích zaměřené na blockchain. Dokumenty nejsou vhodné umístit přímo v blockchainu.
+Z nákupních objednávek a dodacích dokladů, do imagí používaných v novinkách a lékařských obrazech, na video pocházející ze Continuum, včetně nejdůležitějších a podstatných snímků, dokumenty hrají roli v mnoha scénářích orientovaných na blockchain. Dokumenty není vhodné přímo umístit do blockchain.
 
-Blockchain Workbench podporuje možnost přidat dokumenty nebo jiných mediálního obsahu se blockchain obchodní logikou. Hodnota hash obsahu dokumentu nebo média je uložen v blockchainu a skutečné dokumentu nebo mediální obsah uložený ve službě Azure Storage. Informace o přidružené transakce je doručit do zprostředkovatele příchozích zpráv, zabalené, podepsaný a směrovat do blockchainu. Tento proces se aktivuje události, které jsou sdílené úložiště přes zprostředkovatele odchozích zpráv. SQL Database využívá tyto informace a odesílá je do databáze pro pozdější dotazování. Podřízených systémů může také používat tyto události tak, aby fungoval podle potřeby.
+Blockchain Workbench podporuje možnost přidávat dokumenty nebo další multimediální obsah pomocí obchodní logiky blockchain. Hodnota hash dokumentu nebo mediálního obsahu je uložená v blockchain a skutečný dokument nebo mediální obsah je uložený v Azure Storage. Související informace o transakci se doručí zprostředkovateli příchozích zpráv, zabalí se, podepíše a směruje do blockchain. Tento proces spustí události, které jsou sdíleny prostřednictvím zprostředkovatele odchozích zpráv. SQL DB tyto informace spotřebuje a pošle je do databáze pro pozdější dotazování. Navazující systémy můžou tyto události využít také k jednání podle potřeby.
 
 ## <a name="monitoring"></a>Monitorování
 
-Aplikace Workbench poskytuje protokolování aplikací pomocí Application Insights a Azure Monitor. Application Insights se používá k ukládání všechny protokolované informace ze Blockchain Workbench a obsahuje chyby, varování a úspěšné operace. Application Insights můžete použít vývojáři k ladění problémů s Blockchain Workbench. 
+Workbench poskytuje protokolování aplikace pomocí Application Insights a Azure Monitor. Application Insights slouží k ukládání všech protokolovaných informací z aplikace blockchain Workbench a obsahuje chyby, varování a úspěšné operace. Application Insights můžou vývojáři použít k ladění problémů s blockchain Workbench. 
 
 Azure Monitor poskytuje informace o stavu sítě blockchain. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Nasazení služby Azure Blockchain Workbench](../../blockchain-workbench/blockchain-workbench-deploy.md)

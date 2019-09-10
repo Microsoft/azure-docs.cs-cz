@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 55401ca498f06aa0b959c3926f2a07f40e7fb638
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972621"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845484"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -108,7 +108,7 @@ Další informace najdete v dokumentaci k VMware v tématu [virtuální privátn
 
 Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR instance logického směrovače pro služby IPsec a L2VPN. ID logického směrovače je potřeba později při implementaci rozhraní L2VPN.
 
-1. Přihlaste se ke Správci NSX- https://nsx-t-manager-ip-address) T (a vyberte **síťové** > **směrovače** > **poskytovatel-LR** > **Přehled**. V **režimu vysoké dostupnosti**vyberte **aktivní – pohotovostní**. Tato akce otevře automaticky otevírané okno, ve kterém se zobrazí hraniční virtuální počítač, na kterém je směrovač Tier0 aktuálně aktivní.
+1. Přihlaste se k nástroji NSX-t Manager https://*NSX-t-Manager-IP-Address* a vyberte **sítě** > poskytovatel**směrovače** >  **–**  > **Přehled**LR. V **režimu vysoké dostupnosti**vyberte **aktivní – pohotovostní**. Tato akce otevře automaticky otevírané okno, ve kterém se zobrazí hraniční virtuální počítač, na kterém je směrovač Tier0 aktuálně aktivní.
 
     ![Vybrat aktivní – pohotovostní](media/l2vpn-fetch01.png)
 
@@ -167,7 +167,7 @@ Aby bylo možné vytvořit síť VPN založenou na trasách protokolu IPsec mezi
 
     ![Připojit seznam předpon IP adres](media/l2vpn-routing-security03.png) 1 ![připojit seznam předpon IP adres 2](media/l2vpn-routing-security04.png)
 
-5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě** > směrování**směrovače** > **Směrování** >  **– LR** > . přerozdělení**trasy** **Směrování** >   >  **Okolí**. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
+5. Znovu distribuujte statickou trasu null do protokolu BGP. Chcete-li inzerovat směrování rozhraní zpětné smyčky do Underlay, je nutné znovu distribuovat statickou trasu null do protokolu BGP. Přihlaste se ke Správci NSX-T a vyberte **sítě** > **Směrování** > **směrovače** > směrování **– LR** > .**přerozdělení trasy** **Směrování** >   >  **Okolí**. Vyberte **Provider-LR-Route_Redistribution** a klikněte na **Upravit**. Zaškrtněte políčko **static** a klikněte na **Uložit**.
 
     ![Znovu distribuovat statickou trasu null do protokolu BGP](media/l2vpn-routing-security05.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c9f0908d8b5290dc4585a330a7ea78a6577ab9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942946"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860902"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
@@ -24,7 +24,7 @@ Správa identit zařízení v Azure Active Directory (Azure AD) vám umožní za
 
 Tento článek:
 
-- Předpokládá, že jste obeznámeni se seznámkou se [správou identit zařízení v Azure Active Directory](overview.md) .
+- Předpokládá, že jste obeznámeni se [seznámkou se správou identit zařízení v Azure Active Directory](overview.md) .
 - Poskytuje informace o správě identit zařízení pomocí portálu Azure AD.
 
 ## <a name="manage-device-identities"></a>Správa identit zařízení
@@ -49,7 +49,7 @@ Stránka **zařízení** vám umožní:
   
 ## <a name="configure-device-settings"></a>Konfigurovat nastavení zařízení
 
-Aby bylo možné spravovat identity zařízení pomocí portálu Azure AD, musí být vaše zařízení buď zaregistrovaná, [nebo připojená](overview.md) k Azure AD. Jako správce můžete doladit proces registrace a připojení zařízení konfigurací nastavení zařízení.
+Aby bylo možné spravovat identity zařízení pomocí portálu Azure AD, musí být vaše zařízení buď [zaregistrovaná, nebo připojená](overview.md) k Azure AD. Jako správce můžete doladit proces registrace a připojení zařízení konfigurací nastavení zařízení.
 
 ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/22.png)
 
@@ -67,12 +67,12 @@ Stránka nastavení zařízení vám umožní nakonfigurovat tyto možnosti:
 - **Vyžadovat vícefaktorové ověřování pro připojení zařízení** – můžete si vybrat, jestli uživatelé musí poskytovat dodatečný ověřovací faktor k připojení zařízení k Azure AD. Výchozí hodnota je **ne**. Při registraci zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých službách Azure Multi-Factor Authentication najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
-> **Vyžadovat připojení Multi-Factor auth k nastavení zařízení** se nevztahuje na zařízení připojená k hybridní službě Azure AD.
+> **Vyžadovat použití vícefaktorového ověřování pro připojení zařízení** se vztahuje na zařízení, která jsou buď připojená k Azure AD, nebo v případě registrace Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
-- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet zařízení, která uživatel ve službě Azure AD může mít. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Kvóta zařízení se počítá pro všechna zařízení, která jsou buď připojená k Azure AD, nebo v současnosti se zaregistroval Azure AD. Výchozí hodnota je **20**.
+- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **20**.
 
 > [!NOTE]
-> Nastavení **maximální počet zařízení** se nevztahuje na hybridní zařízení připojená k Azure AD.
+> Nastavení **maximální počet zařízení** se vztahuje na zařízení, která jsou buď připojená ke službě Azure AD, nebo v zaregistrovaných Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
 - **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními** – ve výchozím nastavení je toto nastavení nastaveno na **žádné**. Když vyberete konkrétní uživatele nebo skupiny, umožníte synchronizaci dat uživatelů a aplikací v zařízeních s Windows 10. Přečtěte si další informace o tom, jak synchronizace funguje ve Windows 10.
 Tato možnost je prémiová funkce dostupná prostřednictvím produktů, jako je Azure AD Premium nebo sada Enterprise Mobility Suite (EMS).
@@ -99,7 +99,7 @@ Pomocí obou možností se můžete dostat k zobrazení, které:
 
 >[!TIP]
 >
->* Pokud se v zaregistrovaném sloupci zobrazí zařízení, které je připojené k hybridní službě Azure AD se stavem "čeká", znamená to, že zařízení bylo synchronizované z Azure AD Connect a čeká na dokončení registrace z klienta. Přečtěte si další informace o naplánování [hybridní implementace služby Azure AD JOIN](hybrid-azuread-join-plan.md). Další informace najdete v článku o nejčastějších dotazech k [zařízení](faq.md).
+>* Pokud se v zaregistrovaném sloupci zobrazí zařízení, které je připojené k hybridní službě Azure AD se stavem "čeká", znamená to, že zařízení bylo synchronizované z Azure AD Connect a čeká na dokončení registrace z klienta. Přečtěte si další informace o [Naplánování hybridní implementace služby Azure AD JOIN](hybrid-azuread-join-plan.md). Další informace najdete v článku o [nejčastějších](faq.md)dotazech k zařízení.
 >
 >   ![Zařízení čekají](./media/device-management-azure-portal/75.png)
 >
@@ -215,12 +215,12 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Aktivita
 - Rozsah dat
 - Target
-- Iniciátor (actor)
+- Iniciované uživatelem (actor)
 
 Kromě filtrů můžete vyhledat konkrétní položky.
 
 ![Protokoly auditu](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Jak spravovat zastaralá zařízení ve službě Azure AD](manage-stale-devices.md)

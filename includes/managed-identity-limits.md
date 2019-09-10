@@ -10,13 +10,13 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175416"
 ---
-| Category | Omezení |
+| Kategorie | Omezení |
 | --- | --- |
-| Uživatelsky přiřazené identity spravované | <ul><li>Při vytvoření uživatelsky přiřazené identity jenom alfanumerických znaků managed (0-9, a-z a A-Z) a spojovníku (-) jsou podporovány. Název přiřazení virtuálního počítače nebo virtuálního počítače škálovací sady fungovalo správně, je maximálně 24 znaků.</li><li>Pokud používáte rozšíření virtuálního počítače spravovanou identitu, je podporovaný limit 32 spravované uživatelsky přiřazené identity. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512 uživatelsky přiřazené identity.</li>|
+| Spravované identity přiřazené uživatelem | <ul><li>Když vytváříte uživatelem přiřazené spravované identity, jsou podporovány pouze alfanumerické znaky (0-9, a-z, a a-Z) a spojovník (-). Aby přiřazení k virtuálnímu počítači nebo sadě škálování virtuálních počítačů fungovalo správně, název je omezený na 24 znaků.</li><li>Pokud použijete rozšíření spravovaného virtuálního počítače identity, je podporované omezení 32 uživatelem přiřazených identit. Bez rozšíření virtuálních počítačů spravovaných identit je podporované omezení 512 uživatelem přiřazených identit.</li>|
 

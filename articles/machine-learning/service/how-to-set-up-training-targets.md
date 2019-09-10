@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 0a34ccf5201b81a2c74c2eccd0ec3f311a1158ab
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389897"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860537"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 
 Díky Azure Machine Learning službě můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
-Můžete vytvořit a spravovat výpočetní cíl pomocí rozšíření Azure Machine Learning SDK, Azure Portal, rozhraní příkazového řádku Azure nebo Azure Machine Learning VS Code. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
+Výpočetní cíl můžete vytvořit a spravovat pomocí sady Azure Machine Learning SDK, Azure Portal, cílové stránky pracovního prostoru (Preview), rozhraní příkazového řádku Azure CLI nebo rozšíření Azure Machine Learning VS Code. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
  
 V tomto článku se dozvíte, jak používat různé výpočetní cíle pro školení modelů.  Postup pro všechny výpočetní cíle se řídí stejným pracovním postupem:
 1. Pokud ho ještě nemáte, __vytvořte__ cíl výpočtů.
@@ -45,9 +45,9 @@ Služba Azure Machine Learning má různou podporu napříč různými výpočet
 
 ## <a name="whats-a-run-configuration"></a>Co je konfigurace spuštění?
 
-Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí služby Azure Machine Learning můžete spustit skript na různých cílových výpočetních prostředích, aniž byste museli změnit svůj skript. 
+Po školení je běžné spustit na místním počítači a později spustit tento školicí skript na jiném cílovém výpočetním prostředí. Pomocí služby Azure Machine Learning můžete spustit skript na různých cílových výpočetních prostředích, aniž byste museli změnit svůj skript.
 
-Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon. Podrobnosti o určení prostředí a jeho navázání ke spuštění konfigurace najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md) .
+Vše, co potřebujete udělat, je definovat prostředí pro každý cíl výpočtů v rámci **Konfigurace spuštění**.  Pak, pokud chcete spustit experiment pro školení na jiném cílovém výpočetním prostředí, zadejte konfiguraci spuštění pro výpočetní výkon. Podrobnosti o určení prostředí a jeho navázání ke spuštění konfigurace najdete v tématu [vytváření a Správa prostředí pro účely školení a nasazení](how-to-use-environments.md).
 
 Přečtěte si další informace o [odesílání experimentů](#submit) na konci tohoto článku.
 
@@ -278,6 +278,7 @@ K cílovým cílům, které jsou přidruženy k vašemu pracovnímu prostoru v A
 * [Vytvoření cíle služby COMPUTE](#portal-create) v pracovním prostoru
 * [Připojte výpočetní cíl](#portal-reuse) , který byl vytvořen mimo pracovní prostor.
 
+
 Po vytvoření a připojení cíle k vašemu pracovnímu prostoru ho budete používat v konfiguraci spuštění s `ComputeTarget` objektem: 
 
 ```python
@@ -290,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Chcete-li zobrazit výpočetní cíle pro váš pracovní prostor, použijte následující postup:
 
-1. Přejděte do [Azure Portal](https://portal.azure.com) a otevřete svůj pracovní prostor. 
+1. Přejděte do [Azure Portal](https://portal.azure.com) a otevřete svůj pracovní prostor. K těmto stejným postupům můžete také přistupovat na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com), i když obrázky níže ukazují Azure Portal.
+ 
 1. V části __aplikace__vyberte __COMPUTE__.
 
     [![Zobrazit kartu COMPUTE](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)

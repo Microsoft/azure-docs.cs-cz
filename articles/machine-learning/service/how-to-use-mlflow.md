@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c7bed307373289c6a6f76117fa07ee2ee3242bfc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900177"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860454"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Sledování metrik a nasazení modelů pomocí služby MLflow a Azure Machine Learning (Preview)
 
@@ -39,7 +39,7 @@ Následující obrázek znázorňuje, že se sledováním MLflow můžete prové
  MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
 
-| | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | portál Azure|
+| | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Portal nebo úvodní stránka pracovního prostoru (Preview)|
 |---|---|---|---|---|
 | Spravovat pracovní prostor |   | ✓ | ✓ | ✓ |
 | Použití úložišť dat  |   | ✓ | ✓ | |
@@ -203,7 +203,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Zobrazení metrik a artefaktů ve vašem pracovním prostoru
 
-Metriky a artefakty z protokolování MLflow se uchovávají ve vašem pracovním prostoru. Pokud je chcete kdykoli zobrazit, přejděte do pracovního prostoru a vyhledejte experiment podle názvu na [Azure Portal](https://portal.azure.com) nebo spuštěním následujícího kódu. 
+Metriky a artefakty z protokolování MLflow se uchovávají ve vašem pracovním prostoru. Pokud je chcete kdykoli zobrazit, přejděte do pracovního prostoru a vyhledejte experiment podle názvu na [Azure Portal](https://portal.azure.com) nebo na [úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com).  Nebo spusťte následující kód. 
 
 ```python
 run.get_metrics()

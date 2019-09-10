@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b716cbf3efb044da68d4dd1dcb724369855d1ed1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173648"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843869"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -34,7 +34,7 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Povolit přijímání streamování v clusteru
 
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
-1. V podokně **Konfigurace** vyberte zapnuto , aby se povolilo **přijímání streamování**.
+1. V podokně **Konfigurace** vyberte **zapnuto** , aby se povolilo **přijímání streamování**.
 1. Vyberte **Uložit**.
  
     ![přijímání příjmu streamování](media/ingest-data-streaming/streaming-ingestion-on.png)
@@ -44,12 +44,12 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
     > [!TIP]
     > Pokud je zásada definovaná na úrovni databáze, všechny tabulky v databázi mají povolený příjem dat do streamování.
 
-## <a name="supported-streaming-ingestion-types"></a>Podporované typy přijímání streamování
+## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Použití ingestování streamování k ingestování dat do clusteru
 
 Existují dva podporované typy přijímání streamování:
 
 * [Centrum událostí](/azure/data-explorer/ingest-data-event-hub) používané jako zdroj dat
-* Vlastní ingestování vyžaduje, abyste napsali aplikaci, která používá jednu z klientských knihoven Azure Průzkumník dat. Ukázková aplikace najdete v [ukázce](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) ingestování streamování.
+* Vlastní ingestování vyžaduje, abyste napsali aplikaci, která používá jednu z klientských knihoven Azure Průzkumník dat. Ukázková aplikace najdete v ukázce ingestování [streamování](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Zvolit vhodný typ příjmu streamování
 
@@ -72,7 +72,7 @@ Existují dva podporované typy přijímání streamování:
 
 ## <a name="limitations"></a>Omezení
 
-* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Pro jeden uzel D11 je Doporučené zatížení až 20 požadavků za sekundu. Pro jeden uzel D14 je Doporučené zatížení až 150 požadavků za sekundu.
+* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Pro jeden uzel D14 je Doporučené zatížení až 150 požadavků za sekundu.
 * V současné době je podpora určena pouze pro 8 a 16 základních SKU (D13, D14, L8 a L16).
 * Omezení velikosti dat na žádost o přijetí dat je 4 MB.
 * Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až 5 minut, než se služba pro příjem dat streamuje.

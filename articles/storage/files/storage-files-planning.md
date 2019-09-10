@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: HT
+ms.openlocfilehash: 4dfcde96957bb8fce3731e38eee62554795d795f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806613"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844894"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -42,7 +42,7 @@ ms.locfileid: "70806613"
 
 Soubory Azure nabízí dva, vestavěné a pohodlný metody přístupu k datům, které můžete použít samostatně, nebo v kombinaci s ostatními, pro přístup k datům:
 
-1. **Přímý přístup do cloudu**: Všechny sdílené složky Azure je možné připojit pomocí [systému Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)nebo [Linux](storage-how-to-use-files-linux.md) s standardním oborem protokolu SMB (Server Message Block) nebo prostřednictvím souboru REST API. Pomocí protokolu SMB se čtení a zápisy do souborů ve sdílené složce provádějí přímo ve sdílené složce v Azure. Aby klient SMB v operačním systému mohl připojit virtuální počítač v systému Azure, musí podporovat minimálně protokol SMB 2,1. Pro místní připojení, jako je například pracovní stanice uživatele, musí klient SMB podporovaný pracovní stanicí podporovat minimálně protokol SMB 3,0 (s šifrováním). Kromě protokolu SMB můžou nové aplikace nebo služby získat přímý přístup ke sdílené složce přes soubor REST, který poskytuje jednoduché a škálovatelné programovací rozhraní aplikace pro vývoj softwaru.
+1. **Přímý přístup**do cloudu: Všechny sdílené složky Azure je možné připojit pomocí [systému Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)nebo [Linux](storage-how-to-use-files-linux.md) s standardním oborem protokolu SMB (Server Message Block) nebo prostřednictvím souboru REST API. Pomocí protokolu SMB se čtení a zápisy do souborů ve sdílené složce provádějí přímo ve sdílené složce v Azure. Aby klient SMB v operačním systému mohl připojit virtuální počítač v systému Azure, musí podporovat minimálně protokol SMB 2,1. Pro místní připojení, jako je například pracovní stanice uživatele, musí klient SMB podporovaný pracovní stanicí podporovat minimálně protokol SMB 3,0 (s šifrováním). Kromě protokolu SMB můžou nové aplikace nebo služby získat přímý přístup ke sdílené složce přes soubor REST, který poskytuje jednoduché a škálovatelné programovací rozhraní aplikace pro vývoj softwaru.
 2. **Azure File Sync**: Pomocí Azure File Sync můžete sdílet sdílené složky na serverech Windows v místním prostředí nebo v Azure. Vaši uživatelé mají přístup ke sdílené složce přes Windows Server, jako je například přes sdílenou složku SMB nebo NFS. To je užitečné ve scénářích, kdy k datům budou mít data v datovém centru Azure, například ve scénáři firemní pobočky, a to daleko beze změny. Data je možné replikovat mezi několika koncovými body Windows serveru, například mezi více pobočkami. Nakonec můžou být data vrstvená do souborů Azure, takže všechna data jsou stále přístupná prostřednictvím serveru, ale server nemá úplnou kopii dat. Místo toho jsou data bez problémů znovu volána, když je uživatel otevřel.
 
 Následující tabulka ukazuje, jak můžou uživatelé a aplikace získat přístup ke sdílené složce Azure:
@@ -125,11 +125,11 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
 |1,024       | 1,024   | Až 3 072   | 122   | 81   |
-|5 120       | 5 120   | Až 15 360  | 368   | 245   |
-|10 240      | 10 240  | Až 30 720  | 675 | 450   |
-|33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
+|5 120       | 5 120   | Až 15 360  | 368   | 245   |
+|10 240      | 10 240  | Až 30 720  | 675 | 450   |
+|33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
+|51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
+|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .
@@ -211,7 +211,8 @@ Standardní sdílené složky jsou k dispozici ve všech oblastech až do 5 TiB.
 |Austrálie – východ |LRS     |Ne    |Ano|
 |Austrálie – jihovýchod|LRS     |Ne    |Zatím ne|
 |Střed Indie  |LRS     |Ne    |Zatím ne|
-|Francie – střed  |LRS, ZRS|Ne    |LRS-Yes, ZRS – zatím ne|
+|Francie – střed |LRS, ZRS|Ne    |LRS-Yes, ZRS – zatím ne|
+|Francie – jih   |LRS     |Ne    |Ano|
 |Jižní Indie    |LRS     |Ne    |Zatím ne|
 |Jihovýchodní Asie |LRS, ZRS|Ne    |Ano|
 |Západní střed USA|LRS     |Ne    |Zatím ne|
@@ -268,7 +269,7 @@ Existuje mnoho jednoduchých možností, jak hromadně přenášet data z existu
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také jako úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)

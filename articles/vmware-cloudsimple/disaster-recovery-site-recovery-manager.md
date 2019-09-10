@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af6abefd132df7980bdc6e485734a996761653b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972794"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846141"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Nastavení privátního cloudu jako cíle zotavení po havárii pomocí nástroje VMware Site Recovery Manager
 
@@ -33,6 +33,8 @@ Privátní cloud CloudSimple můžete použít jako web zotavení po havárii (D
 * Zadejte vlastní licence pro SRM, pokud je privátní cloud chráněným webem. Když použijete jako lokalitu pro obnovení, nepotřebujete k webu CloudSimple žádné další licence SRM.
 
 V tomto řešení máte plnou kontrolu nad replikací vSphere a SRM. Známá rozhraní uživatelského rozhraní, rozhraní API a rozhraní příkazového řádku umožňují používat stávající skripty a nástroje.
+
+![Nasazení Site Recovery Manageru](media/srm-deployment.png)
 
 Můžete použít libovolné verze vRA a SRM, které jsou kompatibilní s Vaším privátním cloudem a místními prostředími. Příklady v této příručce používají vRA 6,5 a SRM 6,5. Tyto verze jsou kompatibilní s vSphere 6,5, který podporuje CloudSimple.
 
@@ -164,7 +166,7 @@ Než začnete, ověřte následující:
 * Zařízení pro replikaci vSphere na obou lokalitách jsou vzájemně propojená.
 * Zkontrolovali jste informace VMware o požadavcích a osvědčených postupech. V případě SRM 6,5 se můžete podívat na požadavky na dokumenty VMware [a osvědčené postupy pro SRM 6,5](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html).
 
-Dodržujte dokumentaci VMware a proveďte instalaci serveru SRM v modelu nasazení topologie dvou lokalit s jednou instancí vCenter na řadič služeb platformy, jak je popsáno v tomto [dokumentu VMware](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html). Pokyny k instalaci pro SRM 6,5 jsou k dispozici v dokumentu VMware instalování [Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
+Dodržujte dokumentaci VMware a proveďte instalaci serveru SRM v modelu nasazení topologie dvou lokalit s jednou instancí vCenter na řadič služeb platformy, jak je popsáno v tomto [dokumentu VMware](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html). Pokyny k instalaci pro SRM 6,5 jsou k dispozici v dokumentu VMware [Instalování Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
 
 ### <a name="install-srm-server-in-your-private-cloud"></a>Instalace SRM serveru do privátního cloudu
 
@@ -183,7 +185,7 @@ Následující kroky popisují instalaci privátního cloudu SRM.
 
 #### <a name="vcenter-ui-install-srm"></a>uživatelské rozhraní vCenter: Nainstalovat SRM
 
-Po přihlášení k vCenter pomocí přihlašovacích údajů SRM-soln-admin Sledujte dokumentaci VMware k provedení instalace serveru SRM v modelu nasazení topologie dvou lokalit s jednou instancí vCenter na řadič služeb platformy, jak je popsáno v této [VMware. dokument](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html). Pokyny k instalaci pro SRM 6,5 jsou k dispozici v dokumentu VMware instalování [Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
+Po přihlášení k vCenter pomocí přihlašovacích údajů SRM-soln-admin Sledujte dokumentaci VMware k provedení instalace serveru SRM v modelu nasazení topologie dvou lokalit s jednou instancí vCenter na řadič služeb platformy, jak je popsáno v této [VMware. dokument](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-F474543A-88C5-4030-BB86-F7CC51DADE22.html). Pokyny k instalaci pro SRM 6,5 jsou k dispozici v dokumentu VMware [Instalování Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/6.5/com.vmware.srm.install_config.doc/GUID-437E1B65-A17B-4B4B-BA5B-C667C90FA418.html).
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-srm"></a>Portál CloudSimple: Konfigurace pravidel brány firewall pro SRM
 
@@ -204,7 +206,7 @@ Po instalaci SRM do privátního cloudu proveďte následující úlohy, jak je 
 
 #### <a name="cloudsimple-portal-de-escalate-privileges"></a>Portál CloudSimple: Oprávnění ke zrušení eskalace
 
-Chcete-li zrušit oprávnění, přečtěte si téma [oprávnění](escalate-private-cloud-privileges.md#de-escalate-privileges)ke zrušení eskalace.
+Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [Eskalace](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
 ## <a name="ongoing-management-of-your-srm-solution"></a>Průběžná správa řešení SRM
 

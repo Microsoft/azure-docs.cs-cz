@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 4e953ad732852f9ee99c7830997e2d1dc29b8f84
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011645"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845003"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak služba Azure Machine Learning funguje: Architektura a koncepty
 
@@ -124,12 +124,12 @@ Další informace najdete v následujících článcích:
 
 * [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
 * [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.
-* [Pomocí Azure Machine Learning služby je škálovatelná a zaregistrujte modely TensorFlow ve](how-to-train-tensorflow.md)velkém měřítku.
+* [Pomocí Azure Machine Learning služby je škálovatelná a zaregistrujte modely TensorFlow ve velkém měřítku](how-to-train-tensorflow.md).
 * [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning služby](how-to-train-chainer.md).
 
 ### <a name="datasets-and-datastores"></a>Datové sady a úložiště dat
 
-**Azure Machine Learning datové sady** (Preview) usnadňuje přístup k datům a práci s nimi. Datové sady spravují data v různých scénářích, jako jsou například školení modelů a vytváření kanálů. Pomocí sady Azure Machine Learning SDK můžete získat přístup k základnímu úložišti, prozkoumat a připravit data, spravovat životní cyklus různých definic datových sad a srovnávat mezi datovými sadami používanými při výuce a v produkčním prostředí.
+**Azure Machine Learning datové sady** (Preview) usnadňuje přístup k datům a práci s nimi. Datové sady spravují data v různých scénářích, jako jsou například školení modelů a vytváření kanálů. Pomocí sady Azure Machine Learning SDK můžete získat přístup k základnímu úložišti, prozkoumat data a spravovat životní cyklus různých definic datových sad.
 
 Datové sady poskytují metody pro práci s daty v oblíbených formátech, jako je například `from_delimited_files()` použití `to_pandas_dataframe()`nebo.
 
@@ -237,7 +237,7 @@ Další informace o kanálech strojového učení s touto službou najdete v té
 
 Při vývoji řešení použijte sadu Azure Machine Learning Python SDK ve vašem skriptu Pythonu k protokolování libovolných metrik. Po spuštění dotazu na metriky určete, zda běh vytvořil model, který chcete nasadit.
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat službu Azure Machine Learning, přečtěte si:
 

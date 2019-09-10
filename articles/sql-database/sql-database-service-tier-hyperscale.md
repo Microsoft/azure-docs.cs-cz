@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981164"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845633"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Úroveň služby s škálovatelným škálováním na až 100 TB
 
@@ -186,7 +186,7 @@ Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v ob
 
 2. Klikněte na [ **novou žádost o podporu** .](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-    ![Okno pomoc a podpora Azure](media/sql-database-service-tier-hyperscale/whitelist-request-screen-1.png)
+    ![Okno pomoc a podpora Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
 
@@ -198,13 +198,13 @@ Chcete-li požádat o možnost vytvořit databáze na úrovni škálování v ob
 
 1. Klikněte na **zadat podrobnosti** .
 
-    ![Podrobnosti o problému](media/sql-database-service-tier-hyperscale/whitelist-request-screen-2.png)
+    ![Podrobnosti o problému](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
 8. Vyberte **typ kvóty SQL Database**: **Jiná žádost o kvótu**
 
 9. Vyplňte následující šablonu:
 
-    ![Podrobnosti o kvótě](media/sql-database-service-tier-hyperscale/whitelist-request-screen-3.png)
+    ![Podrobnosti o kvótě](media/sql-database-service-tier-hyperscale/request-screen-3.png)
 
     V šabloně zadejte tyto informace:
 
@@ -239,7 +239,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Nejčastější dotazy týkající se škálování najdete v tématu [Nejčastější dotazy týkající se škálování na úrovni](sql-database-service-tier-hyperscale-faq.md).
 - Informace o úrovních služeb najdete v tématu [úrovně služeb](sql-database-service-tiers.md) .

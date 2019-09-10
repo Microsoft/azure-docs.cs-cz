@@ -1,8 +1,8 @@
 ---
-title: Nastavte v účtu pro offline streamování obsahu PlayReady chránit – Azure
-description: Tento článek ukazuje postup při konfiguraci účtu Azure Media Services pro streamování PlayReady pro Windows 10 v offline režimu.
+title: Konfigurace účtu pro offline streamování obsahu chráněného technologií PlayReady – Azure
+description: Tento článek ukazuje, jak nakonfigurovat účet Azure Media Services pro streamování PlayReady pro Windows 10 v režimu offline.
 services: media-services
-keywords: Android Offline režimu, ExoPlayer, DASH, technologie DRM, Widevine
+keywords: POMLČKa, DRM, režim offline, Widevine, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ae5fdd51d9bc1a3e7e2521c6ca1ff64d884c96f8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341768"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845510"
 ---
-# <a name="offline-playready-streaming-for-windows-10"></a>PlayReady offline Streaming pro Windows 10
+# <a name="offline-playready-streaming-for-windows-10"></a>Online streamování PlayReady pro Windows 10
 
-Azure Media Services podporují offline stažení/přehrávání s ochranou DRM. Tento článek se zaměřuje na offline podporu Azure Media Services pro Windows 10/PlayReady klientů. Si můžete přečíst o podporu offline režimu pro iOS/FairPlay a zařízení s Androidem/Widevine v následujících článcích:
+Azure Media Services podporuje stahování a přehrávání offline s ochranou DRM. Tento článek popisuje offline podporu Azure Media Services pro klienty s Windows 10 a PlayReady. Informace o podpoře offline režimu pro zařízení s iOS/FairPlay a Androidem/Widevine najdete v následujících článcích:
 
 - [Streamování FairPlay pro iOS v offline režimu](offline-fairplay-for-ios.md)
-- [Offline Widevine streamování pro Android](offline-widevine-for-android.md)
+- [Online streamování Widevine pro Android](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Offline DRM účtuje pouze pro provádění jednoho požadavku licenci, když si stáhnete obsah. Všechny chyby se nic neúčtuje.
+> Offline DRM se účtuje jenom při vytváření jediné žádosti o licenci při stažení obsahu. Neúčtují se žádné chyby.
 
 ## <a name="overview"></a>Přehled
 
-Tato část obsahuje základní informace v offline režimu přehrávání, zejména proč:
+Tato část poskytuje některé pozadí při přehrávání offline režimu, zejména proč:
 
-* V některých zemích nebo oblastech je stále omezena dostupnost Internetu a/nebo šířky pásma. Uživatelé se můžou rozhodnout nejprve stáhnout moct dál sledovat obsah v dostatečně vysoká řešení vyhovující zážitek. V takovém případě častěji, problém není dostupnost sítě, místo toho je omezena šířka pásma sítě. Poskytovatelé OTT/OVP žádáme pro podporu offline režimu.
-* Jak zveřejněn na konferenci společníka Netflix 2016 3. čtvrtletí, stahování obsahu je "napravo požadované funkce" a "jsme se otevřený, aby ho" říká, že podle Reed Hastingsu, generální ředitel Netflix.
-* Někteří poskytovatelé obsahu může zakázat doručování licencí DRM nad rámec ohraničení určitá země nebo oblast. Pokud uživatel musí projít, v zahraničí a stále se chce sledovat obsah, je potřeba ke stažení offline.
+* V některých zemích a oblastech je dostupnost Internetu a/nebo šířka pásma stále omezená. Uživatelé si můžou nejdřív stáhnout, aby mohli sledovat obsah s dostatečně vysokým rozlišením, aby se mohlo zobrazit uspokojivý zážitek. V takovém případě častěji problém není síťová dostupnost, ale je omezená šířka pásma sítě. Poskytovatelé OTT/OVP žádají o podporu offline režimu.
+* Jak jsme zavřeli na konferenci Netflix 2016 Q3 akcionář, stažení obsahu je funkce, kterou požadujeme, a my na ni jsme na ni otevřeli Reed Hastings, Netflix pro generálního ředitele.
+* Někteří poskytovatelé obsahu můžou zakázat doručování licencí DRM mimo hranici země nebo oblasti. Pokud uživatel potřebuje cestovat do zahraničí a pořád chce sledovat obsah, je potřeba stáhnout offline.
  
-Výzvy, se kterými jsme setkat při implementaci offline režimu je následující:
+Výzva, kterou čelíme v implementaci offline režimu, je následující:
 
-* MP4 podporuje mnoho hráči kodér nástroje, ale neexistuje žádná vazba mezi MP4 kontejneru a DRM;
-* V dlouhodobém horizontu vývojového diagramu křížového procesu s CENC je způsob, jak přejít. Ale v současné době ekosystému podpory nástroje/player existuje ještě není. Řešení, potřebujeme ještě dnes.
+* MP4 podporuje spousta hráčů, nástroje kodéru, ale neexistuje žádná vazba mezi kontejnerem MP4 a DRM.
+* V dlouhodobém horizontu CFF s CENC je způsob, jak jít. V současné době ale ekosystém podpory nástrojů/přehrávače ještě není. Musíme ještě dnes řešení.
  
-Spočívá v: technologie smooth streaming ([PIFF](https://go.microsoft.com/?linkid=9682897)) formát souboru s H264/AAC má vazbu pomocí technologie PlayReady (AES-128 KONT). Jednotlivé smooth streamování .ismv soubor (za předpokladu, že zvuk se muxed ve videu) je sama o sobě fMP4 a lze použít pro přehrávání. V případě technologie smooth streaming obsahu pomocí šifrování PlayReady, každý soubor .ismv stane PlayReady chráněné fragmentovaného MP4. Můžete zvolit soubor .ismv s upřednostňované přenosové rychlosti a přejmenujte ho jako MP4 ke stažení.
+Nápad je: formát[PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)(vyhlazené streamování) s H264/AAC má vazbu s PLAYREADY (AES-128 centrum). Jednotlivý plynulý soubor streamování. ISMV (za předpokladu, že zvuk je muxed ve videu) je to fMP4 a dá se použít k přehrávání. Pokud dojde k hladkému streamování obsahu prostřednictvím šifrování PlayReady, každý soubor. ISMV se bude nacházet s fragmentovaným MP4 chráněným jako PlayReady. Můžeme zvolit soubor. ISMV s upřednostňovanou přenosovou rychlostí a přejmenovat ho jako. MP4 ke stažení.
 
-Existují dvě možnosti pro hostování PlayReady chráněné MP4 pro progresivní stahování:
+K dispozici jsou dvě možnosti pro hostování MP4 chráněného MP4 pro progresivní stažení:
 
-* Jeden můžete umístit na stejný prostředek služby kontejneru/media tento MP4 a využít koncový bod pro progresivní stahování; streamování služby Azure Media Services
-* Jedna slouží lokátoru SAS pro progresivní stahování přímo ze služby Azure Storage, bez použití služby Azure Media Services.
+* Ten může tento MP4 vložit do stejného kontejneru jako kontejner nebo Media Service assetu a využít koncový bod streamování Azure Media Services pro progresivní stahování;
+* Jeden může použít Lokátor SAS pro progresivní stahování přímo z Azure Storage, obcházení Azure Media Services.
  
-Můžete používat dva typy doručování licencí technologií PlayReady:
+Můžete použít dva typy doručování licencí PlayReady:
 
-* Službu doručování licencí PlayReady ve službě Azure Media Services;
-* PlayReady licenční servery hostované kdekoli.
+* Služba doručování licencí PlayReady v Azure Media Services;
+* Servery licencí PlayReady hostované kdekoli.
 
-Níže jsou uvedeny dvě sady testovací prostředky, první z nich naším vlastním doručováním licencí PlayReady pomocí v AMS při druhém pomocí serveru licencí PlayReady hostované na Virtuálním počítači Azure:
+Níže jsou uvedeny dvě sady testovacích prostředků, první z nich pomocí doručování licencí PlayReady v AMS a druhá z nich pomocí mého licenčního serveru aplikace PlayReady hostovaného na virtuálním počítači Azure:
 
-Asset #1:
+#1 assetu:
 
-* Adresa URL progresivního stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS): [https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* Adresa URL postupného stahování:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
+* PlayReady LA_URL (AMS):[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
 
-Asset #2:
+#2 assetu:
 
-* Adresa URL progresivního stahování: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (v místním prostředí): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* Adresa URL postupného stahování:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (místní):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
-Pro účely testování přehrávání jsme použili univerzální aplikace pro Windows ve Windows 10. V [univerzální pro Windows 10 ukázky](https://github.com/Microsoft/Windows-universal-samples), nachází přehrávače příklad volá [adaptivní streamování ukázka](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Všechno, co musíme udělat, je přidejte kód, abychom mohli vybrat stahování videa a použít ho jako zdroj, namísto adaptivní streamování zdroje. Změny jsou v tlačítko klikněte na tlačítko obslužné rutiny události:
+V případě testování přehrávání jsme použili univerzální aplikaci pro Windows ve Windows 10. V [univerzálních ukázkách Windows 10](https://github.com/Microsoft/Windows-universal-samples)je k dispozici základní ukázka přehrávače označované jako [Ukázka adaptivního streamování](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Musíme to udělat tak, že před přidáním kódu pro nás vybíráte stažené video a použijete ho jako zdroj namísto adaptivního zdroje streamování. Změny jsou v obslužné rutině události kliknutí na tlačítko:
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -111,18 +111,18 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-![PlayReady offline režimu přehrávání chráněné fMP4](./media/offline-playready-for-windows/offline-playready1.jpg)
+![Přehrávání režimu offline chráněných fMP4 PlayReady](./media/offline-playready-for-windows/offline-playready1.jpg)
 
 
-Vzhledem k tomu, že je video ochranou PlayReady, nebude možné zahrnout videa na snímku obrazovky.
+Vzhledem k tomu, že je video pod ochranou PlayReady, snímek obrazovky nebude moct video zahrnout.
 
-Stručně řečeno jsme dosáhli režimu offline v Azure Media Services:
+Ve shrnutí jsme dosáhli offline režimu na Azure Media Services:
 
-* Převod kódování obsahu a šifrování PlayReady můžete udělat v Azure Media Services nebo jiné nástroje;
-* Obsah je možné hostovat v Azure Media Services nebo služby Azure Storage pro progresivní stahování;
-* Naším vlastním doručováním licencí PlayReady může být z Azure Media Services nebo jinde;
-* Připravený obsah smooth streamování je stále možné online vysílání datového proudu prostřednictvím DASH nebo smooth pomocí technologie PlayReady jako DRM.
+* Překódování obsahu a šifrování PlayReady se dá provádět v Azure Media Services nebo jiných nástrojích.
+* Obsah je možné hostovat ve Azure Media Services nebo Azure Storage pro progresivní stahování;
+* Doručování licencí PlayReady může být z Azure Media Services nebo jinde;
+* Připravený plynulý obsah streamování se dá dál používat pro online streamování prostřednictvím POMLČKy nebo hladkého použití s technologií PlayReady jako DRM.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)

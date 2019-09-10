@@ -1,29 +1,29 @@
 ---
-title: Získání podrobností o databázi služby Azure Blockchain Workbench
-description: Naučte se získat informace o databázi a databázovém serveru služby Azure Blockchain Workbench.
+title: Získat podrobnosti databáze Azure blockchain Workbench Preview
+description: Přečtěte si, jak získat informace o databázi a databázovém serveru Azure blockchain Workbench Preview.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 42d119acd8880458eadc1760a7cb9713f91e3f6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65509989"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845070"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Získání informací o databázi služby Azure Blockchain Workbench
+# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Získat informace o databázi Azure blockchain Workbench Preview
 
-Tento článek popisuje, jak získáte podrobné informace o databázi služby Azure Blockchain Workbench.
+Tento článek ukazuje, jak získat podrobné informace o vaší databázi Azure blockchain Workbench Preview.
 
 ## <a name="overview"></a>Přehled
 
-Informace o spouštění aplikací, pracovních postupů a chytrých kontraktů se poskytují pomocí zobrazení databáze SQL služby Blockchain Workbench. Vývojáři mohou pomocí těchto informací při používání nástrojů, jako je například aplikace Microsoft Excel, Power BI, Visual Studio a SQL Server Management Studio.
+Informace o spouštění aplikací, pracovních postupů a chytrých kontraktů se poskytují pomocí zobrazení databáze SQL služby Blockchain Workbench. Vývojáři můžou tyto informace použít při používání nástrojů, jako je Microsoft Excel, Power BI, Visual Studio a SQL Server Management Studio.
 
 Aby se vývojář mohl k této databázi připojit, potřebuje:
 
@@ -34,7 +34,7 @@ Aby se vývojář mohl k této databázi připojit, potřebuje:
 
 K databázi se připojíte takto:
 
-1. Přihlaste se k webu Azure portal pomocí účtu, který má **vlastníka** oprávnění pro prostředky Azure Blockchain Workbench.
+1. Přihlaste se k Azure Portal pomocí účtu, který má oprávnění **vlastníka** pro prostředky Azure blockchain Workbench.
 2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Zvolte název skupiny prostředků svého nasazení služby Blockchain Workbench.
 4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**. V seřazeném seznamu na dalším snímku obrazovky se zobrazují dvě databáze SQL – jedna „master“ a jedna, která jako **předponu prostředku** používá „lhgn“.

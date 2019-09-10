@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a JavaScript'
+title: 'Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a JavaScriptu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s JavaScriptem rozpoznávat tváře z obrázku ve službách Cognitive Services.
 services: cognitive-services
@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603430"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859038"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a JavaScript
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a JavaScriptu
 
-V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure s použitím jazyka JavaScript detekovat lidské tváře v obrázku.
+V tomto rychlém startu použijete REST API Azure Face s JavaScriptem k detekci lidských plošek v obrázku.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
-- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="initialize-the-html-file"></a>Inicializovat souboru HTML
+## <a name="initialize-the-html-file"></a>Inicializovat soubor HTML
 
-Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
+Vytvořte nový soubor HTML *detectFaces. html*a přidejte následující kód.
 
 ```html
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
 </html>
 ```
 
-Pak přidejte následující kód `body` element dokumentu. Tento kód nastaví základní uživatelské rozhraní s poli Adresa URL, **analyzujte tváře** tlačítko, odpověď podokno a zobrazit podokno obrázku.
+Poté do `body` prvku dokumentu přidejte následující kód. Tento kód nastaví základní uživatelské rozhraní s polem Adresa URL, tlačítko **analyzovat plochu** , podokno odpovědi a podokno zobrazení obrázku.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -63,9 +63,9 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </div>
 ```
 
-## <a name="write-the-javascript-script"></a>Skript jazyka JavaScript
+## <a name="write-the-javascript-script"></a>Zápis skriptu JavaScriptu
 
-Přidejte následující kód bezprostředně výše `h1` element v dokumentu. Tento kód nastaví kód jazyka JavaScript, která volá rozhraní API pro rozpoznávání tváře.
+Přidejte následující kód přímo nad `h1` prvek v dokumentu. Tento kód nastaví kód JavaScriptu, který volá Face API.
 
 ```html
 <script type="text/javascript">
@@ -73,16 +73,8 @@ Přidejte následující kód bezprostředně výše `h1` element v dokumentu. T
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
     
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change 
-        // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<My Endpoint String>.com/face/v1.0/detect";
     
         // Request parameters.
         var params = {
@@ -132,11 +124,13 @@ Přidejte následující kód bezprostředně výše `h1` element v dokumentu. T
 </script>
 ```
 
-Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `uriBase` řetězec tak, aby obsahoval oblasti správný identifikátor (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všech oblastí Koncové body). `returnFaceAttributes` Pole určuje, které pro rozpoznávání tváře atributy k načtení; možná budete chtít změnit tento řetězec v závislosti na zamýšlený účel použití.
+Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a musíte `uriBase` změnit řetězec tak, aby obsahoval správný řetězec koncového bodu. `returnFaceAttributes` Pole určuje, které atributy tváře mají být načteny. Tento řetězec můžete změnit v závislosti na zamýšleném použití.
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Spuštění skriptu
 
-Otevřít *detectFaces.html* v prohlížeči. Po kliknutí **analyzujte tváře** tlačítko, aplikace by měla zobrazit obrázek ze zadané adresy URL a vytisknout řetězec JSON dat pro rozpoznávání tváře.
+V prohlížeči otevřete *detectFaces. html* . Když kliknete na tlačítko **analyzovat plošku** , aplikace by měla zobrazit obrázek z dané adresy URL a vytisknout řetězec formátu obličeje.
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
@@ -234,9 +228,9 @@ Následující text je příkladem úspěšné odpovědi JSON.
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste napsali skriptu jazyka JavaScript, která volá rozhraní API pro rozpoznávání tváře Azure rozpoznávání tváří v obrázku a vrátíte se jejich atributy. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře na další informace.
+V tomto rychlém startu jste napsali skript JavaScriptu, který volá Face API Azure pro detekci plošek v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

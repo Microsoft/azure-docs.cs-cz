@@ -1,19 +1,18 @@
 ---
-title: Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure | Microsoft Docs
+title: Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 description: Shrnuje podporované součásti a požadavky pro zotavení po havárii virtuálního počítače Hyper-V do Azure pomocí Azure Site Recovery
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5d7ac7cf00ee59a06a914d312fd58de00515a0b4
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70230965"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873340"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -134,6 +133,7 @@ Objekty blob bloku | Ne | Ne
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
 Azure Storage brány firewall pro virtuální sítě nakonfigurované na cílovém účtu úložiště nebo mezipaměti (používá se k ukládání dat replikace) | Ne | Ne
+Upravuje se účet úložiště. | Ne. Cílový účet Azure Storage se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a následně znovu povolit zotavení po havárii. | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE

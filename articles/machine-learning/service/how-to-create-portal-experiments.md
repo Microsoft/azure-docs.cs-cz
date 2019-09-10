@@ -11,18 +11,19 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 79632a2b5862538ef702cec01a60aada14d8dbce
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813659"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860484"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytváření, zkoumání a nasazení automatických experimentů strojového učení v Azure Portal (Preview)
 
  V tomto článku se naučíte, jak vytvářet, zkoumat a nasazovat automatizované experimenty strojového učení v Azure Portal bez jediného řádku kódu. Automatizované Machine Learning automatizuje proces výběru nejlepšího algoritmu, který se má použít pro vaše konkrétní data, takže můžete model strojového učení rychle vygenerovat. [Přečtěte si další informace o automatizovaném strojovém učení](concept-automated-ml.md).
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,6 +40,8 @@ Přejděte do levého podokna pracovního prostoru. V části vytváření obsah
  Pokud se jedná o vaše první experimenty, uvidíte **úvodní obrazovku pro automatizované Machine Learning** . 
 
 V opačném případě uvidíte na **automatizovaném** řídicím panelu Machine Learning přehled všech automatických experimentů strojového učení, včetně těch, které se vytvořily pomocí sady SDK. Tady můžete filtrovat a zkoumat své běhy podle data, experimentu a stavu spuštění.
+
+K automatizovaným Machine Learning se můžete dostat taky z [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
 
 ## <a name="create-an-experiment"></a>Vytvoření experimentu
 
@@ -59,7 +62,7 @@ Vyberte **vytvořit experiment** a naplňte na nový formulář pro **Automatick
       Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
       >[!NOTE]
-      > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
+      > Váš název COMPUTE určí, jestli je povolená možnost *profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti o profilaci dat najdete v článku 7b).
 
 1. Vyberte účet úložiště pro vaše data. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ed20dd9068ccdea1fb9cd04801eb0096fed2c922
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972427"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845312"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -56,18 +56,24 @@ zone “cloudsimple.io”
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Vytvoření zóny na serveru DNS Microsoft Windows
 
-1. Klikněte pravým tlačítkem na server DNS a vyberte **Nová zóna**.  
-![Nová zóna](media/DNS01.png)
-2. Vyberte **zónu** se zástupnými procedurami a klikněte na **Další**.
-![Nová zóna](media/DNS02.png)
+1. Klikněte pravým tlačítkem na server DNS a vyberte **Nová zóna**. 
+  
+    ![Nová zóna](media/DNS01.png)
+2. Vyberte **zónu se zástupnými** procedurami a klikněte na **Další**.
+
+    ![Nová zóna](media/DNS02.png)
 3. V závislosti na vašem prostředí vyberte příslušnou možnost a klikněte na **Další**.
-![Nová zóna](media/DNS03.png)
-4. Vyberte **zónu** dopředného vyhledávání a klikněte na **Další**.
-![Nová zóna](media/DNS01.png)
+
+    ![Nová zóna](media/DNS03.png)
+4.  Vyberte **zónu dopředného vyhledávání**a klikněte na **Další**.
+
+    ![Nová zóna](media/DNS01.png)
 5. Zadejte název zóny a klikněte na **Další**.
-![Nová zóna](media/DNS05.png)
+
+    ![Nová zóna](media/DNS05.png)
 6. Zadejte IP adresy serverů DNS vašeho privátního cloudu, které jste získali z portálu CloudSimple.
-![Nová zóna](media/DNS06.png)
+
+    ![Nová zóna](media/DNS06.png)
 7. V případě potřeby klikněte na **Další** a dokončete instalaci Průvodce.
 
 ## <a name="create-a-conditional-forwarder"></a>Vytvoření podmíněného dopředné
@@ -90,6 +96,7 @@ zone “cloudsimple.io” {
 ### <a name="create-a-conditional-forwarder-on-a-microsoft-windows-dns-server"></a>Vytvoření podmíněného přesměrování na serveru DNS Microsoft Windows
 
 1. Otevřete Správce DNS na serveru DNS.
-2. Klikněte pravým tlačítkem na **podmíněné** Přeposílání a vyberte možnost přidání nového podmíněného dodávání.
-![Podmíněný Server pro překládání 1 DNS systému Windows](media/DNS08.png)
+2. Klikněte pravým tlačítkem na **podmíněné přeposílání** a vyberte možnost přidání nového podmíněného dodávání.
+
+    ![Podmíněný Server pro překládání 1 DNS systému Windows](media/DNS08.png)
 3. Zadejte doménu DNS a IP adresu serverů DNS v privátním cloudu a klikněte na **OK**.

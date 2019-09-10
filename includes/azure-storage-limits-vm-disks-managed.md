@@ -9,24 +9,24 @@ ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67174998"
 ---
-**Standardní HDD spravované disky**
+**HDD úrovně Standard spravované disky**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**SSD na úrovni Standard managed disks**
+**SSD úrovně Standard spravované disky**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Spravované disky úrovně Premium SSD: Omezení na disku**
+**SSD úrovně Premium spravované disky: Omezení podle počtu disků**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Spravované disky úrovně Premium SSD: Limity pro jednotlivé virtuální počítače**
+**SSD úrovně Premium spravované disky: Omezení pro virtuální počítače**
 
 | Resource | Výchozí omezení |
 | --- | --- |
-| Maximální IOPS na virtuální počítač |80 000 IOPS s virtuálním Počítačem GS5 |
-| Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním Počítačem GS5 |
+| Maximální počet vstupně-výstupních operací na virtuální počítač |80 000 IOPS s virtuálním počítačem s GS5 |
+| Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním počítačem s GS5 |

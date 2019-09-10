@@ -9,16 +9,16 @@ ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: f328de00d206b58037fda800354e9634b1c374d6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175398"
 ---
-Azure Data Lake Storage Gen1 je podnikové úrovni hyperškálovatelné úložiště pro analytické úlohy s velkými objemy dat. Data Lake Storage Gen1 můžete zachytit data libovolné velikosti, typu a rychlosti příjmu na jediném místě pro provozní a zjišťovací analýzy. Neexistuje žádné omezení množství dat, která může ukládat v účtu Data Lake Storage Gen1.
+Azure Data Lake Storage Gen1 je vysoce škálovatelné úložiště pro analýzy velkých objemů dat v podnikové síti. Můžete použít Data Lake Storage Gen1 k zachycení dat libovolné velikosti, typu a rychlosti příjmu na jednom místě pro provozní a průzkumné analýzy. Množství dat, která můžete ukládat v účtu Data Lake Storage Gen1, není nijak omezené.
 
 | **Prostředek** | **Výchozí omezení** | **Komentář** |
 | --- | --- | --- |
-| Maximální počet účtů Data Lake Storage Gen1 na předplatné a oblast |10 | Chcete-li tento limit zvýšit, obraťte se na podporu. |
-| Maximální počet seznamy ACL, přístup na souboru nebo složky |32 | Jedná se o pevný limit. Použití skupin pro správu přístupu s menším počtem položek. |
-| Maximální počet výchozí seznamy ACL na souboru nebo složky |32 | Jedná se o pevný limit. Použití skupin pro správu přístupu s menším počtem položek. |
+| Maximální počet Data Lake Storage Gen1 účtů na předplatné v jednotlivých oblastech |10 | Pokud chcete požádat o zvýšení tohoto limitu, obraťte se na podporu. |
+| Maximální počet přístupových seznamů ACL na jeden soubor nebo složku |32 | Toto je pevný limit. Skupiny můžete použít ke správě přístupu s menším počtem položek. |
+| Maximální počet výchozích seznamů řízení přístupu (ACL) na jeden soubor nebo složku |32 | Toto je pevný limit. Skupiny můžete použít ke správě přístupu s menším počtem položek. |

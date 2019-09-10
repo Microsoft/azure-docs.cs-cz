@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c654da71a0c060a9344ef7d7d42b30263a7fb2db
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165211"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860907"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -47,7 +47,7 @@ Pomocí **Azure Machine Learning služby**můžete navrhovat a spouštět experi
 
 1. **Nakonfigurujte výpočetní cíl pro školení modelů**, jako je například váš [místní počítač, Azure Machine Learning výpočetní prostředí, vzdálené virtuální počítače nebo Azure Databricks](how-to-set-up-training-targets.md).  Přečtěte si o automatizovaném školení [na vzdáleném prostředku](how-to-auto-train-remote.md).
 
-1. **Nakonfigurujte parametry automatizovaného strojového učení** , které určují, kolik iterací pro různé modely, nastavení parametrů, pokročilý předzpracování/featurization a jaké metriky se mají při určování nejlepšího modelu prohlédnout.  Můžete nakonfigurovat nastavení automatického školení experimentu [v Azure Portal](how-to-create-portal-experiments.md) nebo [pomocí sady SDK](how-to-configure-auto-train.md).
+1. **Nakonfigurujte parametry automatizovaného strojového učení** , které určují, kolik iterací pro různé modely, nastavení parametrů, pokročilý předzpracování/featurization a jaké metriky se mají při určování nejlepšího modelu prohlédnout.  Můžete nakonfigurovat nastavení automatického školení experimentu v [Azure Portal](how-to-create-portal-experiments.md), [na úvodní stránce pracovního prostoru (Preview)](https://ml.azure.com)nebo v sadě [SDK](how-to-configure-auto-train.md). 
 
 1. **Odešlete školicí běh.**
 
@@ -88,7 +88,7 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 
 K dispozici jsou také další rozšířené předzpracování a featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess). Povolit toto nastavení pomocí:
 
-+ Azure Portal: Zaškrtnutím políčka předzpracovat v části **Rozšířená nastavení** [proveďte tyto kroky](how-to-create-portal-experiments.md).
++ Azure Portal: Zaškrtnutím políčka **předzpracovat** v části **Rozšířená nastavení** [proveďte tyto kroky](how-to-create-portal-experiments.md).
 
 + Sada Python SDK: Určení `"preprocess": True` [pro třídu`AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -133,7 +133,7 @@ Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovan
 + Postupujte podle [tohoto kurzu: Automatické učení regresního modelu pomocí automatizované Machine Learning Azure](tutorial-auto-train-models.md)
 
 + Nakonfigurujte nastavení pro experiment automatických školení:
-  + V Azure Portal rozhraní [použijte tento postup](how-to-create-portal-experiments.md).
+  + V části Azure Portal rozhraní nebo na úvodní stránce pracovního prostoru (Preview) [použijte tento postup](how-to-create-portal-experiments.md).
   + Pomocí sady Python SDK [použijte následující postup](how-to-configure-auto-train.md).
 
 + Naučte se, jak automaticky naučit data časových řad pomocí [těchto kroků](how-to-auto-train-forecast.md).

@@ -1,25 +1,25 @@
 ---
-title: Co je Video Indexer?
-titlesuffix: Azure Media Services
-description: Toto téma nabízí přehled služby Azure Video Indexer.
+title: Co je Video Indexer služby Azure Media Services?
+titleSuffix: Azure Media Services
+description: Toto téma poskytuje přehled služby Azure Media Services Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e3f60b5fb0693e40c9db040f7b14f487fce8f68e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422983"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860259"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
-Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí Video Indexer video a zvukové modely popsané níže:
+Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí Video Indexer video a zvukové modely popsané níže:
   
 ## <a name="video-insights"></a>Video přehledy
 
@@ -35,10 +35,13 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 - **Detekce černého snímku**: Identifikuje černé snímky prezentované ve videu.
 - **Extrakce klíčového snímku**: Detekuje stabilní klíčové snímky ve videu.
 - **Kumulovaný kredity**: Identifikujte začátek a konec kumulovaných kreditů na konci televizních pořadů a filmů.
+- **Zjištění animovaných znaků** (Preview): detekce, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s [Cognitive Services vlastní vize](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Další informace naleznete v tématu [animovaná detekce znaků](animated-characters-recognition.md).
+- **Detekce typu redakčního snímku**: označení snímků na základě jejich typu (jako je třeba velký záběr, střední záběr, zavření, extrémní uzavření, dva snímky, více lidí, venku a interiér atd.). Další informace najdete v tématu [zjištění typu redakčního snímku](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ## <a name="audio-insights"></a>Přehledy zvuku
 
 - **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština. Pokud jazyk nelze identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
+- **Identifikace a přepis mluveného slova ve více jazycích** (Preview): Automaticky identifikuje mluvený jazyk v různých segmentech ze zvukového souboru, který odesílá jednotlivé segmenty mediálního souboru, aby se přepisu, a sloučí přepis zpátky do jednoho sjednoceného přepisu. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
 - **Přepis zvuku**: Převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, brazilská portugalština, hindština a korejština.
 - **Skryté titulky**: Vytvoří skryté titulky ve třech formátech: VTT, TTML, SRT.
 - **Zpracování dvou kanálů**: Automaticky detekuje, oddělují a sloučí je s jednou časovou osou.
@@ -56,7 +59,7 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 K dispozici bude při indexování v jednom kanálu částečný výsledek pro tyto modely.
 
 - **Extrakce klíčových slov**: Extrahuje klíčová slova z mluvené řeči a vizuálního textu.
-- **Extrakce značek**: Extrahuje značky z mluvené řeči a vizuálního textu.
+- **Extrakce pojmenovaných entit**: Extrahuje značky, umístění a lidi z mluvené řeči a vizuálního textu prostřednictvím zpracování přirozeného jazyka (NLP).
 - **Odvození tématu**: Provádí odvození hlavních témat z přepisů. Zahrnuje se taxonomie IPTC na první úrovni.
 - **Artefakty**: Extrahuje bohatou sadu artefaktů další úrovně podrobností pro každý model.
 - **Analýza mínění**: Identifikuje kladné, záporné a neutrální zabarvení z mluvené řeči a vizuálního textu.

@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129622"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844970"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
 
@@ -31,6 +31,7 @@ Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení
 
 - Musíte mít nainstalovaný [Azure PowerShell](/powershell/azure) , nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
+- Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](metrics-custom-overview.md#supported-regions).
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení Azure Monitor jako datové jímky 
 Rozšíření Azure Diagnostics používá funkci nazvanou **datové jímky** k směrování metrik a protokolů do různých umístění. Následující kroky ukazují, jak použít Správce prostředků šablonu a PowerShell k nasazení virtuálního počítače pomocí nové jímky dat Azure Monitor. 
@@ -51,7 +52,7 @@ Otevřete soubor **azuredeploy. Parameters. JSON** :
 - Zadejte **windowsOSVersion** , který chcete použít pro sadu škálování virtuálního počítače. Doporučujeme 2016 – Datacenter. 
 - Pojmenujte prostředek sady škálování virtuálního počítače, který se má nasadit, pomocí vlastnosti **vmssName** . Příkladem je **VMSS-wad-test**.    
 - Zadejte počet virtuálních počítačů, které chcete spustit v sadě škálování virtuálního počítače pomocí vlastnosti **instanceCount** .
-- Zadejte hodnoty pro **adminUsername** a **adminPassword** pro sadu škálování virtuálního počítače. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům v sadě škálování. Abyste se vyhnuli napadení virtuálního **počítače,** nepoužívejte ty v této šabloně. Roboty prověřování Internetu pro uživatelská jména a hesla ve veřejných úložištích GitHubu. Budou pravděpodobně testovány virtuální počítače s těmito výchozími hodnotami. 
+- Zadejte hodnoty pro **adminUsername** a **adminPassword** pro sadu škálování virtuálního počítače. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům v sadě škálování. Abyste se vyhnuli napadení virtuálního počítače, nepoužívejte ty v této šabloně. Roboty prověřování Internetu pro uživatelská jména a hesla ve veřejných úložištích GitHubu. Budou pravděpodobně testovány virtuální počítače s těmito výchozími hodnotami. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Modify azuredeploy.json

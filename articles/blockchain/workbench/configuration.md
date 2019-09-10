@@ -1,92 +1,92 @@
 ---
-title: Referenční informace pro konfiguraci Azure Blockchain Workbench
-description: Přehled konfigurace aplikace Azure Blockchain Workbench.
+title: Referenční informace o konfiguraci Azure blockchain Workbench
+description: Přehled konfigurace aplikace Azure blockchain Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c737106b47b95fcc6d1abdadc81398a3bc9256d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578976"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845115"
 ---
-# <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace pro konfiguraci Azure Blockchain Workbench
+# <a name="azure-blockchain-workbench-configuration-reference"></a>Referenční informace o konfiguraci Azure blockchain Workbench
 
-Aplikace Azure Blockchain Workbench jsou více stran pracovní postupy definované konfigurace metadat a inteligentní kontraktu kódu. Konfigurace metadat definuje vysoké úrovně pracovních postupů a interakce model blockchainové aplikace. Chytrých kontraktů definovat obchodní logiku blockchainové aplikace. Aplikace Workbench použije k vygenerování uživatelského prostředí aplikace blockchain konfigurace a inteligentní kontraktu kódu.
+Aplikace Azure blockchain Workbench jsou pracovní postupy s více stranami, které jsou definovány pomocí metadat konfigurace a kódu inteligentního kontraktu. Metadata konfigurace definují pracovní postupy vysoké úrovně a model interakce aplikace blockchain. Inteligentní kontrakty definují obchodní logiku aplikace blockchain. Workbench používá ke generování uživatelského prostředí aplikace blockchain kód konfigurace a inteligentního kontraktu.
 
-Konfigurace metadat určuje pro každou aplikaci blockchain následující informace:
+Metadata konfigurace určují pro každou aplikaci blockchain následující informace:
 
-* Název a popis blockchainové aplikace
-* Jedinečné role pro uživatele, kteří můžou fungovat či k účasti v rámci blockchainové aplikace
-* Jeden nebo více pracovních postupů. Každý pracovní postup funguje jako stavového stroje pro řízení toku obchodní logiku. Pracovní postupy mohou být nezávislé nebo komunikovat mezi sebou.
+* Název a popis aplikace blockchain
+* Jedinečné role pro uživatele, kteří můžou pracovat s aplikací blockchain nebo se do ní zúčastnit
+* Jeden nebo více pracovních postupů. Každý pracovní postup funguje jako Stavový počítač pro řízení toku obchodní logiky. Pracovní postupy mohou být nezávislé nebo vzájemně spolupracují.
 
 Každý definovaný pracovní postup určuje následující:
 
 * Název a popis pracovního postupu
-* Stavy pracovního postupu.  Každý stav je úsek obchodní logiky, toku řízení. 
-* Akce pro přechod do dalšího stavu
-* Role uživatele povolené pro zahájení každé akce
-* Chytrých kontraktů, které představují obchodní logiku v souborech kódu
+* Stavy pracovního postupu.  Každý stav je fáze v toku řízení obchodní logiky. 
+* Akce přechodu do dalšího stavu
+* Role uživatelů, kterým se povoluje zahájení každé akce
+* Inteligentní kontrakty, které reprezentují obchodní logiku v souborech kódu
 
 ## <a name="application"></a>Aplikace
 
-Blockchainové aplikace obsahuje konfigurace metadat, pracovní postupy a uživatelských rolí, kteří můžou fungovat či k účasti v rámci aplikace.
+Aplikace blockchain obsahuje metadata konfigurace, pracovní postupy a role uživatelů, kteří se můžou chovat nebo se zúčastnit v rámci aplikace.
 
-| Pole | Description | Požaduje se |
+| Pole | Description | Požadováno |
 |-------|-------------|:--------:|
-| ApplicationName | Jedinečný název aplikace. Odpovídající inteligentní smlouvě musíte použít stejné **ApplicationName** pro třídu příslušné smlouvy.  | Ano |
-| DisplayName | Popisný Zobrazovaný název aplikace. | Ano |
-| Description | Popis aplikace. | Ne |
-| ApplicationRoles | Kolekce [ApplicationRoles](#application-roles). Role uživatelů, kteří můžou fungovat či k účasti v rámci aplikace.  | Ano |
-| Workflows | Kolekce [pracovních postupů](#workflows). Každý pracovní postup funguje jako stavového stroje pro řízení toku obchodní logiku. | Ano |
+| ApplicationName | Jedinečný název aplikace Odpovídající inteligentní kontrakt musí používat stejný atribut **ApplicationName** pro příslušnou třídu smlouvy.  | Ano |
+| DisplayName | Popisný zobrazovaný název aplikace | Ano |
+| Description | Popis aplikace | Ne |
+| ApplicationRoles | Kolekce [ApplicationRoles](#application-roles) Role uživatelů, kteří můžou pracovat v rámci aplikace nebo se do ní zúčastnit  | Ano |
+| Workflows | Kolekce [pracovních postupů](#workflows). Každý pracovní postup funguje jako Stavový počítač pro řízení toku obchodní logiky. | Ano |
 
-Příklad najdete v tématu [příkladu konfigurační soubor](#configuration-file-example).
+Příklad najdete v tématu [příklad konfiguračního souboru](#configuration-file-example).
 
 ## <a name="workflows"></a>Workflows
 
-Obchodní logiku aplikace může modelovat jako stavový stroj kde provádění akce způsobí, že tok obchodní logiky přesunout z jednoho stavu do jiného. Pracovní postup je kolekce tyto stavy a akce. Každý pracovní postup se skládá z jednoho nebo více chytrých kontraktů, které představují obchodní logiku v souborech kódu. Kontrakt spustitelný soubor je instance pracovního postupu.
+Obchodní logika aplikace může být modelována jako Stavový počítač, který přijímá akci způsobí, že tok obchodní logiky se přesune z jednoho stavu do druhého. Pracovní postup je kolekce takových stavů a akcí. Každý pracovní postup se skládá z jedné nebo více inteligentních kontraktů, které reprezentují obchodní logiku v souborech kódu. Spustitelný kontrakt je instancí pracovního postupu.
 
-| Pole | Description | Požaduje se | Maximální délka |
+| Pole | Description | Požadováno | Maximální délka |
 |-------|-------------|:--------:|-----------:|
-| Name | Název pracovního postupu jedinečný. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro třídu příslušné smlouvy. | Ano | 50 |
-| DisplayName | Uživatelsky přívětivý název zobrazení pracovního postupu. | Ano | 255 |
-| Description | Popis pracovního postupu. | Ne | 255 |
-| Initiators | Kolekce [ApplicationRoles](#application-roles). Role, které jsou přiřazené uživatelům, kteří mají oprávnění k vytvoření kontraktů v pracovním postupu. | Ano | |
-| StartState | Název počátečního stavu pracovního postupu. | Ano | |
-| Vlastnosti | Kolekce [identifikátory](#identifiers). Představuje data, které může číst mimo řetězec nebo s vizualizačního v uživatelském prostředí nástroje. | Ano | |
-| Konstruktor | Definuje vstupní parametry pro vytvoření instance pracovního postupu. | Ano | |
-| Funkce | Kolekce [funkce](#functions) , které mohou být provedeny v pracovním postupu. | Ano | |
-| Stavy | Kolekce pracovního postupu [stavy](#states). | Ano | |
+| Name | Jedinečný název pracovního postupu Odpovídající inteligentní kontrakt musí používat stejný **název** pro příslušnou třídu smlouvy. | Ano | 50 |
+| DisplayName | Popisný zobrazovaný název pracovního postupu | Ano | 255 |
+| Description | Popis pracovního postupu | Ne | 255 |
+| Initiators | Kolekce [ApplicationRoles](#application-roles) Role, které jsou přiřazeny uživatelům, kteří mají oprávnění k vytváření kontraktů v pracovním postupu. | Ano | |
+| StartState | Název počátečního stavu pracovního postupu | Ano | |
+| Vlastnosti | Kolekce [identifikátorů](#identifiers). Představuje data, která lze číst z řetězce nebo vizuálního použití v nástroji uživatelského prostředí. | Ano | |
+| BeginRequestEventArgs | Definuje vstupní parametry pro vytvoření instance pracovního postupu. | Ano | |
+| Funkce | Kolekce [funkcí](#functions) , které lze spustit v pracovním postupu. | Ano | |
+| Stavy | Kolekce stavů pracovního [](#states)postupu. | Ano | |
 
-Příklad najdete v tématu [příkladu konfigurační soubor](#configuration-file-example).
+Příklad najdete v tématu [příklad konfiguračního souboru](#configuration-file-example).
 
-## <a name="type"></a>Type
+## <a name="type"></a>type
 
 Podporované datové typy.
 
-| Type | Description |
+| type | Description |
 |-------|-------------|
-| Adresa  | Blockchain adresy typu, jako například *kontrakty* nebo *uživatelé*. |
-| pole    | Jednu úroveň pole typu integer, bool, peníze nebo čas. Pole může být statická nebo dynamická. Použití **ElementType** zadat datový typ prvků v poli. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-array). |
-| bool     | Datový typ Boolean. |
-| kontrakt | Adresa Typ kontraktu. |
-| Výčet     | Výčtové sadu pojmenovaných hodnot. Při použití typu výčtu, je také zadat seznam EnumKey provede. Každá hodnota je omezený na 255 znaků. Platná hodnota znaky patří velká a malá písmena (A-Z, a-z) a čísla (0-9). Zobrazit [příklad konfigurace a použili ji při Solidity](#example-configuration-of-type-enum). |
-| int      | Datový typ celé číslo. |
-| money    | Datový typ money. |
+| adresa  | Typ adresy blockchain, například *smlouvy* nebo *Uživatelé*. |
+| array    | Pole s jednou úrovní typu celé číslo, bool, peníze nebo čas. Pole mohou být statická nebo dynamická. Použijte **ElementType** k určení datového typu prvků v poli. Viz [příklad konfigurace](#example-configuration-of-type-array). |
+| bool     | Logický datový typ. |
+| Dodavatele | Adresa typu kontraktu. |
+| Výčet     | Byla vytvořena Výčtová Sada pojmenovaných hodnot. Při použití typu výčtu zadáte také seznam EnumValues. Každá hodnota je omezena na 255 znaků. Mezi platné znaky hodnoty patří velká a malá písmena (A-Z, a-z) a číslice (0-9). Podívejte [se na příklad konfigurace a použití v hustotě](#example-configuration-of-type-enum). |
+| int      | Celočíselný datový typ. |
+| money    | Datový typ Money. |
 | state    | Stav pracovního postupu. |
-| string  | Datový typ String. maximálně 4000 znaků. Zobrazit [Ukázková konfigurace](#example-configuration-of-type-string). |
-| uživatel     | Adresa Typ uživatele. |
-| time     | Čas datového typu. |
-|`[ Application Role Name ]`| Libovolný název zadaný v roli v aplikaci. Omezení uživatelů tohoto typu role. |
+| řetězec  | Řetězcový datový typ. maximální počet znaků: 4000. Viz [příklad konfigurace](#example-configuration-of-type-string). |
+| uživatel     | Adresa typu uživatel. |
+| time     | Čas – datový typ |
+|`[ Application Role Name ]`| Libovolný název zadaný v aplikační roli. Omezuje uživatele na daný typ role. |
 
-### <a name="example-configuration-of-type-array"></a>Příklad konfigurace pole typu
+### <a name="example-configuration-of-type-array"></a>Příklad konfigurace typu Array
 
 ```json
 {
@@ -102,9 +102,9 @@ Podporované datové typy.
 }
 ```
 
-#### <a name="using-a-property-of-type-array"></a>Použití vlastnosti objektu pole typu
+#### <a name="using-a-property-of-type-array"></a>Použití vlastnosti Array typu
 
-Je-li definovat vlastnost jako typ pole v konfiguraci, budete muset součástí aplikace explicitní get funkce vrátit v Solidity veřejnou vlastnost typu pole. Příklad:
+Definujete-li vlastnost jako pole typu v konfiguraci, je nutné zahrnout funkci get, která vrátí veřejnou vlastnost typu pole v hustotě. Příklad:
 
 ```
 function GetQuotes() public constant returns (int[]) {
@@ -125,7 +125,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-enum"></a>Příklad konfigurace typu enum
+### <a name="example-configuration-of-type-enum"></a>Příklad konfigurace typu Enum
 
 ``` json
 {
@@ -139,15 +139,15 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-#### <a name="using-enumeration-type-in-solidity"></a>Použití typu výčtu v Solidity
+#### <a name="using-enumeration-type-in-solidity"></a>Použití typu výčtu v hustotě
 
-Jakmile výčtu je definovaná v konfiguraci, můžete v Solidity výčtové typy. Například můžete definovat výčet volá PropertyTypeEnum.
+Po definování výčtu v konfiguraci můžete použít typy výčtu v hustotě. Můžete například definovat výčet s názvem PropertyTypeEnum.
 
 ```
 enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
 ```
 
-Seznam řetězců, které musí odpovídat mezi konfigurací a inteligentní smlouvy bude deklarace platný a konzistentní vzhledem k aplikacím v Blockchain Workbench.
+Seznam řetězců musí být v rámci konfigurace a inteligentních kontraktů shodný s platnými a konzistentními deklaracemi v blockchain Workbench.
 
 Příklad přiřazení:
 
@@ -155,7 +155,7 @@ Příklad přiřazení:
 PropertyType = PropertyTypeEnum.Townhouse;
 ```
 
-Příklad parametr funkce: 
+Příklad parametru funkce: 
 
 ``` 
 function AssetTransfer(string description, uint256 price, PropertyTypeEnum propertyType) public
@@ -170,15 +170,15 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ```
 
-## <a name="constructor"></a>Konstruktor
+## <a name="constructor"></a>BeginRequestEventArgs
 
 Definuje vstupní parametry pro instanci pracovního postupu.
 
-| Pole | Description | Požaduje se |
+| Pole | Description | Požadováno |
 |-------|-------------|:--------:|
-| Parametry | Kolekce [identifikátory](#identifiers) potřebná pro zahájení inteligentní kontraktu. | Ano |
+| Parametry | Kolekce [identifikátorů](#identifiers) vyžadovaných pro zahájení inteligentního kontraktu. | Ano |
 
-### <a name="constructor-example"></a>Příklad konstruktor
+### <a name="constructor-example"></a>Příklad konstruktoru
 
 ``` json
 {
@@ -205,16 +205,16 @@ Definuje vstupní parametry pro instanci pracovního postupu.
 
 ## <a name="functions"></a>Funkce
 
-Definuje funkce, které mohou být provedeny v pracovním postupu.
+Definuje funkce, které lze spustit v pracovním postupu.
 
-| Pole | Description | Požaduje se | Maximální délka |
+| Pole | Description | Požadováno | Maximální délka |
 |-------|-------------|:--------:|-----------:|
-| Název | Jedinečný název funkce. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro příslušné funkce. | Ano | 50 |
-| DisplayName | Popisný Zobrazovaný název funkce. | Ano | 255 |
+| Name | Jedinečný název funkce. Odpovídající inteligentní kontrakt musí používat stejný **název** pro platnou funkci. | Ano | 50 |
+| DisplayName | Popisný zobrazovaný název funkce | Ano | 255 |
 | Description | Popis funkce | Ne | 255 |
-| Parametry | Kolekce [identifikátory](#identifiers) odpovídající parametry funkce. | Ano | |
+| Parametry | Kolekce [identifikátorů](#identifiers) odpovídajících parametrům funkce. | Ano | |
 
-### <a name="functions-example"></a>Příklad funkce
+### <a name="functions-example"></a>Příklad funkcí
 
 ``` json
 "Functions": [
@@ -253,18 +253,18 @@ Definuje funkce, které mohou být provedeny v pracovním postupu.
 
 ## <a name="states"></a>Stavy
 
-Kolekce stavů jedinečný v rámci pracovního postupu. Každý stav zaznamená krok v toku řízení obchodní logiku. 
+Kolekce jedinečných stavů v rámci pracovního postupu. Každý stav zachycuje krok v toku řízení obchodní logiky. 
 
-| Pole | Description | Požaduje se | Maximální délka |
+| Pole | Description | Požadováno | Maximální délka |
 |-------|-------------|:--------:|-----------:|
-| Název | Jedinečný název stavu. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro příslušný stav. | Ano | 50 |
-| DisplayName | Uživatelsky přívětivý název zobrazení stavu. | Ano | 255 |
-| Description | Popis stavu. | Ne | 255 |
-| Procento dokončení | Celočíselná hodnota zobrazí v uživatelském rozhraní Blockchain Workbench a zobrazuje průběh v rámci toku řízení obchodní logiku. | Ano | |
-| Styl | Vizuální nápovědou označující, zda stav představuje stav úspěch nebo neúspěch. Existují dvě platné hodnoty: `Success` nebo `Failure`. | Ano | |
-| Přechody | Kolekce dostupných [přechody](#transitions) z aktuálního stavu k další skupině stavů. | Ne | |
+| Name | Jedinečný název stavu. Odpovídající inteligentní kontrakt musí používat stejný **název** pro příslušný stav. | Ano | 50 |
+| DisplayName | Popisný zobrazovaný název stavu | Ano | 255 |
+| Description | Popis stavu | Ne | 255 |
+| PercentComplete | Celočíselná hodnota zobrazená v uživatelském rozhraní blockchain Workbench pro zobrazení pokroku v rámci toku řízení obchodní logiky. | Ano | |
+| Styl | Vizuální pomocný parametr označující, zda stav představuje stav úspěch nebo selhání. Existují dvě platné hodnoty: `Success` nebo. `Failure` | Ano | |
+| Přechod | Kolekce dostupných [přechodů](#transitions) z aktuálního stavu do další množiny stavů. | Ne | |
 
-### <a name="states-example"></a>Příklad stavy
+### <a name="states-example"></a>Příklad stavů
 
 ``` json
 "States": [
@@ -320,20 +320,20 @@ Kolekce stavů jedinečný v rámci pracovního postupu. Každý stav zaznamená
   ]
 ```
 
-## <a name="transitions"></a>Přechody
+## <a name="transitions"></a>Přechod
 
-Dostupné akce do dalšího stavu. Jeden nebo více rolí uživatelů mohou provádět akce v jednotlivých stavech, kde může akce přechodu stavu do jiného státu v pracovním postupu. 
+Dostupné akce do dalšího stavu. Jedna nebo více rolí uživatele může provádět akce v každém stavu, kde může akce převést stav do jiného stavu pracovního postupu. 
 
-| Pole | Description | Požaduje se |
+| Pole | Description | Požadováno |
 |-------|-------------|:--------:|
-| AllowedRoles | Seznam rolí aplikace povoleno zahajovat přechodu. Všichni uživatelé zadané role může být schopen provést akci. | Ne |
-| AllowedInstanceRoles | Seznam rolí uživatelů účast nebo se musí zadat v inteligentní kontraktu povoleno zahajovat přechodu. Instance rolí jsou definovány v **vlastnosti** v rámci pracovních postupů. AllowedInstanceRoles představují uživatel součástí instance inteligentní kontraktu. AllowedInstanceRoles vám umožňuje omezit provádění akce pro roli uživatele do instance kontraktu.  Například může pouze chcete povolit uživatele, který vytvořil kontraktu (objekt InstanceOwner) lze ukončit ne všichni uživatelé v roli typu (Vlastník), pokud jste zadali v AllowedRoles roli. | Ne |
-| DisplayName | Uživatelsky přívětivý název zobrazení přechodu. | Ano |
-| Description | Popis přechodu. | Ne |
-| Funkce | Název funkce k zahájení přechodu. | Ano |
-| NextStates | Kolekce možných stavů další po úspěšný přechod. | Ano |
+| AllowedRoles | Seznam rolí aplikací povolujících zahájení přechodu Tuto akci mohou provádět pouze všichni uživatelé zadané role. | Ne |
+| AllowedInstanceRoles | Seznam rolí uživatele zúčastněných nebo zadaných ve službě inteligentních kontraktů povolených k zahájení přechodu. Role instancí jsou definované ve **vlastnostech** v rámci pracovních postupů. AllowedInstanceRoles představuje uživatele, který se účastní instance inteligentního kontraktu. AllowedInstanceRoles vám dává možnost omezit provedení akce pro roli uživatele v instanci kontraktu.  Například můžete chtít, aby uživatel, který vytvořil kontrakt (objekt InstanceOwner), mohl ukončit místo všech uživatelů v typu role (Vlastník), pokud jste zadali roli v AllowedRoles. | Ne |
+| DisplayName | Popisný zobrazovaný název přechodu | Ano |
+| Description | Popis přechodu | Ne |
+| Funkce | Název funkce pro zahájení přechodu. | Ano |
+| NextStates | Kolekce možných dalších stavů po úspěšném přechodu. | Ano |
 
-### <a name="transitions-example"></a>Příklad přechody
+### <a name="transitions-example"></a>Příklad přechodů
 
 ``` json
 "Transitions": [
@@ -367,14 +367,14 @@ Dostupné akce do dalšího stavu. Jeden nebo více rolí uživatelů mohou prov
 
 ## <a name="application-roles"></a>Aplikační role
 
-Aplikační role definovat sadu rolí, je možné přiřadit uživatelům, kteří chtějí pracovat či k účasti v rámci aplikace. Aplikační role je možné omezit akce a účast v blockchainu aplikaci a odpovídající pracovní postupy. 
+Aplikační role definují sadu rolí, které mohou být přiřazeny uživatelům, kteří chtějí v rámci aplikace jednat nebo se do ní zúčastnit. Aplikační role lze použít k omezení akcí a účasti v rámci aplikace blockchain a odpovídajících pracovních postupů. 
 
-| Pole | Description | Požaduje se | Maximální délka |
+| Pole | Description | Požadováno | Maximální délka |
 |-------|-------------|:--------:|-----------:|
-| Name | Jedinečný název role aplikace. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro příslušné roli. Základní typ názvy jsou vyhrazené. Nelze pojmenovat roli aplikace se stejným názvem jako [typu](#type)| Ano | 50 |
-| Description | Popis role aplikace. | Ne | 255 |
+| Name | Jedinečný název aplikační role. Odpovídající inteligentní kontrakt musí používat stejný **název** pro příslušnou roli. Názvy základních typů jsou vyhrazené. Nemůžete pojmenovat aplikační roli se stejným názvem jako [typ](#type) .| Ano | 50 |
+| Description | Popis aplikační role | Ne | 255 |
 
-### <a name="application-roles-example"></a>Role aplikace – příklad
+### <a name="application-roles-example"></a>Příklad aplikačních rolí
 
 ``` json
 "ApplicationRoles": [
@@ -390,15 +390,15 @@ Aplikační role definovat sadu rolí, je možné přiřadit uživatelům, kteř
 ```
 ## <a name="identifiers"></a>Identifikátory
 
-Identifikátory představují kolekci informace, které slouží k popisu vlastnosti pracovního postupu, konstruktor a parametry funkce. 
+Identifikátory představuje kolekci informací, které slouží k popisu vlastností pracovního postupu, konstruktoru a parametrů funkce. 
 
-| Pole | Description | Požaduje se | Maximální délka |
+| Pole | Description | Požadováno | Maximální délka |
 |-------|-------------|:--------:|-----------:|
-| Název | Jedinečný název vlastnosti nebo parametr. Odpovídající inteligentní smlouvě musíte použít stejné **název** pro příslušné vlastnosti nebo parametr. | Ano | 50 |
-| DisplayName | Uživatelsky přívětivý název zobrazení pro vlastnost nebo parametr. | Ano | 255 |
-| Description | Popis vlastnosti nebo parametr. | Ne | 255 |
+| Name | Jedinečný název vlastnosti nebo parametru. Odpovídající inteligentní kontrakt musí používat stejný **název** pro příslušnou vlastnost nebo parametr. | Ano | 50 |
+| DisplayName | Popisný zobrazovaný název vlastnosti nebo parametru. | Ano | 255 |
+| Description | Popis vlastnosti nebo parametru | Ne | 255 |
 
-### <a name="identifiers-example"></a>Příklad identifikátory
+### <a name="identifiers-example"></a>Příklady identifikátorů
 
 ``` json
 "Properties": [
@@ -421,13 +421,13 @@ Identifikátory představují kolekci informace, které slouží k popisu vlastn
 ]
 ```
 
-## <a name="configuration-file-example"></a>Příklad souboru konfigurace
+## <a name="configuration-file-example"></a>Příklad konfiguračního souboru
 
-Přenos Asset se scénáři inteligentní smlouvy pro nákup a prodejní prostředky vysoké hodnoty, které vyžadují inspector a ohodnocovatel scampi. Prodejci můžete zobrazit seznam svých prostředků po vytvoření instance kontrakt Inteligentní přenos asset. Kupující může nabídky provedením akce na inteligentní smlouvy, a jiné strany provést akce ke kontrole nebo vyhodnotit assetu. Jakmile je označen asset obě zkontroloval a hodnotit, kupující a prodejce bude potvrďte prodej znovu před nastavením smlouvy k dokončení. V každém bodu v procesu musí všichni účastníci přehled o stavu kontrakt při její aktualizaci. 
+Přenos prostředků je scénář inteligentního kontraktu pro nákup a prodej prostředků s vysokou hodnotou, který vyžaduje inspektora a hodnocení. Prodejci můžou vypsat své prostředky vytvořením instance inteligentního kontraktu přenosu prostředků. Účastníci můžou nabídky dělat na základě akce v rámci inteligentních smluv a další strany mohou podniknout kroky ke kontrole nebo posouzení assetu. Jakmile je Asset označený jako zkontrolovaný a vyhodnocený, kupující a prodávající si tento prodej znovu potvrdí, než se smlouva nastaví na dokončeno. V každém okamžiku procesu mají všichni účastníci přehled o stavu kontraktu, jak je aktualizován. 
 
-Další informace, včetně souborů s kódem, najdete v tématu [asset přenos ukázky pro Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
+Další informace, včetně souborů s kódem, najdete v tématu [Ukázka přenosu assetu pro Azure blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer) .
 
-Následující konfigurační soubor je pro ukázku přenos prostředku:
+Následující konfigurační soubor slouží jako ukázka přenosu assetu:
 
 ``` json
 {

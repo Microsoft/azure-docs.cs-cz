@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: 81e8601ac83d43bde0767e38eb387f489d76125b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165246"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873557"
 ---
 # <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Podnikové zabezpečení pro službu Azure Machine Learning
 
@@ -132,7 +132,7 @@ Další informace o spravovaných identitách najdete v tématu [spravované ide
 
 Nedoporučujeme, aby správci odvolali přístup ke spravované identitě k prostředkům uvedeným v předchozí tabulce. Přístup můžete obnovit pomocí operace opětovné synchronizace klíčů.
 
-Služba Azure Machine Learning vytvoří další aplikaci (název začíná `aml-`na) s přístupem na úrovni přispěvatele ve vašem předplatném pro každou oblast pracovního prostoru. Pokud máte například jeden pracovní prostor v Východní USA a jiný pracovní prostor v Severní Evropa ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují službě Azure Machine Learning, která vám umožní spravovat výpočetní prostředky.
+Služba Azure Machine Learning vytvoří další aplikaci (název začíná `aml-` na nebo `Microsoft-AzureML-Support-App-`) s přístupem na úrovni přispěvatele v rámci vašeho předplatného pro každou oblast pracovního prostoru. Pokud máte například jeden pracovní prostor v Východní USA a jiný pracovní prostor v Severní Evropa ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují službě Azure Machine Learning, která vám umožní spravovat výpočetní prostředky.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
@@ -285,7 +285,7 @@ Podrobnosti najdete tady:
 
 [![Pracovní postup odvození](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Využití modelu Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)

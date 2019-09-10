@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 63f9112696156f2192669913bb15a82b9a7eede7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d23b2b39844d48c6414d269f8d69d7b96fff272
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657460"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860305"
 ---
 # <a name="publishing-integrated-solutions"></a>Publikování integrovaných řešení
 
-Integrované řešení kombinuje více technologií řešení pro nezávislé výrobce softwaru, společně s nasazením a službami integrátoru systémů (SI), do jediné sady, která je uvedena na webu Marketplace, v rámci [nabídky služby](https://docs.microsoft.com/azure/marketplace/consulting-services)v rámci konzultačních služeb.
+Integrované řešení kombinuje více technologií řešení pro nezávislé výrobce softwaru, společně s nasazením a službami integrátoru systémů (SI), do jediné sady, která je uvedena na webu Marketplace, v rámci [nabídky služby v rámci konzultačních služeb](https://docs.microsoft.com/azure/marketplace/consulting-services).
 
 Tato řešení jsou navržená tak, aby se vyrozuměla konkrétním zákaznickým potřebám nebo scénářům, který začíná pochopit otázky v oboru nebo složité. Dvě nebo více nejlepších technologií je pak integrováno v rámci, kde SI vytvoříme pro zákazníky sjednocené a opakované nasazení, abyste je mohli rychle začít používat. Integrátor systému také poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení a konzultace a podporuje řešení. Výsledkem je integrované řešení, včetně technologií a služeb.
 
@@ -88,6 +88,6 @@ I když je k dispozici pět typů služeb pro nabídky konzultačních služeb, 
 
 ## <a name="going-to-market-with-your-integrated-solution"></a>Přesměrovat na trh s integrovaným řešením 
 
-Jakmile je vaše řešení živé v Azure Marketplace nebo AppSource, budete chtít zvýšit povědomí a vyžádat si zatížení prostřednictvím marketingových aktivit. Projděte si aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc), včetně aktivit, které partneři můžou řídit v rámci svých týmů, a druhý. Pak můžete využívat [výhody pro uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#how-to-access-microsoft-resources) poskytované partnerům, kteří si publikovali na webu Marketplace. Všechny nabídky integrovaných řešení jsou způsobilé pro výhody na úrovni zkušební verze.
+Jakmile je vaše řešení živé v Azure Marketplace nebo AppSource, budete chtít zvýšit povědomí a vyžádat si zatížení prostřednictvím marketingových aktivit. Projděte si aktivity uvedené v [plánu projektu a časové ose](https://aka.ms/AA5qiuc), včetně aktivit, které partneři můžou řídit v rámci svých týmů, a druhý. Pak můžete využívat [výhody pro uvedení na trh](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) poskytované partnerům, kteří si publikovali na webu Marketplace. Všechny nabídky integrovaných řešení jsou způsobilé pro výhody na úrovni zkušební verze.
 
 ---

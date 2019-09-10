@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní příkazového řádku Azure k vytvoření pracovního prostoru
+title: Vytváření pracovních prostorů pomocí Azure CLI
 titleSuffix: Azure Machine Learning service
 description: Naučte se používat rozhraní příkazového řádku Azure a vytvořit nový pracovní prostor služby Azure Machine Learning.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 1213e9bc3b27b8d5f6f6ef93b6eefa5a8c32be57
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392672"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873497"
 ---
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro službu Azure Machine Learning
+# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Vytvoření pracovního prostoru pro službu Azure Machine Learning pomocí Azure CLI
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor služby Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s prostředky služby Azure Machine Learning.
 

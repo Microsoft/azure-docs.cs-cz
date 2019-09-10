@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175399"
 ---
-Azure Data Lake Analytics zjednodušuje složité úlohy správy distribuované infrastruktury a složitého kódu. Dynamicky Zřizuje prostředky a ve kterém můžete provádět analýzu na exabajtech dat. Po dokončení úlohy využitý výpočetní ukončí prostředky automaticky. Platíte jenom za výpočetní výkon, který byl použit. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Chcete-li zvýšit výchozí omezení pro vaše předplatné, obraťte se na podporu.
+Azure Data Lake Analytics usnadňuje správu distribuované infrastruktury a složitého kódu. Dynamicky zřizuje prostředky a můžete je použít k analýze datových zdrojů Exabyte. Po dokončení úlohy se automaticky vítr prostředky. Platíte jenom za výpočetní výkon, který jste použili. Při zvětšování a zmenšování objemu uložených dat nebo množství využitých výpočtů nemusíte přepisovat kód. Pokud chcete pro své předplatné zvýšit výchozí omezení, obraťte se na podporu.
 
 | **Prostředek** | **Výchozí omezení** | **Komentář** |
 | --- | --- | --- |
 | Maximální počet souběžných úloh |20 | |
-| Maximální počet jednotek analýzy (AU) na účet |250 | Použít libovolnou kombinaci maximálně 250 jednotek analýzy napříč 20 úlohy. Chcete-li tento limit zvýšit, obraťte se na Microsoft Support. |
-| Maximální počet skriptovacích velikost pro odeslání úlohy | 3 MB | |
-| Maximální počet účtů Data Lake Analytics na oblast a předplatné | 5 | Chcete-li tento limit zvýšit, obraťte se na Microsoft Support. |
+| Maximální počet jednotek analýzy (Austrálie) na účet |250 | Použijte libovolnou kombinaci až do maximálního počtu 250 jednotek Austrálie napříč 20 úlohami. Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |
+| Maximální velikost skriptu pro odeslání úlohy | 3 MB | |
+| Maximální počet účtů Data Lake Analytics na oblast v rámci předplatného | 5 | Pokud chcete tento limit zvýšit, kontaktujte podpora Microsoftu. |

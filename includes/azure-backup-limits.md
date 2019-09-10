@@ -9,19 +9,19 @@ ms.date: 12/07/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175407"
 ---
 Následující omezení platí do služby Azure Backup.
 
 | **Limit** | **Výchozí** |
 | --- | --- |
-| Servery nebo počítače, které mohou být registrovány v trezoru. | Windows Server/Windows klient/System Center Data Protection Manager: 50. <br/><br/> Virtuální počítače IaaS: 1,000.  |
-| Velikost zdroje dat v trezoru úložiště. |Maximálně 54,400 GB. Omezení neplatí pro zálohování virtuálních počítačů IaaS. |
-| Trezory služby Backup v předplatném Azure. |500 trezorů na oblast. |
-| Naplánujte denní zálohování. |Windows Server nebo klienta: Tři denně.<br/> System Center DPM: Dvě denně. <br/> Virtuální počítače IaaS: Jednou za den.  |
-| Datové disky připojené k virtuálnímu počítači Azure Backup. | 16 |
-| Jednotlivé datový disk připojený k virtuálnímu počítači Azure Backup.| 4 095 GB|
+| Servery nebo počítače, které je možné zaregistrovat v trezoru. | Windows Server/klient Windows/System Center Data Protection Manager: 50. <br/><br/> Virtuální počítače IaaS: 1 000.  |
+| Velikost zdroje dat v úložišti trezoru. |54 400 – maximum GB Limit se nedá použít pro zálohování virtuálního počítače IaaS. |
+| Trezory služby Backup v předplatném Azure. |500 trezorů na oblast |
+| Naplánujte denní zálohy. |Windows Server/klient: Tři dny.<br/> System Center DPM: Dva dny. <br/> Virtuální počítače IaaS: Jednou denně.  |
+| Datové disky připojené k virtuálnímu počítači Azure pro zálohování. | 16 |
+| Jednotlivý datový disk připojený k virtuálnímu počítači Azure, který se má zálohovat| 4 095 GB|

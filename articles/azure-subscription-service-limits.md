@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
 ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "68698291"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
@@ -25,18 +25,18 @@ Další informace o cenách Azure najdete v tématu [Přehled cen Azure](https:/
 > [!NOTE]
 > Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](azure-resource-manager/resource-manager-quota-errors.md)zdarma. Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu uvedenou v následujících tabulkách. Pokud není sloupec maximální limit, prostředek nemá nastavitelný limit.
 >
-> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi](https://azure.microsoft.com/free/free-account-faq)předplatného.
+> [Bezplatné zkušební předplatné](https://azure.microsoft.com/offers/ms-azr-0044p) neplatí pro zvýšení limitu nebo kvóty. Pokud máte [bezplatnou zkušební verzi předplatného](https://azure.microsoft.com/offers/ms-azr-0044p), můžete upgradovat na [s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) předplatného. Další informace najdete v tématu [upgrade předplatného bezplatné zkušební verze Azure na předplatné](billing/billing-upgrade-azure-subscription.md) s průběžnými platbami a na [Nejčastější dotazy k bezplatné zkušební verzi předplatného](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manager
 Je teď možné zkombinovat několik prostředků Azure do jedné skupiny prostředků Azure. Když použijete skupiny prostředků, omezení, které byly globální, se spravují na regionální úrovni s Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
 
-V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních při použití Azure Resource Manager. Například tabulka **omezení** předplatného a omezení předplatného **– Azure Resource Manager** tabulka. Pokud se limit vztahuje na oba scénáře, je zobrazen pouze v první tabulce. Pokud není uvedeno jinak, omezení jsou globální v rámci všech oblastí.
+V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních při použití Azure Resource Manager. Například tabulka **omezení předplatného** a **omezení předplatného – Azure Resource Manager** tabulka. Pokud se limit vztahuje na oba scénáře, je zobrazen pouze v první tabulce. Pokud není uvedeno jinak, omezení jsou globální v rámci všech oblastí.
 
 > [!NOTE]
 > Kvóty pro prostředky ve skupinách prostředků Azure jsou pro jednotlivé oblasti dostupné pro vaše předplatné, nikoli za předplatné, jako jsou kvóty pro správu služeb. Použijte jako příklad kvóty vCPU. Pokud chcete požádat o zvýšení kvóty s podporou pro vCPU, musíte se rozhodnout, kolik vCPU chcete použít pro tyto oblasti. Pak vytvoříte konkrétní požadavek na vCPU kvóty skupiny prostředků Azure pro příslušné množství a oblasti. Pokud potřebujete použít 30 vCPU v Západní Evropa ke spuštění vaší aplikace, konkrétně si vyžádáte 30 vCPU v Západní Evropa. Vaše kvóta vCPU se nezvyšuje v žádné jiné oblasti – pouze Západní Evropa má kvótu 30 vCPU.
 > <!-- -->
-> V důsledku toho se rozhodněte, jaké kvóty skupin prostředků Azure musí být pro vaše úlohy v libovolné oblasti. Pak vyžádejte tuto částku v každé oblasti, do které chcete nasadit. Nápovědu k určení vašich současných kvót pro konkrétní oblasti najdete v tématu [řešení potíží](resource-manager-common-deployment-errors.md)s nasazením.
+> V důsledku toho se rozhodněte, jaké kvóty skupin prostředků Azure musí být pro vaše úlohy v libovolné oblasti. Pak vyžádejte tuto částku v každé oblasti, do které chcete nasadit. Nápovědu k určení vašich současných kvót pro konkrétní oblasti najdete v tématu [řešení potíží s nasazením](resource-manager-common-deployment-errors.md).
 >
 >
 
@@ -85,7 +85,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Sítě](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
   * [Azure DNS](#azure-dns-limits)
-  * [Služba front-dveří Azure](#azure-front-door-service-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
@@ -106,7 +106,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Stream Analytics](#stream-analytics-limits)
 * [Předplatné](#subscription-limits)
 * [Virtual Machines](#virtual-machines-limits)
-* [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
+* [Škálovací sady virtuálních počítačů](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Omezení předplatného
 #### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Omezení předplatného – Azure Service Management (model nasazení Classic)

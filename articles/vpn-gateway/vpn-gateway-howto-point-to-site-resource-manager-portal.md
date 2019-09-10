@@ -1,5 +1,5 @@
 ---
-title: 'Připojení počítače k virtuální síti Azure s využitím nativního ověřování certifikátů Azure: Portál Azure | Microsoft Docs'
+title: 'Připojte se k virtuální síti Azure z počítače pomocí sítě VPN typu Point-to-site a nativního ověřování certifikátů Azure: Portál Azure | Microsoft Docs'
 description: Připojte klienty Windows, Mac OS X a Linux bezpečně ke službě Azure Virtual Network pomocí P2S a certifikátů podepsaných držitelem nebo vydaných certifikační autoritou. V tomto článku se používá Azure Portal.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: e603eed34aaff4ad7303819a730fea09a332b7a8
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706782"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843660"
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
 
 Tento článek vám pomůže bezpečně připojit jednotlivé klienty se systémem Windows, Linux nebo Mac OS X k virtuální síti Azure. Připojení VPN typu Point-to-Site jsou užitečná, když se chcete ke své virtuální síti připojit ze vzdáleného umístění, například při práci z domova nebo z místa konání konference. Místo sítě VPN Site-to-Site můžete také použít P2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Připojení typu Point-to-Site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo protokolu IKEv2. Další informace o síti VPN Point-to-Site najdete v článku věnovaném [síti VPN typu Point-to-Site](point-to-site-about.md).
 
@@ -39,12 +39,12 @@ Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můž
 * **Rozsah adres podsítě:** 192.168.1.0/24
 * **Formě** Pokud máte více než jedno předplatné, ověřte, že používáte správný.
 * **Skupina prostředků:** TestRG
-* **Oblasti** East US
+* **Location:** East US
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **Server DNS:** (volitelné) IP adresa serveru DNS, který chcete používat pro překlad názvů.
 * **Název brány virtuální sítě:** VNet1GW
 * **Typ brány:** Síť VPN
-* **Typ sítě VPN:** Založeno na směrování
+* **Typ sítě VPN:** Trasové
 * **Název veřejné IP adresy:** VNet1GWpip
 * **Typ připojení:** Point-to-Site
 * **Fond adres klienta:** 172.16.201.0/24<br>Klienti VPN, kteří se budou k virtuální síti připojovat pomocí tohoto připojení typu Point-to-Site, získají IP adresu ze zadaného fondu adres klienta.
@@ -236,7 +236,7 @@ Klientský certifikát můžete odvolat tím, že přidáte jeho kryptografický
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu [Virtuální počítače](https://docs.microsoft.com/azure/). Bližší informace o sítích a virtuálních počítačích najdete v tématu s [přehledem sítě virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/azure-vm-network-overview.md).
 
 Informace o odstraňování potíží s P2S najdete v článku [Poradce při potížích s připojeními Azure typu point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

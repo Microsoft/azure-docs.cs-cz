@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424218"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844702"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Koncepty verze Preview služby Azure Data Share 
 
@@ -53,7 +53,9 @@ Příjemce dat má možnost se přihlásit k tomuto plánu snímků a získat ta
 
 Poskytovatel dat může pozvat více příjemců ke sdílení dat. Můžou to udělat tak, že přidáte příjemce do sdílené složky dat. Pozvánky je také možné přidat po vytvoření sdílené složky dat. 
 
-Poskytovatel dat může po odeslání pozvánku odstranit. Všimněte si, že pokud poskytovatel dat odstraní pozvánku po přijetí, může mít příjemce dat i aktivní předplatné sdílení. Pokud poskytovatel dat odstraní pozvánku a ještě nebyla přijata, příjemce dat je nebude moci přijmout. 
+Poskytovatel dat může odstranit pozvánku poté, co byla odeslána, pokud nebyla přijata. Pokud poskytovatel dat odstraní pozvánku a ještě nebyla přijata, příjemce dat je nebude moci přijmout. 
+
+Pozvánky je možné znovu odeslat až pětkrát denně. 
 
 ## <a name="recipient"></a>Příjemce
 

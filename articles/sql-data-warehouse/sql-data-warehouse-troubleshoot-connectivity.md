@@ -10,12 +10,12 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 290753b866f15e09a52572fdd7a43a60fc2812d6
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575543"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859226"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
@@ -57,7 +57,7 @@ V opačném případě obraťte se na správce IT a ověřte, že tato údržba 
 
 ## <a name="check-your-firewall-settings"></a>Kontrolovat nastavení brány firewall
 
-SQL Data Warehouse komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se k serveru Azure SQL Database nemůžete připojit, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal).
+SQL Data Warehouse komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se k serveru Azure SQL Database nemůžete připojit, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Ověřte nastavení služby VNet/Service Endpoint.
 

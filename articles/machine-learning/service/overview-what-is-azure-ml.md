@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 822bbd004035d9745535942c508cae6702e5b99b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278112"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858649"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -32,7 +32,7 @@ Služba Azure Machine Learning poskytuje cloudové prostředí, které můžete 
 
 Prozkoumejte a připravte modely dat, výukové a testovací modely a nasaďte je pomocí bohatých nástrojů, jako jsou:
 + [Vizuální rozhraní](ui-tutorial-automobile-price-train-score.md) , ve kterém můžete přetahovat moduly na více systémů, abyste mohli sestavovat experimenty a pak nasazovat modely
-+ [Jupyter poznámkové bloky](https://jupyter.org) , ve kterých používáte sady [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) k psaní vlastního kódu, například [těchto ukázkových poznámkových bloků](https://aka.ms/aml-notebooks)
++ [Jupyter poznámkové bloky](https://jupyter.org) , ve kterých používáte sady [SDK](https://docs.microsoft.com/azure/machine-learning) k psaní vlastního kódu, například [těchto ukázkových poznámkových bloků](https://aka.ms/aml-notebooks)
 + [Rozšíření Visual Studio Code](how-to-vscode-tools.md)
 
 
@@ -66,7 +66,7 @@ V případě školení bez kódu zkuste:
 
 Pokud máte správný model, můžete ho snadno použít ve webové službě, v zařízení IoT nebo v Power BI. Další informace najdete v článku věnovaném [nasazení a umístění](how-to-deploy-and-where.md).
 
-Pak můžete nasadit nasazené modely pomocí [sady Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) nebo [Azure Portal](https://portal.azure.com/).
+Pak můžete nasadit nasazené modely pomocí [sady Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk), [Azure Portal](https://portal.azure.com/) nebo [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
 
 Tyto modely lze spotřebovat a vracet předpovědi v [reálném čase](how-to-consume-web-service.md) nebo [asynchronně](how-to-run-batch-predictions.md) u velkých objemů dat.
 
@@ -93,7 +93,7 @@ Tady je rychlé porovnání.
 |Moduly pro rozhraní| Počtu | Počáteční sada oblíbených modulů|
 |Školení výpočetních cílů| Proprietární výpočetní cíl, jenom podpora procesoru| Podporuje Azure Machine Learning výpočetní prostředky, GPU nebo CPU.<br/>(Další výpočetní prostředky podporované v sadě SDK)|
 |Cíle výpočtů nasazení| Speciální formát webové služby, není přizpůsobitelný | Možnosti podnikového zabezpečení & služby Azure Kubernetes. <br/>([Další výpočetní](how-to-deploy-and-where.md) prostředky podporované v sadě SDK) |
-|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v vizuálním rozhraní. <br/> (Podporováno v sadě SDK a Azure Portal.) |
+|Automatizované školení modelů a ladění parametrů | Ne | Ještě není v vizuálním rozhraní. <br/> (Podporuje se na úvodní stránce sady SDK a Azure Portal/Workspace.) |
 
 Vyzkoušejte si vizuální rozhraní (Preview) s [kurzem: Předpovídat cenu automobilu pomocí vizuálního rozhraní](ui-tutorial-automobile-price-train-score.md).
 

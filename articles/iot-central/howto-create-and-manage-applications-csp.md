@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d7c538bd98b3924b422a93bc67cac405a6e4b7af
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383130"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873464"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako CSP vytvořte a spravujte aplikaci IoT Central Azure jménem svého zákazníka.
 
@@ -71,14 +71,14 @@ Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.
 
 ## <a name="region"></a>Oblast
 
-Vyberte oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
+Vyberte oblast nebo [zeměpisnou](https://azure.microsoft.com/global-infrastructure/geographies/) oblast, ve které chcete vytvořit aplikaci Azure IoT Central. Obvykle byste měli zvolit oblast, která je pro vaše zařízení nejbližší, aby získala optimální výkon.
 
 > [!NOTE]
 > Šablona **aplikace Preview** je aktuálně dostupná pouze v oblastech **Severní Evropa** a **střed USA** .
 
-Další informace najdete v tématu [oblasti Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions).
+Další informace najdete v tématu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/) a [Zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na stránce [produkty dostupné podle oblasti](https://azure.microsoft.com/regions/services/) .
+Oblasti, ve kterých je Azure IoT Central k dispozici, můžete zobrazit na stránce [produkty dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
 
 > [!Note]
 > Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.

@@ -1,7 +1,7 @@
 ---
-title: 'Cílových výpočetních prostředí: kde trénovat a nasazovat modely'
+title: 'Cíle výpočetních prostředků: místo pro výuku a nasazení modelů'
 titleSuffix: Azure Machine Learning service
-description: Určete, kde se mají k trénování nebo nasazení modelu pomocí služby Azure Machine Learning.
+description: Určete, kam chcete model vyškolit nebo nasadit pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/10/2019
-ms.openlocfilehash: a7944b284a9c1c0424af54874554d05d49ad4b20
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b2e4c9160ccad66b04dd30979f0568da68836d76
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806052"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860587"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Co jsou cílových výpočetních prostředí ve službě Azure Machine Learning? 
+#  <a name="what-are-compute-targets-in-azure-machine-learning-service"></a>Jaké jsou výpočetní cíle ve službě Azure Machine Learning? 
 
-A **cílové výpočetní prostředí** je určené výpočetní prostředků/prostředí, ve kterém jste spustili cvičný skript nebo hostitele vašeho nasazení služby. Toto umístění může být místního počítače nebo cloudové výpočetní prostředek. Použití výpočetních cíle usnadňují později změníte výpočetní prostředí bez nutnosti měnit kód.  
+**Cíl služby COMPUTE** je určený výpočetní prostředek nebo prostředí, ve kterém spouštíte školicí skript nebo hostuje nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek. Použití výpočetních cílů usnadňuje pozdější změnu prostředí COMPUTE, aniž byste museli měnit kód.  
 
-Životní cyklus vývoje typické modelu můžete:
-1. Začněte vyvíjet a experimentování na malé množství dat. V této fázi, doporučujeme na místní prostředí (místní počítač nebo virtuální počítač založený na cloudu) jako vaše cílové výpočetní prostředí. 
-2. Vertikálně navýšit kapacitu pro větší množství dat nebo distribuované trénování jedním z těchto [cílových výpočetních prostředí školení](#train).  
-3. Jakmile je model hotový, ji nasadit do webové hostitelské prostředí nebo pro zařízení IoT s jedním z těchto [cílových výpočetních prostředí nasazení](#deploy).
+Typický životní cyklus vývoje modelu vám může:
+1. Začněte vývojem a experimentováním s malým množstvím dat. V této fázi doporučujeme jako cíl výpočtů použít místní prostředí (místní počítač nebo cloudový virtuální počítač). 
+2. Můžete škálovat až na větší objem dat nebo distribuované školení pomocí jednoho z těchto [školicích cílů](#train).  
+3. Jakmile je model připravený, nasaďte ho do prostředí pro hostování webů nebo zařízení IoT s jedním z těchto [výpočetních cílů nasazení](#deploy).
 
-Výpočetní prostředky, které používáte pro vaše cílových výpočetních prostředí jsou připojeny k [pracovní prostor](concept-workspace.md). Výpočetní prostředky než v místním počítači sdílejí uživatelé pracovního prostoru.
+Výpočetní prostředky, které používáte pro cíle výpočtů, jsou připojené k [pracovnímu prostoru](concept-workspace.md). Výpočetní prostředky jiné než místní počítač sdílí uživatelé pracovního prostoru.
 
-## <a name="train"></a> Cílových výpočetních prostředí pro školení
+## <a name="train"></a>Školení výpočetních cílů
 
-Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními prostředky.  Můžete také připojit své vlastní výpočetní prostředek, i když se podpora pro různé scénáře se můžou lišit.
+Služba Azure Machine Learning má různou podporu v různých výpočetních prostředcích.  Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit.
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-Další informace o [nastavení a použití cílové výpočetní prostředí k tréninku modelu](how-to-set-up-training-targets.md).
+Přečtěte si další informace o [nastavení a používání výpočetního cíle pro školení modelů](how-to-set-up-training-targets.md).
 
 ## <a name="deploy"></a>Cíle nasazení
 
-Následující výpočetní prostředky je možné k hostování vašich nasazení modelu.
+K hostování nasazení modelu lze použít následující výpočetní prostředky.
 
 [!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
-Přečtěte si [kde a jak model nasadit do cílového výpočetního prostředí](how-to-deploy-and-where.md).
+Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](how-to-deploy-and-where.md).
 
 <a name="amlcompute"></a>
-## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning compute (spravované)
+## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning COMPUTE (spravované)
 
-Spravované výpočetní prostředek je vytvořen a spravován společností služby Azure Machine Learning. Tato výpočetní je optimalizována pro úlohy machine learning. Azure Machine Learning Compute je pouze spravovaná výpočetní od 30. května 2019. V budoucnu může přidat další spravované výpočetní prostředky.
+Spravovaný výpočetní prostředek je vytvořený a spravovaný službou Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Azure Machine Learning COMPUTE je jediným spravovaným výpočetním prostředím 30. května 2019. V budoucnu může být přidáno více spravovaných výpočetních prostředků.
 
-Azure Machine Learning Compute můžete použít pro trénování a odvozování batch (Preview).  Tento výpočetní prostředek máte:
+Můžete použít Azure Machine Learning COMPUTE pro školení a pro Batch Inferencing (Preview).  S tímto výpočetním prostředkem máte tyto:
 
-* Jeden nebo více node clusteru
-* Pokaždé, když odešlete spuštění pravidla automatického škálování provedou 
-* Správa automatického clusteru a plánování úloh 
-* Podpora pro prostředky procesoru a GPU
+* Cluster s jedním nebo několika uzly
+* Automatické škálování pokaždé, když odešlete běh 
+* Automatická správa clusteru a plánování úloh 
+* Podpora pro prostředky CPU a GPU
 
-Azure Machine Learning Compute instance můžete vytvořit webu Azure Portal, sady SDK nebo rozhraní příkazového řádku. Po vytvoření je automaticky součástí pracovního prostoru na rozdíl od jiných typů cílových výpočetních prostředí.
+Pomocí sady SDK nebo rozhraní příkazového řádku můžete vytvořit výpočetní instance Azure Machine Learning v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Po vytvoření je automaticky součástí pracovního prostoru, a to na rozdíl od jiných druhů výpočetních cílů.
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 
-Je cíl nespravované výpočetní *není* spravované službou Azure Machine Learning. Vytvoření tohoto typu cílového výpočetního prostředí mimo Azure Machine Learning a pak ho připojit k vašemu pracovnímu prostoru. Nespravované výpočetní prostředky může vyžadovat další kroky pro vás k údržbě nebo ke zlepšení výkonu pro úlohy s machine learning.
+Nespravovaný cílový výpočetní výkon není *spravovaný službou* Azure Machine Learning. Tento typ cíle výpočetní služby vytvoříte mimo Azure Machine Learning a pak ho připojíte k pracovnímu prostoru. Nespravované výpočetní prostředky můžou vyžadovat další kroky, abyste mohli udržovat nebo zvýšit výkon úloh strojového učení.
 
 ## <a name="next-steps"></a>Další postup
 
 Naučte se:
-* [Nastavení cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md)
-* [Nasazení modelu do cílové výpočetní prostředí](how-to-deploy-and-where.md)
+* [Nastavení cílového výpočetního prostředí pro výuku modelu](how-to-set-up-training-targets.md)
+* [Nasazení modelu do cíle služby COMPUTE](how-to-deploy-and-where.md)

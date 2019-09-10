@@ -9,55 +9,55 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175414"
 ---
 #### <a name="process-automation"></a>Automatizace procesů
 
 | Resource | Maximální omezení |Poznámky|
 | --- | --- |---|
-| Maximální počet nových úlohách, které se dají odeslat každých 30 sekund na účet služby Azure Automation (nonscheduled úlohy) |100 |Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. Klient obdrží odpověď.|
-| Maximální počet souběžných úloh spuštěných na stejnou instanci času na účet služby Automation (nonscheduled úlohy) |200 |Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. Klient obdrží odpověď.|
-| Maximální velikost úložiště metadat úlohy pro období posledních 30 dnů | 10 GB (přibližně 4 miliony úlohy)|Při dosažení tohoto limitu, selhání následné žádosti k vytvoření úlohy. |
-| Omezení maximální úlohy služby stream|1MB|Jeden datový proud nemůže být větší než 1 MB.|
-| Maximální počet modulů, které mohou být naimportovány každých 30 sekund na účet služby Automation |5 ||
+| Maximální počet nových úloh, které se dají odesílat každých 30 sekund na účet Azure Automation (neplánované úlohy) |100 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
+| Maximální počet souběžně spuštěných úloh na stejné instanci času na účet služby Automation (neplánované úlohy) |200 |Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. Klient obdrží chybovou odpověď.|
+| Maximální velikost úložiště metadat úlohy pro dobu provozu za 30 dní | 10 GB (přibližně 4 000 000 úloh)|Po dosažení tohoto limitu selžou následné požadavky na vytvoření úlohy. |
+| Maximální limit počtu datových proudů úloh|MB|Jeden datový proud nemůže být větší než 1 MB.|
+| Maximální počet modulů, které se dají importovat každých 30 sekund na účet Automation |5 ||
 | Maximální velikost modulu |100 MB ||
-| Úlohy úrovně Free doby běhu |500 minut na předplatné za kalendářní měsíc ||
-| Maximální množství místa na disku pro izolovaný prostor povolené<sup>1</sup> |1 GB |Platí pro pouze Azure karantény.|
-| Maximální velikost paměti na sandboxu<sup>1</sup> |400 MB |Platí pro pouze Azure karantény.|
-| Maximální počet povolených pro izolovaný prostor síťové sokety<sup>1</sup> |1 000 |Platí pro pouze Azure karantény.|
-| Maximální povolené na sadu runbook runtime<sup>1</sup> |3 hodiny |Platí pro pouze Azure karantény.|
+| Doba běhu úlohy, úroveň Free |500 minut na předplatné za kalendářní měsíc ||
+| Maximální povolené množství místa na disku na izolovaný prostor<sup>1</sup> |1 GB |Platí jenom pro sandboxy Azure.|
+| Maximální velikost paměti přidělené izolovanému prostoru<sup>1</sup> |400 MB |Platí jenom pro sandboxy Azure.|
+| Maximální povolený počet síťových soketů na izolovaný prostor<sup>1</sup> |1 000 |Platí jenom pro sandboxy Azure.|
+| Maximální povolený běh na Runbook<sup>1</sup> |3 hodiny |Platí jenom pro sandboxy Azure.|
 | Maximální počet účtů Automation v předplatném |Bez omezení ||
-| Maximální počet skupiny hybridních pracovních procesů na účet služby Automation|4,000||
-|Maximální počet souběžných úloh, které lze spustit na jednoho procesu Hybrid Runbook Worker|50 ||
-| Velikost parametru úlohy maximální sady runbook   | 512 kB||
-| Parametry maximální runbooku   | 50|Pokud překročíte limit parametr-50, můžete předat parametr řetězec JSON nebo XML a parsování se runbook.|
-| Velikost datové části maximální webhooku |  512 kB|
-| Maximální počet dní, které se uchovávají data úlohy|30 dní|
-| Maximální velikost stavu pracovního postupu Powershellu |5 MB| Platí pro runbooky pracovních postupů Powershellu při vytváření kontrolních bodů pracovního postupu.|
+| Maximální počet Hybrid Worker skupin na účet Automation|4,000||
+|Maximální počet souběžných úloh, které lze spustit na jednom Hybrid Runbook Worker|50 ||
+| Maximální velikost parametru úlohy Runbooku   | 512 kilobitů||
+| Maximální počet parametrů Runbooku   | 50|Pokud dosáhnete limitu 50 parametrů, můžete předat řetězci JSON nebo XML do parametru a analyzovat ho pomocí Runbooku.|
+| Maximální velikost datové části Webhooku |  512 kilobitů|
+| Maximální počet dní, po které se uchovávají data úlohy|30 dní|
+| Maximální velikost stavu pracovního postupu PowerShellu |5 MB| Platí pro Runbooky pracovního postupu PowerShellu při vytváření kontrolního bodu.|
 
-<sup>1</sup>izolovaný prostor je sdíleném prostředí, které mohou být využívána více úloh. Úlohy, které používají stejné izolovaného prostoru zavazujete se k jejich omezení prostředků izolovaného prostoru.
+<sup>1</sup> Izolovaný prostor (sandbox) je sdílené prostředí, které může používat víc úloh. Úlohy, které používají stejný izolovaný prostor (sandbox), jsou vázány omezeními prostředků izolovaného prostoru.
 
 #### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
-Následující tabulka uvádí omezení sledované položky na počítači pro řešení change tracking.
+V následující tabulce jsou uvedené limity sledovaných položek na počítač pro sledování změn.
 
 | **Prostředek** | **Limit**| **Poznámky** |
 |---|---|---|
 |File|500||
 |Registru|250||
-|Windows software|250|Nezahrnuje aktualizace softwaru.|
-|Balíčky Linux|1,250||
+|Software systému Windows|250|Neobsahuje aktualizace softwaru.|
+|Balíčky Linux|1 250||
 |Služby|250||
-|Daemon|250||
+|Démon|250||
 
 #### <a name="update-management"></a>Update Management
 
-Následující tabulka uvádí omezení pro správu aktualizací.
+V následující tabulce jsou uvedena omezení pro Update Management.
 
 | **Prostředek** | **Limit**| **Poznámky** |
 |---|---|---|
-|Počet počítačů nasazení aktualizace|1000||
+|Počet počítačů na nasazení aktualizace|1000||

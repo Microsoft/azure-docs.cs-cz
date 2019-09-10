@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175411"
 ---
 | Prostředek | Omezení |
@@ -16,10 +16,10 @@ ms.locfileid: "67175411"
 | Velikost mezipaměti |530 GB |
 | Databáze |64 |
 | Maximální počet připojených klientů |40,000 |
-| Mezipaměť Azure pro zajištění vysoké dostupnosti replik Redis |1 |
+| Mezipaměť Azure pro repliky Redis pro vysokou dostupnost |1 |
 | Horizontální oddíly takovým premium mezipaměť pomocí clusterování |10 |
 
-Omezuje mezipaměti Azure Redis a velikosti se liší u jednotlivých cenových úrovní. Cenové úrovně a jejich přidružené velikostí najdete v tématu [mezipaměti Azure Redis ceny](https://azure.microsoft.com/pricing/details/cache/).
+Omezuje mezipaměti Azure Redis a velikosti se liší u jednotlivých cenových úrovní. Pokud chcete zobrazit cenové úrovně a jejich přidružené velikosti, přečtěte si článek [Azure cache for Redis Price](https://azure.microsoft.com/pricing/details/cache/).
 
 Další informace o mezipaměti Azure Redis konfigurace omezení, najdete v části [výchozí konfigurace serveru Redis](../articles/azure-cache-for-redis/cache-configure.md#default-redis-server-configuration).
 

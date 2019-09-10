@@ -9,10 +9,10 @@ ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69982604"
 ---
 K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. na klíč instrumentace. Omezení závisí na zvoleném [cenovém plánu](https://azure.microsoft.com/pricing/details/application-insights/).
@@ -27,7 +27,7 @@ K dispozici jsou určitá omezení počtu metrik a událostí na aplikaci, tj. n
 | Maximální počet položek telemetrie na dávku | 64 K |
 | Délka názvu vlastnosti a metriky | 150 | Viz [schémata typů](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
 | Délka řetězce hodnoty vlastnosti | 8 192  | Viz [schémata typů](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
-| Délka zprávy trasování a výjimky | 32 768  | Viz [schémata typů](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
+| Délka zprávy trasování a výjimky | 32 768  | Viz [schémata typů](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond).
 | [Testy dostupnosti](../articles/azure-monitor/app/monitor-web-app-availability.md) – počet na aplikaci | 100 |
 | [](../articles/azure-monitor/app/profiler.md) Uchovávání dat profileru | 5 dní |
 | [](../articles/azure-monitor/app/profiler.md) Data profileru odesílaná za den | 10 GB |

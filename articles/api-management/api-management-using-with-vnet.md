@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 09/09/2019
 ms.author: apimpm
-ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 44fd3f0381c25f2fe0a3e9dc4cf5b8c685486ae0
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305233"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861157"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat API Management Azure s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují umístit jakékoli prostředky Azure do sítě, ve které není Internet směrovatelné, ke kterým budete mít přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -79,7 +79,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 >
 
 > [!IMPORTANT]
-> Pokud API Management odeberete z virtuální sítě nebo změníte nasazení v nástroji, dříve použitá síť VNET může zůstat uzamčena po dobu až dvou hodin. Během této doby nebude možné virtuální síť odstranit ani do ní nasadit nový prostředek.
+> Pokud API Management odeberete z virtuální sítě nebo změníte nasazení v nástroji, dříve použitá síť VNET může zůstat uzamčena po dobu až šesti hodin. Během této doby nebude možné virtuální síť odstranit ani do ní nasadit nový prostředek. Toto chování platí pro klienty, kteří používají rozhraní API verze 2018-01-01 a starší. Klienti používající rozhraní API verze 2019-01-01 a novější, virtuální síť se uvolní hned po odstranění přidružené API Management služby.
 
 ## <a name="enable-vnet-powershell"> </a>Povolení připojení VNet pomocí rutin PowerShellu
 Připojení k virtuální síti můžete taky povolit pomocí rutin PowerShellu.
@@ -96,7 +96,7 @@ Po připojení služby API Management k virtuální síti se přístup k back-en
 ## <a name="network-configuration-issues"> </a>Běžné problémy s konfigurací sítě
 Následuje seznam běžných potíží s chybou konfigurace, ke kterým může dojít při nasazování služby API Management do Virtual Network.
 
-* **Nastavení vlastního serveru DNS**: Služba API Management závisí na několika službách Azure. Pokud je API Management hostovaný ve virtuální síti s vlastním serverem DNS, musí přeložit názvy hostitelů těchto služeb Azure. [Postupujte prosím podle pokynů pro](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) vlastní nastavení DNS. Podívejte se na tabulku porty níže a další požadavky na síť pro referenci.
+* **Nastavení vlastního serveru DNS**: Služba API Management závisí na několika službách Azure. Pokud je API Management hostovaný ve virtuální síti s vlastním serverem DNS, musí přeložit názvy hostitelů těchto služeb Azure. Postupujte prosím [](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) podle pokynů pro vlastní nastavení DNS. Podívejte se na tabulku porty níže a další požadavky na síť pro referenci.
 
 > [!IMPORTANT]
 > Pokud máte v úmyslu používat pro virtuální síť vlastní servery DNS, měli byste ji nastavit **před** nasazením služby API Management do ní. V opačném případě je potřeba aktualizovat API Management službu pokaždé, když změníte servery DNS spuštěním [operace použít konfiguraci sítě](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates) .
@@ -175,7 +175,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 * **Navigační odkazy prostředků**: Když nasadíte do podsítě virtuální sítě ve stylu Správce prostředků, API Management si vyhradí podsíť tím, že se vytvoří odkaz pro navigaci v prostředku. Pokud podsíť již obsahuje prostředek od jiného poskytovatele, nasazení se **nezdaří**. Obdobně platí, že když přesunete API Management službu do jiné podsítě nebo ji odstraníte, odebereme tento odkaz na tento prostředek.
 
 ## <a name="subnet-size"></a> Požadavek na velikost podsítě
-Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
+Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) podsítích.
 
 Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance služby API Management v podsíti používá dvě IP adresy na jednotku SKU úrovně Premium nebo jednu IP adresu pro SKU pro vývojáře. Každá instance si vyhrazuje další IP adresu pro externí nástroj pro vyrovnávání zatížení. Při nasazování do interní virtuální sítě musí pro interní nástroj pro vyrovnávání zatížení vyžadovat další IP adresu.
 

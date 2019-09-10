@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567813"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845599"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nový DBA v cloudu – Správa databází s jedním a fondem v Azure SQL Database
 
@@ -142,7 +142,7 @@ Koncové body služby (SE) umožňují zveřejnit důležité prostředky Azure 
 
 #### <a name="reserved-ips"></a>Vyhrazené IP adresy
 
-Další možností je zřídit [rezervované](../virtual-network/virtual-networks-reserved-public-ip.md) IP adresy pro vaše virtuální počítače a seznam povolených IP adres virtuálních počítačů v nastaveních brány firewall serveru. Díky přiřazování rezervovaných IP adres ušetříte potíže s tím, že budete muset aktualizovat pravidla brány firewall se měnícími se IP adresami.
+Další možností je zřídit [rezervované IP](../virtual-network/virtual-networks-reserved-public-ip.md) adresy pro vaše virtuální počítače a přidat do nastavení brány firewall serveru konkrétní IP adresy virtuálních počítačů. Díky přiřazování rezervovaných IP adres ušetříte potíže s tím, že budete muset aktualizovat pravidla brány firewall se měnícími se IP adresami.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>K jakému portu se připojím SQL Database
 
@@ -334,6 +334,6 @@ Toho můžete dosáhnout několika způsoby:
 - **[Synchronizace dat](sql-database-sync-data.md)** – Tato funkce pomáhá synchronizovat data obousměrně mezi několika místními databázemi SQL Server a SQL Database. Chcete-li provést synchronizaci s místními SQL Server databázemi, je nutné nainstalovat a nakonfigurovat agenta synchronizace v místním počítači a otevřít odchozí port TCP 1433.
 - **[Replikace transakcí](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – s replikací transakcí můžete synchronizovat data z místního prostředí do Azure SQL DB s místním vydavatelem a databází Azure SQL, která je předplatitelem. V současné době je podporována pouze tato instalace. Další informace o tom, jak migrovat data z místního prostředí do Azure SQL s minimálními výpadky, najdete v těchto tématech: [Použití replikace transakcí](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si o [SQL Database](sql-database-technical-overview.md).

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 3c3205b64803ac4ee67997ef546ffd64c89f23b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5918cc3835d00536845a96ed81ef663867291e29
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624830"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858814"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -213,7 +213,7 @@ Zobrazí se výstup podobný následujícímu příkladu:
 
 ## <a name="explore-results"></a>Prozkoumejte výsledky
 
-Můžete použít stejnou pomůcku [Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak je znázorněno v [kurzu školení](tutorial-auto-train-models.md#explore-the-results) pro zobrazení grafu a tabulky výsledků.
+Můžete použít stejnou [pomůcku Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) , jak je znázorněno v [kurzu školení](tutorial-auto-train-models.md#explore-the-results) pro zobrazení grafu a tabulky výsledků.
 
 ```python
 from azureml.widgets import RunDetails
@@ -278,7 +278,7 @@ Tisk `best_run` vysvětlení souhrnu proměnné výsledkem následující výstu
 
 ![Výstup na konzole explainability modelu](./media/how-to-auto-train-remote/expl-print.png)
 
-Funkce význam prostřednictvím widgetu uživatelského rozhraní, jakož i ve webovém uživatelském rozhraní na webu Azure portal můžete také vizualizovat ve vašem pracovním prostoru.
+Můžete také vizualizovat důležitost funkcí prostřednictvím uživatelského rozhraní pomůcky, webového uživatelského rozhraní v Azure Portal nebo [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com). 
 
 ![Model explainability uživatelského rozhraní](./media/how-to-auto-train-remote/model-exp.png)
 
@@ -288,6 +288,6 @@ Poznámkový blok [How-to-use-AzureML/Automated-Machine-Learning/Remote-amlcompu
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si [jak nakonfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).

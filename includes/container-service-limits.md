@@ -9,20 +9,20 @@ ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175370"
 ---
 | Resource | Výchozí omezení |
 | --- | :--- |
-| Maximální clustery na předplatné | 100 |
-| Maximální počet uzlů na clusteru | 100 |
-| Maximální podů podle počtu uzlů: [Základní síť] [ basic-networking] s Kubenet | 110 |
-| Maximální podů podle počtu uzlů: [Rozšířeného sítě] [ advanced-networking] s síťové rozhraní kontejneru Azure | Nasazení v Azure CLI: 30<sup>1</sup><br />Šablona Azure Resource Manageru: 30<sup>1</sup><br />Nasazení portálu: 30 |
+| Maximální počet clusterů na předplatné | 100 |
+| Maximální počet uzlů na cluster | 100 |
+| Maximální počet lusků na uzel: [Základní sítě][basic-networking] s Kubenet | 110 |
+| Maximální počet lusků na uzel: [Pokročilé sítě][advanced-networking] s rozhraním Azure Container Networking | Nasazení rozhraní příkazového řádku Azure CLI: 30<sup>1</sup><br />Šablona Azure Resource Manager: 30<sup>1</sup><br />Nasazení portálu: 30 |
 
-<sup>1</sup>při nasazování clusteru služby Azure Kubernetes Service (AKS) pomocí šablony Resource Manageru nebo rozhraní příkazového řádku Azure, tato hodnota je konfigurovatelná až 250 podů na jeden uzel. Maximální podů na uzel nelze nakonfigurovat, jakmile již nasadíte AKS cluster, nebo pokud nasadíte cluster s použitím webu Azure portal.<br />
+<sup>1</sup> Když nasadíte cluster Azure Kubernetes Service (AKS) pomocí Azure CLI nebo šablony Správce prostředků, tato hodnota se dá nakonfigurovat až na 250 lusky na jeden uzel. Po nasazení clusteru AKS nebo pokud nasazujete cluster pomocí Azure Portal, nemůžete nakonfigurovat maximální počet lusků na uzel.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

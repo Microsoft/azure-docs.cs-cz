@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019314"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860350"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -29,18 +29,19 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 
 Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Pokud chcete ohlásit problém nebo položit otázky, odešlete příspěvek na [Azure Media Services Fórum MSDN]. 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Aktuálně známé problémy
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>Známé problémy
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services Obecné problémy
 
 | Problém | Popis |
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
-| Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)v procentech:! * ' ();: @ & = + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
+| Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ & = + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
 | Metoda ListBlobs, která je součástí sady Azure Storage SDK verze 3. x, se nezdařila. |Media Services generuje adresy URL SAS na základě verze [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) . Pokud chcete použít sadu SDK úložiště k vypsání objektů BLOB v kontejneru objektů blob, použijte metodu [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) , která je součástí sady Storage SDK verze 2. x. |
 | Mechanismus omezování Media Services omezuje využití prostředků u aplikací, které provedou nadměrné požadavky na službu. Služba může vrátit stav "služba není k dispozici" 503 HTTP kód stavu. |Další informace najdete v popisu stavového kódu HTTP 503 v tématu [Media Services kódy chyb](media-services-encoding-error-codes.md). |
 | Při dotazování entit se vrátí limit 1 000 entit najednou, protože veřejná verze REST 2 omezuje výsledky dotazu na 1 000 výsledků. |Použijte Skip a/Top (rozhraní .NET) (REST), jak je popsáno v [tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a v [tomto příkladu REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Někteří klienti můžou přijít do problému se značkou opakování v manifestu Smooth Streaming. |Další informace najdete v [této části](media-services-deliver-content-overview.md#known-issues). |
 | Objekty sady .NET SDK Media Services nejde serializovat a v důsledku toho nefungují s Azure cache pro Redis. |Pokud se pokusíte serializovat objekt sady SDK Assetcollection a přidat ho do mezipaměti Azure pro Redis, je vyvolána výjimka. |
+|REST API odpoví chybovou zprávou, že při pokusu o získání filtru na úrovni prostředku nebo účtu není v této verzi rozhraní REST API přístup k filtru.|Filtr byl vytvořen nebo upraven novější verzí rozhraní API, než se používá k pokusu o získání filtru. K tomu může dojít, pokud jsou dvě verze rozhraní API používány kódem nebo nástroji používanými zákazníkem.  Nejlepším řešením je upgradovat kód nebo nástroje na použití novějších nebo těchto dvou verzí rozhraní API.|
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Historie verze REST API
 Informace o historii verze REST API Media Services najdete v části [Odkaz na Azure Media Services REST API].

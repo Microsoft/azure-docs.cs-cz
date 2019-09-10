@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875665"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861385"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Časté dotazy: Zotavení po havárii Azure do Azure
 
@@ -41,7 +41,15 @@ Tým Site Recovery spolupracuje s týmem Azure Capacity Management k naplánová
 ## <a name="replication"></a>Replikace
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Můžu replikovat virtuální počítače povolené prostřednictvím služby Azure Disk Encryption?
-Ano, můžete je replikovat. Podívejte se na článek [replikace virtuálních počítačů s povolenou službou Azure Disk Encryption do jiné oblasti Azure](azure-to-azure-how-to-enable-replication-ade-vms.md). V současné době Azure Site Recovery podporuje jenom virtuální počítače Azure, na kterých běží operační systém Windows, a povoluje šifrování pomocí aplikací Azure Active Directory (Azure AD).
+
+Ano, Site Recovery podporuje zotavení po havárii virtuálních počítačů s povoleným službou Azure Disk Encryption (ADE). Pokud povolíte replikaci, všechny požadované šifrovací klíče disku a tajné klíče se zkopírují ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, skript připravený k použití může být předán správci zabezpečení, aby mohl zkopírovat klíče a tajné kódy.
+
+- Site Recovery podporuje ADE pro virtuální počítače Azure s Windows.
+- Site Recovery podporuje ADE verze 0,1 se schématem, které používá Azure Active Directory (AAD) a verze 1,1 bez AAD. [Další informace](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- ADE verze 1,1: virtuální počítače s Windows musí používat spravované disky.
+- [Přečtěte si další informace](azure-to-azure-how-to-enable-replication-ade-vms.md) o povolení replikace pro šifrované virtuální počítače.
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Můžu replikovat virtuální počítače do jiného předplatného?
 Ano, virtuální počítače Azure můžete replikovat do jiného předplatného v rámci stejného tenanta služby Azure AD.

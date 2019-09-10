@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207210"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844684"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -94,6 +94,7 @@ Struktura složek pro projekt Python Functions vypadá jako v následujícím p�
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -110,6 +111,12 @@ Sdílený kód by měl být uložený v samostatné složce. Chcete-li odkazovat
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+Chcete-li odkazovat na moduly místně na funkci, můžete použít syntaxi relativního importu následujícím způsobem:
+
+```
+from . import example
 ```
 
 Když nasadíte projekt funkce do aplikace Function App v Azure, celý obsah složky *FunctionApp* by měl být součástí balíčku, ale ne samotná složka.
@@ -559,7 +566,7 @@ Ujistěte se, že jste taky aktualizovali Function. JSON, aby podporoval metodu 
 
 Tuto metodu používá prohlížeč Chrome k vyjednání seznamu povolených zdrojů. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v následujících materiálech:
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533520"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844260"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -107,7 +107,7 @@ Může dojít k chybám, které naznačují, že váš cluster AKS není na sad�
 
 Pokud chcete používat funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, je nutné vytvořit clustery AKS, které používají Virtual Machine Scale Sets. Pokud se pokusíte použít funkce, které závisí na virtuálních počítačích služby Virtual Machine Scale Sets, a zacílíte na běžný cluster AKS s nevirtuálními počítači, budou se vám vracet chyby. Podpora sady škálování virtuálních počítačů je v současné době ve verzi Preview v AKS.
 
-Postupujte podle pokynů v příslušném dokumentu, aby se správně zaregistrovala funkce Virtual Machine Scale set Preview a vytvořil se cluster AKS:
+Postupujte podle *pokynů v* příslušném dokumentu, aby se správně zaregistrovala funkce Virtual Machine Scale set Preview a vytvořil se cluster AKS:
 
 * [Použití automatického škálování clusteru](cluster-autoscaler.md)
 * [Vytvoření a použití více fondů uzlů](use-multiple-node-pools.md)
@@ -129,6 +129,15 @@ Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chce
 
 Na základě výstupu stavu clusteru:
 
-* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo neúspěšný,počkejte na ukončení operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste znovu vyzkoušet nejnovější operaci clusteru.
+* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný*, počkejte na ukončení operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste znovu vyzkoušet nejnovější operaci clusteru.
 
-* Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)nebude opraveno.
+* Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude opraveno](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
+
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Zobrazují se chyby, které se při pokusu o vytvoření nového clusteru nenašly u svého instančního objektu, aniž by se musel předávat existující cluster.
+
+Při vytváření clusteru AKS vyžaduje instanční objekt k vytváření prostředků vaším jménem. AKS nabízí možnost mít v době vytváření clusteru nově vytvořenou možnost, ale to vyžaduje Azure Active Directory k úplnému rozšíření nového instančního objektu v přiměřené době, aby cluster byl úspěšně vytvořen. Pokud toto rozšíření trvá příliš dlouho, cluster se nedaří ověřit a vytvořit, protože nedokáže najít dostupný instanční objekt. 
+
+Použijte následující alternativní řešení:
+1. Použijte existující instanční objekt, který už je šířený v různých oblastech a existuje k předání do AKS v době vytváření clusteru.
+2. Pokud používáte skripty pro automatizaci, přidejte časovou prodlevu mezi vytvořením instančního objektu a vytvořením clusteru AKS.
+3. Pokud používáte Azure Portal, vraťte se do nastavení clusteru během vytváření a zkuste stránku ověření zopakovat po několika minutách.

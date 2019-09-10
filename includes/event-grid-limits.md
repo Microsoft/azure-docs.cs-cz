@@ -9,28 +9,28 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "66376929"
 ---
-Následující omezení platí pro vlastní témata a témata služby Azure Event Grid systém *není* událostí domény.
+Následující omezení platí pro Azure Event Grid systémová témata a vlastní témata, *nikoli* domény událostí.
 
 | Resource | Omezení |
 | --- | --- |
-| Vlastní témata na předplatné Azure | 100 |
+| Vlastní témata pro každé předplatné Azure | 100 |
 | Odběry událostí na téma | 500 |
-| Publikování míra vlastního tématu (příchozí) | 5 000 událostí za sekundu na téma |
-| Žádostí o publikování | 250 za sekundu |
-| Velikost události | Podpora pro 64 KB obecně dostupná (GA). Podpora pro 1 MB je aktuálně ve verzi preview. |
+| Míra publikování pro vlastní téma (příchozí) | 5 000 událostí za sekundu na téma |
+| Žádosti o publikování | 250 za sekundu |
+| Velikost události | Podpora 64 KB v obecné dostupnosti (GA). Podpora 1 MB je aktuálně ve verzi Preview. |
 
-Následující omezení platí pro pouze události domén.
+Následující omezení platí pouze pro domény událostí.
 
 | Resource | Omezení |
 | --- | --- |
-| Témata události doménu | 1 000 ve verzi public preview |
-| Odběry událostí na téma v rámci domény | 50 ve verzi public preview |
-| Odběry událostí pro obor domény | 50 ve verzi public preview |
-| Publikování frekvence událostí domény (příchozí) | 5 000 událostí za sekundu ve verzi public preview |
-| Žádostí o publikování | 250 za sekundu |
+| Témata na doménu události | 1 000 během veřejné verze Preview |
+| Odběry událostí na téma v rámci domény | 50 během veřejné verze Preview |
+| Odběry událostí oboru domény | 50 během veřejné verze Preview |
+| Frekvence publikování pro doménu události (příchozí) | 5 000 událostí za sekundu během veřejné verze Preview |
+| Žádosti o publikování | 250 za sekundu |

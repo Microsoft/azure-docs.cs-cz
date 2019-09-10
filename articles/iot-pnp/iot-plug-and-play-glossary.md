@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 79b57a9c9f12c6014b9002b0688beae334af3587
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806512"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858844"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -46,9 +46,9 @@ Azure IoT Central je plně spravované řešení typu software jako služba, kte
 
 Certifikační služba Azure IoT spouští sadu ověřovacích testů, když odešlete [zařízení IoT technologie Plug and Play](#iot-plug-and-play-device) pro certifikaci prostřednictvím [portálu Azure Certified for IoT](#azure-certified-for-iot-portal). Než budete moct přidat zařízení do [katalogu zařízení Certified for IoT](#certified-for-iot-device-catalog), musí být zařízení certifikované.
 
-## <a name="azure-iot-device-workbench-extension"></a>Rozšíření Azure IoT Device Workbench
+## <a name="azure-iot-tools-extension"></a>Rozšíření Azure IoT Tools
 
-Azure IoT Device Workbench je rozšíření [Visual Studio Code](#visual-studio-code) , které poskytuje integrované prostředí pro:
+Azure IoT Tools je kolekce rozšíření v sadě [Visual Studio Code](#visual-studio-code) , která vám pomůžou pracovat s IoT Hub a vyvíjet zařízení IoT. Pro IoT technologie Plug and Play vývoj zařízení vám pomůže:
 
 - Vytváření modelů a [rozhraní](#interface) [schopností zařízení](#device-capability-model)
 - Publikovat do [úložišť modelů](#model-repository).
@@ -200,4 +200,4 @@ Pole telemetrie definovaná v [rozhraní](#interface) reprezentují měření. T
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-Visual Studio Code je moderní Editor kódu, který je k dispozici pro více platforem. Rozšíření, jako je třeba [rozšíření Azure IoT Device Workbench](#azure-iot-device-workbench-extension) , vám umožní přizpůsobit ho pro podporu široké škály vývojových scénářů.
+Visual Studio Code je moderní Editor kódu, který je k dispozici pro více platforem. Rozšíření, jako jsou třeba v sadě [nástrojů Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) , umožňují přizpůsobit editor pro podporu široké škály vývojových scénářů.

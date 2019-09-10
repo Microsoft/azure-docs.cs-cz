@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806493"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861206"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Rychlý start: Vytvoření zařízení IoT technologie Plug and Play pomocí modelu schopností zařízení
 
@@ -28,12 +28,12 @@ K dokončení tohoto rychlého startu je potřeba na svůj místní počítač n
 * [Cmake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
 
-### <a name="install-azure-iot-device-workbench"></a>Instalace aplikace Workbench pro zařízení Azure IoT
+### <a name="install-azure-iot-tools"></a>Instalace nástrojů Azure IoT
 
-Pomocí následujících kroků nainstalujete rozšíření Azure IoT Device Workbench do VS Code:
+Pomocí následujících kroků nainstalujte sadu [nástrojů Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack:
 
 1. V VS Code vyberte kartu **rozšíření** .
-1. Vyhledejte aplikaci **Workbench pro zařízení Azure IoT**.
+1. Vyhledejte **nástroje Azure IoT Tools**.
 1. Vyberte **Install** (Nainstalovat).
 
 ### <a name="install-the-azure-iot-explorer"></a>Instalace Azure IoT Exploreru
@@ -226,7 +226,7 @@ K ověření kódu zařízení v **Azure IoT Exploreru**je potřeba publikovat s
 
 1. Přejít na simulované zařízení a ověřte, že se příkaz provedl podle očekávání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak vytvořit zařízení IoT technologie Plug and Play pomocí DCM.
 

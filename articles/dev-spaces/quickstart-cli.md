@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Nasazení mikroslužeb v AKS s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 6ce5338bd2b3d6153255fcdb67cb8afe10e8101c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772584"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842518"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj aplikace v Kubernetes pomocí Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -109,6 +109,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ```
 
 Službu spuštěnou můžete zobrazit otevřením veřejné adresy URL, která se zobrazí ve výstupu `azds up` příkazu. V tomto příkladu je *http://webfrontend.1234567890abcdef1234.eus.azds.io/* veřejná adresa URL.
+
+> [!NOTE]
+> Když při spuštění `azds up`přejdete ke službě, ve výstupu `azds up` příkazu se zobrazí také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` aplikace při spuštění. `azds up`
 
 Pokud `azds up` příkaz zastavíte stisknutím *kombinace kláves Ctrl + c*, služba bude nadále běžet v AKS a veřejná adresa URL zůstane dostupná.
 

@@ -5,56 +5,56 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175388"
 ---
 >[!NOTE]
->Pro prostředky, které nejsou pevné otevřete lístek podpory a požádejte o zvýšení kvóty. Nevytvářejte další účty Azure Media Services ve snaze zajistit vyšší limity.
+>U prostředků, které nejsou opraveny, otevřete lístek podpory, který se zeptá na zvýšení kvót. Při pokusu o získání vyšších limitů nevytvářejte další účty Azure Media Services.
 
 | Resource | Výchozí omezení | 
 | --- | --- | 
-| Účty Azure Media Services v rámci jednoho předplatného | 25 (pevné) |
-| Každý účet Media Services jednotky rezervované pro média |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
-| Úloh na účet Media Services | 50 000<sup>2</sup> |
+| Účty Azure Media Services v jednom předplatném | 25 (pevné) |
+| Rezervované jednotky médií na účet Media Services |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| Počet úloh na účet Media Services | 50 000<sup>2</sup> |
 | Zřetězené úkoly na jednu úlohu | 30 (pevné) |
-| Prostředky na účtu Azure Media Services | 1 000 000|
+| Prostředky na účet Media Services | 1 000 000|
 | Prostředky na jeden úkol | 50 |
 | Prostředky na jednu úlohu | 100 |
 | Jedinečné lokátory přidružené k prostředku najednou | 5<sup>4</sup> |
-| Živé kanály na účtu Azure Media Services |5|
+| Živé kanály na účet Media Services |5|
 | Programy v zastaveném stavu na jeden kanál |50|
 | Programy ve spuštěném stavu na jeden kanál |3|
-| Streamování koncové body, které se zastaví nebo spuštěné na účtu Azure Media Services|2|
+| Koncové body streamování, které se zastavily nebo spouštějí na účet Media Services|2|
 | Jednotky streamování na jeden koncový bod streamování |10 |
 | Účty úložiště | 1 000<sup>5</sup> (pevné) |
 | Zásady | 1 000 000<sup>6</sup> |
-| Velikost souboru| V některých scénářích platí omezení na maximální velikost souboru podporovaná při zpracování ve službě Media Services. <sup>7</sup> |
+| Velikost souboru| V některých scénářích je omezení maximální velikosti souboru podporovanou pro zpracování v Media Services. <sup>7</sup> |
 
-<sup>1</sup>Pokud změníte typ, třeba z S2 na S1, omezení maximální rezervované jednotky se obnoví.
+<sup>1</sup> Změníte-li typ, například z hodnoty S2 na S1, budou vynulovány maximální rezervované jednotky.
 
-<sup>2</sup>toto číslo zahrnuje zařazených do fronty, dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. Staré úlohy můžete odstranit pomocí **IJob.Delete** nebo **odstranit** požadavku HTTP.
+<sup>2</sup> . Toto číslo zahrnuje úlohy ve frontě, dokončených, aktivních a zrušených úlohách. Neobsahuje odstraněné úlohy. Staré úlohy můžete odstranit pomocí **IJob. Delete** nebo **odstraňte** požadavek HTTP.
 
-Od 1. dubna 2017 libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní automaticky odstraní, spolu s jeho související záznamy. Automatické odstranění dojde i v případě, že celkový počet záznamů je nižší než maximální kvóta. Chcete-li tyto informace archivovat, úloh a úkolů, použít kód popsaný v [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
+Od 1. dubna 2017 se automaticky odstraní libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní, spolu s přidruženými záznamy úkolů. Automatické odstranění probíhá i v případě, že celkový počet záznamů je nižší než maximální kvóta. K archivaci informací o úlohách a úlohách použijte kód popsaný v tématu [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>když provedete žádost o seznam úloh entity, maximálně 1 000 úloh se vrátí na žádost. Mějte přehled o všechny odeslané úlohy, horní nebo přeskočit dotazy, jak je popsáno v [možností dotazu systému OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
+<sup>3</sup> . Když vytvoříte požadavek na výpis entit úloh, vrátí se maximálně 1 000 úloh na jednu žádost. Pokud chcete sledovat všechny odeslané úlohy, použijte dotazy TOP nebo Skip, jak je popsáno v tématu [Možnosti dotazování systému OData](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
-<sup>4</sup>lokátory nejsou určené pro správu řízení přístupu na uživatele. Chcete-li poskytnout různá přístupová práva pro jednotlivé uživatele, použijte řešení digital rights management (DRM). Další informace najdete v tématu [chránit obsah pomocí služby Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> . Lokátory nejsou navržené pro správu řízení přístupu pro jednotlivé uživatele. K udělení různých přístupových práv jednotlivým uživatelům použijte řešení DRM (Správa digitálních práv). Další informace najdete v tématu [Ochrana obsahu pomocí Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
 
-<sup>5</sup>účtů úložiště musí být ve stejném předplatném Azure.
+<sup>5</sup> . Účty úložiště musí být ze stejného předplatného Azure.
 
-<sup>6</sup>je stanovený limit 1 000 000 různých zásad Media Services. Příkladem je pro zásady lokátoru nebo ContentKeyAuthorizationPolicy. 
+<sup>6</sup> K dispozici je omezení 1 000 000 zásad pro různé zásady Media Services. Příkladem je zásada lokátoru nebo ContentKeyAuthorizationPolicy. 
 
 >[!NOTE]
-> Pokud vždycky používáte stejné dny a přístupová oprávnění, použijte stejné ID zásad. Informace a příklad najdete v tématu [Správa prostředků pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
+> Pokud vždycky používáte stejné dny a přístupová oprávnění, použijte stejné ID zásad. Informace a příklad najdete v tématu [Správa assetů pomocí sady Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>maximální velikost podporovaná pro jeden objekt blob je aktuálně ve službě Azure Blob Storage až 5 TB. Další omezení platí v závislosti na velikosti virtuálních počítačů, které se používají ve službě Media Services. Omezení velikosti platí pro soubory, které nahrajete a také soubory, které se vygeneruje jako výsledek zpracování (kódování nebo analýza) Media Services. Pokud zdrojový soubor je větší než 260 GB, vaše úloha se pravděpodobně nezdaří. 
+<sup>7</sup> Maximální velikost podporovaná pro jeden objekt BLOB je v Azure Blob Storage v současnosti až o 5 TB. V Media Services na základě velikostí virtuálních počítačů, které služba používá, platí další omezení. Omezení velikosti se vztahuje na soubory, které nahráváte, a také soubory, které se generují v důsledku zpracování Media Services (kódování nebo analýza). Pokud je zdrojový soubor větší než 260 GB, bude pravděpodobně selhání úlohy. 
 
-Následující tabulka uvádí omezení na média rezervované jednotky S1, S2 a S3. Pokud zdrojový soubor je větší než omezení v tabulce, vaše úlohy kódování se nezdaří. Pokud kódujete zdroje rozlišení 4K dlouhá doba trvání, budete muset použít S3 rezervovaných jednotek médií k zajištění výkonu potřeba. Pokud máte 4 kB obsah, který je větší než limit 260 GB S3 rezervovaných jednotek médií, kontaktujte nás na adrese amshelp@microsoft.com pro zmírnit na podporu vašeho scénáře.
+V následující tabulce jsou uvedena omezení pro rezervované jednotky médií S1, S2 a S3. Pokud je zdrojový soubor větší než omezení definovaná v tabulce, vaše úloha kódování se nezdařila. Pokud kódujete zdroje 4K rozlišení dlouhé doby trvání, budete muset použít jednotky rezervované pro médium S3 k dosažení potřebného výkonu. Pokud jste 4k obsah, který je větší než limit 260 GB na rezervované jednotky médií S3, kontaktujte nás na amshelp@microsoft.com základě potenciálních rizik pro podporu vašeho scénáře.
 
-|Typ jednotky rezervované pro média   |Maximální velikost vstupu (GB)|
+|Typ rezervované jednotky médií   |Maximální velikost vstupu (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|

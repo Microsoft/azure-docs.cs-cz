@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 738d6738469960c8b21809b9320c4d034613c4e3
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802380"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858494"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (Preview)
 
@@ -66,7 +66,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 | | **Výpočetní prostředí bez serveru** | **Zřízené výpočetní prostředky** |
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
-| **Úsilí řízení výkonu** |Malým|Vyšší|
+| **Úsilí řízení výkonu** |malým|Vyšší|
 |**Škálování na výpočetní výkon**|Automatické|Ručně|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Okamžité|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
@@ -201,7 +201,7 @@ New-AzSqlDatabase `
 Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
 
 ```powershell
-Set-AzSqlDatabase
+Set-AzSqlDatabase `
   -ResourceGroupName $resourceGroupName `
   -ServerName $serverName `
   -DatabaseName $databaseName `
@@ -322,7 +322,7 @@ Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda. 
 
 Výpočetní vrstva bez serveru je dostupná po celém světě s výjimkou těchto oblastí: Austrálie – střed, Čína – východ, Čína – sever, Francie – jih, Německo – střed, Německo – západ, Indie – jih, Korea – jih, Jižní Afrika – západ, Velká Británie – sever, Velká Británie – jih, Velká Británie – západ a Středozápadní USA.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o tom, jak [začít, najdete v tématu rychlý Start: Pomocí Azure Portal](sql-database-single-database-get-started.md)vytvořte v Azure SQL Database jednu databázi.
 - Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

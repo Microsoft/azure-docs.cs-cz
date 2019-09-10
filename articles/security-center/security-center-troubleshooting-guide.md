@@ -1,31 +1,25 @@
 ---
 title: Průvodce odstraňováním potíží se službou Azure Security Center | Dokumentace Microsoftu
-description: Tento dokument vám pomůže při odstraňování potíží se službou Azure Security Center.
+description: Tento dokument pomáhá řešit problémy v Azure Security Center.
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 3/20/2019
-ms.author: rkarlin
-ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 26615819dc407e51281254c73076a1d721e6059f
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609903"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873386"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), analytikům zabezpečení informací a správcům cloudů, jejichž společnosti používají službu Azure Security Center a potřebují odstraňovat potíže týkající se služby Security Center.
 
 >[!NOTE]
->Od začátku června 2017 používá Security Center ke shromažďování a ukládání dat agenta Microsoft Monitoring Agent. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md). Informace v tomto článku představují funkce služby Security Center po přechodu na agenta Microsoft Monitoring Agent.
+>Security Center používá Microsoft Monitoring Agent ke shromažďování a ukládání dat. Další informace najdete v článku o [migraci platformy pro Azure Security Center](security-center-platform-migration.md).
 >
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
@@ -56,9 +50,9 @@ Pokud chcete zjistit, kterou verzi agenta máte, otevřete **Správce úloh**, n
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Scénáře instalace služby Microsoft Monitoring Agent
 Existují dva scénáře instalace služby Microsoft Monitoring Agent na počítač, které mohou přinést různé výsledky. Podporované scénáře:
 
-* **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. E-mailová oznámení budete dostávat na e-mailovou adresu, kterou jste si nakonfigurovali v zásadách zabezpečení pro předplatné, do něhož prostředek patří.
+* **Agent nainstalovaný automaticky službou Security Center**: V tomto scénáři se budete moci podívat na výstrahy v obou umístěních – ve službě Security Center i v Hledání v protokolu. Dostanete e-mailová oznámení na e-mailovou adresu, která byla nakonfigurovaná v zásadách zabezpečení pro předplatné, ke kterému prostředek patří.
 .
-* **Agent ručně nainstalovaný na virtuálním počítači umístěném v Azure**: V tomto scénáři – pokud používáte agenty, které jste stáhli a nainstalovali ručně před únorem 2017 – se budete moci podívat na výstrahy na portálu Security Center jenom v případě, že si vyfiltrujete předplatné, do kterého pracovní prostor patří. Pokud si vyfiltrujete předplatné, do kterého prostředek patří, neuvidíte žádné jiné výstrahy. E-mailová oznámení budete dostávat na e-mailovou adresu, kterou jste si nakonfigurovali v zásadách zabezpečení pro předplatné, do něhož pracovní prostor patří.
+* **Ruční instalace agenta do virtuálního počítače, který se nachází v Azure**: v tomto scénáři platí, že pokud používáte agenty, kteří se stáhli a nainstalovali ručně před únorem 2017, můžete výstrahy zobrazit na portálu Security Center jenom v případě, že v předplatném pracovní prostor vyfiltrujete. patří do. Pokud filtrujete předplatné, ke kterému prostředek patří, neuvidíte žádné výstrahy. Dostanete e-mailová oznámení na e-mailovou adresu, která byla nakonfigurovaná v zásadách zabezpečení předplatného, ke kterému pracovní prostor patří.
 
 >[!NOTE]
 > Pokud se chcete vyhnout chování uvedenému v druhém scénáři, stáhněte si nejnovější verzi agenta.

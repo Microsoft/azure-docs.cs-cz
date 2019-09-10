@@ -1,84 +1,104 @@
 ---
-title: 'Azure Active Directory Domain Services: Povolit omezené delegování protokolu Kerberos | Microsoft Docs'
-description: Povolit omezené delegování protokolu Kerberos ve Azure Active Directory Domain Services spravovaných doménách
+title: Omezené delegování protokolu Kerberos pro Azure AD Domain Services | Microsoft Docs
+description: Přečtěte si, jak povolit omezené delegování protokolu Kerberos založené na prostředku (KCD) ve spravované doméně Azure Active Directory Domain Services.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/04/2019
 ms.author: iainfou
-ms.openlocfilehash: f234eaea0d4df3859ef9458ea334f1b7616add34
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612944"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842653"
 ---
-# <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) ve spravované doméně
-Mnoho aplikací potřebuje přístup k prostředkům v kontextu uživatele. Služba Active Directory podporuje mechanismus označovaný jako delegování protokolu Kerberos, který umožňuje použití tohoto případu. Dále můžete omezit delegování tak, aby přístup k určitým prostředkům byl v kontextu uživatele možné. Azure AD Domain Services spravované domény se liší od tradičních domén služby Active Directory, protože jsou bezpečněji uzamčené.
+# <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
-V tomto článku se dozvíte, jak nakonfigurovat omezené delegování protokolu Kerberos ve Azure AD Domain Services spravované doméně.
+Při spouštění aplikací může být potřeba, aby tyto aplikace měly přístup k prostředkům v kontextu jiného uživatele. Active Directory Domain Services (služba AD DS) podporuje mechanismus označovaný jako *delegování protokolu Kerberos* , který umožňuje použití tohoto případu použití. *Omezené* delegování protokolu Kerberos (KCD) následně sestaví na tomto mechanismu k definování konkrétních prostředků, ke kterým je možné přistupovat v kontextu uživatele. Spravované domény Azure Active Directory Domain Services (Azure služba AD DS) jsou bezpečnějším způsobem uzamčeny, které používají tradiční místní služba AD DS prostředí, takže používejte bezpečnější KCD *založené na prostředcích* .
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+V tomto článku se dozvíte, jak nakonfigurovat omezené delegování basd pomocí protokolu Kerberos ve spravované doméně Azure služba AD DS.
 
-## <a name="kerberos-constrained-delegation-kcd"></a>Omezené delegování protokolu Kerberos (KCD)
-Delegování protokolu Kerberos umožňuje účtu zosobnit jiný objekt zabezpečení (například uživatel) pro přístup k prostředkům. Vezměte v úvahu webovou aplikaci, která přistupuje k back-endovému webovému rozhraní API v kontextu uživatele. V tomto příkladu webová aplikace (spuštěná v kontextu účtu služby nebo počítače/počítače) zosobňuje uživatele při přístupu k prostředku (back-endové webové rozhraní API). Delegování protokolu Kerberos je nezabezpečené, protože neomezuje prostředky, ke kterým má zosobněný účet přístup v kontextu uživatele.
+## <a name="prerequisites"></a>Požadavky
 
-Omezené delegování protokolu Kerberos (KCD) omezuje služby a prostředky, na které může zadaný server jednat jménem uživatele. Tradiční KCD vyžaduje oprávnění správce domény ke konfiguraci účtu domény pro službu a omezuje účet na jednu doménu.
+K dokončení tohoto článku potřebujete tyto prostředky:
 
-K tradičním KCD je také přidruženo několik problémů. Pokud správce domény pro službu nakonfiguroval účet KCD založený na účtu, měl správce služby ve starších operačních systémech žádný užitečný způsob, jak zjistit, které front-endové služby jsou delegované službám prostředků, které vlastní. A všechny front-endové služby, které by mohly delegovat na službu prostředků, reprezentované potenciálním bodem útoku. Pokud došlo k ohrožení zabezpečení serveru, který hostoval front-end službu a byl nakonfigurován pro delegování na služby prostředků, mohlo by dojít k ohrožení zabezpečení služeb prostředků.
+* Aktivní předplatné Azure.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
+    * V případě potřeby dokončete kurz [a vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně a][create-join-windows-vm] [nainstalujte nástroje pro správu služba AD DS][tutorial-create-management-vm].
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
-> [!NOTE]
-> Ve spravované doméně Azure AD Domain Services nemáte oprávnění správce domény. Proto **na spravované doméně nejde nakonfigurovat tradiční KCD založený na účtu**. Použijte KCD podle prostředků, jak je popsáno v tomto článku. Tento mechanismus je také bezpečnější.
->
->
+## <a name="kerberos-constrained-delegation-overview"></a>Přehled omezeného delegování protokolu Kerberos
 
-## <a name="resource-based-kcd"></a>KCD na základě prostředků
-Od systému Windows Server 2012 a vyšších správců služeb získá možnost nakonfigurovat omezené delegování pro svou službu. V tomto modelu může správce back-end služeb povolit nebo odepřít konkrétní front-endové služby z používání KCD. Tento model se označuje jako **KCD na základě prostředků**.
+Delegování protokolu Kerberos umožňuje jednomu účtu zosobnit jiný účet pro přístup k prostředkům. Například webová aplikace, která přistupuje k back-endové webové komponentě, se může při připojení k back-endu zosobnit jako jiný uživatelský účet. Delegování protokolu Kerberos je nezabezpečené, protože neomezuje prostředky, ke kterým má zosobněný účet přístup.
 
-KCD na základě prostředků se konfiguruje pomocí PowerShellu. Rutiny `Set-ADComputer` nebo `Set-ADUser` se používají v závislosti na tom, jestli se jedná o počítačový účet nebo účet uživatele nebo účtu služby.
+Omezené delegování protokolu Kerberos (KCD) omezuje služby nebo prostředky, které může zadaný server nebo aplikace připojit při zosobnění jiné identity. Tradiční KCD vyžaduje oprávnění správce domény ke konfiguraci účtu domény pro službu a omezuje účet tak, aby běžel v jedné doméně. Tradiční KCD také obsahuje několik problémů. Například ve starších operačních systémech neměl správce služby žádný užitečný způsob, jak zjistit, které front-endové služby jsou delegovány službám prostředků, které vlastní. Všechny front-endové služby, které by mohly delegovat službu prostředků, byly potenciálního bodu útoku. Pokud došlo k ohrožení bezpečnosti serveru, který hostuje front-end službu nakonfigurovanou pro delegování na služby prostředků, mohly by taky dojít k ohrožení služeb prostředků.
 
-### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>Konfigurace KCD založených na prostředku pro účet počítače ve spravované doméně
-Předpokládejme, že máte webovou aplikaci spuštěnou v počítači "contoso-webapp.contoso.com". Musí mít přístup k prostředku (webové rozhraní API běžící v ' contoso-api.contoso.com ') v kontextu doménových uživatelů. Tady je postup, jak byste pro tento scénář nastavili KCD založenou na prostředku:
+Ve spravované doméně Azure služba AD DS nemáte oprávnění správce domény. V důsledku toho se tradiční KCD založený na účtu nedá nakonfigurovat v Azure služba AD DS spravované doméně. Místo toho je možné použít KCD založené na prostředku, což je také bezpečnější.
 
-1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele ve spravované doméně.
-2. Připojte se k virtuálním počítačům (tu, která spouští webovou aplikaci, a webovým rozhraním API) do spravované domény. Vytvořte tyto účty počítačů v rámci vlastní organizační jednotky.
-3. Teď nakonfigurujte KCD podle prostředků pomocí následujícího příkazu PowerShellu:
+### <a name="resource-based-kcd"></a>KCD na základě prostředků
 
-```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
-```
+Windows Server 2012 a novější poskytuje správcům služby možnost Konfigurace omezeného delegování pro jejich službu. Tento model se označuje jako KCD na základě prostředků. V rámci tohoto přístupu může správce back-end služeb povolit nebo odepřít konkrétní front-endové služby v používání KCD.
 
-> [!NOTE]
-> Účty počítačů pro webovou aplikaci a webové rozhraní API musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředcích. KCD na základě prostředků nelze nakonfigurovat pro účet počítače v integrovaném kontejneru AAD DC Computers.
->
+KCD na základě prostředků se konfiguruje pomocí PowerShellu. Rutiny [set-ADComputer][Set-ADComputer] nebo [set-ADUser][Set-ADUser] se používají v závislosti na tom, jestli je pro zosobněný účet počítačový účet nebo účet uživatele nebo účtu služby.
 
-### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>Konfigurace KCD založených na prostředcích pro uživatelský účet ve spravované doméně
-Předpokládejme, že máte webovou aplikaci spuštěnou jako účet služby ' appsvc ' a ta musí mít přístup k prostředku (webové rozhraní API běžící jako účet služby-' backendsvc ') v kontextu doménových uživatelů. Tady je postup, jak byste pro tento scénář nastavili KCD založenou na prostředku.
+## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Konfigurace KCD na základě prostředků pro účet počítače
 
-1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele ve spravované doméně.
-2. Připojte se k virtuálnímu počítači, na kterém běží back-end webové rozhraní API nebo prostředek, do spravované domény. Vytvořte účet počítače v rámci vlastní organizační jednotky.
-3. Vytvořte účet služby (například ' appsvc '), který se používá ke spuštění webové aplikace v rámci vlastní organizační jednotky.
-4. Teď nakonfigurujte KCD podle prostředků pomocí následujícího příkazu PowerShellu:
+V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží na počítači s názvem *Contoso-WebApp.contoso.com*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží na počítači s názvem *Contoso-API.contoso.com* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
 
-```powershell
-$ImpersonatingAccount = Get-ADUser -Identity appsvc
-Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
-```
+1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS.
+1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm], které používají webovou aplikaci, a tu, která spouští webové rozhraní API, do spravované domény Azure služba AD DS. Vytvořte tyto účty počítačů ve vlastní organizační jednotce z předchozího kroku.
 
-> [!NOTE]
-> Účet počítače webového rozhraní API back-endu i účet služby musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředku. KCD na základě prostředků pro účet počítače se nedá nakonfigurovat v předdefinovaném kontejneru AAD DC Computers nebo u uživatelských účtů v integrovaném kontejneru AAD DC Users. Proto nemůžete pomocí uživatelských účtů synchronizovaných z Azure AD nastavit KCD na základě prostředků.
->
+    > [!NOTE]
+    > Účty počítačů pro webovou aplikaci a webové rozhraní API musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředcích. KCD na základě prostředků nejde nakonfigurovat pro účet počítače na integrovaném kontejneru *AAD DC Computers* .
 
-## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Průvodce Začínáme](tutorial-create-instance.md)
-* [Přehled omezeného delegování protokolu Kerberos](https://technet.microsoft.com/library/jj553400.aspx)
+1. Nakonec nakonfigurujte KCD založené na prostředku pomocí rutiny [set-ADComputer][Set-ADComputer] prostředí PowerShell. Z virtuálního počítače pro správu připojeného k doméně a přihlášený jako uživatelský účet, který je členem skupiny *Azure AD DC Administrators* , spusťte následující rutiny. Zadejte vlastní názvy počítačů podle potřeby:
+    
+    ```powershell
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
+    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    ```
+
+## <a name="configure-resource-based-kcd-for-a-user-account"></a>Konfigurace KCD založených na prostředcích pro uživatelský účet
+
+V tomto scénáři předpokládáme, že máte webovou aplikaci, která je spuštěná jako účet služby s názvem *appsvc*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží jako účet služby s názvem *backendsvc* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
+
+1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS.
+1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm] , na kterých běží back-end webové rozhraní API nebo prostředek, do spravované domény Azure služba AD DS. Vytvořte účet počítače v rámci vlastní organizační jednotky.
+1. Vytvořte účet služby (například ' appsvc '), který se používá ke spuštění webové aplikace v rámci vlastní organizační jednotky.
+
+    > [!NOTE]
+    > Účet počítače pro virtuální počítač s webovým rozhraním API a účet služby pro webovou aplikaci musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředku. Nemůžete nakonfigurovat KCD na základě prostředků pro účty na integrovaných *počítačích řadiče pro AAD* nebo na kontejnerech *uživatelů AAD* . To také znamená, že nemůžete pomocí uživatelských účtů synchronizovaných z Azure AD nastavit KCD na základě prostředků. Je potřeba vytvořit a použít účty služeb, které se konkrétně vytvořily v Azure služba AD DS.
+
+1. Nakonec nakonfigurujte KCD založené na prostředku pomocí rutiny [set-ADUser][Set-ADUser] prostředí PowerShell. Z virtuálního počítače pro správu připojeného k doméně a přihlášený jako uživatelský účet, který je členem skupiny *Azure AD DC Administrators* , spusťte následující rutiny. Podle potřeby zadejte vlastní názvy služeb:
+
+    ```powershell
+    $ImpersonatingAccount = Get-ADUser -Identity appsvc
+    Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    ```
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o tom, jak delegování funguje v Active Directory Domain Services, najdete v tématu [Přehled omezeného delegování protokolu Kerberos][kcd-technet].
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Set-ADUser]: /powershell/module/addsadministration/set-aduser
+
+<!-- EXTERNAL LINKS -->
+[kcd-technet]: https://technet.microsoft.com/library/jj553400.aspx

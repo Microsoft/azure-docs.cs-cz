@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532361"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872843"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Otázky specifické pro Xamarin iOS s MSAL.NET
 V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací.
@@ -104,13 +104,23 @@ Pokud chcete povolit toto sdílení mezipaměti, musíte nastavit metodu "WithIo
 
 Dřív bylo zmíněno, že při každém použití `WithIosKeychainSecurityGroup()` rozhraní API MSAL přidala $ (AppIdentifierPrefix). Důvodem je, že AppIdentifierPrefix nebo "ID týmu" slouží k zajištění, aby přístup k řetězci klíčů mohl sdílet jenom aplikace, které provádí tentýž Vydavatel.
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>Poznámka: Vlastnost KeychainSecurityGroup je zastaralá.
+> [!NOTE]
+> **`KeychainSecurityGroup` Vlastnost je zastaralá.**
+> 
+> Předtím, od MSAL 2. x, museli vývojáři při použití `KeychainSecurityGroup` vlastnosti zahrnovat předponu TeamId.
+>
+>  MSAL při použití nové `iOSKeychainSecurityGroup` vlastnosti v MSAL 2.7. x během běhu vyřeší předponu TeamId. Pokud použijete tuto vlastnost, hodnota by neměla obsahovat předponu TeamId.
+>  Použijte novou `iOSKeychainSecurityGroup` vlastnost, která nevyžaduje zadání TeamId, protože předchozí `KeychainSecurityGroup` vlastnost je nyní zastaralá.
 
-Předtím, od MSAL 2. x, museli vývojáři při použití `KeychainSecurityGroup` vlastnosti zahrnovat předponu TeamId.
+### <a name="use-microsoft-authenticator"></a>Použít Microsoft Authenticator
 
-MSAL při použití nové `iOSKeychainSecurityGroup` vlastnosti v MSAL 2.7. x během běhu vyřeší předponu TeamId. Pokud použijete tuto vlastnost, hodnota by neměla obsahovat předponu TeamId.
+Vaše aplikace může použít Microsoft Authenticator (zprostředkovatel) k povolení:
 
-Použijte novou `iOSKeychainSecurityGroup` vlastnost, která nevyžaduje, aby vývojáři poskytovali TeamId, protože předchozí `KeychainSecurityGroup` vlastnost je nyní zastaralá.
+- Jednotné přihlašování (SSO). Uživatelé se nebudou muset přihlašovat ke každé aplikaci.
+- Identifikace zařízení. Přístupem k certifikátu zařízení vytvořenému v zařízení, když se připojil k síti na pracovišti. Vaše aplikace bude připravena, pokud správci tenanta povolí podmíněný přístup týkající se zařízení.
+- Ověření identifikace aplikace Když aplikace volá zprostředkovatele, předá adresu URL pro přesměrování a zprostředkovatel ji ověří.
+
+Podrobnosti o tom, jak povolit zprostředkovatele, najdete v tématu [použití Microsoft Authenticator nebo Microsoft Intune portálu společnosti v aplikacích Xamarin iOS a Android](msal-net-use-brokers-with-xamarin-apps.md).
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Ukázka ilustrující vlastnosti specifické pro Xamarin iOS
 

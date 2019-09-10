@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
 ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69657752"
 ---
 | Resource | Zdarma | Sdílené | Basic | Standard | Premium (v2) | Isolated </th> |

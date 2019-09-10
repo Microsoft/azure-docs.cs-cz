@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7c3f72c3ce6acfb63e682b479519dba02a9900eb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898338"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844907"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementace prostorové analýzy IoT pomocí Azure Maps
 
@@ -41,10 +41,10 @@ V našem případě použití jsou Půjčovna auta vybavená zařízeními IoT, 
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ V našem případě použití jsou Půjčovna auta vybavená zařízeními IoT, 
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -113,7 +113,7 @@ Aby bylo možné protokolovat data události, vytvoříme účet pro obecné ú�
 
 1. V účtu úložiště přejděte na objekty blob.
 
-    ![struktur](./media/tutorial-iot-hub-maps/blobs.png)
+    ![Struktur](./media/tutorial-iot-hub-maps/blobs.png)
 
 2. Klikněte na tlačítko kontejner v levém horním rohu a pojmenujte kontejner "contoso-pronájem-logs" a klikněte na OK.
 
@@ -151,7 +151,7 @@ Aby bylo možné se připojit k IoT Hub, musí být zařízení registrované. P
 
 ## <a name="upload-geofence"></a>Nahrát geografickou ochranu
 
-Pro nahrání geografického data do služby [](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) Azure Maps pomocí rozhraní API pro nahrání dat Azure Maps použijeme [aplikaci post](https://www.getpostman.com) . Jakákoli událost, pokud je auto mimo tuto geografickou oblast, se zaprotokoluje.
+Pro [nahrání geografického](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) data do služby Azure Maps pomocí rozhraní API pro nahrání dat Azure Maps použijeme [aplikaci post](https://www.getpostman.com) . Jakákoli událost, pokud je auto mimo tuto geografickou oblast, se zaprotokoluje.
 
 Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte geografickou ochranou pomocí Azure Maps, rozhraní API pro nahrání dat.  
 
@@ -171,7 +171,7 @@ Otevřete aplikaci pro vystavování a podle následujících pokynů nahrajte g
    
     ![Post – parametry klíč-hodnota](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
-4. Klikněte na **text** a pak vyberte formát nezpracovaného vstupu a jako vstupní formát v rozevíracím seznamu zvolte **JSON (aplikace/text)** . [Sem](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)otevřete datový soubor JSON a zkopírujte ho do části text v poli post jako data, která se mají nahrát, a klikněte na **Odeslat**.
+4. Klikněte na **text** a pak vyberte formát **nezpracovaného** vstupu a jako vstupní formát v rozevíracím seznamu zvolte **JSON (aplikace/text)** . [Sem](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)otevřete datový soubor JSON a zkopírujte ho do části text v poli post jako data, která se mají nahrát, a klikněte na **Odeslat**.
     
     ![odeslání dat](./media/tutorial-iot-hub-maps/post-json-data.png)
     
@@ -217,7 +217,7 @@ Azure Functions je výpočetní služba bez serveru, která nám umožňuje spus
 
 4. Vyberte **Další šablony** a klikněte na tlačítko **Dokončit a zobrazit šablony**. 
 
-5. Vyberte šablonu s triggerem **Azure Event Grid**. Nainstalovat rozšíření Pokud se zobrazí výzva, pojmenujte funkci a stiskněte **vytvořit**.
+5. Vyberte šablonu s **triggerem Azure Event Grid**. Nainstalovat rozšíření Pokud se zobrazí výzva, pojmenujte funkci a stiskněte **vytvořit**.
 
     ![Šablona funkce](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
 
@@ -280,7 +280,7 @@ Níže uvedená mapa znázorňuje čtyři body, ve kterých bylo vozidlo mimo ge
 
 ![Mapa porušení](./media/tutorial-iot-hub-maps/violation-map.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete prozkoumat rozhraní API Azure Maps použitá v tomto kurzu, přečtěte si:
 

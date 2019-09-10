@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 3d3805fe5a574d3e6ecd9a6fa8f95dd28f308d25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101395"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858571"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -58,11 +58,8 @@ Tyto image se považují za "Přineste si vlastní licenci", takže se vám budo
 
 Jednotlivci si také můžou zvolit, že budou svá řešení založit na vlastní imagi, kterou vytvoří od začátku v Azure, nebo nahrajte vlastní image ze svého místního prostředí.
 
-## <a name="support-for-jd-edwards"></a>Podpora pro řešení JD Edwards
-Podle informací o podpoře Oracle Poznámka k [dokumentu s ID 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), řešení JD Edwards EnterpriseOne verze 9,2 a vyšší jsou podporovány v **jakékoli veřejné cloudové nabídce** , která splňuje jejich konkrétní `Minimum Technical Requirements` (MTR).  Musíte vytvořit vlastní image, které splňují specifikace MTR pro kompatibilitu s operačním systémem a softwarovou aplikací. 
-
 ## <a name="oracle-database-vm-images"></a>Image virtuálních počítačů Oracle Database
-Oracle podporuje v Azure image virtuálních počítačů s operačním systémem Oracle DB 12,1 Standard a Enterprise a na základě Oracle Linux.  Pokud chcete dosáhnout nejlepšího výkonu pro produkční úlohy Oracle DB v Azure, ujistěte se, že máte správně nastavenou velikost image virtuálního počítače a používáte Managed Disks, které se zálohují Premium Storage. Pokyny, jak rychle získat Oracle DB a spustit v Azure pomocí image virtuálního počítače s Oracle, najdete v [Průvodci rychlým startem Oracle DB](oracle-database-quick-create.md).
+Oracle podporuje na imagích virtuálních počítačů, které jsou založené na Oracle Linux, operační systémy Oracle DB 12,1 a vyšší verze Standard a Enterprise v Azure.  Pokud chcete dosáhnout nejlepšího výkonu pro produkční úlohy Oracle DB v Azure, ujistěte se, že máte správně nastavenou velikost image virtuálního počítače a používáte SSD úrovně Premium nebo SSD úrovně Ultra Managed Disks. Pokyny, jak rychle získat Oracle DB a spustit v Azure pomocí image virtuálního počítače s Oracle, najdete v [Průvodci rychlým startem Oracle DB](oracle-database-quick-create.md).
 
 ### <a name="attached-disk-configuration-options"></a>Možnosti konfigurace připojeného disku
 
@@ -80,6 +77,13 @@ Azure NetApp Files byla navržena tak, aby splňovala základní požadavky na s
 Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetApp® ONTAP® všechny systémy, které běží v prostředí Azure Data Center – jako nativní službu Azure. Výsledkem je ideální technologie databázového úložiště, kterou lze zřídit a spotřebovat stejně jako jiné možnosti služby Azure Storage. Další informace o nasazení a přístupu Azure NetApp Files ke svazkům systému souborů NFS najdete v [dokumentaci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/) . Osvědčené [postupy pro nasazení Oracle v Azure](https://www.netapp.com/us/media/tr-4780.pdf) najdete v tématu Příručka k osvědčeným postupům pro použití Azure NetApp Files pro doporučení pro provoz databáze Oracle v Azure NetApp Files.
 
 
+## <a name="licensing-oracle-database--software-on-azure"></a>Licencování Oracle Database & software v Azure
+Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s technologií Hyper-Threading povolených pro databáze edice Enterprise Edition počítá 2 vCPU jako ekvivalentní jedné licenci Oracle Processor, pokud je povolená možnost webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
+Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) Oracle DB pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
+
+Když migrujete software Oracle a úlohy z místního prostředí do Microsoft Azure, Oracle nabízí mobilitu licencí, jak je uvedeno v tématu [Oracle on Azure – Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) .
+
+
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Cluster reálné aplikace Oracle (Oracle RAC)
 Oracle RAC je navržený tak, aby zmírnil selhání jednoho uzlu v místní konfiguraci clusteru s více uzly. Spoléhá se na dvě místní technologie, které nejsou nativní pro prostředí veřejného cloudu bez technologie Hyper-v: síťové vícenásobné vysílání a sdílený disk. Pokud vaše databázové řešení vyžaduje pro Azure RAC v Azure, budete potřebovat software třetích stran, který tyto technologie povoluje. Další informace o účtu Oracle RAC najdete na [stránce FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/).
 
@@ -95,6 +99,11 @@ Pomocí Oracle data Guard je možné dosáhnout vysoké dostupnosti s primární
 Kurz [implementace Oracle GoldenGate v Azure](configure-oracle-golden-gate.md) vás provede základními postupy nastavení v Azure.
 
 Kromě toho, že máte v Azure navržený řešení HA a zotavení po havárii, byste měli mít k dispozici strategii zálohování pro obnovení databáze. Kurz [zálohování a obnovení Oracle Database](oracle-backup-recovery.md) vás provede základním postupem pro vytvoření konzistentní zálohy.
+
+
+## <a name="support-for-jd-edwards"></a>Podpora pro řešení JD Edwards
+Podle informací o podpoře Oracle Poznámka k [dokumentu s ID 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), řešení JD Edwards EnterpriseOne verze 9,2 a vyšší jsou podporovány v **jakékoli veřejné cloudové nabídce** , která splňuje jejich konkrétní `Minimum Technical Requirements` (MTR).  Musíte vytvořit vlastní image, které splňují specifikace MTR pro kompatibilitu s operačním systémem a softwarovou aplikací. 
+
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Image virtuálních počítačů Oracle WebLogic Server
 
@@ -130,7 +139,7 @@ Související informace najdete v článku znalostní báze **860340,1** na <htt
    JDK dostupné v imagích JDK 6 a 7 a virtuální počítače a image, které z nich jsou odvozené, se dají používat jenom v Azure.
 * **64 bitová JDK.** Image virtuálních počítačů Oracle WebLogic Server a image virtuálních počítačů Oracle JDK, které poskytuje Azure, obsahují 64 verze Windows serveru i JDK.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Nyní máte přehled o aktuálních řešeních Oracle na základě imagí virtuálních počítačů v Microsoft Azure. Vaším dalším krokem je nasazení první databáze Oracle v Azure.
 
 > [!div class="nextstepaction"]

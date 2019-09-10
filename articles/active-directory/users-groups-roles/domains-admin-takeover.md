@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a756f0d9fe3669ab9d0f2b4576a35be5d2112a87
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736802"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872208"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -102,15 +102,17 @@ Mezi podporované plány služby patří:
 - Microsoft Stream
 - Bezplatná zkušební verze Dynamics 365
 
-Převzetí externích správců se nepodporuje u žádné služby, která obsahuje plány služeb, které zahrnují SharePoint, OneDrive nebo Skype pro firmy. například prostřednictvím bezplatného předplatného Office. Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravovaného tenanta a jeho ověření v požadovaném tenantovi. Tato možnost ForceTakeover se nepřemístí pro uživatele nebo zachová přístup k předplatnému. Místo toho tato možnost přesune pouze název domény. 
+Převzetí externích správců se nepodporuje u žádné služby, která obsahuje plány služeb, které zahrnují SharePoint, OneDrive nebo Skype pro firmy. například prostřednictvím bezplatného předplatného Office. 
+
+Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravovaného tenanta a jeho ověření v požadovaném tenantovi. **Možnost ForceTakeover se nepřesouvá nad uživatele nebo zachovává přístup k předplatnému. Tato možnost přesune pouze název domény.**
 
 #### <a name="more-information-about-rms-for-individuals"></a>Další informace o RMS pro jednotlivce
 
-U [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaný tenant ve stejné oblasti jako tenant, který vlastníte, automaticky se vytvoří [Azure Information Protection klíč tenanta](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se taky přesouvají přes název domény 
+U [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaný tenant ve stejné oblasti jako tenant, který vlastníte, automaticky se vytvoří [Azure Information Protection klíč tenanta](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se taky přesouvají přes název domény
 
-Klíč a šablony nejsou přesunuty, pokud se nespravovaný tenant nachází v jiné oblasti. Nespravovaný tenant je například v Evropě a tenant, který vlastníte, je v Severní Americe. 
+Klíč a šablony nejsou přesunuty, pokud se nespravovaný tenant nachází v jiné oblasti. Například pokud je nespravovaný klient v Evropě a organizace, kterou vlastníte, je v Severní Amerika.
 
-I když je služba RMS pro jednotlivce navržená tak, aby podporovala ověřování Azure AD pro otevření chráněného obsahu, nebrání uživatelům také v ochraně obsahu. Pokud uživatelé převzali ochranu obsahu pomocí předplatného RMS pro jednotlivce a klíč a šablony se nepřesunuly, nebude tento obsah po převzetí domény přístupný.
+I když je služba RMS pro jednotlivce navržená tak, aby podporovala ověřování Azure AD pro otevření chráněného obsahu, nebrání uživatelům také v ochraně obsahu. Pokud uživatelé prováděli ochranu obsahu pomocí předplatného služby RMS pro jednotlivce a klíč a šablony nebyly přesunuty, nebude tento obsah po převzetí domény přístupný.
 
 #### <a name="more-information-about-power-bi"></a>Další informace o Power BI
 
@@ -119,16 +121,18 @@ Když provedete externí převzetí, Power BI obsah, který byl vytvořen před 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Rutiny Azure AD PowerShellu pro možnost ForceTakeover
 Tyto rutiny se zobrazují v [příkladu PowerShellu](#powershell-example).
 
-
-rutiny | Použití 
+rutiny | Použití
 ------- | -------
 `connect-msolservice` | Po zobrazení výzvy se přihlaste ke spravovanému tenantovi.
 `get-msoldomain` | Zobrazuje názvy domén přidružené k aktuálnímu tenantovi.
 `new-msoldomain –name <domainname>` | Přidá název domény do tenanta jako Neověřeno (zatím se neprovede žádné ověření DNS).
-`get-msoldomain` | Název domény je teď zahrnutý v seznamu názvů domén přidružených ke spravovanému tenantovi, ale je uvedený jako neověřený.
+`get-msoldomain` | Název domény je teď zahrnutý v seznamu názvů domén přidružených ke spravovanému tenantovi, ale je uvedený jako **neověřený**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Poskytuje informace, které se vloží do nového záznamu TXT DNS pro doménu (MS = xxxxx). K ověření se nemusí okamžitě docházet, protože nějaký čas může rozšířit záznam TXT, takže Počkejte pár minut, než se pustíte do úvahy možnosti **-ForceTakeover** . 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud se název domény stále neověřuje, můžete pokračovat s možností **-ForceTakeover** . Ověřuje, že byl vytvořen záznam TXT a je odpojený od procesu převzetí.<li>Možnost **-ForceTakeover** by se měla přidat do rutiny jenom v případě, že je vynuceno převzetí externích správců, například když má nespravovaný tenant služby Office 365 blokující převzetí.
 `get-msoldomain` | Seznam domén nyní zobrazuje název domény jako **ověřený**.
+
+> [!NOTE]
+> Nespravovaná organizace Azure AD se odstraní 10 dnů po uplatnění možnosti externí převzetí.
 
 ### <a name="powershell-example"></a>Příklad PowerShellu
 

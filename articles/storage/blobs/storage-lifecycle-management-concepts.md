@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 77ed643afaf5e69f41224af68f5e9f8a93fcace5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ea896697c8f6986c4c77f3ce86a62947d9a3327e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722084"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861410"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu služby Azure Blob Storage
 
@@ -54,7 +54,7 @@ Zásadu můžete přidat, upravit nebo odebrat pomocí kterékoli z následujíc
 Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.  
 
 > [!NOTE]
-> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat zadáním výjimek. Požadovaná obejití jsou: `Logging,  Metrics,  AzureServices`. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Pokud pro svůj účet úložiště povolíte pravidla brány firewall, můžou být požadavky správy životního cyklu blokované. Tyto požadavky můžete odblokovat zadáním výjimek. Požadované obcházení je: `AzureServices`. Další informace najdete v části výjimky v tématu [Konfigurace bran firewall a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -435,4 +435,4 @@ Když se objekt BLOB přesune z jedné úrovně přístupu na jiný, čas posled
 
 Přečtěte si, jak obnovit data po náhodném odstranění:
 
-- [Obnovitelné odstranění pro objekty blob Azure Storage](../blobs/storage-blob-soft-delete.md)
+- [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/storage-blob-soft-delete.md)

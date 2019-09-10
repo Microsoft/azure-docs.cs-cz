@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567583"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858619"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci v Azure SQL Database
 
@@ -229,7 +229,7 @@ Kromě toho můžete přidat položky do směrovací tabulky pro směrování pr
 
 Pokud virtuální síť obsahuje vlastní DNS, vlastní server DNS musí být schopný přeložit veřejné záznamy DNS. Použití dalších funkcí, jako je ověřování Azure AD, může vyžadovat vyřešení dalších plně kvalifikovaných názvů domén. Další informace najdete v tématu [nastavení vlastního DNS](sql-database-managed-instance-custom-dns.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled najdete v tématu [SQL Database pokročilé zabezpečení dat](sql-database-managed-instance.md).
 - Přečtěte si, jak [nastavit novou virtuální síť Azure](sql-database-managed-instance-create-vnet-subnet.md) nebo [existující virtuální síť Azure](sql-database-managed-instance-configure-vnet-subnet.md) , kde můžete nasadit spravované instance.
@@ -238,4 +238,4 @@ Pokud virtuální síť obsahuje vlastní DNS, vlastní server DNS musí být sc
   - Z [Azure Portal](sql-database-managed-instance-get-started.md).
   - Pomocí [prostředí PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Pomocí [šablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Pomocí [šablony Azure Resource Manager (s použitím JumpBox, včetně SSMS)](https://portal.azure.com/). 
+  - Pomocí [šablony Azure Resource Manager (s použitím JumpBox, včetně SSMS)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

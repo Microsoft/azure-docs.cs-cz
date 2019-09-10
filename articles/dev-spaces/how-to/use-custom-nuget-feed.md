@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Pomocí vlastního informačního kanálu NuGet můžete získat přístup k balíčkům NuGet v prostoru pro vývoj Azure a používat je.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 manager: gwallace
-ms.openlocfilehash: 44a87491d276e09e1fa8fed3f5e6803648c3e4a2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305386"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873257"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Použití vlastního informačního kanálu NuGet v prostoru pro vývoj v Azure
 
@@ -33,7 +33,7 @@ Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages
 </ItemGroup>
 ```
 
-Vytvořte soubor [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ve složce projektu a nastavte `packageSources` oddíly a `packageSourceCredentials` pro váš informační kanál NuGet. `packageSources` Oddíl obsahuje adresu URL vašeho informačního kanálu, která musí být veřejně přístupná. `packageSourceCredentials` Přihlašovací údaje pro přístup k informačnímu kanálu. Příklad:
+Vytvořte soubor [NuGet. config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ve složce projektu a nastavte `packageSources` oddíly a `packageSourceCredentials` pro váš informační kanál NuGet. `packageSources` Oddíl obsahuje adresu URL vašeho informačního kanálu, která musí být přístupná z vašeho clusteru AKS. `packageSourceCredentials` Přihlašovací údaje pro přístup k informačnímu kanálu. Příklad:
 
 ```xml
 <packageSources>
@@ -71,6 +71,6 @@ Pokud Git nepoužíváte, můžete tento krok přeskočit.
 
 Při příštím spuštění `azds up` `F5` nebo přihlášení do Visual Studio Code nebo sady Visual Studio se Azure dev Spaces synchronizuje `NuGet.Config` soubor, který použije k instalaci závislostí balíčku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si další informace o [NuGet a o tom, jak funguje](https://docs.microsoft.com/nuget/what-is-nuget).

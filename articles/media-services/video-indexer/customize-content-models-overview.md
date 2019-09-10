@@ -1,6 +1,6 @@
 ---
 title: Přizpůsobení modelů obsahu v Azure Media Services Video Indexer
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Tento článek obsahuje odkazy na koncepční články, které vysvětlují výhody jednotlivých typů přizpůsobení. Tento článek obsahuje také odkazy na návody, které ukazují, jak můžete implementovat přizpůsobení jednotlivých modelů.
 services: media-services
 author: anikaz
@@ -10,19 +10,23 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 8499e816f60b9d6605bdbdc392f6d2b3e134b863
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878821"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860202"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Přizpůsobení modelů obsahu v Video Indexer
 
 Video Indexer vám umožní přizpůsobit některé z jeho modelů, aby byly přizpůsobené vašemu konkrétnímu případu použití. Mezi tyto modely patří [značky](customize-brands-model-overview.md), [jazyk](customize-language-model-overview.md)a [osoba](customize-person-model-overview.md). Tyto modely můžete snadno přizpůsobit pomocí Video Indexer webu nebo rozhraní API.
 
-Tento článek obsahuje odkazy na koncepční články, které vysvětlují výhody jednotlivých typů přizpůsobení. Tento článek obsahuje také odkazy na návody, které ukazují, jak můžete implementovat přizpůsobení jednotlivých modelů.
- 
+Tento článek obsahuje odkazy na články, které vysvětlují výhody jednotlivých typů přizpůsobení. Článek také obsahuje odkazy na návody, které ukazují, jak můžete implementovat přizpůsobení jednotlivých modelů.
+
+## <a name="animated-characters"></a>Animované znaky
+
+* [Animovaná detekce znaků](animated-characters-recognition.md)
+
 ## <a name="brands-model"></a>Model značek
 
 * [Přehled přizpůsobení modelu značek](customize-brands-model-overview.md)
@@ -41,6 +45,6 @@ Tento článek obsahuje odkazy na koncepční články, které vysvětlují výh
 * [Přizpůsobení modelů osob pomocí Video Indexer webu](customize-person-model-with-website.md)
 * [Přizpůsobení modelů osob pomocí rozhraní Video Indexer API](customize-person-model-with-api.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled Video Indexeru](video-indexer-overview.md)

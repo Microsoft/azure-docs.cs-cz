@@ -1,5 +1,5 @@
 ---
-title: Použití úložiště Queue z Node. js – Azure Storage
+title: Použití úložiště Azure Queue z Node. js – Azure Storage
 description: Naučte se používat Služba front Azure k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky napsané v Node. js
 author: mhopkins-msft
 ms.service: storage
@@ -8,12 +8,13 @@ ms.date: 12/08/2016
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13da3adc1a3f95f9fdb29eb181eb9759e175cffe
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 83aecc9c05fec5869a82930f2d687ac907981c00
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721271"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858666"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Používání úložiště Queue z Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

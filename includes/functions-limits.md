@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
 ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "69636449"
 ---
 | Resource | [Plán spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [Plán App Service](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
@@ -32,7 +32,7 @@ ms.locfileid: "69636449"
 <sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../articles/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  
 <sup>3</sup> vyžaduje, aby byl plán App Service nastavený na [vždycky zapnutý](../articles/azure-functions/functions-scale.md#always-on). Platíte za standardní [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> tato omezení se nastavují na [hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
+<sup>4</sup> tato omezení se [nastavují na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>5</sup> skutečný počet aplikací Function App, které můžete hostovat, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  
 <sup>6</sup> limit úložiště je celková velikost obsahu v dočasném úložišti napříč všemi aplikacemi ve stejném plánu App Service. Plán spotřeby používá soubory Azure pro dočasné úložiště.  
 <sup>7</sup> Pokud je vaše aplikace Function hostovaná v [plánu spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan), podporuje se jenom možnost CNAME. Pro aplikace Function App v [plánu Premium](../articles/azure-functions/functions-scale.md#premium-plan) nebo v [plánu App Service](../articles/azure-functions/functions-scale.md#app-service-plan)můžete namapovat vlastní doménu pomocí záznamu CNAME nebo a.

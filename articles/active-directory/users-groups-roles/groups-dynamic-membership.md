@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4b5f85aa99876ef6c3c9193612051085f3e0ffc0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194611"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872187"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -96,7 +96,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Vlastnosti | Povolené hodnoty | Použití |
 | --- | --- | --- |
 | city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
-| krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
+| Krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Oddělení |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
 | displayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
@@ -120,7 +120,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
 | userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
-| userType |člen typu host *null* |(User. userType-EQ "Member") |
+| UserType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
@@ -358,6 +358,11 @@ Název vlastní vlastnosti lze najít v adresáři dotazem na vlastnost uživate
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 
 Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Nemůžete mít uživatele i zařízení jako členy skupiny. Atribut **organizationalUnit** již není uveden a neměl by být použit. Tento řetězec je v Intune nastavený v určitých případech, ale Azure AD ho nerozpoznal, takže se do skupin na základě tohoto atributu nepřidala žádná zařízení.
+
+> [!NOTE]
+> systemlabels je atribut jen pro čtení, který nelze nastavit pomocí Intune.
+>
+> V případě systému Windows 10 je správný formát atributu deviceOSVersion následující: (Device. deviceOSVersion-EQ "10,0 (17763)"). Formátování se dá ověřit pomocí rutiny PowerShellu Get-MsolDevice.
 
 Je možné použít následující atributy zařízení.
 

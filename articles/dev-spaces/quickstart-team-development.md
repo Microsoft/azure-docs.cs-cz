@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Vývoj týmu Kubernetes pomocí kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f4a0a4858c890c94e3983c3dc9b10d739dc1352d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772569"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842587"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj pro tým v Kubernetes pomocí Azure Dev Spaces
 
@@ -146,12 +146,12 @@ Pomocí příkazu vypište všechny vývojové prostory a potvrďte možnost *de
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 Použijte k zobrazení adres URL pro ukázkovou aplikaci v aktuálně vybraném prostoru, který je určen pro *vývoj/azureuser2.* `azds list-uris`
@@ -201,6 +201,9 @@ Tento příkaz sestaví a spustí službu *bikesharingweb* ve vývojovém prosto
 Přejděte ke službě *bikesharingweb* pro vývojové místo pro *vývoj/azureuser2* otevřením veřejné adresy URL zobrazené ve `azds up` výstupu příkazu. Jako uživatel vyberte *Aurelia Briggs (zákazník)* . Ověřte, že se v pravém horním rohu zobrazil aktualizovaný text. Je možné, že budete muset aktualizovat stránku nebo vymazat mezipaměť prohlížeče, pokud tuto změnu neuvidíte okamžitě.
 
 ![Byla aktualizována ukázková aplikace Azure Dev Spaces sdílení kol.](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> Když při spuštění `azds up`přejdete ke službě, ve výstupu `azds up` příkazu se zobrazí také trasování požadavků HTTP. Tyto trasování vám můžou pomoct při řešení potíží a ladění vaší služby. Tato trasování můžete zakázat pomocí `--disable-http-traces` aplikace při spuštění. `azds up`
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Ověřit, jestli nejsou jiné vývojové prostory beze změny
 

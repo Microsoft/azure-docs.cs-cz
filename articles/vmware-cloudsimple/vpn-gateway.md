@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a61e789bb40d8263d293c70a67567ea61d5d2652
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972608"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845362"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Nastavení bran sítě VPN v síti CloudSimple
 
@@ -56,7 +56,7 @@ Brána sítě VPN typu Point-to-site umožňuje definovat zásady automatického
     > [!WARNING]
     > Povolení vysoké dostupnosti vyžaduje, aby vaše místní zařízení VPN podporovalo připojení ke dvěma IP adresám. Po nasazení služby VPN Gateway nelze tuto možnost zakázat.
 
-5. Vytvořte první připojení z místní sítě a klikněte na **Další** .
+5. Vytvořte první připojení z místní sítě a klikněte na **Další**.
 
     * Zadejte název pro identifikaci připojení.
     * V poli IP adresa partnerského uzlu zadejte veřejnou IP adresu místní brány VPN.

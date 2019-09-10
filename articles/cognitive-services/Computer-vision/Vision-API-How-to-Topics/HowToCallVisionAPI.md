@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 97b9e0defb3f349a6e202572bc0e3005d5d87e9c
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 386503a7089c910b52a87cca8d9f2f2203ae0cad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141190"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859069"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Příklad: Postup volání rozhraní API pro počítačové zpracování obrazu
 
@@ -57,9 +57,14 @@ Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https:/
 
     ```ocp-apim-subscription-key: <Your subscription key>```
 
-1. Pokud použijete klientskou knihovnu, předáte klíč předplatného prostřednictvím konstruktoru VisonServiceClient:
+1. Při použití klientské knihovny je klíč předplatného předán prostřednictvím konstruktoru třídy ComputerVisionClient a oblast je určena ve vlastnosti klienta:
 
-    ```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+    ```
+    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
+    {
+        Endpoint = "https://westus.api.cognitive.microsoft.com"
+    }
+    ```
 
 ## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Nahrání obrázku do služby rozhraní API pro počítačové zpracování obrazu a získání zpětných značek, popisů a celebrit
 
@@ -74,16 +79,16 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatur
 ```
 
 ```csharp
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using System.IO;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-AnalysisResult analysisResult;
-var features = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+ImageAnalysis imageAnalysis;
+var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
 
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.AnalyzeImageAsync(fs, features);
+  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
 }
 ```
 
@@ -92,17 +97,17 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 ###### <a name="tags-only"></a>Pouze značky:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
-var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 ###### <a name="description-only"></a>Pouze popis:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.DescribeAsync(fs);
+  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
 }
 ```
 

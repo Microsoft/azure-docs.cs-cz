@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9a2b030185c821ec9bd577ecdabbc929766f2d14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997918"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858898"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 
@@ -553,13 +553,13 @@ Existují dva způsoby, jak generovat funkci význam.
     print(per_class_summary)
     ```
 
-Můžete vizualizovat graf význam funkce ve vašem pracovním prostoru na webu Azure Portal. Zobrazit adresu URL pomocí objektu Run:
+Pokud chcete zobrazit důležitost funkcí pomocí objektu Run, zobrazte si adresu URL:
 
 ```
 automl_run.get_portal_url()
 ```
 
-Můžete vizualizovat graf význam funkce ve vašem pracovním prostoru na webu Azure Portal. Graf je také zobrazen při použití `RunDetails` [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) v poznámkovém bloku. Další informace o grafech najdete v tématu popisujícím [automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
+Graf důležitost funkcí v pracovním prostoru můžete vizualizovat v Azure Portal nebo na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com). Graf je také zobrazen při použití `RunDetails` [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) v poznámkovém bloku. Další informace o grafech najdete v tématu popisujícím [automatizované výsledky strojového učení](how-to-understand-automated-ml.md).
 
 ```Python
 from azureml.widgets import RunDetails
@@ -568,10 +568,10 @@ RunDetails(automl_run).show()
 
 ![Funkce význam grafu](./media/how-to-configure-auto-train/feature-importance.png)
 
-Další informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v [](machine-learning-interpretability-explainability.md) článku konceptu o výkladu.
+Další informace o tom, jak je možné povolit vysvětlení modelu a důležitost funkcí v jiných oblastech sady SDK mimo automatizované strojové učení, najdete v článku [konceptu](machine-learning-interpretability-explainability.md) o výkladu.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o [jak a kde nasadit model](how-to-deploy-and-where.md).
 
-Přečtěte si další informace o [tom, jak vytvořit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [jak pomocí automatizovaného strojového učení na vzdáleném prostředku](how-to-auto-train-remote.md)vyškolit.
+Přečtěte si další informace o [tom, jak vytvořit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [jak pomocí automatizovaného strojového učení na vzdáleném prostředku vyškolit](how-to-auto-train-remote.md).

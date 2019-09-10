@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: acfcee6e8308bc508bd709c40bd1794beab3130f
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 5a6aebd276ef8658da9ca763be7da5c38a9c772a
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804727"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873432"
 ---
 # <a name="use-azure-data-factory-template-for-bulk-copy-from-database-to-azure-data-explorer"></a>Použití šablony Azure Data Factory pro hromadné kopírování z databáze do Azure Průzkumník dat
 
@@ -38,19 +38,19 @@ Azure Průzkumník dat je rychlá a plně spravovaná služba analýzy dat pro a
 
 Příklad SQL Server formátu zdrojové tabulky:
     
-    ```sql   
-    CREATE TABLE control_table (
-        PartitionId int,
-        SourceQuery varchar(255),
-        ADXTableName varchar(255)
-    );
-    ```
+```sql   
+CREATE TABLE control_table (
+PartitionId int,
+SourceQuery varchar(255),
+ADXTableName varchar(255)
+);
+```
     
-        |Vlastnost  |Popis  | Příklad
-        |---------|---------| ---------|
-        |Oddílu   |   Kopírovat pořadí | 1  |  
-        |SourceQuery   |   dotaz, který označuje, která data se zkopírují během běhu kanálu | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-        |ADXTableName  |  název cílové tabulky | MyAdxTable       |  
+|Vlastnost  |Popis  | Příklad
+|---------|---------| ---------|
+|Oddílu   |   Kopírovat pořadí | 1  |  
+|SourceQuery   |   dotaz, který označuje, která data se zkopírují během běhu kanálu | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  název cílové tabulky | MyAdxTable       |  
 
 Pokud je vaše **ControlTableDataset** v jiném formátu, vytvořte si pro svůj formát srovnatelný **ControlTableDataset** .
 

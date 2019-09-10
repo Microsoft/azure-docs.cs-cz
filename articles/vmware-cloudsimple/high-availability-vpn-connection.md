@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972782"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845323"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurace připojení s vysokou dostupností z místního prostředí do CloudSimple VPN Gateway
 
@@ -50,7 +50,7 @@ Ve výchozím nastavení jsou brány VPN CloudSimple nakonfigurované v režimu 
 
 Před konfigurací místní brány firewall proveďte následující úlohy.
 
-1. Ověřte, že vaše organizace [](create-nodes.md) zakoupila požadované uzly a vytvořila aspoň jeden privátní cloud CloudSimple.
+1. Ověřte, že vaše organizace [zřídila](create-nodes.md) požadované uzly a vytvořila aspoň jeden privátní cloud CloudSimple.
 2. [Nakonfigurujte bránu VPN typu Site-to-site](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) mezi vaší místní sítí a privátním cloudem CloudSimple.
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Konfigurace místní brány firewall pro Cisco ASA
@@ -270,7 +270,7 @@ Vyberte **síť** > **rozbalte položku** > **monitorování**profilů sítě p�
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Nastavte primární a sekundární tunelové propojení IPsec.
 
-Vyberte **síťové** > tunely > IPSec přidat, nakonfigurujte následující pole a klikněte na **OK**.
+Vyberte **síťové** > **tunely** > IPSec přidat, nakonfigurujte následující pole a klikněte na **OK**.
 
 Karta Obecné:
 

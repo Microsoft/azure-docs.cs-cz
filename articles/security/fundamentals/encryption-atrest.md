@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2019
+ms.date: 09/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f3cacdad2986de257ae345f4baa9d14ea6c894b2
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182798"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873191"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -74,7 +74,7 @@ Oprávnění k použití klíčů uložených v Azure Key Vault, a to buď pro s
 Při implementaci neaktivního šifrování se používá více než jeden šifrovací klíč. Asymetrické šifrování je užitečné pro vytvoření vztahu důvěryhodnosti a ověřování potřebného pro přístup a správu klíčů. Symetrické šifrování je efektivnější pro hromadné šifrování a dešifrování, což umožňuje silnější šifrování a lepší výkon. Omezení použití jediného šifrovacího klíče snižuje riziko ohrožení bezpečnosti klíče a náklady na opakované šifrování, když je nutné klíč nahradit. Šifrování Azure v modelech REST používá klíčovou hierarchii, která se skládá z následujících typů klíčů:
 
 - **Šifrovací klíč dat (klíč DEK)** – symetrický AES256 klíč, který slouží k šifrování oddílu nebo bloku dat.  Jeden prostředek může mít mnoho oddílů a mnoho datových šifrovacích klíčů. Šifrování každého bloku dat jiným klíčem usnadňuje útokům na kryptografickou analýzu. Poskytovatel prostředků nebo instance aplikace, která šifruje a šifruje konkrétní blok, vyžaduje přístup k DEKs. Pokud je klíč DEK nahrazen novým klíčem, je nutné znovu zašifrovat pomocí nového klíče pouze data v jeho přidruženém bloku.
-- Klíč šifrovacího klíče **(KEK)** – asymetrický šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče umožňuje šifrování a řízení šifrovacích klíčů. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Entita může zprostředkovatelům přístup k klíč DEK omezit přístup ke každému klíč dek na konkrétní oddíl. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
+- Klíč **šifrovacího klíče (KEK)** – asymetrický šifrovací klíč používaný k šifrování šifrovacích klíčů dat. Použití klíčového šifrovacího klíče umožňuje šifrování a řízení šifrovacích klíčů. Entita, která má přístup k KEK, může být jiná než entita, která vyžaduje klíč dek. Entita může zprostředkovatelům přístup k klíč DEK omezit přístup ke každému klíč dek na konkrétní oddíl. Vzhledem k tomu, že KEK je vyžadován k dešifrování DEKs, je KEK v podstatě jediným bodem, pomocí kterého je DEKs možné efektivně odstranit odstraněním KEK.
 
 Šifrovací klíče dat šifrované pomocí klíčového šifrovacího klíče se ukládají samostatně a jenom entita s přístupem ke klíčovým šifrovacím klíčům může získat všechny šifrovací klíče zašifrované s tímto klíčem. Podporují se různé modely úložiště klíčů. Každý model se podrobněji probere dále v další části.
 
@@ -127,7 +127,7 @@ Každé šifrování na straně serveru v modelech REST zahrnuje různé charakt
 
 U mnoha zákazníků je základním požadavkem zajistit, aby data byla zašifrována, kdykoli jsou v klidovém stavu. Šifrování na straně serveru pomocí klíčů spravovaných službou umožňuje tomuto modelu povolit zákazníkům označit konkrétní prostředek (účet úložiště, databázi SQL atd.) pro šifrování a ponechat všechny aspekty správy klíčů, jako je vystavování klíčů, rotace a zálohování do Microsoftu. . Většina služeb Azure, které podporují šifrování v klidovém umístění, obvykle podporuje tento model přesměrování správy šifrovacích klíčů do Azure. Poskytovatel prostředků Azure vytvoří klíče, umístí je do zabezpečeného úložiště a v případě potřeby je načte. To znamená, že služba má úplný přístup ke klíčům a služba má plnou kontrolu nad správou životního cyklu přihlašovacích údajů.
 
-![starosti](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
+![Starosti](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Šifrování na straně serveru pomocí klíčů spravovaných službou proto rychle řeší nutnost šifrování v klidovém provozu s nízkou režií zákazníkovi. Pokud je k dispozici zákazník, obvykle otevře Azure Portal pro cílového předplatného a poskytovatele prostředků a zkontroluje box s označením, že chcete data šifrovat. V některých správců prostředků je šifrování na straně serveru s klíči spravovanými službami ve výchozím nastavení zapnuté.
 
@@ -266,7 +266,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
-| Event Hubs                       | Ano                | -                  | -                  |
+| Event Hubs                       | Ano                | Preview, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Katalog dat Azure               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |

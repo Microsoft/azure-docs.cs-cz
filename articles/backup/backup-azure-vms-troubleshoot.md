@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b3d02d5cfdae2f196f2f35f075dd8c250b5ece1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258988"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860341"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -25,7 +25,7 @@ Tato část popisuje selhání operace zálohování virtuálního počítače A
 
 ### <a name="basic-troubleshooting"></a>Základní řešení potíží
 
-* Ujistěte se, že agent virtuálního počítače (WA Agent) má [nejnovější verzi](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent-on-the-virtual-machine).
+* Ujistěte se, že agent virtuálního počítače (WA Agent) má [nejnovější verzi](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
 * Ujistěte se, že je podporovaná verze operačního systému Windows nebo Linux, a podívejte se na [matrici podpory zálohování virtuálního počítače IaaS](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Ověřte, že není spuštěná jiná služba zálohování.
    * Aby se zajistilo, že nedochází k žádným problémům s rozšířením snímků, [odinstalujte rozšíření pro vynucené načtení a pak zkuste zálohování zopakovat](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).
@@ -81,9 +81,9 @@ Chybová zpráva: Instalace nebo operace rozšíření se nezdařila z důvodu c
 Kód chyby: ExtensionInstallationFailedMDTC <br/>
 Chybová zpráva: Instalace rozšíření se nezdařila s chybou "COM+ se nepovedlo kontaktovat Microsoft DTC (Distributed Transaction Coordinator) <br/>
 
-Operace zálohování se nezdařila z důvodu problému se **systémovou aplikací com+** služby Windows.  Pokud chcete tento problém vyřešit, postupujte následovně:
+Operace zálohování se nezdařila z důvodu problému se systémovou aplikací **com+** služby Windows.  Pokud chcete tento problém vyřešit, postupujte následovně:
 
-* Zkuste spustit nebo restartovat **systémovou aplikaci modelu COM+** služby Windows (z příkazového řádku se zvýšenými oprávněními **– net start COMSysApp**).
+* Zkuste spustit nebo restartovat systémovou **aplikaci modelu COM+** služby Windows (z příkazového řádku se zvýšenými oprávněními **– net start COMSysApp**).
 * Ujistěte se, že služba **DTC (Distributed Transaction Coordinator)** Services běží jako účet **síťové služby** . Pokud ne, změňte ji tak, aby běžela jako účet **síťové služby** , a restartujte **systémovou aplikaci modelu COM+** .
 * Pokud službu nemůžete restartovat, přeinstalujte **DTC (Distributed Transaction Coordinator)** službu pomocí následujících kroků:
     * Zastavte službu DTC (Distributed Transaction Coordinator).
@@ -115,9 +115,9 @@ Výchozí oprávnění jsou následující:
 * Všemi (R, W)
 * BUILTIN\Administrators (F)
 
-Pokud se v adresáři **MachineKeys** nacházejí oprávnění, která se liší od výchozích hodnot, použijte následující postup pro správné oprávnění, odstraňte certifikát a spusťte zálohování.
+Pokud se v adresáři MachineKeys nacházejí oprávnění, která se liší od výchozích hodnot, použijte následující postup pro správné oprávnění, odstraňte certifikát a spusťte zálohování.
 
-1. Opravte oprávnění v adresáři **MachineKeys** . Pomocí vlastnosti zabezpečení Průzkumníka a pokročilého nastavení zabezpečení v adresáři obnovte oprávnění zpět na výchozí hodnoty. Odeberte všechny objekty uživatele kromě výchozích hodnot z adresáře a ujistěte se, že oprávnění **Everyone** má zvláštní přístup, a to následujícím způsobem:
+1. Opravte oprávnění v adresáři MachineKeys. Pomocí vlastnosti zabezpečení Průzkumníka a pokročilého nastavení zabezpečení v adresáři obnovte oprávnění zpět na výchozí hodnoty. Odeberte všechny objekty uživatele kromě výchozích hodnot z adresáře a ujistěte se, že oprávnění **Everyone** má zvláštní přístup, a to následujícím způsobem:
 
     * Výpis složky/čtení dat
     * Číst atributy

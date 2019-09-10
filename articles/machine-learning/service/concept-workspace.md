@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856200"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860511"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -30,13 +30,13 @@ Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
 
 Diagram znázorňuje následující komponenty pracovního prostoru:
 
-+ Pracovní prostor může obsahovat [virtuální počítače](tutorial-1st-experiment-sdk-setup.md)s poznámkovým blokem, cloudové prostředky nakonfigurované s prostředím Python, které je nutné ke Azure Machine Learning spuštění
++ Pracovní prostor může obsahovat [virtuální počítače s poznámkovým blokem](tutorial-1st-experiment-sdk-setup.md), cloudové prostředky nakonfigurované s prostředím Python, které je nutné ke Azure Machine Learning spuštění
 + [Role uživatelů](how-to-assign-roles.md) umožňují sdílet pracovní prostor s ostatními uživateli, týmy nebo projekty.
 + [Cíle výpočetní](concept-azure-machine-learning-architecture.md#compute-targets) služby se používají ke spouštění experimentů.
 + Při vytváření pracovního prostoru jsou pro vás také vytvořeny [přidružené prostředky](#resources) .
-+ Experimenty jsou školicími [testy](concept-azure-machine-learning-architecture.md#experiments) , které používáte k sestavení vašich modelů.  Experimenty můžete vytvářet a spouštět pomocí
++ [Experimenty](concept-azure-machine-learning-architecture.md#experiments) jsou školicími testy, které používáte k sestavení vašich modelů.  Experimenty můžete vytvářet a spouštět pomocí
     + [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + V Azure Portal část [automatizované experimenty strojového učení (Preview)](how-to-create-portal-experiments.md) .
+    + Část [automatizované experimenty strojového učení (Preview)](how-to-create-portal-experiments.md) v Azure Portal nebo na cílové stránce pracovního prostoru (Preview).
     + [Rozhraní jazyka Visual (Preview)](ui-concept-visual-interface.md).
 + [Kanály](concept-azure-machine-learning-architecture.md#ml-pipelines) jsou opakovaně použitelné pracovní postupy pro školení a přeškolení modelu.
 + Datové [sady](concept-azure-machine-learning-architecture.md#datasets-and-datastores) pomáhají při správě dat, která používáte pro školení modelů a vytváření kanálů.
@@ -49,6 +49,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
 + Na webu:
     + [Azure Portal](https://portal.azure.com)
+    + [Cílová stránka pracovního prostoru (Preview)](https://ml.azure.com)
     + [Vizuální rozhraní (Preview)](ui-concept-visual-interface.md)
 + V Pythonu s využitím Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
@@ -100,7 +101,7 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 > [!NOTE]
 > Kromě vytváření nových verzí můžete používat i existující služby Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat službu Azure Machine Learning, přečtěte si:
 

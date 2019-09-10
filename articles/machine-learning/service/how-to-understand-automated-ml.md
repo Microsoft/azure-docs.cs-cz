@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 60ecd71419bbf65cceab257cb97a96929d24ec08
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192056"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860560"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Vysvětlení automatizovaných výsledků strojového učení
 
@@ -30,10 +30,10 @@ Další informace pro:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze služby Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-* Pomocí sady SDK nebo Azure Portal můžete vytvořit automatický experiment Machine Learning.
+* Pomocí sady SDK můžete v Azure Portal nebo na cílové stránce pracovního prostoru (Preview) vytvořit automatizovaný experiment strojového učení.
 
     * Použití sady SDK k sestavení [modelu klasifikace](how-to-auto-train-remote.md) nebo [regresního modelu](tutorial-auto-train-models.md)
-    * Pomocí [Azure Portal](how-to-create-portal-experiments.md) můžete vytvořit model klasifikace nebo regrese tím, že nahrajete příslušná data.
+    * Pomocí [Azure Portal nebo cílové stránky pracovního prostoru (Preview)](how-to-create-portal-experiments.md) vytvořte model klasifikace nebo regrese tím, že nahrajete příslušná data.
 
 ## <a name="view-the-run"></a>Zobrazit běh
 
@@ -41,7 +41,7 @@ Po spuštění automatizovaného experimentu strojového učení můžete v prac
 
 1. Přejděte do svého pracovního prostoru.
 
-1. V levém panelu pracovního prostoru vyberte experimenty.
+1. V levém panelu pracovního prostoru vyberte **experimenty**.
 
    ![Snímek obrazovky nabídky experimentu](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
@@ -214,7 +214,7 @@ Můžete zkontrolovat skóre význam funkce pro model celkové stejně jako na t
 
 Další informace o povolení funkcí pro interpretaci najdete [v tématu Konfigurace automatizovaných experimentů ml v Pythonu](how-to-configure-auto-train.md#explain-the-model-interpretability).  Příklad, který vysvětluje nejlepší model, naleznete v tématu [nejlepší vysvětlení modelu](how-to-auto-train-remote.md#explain).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
 + Vyzkoušejte ukázkový Poznámkový blok pro [automatizovaný Machine Learning model vysvětlení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) .

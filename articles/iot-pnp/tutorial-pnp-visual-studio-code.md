@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: baf694fbc3176732d43094c8d20ee112af927f16
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186476"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858880"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Kurz: Vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code
 
@@ -35,10 +35,10 @@ V tomto kurzu se naučíte:
 Pokud chcete pracovat s modelem schopností zařízení v tomto kurzu, budete potřebovat:
 
 * [Visual Studio Code](https://code.visualstudio.com/download): VS Code je k dispozici pro více platforem.
-* Rozšíření Azure IoT Device Workbench v VS Code. Pomocí následujících kroků nainstalujete rozšíření Azure IoT Device Workbench do VS Code:
+* Sady [nástrojů Azure IoT pro rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) . K instalaci balíčku rozšíření v VS Code použijte následující postup:
 
     1. V VS Code vyberte kartu **rozšíření** .
-    1. Vyhledejte aplikaci **Workbench pro zařízení Azure IoT**.
+    1. Vyhledejte **nástroje Azure IoT Tools**.
     1. Vyberte **Install** (Nainstalovat).
 
 K sestavení vygenerovaného kódu jazyka C v systému Windows v tomto kurzu budete potřebovat:
@@ -61,7 +61,7 @@ K otestování kódu zařízení v tomto kurzu budete potřebovat:
 
 ## <a name="model-your-device"></a>Modelování zařízení
 
-K vytvoření modelu schopností zařízení používáte _digitální ovládací jazyk_ s definicemi. Model se obvykle skládá z více definičních souborů _rozhraní_ a jednoho souboru modelu. **Rozšíření Azure IoT Device Workbench pro vs Code** obsahuje nástroje, které vám pomůžou vytvořit a upravit tyto soubory JSON.
+K vytvoření modelu schopností zařízení používáte _digitální ovládací jazyk s definicemi_ . Model se obvykle skládá z více definičních souborů _rozhraní_ a jednoho souboru modelu. **Nástroje Azure IoT Tools for vs Code** obsahují nástroje, které vám pomůžou vytvořit a upravit tyto soubory JSON.
 
 ### <a name="create-the-interface-file"></a>Vytvoření souboru rozhraní
 
@@ -77,7 +77,7 @@ Pokud chcete vytvořit soubor rozhraní, který definuje možnosti vašeho zař�
 
 1. Pak jako název rozhraní zadejte **EnvironmentalSensor** a stiskněte klávesu **ENTER**. VS Code vytvoří vzorový soubor rozhraní s názvem **EnvironmentalSensor. Interface. JSON**.
 
-1. Nahraďte obsah tohoto souboru následujícím kódem JSON a nahraďte `{your name}` ho `@id` v poli jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)nevlákenového identifikátoru. Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
+1. Nahraďte obsah tohoto souboru následujícím kódem JSON a nahraďte `{your name}` ho `@id` v poli jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
 
     ```json
     {
@@ -298,7 +298,7 @@ Vaše soubory jsou nyní uloženy v úložišti vaší společnosti.
 
 ## <a name="generate-code"></a>Generování kódu
 
-K vygenerování kostry kódu C z modelu můžete použít **rozšíření Azure IoT Device Workbench pro vs Code** . Chcete-li vygenerovat kostru kódu v VS Code:
+K vygenerování kostry kódu C z modelu můžete použít **nástroje Azure IoT Tools for vs Code** . Chcete-li vygenerovat kostru kódu v VS Code:
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
@@ -355,7 +355,7 @@ Když kód spustíte, připojí se k IoT Hub a spustí odesílání ukázkových
 
     Poznamenejte si připojovací řetězec.
 
-1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **vydání\\cmake sensorbox_app\\** .
+1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **vydání\\cmake\\sensorbox_app** .
 
 1. Spusťte následující příkaz:
 

@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Naučte se spouštět Azure Dev Spaces v existujícím clusteru s kontejnery Windows.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kontejnery Windows
-ms.openlocfilehash: 2110636b331f0cf4e74c77f41726ead5bf80a64f
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6c15534d5d47ba384a0f368f5d212fb1350e5229
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501517"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858607"
 ---
 # <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Použití Azure Dev Spaces k interakci s kontejnery Windows
 
@@ -36,7 +36,7 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje cluster s uzlem Windows i Linux. Než budete pokračovat, ujistěte  se, že je stav připraveno pro každý uzel.
+Následující příklad výstupu ukazuje cluster s uzlem Windows i Linux. Než budete pokračovat, ujistěte se, že je stav *připraveno* pro každý uzel.
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -50,9 +50,12 @@ Použijte k uzlům Windows [chuti][using-taints] . Chuti v uzlech Windows brán�
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
 
+> [!IMPORTANT]
+> Když na uzel použijete ICM, musíte v šabloně nasazení vaší služby nakonfigurovat, aby se vaše služba na tomto uzlu spustila. Ukázková aplikace je už nakonfigurovaná tak, aby se [shodovala][sample-application-toleration-example] s tím, jak jste nakonfigurovali v předchozím příkazu.
+
 ## <a name="run-your-windows-service"></a>Spuštění služby systému Windows
 
-Spusťte službu Windows v clusteru AKS a ověřte, zda je ve spuštěném  stavu. Tento článek používá [ukázkovou aplikaci][sample-application] k předvedení služby systému Windows a Linux spuštěné v clusteru.
+Spusťte službu Windows v clusteru AKS a ověřte, zda je ve *spuštěném* stavu. Tento článek používá [ukázkovou aplikaci][sample-application] k předvedení služby systému Windows a Linux spuštěné v clusteru.
 
 Naklonujte ukázkovou aplikaci z GitHubu a `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` přejděte do adresáře:
 
@@ -180,8 +183,8 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
+[sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
-
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [team-development]: ../team-development-netcore.md
 [using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations

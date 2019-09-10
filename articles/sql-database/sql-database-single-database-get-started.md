@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640042"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845294"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Rychlý start: Vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal, PowerShellu a rozhraní příkazového řádku Azure
 
@@ -30,8 +30,8 @@ Pro všechny kroky v tomto rychlém startu se přihlaste k [Azure Portal](https:
 
 Jednu databázi je možné vytvořit buď ve výpočetní úrovni zřízené, nebo bez serveru (Preview).
 
-- Jedna databáze v zřízené výpočetní úrovni má definovanou velikost předem přidělených výpočetních prostředků a sadu paměťových a úložných prostředků pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md).
-- Izolovaná databáze na výpočetní úrovni bez serveru má řadu výpočetních prostředků, které se automaticky škálují a zadanou velikost paměti na jádro a zadané množství prostředků úložiště je dostupné jenom v [nákupních modelech založených na Vcore](sql-database-service-tiers-vcore.md).
+- Jedna databáze v zřízené výpočetní úrovni je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md).
+- Jedna databáze na výpočetní úrovni bez serveru obsahuje řadu výpočetních prostředků, včetně procesoru a paměti, které se automaticky škálují a jsou dostupné jenom v [nákupních modelech založených na Vcore](sql-database-service-tiers-vcore.md).
 
 Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v zadané oblasti.
 
@@ -62,7 +62,7 @@ Teď, když jste vytvořili databázi, použijte integrovaný nástroj pro dotaz
 
 4. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
 
-   ![Výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
+   ![výsledky editoru dotazů](./media/sql-database-get-started-portal/query-editor-results.png)
 
 5. Zavřete stránku **Editor dotazů** a po zobrazení výzvy k zahození neuložených úprav vyberte **OK** .
 

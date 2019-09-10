@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Go'
+title: 'Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a přejít'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a Go.
 services: cognitive-services
@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 14d79c6ec7a4e9197aca49e9c98e4f24a890ba54
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0bcd94c62ec0fe5d9e9ffec18c982e7a102f0ffc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606841"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858965"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API a Go
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rychlý start: Rozpoznávání ploch v obrázku pomocí REST API a přejít
 
-V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure s využitím Go detekovat lidské tváře v obrázku.
+V tomto rychlém startu použijete Azure Face REST API with přejít k detekci lidských plošek v obraze.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
-- Editor kódu, jako [Visual Studio Code](https://code.visualstudio.com/download)
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="write-the-script"></a>Psaní skriptu
+## <a name="write-the-script"></a>Napsat skript
 
-Vytvořte nový soubor, _faceDetection.go_a přidejte následující kód. Pro danou image URL volá rozhraní API pro rozpoznávání tváře.
+Vytvořte nový soubor _faceDetection. přejít_a přidejte následující kód. Tím se zavolá Face API pro danou adresu URL obrázku.
 
 ```go
 package main
@@ -49,7 +49,7 @@ func main() {
     // subscription keys. For example, if you got your subscription keys from
     // westus, replace "westcentralus" in the URL below with "westus".
     const uriBase =
-      "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect"
+      "https://<My Endpoint String>.com/face/v1.0/detect"
     const imageUrl =
       "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
 
@@ -108,25 +108,27 @@ func main() {
 }
 ```
 
-Budete muset aktualizovat `subscriptionKey` hodnotu s váš klíč předplatného a může být nutné změnit `uriBase` řetězec tak, aby obsahoval oblasti správný identifikátor (naleznete v tématu [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblast) . 
+Je nutné aktualizovat `subscriptionKey` hodnotu pomocí vašeho klíče předplatného a `uriBase` změnit řetězec tak, aby obsahoval správný řetězec koncového bodu.
 
-Možná budete také chtít změnit `imageUrl` pole tak, aby odkazoval na vlastní vstupního obrázku. Můžete také chtít chang `returnFaceAttributes` pole, která určuje, které pro rozpoznávání tváře atributy pro načtení.
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+Můžete také chtít změnit `imageUrl` pole tak, aby odkazovalo na vlastní vstupní image. Možná také budete chtít změnit `returnFaceAttributes` pole, které určuje, které atributy tváře se mají načíst.
 
 ## <a name="run-the-script"></a>Spuštění skriptu
 
-Otevřete příkazový řádek a sestavení aplikace pomocí následujícího příkazu:
+Otevřete příkazový řádek a sestavte program pomocí následujícího příkazu:
 
 ```shell
 go build faceDetection.go
 ```
 
-Potom spusťte program:
+Pak program spusťte:
 
 ```shell
 detect-face
 ```
 
-Měli byste vidět řetězec JSON zjištěných pro rozpoznávání tváře dat tisk do konzoly. Následuje příklad úspěšné odpovědi JSON.
+Měl by se zobrazit řetězec JSON zjištěných dat obličeje v konzole. Následuje příklad úspěšné odpovědi JSON.
 
 ```json
 [
@@ -309,7 +311,7 @@ Měli byste vidět řetězec JSON zjištěných pro rozpoznávání tváře dat 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste napsali skript Ruby, který volá rozhraní API pro rozpoznávání tváře Azure rozpoznávání tváří v obrázku a vrátíte se jejich atributy. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře na další informace.
+V tomto rychlém startu jste napsali skript Ruby, který volá Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

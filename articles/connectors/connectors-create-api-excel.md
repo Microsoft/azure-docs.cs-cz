@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d3c6395f7fd66e1b89fc49536e228249bc4ed2a9
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050911"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859251"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Správa dat v Excelu online pomocí Azure Logic Apps
 
@@ -53,6 +53,9 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](.
 1. V části Trigger vyberte **Nový krok**.
 
 1. Do vyhledávacího pole zadejte jako filtr slovo "Excel". V seznamu akce vyberte akci, kterou chcete.
+
+   > [!NOTE]
+   > Návrhář aplikace logiky nemůže načíst tabulky, které mají 100 nebo více sloupců. Pokud je to možné, omezte počet sloupců ve vybrané tabulce tak, aby mohl Návrhář načíst tabulku.
 
 1. Pokud se zobrazí výzva, přihlaste se ke svému účtu Office 365.
 

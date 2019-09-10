@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 902887c2a765fa50c7075cbdcb835f53e84f583f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208267"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842548"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů v Azure Blob Storage s využitím Azure Search
 Tento článek ukazuje, jak použít Azure Search k indexování dokumentů (například souborů PDF, systém Microsoft Office dokumentů a několika dalších běžných formátů) uložených v úložišti objektů BLOB v Azure. Nejprve se vysvětlují základy nastavení a konfigurace indexeru objektů BLOB. Potom nabízí hlubší průzkum chování a scénářů, se kterými se pravděpodobně setkáte.
@@ -337,7 +337,7 @@ Indexování objektů BLOB může být časově náročný proces. V případech
 
 Můžete chtít "sestavovat" dokumenty z více zdrojů v indexu. Například můžete chtít sloučit text z objektů BLOB s jinými metadaty uloženými v Cosmos DB. Rozhraní API pro indexování nabízených oznámení můžete dokonce použít spolu s různými indexery k vytváření dokumentů hledání z více částí. 
 
-Aby to fungovalo, všechny indexery a další součásti musí souhlasit s klíčem dokumentu. Podrobný návod najdete v tomto externím článku: [Kombinování dokumentů s ostatními daty v Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to fungovalo, všechny indexery a další součásti musí souhlasit s klíčem dokumentu. Další podrobnosti k tomuto tématu najdete v článku [indexování více zdrojů dat Azure](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources). Podrobný návod najdete v tomto externím článku: [Kombinování dokumentů s ostatními daty v Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indexování prostého textu 

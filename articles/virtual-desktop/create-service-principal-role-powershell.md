@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/12/2019
+ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: a9b5eecd97b078c9446e28d971f900c4cf65130f
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811319"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845529"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
 
@@ -38,9 +38,9 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte ud�
     Install-Module AzureAD
     ```
 
-2. [Stažení a import modulu PowerShellu pro virtuální počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
+2. [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
 
-3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Nemusí fungovat, pokud okno zavřete a vrátíte se k němu později.
+3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Proces nemusí fungovat, pokud ukončíte relaci PowerShellu tím, že okno zavřete a znovu otevřete později.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu v Azure Active Directory
 
@@ -52,10 +52,9 @@ $aadContext = Connect-AzureAD
 $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayName "Windows Virtual Desktop Svc Principal"
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
-
 ## <a name="view-your-credentials-in-powershell"></a>Zobrazení přihlašovacích údajů v PowerShellu
 
-Před ukončením relace PowerShellu si prohlédněte své přihlašovací údaje a zapište je pro budoucí potřebu. Heslo je obzvláště důležité, protože po zavření této relace PowerShellu ho nebudete moct načíst.
+Než vytvoříte přiřazení role pro instanční objekt, zobrazte si přihlašovací údaje a zapište je pro budoucí použití. Heslo je obzvláště důležité, protože po zavření této relace PowerShellu ho nebudete moct načíst.
 
 Tady jsou tři přihlašovací údaje, které byste měli napsat, a rutiny, které je potřeba spustit, abyste je získali:
 
@@ -79,19 +78,21 @@ Tady jsou tři přihlašovací údaje, které byste měli napsat, a rutiny, kter
 
 ## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Vytvoření přiřazení role ve verzi Preview pro virtuální počítač s Windows
 
-V dalším kroku vytvoříte přiřazení role RDS na virtuálním ploše Windows pro instanční objekt, což umožní instančnímu objektu přihlašovat se k virtuálnímu klientovi Windows. Ujistěte se, že používáte účet, který má oprávnění k vytváření přiřazení rolí vzdálené plochy.
+Dále musíte vytvořit přiřazení role, aby se instanční objekt mohl přihlásit k virtuálnímu klientovi Windows. Ujistěte se, že se přihlásíte pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
 
-Spusťte následující rutiny PowerShellu, které se připojí k virtuální ploše Windows a zobrazí se vaši klienti služby Vzdálená plocha.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
+
+Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Get-RdsTenant | FL
+Get-RdsTenant
 ```
 
-Pro správného tenanta použijte tenanta a spuštěním následujících rutin PowerShellu vytvořte přiřazení role pro instanční objekt v zadaném tenantovi.
+Když najdete název tenanta pro tenanta, pro který chcete vytvořit přiřazení role, použijte tento název v následující rutině:
 
 ```powershell
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Přihlaste se pomocí instančního objektu.

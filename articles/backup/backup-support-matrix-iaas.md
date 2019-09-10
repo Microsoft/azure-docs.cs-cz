@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: da987b5e841824dc62f3b740cae2961de9d7b293
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617352"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872906"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 [Službu Azure Backup](backup-overview.md) můžete použít k zálohování místních počítačů a úloh a virtuálních počítačů Azure. Tento článek shrnuje nastavení a omezení podpory při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -103,7 +103,7 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 
 **Restore – metoda** | **Podrobnosti**
 --- | ---
-Vytvoření nového virtuálního počítače | Během procesu obnovení můžete vytvořit virtuální počítač. <br/><br/> Tato možnost načte a spustí základní virtuální počítač. Můžete zadat název virtuálního počítače, skupinu prostředků, virtuální síť, podsíť a úložiště.  
+Vytvořte nový virtuální počítač. | Během procesu obnovení můžete vytvořit virtuální počítač. <br/><br/> Tato možnost načte a spustí základní virtuální počítač. Můžete zadat název virtuálního počítače, skupinu prostředků, virtuální síť, podsíť a úložiště.  
 Obnovení disku | Disk můžete obnovit a použít ho k vytvoření virtuálního počítače.<br/><br/> Když vyberete tuto možnost, Azure Backup zkopíruje data z trezoru do účtu úložiště, který vyberete. Úloha obnovení vygeneruje šablonu. Tuto šablonu můžete stáhnout, použít ji k určení vlastního nastavení virtuálního počítače a vytvořit virtuální počítač.<br/><br/> Tato možnost umožňuje zadat další nastavení, která předchozí možnost vytvoření virtuálního počítače vytvoří.<br/><br/>
 Nahradit existující disk | Disk, který je aktuálně na virtuálním počítači, můžete obnovit a pak použít obnovený disk.
 Obnovit soubory | Můžete obnovit soubory z vybraného bodu obnovení. Stáhněte si skript pro připojení disku virtuálního počítače z bodu obnovení. Pak procházejte diskovými svazky a vyhledejte soubory nebo složky, které chcete obnovit, a odpojte disk, až budete hotovi.
@@ -151,6 +151,7 @@ Zálohování virtuálních počítačů, které se migrují do Azure  | Podporu
 Zálohování konzistence s více virtuálními počítači | Azure Backup neposkytuje konzistenci dat a aplikací napříč více virtuálními počítači.
 Zálohování s [nastavením diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Neplatné. <br/><br/> Pokud je obnovení virtuálního počítače Azure s diagnostickým nastavením aktivované pomocí možnosti [vytvořit novou](backup-azure-arm-restore-vms.md#create-a-vm) , obnovení se nepovede.
 Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde je dostupná [zóna dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud však zóna není k dispozici, obnovení se nezdařilo.
+Virtuální počítače s Gen2 | Podporováno <br> Azure Backup podporuje zálohování a obnovení [virtuálních počítačů s Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Když se tyto virtuální počítače obnoví z bodu obnovení, obnoví se jako [virtuální počítače Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
 
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálních počítačů

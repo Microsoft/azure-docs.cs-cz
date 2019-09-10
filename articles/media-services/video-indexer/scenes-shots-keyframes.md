@@ -1,6 +1,6 @@
 ---
-title: Video Indexer scény, snímků a klíčových snímků – Azure
-titlesuffix: Azure Media Services
+title: Video Indexer scény, snímky a klíčové snímky
+titleSuffix: Azure Media Services
 description: Toto téma poskytuje přehled Video Indexer scény, snímků a klíčových snímků.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815650"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860227"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scény, snímky a klíčové snímky
 
@@ -39,6 +39,30 @@ Video Indexer určuje, kdy se snímek ve videu změní na základě vizuálních
 Vybere rámce, které nejlépe reprezentují snímek. Klíčové snímky jsou reprezentativní snímky vybrané z celého videa na základě vlastností estetického zobrazení (například kontrast a stabilita). Video Indexer načte seznam ID klíčových snímků jako součást metadat snímku na základě toho, kteří zákazníci mohou miniatury klíčového snímku extrahovat. 
 
 Klíčové snímky jsou přidruženy k snímkům ve výstupním formátu JSON. 
+
+## <a name="editorial-shot-type-detection"></a>Detekce typu redakčního snímku
+
+Typ snímku přidružený k jednotlivému snímku ve formátu JSON Insights představuje jeho redakční typ. Tyto charakteristiky typu kopie jsou užitečné při úpravách videa do klipů, přípojných vozidel nebo při hledání konkrétního stylu klíčového snímku pro umělecké účely. Různé typy jsou určeny v závislosti na analýze prvního klíčového snímku každého snímku. Snímky jsou označeny měřítkem, velikostí a umístěním ploch zobrazených v prvním klíčovém snímku. 
+
+Velikost a měřítko snímku se určují na základě vzdálenosti mezi fotoaparátem a ploškami, které se zobrazují v rámečku. Pomocí těchto vlastností Video Indexer detekuje následující typy snímku:
+
+* Roztažitelné: zobrazuje tělo celé osoby.
+* Střední: zobrazuje horní tělo a obličej osoby.
+* Zavřít: hlavně zobrazuje obličej osoby.
+* Extrémní sestavování: zobrazuje plochu osoby naplňující obrazovku. 
+
+Typy snímků lze také určit umístěním znaků předmětu s ohledem na střed rámečku. Tato vlastnost definuje následující typy záběrů v Video Indexer:
+
+* Levá strana: osoba se zobrazí na levé straně rámečku.
+* Středový obličej: osoba se zobrazí v centrální oblasti rámce.
+* Pravá strana: osoba se zobrazí na pravé straně rámečku.
+* Venkovní: osoba se zobrazí v nastavení venku.
+* Vnitřní: v nastavení vnitřníchy se zobrazí osoba.
+
+Další vlastnosti:
+
+* Dva snímky: zobrazuje stěny střední velikosti dvou osob.
+* Více plošek: více než dvě osoby.
 
 ## <a name="next-steps"></a>Další postup
 

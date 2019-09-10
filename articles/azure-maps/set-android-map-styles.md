@@ -1,6 +1,6 @@
 ---
-title: Mapování funkce styl ve službě Azure Maps | Dokumentace Microsoftu
-description: Další informace o Azure Maps styl související funkce pro sadu Android SDK.
+title: Funkce stylů mapy v Azure Maps | Microsoft Docs
+description: Přečtěte si o funkcích Azure Maps souvisejících s Style pro Android SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3c8c5d4bae16d8e15c8f2c5b1cc8e00eb14e4ce3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bcc73c63e7c9d804d01df98551aa51b81d98d07
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64870969"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844845"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavit styl mapy pomocí Azure Maps Android SDK
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
 
-Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps obsahuje šest různých map stylů lze vybírat. Další informace o podporovaných Mapovat styly, naleznete v tématu [podporován styly mapy ve službě Azure Maps](./supported-map-styles.md).
+Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](./supported-map-styles.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení procesu v tomto článku, je potřeba nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) načíst mapu.
+Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
 
 
-## <a name="set-map-style-in-the-layout"></a>Nastavit styl mapu v rozložení
+## <a name="set-map-style-in-the-layout"></a>Nastavení stylu mapy v rozložení
 
-Styl mapy můžete nastavit v souboru rozložení pro vaši třídu aktivity. Upravit **res > rozložení > activity_main.xml**, takže bude vypadat jako následující:
+Můžete nastavit styl mapy v souboru rozložení pro třídu Activity. Upravte **> rozložení pro res > activity_main. XML**, takže vypadá takto:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,18 +51,18 @@ Styl mapy můžete nastavit v souboru rozložení pro vaši třídu aktivity. Up
 </FrameLayout>
 ```
 
-`mapcontrol_style` Výše uvedený atribut nastaví styl mapy **grayscale_dark**. 
+Atribut výše nastaví styl mapy na grayscale_dark. `mapcontrol_style` 
 
 <center>
 
 ![style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Nastavit styl mapu v třídě aktivity
+## <a name="set-map-style-in-the-activity-class"></a>Nastavit styl mapy ve třídě Activity
 
-Styl mapy je možné nastavit v třídy activity. Zkopírujte následující fragment kódu do **onCreate()** metodu vaše `MainActivity.java` třídy. Toto nastaví styl mapy **satellite_road_labels**.
+Styl mapy lze nastavit ve třídě Activity. Zkopírujte následující fragment kódu do metody **Create ()** vaší `MainActivity.java` třídy. Tím se nastaví styl mapy na **satellite_road_labels**.
 
 ```Java
-    mapControl.onReady(map -> {
+mapControl.onReady(map -> {
     //Set the camera of the map.
     map.setCamera(center(47.64, -122.33), zoom(14));
 
