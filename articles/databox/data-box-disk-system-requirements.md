@@ -1,56 +1,56 @@
 ---
-title: Microsoft Azure Data Box Disk požadavky na systém | Microsoft Docs
-description: Seznamte se s požadavky na software a sítě pro vaše Azure Data Box Disk
+title: Systémové požadavky Microsoft Azure Data Box Disku | Microsoft Docs
+description: Seznamte se s požadavky vašeho Azure Data Box Disku na software a síť.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: f054d0665c49ee048451681a7cc34d2a648a6e9e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240227"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307683"
 ---
 ::: zone target="docs"
 
-# <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk požadavky na systém
+# <a name="azure-data-box-disk-system-requirements"></a>Systémové požadavky Azure Data Box Disku
 
-Tento článek popisuje důležité systémové požadavky pro vaše Microsoft Azure Data Box Disk řešení a klienty, kteří se připojují k Data Box Disk. Před nasazením Data Box Disk doporučujeme pečlivě zkontrolovat informace a pak je v případě potřeby v průběhu nasazení a následné operace vrátit na ni.
+Tento článek popisuje důležité systémové požadavky pro vaše řešení Microsoft Azure Data Box Disk a pro klienty připojující se k Data Box Disku. Před nasazením Data Box Disku doporučujeme, abyste si tyto informace pečlivě prostudovali. Později se k nim můžete podle potřeby vrátit během nasazování a dalšího provozu.
 
-Požadavky na systém zahrnují podporované platformy pro klienty připojující se k diskům, podporované účty úložiště a typy úložišť.
+Systémové požadavky zahrnují podporované platformy pro klienty připojující se k diskům, podporované účty úložiště a typy úložiště.
 
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="review-prerequisites"></a>Kontrola požadovaných součástí
+## <a name="review-prerequisites"></a>Kontrola požadavků
 
-1. K objednání data box disk v tomto [kurzu musíte použít: Seřazení Azure Data Box Disk](data-box-disk-deploy-ordered.md). Dostali jste disky a jeden připojený kabel na disk.
+1. Musíte mít objednaný Data Box Disk podle pokynů v článku [Kurz: Objednání Azure Data Box Disku](data-box-disk-deploy-ordered.md). Obdrželi jste své disky a jeden propojovací kabel pro každý disk.
 2. Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
 
-    - Spusťte podporovaný operační systém.
-    - Máte nainstalovaný další požadovaný software.
+    - Musí na něm běžet podporovaný operační systém.
+    - Musí na něm být nainstalovaný další požadovaný software.
 
 ::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>Podporované operační systémy pro klienty
 
-Tady je seznam podporovaných operačních systémů pro odemknutí disku a operace kopírování dat prostřednictvím klientů připojených k Data Box Disk.
+Tady je seznam podporovaných operačních systémů pro operaci odemknutí disku a kopírování dat prostřednictvím klientů připojených k Data Box Disku.
 
 | **Operační systém** | **Testované verze** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows (64 bitů) |7, 8, 10 |
+| Windows (64bitová verze) |7, 8, 10 |
 |Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Další požadovaný software pro klienty Windows
 
-Pro klienta systému Windows je třeba nainstalovat i následující.
+V případě klienta Windows je potřeba nainstalovat také následující software.
 
 | **Software**| **Verze** |
 | --- | --- |
@@ -59,36 +59,34 @@ Pro klienta systému Windows je třeba nainstalovat i následující.
 | Windows Management Framework |5.0|
 | BitLocker| - |
 
-## <a name="other-required-software-for-linux-clients"></a>Další požadovaný software pro klienty se systémem Linux
+## <a name="other-required-software-for-linux-clients"></a>Další požadovaný software pro klienty Linuxu
 
-Pro klienty se systémem Linux nainstaluje sada nástrojů Data Box Disk následující požadovaný software:
+V případě klienta Linuxu sada nástrojů Data Box Disk nainstaluje následující požadovaný software:
 
-- Weblock
+- dislocker
 - OpenSSL
-
-::: zone target="docs"
 
 ## <a name="supported-connection"></a>Podporované připojení
 
-Klientský počítač obsahující data musí mít port USB 3,0 nebo novější. Disky se připojují k tomuto klientovi pomocí zadaného kabelu.
+Klientský počítač, který obsahuje data, musí mít port USB 3.0 nebo novější. Disky se s tímto klientem propojí pomocí přiloženého kabelu.
 
-## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
+## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
 Tady je seznam podporovaných typů úložiště pro Data Box Disk.
 
 | **Účet úložiště** | **Poznámky** |
 | --- | --- |
 | Classic | Standard |
-| Obecné použití  |Standardní jsou podporovány verze V1 a v2. Podporovány jsou horké a studené úrovně. |
-| Účet úložiště objektů BLOB | |
+| Pro obecné účely  |Standard (podporují se verze V1 i V2). Podporují se horká i studená úroveň. |
+| Účet úložiště objektů blob | |
 
 >[!NOTE]
-> Účty Azure Data Lake Storage Gen 2 nejsou podporovány.
+> Účty Azure Data Lake Storage Gen2 se nepodporují.
 
 
-## <a name="supported-storage-types-for-upload"></a>Podporované typy úložišť pro nahrání
+## <a name="supported-storage-types-for-upload"></a>Podporované typy úložiště pro nahrání
 
-Tady je seznam typů úložišť podporovaných pro nahrání do Azure pomocí Data Box Disk.
+Tady je seznam podporovaných typů úložiště pro nahrání do Azure pomocí Data Box Disku.
 
 | **Formát souboru** | **Poznámky** |
 | --- | --- |
@@ -97,10 +95,11 @@ Tady je seznam typů úložišť podporovaných pro nahrání do Azure pomocí D
 | Soubory Azure  | |
 | Spravované disky | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>Další krok
 
-* [Nasazení Azure Data Box Disk](data-box-disk-deploy-ordered.md)
+* [Nasazení Azure Data Box Disku](data-box-disk-deploy-ordered.md)
 
 ::: zone-end
 

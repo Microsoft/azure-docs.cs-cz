@@ -1,27 +1,27 @@
 ---
-title: Kurz pro ověření nahrávání dat z Azure Data Box Disk do účtu úložiště | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak ověřit data odeslaná z Azure Data Box Disk do účtu úložiště Azure.
+title: Kurz ověření nahrání dat z Azure Data Box Disku do účtu úložiště | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak ověřit nahrání dat z Azure Data Box Disku do účtu úložiště Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/03/2019
+ms.date: 09/04/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: a4d814ab5b1f26a6a2b871a850fd5e3153e256f5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
-ms.translationtype: MT
+ms.openlocfilehash: fc3145ee0b60402026389863b94d21da4b3e4123
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240271"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307766"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Kurz: Ověřit nahrávání dat z Azure Data Box Disk
+# <a name="tutorial-verify-data-upload-from-azure-data-box-disk"></a>Kurz: Ověření nahrání dat z Azure Data Box Disku
 
-Toto je poslední kurz řady: Nasazení Azure Data Box Disk. V tomto kurzu se naučíte:
+Toto je poslední kurz série: Nasazení Azure Data Box Disku. V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Ověření nahrání dat do Azure
@@ -29,7 +29,7 @@ Toto je poslední kurz řady: Nasazení Azure Data Box Disk. V tomto kurzu se na
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že jste dokončili [kurz: Vrátit Azure Data Box Disk](data-box-disk-deploy-picked-up.md).
+Než začnete, ujistěte se, že jste dokončili [Kurz: Vrácení Azure Data Box Disku](data-box-disk-deploy-picked-up.md).
 
 
 ## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
@@ -48,64 +48,64 @@ Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
 
 ![Kopírování dat je dokončené](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-Pokud se kopie dokončí s chybami, přečtěte si téma [řešení chyb při nahrávání](data-box-disk-troubleshoot-upload.md).
+Pokud se kopírování dokončí s chybami, přečtěte si téma věnované [řešení potíží s chybami nahrávání](data-box-disk-troubleshoot-upload.md).
 
-Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště. Vaše data můžou být v:
+Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště. Vaše data můžou být v následujících umístěních:
 
-- Váš účet Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
+- Vaše účty Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
   - Objekty blob bloku a objekty blob stránky: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Soubory Azure: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternativně můžete přejít na svůj účet Azure Storage na webu Azure Portal a dokončit navigaci tam.
 
-- Skupiny prostředků spravovaného disku. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadaným v době vytváření objednávky.
+- Vaše skupiny prostředků spravovaných disků. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky se připojí ke skupinám prostředků zadaným při vytváření objednávky.
 
-  - Pokud byla vaše kopie na spravované disky v Azure úspěšná, můžete přejít na **Podrobnosti objednávky** v Azure Portal a poznamenat si skupinu prostředků zadanou pro službu Managed disks.
+  - Pokud vaše kopírování na spravované disky v Azure proběhne úspěšně, můžete na webu Azure Portal přejít na **Podrobnosti objednávky** a poznamenat si skupinu prostředků zadanou pro spravované disky.
 
-      ![Zobrazit podrobnosti objednávky](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
+      ![Zobrazení podrobností objednávky](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
 
-    Přejděte do vyznačené skupiny prostředků a vyhledejte své spravované disky.
+    Přejděte do skupiny prostředků, kterou jste si poznamenali, a vyhledejte své spravované disky.
 
       ![Skupina prostředků pro spravované disky](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Pokud jste zkopírovali VHDX nebo dynamický/Rozdílový virtuální pevný disk, pak se disk VHDX/VHD nahraje do pracovního účtu úložiště jako objekt blob bloku. Do svého přípravného **účtu úložiště > objekty blob** a pak vyberte odpovídající kontejner – StandardSSD, StandardHDD nebo PremiumSSD. Soubory VHDX/VHD by se měly zobrazit jako objekty blob bloku v přípravném účtu úložiště.
+  - Pokud kopírujete VHDX nebo dynamický nebo rozdílový virtuální pevný disk, VHDX/VHD se nahraje do přípravného účtu úložiště jako objekt blob bloku. Přejděte do svého přípravného **účtu úložiště do části Objekty blob** a vyberte odpovídající kontejner – StandardSSD, Standard HDD nebo PremiumSSD. Ve vašem přípravném účtu úložiště by se měly zobrazit VHDX/VHD jako objekty blob bloku.
   
 ::: zone-end
 
 ::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
+## <a name="verify-data-upload-to-azure"></a>Ověření nahrání dat do Azure
 
-Po nahrání dat do Azure ověřte, že jsou vaše data v účtech úložiště, než je odstraníte ze zdroje. Vaše data můžou být v:
+Než po nahrání dat do Azure odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště. Vaše data můžou být v následujících umístěních:
 
-- Váš účet Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
+- Vaše účty Azure Storage. Když data zkopírujete do Data Boxu, v závislosti na jejich typu se nahrají do jedné z následujících cest v účtu služby Azure Storage.
 
-    - **Pro objekty blob bloku a objekty blob stránky**: https://< storage_account_name >. blob. Core. Windows.<containername>NET//Files/a.txt
+    - **Objekty blob bloku a objekty blob stránky:** https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
 
-    - **Pro soubory Azure**: https://< storage_account_name >. File. Core. Windows. NET/<sharename>/Files/a.txt
+    - **Soubory Azure:** https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
 
-- Skupiny prostředků spravovaného disku. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky jsou připojené ke skupinám prostředků zadaným v době vytváření objednávky.
+- Vaše skupiny prostředků spravovaných disků. Při vytváření spravovaných disků se virtuální pevné disky nahrají jako objekty blob stránky a pak se převedou na spravované disky. Spravované disky se připojí ke skupinám prostředků zadaným při vytváření objednávky.
 
 ::: zone-end
 
-Pokud chcete ověřit, že se data nahrála do Azure, proveďte následující kroky:
+Pokud chcete ověřit, že se data nahrála do Azure, postupujte následovně:
 
 1. Přejděte k účtu úložiště přidruženému k vaší objednávce disků.
 2. Přejděte na **Blob service > Procházet objekty blob**. Zobrazí se seznam kontejnerů. Ve vašem účtu úložiště se vytvoří kontejnery se stejným názvem jako podsložky, které jste vytvořili ve složkách *BlockBlob* a *PageBlob*.
     Pokud názvy složek neodpovídají zásadám vytváření názvů v Azure, nahrávání dat do Azure selže.
 
-3. K ověření, že se nahrála kompletní datová sada, použijte Průzkumníka služby Azure Storage. Připojte účet úložiště odpovídající Data Box Diskmu pořadí a potom se podívejte na seznam kontejnerů objektů BLOB. Vyberte kontejner, klikněte na **…Další** a potom klikněte na **statistiku složky**. V podokně **Aktivity** se zobrazí statistika pro příslušnou složku, včetně počtu objektů blob a jejich celkové velikosti. Celková velikost objektů blob v bajtech by měla odpovídat velikosti datové sady.
+3. K ověření, že se nahrála kompletní datová sada, použijte Průzkumníka služby Azure Storage. Připojte účet úložiště odpovídající objednávce Data Box Disku a prohlédněte si seznam kontejnerů objektů blob. Vyberte kontejner, klikněte na **…Další** a potom klikněte na **statistiku složky**. V podokně **Aktivity** se zobrazí statistika pro příslušnou složku, včetně počtu objektů blob a jejich celkové velikosti. Celková velikost objektů blob v bajtech by měla odpovídat velikosti datové sady.
 
     ![Statistika složky v Průzkumníku služby Storage](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Vymazání dat z Data Box Disku
 
-Po dokončení kopírování a ověření, že jsou data v účtu úložiště Azure, jsou disky bezpečně smazány podle standardu NIST.
+Jakmile se kopírování dokončí a ověříte, že data jsou v účtu úložiště Azure, disky se bezpečně vymažou v souladu se standardem NIST.
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 

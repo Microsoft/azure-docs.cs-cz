@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/05/2019
 ms.locfileid: "67175671"
 ---
-Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Sdílené složky není přístupná po spuštění tohoto procesu.
+Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Jakmile tento proces zahájíte, ztratíte přístup ke sdíleným složkám.
 
 > [!IMPORTANT]
-> Příprava k odeslání není nutné, protože příznaky data, která není v souladu s Azure zásady vytváření názvů. Přeskočení tohoto kroku může vést dat. nahrát chyby způsobené nonkonformní data.
+> Příprava k odeslání je povinná, protože se během ní označí příznakem data, která neodpovídají zásadám vytváření názvů v Azure. Přeskočení tohoto kroku může vést k selháním nahrávání dat z důvodu nevyhovujících dat.
 
-1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se zpracovávají kontrolní součty, při kopírování dat. Příprava k odeslání dokončí výpočet kontrolního součtu a vytvoří seznam souborů ( *- BOM soubory*). Výpočet kontrolního součtu může trvat hodiny dnů v závislosti na velikosti vaše data. 
+1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se během kopírování dat počítají kontrolní součty. Příprava k odeslání dokončí výpočet kontrolních součtů a vytvoří seznam souborů (*soubor BOM*). Výpočet kontrolního součtu může v závislosti na velikosti vašich dat trvat i několik hodin nebo dnů. 
    
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
-    Pokud z nějakého důvodu chcete zastavit přípravu zařízení, klikněte na tlačítko **zastavit přípravu**. Příprava k odeslání později můžete obnovit.
+    Pokud z nějakého důvodu chcete přípravu zařízení zastavit, klikněte na **Zastavit přípravu**. Později můžete v přípravě k odeslání pokračovat.
         
     ![Příprava k odeslání 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
-2. Příprava k odeslání spustí a zařízení sdílené složky přejdou do režimu offline. Zobrazí se připomenutí stáhnout Expediční štítek, jakmile zařízení je připravené.
+2. Spustí se příprava k odeslání a sdílené složky zařízení přejdou do režimu offline. Jakmile bude zařízení připravené, zobrazí se připomenutí, že si máte stáhnout expediční štítek.
 
-    ![Stáhnout Expediční štítek připomenutí](media/data-box-prepare-to-ship/download-shipping-label-reminder.png)
+    ![Připomenutí stažení expedičního štítku](media/data-box-prepare-to-ship/download-shipping-label-reminder.png)
 
-3. Stav zařízení aktualizuje *připravené k odeslání* a jakmile se dokončí Příprava zařízení je zařízení uzamčené.
+3. Po dokončení přípravy zařízení se stav zařízení změní na *Připraveno k odeslání* a zařízení se uzamkne.
         
     ![Příprava k odeslání 3](media/data-box-prepare-to-ship/prepare-to-ship3.png)
 
-    Pokud chcete kopírovat další data zařízení, můžete odemknout zařízení, kopírovat další data, a spusťte přípravu k odeslání znovu.
+    Pokud chcete do zařízení zkopírovat více dat, můžete ho odemknout, zkopírovat další data a znovu spustit přípravu k odeslání.
 
-    Pokud v tomto kroku nejsou chyby, je potřeba stáhnout v protokolu chyb a případné chyby opravte. Po vyřešení chyby spusťte **přípravu k odeslání**.
+    Pokud v tomto kroku dojde k nějakým chybám, budete si muset stáhnout protokol chyb a vyřešit je. Po vyřešení chyb spusťte **přípravu k odeslání**.
 
-4. Po Příprava k odeslání se úspěšně dokončí (s bez chyb), stáhněte si seznam soubory (označované také jako manifest) zkopírovány v tomto procesu. Později můžete tento seznam použít k ověření nahrání souborů do Azure. Další informace najdete v tématu [BOM kontrolovat soubory během Příprava k odeslání](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
+4. Po úspěšném dokončení přípravy k odeslání (bez chyb) si stáhněte seznam souborů (označovaný také jako manifest) zkopírovaných v rámci tohoto procesu. Později můžete tento seznam použít k ověření nahrání souborů do Azure. Další informace najdete v tématu popisujícím [zkoumání souborů BOM během přípravy k odeslání](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
