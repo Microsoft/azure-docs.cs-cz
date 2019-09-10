@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5c2e81cd11826a0325cd78384a22ec7eefb3a565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257002"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844870"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Použití klíčů prostředků pro vytváření obsahu a modulu runtime
 
@@ -72,6 +72,38 @@ Až budete připraveni k publikování koncového bodu předpovědi, vytvořte a
     |Cenová úroveň za běhu|Cenová úroveň určuje maximální transakci za sekundu a měsíc.|
 
     Po vytvoření obou prostředků přiřaďte prostředky na portálu LUIS.
+
+## <a name="create-resources-in-azure-cli"></a>Vytváření prostředků v Azure CLI
+
+Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) můžete jednotlivé prostředky vytvořit jednotlivě. 
+
+Prostředek `kind`:
+
+* Zdroj`LUIS.Authoring`
+* Předpovědi`LUIS` 
+
+1. Přihlaste se k Azure CLI:
+
+    ```console
+    az login
+    ```
+
+    Otevře se prohlížeč, který vám umožní vybrat správný účet a zajistit ověřování.
+
+1. Vytvořte `LUIS.Authoring` **Luis prostředek pro vytváření obsahu**s názvem `my-luis-authoring-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. Vytvořte **prostředek koncového bodu předpovědi Luis**typu `LUIS` `my-luis-prediction-resource` s názvem ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na. `S0` Přečtěte si další informace o [cenových úrovních a propustnosti](luis-boundaries.md#key-limits).
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > Tento klíč **nepoužívá portál** Luis, dokud se nepřiřazují na portálu Luis v **prostředcích Azure manage->** .
 
 ## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Přiřazení prostředku pro vytváření na portálu LUIS pro všechny aplikace
 
@@ -186,6 +218,6 @@ Přidat upozornění metriky pro **celkový počet volání** metriky pro určit
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se [používat verze](luis-how-to-manage-versions.md) k řízení životního cyklu aplikace.
-* Seznamte se s koncepty, včetně [prostředků pro vytváření](/luis-concept-keys.md#authoring-key) a [přispěvatelů](luis-concept-keys.md#contributions-from-other-authors) na tomto prostředku.
+* Seznamte se s koncepty, včetně [prostředků pro vytváření](luis-concept-keys.md#authoring-key) a [přispěvatelů](luis-concept-keys.md#contributions-from-other-authors) na tomto prostředku.
 * Naučte [se vytvářet prostředky pro](luis-how-to-azure-subscription.md) vytváření obsahu a modul runtime
 * Migrace na nový [prostředek pro vytváření](luis-migration-authoring.md) 

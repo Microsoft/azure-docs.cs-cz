@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/9/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: HT
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813333"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844798"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -29,7 +29,7 @@ Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použit�
 |Oblast|Omezení|
 |--|:--|
 | [Název aplikace][luis-get-started-create-app] | \* Znak výchozí maximální |
-| Aplikace| 500 aplikací na prostředek Azure |
+| Aplikace| 500 aplikací na prostředek pro vytváření obsahu Azure |
 | [Dávkové testování][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
 | Externí entity | žádná omezení |
@@ -65,21 +65,24 @@ V následujících názvech nepoužívejte následující znaky.
 
 Porozumění jazyku má samostatné klíče, jeden typ pro vytváření obsahu a jeden typ pro dotazování koncového bodu předpovědi. Další informace o rozdílech mezi typy klíčů najdete v tématu [vytváření klíčů koncových bodů a předpovědi dotazů v Luis](luis-concept-keys.md).
 
-## <a name="key-limits"></a>Omezení klíčů
+<a name="key-limits"></a>
 
-Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LUIS platí pouze pro dotazy na koncový bod.
+## <a name="resource-key-limits"></a>Omezení klíčů prostředků
 
-* 500 aplikací na prostředek Azure 
-* verze 100 na aplikaci
+Klíče prostředků mají odlišná omezení pro vytváření a koncový bod. Klíč koncového bodu dotazu předpovědi LUIS je platný jenom pro dotazy koncového bodu. 
+
+* 500 aplikací na prostředek pro vytváření obsahu Azure 
 
 |Klíč|Vytváření obsahu|Koncový bod|Účel|
 |--|--|--|--|
-|Language Understanding Authoring/Starter|1 milion za měsíc, 5 za sekundu|1 tisíc za měsíc, 5 za sekundu|Vytváření aplikace LUIS|
-|[Předplatné][pricing] Language Understanding – F0 – úroveň Free |neplatné|10 tisíc za měsíc, 5 za sekundu|Dotazování na koncový bod služby LUIS|
-|[Předplatné][pricing] Language Understanding – S0 – úroveň Basic|neplatné|50/s|Dotazování na koncový bod služby LUIS|
-|[Předplatné][pricing] služby vnímání – S0 – úroveň Standard|neplatné|50/s|Dotazování na koncový bod služby LUIS|
-|[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o mínění včetně extrakce klíčových frází |
-|[Integrace řeči](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|neplatné|Žádosti koncového bodu 5.50 USD/1 tisíc|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
+|Starter|1 milion za měsíc, 5 za sekundu|1 tisíc za měsíc, 5 za sekundu|Vytváření aplikace LUIS|
+|F0 – úroveň Free |1 milion za měsíc, 5 za sekundu|10 tisíc za měsíc, 5 za sekundu|Dotazování na koncový bod služby LUIS|
+|S0 – úroveň Basic|-|50/s|Dotazování na koncový bod služby LUIS|
+|S0 – úroveň Standard|-|50/s|Dotazování na koncový bod služby LUIS|
+|[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Přidání informací mínění včetně extrakce dat klíčové fráze se poskytuje bez vyžadování dalšího prostředku Azure. |
+|[Integrace řeči](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1000 požadavků na koncový bod na jednotkové náklady|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
+
+[Přečtěte si další informace o cenách.][pricing]
 
 ## <a name="keyboard-controls"></a>Ovládacím prvkům klávesnice
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
-ms.translationtype: HT
+ms.openlocfilehash: 5828d4f453afeccfaac206195f064e43a20d1ba0
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803891"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844767"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -43,7 +43,7 @@ Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratn�
 Migrace není: 
 
 * Proces, který shromažďuje spolupracovníky a automaticky přesouvá nebo přidává do prostředku pro vytváření obsahu Azure. Jako vlastník aplikace je potřeba tento krok dokončit. Tento krok vyžaduje oprávnění k příslušnému prostředku.
-* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](luis-how-to-azure-subscription.md##create-resources-in-the-azure-portal) a nemění se. 
+* Proces vytvoření a přiřazení prostředku modulu runtime předpovědi. Pokud potřebujete běhový prostředek předpovědi, je to [samostatný proces](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) a nemění se. 
 
 ## <a name="how-are-the-apps-migrating"></a>Jak se aplikace migrují?
 
@@ -62,7 +62,9 @@ Proces migrace můžete odložit zrušením z okna. Pravidelně budete požádá
 
 * **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
 * **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. Tento e-mailový seznam se poskytuje jako součást procesu migrace.
-* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Když ale použijete LUIS, můžete použít cenové úrovně Free (F0). Po zvýšení využití možná budete potřebovat placenou úroveň. 
+* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Při použití Luis ale můžete použít cenovou`F0`úroveň Free (). 
+
+**Vytváření aplikací Luis je zadarmo**, které uvádí `F0` vrstva. Přečtěte si [Další informace o cenových úrovních](luis-boundaries.md#key-limits).
 
 Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se. 
 

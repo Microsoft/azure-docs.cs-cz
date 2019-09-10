@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87897c031ff717fb67830cb8fa3bc5fced336418
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278861"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858767"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -163,9 +163,9 @@ Před použitím vytvořte pracovní prostor Azure Databricks. Pokud chcete vytv
 
 Pokud chcete připojit Azure Databricks jako cíl výpočetních prostředků, zadejte následující informace:
 
-* __Název výpočtu datacihly__: Název, který chcete přiřadit k tomuto výpočetnímu prostředku.
-* __Název pracovního prostoru datacihly__: Název pracovního prostoru Azure Databricks.
-* __Přístupový token datacihly__: Přístupový token, který se používá k ověření Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+* __Název výpočtu__datacihly: Název, který chcete přiřadit k tomuto výpočetnímu prostředku.
+* __Název pracovního prostoru__datacihly: Název pracovního prostoru Azure Databricks.
+* __Přístupový token__datacihly: Přístupový token, který se používá k ověření Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
 
 Následující kód ukazuje, jak připojit Azure Databricks jako výpočetní cíl s Azure Machine Learning SDK:
 
@@ -206,7 +206,7 @@ except ComputeTargetException:
     databricks_compute.wait_for_completion(True)
 ```
 
-Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-databricks) na GitHubu.
+Podrobnější příklad najdete v ukázkovém poznámkovém [bloku](https://aka.ms/pl-databricks) na GitHubu.
 
 ### <a id="adla"></a>Azure Data Lake Analytics
 
@@ -256,7 +256,7 @@ except ComputeTargetException:
     adla_compute.wait_for_completion(True)
 ```
 
-Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka.ms/pl-adla) na GitHubu.
+Podrobnější příklad najdete v ukázkovém poznámkovém [bloku](https://aka.ms/pl-adla) na GitHubu.
 
 > [!TIP]
 > Azure Machine Learning kanály funguje jenom s daty uloženými v úložišti dat výchozího účtu Data Lake Analytics. Pokud data, je potřeba pracovat s je v jiné než výchozí úložiště, můžete použít [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke kopírování dat před školení.
@@ -410,19 +410,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Zobrazení výsledků publikovaného kanálu
 
 Podívejte se na seznam všech publikovaných kanálů a jejich podrobnosti o spuštění:
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Zobrazení pracovního prostoru](how-to-manage-workspace.md#view) k nalezení seznamu kanálů.
  ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Vyberte konkrétní kanálu pro zobrazení výsledků spuštění.
 
+Tyto výsledky jsou také k dispozici na [cílové stránce pracovního prostoru (Preview)](https://ml.azure.com).
+
 ### <a name="disable-a-published-pipeline"></a>Zakázání publikovaného kanálu
 
 Pokud chcete kanál ze seznamu publikovaných kanálů skrýt, můžete ho zakázat:
 
 ```
-# Get the pipeline by using its ID in the Azure portal
+# Get the pipeline by using its ID from the Azure portal
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
@@ -449,7 +451,7 @@ step = PythonScriptStep(name="Hello World",
 ```
  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Použití [tyto poznámkové bloky Jupyter v Githubu](https://aka.ms/aml-pipeline-readme) prozkoumat machine learning další kanály.
 - Podívejte se na referenční nápovědu sady SDK pro balíček [AzureML-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a balíček [AzureML-Pipelines-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) .

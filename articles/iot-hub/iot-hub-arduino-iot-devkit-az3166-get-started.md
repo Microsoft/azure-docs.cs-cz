@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074478"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844568"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -103,7 +103,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 DevKit se připojí ke koncovému bodu specifickému pro zařízení ve službě IoT Hub a pošle telemetrii teploty a vlhkosti.
 
-1. Stáhněte si nejnovější verzi getstarted [firmwaru](https://aka.ms/devkit/prod/getstarted/latest) pro IoT DevKit.
+1. Stáhněte si nejnovější verzi [getstarted firmwaru](https://aka.ms/devkit/prod/getstarted/latest) pro IoT DevKit.
 
 1. Ujistěte se, že IoT DevKit se k vašemu počítači připojuje přes USB. Otevřete Průzkumníka souborů. je k dispozici velkokapacitní paměťové zařízení USB s názvem **AZ3166**.
 
@@ -179,7 +179,7 @@ Pomocí těchto kroků Připravte vývojové prostředí pro DevKit:
 
 5. Nakonfigurujte VS Code s nastavením Arduino.
 
-    V Visual Studio Code klikněte na **nastavení > předvoleb > nastavení souborů**. Pak klikněte na **...** a **otevřete Settings. JSON**.
+    V Visual Studio Code klikněte na možnost **soubor > předvolby > nastavení** (na MacOS, **předvolby > kódu > Nastavení**). Pak klikněte na ikonu **Otevřít nastavení (JSON)** v pravém horním rohu stránky *Nastavení* .
 
     ![Instalace nástrojů Azure IoT](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 
@@ -361,7 +361,7 @@ Toto `DevKitMQTTClient` je obálka **iothub_client** ze [Microsoft Azure sad SDK
 
 Pokud narazíte na problémy, můžete vyhledat řešení v části [Nejčastější dotazy ke službě IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se na nás obrátit z [gitteru](https://gitter.im/Microsoft/azure-iot-developer-kit). Můžete nám také sdělit svůj názor tím, že na této stránce odejdete komentář.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Úspěšně jste se připojili ke službě IoT Hub MXChip IoT DevKit a do služby IoT Hub jste odeslali data zaznamenaného senzoru.
 

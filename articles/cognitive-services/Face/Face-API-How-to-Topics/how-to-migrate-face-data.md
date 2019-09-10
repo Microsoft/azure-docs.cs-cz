@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516863"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859158"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
-V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejem, do jiného předplatného služby Azure Cognitive Services Face API. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt person pomocí bezplatné zkušební verze předplatného a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblastí pro velkou podnikovou operaci.
+V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejem, do jiného předplatného služby Azure Cognitive Services Face API. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt person pomocí bezplatné zkušební verze předplatného a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblasti v rámci předplatných v různých oblastech pro velkou podnikovou operaci.
 
 Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientské knihovny Face API .NET s C#.
 
@@ -41,7 +41,9 @@ Tato příručka používá jednoduchou konzolovou aplikaci ke spuštění migra
 
 ## <a name="create-face-clients"></a>Vytváření klientů obličeje
 
-V metodě **Main** v *program.cs*vytvořte dvě instance [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) pro své zdrojové a cílové předplatné. V tomto příkladu se jako cíl používá odběr obličeje v Východní Asie oblasti jako zdroj a Západní USA předplatné. Tento příklad ukazuje, jak migrovat data z jedné oblasti Azure do jiné. Pokud jsou vaše předplatná v různých oblastech, změňte `Endpoint` řetězce.
+V metodě **Main** v *program.cs*vytvořte dvě instance [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) pro své zdrojové a cílové předplatné. V tomto příkladu se jako cíl používá odběr obličeje v Východní Asie oblasti jako zdroj a Západní USA předplatné. Tento příklad ukazuje, jak migrovat data z jedné oblasti Azure do jiné. 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))
