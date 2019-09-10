@@ -43,7 +43,7 @@ Začněte konfigurací zdrojové transformace a potom do každého následného 
 
 Skrytím grafu budete moci později procházet uzly pro transformaci.
 
-![Přejít] na (media/data-flow/showhide.png "Přejít") na
+![Přejít na](media/data-flow/showhide.png "Přejít na")
 
 ## <a name="next-steps"></a>Další kroky
 
