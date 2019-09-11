@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114660"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801374"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -36,7 +36,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 | Předdefinovaná role | Popis |
 | --- | --- |
 | [Vlastník](#owner) | Umožňuje správu všeho, včetně přístupu k prostředkům. |
-| [Přispěvatel](#contributor) | Umožňuje spravovat všechno kromě přístupu k prostředkům. |
+| [Přispěvatel](#contributor) | Umožňuje spravovat vše kromě udělení přístupu k prostředkům. |
 | [Reader](#reader) | Umožňuje zobrazit vše, ale ne provádět žádné změny. |
 | [AcrDelete](#acrdelete) | Odstranit ACR |
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
@@ -2678,7 +2678,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="storage-blob-data-reader"></a>Čtenář dat v objektech blob služby Storage
+## <a name="storage-blob-data-reader"></a>Čtenář dat v objektech blob služby Storage 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

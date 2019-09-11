@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: douglasl
 ms.openlocfilehash: f76ad3f91c2d05508d700e6ef40c9d342b87b5e3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/10/2019
 ms.locfileid: "67175404"
 ---
-Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat s minimálními výpadky.
+Azure Database Migration Service je plně spravovaná služba navržená tak, aby umožňovala bezproblémové migrace z více databázových zdrojů do datových platforem Azure s minimálními výpadky.
 
 | **Prostředek** | **Výchozí omezení** | **Komentář** |
 | --- | --- | --- |
-| Maximální počet služeb na předplatné a oblast |2 | Chcete-li tento limit zvýšit, obraťte se na podporu. |
+| Maximální počet služeb na předplatné v jednotlivých oblastech |2 | Pokud chcete požádat o zvýšení tohoto limitu, obraťte se na podporu. |

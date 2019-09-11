@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/19/2019
+ms.date: 9/4/2019
 ms.author: raiye
-ms.openlocfilehash: c27438dbbeffc0837c3d71d9bb532803655538b8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 71febe6544a4f53215ec4dbee2bcef86bda23386
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637533"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275511"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -25,33 +25,30 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 ## <a name="august-2019-guest-os"></a>2019. srpna hostovaný operační systém
 
->[!NOTE]
->V tuto chvíli probíhá navýšení hostovaného operačního systému pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V hostovaném operačním systému z srpna jsou zahrnuté následující opravy. Tento seznam se může změnit.
-
 | Produktová kategorie | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 19-08   |  [4512482]  |  Zabezpečení systému Windows   |  3,76  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  5,34  |  18. června 2019  |
-|  Rel. 19-08   |  [4512517]  |  Nejnovější kumulativní aktualizace   |  5,34  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  6.1  |  18. června 2019  |
-|  Rel. 19-08   |  [4511553]  |  Nejnovější kumulativní aktualizace   |  6.1  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4512486]  |  Zabezpečení systému Windows   |  2,89  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4512489]  |  Zabezpečení systému Windows   |  4,69  |  VIII 13. srpna 2019  |
-|  Rel. 19-08   |  [4511872]  |  Internet Explorer    |  2,89, 3,76, 4,69  |  15. srpna 2019  |
-|  Rel. 19-08   |  [4507449]  |  Bez zabezpečení   |  2,89  |  9\. července 2019  |
-|  Rel. 19-08   |  [4507000]  |  .NET 4.5.2 bez zabezpečení   |  3,76  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507002]  |  .NET 3,5 – netýká se zabezpečení   |  3,76  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507462]  |  Bez zabezpečení   |  3,76  |  9\. července 2019  |
-|  Rel. 19-08   |  [4506999]  |  .NET 4.5.2 bez zabezpečení    |  4,69  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507005]  |  .NET 3,5 – netýká se zabezpečení    |  4,69  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507448]  |  Bez zabezpečení   |  4,69  |  9\. července 2019  |
-|  Rel. 19-08   |  [4509091]  |  Aktualizace servisního zásobníku   |  5,34  |  9\. července 2019  |
-|  Rel. 19-08   |  [4509095]  |  Aktualizace servisního zásobníku   |  6.1  |  9\. července 2019  |
-|  Rel. 19-08   |  [4512937]  |  Aktualizace servisního zásobníku   |  6.1  |  29. července 2019  |
-|  Rel. 19-08   |  [4507004]  |  Rozhraní .NET 3.5.1 bez zabezpečení    |  2,89  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4504418]  |  Aktualizace servisního zásobníku   |  3,76, 4,69  |  11. července 2019  |
-|  Rel. 19-08   |  [4507001]  |  .NET 4.5.2 bez zabezpečení   |  2,89  |  12. srpna 2019  |
-|  Rel. 19-08   |  [4507704]  |  Nastavení letního času v systému Windows pro Brazílie a Maroko   |  2,89, 3,76, 4,69, 5,34  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512482]  |  Zabezpečení systému Windows   |  [3,76]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4494175]  |  Vyžádal povolení mikrokódu aktualizace   |  [5,34]  |  18. června 2019  |
+|  Rel. 19-08   |  [4512517]  |  Nejnovější kumulativní aktualizace   |  [5,34]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4494174]  |  Vyžádal povolení mikrokódu aktualizace   |  [6,1]  |  18. června 2019  |
+|  Rel. 19-08   |  [4511553]  |  Nejnovější kumulativní aktualizace   |  [6,1]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512486]  |  Zabezpečení systému Windows   |  [2,89]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4512489]  |  Zabezpečení systému Windows   |  [4,69]  |  VIII 13. srpna 2019  |
+|  Rel. 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15. srpna 2019  |
+|  Rel. 19-08   |  [4507449]  |  Bez zabezpečení   |  [2,89]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4507000]  |  .NET 4.5.2 bez zabezpečení   |  [3,76]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507002]  |  .NET 3,5 – netýká se zabezpečení   |  [3,76]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507462]  |  Bez zabezpečení   |  [3,76]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4506999]  |  .NET 4.5.2 bez zabezpečení    |  [4,69]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507005]  |  .NET 3,5 – netýká se zabezpečení    |  [4,69]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507448]  |  Bez zabezpečení   |  [4,69]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4509091]  |  Aktualizace servisního zásobníku   |  [5,34]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4509095]  |  Aktualizace servisního zásobníku   |  [6,1]  |  9\. července 2019  |
+|  Rel. 19-08   |  [4512937]  |  Aktualizace servisního zásobníku   |  [6,1]  |  29. července 2019  |
+|  Rel. 19-08   |  [4507004]  |  Rozhraní .NET 3.5.1 bez zabezpečení    |  [2,89]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4504418]  |  Aktualizace servisního zásobníku   |  [3,76], [4,69]  |  11. července 2019  |
+|  Rel. 19-08   |  [4507001]  |  .NET 4.5.2 bez zabezpečení   |  [2,89]  |  12. srpna 2019  |
+|  Rel. 19-08   |  [4507704]  |  Nastavení letního času v systému Windows pro Brazílie a Maroko   |  [2,89], [3,76], [4,69], [5,34]  |  VIII 13. srpna 2019  |
 
 [4512482]: https://support.microsoft.com/kb/4512482
 [4494175]: https://support.microsoft.com/kb/4494175
@@ -75,6 +72,12 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4504418]: https://support.microsoft.com/kb/4504418
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
+
+[6,1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>Z července 2019 hostovaný operační systém
