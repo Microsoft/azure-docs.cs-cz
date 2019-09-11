@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: a22fef717acdc0cd619ddfe1efdf256b1255dbf9
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0f135e79f95a2cf3b134a729722731812d606845
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735960"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882229"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Hadoop ve službě Azure HDInsight pomocí Azure Portal
 
@@ -58,7 +58,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
     |Typ clusteru     | Vyberte **Hadoop** |
     |Version     | Vyberte **Hadoop 2.7.3 (HDI 3.6)**|
 
-    ![HDInsight Linux začínáme zadání základních hodnot clusteru](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "Zadání základních hodnot pro vytvoření clusteru HDInsight")
+    ![Konfigurace clusteru HDInsight pro Linux – začátek](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "Konfigurace clusteru HDInsight pro Linux – začátek")
 
     Vyberte **Vybrat** a potom vyberte **Další** a přejděte k nastavení úložiště.
 
@@ -101,7 +101,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
 
 3. Otevřete **Zobrazení Hive**, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Výběr zobrazení Ambari](./media/apache-hadoop-linux-tutorial-get-started/selecthiveview.png "Nabídka zobrazení Hive služby HDInsight")
+    ![Výběr zobrazení Ambari](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "Nabídka zobrazení Hive služby HDInsight")
 
 4. Na kartě **DOTAZ** vložte následující příkazy HiveQL do pracovního listu:
 
@@ -115,7 +115,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí webu Azure Portal
 
     Po dokončení dotazu se na kartě **dotaz** zobrazí výsledky operace. Zobrazí jedna tabulka s názvem **hivesampletable**. Tato vzorová tabulka Hive obsahuje všechny clustery HDInsight.
 
-    ![Zobrazení Hive služby HDInsight](./media/apache-hadoop-linux-tutorial-get-started/hiveview.png "Editor dotazů zobrazení Hive služby HDInsight")
+    ![Výsledky zobrazení podregistru HDInsight](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Výsledky zobrazení podregistru HDInsight")
 
 6. Opakujte kroky 4 a 5 a spusťte následující dotaz:
 

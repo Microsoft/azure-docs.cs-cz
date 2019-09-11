@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start pro Node. js: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API – Azure Search'
+title: 'Rychlý start: Vytvoření indexu vyhledávání v Node. js pomocí rozhraní REST API – Azure Search'
 description: Ukázka Node. js pro Azure Search, která demonstruje, jak vytvořit, načíst data do a dotazovat se z JavaScriptu
 author: lobrien
 manager: nitinme
@@ -8,16 +8,16 @@ services: search
 ms.service: search
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/30/2019
+ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e17247ea412b5472a0c23fd74ff7e53f375710d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656309"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881497"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>Rychlý start: Vytvoření indexu Azure Search v Node. js
+# <a name="quickstart-create-an-azure-search-index-in-nodejs-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v Node. js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -39,7 +39,7 @@ V tomto rychlém startu se používají následující služby, nástroje a data
 + V tomto článku je uvedena ukázková struktura indexu a vyhovující dokumenty, nebo v adresáři [ **rychlého** startu úložiště](https://github.com/Azure-Samples/azure-search-javascript-samples/).
 + [Vytvořte službu Azure Search](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
-Doporučil
+Doporučené:
 
 * [Visual Studio Code](https://code.visualstudio.com).
 * Rozšíření [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) a [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) pro VSCode.
@@ -49,7 +49,7 @@ Doporučil
 
 Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali službu Azure Search, získejte potřebné informace pomocí následujícího postupu:
 
-1. Přihlaste se [k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
 
 2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
@@ -453,7 +453,7 @@ Nezapomeňte, že konečné volání `run()`! Je to vstupní bod programu při s
 
 Všimněte si `AzureSearchClient.indexExistsAsync()` , `AzureSearchClient.deleteIndexAsync()` že a nepřebírají parametry. Tyto funkce volají `AzureSearchClient.request()` bez `bodyJson` argumentu. V `AzureSearchClient.request()`rámci, `bodyJson === null` protože `true`je, `init` struktura je nastavená tak, aby byla pouze příkaz HTTP ("Get `indexExistsAsync()` " pro a "Delete `deleteIndexAsync()`" pro) a hlavičkám, které určují klíč požadavku.  
 
-Naproti tomu `AzureSearchClient.createIndexAsync(indexDefinition)` metoda přijímá parametr. Funkce v `index.js`systému předá do `AzureSearchClient.createIndexAsync(indexDefinition)` metody obsah souboru **hotels_quickstart_index. JSON** . `run` Metoda předá tuto definici do `AzureSearchClient.request()`. `createIndexAsync()` V `AzureSearchClient.request()`, protože `bodyJson === null` je nyní `false` `body` struktura, zahrnuje nejen příkaz HTTP ("Put") a záhlaví, ale nastaví data definice indexu. `init`
+Naproti `AzureSearchClient.createIndexAsync(indexDefinition)` _tomu metoda přijímá_ parametr. Funkce v `index.js`systému předá do `AzureSearchClient.createIndexAsync(indexDefinition)` metody obsah souboru **hotels_quickstart_index. JSON** . `run` Metoda předá tuto definici do `AzureSearchClient.request()`. `createIndexAsync()` V `AzureSearchClient.request()`, protože `bodyJson === null` je nyní `false` `body` struktura, zahrnuje nejen příkaz HTTP ("Put") a záhlaví, ale nastaví data definice indexu. `init`
 
 ### <a name="prepare-and-run-the-sample"></a>Příprava a spuštění ukázky
 
@@ -600,7 +600,7 @@ const run = async () => {
 }
 ```
 
-Spusťte program znovu s `node index.js`. Měla by se zobrazit trochu odlišná sada zpráv z těch, které jste viděli v kroku 1. Tentokrát index existuje a měla by se vám zobrazit zpráva o jeho odstranění, než aplikace vytvoří nový index a odešle do něj data. 
+Spusťte program znovu s `node index.js`. Měla by se zobrazit trochu odlišná sada zpráv z těch, které jste viděli v kroku 1. Tentokrát _index existuje_ a měla by se vám zobrazit zpráva o jeho odstranění, než aplikace vytvoří nový index a odešle do něj data. 
 
 ## <a name="3---search-an-index"></a>3\. Prohledání indexu
 

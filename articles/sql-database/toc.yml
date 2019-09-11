@@ -333,7 +333,7 @@
             - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Atributy zabezpečení
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: Omezení funkcí
           href: sql-database-feature-restrictions.md
     - name: Škálovatelnost
@@ -512,6 +512,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: Migrace certifikace TDE do spravované instance
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: Bod obnovení v čase
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Určení velikosti podsítě spravované instance
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: Vytvoření nové virtuální sítě a podsítě pro spravovanou instanci
@@ -534,8 +536,6 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Načtení a přesun dat
       items:
-        - name: Bod obnovení v čase
-          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Přesun prostředků do nové oblasti
           href: sql-database-move-resources-across-regions.md
         - name: Kopírování databáze v rámci Azure

@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě Azure Cognitive Services
-  href: index.md
+  href: index.yml
 - name: Přehled
   expanded: true
   items:

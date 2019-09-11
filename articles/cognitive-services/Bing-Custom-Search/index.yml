@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Naučte se využívat rozhraní API a portál Vlastní vyhledávání Bingu k vytváření vlastních vyhledávacích prostředí.
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 'Využijte rozhraní API pro vlastní vyhledávání Bingu k vytvoření instance vyhledávání témat, která vás zajímají. Zadejte domény a webové stránky, které se mají prohledat, a upravte hodnocení vyhledaných položek tak, aby plně odpovídalo vašemu vyhledávacímu prostředí.'
 sections:

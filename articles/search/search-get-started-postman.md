@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start REST: Vytváření, načítání a dotazování indexů pomocí Azure Search pro publikování'
+title: 'Rychlý start: Vytvoření indexu vyhledávání v části post pomocí rozhraní REST API – Azure Search'
 description: Naučte se volat Azure Search rozhraní REST API pomocí post a vzorových dat a definic.
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656782"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881535"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v části post pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -296,7 +296,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď víte, jak provádět základní úlohy, můžete přejít vpřed pomocí dalších REST API volání pro pokročilejší funkce, jako jsou indexery nebo [Nastavení kanálu pro hledání vnímání](cognitive-search-tutorial-blob.md). V dalším kroku doporučujeme následující odkaz:
 

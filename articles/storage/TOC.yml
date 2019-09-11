@@ -8,13 +8,13 @@
     - name: 'Výběr objektů blob, souborů nebo disků'
       href: ./common/storage-decide-blobs-files-disks.md
 - name: Objekty blob
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml
 - name: Data Lake Storage Gen2
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml
 - name: Soubory
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml
 - name: Fronty
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml
 - name: Tabulky
   href: ./tables/table-storage-overview.md
 - name: Disky
