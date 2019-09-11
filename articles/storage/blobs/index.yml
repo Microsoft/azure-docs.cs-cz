@@ -1,0 +1,153 @@
+### YamlMime:Landing
+title: Dokumentace službě Azure Blob Storage
+summary: Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+metadata:
+  title: Dokumentace službě Azure Blob Storage
+  description: Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+  services: storage
+  ms.service: storage
+  ms.subservice: blobs
+  ms.topic: landing-page
+  ms.collection: collection
+  author: normesta
+  ms.author: normesta
+  ms.date: 08/20/2019
+  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
+  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70875567"
+landingContent:
+- title: Informace o službě Blob Storage
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Blob Storage?
+      url: storage-blobs-overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Použití webu Azure Portal
+      url: storage-quickstart-blobs-portal.md
+    - text: Použití Storage Exploreru
+      url: storage-quickstart-blobs-storage-explorer.md
+  - linkListType: concept
+    links:
+    - text: Přehled účtu úložiště
+      url: ../common/storage-account-overview.md
+    - text: Data redundancy
+      url: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: vytvořit účet úložiště
+      url: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Vytvoření účtu úložiště objektů blob bloku
+      url: storage-blob-create-account-block-blob.md
+    - text: Konfigurace vlastní domény
+      url: storage-custom-domain-name.md
+- title: Analýzy a přehledy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Lake Storage Gen2
+      url: data-lake-storage-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: Analýza dat s využitím Databricks
+      url: data-lake-storage-quickstart-create-databricks-account.md
+  - linkListType: concept
+    links:
+    - text: Zpracování velkých objemů dat
+      url: data-lake-storage-data-scenarios.md
+    - text: Přístup s více protokoly
+      url: data-lake-storage-multi-protocol-access.md
+    - text: Osvědčené postupy
+      url: data-lake-storage-best-practices.md
+  - linkListType: tutorial
+    links:
+    - text: Extrakce, transformace a načítání dat s využitím Azure Databricks
+      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Extrakce, transformace a načítání dat s využitím Apache Hivu ve službě Azure HDInsight
+      url: data-lake-storage-tutorial-extract-transform-load-hive.md
+    - text: Vložení dat do tabulek Databricks s využitím Event Gridu
+      url: data-lake-storage-events.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Využití s clustery Azure HDInsight
+      url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Použití s Power BI
+      url: data-lake-storage-use-power-bi.md
+- title: Vývoj aplikací
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Použití .NET
+      url: storage-quickstart-blobs-dotnet.md
+    - text: Použití Pythonu
+      url: storage-quickstart-blobs-python.md
+    - text: Směrování událostí do webového koncového bodu
+      url: ../../event-grid/blob-event-quickstart-portal.md
+    - text: Hostování statického webu
+      url: storage-blob-static-website-how-to.md
+  - linkListType: concept
+    links:
+    - text: Zpracování událostí
+      url: storage-blob-event-overview.md
+    - text: Statické weby
+      url: storage-blob-static-website.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření webové aplikace pro nahrání dat obrázků
+      url: storage-upload-process-images.md
+- title: Správa zabezpečení a identit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Autorizace přístupu ke službě Azure Storage
+      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Řízení přístupu ke službě Data Lake
+      url: data-lake-storage-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Přístup k datům objektů blob pomocí účtu Azure AD
+      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Správa přístupových práv pomocí RBAC
+      url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Použití spravované identity k autorizaci přístupu k úložišti objektů blob
+      url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Přenos dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Porovnání řešení přenosu dat
+      url: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Použití Azure Data Boxu pro offline přenos
+      url: ../../databox/data-box-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Přenos s AzCopy
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Přenos s Azure Data Factory
+      url: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Výkon a škálovatelnost
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Škálovatelnost a výkon
+      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Kontrolní seznam pro výkon a škálovatelnost
+      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: Optimalizace pro zajištění výkonu a škálovatelnosti
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: Zálohování a archivace dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Horká, studená a archivní úroveň úložiště
+      url: storage-blob-storage-tiers.md
+    - text: Správa životního cyklu úložiště objektů blob
+      url: storage-lifecycle-management-concepts.md

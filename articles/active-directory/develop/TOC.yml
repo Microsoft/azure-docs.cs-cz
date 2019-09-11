@@ -205,6 +205,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Použití zprostředkovatelů s aplikacemi pro Xamarin iOS a Android
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: Univerzální platforma Windows
                       href: msal-net-uwp-considerations.md
                 - name: Získání tokenu pro aplikaci
@@ -225,6 +227,8 @@
                   href: msal-net-migration.md
                 - name: Migrace na MSAL.js
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: Migrace aplikací pro Xamarin pomocí zprostředkovatelů z ADAL.NET do MSAL.NET
+                  href: msal-net-migration-ios-broker.md
             - name: Podporované toky ověřování
               href: msal-authentication-flows.md
             - name: Získání tokenů a jejich uložení v mezipaměti

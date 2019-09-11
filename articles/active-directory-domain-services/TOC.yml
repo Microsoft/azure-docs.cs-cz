@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: Ukázky
   items:
-    - name: Vytvoření instance Azure AD DS pomocí Azure Powershellu
+    - name: Vytvoření spravované domény pomocí Azure PowerShellu
       href: powershell-create-instance.md
 - name: Koncepty
   items:

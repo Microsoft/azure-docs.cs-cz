@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533632"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276487"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Náhled – zabezpečený přístup k serveru rozhraní API pomocí povolených rozsahů IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -27,6 +27,8 @@ V tomto článku se dozvíte, jak používat rozsahy IP adres autorizovaných se
 > * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="before-you-begin"></a>Před zahájením
+
+Tento článek předpokládá, že pracujete s clustery, které používají [kubenet] [kubenet].  V případě clusterů založených na [CNI] [CNI-Networking] nebude k zabezpečení přístupu nutná požadovaná tabulka směrování.  Směrovací tabulku budete muset vytvořit ručně.  Další informace najdete v tématu [Správa směrovacích tabulek](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 Schválené rozsahy IP adres serveru API fungují jenom pro nové clustery AKS, které vytvoříte. V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 
@@ -170,7 +172,7 @@ az network firewall ip-config create \
     --public-ip-address myAzureFirewallPublicIP
 ```
 
-Teď vytvořte pravidlo sítě brány firewall Azure, abyste povolili všechny přenosy *TCP* pomocí příkazu [AZ Network firewall Network-Rule Create][az-network-firewall-network-rule-create] . Následující příklad vytvoří síťové pravidlo s názvem *AllowTCPOutbound* pro provoz s jakoukoli zdrojovou nebo cílovou adresou:
+Teď vytvořte pravidlo sítě brány firewall Azure, abyste *povolili* všechny přenosy *TCP* pomocí příkazu [AZ Network firewall Network-Rule Create][az-network-firewall-network-rule-create] . Následující příklad vytvoří síťové pravidlo s názvem *AllowTCPOutbound* pro provoz s jakoukoli zdrojovou nebo cílovou adresou:
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -224,7 +226,7 @@ Poznamenejte si veřejnou IP adresu vašeho zařízení Azure Firewall. Tato adr
 
 Pokud chcete povolit rozsahy IP adres autorizovaných serverem API, zadejte seznam autorizovaných rozsahů IP adres. Když zadáte rozsah CIDR, začněte první IP adresou v rozsahu. Například *137.117.106.90/29* je platný rozsah, ale ujistěte se, že jste zadali první IP adresu v rozsahu, například *137.117.106.88/29*.
 
-Použijte příkaz [AZ AKS Update][az-aks-update] a určete *Rozsah--API-Server-povoleno-IP* -rozsahy, které chcete povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi. Přidejte veřejnou IP adresu vlastní brány Azure firewall získanou v předchozím kroku, například *20.42.25.196/32*.
+Použijte příkaz [AZ AKS Update][az-aks-update] a určete *Rozsah--API-Server-povoleno-IP-rozsahy* , které chcete povolit. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi. Přidejte veřejnou IP adresu vlastní brány Azure firewall získanou v předchozím kroku, například *20.42.25.196/32*.
 
 Následující příklad povoluje rozsahy IP adres ověřených serverem API v clusteru s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Rozsahy IP adres, které se mají autorizovat, jsou *20.42.25.196/32* (veřejná IP adresa brány firewall Azure) a pak *172.0.0.0/16* a *168.10.0.0/18*:
 
@@ -246,7 +248,7 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste povolili rozsahy IP adres ověřených serverem API. Tento přístup je jednou ze součástí, jak můžete spustit zabezpečený cluster AKS.
 

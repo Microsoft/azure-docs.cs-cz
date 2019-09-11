@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: Kterou možnost SQL mám zvolit?
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: Porovnání funkcí
+      href: sql-database-features.md
     - name: "Poznámky k\_verzi"
       href: sql-database-release-notes.md
     - name: Aktualizace migrace IP brány
@@ -390,10 +392,8 @@
               href: sql-database-advisor.md
     - name: Funkce databází
       items:
-        - name: Dokumentace k funkcím služby SQL Database
+        - name: Přehled
           href: sql-database-features-index.yml
-        - name: Porovnání funkcí SQL
-          href: sql-database-features.md
         - name: Možnosti s více modely
           href: sql-database-multi-model-features.md
         - name: V paměti
@@ -534,6 +534,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Načtení a přesun dat
       items:
+        - name: Bod obnovení v čase
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: Přesun prostředků do nové oblasti
           href: sql-database-move-resources-across-regions.md
         - name: Kopírování databáze v rámci Azure

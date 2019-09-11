@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Blockchain Workbench
+title: Dokumentace ke službě Azure Blockchain Workbench Preview
 summary: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a spravovat blockchainové aplikace v Azure.
 metadata:
-  title: Dokumentace ke službě Azure Blockchain Workbench – kurzy, reference k rozhraní API
+  title: Dokumentace ke službě Azure Blockchain Workbench Preview – kurzy, reference k rozhraní API
   description: Naučíte se vytvářet blockchainové aplikace. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak nasadit Azure Blockchain Workbench a jak vytvářet a spravovat blockchainové aplikace v Azure.
   services: azure-blockchain
   ms.service: azure-blockchain
   ms.topic: landing-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 08/29/2019
-  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70240811"
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845017"
 landingContent:
 - title: Informace o aplikaci Azure Blockchain Workbench
   linkLists:

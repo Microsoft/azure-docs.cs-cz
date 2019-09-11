@@ -1,61 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace ke službě Personalizace
+summary: Naučte se využívat službu Personalizace k tomu, abyste vaší aplikaci umožnili volbu nejvhodnějšího prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
 metadata:
-  document_id: null
-  title: 'Personalizace – kurzy, rychlá zprovoznění, referenční informace k rozhraní API'
-  description: 'Naučte se využívat službu Personalizace k tomu, abyste vaší aplikaci umožnili volbu nejvhodnějšího prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.'
+  ms.topic: landing-page
+  ms.date: 09/09/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: personalizer
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: nitinme
-abstract:
-  description: 'Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/personalizer/what-is-personalizer
-            html: '<p>Zjistěte, co služba Personalizace dělá a jak se dá využít.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Co je služba Personalizace?
-          - href: /azure/cognitive-services/personalizer/how-personalizer-works
-            html: '<p>Dozvíte se, jak smyčka zpětné vazby Personalizace funguje s rozhraními Rank API a Reward API.</p>'
-            image:
-              src: ../media/index/i_overview.svg
-            title: Jak služba Personalizace funguje
-          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
-            html: '<p>Využijte možnost implementovat personalizaci způsobem, který posiluje důvěru ve vaši společnost a službu.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Etika a zodpovědnost
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/logo_Csharp.svg
-            href: csharp-quickstart-commandline-feedback-loop.md
-            text: 'C#'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Rozhraní REST API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082">Rozhraní API služby Personalizace</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Rozhraní příkazového řádku
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  services: cognitive-services
+  title: Dokumentace ke službě Personalizace
+  titleSuffix: Azure Cognitive Services
+  description: Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
+  ms.openlocfilehash: 7c73472231b563c1efa583e356774f755abea3bf
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845418"
+landingContent:
+- title: Informace o službě Personalizace
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Personalizace?
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: Jak služba Personalizace funguje
+      url: how-personalizer-works.md
+    - text: Kde se dá služba Personalizace využít?
+      url: where-can-you-use-personalizer.md
+    - text: Etické a zodpovědné využití
+      url: ethics-responsible-use.md
+    - text: Volba funkcí a akcí pro přizpůsobení
+      url: concepts-features.md
+    - text: Jak vypočítat odměnu
+      url: concept-rewards.md
+    - text: Offline vyhodnocení
+      url: concepts-offline-evaluation.md
+  - linkListType: how-to-guide
+    links:
+    - text: Analýza úspěchu s offline vyhodnocením
+      url: how-to-offline-evaluation.md
+- title: Vývoj s využitím Personalizace
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Pomocí .NET
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Pomocí Pythonu
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření a konfigurace služby Personalizace
+      url: how-to-settings.md
+  - linkListType: reference
+    links:
+    - text: Ukázky kódů
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: Rozhraní REST API
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+    - text: Balíček NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: Balíček NPM
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+    - text: Balíček Pypi
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: concept
+    links:
+    - text: Škálovatelnost a výkon
+      url: concepts-scalability-performance.md
+- title: Informace o zpětnovazebním učení
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je zpětnovazební učení?
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: Průzkum
+      url: concepts-exploration.md
+    - text: Funkce, akce a kontext
+      url: concepts-features.md
+    - text: Aktivní učení
+      url: concept-active-learning.md
+    - text: Odměny
+      url: concept-rewards.md
+- title: Nápověda a zpětná vazba
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Řešení potíží
+      url: troubleshooting.md
+    - text: Dotazy na Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: Ovlivnění služeb s využitím UserVoice
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

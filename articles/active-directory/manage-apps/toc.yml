@@ -346,6 +346,10 @@
       items:
         - name: Zápis výrazů pro mapování atributů
           href: functions-for-customizing-application-data.md
+    - name: Agent zřizování Azure AD Connect
+      items:
+        - name: Historie verzí agenta zřizování
+          href: provisioning-agent-release-version-history.md
     - name: Proxy aplikací pro místní aplikace
       items:
         - name: Historie verzí Proxy aplikací
