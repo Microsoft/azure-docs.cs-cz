@@ -59,7 +59,7 @@
           href: time-series-insights-update-storage-ingress.md
         - name: Případy použití
           href: time-series-insights-update-use-cases.md
-        - name: Modelování dat
+        - name: Model služby Time Series
           href: time-series-insights-update-tsm.md
         - name: Dotazování dat
           href: time-series-insights-update-tsq.md

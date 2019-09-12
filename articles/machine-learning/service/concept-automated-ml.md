@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 319871280b94f54b99f7a9957f671ec50122ebf3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860907"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882030"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -98,7 +98,12 @@ Vytváření prognóz je nedílnou součástí jakékoli firmy, ať už jde o v�
 
 Automatický experiment s časovou řadou se považuje za problém lineární regrese. Hodnoty za časovou řadou jsou "pivoted" a stanou se dalšími dimenzemi pro regresor společně s jinými koproměnnými. Tento přístup, na rozdíl od metod klasických časových řad, má výhodu přirozeně zahrnující více kontextových proměnných a jejich vzájemný vztah během školení. Automatizovaná ML seznámí s jedním, ale často interně rozvětveným modelem pro všechny položky v datové sadě a horizontech předpovědi. K dispozici jsou proto další data k odhadování parametrů modelu a generalizace na nedostupné řady.
 
-Přečtěte si další informace a podívejte se na příklad [automatizovaného strojového učení pro předpověď časových řad](how-to-auto-train-forecast.md).
+Přečtěte si další informace a podívejte se na příklad [automatizovaného strojového učení pro předpověď časových řad](how-to-auto-train-forecast.md). Případně můžete zobrazit podrobné příklady kódu pro pokročilou konfiguraci prognózování v [poznámkovém bloku Energy Demand](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) , včetně:
+
+* detekce svátků a featurization
+* křížové ověření pro návratové zdroje
+* konfigurovatelné prodlevy
+* souhrnné funkce kumulovaných oken
 
 ## <a name="ensemble"></a>Modely kompletování
 

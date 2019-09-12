@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 45c802fb42088be1eecd7c711c6693d325252c91
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985783"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899412"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava k nasazení svého řešení IoT Edge v produkčním prostředí
 
@@ -209,13 +209,15 @@ Ve výchozím nastavení nenastavuje Moby kontejnerového modulu limity velikost
 
 Velikost všech protokolů kontejnerů můžete omezit v možnostech protokolu modulu container Engine. Následující příklad nastaví ovladač protokolu na `json-file` (doporučeno) s omezeními velikosti a počtu souborů:
 
-    {
-        "log-driver": "json-file",
-        "log-opts": {
-            "max-size": "10m",
-            "max-file": "3"
-        }
+```JSON
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
     }
+}
+```
 
 Přidejte (nebo přidejte) tyto informace do souboru s názvem `daemon.json` a umístěte je do správného umístění pro platformu zařízení.
 
@@ -230,18 +232,19 @@ Aby se změny projevily, musí být modul kontejneru restartován.
 
 To můžete provést v **createOptions** každého modulu. Příklad:
 
-    "createOptions": {
-        "HostConfig": {
-            "LogConfig": {
-                "Type": "json-file",
-                "Config": {
-                    "max-size": "10m",
-                    "max-file": "3"
-                }
+```yml
+"createOptions": {
+    "HostConfig": {
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-size": "10m",
+                "max-file": "3"
             }
         }
     }
-
+}
+```
 
 **Další možnosti pro systémy Linux**
 

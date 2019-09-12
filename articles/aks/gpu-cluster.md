@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68381829"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899464"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní výkon ve službě Azure Kubernetes Service (AKS)
 
@@ -60,7 +60,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Než bude možné použít GPU v uzlech, je nutné nasadit DaemonSet pro modul plug-in zařízení NVIDIA. Tento DaemonSet spustí pod každým uzlem, aby poskytoval požadované ovladače pro GPU.
 
-Nejprve vytvořte obor názvů pomocí příkazu [kubectl Create Namespace][kubectl-create] , například *GPU-* Resources:
+Nejprve vytvořte obor názvů pomocí příkazu [kubectl Create Namespace][kubectl-create] , například *GPU-Resources*:
 
 ```console
 kubectl create namespace gpu-resources
@@ -73,7 +73,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
-  namespace: kube-system
+  namespace: gpu-resources
 spec:
   updateStrategy:
     type: RollingUpdate
@@ -328,7 +328,7 @@ K odebrání přidružených objektů Kubernetes vytvořených v tomto článku 
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete spouštět úlohy Apache Spark, přečtěte si téma [spuštění úloh Apache Spark na AKS][aks-spark].
 

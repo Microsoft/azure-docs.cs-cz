@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 580712c4d1815b1c994fd62be78e8d7f3f1c9a01
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9fba32c9c21faa6e02c8b48b3907ab67e47036d5
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809421"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885516"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s izolovaným prostorem Hortonworks
 
@@ -185,7 +185,7 @@ Nástroje Data Lake také umožňují snadno zobrazit informace o úlohách, kte
 
 Můžete zobrazit vlastnosti databáze nebo tabulky. Výběr **vlastností** zobrazí podrobnosti o vybrané položce v okně Vlastnosti. Podívejte se například na informace uvedené na následujícím snímku obrazovky:
 
-![Snímek obrazovky s okno Vlastnosti](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![Snímek obrazovky s okno Vlastnosti](./media/hdinsight-hadoop-emulator-visual-studio/hdi-properties-window.png)
 
 ### <a name="create-a-table"></a>Vytvoření tabulky
 

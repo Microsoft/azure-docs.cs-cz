@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: e5ae05b2ad1dc03bad210b1f67834865afd49df3
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810876"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882432"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Analýza protokolů Apache Hadoop ve službě Azure HDInsight
 
 Každý Apache Hadoop cluster v Azure HDInsight má účet úložiště Azure, který se používá jako výchozí systém souborů. Účet úložiště se označuje jako výchozí účet úložiště. Cluster používá úložiště tabulek Azure a BLOB Storage ve výchozím účtu úložiště pro ukládání protokolů.  Pokud chcete zjistit výchozí účet úložiště pro váš cluster, přečtěte si téma [správa Apache Hadoopch clusterů ve službě HDInsight](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts). Protokoly se uchovávají v účtu úložiště i po odstranění clusteru.
 
@@ -38,7 +38,7 @@ Tyto tabulky obsahují následující pole:
 
 * ClusterDnsName
 * Název komponenty
-* EventTimestamp
+* eventTimestamp
 * Host
 * MALoggingHash
 * Message

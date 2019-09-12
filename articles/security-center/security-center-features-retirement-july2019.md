@@ -1,19 +1,19 @@
 ---
 title: Vyřazení funkcí Security Center (červenec 2019) | Microsoft Docs
-description: Tento článek popisuje funkce v Security Center, které budou vyřazení od 31. července 2019.
+description: Tento článek popisuje funkce v Security Center, které byly vyřazeny od 31. července 2019.
 services: security-center
-author: yoavfrancis
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: article
-ms.date: 4/16/2019
-ms.author: yoafr
-ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876499"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910574"
 ---
 > [!NOTE]
 > Tento dokument obsahuje podrobný seznam funkcí, které byly vyřazeny z Azure Security Center 31. července 2019.
@@ -23,12 +23,12 @@ ms.locfileid: "69876499"
 
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení funkcí Security Center (červenec 2019)
 
-Provedli jsme několik [vylepšení](https://azure.microsoft.com/updates/?product=security-center) Azure Security Center za posledních šest měsíců.
-S těmito vylepšenými možnostmi odebíráme některé redundantní funkce a související rozhraní API z Security Center 31. července 2019.  
+Provedli jsme několik [vylepšení](https://azure.microsoft.com/updates/?product=security-center) Azure Security Center za šest měsíců od až do července 2019.
+S těmito vylepšenými možnostmi jsme odebrali několik redundantních funkcí a souvisejících rozhraní API od Security Center 31. července 2019.
 
 Většina těchto funkcí pro vyřazení z provozu se dá nahradit novými funkcemi v Azure Security Center nebo Azure Log Analytics. Další funkce se dají implementovat pomocí [Azure Sentinel (Preview)](https://azure.microsoft.com/services/azure-sentinel/).
 
-Security Center funkce k vyřazení zahrnují:
+Mezi vyřazené Security Center funkce patří:
 
 - [Řídicí panel události](#menu_events)
 - [Položka nabídky Hledat](#menu_search)
@@ -46,7 +46,7 @@ Tento článek obsahuje podrobné informace o jednotlivých vyřazených funkcí
 
 Security Center používá Microsoft Monitoring Agent ke shromažďování různých konfigurací a událostí souvisejících se zabezpečením z vašich počítačů. Tyto události se uloží do vašich pracovních prostorů. [Řídicí panel události](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) umožňuje zobrazit tato data a poskytuje vstupní bod pro Log Analytics.
 
-Vyřadíme řídicí panel události, který se zobrazí po výběru pracovního prostoru:
+Vyřadíme řídicí panel události, který se zobrazil při výběru pracovního prostoru:
 
 ![Řídicí panel Události][2]
 
@@ -60,7 +60,7 @@ Pokud jste v Security Center vytvořili vlastní významné události, budou k d
 
 ## Položka nabídky Hledat<a name="menu_search"></a>
 
-Azure Security Center aktuálně používá hledání Azure Monitor protokolů k načtení a analýze dat zabezpečení. Tato obrazovka slouží jako okno Log Analytics vyhledávání stránky a umožňuje uživatelům spouštět vyhledávací dotazy ve zvoleném pracovním prostoru. Další informace najdete v tématu [Azure Security Center Search](https://docs.microsoft.com/azure/security-center/security-center-search). Vyřazení tohoto okna hledání:
+Azure Security Center aktuálně používá hledání Azure Monitor protokolů k načtení a analýze dat zabezpečení. Tato obrazovka slouží jako okno Log Analytics vyhledávání stránky a umožňuje uživatelům spouštět vyhledávací dotazy ve zvoleném pracovním prostoru. Další informace najdete v tématu [Azure Security Center Search](https://docs.microsoft.com/azure/security-center/security-center-search). Toto okno hledání jsme zastarali:
 
 ![Stránka hledání][4]
 
@@ -86,7 +86,7 @@ Prostředí pro přístup k klasické identitě & v Security Center aktuálně z
 
    ![Stránka identity – řídicí panel][8]
 
-Vyvyřazujeme všechny tři obrazovky uvedené v předchozích krocích. Vaše data zůstanou v řešení zabezpečení Log Analytics k dispozici a neupravují ani neodstraňují.
+Vyřadíme všechny tři obrazovky uvedené v předchozích krocích. Vaše data zůstanou dostupná v řešení zabezpečení Log Analytics a nezměnili ani neodebrali.
 
 ### <a name="classic-identity--access-preview---the-new-experience"></a>Přístup k klasické identitě & (Preview) – nové prostředí
 
@@ -100,19 +100,19 @@ Pro všechny funkce řídicího panelu **přístup k identitě &** v Log Analyti
 
 Security Center poskytuje [mapu výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) , které vám pomůžou identifikovat bezpečnostní hrozby. Tlačítko **Přejít na mapu událostí zabezpečení** v této mapě otevře řídicí panel, který umožňuje zobrazit nezpracované události zabezpečení ve vybraném pracovním prostoru.
 
-Odebíráme tlačítko **Přejít na mapu událostí zabezpečení** a řídicí panel pro jednotlivé pracovní prostory.
+Odebrali jsme tlačítko **Přejít na mapu událostí zabezpečení** a řídicí panel pro jednotlivé pracovní prostory.
 
 ![Mapování výstrah zabezpečení – tlačítko][10]
 
-Když vyberete tlačítko **Přejít na mapu událostí zabezpečení** , otevřete řídicí panel Analýza hrozeb. Vyhráváme řídicí panel Analýza hrozeb.  
+Když vyberete tlačítko **Přejít na mapu událostí zabezpečení** , otevřete řídicí panel Analýza hrozeb. Vyřadíme řídicí panel Analýza hrozeb.
 
 ![Řídicí panel Analýza hrozeb][11]
 
-Když zvolíte pracovní prostor pro zobrazení řídicího panelu Analýza hrozeb, otevřete na Log Analytics obrazovku Mapa výstrah zabezpečení (Preview). Tuto obrazovku vyřazením z provozu dostaneme.
+Když zvolíte pracovní prostor pro zobrazení řídicího panelu Analýza hrozeb, otevřete na Log Analytics obrazovku Mapa výstrah zabezpečení (Preview). Tato obrazovka byla vyřazena.
 
 ![Mapování výstrah zabezpečení v Log Analytics][12]
 
-Stávající data zůstanou v řešení zabezpečení Log Analytics k dispozici a nebudou se upravovat ani odebírat.
+Vaše stávající data zůstanou dostupná v řešení zabezpečení Log Analytics a nezměnili ani neodebrali.
 
 ### <a name="security-events-map---the-new-experience"></a>Mapování událostí zabezpečení – nové prostředí
 
@@ -120,10 +120,10 @@ Doporučujeme používat funkce mapy výstrah, které jsou integrované v Securi
 
 ## Vlastní pravidla výstrah (Preview)<a name="menu_customalerts"></a>
 
-Vaše [vlastní upozornění](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) vyrovnáváme od 30. června 2019, protože vyřazování z jeho základní infrastruktury vychází z provozu. Do té doby můžete upravovat existující vlastní pravidla upozornění, ale nebudete moct přidávat nové. Po datu vyřazení se jakékoli vlastní definované výstrahy neprojeví a výstrahy zabezpečení založené na těchto pravidlech nebudou vygenerovány.
+Na 30. června 2019 jsme přepracovali [vlastní prostředí výstrah](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) , protože byla vyřazena jeho základní infrastruktura. Po datu vyřazení už vlastní výstrahy zabezpečení nebudou vygenerované.
 Doporučujeme povolit [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) a znovu vytvořit vlastní výstrahy. Alternativně můžete vytvořit upozornění pomocí Azure Monitor výstrahy protokolu.
 
-Pokud chcete zachovat stávající výstrahy a vytvořit je pomocí Azure Sentinel:
+Vytvoření vlastních výstrah pomocí služby Azure Sentinel:
 
 1. [Otevřete Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) a vyberte pracovní prostor, ve kterém se vlastní výstrahy ukládají.
 1. Výběr **analýzy** z nabídky
@@ -137,30 +137,30 @@ Další informace o vlastním vyřazení výstrah najdete v tématu [vlastní pr
 
 ## Šetření výstrah zabezpečení<a name="menu_investigate"></a>
 
-[Funkce šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) v Security Center pomáhá určit potenciální bezpečnostní incident. Tato funkce vám umožní pochopit rozsah incidentu a sledovat jeho hlavní příčinu. Tuto funkci odebíráme z Security Center, protože byla nahrazena vylepšeným prostředím v rámci služby [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/).
+[Funkce šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) v Security Center pomáhá určit potenciální bezpečnostní incident. Tato funkce vám umožní pochopit rozsah incidentu a sledovat jeho hlavní příčinu. Tuto funkci jsme odebrali z Security Center, protože byla nahrazena vylepšeným prostředím ve [službě Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/).
 
 ![Incident zabezpečení][14]
 
-Když vyberete tlačítko **prozkoumat** na obrazovce bezpečnostního **incidentu** , otevřete řídicí panel šetření (Preview) v Log Analytics. Vyřazování řídicího panelu šetření.  
+Když vyberete tlačítko **prozkoumat** na obrazovce **bezpečnostního incidentu** , otevřete řídicí panel šetření (Preview) v Log Analytics. Řídicí panel pro šetření jsme vyřazeni.
 
-Stávající data zůstanou v řešení zabezpečení Log Analytics k dispozici a nebudou se upravovat ani odebírat.
+Vaše stávající data zůstanou dostupná v řešení zabezpečení Log Analytics a nezměnili ani neodebrali.
 
 ![Řídicí panel šetření v Log Analytics][15]
 
 ### <a name="investigation---the-new-experience"></a>Šetření – nové prostředí
 
-Doporučujeme, abyste se převedli na službu [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) pro bohatou vyšetřovací činnost. Azure Sentinel poskytuje výkonné nástroje pro vyhledávání a dotazování pro zajištění bezpečnostních hrozeb v rámci zdrojů dat vaší organizace.  
+Doporučujeme, abyste se převedli na službu [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) pro bohatou vyšetřovací činnost. Azure Sentinel poskytuje výkonné nástroje pro vyhledávání a dotazování pro zajištění bezpečnostních hrozeb v rámci zdrojů dat vaší organizace.
 
 ## Podmnožina řešení zabezpečení<a name="menu_solutions"></a>
 
-Security Center můžou [v Azure povolit integrovaná řešení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-partner-integration). Z Security Center vyřazování z následujících partnerských řešení vyhráváme. Tato řešení jsou povolená ve [službě Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) spolu s řadou dalších zdrojů dat.
+Security Center můžou [v Azure povolit integrovaná řešení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-partner-integration). Z Security Center jsme přestali následující partnerská řešení. Tato řešení jsou povolená ve [službě Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) spolu s řadou dalších zdrojů dat.
 
 - [Firewall nové generace a řešení Firewall webových aplikací](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
 - [Integrace řešení zabezpečení, která podporují formát Common Event Format (CEF)](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Po vyřazení nebudete moct přidávat ani upravovat žádné typy řešení uvedené v předchozím seznamu, a to buď z uživatelského rozhraní, nebo z rozhraní API. Azure Security Center už nebude zjišťovat žádné nové instance výše uvedených partnerských řešení.
+Po vyřazení nemůžete přidávat ani upravovat žádné typy řešení uvedené v předchozím seznamu, a to buď z uživatelského rozhraní, nebo z rozhraní API. Azure Security Center už nebude zjišťovat žádné nové instance těchto partnerských řešení.
 
 Pokud máte stávající připojená řešení, doporučujeme přejít na službu Azure Sentinel.
 
@@ -168,9 +168,9 @@ Pokud máte stávající připojená řešení, doporučujeme přejít na služb
 
 ## Úprava konfigurací zabezpečení pro zásady zabezpečení<a name="menu_securityconfigurations"></a>
 
-Azure Security Center sleduje konfigurace zabezpečení použitím sady [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). pro posílení zabezpečení operačního systému. Tato pravidla se týkají bran firewall, auditování, zásad hesel a dalších. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Obrazovka upravit konfiguraci zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfiguraci zabezpečení operačního systému v Security Center.
+Azure Security Center monitoruje konfiguraci zabezpečení tím, že pro posílení operačního systému uplatní sadu [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Tato pravidla se týkají bran firewall, auditování, zásad hesel a dalších. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení. [Obrazovka upravit konfiguraci zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) umožňuje zákazníkům přizpůsobit výchozí konfiguraci zabezpečení operačního systému v Security Center.
 
-Vyřazení této funkce ve verzi Preview. Pokud po datu vyřazení byste chtěli obnovit konfigurace zabezpečení zpátky na jejich výchozí hodnoty, můžete to udělat přes rozhraní API nebo PowerShell pomocí [následujících pokynů](https://aka.ms/ascresetsecurityconfigurations) .
+Tuto funkci verze Preview jsme vyřadíme. Pokud chcete obnovit konfigurace zabezpečení zpátky na výchozí hodnoty po datu vyřazení, udělejte to přes rozhraní API nebo PowerShell podle [následujících pokynů](https://aka.ms/ascresetsecurityconfigurations) .
 
 ![Upravit konfigurace zabezpečení][17]
 
@@ -180,7 +180,7 @@ Chystáme se povolit Security Center podporu pro [agenta konfigurace hosta](http
 
 ## Řídicí panel zabezpečení a audit pro Log Analytics pracovní prostory<a name="menu_securityomsdashboard"></a>
 
-Řídicí panel zabezpečení a audit byl původně použit na portálu OMS. V Log Analytics řídicí panel poskytuje přehled o významných událostech zabezpečení a hrozbách, mapě analýzy hrozeb a vyhodnocení událostí zabezpečení uložených v pracovním prostoru. Odebíráme řídicí panel. Jak už jsme to doporučili v uživatelském rozhraní řídicího panelu, doporučujeme, abyste přešli na Azure Security Center.
+Řídicí panel zabezpečení a audit byl původně použit na portálu OMS. V Log Analytics řídicí panel poskytuje přehled o významných událostech zabezpečení a hrozbách, mapě analýzy hrozeb a vyhodnocení událostí zabezpečení uložených v pracovním prostoru. Odebrali jsme řídicí panel. Jak už jsme to doporučili v uživatelském rozhraní řídicího panelu, doporučujeme přejít na Azure Security Center.
 
 ![Řídicí panel zabezpečení Log Analytics][18]
 
@@ -190,7 +190,7 @@ Doporučuje se přepnout na Azure Security Center. Poskytuje stejný Přehled za
 
 Můžete získat původní Log Analytics dotazy, které naplní řídicí panel zabezpečení a audit v [úložišti GitHub](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) pro Security Center.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - Přečtěte si další informace o [Sentinel Azure](https://docs.microsoft.com/azure/sentinel).

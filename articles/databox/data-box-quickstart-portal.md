@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 47b8fdbe48514665f40114c9820fdc5def38c778
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241371"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772754"
 ---
 ::: zone target="docs"
 
@@ -80,10 +80,6 @@ Než začnete, ujistěte se, že:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
 6. Musíte mít přístup k rovné ploše, kam můžete Data Box umístit. Pokud chcete zařízení umístit naležato nebo nastojato na standardní polici v racku, potřebujete v racku slot 7U.
-7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
-    - Alespoň jeden měděný kabel 10 GbE SFP+ Twinax nebo optický kabel SFP+ (pro síťová rozhraní DATA 1, DATA 2). Další informace najdete v [seznamu podporovaných kabelů a přepínačů od společnosti Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf), které jsou kompatibilní se síťovým rozhraním Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0.
-    - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
 ::: zone-end
 

@@ -1,65 +1,65 @@
 ---
-title: Povolit automatické tématu vytváření v Apache Kafka – Azure HDInsight
-description: Zjistěte, jak nakonfigurovat Apache Kafka v HDInsight pro automatické vytvoření témata. Kafka můžete nakonfigurovat tak, že nastavíte auto.create.topics.enable na hodnotu true prostřednictvím Ambari nebo při vytváření clusteru pomocí šablon Resource Manageru nebo prostředí PowerShell.
+title: Povolit automatické vytváření témat v Apache Kafka – Azure HDInsight
+description: Naučte se, jak nakonfigurovat Apache Kafka ve službě HDInsight pro automatické vytváření témat. Kafka můžete nakonfigurovat nastavením auto. Create. témats. Enable na hodnotu true prostřednictvím Ambari nebo během vytváření clusteru prostřednictvím šablon PowerShellu nebo Správce prostředků.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: af26bcee08ded8eb66d640f954113be3e7672e1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f40a625b10243ca13163e549a51a760cf105917
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709137"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900433"
 ---
-# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytvoření témata
+# <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytváření témat
 
-Ve výchozím nastavení [Apache Kafka](https://kafka.apache.org/) na HDInsight neumožňuje vytvoření automatického tématu. Můžete povolit automatického vytváření témat pro existující clustery pomocí [Apache Ambari](https://ambari.apache.org/). Povolení automatického vytváření témat můžou také při vytváření nového clusteru Kafka pomocí šablony Azure Resource Manageru.
+Ve výchozím nastavení [Apache Kafka](https://kafka.apache.org/) ve službě HDInsight nepovoluje automatické vytváření témat. Pomocí [Apache Ambari](https://ambari.apache.org/)můžete povolit automatické vytváření témat pro existující clustery. Můžete také povolit automatické vytváření témat při vytváření nového clusteru Kafka pomocí šablony Azure Resource Manager.
 
-## <a name="apache-ambari-web-ui"></a>Apache Ambari webového uživatelského rozhraní
+## <a name="apache-ambari-web-ui"></a>Webové uživatelské rozhraní Apache Ambari
 
-Pokud chcete povolit automatické tématu Vytvoření v existujícím clusteru prostřednictvím webového uživatelského rozhraní Ambari, postupujte následovně:
+Pokud chcete povolit automatické vytváření témat pro existující cluster prostřednictvím webového uživatelského rozhraní Ambari, použijte následující postup:
 
-1. Z [webu Azure portal](https://portal.azure.com), vyberte clusteru Kafka.
+1. Z [Azure Portal](https://portal.azure.com)vyberte cluster Kafka.
 
-2. Z __clusteru přehled__vyberte __řídicí panel clusteru__. 
+2. V __přehledu clusteru__vyberte __řídicí panel clusteru__. 
 
-    ![Obrázek portálu s vybraný řídicí panel clusteru](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![Obrázek portálu s vybraným řídicím panelem clusteru](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
-3. Potom vyberte __řídicí panel clusteru HDInsight__. Po zobrazení výzvy ověřování pomocí přihlašovacích údajů (správce) pro cluster.
+3. Pak vyberte __řídicí panel clusteru HDInsight__. Po zobrazení výzvy proveďte ověření pomocí přihlašovacích údajů přihlášení (admin) pro cluster.
 
-    ![Obrázek položky řídicí panel clusteru HDInsight](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
+    ![Obrázek položky řídicího panelu clusteru HDInsight](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
 
-3. Kafka službu vyberte ze seznamu na levé straně stránky.
+3. V seznamu na levé straně stránky vyberte službu Kafka.
 
     ![Seznam služeb](./media/apache-kafka-auto-create-topics/service-list.png)
 
-4. Vyberte konfiguraci uprostřed stránky.
+4. V polovině stránky vyberte konfigurace.
 
-    ![Karta Konfigurace služby](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Karta konfigurace služby](./media/apache-kafka-auto-create-topics/service-config.png)
 
-5. Do pole filtru zadejte hodnotu `auto.create`. 
+5. Do pole Filtr zadejte hodnotu `auto.create`. 
 
-    ![Obrázek pole filtru](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Obrázek pole filtru](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Tím vyfiltrujete seznam vlastností a zobrazí `auto.create.topics.enable` nastavení.
+    Tím se vyfiltruje seznam vlastností a zobrazí `auto.create.topics.enable` se nastavení.
 
-6. Změňte hodnotu vlastnosti `auto.create.topics.enable` k `true`a pak vyberte Uložit. Přidat poznámku a potom vyberte uložit znovu.
+6. Změňte hodnotu `auto.create.topics.enable` na `true`a pak vyberte Save (Uložit). Přidejte poznámku a pak znovu vyberte Uložit.
 
-    ![Obrázek položky auto.create.topics.enable](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    ![Obrázek automatického vytváření. Create. témata. povolit položku](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Vyberte službu Kafka, vyberte __restartovat__a pak vyberte __restartování všech ovlivněných__. Po zobrazení výzvy vyberte __potvrdit restartujte všechny__.
+7. Vyberte službu Kafka, vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
-    ![Obrázek výběru restartování](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Obrázek výběru pro restartování](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
-> Můžete také nastavit hodnoty Ambari pomocí rozhraní Ambari REST API. To je obvykle obtížnější, protože je nutné provést několik volání REST, chcete-li načíst aktuální konfiguraci, upravit ho, atd. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
+> Hodnoty Ambari můžete nastavit také pomocí REST API Ambari. To je všeobecně obtížnější, protože je třeba provést více volání REST pro načtení aktuální konfigurace, její úpravy atd. Další informace najdete v tématu [Správa clusterů HDInsight pomocí dokumentu REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) .
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
-Při vytváření clusteru Kafka pomocí šablony Azure Resource Manageru, můžete přímo nastavit `auto.create.topics.enable` tak, že ho přidáte `kafka-broker`. Následující fragment kódu JSON ukazuje, jak tuto hodnotu nastavit na `true`:
+Při vytváření clusteru Kafka pomocí šablony Azure Resource Manager lze přímo nastavit `auto.create.topics.enable` přidáním `kafka-broker`do. Následující fragment kódu JSON ukazuje, jak tuto hodnotu nastavit na `true`:
 
 ```json
 "clusterDefinition": {
@@ -78,7 +78,7 @@ Při vytváření clusteru Kafka pomocí šablony Azure Resource Manageru, můž
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak můžete povolit automatické tématu vytváření pro Apache Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v následujících tématech:
+V tomto dokumentu jste zjistili, jak povolit automatické vytváření témat pro Apache Kafka ve službě HDInsight. Další informace o práci s Kafka najdete na následujících odkazech:
 
-* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)
+* [Analyzovat protokoly Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Replikace dat mezi Apache Kafka clustery](apache-kafka-mirroring.md)

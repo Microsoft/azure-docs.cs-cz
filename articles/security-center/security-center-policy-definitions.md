@@ -2,24 +2,18 @@
 title: Azure Policy definitions monitorované v Azure Security Center | Microsoft Docs
 description: Definice zásad Azure se monitorují v Azure Security Center.
 services: security-center
-documentationcenter: na
 author: monhaber
 manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 37c29a40596a0ea7989b91d1ffcbabf930e5ed93
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990492"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910354"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Zásady zabezpečení Azure monitorované pomocí Security Center
 Tento článek poskytuje seznam definic Azure Policy, které můžete monitorovat v Azure Security Center. Další informace o zásadách zabezpečení najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
@@ -50,7 +44,7 @@ Další informace o předdefinovaných zásadách sledovaných nástrojem Securi
 |Měly by být povolené diagnostické protokoly v Azure Data Lake Store.|Auditujte povolování protokolů a udržujte je až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
 |Měly by být povolené diagnostické protokoly v Data Lake Analytics.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
 |Účty úložiště by se měly migrovat do nových prostředků AzureRM.|K zajištění vylepšení zabezpečení použijte Azure Resource Manager pro účty úložiště. Mezi ně patří: <br>– Silnější řízení přístupu (RBAC)<br>– Lepší auditování<br>– Nasazení a zásady správného řízení na základě Azure Resource Manager<br>-Přístup ke spravovaným identitám<br>– Přístup k Azure Key Vault tajných kódů<br>– Ověřování pomocí Azure AD<br>– Podpora značek a skupin prostředků pro snadnější správu zabezpečení|
-|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|K zajištění vylepšení zabezpečení použijte Azure Resource Manager pro vaše virtuální počítače.  Mezi ně patří: <br>– Silnější řízení přístupu (RBAC)<br>– Lepší auditování<br>– Nasazení a zásady správného řízení na základě Azure Resource Manager<br>-Přístup ke spravovaným identitám<br>– Přístup k Azure Key Vault tajných kódů<br>– Ověřování pomocí Azure AD<br>– Podpora značek a skupin prostředků pro snadnější správu zabezpečení|
+|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|K zajištění vylepšení zabezpečení použijte Azure Resource Manager pro vaše virtuální počítače. Mezi ně patří: <br>– Silnější řízení přístupu (RBAC)<br>– Lepší auditování<br>– Nasazení a zásady správného řízení na základě Azure Resource Manager<br>-Přístup ke spravovaným identitám<br>– Přístup k Azure Key Vault tajných kódů<br>– Ověřování pomocí Azure AD<br>– Podpora značek a skupin prostředků pro snadnější správu zabezpečení|
 |Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Audituje konfiguraci pravidel upozornění metrik na účtech Azure Batch, aby se aktivovala požadovaná metrika.|
 |V účtech Batch by měly být povolené diagnostické protokoly.|Auditujte povolování protokolů a udržujte je po dobu až do roku. Tím se vytvoří stopa aktivity pro účely šetření, pokud dojde k ohrožení zabezpečení nebo dojde k ohrožení vaší sítě.|
 |Šifrování by mělo být povolené u proměnných účtu Automation.|Pokud ukládáte citlivá data, je důležité povolit šifrování prostředků s proměnnými Azure Automation účtu.|
