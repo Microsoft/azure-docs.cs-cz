@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6be97e3a94a10097e53863577da5bf9c6cde5ea0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 6cac4bd05f2acf5b11a8235a4bc1e0d09e0c4dc7
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734904"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885941"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
@@ -64,7 +64,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
    * \* zastupuje nula nebo více výskytů libovolných znaků.
    * ? zastupuje jeden libovolný znak.
 
-   ![Zásada vytvoření uživatelského rozhraní správce Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Uživatelské rozhraní správce Apache Ranger vytvořit Policy1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
 
@@ -79,7 +79,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
    |Vybrat uživatele  |  marketing_user1 |
    |Oprávnění  | publish, consume, create (publikovat, využívat, vytvářet) |
 
-   ![Zásada vytvoření uživatelského rozhraní správce Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Uživatelské rozhraní správce Apache Ranger vytvořit Policy2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. Vyberte **Přidat** a uložte zásadu.
 
@@ -195,7 +195,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, kter�
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
 1. Klikněte na tlačítko **odstranit**. Klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Přineste si vlastní klíč k Apache Kafka](../kafka/apache-kafka-byok.md)

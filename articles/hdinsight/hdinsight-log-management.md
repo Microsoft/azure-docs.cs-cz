@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5264491220a4b0756a2a9f0a96aae4ed67809618
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623900"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879467"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -93,7 +93,7 @@ Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro vše
 
 Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé služby.  Služby můžou zahrnovat Apache HBA, Apache Spark a spoustu dalších. Cluster Hadoop vytvoří velký počet podrobných protokolů, takže určíte, které protokoly jsou užitečné (a které nejsou) můžou být časově náročné.  Princip protokolovacího systému je důležitý pro cílovou správu souborů protokolu.  Následuje příklad souboru protokolu.
 
-![Příklad souboru protokolu HDInsight](./media/hdinsight-log-management/logs.png)
+![Příklad souboru protokolu HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Přístup k souborům protokolu Hadoop
 
@@ -148,7 +148,7 @@ Jakmile určíte, které soubory protokolu je možné odstranit, můžete upravi
 
 U určitých souborů protokolu můžete použít přístup k archivaci souborů protokolu nižší ceny. V případě Azure Resource Manager protokolů aktivit můžete tento přístup prozkoumat pomocí Azure Portal.  Kliknutím na odkaz **Protokol aktivit**v Azure Portal pro vaši instanci HDInsight nastavte archivaci protokolů ARM.  V horní části stránky hledání protokolu aktivit vyberte položku nabídky **exportovat** a otevřete podokno **Protokol aktivit exportu** .  Vyplňte v předplatném, oblasti, jestli se má exportovat do účtu úložiště, a kolik dní si zachováte protokoly. V tomto stejném podokně můžete také určit, jestli se má exportovat do centra událostí. 
 
-![Exportovat soubory protokolu](./media/hdinsight-log-management/archive.png)
+![Exportovat soubory protokolu](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Případně můžete skript archivovat pomocí prostředí PowerShell.  Ukázkový skript PowerShellu najdete v tématu [archivace protokolů Azure Automation do Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

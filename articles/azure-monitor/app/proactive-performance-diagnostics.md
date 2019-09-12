@@ -168,7 +168,7 @@ Nemusíte nastavovat žádné prahové hodnoty ani konfigurovat pravidla. Algori
 
 ![Kliknutím na odkaz v e-mailové výstraze otevřete diagnostickou sestavu v Azure.](./media/proactive-performance-diagnostics/03.png)
 
-* **** Zobrazuje čas zjištěného problému.
+* Zobrazuje čas zjištěného problému.
 * **Co** popisuje:
 
   * Problém, který byl zjištěn;

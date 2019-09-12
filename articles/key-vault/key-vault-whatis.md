@@ -2,19 +2,19 @@
 title: Co je Azure Key Vault? | Dokumenty Microsoft
 description: Přečtěte si, jak Azure Key Vault chrání kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby.
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
-ms.author: barclayn
-ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: mbaldwin
+ms.openlocfilehash: cf8101923f898c4ce190f3eaf2f3a9b2430cc723
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934476"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885127"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -39,7 +39,7 @@ Tady jsou další důležité výrazy:
 
 - **Uživatel trezoru**: Uživatel trezoru může provádět akce s prostředky v trezoru klíčů, když vlastník trezoru udělí přístup k uživateli. Dostupné akce závisí na udělených oprávněních.
 
-- **Prostředek**: Prostředek je spravovatelná položka, která je dostupná prostřednictvím Azure. Běžnými příklady jsou virtuální počítače, účet úložiště, Webová aplikace, databáze a virtuální síť. Existuje spousta dalších.
+- **Prostředek:** Prostředek je spravovatelná položka, která je dostupná prostřednictvím Azure. Běžnými příklady jsou virtuální počítače, účet úložiště, Webová aplikace, databáze a virtuální síť. Existuje spousta dalších.
 
 - **Skupina prostředků**: Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
 

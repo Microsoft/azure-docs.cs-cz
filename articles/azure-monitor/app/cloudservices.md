@@ -91,7 +91,7 @@ Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli a př�
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
 Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. U webových rolí Tato možnost poskytuje monitorování výkonu, výstrahy, diagnostiku a analýzu využití. U ostatních rolí můžete vyhledávat a monitorovat Azure Diagnostics, jako je například restart, čítače výkonu a volání System. Diagnostics. Trace. 
 
-1. V aplikaci Visual Studio Průzkumník řešení v části >   **\<role > YourCloudService**otevřete vlastnosti jednotlivých rolí. ****
+1. V aplikaci Visual Studio Průzkumník řešení v části >   **\<role > YourCloudService**otevřete vlastnosti jednotlivých rolí.
 
 1. V okně **Konfigurace**zaškrtněte políčko **Odeslat diagnostická data do Application Insights** a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
 

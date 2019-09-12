@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6aca340994f10bd546a25e577258d90d7b7b1368
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 48da5e27184076676edb3f3b89b478bcf2fe347f
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860944"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900454"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -34,7 +34,7 @@ Nové webové prostředí umožňují datovým specialistům a datovým technik�
 
 Pomocí tohoto nového Azure Machine Learning rozhraní teď můžete:
 + Správa vašich poznámkových bloků nebo odkazování na Jupyter
-+ Spouštění automatizovaných experimentů ML
++ [Spouštění automatizovaných experimentů ML](tutorial-first-experiment-automated-ml.md)
 + [Vytváření datových sad z místních souborů, úložiště dat, & webových souborů](how-to-create-register-datasets.md)
 + Prozkoumejte & příprava datových sad pro vytváření modelů
 + Sledování posunu dat pro vaše modely 
@@ -1096,6 +1096,6 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 Nová aktualizovaná verze Azure Machine Learning: Přečtěte si další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si přehled [služby Azure Machine Learning Service](../service/overview-what-is-azure-ml.md).

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/11/2019
 ms.author: raynew
-ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 47914a635afe754cb4205a1e089622a69b706b51
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617646"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910445"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -165,7 +165,7 @@ Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
-Urychlení sítě | Ne
+Akcelerované síťové služby | Ne
 
 ## <a name="storage"></a>Storage
 **Komponenta** | **Podporuje se**
@@ -246,6 +246,10 @@ Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu
 BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán. |
 název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 
+## <a name="resource-group-limits"></a>Omezení skupiny prostředků
+
+Informace o počtu virtuálních počítačů, které se dají chránit v rámci jedné skupiny prostředků, najdete v článku [limity a kvóty předplatného](https://docs.microsoft.com/azure/azure-subscription-service-limits#resource-group-limits) .
+
 ## <a name="churn-limits"></a>Omezení četnosti změn
 
 Následující tabulka obsahuje omezení služby Azure Site Recovery. 
@@ -293,7 +297,7 @@ Služba mobility | Nainstalované na virtuálním počítači VMware nebo na fyz
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Přečtěte si, jak](tutorial-prepare-azure.md) připravit Azure na zotavení po havárii virtuálních počítačů VMware.
 
 [9.27 UR]: https://support.microsoft.com/en-in/help/4513507/update-rollup-38-for-azure-site-recovery

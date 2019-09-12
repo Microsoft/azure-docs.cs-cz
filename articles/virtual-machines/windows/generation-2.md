@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: fd794662ef41112cb04bdfde087253c8abdb6983
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5e342418dc6cc9ed0a3bbbfaad42801d5ffe9e9d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079382"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900244"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Podpora virtuálních počítačů 2. generace (Preview) v Azure
 
@@ -38,14 +38,18 @@ Virtuální počítače generace 2 používají novou architekturu na bázi rozh
 Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuálních počítačů v Azure. Azure teď nabízí podporu generace 2 pro tuto vybranou řadu virtuálních počítačů:
 
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [DC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
+* [Řada HC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
 * [Ls-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) a [Lsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * Řady [NCv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) a [NCv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [Řada KS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
+* [NVv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Image virtuálních počítačů 2. generace v Azure Marketplace
 
@@ -55,6 +59,8 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní vs. Virtuální počítače Azure generace 2
 
@@ -122,6 +128,21 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 * **Existuje cenový rozdíl mezi virtuálními počítači generace 1 a generace 2?**  
    Ne.
 
+* **Mám soubor. VHD z místního virtuálního počítače 2. generace. Můžu soubor. VHD použít k vytvoření virtuálního počítače generace 2 v Azure?**
+  Ano, můžete přenést soubor. VHD generace 2 do Azure a použít ho k vytvoření virtuálního počítače 2. generace. K tomu použijte následující postup:
+    1. Nahrajte soubor. VHD do účtu úložiště ve stejné oblasti, ve které chcete vytvořit virtuální počítač.
+    1. Vytvořte spravovaný disk ze souboru. VHD. Vlastnost generování HyperV nastavte na v2. Při vytváření spravovaného disku byly nastaveny následující příkazy prostředí PowerShell.
+
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
+
+    1. Jakmile je disk k dispozici, vytvořte virtuální počítač připojením tohoto disku. Vytvořený virtuální počítač bude virtuální počítač 2. generace.
+    Když se vytvoří virtuální počítač 2. generace, můžete pro něj volitelně generalizovat image tohoto virtuálního počítače. Pomocí generalizace image ji můžete použít k vytvoření více virtuálních počítačů.
+
 * **Návody zvýšit velikost disku s operačním systémem?**  
   Disky s operačním systémem větší než 2 TB jsou pro virtuální počítače 2. generace nové. Ve výchozím nastavení jsou disky s operačním systémem menší než 2 TB pro virtuální počítače 2. generace. Velikost disku můžete zvětšit na maximálně 4 TB. Zvyšte velikost disku operačního systému pomocí Azure CLI nebo Azure Portal. Informace o tom, jak programově rozbalovat disky, najdete v tématu [Změna velikosti disku](expand-os-disk.md).
 
@@ -133,7 +154,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
   1. V části **disky** vyberte **Konfigurace**a aktualizujte **Velikost** na požadovanou hodnotu.
   1. Vraťte se na stránku vlastností virtuálního počítače a **Spusťte** virtuální počítač.
   
-  Může se zobrazit upozornění na disky s operačním systémem větší než 2 TB. Upozornění se nevztahuje na virtuální počítače 2. generace. Velikosti disků s operačním systémem větší než 4 TB se ale nedoporučují *.*
+  Může se zobrazit upozornění na disky s operačním systémem větší než 2 TB. Upozornění se nevztahuje na virtuální počítače 2. generace. Velikosti disků s operačním systémem větší než 4 TB se ale *nedoporučují.*
 
 * **Podporují virtuální počítače generace 2 urychlené síťové služby?**  
     Ano. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../../virtual-network/create-vm-accelerated-networking-cli.md)službami.
@@ -147,7 +168,7 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Seznamte [se s virtuálními počítači generace 2 v Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 

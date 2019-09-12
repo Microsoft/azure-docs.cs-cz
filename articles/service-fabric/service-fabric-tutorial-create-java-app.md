@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 56a68f852e9eee3303540d6ebd180608935c6135
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172062"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900667"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou Java API a stavovou back-end službou v Azure Service Fabric
 
-Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Zvažte také následující postup [pro službu Reliable Services Java.](service-fabric-quickstart-java-reliable-services.md)
-
+Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-end Java, který ukládá výsledky hlasování do stavové back-endové služby v Azure Service Fabric. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application). Zvažte také postup pro použití [spolehlivé služby Java v rychlém startu.](service-fabric-quickstart-java-reliable-services.md)
 
 ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
@@ -67,7 +66,7 @@ Nejprve vytvořte webový front-end hlasovací aplikace. Webové uživatelské r
 
     ![Výběr bezstavové služby v Javě dialogovém okně New Service (Nová služba)](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
 
-4. Na stránce **Přidat službu** vyberte Bezstavová **Služba**a pojmenujte službu **VotingWeb**. Kliknutím na **Dokončit** vytvořte projekt.
+4. Na stránce **Přidat službu** vyberte **Bezstavová služba**a pojmenujte službu **VotingWeb**. Kliknutím na **Dokončit** vytvořte projekt.
 
     ![Vytvoření bezstavové služby]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
 

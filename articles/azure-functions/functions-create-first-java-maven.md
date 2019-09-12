@@ -12,17 +12,17 @@ ms.devlang: java
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 5c5a0285a827a7990a11eb6ef6445e7d84189767
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 381298abcfa4fa707af6b382565b4bfb990e96e6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096862"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899507"
 ---
 # <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Rychlý start: Použití jazyka Java k vytvoření a publikování funkce pro Azure Functions
 
-Tento článek vás provede použitím nástroje příkazového řádku Maven k vytvoření a publikování funkce jazyka Java pro Azure Functions. Jakmile budete hotovi, váš kód funkce se spustí v [plánu spotřeby](functions-scale.md#consumption-plan) v Azure a může se aktivovat pomocí požadavku HTTP.
+Tento článek popisuje, jak vytvořit a publikovat funkci Java ve službě Azure Functions pomocí nástroje příkazového řádku Maven. Jakmile budete hotovi, váš kód funkce se spustí v [plánu spotřeby](functions-scale.md#consumption-plan) v Azure a může se aktivovat pomocí požadavku HTTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -223,7 +223,7 @@ Bude mít aktualizovaný výstup:
 Hi, AzureFunctionsTest
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
 

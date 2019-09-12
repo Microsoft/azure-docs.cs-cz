@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383390"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883662"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -66,9 +66,9 @@ Služba pro přizpůsobení má dvě rozhraní API:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby vC#](csharp-quickstart-commandline-feedback-loop.md)
-* [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby v Node. js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
-* [Rychlé zprovoznění: Vytvoření smyčky zpětné vazby v Pythonu](python-quickstart-commandline-feedback-loop.md)
+* [Co je nového v přizpůsobování?](whats-new.md)
+* [Jak přizpůsobování funguje?](how-personalizer-works.md)
+* [Co je posílení učení?](concepts-reinforcement-learning.md)
 * [Informace o funkcích a akcích pro požadavek na řazení](concepts-features.md)
 * [Informace o určování skóre pro žádost o odměnu](concept-rewards.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

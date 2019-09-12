@@ -202,7 +202,7 @@ Následující příklad ukazuje, jak může vývojář omezit množství odesla
 V tomto příkladu se jímka aplikuje na protokoly a je filtrovaná jenom na trasování úrovně chyby.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Nasazení a aktualizace Cloud Services aplikace a konfigurace diagnostiky
-Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta jsou > **role** >  **** projektu > cloudové služby **(roleName)** Diagnostics. wadcfgx.  
+Visual Studio poskytuje nejjednodušší cestu k nasazení aplikace a konfigurace jímky Event Hubs. Pokud chcete soubor zobrazit a upravit, otevřete soubor *. wadcfgx* v aplikaci Visual Studio, upravte ho a uložte. Cesta jsou > **role** > projektu > cloudové služby **(roleName)** Diagnostics. wadcfgx.  
 
 V tomto okamžiku všechny akce nasazení a nasazení v aplikaci Visual Studio, Visual Studio Team System a všechny příkazy nebo skripty, které jsou založené na MSBuild a používají **parametr/t: publikovat** , zahrnují v procesu balení soubor *. wadcfgx* . Nasazení a aktualizace navíc nasadí soubor do Azure pomocí vhodného rozšíření agenta Azure Diagnostics na vašich virtuálních počítačích.
 

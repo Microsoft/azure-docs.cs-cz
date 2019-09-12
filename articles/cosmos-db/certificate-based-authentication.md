@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356572"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882848"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
 
@@ -108,7 +108,7 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
-1. Vyberte **Přidat** a **Přidat přiřazení role**. Přidejte dotazů, který jste vytvořili v předchozím kroku,  s rolí přispěvatele, jak je znázorněno na následujícím snímku obrazovky:
+1. Vyberte **Přidat** a **Přidat přiřazení role**. Přidejte dotazů, který jste vytvořili v předchozím kroku, s rolí **přispěvatele** , jak je znázorněno na následujícím snímku obrazovky:
 
    ![Konfigurace účtu Azure Cosmos pro použití nové identity](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
@@ -231,6 +231,6 @@ Podobně jako v předchozí části si můžete zobrazit protokol aktivit účtu
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zabezpečení klíčů Azure Cosmos pomocí Azure Key Vault](access-secrets-from-keyvault.md)
+* [Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault](access-secrets-from-keyvault.md)
 
-* [Atributy zabezpečení pro službu Azure Cosmos DB](cosmos-db-security-attributes.md)
+* [Ovládací prvky zabezpečení pro Azure Cosmos DB](cosmos-db-security-controls.md)

@@ -87,7 +87,7 @@ Pokud se image nedá načíst, zobrazí se ve výstupu [AZ Container show][az-co
 
 ## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně ukončuje a restartuje (bez dlouhotrvajícího procesu).
 
-Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete **** muset změnit na neúspěšné nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
+Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na neúspěšné nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
 
 Pokud spouštíte skupiny kontejnerů bez dlouhotrvajících procesů, můžete se setkat se opakovanými ukončeními a restarty s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [exec](container-instances-exec.md) nebude fungovat, protože kontejner nemá žádný proces, který ho udržuje aktivní. Chcete-li tento problém vyřešit, zahrňte do nasazení skupiny kontejnerů příkaz Start podobný tomuto:, aby byl kontejner spuštěný.
 

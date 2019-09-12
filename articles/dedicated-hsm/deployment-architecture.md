@@ -2,8 +2,8 @@
 title: Architektura nasazení – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
 description: Aspekty návrhu základní při používání vyhrazeného modulu hardwarového zabezpečení Azure jako součást architektury aplikace
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912261"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883832"
 ---
-# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura nasazení služby Azure vyhrazené HSM
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura nasazení vyhrazené HSM v Azure
 
 Azure vyhrazené HSM nabízí kryptografického klíče úložiště v Azure. Splňuje požadavky na přísné zásady zabezpečení. Zákazníci se benefitovat z použití vyhrazené modulu hardwarového zabezpečení Azure, pokud jsou:
 
@@ -31,8 +31,8 @@ Moduly hardwarového zabezpečení jsou distribuovány napříč datovými centr
 
 * USA – východ
 * Východní USA 2
-* Západní USA
-* Středojižní USA
+* USA – západ
+* Střed USA – jih
 * Jihovýchodní Asie
 * Východní Asie
 * Severní Evropa

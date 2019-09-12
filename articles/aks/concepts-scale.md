@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: c25bc316a345404c759b346b4fb877de42ee4d13
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561560"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899490"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -51,7 +51,7 @@ V současné době nemůžete tyto hodnoty cooldown z výchozího nastavení lad
 
 ## <a name="cluster-autoscaler"></a>Automatické škálování clusteru
 
-Pro reakci na změnu požadavků pod Kubernetes má služba pro automatické škálování clusteru (aktuálně ve verzi Preview v AKS), která upravuje počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru kontrolu serveru rozhraní API každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
+Pro reakci na změnu požadavků pod Kubernetes má služba pro automatické škálování clusteru (aktuálně ve verzi Preview v AKS), která upravuje počet uzlů na základě požadovaných výpočetních prostředků ve fondu uzlů. Ve výchozím nastavení provádí automatické škálování clusteru metriky serveru rozhraní API metrik každých 10 sekund pro všechny požadované změny v počtu uzlů. Pokud automatické škálování clusteru určí, že se vyžaduje změna, počet uzlů v clusteru AKS se odpovídajícím způsobem zvýší nebo sníží. Automatické škálování clusteru funguje s clustery AKS s podporou RBAC, které používají Kubernetes 1,10. x nebo vyšší.
 
 ![Automatické škálování clusteru Kubernetes](media/concepts-scale/cluster-autoscaler.png)
 
@@ -89,11 +89,11 @@ Vaše aplikace nevyžaduje žádné úpravy k použití virtuálních uzlů. Nas
 
 Virtuální uzly se nasazují do další podsítě ve stejné virtuální síti jako cluster AKS. Tato konfigurace virtuální sítě umožňuje zabezpečení provozu mezi ACI a AKS. Podobně jako cluster AKS je instance ACI zabezpečeným logickým výpočetním prostředkem, který je izolovaný od ostatních uživatelů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s škálováním aplikací, nejdřív postupujte podle pokynů v rychlém startu [a vytvořte cluster AKS pomocí Azure CLI][aks-quickstart]. Pak můžete začít ručně nebo automaticky škálovat aplikace v clusteru AKS:
+Pokud chcete začít s škálováním aplikací, nejdřív postupujte podle pokynů v [rychlém startu a vytvořte cluster AKS pomocí Azure CLI][aks-quickstart]. Pak můžete začít ručně nebo automaticky škálovat aplikace v clusteru AKS:
 
-- Ruční škálování [][aks-manually-scale-pods] v luskech nebo [uzlech][aks-manually-scale-nodes]
+- Ruční škálování v [luskech][aks-manually-scale-pods] nebo [uzlech][aks-manually-scale-nodes]
 - Použití [automatického škálování vodorovně pod][aks-hpa]
 - Použití [automatického škálování clusteru][aks-cluster-autoscaler]
 

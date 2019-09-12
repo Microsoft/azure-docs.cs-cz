@@ -128,7 +128,7 @@ Nabídky musí být jednoho z následujících pěti typů služeb (můžete uv�
 * **Ověření konceptu**: Implementace s omezeným rozsahem k určení, zda řešení splňuje požadavky zákazníků. 
 * **Workshop**: Interaktivní zapojení, které se provádí na místních místech zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky, které jsou postavené na datech a prostředí zákazníka. 
 
-**Poznámka:** S výjimkou ** typu přehledové služby mohou být konzultační služby nabízeny osobě (tj. v lokalitě v umístění zákazníka nebo v zařízení partnera) nebo prakticky (to znamená prostřednictvím konferenčních, webových konferencí nebo vzdálených implementací). Je nutné, aby byly v osobě nabízeny krátké přehledy.
+**Poznámka:** S výjimkou typu přehledové služby mohou být konzultační služby nabízeny osobě (tj. v lokalitě v umístění zákazníka nebo v zařízení partnera) nebo prakticky (to znamená prostřednictvím konferenčních, webových konferencí nebo vzdálených implementací). Je nutné, aby byly v osobě nabízeny krátké přehledy.
 
 Po nakonfigurování požadovaných prvků uvedených výše ověří tým revize obsahu, že popis vaší nabídky bude informativní a dokončený pro cílovou skupinu. 
 

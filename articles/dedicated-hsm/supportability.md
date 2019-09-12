@@ -3,7 +3,7 @@ title: Možnosti podpory – vyhrazené Azure HSM | Dokumentace Microsoftu
 description: Možnosti podpory a oblasti zodpovědnosti pro vyhrazené modulu hardwarového zabezpečení Azure v různých scénářích
 services: dedicated-hsm
 author: johndaw
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 8341e9057b07fbb72957eddc342ae875e4591993
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912247"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881016"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Možnosti podpory Azure vyhrazených HSM
 
@@ -26,12 +26,12 @@ Zákazníci odpovídají plně pro aplikace, které využívají moduly hardwaro
 
 ## <a name="getting-support"></a>Získání podpory
 
-Zákaznickou podporu pro vyhrazené HSM se podílí Gemalto a Microsoftu. Žádné problémy s hardwarem nebo problémů se sítí cesta vyřešíme společností Microsoft a cokoli, co dělat s skutečné hardwarového zabezpečení, jako je například konfigurace, softwaru, firmwaru a vývoj aplikací, bude ji adresovat podle Gemalto. Tento model podpory zajišťuje nejrychlejší cestu nejúčinnější podpory. Pokud máte pochybnosti s konkrétním problémem, žádost o podporu u Microsoftu a jsme se ujistěte se, že jsou správně směrované. Společnost Microsoft bude zůstat zahrnuta ve všech scénářích podpory a snažte se o nejlepší prostředí podpory pro naše zákazníky.
+Zákaznická podpora pro vyhrazený modul hardwarového zabezpečení (HSM) je společným úsilím mezi Microsoftem a identita Gemalto. Všechny problémy s hardwarem nebo problémy se síťovou cestou budou řešeny společností Microsoft a cokoli k tomu, aby se skutečný modul hardwarového zabezpečení (HSM), jako je konfigurace, software, firmware a vývoj aplikací, vyřešila identita Gemalto. Tento model podpory zajišťuje nejrychlejší směrování na nejúčinnější podporu. Pokud máte pochybnosti s konkrétním problémem, vyvolejte žádost o podporu u Microsoftu a my vám zajistíme, aby bylo správně směrováno. Společnost Microsoft se bude zabývat všemi scénáři podpory a usiluje o to, aby naši zákazníci měli nejlepší možnosti podpory.
 
 ## <a name="gemalto-support"></a>Podpora Gemalto
 
-Zákazníci, kteří používají službu HSM vyhrazené nárok na podporu – od Gemalto podle jejich Plus plán podpory. Tento postup vyžaduje právě proces registrace pomocí portálu pro podporu Gemalto. ID zákazníka a pokyny, poskytneme vám to jako součást počáteční zapojení s Microsoftem a získat přístup ke službě vyhrazené modulu hardwarového zabezpečení. Mechanismus pro získání podpory od Gemalto je prostřednictvím jejich [zákaznického portálu služeb podpory](https://supportportal.gemalto.com/csm/).
-Zásadním aspektem ze Poznámka je, že se veškerý software a dokumentace muset použít modul hardwarového zabezpečení (třeba software pro klientský přístup a sad SDK) poskytují Gemalto přes stahování na zákaznický portál podpory.
+Zákazníci, kteří používají vyhrazenou službu HSM, mají nárok na podporu od identita Gemalto podle plánu jejich plus (support). To pouze vyžaduje proces registrace pomocí portálu podpory identita Gemalto. ID zákazníka a pokyny budou k dispozici v rámci počáteční zapojení do společnosti Microsoft za účelem získání přístupu k vyhrazené službě HSM. Mechanismus pro získání podpory od Gemalto je prostřednictvím jejich [zákaznického portálu služeb podpory](https://supportportal.gemalto.com/csm/).
+Klíčovým bodem je, že identita Gemalto poskytne veškerý software a dokumentaci potřebné k používání modulu HSM (například software pro klientský přístup a sady SDK) prostřednictvím stažení na portálu zákaznické podpory.
 
 ### <a name="software-components"></a>Softwarové komponenty
 
@@ -55,7 +55,7 @@ Pro všechny pomoc při navrhování, vývoj a nasazení vlastních aplikací, k
 
 ## <a name="microsoft-support"></a>Podpora Microsoftu
 
-Microsoft se ujistěte se, že fyzické zařízení HSM se síť přístupný a provozní stav pro výhradní použití jediného zákazníka. Zákazníci odpovídají za konfiguraci, správu a správu zařízení. Odpovědnosti Microsoftu patří:
+Společnost Microsoft zajistí, aby fyzická zařízení HSM byla přístupná k síti a v provozním stavu pro výhradní použití jednoho zákazníka. Zákazníci zodpovídají za konfiguraci, správu a správu zařízení. Odpovědnosti Microsoftu patří:
 
 * Zařízení musí napájení a chladicí
 * Údržba provozního stavu modulu hardwarového zabezpečení (například scénáře řešení potíží)
@@ -76,7 +76,7 @@ Poté, co zákazník má schválené registrace pro službu vyhrazené modulu ha
 
 ### <a name="hardware-issues"></a>Problémy s hardwarem
 
-Zařízení HSM má redundantní a nahraditelné napájení a ventilátor jednotek.  Ale odebrání jednotky ventilátor způsobí stále proti události. Pokud dojde k selhání součásti, Microsoft použije nejvhodnější k vyřešení problému úrovni komponenty způsobem, který způsobí, že nejnižší rizika na dostupnost služby našich zákazníků a minimálním přerušením.
+Zařízení HSM má redundantní a nahraditelné napájení a ventilátor jednotek.  Odebrání jednotky ventilátoru ale pořád způsobí událost manipulace. Pokud dojde k selhání součásti, Microsoft použije nejvhodnější k vyřešení problému úrovni komponenty způsobem, který způsobí, že nejnižší rizika na dostupnost služby našich zákazníků a minimálním přerušením.
 Toto zařízení teď nahrazuje čerstvé jedním z volného fondu způsobí žádné závažnější selhání zařízení. Zákazník jednoduše obsahuje nové zařízení v existující pár HA pro ni k synchronizaci a vraťte se do plné provozní stav. Selhání zařízení bude mít svá data s zařízení odebrán a skartovány na webu v datovém centru. Pouze skříni se vrátí do Gemalto recyklace.
 
 

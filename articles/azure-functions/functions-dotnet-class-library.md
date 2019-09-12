@@ -333,7 +333,7 @@ V C# a dalších jazycích .NET můžete použít [imperativní](https://en.wiki
 
 Definujte imperativní vazbu následujícím způsobem:
 
-- **** Nezahrnujte atribut do signatury funkce pro požadované imperativní vazby.
+- Nezahrnujte atribut do signatury funkce pro požadované imperativní vazby.
 - Předejte vstupní parametr [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) nebo [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
 - K provedení datové C# vazby použijte následující vzor.
 

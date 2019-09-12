@@ -1,84 +1,89 @@
 ---
-title: Azure AD Domain Services – ověřte stav spravované domény | Microsoft Docs
-description: Ověřte stav spravované domény pomocí stránky stavu v Azure Portal.
+title: Ověřit stav Azure Active Directory Domain Services | Microsoft Docs
+description: Přečtěte si, jak kontrolovat stav Azure Active Directory Domain Services (Azure služba AD DS) spravované domény a porozumět stavovým zprávám pomocí Azure Portal.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234162"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898236"
 ---
-# <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Zkontroluje stav Azure AD Domain Services spravované domény.
+# <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Zkontroluje stav Azure Active Directory Domain Services spravované domény.
 
-## <a name="overview-of-the-health-page"></a>Přehled stránky stavu
-Na stránce Stav na svém Azure Portal můžete udržovat aktuální informace o tom, co se děje ve vaší spravované doméně. Tento článek vás provede prvky stránky stavu.
+Azure Active Directory Domain Services (Azure služba AD DS) spouští některé úlohy na pozadí, aby byla spravovaná doména v pořádku a aktuální. Mezi tyto úlohy patří zálohování, použití aktualizací zabezpečení a synchronizace dat ze služby Azure AD. Pokud dojde k problémům se spravovanou doménou Azure služba AD DS, nemusí se tyto úlohy úspěšně spustit. Pokud chcete zkontrolovat a vyřešit všechny problémy, můžete zkontrolovat stav spravované domény Azure služba AD DS pomocí Azure Portal.
 
-### <a name="how-to-view-the-health-of-your-managed-domain"></a>Jak zobrazit stav spravované domény
-1. V Azure Portal přejděte na [stránku Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) .
-2. Klikněte na doménu, pro kterou chcete zobrazit stav.
-3. V levém navigačním podokně klikněte na **stav**.
+Tento článek ukazuje, jak zobrazit stav služby Azure služba AD DS Health a pochopit zobrazené informace nebo výstrahy.
 
-Následující obrázek znázorňuje ukázkovou stránku stavu: ![Příklad stránky stavu](./media/active-directory-domain-services-alerts/health-page.png)
+## <a name="view-the-health-status"></a>Zobrazit stav
 
->[!NOTE]
-> Stav vaší spravované domény se vyhodnocuje každou hodinu. Po provedení změn ve spravované doméně Počkejte do dalšího cyklu vyhodnocení, abyste zobrazili aktualizovaný stav spravované domény. Časové razítko "poslední vyhodnocené" v pravém horním rohu ukazuje, kdy byl naposledy vyhodnocen stav vaší spravované domény.
->
+Stav pro spravovanou doménu Azure služba AD DS je zobrazený pomocí Azure Portal. Informace o posledním čase zálohování a synchronizaci se službou Azure AD najdete spolu s případnými výstrahami, které indikují problém se stavem spravované domény. Pokud chcete zobrazit stav pro spravovanou doménu Azure služba AD DS, proveďte následující kroky:
 
-### <a name="status-of-your-managed-domain"></a>Stav vaší spravované domény
-Stav v pravém horním rohu stránky stavu indikuje celkový stav vaší spravované domény. Stavové faktory všech existujících výstrah ve vaší doméně. Stav vaší domény můžete zobrazit také na stránce Přehled Azure AD Domain Services.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**.
+1. Vyberte spravovanou doménu Azure služba AD DS, například *contoso.com*.
+1. Na levé straně okna prostředků Azure služba AD DS vyberte **stav**. Následující ukázkový snímek obrazovky ukazuje v dobrém stavu Azure služba AD DS spravované doméně a stavu poslední zálohy a synchronizace Azure AD:
+
+    ![Přehled stránky stavu v Azure Portal zobrazující stav Azure Active Directory Domain Services](./media/check-health/health-page.png)
+
+*Poslední vyhodnocené* časové razítko stránky stavu ukazuje, kdy byla naposledy zkontrolována doména Azure služba AD DS. Stav spravované domény Azure služba AD DS se vyhodnocuje každou hodinu. Pokud provedete nějaké změny ve spravované doméně služby Azure služba AD DS, počkejte na další cyklus hodnocení, abyste zobrazili aktualizovaný stav.
+
+Stav v pravém horním rohu udává celkový stav spravované domény Azure služba AD DS. Stav má všechny existující výstrahy ve vaší doméně. Následující tabulka podrobně popisuje dostupné indikátory stavu:
 
 | Stav | Ikona | Vysvětlení |
 | --- | :----: | --- |
-| Spuštěno | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Vaše spravovaná doména je spuštěná hladce a nemá žádné kritické výstrahy ani upozornění. Tato doména může obsahovat informativní výstrahy. |
-| Vyžaduje pozornost (upozornění) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Ve spravované doméně neexistují žádné kritické výstrahy, ale je potřeba vyřešit aspoň jedno upozornění. |
-| Vyžaduje pozornost (kritická) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Ve spravované doméně je nejmíň jedna kritická výstraha. Mohou být také zobrazovány upozornění nebo informativní výstrahy. |
-| Nasazení | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Vaše doména se právě nasazuje. |
+| Spuštěno | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Spravovaná doména Azure služba AD DS je spuštěná správně a nemá žádné kritické výstrahy nebo upozornění. Doména může obsahovat informativní výstrahy. |
+| Vyžaduje pozornost (upozornění) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Ve spravované doméně Azure služba AD DS neexistují žádné kritické výstrahy, ale je potřeba vyřešit aspoň jedno upozornění. |
+| Vyžaduje pozornost (kritická) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Ve spravované doméně Azure služba AD DS se vyskytla jedna nebo více kritických výstrah, které je potřeba řešit. Mohou být také zobrazovány upozornění nebo informativní výstrahy. |
+| Nasazování | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Probíhá nasazení domény Azure služba AD DS. |
 
-## <a name="monitors"></a>Monitory
-Monitory jsou aspekty vaší spravované domény, které Azure AD Domain Services pravidelně monitorují. Nejlepším způsobem, jak udržet monitory v dobrém stavu, je vyřešit všechny aktivní výstrahy pro spravovanou doménu.
+## <a name="understand-monitors-and-alerts"></a>Pochopení monitorování a výstrah
 
-Azure AD Domain Services aktuálně sleduje následující:
- - Backup
- - Synchronizace s Azure AD
+Stav pro spravovanou doménu Azure služba AD DS zobrazuje dva typy informací – monitorování a výstrahy. Monitory ukazují dobu, po kterou byly dokončeny základní úlohy na pozadí. Výstrahy obsahují informace nebo návrhy, které zlepšují stabilitu spravované domény.
 
-### <a name="the-backup-monitor"></a>Monitorování zálohování
-Tím se monitoruje, jestli se provádí pravidelné zálohování vaší spravované domény. Následující tabulka vysvětluje, co je potřeba očekávat ve sloupci podrobností monitorování zálohování:
+### <a name="monitors"></a>Monitory
+
+Monitory jsou oblasti spravované domény Azure služba AD DS, které jsou pravidelně kontrolovány. Pokud existují aktivní výstrahy pro spravovanou doménu Azure služba AD DS, může dojít k tomu, že některé z monitorování nahlásí problém. Azure AD Domain Services aktuálně sleduje následující oblasti:
+
+* Zálohovat
+* Synchronizace s Azure AD
+
+#### <a name="backup-monitor"></a>Monitorování zálohování
+
+Monitorování zálohování kontroluje, že se úspěšně spustily automatické pravidelné zálohy spravované domény Azure služba AD DS. Následující tabulka podrobně popisuje dostupný stav monitorování zálohování:
 
 | Hodnota podrobností | Vysvětlení |
 | --- | --- |
-|"Nikdy zálohováno" | Tento stav je pro nově vytvořenou spravovanou doménu normální. Obecně platí, že první záloha se vytvoří 24 hodin po zřízení spravované domény. Pokud se vaše spravovaná doména nově nevytvořila nebo pokud se tento stav zobrazuje po neobvyklém čase, obraťte se na [podporu](contact-us.md). |
-| Poslední záloha byla odebrána před 1 až 14 dny. | Obecně platí, že tato hodnota je pro monitorování zálohy očekávaná. |
-| Poslední záloha proběhla před víc než 14 dny. | Veškerá doba delší než dva týdny je neobvyklá čas od poslední zálohy. Aktivní kritické výstrahy můžou zabránit tomu, aby se vaše spravovaná doména pravidelně zálohovali. Nejprve vyřešte všechny aktivní výstrahy pro spravovanou doménu a pak Pokud problém přetrvává, obraťte se na [podporu](contact-us.md). |
+| Nikdy nezálohované | Tento stav je pro nové domény spravované v Azure služba AD DS normální. První záloha by se měla vytvořit 24 hodin po nasazení spravované domény Azure služba AD DS. Pokud tento stav přetrvává, [otevřete žádost o podporu Azure][azure-support]. |
+| Poslední záloha byla odebrána před 1 až 14 dny. | Tento časový rozsah je očekávaným stavem monitorování zálohování. V této lhůtě by se měla provádět automatizovaná pravidelná zálohování. |
+| Poslední záloha proběhla před víc než 14 dny. | Časové rozpětí delší než dva týdny znamená, že došlo k potížím s automatizovanými pravidelnými zálohami. Aktivní kritické výstrahy můžou zabránit zálohování spravované domény Azure služba AD DS. Vyřešte všechny aktivní výstrahy pro spravovanou doménu Azure služba AD DS. Pokud monitorování zálohování neaktualizuje stav, aby nahlásilo poslední zálohu, [otevřete žádost o podporu Azure][azure-support]. |
 
+#### <a name="synchronization-with-azure-ad-monitor"></a>Synchronizace s monitorováním Azure AD
 
-### <a name="the-synchronization-with-azure-ad-monitor"></a>Monitorování synchronizace s Azure AD
-Microsoft monitoruje, jak často je vaše spravovaná doména synchronizovaná s Azure Active Directory. Počet objektů (uživatelů & skupin) a počet změn provedených v adresáři služby Azure AD od poslední synchronizace může mít vliv na to, jak dlouho může trvat synchronní období synchronizace. Pokud byla vaše spravovaná doména naposledy synchronizována před třemi dny, [obraťte](contact-us.md)se na podporu.
+Spravovaná doména Azure služba AD DS se pravidelně synchronizuje s Azure Active Directory. Počet uživatelů a skupinových objektů a počet změn provedených v adresáři služby Azure AD od poslední synchronizace, který ovlivňuje dobu potřebnou k synchronizaci. Pokud byla doména spravované službou Azure služba AD DS naposledy synchronizovaná před třemi dny, vyhledejte a vyřešte všechny aktivní výstrahy. Pokud monitorování synchronizace neaktualizuje stav, aby se zobrazila nedávná synchronizace, [otevřete žádost o podporu Azure][azure-support].
 
-## <a name="alerts"></a>Upozornění
-Výstrahy se generují pro problémy ve spravované doméně, které je potřeba řešit, aby bylo možné Azure AD Domain Services spustit. Každé upozornění vysvětluje problém a poskytuje adresu URL pro řešení, která popisuje konkrétní kroky pro vyřešení problému. Pokud chcete zobrazit všechna upozornění a jejich řešení, navštivte článek [řešení potíží s výstrahami](troubleshoot-alerts.md) .
+### <a name="alerts"></a>Upozornění
 
-### <a name="alert-severity"></a>Závažnost výstrahy
-Výstrahy jsou rozdělené do kategorií na tři různé úrovně závažnosti: kritická, varovná a informativní.
+Výstrahy se generují pro problémy ve spravované doméně služby Azure služba AD DS, které je potřeba vyřešit, aby služba běžela správně. Každé upozornění vysvětluje problém a poskytuje adresu URL, která popisuje konkrétní kroky k vyřešení problému. Další informace o možných výstrahách a jejich řešení najdete v tématu [řešení potíží s výstrahami](troubleshoot-alerts.md).
 
- * **Kritické výstrahy** jsou problémy, které mají vážně vliv na spravovanou doménu. Tyto výstrahy by se měly řešit okamžitě, protože Microsoft nemůže monitorovat, spravovat, opravovat a synchronizovat vaši spravovanou doménu. 
- * **Upozornění** upozorňující na problémy, které mohou v budoucnu ovlivnit vaši spravovanou doménu. Tyto výstrahy nabízejí doporučení k zabezpečení vaší spravované domény.
- * **Informativní výstrahy** jsou oznámení, která nemají negativní dopad na vaši doménu. Informační výstrahy jsou navržené tak, aby vám pomohly zjistit, co se děje ve vaší doméně a Azure AD Domain Services.
+Výstrahy týkající se stavu jsou rozdělené do kategorií podle následujících úrovní závažnosti:
 
-## <a name="next-steps"></a>Další kroky
-- [Řešení výstrah ve spravované doméně](troubleshoot-alerts.md)
-- [Přečtěte si další informace o Azure AD Domain Services](overview.md)
-- [Kontaktovat produktový tým](contact-us.md)
+ * **Kritické výstrahy** jsou problémy, které mají vážně vliv na spravovanou doménu Azure služba AD DS. Tyto výstrahy by se měly řešit okamžitě. Platforma Azure nemůže monitorovat, spravovat, opravovat a synchronizovat spravovanou doménu, dokud se problémy nevyřeší.
+ * **Upozornění** upozorňující na problémy, které mohou mít vliv na operace Azure služba AD DS spravované domény, pokud potíže potrvají. Tyto výstrahy také nabízejí doporučení k zabezpečení spravované domény.
+ * **Informativní výstrahy** jsou oznámení, která nemají negativní vliv na spravovanou doménu Azure služba AD DS. Informativní výstrahy poskytují přehled o tom, co se děje ve spravované doméně.
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o výstrahách, které se zobrazují na stránce stav, najdete v tématu [řešení výstrah ve spravované doméně][troubleshoot-alerts] .
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[troubleshoot-alerts]: troubleshoot-alerts.md

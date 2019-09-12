@@ -1,46 +1,46 @@
 ---
-title: Doporučené postupy pro použití služby Key Vault – Azure Key Vault | Dokumentace Microsoftu
-description: Tento dokument vysvětluje některé osvědčené postupy při použití služby Key Vault
+title: Osvědčené postupy použití Key Vault-Azure Key Vault | Microsoft Docs
+description: Tento dokument popisuje některé z osvědčených postupů pro použití Key Vault
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-key-vault
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eb7150d0b1c3a4a312b0c05ba7612960aaf640f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 654a9bb772c8a7426a335c98dfeca69515b9ce67
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65227935"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881619"
 ---
-# <a name="best-practices-to-use-key-vault"></a>Osvědčené postupy pro použití služby Key Vault
+# <a name="best-practices-to-use-key-vault"></a>Osvědčené postupy pro použití Key Vault
 
 ## <a name="control-access-to-your-vault"></a>Řízení přístupu k trezoru
 
-Služba Azure Key Vault je Cloudová služba, která chrání šifrovací klíče a tajné kódy jako hesla, certifikáty a připojovací řetězce. Protože tato data jsou citlivá a pro důležité obchodní informace, je potřeba zabezpečit přístup k vašim trezorům klíčů tím, že jen autorizované aplikace a uživatele. To [článku](key-vault-secure-your-key-vault.md) poskytuje přehled o přístup k modelu služby Key Vault. Vysvětluje ověření a autorizaci a popisuje, jak zabezpečit přístup k vašim trezorům klíčů.
+Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, je nutné zabezpečený přístup k vašim trezorům klíčů povolit pouze autorizovaným aplikacím a uživatelům. Tento [článek](key-vault-secure-your-key-vault.md) poskytuje přehled modelu přístupu Key Vault. Vysvětluje ověřování a autorizaci a popisuje, jak zabezpečit přístup k vašim trezorům klíčů.
 
 Návrhy při řízení přístupu k trezoru jsou následující:
-1. Uzamčení přístupu pro vaše předplatné, skupinu prostředků a klíč trezorů (RBAC)
-2. Vytvořit zásady přístupu pro každý trezor
-3. Použít alespoň oprávnění přístupu k objektu pro udělení přístupu
-4. Zapnout bránu Firewall a [koncové body služby virtuální sítě](key-vault-overview-vnet-service-endpoints.md)
+1. Uzamčení přístupu ke svému předplatnému, skupině prostředků a trezorům klíčů (RBAC)
+2. Vytvoření zásad přístupu pro každý trezor
+3. Použijte k udělení přístupu aspoň přístupový objekt zabezpečení s oprávněními.
+4. Zapnout bránu firewall a [koncové body služby virtuální](key-vault-overview-vnet-service-endpoints.md) sítě
 
-## <a name="use-separate-key-vault"></a>Použití samostatné služby Key Vault
+## <a name="use-separate-key-vault"></a>Použít samostatné Key Vault
 
-Naše doporučení je použití trezoru za aplikaci pro každé prostředí (vývojové, Předprodukčních a produkčních). To umožňuje sdílet napříč prostředími tajných kódů a také snižuje před internetovými útoky v případě porušení zabezpečení.
+Naším doporučením je použití trezoru pro jednotlivé aplikace (vývoj, předprodukční a produkční prostředí). To vám pomůže sdílet tajné klíče mezi prostředími a zároveň snižuje riziko v případě porušení.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Zálohovat
 
-Ujistěte se, že provedete pravidelně zpět ups z vaší [trezor](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) na aktualizace/odstranění/vytvoření objektů v trezoru.
+Ujistěte se, že při aktualizaci, odstranění a [](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) vytváření objektů v rámci trezoru provádíte pravidelné zálohování vašeho trezoru.
 
-## <a name="turn-on-logging"></a>Zapnutí protokolování
+## <a name="turn-on-logging"></a>Zapnout protokolování
 
-[Zapnutí protokolování](key-vault-logging.md) pro svůj trezor. Také nastavte výstrahy.
+[Zapněte protokolování](key-vault-logging.md) pro svůj trezor. Nastavte také výstrahy.
 
 ## <a name="turn-on-recovery-options"></a>Zapnout možnosti obnovení
 
-1. Zapnout [obnovitelné odstranění](key-vault-ovw-soft-delete.md).
-2. Zapnutí ochrany, pokud chcete ochranu proti odstranění platnost tajného klíče / trezoru, i když je zapnutá funkce obnovitelného odstranění.
+1. Zapněte [obnovitelné odstranění](key-vault-ovw-soft-delete.md).
+2. Pokud chcete chránit před vynuceným odstraněním tajného nebo trezoru i po zapnutí obnovitelného odstranění, zapněte funkci vyprázdnit ochranu.

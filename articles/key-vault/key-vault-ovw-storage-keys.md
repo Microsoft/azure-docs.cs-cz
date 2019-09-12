@@ -6,14 +6,14 @@ services: key-vault
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 86ac58aea174ca05580da99b6bde0cc3823ab151
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744875"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883058"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Azure Key Vault a Azure CLI 
 
@@ -45,7 +45,7 @@ Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrovaný pod stejným ID aplikace a v rámci každého cloudu Azure.
 
-| Tenantů | Cloud | ID aplikace |
+| tenantů | Cloud | ID aplikace |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejné Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
@@ -194,7 +194,7 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 Informace o příkazech rozhraní příkazového řádku Azure CLI, které jsou relevantní pro spravované účty úložiště, najdete v referenční dokumentaci k [úložišti klíčů AZ klíčů trezor](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [klíčích, tajných klíčích a certifikátech](https://docs.microsoft.com/rest/api/keyvault/).
 - Projděte si články na [blogu Azure Key Vault týmu](https://blogs.technet.microsoft.com/kv/).

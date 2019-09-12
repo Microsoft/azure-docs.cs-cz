@@ -21,7 +21,7 @@ ms.locfileid: "68305853"
 
 Migrace úloh z sálových prostředí do cloudu vám umožní modernizovat infrastrukturu a často si ušetřit náklady. Mnohé úlohy je možné přenést do Azure s pouze drobnými změnami kódu, jako je například aktualizace názvů databází.
 
-Obecně řečeno pojem sálový ** počítač znamená velký počítačový systém. Konkrétně Velká většina aktuálně používaného systému je systémy IBM System Z nebo IBM kompatibilní s modulem plug-in, které používají MVS, DOS, VSE, OS/390 nebo Z/OS.
+Obecně řečeno pojem sálový počítač znamená velký počítačový systém. Konkrétně Velká většina aktuálně používaného systému je systémy IBM System Z nebo IBM kompatibilní s modulem plug-in, které používají MVS, DOS, VSE, OS/390 nebo Z/OS.
 
 Virtuální počítač Azure slouží k izolaci a správě prostředků konkrétní aplikace v jediné instanci. Sálové počítače, jako je například IBM z/OS, používají pro tento účel logické oddíly (LPARS). Sálový disk může používat jeden LPAR pro oblast CICS s přidruženými COBOL programy a samostatnou LPAR pro databázi IBM Db2. Typická [n-vrstvá aplikace v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server) nasazuje virtuální počítače Azure do virtuální sítě, která se dá rozdělit do podsítí pro každou vrstvu.
 

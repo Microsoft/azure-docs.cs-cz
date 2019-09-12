@@ -36,7 +36,7 @@ Tady jsou podrobné pokyny, jak propojit jednotlivé možné cíle potenciální
 
 **Marketo** - [kliknutím sem](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) získáte pokyny k nastavení konfigurace vedoucího služby Marketo pro získání zájemců.
 
-**** Salesforce - [kliknutím sem](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) zobrazíte pokyny k nastavení instance Salesforce, abyste mohli získat zájemce.
+Salesforce - [kliknutím sem](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) zobrazíte pokyny k nastavení instance Salesforce, abyste mohli získat zájemce.
 
 **Tabulka Azure** – [kliknutím sem](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) získáte pokyny k nastavení účtu Azure Storage pro získávání zájemců v tabulce Azure.
 

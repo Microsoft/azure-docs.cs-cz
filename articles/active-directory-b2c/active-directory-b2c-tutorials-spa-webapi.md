@@ -136,7 +136,7 @@ Aby mohla vaše jednostránková aplikace volat ASP.NET Core webové rozhraní A
     ```
 
 1. (Pouze Visual Studio) V části **vlastnosti** v Průzkumník řešení otevřete soubor *launchSettings. JSON* a `iisExpress` pak najděte blok.
-1. (Pouze Visual Studio) Aktualizujte hodnotu číslem portu, který jste zadali při registraci aplikace webapi1 v předchozím kroku.  `applicationURL` Příklad:
+1. (Pouze Visual Studio) Aktualizujte hodnotu číslem portu, který jste zadali při registraci aplikace webapi1 v předchozím kroku. `applicationURL` Příklad:
 
     ```json
     "iisExpress": {

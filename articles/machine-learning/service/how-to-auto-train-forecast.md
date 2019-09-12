@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278185"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879058"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> V případě postupu křížového ověření (CV) můžou data časových řad porušovat základní statistické předpoklady pro křížové ověřování, takže automatizované Machine Learning implementuje postup pro ověření zavedení za provozu. skládání křížového ověřování pro data časových řad. Chcete-li použít tento postup, `n_cross_validations` zadejte parametr `AutoMLConfig` v objektu. Ověřování můžete obejít a použít vlastní ověřovací sady s `X_valid` parametry a. `y_valid`
+Podrobné příklady kódu pro pokročilou konfiguraci prognózování najdete v [poznámkovém bloku k energetickému vyžádání](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) , včetně:
+
+* detekce svátků a featurization
+* křížové ověření pro návratové zdroje
+* konfigurovatelné prodlevy
+* souhrnné funkce kumulovaných oken
 
 ### <a name="view-feature-engineering-summary"></a>Zobrazit souhrn metodologie funkcí
 
@@ -196,7 +200,7 @@ Zopakováním potřebných kroků načtěte tato budoucí data do datového rám
 > [!NOTE]
 > Hodnoty nelze předpovědět pro počet období, který je `max_horizon`větší než. Model musí být znovu vyškolen s větším horizontem, aby bylo možné předpovědět budoucí hodnoty nad rámec aktuálního horizontu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * V tomto [kurzu](tutorial-auto-train-models.md) se naučíte vytvářet experimenty pomocí automatizovaného strojového učení.
 * Podívejte se na referenční dokumentaci k [sadě Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .

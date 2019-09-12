@@ -65,7 +65,7 @@ Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení
 ### <a name="view-details-of-a-network-security-group"></a>Zobrazit podrobnosti skupiny zabezpečení sítě
 
 1. Do vyhledávacího pole v horní části portálu zadejte *skupiny zabezpečení sítě*. Pokud se ve výsledcích hledání zobrazí **skupiny zabezpečení sítě** , vyberte ji.
-2. V seznamu vyberte skupinu zabezpečení sítě, pro kterou chcete zobrazit podrobnosti. V části **Nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, k **síťovým rozhraním** a podsítím, ke kterým je skupina zabezpečení sítě přidružená. **** Můžete taky povolit nebo zakázat **diagnostické protokoly** a zobrazit **platná pravidla zabezpečení**. Další informace najdete v tématech [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazení platných pravidel zabezpečení](diagnose-network-traffic-filter-problem.md).
+2. V seznamu vyberte skupinu zabezpečení sítě, pro kterou chcete zobrazit podrobnosti. V části **Nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, k **síťovým rozhraním** a podsítím, ke kterým je skupina zabezpečení sítě přidružená. Můžete taky povolit nebo zakázat **diagnostické protokoly** a zobrazit **platná pravidla zabezpečení**. Další informace najdete v tématech [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazení platných pravidel zabezpečení](diagnose-network-traffic-filter-problem.md).
 3. Další informace o běžných nastaveních Azure uvedených v následujících článcích:
     *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
     *   [Řízení přístupu (IAM)](../role-based-access-control/overview.md)

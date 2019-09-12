@@ -245,7 +245,7 @@ Následující tabulka shrnuje, jak operace entity tabulky používají hodnoty 
 | Vložit nebo nahradit entitu |Ano |Ne |
 | Vložit nebo sloučit entitu |Ano |Ne |
 
-Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** neprovede žádné kontroly souběžnosti, protože neodesílají hodnotu ETag do služby Table Service. **  
+Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** neprovede žádné kontroly souběžnosti, protože neodesílají hodnotu ETag do služby Table Service.  
 
 V obecných vývojářích, kteří používají tabulky, by měly při vývoji škálovatelných aplikací spoléhat na optimistickou souběžnost. Pokud je potřeba pesimistické zamykání, můžou při přístupu k tabulkám podniknout vývojáři, kteří přiřadí určený objekt BLOB pro každou tabulku a před tím, než bude v tabulce pracovat, se pokusí o objekt BLOB převzít zapůjčení. Tento přístup vyžaduje aplikaci, aby se zajistilo, že všechny cesty k datům získají zapůjčení před tím, než se v tabulce začne pracovat. Je také potřeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.  
 
