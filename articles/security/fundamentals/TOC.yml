@@ -321,8 +321,8 @@
   href: best-practices-and-patterns.md
 - name: Zdroje a prostředky
   items:
-    - name: Běžné atributy zabezpečení
-      href: common-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: security-controls.md
     - name: Program MVP pro zabezpečení Azure
       href: mvp.md
     - name: Poradenství pro zabezpečení

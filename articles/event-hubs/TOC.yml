@@ -101,8 +101,8 @@
                   href: authenticate-application.md
             - name: Ověřování pomocí sdíleného přístupového podpisu
               href: authenticate-shared-access-signature.md
-        - name: Atributy zabezpečení
-          href: event-hubs-security-attributes.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: event-hubs-security-controls.md
     - name: Průvodce protokolem AMQP 1.0
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true

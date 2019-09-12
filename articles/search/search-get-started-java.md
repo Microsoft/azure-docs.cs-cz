@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start Java: Vytváření, načítání a dotazování indexů v jazyce Java'
+title: 'Rychlý start: Vytvoření indexu vyhledávání v jazyce Java pomocí rozhraní REST API – Azure Search'
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Java a rozhraní REST API pro Azure Search.
 author: lisaleib
 manager: nitinme
@@ -10,15 +10,15 @@ ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/11/2019
-ms.openlocfilehash: eec22d14c2d71a94f21a2403463315d477032ede
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 09/10/2019
+ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186730"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881575"
 ---
-# <a name="quickstart-create-load-and-query-indexes-using-azure-search-rest-apis-with-java"></a>Rychlý start: Vytváření, načítání a dotazování indexů pomocí Azure Search rozhraní REST API pomocí Java
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Rychlý start: Vytvoření indexu Azure Search v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -827,7 +827,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu v jazyce Java jste pracovali pomocí řady úkolů, abyste mohli vytvořit index, načíst ho s dokumenty a spouštět dotazy. Pokud jste obeznámeni se základními pojmy, doporučujeme pro hlubší učení následující články.
 

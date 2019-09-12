@@ -123,8 +123,6 @@
       href: billing-how-to-change-azure-account-profile.md
     - name: Udělení přístupu k fakturaci
       href: billing-manage-access.md
-    - name: Role EA v Azure
-      href: billing-understand-ea-roles.md
     - name: Role smlouvy se zákazníkem Microsoftu v Azure
       href: billing-understand-mca-roles.md
     - name: Propojení ID partnera
@@ -133,8 +131,26 @@
       href: billing-view-all-accounts.md
     - name: Organizace nákladů pomocí oddílů faktury
       href: billing-mca-section-invoice.md
-    - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
-      href: billing-mca-enterprise-operations.md
+    - name: Správa EA
+      items:
+        - name: Začínáme na portálu Azure EA
+          href: billing-ea-portal-get-started.md
+        - name: Role EA v Azure
+          href: billing-understand-ea-roles.md
+        - name: Správa portálu Azure EA
+          href: billing-ea-portal-administration.md
+        - name: Smlouvy a dodatky Azure EA
+          href: billing-ea-portal-agreements.md
+        - name: Faktury za smlouvy Enterprise
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Rozhraní Azure Enterprise REST API
+          href: billing-ea-portal-rest-apis.md
+        - name: Rezervované instance virtuálních počítačů Azure EA
+          href: billing-ea-portal-vm-reservations.md
+        - name: Řešení potíží s přístupem k portálu Azure EA
+          href: billing-ea-portal-troubleshoot.md
+        - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+          href: billing-mca-enterprise-operations.md
     - name: Řešení zůstatku po splatnosti
       href: billing-azure-subscription-past-due-balance.md
     - name: Nastavení fakturačních účtů pro smlouvu se zákazníkem Microsoftu

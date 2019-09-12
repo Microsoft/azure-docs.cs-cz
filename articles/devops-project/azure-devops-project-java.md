@@ -6,23 +6,22 @@ ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: a3b57fd7acba4d45b0bd519a21ae74f91291fd77
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873233"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898056"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Rychlý start: Nastavení kanálu CI/CD pro aplikaci Java pomocí Azure DevOps Projects
 
@@ -146,7 +145,7 @@ Protokoly obsahují užitečné informace o procesu nasazení. Můžete je zobra
 
 Pokud už je nepotřebujete, můžete Azure App Service a další související prostředky odstranit. Použití **odstranit** funkce na řídicím panelu projekty DevOps.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Při konfiguraci procesu CI/CD byly automaticky vytvořeny kanály sestavení a vydání. Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vašeho týmu. Další informace o kanálu CI/CD najdete tady:
 

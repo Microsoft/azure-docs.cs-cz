@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: Ověření z aplikace
                   href: authenticate-application.md
-        - name: Běžné atributy zabezpečení Azure
-          href: service-bus-messaging-security-attributes.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: service-bus-messaging-security-controls.md
 - name: Návody
   items:
     - name: Vytvoření oboru názvů

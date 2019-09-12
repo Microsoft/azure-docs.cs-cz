@@ -80,8 +80,8 @@
       href: backup-azure-backup-server-import-export-.md
     - name: Náhrada páskové knihovny
       href: backup-azure-backup-cloud-as-tape.md
-    - name: Běžné atributy zabezpečení Azure
-      href: backup-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: backup-security-controls.md
 - name: Postup
   items:
     - name: Server Azure Backup

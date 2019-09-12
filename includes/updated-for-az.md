@@ -5,13 +5,13 @@ manager: carmonm
 ms.date: 04/17/2019
 ms.topic: include
 ms.openlocfilehash: bba762fca7154067e528ebbbb0ea94c8ba7965f3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67171093"
 ---
 > [!NOTE]
-> Tento článek byl aktualizován, aby používal nový Azure PowerShell AZ Module. Stále můžete používat modul AzureRM, který bude dál přijímat opravy chyb, dokud nebude aspoň 2020. prosince.
-> Další informace o novém rozhraní AZ Module a AzureRM Compatibility najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az). Pokyny k instalaci přidaných modulů najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
+> Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020.
+> Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](/powershell/azure/new-azureps-module-az). Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps).
 

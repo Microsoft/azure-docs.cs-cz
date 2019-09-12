@@ -142,8 +142,8 @@
       href: backup-recovery.md
     - name: Příklad infrastruktury
       href: infrastructure-example.md
-    - name: Atributy zabezpečení
-      href: virtual-machines-windows-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: virtual-machines-windows-security-controls.md
 - name: Návody
   items:
     - name: Vytvoření virtuálních počítačů

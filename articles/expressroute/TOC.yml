@@ -58,8 +58,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Možnosti připojení mezi sítěmi
       href: cross-network-connectivity.md
-    - name: Běžné atributy zabezpečení Azure
-      href: expressroute-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: expressroute-security-controls.md
     - name: Návrh pro vysokou dostupnost
       href: designing-for-high-availability-with-expressroute.md
     - name: Návrh pro zotavení po havárii

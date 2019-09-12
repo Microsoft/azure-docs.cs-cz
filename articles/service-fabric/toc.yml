@@ -131,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Zabezpečení clusteru Service Fabric
           href: service-fabric-cluster-security.md
-        - name: Běžné atributy zabezpečení Azure
-          href: service-fabric-security-attributes.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: service-fabric-security-controls.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Sestavování aplikací

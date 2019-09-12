@@ -255,6 +255,10 @@
           href: manage-public-ip-address-prefix.md
     - name: Řešení potíží
       items:
+        - name: Řešení potíží s partnerskými vztahy virtuálních sítí
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: Konfigurace a ověření připojení VPN nebo virtuální sítě
+          href: virtual-network-configure-vnet-connections.md
         - name: Skupiny zabezpečení sítě
           href: diagnose-network-traffic-filter-problem.md
         - name: Trasy

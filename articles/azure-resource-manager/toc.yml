@@ -76,8 +76,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager a klasické nasazení
       href: resource-manager-deployment-model.md
-    - name: Běžné atributy zabezpečení Azure
-      href: azure-resource-manager-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: azure-resource-manager-security-controls.md
 - name: Postup
   items:
     - name: Vytváření šablon

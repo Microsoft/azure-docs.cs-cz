@@ -163,8 +163,8 @@
           maintainContext: true
     - name: Nejčastější dotazy týkající se škálovacích sad
       href: virtual-machine-scale-sets-faq.md
-    - name: Atributy zabezpečení
-      href: virtual-machine-scale-sets-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: virtual-machine-scale-sets-security-controls.md
 - name: Postup
   items:
     - name: Plánování a návrh

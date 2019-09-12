@@ -40,6 +40,16 @@
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Správa uživatelských profilů
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné operace (Preview)
+          items:
+            - name: Stahování uživatelů (Preview)
+              href: users-bulk-download.md
+            - name: Hromadný import uživatelů (Preview)
+              href: users-bulk-add.md
+            - name: Hromadné odstraňování uživatelů (Preview)
+              href: users-bulk-delete.md
+            - name: Hromadné obnovení uživatelů (Preview)
+              href: users-bulk-restore.md
         - name: Sdílení uživatelských účtů
           href: users-sharing-accounts.md
         - name: Přiřazení uživatelů k rolím správce
@@ -74,8 +84,8 @@
       items:
         - name: Správa přístupu s využitím skupin
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Správa skupin na webu Azure Portal
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hledání v seznamech členů a skupin (Preview)
+          href: groups-members-owners-search.md
         - name: Správa skupin s využitím PowerShellu pro Graph (v2)
           href: groups-settings-v2-cmdlets.md
         - name: Správa skupin MSOnline s využitím PowerShellu
@@ -84,8 +94,20 @@
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Správa vlastníků skupin
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Hromadné operace (Preview)
+          items:
+            - name: Hromadný import členů (Preview)
+              href: groups-bulk-import-members.md
+            - name: Hromadné stahování členů (Preview)
+              href: groups-bulk-download-members.md
+            - name: Hromadné odebírání členů (Preview)
+              href: groups-bulk-remove-members.md
+            - name: Hromadné stažení seznamu skupin (Preview)
+              href: groups-bulk-download.md
         - name: Správa skupin ve skupinách
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Vytvoření skupiny (Azure Portal)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Přidání skupinového přístupu k aplikacím SaaS
           href: groups-saasapps.md
         - name: Referenční informace k pojmenování skupin

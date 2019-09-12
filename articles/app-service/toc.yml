@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: Opravy operačního systému a modulů runtime
           href: overview-patch-os-runtime.md
-        - name: Atributy zabezpečení
-          href: app-service-security-attributes.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: app-service-security-controls.md
         - name: Přehled zabezpečení
           href: overview-security.md
     - name: Síťové funkce

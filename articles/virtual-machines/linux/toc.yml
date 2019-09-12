@@ -145,8 +145,8 @@
       href: backup-recovery.md
     - name: Pokyny pro infrastrukturu
       href: infrastructure-example.md
-    - name: Atributy zabezpečení
-      href: virtual-machines-linux-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: virtual-machines-linux-security-controls.md
 - name: Návody
   items:
     - name: Vytvoření virtuálních počítačů

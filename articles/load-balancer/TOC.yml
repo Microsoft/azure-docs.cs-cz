@@ -61,8 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Diagnostika a metriky Load Balanceru úrovně Standard
       href: load-balancer-standard-diagnostics.md
-    - name: Atributy zabezpečení
-      href: load-balancer-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: load-balancer-security-controls.md
 - name: Postup
   items:
     - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard

@@ -29,7 +29,7 @@
     - name: Klientské knihovny
       href: analysis-services-data-providers.md
     - name: Úroveň kompatibility
-      href: analysis-services-compat-level.md
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
     - name: Připojení k místním zdrojům dat
       href: analysis-services-gateway.md
     - name: Připojení k serverům

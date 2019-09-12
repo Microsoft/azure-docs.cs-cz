@@ -36,8 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Protokol pro hybridní připojení
       href: relay-hybrid-connections-protocol.md
-    - name: Běžné atributy zabezpečení Azure
-      href: service-bus-relay-security-attributes.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: service-bus-relay-security-controls.md
 - name: Postup
   items:
     - name: Plánování a návrh
